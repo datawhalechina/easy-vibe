@@ -16,7 +16,7 @@
   * [扩展知识 4: 什么是 AI IDE 和 Trae](/extra/extra4/extra4-what-is-ai-ide-and-trae.md)
   * [扩展知识 5: 什么是 RAG 以及它如何工作](/extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md)
   * [扩展知识 6: Zeabur 与 Web 应用部署](/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)
-  * [扩展知识 9: CLI AI Coding 工具与 TDD 原则](/extra/extra7/extra9-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md)
+  * [扩展知识 7: 命令行 AI 编程工具介绍](/extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md)
 
 * Examples
   * [完整实战项目 1: 如何写一个微信小程序](/examples/example1/example1-how-to-build-a-wechat-miniprogram.md)

@@ -1,4 +1,4 @@
-# 扩展知识 7 - CLI AI 编程工具与测试驱动开发原则
+# 扩展知识 9 - CLI AI 编程工具与测试驱动开发原则
 
 在本教程中，我们将介绍直接在命令行中运行的 AI 编程 Agent。它们和之前学过的 Trae、Cursor 中的 Agent 不同，CLI AI 编程工具只能在终端中使用。与集成在 AI IDE 里的 Agent 相比，它们通常具有更长的上下文窗口、更快的工具调用速度，并且可以兼容更多种类的大模型。在最新的 AI Vibe Coding 实战中，我们往往会优先使用 CLI AI 编程工具，而不是 IDE 内置的编码 Agent。
 
@@ -8,13 +8,13 @@
 
 > 在 Windows 上，常见的终端有“命令提示符（cmd）”和 “PowerShell”。你可以在电脑的运行/搜索框中输入 “cmd” 或 “powershell” 来启动这些命令行程序。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image1.png)![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image2.png)
+![](images/image1.png)![](images/image2.png)
 
 CLI 天生适合文本命令操作，在一小部分极客（追求极致的编程爱好者）群体中，CLI 甚至比 GUI 更受欢迎——他们希望所有操作都通过键盘完成，觉得动鼠标反而会拖慢自己的编码效率。
 
 在工业界，CLI 往往也是最常见的接口形式，因为 GUI 需要操作系统额外绘制界面、管理窗口，对计算机资源的要求更高；而 CLI 只需要把收到的命令传给系统执行即可。因此，在连接大规模服务器集群时，我们通常只通过 CLI 进行交互。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image3.png)
+![](images/image3.png)
 
 对于许多没有 CLI 经验的同学来说，可能会觉得 CLI 操作很复杂、命令太多，甚至担心“一不小心就把电脑搞坏”。不用担心。还记得我们在前面教程里，经常让 Trae 帮忙完成各种基础操作吗？这里也可以完全照搬这个思路——我们可以让 CLI 编程工具帮我们执行所有 CLI 操作：让它帮你进入指定文件夹、搜索和处理文件、运行或复制开源项目等。整个过程都可以通过和 CLI AI 编程工具的对话来完成。
 
@@ -22,7 +22,7 @@ CLI 天生适合文本命令操作，在一小部分极客（追求极致的编�
 
 我们可以把 CLI AI 编程工具类比成之前学过的 z.ai 和 Trae。某种意义上，CLI AI 编程工具可以看成是一种特殊的 z.ai：它们同样只需要一个简单的对话入口，就会自动为你执行所有需要的操作（只是有时你需要手动打开浏览器查看最终效果）。而如果类比 AI IDE，那么 CLI AI 编程工具可以被看作是 IDE 中的 Agent 模块——也就是侧边那块对话区域。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image4.png)![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image5.png)
+![](images/image4.png)![](images/image5.png)
 
 不过，由于不同 AI IDE 对 Agent 的实现方式不同，能力差异也很大，AI 编程效果经常不稳定，因此 CLI AI 编程工具通常由大型科技公司直接开发，例如 Claude 背后的 Anthropic、ChatGPT 背后的 OpenAI 等。
 
@@ -66,22 +66,22 @@ CLI 天生适合文本命令操作，在一小部分极客（追求极致的编�
 
 Claude Code 是由 Anthropic 基于 Claude 大模型能力开发的一款 AI 编程工具。它的主要交互场景在终端，同时也支持作为 VS Code 插件来使用。类似于 AI IDE 中的 Agent，它可以深度理解开发者的代码仓库，并通过自然语言指令完成端到端的开发任务——包括代码编辑、修复 Bug、执行和修复测试、管理 Git 工作流（例如解决合并冲突、创建 PR）、复杂代码讲解、执行终端命令等。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image6.png)
+![](images/image6.png)
 
 Claude Code 的优势主要体现在：极长的上下文窗口（可以处理完整文件甚至小型项目）、可以主动澄清模糊需求、自动规划和分配执行任务，以及对整个代码库内容的深度理解和解释能力。与普通 IDE Agent 相比，它更适合“沉浸式 vibe coding” 的开发流程。
 
 在实际使用中，你可以通过对话指令，让它帮你创建新项目、执行 CLI 操作（例如整理文件夹、批量重命名文件、部署开源项目等）、配置开发环境（例如安装和调试 Python 环境）。如果觉得某段代码难以理解、某个目录结构不清晰，也可以直接让 Claude Code 生成结构化的分析文档，或者对特定内容进行分步骤讲解。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image7.png)![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image8.png)
+![](images/image7.png)![](images/image8.png)
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image9.png)![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image10.png)
+![](images/image9.png)![](images/image10.png)
 
 如果你想系统地学习 Claude Code，可以参考 Andrew Ng 与 Anthropic 联合推出的课程：  
 https://www.bilibili.com/video/BV176t2zSEpr
 
 接下来，我们将学习如何使用 Claude Code。由于直接使用官方 Claude Code 的成本往往非常高（如下图所示），我们会转而使用兼容 Claude Code 协议、但基于其他大模型的 API 平台。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image11.png)
+![](images/image11.png)
 
 你需要学习下面几种不同方案（最好都尝试一遍），最后选择最适合你的那一种作为主要实践路径。
 
@@ -95,11 +95,11 @@ https://www.bilibili.com/video/BV176t2zSEpr
 
 GLM（General Language Model）是智谱 AI 自主研发的一系列大型语言模型。GLM-4.6 是当前 GLM 系列的最新版本，其核心亮点是在代码能力上的优异表现（在公开基准和真实任务中对标 Claude Sonnet 4，在国内处于第一梯队）。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image12.png)
+![](images/image12.png)
 
 它还将上下文窗口扩展到 200K，可以更加从容地处理长文本和大体量代码，同时加强了推理与工具调用能力，在性能和成本之间取得了不错的平衡。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image13.png)
+![](images/image13.png)
 
 在接入 GLM 之前，我们需要先安装 Claude Code。
 
@@ -160,7 +160,7 @@ please help me configure and start Claude Code
 
 你会看到类似下面的过程输出：
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image14.png)
+![](images/image14.png)
 
 > 💡 什么是环境变量？
 >
@@ -225,11 +225,11 @@ export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 
 [Claude Code Router](https://github.com/musistudio/claude-code-router) 是一款专门为 Claude Code 设计的智能路由增强工具。它的核心作用，是帮助用户按需将 AI 请求分发到不同平台上的模型，并可以高度自定义。它支持接入几十个平台，包括 OpenRouter、DeepSeek、Ollama、Gemini 等，也可以按场景将任务路由到特定模型，比如 GLM-4.5、Kimi-K2、Qwen3-Coder 等。举例来说，你可以将后台任务自动交给本地 Ollama，以节省成本；将长文本 / 长代码任务交给 Gemini-2.5-Pro；把代码讲解交给 DeepSeek。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image16.png)
+![](images/image16.png)
 
 该工具还提供了方便的 UI/CLI 配置管理能力，并通过“转换器（converter）”适配不同平台的 API 格式。它支持 GitHub Actions 等自动化集成以及自定义扩展，解决了“单一模型无法覆盖所有场景”以及“频繁切换平台很麻烦”的问题，帮助用户更灵活、低成本地利用 AI 工具。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image17.png)
+![](images/image17.png)
 
 下面我们简单介绍如何安装 Claude Code Router。大致需要以下步骤（同样可以让 Trae 帮你执行），以准备好相关环境：
 
@@ -240,7 +240,7 @@ npm install -g @musistudio/claude-code-router
 
 安装完成后，你需要确认本地可以使用 `ccr` 命令。如果看到类似下面的输出，说明安装成功：
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image18.png)
+![](images/image18.png)
 
 接下来，有两种方式来初始化和配置模型：
 
@@ -249,7 +249,7 @@ npm install -g @musistudio/claude-code-router
 
 如果选择使用 CCR UI，你会看到类似下面的界面：
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image19.png)
+![](images/image19.png)
 
 此时点击 “Add Provider” 按钮，就会看到如下界面。你需要：
 
@@ -261,21 +261,21 @@ npm install -g @musistudio/claude-code-router
 
 （界面往下滚动还有很多高级选项，但目前你可以先忽略它们。）
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image20.png)
+![](images/image20.png)
 
 下面是 DeepSeek 与 Kimi 的配置示例：
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image21.png)
+![](images/image21.png)
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image22.png)
+![](images/image22.png)
 
 保存模型配置后，还需要在右侧 Router 区域中指定默认模型（Default）。点击对应的下拉选择，将其设置为 `kimi`（推荐），然后在右上角点击 `Save and Restart`。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image23.png)
+![](images/image23.png)
 
 之后，只需在终端中输入 `ccr code`，即可通过 Claude Code Router 启动 Claude Code 的编码工作流。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image24.png)
+![](images/image24.png)
 
 #### Claude Code 的进阶用法
 
@@ -345,7 +345,7 @@ https://docs.claude.com/en/docs/claude-code/slash-commands
 
 其他 CLI AI 编程工具的整体实现方式也大体类似。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image25.png)
+![](images/image25.png)
 
 Claude Code 会把编程任务拆解成一个持续的“感知—思考—行动—验证”循环，并在其中调用不同工具完成任务。它模仿人类开发者的工作流：不断“写代码 → 运行 → 看结果 → 再改进”。系统内部通过一个主任务循环不断执行步骤，在每一轮循环中，Claude 都可以调用不同工具——例如读写文件、执行命令、搜索代码等——再根据工具返回的真实结果决定下一步行动。
 
@@ -358,9 +358,9 @@ Claude Code 会把编程任务拆解成一个持续的“感知—思考—行�
 
 ### Codex
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image26.png)
+![](images/image26.png)
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image27.png)
+![](images/image27.png)
 
 和 Claude Code 类似，Codex 是由 OpenAI 开发的一款 AI 协作编程工具，你可以把它理解成 “OpenAI 版的 Claude Code”。它最大的优势是对 GPT-5 的高效适配。
 
@@ -376,9 +376,9 @@ npm i -g @openai/codex
 
 如果直接使用 OpenAI 官方的 Codex 入口，配置会非常简单：当你已经开通 OpenAI 订阅或申请到了相应 API 配额之后，只需要在命令行中输入 `codex` 启动程序，并按提示完成登录即可。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image28.png)
+![](images/image28.png)
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image29.png)
+![](images/image29.png)
 
 #### 使用转发 OpenAI API 的方式作为后端
 
@@ -393,7 +393,7 @@ npm i -g @openai/codex
 
 在密钥分组设置中，要注意选择专门用于 Codex 的那一项。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image30.png)
+![](images/image30.png)
 
 接下来，我们需要把获取到的 Key 填入下面的提示词中，并把整段提示词交给 Trae，让它帮你完成整个配置过程：
 
@@ -607,7 +607,7 @@ https://github.com/langgenius/dify
 
 收到你的请求后，Claude Code 会自动完成一系列操作，包括从 GitHub 拉取代码、配置运行环境、启动项目等。如果中间某一步出错或项目启动状态不正常，你再根据提示进行少量人工处理即可。除了 Dify，你也可以用 Claude Code 帮你部署大部分常见的 GitHub 开源项目——你只需要一个对话框，再加上喝一杯咖啡的时间 ☕️。
 
-![](../../../English/Extra/Extra%20Knowledge%209%20-%20CLI%20AI%20Coding%20Tools%20and%20the%20Principles%20of%20Test-Driven%20Development/images/image31.png)
+![](images/image31.png)
 
 ### 讲解代码与撰写文档
 
