@@ -1,5 +1,5 @@
 <div align='center'>
-  <img src="./assets/head.png" alt="easy-vibe" width="70%">
+  <img src="./assets/head.png" alt="easy-vibe" width="100%">
 </div>
 <div align="center">
   <h1>Easy-Vibe</h1>
