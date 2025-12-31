@@ -17,14 +17,19 @@
 
 <div align="center">
   <h3>📚 AI Vibe Coding 101 教程</h3>
-  <p>零基础，在项目中掌握 Vibe Coding 与 AI 技能，构建第一个 AI 原生产品</p>
+  <p>零基础，在项目制学习中掌握 Vibe Coding 与 AI 技能，构建第一个 AI 原生产品</p>
 </div>
 
 ## 项目介绍
 
-> 这是一个面向所有想要学习 vibe coding 并构建原生 AI 应用的人的综合课程。本教程是 THU SIGS AIID 实践课程的一部分。受开源启发，所有资料向任何对 vibe coding 和原生 AI 应用感兴趣的人开放。我们希望这一资源能帮助每一个决心创造自己原生 AI 应用的人，并共同改变传统的编程习惯。我们相信未来的编程工作 95% 将由 AI 完成。
+2025 年，被很多人视为 AI 编程的元年。越来越多的人已经开始用 AI 写代码，但做出来的东西往往还停留在玩具层面。且一到真正动手，大家常常会被各种门槛劝退：
+- 不知道用什么 AI 编程工具写代码比较好；
+- 不知道怎么把大模型的能力应用到具体产品上；
+- 不清楚 AI 写出的代码，距离真实能上线运行还差多远。
 
-本项目聚焦「原生 AI 应用开发」这一新范式，通过循序渐进的项目实战，帮助你在真实工程环境中掌握 vibe coding 的方法论与最佳实践。
+通过这个项目，我们希望帮你掌握和 AI 搭档写代码的最佳实践。你将学会借助 AI 的力量，在一个又一个的项目制学习挑战中，独立完成游戏、实用工具、产品原型的实现，最后制作一款属于自己的产品。
+
+我们相信，你一个人就可以成为前后端开发、AI 算法开发、产品经理。
 
 ### 项目受众
 
@@ -38,11 +43,20 @@
 
 ### 你将收获什么？
 
-- 理解什么是 vibe coding 以及它与传统编程方式的差异
+- 理解什么是 vibe coding 以及它的一般做法
 - 掌握从零到一设计和实现原生 AI 应用的基本路径
 - 通过多个完整项目，熟悉游戏、工具类、产品原型等不同形态的 AI 应用开发
 - 了解并实践 Git、API、RAG、AI IDE、Zeabur 等关键工具与基础设施
+- 掌握产品思维，学会构建符合用户需求的产品
 - 在实践中形成一套可复用的 AI 原生产品开发工作流
+
+### 路线图
+
+- [ ] 修复 extra 失效部分内容
+- [ ] 补全未完成的 project extra 文档
+- [ ] 根据内测内容反馈补充润色 project 1 与 2 、extra 2 的内容
+- [ ] 将未推送的教程补充推送，同时优化在线阅读体验
+- [ ] 修复英文版仓库不自然的部分
 
 ## 内容导航
 
@@ -54,17 +68,18 @@
 
 ### Project 部分
 
-| 难度 | 章节                                                                                                                                                                                  | 关键内容                                                                     | 状态 |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---- |
-| 初   | [Project 1: 如何构建贪吃蛇游戏](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter1/chapter1-how-to-build-a-snake-game.md)                                       | Vibe Coding 基础、z.ai 工具链、提示词编程、贪吃蛇游戏实战                    | ✅   |
-| 初   | [Project 2: 探索 AI 工具的能力边界](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md)                 | 提示词工程、上下文工程、Coze 平台、超级井字棋复刻、LLM 训练原理              | ✅   |
-| 初   | [Project 3: Dify 入门与知识库集成](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | RAG 检索增强生成、Dify 平台实战、知识库集成、Agent Workflow 编排             | ✅   |
-| 中   | [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md)                                   | 前端原型设计、角色扮演 Agent、情绪反馈机制、Dify API 集成、网页部署          | ✅   |
-| 中   | [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md)                                      | Supabase 后端服务、数据库与 JSON、用户鉴权系统、前后端分离架构               | ✅   |
-| 中   | [Project 6: 别急着写代码，先想一个好点子](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter6/chapter6-no-code-without-an-idea.md)                               | 产品思维 (Product Sense)、用户需求挖掘、PMF 验证、AI 应用构思                | ✅   |
-| 高   | Project 7: 构建第一个现代应用程序-UI设计                                                                                                                                              | 前端组件库应用、前端编辑工具进阶、UI 设计规范                                | 🚧   |
-| 高   | Project 8: 构建第一个现代应用程序-功能设计                                                                                                                                            | 市场调研、产品 PRD 构建、原型设计深度解析、多页面架构设计                    | 🚧   |
-| 高   | Project 9: 构建第一个现代应用程序-全栈应用                                                                                                                                            | 全栈应用构建、独立后端鉴权、从设计到上线闭环                                 | 🚧   |
+| 难度 | 章节                                                                                                                                                                                             | 关键内容                                             | 状态 |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ---- |
+| 初   | [前言：课程学习地图](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter0-learning-map/chapter0-learning-map.md)                                                          | 课程学习地图、学习目标、常见问题解答             | ✅   |
+| 初   | [Project 1: 如何构建贪吃蛇游戏](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter1/chapter1-how-to-build-a-snake-game.md)                                                | 网页 AI 编程基础、实现贪吃蛇、集成文字、生图 API | ✅   |
+| 初   | [Project 2: 探索 AI 工具的能力边界](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md)                        | 提示词工程练习、AI 编程基础、图片视频生成 API、理解 AI 能力边界 | ✅   |
+| 初   | [Project 3: Dify 入门与知识库集成](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md)        | Dify 平台实战、RAG 检索增强生成、Workflow 编排 | ✅   |
+| 中   | [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md)                                            | 前端原型设计、前端原型转代码、AI IDE 入门、Dify API 集成、网页部署 | ✅   |
+| 中   | [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md)                                               | 数据库与 JSON 入门、Supabase 后端服务、用户鉴权系统、边缘函数、鉴权、存储桶 | ✅   |
+| 中   | [Project 6: 别急着写代码，先想一个好点子](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter6/chapter6-no-code-without-an-idea.md)                                        | 产品思维、学会抽象思路变具体、如何制作好应用、用户需求与增长 | ✅   |
+| 高   | Project 7: 构建第一个现代应用程序-UI设计                                                                                                                                                         | 现代前端组件库、前端编辑工具进阶、UI 设计规范              | 🚧   |
+| 高   | Project 8: 构建第一个现代应用程序-功能设计                                                                                                                                                       | 市场调研、产品 PRD 构建、原型设计深度解析、多页面架构设计       | 🚧   |
+| 高   | Project 9: 构建第一个现代应用程序-全栈应用                                                                                                                                                       | 全栈应用构建方案、独立后端鉴权、设计到上线开发闭环               | 🚧   |
 
 ### 扩展知识部分
 
@@ -72,11 +87,11 @@
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ---- |
 | 初   | [扩展知识 1: 什么是 Git 和 GitHub](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra1/extra1-what-is-git-and-what-is-github.md)                                                 | Git 版本控制、GitHub 协作流程、代码仓库管理、SSH 配置      | ✅   |
 | 初   | [扩展知识 2: 什么是 API](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra2/extra2-what-is-api.md)                                                                              | API 原理与机制、接口请求/响应、第三方服务集成、HTTP 基础   | ✅   |
-| 初   | [扩展知识 3: AI 能力入门手册](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra3/extra3-ai-capability-starter-handbook.md)                                                      | AI 能力全景图、主流模型选型 (LLM/图像/语音)、多模态应用    | ✅   |
-| 初   | [扩展知识 4: 什么是 AI IDE 和 Trae](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra4/extra4-what-is-ai-ide-and-trae.md)                                                       | AI IDE 概念、Trae 工具实战、智能代码补全、Agent 辅助调试   | ✅   |
-| 中   | [扩展知识 5: 什么是 RAG 以及它如何工作](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md)                               | RAG 技术原理、文档切片与索引、向量检索机制、幻觉消除       | ✅   |
-| 中   | [扩展知识 6: Zeabur 与 Web 应用部署](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)                         | Web 应用部署、Zeabur 平台、环境与域名配置、项目上线        | ✅   |
-| 中   | [扩展知识 7: CLI AI 编程工具与测试驱动开发原则](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra7/extra9-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | CLI AI 编程工具、Claude Code/Codex、测试驱动开发 (TDD)     | ✅   |
+| 初   | [扩展知识 3: AI 能力入门手册](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra3/extra3-ai-capability-starter-handbook.md)                                                      | AI 能力全景图、主流模型选型 (LLM/图像/语音/视频/时间序列)、AI 工程能力全景图    | ✅   |
+| 初   | [扩展知识 4: 什么是 AI IDE 和 Trae](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra4/extra4-what-is-ai-ide-and-trae.md)                                                       | IDE 与 AI IDE 概念、Trae 工具实战入门  | ✅   |
+| 中   | [扩展知识 5: 什么是 RAG 以及它如何工作](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md)                               | RAG 技术原理、文档切片与索引、RAG 进阶方案、RAG 企业方案       | ✅   |
+| 中   | [扩展知识 6: Zeabur 与 Web 应用部署](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)                         | Web 应用部署、Zeabur 平台使用方法        | ✅   |
+| 中   | [扩展知识 7: CLI AI 编程工具](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra7/extra9-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | 终端介绍、CLI AI 编程工具、Claude Code/Codex    | ✅   |
 | 中   | 扩展知识 8: MCP 与 ClaudeCode skills                                                                                                                                                              | MCP 协议、ClaudeCode Skills、工具扩展机制                  | 🚧   |
 | 高   | 扩展知识 9: 如何让 Coding Tools 长时间工作                                                                                                                                                        | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化         | 🚧   |
 
@@ -117,7 +132,7 @@
 
 ## 参与贡献
 
-- 如果你发现了一些问题，可以提 Issue 进行反馈，如果提完没有人回复你可以联系[保姆团队](https://github.com/datawhalechina/DOPMC/blob/main/OP.md)的同学进行反馈跟进~
+- 如果你发现了一些问题，或者觉得任何可以改进本项目的地方，可以提 Issue 进行反馈。如果提完没有人回复你可以联系[保姆团队](https://github.com/datawhalechina/DOPMC/blob/main/OP.md)的同学进行反馈跟进~
 - 如果你想参与贡献本项目，可以提 Pull Request，如果提完没有人回复你可以联系[保姆团队](https://github.com/datawhalechina/DOPMC/blob/main/OP.md)的同学进行反馈跟进~
 - 如果你对 Datawhale 很感兴趣并想要发起一个新的项目，请按照[Datawhale 开源项目指南](https://github.com/datawhalechina/DOPMC/blob/main/GUIDE.md)进行操作即可~
 
