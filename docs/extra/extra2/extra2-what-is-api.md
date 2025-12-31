@@ -1,258 +1,165 @@
-# 扩展知识 2 - 什么是 API
+# 扩展知识 2 - API 开发手册：从核心逻辑到 AI 场景集成
 
-在本教程中，我们将学习什么是 API，它是如何工作的，并了解它是如何驱动我们每天使用的数字体验的。
+随着数字化进程的加速，我们每天都在与成百上千个软件系统打交道。但对于初学者来说，一个始终绕不开的困惑是：**这些看起来互不相干的应用，到底是怎么“对话”的？** 为什么我在这个 App 里点一下，另一个 App 就能立刻做出反应？
 
-# 你将学到
+面对这种困惑，最直观的做法或许是“临时抱佛脚”：**遇到需求再搜索具体的函数调用或者是网络协议，对照文档进行处理**。看到图片需求就想到图像生成，碰到文本任务就找来大模型，再在海量接口中货比三家。然而，把零散的接口堆在一起，与在应用开发中系统性地规划、选型和组合 API 能力，是两件截然不同的事情。仅靠临时查资料与经验判断，会带来认知碎片化、方案设计随意、接口复用困难等一系列严峻挑战。
 
-* 使用简单、真实的类比来理解什么是 API。
-* API 请求和响应循环的基本步骤。
-* 如何识别你日常使用的应用中的 API，如天气、地图和社交媒体。
-* 为什么 API 对于现代技术的创新、安全和效率至关重要。
+为了解决这些痛点，本篇手册以“API 核心逻辑”为整理思路。在这本手册里，我们想做的不是堆名词，而是帮你快速搞清楚三件事：**“这件事可以用什么 API 做？它的本质逻辑是什么？接下来该怎么安全地调用它？”** 通过从生活类比到代码实践的系统梳理，我们将为你揭开 API 的神秘面纱，帮你建立起从“逻辑认知”到“场景映射”再到“代码实现”的完整链路。
 
-# **什么是 API？ - 自动售货机类比**
+> 由于 **内容较多** ，你可以在实践过程中遇到场景不知道如何选型的问题再查阅手册寻找参考；推荐你**根据具体应用方向，让 AI 参考该手册，给出可参考的模型选型建议、方案 API 调用建议即可。** 
+> 
+> 如果你只想了解对应的类别，不想看具体内容，只需要看每个大章节的初始段内容即可，例如 1 、2 的内容，但不需要看 5.1 或者 5.2 的代码细节。 
+> 
+> **推荐本手册只在需要时查阅对应部分或只浏览一级目录部分，若有兴趣再浏览全文。** 
+> 
+> **之后更新会在每个章节部分，推荐可尝试使用的模型 API 服务地址。** 
 
-想象一下你想从自动售货机买一罐汽水。
+# 本节课你将学到
 
-1. **你不需要知道它内部是如何工作的：** 你不关心冷却系统、机械臂，或者它是如何验证你的钱的。对你来说，它是一个“黑盒子”。
-2. **它有清晰的操作按钮：** 机器上有一排排按钮，每个按钮都清楚地标明了它提供的饮料。这是你与它交流的唯一方式。你必须按下“汽水”按钮。
-3. **简单的“请求”和“响应”：**
-   1. 你投入硬币并按下“汽水”按钮。这是你的 **“请求”**。
-   2. 机器发出嗡嗡声，一罐汽水掉了下来供你拿取。这是它的 **“响应”**。
+* **核心概念映射**：通过“电源插座”与“餐厅点餐”等经典类比，建立对 API 请求与响应循环的直观理解。
+* **现实场景解析**：了解天气、地图、社交登录及大语言模型等主流 API 的工作原理，掌握从“功能”到“接口”的映射方法。
+* **代码实践与安全**：掌握 Python 环境下 AI API 的调用方式，并理解前端开发中后端代理等安全工程实践的重要性。
 
-在这个例子中：
+完成本手册的学习后，你将对主流 API 能力建立起入门级的系统化认知，不仅知道“市面上有哪些接口、常配哪些产品”，更能理解它们在整体架构中的位置和相互关系。知道在面对具体业务需求时，如何快速定位所需能力、做出有依据的选型，为构建 AI 应用体系打下坚实基础。
 
-* 你是你的程序（比如一个移动应用）。
-* 自动售货机是另一个程序或服务（比如天气服务或地图服务）。
-* 机器上的按钮就是 API。
+---
 
-API，全称 Application Programming Interface（应用程序编程接口），就是那组“按钮”。它是不同软件组件之间进行通信的一种预定义的、直接的方式，允许一个程序轻松地从另一个程序获取它需要的东西（数据或功能），而无需了解其内部的复杂性。
+## 1. 什么是 API？—— 从墙上的插座说起
 
-API 连接了各种软件系统，为开发者和用户带来了巨大的好处。
+API 的全称是 Application Programming Interface（应用程序编程接口），听起来很硬核，但我们可以把它想象成你墙上的**电源插座**。
 
-* **创新：** 公共 API 允许任何开发者使用强大的功能（如支付处理或地图）来创建新的数字体验，而无需从头开始构建它们。
-* **自动化：** API 可以自动化重复性工作，如发送电子邮件或在系统之间共享数据，提高生产力，让人类可以专注于更有创造性的任务。
-* **安全性：** API 充当安全的守门人。它们可以要求对任何请求进行身份验证，增加一层保护，防止未经授权访问敏感数据。
-* **成本效率：** 企业可以使用第三方 API 来访问有用的工具和基础设施，帮助他们避免构建复杂内部系统的巨额费用。
+当你把手机充电器插进插座时，你并不需要知道远处的发电厂是在烧煤还是在用风力发电，也不需要理解复杂的电网是怎么把电输送到你家的。对你来说，电厂就是一个“黑盒子”。你唯一关心的就是这个插座：只要你的插头尺寸对得上（符合标准），一插进去，电就来了。
 
-API 是现代数字世界的基石。通过理解请求和响应这个简单的概念，你已经迈出了进入更广阔、互联的软件开发世界的第一步。
+在这个例子中，你的手机就是“客户端”（程序），发电厂是“服务器”（另一个服务），而**墙上的插座就是 API**。它是一个预先定义好的、标准的“连接点”。它把复杂的内部逻辑屏蔽在墙后面，只给你留下一个简单的接口，让你能轻而易举地获取原本非常复杂的功能或数据。
 
-# API 是如何工作的？
+## 2. 为什么 API 如此重要？
 
-API 通过 **请求和响应** 循环在应用程序之间共享数据。让我们把它想象成在餐厅点餐。
+正因为有了这些“插座”，现代技术的创新才变得如此迅速。开发者不需要从头去研究如何发电（比如画地图、写支付系统），只需要调用现成的 API，就能像**搭积木一样**快速构建出功能强大的应用。这不仅节省了巨大的开发成本，还让**自动化**成了可能——比如让系统自动处理重复性工作，同步数据或发送通知，把人类从琐碎的劳动中解放出来。同时，API 还充当了**安全守门人**的角色，确保只有合法的插头（请求）才能接通，让企业可以放心地使用第三方提供的尖端服务。
 
-在这个比喻中，你是 **API 客户端**（发出请求的应用程序），服务员是 **API**，厨房是 **API 服务器**（拥有数据或功能的系统）。
+## 3. API 是如何工作的？
 
-## **API 请求（你的订单）**
+如果说电源插座是解释“接口”概念的基础版，那 API 的实际运作动态更像是在**餐厅点餐**。
 
-客户端通过向服务器发送请求来开始对话。这就像告诉服务员你想要什么。一个典型的 API 请求包括：
+在这个比喻中，你（客户端）坐下看菜单，决定了要吃什么。这时候，服务员（API）走了过来，记下你的需求，然后转身跑向厨房（服务器）。厨房里的大厨根据订单开始忙碌，做出一盘精美的菜肴。最后，服务员再次现身，把食物端到你面前。
 
-* **Endpoint（端点）：** 指向资源的特定 URL。这就像菜单上的特定项目。对于天气应用，端点可能是 `/current-weather`。
-* **Method（方法）：** 你想执行的操作。最常见的是 `GET`，意味着你想获取数据。其他的包括 `POST`（创建新数据）、`PUT`（更新数据）和 `DELETE`（删除数据）。
-* **Parameters（参数）：** 指定请求的额外细节。如果你询问天气，你需要提供位置。例如：`city=London`。
-* **Request Body（请求体）：** 创建或更新资源所需的实际数据。如果你要向社交媒体应用发布新照片，照片本身就在请求体中。
+在这个过程中，**API 请求**就像是你的订单。它包含了你想访问的“端点”（菜名）、你想做的动作（是获取数据还是提交信息）以及具体的参数（比如只要伦敦的天气）。而 **API 响应** 则是服务员带回的结果，其中包含了告诉你是否成功的“状态码”（比如 200 代表大功告成）以及你真正想要的“响应体”数据。
 
-## **API 响应（你的食物到了）**
+## 4. 现实世界的例子：我们身边的“服务窗口”
 
-在厨房（服务器）准备好你的订单后，服务员（API）将其带回给你。响应包括：
+API 无处不在，在后台默默工作。
 
-* **Status Code（状态码）：** 一个三位数的代码，指示结果。`200 OK` 表示请求成功。`404 Not Found` 表示找不到请求的资源。
-* **Response Body（响应体）：** 你请求的实际数据或内容。对于天气请求，这将是包含温度、状况和湿度的结构化数据。
+**天气预报 API**
+它就像一个专门提供气象信息的窗口。你的天气应用向它发送坐标和密钥，它就回传一串 JSON 数据。
 
-# 现实世界的例子：我们周围的 API
+*   **一个简单的“请求”示例：**
+    *   **Endpoint:** `/current-weather`
+    *   **Parameters:** `city=London` & `apiKey=your_access_key`
+*   **“响应”（回传的数据）：**
+    ```json
+    {
+      "city": "London",
+      "temperature": "15°C",
+      "condition": "Cloudy",
+      "humidity": "70%"
+    }
+    ```
+应用拿到这些数据后，再把它们漂亮地展示在你的手机屏幕上。
 
-API 无处不在，在后台默默工作。让我们看几个常见的“自动售货机”。
+**地图服务 API**
+不管是外卖平台还是打车软件，它们本身并不生产地图。它们通过调用高德或 Google Maps 的 API，就能获得精准的路线规划和导航功能。
 
-### **天气预报 API**
+*   **一个简单的“请求”示例：**
+    *   **Endpoint:** `/directions`
+    *   **Parameters:** `origin=Eiffel Tower` & `destination=Louvre Museum` & `mode=driving`
+*   **“响应”（回传的数据）：**
+    ```json
+    {
+      "total_distance": "4.5 kilometers",
+      "estimated_time": "15 minutes",
+      "route_steps": [
+        "1. Head east on Champ de Mars...",
+        "2. Turn left onto Quai Branly...",
+        "..."
+      ]
+    }
+    ```
+通过这些数据，应用就能在地图上绘制路线并提供导航指令。
 
-这个 API 就像一个只卖天气信息的自动售货机。
+**社交媒体登录 API**
+当你点击“使用 Google 登录"时，购物应用会问 Google API：“这个用户是谁？”Google 验证后告诉应用：“他是 John Doe”。这样，你不用输入密码就能安全登录。
 
-* **它提供什么：** 当前天气、未来几天的预报、空气质量等。
-* **一个简单的‘请求’示例：**
-  * **Endpoint:** `/current-weather`
-  * **Parameters:** `city=London` & `apiKey=your_access_key`（证明你有权限）
+**大语言模型 API（AI 的超级大脑）**
+这是目前最火的“万能插座”。你传过去一段话，它就能回传一段有逻辑的回复。开发者不需要自己训练大模型，只需要接通 OpenAI 或 DeepSeek 的 API，就能让自己的应用瞬间变聪明。
 
-‘响应’（它返回的数据）：
+## 5. 在代码中，API 长什么样？
 
-```JSON
-{
-  "city": "London",
-  "temperature": "15°C",
-  "condition": "Cloudy",
-  "humidity": "70%"
-}
-```
+当你真正开始动手写代码时，会遇到一些技术名词。别担心，你不需要现在就记住所有细节，只需要看看它们在代码里是怎么“呼吸”的。
 
-* 你的天气应用获取这些数据并以用户友好的格式显示。
+### 5.1 Python 中的 AI 调用
+在 Python 中调用 OpenAI 的 API 非常直观。你可以通过设置 `base_url` 来指定服务器地址。
 
-### **地图服务 API（如 Google Maps）**
-
-这个自动售货机专门提供地理信息。
-
-* **它提供什么：** 行车路线、从地址查找坐标、搜索附近地点。
-* **一个简单的‘请求’示例：**
-  * **Endpoint:** `/directions`
-  * **Parameters:** `origin=Eiffel Tower` & `destination=Louvre Museum` & `mode=driving`
-
-```JSON
-{
-  "total_distance": "4.5 kilometers",
-  "estimated_time": "15 minutes",
-  "route_steps": [
-    "1. Head east on Champ de Mars...",
-    "2. Turn left onto Quai Branly...",
-    "..."
-  ]
-}
-```
-
-* 拼车或送货应用使用这些数据在地图上绘制路线并提供逐向导航指令。
-
-### **社交媒体登录 API（如“使用 Google 登录”）**
-
-这是一个特殊的自动售货机，不卖产品；它帮助“验证你的身份”。
-
-* **它提供什么：**
-
-确认用户身份并安全地向另一个应用提供基本信息（如姓名和头像）。
-
-* **它是如何工作的：**
-  * 你在新的购物应用上点击“使用 Google 登录”。
-  * 购物应用向 Google 的 API 发出请求：“嘿，有个用户想登录。你能确认他是谁吗？”
-  * Google 请求你的批准。
-  * 一旦你批准，Google 的 API 向购物应用发送响应：“身份已确认。用户是‘John Doe’。”
-    这样，购物应用就知道你是谁，而无需看到你的密码，既方便又安全。
-
-### **大语言模型 API（如 OpenAI 或 DeepSeek）**
-
-这是一个 **“超级大脑”自动售货机**。你给它一个纯文本的命令或问题，它给你一个详细的、类似人类的文本回复。
-
-* **它提供什么：** 为几乎任何任务生成原创文本，如回答问题、写邮件、总结文章或创建计算机代码。
-* **它是如何工作的：**
-  * 想象你正在使用一个新的“AI 写作助手”应用程序。你输入一个命令：“给我的团队写一封简短、专业的邮件，关于新项目的截止日期。”
-  * 写作应用向 OpenAI 的 API 发出请求：“嘿，有个用户想写封邮件。你能生成关于新项目截止日期的专业信息的文本吗？”
-  * OpenAI API 处理此命令，理解上下文和语气，并生成文本。
-  * API 向写作应用发送响应：“请求完成。这是邮件文本：‘Hi Team, This is a quick update to let you know that the deadline for Project X has been moved to this Friday...’”
-
-通过这种方式，写作应用可以即时为用户提供强大的 AI 功能，而无需从头开始构建自己的大型语言模型。
-
-# 在 Z.ai 上查看 LLM API
-
-接下来，我们将学习调用大语言模型 API 的基本方法。我们可以简单参考之前贪吃蛇游戏的 API 使用示例。
-
-我们不需要自己搜索。我们需要做的就是向语言模型提出后续问题，例如：“在代码中，哪几行调用了语言模型和图像生成模型？”，“如果用 Python 代码写会是什么样？”通过问这些问题，你将能直接得到完整的答案。
-
-![](images/image1.png)
-
-这些 API 是使用官方智谱 SDK（SDK 代表 **软件开发工具包**）调用的。接下来，让我们看看如何调用 OpenAI 的官方 API。
-
-你稍后可能会遇到很多名词。不需要一下子掌握所有名词——**你只需要在这里大致了解它们的样子**。
-
-### Python API
-
-要在 Python 中调用 OpenAI 的文本生成 API，可以使用官方的 openai 库。
-
-**`base_url`** 参数指定 API 的端点。默认情况下，它指向 OpenAI 的服务器（例如 `https://api.openai.com/v1/`）。如果你使用代理、自托管服务器或兼容的提供商，你可能需要将此参数更改为相应的地址。
-
-```Python
+```python
 import openai
 
 openai.api_key = "YOUR_OPENAI_API_KEY"
-# 如果你使用自定义 base URL（例如 Azure、代理或其他提供商）
-# openai.base_url = "<https://your-custom-base-url/v1/>"
+# 如果使用第三方代理或 DeepSeek 等兼容接口，可以修改 base_url
+# openai.base_url = "https://api.deepseek.com/v1/"
 
 response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Hello, how can I use the OpenAI API?"}
+        {"role": "system", "content": "你是一个得力的助手。"},
+        {"role": "user", "content": "你好，怎么使用 API？"}
     ]
 )
 
 print(response.choices[0].message["content"])
 ```
 
-**注意：**
+许多模型（如 DeepSeek）都兼容 OpenAI 的格式。你只需要更换 API 密钥和地址，就能无缝切换。
 
-* `openai.api_key` 是你的秘密 API 密钥。
-* `openai.base_url` 是可选的，仅当你未使默认 OpenAI 端点时才需要。
-* `model` 参数指定你想使用的语言模型。
+### 5.2 前端开发中的安全实践
+如果你在做网页，切记不要在浏览器代码里直接写 API 密钥，否则会被人偷走。通常的做法是写一个**后端代理**，让服务器去替你完成调用。
 
-许多其他流行的大语言模型都兼容 OpenAI API 调用格式。例如，如果你需要使用 [DeepSeek](https://platform.deepseek.com/sign_in)（中国最好的大语言模型之一），你可以通过更改 API 端点和模型名称以非常相似的方式进行操作。
-
-以下是典型示例：
-
-```JavaScript
-import openai
-
-openai.api_key = "YOUR_DEEPSEEK_API_KEY"
-openai.base_url = "<https://api.deepseek.com/v1/>"  # DeepSeek 的端点
-
-response = openai.ChatCompletion.create(
-    model="deepseek-chat",  # 更改为 DeepSeek 的模型名称
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Tell me about DeepSeek."}
-    ]
-)
-
-print(response.choices[0].message["content"])
-```
-
-### 前端 API
-
-如果你想从 React 前端调用 OpenAI API，绝不应该直接在浏览器中暴露你的 API 密钥。
-
-相反，使用 **后端代理**（例如 Express.js），或从服务器函数安全地调用 API。
-
-```JavaScript
-// 安装命令：npm install express axios dotenv
+```javascript
+// 后端 Node.js 示例
 const express = require("express");
 const axios = require("axios");
-require("dotenv").config();
-
 const app = express();
 app.use(express.json());
 
 app.post("/api/chat", async (req, res) => {
   try {
-    const userMessage = req.body.message;
-
     const response = await axios.post(
-      "<https://api.openai.com/v1/chat/completions>",
+      "https://api.openai.com/v1/chat/completions",
       {
         model: "gpt-3.5-turbo",
-        messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: userMessage }
-        ]
+        messages: [{ role: "user", content: req.body.message }]
       },
       {
-        headers: {
-          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-          "Content-Type": "application/json"
-        }
+        headers: { "Authorization": `Bearer ${process.env.OPENAI_API_KEY}` }
       }
     );
-
     res.json({ reply: response.data.choices[0].message.content });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-app.listen(3001, () => {
-  console.log("Server listening on port 3001");
-});`
+app.listen(3001, () => console.log("服务器运行在 3001 端口"));
 ```
 
-要测试这个 Node.js 程序，首先使用 npm install express axios dotenv 安装所需的包，并将你的 OpenAI API 密钥保存在 .env 文件中，格式为 `OPENAI_API_KEY=your_key_here`。然后，使用 node server.js 运行服务器。一旦运行起来，你可以通过使用工具如 curl 或 Postman 发送带有 JSON 体（如 `{"message": "Hello"}`）的 POST 请求到 [http://localhost:3001/api/chat](http://localhost:3001/api/chat) 来测试 /api/chat 端点，你应该会收到来自 OpenAI API 的回复。
-
-```JavaScript
-curl -X POST <http://localhost:3001/api/chat> \\
-  -H "Content-Type: application/json" \\
-  -d '{"message":"Hello, who are you?"}'
+你可以使用 `curl` 命令来测试这个接口：
+```bash
+curl -X POST http://localhost:3001/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message":"你好，请问你是谁？"}'
 ```
 
-# 参考资料
+## 6. 开启你的 API 之旅
 
-* https://www.postman.com/what-is-an-api/
+API 是现代数字世界的基石。通过理解“请求与响应”这个简单的逻辑，你已经迈出了通往软件开发广阔世界的第一步。在接下来的 Z.ai 探索中，我们将亲手尝试这些调用，感受 AI API 的魅力。
+
+---
+**参考资料**
+* [Postman: What is an API?](https://www.postman.com/what-is-an-api/)
