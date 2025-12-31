@@ -10,7 +10,7 @@
 
 <div align="center">
 
-[中文](./README.md) | [English](https://github.com/THU-SIGS-AIID/ai-vibe-coding-101/blob/main/README.md)
+[中文](https://github.com/datawhalechina/easy-vibe/blob/main/README.md) | [English](https://github.com/THU-SIGS-AIID/ai-vibe-coding-101/blob/main/README.md)
 
 </div>
 
