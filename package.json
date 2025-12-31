@@ -1,0 +1,13 @@
+{
+  "name": "vibe-coding",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "docsify serve docs -p 3000",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.4.4"
+  }
+}
+
