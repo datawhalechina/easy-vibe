@@ -96,7 +96,8 @@
 | 中   | [扩展知识 6: Zeabur 与 Web 应用部署](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)                         | Web 应用部署、Zeabur 平台使用方法        | ✅   |
 | 中   | [扩展知识 7: CLI AI 编程工具](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | 终端介绍、CLI AI 编程工具、Claude Code/Codex    | ✅   |
 | 中   | 扩展知识 8: MCP 与 ClaudeCode skills                                                                                                                                                              | MCP 协议、ClaudeCode Skills、工具扩展机制                  | 🚧   |
-| 高   | 扩展知识 9: 如何让 Coding Tools 长时间工作                                                                                                                                                        | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化         | 🚧   |
+| 中   | 扩展知识 9: 使用 Trae SOLO 模式深度开发                                                                                                                                                              | PRD 生成、需求驱动开发、前后端集成                  | 🚧   |
+| 高   | 扩展知识 10: 如何让 Coding Tools 长时间工作                                                                                                                                                        | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化         | 🚧   |
 
 ### 实践项目部分
 
