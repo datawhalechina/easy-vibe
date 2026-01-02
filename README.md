@@ -49,21 +49,6 @@
 - 了解并实践 Git、API、RAG、AI IDE、Zeabur 等关键工具与基础设施
 - 掌握产品思维，学会构建符合用户需求的产品
 
-### 路线图
-
-#### 更新
-
-- [ ] 补全未完成的 project extra 文档
-- [ ] 补充关于 IOS 平台 vibecoding 文档
-- [ ] 补充关于更多开发基础知识的 vibe coding 理解方案
-
-#### 修复
-
-- [ ] 根据内测内容反馈补充润色 project 1 与 2 、extra 2 的内容，修复不自然的语言转换部分
-- [ ] 修复 extra 失效部分内容
-- [ ] 将未推送的教程补充推送，同时优化在线阅读体验
-- [ ] 修复英文版仓库不自然的部分
-
 ## 📖 内容导航
 
 ### Project 部分
@@ -109,6 +94,22 @@
 | [Example 1: 如何构建微信小程序](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example1/example1-how-to-build-a-wechat-miniprogram.md) | 了解微信小程序生态与开发链路，结合 Trae + HBuilderX + 微信开发者工具，全流程开发贪吃蛇小程序 | 中 | ✅ |
 | Example 2: 如何构建微信小程序-包含后端 | 使用 vibe coding 从 0 到 1 构建具有后端数据库的微信小程序 | 中 | 🚧 |
 | Example 3: 如何构建安卓程序 | 结合 Expo，使用 vibe coding 从 0 到 1 构建安卓应用并上架 | 高 | 🚧 |
+
+### 路线图
+
+#### 更新
+
+- [ ] 补全未完成的 project extra 文档
+- [ ] 补充关于 IOS 平台 vibecoding 文档
+- [ ] 补充关于更多开发基础知识的 vibe coding 理解方案
+
+#### 修复
+
+- [ ] 根据内测内容反馈补充润色 project 1 与 2 、extra 2 的内容，修复不自然的语言转换部分
+- [ ] 修复 extra 失效部分内容
+- [ ] 将未推送的教程补充推送，同时优化在线阅读体验
+- [ ] 修复英文版仓库不自然的部分
+
 
 ## 如何学习
 
@@ -164,10 +165,11 @@
 ## 关注我们
 
 <div align=center>
-<p>扫描下方二维码关注公众号：Datawhale</p>
-<img src="https://raw.githubusercontent.com/datawhalechina/pumpkin-book/master/res/qrcode.jpeg" width="180" height="180">
 <p>如果有问题提建议吐槽，或者想要一起交流，请扫描下方二维码</p>
 <img src="assets/wechat.png" width="280">
+
+<p>扫描下方二维码关注公众号：Datawhale</p>
+<img src="https://raw.githubusercontent.com/datawhalechina/pumpkin-book/master/res/qrcode.jpeg" width="180" height="180">
 </div>
 
 ## LICENSE
