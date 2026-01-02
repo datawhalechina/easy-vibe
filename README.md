@@ -53,9 +53,14 @@
 
 ### 路线图
 
+#### 更新
+- [ ] 补全未完成的 project extra 文档
+- [ ] 补充关于 IOS 平台 vibecoding 文档
+- [ ] 补充关于更多开发基础知识的 vibe coding 理解方案
+
+#### 修复
 - [ ] 根据内测内容反馈补充润色 project 1 与 2 、extra 2 的内容，修复不自然的语言转换部分
 - [ ] 修复 extra 失效部分内容
-- [ ] 补全未完成的 project extra 文档
 - [ ] 将未推送的教程补充推送，同时优化在线阅读体验
 - [ ] 修复英文版仓库不自然的部分
 
@@ -97,7 +102,8 @@
 | 中   | [扩展知识 7: CLI AI 编程工具](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | 终端介绍、CLI AI 编程工具、Claude Code/Codex    | ✅   |
 | 中   | 扩展知识 8: MCP 与 ClaudeCode skills                                                                                                                                                              | MCP 协议、ClaudeCode Skills、工具扩展机制                  | 🚧   |
 | 中   | 扩展知识 9: 使用 Trae SOLO 模式深度开发                                                                                                                                                              | PRD 生成、需求驱动开发、前后端集成                  | 🚧   |
-| 高   | 扩展知识 10: 如何让 Coding Tools 长时间工作                                                                                                                                                        | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化         | 🚧   |
+| 高   | 扩展知识 10: 如何提高 vibe coding 的品味，避免写长而无用                                                                                                                                                       | 测试驱动开发、中间检查点、约束条件         | 🚧   |
+| 高   | 扩展知识 11: 如何让 Coding Tools 长时间工作                                                                                                                                                        | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化         | 🚧   |
 
 ### 实践项目部分
 
