@@ -4,25 +4,20 @@
   <meta charset="UTF-8" />
   <title>Vibe Coding 101</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@latest/lib/themes/vue.css" />
   <style>
-    /* --- 1. 基础样式 --- */
+    /* --- 样式保持不变 --- */
     .github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
     @keyframes octocat-wave { 0%, 100% { transform: rotate(0); } 20%, 60% { transform: rotate(-25deg); } 40%, 80% { transform: rotate(10deg); } }
     @media (max-width: 500px) { .github-corner:hover .octo-arm { animation: none; } .github-corner .octo-arm { animation: octocat-wave 560ms ease-in-out; } }
 
-    :root {
-      --sidebar-width: 230px;
-      --sidebar-padding: 12px 24px;
-      --theme-color: #42b983;
-    }
-
+    :root { --sidebar-width: 230px; --sidebar-padding: 12px 24px; --theme-color: #42b983; }
     .markdown-section { padding: 24px 40px 40px 24px; }
     .sidebar-nav ul { list-style-type: none; }
     .app-sub-sidebar li { list-style-type: none !important; }
     .app-sub-sidebar li::before { content: none !important; }
 
-    /* --- 2. 暗黑模式样式 --- */
+    /* --- 暗黑模式样式 --- */
     :root {
         --dark-bg: #1a1a1a;
         --dark-sidebar: #141414;
@@ -31,20 +26,15 @@
         --dark-code-text: #f8f8f2;
         --dark-code-bg: #2b2b2b;
     }
-
     body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
     body.dark-mode .sidebar { background-color: var(--dark-sidebar); border-right: 1px solid var(--dark-border); color: var(--dark-text); }
     body.dark-mode .sidebar-nav li a { color: #999; }
     body.dark-mode .sidebar-nav li.active > a { color: var(--theme-color); border-right: 2px solid var(--theme-color); }
-    
-    /* 搜索框适配 */
     body.dark-mode .search { border-bottom: 1px solid var(--dark-border); }
     body.dark-mode .search input { background-color: transparent; color: var(--dark-text); }
     body.dark-mode .results-panel { background-color: var(--dark-bg); color: var(--dark-text); }
     body.dark-mode .matching-post { border-bottom: 1px solid var(--dark-border); }
     body.dark-mode .matching-post h2, body.dark-mode .matching-post p { color: var(--dark-text); }
-
-    /* 正文适配 */
     body.dark-mode pre { background-color: var(--dark-code-bg) !important; }
     body.dark-mode code { background-color: var(--dark-code-bg) !important; color: var(--dark-code-text) !important; }
     body.dark-mode .markdown-section code { color: #f08d49; background-color: rgba(255,255,255,0.1); }
@@ -54,7 +44,6 @@
     body.dark-mode .markdown-section tr:nth-child(2n) { background-color: rgba(255,255,255,0.03); }
     body.dark-mode .markdown-section td, body.dark-mode .markdown-section th { border-color: var(--dark-border); }
 
-    /* 开关按钮 */
     .sidebar-toggle-btn { cursor: pointer; display: block; text-align: center; padding: 10px 0; margin: 0 15px 10px 15px; font-weight: bold; font-size: 14px; border-radius: 4px; background-color: rgba(0,0,0,0.05); color: #505d6b; border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s; }
     body.dark-mode .sidebar-toggle-btn { background-color: rgba(255,255,255,0.1); color: #ccc; border: 1px solid #444; }
     .sidebar-toggle-btn:hover { background-color: var(--theme-color); color: white; }
@@ -75,9 +64,9 @@
       repo: '',
       loadSidebar: true,
       
-      // --- 关键修改 1: 启用相对路径 ---
-      // 这有助于解决在 GitHub Pages 子目录下文件加载失败的问题
-      relativePath: true, 
+      // --- 核心修复：禁用了 relativePath ---
+      // 开启这个通常会导致搜索插件在解析 _sidebar.md 里的路径时出错
+      // relativePath: true, 
 
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
@@ -85,14 +74,14 @@
       subMaxLevel: 2,
       homepage: 'README.md',
       
-      // --- 关键修改 2: 搜索配置 ---
+      // --- 搜索配置 ---
       search: {
-        maxAge: 0,        // 设置为 0，强制每次加载都刷新索引（调试用）
-        paths: 'auto',    // 自动根据 sidebar 解析
+        maxAge: 0,        // 调试期间建议设为 0，防止缓存干扰
+        paths: 'auto',    
         placeholder: '🔍 搜索',
         noData: '😞 找不到结果',
         depth: 6,
-        namespace: 'vibe-coding-new' // 更换一个新的命名空间
+        namespace: 'vibe-coding-search'
       },
 
       pagination: {
@@ -112,15 +101,12 @@
         isExpected: true
       },
       plugins: [
-        // 1. 暗黑模式插件
         function(hook, vm) {
           hook.doneEach(function() {
             const sidebar = document.querySelector('.sidebar-nav');
             if (!sidebar || document.querySelector('.sidebar-toggle-btn')) return;
-
             const btn = document.createElement('div');
             btn.className = 'sidebar-toggle-btn';
-            
             const savedTheme = localStorage.getItem('theme-mode');
             if (savedTheme === 'dark') {
               document.body.classList.add('dark-mode');
@@ -128,7 +114,6 @@
             } else {
               btn.textContent = '☀️ Switch to Dark';
             }
-
             btn.onclick = function() {
               document.body.classList.toggle('dark-mode');
               const isDark = document.body.classList.contains('dark-mode');
@@ -138,7 +123,6 @@
             sidebar.insertBefore(btn, sidebar.firstChild);
           });
         },
-        // 2. 字数统计
         function (hook, vm) {
           hook.doneEach(function () {
             setTimeout(function () {
@@ -159,7 +143,7 @@
     };
   </script>
   
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
