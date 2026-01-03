@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Vibe Coding 101</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <!-- 使用 @latest 版本，与参考项目保持一致 -->
+  <!-- 核心样式：使用 @latest -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@latest/lib/themes/vue.css" />
   <style>
     /* --- 1. 原有样式 (Github Corner & 布局) --- */
@@ -23,21 +23,17 @@
     .app-sub-sidebar li { list-style-type: none !important; }
     .app-sub-sidebar li::before { content: none !important; }
 
-    /* --- 2. 暗黑模式样式 (复用 All-in-RAG 项目配置) --- */
+    /* --- 2. 暗黑模式样式 --- */
     :root {
         --dark-bg: #1a1a1a;
         --dark-sidebar: #141414;
         --dark-border: #333;
-        /* 字体颜色优化：使用更高亮度的灰白色，提高对比度 */
         --dark-text: #e6e6e6; 
         --dark-code-text: #f8f8f2;
         --dark-code-bg: #2b2b2b;
     }
 
-    /* 基础反色 */
     body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
-
-    /* 侧边栏适配 */
     body.dark-mode .sidebar { background-color: var(--dark-sidebar); border-right: 1px solid var(--dark-border); color: var(--dark-text); }
     body.dark-mode .sidebar-nav li a { color: #999; }
     body.dark-mode .sidebar-nav li.active > a { color: var(--theme-color); border-right: 2px solid var(--theme-color); }
@@ -49,17 +45,13 @@
     body.dark-mode .matching-post { border-bottom: 1px solid var(--dark-border); }
     body.dark-mode .matching-post h2, body.dark-mode .matching-post p { color: var(--dark-text); }
 
-    /* 代码块适配 */
+    /* 代码块与正文适配 */
     body.dark-mode pre { background-color: var(--dark-code-bg) !important; }
     body.dark-mode code { background-color: var(--dark-code-bg) !important; color: var(--dark-code-text) !important; }
     body.dark-mode .markdown-section code { color: #f08d49; background-color: rgba(255,255,255,0.1); }
-
-    /* 标题与正文适配 */
     body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 { color: #ffffff; }
     body.dark-mode blockquote { color: #b0b0b0; background: rgba(255,255,255,0.05); border-left-color: var(--theme-color); }
     body.dark-mode strong { color: #fff; }
-
-    /* 表格适配 */
     body.dark-mode .markdown-section tr:nth-child(2n) { background-color: rgba(255,255,255,0.03); }
     body.dark-mode .markdown-section td, body.dark-mode .markdown-section th { border-color: var(--dark-border); }
 
@@ -89,14 +81,16 @@
       subMaxLevel: 2,
       homepage: 'README.md',
       
-      // --- 搜索配置 (参考 All-in-RAG) ---
+      // --- 关键修改：搜索配置 ---
       search: {
-        maxAge: 86400000, // 过期时间一天
-        paths: [],    // 自动读取侧边栏
+        maxAge: 86400000, 
+        // 关键点：设置为 [] 会强制 docsify 解析侧边栏中的所有链接并建立索引
+        // 如果设置为 'auto' 且 _sidebar.md 格式不标准，可能会导致索引为空
+        paths: [],    
         placeholder: '🔍 搜索',
         noData: '😞 找不到结果',
         depth: 6,
-        namespace: 'vibe-coding-101' // 建议加上这个，防止本地多项目缓存冲突
+        namespace: 'vibe-coding-search', // 加上命名空间
       },
 
       pagination: {
@@ -116,7 +110,7 @@
         isExpected: true
       },
       plugins: [
-        // 1. 暗黑模式切换插件 (复用 All-in-RAG 逻辑)
+        // 1. 暗黑模式切换插件
         function(hook, vm) {
           hook.doneEach(function() {
             const sidebar = document.querySelector('.sidebar-nav');
@@ -140,12 +134,12 @@
               btn.textContent = isDark ? '🌙 Switch to Light' : '☀️ Switch to Dark';
             };
 
-            // 插入到侧边栏顶部 (在搜索框下方)
+            // 插入到侧边栏最顶部
             sidebar.insertBefore(btn, sidebar.firstChild);
           });
         },
 
-        // 2. 字数统计位置调整 (原有逻辑)
+        // 2. 移动字数统计位置
         function (hook, vm) {
           hook.doneEach(function () {
             setTimeout(function () {
@@ -166,13 +160,13 @@
     };
   </script>
   
-  <!-- 核心文件，使用 @latest 版本 -->
+  <!-- 核心文件：使用 @latest -->
   <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
   
   <!-- 搜索插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 
-  <!-- 其他插件 -->
+  <!-- 其他插件：统一 @latest -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-bash.min.js"></script>
