@@ -30,7 +30,7 @@
 * **图像/视频的常见用例和基础技能（图像/视频赛道）：** 了解最先进的图像和视频模型的用例和能力边界，并复刻创意视频。
 * 如何识别最先进的 LLM 和图像模型，以及如何使用它们。
 
-# 🤖 AI 编码专家赛道
+# AI Coding 专家赛道
 
 在第一节课中，我们学习了入门级的 Vibecoding 工具。然而，要成为大师，你现在必须承担更大的责任：在给定的时间内，你需要选择下面推荐的任何一个 Vibecoding 工具来复刻提供的示例——甚至超越它。
 
@@ -74,7 +74,7 @@
 
 所以... 选择这门课程意味着你是个聪明人，对吧？:)
 
-# 🫧 LLM 专家赛道
+# LLM 专家赛道
 
 ## 提示词工程 (Prompt Engineering)
 
@@ -669,7 +669,7 @@ Context Engineering for AI Agents: Lessons from Building Manus: https://manus.im
 
 Optimizing LangChain AI Agents with Contextual Engineering: https://levelup.gitconnected.com/optimizing-langchain-ai-agents-with-contextual-engineering-0914d84601f3
 
-# 🌸 图像/视频专家赛道
+# 图像/视频专家赛道
 
 如果说大语言模型专注于理解、推理和分析我们不知道的所有事物；那么图像和视频模型则专注于生成——将你脑海中的所有想法转化为视觉现实。在今年的 AI 生成领域（2025），图像编辑和视频生成非常流行。你一定在抖音或 YouTube 上看过 AI 生成的可爱动物视频、AI 创建的角色照片、AI 生成的肖像拍摄、切玻璃苹果的视频等等。在上完今天的图像和视频课程后，你也完全有能力创建同样的内容！
 
