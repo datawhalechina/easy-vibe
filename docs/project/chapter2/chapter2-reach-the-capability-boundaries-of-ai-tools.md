@@ -678,8 +678,6 @@ Optimizing LangChain AI Agents with Contextual Engineering: https://levelup.gitc
 
 ![](images/image20.png)![](images/image21.png)![](images/image22.png)
 
-**暂时无法在飞书文档外展示此内容**
-
 ## Nano banana
 
 ### 什么是 Nano banana
@@ -690,13 +688,7 @@ Nanobanana (Gemini 2.5 Flash Image) 是 Gemini 应用程序中图像生成功能
 
 该技术使用户能够混合多张照片，执行多轮编辑以逐步更改图像，并将一个对象的风格或纹理应用到另一个对象。
 
-**暂时无法在飞书文档外展示此内容**
-
-**暂时无法在飞书文档外展示此内容**
-
 ![](images/image24.png)![](images/image25.png)
-
-**暂时无法在飞书文档外展示此内容**
 
 ### 如何使用 Nano banana
 
@@ -890,7 +882,7 @@ Seedance 1.0 是字节跳动推出的视频生成模型。它支持两种核心�
 
 总体而言，它生成 1080p 高质量视频，具有流畅的运动、丰富的细节和电影感。它甚至原生支持多镜头连贯叙事视频，很好地符合风格需求和文本指令，并在相关基准测试中表现强劲——帮助创作者将幻想场景、日常纪录片或商业短片等创意变为现实。
 
-**暂时无法在飞书文档外展示此内容**
+<video src="https://lf3-static.bytednsdoc.com/obj/eden-cn/bdeh7uhpsuht/Seedance1.0.mp4" controls="controls" width="100%" style="max-width: 800px; display: block; margin: 20px auto;"></video>
 
 ### 如何使用 Seedance 1.0
 
