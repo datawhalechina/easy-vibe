@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <title>Vibe Coding 101</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@latest/lib/themes/vue.css" />
+  <!-- Theme: Vue -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" onerror="this.onerror=null;this.href='https://unpkg.com/docsify@4/lib/themes/vue.css';" />
+  <!-- Katex CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" onerror="this.onerror=null;this.href='https://unpkg.com/katex@0.16.0/dist/katex.min.css';" />
+  
   <style>
     /* --- 样式保持不变 --- */
     .github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
@@ -61,9 +65,10 @@
     body.dark-mode .markdown-section tr:nth-child(2n) { background-color: rgba(255,255,255,0.03); }
     body.dark-mode .markdown-section td, body.dark-mode .markdown-section th { border-color: var(--dark-border); }
 
-    .sidebar-toggle-btn { cursor: pointer; display: inline-block; padding: 0; margin-left: 6px; font-size: 20px; border: none; background: transparent; transition: transform 0.2s; vertical-align: middle; line-height: 1; }
-    body.dark-mode .sidebar-toggle-btn { background: transparent; border: none; }
-    .sidebar-toggle-btn:hover { background: transparent; transform: rotate(15deg) scale(1.1); color: inherit; }
+    .vibe-toggle-text { cursor: pointer; display: inline-flex; align-items: center; padding: 0; margin-left: 8px; font-size: 14px; border: none; background: transparent; transition: opacity 0.2s; vertical-align: middle; line-height: 1; color: inherit; font-weight: normal; }
+    body.dark-mode .vibe-toggle-text { background: transparent; border: none; }
+    .vibe-toggle-text:hover { opacity: 0.7; }
+    .vibe-toggle-text span { margin-left: 4px; font-size: 13px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }
 
     /* --- 全局图片样式控制 --- */
     .markdown-section img {
@@ -77,7 +82,7 @@
   </style>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">加载中... (如果长时间未加载，请尝试刷新)</div>
   <a href="https://github.com/datawhalechina/vibe-coding" class="github-corner" aria-label="View source on GitHub">
     <svg width="80" height="80" viewBox="0 0 250 250" style="fill: #64ceaa; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -91,8 +96,7 @@
       repo: '',
       loadSidebar: true,
       
-      // --- 核心修复：禁用了 relativePath ---
-      // 开启这个通常会导致搜索插件在解析 _sidebar.md 里的路径时出错
+      // 核心修复：禁用了 relativePath，避免搜索插件路径解析错误
       // relativePath: true, 
 
       alias: {
@@ -103,12 +107,29 @@
       
       // --- 搜索配置 ---
       search: {
-        maxAge: 0,        // 调试期间建议设为 0，防止缓存干扰
-        paths: 'auto',    
+        maxAge: 86400000,
+        paths: [
+          'README.md',
+          'project/chapter0-learning-map/chapter0-learning-map.md',
+          'project/chapter1/chapter1-how-to-build-a-snake-game.md',
+          'project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md',
+          'project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md',
+          'project/chapter4/chapter4-lets-build-hogwarts-portraits.md',
+          'project/chapter5/chapter5-from-database-to-supabase.md',
+          'project/chapter6/chapter6-no-code-without-an-idea.md',
+          'extra/extra1/extra1-what-is-git-and-what-is-github.md',
+          'extra/extra2/extra2-what-is-api.md',
+          'extra/extra3/extra3-ai-capability-starter-handbook.md',
+          'extra/extra4/extra4-what-is-ai-ide-and-trae.md',
+          'extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md',
+          'extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md',
+          'extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md',
+          'examples/example1/example1-how-to-build-a-wechat-miniprogram.md'
+        ],
         placeholder: '🔍 搜索',
         noData: '😞 找不到结果',
-        depth: 6,
-        namespace: 'vibe-coding-search'
+        depth: 3,
+        namespace: 'vibe-coding-search-v5' // 更新命名空间以清理旧缓存
       },
 
       pagination: {
@@ -128,32 +149,40 @@
         isExpected: true
       },
       plugins: [
-        function(hook, vm) {
-          hook.doneEach(function() {
-            const appName = document.querySelector('.app-name');
-            if (!appName || document.querySelector('.sidebar-toggle-btn')) return;
-            const btn = document.createElement('span');
-            btn.className = 'sidebar-toggle-btn';
-            const savedTheme = localStorage.getItem('theme-mode');
-            if (savedTheme === 'dark') {
-              document.body.classList.add('dark-mode');
-              btn.textContent = '🌙';
-            } else {
-              btn.textContent = '☀️';
-            }
-            btn.onclick = function(e) {
-              e.stopPropagation();
-              e.preventDefault();
-              document.body.classList.toggle('dark-mode');
-              const isDark = document.body.classList.contains('dark-mode');
-              localStorage.setItem('theme-mode', isDark ? 'dark' : 'light');
-              btn.textContent = isDark ? '🌙' : '☀️';
-            };
-            appName.appendChild(btn);
-          });
-        },
         function (hook, vm) {
           hook.doneEach(function () {
+            // 暗黑模式切换按钮逻辑
+            var appName = document.querySelector('.app-name');
+            if (appName) {
+              var existing = document.querySelector('.vibe-toggle-text');
+              if (!existing) {
+                existing = document.createElement('span');
+                existing.className = 'vibe-toggle-text';
+                existing.onclick = function (e) {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  document.body.classList.toggle('dark-mode');
+                  var isDark = document.body.classList.contains('dark-mode');
+                  localStorage.setItem('theme-mode', isDark ? 'dark' : 'light');
+                  var html = isDark
+                    ? '🌙 <span style="display:inline; color:inherit;">Dark</span>'
+                    : '☀️ <span style="display:inline; color:inherit;">Light</span>';
+                  if (existing.innerHTML !== html) existing.innerHTML = html;
+                };
+                appName.appendChild(existing);
+              }
+
+              var savedTheme = localStorage.getItem('theme-mode');
+              var isDark = savedTheme === 'dark';
+              if (isDark) document.body.classList.add('dark-mode');
+              else document.body.classList.remove('dark-mode');
+              var html = isDark
+                ? '🌙 <span style="display:inline; color:inherit;">Dark</span>'
+                : '☀️ <span style="display:inline; color:inherit;">Light</span>';
+              if (existing.innerHTML !== html) existing.innerHTML = html;
+            }
+
+            // 字数统计位置调整
             setTimeout(function () {
               var section = document.querySelector('.markdown-section');
               if (!section) return;
@@ -172,18 +201,26 @@
     };
   </script>
   
-  <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-bash.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@latest/components/prism-python.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-pagination@latest/dist/docsify-pagination.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
-  <script src="//cdn.jsdelivr.net/npm/marked@3"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <!-- 核心 Docsify - 优先使用 jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify@4/lib/docsify.min.js';"></script>
+  
+  <!-- 插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify@4/lib/plugins/search.min.js';"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify@4/lib/plugins/zoom-image.min.js';"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js';"></script>
+  
+  <!-- Prism 代码高亮 -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/prismjs@1/components/prism-bash.min.js';"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/prismjs@1/components/prism-python.min.js';"></script>
+  
+  <!-- 分页 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify-pagination@2/dist/docsify-pagination.min.js';"></script>
+  
+  <!-- Katex 公式 - 确保版本匹配 -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/katex@0.16.0/dist/katex.min.js';"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify-katex@latest/dist/docsify-katex.js';"></script>
+  
+  <!-- 字数统计 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify-count/dist/countable.js';"></script>
 </body>
 </html>
