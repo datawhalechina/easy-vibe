@@ -447,7 +447,7 @@ https://console.volcengine.com/finance/fund/recharge
 
 ![](images/image50.png)
 
-返回初始界面并点击 API 访问。
+返回[初始界面](https://www.volcengine.com/experience/ark?launch=seedream)并点击 API 访问。
 
 ![](images/image51.png)
 

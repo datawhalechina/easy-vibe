@@ -77,7 +77,7 @@
 | :--- | :--- | :--- | :--- |
 | [扩展知识 1: 什么是 Git 和 GitHub](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra1/extra1-what-is-git-and-what-is-github.md) | Git 版本控制、GitHub 协作流程、代码仓库管理、SSH 配置 | 初 | ✅ |
 | [扩展知识 2: 什么是 API](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra2/extra2-what-is-api.md) | API 原理与机制、接口请求/响应、第三方服务集成、HTTP 基础 | 初 | ✅ |
-| [扩展知识 3: AI 能力入门手册](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra3/extra3-ai-capability-starter-handbook.md) | AI 能力全景图、主流模型选型 (LLM/图像/语音/视频/时间序列)、AI 工程能力全景图 | 初 | ✅ |
+| [扩展知识 3: AI 词典](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra3/extra3-ai-capability-starter-handbook.md) | AI 能力全景图、主流模型选型 (LLM/图像/语音/视频/时间序列)、AI 工程能力全景图 | 初 | ✅ |
 | [扩展知识 4: 什么是 AI IDE 和 Trae](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra4/extra4-what-is-ai-ide-and-trae.md) | IDE 与 AI IDE 概念、Trae 工具实战入门 | 初 | ✅ |
 | [扩展知识 5: 什么是 RAG 以及它如何工作](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md) | RAG 技术原理、文档切片与索引、RAG 进阶方案、RAG 企业方案 | 中 | ✅ |
 | [扩展知识 6: Zeabur 与 Web 应用部署](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) | Web 应用部署、Zeabur 平台使用方法 | 中 | ✅ |
