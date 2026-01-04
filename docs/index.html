@@ -14,8 +14,25 @@
     :root { --sidebar-width: 230px; --sidebar-padding: 12px 24px; --theme-color: #42b983; }
     .markdown-section { padding: 24px 40px 40px 24px; }
     .sidebar-nav ul { list-style-type: none; }
+    
+    /* 优化侧边栏主菜单间距 */
+    .sidebar-nav li { margin: 0; }
+    .sidebar-nav ul li a { 
+      padding: 3px 0; 
+      line-height: 1.4;
+      font-weight: bold; /* 文件标题加粗 */
+    }
+
     .app-sub-sidebar li { list-style-type: none !important; }
     .app-sub-sidebar li::before { content: none !important; }
+    
+    /* 目录内容（TOC）不加粗，并提高优先级覆盖上面的设置 */
+    .sidebar-nav .app-sub-sidebar li a { 
+      padding: 2px 0; 
+      line-height: 1.3; 
+      display: block;
+      font-weight: normal; 
+    }
 
     /* --- 暗黑模式样式 --- */
     :root {
@@ -44,9 +61,9 @@
     body.dark-mode .markdown-section tr:nth-child(2n) { background-color: rgba(255,255,255,0.03); }
     body.dark-mode .markdown-section td, body.dark-mode .markdown-section th { border-color: var(--dark-border); }
 
-    .sidebar-toggle-btn { cursor: pointer; display: block; text-align: center; padding: 10px 0; margin: 0 15px 10px 15px; font-weight: bold; font-size: 14px; border-radius: 4px; background-color: rgba(0,0,0,0.05); color: #505d6b; border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s; }
-    body.dark-mode .sidebar-toggle-btn { background-color: rgba(255,255,255,0.1); color: #ccc; border: 1px solid #444; }
-    .sidebar-toggle-btn:hover { background-color: var(--theme-color); color: white; }
+    .sidebar-toggle-btn { cursor: pointer; display: inline-block; padding: 0; margin-left: 6px; font-size: 20px; border: none; background: transparent; transition: transform 0.2s; vertical-align: middle; line-height: 1; }
+    body.dark-mode .sidebar-toggle-btn { background: transparent; border: none; }
+    .sidebar-toggle-btn:hover { background: transparent; transform: rotate(15deg) scale(1.1); color: inherit; }
 
     /* --- 全局图片样式控制 --- */
     .markdown-section img {
@@ -113,24 +130,26 @@
       plugins: [
         function(hook, vm) {
           hook.doneEach(function() {
-            const sidebar = document.querySelector('.sidebar-nav');
-            if (!sidebar || document.querySelector('.sidebar-toggle-btn')) return;
-            const btn = document.createElement('div');
+            const appName = document.querySelector('.app-name');
+            if (!appName || document.querySelector('.sidebar-toggle-btn')) return;
+            const btn = document.createElement('span');
             btn.className = 'sidebar-toggle-btn';
             const savedTheme = localStorage.getItem('theme-mode');
             if (savedTheme === 'dark') {
               document.body.classList.add('dark-mode');
-              btn.textContent = '🌙 Switch to Light';
+              btn.textContent = '🌙';
             } else {
-              btn.textContent = '☀️ Switch to Dark';
+              btn.textContent = '☀️';
             }
-            btn.onclick = function() {
+            btn.onclick = function(e) {
+              e.stopPropagation();
+              e.preventDefault();
               document.body.classList.toggle('dark-mode');
               const isDark = document.body.classList.contains('dark-mode');
               localStorage.setItem('theme-mode', isDark ? 'dark' : 'light');
-              btn.textContent = isDark ? '🌙 Switch to Light' : '☀️ Switch to Dark';
+              btn.textContent = isDark ? '🌙' : '☀️';
             };
-            sidebar.insertBefore(btn, sidebar.firstChild);
+            appName.appendChild(btn);
           });
         },
         function (hook, vm) {
