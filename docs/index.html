@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" onerror="this.onerror=null;this.href='https://unpkg.com/docsify@4/lib/themes/vue.css';" />
   <!-- Katex CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" onerror="this.onerror=null;this.href='https://unpkg.com/katex@0.16.0/dist/katex.min.css';" />
+  <!-- Viewer.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viewerjs@1.11.6/dist/viewer.min.css" />
   
   <style>
     /* --- 样式保持不变 --- */
@@ -201,6 +203,40 @@
               }
             }, 0);
           });
+        },
+        function (hook, vm) {
+          hook.doneEach(function () {
+            // Viewer.js 图片预览插件初始化
+            var container = document.querySelector('.markdown-section');
+            if (container) {
+                new Viewer(container, {
+                    filter: function(image) {
+                        // 过滤掉 emoji 和非内容图片
+                        return !image.classList.contains('emoji');
+                    },
+                    // 工具栏配置：显示缩放、旋转、翻转等
+                    toolbar: {
+                        zoomIn: 4,
+                        zoomOut: 4,
+                        oneToOne: 4,
+                        reset: 4,
+                        prev: 0,
+                        play: 0,
+                        next: 0,
+                        rotateLeft: 4,
+                        rotateRight: 4,
+                        flipHorizontal: 4,
+                        flipVertical: 4,
+                    },
+                    title: false, // 不显示标题
+                    navbar: false, // 不显示底部缩略图导航
+                    movable: true, // 允许拖动
+                    zoomable: true, // 允许缩放
+                    rotatable: true, // 允许旋转
+                    scalable: true, // 允许翻转
+                });
+            }
+          });
         }
       ]
     };
@@ -211,7 +247,8 @@
   
   <!-- 插件 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify@4/lib/plugins/search.min.js';"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify@4/lib/plugins/zoom-image.min.js';"></script>
+  <!-- Viewer.js 替代 zoom-image -->
+  <script src="https://cdn.jsdelivr.net/npm/viewerjs@1.11.6/dist/viewer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js';"></script>
   
   <!-- Prism 代码高亮 -->
