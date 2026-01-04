@@ -160,7 +160,7 @@ It’s just a model, which is a big file of numbers. When the numbers are right 
 
 接下来我们从抽象的概念部分来到实际的操作环节。由于时间关系，我们只会学习 Figma 的基本操作逻辑，确保即便你完全没用过设计工具，也能跟着完成练习。如果你想进行完整的 Figma 功能学习，请你参考 Figma 提供的详细官方教程进行学习：https://help.figma.com/hc/en-us/sections/30880632542743-Figma-Design-for-beginners
 
-或者参考如下教程，进行类似个人作品集简单网页的快速搭建：https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collection
+或者参考如下教程，进行类似个人作品集简单网页的快速搭建：https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collectio
 
 ![](images/image17.png)
 
@@ -559,3 +559,5 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
 1. **你的 GitHub 仓库链接；**
    1. **在 README.md 中写入一两句话的小说明：你选择了谁作为画像主角，为什么选 TA。**
 2. **你的 Hogwarts Portraits 线上访问链接；**
+
+你也可以参考 Yerim 写的 [使用设计和代码 Agent 制作网页](http://localhost:3000/#/examples/example0/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) 教程，进行个人作品集或任意功能简单网页的快速搭建。

@@ -149,7 +149,7 @@
 
 - [散步-项目负责人](https://github.com/sanbuphy) (Datawhale成员)
 - 方可-指导老师（Datawhale成员, 清华大学）
-- [Yerim Kang](https://github.com/yerim25)（CodingTool补充教程部分-清华大学）
+- [Yerim Kang](https://github.com/yerim25)（实践项目部分-清华大学）
 - 赵芷霖（实践项目部分-清华大学）
 - [李亦萱](https://yixuan20.github.io/)（页面美术设计-清华大学）
 - AI Vibe Coding 101 内测群完整给建议体验的小伙伴们
