@@ -210,7 +210,7 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 
 本部分内容原本安排在后续课程中详细介绍，但考虑到当前部分学习者可能因网络限制暂时无法访问 Dify 官方网站或云端服务，我们决定提前提供这一可选的学习路径，帮助你顺利推进课程进度。
 
-你需要参考该教程入门 Zeabur 部署平台的基本使用方式：`Extra Knowledge 6 - Zeabur: What Is It and How to Deploy Web Applications`
+你需要参考该教程入门 Zeabur 部署平台的基本使用方式：[Extra Knowledge 6 - Zeabur: What Is It and How to Deploy Web Applications](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)
 
 ![](images/image13.png)
 
@@ -701,7 +701,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 这一次，我们会使用本地的代码编辑工具 [Trae](https://www.trae.cn/) 来完成这个过程。
 
-如果你还不熟悉什么是 IDE，可以先阅读文档 `Extra Knowledge 4 - What is AI IDE and Trae`。
+如果你还不熟悉什么是 IDE，可以先阅读文档 [Extra Knowledge 4 - What is AI IDE and Trae](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra4/extra4-what-is-ai-ide-and-trae.md)。
 
 如果你的本地开发环境还没有完整配置好，也不用担心。只要你信任自己的代码助手（不管是 [z.ai](http://z.ai) 还是 Trae），遇到任何不懂的地方或报错，都可以直接把问题抛给它，它会根据你的描述给出详细的解决方案。
 

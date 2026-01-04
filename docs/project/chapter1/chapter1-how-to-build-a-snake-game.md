@@ -218,7 +218,7 @@
 
 ## 3.1 什么是 API
 
-首先，**你需要知道什么是 API** `Extra Knowledge 2 - What is API`
+首先，**你需要知道什么是 API** [Extra Knowledge 2 - What is API](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra2/extra2-what-is-api.md)
 
 我们将尝试集成两个 API：一个是调用 DeepSeek LLM，另一个是调用 Seedream (即梦) 模型。这两个模型都很棒，性能出色。
 
