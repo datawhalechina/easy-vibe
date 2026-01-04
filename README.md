@@ -66,7 +66,7 @@
 | [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md) | 前端原型设计、前端原型转代码、AI IDE 入门、Dify API 集成、网页部署 | 中 | ✅ |
 | [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md) | 数据库与 JSON 入门、Supabase 后端服务、用户鉴权系统、边缘函数、鉴权、存储桶 | 中 | ✅ |
 | [Project 6: 别急着写代码，先想一个好点子](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter6/chapter6-no-code-without-an-idea.md) | 产品思维、学会抽象思路变具体、如何制作好应用、用户需求与增长 | 中 | ✅ |
-| **第三阶段：现代全栈应用实战** | | | |
+| **第三阶段：现代全栈网页应用实战** | | | |
 | Project 7: 构建第一个现代应用程序-UI设计 | 现代前端组件库、前端编辑工具进阶、UI 设计规范 | 高 | 🚧 |
 | Project 8: 构建第一个现代应用程序-功能设计 | 市场调研、产品 PRD 构建、原型设计深度解析、多页面架构设计 | 高 | 🚧 |
 | Project 9: 构建第一个现代应用程序-全栈应用 | 全栈应用构建方案、独立后端鉴权、设计到上线开发闭环 | 高 | 🚧 |
@@ -84,16 +84,19 @@
 | [扩展知识 7: CLI AI 编程工具](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | 终端介绍、CLI AI 编程工具、Claude Code/Codex | 中 | ✅ |
 | 扩展知识 8: MCP 与 ClaudeCode skills | MCP 协议、ClaudeCode Skills、工具扩展机制 | 中 | 🚧 |
 | 扩展知识 9: 使用 Trae SOLO 模式深度开发 | PRD 生成、需求驱动开发、前后端集成 | 中 | 🚧 |
-| 扩展知识 10: 如何提高 vibe coding 的品味，避免写长而无用 | 测试驱动开发、中间检查点、约束条件 | 高 | 🚧 |
+| 扩展知识 10: 尝试提高 vibe coding 的品味 | 测试驱动开发、设立中间检查点、约束条件 | 高 | 🚧 |
 | 扩展知识 11: 如何让 Coding Tools 长时间工作 | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化 | 高 | 🚧 |
 
 ### 实践项目部分
 
 | 章节 | 关键内容 | 难度 | 状态 |
 | :--- | :--- | :--- | :--- |
+| [Example 0-1: 使用 Vibe Coding 工具完成贪吃蛇教程](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example0/vibe-coding-tools-snake-game-tutorial/README.md) | 基于 Vibe Coding 工具复现与扩展贪吃蛇游戏的补充文章与实践记录 | 中 | 🚧 |
+| [Example 0-2: 使用 Vibe Coding 工具与设计智能体搭建网站](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example0/vibe-coding-tools-build-website-with-ai-coding-and-design-agents/README.md) | 结合 Vibe Coding 工具与设计智能体从 0 到 1 搭建网站的补充文章与实践记录 | 中 | 🚧 |
 | [Example 1: 如何构建微信小程序](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example1/example1-how-to-build-a-wechat-miniprogram.md) | 了解微信小程序生态与开发链路，结合 Trae + HBuilderX + 微信开发者工具，全流程开发贪吃蛇小程序 | 中 | ✅ |
 | Example 2: 如何构建微信小程序-包含后端 | 使用 vibe coding 从 0 到 1 构建具有后端数据库的微信小程序 | 中 | 🚧 |
 | Example 3: 如何构建安卓程序 | 结合 Expo，使用 vibe coding 从 0 到 1 构建安卓应用并上架 | 高 | 🚧 |
+
 
 ### 路线图
 

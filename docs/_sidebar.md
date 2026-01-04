@@ -19,4 +19,6 @@
   * [扩展知识 7: 命令行 AI 编程工具介绍](extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md)
 
 * Examples
-  * [完整实战项目 1: 如何写一个微信小程序](examples/example1/example1-how-to-build-a-wechat-miniprogram.md)
+*  * [完整实战 0-1: Vibe Coding 入门与贪吃蛇游戏实战](examples/example0/example0-1/vibe-coding-tools-snake-game-tutorial.md)
+*  * [完整实战 0-2: 使用 AI 设计与编码 Agent 搭建网站](examples/example0/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md)
+*  * [完整实战项目 1: 如何写一个微信小程序](examples/example1/example1-how-to-build-a-wechat-miniprogram.md)
