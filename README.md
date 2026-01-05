@@ -192,3 +192,7 @@
   知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
 </a>
 进行许可。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=date&legend=top-left)](https://www.star-history.com/#datawhalechina/easy-vibe&type=date&legend=top-left)
