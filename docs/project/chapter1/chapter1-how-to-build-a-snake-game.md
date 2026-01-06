@@ -395,9 +395,9 @@ https://www.recraft.ai/docs/api-reference/getting-started
 
 https://www.recraft.ai/docs/api-reference/usage
 
-https://www.recraft.ai/docs/api-reference/guides
+https://www.recraft.ai/docs/api-reference/examples#create-own-style-by-uploading-reference-images-and-use-them-for-generation
 
-在这里，我们可以直接复制整个内容并粘贴到 z.ai。
+在这里，我们可以 ctrl+ A 选中全屏，直接复制整个内容并粘贴到 z.ai。
 
 ![](images/image41.png)
 
