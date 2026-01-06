@@ -722,9 +722,9 @@ RLS 正是为解决这类数据安全与隔离需求而生。它允许开发者�
 
 ## 3.1 Clone and Run Supabase Demos
 
-要开展实操，首先需要获取配套的演示代码仓库。你可以让 Trae 或 ClaudeCode 协助 git clone 以下仓库：https://github.com/THU-SIGS-AIID/Project5-Supabase-Demo
+要开展实操，首先需要获取配套的演示代码仓库。你可以让 Trae 或 ClaudeCode 协助 git clone 以下仓库：https://github.com/THU-SIGS-AIID/Project5-Supabase-Demos
 
-若已配置 SSH 密钥，建议使用 SSH 地址进行 clone（git@github.com:THU-SIGS-AIID/Project5-Supabase-Demo.git）以提升安全性；若 SSH 或 HTTPS 连接遇到网络问题，可以直接点击仓库页面的 “Download ZIP”，获取压缩包后解压即可看到完整代码。
+若已配置 SSH 密钥，建议使用 SSH 地址进行 clone（git@github.com:THU-SIGS-AIID/Project5-Supabase-Demos.git）以提升安全性；若 SSH 或 HTTPS 连接遇到网络问题，可以直接点击仓库页面的 “Download ZIP”，获取压缩包后解压即可看到完整代码。
 
 ![](images/image36.png)
 
