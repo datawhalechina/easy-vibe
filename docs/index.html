@@ -113,30 +113,11 @@
       // --- 搜索配置 ---
       search: {
         maxAge: 86400000,
-        paths: [
-          'README.md',
-          'project/chapter0-learning-map/chapter0-learning-map.md',
-          'project/chapter1/chapter1-how-to-build-a-snake-game.md',
-          'project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md',
-          'project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md',
-          'project/chapter4/chapter4-lets-build-hogwarts-portraits.md',
-          'project/chapter5/chapter5-from-database-to-supabase.md',
-          'project/chapter6/chapter6-no-code-without-an-idea.md',
-          'extra/extra1/extra1-what-is-git-and-what-is-github.md',
-          'extra/extra2/extra2-what-is-api.md',
-          'extra/extra3/extra3-ai-capability-starter-handbook.md',
-          'extra/extra4/extra4-what-is-ai-ide-and-trae.md',
-          'extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md',
-          'extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md',
-          'extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md',
-          'examples/example0/example0-1/vibe-coding-tools-snake-game-tutorial.md',
-          'examples/example0/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md',
-          'examples/example1/example1-how-to-build-a-wechat-miniprogram.md'
-        ],
+        paths: 'auto', // 自动索引所有文档
         placeholder: '🔍 搜索',
         noData: '😞 找不到结果',
         depth: 3,
-        namespace: 'vibe-coding-search-v5' // 更新命名空间以清理旧缓存
+        namespace: 'vibe-coding-search-v6' // 更新命名空间以清理旧缓存
       },
 
       pagination: {
