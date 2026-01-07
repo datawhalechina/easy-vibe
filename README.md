@@ -51,17 +51,14 @@
 
 本教程整体分为三个循序渐进的学习阶段：从第零阶段的入门小游戏，到第一阶段的产品策划与原型设计，再到第二、第三阶段的全栈开发与多平台高级应用，配合前言与附录，帮助你系统掌握以 vibe coding 为核心的开发方式，把想法落地为真正可用的应用与产品。
 
-### 前言：学习地图
-
-- [前言：学习地图](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter0-learning-map/chapter0-learning-map.md)
-
 ### 第零阶段：幼儿园
 
 #### 第零阶段主线任务
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 模块一：AI 能帮你做到什么程度 | 通过完整贪吃蛇案例体验 AI 编程能力与边界 | 🚧 |
+| 前言：学习地图 | 整体学习路径与三大阶段的鸟瞰式导览 | ✅ |
+| 模块一：AI 能帮你做到什么程度 | 通过完整贪吃蛇案例体验 AI 编程能力与边界 | ✅ |
 
 ### 第一阶段：AI 产品经理
 
@@ -69,44 +66,51 @@
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 模块二：认识 AI IDE 这个工具 | 认识 AI IDE，掌握界面结构和高效提示方式 | 🚧 |
-| 模块三：动手做出原型 | 从需求拆解到多页面原型与数据存储的完整闭环 | 🚧 |
-| 模块四：完整项目实战 | 用模拟数据和用户反馈迭代并完成项目展示 | 🚧 |
-| 大作业：做一个完整的 Web 应用原型并展示 | 独立用 AI IDE 落地并演示一个可用 Web 应用 | 🚧 |
+| 模块二：认识 AI IDE 这个工具 | 认识 AI IDE，掌握界面结构和高效提示方式 | ✅ |
+| 模块三：动手做出原型 | 从需求拆解到多页面原型与数据存储的完整闭环 | ✅ |
+| 模块四：完整项目实战 | 用模拟数据和用户反馈迭代并完成项目展示 | ✅ |
+| 大作业：做一个完整的 Web 应用原型并展示 | 独立用 AI IDE 落地并演示一个可用 Web 应用 | ✅ |
 
 #### 第一阶段 附录
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 附录A：常见报错及解决方案 | 汇总前端页面、数据、交互与 API 常见错误及排查方法 | 🚧 |
-| 附录B：AI 能力接入须知 | 文生图、视频等 AI 能力的 API 接入与成本控制要点 | 🚧 |
-| 附录C：产品思维补充 | 从想法评估到 MVP 与优先级的产品思维框架 | 🚧 |
+| 附录A：常见报错及解决方案 | 汇总前端页面、数据、交互与 API 常见错误及排查方法 | ✅ |
+| 附录B：AI 能力接入须知 | 文生图、视频等 AI 能力的 API 接入与成本控制要点 | ✅ |
+| 附录C：产品思维补充 | 从想法评估到 MVP 与优先级的产品思维框架 | ✅ |
 
 ### 第二阶段：初中级开发工程师
 
 #### 第二阶段主线任务
 
+##### 前端部分
+
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 后端部分：什么是 API | 接口、协议与调用方式入门（参见扩展知识 2） | 🚧 |
-| 现代 CLI 开发工具 | 使用 CLI AI 编程工具进行开发（参见扩展知识 7） | 🚧 |
-| Git 工作流与 Zeabur 部署 | Git 工作流实践与 Zeabur Web 应用部署（参见扩展知识 1、6） | 🚧 |
-| [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md) | 数据库与 JSON 入门、Supabase 后端服务、用户鉴权系统、边缘函数 | 🚧 |
-| 大模型辅助编写接口代码与接口文档 | 使用大模型生成与完善接口代码、接口文档、数据库文档并测试 | 🚧 |
-| 如何集成 stripe 等收费系统 | 集成收费系统，完成基础支付与结算链路 | 🚧 |
-| Project 9: 构建第一个现代应用程序-全栈应用 | 全栈应用构建方案、独立后端鉴权、设计到上线开发闭环 | 🚧 |
-| 前端部分：Figma 与 MasterGo 入门 | 学习使用 Figma/MasterGo 完成原型与界面设计 | 🚧 |
-| Project 7: 构建第一个现代应用程序-UI设计 | 现代前端组件库、前端编辑工具进阶、UI 设计规范 | 🚧 |
-| 参考 UI 设计规范与多产品 UI 设计 | 基于统一主视觉设计多个产品界面 | 🚧 |
-| [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md) | 前端原型设计、前端原型转代码、AI IDE 入门、Dify API 集成、网页部署 | 🚧 |
-| 大作业 2：现代前端组件库 + Trae 实战 | 使用现代前端组件库 + Trae 开发可登录注册并集成收费系统的程序 | 🚧 |
+| 前端部分：Figma 与 MasterGo 入门 | 用设计工具梳理信息架构和页面结构，为前端实现打基础 | 🚧 |
+| Project 7: 构建第一个现代应用程序-UI 设计 | 基于设计稿完成组件化界面，实现从设计到代码的第一条链路 | 🚧 |
+| 参考 UI 设计规范与多产品 UI 设计 | 围绕统一主视觉扩展多产品界面，练习系统化设计能力 | 🚧 |
+| [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md) | 从 0 到 1 做出接入 AI 能力的前端应用，串联设计与开发 | 🚧 |
+
+##### 后端与全栈部分
+
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| 后端部分：什么是 API | 理解 HTTP 接口与请求响应模型，为后端集成与联调做准备 | 🚧 |
+| [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md) | 在 Supabase 上落地数据库和 API，打通数据模型与前端页面 | 🚧 |
+| 大模型辅助编写接口代码与接口文档 | 用大模型协助生成接口与数据库文档及代码，实现可读可测的后端 | 🚧 |
+| Git 工作流与 Zeabur 部署 | 在 Git 工作流中管理代码，并将应用部署到 Zeabur 上线 | 🚧 |
+| 现代 CLI 开发工具 | 使用 CLI 类 AI 编程工具加速开发与调试，形成个人工程化工作流 | 🚧 |
+| 如何集成 stripe 等收费系统 | 接入支付系统，完成收费链路与基础结算流程 | 🚧 |
+| Project 9: 构建第一个现代应用程序-全栈应用 | 综合前端、后端与支付模块，完成可上线的全栈 Web 应用 | 🚧 |
+| 大作业 2：现代前端组件库 + Trae 实战 | 使用现代前端组件库与 Trae，独立完成可登录注册并支持收费的产品 | 🚧 |
 
 #### 第二阶段 AI 能力补充
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| [Project 3: Dify 入门与知识库集成](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与简单 RAG 搭建工具类产品（简历分析器） | 🚧 |
-| 学会查询 AI 词典与集成多模态 API | 查询 AI 词典，查找对应 API 并集成到产品（不同模态） | 🚧 |
+| [Project 3: Dify 入门与知识库集成](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 | 🚧 |
+| 学会查询 AI 词典与集成多模态 API | 学会查找合适的模型与 API，并把文本、图像等多模态能力接入产品 | 🚧 |
 
 ### 第三阶段：高级开发工程师
 
@@ -114,20 +118,20 @@
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 扩展知识 8: MCP 与 ClaudeCode skills | MCP 协议、ClaudeCode Skills、工具扩展机制 | 🚧 |
-| 多平台应用 vibe coding 开发实例 | 针对多平台的 vibe coding 开发实践与案例 | 🚧 |
-| 扩展知识 9: 如何让 Coding Tools 长时间工作 | 自动化开发配置、长时间任务管理、工具稳定性优化 | 🚧 |
-| Example 1: 如何构建微信小程序 | 了解微信小程序生态，结合 Trae 等工具完成开发 | 🚧 |
-| Example 2: 如何构建微信小程序-包含后端 | 使用 vibe coding 构建带后端数据库的小程序 | 🚧 |
-| Example 3: 如何构建安卓程序 | 使用 Expo 等工具，从 0 到 1 构建安卓应用 | 🚧 |
-| 大作业：多平台复杂应用实践 | 结合前后端与多平台能力，完成复杂应用 | 🚧 |
+| 扩展知识 8: MCP 与 ClaudeCode Skills | 通过 MCP 与 Skills 扩展 IDE 能力，把外部服务接成工具 | 🚧 |
+| 扩展知识 9: 如何让 Coding Tools 长时间工作 | 设计和配置长时间运行的任务，让 Coding Tools 更稳定可靠 | 🚧 |
+| 多平台应用 vibe coding 开发实例 | 以多平台场景为例，练习 vibe coding 的跨平台复用思路 | 🚧 |
+| Example 1: 如何构建微信小程序 | 了解微信小程序生态，从官方模板到上线完成一个前端小程序 | 🚧 |
+| Example 2: 如何构建微信小程序-包含后端 | 在小程序中接入数据库与后端逻辑，打通完整业务闭环 | 🚧 |
+| Example 3: 如何构建安卓程序 | 使用 Expo 等工具，完成 Web/原生一体化的安卓应用开发 | 🚧 |
+| 大作业：多平台复杂应用实践 | 综合 RAG、多平台与工程化能力，独立完成一个复杂应用 | 🚧 |
 
 #### 第三阶段 AI 能力补充
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 扩展知识 5: 什么是 RAG 以及它如何工作 | RAG 原理与实践，为复杂应用提供知识检索能力 | 🚧 |
-| 中高级 RAG 与工作流编排：以 LangGraph 为例 | 使用 LangGraph 等工具搭建中高级 RAG 与工作流 | 🚧 |
+| 扩展知识 5: 什么是 RAG 以及它如何工作 | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 | 🚧 |
+| 中高级 RAG 与工作流编排：以 LangGraph 为例 | 使用 LangGraph 等工具设计多步工作流与中高级 RAG 系统 | 🚧 |
 
 ### 附录：AI 能力与工具索引
 
