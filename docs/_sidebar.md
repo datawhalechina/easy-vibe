@@ -4,10 +4,10 @@
 
 * Stage 0：幼儿园
   * [0.1 学习地图](stage-0/0.1-learning-map/index.md)
-  * [0.2 先看看 AI 能做什么：贪吃蛇游戏](stage-0/0.2-ai-capabilities-through-games/index.md)
+  * [0.2 AI 时代，会说话就会编程：贪吃蛇游戏](stage-0/0.2-ai-capabilities-through-games/index.md)
 
 * Stage 1：AI 产品经理
-  * [1.1 认识 AI IDE 这个工具](stage-1/1.1-introduction-to-ai-ide/index.md)
+  * [1.1 认识 AI IDE 工具](stage-1/1.1-introduction-to-ai-ide/index.md)
   * [1.2 动手做出原型](stage-1/1.2-building-prototype/index.md)
   * [1.3 给原型加上 AI 能力](stage-1/1.3-integrating-ai-capabilities/index.md)
   * [1.4 完整项目实战](stage-1/1.4-complete-project-practice/index.md)
