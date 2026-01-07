@@ -22,98 +22,114 @@
 
 ## 项目介绍
 
-2025 年，被很多人视为 AI 编程的元年。越来越多的人已经开始用 AI 写代码，但做出来的东西往往还停留在玩具层面。且一到真正动手，大家常常会被各种门槛劝退：
+2025 年，被很多人视为 AI 编程的元年。越来越多的人已经开始用 AI 写代码，但如果没有一套清晰的 Vibe Coding 工作方式，做出来的东西往往还停留在玩具层面，一到真正动手做产品就会被各种门槛劝退：
 
-- 不知道用什么 AI 编程工具写代码比较好；
-- 不知道怎么把大模型的能力应用到具体产品上；
-- 不清楚 AI 写出的代码，距离真实能上线运行还差多远。
+- 不知道如何用 Vibe Coding 的工作方式组织自己的开发流程；
+- 不知道该选哪些 AI 编程工具、如何和现有技术栈配合；
+- 不清楚从会用 AI 工具到真正用好 AI 能力，再到把应用上线，中间还差哪些关键步骤。
 
-通过这个项目，我们希望帮你掌握和 AI 搭档写代码的最佳实践。你将学会借助 AI 的力量，在一个又一个的项目制学习挑战中，独立完成游戏、实用工具、产品原型的实现，最后制作一款属于自己的产品。
+通过这个项目，我们希望你先把 Vibe Coding 的工作方式练熟，再搞清楚常见 AI 能力能做什么、怎么接入到产品里。你会在一个又一个项目制学习挑战中，逐步完成游戏、实用工具、产品原型，最后独立构建一款由 AI 能力驱动的真实应用。
 
-我们相信，你一个人就可以成为前后端开发、AI 算法开发、产品经理。
+我们相信，只要掌握好 Vibe Coding 的方式，你一个人就可以成为前后端开发、AI 算法开发、产品经理。
 
 ### 项目受众
 
-本项目采用项目制教学，对零基础学习者友好；在循序渐进的项目实践中，系统覆盖 AI 的常见能力与典型应用场景，内容由入门扩展到高级应用，适合希望系统学习 vibe coding 开发及 AI 能力应用场景的学习者，包括但不限于：
+本项目采用项目制教学，对零基础学习者友好；在循序渐进的项目实践中，系统覆盖 AI 的常见能力与典型应用场景，内容由入门扩展到高级应用，主要面向三类学习者：
 
-- 非技术背景角色（如产品经理），希望掌握基础 vibe coding，能完成简单 AI 小工具。
-- 具备基础编程能力的初中级开发者，想系统学习 vibe coding 并开发原生 AI 应用。
-- 计算机、AI 及相关专业学生，想通过项目实践理解 vibe coding 与原生 AI 开发。
-- 开源爱好者和独立开发者，希望提高开发效率，创作更多作品。
-- 企业技术团队和 AI 初创公司，希望快速搭建和验证原生 AI 应用原型。
+- 新手（普通人 / 产品与运营侧）：帮助非技术背景角色和入门学习者听懂关键概念，完成第一个 AI 小工具或产品原型。
+- 初中级开发者：面向有一定编程基础的学生和开发者，系统掌握 vibe coding 与原生 AI 应用开发。
+- 高级开发者（公司与初创、开源与独立开发者）：支持团队和个人快速搭建、验证与迭代原生 AI 应用。
 
 ### 你将收获什么？
 
-- 理解什么是 vibe coding 以及它的一般做法，掌握实现原生 AI 应用的基本路径
-- 通过多个完整项目，熟悉游戏、工具类、产品原型等不同形态的 AI 应用开发
-- 了解并实践 Git、API、RAG、AI IDE、Zeabur 等关键工具与基础设施
-- 掌握产品思维，学会构建符合用户需求的产品
+- **一套全新的工作方式**：理解什么是 vibe coding，学会用它来组织从需求到上线的完整开发流程。
+- **扎实的 AI 与工程能力**：不仅搞懂主流大模型和常见 AI 能力怎么用，还能掌握 Git、API、RAG、部署等将 AI 落地到产品所需的关键基础设施。
+- **独立完成原生 AI 应用的底气**：通过从小游戏到工具、再到产品原型的实战，真正独立做出一款由 AI 能力驱动的完整应用。
+- **真实的产品思维**：学会像产品经理一样思考，围绕真实需求去设计功能、打磨体验，而不仅仅是写代码。
 
 ## 📖 内容导航
 
-### Project 部分
+本教程整体分为三个循序渐进的学习阶段：从第零阶段的入门小游戏，到第一阶段的产品策划与原型设计，再到第二、第三阶段的全栈开发与多平台高级应用，配合前言与附录，帮助你系统掌握以 vibe coding 为核心的开发方式，把想法落地为真正可用的应用与产品。
 
-本教程将 Project 分为三个阶段，帮助你从零开始掌握 Vibe Coding：
+### 前言：学习地图
 
-| 章节 | 关键内容 | 难度 | 状态 |
-| :--- | :--- | :--- | :--- |
-| **第一阶段：本地基础开发** | | | |
-| [前言：课程学习地图](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter0-learning-map/chapter0-learning-map.md) | 课程学习地图、学习目标、常见问题解答 | 初 | ✅ |
-| [Project 1: 如何构建贪吃蛇游戏](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter1/chapter1-how-to-build-a-snake-game.md) | 网页端 AI 编程入门、实现贪吃蛇、文字和生图 API 调用、制作小游戏 | 初 | ✅ |
-| [Project 2: 探索 AI 工具的能力边界](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md) | 提示词工程练习、AI 编程入门进阶、图片视频生成 API 进阶、理解 AI 能力边界 | 初 | ✅ |
-| [Project 3: Dify 入门与知识库集成](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | Dify 平台实战、RAG 检索增强生成、Workflow 编排、Dify API 调用 | 初 | ✅ |
-| **第二阶段：数据库与全栈部署** | | | |
-| [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md) | 前端原型设计、前端原型转代码、AI IDE 入门、Dify API 集成、网页部署 | 中 | ✅ |
-| [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md) | 数据库与 JSON 入门、Supabase 后端服务、用户鉴权系统、边缘函数、鉴权、存储桶 | 中 | ✅ |
-| [Project 6: 别急着写代码，先想一个好点子](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter6/chapter6-no-code-without-an-idea.md) | 产品思维、学会抽象思路变具体、如何制作好应用、用户需求与增长 | 中 | ✅ |
-| **第三阶段：现代全栈网页应用实战** | | | |
-| Project 7: 构建第一个现代应用程序-UI设计 | 现代前端组件库、前端编辑工具进阶、UI 设计规范 | 高 | 🚧 |
-| Project 8: 构建第一个现代应用程序-功能设计 | 市场调研、产品 PRD 构建、原型设计深度解析、多页面架构设计 | 高 | 🚧 |
-| Project 9: 构建第一个现代应用程序-全栈应用 | 全栈应用构建方案、独立后端鉴权、设计到上线开发闭环 | 高 | 🚧 |
+- [前言：学习地图](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter0-learning-map/chapter0-learning-map.md)
 
-### 扩展知识部分
+### 第零阶段：AI 小白
 
-| 章节 | 关键内容 | 难度 | 状态 |
-| :--- | :--- | :--- | :--- |
-| [扩展知识 1: 什么是 Git 和 GitHub](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra1/extra1-what-is-git-and-what-is-github.md) | Git 版本控制、GitHub 协作流程、代码仓库管理、SSH 配置 | 初 | ✅ |
-| [扩展知识 2: 什么是 API](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra2/extra2-what-is-api.md) | API 原理与机制、接口请求/响应、第三方服务集成、HTTP 基础 | 初 | ✅ |
-| [扩展知识 3: AI 词典](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra3/extra3-ai-capability-starter-handbook.md) | AI 能力全景图、主流模型选型 (LLM/图像/语音/视频/时间序列)、AI 工程能力全景图 | 初 | ✅ |
-| [扩展知识 4: 什么是 AI IDE 和 Trae](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra4/extra4-what-is-ai-ide-and-trae.md) | IDE 与 AI IDE 概念、Trae 工具实战入门 | 初 | ✅ |
-| [扩展知识 5: 什么是 RAG 以及它如何工作](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future.md) | RAG 技术原理、文档切片与索引、RAG 进阶方案、RAG 企业方案 | 中 | ✅ |
-| [扩展知识 6: Zeabur 与 Web 应用部署](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) | Web 应用部署、Zeabur 平台使用方法 | 中 | ✅ |
-| [扩展知识 7: CLI AI 编程工具](https://github.com/datawhalechina/easy-vibe/blob/main/docs/extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | 终端介绍、CLI AI 编程工具、Claude Code/Codex | 中 | ✅ |
-| 扩展知识 8: MCP 与 ClaudeCode skills | MCP 协议、ClaudeCode Skills、工具扩展机制 | 中 | 🚧 |
-| 扩展知识 9: 使用 Trae SOLO 模式深度开发 | PRD 生成、需求驱动开发、前后端集成 | 中 | 🚧 |
-| 扩展知识 10: 尝试提高 vibe coding 的品味 | 测试驱动开发、设立中间检查点、约束条件 | 高 | 🚧 |
-| 扩展知识 11: 如何让 Coding Tools 长时间工作 | 自动化开发配置、长时间任务管理、CLI 工具稳定性优化 | 高 | 🚧 |
+- [Project 1: 如何构建贪吃蛇游戏](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter1/chapter1-how-to-build-a-snake-game.md)
+- 用 z.ai 一键生成「贪吃蛇」小游戏
+- 给贪吃蛇接入简单 AI 能力
+- 小结：从零基础到我的第一个 AI 小游戏
 
-### 实践项目部分
+### 第一阶段：AI 产品策划与原型设计
 
-| 章节 | 关键内容 | 难度 | 状态 |
-| :--- | :--- | :--- | :--- |
-| [Example 0-1: 使用 Vibe Coding 工具完成贪吃蛇教程](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example0/vibe-coding-tools-snake-game-tutorial/README.md) | 基于 Vibe Coding 工具复现与扩展贪吃蛇游戏的补充文章与实践记录 | 中 | 🚧 |
-| [Example 0-2: 使用 Vibe Coding 工具与设计智能体搭建网站](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example0/vibe-coding-tools-build-website-with-ai-coding-and-design-agents/README.md) | 结合 Vibe Coding 工具与设计智能体从 0 到 1 搭建网站的补充文章与实践记录 | 中 | 🚧 |
-| [Example 1: 如何构建微信小程序](https://github.com/datawhalechina/easy-vibe/blob/main/docs/examples/example1/example1-how-to-build-a-wechat-miniprogram.md) | 了解微信小程序生态与开发链路，结合 Trae + HBuilderX + 微信开发者工具，全流程开发贪吃蛇小程序 | 中 | ✅ |
-| Example 2: 如何构建微信小程序-包含后端 | 使用 vibe coding 从 0 到 1 构建具有后端数据库的微信小程序 | 中 | 🚧 |
-| Example 3: 如何构建安卓程序 | 结合 Expo，使用 vibe coding 从 0 到 1 构建安卓应用并上架 | 高 | 🚧 |
+#### 第一阶段主线任务
 
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| [Project 6: 别急着写代码，先想一个好点子](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter6/chapter6-no-code-without-an-idea.md) | 业务场景：如何找到一个「好点子」，学会从需求出发思考产品 | ✅ |
+| 明确需求：产品在解决什么问题，业务流程与业务架构梳理 | 梳理用户需求、业务流程、业务架构，形成清晰问题与方案 | 🚧 |
+| 大作业：用 Trae 把好点子变成可跑的 Demo | 使用 Trae 将点子变成可运行 Demo（参见扩展知识 4） | 🚧 |
+| 数据设计：假数据的原型实践 | 使用假数据进行产品原型的数据设计与验证 | 🚧 |
+| Project 8: 构建第一个现代应用程序-功能设计 | Advanced：如何生成多个页面的产品原型，完成功能与信息架构 | 🚧 |
 
-### 路线图
+#### 第一阶段 AI 能力补充
 
-- [ ] 1 月 11 日前实现大纲更新，更符合逻辑和学习习惯。
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| [Project 2: 探索 AI 工具的能力边界](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md) | 需要掌握的基础 AI 能力（图像、视频、文本），理解工具边界 | ✅ |
 
-#### 更新
+### 第二阶段：全栈网页应用开发实战
 
-- [ ] 补全未完成的 project extra 文档
-- [ ] 补充关于 IOS 平台 vibecoding 文档
-- [ ] 补充关于更多开发基础知识的 vibe coding 理解方案
+#### 第二阶段主线任务
 
-#### 修复
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| 后端部分：什么是 API | 接口、协议与调用方式入门（参见扩展知识 2） | ✅ |
+| 现代 CLI 开发工具 | 使用 CLI AI 编程工具进行开发（参见扩展知识 7） | ✅ |
+| Git 工作流与 Zeabur 部署 | Git 工作流实践与 Zeabur Web 应用部署（参见扩展知识 1、6） | ✅ |
+| [Project 5: 从数据库到 Supabase](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter5/chapter5-from-database-to-supabase.md) | 数据库与 JSON 入门、Supabase 后端服务、用户鉴权系统、边缘函数 | ✅ |
+| 大模型辅助编写接口代码与接口文档 | 使用大模型生成与完善接口代码、接口文档、数据库文档并测试 | 🚧 |
+| 如何集成 stripe 等收费系统 | 集成收费系统，完成基础支付与结算链路 | 🚧 |
+| Project 9: 构建第一个现代应用程序-全栈应用 | 全栈应用构建方案、独立后端鉴权、设计到上线开发闭环 | 🚧 |
+| 前端部分：Figma 与 MasterGo 入门 | 学习使用 Figma/MasterGo 完成原型与界面设计 | 🚧 |
+| Project 7: 构建第一个现代应用程序-UI设计 | 现代前端组件库、前端编辑工具进阶、UI 设计规范 | 🚧 |
+| 参考 UI 设计规范与多产品 UI 设计 | 基于统一主视觉设计多个产品界面 | 🚧 |
+| [Project 4: 一起做霍格沃茨画像](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter4/chapter4-lets-build-hogwarts-portraits.md) | 前端原型设计、前端原型转代码、AI IDE 入门、Dify API 集成、网页部署 | ✅ |
+| 大作业 2：现代前端组件库 + Trae 实战 | 使用现代前端组件库 + Trae 开发可登录注册并集成收费系统的程序 | 🚧 |
 
-- [ ] 根据内测内容反馈补充润色 project 1 与 2 、extra 2 的内容，修复不自然的语言转换部分
-- [ ] 修复 extra 失效部分内容
-- [ ] 将未推送的教程补充推送，同时优化在线阅读体验
-- [ ] 修复英文版仓库不自然的部分
+#### 第二阶段 AI 能力补充
+
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| [Project 3: Dify 入门与知识库集成](https://github.com/datawhalechina/easy-vibe/blob/main/docs/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与简单 RAG 搭建工具类产品（简历分析器） | ✅ |
+| 学会查询 AI 词典与集成多模态 API | 查询 AI 词典，查找对应 API 并集成到产品（不同模态） | 🚧 |
+
+### 第三阶段：多平台高级应用与工程实践
+
+#### 第三阶段主线任务
+
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| 扩展知识 8: MCP 与 ClaudeCode skills | MCP 协议、ClaudeCode Skills、工具扩展机制 | 🚧 |
+| 多平台应用 vibe coding 开发实例 | 针对多平台的 vibe coding 开发实践与案例 | 🚧 |
+| 扩展知识 9: 如何让 Coding Tools 长时间工作 | 自动化开发配置、长时间任务管理、工具稳定性优化 | 🚧 |
+| Example 1: 如何构建微信小程序 | 了解微信小程序生态，结合 Trae 等工具完成开发 | ✅ |
+| Example 2: 如何构建微信小程序-包含后端 | 使用 vibe coding 构建带后端数据库的小程序 | 🚧 |
+| Example 3: 如何构建安卓程序 | 使用 Expo 等工具，从 0 到 1 构建安卓应用 | 🚧 |
+| 大作业：多平台复杂应用实践 | 结合前后端与多平台能力，完成复杂应用 | 🚧 |
+
+#### 第三阶段 AI 能力补充
+
+| 章节 | 关键内容 | 状态 |
+| :--- | :--- | :--- |
+| 扩展知识 5: 什么是 RAG 以及它如何工作 | RAG 原理与实践，为复杂应用提供知识检索能力 | ✅ |
+| 中高级 RAG 与工作流编排：以 LangGraph 为例 | 使用 LangGraph 等工具搭建中高级 RAG 与工作流 | 🚧 |
+
+### 附录：AI 能力与工具索引
+
+- AI 能力词典：常见 AI 核心概念与名词、场景解释
 
 
 ## 如何学习

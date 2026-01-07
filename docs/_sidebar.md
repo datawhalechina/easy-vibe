@@ -1,4 +1,4 @@
-* [首页](README.md)
+* [首页](/README.md)
 
 * Project
   * [学习地图](project/chapter0-learning-map/chapter0-learning-map.md)
