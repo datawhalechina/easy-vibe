@@ -1,3 +1,4 @@
+
 <div align='center'>
   <img src="./assets/head.png" alt="easy-vibe" width="100%">
 </div>
@@ -43,6 +44,8 @@
 - 掌握产品思维，学会构建符合用户需求的产品
 
 ## 📖 内容导航
+
+**注: 本项目快速更新中，第二次更新在[分支 verison2](https://github.com/datawhalechina/easy-vibe/tree/version2)预计将于 1 月 20 日之前合并替换主分支，尽请期待**
 
 ### Project 部分
 
