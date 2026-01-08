@@ -2,7 +2,7 @@
   <img src="./assets/head.png" alt="easy-vibe" width="100%">
 </div>
 <div align="center">
-  <h1>Easy-Vibe</h1>
+  <h1>Easy-Vibe : Learn Vibe Coding from 0 to 1</h1>
   <img src="https://img.shields.io/github/stars/datawhalechina/easy-vibe?style=flat&logo=github" alt="GitHub stars"/>
   <img src="https://img.shields.io/github/forks/datawhalechina/easy-vibe?style=flat&logo=github" alt="GitHub forks"/>
   <img src="https://img.shields.io/badge/language-Chinese-brightgreen?style=flat" alt="Language"/>
@@ -16,31 +16,24 @@
 </div>
 
 <div align="center">
-  <h3>📚 AI Vibe Coding 101 教程</h3>
   <p>零基础，在项目制学习中掌握 Vibe Coding 与 AI 技能，构建第一个 AI 原生产品</p>
 </div>
 
 ## 项目介绍
 
-2025 年，被很多人视为 AI 编程的元年。越来越多的人已经开始用 AI 写代码，但做出来的东西往往还停留在玩具层面。且一到真正动手，大家常常会被各种门槛劝退：
+2025年，被很多人视为AI编程的元年。越来越多的人开始用AI写代码，但往往做出来的还停留在玩具层面——不知道如何用Vibe Coding组织开发流程，不知道该选哪些工具，更不清楚从原型到上线中间还差哪些关键步骤。
 
-- 不知道用什么 AI 编程工具写代码比较好；
-- 不知道怎么把大模型的能力应用到具体产品上；
-- 不清楚 AI 写出的代码，距离真实能上线运行还差多远。
+我们采用循序渐进的**三阶段实战路径**：第一阶段掌握Vibe Coding工作方式并完成Web应用原型，第二阶段学习全栈开发与部署上线，第三阶段构建跨平台复杂应用。
 
-通过这个项目，我们希望帮你掌握和 AI 搭档写代码的最佳实践。你将学会借助 AI 的力量，在一个又一个的项目制学习挑战中，独立完成游戏、实用工具、产品原型的实现，最后制作一款属于自己的产品。
+每个阶段都配有完整项目实战，让你在真实挑战中从玩具走向产品，最终具备**将任何想法落地为可用应用**的能力。
 
-我们相信，你一个人就可以成为前后端开发、AI 算法开发、产品经理。
+我们相信，掌握Vibe Coding并配合系统化训练，你一个人就能成为**集前后端开发、AI能力集成、产品设计于一身的全能开发者**。
 
-### 项目受众
+本项目主要面向三类学习者：
 
-本项目采用项目制教学，对零基础学习者友好；在循序渐进的项目实践中，系统覆盖 AI 的常见能力与典型应用场景，内容由入门扩展到高级应用，适合希望系统学习 vibe coding 开发及 AI 能力应用场景的学习者，包括但不限于：
-
-- 非技术背景角色（如产品经理），希望掌握基础 vibe coding，能完成简单 AI 小工具。
-- 具备基础编程能力的初中级开发者，想系统学习 vibe coding 并开发原生 AI 应用。
-- 计算机、AI 及相关专业学生，想通过项目实践理解 vibe coding 与原生 AI 开发。
-- 开源爱好者和独立开发者，希望提高开发效率，创作更多作品。
-- 企业技术团队和 AI 初创公司，希望快速搭建和验证原生 AI 应用原型。
+- **新手（普通人 / 产品与运营侧）**：帮助非技术背景角色和入门学习者听懂关键概念，完成第一个 AI 小工具或产品原型。
+- **初中级开发者（有一定基础的学生和开发者）**：系统掌握 vibe coding 与原生 AI 应用开发。
+- **高级开发者（公司与初创、开源与独立开发者）**：支持团队和个人快速搭建、验证与迭代原生 AI 应用。
 
 ### 你将收获什么？
 
