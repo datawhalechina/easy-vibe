@@ -2,7 +2,7 @@
   <img src="./assets/head.png" alt="easy-vibe" width="100%">
 </div>
 <div align="center">
-  <h1>Easy-Vibe</h1>
+  <h1>Easy-Vibe : Learn Vibe Coding from 0 to 1 </h1>
   <img src="https://img.shields.io/github/stars/datawhalechina/easy-vibe?style=flat&logo=github" alt="GitHub stars"/>
   <img src="https://img.shields.io/github/forks/datawhalechina/easy-vibe?style=flat&logo=github" alt="GitHub forks"/>
   <img src="https://img.shields.io/badge/language-Chinese-brightgreen?style=flat" alt="Language"/>
@@ -16,7 +16,6 @@
 </div>
 
 <div align="center">
-  <h3>📚 AI Vibe Coding 101 教程</h3>
   <p>零基础，在项目制学习中掌握 Vibe Coding 与 AI 技能，构建第一个 AI 原生产品</p>
 </div>
 
