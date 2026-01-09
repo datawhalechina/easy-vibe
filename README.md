@@ -45,18 +45,18 @@
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 前言：学习地图 | 整体学习路径导览 | ✅ |
-| 初级一：AI 时代，会说话就会编程 | 通过贪吃蛇等案例初步感受 AI 编程的能力 | ✅ |
+| [前言：学习地图](docs/stage-0/0.1-learning-map/index.md) | 整体学习路径导览 | ✅ |
+| [初级一：AI 时代，会说话就会编程](docs/stage-0/0.2-ai-capabilities-through-games/index.md) | 通过贪吃蛇等案例初步感受 AI 编程的能力 | ✅ |
 
 ### 一、AI 产品经理
 
 | 章节 | 关键内容 | 状态 |
 | :--- | :--- | :--- |
-| 初级二：认识 AI IDE 工具 | 学会使用 IDE，掌握界面结构和高效提示方式 | ✅ |
-| 初级三：动手做出原型 | 从产品分析拆解，到多页面产品原型实现的完整闭环 | ✅ |
-| 初级四：给原型加上 AI 能力 | 理解并完成常见 AI 能力（文本图片视频）的 API 接入 | ✅ |
-| 初级五：完整项目实战 | 模拟真实场景、接受用户反馈迭代并完成项目展示 | ✅ |
-| 大作业：做一个完整的 Web 应用原型并展示 | 独立用 AI IDE 落地并演示一个可用 Web 应用 | ✅ |
+| [初级二：认识 AI IDE 工具](docs/stage-1/1.1-introduction-to-ai-ide/index.md) | 学会使用 IDE，掌握界面结构和高效提示方式 | ✅ |
+| [初级三：动手做出原型](docs/stage-1/1.2-building-prototype/index.md) | 从产品分析拆解，到多页面产品原型实现的完整闭环 | ✅ |
+| [初级四：给原型加上 AI 能力](docs/stage-1/1.3-integrating-ai-capabilities/index.md) | 理解并完成常见 AI 能力（文本图片视频）的 API 接入 | ✅ |
+| [初级五：完整项目实战](docs/stage-1/1.4-complete-project-practice/index.md) | 模拟真实场景、接受用户反馈迭代并完成项目展示 | ✅ |
+| [大作业：做一个完整的 Web 应用原型并展示](docs/stage-1/1.5-final-project/index.md) | 独立用 AI IDE 落地并演示一个可用 Web 应用 | ✅ |
 
 #### 附录
 
