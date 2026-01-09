@@ -57,6 +57,85 @@
 - [ ] 将未推送的教程补充推送，同时优化在线阅读体验
 - [ ] 修复英文版仓库不自然的部分
 
+---
+
+## 🚀 快速开始（新手必读）
+
+欢迎来到 Easy-Vibe！如果你是第一次接触 Vibe Coding，这里是你的**最佳起点**。
+
+### 📋 开始前的准备
+
+**✅ 你需要准备的：**
+- 一台可以上网的电脑（Windows/Mac/Linux 都可以）
+- 一个现代浏览器（Chrome、Edge、Firefox 等）
+- **大约 30 分钟**的空闲时间
+- **最重要的一点**：不怕犯错的心态！
+
+**❌ 你不需要：**
+- ❌ 编程基础（不是必需，有基础会更快上手）
+- ❌ 安装任何复杂软件（前期用浏览器就够了）
+- ❌ 数学或算法知识
+
+### 🎯 5 分钟了解 Vibe Coding
+
+**什么是 Vibe Coding？**
+
+简单来说，Vibe Coding 就是**和 AI 一起写代码**的新方式。你只需要：
+
+1. **告诉 AI 你想要什么**（用自然语言描述）
+2. **AI 帮你生成代码**
+3. **你测试、调整、反馈**
+4. **AI 修改优化**
+5. **重复以上步骤，直到完成**
+
+这就像有一个随时待命的程序员搭档，你负责"想"，AI 负责"做"。
+
+### 🛠️ 选择你的 AI 编程工具
+
+根据你的情况选择合适的工具：
+
+| 如果你... | 推荐工具 | 特点 |
+|-----------|----------|------|
+| **完全零基础** | [z.ai](https://z.ai/) 或类似在线平台 | 打开浏览器就能用，无需安装 |
+| **有编程经验** | [Cursor](https://cursor.sh/) 或 [Trae](https://trae.ai/) | 功能更强大，本地运行 |
+| **喜欢折腾** | Claude Code + VS Code | 终端命令行，最高效 |
+
+> 💡 **小贴士**：刚开始推荐用**在线平台**，等有经验了再换高级工具。
+
+### 📚 你的学习路径（建议按顺序）
+
+```
+第一步：了解学习地图（10分钟）
+   ↓
+第二步：完成 Project 1 - 贪吃蛇游戏（1-2小时）
+   ↓
+第三步：完成 Project 2 - 探索 AI 工具边界（1-2小时）
+   ↓
+第四步：选择方向继续学习...
+```
+
+**学习进度追踪：**
+- [ ] [学习地图](project/chapter0-learning-map/chapter0-learning-map.md) - 先看这个！
+- [ ] [Project 1: 贪吃蛇游戏](project/chapter1/chapter1-how-to-build-a-snake-game.md) - 第一个项目
+- [ ] [Project 2: AI 工具能力边界](project/chapter2/chapter2-reach-the-capability-boundaries-of-ai-tools.md)
+- [ ] [Project 3: Dify 入门](project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md)
+- [ ] [Project 4: 霍格沃茨画像](project/chapter4/chapter4-lets-build-hogwarts-portraits.md)
+- [ ] [Project 5: Supabase 数据库](project/chapter5/chapter5-from-database-to-supabase.md)
+- [ ] [Project 6: 产品思维](project/chapter6/chapter6-no-code-without-an-idea.md)
+
+### 🔧 遇到问题？
+
+**常见问题快速解答：**
+
+| 问题 | 解决方案 |
+|------|----------|
+| "我完全不懂编程，能学吗？" | **可以！** 本教程就是为零基础设计的 |
+| "AI 生成的代码我看得不懂" | **正常！** 先让代码跑起来，慢慢就会理解了 |
+| "项目做不下去怎么办？" | 查看[常见问题](project/chapter0-learning-map/chapter0-learning-map.md)
+| "需要安装什么软件？" | 前期只需要浏览器，后期教程会详细说明 |
+
+---
+
 ## 内容导航
 
 本教程将内容分为三个难度等级，供不同阶段的学习者参考：
@@ -108,7 +187,7 @@
 
 ## 如何学习
 
-- 建议具备基本编程经验（任意一门语言均可），并对 AI 与产品开发有兴趣
+- 不要求编程基础；若有任意一门语言经验会更容易上手，同时对 AI 与产品开发有兴趣即可
 - 按照 Project 模块从 0 到 6 依次实践，完成从小游戏到完整应用原型的进阶
 - 在 Extra 模块中补充 Git、API、RAG、部署等通识知识，完善你的 AI 开发知识图谱
 - 遇到问题时优先尝试自己排查与检索，再对照教程与源码进行比对和反思
