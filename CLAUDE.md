@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is **Easy-Vibe**, an educational curriculum for learning AI Vibe Coding from zero to advanced levels. It's a documentation-based project using Docsify to serve educational content about AI-assisted software development.
 
 The curriculum follows a progressive four-stage structure:
+
 - **Stage 0 (幼儿园)**: Introduction to AI programming through games
 - **Stage 1 (AI 产品经理)**: Building AI-powered web application prototypes
 - **Stage 2 (初中级开发工程师)**: Full-stack development with databases and deployment
@@ -81,6 +82,7 @@ The project uses **Docsify** with the following key configuration in `docs/index
 ### Sidebar Management
 
 The sidebar is defined in `docs/_sidebar.md`. When adding new chapters:
+
 1. Add the chapter entry to the appropriate stage section
 2. Follow the existing pattern: `* [Chapter Title](stage-{N}/{chapter-dir}/index.md)`
 3. Ensure relative paths match the actual directory structure
@@ -95,6 +97,7 @@ The sidebar is defined in `docs/_sidebar.md`. When adding new chapters:
 ### Legacy Content Structure
 
 The project maintains three legacy sections in the sidebar for backward compatibility:
+
 1. **Project 文档** (`project/`): Older chapter-based tutorials
 2. **Extra 扩展知识** (`extra/`): Supplementary topics (Git, APIs, RAG, deployment)
 3. **Examples 实战案例** (`examples/`): Practical tutorials (some moved to stage-3)
@@ -114,6 +117,7 @@ When updating content, prefer integrating into the stage structure over adding t
 ### Content Status Markers
 
 In README.md, use these status indicators:
+
 - ✅ Completed
 - 🚧 In progress/Under construction
 
@@ -126,6 +130,7 @@ In README.md, use these status indicators:
 ## Permissions
 
 The project has configured bash permissions in `.claude/settings.local.json`:
+
 - File operations: `which`, `find`, `mv`, `tree`, `cat`, `curl`, `lsof`
 - Process management: `xargs ps`, `kill`
 - Development: `npm run dev`
@@ -140,6 +145,7 @@ The project has configured bash permissions in `.claude/settings.local.json`:
 - **Asset Paths**: Always use relative paths from markdown file location
 
 When making changes:
+
 - Preserve the Docsify configuration in `docs/index.html`
 - Maintain sidebar structure consistency
 - Test locally with `npm run dev` before committing

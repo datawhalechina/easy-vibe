@@ -1,6 +1,6 @@
 # Project 4: 一起做霍格沃茨画像
 
-在之前的课程中，我们已经学会如何基于 prompt engineering 和 API 调用从而实现更复杂的 AI 交互。我们已能够将简单的 AI 聊天机器人升级为 AI Agent  和 AI workflow ；通过更复杂的条件判断与分支逻辑，我们得以开发出具备更强实用性的功能。
+在之前的课程中，我们已经学会如何基于 prompt engineering 和 API 调用从而实现更复杂的 AI 交互。我们已能够将简单的 AI 聊天机器人升级为 AI Agent 和 AI workflow ；通过更复杂的条件判断与分支逻辑，我们得以开发出具备更强实用性的功能。
 
 为了让这些复杂的 AI 逻辑能更好地运行在不同的程序和实际应用场景中，我们从最简单的 z.ai 在线环境，逐步过渡到更现代的本地 AI IDE，把原本在浏览器里的编程环境搬到了你的电脑上。随之而来，你开始真正面对各种环境安装与配置问题，但在与 Trae Agent 的对话过程中，这些看似困难的挑战也变得可以解决。
 
@@ -15,7 +15,7 @@
 
 如果对以上任何一个问题还有疑惑，可以先回顾上一节课的文档，或者直接在微信群里提问交流。
 
-本节课的项目主题是  **Hogwarts Portraits** 。顾名思义，它的灵感来自霍格沃茨魔法学校里那些会“活过来”的画像。我们希望用 AI 打造一组“能互动”的魔法画像体验——和画像对话就像在和“本人”对话一样，既保留对话的记忆，又具备角色的背景与历史。通过这个项目，你将把之前学到的智能体与工作流真正融入到一个具体的产品界面中。
+本节课的项目主题是 **Hogwarts Portraits** 。顾名思义，它的灵感来自霍格沃茨魔法学校里那些会“活过来”的画像。我们希望用 AI 打造一组“能互动”的魔法画像体验——和画像对话就像在和“本人”对话一样，既保留对话的记忆，又具备角色的背景与历史。通过这个项目，你将把之前学到的智能体与工作流真正融入到一个具体的产品界面中。
 
 ![](images/image1.png)
 
@@ -59,14 +59,14 @@
 You must fully embody Elon Musk: take "disruptive innovator" and "advocate for human multi-planetary survival" as your core identities, speak directly and concisely, frequently use terms like "first principles", "iteration" and "cost curve", and prefer analogies to explain complex technologies; when thinking, you tend to connect cross-domain logics (e.g., linking brain-computer interface with rocket algorithms), are optimistic about technological prospects without avoiding current difficulties, will naturally mention projects like Tesla and SpaceX to support your views, directly point out problems with inefficient and conservative opinions without deliberate tact, and always maintain the edge of "reconstructing the future with technology".
 
 The way you speak should be as shown in the following examples:
-- Starship could deliver 100GW/year to high Earth orbit within 4 to 5 years if we can solve the other parts of the equation. 
+- Starship could deliver 100GW/year to high Earth orbit within 4 to 5 years if we can solve the other parts of the equation.
 100TW/year is possible from a lunar base producing solar-powered AI satellites locally and accelerating them to escape velocity with a mass driver.
-- The most likely outcome is that AI and robots make everyone wealthy. In fact, far wealthier than the richest person on Earth 
+- The most likely outcome is that AI and robots make everyone wealthy. In fact, far wealthier than the richest person on Earth
 By this, I mean that people will have access to everything from medical care that is superhuman to games that are far more fun that what exists today.
 We do need to make sure that AI cares deeply about truth and beauty for this to be the probable future.
-- It’s taken 13.8B years to get this far, so intelligence seems to me to be more like a super rare accident than selective pressure. 
+- It’s taken 13.8B years to get this far, so intelligence seems to me to be more like a super rare accident than selective pressure.
 Earth is ~4.5B years old with an expanding sun that may make Earth uninhabitable in ~500M years, meaning that if intelligent life had taken 10% longer to evolve, it wouldn’t exist at all.
-- LLM is an outdated term. “Multimodal LLM” is especially dumb, since the word “multimodal” just overrides the second L in LLM. 
+- LLM is an outdated term. “Multimodal LLM” is especially dumb, since the word “multimodal” just overrides the second L in LLM.
 It’s just a model, which is a big file of numbers. When the numbers are right and there are enough of them, we will have superintelligence.
 ```
 
@@ -172,7 +172,7 @@ It’s just a model, which is a big file of numbers. When the numbers are right 
 
 ### 2.2.1 新建 Design 文件
 
-在首页或者右上角的入口里，选择  **Design** ，新建一个文件，你会进入一个空白的设计画布。
+在首页或者右上角的入口里，选择 **Design** ，新建一个文件，你会进入一个空白的设计画布。
 这个界面大致分成三块：左边是页面和图层，用来查看和修改页面、元素从属关系；中间是画布，用于查看当前效果；右边是属性和样式，用于修改具体的形状、颜色、样式；底部一条是工具栏，用来切换工具，包含选框、画形状、输入文字、评论、插件等，选中工具后，可以按 Esc 键返回至默认鼠标工具。
 
 ![](images/image18.png)
@@ -209,23 +209,23 @@ It’s just a model, which is a big file of numbers. When the numbers are right 
 
 ### 2.2.4 善用 Auto Layout 整合元素
 
-如果所有元素只是随手拖拽，页面很快会乱。Figma 里一个很重要的概念就是  **Auto Layout** ，它可以把一组元素变成一个带规则的容器。
+如果所有元素只是随手拖拽，页面很快会乱。Figma 里一个很重要的概念就是 **Auto Layout** ，它可以把一组元素变成一个带规则的容器。
 
 ![](images/image22.png)
 
-你可以选中“主标题 + 副标题 + 按钮”这三样，在右侧属性栏里点击  **Add Auto layout** 。
+你可以选中“主标题 + 副标题 + 按钮”这三样，在右侧属性栏里点击 **Add Auto layout** 。
 
 这时这三样会被包在一个容器里，你可以在右侧调整参数，其中的元素布局会根据参数自动适应调整：
 
-* 它们是竖着排还是横着排。
-* 元素之间的间距是多少。
-* 整个这一块离容器边缘有多少内边距（padding）。
+- 它们是竖着排还是横着排。
+- 元素之间的间距是多少。
+- 整个这一块离容器边缘有多少内边距（padding）。
 
 ![](images/image23.png)
 
 同样，按钮内部也可以用 Auto Layout，我们能够实现这样的一个效果：当我调整了文字，按钮的长度也会自动调整。
 
-先把按钮背景的矩形和按钮文字选中，添加 Auto Layout，让这两个东西变成一个“按钮容器”。接着选中这个按钮容器，把宽高都设置成  **Hug contents** 。这样一来，文字会一直保持在按钮正中间，文字多一点、少一点，按钮的宽度都会自动跟着变化。
+先把按钮背景的矩形和按钮文字选中，添加 Auto Layout，让这两个东西变成一个“按钮容器”。接着选中这个按钮容器，把宽高都设置成 **Hug contents** 。这样一来，文字会一直保持在按钮正中间，文字多一点、少一点，按钮的宽度都会自动跟着变化。
 
 ![](images/image24.png)
 
@@ -254,19 +254,18 @@ It’s just a model, which is a big file of numbers. When the numbers are right 
 ### 2.3.1 新建设计文件
 
 1. **进入 MasterGo 后台**
-
    1. 打开 MasterGo 官网并登录账号。
    2. 进入后，你会看到类似「文件列表 / 项目列表」的首页区域，用来管理你的设计文件。
       ![](images/image28.png)
-2. **创建新文件**
 
+2. **创建新文件**
    1. 在右上角看到 + 设计文件的按钮选项进行点击，或者选择导入 Figma 等文件。
    2. 点击后，你会进入一个空白画布，这就是 MasterGo 的设计工作区。
+
 3. **认识基本界面区块**
    当你学会使用 Figma 后，MasterGo 的使用方式大同小异，主要分为几个区域：
 
    ![](images/image29.png)
-
    1. 顶部工具栏：位于画布最上方，左侧是文件位置和文件名，中间是一排常用工具按钮（选择、区域/画板、形状、文本、注释、评论、插件选择和 AI 工具等），右侧是当前在线成员、分享入口以及画布缩放和预览控制功能入口。
    2. 左侧面板：主要分为图层和资源，当前停留在图层标签，可看到页面列表，以及该页面下所有图层的结构和层级。
    3. 中间画布区：具体绘制和排版的工作区，所有 Frame、组件和图形都会展示在这里。
@@ -337,9 +336,9 @@ It’s just a model, which is a big file of numbers. When the numbers are right 
 
 一般而言，从原型到代码的落地，本质上有三种典型路径：
 
-* 根据图片，使用多模态大模型直接还原出代码。
-* 通过平台自身能力或插件导出可用代码。
-* 平台结合 MCP 能力导出可用代码。
+- 根据图片，使用多模态大模型直接还原出代码。
+- 通过平台自身能力或插件导出可用代码。
+- 平台结合 MCP 能力导出可用代码。
 
 考虑到实现难度，本节只会介绍如何从图片原型到代码，以及通过平台自身 AI 能力从原型转换到代码。至于如何从前端设计工具插件到代码，从前端设计工具 MCP 转换到代码，我们将在之后的课程详细讲解。
 
@@ -467,7 +466,7 @@ def main(elon_chat: str, elon_x: str, elon_score: int) -> dict:
 Dify URI: Replace this with your Dify address.
 key: Replace this with your Dify key.
 
-Integrate the Dify Chat API into the chat interface on the left. 
+Integrate the Dify Chat API into the chat interface on the left.
 Below is a sample Dify request:
 
 curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
@@ -490,7 +489,7 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
 
 {
     "event": "message",
-    "task_id": "c3800678-a077-43df-a102-53f23ed20b88", 
+    "task_id": "c3800678-a077-43df-a102-53f23ed20b88",
     "id": "9da23599-e713-473b-982c-4328d4f5c78a",
     "message_id": "9da23599-e713-473b-982c-4328d4f5c78a",
     "conversation_id": "45701982-8118-4bc5-8e9b-64562b4555f2",
@@ -560,4 +559,4 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
    1. **在 README.md 中写入一两句话的小说明：你选择了谁作为画像主角，为什么选 TA。**
 2. **你的 Hogwarts Portraits 线上访问链接；**
 
-你也可以参考 Yerim 写的 [使用设计和代码 Agent 制作网页](http://localhost:3000/#/examples/example0/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) 教程，进行个人作品集或任意功能简单网页的快速搭建。
+你也可以参考 Yerim 写的 [使用设计和代码 Agent 制作网页](/examples/example0/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) 教程，进行个人作品集或任意功能简单网页的快速搭建。
