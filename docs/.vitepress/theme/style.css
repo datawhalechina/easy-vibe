@@ -35,3 +35,40 @@
   margin-bottom: 4px;
   border-left: 1px solid var(--vp-c-divider);
 }
+
+.VPHomeHero .tagline {
+  display: none;
+}
+
+.vp-typed-tagline {
+  padding-top: 8px;
+  line-height: 28px;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--vp-c-text-2);
+}
+
+.VPHero.has-image .vp-typed-tagline {
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .vp-typed-tagline {
+    padding-top: 12px;
+    max-width: 576px;
+    line-height: 32px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 960px) {
+  .vp-typed-tagline {
+    line-height: 36px;
+    font-size: 24px;
+  }
+
+  .VPHero.has-image .vp-typed-tagline {
+    margin: 0;
+  }
+}

@@ -3,7 +3,11 @@ layout: home
 hero:
   name: 'Easy-Vibe'
   text: 'Learn Vibe Coding from 0 to 1'
-  tagline: 不止是写代码，而是成为集产品、设计、全栈开发于一身的超级个体。
+  tagline:
+    - 不止是写代码，而是成为集产品、设计、全栈开发于一身的超级个体。
+    - 从想法到原型，从原型到上线，把每一次输出变成可交付的产品。
+    - 让 AI 成为你的搭档：更快、更稳、更有创造力。
+    - 用系统化的学习路径，构建你的个人技术与产品护城河。
   actions:
     - theme: brand
       text: 开启学习之旅
