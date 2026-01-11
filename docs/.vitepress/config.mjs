@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/easy-vibe/',
+  base: '/',
   title: 'Easy-Vibe Tutorial',
   description: 'Easy-Vibe 中文实战课 - 零基础学会用 AI 干实际工作',
-  head: [['link', { rel: 'icon', href: '/easy-vibe/logo.png' }]],
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
   themeConfig: {
     logo: '/logo.png',
     search: {
