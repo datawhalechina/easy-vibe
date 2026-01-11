@@ -26,3 +26,13 @@ body.viewer-ready .viewer-canvas > img {
   border-radius: 8px; /* Optional: Rounded corners */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Shadow */
 }
+
+/* Tall images (e.g. mobile screenshots) - ratio > 1.2 */
+.vp-doc img.img-tall {
+  max-height: 400px;
+}
+
+/* Very tall images (e.g. long screenshots) - ratio > 2 */
+.vp-doc img.img-very-tall {
+  max-height: 300px;
+}

@@ -76,9 +76,35 @@ export default {
       }
     }
 
+    const optimizeImages = () => {
+      const images = document.querySelectorAll('.vp-doc img')
+      images.forEach(img => {
+        if (img.complete) {
+          applyImageStyle(img)
+        } else {
+          img.onload = () => applyImageStyle(img)
+        }
+      })
+    }
+
+    const applyImageStyle = (img) => {
+      const { naturalWidth, naturalHeight } = img
+      if (!naturalWidth || !naturalHeight) return
+
+      const ratio = naturalHeight / naturalWidth
+      img.classList.remove('img-tall', 'img-very-tall')
+
+      if (ratio > 2) {
+        img.classList.add('img-very-tall')
+      } else if (ratio > 1.2) {
+        img.classList.add('img-tall')
+      }
+    }
+
     onMounted(() => {
       initViewer()
       initTypewriter()
+      optimizeImages()
     })
 
     watch(
@@ -86,6 +112,7 @@ export default {
       () => nextTick(() => {
         initViewer()
         initTypewriter()
+        optimizeImages()
       })
     )
   }
