@@ -16,3 +16,13 @@
 body.viewer-ready .viewer-canvas > img {
   transition: transform 0.2s ease-out !important;
 }
+
+/* Limit image max height in document content */
+.vp-doc img {
+  max-height: 500px;
+  width: auto;
+  margin: 16px auto; /* Center with spacing */
+  display: block;
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Shadow */
+}
