@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-// 判断是否是 Vercel 环境
+// 判断是否是 Vercel 环境， github page 和 vercel 的部署地址相关不一样
 const isVercel = process.env.VERCEL === '1'
 const base = isVercel ? '/' : '/easy-vibe/'
 
