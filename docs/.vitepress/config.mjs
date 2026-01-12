@@ -5,55 +5,7 @@ export default defineConfig({
   title: 'Easy-Vibe Tutorial',
   description: 'Easy-Vibe 中文实战课 - 零基础学会用 AI 干实际工作',
   head: [
-    ['link', { rel: 'icon', href: '/logo.png' }],
-    [
-      'style',
-      {},
-      `
-        :root {
-          --vp-sidebar-nav-section-gap: 8px;
-        }
-        .VPSidebarItem.level-0 {
-          padding-bottom: 4px !important;
-        }
-        .VPSidebarItem.level-0 > .item {
-          padding-bottom: 2px !important;
-        }
-        .VPSidebarItem.level-1 .item,
-        .VPSidebarItem.level-2 .item,
-        .VPSidebarItem.level-3 .item,
-        .VPSidebarItem.level-4 .item {
-          padding-top: 2px !important;
-          padding-bottom: 2px !important;
-          min-height: 24px !important;
-        }
-        .VPSidebarGroup {
-          padding-top: 6px !important;
-          padding-bottom: 6px !important;
-        }
-        .VPSidebarItem.level-0 + .VPSidebarItem.level-1 {
-          margin-top: -2px !important;
-        }
-        .VPSidebarItem.level-0 .text {
-          line-height: 1.3 !important;
-        }
-        .VPSidebarItem.level-1 .text,
-        .VPSidebarItem.level-2 .text,
-        .VPSidebarItem.level-3 .text {
-          line-height: 1.4 !important;
-          padding: 0 !important;
-        }
-        .VPSidebarItem .VPLink {
-          padding-top: 2px !important;
-          padding-bottom: 2px !important;
-          min-height: auto !important;
-        }
-        .VPSidebarItem .item {
-          padding-top: 2px !important;
-          padding-bottom: 2px !important;
-        }
-      `
-    ]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ],
   themeConfig: {
     logo: '/logo.png',
