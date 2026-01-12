@@ -4,7 +4,6 @@ import 'viewerjs/dist/viewer.css'
 import TypeIt from 'typeit'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute, useData } from 'vitepress'
-import './style.css'
 
 export default {
   extends: DefaultTheme,
