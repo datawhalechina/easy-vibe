@@ -177,7 +177,7 @@ export default defineConfig({
           items: [
             {
               text: '高级三：如何构建微信小程序',
-              link: '/stage-3/cross-platform/3.3-wechat-miniprogram/example1/index'
+              link: '/stage-3/cross-platform/3.3-wechat-miniprogram/'
             },
             {
               text: '高级四：如何构建微信小程序（包含后端）',
@@ -209,7 +209,7 @@ export default defineConfig({
           items: [
             {
               text: '高级 AI 一：什么是 RAG 以及它如何工作',
-              link: '/stage-3/ai-advanced/3.a1-rag-introduction/extra5/extra5-what-is-rag-and-how-does-it-work-and-future'
+              link: '/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future'
             },
             {
               text: '高级 AI 二：中高级 RAG 与工作流编排 - 以 LangGraph 为例',
