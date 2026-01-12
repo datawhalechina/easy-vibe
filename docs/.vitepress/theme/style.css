@@ -55,3 +55,9 @@
   max-height: 250px !important;
   width: auto !important;
 }
+
+/* Fix tagline wrapping issues */
+.VPHomeHero .tagline {
+  white-space: nowrap;
+  max-width: none !important;
+}

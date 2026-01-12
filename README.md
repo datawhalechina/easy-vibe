@@ -38,6 +38,8 @@
 
 ## 📖 内容导航
 
+![](assets/readme-image1.png)
+
 ### 总附录
 
 [AI 能力词典：常见 AI 核心概念与名词、场景解释](docs/appendix/ai-capability-dictionary.md)
