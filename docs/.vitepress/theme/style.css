@@ -4,38 +4,38 @@
 }
 
 /* 减少一级标题（如"前端开发"）底部的间距 */
-.VPSidebar .VPSidebarItem.level-0 {
+.VPSidebarItem.level-0 {
   padding-bottom: 4px;
 }
 
 /* 减少一级标题文字与下方子菜单的间距 */
-.VPSidebar .VPSidebarItem.level-0 > .item {
+.VPSidebarItem.level-0 > .item {
   padding-bottom: 2px;
 }
 
 /* 调整子菜单项之间的间距 */
-.VPSidebar .VPSidebarItem.level-1 .item {
+.VPSidebarItem.level-1 .item {
   padding: 2px 0;
 }
 
 /* 针对可能存在的特定类名进行覆盖，确保紧凑 */
-.VPSidebar .VPSidebarGroup {
+.VPSidebarGroup {
   padding-top: 6px;
   padding-bottom: 6px;
 }
 
 /* 进一步压缩分组标题与第一项之间的间距 */
-.VPSidebar .VPSidebarItem.level-0 + .VPSidebarItem.level-1 {
+.VPSidebarItem.level-0 + .VPSidebarItem.level-1 {
   margin-top: -2px;
 }
 
 /* 压缩分组标题本身的行高 */
-.VPSidebar .VPSidebarItem.level-0 .text {
+.VPSidebarItem.level-0 .text {
   line-height: 1.3;
 }
 
 /* 压缩子项的行高 */
-.VPSidebar .VPSidebarItem.level-1 .text {
+.VPSidebarItem.level-1 .text {
   line-height: 1.4;
 }
 
