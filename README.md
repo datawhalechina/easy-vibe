@@ -76,18 +76,18 @@
 | [前端一：Figma 与 MasterGo 入门](docs/stage-2/frontend/2.1-figma-mastergo/)                                                              | 用设计工具梳理信息架构和页面结构，为前端实现打基础                           | 🚧   |
 | [前端二：构建第一个现代应用程序-UI 设计](docs/stage-2/frontend/2.2-ui-design/)                                                            | 基于设计稿完成组件化界面，实现从设计到代码的第一条链路                       | 🚧   |
 | [前端三：参考 UI 设计规范与多产品 UI 设计](docs/stage-2/frontend/2.3-multi-product-ui/)                                                    | 围绕统一主视觉扩展多产品界面，练习系统化设计能力                             | 🚧   |
-| [前端四：一起做霍格沃茨画像](docs/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits) | 从 0 到 1 做出接入 AI 能力的前端应用，串联设计与开发                         | 🚧   |
+| [前端四：一起做霍格沃茨画像](docs/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | 从 0 到 1 做出接入 AI 能力的前端应用，串联设计与开发                         | ✅   |
 
 #### 后端与全栈部分
 
 | 章节                                                                                                                                  | 关键内容                                                      | 状态 |
 | :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------ | :--- |
-| [后端一：什么是 API](docs/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md)                                                               | 理解 HTTP 接口与请求响应模型，为后端集成与联调做准备          | 🚧   |
-| [后端二：从数据库到 Supabase](docs/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) | 在 Supabase 上落地数据库和 API，打通数据模型与前端页面        | 🚧   |
+| [后端一：什么是 API](docs/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md)                                                               | 理解 HTTP 接口与请求响应模型，为后端集成与联调做准备          | ✅   |
+| [后端二：从数据库到 Supabase](docs/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) | 在 Supabase 上落地数据库和 API，打通数据模型与前端页面        | ✅   |
 | [后端三：大模型辅助编写接口代码与接口文档](docs/stage-2/backend/2.3-ai-interface-code/)                                         | 用大模型协助生成接口与数据库文档及代码，实现可读可测的后端    | 🚧   |
-| [后端四：Git 工作流](docs/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md)                                                 | 在 Git 工作流中管理代码，进行版本控制和协作                  | 🚧   |
-| [后端五：Zeabur 部署](docs/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)                                                 | 将应用部署到 Zeabur 上线                                   | 🚧   |
-| [后端六：现代 CLI 开发工具](docs/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md)                                                        | 使用 CLI 类 AI 编程工具加速开发与调试，形成个人工程化工作流   | 🚧   |
+| [后端四：Git 工作流](docs/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md)                                                 | 在 Git 工作流中管理代码，进行版本控制和协作                  | ✅   |
+| [后端五：Zeabur 部署](docs/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)                                                 | 将应用部署到 Zeabur 上线                                   | ✅   |
+| [后端六：现代 CLI 开发工具](docs/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md)                                                        | 使用 CLI 类 AI 编程工具加速开发与调试，形成个人工程化工作流   | ✅   |
 | [后端七：如何集成 Stripe 等收费系统](docs/stage-2/backend/2.7-stripe-payment/)                                               | 接入支付系统，完成收费链路与基础结算流程                      | 🚧   |
 | [大作业 1：构建第一个现代应用程序-全栈应用](docs/stage-2/assignments/2.1-fullstack-app/)                                        | 综合前端、后端与支付模块，完成可上线的全栈 Web 应用           | 🚧   |
 | [大作业 2：现代前端组件库 + Trae 实战](docs/stage-2/assignments/2.2-modern-frontend-trae/)                                             | 使用现代前端组件库与 Trae，独立完成可登录注册并支持收费的产品 | 🚧   |
@@ -96,7 +96,7 @@
 
 | 章节                                                                                                                                                                                 | 关键内容                                                       | 状态 |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :--- |
-| [AI 一：Dify 入门与知识库集成](docs/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 | 🚧   |
+| [AI 一：Dify 入门与知识库集成](docs/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 | ✅   |
 | [AI 二：学会查询 AI 词典与集成多模态 API](docs/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md)                                                                 | 学会查找合适的模型与 API，并把文本、图像等多模态能力接入产品   | 🚧   |
 
 ### 三、高级开发工程师
@@ -115,7 +115,7 @@
 
 | 章节                                                                  | 关键内容                                                | 状态 |
 | :-------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
-| [高级 AI 一：什么是 RAG 以及它如何工作](docs/stage-3/ai-advanced/3.a1-rag-introduction/extra5/extra5-what-is-rag-and-how-does-it-work-and-future)                  | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 | 🚧   |
+| [高级 AI 一：什么是 RAG 以及它如何工作](docs/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md)                  | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 | ✅   |
 | [高级 AI 二：中高级 RAG 与工作流编排：以 LangGraph 为例](docs/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | 使用 LangGraph 等工具设计多步工作流与中高级 RAG 系统    | 🚧   |
 
 ## 如何学习
