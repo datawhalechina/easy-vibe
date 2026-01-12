@@ -105,7 +105,7 @@
 | :-------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
 | [高级一：MCP 与 ClaudeCode Skills](docs/stage-3/core-skills/3.1-mcp-claudecode-skills/)                | 通过 MCP 与 Skills 扩展 IDE 能力，把外部服务接成工具         | 🚧   |
 | [高级二：如何让 Coding Tools 长时间工作](docs/stage-3/core-skills/3.2-long-running-tasks/)          | 设计和配置长时间运行的任务，让 Coding Tools 更稳定可靠       | 🚧   |
-| [高级三：多平台开发：如何构建微信小程序](docs/stage-3/cross-platform/3.3-wechat-miniprogram/)          | 了解微信小程序生态，从官方模板到上线完成一个前端小程序       | 🚧   |
+| [高级三：多平台开发：如何构建微信小程序](docs/stage-3/cross-platform/3.3-wechat-miniprogram/)          | 了解微信小程序生态，从官方模板到上线完成一个前端小程序       | ✅   |
 | [高级四：多平台开发：如何构建微信小程序-包含后端](docs/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | 在小程序中接入数据库与后端逻辑，打通完整业务闭环             | 🚧   |
 | [高级五：多平台开发：如何构建安卓程序](docs/stage-3/cross-platform/3.5-android-app/)            | 使用 Expo 等工具，完成 Web/原生一体化的安卓应用开发          | 🚧   |
 | [高级六：多平台开发：如何构建 iOS 程序](docs/stage-3/cross-platform/3.6-ios-app/)           | 使用 Expo 等工具，完成 Web/原生一体化的 iOS 应用开发         | 🚧   |
