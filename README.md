@@ -1,4 +1,5 @@
 
+<!-- trigger vercel build -->
 <div align='center'>
   <img src="./assets/head.png" alt="easy-vibe" width="100%">
 </div>
