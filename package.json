@@ -1,13 +1,30 @@
 {
-  "name": "vibe-coding",
+  "name": "easy-vibe",
   "version": "1.0.0",
-  "private": true,
+  "description": "Easy-Vibe 中文实战课 - 零基础学会用 AI 编程",
+  "type": "module",
   "scripts": {
-    "dev": "docsify serve docs -p 3000",
-    "start": "npm run dev"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "format": "prettier --write ."
   },
+  "keywords": [
+    "easy-vibe",
+    "ai",
+    "tutorial",
+    "vitepress"
+  ],
+  "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
-    "docsify-cli": "^4.4.4"
+    "prettier": "^3.7.4",
+    "vitepress": "2.0.0-alpha.15",
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "element-plus": "^2.13.1",
+    "typeit": "^8.8.7",
+    "viewerjs": "^1.11.7"
   }
 }
-

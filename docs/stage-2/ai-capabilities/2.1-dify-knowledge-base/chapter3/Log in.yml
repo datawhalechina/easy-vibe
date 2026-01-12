@@ -1,0 +1,504 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Log in
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gitee_ai:0.1.4@f621ace33bb3c140f5a1e3533fcb518f558c7b945d63523c0f85810a4b4a8b93
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: f8cc215e-ef91-437a-a823-7e80a8d345a3
+    name: LOGIN
+    selector:
+    - conversation
+    - LOGIN
+    value: none
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 'Please log in with passwords:'
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1758767725822-source-1758767750205-target
+      source: '1758767725822'
+      sourceHandle: source
+      target: '1758767750205'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: assigner
+      id: 1758767920912-true-1758768026915-target
+      source: '1758767920912'
+      sourceHandle: 'true'
+      target: '1758768026915'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: assigner
+      id: 1758767920912-false-1758768059939-target
+      source: '1758767920912'
+      sourceHandle: 'false'
+      target: '1758768059939'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1758767750205-f599486b-e4d3-4cdd-9425-31257bf28e82-llm-target
+      source: '1758767750205'
+      sourceHandle: f599486b-e4d3-4cdd-9425-31257bf28e82
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1758767750205-5f242bc3-7f06-4a88-82e5-235a859d92bf-1758768238460-target
+      source: '1758767750205'
+      sourceHandle: 5f242bc3-7f06-4a88-82e5-235a859d92bf
+      target: '1758768238460'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1758768238460-source-1758768309599-target
+      source: '1758768238460'
+      sourceHandle: source
+      target: '1758768309599'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1758767750205-true-1758767920912-target
+      source: '1758767750205'
+      sourceHandle: 'true'
+      target: '1758767920912'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1758768026915-source-1758768400561-target
+      source: '1758768026915'
+      sourceHandle: source
+      target: '1758768400561'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1758768059939-source-1758768418040-target
+      source: '1758768059939'
+      sourceHandle: source
+      target: '1758768418040'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 53
+      id: '1758767725822'
+      position:
+        x: -227.17718464443863
+        y: 459.4548203041172
+      positionAbsolute:
+        x: -227.17718464443863
+        y: 459.4548203041172
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen3-235B-A22B-Instruct-2507
+          provider: langgenius/gitee_ai/gitee_ai
+        prompt_template:
+        - id: 2686a731-f250-46f0-97ec-033e929160a5
+          role: system
+          text: 'You are the computer that answers the user''s question. Always start
+            with "hello guest" '
+        selected: false
+        title: Guest LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 389.3839309072489
+        y: 663.6856819774588
+      positionAbsolute:
+        x: 389.3839309072489
+        y: 663.6856819774588
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: true
+        title: Answer
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 707.3520684153225
+        y: 673.6318886739399
+      positionAbsolute:
+        x: 707.3520684153225
+        y: 673.6318886739399
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: cf0932c4-e5f4-478e-9437-1db63af30ffd
+            value: none
+            varType: string
+            variable_selector:
+            - conversation
+            - LOGIN
+          id: 'true'
+          logical_operator: and
+        - case_id: f599486b-e4d3-4cdd-9425-31257bf28e82
+          conditions:
+          - comparison_operator: is
+            id: 18c716ea-aac5-4af7-9a50-1fd5dc40d18e
+            value: guest
+            varType: string
+            variable_selector:
+            - conversation
+            - LOGIN
+          id: f599486b-e4d3-4cdd-9425-31257bf28e82
+          logical_operator: and
+        - case_id: 5f242bc3-7f06-4a88-82e5-235a859d92bf
+          conditions:
+          - comparison_operator: is
+            id: 490f9251-1012-4f85-8bb7-29f355ca6b5c
+            value: admin
+            varType: string
+            variable_selector:
+            - conversation
+            - LOGIN
+          id: 5f242bc3-7f06-4a88-82e5-235a859d92bf
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 221
+      id: '1758767750205'
+      position:
+        x: 78.91702348010949
+        y: 535.9787937998216
+      positionAbsolute:
+        x: 78.91702348010949
+        y: 535.9787937998216
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: ab112997-31e2-453c-8511-40adc3006e76
+            value: AIID
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 125
+      id: '1758767920912'
+      position:
+        x: 659.9247584894487
+        y: 459.4548203041172
+      positionAbsolute:
+        x: 659.9247584894487
+        y: 459.4548203041172
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        items:
+        - input_type: constant
+          operation: set
+          value: admin
+          variable_selector:
+          - conversation
+          - LOGIN
+          write_mode: over-write
+        selected: false
+        title: Variable Assigner
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1758768026915'
+      position:
+        x: 997.3839309072489
+        y: 426.91916104676926
+      positionAbsolute:
+        x: 997.3839309072489
+        y: 426.91916104676926
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        items:
+        - input_type: constant
+          operation: set
+          value: guest
+          variable_selector:
+          - conversation
+          - LOGIN
+          write_mode: over-write
+        selected: false
+        title: Variable Assigner 2
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1758768059939'
+      position:
+        x: 1010.8775065168395
+        y: 553.9191610467692
+      positionAbsolute:
+        x: 1010.8775065168395
+        y: 553.9191610467692
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen3-235B-A22B-Instruct-2507
+          provider: langgenius/gitee_ai/gitee_ai
+        prompt_template:
+        - id: 1129723a-50cb-4350-a118-3b9ac6dac523
+          role: system
+          text: 'You are the computer that answers the admin''s question. Always start
+            with "hello admin" . You know AIID(AI innovative Design) is a master program
+            in open FIESTA in Shenzhen. '
+        selected: false
+        title: Admin LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1758768238460'
+      position:
+        x: 389.3839309072489
+        y: 792.6856819774588
+      positionAbsolute:
+        x: 389.3839309072489
+        y: 792.6856819774588
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1758768238460.text#}}'
+        desc: ''
+        selected: false
+        title: Answer 3
+        type: answer
+        variables: []
+      height: 104
+      id: '1758768309599'
+      position:
+        x: 707.3520684153225
+        y: 832.4705087633828
+      positionAbsolute:
+        x: 707.3520684153225
+        y: 832.4705087633828
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: Password Correct! You are now log in as ADMIN
+        desc: ''
+        selected: false
+        title: Answer 3
+        type: answer
+        variables: []
+      height: 117
+      id: '1758768400561'
+      position:
+        x: 1301.383930907249
+        y: 426.91916104676926
+      positionAbsolute:
+        x: 1301.383930907249
+        y: 426.91916104676926
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: Password Incorrect! You are now log in as GUEST
+        desc: ''
+        selected: false
+        title: Answer 4
+        type: answer
+        variables: []
+      height: 117
+      id: '1758768418040'
+      position:
+        x: 1498.8808102839819
+        y: 553.9191610467692
+      positionAbsolute:
+        x: 1498.8808102839819
+        y: 553.9191610467692
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 273.4245102591761
+      y: -8.654295375493462
+      zoom: 0.7525860587977332

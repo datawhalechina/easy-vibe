@@ -1,0 +1,38 @@
+/* Custom styles for viewerjs */
+.viewer-container {
+  z-index: 9999 !important; /* Ensure it's above everything including navbar */
+}
+
+/* Optional: Adjust backdrop opacity if needed */
+.viewer-backdrop {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker backdrop for better focus */
+}
+
+/* 
+  Core Logic:
+  1. Default (opening/closing): No transition -> Instant.
+  2. body.viewer-ready (viewing): Force transition -> Smooth Zoom.
+*/
+body.viewer-ready .viewer-canvas > img {
+  transition: transform 0.2s ease-out !important;
+}
+
+/* Limit image max height in document content */
+.vp-doc img {
+  max-height: 500px;
+  width: auto;
+  margin: 16px auto; /* Center with spacing */
+  display: block;
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Shadow */
+}
+
+/* Tall images (e.g. mobile screenshots) - ratio > 1.2 */
+.vp-doc img.img-tall {
+  max-height: 400px;
+}
+
+/* Very tall images (e.g. long screenshots) - ratio > 2 */
+.vp-doc img.img-very-tall {
+  max-height: 300px;
+}

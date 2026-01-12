@@ -1,3 +1,13 @@
 {
-    "cSpell.words": []
+  "cSpell.words": [],
+  "pasteImage.path": "${currentFileDir}/images",
+  "pasteImage.defaultName": "${currentFileNameWithoutExt}-YYYY-MM-DD-HH-mm-ss",
+  "pasteImage.prefix": "images/",
+  "pasteImage.insertPattern": "![](${imageFilePath})",
+  "pasteImage.basePath": "${currentFileDir}/images",
+  "markdown.copyFiles.destination": {
+    "*.md": "images/${fileName}"
+  },
+  "markdown.editor.drop.enabled": false,
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": false
 }

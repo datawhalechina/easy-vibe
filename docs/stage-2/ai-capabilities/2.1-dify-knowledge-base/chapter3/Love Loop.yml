@@ -1,0 +1,388 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Love Loop
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gitee_ai:0.1.4@f621ace33bb3c140f5a1e3533fcb518f558c7b945d63523c0f85810a4b4a8b93
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 411d934a-94cb-4899-a892-31300f69228e
+    name: words
+    selector:
+    - conversation
+    - words
+    value: love
+    value_type: string
+  - description: ''
+    id: 7aca1d78-2dbc-4ccf-8428-0f0eed7b203c
+    name: WORDS
+    selector:
+    - conversation
+    - WORDS
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1758765136208'
+        sourceType: loop-start
+        targetType: llm
+      id: 1758765136208start-source-1758765344915-target
+      source: 1758765136208start
+      sourceHandle: source
+      target: '1758765344915'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: loop
+        targetType: answer
+      id: 1758765136208-source-answer-target
+      source: '1758765136208'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1758765136208'
+        sourceType: llm
+        targetType: code
+      id: 1758765344915-source-1758765883132-target
+      source: '1758765344915'
+      sourceHandle: source
+      target: '1758765883132'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1758765136208'
+        sourceType: code
+        targetType: assigner
+      id: 1758765883132-source-1758765428475-target
+      source: '1758765883132'
+      sourceHandle: source
+      target: '1758765428475'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: assigner
+      id: 1758764476473-source-1758765920251-target
+      source: '1758764476473'
+      sourceHandle: source
+      target: '1758765920251'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: loop
+      id: 1758765920251-source-1758765136208-target
+      source: '1758765920251'
+      sourceHandle: source
+      target: '1758765136208'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1758764476473'
+      position:
+        x: 115.88661184766386
+        y: 178.92252604934293
+      positionAbsolute:
+        x: 115.88661184766386
+        y: 178.92252604934293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#conversation.words#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 1456.1539893939312
+        y: 178.92252604934293
+      positionAbsolute:
+        x: 1456.1539893939312
+        y: 178.92252604934293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        break_conditions: []
+        desc: ''
+        error_handle_mode: terminated
+        height: 462
+        logical_operator: and
+        loop_count: 5
+        loop_variables: []
+        selected: false
+        start_node_id: 1758765136208start
+        title: Loop
+        type: loop
+        width: 682
+      height: 462
+      id: '1758765136208'
+      position:
+        x: 731.5560922291256
+        y: 187.5878472722298
+      positionAbsolute:
+        x: 731.5560922291256
+        y: 187.5878472722298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 682
+      zIndex: 1
+    - data:
+        desc: ''
+        isInLoop: true
+        selected: false
+        title: ''
+        type: loop-start
+      draggable: false
+      height: 48
+      id: 1758765136208start
+      parentId: '1758765136208'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 755.5560922291256
+        y: 255.5878472722298
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-loop-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1758765136208'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen3-235B-A22B-Instruct-2507
+          provider: langgenius/gitee_ai/gitee_ai
+        prompt_template:
+        - id: e27d2ef8-3dc0-4fbf-8866-90ec3f10c758
+          role: system
+          text: write a word with a similar meaning to the words user input.
+        - id: 624597ef-8e03-49c7-8365-4b17dc487032
+          role: user
+          text: '{{#conversation.words#}}'
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1758765344915'
+      parentId: '1758765136208'
+      position:
+        x: 114.28909334084415
+        y: 65
+      positionAbsolute:
+        x: 845.8451855699698
+        y: 252.5878472722298
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1758765883132'
+          - result
+          variable_selector:
+          - conversation
+          - words
+          write_mode: over-write
+        loop_id: '1758765136208'
+        selected: false
+        title: Variable Assigner
+        type: assigner
+        version: '2'
+      height: 88
+      id: '1758765428475'
+      parentId: '1758765136208'
+      position:
+        x: 418.79897041375784
+        y: 194.04290759019386
+      positionAbsolute:
+        x: 1150.3550626428835
+        y: 381.63075486242366
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "\ndef main(arg1: str, arg2: str) -> dict:\n    return {\n        \"\
+          result\": arg1 +arg2 ,\n    }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1758765136208'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Connect
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - words
+          variable: arg1
+        - value_selector:
+          - '1758765344915'
+          - text
+          variable: arg2
+      height: 54
+      id: '1758765883132'
+      parentId: '1758765136208'
+      position:
+        x: 111.09640498433282
+        y: 202.0812369434865
+      positionAbsolute:
+        x: 842.6524972134584
+        y: 389.6690842157163
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - sys
+          - query
+          variable_selector:
+          - conversation
+          - words
+          write_mode: over-write
+        selected: false
+        title: define words
+        type: assigner
+        version: '2'
+      height: 88
+      id: '1758765920251'
+      position:
+        x: 404.0977808713518
+        y: 178.92252604934293
+      positionAbsolute:
+        x: 404.0977808713518
+        y: 178.92252604934293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 59.39316938104503
+      y: 131.3127545416781
+      zoom: 0.5431072229827936
