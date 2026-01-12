@@ -65,6 +65,15 @@ export default defineConfig({
           text: '附录 B：常见报错及解决方案',
           link: '/stage-1/appendix-b-common-errors/'
         }
+        ,
+        {
+          text: '附录示例：贪吃蛇游戏教程',
+          link: '/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
+        },
+        {
+          text: '附录示例：用 AI 搭建完整网站',
+          link: '/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
+        }
       ],
       '/stage-2/': [
         {

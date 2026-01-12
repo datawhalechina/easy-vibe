@@ -38,3 +38,20 @@
 .VPSidebarItem.level-1 .text {
   line-height: 1.4;
 }
+
+/* 图片高度限制策略：根据长宽比调整最大高度 */
+/* 越高的图片（长宽比越大），限制的高度越小，避免占用过多纵向空间 */
+.vp-doc img.img-tall {
+  max-height: 450px !important;
+  width: auto !important;
+}
+
+.vp-doc img.img-very-tall {
+  max-height: 350px !important;
+  width: auto !important;
+}
+
+.vp-doc img.img-ultra-tall {
+  max-height: 250px !important;
+  width: auto !important;
+}

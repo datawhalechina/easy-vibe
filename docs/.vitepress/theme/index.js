@@ -92,12 +92,21 @@ export default {
       if (!naturalWidth || !naturalHeight) return
 
       const ratio = naturalHeight / naturalWidth
-      img.classList.remove('img-tall', 'img-very-tall')
+      img.classList.remove('img-tall', 'img-very-tall', 'img-ultra-tall')
+      img.style.width = 'auto' // 确保宽度自动，防止拉伸
 
-      if (ratio > 2) {
+      if (ratio > 3) {
+        img.classList.add('img-ultra-tall')
+        img.style.maxHeight = '250px'
+      } else if (ratio > 2) {
         img.classList.add('img-very-tall')
+        img.style.maxHeight = '350px'
       } else if (ratio > 1.2) {
         img.classList.add('img-tall')
+        img.style.maxHeight = '450px'
+      } else {
+        // 普通图片重置，避免复用 dom 时残留样式
+        img.style.maxHeight = ''
       }
     }
 
