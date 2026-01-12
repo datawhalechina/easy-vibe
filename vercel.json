@@ -1,3 +1,5 @@
 {
+  "framework": "vite",
+  "buildCommand": "npm run build",
   "outputDirectory": "docs/.vitepress/dist"
 }

@@ -40,7 +40,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build with VitePress
-        run: npm run build
+        # 假设仓库名为 easy-vibe，如果是其他名称，请修改 /easy-vibe/ 为 /仓库名/
+        run: npm run build -- --base /easy-vibe/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
