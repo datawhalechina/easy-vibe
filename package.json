@@ -15,6 +15,9 @@
     "tutorial",
     "vitepress"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
     "prettier": "^3.7.4"
