@@ -6,34 +6,7 @@ export default defineConfig({
   description: 'Easy-Vibe 中文实战课 - 零基础学会用 AI 干实际工作',
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
-    ['style', {}, `
-      :root {
-        --vp-sidebar-nav-section-gap: 4px;
-        --vp-sidebar-item-line-height: 16px !important;
-        --vp-sidebar-item-padding-bottom: 0px !important;
-        --vp-sidebar-item-padding-top: 0px !important;
-      }
-      .VPSidebarItem .item,
-      .VPSidebarItem .VPLink,
-      .VPSidebarItem .link,
-      .VPSidebarItem .text {
-        padding-top: 1px !important;
-        padding-bottom: 1px !important;
-        min-height: unset !important;
-        line-height: 1.2 !important;
-        font-size: 13px !important;
-      }
-      .VPSidebarItem.level-0 { padding-bottom: 4px !important; }
-      .VPSidebarItem.level-0 > .item { padding-top: 3px !important; padding-bottom: 3px !important; }
-      .VPSidebarItem.level-0 > .item .text { font-weight: 600 !important; font-size: 14px !important; }
-      .VPSidebarItem.level-1 .item,
-      .VPSidebarItem.level-2 .item,
-      .VPSidebarItem.level-3 .item,
-      .VPSidebarItem.level-4 .item { padding-top: 0px !important; padding-bottom: 0px !important; }
-      .VPSidebarItem .VPLink { display: flex !important; align-items: center !important; min-height: 20px !important; }
-      .VPSidebarGroup { padding-top: 2px !important; padding-bottom: 2px !important; }
-      .VPSidebarItem .indicator { height: 10px !important; width: 3px !important; top: 50% !important; transform: translateY(-50%) !important; }
-    `]
+    ['link', { rel: 'stylesheet', href: '/style.css' }]
   ],
   themeConfig: {
     logo: '/logo.png',
