@@ -8,8 +8,6 @@
   <img src="https://img.shields.io/github/stars/datawhalechina/easy-vibe?style=flat&logo=github" alt="GitHub stars"/>
   <img src="https://img.shields.io/github/forks/datawhalechina/easy-vibe?style=flat&logo=github" alt="GitHub forks"/>
   <img src="https://img.shields.io/badge/language-Chinese-brightgreen?style=flat" alt="Language"/>
-  <a href="https://github.com/datawhalechina/easy-vibe"><img src="https://img.shields.io/badge/GitHub-Project-blue?style=flat&logo=github" alt="GitHub Project"></a>
-  <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status">
 </div>
 
 <div align="center">
