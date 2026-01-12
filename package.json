@@ -17,14 +17,14 @@
   ],
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
-    "prettier": "^3.7.4",
-    "vitepress": "2.0.0-alpha.15",
-    "vue": "^3.5.0"
+    "prettier": "^3.7.4"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "element-plus": "^2.13.1",
     "typeit": "^8.8.7",
-    "viewerjs": "^1.11.7"
+    "viewerjs": "^1.11.7",
+    "vitepress": "2.0.0-alpha.15",
+    "vue": "^3.5.0"
   }
 }
