@@ -24,7 +24,7 @@
 
 ## 项目介绍
 
-2025年，被很多人视为AI编程的元年。越来越多的人开始用AI写代码，但往往不知道如何组织开发流程，更不清楚从原型到上线中间还差哪些关键步骤。本教程将带你从0到1，逐步掌握Vibe Coding技巧：
+越来越多的人开始用AI写代码，但往往不知道如何组织开发流程，更不清楚从原型到上线中间还差哪些关键步骤。本教程将带你从0到1，逐步掌握Vibe Coding技巧：
 
 - 第零阶段通过**小游戏快速入门** vibe coding 技能
 - 第一阶段产品经理级 **vibe coding 技能和业务理解**、完成Web应用原型
@@ -58,17 +58,17 @@
 
 | 章节                                                                                | 关键内容                                          | 状态 |
 | :---------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
-| [初级二：认识 AI IDE 工具](docs/stage-1/1.1-introduction-to-ai-ide/index.md)        | 学会使用 IDE，掌握界面结构和高效提示方式          | ✅   |
-| [初级三：动手做出原型](docs/stage-1/1.2-building-prototype/index.md)                | 从产品分析拆解，到多页面产品原型实现的完整闭环    | ✅   |
-| [初级四：给原型加上 AI 能力](docs/stage-1/1.3-integrating-ai-capabilities/index.md) | 理解并完成常见 AI 能力（文本图片视频）的 API 接入 | ✅   |
-| [初级五：完整项目实战](docs/stage-1/1.4-complete-project-practice/index.md)         | 模拟真实场景、接受用户反馈迭代并完成项目展示      | ✅   |
-| [大作业：做一个完整的 Web 应用原型并展示](docs/stage-1/1.5-final-project/index.md)  | 独立用 AI IDE 落地并演示一个可用 Web 应用         | ✅   |
+| [初级二：认识 AI IDE 工具](docs/stage-1/1.1-introduction-to-ai-ide/index.md)        | 学会使用 IDE，在本地制作小游戏          | ✅   |
+| [初级三：动手做出原型](docs/stage-1/1.2-building-prototype/index.md)                | 从需求分析、AI 生成单页面，再到生成多页面产品原型   | ✅   |
+| [初级四：给原型加上 AI 能力](docs/stage-1/1.3-integrating-ai-capabilities/index.md) | 学会接入常见 AI 能力（文本、图片、视频） | ✅   |
+| [初级五：完整项目实战](docs/stage-1/1.4-complete-project-practice/index.md)         | 模拟真实场景、接受用户反馈迭代，完整化项目   | ✅   |
+| [大作业：做一个完整的 Web 应用原型并展示](docs/stage-1/1.5-final-project/index.md)  | 完整实现应用，展示应用效果       | ✅   |
 
 #### 附录
 
 | 章节                                                                        | 关键内容                                  | 状态 |
 | :-------------------------------------------------------------------------- | :---------------------------------------- | :--- |
-| [附录A：产品思维补充](docs/stage-1/appendix-a-product-thinking/index.md)    | 从想法评估到需求拆解与 MVP 的产品思维框架 | ✅   |
+| [附录A：产品思维补充](docs/stage-1/appendix-a-product-thinking/index.md)    | 从零到一做产品需要考虑的思维框架 | ✅   |
 | [附录B：常见报错及解决方案](docs/stage-1/appendix-b-common-errors/index.md) | vibe coding 中的常见错误及排查方法        | ✅   |
 
 ### 二、初中级开发工程师

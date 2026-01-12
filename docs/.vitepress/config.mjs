@@ -17,7 +17,7 @@ export default defineConfig({
       provider: 'local'
     },
     outline: {
-      level: 'deep',
+      level: [1, 6],
       label: '页面导航'
     },
     nav: [
