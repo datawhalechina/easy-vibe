@@ -7,7 +7,7 @@ const base = isVercel ? '/' : '/easy-vibe/'
 export default defineConfig({
   base: base,
   title: 'Easy-Vibe Tutorial',
-  description: 'Easy-Vibe 中文实战课 - 零基础学会用 AI 干实际工作',
+  description: 'Easy-Vibe 中文实战课',
   head: [
     ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }]
   ],
@@ -22,7 +22,7 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: '纯新手', link: '/stage-0/0.1-learning-map/' },
+      { text: '新手入门', link: '/stage-0/0.1-learning-map/' },
       { text: '产品经理', link: '/stage-1/1.1-introduction-to-ai-ide/' },
       {
         text: '初中级开发',
