@@ -40,9 +40,7 @@ jobs:
         run: npm ci
       - name: Build with VitePress
         run: |
-          REPO_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')
-          echo "Building for repository: $REPO_NAME"
-          npm run build -- --base /$REPO_NAME/
+          npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

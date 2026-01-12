@@ -1,11 +1,23 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/',
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          // 强制哈希文件名，确保每次构建都是新文件
+          entryFileNames: 'assets/[name].[hash].js',
+          chunkFileNames: 'assets/[name].[hash].js',
+          assetFileNames: 'assets/[name].[hash].[ext]'
+        }
+      }
+    }
+  },
+  base: '/easy-vibe/',
   title: 'Easy-Vibe Tutorial',
   description: 'Easy-Vibe 中文实战课 - 零基础学会用 AI 干实际工作',
   head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
+    ['link', { rel: 'icon', href: '/easy-vibe/logo.png' }]
   ],
   themeConfig: {
     logo: '/logo.png',
