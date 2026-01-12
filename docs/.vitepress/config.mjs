@@ -1,14 +1,18 @@
 import { defineConfig } from 'vitepress'
 
+// 判断是否是 Vercel 环境
+const isVercel = process.env.VERCEL === '1'
+const base = isVercel ? '/' : '/easy-vibe/'
+
 export default defineConfig({
-  base: '/easy-vibe/',
+  base: base,
   title: 'Easy-Vibe Tutorial',
   description: 'Easy-Vibe 中文实战课 - 零基础学会用 AI 干实际工作',
   head: [
-    ['link', { rel: 'icon', href: '/easy-vibe/logo.png' }]
+    ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }]
   ],
   themeConfig: {
-    logo: '/logo.png',
+    logo: `${base}logo.png`.replace('//', '/'),
     search: {
       provider: 'local'
     },
@@ -32,31 +36,31 @@ export default defineConfig({
     ],
     sidebar: {
       '/stage-0/': [
-        { text: '0.1 学习地图', link: '/stage-0/0.1-learning-map/' },
+        { text: '1. 学习地图', link: '/stage-0/0.1-learning-map/' },
         {
-          text: '0.2 AI 时代，会说话就会编程',
+          text: '2. AI 时代，会说话就会编程',
           link: '/stage-0/0.2-ai-capabilities-through-games/'
         }
       ],
       '/stage-1/': [
         {
-          text: '1.1 认识 AI IDE 工具',
+          text: '1. 认识 AI IDE 工具',
           link: '/stage-1/1.1-introduction-to-ai-ide/'
-        },
+        },  
         {
-          text: '1.2 动手做出原型',
+          text: '2. 动手做出原型',
           link: '/stage-1/1.2-building-prototype/'
         },
         {
-          text: '1.3 给原型加上 AI 能力',
+          text: '3. 给原型加上 AI 能力',
           link: '/stage-1/1.3-integrating-ai-capabilities/'
         },
         {
-          text: '1.4 完整项目实战',
+          text: '4. 完整项目实战',
           link: '/stage-1/1.4-complete-project-practice/'
         },
         {
-          text: '1.5 大作业：完成一个 Web 应用原型',
+          text: '5. 大作业：完成一个 Web 应用原型',
           link: '/stage-1/1.5-final-project/'
         },
         {
