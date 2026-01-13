@@ -13,7 +13,7 @@
 
 ### *零基础、项目制学习、构建第一个 AI 产品*
 
-<div align="center">
+<div align="center" style="margin-bottom: 16px;">
   <a href="https://datawhalechina.github.io/easy-vibe/" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/在线阅读-立即开始-FF6B6B?style=for-the-badge&logo=rocket&logoColor=white&labelColor=1a1a2e">
   </a>
@@ -27,7 +27,7 @@
   <a href="#contact"><img src="https://img.shields.io/badge/💬WeChat-Group-07c160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=1a1a2e"></a>
 </p>
 
-<div align="center">
+<div align="center" style="margin-top: 16px;">
   <a href="README_EN.md"><img src="https://img.shields.io/badge/English-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/中文-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="中文"></a>
 </div>
