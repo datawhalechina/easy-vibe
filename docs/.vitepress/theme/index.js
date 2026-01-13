@@ -7,11 +7,13 @@ import TypeIt from 'typeit'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute, useData } from 'vitepress'
 import './style.css'
+import StepBar from './components/StepBar.vue'
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
     app.use(ElementPlus)
+    app.component('StepBar', StepBar)
   },
   setup() {
     const route = useRoute()

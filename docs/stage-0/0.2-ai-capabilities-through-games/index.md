@@ -24,12 +24,14 @@
 - Assignment：复现贪吃蛇，并（可选）实现一种你感兴趣的 AI 原生游戏
 
 <div style="margin: 50px 0;">
-  <el-steps :active="0" align-center>
-    <el-step title="困境与机会" description="普通人的编程新可能" />
-    <el-step title="能力初探" description="60秒极速开发体验" />
-    <el-step title="原生实战" description="打造AI原生贪吃蛇" />
-    <el-step title="拓展创造" description="举一反三做游戏" />
-  </el-steps>
+  <ClientOnly>
+    <StepBar :active="0" :items="[
+      { title: '困境与机会', description: '普通人的编程新可能' },
+      { title: '能力初探', description: '60秒极速开发体验' },
+      { title: '原生实战', description: '打造AI原生贪吃蛇' },
+      { title: '拓展创造', description: '举一反三做游戏' }
+    ]" />
+  </ClientOnly>
 </div>
 
 ## 1. 普通人的困境与机会
@@ -45,12 +47,14 @@ AI 出现之后,第一次给了普通人一个全新的可能：你不需要会�
 这门课的目标是帮你练成新技能：通过自然语言对话就能做应用。我们将教你怎么跟 AI 用计算机的语言沟通、怎么让AI帮你把脑子里的想法变成真实可用的产品。
 
 <div style="margin: 50px 0;">
-  <el-steps :active="1" align-center>
-    <el-step title="困境与机会" description="普通人的编程新可能" />
-    <el-step title="能力初探" description="60秒极速开发体验" />
-    <el-step title="原生实战" description="打造AI原生贪吃蛇" />
-    <el-step title="拓展创造" description="举一反三做游戏" />
-  </el-steps>
+  <ClientOnly>
+    <StepBar :active="1" :items="[
+      { title: '困境与机会', description: '普通人的编程新可能' },
+      { title: '能力初探', description: '60秒极速开发体验' },
+      { title: '原生实战', description: '打造AI原生贪吃蛇' },
+      { title: '拓展创造', description: '举一反三做游戏' }
+    ]" />
+  </ClientOnly>
 </div>
 
 ## 2. AI 能帮你做到什么程度
@@ -133,6 +137,17 @@ AI 出现之后,第一次给了普通人一个全新的可能：你不需要会�
 
 在当下，你可以相对安心地把 AI 视作一个高效的 Demo 与自用工具搭档：
 只要你愿意多测试、多迭代，多问几轮“这里不对，帮我修一下并解释原因”，在原型与内部工具这一级别，整体质量通常是足够且具备实践价值的。
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="2" :items="[
+      { title: '困境与机会', description: '普通人的编程新可能' },
+      { title: '能力初探', description: '60秒极速开发体验' },
+      { title: '原生实战', description: '打造AI原生贪吃蛇' },
+      { title: '拓展创造', description: '举一反三做游戏' }
+    ]" />
+  </ClientOnly>
+</div>
 
 ## 3. 动手：你的第一个 AI 原生应用
 
@@ -224,12 +239,14 @@ z.ai 的回复将会是这样的：
 ![](images/image58.png)
 
 <div style="margin: 50px 0;">
-  <el-steps :active="3" align-center>
-    <el-step title="困境与机会" description="普通人的编程新可能" />
-    <el-step title="能力初探" description="60秒极速开发体验" />
-    <el-step title="原生实战" description="打造AI原生贪吃蛇" />
-    <el-step title="拓展创造" description="举一反三做游戏" />
-  </el-steps>
+  <ClientOnly>
+    <StepBar :active="3" :items="[
+      { title: '困境与机会', description: '普通人的编程新可能' },
+      { title: '能力初探', description: '60秒极速开发体验' },
+      { title: '原生实战', description: '打造AI原生贪吃蛇' },
+      { title: '拓展创造', description: '举一反三做游戏' }
+    ]" />
+  </ClientOnly>
 </div>
 
 ### 3.3 尝试制作其他小游戏
