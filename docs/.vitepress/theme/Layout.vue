@@ -2,6 +2,7 @@
 import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
 import TextType from './components/TextType.vue'
+import GitHubStars from './components/GitHubStars.vue'
 import { onMounted, ref, watch } from 'vue'
 import { Setting } from '@element-plus/icons-vue'
 
@@ -29,12 +30,14 @@ const lineHeight = ref(DEFAULT_LINE_HEIGHT)
 const isHydrated = ref(false)
 
 const clampFontSize = (value) => {
+  if (value === null || value === undefined || value === '') return DEFAULT_FONT_SIZE
   const numeric = Number(value)
   if (!Number.isFinite(numeric)) return DEFAULT_FONT_SIZE
   return Math.min(MAX_FONT_SIZE, Math.max(MIN_FONT_SIZE, numeric))
 }
 
 const clampLineHeight = (value) => {
+  if (value === null || value === undefined || value === '') return DEFAULT_LINE_HEIGHT
   const numeric = Number(value)
   if (!Number.isFinite(numeric)) return DEFAULT_LINE_HEIGHT
   return Math.min(MAX_LINE_HEIGHT, Math.max(MIN_LINE_HEIGHT, numeric))
@@ -94,6 +97,7 @@ watch(lineHeight, (next) => {
 <template>
   <DefaultTheme.Layout>
     <template #nav-bar-content-after>
+      <GitHubStars />
       <ClientOnly>
         <el-popover placement="bottom-end" trigger="click" :width="260">
           <template #reference>

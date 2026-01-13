@@ -15,9 +15,9 @@ const commonThemeConfig = {
   search: {
     provider: 'local'
   },
-  socialLinks: [
-    { icon: 'github', link: 'https://github.com/datawhalechina/easy-vibe' }
-  ],
+  // socialLinks: [
+  //   { icon: 'github', link: 'https://github.com/datawhalechina/easy-vibe' }
+  // ],
   outline: {
     level: [1, 6]
   }
