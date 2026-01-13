@@ -559,4 +559,4 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
    1. **在 README.md 中写入一两句话的小说明：你选择了谁作为画像主角，为什么选 TA。**
 2. **你的 Hogwarts Portraits 线上访问链接；**
 
-你也可以参考 Yerim 写的 [使用设计和代码 Agent 制作网页](/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) 教程，进行个人作品集或任意功能简单网页的快速搭建。
+你也可以参考 Yerim 写的 [使用设计和代码 Agent 制作网页](/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) 教程，进行个人作品集或任意功能简单网页的快速搭建。

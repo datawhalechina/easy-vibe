@@ -13,23 +13,40 @@
 
 ### *Zero Foundation, Project-Based Learning, Build Your First AI Product*
 
-<div align="center" style="margin-bottom: 16px;">
-  <a href="https://datawhalechina.github.io/easy-vibe/" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/Online_Read-Start_Now-FF6B6B?style=for-the-badge&logo=rocket&logoColor=white&labelColor=1a1a2e">
-  </a>
-</div>
-
-<p>
-  <a href="https://github.com/datawhalechina/easy-vibe/stargazers"><img src='https://img.shields.io/github/stars/datawhalechina/easy-vibe?color=660874&style=for-the-badge&logo=star&logoColor=white&labelColor=1a1a2e' /></a>
-  <a href="https://github.com/datawhalechina/easy-vibe/network/members"><img src='https://img.shields.io/github/forks/datawhalechina/easy-vibe?color=660874&style=for-the-badge&logo=git-fork&logoColor=white&labelColor=1a1a2e' /></a>
-  <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-4ecdc4?style=for-the-badge&logo=creative-commons&logoColor=white&labelColor=1a1a2e">
-  <img src="https://img.shields.io/badge/Language-English-brightgreen?style=for-the-badge&logo=google-translate&logoColor=white&labelColor=1a1a2e">
+<p align="center">
+  📌 <a href="https://datawhalechina.github.io/easy-vibe/">Start Reading Online</a>
 </p>
 
-<div align="center" style="margin-top: 16px;">
-  <a href="README_EN.md"><img src="https://img.shields.io/badge/English-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English"></a>
-  <a href="README.md"><img src="https://img.shields.io/badge/中文-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="中文"></a>
-</div>
+<p align="center">
+  <a href="https://datawhalechina.github.io/easy-vibe/">Online Reading</a> ·
+  <a href="#-content-navigation">Learning Map</a> ·
+  <a href="#contact">Community</a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/datawhalechina/easy-vibe/stargazers" target="_blank">
+        <img src="https://img.shields.io/github/stars/datawhalechina/easy-vibe?color=660874&style=for-the-badge&logo=star&logoColor=white&labelColor=1a1a2e" alt="Stars"></a>
+    <a href="https://github.com/datawhalechina/easy-vibe/network/members" target="_blank">
+        <img src="https://img.shields.io/github/forks/datawhalechina/easy-vibe?color=660874&style=for-the-badge&logo=git-fork&logoColor=white&labelColor=1a1a2e" alt="Forks"></a>
+    <a href="LICENSE" target="_blank">
+        <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-4ecdc4?style=for-the-badge&logo=creative-commons&logoColor=white&labelColor=1a1a2e" alt="License"></a>
+</p>
+
+<p align="center">
+  <a href="./README.md"><img alt="简体中文" src="https://img.shields.io/badge/简体中文-d9d9d9"></a>
+  <a href="./README_CHT.md"><img alt="繁體中文" src="https://img.shields.io/badge/繁體中文-d9d9d9"></a>
+  <a href="./README_EN.md"><img alt="English" src="https://img.shields.io/badge/English-d9d9d9"></a>
+  <a href="./README_JA.md"><img alt="日本語" src="https://img.shields.io/badge/日本語-d9d9d9"></a>
+  <a href="./README_ES.md"><img alt="Español" src="https://img.shields.io/badge/Español-d9d9d9"></a>
+  <a href="./README_FR.md"><img alt="Français" src="https://img.shields.io/badge/Français-d9d9d9"></a>
+  <a href="./README_KL.md"><img alt="Klingon" src="https://img.shields.io/badge/Klingon-d9d9d9"></a>
+  <a href="./README_KO.md"><img alt="한국어" src="https://img.shields.io/badge/한국어-d9d9d9"></a>
+  <a href="./README_AR.md"><img alt="العربية" src="https://img.shields.io/badge/العربية-d9d9d9"></a>
+  <a href="./README_TR.md"><img alt="Türkçe" src="https://img.shields.io/badge/Türkçe-d9d9d9"></a>
+  <a href="./README_VI.md"><img alt="Tiếng_Việt" src="https://img.shields.io/badge/Tiếng_Việt-d9d9d9"></a>
+  <a href="./README_DE.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
+  <a href="./README_BN.md"><img alt="বাংলা" src="https://img.shields.io/badge/বাংলা-d9d9d9"></a>
+</p>
 
 </div>
 

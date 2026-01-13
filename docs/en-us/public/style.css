@@ -1,6 +1,5 @@
 :root {
-  /* Easy-Vibe Theme Fix v2025-01-12 */
-  /* 通过变量控制分组底部留白（默认 24px） */
+  /* 调整侧边栏分组之间的间距 */
   --vp-sidebar-nav-section-gap: 8px;
   --ev-doc-font-size: 13px;
   --ev-doc-line-height: 1.65;
@@ -84,77 +83,55 @@
   font-size: 0.95em;
 }
 
-/* 生产环境（带 data-v-* 的 scoped 样式）会比 class 选择器更高优先级。
-   为避免 build/preview 时被覆盖，这里显式匹配 scoped 属性并加 !important。 */
-:where(html) .VPSidebarItem.level-0,
-:where(html) .VPSidebarItem.level-0[data-v-d81de50c] {
-  padding-bottom: 8px !important;
-}
-
-/* 减少一级标题文字与下方子菜单的间距 */
-:where(html) .VPSidebarItem.level-0 > .item,
-:where(html) .VPSidebarItem.level-0[data-v-d81de50c] > .item {
+/* 减少一级标题（如"前端开发"）底部的间距 */
+.VPSidebarItem.level-0 {
   padding-bottom: 4px !important;
 }
 
+/* 减少一级标题文字与下方子菜单的间距 */
+.VPSidebarItem.level-0 > .item {
+  padding-bottom: 2px !important;
+}
+
 /* 调整子菜单项之间的间距 - 针对所有层级 */
-:where(html) .VPSidebarItem.level-1 .item,
-:where(html) .VPSidebarItem.level-1[data-v-d81de50c] .item,
-:where(html) .VPSidebarItem.level-2 .item,
-:where(html) .VPSidebarItem.level-2[data-v-d81de50c] .item,
-:where(html) .VPSidebarItem.level-3 .item,
-:where(html) .VPSidebarItem.level-3[data-v-d81de50c] .item,
-:where(html) .VPSidebarItem.level-4 .item,
-:where(html) .VPSidebarItem.level-4[data-v-d81de50c] .item {
-  padding-top: 3px !important;
-  padding-bottom: 3px !important;
-  min-height: 26px !important; /* 稍微放大便于点击 */
+.VPSidebarItem.level-1 .item,
+.VPSidebarItem.level-2 .item,
+.VPSidebarItem.level-3 .item,
+.VPSidebarItem.level-4 .item {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 24px !important; /* 强制减小最小高度 */
 }
 
 /* 针对可能存在的特定类名进行覆盖，确保紧凑 */
-:where(html) .VPSidebarGroup,
-:where(html) .VPSidebarGroup[data-v-8d50c081] {
+.VPSidebarGroup {
   padding-top: 6px !important;
   padding-bottom: 6px !important;
 }
 
 /* 进一步压缩分组标题与第一项之间的间距 */
-:where(html) .VPSidebarItem.level-0 + .VPSidebarItem.level-1,
-:where(html)
-  .VPSidebarItem.level-0[data-v-d81de50c]
-  + .VPSidebarItem.level-1[data-v-d81de50c] {
+.VPSidebarItem.level-0 + .VPSidebarItem.level-1 {
   margin-top: -2px !important;
 }
 
 /* 压缩分组标题本身的行高 */
-:where(html) .VPSidebarItem.level-0 .text,
-:where(html) .VPSidebarItem.level-0[data-v-d81de50c] .text {
+.VPSidebarItem.level-0 .text {
   line-height: 1.3 !important;
 }
 
 /* 压缩子项的行高 */
-:where(html) .VPSidebarItem.level-1 .text,
-:where(html) .VPSidebarItem.level-1[data-v-d81de50c] .text,
-:where(html) .VPSidebarItem.level-2 .text,
-:where(html) .VPSidebarItem.level-2[data-v-d81de50c] .text,
-:where(html) .VPSidebarItem.level-3 .text,
-:where(html) .VPSidebarItem.level-3[data-v-d81de50c] .text {
+.VPSidebarItem.level-1 .text,
+.VPSidebarItem.level-2 .text,
+.VPSidebarItem.level-3 .text {
   line-height: 1.4 !important;
   padding: 0 !important; /* 移除文字本身的内边距 */
 }
 
 /* 强制链接本身没有额外的边距 */
-:where(html) .VPSidebarItem .VPLink,
-:where(html) .VPSidebarItem[data-v-d81de50c] .VPLink {
+.VPSidebarItem .VPLink {
   padding-top: 2px !important;
   padding-bottom: 2px !important;
   min-height: auto !important;
-}
-
-/* 清空 sidebar item 自带的 margin，避免垂直间距被放大 */
-:where(html) .VPSidebarItem .item,
-:where(html) .VPSidebarItem[data-v-d81de50c] .item {
-  margin-bottom: 0 !important;
 }
 
 /* 图片高度限制策略：根据长宽比调整最大高度 */
@@ -196,39 +173,6 @@
 
 /* Fix tagline wrapping issues */
 .VPHomeHero .tagline {
-  white-space: pre-wrap;
-  word-break: break-word;
+  white-space: nowrap;
   max-width: none !important;
-}
-
-@media (min-width: 960px) {
-  .VPHomeHero .tagline {
-    white-space: nowrap;
-  }
-}
-
-/* 移除链接下划线，改善阅读体验 */
-.vp-doc a {
-  text-decoration: none !important;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom-color 0.2s ease-in-out;
-}
-
-.vp-doc a:hover {
-  border-bottom-color: var(--vp-c-brand-1, #646cff);
-}
-
-/* 链接保持无下划线，只在悬停时显示 */
-.VPDoc a,
-.VPLink a {
-  text-decoration: none !important;
-}
-
-/* 侧边栏链接无下划线 */
-.VPSidebarItem .VPLink {
-  text-decoration: none !important;
-}
-
-.VPSidebarItem .VPLink:hover {
-  text-decoration: none !important;
 }
