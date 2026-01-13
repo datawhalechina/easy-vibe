@@ -20,21 +20,131 @@ AI coding的出现正在改写传统编程学习的规则。你不再需要花�
 
 ## 三个阶段的成长路径：从“会用 AI”到“会做 AI 产品”
 
-::: info 🎮 第零阶段：体验 AI 编程的魔力
-通过贪吃蛇等小游戏，你将第一次**体验到 AI 辅助编程的能力与边界**。这个阶段**不需要任何编程基础**，只需要你愿意动手尝试——看着 AI 在几分钟内帮你生成一个可玩的游戏，你会直观感受到 **vibecoding 的强大**。
-:::
+<div class="stage-intro">
+  <div class="stage-card">
+    <div class="stage-icon">🎮</div>
+    <h3>新手入门</h3>
+    <p class="stage-role">体验 AI 编程</p>
+    <div class="stage-tags">
+      <span>贪吃蛇小游戏</span>
+      <span>零基础上手</span>
+      <span>Vibecoding 初体验</span>
+      <span>几分钟生成</span>
+    </div>
+  </div>
+</div>
 
-::: tip 🛠️ 第一阶段：掌握产品开发的完整闭环
-学会使用 **AI IDE（如 Cursor、Claude 等工具）**将想法转化为可运行的 Web 应用原型。你将学习如何**拆解需求、设计多页面应用、接入 AI 能力**（文本生成、图像处理等），并用模拟数据完成一个完整的产品 demo。这个阶段结束时，你能**独立完成一个像“霍格沃茨画像”那样接入 AI 能力的前端应用**。
-:::
+<div class="stage-grid">
+  <div class="stage-card">
+    <div class="stage-icon">🛠️</div>
+    <h3>第一阶段</h3>
+    <p class="stage-role">产品经理 / 运营</p>
+    <div class="stage-tags">
+      <span>AI IDE (Cursor/Claude)</span>
+      <span>需求拆解 & 原型</span>
+      <span>接入 AI 能力</span>
+      <span>完整 Demo 开发</span>
+    </div>
+  </div>
+  <div class="stage-card">
+    <div class="stage-icon">💻</div>
+    <h3>第二阶段</h3>
+    <p class="stage-role">初中级开发 / 独立开发者</p>
+    <div class="stage-tags">
+      <span>Figma 到代码</span>
+      <span>Supabase 数据库</span>
+      <span>Stripe 支付集成</span>
+      <span>Dify 知识库</span>
+    </div>
+  </div>
+  <div class="stage-card">
+    <div class="stage-icon">🚀</div>
+    <h3>第三阶段</h3>
+    <p class="stage-role">高级开发 / 架构师</p>
+    <div class="stage-tags">
+      <span>Web/小程序/多端</span>
+      <span>MCP 高级工具</span>
+      <span>RAG & LangGraph</span>
+      <span>高级工程师思维</span>
+    </div>
+  </div>
+</div>
 
-::: warning 💻 第二阶段：成为能上线产品的工程师
-这是质的飞跃。你将学习**现代 Web 开发的核心技能**：从 **Figma 设计稿**到组件化前端实现，从 **Supabase 数据库**到 API 接口开发，从 Git 版本管理到 **Zeabur 部署上线**。更重要的是，你将学会**集成支付系统（如 Stripe）**，让你的应用具备真实的商业价值。通过 **Dify** 等工具，你还将掌握知识库与工作流的构建，为应用注入更强的 AI 能力。
-:::
+<style>
+.stage-intro {
+  margin: 20px auto;
+  max-width: 400px;
+}
 
-::: danger 🚀 第三阶段：构建跨平台的复杂应用
-掌握**多平台开发能力**，将同一个应用部署到 Web、微信小程序、安卓等多个平台。学习 **MCP 等高级工具**扩展 IDE 能力，深入理解 **RAG 原理**并使用 **LangGraph** 等框架设计复杂的 AI 工作流。这个阶段你将具备**高级工程师的思维方式和工具链**。
-:::
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stage-card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+  background-color: var(--vp-c-bg-soft);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.stage-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--vp-c-bg-mute);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border-color: var(--vp-c-brand);
+}
+
+.stage-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.stage-card h3 {
+  margin: 0 0 4px 0 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.stage-role {
+  margin: 0 0 8px 0 !important;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+}
+
+.stage-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stage-tags span {
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background-color: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.stage-card:hover .stage-tags span {
+  background-color: var(--vp-c-bg);
+  border-color: var(--vp-c-brand-dimm);
+  color: var(--vp-c-brand-dark);
+}
+</style>
 
 ## 你将获得的核心能力
 
