@@ -34,31 +34,38 @@ features:
   </p>
 </div>
 
+<script setup>
+import { useData } from 'vitepress'
+
+const { site } = useData()
+const base = site.value.base
+</script>
+
 <div class="stage-container">
-  <div class="stage-card">
+  <a :href="base + 'ja-jp/stage-0/0.1-learning-map/'" class="stage-card">
     <div class="stage-icon">🌱</div>
     <h3>Stage 0: 入門</h3>
     <p>プロダクト、運用、非技術的背景に適しています。ゲームを通じて AI プログラミングロジックを理解し、自信を構築しましょう。</p>
-    <a href="./stage-0/0.1-learning-map/">詳しく見る →</a>
-  </div>
-  <div class="stage-card">
+    <span>詳しく見る →</span>
+  </a>
+  <a :href="base + 'ja-jp/stage-1/1.1-introduction-to-ai-ide/'" class="stage-card">
     <div class="stage-icon">🎨</div>
     <h3>Stage 1: AI プロダクトマネージャー</h3>
     <p>Vibe Coding ワークフローをマスターしましょう。要件を分解し、高品質な Web アプリケーションプロトタイプを独立して完成させる方法を学びます。</p>
-    <a href="./stage-1/1.1-introduction-to-ai-ide/">詳しく見る →</a>
-  </div>
-  <div class="stage-card">
+    <span>詳しく見る →</span>
+  </a>
+  <a :href="base + 'ja-jp/stage-2/frontend/2.0-lovart-assets/'" class="stage-card">
     <div class="stage-icon">💻</div>
     <h3>Stage 2: フルスタック開発</h3>
     <p>フルスタック開発に深く潜り込みましょう。フロントエンドコンポーネント化、データベース設計、バックエンド API 開発、デプロイメント。</p>
-    <a href="./stage-2/frontend/2.0-lovart-assets/">詳しく見る →</a>
-  </div>
-  <div class="stage-card">
+    <span>詳しく見る →</span>
+  </a>
+  <a :href="base + 'ja-jp/stage-3/core-skills/3.1-mcp-claudecode-skills/'" class="stage-card">
     <div class="stage-icon">🚀</div>
     <h3>Stage 3: 上級開発</h3>
     <p>複雑なクロスプラットフォームアプリケーションを構築しましょう。WeChat ミニプログラム実戦、より高レベルの AI ネイティブアプリケーション開発に挑戦します。</p>
-    <a href="./stage-3/core-skills/3.1-mcp-claudecode-skills/">詳しく見る →</a>
-  </div>
+    <span>詳しく見る →</span>
+  </a>
 </div>
 
 <style>

@@ -42,25 +42,25 @@ const base = site.value.base
 </script>
 
 <div class="stage-container">
-  <a :href="base + 'cn/stage-0/0.1-learning-map/'" class="stage-card">
+  <a :href="base + 'zh-cn/stage-0/0.1-learning-map/'" class="stage-card">
     <div class="stage-icon">🌱</div>
     <h3>Stage 0: 新手入门</h3>
     <p>适合产品、运营及非技术背景。通过做游戏理解 AI 编程逻辑，建立信心。</p>
     <span>查看详情 →</span>
   </a>
-  <a :href="base + 'cn/stage-1/1.1-introduction-to-ai-ide/'" class="stage-card">
+  <a :href="base + 'zh-cn/stage-1/1.1-introduction-to-ai-ide/'" class="stage-card">
     <div class="stage-icon">🎨</div>
     <h3>Stage 1: AI 产品经理</h3>
     <p>掌握 Vibe Coding 工作流。学会拆解需求，独立完成高保真 Web 应用原型。</p>
     <span>查看详情 →</span>
   </a>
-  <a :href="base + 'cn/stage-2/frontend/2.0-lovart-assets/'" class="stage-card">
+  <a :href="base + 'zh-cn/stage-2/frontend/2.0-lovart-assets/'" class="stage-card">
     <div class="stage-icon">💻</div>
     <h3>Stage 2: 初中级开发</h3>
     <p>深入全栈开发。前端组件化、数据库设计、后端 API 开发与部署上线。</p>
     <span>查看详情 →</span>
   </a>
-  <a :href="base + 'cn/stage-3/core-skills/3.1-mcp-claudecode-skills/'" class="stage-card">
+  <a :href="base + 'zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/'" class="stage-card">
     <div class="stage-icon">🚀</div>
     <h3>Stage 3: 高级开发</h3>
     <p>构建复杂跨平台应用。微信小程序实战，挑战更高阶的 AI 原生应用开发。</p>

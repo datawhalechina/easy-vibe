@@ -34,31 +34,38 @@ features:
   </p>
 </div>
 
+<script setup>
+import { useData } from 'vitepress'
+
+const { site } = useData()
+const base = site.value.base
+</script>
+
 <div class="stage-container">
-  <div class="stage-card">
+  <a :href="base + 'en-us/stage-0/0.1-learning-map/'" class="stage-card">
     <div class="stage-icon">🌱</div>
     <h3>Stage 0: Getting Started</h3>
     <p>Suitable for product, operations, and non-technical backgrounds. Understand AI programming logic through games and build confidence.</p>
-    <a href="./stage-0/0.1-learning-map/">Learn More →</a>
-  </div>
-  <div class="stage-card">
+    <span>Learn More →</span>
+  </a>
+  <a :href="base + 'en-us/stage-1/1.1-introduction-to-ai-ide/'" class="stage-card">
     <div class="stage-icon">🎨</div>
     <h3>Stage 1: AI Product Manager</h3>
     <p>Master the Vibe Coding workflow. Learn to break down requirements and independently complete high-fidelity web application prototypes.</p>
-    <a href="./stage-1/1.1-introduction-to-ai-ide/">Learn More →</a>
-  </div>
-  <div class="stage-card">
+    <span>Learn More →</span>
+  </a>
+  <a :href="base + 'en-us/stage-2/frontend/2.0-lovart-assets/'" class="stage-card">
     <div class="stage-icon">💻</div>
     <h3>Stage 2: Full-Stack Development</h3>
     <p>Dive deep into full-stack development. Frontend componentization, database design, backend API development, and deployment.</p>
-    <a href="./stage-2/frontend/2.0-lovart-assets/">Learn More →</a>
-  </div>
-  <div class="stage-card">
+    <span>Learn More →</span>
+  </a>
+  <a :href="base + 'en-us/stage-3/core-skills/3.1-mcp-claudecode-skills/'" class="stage-card">
     <div class="stage-icon">🚀</div>
     <h3>Stage 3: Advanced Development</h3>
     <p>Build complex cross-platform applications. WeChat mini-program practical实战, challenge higher-level AI-native application development.</p>
-    <a href="./stage-3/core-skills/3.1-mcp-claudecode-skills/">Learn More →</a>
-  </div>
+    <span>Learn More →</span>
+  </a>
 </div>
 
 <style>
