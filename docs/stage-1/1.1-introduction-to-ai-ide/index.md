@@ -2,14 +2,23 @@
 
 ## 本章导读
 
-还记得上一章里，你用 AI 生成的第一个贪吃蛇游戏吗？它说明只用自然语言，已经可以让 AI 搭出一个完整、可运行的原型。与此同时，在 z.ai 这样的网页 IDE 里进行开发时，你可能会感受到限制：项目一变大，代码管理和调试就不顺手，对话次数有最终上限。
+::: info 🎯 学习目标
+本章将围绕本地开发环境展开讲解：你将学会从 z.ai 过渡到本地的开发环境，学会在自己的电脑上搭建完整的开发环境，理解什么是 IDE、什么是 AI IDE，以及如何在日常开发中高效地使用它们。
+:::
 
-这些问题主要来源于工具形态本身，而不是 AI 能力的不足。本章将围绕本地开发环境展开讲解：你将学会从 z.ai 过渡到本地的开发环境，学会在自己的电脑上搭建完整的开发环境，理解什么是 IDE、什么是 AI IDE，以及如何在日常开发中高效地使用它们。
+- 预计时间：约 **1 天**，可分多次完成
+- 预期产出：使用 Trae 产出 **1 个自创小游戏**
 
-最后，我们会在本地 AI IDE 中复现类似 z.ai 贪吃蛇游戏的实战流程，完成一个由你亲自设计的小游戏。
-
-- 预计时间：约一天，可分多次完成
-- 预期产出：使用 Trae 产出 1 个自创小游戏
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="0" :items="[
+      { title: '环境认知', description: '理解 IDE 与 AI IDE' },
+      { title: '本地实战', description: 'Trae 打造贪吃蛇' },
+      { title: '工具详解', description: '熟悉 IDE 界面' },
+      { title: '沟通技巧', description: '高效与 AI 对话' }
+    ]" />
+  </ClientOnly>
+</div>
 
 ## 1. 写代码需要什么环境和工具
 
@@ -144,6 +153,17 @@ Cline 是 VS Code（Visual Studio Code）的一款 AI 编程 Agent 插件，可�
 
 ![](images/image14.png)
 
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="1" :items="[
+      { title: '环境认知', description: '理解 IDE 与 AI IDE' },
+      { title: '本地实战', description: 'Trae 打造贪吃蛇' },
+      { title: '工具详解', description: '熟悉 IDE 界面' },
+      { title: '沟通技巧', description: '高效与 AI 对话' }
+    ]" />
+  </ClientOnly>
+</div>
+
 ## 4. 实战：用 AI IDE 在本地生成贪吃蛇游戏
 
 前面讲的主要是“概念”和“差异”。这一小节，我们通过一次完整的实战，把抽象概念落到具体操作上：**新建一个空文件夹 → 用 AI IDE 打开 → 在侧边栏聊天，让它用 React 帮你从零生成一个贪吃蛇游戏。** 这里以上面介绍的 Trae 为例，首先需要安装和简单理解什么是 Trae。
@@ -209,7 +229,9 @@ Trae 分为国际版和中国版。国际版需要能够访问海外网络，但
 
 如果执行过程中遇到问题，AI 会在对话里展示报错和处理方案，你可以继续通过对话让它调整，而不必自己记住所有命令细节。
 
-⚠️ 需要注意的是，例如下图所示，**有时候 AI Agent 会在执行的过程中暂停，这是因为它需要等待你输入一些信息进行交互**，比如输入创建的名字，或者回车确认指令执行。或者点击指令进行执行。一般情况我们直接回车即可，如果你不确定这步需要做什么，你可以截图当前界面询问大模型应该如何操作。
+::: warning ⚠️ 需要注意
+例如下图所示，**有时候 AI Agent 会在执行的过程中暂停，这是因为它需要等待你输入一些信息进行交互**，比如输入创建的名字，或者回车确认指令执行。或者点击指令进行执行。一般情况我们直接回车即可，如果你不确定这步需要做什么，你可以截图当前界面询问大模型应该如何操作。
+:::
 
 如图所示，这里我们需要点击 Run 进行确认：
 ![](images/index-2026-01-09-10-52-55.png)
@@ -312,6 +334,17 @@ AI 会根据你的描述，直接修改 React 组件和样式。保存后刷新�
 
 ![](images/index-2026-01-09-11-00-57.png)
 
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="2" :items="[
+      { title: '环境认知', description: '理解 IDE 与 AI IDE' },
+      { title: '本地实战', description: 'Trae 打造贪吃蛇' },
+      { title: '工具详解', description: '熟悉 IDE 界面' },
+      { title: '沟通技巧', description: '高效与 AI 对话' }
+    ]" />
+  </ClientOnly>
+</div>
+
 ## 5. 界面上每个按钮是干什么的
 
 在上述操作中，我们已经快速跑通了最小程序生成闭环，但我们仍然对 IDE 不能说得上熟悉。为了彻底熟悉这个之后与我们长期相处的工具。我们会在这一节中对 IDE 的每个细节环节进行深入解释，首先从界面开始，不同 AI IDE 的界面略有差异，但大部分都延续了 [VS Code 的布局](https://code.visualstudio.com/docs/getstarted/getting-started)。
@@ -337,6 +370,17 @@ AI 会根据你的描述，直接修改 React 组件和样式。保存后刷新�
 **Status Bar（状态栏）**：窗口最底部那一条信息栏，会显示当前状态，比如文件类型/语言、缩进方式、编码、是否有报错、Git 状态等。你可以先不深入，但它能帮你快速了解“当前编辑环境是什么情况”。
 
 **更具体的详细内容解释，请查看本篇文章的[附录二](#appendix-2-vscode-menu)。**
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="3" :items="[
+      { title: '环境认知', description: '理解 IDE 与 AI IDE' },
+      { title: '本地实战', description: 'Trae 打造贪吃蛇' },
+      { title: '工具详解', description: '熟悉 IDE 界面' },
+      { title: '沟通技巧', description: '高效与 AI 对话' }
+    ]" />
+  </ClientOnly>
+</div>
 
 ## 6. 怎么跟 AI 说话才有效
 
@@ -499,29 +543,75 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
 
 ## 8. 📚 作业：用本地 AI IDE 做一个更复杂的游戏
 
+<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="font-weight: bold; font-size: 16px;">🚀 挑战任务：打造你的专属游戏</div>
+  </template>
+
 你已经用本地 AI IDE 做过一个贪吃蛇。现在请你再挑战一个更复杂一点的小游戏，完整走一遍“描述需求 → 生成项目 → 本地运行 → 调试迭代”的流程。
 
-1. 选择一个比贪吃蛇更复杂的游戏：
+1. **选择一个比贪吃蛇更复杂的游戏**：
    - 可以是“俄罗斯方块”“打地鼠”“扫雷”“2048””飞机大战“之类
    - 或者你自己想象的一个简单原创游戏
-2. 必须用本地 AI IDE 来完成整个过程：
+2. **必须用本地 AI IDE 来完成整个过程**：
    - 新建一个空文件夹，用 AI IDE 打开
    - 在侧边栏聊天里描述清楚你的游戏需求
    - 让 AI 负责创建文件、搭建项目结构和实现主要逻辑
    - 在本地启动开发服务器，确保游戏可以正常运行
-3. 有基本的“可玩性”和反馈：
+3. **有基本的“可玩性”和反馈**：
    - 至少包含开始、进行中、结束三种状态
    - 玩家有明确的操作方式（键盘或鼠标）
    - 屏幕上有清晰的得分或进度反馈
-4. 至少进行 2 轮以上的迭代：
+4. **至少进行 2 轮以上的迭代**：
    - 第一轮让 AI 做出“能玩”的版本
    - 第二轮以后，逐步提出具体改进（样式、难度、交互优化等）
+</el-card>
 
 # 附录一：常见计算机术语速查表
 
+<el-card id="appendix-1-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #409EFF;">
+  <div style="font-weight: bold; margin-bottom: 10px;">🗺️ 术语地图：你将在这里遇到...</div>
+  <el-row :gutter="20">
+    <el-col :span="6">
+      <a href="#term-tool-ui" style="text-decoration: none; color: inherit;">🖥️ <b>工具界面</b></a><br/>
+      <span style="font-size: 12px; color: #909399">IDE / 终端 / 面板</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-network" style="text-decoration: none; color: inherit;">🌐 <b>网络服务</b></a><br/>
+      <span style="font-size: 12px; color: #909399">URL / 端口 / 本地</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-frontend-backend" style="text-decoration: none; color: inherit;">⚙️ <b>前后端</b></a><br/>
+      <span style="font-size: 12px; color: #909399">API / JSON / 接口</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-code-basic" style="text-decoration: none; color: inherit;">📝 <b>代码基础</b></a><br/>
+      <span style="font-size: 12px; color: #909399">变量 / 函数 / 组件</span>
+    </el-col>
+  </el-row>
+  <el-row :gutter="20" style="margin-top: 10px;">
+    <el-col :span="6">
+      <a href="#term-debug" style="text-decoration: none; color: inherit;">🐞 <b>调试查错</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Bug / 断点 / 日志</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-project" style="text-decoration: none; color: inherit;">📂 <b>项目管理</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Git / 仓库 / 提交</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-ai-tool" style="text-decoration: none; color: inherit;">🤖 <b>AI 工具</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Agent / 模型 / Key</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-browser" style="text-decoration: none; color: inherit;">🛠️ <b>浏览器</b></a><br/>
+      <span style="font-size: 12px; color: #909399">DevTools / 控制台</span>
+    </el-col>
+  </el-row>
+</el-card>
+
 这一部分不需要刻意背诵，更重要的是先在脑子里建立一个印象。
 
-## 一、和“工具界面”有关的词
+## <span id="term-tool-ui">[一、和“工具界面”有关的词](#appendix-1-map)</span>
 
 ### 1. IDE、编辑器、终端
 
@@ -584,7 +674,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
 - 显示有没有错误、当前 Git 分支是什么。  
   可以把它当作“当前编辑环境的一张小体检单”。
 
-## 二、和“网页 / 网络 / 服务”有关的词
+## <span id="term-network">[二、和“网页 / 网络 / 服务”有关的词](#appendix-1-map)</span>
 
 ### 1. URL、http、端口、本地服务
 
@@ -622,7 +712,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
 - 游戏服务：负责管理对局、存档、排行榜等。  
   在终端里执行 `npm run dev` 启动项目，本质上就是“在本地开了一个网页服务”。
 
-## 三、和“前端 / 后端 / 数据”有关的词
+## <span id="term-frontend-backend">[三、和“前端 / 后端 / 数据”有关的词](#appendix-1-map)</span>
 
 ### 1. 前端、后端
 
@@ -673,7 +763,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
 
 可以理解成“机器版的键值对记事本”，前后端经常用它来交换数据。
 
-## 四、和“写代码本身”有关的词
+## <span id="term-code-basic">[四、和“写代码本身”有关的词](#appendix-1-map)</span>
 
 ### 1. 变量、标识符、状态
 
@@ -755,7 +845,7 @@ function sayHello(name) {
 - 后端：Django、Spring Boot 等。  
   你等于是在“现成的骨架上填内容”，比从头造轮子轻松很多。
 
-## 五、和“调试 / 查错”有关的词
+## <span id="term-debug">[五、和“调试 / 查错”有关的词](#appendix-1-map)</span>
 
 ### 1. Bug、报错、日志 / console.log
 
@@ -822,7 +912,7 @@ console.log('当前分数', score)
 - 调试时某个时间点内存 / 变量的整体情况。  
   你先记住这个比喻就够用：**快照 ≈ 某一刻状态的留影**。
 
-## 六、和“项目 / 文件 / 版本控制”有关的词
+## <span id="term-project">[六、和“项目管理”有关的词](#appendix-1-map)</span>
 
 ### 1. 项目、工作区、文件夹
 
@@ -858,7 +948,7 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 - Git 会把这一刻的状态存下来。  
   这一次动作就叫“做了一次 commit”。
 
-## 七、和“AI 开发工具”有关的词
+## <span id="term-ai-tool">[七、和“AI 开发工具”有关的词](#appendix-1-map)</span>
 
 ### 1. AI IDE、Agent、SOLO 模式
 
@@ -905,7 +995,7 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 - 不能发到公开的地方（仓库、截图、群聊），别人拿到就可以冒用你的账号；
 - 在工具里填 API Key，就等于“把钥匙插进锁里”，之后工具就能帮你调用对应的 AI 服务。
 
-## 八、和“浏览器 / 开发者工具”有关的词
+## <span id="term-browser">[八、和“浏览器 / 开发者工具”有关的词](#appendix-1-map)</span>
 
 **Chrome（谷歌浏览器）**  
 现在前端开发最常用的浏览器之一：
@@ -947,7 +1037,19 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 
 # 附录二： Visual Studio Code 菜单栏解析
 
-## Title Bar（标题栏）：窗口信息与全局入口
+<el-card id="appendix-2-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #67C23A;">
+  <div style="font-weight: bold; margin-bottom: 10px;">🧭 界面导航：VS Code 核心区域</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="#vscode-title-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Title Bar (标题栏)</el-tag></a>
+    <a href="#vscode-activity-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Activity Bar (活动栏)</el-tag></a>
+    <a href="#vscode-side-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Side Bar (侧边栏)</el-tag></a>
+    <a href="#vscode-editor" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Editor (编辑区)</el-tag></a>
+    <a href="#vscode-panel" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Panel (底部面板)</el-tag></a>
+    <a href="#vscode-status-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Status Bar (状态栏)</el-tag></a>
+  </div>
+</el-card>
+
+## <span id="vscode-title-bar">[Title Bar（标题栏）：窗口信息与全局入口](#appendix-2-map)</span>
 
 标题栏位于窗口最上方，主要用于展示当前窗口信息并提供窗口级控制。常见细节包括：
 
@@ -1142,7 +1244,7 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 - **Contact Us（联系我们）**：官方联系入口。
 - **Help Document（帮助文档）**：打开官方帮助文档与使用指南。
 
-## Activity Bar（活动栏）：主要视图的切换区
+## <span id="vscode-activity-bar">[Activity Bar（活动栏）：主要视图的切换区](#appendix-2-map)</span>
 
 活动栏位于界面最左侧，以图标形式提供核心功能视图入口，用于切换左侧工具面板。常见图标与作用如下：
 
@@ -1167,7 +1269,7 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 
 补充说明：再次点击同一图标通常可切换该视图的展开/收起；将鼠标悬停在图标上通常可看到视图名称与快捷键提示。AI IDE 往往会在此处增加 AI 相关入口（如 Chat/Agents/Project Context），用于打开对话面板或启用项目级分析能力。
 
-## Side Bar（侧边栏）：当前视图的具体内容区
+## <span id="vscode-side-bar">[Side Bar（侧边栏）：当前视图的具体内容区](#appendix-2-map)</span>
 
 侧边栏位于活动栏右侧，用于展示当前选中视图的具体内容。它会随活动栏切换而变化，常见细节包括：
 
@@ -1184,7 +1286,7 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 
 侧边栏中的信息会根据活动栏的选择而切换显示的内容。其通常以可折叠分区组织，便于在同一位置呈现多类信息（是否出现某些分区取决于语言与扩展）。
 
-## Editor Groups（编辑器分组/编辑区）：文件编辑与分屏布局
+## <span id="vscode-editor">[Editor Groups（编辑器分组/编辑区）：文件编辑与分屏布局](#appendix-2-map)</span>
 
 编辑器区域位于界面中部，是代码与文本编辑的核心区域，包含文件标签管理与分组布局能力。常见细节包括：
 
@@ -1219,7 +1321,7 @@ Minimap 位于编辑器右侧，是当前文件内容的缩略预览，用于快
 - 快速滚动与跳转  
   在 Minimap 上点击或拖动通常可以快速跳转到对应位置，减少反复滚动带来的时间成本。
 
-## Panel（面板/底部面板）：运行、诊断与调试输出集中区
+## <span id="vscode-panel">[Panel（面板/底部面板）：运行、诊断与调试输出集中区](#appendix-2-map)</span>
 
 Panel 通常位于窗口底部（布局可调整），用于承载运行命令与各种输出信息。常见标签页与用途如下：
 
@@ -1235,7 +1337,7 @@ Panel 通常位于窗口底部（布局可调整），用于承载运行命令�
 - Debug Console（调试控制台）  
   调试会话期间用于显示调试输出与交互信息，与断点、变量查看等功能配合使用。
 
-## Status Bar（状态栏）：编辑状态与上下文信息汇总
+## <span id="vscode-status-bar">[Status Bar（状态栏）：编辑状态与上下文信息汇总](#appendix-2-map)</span>
 
 状态栏位于窗口最底部，汇总展示当前文件与环境的关键状态，并提供快捷入口。常见细节包括：
 

@@ -40,7 +40,45 @@
 
 AI 出现之后,第一次给了普通人一个全新的可能：你不需要会写代码,只需要学会对 AI 说清楚你想要什么。来自 GitHub Copilot 的[数据显示](https://www.wearetenet.com/blog/github-copilot-usage-data-statistics),超过1500万开发者正在用AI辅助编程,平均46%的代码都是AI生成的! 在Java项目中这个比例能达到61%。
 
-让人真正兴奋的是效率的飞跃：开发者完成任务的速度提升了 55%。原本需要 9.6 天才能提交的代码，现在只要 2.4 天就能搞定。 这种肉眼可见的效率提升，说明 AI 不再只是一个“可选工具”，而是正在成为开发流程中不可或缺的编程助手。采用率的数据也印证了这一点：在获得访问权限的当天，就有 81% 的开发者第一时间完成安装并开始使用；其中 96% 的人更是在当天就开始采纳 AI 提供的代码建议。换句话说，开发者几乎是立刻把 AI 融入了日常编码工作。
+<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 20px;">🚀</span>
+      <span style="font-weight: bold; font-size: 16px;">效率与采用率的飞跃</span>
+    </div>
+  </template>
+  
+  <el-row :gutter="20" style="margin-bottom: 24px;">
+    <el-col :span="6" :xs="12">
+      <div style="text-align: center; padding: 10px;">
+        <div style="color: #409EFF; font-size: 24px; font-weight: bold;">55%</div>
+        <div style="color: #909399; font-size: 12px; margin-top: 4px;">速度提升</div>
+      </div>
+    </el-col>
+    <el-col :span="6" :xs="12">
+      <div style="text-align: center; padding: 10px;">
+        <div style="color: #67C23A; font-size: 24px; font-weight: bold;">2.4 <span style="font-size: 14px;">天</span></div>
+        <div style="color: #909399; font-size: 12px; margin-top: 4px;">任务耗时 (原9.6天)</div>
+      </div>
+    </el-col>
+    <el-col :span="6" :xs="12">
+      <div style="text-align: center; padding: 10px;">
+        <div style="color: #E6A23C; font-size: 24px; font-weight: bold;">81%</div>
+        <div style="color: #909399; font-size: 12px; margin-top: 4px;">首日安装率</div>
+      </div>
+    </el-col>
+    <el-col :span="6" :xs="12">
+      <div style="text-align: center; padding: 10px;">
+        <div style="color: #F56C6C; font-size: 24px; font-weight: bold;">96%</div>
+        <div style="color: #909399; font-size: 12px; margin-top: 4px;">建议采纳率</div>
+      </div>
+    </el-col>
+  </el-row>
+
+  <div style="line-height: 1.8; color: #606266;">
+    让人真正兴奋的是效率的飞跃：开发者完成任务的速度提升了 <b>55%</b>。原本需要 9.6 天才能提交的代码，现在只要 <b>2.4 天</b>就能搞定。 这种肉眼可见的效率提升，说明 AI 不再只是一个“可选工具”，而是正在成为开发流程中不可或缺的编程助手。采用率的数据也印证了这一点：在获得访问权限的当天，就有 <b>81%</b> 的开发者第一时间完成安装并开始使用；其中 <b>96%</b> 的人更是在当天就开始采纳 AI 提供的代码建议。换句话说，开发者几乎是立刻把 AI 融入了日常编码工作。
+  </div>
+</el-card>
 
 对于普通人来说,这个趋势更有意义:如果专业程序员都在大量依赖AI写代码,那我们这些**不会编程的人,为什么不能直接跟AI对话来实现自己的想法呢**?
 

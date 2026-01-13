@@ -37,7 +37,7 @@ features:
 <div class="stage-container">
   <div class="stage-card">
     <div class="stage-icon">🌱</div>
-    <h3>Stage 0: 纯新手</h3>
+    <h3>Stage 0: 新手入门</h3>
     <p>适合产品、运营及非技术背景。通过做游戏理解 AI 编程逻辑，建立信心。</p>
     <a href="./stage-0/0.1-learning-map/">查看详情 →</a>
   </div>
