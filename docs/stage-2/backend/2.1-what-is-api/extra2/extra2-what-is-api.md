@@ -56,13 +56,13 @@ API 无处不在，在后台默默工作。
   - **Parameters:** `city=London` & `apiKey=your_access_key`
 - **“响应”（回传的数据）：**
   `json
-    {
-      "city": "London",
-      "temperature": "15°C",
-      "condition": "Cloudy",
-      "humidity": "70%"
-    }
-    `
+{
+  "city": "London",
+  "temperature": "15°C",
+  "condition": "Cloudy",
+  "humidity": "70%"
+}
+`
   应用拿到这些数据后，再把它们漂亮地展示在你的手机屏幕上。
 
 **地图服务 API**
@@ -73,16 +73,16 @@ API 无处不在，在后台默默工作。
   - **Parameters:** `origin=Eiffel Tower` & `destination=Louvre Museum` & `mode=driving`
 - **“响应”（回传的数据）：**
   `json
-    {
-      "total_distance": "4.5 kilometers",
-      "estimated_time": "15 minutes",
-      "route_steps": [
-        "1. Head east on Champ de Mars...",
-        "2. Turn left onto Quai Branly...",
-        "..."
-      ]
-    }
-    `
+{
+  "total_distance": "4.5 kilometers",
+  "estimated_time": "15 minutes",
+  "route_steps": [
+    "1. Head east on Champ de Mars...",
+    "2. Turn left onto Quai Branly...",
+    "..."
+  ]
+}
+`
   通过这些数据，应用就能在地图上绘制路线并提供导航指令。
 
 **社交媒体登录 API**

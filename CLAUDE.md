@@ -79,6 +79,7 @@ stage-{N}/
 ```
 
 Examples:
+
 - `stage-1/1.1-introduction-to-ai-ide/index.md`
 - `stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md`
 
@@ -89,18 +90,21 @@ Examples:
 The project uses **VitePress 2.0.0-alpha.15** with these key features:
 
 **Configuration** (`docs/.vitepress/config.mjs`):
+
 - **Single Sidebar**: Route-based sidebars configured per path prefix (`/stage-0/`, `/stage-1/`, etc.)
 - **Navigation**: Top nav with links to each stage and appendix
 - **Search**: Local search via `minisearch` (no external API required)
 - **Dark Mode**: Built-in VitePress theme with toggle
 
 **Custom Theme** (`docs/.vitepress/theme/`):
+
 - **Image Viewer**: Viewer.js integration for zoom/rotate/flip on all images
 - **Typewriter Effect**: TypeIt.js for homepage hero tagline animation
 - **Image Optimization**: Automatic image height classes based on aspect ratio
 - **Custom Layout**: Extends default theme with `Layout.vue` override
 
 **Key Theme Behaviors**:
+
 - Images with aspect ratio > 1.2 get height-limited classes (tall/very-tall/ultra-tall)
 - Viewer.js initialized on `.vp-doc` container on each route change
 - Typewriter effect only activates on homepage when `frontmatter.hero.tagline` is an array
@@ -116,6 +120,7 @@ The sidebar is defined in `docs/.vitepress/config.mjs`. When adding new chapters
 5. Links should not include `index` - use directory path with trailing slash
 
 Example pattern:
+
 ```javascript
 {
   text: 'Chapter Title',
@@ -134,11 +139,13 @@ Example pattern:
 ### Deployment
 
 **Vercel** (vercel.json):
+
 - Build command: `npm run build`
 - Output directory: `docs/.vitepress/dist`
 - Framework: vitepress
 
 **Preview Production Build**:
+
 ```bash
 npm run build
 npm run preview  # Preview built site locally

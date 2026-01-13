@@ -47,7 +47,7 @@ export default defineConfig({
         {
           text: '1. 认识 AI IDE 工具',
           link: '/stage-1/1.1-introduction-to-ai-ide/'
-        },  
+        },
         {
           text: '2. 动手做出原型',
           link: '/stage-1/1.2-building-prototype/'
@@ -71,8 +71,7 @@ export default defineConfig({
         {
           text: '附录 B：常见报错及解决方案',
           link: '/stage-1/appendix-b-common-errors/'
-        }
-        ,
+        },
         {
           text: '附录示例：贪吃蛇游戏教程',
           link: '/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'

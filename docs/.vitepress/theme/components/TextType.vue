@@ -1,5 +1,12 @@
 <script setup>
-import { computed, onMounted, onUnmounted, ref, useAttrs, watchEffect } from 'vue'
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+  useAttrs,
+  watchEffect
+} from 'vue'
 
 const props = defineProps({
   text: {
@@ -91,7 +98,9 @@ const currentTextIndex = ref(0)
 const isVisible = ref(!props.startOnVisible)
 const containerRef = ref(null)
 
-const textArray = computed(() => (Array.isArray(props.text) ? props.text : [props.text]))
+const textArray = computed(() =>
+  Array.isArray(props.text) ? props.text : [props.text]
+)
 
 const cursorStyle = computed(() => ({
   animationDuration: `${props.cursorBlinkDuration}s`
@@ -104,8 +113,14 @@ const currentColor = computed(() => {
 
 const getRandomSpeed = () => {
   if (!props.variableSpeed) return props.typingSpeed
-  const min = typeof props.variableSpeed.min === 'number' ? props.variableSpeed.min : props.typingSpeed
-  const max = typeof props.variableSpeed.max === 'number' ? props.variableSpeed.max : props.typingSpeed
+  const min =
+    typeof props.variableSpeed.min === 'number'
+      ? props.variableSpeed.min
+      : props.typingSpeed
+  const max =
+    typeof props.variableSpeed.max === 'number'
+      ? props.variableSpeed.max
+      : props.typingSpeed
   if (max <= min) return min
   return Math.random() * (max - min) + min
 }
@@ -114,7 +129,7 @@ let observer
 onMounted(() => {
   if (!props.startOnVisible || !containerRef.value) return
   observer = new IntersectionObserver(
-    entries => {
+    (entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
           isVisible.value = true
@@ -131,7 +146,7 @@ onUnmounted(() => {
   if (observer) observer.disconnect()
 })
 
-watchEffect(onCleanup => {
+watchEffect((onCleanup) => {
   if (!isVisible.value) return
 
   if (!textArray.value.length) {
@@ -140,13 +155,16 @@ watchEffect(onCleanup => {
   }
 
   const currentText = textArray.value[currentTextIndex.value] ?? ''
-  const processedText = props.reverseMode ? String(currentText).split('').reverse().join('') : String(currentText)
+  const processedText = props.reverseMode
+    ? String(currentText).split('').reverse().join('')
+    : String(currentText)
 
   if (!isClient) {
     return
   }
 
-  const shouldStopAtEnd = !props.loop && currentTextIndex.value === textArray.value.length - 1
+  const shouldStopAtEnd =
+    !props.loop && currentTextIndex.value === textArray.value.length - 1
 
   let timeoutId
 
@@ -155,11 +173,15 @@ watchEffect(onCleanup => {
       if (!displayedText.value) {
         isDeleting.value = false
         if (props.onSentenceComplete) {
-          props.onSentenceComplete(textArray.value[currentTextIndex.value], currentTextIndex.value)
+          props.onSentenceComplete(
+            textArray.value[currentTextIndex.value],
+            currentTextIndex.value
+          )
         }
         if (shouldStopAtEnd) return
         timeoutId = setTimeout(() => {
-          currentTextIndex.value = (currentTextIndex.value + 1) % textArray.value.length
+          currentTextIndex.value =
+            (currentTextIndex.value + 1) % textArray.value.length
           currentCharIndex.value = 0
         }, props.postDeletingDelay)
         return
@@ -172,10 +194,13 @@ watchEffect(onCleanup => {
     }
 
     if (currentCharIndex.value < processedText.length) {
-      timeoutId = setTimeout(() => {
-        displayedText.value += processedText[currentCharIndex.value]
-        currentCharIndex.value += 1
-      }, props.variableSpeed ? getRandomSpeed() : props.typingSpeed)
+      timeoutId = setTimeout(
+        () => {
+          displayedText.value += processedText[currentCharIndex.value]
+          currentCharIndex.value += 1
+        },
+        props.variableSpeed ? getRandomSpeed() : props.typingSpeed
+      )
       return
     }
 
@@ -185,7 +210,11 @@ watchEffect(onCleanup => {
     }, props.pauseDuration)
   }
 
-  if (currentCharIndex.value === 0 && !isDeleting.value && !displayedText.value) {
+  if (
+    currentCharIndex.value === 0 &&
+    !isDeleting.value &&
+    !displayedText.value
+  ) {
     timeoutId = setTimeout(schedule, props.initialDelay)
   } else {
     schedule()
@@ -197,7 +226,9 @@ watchEffect(onCleanup => {
 const shouldHideCursor = computed(() => {
   if (!props.hideCursorWhileTyping) return false
   const currentText = textArray.value[currentTextIndex.value] ?? ''
-  const processedText = props.reverseMode ? String(currentText).split('').reverse().join('') : String(currentText)
+  const processedText = props.reverseMode
+    ? String(currentText).split('').reverse().join('')
+    : String(currentText)
   return currentCharIndex.value < processedText.length || isDeleting.value
 })
 </script>
@@ -209,13 +240,19 @@ const shouldHideCursor = computed(() => {
     :class="['text-type', className]"
     v-bind="attrs"
   >
-    <span class="text-type__content" :style="{ color: currentColor || 'inherit' }">
+    <span
+      class="text-type__content"
+      :style="{ color: currentColor || 'inherit' }"
+    >
       {{ displayedText }}
     </span>
     <span
       v-if="showCursor"
       class="text-type__cursor"
-      :class="[cursorClassName, shouldHideCursor ? 'text-type__cursor--hidden' : '']"
+      :class="[
+        cursorClassName,
+        shouldHideCursor ? 'text-type__cursor--hidden' : ''
+      ]"
       :style="cursorStyle"
     >
       {{ cursorCharacter }}

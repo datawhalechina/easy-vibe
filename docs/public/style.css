@@ -1,10 +1,70 @@
 :root {
   /* 调整侧边栏分组之间的间距 */
   --vp-sidebar-nav-section-gap: 8px;
+  --ev-doc-font-size: 13px;
+  --ev-doc-line-height: 1.5;
 }
 
 .vp-doc {
-  font-size: 15px;
+  font-size: var(--ev-doc-font-size);
+  line-height: var(--ev-doc-line-height);
+  --el-font-size-extra-large: calc(var(--ev-doc-font-size) + 6px);
+  --el-font-size-large: calc(var(--ev-doc-font-size) + 4px);
+  --el-font-size-medium: calc(var(--ev-doc-font-size) + 2px);
+  --el-font-size-base: var(--ev-doc-font-size);
+  --el-font-size-small: calc(var(--ev-doc-font-size) - 1px);
+  --el-font-size-extra-small: calc(var(--ev-doc-font-size) - 2px);
+  --el-font-line-height-primary: var(--ev-doc-line-height);
+}
+
+.vp-doc :where(p, ul, ol, table, blockquote, pre, details, figure) {
+  margin: 10px 0;
+}
+
+.vp-doc :where(li) {
+  margin: 4px 0;
+}
+
+.vp-doc :where(ul, ol) {
+  padding-left: 1.15em;
+}
+
+.vp-doc :where(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.3;
+}
+
+.vp-doc :where(h1) {
+  margin: 22px 0 12px;
+}
+
+.vp-doc :where(h2) {
+  margin: 20px 0 10px;
+}
+
+.vp-doc h2 {
+  margin: 16px 0 8px !important;
+  padding-top: 10px !important;
+  border-top: 0 !important;
+}
+
+.vp-doc :where(h3) {
+  margin: 18px 0 8px;
+}
+
+.vp-doc :where(h4, h5, h6) {
+  margin: 16px 0 8px;
+}
+
+.vp-doc :where(hr) {
+  margin: 14px 0;
+}
+
+.vp-doc :where(th, td) {
+  padding: 6px 10px;
+}
+
+.vp-doc :where(:not(pre) > code) {
+  font-size: 0.95em;
 }
 
 /* 减少一级标题（如"前端开发"）底部的间距 */

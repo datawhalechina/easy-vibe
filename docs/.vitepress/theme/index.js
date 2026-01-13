@@ -7,13 +7,17 @@ import TypeIt from 'typeit'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute, useData } from 'vitepress'
 import './style.css'
+import Layout from './Layout.vue'
 import StepBar from './components/StepBar.vue'
+import ChapterIntroduction from './components/ChapterIntroduction.vue'
 
 export default {
   extends: DefaultTheme,
+  Layout,
   enhanceApp({ app }) {
     app.use(ElementPlus)
     app.component('StepBar', StepBar)
+    app.component('ChapterIntroduction', ChapterIntroduction)
   },
   setup() {
     const route = useRoute()
@@ -67,7 +71,7 @@ export default {
         const taglineEl = document.querySelector('.VPHomeHero .tagline')
         if (taglineEl) {
           taglineEl.innerHTML = ''
-          
+
           const typeIt = new TypeIt(taglineEl, {
             speed: 50,
             startDelay: 500,
@@ -75,9 +79,9 @@ export default {
           })
 
           taglineData.forEach((text) => {
-             typeIt.type(text).pause(2000).delete().pause(500)
+            typeIt.type(text).pause(2000).delete().pause(500)
           })
-          
+
           typeIt.go()
         }
       }
@@ -85,7 +89,7 @@ export default {
 
     const optimizeImages = () => {
       const images = document.querySelectorAll('.vp-doc img')
-      images.forEach(img => {
+      images.forEach((img) => {
         if (img.complete) {
           applyImageStyle(img)
         } else {
@@ -133,11 +137,12 @@ export default {
 
     watch(
       () => route.path,
-      () => nextTick(() => {
-        initViewer()
-        initTypewriter()
-        optimizeImages()
-      })
+      () =>
+        nextTick(() => {
+          initViewer()
+          initTypewriter()
+          optimizeImages()
+        })
     )
   }
 }
