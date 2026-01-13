@@ -28,13 +28,6 @@
   <a href="./docs-readme/de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
 </p>
 
-**Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**    
-**Easy-Vibe is an open-source, project-based AI coding course that teaches you how to build real AI products from scratch.**  
-
-
-AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统   
-
-👉 专为初学者、产品经理和开发者设计。将 AI Demo 转化为可部署的产品。
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读</a> ·
@@ -50,6 +43,15 @@ AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统
     <a href="LICENSE" target="_blank">
         <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-4ecdc4?style=for-the-badge&logo=creative-commons&logoColor=white&labelColor=1a1a2e" alt="License"></a>
 </p>
+
+
+**Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**    
+**Easy-Vibe is an open-source, project-based AI coding course that teaches you how to build real AI products from scratch.**  
+
+
+AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统   
+
+👉 专为初学者、产品经理和开发者设计。将 AI Demo 转化为可部署的产品。
 
 </div>
 
