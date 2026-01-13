@@ -1,3 +1,8 @@
+---
+title: '认识 AI IDE 工具 - Claude Code、Cursor、Trae 教程'
+description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor、Trae 等工具的使用。掌握 IDE 界面、AI 对话技巧，用本地 AI IDE 从零开发贪吃蛇游戏。'
+---
+
 # 初级二：认识 AI IDE 工具
 
 ## 本章导读
@@ -592,7 +597,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
   </ol>
 </el-card>
 
-## 附录
+# 附录
 
 <el-card id="appendix-nav" shadow="hover" style="margin-top: 40px; margin-bottom: 24px; border-left: 5px solid #E6A23C;">
   <div style="font-weight: bold; margin-bottom: 8px;">附录导航</div>

@@ -4,7 +4,98 @@ import { defineConfig } from 'vitepress'
 const isVercel = process.env.VERCEL === '1'
 const base = isVercel ? '/' : '/easy-vibe/'
 
-// 通用配置
+// 语言映射配置
+const localeMap = {
+  'zh-cn': { ogLocale: 'zh_CN', twitterSite: '@datawhale', lang: 'zh-CN', hreflang: 'zh-CN' },
+  'en-us': { ogLocale: 'en_US', twitterSite: '@datawhale', lang: 'en-US', hreflang: 'en' },
+  'ja-jp': { ogLocale: 'ja_JP', twitterSite: '@datawhale', lang: 'ja-JP', hreflang: 'ja' },
+  'zh-tw': { ogLocale: 'zh_TW', twitterSite: '@datawhale', lang: 'zh-TW', hreflang: 'zh-TW' },
+  'ko-kr': { ogLocale: 'ko_KR', twitterSite: '@datawhale', lang: 'ko-KR', hreflang: 'ko' },
+  'es-es': { ogLocale: 'es_ES', twitterSite: '@datawhale', lang: 'es-ES', hreflang: 'es' },
+  'fr-fr': { ogLocale: 'fr_FR', twitterSite: '@datawhale', lang: 'fr-FR', hreflang: 'fr' },
+  'de-de': { ogLocale: 'de_DE', twitterSite: '@datawhale', lang: 'de-DE', hreflang: 'de' },
+  'ar-sa': { ogLocale: 'ar_SA', twitterSite: '@datawhale', lang: 'ar-SA', hreflang: 'ar' },
+  'vi-vn': { ogLocale: 'vi_VN', twitterSite: '@datawhale', lang: 'vi-VN', hreflang: 'vi' }
+}
+
+// SEO 相关配置
+const getSeoHead = (locale, title, description, path = '') => {
+  const seoConfig = localeMap[locale] || localeMap['zh-cn']
+  const siteUrl = isVercel ? 'https://your-project.vercel.app' : 'https://datawhalechina.github.io/easy-vibe'
+  const canonicalUrl = path ? `${siteUrl}${path}` : `${siteUrl}/${locale}/`
+  const ogImageUrl = `${siteUrl}${base}logo.png`
+
+  const head = [
+    ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }],
+    ['link', { rel: 'stylesheet', href: `${base}style.css`.replace('//', '/') }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    ['meta', { name: 'format-detection', content: 'telephone=no' }],
+    ['link', { rel: 'canonical', href: canonicalUrl }],
+    // Open Graph / Facebook
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: seoConfig.ogLocale }],
+    ['meta', { property: 'og:site_name', content: title }],
+    ['meta', { property: 'og:title', content: title }],
+    ['meta', { property: 'og:description', content: description }],
+    ['meta', { property: 'og:image', content: ogImageUrl }],
+    ['meta', { property: 'og:image:alt', content: title }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { property: 'og:url', content: canonicalUrl }],
+    // Twitter Card
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:site', content: seoConfig.twitterSite }],
+    ['meta', { name: 'twitter:creator', content: seoConfig.twitterSite }],
+    ['meta', { name: 'twitter:title', content: title }],
+    ['meta', { name: 'twitter:description', content: description }],
+    ['meta', { name: 'twitter:image', content: ogImageUrl }],
+    ['meta', { name: 'twitter:image:alt', content: title }],
+    // Additional SEO
+    ['meta', { name: 'keywords', content: 'AI编程,Vibe Coding,Claude Code,Cursor,Trae,AI IDE,零基础学编程,AI辅助开发,产品经理,全栈开发,编程教程,编程工具,Datawhale,Supabase,React,大模型,LLM,人工智能,微信小程序,Android开发,iOS开发,MCP,RAG,LangGraph,Dify,跨平台开发,AI应用开发' }],
+    ['meta', { name: 'author', content: 'Datawhale' }],
+    ['meta', { name: 'robots', content: 'index,follow' }],
+    ['meta', { name: 'googlebot', content: 'index,follow' }],
+    ['meta', { name: 'baiduspider', content: 'index,follow' }],
+    ['meta', { name: 'distribution', content: 'global' }],
+    ['meta', { name: 'rating', content: 'general' }],
+    ['meta', { name: 'revisit-after', content: '7 days' }]
+  ]
+
+  // 添加 hreflang 标签
+  Object.keys(localeMap).forEach(lang => {
+    head.push(['link', { rel: 'alternate', hreflang: localeMap[lang].hreflang, href: `${siteUrl}/${lang}/` }])
+  })
+  head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: `${siteUrl}/zh-cn/` }])
+
+  // 添加 JSON-LD 结构化数据
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: title,
+    description: description,
+    url: siteUrl,
+    inLanguage: seoConfig.ogLocale,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${siteUrl}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Datawhale',
+      url: 'https://datawhalechina.github.io',
+      logo: {
+        '@type': 'ImageObject',
+        url: ogImageUrl
+      }
+    }
+  }
+  head.push(['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd)])
+
+  return head
+}
+
 const commonHead = [
   ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }],
   ['link', { rel: 'stylesheet', href: `${base}style.css`.replace('//', '/') }]
@@ -26,6 +117,23 @@ const commonThemeConfig = {
 export default defineConfig({
   base: base,
 
+  // Sitemap 配置
+  sitemap: {
+    hostname: 'https://datawhalechina.github.io/easy-vibe',
+    transformItems(items) {
+      // 过滤掉旧版内容和未完成的语言版本
+      return items.filter((item) => {
+        const url = item.url
+        // 排除旧版内容目录
+        if (url.includes('/extra/') || url.includes('/examples/') || url.includes('/project/')) {
+          return false
+        }
+        // 包含所有语言版本
+        return true
+      })
+    }
+  },
+
   // 多语言配置 - 使用 cn/en-us/ja 结构
   locales: {
     // 中文
@@ -34,8 +142,8 @@ export default defineConfig({
       lang: 'zh-CN',
       link: '/zh-cn/',
       title: 'Easy-Vibe 教程',
-      description: '从零到一学习 Vibe Coding',
-      head: commonHead,
+      description: '从零到一学习 Vibe Coding - 零基础学会用 AI 编程，掌握 Claude Code、Cursor 等 AI IDE 工具',
+      head: getSeoHead('zh-cn', 'Easy-Vibe 教程', '从零到一学习 Vibe Coding - 零基础学会用 AI 编程，掌握 Claude Code、Cursor 等 AI IDE 工具'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -339,8 +447,8 @@ export default defineConfig({
       lang: 'en-US',
       link: '/en-us/',
       title: 'Easy-Vibe Tutorial',
-      description: 'Learn Vibe Coding from Zero to Advanced',
-      head: commonHead,
+      description: 'Learn Vibe Coding from Zero to Advanced - Master AI programming with Claude Code, Cursor, and other AI IDE tools',
+      head: getSeoHead('en-us', 'Easy-Vibe Tutorial', 'Learn Vibe Coding from Zero to Advanced - Master AI programming with Claude Code, Cursor, and other AI IDE tools'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -372,8 +480,8 @@ export default defineConfig({
       lang: 'ja-JP',
       link: '/ja-jp/',
       title: 'Easy-Vibe チュートリアル',
-      description: 'ゼロから学ぶ Vibe Coding',
-      head: commonHead,
+      description: 'ゼロから学ぶ Vibe Coding - AIプログラミングを初めから体系的に学習',
+      head: getSeoHead('ja-jp', 'Easy-Vibe チュートリアル', 'ゼロから学ぶ Vibe Coding - AIプログラミングを初めから体系的に学習'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -403,8 +511,8 @@ export default defineConfig({
       lang: 'zh-TW',
       link: '/zh-tw/',
       title: 'Easy-Vibe 教程',
-      description: '從零到一學習 Vibe Coding',
-      head: commonHead,
+      description: '從零到一學習 Vibe Coding - 零基礎學會用 AI 編程，掌握 Claude Code、Cursor 等 AI IDE 工具',
+      head: getSeoHead('zh-tw', 'Easy-Vibe 教程', '從零到一學習 Vibe Coding - 零基礎學會用 AI 編程，掌握 Claude Code、Cursor 等 AI IDE 工具'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -433,8 +541,8 @@ export default defineConfig({
       lang: 'ko-KR',
       link: '/ko-kr/',
       title: 'Easy-Vibe 튜토리얼',
-      description: 'Vibe Coding을 처음부터 체계적으로 학습합니다',
-      head: commonHead,
+      description: 'Vibe Coding을 처음부터 체계적으로 학습합니다 - AI 프로그래밍을 처음부터 고급까지',
+      head: getSeoHead('ko-kr', 'Easy-Vibe 튜토리얼', 'Vibe Coding을 처음부터 체계적으로 학습합니다 - AI 프로그래밍을 처음부터 고급까지'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -463,8 +571,8 @@ export default defineConfig({
       lang: 'es-ES',
       link: '/es-es/',
       title: 'Tutorial de Easy-Vibe',
-      description: 'Aprende Vibe Coding desde cero hasta avanzado',
-      head: commonHead,
+      description: 'Aprende Vibe Coding desde cero hasta avanzado - Domina la programación con IA desde el principio',
+      head: getSeoHead('es-es', 'Tutorial de Easy-Vibe', 'Aprende Vibe Coding desde cero hasta avanzado - Domina la programación con IA desde el principio'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -493,8 +601,8 @@ export default defineConfig({
       lang: 'fr-FR',
       link: '/fr-fr/',
       title: 'Tutoriel Easy-Vibe',
-      description: 'Apprenez Vibe Coding de zéro à avancé',
-      head: commonHead,
+      description: 'Apprenez Vibe Coding de zéro à avancé - Maîtrisez la programmation IA du début au niveau avancé',
+      head: getSeoHead('fr-fr', 'Tutoriel Easy-Vibe', 'Apprenez Vibe Coding de zéro à avancé - Maîtrisez la programmation IA du début au niveau avancé'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -523,8 +631,8 @@ export default defineConfig({
       lang: 'de-DE',
       link: '/de-de/',
       title: 'Easy-Vibe Tutorial',
-      description: 'Lernen Sie Vibe Coding von Null bis Fortgeschritten',
-      head: commonHead,
+      description: 'Lernen Sie Vibe Coding von Null bis Fortgeschritten - Meistern Sie die KI-Programmierung von Grund auf',
+      head: getSeoHead('de-de', 'Easy-Vibe Tutorial', 'Lernen Sie Vibe Coding von Null bis Fortgeschritten - Meistern Sie die KI-Programmierung von Grund auf'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -553,8 +661,8 @@ export default defineConfig({
       lang: 'ar-SA',
       link: '/ar-sa/',
       title: 'دروس Easy-Vibe',
-      description: 'تعلم Vibe Coding من الصفر إلى المتقدم',
-      head: commonHead,
+      description: 'تعلم Vibe Coding من الصفر إلى المتقدم - إتقان البرمجة بالذكاء الاصطناعي من البداية',
+      head: getSeoHead('ar-sa', 'دروس Easy-Vibe', 'تعلم Vibe Coding من الصفر إلى المتقدم - إتقان البرمجة بالذكاء الاصطناعي من البداية'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {
@@ -583,8 +691,8 @@ export default defineConfig({
       lang: 'vi-VN',
       link: '/vi-vn/',
       title: 'Hướng dẫn Easy-Vibe',
-      description: 'Học Vibe Coding từ cơ bản đến nâng cao',
-      head: commonHead,
+      description: 'Học Vibe Coding từ cơ bản đến nâng cao - Làm chủ lập trình AI từ cơ bản đến chuyên sâu',
+      head: getSeoHead('vi-vn', 'Hướng dẫn Easy-Vibe', 'Học Vibe Coding từ cơ bản đến nâng cao - Làm chủ lập trình AI từ cơ bản đến chuyên sâu'),
       themeConfig: {
         ...commonThemeConfig,
         outline: {

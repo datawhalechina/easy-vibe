@@ -1,0 +1,18 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# 禁止搜索引擎抓取旧版内容（已迁移到新目录结构）
+Disallow: /zh-cn/extra/
+Disallow: /zh-cn/examples/
+Disallow: /zh-cn/project/
+Disallow: /en-us/extra/
+Disallow: /en-us/examples/
+Disallow: /en-us/project/
+
+# 禁止抓取 VitePress 缓存和构建文件
+Disallow: /.vitepress/
+Disallow: /@fs/
+
+# Sitemap 位置
+Sitemap: https://datawhalechina.github.io/easy-vibe/sitemap.xml.gz
