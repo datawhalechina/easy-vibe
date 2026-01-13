@@ -567,6 +567,28 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
    - 第二轮以后，逐步提出具体改进（样式、难度、交互优化等）
 </el-card>
 
+## 附录
+
+<el-card id="appendix-nav" shadow="hover" style="margin-top: 40px; margin-bottom: 24px; border-left: 5px solid #E6A23C;">
+  <div style="font-weight: bold; margin-bottom: 8px;">附录导航</div>
+  <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+    这里是“随查随用”的补充资料：遇到术语看不懂、界面找不到入口时再回来。
+  </div>
+  <el-row :gutter="16">
+    <el-col :span="12">
+      <a href="#appendix-1-map" style="text-decoration: none; color: inherit;"><b>附录一：常见计算机术语速查表</b></a><br/>
+      <span style="font-size: 12px; color: #909399">看到不懂的计算机名词时，来这里快速查含义，推荐通读一遍。</span>
+    </el-col>
+    <el-col :span="12">
+      <a href="#appendix-2-vscode-menu" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
+      <span style="font-size: 12px; color: #909399">不知道 AI IDE 的界面有什么用的时候，拿以下内容和 AI 对话进行查阅，或者直接查看。</span>
+    </el-col>
+  </el-row>
+  <div style="margin-top: 12px; font-size: 12px; color: #909399;">
+    支持：按 Ctrl/⌘+F 搜索关键词；遇到新词可复制报错让 AI 用“小白模式”解释。
+  </div>
+</el-card>
+
 # 附录一：常见计算机术语速查表
 
 <el-card id="appendix-1-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #409EFF;">
