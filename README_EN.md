@@ -13,7 +13,7 @@
 
 ### *Zero Foundation, Project-Based Learning, Build Your First AI Product*
 
-<div align="center">
+<div align="center" style="margin-bottom: 16px;">
   <a href="https://datawhalechina.github.io/easy-vibe/" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/Online_Read-Start_Now-FF6B6B?style=for-the-badge&logo=rocket&logoColor=white&labelColor=1a1a2e">
   </a>
@@ -26,7 +26,7 @@
   <img src="https://img.shields.io/badge/Language-English-brightgreen?style=for-the-badge&logo=google-translate&logoColor=white&labelColor=1a1a2e">
 </p>
 
-<div align="center">
+<div align="center" style="margin-top: 16px;">
   <a href="README_EN.md"><img src="https://img.shields.io/badge/English-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/中文-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="中文"></a>
 </div>
