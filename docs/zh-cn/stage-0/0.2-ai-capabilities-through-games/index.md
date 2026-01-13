@@ -401,16 +401,72 @@ z.ai 的回复将会是这样的：
     技术亮点：音频分析、节拍同步、3D 音符轨道、输入时机检测。
 ```
 
-# 📚 Assignment
+## 📚 Assignment
 
-- 复现 AI 原生的贪吃蛇游戏。
-- （可选）根据更多参考案例实现不同种类好玩的 AI 原生游戏。
+<el-card id="assignment-card" shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="font-weight: bold; font-size: 16px;">🎯 本章作业：完成你的第一批 AI 原生小游戏</div>
+  </template>
 
-这就是完整的教程！你可能需要 **4 小时** 才能完成所有内容并构建你自己的贪吃蛇游戏。不要着急——探索、实验并享受这个过程。推荐你读完下列附录，用于补充基础知识：
+  <p>
+    这一节，你已经跟着步骤体验了从“对话生成贪吃蛇”到“理解 AI 原生小游戏设计思路”的完整流程。下面的作业帮助你把这些理解真正变成自己的能力。
+  </p>
 
-# 附录
+  <ol>
+    <li>
+      <strong>完整复现 AI 原生贪吃蛇游戏</strong>
+      <ul>
+        <li>至少实现：蛇可以移动、吃到“食物”后长度和分数发生变化、撞墙或撞到自己会结束。</li>
+        <li>在复现过程中，练习把错误现象 + 报错信息 + 关键代码片段一次性丢给 AI，请它“小白模式”修复。</li>
+      </ul>
+    </li>
+    <li>
+      <strong>（可选）自创 1 个 AI 原生小游戏或 Demo</strong>
+      <ul>
+        <li>可以是围绕文字、图片、音乐、节奏等的任意轻量玩法，例如“吃单词写诗”“节奏点击”“生成式跑酷”等。</li>
+        <li>重点不是画面多炫，而是你能清楚说出：AI 在这里具体帮了什么忙，它解决了什么“人工难以做到或很麻烦”的部分。</li>
+      </ul>
+    </li>
+  </ol>
 
-## 附录 1：我们需要前端开发知识吗？
+  <p>
+    这就是完整的教程！你可能需要 <strong>4 小时</strong> 才能完成所有内容并构建你自己的贪吃蛇游戏。不要着急——探索、实验并享受这个过程。如果在过程中遇到概念不太理解，推荐你顺手查看下方附录中的相关部分。
+  </p>
+</el-card>
+
+## 附录
+
+<el-card id="appendix-nav" shadow="hover" style="margin-top: 24px; margin-bottom: 24px; border-left: 5px solid #67C23A;">
+  <div style="font-weight: bold; margin-bottom: 8px;">附录导航</div>
+  <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+    这里整理了一些和本章相关的基础概念：如果你在学习过程中遇到“前端是什么”“Vibe Coding 到底指什么”等问题，可以随时回到这里查阅。
+  </div>
+  <el-row :gutter="16">
+    <el-col :span="12">
+      <a href="#appendix-1" style="text-decoration: none; color: inherit;"><b>附录 1：我们需要前端开发知识吗？</b></a><br/>
+      <span style="font-size: 12px; color: #909399">搞清楚前端在整个应用里的位置，知道哪些是“看得见”的部分。</span>
+    </el-col>
+    <el-col :span="12">
+      <a href="#appendix-2" style="text-decoration: none; color: inherit;"><b>附录 2：到底什么是 Vibe Coding</b></a><br/>
+      <span style="font-size: 12px; color: #909399">理解“对话式开发”的核心思路，知道该如何和 AI 配合。</span>
+    </el-col>
+  </el-row>
+  <el-row :gutter="16" style="margin-top: 10px;">
+    <el-col :span="12">
+      <a href="#appendix-3" style="text-decoration: none; color: inherit;"><b>附录 3：模型上下文</b></a><br/>
+      <span style="font-size: 12px; color: #909399">搞清楚“上下文长度”这类常听到却又容易混淆的概念。</span>
+    </el-col>
+    <el-col :span="12">
+      <a href="#appendix-4" style="text-decoration: none; color: inherit;"><b>附录 4：指令遵循能力</b></a><br/>
+      <span style="font-size: 12px; color: #909399">了解模型为什么有时“听不懂话”，以及如何写得更清楚。</span>
+    </el-col>
+  </el-row>
+  <div style="margin-top: 12px; font-size: 12px; color: #909399;">
+    小技巧：你可以按 Ctrl/⌘+F 搜索关键字，或者把不懂的段落复制给 AI，请它用“完全小白能看懂”的方式再解释一遍。
+  </div>
+</el-card>
+
+## <span id="appendix-1">[附录 1：我们需要前端开发知识吗？](#appendix-nav)</span>
 
 在 Vibe Coding 阶段，我们不再要求每一位用户都具备专业的编程能力。这种模式下，你的核心任务主要体现在两个方面：
 
@@ -563,7 +619,7 @@ z.ai 的回复将会是这样的：
 
 在这种模式下，**你不必亲自完成每一行代码的书写**，而是通过理解基本概念与角色分工，扮演好“提出需求、检查结果、反复迭代”的角色，让 AI 负责具体实现细节，从而大幅降低前端开发的门槛。
 
-## 附录 2：到底什么是 Vibe Coding
+## <span id="appendix-2">[附录 2：到底什么是 Vibe Coding](#appendix-nav)</span>
 
 > 💡 什么是 Vibe Coding？计算机科学家 [Andrej Karpathy](https://karpathy.ai/)（OpenAI 的联合创始人之一，特斯拉前 AI 负责人）于 2025 年 2 月提出了 **vibe coding** 一词。这个概念指的是一种依赖于 LLM 的编码方法，**允许程序员通过提供自然语言描述而不是手动编写代码来生成可工作的代码。**
 
@@ -614,7 +670,7 @@ z.ai 的回复将会是这样的：
 
 或者，由于训练数据集的风格，大模型倾向于以其训练数据的风格回答。例如，有些人说话很严肃，有些人喜欢添加很多修饰，而有些大模型喜欢在代码中添加很多注释或不必要的模块。
 
-## 附录 3：模型上下文
+## <span id="appendix-3">[附录 3：模型上下文](#appendix-nav)</span>
 
 模型上下文可以理解为 AI 的短期记忆。它指的是在当前一次对话或一次任务中，模型能够“看到”和“记住”的所有文本内容，包括你之前输入的问题、系统提供的说明、相关资料等。
 
@@ -645,7 +701,7 @@ z.ai 的回复将会是这样的：
 - 对不再需要的细节信息，避免一遍又一遍原样塞入上下文
 - 使用外部知识库等方式，把“长期记忆”交给系统，而不是强行塞进模型上下文中
 
-## 附录 4：指令遵循能力
+## <span id="appendix-4">[附录 4：指令遵循能力](#appendix-nav)</span>
 
 指令遵循能力指的是：模型在理解你的指令之后，能否准确、完整地按照你的要求执行。它不仅包括能回答问题，还包括能按指定格式、风格、步骤完成任务。
 
