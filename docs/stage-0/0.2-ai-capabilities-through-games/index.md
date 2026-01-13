@@ -4,9 +4,13 @@
 这是一个**基于项目制学习**的学习教程。我们鼓励你跟随步骤一步步操作，并尝试复现结果。
 不要担心犯错或修改内容，我们永远相信你可以做到，请你永远记住：
 
-::: tip 🎉 核心理念
-**完成比完美更重要**。
-:::
+<el-card shadow="hover" style="border-radius: 16px; border: 2px dashed #FFB6C1; background-color: #FFF0F5; margin: 20px 0;">
+  <div style="text-align: center;">
+    <div style="font-size: 24px; font-weight: 600; color: #595959;">
+       完成比完美更重要 🐣
+    </div>
+  </div>
+</el-card>
 
 
 ## 本章导读
@@ -34,47 +38,7 @@
 
 AI 出现之后,第一次给了普通人一个全新的可能：你不需要会写代码,只需要学会对 AI 说清楚你想要什么。来自 GitHub Copilot 的[数据显示](https://www.wearetenet.com/blog/github-copilot-usage-data-statistics),超过1500万开发者正在用AI辅助编程,平均46%的代码都是AI生成的! 在Java项目中这个比例能达到61%。
 
-<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
-  <template #header>
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <span style="font-size: 20px;">🚀</span>
-      <span style="font-weight: bold; font-size: 16px;">效率的飞跃：AI 编程新时代</span>
-    </div>
-  </template>
-  
-  <el-row :gutter="20" style="margin-bottom: 24px;">
-    <el-col :span="6" :xs="12">
-      <div style="text-align: center; padding: 10px;">
-        <div style="color: #409EFF; font-size: 24px; font-weight: bold;">55%</div>
-        <div style="color: #909399; font-size: 12px; margin-top: 4px;">开发速度提升</div>
-      </div>
-    </el-col>
-    <el-col :span="6" :xs="12">
-      <div style="text-align: center; padding: 10px;">
-        <div style="color: #67C23A; font-size: 24px; font-weight: bold;">2.4 <span style="font-size: 14px;">天</span></div>
-        <div style="color: #909399; font-size: 12px; margin-top: 4px;">提交周期 (原9.6天)</div>
-      </div>
-    </el-col>
-    <el-col :span="6" :xs="12">
-      <div style="text-align: center; padding: 10px;">
-        <div style="color: #E6A23C; font-size: 24px; font-weight: bold;">81%</div>
-        <div style="color: #909399; font-size: 12px; margin-top: 4px;">当天安装率</div>
-      </div>
-    </el-col>
-    <el-col :span="6" :xs="12">
-      <div style="text-align: center; padding: 10px;">
-        <div style="color: #F56C6C; font-size: 24px; font-weight: bold;">96%</div>
-        <div style="color: #909399; font-size: 12px; margin-top: 4px;">代码采纳率</div>
-      </div>
-    </el-col>
-  </el-row>
-
-  <div style="line-height: 1.8; color: #606266;">
-    让人真正兴奋的是效率的飞跃：开发者完成任务的速度提升了 <b>55%</b>。原本需要 9.6 天才能提交的代码，现在只要 <b>2.4 天</b>就能搞定。 这种肉眼可见的效率提升，说明 AI 不再只是一个“可选工具”，而是正在成为开发流程中不可或缺的编程助手。
-    <br/><br/>
-    采用率的数据也印证了这一点：在获得访问权限的当天，就有 <b>81%</b> 的开发者第一时间完成安装并开始使用；其中 <b>96%</b> 的人更是在当天就开始采纳 AI 提供的代码建议。换句话说，开发者几乎是立刻把 AI 融入了日常编码工作。
-  </div>
-</el-card>
+让人真正兴奋的是效率的飞跃：开发者完成任务的速度提升了 55%。原本需要 9.6 天才能提交的代码，现在只要 2.4 天就能搞定。 这种肉眼可见的效率提升，说明 AI 不再只是一个“可选工具”，而是正在成为开发流程中不可或缺的编程助手。采用率的数据也印证了这一点：在获得访问权限的当天，就有 81% 的开发者第一时间完成安装并开始使用；其中 96% 的人更是在当天就开始采纳 AI 提供的代码建议。换句话说，开发者几乎是立刻把 AI 融入了日常编码工作。
 
 对于普通人来说,这个趋势更有意义:如果专业程序员都在大量依赖AI写代码,那我们这些**不会编程的人,为什么不能直接跟AI对话来实现自己的想法呢**?
 
@@ -169,15 +133,6 @@ AI 出现之后,第一次给了普通人一个全新的可能：你不需要会�
 
 在当下，你可以相对安心地把 AI 视作一个高效的 Demo 与自用工具搭档：
 只要你愿意多测试、多迭代，多问几轮“这里不对，帮我修一下并解释原因”，在原型与内部工具这一级别，整体质量通常是足够且具备实践价值的。
-
-<div style="margin: 50px 0;">
-  <el-steps :active="2" align-center>
-    <el-step title="困境与机会" description="普通人的编程新可能" />
-    <el-step title="能力初探" description="60秒极速开发体验" />
-    <el-step title="原生实战" description="打造AI原生贪吃蛇" />
-    <el-step title="拓展创造" description="举一反三做游戏" />
-  </el-steps>
-</div>
 
 ## 3. 动手：你的第一个 AI 原生应用
 
