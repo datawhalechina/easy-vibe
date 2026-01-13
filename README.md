@@ -29,24 +29,12 @@
 </p>
 
 **Easy-Vibe is an open-source, project-based AI coding course that teaches you how to build real AI products from scratch.**
-
-It focuses on:
-- AI programming with LLMs (GPT, Claude, Gemini)
-- Full-stack web application development
-- AI agents, workflows, and RAG systems
-- Turning AI demos into deployable products
-
-👉 Designed for beginners, product managers, and developers.
-
----
-
 **Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**
 
-核心内容：
-- 使用 LLM（GPT, Claude, Gemini）进行 AI 编程
-- 全栈 Web 应用开发
-- AI Agent、工作流和 RAG 系统
-- 将 AI Demo 转化为可部署的产品
+使用 LLM（GPT, Claude, Gemini）进行 AI 编程
+全栈 Web 应用开发
+AI Agent、工作流和 RAG 系统
+将 AI Demo 转化为可部署的产品
 
 👉 专为初学者、产品经理和开发者设计。
 
@@ -69,22 +57,10 @@ It focuses on:
 
 ## 🚀 项目介绍
 
-当你尝试用AI写代码，出错不断，时常想放弃，不清楚如何将程序真正上线 😢。
-
-本教程专门设计，从0到1，带你逐步掌握 Vibe Coding 技巧：
-
 - **第零阶段**：从**小游戏快速入门** 上手 vibe coding 技能
 - **第一阶段**：产品经理视角下的 **vibe coding 技能和业务理解**，实现 Web 应用原型
 - **第二阶段**：学习**前后端开发与 AI 能力**相关的 vibecoding 技巧，完成完整应用
 - **第三阶段**：掌握**多平台复杂应用**的构建方案，走向生产级应用
-
-我们相信，掌握Vibe Coding并配合系统化训练，一个人就能成为集前后端开发、AI 能力集成、产品设计于一身的开发者。
-
-> **本项目主要面向三类学习者：**
->
-> - **新手（普通人 / 产品与运营侧）**：帮助非技术入门学习者听懂关键概念，完成第一个产品原型。
-> - **初中级开发者（有一定基础的学生和开发者）**：掌握前后端 vibe coding 与 AI 能力知识。
-> - **高级开发者（公司与初创、开源与独立开发者）**：高级开发技巧、多平台开发。
 
 ### 📖 内容导航
 
