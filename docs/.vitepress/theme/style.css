@@ -94,6 +94,13 @@
 
 /* Fix tagline wrapping issues */
 .VPHomeHero .tagline {
-  white-space: nowrap;
+  white-space: pre-wrap;
+  word-break: break-word;
   max-width: none !important;
+}
+
+@media (min-width: 960px) {
+  .VPHomeHero .tagline {
+    white-space: nowrap;
+  }
 }

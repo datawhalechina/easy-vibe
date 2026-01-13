@@ -227,12 +227,23 @@ const shouldHideCursor = computed(() => {
 .text-type {
   display: inline-flex;
   align-items: baseline;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .text-type__content {
-  display: inline-block;
-  white-space: nowrap;
+  display: inline;
+  white-space: inherit;
+}
+
+@media (min-width: 960px) {
+  .text-type {
+    white-space: nowrap;
+  }
+  .text-type__content {
+    display: inline-block;
+    white-space: nowrap;
+  }
 }
 
 .text-type__cursor {
