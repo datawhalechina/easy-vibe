@@ -9,7 +9,8 @@ export default defineConfig({
   title: 'Easy-Vibe Tutorial',
   description: 'Easy-Vibe 中文实战课',
   head: [
-    ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }]
+    ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }],
+    ['link', { rel: 'stylesheet', href: `${base}style.css`.replace('//', '/') }]
   ],
   themeConfig: {
     logo: `${base}logo.png`.replace('//', '/'),

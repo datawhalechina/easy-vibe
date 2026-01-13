@@ -4,6 +4,10 @@
   --vp-sidebar-nav-section-gap: 8px;
 }
 
+.vp-doc {
+  font-size: 15px;
+}
+
 /* 生产环境（带 data-v-* 的 scoped 样式）会比 class 选择器更高优先级。
    为避免 build/preview 时被覆盖，这里显式匹配 scoped 属性并加 !important。 */
 :where(html) .VPSidebarItem.level-0,
@@ -78,18 +82,38 @@
 /* 图片高度限制策略：根据长宽比调整最大高度 */
 /* 越高的图片（长宽比越大），限制的高度越小，避免占用过多纵向空间 */
 .vp-doc img.img-tall {
-  max-height: 450px !important;
+  max-height: 380px !important;
+  max-width: 100% !important;
   width: auto !important;
+  height: auto !important;
 }
 
 .vp-doc img.img-very-tall {
-  max-height: 350px !important;
+  max-height: 280px !important;
+  max-width: 100% !important;
   width: auto !important;
+  height: auto !important;
 }
 
 .vp-doc img.img-ultra-tall {
-  max-height: 250px !important;
+  max-height: 200px !important;
+  max-width: 100% !important;
   width: auto !important;
+  height: auto !important;
+}
+
+.vp-doc img.img-limit-width {
+  max-width: 100% !important;
+  max-height: 320px !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.vp-doc img.img-limit-height {
+  max-height: 450px !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
 }
 
 /* Fix tagline wrapping issues */

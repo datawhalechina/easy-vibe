@@ -3,6 +3,10 @@
   --vp-sidebar-nav-section-gap: 8px;
 }
 
+.vp-doc {
+  font-size: 15px;
+}
+
 /* 减少一级标题（如"前端开发"）底部的间距 */
 .VPSidebarItem.level-0 {
   padding-bottom: 4px !important;
@@ -57,18 +61,38 @@
 /* 图片高度限制策略：根据长宽比调整最大高度 */
 /* 越高的图片（长宽比越大），限制的高度越小，避免占用过多纵向空间 */
 .vp-doc img.img-tall {
-  max-height: 450px !important;
+  max-height: 380px !important;
+  max-width: 100% !important;
   width: auto !important;
+  height: auto !important;
 }
 
 .vp-doc img.img-very-tall {
-  max-height: 350px !important;
+  max-height: 280px !important;
+  max-width: 100% !important;
   width: auto !important;
+  height: auto !important;
 }
 
 .vp-doc img.img-ultra-tall {
-  max-height: 250px !important;
+  max-height: 200px !important;
+  max-width: 100% !important;
   width: auto !important;
+  height: auto !important;
+}
+
+.vp-doc img.img-limit-width {
+  max-width: 100% !important;
+  max-height: 320px !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.vp-doc img.img-limit-height {
+  max-height: 450px !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
 }
 
 /* Fix tagline wrapping issues */
