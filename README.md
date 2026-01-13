@@ -28,7 +28,7 @@
 </p>
 
 <div align="center">
-  <a href="https://github.com/THU-SIGS-AIID/ai-vibe-coding-101/blob/main/README.md"><img src="https://img.shields.io/badge/English-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English"></a>
+  <a href="README_EN.md"><img src="https://img.shields.io/badge/English-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/中文-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="中文"></a>
 </div>
 

@@ -37,6 +37,15 @@ The documentation will be available at `http://localhost:5173` (VitePress defaul
 
 ## Project Architecture
 
+### VitePress Base Path Configuration
+
+The site automatically configures its base path based on the deployment environment:
+
+- **Vercel**: Uses `/` as base (detected via `VERCEL` environment variable)
+- **GitHub Pages / Local**: Uses `/easy-vibe/` as base
+
+This logic is in `docs/.vitepress/config.mjs:3-5`. When linking assets or configuring paths, the `${base}` variable is used to ensure compatibility across environments.
+
 ### Directory Structure
 
 ```
@@ -102,12 +111,15 @@ The project uses **VitePress 2.0.0-alpha.15** with these key features:
 - **Typewriter Effect**: TypeIt.js for homepage hero tagline animation
 - **Image Optimization**: Automatic image height classes based on aspect ratio
 - **Custom Layout**: Extends default theme with `Layout.vue` override
+- **Reading Settings**: Element Plus popover panel for adjusting font size (12-18px) and line height (1.25-1.8) with localStorage persistence
 
 **Key Theme Behaviors**:
 
 - Images with aspect ratio > 1.2 get height-limited classes (tall/very-tall/ultra-tall)
 - Viewer.js initialized on `.vp-doc` container on each route change
 - Typewriter effect only activates on homepage when `frontmatter.hero.tagline` is an array
+- Font size/line height adjustments use CSS custom properties `--ev-doc-font-size` and `--ev-doc-line-height`
+- Reading settings panel appears in nav bar after the search/home buttons (gear icon)
 
 ### Sidebar Management
 
@@ -182,6 +194,16 @@ In README.md, use these status indicators:
 - Use kebab-case for directories: `1.1-introduction-to-ai-ide`, `frontend`, `backend`
 - Content can be either `index.md` in a directory or a direct `.md` file
 - Images use descriptive names; can be in chapter subdirectories or root `/assets/`
+
+### Code Formatting
+
+Prettier configuration (`.prettierrc`):
+
+- No semicolons (`semi: false`)
+- Single quotes (`singleQuote: true`)
+- No trailing commas (`trailingComma: "none"`)
+
+Run `npm run format` before committing code changes.
 
 ## Permissions
 
