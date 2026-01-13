@@ -31,12 +31,9 @@
 **Easy-Vibe is an open-source, project-based AI coding course that teaches you how to build real AI products from scratch.**  
 **Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**  
 
-使用 LLM（GPT, Claude, Gemini）进行 AI 编程 
-全栈 Web 应用开发 
-AI Agent、工作流和 RAG 系统   
-将 AI Demo 转化为可部署的产品 
+AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统   
 
-👉 专为初学者、产品经理和开发者设计。
+👉 专为初学者、产品经理和开发者设计。将 AI Demo 转化为可部署的产品。
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读</a> ·
