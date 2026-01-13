@@ -4,12 +4,9 @@ layout: home
 
 <script setup>
 import { onMounted } from 'vue'
+import { withBase } from 'vitepress'
 
 onMounted(() => {
-  // 获取当前的基础路径（考虑 Vercel 和 GitHub Pages）
-  const isVercel = typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')
-  const base = isVercel ? '' : '/easy-vibe'
-
   // 语言映射：浏览器语言代码 -> 网站路径
   const langMap = {
     'zh': '/zh-cn/',
@@ -48,6 +45,7 @@ onMounted(() => {
   }
 
   // 立即跳转，不显示任何内容
-  window.location.replace(base + targetLang)
+  // 使用 withBase 自动处理 base 路径（根据 config.mjs 中的配置）
+  window.location.replace(withBase(targetLang))
 })
 </script>
