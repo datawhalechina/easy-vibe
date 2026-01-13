@@ -13,30 +13,23 @@
 
 ### *零基础、项目制学习、构建第一个 AI 产品*
 
+<div align="center">
+  <a href="https://datawhalechina.github.io/easy-vibe/" style="text-decoration: none;">
+    <img src="https://img.shields.io/badge/在线阅读-立即开始-FF6B6B?style=for-the-badge&logo=rocket&logoColor=white&labelColor=1a1a2e">
+  </a>
+</div>
+
 <p>
   <a href="https://github.com/datawhalechina/easy-vibe/stargazers"><img src='https://img.shields.io/github/stars/datawhalechina/easy-vibe?color=660874&style=for-the-badge&logo=star&logoColor=white&labelColor=1a1a2e' /></a>
   <a href="https://github.com/datawhalechina/easy-vibe/network/members"><img src='https://img.shields.io/github/forks/datawhalechina/easy-vibe?color=660874&style=for-the-badge&logo=git-fork&logoColor=white&labelColor=1a1a2e' /></a>
   <img src="https://img.shields.io/badge/License-CC_BY_NC_SA_4.0-4ecdc4?style=for-the-badge&logo=creative-commons&logoColor=white&labelColor=1a1a2e">
   <img src="https://img.shields.io/badge/Language-Chinese-brightgreen?style=for-the-badge&logo=google-translate&logoColor=white&labelColor=1a1a2e">
-</p>
-
-<p>
-   <a href="#contact"><img src="https://img.shields.io/badge/💬WeChat-Group-07c160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=1a1a2e"></a>
+  <a href="#contact"><img src="https://img.shields.io/badge/💬WeChat-Group-07c160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=1a1a2e"></a>
 </p>
 
 <div align="center">
-  <a href="https://datawhalechina.github.io/easy-vibe/" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/在线阅读-立即开始-660874?style=for-the-badge&logo=rocket&logoColor=white&labelColor=1a1a2e">
-  </a>
-</div>
-
-<div align="center" style="margin-top: 10px;">
-  <a href="https://github.com/THU-SIGS-AIID/ai-vibe-coding-101/blob/main/README.md">
-    <img src="https://img.shields.io/badge/English-660874?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English">
-  </a>
-  <a href="README.md">
-    <img src="https://img.shields.io/badge/中文-660874?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="中文">
-  </a>
+  <a href="https://github.com/THU-SIGS-AIID/ai-vibe-coding-101/blob/main/README.md"><img src="https://img.shields.io/badge/English-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="English"></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/中文-2196F3?style=for-the-badge&logo=readme&logoColor=white&labelColor=1a1a2e" alt="中文"></a>
 </div>
 
 </div>
