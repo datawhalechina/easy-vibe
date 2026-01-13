@@ -3,7 +3,7 @@
   /* 通过变量控制分组底部留白（默认 24px） */
   --vp-sidebar-nav-section-gap: 8px;
   --ev-doc-font-size: 13px;
-  --ev-doc-line-height: 1.5;
+  --ev-doc-line-height: 1.65;
 }
 
 .vp-doc {
@@ -18,8 +18,24 @@
   --el-font-line-height-primary: var(--ev-doc-line-height);
 }
 
+.vp-doc p,
+.vp-doc ul,
+.vp-doc ol {
+  line-height: var(--ev-doc-line-height) !important;
+}
+
 .vp-doc :where(p, ul, ol, table, blockquote, pre, details, figure) {
   margin: 10px 0;
+}
+
+.vp-doc blockquote {
+  font-size: 0.9em !important;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc blockquote p {
+  font-size: inherit !important;
+  line-height: 1.4 !important;
 }
 
 .vp-doc :where(li) {

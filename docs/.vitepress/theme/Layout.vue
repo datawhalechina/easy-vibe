@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
 import TextType from './components/TextType.vue'
 import { onMounted, ref, watch } from 'vue'
+import { Setting } from '@element-plus/icons-vue'
 
 const { frontmatter } = useData()
 
@@ -21,7 +22,7 @@ const MAX_FONT_SIZE = 18
 const DEFAULT_FONT_SIZE = 13
 const MIN_LINE_HEIGHT = 1.25
 const MAX_LINE_HEIGHT = 1.8
-const DEFAULT_LINE_HEIGHT = 1.5
+const DEFAULT_LINE_HEIGHT = 1.65
 
 const fontSize = ref(DEFAULT_FONT_SIZE)
 const lineHeight = ref(DEFAULT_LINE_HEIGHT)
