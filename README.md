@@ -28,8 +28,9 @@
   <a href="./docs-readme/de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
 </p>
 
+**Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**    
 **Easy-Vibe is an open-source, project-based AI coding course that teaches you how to build real AI products from scratch.**  
-**Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**  
+
 
 AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统   
 
