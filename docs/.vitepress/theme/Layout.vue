@@ -190,6 +190,40 @@ watch(lineHeight, (next) => {
 </template>
 
 <style>
+/* 隐藏默认的 tagline，因为我们用打字机效果替代了它 */
+.VPHomeHero .tagline {
+  display: none !important;
+}
+
+/* 调整打字机容器的样式，使其看起来像原来的 tagline */
+.vp-typed-tagline {
+  padding-top: 8px;
+  line-height: 28px;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: pre-wrap;
+  color: var(--vp-c-text-2);
+  min-height: 28px;
+  display: flex;
+  /* 确保左对齐 */
+  text-align: left;
+  justify-content: flex-start;
+}
+
+@media (min-width: 640px) {
+  .vp-typed-tagline {
+    line-height: 32px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 960px) {
+  .vp-typed-tagline {
+    line-height: 36px;
+    font-size: 24px;
+  }
+}
+
 .ev-fontsize-button {
   display: inline-flex;
   align-items: center;
