@@ -110,19 +110,19 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 1.4em;
   margin-right: 8px;
 }
 
 .title {
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .content {
-  font-size: 16px;
+  font-size: 1.15em;
   line-height: 1.7;
   color: var(--vp-c-text-1);
   font-weight: 500;
@@ -135,14 +135,14 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
   gap: 12px;
 }
 .description-text {
-  font-size: 16px;
+  font-size: 1.15em;
   line-height: 1.7;
   color: var(--vp-c-text-1);
 }
 
 .description-text.has-tags {
   margin-top: 16px;
-  font-size: 14px;
+  font-size: 1em;
   color: var(--vp-c-text-2);
   border-top: 1px solid var(--vp-c-divider);
   padding-top: 12px;
@@ -155,7 +155,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
   background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
   border-radius: 99px;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 600;
   color: var(--vp-c-text-1);
   transition: all 0.2s;
@@ -193,7 +193,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .card-icon {
-  font-size: 24px;
+  font-size: 1.7em;
   line-height: 1;
   padding-top: 2px;
 }
@@ -205,7 +205,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .card-label {
-  font-size: 12px;
+  font-size: 0.85em;
   color: var(--vp-c-text-2);
   margin-bottom: 8px;
   font-weight: 600;
@@ -213,7 +213,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .card-value {
-  font-size: 14px;
+  font-size: 1em;
   line-height: 1.5;
   color: var(--vp-c-text-1);
 }
@@ -222,7 +222,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
   display: inline-block;
   color: var(--vp-c-brand-dark);
   font-weight: 800;
-  font-size: 16px;
+  font-size: 1.15em;
   margin-top: 2px;
 }
 
@@ -234,7 +234,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .core-output {
-  font-size: 18px;
+  font-size: 1.3em;
   font-weight: 800;
   color: var(--vp-c-brand);
   line-height: 1.4;
@@ -242,7 +242,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .output-desc {
-  font-size: 13px;
+  font-size: 0.93em;
   color: var(--vp-c-text-2);
   line-height: 1.4;
 }

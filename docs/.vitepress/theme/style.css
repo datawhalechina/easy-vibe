@@ -2,7 +2,7 @@
   /* Easy-Vibe Theme Fix v2025-01-12 */
   /* 通过变量控制分组底部留白（默认 24px） */
   --vp-sidebar-nav-section-gap: 8px;
-  --ev-doc-font-size: 13px;
+  --ev-doc-font-size: 14px;
   --ev-doc-line-height: 1.65;
 }
 
@@ -29,13 +29,25 @@
 }
 
 .vp-doc blockquote {
-  font-size: 0.9em !important;
+  font-size: inherit !important;
+  line-height: var(--ev-doc-line-height) !important;
   color: var(--vp-c-text-2);
+  margin: 16px 0 !important;
+  padding: 0 0 0 16px !important;
 }
 
 .vp-doc blockquote p {
   font-size: inherit !important;
-  line-height: 1.4 !important;
+  line-height: inherit !important;
+  margin: 8px 0 !important;
+}
+
+.vp-doc blockquote p:first-child {
+  margin-top: 0 !important;
+}
+
+.vp-doc blockquote p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .vp-doc :where(li) {
