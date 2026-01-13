@@ -3,3 +3,4 @@ node_modules
 tools/*
 docs/.vitepress/dist
 docs/.vitepress/cache
+temp/*
