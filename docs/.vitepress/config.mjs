@@ -202,7 +202,7 @@ export default defineConfig({
               link: '/zh-cn/stage-1/appendix-b-common-errors/'
             },
             {
-              text: '附录示例：在线 AI 编程平台介绍',
+              text: '附录示例 1：7 款主流 Vibe Coding 在线平台实测对比',
               link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
             },
             {
