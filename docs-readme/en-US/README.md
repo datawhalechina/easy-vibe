@@ -77,31 +77,31 @@ We believe that by mastering Vibe Coding combined with systematic training, one 
 
 ### Appendix
 
-[AI Capability Dictionary: Common AI Core Concepts, Terminology, and Scenario Explanations](docs/appendix/ai-capability-dictionary.md)
+[AI Capability Dictionary: Common AI Core Concepts, Terminology, and Scenario Explanations](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
 ### Stage 0: Kindergarten
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Preface: Learning Map](docs/stage-0/0.1-learning-map/index.md) | Overall learning path overview | ✅ |
-| [Primary 1: Programming by Speaking in the AI Era](docs/stage-0/0.2-ai-capabilities-through-games/index.md) | Experience AI programming capabilities through Snake and other cases | ✅ |
+| [Preface: Learning Map](docs/zh-cn/stage-0/0.1-learning-map/index.md) | Overall learning path overview | ✅ |
+| [Primary 1: Programming by Speaking in the AI Era](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experience AI programming capabilities through Snake and other cases | ✅ |
 
 ### Stage 1: AI Product Manager
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Primary 2: Understanding AI IDE Tools](docs/stage-1/1.1-introduction-to-ai-ide/index.md) | Learn to use IDE, create small games locally | ✅ |
-| [Primary 3: Building Prototypes Hands-On](docs/stage-1/1.2-building-prototype/index.md) | From requirement analysis, AI-generated single page to multi-page product prototype | ✅ |
-| [Primary 4: Adding AI Capabilities to Prototypes](docs/stage-1/1.3-integrating-ai-capabilities/index.md) | Learn to integrate common AI capabilities (text, image, video) | ✅ |
-| [Primary 5: Complete Project Practice](docs/stage-1/1.4-complete-project-practice/index.md) | Simulate real scenarios, accept user feedback iterations, complete projects | ✅ |
-| [Final Assignment: Build a Complete Web Application Prototype and Present](docs/stage-1/1.5-final-project/index.md) | Fully implement application, showcase application effects | ✅ |
+| [Primary 2: Understanding AI IDE Tools](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md) | Learn to use IDE, create small games locally | ✅ |
+| [Primary 3: Building Prototypes Hands-On](docs/zh-cn/stage-1/1.2-building-prototype/index.md) | From requirement analysis, AI-generated single page to multi-page product prototype | ✅ |
+| [Primary 4: Adding AI Capabilities to Prototypes](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md) | Learn to integrate common AI capabilities (text, image, video) | ✅ |
+| [Primary 5: Complete Project Practice](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md) | Simulate real scenarios, accept user feedback iterations, complete projects | ✅ |
+| [Final Assignment: Build a Complete Web Application Prototype and Present](docs/zh-cn/stage-1/1.5-final-project/index.md) | Fully implement application, showcase application effects | ✅ |
 
 #### Appendix
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Appendix A: Product Thinking Supplement](docs/stage-1/appendix-a-product-thinking/index.md) | Thinking framework needed to build products from scratch | ✅ |
-| [Appendix B: Common Errors and Solutions](docs/stage-1/appendix-b-common-errors/index.md) | Common errors in vibe coding and troubleshooting methods | ✅ |
+| [Appendix A: Product Thinking Supplement](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Thinking framework needed to build products from scratch | ✅ |
+| [Appendix B: Common Errors and Solutions](docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | Common errors in vibe coding and troubleshooting methods | ✅ |
 
 ### Stage 2: Intermediate Developer
 
@@ -109,51 +109,51 @@ We believe that by mastering Vibe Coding combined with systematic training, one 
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Frontend 0: Using Lovart to Generate Assets](docs/stage-2/frontend/2.0-lovart-assets/) | Learn to use Lovart to batch generate characters, scenes and other visual assets | 🚧 |
-| [Frontend 1: Figma & MasterGo Introduction](docs/stage-2/frontend/2.1-figma-mastergo/) | Use design tools to organize information architecture and page structure | 🚧 |
-| [Frontend 2: Building Your First Modern Application - UI Design](docs/stage-2/frontend/2.2-ui-design/) | Complete componentized interface based on design specs, implement the first link from design to code | 🚧 |
-| [Frontend 3: Reference UI Design Specs and Multi-Product UI Design](docs/stage-2/frontend/2.3-multi-product-ui/) | Expand multi-product interfaces around unified visual design, practice systematic design capabilities | 🚧 |
-| [Frontend 4: Building Hogwarts Portraits Together](docs/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | Build AI-capable frontend applications from scratch, connecting design and development | ✅ |
+| [Frontend 0: Using Lovart to Generate Assets](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/) | Learn to use Lovart to batch generate characters, scenes and other visual assets | 🚧 |
+| [Frontend 1: Figma & MasterGo Introduction](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/) | Use design tools to organize information architecture and page structure | 🚧 |
+| [Frontend 2: Building Your First Modern Application - UI Design](docs/zh-cn/stage-2/frontend/2.2-ui-design/) | Complete componentized interface based on design specs, implement the first link from design to code | 🚧 |
+| [Frontend 3: Reference UI Design Specs and Multi-Product UI Design](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/) | Expand multi-product interfaces around unified visual design, practice systematic design capabilities | 🚧 |
+| [Frontend 4: Building Hogwarts Portraits Together](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | Build AI-capable frontend applications from scratch, connecting design and development | ✅ |
 
 #### Backend and Full Stack Part
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Backend 1: What is API](docs/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md) | Understand HTTP interfaces and request-response models | ✅ |
-| [Backend 2: From Database to Supabase](docs/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) | Implement databases and APIs on Supabase, connect data models with frontend pages | ✅ |
-| [Backend 3: AI-Assisted Interface Code and Documentation](docs/stage-2/backend/2.3-ai-interface-code/) | Use LLM to help generate interface and database documentation and code | 🚧 |
-| [Backend 4: Git Workflow](docs/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md) | Manage code in Git workflow, version control and collaboration | ✅ |
-| [Backend 5: Zeabur Deployment](docs/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) | Deploy applications to Zeabur for production | ✅ |
-| [Backend 6: Modern CLI Development Tools](docs/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | Use CLI-based AI programming tools to accelerate development and debugging | ✅ |
-| [Backend 7: Integrating Payment Systems like Stripe](docs/stage-2/backend/2.7-stripe-payment/) | Integrate payment systems, complete payment links and basic settlement processes | 🚧 |
-| [Assignment 1: Build Your First Modern Application - Full Stack](docs/stage-2/assignments/2.1-fullstack-app/) | Integrate frontend, backend and payment modules, complete production-ready full stack web application | 🚧 |
-| [Assignment 2: Modern Frontend Component Library + Trae Practice](docs/stage-2/assignments/2.2-modern-frontend-trae/) | Use modern frontend component libraries with Trae, independently complete login/registration and payment-capable products | 🚧 |
+| [Backend 1: What is API](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md) | Understand HTTP interfaces and request-response models | ✅ |
+| [Backend 2: From Database to Supabase](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) | Implement databases and APIs on Supabase, connect data models with frontend pages | ✅ |
+| [Backend 3: AI-Assisted Interface Code and Documentation](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/) | Use LLM to help generate interface and database documentation and code | 🚧 |
+| [Backend 4: Git Workflow](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md) | Manage code in Git workflow, version control and collaboration | ✅ |
+| [Backend 5: Zeabur Deployment](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) | Deploy applications to Zeabur for production | ✅ |
+| [Backend 6: Modern CLI Development Tools](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | Use CLI-based AI programming tools to accelerate development and debugging | ✅ |
+| [Backend 7: Integrating Payment Systems like Stripe](docs/zh-cn/stage-2/backend/2.7-stripe-payment/) | Integrate payment systems, complete payment links and basic settlement processes | 🚧 |
+| [Assignment 1: Build Your First Modern Application - Full Stack](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/) | Integrate frontend, backend and payment modules, complete production-ready full stack web application | 🚧 |
+| [Assignment 2: Modern Frontend Component Library + Trae Practice](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/) | Use modern frontend component libraries with Trae, independently complete login/registration and payment-capable products | 🚧 |
 
 #### AI Capabilities Appendix
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [AI 1: Dify Introduction and Knowledge Base Integration](docs/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | Use Dify Workflow and basic RAG to build utility products | ✅ |
-| [AI 2: Learn to Query AI Dictionary and Integrate Multimodal APIs](docs/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md) | Learn to find suitable models and APIs, integrate text, image and other multimodal capabilities | 🚧 |
+| [AI 1: Dify Introduction and Knowledge Base Integration](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | Use Dify Workflow and basic RAG to build utility products | ✅ |
+| [AI 2: Learn to Query AI Dictionary and Integrate Multimodal APIs](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md) | Learn to find suitable models and APIs, integrate text, image and other multimodal capabilities | 🚧 |
 
 ### Stage 3: Advanced Developer
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Advanced 1: MCP and ClaudeCode Skills](docs/stage-3/core-skills/3.1-mcp-claudecode-skills/) | Extend IDE capabilities through MCP and Skills, integrate external services as tools | 🚧 |
-| [Advanced 2: Making Coding Tools Work for Long Periods](docs/stage-3/core-skills/3.2-long-running-tasks/) | Design and configure long-running tasks, make Coding Tools more stable and reliable | 🚧 |
-| [Advanced 3: Multi-Platform Development: Building WeChat Mini Programs](docs/stage-3/cross-platform/3.3-wechat-miniprogram/) | Understand WeChat mini program ecosystem, complete a frontend mini program from official template to launch | ✅ |
-| [Advanced 4: Multi-Platform Development: Building WeChat Mini Programs - With Backend](docs/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Integrate databases and backend logic in mini programs, complete business loops | 🚧 |
-| [Advanced 5: Multi-Platform Development: Building Android Apps](docs/stage-3/cross-platform/3.5-android-app/) | Use Expo and other tools to complete Web/native integrated Android application development | 🚧 |
-| [Advanced 6: Multi-Platform Development: Building iOS Apps](docs/stage-3/cross-platform/3.6-ios-app/) | Use Expo and other tools to complete Web/native integrated iOS application development | 🚧 |
-| [Advanced 7: Building Your Personal Website and Academic Blog](docs/stage-3/personal-brand/3.7-personal-website-blog/) | From selection, building to deployment, create a permanent online homepage showcasing projects and academic achievements | 🚧 |
+| [Advanced 1: MCP and ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/) | Extend IDE capabilities through MCP and Skills, integrate external services as tools | 🚧 |
+| [Advanced 2: Making Coding Tools Work for Long Periods](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) | Design and configure long-running tasks, make Coding Tools more stable and reliable | 🚧 |
+| [Advanced 3: Multi-Platform Development: Building WeChat Mini Programs](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | Understand WeChat mini program ecosystem, complete a frontend mini program from official template to launch | ✅ |
+| [Advanced 4: Multi-Platform Development: Building WeChat Mini Programs - With Backend](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Integrate databases and backend logic in mini programs, complete business loops | 🚧 |
+| [Advanced 5: Multi-Platform Development: Building Android Apps](docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Use Expo and other tools to complete Web/native integrated Android application development | 🚧 |
+| [Advanced 6: Multi-Platform Development: Building iOS Apps](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Use Expo and other tools to complete Web/native integrated iOS application development | 🚧 |
+| [Advanced 7: Building Your Personal Website and Academic Blog](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) | From selection, building to deployment, create a permanent online homepage showcasing projects and academic achievements | 🚧 |
 
 #### AI Capabilities Appendix
 
 | Chapter | Key Content | Status |
 | :--- | :--- | :--- |
-| [Advanced AI 1: What is RAG and How It Works](docs/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | Systematically understand RAG principles and common architectures | ✅ |
-| [Advanced AI 2: Intermediate/Advanced RAG and Workflow Orchestration with LangGraph](docs/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | Use LangGraph and other tools to design multi-step workflows and intermediate/advanced RAG systems | 🚧 |
+| [Advanced AI 1: What is RAG and How It Works](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | Systematically understand RAG principles and common architectures | ✅ |
+| [Advanced AI 2: Intermediate/Advanced RAG and Workflow Orchestration with LangGraph](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | Use LangGraph and other tools to design multi-step workflows and intermediate/advanced RAG systems | 🚧 |
 
 ## 🛠️ How to Learn
 

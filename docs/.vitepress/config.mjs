@@ -202,11 +202,11 @@ export default defineConfig({
               link: '/zh-cn/stage-1/appendix-b-common-errors/'
             },
             {
-              text: '附录示例：贪吃蛇游戏教程',
+              text: '附录示例：在线 AI 编程平台介绍',
               link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
             },
             {
-              text: '附录示例：用 AI 搭建完整网站',
+              text: '附录示例：用编程和设计智能体开发网站',
               link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
             }
           ],
