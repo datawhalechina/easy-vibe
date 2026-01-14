@@ -10,6 +10,16 @@ import './style.css'
 import Layout from './Layout.vue'
 import StepBar from './components/StepBar.vue'
 import ChapterIntroduction from './components/ChapterIntroduction.vue'
+import WebTerminal from './components/appendix/terminal-intro/WebTerminal.vue'
+import TerminalGrid from './components/appendix/terminal-intro/TerminalGrid.vue'
+import CellInspector from './components/appendix/terminal-intro/CellInspector.vue'
+import EscapeSequences from './components/appendix/terminal-intro/EscapeSequences.vue'
+import InputVisualizer from './components/appendix/terminal-intro/InputVisualizer.vue'
+import SignalsDemo from './components/appendix/terminal-intro/SignalsDemo.vue'
+import FlowDiagram from './components/appendix/terminal-intro/FlowDiagram.vue'
+import AdvancedTUIDemo from './components/appendix/terminal-intro/AdvancedTUIDemo.vue'
+import ArchitectureDemo from './components/appendix/terminal-intro/ArchitectureDemo.vue'
+import TerminalDefinition from './components/appendix/terminal-intro/TerminalDefinition.vue'
 
 export default {
   extends: DefaultTheme,
@@ -18,6 +28,16 @@ export default {
     app.use(ElementPlus)
     app.component('StepBar', StepBar)
     app.component('ChapterIntroduction', ChapterIntroduction)
+    app.component('WebTerminal', WebTerminal)
+    app.component('TerminalGrid', TerminalGrid)
+    app.component('CellInspector', CellInspector)
+    app.component('EscapeSequences', EscapeSequences)
+    app.component('InputVisualizer', InputVisualizer)
+    app.component('SignalsDemo', SignalsDemo)
+    app.component('FlowDiagram', FlowDiagram)
+    app.component('AdvancedTUIDemo', AdvancedTUIDemo)
+    app.component('ArchitectureDemo', ArchitectureDemo)
+    app.component('TerminalDefinition', TerminalDefinition)
   },
   setup() {
     const route = useRoute()

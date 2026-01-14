@@ -433,7 +433,8 @@ export default defineConfig({
             {
               text: '附录',
               items: [
-                { text: 'AI 能力词典', link: '/zh-cn/appendix/ai-capability-dictionary' }
+                { text: 'AI 能力词典', link: '/zh-cn/appendix/ai-capability-dictionary' },
+                { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' }
               ]
             }
           ]
