@@ -22,9 +22,32 @@ import AdvancedTUIDemo from './components/appendix/terminal-intro/AdvancedTUIDem
 import ArchitectureDemo from './components/appendix/terminal-intro/ArchitectureDemo.vue'
 import TerminalDefinition from './components/appendix/terminal-intro/TerminalDefinition.vue'
 import TerminalOSDemo from './components/appendix/terminal-intro/TerminalOSDemo.vue'
+import TerminalHandsOn from './components/appendix/terminal-intro/TerminalHandsOn.vue'
+import TokenizationDemo from './components/appendix/llm-intro/TokenizationDemo.vue'
+import NextTokenPrediction from './components/appendix/llm-intro/NextTokenPrediction.vue'
+import TokenizerToMatrix from './components/appendix/llm-intro/TokenizerToMatrix.vue'
+import EmbeddingDemo from './components/appendix/llm-intro/EmbeddingDemo.vue'
+import TrainingInferenceDemo from './components/appendix/llm-intro/TrainingInferenceDemo.vue'
+import RNNvsTransformer from './components/appendix/llm-intro/RNNvsTransformer.vue'
+import PatchifyDemo from './components/appendix/vlm-intro/PatchifyDemo.vue'
+import ProjectorDemo from './components/appendix/vlm-intro/ProjectorDemo.vue'
+import VLMInferenceDemo from './components/appendix/vlm-intro/VLMInferenceDemo.vue'
+import LinearProjectionDemo from './components/appendix/vlm-intro/LinearProjectionDemo.vue'
+import PositionalEmbeddingDemo from './components/appendix/vlm-intro/PositionalEmbeddingDemo.vue'
+import AttentionDemo from './components/appendix/vlm-intro/AttentionDemo.vue'
+import TrainingPipelineDemo from './components/appendix/vlm-intro/TrainingPipelineDemo.vue'
+import ModelArchitectureComparisonDemo from './components/appendix/vlm-intro/ModelArchitectureComparisonDemo.vue'
+import ThinkingModelDemo from './components/appendix/llm-intro/ThinkingModelDemo.vue'
+import MoEDemo from './components/appendix/llm-intro/MoEDemo.vue'
+import LinearAttentionDemo from './components/appendix/llm-intro/LinearAttentionDemo.vue'
+import LlmQuickStartDemo from './components/appendix/llm-intro/LlmQuickStartDemo.vue'
+import FeatureAlignmentDemo from './components/appendix/vlm-intro/FeatureAlignmentDemo.vue'
+import VlmQuickStartDemo from './components/appendix/vlm-intro/VlmQuickStartDemo.vue'
 
 import EscapeParserDemo from './components/appendix/terminal-intro/EscapeParserDemo.vue'
 import CookedRawDemo from './components/appendix/terminal-intro/CookedRawDemo.vue'
+
+import ViTOutputDemo from './components/appendix/vlm-intro/ViTOutputDemo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -47,6 +70,28 @@ export default {
     app.component('ArchitectureDemo', ArchitectureDemo)
     app.component('TerminalDefinition', TerminalDefinition)
     app.component('TerminalOSDemo', TerminalOSDemo)
+    app.component('TerminalHandsOn', TerminalHandsOn)
+    app.component('TokenizationDemo', TokenizationDemo)
+    app.component('NextTokenPrediction', NextTokenPrediction)
+    app.component('TokenizerToMatrix', TokenizerToMatrix)
+    app.component('EmbeddingDemo', EmbeddingDemo)
+    app.component('TrainingInferenceDemo', TrainingInferenceDemo)
+    app.component('RNNvsTransformer', RNNvsTransformer)
+    app.component('PatchifyDemo', PatchifyDemo)
+    app.component('ProjectorDemo', ProjectorDemo)
+    app.component('VLMInferenceDemo', VLMInferenceDemo)
+    app.component('LinearProjectionDemo', LinearProjectionDemo)
+    app.component('PositionalEmbeddingDemo', PositionalEmbeddingDemo)
+    app.component('AttentionDemo', AttentionDemo)
+    app.component('ViTOutputDemo', ViTOutputDemo)
+    app.component('TrainingPipelineDemo', TrainingPipelineDemo)
+    app.component('ModelArchitectureComparisonDemo', ModelArchitectureComparisonDemo)
+    app.component('ThinkingModelDemo', ThinkingModelDemo)
+    app.component('MoEDemo', MoEDemo)
+    app.component('LinearAttentionDemo', LinearAttentionDemo)
+    app.component('LlmQuickStartDemo', LlmQuickStartDemo)
+    app.component('FeatureAlignmentDemo', FeatureAlignmentDemo)
+    app.component('VlmQuickStartDemo', VlmQuickStartDemo)
   },
   setup() {
     const route = useRoute()
