@@ -20,18 +20,33 @@
           <p class="task-desc">{{ currentTask.description }}</p>
           
           <div class="ai-helper">
-            <div class="ai-header" @click="toggleAi" :class="{ active: isAiOpen }">
+            <div class="ai-header">
               <span class="ai-icon">🤖</span>
               <span class="ai-title">不知道怎么写？问问 AI</span>
-              <span class="ai-arrow">▼</span>
             </div>
-            <div class="ai-chat" v-if="isAiOpen">
+            <div class="ai-chat" v-show="isAiOpen">
               <div class="chat-bubble user">
                 {{ currentTask.aiQuery }}
               </div>
               <div class="chat-bubble ai">
                 <p>{{ currentTask.aiResponse[currentOS] || currentTask.aiResponse.common }}</p>
-                <button class="copy-btn" @click="copyCommand(currentTask.expectedCmd[currentOS] || currentTask.expectedCmd.common)">
+                <!-- Multiple Commands Support -->
+                <div v-if="currentTask.commands && currentTask.commands[currentOS]" class="cmd-buttons">
+                  <button 
+                    v-for="(cmdItem, idx) in currentTask.commands[currentOS]" 
+                    :key="idx"
+                    class="copy-btn" 
+                    @click="copyCommand(cmdItem.cmd)"
+                  >
+                    {{ cmdItem.label || '复制命令' }}
+                  </button>
+                </div>
+                <!-- Fallback for Single Command -->
+                <button 
+                  v-else-if="currentTask.expectedCmd"
+                  class="copy-btn" 
+                  @click="copyCommand(currentTask.expectedCmd[currentOS] || currentTask.expectedCmd.common)"
+                >
                   复制命令
                 </button>
               </div>
@@ -79,6 +94,7 @@
               spellcheck="false"
               autocomplete="off"
             />
+            <span v-if="inputCmd.length > 0" class="enter-hint">⏎ 按回车执行</span>
           </div>
         </div>
       </div>
@@ -91,7 +107,7 @@ import { ref, computed, nextTick, watch } from 'vue'
 
 const currentOS = ref('win-cmd')
 const currentTaskIndex = ref(0)
-const isAiOpen = ref(false)
+const isAiOpen = ref(true)
 const inputCmd = ref('')
 const history = ref([])
 const cmdInput = ref(null)
@@ -197,23 +213,80 @@ d----           1/15/2026  9:00 AM                Downloads
     output: () => ''
   },
   {
-    title: '第五步：安装程序',
-    description: '终端不仅能管理文件，还能安装软件。比如我们想安装一个 Python 库 "requests"。',
-    goal: '使用 pip 安装 requests 库。',
-    aiQuery: '怎么用命令行安装 python 的 requests 库？',
+    title: '第五步：安装程序 (系统软件 & Python库)',
+    description: '终端不仅能管理文件，还能安装软件。我们来尝试两种常见的安装场景：安装系统工具（如 wget/git）和安装 Python 库（如 requests）。',
+    goal: '任选其一：安装系统工具或 Python 库。',
+    aiQuery: '怎么用命令行安装软件？我想装 git 或者 python 的 requests 库。',
     aiResponse: {
-      'common': '安装 Python 库通常使用 `pip` (Python Package Installer)。命令是 `pip install requests`。'
+      'mac': 'macOS 推荐使用 Homebrew 安装系统软件，使用 pip 安装 Python 库。',
+      'linux': 'Linux (Ubuntu/Debian) 使用 apt 安装系统软件，使用 pip 安装 Python 库。',
+      'win-ps': 'Windows PowerShell 可以使用 pip 安装 Python 库。系统软件通常用 winget (这里暂只演示 pip)。',
+      'win-cmd': 'CMD 也可以使用 pip 安装 Python 库。',
+      'common': '不同系统有不同的包管理器。'
+    },
+    commands: {
+      'mac': [
+        { label: '安装 wget (系统)', cmd: 'brew install wget' },
+        { label: '安装 requests (Python)', cmd: 'pip install requests' }
+      ],
+      'linux': [
+        { label: '安装 git (系统)', cmd: 'sudo apt install git' },
+        { label: '安装 requests (Python)', cmd: 'pip install requests' }
+      ],
+      'win-ps': [
+        { label: '安装 requests (Python)', cmd: 'pip install requests' }
+      ],
+      'win-cmd': [
+        { label: '安装 requests (Python)', cmd: 'pip install requests' }
+      ]
     },
     expectedCmd: {
-      'common': 'pip install requests'
+      // Fallback/Legacy
+      'mac': 'brew install wget',
+      'linux': 'sudo apt install git',
+      'win-ps': 'pip install requests',
+      'win-cmd': 'pip install requests'
     },
-    validate: (cmd) => cmd.trim() === 'pip install requests',
-    output: () => `
+    validate: (cmd, os) => {
+      const c = cmd.trim()
+      if (os === 'mac') return c === 'brew install wget' || c === 'pip install requests'
+      if (os === 'linux') return c === 'sudo apt install git' || c === 'apt install git' || c === 'pip install requests'
+      return c === 'pip install requests'
+    },
+    output: (os, cmd) => { // Modified to accept cmd
+      const c = cmd ? cmd.trim() : ''
+      
+      // Python requests output
+      if (c.includes('pip install requests')) {
+         return `
 Downloading/unpacking requests
   Downloading requests-2.31.0-py3-none-any.whl (62kB): 62kB downloaded
 Installing collected packages: requests
 Successfully installed requests
 Cleaning up...`
+      }
+
+      // System tools output
+      if (os === 'mac') {
+        return `
+==> Downloading https://ghcr.io/v2/homebrew/core/wget/manifests/1.21.4
+######################################################################## 100.0%
+==> Installing wget
+🍺  /usr/local/Cellar/wget/1.21.4: 90 files, 4.2MB`
+      }
+      if (os === 'linux') {
+        return `
+Reading package lists... Done
+Building dependency tree... Done
+The following NEW packages will be installed:
+  git
+0 upgraded, 1 newly installed, 0 to remove.
+Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 git amd64 1:2.34.1 [3MB]
+Fetched 3MB in 1s (2560 kB/s)
+Setting up git (1:2.34.1-1ubuntu1.9) ...`
+      }
+      return `Successfully installed.`
+    }
   },
   {
     title: '第六步：打扫战场',
@@ -288,7 +361,7 @@ const executeCommand = () => {
   // Check if it matches current task requirement
   if (!isTaskCompleted.value && currentTask.value.validate(cmd, currentOS.value)) {
     // Success
-    const out = currentTask.value.output(currentOS.value)
+    const out = currentTask.value.output(currentOS.value, cmd) // Pass cmd to output
     if (out) {
       history.value.push({ type: 'output', content: out })
     }
@@ -320,7 +393,6 @@ const nextTask = () => {
   if (currentTaskIndex.value < tasks.length - 1) {
     currentTaskIndex.value++
     isTaskCompleted.value = false
-    isAiOpen.value = false
     // Clear history to keep it clean? Or keep it? Let's keep it but maybe add a separator
     history.value.push({ type: 'info', content: `--- 进入下一关: ${currentTask.value.title} ---` })
     scrollToBottom()
@@ -330,7 +402,6 @@ const nextTask = () => {
 const resetCurrentTask = () => {
   isTaskCompleted.value = false
   inputCmd.value = ''
-  isAiOpen.value = false
   history.value = []
 }
 
@@ -426,7 +497,6 @@ watch(currentOS, () => {
 .ai-header {
   padding: 10px 15px;
   background: linear-gradient(to right, rgba(16, 185, 129, 0.1), transparent);
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -438,16 +508,6 @@ watch(currentOS, () => {
 
 .ai-header:hover {
   background: linear-gradient(to right, rgba(16, 185, 129, 0.2), transparent);
-}
-
-.ai-header.active .ai-arrow {
-  transform: rotate(180deg);
-}
-
-.ai-arrow {
-  margin-left: auto;
-  font-size: 0.8rem;
-  transition: transform 0.2s;
 }
 
 .ai-chat {
@@ -478,15 +538,22 @@ watch(currentOS, () => {
   border-bottom-left-radius: 2px;
 }
 
+.cmd-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
 .copy-btn {
-  margin-top: 5px;
   font-size: 0.8rem;
-  padding: 2px 8px;
+  padding: 4px 10px;
   border: 1px solid var(--vp-c-brand);
   color: var(--vp-c-brand);
   background: transparent;
   border-radius: 4px;
   cursor: pointer;
+  text-align: left;
 }
 
 .copy-btn:hover {
@@ -631,6 +698,19 @@ watch(currentOS, () => {
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.enter-hint {
+  color: #666;
+  font-size: 12px;
+  margin-left: 10px;
+  animation: blink 1.5s infinite;
+  white-space: nowrap;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 .line.output {

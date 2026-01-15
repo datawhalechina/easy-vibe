@@ -4,8 +4,8 @@
       <div class="title">转义序列解析原理 (Parser Mechanism)</div>
       <div class="controls">
         <button @click="reset" :disabled="isPlaying">Reset</button>
-        <button @click="togglePlay" :disabled="isFinished" class="play-btn">
-          {{ isPlaying ? '⏸ Pause' : '▶ Play Animation' }}
+        <button @click="togglePlay" class="play-btn">
+          {{ isPlaying ? '⏸ Pause' : (isFinished ? '↺ Replay' : '▶ Play Animation') }}
         </button>
       </div>
     </div>
@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 // 原始字符串: Hello [RED]World[RESET]!
 // \x1B [ 3 1 m
@@ -115,20 +115,36 @@ const isFinished = ref(false)
 const lastAction = ref('')
 
 const reset = () => {
+  isPlaying.value = false // Stop first
   currentIndex.value = 0
   outputBuffer.value = []
   parserState.value = 'NORMAL'
   currentStyle.value = {}
-  isPlaying.value = false
   isFinished.value = false
   lastAction.value = ''
+}
+
+const togglePlay = () => {
+  if (isPlaying.value) {
+    isPlaying.value = false
+  } else {
+    play()
+  }
 }
 
 const play = async () => {
   if (isPlaying.value) return
   isPlaying.value = true
   
+  // If finished, reset first
+  if (isFinished.value) {
+    reset()
+    isPlaying.value = true
+  }
+
   while (currentIndex.value < charStream.value.length) {
+    if (!isPlaying.value) break
+
     const char = charStream.value[currentIndex.value]
     
     // Processing Logic
@@ -165,12 +181,18 @@ const play = async () => {
     }
 
     await new Promise(r => setTimeout(r, 600)) // Animation speed
+    
+    // Check playing again after wait
+    if (!isPlaying.value) break
+    
     currentIndex.value++
   }
   
-  isPlaying.value = false
-  isFinished.value = true
-  lastAction.value = 'Done'
+  if (currentIndex.value >= charStream.value.length) {
+    isPlaying.value = false
+    isFinished.value = true
+    lastAction.value = 'Done'
+  }
 }
 </script>
 
@@ -241,14 +263,14 @@ const play = async () => {
 .stream-track {
   position: relative;
   height: 60px;
-  display: flex;
-  justify-content: center; /* Center the focus area */
+  /* Use a fixed height to contain the items */
 }
 
 .stream-window-mask {
   width: 100%;
   overflow: hidden;
   position: relative;
+  height: 100%;
   /* Mask gradient to fade edges */
   mask-image: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
@@ -258,9 +280,18 @@ const play = async () => {
   display: flex;
   gap: 4px;
   position: absolute;
-  left: 50%; /* Start from center */
+  left: 50%; /* Center the container start */
+  /* 
+     Correct centering logic:
+     - Item width: 36px
+     - Gap: 4px
+     - Total unit: 40px
+     - We want Item[0] center to be at left:0 (relative to left:50%)
+     - Item[0] center is at: 18px (half width)
+     - So we need to shift left by 18px initially.
+  */
+  margin-left: -18px; 
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  padding-left: 20px; /* Offset for first item */
 }
 
 .char-box {
