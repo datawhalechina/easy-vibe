@@ -27,6 +27,79 @@ import TerminalHandsOn from './components/appendix/terminal-intro/TerminalHandsO
 import EscapeParserDemo from './components/appendix/terminal-intro/EscapeParserDemo.vue'
 import CookedRawDemo from './components/appendix/terminal-intro/CookedRawDemo.vue'
 
+// LLM Intro Components
+import EmbeddingDemo from './components/appendix/llm-intro/EmbeddingDemo.vue'
+import LinearAttentionDemo from './components/appendix/llm-intro/LinearAttentionDemo.vue'
+import LlmQuickStartDemo from './components/appendix/llm-intro/LlmQuickStartDemo.vue'
+import MoEDemo from './components/appendix/llm-intro/MoEDemo.vue'
+import NextTokenPrediction from './components/appendix/llm-intro/NextTokenPrediction.vue'
+import RNNvsTransformer from './components/appendix/llm-intro/RNNvsTransformer.vue'
+import ThinkingModelDemo from './components/appendix/llm-intro/ThinkingModelDemo.vue'
+import TokenizationDemo from './components/appendix/llm-intro/TokenizationDemo.vue'
+import TokenizerToMatrix from './components/appendix/llm-intro/TokenizerToMatrix.vue'
+import TrainingInferenceDemo from './components/appendix/llm-intro/TrainingInferenceDemo.vue'
+
+// VLM Intro Components
+import AttentionDemo from './components/appendix/vlm-intro/AttentionDemo.vue'
+import FeatureAlignmentDemo from './components/appendix/vlm-intro/FeatureAlignmentDemo.vue'
+import LinearProjectionDemo from './components/appendix/vlm-intro/LinearProjectionDemo.vue'
+import ModelArchitectureComparisonDemo from './components/appendix/vlm-intro/ModelArchitectureComparisonDemo.vue'
+import PatchifyDemo from './components/appendix/vlm-intro/PatchifyDemo.vue'
+import PositionalEmbeddingDemo from './components/appendix/vlm-intro/PositionalEmbeddingDemo.vue'
+import ProjectorDemo from './components/appendix/vlm-intro/ProjectorDemo.vue'
+import TrainingPipelineDemo from './components/appendix/vlm-intro/TrainingPipelineDemo.vue'
+import VLMInferenceDemo from './components/appendix/vlm-intro/VLMInferenceDemo.vue'
+import ViTOutputDemo from './components/appendix/vlm-intro/ViTOutputDemo.vue'
+import VlmQuickStartDemo from './components/appendix/vlm-intro/VlmQuickStartDemo.vue'
+
+// Image Gen Intro Components
+import ImageGenArchitecture from './components/appendix/image-gen-intro/ImageGenArchitecture.vue'
+import LatentSpaceViz from './components/appendix/image-gen-intro/LatentSpaceViz.vue'
+import DiffusionProcessDemo from './components/appendix/image-gen-intro/DiffusionProcessDemo.vue'
+import FlowMatchingDemo from './components/appendix/image-gen-intro/FlowMatchingDemo.vue'
+import PromptVisualizer from './components/appendix/image-gen-intro/PromptVisualizer.vue'
+
+// Audio Intro Components
+import AudioWaveformDemo from './components/appendix/audio-intro/AudioWaveformDemo.vue'
+import AudioTokenizationDemo from './components/appendix/audio-intro/AudioTokenizationDemo.vue'
+import SpectrogramViz from './components/appendix/audio-intro/SpectrogramViz.vue'
+import AutoregressiveAudioDemo from './components/appendix/audio-intro/AutoregressiveAudioDemo.vue'
+
+// Web Basics Components
+import WebTechTriad from './components/appendix/web-basics/WebTechTriad.vue'
+import UrlToBrowserDemo from './components/appendix/web-basics/UrlToBrowserDemo.vue'
+import GitWorkflowDemo from './components/appendix/web-basics/GitWorkflowDemo.vue'
+import NetworkLayers from './components/appendix/web-basics/NetworkLayers.vue'
+import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.vue'
+import SubnetCalculator from './components/appendix/web-basics/SubnetCalculator.vue'
+import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTroubleshooting.vue'
+import DeploymentArchitecture from './components/appendix/web-basics/DeploymentArchitecture.vue'
+import CssBoxModel from './components/appendix/web-basics/CssBoxModel.vue'
+import CssFlexbox from './components/appendix/web-basics/CssFlexbox.vue'
+import DomManipulator from './components/appendix/web-basics/DomManipulator.vue'
+import DnsLookupDemo from './components/appendix/web-basics/DnsLookupDemo.vue'
+import TcpHandshakeDemo from './components/appendix/web-basics/TcpHandshakeDemo.vue'
+
+// Prompt Engineering Components
+import PromptComparisonDemo from './components/appendix/prompt-engineering/PromptComparisonDemo.vue'
+import FewShotDemo from './components/appendix/prompt-engineering/FewShotDemo.vue'
+import ChainOfThoughtDemo from './components/appendix/prompt-engineering/ChainOfThoughtDemo.vue'
+
+// Context Engineering Components
+import ContextWindowDemo from './components/appendix/context-engineering/ContextWindowDemo.vue'
+import RAGPipelineDemo from './components/appendix/context-engineering/RAGPipelineDemo.vue'
+import AgentContextFlow from './components/appendix/context-engineering/AgentContextFlow.vue'
+
+// Agent Intro Components
+import AgentWorkflowDemo from './components/appendix/agent-intro/AgentWorkflowDemo.vue'
+import AgentLevelDemo from './components/appendix/agent-intro/AgentLevelDemo.vue'
+import AgentArchitectureDemo from './components/appendix/agent-intro/AgentArchitectureDemo.vue'
+import AgentTaskFlowDemo from './components/appendix/agent-intro/AgentTaskFlowDemo.vue'
+import FrameworkComparisonDemo from './components/appendix/agent-intro/FrameworkComparisonDemo.vue'
+import FrameworkSelectionDemo from './components/appendix/agent-intro/FrameworkSelectionDemo.vue'
+import AgentChallengesDemo from './components/appendix/agent-intro/AgentChallengesDemo.vue'
+import AgentFutureDemo from './components/appendix/agent-intro/AgentFutureDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -49,6 +122,79 @@ export default {
     app.component('TerminalDefinition', TerminalDefinition)
     app.component('TerminalOSDemo', TerminalOSDemo)
     app.component('TerminalHandsOn', TerminalHandsOn)
+
+    // LLM Intro Components Registration
+    app.component('EmbeddingDemo', EmbeddingDemo)
+    app.component('LinearAttentionDemo', LinearAttentionDemo)
+    app.component('LlmQuickStartDemo', LlmQuickStartDemo)
+    app.component('MoEDemo', MoEDemo)
+    app.component('NextTokenPrediction', NextTokenPrediction)
+    app.component('RNNvsTransformer', RNNvsTransformer)
+    app.component('ThinkingModelDemo', ThinkingModelDemo)
+    app.component('TokenizationDemo', TokenizationDemo)
+    app.component('TokenizerToMatrix', TokenizerToMatrix)
+    app.component('TrainingInferenceDemo', TrainingInferenceDemo)
+
+    // VLM Intro Components Registration
+    app.component('AttentionDemo', AttentionDemo)
+    app.component('FeatureAlignmentDemo', FeatureAlignmentDemo)
+    app.component('LinearProjectionDemo', LinearProjectionDemo)
+    app.component('ModelArchitectureComparisonDemo', ModelArchitectureComparisonDemo)
+    app.component('PatchifyDemo', PatchifyDemo)
+    app.component('PositionalEmbeddingDemo', PositionalEmbeddingDemo)
+    app.component('ProjectorDemo', ProjectorDemo)
+    app.component('TrainingPipelineDemo', TrainingPipelineDemo)
+    app.component('VLMInferenceDemo', VLMInferenceDemo)
+    app.component('ViTOutputDemo', ViTOutputDemo)
+    app.component('VlmQuickStartDemo', VlmQuickStartDemo)
+
+    // Image Gen Intro Components Registration
+    app.component('ImageGenArchitecture', ImageGenArchitecture)
+    app.component('LatentSpaceViz', LatentSpaceViz)
+    app.component('DiffusionProcessDemo', DiffusionProcessDemo)
+    app.component('FlowMatchingDemo', FlowMatchingDemo)
+    app.component('PromptVisualizer', PromptVisualizer)
+
+    // Audio Intro Components Registration
+    app.component('AudioWaveformDemo', AudioWaveformDemo)
+    app.component('AudioTokenizationDemo', AudioTokenizationDemo)
+    app.component('SpectrogramViz', SpectrogramViz)
+    app.component('AutoregressiveAudioDemo', AutoregressiveAudioDemo)
+
+    // Web Basics Components Registration
+    app.component('WebTechTriad', WebTechTriad)
+    app.component('UrlToBrowserDemo', UrlToBrowserDemo)
+    app.component('GitWorkflowDemo', GitWorkflowDemo)
+    app.component('NetworkLayers', NetworkLayers)
+    app.component('TcpUdpComparison', TcpUdpComparison)
+    app.component('SubnetCalculator', SubnetCalculator)
+    app.component('NetworkTroubleshooting', NetworkTroubleshooting)
+    app.component('DeploymentArchitecture', DeploymentArchitecture)
+    app.component('CssBoxModel', CssBoxModel)
+    app.component('CssFlexbox', CssFlexbox)
+    app.component('DomManipulator', DomManipulator)
+    app.component('DnsLookupDemo', DnsLookupDemo)
+    app.component('TcpHandshakeDemo', TcpHandshakeDemo)
+
+    // Prompt Engineering Components Registration
+    app.component('PromptComparisonDemo', PromptComparisonDemo)
+    app.component('FewShotDemo', FewShotDemo)
+    app.component('ChainOfThoughtDemo', ChainOfThoughtDemo)
+
+    // Context Engineering Components Registration
+    app.component('ContextWindowDemo', ContextWindowDemo)
+    app.component('RAGPipelineDemo', RAGPipelineDemo)
+    app.component('AgentContextFlow', AgentContextFlow)
+
+    // Agent Intro Components Registration
+    app.component('AgentWorkflowDemo', AgentWorkflowDemo)
+    app.component('AgentLevelDemo', AgentLevelDemo)
+    app.component('AgentArchitectureDemo', AgentArchitectureDemo)
+    app.component('AgentTaskFlowDemo', AgentTaskFlowDemo)
+    app.component('FrameworkComparisonDemo', FrameworkComparisonDemo)
+    app.component('FrameworkSelectionDemo', FrameworkSelectionDemo)
+    app.component('AgentChallengesDemo', AgentChallengesDemo)
+    app.component('AgentFutureDemo', AgentFutureDemo)
   },
   setup() {
     const route = useRoute()
