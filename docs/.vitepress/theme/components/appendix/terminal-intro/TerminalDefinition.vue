@@ -82,11 +82,12 @@
           <div class="stream-line dashed"></div>
           <div class="stream-label">Event Loop / 事件循环</div>
           <div 
-            v-if="guiEvent"
+            v-for="ev in guiEvents"
+            :key="ev.id"
             class="gui-event-packet"
-            :style="{ left: guiEvent.progress + '%' }"
+            :style="{ left: ev.progress + '%' }"
           >
-            {{ guiEvent.type }}
+            {{ ev.type }}
           </div>
         </div>
 
@@ -135,7 +136,7 @@ const mode = ref('cli') // 'cli' | 'gui'
 const isAnimating = ref(false)
 const activeChars = ref([])
 const typedContent = ref('')
-const demoText = 'ls -la'
+const demoText = 'echo "hello world"'
 
 const startSimulation = () => {
   if (isAnimating.value) return
@@ -168,7 +169,7 @@ const startSimulation = () => {
     // Animate this char
     let progress = 10
     const interval = setInterval(() => {
-      progress += 2
+      progress += 4 // Faster speed
       const charObj = activeChars.value.find(c => c.id === charId)
       if (charObj) charObj.progress = progress
       
@@ -180,7 +181,7 @@ const startSimulation = () => {
         
         // Next char
         index++
-        setTimeout(processNextChar, 300)
+        setTimeout(processNextChar, 100) // Faster typing
       }
     }, 20)
   }
@@ -191,27 +192,40 @@ const startSimulation = () => {
 // GUI Logic
 const isGuiAnimating = ref(false)
 const isGuiClicking = ref(false)
-const guiEvent = ref(null)
+const guiEvents = ref([]) // Array of events
 const iconSelected = ref(false)
-const cursorPosition = ref({ x: 50, y: 50 })
+const inputMousePosition = ref({ x: 80, y: 60 }) // Input side (Invisible physical mouse)
+const screenCursorPosition = ref({ x: 80, y: 60 }) // Output side (Visible screen cursor)
 
 const cursorStyle = computed(() => ({
-  transform: `translate(${cursorPosition.value.x}px, ${cursorPosition.value.y}px)`
+  transform: `translate(${screenCursorPosition.value.x}px, ${screenCursorPosition.value.y}px)`
 }))
 
 const startGuiSimulation = () => {
   if (isGuiAnimating.value) return
   isGuiAnimating.value = true
   iconSelected.value = false
-  cursorPosition.value = { x: 80, y: 60 } // Reset pos
+  inputMousePosition.value = { x: 80, y: 60 }
+  screenCursorPosition.value = { x: 80, y: 60 }
+  guiEvents.value = []
   
-  // 1. Move Cursor
+  // 1. Move Cursor (Physical Mouse Movement)
   let step = 0
   const moveInterval = setInterval(() => {
     step++
-    cursorPosition.value = { 
+    inputMousePosition.value = { 
       x: 80 - step * 2, 
       y: 60 - step * 1.5 
+    }
+    
+    // Emit Move Event frequently (Simulate high polling rate)
+    if (step % 2 === 0) {
+      const targetX = inputMousePosition.value.x
+      const targetY = inputMousePosition.value.y
+      emitGuiEvent(`Move(${Math.round(targetX)},${Math.round(targetY)})`, () => {
+        // When packet arrives: Update screen cursor
+        screenCursorPosition.value = { x: targetX, y: targetY }
+      })
     }
     
     if (step >= 20) {
@@ -219,32 +233,51 @@ const startGuiSimulation = () => {
       // 2. Click
       performClick()
     }
-  }, 20)
+  }, 50)
+}
+
+const emitGuiEvent = (type, onArrive) => {
+  const eventId = Date.now() + Math.random()
+  const newEvent = {
+    id: eventId,
+    type: type,
+    progress: 10
+  }
+  guiEvents.value.push(newEvent)
+  
+  let progress = 10
+  const packetInterval = setInterval(() => {
+    progress += 2
+    const ev = guiEvents.value.find(e => e.id === eventId)
+    if (ev) ev.progress = progress
+    
+    if (progress >= 90) {
+      clearInterval(packetInterval)
+      guiEvents.value = guiEvents.value.filter(e => e.id !== eventId)
+      
+      // Execute callback when packet arrives at Output
+      if (onArrive) onArrive()
+    }
+  }, 10)
 }
 
 const performClick = () => {
   setTimeout(() => {
     isGuiClicking.value = true
     
-    // Send Event Packet
-    guiEvent.value = { type: 'Click(40,30)', progress: 10 }
-    
-    let progress = 10
-    const packetInterval = setInterval(() => {
-      progress += 2
-      if (guiEvent.value) guiEvent.value.progress = progress
+    // Send Click Event
+    emitGuiEvent('Click(40,30)', () => {
+      // When packet arrives: Select icon
+      iconSelected.value = true 
       
-      if (progress >= 90) {
-        clearInterval(packetInterval)
-        guiEvent.value = null
+      setTimeout(() => {
+        isGuiAnimating.value = false
+      }, 1000)
+    })
+    
+    setTimeout(() => {
         isGuiClicking.value = false
-        iconSelected.value = true // Effect
-        
-        setTimeout(() => {
-          isGuiAnimating.value = false
-        }, 1000)
-      }
-    }, 10)
+    }, 200) // Input click feedback is fast
     
   }, 300)
 }
@@ -405,7 +438,7 @@ const performClick = () => {
   top: 0;
   left: 0;
   pointer-events: none;
-  transition: transform 0.05s linear;
+  transition: transform 0.1s linear; /* Smooth interpolation */
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
 }
 

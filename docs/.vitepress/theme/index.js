@@ -17,9 +17,14 @@ import EscapeSequences from './components/appendix/terminal-intro/EscapeSequence
 import InputVisualizer from './components/appendix/terminal-intro/InputVisualizer.vue'
 import SignalsDemo from './components/appendix/terminal-intro/SignalsDemo.vue'
 import FlowDiagram from './components/appendix/terminal-intro/FlowDiagram.vue'
+import BufferSwitchDemo from './components/appendix/terminal-intro/BufferSwitchDemo.vue'
 import AdvancedTUIDemo from './components/appendix/terminal-intro/AdvancedTUIDemo.vue'
 import ArchitectureDemo from './components/appendix/terminal-intro/ArchitectureDemo.vue'
 import TerminalDefinition from './components/appendix/terminal-intro/TerminalDefinition.vue'
+import TerminalOSDemo from './components/appendix/terminal-intro/TerminalOSDemo.vue'
+
+import EscapeParserDemo from './components/appendix/terminal-intro/EscapeParserDemo.vue'
+import CookedRawDemo from './components/appendix/terminal-intro/CookedRawDemo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -32,12 +37,16 @@ export default {
     app.component('TerminalGrid', TerminalGrid)
     app.component('CellInspector', CellInspector)
     app.component('EscapeSequences', EscapeSequences)
+    app.component('EscapeParserDemo', EscapeParserDemo)
+    app.component('CookedRawDemo', CookedRawDemo)
     app.component('InputVisualizer', InputVisualizer)
     app.component('SignalsDemo', SignalsDemo)
     app.component('FlowDiagram', FlowDiagram)
+    app.component('BufferSwitchDemo', BufferSwitchDemo)
     app.component('AdvancedTUIDemo', AdvancedTUIDemo)
     app.component('ArchitectureDemo', ArchitectureDemo)
     app.component('TerminalDefinition', TerminalDefinition)
+    app.component('TerminalOSDemo', TerminalOSDemo)
   },
   setup() {
     const route = useRoute()

@@ -15,29 +15,58 @@
   <div class="arch-demo">
     <div class="analogy-header">
       <div class="analogy-item">
-        <div class="icon">🍽️</div>
+        <div class="icon">🖥️</div>
         <div class="text">
-          <div class="role">Terminal = Table (餐桌)</div>
-          <div class="desc">UI & Input/Output<br>交互界面与输入输出</div>
+          <div class="role">Terminal (终端)</div>
+          <div class="desc">传声筒 / 窗口</div>
         </div>
       </div>
       <div class="analogy-item">
-        <div class="icon">💁‍♂️</div>
+        <div class="icon">🗣️</div>
         <div class="text">
-          <div class="role">Shell = Waiter (服务员)</div>
-          <div class="desc">Interpreter & Logic<br>解释器与逻辑处理</div>
+          <div class="role">Shell (壳)</div>
+          <div class="desc">翻译官 / 助手</div>
         </div>
       </div>
       <div class="analogy-item">
-        <div class="icon">👨‍🍳</div>
+        <div class="icon">⚙️</div>
         <div class="text">
-          <div class="role">Kernel = Kitchen (后厨)</div>
-          <div class="desc">System Execution<br>系统执行与硬件调度</div>
+          <div class="role">Kernel (内核)</div>
+          <div class="desc">大管家 / 芯片</div>
         </div>
       </div>
     </div>
 
-    <div class="diagram-container">
+    <div class="diagram-container" @click="nextStep" :class="{ 'clickable': currentStep < totalSteps }">
+      <!-- Click Overlay Hint -->
+      <div class="click-overlay" v-if="currentStep === 0">
+        <div class="click-hint">
+          <span class="icon">👆</span>
+          <span class="text">不断点击屏幕演示 / Keep Clicking</span>
+        </div>
+      </div>
+
+      <!-- Completed Overlay -->
+      <div class="completed-overlay" v-if="currentStep >= totalSteps">
+        <div class="completed-hint" @click.stop="reset">
+          <span class="icon">✅</span>
+          <span class="text">演示结束，点击重置 / Finished (Reset)</span>
+        </div>
+      </div>
+      
+      <!-- Spaces Background -->
+      <div class="spaces-bg">
+        <div class="space user-space">
+          <div class="space-header">User Space (用户空间)</div>
+        </div>
+        <div class="barrier">
+          <div class="barrier-line"></div>
+        </div>
+        <div class="space kernel-space">
+          <div class="space-header">Kernel Space (内核空间)</div>
+        </div>
+      </div>
+
       <!-- Terminal Node -->
       <div class="node terminal" :class="{ active: activeNode === 'terminal' }">
         <div class="node-title">TERMINAL (终端)</div>
@@ -181,8 +210,8 @@ const steps = [
   {
     titleEn: "3. Shell Parsing",
     titleZh: "3. Shell 解析",
-    descEn: "The Shell receives the characters and figures out what you want.",
-    descZh: "Shell 接收到字符，并解析你的意图。",
+    descEn: "The Shell (Waiter) translates your command for the Kernel.",
+    descZh: "Shell（服务员）接收指令，并将其翻译成内核能听懂的请求。",
     techEn: "Shell tokenizes input, finds the 'ls' executable in $PATH.",
     techZh: "Shell 对输入进行分词，并在 $PATH 环境变量中查找 'ls' 可执行文件。",
     action: async () => {
@@ -207,8 +236,8 @@ const steps = [
   {
     titleEn: "5. Kernel Execution",
     titleZh: "5. 内核执行",
-    descEn: "The Kernel (the boss) talks to the hardware to get the actual data.",
-    descZh: "内核（大管家）与硬件通信以获取实际数据。",
+    descEn: "The Kernel (Kitchen) executes the request by accessing hardware.",
+    descZh: "内核（后厨）直接操作硬件（如磁盘）来执行实际任务。",
     techEn: "Kernel driver accesses the file system (APFS/ext4).",
     techZh: "内核驱动程序访问文件系统 (APFS/ext4)。",
     action: async () => {
@@ -366,8 +395,168 @@ const reset = () => {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 0 10px;
+  /* Increase padding to accommodate labels */
+  padding: 40px 10px 20px 10px;
+  z-index: 1;
+  cursor: default;
+  transition: background 0.3s;
 }
+
+.diagram-container.clickable {
+  cursor: pointer;
+}
+
+.diagram-container.clickable:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.click-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50; /* Topmost */
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  animation: pulse-bg 2s infinite;
+}
+
+.click-hint {
+  background: #22c55e;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.diagram-container:hover .click-hint {
+  transform: scale(1.05);
+}
+
+@keyframes pulse-bg {
+  0% { background: rgba(0, 0, 0, 0.4); }
+  50% { background: rgba(0, 0, 0, 0.2); }
+  100% { background: rgba(0, 0, 0, 0.4); }
+}
+
+.completed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50; /* Same as click overlay */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  animation: fade-in 0.5s;
+}
+
+.completed-hint {
+  background: #10b981;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.completed-hint:hover {
+  transform: scale(1.05);
+  background: #059669;
+}
+
+.spaces-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.space {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.space-header {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 8px;
+  opacity: 0.7;
+}
+
+.user-space {
+  flex: 2; 
+  background: rgba(34, 211, 238, 0.03);
+  border-right: 1px dashed #3f3f46;
+  border-radius: 8px 0 0 8px;
+  align-items: flex-start;
+  /* Ensure User Space (containing Shell) is below the Barrier Label */
+  z-index: 0; 
+}
+
+.user-space .space-header { color: #22d3ee; }
+
+.kernel-space {
+  flex: 1;
+  background: rgba(239, 68, 68, 0.03);
+  border-radius: 0 8px 8px 0;
+  align-items: flex-end;
+  z-index: 0;
+}
+
+.kernel-space .space-header { color: #ef4444; }
+
+.barrier {
+  width: 2px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10; /* Bring Barrier to front */
+}
+
+.barrier-line {
+  width: 2px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #facc15 0,
+    #facc15 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  opacity: 0.3;
+}
+
+
 
 .node {
   background: #18181b;
@@ -378,8 +567,13 @@ const reset = () => {
   display: flex;
   flex-direction: column;
   transition: all 0.3s;
-  z-index: 2;
+  z-index: 5; /* Nodes should be above spaces but below barrier label if overlapping */
   position: relative;
+}
+
+/* Specific z-index for Shell to prevent it from covering barrier label */
+.node.shell {
+    z-index: 1; 
 }
 
 .node.active {
