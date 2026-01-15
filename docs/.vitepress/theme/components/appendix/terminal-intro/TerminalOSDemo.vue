@@ -80,6 +80,7 @@ const currentStepIndex = ref(-1)
 const osList = [
   { id: 'win-cmd', name: 'Windows CMD', icon: '🪟' },
   { id: 'win-ps', name: 'Windows PowerShell', icon: '⚡' },
+  { id: 'mac', name: 'macOS Terminal', icon: '🍎' },
   { id: 'linux', name: 'Linux Terminal', icon: '🐧' }
 ]
 
@@ -114,6 +115,20 @@ const configs = {
       { type: 'output', content: '', delay: 100 },
       { type: 'command', content: 'echo "Hello World"', delay: 400, explanation: '输入 `echo`。这是让计算机**复读**你说的话，常用于测试或打印信息。' },
       { type: 'output', content: 'Hello World', delay: 100, explanation: '计算机乖乖地输出了 "Hello World"。' }
+    ]
+  },
+  'mac': {
+    title: 'user — -zsh — 80x24',
+    prompt: 'user@MacBook-Pro ~ % ',
+    demo: [
+      { type: 'explanation', content: '准备输入命令...' },
+      { type: 'command', content: 'ls -G', delay: 400, explanation: '输入 `ls` (List)。这是 Mac/Linux 系统用来**列出文件**的命令。`-G` 参数让输出带颜色。' },
+      { type: 'output', content: 'Desktop   Downloads   Movies    Music', delay: 100 },
+      { type: 'output', content: 'Documents Library     Pictures  Public', delay: 100, explanation: '系统列出了你的主目录下的文件夹。' },
+      { type: 'command', content: 'sw_vers', delay: 400, explanation: '输入 `sw_vers` (Software Version)。这是 macOS 特有的命令，查看**系统版本**。' },
+      { type: 'output', content: 'ProductName:		macOS', delay: 50 },
+      { type: 'output', content: 'ProductVersion:		15.1', delay: 50 },
+      { type: 'output', content: 'BuildVersion:		24B83', delay: 50, explanation: '系统返回了当前的 macOS 版本信息。' }
     ]
   },
   'linux': {
@@ -335,6 +350,23 @@ const nextStep = async () => {
 .terminal-window.linux .window-buttons .maximize { background: #27c93f; }
 
 /* Common Layout */
+.terminal-window.mac {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  font-family: 'Menlo', monospace;
+}
+.terminal-window.mac .window-bar {
+  background: #3a3a3a;
+  border-bottom: 1px solid #222;
+  color: #ccc;
+}
+.terminal-window.mac .window-buttons .btn {
+  border-radius: 50%;
+}
+.terminal-window.mac .window-buttons .close { background: #ff5f56; }
+.terminal-window.mac .window-buttons .minimize { background: #ffbd2e; }
+.terminal-window.mac .window-buttons .maximize { background: #27c93f; }
+
 .window-bar {
   padding: 8px 12px;
   display: flex;
@@ -610,7 +642,8 @@ const nextStep = async () => {
   border-top-color: #ccc;
 }
 
-.terminal-window.linux .explanation-bar {
+.terminal-window.linux .explanation-bar,
+.terminal-window.mac .explanation-bar {
   background: #222;
   color: #ccc;
   border-top-color: #444;
