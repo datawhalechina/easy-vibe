@@ -1,8 +1,16 @@
 import { defineConfig } from 'vitepress'
+import markdownItKatex from 'markdown-it-katex'
 
 // 判断是否是 Vercel 环境， github page 和 vercel 的部署地址相关不一样
 const isVercel = process.env.VERCEL === '1' || !!process.env.VERCEL_URL
-const base = process.env.BASE || (isVercel ? '/' : '/easy-vibe/')
+// 检查是否为 EdgeOne 部署 (通过环境变量 EDGEONE 判断)
+const isEdgeOne = !!process.env.EDGEONE || process.env.EDGEONE === '1'
+
+// 确定 Base 路径：
+// 1. 如果设置了 BASE 环境变量，优先使用
+// 2. 如果是 Vercel 或 EdgeOne，默认使用根路径 '/'
+// 3. 否则（如 GitHub Pages），使用 '/easy-vibe/'
+const base = process.env.BASE || (isVercel || isEdgeOne ? '/' : '/easy-vibe/')
 
 // 语言映射配置
 const localeMap = {
@@ -115,6 +123,11 @@ const commonThemeConfig = {
 }
 
 export default defineConfig({
+  markdown: {
+    config: (md) => {
+      md.use(markdownItKatex)
+    }
+  },
   base: base,
 
   // Sitemap 配置
@@ -431,10 +444,35 @@ export default defineConfig({
           ],
           '/zh-cn/appendix/': [
             {
-              text: '附录',
+              text: '人工智能基础',
+              collapsed: false,
               items: [
-                { text: 'AI 能力词典', link: '/zh-cn/appendix/ai-capability-dictionary' },
-                { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' }
+                { text: '大语言模型', link: '/zh-cn/appendix/llm-intro' },
+                { text: '多模态大模型', link: '/zh-cn/appendix/vlm-intro' },
+                { text: 'AI 绘画原理', link: '/zh-cn/appendix/image-gen-intro' },
+                { text: 'AI 音频模型', link: '/zh-cn/appendix/audio-intro' },
+                { text: '提示词工程', link: '/zh-cn/appendix/prompt-engineering' },
+                { text: '上下文工程', link: '/zh-cn/appendix/context-engineering' },
+                { text: 'Agent 智能体', link: '/zh-cn/appendix/agent-intro' },
+                { text: 'AI 能力词典', link: '/zh-cn/appendix/ai-capability-dictionary' }
+              ]
+            },
+            {
+              text: 'Web 基础',
+              collapsed: false,
+              items: [
+                { text: 'HTML/CSS/JS 基础', link: '/zh-cn/appendix/web-basics' },
+                { text: 'URL 到浏览器显示', link: '/zh-cn/appendix/url-to-browser' }
+              ]
+            },
+            {
+              text: '开发基础',
+              collapsed: false,
+              items: [
+                { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' },
+                { text: 'Git 详细介绍', link: '/zh-cn/appendix/git-intro' },
+                { text: '计算机网络', link: '/zh-cn/appendix/computer-networks' },
+                { text: '部署与上线', link: '/zh-cn/appendix/deployment' }
               ]
             }
           ]

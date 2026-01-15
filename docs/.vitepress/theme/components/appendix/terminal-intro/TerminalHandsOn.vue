@@ -220,8 +220,8 @@ d----           1/15/2026  9:00 AM                Downloads
     aiResponse: {
       'mac': 'macOS 推荐使用 Homebrew 安装系统软件，使用 pip 安装 Python 库。',
       'linux': 'Linux (Ubuntu/Debian) 使用 apt 安装系统软件，使用 pip 安装 Python 库。',
-      'win-ps': 'Windows PowerShell 可以使用 pip 安装 Python 库。系统软件通常用 winget (这里暂只演示 pip)。',
-      'win-cmd': 'CMD 也可以使用 pip 安装 Python 库。',
+      'win-ps': 'Windows PowerShell 推荐使用 winget 安装系统软件，使用 pip 安装 Python 库。',
+      'win-cmd': 'Windows CMD 推荐使用 winget 安装系统软件，使用 pip 安装 Python 库。',
       'common': '不同系统有不同的包管理器。'
     },
     commands: {
@@ -234,9 +234,11 @@ d----           1/15/2026  9:00 AM                Downloads
         { label: '安装 requests (Python)', cmd: 'pip install requests' }
       ],
       'win-ps': [
+        { label: '安装 git (系统)', cmd: 'winget install git.git' },
         { label: '安装 requests (Python)', cmd: 'pip install requests' }
       ],
       'win-cmd': [
+        { label: '安装 git (系统)', cmd: 'winget install git.git' },
         { label: '安装 requests (Python)', cmd: 'pip install requests' }
       ]
     },
@@ -251,6 +253,7 @@ d----           1/15/2026  9:00 AM                Downloads
       const c = cmd.trim()
       if (os === 'mac') return c === 'brew install wget' || c === 'pip install requests'
       if (os === 'linux') return c === 'sudo apt install git' || c === 'apt install git' || c === 'pip install requests'
+      if (os === 'win-ps' || os === 'win-cmd') return c === 'winget install git.git' || c === 'winget install git' || c === 'pip install requests'
       return c === 'pip install requests'
     },
     output: (os, cmd) => { // Modified to accept cmd
@@ -264,6 +267,19 @@ Downloading/unpacking requests
 Installing collected packages: requests
 Successfully installed requests
 Cleaning up...`
+      }
+      
+      // Windows winget output
+      if (c.includes('winget install')) {
+         return `
+Found Git [Git.Git] Version 2.43.0
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/Git-2.43.0-64-bit.exe
+  ██████████████████████████████  58.2 MB / 58.2 MB
+Successfully verified installer hash
+Starting package install...
+Successfully installed`
       }
 
       // System tools output
