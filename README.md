@@ -43,21 +43,30 @@
   <a href="docs-readme/de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
 </p>
 
-**Easy-Vibe 是一个开源的、基于项目的 AI 编程课程，教你如何从零开始构建真正的 AI 产品。**  
-**Easy-Vibe is an open-source, project-based AI coding course that teaches you how to build real AI products from scratch.**
-
-AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统
-
-👉 专为初学者、产品经理和开发者设计。将 AI Demo 转化为可部署的产品。
+<p align="center"> 
+   <sub>⭐ 欢迎 Star 支持加速更新 ❤️</sub> 
+</p> 
 
 </div>
 
-## 🚀 项目介绍
+---
 
-- **第零阶段**：从**小游戏快速入门** 上手 vibe coding 技能
-- **第一阶段**：产品经理视角下的 **vibe coding 技能和业务理解**，实现 Web 应用原型
-- **第二阶段**：学习**前后端开发与 AI 能力**相关的 vibecoding 技巧，完成完整应用
-- **第三阶段**：掌握**多平台复杂应用**的构建方案，走向生产级应用
+在 AI 时代，把想法变成产品的人，往往技术不是最强，而是最先迈出行动。
+
+很多人即便有了 AI 助手，依然会被“代码看不懂”、“环境不会配”劝退。**Easy-Vibe 为此而生。** 假设每个人都是零基础，手把手带你从写出第一行代码，到理解前后端逻辑，最后把产品上线。
+
+- **面向人群**：初学者、产品经理、前后端 / 全栈开发者  
+- **主题**：AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统  
+---
+Easy-Vibe 通过以下几个阶段，带你从 0 到 1： 
+
+
+| 阶段 | 核心技能 | 产出 | 
+|----|---------|---------|
+| **第零阶段** | 小游戏开发、AI 编程入门 | 完成第一个互动小游戏 | 
+| **第一阶段** | 产品思维、需求分析、原型设计 | 可交互的 Web 应用原型 | 
+| **第二阶段** | 全栈开发、AI 集成、数据库 | 完整的全栈 AI 应用 |
+| **第三阶段** | claude code 进阶、小程序安卓开发 | 生产级多平台应用 |
 
 ### 📖 内容导航
 
@@ -69,7 +78,7 @@ AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统
 
 [AI 能力词典：常见 AI 核心概念与名词、场景解释](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
-### 零、幼儿园
+### 零、新手入门
 
 | 章节                                                                                             | 关键内容                               | 状态 |
 | :----------------------------------------------------------------------------------------------- | :------------------------------------- | :--- |
@@ -93,7 +102,8 @@ AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统
 | [附录A：产品思维补充](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)    | 从零到一做产品需要考虑的思维框架   | ✅   |
 | [附录B：常见报错及解决方案](docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | vibe coding 中的常见错误及排查方法 | ✅   |
 
-### 二、初中级开发工程师
+<details>
+<summary><strong>二、初中级开发工程师</strong></summary>
 
 #### 前端部分
 
@@ -126,7 +136,10 @@ AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统
 | [AI 一：Dify 入门与知识库集成](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 | ✅   |
 | [AI 二：学会查询 AI 词典与集成多模态 API](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md)                             | 学会查找合适的模型与 API，并把文本、图像等多模态能力接入产品   | 🚧   |
 
-### 三、高级开发工程师
+</details>
+
+<details>
+<summary><strong>三、高级开发工程师</strong></summary>
 
 | 章节                                                                                                                 | 关键内容                                                     | 状态 |
 | :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
@@ -144,6 +157,8 @@ AI 编程、全栈 Web 应用开发、AI Agent、工作流和 RAG 系统
 | :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
 | [高级 AI 一：什么是 RAG 以及它如何工作](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 | ✅   |
 | [高级 AI 二：中高级 RAG 与工作流编排：以 LangGraph 为例](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/)                               | 使用 LangGraph 等工具设计多步工作流与中高级 RAG 系统    | 🚧   |
+
+</details>
 
 ## 🛠️ 如何学习
 
