@@ -71,7 +71,7 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 ### 📖 内容导航
 
 <div align="center">
-  <img src="assets/readme-image1.png" alt="Learning Map" width="100%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
+  <img src="assets/readme-image1.png" alt="Learning Map" width="70%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
 </div>
 
 ### 总附录
