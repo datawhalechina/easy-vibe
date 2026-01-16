@@ -302,11 +302,11 @@ export default defineConfig({
               link: '/zh-cn/stage-1/appendix-b-common-errors/'
             },
             {
-              text: '附录示例 1：7 款主流 Vibe Coding 在线平台实测对比',
+              text: '扩展阅读 1：7 款主流 Vibe Coding 在线平台实测对比',
               link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
             },
             {
-              text: '附录示例：用编程和设计智能体开发网站',
+              text: '扩展阅读 2：用编程和设计智能体开发网站',
               link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
             }
           ],

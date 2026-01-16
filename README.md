@@ -44,7 +44,7 @@
 </p>
 
 <p align="center"> 
-   <sub>⭐ 欢迎 Star 支持加速更新 ❤️</sub> 
+   <h3>⭐ 欢迎点击 <span style="color: #660874;">Star</span> 加速更新 ❤️</h3> 
 </p> 
 
 </div>
