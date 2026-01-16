@@ -26,18 +26,25 @@
               {{ msg.content }}
             </div>
             <div v-else class="assistant-content">
-              <pre v-if="msg.isCode"><code>{{ msg.content }}</code></pre>
-              <div v-else>{{ msg.content }}</div>
+              <pre v-if="msg.isCode"><code>{{ msg.content }}<span
+                v-if="
+                  isGenerating &&
+                  index === messages.length - 1
+                "
+                class="cursor"
+                >|</span
+              ></code></pre>
+              <div v-else>
+                {{ msg.content }}<span
+                  v-if="
+                    isGenerating &&
+                    index === messages.length - 1
+                  "
+                  class="cursor"
+                  >|</span
+                >
+              </div>
             </div>
-            <span
-              v-if="
-                msg.role === 'assistant' &&
-                isGenerating &&
-                index === messages.length - 1
-              "
-              class="cursor"
-              >|</span
-            >
           </div>
         </div>
       </div>
@@ -257,6 +264,7 @@ const scrollToBottom = () => {
   line-height: 1.6;
   position: relative;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .message.user .content {
