@@ -12,9 +12,7 @@
           <div class="avatar">👤</div>
           <div class="bubble">
             <div class="image-upload">
-              <div class="placeholder-img">
-                🐱
-              </div>
+              <div class="placeholder-img">🐱</div>
             </div>
             <div class="text">这只猫在做什么？</div>
           </div>
@@ -39,8 +37,8 @@
     </div>
 
     <div class="controls">
-      <button 
-        class="send-btn" 
+      <button
+        class="send-btn"
         :disabled="step > 0 && step < 3"
         @click="startInference"
       >
@@ -54,13 +52,13 @@
 import { ref, watch } from 'vue'
 
 const step = ref(0)
-const fullText = "它正趴在窗台上晒太阳，看起来非常惬意。"
-const typedText = ref("")
+const fullText = '它正趴在窗台上晒太阳，看起来非常惬意。'
+const typedText = ref('')
 
 const startInference = () => {
   step.value = 1
-  typedText.value = ""
-  
+  typedText.value = ''
+
   // Step 1: Vision Encoding
   setTimeout(() => {
     step.value = 2
@@ -93,7 +91,7 @@ const typeText = () => {
   overflow: hidden;
   max-width: 500px;
   margin: 20px auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .chat-window {
@@ -130,7 +128,7 @@ const typeText = () => {
   border-radius: 12px;
   border: 1px solid var(--vp-c-divider);
   max-width: 80%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .message.user .bubble {
@@ -192,7 +190,12 @@ const typeText = () => {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 </style>

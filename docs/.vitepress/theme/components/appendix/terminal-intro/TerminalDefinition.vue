@@ -1,16 +1,10 @@
 <template>
   <div class="terminal-definition">
     <div class="mode-switch">
-      <button 
-        :class="{ active: mode === 'cli' }" 
-        @click="mode = 'cli'"
-      >
+      <button :class="{ active: mode === 'cli' }" @click="mode = 'cli'">
         🖥️ CLI (命令行界面)
       </button>
-      <button 
-        :class="{ active: mode === 'gui' }" 
-        @click="mode = 'gui'"
-      >
+      <button :class="{ active: mode === 'gui' }" @click="mode = 'gui'">
         🖱️ GUI (图形用户界面)
       </button>
     </div>
@@ -21,7 +15,28 @@
         <!-- Input Side -->
         <div class="stage input-stage">
           <div class="icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><path d="M6 8h.001"></path><path d="M10 8h.001"></path><path d="M14 8h.001"></path><path d="M18 8h.001"></path><path d="M6 12h.001"></path><path d="M10 12h.001"></path><path d="M14 12h.001"></path><path d="M18 12h.001"></path><path d="M7 16h10"></path></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+              <path d="M6 8h.001"></path>
+              <path d="M10 8h.001"></path>
+              <path d="M14 8h.001"></path>
+              <path d="M18 8h.001"></path>
+              <path d="M6 12h.001"></path>
+              <path d="M10 12h.001"></path>
+              <path d="M14 12h.001"></path>
+              <path d="M18 12h.001"></path>
+              <path d="M7 16h10"></path>
+            </svg>
           </div>
           <div class="label">Input (Keyboard)</div>
           <div class="sub-label">发送指令 (字符信号)</div>
@@ -31,8 +46,8 @@
         <div class="stream-path">
           <div class="stream-line"></div>
           <div class="stream-label">Character Stream / 字符流</div>
-          <div 
-            v-for="char in activeChars" 
+          <div
+            v-for="char in activeChars"
             :key="char.id"
             class="stream-char"
             :style="{ left: char.progress + '%' }"
@@ -45,16 +60,20 @@
         <div class="stage output-stage">
           <div class="terminal-screen">
             <div class="screen-content">
-              <span class="prompt">$</span> {{ typedContent }}<span class="cursor">_</span>
+              <span class="prompt">$</span> {{ typedContent
+              }}<span class="cursor">_</span>
             </div>
           </div>
           <div class="label">Output (Text Grid)</div>
           <div class="sub-label">文本网格反馈</div>
         </div>
       </div>
-      
+
       <div class="desc-box">
-        <p><strong>CLI (Command Line Interface)</strong>: 这种模式下，计算机只认识字符。你的每一次按键都会被转换成编码发送给系统，系统处理后返回文字结果。它不关心你在哪里点击，只关心你输入了什么。</p>
+        <p>
+          <strong>CLI (Command Line Interface)</strong>:
+          这种模式下，计算机只认识字符。你的每一次按键都会被转换成编码发送给系统，系统处理后返回文字结果。它不关心你在哪里点击，只关心你输入了什么。
+        </p>
       </div>
 
       <div class="control-bar">
@@ -71,7 +90,20 @@
         <!-- Input Side -->
         <div class="stage input-stage">
           <div class="icon-box gui-input" :class="{ clicking: isGuiClicking }">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path><path d="M13 13l6 6"></path></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
+              <path d="M13 13l6 6"></path>
+            </svg>
           </div>
           <div class="label">Input (Mouse)</div>
           <div class="sub-label">发送事件 (坐标/点击)</div>
@@ -81,7 +113,7 @@
         <div class="stream-path">
           <div class="stream-line dashed"></div>
           <div class="stream-label">Event Loop / 事件循环</div>
-          <div 
+          <div
             v-for="ev in guiEvents"
             :key="ev.id"
             class="gui-event-packet"
@@ -98,11 +130,22 @@
               <div class="win-header"></div>
               <div class="win-body">
                 <div class="icon-grid">
-                  <div class="desktop-icon" :class="{ selected: iconSelected }">📁</div>
+                  <div class="desktop-icon" :class="{ selected: iconSelected }">
+                    📁
+                  </div>
                   <div class="desktop-icon">📄</div>
                 </div>
                 <div class="gui-cursor" :style="cursorStyle">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="white" stroke="black" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path></svg>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    stroke="black"
+                    stroke-width="2"
+                  >
+                    <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -113,7 +156,11 @@
       </div>
 
       <div class="desc-box">
-        <p><strong>GUI (Graphical User Interface)</strong>: 这种模式下，计算机实时追踪鼠标坐标和点击事件，并每秒刷新 60 次屏幕像素。它更直观，但需要消耗大量资源来处理图形渲染。</p>
+        <p>
+          <strong>GUI (Graphical User Interface)</strong>:
+          这种模式下，计算机实时追踪鼠标坐标和点击事件，并每秒刷新 60
+          次屏幕像素。它更直观，但需要消耗大量资源来处理图形渲染。
+        </p>
       </div>
 
       <div class="control-bar">
@@ -123,7 +170,6 @@
         </button>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -143,9 +189,9 @@ const startSimulation = () => {
   isAnimating.value = true
   typedContent.value = ''
   activeChars.value = []
-  
+
   let index = 0
-  
+
   const processNextChar = () => {
     if (index >= demoText.length) {
       setTimeout(() => {
@@ -156,36 +202,36 @@ const startSimulation = () => {
 
     const char = demoText[index]
     const charId = Date.now() + index
-    
+
     // Create new flying char
     const newChar = {
       id: charId,
       val: char,
       progress: 10 // start position
     }
-    
+
     activeChars.value.push(newChar)
-    
+
     // Animate this char
     let progress = 10
     const interval = setInterval(() => {
       progress += 4 // Faster speed
-      const charObj = activeChars.value.find(c => c.id === charId)
+      const charObj = activeChars.value.find((c) => c.id === charId)
       if (charObj) charObj.progress = progress
-      
+
       if (progress >= 90) {
         clearInterval(interval)
         // Remove from stream and add to screen
-        activeChars.value = activeChars.value.filter(c => c.id !== charId)
+        activeChars.value = activeChars.value.filter((c) => c.id !== charId)
         typedContent.value += char
-        
+
         // Next char
         index++
         setTimeout(processNextChar, 100) // Faster typing
       }
     }, 20)
   }
-  
+
   processNextChar()
 }
 
@@ -208,26 +254,29 @@ const startGuiSimulation = () => {
   inputMousePosition.value = { x: 80, y: 60 }
   screenCursorPosition.value = { x: 80, y: 60 }
   guiEvents.value = []
-  
+
   // 1. Move Cursor (Physical Mouse Movement)
   let step = 0
   const moveInterval = setInterval(() => {
     step++
-    inputMousePosition.value = { 
-      x: 80 - step * 2, 
-      y: 60 - step * 1.5 
+    inputMousePosition.value = {
+      x: 80 - step * 2,
+      y: 60 - step * 1.5
     }
-    
+
     // Emit Move Event frequently (Simulate high polling rate)
     if (step % 2 === 0) {
       const targetX = inputMousePosition.value.x
       const targetY = inputMousePosition.value.y
-      emitGuiEvent(`Move(${Math.round(targetX)},${Math.round(targetY)})`, () => {
-        // When packet arrives: Update screen cursor
-        screenCursorPosition.value = { x: targetX, y: targetY }
-      })
+      emitGuiEvent(
+        `Move(${Math.round(targetX)},${Math.round(targetY)})`,
+        () => {
+          // When packet arrives: Update screen cursor
+          screenCursorPosition.value = { x: targetX, y: targetY }
+        }
+      )
     }
-    
+
     if (step >= 20) {
       clearInterval(moveInterval)
       // 2. Click
@@ -244,17 +293,17 @@ const emitGuiEvent = (type, onArrive) => {
     progress: 10
   }
   guiEvents.value.push(newEvent)
-  
+
   let progress = 10
   const packetInterval = setInterval(() => {
     progress += 2
-    const ev = guiEvents.value.find(e => e.id === eventId)
+    const ev = guiEvents.value.find((e) => e.id === eventId)
     if (ev) ev.progress = progress
-    
+
     if (progress >= 90) {
       clearInterval(packetInterval)
-      guiEvents.value = guiEvents.value.filter(e => e.id !== eventId)
-      
+      guiEvents.value = guiEvents.value.filter((e) => e.id !== eventId)
+
       // Execute callback when packet arrives at Output
       if (onArrive) onArrive()
     }
@@ -264,21 +313,20 @@ const emitGuiEvent = (type, onArrive) => {
 const performClick = () => {
   setTimeout(() => {
     isGuiClicking.value = true
-    
+
     // Send Click Event
     emitGuiEvent('Click(40,30)', () => {
       // When packet arrives: Select icon
-      iconSelected.value = true 
-      
+      iconSelected.value = true
+
       setTimeout(() => {
         isGuiAnimating.value = false
       }, 1000)
     })
-    
+
     setTimeout(() => {
-        isGuiClicking.value = false
+      isGuiClicking.value = false
     }, 200) // Input click feedback is fast
-    
   }, 300)
 }
 </script>
@@ -380,7 +428,7 @@ const performClick = () => {
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
@@ -439,7 +487,7 @@ const performClick = () => {
   left: 0;
   pointer-events: none;
   transition: transform 0.1s linear; /* Smooth interpolation */
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
 }
 
 .screen-content {
@@ -481,7 +529,13 @@ const performClick = () => {
 }
 
 .stream-line.dashed {
-  background: repeating-linear-gradient(90deg, #27272a 0, #27272a 6px, transparent 6px, transparent 10px);
+  background: repeating-linear-gradient(
+    90deg,
+    #27272a 0,
+    #27272a 6px,
+    transparent 6px,
+    transparent 10px
+  );
   height: 1px;
 }
 
@@ -539,7 +593,9 @@ const performClick = () => {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .desc-box {
@@ -592,13 +648,13 @@ button:disabled {
     height: auto;
     gap: 20px;
   }
-  
+
   .stream-path {
     width: 100%;
     height: 40px;
     margin: 10px 0;
   }
-  
+
   .stream-line {
     transform: rotate(90deg);
     width: 40px;

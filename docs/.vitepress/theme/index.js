@@ -68,37 +68,71 @@ import AutoregressiveAudioDemo from './components/appendix/audio-intro/Autoregre
 // Web Basics Components
 import WebTechTriad from './components/appendix/web-basics/WebTechTriad.vue'
 import UrlToBrowserDemo from './components/appendix/web-basics/UrlToBrowserDemo.vue'
-import GitWorkflowDemo from './components/appendix/web-basics/GitWorkflowDemo.vue'
+// Git Intro Components
+import GitWorkflowDemo from './components/appendix/git-intro/GitWorkflowDemo.vue'
+import GitThreeAreasDemo from './components/appendix/git-intro/GitThreeAreasDemo.vue'
+import GitStorageDemo from './components/appendix/git-intro/GitStorageDemo.vue'
+import GitCommandDemo from './components/appendix/git-intro/GitCommandDemo.vue'
+import GitBranchMergeDemo from './components/appendix/git-intro/GitBranchMergeDemo.vue'
+import GitConflictDemo from './components/appendix/git-intro/GitConflictDemo.vue'
+import GitStashDemo from './components/appendix/git-intro/GitStashDemo.vue'
+import GitRemoteDemo from './components/appendix/git-intro/GitRemoteDemo.vue'
+// （保留网络相关，未修改）
 import NetworkLayers from './components/appendix/web-basics/NetworkLayers.vue'
 import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.vue'
 import SubnetCalculator from './components/appendix/web-basics/SubnetCalculator.vue'
 import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTroubleshooting.vue'
-import DeploymentArchitecture from './components/appendix/web-basics/DeploymentArchitecture.vue'
+
+// Deployment appendix components
+import DeploymentArchitecture from './components/appendix/deployment/DeploymentArchitecture.vue'
+import DnsFlowDemo from './components/appendix/deployment/DnsFlowDemo.vue'
+import ServerSizerDemo from './components/appendix/deployment/ServerSizerDemo.vue'
+import HttpsNginxDemo from './components/appendix/deployment/HttpsNginxDemo.vue'
+import CdnCacheDemo from './components/appendix/deployment/CdnCacheDemo.vue'
+import CicdPipelineDemo from './components/appendix/deployment/CicdPipelineDemo.vue'
+import RollbackSwitchDemo from './components/appendix/deployment/RollbackSwitchDemo.vue'
+import ObservabilityBackupDemo from './components/appendix/deployment/ObservabilityBackupDemo.vue'
 import CssBoxModel from './components/appendix/web-basics/CssBoxModel.vue'
 import CssFlexbox from './components/appendix/web-basics/CssFlexbox.vue'
 import DomManipulator from './components/appendix/web-basics/DomManipulator.vue'
+import SemanticTagsDemo from './components/appendix/web-basics/SemanticTagsDemo.vue'
 import DnsLookupDemo from './components/appendix/web-basics/DnsLookupDemo.vue'
 import TcpHandshakeDemo from './components/appendix/web-basics/TcpHandshakeDemo.vue'
+import UrlParserDemo from './components/appendix/web-basics/UrlParserDemo.vue'
+import HttpExchangeDemo from './components/appendix/web-basics/HttpExchangeDemo.vue'
+import BrowserRenderingDemo from './components/appendix/web-basics/BrowserRenderingDemo.vue'
 
 // Prompt Engineering Components
+import PromptQuickStartDemo from './components/appendix/prompt-engineering/PromptQuickStartDemo.vue'
 import PromptComparisonDemo from './components/appendix/prompt-engineering/PromptComparisonDemo.vue'
 import FewShotDemo from './components/appendix/prompt-engineering/FewShotDemo.vue'
 import ChainOfThoughtDemo from './components/appendix/prompt-engineering/ChainOfThoughtDemo.vue'
 
 // Context Engineering Components
-import ContextWindowDemo from './components/appendix/context-engineering/ContextWindowDemo.vue'
-import RAGPipelineDemo from './components/appendix/context-engineering/RAGPipelineDemo.vue'
-import AgentContextFlow from './components/appendix/context-engineering/AgentContextFlow.vue'
+import ContextWindowVisualizer from './components/appendix/context-engineering/ContextWindowVisualizer.vue'
+import SlidingWindowDemo from './components/appendix/context-engineering/SlidingWindowDemo.vue'
+import SelectiveContextDemo from './components/appendix/context-engineering/SelectiveContextDemo.vue'
+import RAGSimulationDemo from './components/appendix/context-engineering/RAGSimulationDemo.vue'
+import ContextCompressionDemo from './components/appendix/context-engineering/ContextCompressionDemo.vue'
 
 // Agent Intro Components
 import AgentWorkflowDemo from './components/appendix/agent-intro/AgentWorkflowDemo.vue'
-import AgentLevelDemo from './components/appendix/agent-intro/AgentLevelDemo.vue'
-import AgentArchitectureDemo from './components/appendix/agent-intro/AgentArchitectureDemo.vue'
-import AgentTaskFlowDemo from './components/appendix/agent-intro/AgentTaskFlowDemo.vue'
+// import AgentLevelDemo from './components/appendix/agent-intro/AgentLevelDemo.vue'
+// import AgentArchitectureDemo from './components/appendix/agent-intro/AgentArchitectureDemo.vue'
+// import AgentTaskFlowDemo from './components/appendix/agent-intro/AgentTaskFlowDemo.vue'
 import FrameworkComparisonDemo from './components/appendix/agent-intro/FrameworkComparisonDemo.vue'
-import FrameworkSelectionDemo from './components/appendix/agent-intro/FrameworkSelectionDemo.vue'
-import AgentChallengesDemo from './components/appendix/agent-intro/AgentChallengesDemo.vue'
+// import FrameworkSelectionDemo from './components/appendix/agent-intro/FrameworkSelectionDemo.vue'
+// import AgentChallengesDemo from './components/appendix/agent-intro/AgentChallengesDemo.vue'
 import AgentFutureDemo from './components/appendix/agent-intro/AgentFutureDemo.vue'
+
+// Database Intro Components
+import DatabaseIndexDemo from './components/appendix/database-intro/DatabaseIndexDemo.vue'
+import RelationalDataDemo from './components/appendix/database-intro/RelationalDataDemo.vue'
+import SqlPlaygroundDemo from './components/appendix/database-intro/SqlPlaygroundDemo.vue'
+
+// IDE Intro Components
+import VirtualVSCodeDemo from './components/appendix/ide-intro/VirtualVSCodeDemo.vue'
+import IdeArchitectureDemo from './components/appendix/ide-intro/IdeArchitectureDemo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -139,7 +173,10 @@ export default {
     app.component('AttentionDemo', AttentionDemo)
     app.component('FeatureAlignmentDemo', FeatureAlignmentDemo)
     app.component('LinearProjectionDemo', LinearProjectionDemo)
-    app.component('ModelArchitectureComparisonDemo', ModelArchitectureComparisonDemo)
+    app.component(
+      'ModelArchitectureComparisonDemo',
+      ModelArchitectureComparisonDemo
+    )
     app.component('PatchifyDemo', PatchifyDemo)
     app.component('PositionalEmbeddingDemo', PositionalEmbeddingDemo)
     app.component('ProjectorDemo', ProjectorDemo)
@@ -165,36 +202,68 @@ export default {
     app.component('WebTechTriad', WebTechTriad)
     app.component('UrlToBrowserDemo', UrlToBrowserDemo)
     app.component('GitWorkflowDemo', GitWorkflowDemo)
+    app.component('GitThreeAreasDemo', GitThreeAreasDemo)
+    app.component('GitStorageDemo', GitStorageDemo)
+    app.component('GitCommandDemo', GitCommandDemo)
+    app.component('GitBranchMergeDemo', GitBranchMergeDemo)
+    app.component('GitConflictDemo', GitConflictDemo)
+    app.component('GitStashDemo', GitStashDemo)
+    app.component('GitRemoteDemo', GitRemoteDemo)
     app.component('NetworkLayers', NetworkLayers)
     app.component('TcpUdpComparison', TcpUdpComparison)
     app.component('SubnetCalculator', SubnetCalculator)
     app.component('NetworkTroubleshooting', NetworkTroubleshooting)
+    // Deployment appendix
     app.component('DeploymentArchitecture', DeploymentArchitecture)
+    app.component('DnsFlowDemo', DnsFlowDemo)
+    app.component('ServerSizerDemo', ServerSizerDemo)
+    app.component('HttpsNginxDemo', HttpsNginxDemo)
+    app.component('CdnCacheDemo', CdnCacheDemo)
+    app.component('CicdPipelineDemo', CicdPipelineDemo)
+    app.component('RollbackSwitchDemo', RollbackSwitchDemo)
+    app.component('ObservabilityBackupDemo', ObservabilityBackupDemo)
     app.component('CssBoxModel', CssBoxModel)
     app.component('CssFlexbox', CssFlexbox)
     app.component('DomManipulator', DomManipulator)
+    app.component('SemanticTagsDemo', SemanticTagsDemo)
     app.component('DnsLookupDemo', DnsLookupDemo)
     app.component('TcpHandshakeDemo', TcpHandshakeDemo)
+    app.component('UrlParserDemo', UrlParserDemo)
+    app.component('HttpExchangeDemo', HttpExchangeDemo)
+    app.component('BrowserRenderingDemo', BrowserRenderingDemo)
 
     // Prompt Engineering Components Registration
+    app.component('PromptQuickStartDemo', PromptQuickStartDemo)
     app.component('PromptComparisonDemo', PromptComparisonDemo)
     app.component('FewShotDemo', FewShotDemo)
     app.component('ChainOfThoughtDemo', ChainOfThoughtDemo)
 
     // Context Engineering Components Registration
-    app.component('ContextWindowDemo', ContextWindowDemo)
-    app.component('RAGPipelineDemo', RAGPipelineDemo)
-    app.component('AgentContextFlow', AgentContextFlow)
+    app.component('ContextWindowVisualizer', ContextWindowVisualizer)
+    app.component('SlidingWindowDemo', SlidingWindowDemo)
+    app.component('SelectiveContextDemo', SelectiveContextDemo)
+    app.component('RAGSimulationDemo', RAGSimulationDemo)
+    app.component('ContextCompressionDemo', ContextCompressionDemo)
 
     // Agent Intro Components Registration
     app.component('AgentWorkflowDemo', AgentWorkflowDemo)
-    app.component('AgentLevelDemo', AgentLevelDemo)
-    app.component('AgentArchitectureDemo', AgentArchitectureDemo)
-    app.component('AgentTaskFlowDemo', AgentTaskFlowDemo)
+    // app.component('AgentLevelDemo', AgentLevelDemo)
+    // app.component('AgentArchitectureDemo', AgentArchitectureDemo)
+    // app.component('AgentTaskFlowDemo', AgentTaskFlowDemo)
     app.component('FrameworkComparisonDemo', FrameworkComparisonDemo)
-    app.component('FrameworkSelectionDemo', FrameworkSelectionDemo)
-    app.component('AgentChallengesDemo', AgentChallengesDemo)
+    // app.component('FrameworkSelectionDemo', FrameworkSelectionDemo)
+    // app.component('AgentChallengesDemo', AgentChallengesDemo)
     app.component('AgentFutureDemo', AgentFutureDemo)
+
+    // Database Intro Components Registration
+    app.component('DatabaseIndexDemo', DatabaseIndexDemo)
+    app.component('RelationalDataDemo', RelationalDataDemo)
+    app.component('SqlPlaygroundDemo', SqlPlaygroundDemo)
+
+    // IDE Intro Components Registration
+    app.component('VirtualVSCodeDemo', VirtualVSCodeDemo)
+    app.component('DemoIde', VirtualVSCodeDemo) // Alias
+    app.component('IdeArchitectureDemo', IdeArchitectureDemo)
   },
   setup() {
     const route = useRoute()

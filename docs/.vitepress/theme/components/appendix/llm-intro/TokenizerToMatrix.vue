@@ -14,26 +14,24 @@
 <template>
   <div class="matrix-demo">
     <div class="control-bar">
-      <input 
-        v-model="inputText" 
-        type="text" 
-        placeholder="输入一段文本..." 
+      <input
+        v-model="inputText"
+        type="text"
+        placeholder="输入一段文本..."
         class="text-input"
         :disabled="currentStep > 0"
       />
       <div class="step-controls">
-        <button 
-          class="step-btn prev" 
+        <button
+          class="step-btn prev"
           :disabled="currentStep === 0"
           @click="currentStep--"
         >
           ← 上一步
         </button>
-        <div class="step-indicator">
-          Step {{ currentStep + 1 }} / 4
-        </div>
-        <button 
-          class="step-btn next" 
+        <div class="step-indicator">Step {{ currentStep + 1 }} / 4</div>
+        <button
+          class="step-btn next"
           :disabled="currentStep === 3"
           @click="currentStep++"
         >
@@ -46,11 +44,13 @@
       <!-- Step 1: Tokenization -->
       <div class="stage-content" v-if="currentStep === 0">
         <h3 class="stage-title">Step 1: Tokenization (分词)</h3>
-        <p class="stage-desc">计算机首先将文本切分为最小的语义单位（Token）。</p>
+        <p class="stage-desc">
+          计算机首先将文本切分为最小的语义单位（Token）。
+        </p>
         <div class="token-container">
-          <div 
-            v-for="(token, idx) in tokens" 
-            :key="idx" 
+          <div
+            v-for="(token, idx) in tokens"
+            :key="idx"
             class="token-box"
             :style="{ borderColor: getTokenColor(idx) }"
           >
@@ -62,10 +62,15 @@
       <!-- Step 2: ID Mapping -->
       <div class="stage-content" v-if="currentStep === 1">
         <h3 class="stage-title">Step 2: ID Mapping (索引映射)</h3>
-        <p class="stage-desc">在词表（Vocabulary）中查找每个 Token 对应的唯一数字 ID。</p>
+        <p class="stage-desc">
+          在词表（Vocabulary）中查找每个 Token 对应的唯一数字 ID。
+        </p>
         <div class="mapping-container">
           <div v-for="(token, idx) in tokens" :key="idx" class="mapping-row">
-            <div class="token-box sm" :style="{ borderColor: getTokenColor(idx) }">
+            <div
+              class="token-box sm"
+              :style="{ borderColor: getTokenColor(idx) }"
+            >
               {{ token.text }}
             </div>
             <div class="arrow">→</div>
@@ -83,14 +88,20 @@
       <!-- Step 3: Embedding Lookup -->
       <div class="stage-content" v-if="currentStep === 2">
         <h3 class="stage-title">Step 3: Embedding Lookup (向量查表)</h3>
-        <p class="stage-desc">每个 ID 对应一个预训练好的高维向量（这里简化为 4 维）。</p>
+        <p class="stage-desc">
+          每个 ID 对应一个预训练好的高维向量（这里简化为 4 维）。
+        </p>
         <div class="lookup-container">
           <div v-for="(token, idx) in tokens" :key="idx" class="lookup-row">
             <div class="id-box">{{ token.id }}</div>
             <div class="arrow">→</div>
             <div class="vector-row">
               <span class="bracket">[</span>
-              <span v-for="(val, vIdx) in token.vector" :key="vIdx" class="vector-val">
+              <span
+                v-for="(val, vIdx) in token.vector"
+                :key="vIdx"
+                class="vector-val"
+              >
                 {{ val.toFixed(2) }}
               </span>
               <span class="bracket">]</span>
@@ -102,14 +113,17 @@
       <!-- Step 4: Input Matrix -->
       <div class="stage-content" v-if="currentStep === 3">
         <h3 class="stage-title">Step 4: Matrix Construction (构建矩阵)</h3>
-        <p class="stage-desc">所有向量堆叠在一起，形成了输入矩阵（Shape: [Batch, Seq_Len, Dim]）。这就是 LLM 真正“看见”的东西。</p>
+        <p class="stage-desc">
+          所有向量堆叠在一起，形成了输入矩阵（Shape: [Batch, Seq_Len,
+          Dim]）。这就是 LLM 真正“看见”的东西。
+        </p>
         <div class="matrix-container">
           <div class="matrix-bracket left"></div>
           <div class="matrix-grid">
             <div v-for="(token, rIdx) in tokens" :key="rIdx" class="matrix-row">
-              <div 
-                v-for="(val, cIdx) in token.vector" 
-                :key="cIdx" 
+              <div
+                v-for="(val, cIdx) in token.vector"
+                :key="cIdx"
                 class="matrix-cell"
                 :style="{ backgroundColor: getHeatmapColor(val) }"
                 :title="val.toFixed(4)"
@@ -119,9 +133,7 @@
             </div>
           </div>
           <div class="matrix-bracket right"></div>
-          <div class="matrix-label">
-            Shape: ({{ tokens.length }}, 4)
-          </div>
+          <div class="matrix-label">Shape: ({{ tokens.length }}, 4)</div>
         </div>
       </div>
     </div>
@@ -141,20 +153,21 @@ const tokens = computed(() => {
   const text = inputText.value || ''
   // 简单按字/词切分模拟
   const rawTokens = text.match(/[\u4e00-\u9fa5]|[a-zA-Z]+|\s+|./g) || []
-  
+
   return rawTokens.map((t, i) => {
     // 确定性伪随机生成 ID 和 Vector
     let hash = 0
-    for (let j = 0; j < t.length; j++) hash = t.charCodeAt(j) + ((hash << 5) - hash)
+    for (let j = 0; j < t.length; j++)
+      hash = t.charCodeAt(j) + ((hash << 5) - hash)
     const id = Math.abs(hash) % 10000
-    
+
     // 生成 4 维向量
     const vector = []
-    for(let k=0; k<4; k++) {
-      const val = Math.sin(id * (k+1)) // 伪随机值 -1 ~ 1
+    for (let k = 0; k < 4; k++) {
+      const val = Math.sin(id * (k + 1)) // 伪随机值 -1 ~ 1
       vector.push(val)
     }
-    
+
     return { text: t, id, vector }
   })
 })
@@ -350,7 +363,7 @@ const getHeatmapColor = (val) => {
   justify-content: center;
   font-size: 0.7rem;
   color: #fff; /* text always white for contrast on colored bg */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .matrix-bracket {
@@ -386,7 +399,7 @@ const getHeatmapColor = (val) => {
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .text-input {
     width: auto;
     flex: 1;

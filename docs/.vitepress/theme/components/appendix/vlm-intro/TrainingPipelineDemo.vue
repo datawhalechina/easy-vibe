@@ -1,16 +1,10 @@
 <template>
   <div class="pipeline-demo">
     <div class="stage-switch">
-      <button 
-        :class="{ active: stage === 1 }"
-        @click="stage = 1"
-      >
+      <button :class="{ active: stage === 1 }" @click="stage = 1">
         阶段一：特征对齐
       </button>
-      <button 
-        :class="{ active: stage === 2 }"
-        @click="stage = 2"
-      >
+      <button :class="{ active: stage === 2 }" @click="stage = 2">
         阶段二：指令微调
       </button>
     </div>
@@ -43,8 +37,13 @@
       <div class="arrow">➜</div>
 
       <!-- LLM -->
-      <div class="component-box llm" :class="{ frozen: stage === 1, training: stage === 2 }">
-        <div class="status-badge">{{ stage === 1 ? '❄️ Frozen' : '🔥 Train' }}</div>
+      <div
+        class="component-box llm"
+        :class="{ frozen: stage === 1, training: stage === 2 }"
+      >
+        <div class="status-badge">
+          {{ stage === 1 ? '❄️ Frozen' : '🔥 Train' }}
+        </div>
         <div class="name">LLM</div>
         <div class="desc">Language Model</div>
       </div>
@@ -67,7 +66,10 @@
         <p>任务：让图像向量与文本向量距离变近。</p>
       </div>
       <div class="data-content" v-else>
-        <code>User: &lt;Image: 🐱&gt; 这只猫在干嘛？<br/>Assistant: 它在睡觉。</code>
+        <code
+          >User: &lt;Image: 🐱&gt; 这只猫在干嘛？<br />Assistant:
+          它在睡觉。</code
+        >
         <p>任务：根据图像和问题生成回答。</p>
       </div>
     </div>

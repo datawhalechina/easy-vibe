@@ -20,7 +20,7 @@
           <div class="tab">Logging</div>
         </div>
       </div>
-      
+
       <div class="tui-body">
         <div class="sidebar" :style="{ width: sidebarWidth + '%' }">
           <div class="list-item success">
@@ -39,13 +39,15 @@
             <span class="icon">○</span> ci-db-migration
           </div>
         </div>
-        
+
         <div class="main-content">
           <div class="content-header">
             <h3>ci-email-service</h3>
           </div>
           <div class="content-body">
-            <div class="status-row">Status: <span class="text-success">success</span></div>
+            <div class="status-row">
+              Status: <span class="text-success">success</span>
+            </div>
             <div class="info-row">Updated: 2024-01-15 14:32:00 UTC</div>
           </div>
         </div>
@@ -82,12 +84,12 @@ const simulateResize = () => {
   const originalWidth = sidebarWidth.value
   sidebarWidth.value = 20
   sizeDisplay.value = '40x20'
-  
+
   setTimeout(() => {
     sidebarWidth.value = 40
     sizeDisplay.value = '80x20'
   }, 500)
-  
+
   setTimeout(() => {
     sidebarWidth.value = originalWidth
     sizeDisplay.value = '60x20'
@@ -169,10 +171,18 @@ const simulateResize = () => {
   width: 16px;
 }
 
-.success .icon { color: #22c55e; }
-.warning .icon { color: #eab308; }
-.error .icon { color: #ef4444; }
-.pending .icon { color: #666; }
+.success .icon {
+  color: #22c55e;
+}
+.warning .icon {
+  color: #eab308;
+}
+.error .icon {
+  color: #ef4444;
+}
+.pending .icon {
+  color: #666;
+}
 
 .main-content {
   flex: 1;
@@ -190,7 +200,9 @@ const simulateResize = () => {
   color: #aaa;
 }
 
-.text-success { color: #22c55e; }
+.text-success {
+  color: #22c55e;
+}
 
 .info-row {
   color: #666;

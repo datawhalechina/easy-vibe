@@ -1,223 +1,131 @@
+<!--
+  FewShotDemo.vue
+  Few-shot 速懂：不给示例 vs 给示例，AI 的“风格”会不会稳定？
+
+  交互：
+  - 选择目标风格（随意/正式）
+  - 选择是否提供示例
+  - 看提示词和输出如何变化
+-->
 <template>
-  <div class="few-shot-demo">
-    <div class="mode-switch">
-      <button :class="{ active: mode === 'zero' }" @click="mode = 'zero'">
-        🎯 Zero-shot（零样本）
-      </button>
-      <button :class="{ active: mode === 'few' }" @click="mode = 'few'">
-        📚 Few-shot（少样本）
-      </button>
-    </div>
-
-    <div class="demo-container">
-      <!-- Zero-shot -->
-      <div v-if="mode === 'zero'" class="zero-shot">
-        <div class="prompt-box">
-          <div class="prompt-header">提示词</div>
-          <div class="prompt-content">
-            将<strong>中文</strong>翻译成<strong>英文</strong>：
-            <br><br>
-            "我很好"
-          </div>
-        </div>
-
-        <div class="arrow">↓</div>
-
-        <div class="output-box">
-          <div class="output-header">AI 可能的输出</div>
-          <div class="output-content">
-            "I'm fine." 或 "I'm very good." 或 "I am well."
-            <br><br>
-            <span class="comment">❓ 不确定应该用什么语气，可能是正式或随意</span>
-          </div>
-        </div>
+  <div class="few">
+    <div class="header">
+      <div>
+        <div class="title">示例的力量：让风格“跟你走”</div>
+        <div class="subtitle">你不是让 AI 更聪明，而是让它更像你要的样子。</div>
       </div>
-
-      <!-- Few-shot -->
-      <div v-else class="few-shot">
-        <div class="prompt-box">
-          <div class="prompt-header">提示词（含示例）</div>
-          <div class="prompt-content">
-            将<strong>中文</strong>翻译成<strong>英文</strong>：
-            <br><br>
-            <div class="examples">
-              <div class="example-item">
-                <span class="input">你好</span> → <span class="output">Hi!</span>
-              </div>
-              <div class="example-item">
-                <span class="input">谢谢</span> → <span class="output">Thanks!</span>
-              </div>
-              <div class="example-item">
-                <span class="input">再见</span> → <span class="output">Bye!</span>
-              </div>
-            </div>
-            <div class="task">
-              <strong>任务：</strong>"我很好"
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow">↓</div>
-
-        <div class="output-box">
-          <div class="output-header">AI 输出</div>
-          <div class="output-content">
-            "I'm great!"
-            <br><br>
-            <span class="comment success">✨ 通过示例学会了随意的对话风格</span>
-          </div>
-        </div>
+      <div class="controls">
+        <select v-model="tone">
+          <option value="casual">随意口语</option>
+          <option value="formal">正式书面</option>
+        </select>
+        <button :class="['toggle', { active: withExamples }]" @click="withExamples = !withExamples">
+          {{ withExamples ? '已提供示例' : '不提供示例' }}
+        </button>
       </div>
     </div>
 
-    <div class="explanation">
-      <div v-if="mode === 'zero'">
-        <strong>Zero-shot</strong>：不给任何示例，直接让 AI 完成任务。简单但可能不够准确。
+    <div class="grid">
+      <div class="panel">
+        <div class="panel-title">提示词 / Prompt</div>
+        <pre><code>{{ prompt }}</code></pre>
       </div>
-      <div v-else>
-        <strong>Few-shot</strong>：提供几个示例让 AI 学习规律。示例的质量和数量直接影响输出效果。
-        通常 3-5 个示例就足够了！
+      <div class="panel">
+        <div class="panel-title">AI 输出（示意）</div>
+        <div class="output">{{ output }}</div>
+        <div class="hint">{{ hint }}</div>
+      </div>
+    </div>
+
+    <div class="examples" v-if="withExamples">
+      <div class="examples-title">示例（AI 会“照着学”）</div>
+      <div class="examples-grid">
+        <div class="ex" v-for="e in examples" :key="e.in">
+          <div class="in">输入：{{ e.in }}</div>
+          <div class="out">输出：{{ e.out }}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-const mode = ref('zero')
+const tone = ref('casual')
+const withExamples = ref(true)
+
+const examples = computed(() => {
+  if (tone.value === 'casual') {
+    return [
+      { in: '你好', out: 'Hi～' },
+      { in: '谢谢', out: '谢啦！' },
+      { in: '再见', out: '拜拜～' }
+    ]
+  }
+  return [
+    { in: '你好', out: '您好。' },
+    { in: '谢谢', out: '非常感谢。' },
+    { in: '再见', out: '再见，祝您一切顺利。' }
+  ]
+})
+
+const prompt = computed(() => {
+  const base = '将中文翻译成英文。'
+  const task = '输入：我很好'
+  if (!withExamples.value) return `${base}\n${task}`
+  const lines = [base, '示例：']
+  for (const e of examples.value) {
+    lines.push(`- ${e.in} -> ${e.out}`)
+  }
+  lines.push(task)
+  return lines.join('\n')
+})
+
+const output = computed(() => {
+  if (!withExamples.value) {
+    return tone.value === 'casual' ? "I'm fine." : 'I am fine.'
+  }
+  return tone.value === 'casual' ? "I'm good!" : 'I am doing well.'
+})
+
+const hint = computed(() => {
+  if (!withExamples.value) return '没有示例：AI 可能随便选一种语气。'
+  return '有示例：AI 更容易“保持同一种语气”。'
+})
 </script>
 
 <style scoped>
-.few-shot-demo {
+.few {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 12px;
   background: var(--vp-c-bg-soft);
+  padding: 16px;
   margin: 20px 0;
-}
-
-.mode-switch {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.mode-switch button {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.9em;
-}
+.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.title { font-weight: 800; }
+.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
+.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+select { border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 8px 10px; background: var(--vp-c-bg); color: var(--vp-c-text-1); }
+.toggle { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.toggle.active { border-color: var(--vp-c-brand); color: var(--vp-c-brand); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-.mode-switch button.active {
-  background: var(--vp-c-brand);
-  color: white;
-  border-color: var(--vp-c-brand);
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.panel-title { font-weight: 700; }
+pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
+.output { white-space: pre-wrap; line-height: 1.6; }
+.hint { color: var(--vp-c-text-2); font-size: 13px; }
 
-.demo-container {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.prompt-box,
-.output-box {
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 15px;
-}
-
-.prompt-header,
-.output-header {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
-
-.prompt-content,
-.output-content {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-1);
-  line-height: 1.6;
-}
-
-.examples {
-  background: #000;
-  border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 12px;
-}
-
-.example-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-family: monospace;
-  font-size: 0.85rem;
-}
-
-.example-item:last-child {
-  margin-bottom: 0;
-}
-
-.example-item .input {
-  color: #60a5fa;
-}
-
-.example-item .output {
-  color: #22c55e;
-}
-
-.task {
-  background: var(--vp-c-brand);
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.arrow {
-  text-align: center;
-  font-size: 2rem;
-  color: var(--vp-c-text-3);
-  margin: 15px 0;
-}
-
-.comment {
-  display: block;
-  margin-top: 10px;
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-}
-
-.comment:not(.success) {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-}
-
-.comment.success {
-  background: rgba(34, 197, 94, 0.1);
-  color: #22c55e;
-}
-
-.explanation {
-  padding: 12px;
-  background: var(--vp-c-bg-mute);
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.6;
-}
+.examples { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 12px; }
+.examples-title { font-weight: 700; margin-bottom: 8px; }
+.examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.ex { border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 10px; background: var(--vp-c-bg-soft); }
+.in { color: var(--vp-c-text-2); font-size: 13px; }
+.out { font-weight: 700; margin-top: 4px; }
 </style>

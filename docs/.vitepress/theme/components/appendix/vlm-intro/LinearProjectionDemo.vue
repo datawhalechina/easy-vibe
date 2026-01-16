@@ -5,7 +5,12 @@
       <div class="step-box">
         <div class="label">1. Patch (4x4)</div>
         <div class="grid-patch">
-          <div v-for="n in 16" :key="n" class="pixel" :style="{ backgroundColor: getPixelColor(n) }"></div>
+          <div
+            v-for="n in 16"
+            :key="n"
+            class="pixel"
+            :style="{ backgroundColor: getPixelColor(n) }"
+          ></div>
         </div>
         <div class="desc">768 像素点</div>
       </div>
@@ -16,7 +21,12 @@
       <div class="step-box">
         <div class="label">2. Flatten</div>
         <div class="vector-container">
-          <div v-for="n in 16" :key="n" class="vector-cell" :style="{ backgroundColor: getPixelColor(n) }"></div>
+          <div
+            v-for="n in 16"
+            :key="n"
+            class="vector-cell"
+            :style="{ backgroundColor: getPixelColor(n) }"
+          ></div>
         </div>
         <div class="desc">拉平成向量</div>
       </div>
@@ -38,8 +48,8 @@
 <script setup>
 const getPixelColor = (n) => {
   // Generate a gradient of colors
-  const hue = (n * 20) % 360;
-  return `hsl(${hue}, 70%, 60%)`;
+  const hue = (n * 20) % 360
+  return `hsl(${hue}, 70%, 60%)`
 }
 </script>
 

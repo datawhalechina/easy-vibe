@@ -3,7 +3,7 @@
     <!-- Header / Mode Switch -->
     <div class="demo-header">
       <div class="mode-tabs">
-        <button 
+        <button
           v-for="mode in ['dense', 'moe']"
           :key="mode"
           :class="['mode-tab', { active: architecture === mode }]"
@@ -13,7 +13,11 @@
         </button>
       </div>
       <div class="mode-desc">
-        {{ architecture === 'dense' ? '全能天才：每个问题都动用整个大脑 (100% 激活)' : '专家团队：根据问题指派专人处理 (稀疏激活)' }}
+        {{
+          architecture === 'dense'
+            ? '全能天才：每个问题都动用整个大脑 (100% 激活)'
+            : '专家团队：根据问题指派专人处理 (稀疏激活)'
+        }}
       </div>
     </div>
 
@@ -23,8 +27,8 @@
       <div class="stage-section input-section">
         <div class="section-label">1. 输入指令 (Input)</div>
         <div class="task-selector">
-          <button 
-            v-for="(task, idx) in tasks" 
+          <button
+            v-for="(task, idx) in tasks"
             :key="idx"
             class="task-btn"
             :class="{ selected: selectedTask.label === task.label }"
@@ -35,7 +39,10 @@
             <span class="task-text">{{ task.label }}</span>
           </button>
         </div>
-        <div class="token-stream" :class="{ 'flowing': processing && currentStep >= 1 }">
+        <div
+          class="token-stream"
+          :class="{ flowing: processing && currentStep >= 1 }"
+        >
           <div class="token-particle">{{ selectedTask.icon }}</div>
         </div>
       </div>
@@ -49,10 +56,13 @@
           2. 模型处理 (Processing)
           <span v-if="processing" class="status-badge">计算中...</span>
         </div>
-        
+
         <!-- Dense Visualization -->
         <div v-if="architecture === 'dense'" class="dense-visualization">
-          <div class="dense-block" :class="{ 'activating': processing && currentStep === 2 }">
+          <div
+            class="dense-block"
+            :class="{ activating: processing && currentStep === 2 }"
+          >
             <div class="dense-label">前馈神经网络 (FFN)</div>
             <div class="neuron-grid">
               <div v-for="n in 32" :key="n" class="neuron"></div>
@@ -66,7 +76,10 @@
         <!-- MoE Visualization -->
         <div v-else class="moe-visualization">
           <!-- Router -->
-          <div class="router-node" :class="{ 'active': processing && currentStep === 1 }">
+          <div
+            class="router-node"
+            :class="{ active: processing && currentStep === 1 }"
+          >
             <div class="router-label">门控路由 (Router)</div>
             <div class="router-action" v-if="processing && currentStep >= 1">
               🔍 识别意图: "{{ selectedTask.type }}"
@@ -75,32 +88,37 @@
 
           <!-- Connections -->
           <div class="connections">
-            <div 
-              v-for="(expert, idx) in experts" 
+            <div
+              v-for="(expert, idx) in experts"
               :key="idx"
               class="connection-line"
-              :class="{ 
-                'active': processing && currentStep >= 2 && isExpertSelected(idx),
-                'inactive': processing && currentStep >= 2 && !isExpertSelected(idx)
+              :class="{
+                active: processing && currentStep >= 2 && isExpertSelected(idx),
+                inactive:
+                  processing && currentStep >= 2 && !isExpertSelected(idx)
               }"
             ></div>
           </div>
 
           <!-- Experts -->
           <div class="experts-grid">
-            <div 
-              v-for="(expert, idx) in experts" 
+            <div
+              v-for="(expert, idx) in experts"
               :key="idx"
               class="expert-card"
-              :class="{ 
-                'active': processing && currentStep >= 2 && isExpertSelected(idx),
-                'inactive': processing && currentStep >= 2 && !isExpertSelected(idx)
+              :class="{
+                active: processing && currentStep >= 2 && isExpertSelected(idx),
+                inactive:
+                  processing && currentStep >= 2 && !isExpertSelected(idx)
               }"
             >
               <div class="expert-icon">{{ expert.icon }}</div>
               <div class="expert-name">{{ expert.name }}</div>
               <div class="expert-role">{{ expert.role }}</div>
-              <div class="expert-status" v-if="processing && currentStep >= 2 && isExpertSelected(idx)">
+              <div
+                class="expert-status"
+                v-if="processing && currentStep >= 2 && isExpertSelected(idx)"
+              >
                 ✅ 激活
               </div>
             </div>
@@ -114,7 +132,7 @@
       <!-- Step 3: Output -->
       <div class="stage-section output-section">
         <div class="section-label">3. 生成结果 (Output)</div>
-        <div class="output-box" :class="{ 'revealed': currentStep === 3 }">
+        <div class="output-box" :class="{ revealed: currentStep === 3 }">
           <div v-if="currentStep === 3" class="output-content">
             <span class="output-icon">{{ selectedTask.icon }}</span>
             <span class="typing-effect">{{ selectedTask.output }}</span>
@@ -148,10 +166,34 @@ const experts = [
 ]
 
 const tasks = [
-  { label: '写 Python 脚本', type: '编程', icon: '🐍', expertIdx: 0, output: 'def fib(n): return n if n < 2 else...' },
-  { label: '写七言绝句', type: '文学', icon: '🌸', expertIdx: 1, output: '窗含西岭千秋雪，门泊东吴万里船...' },
-  { label: '解二元方程', type: '数学', icon: '✖️', expertIdx: 2, output: 'x = 5, y = -2 (过程略)' },
-  { label: '翻译成英文', type: '翻译', icon: '🔤', expertIdx: 3, output: 'To be, or not to be, that is the question.' }
+  {
+    label: '写 Python 脚本',
+    type: '编程',
+    icon: '🐍',
+    expertIdx: 0,
+    output: 'def fib(n): return n if n < 2 else...'
+  },
+  {
+    label: '写七言绝句',
+    type: '文学',
+    icon: '🌸',
+    expertIdx: 1,
+    output: '窗含西岭千秋雪，门泊东吴万里船...'
+  },
+  {
+    label: '解二元方程',
+    type: '数学',
+    icon: '✖️',
+    expertIdx: 2,
+    output: 'x = 5, y = -2 (过程略)'
+  },
+  {
+    label: '翻译成英文',
+    type: '翻译',
+    icon: '🔤',
+    expertIdx: 3,
+    output: 'To be, or not to be, that is the question.'
+  }
 ]
 
 const selectedTask = ref(tasks[0])
@@ -181,37 +223,38 @@ const runDemo = async () => {
   if (processing.value) return
   processing.value = true
   currentStep.value = 0
-  
+
   // Step 1: Input -> Router
   await wait(300)
   currentStep.value = 1
-  
+
   // Step 2: Router -> Expert / Dense Processing
   await wait(800)
   currentStep.value = 2
-  
+
   // Step 3: Expert -> Output
   await wait(1200)
   currentStep.value = 3
-  
+
   // Finish
   await wait(500)
   processing.value = false
 }
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 </script>
 
 <style scoped>
 .moe-demo-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   padding: 24px;
   max-width: 600px;
   margin: 20px auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Header */
@@ -243,7 +286,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .mode-tab.active {
   background: var(--vp-c-bg);
   color: var(--vp-c-brand);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .mode-desc {
@@ -466,7 +509,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   opacity: 1;
   border-color: var(--vp-c-brand);
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .expert-card.inactive {
@@ -474,11 +517,25 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   transform: scale(0.95);
 }
 
-.expert-icon { font-size: 20px; margin-bottom: 4px; }
-.expert-name { font-size: 11px; font-weight: bold; margin-bottom: 2px; }
-.expert-role { font-size: 9px; color: var(--vp-c-text-3); }
-.expert-status { font-size: 9px; color: var(--vp-c-brand); margin-top: 4px; font-weight: bold; }
-
+.expert-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.expert-name {
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.expert-role {
+  font-size: 9px;
+  color: var(--vp-c-text-3);
+}
+.expert-status {
+  font-size: 9px;
+  color: var(--vp-c-brand);
+  margin-top: 4px;
+  font-weight: bold;
+}
 
 /* Output Section */
 .output-box {
@@ -547,7 +604,12 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 </style>

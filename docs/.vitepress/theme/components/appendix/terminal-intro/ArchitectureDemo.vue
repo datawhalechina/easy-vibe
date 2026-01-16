@@ -37,7 +37,11 @@
       </div>
     </div>
 
-    <div class="diagram-container" @click="nextStep" :class="{ 'clickable': currentStep < totalSteps }">
+    <div
+      class="diagram-container"
+      @click="nextStep"
+      :class="{ clickable: currentStep < totalSteps }"
+    >
       <!-- Click Overlay Hint -->
       <div class="click-overlay" v-if="currentStep === 0">
         <div class="click-hint">
@@ -53,7 +57,7 @@
           <span class="text">演示结束，点击重置 / Finished (Reset)</span>
         </div>
       </div>
-      
+
       <!-- Spaces Background -->
       <div class="spaces-bg">
         <div class="space user-space">
@@ -71,7 +75,9 @@
       <div class="node terminal" :class="{ active: activeNode === 'terminal' }">
         <div class="node-title">TERMINAL (终端)</div>
         <div class="screen">
-          <div v-for="(line, i) in terminalLines" :key="i" class="line">{{ line }}</div>
+          <div v-for="(line, i) in terminalLines" :key="i" class="line">
+            {{ line }}
+          </div>
           <div class="line input-line">
             <span class="prompt">$</span>
             <span class="typing">{{ currentInput }}</span>
@@ -82,7 +88,12 @@
       </div>
 
       <!-- Connections -->
-      <div class="connection t-s" :class="{ active: packetState === 't-to-s' || packetState === 's-to-t' }">
+      <div
+        class="connection t-s"
+        :class="{
+          active: packetState === 't-to-s' || packetState === 's-to-t'
+        }"
+      >
         <div class="line-path"></div>
         <div class="data-label" v-if="packetState === 't-to-s'">
           <span class="icon">➡️</span> Bytes
@@ -104,7 +115,12 @@
       </div>
 
       <!-- Connections -->
-      <div class="connection s-k" :class="{ active: packetState === 's-to-k' || packetState === 'k-to-s' }">
+      <div
+        class="connection s-k"
+        :class="{
+          active: packetState === 's-to-k' || packetState === 'k-to-s'
+        }"
+      >
         <div class="line-path"></div>
         <div class="data-label" v-if="packetState === 's-to-k'">
           <span class="icon">➡️</span> Syscall
@@ -128,20 +144,26 @@
 
     <div class="controls">
       <div class="btn-group">
-        <button class="btn primary" @click="nextStep" :disabled="currentStep >= totalSteps">
+        <button
+          class="btn primary"
+          @click="nextStep"
+          :disabled="currentStep >= totalSteps"
+        >
           <span v-if="currentStep === 0">▶️ Start Simulation / 开始演示</span>
-          <span v-else-if="currentStep < totalSteps">Next Step / 下一步 ({{ currentStep }}/{{ totalSteps }}) ➡️</span>
+          <span v-else-if="currentStep < totalSteps"
+            >Next Step / 下一步 ({{ currentStep }}/{{ totalSteps }}) ➡️</span
+          >
           <span v-else>✅ Done / 完成 (Reset)</span>
         </button>
         <button class="btn secondary" @click="reset" v-if="currentStep > 0">
           Reset / 重置
         </button>
       </div>
-      
+
       <div class="step-info" v-if="currentStep > 0">
         <div class="step-title">
-          {{ steps[currentStep - 1].titleEn }} 
-          <span class="divider">|</span> 
+          {{ steps[currentStep - 1].titleEn }}
+          <span class="divider">|</span>
           {{ steps[currentStep - 1].titleZh }}
         </div>
         <div class="step-desc">
@@ -158,7 +180,10 @@
       </div>
       <div class="step-info placeholder" v-else>
         <div class="step-desc">
-          <div class="en">Click "Start Simulation" to see how the command 'ls' travels through the system.</div>
+          <div class="en">
+            Click "Start Simulation" to see how the command 'ls' travels through
+            the system.
+          </div>
           <div class="zh">点击“开始演示”查看 'ls' 命令如何在系统中流转。</div>
         </div>
       </div>
@@ -170,8 +195,8 @@
 import { ref, computed } from 'vue'
 
 const currentStep = ref(0)
-const activeNode = ref('terminal') 
-const packetState = ref(null) 
+const activeNode = ref('terminal')
+const packetState = ref(null)
 const terminalLines = ref([])
 const currentInput = ref('')
 const shellStatus = ref('Idle')
@@ -181,12 +206,13 @@ const kernelIcon = ref('💤')
 
 const steps = [
   {
-    titleEn: "1. User Input",
-    titleZh: "1. 用户输入",
-    descEn: "You type 'ls' in the terminal window. The terminal captures your keystrokes.",
+    titleEn: '1. User Input',
+    titleZh: '1. 用户输入',
+    descEn:
+      "You type 'ls' in the terminal window. The terminal captures your keystrokes.",
     descZh: "你在终端窗口输入 'ls'。终端会捕获你的按键操作。",
     techEn: "Terminal buffers input in 'Cooked Mode' until you press Enter.",
-    techZh: "终端在“加工模式 (Cooked Mode)”下缓冲输入，直到你按下回车键。",
+    techZh: '终端在“加工模式 (Cooked Mode)”下缓冲输入，直到你按下回车键。',
     action: async () => {
       activeNode.value = 'terminal'
       currentInput.value = 'l'
@@ -195,12 +221,13 @@ const steps = [
     }
   },
   {
-    titleEn: "2. Transmission",
-    titleZh: "2. 传输",
-    descEn: "The Terminal sends the characters 'l', 's', and 'Enter' to the Shell.",
+    titleEn: '2. Transmission',
+    titleZh: '2. 传输',
+    descEn:
+      "The Terminal sends the characters 'l', 's', and 'Enter' to the Shell.",
     descZh: "终端将字符 'l'、's' 和 '回车' 发送给 Shell。",
-    techEn: "Data travels via standard input (stdin) as a byte stream.",
-    techZh: "数据通过标准输入 (stdin) 以字节流的形式传输。",
+    techEn: 'Data travels via standard input (stdin) as a byte stream.',
+    techZh: '数据通过标准输入 (stdin) 以字节流的形式传输。',
     action: async () => {
       packetState.value = 't-to-s'
       await wait(1000)
@@ -208,10 +235,10 @@ const steps = [
     }
   },
   {
-    titleEn: "3. Shell Parsing",
-    titleZh: "3. Shell 解析",
-    descEn: "The Shell (Waiter) translates your command for the Kernel.",
-    descZh: "Shell（服务员）接收指令，并将其翻译成内核能听懂的请求。",
+    titleEn: '3. Shell Parsing',
+    titleZh: '3. Shell 解析',
+    descEn: 'The Shell (Waiter) translates your command for the Kernel.',
+    descZh: 'Shell（服务员）接收指令，并将其翻译成内核能听懂的请求。',
     techEn: "Shell tokenizes input, finds the 'ls' executable in $PATH.",
     techZh: "Shell 对输入进行分词，并在 $PATH 环境变量中查找 'ls' 可执行文件。",
     action: async () => {
@@ -221,12 +248,12 @@ const steps = [
     }
   },
   {
-    titleEn: "4. System Call",
-    titleZh: "4. 系统调用",
-    descEn: "The Shell asks the Kernel to read the file list from the disk.",
-    descZh: "Shell 请求内核从磁盘读取文件列表。",
-    techEn: "Shell invokes `execve()` and `getdents()` system calls.",
-    techZh: "Shell 调用 `execve()` 和 `getdents()` 等系统调用。",
+    titleEn: '4. System Call',
+    titleZh: '4. 系统调用',
+    descEn: 'The Shell asks the Kernel to read the file list from the disk.',
+    descZh: 'Shell 请求内核从磁盘读取文件列表。',
+    techEn: 'Shell invokes `execve()` and `getdents()` system calls.',
+    techZh: 'Shell 调用 `execve()` 和 `getdents()` 等系统调用。',
     action: async () => {
       packetState.value = 's-to-k'
       await wait(1000)
@@ -234,12 +261,12 @@ const steps = [
     }
   },
   {
-    titleEn: "5. Kernel Execution",
-    titleZh: "5. 内核执行",
-    descEn: "The Kernel (Kitchen) executes the request by accessing hardware.",
-    descZh: "内核（后厨）直接操作硬件（如磁盘）来执行实际任务。",
-    techEn: "Kernel driver accesses the file system (APFS/ext4).",
-    techZh: "内核驱动程序访问文件系统 (APFS/ext4)。",
+    titleEn: '5. Kernel Execution',
+    titleZh: '5. 内核执行',
+    descEn: 'The Kernel (Kitchen) executes the request by accessing hardware.',
+    descZh: '内核（后厨）直接操作硬件（如磁盘）来执行实际任务。',
+    techEn: 'Kernel driver accesses the file system (APFS/ext4).',
+    techZh: '内核驱动程序访问文件系统 (APFS/ext4)。',
     action: async () => {
       activeNode.value = 'kernel'
       kernelIcon.value = '💾'
@@ -249,12 +276,12 @@ const steps = [
     }
   },
   {
-    titleEn: "6. Returning Data",
-    titleZh: "6. 返回数据",
-    descEn: "The Kernel gives the raw file list back to the Shell.",
-    descZh: "内核将原始文件列表数据返回给 Shell。",
-    techEn: "System call returns with file descriptors/structs.",
-    techZh: "系统调用返回文件描述符或结构体数据。",
+    titleEn: '6. Returning Data',
+    titleZh: '6. 返回数据',
+    descEn: 'The Kernel gives the raw file list back to the Shell.',
+    descZh: '内核将原始文件列表数据返回给 Shell。',
+    techEn: 'System call returns with file descriptors/structs.',
+    techZh: '系统调用返回文件描述符或结构体数据。',
     action: async () => {
       kernelStatus.value = 'Idle'
       kernelIcon.value = '💤'
@@ -264,12 +291,13 @@ const steps = [
     }
   },
   {
-    titleEn: "7. Formatting",
-    titleZh: "7. 格式化",
-    descEn: "The Shell formats the raw list into text, adding colors if needed.",
-    descZh: "Shell 将原始列表格式化为文本，并根据需要添加颜色。",
-    techEn: "Shell formats output buffer, adding ANSI color codes.",
-    techZh: "Shell 格式化输出缓冲区，并添加 ANSI 颜色代码。",
+    titleEn: '7. Formatting',
+    titleZh: '7. 格式化',
+    descEn:
+      'The Shell formats the raw list into text, adding colors if needed.',
+    descZh: 'Shell 将原始列表格式化为文本，并根据需要添加颜色。',
+    techEn: 'Shell formats output buffer, adding ANSI color codes.',
+    techZh: 'Shell 格式化输出缓冲区，并添加 ANSI 颜色代码。',
     action: async () => {
       activeNode.value = 'shell'
       shellIcon.value = '🎨'
@@ -278,12 +306,12 @@ const steps = [
     }
   },
   {
-    titleEn: "8. Display Output",
-    titleZh: "8. 显示输出",
-    descEn: "The Shell sends the final text back to the Terminal to show you.",
-    descZh: "Shell 将最终文本发送回终端以供显示。",
-    techEn: "Data travels via standard output (stdout) to the TTY.",
-    techZh: "数据通过标准输出 (stdout) 传输到 TTY。",
+    titleEn: '8. Display Output',
+    titleZh: '8. 显示输出',
+    descEn: 'The Shell sends the final text back to the Terminal to show you.',
+    descZh: 'Shell 将最终文本发送回终端以供显示。',
+    techEn: 'Data travels via standard output (stdout) to the TTY.',
+    techZh: '数据通过标准输出 (stdout) 传输到 TTY。',
     action: async () => {
       shellStatus.value = 'Idle'
       shellIcon.value = '💤'
@@ -293,12 +321,12 @@ const steps = [
     }
   },
   {
-    titleEn: "9. Render",
-    titleZh: "9. 渲染",
-    descEn: "The Terminal draws the text on the screen grid.",
-    descZh: "终端在屏幕网格上绘制文本。",
-    techEn: "Terminal emulator renders glyphs into the frame buffer.",
-    techZh: "终端模拟器将字形渲染到帧缓冲区中。",
+    titleEn: '9. Render',
+    titleZh: '9. 渲染',
+    descEn: 'The Terminal draws the text on the screen grid.',
+    descZh: '终端在屏幕网格上绘制文本。',
+    techEn: 'Terminal emulator renders glyphs into the frame buffer.',
+    techZh: '终端模拟器将字形渲染到帧缓冲区中。',
     action: async () => {
       activeNode.value = 'terminal'
       terminalLines.value = ['file1.txt  photo.jpg', 'notes.md']
@@ -307,17 +335,16 @@ const steps = [
   }
 ]
 
-
 const totalSteps = steps.length
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const nextStep = async () => {
   if (currentStep.value >= totalSteps) {
     reset()
     return
   }
-  
+
   const step = steps[currentStep.value]
   currentStep.value++
   await step.action()
@@ -446,9 +473,15 @@ const reset = () => {
 }
 
 @keyframes pulse-bg {
-  0% { background: rgba(0, 0, 0, 0.4); }
-  50% { background: rgba(0, 0, 0, 0.2); }
-  100% { background: rgba(0, 0, 0, 0.4); }
+  0% {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 
 .completed-overlay {
@@ -512,16 +545,18 @@ const reset = () => {
 }
 
 .user-space {
-  flex: 2; 
+  flex: 2;
   background: rgba(34, 211, 238, 0.03);
   border-right: 1px dashed #3f3f46;
   border-radius: 8px 0 0 8px;
   align-items: flex-start;
   /* Ensure User Space (containing Shell) is below the Barrier Label */
-  z-index: 0; 
+  z-index: 0;
 }
 
-.user-space .space-header { color: #22d3ee; }
+.user-space .space-header {
+  color: #22d3ee;
+}
 
 .kernel-space {
   flex: 1;
@@ -531,7 +566,9 @@ const reset = () => {
   z-index: 0;
 }
 
-.kernel-space .space-header { color: #ef4444; }
+.kernel-space .space-header {
+  color: #ef4444;
+}
 
 .barrier {
   width: 2px;
@@ -556,8 +593,6 @@ const reset = () => {
   opacity: 0.3;
 }
 
-
-
 .node {
   background: #18181b;
   border: 2px solid #27272a;
@@ -573,7 +608,7 @@ const reset = () => {
 
 /* Specific z-index for Shell to prevent it from covering barrier label */
 .node.shell {
-    z-index: 1; 
+  z-index: 1;
 }
 
 .node.active {
@@ -603,7 +638,8 @@ const reset = () => {
   color: #71717a;
 }
 
-.screen, .process-box {
+.screen,
+.process-box {
   flex: 1;
   padding: 10px;
   display: flex;
@@ -693,18 +729,26 @@ const reset = () => {
   font-size: 11px;
   font-weight: bold;
   white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 10;
   animation: pop-in 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes pop-in {
-  from { opacity: 0; transform: translate(-50%, 5px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, 5px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .controls {
@@ -795,27 +839,33 @@ const reset = () => {
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 640px) {
   .analogy-header {
     grid-template-columns: 1fr;
   }
-  
+
   .diagram-container {
     flex-direction: column;
     gap: 50px;
     padding: 20px 0;
   }
-  
+
   .connection {
     width: 2px;
     height: 50px;
     margin: 0;
   }
-  
+
   .conn-label {
     top: 50%;
     left: 10px;
@@ -824,25 +874,37 @@ const reset = () => {
     text-align: left;
     white-space: nowrap;
   }
-  
+
   .packet {
     top: 0;
     left: 10px;
     animation: travel-vertical 1s linear forwards;
   }
-  
+
   .packet.reverse {
     animation: travel-vertical-back 1s linear forwards;
   }
-  
+
   @keyframes travel-vertical {
-    0% { top: 0; transform: translateY(0); }
-    100% { top: 100%; transform: translateY(-100%); }
+    0% {
+      top: 0;
+      transform: translateY(0);
+    }
+    100% {
+      top: 100%;
+      transform: translateY(-100%);
+    }
   }
-  
+
   @keyframes travel-vertical-back {
-    0% { top: 100%; transform: translateY(-100%); }
-    100% { top: 0; transform: translateY(0); }
+    0% {
+      top: 100%;
+      transform: translateY(-100%);
+    }
+    100% {
+      top: 0;
+      transform: translateY(0);
+    }
   }
 }
 </style>

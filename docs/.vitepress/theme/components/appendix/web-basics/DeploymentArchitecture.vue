@@ -172,12 +172,10 @@
         <div class="card-title">🌐 域名 (Domain)</div>
         <div class="card-content">
           <strong>什么是域名？</strong>
-          <br>域名是网站的地址，如 example.com，便于记忆和访问。
-          <br><br>
+          <br />域名是网站的地址，如 example.com，便于记忆和访问。 <br /><br />
           <strong>域名注册</strong>
-          <br>• 注册商：GoDaddy、Namecheap、阿里云
-          <br>• 选择后缀：.com、.cn、.org、.io
-          <br>• 价格：$10-50/年
+          <br />• 注册商：GoDaddy、Namecheap、阿里云 <br />•
+          选择后缀：.com、.cn、.org、.io <br />• 价格：$10-50/年
         </div>
       </div>
 
@@ -185,15 +183,12 @@
         <div class="card-title">📡 CDN (内容分发网络)</div>
         <div class="card-content">
           <strong>什么是 CDN？</strong>
-          <br>将内容缓存到全球各地的节点，用户就近访问。
-          <br><br>
+          <br />将内容缓存到全球各地的节点，用户就近访问。 <br /><br />
           <strong>优势</strong>
-          <br>• 加速访问：就近获取内容
-          <br>• 减轻负载：减少源站压力
-          <br>• 提高可用性：节点故障自动切换
-          <br><br>
+          <br />• 加速访问：就近获取内容 <br />• 减轻负载：减少源站压力 <br />•
+          提高可用性：节点故障自动切换 <br /><br />
           <strong>常见 CDN</strong>
-          <br>• Cloudflare、AWS CloudFront、阿里云 CDN
+          <br />• Cloudflare、AWS CloudFront、阿里云 CDN
         </div>
       </div>
 
@@ -201,15 +196,12 @@
         <div class="card-title">⚖️ 负载均衡 (Load Balancer)</div>
         <div class="card-content">
           <strong>什么是负载均衡？</strong>
-          <br>将请求分发到多台服务器，提高并发能力。
-          <br><br>
+          <br />将请求分发到多台服务器，提高并发能力。 <br /><br />
           <strong>负载均衡算法</strong>
-          <br>• 轮询 (Round Robin)
-          <br>• 最少连接 (Least Connections)
-          <br>• IP 哈希 (IP Hash)
-          <br><br>
+          <br />• 轮询 (Round Robin) <br />• 最少连接 (Least Connections)
+          <br />• IP 哈希 (IP Hash) <br /><br />
           <strong>常见工具</strong>
-          <br>• Nginx、HAProxy、AWS ELB
+          <br />• Nginx、HAProxy、AWS ELB
         </div>
       </div>
 
@@ -217,16 +209,13 @@
         <div class="card-title">🏗️ 完整部署架构</div>
         <div class="card-content">
           <strong>现代 Web 应用架构</strong>
-          <br><br>
+          <br /><br />
           1. 用户通过域名访问
-          <br>2. DNS 解析到 CDN 或负载均衡器
-          <br>3. CDN 缓存静态资源
-          <br>4. 负载均衡器分发请求
-          <br>5. Web 服务器处理动态请求
-          <br>6. 数据库存储持久化数据
-          <br><br>
+          <br />2. DNS 解析到 CDN 或负载均衡器 <br />3. CDN 缓存静态资源
+          <br />4. 负载均衡器分发请求 <br />5. Web 服务器处理动态请求 <br />6.
+          数据库存储持久化数据 <br /><br />
           <strong>监控和运维</strong>
-          <br>• 日志收集、性能监控、自动备份
+          <br />• 日志收集、性能监控、自动备份
         </div>
       </div>
     </div>

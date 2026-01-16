@@ -17,32 +17,41 @@
       <div class="main-controls">
         <div class="input-group">
           <label>Input Text / 输入文本</label>
-          <textarea 
-            v-model="inputText" 
-            rows="3" 
+          <textarea
+            v-model="inputText"
+            rows="3"
             placeholder="Type something to see how AI reads it..."
           ></textarea>
         </div>
-        
+
         <div class="settings-group">
           <label>Algorithm / 算法</label>
           <div class="radio-group">
-            <label class="radio-option" :class="{ active: algorithm === 'bpe' }">
-              <input type="radio" v-model="algorithm" value="bpe">
+            <label
+              class="radio-option"
+              :class="{ active: algorithm === 'bpe' }"
+            >
+              <input type="radio" v-model="algorithm" value="bpe" />
               <span>BPE (GPT-4)</span>
             </label>
-            <label class="radio-option" :class="{ active: algorithm === 'word' }">
-              <input type="radio" v-model="algorithm" value="word">
+            <label
+              class="radio-option"
+              :class="{ active: algorithm === 'word' }"
+            >
+              <input type="radio" v-model="algorithm" value="word" />
               <span>Word (Legacy)</span>
             </label>
-            <label class="radio-option" :class="{ active: algorithm === 'char' }">
-              <input type="radio" v-model="algorithm" value="char">
+            <label
+              class="radio-option"
+              :class="{ active: algorithm === 'char' }"
+            >
+              <input type="radio" v-model="algorithm" value="char" />
               <span>Character (Raw)</span>
             </label>
           </div>
         </div>
       </div>
-      
+
       <div class="stats">
         <div class="stat-item">
           <span class="value">{{ tokens.length }}</span>
@@ -56,14 +65,12 @@
     </div>
 
     <!-- Tokenizer Process Visualization -->
-    <div class="tokenizer-arrow">
-      ⬇
-    </div>
+    <div class="tokenizer-arrow">⬇</div>
 
     <div class="visualization-area">
       <div class="token-list">
-        <div 
-          v-for="(token, index) in tokens" 
+        <div
+          v-for="(token, index) in tokens"
           :key="index"
           class="token-chip"
           :class="`color-${index % 5}`"
@@ -73,20 +80,20 @@
           <span class="token-text">{{ token.text }}</span>
           <span class="token-id">{{ token.id }}</span>
           <div class="tooltip" v-if="hoverIndex === index">
-            ID: {{ token.id }}<br>
+            ID: {{ token.id }}<br />
             Type: {{ token.type }}
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="info-box">
       <p>
         <span class="icon">💡</span>
-        <strong>Note:</strong> 
-        LLM 不直接理解单词，它们处理的是数字（Token IDs）。
-        对于英文，一个 Token 通常是一个单词或单词的一部分（如 "ing"）；
-        对于中文，一个 Token 通常是一个汉字或词组。
+        <strong>Note:</strong>
+        LLM 不直接理解单词，它们处理的是数字（Token IDs）。 对于英文，一个 Token
+        通常是一个单词或单词的一部分（如 "ing"）； 对于中文，一个 Token
+        通常是一个汉字或词组。
       </p>
     </div>
   </div>
@@ -95,7 +102,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const inputText = ref('The quick brown fox jumps over the lazy dog. \n今天天气真不错！')
+const inputText = ref(
+  'The quick brown fox jumps over the lazy dog. \n今天天气真不错！'
+)
 const hoverIndex = ref(-1)
 const algorithm = ref('bpe')
 
@@ -134,7 +143,7 @@ const tokens = computed(() => {
     // 2. Word-based Simulation
     // 简单按空格拆分，标点符号也可能粘连
     const words = text.split(/(\s+)/)
-    words.forEach(w => {
+    words.forEach((w) => {
       if (w) {
         let type = /^\s+$/.test(w) ? 'whitespace' : 'word'
         result.push({ text: w, id: generateId(w), type })
@@ -149,7 +158,7 @@ const tokens = computed(() => {
       result.push({ text: char, id: generateId(char), type })
     }
   }
-  
+
   return result
 })
 </script>
@@ -309,7 +318,7 @@ textarea:focus {
 .token-chip:hover {
   transform: scale(1.05);
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .token-text {
@@ -325,11 +334,26 @@ textarea:focus {
 }
 
 /* Color palette for tokens */
-.color-0 { background-color: rgba(255, 99, 132, 0.2); border: 1px solid rgba(255, 99, 132, 0.3); }
-.color-1 { background-color: rgba(54, 162, 235, 0.2); border: 1px solid rgba(54, 162, 235, 0.3); }
-.color-2 { background-color: rgba(255, 206, 86, 0.2); border: 1px solid rgba(255, 206, 86, 0.3); }
-.color-3 { background-color: rgba(75, 192, 192, 0.2); border: 1px solid rgba(75, 192, 192, 0.3); }
-.color-4 { background-color: rgba(153, 102, 255, 0.2); border: 1px solid rgba(153, 102, 255, 0.3); }
+.color-0 {
+  background-color: rgba(255, 99, 132, 0.2);
+  border: 1px solid rgba(255, 99, 132, 0.3);
+}
+.color-1 {
+  background-color: rgba(54, 162, 235, 0.2);
+  border: 1px solid rgba(54, 162, 235, 0.3);
+}
+.color-2 {
+  background-color: rgba(255, 206, 86, 0.2);
+  border: 1px solid rgba(255, 206, 86, 0.3);
+}
+.color-3 {
+  background-color: rgba(75, 192, 192, 0.2);
+  border: 1px solid rgba(75, 192, 192, 0.3);
+}
+.color-4 {
+  background-color: rgba(153, 102, 255, 0.2);
+  border: 1px solid rgba(153, 102, 255, 0.3);
+}
 
 .tooltip {
   position: absolute;
@@ -378,13 +402,13 @@ textarea:focus {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .stats {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .stat-item {
     flex: 1;
   }

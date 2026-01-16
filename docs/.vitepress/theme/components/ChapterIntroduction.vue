@@ -24,7 +24,13 @@ const props = defineProps({
   }
 })
 
-const hasMeta = computed(() => props.duration || props.expectedOutput || props.coreOutput || props.assignment)
+const hasMeta = computed(
+  () =>
+    props.duration ||
+    props.expectedOutput ||
+    props.coreOutput ||
+    props.assignment
+)
 const hasTags = computed(() => props.tags && props.tags.length > 0)
 </script>
 
@@ -43,7 +49,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
             {{ tag }}
           </span>
         </div>
-        
+
         <!-- Slot content (full description) always rendered below tags if tags exist, or alone if not -->
         <div class="description-text" :class="{ 'has-tags': hasTags }">
           <slot></slot>
@@ -61,7 +67,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
           <div class="card-value" v-html="duration"></div>
         </div>
       </div>
-      
+
       <!-- Output Card -->
       <div v-if="expectedOutput || coreOutput" class="metric-card output-card">
         <div class="card-icon">📦</div>
@@ -69,7 +75,11 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
           <div class="card-label">预期产出</div>
           <div class="output-container">
             <div v-if="coreOutput" class="core-output">{{ coreOutput }}</div>
-            <div v-if="expectedOutput" class="output-desc" v-html="expectedOutput"></div>
+            <div
+              v-if="expectedOutput"
+              class="output-desc"
+              v-html="expectedOutput"
+            ></div>
           </div>
         </div>
       </div>
@@ -98,7 +108,11 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 
 .objective-section {
   padding: 24px 28px;
-  background: linear-gradient(to right, rgba(var(--vp-c-brand-rgb), 0.05), transparent);
+  background: linear-gradient(
+    to right,
+    rgba(var(--vp-c-brand-rgb), 0.05),
+    transparent
+  );
   border-bottom: 1px dashed var(--vp-c-divider);
 }
 
@@ -258,7 +272,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
     padding: 16px 20px;
     flex-basis: 100%;
   }
-  
+
   .objective-section {
     padding: 20px;
   }

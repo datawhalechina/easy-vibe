@@ -175,36 +175,32 @@
           <div class="scenario-icon">📺</div>
           <div class="scenario-name">视频直播</div>
           <div class="scenario-desc">
-            使用 <strong>UDP</strong>，因为：
-            <br>• 丢几帧没关系，关键是实时
-            <br>• 重传会造成延迟和卡顿
+            使用 <strong>UDP</strong>，因为： <br />• 丢几帧没关系，关键是实时
+            <br />• 重传会造成延迟和卡顿
           </div>
         </div>
         <div class="scenario">
           <div class="scenario-icon">🌐</div>
           <div class="scenario-name">网页浏览</div>
           <div class="scenario-desc">
-            使用 <strong>TCP</strong>，因为：
-            <br>• 内容必须完整准确
-            <br>• 丢失任何数据都不可接受
+            使用 <strong>TCP</strong>，因为： <br />• 内容必须完整准确 <br />•
+            丢失任何数据都不可接受
           </div>
         </div>
         <div class="scenario">
           <div class="scenario-icon">🎮</div>
           <div class="scenario-name">在线游戏</div>
           <div class="scenario-desc">
-            使用 <strong>UDP</strong>，因为：
-            <br>• 响应速度比准确更重要
-            <br>• 实时同步玩家位置
+            使用 <strong>UDP</strong>，因为： <br />• 响应速度比准确更重要
+            <br />• 实时同步玩家位置
           </div>
         </div>
         <div class="scenario">
           <div class="scenario-icon">📧</div>
           <div class="scenario-name">邮件发送</div>
           <div class="scenario-desc">
-            使用 <strong>TCP</strong>，因为：
-            <br>• 邮件内容不能丢失
-            <br>• 可靠性是第一要务
+            使用 <strong>TCP</strong>，因为： <br />• 邮件内容不能丢失 <br />•
+            可靠性是第一要务
           </div>
         </div>
       </div>
@@ -220,9 +216,9 @@ const udpSent = ref(false)
 
 const startTcpHandshake = () => {
   tcpStep.value = 0
-  setTimeout(() => tcpStep.value = 1, 500)
-  setTimeout(() => tcpStep.value = 2, 1200)
-  setTimeout(() => tcpStep.value = 3, 1900)
+  setTimeout(() => (tcpStep.value = 1), 500)
+  setTimeout(() => (tcpStep.value = 2), 1200)
+  setTimeout(() => (tcpStep.value = 3), 1900)
   setTimeout(() => {
     tcpStep.value = 0
   }, 4000)

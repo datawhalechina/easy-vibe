@@ -30,11 +30,12 @@
 
     <div class="context-window">
       <div class="context-content">
-        <span 
-          v-for="(token, index) in tokenizedContext" 
+        <span
+          v-for="(token, index) in tokenizedContext"
           :key="index"
           class="context-token"
-        >{{ token }}</span>
+          >{{ token }}</span
+        >
         <span class="cursor"></span>
       </div>
     </div>
@@ -44,21 +45,23 @@
         <span>🤖 AI Prediction (Top 3 Candidates)</span>
         <span class="temperature-hint">Temperature: 0.7</span>
       </div>
-      
+
       <div class="candidates-list">
-        <div 
-          v-for="(candidate, index) in currentCandidates" 
+        <div
+          v-for="(candidate, index) in currentCandidates"
           :key="index"
           class="candidate-item"
           @click="selectCandidate(candidate)"
         >
           <div class="candidate-info">
             <span class="candidate-text">"{{ candidate.text }}"</span>
-            <span class="candidate-prob">{{ (candidate.prob * 100).toFixed(1) }}%</span>
+            <span class="candidate-prob"
+              >{{ (candidate.prob * 100).toFixed(1) }}%</span
+            >
           </div>
           <div class="prob-bar-bg">
-            <div 
-              class="prob-bar-fill" 
+            <div
+              class="prob-bar-fill"
               :style="{ width: `${candidate.prob * 100}%` }"
               :class="`rank-${index}`"
             ></div>
@@ -69,7 +72,9 @@
 
     <div class="explanation">
       <p>
-        <strong>原理：</strong> LLM 并不是一次性写出整段话，而是像上面这样，基于前面的内容（Context），计算下一个最可能出现的 Token 的概率，然后选择一个（Sampling）填上去，再重复这个过程。
+        <strong>原理：</strong> LLM
+        并不是一次性写出整段话，而是像上面这样，基于前面的内容（Context），计算下一个最可能出现的
+        Token 的概率，然后选择一个（Sampling）填上去，再重复这个过程。
       </p>
     </div>
   </div>
@@ -82,38 +87,44 @@ const scenes = {
   'en-fox': {
     initial: 'The quick brown',
     logic: (text) => {
-      if (text.endsWith('brown')) return [
-        { text: ' fox', prob: 0.85 },
-        { text: ' dog', prob: 0.10 },
-        { text: ' cat', prob: 0.05 }
-      ]
-      if (text.endsWith('fox')) return [
-        { text: ' jumps', prob: 0.92 },
-        { text: ' runs', prob: 0.05 },
-        { text: ' sleeps', prob: 0.03 }
-      ]
-      if (text.endsWith('jumps')) return [
-        { text: ' over', prob: 0.98 },
-        { text: ' up', prob: 0.01 },
-        { text: ' down', prob: 0.01 }
-      ]
-      if (text.endsWith('over')) return [
-        { text: ' the', prob: 0.95 },
-        { text: ' a', prob: 0.04 },
-        { text: ' my', prob: 0.01 }
-      ]
-      if (text.endsWith('the')) return [
-        { text: ' lazy', prob: 0.88 },
-        { text: ' big', prob: 0.08 },
-        { text: ' old', prob: 0.04 }
-      ]
-      if (text.endsWith('lazy')) return [
-        { text: ' dog', prob: 0.90 },
-        { text: ' cat', prob: 0.08 },
-        { text: ' fox', prob: 0.02 }
-      ]
+      if (text.endsWith('brown'))
+        return [
+          { text: ' fox', prob: 0.85 },
+          { text: ' dog', prob: 0.1 },
+          { text: ' cat', prob: 0.05 }
+        ]
+      if (text.endsWith('fox'))
+        return [
+          { text: ' jumps', prob: 0.92 },
+          { text: ' runs', prob: 0.05 },
+          { text: ' sleeps', prob: 0.03 }
+        ]
+      if (text.endsWith('jumps'))
+        return [
+          { text: ' over', prob: 0.98 },
+          { text: ' up', prob: 0.01 },
+          { text: ' down', prob: 0.01 }
+        ]
+      if (text.endsWith('over'))
+        return [
+          { text: ' the', prob: 0.95 },
+          { text: ' a', prob: 0.04 },
+          { text: ' my', prob: 0.01 }
+        ]
+      if (text.endsWith('the'))
+        return [
+          { text: ' lazy', prob: 0.88 },
+          { text: ' big', prob: 0.08 },
+          { text: ' old', prob: 0.04 }
+        ]
+      if (text.endsWith('lazy'))
+        return [
+          { text: ' dog', prob: 0.9 },
+          { text: ' cat', prob: 0.08 },
+          { text: ' fox', prob: 0.02 }
+        ]
       return [
-        { text: '.', prob: 0.80 },
+        { text: '.', prob: 0.8 },
         { text: ' and', prob: 0.15 },
         { text: '!', prob: 0.05 }
       ]
@@ -122,53 +133,60 @@ const scenes = {
   'zh-ai': {
     initial: '人工智能',
     logic: (text) => {
-      if (text.endsWith('人工智能')) return [
-        { text: '是', prob: 0.75 },
-        { text: '技术', prob: 0.15 },
-        { text: '发展', prob: 0.10 }
-      ]
-      if (text.endsWith('是')) return [
-        { text: '未来', prob: 0.40 },
-        { text: '一种', prob: 0.35 },
-        { text: '什么', prob: 0.25 }
-      ]
-      if (text.endsWith('一种')) return [
-        { text: '技术', prob: 0.55 },
-        { text: '工具', prob: 0.30 },
-        { text: '科学', prob: 0.15 }
-      ]
-      if (text.endsWith('未来')) return [
-        { text: '的', prob: 0.85 },
-        { text: '方向', prob: 0.10 },
-        { text: '趋势', prob: 0.05 }
-      ]
+      if (text.endsWith('人工智能'))
+        return [
+          { text: '是', prob: 0.75 },
+          { text: '技术', prob: 0.15 },
+          { text: '发展', prob: 0.1 }
+        ]
+      if (text.endsWith('是'))
+        return [
+          { text: '未来', prob: 0.4 },
+          { text: '一种', prob: 0.35 },
+          { text: '什么', prob: 0.25 }
+        ]
+      if (text.endsWith('一种'))
+        return [
+          { text: '技术', prob: 0.55 },
+          { text: '工具', prob: 0.3 },
+          { text: '科学', prob: 0.15 }
+        ]
+      if (text.endsWith('未来'))
+        return [
+          { text: '的', prob: 0.85 },
+          { text: '方向', prob: 0.1 },
+          { text: '趋势', prob: 0.05 }
+        ]
       return [
-        { text: '。', prob: 0.60 },
-        { text: '，', prob: 0.30 },
-        { text: '！', prob: 0.10 }
+        { text: '。', prob: 0.6 },
+        { text: '，', prob: 0.3 },
+        { text: '！', prob: 0.1 }
       ]
     }
   },
-  'code': {
+  code: {
     initial: 'if (x > 0) {',
     logic: (text) => {
-      if (text.endsWith('{')) return [
-        { text: '\n  return', prob: 0.60 },
-        { text: '\n  print', prob: 0.30 },
-        { text: '\n  x', prob: 0.10 }
-      ]
-      if (text.includes('return')) return [
-        { text: ' true', prob: 0.50 },
-        { text: ' x', prob: 0.30 },
-        { text: ' false', prob: 0.20 }
-      ]
-      if (text.includes('print')) return [
-        { text: '("Hello")', prob: 0.70 },
-        { text: '(x)', prob: 0.25 },
-        { text: '()', prob: 0.05 }
-      ]
+      if (text.endsWith('{'))
+        return [
+          { text: '\n  return', prob: 0.6 },
+          { text: '\n  print', prob: 0.3 },
+          { text: '\n  x', prob: 0.1 }
+        ]
+      if (text.includes('return'))
+        return [
+          { text: ' true', prob: 0.5 },
+          { text: ' x', prob: 0.3 },
+          { text: ' false', prob: 0.2 }
+        ]
+      if (text.includes('print'))
+        return [
+          { text: '("Hello")', prob: 0.7 },
+          { text: '(x)', prob: 0.25 },
+          { text: '()', prob: 0.05 }
+        ]
       return [
-        { text: ';', prob: 0.90 },
+        { text: ';', prob: 0.9 },
         { text: ' + 1', prob: 0.08 },
         { text: '.', prob: 0.02 }
       ]
@@ -281,8 +299,13 @@ select {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .prediction-panel {
@@ -344,9 +367,15 @@ select {
   transition: width 0.5s ease-out;
 }
 
-.rank-0 { background-color: #10b981; }
-.rank-1 { background-color: #3b82f6; }
-.rank-2 { background-color: #f59e0b; }
+.rank-0 {
+  background-color: #10b981;
+}
+.rank-1 {
+  background-color: #3b82f6;
+}
+.rank-2 {
+  background-color: #f59e0b;
+}
 
 .explanation {
   padding: 0.75rem 1rem;

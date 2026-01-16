@@ -3,16 +3,15 @@ title: '认识 AI IDE 工具 - Claude Code、Cursor、Trae 教程'
 description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor、Trae 等工具的使用。掌握 IDE 界面、AI 对话技巧，用本地 AI IDE 从零开发贪吃蛇游戏。'
 ---
 
+<script setup>
+const duration = '约 <strong>1 天</strong>，可分多次完成'
+</script>
+
 # 初级二：认识 AI IDE 工具
 
 ## 本章导读
 
-<ChapterIntroduction
-  duration="约 <strong>1 天</strong>，可分多次完成"
-  :tags="['本地开发环境搭建', 'IDE 与 AI IDE', '高效开发技巧']"
-  coreOutput="1 个自创小游戏"
-  expectedOutput="使用 Trae 产出"
->
+<ChapterIntroduction :duration="duration" :tags="['本地开发环境搭建', 'IDE 与 AI IDE', '高效开发技巧']" coreOutput="1 个自创小游戏" expectedOutput="使用 Trae 产出">
 
 本章将围绕本地开发环境展开讲解：你将学会从 z.ai 过渡到本地的开发环境，学会在自己的电脑上搭建完整的开发环境，理解什么是 IDE、什么是 AI IDE，以及如何在日常开发中高效地使用它们。
 
@@ -30,6 +29,22 @@ description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor
 </div>
 
 ## 1. 写代码需要什么环境和工具
+
+### 1.1 思维转变：遇到问题，先问 AI
+
+在开始介绍各种环境和工具之前，首先提示你需要**转变你的思维习惯**。
+
+在传统的编程学习中，如果你要安装 Python、配置 Conda、或者解决 npm 安装失败的问题，你通常会打开搜索引擎，找到一篇教程，然后按照步骤一步步操作。如果中间报错了，你可能需要再搜报错信息，反复尝试。
+
+错！❌
+
+在 AI 时代，特别是在使用 AI IDE 时，请记住一个核心原则：**任何操作，都可以先问一遍 AI，甚至让它直接帮你做。**
+
+- **不知道怎么安装环境？** 直接在侧边栏问 AI：“我想写 Python，帮我检查一下有没有安装 Python，如果没有请帮我安装。”
+- **网络卡住了？** 如果安装依赖包时一直转圈或报错，直接把错误丢给 AI：“下载失败了，是不是网络问题？能不能帮我换个国内的镜像源？”
+- **命令记不住？** 不需要死记硬背 Git 命令或 Conda 命令，直接告诉 AI：“帮我创建一个新的虚拟环境，名字叫 demo。”
+
+### 1.2 为什么需要环境和工具
 
 从“能不能写代码”，到“能不能把一个项目长期、稳定地维护下去”，对环境和工具的要求是完全不同的。
 
@@ -53,43 +68,39 @@ description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor
 
 ## 2. 什么是 IDE，为什么需要 IDE
 
-在最早期的编程时代，我们只需要在一个简单的文本文件里写好程序，再用专门的语言处理器去读取并打包执行文件即可。但随着代码量越来越大、项目结构越来越复杂，人工管理大量文件、手动编辑庞大的项目变得越来越困难。开发者迫切需要一种工具，能够高效管理和切换大量代码文件，支持多种编程语言的语法高亮，并可以快速定位和调试问题。于是，集成开发环境（IDE，Integrated Development Environment）就应运而生了。
+在早期编程时代，我们只需要简单文本编辑器和语言处理器即可。但随着项目复杂度增加，开发者迫切需要一种能高效管理文件、支持语法高亮和调试的工具，于是集成开发环境（IDE）应运而生。
 
-你可以把 IDE 理解成一种专门用来“编辑、管理、运行和调试”各种应用源代码的程序。在真正打包发布之前，不同语言写出来的程序本质上只是特定格式的代码文件而已，你可以用普通文本编辑器打开它们，也可以用 IDE 打开。早期的计算机几乎完全通过终端来操作（只用键盘就能完成所有操作，几乎不需要鼠标），所以早期的 IDE 外观也非常“原始”——除非你额外安装插件来实现简单的交互式界面。
+你可以把 IDE 理解成专门用来“编辑、管理、运行和调试”代码的程序。早期的 IDE 外观非常“原始”，几乎完全通过键盘操作。
 
 ![](images/image1.png)![](images/image2.png)
 
 终端界面（Terminal） 图片来源：https://en.wikipedia.org/wiki/File:Emacs-screenshot.png
 
-一个非常知名、功能成熟的“内置 IDE”叫做 `Vim`。在很多服务器上，你都可以直接用它来编辑文件（服务器通常没有显示屏，只能通过键盘远程操作）。
+知名且功能成熟的“内置 IDE”如 `Vim`，常用于服务器远程操作。
 
 ![](images/image3.png)
 
-只用键盘操作无法忍受，所以我们需要能使用鼠标操作的现代 IDE 。现代 IDE 通常具有更加美观直观的图形界面，并提供更强大的编辑、运行和调试能力。一个典型的 IDE 通常包含以下核心组件：
+为了更高效，我们需要支持鼠标操作的现代 IDE，通常包含：
 
-- **源代码编辑器（Source Code Editor）**：专门用于编写和编辑代码的文本编辑器，一般具备语法高亮、代码自动补全、实时错误提示等功能。
-- **构建与运行工具（编译器 / 解释器）**：IDE 内置编译器或解释器，可以将开发者写好的源代码转换成计算机可以执行的机器代码。
-- **调试器（Debugger）**：用于测试和排查代码错误的工具。它支持逐行执行代码、查看变量状态、设置断点等，帮助开发者定位并修复程序中的问题。
+- **源代码编辑器**：语法高亮、自动补全。
+- **构建与运行工具**：内置编译器/解释器。
+- **调试器**：断点调试、变量查看。
 
-除此之外，现代 IDE 往往还内置版本控制工具（如 Git）和项目管理工具等实用功能。当下最流行的 IDE 之一是微软出品的 **[Visual Studio Code (VS Code)](https://code.visualstudio.com/)**。它轻量、可扩展性极强，因此被广泛使用。当然，也有很多开发者推荐 JetBrains 家的专业 IDE，比如用于 Python 的 PyCharm、用于 C/C++ 的 CLion 等，它们对特定语言提供了更深入、更完整的支持。但从入门友好度和通用性角度出发，我们更推荐初学者优先选择 VS Code 作为主要开发工具。
+现代 IDE 往往还内置 Git 等工具。最流行的是微软的 **[Visual Studio Code (VS Code)](https://code.visualstudio.com/)**，它轻量且可扩展。虽然也有 JetBrains 全家桶等专业 IDE，但 VS Code 对初学者最友好。
 
 ![](images/image4.png)
 
-Visual Studio Code（简称 VS Code）是由微软开发的一款免费、开源且功能强大的现代代码编辑器。自 2015 年发布以来，凭借优异的性能和灵活性，它迅速成为全球最受欢迎的开发工具之一。
-
-VS Code 的核心理念之一是“一切皆插件”。不同编程语言可以用来编写不同类型的程序，而每种语言都有自己独特的语法高亮规则和导航能力（比如“跳转到定义”“查找引用”等）。要让一个 IDE 原生支持所有语言几乎是不可能的——从逻辑上讲，你会需要为每一种语言单独准备一个 IDE 才行。
-
-VS Code 巧妙地通过“插件机制”解决了这一问题。比如，如果你要写 Python，就安装 Python 插件，它会提供 Python 专属的语法高亮、自动补全和代码导航功能；如果你要写 C/C++，则可以安装对应的 C/C++ 插件来获得相应支持。在不安装任何插件的情况下，VS Code 本质上只是一个“高级的文本文件管理器”；当你为某种语言安装了对应插件之后，它就会“变身”成该语言的理想开发工具。
+VS Code 的核心理念是“一切皆插件”。它通过插件机制支持各种语言，安装 Python 插件就是 Python IDE，安装 C++ 插件就是 C++ IDE。不装插件时，它只是个高级文本编辑器。
 
 ![](images/image5.png)
 
-除了编写代码以外，你甚至可以把 VS Code 当作编辑 Markdown 文档的工具来使用。
+甚至可以用来编辑 Markdown 文档。
 
 ![](images/image6.png)
 
-总之，你可以在 VS Code 的扩展市场中浏览和下载各类扩展，为不同类型的文件提供更好用的编辑体验，也可以根据需要搜索不同语言和调试工具的插件，尝试它们如何提升你的工作效率。
+总之，IDE 是一套帮助开发者高效写代码和运行程序的工具集。
 
-最后，我们用一句话来总结 IDE 的意思：`IDE 是一种提供开发环境的软件，它提供了一整套工具，帮助开发者高效写代码和运行程序。`
+更具体的详细内容解释，请查看[附录中的 虚拟 IDE 可视化 IDE 原理部分](/zh-cn/appendix/ide-intro/)。
 
 ## 3. AI IDE 和普通 IDE 有什么不同
 
@@ -362,23 +373,16 @@ AI 会根据你的描述，直接修改 React 组件和样式。保存后刷新�
 
 其中每个部分的具体作用为：
 
-**Title Bar（标题栏）**：在窗口最上面那一条。你可以把它当成“窗口的名字牌”，通常会显示 VS Code、当前打开的文件名等信息；右边还有最小化/最大化/关闭按钮（用来控制窗口大小和关闭窗口）。
+- **Title Bar（标题栏）**：显示文件名和窗口控制按钮。
+- **Activity Bar（活动栏）**：切换文件、搜索等功能视图。
+- **Side Bar（侧边栏）**：展示文件列表等具体内容。
+- **Editor Groups（编辑区）**：编写代码的核心区域。
+- **Breadcrumbs（路径导航）**：显示文件路径，支持跳转。
+- **Minimap（代码缩略图）**：快速预览和定位代码。
+- **Panel（底部面板）**：包含终端和输出窗口。
+- **Status Bar（状态栏）**：显示当前环境状态。
 
-**Activity Bar（活动栏）**：最左边那一排小图标。它像“功能切换按钮”，点不同图标就会切换不同工具，例如文件（Explorer）、搜索（Search）、Git 管理（Source Control）等。现在不需要全记住，先理解它负责“切换左侧显示什么”。
-
-**Side Bar（侧边栏）**：在 Activity Bar 右边那块区域。它会根据你选择的功能变化：点文件就显示文件夹/文件列表；点搜索就显示搜索框和结果。可以理解为“左边的内容区”。
-
-**Editor Groups（编辑器分组/编辑区）**：中间最大的一块，就是你看代码、写代码的地方。打开文件后内容会显示在这里；上面有标签页（Tab）方便同时打开多个文件；也能分成左右两块（分屏）来对照看。
-
-**Breadcrumbs（路径导航）**：在代码上方的一行路径提示，告诉你当前文件在项目里的位置（例如 `src > pages > index.js`）。你也可以点它快速跳到上一级文件夹或相关位置，帮助你不迷路。
-
-**Minimap（迷你地图/代码缩略图）**：编辑区右侧细细的一条缩略预览。它像“整篇代码的缩小版地图”，让你在很长的文件里快速拖动跳到某个位置。
-
-**Panel（面板/底部面板）**：通常在窗口底部，里面常见 Terminal（终端）、Problems（问题）、Output（输出）、Debug Console（调试控制台）等。简单说：这里用来运行命令、看程序输出、看错误提示。错误信息看起来可能有点“凶”，其实是在告诉你哪里需要调整。
-
-**Status Bar（状态栏）**：窗口最底部那一条信息栏，会显示当前状态，比如文件类型/语言、缩进方式、编码、是否有报错、Git 状态等。你可以先不深入，但它能帮你快速了解“当前编辑环境是什么情况”。
-
-**更具体的详细内容解释，请查看本篇文章的[附录二](#appendix-2-vscode-menu)。**
+更具体的详细内容解释，请查看[附录中的 虚拟 IDE 可视化 IDE 原理部分](/zh-cn/appendix/ide-intro/)。
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -610,7 +614,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
       <span style="font-size: 12px; color: #909399">看到不懂的计算机名词时，来这里快速查含义，推荐通读一遍。</span>
     </el-col>
     <el-col :span="12">
-      <a href="#appendix-2-vscode-menu" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
+      <a href="../../appendix/ide-intro/index.md#appendix-2-map" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
       <span style="font-size: 12px; color: #909399">不知道 AI IDE 的界面有什么用的时候，拿以下内容和 AI 对话进行查阅，或者直接查看。</span>
     </el-col>
   </el-row>
@@ -1084,329 +1088,3 @@ VS Code / Trae 用来描述“当前这一次打开了一组什么东西”的�
 - 再写一句“可以把它想象成什么”；
 - 最后给一个特别简单的小例子。  
   这样你的“个人术语表”会越长越实用，逐渐能够更好的与计算机进行沟通。
-
-<a id="appendix-2-vscode-menu"></a>
-
-# 附录二： Visual Studio Code 菜单栏解析
-
-<el-card id="appendix-2-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #67C23A;">
-  <div style="font-weight: bold; margin-bottom: 10px;">🧭 界面导航：VS Code 核心区域</div>
-  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="#vscode-title-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Title Bar (标题栏)</el-tag></a>
-    <a href="#vscode-activity-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Activity Bar (活动栏)</el-tag></a>
-    <a href="#vscode-side-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Side Bar (侧边栏)</el-tag></a>
-    <a href="#vscode-editor" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Editor (编辑区)</el-tag></a>
-    <a href="#vscode-panel" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Panel (底部面板)</el-tag></a>
-    <a href="#vscode-status-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Status Bar (状态栏)</el-tag></a>
-  </div>
-</el-card>
-
-## <span id="vscode-title-bar">[Title Bar（标题栏）：窗口信息与全局入口](#appendix-2-map)</span>
-
-标题栏位于窗口最上方，主要用于展示当前窗口信息并提供窗口级控制。常见细节包括：
-
-- 应用与窗口信息  
-  通常显示应用名称（如 Visual Studio Code）以及当前工作区（workspace）或当前打开文件的名称，便于在多窗口并行时识别不同项目。
-
-- 菜单入口（部分系统/布局可见）  
-  在 Windows/Linux 的常见布局中，`File / Edit / Selection / View / Go / Run / Terminal / Help` 等菜单可能与标题栏同一行或紧邻显示，是功能的传统入口。
-
-- 窗口控制按钮  
-  最小化、最大化/还原、关闭按钮属于操作系统窗口控件，用于调整窗口显示方式或关闭窗口。
-
-- AI 侧边栏开启按钮
-  一般而言，在右上角可以控制是否开启 AI 侧边栏或者其他侧边栏。我们默认右侧的侧边栏为 AI 侧边栏。
-
-- 环境与状态提示或系统更新提示（可能会出现提醒你重启更新的提示，建议每次看到主动进行点击更新）  
-  部分情况下会显示远程连接状态（SSH/容器/WSL）、信任提示（Workspace Trust）等，具体取决于当前环境与设置。
-
-为了方便大家理解每个选项的含义，在这里我们对菜单栏进行深入解析：
-![](images/index-2026-01-09-11-35-55.png)
-
-### File（文件）：项目与文件的打开/保存/工作区管理
-
-本菜单主要负责：**创建/打开文件**、**打开项目文件夹（Folder）**、**管理工作区（Workspace）**、**保存与关闭**。
-
-> 其中最常用的就是：Open Folder（打开文件夹） 来打开一个项目；Open…（打开…） 来单独打开一个文件；然后用 Save / Save All（保存/全部保存） 来保存修改，最后用 Close Editor / Close Folder（关闭编辑器/关闭文件夹） 结束本次工作。工作区（Workspace）、复制工作区之类的内容可以等你项目多起来再慢慢用，不必一上来全搞懂
-
-- **New Text File（新建文本文件）**：新建一个未命名文本缓冲区，用于临时记录或快速粘贴内容。
-- **New File…（新建文件…）**：在项目中创建新文件（通常会要求你选择路径/命名）。
-- **New Window（新建窗口）**：开启一个新的 VS Code 窗口实例。
-- **New Window with Profile（使用配置档新建窗口）**：以指定 Profile（扩展/设置组合）打开新窗口，适合不同课程/项目隔离环境。
-- **Open…（打开…）**：打开单个文件进行编辑。
-- **Open Folder…（打开文件夹…）**：打开一个文件夹作为项目根目录（最常用的“打开项目”方式）。
-- **Open Workspace from File…（从文件打开工作区…）**：打开 `.code-workspace` 文件，加载多文件夹/特定设置的工作区。
-- **Open Recent（打开最近）**：快速进入最近打开的文件/文件夹/工作区。
-- **Add Folder to Workspace…（添加文件夹到工作区…）**：把另一个文件夹加入当前工作区（形成 multi-root workspace）。
-- **Save Workspace As…（工作区另存为…）**：将当前工作区结构保存为 `.code-workspace` 文件，便于分享/复用。
-- **Duplicate Workspace（复制工作区）**：复制当前工作区配置（常用于建立相似项目环境）。
-- **Save（保存）**：保存当前文件更改。
-- **Save As…（另存为…）**：以新名称/新路径保存当前文件。
-- **Save All（全部保存）**：保存所有已打开且有修改的文件。
-
-- **Share（分享）**：与共享/协作相关的入口（具体内容取决于版本与扩展）。
-- **Auto Save（自动保存）**：切换自动保存策略（例如延迟保存/失焦保存）。
-- **Revert File（还原文件）**：丢弃当前文件未保存改动，回到磁盘版本。
-- **Close Editor（关闭编辑器）**：关闭当前标签页。
-- **Close Folder（关闭文件夹）**：关闭当前项目文件夹（工作区变为空）。
-- **Close Window（关闭窗口）**：关闭当前 VS Code 窗口。
-
-### Edit（编辑）：基础编辑、查找替换、注释与快速编辑动作
-
-本菜单主要负责：**撤销/重做**、**剪切复制粘贴**、**查找替换**、**注释与编辑器动作**（提升编辑效率）。
-
-> 在日常写代码时，这一栏里你最常用的是：Undo / Redo（撤销/重做） 来后悔操作，Cut / Copy / Paste（剪切复制粘贴） 做文本编辑，以及 Find / Replace（查找/替换） 来快速改变量名或某段文字。
-
-- **Undo（撤销）**：回退上一步编辑操作。
-- **Redo（重做）**：恢复被撤销的操作。
-- **Cut（剪切）**：剪切选中内容到剪贴板。
-- **Copy（复制）**：复制选中内容到剪贴板。
-- **Paste（粘贴）**：从剪贴板粘贴内容到光标处。
-- **Find（查找）**：在当前文件内搜索文本。
-- **Replace（替换）**：在当前文件内查找并替换。
-- **Find in Files（在文件中查找）**：在整个工作区范围内搜索（跨文件）。
-- **Replace in Files（在文件中替换）**：在整个工作区范围内替换（需要谨慎）。
-- **Toggle Line Comment（切换行注释）**：对选中行进行 `//`（或语言对应）注释/取消注释。
-- **Toggle Block Comment（切换块注释）**：对选中区域进行 `/* */`（或语言对应）注释/取消注释。
-- **Emmet: Expand Abbreviation（Emmet：展开缩写）**：把 Emmet 缩写展开成结构化代码（常用于 HTML/CSS）。
-- **AutoFill（自动填充）** / **Start Dictation…（开始听写…）** / **Emoji & Symbols（表情与符号）**：属于系统级输入辅助入口（macOS 常见）。
-
-### Selection（选择）：选区控制、多光标与列选择
-
-本菜单主要负责：**管理选中范围**、**扩展/缩小选区**、**多光标编辑**与**列模式**，适合批量修改。
-
-> Select All（全选） 来一次选中整篇文件，Copy/Move Line Up/Down（复制/移动行） 来快速调整代码顺序。等稍微熟练一点，可以尝试 Add Cursor Above/Below（添加多光标） 和 Select All Occurrences（选择所有匹配项），用来一次性修改很多相同的变量名或者文本，效率会大幅提高。
-
-- **Select All（全选）**：选中当前文件全部内容。
-- **Expand Selection（扩展选区）**：按语法结构逐步扩大选中范围（词 → 表达式 → 语句等）。
-- **Shrink Selection（缩小选区）**：与扩展选区相反，逐步缩小。
-
-- **Copy Line Up（向上复制行）**：把当前行/选区复制到上一行位置。
-- **Copy Line Down（向下复制行）**：把当前行/选区复制到下一行位置。
-- **Move Line Up（上移行）**：将当前行上移一行。
-- **Move Line Down（下移行）**：将当前行下移一行。
-- **Duplicate Selection（复制选中内容）**：复制选中内容并插入一份副本。
-
-- **Add Cursor Above（在上方添加光标）**：在上一行同列增加一个光标，进行多行同时编辑。
-- **Add Cursor Below（在下方添加光标）**：在下一行同列增加一个光标。
-- **Add Cursors to Line Ends（在行尾添加多个光标）**：在选中行的行尾放置光标，便于统一追加内容。
-- **Add Next Occurrence（添加下一个匹配项）**：选择当前词/选区的下一个匹配位置并加入多光标。
-- **Add Previous Occurrence（添加上一个匹配项）**：同上，方向相反。
-- **Select All Occurrences（选择所有匹配项）**：一次性选中所有匹配位置并进入多光标编辑。
-
-- **Switch to Cmd+Click for Multi-Cursor（切换为 Cmd+点击 多光标）**：调整鼠标点击添加光标的交互方式（macOS 常见）。
-- **Column Selection Mode（列选择模式）**：开启后可进行矩形选区（适合处理对齐文本/表格数据）。
-
-### View（视图）：界面布局与面板显示控制
-
-本菜单主要负责：**控制界面显示哪些区域**、**调整布局**、**打开各类视图面板**（Explorer/Search/Terminal 等）。
-
-> 日常开发时，你最常用的是：Explorer（资源管理器） 查看和切换文件，Terminal（终端） 在底部跑命令，Search（搜索） 全局查找，Extensions（扩展） 安装/管理插件。遇到找不到某个按钮时，可以用 Command Palette…（命令面板） 搜索功能，很多「找不到入口」的问题都能靠它解决。
-
-- **Command Palette…（命令面板…）**：打开命令面板，用关键词搜索任何功能/命令（最通用入口）。
-- **Open View…（打开视图…）**：按名称搜索并打开某个视图（例如 Outline、Timeline 等）。
-- **Appearance（外观）**：与主题、字体、缩放、菜单/工具栏显示等外观相关的设置入口集合。
-- **Editor Layout（编辑器布局）**：控制编辑器分栏方式（左右/上下/网格等）。
-- **Explorer（资源管理器）**：显示/聚焦文件树视图。
-- **Search（搜索）**：显示/聚焦搜索视图。
-- **Source Control（源代码管理）**：显示/聚焦 Git 视图。
-- **Run（运行）**：显示/聚焦运行相关视图（具体名称可能随版本变化）。
-- **Extensions（扩展）**：显示/聚焦扩展管理视图。
-- **Testing（测试）**：显示/聚焦测试视图（依赖语言/扩展）。
-- **Problems（问题）**：打开底部 Problems 列表。
-- **Output（输出）**：打开底部 Output 面板。
-- **Debug Console（调试控制台）**：打开 Debug Console。
-- **Terminal（终端）**：打开集成终端。
-- **Word Wrap（自动换行）**：切换编辑器自动换行显示（不改变文件内容，只改变显示方式）。
-
-![](images/index-2026-01-09-11-36-23.png)
-
-### Go（转到）：在代码与项目中快速导航与定位
-
-本菜单主要负责：**在文件、符号（函数/类）、定义位置之间快速跳转**，以及在改动与问题之间移动，提高阅读与调试效率。
-
-> 当项目文件变多、代码变长时，你会频繁用到：Go to File…（转到文件） 按名字打开文件，Go to Definition / References（转到定义/引用） 在函数和它的使用处之间来回跳，以及 Back / Forward（后退/前进） 像浏览器一样在刚才看过的地方之间切换。Go to Line/Column…（转到行/列） 在 AI 给你报错行号时能够找到对应的部分
-
-- **Back（后退）**：返回到上一个光标/跳转位置（类似浏览器后退）。
-- **Forward（前进）**：与后退相反，回到刚才后退前的位置。
-- **Last Edit Location（上次编辑位置）**：跳到最近一次发生编辑的地方，便于继续未完成的修改。
-- **Switch Editor（切换编辑器）**：在已打开的编辑器标签之间切换（按最近使用顺序）。
-- **Switch Group（切换分组）**：在不同编辑器分屏组之间切换（例如左/右分栏）。
-- **Go to File…（转到文件…）**：按文件名快速搜索并打开工作区内文件。
-- **Go to Symbol in Workspace…（转到工作区符号…）**：在整个项目范围搜索符号（函数/类/变量等）并跳转。
-- **Go to Symbol in Editor…（转到编辑器符号…）**：只在当前文件内搜索符号并跳转。
-- **Go to Definition（转到定义）**：跳到符号的定义处（需要语言服务支持）。
-- **Go to Declaration（转到声明）**：跳到声明位置（常见于 C/C++、TypeScript 等）。
-- **Go to Type Definition（转到类型定义）**：跳到变量/对象对应的类型定义（常用于 TypeScript）。
-- **Go to Implementations（转到实现）**：查看接口/抽象方法的具体实现位置列表并跳转。
-- **Go to References（转到引用）**：查找并打开该符号在项目中的所有引用位置。
-- **Go to Line/Column…（转到行/列…）**：输入行号（可带列号）直接定位到指定位置。
-- **Go to Bracket（转到括号匹配处）**：在成对括号/花括号/方括号之间跳转，用于阅读结构。
-- **Next Problem（下一个问题）**：跳到下一个错误/警告位置（对应 Problems 面板）。
-- **Previous Problem（上一个问题）**：跳到上一个错误/警告位置。
-- **Next Change（下一个更改）**：跳到下一处改动位置（通常基于 Git diff/文件修改痕迹）。
-- **Previous Change（上一个更改）**：跳到上一处改动位置。
-
-### Terminal（终端）：运行命令与管理任务（Tasks）
-
-本菜单主要负责：**打开/管理集成终端**，以及**运行与配置 VS Code 任务系统（Tasks）**（如 build、运行脚本等）。
-
-> 刚开始你重点用 New Terminal（新建终端） 在底部打开一个命令行窗口，然后在里面执行 npm run dev、python main.py、git status 之类的命令。等项目变复杂水平变高了，再去了解 Run Task… / Run Build Task…（运行任务/构建任务），把常用命令配置成一键运行。
-
-- **New Terminal（新建终端）**：在底部 Panel 创建一个新的终端会话。
-- **Split Terminal（拆分终端）**：将终端分屏显示，便于同时运行多个命令（如前端/后端各一）。
-- **New Terminal Window（新建终端窗口）**：以新窗口方式打开终端相关界面（具体行为依系统/版本）。
-- **Run Task…（运行任务…）**：从任务列表选择一个任务执行（例如 lint、test、build）。
-- **Run Build Task…（运行构建任务…）**：运行被标记为“build”的默认构建任务。
-- **Run Active File（运行当前文件）**：用当前语言环境运行当前编辑文件（依赖扩展/配置）。
-- **Run Selected Text（运行选中文本）**：将选中内容发送到可执行环境（常见于 Python/REPL 类扩展）。
-- **Show Running Tasks…（显示正在运行的任务…）**：查看当前后台任务及其输出。
-- **Restart Running Task…（重启正在运行的任务…）**：重启某个正在运行的任务。
-- **Terminate Task…（终止任务…）**：停止正在运行的任务。
-- **Configure Tasks…（配置任务…）**：创建/编辑 `tasks.json`，定义可重复执行的命令任务。
-- **Configure Default Build Task…（配置默认构建任务…）**：指定哪个任务作为默认 build（供“Run Build Task”调用）。
-
-### Window（窗口）：窗口状态与排列方式（系统级）
-
-本菜单主要负责：**控制应用窗口的显示方式**（最小化、全屏、窗口布局），属于操作系统窗口管理功能。
-
-> 这一栏基本是操作系统级别的窗口控制，日常开发你最多会点一下 Minimize（最小化） 和 Full Screen / Fill（全屏/填充）。其他像分屏贴靠、居中布局之类，更多是界面体验上的微调，等你熟悉了再根据自己习惯慢慢试。
-
-- **Minimize（最小化）**：将当前窗口最小化到 Dock。
-- **Zoom（缩放）**：切换窗口缩放状态（macOS 的窗口缩放行为）。
-- **Fill（填充）**：将窗口调整为更“铺满”的尺寸（便于大屏展示）。
-- **Center（居中）**：将窗口移动到屏幕中央。
-- **Move & Resize（移动与调整大小）**：进入窗口移动/调整大小相关操作（系统功能集合）。
-- **Full Screen Tile（全屏分屏贴靠）**：将窗口以全屏分屏方式贴靠到屏幕一侧（macOS 分屏）。
-- **Remove Window from Set（从窗口集合移除）**：与 macOS 窗口集合/标签化管理相关（是否可用取决于系统状态）。
-
-### Help（帮助）：帮助资源、版本信息与诊断工具入口
-
-本菜单主要负责：**查看帮助文档**、**了解版本更新**、**打开诊断/开发者工具**、**提交问题反馈**。
-
-> 不会用 VS Code 的时候，先来这里。你可以用 Help Document（帮助文档） 看官方说明，用 Show Release Notes（发行说明） 了解新版本变化。想练习编辑器技巧，可以打开 Editor Playground（练习场）。遇到疑似 VS Code 自己的 bug，再用 Report Issue（报告问题） 或 Toggle Developer Tools（开发者工具） 这些高级一点的功能。
-
-- **Search（搜索）**：在帮助相关内容中搜索入口/命令（便于快速定位功能）。
-- **Show All Commands（显示所有命令）**：列出可用命令（类似命令面板的全量视图/入口）。
-- **Editor Playground（编辑器练习场）**：提供交互式示例，用于练习编辑器功能（多光标、选择、格式化等）。
-- **Show Release Notes（显示发行说明）**：查看当前版本更新内容与变更记录。
-- **Toggle Developer Tools（切换开发者工具）**：打开/关闭开发者工具（用于排查界面/扩展问题）。
-- **Report Issue（报告问题）**：进入问题反馈流程（通常会附带日志与环境信息）。
-- **TRACE Process Explorer（TRACE 进程查看器）**：查看 VS Code 相关进程/资源占用，用于性能排查。
-- **Contact Us（联系我们）**：官方联系入口。
-- **Help Document（帮助文档）**：打开官方帮助文档与使用指南。
-
-## <span id="vscode-activity-bar">[Activity Bar（活动栏）：主要视图的切换区](#appendix-2-map)</span>
-
-活动栏位于界面最左侧，以图标形式提供核心功能视图入口，用于切换左侧工具面板。常见图标与作用如下：
-
-![](images/image23.png)
-
-常见的几个图标含义：
-
-- 资源管理器（Explorer）  
-  打开文件树与工作区内容管理视图，用于新建、打开、移动、删除文件等。
-
-- 搜索（Search）  
-  在整个工作区范围内查找与替换文本，支持按规则筛选与批量替换。
-
-- 源代码管理（Source Control）  
-  集成 Git 的改动查看、暂存（stage）、提交（commit）、分支操作等。
-
-- 运行和调试（Run and Debug）  
-  管理运行配置与调试会话，例如断点、变量查看、调用栈、单步执行等。
-
-- 扩展（Extensions）  
-  浏览、安装与管理扩展（插件），例如语言支持、格式化工具、主题等。
-
-补充说明：再次点击同一图标通常可切换该视图的展开/收起；将鼠标悬停在图标上通常可看到视图名称与快捷键提示。AI IDE 往往会在此处增加 AI 相关入口（如 Chat/Agents/Project Context），用于打开对话面板或启用项目级分析能力。
-
-## <span id="vscode-side-bar">[Side Bar（侧边栏）：当前视图的具体内容区](#appendix-2-map)</span>
-
-侧边栏位于活动栏右侧，用于展示当前选中视图的具体内容。它会随活动栏切换而变化，常见细节包括：
-
-![](images/index-2026-01-09-11-28-43.png)
-
-- Explorer（资源管理器）下的内容  
-  工作区根目录与文件树、打开文件列表（Open Editors，视设置而定）、新建文件/文件夹等操作按钮。
-
-- Search（搜索）下的内容  
-  搜索与替换输入框、过滤选项（大小写/全词/正则等）、按文件分组的结果列表。
-
-- Source Control（源代码管理）下的内容  
-  变更列表（Changes）、暂存区（Staged Changes，若启用）、提交信息输入框与相关操作。
-
-侧边栏中的信息会根据活动栏的选择而切换显示的内容。其通常以可折叠分区组织，便于在同一位置呈现多类信息（是否出现某些分区取决于语言与扩展）。
-
-## <span id="vscode-editor">[Editor Groups（编辑器分组/编辑区）：文件编辑与分屏布局](#appendix-2-map)</span>
-
-编辑器区域位于界面中部，是代码与文本编辑的核心区域，包含文件标签管理与分组布局能力。常见细节包括：
-
-- 标签页（Tabs）  
-  每个打开的文件对应一个标签页，用于快速切换。关闭标签页仅关闭显示，不会删除磁盘文件；标签页样式通常会提示是否存在未保存修改。
-
-- 分组与分屏（Editor Groups）  
-  支持将编辑器分成多个组（左右或上下），每个组可独立打开文件，适用于对照阅读与并行编辑。
-
-- 编辑辅助能力（常见）  
-  代码补全与建议（IntelliSense）、语法高亮（Syntax Highlighting）、快速修复与重构入口（Code Actions）等，帮助提高编辑效率并减少低级错误。
-
-## Breadcrumbs（路径导航）：定位文件位置与快速跳转
-
-Breadcrumbs 位于编辑器上方，用于显示当前文件在工作区中的路径层级，并提供跳转能力。常见细节包括：
-
-- 路径层级展示  
-  以层级方式展示目录与文件，例如 `src > pages > index.js`。
-
-- 快速跳转  
-  通常可点击任意层级节点，快速跳到上级目录或定位相关位置，适用于大型项目中快速确认“文件在哪”。
-
-部分语言与配置下，Breadcrumbs 也可能包含符号层级（如类/函数），是否显示取决于语言服务与设置。
-
-## Minimap（迷你地图/代码缩略图）：长文件的快速导航
-
-Minimap 位于编辑器右侧，是当前文件内容的缩略预览，用于快速定位与导航。常见细节包括：
-
-- 全文概览  
-  以缩小形式呈现整份文件，便于把握内容分布与结构位置。
-
-- 快速滚动与跳转  
-  在 Minimap 上点击或拖动通常可以快速跳转到对应位置，减少反复滚动带来的时间成本。
-
-## <span id="vscode-panel">[Panel（面板/底部面板）：运行、诊断与调试输出集中区](#appendix-2-map)</span>
-
-Panel 通常位于窗口底部（布局可调整），用于承载运行命令与各种输出信息。常见标签页与用途如下：
-
-- Terminal（终端）  
-  用于执行命令（如安装依赖、启动服务、运行脚本）。可选择不同 shell（如 PowerShell、Command Prompt、Bash），默认工作目录通常为工作区根目录。
-
-- Problems（问题）  
-  汇总错误与警告列表，点击条目可跳转到对应文件与行号，常用于快速定位语法错误、缺少依赖、类型问题等。
-
-- Output（输出）  
-  展示扩展、语言服务、任务等组件的日志输出，用于排查“操作没有生效”或“工具运行异常”等情况。
-
-- Debug Console（调试控制台）  
-  调试会话期间用于显示调试输出与交互信息，与断点、变量查看等功能配合使用。
-
-## <span id="vscode-status-bar">[Status Bar（状态栏）：编辑状态与上下文信息汇总](#appendix-2-map)</span>
-
-状态栏位于窗口最底部，汇总展示当前文件与环境的关键状态，并提供快捷入口。常见细节包括：
-
-- 语言模式（Language Mode）  
-  显示当前文件按何种语言规则进行解析（如 JavaScript/HTML/Python），影响语法高亮、补全与诊断。
-
-- 编码与换行符  
-  常见如 `UTF-8`、`LF/CRLF`，跨平台协作时与一致性相关。
-
-- 缩进设置  
-  显示 Tab 或空格以及空格数量（如 Spaces: 2/4），与代码风格一致性相关。
-
-- Git 状态（如启用）  
-  可能显示当前分支与同步/变更提示，用于快速了解版本控制状态。
-
-- 错误与警告统计（如启用）  
-  通常以数量显示（errors/warnings），点击可跳转到 Problems 查看详情。
-
-- 通知与后台状态  
-  某些后台任务、扩展提示或远程连接信息也可能在状态栏体现，具体随环境与扩展变化。

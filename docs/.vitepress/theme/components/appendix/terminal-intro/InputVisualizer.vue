@@ -12,7 +12,12 @@
   - 历史记录：记录最近几次按键的编码流。
 -->
 <template>
-  <div class="input-visualizer" tabindex="0" @keydown="handleKeydown" @blur="handleBlur">
+  <div
+    class="input-visualizer"
+    tabindex="0"
+    @keydown="handleKeydown"
+    @blur="handleBlur"
+  >
     <div class="focus-overlay" v-if="!isFocused" @click="focus">
       <div class="focus-btn">
         <span class="icon">⌨️</span>
@@ -22,7 +27,7 @@
 
     <div class="main-display" :class="{ 'blur-content': !isFocused }">
       <div class="key-name">{{ currentKey.name || 'Press any key' }}</div>
-      
+
       <div class="info-grid">
         <div class="info-box">
           <div class="label">BYTES (HEX)</div>
@@ -33,9 +38,10 @@
           <div class="value code">{{ currentKey.sequence || '-' }}</div>
         </div>
       </div>
-      
+
       <div class="char-display">
-        Character: <span class="char-val">{{ currentKey.charDisplay || '-' }}</span>
+        Character:
+        <span class="char-val">{{ currentKey.charDisplay || '-' }}</span>
       </div>
     </div>
 
@@ -71,7 +77,7 @@ const handleBlur = () => {
 
 const handleKeydown = (e) => {
   e.preventDefault()
-  
+
   let name = e.key
   let bytes = ''
   let sequence = ''
@@ -80,15 +86,15 @@ const handleKeydown = (e) => {
   // Map special keys
   const keyMap = {
     ' ': { name: 'Space', bytes: '20', char: ' ' },
-    'Enter': { name: 'Enter', bytes: '0a', char: '\\n' },
-    'Tab': { name: 'Tab', bytes: '09', char: '\\t' },
-    'Escape': { name: 'Esc', bytes: '1b', char: '\\e' },
-    'Backspace': { name: 'Backspace', bytes: '7f', char: '\\b' },
-    'Delete': { name: 'Del', bytes: '1b 5b 33 7e', sequence: '^[[3~' },
-    'ArrowUp': { name: 'Arrow Up', bytes: '1b 5b 41', sequence: '^[[A' },
-    'ArrowDown': { name: 'Arrow Down', bytes: '1b 5b 42', sequence: '^[[B' },
-    'ArrowRight': { name: 'Arrow Right', bytes: '1b 5b 43', sequence: '^[[C' },
-    'ArrowLeft': { name: 'Arrow Left', bytes: '1b 5b 44', sequence: '^[[D' },
+    Enter: { name: 'Enter', bytes: '0a', char: '\\n' },
+    Tab: { name: 'Tab', bytes: '09', char: '\\t' },
+    Escape: { name: 'Esc', bytes: '1b', char: '\\e' },
+    Backspace: { name: 'Backspace', bytes: '7f', char: '\\b' },
+    Delete: { name: 'Del', bytes: '1b 5b 33 7e', sequence: '^[[3~' },
+    ArrowUp: { name: 'Arrow Up', bytes: '1b 5b 41', sequence: '^[[A' },
+    ArrowDown: { name: 'Arrow Down', bytes: '1b 5b 42', sequence: '^[[B' },
+    ArrowRight: { name: 'Arrow Right', bytes: '1b 5b 43', sequence: '^[[C' },
+    ArrowLeft: { name: 'Arrow Left', bytes: '1b 5b 44', sequence: '^[[D' }
   }
 
   if (keyMap[e.key]) {
@@ -117,7 +123,7 @@ const handleKeydown = (e) => {
 
   const keyData = { name, bytes, sequence, charDisplay }
   currentKey.value = keyData
-  
+
   history.value.unshift(keyData)
   if (history.value.length > 5) history.value.pop()
 }
@@ -138,7 +144,9 @@ const handleKeydown = (e) => {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .input-visualizer:focus {
@@ -190,7 +198,9 @@ const handleKeydown = (e) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.2s, filter 0.2s;
+  transition:
+    opacity 0.2s,
+    filter 0.2s;
 }
 
 .blur-content {
@@ -237,8 +247,12 @@ const handleKeydown = (e) => {
   font-variant-numeric: tabular-nums;
 }
 
-.highlight { color: #facc15; /* Yellow 400 */ }
-.code { color: #22d3ee; /* Cyan 400 */ }
+.highlight {
+  color: #facc15; /* Yellow 400 */
+}
+.code {
+  color: #22d3ee; /* Cyan 400 */
+}
 
 .char-display {
   color: #a1a1aa; /* Zinc 400 */
@@ -275,9 +289,9 @@ const handleKeydown = (e) => {
   border: 1px solid #27272a;
 }
 
-.arrow { 
+.arrow {
   color: #71717a; /* Lighter grey for better visibility */
-  margin: 0 8px; 
+  margin: 0 8px;
 }
 
 .h-name {
@@ -285,8 +299,8 @@ const handleKeydown = (e) => {
   color: #e4e4e7;
 }
 
-.h-bytes { 
-  color: #facc15; 
+.h-bytes {
+  color: #facc15;
   font-family: monospace;
 }
 </style>

@@ -15,8 +15,8 @@
   <div class="signals-demo">
     <div class="left-panel">
       <div class="signal-list">
-        <div 
-          class="signal-item" 
+        <div
+          class="signal-item"
           :class="{ active: activeSignal === 'SIGINT' }"
           @click="sendSignal('SIGINT')"
         >
@@ -27,8 +27,8 @@
           <div class="signal-name">SIGINT</div>
         </div>
 
-        <div 
-          class="signal-item" 
+        <div
+          class="signal-item"
           :class="{ active: activeSignal === 'SIGTSTP' }"
           @click="sendSignal('SIGTSTP')"
         >
@@ -43,22 +43,33 @@
       <div class="info-box">
         <div v-if="activeSignal === 'SIGINT'">
           <div class="info-header">
-            <span class="highlight">Ctrl+C</span> → <span class="signal-green">SIGINT</span>
+            <span class="highlight">Ctrl+C</span> →
+            <span class="signal-green">SIGINT</span>
           </div>
           <div class="info-desc">Stop the running program</div>
-          <p>Sends SIGINT (signal interrupt) to the foreground process. Most programs respond by stopping immediately. It's how you cancel a long-running command or exit a program that's stuck.</p>
+          <p>
+            Sends SIGINT (signal interrupt) to the foreground process. Most
+            programs respond by stopping immediately. It's how you cancel a
+            long-running command or exit a program that's stuck.
+          </p>
           <div class="example-box">
-            Example: Running `sleep 100` and pressing Ctrl+C stops it immediately.
+            Example: Running `sleep 100` and pressing Ctrl+C stops it
+            immediately.
           </div>
         </div>
         <div v-else-if="activeSignal === 'SIGTSTP'">
           <div class="info-header">
-            <span class="highlight">Ctrl+Z</span> → <span class="signal-blue">SIGTSTP</span>
+            <span class="highlight">Ctrl+Z</span> →
+            <span class="signal-blue">SIGTSTP</span>
           </div>
           <div class="info-desc">Suspend the running program</div>
-          <p>Sends SIGTSTP (signal terminal stop). The process is paused and put in the background. You can resume it later with `fg` command.</p>
+          <p>
+            Sends SIGTSTP (signal terminal stop). The process is paused and put
+            in the background. You can resume it later with `fg` command.
+          </p>
           <div class="example-box">
-            Example: Pressing Ctrl+Z pauses a running editor like vim, returning you to the shell.
+            Example: Pressing Ctrl+Z pauses a running editor like vim, returning
+            you to the shell.
           </div>
         </div>
         <div v-else>
@@ -74,12 +85,18 @@
           <div class="dots"><span></span><span></span><span></span></div>
         </div>
         <div class="window-content">
-          <div v-for="(line, i) in lines" :key="i" class="term-line" :class="line.type">
+          <div
+            v-for="(line, i) in lines"
+            :key="i"
+            class="term-line"
+            :class="line.type"
+          >
             {{ line.text }}
           </div>
           <div v-if="isRunning" class="term-line output">sleeping...</div>
           <div v-if="inputBuffer" class="term-line input">
-            <span class="prompt">$</span> {{ inputBuffer }}<span class="cursor"></span>
+            <span class="prompt">$</span> {{ inputBuffer
+            }}<span class="cursor"></span>
           </div>
           <div v-else class="term-line input">
             <span class="prompt">$</span> <span class="cursor"></span>
@@ -88,7 +105,9 @@
       </div>
 
       <div class="controls">
-        <button class="btn" @click="runCommand" :disabled="isRunning">Run Command</button>
+        <button class="btn" @click="runCommand" :disabled="isRunning">
+          Run Command
+        </button>
         <button class="btn" @click="sendSignal('SIGINT')">Ctrl+C</button>
         <button class="btn" @click="sendSignal('SIGTSTP')">Ctrl+Z</button>
         <button class="btn secondary" @click="reset">Reset</button>
@@ -97,9 +116,10 @@
       <div class="state-display">
         State: <span :class="stateClass">{{ processState }}</span>
       </div>
-      
+
       <p class="instruction">
-        Click "Run Command" to start a simulated process, then try sending different signals.
+        Click "Run Command" to start a simulated process, then try sending
+        different signals.
       </p>
     </div>
   </div>
@@ -110,9 +130,7 @@ import { ref, computed } from 'vue'
 
 const activeSignal = ref('SIGINT')
 const isRunning = ref(false)
-const lines = ref([
-  { type: 'input', text: '$ sleep 100' }
-])
+const lines = ref([{ type: 'input', text: '$ sleep 100' }])
 const processState = ref('Running')
 const inputBuffer = ref('')
 
@@ -131,7 +149,7 @@ const runCommand = () => {
 
 const sendSignal = (sig) => {
   activeSignal.value = sig
-  
+
   if (!isRunning.value && sig === 'SIGINT') return
 
   if (sig === 'SIGINT') {
@@ -142,7 +160,10 @@ const sendSignal = (sig) => {
   } else if (sig === 'SIGTSTP') {
     lines.value.push({ type: 'output', text: 'sleeping...' })
     lines.value.push({ type: 'control', text: '^Z' })
-    lines.value.push({ type: 'output', text: '[1]+  Stopped                 sleep 100' })
+    lines.value.push({
+      type: 'output',
+      text: '[1]+  Stopped                 sleep 100'
+    })
     isRunning.value = false
     processState.value = 'Process suspended (stopped)'
   }
@@ -161,7 +182,10 @@ reset()
 <style scoped>
 .signals-demo {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 自动适应宽度，不够时换行 */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* 自动适应宽度，不够时换行 */
   gap: 30px;
   background: #09090b;
   padding: 30px;
@@ -237,9 +261,15 @@ reset()
   font-weight: bold;
 }
 
-.highlight { color: #facc15; }
-.signal-green { color: #22c55e; }
-.signal-blue { color: #3b82f6; }
+.highlight {
+  color: #facc15;
+}
+.signal-green {
+  color: #22c55e;
+}
+.signal-blue {
+  color: #3b82f6;
+}
 
 .info-desc {
   color: #a1a1aa;
@@ -271,7 +301,9 @@ reset()
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .window-header {
@@ -300,10 +332,19 @@ reset()
   margin-bottom: 5px;
 }
 
-.control { color: #ef4444; }
-.output { color: #d4d4d8; }
-.input { color: #fff; }
-.prompt { color: #71717a; margin-right: 8px; }
+.control {
+  color: #ef4444;
+}
+.output {
+  color: #d4d4d8;
+}
+.input {
+  color: #fff;
+}
+.prompt {
+  color: #71717a;
+  margin-right: 8px;
+}
 
 .cursor {
   display: inline-block;
@@ -348,9 +389,15 @@ reset()
   margin-top: 10px;
 }
 
-.state-green { color: #22c55e; }
-.state-red { color: #ef4444; }
-.state-blue { color: #3b82f6; }
+.state-green {
+  color: #22c55e;
+}
+.state-red {
+  color: #ef4444;
+}
+.state-blue {
+  color: #3b82f6;
+}
 
 .instruction {
   color: #a1a1aa;

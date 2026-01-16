@@ -1,194 +1,80 @@
+<!--
+  CssBoxModel.vue
+  盒模型速懂：三根滑杆 + 颜色区分，实时显示总宽高、渲染顺序提示和 CSS 片段。
+-->
 <template>
-  <div class="css-box-model">
-    <div class="model-container">
-      <div class="box-display">
-        <div
-          class="margin-box"
-          :style="{
-            padding: margin + 'px',
-            background: '#f3f4f6',
-            display: 'inline-block'
-          }"
-        >
-          <div
-            class="border-box"
-            :style="{
-              padding: borderWidth + 'px',
-              borderStyle: borderStyle,
-              borderColor: borderColor,
-              background: '#e5e7eb',
-              display: 'inline-block'
-            }"
-          >
-            <div
-              class="padding-box"
-              :style="{
-                padding: padding + 'px',
-                background: '#d1d5db',
-                display: 'inline-block'
-              }"
-            >
-              <div
-                class="content-box"
-                :style="{
-                  width: width + 'px',
-                  height: height + 'px',
-                  background: contentColor,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontSize: '14px',
-                  fontWeight: 'bold'
-                }"
-              >
-                {{ width }} × {{ height }}
+  <div class="box-demo">
+    <div class="controls">
+      <div class="control-item">
+        <div class="control-header">
+          <label>Padding (内边距)</label>
+          <span class="val">{{ padding }}px</span>
+        </div>
+        <input type="range" min="0" max="50" v-model.number="padding" />
+      </div>
+      <div class="control-item">
+        <div class="control-header">
+          <label>Border (边框)</label>
+          <span class="val">{{ border }}px</span>
+        </div>
+        <input type="range" min="0" max="30" v-model.number="border" />
+      </div>
+      <div class="control-item">
+        <div class="control-header">
+          <label>Margin (外边距)</label>
+          <span class="val">{{ margin }}px</span>
+        </div>
+        <input type="range" min="0" max="50" v-model.number="margin" />
+      </div>
+    </div>
+
+    <div class="stage-container">
+      <div class="stage-scroll">
+        <div class="layer margin" :style="{ padding: margin + 'px' }">
+          <span class="layer-label" v-if="margin >= 15">Margin</span>
+          <div class="layer border" :style="{ borderWidth: border + 'px' }">
+            <span class="layer-label" v-if="border >= 10">Border</span>
+            <div class="layer padding" :style="{ padding: padding + 'px' }">
+              <span class="layer-label" v-if="padding >= 15">Padding</span>
+              <div class="content">
+                <div class="content-inner">
+                  内容区<br>
+                  {{ contentW }} × {{ contentH }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="controls">
-        <div class="control-group">
-          <label>内容宽度 (Width)</label>
-          <input
-            type="range"
-            v-model.number="width"
-            min="50"
-            max="200"
-            class="slider"
-          />
-          <span class="value">{{ width }}px</span>
-        </div>
-
-        <div class="control-group">
-          <label>内容高度 (Height)</label>
-          <input
-            type="range"
-            v-model.number="height"
-            min="50"
-            max="200"
-            class="slider"
-          />
-          <span class="value">{{ height }}px</span>
-        </div>
-
-        <div class="control-group">
-          <label>内边距 (Padding)</label>
-          <input
-            type="range"
-            v-model.number="padding"
-            min="0"
-            max="50"
-            class="slider"
-          />
-          <span class="value">{{ padding }}px</span>
-        </div>
-
-        <div class="control-group">
-          <label>边框宽度 (Border)</label>
-          <input
-            type="range"
-            v-model.number="borderWidth"
-            min="0"
-            max="20"
-            class="slider"
-          />
-          <span class="value">{{ borderWidth }}px</span>
-        </div>
-
-        <div class="control-group">
-          <label>边框样式 (Style)</label>
-          <select v-model="borderStyle" class="select">
-            <option value="solid">solid (实线)</option>
-            <option value="dashed">dashed (虚线)</option>
-            <option value="dotted">dotted (点线)</option>
-            <option value="double">double (双线)</option>
-          </select>
-        </div>
-
-        <div class="control-group">
-          <label>外边距 (Margin)</label>
-          <input
-            type="range"
-            v-model.number="margin"
-            min="0"
-            max="50"
-            class="slider"
-          />
-          <span class="value">{{ margin }}px</span>
-        </div>
-
-        <div class="control-group">
-          <label>内容颜色</label>
-          <input
-            type="color"
-            v-model="contentColor"
-            class="color-picker"
-          />
-        </div>
-
-        <div class="control-group">
-          <label>边框颜色</label>
-          <input
-            type="color"
-            v-model="borderColor"
-            class="color-picker"
-          />
-        </div>
+    <div class="meta">
+      <div class="meta-row main">
+        <span class="meta-label">总占用宽度：</span>
+        <span class="meta-value">{{ total }}px</span>
       </div>
-
-      <div class="dimensions">
-        <div class="dimension-item">
-          <span class="label">总宽度:</span>
-          <span class="value">{{ totalWidth }}px</span>
+      <div class="meta-detail">
+        <div class="detail-item">
+          <span class="detail-label">渲染顺序</span>
+          <span class="detail-text">内容 → Padding → Border → Margin</span>
         </div>
-        <div class="dimension-item">
-          <span class="label">总高度:</span>
-          <span class="value">{{ totalHeight }}px</span>
-        </div>
-        <div class="calculation">
-          总宽度 = {{ margin }} + {{ borderWidth }} + {{ padding }} + {{ width }} + {{ padding }} + {{ borderWidth }} + {{ margin }}
+        <div class="detail-item">
+          <span class="detail-label">计算公式</span>
+          <span class="detail-text">Margin(×2) + Border(×2) + Padding(×2) + 内容宽</span>
         </div>
       </div>
     </div>
 
-    <div class="code-output">
-      <div class="code-title">💻 实时 CSS 代码</div>
-      <pre><code>.box {
-  /* 内容尺寸 */
-  width: {{ width }}px;
-  height: {{ height }}px;
-
-  /* 内边距 */
-  padding: {{ padding }}px;
-
-  /* 边框 */
-  border: {{ borderWidth }}px {{ borderStyle }} {{ borderColor }};
-
-  /* 外边距 */
-  margin: {{ margin }}px;
-
-  /* 内容背景色 */
-  background-color: {{ contentColor }};
-}
-
-/* 总尺寸计算 */
-/* 总宽度: {{ totalWidth }}px */
-/* 总高度: {{ totalHeight }}px */</code></pre>
-    </div>
-
-    <div class="explanation">
-      <div class="exp-title">📦 CSS 盒模型说明</div>
-      <div class="exp-content">
-        <strong>Content (内容)</strong>：元素的实际内容，通过 width 和 height 设置
-        <br><br>
-        <strong>Padding (内边距)</strong>：内容和边框之间的空间，属于元素内部
-        <br><br>
-        <strong>Border (边框)</strong>：包裹内容的边界线
-        <br><br>
-        <strong>Margin (外边距)</strong>：元素外部的空间，用于分隔其他元素
+    <div class="code-block">
+      <div class="code-title">CSS 代码片段</div>
+      <div class="code-content">
+        <div class="line">.box {</div>
+        <div class="line">  width: {{ contentW }}px;</div>
+        <div class="line">  height: {{ contentH }}px;</div>
+        <div class="line">  padding: {{ padding }}px;</div>
+        <div class="line">  border: {{ border }}px solid #0ea5e9;</div>
+        <div class="line">  margin: {{ margin }}px;</div>
+        <div class="line">}</div>
       </div>
     </div>
   </div>
@@ -197,207 +83,212 @@
 <script setup>
 import { computed, ref } from 'vue'
 
-const width = ref(100)
-const height = ref(100)
+const contentW = 120
+const contentH = 80
 const padding = ref(20)
-const borderWidth = ref(5)
-const borderStyle = ref('solid')
+const border = ref(10)
 const margin = ref(20)
-const contentColor = ref('#3b82f6')
-const borderColor = ref('#1e40af')
 
-const totalWidth = computed(() => {
-  return margin * 2 + borderWidth * 2 + padding * 2 + width
-})
-
-const totalHeight = computed(() => {
-  return margin * 2 + borderWidth * 2 + padding * 2 + height
-})
+const total = computed(() => margin.value * 2 + border.value * 2 + padding.value * 2 + contentW)
 </script>
 
 <style scoped>
-.css-box-model {
+.box-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 12px;
   background: var(--vp-c-bg-soft);
-  margin: 20px 0;
-}
-
-.model-container {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.box-display {
-  min-height: 400px;
+  padding: 24px;
+  margin: 24px 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: repeating-conic-gradient(#f9fafb 0% 25%, #fff 0% 50%) 50% / 20px 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  padding: 20px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
 }
 
-@media (max-width: 768px) {
-  .controls {
-    grid-template-columns: 1fr;
-  }
-}
-
-.control-group {
+.control-item {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.control-group label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-}
-
-.slider {
-  width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--vp-c-divider);
-  outline: none;
-  -webkit-appearance: none;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  cursor: pointer;
-  border: none;
-}
-
-.select {
-  padding: 8px;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  cursor: pointer;
-}
-
-.color-picker {
-  width: 100%;
-  height: 40px;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.value {
-  font-size: 0.8rem;
-  color: var(--vp-c-brand);
-  font-family: monospace;
-  font-weight: 600;
-}
-
-.dimensions {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 15px;
-}
-
-.dimension-item {
+.control-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+  align-items: center;
+  font-size: 13px;
 }
 
-.dimension-item .label {
-  color: var(--vp-c-text-2);
+label { font-weight: 700; color: var(--vp-c-text-1); }
+.val { font-family: var(--vp-font-family-mono); color: var(--vp-c-brand); font-weight: 600; }
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--vp-c-brand);
+  cursor: pointer;
+}
+
+.stage-container {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.stage-scroll {
+  overflow: auto;
+  max-width: 100%;
+  padding: 10px; /* space for scrollbar if needed */
+}
+
+.layer {
+  position: relative;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer-label {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Margin Layer */
+.margin {
+  background-color: #f9fafb; /* gray-50 */
+  border: 1px dashed #d1d5db; /* gray-300 */
+  color: #6b7280;
+}
+.margin > .layer-label { color: #6b7280; }
+
+/* Border Layer */
+.border {
+  background-color: #e0f2fe; /* sky-100 */
+  border-style: solid;
+  border-color: #7dd3fc; /* sky-300 */
+  color: #0284c7;
+}
+.border > .layer-label { color: #0284c7; }
+
+/* Padding Layer */
+.padding {
+  background-color: #dbeafe; /* blue-100 */
+  border: 1px dashed #93c5fd; /* blue-300 */
+  color: #2563eb;
+}
+.padding > .layer-label { color: #2563eb; }
+
+/* Content Box */
+.content {
+  background: var(--vp-c-brand);
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  width: 120px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.content-inner {
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.meta-row.main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
   font-weight: 600;
 }
 
-.dimension-item .value {
-  color: var(--vp-c-brand);
-  font-family: monospace;
+.meta-value { color: var(--vp-c-brand); }
+
+.meta-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.calculation {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--vp-c-divider);
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  font-family: monospace;
+.detail-item {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  align-items: flex-start;
 }
 
-.code-output {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-left: 4px solid var(--vp-c-brand);
+.detail-label {
+  color: var(--vp-c-text-2);
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.detail-text {
+  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-family-mono);
+}
+
+.code-block {
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 16px;
 }
 
 .code-title {
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
 }
 
-pre {
-  background: #1e1e1e;
-  border-radius: 6px;
-  padding: 15px;
+.code-content {
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
   overflow-x: auto;
-}
-
-code {
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.85rem;
-  color: #d4d4d4;
   line-height: 1.6;
 }
 
-.explanation {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  border-left: 4px solid var(--vp-c-brand);
-}
-
-.exp-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
-}
-
-.exp-content {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.8;
+.line {
+  white-space: pre;
 }
 </style>

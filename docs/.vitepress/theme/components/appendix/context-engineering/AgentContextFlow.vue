@@ -92,9 +92,7 @@
       <div class="metric-card">
         <div class="metric-title">上下文长度</div>
         <div class="metric-value">{{ contextTokens }}</div>
-        <div class="metric-desc">
-          迭代: {{ iteration }} 步
-        </div>
+        <div class="metric-desc">迭代: {{ iteration }} 步</div>
       </div>
 
       <div class="metric-card">
@@ -118,7 +116,7 @@
           <div class="principle-icon">1️⃣</div>
           <div class="principle-content">
             <strong>保持前缀稳定</strong>
-            <br>
+            <br />
             系统提示和工具定义不要频繁变化，提高 KV 缓存命中率
           </div>
         </div>
@@ -126,7 +124,7 @@
           <div class="principle-icon">2️⃣</div>
           <div class="principle-content">
             <strong>只追加不修改</strong>
-            <br>
+            <br />
             上下文应该只追加新的动作和观察，不修改历史内容
           </div>
         </div>
@@ -134,7 +132,7 @@
           <div class="principle-icon">3️⃣</div>
           <div class="principle-content">
             <strong>遮蔽而非移除</strong>
-            <br>
+            <br />
             不动态添加/删除工具，而是通过 logits 掩码控制可用工具
           </div>
         </div>
@@ -142,7 +140,7 @@
           <div class="principle-icon">4️⃣</div>
           <div class="principle-content">
             <strong>文件系统作为外部记忆</strong>
-            <br>
+            <br />
             大型内容（网页、PDF）写入文件，上下文只保留路径
           </div>
         </div>
@@ -166,9 +164,27 @@ const observation = ref('')
 const toolsUsed = ref([])
 
 const contextItems = ref([
-  { type: '系统提示', content: '你是一个 AI 助手，可以使用搜索和文件工具', tokens: 150, cached: true, active: false },
-  { type: '工具定义', content: 'search: 搜索网络信息', tokens: 80, cached: true, active: false },
-  { type: '工具定义', content: 'write_file: 写入文件', tokens: 75, cached: true, active: false }
+  {
+    type: '系统提示',
+    content: '你是一个 AI 助手，可以使用搜索和文件工具',
+    tokens: 150,
+    cached: true,
+    active: false
+  },
+  {
+    type: '工具定义',
+    content: 'search: 搜索网络信息',
+    tokens: 80,
+    cached: true,
+    active: false
+  },
+  {
+    type: '工具定义',
+    content: 'write_file: 写入文件',
+    tokens: 75,
+    cached: true,
+    active: false
+  }
 ])
 
 const steps = [
@@ -177,7 +193,8 @@ const steps = [
     action: '分析用户需求',
     tool: '',
     obs: '',
-    explanation: 'Agent 首先解析用户的请求，决定需要采取什么行动。系统提示和工具定义从缓存读取（绿色），节省成本！',
+    explanation:
+      'Agent 首先解析用户的请求，决定需要采取什么行动。系统提示和工具定义从缓存读取（绿色），节省成本！',
     addTokens: 50
   },
   {
@@ -185,7 +202,8 @@ const steps = [
     action: '选择工具: search',
     tool: 'search',
     obs: '',
-    explanation: 'Agent 根据用户需求选择合适的工具。注意：工具定义在缓存中，不需要重新计算！',
+    explanation:
+      'Agent 根据用户需求选择合适的工具。注意：工具定义在缓存中，不需要重新计算！',
     addTokens: 30
   },
   {
@@ -201,7 +219,8 @@ const steps = [
     action: '决定保存摘要',
     tool: 'write_file',
     obs: '文件已保存',
-    explanation: 'Agent 将搜索结果写入文件，而不是在上下文中保留所有内容。这样上下文保持精简！',
+    explanation:
+      'Agent 将搜索结果写入文件，而不是在上下文中保留所有内容。这样上下文保持精简！',
     addTokens: 60
   },
   {
@@ -209,13 +228,16 @@ const steps = [
     action: '完成任务',
     tool: '',
     obs: '已保存到 summary.md',
-    explanation: '任务完成！整个过程中，系统提示和工具定义只缓存一次，每次迭代只追加新的动作和观察结果。',
+    explanation:
+      '任务完成！整个过程中，系统提示和工具定义只缓存一次，每次迭代只追加新的动作和观察结果。',
     addTokens: 40
   }
 ]
 
 const cacheHitRate = computed(() => {
-  const cachedTokens = contextItems.value.filter(item => item.cached).reduce((sum, item) => sum + item.tokens, 0)
+  const cachedTokens = contextItems.value
+    .filter((item) => item.cached)
+    .reduce((sum, item) => sum + item.tokens, 0)
   const totalTokens = contextTokens.value
   return totalTokens > 0 ? ((cachedTokens / totalTokens) * 100).toFixed(1) : 0
 })
@@ -292,9 +314,27 @@ const reset = () => {
   observation.value = ''
   toolsUsed.value = []
   contextItems.value = [
-    { type: '系统提示', content: '你是一个 AI 助手，可以使用搜索和文件工具', tokens: 150, cached: true, active: false },
-    { type: '工具定义', content: 'search: 搜索网络信息', tokens: 80, cached: true, active: false },
-    { type: '工具定义', content: 'write_file: 写入文件', tokens: 75, cached: true, active: false }
+    {
+      type: '系统提示',
+      content: '你是一个 AI 助手，可以使用搜索和文件工具',
+      tokens: 150,
+      cached: true,
+      active: false
+    },
+    {
+      type: '工具定义',
+      content: 'search: 搜索网络信息',
+      tokens: 80,
+      cached: true,
+      active: false
+    },
+    {
+      type: '工具定义',
+      content: 'write_file: 写入文件',
+      tokens: 75,
+      cached: true,
+      active: false
+    }
   ]
 }
 </script>

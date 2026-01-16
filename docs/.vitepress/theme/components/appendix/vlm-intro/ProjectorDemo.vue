@@ -5,16 +5,10 @@
 <template>
   <div class="projector-demo">
     <div class="mode-switch">
-      <button 
-        :class="{ active: mode === 'linear' }"
-        @click="mode = 'linear'"
-      >
+      <button :class="{ active: mode === 'linear' }" @click="mode = 'linear'">
         Linear (LLaVA)
       </button>
-      <button 
-        :class="{ active: mode === 'qformer' }"
-        @click="mode = 'qformer'"
-      >
+      <button :class="{ active: mode === 'qformer' }" @click="mode = 'qformer'">
         Q-Former (BLIP-2)
       </button>
     </div>
@@ -26,14 +20,18 @@
         <div class="token-container input">
           <div v-for="n in 16" :key="n" class="token visual"></div>
         </div>
-        <div class="count">{{ mode === 'linear' ? '256 Tokens' : '256 Tokens' }}</div>
+        <div class="count">
+          {{ mode === 'linear' ? '256 Tokens' : '256 Tokens' }}
+        </div>
       </div>
 
       <!-- Process: The Projector -->
       <div class="stage connector">
         <div class="arrow-line"></div>
         <div class="projector-box" :class="mode">
-          <div class="title">{{ mode === 'linear' ? 'Linear Layer' : 'Q-Former' }}</div>
+          <div class="title">
+            {{ mode === 'linear' ? 'Linear Layer' : 'Q-Former' }}
+          </div>
           <div class="desc">
             {{ mode === 'linear' ? '直接映射 (1:1)' : '查询提取 (N:M)' }}
           </div>
@@ -50,26 +48,32 @@
       <div class="stage">
         <div class="label">LLM Tokens</div>
         <div class="token-container output">
-          <div 
-            v-for="n in (mode === 'linear' ? 16 : 4)" 
-            :key="n" 
+          <div
+            v-for="n in mode === 'linear' ? 16 : 4"
+            :key="n"
             class="token llm"
           ></div>
         </div>
         <div class="count">
-          {{ mode === 'linear' ? '256 Tokens (保留全部细节)' : '32 Tokens (只保留关键信息)' }}
+          {{
+            mode === 'linear'
+              ? '256 Tokens (保留全部细节)'
+              : '32 Tokens (只保留关键信息)'
+          }}
         </div>
       </div>
     </div>
 
     <div class="explanation">
       <div v-if="mode === 'linear'">
-        <strong>Linear Projector:</strong> 
-        简单高效。它像一个直译器，保留了所有的视觉信息，虽然 Token 数量多（计算量大），但对细节的把控更好。
+        <strong>Linear Projector:</strong>
+        简单高效。它像一个直译器，保留了所有的视觉信息，虽然 Token
+        数量多（计算量大），但对细节的把控更好。
       </div>
       <div v-else>
-        <strong>Q-Former:</strong> 
-        精细优雅。它使用一组“查询向量”主动去图像中提取与文本相关的信息。大大压缩了 Token 数量，让 LLM 跑得更快。
+        <strong>Q-Former:</strong>
+        精细优雅。它使用一组“查询向量”主动去图像中提取与文本相关的信息。大大压缩了
+        Token 数量，让 LLM 跑得更快。
       </div>
     </div>
   </div>
@@ -231,11 +235,20 @@ const mode = ref('linear')
   animation: pulse 1s infinite;
 }
 
-.dot:nth-child(2) { animation-delay: 0.2s; }
-.dot:nth-child(3) { animation-delay: 0.4s; }
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 </style>

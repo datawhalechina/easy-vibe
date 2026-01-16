@@ -1,722 +1,258 @@
-# 部署与上线
+# 部署与上线 (Deployment & Release)
 
-> 💡 **学习指南**：开发完成只是第一步，让应用真正服务于用户还需要部署和上线。本章节将带你了解域名、服务器、CDN 等核心概念，并掌握现代 Web 应用的部署流程。
+> 💡 **学习指南**：本章节不讲复杂的服务器运维，而是通过“交互式体验”，带你从零看懂一个网站是如何从你的电脑“跑”到用户手机里的。
 
-## 0. 部署架构概览
+## 0. 全局概览：一个请求的“奇幻漂流”
 
-让我们先通过可视化演示，了解现代 Web 应用的部署架构：
+你有没有想过，当你在浏览器输入网址并回车的那一瞬间，到底发生了什么？
+其实，这就像是一次**快递配送**的过程。
+
+不过，根据你要“送”的东西不同，配送路线也会稍微有点不一样。
+
+**为什么会有这些区别呢？**
+就像在现实生活中，不同的东西有不同的送法：
+
+1.  **发传单（静态网页）**：
+    *   *场景*：公司的介绍页、博客文章。
+    *   *特点*：内容是**死**的，印好了就不变了。
+    *   *做法*：直接把“传单”贴在离用户最近的宣传栏（CDN）上。谁来看都一样，速度最快，成本最低。
+
+2.  **送乐高积木（SPA 单页应用）**：
+    *   *场景*：类似飞书、Notion 这种复杂的网页软件。
+    *   *特点*：交互特别多，像个**软件**。
+    *   *做法*：先给你寄一个“空盒子”和一大堆“零件”（JS代码），你的浏览器收到后，自己在本地把页面“拼”出来。
+    *   *好处*：一旦加载完，点哪里都很快，因为不需要再找服务器要页面了，只需要要数据。
+
+3.  **送热披萨（SSR 服务端渲染）**：
+    *   *场景*：股票大盘、新闻头条、个性化推荐。
+    *   *特点*：数据**实时变动**，或者需要**千人千面**。
+    *   *做法*：必须在用户下单的那一秒，由办事员（服务器）现场查数据、现场组装好页面，再热乎乎地交给你。
+    *   *好处*：数据绝对新鲜，而且搜索引擎（爬虫）最喜欢这种完整的页面。
+
+下面这个互动图，带你体验这三种不同的“配送路线”：
 
 <DeploymentArchitecture />
 
-## 1. 域名 (Domain Name)
+不管你选择哪种模式，一个**完整的请求**通常都要经过以下这些关卡。
+让我们看看它们都是干什么的，以及**为什么**我们缺不了它们：
 
-### 1.1 什么是域名？
+1.  **用户 (User) —— 寄件人**
+    *   *动作*：在浏览器输入网址，回车。
+    *   *人话*：就像是你发出了一个“我想看网页”的请求包裹。
 
-**域名** 是互联网上识别和定位计算机的层次结构式字符标识。
+2.  **DNS (域名解析) —— 查号台**
+    *   *为什么需要？* 电脑只认识数字（IP地址），人脑只记得住单词（域名）。
+    *   *人话*：它负责告诉你“baidu.com”这个名字对应的**门牌号 (IP地址)** 到底是哪一家。
 
-**域名组成**：
+3.  **CDN (内容分发) —— 家门口的快递柜**
+    *   *为什么需要？* 服务器可能在地球另一边，传一张图片过来太慢了。
+    *   *人话*：如果你要的东西（图片、视频）在楼下的快递柜（CDN节点）里正好有备份，直接给你，**不用跑远路**去总仓库取。
 
-```
-www.example.com
-│   │     │
-│   │     └─ 顶级域名 (TLD)
-│   └─────── 二级域名
-└─────────── 三级域名 (子域名)
-```
+4.  **WAF (防火墙) —— 小区保安**
+    *   *为什么需要？* 互联网上有很多坏人（黑客）想搞破坏。
+    *   *人话*：它站在门口，把带炸弹的、发传单的（恶意攻击）都**拦在外面**，只让正常的客人进去。
 
-**常见顶级域名**：
+5.  **LB (负载均衡) —— 大堂经理**
+    *   *为什么需要？* 访问的人太多了，一台服务器累死也干不完。
+    *   *人话*：它看着后面开着的 10 个窗口（服务器），把你引导到那个**最空闲**的窗口去办理业务，不让你干等。
 
-| 类型 | 域名 | 用途 |
-|------|------|------|
-| 通用 | `.com` | 商业机构 |
-| 通用 | `.org` | 非营利组织 |
-| 通用 | `.net` | 网络服务 |
-| 国家 | `.cn` | 中国 |
-| 国家 | `.us` | 美国 |
-| 国家 | `.jp` | 日本 |
-| 新通用 | `.io` | 科技初创 |
-| 新通用 | `.ai` | 人工智能 |
+6.  **Server (服务器) —— 办事员**
+    *   *为什么需要？* 总得有人真正干活，处理你的订单、计算金额。
+    *   *人话*：他是真正**处理业务**的人，负责把网页内容拼好，或者把数据算出来给你。
 
-### 1.2 域名注册
+7.  **DB (数据库) —— 档案室**
+    *   *为什么需要？* 办事员脑子记不住那么多数据，而且断电了不能忘。
+    *   *人话*：这里**永久保存**着你的账号、密码、历史订单等核心机密数据。
 
-**注册流程**：
+弄懂了这个流程，部署就不难了。部署无非就是把这些环节一个个打通。
 
-1. **选择域名**
-   - 简短易记
-   - 避免特殊字符
-   - 选择合适的后缀
+---
 
-2. **选择注册商**
-   - **国外**：GoDaddy、Namecheap、Google Domains
-   - **国内**：阿里云、腾讯云、Cloudflare
+## 1. 域名与 DNS：给你的网站起个名
 
-3. **注册域名**
-   - 查询可用性
-   - 添加到购物车
-   - 填写信息并支付
+你想让别人访问你的网站，总不能给人家一串冷冰冰的数字（IP 地址：`123.45.67.89`）吧？
+你需要一个好记的名字，比如 `my-cool-site.com`。这就是**域名**。
 
-4. **配置 DNS**
-   - 设置域名服务器
-   - 添加 DNS 记录
+而 **DNS**，就是负责把这个“好记的名字”翻译成“机器能懂的 IP”的系统。
 
-**价格参考**：
-- `.com`：$10-15/年
-- `.cn`：￥30-50/年
-- `.io`：$30-50/年
+### 1.1 常见的记录类型
 
-### 1.3 DNS 解析
+在配置域名时，你会看到很多选项，别晕，最常用的就这俩：
 
-**DNS 记录类型**：
+- **A 记录**：最直接的。告诉 DNS，“`my-site.com` 的 IP 是 `1.2.3.4`”。
+- **CNAME 记录**：起别名。告诉 DNS，“`www.my-site.com` 也就是 `my-site.com`”。这在接入 CDN 时特别常用。
 
-**A 记录**（地址记录）：
-```
-example.com    A    1.2.3.4
-www.example.com A    1.2.3.4
-```
+### 1.2 避坑指南
 
-**CNAME 记录**（别名记录）：
-```
-www.example.com    CNAME    example.com
-blog.example.com   CNAME    example.wordpress.com
-```
+- **生效慢**：DNS 修改不是立即生效的，全球同步可能需要几分钟到几小时（受 TTL 影响）。
+- **配错了**：如果不小心配错了 IP，用户就真的找不到你了。
 
-**MX 记录**（邮件服务器）：
-```
-example.com    MX    10 mail.example.com
-```
+<DnsFlowDemo />
 
-**TXT 记录**（文本记录）：
-```
-example.com    TXT    "v=spf1 include:_spf.google.com ~all"
-```
+---
 
-**配置示例**（阿里云 DNS）：
+## 2. 服务器：你的网站“住”在哪？
 
-| 主机记录 | 记录类型 | 记录值 | TTL |
-|----------|----------|--------|-----|
-| @ | A | 1.2.3.4 | 600 |
-| www | A | 1.2.3.4 | 600 |
-| @ | CNAME | example.com | 600 |
+代码写好了，得找个地方跑起来。这个地方就是**服务器**。
+你可以把它想象成一台**永不关机、连着公网的电脑**。
 
-### 1.4 域名生效时间
+### 2.1 怎么选配置？
 
-- **全球生效**：24-48 小时
-- **本地生效**：修改后几分钟
-- **加速生效**：清除本地 DNS 缓存
+新手最容易犯两个错：
+1.  **买太小**：1核1G 的机器，跑个 Hello World 还行，稍微装点东西就卡死。
+2.  **买太大**：一上来就买 8核16G，结果每天只有 10 个人访问，纯属浪费钱。
+
+**建议**：先买个入门款（比如 2核4G），不够了再随时升级。云服务器的好处就是可以弹性伸缩。
+
+### 2.2 最小上云脚本 (Ubuntu)
+
+买好服务器后，通常是空的。你需要装一些基础软件。
+把下面这段话复制到服务器终端里运行，就能装好 Nginx（Web服务器）和 Node.js（运行环境）：
 
 ```bash
-# 清除 DNS 缓存
-# Windows
-ipconfig /flushdns
+# 1. 更新系统软件库
+sudo apt update && sudo apt upgrade -y
 
-# macOS
-sudo dscacheutil -flushcache
-
-# Linux
-sudo systemd-resolve --flush-caches
-```
-
-## 2. 服务器 (Server)
-
-### 2.1 什么是服务器？
-
-**服务器** 是提供计算服务的设备，响应客户端的请求。
-
-**服务器类型**：
-
-**物理服务器**：
-- 整机独享
-- 性能强大
-- 价格昂贵
-- 需要运维
-
-**虚拟专用服务器 (VPS)**：
-- 虚拟化技术
-- 独立环境
-- 价格适中
-- 常见选择
-
-**云服务器**：
-- 弹性扩展
-- 按需付费
-- 高可用性
-- 易于管理
-
-**容器服务器**：
-- 轻量级
-- 快速部署
-- 易于迁移
-- 现代化
-
-### 2.2 主流云服务商
-
-**国际**：
-
-| 服务商 | 产品 | 优势 | 价格 |
-|--------|------|------|------|
-| AWS | EC2 | 功能全面、稳定 | $5-100/月 |
-| Google Cloud | Compute Engine | 技术先进 | $6-100/月 |
-| DigitalOcean | Droplet | 简单易用 | $4-48/月 |
-| Linode | Linode | 性价比高 | $5-80/月 |
-| Vultr | Vultr | 全球节点 | $2.5-40/月 |
-
-**国内**：
-
-| 服务商 | 产品 | 优势 | 价格 |
-|--------|------|------|------|
-| 阿里云 | ECS | 功能完善 | ￥60-500/月 |
-| 腾讯云 | CVM | 稳定可靠 | ￥50-400/月 |
-| 华为云 | ECS | 企业级 | ￥50-300/月 |
-
-### 2.3 服务器选择
-
-**根据流量选择**：
-
-- **个人博客**：1核1G，$5/月
-- **小型应用**：1核2G，$10/月
-- **中型应用**：2核4G，$20/月
-- **大型应用**：4核8G，$40/月
-
-**根据地区选择**：
-
-- **目标用户在国内**：阿里云、腾讯云
-- **目标用户在国外**：AWS、DigitalOcean
-- **全球用户**：Cloudflare + 多节点
-
-### 2.4 服务器配置
-
-**基础配置**（Ubuntu）：
-
-```bash
-# 1. 更新系统
-sudo apt update
-sudo apt upgrade -y
-
-# 2. 安装必要软件
+# 2. 安装 Nginx (Web服务器) 和 Git (拉代码用)
 sudo apt install -y nginx git curl
 
-# 3. 安装 Node.js
+# 3. 安装 Node.js (这里选了版本 18)
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 
-# 4. 安装 PM2（进程管理器）
-sudo npm install -g pm2
-
-# 5. 配置防火墙
-sudo ufw allow OpenSSH
-sudo ufw allow 'Nginx Full'
-sudo ufw enable
+# 4. 安装 PM2 (这是个好东西，能帮你把网站进程“守”住，崩溃了自动重启)
+sudo npm i -g pm2
 ```
 
-**Nginx 配置**：
+<ServerSizerDemo />
 
-```nginx
-# /etc/nginx/sites-available/example.com
-server {
-    listen 80;
-    server_name example.com www.example.com;
+---
 
-    root /var/www/html;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    # API 代理
-    location /api {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
+## 3. HTTPS：给传输管道“加个盖”
 
-**启用配置**：
+以前的网站（HTTP），数据是在网线上“裸奔”的。谁要是拿个工具在中间截获一下，你的密码、聊天记录全都被看见了。
+现在的标准是 **HTTPS**，多出来的这个 **S** 就是 **Secure (安全)**。它给数据加了一层加密壳，别人截获了也看不懂。
 
-```bash
-# 创建软链接
-sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+### 3.1 反向代理 (Reverse Proxy)
 
-# 测试配置
-sudo nginx -t
+这是个听起来很高级，其实很简单的概念。
+你的 Node.js 程序跑在 `3000` 端口，但用户习惯访问 `80` (HTTP) 或 `443` (HTTPS) 端口。
+你不能让用户自己在网址后面输 `:3000` 吧？
 
-# 重启 Nginx
-sudo systemctl restart nginx
-```
+这时候就需要 **Nginx** 出场了。它守在 `80/443` 端口，把用户的请求“接”进来，再“转”给你的 `3000` 端口程序。这就叫**反向代理**。
 
-### 2.5 SSL 证书
+### 3.2 怎么搞定 HTTPS？
 
-**使用 Let's Encrypt 免费证书**：
+不用花钱买证书！现在有免费的工具叫 **Certbot**。
+它能自动帮你申请证书，还自动帮你改 Nginx 配置。
 
-```bash
-# 安装 Certbot
-sudo apt install certbot python3-certbot-nginx
+<HttpsNginxDemo />
 
-# 获取证书
-sudo certbot --nginx -d example.com -d www.example.com
+---
 
-# 自动续期
-sudo certbot renew --dry-run
-```
+## 4. CDN：让网站“飞”到用户家门口
 
-**配置示例**：
+如果你的服务器在**北京**，而用户在**纽约**。
+每一次请求都要跨越半个地球，光是光纤传输就要好几百毫秒，肯定慢。
 
-```nginx
-server {
-    listen 443 ssl;
-    server_name example.com www.example.com;
+**CDN (内容分发网络)** 就是解决这个问题的。
+它在全球各地建了无数个“小仓库”。当你把图片、CSS、JS 文件放到 CDN 上：
+- 北京用户访问，CDN 就近从北京节点给他。
+- 纽约用户访问，CDN 就近从纽约节点给他。
 
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+**结果**：你的服务器轻松了（流量少了），用户也爽了（速度快了）。
 
-    # SSL 配置
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
-}
-
-# HTTP 重定向到 HTTPS
-server {
-    listen 80;
-    server_name example.com www.example.com;
-    return 301 https://$host$request_uri;
-}
-```
+<CdnCacheDemo />
 
-## 3. CDN (内容分发网络)
+---
 
-### 3.1 什么是 CDN？
+## 5. CI/CD：告别“手工搬砖”
 
-**CDN (Content Delivery Network)** 内容分发网络，通过将内容缓存到全球各地的边缘节点，让用户就近访问。
+以前发布网站是这样的：
+1.  在本地改代码。
+2.  用 FTP 软件把文件上传到服务器。
+3.  SSH 连上去重启服务。
+4.  哎呀，上传漏了一个文件，报错了！赶紧修...
 
-**CDN 工作原理**：
+这太累，而且容易出错。
+现在我们用 **CI/CD (持续集成/持续部署)**。
 
-```
-用户请求 → DNS 解析 → 就近 CDN 节点
-                        ↓
-                   缓存命中？返回内容
-                        ↓ 否
-                   回源获取 → 缓存并返回
-```
+### 5.1 它是怎么工作的？
 
-### 3.2 CDN 的优势
+你只需要做一件事：**把代码推送到 Git 仓库**。
+剩下的事情，流水线（Pipeline）自动帮你做：
+1.  **检测**：自动发现有新代码了。
+2.  **安装**：自动在新环境里装依赖 (`npm install`)。
+3.  **构建**：自动打包 (`npm run build`)。
+4.  **部署**：自动把打好的包发到服务器，并重启服务。
 
-**加速访问**：
-- 就近节点响应快
-- 减少网络延迟
-- 提升用户体验
+如果中间任何一步出错了（比如测试没过），它会立刻停下来报警，绝不会把烂代码发到线上。
 
-**减轻源站压力**：
-- 静态资源由 CDN 承载
-- 减少源站带宽
-- 降低服务器负载
-
-**提高可用性**：
-- 节点故障自动切换
-- 防御 DDoS 攻击
-- 提高容灾能力
-
-**节省成本**：
-- CDN 流量费用低
-- 减少源站带宽成本
-
-### 3.3 主流 CDN 服务商
+<CicdPipelineDemo />
 
-**国际**：
+### 5.2 进阶：如何“丝滑”回滚？
 
-| 服务商 | 免费额度 | 付费价格 | 特点 |
-|--------|----------|----------|------|
-| Cloudflare | 无限制 | $0-20/月 | 全球节点、免费 SSL |
-| AWS CloudFront | 1TB/年 | $0.085/GB | 功能强大 |
-| Google Cloud CDN | 无 | $0.08/GB | 全球网络 |
-| BunnyCDN | 1TB/月 | $1/TB | 性价比高 |
+万一新版本上线后发现有重大 Bug，怎么办？
+**蓝绿部署** 或 **滚动更新** 可以帮你。简单说，就是新老版本共存一小会儿，没问题了再全切过去。有问题？一键切回老版本，用户甚至感觉不到。
 
-**国内**：
+<RollbackSwitchDemo />
 
-| 服务商 | 价格 | 特点 |
-|--------|------|------|
-| 阿里云 CDN | ￥0.24/GB | 节点多、稳定 |
-| 腾讯云 CDN | ￥0.21/GB | 价格优惠 |
-| 七牛云 | ￥0.29/GB | 存储集成 |
+---
 
-### 3.4 CDN 配置
+## 6. 监控与备份：做个“心里有数”的管理员
 
-**Cloudflare 配置步骤**：
+网站上线了，不是结束，只是开始。
+你不能等用户打电话骂你“网站打不开了”，你才知道出事了。
 
-1. **添加站点**
-   - 输入域名
-   - 选择免费计划
-   - 扫描 DNS 记录
+### 6.1 监控 (Observability)
 
-2. **切换域名服务器**
-   - Cloudflare 提供两个 NS 记录
-   - 在域名注册商处修改
-   - 等待生效（2-24 小时）
+你需要给服务器装上“摄像头”和“报警器”：
+- **日志 (Logs)**：记录程序运行的每一句话。报错了查日志，一查一个准。
+- **指标 (Metrics)**：CPU 用了多少？内存剩多少？QPS（每秒请求数）是多少？
+- **告警 (Alerts)**：当 CPU 飙到 90%，或者错误率突然升高时，直接发短信/钉钉告诉你。
 
-3. **配置缓存规则**
-   - 缓存静态资源（CSS、JS、图片）
-   - 不缓存 HTML 和 API
-   - 设置缓存时间
+### 6.2 备份 (Backup)
 
-4. **开启 HTTPS**
-   - Full 模式（推荐）
-   - 自动 SSL 证书
-   - 强制 HTTPS
+**数据是无价的**。
+一定要设置**自动备份**。哪怕服务器炸了、被黑客删库了，只要有备份，你就能在半小时内“起死回生”。
 
-**Nginx 缓存配置**：
+<ObservabilityBackupDemo />
 
-```nginx
-# 设置缓存头部
-location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
-    expires 1y;
-    add_header Cache-Control "public, immutable";
-}
+---
 
-location / {
-    add_header Cache-Control "no-cache";
-}
-```
+## 7. 遇到问题怎么办？(故障速查)
 
-### 3.5 CDN 最佳实践
+别慌，按这个表排查：
 
-**缓存策略**：
+| 现象 | 可能原因 | 怎么办？ |
+| :--- | :--- | :--- |
+| **打不开网站** | 域名没解析好？服务器挂了？防火墙拦住了？ | 1. `ping 域名` 看看通不通。<br>2. 检查云厂商防火墙是不是没开 80/443 端口。 |
+| **HTTPS 报错** | 证书过期了？没配置好？ | 运行 `certbot renew` 试着续期一下。 |
+| **改了没生效** | 浏览器缓存？CDN 缓存？ | 强制刷新浏览器 (Ctrl+F5)；去 CDN 控制台点“刷新缓存”。 |
+| **发布失败** | 依赖装不上？代码写错了？ | 去看 CI/CD 的日志，最后几行通常就是原因。 |
 
-- **静态资源**：图片、CSS、JS → 长期缓存（1 年）
-- **HTML 文件**：短期缓存或不缓存
-- **API 响应**：根据业务设置缓存时间
-- **用户特定内容**：不缓存
+---
 
-**缓存清除**：
+## 8. 名词速查表 (Glossary)
 
-```bash
-# Cloudflare API
-curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/purge_cache" \
-  -H "Authorization: Bearer token" \
-  -H "Content-Type: application/json" \
-  --data '{"files":["https://example.com/style.css"]}'
-```
+| 缩写 | 全称 | 人话解释 |
+| :--- | :--- | :--- |
+| **DNS** | Domain Name System | **域名解析**。把网址变成 IP。 |
+| **CDN** | Content Delivery Network | **加速网络**。把资源存到离用户最近的地方。 |
+| **HTTPS** | HyperText Transfer Protocol Secure | **安全协议**。给数据传输加把锁。 |
+| **CI/CD** | Continuous Integration / Deployment | **自动发布**。提交代码后自动跑完测试和上线流程。 |
+| **PM2** | Process Manager 2 | **进程管家**。Node.js 的保姆，负责让程序一直跑着。 |
 
-## 4. 部署流程
+---
 
-### 4.1 部署方式
+## 9. 上线前的最后检查 (Checklist)
 
-**传统部署**：
-- 手动上传代码
-- SSH 登录服务器
-- 执行部署脚本
-- 重启服务
+在按下“发布”按钮前，心里默念一遍：
 
-**CI/CD 部署**：
-- 代码推送到 Git
-- 自动触发构建
-- 自动运行测试
-- 自动部署到服务器
+- [ ] **域名**：解析通了吗？IP 对吗？
+- [ ] **安全**：HTTPS 绿锁有了吗？
+- [ ] **加速**：CDN 配好了吗？静态资源快吗？
+- [ ] **流程**：自动发布跑通了吗？能一键回滚吗？
+- [ ] **后路**：监控报警开了吗？数据库备份了吗？
 
-**容器化部署**：
-- Docker 打包应用
-- 推送到镜像仓库
-- 服务器拉取镜像
-- 运行容器
-
-### 4.2 Docker 部署
-
-**Dockerfile**：
-
-```dockerfile
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci --only=production
-
-COPY . .
-RUN npm run build
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
-```
-
-**构建和运行**：
-
-```bash
-# 构建镜像
-docker build -t myapp:1.0 .
-
-# 运行容器
-docker run -d -p 3000:3000 --name myapp myapp:1.0
-
-# 查看日志
-docker logs -f myapp
-
-# 停止容器
-docker stop myapp
-```
-
-**Docker Compose**：
-
-```yaml
-version: '3.8'
-
-services:
-  web:
-    build: .
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=production
-    restart: always
-
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./ssl:/etc/nginx/ssl
-    depends_on:
-      - web
-    restart: always
-```
-
-### 4.3 CI/CD 配置
-
-**GitHub Actions 示例**：
-
-```yaml
-name: Deploy
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run tests
-        run: npm test
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /var/www/myapp
-            git pull
-            npm ci --production
-            npm run build
-            pm2 restart myapp
-```
-
-## 5. 监控和运维
-
-### 5.1 日志管理
-
-**应用日志**：
-
-```bash
-# PM2 日志
-pm2 logs myapp
-
-# Nginx 日志
-tail -f /var/log/nginx/access.log
-tail -f /var/log/nginx/error.log
-```
-
-**日志分析**：
-
-```bash
-# 统计访问量
-awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -rn | head -10
-
-# 统计状态码
-awk '{print $9}' /var/log/nginx/access.log | sort | uniq -c | sort -rn
-```
-
-### 5.2 性能监控
-
-**系统监控**：
-
-```bash
-# CPU 使用率
-top
-
-# 内存使用
-free -h
-
-# 磁盘使用
-df -h
-
-# 网络流量
-iftop
-```
-
-**应用监控工具**：
-
-- **PM2**：进程管理和监控
-- **New Relic**：应用性能监控
-- **Datadog**：基础设施监控
-- **Prometheus + Grafana**：开源监控方案
-
-### 5.3 自动备份
-
-**数据库备份脚本**：
-
-```bash
-#!/bin/bash
-# backup.sh
-
-DATE=$(date +%Y%m%d_%H%M%S)
-BACKUP_DIR="/var/backups"
-DB_NAME="myapp"
-DB_USER="root"
-DB_PASS="password"
-
-# 备份数据库
-mysqldump -u $DB_USER -p$DB_PASS $DB_NAME > $BACKUP_DIR/db_$DATE.sql
-
-# 压缩备份
-gzip $BACKUP_DIR/db_$DATE.sql
-
-# 删除 7 天前的备份
-find $BACKUP_DIR -name "db_*.sql.gz" -mtime +7 -delete
-
-echo "Backup completed: db_$DATE.sql.gz"
-```
-
-**定时任务**：
-
-```bash
-# 添加到 crontab
-crontab -e
-
-# 每天凌晨 2 点执行备份
-0 2 * * * /path/to/backup.sh
-```
-
-## 6. 常见问题
-
-### 6.1 网站无法访问
-
-**排查步骤**：
-
-1. **检查域名**
-   ```bash
-   nslookup example.com
-   ping example.com
-   ```
-
-2. **检查服务器**
-   ```bash
-   ping 1.2.3.4
-   ```
-
-3. **检查 Web 服务**
-   ```bash
-   systemctl status nginx
-   ```
-
-4. **检查防火墙**
-   ```bash
-   sudo ufw status
-   ```
-
-### 6.2 HTTPS 不生效
-
-**常见原因**：
-
-- 证书过期：续期证书
-- 配置错误：检查 Nginx 配置
-- 端口未开放：开放 443 端口
-- DNS 未生效：等待 DNS 传播
-
-### 6.3 CDN 缓存问题
-
-**解决方法**：
-
-```bash
-# 清除 Cloudflare 缓存
-# Dashboard → Caching → Purge Everything
-
-# 或使用 API
-curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/purge_cache" \
-  -H "Authorization: Bearer token" \
-  --data '{"purge_everything":true}'
-```
-
-## 7. 成本优化
-
-### 7.1 服务器成本
-
-**优化策略**：
-
-- 按需选择配置，避免浪费
-- 使用预留实例（长期项目）
-- 选择合适的计费方式
-- 定期清理不用的资源
-
-### 7.2 带宽成本
-
-**优化策略**：
-
-- 使用 CDN 减少源站带宽
-- 启用压缩（Gzip、Brotli）
-- 优化图片大小和格式
-- 使用懒加载
-
-### 7.3 存储成本
-
-**优化策略**：
-
-- 定期清理日志文件
-- 使用对象存储（OSS、S3）
-- 压缩静态资源
-- 删除不必要的备份
-
-## 8. 总结
-
-部署与上线核心要点：
-
-- 🌐 **域名**：网站的入口，选择好记的域名
-- 🖥️ **服务器**：应用运行的基础，选择合适的配置
-- 📡 **CDN**：加速访问，减轻源站压力
-- 🔐 **HTTPS**：安全传输，必备配置
-- 🚀 **CI/CD**：自动化部署，提高效率
-- 📊 **监控**：及时发现问题，保证稳定
-
-**部署清单**：
-
-- [ ] 注册域名
-- [ ] 购买服务器
-- [ ] 配置 DNS 解析
-- [ ] 安装 Web 服务器
-- [ ] 部署应用代码
-- [ ] 配置 SSL 证书
-- [ ] 启用 CDN
-- [ ] 设置监控
-- [ ] 配置备份
-- [ ] 性能优化
-
-掌握部署与上线，你的应用就能真正服务于用户。现在就开始部署你的第一个项目吧！
+如果都 OK，恭喜你，你的产品正式面世了！🚀

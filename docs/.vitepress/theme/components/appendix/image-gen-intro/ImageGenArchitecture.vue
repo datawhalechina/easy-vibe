@@ -53,7 +53,9 @@
             <div class="node-content">
               <div class="model-name">UNet / DiT</div>
               <div class="action-badge">
-                <el-tag type="warning" size="small" effect="dark">去噪 (Denoise)</el-tag>
+                <el-tag type="warning" size="small" effect="dark"
+                  >去噪 (Denoise)</el-tag
+                >
               </div>
             </div>
           </el-card>
@@ -87,7 +89,9 @@
       <el-row :gutter="20">
         <el-col :span="8">
           <div class="explanation-item">
-            <div class="exp-icon"><el-icon color="#409EFF"><Microphone /></el-icon></div>
+            <div class="exp-icon">
+              <el-icon color="#409EFF"><Microphone /></el-icon>
+            </div>
             <div class="exp-text">
               <h4>耳朵 (Text Encoder)</h4>
               <p>负责"听懂"你的描述，把它翻译成计算机能理解的数学向量。</p>
@@ -96,16 +100,22 @@
         </el-col>
         <el-col :span="8">
           <div class="explanation-item">
-            <div class="exp-icon"><el-icon color="#E6A23C"><Cpu /></el-icon></div>
+            <div class="exp-icon">
+              <el-icon color="#E6A23C"><Cpu /></el-icon>
+            </div>
             <div class="exp-text">
               <h4>大脑 (UNet/DiT)</h4>
-              <p>核心创造者。在潜空间(Latent Space)中通过预测噪声来构思画面。</p>
+              <p>
+                核心创造者。在潜空间(Latent Space)中通过预测噪声来构思画面。
+              </p>
             </div>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="explanation-item">
-            <div class="exp-icon"><el-icon color="#67C23A"><View /></el-icon></div>
+            <div class="exp-icon">
+              <el-icon color="#67C23A"><View /></el-icon>
+            </div>
             <div class="exp-text">
               <h4>眼睛 (VAE)</h4>
               <p>负责"翻译"回图像。把大脑构思的模糊特征还原成高清像素图片。</p>
@@ -118,7 +128,14 @@
 </template>
 
 <script setup>
-import { EditPen, Microphone, Right, Cpu, View, Picture } from '@element-plus/icons-vue'
+import {
+  EditPen,
+  Microphone,
+  Right,
+  Cpu,
+  View,
+  Picture
+} from '@element-plus/icons-vue'
 </script>
 
 <style scoped>
@@ -217,12 +234,12 @@ import { EditPen, Microphone, Right, Cpu, View, Picture } from '@element-plus/ic
   .flow-container {
     flex-direction: column;
   }
-  
+
   .arrow-connector {
     transform: rotate(90deg);
     margin: 10px 0;
   }
-  
+
   .explanation-item {
     margin-bottom: 10px;
   }

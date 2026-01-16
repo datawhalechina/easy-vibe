@@ -2,7 +2,9 @@
   <div class="llm-quick-start">
     <div class="header">
       <div class="title">🤖 LLM 初体验：从闲聊到业务实战</div>
-      <div class="subtitle">大模型不仅能聊天，更是生产力工具。试试看它如何处理这些业务需求：</div>
+      <div class="subtitle">
+        大模型不仅能聊天，更是生产力工具。试试看它如何处理这些业务需求：
+      </div>
     </div>
 
     <div class="chat-window">
@@ -12,15 +14,30 @@
       </div>
 
       <div class="messages" ref="messagesRef">
-        <div v-for="(msg, index) in messages" :key="index" class="message" :class="msg.role">
+        <div
+          v-for="(msg, index) in messages"
+          :key="index"
+          class="message"
+          :class="msg.role"
+        >
           <div class="avatar">{{ msg.role === 'user' ? '🧑‍💻' : '🤖' }}</div>
           <div class="content">
-            <div v-if="msg.role === 'user'" class="user-text">{{ msg.content }}</div>
+            <div v-if="msg.role === 'user'" class="user-text">
+              {{ msg.content }}
+            </div>
             <div v-else class="assistant-content">
               <pre v-if="msg.isCode"><code>{{ msg.content }}</code></pre>
               <div v-else>{{ msg.content }}</div>
             </div>
-            <span v-if="msg.role === 'assistant' && isGenerating && index === messages.length - 1" class="cursor">|</span>
+            <span
+              v-if="
+                msg.role === 'assistant' &&
+                isGenerating &&
+                index === messages.length - 1
+              "
+              class="cursor"
+              >|</span
+            >
           </div>
         </div>
       </div>
@@ -28,14 +45,17 @@
 
     <div class="input-area">
       <div class="quick-actions" v-if="!isGenerating">
-        <button v-for="q in questions" :key="q.text" @click="ask(q)" class="action-btn">
+        <button
+          v-for="q in questions"
+          :key="q.text"
+          @click="ask(q)"
+          class="action-btn"
+        >
           <span class="btn-icon">{{ q.icon }}</span>
           <span class="btn-text">{{ q.text }}</span>
         </button>
       </div>
-      <div class="status-text" v-else>
-        正在思考业务逻辑并生成 Token...
-      </div>
+      <div class="status-text" v-else>正在思考业务逻辑并生成 Token...</div>
     </div>
   </div>
 </template>
@@ -52,11 +72,11 @@ const questions = [
 ]
 
 const answers = {
-  "给我想一个请假的理由": {
+  给我想一个请假的理由: {
     isCode: false,
-    text: "老板，我感觉身体不适，可能是昨天写代码太投入，CPU（大脑）过热导致系统（身体）宕机了，申请重启（休息）一天。"
+    text: '老板，我感觉身体不适，可能是昨天写代码太投入，CPU（大脑）过热导致系统（身体）宕机了，申请重启（休息）一天。'
   },
-  "帮我写一个 Python 爬虫": {
+  '帮我写一个 Python 爬虫': {
     isCode: true,
     text: `import requests
 from bs4 import BeautifulSoup
@@ -75,17 +95,17 @@ print(f"正在爬取 {url} 的标题...")
 # titles = fetch_titles(url)
 # print(titles)`
   },
-  "用鲁迅的语气夸我": {
+  用鲁迅的语气夸我: {
     isCode: false,
-    text: "我向来是不惮以最坏的恶意来推测中国人的，然而我还不料，也不信竟会遇见这样优秀的人。你的代码，很有几分风骨。"
+    text: '我向来是不惮以最坏的恶意来推测中国人的，然而我还不料，也不信竟会遇见这样优秀的人。你的代码，很有几分风骨。'
   },
-  "分析这份销售数据的趋势": {
+  分析这份销售数据的趋势: {
     isCode: false,
-    text: "基于您提供的数据，我发现以下几个关键趋势：\n\n1. 📈 **总体增长**：Q3 销售额同比增长了 25%，主要得益于线上渠道的爆发。\n2. ⚠️ **库存预警**：热销品类 A 的周转天数已降至 5 天，建议立即补货。\n3. 💡 **潜力市场**：华南地区的转化率（3.2%）显著高于平均水平，建议加大该区域的广告投放。"
+    text: '基于您提供的数据，我发现以下几个关键趋势：\n\n1. 📈 **总体增长**：Q3 销售额同比增长了 25%，主要得益于线上渠道的爆发。\n2. ⚠️ **库存预警**：热销品类 A 的周转天数已降至 5 天，建议立即补货。\n3. 💡 **潜力市场**：华南地区的转化率（3.2%）显著高于平均水平，建议加大该区域的广告投放。'
   },
-  "为这款咖啡杯写一段小红书文案": {
+  为这款咖啡杯写一段小红书文案: {
     isCode: false,
-    text: "☕️ **早八人的续命神器！这款咖啡杯真的太懂我了**\n\n家人们谁懂啊！😭 作为一个每天靠咖啡续命的打工人，终于挖到了这款宝藏杯子！\n\n✨ **颜值绝绝子**：奶油白配色，拿在手里就是妥妥的 ins 风，摆在工位上心情都变好了！\n🌡️ **保温超长待机**：早上泡的冰美式，下午还是冰冰凉，这也太适合夏天了吧！\n🔒 **密封不漏水**：直接塞包里也不怕洒，挤地铁必备！\n\n👇 评论区蹲一个链接，带你一起实现咖啡自由！ #好物分享 #高颜值水杯 #打工人日常"
+    text: '☕️ **早八人的续命神器！这款咖啡杯真的太懂我了**\n\n家人们谁懂啊！😭 作为一个每天靠咖啡续命的打工人，终于挖到了这款宝藏杯子！\n\n✨ **颜值绝绝子**：奶油白配色，拿在手里就是妥妥的 ins 风，摆在工位上心情都变好了！\n🌡️ **保温超长待机**：早上泡的冰美式，下午还是冰冰凉，这也太适合夏天了吧！\n🔒 **密封不漏水**：直接塞包里也不怕洒，挤地铁必备！\n\n👇 评论区蹲一个链接，带你一起实现咖啡自由！ #好物分享 #高颜值水杯 #打工人日常'
   }
 }
 
@@ -96,33 +116,33 @@ const messagesRef = ref(null)
 const ask = async (qObj) => {
   messages.value.push({ role: 'user', content: qObj.text })
   isGenerating.value = true
-  
+
   await wait(600)
-  
+
   const answerData = answers[qObj.text]
-  const fullAnswer = answerData ? answerData.text : "正在思考..."
-  
-  messages.value.push({ 
-    role: 'assistant', 
-    content: '', 
-    isCode: answerData ? answerData.isCode : false 
+  const fullAnswer = answerData ? answerData.text : '正在思考...'
+
+  messages.value.push({
+    role: 'assistant',
+    content: '',
+    isCode: answerData ? answerData.isCode : false
   })
-  
+
   const answerIdx = messages.value.length - 1
-  
+
   // Typing animation
   for (let i = 0; i < fullAnswer.length; i++) {
     messages.value[answerIdx].content += fullAnswer[i]
     scrollToBottom()
     // Code typing is usually faster looking
-    const speed = answerData.isCode ? 10 : (30 + Math.random() * 30)
+    const speed = answerData.isCode ? 10 : 30 + Math.random() * 30
     await wait(speed)
   }
-  
+
   isGenerating.value = false
 }
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const scrollToBottom = () => {
   nextTick(() => {
@@ -140,8 +160,9 @@ const scrollToBottom = () => {
   border-radius: 12px;
   padding: 24px;
   margin: 24px 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .header {
@@ -302,14 +323,14 @@ const scrollToBottom = () => {
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .action-btn:hover {
   border-color: var(--vp-c-brand);
   color: var(--vp-c-brand);
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .status-text {
@@ -329,7 +350,33 @@ const scrollToBottom = () => {
   animation: pulse 1.5s infinite;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulse { 0% { opacity: 0.4; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.4; transform: scale(0.8); } }
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
 </style>

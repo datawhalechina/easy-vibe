@@ -7,18 +7,31 @@
         <span class="dot green"></span>
         <span class="title">Terminal - Buffer Switching Demo</span>
       </div>
-      
+
       <div class="screen-container">
         <!-- Main Buffer (Layer 0) -->
         <div class="buffer main-buffer">
-          <div class="line"><span class="prompt">➜</span> <span class="cmd">ls -la</span></div>
+          <div class="line">
+            <span class="prompt">➜</span> <span class="cmd">ls -la</span>
+          </div>
           <div class="line output">total 16</div>
-          <div class="line output">drwxr-xr-x  2 user  staff    64 Jan 15 10:00 .</div>
-          <div class="line output">drwxr-xr-x  4 user  staff   128 Jan 15 09:55 ..</div>
-          <div class="line output">-rw-r--r--  1 user  staff  1024 Jan 15 10:00 notes.txt</div>
-          <div class="line"><span class="prompt">➜</span> <span class="cmd">echo "Hello World"</span></div>
+          <div class="line output">
+            drwxr-xr-x 2 user staff 64 Jan 15 10:00 .
+          </div>
+          <div class="line output">
+            drwxr-xr-x 4 user staff 128 Jan 15 09:55 ..
+          </div>
+          <div class="line output">
+            -rw-r--r-- 1 user staff 1024 Jan 15 10:00 notes.txt
+          </div>
+          <div class="line">
+            <span class="prompt">➜</span>
+            <span class="cmd">echo "Hello World"</span>
+          </div>
           <div class="line output">Hello World</div>
-          <div class="line"><span class="prompt">➜</span> <span class="cmd">vim notes.txt</span></div>
+          <div class="line">
+            <span class="prompt">➜</span> <span class="cmd">vim notes.txt</span>
+          </div>
           <!-- The cursor would be here if not in vim -->
         </div>
 
@@ -30,12 +43,21 @@
               <span class="modified">[+]</span>
             </div>
             <div class="vim-body">
-              <div class="line-num">1</div><div class="code">This is a text file opened in Vim.</div>
-              <div class="line-num">2</div><div class="code"></div>
-              <div class="line-num">3</div><div class="code">Notice how this interface takes up</div>
-              <div class="line-num">4</div><div class="code">the entire screen?</div>
-              <div class="line-num">5</div><div class="code"></div>
-              <div class="line-num">6</div><div class="code">It is running in the <span class="highlight">Alternate Buffer</span>.</div>
+              <div class="line-num">1</div>
+              <div class="code">This is a text file opened in Vim.</div>
+              <div class="line-num">2</div>
+              <div class="code"></div>
+              <div class="line-num">3</div>
+              <div class="code">Notice how this interface takes up</div>
+              <div class="line-num">4</div>
+              <div class="code">the entire screen?</div>
+              <div class="line-num">5</div>
+              <div class="code"></div>
+              <div class="line-num">6</div>
+              <div class="code">
+                It is running in the
+                <span class="highlight">Alternate Buffer</span>.
+              </div>
               <div class="line-num">~</div>
               <div class="line-num">~</div>
             </div>
@@ -55,14 +77,20 @@
       <div class="description">
         <div v-if="!isAltBufferActive">
           <p><strong>Current: Primary Buffer (主缓冲区)</strong></p>
-          <p>This is the standard scrolling log. Commands are executed line by line.</p>
+          <p>
+            This is the standard scrolling log. Commands are executed line by
+            line.
+          </p>
           <button class="action-btn" @click="openVim">
             Execute `vim notes.txt`
           </button>
         </div>
         <div v-else>
           <p><strong>Current: Alternate Buffer (备用缓冲区)</strong></p>
-          <p>A separate "canvas" for full-screen apps. It hides the history but doesn't delete it.</p>
+          <p>
+            A separate "canvas" for full-screen apps. It hides the history but
+            doesn't delete it.
+          </p>
           <button class="action-btn red" @click="quitVim">
             Execute `:q` (Quit)
           </button>
@@ -101,7 +129,7 @@ const quitVim = () => {
   background: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid #333;
 }
 
@@ -118,9 +146,15 @@ const quitVim = () => {
   height: 10px;
   border-radius: 50%;
 }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
+.red {
+  background: #ff5f56;
+}
+.yellow {
+  background: #ffbd2e;
+}
+.green {
+  background: #27c93f;
+}
 
 .title {
   margin-left: 10px;

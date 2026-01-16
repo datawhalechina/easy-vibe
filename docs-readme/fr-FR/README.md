@@ -11,7 +11,7 @@
 
 # Easy-Vibe: Learn Vibe Coding from 0 to 1
 
-### *De zéro, apprentissage par projet, construire votre premier produit IA*
+### _De zéro, apprentissage par projet, construire votre premier produit IA_
 
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/">Commencer la lecture en ligne (Start Reading Online)</a>
@@ -78,79 +78,79 @@ Nous croyons qu'en maîtrisant Vibe Coding et en le combinant avec un entraînem
 
 ### 0. Maternelle
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [Préface : Carte d'apprentissage](docs/zh-cn/stage-0/0.1-learning-map/index.md) | Guide général du parcours d'apprentissage | ✅ |
-| [Débutant 1 : L'ère de l'IA, savoir parler c'est savoir programmer](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Découvrir pour la première fois les capacités de programmation IA à travers des cas comme Snake | ✅ |
+| Chapitre                                                                                                                           | Contenu clé                                                                                     | Statut |
+| :--------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- | :----- |
+| [Préface : Carte d'apprentissage](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                    | Guide général du parcours d'apprentissage                                                       | ✅     |
+| [Débutant 1 : L'ère de l'IA, savoir parler c'est savoir programmer](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Découvrir pour la première fois les capacités de programmation IA à travers des cas comme Snake | ✅     |
 
 ### 1. Product Manager IA
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [Débutant 2 : Découvrir les outils IDE IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md) | Apprendre à utiliser l'IDE, créer des mini-jeux localement | ✅ |
-| [Débutant 3 : Créer un prototype soi-même](docs/zh-cn/stage-1/1.2-building-prototype/index.md) | Analyse des besoins, génération d'une seule page par l'IA, jusqu'à générer des prototypes de produits multipages | ✅ |
-| [Débutant 4 : Ajouter des capacités IA au prototype](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md) | Apprendre à connecter des capacités IA courantes (texte, image, vidéo) | ✅ |
-| [Débutant 5 : Projet complet pratique](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md) | Simuler des scénarios réels, accepter les feedbacks des utilisateurs pour itérer, compléter le projet | ✅ |
-| [Projet final : Créer un prototype complet d'application web et le présenter](docs/zh-cn/stage-1/1.5-final-project/index.md) | Implémenter complètement l'application, présenter les effets de l'application | ✅ |
+| Chapitre                                                                                                                     | Contenu clé                                                                                                      | Statut |
+| :--------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :----- |
+| [Débutant 2 : Découvrir les outils IDE IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                           | Apprendre à utiliser l'IDE, créer des mini-jeux localement                                                       | ✅     |
+| [Débutant 3 : Créer un prototype soi-même](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                               | Analyse des besoins, génération d'une seule page par l'IA, jusqu'à générer des prototypes de produits multipages | ✅     |
+| [Débutant 4 : Ajouter des capacités IA au prototype](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | Apprendre à connecter des capacités IA courantes (texte, image, vidéo)                                           | ✅     |
+| [Débutant 5 : Projet complet pratique](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                            | Simuler des scénarios réels, accepter les feedbacks des utilisateurs pour itérer, compléter le projet            | ✅     |
+| [Projet final : Créer un prototype complet d'application web et le présenter](docs/zh-cn/stage-1/1.5-final-project/index.md) | Implémenter complètement l'application, présenter les effets de l'application                                    | ✅     |
 
 #### Annexes
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [Annexe A : Complément de pensée produit](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Cadres de pensée nécessaires pour créer un produit de zéro à un | ✅ |
-| [Annexe B : Erreurs courantes et solutions](docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | Erreurs courantes en Vibe Coding et méthodes de dépannage | ✅ |
+| Chapitre                                                                                           | Contenu clé                                                     | Statut |
+| :------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- | :----- |
+| [Annexe A : Complément de pensée produit](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Cadres de pensée nécessaires pour créer un produit de zéro à un | ✅     |
+| [Annexe B : Erreurs courantes et solutions](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)  | Erreurs courantes en Vibe Coding et méthodes de dépannage       | ✅     |
 
 ### 2. Ingénieur de Développement Niveau Débutant-Intermédiaire
 
 #### Partie Frontend
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [Frontend 0 : Utiliser lovart pour générer des assets](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/) | Utiliser lovart pour générer en lot des assets visuels comme des personnages et des scènes, fournissant une base d'assets pour la conception UI et le développement frontend | 🚧 |
-| [Frontend 1 : Introduction à Figma et MasterGo](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/) | Utiliser des outils de conception pour organiser l'architecture de l'information et la structure des pages, préparant la base pour l'implémentation frontend | 🚧 |
-| [Frontend 2 : Construire la première application moderne - Design UI](docs/zh-cn/stage-2/frontend/2.2-ui-design/) | Compléter une interface basée sur des composants à partir de maquettes, réaliser le premier parcours du design au code | 🚧 |
-| [Frontend 3 : Référence des spécifications de design UI et design UI multiproduit](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/) | Étendre des interfaces multiproduits autour d'une visuelle principale unifiée, pratiquer les capacités de design systématique | 🚧 |
-| [Frontend 4 : Créons ensemble les portraits de Poudlard](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | Créer une application frontend avec capacités IA intégrées de 0 à 1, connecter conception et développement | ✅ |
+| Chapitre                                                                                                                                               | Contenu clé                                                                                                                                                                  | Statut |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
+| [Frontend 0 : Utiliser lovart pour générer des assets](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/)                                                 | Utiliser lovart pour générer en lot des assets visuels comme des personnages et des scènes, fournissant une base d'assets pour la conception UI et le développement frontend | 🚧     |
+| [Frontend 1 : Introduction à Figma et MasterGo](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/)                                                       | Utiliser des outils de conception pour organiser l'architecture de l'information et la structure des pages, préparant la base pour l'implémentation frontend                 | 🚧     |
+| [Frontend 2 : Construire la première application moderne - Design UI](docs/zh-cn/stage-2/frontend/2.2-ui-design/)                                      | Compléter une interface basée sur des composants à partir de maquettes, réaliser le premier parcours du design au code                                                       | 🚧     |
+| [Frontend 3 : Référence des spécifications de design UI et design UI multiproduit](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/)                  | Étendre des interfaces multiproduits autour d'une visuelle principale unifiée, pratiquer les capacités de design systématique                                                | 🚧     |
+| [Frontend 4 : Créons ensemble les portraits de Poudlard](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | Créer une application frontend avec capacités IA intégrées de 0 à 1, connecter conception et développement                                                                   | ✅     |
 
 #### Partie Backend et Full Stack
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [Backend 1 : Qu'est-ce qu'une API](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md) | Comprendre les interfaces HTTP et les modèles requête-réponse, se préparer à l'intégration backend et à la coordination | ✅ |
-| [Backend 2 : Des bases de données à Supabase](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) : Implémenter des bases de données et des APIs sur Supabase, connecter des modèles de données aux pages frontend | ✅ |
-| [Backend 3 : LLM assistant l'écriture de code d'interface et de documentation](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/) : Utiliser le LLM pour aider à générer de la documentation et du code pour les interfaces et bases de données, réaliser un backend lisible et testable | 🚧 |
-| [Backend 4 : Flux de travail Git](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md) : Gérer le code dans un flux de travail Git, effectuer le contrôle de version et la collaboration | ✅ |
-| [Backend 5 : Déploiement Zeabur](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) : Déployer l'application sur Zeabur pour la mettre en ligne | ✅ |
-| [Backend 6 : Outils de développement CLI modernes](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) : Utiliser des outils de programmation IA de type CLI pour accélérer le développement et le débogage, former un flux d'ingénierie personnel | ✅ |
-| [Backend 7 : Comment intégrer des systèmes de paiement comme Stripe](docs/zh-cn/stage-2/backend/2.7-stripe-payment/) : Connecter des systèmes de paiement, compléter le flux de paiement et le processus de base de règlement | 🚧 |
-| [Projet final 1 : Construire la première application moderne - Application full stack](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/) : Intégrer frontend, backend et modules de paiement, compléter une application web full stack prête pour la production | 🚧 |
-| [Projet final 2 : Bibliothèque de composants frontend moderne + Trae pratique](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/) : Utiliser une bibliothèque de composants frontend moderne et Trae, compléter indépendamment un produit avec inscription/connexion et support de paiement | 🚧 |
+| Chapitre                                                                                                                                                                                                                                                                                                                     | Contenu clé                                                                                                             | Statut |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :----- |
+| [Backend 1 : Qu'est-ce qu'une API](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md)                                                                                                                                                                                                                  | Comprendre les interfaces HTTP et les modèles requête-réponse, se préparer à l'intégration backend et à la coordination | ✅     |
+| [Backend 2 : Des bases de données à Supabase](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) : Implémenter des bases de données et des APIs sur Supabase, connecter des modèles de données aux pages frontend                                                              | ✅                                                                                                                      |
+| [Backend 3 : LLM assistant l'écriture de code d'interface et de documentation](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/) : Utiliser le LLM pour aider à générer de la documentation et du code pour les interfaces et bases de données, réaliser un backend lisible et testable                                     | 🚧                                                                                                                      |
+| [Backend 4 : Flux de travail Git](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md) : Gérer le code dans un flux de travail Git, effectuer le contrôle de version et la collaboration                                                                                             | ✅                                                                                                                      |
+| [Backend 5 : Déploiement Zeabur](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) : Déployer l'application sur Zeabur pour la mettre en ligne                                                                                                         | ✅                                                                                                                      |
+| [Backend 6 : Outils de développement CLI modernes](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) : Utiliser des outils de programmation IA de type CLI pour accélérer le développement et le débogage, former un flux d'ingénierie personnel | ✅                                                                                                                      |
+| [Backend 7 : Comment intégrer des systèmes de paiement comme Stripe](docs/zh-cn/stage-2/backend/2.7-stripe-payment/) : Connecter des systèmes de paiement, compléter le flux de paiement et le processus de base de règlement                                                                                                | 🚧                                                                                                                      |
+| [Projet final 1 : Construire la première application moderne - Application full stack](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/) : Intégrer frontend, backend et modules de paiement, compléter une application web full stack prête pour la production                                                             | 🚧                                                                                                                      |
+| [Projet final 2 : Bibliothèque de composants frontend moderne + Trae pratique](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/) : Utiliser une bibliothèque de composants frontend moderne et Trae, compléter indépendamment un produit avec inscription/connexion et support de paiement                           | 🚧                                                                                                                      |
 
 #### Annexe des Capacités IA
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [IA 1 : Introduction à Dify et intégration de base de connaissances](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) : Utiliser Dify Workflow et le RAG de base pour construire des produits de type outils, créant un exemple pour les futures mises à jour d'applications | ✅ |
-| [IA 2 : Apprendre à consulter le dictionnaire IA et intégrer des APIs multimodales](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md) : Apprendre à chercher des modèles et APIs appropriés, intégrer des capacités multimodales comme le texte et l'image dans des produits | 🚧 |
+| Chapitre                                                                                                                                                                                                                                                                                                                                                                  | Contenu clé | Statut |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------- | :----- |
+| [IA 1 : Introduction à Dify et intégration de base de connaissances](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) : Utiliser Dify Workflow et le RAG de base pour construire des produits de type outils, créant un exemple pour les futures mises à jour d'applications | ✅          |
+| [IA 2 : Apprendre à consulter le dictionnaire IA et intégrer des APIs multimodales](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md) : Apprendre à chercher des modèles et APIs appropriés, intégrer des capacités multimodales comme le texte et l'image dans des produits                                         | 🚧          |
 
 ### 3. Ingénieur de Développement Avancé
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [Avancé 1 : MCP et ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/) : Étendre les capacités de l'IDE via MCP et Skills, connecter des services externes comme outils | 🚧 |
-| [Avancé 2 : Comment faire fonctionner Coding Tools longtemps](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) : Concevoir et configurer des tâches à longue exécution, rendre Coding Tools plus stable et fiable | 🚧 |
-| [Avancé 3 : Développement multiplateforme : Comment construire des mini-programmes WeChat](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) : Comprendre l'écosystème des mini-programmes WeChat, compléter un mini-programme frontend du modèle officiel au lancement | ✅ |
-| [Avancé 4 : Développement multiplateforme : Comment construire des mini-programmes WeChat - Y compris backend](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) : Intégrer une base de données et une logique backend dans les mini-programmes, réaliser un cycle d'activité complet | 🚧 |
-| [Avancé 5 : Développement multiplateforme : Comment construire des applications Android](docs/zh-cn/stage-3/cross-platform/3.5-android-app/) : Utiliser des outils comme Expo, compléter le développement d'applications Android intégrant Web natif | 🚧 |
-| [Avancé 6 : Développement multiplateforme : Comment construire des applications iOS](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) : Utiliser des outils comme Expo, compléter le développement d'applications iOS intégrant Web natif | 🚧 |
-| [Avancé 7 : Comment construire son propre site web personnel et blog académique](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) : Du choix, de la construction au déploiement, construire une homepage en ligne à long terme présentant des projets personnels et des réalisations académiques | 🚧 |
+| Chapitre                                                                                                                                                                                                                                                                                                      | Contenu clé | Statut |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------- | :----- |
+| [Avancé 1 : MCP et ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/) : Étendre les capacités de l'IDE via MCP et Skills, connecter des services externes comme outils                                                                                                             | 🚧          |
+| [Avancé 2 : Comment faire fonctionner Coding Tools longtemps](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) : Concevoir et configurer des tâches à longue exécution, rendre Coding Tools plus stable et fiable                                                                                      | 🚧          |
+| [Avancé 3 : Développement multiplateforme : Comment construire des mini-programmes WeChat](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) : Comprendre l'écosystème des mini-programmes WeChat, compléter un mini-programme frontend du modèle officiel au lancement                              | ✅          |
+| [Avancé 4 : Développement multiplateforme : Comment construire des mini-programmes WeChat - Y compris backend](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) : Intégrer une base de données et une logique backend dans les mini-programmes, réaliser un cycle d'activité complet        | 🚧          |
+| [Avancé 5 : Développement multiplateforme : Comment construire des applications Android](docs/zh-cn/stage-3/cross-platform/3.5-android-app/) : Utiliser des outils comme Expo, compléter le développement d'applications Android intégrant Web natif                                                          | 🚧          |
+| [Avancé 6 : Développement multiplateforme : Comment construire des applications iOS](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) : Utiliser des outils comme Expo, compléter le développement d'applications iOS intégrant Web natif                                                                      | 🚧          |
+| [Avancé 7 : Comment construire son propre site web personnel et blog académique](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) : Du choix, de la construction au déploiement, construire une homepage en ligne à long terme présentant des projets personnels et des réalisations académiques | 🚧          |
 
 #### Annexe des Capacités IA
 
-| Chapitre | Contenu clé | Statut |
-| :--- | :--- | :--- |
-| [IA Avancée 1 : Qu'est-ce que RAG et comment il fonctionne](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) : Comprendre systématiquement les principes du RAG et les architectures courantes, fournir une base de récupération de connaissances pour des applications complexes | ✅ |
-| [IA Avancée 2 : RAG intermédiaire-avancé et orchestration de workflows : Exemple avec LangGraph](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) : Utiliser des outils comme LangGraph pour concevoir des workflows multi-étapes et des systèmes RAG intermédiaire-avancés | 🚧 |
+| Chapitre                                                                                                                                                                                                                                                                                                                                     | Contenu clé | Statut |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------- | :----- |
+| [IA Avancée 1 : Qu'est-ce que RAG et comment il fonctionne](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) : Comprendre systématiquement les principes du RAG et les architectures courantes, fournir une base de récupération de connaissances pour des applications complexes | ✅          |
+| [IA Avancée 2 : RAG intermédiaire-avancé et orchestration de workflows : Exemple avec LangGraph](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) : Utiliser des outils comme LangGraph pour concevoir des workflows multi-étapes et des systèmes RAG intermédiaire-avancés                                                      | 🚧          |
 
 ## 🛠️ Comment Apprendre
 

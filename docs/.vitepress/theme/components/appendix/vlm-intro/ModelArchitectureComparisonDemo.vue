@@ -14,15 +14,15 @@
         </div>
       </div>
       <div class="status-desc">
-        {{ isVLM 
-          ? '给大脑装上眼睛：视觉信号经过翻译，变成 Token 混入文字流。' 
-          : '纯文本大脑：只能听懂 Token 语言，无法感知图像。' 
+        {{
+          isVLM
+            ? '给大脑装上眼睛：视觉信号经过翻译，变成 Token 混入文字流。'
+            : '纯文本大脑：只能听懂 Token 语言，无法感知图像。'
         }}
       </div>
     </div>
 
     <div class="diagram-stage" :class="{ 'vlm-mode': isVLM }">
-      
       <!-- Vision Pipeline (Only visible in VLM mode) -->
       <div class="pipeline vision-pipeline">
         <div class="node-group">
@@ -31,12 +31,18 @@
             <span class="label">Image</span>
           </div>
           <div class="flow-arrow">⬇</div>
-          <div class="node process-node vit-node" title="Vision Transformer: The Eye">
+          <div
+            class="node process-node vit-node"
+            title="Vision Transformer: The Eye"
+          >
             <span class="icon">�️</span>
             <span class="label">ViT</span>
           </div>
           <div class="flow-arrow">⬇</div>
-          <div class="node adapter-node projector-node" title="Projector: The Translator">
+          <div
+            class="node adapter-node projector-node"
+            title="Projector: The Translator"
+          >
             <span class="icon">🔌</span>
             <span class="label">Projector</span>
           </div>
@@ -56,7 +62,7 @@
             <span class="icon">�</span>
             <span class="label">Embed</span>
           </div>
-          
+
           <!-- Merge Point Visualization -->
           <div class="merge-point" :class="{ active: isVLM }">
             <div class="plus-icon">+</div>
@@ -80,20 +86,33 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="interactive-info">
       <div class="info-card" v-if="!isVLM">
         <h3>Standard LLM Flow</h3>
-        <p>Text is converted into vectors (Embeddings) and processed by the Transformer to predict the next word.</p>
+        <p>
+          Text is converted into vectors (Embeddings) and processed by the
+          Transformer to predict the next word.
+        </p>
       </div>
       <div class="info-card vlm-info" v-else>
         <h3>VLM = LLM + Vision Encoder</h3>
         <ul>
-          <li><strong>ViT (The Eye):</strong> Slices image into patches and extracts features.</li>
-          <li><strong>Projector (The Translator):</strong> Converts visual features into the same "language" (vector dimension) as text embeddings.</li>
-          <li><strong>Concatenation:</strong> The translated visual tokens are pasted <em>before</em> the text tokens. The LLM sees them as "foreign words" it learned to understand.</li>
+          <li>
+            <strong>ViT (The Eye):</strong> Slices image into patches and
+            extracts features.
+          </li>
+          <li>
+            <strong>Projector (The Translator):</strong> Converts visual
+            features into the same "language" (vector dimension) as text
+            embeddings.
+          </li>
+          <li>
+            <strong>Concatenation:</strong> The translated visual tokens are
+            pasted <em>before</em> the text tokens. The LLM sees them as
+            "foreign words" it learned to understand.
+          </li>
         </ul>
       </div>
     </div>
@@ -173,7 +192,7 @@ const toggleMode = () => {
   justify-content: center;
   font-size: 14px;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-track.active .toggle-thumb {
@@ -271,29 +290,41 @@ const toggleMode = () => {
   flex-direction: column;
   align-items: center;
   min-width: 70px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 2;
 }
 
-.icon { font-size: 20px; margin-bottom: 4px; }
-.label { font-size: 11px; font-weight: bold; }
+.icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.label {
+  font-size: 11px;
+  font-weight: bold;
+}
 
-.input-node { border-color: #aaa; }
-.process-node { border-color: var(--vp-c-brand-dimm); }
-.core-node { 
-  border-color: var(--vp-c-brand); 
+.input-node {
+  border-color: #aaa;
+}
+.process-node {
+  border-color: var(--vp-c-brand-dimm);
+}
+.core-node {
+  border-color: var(--vp-c-brand);
   background: var(--vp-c-brand-dimm);
   min-width: 100px;
 }
-.output-node { border-color: var(--vp-c-brand); }
+.output-node {
+  border-color: var(--vp-c-brand);
+}
 
-.vit-node { 
-  border-color: var(--vp-c-yellow); 
+.vit-node {
+  border-color: var(--vp-c-yellow);
   background: rgba(255, 197, 23, 0.05);
 }
 .projector-node {
-  border-color: var(--vp-c-yellow); 
+  border-color: var(--vp-c-yellow);
   background: var(--vp-c-yellow-dimm);
 }
 
@@ -355,13 +386,26 @@ const toggleMode = () => {
   animation: pulse 1s infinite alternate;
 }
 
-.t1 { animation-delay: 0s; }
-.t2 { animation-delay: 0.2s; }
-.v1 { background: var(--vp-c-yellow); animation-delay: 0.4s; }
+.t1 {
+  animation-delay: 0s;
+}
+.t2 {
+  animation-delay: 0.2s;
+}
+.v1 {
+  background: var(--vp-c-yellow);
+  animation-delay: 0.4s;
+}
 
 @keyframes pulse {
-  from { opacity: 0.3; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1.1); }
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 /* Interactive Info */
@@ -383,7 +427,8 @@ const toggleMode = () => {
   color: var(--vp-c-text-1);
 }
 
-.info-card p, .info-card li {
+.info-card p,
+.info-card li {
   font-size: 13px;
   color: var(--vp-c-text-2);
   line-height: 1.6;
@@ -395,8 +440,14 @@ const toggleMode = () => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Mobile Adjustments */
@@ -404,13 +455,13 @@ const toggleMode = () => {
   .diagram-stage {
     height: 300px;
   }
-  
+
   .text-pipeline {
     flex-wrap: wrap;
     gap: 10px;
     width: 90%;
   }
-  
+
   .vision-pipeline {
     left: 10%;
   }

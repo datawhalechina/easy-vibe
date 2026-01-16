@@ -2,7 +2,12 @@
   <div class="ar-comparison">
     <el-card shadow="never">
       <div class="controls">
-        <el-button type="primary" @click="playDemo" :loading="isPlaying" icon="VideoPlay">
+        <el-button
+          type="primary"
+          @click="playDemo"
+          :loading="isPlaying"
+          icon="VideoPlay"
+        >
           开始对比演示
         </el-button>
       </div>
@@ -20,10 +25,10 @@
             <div class="visual-area">
               <div class="token-stream">
                 <transition-group name="list">
-                  <el-tag 
-                    v-for="(token, i) in displayedArTokens" 
-                    :key="i" 
-                    type="danger" 
+                  <el-tag
+                    v-for="(token, i) in displayedArTokens"
+                    :key="i"
+                    type="danger"
                     class="token-item"
                     effect="plain"
                   >
@@ -34,7 +39,9 @@
             </div>
             <div class="stats">
               <el-descriptions :column="1" size="small" border>
-                <el-descriptions-item label="生成方式">串行 (Serial)</el-descriptions-item>
+                <el-descriptions-item label="生成方式"
+                  >串行 (Serial)</el-descriptions-item
+                >
                 <el-descriptions-item label="速度">
                   <el-tag type="danger" size="small">慢 (Slow)</el-tag>
                 </el-descriptions-item>
@@ -54,17 +61,29 @@
           <div class="method-body">
             <div class="visual-area">
               <div class="flow-field" :style="{ opacity: flowProgress }">
-                <div v-for="n in 20" :key="n" class="flow-bar" 
-                     :style="{ height: flowProgress * (30 + Math.random() * 70) + '%', transitionDelay: n * 0.02 + 's' }"></div>
+                <div
+                  v-for="n in 20"
+                  :key="n"
+                  class="flow-bar"
+                  :style="{
+                    height: flowProgress * (30 + Math.random() * 70) + '%',
+                    transitionDelay: n * 0.02 + 's'
+                  }"
+                ></div>
               </div>
-              <div class="flow-overlay" v-if="flowProgress < 1 && flowProgress > 0">
+              <div
+                class="flow-overlay"
+                v-if="flowProgress < 1 && flowProgress > 0"
+              >
                 <el-icon class="is-loading"><Loading /></el-icon>
                 <span>Denoising...</span>
               </div>
             </div>
             <div class="stats">
               <el-descriptions :column="1" size="small" border>
-                <el-descriptions-item label="生成方式">并行 (Parallel)</el-descriptions-item>
+                <el-descriptions-item label="生成方式"
+                  >并行 (Parallel)</el-descriptions-item
+                >
                 <el-descriptions-item label="速度">
                   <el-tag type="success" size="small">极快 (Fast)</el-tag>
                 </el-descriptions-item>
@@ -76,17 +95,14 @@
 
       <el-divider />
 
-      <el-alert
-        title="技术演进"
-        type="success"
-        :closable="false"
-        show-icon
-      >
+      <el-alert title="技术演进" type="success" :closable="false" show-icon>
         <template #default>
           <p>
-            <strong>自回归</strong> (如 VALL-E) 像人说话一样，必须说完上一个字才能说下一个字，所以很慢。
-            <br>
-            <strong>流匹配</strong> (如 F5-TTS) 像画画一样，可以同时在画布的所有角落开始上色，效率提升了 10-20 倍。
+            <strong>自回归</strong> (如 VALL-E)
+            像人说话一样，必须说完上一个字才能说下一个字，所以很慢。
+            <br />
+            <strong>流匹配</strong> (如 F5-TTS)
+            像画画一样，可以同时在画布的所有角落开始上色，效率提升了 10-20 倍。
           </p>
         </template>
       </el-alert>
@@ -108,9 +124,9 @@ const playDemo = async () => {
   isPlaying.value = true
   displayedArTokens.value = []
   flowProgress.value = 0
-  
+
   // Start Flow Matching (Fast)
-  const flowPromise = new Promise(resolve => {
+  const flowPromise = new Promise((resolve) => {
     let p = 0
     const interval = setInterval(() => {
       p += 0.05
@@ -121,16 +137,16 @@ const playDemo = async () => {
       }
     }, 50) // Total ~1s
   })
-  
+
   // Start AR (Slow)
-  const arPromise = new Promise(async resolve => {
+  const arPromise = new Promise(async (resolve) => {
     for (const token of arTokensSource) {
-      await new Promise(r => setTimeout(r, 400)) // 400ms per token
+      await new Promise((r) => setTimeout(r, 400)) // 400ms per token
       displayedArTokens.value.push(token)
     }
     resolve()
   })
-  
+
   await Promise.all([flowPromise, arPromise])
   isPlaying.value = false
 }
@@ -220,7 +236,7 @@ const playDemo = async () => {
 
 .flow-bar {
   flex: 1;
-  background: linear-gradient(to top, #67C23A, #95d475);
+  background: linear-gradient(to top, #67c23a, #95d475);
   border-radius: 2px 2px 0 0;
   transition: height 0.5s ease;
 }
@@ -231,7 +247,7 @@ const playDemo = async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;

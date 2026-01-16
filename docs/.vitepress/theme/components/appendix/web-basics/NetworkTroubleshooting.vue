@@ -19,7 +19,9 @@
     <div class="solution-panel" v-if="selectedProblem !== null">
       <div class="solution-header">
         <div class="solution-title">{{ problems[selectedProblem].name }}</div>
-        <div class="solution-desc">{{ problems[selectedProblem].description }}</div>
+        <div class="solution-desc">
+          {{ problems[selectedProblem].description }}
+        </div>
       </div>
 
       <div class="solution-steps">
@@ -80,28 +82,29 @@
           <div class="tip-number">1</div>
           <div class="tip-content">
             <strong>从底层到顶层</strong>
-            <br>物理层 → 链路层 → 网络层 → 传输层 → 应用层
+            <br />物理层 → 链路层 → 网络层 → 传输层 → 应用层
           </div>
         </div>
         <div class="tip-item">
           <div class="tip-number">2</div>
           <div class="tip-content">
             <strong>分层排查</strong>
-            <br>先确定问题发生在哪一层，再针对性解决
+            <br />先确定问题发生在哪一层，再针对性解决
           </div>
         </div>
         <div class="tip-item">
           <div class="tip-number">3</div>
           <div class="tip-content">
             <strong>二分法定位</strong>
-            <br> ping 本机 → ping 网关 → ping 外网 → ping 域名
+            <br />
+            ping 本机 → ping 网关 → ping 外网 → ping 域名
           </div>
         </div>
         <div class="tip-item">
           <div class="tip-number">4</div>
           <div class="tip-content">
             <strong>查看日志</strong>
-            <br>系统日志、应用日志、防火墙日志记录关键信息
+            <br />系统日志、应用日志、防火墙日志记录关键信息
           </div>
         </div>
       </div>

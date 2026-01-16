@@ -30,14 +30,16 @@ const lineHeight = ref(DEFAULT_LINE_HEIGHT)
 const isHydrated = ref(false)
 
 const clampFontSize = (value) => {
-  if (value === null || value === undefined || value === '') return DEFAULT_FONT_SIZE
+  if (value === null || value === undefined || value === '')
+    return DEFAULT_FONT_SIZE
   const numeric = Number(value)
   if (!Number.isFinite(numeric)) return DEFAULT_FONT_SIZE
   return Math.min(MAX_FONT_SIZE, Math.max(MIN_FONT_SIZE, numeric))
 }
 
 const clampLineHeight = (value) => {
-  if (value === null || value === undefined || value === '') return DEFAULT_LINE_HEIGHT
+  if (value === null || value === undefined || value === '')
+    return DEFAULT_LINE_HEIGHT
   const numeric = Number(value)
   if (!Number.isFinite(numeric)) return DEFAULT_LINE_HEIGHT
   return Math.min(MAX_LINE_HEIGHT, Math.max(MIN_LINE_HEIGHT, numeric))
@@ -50,7 +52,10 @@ const applyFontSize = (size) => {
 
 const applyLineHeight = (value) => {
   if (typeof document === 'undefined') return
-  document.documentElement.style.setProperty('--ev-doc-line-height', String(value))
+  document.documentElement.style.setProperty(
+    '--ev-doc-line-height',
+    String(value)
+  )
 }
 
 const decreaseFontSize = () => {
@@ -71,7 +76,9 @@ const resetLineHeight = () => {
 
 onMounted(() => {
   const saved = clampFontSize(localStorage.getItem(FONT_SIZE_STORAGE_KEY))
-  const savedLineHeight = clampLineHeight(localStorage.getItem(LINE_HEIGHT_STORAGE_KEY))
+  const savedLineHeight = clampLineHeight(
+    localStorage.getItem(LINE_HEIGHT_STORAGE_KEY)
+  )
   fontSize.value = saved
   lineHeight.value = savedLineHeight
   applyFontSize(saved)
@@ -105,7 +112,7 @@ watch(lineHeight, (next) => {
               class="ev-fontsize-button"
               type="button"
               aria-label="阅读设置"
-              style="margin-left: 16px; padding: 0; width: 32px;"
+              style="margin-left: 16px; padding: 0; width: 32px"
             >
               <el-icon :size="16"><Setting /></el-icon>
             </button>
@@ -139,7 +146,12 @@ watch(lineHeight, (next) => {
                   A+
                 </button>
               </div>
-              <el-slider v-model="fontSize" :min="MIN_FONT_SIZE" :max="MAX_FONT_SIZE" :step="1" />
+              <el-slider
+                v-model="fontSize"
+                :min="MIN_FONT_SIZE"
+                :max="MAX_FONT_SIZE"
+                :step="1"
+              />
             </div>
 
             <div class="ev-setting-group">
@@ -148,7 +160,11 @@ watch(lineHeight, (next) => {
                 <div class="ev-setting-value">{{ lineHeight.toFixed(2) }}</div>
               </div>
               <div class="ev-fontsize-actions">
-                <button class="ev-fontsize-action" type="button" @click="resetLineHeight">
+                <button
+                  class="ev-fontsize-action"
+                  type="button"
+                  @click="resetLineHeight"
+                >
                   默认
                 </button>
                 <button

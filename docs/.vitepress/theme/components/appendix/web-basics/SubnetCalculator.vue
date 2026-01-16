@@ -115,11 +115,11 @@
         </div>
         <div class="info-item">
           <strong>常用子网掩码</strong>
-          <br>
+          <br />
           /8 = 255.0.0.0 (A 类网络)
-          <br>
+          <br />
           /16 = 255.255.0.0 (B 类网络)
-          <br>
+          <br />
           /24 = 255.255.255.0 (C 类网络)
         </div>
       </div>
@@ -146,7 +146,9 @@ const calculate = () => {
   const mask = cidr.value
 
   // 计算子网掩码
-  const maskBits = Array(32).fill(0).map((_, i) => (i < mask ? 1 : 0))
+  const maskBits = Array(32)
+    .fill(0)
+    .map((_, i) => (i < mask ? 1 : 0))
   const maskBytes = []
   for (let i = 0; i < 4; i++) {
     maskBytes.push(
@@ -163,14 +165,14 @@ const calculate = () => {
   if (hostBits <= 8) {
     broadcastBytes[3] |= (1 << hostBits) - 1
   } else if (hostBits <= 16) {
-    broadcastBytes[2] |= ((1 << (hostBits - 8)) - 1)
+    broadcastBytes[2] |= (1 << (hostBits - 8)) - 1
     broadcastBytes[3] = 255
   } else if (hostBits <= 24) {
-    broadcastBytes[1] |= ((1 << (hostBits - 16)) - 1)
+    broadcastBytes[1] |= (1 << (hostBits - 16)) - 1
     broadcastBytes[2] = 255
     broadcastBytes[3] = 255
   } else {
-    broadcastBytes[0] |= ((1 << (hostBits - 24)) - 1)
+    broadcastBytes[0] |= (1 << (hostBits - 24)) - 1
     broadcastBytes[1] = 255
     broadcastBytes[2] = 255
     broadcastBytes[3] = 255

@@ -57,9 +57,13 @@
       >
         <template #default>
           <p>
-            <strong>Diffusion</strong> 就像在迷雾中摸索，路径充满了随机性，需要走很多弯路（步数多）才能到达终点。
-            <br>
-            <strong>Flow Matching</strong> 就像使用了 GPS 导航，直接找到了从噪声到图像的<strong>直线最优路径 (Optimal Transport)</strong>，因此只需要极少的步数。
+            <strong>Diffusion</strong>
+            就像在迷雾中摸索，路径充满了随机性，需要走很多弯路（步数多）才能到达终点。
+            <br />
+            <strong>Flow Matching</strong> 就像使用了 GPS
+            导航，直接找到了从噪声到图像的<strong
+              >直线最优路径 (Optimal Transport)</strong
+            >，因此只需要极少的步数。
           </p>
         </template>
       </el-alert>
@@ -83,7 +87,7 @@ let animationFrame = null
 let diffProgress = 0
 let flowProgress = 0
 const diffSpeed = 0.005 // Slow
-const flowSpeed = 0.02  // Fast
+const flowSpeed = 0.02 // Fast
 
 // Particles
 const particles = []
@@ -104,7 +108,7 @@ const startAnimation = () => {
   flowProgress = 0
   diffSteps.value = 0
   flowSteps.value = 0
-  
+
   animate()
 }
 
@@ -118,7 +122,7 @@ const stopAnimation = () => {
 
 const animate = () => {
   let finished = 0
-  
+
   // Update Diffusion
   if (diffProgress < 1) {
     diffProgress += diffSpeed
@@ -129,7 +133,7 @@ const animate = () => {
     drawFrame(diffCanvasRef.value, 1, 'curve')
     finished++
   }
-  
+
   // Update Flow
   if (flowProgress < 1) {
     flowProgress += flowSpeed
@@ -140,7 +144,7 @@ const animate = () => {
     drawFrame(flowCanvasRef.value, 1, 'line')
     finished++
   }
-  
+
   if (finished < 2) {
     animationFrame = requestAnimationFrame(animate)
   } else {
@@ -153,7 +157,7 @@ const drawStatic = (canvas, type) => {
   const ctx = canvas.getContext('2d')
   const w = canvas.width
   const h = canvas.height
-  
+
   ctx.clearRect(0, 0, w, h)
   drawBackground(ctx, w, h)
   drawPath(ctx, w, h, type, false)
@@ -165,21 +169,21 @@ const drawFrame = (canvas, progress, type) => {
   const ctx = canvas.getContext('2d')
   const w = canvas.width
   const h = canvas.height
-  
+
   ctx.clearRect(0, 0, w, h)
   drawBackground(ctx, w, h)
   drawPath(ctx, w, h, type, true) // active path
   drawEndpoints(ctx, w, h)
-  
+
   // Draw Particle
   const pos = getPosition(progress, type, w, h)
-  
+
   // Draw Trail
   ctx.beginPath()
   if (type === 'curve') {
     ctx.moveTo(30, h - 30)
     // Re-calculate curve up to progress
-    for(let t=0; t<=progress; t+=0.01) {
+    for (let t = 0; t <= progress; t += 0.01) {
       const p = getPosition(t, type, w, h)
       ctx.lineTo(p.x, p.y)
     }
@@ -190,7 +194,7 @@ const drawFrame = (canvas, progress, type) => {
   ctx.strokeStyle = type === 'curve' ? '#F56C6C' : '#67C23A'
   ctx.lineWidth = 3
   ctx.stroke()
-  
+
   // Draw Head
   ctx.beginPath()
   ctx.arc(pos.x, pos.y, 6, 0, Math.PI * 2)
@@ -207,8 +211,14 @@ const drawBackground = (ctx, w, h) => {
   ctx.strokeStyle = '#eee'
   ctx.lineWidth = 1
   ctx.beginPath()
-  for(let x=0; x<=w; x+=20) { ctx.moveTo(x,0); ctx.lineTo(x,h); }
-  for(let y=0; y<=h; y+=20) { ctx.moveTo(0,y); ctx.lineTo(w,y); }
+  for (let x = 0; x <= w; x += 20) {
+    ctx.moveTo(x, 0)
+    ctx.lineTo(x, h)
+  }
+  for (let y = 0; y <= h; y += 20) {
+    ctx.moveTo(0, y)
+    ctx.lineTo(w, y)
+  }
   ctx.stroke()
 }
 
@@ -218,7 +228,7 @@ const drawEndpoints = (ctx, w, h) => {
   ctx.arc(30, h - 30, 8, 0, Math.PI * 2)
   ctx.fillStyle = '#909399'
   ctx.fill()
-  
+
   // End (Image)
   ctx.beginPath()
   ctx.arc(w - 30, 30, 8, 0, Math.PI * 2)
@@ -229,14 +239,14 @@ const drawEndpoints = (ctx, w, h) => {
 const drawPath = (ctx, w, h, type, isActive) => {
   ctx.beginPath()
   ctx.moveTo(30, h - 30)
-  
+
   if (type === 'line') {
     ctx.lineTo(w - 30, 30)
   } else {
     // Bezier curve for diffusion
     ctx.quadraticCurveTo(w * 0.2, 30, w - 30, 30)
   }
-  
+
   ctx.strokeStyle = isActive ? 'rgba(0,0,0,0.1)' : '#ddd'
   ctx.lineWidth = 2
   ctx.setLineDash([5, 5])
@@ -249,7 +259,7 @@ const getPosition = (t, type, w, h) => {
   const startY = h - 30
   const endX = w - 30
   const endY = 30
-  
+
   if (type === 'line') {
     return {
       x: startX + (endX - startX) * t,
@@ -260,10 +270,16 @@ const getPosition = (t, type, w, h) => {
     // Control Point
     const cpX = w * 0.2
     const cpY = 30
-    
-    const x = Math.pow(1-t, 2) * startX + 2 * (1-t) * t * cpX + Math.pow(t, 2) * endX
-    const y = Math.pow(1-t, 2) * startY + 2 * (1-t) * t * cpY + Math.pow(t, 2) * endY
-    
+
+    const x =
+      Math.pow(1 - t, 2) * startX +
+      2 * (1 - t) * t * cpX +
+      Math.pow(t, 2) * endX
+    const y =
+      Math.pow(1 - t, 2) * startY +
+      2 * (1 - t) * t * cpY +
+      Math.pow(t, 2) * endY
+
     // Add some random jitter for diffusion look if t < 1
     // const jitter = t < 1 ? (Math.random() - 0.5) * 5 : 0
     // return { x: x + jitter, y: y + jitter }
@@ -318,7 +334,7 @@ const getPosition = (t, type, w, h) => {
   background: #fff;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 canvas {

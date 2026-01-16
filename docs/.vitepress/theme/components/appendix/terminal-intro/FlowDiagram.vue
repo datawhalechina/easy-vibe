@@ -14,7 +14,7 @@
   <div class="flow-diagram">
     <div class="stack-col">
       <div class="stack-label">TERMINAL STACK</div>
-      
+
       <div class="stack-box kbd" :class="{ active: activeStage === 'kbd' }">
         <div class="box-header">
           <span class="box-icon">[kbd]</span>
@@ -56,11 +56,9 @@
 
     <div class="output-col">
       <div class="output-label">OUTPUT</div>
-      
+
       <div class="terminal-preview">
-        <div class="term-header">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="term-header"><span></span><span></span><span></span></div>
         <div class="term-body">
           <span class="prompt">$ </span>
           <span class="typed-text">{{ displayText }}</span>
@@ -74,7 +72,11 @@
       </div>
 
       <div class="controls">
-        <button class="play-btn" @click="startAnimation" :disabled="isAnimating">
+        <button
+          class="play-btn"
+          @click="startAnimation"
+          :disabled="isAnimating"
+        >
           {{ isAnimating ? 'Simulating...' : 'Simulate Keystroke' }}
         </button>
       </div>
@@ -96,13 +98,13 @@ const statusColor = computed(() => {
   return 'text-green'
 })
 
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const startAnimation = async () => {
   if (isAnimating.value) return
   isAnimating.value = true
   displayText.value = ''
-  
+
   // Stage 1: Keyboard
   activeStage.value = 'kbd'
   statusTitle.value = 'Input'
@@ -159,12 +161,14 @@ const startAnimation = async () => {
   color: #ccc;
 }
 
-.stack-col, .output-col {
+.stack-col,
+.output-col {
   display: flex;
   flex-direction: column;
 }
 
-.stack-label, .output-label {
+.stack-label,
+.output-label {
   color: #eab308;
   font-size: 12px;
   margin-bottom: 20px;
@@ -245,8 +249,12 @@ const startAnimation = async () => {
   color: #fff;
 }
 
-.prompt { color: #888; }
-.typed-text { color: #22c55e; }
+.prompt {
+  color: #888;
+}
+.typed-text {
+  color: #22c55e;
+}
 
 .cursor {
   display: inline-block;
@@ -262,7 +270,9 @@ const startAnimation = async () => {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .status-box {
@@ -285,8 +295,12 @@ const startAnimation = async () => {
   line-height: 1.5;
 }
 
-.text-red { color: #ef4444; }
-.text-green { color: #22c55e; }
+.text-red {
+  color: #ef4444;
+}
+.text-green {
+  color: #22c55e;
+}
 
 .play-btn {
   width: 100%;

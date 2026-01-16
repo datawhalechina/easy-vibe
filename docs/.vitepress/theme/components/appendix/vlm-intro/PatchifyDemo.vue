@@ -20,11 +20,11 @@
     <div class="visual-area">
       <!-- 原始/切分视图容器 -->
       <div class="image-container" :class="{ 'is-patchified': isPatchified }">
-        <div 
-          v-for="n in 196" 
-          :key="n" 
+        <div
+          v-for="n in 196"
+          :key="n"
           class="patch"
-          :style="{ 
+          :style="{
             '--delay': `${n * 0.005}s`,
             '--hue': `${(n % 14) * 20 + Math.floor(n / 14) * 20}`
           }"
@@ -32,16 +32,16 @@
           <span class="patch-id" v-if="isPatchified">{{ n }}</span>
         </div>
       </div>
-      
+
       <div class="arrow" v-if="isPatchified">⬇</div>
-      
+
       <!-- 线性序列视图 -->
       <div class="sequence-container" v-if="isPatchified">
         <div class="sequence-label">Flattened Sequence (Token Input)</div>
         <div class="token-stream">
-          <div 
-            v-for="n in 196" 
-            :key="n" 
+          <div
+            v-for="n in 196"
+            :key="n"
             class="mini-patch"
             :style="{ '--hue': `${(n % 14) * 20 + Math.floor(n / 14) * 20}` }"
           ></div>
@@ -144,7 +144,7 @@ const toggleState = () => {
   align-items: center;
   justify-content: center;
   font-size: 8px;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
   transition: all 0.5s ease;
 }
 
@@ -198,12 +198,23 @@ const toggleState = () => {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="terminal-os-demo">
     <div class="os-switch">
-      <button 
-        v-for="os in osList" 
+      <button
+        v-for="os in osList"
         :key="os.id"
-        :class="{ active: currentOS === os.id }" 
+        :class="{ active: currentOS === os.id }"
         @click="switchOS(os.id)"
       >
         <span class="os-icon">{{ os.icon }}</span>
@@ -21,12 +21,26 @@
         </div>
         <div class="window-title">{{ currentOSConfig.title }}</div>
         <div class="window-controls">
-          <button class="control-btn" @click="resetDemo" title="Reset">↺</button>
+          <button class="control-btn" @click="resetDemo" title="Reset">
+            ↺
+          </button>
         </div>
       </div>
-      <div class="terminal-content" @click="nextStep" :class="{ 'clickable': !isTyping && !isFinished }">
+      <div
+        class="terminal-content"
+        @click="nextStep"
+        :class="{ clickable: !isTyping && !isFinished }"
+      >
         <!-- Start Overlay -->
-        <div class="start-overlay" v-if="lines.length === 0 || (lines.length === 1 && lines[0].content === '' && currentStepIndex === -1)">
+        <div
+          class="start-overlay"
+          v-if="
+            lines.length === 0 ||
+            (lines.length === 1 &&
+              lines[0].content === '' &&
+              currentStepIndex === -1)
+          "
+        >
           <div class="start-hint">
             <span class="icon">👆</span>
             <span class="text">不断点击屏幕演示 / Keep Clicking</span>
@@ -43,22 +57,33 @@
 
         <div v-for="(line, index) in lines" :key="index" class="line">
           <template v-if="line.type === 'input'">
-            <span class="prompt">{{ line.prompt }}</span><span class="cmd-text">{{ line.content }}</span>
+            <span class="prompt">{{ line.prompt }}</span
+            ><span class="cmd-text">{{ line.content }}</span>
           </template>
           <template v-else>
             <span class="output-text">{{ line.content }}</span>
           </template>
         </div>
-        
+
         <!-- Active Input Line (when not animating or just waiting) -->
-        <div class="line input-line" v-if="lines.length === 0 || (!isTyping && lines[lines.length-1].type !== 'input' && !isFinished)">
-           <span class="prompt">{{ currentOSConfig.prompt }}</span>
-           <span class="cursor">_</span>
-           <span v-if="lines.length === 0" class="hint"> (点击屏幕继续 / Click screen to continue)</span>
-           <span v-else class="hint blink-hint"> ⏎ </span>
+        <div
+          class="line input-line"
+          v-if="
+            lines.length === 0 ||
+            (!isTyping &&
+              lines[lines.length - 1].type !== 'input' &&
+              !isFinished)
+          "
+        >
+          <span class="prompt">{{ currentOSConfig.prompt }}</span>
+          <span class="cursor">_</span>
+          <span v-if="lines.length === 0" class="hint">
+            (点击屏幕继续 / Click screen to continue)</span
+          >
+          <span v-else class="hint blink-hint"> ⏎ </span>
         </div>
       </div>
-      
+
       <!-- Explanation Bar -->
       <div class="explanation-bar" :class="{ visible: currentExplanation }">
         <span class="icon">💡</span>
@@ -90,17 +115,54 @@ const configs = {
     prompt: 'C:\\Users\\User>',
     demo: [
       { type: 'explanation', content: '准备输入命令...' },
-      { type: 'command', content: 'dir', delay: 400, explanation: '输入 `dir` (Directory)。这是 Windows 系统用来**列出当前文件夹内容**的命令。' },
-      { type: 'output', content: ' Volume in drive C has no label.', delay: 100, explanation: '系统正在执行命令...' },
-      { type: 'output', content: ' Volume Serial Number is A1B2-C3D4', delay: 50 },
+      {
+        type: 'command',
+        content: 'dir',
+        delay: 400,
+        explanation:
+          '输入 `dir` (Directory)。这是 Windows 系统用来**列出当前文件夹内容**的命令。'
+      },
+      {
+        type: 'output',
+        content: ' Volume in drive C has no label.',
+        delay: 100,
+        explanation: '系统正在执行命令...'
+      },
+      {
+        type: 'output',
+        content: ' Volume Serial Number is A1B2-C3D4',
+        delay: 50
+      },
       { type: 'output', content: '', delay: 50 },
       { type: 'output', content: ' Directory of C:\\Users\\User', delay: 50 },
       { type: 'output', content: '', delay: 50 },
-      { type: 'output', content: '01/15/2026  10:00 AM    <DIR>          .', delay: 50 },
-      { type: 'output', content: '01/15/2026  10:00 AM    <DIR>          ..', delay: 50 },
-      { type: 'output', content: '01/15/2026  10:00 AM               128 demo.txt', delay: 50 },
-      { type: 'output', content: '               1 File(s)            128 bytes', delay: 50 },
-      { type: 'output', content: '               2 Dir(s)  50,000,000,000 bytes free', delay: 50, explanation: '系统返回了文件列表。`<DIR>` 表示这是一个文件夹，数字表示文件大小。' },
+      {
+        type: 'output',
+        content: '01/15/2026  10:00 AM    <DIR>          .',
+        delay: 50
+      },
+      {
+        type: 'output',
+        content: '01/15/2026  10:00 AM    <DIR>          ..',
+        delay: 50
+      },
+      {
+        type: 'output',
+        content: '01/15/2026  10:00 AM               128 demo.txt',
+        delay: 50
+      },
+      {
+        type: 'output',
+        content: '               1 File(s)            128 bytes',
+        delay: 50
+      },
+      {
+        type: 'output',
+        content: '               2 Dir(s)  50,000,000,000 bytes free',
+        delay: 50,
+        explanation:
+          '系统返回了文件列表。`<DIR>` 表示这是一个文件夹，数字表示文件大小。'
+      },
       { type: 'output', content: '', delay: 100 }
     ]
   },
@@ -109,46 +171,137 @@ const configs = {
     prompt: 'PS C:\\Users\\User>',
     demo: [
       { type: 'explanation', content: '准备输入命令...' },
-      { type: 'command', content: 'Get-Date', delay: 400, explanation: '输入 `Get-Date`。PowerShell 使用动词-名词的命名方式，这里是**获取当前时间**。' },
-      { type: 'output', content: '', delay: 100, explanation: '系统返回了当前的日期和时间。' },
-      { type: 'output', content: 'Thursday, January 15, 2026 10:00:00 AM', delay: 100 },
+      {
+        type: 'command',
+        content: 'Get-Date',
+        delay: 400,
+        explanation:
+          '输入 `Get-Date`。PowerShell 使用动词-名词的命名方式，这里是**获取当前时间**。'
+      },
+      {
+        type: 'output',
+        content: '',
+        delay: 100,
+        explanation: '系统返回了当前的日期和时间。'
+      },
+      {
+        type: 'output',
+        content: 'Thursday, January 15, 2026 10:00:00 AM',
+        delay: 100
+      },
       { type: 'output', content: '', delay: 100 },
-      { type: 'command', content: 'echo "Hello World"', delay: 400, explanation: '输入 `echo`。这是让计算机**复读**你说的话，常用于测试或打印信息。' },
-      { type: 'output', content: 'Hello World', delay: 100, explanation: '计算机乖乖地输出了 "Hello World"。' }
+      {
+        type: 'command',
+        content: 'echo "Hello World"',
+        delay: 400,
+        explanation:
+          '输入 `echo`。这是让计算机**复读**你说的话，常用于测试或打印信息。'
+      },
+      {
+        type: 'output',
+        content: 'Hello World',
+        delay: 100,
+        explanation: '计算机乖乖地输出了 "Hello World"。'
+      }
     ]
   },
-  'mac': {
+  mac: {
     title: 'user — -zsh — 80x24',
     prompt: 'user@MacBook-Pro ~ % ',
     demo: [
       { type: 'explanation', content: '准备输入命令...' },
-      { type: 'command', content: 'ls -G', delay: 400, explanation: '输入 `ls` (List)。这是 Mac/Linux 系统用来**列出文件**的命令。`-G` 参数让输出带颜色。' },
-      { type: 'output', content: 'Desktop   Downloads   Movies    Music', delay: 100 },
-      { type: 'output', content: 'Documents Library     Pictures  Public', delay: 100, explanation: '系统列出了你的主目录下的文件夹。' },
-      { type: 'command', content: 'sw_vers', delay: 400, explanation: '输入 `sw_vers` (Software Version)。这是 macOS 特有的命令，查看**系统版本**。' },
+      {
+        type: 'command',
+        content: 'ls -G',
+        delay: 400,
+        explanation:
+          '输入 `ls` (List)。这是 Mac/Linux 系统用来**列出文件**的命令。`-G` 参数让输出带颜色。'
+      },
+      {
+        type: 'output',
+        content: 'Desktop   Downloads   Movies    Music',
+        delay: 100
+      },
+      {
+        type: 'output',
+        content: 'Documents Library     Pictures  Public',
+        delay: 100,
+        explanation: '系统列出了你的主目录下的文件夹。'
+      },
+      {
+        type: 'command',
+        content: 'sw_vers',
+        delay: 400,
+        explanation:
+          '输入 `sw_vers` (Software Version)。这是 macOS 特有的命令，查看**系统版本**。'
+      },
       { type: 'output', content: 'ProductName:		macOS', delay: 50 },
       { type: 'output', content: 'ProductVersion:		15.1', delay: 50 },
-      { type: 'output', content: 'BuildVersion:		24B83', delay: 50, explanation: '系统返回了当前的 macOS 版本信息。' }
+      {
+        type: 'output',
+        content: 'BuildVersion:		24B83',
+        delay: 50,
+        explanation: '系统返回了当前的 macOS 版本信息。'
+      }
     ]
   },
-  'linux': {
+  linux: {
     title: 'user@hostname: ~',
     prompt: 'user@hostname:~$ ',
     demo: [
       { type: 'explanation', content: '准备输入命令...' },
-      { type: 'command', content: 'ls -la', delay: 400, explanation: '输入 `ls` (List)。这是 Linux/Mac 系统用来**列出文件**的命令。`-la` 是参数，表示“列出所有文件(all)的详细信息(long)”。' },
-      { type: 'output', content: 'total 8', delay: 100, explanation: '系统返回了文件列表。左边的 `drwxr-xr-x` 看起来像乱码，其实是**权限描述**（谁能读、谁能写）。' },
-      { type: 'output', content: 'drwxr-xr-x  2 user user 4096 Jan 15 10:00 .', delay: 50 },
-      { type: 'output', content: 'drwxr-xr-x  3 user user 4096 Jan 15 10:00 ..', delay: 50 },
-      { type: 'output', content: '-rw-r--r--  1 user user  128 Jan 15 10:00 demo.txt', delay: 50 },
-      { type: 'command', content: 'whoami', delay: 400, explanation: '输入 `whoami` (Who am I)。这是一个经典的哲学命令（笑），告诉计算机：**我是谁？**（当前登录用户）。' },
-      { type: 'output', content: 'user', delay: 100, explanation: '系统回答：你是 "user"。' }
+      {
+        type: 'command',
+        content: 'ls -la',
+        delay: 400,
+        explanation:
+          '输入 `ls` (List)。这是 Linux/Mac 系统用来**列出文件**的命令。`-la` 是参数，表示“列出所有文件(all)的详细信息(long)”。'
+      },
+      {
+        type: 'output',
+        content: 'total 8',
+        delay: 100,
+        explanation:
+          '系统返回了文件列表。左边的 `drwxr-xr-x` 看起来像乱码，其实是**权限描述**（谁能读、谁能写）。'
+      },
+      {
+        type: 'output',
+        content: 'drwxr-xr-x  2 user user 4096 Jan 15 10:00 .',
+        delay: 50
+      },
+      {
+        type: 'output',
+        content: 'drwxr-xr-x  3 user user 4096 Jan 15 10:00 ..',
+        delay: 50
+      },
+      {
+        type: 'output',
+        content: '-rw-r--r--  1 user user  128 Jan 15 10:00 demo.txt',
+        delay: 50
+      },
+      {
+        type: 'command',
+        content: 'whoami',
+        delay: 400,
+        explanation:
+          '输入 `whoami` (Who am I)。这是一个经典的哲学命令（笑），告诉计算机：**我是谁？**（当前登录用户）。'
+      },
+      {
+        type: 'output',
+        content: 'user',
+        delay: 100,
+        explanation: '系统回答：你是 "user"。'
+      }
     ]
   }
 }
 
 const currentOSConfig = computed(() => configs[currentOS.value])
-const isFinished = computed(() => currentOSConfig.value && currentStepIndex.value >= currentOSConfig.value.demo.length - 1)
+const isFinished = computed(
+  () =>
+    currentOSConfig.value &&
+    currentStepIndex.value >= currentOSConfig.value.demo.length - 1
+)
 
 const switchOS = (id) => {
   currentOS.value = id
@@ -161,7 +314,11 @@ const resetDemo = () => {
   currentStepIndex.value = -1
   isTyping.value = false
   // Add initial prompt
-  lines.value.push({ type: 'input', prompt: currentOSConfig.value.prompt, content: '' })
+  lines.value.push({
+    type: 'input',
+    prompt: currentOSConfig.value.prompt,
+    content: ''
+  })
 }
 
 // Initial reset
@@ -169,77 +326,80 @@ watch(currentOSConfig, resetDemo, { immediate: true })
 
 const nextStep = async () => {
   if (isTyping.value || isFinished.value) return
-  
+
   const demoLines = currentOSConfig.value.demo
   const promptText = currentOSConfig.value.prompt
-  
+
   // Loop to process consecutive output lines or until a pause point
   while (currentStepIndex.value < demoLines.length - 1) {
     currentStepIndex.value++
     const step = demoLines[currentStepIndex.value]
-    
+
     // 1. Update Explanation if exists
     if (step.explanation) {
       currentExplanation.value = step.explanation
     }
-    
+
     // 2. Handle specific types
     if (step.type === 'explanation') {
       // Just show explanation and pause
       break
     }
-    
+
     if (step.type === 'command') {
       // Ensure input line exists
-      if (lines.value.length === 0 || lines.value[lines.value.length - 1].type !== 'input') {
-         lines.value.push({ type: 'input', prompt: promptText, content: '' })
+      if (
+        lines.value.length === 0 ||
+        lines.value[lines.value.length - 1].type !== 'input'
+      ) {
+        lines.value.push({ type: 'input', prompt: promptText, content: '' })
       }
-      
+
       // Type effect
       isTyping.value = true
       const text = step.content
       const targetLine = lines.value[lines.value.length - 1]
-      
+
       for (let i = 0; i < text.length; i++) {
         targetLine.content += text[i]
-        await new Promise(r => setTimeout(r, 30 + Math.random() * 40))
+        await new Promise((r) => setTimeout(r, 30 + Math.random() * 40))
       }
       isTyping.value = false
-      
+
       // Pause after typing command
       break
     }
-    
+
     if (step.type === 'output') {
       lines.value.push({ type: 'output', content: step.content })
-      
+
       // Logic to continue or pause:
       // Pause if:
       // - This output has an explanation (user needs to read)
       // - Next step is NOT output (it's a command or explanation block)
       // - Next step is output BUT has an explanation
-      
+
       if (step.explanation) {
         break
       }
-      
+
       const nextStep = demoLines[currentStepIndex.value + 1]
       if (!nextStep || nextStep.type !== 'output' || nextStep.explanation) {
         // If next is command, we might want to show a prompt before pausing?
-        // But the command step logic adds prompt. 
+        // But the command step logic adds prompt.
         // If we pause here, the user sees output. Next click -> types command.
         // Seems correct.
         break
       }
-      
+
       // Small delay between batched outputs for visual smoothness
-      await new Promise(r => setTimeout(r, 50))
+      await new Promise((r) => setTimeout(r, 50))
     }
   }
-  
+
   // If we finished everything, add a final prompt
   if (isFinished.value) {
-     lines.value.push({ type: 'input', prompt: promptText, content: '' })
+    lines.value.push({ type: 'input', prompt: promptText, content: '' })
   }
 }
 </script>
@@ -345,9 +505,15 @@ const nextStep = async () => {
 .terminal-window.linux .window-buttons .btn {
   border-radius: 50%;
 }
-.terminal-window.linux .window-buttons .close { background: #ff5f56; }
-.terminal-window.linux .window-buttons .minimize { background: #ffbd2e; }
-.terminal-window.linux .window-buttons .maximize { background: #27c93f; }
+.terminal-window.linux .window-buttons .close {
+  background: #ff5f56;
+}
+.terminal-window.linux .window-buttons .minimize {
+  background: #ffbd2e;
+}
+.terminal-window.linux .window-buttons .maximize {
+  background: #27c93f;
+}
 
 /* Common Layout */
 .terminal-window.mac {
@@ -363,9 +529,15 @@ const nextStep = async () => {
 .terminal-window.mac .window-buttons .btn {
   border-radius: 50%;
 }
-.terminal-window.mac .window-buttons .close { background: #ff5f56; }
-.terminal-window.mac .window-buttons .minimize { background: #ffbd2e; }
-.terminal-window.mac .window-buttons .maximize { background: #27c93f; }
+.terminal-window.mac .window-buttons .close {
+  background: #ff5f56;
+}
+.terminal-window.mac .window-buttons .minimize {
+  background: #ffbd2e;
+}
+.terminal-window.mac .window-buttons .maximize {
+  background: #27c93f;
+}
 
 .window-bar {
   padding: 8px 12px;
@@ -478,14 +650,20 @@ const nextStep = async () => {
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .completed-overlay {
@@ -513,7 +691,7 @@ const nextStep = async () => {
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -595,8 +773,13 @@ const nextStep = async () => {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .hint {

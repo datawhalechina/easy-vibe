@@ -11,14 +11,13 @@
   </div>
 </el-card>
 
+<script setup>
+const duration = '约 <strong>4 小时</strong>，可分多次完成'
+</script>
+
 ## 本章导读
 
-<ChapterIntroduction
-  duration="约 <strong>4 小时</strong>，可分多次完成"
-  :tags="['对话式 AI 编程', 'AI 原生小游戏', '贪吃蛇实战']"
-  coreOutput="AI 原生贪吃蛇 + 自创小游戏"
-  expectedOutput="1 个可运行的 AI 原生贪吃蛇 + （可选）1 个你自创的 AI 原生小游戏或 Demo"
->
+<ChapterIntroduction :duration="duration" :tags="['对话式 AI 编程', 'AI 原生小游戏', '贪吃蛇实战']" coreOutput="AI 原生贪吃蛇 + 自创小游戏" expectedOutput="1 个可运行的 AI 原生贪吃蛇 + （可选）1 个你自创的 AI 原生小游戏或 Demo">
 
 在这一节，你会用对话式 AI 做出第一个 AI 原生小游戏——一款会“吃单词、写诗、画画”的贪吃蛇，并借此搞清楚 AI 编程的初步效果。
 

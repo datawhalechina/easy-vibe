@@ -7,7 +7,12 @@
         </el-button>
       </div>
 
-      <el-steps :active="activeStep" align-center finish-status="success" class="steps">
+      <el-steps
+        :active="activeStep"
+        align-center
+        finish-status="success"
+        class="steps"
+      >
         <el-step title="音频信号" description="连续波形" />
         <el-step title="切片 (Chunking)" description="20ms/帧" />
         <el-step title="量化 (Quantization)" description="查字典" />
@@ -18,8 +23,15 @@
         <!-- Stage 0: Audio -->
         <div v-if="activeStep === 0" class="stage-content audio-stage">
           <div class="waveform-viz">
-            <div class="wave-bar" v-for="n in 20" :key="n" 
-                 :style="{ height: (30 + Math.random() * 50) + '%', animationDelay: n * 0.1 + 's' }"></div>
+            <div
+              class="wave-bar"
+              v-for="n in 20"
+              :key="n"
+              :style="{
+                height: 30 + Math.random() * 50 + '%',
+                animationDelay: n * 0.1 + 's'
+              }"
+            ></div>
           </div>
           <div class="stage-desc">原始的连续模拟信号或高采样率数字信号</div>
         </div>
@@ -28,26 +40,41 @@
         <div v-if="activeStep === 1" class="stage-content chunks-stage">
           <div class="chunks-container">
             <div class="chunk-item" v-for="n in 5" :key="n">
-              <span class="chunk-label">Frame {{n}}</span>
+              <span class="chunk-label">Frame {{ n }}</span>
             </div>
           </div>
-          <div class="stage-desc">将音频切分为固定长度的小片段（例如 20ms）</div>
+          <div class="stage-desc">
+            将音频切分为固定长度的小片段（例如 20ms）
+          </div>
         </div>
 
         <!-- Stage 2: Codebook -->
         <div v-if="activeStep === 2" class="stage-content codebook-stage">
           <div class="codebook-grid">
-            <div class="codebook-entry" v-for="n in 9" :key="n" :class="{ 'highlight': n === currentMatch }">
+            <div
+              class="codebook-entry"
+              v-for="n in 9"
+              :key="n"
+              :class="{ highlight: n === currentMatch }"
+            >
               {{ 1024 + n * 50 }}
             </div>
           </div>
-          <div class="stage-desc">在预训练的"声音字典"中寻找最接近的特征向量</div>
+          <div class="stage-desc">
+            在预训练的"声音字典"中寻找最接近的特征向量
+          </div>
         </div>
 
         <!-- Stage 3: Tokens -->
         <div v-if="activeStep === 3" class="stage-content token-stage">
           <div class="token-list">
-            <el-tag v-for="(token, index) in tokens" :key="index" effect="dark" size="large" class="token-tag">
+            <el-tag
+              v-for="(token, index) in tokens"
+              :key="index"
+              effect="dark"
+              size="large"
+              class="token-tag"
+            >
               {{ token }}
             </el-tag>
           </div>
@@ -83,7 +110,7 @@
           </el-col>
         </el-row>
       </div>
-      
+
       <el-alert
         title="为什么要做 Tokenization?"
         type="warning"
@@ -108,29 +135,29 @@ const playDemo = async () => {
   if (isPlaying.value) return
   isPlaying.value = true
   activeStep.value = 0
-  
+
   // Step 0 -> 1
   await wait(1000)
   activeStep.value = 1
-  
+
   // Step 1 -> 2
   await wait(1500)
   activeStep.value = 2
-  
+
   // Simulate codebook matching
   for (let i = 0; i < 5; i++) {
     currentMatch.value = Math.floor(Math.random() * 9) + 1
     await wait(200)
   }
   currentMatch.value = 0
-  
+
   // Step 2 -> 3
   activeStep.value = 3
-  
+
   isPlaying.value = false
 }
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 </script>
 
 <style scoped>
@@ -186,8 +213,15 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 }
 
 @keyframes wave {
-  0%, 100% { height: 30%; opacity: 0.5; }
-  50% { height: 100%; opacity: 1; }
+  0%,
+  100% {
+    height: 30%;
+    opacity: 0.5;
+  }
+  50% {
+    height: 100%;
+    opacity: 1;
+  }
 }
 
 /* Chunks Stage */

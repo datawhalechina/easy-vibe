@@ -1,256 +1,132 @@
+<!--
+  ChainOfThoughtDemo.vue
+  “先计划再输出”演示（更易懂版本）。
+
+  注意：这里不强调让模型展示冗长推理，而是用“先列计划/检查点”来降低跑偏概率。
+-->
 <template>
-  <div class="chain-of-thought-demo">
-    <div class="comparison-container">
-      <!-- Direct Answer -->
-      <div class="method-card">
-        <div class="method-header">
-          <span class="method-icon">⚡</span>
-          <span class="method-title">直接回答</span>
-        </div>
-        <div class="method-body">
-          <div class="prompt-box">
-            <div class="prompt-label">提示词</div>
-            <div class="prompt-text">
-              罗杰有 5 个网球。他又买了 2 罐网球，每罐有 3 个球。
-              现在他总共有多少个网球？
-            </div>
-          </div>
-
-          <div class="arrow">↓</div>
-
-          <div class="result-box">
-            <div class="result-label">AI 可能的输出</div>
-            <div class="result-content bad">
-              "11 个球。"
-              <br><br>
-              <span class="badge">错误 ❌</span>
-            </div>
-          </div>
-        </div>
+  <div class="cot">
+    <div class="header">
+      <div>
+        <div class="title">复杂任务：先“列计划”，再“交付结果”</div>
+        <div class="subtitle">你要的是：不漏步骤 + 可检查 + 不跑题。</div>
       </div>
-
-      <!-- Chain of Thought -->
-      <div class="method-card highlight">
-        <div class="method-header">
-          <span class="method-icon">🧠</span>
-          <span class="method-title">思维链 (CoT)</span>
-        </div>
-        <div class="method-body">
-          <div class="prompt-box">
-            <div class="prompt-label">提示词</div>
-            <div class="prompt-text">
-              罗杰有 5 个网球。他又买了 2 罐网球，每罐有 3 个球。
-              现在他总共有多少个网球？
-              <br><br>
-              <span class="instruction">请一步步思考：</span>
-            </div>
-          </div>
-
-          <div class="arrow">↓</div>
-
-          <div class="result-box">
-            <div class="result-label">AI 输出</div>
-            <div class="result-content good">
-              <div class="thinking-process">
-                ① 罗杰原本有 5 个球<br>
-                ② 他买了 2 罐，每罐 3 个：2 × 3 = 6 个<br>
-                ③ 总共：5 + 6 = 11 个
-              </div>
-              <div class="final-answer">
-                <strong>答案：11 个球</strong>
-              </div>
-              <span class="badge success">正确 ✅</span>
-            </div>
-          </div>
-        </div>
+      <div class="controls">
+        <select v-model="task">
+          <option value="debug">代码审查</option>
+          <option value="plan">行程规划</option>
+        </select>
+        <button
+          v-for="m in modes"
+          :key="m.id"
+          :class="['mode', { active: mode === m.id }]"
+          @click="mode = m.id"
+        >
+          {{ m.label }}
+        </button>
       </div>
     </div>
 
-    <div class="explanation">
-      <div class="exp-item">
-        <span class="exp-icon">🔍</span>
-        <span><strong>思维链</strong>：让 AI "展示思考过程"，一步步推理问题。
-        对于数学、逻辑、推理类问题特别有效！</span>
+    <div class="grid">
+      <div class="panel">
+        <div class="panel-title">提示词 / Prompt</div>
+        <pre><code>{{ prompt }}</code></pre>
       </div>
-      <div class="exp-item">
-        <span class="exp-icon">📝</span>
-        <span><strong>触发词</strong>：使用"请一步步思考"、"详细说明推理过程"等提示语可以激活 CoT</span>
+      <div class="panel">
+        <div class="panel-title">输出（示意）</div>
+        <div class="output">{{ output }}</div>
       </div>
-      <div class="exp-item">
-        <span class="exp-icon">🎯</span>
-        <span><strong>适用场景</strong>：数学计算、逻辑推理、复杂问题拆解、多步骤任务</span>
+    </div>
+
+    <div class="why">
+      <div class="why-title">为什么这样更稳？</div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="k">✅ 不漏步骤</div>
+          <div class="v">计划就是清单，能一项项对照。</div>
+        </div>
+        <div class="why-card">
+          <div class="k">✅ 更好验收</div>
+          <div class="v">你知道该检查什么，而不是只看“像不像”。</div>
+        </div>
+        <div class="why-card">
+          <div class="k">✅ 更少返工</div>
+          <div class="v">先对齐方向，再生成结果，减少来回修。</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-.chain-of-thought-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 20px;
-  background: var(--vp-c-bg-soft);
-  margin: 20px 0;
-}
+<script setup>
+import { computed, ref } from 'vue'
 
-.comparison-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
+const task = ref('debug')
+const mode = ref('plan-first')
 
-@media (max-width: 768px) {
-  .comparison-container {
-    grid-template-columns: 1fr;
+const modes = [
+  { id: 'direct', label: '直接输出' },
+  { id: 'plan-first', label: '先列计划再输出' }
+]
+
+const prompt = computed(() => {
+  if (task.value === 'debug') {
+    if (mode.value === 'direct') {
+      return '帮我看看这段代码有什么问题，并给修复建议。'
+    }
+    return `你是资深前端工程师。\n任务：代码审查。\n要求：\n1) 先列“检查清单”（3-5 项），说明你将检查什么\n2) 再输出问题列表（每条包含：现象/原因/修复）\n3) 最后给一段修复后的代码（仅关键片段）`
   }
-}
+  // plan
+  if (mode.value === 'direct') return '帮我做一个上海三日游行程，越详细越好。'
+  return `你是旅行规划师。\n任务：上海三日游。\n要求：\n1) 先列“规划原则”（交通/节奏/预算）\n2) 再给 Day1-Day3 行程（每段 3-5 个地点）\n3) 每天最后给一句“备选方案”\n输出：Markdown`
+})
 
-.method-card {
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  overflow: hidden;
-}
+const output = computed(() => {
+  if (task.value === 'debug') {
+    if (mode.value === 'direct') {
+      return '代码可能有一些问题，比如命名不规范、性能不佳……（容易泛泛而谈/漏点）'
+    }
+    return `检查清单：\n- 边界条件（空值/类型）\n- 异步/错误处理\n- 性能（重复计算/循环）\n- 可读性（命名/拆分）\n\n问题列表：\n1) 现象：…\n   原因：…\n   修复：…\n2) 现象：…\n   原因：…\n   修复：…\n\n修复片段：\n// ...关键修改代码...`
+  }
+  if (mode.value === 'direct') {
+    return 'Day1：外滩…Day2：迪士尼…Day3：田子坊…（可能太散/不成体系）'
+  }
+  return `规划原则：\n- 交通：地铁优先\n- 节奏：上午景点，下午咖啡/逛街\n- 预算：人均 300-500/天\n\nDay1：外滩 → 南京路 → 人民广场\n备选：雨天去博物馆\n\nDay2：豫园 → 城隍庙 → 新天地\n备选：改为室内商场+展览\n\nDay3：武康路 → 安福路 → 徐汇滨江\n备选：去书店/美术馆`
+})
+</script>
 
-.method-card.highlight {
-  border-color: #22c55e;
-}
-
-.method-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 15px;
-  background: var(--vp-c-bg-mute);
-}
-
-.method-card.highlight .method-header {
-  background: rgba(34, 197, 94, 0.1);
-}
-
-.method-icon {
-  font-size: 1.3rem;
-}
-
-.method-title {
-  font-weight: bold;
-  font-size: 0.95rem;
-  color: var(--vp-c-text-1);
-}
-
-.method-body {
-  padding: 15px;
-}
-
-.prompt-box {
-  background: var(--vp-c-bg-soft);
+<style scoped>
+.cot {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 12px;
-  margin-bottom: 15px;
-}
-
-.prompt-label {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
-
-.prompt-text {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-1);
-  line-height: 1.6;
-}
-
-.instruction {
-  color: #22c55e;
-  font-weight: 600;
-}
-
-.arrow {
-  text-align: center;
-  font-size: 1.5rem;
-  color: var(--vp-c-text-3);
-  margin: 10px 0;
-}
-
-.result-box {
+  border-radius: 12px;
   background: var(--vp-c-bg-soft);
-  border-radius: 6px;
-  padding: 12px;
-}
-
-.result-label {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
-
-.result-content {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.thinking-process {
-  background: #000;
-  border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 10px;
-  font-family: monospace;
-  font-size: 0.85rem;
-  color: #a1a1aa;
-}
-
-.final-answer {
-  color: var(--vp-c-text-1);
-  margin-bottom: 8px;
-}
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.badge:not(.success) {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-}
-
-.badge.success {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-}
-
-.explanation {
+  padding: 16px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.exp-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: var(--vp-c-bg);
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.5;
-}
+.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.title { font-weight: 800; }
+.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
 
-.exp-icon {
-  font-size: 1.3rem;
-}
+.controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+select { border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 8px 10px; background: var(--vp-c-bg); color: var(--vp-c-text-1); }
+.mode { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+.mode.active { border-color: var(--vp-c-brand); color: var(--vp-c-brand); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.panel-title { font-weight: 700; }
+pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
+.output { white-space: pre-wrap; line-height: 1.6; }
+
+.why { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 12px; }
+.why-title { font-weight: 700; margin-bottom: 8px; }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.why-card { border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 10px; background: var(--vp-c-bg-soft); }
+.k { font-weight: 800; }
+.v { color: var(--vp-c-text-2); font-size: 13px; margin-top: 4px; line-height: 1.5; }
 </style>
+

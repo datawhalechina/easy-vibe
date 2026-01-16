@@ -5,7 +5,9 @@
       <div class="controls">
         <button @click="reset" :disabled="isPlaying">Reset</button>
         <button @click="togglePlay" class="play-btn">
-          {{ isPlaying ? '⏸ Pause' : (isFinished ? '↺ Replay' : '▶ Play Animation') }}
+          {{
+            isPlaying ? '⏸ Pause' : isFinished ? '↺ Replay' : '▶ Play Animation'
+          }}
         </button>
       </div>
     </div>
@@ -15,16 +17,19 @@
       <div class="label">Input Byte Stream / 输入字节流</div>
       <div class="stream-track">
         <div class="stream-window-mask">
-          <div class="stream-content" :style="{ transform: `translateX(-${currentIndex * 40}px)` }">
-            <div 
-              v-for="(char, index) in charStream" 
+          <div
+            class="stream-content"
+            :style="{ transform: `translateX(-${currentIndex * 40}px)` }"
+          >
+            <div
+              v-for="(char, index) in charStream"
               :key="index"
               class="char-box"
-              :class="{ 
-                'active': index === currentIndex,
-                'processed': index < currentIndex,
-                'special': char.isSpecial,
-                'arg': char.isArg
+              :class="{
+                active: index === currentIndex,
+                processed: index < currentIndex,
+                special: char.isSpecial,
+                arg: char.isArg
               }"
             >
               <span class="char-val">{{ char.display }}</span>
@@ -47,11 +52,14 @@
         <div class="state-desc">Print Characters</div>
       </div>
       <div class="arrow-right">→</div>
-      <div class="state-box warning" :class="{ active: parserState === 'ESCAPE' }">
+      <div
+        class="state-box warning"
+        :class="{ active: parserState === 'ESCAPE' }"
+      >
         <div class="state-name">ESCAPE MODE</div>
         <div class="state-desc">Buffer Command...</div>
       </div>
-      
+
       <!-- 指令说明框 -->
       <div class="action-log" v-if="lastAction">
         <span class="action-icon">⚡</span>
@@ -63,18 +71,22 @@
     <div class="terminal-screen">
       <div class="label">Terminal Screen / 屏幕显示</div>
       <div class="screen-content">
-        <span 
-          v-for="(char, index) in outputBuffer" 
+        <span
+          v-for="(char, index) in outputBuffer"
           :key="index"
           :style="char.style"
-        >{{ char.val }}</span><span class="cursor">_</span>
+          >{{ char.val }}</span
+        ><span class="cursor">_</span>
       </div>
     </div>
 
     <div class="explanation">
       <p>
         <span class="badge normal">Normal</span> 模式下，字符直接上屏。
-        <span class="badge escape">Escape</span> 模式下（遇到 <code>ESC</code> 后），终端<strong>停止输出</strong>，开始收集字符作为指令，直到指令结束（如 <code>m</code>）并执行。
+        <span class="badge escape">Escape</span> 模式下（遇到
+        <code>ESC</code>
+        后），终端<strong>停止输出</strong>，开始收集字符作为指令，直到指令结束（如
+        <code>m</code>）并执行。
       </p>
     </div>
   </div>
@@ -135,7 +147,7 @@ const togglePlay = () => {
 const play = async () => {
   if (isPlaying.value) return
   isPlaying.value = true
-  
+
   // If finished, reset first
   if (isFinished.value) {
     reset()
@@ -146,7 +158,7 @@ const play = async () => {
     if (!isPlaying.value) break
 
     const char = charStream.value[currentIndex.value]
-    
+
     // Processing Logic
     if (parserState.value === 'NORMAL') {
       if (char.val === '\x1B') {
@@ -171,23 +183,23 @@ const play = async () => {
           currentStyle.value = {}
           lastAction.value = 'Execute: Reset Style'
         }
-        
+
         // Small delay to show "Executing" state
-        await new Promise(r => setTimeout(r, 200))
+        await new Promise((r) => setTimeout(r, 200))
         parserState.value = 'NORMAL'
       } else {
         lastAction.value = 'Buffering...'
       }
     }
 
-    await new Promise(r => setTimeout(r, 600)) // Animation speed
-    
+    await new Promise((r) => setTimeout(r, 600)) // Animation speed
+
     // Check playing again after wait
     if (!isPlaying.value) break
-    
+
     currentIndex.value++
   }
-  
+
   if (currentIndex.value >= charStream.value.length) {
     isPlaying.value = false
     isFinished.value = true
@@ -272,8 +284,20 @@ const play = async () => {
   position: relative;
   height: 100%;
   /* Mask gradient to fade edges */
-  mask-image: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%,
+    black 60%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40%,
+    black 60%,
+    transparent
+  );
 }
 
 .stream-content {
@@ -290,7 +314,7 @@ const play = async () => {
      - Item[0] center is at: 18px (half width)
      - So we need to shift left by 18px initially.
   */
-  margin-left: -18px; 
+  margin-left: -18px;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -312,7 +336,7 @@ const play = async () => {
   background: #fff;
   color: #000;
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   z-index: 10;
   border-color: #fff;
 }
@@ -339,8 +363,15 @@ const play = async () => {
   color: #fff;
 }
 
-.char-val { font-size: 14px; font-weight: bold; }
-.char-code { font-size: 9px; opacity: 0.7; margin-top: 2px; }
+.char-val {
+  font-size: 14px;
+  font-weight: bold;
+}
+.char-code {
+  font-size: 9px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
 
 .pointer {
   position: absolute;
@@ -350,9 +381,14 @@ const play = async () => {
   text-align: center;
   color: #0dbc79;
 }
-.arrow { font-size: 20px; line-height: 1; }
-.pointer-label { font-size: 10px; white-space: nowrap; }
-
+.arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+.pointer-label {
+  font-size: 10px;
+  white-space: nowrap;
+}
 
 /* State Machine */
 .parser-state-machine {
@@ -389,10 +425,19 @@ const play = async () => {
   color: #000;
 }
 
-.state-name { font-weight: bold; font-size: 12px; }
-.state-desc { font-size: 10px; opacity: 0.8; }
+.state-name {
+  font-weight: bold;
+  font-size: 12px;
+}
+.state-desc {
+  font-size: 10px;
+  opacity: 0.8;
+}
 
-.arrow-right { color: #555; font-size: 18px; }
+.arrow-right {
+  color: #555;
+  font-size: 18px;
+}
 
 .action-log {
   margin-left: 20px;
@@ -440,10 +485,24 @@ const play = async () => {
   font-size: 11px;
   color: #000;
 }
-.badge.normal { background: #0dbc79; }
-.badge.escape { background: #e5e510; }
+.badge.normal {
+  background: #0dbc79;
+}
+.badge.escape {
+  background: #e5e510;
+}
 
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes flash { 0% { background: #333; } 100% { background: #000; } }
-
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0% {
+    background: #333;
+  }
+  100% {
+    background: #000;
+  }
+}
 </style>

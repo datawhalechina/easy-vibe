@@ -14,12 +14,12 @@ const base = isVercel ? '/' : '/easy-vibe/'
 
 ### 部署环境对比
 
-| 平台 | Base 路径 | 示例 URL |
-|------|----------|----------|
-| **Vercel** | `/` | `https://your-project.vercel.app/cn/stage-0/...` |
+| 平台             | Base 路径     | 示例 URL                                                    |
+| ---------------- | ------------- | ----------------------------------------------------------- |
+| **Vercel**       | `/`           | `https://your-project.vercel.app/cn/stage-0/...`            |
 | **GitHub Pages** | `/easy-vibe/` | `https://datawhalechina.github.io/easy-vibe/cn/stage-0/...` |
-| **本地开发** | `/easy-vibe/` | `http://localhost:5173/easy-vibe/cn/stage-0/...` |
-| **本地预览** | `/easy-vibe/` | `http://localhost:4173/easy-vibe/cn/stage-0/...` |
+| **本地开发**     | `/easy-vibe/` | `http://localhost:5173/easy-vibe/cn/stage-0/...`            |
+| **本地预览**     | `/easy-vibe/` | `http://localhost:4173/easy-vibe/cn/stage-0/...`            |
 
 ### 首页动态链接
 
@@ -41,6 +41,7 @@ const base = site.value.base
 ```
 
 **优点**：
+
 - ✅ 无需硬编码 fallback 值
 - ✅ 自动适配 Vercel 和 GitHub Pages
 - ✅ 构建时和运行时都正确
@@ -63,6 +64,7 @@ const base = site.value.base
    - 或使用 GitHub Actions 从 `main` 分支部署
 
 2. 构建命令：
+
    ```bash
    npm run build
    ```
@@ -86,6 +88,7 @@ const base = site.value.base
 **原因**：Vercel 环境变量未正确设置
 
 **解决**：
+
 1. 检查 Vercel 项目设置中 `Environment Variables`
 2. 确保 `VERCEL` = `1` 已设置（通常自动设置）
 3. 重新部署
@@ -95,6 +98,7 @@ const base = site.value.base
 **原因**：缺少 `/easy-vibe/` base 路径
 
 **解决**：
+
 1. 检查 `docs/.vitepress/config.mjs` 中的 base 配置
 2. 确保 GitHub Pages 环境下 `isVercel = false`
 3. 重新构建并部署
@@ -104,6 +108,7 @@ const base = site.value.base
 **原因**：使用了错误的预览命令
 
 **解决**：
+
 ```bash
 # 错误
 npm run preview  # 默认端口 4173，但路径可能不对

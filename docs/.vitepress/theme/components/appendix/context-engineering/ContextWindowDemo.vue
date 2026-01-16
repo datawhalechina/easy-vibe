@@ -83,13 +83,17 @@
     <div class="tips">
       <div class="tip">
         <span class="tip-icon">💡</span>
-        <span><strong>选择合适的模型</strong>：短对话用短上下文模型（更快更便宜），
-        长文档分析用长上下文模型（避免信息丢失）</span>
+        <span
+          ><strong>选择合适的模型</strong>：短对话用短上下文模型（更快更便宜），
+          长文档分析用长上下文模型（避免信息丢失）</span
+        >
       </div>
       <div class="tip">
         <span class="tip-icon">📏</span>
-        <span><strong>注意 Token 计算</strong>：1 Token ≈ 0.75 个英文单词 或 0.5-1 个汉字。
-        100K tokens 大约等于一本 300 页的书</span>
+        <span
+          ><strong>注意 Token 计算</strong>：1 Token ≈ 0.75 个英文单词 或 0.5-1
+          个汉字。 100K tokens 大约等于一本 300 页的书</span
+        >
       </div>
     </div>
   </div>

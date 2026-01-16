@@ -15,13 +15,13 @@
   <div class="grid-demo">
     <div class="terminal-screen">
       <div class="grid-row" v-for="(row, rIndex) in rows" :key="rIndex">
-        <div 
-          class="grid-cell" 
-          v-for="(cell, cIndex) in row" 
+        <div
+          class="grid-cell"
+          v-for="(cell, cIndex) in row"
           :key="cIndex"
-          :class="{ 
+          :class="{
             'active-cursor': cursor.r === rIndex && cursor.c === cIndex,
-            'drawn': cell.drawn 
+            drawn: cell.drawn
           }"
           @mousedown.prevent="handleCellMouseDown(rIndex, cIndex)"
           @mouseover="handleCellHover(rIndex, cIndex)"
@@ -30,12 +30,12 @@
         </div>
       </div>
     </div>
-    
+
     <div class="controls">
-      <input 
+      <input
         ref="inputRef"
-        type="text" 
-        v-model="inputText" 
+        type="text"
+        v-model="inputText"
         placeholder="Type here..."
         class="text-input"
         @keydown="handleKeydown"
@@ -52,9 +52,10 @@ import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 const ROW_COUNT = 10
 const COL_COUNT = 40
 
-const createGrid = () => Array.from({ length: ROW_COUNT }, () => 
-  Array.from({ length: COL_COUNT }, () => ({ char: '', drawn: false }))
-)
+const createGrid = () =>
+  Array.from({ length: ROW_COUNT }, () =>
+    Array.from({ length: COL_COUNT }, () => ({ char: '', drawn: false }))
+  )
 
 const rows = reactive(createGrid())
 const cursor = reactive({ r: 0, c: 0 })
@@ -76,12 +77,12 @@ const handleKeydown = (e) => {
     rows[cursor.r][cursor.c].char = ''
     return
   }
-  
+
   if (e.key.length === 1) {
     rows[cursor.r][cursor.c].char = e.key
     advanceCursor()
   }
-  
+
   if (e.key === 'Enter') {
     cursor.r = Math.min(cursor.r + 1, ROW_COUNT - 1)
     cursor.c = 0
@@ -116,8 +117,8 @@ const handleCellHover = (r, c) => {
 }
 
 const clearGrid = () => {
-  for(let r=0; r<ROW_COUNT; r++) {
-    for(let c=0; c<COL_COUNT; c++) {
+  for (let r = 0; r < ROW_COUNT; r++) {
+    for (let c = 0; c < COL_COUNT; c++) {
       rows[r][c].char = ''
       rows[r][c].drawn = false
     }
@@ -181,66 +182,68 @@ onBeforeUnmount(() => {
 }
 
 .grid-cell {
-    width: 16px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid #27272a;
-    border-bottom: 1px solid #27272a;
-    color: #e4e4e7;
-    font-size: 14px;
-    user-select: none;
+  width: 16px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #27272a;
+  border-bottom: 1px solid #27272a;
+  color: #e4e4e7;
+  font-size: 14px;
+  user-select: none;
+}
+
+.grid-cell.drawn {
+  background-color: #3f3f46;
+}
+
+.grid-cell.active-cursor {
+  background-color: #e4e4e7;
+  color: #000;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.7;
   }
-  
-  .grid-cell.drawn {
-    background-color: #3f3f46;
-  }
-  
-  .grid-cell.active-cursor {
-    background-color: #e4e4e7;
-    color: #000;
-    animation: blink 1s step-end infinite;
-  }
-  
-  @keyframes blink {
-    50% { opacity: 0.7; }
-  }
-  
-  .controls {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .text-input {
-    background: #18181b;
-    border: 1px solid #3f3f46;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-family: inherit;
-  }
-  
-  .btn {
-    background: #27272a;
-    border: 1px solid #3f3f46;
-    color: #e4e4e7;
-    padding: 6px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .btn:hover {
-    background: #3f3f46;
-    border-color: #52525b;
-  }
-  
-  .hint {
-    color: #a1a1aa; /* Zinc 400 */
-    font-size: 12px;
-    margin-left: auto;
-  }
-  </style>
+}
+
+.controls {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.text-input {
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.btn {
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  color: #e4e4e7;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: #3f3f46;
+  border-color: #52525b;
+}
+
+.hint {
+  color: #a1a1aa; /* Zinc 400 */
+  font-size: 12px;
+  margin-left: auto;
+}
+</style>

@@ -10,7 +10,12 @@
           </div>
           <div class="grid-wrapper pixel-wrapper">
             <div class="pixel-grid">
-              <div v-for="n in 256" :key="n" class="pixel-cell" :style="getPixelStyle(n)"></div>
+              <div
+                v-for="n in 256"
+                :key="n"
+                class="pixel-cell"
+                :style="getPixelStyle(n)"
+              ></div>
             </div>
             <div class="grid-overlay">
               <span>HD Image</span>
@@ -38,7 +43,9 @@
             </div>
             <el-icon :size="24" class="arrow-icon"><Right /></el-icon>
           </div>
-          <el-tag type="danger" size="small" effect="dark" class="compress-tag">压缩 48x</el-tag>
+          <el-tag type="danger" size="small" effect="dark" class="compress-tag"
+            >压缩 48x</el-tag
+          >
         </div>
 
         <!-- Latent Space -->
@@ -49,7 +56,12 @@
           </div>
           <div class="grid-wrapper latent-wrapper">
             <div class="latent-grid">
-              <div v-for="n in 16" :key="n" class="latent-cell" :style="getLatentStyle(n)"></div>
+              <div
+                v-for="n in 16"
+                :key="n"
+                class="latent-cell"
+                :style="getLatentStyle(n)"
+              ></div>
             </div>
             <div class="grid-overlay">
               <span>Latent Feature</span>
@@ -207,7 +219,7 @@ const getLatentStyle = (n) => {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-size: 0.75em;
   padding: 4px 8px;
@@ -265,12 +277,12 @@ const getLatentStyle = (n) => {
   .viz-container {
     flex-direction: column;
   }
-  
+
   .transform-process {
     transform: rotate(90deg);
     margin: 10px 0;
   }
-  
+
   .compress-tag {
     display: none; /* Hide tag when rotated to avoid layout issues */
   }

@@ -5,8 +5,8 @@
       <div class="stage">
         <div class="stage-label">1. Processed Patches (Grid)</div>
         <div class="grid-container">
-          <div 
-            v-for="(item, index) in items" 
+          <div
+            v-for="(item, index) in items"
             :key="index"
             class="grid-item"
             :class="{ active: activeIndex === index }"
@@ -24,10 +24,12 @@
 
       <!-- 2. Feature Vector Sequence -->
       <div class="stage">
-        <div class="stage-label">2. Feature Vector Sequence (The "Image Sentence")</div>
+        <div class="stage-label">
+          2. Feature Vector Sequence (The "Image Sentence")
+        </div>
         <div class="vector-sequence">
-          <div 
-            v-for="(item, index) in items" 
+          <div
+            v-for="(item, index) in items"
             :key="index"
             class="vector-wrapper"
             :class="{ active: activeIndex === index }"
@@ -35,11 +37,26 @@
           >
             <div class="vector-col">
               <!-- Simulated vector dimensions -->
-              <div class="v-cell" :style="{ opacity: 0.9, background: item.color }"></div>
-              <div class="v-cell" :style="{ opacity: 0.7, background: item.color }"></div>
-              <div class="v-cell" :style="{ opacity: 0.5, background: item.color }"></div>
-              <div class="v-cell" :style="{ opacity: 0.8, background: item.color }"></div>
-              <div class="v-cell" :style="{ opacity: 0.6, background: item.color }"></div>
+              <div
+                class="v-cell"
+                :style="{ opacity: 0.9, background: item.color }"
+              ></div>
+              <div
+                class="v-cell"
+                :style="{ opacity: 0.7, background: item.color }"
+              ></div>
+              <div
+                class="v-cell"
+                :style="{ opacity: 0.5, background: item.color }"
+              ></div>
+              <div
+                class="v-cell"
+                :style="{ opacity: 0.8, background: item.color }"
+              ></div>
+              <div
+                class="v-cell"
+                :style="{ opacity: 0.6, background: item.color }"
+              ></div>
             </div>
             <div class="vector-idx">{{ index + 1 }}</div>
           </div>
@@ -53,7 +70,10 @@
         <div class="header" :style="{ borderColor: items[activeIndex].color }">
           <span class="large-icon">{{ items[activeIndex].icon }}</span>
           <div class="title-group">
-            <span class="title">Token #{{ activeIndex + 1 }}: {{ items[activeIndex].label }}</span>
+            <span class="title"
+              >Token #{{ activeIndex + 1 }}:
+              {{ items[activeIndex].label }}</span
+            >
             <span class="subtitle">Type: {{ items[activeIndex].type }}</span>
           </div>
         </div>
@@ -61,7 +81,9 @@
           <div class="vector-repr">
             <span class="label">Vector Value:</span>
             <span class="code" :style="{ color: items[activeIndex].color }">
-              [0.{{ (Math.random()*99).toFixed(0) }}, -0.{{ (Math.random()*99).toFixed(0) }}, 1.{{ (Math.random()*99).toFixed(0) }}, ...]
+              [0.{{ (Math.random() * 99).toFixed(0) }}, -0.{{
+                (Math.random() * 99).toFixed(0)
+              }}, 1.{{ (Math.random() * 99).toFixed(0) }}, ...]
             </span>
           </div>
           <div class="meaning">
@@ -71,8 +93,10 @@
         </div>
       </div>
       <div v-else class="placeholder">
-        <span class="hint-icon">👆</span> 
-        <span class="hint-text">悬停在上方方块或向量上，查看 ViT 输出的“语义特征”</span>
+        <span class="hint-icon">👆</span>
+        <span class="hint-text"
+          >悬停在上方方块或向量上，查看 ViT 输出的“语义特征”</span
+        >
       </div>
     </div>
   </div>
@@ -84,15 +108,69 @@ import { ref } from 'vue'
 const activeIndex = ref(-1)
 
 const items = [
-  { icon: '🌲', label: 'Background', type: 'Environment', color: '#4caf50', desc: 'Recognized as outdoor nature elements (Trees/Greenery). Low relevance to main subject.' },
-  { icon: '🌲', label: 'Background', type: 'Environment', color: '#4caf50', desc: 'Redundant background info. Contextualizes the scene as "Outdoors".' },
-  { icon: '☁️', label: 'Sky', type: 'Environment', color: '#2196f3', desc: 'Spatial context: Upper region, open area.' },
-  { icon: '👂', label: 'Cat Ear', type: 'Subject Part', color: '#ff9800', desc: 'High Importance. Identified as "Feline Feature". Strongly linked to "Cat Face".' },
-  { icon: '😼', label: 'Cat Face', type: 'Subject Core', color: '#ff5722', desc: 'Global Focus Center. Contains "Eyes", "Whiskers". Aggregates info from surrounding patches.' },
-  { icon: '🌲', label: 'Background', type: 'Environment', color: '#4caf50', desc: 'Background noise.' },
-  { icon: '🐾', label: 'Cat Paw', type: 'Subject Part', color: '#ff9800', desc: 'Action component. Suggests "Standing" or "Walking" posture.' },
-  { icon: '🧶', label: 'Yarn', type: 'Object', color: '#e91e63', desc: 'Interacting Object. Semantically linked to "Play" or "Toy".' },
-  { icon: '🌱', label: 'Grass', type: 'Environment', color: '#8bc34a', desc: 'Ground context. Confirms "Ground level" view.' }
+  {
+    icon: '🌲',
+    label: 'Background',
+    type: 'Environment',
+    color: '#4caf50',
+    desc: 'Recognized as outdoor nature elements (Trees/Greenery). Low relevance to main subject.'
+  },
+  {
+    icon: '🌲',
+    label: 'Background',
+    type: 'Environment',
+    color: '#4caf50',
+    desc: 'Redundant background info. Contextualizes the scene as "Outdoors".'
+  },
+  {
+    icon: '☁️',
+    label: 'Sky',
+    type: 'Environment',
+    color: '#2196f3',
+    desc: 'Spatial context: Upper region, open area.'
+  },
+  {
+    icon: '👂',
+    label: 'Cat Ear',
+    type: 'Subject Part',
+    color: '#ff9800',
+    desc: 'High Importance. Identified as "Feline Feature". Strongly linked to "Cat Face".'
+  },
+  {
+    icon: '😼',
+    label: 'Cat Face',
+    type: 'Subject Core',
+    color: '#ff5722',
+    desc: 'Global Focus Center. Contains "Eyes", "Whiskers". Aggregates info from surrounding patches.'
+  },
+  {
+    icon: '🌲',
+    label: 'Background',
+    type: 'Environment',
+    color: '#4caf50',
+    desc: 'Background noise.'
+  },
+  {
+    icon: '🐾',
+    label: 'Cat Paw',
+    type: 'Subject Part',
+    color: '#ff9800',
+    desc: 'Action component. Suggests "Standing" or "Walking" posture.'
+  },
+  {
+    icon: '🧶',
+    label: 'Yarn',
+    type: 'Object',
+    color: '#e91e63',
+    desc: 'Interacting Object. Semantically linked to "Play" or "Toy".'
+  },
+  {
+    icon: '🌱',
+    label: 'Grass',
+    type: 'Environment',
+    color: '#8bc34a',
+    desc: 'Ground context. Confirms "Ground level" view.'
+  }
 ]
 </script>
 
@@ -102,7 +180,10 @@ const items = [
   border: 1px solid #e9ecef;
   border-radius: 12px;
   padding: 24px;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   max-width: 700px;
   margin: 20px auto;
 }
@@ -143,7 +224,7 @@ const items = [
   background: #fff;
   padding: 8px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 .dark .grid-container {
   background: #252529;
@@ -165,12 +246,14 @@ const items = [
   background: #343a40;
 }
 
-.grid-item:hover, .grid-item.active {
+.grid-item:hover,
+.grid-item.active {
   background: #e7f5ff;
   transform: scale(1.1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.dark .grid-item:hover, .dark .grid-item.active {
+.dark .grid-item:hover,
+.dark .grid-item.active {
   background: #1c7ed6;
 }
 
@@ -194,7 +277,7 @@ const items = [
   padding: 10px;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
   max-width: 100%;
 }
@@ -213,11 +296,13 @@ const items = [
   transition: background 0.2s;
 }
 
-.vector-wrapper:hover, .vector-wrapper.active {
-  background: rgba(0,0,0,0.05);
+.vector-wrapper:hover,
+.vector-wrapper.active {
+  background: rgba(0, 0, 0, 0.05);
 }
-.dark .vector-wrapper:hover, .dark .vector-wrapper.active {
-  background: rgba(255,255,255,0.1);
+.dark .vector-wrapper:hover,
+.dark .vector-wrapper.active {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .vector-col {

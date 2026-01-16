@@ -23,7 +23,11 @@
         <div class="terminal-title">Terminal - zsh</div>
       </div>
       <div class="terminal-body" ref="terminalBody" @click="focusInput">
-        <div v-for="(line, index) in history" :key="index" class="terminal-line">
+        <div
+          v-for="(line, index) in history"
+          :key="index"
+          class="terminal-line"
+        >
           <span class="prompt" v-if="line.type === 'input'">
             <span class="path">{{ currentPath }}</span>
             <span class="arrow">$ </span>
@@ -35,9 +39,9 @@
             <span class="path">{{ currentPath }}</span>
             <span class="arrow">$ </span>
           </span>
-          <input 
-            type="text" 
-            v-model="currentInput" 
+          <input
+            type="text"
+            v-model="currentInput"
             @keyup.enter="executeCommand"
             @keydown.up.prevent="navigateHistory(-1)"
             @keydown.down.prevent="navigateHistory(1)"
@@ -52,16 +56,26 @@
 
     <div class="cheat-sheet">
       <div class="sheet-title">
-        <span class="icon">📖</span> 
+        <span class="icon">📖</span>
         <span class="en">Command Cheat Sheet</span>
         <span class="divider">|</span>
         <span class="zh">命令速查表</span>
       </div>
       <div class="sheet-content">
-        <div class="cmd-group" v-for="(group, gIndex) in cheatSheet" :key="gIndex">
+        <div
+          class="cmd-group"
+          v-for="(group, gIndex) in cheatSheet"
+          :key="gIndex"
+        >
           <div class="group-title">{{ group.category }}</div>
-          <div class="cmd-item" v-for="(cmd, cIndex) in group.commands" :key="cIndex">
-            <div class="cmd-name" @click="fillCommand(cmd.name)">{{ cmd.name }}</div>
+          <div
+            class="cmd-item"
+            v-for="(cmd, cIndex) in group.commands"
+            :key="cIndex"
+          >
+            <div class="cmd-name" @click="fillCommand(cmd.name)">
+              {{ cmd.name }}
+            </div>
             <div class="cmd-desc">
               <div class="en">{{ cmd.descEn }}</div>
               <div class="zh">{{ cmd.descZh }}</div>
@@ -77,8 +91,16 @@
 import { ref, onMounted, nextTick } from 'vue'
 
 const history = ref([
-  { type: 'output', content: 'Welcome to the interactive terminal simulator! / 欢迎使用交互式终端模拟器！' },
-  { type: 'output', content: 'Type "help" to see available commands. / 输入 "help" 查看可用命令。' }
+  {
+    type: 'output',
+    content:
+      'Welcome to the interactive terminal simulator! / 欢迎使用交互式终端模拟器！'
+  },
+  {
+    type: 'output',
+    content:
+      'Type "help" to see available commands. / 输入 "help" 查看可用命令。'
+  }
 ])
 const currentInput = ref('')
 const inputField = ref(null)
@@ -91,41 +113,60 @@ const fileSystem = {
   name: '/',
   type: 'dir',
   children: {
-    'home': {
+    home: {
       name: 'home',
       type: 'dir',
       children: {
-        'user': {
+        user: {
           name: 'user',
           type: 'dir',
           children: {
-            'hello.txt': { name: 'hello.txt', type: 'file', content: 'Hello World! This is a mock file.\n你好！这是一个模拟文件。' },
-            'notes.md': { name: 'notes.md', type: 'file', content: '# My Notes\n- Learn Terminal\n- Learn Shell\n- Learn Kernel' },
-            'projects': { 
-              name: 'projects',
-              type: 'dir', 
-              children: {
-                'app.js': { name: 'app.js', type: 'file', content: 'console.log("Hello");' }
-              } 
+            'hello.txt': {
+              name: 'hello.txt',
+              type: 'file',
+              content:
+                'Hello World! This is a mock file.\n你好！这是一个模拟文件。'
             },
-            'Downloads': { name: 'Downloads', type: 'dir', children: {} }
+            'notes.md': {
+              name: 'notes.md',
+              type: 'file',
+              content:
+                '# My Notes\n- Learn Terminal\n- Learn Shell\n- Learn Kernel'
+            },
+            projects: {
+              name: 'projects',
+              type: 'dir',
+              children: {
+                'app.js': {
+                  name: 'app.js',
+                  type: 'file',
+                  content: 'console.log("Hello");'
+                }
+              }
+            },
+            Downloads: { name: 'Downloads', type: 'dir', children: {} }
           }
         }
       }
     },
-    'etc': {
+    etc: {
       name: 'etc',
       type: 'dir',
       children: {
-        'passwd': { name: 'passwd', type: 'file', content: 'root:x:0:0:root:/root:/bin/bash\nuser:x:1000:1000:user:/home/user:/bin/zsh' }
+        passwd: {
+          name: 'passwd',
+          type: 'file',
+          content:
+            'root:x:0:0:root:/root:/bin/bash\nuser:x:1000:1000:user:/home/user:/bin/zsh'
+        }
       }
     },
-    'bin': {
+    bin: {
       name: 'bin',
       type: 'dir',
       children: {
-        'ls': { name: 'ls', type: 'file', content: 'Binary file' },
-        'cat': { name: 'cat', type: 'file', content: 'Binary file' }
+        ls: { name: 'ls', type: 'file', content: 'Binary file' },
+        cat: { name: 'cat', type: 'file', content: 'Binary file' }
       }
     }
   }
@@ -135,12 +176,13 @@ let currentPath = '~'
 let currentDirObj = fileSystem.children['home'].children['user']
 
 const resolvePath = (path) => {
-  if (path === '~' || path === '') return fileSystem.children['home'].children['user']
+  if (path === '~' || path === '')
+    return fileSystem.children['home'].children['user']
   if (path === '/') return fileSystem
-  
-  let parts = path.split('/').filter(p => p)
+
+  let parts = path.split('/').filter((p) => p)
   let current = path.startsWith('/') ? fileSystem : currentDirObj
-  
+
   for (const part of parts) {
     if (part === '.') continue
     if (part === '..') {
@@ -177,23 +219,25 @@ const navigateTo = (target) => {
     newDir = fileSystem.children['home'].children['user']
   } else if (target === '..') {
     if (currentPath === '/') return { path: '/', dir: fileSystem }
-    if (currentPath === '~') { // ~ is /home/user
-       newPath = '/home'
-       newDir = fileSystem.children['home']
+    if (currentPath === '~') {
+      // ~ is /home/user
+      newPath = '/home'
+      newDir = fileSystem.children['home']
     } else {
-       // Simple string manipulation for path
-       const parts = currentPath.split('/')
-       parts.pop()
-       newPath = parts.join('/') || '/'
-       
-       // Re-resolve dir from root for safety
-       if (newPath === '/') newDir = fileSystem
-       else if (newPath === '/home') newDir = fileSystem.children['home']
-       else if (newPath === '/home/user') newDir = fileSystem.children['home'].children['user']
-       else {
-         // Fallback for deeper paths if we supported them
-         // For now, let's keep it simple
-       }
+      // Simple string manipulation for path
+      const parts = currentPath.split('/')
+      parts.pop()
+      newPath = parts.join('/') || '/'
+
+      // Re-resolve dir from root for safety
+      if (newPath === '/') newDir = fileSystem
+      else if (newPath === '/home') newDir = fileSystem.children['home']
+      else if (newPath === '/home/user')
+        newDir = fileSystem.children['home'].children['user']
+      else {
+        // Fallback for deeper paths if we supported them
+        // For now, let's keep it simple
+      }
     }
   } else {
     // Relative path
@@ -201,7 +245,8 @@ const navigateTo = (target) => {
       const targetObj = currentDirObj.children[target]
       if (targetObj.type === 'dir') {
         newDir = targetObj
-        newPath = currentPath === '/' ? `/${target}` : `${currentPath}/${target}`
+        newPath =
+          currentPath === '/' ? `/${target}` : `${currentPath}/${target}`
       } else {
         return { error: `cd: not a directory: ${target}` }
       }
@@ -216,24 +261,52 @@ const cheatSheet = [
   {
     category: 'Navigation / 导航',
     commands: [
-      { name: 'ls', descEn: 'List directory contents', descZh: '列出当前目录下的文件和文件夹' },
-      { name: 'cd <dir>', descEn: 'Change directory', descZh: '进入指定目录 (例如: cd projects)' },
-      { name: 'pwd', descEn: 'Print working directory', descZh: '显示当前所在的完整路径' }
+      {
+        name: 'ls',
+        descEn: 'List directory contents',
+        descZh: '列出当前目录下的文件和文件夹'
+      },
+      {
+        name: 'cd <dir>',
+        descEn: 'Change directory',
+        descZh: '进入指定目录 (例如: cd projects)'
+      },
+      {
+        name: 'pwd',
+        descEn: 'Print working directory',
+        descZh: '显示当前所在的完整路径'
+      }
     ]
   },
   {
     category: 'File Operations / 文件操作',
     commands: [
-      { name: 'cat <file>', descEn: 'Show file contents', descZh: '查看文件内容 (例如: cat hello.txt)' },
-      { name: 'touch <file>', descEn: 'Create empty file', descZh: '创建一个新文件' },
-      { name: 'mkdir <dir>', descEn: 'Make directory', descZh: '创建一个新文件夹' },
+      {
+        name: 'cat <file>',
+        descEn: 'Show file contents',
+        descZh: '查看文件内容 (例如: cat hello.txt)'
+      },
+      {
+        name: 'touch <file>',
+        descEn: 'Create empty file',
+        descZh: '创建一个新文件'
+      },
+      {
+        name: 'mkdir <dir>',
+        descEn: 'Make directory',
+        descZh: '创建一个新文件夹'
+      },
       { name: 'rm <file>', descEn: 'Remove file', descZh: '删除文件' }
     ]
   },
   {
     category: 'System / 系统',
     commands: [
-      { name: 'echo <text>', descEn: 'Print text', descZh: '在屏幕上打印一段文字' },
+      {
+        name: 'echo <text>',
+        descEn: 'Print text',
+        descZh: '在屏幕上打印一段文字'
+      },
       { name: 'whoami', descEn: 'Current user', descZh: '显示当前用户名' },
       { name: 'date', descEn: 'Show date/time', descZh: '显示当前日期和时间' },
       { name: 'clear', descEn: 'Clear screen', descZh: '清空屏幕内容' }
@@ -242,8 +315,16 @@ const cheatSheet = [
   {
     category: 'Package Manager / 软件包 (Mock)',
     commands: [
-      { name: 'apt update', descEn: 'Update package list', descZh: '更新软件包列表' },
-      { name: 'apt install <pkg>', descEn: 'Install package', descZh: '安装软件 (例如: apt install git)' }
+      {
+        name: 'apt update',
+        descEn: 'Update package list',
+        descZh: '更新软件包列表'
+      },
+      {
+        name: 'apt install <pkg>',
+        descEn: 'Install package',
+        descZh: '安装软件 (例如: apt install git)'
+      }
     ]
   }
 ]
@@ -253,14 +334,14 @@ const commands = {
     return `Available commands:
   ls, cd, pwd, cat, touch, mkdir, rm, echo, whoami, date, clear, apt`
   },
-  
+
   ls: (args) => {
     if (!currentDirObj.children) return ''
     const items = Object.values(currentDirObj.children)
     if (items.length === 0) return ''
-    
+
     // Simple column formatting
-    const names = items.map(item => {
+    const names = items.map((item) => {
       return item.type === 'dir' ? `\x1b[1;34m${item.name}/\x1b[0m` : item.name
     })
     return names.join('  ')
@@ -292,7 +373,7 @@ const commands = {
   cat: (args) => {
     const file = args[0]
     if (!file) return 'usage: cat <file>'
-    
+
     if (currentDirObj.children && currentDirObj.children[file]) {
       const target = currentDirObj.children[file]
       if (target.type === 'dir') return `cat: ${file}: Is a directory`
@@ -312,7 +393,8 @@ const commands = {
   mkdir: (args) => {
     const name = args[0]
     if (!name) return 'usage: mkdir <dir>'
-    if (currentDirObj.children[name]) return `mkdir: cannot create directory '${name}': File exists`
+    if (currentDirObj.children[name])
+      return `mkdir: cannot create directory '${name}': File exists`
     currentDirObj.children[name] = { name, type: 'dir', children: {} }
     return null
   },
@@ -322,7 +404,8 @@ const commands = {
     if (!name) return 'usage: rm <file>'
     // Mock: -r not supported for simplicity
     if (currentDirObj.children[name]) {
-      if (currentDirObj.children[name].type === 'dir') return `rm: cannot remove '${name}': Is a directory`
+      if (currentDirObj.children[name].type === 'dir')
+        return `rm: cannot remove '${name}': Is a directory`
       delete currentDirObj.children[name]
       return null
     }
@@ -330,7 +413,7 @@ const commands = {
   },
 
   whoami: () => 'user',
-  
+
   date: () => new Date().toString(),
 
   apt: (args) => {
@@ -363,7 +446,7 @@ Setting up ${pkg} (1.0.0) ...`
 
 const executeCommand = () => {
   const input = currentInput.value.trim()
-  
+
   if (!input) {
     history.value.push({ type: 'input', content: '' })
     currentInput.value = ''
@@ -378,32 +461,41 @@ const executeCommand = () => {
   history.value.push({ type: 'input', content: input })
 
   const [cmd, ...args] = input.split(/\s+/)
-  
+
   if (commands[cmd]) {
     try {
       const output = commands[cmd](args)
       if (output !== null) {
         // Handle colored output simply by not escaping HTML if we trust it (Vue escapes by default)
-        // For simple color simulation, we can strip codes or use a span. 
+        // For simple color simulation, we can strip codes or use a span.
         // Here we just keep simple text, but `ls` returns ANSI codes which we might want to handle or strip.
         // For this demo, let's strip ANSI codes for safety/simplicity in Vue or parse them.
         // Let's simple string replace for blue color
-        
+
         let safeOutput = output
-        
+
         const lines = safeOutput.split('\n')
-        lines.forEach(line => {
-           // Basic ANSI parser for ls colors
-           const isDir = line.includes('\x1b[1;34m')
-           const cleanContent = line.replace(/\x1b\[[0-9;]*m/g, '')
-           history.value.push({ type: isDir ? 'output-dir' : 'output', content: cleanContent })
+        lines.forEach((line) => {
+          // Basic ANSI parser for ls colors
+          const isDir = line.includes('\x1b[1;34m')
+          const cleanContent = line.replace(/\x1b\[[0-9;]*m/g, '')
+          history.value.push({
+            type: isDir ? 'output-dir' : 'output',
+            content: cleanContent
+          })
         })
       }
     } catch (e) {
-      history.value.push({ type: 'error', content: `Error executing command: ${e.message}` })
+      history.value.push({
+        type: 'error',
+        content: `Error executing command: ${e.message}`
+      })
     }
   } else {
-    history.value.push({ type: 'error', content: `zsh: command not found: ${cmd}` })
+    history.value.push({
+      type: 'error',
+      content: `zsh: command not found: ${cmd}`
+    })
   }
 
   currentInput.value = ''
@@ -412,12 +504,13 @@ const executeCommand = () => {
 
 const navigateHistory = (direction) => {
   if (commandHistory.value.length === 0) return
-  
+
   historyIndex.value += direction
-  
+
   if (historyIndex.value < 0) historyIndex.value = 0
-  if (historyIndex.value > commandHistory.value.length) historyIndex.value = commandHistory.value.length
-  
+  if (historyIndex.value > commandHistory.value.length)
+    historyIndex.value = commandHistory.value.length
+
   if (historyIndex.value === commandHistory.value.length) {
     currentInput.value = ''
   } else {
@@ -430,9 +523,11 @@ const handleTabCompletion = () => {
   const input = currentInput.value
   const [cmd, ...args] = input.split(/\s+/)
   const partial = args[args.length - 1] || ''
-  
+
   if (cmd && currentDirObj.children) {
-    const matches = Object.keys(currentDirObj.children).filter(name => name.startsWith(partial))
+    const matches = Object.keys(currentDirObj.children).filter((name) =>
+      name.startsWith(partial)
+    )
     if (matches.length === 1) {
       const completed = matches[0]
       // Replace last arg with completed
@@ -506,9 +601,15 @@ onMounted(() => {
   display: inline-block;
 }
 
-.red { background-color: #ef4444; }
-.yellow { background-color: #facc15; }
-.green { background-color: #22c55e; }
+.red {
+  background-color: #ef4444;
+}
+.yellow {
+  background-color: #facc15;
+}
+.green {
+  background-color: #22c55e;
+}
 
 .terminal-title {
   flex: 1;
@@ -652,8 +753,9 @@ input {
     grid-template-columns: 1fr;
     height: auto;
   }
-  
-  .terminal-container, .cheat-sheet {
+
+  .terminal-container,
+  .cheat-sheet {
     height: 350px;
   }
 }

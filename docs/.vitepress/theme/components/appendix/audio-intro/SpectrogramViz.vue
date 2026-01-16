@@ -10,8 +10,15 @@
           </div>
           <div class="viz-content waveform-container">
             <div class="wave-bars">
-              <div v-for="n in 30" :key="n" class="wave-bar" 
-                   :style="{ height: 20 + Math.random() * 60 + '%', animationDelay: n * 0.05 + 's' }"></div>
+              <div
+                v-for="n in 30"
+                :key="n"
+                class="wave-bar"
+                :style="{
+                  height: 20 + Math.random() * 60 + '%',
+                  animationDelay: n * 0.05 + 's'
+                }"
+              ></div>
             </div>
             <div class="axis-label x-axis">时间 (Time) →</div>
             <div class="axis-label y-axis">振幅 (Amplitude) ↑</div>
@@ -50,13 +57,18 @@
         <template #default>
           <div class="legend">
             <div class="legend-item">
-              <div class="color-box low"></div> 低能量 (安静)
+              <div class="color-box low"></div>
+              低能量 (安静)
             </div>
             <div class="legend-item">
-              <div class="color-box high"></div> 高能量 (响亮)
+              <div class="color-box high"></div>
+              高能量 (响亮)
             </div>
           </div>
-          <p>频谱图将一维的声音信号变成了二维图像，这样我们就可以用 <strong>CNN (卷积神经网络)</strong> 等图像模型来处理声音了！</p>
+          <p>
+            频谱图将一维的声音信号变成了二维图像，这样我们就可以用
+            <strong>CNN (卷积神经网络)</strong> 等图像模型来处理声音了！
+          </p>
         </template>
       </el-alert>
     </el-card>
@@ -90,10 +102,10 @@ const drawSpectrogram = () => {
       const baseEnergy = normalizedY * 0.8
       const noise = Math.random() * 0.2
       const timeVar = Math.sin(x * 0.1) * 0.2 // Time variation
-      
+
       let intensity = baseEnergy + noise + timeVar
       intensity = Math.max(0, Math.min(1, intensity))
-      
+
       const hue = 240 - intensity * 240 // Blue (low) to Red (high)
       ctx.fillStyle = `hsl(${hue}, 80%, 50%)`
       ctx.fillRect(x, height - y - 4, 4, 4)
@@ -165,8 +177,15 @@ const drawSpectrogram = () => {
 }
 
 @keyframes wave {
-  0%, 100% { height: 20%; opacity: 0.6; }
-  50% { height: 90%; opacity: 1; }
+  0%,
+  100% {
+    height: 20%;
+    opacity: 0.6;
+  }
+  50% {
+    height: 90%;
+    opacity: 1;
+  }
 }
 
 .transform-arrow {

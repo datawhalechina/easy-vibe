@@ -1,289 +1,332 @@
+<!--
+  WebTechTriad.vue
+  三剑客轻交互：同一段小页面，切换 HTML/CSS/JS。
+  目标：让读者“看到页面上的某一块”就能立刻找到“代码里的哪一行”，再用三步解释发生了什么。
+  风格：先玩后讲，句子短。
+-->
 <template>
-  <div class="web-tech-triad">
-    <div class="triad-container">
-      <!-- HTML -->
-      <div class="tech-card html">
-        <div class="tech-icon">🏗️</div>
-        <div class="tech-title">HTML</div>
-        <div class="tech-subtitle">结构层</div>
-        <div class="tech-desc">网页的骨架</div>
-        <div class="code-example">
-          <div class="code-header">&lt;结构&gt;</div>
-          <div class="code-content">
-            &lt;h1&gt;标题&lt;/h1&gt;<br>
-            &lt;p&gt;段落&lt;/p&gt;
-          </div>
-        </div>
-        <div class="tech-role">
-          <div class="role-item">✅ 定义内容</div>
-          <div class="role-item">✅ 组织结构</div>
-        </div>
+  <div class="triad">
+    <div class="top">
+      <div>
+        <div class="title">先玩一下：同一段页面，切换层次</div>
+        <div class="subtitle">HTML 定骨架 → CSS 换外观 → JS 让它动起来</div>
       </div>
-
-      <!-- CSS -->
-      <div class="tech-card css">
-        <div class="tech-icon">🎨</div>
-        <div class="tech-title">CSS</div>
-        <div class="tech-subtitle">表现层</div>
-        <div class="tech-desc">网页的化妆师</div>
-        <div class="code-example">
-          <div class="code-header">&lt;样式&gt;</div>
-          <div class="code-content">
-            color: red;<br>
-            font-size: 16px;
-          </div>
-        </div>
-        <div class="tech-role">
-          <div class="role-item">✅ 控制外观</div>
-          <div class="role-item">✅ 响应布局</div>
-        </div>
+      <div class="modes">
+        <button
+          v-for="m in modes"
+          :key="m.id"
+          :class="['mode', { active: current === m.id }]"
+          @click="current = m.id"
+        >
+          {{ m.label }}
+        </button>
       </div>
+    </div>
 
-      <!-- JavaScript -->
-      <div class="tech-card js">
-        <div class="tech-icon">⚡</div>
-        <div class="tech-title">JavaScript</div>
-        <div class="tech-subtitle">行为层</div>
-        <div class="tech-desc">网页的灵魂</div>
-        <div class="code-example">
-          <div class="code-header">&lt;交互&gt;</div>
-          <div class="code-content">
-            onclick="..."<br>
-            addEventListener()
-          </div>
-        </div>
-        <div class="tech-role">
-          <div class="role-item">✅ 处理事件</div>
-          <div class="role-item">✅ 动态交互</div>
+    <div class="preview" :class="current">
+      <div class="hint">点一下标题/段落/按钮，我会在下面的代码里高亮对应行。</div>
+      <h1
+        class="hero"
+        :class="{ selected: selectedPart === 'h1' }"
+        @click="selectedPart = 'h1'"
+      >
+        <span class="badge">①</span>
+        欢迎来到我的网站
+      </h1>
+      <p
+        class="desc"
+        :class="{ selected: selectedPart === 'p' }"
+        @click="selectedPart = 'p'"
+      >
+        <span class="badge">②</span>
+        这是一段描述文字，告诉用户这里能做什么。
+      </p>
+      <button
+        class="cta"
+        :class="{ selected: selectedPart === 'btn' }"
+        @click="selectedPart = 'btn'; increment()"
+      >
+        <span class="badge">③</span>
+        点我试试看 ({{ clicks }})
+      </button>
+      <div class="click-tip" v-if="current === 'js'">
+        现在再点一次按钮计数会变：这是 JS 在改页面。
+      </div>
+    </div>
+
+    <div class="code-block">
+      <div class="code-title">{{ codeTitle }}</div>
+      <div class="code-content">
+        <div 
+          v-for="(line, i) in codeLines" 
+          :key="i" 
+          :class="['line', { hl: line.key === selectedPart }]"
+        >
+          {{ line.text }}
         </div>
       </div>
     </div>
 
-    <div class="collaboration">
-      <div class="collab-title">🤝 三者如何协作？</div>
-      <div class="collab-demo">
-        <div class="collab-step">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <span class="step-tech">HTML</span> 搭建骨架
-          </div>
+    <div class="explain">
+      <div class="card">
+        <div class="card-title">对照：页面 ↔ 代码</div>
+        <div class="map">
+          <button
+            v-for="row in mappingRows"
+            :key="row.key"
+            :class="['map-row', { active: selectedPart === row.key }]"
+            @click="selectedPart = row.key"
+          >
+            <span class="left">{{ row.left }}</span>
+            <span class="right">{{ row.right }}</span>
+          </button>
         </div>
-        <div class="collab-arrow">→</div>
-        <div class="collab-step">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <span class="step-tech">CSS</span> 美化外观
-          </div>
-        </div>
-        <div class="collab-arrow">→</div>
-        <div class="collab-step">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <span class="step-tech">JS</span> 添加交互
-          </div>
-        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">发生了什么（简单版）</div>
+        <ol class="steps">
+          <li v-for="s in steps" :key="s">{{ s }}</li>
+        </ol>
       </div>
     </div>
 
-    <div class="analogy">
-      <div class="analogy-title">💡 生动比喻</div>
-      <div class="analogy-content">
-        建网站就像<strong>盖房子</strong>：
-        <br><br>
-        🏗️ <strong>HTML</strong> = 房屋结构（墙、屋顶、门窗）
-        <br>
-        🎨 <strong>CSS</strong> = 室内装修（颜色、家具、装饰）
-        <br>
-        ⚡ <strong>JavaScript</strong> = 智能家居（灯光控制、自动化）
-      </div>
+    <div class="one-line">
+      <span class="one-line-title">一句话总结：</span>
+      <span class="one-line-body">{{ oneLine }}</span>
     </div>
   </div>
 </template>
 
+<script setup>
+import { computed, ref } from 'vue'
+
+const modes = [
+  { id: 'html', label: '看骨架 (HTML)' },
+  { id: 'css', label: '看外观 (CSS)' },
+  { id: 'js', label: '看交互 (JS)' }
+]
+
+const current = ref('html')
+const clicks = ref(0)
+const selectedPart = ref('h1') // 'h1' | 'p' | 'btn'
+
+const codeTitle = computed(() => {
+  if (current.value === 'html') return 'HTML 片段：告诉浏览器这是什么'
+  if (current.value === 'css') return 'CSS 片段：决定长什么样'
+  return 'JS 片段：让它动起来'
+})
+
+const codeLines = computed(() => {
+  if (current.value === 'html') {
+    return [
+      { key: 'h1', text: '<h1>欢迎来到我的网站</h1>' },
+      { key: 'p', text: '<p>这是一段描述文字...</p>' },
+      { key: 'btn', text: '<button>点我试试看</button>' }
+    ]
+  }
+  if (current.value === 'css') {
+    return [
+      { key: 'h1', text: '.hero { color: #0ea5e9; font-size: 24px; }' },
+      { key: 'p', text: '.desc { color: #111827; }' },
+      { key: 'btn', text: '.cta { background: #0ea5e9; color: #fff; border-radius: 10px; }' }
+    ]
+  }
+  return [
+    { key: 'btn', text: "const btn = document.querySelector('button')" },
+    { key: 'btn', text: 'let count = 0' },
+    { key: 'btn', text: "btn.addEventListener('click', () => {" },
+    { key: 'btn', text: '  count++' },
+    { key: 'btn', text: "  btn.textContent = '点我试试看 (' + count + ')'" },
+    { key: 'btn', text: '})' }
+  ]
+})
+
+const mappingRows = computed(() => {
+  if (current.value === 'html') {
+    return [
+      { key: 'h1', left: '① 标题', right: '<h1>...</h1>' },
+      { key: 'p', left: '② 段落', right: '<p>...</p>' },
+      { key: 'btn', left: '③ 按钮', right: '<button>...</button>' }
+    ]
+  }
+  if (current.value === 'css') {
+    return [
+      { key: 'h1', left: '① 标题', right: '.hero { ... }' },
+      { key: 'p', left: '② 段落', right: '.desc { ... }' },
+      { key: 'btn', left: '③ 按钮', right: '.cta { ... }' }
+    ]
+  }
+  return [
+    { key: 'h1', left: '① 标题', right: '（此例未涉及）' },
+    { key: 'p', left: '② 段落', right: '（此例未涉及）' },
+    { key: 'btn', left: '③ 按钮', right: "addEventListener('click', ...)" }
+  ]
+})
+
+const steps = computed(() => {
+  if (current.value === 'html') {
+    return [
+      '浏览器读到 HTML：知道页面上有“标题/段落/按钮”。',
+      '把它们先按默认规则摆出来（所以看起来很朴素）。',
+      '下一步才轮到 CSS 和 JS。'
+    ]
+  }
+  if (current.value === 'css') {
+    return [
+      '浏览器先把 HTML 结构摆好。',
+      '再读取 CSS：给标题/段落/按钮套上颜色、字号、间距。',
+      '重新绘制外观：你看到页面“变好看”。'
+    ]
+  }
+  return [
+    '页面先按 HTML+CSS 显示出来。',
+    'JS 给按钮装上“点击开关”（事件监听）。',
+    '你点击按钮时：JS 改按钮文字/计数，页面立即更新。'
+  ]
+})
+
+const oneLine = computed(() => {
+  if (current.value === 'html') return '先把“有哪些东西、是什么东西”说清楚。'
+  if (current.value === 'css') return '在不改结构的前提下，把外观调到你想要的样子。'
+  return '把“点击/输入”等行为接上逻辑，让页面能互动。'
+})
+
+// Keep the demo behavior: only JS mode should increment on click.
+// We implement it by watching mode and only allowing clicks to increment in JS mode.
+const increment = () => {
+  if (current.value !== 'js') return
+  clicks.value++
+}
+</script>
+
 <style scoped>
-.web-tech-triad {
+.triad {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  padding: 16px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.title { font-weight: 800; font-size: 16px; }
+.subtitle { color: var(--vp-c-text-2); font-size: 13px; margin-top: 4px; }
+
+.modes { display: flex; gap: 8px; flex-wrap: wrap; }
+.mode {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.mode:hover { background: var(--vp-c-bg-soft); }
+.mode.active { 
+  border-color: var(--vp-c-brand); 
+  color: var(--vp-c-brand); 
+  background: var(--vp-c-brand-dimm);
+}
+
+.preview {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 24px;
+  background: var(--vp-c-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.2s;
+}
+
+.hint { color: var(--vp-c-text-2); font-size: 13px; margin-bottom: 8px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  margin-right: 12px;
+  font-weight: 800;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.hero { margin: 0; cursor: pointer; display: flex; align-items: center; line-height: 1.4; }
+.desc { margin: 0; color: var(--vp-c-text-2); cursor: pointer; display: flex; align-items: center; line-height: 1.5; }
+.cta {
+  width: fit-content;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 20px;
-  background: var(--vp-c-bg-soft);
-  margin: 20px 0;
-}
-
-.triad-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-@media (max-width: 768px) {
-  .triad-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.tech-card {
+  padding: 8px 16px;
+  cursor: pointer;
   background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: all 0.2s;
 }
 
-.tech-card.html {
-  border-color: #e34c26;
+.selected {
+  outline: 2px solid var(--vp-c-brand);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
-.tech-card.css {
-  border-color: #264de4;
-}
+.click-tip { margin-top: 6px; color: var(--vp-c-text-2); font-size: 13px; }
 
-.tech-card.js {
-  border-color: #f7df1e;
-}
+.preview.css .hero { color: #0ea5e9; }
+.preview.css .desc { color: var(--vp-c-text-1); }
+.preview.css .cta { background: #0ea5e9; color: #fff; border-color: #0ea5e9; box-shadow: 0 4px 12px rgba(14,165,233,0.25); }
 
-.tech-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
+.preview.js .cta { background: #22c55e; color: #fff; border-color: #22c55e; box-shadow: 0 4px 12px rgba(34,197,94,0.25); }
+.preview.js { border-color: rgba(34, 197, 94, 0.4); }
 
-.tech-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+.code-block { background: var(--vp-c-bg-alt); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 16px; }
+.code-title { font-weight: 700; margin-bottom: 8px; font-size: 13px; color: var(--vp-c-text-2); }
+pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 16px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; line-height: 1.6; }
+.line { min-height: 1.6em; }
+.hl { background: rgba(34, 197, 94, 0.2); border-radius: 4px; display: block; width: 100%; }
 
-.tech-card.html .tech-title {
-  color: #e34c26;
-}
+.explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.card { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 10px; }
+.card-title { font-weight: 700; margin-bottom: 4px; }
+.card-body { color: var(--vp-c-text-2); font-size: 13px; line-height: 1.5; }
 
-.tech-card.css .tech-title {
-  color: #264de4;
-}
-
-.tech-card.js .tech-title {
-  color: #f7df1e;
-}
-
-.tech-subtitle {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-3);
-  margin-bottom: 8px;
-}
-
-.tech-desc {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 15px;
-}
-
-.code-example {
-  background: #000;
-  border-radius: 6px;
+.map { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.map-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   padding: 10px;
-  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  cursor: pointer;
   text-align: left;
 }
-
-.code-header {
-  font-size: 0.7rem;
-  color: #a1a1aa;
-  margin-bottom: 6px;
-  font-family: monospace;
+.map-row.active {
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+.left { font-weight: 800; }
+.right { color: var(--vp-c-text-2); }
+.steps { margin: 8px 0 0 18px; color: var(--vp-c-text-2); line-height: 1.6; }
 
-.code-content {
-  font-size: 0.75rem;
-  color: #22c55e;
-  font-family: monospace;
-  line-height: 1.6;
-}
-
-.tech-role {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.role-item {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  text-align: left;
-}
-
-.collaboration {
+.one-line {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
 }
-
-.collab-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.collab-demo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.collab-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.step-number {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.step-content {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-}
-
-.step-tech {
-  font-weight: bold;
-}
-
-.collab-arrow {
-  font-size: 1.5rem;
-  color: var(--vp-c-text-3);
-}
-
-.analogy {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 15px;
-}
-
-.analogy-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 10px;
-}
-
-.analogy-content {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.8;
-}
+.one-line-title { font-weight: 800; }
+.one-line-body { color: var(--vp-c-text-2); }
 </style>

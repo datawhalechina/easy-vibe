@@ -34,7 +34,9 @@
       <div class="step-box">
         <div class="label">🔢 数字化</div>
         <div class="digital-visual">
-          <div v-for="n in 8" :key="n" class="bit">{{ Math.floor(Math.random() * 2) }}</div>
+          <div v-for="n in 8" :key="n" class="bit">
+            {{ Math.floor(Math.random() * 2) }}
+          </div>
         </div>
         <div class="desc">PCM 数据</div>
       </div>
@@ -43,8 +45,9 @@
     <div class="explanation">
       <p>
         <span class="icon">💡</span>
-        计算机无法直接处理连续的声波，需要把它转换成数字。
-        这个过程叫<strong>模数转换 (ADC)</strong>：每隔一小段时间测量一次声音的强度，记录成数字。
+        计算机无法直接处理连续的声波，需要把它转换成数字。 这个过程叫<strong
+          >模数转换 (ADC)</strong
+        >：每隔一小段时间测量一次声音的强度，记录成数字。
       </p>
     </div>
   </div>

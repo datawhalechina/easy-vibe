@@ -1,59 +1,45 @@
+<!--
+  AgentArchitectureDemo.vue
+  Agent 架构“点哪看哪”：点击模块，右侧展示它负责什么 + 典型输入输出。
+-->
 <template>
-  <div class="agent-architecture-demo">
-    <div class="architecture-diagram">
-      <div class="diagram-center">
-        <div class="agent-core">🤖 Agent</div>
+  <div class="arch">
+    <div class="header">
+      <div>
+        <div class="title">Agent 由哪些模块拼起来？</div>
+        <div class="subtitle">点一下模块，看它“负责什么”。</div>
       </div>
-
-      <div class="modules-container">
-        <div
-          v-for="(module, index) in modules"
-          :key="module.name"
-          class="module-card"
-          :class="{ active: selectedModule === index }"
-          @click="selectedModule = index"
-          :style="getModulePosition(index)"
-        >
-          <div class="module-icon">{{ module.icon }}</div>
-          <div class="module-name">{{ module.name }}</div>
-          <div class="module-desc">{{ module.desc }}</div>
-        </div>
-      </div>
-
-      <svg class="connections">
-        <line
-          v-for="(module, index) in modules"
-          :key="'line-' + index"
-          x1="50%"
-          y1="50%"
-          x2="0"
-          y2="0"
-          :stroke="selectedModule === index ? 'var(--vp-c-brand)' : 'var(--vp-c-divider)'"
-          stroke-width="2"
-          :class="{ 'line-active': selectedModule === index }"
-        />
-      </svg>
     </div>
 
-    <div class="module-details">
-      <div class="detail-header">
-        <span class="detail-icon">{{ modules[selectedModule].icon }}</span>
-        <h3>{{ modules[selectedModule].name }}</h3>
+    <div class="grid">
+      <div class="diagram">
+        <button
+          v-for="m in modules"
+          :key="m.id"
+          :class="['node', { active: current.id === m.id }]"
+          @click="current = m"
+        >
+          <span class="icon">{{ m.icon }}</span>
+          <span class="name">{{ m.name }}</span>
+        </button>
+
+        <div class="pipes">
+          <div class="pipe">用户目标 → 计划 → 工具调用 → 结果 → 再计划…</div>
+          <div class="pipe small">（记忆会贯穿整个过程）</div>
+        </div>
       </div>
 
-      <div class="detail-content">
-        <p>{{ modules[selectedModule].description }}</p>
+      <div class="panel">
+        <div class="panel-title">{{ current.icon }} {{ current.name }}</div>
+        <div class="panel-body">{{ current.desc }}</div>
 
-        <div class="code-example">
-          <div class="code-title">💻 示例代码</div>
-          <pre><code>{{ modules[selectedModule].code }}</code></pre>
+        <div class="io">
+          <div class="io-title">典型输入</div>
+          <pre><code>{{ current.input }}</code></pre>
         </div>
-
-        <div class="key-points">
-          <div class="point-title">🎯 关键要点</div>
-          <ul>
-            <li v-for="point in modules[selectedModule].points" :key="point">{{ point }}</li>
-          </ul>
+        <div class="io">
+          <div class="io-title">典型输出</div>
+          <pre><code>{{ current.output }}</code></pre>
         </div>
       </div>
     </div>
@@ -63,346 +49,104 @@
 <script setup>
 import { ref } from 'vue'
 
-const selectedModule = ref(0)
-
 const modules = [
   {
-    name: 'Profile',
-    icon: '👤',
-    desc: '角色设定',
-    description: 'Profile 定义了 Agent 的身份、角色、目标和约束条件。它决定了 Agent 的行为方式和能力范围。就像给演员设定角色一样，Profile 让 Agent 知道"我是谁"和"我应该做什么"。',
-    code: `profile = {
-  "name": "Web Researcher",
-  "role": "网络搜索助手",
-  "goal": "帮助用户搜索和总结网络信息",
-  "constraints": [
-    "只能使用公开信息",
-    "必须注明信息来源",
-    "不能访问付费内容"
-  ],
-  "style": "专业、简洁、准确"
-}`,
-    points: [
-      '明确定义 Agent 的职责范围',
-      '设定合理的目标和约束',
-      '塑造 Agent 的沟通风格',
-      '防止 Agent 超出权限范围'
-    ]
-  },
-  {
-    name: 'Memory',
+    id: 'llm',
     icon: '🧠',
-    desc: '记忆系统',
-    description: 'Memory 是 Agent 的"大脑"，用于存储和检索信息。它包括短期记忆（当前对话）、长期记忆（持久化知识）和工作记忆（当前任务状态）。好的记忆系统能让 Agent 从历史经验中学习。',
-    code: `memory = {
-  # 短期记忆：当前对话
-  "short_term": [
-    {"role": "user", "content": "搜索 AI 文章"},
-    {"role": "assistant", "content": "已找到 5 篇"}
-  ],
-
-  # 长期记忆：持久化知识
-  "long_term": {
-    "user_preferences": {...},
-    "previous_tasks": [...]
-  },
-
-  # 工作记忆：当前任务状态
-  "working_memory": {
-    "current_goal": "总结第 3 篇文章",
-    "completed_steps": [1, 2],
-    "pending_steps": [3, 4, 5]
-  }
-}`,
-    points: [
-      '短期记忆：存储当前对话历史',
-      '长期记忆：保存跨任务的知识',
-      '工作记忆：追踪当前任务进度',
-      '支持信息的快速检索和更新'
-    ]
+    name: 'LLM（大脑）',
+    desc: '负责理解目标、生成计划、选择动作、组织语言输出。',
+    input: '用户目标 + 当前状态 + 可用工具列表',
+    output: '下一步计划 / 工具调用参数 / 最终回答'
   },
   {
-    name: 'Planning',
-    icon: '📋',
-    desc: '规划模块',
-    description: 'Planning 负责将复杂任务分解为可执行的步骤。它能制定计划、调整策略、评估进度。好的规划能力是 Agent 完成复杂任务的关键。',
-    code: `planning = {
-  "goal": "搜索并总结 AI 文章",
-
-  "steps": [
-    {
-      "id": 1,
-      "action": "web_search",
-      "params": {"query": "AI 技术 2024"},
-      "status": "completed"
-    },
-    {
-      "id": 2,
-      "action": "filter_results",
-      "params": {"top_n": 5},
-      "status": "in_progress"
-    },
-    {
-      "id": 3,
-      "action": "read_pages",
-      "params": {"urls": [...]},
-      "status": "pending"
-    }
-  ],
-
-  "current_step": 2,
-  "total_steps": 5
-}`,
-    points: [
-      '将复杂任务分解为小步骤',
-      '动态调整执行计划',
-      '跟踪每个步骤的执行状态',
-      '支持并行和串行任务执行'
-    ]
-  },
-  {
-    name: 'Action',
+    id: 'tools',
     icon: '🔧',
-    desc: '执行模块',
-    description: 'Action 模块负责执行具体的操作，包括调用工具、修改文件、发送请求等。它是 Agent 与外部环境交互的接口，将"想法"转化为"行动"。',
-    code: `action = {
-  "tool": "web_search",
-  "input": {
-    "query": "AI 技术 2024",
-    "max_results": 10,
-    "time_range": "last_month"
+    name: 'Tools（手脚）',
+    desc: '负责真正“做事”：搜索、读写文件、调用 API、运行命令。',
+    input: 'tool_name + input_schema 参数',
+    output: '工具执行结果（文本/数据/文件变更）'
   },
-  "output": {
-    "status": "success",
-    "results": [
-      {
-        "title": "...",
-        "url": "...",
-        "snippet": "..."
-      }
-    ]
-  }
-}
-
-# 可用工具
-tools = [
-  "web_search",    # 搜索引擎
-  "read_page",     # 读取网页
-  "write_file",    # 写入文件
-  "run_code"       # 执行代码
-]`,
-    points: [
-      '提供丰富的工具集',
-      '处理工具调用的输入输出',
-      '管理工具的权限和安全',
-      '支持自定义工具扩展'
-    ]
+  {
+    id: 'memory',
+    icon: '💾',
+    name: 'Memory（记忆）',
+    desc: '把“已经做过什么、得到什么结果”存起来，避免重复与跑偏。',
+    input: '对话历史 / 工具结果 / 当前任务状态',
+    output: '可检索的上下文（短期/长期/工作记忆）'
+  },
+  {
+    id: 'planner',
+    icon: '🧩',
+    name: 'Planning（规划）',
+    desc: '把大目标拆成小步骤，并在失败时改计划（计划不是一次性的）。',
+    input: '目标 + 约束（预算/时间/安全） + 当前进度',
+    output: '步骤清单 / 下一步动作 / 停止条件'
+  },
+  {
+    id: 'guard',
+    icon: '🛡️',
+    name: 'Guardrails（护栏）',
+    desc: '限制风险：权限白名单、预算上限、敏感操作确认、沙箱执行。',
+    input: '请求执行的动作 + 安全策略',
+    output: '允许/拒绝/要求确认 + 审计日志'
   }
 ]
 
-const getModulePosition = (index) => {
-  const positions = [
-    { top: '0', left: '50%', transform: 'translate(-50%, -50%)' },
-    { top: '50%', right: '0', transform: 'translate(50%, -50%)' },
-    { bottom: '0', left: '50%', transform: 'translate(-50%, 50%)' },
-    { top: '50%', left: '0', transform: 'translate(-50%, -50%)' }
-  ]
-  return positions[index]
-}
+const current = ref(modules[0])
 </script>
 
 <style scoped>
-.agent-architecture-demo {
+.arch {
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 24px;
   background: var(--vp-c-bg-soft);
-  margin: 24px 0;
-}
-
-.architecture-diagram {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/3;
-  max-width: 600px;
-  margin: 0 auto 32px;
-}
-
-.diagram-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.agent-core {
-  background: var(--vp-c-brand);
-  color: white;
-  padding: 20px 30px;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 20px rgba(66, 153, 225, 0.4);
-  white-space: nowrap;
-}
-
-.modules-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.module-card {
-  position: absolute;
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
   padding: 16px;
-  cursor: pointer;
-  transition: all 0.3s;
-  min-width: 140px;
-  text-align: center;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.module-card:hover {
-  border-color: var(--vp-c-brand);
-  transform: scale(1.05) !important;
-}
+.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.title { font-weight: 800; }
+.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
 
-.module-card.active {
-  border-color: var(--vp-c-brand);
-  background: var(--vp-c-bg-soft);
-  box-shadow: 0 4px 20px rgba(66, 153, 225, 0.3);
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 
-.module-icon {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-.module-name {
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 4px;
-}
-
-.module-desc {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-}
-
-.connections {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.connections line {
-  transition: stroke 0.3s;
-}
-
-.line-active {
-  stroke-width: 3;
-  stroke-dasharray: 5, 5;
-  animation: dash 1s linear infinite;
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: -10;
-  }
-}
-
-.module-details {
+.diagram {
   background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 24px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.detail-header {
+.node {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--vp-c-divider);
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  cursor: pointer;
+  text-align: left;
 }
 
-.detail-icon {
-  font-size: 2rem;
-}
+.node.active { border-color: var(--vp-c-brand); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); }
+.icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); }
+.name { font-weight: 800; }
 
-.detail-header h3 {
-  margin: 0;
-  color: var(--vp-c-brand);
-  font-size: 1.5rem;
-}
+.pipes { margin-top: 6px; padding-top: 10px; border-top: 1px dashed var(--vp-c-divider); }
+.pipe { color: var(--vp-c-text-2); font-size: 13px; line-height: 1.5; }
+.pipe.small { font-size: 12px; color: var(--vp-c-text-3); }
 
-.detail-content > p {
-  color: var(--vp-c-text-2);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.code-example {
-  margin-bottom: 20px;
-}
-
-.code-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--vp-c-text-1);
-}
-
-pre {
-  background: #1e1e1e;
-  border-radius: 8px;
-  padding: 16px;
-  overflow-x: auto;
-}
-
-code {
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.85rem;
-  color: #d4d4d4;
-  line-height: 1.6;
-}
-
-.key-points {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 16px;
-  border-left: 4px solid var(--vp-c-brand);
-}
-
-.point-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--vp-c-text-1);
-}
-
-.key-points ul {
-  margin: 0;
-  padding-left: 20px;
-  list-style: none;
-}
-
-.key-points li {
-  padding: 4px 0;
-  color: var(--vp-c-text-2);
-  position: relative;
-}
-
-.key-points li::before {
-  content: '✓';
-  position: absolute;
-  left: -20px;
-  color: var(--vp-c-brand);
-  font-weight: bold;
-}
+.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.panel-title { font-weight: 800; }
+.panel-body { color: var(--vp-c-text-2); line-height: 1.6; }
+.io-title { font-weight: 700; margin-bottom: 6px; }
+pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 10px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
 </style>
+

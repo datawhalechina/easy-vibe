@@ -21,8 +21,8 @@
           <span class="zh">16 色调色板</span>
         </div>
         <div class="palette-grid">
-          <div 
-            v-for="(color, index) in palette" 
+          <div
+            v-for="(color, index) in palette"
             :key="index"
             class="swatch"
             :style="{ backgroundColor: color }"
@@ -31,7 +31,8 @@
           ></div>
         </div>
         <div class="hint-text" v-if="activeColor">
-          Sequence: <span class="code">^[[38;5;{{ palette.indexOf(activeColor) }}m</span>
+          Sequence:
+          <span class="code">^[[38;5;{{ palette.indexOf(activeColor) }}m</span>
         </div>
       </div>
 
@@ -85,25 +86,32 @@
     <div class="preview">
       <div class="terminal-window">
         <div class="window-header">
-          <div class="dots">
-            <span></span><span></span><span></span>
-          </div>
+          <div class="dots"><span></span><span></span><span></span></div>
           <div class="window-title">Terminal Preview</div>
         </div>
         <div class="window-content">
           <div class="sequence-display-area">
             <span class="label">Last Sequence:</span>
-            <span v-if="lastSequence" class="sequence-code">{{ lastSequence }}</span>
+            <span v-if="lastSequence" class="sequence-code">{{
+              lastSequence
+            }}</span>
             <span v-else class="placeholder">Waiting for input...</span>
           </div>
-          
-          <div class="main-display" :style="currentStyle" v-if="isContentVisible">
+
+          <div
+            class="main-display"
+            :style="currentStyle"
+            v-if="isContentVisible"
+          >
             Hello World
           </div>
-          
+
           <div class="cursor-line">
             <span class="prompt">$</span>
-            <span class="cursor-placeholder" v-if="cursorMode === 'absolute'"></span>
+            <span
+              class="cursor-placeholder"
+              v-if="cursorMode === 'absolute'"
+            ></span>
             <span class="cursor-block" :style="cursorStyle"></span>
           </div>
         </div>
@@ -116,8 +124,22 @@
 import { ref, computed } from 'vue'
 
 const palette = [
-  '#000000', '#cd3131', '#0dbc79', '#e5e510', '#2472c8', '#bc3fbc', '#11a8cd', '#e5e5e5',
-  '#666666', '#f14c4c', '#23d18b', '#f5f543', '#3b8eea', '#d670d6', '#29b8db', '#ffffff'
+  '#000000',
+  '#cd3131',
+  '#0dbc79',
+  '#e5e510',
+  '#2472c8',
+  '#bc3fbc',
+  '#11a8cd',
+  '#e5e5e5',
+  '#666666',
+  '#f14c4c',
+  '#23d18b',
+  '#f5f543',
+  '#3b8eea',
+  '#d670d6',
+  '#29b8db',
+  '#ffffff'
 ]
 
 const activeColor = ref(null)
@@ -303,8 +325,14 @@ button.active {
   justify-content: space-between;
 }
 
-.code { color: #facc15; font-weight: bold; }
-.desc { color: #a1a1aa; font-size: 12px; }
+.code {
+  color: #facc15;
+  font-weight: bold;
+}
+.desc {
+  color: #a1a1aa;
+  font-size: 12px;
+}
 
 .terminal-window {
   background: #000;
@@ -407,7 +435,9 @@ button.active {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 768px) {

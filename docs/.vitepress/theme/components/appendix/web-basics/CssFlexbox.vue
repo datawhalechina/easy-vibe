@@ -1,165 +1,52 @@
+<!--
+  CssFlexbox.vue
+  Flex 速学：三个按钮控制方向/对齐/换行，实时看盒子怎么排。
+-->
 <template>
-  <div class="css-flexbox">
-    <div class="preview-container">
-      <div class="flex-container" :style="flexContainerStyle">
-        <div
-          v-for="(item, index) in items"
-          :key="index"
-          class="flex-item"
-          :style="{ flex: item.flex, minWidth: item.minWidth + 'px' }"
-        >
-          Item {{ index + 1 }}
-        </div>
-      </div>
-    </div>
-
+  <div class="flex-demo">
     <div class="controls">
-      <div class="control-section">
-        <div class="section-title">容器属性</div>
-
-        <div class="control-group">
-          <label>flex-direction (方向)</label>
-          <div class="button-group">
-            <button
-              v-for="dir in ['row', 'column', 'row-reverse', 'column-reverse']"
-              :key="dir"
-              class="control-btn"
-              :class="{ active: flexDirection === dir }"
-              @click="flexDirection = dir"
-            >
-              {{ dir }}
-            </button>
-          </div>
+      <div class="control-item">
+        <div class="control-header">
+          <label>主轴方向 (flex-direction)</label>
         </div>
-
-        <div class="control-group">
-          <label>justify-content (主轴对齐)</label>
-          <div class="button-group">
-            <button
-              v-for="align in ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly']"
-              :key="align"
-              class="control-btn"
-              :class="{ active: justifyContent === align }"
-              @click="justifyContent = align"
-            >
-              {{ align }}
-            </button>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label>align-items (交叉轴对齐)</label>
-          <div class="button-group">
-            <button
-              v-for="align in ['stretch', 'flex-start', 'center', 'flex-end']"
-              :key="align"
-              class="control-btn"
-              :class="{ active: alignItems === align }"
-              @click="alignItems = align"
-            >
-              {{ align }}
-            </button>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label>flex-wrap (换行)</label>
-          <div class="button-group">
-            <button
-              class="control-btn"
-              :class="{ active: flexWrap === 'nowrap' }"
-              @click="flexWrap = 'nowrap'"
-            >
-              nowrap
-            </button>
-            <button
-              class="control-btn"
-              :class="{ active: flexWrap === 'wrap' }"
-              @click="flexWrap = 'wrap'"
-            >
-              wrap
-            </button>
-            <button
-              class="control-btn"
-              :class="{ active: flexWrap === 'wrap-reverse' }"
-              @click="flexWrap = 'wrap-reverse'"
-            >
-              wrap-reverse
-            </button>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <label>gap (间距)</label>
-          <input
-            type="range"
-            v-model.number="gap"
-            min="0"
-            max="30"
-            class="slider"
-          />
-          <span class="value">{{ gap }}px</span>
+        <div class="chips">
+          <button v-for="d in directions" :key="d.id" :class="['chip', { active: dir === d.id }]" @click="dir = d.id">{{ d.label }}</button>
         </div>
       </div>
-
-      <div class="control-section">
-        <div class="section-title">项目属性</div>
-
-        <div class="control-group">
-          <label>Item 1 flex-grow</label>
-          <input
-            type="range"
-            v-model.number="items[0].flex"
-            min="0"
-            max="3"
-            step="0.5"
-            class="slider"
-          />
-          <span class="value">{{ items[0].flex }}</span>
+      <div class="control-item">
+        <div class="control-header">
+          <label>主轴对齐 (justify-content)</label>
         </div>
-
-        <div class="control-group">
-          <label>Item 2 flex-grow</label>
-          <input
-            type="range"
-            v-model.number="items[1].flex"
-            min="0"
-            max="3"
-            step="0.5"
-            class="slider"
-          />
-          <span class="value">{{ items[1].flex }}</span>
+        <div class="chips">
+          <button v-for="j in justifies" :key="j.id" :class="['chip', { active: justify === j.id }]" @click="justify = j.id">{{ j.label }}</button>
         </div>
-
-        <div class="control-group">
-          <label>Item 3 flex-grow</label>
-          <input
-            type="range"
-            v-model.number="items[2].flex"
-            min="0"
-            max="3"
-            step="0.5"
-            class="slider"
-          />
-          <span class="value">{{ items[2].flex }}</span>
+      </div>
+      <div class="control-item">
+        <div class="control-header">
+          <label>是否换行 (flex-wrap)</label>
+        </div>
+        <div class="chips">
+          <button v-for="w in wraps" :key="w.id" :class="['chip', { active: wrap === w.id }]" @click="wrap = w.id">{{ w.label }}</button>
         </div>
       </div>
     </div>
 
-    <div class="code-output">
-      <div class="code-title">生成的 CSS 代码</div>
-      <pre><code>.container {
-  display: flex;
-  flex-direction: {{ flexDirection }};
-  justify-content: {{ justifyContent }};
-  align-items: {{ alignItems }};
-  flex-wrap: {{ flexWrap }};
-  gap: {{ gap }}px;
-}
+    <div class="canvas-container">
+      <div class="canvas" :style="boxStyle">
+        <div v-for="n in 8" :key="n" class="item">{{ n }}</div>
+      </div>
+    </div>
 
-.item {
-  flex: {{ items[0].flex }}; /* 第一个项目的值 */
-}</code></pre>
+    <div class="code-block">
+      <div class="code-title">CSS 代码片段</div>
+      <div class="code-content">
+        <div class="line">.container {</div>
+        <div class="line">  display: flex;</div>
+        <div class="line">  flex-direction: {{ dir }};</div>
+        <div class="line">  justify-content: {{ justify }};</div>
+        <div class="line">  flex-wrap: {{ wrap }};</div>
+        <div class="line">}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -167,203 +54,166 @@
 <script setup>
 import { computed, ref } from 'vue'
 
-const flexDirection = ref('row')
-const justifyContent = ref('flex-start')
-const alignItems = ref('stretch')
-const flexWrap = ref('nowrap')
-const gap = ref(0)
+const directions = [
+  { id: 'row', label: '水平 (row)' },
+  { id: 'column', label: '垂直 (column)' }
+]
+const justifies = [
+  { id: 'flex-start', label: '靠左/上' },
+  { id: 'center', label: '居中' },
+  { id: 'space-between', label: '两端对齐' }
+]
+const wraps = [
+  { id: 'nowrap', label: '不换行' },
+  { id: 'wrap', label: '可换行' }
+]
 
-const items = ref([
-  { flex: 1, minWidth: 60 },
-  { flex: 1, minWidth: 60 },
-  { flex: 1, minWidth: 60 }
-])
+const dir = ref('row')
+const justify = ref('flex-start')
+const wrap = ref('nowrap')
 
-const flexContainerStyle = computed(() => ({
+const boxStyle = computed(() => ({
   display: 'flex',
-  flexDirection: flexDirection.value,
-  justifyContent: justifyContent.value,
-  alignItems: alignItems.value,
-  flexWrap: flexWrap.value,
-  gap: gap.value + 'px',
+  flexDirection: dir.value,
+  justifyContent: justify.value,
+  flexWrap: wrap.value,
+  gap: '12px',
   minHeight: '200px',
-  background: '#f3f4f6',
-  borderRadius: '8px',
-  padding: '10px'
+  padding: '16px'
 }))
 </script>
 
 <style scoped>
-.css-flexbox {
+.flex-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 12px;
   background: var(--vp-c-bg-soft);
-  margin: 20px 0;
-}
-
-.preview-container {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.flex-container {
-  width: 100%;
-  min-height: 200px;
-}
-
-.flex-item {
-  padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 6px;
+  padding: 24px;
+  margin: 24px 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-item:nth-child(2) {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.flex-item:nth-child(3) {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  flex-direction: column;
+  gap: 24px;
 }
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 
-@media (max-width: 768px) {
-  .controls {
-    grid-template-columns: 1fr;
-  }
-}
-
-.control-section {
+.control-item {
   background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 15px;
-}
-
-.section-title {
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--vp-c-divider);
-}
-
-.control-group {
-  margin-bottom: 15px;
-}
-
-.control-group label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-  margin-bottom: 8px;
-}
-
-.button-group {
+  padding: 16px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.control-btn {
+.control-header label {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
   padding: 6px 12px;
-  border: 2px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
   border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
   cursor: pointer;
+  font-size: 13px;
   transition: all 0.2s;
 }
 
-.control-btn:hover {
+.chip:hover {
+  background: var(--vp-c-bg-soft);
+}
+
+.chip.active {
   border-color: var(--vp-c-brand);
   color: var(--vp-c-brand);
-}
-
-.control-btn.active {
-  border-color: var(--vp-c-brand);
-  background: var(--vp-c-brand);
-  color: white;
-}
-
-.slider {
-  width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--vp-c-divider);
-  outline: none;
-  -webkit-appearance: none;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  cursor: pointer;
-  border: none;
-}
-
-.value {
-  font-size: 0.8rem;
-  color: var(--vp-c-brand);
-  font-family: monospace;
+  background: var(--vp-c-brand-dimm);
   font-weight: 600;
-  margin-left: 8px;
 }
 
-.code-output {
+.canvas-container {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 4px; /* Tiny padding for the inner canvas */
+}
+
+.canvas {
   background: var(--vp-c-bg);
   border-radius: 8px;
-  padding: 20px;
-  border-left: 4px solid var(--vp-c-brand);
+  /* border: 1px dashed var(--vp-c-divider); */
+  background-image: radial-gradient(var(--vp-c-divider) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.item {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0ea5e9, #10b981);
+  color: #fff;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.val {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-brand);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--vp-c-brand);
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.code-block {
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 16px;
 }
 
 .code-title {
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
 }
 
-pre {
-  background: #1e1e1e;
-  border-radius: 6px;
-  padding: 15px;
+.code-content {
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
   overflow-x: auto;
+  line-height: 1.6;
 }
 
-code {
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.85rem;
-  color: #d4d4d4;
-  line-height: 1.6;
+.line {
+  white-space: pre;
 }
 </style>

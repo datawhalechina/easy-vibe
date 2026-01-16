@@ -11,7 +11,7 @@
 
 # Easy-Vibe: Learn Vibe Coding from 0 to 1
 
-### *ゼロから、プロジェクトベース学習、最初の AI 製品を構築*
+### _ゼロから、プロジェクトベース学習、最初の AI 製品を構築_
 
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/">オンラインで読み始める (Start Reading Online)</a>
@@ -78,79 +78,79 @@ AI でコードを書こうとしてエラーが続き、諦めかけたくな�
 
 ### 零、幼児園
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [前書：学習マップ](docs/zh-cn/stage-0/0.1-learning-map/index.md) | 全体学習パスのガイド | ✅ |
-| [初級一：AI 時代、話せるだけでプログラミングできる](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | スネークゲームなどの事例を通じて AI プログラミングの能力を初めて体験 | ✅ |
+| 章                                                                                                                 | 主要内容                                                             | 状態 |
+| :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------- | :--- |
+| [前書：学習マップ](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                   | 全体学習パスのガイド                                                 | ✅   |
+| [初級一：AI 時代、話せるだけでプログラミングできる](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | スネークゲームなどの事例を通じて AI プログラミングの能力を初めて体験 | ✅   |
 
 ### 一、AI プロダクトマネージャー
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [初級二：AI IDE ツールを知る](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md) | IDE の使用方法を学び、ローカルでミニゲームを作成 | ✅ |
-| [初級三：手を動かしてプロトタイプを作る](docs/zh-cn/stage-1/1.2-building-prototype/index.md) | ニーズ分析、AI による単一ページ生成、複数ページプロダクトプロトタイプの生成へ | ✅ |
-| [初級四：プロトタイプに AI 能力を追加](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md) | 一般的な AI 能力（テキスト、画像、動画）の接続方法を習得 | ✅ |
-| [初級五：完全プロジェクト実戦](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md) | 実際のシーンをシミュレート、ユーザーフィードバックを受け反復改良、プロジェクトを完全に | ✅ |
-| [大課題：完全な Web アプリケーションプロトタイプを作成し展示](docs/zh-cn/stage-1/1.5-final-project/index.md) | アプリケーションを完全に実装し、アプリケーション効果を展示 | ✅ |
+| 章                                                                                                           | 主要内容                                                                               | 状態 |
+| :----------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------- | :--- |
+| [初級二：AI IDE ツールを知る](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                        | IDE の使用方法を学び、ローカルでミニゲームを作成                                       | ✅   |
+| [初級三：手を動かしてプロトタイプを作る](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                 | ニーズ分析、AI による単一ページ生成、複数ページプロダクトプロトタイプの生成へ          | ✅   |
+| [初級四：プロトタイプに AI 能力を追加](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)          | 一般的な AI 能力（テキスト、画像、動画）の接続方法を習得                               | ✅   |
+| [初級五：完全プロジェクト実戦](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                    | 実際のシーンをシミュレート、ユーザーフィードバックを受け反復改良、プロジェクトを完全に | ✅   |
+| [大課題：完全な Web アプリケーションプロトタイプを作成し展示](docs/zh-cn/stage-1/1.5-final-project/index.md) | アプリケーションを完全に実装し、アプリケーション効果を展示                             | ✅   |
 
 #### 付録
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [付録 A：プロダクト思考補充](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | ゼロからイチまでプロダクトを作る際に必要な思考フレームワーク | ✅ |
-| [付録 B：一般的なエラーと解決策](docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | Vibe Coding における一般的なエラーとトラブルシューティング方法 | ✅ |
+| 章                                                                                     | 主要内容                                                       | 状態 |
+| :------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :--- |
+| [付録 A：プロダクト思考補充](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)  | ゼロからイチまでプロダクトを作る際に必要な思考フレームワーク   | ✅   |
+| [付録 B：一般的なエラーと解決策](docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | Vibe Coding における一般的なエラーとトラブルシューティング方法 | ✅   |
 
 ### 二、初中級開発エンジニア
 
 #### フロントエンド部分
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [フロントエンド零：lovart を使用して素材を生成](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/) | lovart を使ってキャラクター、シーンなどの視覚素材を一括生成し、UI デザインとフロントエンド開発に素材基盤を提供 | 🚧 |
-| [フロントエンド一：Figma と MasterGo 入門](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/) | デザインツールを使って情報アーキテクチャとページ構造を整理し、フロントエンド実装の基礎を築く | 🚧 |
-| [フロントエンド二：最初のモダンアプリケーションを構築 - UI デザイン](docs/zh-cn/stage-2/frontend/2.2-ui-design/) | デザイン画に基づいてコンポーネント化インターフェースを完成させ、デザインからコードへの最初のパスを実現 | 🚧 |
-| [フロントエンド三：UI デザイン仕様とマルチプロダクト UI デザインを参照](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/) | 統一されたメインビジュアルを中心にマルチプロダクトインターフェースを拡張し、体系的デザイン能力を練習 | 🚧 |
-| [フロントエンド四：一緒にハリー・ポッターの肖像画を作ろう](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | 0 から 1 まで AI 能力を統合したフロントエンドアプリケーションを作成し、デザインと開発を接続 | ✅ |
+| 章                                                                                                                                                       | 主要内容                                                                                                       | 状態 |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- | :--- |
+| [フロントエンド零：lovart を使用して素材を生成](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/)                                                          | lovart を使ってキャラクター、シーンなどの視覚素材を一括生成し、UI デザインとフロントエンド開発に素材基盤を提供 | 🚧   |
+| [フロントエンド一：Figma と MasterGo 入門](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/)                                                              | デザインツールを使って情報アーキテクチャとページ構造を整理し、フロントエンド実装の基礎を築く                   | 🚧   |
+| [フロントエンド二：最初のモダンアプリケーションを構築 - UI デザイン](docs/zh-cn/stage-2/frontend/2.2-ui-design/)                                         | デザイン画に基づいてコンポーネント化インターフェースを完成させ、デザインからコードへの最初のパスを実現         | 🚧   |
+| [フロントエンド三：UI デザイン仕様とマルチプロダクト UI デザインを参照](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/)                               | 統一されたメインビジュアルを中心にマルチプロダクトインターフェースを拡張し、体系的デザイン能力を練習           | 🚧   |
+| [フロントエンド四：一緒にハリー・ポッターの肖像画を作ろう](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | 0 から 1 まで AI 能力を統合したフロントエンドアプリケーションを作成し、デザインと開発を接続                    | ✅   |
 
 #### バックエンドとフルスタック部分
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [バックエンド一：API とは](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md) | HTTP インターフェースとリクエスト・レスポンスモデルを理解し、バックエンド統合と連携調整の準備 | ✅ |
-| [バックエンド二：データベースから Supabase へ](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) | Supabase 上でデータベースと API を実装し、データモデルとフロントエンドページを接続 | ✅ |
-| [バックエンド三：大規模言語モデル支援によるインターフェースコードとドキュメント作成](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/) | 大規模言語モデルを使ってインターフェースとデータベースのドキュメントおよびコードの生成を支援し、読みやすくテスト可能なバックエンドを実現 | 🚧 |
-| [バックエンド四：Git ワークフロー](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md) | Git ワークフローでコードを管理し、バージョン管理とコラボレーションを行う | ✅ |
-| [バックエンド五：Zeabur デプロイ](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) | アプリケーションを Zeabur にデプロイしてオンライン化 | ✅ |
-| [バックエンド六：モダン CLI 開発ツール](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | CLI 系 AI プログラミングツールを使用して開発とデバッグを加速し、個人のエンジニアリングワークフローを形成 | ✅ |
-| [バックエンド七：Stripe などの課金システムの統合方法](docs/zh-cn/stage-2/backend/2.7-stripe-payment/) | 決済システムを接続し、課金パスと基本決済フローを完成 | 🚧 |
-| [大課題 1：最初のモダンアプリケーションを構築 - フルスタックアプリ](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/) | フロントエンド、バックエンド、決済モジュールを統合し、オンライン可能なフルスタック Web アプリケーションを完成 | 🚧 |
-| [大課題 2：モダンフロントエンドコンポーネントライブラリ + Trae 実戦](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/) | モダンフロントエンドコンポーネントライブラリと Trae を使用し、ログイン・登録可能で課金対応のプロダクトを独立完成 | 🚧 |
+| 章                                                                                                                                                                    | 主要内容                                                                                                                                 | 状態 |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :--- |
+| [バックエンド一：API とは](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md)                                                                   | HTTP インターフェースとリクエスト・レスポンスモデルを理解し、バックエンド統合と連携調整の準備                                            | ✅   |
+| [バックエンド二：データベースから Supabase へ](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md)                       | Supabase 上でデータベースと API を実装し、データモデルとフロントエンドページを接続                                                       | ✅   |
+| [バックエンド三：大規模言語モデル支援によるインターフェースコードとドキュメント作成](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/)                               | 大規模言語モデルを使ってインターフェースとデータベースのドキュメントおよびコードの生成を支援し、読みやすくテスト可能なバックエンドを実現 | 🚧   |
+| [バックエンド四：Git ワークフロー](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md)                                       | Git ワークフローでコードを管理し、バージョン管理とコラボレーションを行う                                                                 | ✅   |
+| [バックエンド五：Zeabur デプロイ](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)             | アプリケーションを Zeabur にデプロイしてオンライン化                                                                                     | ✅   |
+| [バックエンド六：モダン CLI 開発ツール](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | CLI 系 AI プログラミングツールを使用して開発とデバッグを加速し、個人のエンジニアリングワークフローを形成                                 | ✅   |
+| [バックエンド七：Stripe などの課金システムの統合方法](docs/zh-cn/stage-2/backend/2.7-stripe-payment/)                                                                 | 決済システムを接続し、課金パスと基本決済フローを完成                                                                                     | 🚧   |
+| [大課題 1：最初のモダンアプリケーションを構築 - フルスタックアプリ](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/)                                                | フロントエンド、バックエンド、決済モジュールを統合し、オンライン可能なフルスタック Web アプリケーションを完成                            | 🚧   |
+| [大課題 2：モダンフロントエンドコンポーネントライブラリ + Trae 実戦](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/)                                        | モダンフロントエンドコンポーネントライブラリと Trae を使用し、ログイン・登録可能で課金対応のプロダクトを独立完成                         | 🚧   |
 
 #### AI 能力付録
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [ AI 一：Dify 入門とナレッジベース統合](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | Dify Workflow と基本 RAG を使ってツール系プロダクトを構築し、以降のアプリケーションアップグレードのモデルケースを作成 | ✅ |
-| [ AI 二：AI 辞典の検索とマルチモーダル API 統合を学ぶ](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md) | 適切なモデルと API を検索する方法を学び、テキスト、画像などのマルチモーダル能力をプロダクトに統合 | 🚧 |
+| 章                                                                                                                                                                                    | 主要内容                                                                                                              | 状態 |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------- | :--- |
+| [ AI 一：Dify 入門とナレッジベース統合](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | Dify Workflow と基本 RAG を使ってツール系プロダクトを構築し、以降のアプリケーションアップグレードのモデルケースを作成 | ✅   |
+| [ AI 二：AI 辞典の検索とマルチモーダル API 統合を学ぶ](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md)                         | 適切なモデルと API を検索する方法を学び、テキスト、画像などのマルチモーダル能力をプロダクトに統合                     | 🚧   |
 
 ### 三、上級開発エンジニア
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [上級一：MCP と ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/) | MCP と Skills を通じて IDE 能力を拡張し、外部サービスをツールとして接続 | 🚧 |
-| [上級二：Coding Tools を長時間動作させる方法](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) | 長時間動作するタスクを設計・設定し、Coding Tools をより安定して信頼性の高いものに | 🚧 |
-| [上級三：マルチプラットフォーム開発：WeChat ミニプログラムの構築方法](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | WeChat ミニプログラムのエコシステムを理解し、公式テンプレートからリリースまでフロントエンドミニプログラムを完成 | ✅ |
-| [上級四：マルチプラットフォーム開発：WeChat ミニプログラムの構築方法 - バックエンド含む](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | ミニプログラムにデータベースとバックエンドロジックを統合し、完全な業務クローズドループを実現 | 🚧 |
-| [上級五：マルチプラットフォーム開発：Android アプリの構築方法](docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Expo などのツールを使用し、Web/ネイティブ一体化の Android アプリ開発を完成 | 🚧 |
-| [上級六：マルチプラットフォーム開発：iOS アプリの構築方法](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Expo などのツールを使用し、Web/ネイティブ一体化の iOS アプリ開発を完成 | 🚧 |
-| [上級七：自分専用の個人ウェブページと学術ブログの構築方法](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) | 選定、構築からデプロイまで、個人プロジェクトと学術成果を展示する長期的なオンラインホームページを構築 | 🚧 |
+| 章                                                                                                                                                          | 主要内容                                                                                                        | 状態 |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- | :--- |
+| [上級一：MCP と ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/)                                                               | MCP と Skills を通じて IDE 能力を拡張し、外部サービスをツールとして接続                                         | 🚧   |
+| [上級二：Coding Tools を長時間動作させる方法](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/)                                                       | 長時間動作するタスクを設計・設定し、Coding Tools をより安定して信頼性の高いものに                               | 🚧   |
+| [上級三：マルチプラットフォーム開発：WeChat ミニプログラムの構築方法](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/)                            | WeChat ミニプログラムのエコシステムを理解し、公式テンプレートからリリースまでフロントエンドミニプログラムを完成 | ✅   |
+| [上級四：マルチプラットフォーム開発：WeChat ミニプログラムの構築方法 - バックエンド含む](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | ミニプログラムにデータベースとバックエンドロジックを統合し、完全な業務クローズドループを実現                    | 🚧   |
+| [上級五：マルチプラットフォーム開発：Android アプリの構築方法](docs/zh-cn/stage-3/cross-platform/3.5-android-app/)                                          | Expo などのツールを使用し、Web/ネイティブ一体化の Android アプリ開発を完成                                      | 🚧   |
+| [上級六：マルチプラットフォーム開発：iOS アプリの構築方法](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/)                                                  | Expo などのツールを使用し、Web/ネイティブ一体化の iOS アプリ開発を完成                                          | 🚧   |
+| [上級七：自分専用の個人ウェブページと学術ブログの構築方法](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/)                                    | 選定、構築からデプロイまで、個人プロジェクトと学術成果を展示する長期的なオンラインホームページを構築            | 🚧   |
 
 #### AI 能力付録
 
-| 章 | 主要内容 | 状態 |
-| :--- | :--- | :--- |
-| [上級 AI 一：RAG とは、それがどのように動作するか](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | RAG 原理と一般的なアーキテクチャを体系的に理解し、複雑なアプリケーションに知識検索基盤を提供 | ✅ |
-| [上級 AI 二：中上級 RAG とワークフロー編成：LangGraph を例に](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | LangGraph などのツールを使用してマルチステップワークフローと中上級 RAG システムを設計 | 🚧 |
+| 章                                                                                                                                                             | 主要内容                                                                                     | 状態 |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :--- |
+| [上級 AI 一：RAG とは、それがどのように動作するか](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | RAG 原理と一般的なアーキテクチャを体系的に理解し、複雑なアプリケーションに知識検索基盤を提供 | ✅   |
+| [上級 AI 二：中上級 RAG とワークフロー編成：LangGraph を例に](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/)                                     | LangGraph などのツールを使用してマルチステップワークフローと中上級 RAG システムを設計        | 🚧   |
 
 ## 🛠️ 学習方法
 

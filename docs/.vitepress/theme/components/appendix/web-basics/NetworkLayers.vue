@@ -24,7 +24,11 @@
       <div class="detail-functions">
         <div class="function-title">主要功能</div>
         <div class="function-list">
-          <div v-for="(func, index) in layers[selectedLayer].functions" :key="index" class="function-item">
+          <div
+            v-for="(func, index) in layers[selectedLayer].functions"
+            :key="index"
+            class="function-item"
+          >
             ✓ {{ func }}
           </div>
         </div>
@@ -32,7 +36,11 @@
       <div class="detail-examples">
         <div class="example-title">常见设备</div>
         <div class="example-list">
-          <div v-for="(device, index) in layers[selectedLayer].devices" :key="index" class="example-item">
+          <div
+            v-for="(device, index) in layers[selectedLayer].devices"
+            :key="index"
+            class="example-item"
+          >
             📡 {{ device }}
           </div>
         </div>
@@ -66,7 +74,8 @@ const layers = [
     protocols: 'HTTP, HTTPS, FTP, SMTP, DNS, SSH',
     icon: '📱',
     dataUnit: '数据',
-    description: '直接为用户的应用程序（如浏览器、邮件客户端）提供网络服务接口。',
+    description:
+      '直接为用户的应用程序（如浏览器、邮件客户端）提供网络服务接口。',
     functions: [
       '为应用程序提供网络接口',
       '定义应用程序间通信的协议',

@@ -4,7 +4,9 @@
       <!-- Left Panel: Task Guide -->
       <div class="task-panel">
         <div class="panel-header">
-          <span class="panel-title">🎯 实操任务 ({{ currentTaskIndex + 1 }}/{{ tasks.length }})</span>
+          <span class="panel-title"
+            >🎯 实操任务 ({{ currentTaskIndex + 1 }}/{{ tasks.length }})</span
+          >
           <div class="os-selector">
             <select v-model="currentOS" @change="resetCurrentTask">
               <option value="mac">macOS</option>
@@ -18,7 +20,7 @@
         <div class="task-content">
           <h3>{{ currentTask.title }}</h3>
           <p class="task-desc">{{ currentTask.description }}</p>
-          
+
           <div class="ai-helper">
             <div class="ai-header">
               <span class="ai-icon">🤖</span>
@@ -29,23 +31,36 @@
                 {{ currentTask.aiQuery }}
               </div>
               <div class="chat-bubble ai">
-                <p>{{ currentTask.aiResponse[currentOS] || currentTask.aiResponse.common }}</p>
+                <p>
+                  {{
+                    currentTask.aiResponse[currentOS] ||
+                    currentTask.aiResponse.common
+                  }}
+                </p>
                 <!-- Multiple Commands Support -->
-                <div v-if="currentTask.commands && currentTask.commands[currentOS]" class="cmd-buttons">
-                  <button 
-                    v-for="(cmdItem, idx) in currentTask.commands[currentOS]" 
+                <div
+                  v-if="currentTask.commands && currentTask.commands[currentOS]"
+                  class="cmd-buttons"
+                >
+                  <button
+                    v-for="(cmdItem, idx) in currentTask.commands[currentOS]"
                     :key="idx"
-                    class="copy-btn" 
+                    class="copy-btn"
                     @click="copyCommand(cmdItem.cmd)"
                   >
                     {{ cmdItem.label || '复制命令' }}
                   </button>
                 </div>
                 <!-- Fallback for Single Command -->
-                <button 
+                <button
                   v-else-if="currentTask.expectedCmd"
-                  class="copy-btn" 
-                  @click="copyCommand(currentTask.expectedCmd[currentOS] || currentTask.expectedCmd.common)"
+                  class="copy-btn"
+                  @click="
+                    copyCommand(
+                      currentTask.expectedCmd[currentOS] ||
+                        currentTask.expectedCmd.common
+                    )
+                  "
                 >
                   复制命令
                 </button>
@@ -57,11 +72,17 @@
             <span class="label">预期目标：</span>
             <span class="value">{{ currentTask.goal }}</span>
           </div>
-          
+
           <div class="success-message" v-if="isTaskCompleted">
             <span class="icon">🎉</span>
             <span>太棒了！任务完成！</span>
-            <button class="next-btn" @click="nextTask" v-if="currentTaskIndex < tasks.length - 1">下一关</button>
+            <button
+              class="next-btn"
+              @click="nextTask"
+              v-if="currentTaskIndex < tasks.length - 1"
+            >
+              下一关
+            </button>
             <button class="reset-btn" @click="resetAll" v-else>重新开始</button>
           </div>
         </div>
@@ -79,22 +100,29 @@
         </div>
         <div class="terminal-body" ref="terminalBody" @click="focusInput">
           <div v-for="(line, index) in history" :key="index" class="line">
-            <span v-if="line.type === 'input'" class="prompt">{{ line.prompt }}</span>
+            <span v-if="line.type === 'input'" class="prompt">{{
+              line.prompt
+            }}</span>
             <span :class="line.type">{{ line.content }}</span>
           </div>
-          
-          <div class="line input-line" v-if="!isTaskCompleted || currentTaskIndex < tasks.length - 1">
+
+          <div
+            class="line input-line"
+            v-if="!isTaskCompleted || currentTaskIndex < tasks.length - 1"
+          >
             <span class="prompt">{{ prompt }}</span>
-            <input 
+            <input
               ref="cmdInput"
-              v-model="inputCmd" 
+              v-model="inputCmd"
               @keydown.enter="executeCommand"
               @keydown.tab.prevent
-              type="text" 
+              type="text"
               spellcheck="false"
               autocomplete="off"
             />
-            <span v-if="inputCmd.length > 0" class="enter-hint">⏎ 按回车执行</span>
+            <span v-if="inputCmd.length > 0" class="enter-hint"
+              >⏎ 按回车执行</span
+            >
           </div>
         </div>
       </div>
@@ -115,10 +143,10 @@ const terminalBody = ref(null)
 
 // System Configurations
 const osConfig = {
-  'mac': { prompt: 'user@MacBook ~ % ', title: 'user — -zsh' },
+  mac: { prompt: 'user@MacBook ~ % ', title: 'user — -zsh' },
   'win-ps': { prompt: 'PS C:\\Users\\User> ', title: 'Windows PowerShell' },
   'win-cmd': { prompt: 'C:\\Users\\User> ', title: 'Command Prompt' },
-  'linux': { prompt: 'user@localhost:~$ ', title: 'user@localhost: ~' }
+  linux: { prompt: 'user@localhost:~$ ', title: 'user@localhost: ~' }
 }
 
 const prompt = computed(() => osConfig[currentOS.value].prompt)
@@ -132,14 +160,17 @@ const tasks = [
     goal: '列出当前目录下的所有文件。',
     aiQuery: '我想查看当前目录下的文件，应该用什么命令？',
     aiResponse: {
-      'mac': '在 macOS 和 Linux 中，查看文件列表使用 `ls` 命令 (List)。',
-      'linux': '在 macOS 和 Linux 中，查看文件列表使用 `ls` 命令 (List)。',
+      mac: '在 macOS 和 Linux 中，查看文件列表使用 `ls` 命令 (List)。',
+      linux: '在 macOS 和 Linux 中，查看文件列表使用 `ls` 命令 (List)。',
       'win-ps': '在 PowerShell 中，你可以使用 `ls` 或 `dir` 命令。',
       'win-cmd': '在 Windows CMD 中，查看文件列表使用 `dir` 命令 (Directory)。',
-      'common': '通常使用 ls 或 dir。'
+      common: '通常使用 ls 或 dir。'
     },
     expectedCmd: {
-      'mac': 'ls', 'linux': 'ls', 'win-ps': 'ls', 'win-cmd': 'dir'
+      mac: 'ls',
+      linux: 'ls',
+      'win-ps': 'ls',
+      'win-cmd': 'dir'
     },
     validate: (cmd, os) => {
       const valid = os === 'win-cmd' ? ['dir'] : ['ls', 'dir', 'll']
@@ -161,14 +192,16 @@ d----           1/15/2026  9:00 AM                Downloads
   },
   {
     title: '第二步：创建一个新家',
-    description: '文件太多会很乱，我们创建一个专门的文件夹来存放今天的练习文件。',
+    description:
+      '文件太多会很乱，我们创建一个专门的文件夹来存放今天的练习文件。',
     goal: '创建一个名为 "demo" 的文件夹。',
     aiQuery: '怎么创建一个新的文件夹？名字叫 demo。',
     aiResponse: {
-      'common': '创建文件夹（目录）的命令是 `mkdir` (Make Directory)。你可以输入 `mkdir demo`。'
+      common:
+        '创建文件夹（目录）的命令是 `mkdir` (Make Directory)。你可以输入 `mkdir demo`。'
     },
     expectedCmd: {
-      'common': 'mkdir demo'
+      common: 'mkdir demo'
     },
     validate: (cmd) => cmd.trim() === 'mkdir demo',
     output: () => '' // mkdir usually has no output on success
@@ -179,10 +212,10 @@ d----           1/15/2026  9:00 AM                Downloads
     goal: '进入 "demo" 文件夹。',
     aiQuery: '怎么进入刚才建好的 demo 文件夹？',
     aiResponse: {
-      'common': '切换目录使用 `cd` 命令 (Change Directory)。输入 `cd demo` 即可。'
+      common: '切换目录使用 `cd` 命令 (Change Directory)。输入 `cd demo` 即可。'
     },
     expectedCmd: {
-      'common': 'cd demo'
+      common: 'cd demo'
     },
     validate: (cmd) => cmd.trim() === 'cd demo',
     output: () => '' // cd usually has no output, but prompt changes
@@ -193,19 +226,26 @@ d----           1/15/2026  9:00 AM                Downloads
     goal: '创建一个名为 "hello.txt" 的文件。',
     aiQuery: '我想新建一个空文件叫 hello.txt，怎么做？',
     aiResponse: {
-      'mac': '在 Mac/Linux 上，使用 `touch hello.txt` 可以快速创建一个空文件。',
-      'linux': '在 Mac/Linux 上，使用 `touch hello.txt` 可以快速创建一个空文件。',
-      'win-ps': '在 PowerShell 中，可以使用 `ni hello.txt` 或 `echo "" > hello.txt`。',
-      'win-cmd': '在 CMD 中，可以使用 `type nul > hello.txt` 或 `echo. > hello.txt`。',
+      mac: '在 Mac/Linux 上，使用 `touch hello.txt` 可以快速创建一个空文件。',
+      linux: '在 Mac/Linux 上，使用 `touch hello.txt` 可以快速创建一个空文件。',
+      'win-ps':
+        '在 PowerShell 中，可以使用 `ni hello.txt` 或 `echo "" > hello.txt`。',
+      'win-cmd':
+        '在 CMD 中，可以使用 `type nul > hello.txt` 或 `echo. > hello.txt`。'
     },
     expectedCmd: {
-      'mac': 'touch hello.txt',
-      'linux': 'touch hello.txt',
+      mac: 'touch hello.txt',
+      linux: 'touch hello.txt',
       'win-ps': 'ni hello.txt',
       'win-cmd': 'type nul > hello.txt'
     },
     validate: (cmd, os) => {
-      if (cmd.includes('touch') || cmd.includes('echo') || cmd.includes('ni') || cmd.includes('type')) {
+      if (
+        cmd.includes('touch') ||
+        cmd.includes('echo') ||
+        cmd.includes('ni') ||
+        cmd.includes('type')
+      ) {
         return cmd.includes('hello.txt')
       }
       return false
@@ -214,22 +254,26 @@ d----           1/15/2026  9:00 AM                Downloads
   },
   {
     title: '第五步：安装程序 (系统软件 & Python库)',
-    description: '终端不仅能管理文件，还能安装软件。我们来尝试两种常见的安装场景：安装系统工具（如 wget/git）和安装 Python 库（如 requests）。',
+    description:
+      '终端不仅能管理文件，还能安装软件。我们来尝试两种常见的安装场景：安装系统工具（如 wget/git）和安装 Python 库（如 requests）。',
     goal: '任选其一：安装系统工具或 Python 库。',
     aiQuery: '怎么用命令行安装软件？我想装 git 或者 python 的 requests 库。',
     aiResponse: {
-      'mac': 'macOS 推荐使用 Homebrew 安装系统软件，使用 pip 安装 Python 库。',
-      'linux': 'Linux (Ubuntu/Debian) 使用 apt 安装系统软件，使用 pip 安装 Python 库。',
-      'win-ps': 'Windows PowerShell 推荐使用 winget 安装系统软件，使用 pip 安装 Python 库。',
-      'win-cmd': 'Windows CMD 推荐使用 winget 安装系统软件，使用 pip 安装 Python 库。',
-      'common': '不同系统有不同的包管理器。'
+      mac: 'macOS 推荐使用 Homebrew 安装系统软件，使用 pip 安装 Python 库。',
+      linux:
+        'Linux (Ubuntu/Debian) 使用 apt 安装系统软件，使用 pip 安装 Python 库。',
+      'win-ps':
+        'Windows PowerShell 推荐使用 winget 安装系统软件，使用 pip 安装 Python 库。',
+      'win-cmd':
+        'Windows CMD 推荐使用 winget 安装系统软件，使用 pip 安装 Python 库。',
+      common: '不同系统有不同的包管理器。'
     },
     commands: {
-      'mac': [
+      mac: [
         { label: '安装 wget (系统)', cmd: 'brew install wget' },
         { label: '安装 requests (Python)', cmd: 'pip install requests' }
       ],
-      'linux': [
+      linux: [
         { label: '安装 git (系统)', cmd: 'sudo apt install git' },
         { label: '安装 requests (Python)', cmd: 'pip install requests' }
       ],
@@ -244,34 +288,46 @@ d----           1/15/2026  9:00 AM                Downloads
     },
     expectedCmd: {
       // Fallback/Legacy
-      'mac': 'brew install wget',
-      'linux': 'sudo apt install git',
+      mac: 'brew install wget',
+      linux: 'sudo apt install git',
       'win-ps': 'pip install requests',
       'win-cmd': 'pip install requests'
     },
     validate: (cmd, os) => {
       const c = cmd.trim()
-      if (os === 'mac') return c === 'brew install wget' || c === 'pip install requests'
-      if (os === 'linux') return c === 'sudo apt install git' || c === 'apt install git' || c === 'pip install requests'
-      if (os === 'win-ps' || os === 'win-cmd') return c === 'winget install git.git' || c === 'winget install git' || c === 'pip install requests'
+      if (os === 'mac')
+        return c === 'brew install wget' || c === 'pip install requests'
+      if (os === 'linux')
+        return (
+          c === 'sudo apt install git' ||
+          c === 'apt install git' ||
+          c === 'pip install requests'
+        )
+      if (os === 'win-ps' || os === 'win-cmd')
+        return (
+          c === 'winget install git.git' ||
+          c === 'winget install git' ||
+          c === 'pip install requests'
+        )
       return c === 'pip install requests'
     },
-    output: (os, cmd) => { // Modified to accept cmd
+    output: (os, cmd) => {
+      // Modified to accept cmd
       const c = cmd ? cmd.trim() : ''
-      
+
       // Python requests output
       if (c.includes('pip install requests')) {
-         return `
+        return `
 Downloading/unpacking requests
   Downloading requests-2.31.0-py3-none-any.whl (62kB): 62kB downloaded
 Installing collected packages: requests
 Successfully installed requests
 Cleaning up...`
       }
-      
+
       // Windows winget output
       if (c.includes('winget install')) {
-         return `
+        return `
 Found Git [Git.Git] Version 2.43.0
 This application is licensed to you by its owner.
 Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
@@ -310,14 +366,15 @@ Setting up git (1:2.34.1-1ubuntu1.9) ...`
     goal: '删除 "hello.txt" 文件。',
     aiQuery: '我不想要 hello.txt 了，怎么删除它？',
     aiResponse: {
-      'mac': '删除文件使用 `rm` 命令 (Remove)。小心，这个操作通常不可撤销！输入 `rm hello.txt`。',
-      'linux': '删除文件使用 `rm` 命令 (Remove)。小心，这个操作通常不可撤销！输入 `rm hello.txt`。',
+      mac: '删除文件使用 `rm` 命令 (Remove)。小心，这个操作通常不可撤销！输入 `rm hello.txt`。',
+      linux:
+        '删除文件使用 `rm` 命令 (Remove)。小心，这个操作通常不可撤销！输入 `rm hello.txt`。',
       'win-ps': '在 PowerShell 中使用 `rm` 或 `del`。输入 `rm hello.txt`。',
-      'win-cmd': '在 CMD 中使用 `del` 命令 (Delete)。输入 `del hello.txt`。',
+      'win-cmd': '在 CMD 中使用 `del` 命令 (Delete)。输入 `del hello.txt`。'
     },
     expectedCmd: {
-      'mac': 'rm hello.txt',
-      'linux': 'rm hello.txt',
+      mac: 'rm hello.txt',
+      linux: 'rm hello.txt',
       'win-ps': 'rm hello.txt',
       'win-cmd': 'del hello.txt'
     },
@@ -362,12 +419,18 @@ const executeCommand = () => {
   // 1. Add to history
   let currentPrompt = prompt.value
   // Special handling for prompt update simulation (hacky way)
-  if (currentTaskIndex.value >= 2 && currentTaskIndex.value < 6 && history.value.length > 0) {
-     // If we are inside demo folder
-     if (currentOS.value === 'mac') currentPrompt = 'user@MacBook demo % '
-     else if (currentOS.value === 'linux') currentPrompt = 'user@localhost:~/demo$ '
-     else if (currentOS.value === 'win-ps') currentPrompt = 'PS C:\\Users\\User\\demo> '
-     else currentPrompt = 'C:\\Users\\User\\demo> '
+  if (
+    currentTaskIndex.value >= 2 &&
+    currentTaskIndex.value < 6 &&
+    history.value.length > 0
+  ) {
+    // If we are inside demo folder
+    if (currentOS.value === 'mac') currentPrompt = 'user@MacBook demo % '
+    else if (currentOS.value === 'linux')
+      currentPrompt = 'user@localhost:~/demo$ '
+    else if (currentOS.value === 'win-ps')
+      currentPrompt = 'PS C:\\Users\\User\\demo> '
+    else currentPrompt = 'C:\\Users\\User\\demo> '
   }
 
   history.value.push({ type: 'input', prompt: currentPrompt, content: cmd })
@@ -375,7 +438,10 @@ const executeCommand = () => {
 
   // 2. Process Command
   // Check if it matches current task requirement
-  if (!isTaskCompleted.value && currentTask.value.validate(cmd, currentOS.value)) {
+  if (
+    !isTaskCompleted.value &&
+    currentTask.value.validate(cmd, currentOS.value)
+  ) {
     // Success
     const out = currentTask.value.output(currentOS.value, cmd) // Pass cmd to output
     if (out) {
@@ -386,19 +452,29 @@ const executeCommand = () => {
     // Failure or just random command
     // Simple mock responses for common commands if not matching task
     if (cmd.trim() === 'ls' || cmd.trim() === 'dir') {
-       if (currentTaskIndex.value < 2) {
-         // Initial state
-         history.value.push({ type: 'output', content: tasks[0].output(currentOS.value) })
-       } else if (currentTaskIndex.value >= 2) {
-         // Inside demo
-         if (currentTaskIndex.value === 3) history.value.push({ type: 'output', content: '' }) // empty
-         else history.value.push({ type: 'output', content: 'hello.txt' })
-       }
+      if (currentTaskIndex.value < 2) {
+        // Initial state
+        history.value.push({
+          type: 'output',
+          content: tasks[0].output(currentOS.value)
+        })
+      } else if (currentTaskIndex.value >= 2) {
+        // Inside demo
+        if (currentTaskIndex.value === 3)
+          history.value.push({ type: 'output', content: '' }) // empty
+        else history.value.push({ type: 'output', content: 'hello.txt' })
+      }
     } else if (cmd.trim() === 'clear' || cmd.trim() === 'cls') {
       history.value = []
     } else if (!isTaskCompleted.value) {
-      history.value.push({ type: 'error', content: `Command not found or not matching task: ${cmd}` })
-      history.value.push({ type: 'info', content: `💡 提示：试试点击左侧的“问问 AI”？` })
+      history.value.push({
+        type: 'error',
+        content: `Command not found or not matching task: ${cmd}`
+      })
+      history.value.push({
+        type: 'info',
+        content: `💡 提示：试试点击左侧的“问问 AI”？`
+      })
     }
   }
 
@@ -410,7 +486,10 @@ const nextTask = () => {
     currentTaskIndex.value++
     isTaskCompleted.value = false
     // Clear history to keep it clean? Or keep it? Let's keep it but maybe add a separator
-    history.value.push({ type: 'info', content: `--- 进入下一关: ${currentTask.value.title} ---` })
+    history.value.push({
+      type: 'info',
+      content: `--- 进入下一关: ${currentTask.value.title} ---`
+    })
     scrollToBottom()
   }
 }
@@ -446,7 +525,7 @@ watch(currentOS, () => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -606,11 +685,18 @@ watch(currentOS, () => {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.next-btn, .reset-btn {
+.next-btn,
+.reset-btn {
   margin-left: auto;
   padding: 6px 16px;
   background: #10b981;
@@ -622,7 +708,8 @@ watch(currentOS, () => {
   transition: transform 0.1s;
 }
 
-.next-btn:hover, .reset-btn:hover {
+.next-btn:hover,
+.reset-btn:hover {
   transform: scale(1.05);
   background: #059669;
 }
@@ -636,9 +723,21 @@ watch(currentOS, () => {
   min-height: 400px;
 }
 
-.terminal-panel.win-cmd { background: #0c0c0c; color: #cccccc; font-family: 'Consolas', monospace; }
-.terminal-panel.win-ps { background: #012456; color: #ffffff; font-family: 'Consolas', monospace; }
-.terminal-panel.mac, .terminal-panel.linux { background: #2b2b2b; color: #f0f0f0; }
+.terminal-panel.win-cmd {
+  background: #0c0c0c;
+  color: #cccccc;
+  font-family: 'Consolas', monospace;
+}
+.terminal-panel.win-ps {
+  background: #012456;
+  color: #ffffff;
+  font-family: 'Consolas', monospace;
+}
+.terminal-panel.mac,
+.terminal-panel.linux {
+  background: #2b2b2b;
+  color: #f0f0f0;
+}
 
 .terminal-header {
   padding: 8px 12px;
@@ -658,11 +757,21 @@ watch(currentOS, () => {
   height: 12px;
   border-radius: 50%;
 }
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
+.dot.red {
+  background: #ff5f56;
+}
+.dot.yellow {
+  background: #ffbd2e;
+}
+.dot.green {
+  background: #27c93f;
+}
 
-.terminal-panel.win-cmd .dot, .terminal-panel.win-ps .dot { border-radius: 0; background: #ccc; }
+.terminal-panel.win-cmd .dot,
+.terminal-panel.win-ps .dot {
+  border-radius: 0;
+  background: #ccc;
+}
 
 .terminal-header .title {
   position: absolute;
@@ -696,8 +805,12 @@ watch(currentOS, () => {
   font-weight: bold;
 }
 
-.terminal-panel.win-cmd .prompt { color: #cccccc; }
-.terminal-panel.win-ps .prompt { color: #ffffff; }
+.terminal-panel.win-cmd .prompt {
+  color: #cccccc;
+}
+.terminal-panel.win-ps .prompt {
+  color: #ffffff;
+}
 
 .input-line {
   display: flex;
@@ -725,8 +838,13 @@ watch(currentOS, () => {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .line.output {

@@ -6,7 +6,7 @@ hero:
   tagline:
     - Devenez une super personne combinant produit, design et développement full-stack.
     - De l'idée au prototype, du prototype au produit, transformez chaque sortie en un produit livrable.
-    - Faites de l'IA votre partenaire : plus rapide, plus stable, plus créatif.
+    - Faites de l'IA votre partenaire: plus rapide, plus stable, plus créatif.
     - Construisez votre fossé technologique et produit avec une voie d'apprentissage systématique.
   actions:
     - theme: brand

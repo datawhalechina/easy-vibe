@@ -15,8 +15,8 @@
   <div class="embedding-demo">
     <div class="demo-controls">
       <div class="btn-group">
-        <button 
-          v-for="mode in modes" 
+        <button
+          v-for="mode in modes"
           :key="mode.id"
           :class="{ active: currentMode === mode.id }"
           @click="setMode(mode.id)"
@@ -25,7 +25,7 @@
         </button>
       </div>
       <div class="info-text">
-        {{ modes.find(m => m.id === currentMode)?.desc }}
+        {{ modes.find((m) => m.id === currentMode)?.desc }}
       </div>
     </div>
 
@@ -34,51 +34,95 @@
       <svg viewBox="0 0 400 300" class="vector-canvas">
         <!-- Grid lines -->
         <g class="grid">
-          <line x1="0" y1="150" x2="400" y2="150" stroke="var(--vp-c-divider)" />
-          <line x1="200" y1="0" x2="200" y2="300" stroke="var(--vp-c-divider)" />
+          <line
+            x1="0"
+            y1="150"
+            x2="400"
+            y2="150"
+            stroke="var(--vp-c-divider)"
+          />
+          <line
+            x1="200"
+            y1="0"
+            x2="200"
+            y2="300"
+            stroke="var(--vp-c-divider)"
+          />
         </g>
 
         <!-- Vectors/Points -->
         <g class="points">
-          <g 
-            v-for="point in activePoints" 
+          <g
+            v-for="point in activePoints"
             :key="point.id"
             class="point-group"
             :class="{ highlight: point.highlight }"
             :transform="`translate(${point.x}, ${point.y})`"
           >
             <circle r="4" :fill="point.color" />
-            <text 
-              y="-8" 
-              text-anchor="middle" 
+            <text
+              y="-8"
+              text-anchor="middle"
               class="point-label"
               :fill="point.color"
-            >{{ point.word }}</text>
+            >
+              {{ point.word }}
+            </text>
           </g>
         </g>
 
         <!-- Calculation Arrows (for King/Queen demo) -->
         <g v-if="currentMode === 'analogy'" class="arrows">
           <!-- King -> Man -->
-          <line 
-            :x1="getPoint('king').x" :y1="getPoint('king').y"
-            :x2="getPoint('man').x" :y2="getPoint('man').y"
-            stroke="rgba(0,0,0,0.2)" stroke-dasharray="4" marker-end="url(#arrowhead)"
+          <line
+            :x1="getPoint('king').x"
+            :y1="getPoint('king').y"
+            :x2="getPoint('man').x"
+            :y2="getPoint('man').y"
+            stroke="rgba(0,0,0,0.2)"
+            stroke-dasharray="4"
+            marker-end="url(#arrowhead)"
           />
           <!-- Queen -> Woman -->
-          <line 
-            :x1="getPoint('queen').x" :y1="getPoint('queen').y"
-            :x2="getPoint('woman').x" :y2="getPoint('woman').y"
-            stroke="var(--vp-c-brand)" stroke-width="2" marker-end="url(#arrowhead-brand)"
+          <line
+            :x1="getPoint('queen').x"
+            :y1="getPoint('queen').y"
+            :x2="getPoint('woman').x"
+            :y2="getPoint('woman').y"
+            stroke="var(--vp-c-brand)"
+            stroke-width="2"
+            marker-end="url(#arrowhead-brand)"
           />
-          <text x="390" y="280" text-anchor="end" class="math-label" fill="var(--vp-c-text-2)">King - Man ≈ Queen - Woman</text>
+          <text
+            x="390"
+            y="280"
+            text-anchor="end"
+            class="math-label"
+            fill="var(--vp-c-text-2)"
+          >
+            King - Man ≈ Queen - Woman
+          </text>
         </g>
 
         <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="7"
+            refX="9"
+            refY="3.5"
+            orient="auto"
+          >
             <polygon points="0 0, 10 3.5, 0 7" fill="rgba(0,0,0,0.2)" />
           </marker>
-          <marker id="arrowhead-brand" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <marker
+            id="arrowhead-brand"
+            markerWidth="10"
+            markerHeight="7"
+            refX="9"
+            refY="3.5"
+            orient="auto"
+          >
             <polygon points="0 0, 10 3.5, 0 7" fill="var(--vp-c-brand)" />
           </marker>
         </defs>
@@ -94,36 +138,82 @@ const currentMode = ref('cluster')
 
 const modes = [
   { id: 'cluster', label: '语义聚类', desc: '语义相近的词在空间中距离更近。' },
-  { id: 'analogy', label: '向量算术', desc: 'King - Man + Woman ≈ Queen (方向平行)' }
+  {
+    id: 'analogy',
+    label: '向量算术',
+    desc: 'King - Man + Woman ≈ Queen (方向平行)'
+  }
 ]
 
 const basePoints = [
   // Cluster 1: Animals
   { id: 'cat', word: 'Cat', x: 80, y: 80, color: '#f87171', group: 'animal' },
   { id: 'dog', word: 'Dog', x: 100, y: 70, color: '#f87171', group: 'animal' },
-  { id: 'tiger', word: 'Tiger', x: 60, y: 100, color: '#f87171', group: 'animal' },
-  
+  {
+    id: 'tiger',
+    word: 'Tiger',
+    x: 60,
+    y: 100,
+    color: '#f87171',
+    group: 'animal'
+  },
+
   // Cluster 2: Technology
-  { id: 'computer', word: 'Computer', x: 300, y: 200, color: '#60a5fa', group: 'tech' },
-  { id: 'phone', word: 'Phone', x: 320, y: 220, color: '#60a5fa', group: 'tech' },
+  {
+    id: 'computer',
+    word: 'Computer',
+    x: 300,
+    y: 200,
+    color: '#60a5fa',
+    group: 'tech'
+  },
+  {
+    id: 'phone',
+    word: 'Phone',
+    x: 320,
+    y: 220,
+    color: '#60a5fa',
+    group: 'tech'
+  },
   { id: 'ai', word: 'AI', x: 280, y: 210, color: '#60a5fa', group: 'tech' },
 
   // Cluster 3: Royalty (Analogy)
-  { id: 'king', word: 'King', x: 100, y: 200, color: '#fbbf24', group: 'royal' },
-  { id: 'queen', word: 'Queen', x: 220, y: 200, color: '#fbbf24', group: 'royal' },
+  {
+    id: 'king',
+    word: 'King',
+    x: 100,
+    y: 200,
+    color: '#fbbf24',
+    group: 'royal'
+  },
+  {
+    id: 'queen',
+    word: 'Queen',
+    x: 220,
+    y: 200,
+    color: '#fbbf24',
+    group: 'royal'
+  },
   { id: 'man', word: 'Man', x: 100, y: 120, color: '#a78bfa', group: 'gender' },
-  { id: 'woman', word: 'Woman', x: 220, y: 120, color: '#a78bfa', group: 'gender' },
+  {
+    id: 'woman',
+    word: 'Woman',
+    x: 220,
+    y: 120,
+    color: '#a78bfa',
+    group: 'gender'
+  }
 ]
 
 const activePoints = computed(() => {
   if (currentMode.value === 'cluster') {
-    return basePoints.filter(p => ['animal', 'tech'].includes(p.group))
+    return basePoints.filter((p) => ['animal', 'tech'].includes(p.group))
   } else {
-    return basePoints.filter(p => ['royal', 'gender'].includes(p.group))
+    return basePoints.filter((p) => ['royal', 'gender'].includes(p.group))
   }
 })
 
-const getPoint = (id) => basePoints.find(p => p.id === id) || { x: 0, y: 0 }
+const getPoint = (id) => basePoints.find((p) => p.id === id) || { x: 0, y: 0 }
 
 const setMode = (mode) => {
   currentMode.value = mode

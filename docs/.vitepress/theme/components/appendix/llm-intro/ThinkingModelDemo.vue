@@ -1,16 +1,10 @@
 <template>
   <div class="thinking-demo">
     <div class="mode-switch">
-      <button 
-        :class="{ active: mode === 'fast' }"
-        @click="switchMode('fast')"
-      >
+      <button :class="{ active: mode === 'fast' }" @click="switchMode('fast')">
         ⚡️ 传统快思考 (System 1)
       </button>
-      <button 
-        :class="{ active: mode === 'slow' }"
-        @click="switchMode('slow')"
-      >
+      <button :class="{ active: mode === 'slow' }" @click="switchMode('slow')">
         🧠 深度慢思考 (System 2)
       </button>
     </div>
@@ -56,7 +50,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Final Answer -->
             <div class="output-box final-answer" v-if="showFinalAnswer">
               <div class="typing-effect" v-if="generatingFinal">
@@ -104,7 +98,7 @@ const isRunning = ref(false)
 const completed = ref(false)
 
 // Fast Mode Data
-const fastOutput = "9.11 比 9.9 大。"
+const fastOutput = '9.11 比 9.9 大。'
 const displayedOutput = ref('')
 
 // Slow Mode Data
@@ -115,7 +109,7 @@ const slowThoughts = `首先比较整数部分，都是9，相等。
 比较第一位小数：1 < 9。
 所以 0.11 小于 0.9。
 结论：9.11 小于 9.9。`
-const slowOutput = "9.11 比 9.9 小。"
+const slowOutput = '9.11 比 9.9 小。'
 
 const displayedThoughts = ref('')
 const generating = ref(false)
@@ -146,7 +140,7 @@ const reset = () => {
 const typeText = async (text, targetRef, speed = 30) => {
   for (let i = 0; i < text.length; i++) {
     targetRef.value += text[i]
-    await new Promise(r => setTimeout(r, speed))
+    await new Promise((r) => setTimeout(r, speed))
   }
 }
 
@@ -164,8 +158,8 @@ const runSimulation = async () => {
     generatingThoughts.value = true
     await typeText(slowThoughts, displayedThoughts, 20)
     generatingThoughts.value = false
-    
-    await new Promise(r => setTimeout(r, 500)) // Pause
+
+    await new Promise((r) => setTimeout(r, 500)) // Pause
 
     // Final answer phase
     showFinalAnswer.value = true
@@ -237,7 +231,8 @@ const toggleThoughts = () => {
   align-items: flex-start;
 }
 
-.fast-track, .slow-track {
+.fast-track,
+.slow-track {
   display: flex;
   align-items: flex-start;
   gap: 15px;
@@ -361,6 +356,10 @@ const toggleThoughts = () => {
   font-size: 1.1em;
 }
 
-.bad { color: var(--vp-c-red); }
-.good { color: var(--vp-c-green); }
+.bad {
+  color: var(--vp-c-red);
+}
+.good {
+  color: var(--vp-c-green);
+}
 </style>

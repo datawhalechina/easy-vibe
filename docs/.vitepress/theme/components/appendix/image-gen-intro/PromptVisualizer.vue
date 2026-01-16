@@ -16,7 +16,9 @@
             :style="{ opacity: token.weight }"
           >
             <div class="token-text">{{ token.text }}</div>
-            <div class="token-weight">权重: {{ (token.weight * 100).toFixed(0) }}%</div>
+            <div class="token-weight">
+              权重: {{ (token.weight * 100).toFixed(0) }}%
+            </div>
           </div>
         </div>
       </div>
@@ -25,12 +27,21 @@
       <div class="attention-section">
         <div class="section-title">🎯 交叉注意力可视化</div>
         <div class="attention-grid">
-          <div v-for="(item, index) in attentionMap" :key="index" class="attention-cell">
+          <div
+            v-for="(item, index) in attentionMap"
+            :key="index"
+            class="attention-cell"
+          >
             <div class="cell-token">{{ item.token }}</div>
             <div class="cell-bar">
-              <div class="bar-fill" :style="{ width: item.attention * 100 + '%' }"></div>
+              <div
+                class="bar-fill"
+                :style="{ width: item.attention * 100 + '%' }"
+              ></div>
             </div>
-            <div class="cell-value">{{ (item.attention * 100).toFixed(0) }}%</div>
+            <div class="cell-value">
+              {{ (item.attention * 100).toFixed(0) }}%
+            </div>
           </div>
         </div>
       </div>
@@ -40,9 +51,8 @@
       <p>
         <span class="icon">💡</span>
         <strong>交叉注意力机制</strong>让 AI 理解提示词的每个词。
-        当生成图片时，AI 会"关注"不同的词：
-        "cyberpunk" 影响整体风格，"cat" 决定主体，"neon lights" 控制灯光效果。
-        词的顺序和权重都会影响最终画面！
+        当生成图片时，AI 会"关注"不同的词： "cyberpunk" 影响整体风格，"cat"
+        决定主体，"neon lights" 控制灯光效果。 词的顺序和权重都会影响最终画面！
       </p>
     </div>
   </div>

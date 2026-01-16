@@ -16,13 +16,10 @@
 <template>
   <div class="arch-demo">
     <div class="control-tabs">
-      <button 
-        :class="{ active: mode === 'rnn' }"
-        @click="mode = 'rnn'"
-      >
+      <button :class="{ active: mode === 'rnn' }" @click="mode = 'rnn'">
         🐌 RNN (Sequential)
       </button>
-      <button 
+      <button
         :class="{ active: mode === 'transformer' }"
         @click="mode = 'transformer'"
       >
@@ -34,8 +31,8 @@
       <!-- RNN Visualization -->
       <div v-if="mode === 'rnn'" class="rnn-viz">
         <div class="sequence-display">
-          <div 
-            v-for="(word, idx) in rnnWords" 
+          <div
+            v-for="(word, idx) in rnnWords"
             :key="idx"
             class="word-item"
             :class="{ active: currentRnnStep === idx }"
@@ -43,16 +40,19 @@
             {{ word }}
           </div>
         </div>
-        
+
         <div class="rnn-process">
           <div class="hidden-state-track">
-            <div 
+            <div
               class="hidden-state-box"
               :style="{ opacity: rnnMemoryOpacity }"
             >
               <div class="memory-content">
                 Memory (h)
-                <div class="memory-level" :style="{ height: rnnMemoryStrength + '%' }"></div>
+                <div
+                  class="memory-level"
+                  :style="{ height: rnnMemoryStrength + '%' }"
+                ></div>
               </div>
             </div>
             <div class="arrow-right">→</div>
@@ -65,24 +65,25 @@
           </div>
         </div>
         <p class="desc-text">
-          RNN 从左到右逐个读取。注意看 Memory（记忆），随着句子变长，最早的信息（"The"）可能会被后面的信息冲淡，这就是“长距离依赖”问题。
+          RNN 从左到右逐个读取。注意看
+          Memory（记忆），随着句子变长，最早的信息（"The"）可能会被后面的信息冲淡，这就是“长距离依赖”问题。
         </p>
       </div>
 
       <!-- Transformer Visualization -->
       <div v-else class="transformer-viz">
         <div class="sentence-container">
-          <div 
-            v-for="(word, idx) in transformerWords" 
+          <div
+            v-for="(word, idx) in transformerWords"
             :key="idx"
             class="t-word"
-            :class="{ 
-              'hovered': hoveredWordIndex === idx,
-              'attended': getAttentionScore(hoveredWordIndex, idx) > 0
+            :class="{
+              hovered: hoveredWordIndex === idx,
+              attended: getAttentionScore(hoveredWordIndex, idx) > 0
             }"
             @mouseenter="hoveredWordIndex = idx"
             @mouseleave="hoveredWordIndex = -1"
-            :style="{ 
+            :style="{
               backgroundColor: getAttentionColor(hoveredWordIndex, idx)
             }"
           >
@@ -92,13 +93,16 @@
 
         <div class="attention-info" v-if="hoveredWordIndex !== -1">
           <p>
-            Current Focus: <strong>"{{ transformerWords[hoveredWordIndex] }}"</strong>
+            Current Focus:
+            <strong>"{{ transformerWords[hoveredWordIndex] }}"</strong>
           </p>
           <p class="sub-info">
-            Paying attention to: 
+            Paying attention to:
             <span v-for="(attn, idx) in currentAttentions" :key="idx">
               <span v-if="attn.score > 0.01">
-                "{{ transformerWords[attn.idx] }}" ({{ Math.round(attn.score * 100) }}%) 
+                "{{ transformerWords[attn.idx] }}" ({{
+                  Math.round(attn.score * 100)
+                }}%)
               </span>
             </span>
           </p>
@@ -108,8 +112,10 @@
         </div>
 
         <p class="desc-text">
-          Transformer 一眼看完整个句子（并行）。Self-Attention 机制让每个词都能直接“看见”其他词，无论距离多远。
-          <br>例如：悬停在 <strong>"it"</strong> 上，你会发现它强烈关注 <strong>"animal"</strong>，因为它指代的就是 animal。
+          Transformer 一眼看完整个句子（并行）。Self-Attention
+          机制让每个词都能直接“看见”其他词，无论距离多远。
+          <br />例如：悬停在 <strong>"it"</strong> 上，你会发现它强烈关注
+          <strong>"animal"</strong>，因为它指代的就是 animal。
         </p>
       </div>
     </div>
@@ -122,7 +128,17 @@ import { ref, computed } from 'vue'
 const mode = ref('rnn')
 
 // RNN Data
-const rnnWords = ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+const rnnWords = [
+  'The',
+  'quick',
+  'brown',
+  'fox',
+  'jumps',
+  'over',
+  'the',
+  'lazy',
+  'dog'
+]
 const currentRnnStep = ref(-1)
 const isPlayingRnn = ref(false)
 const rnnMemoryOpacity = ref(0.3)
@@ -134,37 +150,53 @@ const playRnn = async () => {
   currentRnnStep.value = -1
   rnnMemoryStrength.value = 0
   rnnOutput.value = '...'
-  
+
   for (let i = 0; i < rnnWords.length; i++) {
     currentRnnStep.value = i
     // Memory accumulates but also decays
     rnnMemoryStrength.value = Math.min(100, rnnMemoryStrength.value * 0.8 + 30)
     rnnMemoryOpacity.value = 0.5 + (i / rnnWords.length) * 0.5
     rnnOutput.value = `h${i}`
-    await new Promise(r => setTimeout(r, 800))
+    await new Promise((r) => setTimeout(r, 800))
   }
-  
+
   isPlayingRnn.value = false
   rnnOutput.value = 'Done'
 }
 
 // Transformer Data
-const transformerWords = ['The', 'animal', 'didn\'t', 'cross', 'the', 'street', 'because', 'it', 'was', 'too', 'tired', '.']
+const transformerWords = [
+  'The',
+  'animal',
+  "didn't",
+  'cross',
+  'the',
+  'street',
+  'because',
+  'it',
+  'was',
+  'too',
+  'tired',
+  '.'
+]
 
 // Pre-defined attention matrix (simplified for demo)
 // Source -> Targets (scores)
 const attentionMap = {
-  7: { // "it"
+  7: {
+    // "it"
     1: 0.8, // animal
     5: 0.1, // street
-    7: 1.0  // itself
+    7: 1.0 // itself
   },
-  10: { // "tired"
+  10: {
+    // "tired"
     1: 0.6, // animal
     7: 0.9, // it
     10: 1.0
   },
-  3: { // "cross"
+  3: {
+    // "cross"
     1: 0.5, // animal
     5: 0.5, // street
     3: 1.0
@@ -176,30 +208,32 @@ const hoveredWordIndex = ref(-1)
 const currentAttentions = computed(() => {
   if (hoveredWordIndex.value === -1) return []
   const map = attentionMap[hoveredWordIndex.value] || {}
-  
-  return transformerWords.map((_, idx) => {
-    let score = map[idx]
-    if (score === undefined) {
-      // Default behavior if not in map: attend to self strongly, neighbors weakly
-      if (idx === hoveredWordIndex.value) score = 1.0
-      else if (Math.abs(idx - hoveredWordIndex.value) === 1) score = 0.1
-      else score = 0.0
-    }
-    return { idx, score }
-  }).sort((a, b) => b.score - a.score)
+
+  return transformerWords
+    .map((_, idx) => {
+      let score = map[idx]
+      if (score === undefined) {
+        // Default behavior if not in map: attend to self strongly, neighbors weakly
+        if (idx === hoveredWordIndex.value) score = 1.0
+        else if (Math.abs(idx - hoveredWordIndex.value) === 1) score = 0.1
+        else score = 0.0
+      }
+      return { idx, score }
+    })
+    .sort((a, b) => b.score - a.score)
 })
 
 const getAttentionScore = (sourceIdx, targetIdx) => {
   if (sourceIdx === -1) return 0
   const map = attentionMap[sourceIdx]
-  
+
   if (map) {
     return map[targetIdx] || 0
   } else {
-     // Default behavior if not in map
-     if (sourceIdx === targetIdx) return 1.0
-     if (Math.abs(sourceIdx - targetIdx) === 1) return 0.1
-     return 0
+    // Default behavior if not in map
+    if (sourceIdx === targetIdx) return 1.0
+    if (Math.abs(sourceIdx - targetIdx) === 1) return 0.1
+    return 0
   }
 }
 

@@ -60,9 +60,15 @@
         <div class="example-section">
           <span class="section-label">检索到的文档：</span>
           <div class="retrieved-docs">
-            <div class="doc-item">📄 Doc 1: "RAG 是一种结合检索和生成的技术..."</div>
-            <div class="doc-item">📄 Doc 2: "RAG 的优势是减少幻觉、提高准确性..."</div>
-            <div class="doc-item">📄 Doc 3: "常见的 RAG 框架包括 LangChain..."</div>
+            <div class="doc-item">
+              📄 Doc 1: "RAG 是一种结合检索和生成的技术..."
+            </div>
+            <div class="doc-item">
+              📄 Doc 2: "RAG 的优势是减少幻觉、提高准确性..."
+            </div>
+            <div class="doc-item">
+              📄 Doc 3: "常见的 RAG 框架包括 LangChain..."
+            </div>
           </div>
         </div>
         <div class="example-section">
