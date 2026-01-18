@@ -8,113 +8,135 @@
           </div>
         </div>
         <div class="toggle-label">
-          <span :class="{ active: !isVLM }">Pure LLM</span>
+          <span :class="{ active: !isVLM }">Pure LLM (纯文本)</span>
           <span class="arrow">→</span>
-          <span :class="{ active: isVLM }">Multimodal VLM</span>
+          <span :class="{ active: isVLM }">Multimodal VLM (多模态)</span>
         </div>
       </div>
       <div class="status-desc">
         {{
           isVLM
-            ? '给大脑装上眼睛：视觉信号经过翻译，变成 Token 混入文字流。'
-            : '纯文本大脑：只能听懂 Token 语言，无法感知图像。'
+            ? 'Tokens from vision are translated and placed before text tokens. (视觉信息被翻译成 Token，放在文字 Token 之前。)'
+            : 'Text-only tokens flow into the LLM. (只有文字 Token 流入大模型。)'
         }}
       </div>
     </div>
 
-    <div class="diagram-stage" :class="{ 'vlm-mode': isVLM }">
-      <!-- Vision Pipeline (Only visible in VLM mode) -->
-      <div class="pipeline vision-pipeline">
-        <div class="node-group">
-          <div class="node input-node image-node">
-            <span class="icon">�️</span>
-            <span class="label">Image</span>
-          </div>
-          <div class="flow-arrow">⬇</div>
-          <div
-            class="node process-node vit-node"
-            title="Vision Transformer: The Eye"
-          >
-            <span class="icon">�️</span>
-            <span class="label">ViT</span>
-          </div>
-          <div class="flow-arrow">⬇</div>
-          <div
-            class="node adapter-node projector-node"
-            title="Projector: The Translator"
-          >
-            <span class="icon">🔌</span>
-            <span class="label">Projector</span>
-          </div>
-          <div class="flow-arrow connector-arrow">⤵</div>
-        </div>
-      </div>
-
-      <!-- Text Pipeline (Always visible) -->
-      <div class="pipeline text-pipeline">
-        <div class="node-group horizontal">
-          <div class="node input-node text-node">
-            <span class="icon">�</span>
-            <span class="label">Prompt</span>
-          </div>
-          <div class="flow-arrow">➜</div>
-          <div class="node process-node embed-node">
-            <span class="icon">�</span>
-            <span class="label">Embed</span>
-          </div>
-
-          <!-- Merge Point Visualization -->
-          <div class="merge-point" :class="{ active: isVLM }">
-            <div class="plus-icon">+</div>
-            <div class="merge-label">Concat</div>
-          </div>
-
-          <div class="flow-arrow">➜</div>
-          <div class="node core-node llm-node">
-            <span class="icon">🧠</span>
-            <span class="label">LLM Backbone</span>
-            <div class="inner-flow">
-              <span class="dot t1"></span>
-              <span class="dot t2"></span>
-              <span class="dot v1" v-if="isVLM"></span>
+    <div class="diagram-stage">
+      <div class="lanes">
+        <div class="lane lane-vision" v-show="isVLM">
+          <div class="lane-title">Vision Path (视觉路径)</div>
+          <div class="lane-flow">
+            <div class="node input-node">
+              <span class="icon">🖼️</span>
+              <span class="label">Image (图片)</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="node process-node vit-node">
+              <span class="icon">👁️</span>
+              <span class="label">ViT (视觉模型)</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="node adapter-node">
+              <span class="icon">🔌</span>
+              <span class="label">Projector (投影器)</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="token-box token-box-vision">
+              <div class="token-box-title">Vision Tokens (视觉 Token)</div>
+              <div class="tokens">
+                <span class="token vision">v1</span>
+                <span class="token vision">v2</span>
+                <span class="token vision">v3</span>
+                <span class="token vision">…</span>
+              </div>
             </div>
           </div>
-          <div class="flow-arrow">➜</div>
-          <div class="node output-node">
-            <span class="icon">💬</span>
-            <span class="label">Response</span>
+        </div>
+
+        <div class="lane lane-text">
+          <div class="lane-title">Text Path (文字路径)</div>
+          <div class="lane-flow">
+            <div class="node input-node">
+              <span class="icon">⌨️</span>
+              <span class="label">Prompt (提示词)</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="node process-node">
+              <span class="icon">🔤</span>
+              <span class="label">Embed (向量化)</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="token-box">
+              <div class="token-box-title">Text Tokens (文字 Token)</div>
+              <div class="tokens">
+                <span class="token text">t1</span>
+                <span class="token text">t2</span>
+                <span class="token text">t3</span>
+                <span class="token text">…</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="merge-stage">
+          <div class="merge-title">Token Sequence (输入序列)</div>
+          <div class="sequence">
+            <div v-if="isVLM" class="sequence-row">
+              <span class="sequence-tag vision">Vision (视觉)</span>
+              <div class="tokens">
+                <span class="token vision">v1</span>
+                <span class="token vision">v2</span>
+                <span class="token vision">v3</span>
+                <span class="token vision">…</span>
+              </div>
+            </div>
+            <div class="sequence-row">
+              <span class="sequence-tag text">Text (文字)</span>
+              <div class="tokens">
+                <span class="token text">t1</span>
+                <span class="token text">t2</span>
+                <span class="token text">t3</span>
+                <span class="token text">…</span>
+              </div>
+            </div>
+            <div class="sequence-hint">
+              <span v-if="isVLM">Concat: [Vision Tokens] + [Text Tokens] (拼接：视觉在前，文字在后)</span>
+              <span v-else>Only [Text Tokens] (只有文字 Token)</span>
+            </div>
+          </div>
+
+          <div class="core-stage">
+            <span class="big-arrow">→</span>
+            <div class="node core-node">
+              <span class="icon">🧠</span>
+              <span class="label">LLM Backbone (大模型)</span>
+            </div>
+            <span class="big-arrow">→</span>
+            <div class="node output-node">
+              <span class="icon">💬</span>
+              <span class="label">Response (回复)</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="interactive-info">
-      <div class="info-card" v-if="!isVLM">
-        <h3>Standard LLM Flow</h3>
-        <p>
-          Text is converted into vectors (Embeddings) and processed by the
-          Transformer to predict the next word.
-        </p>
-      </div>
-      <div class="info-card vlm-info" v-else>
-        <h3>VLM = LLM + Vision Encoder</h3>
-        <ul>
-          <li>
-            <strong>ViT (The Eye):</strong> Slices image into patches and
-            extracts features.
-          </li>
-          <li>
-            <strong>Projector (The Translator):</strong> Converts visual
-            features into the same "language" (vector dimension) as text
-            embeddings.
-          </li>
-          <li>
-            <strong>Concatenation:</strong> The translated visual tokens are
-            pasted <em>before</em> the text tokens. The LLM sees them as
-            "foreign words" it learned to understand.
-          </li>
-        </ul>
-      </div>
+      <transition name="fade" mode="out-in">
+        <div class="info-card" v-if="!isVLM" key="llm">
+          <h3>Standard LLM Flow (标准大模型流程)</h3>
+          <p>Prompt → Embedding → Token Sequence → LLM → Response。</p>
+        </div>
+        <div class="info-card vlm-info" v-else key="vlm">
+          <h3>VLM = LLM + Vision Encoder (视觉大模型原理)</h3>
+          <ul>
+            <li><strong>ViT (The Eye):</strong> 把图片编码成视觉特征。</li>
+            <li><strong>Projector (The Translator):</strong> 把视觉特征映射到 LLM 的 Token 空间。</li>
+            <li><strong>Concatenation (拼接):</strong> 把视觉 Token 放在文字 Token 之前，作为同一条输入序列。</li>
+          </ul>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -140,12 +162,11 @@ const toggleMode = () => {
   user-select: none;
 }
 
-/* Controls */
 .controls-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
   gap: 12px;
 }
 
@@ -216,105 +237,160 @@ const toggleMode = () => {
   font-size: 13px;
   color: var(--vp-c-text-2);
   text-align: center;
-  height: 20px;
+  line-height: 1.5;
+  max-width: 720px;
 }
 
-/* Diagram Stage */
 .diagram-stage {
-  position: relative;
-  height: 240px;
   background: var(--vp-c-bg);
   border: 1px dashed var(--vp-c-divider);
   border-radius: 8px;
-  overflow: hidden;
+  padding: 18px;
+}
+
+.lanes {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Pipelines */
-.pipeline {
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.text-pipeline {
-  position: absolute;
-  bottom: 80px; /* Centered vertically in LLM mode */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.vlm-mode .text-pipeline {
-  bottom: 40px; /* Move down in VLM mode */
-}
-
-.vision-pipeline {
-  position: absolute;
-  top: 20px;
-  left: 20%; /* Align with input side */
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
-}
-
-.vlm-mode .vision-pipeline {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.node-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.node-group.horizontal {
-  flex-direction: row;
-}
-
-.vision-pipeline .node-group {
   flex-direction: column;
+  gap: 14px;
 }
 
-/* Nodes */
+.lane {
+  background: var(--vp-c-bg-mute);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.lane-title {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.lane-flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.merge-stage {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.merge-title {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.sequence {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.sequence-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.sequence-row:last-child {
+  margin-bottom: 0;
+}
+
+.sequence-tag {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+}
+
+.sequence-tag.vision {
+  border-color: var(--vp-c-yellow);
+}
+
+.sequence-tag.text {
+  border-color: var(--vp-c-brand);
+}
+
+.sequence-hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--vp-c-text-2);
+}
+
+.core-stage {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.big-arrow {
+  font-size: 18px;
+  color: var(--vp-c-text-2);
+  font-weight: 800;
+}
+
+.mini-arrow {
+  font-size: 14px;
+  color: var(--vp-c-text-3);
+  font-weight: 800;
+}
+
 .node {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 8px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 70px;
+  min-width: 110px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 2;
 }
 
 .icon {
   font-size: 20px;
   margin-bottom: 4px;
 }
+
 .label {
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .input-node {
   border-color: #aaa;
 }
+
 .process-node {
   border-color: var(--vp-c-brand-dimm);
 }
+
 .core-node {
   border-color: var(--vp-c-brand);
   background: var(--vp-c-brand-dimm);
-  min-width: 100px;
+  min-width: 140px;
 }
+
 .output-node {
   border-color: var(--vp-c-brand);
 }
@@ -323,101 +399,64 @@ const toggleMode = () => {
   border-color: var(--vp-c-yellow);
   background: rgba(255, 197, 23, 0.05);
 }
-.projector-node {
+
+.adapter-node {
   border-color: var(--vp-c-yellow);
   background: var(--vp-c-yellow-dimm);
 }
 
-/* Arrows */
-.flow-arrow {
-  color: var(--vp-c-text-3);
-  font-size: 16px;
+.token-box {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 220px;
 }
 
-.connector-arrow {
-  font-size: 24px;
-  color: var(--vp-c-yellow);
-  margin-top: -10px;
-  margin-bottom: -10px;
-  transform: rotate(-45deg) translateX(10px);
+.token-box-vision {
+  border-color: var(--vp-c-yellow);
 }
 
-/* Merge Point */
-.merge-point {
-  width: 0;
-  overflow: hidden;
-  transition: all 0.5s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-}
-
-.merge-point.active {
-  width: 40px;
-  opacity: 1;
-}
-
-.plus-icon {
-  font-weight: bold;
+.token-box-title {
+  font-size: 11px;
+  font-weight: 800;
   color: var(--vp-c-text-2);
-  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.merge-label {
-  font-size: 9px;
-  color: var(--vp-c-text-3);
-}
-
-/* Inner Flow Animation inside LLM */
-.inner-flow {
+.tokens {
   display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  height: 6px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.6;
-  animation: pulse 1s infinite alternate;
+.token {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
 }
 
-.t1 {
-  animation-delay: 0s;
-}
-.t2 {
-  animation-delay: 0.2s;
-}
-.v1 {
-  background: var(--vp-c-yellow);
-  animation-delay: 0.4s;
+.token.vision {
+  border-color: var(--vp-c-yellow);
+  background: rgba(255, 197, 23, 0.12);
 }
 
-@keyframes pulse {
-  from {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+.token.text {
+  border-color: var(--vp-c-brand);
+  background: rgba(59, 130, 246, 0.12);
 }
 
-/* Interactive Info */
 .interactive-info {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .info-card {
   background: var(--vp-c-bg-mute);
   padding: 16px;
   border-radius: 8px;
-  animation: fadeIn 0.3s;
 }
 
 .info-card h3 {
@@ -439,31 +478,25 @@ const toggleMode = () => {
   margin: 0;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 600px) {
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@media (max-width: 720px) {
   .diagram-stage {
-    height: 300px;
+    padding: 14px;
   }
-
-  .text-pipeline {
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 90%;
+  .node {
+    min-width: 100px;
   }
-
-  .vision-pipeline {
-    left: 10%;
+  .token-box {
+    min-width: 200px;
   }
 }
 </style>

@@ -98,7 +98,21 @@ h1 {
 <link rel="stylesheet" href="styles.css" />
 ```
 
-### 2.3 盒模型：为什么宽度算不准？
+### 2.3 核心机制：CSS 怎么找到 HTML？
+
+新手最容易晕的就是：CSS 里写的 `p`、`.card`、`#btn` 到底是怎么跟 HTML 对应上的？
+
+这就好比老师在班级里点名，有三种点法：
+
+1.  **喊“所有人” (标签选择器)**：喊 "男生"，所有男生都要站起来。
+2.  **喊“小组名” (类选择器)**：喊 "英语课代表"，可能有好几个。
+3.  **喊“学号” (ID 选择器)**：喊 "2024001"，全班只有一个。
+
+**互动演示：把鼠标移到左边的 CSS 规则上，看看右边谁会亮起来。**
+
+<CssSelectorsDemo />
+
+### 2.4 盒模型：为什么宽度算不准？
 
 每个元素都是一个盒子，由 **内容 → 内边距 → 边框 → 外边距** 组成。
 
@@ -106,9 +120,81 @@ h1 {
 
 记忆公式：**总宽度 = margin + border + padding + width + padding + border + margin**。
 
-### 2.4 Flexbox：为什么对齐和分布这么简单？
+### 2.5 怎么知道有哪些 CSS 属性？
 
-<CssFlexbox />
+新手常问：“我怎么知道要改颜色是 `color` 还是 `font-color`？” CSS 属性多到记不住，是因为网页要面对的情况太复杂了（各种屏幕尺寸、各种设计需求）。
+
+**但好消息是：日常开发中，90% 的时间你只需要用到下面这 20% 的核心属性。**
+
+<CssCommonProperties />
+
+#### 遇到不认识的属性怎么办？
+
+**在 AI 原生时代，解决这个问题有更聪明的方法：**
+
+1.  **直接问 AI (首选方案)**：
+    *   现在的 AI 编程助手（如 Cursor、Trae、GitHub Copilot）已经非常强大。
+    *   你根本不需要背诵属性，直接用自然语言描述你的需求。
+    *   **例子**：你对 AI 说 "我要一个带有阴影的蓝色圆形按钮"，它会直接给你写出包含 `background-color`, `border-radius`, `box-shadow` 的完整代码。
+    *   **为什么这是首选？** 因为它不仅告诉你“属性名”，还帮你把“值”都调好了。
+
+2.  **查文档 (MDN)**：
+    *   MDN Web Docs 是 Web 开发的权威字典。
+    *   搜 "MDN CSS text color"，它会告诉你正确属性是 `color`。
+    *   搜 "MDN CSS background"，它会列出 `background-color`, `background-image` 等家族成员。
+
+3.  **用浏览器“偷看” (DevTools)**：
+    *   在喜欢的网页上**右键 -> 检查 (Inspect)**。
+    *   在 **Styles** 面板里，你可以看到人家用了什么属性。
+    *   你甚至可以直接在那里面试着改改数值，实时看效果（刷新就没了，很安全）。
+
+4.  **CSS 游乐场**：
+    *   下面的演示列出了一些最常用的“装修参数”。
+    *   试着拖动滑块、修改颜色，看看它们分别控制什么。
+
+<CssPlaygroundDemo />
+
+### 2.6 现代 CSS 开发：Tailwind CSS 简介
+
+以前写 CSS，我们要给每个东西起个名字（比如 `.my-button`, `.header-title`），然后在 CSS 文件里写一堆属性。这叫“语义化 CSS”。
+
+现在流行一种**原子化 CSS (Utility-first CSS)**，代表作是 **Tailwind CSS**。
+
+**它的核心思想**：
+不要写 CSS 代码，直接在 HTML 标签上写“代号”。
+
+- **传统写法**：
+  ```html
+  <button class="btn-primary">按钮</button>
+  <style>
+    .btn-primary {
+      background-color: #3b82f6;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+    }
+  </style>
+  ```
+
+- **Tailwind 写法**：
+  ```html
+  <!-- bg-blue-500: 蓝色背景 -->
+  <!-- text-white: 白字 -->
+  <!-- px-4 py-2: 左右间距4，上下间距2 -->
+  <!-- rounded: 圆角 -->
+  <button class="bg-blue-500 text-white px-4 py-2 rounded">按钮</button>
+  ```
+
+**为什么它这么火？**
+1.  **不用起名**：最头疼的“起类名”环节没了。
+2.  **不切文件**：不用在 HTML 和 CSS 文件之间切来切去。
+3.  **不怕删**：删掉 HTML 标签时，样式自动就没了，不会留下堆积如山的无用 CSS 代码。
+
+> 💡 **提示**：现在的 AI 编程工具（如 Cursor, v0）非常擅长写 Tailwind。你只要说“给我一个蓝色的圆角按钮”，它大概率直接给你生成带 Tailwind 类的代码。
+
+### 2.7 Flexbox：为什么对齐和分布这么简单？
+
+<CssLayoutDemo />
 
 核心属性速记：
 
@@ -174,9 +260,72 @@ document.getElementById('title').textContent = '新标题'
 
 ---
 
-## 4. 协作实战：三者如何“分工又配合”？
+## 4. 深入理解 DOM：网页的“族谱”
 
-### 4.1 分工对比表
+你可能经常听到 **DOM (Document Object Model)** 这个词。别被这个专业术语吓到，它其实就是一张**网页的族谱**。
+
+### 4.1 什么是 DOM 树？
+
+浏览器读取 HTML 代码后，不会把它们当成一堆字符串，而是会在内存里把它们画成一棵树。
+
+*   `<html>` 是祖先。
+*   `<body>` 是 `<html>` 的孩子。
+*   `div`、`p`、`button` 又是 `<body>` 的孩子。
+
+这棵树就叫 **DOM 树**。
+
+```mermaid
+graph TD
+    Document[Document] --> HTML[html]
+    HTML --> Head[head]
+    HTML --> Body[body]
+    Head --> Title[title: "我的网页"]
+    Body --> H1[h1: "欢迎"]
+    Body --> Div[div.card]
+    Div --> Img[img]
+    Div --> P[p: "一段文字"]
+    Div --> Button[button: "点击"]
+```
+
+### 4.2 为什么叫“对象模型” (Object Model)？
+
+因为在 JS 眼里，HTML 标签不仅仅是标签，而是**对象 (Object)**。它们有属性，有方法。
+
+*   **属性 (Property)**：
+    *   `img.src` = "photo.jpg"
+    *   `div.className` = "box"
+    *   `input.value` = "123"
+*   **方法 (Method)**：
+    *   `button.click()` (假装被点了一下)
+    *   `div.remove()` (自杀)
+    *   `body.appendChild(newDiv)` (生个孩子)
+
+### 4.3 怎么找节点？(CRUD)
+
+就像在族谱里找人一样，JS 提供了很多方法：
+
+1.  **按身份证找 (ID)**：
+    *   `document.getElementById('header')` —— 全局唯一，最快。
+2.  **按特征找 (Selector)**：
+    *   `document.querySelector('.card h2')` —— 就像写 CSS 一样找，很灵活。
+3.  **按关系找**：
+    *   `element.parentNode` (找爸爸)
+    *   `element.children` (找孩子)
+
+### 4.4 性能警告：不要频繁“拆家”
+
+操作 DOM 是很贵的。每次你修改 DOM（比如改大小、改位置），浏览器都要重新计算排版（**Reflow**）和重新绘制（**Repaint**）。
+
+*   ❌ **低效**：循环 1000 次，每次往 `body` 里插入一个 `div`。
+*   ✅ **高效**：先把 1000 个 `div` 拼好（DocumentFragment），一次性塞进 `body` 里。
+
+这也正是 **Vue / React** 诞生的原因：它们在内存里玩“虚拟 DOM”，计算好最小修改量，最后才去动真正的 DOM，从而保护了性能。
+
+---
+
+## 5. 协作实战：三者如何“分工又配合”？
+
+### 5.1 分工对比表
 
 | 角色           | 负责什么         | 不做什么        | 典型示例                           |
 | :------------- | :--------------- | :-------------- | :--------------------------------- |
@@ -184,7 +333,7 @@ document.getElementById('title').textContent = '新标题'
 | **CSS**        | 定义表现与布局   | 不存放业务逻辑  | `.card { border-radius: 8px; }`    |
 | **JavaScript** | 定义行为与数据流 | 不承担视觉表现  | `button.onclick = changeTitle`     |
 
-### 4.2 组合示例：点击改变标题
+### 5.2 组合示例：点击改变标题
 
 ```html
 <!DOCTYPE html>

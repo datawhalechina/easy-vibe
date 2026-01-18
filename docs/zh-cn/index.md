@@ -69,6 +69,29 @@ const base = site.value.base
 </div>
 
 <style>
+/* LOGO 容器：负责上下浮动动画 */
+.VPHomeHero .image {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 鼠标悬停时暂停浮动 */
+.VPHomeHero .image:hover {
+  animation-play-state: paused;
+}
+
+@media (min-width: 960px) {
+  /* 给 LOGO 容器设置不可侵犯的左侧边界 */
+  .VPHomeHero .image {
+    margin-left: 80px !important;
+    flex-shrink: 0; /* 保证图片不被挤压 */
+  }
+
+  .VPHomeHero .tagline {
+    max-width: 450px;
+    white-space: pre-wrap;
+  }
+}
+
 .VPHomeHero .text {
   font-size: 1.8rem;
 }

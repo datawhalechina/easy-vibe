@@ -1625,21 +1625,24 @@ onUnmounted(() => {
   width: 100%;
 }
 .tour-btn {
-  background: #007acc;
+  background: linear-gradient(135deg, #007acc 0%, #005999 100%);
   border: none;
   color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  transition: background 0.2s;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
 }
+
 .tour-btn:hover {
-  background: #005fa3;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 122, 204, 0.4);
 }
 .tour-btn.stop {
   background: #e51400;

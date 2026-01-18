@@ -1,100 +1,153 @@
 <template>
   <div class="tcp-handshake-demo">
-    <div class="diagram">
-      <!-- Client Column -->
-      <div class="column client">
-        <div class="actor-icon">💻 Client</div>
-        <div class="state-label">{{ clientState }}</div>
+    <div class="controls">
+      <div class="status-indicator">
+        {{ t.statusLabel }}: <span :class="connectionStatus.toLowerCase()">{{ statusText }}</span>
+      </div>
+      <div class="buttons">
+        <button v-if="step === 0" @click="startHandshake" class="action-btn">{{ t.connect }}</button>
+        <button v-else @click="reset" class="reset-btn">{{ t.reset }}</button>
+      </div>
+    </div>
+
+    <div class="sequence-diagram">
+      <!-- Client Timeline -->
+      <div class="timeline client">
+        <div class="actor">
+          <span class="icon">💻</span>
+          <span class="name">{{ t.client }}</span>
+        </div>
+        <div class="line"></div>
+        <div class="state-marker" :class="{ active: step >= 1 }">SYN_SENT</div>
+        <div class="state-marker" :class="{ active: step >= 3 }">ESTABLISHED</div>
       </div>
 
       <!-- Interaction Area -->
-      <div class="interaction-zone">
-        <!-- Step 1: SYN -->
-        <div class="packet-row" :class="{ active: step === 1, done: step > 1 }">
-          <button
-            @click="sendSyn"
-            :disabled="step !== 0"
-            class="packet-btn syn"
-          >
-            SYN (SEQ=x) →
-          </button>
+      <div class="interaction-space">
+        <!-- SYN Packet -->
+        <div class="packet-track">
+          <transition name="slide-right">
+            <div v-if="showSyn" class="packet syn">
+              <div class="packet-body">SYN</div>
+              <div class="packet-detail">SEQ=0</div>
+            </div>
+          </transition>
         </div>
 
-        <!-- Step 2: SYN-ACK -->
-        <div
-          class="packet-row reverse"
-          :class="{ active: step === 2, done: step > 2 }"
-        >
-          <button
-            @click="sendSynAck"
-            :disabled="step !== 1"
-            class="packet-btn syn-ack"
-          >
-            ← SYN-ACK (ACK=x+1, SEQ=y)
-          </button>
+        <!-- SYN-ACK Packet -->
+        <div class="packet-track reverse">
+          <transition name="slide-left">
+            <div v-if="showSynAck" class="packet syn-ack">
+              <div class="packet-body">SYN-ACK</div>
+              <div class="packet-detail">SEQ=0, ACK=1</div>
+            </div>
+          </transition>
         </div>
 
-        <!-- Step 3: ACK -->
-        <div class="packet-row" :class="{ active: step === 3, done: step > 3 }">
-          <button
-            @click="sendAck"
-            :disabled="step !== 2"
-            class="packet-btn ack"
-          >
-            ACK (ACK=y+1) →
-          </button>
+        <!-- ACK Packet -->
+        <div class="packet-track">
+          <transition name="slide-right">
+            <div v-if="showAck" class="packet ack">
+              <div class="packet-body">ACK</div>
+              <div class="packet-detail">SEQ=1, ACK=1</div>
+            </div>
+          </transition>
         </div>
       </div>
 
-      <!-- Server Column -->
-      <div class="column server">
-        <div class="actor-icon">🖥️ Server</div>
-        <div class="state-label">{{ serverState }}</div>
+      <!-- Server Timeline -->
+      <div class="timeline server">
+        <div class="actor">
+          <span class="icon">🖥️</span>
+          <span class="name">{{ t.server }}</span>
+        </div>
+        <div class="line"></div>
+        <div class="state-marker" :class="{ active: step >= 2 }">SYN_RCVD</div>
+        <div class="state-marker" :class="{ active: step >= 3 }">ESTABLISHED</div>
       </div>
     </div>
 
-    <div class="status-message">
-      <p v-if="step === 0">点击 <strong>SYN</strong> 开始连接。</p>
-      <p v-if="step === 1">
-        服务器收到了请求，现在需要回复 <strong>SYN-ACK</strong>。
-      </p>
-      <p v-if="step === 2">
-        客户端收到了确认，最后发送 <strong>ACK</strong> 完成握手。
-      </p>
-      <p v-if="step === 3" class="success">🎉 连接已建立 (ESTABLISHED)!</p>
+    <div class="description-box">
+      <p>{{ currentDescription }}</p>
     </div>
-
-    <button v-if="step === 3" @click="reset" class="reset-btn">Reset</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const props = defineProps({
+  lang: {
+    type: String,
+    default: 'zh'
+  }
+})
+
+// Bilingual text directly
+const t = {
+  statusLabel: '通话状态',
+  connect: '拨打电话',
+  reset: '挂断重拨',
+  client: '我 (顾客)',
+  server: '玩具店',
+  status: {
+    closed: '未通话',
+    handshaking: '正在拨号...',
+    established: '通话中 (连接已建立)'
+  },
+  steps: {
+    0: '点击 "拨打电话" 开始确认店铺是否营业。',
+    1: '步骤 1: 我问 "喂？有人在吗？" (SYN)',
+    2: '步骤 2: 店员答 "在的！请问有什么事？" (SYN-ACK)',
+    3: '步骤 3: 我说 "太好了，我想买东西！" (ACK)'
+  }
+}
 
 const step = ref(0)
-const clientState = ref('CLOSED')
-const serverState = ref('LISTEN')
+const showSyn = ref(false)
+const showSynAck = ref(false)
+const showAck = ref(false)
 
-const sendSyn = () => {
+const connectionStatus = computed(() => {
+  if (step.value === 0) return 'closed'
+  if (step.value < 3) return 'handshaking'
+  return 'established'
+})
+
+const statusText = computed(() => {
+  const s = connectionStatus.value
+  return t.status[s] || s.toUpperCase()
+})
+
+const currentDescription = computed(() => {
+  return t.steps[step.value] || ''
+})
+
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+const startHandshake = async () => {
+  if (step.value > 0) return
+  
+  // Step 1: SYN
   step.value = 1
-  clientState.value = 'SYN_SENT'
-}
-
-const sendSynAck = () => {
+  showSyn.value = true
+  await wait(1500)
+  
+  // Step 2: SYN-ACK
   step.value = 2
-  serverState.value = 'SYN_RCVD'
-}
-
-const sendAck = () => {
+  showSynAck.value = true
+  await wait(1500)
+  
+  // Step 3: ACK
   step.value = 3
-  clientState.value = 'ESTABLISHED'
-  serverState.value = 'ESTABLISHED'
+  showAck.value = true
 }
 
 const reset = () => {
   step.value = 0
-  clientState.value = 'CLOSED'
-  serverState.value = 'LISTEN'
+  showSyn.value = false
+  showSynAck.value = false
+  showAck.value = false
 }
 </script>
 
@@ -102,127 +155,200 @@ const reset = () => {
 .tcp-handshake-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
+  background: var(--vp-c-bg);
   padding: 1.5rem;
   margin: 1rem 0;
   font-family: var(--vp-font-family-mono);
-  text-align: center;
 }
 
-.diagram {
+.controls {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.column {
-  width: 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.actor-icon {
-  font-size: 1.2rem;
+.status-indicator {
   font-weight: bold;
 }
+.status-indicator span.closed { color: var(--vp-c-text-3); }
+.status-indicator span.handshaking { color: #f59e0b; }
+.status-indicator span.established { color: #10b981; }
 
-.state-label {
-  padding: 0.5rem;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-}
-
-.interaction-zone {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 0 2rem;
-}
-
-.packet-row {
-  display: flex;
-  justify-content: flex-start;
-  opacity: 0.3;
-  transition: all 0.3s;
-}
-
-.packet-row.reverse {
-  justify-content: flex-end;
-}
-
-.packet-row.active {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.packet-row.done {
-  opacity: 1;
-}
-
-.packet-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  font-family: monospace;
-  font-size: 0.85rem;
-  transition: all 0.2s;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-}
-
-.packet-btn:not(:disabled):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.packet-btn.syn {
+.action-btn {
   background: #3b82f6;
   color: white;
-}
-.packet-btn.syn-ack {
-  background: #f59e0b;
-  color: white;
-}
-.packet-btn.ack {
-  background: #10b981;
-  color: white;
-}
-
-.packet-btn:disabled {
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-3);
-  cursor: not-allowed;
-  border-color: transparent;
-}
-
-.status-message {
-  height: 2rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-}
-
-.status-message .success {
-  color: #10b981;
-  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .reset-btn {
-  padding: 0.5rem 1.5rem;
-  background: var(--vp-c-bg);
+  background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
+  padding: 0.5rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.reset-btn:hover {
+.sequence-diagram {
+  display: flex;
+  justify-content: space-between;
+  height: 300px;
+  position: relative;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: relative;
+}
+
+.actor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  z-index: 2;
+  background: var(--vp-c-bg);
+}
+
+.timeline .line {
+  width: 2px;
+  background: var(--vp-c-divider);
+  flex: 1;
+}
+
+.state-marker {
+  margin-top: 2rem;
+  padding: 0.3rem 0.6rem;
   background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  transition: all 0.3s;
+}
+
+.state-marker.active {
+  background: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+
+.interaction-space {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+
+.packet-track {
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.packet-track.reverse {
+  justify-content: flex-end;
+}
+
+.packet {
+  background: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.packet.syn-ack { background: #f59e0b; }
+.packet.ack { background: #10b981; }
+
+.packet-body { font-weight: bold; }
+.packet-detail { font-size: 0.7rem; opacity: 0.9; }
+
+/* Animations */
+.slide-right-enter-active {
+  animation: slide-right 1.5s linear;
+}
+.slide-left-enter-active {
+  animation: slide-left 1.5s linear;
+}
+
+@keyframes slide-right {
+  0% { transform: translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 1; } /* Not quite right, need to stick */
+}
+
+/* 
+Vue transitions are tricky for "moving across". 
+Let's use a simpler approach: CSS transitions on left/right property or keyframes.
+Actually, for a "send" animation, we want it to move from A to B and then stay or disappear.
+Here I want it to appear and move.
+*/
+
+.slide-right-enter-active,
+.slide-left-enter-active {
+  transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide-right-enter-from {
+  transform: translateX(-150px);
+  opacity: 0;
+}
+.slide-right-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* This is getting complicated with Vue transitions for simple movement.
+   Let's just use CSS keyframes on the element itself when it renders.
+*/
+
+.packet {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.packet-track .packet {
+  animation-name: moveRight;
+}
+.packet-track.reverse .packet {
+  animation-name: moveLeft;
+}
+
+@keyframes moveRight {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes moveLeft {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.description-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 6px;
+  text-align: center;
+  min-height: 3rem;
+  color: var(--vp-c-text-2);
 }
 </style>

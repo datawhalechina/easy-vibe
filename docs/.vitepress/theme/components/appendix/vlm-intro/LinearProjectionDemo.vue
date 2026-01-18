@@ -3,16 +3,16 @@
     <div class="demo-container">
       <!-- Step 1: Patch -->
       <div class="step-box">
-        <div class="label">1. Patch (4x4)</div>
+        <div class="label">1. Patch (16×16×3) (示意 / Toy)</div>
         <div class="grid-patch">
           <div
-            v-for="n in 16"
+            v-for="n in patchCellCount"
             :key="n"
             class="pixel"
             :style="{ backgroundColor: getPixelColor(n) }"
           ></div>
         </div>
-        <div class="desc">768 像素点</div>
+        <div class="desc">16×16 像素 × 3 通道 = 768 标量值</div>
       </div>
 
       <div class="arrow">➜</div>
@@ -22,13 +22,14 @@
         <div class="label">2. Flatten</div>
         <div class="vector-container">
           <div
-            v-for="n in 16"
+            v-for="n in flattenSampleCount"
             :key="n"
             class="vector-cell"
             :style="{ backgroundColor: getPixelColor(n) }"
           ></div>
+          <div class="vector-ellipsis">…</div>
         </div>
-        <div class="desc">拉平成向量</div>
+        <div class="desc">得到 1×768 向量 (Vector)</div>
       </div>
 
       <div class="arrow">× W</div>
@@ -39,13 +40,16 @@
         <div class="embedding-container">
           <div v-for="n in 8" :key="n" class="embed-cell"></div>
         </div>
-        <div class="desc">压缩特征 (D=8)</div>
+        <div class="desc">映射到 D 维 (示意 D=8；常见 D=768)</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+const patchCellCount = 16 * 16
+const flattenSampleCount = 32
+
 const getPixelColor = (n) => {
   // Generate a gradient of colors
   const hue = (n * 20) % 360
@@ -89,8 +93,8 @@ const getPixelColor = (n) => {
 
 .grid-patch {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 1px;
   width: 80px;
   height: 80px;
 }
@@ -105,7 +109,7 @@ const getPixelColor = (n) => {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  height: 120px;
+  height: 140px;
   width: 20px;
   justify-content: center;
 }
@@ -113,6 +117,14 @@ const getPixelColor = (n) => {
 .vector-cell {
   width: 100%;
   flex: 1;
+}
+
+.vector-ellipsis {
+  font-size: 12px;
+  line-height: 1;
+  color: var(--vp-c-text-3);
+  text-align: center;
+  padding-top: 4px;
 }
 
 .embedding-container {

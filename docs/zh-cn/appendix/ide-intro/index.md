@@ -1,6 +1,24 @@
 # 集成开发环境 (IDE) 基础
 
-> 💡 **学习指南**：本章节将带你深入了解程序员的核心生产力工具——**集成开发环境 (IDE)**。我们将从 IDE 的设计理念出发，逐一解析其核心组件，并通过虚拟 IDE 演示其工作原理。
+::: tip 💡 学习指南
+本章节将带你深入了解程序员的核心生产力工具——**集成开发环境 (IDE)**。我们将从 IDE 的设计理念出发，逐一解析其核心组件，并通过虚拟 IDE 演示其工作原理。
+:::
+
+## 遇到不懂的怎么办？(How to solve problems)
+
+在学习和使用 IDE 的过程中，你可能会遇到各种看不懂的按钮、菜单或者代码报错。这时候，**不要慌张，利用 AI 助手是最高效的解决办法**。
+
+**推荐做法：截图问 AI**
+
+现在的 AI（如 ChatGPT、Claude、DeepSeek 等）都具备强大的识图能力。当你遇到不认识的界面元素或复杂的代码片段时：
+
+1.  **截图**：截取你不懂的那一部分（比如某个奇怪的图标，或者一段复杂的配置代码）。
+2.  **提问**：把图片发给 AI，并问它：“这个是什么？有什么用？”或者“这段代码里的 xxx 是干嘛的？”。
+3.  **追问**：如果 AI 的回答太专业看不懂，继续问：“请用大白话解释一下，最好举个生活中的例子。”
+
+<AiHelpDemo />
+
+---
 
 ## 0. 引言：为什么需要 IDE？
 
@@ -121,43 +139,46 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 
 ---
 
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const openTarget = () => {
+    const hash = window.location.hash
+    if (hash) {
+      try {
+        // Handle encoded Chinese characters in hash
+        const target = document.querySelector(decodeURIComponent(hash))
+        // If the target is a details element, open it
+        if (target && target.tagName === 'DETAILS') {
+          target.setAttribute('open', '')
+        }
+        // If the target is inside a details element, open the parent details
+        const parentDetails = target?.closest('details')
+        if (parentDetails) {
+          parentDetails.setAttribute('open', '')
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }
+  
+  openTarget()
+  window.addEventListener('hashchange', openTarget)
+})
+</script>
+
 # 附录： Visual Studio Code 菜单栏解析
 
-<el-card id="appendix-2-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #67C23A;">
-  <div style="font-weight: bold; margin-bottom: 10px;">🧭 界面导航：VS Code 核心区域</div>
-  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="#vscode-title-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Title Bar (标题栏)</el-tag></a>
-    <a href="#vscode-activity-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Activity Bar (活动栏)</el-tag></a>
-    <a href="#vscode-side-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Side Bar (侧边栏)</el-tag></a>
-    <a href="#vscode-editor" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Editor (编辑区)</el-tag></a>
-    <a href="#vscode-panel" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Panel (底部面板)</el-tag></a>
-    <a href="#vscode-status-bar" style="text-decoration: none;"><el-tag effect="plain" style="cursor: pointer;">Status Bar (状态栏)</el-tag></a>
-  </div>
-</el-card>
-
-## <span id="vscode-title-bar">[Title Bar（标题栏）：窗口信息与全局入口](#appendix-2-map)</span>
-
-标题栏位于窗口最上方，主要用于展示当前窗口信息并提供窗口级控制。常见细节包括：
-
-- 应用与窗口信息  
-  通常显示应用名称（如 Visual Studio Code）以及当前工作区（workspace）或当前打开文件的名称，便于在多窗口并行时识别不同项目。
-
-- 菜单入口（部分系统/布局可见）  
-  在 Windows/Linux 的常见布局中，`File / Edit / Selection / View / Go / Run / Terminal / Help` 等菜单可能与标题栏同一行或紧邻显示，是功能的传统入口。
-
-- 窗口控制按钮  
-  最小化、最大化/还原、关闭按钮属于操作系统窗口控件，用于调整窗口显示方式或关闭窗口。
-
-- AI 侧边栏开启按钮
-  一般而言，在右上角可以控制是否开启 AI 侧边栏或者其他侧边栏。我们默认右侧的侧边栏为 AI 侧边栏。
-
-- 环境与状态提示或系统更新提示（可能会出现提醒你重启更新的提示，建议每次看到主动进行点击更新）  
-  部分情况下会显示远程连接状态（SSH/容器/WSL）、信任提示（Workspace Trust）等，具体取决于当前环境与设置。
-
 为了方便大家理解每个选项的含义，在这里我们对菜单栏进行深入解析：
+
 ![](images/index-2026-01-09-11-35-55.png)
 
-### File（文件）：项目与文件的打开/保存/工作区管理
+![](images/index-2026-01-09-11-36-23.png)
+
+<details class="custom-block details" id="vscode-file-menu">
+  <summary>File（文件）：项目与文件的打开/保存/工作区管理</summary>
 
 本菜单主要负责：**创建/打开文件**、**打开项目文件夹（Folder）**、**管理工作区（Workspace）**、**保存与关闭**。
 
@@ -185,7 +206,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Close Folder（关闭文件夹）**：关闭当前项目文件夹（工作区变为空）。
 - **Close Window（关闭窗口）**：关闭当前 VS Code 窗口。
 
-### Edit（编辑）：基础编辑、查找替换、注释与快速编辑动作
+</details>
+
+<details class="custom-block details" id="vscode-edit-menu">
+  <summary>Edit（编辑）：基础编辑、查找替换、注释与快速编辑动作</summary>
 
 本菜单主要负责：**撤销/重做**、**剪切复制粘贴**、**查找替换**、**注释与编辑器动作**（提升编辑效率）。
 
@@ -197,7 +221,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Toggle Block Comment（切换块注释）**：`Shift + Alt + A`，快速注释/取消注释选区。
 - **Emmet: Expand Abbreviation（Emmet 展开）**：HTML/CSS 开发神器，输入简写按 Tab 展开代码。
 
-### Selection（选择）：多光标与智能选区
+</details>
+
+<details class="custom-block details" id="vscode-selection-menu">
+  <summary>Selection（选择）：多光标与智能选区</summary>
 
 本菜单主要负责：**光标控制**、**多行编辑**、**扩大/缩小选区**。这是 VS Code 提升效率的杀手锏。
 
@@ -208,7 +235,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Add Cursor Above / Below（在上方 / 下方添加光标）**：`Ctrl + Alt + ↑ / ↓`，开启多光标模式，同时编辑多行。
 - **Add Cursor to Line Ends（在行尾添加光标）**：选中多行文本后，在每一行末尾添加光标。
 
-### View（查看）：界面布局与面板控制
+</details>
+
+<details class="custom-block details" id="vscode-view-menu">
+  <summary>View（查看）：界面布局与面板控制</summary>
 
 本菜单主要负责：**开关侧边栏/面板**、**调整布局**、**命令面板**、**输出与调试控制台**。
 
@@ -220,7 +250,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Problems / Output / Debug Console / Terminal**：直接控制底部面板（Panel）的显示内容。
 - **Word Wrap（自动换行）**：`Alt + Z`，控制长行代码是否自动换行显示（不影响实际文件内容）。
 
-### Go（转到）：代码导航与跳转
+</details>
+
+<details class="custom-block details" id="vscode-go-menu">
+  <summary>Go（转到）：代码导航与跳转</summary>
 
 本菜单主要负责：**在文件间跳转**、**在符号（函数/变量）间跳转**。
 
@@ -232,7 +265,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Go to References（转到引用）**：`Shift + F12`，查看该变量或函数在哪些地方被使用了。
 - **Go to Line/Column…（转到行/列…）**：`Ctrl + G`，跳转到指定行号。
 
-### Run（运行）：调试与执行
+</details>
+
+<details class="custom-block details" id="vscode-run-menu">
+  <summary>Run（运行）：调试与执行</summary>
 
 本菜单主要负责：**启动调试**、**断点管理**。
 
@@ -243,7 +279,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Toggle Breakpoint（切换断点）**：`F9`，在当前行打上或取消红点（断点）。
 - **New Breakpoint（新建断点）**：支持条件断点、日志断点等高级功能。
 
-### Terminal（终端）：集成命令行
+</details>
+
+<details class="custom-block details" id="vscode-terminal-menu">
+  <summary>Terminal（终端）：集成命令行</summary>
 
 本菜单主要负责：**新建终端**、**管理终端窗口**。
 
@@ -251,7 +290,10 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Split Terminal（拆分终端）**：在同一个终端面板中左右/上下拆分，同时运行多个命令。
 - **Run Task…（运行任务…）**：运行 `tasks.json` 中定义的构建/测试任务。
 
-### Help（帮助）：文档与反馈
+</details>
+
+<details class="custom-block details" id="vscode-help-menu">
+  <summary>Help（帮助）：文档与反馈</summary>
 
 - **Welcome（欢迎）**：打开欢迎页（包含入门引导、最近项目）。
 - **Show All Commands（显示所有命令）**：同命令面板。
@@ -259,3 +301,5 @@ Python 解释器（或编译器）执行完代码，将结果（或错误信息�
 - **Editor Playground（编辑器演练场）**：交互式教程，学习编辑技巧。
 - **Check for Updates…（检查更新…）**：手动检查更新。
 - **About（关于）**：查看版本号、构建时间、Electron/Node 版本信息。
+
+</details>

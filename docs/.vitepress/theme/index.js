@@ -94,6 +94,10 @@ import RollbackSwitchDemo from './components/appendix/deployment/RollbackSwitchD
 import ObservabilityBackupDemo from './components/appendix/deployment/ObservabilityBackupDemo.vue'
 import CssBoxModel from './components/appendix/web-basics/CssBoxModel.vue'
 import CssFlexbox from './components/appendix/web-basics/CssFlexbox.vue'
+import CssLayoutDemo from './components/appendix/web-basics/CssLayoutDemo.vue'
+import CssPlaygroundDemo from './components/appendix/web-basics/CssPlaygroundDemo.vue'
+import CssCommonProperties from './components/appendix/web-basics/CssCommonProperties.vue'
+import CssSelectorsDemo from './components/appendix/web-basics/CssSelectorsDemo.vue'
 import DomManipulator from './components/appendix/web-basics/DomManipulator.vue'
 import SemanticTagsDemo from './components/appendix/web-basics/SemanticTagsDemo.vue'
 import DnsLookupDemo from './components/appendix/web-basics/DnsLookupDemo.vue'
@@ -101,6 +105,16 @@ import TcpHandshakeDemo from './components/appendix/web-basics/TcpHandshakeDemo.
 import UrlParserDemo from './components/appendix/web-basics/UrlParserDemo.vue'
 import HttpExchangeDemo from './components/appendix/web-basics/HttpExchangeDemo.vue'
 import BrowserRenderingDemo from './components/appendix/web-basics/BrowserRenderingDemo.vue'
+import FrontendEvolutionDemo from './components/appendix/web-basics/FrontendEvolutionDemo.vue'
+import AiEvolutionDemo from './components/appendix/ai-history/AiEvolutionDemo.vue'
+import RuleBasedVsLearningDemo from './components/appendix/ai-history/RuleBasedVsLearningDemo.vue'
+import PerceptronDemo from './components/appendix/ai-history/PerceptronDemo.vue'
+
+import ImperativeVsDeclarativeDemo from './components/appendix/web-basics/ImperativeVsDeclarativeDemo.vue'
+import ComponentReusabilityDemo from './components/appendix/web-basics/ComponentReusabilityDemo.vue'
+
+import BackendEvolutionDemo from './components/appendix/backend-evolution/BackendEvolutionDemo.vue'
+import MonolithVsMicroserviceDemo from './components/appendix/backend-evolution/MonolithVsMicroserviceDemo.vue'
 
 // Prompt Engineering Components
 import PromptQuickStartDemo from './components/appendix/prompt-engineering/PromptQuickStartDemo.vue'
@@ -133,6 +147,9 @@ import SqlPlaygroundDemo from './components/appendix/database-intro/SqlPlaygroun
 // IDE Intro Components
 import VirtualVSCodeDemo from './components/appendix/ide-intro/VirtualVSCodeDemo.vue'
 import IdeArchitectureDemo from './components/appendix/ide-intro/IdeArchitectureDemo.vue'
+import AiHelpDemo from './components/appendix/ide-intro/AiHelpDemo.vue'
+import BrowserDevToolsDemo from './components/appendix/browser-devtools/BrowserDevToolsDemo.vue'
+import BrowserDevToolsLiveDemo from './components/appendix/browser-devtools/BrowserDevToolsLiveDemo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -224,6 +241,10 @@ export default {
     app.component('ObservabilityBackupDemo', ObservabilityBackupDemo)
     app.component('CssBoxModel', CssBoxModel)
     app.component('CssFlexbox', CssFlexbox)
+    app.component('CssLayoutDemo', CssLayoutDemo)
+    app.component('CssPlaygroundDemo', CssPlaygroundDemo)
+    app.component('CssCommonProperties', CssCommonProperties)
+    app.component('CssSelectorsDemo', CssSelectorsDemo)
     app.component('DomManipulator', DomManipulator)
     app.component('SemanticTagsDemo', SemanticTagsDemo)
     app.component('DnsLookupDemo', DnsLookupDemo)
@@ -231,6 +252,16 @@ export default {
     app.component('UrlParserDemo', UrlParserDemo)
     app.component('HttpExchangeDemo', HttpExchangeDemo)
     app.component('BrowserRenderingDemo', BrowserRenderingDemo)
+    app.component('FrontendEvolutionDemo', FrontendEvolutionDemo)
+    app.component('AiEvolutionDemo', AiEvolutionDemo)
+    app.component('RuleBasedVsLearningDemo', RuleBasedVsLearningDemo)
+    app.component('PerceptronDemo', PerceptronDemo)
+    
+    app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
+    app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
+    
+    app.component('BackendEvolutionDemo', BackendEvolutionDemo)
+    app.component('MonolithVsMicroserviceDemo', MonolithVsMicroserviceDemo)
 
     // Prompt Engineering Components Registration
     app.component('PromptQuickStartDemo', PromptQuickStartDemo)
@@ -264,6 +295,9 @@ export default {
     app.component('VirtualVSCodeDemo', VirtualVSCodeDemo)
     app.component('DemoIde', VirtualVSCodeDemo) // Alias
     app.component('IdeArchitectureDemo', IdeArchitectureDemo)
+    app.component('AiHelpDemo', AiHelpDemo)
+    app.component('BrowserDevToolsDemo', BrowserDevToolsDemo)
+    app.component('BrowserDevToolsLiveDemo', BrowserDevToolsLiveDemo)
   },
   setup() {
     const route = useRoute()

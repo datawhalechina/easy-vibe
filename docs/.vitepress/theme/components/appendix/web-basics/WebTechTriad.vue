@@ -23,6 +23,37 @@
       </div>
     </div>
 
+    <!-- 🎨 交互式配置面板 -->
+    <div class="config-panel" v-if="current === 'css'">
+      <div class="config-header">
+        <div class="config-title">🎨 教学演示参数调整 (仅 CSS 模式生效)</div>
+        <button class="reset-btn" @click="resetColors">重置默认</button>
+      </div>
+      <div class="config-items">
+        <div class="config-item">
+          <label>Primary Color (主题色)</label>
+          <div class="input-group">
+            <input type="color" v-model="customColors.primary" />
+            <input type="text" v-model="customColors.primary" class="hex-input" />
+          </div>
+        </div>
+        <div class="config-item">
+          <label>Text Color (文字色)</label>
+          <div class="input-group">
+            <input type="color" v-model="customColors.text" />
+            <input type="text" v-model="customColors.text" class="hex-input" />
+          </div>
+        </div>
+        <div class="config-item">
+          <label>Button Text (按钮文字)</label>
+          <div class="input-group">
+            <input type="color" v-model="customColors.btnText" />
+            <input type="text" v-model="customColors.btnText" class="hex-input" />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="preview" :class="current">
       <div class="hint">点一下标题/段落/按钮，我会在下面的代码里高亮对应行。</div>
       <h1
@@ -98,7 +129,48 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, reactive } from 'vue'
+
+const props = defineProps({
+  primaryColor: {
+    type: String,
+    default: '#0ea5e9'
+  },
+  textColor: {
+    type: String,
+    default: '#111827'
+  },
+  btnTextColor: {
+    type: String,
+    default: '#fff'
+  }
+})
+
+// 🎨 用户自定义颜色状态
+const customColors = reactive({
+  primary: props.primaryColor,
+  text: props.textColor,
+  btnText: props.btnTextColor
+})
+
+// 重置为默认值
+const resetColors = () => {
+  customColors.primary = props.primaryColor
+  customColors.text = props.textColor
+  customColors.btnText = props.btnTextColor
+}
+
+// =============================================================================
+// 🔧 演示参数配置 (Demo Configuration)
+// =============================================================================
+// 优先使用用户自定义的颜色，如果有变化的话
+const DEMO_CONFIG = computed(() => ({
+  colors: {
+    primary: customColors.primary,
+    text: customColors.text,
+    btnText: customColors.btnText
+  }
+}))
 
 const modes = [
   { id: 'html', label: '看骨架 (HTML)' },
@@ -126,9 +198,9 @@ const codeLines = computed(() => {
   }
   if (current.value === 'css') {
     return [
-      { key: 'h1', text: '.hero { color: #0ea5e9; font-size: 24px; }' },
-      { key: 'p', text: '.desc { color: #111827; }' },
-      { key: 'btn', text: '.cta { background: #0ea5e9; color: #fff; border-radius: 10px; }' }
+      { key: 'h1', text: `.hero { color: ${DEMO_CONFIG.value.colors.primary}; font-size: 24px; }` },
+      { key: 'p', text: `.desc { color: ${DEMO_CONFIG.value.colors.text}; }` },
+      { key: 'btn', text: `.cta { background: ${DEMO_CONFIG.value.colors.primary}; color: ${DEMO_CONFIG.value.colors.btnText}; border-radius: 10px; }` }
     ]
   }
   return [
@@ -211,6 +283,91 @@ const increment = () => {
   gap: 12px;
 }
 
+/* New Config Panel Styles */
+.config-panel {
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.config-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.config-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.config-item label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--vp-c-bg);
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+input[type="color"] {
+  width: 28px;
+  height: 28px;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.hex-input {
+  border: none;
+  background: transparent;
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  width: 65px;
+  font-family: var(--vp-font-family-mono);
+  outline: none;
+}
+
+.reset-btn {
+  font-size: 12px;
+  color: var(--vp-c-brand);
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-brand);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 12px;
+  transition: all 0.2s;
+}
+.reset-btn:hover {
+  background: var(--vp-c-brand);
+  color: white;
+}
+
 .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .title { font-weight: 800; font-size: 16px; }
 .subtitle { color: var(--vp-c-text-2); font-size: 13px; margin-top: 4px; }
@@ -282,18 +439,43 @@ const increment = () => {
 
 .click-tip { margin-top: 6px; color: var(--vp-c-text-2); font-size: 13px; }
 
-.preview.css .hero { color: #0ea5e9; }
-.preview.css .desc { color: var(--vp-c-text-1); }
-.preview.css .cta { background: #0ea5e9; color: #fff; border-color: #0ea5e9; box-shadow: 0 4px 12px rgba(14,165,233,0.25); }
+.preview.css .hero { color: v-bind('DEMO_CONFIG.colors.primary'); font-size: 24px; }
+.preview.css .desc { color: v-bind('DEMO_CONFIG.colors.text'); }
+.preview.css .cta { 
+  background: v-bind('DEMO_CONFIG.colors.primary'); 
+  color: v-bind('DEMO_CONFIG.colors.btnText'); 
+  border-color: v-bind('DEMO_CONFIG.colors.primary'); 
+  border-radius: 10px;
+}
 
 .preview.js .cta { background: #22c55e; color: #fff; border-color: #22c55e; box-shadow: 0 4px 12px rgba(34,197,94,0.25); }
 .preview.js { border-color: rgba(34, 197, 94, 0.4); }
 
 .code-block { background: var(--vp-c-bg-alt); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 16px; }
 .code-title { font-weight: 700; margin-bottom: 8px; font-size: 13px; color: var(--vp-c-text-2); }
-pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 16px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; line-height: 1.6; }
+.code-content {
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
 .line { min-height: 1.6em; }
-.hl { background: rgba(34, 197, 94, 0.2); border-radius: 4px; display: block; width: 100%; }
+.hl { 
+  background: var(--vp-c-brand-dimm);
+  border-left: 3px solid var(--vp-c-brand);
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding-left: 8px; /* Offset text to account for border */
+  font-weight: bold; /* Make text bolder */
+  /* color: white; Removed to fix visibility issue on light theme if brand-dimm is light */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
 
 .explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
 .card { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 10px; }
