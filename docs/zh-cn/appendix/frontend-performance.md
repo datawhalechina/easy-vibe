@@ -306,6 +306,22 @@ document.body.appendChild(fragment)
 
 **注意**：不要滥用合成层，过多会消耗内存。
 
+### 3.6 虚拟列表 (Virtual List)
+
+当需要展示成千上万条数据时（如长列表、聊天记录），如果直接渲染所有 DOM 节点，会导致：
+- **DOM 节点过多**：占用大量内存
+- **渲染缓慢**：样式计算和布局耗时增加
+- **滚动卡顿**：浏览器无法维持 60fps
+
+**解决方案**：只渲染**可视区域**内的元素，加上少量缓冲区。
+
+<VirtualScrollingDemo />
+
+**核心原理**：
+1. 计算可视区域能容纳多少个元素。
+2. 监听滚动事件，根据 `scrollTop` 计算当前应该渲染数据的 `startIndex` 和 `endIndex`。
+3. 使用 `padding-top` 或 `transform` 将渲染的内容定位到正确位置。
+
 ---
 
 ## 4. JavaScript 优化

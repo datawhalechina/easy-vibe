@@ -177,7 +177,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const selectedScenario = ref('order')
 const sending = ref(false)
@@ -286,7 +286,9 @@ const updateTimers = () => {
   })
 }
 
-timer = setInterval(updateTimers, 1000)
+onMounted(() => {
+  timer = setInterval(updateTimers, 1000)
+})
 
 onUnmounted(() => {
   if (timer) {

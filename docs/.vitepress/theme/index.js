@@ -137,6 +137,7 @@ import ImageOptimizationDemo from './components/appendix/frontend-performance/Im
 import LazyLoadingDemo from './components/appendix/frontend-performance/LazyLoadingDemo.vue'
 import CachingStrategyDemo from './components/appendix/frontend-performance/CachingStrategyDemo.vue'
 import CriticalRenderingPathDemo from './components/appendix/frontend-performance/CriticalRenderingPathDemo.vue'
+import VirtualScrollingDemo from './components/appendix/frontend-performance/VirtualScrollingDemo.vue'
 
 // Canvas Intro Components
 import CanvasBasicsDemo from './components/appendix/canvas-intro/CanvasBasicsDemo.vue'
@@ -375,6 +376,7 @@ export default {
     app.component('LazyLoadingDemo', LazyLoadingDemo)
     app.component('CachingStrategyDemo', CachingStrategyDemo)
     app.component('CriticalRenderingPathDemo', CriticalRenderingPathDemo)
+    app.component('VirtualScrollingDemo', VirtualScrollingDemo)
 
     // Canvas Intro Components Registration
     app.component('CanvasBasicsDemo', CanvasBasicsDemo)

@@ -139,7 +139,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const currentStep = ref(-1)
 const isPlaying = ref(false)
@@ -210,6 +210,7 @@ const dataFlow = ref([
 ])
 
 let animationInterval = null
+let dataFlowInterval = null
 
 const startAnimation = () => {
   if (isPlaying.value) return
@@ -241,12 +242,21 @@ const formatNumber = (num) => {
 
 onMounted(() => {
   // 模拟实时数据流
-  setInterval(() => {
+  dataFlowInterval = setInterval(() => {
     dataFlow.value = dataFlow.value.map((item) => ({
       ...item,
       count: item.count + Math.floor(Math.random() * 100) - 50
     }))
   }, 2000)
+})
+
+onUnmounted(() => {
+  if (dataFlowInterval) {
+    clearInterval(dataFlowInterval)
+  }
+  if (animationInterval) {
+    clearInterval(animationInterval)
+  }
 })
 </script>
 
