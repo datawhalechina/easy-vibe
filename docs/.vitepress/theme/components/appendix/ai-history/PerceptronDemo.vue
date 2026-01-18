@@ -5,24 +5,38 @@
       <div class="inputs-col">
         <div class="input-node">
           <span class="label">Input 1 (x₁)</span>
-          <input type="number" v-model="x1" class="val-input">
+          <input type="number" v-model="x1" class="val-input" />
         </div>
         <div class="input-node">
           <span class="label">Input 2 (x₂)</span>
-          <input type="number" v-model="x2" class="val-input">
+          <input type="number" v-model="x2" class="val-input" />
         </div>
       </div>
 
       <!-- Weights (Edges) -->
       <div class="weights-col">
-        <div class="weight-line" :style="{ width: Math.abs(w1) * 2 + 2 + 'px', opacity: Math.abs(w1)/5 + 0.2 }"></div>
+        <div
+          class="weight-line"
+          :style="{
+            width: Math.abs(w1) * 2 + 2 + 'px',
+            opacity: Math.abs(w1) / 5 + 0.2
+          }"
+        ></div>
         <div class="weight-control top">
-          w₁: <input type="range" v-model="w1" min="-5" max="5" step="0.1"> {{ w1 }}
+          w₁: <input type="range" v-model="w1" min="-5" max="5" step="0.1" />
+          {{ w1 }}
         </div>
-        
-        <div class="weight-line" :style="{ width: Math.abs(w2) * 2 + 2 + 'px', opacity: Math.abs(w2)/5 + 0.2 }"></div>
+
+        <div
+          class="weight-line"
+          :style="{
+            width: Math.abs(w2) * 2 + 2 + 'px',
+            opacity: Math.abs(w2) / 5 + 0.2
+          }"
+        ></div>
         <div class="weight-control bottom">
-          w₂: <input type="range" v-model="w2" min="-5" max="5" step="0.1"> {{ w2 }}
+          w₂: <input type="range" v-model="w2" min="-5" max="5" step="0.1" />
+          {{ w2 }}
         </div>
       </div>
 
@@ -33,7 +47,7 @@
           <div class="val">{{ weightedSum.toFixed(1) }}</div>
         </div>
         <div class="bias-control">
-          Bias: <input type="number" v-model="bias" class="bias-input">
+          Bias: <input type="number" v-model="bias" class="bias-input" />
         </div>
       </div>
 
@@ -48,9 +62,14 @@
     </div>
 
     <div class="formula-bar">
-      Formula: <code>({{ x1 }} * {{ w1 }}) + ({{ x2 }} * {{ w2 }}) + {{ bias }} = {{ weightedSum.toFixed(1) }}</code>
-      <br>
-      Activation: <code>Step( {{ weightedSum.toFixed(1) }} ) = {{ output }}</code>
+      Formula:
+      <code
+        >({{ x1 }} * {{ w1 }}) + ({{ x2 }} * {{ w2 }}) + {{ bias }} =
+        {{ weightedSum.toFixed(1) }}</code
+      >
+      <br />
+      Activation:
+      <code>Step( {{ weightedSum.toFixed(1) }} ) = {{ output }}</code>
     </div>
   </div>
 </template>
@@ -65,7 +84,7 @@ const w2 = ref(-1.0)
 const bias = ref(0)
 
 const weightedSum = computed(() => {
-  return (x1.value * w1.value) + (x2.value * w2.value) + bias.value
+  return x1.value * w1.value + x2.value * w2.value + bias.value
 })
 
 const output = computed(() => {
@@ -91,14 +110,16 @@ const output = computed(() => {
   gap: 1rem;
 }
 
-.inputs-col, .output-col {
+.inputs-col,
+.output-col {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
 }
 
-.input-node, .output-node {
+.input-node,
+.output-node {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -187,8 +208,12 @@ const output = computed(() => {
 .sum-part {
   text-align: center;
 }
-.math { font-size: 1.5rem; }
-.val { font-weight: bold; }
+.math {
+  font-size: 1.5rem;
+}
+.val {
+  font-weight: bold;
+}
 
 .bias-control {
   position: absolute;
@@ -222,5 +247,7 @@ const output = computed(() => {
   border: 1px dashed #cbd5e1;
 }
 
-input[type=range] { width: 60px; }
+input[type='range'] {
+  width: 60px;
+}
 </style>

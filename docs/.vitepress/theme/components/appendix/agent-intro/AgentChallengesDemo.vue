@@ -15,10 +15,19 @@
     </div>
 
     <div class="controls">
-      <label class="toggle"><input type="checkbox" v-model="maxSteps" /> 最大迭代次数（防死循环）</label>
-      <label class="toggle"><input type="checkbox" v-model="budget" /> 预算上限（防烧钱）</label>
-      <label class="toggle"><input type="checkbox" v-model="confirm" /> 危险操作二次确认</label>
-      <label class="toggle"><input type="checkbox" v-model="sandbox" /> 沙箱执行（隔离系统）</label>
+      <label class="toggle"
+        ><input type="checkbox" v-model="maxSteps" />
+        最大迭代次数（防死循环）</label
+      >
+      <label class="toggle"
+        ><input type="checkbox" v-model="budget" /> 预算上限（防烧钱）</label
+      >
+      <label class="toggle"
+        ><input type="checkbox" v-model="confirm" /> 危险操作二次确认</label
+      >
+      <label class="toggle"
+        ><input type="checkbox" v-model="sandbox" /> 沙箱执行（隔离系统）</label
+      >
     </div>
 
     <div class="grid">
@@ -77,32 +86,106 @@ const enabledList = computed(() => {
 })
 
 const advice = computed(() => {
-  if (!maxSteps.value && !confirm.value) return '先加“最大步数”和“二次确认”，这是最低成本的安全感。'
-  if (score.value <= 35) return '很稳了：可以开始做更复杂的任务，但记得加日志与监控。'
+  if (!maxSteps.value && !confirm.value)
+    return '先加“最大步数”和“二次确认”，这是最低成本的安全感。'
+  if (score.value <= 35)
+    return '很稳了：可以开始做更复杂的任务，但记得加日志与监控。'
   if (score.value <= 60) return '还不错：建议再加预算或沙箱，避免极端情况。'
   return '风险偏高：建议优先补护栏，再让 Agent 真去执行。'
 })
 </script>
 
 <style scoped>
-.risk { border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); padding: 16px; margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
-.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
-.score { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 999px; padding: 8px 12px; font-weight: 900; }
-.score.good { color: #22c55e; border-color: rgba(34, 197, 94, 0.4); }
-.score.mid { color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
-.score.bad { color: #ef4444; border-color: rgba(239, 68, 68, 0.4); }
+.risk {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  padding: 16px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.score {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+}
+.score.good {
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+.score.mid {
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+.score.bad {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.4);
+}
 
-.controls { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 10px 12px; display: flex; flex-wrap: wrap; gap: 12px; }
-.toggle { display: flex; gap: 8px; align-items: center; }
-input { accent-color: var(--vp-c-brand); }
+.controls {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+input {
+  accent-color: var(--vp-c-brand);
+}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.card { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.k { font-weight: 900; margin-bottom: 6px; }
-.v { color: var(--vp-c-text-2); line-height: 1.6; }
-.note { margin-top: 6px; color: var(--vp-c-text-3); font-size: 12px; }
-ul { margin: 0; padding-left: 18px; color: var(--vp-c-text-2); line-height: 1.6; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.k {
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.v {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+.note {
+  margin-top: 6px;
+  color: var(--vp-c-text-3);
+  font-size: 12px;
+}
+ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 </style>
-

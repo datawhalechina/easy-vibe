@@ -55,9 +55,10 @@
 ### 2.1 只有 HTML 会怎样？
 
 就像**毛坯房**：有墙有窗，能住人，但**丑**。
-*   文字黑乎乎，挤在一起。
-*   图片乱排，大小不一。
-*   没有任何设计感。
+
+- 文字黑乎乎，挤在一起。
+- 图片乱排，大小不一。
+- 没有任何设计感。
 
 ### 2.2 解决方案：请个“装修队” (CSS)
 
@@ -66,16 +67,16 @@
 ```css
 /* 谁？ { 改什么: 变成啥; } */
 h1 {
-  color: red;        /* 颜色变红 */
-  font-size: 24px;   /* 字变大 */
-  text-align: center;/* 居中放 */
+  color: red; /* 颜色变红 */
+  font-size: 24px; /* 字变大 */
+  text-align: center; /* 居中放 */
 }
 
 .button {
   background: #007bff; /* 蓝色背景 */
-  border: none;        /* 不要边框 */
-  padding: 10px 20px;  /* 撑大一点 */
-  border-radius: 5px;  /* 圆角 */
+  border: none; /* 不要边框 */
+  padding: 10px 20px; /* 撑大一点 */
+  border-radius: 5px; /* 圆角 */
 }
 
 .button:hover {
@@ -91,7 +92,9 @@ h1 {
 
 <!-- 2) 写在户型图背面（内部样式） -->
 <style>
-  .box { background: blue; }
+  .box {
+    background: blue;
+  }
 </style>
 
 <!-- 3) 找专业装修公司出图纸（外部样式 - 推荐！） -->
@@ -133,24 +136,24 @@ h1 {
 **在 AI 原生时代，解决这个问题有更聪明的方法：**
 
 1.  **直接问 AI (首选方案)**：
-    *   现在的 AI 编程助手（如 Cursor、Trae、GitHub Copilot）已经非常强大。
-    *   你根本不需要背诵属性，直接用自然语言描述你的需求。
-    *   **例子**：你对 AI 说 "我要一个带有阴影的蓝色圆形按钮"，它会直接给你写出包含 `background-color`, `border-radius`, `box-shadow` 的完整代码。
-    *   **为什么这是首选？** 因为它不仅告诉你“属性名”，还帮你把“值”都调好了。
+    - 现在的 AI 编程助手（如 Cursor、Trae、GitHub Copilot）已经非常强大。
+    - 你根本不需要背诵属性，直接用自然语言描述你的需求。
+    - **例子**：你对 AI 说 "我要一个带有阴影的蓝色圆形按钮"，它会直接给你写出包含 `background-color`, `border-radius`, `box-shadow` 的完整代码。
+    - **为什么这是首选？** 因为它不仅告诉你“属性名”，还帮你把“值”都调好了。
 
 2.  **查文档 (MDN)**：
-    *   MDN Web Docs 是 Web 开发的权威字典。
-    *   搜 "MDN CSS text color"，它会告诉你正确属性是 `color`。
-    *   搜 "MDN CSS background"，它会列出 `background-color`, `background-image` 等家族成员。
+    - MDN Web Docs 是 Web 开发的权威字典。
+    - 搜 "MDN CSS text color"，它会告诉你正确属性是 `color`。
+    - 搜 "MDN CSS background"，它会列出 `background-color`, `background-image` 等家族成员。
 
 3.  **用浏览器“偷看” (DevTools)**：
-    *   在喜欢的网页上**右键 -> 检查 (Inspect)**。
-    *   在 **Styles** 面板里，你可以看到人家用了什么属性。
-    *   你甚至可以直接在那里面试着改改数值，实时看效果（刷新就没了，很安全）。
+    - 在喜欢的网页上**右键 -> 检查 (Inspect)**。
+    - 在 **Styles** 面板里，你可以看到人家用了什么属性。
+    - 你甚至可以直接在那里面试着改改数值，实时看效果（刷新就没了，很安全）。
 
 4.  **CSS 游乐场**：
-    *   下面的演示列出了一些最常用的“装修参数”。
-    *   试着拖动滑块、修改颜色，看看它们分别控制什么。
+    - 下面的演示列出了一些最常用的“装修参数”。
+    - 试着拖动滑块、修改颜色，看看它们分别控制什么。
 
 <CssPlaygroundDemo />
 
@@ -164,6 +167,7 @@ h1 {
 不要写 CSS 代码，直接在 HTML 标签上写“代号”。
 
 - **传统写法**：
+
   ```html
   <button class="btn-primary">按钮</button>
   <style>
@@ -186,6 +190,7 @@ h1 {
   ```
 
 **为什么它这么火？**
+
 1.  **不用起名**：最头疼的“起类名”环节没了。
 2.  **不切文件**：不用在 HTML 和 CSS 文件之间切来切去。
 3.  **不怕删**：删掉 HTML 标签时，样式自动就没了，不会留下堆积如山的无用 CSS 代码。
@@ -268,9 +273,9 @@ document.getElementById('title').textContent = '新标题'
 
 浏览器读取 HTML 代码后，不会把它们当成一堆字符串，而是会在内存里把它们画成一棵树。
 
-*   `<html>` 是祖先。
-*   `<body>` 是 `<html>` 的孩子。
-*   `div`、`p`、`button` 又是 `<body>` 的孩子。
+- `<html>` 是祖先。
+- `<body>` 是 `<html>` 的孩子。
+- `div`、`p`、`button` 又是 `<body>` 的孩子。
 
 这棵树就叫 **DOM 树**。
 
@@ -291,33 +296,33 @@ graph TD
 
 因为在 JS 眼里，HTML 标签不仅仅是标签，而是**对象 (Object)**。它们有属性，有方法。
 
-*   **属性 (Property)**：
-    *   `img.src` = "photo.jpg"
-    *   `div.className` = "box"
-    *   `input.value` = "123"
-*   **方法 (Method)**：
-    *   `button.click()` (假装被点了一下)
-    *   `div.remove()` (自杀)
-    *   `body.appendChild(newDiv)` (生个孩子)
+- **属性 (Property)**：
+  - `img.src` = "photo.jpg"
+  - `div.className` = "box"
+  - `input.value` = "123"
+- **方法 (Method)**：
+  - `button.click()` (假装被点了一下)
+  - `div.remove()` (自杀)
+  - `body.appendChild(newDiv)` (生个孩子)
 
 ### 4.3 怎么找节点？(CRUD)
 
 就像在族谱里找人一样，JS 提供了很多方法：
 
 1.  **按身份证找 (ID)**：
-    *   `document.getElementById('header')` —— 全局唯一，最快。
+    - `document.getElementById('header')` —— 全局唯一，最快。
 2.  **按特征找 (Selector)**：
-    *   `document.querySelector('.card h2')` —— 就像写 CSS 一样找，很灵活。
+    - `document.querySelector('.card h2')` —— 就像写 CSS 一样找，很灵活。
 3.  **按关系找**：
-    *   `element.parentNode` (找爸爸)
-    *   `element.children` (找孩子)
+    - `element.parentNode` (找爸爸)
+    - `element.children` (找孩子)
 
 ### 4.4 性能警告：不要频繁“拆家”
 
 操作 DOM 是很贵的。每次你修改 DOM（比如改大小、改位置），浏览器都要重新计算排版（**Reflow**）和重新绘制（**Repaint**）。
 
-*   ❌ **低效**：循环 1000 次，每次往 `body` 里插入一个 `div`。
-*   ✅ **高效**：先把 1000 个 `div` 拼好（DocumentFragment），一次性塞进 `body` 里。
+- ❌ **低效**：循环 1000 次，每次往 `body` 里插入一个 `div`。
+- ✅ **高效**：先把 1000 个 `div` 拼好（DocumentFragment），一次性塞进 `body` 里。
 
 这也正是 **Vue / React** 诞生的原因：它们在内存里玩“虚拟 DOM”，计算好最小修改量，最后才去动真正的 DOM，从而保护了性能。
 

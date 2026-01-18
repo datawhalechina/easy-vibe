@@ -8,8 +8,8 @@
       <div class="control-group">
         <label>排列方向 (flex-direction)</label>
         <div class="btn-group">
-          <button 
-            v-for="val in ['row', 'column']" 
+          <button
+            v-for="val in ['row', 'column']"
             :key="val"
             :class="{ active: direction === val }"
             @click="direction = val"
@@ -22,8 +22,13 @@
       <div class="control-group">
         <label>主轴对齐 (justify-content)</label>
         <div class="btn-group">
-          <button 
-            v-for="val in ['flex-start', 'center', 'space-between', 'space-around']" 
+          <button
+            v-for="val in [
+              'flex-start',
+              'center',
+              'space-between',
+              'space-around'
+            ]"
             :key="val"
             :class="{ active: justify === val }"
             @click="justify = val"
@@ -36,8 +41,8 @@
       <div class="control-group">
         <label>交叉轴对齐 (align-items)</label>
         <div class="btn-group">
-          <button 
-            v-for="val in ['stretch', 'center', 'flex-start', 'flex-end']" 
+          <button
+            v-for="val in ['stretch', 'center', 'flex-start', 'flex-end']"
             :key="val"
             :class="{ active: align === val }"
             @click="align = val"
@@ -50,8 +55,8 @@
       <div class="control-group">
         <label>换行 (flex-wrap)</label>
         <div class="btn-group">
-          <button 
-            v-for="val in ['nowrap', 'wrap']" 
+          <button
+            v-for="val in ['nowrap', 'wrap']"
             :key="val"
             :class="{ active: wrap === val }"
             @click="wrap = val"
@@ -64,10 +69,10 @@
 
     <div class="preview-area">
       <div class="container" :style="containerStyle">
-        <div 
-          v-for="n in itemCount" 
+        <div
+          v-for="n in itemCount"
           :key="n"
-          class="item" 
+          class="item"
           :style="[itemStyle, getItemColor(n)]"
         >
           {{ n }}
@@ -156,9 +161,18 @@ const itemStyle = computed(() => {
 const itemCount = computed(() => (wrap.value === 'wrap' ? 12 : 5))
 
 const colors = [
-  '#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981',
-  '#6366f1', '#14b8a6', '#f97316', '#ef4444', '#84cc16',
-  '#06b6d4', '#d946ef'
+  '#3b82f6',
+  '#8b5cf6',
+  '#ec4899',
+  '#f59e0b',
+  '#10b981',
+  '#6366f1',
+  '#14b8a6',
+  '#f97316',
+  '#ef4444',
+  '#84cc16',
+  '#06b6d4',
+  '#d946ef'
 ]
 
 const getItemColor = (n) => {
@@ -247,7 +261,7 @@ const getItemColor = (n) => {
   color: white;
   font-weight: bold;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
 }
 
@@ -290,6 +304,11 @@ const getItemColor = (n) => {
   font-weight: normal;
 }
 
-pre { margin: 0; }
-.val { color: #f472b6; font-weight: bold; }
+pre {
+  margin: 0;
+}
+.val {
+  color: #f472b6;
+  font-weight: bold;
+}
 </style>

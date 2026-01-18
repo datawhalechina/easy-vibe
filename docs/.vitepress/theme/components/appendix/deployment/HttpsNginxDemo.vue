@@ -10,16 +10,16 @@
     </div>
 
     <div class="options">
-      <div 
-        class="option" 
+      <div
+        class="option"
         :class="{ active: mode === 'static' }"
         @click="mode = 'static'"
       >
         <span class="icon">📄</span>
         <span>静态网站</span>
       </div>
-      <div 
-        class="option" 
+      <div
+        class="option"
         :class="{ active: mode === 'proxy' }"
         @click="mode = 'proxy'"
       >
@@ -31,7 +31,9 @@
     <div class="code-box">
       <div class="code-header">
         <span>/etc/nginx/sites-available/default</span>
-        <button class="copy-btn" @click="copy">{{ copied ? '已复制' : '复制' }}</button>
+        <button class="copy-btn" @click="copy">
+          {{ copied ? '已复制' : '复制' }}
+        </button>
       </div>
       <pre><code>{{ snippet }}</code></pre>
     </div>
@@ -42,7 +44,9 @@
         <div>
           <strong>开启 HTTPS 神器：</strong>
           <div class="cmd">sudo certbot --nginx</div>
-          <div class="desc">运行这行命令，它会自动修改上面的配置，帮你加上 SSL 证书。</div>
+          <div class="desc">
+            运行这行命令，它会自动修改上面的配置，帮你加上 SSL 证书。
+          </div>
         </div>
       </div>
     </div>
@@ -89,7 +93,7 @@ const snippet = computed(() => {
 function copy() {
   navigator.clipboard.writeText(snippet.value)
   copied.value = true
-  setTimeout(() => copied.value = false, 2000)
+  setTimeout(() => (copied.value = false), 2000)
 }
 </script>
 
@@ -161,7 +165,7 @@ function copy() {
 
 .copy-btn {
   color: #fff;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   padding: 2px 8px;
   border-radius: 4px;
   font-size: 11px;

@@ -86,7 +86,8 @@ const analogy = computed(() => {
       return '有钱任性。在隔壁新开一家一模一样的店。装修好了，直接把大门指路牌改到新店。'
     case 'canary':
       return '先让 VIP 客户去新包间体验一下。如果 VIP 没投诉，再把所有客人都请进去。'
-    default: return ''
+    default:
+      return ''
   }
 })
 
@@ -140,7 +141,7 @@ const risk = computed(() => {
   border-color: var(--vp-c-brand);
   color: var(--vp-c-brand);
   background: var(--vp-c-bg-soft);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .stats {

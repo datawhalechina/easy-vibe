@@ -46,7 +46,7 @@
         <span>记忆时间 (TTL)</span>
         <code>{{ ttlSuggestion }}</code>
       </div>
-      
+
       <div class="human-speak">
         <span class="emoji">💡</span>
         <div class="text">
@@ -88,13 +88,14 @@ const recordTypes = [
   }
 ]
 
-const currentRecord = computed(() => recordTypes.find(r => r.type === recordType.value))
+const currentRecord = computed(() =>
+  recordTypes.find((r) => r.type === recordType.value)
+)
 
 const hostLabel = computed(() => (recordType.value === 'CNAME' ? 'www' : '@'))
 const recordValue = computed(() => currentRecord.value?.value || '')
 const ttlSuggestion = computed(() => currentRecord.value?.ttl || '600s')
 const humanExplanation = computed(() => currentRecord.value?.explanation || '')
-
 </script>
 
 <style scoped>

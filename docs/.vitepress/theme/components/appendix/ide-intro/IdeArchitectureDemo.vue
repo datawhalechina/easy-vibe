@@ -32,7 +32,7 @@ const run = async () => {
   isRunning.value = true
   logs.value = []
   activeStep.value = 'start'
-  
+
   await wait(600)
 
   if (currentScenario.value === 'editor') {
@@ -43,12 +43,12 @@ const run = async () => {
     // Has extension
     activeStep.value = 'extension'
     await wait(800)
-    
+
     if (currentScenario.value === 'extension') {
       logs.value.push('> python main.py')
       await wait(600)
       logs.value.push("Error: command 'python' not found")
-      logs.value.push("系统: 找不到 Python 解释器")
+      logs.value.push('系统: 找不到 Python 解释器')
       activeStep.value = 'error-env'
     } else {
       // Full
@@ -63,7 +63,7 @@ const run = async () => {
   isRunning.value = false
 }
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const setScenario = (key) => {
   if (isRunning.value) return
@@ -77,13 +77,15 @@ const setScenario = (key) => {
   <div class="arch-demo">
     <div class="demo-header">
       <div class="title">🛠️ IDE 核心机制模拟器</div>
-      <div class="subtitle">点击下方标签，体验不同配置下的运行结果，理解为什么缺一不可。</div>
+      <div class="subtitle">
+        点击下方标签，体验不同配置下的运行结果，理解为什么缺一不可。
+      </div>
     </div>
 
     <!-- Tab Selection -->
     <div class="tabs">
-      <div 
-        v-for="(conf, key) in scenarios" 
+      <div
+        v-for="(conf, key) in scenarios"
         :key="key"
         class="tab"
         :class="{ active: currentScenario === key }"
@@ -99,16 +101,23 @@ const setScenario = (key) => {
     </div>
 
     <div class="diagram-container">
-      
       <!-- Layer 1: VS Code -->
       <div class="component vscode" :class="{ dim: activeStep === 'env' }">
         <div class="comp-label">1. 外壳 (VS Code)</div>
         <div class="editor-window">
           <div class="file-tab">main.py</div>
           <div class="code-area">
-            <span style="color: #c586c0">print</span>(<span style="color: #ce9178">"Hello"</span>)
+            <span style="color: #c586c0">print</span>(<span
+              style="color: #ce9178"
+              >"Hello"</span
+            >)
           </div>
-          <button class="run-btn-small" @click="run" :disabled="isRunning" title="点击运行">
+          <button
+            class="run-btn-small"
+            @click="run"
+            :disabled="isRunning"
+            title="点击运行"
+          >
             {{ isRunning ? '...' : '▶ 运行' }}
           </button>
         </div>
@@ -119,12 +128,34 @@ const setScenario = (key) => {
 
       <!-- Connector 1 -->
       <div class="connector">
-        <div class="line" :class="{ active: ['extension', 'env', 'result', 'error-env'].includes(activeStep) }"></div>
-        <div class="arrow-tip" :class="{ active: ['extension', 'env', 'result', 'error-env'].includes(activeStep) }">⬇</div>
+        <div
+          class="line"
+          :class="{
+            active: ['extension', 'env', 'result', 'error-env'].includes(
+              activeStep
+            )
+          }"
+        ></div>
+        <div
+          class="arrow-tip"
+          :class="{
+            active: ['extension', 'env', 'result', 'error-env'].includes(
+              activeStep
+            )
+          }"
+        >
+          ⬇
+        </div>
       </div>
 
       <!-- Layer 2: Extension -->
-      <div class="component extension" :class="{ missing: currentScenario === 'editor', active: activeStep === 'extension' }">
+      <div
+        class="component extension"
+        :class="{
+          missing: currentScenario === 'editor',
+          active: activeStep === 'extension'
+        }"
+      >
         <div class="comp-label">2. 中介 (插件)</div>
         <div class="comp-box">
           <div v-if="currentScenario === 'editor'" class="missing-content">
@@ -133,7 +164,14 @@ const setScenario = (key) => {
           <div v-else class="active-content">
             <div class="icon">🧩</div>
             <div class="text">Python 插件</div>
-            <div class="action" v-if="activeStep === 'extension' || activeStep === 'env' || activeStep === 'error-env'">
+            <div
+              class="action"
+              v-if="
+                activeStep === 'extension' ||
+                activeStep === 'env' ||
+                activeStep === 'error-env'
+              "
+            >
               生成指令: <code>python main.py</code>
             </div>
           </div>
@@ -142,12 +180,26 @@ const setScenario = (key) => {
 
       <!-- Connector 2 -->
       <div class="connector">
-        <div class="line" :class="{ active: ['env', 'result'].includes(activeStep) }"></div>
-        <div class="arrow-tip" :class="{ active: ['env', 'result'].includes(activeStep) }">⬇</div>
+        <div
+          class="line"
+          :class="{ active: ['env', 'result'].includes(activeStep) }"
+        ></div>
+        <div
+          class="arrow-tip"
+          :class="{ active: ['env', 'result'].includes(activeStep) }"
+        >
+          ⬇
+        </div>
       </div>
 
       <!-- Layer 3: Environment -->
-      <div class="component env" :class="{ missing: currentScenario !== 'full', active: activeStep === 'env' }">
+      <div
+        class="component env"
+        :class="{
+          missing: currentScenario !== 'full',
+          active: activeStep === 'env'
+        }"
+      >
         <div class="comp-label">3. 引擎 (环境)</div>
         <div class="comp-box">
           <div v-if="currentScenario !== 'full'" class="missing-content">
@@ -168,7 +220,6 @@ const setScenario = (key) => {
           🚫 找不到程序
         </div>
       </div>
-
     </div>
 
     <!-- Output Console -->
@@ -177,17 +228,30 @@ const setScenario = (key) => {
         <span class="term-icon">_</span> 终端 (Terminal)
       </div>
       <div class="term-body">
-        <div v-for="(l, i) in logs" :key="i" class="log-line" :class="{ error: l.includes('Error') || l.includes('失败') }">
+        <div
+          v-for="(l, i) in logs"
+          :key="i"
+          class="log-line"
+          :class="{ error: l.includes('Error') || l.includes('失败') }"
+        >
           {{ l }}
         </div>
-        <div v-if="logs.length === 0" class="placeholder">点击上方“运行”按钮开始...</div>
+        <div v-if="logs.length === 0" class="placeholder">
+          点击上方“运行”按钮开始...
+        </div>
       </div>
     </div>
 
-    <div class="result-bar" :class="{ success: scenarios[currentScenario].result.includes('成功'), error: !scenarios[currentScenario].result.includes('成功') }" v-if="!isRunning && logs.length > 0">
+    <div
+      class="result-bar"
+      :class="{
+        success: scenarios[currentScenario].result.includes('成功'),
+        error: !scenarios[currentScenario].result.includes('成功')
+      }"
+      v-if="!isRunning && logs.length > 0"
+    >
       {{ scenarios[currentScenario].result }}
     </div>
-
   </div>
 </template>
 
@@ -199,7 +263,7 @@ const setScenario = (key) => {
   background: var(--vp-c-bg-soft);
   margin: 24px 0;
   font-family: var(--vp-font-family-base);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .demo-header {
@@ -244,7 +308,7 @@ const setScenario = (key) => {
 .tab.active {
   background: var(--vp-c-bg);
   color: var(--vp-c-brand);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-weight: bold;
 }
 
@@ -297,7 +361,7 @@ const setScenario = (key) => {
   background: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 1px solid #333;
 }
 .vscode .file-tab {
@@ -493,20 +557,36 @@ const setScenario = (key) => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes slideIn {
-  from { opacity: 0; transform: translate(-10px, -50%); }
-  to { opacity: 1; transform: translate(0, -50%); }
+  from {
+    opacity: 0;
+    transform: translate(-10px, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
 }
 .spin {
   display: inline-block;
   animation: spin 2s linear infinite;
 }
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Mobile Responsive */

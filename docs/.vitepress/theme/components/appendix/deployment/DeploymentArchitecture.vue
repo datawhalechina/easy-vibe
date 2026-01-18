@@ -68,25 +68,73 @@ import { computed, ref } from 'vue'
 const modes = [
   { id: 'static', label: '看海报 (静态)', icon: '🖼️' },
   { id: 'spa', label: '玩 App (SPA)', icon: '📱' },
-  { id: 'ssr', label: '刷动态 (SSR)', icon: '🔄' },
+  { id: 'ssr', label: '刷动态 (SSR)', icon: '🔄' }
 ]
 
 const currentMode = ref('spa')
 
-const currentModeLabel = computed(() => 
-  modes.find(m => m.id === currentMode.value)?.label
+const currentModeLabel = computed(
+  () => modes.find((m) => m.id === currentMode.value)?.label
 )
 
 // 角色：User(寄件人), DNS(查号台), CDN(快递柜), WAF(保安), LB(大堂经理), Server(办事员), DB(档案室)
 const commonNodes = {
-  user: { role: '寄件人', name: 'User', icon: '🧑', color: '#64748b', desc: '发出请求' },
-  dns: { role: '查号台', name: 'DNS', icon: '📒', color: '#0ea5e9', desc: '查询 IP 地址' },
-  cdn: { role: '快递柜', name: 'CDN', icon: '📦', color: '#22c55e', desc: '就近取货' },
-  waf: { role: '保安', name: 'WAF', icon: '🛡️', color: '#ef4444', desc: '拦截黑客' },
-  lb: { role: '大堂经理', name: 'LB', icon: '💁', color: '#f59e0b', desc: '分配窗口' },
-  server: { role: '办事员', name: 'Server', icon: '👨‍💼', color: '#8b5cf6', desc: '处理业务' },
-  db: { role: '档案室', name: 'Database', icon: '🗄️', color: '#d946ef', desc: '存取数据' },
-  obj: { role: '仓库', name: 'OSS', icon: '🏭', color: '#f97316', desc: '拿静态文件' }
+  user: {
+    role: '寄件人',
+    name: 'User',
+    icon: '🧑',
+    color: '#64748b',
+    desc: '发出请求'
+  },
+  dns: {
+    role: '查号台',
+    name: 'DNS',
+    icon: '📒',
+    color: '#0ea5e9',
+    desc: '查询 IP 地址'
+  },
+  cdn: {
+    role: '快递柜',
+    name: 'CDN',
+    icon: '📦',
+    color: '#22c55e',
+    desc: '就近取货'
+  },
+  waf: {
+    role: '保安',
+    name: 'WAF',
+    icon: '🛡️',
+    color: '#ef4444',
+    desc: '拦截黑客'
+  },
+  lb: {
+    role: '大堂经理',
+    name: 'LB',
+    icon: '💁',
+    color: '#f59e0b',
+    desc: '分配窗口'
+  },
+  server: {
+    role: '办事员',
+    name: 'Server',
+    icon: '👨‍💼',
+    color: '#8b5cf6',
+    desc: '处理业务'
+  },
+  db: {
+    role: '档案室',
+    name: 'Database',
+    icon: '🗄️',
+    color: '#d946ef',
+    desc: '存取数据'
+  },
+  obj: {
+    role: '仓库',
+    name: 'OSS',
+    icon: '🏭',
+    color: '#f97316',
+    desc: '拿静态文件'
+  }
 }
 
 const flowMap = {
@@ -116,10 +164,14 @@ const nodes = computed(() => flowMap[currentMode.value])
 
 const bottleneck = computed(() => {
   switch (currentMode.value) {
-    case 'static': return '几乎没有瓶颈，起飞！'
-    case 'spa': return 'API 接口响应速度'
-    case 'ssr': return '办事员 (Server) 拼装页面的速度'
-    default: return ''
+    case 'static':
+      return '几乎没有瓶颈，起飞！'
+    case 'spa':
+      return 'API 接口响应速度'
+    case 'ssr':
+      return '办事员 (Server) 拼装页面的速度'
+    default:
+      return ''
   }
 })
 

@@ -2,7 +2,9 @@
   <div class="component-reusability-demo">
     <div class="toolbox">
       <div class="tool-title">Component Library</div>
-      <button class="spawn-btn" @click="spawn('counter')">➕ New Counter</button>
+      <button class="spawn-btn" @click="spawn('counter')">
+        ➕ New Counter
+      </button>
       <button class="spawn-btn" @click="spawn('card')">➕ New Card</button>
     </div>
 
@@ -10,9 +12,9 @@
       <div class="workspace-label">App Workspace</div>
       <div class="instances-container">
         <transition-group name="list">
-          <div 
-            v-for="item in instances" 
-            :key="item.id" 
+          <div
+            v-for="item in instances"
+            :key="item.id"
             class="instance-wrapper"
           >
             <!-- Counter Component -->
@@ -36,8 +38,8 @@
               <div class="comp-body">
                 <div class="skeleton-img"></div>
                 <div class="skeleton-text"></div>
-                <button 
-                  class="like-btn" 
+                <button
+                  class="like-btn"
                   :class="{ liked: item.data.liked }"
                   @click="item.data.liked = !item.data.liked"
                 >
@@ -49,7 +51,7 @@
         </transition-group>
         <div v-if="instances.length === 0" class="empty-hint">
           Click buttons above to add components.
-          <br>
+          <br />
           Notice how each one works independently!
         </div>
       </div>
@@ -80,7 +82,7 @@ const spawn = (type) => {
 }
 
 const remove = (id) => {
-  instances.value = instances.value.filter(i => i.id !== id)
+  instances.value = instances.value.filter((i) => i.id !== id)
 }
 </script>
 
@@ -119,7 +121,7 @@ const remove = (id) => {
   cursor: pointer;
   font-size: 0.8rem;
   transition: all 0.2s;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .spawn-btn:hover {
   border-color: var(--vp-c-brand);
@@ -168,7 +170,7 @@ const remove = (id) => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   width: 140px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -191,7 +193,9 @@ const remove = (id) => {
   font-size: 1rem;
   line-height: 1;
 }
-.close-btn:hover { color: #ef4444; }
+.close-btn:hover {
+  color: #ef4444;
+}
 
 .comp-body {
   padding: 0.8rem;
@@ -214,7 +218,9 @@ const remove = (id) => {
   border-radius: 4px;
   cursor: pointer;
 }
-.mini-btn:hover { background: #e2e8f0; }
+.mini-btn:hover {
+  background: #e2e8f0;
+}
 
 /* Card Style */
 .skeleton-img {

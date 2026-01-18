@@ -22,7 +22,7 @@
             <div class="icon">🐛</div>
             <div class="icon">🧩</div>
           </div>
-          
+
           <!-- 资源管理器 (Sidebar) -->
           <div class="sidebar">
             <div class="sidebar-title">EXPLORER</div>
@@ -54,38 +54,82 @@
                 <div v-for="n in 15" :key="n">{{ n }}</div>
               </div>
               <div class="code-lines">
-                <div class="line"><span class="kwd">import</span> { <span class="var">ref</span>, <span class="var">onMounted</span>, <span class="var">nextTick</span> } <span class="kwd">from</span> <span class="str">'vue'</span></div>
+                <div class="line">
+                  <span class="kwd">import</span> {
+                  <span class="var">ref</span>,
+                  <span class="var">onMounted</span>,
+                  <span class="var">nextTick</span> }
+                  <span class="kwd">from</span> <span class="str">'vue'</span>
+                </div>
                 <div class="line"></div>
-                <div class="line"><span class="kwd">const</span> <span class="var">chartRef</span> = <span class="func">ref</span>(<span class="kwd">null</span>)</div>
-                <div class="line"><span class="kwd">const</span> <span class="var">data</span> = <span class="func">ref</span>([])</div>
+                <div class="line">
+                  <span class="kwd">const</span>
+                  <span class="var">chartRef</span> =
+                  <span class="func">ref</span>(<span class="kwd">null</span>)
+                </div>
+                <div class="line">
+                  <span class="kwd">const</span> <span class="var">data</span> =
+                  <span class="func">ref</span>([])
+                </div>
                 <div class="line"></div>
-                <div class="line"><span class="kwd">const</span> <span class="func">initChart</span> = <span class="kwd">async</span> () => {</div>
-                <div class="line">&nbsp;&nbsp;<span class="comment">// 等待数据加载完成</span></div>
-                <div class="line">&nbsp;&nbsp;<span class="kwd">await</span> <span class="func">fetchData</span>()</div>
+                <div class="line">
+                  <span class="kwd">const</span>
+                  <span class="func">initChart</span> =
+                  <span class="kwd">async</span> () => {
+                </div>
+                <div class="line">
+                  &nbsp;&nbsp;<span class="comment">// 等待数据加载完成</span>
+                </div>
+                <div class="line">
+                  &nbsp;&nbsp;<span class="kwd">await</span>
+                  <span class="func">fetchData</span>()
+                </div>
                 <div class="line">&nbsp;&nbsp;</div>
                 <div class="line" ref="targetCode">
-                  &nbsp;&nbsp;<span class="comment">// 👈 等待 DOM 更新后再渲染图表</span>
+                  &nbsp;&nbsp;<span class="comment"
+                    >// 👈 等待 DOM 更新后再渲染图表</span
+                  >
                 </div>
                 <div class="line" ref="targetCode2">
-                  &nbsp;&nbsp;<span class="kwd">await</span> <span class="func">nextTick</span>()
+                  &nbsp;&nbsp;<span class="kwd">await</span>
+                  <span class="func">nextTick</span>()
                 </div>
                 <div class="line">&nbsp;&nbsp;</div>
-                <div class="line">&nbsp;&nbsp;<span class="kwd">const</span> <span class="var">chart</span> = <span class="var">echarts</span>.<span class="func">init</span>(<span class="var">chartRef</span>.<span class="var">value</span>)</div>
-                <div class="line">&nbsp;&nbsp;<span class="var">chart</span>.<span class="func">setOption</span>({ ... })</div>
+                <div class="line">
+                  &nbsp;&nbsp;<span class="kwd">const</span>
+                  <span class="var">chart</span> =
+                  <span class="var">echarts</span>.<span class="func">init</span
+                  >(<span class="var">chartRef</span>.<span class="var"
+                    >value</span
+                  >)
+                </div>
+                <div class="line">
+                  &nbsp;&nbsp;<span class="var">chart</span>.<span class="func"
+                    >setOption</span
+                  >({ ... })
+                </div>
                 <div class="line">}</div>
               </div>
             </div>
           </div>
 
           <!-- 截图选框 (Overlay) - Moved to main-layout level -->
-          <div class="screenshot-overlay" v-if="step === 'selecting' || step === 'captured'">
-            <div class="selection-box" :class="{ flashed: step === 'captured' }">
+          <div
+            class="screenshot-overlay"
+            v-if="step === 'selecting' || step === 'captured'"
+          >
+            <div
+              class="selection-box"
+              :class="{ flashed: step === 'captured' }"
+            >
               <div class="selection-handle top-left"></div>
               <div class="selection-handle top-right"></div>
               <div class="selection-handle bottom-left"></div>
               <div class="selection-handle bottom-right"></div>
               <div class="cursor-crosshair" v-if="step === 'selecting'"></div>
-              <div class="selection-size" v-if="step === 'selecting'">220 × 350</div>
+              <div class="selection-size" v-if="step === 'selecting'">
+                220 × 350
+              </div>
             </div>
           </div>
         </div>
@@ -110,16 +154,16 @@
           <div class="chat-model-selector">
             <span>GPT-4o</span> <span class="arrow">▼</span>
           </div>
-          
+
           <div class="messages-container" ref="messagesContainer">
             <div class="msg-row user" v-if="stepInt >= 5">
               <div class="avatar">U</div>
               <div class="msg-bubble">
                 <div class="pasted-image" v-if="stepInt >= 5">
-                   <div class="ui-snapshot">
-                     <div class="snapshot-rect menu-rect"></div>
-                     <div class="snapshot-text">Menu Bar.png</div>
-                   </div>
+                  <div class="ui-snapshot">
+                    <div class="snapshot-rect menu-rect"></div>
+                    <div class="snapshot-text">Menu Bar.png</div>
+                  </div>
                 </div>
                 <div class="msg-text">{{ typedText }}</div>
               </div>
@@ -127,39 +171,74 @@
 
             <div class="msg-row ai" v-if="stepInt >= 7">
               <div class="avatar gpt">
-                <svg viewBox="0 0 41 41" class="gpt-logo"><path d="M37.532 16.87a9.963 9.963 0 00-.856-8.184c-3.15-5.49-10.25-7.38-15.738-4.23-.718.412-1.35.914-1.896 1.488a9.965 9.965 0 00-7.144-1.156 9.972 9.972 0 00-6.73 4.966c-3.15 5.49-1.26 12.59 4.23 15.738.412.237.854.43 1.306.586a9.963 9.963 0 00.856 8.184c3.15 5.49 10.25 7.38 15.738 4.23.718-.412 1.35-.914 1.896-1.488a9.965 9.965 0 007.144 1.156 9.972 9.972 0 006.73-4.966c3.15-5.49 1.26-12.59-4.23-15.738a9.953 9.953 0 00-1.306-.586zM20.5 29.5a9 9 0 110-18 9 9 0 010 18z" fill="currentColor"></path></svg>
+                <svg viewBox="0 0 41 41" class="gpt-logo">
+                  <path
+                    d="M37.532 16.87a9.963 9.963 0 00-.856-8.184c-3.15-5.49-10.25-7.38-15.738-4.23-.718.412-1.35.914-1.896 1.488a9.965 9.965 0 00-7.144-1.156 9.972 9.972 0 00-6.73 4.966c-3.15 5.49-1.26 12.59 4.23 15.738.412.237.854.43 1.306.586a9.963 9.963 0 00.856 8.184c3.15 5.49 10.25 7.38 15.738 4.23.718-.412 1.35-.914 1.896-1.488a9.965 9.965 0 007.144 1.156 9.972 9.972 0 006.73-4.966c3.15-5.49 1.26-12.59-4.23-15.738a9.953 9.953 0 00-1.306-.586zM20.5 29.5a9 9 0 110-18 9 9 0 010 18z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
               </div>
               <div class="msg-bubble ai-bubble">
-                <p>这是 VS Code 的 <strong>顶部菜单栏 (Menu Bar)</strong>，包含了软件的所有功能入口。</p>
+                <p>
+                  这是 VS Code 的
+                  <strong>顶部菜单栏 (Menu Bar)</strong
+                  >，包含了软件的所有功能入口。
+                </p>
                 <p><strong>常用菜单解释：</strong></p>
                 <ul>
-                  <li><strong>File (文件)</strong>：新建、打开、保存文件或项目。</li>
-                  <li><strong>Edit (编辑)</strong>：复制粘贴、查找替换、撤销重做。</li>
-                  <li><strong>View (视图)</strong>：控制界面显示，比如打开侧边栏、终端等。</li>
-                  <li><strong>Terminal (终端)</strong>：打开内置命令行工具。</li>
+                  <li>
+                    <strong>File (文件)</strong>：新建、打开、保存文件或项目。
+                  </li>
+                  <li>
+                    <strong>Edit (编辑)</strong>：复制粘贴、查找替换、撤销重做。
+                  </li>
+                  <li>
+                    <strong>View (视图)</strong
+                    >：控制界面显示，比如打开侧边栏、终端等。
+                  </li>
+                  <li>
+                    <strong>Terminal (终端)</strong>：打开内置命令行工具。
+                  </li>
                 </ul>
-                <p>💡 <strong>小技巧</strong>：如果不记得某个功能在哪，可以按 <code>F1</code> 或 <code>Ctrl+Shift+P</code> 打开命令面板直接搜索功能名字！</p>
+                <p>
+                  💡 <strong>小技巧</strong>：如果不记得某个功能在哪，可以按
+                  <code>F1</code> 或
+                  <code>Ctrl+Shift+P</code> 打开命令面板直接搜索功能名字！
+                </p>
               </div>
             </div>
           </div>
 
           <div class="chat-input-area">
             <div class="input-wrapper">
-              <div class="input-preview" v-if="stepInt === 4 || (stepInt === 5 && isTyping)">
+              <div
+                class="input-preview"
+                v-if="stepInt === 4 || (stepInt === 5 && isTyping)"
+              >
                 <div class="mini-snapshot-ui">
                   <div class="mini-menu-rect"></div>
                 </div>
               </div>
               <div class="fake-input">
-                <span v-if="stepInt < 5" class="placeholder">Message ChatGPT...</span>
-                <span v-else class="typing-text">{{ typedText }}<span class="cursor" v-if="isTyping">|</span></span>
+                <span v-if="stepInt < 5" class="placeholder"
+                  >Message ChatGPT...</span
+                >
+                <span v-else class="typing-text"
+                  >{{ typedText
+                  }}<span class="cursor" v-if="isTyping">|</span></span
+                >
               </div>
-              <button class="send-btn" :class="{ active: typedText.length > 5 }">↑</button>
+              <button
+                class="send-btn"
+                :class="{ active: typedText.length > 5 }"
+              >
+                ↑
+              </button>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- 全局重置按钮 -->
       <button class="reset-btn" v-if="step === 'finished'" @click="reset">
         🔄 重播
@@ -215,41 +294,41 @@ const getWindowClass = (winName) => {
 
 const startDemo = async () => {
   step.value = 'selecting'
-  
+
   // 1. 模拟截图过程 (1.5s)
   await wait(1500)
   step.value = 'captured'
-  
+
   // 2. 截图闪烁确认 (0.5s)
   await wait(600)
-  
+
   // 3. 窗口切换 (0.8s)
   step.value = 'switching'
   await wait(800)
-  
+
   // 4. ChatGPT 界面准备 (粘贴动作)
   step.value = 'pasting'
   await wait(800)
-  
+
   // 5. 打字
   step.value = 'typing'
   isTyping.value = true
-  const question = "帮我看下这张图，左边红框里那一块是干嘛用的？"
+  const question = '帮我看下这张图，左边红框里那一块是干嘛用的？'
   for (let i = 0; i < question.length; i++) {
     typedText.value += question[i]
     await wait(50)
   }
   isTyping.value = false
   await wait(300)
-  
+
   // 6. 发送
   step.value = 'sending'
   await wait(500)
-  
+
   // 7. AI 回复
   step.value = 'responding'
   await wait(2500) // 模拟阅读时间
-  
+
   step.value = 'finished'
 }
 
@@ -258,14 +337,16 @@ const reset = () => {
   typedText.value = ''
 }
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 </script>
 
 <style scoped>
 .ai-help-demo {
   margin: 40px 0;
   perspective: 1000px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .desktop-container {
@@ -275,7 +356,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   background: #333; /* 桌面背景 */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 /* 通用窗口样式 */
@@ -286,7 +367,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   width: 90%;
   height: 90%;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -319,8 +400,16 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 }
 
 @keyframes zoomIn {
-  from { transform: scale(1.1); opacity: 0; filter: blur(4px); }
-  to { transform: scale(1); opacity: 1; filter: blur(0); }
+  from {
+    transform: scale(1.1);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 /* ================= VS Code 样式 ================= */
@@ -340,13 +429,31 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   color: #999;
 }
 
-.controls { display: flex; gap: 6px; margin-right: 16px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
+.controls {
+  display: flex;
+  gap: 6px;
+  margin-right: 16px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.red {
+  background: #ff5f56;
+}
+.yellow {
+  background: #ffbd2e;
+}
+.green {
+  background: #27c93f;
+}
 
-.main-layout { flex: 1; display: flex; overflow: hidden; }
+.main-layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
 
 .activity-bar {
   width: 40px;
@@ -357,8 +464,16 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   padding-top: 10px;
   gap: 15px;
 }
-.activity-bar .icon { font-size: 18px; opacity: 0.5; filter: grayscale(1); }
-.activity-bar .icon.active { opacity: 1; border-left: 2px solid white; filter: grayscale(0); }
+.activity-bar .icon {
+  font-size: 18px;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+.activity-bar .icon.active {
+  opacity: 1;
+  border-left: 2px solid white;
+  filter: grayscale(0);
+}
 
 .sidebar {
   width: 180px;
@@ -367,14 +482,41 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   font-size: 12px;
   color: #ccc;
 }
-.sidebar-title { padding: 10px; font-weight: bold; font-size: 11px; }
-.tree-item { padding: 4px 10px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
-.tree-item.active { background: #37373d; }
-.tree-item.indent { padding-left: 20px; }
-.tree-item .arrow { font-size: 10px; color: #999; }
+.sidebar-title {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 11px;
+}
+.tree-item {
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.tree-item.active {
+  background: #37373d;
+}
+.tree-item.indent {
+  padding-left: 20px;
+}
+.tree-item .arrow {
+  font-size: 10px;
+  color: #999;
+}
 
-.editor-area { flex: 1; display: flex; flex-direction: column; background: #1e1e1e; position: relative; }
-.tab-bar { height: 35px; background: #252526; display: flex; }
+.editor-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  position: relative;
+}
+.tab-bar {
+  height: 35px;
+  background: #252526;
+  display: flex;
+}
 .tab {
   background: #1e1e1e;
   padding: 0 15px;
@@ -384,7 +526,10 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   font-size: 12px;
   border-top: 1px solid #007acc;
 }
-.tab .close { margin-left: 8px; font-size: 14px; }
+.tab .close {
+  margin-left: 8px;
+  font-size: 14px;
+}
 
 .code-content {
   flex: 1;
@@ -401,14 +546,27 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   color: #6e7681;
   user-select: none;
 }
-.code-lines { flex: 1; padding-left: 5px; }
+.code-lines {
+  flex: 1;
+  padding-left: 5px;
+}
 
 /* 语法高亮 */
-.kwd { color: #569cd6; }
-.var { color: #9cdcfe; }
-.func { color: #dcdcaa; }
-.str { color: #ce9178; }
-.comment { color: #6a9955; }
+.kwd {
+  color: #569cd6;
+}
+.var {
+  color: #9cdcfe;
+}
+.func {
+  color: #dcdcaa;
+}
+.str {
+  color: #ce9178;
+}
+.comment {
+  color: #6a9955;
+}
 
 /* 截图覆盖层 */
 .screenshot-overlay {
@@ -417,7 +575,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 10;
   cursor: crosshair;
 }
@@ -430,7 +588,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   height: 320px;
   border: 3px solid #ff5f56; /* 醒目的红框 */
   background: rgba(255, 95, 86, 0.1);
-  box-shadow: 0 0 0 9999px rgba(0,0,0,0.5); /* 遮罩效果 */
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5); /* 遮罩效果 */
   animation: selectAnim 0.5s ease-out;
 }
 
@@ -440,13 +598,23 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 }
 
 @keyframes selectAnim {
-  from { width: 0; height: 0; }
-  to { width: 280px; height: 320px; }
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 280px;
+    height: 320px;
+  }
 }
 
 @keyframes flash {
-  0% { background: rgba(255, 255, 255, 0.8); }
-  100% { background: rgba(255, 255, 255, 0.1); }
+  0% {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .selection-size {
@@ -528,7 +696,9 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.history-item.active { background: #343541; }
+.history-item.active {
+  background: #343541;
+}
 
 .chat-main {
   flex: 1;
@@ -545,7 +715,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   padding: 0 20px;
   font-weight: 600;
   color: #d2d6db;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
 }
 
@@ -563,8 +733,13 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   gap: 15px;
   max-width: 80%;
 }
-.msg-row.user { align-self: flex-end; flex-direction: row-reverse; }
-.msg-row.ai { align-self: flex-start; }
+.msg-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.msg-row.ai {
+  align-self: flex-start;
+}
 
 .avatar {
   width: 30px;
@@ -576,9 +751,19 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   font-weight: bold;
   font-size: 14px;
 }
-.user .avatar { background: #5436da; color: white; border-radius: 50%; }
-.ai .avatar { background: #19c37d; color: white; }
-.gpt-logo { width: 20px; height: 20px; }
+.user .avatar {
+  background: #5436da;
+  color: white;
+  border-radius: 50%;
+}
+.ai .avatar {
+  background: #19c37d;
+  color: white;
+}
+.gpt-logo {
+  width: 20px;
+  height: 20px;
+}
 
 .msg-bubble {
   background: transparent;
@@ -586,12 +771,14 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   font-size: 14px;
   line-height: 1.6;
 }
-.user .msg-bubble { text-align: right; }
+.user .msg-bubble {
+  text-align: right;
+}
 .ai-bubble {
   background: #444654;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pasted-image {
@@ -610,17 +797,17 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 .chat-input-area {
   padding: 20px;
-  background-image: linear-gradient(180deg, rgba(53,55,64,0), #353740 50%);
+  background-image: linear-gradient(180deg, rgba(53, 55, 64, 0), #353740 50%);
 }
 
 .input-wrapper {
   background: #40414f;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   padding: 10px 12px;
   display: flex;
   align-items: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
@@ -644,7 +831,9 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   display: flex;
   align-items: center;
 }
-.placeholder { color: #8e8ea0; }
+.placeholder {
+  color: #8e8ea0;
+}
 
 .send-btn {
   background: #19c37d;
@@ -659,7 +848,9 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   opacity: 0.5;
   transition: opacity 0.2s;
 }
-.send-btn.active { opacity: 1; }
+.send-btn.active {
+  opacity: 1;
+}
 
 /* 引导层 */
 .guide-overlay {
@@ -668,7 +859,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -682,10 +873,12 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
 }
-.start-btn:hover { transform: scale(1.05); }
+.start-btn:hover {
+  transform: scale(1.05);
+}
 
 .reset-btn {
   position: absolute;
@@ -697,11 +890,17 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

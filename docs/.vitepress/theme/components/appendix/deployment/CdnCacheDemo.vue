@@ -26,7 +26,9 @@
       <div class="control">
         <label>快递柜里有吗？(命中率)</label>
         <input type="range" min="0" max="100" v-model.number="hit" />
-        <div class="hint">当前概率：{{ hit }}% ({{ hit > 80 ? '大部分都有' : '经常要跑远路' }})</div>
+        <div class="hint">
+          当前概率：{{ hit }}% ({{ hit > 80 ? '大部分都有' : '经常要跑远路' }})
+        </div>
       </div>
     </div>
 

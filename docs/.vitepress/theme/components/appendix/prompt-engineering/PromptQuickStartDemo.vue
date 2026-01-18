@@ -95,7 +95,8 @@ const prompt = computed(() => {
 
 const output = computed(() => {
   if (taskId.value === 'copy') {
-    if (levelId.value === 'vague') return '这是一款很好用的咖啡杯，适合日常使用...'
+    if (levelId.value === 'vague')
+      return '这是一款很好用的咖啡杯，适合日常使用...'
     if (levelId.value === 'clear')
       return '早八通勤救星！这只保温杯颜值在线，放包里不漏，热咖啡到下午还温温的...'
     return '通勤党必备！奶油配色超耐看，密封圈一拧就稳，放包里也不怕洒；保温够久，早上冲的拿铁下午还是温热...想要链接评论区见～'
@@ -115,13 +116,16 @@ const output = computed(() => {
 
 const promptHint = computed(() => {
   if (levelId.value === 'vague') return '问题：AI 不知道你要什么标准。'
-  if (levelId.value === 'clear') return '好一点：有风格/长度，但仍缺少“检查标准”。'
+  if (levelId.value === 'clear')
+    return '好一点：有风格/长度，但仍缺少“检查标准”。'
   return '最好：角色 + 任务 + 要求 + 输出格式，AI 很难跑偏。'
 })
 
 const outputHint = computed(() => {
-  if (levelId.value === 'vague') return '常见结果：泛泛而谈、风格不稳、格式不对。'
-  if (levelId.value === 'clear') return '常见结果：更像你要的，但细节/格式可能还会飘。'
+  if (levelId.value === 'vague')
+    return '常见结果：泛泛而谈、风格不稳、格式不对。'
+  if (levelId.value === 'clear')
+    return '常见结果：更像你要的，但细节/格式可能还会飘。'
   return '常见结果：风格稳定、结构清晰、可直接复制使用。'
 })
 
@@ -164,10 +168,20 @@ const tips = computed(() => {
   flex-wrap: wrap;
 }
 
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 
-.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 select {
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -176,7 +190,11 @@ select {
   color: var(--vp-c-text-1);
 }
 
-.levels { display: flex; gap: 8px; flex-wrap: wrap; }
+.levels {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .level {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
@@ -190,16 +208,61 @@ select {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 12px; }
-.panel-title { font-weight: 700; margin-bottom: 6px; }
-pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
-.output { color: var(--vp-c-text-1); white-space: pre-wrap; line-height: 1.6; }
-.hint { margin-top: 6px; color: var(--vp-c-text-2); font-size: 13px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+.panel {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+}
+.panel-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+pre {
+  margin: 0;
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+.output {
+  color: var(--vp-c-text-1);
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.hint {
+  margin-top: 6px;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 
-.tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-.tip { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 10px; }
-.tip-title { font-weight: 700; margin-bottom: 4px; }
-.tip-body { color: var(--vp-c-text-2); font-size: 13px; line-height: 1.5; }
+.tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+.tip {
+  background: var(--vp-c-bg);
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 10px;
+}
+.tip-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tip-body {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
 </style>
-

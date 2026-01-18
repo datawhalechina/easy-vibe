@@ -1,7 +1,9 @@
 <template>
   <div class="monolith-microservice-demo">
     <div class="controls">
-      <button class="action-btn crash-btn" @click="triggerCrash">💥 Simulate Order Service Crash</button>
+      <button class="action-btn crash-btn" @click="triggerCrash">
+        💥 Simulate Order Service Crash
+      </button>
       <button class="action-btn reset-btn" @click="reset">🔄 Reset</button>
     </div>
 
@@ -12,15 +14,19 @@
         <div class="server-container" :class="{ crashed: monolithCrashed }">
           <div class="process-box">
             <div class="module user">User</div>
-            <div class="module order" :class="{ error: monolithCrashed }">Order</div>
+            <div class="module order" :class="{ error: monolithCrashed }">
+              Order
+            </div>
             <div class="module pay">Payment</div>
           </div>
           <div class="status-indicator">
-            Status: {{ monolithCrashed ? 'SYSTEM DOWN (Critical Failure)' : 'Healthy' }}
+            Status:
+            {{ monolithCrashed ? 'SYSTEM DOWN (Critical Failure)' : 'Healthy' }}
           </div>
         </div>
         <div class="desc">
-          One process. If "Order" module has a memory leak or fatal error, <strong>the entire server crashes</strong>. Everyone is affected.
+          One process. If "Order" module has a memory leak or fatal error,
+          <strong>the entire server crashes</strong>. Everyone is affected.
         </div>
       </div>
 
@@ -45,7 +51,8 @@
           Status: {{ microCrashed ? 'Partial Outage (Order Down)' : 'Healthy' }}
         </div>
         <div class="desc">
-          Isolated processes. If "Order" crashes, User and Payment services <strong>keep running</strong>. The system degrades gracefully.
+          Isolated processes. If "Order" crashes, User and Payment services
+          <strong>keep running</strong>. The system degrades gracefully.
         </div>
       </div>
     </div>
@@ -98,7 +105,9 @@ const reset = () => {
   background: #ef4444;
   color: white;
 }
-.crash-btn:hover { background: #dc2626; }
+.crash-btn:hover {
+  background: #dc2626;
+}
 
 .reset-btn {
   background: var(--vp-c-brand);
@@ -112,7 +121,9 @@ const reset = () => {
 }
 
 @media (max-width: 640px) {
-  .comparison-view { grid-template-columns: 1fr; }
+  .comparison-view {
+    grid-template-columns: 1fr;
+  }
 }
 
 .architecture-block {
@@ -185,7 +196,7 @@ const reset = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .service-box.crashed {
@@ -198,8 +209,14 @@ const reset = () => {
   height: 10px;
   border-radius: 50%;
 }
-.dot.green { background: #22c55e; box-shadow: 0 0 4px #22c55e; }
-.dot.red { background: #ef4444; box-shadow: 0 0 4px #ef4444; }
+.dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 4px #22c55e;
+}
+.dot.red {
+  background: #ef4444;
+  box-shadow: 0 0 4px #ef4444;
+}
 
 .status-indicator {
   margin-top: 1rem;
@@ -217,16 +234,38 @@ const reset = () => {
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 </style>

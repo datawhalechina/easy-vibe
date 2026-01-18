@@ -35,11 +35,9 @@
                 >|</span
               ></code></pre>
               <div v-else>
-                {{ msg.content }}<span
-                  v-if="
-                    isGenerating &&
-                    index === messages.length - 1
-                  "
+                {{ msg.content
+                }}<span
+                  v-if="isGenerating && index === messages.length - 1"
                   class="cursor"
                   >|</span
                 >

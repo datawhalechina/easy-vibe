@@ -542,7 +542,10 @@ export default defineConfig({
                   text: '上下文工程',
                   link: '/zh-cn/appendix/context-engineering'
                 },
-                { text: '人工智能进化史', link: '/zh-cn/appendix/ai-evolution' },
+                {
+                  text: '人工智能进化史',
+                  link: '/zh-cn/appendix/ai-evolution'
+                },
                 { text: '大语言模型', link: '/zh-cn/appendix/llm-intro' },
                 { text: '多模态大模型', link: '/zh-cn/appendix/vlm-intro' },
                 {
@@ -570,14 +573,29 @@ export default defineConfig({
                   link: '/zh-cn/appendix/frontend-evolution'
                 },
                 {
+                  text: '前端性能优化',
+                  link: '/zh-cn/appendix/frontend-performance'
+                },
+                {
+                  text: 'Canvas 2D 入门',
+                  link: '/zh-cn/appendix/canvas-intro'
+                },
+                {
                   text: '后端进化史',
                   link: '/zh-cn/appendix/backend-evolution'
+                },
+                {
+                  text: '后端编程语言',
+                  link: '/zh-cn/appendix/backend-languages'
                 },
                 {
                   text: 'URL 到浏览器显示',
                   link: '/zh-cn/appendix/url-to-browser'
                 },
-                { text: '浏览器调试器', link: '/zh-cn/appendix/browser-devtools' }
+                {
+                  text: '浏览器调试器',
+                  link: '/zh-cn/appendix/browser-devtools'
+                }
               ]
             },
             {
@@ -593,6 +611,17 @@ export default defineConfig({
                   link: '/zh-cn/appendix/computer-networks'
                 },
                 { text: '部署与上线', link: '/zh-cn/appendix/deployment' }
+              ]
+            },
+            {
+              text: '后端进阶',
+              collapsed: false,
+              items: [
+                { text: '系统缓存设计', link: '/zh-cn/appendix/cache-design' },
+                { text: '消息队列设计', link: '/zh-cn/appendix/queue-design' },
+                { text: '鉴权原理与实战', link: '/zh-cn/appendix/auth-design' },
+                { text: '埋点设计', link: '/zh-cn/appendix/tracking-design' },
+                { text: '线上运维', link: '/zh-cn/appendix/operations' }
               ]
             }
           ]

@@ -5,8 +5,9 @@
         <strong>为什么需要 DNS？(查导航)</strong>
       </p>
       <p class="why-desc-zh">
-        你知道店铺名字叫 "Shop.com"，但快递员需要知道具体的经纬度坐标 (IP 地址) 才能送达。
-        <br>
+        你知道店铺名字叫 "Shop.com"，但快递员需要知道具体的经纬度坐标 (IP 地址)
+        才能送达。
+        <br />
         DNS 就像是<strong>地图导航</strong>，输入店名，它告诉你具体的坐标。
       </p>
     </div>
@@ -86,7 +87,8 @@ defineProps({
   gap: 1rem;
 }
 
-.input-area, .output-area {
+.input-area,
+.output-area {
   text-align: center;
   width: 100%;
 }
@@ -98,7 +100,8 @@ defineProps({
   margin-bottom: 0.5rem;
 }
 
-.fake-input, .fake-output {
+.fake-input,
+.fake-output {
   background: var(--vp-c-bg-alt);
   padding: 0.8rem;
   border-radius: 8px;
@@ -161,7 +164,12 @@ defineProps({
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="css-playground">
     <div class="demo-box">
-      <div 
+      <div
         class="target-element"
         :style="{
           backgroundColor: bgColor,
@@ -52,7 +52,7 @@
         <input type="range" v-model="borderWidth" min="0" max="10" />
         <span class="value">{{ borderWidth }}px</span>
       </div>
-      
+
       <div class="control-group">
         <label>边框颜色 (border-color)</label>
         <input type="color" v-model="borderColor" />
@@ -151,12 +151,12 @@ const borderColor = ref('#000000')
   text-align: right;
 }
 
-input[type="range"] {
+input[type='range'] {
   flex: 1;
   cursor: pointer;
 }
 
-input[type="color"] {
+input[type='color'] {
   width: 30px;
   height: 30px;
   padding: 0;

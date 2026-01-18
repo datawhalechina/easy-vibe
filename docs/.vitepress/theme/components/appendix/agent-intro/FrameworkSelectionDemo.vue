@@ -14,21 +14,42 @@
     <div class="q">
       <div class="q-title">1) 你更在乎什么？</div>
       <div class="opts">
-        <button v-for="o in q1" :key="o.id" :class="['opt', { active: a1 === o.id }]" @click="a1 = o.id">{{ o.label }}</button>
+        <button
+          v-for="o in q1"
+          :key="o.id"
+          :class="['opt', { active: a1 === o.id }]"
+          @click="a1 = o.id"
+        >
+          {{ o.label }}
+        </button>
       </div>
     </div>
 
     <div class="q">
       <div class="q-title">2) 你的任务像哪种？</div>
       <div class="opts">
-        <button v-for="o in q2" :key="o.id" :class="['opt', { active: a2 === o.id }]" @click="a2 = o.id">{{ o.label }}</button>
+        <button
+          v-for="o in q2"
+          :key="o.id"
+          :class="['opt', { active: a2 === o.id }]"
+          @click="a2 = o.id"
+        >
+          {{ o.label }}
+        </button>
       </div>
     </div>
 
     <div class="q">
       <div class="q-title">3) 需要多 Agent 分工吗？</div>
       <div class="opts">
-        <button v-for="o in q3" :key="o.id" :class="['opt', { active: a3 === o.id }]" @click="a3 = o.id">{{ o.label }}</button>
+        <button
+          v-for="o in q3"
+          :key="o.id"
+          :class="['opt', { active: a3 === o.id }]"
+          @click="a3 = o.id"
+        >
+          {{ o.label }}
+        </button>
       </div>
     </div>
 
@@ -104,20 +125,76 @@ const rec = computed(() => {
 </script>
 
 <style scoped>
-.sel { border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); padding: 16px; margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
-.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
+.sel {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  padding: 16px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 
-.q { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.q-title { font-weight: 800; margin-bottom: 8px; }
-.opts { display: flex; gap: 8px; flex-wrap: wrap; }
-.opt { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
-.opt.active { border-color: var(--vp-c-brand); color: var(--vp-c-brand); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.q {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.q-title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.opts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.opt {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.opt.active {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 
-.result { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.r-title { font-weight: 900; margin-bottom: 6px; }
-.r-body { color: var(--vp-c-text-2); line-height: 1.6; margin-bottom: 6px; }
-.r-note, .r-next { color: var(--vp-c-text-2); line-height: 1.6; }
+.result {
+  background: var(--vp-c-bg);
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.r-title {
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.r-body {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+.r-note,
+.r-next {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 </style>
-

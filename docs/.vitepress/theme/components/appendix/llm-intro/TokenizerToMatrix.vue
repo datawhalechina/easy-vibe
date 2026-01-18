@@ -46,8 +46,16 @@
         <h3 class="stage-title">Step 1: Tokenization (分词)</h3>
         <p class="stage-desc">
           计算机首先将文本切分为最小的语义单位（Token）。
-          <span style="font-size: 0.85em; color: var(--vp-c-text-2); display: block; margin-top: 4px;">
-            (注：此处演示简化为按字切分，真实模型通常使用 BPE 算法，如“人工智能”可能合并为一个 Token)
+          <span
+            style="
+              font-size: 0.85em;
+              color: var(--vp-c-text-2);
+              display: block;
+              margin-top: 4px;
+            "
+          >
+            (注：此处演示简化为按字切分，真实模型通常使用 BPE
+            算法，如“人工智能”可能合并为一个 Token)
           </span>
         </p>
         <div class="token-container">
@@ -181,7 +189,7 @@ const getHeatmapColor = (val) => {
   // val is -1 to 1
   // Map to blue (negative) -> white (0) -> red (positive)
   // Reduce max opacity to avoid confusion with "selection" or "special token"
-  const opacity = Math.abs(val) * 0.6 + 0.1 
+  const opacity = Math.abs(val) * 0.6 + 0.1
   if (val > 0) return `rgba(239, 68, 68, ${opacity})` // Red
   return `rgba(59, 130, 246, ${opacity})` // Blue
 }

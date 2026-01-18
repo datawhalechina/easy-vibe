@@ -19,7 +19,10 @@
           <option value="casual">随意口语</option>
           <option value="formal">正式书面</option>
         </select>
-        <button :class="['toggle', { active: withExamples }]" @click="withExamples = !withExamples">
+        <button
+          :class="['toggle', { active: withExamples }]"
+          @click="withExamples = !withExamples"
+        >
           {{ withExamples ? '已提供示例' : '不提供示例' }}
         </button>
       </div>
@@ -107,25 +110,109 @@ const hint = computed(() => {
   gap: 12px;
 }
 
-.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
-.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-select { border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 8px 10px; background: var(--vp-c-bg); color: var(--vp-c-text-1); }
-.toggle { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); padding: 8px 12px; border-radius: 999px; cursor: pointer; }
-.toggle.active { border-color: var(--vp-c-brand); color: var(--vp-c-brand); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+select {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+}
+.toggle {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.toggle.active {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-.panel-title { font-weight: 700; }
-pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
-.output { white-space: pre-wrap; line-height: 1.6; }
-.hint { color: var(--vp-c-text-2); font-size: 13px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+.panel {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.panel-title {
+  font-weight: 700;
+}
+pre {
+  margin: 0;
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+.output {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.hint {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 
-.examples { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 12px; }
-.examples-title { font-weight: 700; margin-bottom: 8px; }
-.examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
-.ex { border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 10px; background: var(--vp-c-bg-soft); }
-.in { color: var(--vp-c-text-2); font-size: 13px; }
-.out { font-weight: 700; margin-top: 4px; }
+.examples {
+  background: var(--vp-c-bg);
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+}
+.examples-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.ex {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--vp-c-bg-soft);
+}
+.in {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.out {
+  font-weight: 700;
+  margin-top: 4px;
+}
 </style>

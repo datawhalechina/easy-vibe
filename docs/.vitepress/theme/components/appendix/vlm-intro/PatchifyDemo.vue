@@ -6,16 +6,16 @@
   <div class="patchify-demo">
     <div class="control-panel">
       <div class="controls">
-        <button 
-          class="action-btn" 
-          @click="prevStep" 
+        <button
+          class="action-btn"
+          @click="prevStep"
           :disabled="currentStep === 0"
         >
           ⬅ 上一步 (Prev)
         </button>
         <span class="step-indicator">Step {{ currentStep + 1 }} / 4</span>
-        <button 
-          class="action-btn primary" 
+        <button
+          class="action-btn primary"
           @click="nextStep"
           :disabled="currentStep === 3"
         >
@@ -34,22 +34,19 @@
         Step 1: Show container background, grid overlay visible (cells with border)
         Step 2+: Container background hidden, cells visible with individual backgrounds
       -->
-      <div 
-        class="image-container" 
-        :class="{ 
+      <div
+        class="image-container"
+        :class="{
           'is-pixelated': currentStep >= 1,
-          'is-patchified': currentStep >= 2 
+          'is-patchified': currentStep >= 2
         }"
       >
         <div class="grid-overlay" v-if="currentStep === 1"></div>
-        <div
-          v-for="n in 196"
-          :key="n"
-          class="patch"
-          :style="getPatchStyle(n)"
-        >
+        <div v-for="n in 196" :key="n" class="patch" :style="getPatchStyle(n)">
           <!-- Show number only in Pixelated stage to represent 'digitization' -->
-          <span class="pixel-val" v-if="currentStep === 1">{{ Math.floor(Math.random() * 9) }}</span>
+          <span class="pixel-val" v-if="currentStep === 1">{{
+            Math.floor(Math.random() * 9)
+          }}</span>
           <!-- Show ID in Patchified stage -->
           <span class="patch-id" v-if="currentStep >= 2">{{ n }}</span>
         </div>
@@ -59,7 +56,9 @@
 
       <!-- 线性序列视图 -->
       <div class="sequence-container" v-if="currentStep >= 3">
-        <div class="sequence-label">Token Sequence: 196×D (每个 Token 是 D 维向量)</div>
+        <div class="sequence-label">
+          Token Sequence: 196×D (每个 Token 是 D 维向量)
+        </div>
         <div class="token-stream">
           <div
             v-for="n in 196"
@@ -79,10 +78,10 @@ import { ref, computed } from 'vue'
 const currentStep = ref(0)
 
 const stepDescriptions = [
-  "1. 原始图片 (Original Image): 计算机看到的原始输入。",
-  "2. 数字化 (Digitization): 图片本质上是一个数字矩阵 (H x W x C)。",
-  "3. 切块 (Patchify): 典型设置：224×224 按 16×16 切成 14×14=196 个 Patch（此处等比示意）。",
-  "4. 序列化 (Serialize): 将二维分布的 Patch “拍扁”成一维序列 (Spatial Flatten)。现在它看起来就像一串“视觉单词”，可以被 Transformer 逐个读取。"
+  '1. 原始图片 (Original Image): 计算机看到的原始输入。',
+  '2. 数字化 (Digitization): 图片本质上是一个数字矩阵 (H x W x C)。',
+  '3. 切块 (Patchify): 典型设置：224×224 按 16×16 切成 14×14=196 个 Patch（此处等比示意）。',
+  '4. 序列化 (Serialize): 将二维分布的 Patch “拍扁”成一维序列 (Spatial Flatten)。现在它看起来就像一串“视觉单词”，可以被 Transformer 逐个读取。'
 ]
 
 const nextStep = () => {
@@ -95,22 +94,24 @@ const prevStep = () => {
 
 // 模拟一张风景图的 CSS 渐变
 // Sky (Blue) -> Mountains (Green/Grey) -> Sun (Yellow)
-const bgImage = 'linear-gradient(to bottom, #87CEEB 0%, #87CEEB 50%, #228B22 50%, #228B22 100%)'
+const bgImage =
+  'linear-gradient(to bottom, #87CEEB 0%, #87CEEB 50%, #228B22 50%, #228B22 100%)'
 // Add a sun using radial gradient
-const complexBg = 'radial-gradient(circle at 70% 20%, #FFD700 0%, #FFD700 10%, transparent 10.5%), linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #4CA1AF 60%, #2C3E50 100%)'
+const complexBg =
+  'radial-gradient(circle at 70% 20%, #FFD700 0%, #FFD700 10%, transparent 10.5%), linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #4CA1AF 60%, #2C3E50 100%)'
 
 const getPatchStyle = (n) => {
   const row = Math.floor((n - 1) / 14)
   const col = (n - 1) % 14
-  
+
   // Calculate background position for each patch to match the original image
   // The container is 280px, each patch is 20px.
   // 14 cols.
   const posX = col * -20
   const posY = row * -20
-  
+
   const isPatchified = currentStep.value >= 2
-  
+
   return {
     backgroundImage: complexBg,
     backgroundPosition: `${posX}px ${posY}px`,
@@ -120,9 +121,9 @@ const getPatchStyle = (n) => {
     // In Step 2, patches take over with their own background
     opacity: currentStep.value === 0 ? 0 : 1,
     // In Step 1, background must be transparent to see container bg
-    backgroundImage: isPatchified ? complexBg : 'none', 
+    backgroundImage: isPatchified ? complexBg : 'none',
     transform: isPatchified ? 'scale(0.9)' : 'scale(1)',
-    transition: 'all 0.5s ease',
+    transition: 'all 0.5s ease'
   }
 }
 
@@ -131,11 +132,11 @@ const getMiniPatchStyle = (n) => {
   const col = (n - 1) % 14
   const posX = col * -20
   const posY = row * -20
-  
+
   return {
     backgroundImage: complexBg,
     backgroundPosition: `${posX}px ${posY}px`,
-    backgroundSize: '280px 280px',
+    backgroundSize: '280px 280px'
   }
 }
 </script>
@@ -225,10 +226,23 @@ const getMiniPatchStyle = (n) => {
   width: 280px;
   height: 280px;
   /* Step 0 & 1 Background */
-  background-image: radial-gradient(circle at 70% 20%, #FFD700 0%, #FFD700 10%, transparent 10.5%), linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #4CA1AF 60%, #2C3E50 100%);
+  background-image:
+    radial-gradient(
+      circle at 70% 20%,
+      #ffd700 0%,
+      #ffd700 10%,
+      transparent 10.5%
+    ),
+    linear-gradient(
+      to bottom,
+      #87ceeb 0%,
+      #87ceeb 60%,
+      #4ca1af 60%,
+      #2c3e50 100%
+    );
   position: relative;
   transition: all 0.5s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Step 2+: Remove container background, let patches show */
@@ -329,12 +343,23 @@ const getMiniPatchStyle = (n) => {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

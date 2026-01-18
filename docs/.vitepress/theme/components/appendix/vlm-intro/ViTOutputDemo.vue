@@ -3,7 +3,9 @@
     <div class="pipeline">
       <!-- 1. Transformer Output Grid -->
       <div class="stage">
-        <div class="stage-label">1. Patch Tokens (Shown as Grid) (Patch Token 网格示意)</div>
+        <div class="stage-label">
+          1. Patch Tokens (Shown as Grid) (Patch Token 网格示意)
+        </div>
         <div class="grid-container">
           <div
             v-for="(item, index) in items"
@@ -19,14 +21,14 @@
 
       <div class="arrow-section">
         <div class="arrow-line"></div>
-        <div class="arrow-text">Reshape for View: Grid ⇄ Sequence (重排显示：网格⇄序列)</div>
+        <div class="arrow-text">
+          Reshape for View: Grid ⇄ Sequence (重排显示：网格⇄序列)
+        </div>
       </div>
 
       <!-- 2. Feature Vector Sequence -->
       <div class="stage">
-        <div class="stage-label">
-          2. Output Token Sequence (N×D) (输出序列)
-        </div>
+        <div class="stage-label">2. Output Token Sequence (N×D) (输出序列)</div>
         <div class="vector-sequence">
           <div
             v-for="(item, index) in items"

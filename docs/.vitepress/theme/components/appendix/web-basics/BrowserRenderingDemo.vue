@@ -1,11 +1,14 @@
 <template>
   <div class="browser-rendering-demo">
     <div class="stepper">
-      <button 
-        v-for="(step, index) in steps" 
+      <button
+        v-for="(step, index) in steps"
         :key="index"
         class="step-btn"
-        :class="{ active: currentStep === index, completed: currentStep > index }"
+        :class="{
+          active: currentStep === index,
+          completed: currentStep > index
+        }"
         @click="currentStep = index"
       >
         <span class="step-num">{{ index + 1 }}</span>
@@ -25,26 +28,166 @@
           <div class="window-title">积木说明书 (HTML/CSS)</div>
           <div class="code-content">
             <!-- HTML Highlighted always after Step 0 -->
-            <div class="line" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'html' }" @mouseenter="hoveredPart = 'html'" @mouseleave="hoveredPart = null">&lt;!DOCTYPE html&gt;</div>
-            <div class="line" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'html' }" @mouseenter="hoveredPart = 'html'" @mouseleave="hoveredPart = null">&lt;html&gt;</div>
-            <div class="line indent" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'body' }" @mouseenter="hoveredPart = 'body'" @mouseleave="hoveredPart = null">&lt;body&gt;</div>
-            <div class="line indent-2" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'card' }" @mouseenter="hoveredPart = 'card'" @mouseleave="hoveredPart = null">&lt;div class="card"&gt;</div>
-            <div class="line indent-3" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'img' }" @mouseenter="hoveredPart = 'img'" @mouseleave="hoveredPart = null">&lt;img class="icon" src="castle.png" /&gt;</div>
-            <div class="line indent-3" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'title' }" @mouseenter="hoveredPart = 'title'" @mouseleave="hoveredPart = null">&lt;h2 class="title"&gt;乐高城堡&lt;/h2&gt;</div>
-            <div class="line indent-3" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'btn' }" @mouseenter="hoveredPart = 'btn'" @mouseleave="hoveredPart = null">&lt;button class="btn"&gt;购买&lt;/button&gt;</div>
-            <div class="line indent-2" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'card' }" @mouseenter="hoveredPart = 'card'" @mouseleave="hoveredPart = null">&lt;/div&gt;</div>
-            <div class="line indent" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'body' }" @mouseenter="hoveredPart = 'body'" @mouseleave="hoveredPart = null">&lt;/body&gt;</div>
-            <div class="line" :class="{ active: currentStep >= 0, hovered: hoveredPart === 'html' }" @mouseenter="hoveredPart = 'html'" @mouseleave="hoveredPart = null">&lt;/html&gt;</div>
-            
+            <div
+              class="line"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'html'
+              }"
+              @mouseenter="hoveredPart = 'html'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;!DOCTYPE html&gt;
+            </div>
+            <div
+              class="line"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'html'
+              }"
+              @mouseenter="hoveredPart = 'html'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;html&gt;
+            </div>
+            <div
+              class="line indent"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'body'
+              }"
+              @mouseenter="hoveredPart = 'body'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;body&gt;
+            </div>
+            <div
+              class="line indent-2"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'card'
+              }"
+              @mouseenter="hoveredPart = 'card'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;div class="card"&gt;
+            </div>
+            <div
+              class="line indent-3"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'img'
+              }"
+              @mouseenter="hoveredPart = 'img'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;img class="icon" src="castle.png" /&gt;
+            </div>
+            <div
+              class="line indent-3"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'title'
+              }"
+              @mouseenter="hoveredPart = 'title'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;h2 class="title"&gt;乐高城堡&lt;/h2&gt;
+            </div>
+            <div
+              class="line indent-3"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'btn'
+              }"
+              @mouseenter="hoveredPart = 'btn'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;button class="btn"&gt;购买&lt;/button&gt;
+            </div>
+            <div
+              class="line indent-2"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'card'
+              }"
+              @mouseenter="hoveredPart = 'card'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;/div&gt;
+            </div>
+            <div
+              class="line indent"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'body'
+              }"
+              @mouseenter="hoveredPart = 'body'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;/body&gt;
+            </div>
+            <div
+              class="line"
+              :class="{
+                active: currentStep >= 0,
+                hovered: hoveredPart === 'html'
+              }"
+              @mouseenter="hoveredPart = 'html'"
+              @mouseleave="hoveredPart = null"
+            >
+              &lt;/html&gt;
+            </div>
+
             <div class="spacer"></div>
-            
+
             <!-- CSS Highlighted precisely based on step usage -->
             <!-- Layout properties -->
-            <div class="line" :class="{ active: currentStep === 2, hovered: hoveredPart === 'card' }" @mouseenter="hoveredPart = 'card'" @mouseleave="hoveredPart = null">.card { display: flex; padding: 10px; }</div>
-            <div class="line" :class="{ active: currentStep === 2, hovered: hoveredPart === 'img' }" @mouseenter="hoveredPart = 'img'" @mouseleave="hoveredPart = null">.icon { width: 50px; height: 50px; }</div>
+            <div
+              class="line"
+              :class="{
+                active: currentStep === 2,
+                hovered: hoveredPart === 'card'
+              }"
+              @mouseenter="hoveredPart = 'card'"
+              @mouseleave="hoveredPart = null"
+            >
+              .card { display: flex; padding: 10px; }
+            </div>
+            <div
+              class="line"
+              :class="{
+                active: currentStep === 2,
+                hovered: hoveredPart === 'img'
+              }"
+              @mouseenter="hoveredPart = 'img'"
+              @mouseleave="hoveredPart = null"
+            >
+              .icon { width: 50px; height: 50px; }
+            </div>
             <!-- Style properties -->
-            <div class="line" :class="{ active: currentStep === 1 || currentStep === 3, hovered: hoveredPart === 'title' }" @mouseenter="hoveredPart = 'title'" @mouseleave="hoveredPart = null">.title { color: red; }</div>
-            <div class="line" :class="{ active: currentStep === 1 || currentStep === 3, hovered: hoveredPart === 'btn' }" @mouseenter="hoveredPart = 'btn'" @mouseleave="hoveredPart = null">.btn { background: blue; }</div>
+            <div
+              class="line"
+              :class="{
+                active: currentStep === 1 || currentStep === 3,
+                hovered: hoveredPart === 'title'
+              }"
+              @mouseenter="hoveredPart = 'title'"
+              @mouseleave="hoveredPart = null"
+            >
+              .title { color: red; }
+            </div>
+            <div
+              class="line"
+              :class="{
+                active: currentStep === 1 || currentStep === 3,
+                hovered: hoveredPart === 'btn'
+              }"
+              @mouseenter="hoveredPart = 'btn'"
+              @mouseleave="hoveredPart = null"
+            >
+              .btn { background: blue; }
+            </div>
           </div>
         </div>
 
@@ -53,38 +196,89 @@
         <!-- Render Result -->
         <div class="result-view">
           <div class="window-title">{{ steps[currentStep].resultTitle }}</div>
-          
+
           <div class="render-canvas">
             <!-- Step 1: DOM (Skeleton) -->
             <transition-group name="block">
-              <div v-if="currentStep >= 0" key="html" class="block-box root" :class="{ hovered: hoveredPart === 'html' }" @mouseenter.stop="hoveredPart = 'html'" @mouseleave="hoveredPart = null">
+              <div
+                v-if="currentStep >= 0"
+                key="html"
+                class="block-box root"
+                :class="{ hovered: hoveredPart === 'html' }"
+                @mouseenter.stop="hoveredPart = 'html'"
+                @mouseleave="hoveredPart = null"
+              >
                 <span class="block-label">html</span>
-                <div class="block-box body" :class="{ hovered: hoveredPart === 'body' }" @mouseenter.stop="hoveredPart = 'body'" @mouseleave="hoveredPart = null">
+                <div
+                  class="block-box body"
+                  :class="{ hovered: hoveredPart === 'body' }"
+                  @mouseenter.stop="hoveredPart = 'body'"
+                  @mouseleave="hoveredPart = null"
+                >
                   <span class="block-label">body</span>
-                  
+
                   <!-- Product Card -->
-                  <div class="block-box card" :class="{ layout: currentStep >= 2, hovered: hoveredPart === 'card' }" @mouseenter.stop="hoveredPart = 'card'" @mouseleave="hoveredPart = null">
+                  <div
+                    class="block-box card"
+                    :class="{
+                      layout: currentStep >= 2,
+                      hovered: hoveredPart === 'card'
+                    }"
+                    @mouseenter.stop="hoveredPart = 'card'"
+                    @mouseleave="hoveredPart = null"
+                  >
                     <span class="block-label">div.card</span>
-                    
+
                     <!-- Image -->
-                    <div class="block-box img" :class="{ layout: currentStep >= 2, hovered: hoveredPart === 'img' }" @mouseenter.stop="hoveredPart = 'img'" @mouseleave="hoveredPart = null">
+                    <div
+                      class="block-box img"
+                      :class="{
+                        layout: currentStep >= 2,
+                        hovered: hoveredPart === 'img'
+                      }"
+                      @mouseenter.stop="hoveredPart = 'img'"
+                      @mouseleave="hoveredPart = null"
+                    >
                       <span class="block-label">img.icon</span>
-                      <span v-if="currentStep >= 3" class="content-img">🏰</span>
+                      <span v-if="currentStep >= 3" class="content-img"
+                        >🏰</span
+                      >
                     </div>
-                    
+
                     <!-- Title -->
-                    <div class="block-box title" :class="{ styled: currentStep >= 1, layout: currentStep >= 2, hovered: hoveredPart === 'title' }" @mouseenter.stop="hoveredPart = 'title'" @mouseleave="hoveredPart = null">
+                    <div
+                      class="block-box title"
+                      :class="{
+                        styled: currentStep >= 1,
+                        layout: currentStep >= 2,
+                        hovered: hoveredPart === 'title'
+                      }"
+                      @mouseenter.stop="hoveredPart = 'title'"
+                      @mouseleave="hoveredPart = null"
+                    >
                       <span class="block-label">h2.title</span>
-                      <span v-if="currentStep >= 3" class="content">乐高城堡</span>
+                      <span v-if="currentStep >= 3" class="content"
+                        >乐高城堡</span
+                      >
                     </div>
-                    
+
                     <!-- Button -->
-                    <div class="block-box btn" :class="{ styled: currentStep >= 1, layout: currentStep >= 2, hovered: hoveredPart === 'btn' }" @mouseenter.stop="hoveredPart = 'btn'" @mouseleave="hoveredPart = null">
+                    <div
+                      class="block-box btn"
+                      :class="{
+                        styled: currentStep >= 1,
+                        layout: currentStep >= 2,
+                        hovered: hoveredPart === 'btn'
+                      }"
+                      @mouseenter.stop="hoveredPart = 'btn'"
+                      @mouseleave="hoveredPart = null"
+                    >
                       <span class="block-label">button.btn</span>
-                      <span v-if="currentStep >= 3" class="content-btn">购买</span>
+                      <span v-if="currentStep >= 3" class="content-btn"
+                        >购买</span
+                      >
                     </div>
                   </div>
-
                 </div>
               </div>
             </transition-group>
@@ -98,7 +292,7 @@
               <div class="ruler">📏 正在排版 (Layout)...</div>
             </div>
 
-             <div v-if="currentStep === 3" class="overlay-info paint-info">
+            <div v-if="currentStep === 3" class="overlay-info paint-info">
               <div class="paint">✨ 绘制完成 (Paint)!</div>
             </div>
           </div>
@@ -238,7 +432,8 @@ const hoveredPart = ref(null)
   min-height: 400px;
 }
 
-.source-view, .result-view {
+.source-view,
+.result-view {
   flex: 1;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
@@ -279,10 +474,18 @@ const hoveredPart = ref(null)
   color: #2563eb;
 }
 
-.line.indent { padding-left: 1rem; }
-.line.indent-2 { padding-left: 2rem; }
-.line.indent-3 { padding-left: 3rem; }
-.line.mt-2 { margin-top: 1rem; }
+.line.indent {
+  padding-left: 1rem;
+}
+.line.indent-2 {
+  padding-left: 2rem;
+}
+.line.indent-3 {
+  padding-left: 3rem;
+}
+.line.mt-2 {
+  margin-top: 1rem;
+}
 
 .transform-arrow {
   display: flex;
@@ -321,9 +524,21 @@ const hoveredPart = ref(null)
   flex-direction: column;
 }
 
-.block-box.root { width: 95%; border-color: #e5e7eb; background: #fff; }
-.block-box.body { width: 90%; border-color: #d1d5db; background: #f9fafb; }
-.block-box.card { width: 80%; border-color: #9ca3af; background: #e5e7eb; }
+.block-box.root {
+  width: 95%;
+  border-color: #e5e7eb;
+  background: #fff;
+}
+.block-box.body {
+  width: 90%;
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+.block-box.card {
+  width: 80%;
+  border-color: #9ca3af;
+  background: #e5e7eb;
+}
 
 .block-label {
   font-size: 0.6rem;
@@ -357,7 +572,7 @@ const hoveredPart = ref(null)
   padding: 15px;
   background: white;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .block-box.img.layout {
@@ -381,15 +596,21 @@ const hoveredPart = ref(null)
 }
 
 /* Content visibility for Paint step */
-.content, .content-img, .content-btn {
+.content,
+.content-img,
+.content-btn {
   font-size: 1rem;
   font-weight: bold;
   animation: fadeIn 0.5s;
   align-self: center;
 }
 
-.content-img { font-size: 2rem; }
-.content-btn { font-size: 0.8rem; }
+.content-img {
+  font-size: 2rem;
+}
+.content-btn {
+  font-size: 0.8rem;
+}
 
 /* Overlay Info */
 .overlay-info {
@@ -402,14 +623,16 @@ const hoveredPart = ref(null)
   pointer-events: none;
 }
 
-.brush, .ruler, .paint {
+.brush,
+.ruler,
+.paint {
   display: inline-block;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Vue Transitions */
@@ -424,14 +647,26 @@ const hoveredPart = ref(null)
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Hover Interactions */

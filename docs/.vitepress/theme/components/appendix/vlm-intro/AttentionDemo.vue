@@ -11,8 +11,19 @@
         <!-- SVG Layer for Connection Lines -->
         <svg class="connections-layer">
           <defs>
-            <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="18" refY="2" orient="auto">
-              <polygon points="0 0, 6 2, 0 4" fill="var(--vp-c-brand)" opacity="0.6"/>
+            <marker
+              id="arrowhead"
+              markerWidth="6"
+              markerHeight="4"
+              refX="18"
+              refY="2"
+              orient="auto"
+            >
+              <polygon
+                points="0 0, 6 2, 0 4"
+                fill="var(--vp-c-brand)"
+                opacity="0.6"
+              />
             </marker>
           </defs>
           <!-- Draw lines from hoverIndex to ALL other nodes -->
@@ -38,10 +49,11 @@
           v-for="(item, index) in items"
           :key="index"
           class="grid-cell"
-          :class="{ 
+          :class="{
             'is-source': hoverIndex === index,
             'is-target': hoverIndex !== -1 && hoverIndex !== index,
-            'is-strong-attn': hoverIndex !== -1 && getAttentionScore(hoverIndex, index) > 0.5
+            'is-strong-attn':
+              hoverIndex !== -1 && getAttentionScore(hoverIndex, index) > 0.5
           }"
           @mouseenter="hoverIndex = index"
           :style="{
@@ -54,10 +66,12 @@
             <span class="cell-label">{{ item.label }}</span>
           </div>
           <!-- Attention Score Badge -->
-          <div 
-            class="attn-badge" 
+          <div
+            class="attn-badge"
             v-if="hoverIndex !== -1 && hoverIndex !== index"
-            :style="{ opacity: Math.max(0.3, getAttentionScore(hoverIndex, index)) }"
+            :style="{
+              opacity: Math.max(0.3, getAttentionScore(hoverIndex, index))
+            }"
           >
             {{ (getAttentionScore(hoverIndex, index) * 100).toFixed(0) }}%
           </div>
@@ -68,7 +82,7 @@
       <div class="info-panel">
         <div v-if="hoverIndex === -1" class="placeholder-text">
           <span class="cursor-icon">👆</span>
-          把鼠标悬停在任意方块上，<br>观察它在"关注"谁
+          把鼠标悬停在任意方块上，<br />观察它在"关注"谁
         </div>
         <div v-else class="active-info">
           <div class="source-info">
@@ -77,10 +91,10 @@
               {{ items[hoverIndex].icon }} {{ items[hoverIndex].label }}
             </div>
           </div>
-          
+
           <div class="attn-list">
             <div class="list-header">Attention Weights (注意力权重)</div>
-            <div 
+            <div
               class="attn-item"
               v-for="(score, idx) in getTopAttentions(hoverIndex)"
               :key="idx"
@@ -91,13 +105,16 @@
               </div>
               <div class="item-right">
                 <div class="progress-bar">
-                  <div class="progress-fill" :style="{ width: score * 100 + '%' }"></div>
+                  <div
+                    class="progress-fill"
+                    :style="{ width: score * 100 + '%' }"
+                  ></div>
                 </div>
                 <span class="score-text">{{ (score * 100).toFixed(0) }}%</span>
               </div>
             </div>
           </div>
-          
+
           <div class="insight-box">
             <span class="bulb">💡</span>
             <span class="insight-text">
@@ -125,7 +142,7 @@ const items = [
   { icon: '🌿', label: '草地' }, // 5
   { icon: '🧶', label: '毛球' }, // 6
   { icon: '🐾', label: '猫爪' }, // 7
-  { icon: '🌿', label: '草地' }  // 8
+  { icon: '🌿', label: '草地' } // 8
 ]
 
 // Layout Logic
@@ -144,19 +161,19 @@ const getCenter = (index) => {
 // Attention Logic
 const getAttentionScore = (source, target) => {
   if (source === target) return 0
-  
+
   // Cat Head (4) attends strongly to:
   if (source === 4) {
     if (target === 7) return 0.95 // Paws (Body parts connected)
-    if (target === 2) return 0.8  // Butterfly (Interest)
-    if (target === 6) return 0.6  // Yarn (Toy)
+    if (target === 2) return 0.8 // Butterfly (Interest)
+    if (target === 6) return 0.6 // Yarn (Toy)
     return 0.1 // Background
   }
 
   // Cat Paws (7) attends strongly to:
   if (source === 7) {
     if (target === 4) return 0.95 // Head
-    if (target === 6) return 0.9  // Yarn (Touching)
+    if (target === 6) return 0.9 // Yarn (Touching)
     return 0.1
   }
 
@@ -203,19 +220,20 @@ const getTopAttentions = (source) => {
   // Sort descending
   const sortedKeys = Object.keys(scores).sort((a, b) => scores[b] - scores[a])
   const top3 = {}
-  sortedKeys.slice(0, 3).forEach(key => {
+  sortedKeys.slice(0, 3).forEach((key) => {
     top3[key] = scores[key]
   })
   return top3
 }
 
 const getInsightText = (idx) => {
-  if (idx === 4) return "猫头最关注猫爪（组成身体）和蝴蝶（捕猎目标）。"
-  if (idx === 7) return "猫爪最关注毛球（正在玩耍）和猫头。"
-  if (idx === 2) return "蝴蝶关注到了猫，可能是因为它是个威胁。"
-  if ([0,1,3,5,8].includes(idx)) return "草地主要关注周围的草地，确认背景纹理。"
-  if (idx === 6) return "毛球和猫爪有很强的互动关系。"
-  return "Self-Attention 让每个部分找到它的上下文关联。"
+  if (idx === 4) return '猫头最关注猫爪（组成身体）和蝴蝶（捕猎目标）。'
+  if (idx === 7) return '猫爪最关注毛球（正在玩耍）和猫头。'
+  if (idx === 2) return '蝴蝶关注到了猫，可能是因为它是个威胁。'
+  if ([0, 1, 3, 5, 8].includes(idx))
+    return '草地主要关注周围的草地，确认背景纹理。'
+  if (idx === 6) return '毛球和猫爪有很强的互动关系。'
+  return 'Self-Attention 让每个部分找到它的上下文关联。'
 }
 </script>
 
@@ -287,7 +305,7 @@ const getInsightText = (idx) => {
   cursor: pointer;
   z-index: 2;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .cell-content {
@@ -308,12 +326,13 @@ const getInsightText = (idx) => {
 }
 
 /* Interaction States */
-.grid-cell:hover, .grid-cell.is-source {
+.grid-cell:hover,
+.grid-cell.is-source {
   z-index: 10;
   border-color: var(--vp-c-brand);
   background: var(--vp-c-bg);
   transform: scale(1.15);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .grid-cell.is-strong-attn {
@@ -331,7 +350,7 @@ const getInsightText = (idx) => {
   padding: 2px 6px;
   border-radius: 10px;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Info Panel */
@@ -407,8 +426,13 @@ const getInsightText = (idx) => {
   width: 80px;
 }
 
-.item-icon { font-size: 16px; }
-.item-name { font-size: 12px; font-weight: 500; }
+.item-icon {
+  font-size: 16px;
+}
+.item-name {
+  font-size: 12px;
+  font-weight: 500;
+}
 
 .item-right {
   flex: 1;
@@ -449,7 +473,9 @@ const getInsightText = (idx) => {
   align-items: flex-start;
 }
 
-.bulb { font-size: 16px; }
+.bulb {
+  font-size: 16px;
+}
 .insight-text {
   font-size: 12px;
   color: var(--vp-c-text-1);
@@ -457,8 +483,13 @@ const getInsightText = (idx) => {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @media (max-width: 768px) {

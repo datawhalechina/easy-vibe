@@ -9,8 +9,8 @@
         </div>
         <div class="code-preview">
           <code>
-            // 手动操作 DOM<br>
-            $('#count').text(val);<br>
+            // 手动操作 DOM<br />
+            $('#count').text(val);<br />
             if (val > 5) $('#msg').show();
           </code>
         </div>
@@ -21,8 +21,16 @@
           </div>
           <div class="actions">
             <button @click="impIncrement" class="btn">Step 1: Value++</button>
-            <button @click="impUpdateText" class="btn" :disabled="!impChanged">Step 2: Update Text</button>
-            <button @click="impCheckState" class="btn" :disabled="!impTextUpdated">Step 3: Check Logic</button>
+            <button @click="impUpdateText" class="btn" :disabled="!impChanged">
+              Step 2: Update Text
+            </button>
+            <button
+              @click="impCheckState"
+              class="btn"
+              :disabled="!impTextUpdated"
+            >
+              Step 3: Check Logic
+            </button>
           </div>
           <div class="status-log">{{ impStatus }}</div>
         </div>
@@ -36,8 +44,8 @@
         </div>
         <div class="code-preview">
           <code>
-            // 只需要绑定数据<br>
-            {{ '{' + '{ count }' + '}' }}<br>
+            // 只需要绑定数据<br />
+            {{ '{' + '{ count }' + '}' }}<br />
             &lt;div v-if="count > 5"&gt;...&lt;/div&gt;
           </code>
         </div>
@@ -47,9 +55,13 @@
             <div v-if="decCount > 5" class="warning-msg">⚠️ Count is high!</div>
           </div>
           <div class="actions">
-            <button @click="decIncrement" class="btn primary">Value++ (Auto Render)</button>
+            <button @click="decIncrement" class="btn primary">
+              Value++ (Auto Render)
+            </button>
           </div>
-          <div class="status-log">Framework handles DOM updates automatically.</div>
+          <div class="status-log">
+            Framework handles DOM updates automatically.
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +80,8 @@ const impStatus = ref('Ready.')
 
 const impIncrement = () => {
   // Logic layer changes, but DOM doesn't
-  impStatus.value = 'Variable `count` is now ' + (impCount.value + 1) + '. DOM is NOT updated.'
+  impStatus.value =
+    'Variable `count` is now ' + (impCount.value + 1) + '. DOM is NOT updated.'
   impCount.value++
   impChanged.value = true
   impTextUpdated.value = false
@@ -115,7 +128,9 @@ const decIncrement = () => {
 }
 
 @media (max-width: 640px) {
-  .demo-grid { grid-template-columns: 1fr; }
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .panel {
@@ -143,8 +158,12 @@ const decIncrement = () => {
   border-radius: 4px;
   color: white;
 }
-.badge.yellow { background: #f59e0b; }
-.badge.green { background: #10b981; }
+.badge.yellow {
+  background: #f59e0b;
+}
+.badge.green {
+  background: #10b981;
+}
 
 .sub-text {
   font-size: 0.8rem;
@@ -203,10 +222,21 @@ const decIncrement = () => {
   font-size: 0.8rem;
   transition: all 0.2s;
 }
-.btn:hover:not(:disabled) { background: #f3f4f6; }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn.primary { background: #3b82f6; color: white; border: none; }
-.btn.primary:hover { background: #2563eb; }
+.btn:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn.primary {
+  background: #3b82f6;
+  color: white;
+  border: none;
+}
+.btn.primary:hover {
+  background: #2563eb;
+}
 
 .status-log {
   font-size: 0.75rem;
@@ -216,7 +246,13 @@ const decIncrement = () => {
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 </style>

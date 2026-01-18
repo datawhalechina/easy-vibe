@@ -12,9 +12,9 @@
         </div>
         <div class="desk-surface">
           <transition-group name="file-pop">
-            <div 
-              v-for="file in workingFiles" 
-              :key="file.id" 
+            <div
+              v-for="file in workingFiles"
+              :key="file.id"
               class="file-card"
               @click="addToStaging(file)"
             >
@@ -25,7 +25,9 @@
           </transition-group>
           <div v-if="workingFiles.length === 0" class="empty-state">
             桌上很干净 ✨
-            <button class="create-btn" @click="createNewFile">新建文件 📝</button>
+            <button class="create-btn" @click="createNewFile">
+              新建文件 📝
+            </button>
           </div>
         </div>
       </div>
@@ -49,9 +51,9 @@
         <div class="box-container">
           <div class="box-body">
             <transition-group name="file-drop">
-              <div 
-                v-for="file in stagedFiles" 
-                :key="file.id" 
+              <div
+                v-for="file in stagedFiles"
+                :key="file.id"
                 class="file-card mini"
                 @click="unstageFile(file)"
               >
@@ -68,8 +70,8 @@
           <div class="box-flap right"></div>
         </div>
         <div class="staging-actions">
-          <button 
-            class="commit-btn" 
+          <button
+            class="commit-btn"
             :disabled="stagedFiles.length === 0"
             @click="commitFiles"
           >
@@ -96,9 +98,9 @@
         </div>
         <div class="cabinet-body">
           <transition-group name="drawer-slide">
-            <div 
-              v-for="commit in commits.slice().reverse()" 
-              :key="commit.hash" 
+            <div
+              v-for="commit in commits.slice().reverse()"
+              :key="commit.hash"
               class="drawer-item"
             >
               <div class="drawer-handle"></div>
@@ -107,7 +109,9 @@
                 <span class="commit-msg">{{ commit.message }}</span>
               </div>
               <div class="commit-files">
-                <span v-for="f in commit.files" :key="f" class="tiny-file">📄</span>
+                <span v-for="f in commit.files" :key="f" class="tiny-file"
+                  >📄</span
+                >
               </div>
             </div>
           </transition-group>
@@ -151,7 +155,7 @@ const createNewFile = () => {
 }
 
 const addToStaging = (file) => {
-  const index = workingFiles.value.findIndex(f => f.id === file.id)
+  const index = workingFiles.value.findIndex((f) => f.id === file.id)
   if (index !== -1) {
     workingFiles.value.splice(index, 1)
     stagedFiles.value.push(file)
@@ -159,7 +163,7 @@ const addToStaging = (file) => {
 }
 
 const unstageFile = (file) => {
-  const index = stagedFiles.value.findIndex(f => f.id === file.id)
+  const index = stagedFiles.value.findIndex((f) => f.id === file.id)
   if (index !== -1) {
     stagedFiles.value.splice(index, 1)
     workingFiles.value.push(file)
@@ -168,17 +172,23 @@ const unstageFile = (file) => {
 
 const commitFiles = () => {
   if (stagedFiles.value.length === 0) return
-  
+
   const files = [...stagedFiles.value]
   stagedFiles.value = []
-  
-  const msgs = ['Fix bug', 'Add feature', 'Update docs', 'Refactor code', 'Initial commit']
+
+  const msgs = [
+    'Fix bug',
+    'Add feature',
+    'Update docs',
+    'Refactor code',
+    'Initial commit'
+  ]
   const randomMsg = msgs[Math.floor(Math.random() * msgs.length)]
-  
+
   commits.value.push({
     hash: Math.random().toString(16).substr(2, 6),
     message: randomMsg,
-    files: files.map(f => f.name)
+    files: files.map((f) => f.name)
   })
 }
 </script>
@@ -223,10 +233,21 @@ const commitFiles = () => {
   border-bottom: 2px dashed var(--vp-c-divider);
 }
 
-.zone-icon { font-size: 1.5rem; }
-.zone-info { display: flex; flex-direction: column; }
-.zone-title { font-weight: bold; font-size: 0.9rem; }
-.zone-desc { font-size: 0.7rem; color: var(--vp-c-text-2); }
+.zone-icon {
+  font-size: 1.5rem;
+}
+.zone-info {
+  display: flex;
+  flex-direction: column;
+}
+.zone-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.zone-desc {
+  font-size: 0.7rem;
+  color: var(--vp-c-text-2);
+}
 
 .empty-state {
   text-align: center;
@@ -240,7 +261,10 @@ const commitFiles = () => {
 }
 
 /* 1. Working Desk */
-.zone.working { border-color: #f59e0b; background: #fffbeb; }
+.zone.working {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
 .desk-surface {
   flex: 1;
   display: flex;
@@ -265,22 +289,33 @@ const commitFiles = () => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: all 0.2s;
   position: relative;
 }
 
 .file-card:hover {
   transform: translateY(-4px) rotate(2deg);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
   border-color: #f59e0b;
 }
 
-.file-icon { font-size: 2rem; margin-bottom: 4px; }
-.file-name { font-size: 0.7rem; text-align: center; word-break: break-all; line-height: 1.2; }
+.file-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+.file-name {
+  font-size: 0.7rem;
+  text-align: center;
+  word-break: break-all;
+  line-height: 1.2;
+}
 .action-hint {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(245, 158, 11, 0.9);
   color: white;
   display: flex;
@@ -292,7 +327,9 @@ const commitFiles = () => {
   font-weight: bold;
   font-size: 0.8rem;
 }
-.file-card:hover .action-hint { opacity: 1; }
+.file-card:hover .action-hint {
+  opacity: 1;
+}
 
 .create-btn {
   background: #f59e0b;
@@ -306,7 +343,10 @@ const commitFiles = () => {
 }
 
 /* 2. Staging Box */
-.zone.staging { border-color: #3b82f6; background: #eff6ff; }
+.zone.staging {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
 .box-container {
   flex: 1;
   position: relative;
@@ -341,10 +381,19 @@ const commitFiles = () => {
   padding: 4px 8px;
   gap: 8px;
 }
-.file-card.mini .file-icon { font-size: 1rem; margin: 0; }
-.file-card.mini .file-name { font-size: 0.8rem; }
-.file-card.mini:hover { border-color: #ef4444; }
-.file-card.mini .action-hint { background: rgba(239, 68, 68, 0.9); }
+.file-card.mini .file-icon {
+  font-size: 1rem;
+  margin: 0;
+}
+.file-card.mini .file-name {
+  font-size: 0.8rem;
+}
+.file-card.mini:hover {
+  border-color: #ef4444;
+}
+.file-card.mini .action-hint {
+  background: rgba(239, 68, 68, 0.9);
+}
 
 .box-flap {
   position: absolute;
@@ -356,10 +405,23 @@ const commitFiles = () => {
   border-bottom: none;
   transition: all 0.5s;
 }
-.box-flap.left { left: 0; border-radius: 4px 0 0 0; transform-origin: bottom left; transform: rotate(10deg); }
-.box-flap.right { right: 0; border-radius: 0 4px 0 0; transform-origin: bottom right; transform: rotate(-10deg); }
+.box-flap.left {
+  left: 0;
+  border-radius: 4px 0 0 0;
+  transform-origin: bottom left;
+  transform: rotate(10deg);
+}
+.box-flap.right {
+  right: 0;
+  border-radius: 0 4px 0 0;
+  transform-origin: bottom right;
+  transform: rotate(-10deg);
+}
 
-.staging-actions { margin-top: 12px; text-align: center; }
+.staging-actions {
+  margin-top: 12px;
+  text-align: center;
+}
 .commit-btn {
   background: #3b82f6;
   color: white;
@@ -371,11 +433,21 @@ const commitFiles = () => {
   transition: all 0.2s;
   box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
 }
-.commit-btn:disabled { background: #93c5fd; cursor: not-allowed; box-shadow: none; }
-.commit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 8px rgba(59, 130, 246, 0.4); }
+.commit-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.commit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(59, 130, 246, 0.4);
+}
 
 /* 3. Repo Cabinet */
-.zone.repo { border-color: #10b981; background: #ecfdf5; }
+.zone.repo {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
 .cabinet-body {
   flex: 1;
   display: flex;
@@ -403,11 +475,27 @@ const commitFiles = () => {
   border: 1px solid #10b981;
   border-radius: 2px;
 }
-.commit-info { flex: 1; display: flex; flex-direction: column; }
-.commit-hash { font-size: 0.6rem; color: #10b981; font-family: monospace; }
-.commit-msg { font-size: 0.8rem; font-weight: bold; }
-.commit-files { display: flex; gap: 2px; }
-.tiny-file { font-size: 0.6rem; }
+.commit-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.commit-hash {
+  font-size: 0.6rem;
+  color: #10b981;
+  font-family: monospace;
+}
+.commit-msg {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.commit-files {
+  display: flex;
+  gap: 2px;
+}
+.tiny-file {
+  font-size: 0.6rem;
+}
 
 /* Arrows */
 .flow-arrow {
@@ -418,25 +506,70 @@ const commitFiles = () => {
   width: 40px;
   color: var(--vp-c-text-3);
 }
-.arrow-line { width: 100%; height: 2px; background: currentColor; }
-.arrow-label { font-size: 0.7rem; margin: 4px 0; font-weight: bold; white-space: nowrap; }
-.arrow-head { font-size: 0.8rem; }
+.arrow-line {
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+}
+.arrow-label {
+  font-size: 0.7rem;
+  margin: 4px 0;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.arrow-head {
+  font-size: 0.8rem;
+}
 
 /* Transitions */
-.file-pop-enter-active, .file-pop-leave-active { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.file-pop-enter-from { opacity: 0; transform: scale(0.5); }
-.file-pop-leave-to { opacity: 0; transform: scale(0); }
+.file-pop-enter-active,
+.file-pop-leave-active {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.file-pop-enter-from {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.file-pop-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
 
-.file-drop-enter-active, .file-drop-leave-active { transition: all 0.3s ease; }
-.file-drop-enter-from { opacity: 0; transform: translateY(-20px); }
-.file-drop-leave-to { opacity: 0; transform: translateX(20px); }
+.file-drop-enter-active,
+.file-drop-leave-active {
+  transition: all 0.3s ease;
+}
+.file-drop-enter-from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.file-drop-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
+}
 
-.drawer-slide-enter-active { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.drawer-slide-enter-from { opacity: 0; transform: translateX(50px); }
+.drawer-slide-enter-active {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.drawer-slide-enter-from {
+  opacity: 0;
+  transform: translateX(50px);
+}
 
 @media (max-width: 768px) {
-  .scene { flex-direction: column; min-width: auto; }
-  .flow-arrow { transform: rotate(90deg); margin: 10px 0; width: 100%; align-items: center; }
-  .arrow-line { width: 2px; height: 20px; }
+  .scene {
+    flex-direction: column;
+    min-width: auto;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+    width: 100%;
+    align-items: center;
+  }
+  .arrow-line {
+    width: 2px;
+    height: 20px;
+  }
 }
 </style>

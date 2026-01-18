@@ -10,7 +10,14 @@
           <label>主轴方向 (flex-direction)</label>
         </div>
         <div class="chips">
-          <button v-for="d in directions" :key="d.id" :class="['chip', { active: dir === d.id }]" @click="dir = d.id">{{ d.label }}</button>
+          <button
+            v-for="d in directions"
+            :key="d.id"
+            :class="['chip', { active: dir === d.id }]"
+            @click="dir = d.id"
+          >
+            {{ d.label }}
+          </button>
         </div>
       </div>
       <div class="control-item">
@@ -18,7 +25,14 @@
           <label>主轴对齐 (justify-content)</label>
         </div>
         <div class="chips">
-          <button v-for="j in justifies" :key="j.id" :class="['chip', { active: justify === j.id }]" @click="justify = j.id">{{ j.label }}</button>
+          <button
+            v-for="j in justifies"
+            :key="j.id"
+            :class="['chip', { active: justify === j.id }]"
+            @click="justify = j.id"
+          >
+            {{ j.label }}
+          </button>
         </div>
       </div>
       <div class="control-item">
@@ -26,7 +40,14 @@
           <label>是否换行 (flex-wrap)</label>
         </div>
         <div class="chips">
-          <button v-for="w in wraps" :key="w.id" :class="['chip', { active: wrap === w.id }]" @click="wrap = w.id">{{ w.label }}</button>
+          <button
+            v-for="w in wraps"
+            :key="w.id"
+            :class="['chip', { active: wrap === w.id }]"
+            @click="wrap = w.id"
+          >
+            {{ w.label }}
+          </button>
         </div>
       </div>
     </div>
@@ -41,10 +62,10 @@
       <div class="code-title">CSS 代码片段</div>
       <div class="code-content">
         <div class="line">.container {</div>
-        <div class="line">  display: flex;</div>
-        <div class="line">  flex-direction: {{ dir }};</div>
-        <div class="line">  justify-content: {{ justify }};</div>
-        <div class="line">  flex-wrap: {{ wrap }};</div>
+        <div class="line">display: flex;</div>
+        <div class="line">flex-direction: {{ dir }};</div>
+        <div class="line">justify-content: {{ justify }};</div>
+        <div class="line">flex-wrap: {{ wrap }};</div>
         <div class="line">}</div>
       </div>
     </div>
@@ -169,7 +190,9 @@ const boxStyle = computed(() => ({
   display: grid;
   place-items: center;
   font-size: 18px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
 }

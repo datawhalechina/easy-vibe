@@ -19,9 +19,17 @@
 
     <div class="options">
       <label><input type="checkbox" v-model="useRole" /> 角色（你是谁）</label>
-      <label><input type="checkbox" v-model="useAudience" /> 受众（写给谁）</label>
-      <label><input type="checkbox" v-model="useConstraints" /> 约束（长度/要点数）</label>
-      <label><input type="checkbox" v-model="useFormat" /> 输出格式（JSON/列表）</label>
+      <label
+        ><input type="checkbox" v-model="useAudience" /> 受众（写给谁）</label
+      >
+      <label
+        ><input type="checkbox" v-model="useConstraints" />
+        约束（长度/要点数）</label
+      >
+      <label
+        ><input type="checkbox" v-model="useFormat" />
+        输出格式（JSON/列表）</label
+      >
     </div>
 
     <div class="grid">
@@ -64,7 +72,8 @@ const prompt = computed(() => {
     if (useRole.value) lines.push('你是资深前端工程师。')
     lines.push('请写一段技术博客的开头，主题：提示词工程。')
     if (useAudience.value) lines.push('目标读者：零基础新手。')
-    if (useConstraints.value) lines.push('要求：80-120 字，口语化，带一个生活类比。')
+    if (useConstraints.value)
+      lines.push('要求：80-120 字，口语化，带一个生活类比。')
     if (useFormat.value) lines.push('输出：只输出一段文字，不要标题。')
     return lines.join('\n')
   }
@@ -99,8 +108,10 @@ const warnings = computed(() => {
   const w = []
   if (!useAudience.value) w.push('语气可能过专业或太泛')
   if (!useConstraints.value) w.push('长度/结构可能不稳定')
-  if (task.value === 'json' && !useFormat.value) w.push('可能输出成一大段话，不是 JSON')
-  if (task.value === 'blog' && !useFormat.value) w.push('可能加标题/分段，超出预期')
+  if (task.value === 'json' && !useFormat.value)
+    w.push('可能输出成一大段话，不是 JSON')
+  if (task.value === 'blog' && !useFormat.value)
+    w.push('可能加标题/分段，超出预期')
   return w
 })
 
@@ -139,8 +150,13 @@ const output = computed(() => {
   flex-wrap: wrap;
 }
 
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 
 select {
   border: 1px solid var(--vp-c-divider);
@@ -177,7 +193,9 @@ select {
   gap: 10px;
 }
 
-.panel-title { font-weight: 700; }
+.panel-title {
+  font-weight: 700;
+}
 pre {
   margin: 0;
   background: #0b1221;
@@ -190,15 +208,44 @@ pre {
   white-space: pre-wrap;
 }
 
-.checklist { display: grid; gap: 6px; }
-.item { display: flex; gap: 8px; align-items: center; color: var(--vp-c-text-2); font-size: 13px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; }
-.dot.ok { background: #22c55e; }
-.dot.bad { background: #ef4444; }
+.checklist {
+  display: grid;
+  gap: 6px;
+}
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot.ok {
+  background: #22c55e;
+}
+.dot.bad {
+  background: #ef4444;
+}
 
-.output { white-space: pre-wrap; line-height: 1.6; }
-.warn { border-top: 1px dashed var(--vp-c-divider); padding-top: 10px; }
-.warn-title { font-weight: 700; margin-bottom: 6px; }
-ul { margin: 0; padding-left: 18px; color: var(--vp-c-text-2); }
+.output {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.warn {
+  border-top: 1px dashed var(--vp-c-divider);
+  padding-top: 10px;
+}
+.warn-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--vp-c-text-2);
+}
 </style>
-

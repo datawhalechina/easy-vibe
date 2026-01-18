@@ -8,15 +8,28 @@
         </div>
         <div class="panel-body">
           <div class="code-block">
-            if (size > <input v-model="ruleThreshold" type="number" class="mini-input">) {<br>
-            &nbsp;&nbsp;return "Big 🍎"<br>
-            } else {<br>
-            &nbsp;&nbsp;return "Small 🍒"<br>
+            if (size >
+            <input v-model="ruleThreshold" type="number" class="mini-input" />)
+            {<br />
+            &nbsp;&nbsp;return "Big 🍎"<br />
+            } else {<br />
+            &nbsp;&nbsp;return "Small 🍒"<br />
             }
           </div>
           <div class="test-area">
-            Test Input: <input v-model="testInput" type="range" min="1" max="10" class="slider"> {{ testInput }}
-            <div class="result-box" :class="ruleResult === 'Big 🍎' ? 'big' : 'small'">
+            Test Input:
+            <input
+              v-model="testInput"
+              type="range"
+              min="1"
+              max="10"
+              class="slider"
+            />
+            {{ testInput }}
+            <div
+              class="result-box"
+              :class="ruleResult === 'Big 🍎' ? 'big' : 'small'"
+            >
               Result: {{ ruleResult }}
             </div>
           </div>
@@ -38,15 +51,26 @@
               {{ isTrained ? 'Model Trained ✅' : '⚡ Train Model' }}
             </button>
           </div>
-          
+
           <div class="test-area">
-            Test Input: <input v-model="testInput" type="range" min="1" max="10" class="slider"> {{ testInput }}
-            <div class="result-box" :class="mlResult === 'Big 🍎' ? 'big' : 'small'">
+            Test Input:
+            <input
+              v-model="testInput"
+              type="range"
+              min="1"
+              max="10"
+              class="slider"
+            />
+            {{ testInput }}
+            <div
+              class="result-box"
+              :class="mlResult === 'Big 🍎' ? 'big' : 'small'"
+            >
               Result: {{ mlResult }}
             </div>
           </div>
           <div class="note">
-            Model "learned" threshold is ~{{ learnedThreshold }}. <br>
+            Model "learned" threshold is ~{{ learnedThreshold }}. <br />
             (Derived from data, not coded)
           </div>
         </div>
@@ -105,7 +129,9 @@ const mlResult = computed(() => {
 }
 
 @media (max-width: 640px) {
-  .demo-grid { grid-template-columns: 1fr; }
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .panel {
@@ -171,8 +197,16 @@ const mlResult = computed(() => {
   background: white;
   border: 1px solid var(--vp-c-divider);
 }
-.result-box.big { color: #ef4444; border-color: #fecaca; background: #fef2f2; }
-.result-box.small { color: #db2777; border-color: #fce7f3; background: #fdf2f8; }
+.result-box.big {
+  color: #ef4444;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+.result-box.small {
+  color: #db2777;
+  border-color: #fce7f3;
+  background: #fdf2f8;
+}
 
 .note {
   font-size: 0.75rem;

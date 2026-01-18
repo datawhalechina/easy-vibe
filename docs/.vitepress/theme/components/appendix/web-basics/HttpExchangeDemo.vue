@@ -24,13 +24,15 @@
             <span>{{ t.cols.type }}</span>
             <span>{{ t.cols.time }}</span>
           </div>
-          <div 
-            class="log-row" 
-            :class="{ active: requestSent, selected: true }" 
+          <div
+            class="log-row"
+            :class="{ active: requestSent, selected: true }"
             v-if="requestSent"
           >
             <span class="col-name">{{ path.split('/').pop() || 'index' }}</span>
-            <span class="col-status" :class="statusClass">{{ responseStatus }}</span>
+            <span class="col-status" :class="statusClass">{{
+              responseStatus
+            }}</span>
             <span class="col-type">document</span>
             <span class="col-time">{{ loading ? 'Pending' : '45ms' }}</span>
           </div>
@@ -40,8 +42,8 @@
         <!-- Details Panel (Right) -->
         <div class="details-panel" v-if="requestSent">
           <div class="tabs">
-            <button 
-              v-for="tabKey in ['headers', 'response', 'preview']" 
+            <button
+              v-for="tabKey in ['headers', 'response', 'preview']"
               :key="tabKey"
               :class="{ active: activeTab === tabKey }"
               @click="activeTab = tabKey"
@@ -73,7 +75,11 @@
               </div>
               <div class="section">
                 <div class="section-title">{{ t.responseHeaders }}</div>
-                <div class="kv-row" v-for="(val, key) in responseHeaders" :key="key">
+                <div
+                  class="kv-row"
+                  v-for="(val, key) in responseHeaders"
+                  :key="key"
+                >
                   <span class="key">{{ key }}:</span>
                   <span class="value">{{ val }}</span>
                 </div>
@@ -87,7 +93,11 @@
 
             <!-- Preview Tab -->
             <div v-if="activeTab === 'preview'" class="preview-view">
-              <div v-if="method === 'GET'" class="html-preview" v-html="responseBody"></div>
+              <div
+                v-if="method === 'GET'"
+                class="html-preview"
+                v-html="responseBody"
+              ></div>
               <div v-else class="json-preview">
                 JSON Data: {{ responseBody }}
               </div>
@@ -149,24 +159,24 @@ const sendRequest = async () => {
   loading.value = true
   requestSent.value = true
   responseStatus.value = '处理中...'
-  
-  await new Promise(r => setTimeout(r, 800))
-  
+
+  await new Promise((r) => setTimeout(r, 800))
+
   loading.value = false
-  
+
   if (method.value === 'GET') {
     responseStatus.value = '200 OK (有货)'
     responseHeaders.value = {
       'Content-Type': 'application/json (积木)',
-      'Date': new Date().toLocaleString(),
-      'Store': '乐高官方店'
+      Date: new Date().toLocaleString(),
+      Store: '乐高官方店'
     }
     responseBody.value = `{\n  "id": 101,\n  "name": "Lego Castle",\n  "pieces": 500,\n  "price": "$99"\n}`
   } else {
     responseStatus.value = '201 Created (下单成功)'
     responseHeaders.value = {
       'Content-Type': 'application/json',
-      'Date': new Date().toLocaleString()
+      Date: new Date().toLocaleString()
     }
     responseBody.value = `{\n  "success": true,\n  "message": "Order placed"\n}`
   }
@@ -185,7 +195,10 @@ const statusClass = computed(() => {
   border-radius: 8px;
   background: var(--vp-c-bg);
   margin: 1rem 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   overflow: hidden;
 }
 
@@ -249,7 +262,9 @@ const statusClass = computed(() => {
   color: var(--vp-c-text-2);
 }
 
-.log-header span { flex: 1; }
+.log-header span {
+  flex: 1;
+}
 
 .log-row {
   display: flex;
@@ -266,10 +281,19 @@ html.dark .log-row.selected {
   background: #1e3a8a;
 }
 
-.log-row span { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.log-row span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-.col-status.success { color: #10b981; }
-.col-status.pending { color: #9ca3af; }
+.col-status.success {
+  color: #10b981;
+}
+.col-status.pending {
+  color: #9ca3af;
+}
 
 .empty-state {
   padding: 2rem;
@@ -358,7 +382,10 @@ html.dark .log-row.selected {
   border-radius: 50%;
   margin-right: 4px;
 }
-.status-dot.success { background: #10b981; }
-.status-dot.pending { background: #9ca3af; }
-
+.status-dot.success {
+  background: #10b981;
+}
+.status-dot.pending {
+  background: #9ca3af;
+}
 </style>

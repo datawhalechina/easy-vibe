@@ -3,16 +3,28 @@
     <div class="panel">
       <div class="comparison">
         <div class="mode-selector">
-          <button @click="mode = 'full'" :class="{active: mode === 'full'}" class="mode-btn">完整备份</button>
-          <button @click="mode = 'git'" :class="{active: mode === 'git'}" class="mode-btn">Git 增量</button>
+          <button
+            @click="mode = 'full'"
+            :class="{ active: mode === 'full' }"
+            class="mode-btn"
+          >
+            完整备份
+          </button>
+          <button
+            @click="mode = 'git'"
+            :class="{ active: mode === 'git' }"
+            class="mode-btn"
+          >
+            Git 增量
+          </button>
         </div>
 
         <div class="visualization">
           <div class="bar-container">
-            <div class="bar full" :style="{height: fullSize + '%'}">
+            <div class="bar full" :style="{ height: fullSize + '%' }">
               <span class="label">完整备份: {{ fullSize }}MB</span>
             </div>
-            <div class="bar git" :style="{height: gitSize + '%'}">
+            <div class="bar git" :style="{ height: gitSize + '%' }">
               <span class="label">Git 存储: {{ gitSize }}MB</span>
             </div>
           </div>
@@ -45,7 +57,9 @@ const versionCount = ref(5)
 const fullSize = ref(500)
 const gitSize = ref(50)
 
-const savedPercent = computed(() => Math.round((1 - gitSize.value / fullSize.value) * 100))
+const savedPercent = computed(() =>
+  Math.round((1 - gitSize.value / fullSize.value) * 100)
+)
 </script>
 
 <style scoped>
@@ -95,8 +109,12 @@ const savedPercent = computed(() => Math.round((1 - gitSize.value / fullSize.val
   transition: height 0.5s ease;
 }
 
-.bar.full { background: linear-gradient(135deg, #ef4444, #dc2626); }
-.bar.git { background: linear-gradient(135deg, #10b981, #059669); }
+.bar.full {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+.bar.git {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
 
 .stats {
   display: flex;

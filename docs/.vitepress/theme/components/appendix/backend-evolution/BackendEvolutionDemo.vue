@@ -3,11 +3,14 @@
     <!-- Timeline -->
     <div class="timeline-container">
       <div class="timeline-track"></div>
-      <button 
-        v-for="(stage, index) in stages" 
+      <button
+        v-for="(stage, index) in stages"
         :key="index"
         class="timeline-node"
-        :class="{ active: currentStage === index, passed: currentStage > index }"
+        :class="{
+          active: currentStage === index,
+          passed: currentStage > index
+        }"
         @click="currentStage = index"
       >
         <div class="node-dot">
@@ -26,7 +29,9 @@
         <div :key="currentStage" class="stage-content">
           <div class="header-section">
             <h3>
-              <span class="stage-index">{{ indexToRoman(currentStage + 1) }}.</span>
+              <span class="stage-index"
+                >{{ indexToRoman(currentStage + 1) }}.</span
+              >
               {{ stages[currentStage].title }}
             </h3>
             <p>{{ stages[currentStage].desc }}</p>
@@ -44,7 +49,6 @@
                 <div class="window-title">Server Architecture</div>
               </div>
               <div class="arch-canvas">
-                
                 <!-- Stage 0: CGI/Static -->
                 <div v-if="currentStage === 0" class="arch-static">
                   <div class="server-box">
@@ -64,7 +68,9 @@
                 <!-- Stage 1: Monolith -->
                 <div v-if="currentStage === 1" class="arch-monolith">
                   <div class="server-box big">
-                    <div class="server-icon">🦍 Monolithic App (Tomcat/Django)</div>
+                    <div class="server-icon">
+                      🦍 Monolithic App (Tomcat/Django)
+                    </div>
                     <div class="modules-grid">
                       <div class="module">User</div>
                       <div class="module">Order</div>
@@ -110,7 +116,6 @@
                     <span>BaaS (Auth0, Supabase, Stripe)</span>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -122,7 +127,9 @@
               <div class="ops-canvas">
                 <div class="ops-card">
                   <div class="ops-icon">{{ stages[currentStage].opsIcon }}</div>
-                  <div class="ops-title">{{ stages[currentStage].opsTitle }}</div>
+                  <div class="ops-title">
+                    {{ stages[currentStage].opsTitle }}
+                  </div>
                   <div class="ops-desc">{{ stages[currentStage].opsDesc }}</div>
                 </div>
               </div>
@@ -152,7 +159,8 @@ const stages = [
     desc: 'In the beginning, servers were physical machines. We uploaded files via FTP. Backend logic was often simple Perl/CGI scripts executing one by one.',
     opsIcon: '🐌',
     opsTitle: 'Manual FTP Upload',
-    opsDesc: 'Development was slow. "It works on my machine" was the common nightmare. Scaling meant buying a bigger physical computer.'
+    opsDesc:
+      'Development was slow. "It works on my machine" was the common nightmare. Scaling meant buying a bigger physical computer.'
   },
   {
     year: '2000s',
@@ -161,7 +169,8 @@ const stages = [
     desc: 'Frameworks like Java Spring, Rails, Django appeared. All logic (User, Order, Pay) was packed into ONE giant process. Simple to develop, hard to scale.',
     opsIcon: '🐳',
     opsTitle: 'Virtual Machines (VM)',
-    opsDesc: 'We started using VMs (AWS EC2). Scaling meant copying the entire giant application to multiple servers behind a Load Balancer.'
+    opsDesc:
+      'We started using VMs (AWS EC2). Scaling meant copying the entire giant application to multiple servers behind a Load Balancer.'
   },
   {
     year: '2014+',
@@ -170,7 +179,8 @@ const stages = [
     desc: 'Breaking the monolith! Each function (User, Order) became a separate tiny server. Docker changed the game by packaging dependencies together.',
     opsIcon: '☸️',
     opsTitle: 'Kubernetes (K8s)',
-    opsDesc: 'Orchestrating thousands of containers. Complexity exploded, but teams could work independently and scale specific parts (e.g., just the Payment service).'
+    opsDesc:
+      'Orchestrating thousands of containers. Complexity exploded, but teams could work independently and scale specific parts (e.g., just the Payment service).'
   },
   {
     year: '2020s+',
@@ -179,7 +189,8 @@ const stages = [
     desc: 'No more managing servers. You just write a function (e.g., "resize image") and upload it. The cloud provider runs it only when needed (Pay-per-use).',
     opsIcon: '⚡',
     opsTitle: 'GitOps & Edge',
-    opsDesc: 'Push to Git -> Auto Deploy to global Edge nodes (Vercel, Cloudflare). Backend becomes "Functions + Managed Services (BaaS)".'
+    opsDesc:
+      'Push to Git -> Auto Deploy to global Edge nodes (Vercel, Cloudflare). Backend becomes "Functions + Managed Services (BaaS)".'
   }
 ]
 </script>
@@ -188,11 +199,13 @@ const stages = [
 .backend-evolution-demo {
   border-radius: 16px;
   background: var(--vp-c-bg);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
   margin: 2rem 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 /* Timeline (Reused) */
@@ -230,8 +243,13 @@ const stages = [
   opacity: 0.6;
 }
 
-.timeline-node:hover { opacity: 0.9; }
-.timeline-node.active, .timeline-node.passed { opacity: 1; }
+.timeline-node:hover {
+  opacity: 0.9;
+}
+.timeline-node.active,
+.timeline-node.passed {
+  opacity: 1;
+}
 
 .node-dot {
   width: 16px;
@@ -259,8 +277,14 @@ const stages = [
   transform: scale(1.3);
   box-shadow: 0 0 0 4px var(--vp-c-bg-soft);
 }
-.timeline-node.active .inner-dot { width: 8px; height: 8px; }
-.timeline-node.passed .node-dot { border-color: var(--vp-c-brand); background: var(--vp-c-brand); }
+.timeline-node.active .inner-dot {
+  width: 8px;
+  height: 8px;
+}
+.timeline-node.passed .node-dot {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand);
+}
 
 .node-content {
   text-align: center;
@@ -286,7 +310,10 @@ const stages = [
 }
 
 /* Content */
-.content-wrapper { padding: 2rem; min-height: 400px; }
+.content-wrapper {
+  padding: 2rem;
+  min-height: 400px;
+}
 
 .header-section {
   text-align: center;
@@ -298,13 +325,26 @@ const stages = [
 .header-section h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(120deg, #f59e0b, #ea580c); /* Orange/Amber for Backend */
+  background: linear-gradient(
+    120deg,
+    #f59e0b,
+    #ea580c
+  ); /* Orange/Amber for Backend */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.stage-index { color: var(--vp-c-text-3); -webkit-text-fill-color: var(--vp-c-text-3); margin-right: 0.5rem; font-weight: normal; }
-.header-section p { font-size: 1rem; color: var(--vp-c-text-2); line-height: 1.6; }
+.stage-index {
+  color: var(--vp-c-text-3);
+  -webkit-text-fill-color: var(--vp-c-text-3);
+  margin-right: 0.5rem;
+  font-weight: normal;
+}
+.header-section p {
+  font-size: 1rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 
 /* Visualizations */
 .visualization-grid {
@@ -314,37 +354,60 @@ const stages = [
   align-items: stretch;
 }
 
-@media (max-width: 768px) { .visualization-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .visualization-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .mac-window {
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   background: white;
   transition: transform 0.3s;
 }
-.mac-window:hover { transform: translateY(-5px); }
+.mac-window:hover {
+  transform: translateY(-5px);
+}
 
-.arch-window { background: #f1f5f9; }
-.ops-window { background: white; }
+.arch-window {
+  background: #f1f5f9;
+}
+.ops-window {
+  background: white;
+}
 
 .window-bar {
   padding: 0.8rem 1rem;
   background: white;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.traffic-lights { display: flex; gap: 6px; }
-.light { width: 10px; height: 10px; border-radius: 50%; }
-.light.red { background: #ff5f56; }
-.light.yellow { background: #ffbd2e; }
-.light.green { background: #27c93f; }
+.traffic-lights {
+  display: flex;
+  gap: 6px;
+}
+.light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.light.red {
+  background: #ff5f56;
+}
+.light.yellow {
+  background: #ffbd2e;
+}
+.light.green {
+  background: #27c93f;
+}
 
 .window-title {
   position: absolute;
@@ -356,7 +419,8 @@ const stages = [
   font-weight: 600;
 }
 
-.arch-canvas, .ops-canvas {
+.arch-canvas,
+.ops-canvas {
   padding: 2rem;
   flex: 1;
   display: flex;
@@ -373,32 +437,140 @@ const stages = [
   border-radius: 8px;
   text-align: center;
 }
-.file-system { margin-top: 1rem; background: white; padding: 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
-.request-arrow { margin-top: 1rem; display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; color: #64748b; }
+.file-system {
+  margin-top: 1rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+.request-arrow {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #64748b;
+}
 
-.server-box.big { background: #dbeafe; border-color: #3b82f6; width: 100%; max-width: 250px; }
-.modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 1rem 0; }
-.module { background: #bfdbfe; padding: 4px; border-radius: 4px; font-size: 0.8rem; color: #1e40af; }
-.db-connection { font-size: 0.8rem; display: flex; flex-direction: column; align-items: center; }
+.server-box.big {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  width: 100%;
+  max-width: 250px;
+}
+.modules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 1rem 0;
+}
+.module {
+  background: #bfdbfe;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #1e40af;
+}
+.db-connection {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.cloud-bg { width: 100%; }
-.service-mesh { display: flex; gap: 1rem; justify-content: center; }
-.service { background: white; border: 1px solid #e2e8f0; padding: 0.8rem; border-radius: 6px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-.service small { color: #64748b; font-size: 0.7rem; margin-top: 4px; }
-.comm-lines { margin-top: 1rem; font-size: 0.8rem; color: #94a3b8; text-align: center; border-top: 1px dashed #cbd5e1; width: 80%; padding-top: 4px; }
+.cloud-bg {
+  width: 100%;
+}
+.service-mesh {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.service {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.service small {
+  color: #64748b;
+  font-size: 0.7rem;
+  margin-top: 4px;
+}
+.comm-lines {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-align: center;
+  border-top: 1px dashed #cbd5e1;
+  width: 80%;
+  padding-top: 4px;
+}
 
-.function-cloud { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
-.func-node { background: #fef3c7; border: 1px solid #f59e0b; color: #b45309; padding: 6px 12px; border-radius: 20px; font-family: monospace; font-size: 0.8rem; }
-.baas-layer { width: 100%; background: #e0e7ff; padding: 0.5rem; text-align: center; border-radius: 6px; font-size: 0.8rem; color: #4338ca; font-weight: bold; }
+.function-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.func-node {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #b45309;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+.baas-layer {
+  width: 100%;
+  background: #e0e7ff;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #4338ca;
+  font-weight: bold;
+}
 
 /* Ops Card */
-.ops-card { text-align: center; }
-.ops-icon { font-size: 4rem; margin-bottom: 1rem; }
-.ops-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--vp-c-text-1); }
-.ops-desc { font-size: 0.9rem; color: var(--vp-c-text-2); line-height: 1.5; }
+.ops-card {
+  text-align: center;
+}
+.ops-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+.ops-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-1);
+}
+.ops-desc {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
 
 /* Transitions */
-.fade-slide-enter-active, .fade-slide-leave-active { transition: all 0.4s ease; }
-.fade-slide-enter-from { opacity: 0; transform: translateY(20px); }
-.fade-slide-leave-to { opacity: 0; transform: translateY(-20px); }
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease;
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
 </style>

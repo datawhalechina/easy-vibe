@@ -34,7 +34,11 @@
           <label>Primary Color (主题色)</label>
           <div class="input-group">
             <input type="color" v-model="customColors.primary" />
-            <input type="text" v-model="customColors.primary" class="hex-input" />
+            <input
+              type="text"
+              v-model="customColors.primary"
+              class="hex-input"
+            />
           </div>
         </div>
         <div class="config-item">
@@ -48,14 +52,20 @@
           <label>Button Text (按钮文字)</label>
           <div class="input-group">
             <input type="color" v-model="customColors.btnText" />
-            <input type="text" v-model="customColors.btnText" class="hex-input" />
+            <input
+              type="text"
+              v-model="customColors.btnText"
+              class="hex-input"
+            />
           </div>
         </div>
       </div>
     </div>
 
     <div class="preview" :class="current">
-      <div class="hint">点一下标题/段落/按钮，我会在下面的代码里高亮对应行。</div>
+      <div class="hint">
+        点一下标题/段落/按钮，我会在下面的代码里高亮对应行。
+      </div>
       <h1
         class="hero"
         :class="{ selected: selectedPart === 'h1' }"
@@ -75,7 +85,7 @@
       <button
         class="cta"
         :class="{ selected: selectedPart === 'btn' }"
-        @click="selectedPart = 'btn'; increment()"
+        @click="handleBtnClick"
       >
         <span class="badge">③</span>
         点我试试看 ({{ clicks }})
@@ -88,9 +98,9 @@
     <div class="code-block">
       <div class="code-title">{{ codeTitle }}</div>
       <div class="code-content">
-        <div 
-          v-for="(line, i) in codeLines" 
-          :key="i" 
+        <div
+          v-for="(line, i) in codeLines"
+          :key="i"
           :class="['line', { hl: line.key === selectedPart }]"
         >
           {{ line.text }}
@@ -198,9 +208,15 @@ const codeLines = computed(() => {
   }
   if (current.value === 'css') {
     return [
-      { key: 'h1', text: `.hero { color: ${DEMO_CONFIG.value.colors.primary}; font-size: 24px; }` },
+      {
+        key: 'h1',
+        text: `.hero { color: ${DEMO_CONFIG.value.colors.primary}; font-size: 24px; }`
+      },
       { key: 'p', text: `.desc { color: ${DEMO_CONFIG.value.colors.text}; }` },
-      { key: 'btn', text: `.cta { background: ${DEMO_CONFIG.value.colors.primary}; color: ${DEMO_CONFIG.value.colors.btnText}; border-radius: 10px; }` }
+      {
+        key: 'btn',
+        text: `.cta { background: ${DEMO_CONFIG.value.colors.primary}; color: ${DEMO_CONFIG.value.colors.btnText}; border-radius: 10px; }`
+      }
     ]
   }
   return [
@@ -259,7 +275,8 @@ const steps = computed(() => {
 
 const oneLine = computed(() => {
   if (current.value === 'html') return '先把“有哪些东西、是什么东西”说清楚。'
-  if (current.value === 'css') return '在不改结构的前提下，把外观调到你想要的样子。'
+  if (current.value === 'css')
+    return '在不改结构的前提下，把外观调到你想要的样子。'
   return '把“点击/输入”等行为接上逻辑，让页面能互动。'
 })
 
@@ -268,6 +285,11 @@ const oneLine = computed(() => {
 const increment = () => {
   if (current.value !== 'js') return
   clicks.value++
+}
+
+const handleBtnClick = () => {
+  selectedPart.value = 'btn'
+  increment()
 }
 </script>
 
@@ -333,7 +355,7 @@ const increment = () => {
   border: 1px solid var(--vp-c-divider);
 }
 
-input[type="color"] {
+input[type='color'] {
   width: 28px;
   height: 28px;
   border: none;
@@ -368,11 +390,28 @@ input[type="color"] {
   color: white;
 }
 
-.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.title { font-weight: 800; font-size: 16px; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; margin-top: 4px; }
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-weight: 800;
+  font-size: 16px;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  margin-top: 4px;
+}
 
-.modes { display: flex; gap: 8px; flex-wrap: wrap; }
+.modes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .mode {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
@@ -382,10 +421,12 @@ input[type="color"] {
   font-size: 13px;
   transition: all 0.2s;
 }
-.mode:hover { background: var(--vp-c-bg-soft); }
-.mode.active { 
-  border-color: var(--vp-c-brand); 
-  color: var(--vp-c-brand); 
+.mode:hover {
+  background: var(--vp-c-bg-soft);
+}
+.mode.active {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
   background: var(--vp-c-brand-dimm);
 }
 
@@ -400,7 +441,11 @@ input[type="color"] {
   transition: all 0.2s;
 }
 
-.hint { color: var(--vp-c-text-2); font-size: 13px; margin-bottom: 8px; }
+.hint {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
 .badge {
   display: inline-flex;
   align-items: center;
@@ -416,8 +461,21 @@ input[type="color"] {
   flex-shrink: 0;
 }
 
-.hero { margin: 0; cursor: pointer; display: flex; align-items: center; line-height: 1.4; }
-.desc { margin: 0; color: var(--vp-c-text-2); cursor: pointer; display: flex; align-items: center; line-height: 1.5; }
+.hero {
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+.desc {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
 .cta {
   width: fit-content;
   border: 1px solid var(--vp-c-divider);
@@ -437,22 +495,48 @@ input[type="color"] {
   border-radius: 4px;
 }
 
-.click-tip { margin-top: 6px; color: var(--vp-c-text-2); font-size: 13px; }
+.click-tip {
+  margin-top: 6px;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 
-.preview.css .hero { color: v-bind('DEMO_CONFIG.colors.primary'); font-size: 24px; }
-.preview.css .desc { color: v-bind('DEMO_CONFIG.colors.text'); }
-.preview.css .cta { 
-  background: v-bind('DEMO_CONFIG.colors.primary'); 
-  color: v-bind('DEMO_CONFIG.colors.btnText'); 
-  border-color: v-bind('DEMO_CONFIG.colors.primary'); 
+.preview.css .hero {
+  color: v-bind('DEMO_CONFIG.colors.primary');
+  font-size: 24px;
+}
+.preview.css .desc {
+  color: v-bind('DEMO_CONFIG.colors.text');
+}
+.preview.css .cta {
+  background: v-bind('DEMO_CONFIG.colors.primary');
+  color: v-bind('DEMO_CONFIG.colors.btnText');
+  border-color: v-bind('DEMO_CONFIG.colors.primary');
   border-radius: 10px;
 }
 
-.preview.js .cta { background: #22c55e; color: #fff; border-color: #22c55e; box-shadow: 0 4px 12px rgba(34,197,94,0.25); }
-.preview.js { border-color: rgba(34, 197, 94, 0.4); }
+.preview.js .cta {
+  background: #22c55e;
+  color: #fff;
+  border-color: #22c55e;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+.preview.js {
+  border-color: rgba(34, 197, 94, 0.4);
+}
 
-.code-block { background: var(--vp-c-bg-alt); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 16px; }
-.code-title { font-weight: 700; margin-bottom: 8px; font-size: 13px; color: var(--vp-c-text-2); }
+.code-block {
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 16px;
+}
+.code-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
 .code-content {
   background: #0b1221;
   color: #e5e7eb;
@@ -464,8 +548,10 @@ input[type="color"] {
   line-height: 1.6;
 }
 
-.line { min-height: 1.6em; }
-.hl { 
+.line {
+  min-height: 1.6em;
+}
+.hl {
   background: var(--vp-c-brand-dimm);
   border-left: 3px solid var(--vp-c-brand);
   border-radius: 4px;
@@ -477,12 +563,33 @@ input[type="color"] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
-.explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-.card { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 10px; padding: 10px; }
-.card-title { font-weight: 700; margin-bottom: 4px; }
-.card-body { color: var(--vp-c-text-2); font-size: 13px; line-height: 1.5; }
+.explain {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+.card {
+  background: var(--vp-c-bg);
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 10px;
+}
+.card-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.card-body {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
 
-.map { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.map {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
 .map-row {
   display: flex;
   justify-content: space-between;
@@ -498,9 +605,17 @@ input[type="color"] {
   border-color: var(--vp-c-brand);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-.left { font-weight: 800; }
-.right { color: var(--vp-c-text-2); }
-.steps { margin: 8px 0 0 18px; color: var(--vp-c-text-2); line-height: 1.6; }
+.left {
+  font-weight: 800;
+}
+.right {
+  color: var(--vp-c-text-2);
+}
+.steps {
+  margin: 8px 0 0 18px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 
 .one-line {
   background: var(--vp-c-bg);
@@ -509,6 +624,10 @@ input[type="color"] {
   padding: 10px 12px;
   font-size: 14px;
 }
-.one-line-title { font-weight: 800; }
-.one-line-body { color: var(--vp-c-text-2); }
+.one-line-title {
+  font-weight: 800;
+}
+.one-line-body {
+  color: var(--vp-c-text-2);
+}
 </style>

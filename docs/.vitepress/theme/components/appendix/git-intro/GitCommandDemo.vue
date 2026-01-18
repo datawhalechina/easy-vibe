@@ -13,7 +13,12 @@
         </div>
         <div class="input-line">
           <span class="prompt">$</span>
-          <input v-model="cmd" @keyup.enter="execute" placeholder="git status" class="cmd-input" />
+          <input
+            v-model="cmd"
+            @keyup.enter="execute"
+            placeholder="git status"
+            class="cmd-input"
+          />
           <button @click="execute" class="run-btn">运行</button>
         </div>
       </div>
@@ -22,7 +27,9 @@
         <button @click="runCmd('git init')" class="cmd-btn">初始化</button>
         <button @click="runCmd('git status')" class="cmd-btn">状态</button>
         <button @click="runCmd('git add .')" class="cmd-btn">添加</button>
-        <button @click="runCmd('git commit -m \'msg\'')" class="cmd-btn">提交</button>
+        <button @click="runCmd('git commit -m \'msg\'')" class="cmd-btn">
+          提交
+        </button>
       </div>
     </div>
 
@@ -41,13 +48,19 @@ const output = ref([])
 const execute = () => {
   const c = cmd.value.trim()
   if (!c) return
-  
+
   output.value.push({ type: 'command', text: c })
-  
+
   if (c === 'git init') {
-    output.value.push({ type: 'success', text: 'Initialized empty Git repository' })
+    output.value.push({
+      type: 'success',
+      text: 'Initialized empty Git repository'
+    })
   } else if (c === 'git status') {
-    output.value.push({ type: 'info', text: 'On branch main\nnothing to commit' })
+    output.value.push({
+      type: 'info',
+      text: 'On branch main\nnothing to commit'
+    })
   } else if (c === 'git add .') {
     output.value.push({ type: 'success', text: 'Files added to staging area' })
   } else if (c.startsWith('git commit')) {
@@ -55,7 +68,7 @@ const execute = () => {
   } else {
     output.value.push({ type: 'error', text: 'Unknown command' })
   }
-  
+
   cmd.value = ''
 }
 
@@ -88,11 +101,22 @@ const runCmd = (c) => {
   color: #d1d5db;
 }
 
-.output .command { color: #10b981; }
-.output .success { color: #10b981; }
-.output .error { color: #ef4444; }
-.output .info { color: #60a5fa; }
-.output .welcome { color: #9ca3af; font-style: italic; }
+.output .command {
+  color: #10b981;
+}
+.output .success {
+  color: #10b981;
+}
+.output .error {
+  color: #ef4444;
+}
+.output .info {
+  color: #60a5fa;
+}
+.output .welcome {
+  color: #9ca3af;
+  font-style: italic;
+}
 
 .input-line {
   display: flex;
@@ -100,7 +124,9 @@ const runCmd = (c) => {
   align-items: center;
 }
 
-.prompt { color: #10b981; }
+.prompt {
+  color: #10b981;
+}
 
 .cmd-input {
   flex: 1;
@@ -111,7 +137,9 @@ const runCmd = (c) => {
   font-size: 0.875rem;
 }
 
-.cmd-input:focus { outline: none; }
+.cmd-input:focus {
+  outline: none;
+}
 
 .run-btn {
   padding: 0.25rem 0.75rem;
@@ -139,7 +167,10 @@ const runCmd = (c) => {
   font-size: 0.875rem;
 }
 
-.cmd-btn:hover { background: var(--vp-c-brand); color: var(--vp-c-bg); }
+.cmd-btn:hover {
+  background: var(--vp-c-brand);
+  color: var(--vp-c-bg);
+}
 
 .info-box {
   padding: 1rem;
@@ -149,5 +180,9 @@ const runCmd = (c) => {
   margin-top: 1rem;
 }
 
-.info-box p { margin: 0; color: var(--vp-c-text-1); line-height: 1.6; }
+.info-box p {
+  margin: 0;
+  color: var(--vp-c-text-1);
+  line-height: 1.6;
+}
 </style>

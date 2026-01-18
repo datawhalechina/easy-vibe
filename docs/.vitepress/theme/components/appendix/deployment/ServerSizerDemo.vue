@@ -13,7 +13,13 @@
       <div class="control">
         <label>你的业务规模？</label>
         <div class="range-box">
-          <input type="range" min="0" max="3" step="1" v-model.number="scaleIndex" />
+          <input
+            type="range"
+            min="0"
+            max="3"
+            step="1"
+            v-model.number="scaleIndex"
+          />
           <div class="scale-labels">
             <span>个人博客</span>
             <span>初创官网</span>
@@ -72,7 +78,8 @@ const levels = [
     icon: '🚗',
     bandwidth: '3~5 Mbps',
     cost: '¥300 / 年',
-    analogy: '就像租了个两居室。正经跑个公司官网、小程序后端没问题。大多数人的首选。'
+    analogy:
+      '就像租了个两居室。正经跑个公司官网、小程序后端没问题。大多数人的首选。'
   },
   {
     title: '专业级 (Pro)',
@@ -80,7 +87,8 @@ const levels = [
     icon: '🏎️',
     bandwidth: '5~10 Mbps',
     cost: '¥1000+ / 年',
-    analogy: '就像租了个大平层办公室。能抗住几千人同时在线，跑复杂的计算任务也不虚。'
+    analogy:
+      '就像租了个大平层办公室。能抗住几千人同时在线，跑复杂的计算任务也不虚。'
   },
   {
     title: '企业级 (Enterprise)',
@@ -88,7 +96,8 @@ const levels = [
     icon: '✈️',
     bandwidth: '按量付费',
     cost: '¥5000+ / 年',
-    analogy: '这已经不是租房了，是包下了一整层楼。通常需要多台机器配合，专人维护。'
+    analogy:
+      '这已经不是租房了，是包下了一整层楼。通常需要多台机器配合，专人维护。'
   }
 ]
 

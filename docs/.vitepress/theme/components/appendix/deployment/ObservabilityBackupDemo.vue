@@ -57,7 +57,15 @@
         >
           {{ 100 - riskScore }} 分
         </div>
-        <div class="note">{{ riskScore > 70 ? '极其危险！' : (riskScore > 40 ? '勉强及格' : '非常稳！') }}</div>
+        <div class="note">
+          {{
+            riskScore > 70
+              ? '极其危险！'
+              : riskScore > 40
+                ? '勉强及格'
+                : '非常稳！'
+          }}
+        </div>
       </div>
       <div class="card">
         <div class="label">最坏情况 (丢数据)</div>

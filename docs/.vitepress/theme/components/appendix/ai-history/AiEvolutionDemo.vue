@@ -3,11 +3,14 @@
     <!-- Timeline -->
     <div class="timeline-container">
       <div class="timeline-track"></div>
-      <button 
-        v-for="(stage, index) in stages" 
+      <button
+        v-for="(stage, index) in stages"
         :key="index"
         class="timeline-node"
-        :class="{ active: currentStage === index, passed: currentStage > index }"
+        :class="{
+          active: currentStage === index,
+          passed: currentStage > index
+        }"
         @click="currentStage = index"
       >
         <div class="node-dot">
@@ -26,7 +29,9 @@
         <div :key="currentStage" class="stage-content">
           <div class="header-section">
             <h3>
-              <span class="stage-index">{{ indexToRoman(currentStage + 1) }}.</span>
+              <span class="stage-index"
+                >{{ indexToRoman(currentStage + 1) }}.</span
+              >
               {{ stages[currentStage].title }}
             </h3>
             <p>{{ stages[currentStage].desc }}</p>
@@ -51,9 +56,7 @@
                       <span class="input-val">A: True</span>
                       <span class="input-val">B: False</span>
                     </div>
-                    <div class="gate-box">
-                      AND Rule
-                    </div>
+                    <div class="gate-box">AND Rule</div>
                     <div class="output-val">Output: False</div>
                   </div>
                   <div class="math-note">If A and B then C</div>
@@ -122,8 +125,12 @@
               <div class="app-canvas">
                 <div class="impact-card">
                   <div class="impact-icon">{{ stages[currentStage].icon }}</div>
-                  <div class="impact-title">{{ stages[currentStage].appTitle }}</div>
-                  <div class="impact-desc">{{ stages[currentStage].appDesc }}</div>
+                  <div class="impact-title">
+                    {{ stages[currentStage].appTitle }}
+                  </div>
+                  <div class="impact-desc">
+                    {{ stages[currentStage].appDesc }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -152,7 +159,8 @@ const stages = [
     desc: 'AI started as "Symbolic AI". Scientists believed intelligence could be described by formal logic and rules. If we can write down all the rules of the world, a computer can be intelligent.',
     icon: '♟️',
     appTitle: 'Chess & Logic',
-    appDesc: 'Programs could solve logic puzzles and play simple chess, but failed at "common sense" or recognizing a cat in a photo.'
+    appDesc:
+      'Programs could solve logic puzzles and play simple chess, but failed at "common sense" or recognizing a cat in a photo.'
   },
   {
     year: '1980s-1990s',
@@ -161,7 +169,8 @@ const stages = [
     desc: 'The era of "Expert Systems". We tried to hard-code human expertise (e.g., medical diagnosis rules) into databases. Useful for specific domains, but brittle and hard to maintain.',
     icon: '🏥',
     appTitle: 'MYCIN / Deep Blue',
-    appDesc: 'Systems that could diagnose blood infections or beat Garry Kasparov at chess (Deep Blue, 1997), but still lacked true learning capability.'
+    appDesc:
+      'Systems that could diagnose blood infections or beat Garry Kasparov at chess (Deep Blue, 1997), but still lacked true learning capability.'
   },
   {
     year: '2010s',
@@ -170,7 +179,8 @@ const stages = [
     desc: 'The breakthrough of Neural Networks. Inspired by the human brain, computers learned patterns from massive data instead of being told rules. AlexNet (2012) changed everything.',
     icon: '🧠',
     appTitle: 'AlphaGo & FaceID',
-    appDesc: 'AI learned to see (ImageNet), hear (Siri), and play Go (AlphaGo). It surpassed humans in specific perceptual tasks.'
+    appDesc:
+      'AI learned to see (ImageNet), hear (Siri), and play Go (AlphaGo). It surpassed humans in specific perceptual tasks.'
   },
   {
     year: '2020s+',
@@ -179,7 +189,8 @@ const stages = [
     desc: 'The Transformer architecture allowed AI to understand context and generate new content. AI moved from "classifying" (is this a cat?) to "creating" (draw a cat).',
     icon: '✨',
     appTitle: 'ChatGPT & Midjourney',
-    appDesc: 'AI that can write code, poetry, paint images, and reason across multiple domains. A step towards AGI (General Intelligence).'
+    appDesc:
+      'AI that can write code, poetry, paint images, and reason across multiple domains. A step towards AGI (General Intelligence).'
   }
 ]
 </script>
@@ -188,11 +199,13 @@ const stages = [
 .ai-evolution-demo {
   border-radius: 16px;
   background: var(--vp-c-bg);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
   margin: 2rem 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 /* Reusing Timeline Styles from FrontendEvolutionDemo for consistency */
@@ -230,8 +243,13 @@ const stages = [
   opacity: 0.6;
 }
 
-.timeline-node:hover { opacity: 0.9; }
-.timeline-node.active, .timeline-node.passed { opacity: 1; }
+.timeline-node:hover {
+  opacity: 0.9;
+}
+.timeline-node.active,
+.timeline-node.passed {
+  opacity: 1;
+}
 
 .node-dot {
   width: 16px;
@@ -259,8 +277,14 @@ const stages = [
   transform: scale(1.3);
   box-shadow: 0 0 0 4px var(--vp-c-bg-soft);
 }
-.timeline-node.active .inner-dot { width: 8px; height: 8px; }
-.timeline-node.passed .node-dot { border-color: var(--vp-c-brand); background: var(--vp-c-brand); }
+.timeline-node.active .inner-dot {
+  width: 8px;
+  height: 8px;
+}
+.timeline-node.passed .node-dot {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand);
+}
 
 .node-content {
   text-align: center;
@@ -286,7 +310,10 @@ const stages = [
 }
 
 /* Content Area */
-.content-wrapper { padding: 2rem; min-height: 400px; }
+.content-wrapper {
+  padding: 2rem;
+  min-height: 400px;
+}
 
 .header-section {
   text-align: center;
@@ -298,13 +325,26 @@ const stages = [
 .header-section h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(120deg, #10b981, #3b82f6); /* Green to Blue for AI */
+  background: linear-gradient(
+    120deg,
+    #10b981,
+    #3b82f6
+  ); /* Green to Blue for AI */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.stage-index { color: var(--vp-c-text-3); -webkit-text-fill-color: var(--vp-c-text-3); margin-right: 0.5rem; font-weight: normal; }
-.header-section p { font-size: 1rem; color: var(--vp-c-text-2); line-height: 1.6; }
+.stage-index {
+  color: var(--vp-c-text-3);
+  -webkit-text-fill-color: var(--vp-c-text-3);
+  margin-right: 0.5rem;
+  font-weight: normal;
+}
+.header-section p {
+  font-size: 1rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 
 /* Visualization */
 .visualization-grid {
@@ -314,37 +354,60 @@ const stages = [
   align-items: stretch;
 }
 
-@media (max-width: 768px) { .visualization-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .visualization-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .mac-window {
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   background: white;
   transition: transform 0.3s;
 }
-.mac-window:hover { transform: translateY(-5px); }
+.mac-window:hover {
+  transform: translateY(-5px);
+}
 
-.concept-window { background: #f8fafc; }
-.app-window { background: white; }
+.concept-window {
+  background: #f8fafc;
+}
+.app-window {
+  background: white;
+}
 
 .window-bar {
   padding: 0.8rem 1rem;
   background: white;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.traffic-lights { display: flex; gap: 6px; }
-.light { width: 10px; height: 10px; border-radius: 50%; }
-.light.red { background: #ff5f56; }
-.light.yellow { background: #ffbd2e; }
-.light.green { background: #27c93f; }
+.traffic-lights {
+  display: flex;
+  gap: 6px;
+}
+.light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.light.red {
+  background: #ff5f56;
+}
+.light.yellow {
+  background: #ffbd2e;
+}
+.light.green {
+  background: #27c93f;
+}
 
 .window-title {
   position: absolute;
@@ -356,7 +419,8 @@ const stages = [
   font-weight: 600;
 }
 
-.concept-canvas, .app-canvas {
+.concept-canvas,
+.app-canvas {
   padding: 2rem;
   flex: 1;
   display: flex;
@@ -374,47 +438,197 @@ const stages = [
   text-align: center;
   background: white;
 }
-.input-group { display: flex; gap: 1rem; justify-content: center; margin-bottom: 0.5rem; font-family: monospace; }
-.gate-box { background: #334155; color: white; padding: 4px 10px; margin: 0.5rem 0; border-radius: 4px; }
-.math-note { margin-top: 1rem; font-family: monospace; color: #64748b; font-size: 0.8rem; }
+.input-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-family: monospace;
+}
+.gate-box {
+  background: #334155;
+  color: white;
+  padding: 4px 10px;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+.math-note {
+  margin-top: 1rem;
+  font-family: monospace;
+  color: #64748b;
+  font-size: 0.8rem;
+}
 
 /* Expert Systems */
-.decision-tree { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-.tree-node { border: 1px solid #cbd5e1; padding: 6px 12px; border-radius: 20px; background: white; font-size: 0.8rem; }
-.tree-node.root { border-color: #3b82f6; color: #3b82f6; font-weight: bold; }
-.branches { display: flex; gap: 2rem; }
-.branch { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-.condition { font-size: 0.7rem; color: #64748b; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
-.kb-note { margin-top: 1rem; font-size: 0.8rem; color: #64748b; font-style: italic; }
+.decision-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.tree-node {
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: white;
+  font-size: 0.8rem;
+}
+.tree-node.root {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  font-weight: bold;
+}
+.branches {
+  display: flex;
+  gap: 2rem;
+}
+.branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.condition {
+  font-size: 0.7rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.kb-note {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-style: italic;
+}
 
 /* Deep Learning */
-.neural-net { display: flex; gap: 2rem; align-items: center; position: relative; }
-.layer { display: flex; flex-direction: column; gap: 0.5rem; }
-.neuron { width: 12px; height: 12px; border-radius: 50%; background: #cbd5e1; border: 1px solid #94a3b8; }
-.layer.input .neuron { background: #93c5fd; }
-.layer.hidden .neuron { background: #fca5a5; }
-.layer.output .neuron { background: #86efac; }
-.connections { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.2; }
-.connections line { stroke: #000; stroke-width: 1; }
-.dl-note { margin-top: 2rem; font-size: 0.8rem; color: #64748b; }
+.neural-net {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+}
+.layer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.neuron {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: 1px solid #94a3b8;
+}
+.layer.input .neuron {
+  background: #93c5fd;
+}
+.layer.hidden .neuron {
+  background: #fca5a5;
+}
+.layer.output .neuron {
+  background: #86efac;
+}
+.connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.2;
+}
+.connections line {
+  stroke: #000;
+  stroke-width: 1;
+}
+.dl-note {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
 
 /* GenAI */
-.vis-genai { display: flex; flex-direction: column; gap: 1rem; align-items: center; width: 100%; }
-.transformer-block { border: 2px solid #8b5cf6; border-radius: 8px; padding: 0.5rem; width: 120px; text-align: center; background: #f5f3ff; }
-.block-layer { border: 1px solid #ddd6fe; background: white; margin: 4px 0; padding: 4px; font-size: 0.7rem; border-radius: 4px; }
-.chat-sim { width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; background: white; font-size: 0.8rem; }
-.msg { padding: 6px 10px; border-radius: 12px; margin-bottom: 0.5rem; max-width: 80%; }
-.msg.user { background: #eff6ff; margin-left: auto; color: #1e40af; }
-.msg.ai { background: #f0fdf4; margin-right: auto; color: #166534; }
+.vis-genai {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+.transformer-block {
+  border: 2px solid #8b5cf6;
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 120px;
+  text-align: center;
+  background: #f5f3ff;
+}
+.block-layer {
+  border: 1px solid #ddd6fe;
+  background: white;
+  margin: 4px 0;
+  padding: 4px;
+  font-size: 0.7rem;
+  border-radius: 4px;
+}
+.chat-sim {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  background: white;
+  font-size: 0.8rem;
+}
+.msg {
+  padding: 6px 10px;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  max-width: 80%;
+}
+.msg.user {
+  background: #eff6ff;
+  margin-left: auto;
+  color: #1e40af;
+}
+.msg.ai {
+  background: #f0fdf4;
+  margin-right: auto;
+  color: #166534;
+}
 
 /* Impact Card */
-.impact-card { text-align: center; }
-.impact-icon { font-size: 4rem; margin-bottom: 1rem; }
-.impact-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--vp-c-text-1); }
-.impact-desc { font-size: 0.9rem; color: var(--vp-c-text-2); line-height: 1.5; }
+.impact-card {
+  text-align: center;
+}
+.impact-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+.impact-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-1);
+}
+.impact-desc {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
 
 /* Transitions */
-.fade-slide-enter-active, .fade-slide-leave-active { transition: all 0.4s ease; }
-.fade-slide-enter-from { opacity: 0; transform: translateY(20px); }
-.fade-slide-leave-to { opacity: 0; transform: translateY(-20px); }
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease;
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
 </style>

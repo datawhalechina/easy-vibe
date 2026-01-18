@@ -15,15 +15,21 @@
       <button @click="makeCommit" :disabled="!inited" class="action-btn">
         ✅ 提交
       </button>
-      <button @click="createBranch" :disabled="!inited || hasBranch" class="action-btn">
+      <button
+        @click="createBranch"
+        :disabled="!inited || hasBranch"
+        class="action-btn"
+      >
         🌿 创建分支
       </button>
-      <button @click="mergeBranch" :disabled="!hasBranch || merging" class="action-btn">
+      <button
+        @click="mergeBranch"
+        :disabled="!hasBranch || merging"
+        class="action-btn"
+      >
         🔀 合并分支
       </button>
-      <button @click="reset" class="action-btn secondary">
-        🔄 重置
-      </button>
+      <button @click="reset" class="action-btn secondary">🔄 重置</button>
     </div>
 
     <!-- 提交历史可视化 -->
@@ -31,18 +37,62 @@
       <div class="graph-container">
         <svg viewBox="0 0 400 150" class="git-graph">
           <!-- 主分支线 -->
-          <line x1="50" y1="60" x2="350" y2="60" stroke="#3b82f6" stroke-width="3" />
+          <line
+            x1="50"
+            y1="60"
+            x2="350"
+            y2="60"
+            stroke="#3b82f6"
+            stroke-width="3"
+          />
 
           <!-- 分支线 -->
-          <line v-if="hasBranch" x1="150" y1="60" x2="150" y2="100" stroke="#10b981" stroke-width="3" />
-          <line v-if="hasBranch" x1="150" y1="100" x2="300" y2="100" stroke="#10b981" stroke-width="3" />
+          <line
+            v-if="hasBranch"
+            x1="150"
+            y1="60"
+            x2="150"
+            y2="100"
+            stroke="#10b981"
+            stroke-width="3"
+          />
+          <line
+            v-if="hasBranch"
+            x1="150"
+            y1="100"
+            x2="300"
+            y2="100"
+            stroke="#10b981"
+            stroke-width="3"
+          />
 
           <!-- 合并线 -->
-          <path v-if="merging" d="M 300 100 Q 320 80, 320 60" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5" />
+          <path
+            v-if="merging"
+            d="M 300 100 Q 320 80, 320 60"
+            fill="none"
+            stroke="#f59e0b"
+            stroke-width="2"
+            stroke-dasharray="5,5"
+          />
 
           <!-- 提交节点 -->
-          <circle v-for="(commit, i) in mainCommits" :key="'main-'+i" :cx="80 + i * 60" cy="60" r="10" fill="#3b82f6" />
-          <circle v-for="(commit, i) in branchCommits" :key="'branch-'+i" :cx="200 + i * 60" cy="100" r="10" fill="#10b981" />
+          <circle
+            v-for="(commit, i) in mainCommits"
+            :key="'main-' + i"
+            :cx="80 + i * 60"
+            cy="60"
+            r="10"
+            fill="#3b82f6"
+          />
+          <circle
+            v-for="(commit, i) in branchCommits"
+            :key="'branch-' + i"
+            :cx="200 + i * 60"
+            cy="100"
+            r="10"
+            fill="#10b981"
+          />
         </svg>
       </div>
     </div>
@@ -65,7 +115,9 @@
 
     <!-- 说明 -->
     <div class="info-box">
-      <p><strong>💡 工作流程:</strong> 初始化 → 提交 → 创建分支 → 开发 → 合并</p>
+      <p>
+        <strong>💡 工作流程:</strong> 初始化 → 提交 → 创建分支 → 开发 → 合并
+      </p>
     </div>
   </div>
 </template>

@@ -3,11 +3,14 @@
     <!-- Modern Timeline -->
     <div class="timeline-container">
       <div class="timeline-track"></div>
-      <button 
-        v-for="(stage, index) in stages" 
+      <button
+        v-for="(stage, index) in stages"
         :key="index"
         class="timeline-node"
-        :class="{ active: currentStage === index, passed: currentStage > index }"
+        :class="{
+          active: currentStage === index,
+          passed: currentStage > index
+        }"
         @click="currentStage = index"
       >
         <div class="node-dot">
@@ -25,7 +28,9 @@
         <div :key="currentStage" class="stage-content">
           <div class="header-section">
             <h3>
-              <span class="stage-index">{{ indexToRoman(currentStage + 1) }}.</span>
+              <span class="stage-index"
+                >{{ indexToRoman(currentStage + 1) }}.</span
+              >
               {{ stages[currentStage].title }}
             </h3>
             <p>{{ stages[currentStage].desc }}</p>
@@ -40,7 +45,9 @@
                   <span class="light yellow"></span>
                   <span class="light green"></span>
                 </div>
-                <div class="window-title">{{ stages[currentStage].codeTitle }}</div>
+                <div class="window-title">
+                  {{ stages[currentStage].codeTitle }}
+                </div>
               </div>
               <div class="editor-content">
                 <pre><code>{{ stages[currentStage].code }}</code></pre>
@@ -53,7 +60,6 @@
                 <div class="window-title">Architecture Pattern</div>
               </div>
               <div class="diagram-canvas">
-                
                 <!-- Stage 0: Static -->
                 <div v-if="currentStage === 0" class="diagram static">
                   <div class="flow-stack">
@@ -75,9 +81,21 @@
                   </div>
                   <div class="chaos-arrows">
                     <svg viewBox="0 0 100 60" class="chaos-svg">
-                      <path d="M10,10 Q50,5 90,10" class="arrow-path" marker-end="url(#arrowhead)"/>
-                      <path d="M90,50 Q50,55 10,50" class="arrow-path" marker-end="url(#arrowhead)"/>
-                      <path d="M20,20 Q50,40 80,20" class="arrow-path dashed" marker-end="url(#arrowhead)"/>
+                      <path
+                        d="M10,10 Q50,5 90,10"
+                        class="arrow-path"
+                        marker-end="url(#arrowhead)"
+                      />
+                      <path
+                        d="M90,50 Q50,55 10,50"
+                        class="arrow-path"
+                        marker-end="url(#arrowhead)"
+                      />
+                      <path
+                        d="M20,20 Q50,40 80,20"
+                        class="arrow-path dashed"
+                        marker-end="url(#arrowhead)"
+                      />
                     </svg>
                     <span class="label-action">Direct Manipulation</span>
                     <span class="label-event">Events</span>
@@ -85,11 +103,18 @@
                   <div class="concept-box js">
                     <span class="icon">🍝</span> jQuery / JS
                   </div>
-                  
+
                   <!-- SVG Marker Definition -->
-                  <svg style="position: absolute; width: 0; height: 0;">
+                  <svg style="position: absolute; width: 0; height: 0">
                     <defs>
-                      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                      <marker
+                        id="arrowhead"
+                        markerWidth="10"
+                        markerHeight="7"
+                        refX="9"
+                        refY="3.5"
+                        orient="auto"
+                      >
                         <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
                       </marker>
                     </defs>
@@ -102,7 +127,7 @@
                     <div class="concept-box model">Model</div>
                     <div class="concept-box view">View</div>
                     <div class="concept-box controller">Controller</div>
-                    
+
                     <!-- Connecting Lines -->
                     <div class="line m-v"></div>
                     <div class="line v-c"></div>
@@ -128,11 +153,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flow-pill">
-                    State ➔ UI = f(State)
-                  </div>
+                  <div class="flow-pill">State ➔ UI = f(State)</div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -224,11 +246,13 @@ export default {
 .frontend-evolution-demo {
   border-radius: 16px;
   background: var(--vp-c-bg);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
   margin: 2rem 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
 /* --- Timeline --- */
@@ -270,7 +294,8 @@ export default {
   opacity: 0.9;
 }
 
-.timeline-node.active, .timeline-node.passed {
+.timeline-node.active,
+.timeline-node.passed {
   opacity: 1;
 }
 
@@ -385,8 +410,8 @@ export default {
 
 .mac-window {
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -408,8 +433,8 @@ export default {
 
 .window-bar {
   padding: 0.8rem 1rem;
-  background: rgba(255,255,255,0.05); /* Transparent on dark */
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05); /* Transparent on dark */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   position: relative;
@@ -417,7 +442,7 @@ export default {
 
 .diagram-window .window-bar {
   background: white;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .traffic-lights {
@@ -431,9 +456,15 @@ export default {
   border-radius: 50%;
 }
 
-.light.red { background: #ff5f56; }
-.light.yellow { background: #ffbd2e; }
-.light.green { background: #27c93f; }
+.light.red {
+  background: #ff5f56;
+}
+.light.yellow {
+  background: #ffbd2e;
+}
+.light.green {
+  background: #27c93f;
+}
 
 .window-title {
   position: absolute;
@@ -482,10 +513,10 @@ export default {
 /* --- Diagram Specifics --- */
 .concept-box {
   background: white;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   font-weight: 600;
   font-size: 0.9rem;
   display: flex;
@@ -494,7 +525,9 @@ export default {
   z-index: 2;
 }
 
-.icon { font-size: 1.2rem; }
+.icon {
+  font-size: 1.2rem;
+}
 
 /* Static Diagram */
 .diagram.static .flow-stack {
@@ -507,7 +540,7 @@ export default {
   margin-top: 1rem;
   font-size: 0.8rem;
   color: var(--vp-c-text-3);
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   padding: 4px 8px;
   border-radius: 4px;
 }
@@ -542,16 +575,21 @@ export default {
 .arrow-path.dashed {
   stroke-dasharray: 4;
 }
-.label-action, .label-event {
+.label-action,
+.label-event {
   font-size: 0.75rem;
   background: white;
   padding: 2px 4px;
   border-radius: 4px;
   z-index: 1;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.label-action { transform: translate(-20px, -10px); }
-.label-event { transform: translate(20px, 10px); }
+.label-action {
+  transform: translate(-20px, -10px);
+}
+.label-event {
+  transform: translate(20px, 10px);
+}
 
 /* MVC Diagram */
 .diagram.mvc {
@@ -563,9 +601,22 @@ export default {
   width: 200px;
   height: 160px;
 }
-.mvc-triangle .model { position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
-.mvc-triangle .view { position: absolute; bottom: 0; left: 0; }
-.mvc-triangle .controller { position: absolute; bottom: 0; right: 0; }
+.mvc-triangle .model {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mvc-triangle .view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.mvc-triangle .controller {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 
 .line {
   position: absolute;
@@ -636,9 +687,18 @@ export default {
 .comp-children.row {
   margin-top: 4px;
 }
-.comp-box.header { background: #dbeafe; border-style: dashed; }
-.comp-box.list { background: #dbeafe; }
-.comp-box.item { background: #bfdbfe; font-size: 0.7rem; padding: 4px; }
+.comp-box.header {
+  background: #dbeafe;
+  border-style: dashed;
+}
+.comp-box.list {
+  background: #dbeafe;
+}
+.comp-box.item {
+  background: #bfdbfe;
+  font-size: 0.7rem;
+  padding: 4px;
+}
 
 .flow-pill {
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);

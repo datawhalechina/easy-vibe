@@ -101,7 +101,10 @@
               </div>
             </div>
             <div class="sequence-hint">
-              <span v-if="isVLM">Concat: [Vision Tokens] + [Text Tokens] (拼接：视觉在前，文字在后)</span>
+              <span v-if="isVLM"
+                >Concat: [Vision Tokens] + [Text Tokens]
+                (拼接：视觉在前，文字在后)</span
+              >
               <span v-else>Only [Text Tokens] (只有文字 Token)</span>
             </div>
           </div>
@@ -132,8 +135,14 @@
           <h3>VLM = LLM + Vision Encoder (视觉大模型原理)</h3>
           <ul>
             <li><strong>ViT (The Eye):</strong> 把图片编码成视觉特征。</li>
-            <li><strong>Projector (The Translator):</strong> 把视觉特征映射到 LLM 的 Token 空间。</li>
-            <li><strong>Concatenation (拼接):</strong> 把视觉 Token 放在文字 Token 之前，作为同一条输入序列。</li>
+            <li>
+              <strong>Projector (The Translator):</strong> 把视觉特征映射到 LLM
+              的 Token 空间。
+            </li>
+            <li>
+              <strong>Concatenation (拼接):</strong> 把视觉 Token 放在文字 Token
+              之前，作为同一条输入序列。
+            </li>
           </ul>
         </div>
       </transition>

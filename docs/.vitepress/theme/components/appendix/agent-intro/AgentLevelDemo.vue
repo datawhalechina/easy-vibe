@@ -99,19 +99,67 @@ const current = computed(() => levels[level.value])
   gap: 12px;
 }
 
-.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
-.badge { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 999px; padding: 8px 12px; font-weight: 800; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.badge {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+}
 
-.slider { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 10px 12px; }
-input[type='range'] { width: 100%; }
-.ticks { display: flex; justify-content: space-between; color: var(--vp-c-text-2); font-size: 12px; margin-top: 6px; }
+.slider {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+input[type='range'] {
+  width: 100%;
+}
+.ticks {
+  display: flex;
+  justify-content: space-between;
+  color: var(--vp-c-text-2);
+  font-size: 12px;
+  margin-top: 6px;
+}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.card { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.k { font-weight: 800; margin-bottom: 6px; }
-.v { color: var(--vp-c-text-2); line-height: 1.6; }
-ul { margin: 0; padding-left: 18px; color: var(--vp-c-text-2); line-height: 1.6; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.k {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.v {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 </style>
-

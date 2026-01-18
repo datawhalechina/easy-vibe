@@ -5,7 +5,10 @@
         v-for="(stage, index) in stages"
         :key="index"
         class="tracker-node"
-        :class="{ active: currentStage === index, visited: currentStage > index }"
+        :class="{
+          active: currentStage === index,
+          visited: currentStage > index
+        }"
         @click="currentStage = index"
       >
         <div class="node-circle">
@@ -14,7 +17,10 @@
         <span class="node-label">{{ stage.name }}</span>
       </button>
       <div class="tracker-line">
-        <div class="line-fill" :style="{ width: (currentStage / (stages.length - 1)) * 100 + '%' }"></div>
+        <div
+          class="line-fill"
+          :style="{ width: (currentStage / (stages.length - 1)) * 100 + '%' }"
+        ></div>
       </div>
     </div>
 
@@ -23,20 +29,15 @@
         <h2>{{ stages[currentStage].title }}</h2>
         <p>{{ stages[currentStage].desc }}</p>
       </div>
-      
+
       <div class="component-wrapper">
         <transition name="fade" mode="out-in">
-          <component
-            :is="stages[currentStage].component"
-            :key="currentStage"
-          />
+          <component :is="stages[currentStage].component" :key="currentStage" />
         </transition>
       </div>
 
       <div class="action-footer" v-if="currentStage < stages.length - 1">
-        <button class="next-btn" @click="nextStage">
-          下一步 →
-        </button>
+        <button class="next-btn" @click="nextStage">下一步 →</button>
       </div>
     </div>
   </div>
@@ -99,7 +100,7 @@ const nextStage = () => {
   background-color: var(--vp-c-bg-soft);
   overflow: hidden;
   margin: 2rem 0;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
 }
 
 .stage-tracker {
@@ -222,13 +223,13 @@ const nextStage = () => {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .next-btn:hover {
   background: var(--vp-c-brand-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .fade-enter-active,

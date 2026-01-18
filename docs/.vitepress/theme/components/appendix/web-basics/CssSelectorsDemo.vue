@@ -1,13 +1,15 @@
 <template>
   <div class="selectors-demo">
-    <div class="hint">👇 鼠标悬停在左侧 CSS 代码上，看看右侧 HTML 谁会被选中</div>
-    
+    <div class="hint">
+      👇 鼠标悬停在左侧 CSS 代码上，看看右侧 HTML 谁会被选中
+    </div>
+
     <div class="comparison">
       <!-- Left: CSS Rules -->
       <div class="column css-col">
         <div class="col-title">CSS (样式表)</div>
         <div class="rules-list">
-          <div 
+          <div
             class="rule-item"
             :class="{ active: activeType === 'tag' }"
             @mouseenter="activeType = 'tag'"
@@ -21,7 +23,7 @@
             </div>
           </div>
 
-          <div 
+          <div
             class="rule-item"
             :class="{ active: activeType === 'class' }"
             @mouseenter="activeType = 'class'"
@@ -35,7 +37,7 @@
             </div>
           </div>
 
-          <div 
+          <div
             class="rule-item"
             :class="{ active: activeType === 'id' }"
             @mouseenter="activeType = 'id'"
@@ -61,39 +63,30 @@
       <div class="column html-col">
         <div class="col-title">HTML (结构)</div>
         <div class="code-view">
-          <div 
-            class="html-line" 
-            :class="{ highlight: activeType === 'tag' }"
-          >
+          <div class="html-line" :class="{ highlight: activeType === 'tag' }">
             &lt;p&gt;我是普通段落&lt;/p&gt;
           </div>
-          
-          <div 
-            class="html-line" 
-            :class="{ highlight: activeType === 'class' }"
-          >
+
+          <div class="html-line" :class="{ highlight: activeType === 'class' }">
             &lt;div <span class="attr">class="card"</span>&gt;
           </div>
-          
-          <div 
-            class="html-line indent" 
-            :class="{ highlight: activeType === 'tag' || activeType === 'class' }"
+
+          <div
+            class="html-line indent"
+            :class="{
+              highlight: activeType === 'tag' || activeType === 'class'
+            }"
           >
             &lt;p&gt;我是卡片里的段落&lt;/p&gt;
           </div>
-          
-          <div 
-            class="html-line" 
-            :class="{ highlight: activeType === 'class' }"
-          >
+
+          <div class="html-line" :class="{ highlight: activeType === 'class' }">
             &lt;/div&gt;
           </div>
 
-          <div 
-            class="html-line" 
-            :class="{ highlight: activeType === 'id' }"
-          >
-            &lt;button <span class="attr">id="submit-btn"</span>&gt;提交&lt;/button&gt;
+          <div class="html-line" :class="{ highlight: activeType === 'id' }">
+            &lt;button
+            <span class="attr">id="submit-btn"</span>&gt;提交&lt;/button&gt;
           </div>
         </div>
       </div>
@@ -157,7 +150,8 @@ const activeType = ref(null)
   position: relative;
 }
 
-.rule-item:hover, .rule-item.active {
+.rule-item:hover,
+.rule-item.active {
   border-color: var(--vp-c-brand);
   background: var(--vp-c-brand-dimm);
   transform: translateX(5px);
@@ -167,8 +161,12 @@ const activeType = ref(null)
   color: #d73a49; /* Red-ish for selector */
   font-weight: bold;
 }
-.rule-item:nth-child(2) .selector { color: #6f42c1; } /* Purple for class */
-.rule-item:nth-child(3) .selector { color: #005cc5; } /* Blue for ID */
+.rule-item:nth-child(2) .selector {
+  color: #6f42c1;
+} /* Purple for class */
+.rule-item:nth-child(3) .selector {
+  color: #005cc5;
+} /* Blue for ID */
 
 .explanation {
   margin-top: 6px;
@@ -185,9 +183,15 @@ const activeType = ref(null)
   border-radius: 4px;
   color: white;
 }
-.badge.tag { background: #d73a49; }
-.badge.class { background: #6f42c1; }
-.badge.id { background: #005cc5; }
+.badge.tag {
+  background: #d73a49;
+}
+.badge.class {
+  background: #6f42c1;
+}
+.badge.id {
+  background: #005cc5;
+}
 
 /* HTML Column */
 .code-view {
@@ -216,7 +220,7 @@ const activeType = ref(null)
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.3);
   color: white;
-  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .attr {
@@ -242,7 +246,8 @@ const activeType = ref(null)
   .comparison {
     flex-direction: column;
   }
-  .rule-item:hover, .rule-item.active {
+  .rule-item:hover,
+  .rule-item.active {
     transform: translateY(2px);
   }
   .connector {

@@ -13,7 +13,9 @@
       </div>
       <div class="actions">
         <button class="btn" @click="reset">重置</button>
-        <button class="btn primary" @click="nextRound">下一轮 ({{ round }}/3)</button>
+        <button class="btn primary" @click="nextRound">
+          下一轮 ({{ round }}/3)
+        </button>
       </div>
     </div>
 
@@ -124,12 +126,35 @@ const reset = () => {
   gap: 12px;
 }
 
-.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
-.actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.btn { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); padding: 8px 12px; border-radius: 10px; cursor: pointer; }
-.btn.primary { border-color: var(--vp-c-brand); color: var(--vp-c-brand); }
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn.primary {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+}
 
 .cycle {
   display: grid;
@@ -147,17 +172,62 @@ const reset = () => {
   cursor: pointer;
   text-align: left;
 }
-.step.active { border-color: var(--vp-c-brand); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); }
-.icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); }
-.name { font-weight: 800; }
+.step.active {
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+.icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+.name {
+  font-weight: 800;
+}
 
-.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.panel-title { font-weight: 700; margin-bottom: 6px; }
-.panel-body { color: var(--vp-c-text-2); line-height: 1.6; }
+.panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+.panel {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.panel-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.panel-body {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
 
-.log { background: var(--vp-c-bg); border: 1px dashed var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.log-title { font-weight: 700; margin-bottom: 8px; }
-pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 10px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
+.log {
+  background: var(--vp-c-bg);
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.log-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+pre {
+  margin: 0;
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
 </style>
-

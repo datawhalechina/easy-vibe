@@ -38,7 +38,7 @@
               <span class="layer-label" v-if="padding >= 15">Padding</span>
               <div class="content">
                 <div class="content-inner">
-                  内容区<br>
+                  内容区<br />
                   {{ contentW }} × {{ contentH }}
                 </div>
               </div>
@@ -60,7 +60,9 @@
         </div>
         <div class="detail-item">
           <span class="detail-label">计算公式</span>
-          <span class="detail-text">Margin(×2) + Border(×2) + Padding(×2) + 内容宽</span>
+          <span class="detail-text"
+            >Margin(×2) + Border(×2) + Padding(×2) + 内容宽</span
+          >
         </div>
       </div>
     </div>
@@ -69,11 +71,11 @@
       <div class="code-title">CSS 代码片段</div>
       <div class="code-content">
         <div class="line">.box {</div>
-        <div class="line">  width: {{ contentW }}px;</div>
-        <div class="line">  height: {{ contentH }}px;</div>
-        <div class="line">  padding: {{ padding }}px;</div>
-        <div class="line">  border: {{ border }}px solid #0ea5e9;</div>
-        <div class="line">  margin: {{ margin }}px;</div>
+        <div class="line">width: {{ contentW }}px;</div>
+        <div class="line">height: {{ contentH }}px;</div>
+        <div class="line">padding: {{ padding }}px;</div>
+        <div class="line">border: {{ border }}px solid #0ea5e9;</div>
+        <div class="line">margin: {{ margin }}px;</div>
         <div class="line">}</div>
       </div>
     </div>
@@ -89,7 +91,9 @@ const padding = ref(20)
 const border = ref(10)
 const margin = ref(20)
 
-const total = computed(() => margin.value * 2 + border.value * 2 + padding.value * 2 + contentW)
+const total = computed(
+  () => margin.value * 2 + border.value * 2 + padding.value * 2 + contentW
+)
 </script>
 
 <style scoped>
@@ -127,8 +131,15 @@ const total = computed(() => margin.value * 2 + border.value * 2 + padding.value
   font-size: 13px;
 }
 
-label { font-weight: 700; color: var(--vp-c-text-1); }
-.val { font-family: var(--vp-font-family-mono); color: var(--vp-c-brand); font-weight: 600; }
+label {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+.val {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-brand);
+  font-weight: 600;
+}
 
 input[type='range'] {
   width: 100%;
@@ -179,7 +190,9 @@ input[type='range'] {
   border: 1px dashed #d1d5db; /* gray-300 */
   color: #6b7280;
 }
-.margin > .layer-label { color: #6b7280; }
+.margin > .layer-label {
+  color: #6b7280;
+}
 
 /* Border Layer */
 .border {
@@ -188,7 +201,9 @@ input[type='range'] {
   border-color: #7dd3fc; /* sky-300 */
   color: #0284c7;
 }
-.border > .layer-label { color: #0284c7; }
+.border > .layer-label {
+  color: #0284c7;
+}
 
 /* Padding Layer */
 .padding {
@@ -196,7 +211,9 @@ input[type='range'] {
   border: 1px dashed #93c5fd; /* blue-300 */
   color: #2563eb;
 }
-.padding > .layer-label { color: #2563eb; }
+.padding > .layer-label {
+  color: #2563eb;
+}
 
 /* Content Box */
 .content {
@@ -237,7 +254,9 @@ input[type='range'] {
   font-weight: 600;
 }
 
-.meta-value { color: var(--vp-c-brand); }
+.meta-value {
+  color: var(--vp-c-brand);
+}
 
 .meta-detail {
   display: flex;

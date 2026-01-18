@@ -10,7 +10,10 @@
         <div class="subtitle">就像一台“全自动炒菜机”</div>
       </div>
       <div class="actions">
-        <label class="fail-toggle"><input type="checkbox" v-model="failTest" /> 混入一颗烂菜 (模拟报错)</label>
+        <label class="fail-toggle"
+          ><input type="checkbox" v-model="failTest" /> 混入一颗烂菜
+          (模拟报错)</label
+        >
         <button :disabled="running" @click="run" class="run-btn">
           {{ running ? '机器运转中...' : '开始做菜 (触发构建)' }}
         </button>
@@ -48,12 +51,12 @@ const steps = ref([
     desc: 'npm install',
     status: 'idle'
   },
-  { 
-    id: 'test', 
-    name: '自动测试 (Test)', 
-    analogy: '🔍 食品安检', 
-    desc: 'npm test', 
-    status: 'idle' 
+  {
+    id: 'test',
+    name: '自动测试 (Test)',
+    analogy: '🔍 食品安检',
+    desc: 'npm test',
+    status: 'idle'
   },
   {
     id: 'build',
@@ -105,10 +108,10 @@ const run = async () => {
       ms: 800,
       log: '> 正在检查食材新鲜度...\n> 单元测试运行中...'
     },
-    { 
-      id: 'build', 
-      ms: 1200, 
-      log: '> 开始烹饪...\n> 正在压缩混淆代码...\n> 产出 dist/ 目录 (一盘好菜)' 
+    {
+      id: 'build',
+      ms: 1200,
+      log: '> 开始烹饪...\n> 正在压缩混淆代码...\n> 产出 dist/ 目录 (一盘好菜)'
     },
     {
       id: 'deploy',
@@ -125,7 +128,8 @@ const run = async () => {
 
     if (item.id === 'test' && failTest.value) {
       step.status = 'fail'
-      log.value = '❌ 警告：发现一颗烂白菜！(测试失败)\n❌ 立即停机，防止端给顾客。'
+      log.value =
+        '❌ 警告：发现一颗烂白菜！(测试失败)\n❌ 立即停机，防止端给顾客。'
       steps.value
         .filter((s) => s.id !== 'test')
         .forEach((s) => (s.status = 'idle'))

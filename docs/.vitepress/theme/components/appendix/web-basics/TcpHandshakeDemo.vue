@@ -2,10 +2,13 @@
   <div class="tcp-handshake-demo">
     <div class="controls">
       <div class="status-indicator">
-        {{ t.statusLabel }}: <span :class="connectionStatus.toLowerCase()">{{ statusText }}</span>
+        {{ t.statusLabel }}:
+        <span :class="connectionStatus.toLowerCase()">{{ statusText }}</span>
       </div>
       <div class="buttons">
-        <button v-if="step === 0" @click="startHandshake" class="action-btn">{{ t.connect }}</button>
+        <button v-if="step === 0" @click="startHandshake" class="action-btn">
+          {{ t.connect }}
+        </button>
         <button v-else @click="reset" class="reset-btn">{{ t.reset }}</button>
       </div>
     </div>
@@ -19,7 +22,9 @@
         </div>
         <div class="line"></div>
         <div class="state-marker" :class="{ active: step >= 1 }">SYN_SENT</div>
-        <div class="state-marker" :class="{ active: step >= 3 }">ESTABLISHED</div>
+        <div class="state-marker" :class="{ active: step >= 3 }">
+          ESTABLISHED
+        </div>
       </div>
 
       <!-- Interaction Area -->
@@ -63,7 +68,9 @@
         </div>
         <div class="line"></div>
         <div class="state-marker" :class="{ active: step >= 2 }">SYN_RCVD</div>
-        <div class="state-marker" :class="{ active: step >= 3 }">ESTABLISHED</div>
+        <div class="state-marker" :class="{ active: step >= 3 }">
+          ESTABLISHED
+        </div>
       </div>
     </div>
 
@@ -123,21 +130,21 @@ const currentDescription = computed(() => {
   return t.steps[step.value] || ''
 })
 
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const startHandshake = async () => {
   if (step.value > 0) return
-  
+
   // Step 1: SYN
   step.value = 1
   showSyn.value = true
   await wait(1500)
-  
+
   // Step 2: SYN-ACK
   step.value = 2
   showSynAck.value = true
   await wait(1500)
-  
+
   // Step 3: ACK
   step.value = 3
   showAck.value = true
@@ -173,9 +180,15 @@ const reset = () => {
 .status-indicator {
   font-weight: bold;
 }
-.status-indicator span.closed { color: var(--vp-c-text-3); }
-.status-indicator span.handshaking { color: #f59e0b; }
-.status-indicator span.established { color: #10b981; }
+.status-indicator span.closed {
+  color: var(--vp-c-text-3);
+}
+.status-indicator span.handshaking {
+  color: #f59e0b;
+}
+.status-indicator span.established {
+  color: #10b981;
+}
 
 .action-btn {
   background: #3b82f6;
@@ -269,15 +282,24 @@ const reset = () => {
   flex-direction: column;
   align-items: center;
   min-width: 120px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
 
-.packet.syn-ack { background: #f59e0b; }
-.packet.ack { background: #10b981; }
+.packet.syn-ack {
+  background: #f59e0b;
+}
+.packet.ack {
+  background: #10b981;
+}
 
-.packet-body { font-weight: bold; }
-.packet-detail { font-size: 0.7rem; opacity: 0.9; }
+.packet-body {
+  font-weight: bold;
+}
+.packet-detail {
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
 
 /* Animations */
 .slide-right-enter-active {
@@ -288,10 +310,20 @@ const reset = () => {
 }
 
 @keyframes slide-right {
-  0% { transform: translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(100%); opacity: 1; } /* Not quite right, need to stick */
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 1;
+  } /* Not quite right, need to stick */
 }
 
 /* 
@@ -333,13 +365,25 @@ Here I want it to appear and move.
 }
 
 @keyframes moveRight {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes moveLeft {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .description-box {

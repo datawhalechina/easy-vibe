@@ -10,8 +10,20 @@
         <div class="subtitle">点步骤，看“工具调用”和“中间结果”。</div>
       </div>
       <div class="actions">
-        <button class="btn" @click="step = Math.max(0, step - 1)" :disabled="step === 0">上一步</button>
-        <button class="btn primary" @click="step = Math.min(steps.length - 1, step + 1)" :disabled="step === steps.length - 1">下一步</button>
+        <button
+          class="btn"
+          @click="step = Math.max(0, step - 1)"
+          :disabled="step === 0"
+        >
+          上一步
+        </button>
+        <button
+          class="btn primary"
+          @click="step = Math.min(steps.length - 1, step + 1)"
+          :disabled="step === steps.length - 1"
+        >
+          下一步
+        </button>
       </div>
     </div>
 
@@ -94,24 +106,102 @@ const steps = [
   flex-direction: column;
   gap: 12px;
 }
-.header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.title { font-weight: 800; }
-.subtitle { color: var(--vp-c-text-2); font-size: 13px; }
-.actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.btn { border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); padding: 8px 12px; border-radius: 10px; cursor: pointer; }
-.btn.primary { border-color: var(--vp-c-brand); color: var(--vp-c-brand); }
-.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-weight: 800;
+}
+.subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn.primary {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
-.timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
-.t { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 10px; display: flex; gap: 10px; align-items: center; cursor: pointer; text-align: left; }
-.t.active { border-color: var(--vp-c-brand); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); }
-.n { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); font-weight: 800; }
-.txt { font-weight: 800; }
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+.t {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+.t.active {
+  border-color: var(--vp-c-brand);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+.n {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  font-weight: 800;
+}
+.txt {
+  font-weight: 800;
+}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 12px; }
-.panel-title { font-weight: 700; margin-bottom: 6px; }
-.panel-body { color: var(--vp-c-text-2); line-height: 1.6; }
-pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 10px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.panel {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 12px;
+}
+.panel-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.panel-body {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+pre {
+  margin: 0;
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
 </style>
-

@@ -10,46 +10,52 @@
         <span class="lock-icon">🔒</span>
         <!-- Segmented URL Display -->
         <div class="segmented-url" v-if="parsedUrl">
-          <span 
-            class="url-part protocol" 
+          <span
+            class="url-part protocol"
             :class="{ active: highlightedPart === 'protocol' }"
             @mouseover="highlightedPart = 'protocol'"
             @mouseleave="highlightedPart = null"
-          >{{ parts.protocol }}:</span>
+            >{{ parts.protocol }}:</span
+          >
           <span class="divider">//</span>
-          <span 
+          <span
             class="url-part host"
             :class="{ active: highlightedPart === 'host' }"
             @mouseover="highlightedPart = 'host'"
             @mouseleave="highlightedPart = null"
-          >{{ parts.host }}</span>
-          <span 
+            >{{ parts.host }}</span
+          >
+          <span
             v-if="parts.port"
             class="url-part port"
             :class="{ active: highlightedPart === 'port' }"
             @mouseover="highlightedPart = 'port'"
             @mouseleave="highlightedPart = null"
-          >:{{ parts.port }}</span>
-          <span 
+            >:{{ parts.port }}</span
+          >
+          <span
             class="url-part pathname"
             :class="{ active: highlightedPart === 'pathname' }"
             @mouseover="highlightedPart = 'pathname'"
             @mouseleave="highlightedPart = null"
-          >{{ parts.pathname }}</span>
-          <span 
+            >{{ parts.pathname }}</span
+          >
+          <span
             v-if="parts.search"
             class="url-part search"
             :class="{ active: highlightedPart === 'search' }"
             @mouseover="highlightedPart = 'search'"
             @mouseleave="highlightedPart = null"
-          >{{ parts.search }}</span>
-          <span 
+            >{{ parts.search }}</span
+          >
+          <span
             v-if="parts.hash"
             class="url-part hash"
             :class="{ active: highlightedPart === 'hash' }"
             @mouseover="highlightedPart = 'hash'"
             @mouseleave="highlightedPart = null"
-          >{{ parts.hash }}</span>
+            >{{ parts.hash }}</span
+          >
         </div>
         <input
           v-else
@@ -63,8 +69,8 @@
 
     <div class="visualization-area">
       <div v-if="parsedUrl" class="url-breakdown">
-        <div 
-          v-for="(part, key) in parts" 
+        <div
+          v-for="(part, key) in parts"
           :key="key"
           class="url-segment"
           :class="[key, { active: highlightedPart === key }]"
@@ -79,9 +85,7 @@
           <div class="segment-desc">{{ descriptions[key] }}</div>
         </div>
       </div>
-      <div v-else class="error-state">
-        Invalid URL format / 无效的 URL 格式
-      </div>
+      <div v-else class="error-state">Invalid URL format / 无效的 URL 格式</div>
     </div>
   </div>
 </template>
@@ -139,7 +143,9 @@ const parts = computed(() => {
   return {
     protocol: parsedUrl.value.protocol.replace(':', ''),
     host: parsedUrl.value.hostname,
-    port: parsedUrl.value.port || (parsedUrl.value.protocol === 'https:' ? '443' : '80'),
+    port:
+      parsedUrl.value.port ||
+      (parsedUrl.value.protocol === 'https:' ? '443' : '80'),
     pathname: parsedUrl.value.pathname,
     search: parsedUrl.value.search,
     hash: parsedUrl.value.hash
@@ -183,7 +189,7 @@ const parts = computed(() => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   font-size: 0.9rem;
   overflow: hidden;
 }
@@ -207,23 +213,48 @@ const parts = computed(() => {
   font-weight: bold;
 }
 
-.url-part:hover, .url-part.active {
+.url-part:hover,
+.url-part.active {
   transform: scale(1.1);
 }
 
-.url-part.protocol { color: #ef4444; }
-.url-part.host { color: #3b82f6; }
-.url-part.port { color: #f59e0b; }
-.url-part.pathname { color: #10b981; }
-.url-part.search { color: #8b5cf6; }
-.url-part.hash { color: #ec4899; }
+.url-part.protocol {
+  color: #ef4444;
+}
+.url-part.host {
+  color: #3b82f6;
+}
+.url-part.port {
+  color: #f59e0b;
+}
+.url-part.pathname {
+  color: #10b981;
+}
+.url-part.search {
+  color: #8b5cf6;
+}
+.url-part.hash {
+  color: #ec4899;
+}
 
-.url-part.active.protocol { background: #fef2f2; }
-.url-part.active.host { background: #eff6ff; }
-.url-part.active.port { background: #fffbeb; }
-.url-part.active.pathname { background: #ecfdf5; }
-.url-part.active.search { background: #f5f3ff; }
-.url-part.active.hash { background: #fdf2f8; }
+.url-part.active.protocol {
+  background: #fef2f2;
+}
+.url-part.active.host {
+  background: #eff6ff;
+}
+.url-part.active.port {
+  background: #fffbeb;
+}
+.url-part.active.pathname {
+  background: #ecfdf5;
+}
+.url-part.active.search {
+  background: #f5f3ff;
+}
+.url-part.active.hash {
+  background: #fdf2f8;
+}
 
 .divider {
   color: var(--vp-c-text-3);
@@ -254,29 +285,53 @@ const parts = computed(() => {
 
 .url-segment.active {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Color Coding for Cards */
-.url-segment.protocol { border-color: #ef4444; }
-.url-segment.host { border-color: #3b82f6; }
-.url-segment.port { border-color: #f59e0b; }
-.url-segment.pathname { border-color: #10b981; }
-.url-segment.search { border-color: #8b5cf6; }
-.url-segment.hash { border-color: #ec4899; }
+.url-segment.protocol {
+  border-color: #ef4444;
+}
+.url-segment.host {
+  border-color: #3b82f6;
+}
+.url-segment.port {
+  border-color: #f59e0b;
+}
+.url-segment.pathname {
+  border-color: #10b981;
+}
+.url-segment.search {
+  border-color: #8b5cf6;
+}
+.url-segment.hash {
+  border-color: #ec4899;
+}
 
-.url-segment.active.protocol { background: #fef2f2; }
-.url-segment.active.host { background: #eff6ff; }
-.url-segment.active.port { background: #fffbeb; }
-.url-segment.active.pathname { background: #ecfdf5; }
-.url-segment.active.search { background: #f5f3ff; }
-.url-segment.active.hash { background: #fdf2f8; }
+.url-segment.active.protocol {
+  background: #fef2f2;
+}
+.url-segment.active.host {
+  background: #eff6ff;
+}
+.url-segment.active.port {
+  background: #fffbeb;
+}
+.url-segment.active.pathname {
+  background: #ecfdf5;
+}
+.url-segment.active.search {
+  background: #f5f3ff;
+}
+.url-segment.active.hash {
+  background: #fdf2f8;
+}
 
 .segment-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding-bottom: 0.5rem;
 }
 

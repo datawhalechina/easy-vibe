@@ -10,7 +10,10 @@
         <input v-model="title" placeholder="输入新标题" />
       </div>
       <div class="field checkbox">
-        <label><input type="checkbox" v-model="highlight" /> 高亮模式 (class="highlight")</label>
+        <label
+          ><input type="checkbox" v-model="highlight" /> 高亮模式
+          (class="highlight")</label
+        >
       </div>
     </div>
 
@@ -43,17 +46,75 @@ const toggleText = () => {
 </script>
 
 <style scoped>
-.dom-demo { border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); padding: 16px; margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
-.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
-.field { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
-.checkbox { flex-direction: row; align-items: center; gap: 8px; }
-input[type='text'], input[type='checkbox'] { accent-color: var(--vp-c-brand); }
+.dom-demo {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  padding: 16px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.field {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+input[type='text'],
+input[type='checkbox'] {
+  accent-color: var(--vp-c-brand);
+}
 
-.card { border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 16px; background: var(--vp-c-bg); transition: all 0.2s; }
-.card.highlight { border-color: #f59e0b; box-shadow: 0 8px 18px rgba(245, 158, 11, 0.2); background: #fff7ed; }
-.card h2 { margin: 0 0 8px 0; }
-.card p { margin: 0 0 12px 0; color: var(--vp-c-text-2); }
-.card button { background: var(--vp-c-brand); color: #fff; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 16px;
+  background: var(--vp-c-bg);
+  transition: all 0.2s;
+}
+.card.highlight {
+  border-color: #f59e0b;
+  box-shadow: 0 8px 18px rgba(245, 158, 11, 0.2);
+  background: #fff7ed;
+}
+.card h2 {
+  margin: 0 0 8px 0;
+}
+.card p {
+  margin: 0 0 12px 0;
+  color: var(--vp-c-text-2);
+}
+.card button {
+  background: var(--vp-c-brand);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 
-.code { background: #0b1221; color: #e5e7eb; border-radius: 10px; padding: 12px; font-family: var(--vp-font-family-mono); font-size: 13px; overflow-x: auto; }
+.code {
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  overflow-x: auto;
+}
 </style>

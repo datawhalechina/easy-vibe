@@ -16,9 +16,15 @@
     </div>
 
     <div class="panel">
-      <div class="row"><span class="label">用途</span><span>{{ current.purpose }}</span></div>
-      <div class="row"><span class="label">类型</span><span>{{ current.display }}</span></div>
-      <div class="row"><span class="label">常见位置</span><span>{{ current.scene }}</span></div>
+      <div class="row">
+        <span class="label">用途</span><span>{{ current.purpose }}</span>
+      </div>
+      <div class="row">
+        <span class="label">类型</span><span>{{ current.display }}</span>
+      </div>
+      <div class="row">
+        <span class="label">常见位置</span><span>{{ current.scene }}</span>
+      </div>
       <div class="row code-title">示例</div>
       <pre><code>{{ current.example }}</code></pre>
       <div class="row code-title">渲染效果</div>
@@ -102,21 +108,80 @@ const current = ref(tags[0])
 </script>
 
 <style scoped>
-.semantic { border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); padding: 16px; margin: 20px 0; display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
-@media (max-width: 720px) { .semantic { grid-template-columns: 1fr; } }
-.tags { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
-.tag-btn { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); cursor: pointer; text-align: left; }
-.tag-btn.active { border-color: var(--vp-c-brand); color: var(--vp-c-brand); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.panel { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
-.row { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; }
-.label { color: var(--vp-c-text-2); font-weight: 700; }
-.code-title { font-weight: 700; margin-top: 4px; }
-pre { margin: 0; background: #0b1221; color: #e5e7eb; border-radius: 8px; padding: 10px; font-family: var(--vp-font-family-mono); font-size: 13px; white-space: pre-wrap; }
+.semantic {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  padding: 16px;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+}
+@media (max-width: 720px) {
+  .semantic {
+    grid-template-columns: 1fr;
+  }
+}
+.tags {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+.tag-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  cursor: pointer;
+  text-align: left;
+}
+.tag-btn.active {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.panel {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+}
+.label {
+  color: var(--vp-c-text-2);
+  font-weight: 700;
+}
+.code-title {
+  font-weight: 700;
+  margin-top: 4px;
+}
+pre {
+  margin: 0;
+  background: #0b1221;
+  color: #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  white-space: pre-wrap;
+}
 .preview-box {
   border: 1px dashed var(--vp-c-divider);
   padding: 16px;
   border-radius: 8px;
   background: var(--vp-c-bg);
 }
-.tip { color: var(--vp-c-text-2); font-size: 13px; }
+.tip {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+}
 </style>

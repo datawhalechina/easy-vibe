@@ -103,9 +103,27 @@ const closeTab = (index) => {
 
 const activeSidebarView = ref('EXPLORER') // 'EXPLORER' | 'EXTENSIONS'
 const extensions = ref([
-  { id: 'python', name: 'Python', description: 'IntelliSense, linting, debugging...', installed: false, installing: false },
-  { id: 'cpp', name: 'C/C++', description: 'C/C++ IntelliSense, debugging...', installed: false, installing: false },
-  { id: 'vue', name: 'Vue - Official', description: 'Language support for Vue 3', installed: false, installing: false },
+  {
+    id: 'python',
+    name: 'Python',
+    description: 'IntelliSense, linting, debugging...',
+    installed: false,
+    installing: false
+  },
+  {
+    id: 'cpp',
+    name: 'C/C++',
+    description: 'C/C++ IntelliSense, debugging...',
+    installed: false,
+    installing: false
+  },
+  {
+    id: 'vue',
+    name: 'Vue - Official',
+    description: 'Language support for Vue 3',
+    installed: false,
+    installing: false
+  }
 ])
 
 const searchQuery = ref('')
@@ -113,22 +131,23 @@ const searchQuery = ref('')
 const typeText = async (text, setter) => {
   for (let i = 0; i < text.length; i++) {
     setter(text.substring(0, i + 1))
-    await new Promise(r => setTimeout(r, 100)) // typing speed
+    await new Promise((r) => setTimeout(r, 100)) // typing speed
   }
 }
 
 const filteredExtensions = computed(() => {
   if (!searchQuery.value) return extensions.value
   const query = searchQuery.value.toLowerCase()
-  return extensions.value.filter(ext => 
-    ext.name.toLowerCase().includes(query) || 
-    ext.description.toLowerCase().includes(query)
+  return extensions.value.filter(
+    (ext) =>
+      ext.name.toLowerCase().includes(query) ||
+      ext.description.toLowerCase().includes(query)
   )
 })
 
 const installExtension = (id) => {
-  const ext = extensions.value.find(e => e.id === id)
-  if(ext && !ext.installed && !ext.installing) {
+  const ext = extensions.value.find((e) => e.id === id)
+  if (ext && !ext.installed && !ext.installing) {
     ext.installing = true
     setTimeout(() => {
       ext.installing = false
@@ -302,64 +321,67 @@ const vClickOutside = {
 }
 
 const startTour = async () => {
-    if (isAutoPlaying.value) return
-    isAutoPlaying.value = true
-    cursorVisible.value = true
+  if (isAutoPlaying.value) return
+  isAutoPlaying.value = true
+  cursorVisible.value = true
 
-    // Reset UI state to ensure all elements are visible
-    activeFileIndex.value = 0
-    activePanel.value = 'TERMINAL'
-    sidebarVisible.value = false
-    panelVisible.value = true
-    activeMenu.value = null
-    hoverInfo.value = ''
-    searchQuery.value = '' // Reset search
-    activeSidebarView.value = 'EXPLORER' // Reset sidebar view
+  // Reset UI state to ensure all elements are visible
+  activeFileIndex.value = 0
+  activePanel.value = 'TERMINAL'
+  sidebarVisible.value = false
+  panelVisible.value = true
+  activeMenu.value = null
+  hoverInfo.value = ''
+  searchQuery.value = '' // Reset search
+  activeSidebarView.value = 'EXPLORER' // Reset sidebar view
 
-    const container = vscodeMockRef.value
-    if (!container) return
+  const container = vscodeMockRef.value
+  if (!container) return
 
-    const moveCursorTo = (selector, infoText, action = null) => {
-      return new Promise((resolve) => {
-        if (action) action()
+  const moveCursorTo = (selector, infoText, action = null) => {
+    return new Promise((resolve) => {
+      if (action) action()
 
-        // Small delay to allow UI updates (like opening menus)
-        setTimeout(() => {
-          const el = container.querySelector(selector)
-          if (el) {
-            // Recalculate container rect in case of scroll
-            const containerRect = container.getBoundingClientRect()
-            const rect = el.getBoundingClientRect()
-            
-            // Calculate relative position
-            cursorX.value = rect.left - containerRect.left + rect.width / 2
-            cursorY.value = rect.top - containerRect.top + rect.height / 2
+      // Small delay to allow UI updates (like opening menus)
+      setTimeout(() => {
+        const el = container.querySelector(selector)
+        if (el) {
+          // Recalculate container rect in case of scroll
+          const containerRect = container.getBoundingClientRect()
+          const rect = el.getBoundingClientRect()
 
-            // Update highlight box
-            // Use box-sizing: border-box in CSS
-            // Match exact size (border will be drawn inside the element area)
-            highlightStyle.value = {
-              top: rect.top - containerRect.top + 'px',
-              left: rect.left - containerRect.left + 'px',
-              width: rect.width + 'px',
-              height: rect.height + 'px'
-            }
-            highlightVisible.value = true
+          // Calculate relative position
+          cursorX.value = rect.left - containerRect.left + rect.width / 2
+          cursorY.value = rect.top - containerRect.top + rect.height / 2
 
-            hoverInfo.value = infoText
-          } else {
-             // Fallback if element not found: just proceed after delay
-             // This prevents the tour from hanging forever
-             console.warn(`Tour element not found: ${selector}`)
+          // Update highlight box
+          // Use box-sizing: border-box in CSS
+          // Match exact size (border will be drawn inside the element area)
+          highlightStyle.value = {
+            top: rect.top - containerRect.top + 'px',
+            left: rect.left - containerRect.left + 'px',
+            width: rect.width + 'px',
+            height: rect.height + 'px'
           }
-          
-          tourTimeout = setTimeout(() => {
+          highlightVisible.value = true
+
+          hoverInfo.value = infoText
+        } else {
+          // Fallback if element not found: just proceed after delay
+          // This prevents the tour from hanging forever
+          console.warn(`Tour element not found: ${selector}`)
+        }
+
+        tourTimeout = setTimeout(
+          () => {
             highlightVisible.value = false
             resolve()
-          }, el ? 2500 : 500) // Shorter delay if skipped
-        }, 800) // Increased delay for better stability
-      })
-    }
+          },
+          el ? 2500 : 500
+        ) // Shorter delay if skipped
+      }, 800) // Increased delay for better stability
+    })
+  }
 
   // --- Tour Segments ---
 
@@ -369,25 +391,17 @@ const startTour = async () => {
     if (!isAutoPlaying.value) return
 
     // Menus
-    await moveCursorTo(
-      '.menu-bar-container',
-      '菜单栏：所有功能'
-    )
+    await moveCursorTo('.menu-bar-container', '菜单栏：所有功能')
     if (!isAutoPlaying.value) return
 
     // Demonstrate clicking a menu
-    await moveCursorTo(
-      '.menu-item:nth-child(1)',
-      '文件菜单：文件操作',
-      () => toggleMenu('File')
+    await moveCursorTo('.menu-item:nth-child(1)', '文件菜单：文件操作', () =>
+      toggleMenu('File')
     )
     if (!isAutoPlaying.value) return
 
     // Show a specific item in the dropdown
-    await moveCursorTo(
-      '.dropdown-item:nth-child(1)',
-      '新建文件：创建空文件'
-    )
+    await moveCursorTo('.dropdown-item:nth-child(1)', '新建文件：创建空文件')
     if (!isAutoPlaying.value) return
 
     // Close menu
@@ -397,55 +411,36 @@ const startTour = async () => {
     await moveCursorTo('.nav-arrows', '导航按钮：后退/前进')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.search-box',
-      '命令中心：快速搜索'
-    )
+    await moveCursorTo('.search-box', '命令中心：快速搜索')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.layout-controls',
-      '布局控制：切换视图'
-    )
+    await moveCursorTo('.layout-controls', '布局控制：切换视图')
   }
 
   const runActivityBarTour = async () => {
     // --- 2. Activity Bar (Left) ---
-    await moveCursorTo(
-      '.activity-bar',
-      '活动栏：切换视图'
-    )
+    await moveCursorTo('.activity-bar', '活动栏：切换视图')
     if (!isAutoPlaying.value) return
 
     await moveCursorTo(
       '.icon[title="Explorer"]',
       '资源管理器：管理文件',
-      () => { sidebarVisible.value = true }
+      () => {
+        sidebarVisible.value = true
+      }
     )
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.icon[title="Search"]',
-      '全局搜索：查找替换'
-    )
+    await moveCursorTo('.icon[title="Search"]', '全局搜索：查找替换')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.icon[title="Source Control"]',
-      '源代码管理：Git'
-    )
+    await moveCursorTo('.icon[title="Source Control"]', '源代码管理：Git')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.icon[title="Run and Debug"]',
-      '运行和调试：调试代码'
-    )
+    await moveCursorTo('.icon[title="Run and Debug"]', '运行和调试：调试代码')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.icon[title="Extensions"]',
-      '扩展商店：安装插件'
-    )
+    await moveCursorTo('.icon[title="Extensions"]', '扩展商店：安装插件')
     if (!isAutoPlaying.value) return
 
     await moveCursorTo('.icon[title="Accounts"]', '账户：同步设置')
@@ -460,7 +455,7 @@ const startTour = async () => {
       sidebarVisible.value = true
       await new Promise((r) => setTimeout(r, 300))
     }
-    
+
     await moveCursorTo('.sidebar', '侧边栏：详细内容')
     if (!isAutoPlaying.value) return
 
@@ -470,10 +465,7 @@ const startTour = async () => {
     )
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.sidebar-section:nth-child(3)',
-      '项目文件树：项目结构'
-    )
+    await moveCursorTo('.sidebar-section:nth-child(3)', '项目文件树：项目结构')
   }
 
   const runEditorTour = async () => {
@@ -487,22 +479,13 @@ const startTour = async () => {
     }
 
     // --- 4. Editor Area ---
-    await moveCursorTo(
-      '.tabs',
-      '标签页：已打开文件'
-    )
+    await moveCursorTo('.tabs', '标签页：已打开文件')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.breadcrumbs',
-      '路径导航：文件路径'
-    )
+    await moveCursorTo('.breadcrumbs', '路径导航：文件路径')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.code-wrapper',
-      '编辑区：编写代码'
-    )
+    await moveCursorTo('.code-wrapper', '编辑区：编写代码')
     if (!isAutoPlaying.value) return
 
     await moveCursorTo('.minimap', '缩略图：预览代码')
@@ -513,33 +496,21 @@ const startTour = async () => {
     await moveCursorTo('.bottom-panel', '底部面板：集成工具')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.panel-tabs',
-      '面板切换：切换工具'
-    )
+    await moveCursorTo('.panel-tabs', '面板切换：切换工具')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.terminal-content',
-      '终端：运行命令'
-    )
+    await moveCursorTo('.terminal-content', '终端：运行命令')
   }
 
   const runStatusTour = async () => {
     // --- 6. Status Bar ---
-    await moveCursorTo(
-      '.status-bar',
-      '状态栏：全局信息'
-    )
+    await moveCursorTo('.status-bar', '状态栏：全局信息')
     if (!isAutoPlaying.value) return
 
     await moveCursorTo('.status-left', '左侧信息：Git/错误')
     if (!isAutoPlaying.value) return
 
-    await moveCursorTo(
-      '.status-right',
-      '右侧信息：环境信息'
-    )
+    await moveCursorTo('.status-right', '右侧信息：环境信息')
   }
 
   try {
@@ -553,8 +524,8 @@ const startTour = async () => {
     }
 
     if (mode === 'all' || mode === 'extensions') {
-       // --- Extensions Tour ---
-       await moveCursorTo(
+      // --- Extensions Tour ---
+      await moveCursorTo(
         '.icon[title="Extensions"]',
         '扩展商店：安装插件',
         () => toggleSidebarView('EXTENSIONS')
@@ -565,7 +536,7 @@ const startTour = async () => {
         '.sidebar-search input',
         '搜索插件：输入 python',
         async () => {
-          await typeText('python', (v) => searchQuery.value = v)
+          await typeText('python', (v) => (searchQuery.value = v))
         }
       )
       if (!isAutoPlaying.value) return
@@ -576,17 +547,13 @@ const startTour = async () => {
         () => installExtension('python')
       )
       if (!isAutoPlaying.value) return
-       
+
       // Switch back to explorer for next steps if in 'all' mode
       if (mode === 'all') {
-         await moveCursorTo(
-          '.icon[title="Explorer"]',
-          '返回资源管理器',
-          () => {
-             toggleSidebarView('EXPLORER')
-             searchQuery.value = '' // Clear search when leaving
-          }
-        )
+        await moveCursorTo('.icon[title="Explorer"]', '返回资源管理器', () => {
+          toggleSidebarView('EXPLORER')
+          searchQuery.value = '' // Clear search when leaving
+        })
       }
     }
 
@@ -725,9 +692,7 @@ onUnmounted(() => {
           </div>
           <div
             class="menu-bar-container"
-            @mouseenter.stop="
-              showInfo('菜单栏：功能入口')
-            "
+            @mouseenter.stop="showInfo('菜单栏：功能入口')"
             @mouseleave="clearInfo"
           >
             <div
@@ -832,7 +797,9 @@ onUnmounted(() => {
           <div class="top-icons">
             <div
               class="icon"
-              :class="{ active: activeSidebarView === 'EXPLORER' && sidebarVisible }"
+              :class="{
+                active: activeSidebarView === 'EXPLORER' && sidebarVisible
+              }"
               title="Explorer"
               @click="toggleSidebarView('EXPLORER')"
               @mouseenter.stop="showInfo('资源管理器：文件管理')"
@@ -985,7 +952,9 @@ onUnmounted(() => {
             </div>
             <div
               class="icon"
-              :class="{ active: activeSidebarView === 'EXTENSIONS' && sidebarVisible }"
+              :class="{
+                active: activeSidebarView === 'EXTENSIONS' && sidebarVisible
+              }"
               title="Extensions"
               @click="toggleSidebarView('EXTENSIONS')"
               @mouseenter.stop="showInfo('扩展：插件')"
@@ -1105,9 +1074,7 @@ onUnmounted(() => {
         <div
           class="sidebar"
           v-show="sidebarVisible"
-          @mouseenter.stop="
-            showInfo('侧边栏：详细内容')
-          "
+          @mouseenter.stop="showInfo('侧边栏：详细内容')"
           @mouseleave="clearInfo"
         >
           <div v-if="activeSidebarView === 'EXPLORER'" class="sidebar-content">
@@ -1169,33 +1136,56 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-          
-          <div v-else-if="activeSidebarView === 'EXTENSIONS'" class="sidebar-content">
-             <div class="sidebar-header">
+
+          <div
+            v-else-if="activeSidebarView === 'EXTENSIONS'"
+            class="sidebar-content"
+          >
+            <div class="sidebar-header">
               <span>EXTENSIONS</span>
               <span class="sidebar-dots">•••</span>
             </div>
             <div class="sidebar-search">
-              <input type="text" placeholder="Search Extensions in Marketplace" :value="searchQuery" readonly />
+              <input
+                type="text"
+                placeholder="Search Extensions in Marketplace"
+                :value="searchQuery"
+                readonly
+              />
             </div>
             <div class="sidebar-section expanded">
               <div class="section-header">▼ POPULAR</div>
               <div class="extension-list">
-                <div v-for="ext in filteredExtensions" :key="ext.id" class="extension-item">
+                <div
+                  v-for="ext in filteredExtensions"
+                  :key="ext.id"
+                  class="extension-item"
+                >
                   <div class="extension-icon"></div>
                   <div class="extension-info">
                     <div class="extension-name">
                       {{ ext.name }}
-                      <span v-if="ext.installed" class="installed-badge">✔</span>
+                      <span v-if="ext.installed" class="installed-badge"
+                        >✔</span
+                      >
                     </div>
                     <div class="extension-desc">{{ ext.description }}</div>
                     <div class="extension-actions">
-                      <button 
-                        class="install-btn" 
-                        :class="{ installing: ext.installing, installed: ext.installed }"
+                      <button
+                        class="install-btn"
+                        :class="{
+                          installing: ext.installing,
+                          installed: ext.installed
+                        }"
                         @click.stop="installExtension(ext.id)"
                       >
-                        {{ ext.installed ? 'Manage' : (ext.installing ? 'Installing' : 'Install') }}
+                        {{
+                          ext.installed
+                            ? 'Manage'
+                            : ext.installing
+                              ? 'Installing'
+                              : 'Install'
+                        }}
                       </button>
                     </div>
                   </div>
@@ -1436,9 +1426,7 @@ onUnmounted(() => {
       <!-- Status Bar -->
       <div
         class="status-bar"
-        @mouseenter.stop="
-          showInfo('状态栏：环境信息')
-        "
+        @mouseenter.stop="showInfo('状态栏：环境信息')"
         @mouseleave="clearInfo"
       >
         <div class="status-left">
@@ -2416,8 +2404,17 @@ onUnmounted(() => {
 }
 
 @keyframes highlightPulse {
-  0% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.02); opacity: 0.9; }
-  100% { transform: scale(1); opacity: 0.7; }
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
 }
 </style>
