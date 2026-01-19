@@ -77,6 +77,7 @@ import GitBranchMergeDemo from './components/appendix/git-intro/GitBranchMergeDe
 import GitConflictDemo from './components/appendix/git-intro/GitConflictDemo.vue'
 import GitStashDemo from './components/appendix/git-intro/GitStashDemo.vue'
 import GitRemoteDemo from './components/appendix/git-intro/GitRemoteDemo.vue'
+import GitScenariosDemo from './components/appendix/git-intro/GitScenariosDemo.vue'
 // （保留网络相关，未修改）
 import NetworkLayers from './components/appendix/web-basics/NetworkLayers.vue'
 import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.vue'
@@ -118,6 +119,13 @@ import BigFrontendScopeDemo from './components/appendix/web-basics/BigFrontendSc
 import AiEvolutionDemo from './components/appendix/ai-history/AiEvolutionDemo.vue'
 import RuleBasedVsLearningDemo from './components/appendix/ai-history/RuleBasedVsLearningDemo.vue'
 import PerceptronDemo from './components/appendix/ai-history/PerceptronDemo.vue'
+import AIEvolutionTimelineDemo from './components/appendix/ai-history/AIEvolutionTimelineDemo.vue'
+import CombinatorialExplosionDemo from './components/appendix/ai-history/CombinatorialExplosionDemo.vue'
+import NeuralNetworkVisualizationDemo from './components/appendix/ai-history/NeuralNetworkVisualizationDemo.vue'
+import BackpropagationDemo from './components/appendix/ai-history/BackpropagationDemo.vue'
+import AttentionMechanismDemo from './components/appendix/ai-history/AttentionMechanismDemo.vue'
+import DiscriminativeVsGenerativeDemo from './components/appendix/ai-history/DiscriminativeVsGenerativeDemo.vue'
+import GPTEvolutionDemo from './components/appendix/ai-history/GPTEvolutionDemo.vue'
 
 import ImperativeVsDeclarativeDemo from './components/appendix/web-basics/ImperativeVsDeclarativeDemo.vue'
 import ComponentReusabilityDemo from './components/appendix/web-basics/ComponentReusabilityDemo.vue'
@@ -160,6 +168,7 @@ import ProductCacheDemo from './components/appendix/cache-design/ProductCacheDem
 // Auth Design Components
 import AuthEvolutionDemo from './components/appendix/auth-design/AuthEvolutionDemo.vue'
 import AuthBasicsDemo from './components/appendix/auth-design/AuthBasicsDemo.vue'
+import AuthInteractiveLoginDemo from './components/appendix/auth-design/AuthInteractiveLoginDemo.vue'
 import AuthNvsAuthZDemo from './components/appendix/auth-design/AuthNvsAuthZDemo.vue'
 import SessionCookieDemo from './components/appendix/auth-design/SessionCookieDemo.vue'
 import JWTWorkflowDemo from './components/appendix/auth-design/JWTWorkflowDemo.vue'
@@ -187,6 +196,7 @@ import FewShotDemo from './components/appendix/prompt-engineering/FewShotDemo.vu
 import ChainOfThoughtDemo from './components/appendix/prompt-engineering/ChainOfThoughtDemo.vue'
 
 // Context Engineering Components
+import AgentContextFlow from './components/appendix/context-engineering/AgentContextFlow.vue'
 import ContextWindowVisualizer from './components/appendix/context-engineering/ContextWindowVisualizer.vue'
 import SlidingWindowDemo from './components/appendix/context-engineering/SlidingWindowDemo.vue'
 import SelectiveContextDemo from './components/appendix/context-engineering/SelectiveContextDemo.vue'
@@ -318,6 +328,7 @@ export default {
     app.component('GitConflictDemo', GitConflictDemo)
     app.component('GitStashDemo', GitStashDemo)
     app.component('GitRemoteDemo', GitRemoteDemo)
+    app.component('GitScenariosDemo', GitScenariosDemo)
     app.component('NetworkLayers', NetworkLayers)
     app.component('TcpUdpComparison', TcpUdpComparison)
     app.component('SubnetCalculator', SubnetCalculator)
@@ -357,6 +368,19 @@ export default {
     app.component('AiEvolutionDemo', AiEvolutionDemo)
     app.component('RuleBasedVsLearningDemo', RuleBasedVsLearningDemo)
     app.component('PerceptronDemo', PerceptronDemo)
+    app.component('AIEvolutionTimelineDemo', AIEvolutionTimelineDemo)
+    app.component('CombinatorialExplosionDemo', CombinatorialExplosionDemo)
+    app.component(
+      'NeuralNetworkVisualizationDemo',
+      NeuralNetworkVisualizationDemo
+    )
+    app.component('BackpropagationDemo', BackpropagationDemo)
+    app.component('AttentionMechanismDemo', AttentionMechanismDemo)
+    app.component(
+      'DiscriminativeVsGenerativeDemo',
+      DiscriminativeVsGenerativeDemo
+    )
+    app.component('GPTEvolutionDemo', GPTEvolutionDemo)
 
     app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
@@ -399,6 +423,7 @@ export default {
     // Auth Design Components Registration
     app.component('AuthEvolutionDemo', AuthEvolutionDemo)
     app.component('AuthBasicsDemo', AuthBasicsDemo)
+    app.component('AuthInteractiveLoginDemo', AuthInteractiveLoginDemo)
     app.component('AuthNvsAuthZDemo', AuthNvsAuthZDemo)
     app.component('SessionCookieDemo', SessionCookieDemo)
     app.component('JWTWorkflowDemo', JWTWorkflowDemo)
@@ -426,6 +451,7 @@ export default {
     app.component('ChainOfThoughtDemo', ChainOfThoughtDemo)
 
     // Context Engineering Components Registration
+    app.component('AgentContextFlow', AgentContextFlow)
     app.component('ContextWindowVisualizer', ContextWindowVisualizer)
     app.component('SlidingWindowDemo', SlidingWindowDemo)
     app.component('SelectiveContextDemo', SelectiveContextDemo)

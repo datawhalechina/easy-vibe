@@ -2,12 +2,25 @@
   <div class="branch-demo">
     <div class="panel">
       <div class="controls">
-        <button @click="init" :disabled="inited" class="btn">初始化</button>
-        <button @click="commit" :disabled="!inited" class="btn">提交</button>
+        <button @click="init" :disabled="inited || mergePending" class="btn">
+          初始化
+        </button>
+        <button @click="commit" :disabled="!inited || mergePending" class="btn">
+          提交
+        </button>
         <button @click="branch" :disabled="!inited || hasBranch" class="btn">
           创建分支
         </button>
-        <button @click="merge" :disabled="!hasBranch" class="btn">合并</button>
+        <button
+          @click="prepareMerge"
+          :disabled="!hasBranch || mergePending"
+          class="btn"
+        >
+          准备合并
+        </button>
+        <button @click="finishMerge" :disabled="!mergePending" class="btn">
+          完成合并
+        </button>
         <button @click="reset" class="btn secondary">重置</button>
       </div>
 
@@ -72,6 +85,7 @@
 import { ref } from 'vue'
 const inited = ref(false)
 const hasBranch = ref(false)
+const mergePending = ref(false)
 const main = ref([])
 const feat = ref([])
 
@@ -88,16 +102,21 @@ const branch = () => {
     feat.value = [1]
   }
 }
-const merge = () => {
-  if (hasBranch.value) {
-    main.value.push(1)
-    hasBranch.value = false
-    feat.value = []
-  }
+const prepareMerge = () => {
+  if (!hasBranch.value) return
+  mergePending.value = true
+}
+const finishMerge = () => {
+  if (!mergePending.value) return
+  main.value.push(1)
+  hasBranch.value = false
+  feat.value = []
+  mergePending.value = false
 }
 const reset = () => {
   inited.value = false
   hasBranch.value = false
+  mergePending.value = false
   main.value = []
   feat.value = []
 }

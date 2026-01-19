@@ -9,25 +9,36 @@
   <div class="git-workflow-demo">
     <!-- 控制面板 -->
     <div class="control-panel">
-      <button @click="initRepo" :disabled="inited" class="action-btn">
+      <button
+        @click="initRepo"
+        :disabled="inited || mergePending"
+        class="action-btn"
+      >
         🎯 初始化仓库
       </button>
-      <button @click="makeCommit" :disabled="!inited" class="action-btn">
+      <button
+        @click="makeCommit"
+        :disabled="!inited || mergePending"
+        class="action-btn"
+      >
         ✅ 提交
       </button>
       <button
         @click="createBranch"
-        :disabled="!inited || hasBranch"
+        :disabled="!inited || hasBranch || mergePending"
         class="action-btn"
       >
         🌿 创建分支
       </button>
       <button
-        @click="mergeBranch"
-        :disabled="!hasBranch || merging"
+        @click="prepareMerge"
+        :disabled="!hasBranch || mergePending"
         class="action-btn"
       >
-        🔀 合并分支
+        🔀 准备合并
+      </button>
+      <button @click="finishMerge" :disabled="!mergePending" class="action-btn">
+        ✅ 完成合并
       </button>
       <button @click="reset" class="action-btn secondary">🔄 重置</button>
     </div>
@@ -68,10 +79,10 @@
 
           <!-- 合并线 -->
           <path
-            v-if="merging"
+            v-if="mergePending"
             d="M 300 100 Q 320 80, 320 60"
             fill="none"
-            stroke="#f59e0b"
+            stroke="var(--vp-c-brand)"
             stroke-width="2"
             stroke-dasharray="5,5"
           />
@@ -127,12 +138,12 @@ import { ref, computed } from 'vue'
 
 const inited = ref(false)
 const hasBranch = ref(false)
-const merging = ref(false)
+const mergePending = ref(false)
 const mainCommits = ref([])
 const branchCommits = ref([])
 
 const status = computed(() => {
-  if (merging) return '合并中...'
+  if (mergePending.value) return '准备合并：检查改动/解决冲突后再完成合并'
   if (hasBranch) return '分支已创建'
   if (inited) return '已初始化'
   return '未初始化'
@@ -156,22 +167,23 @@ const createBranch = () => {
   }
 }
 
-const mergeBranch = () => {
-  if (hasBranch.value) {
-    merging.value = true
-    setTimeout(() => {
-      mainCommits.value.push({ hash: Math.random().toString(16).substr(2, 6) })
-      hasBranch.value = false
-      branchCommits.value = []
-      merging.value = false
-    }, 1000)
-  }
+const prepareMerge = () => {
+  if (!hasBranch.value) return
+  mergePending.value = true
+}
+
+const finishMerge = () => {
+  if (!mergePending.value) return
+  mainCommits.value.push({ hash: Math.random().toString(16).substr(2, 6) })
+  hasBranch.value = false
+  branchCommits.value = []
+  mergePending.value = false
 }
 
 const reset = () => {
   inited.value = false
   hasBranch.value = false
-  merging.value = false
+  mergePending.value = false
   mainCommits.value = []
   branchCommits.value = []
 }

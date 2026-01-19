@@ -539,10 +539,6 @@ export default defineConfig({
                   link: '/zh-cn/appendix/prompt-engineering'
                 },
                 {
-                  text: '上下文工程',
-                  link: '/zh-cn/appendix/context-engineering'
-                },
-                {
                   text: '人工智能进化史',
                   link: '/zh-cn/appendix/ai-evolution'
                 },
@@ -553,6 +549,10 @@ export default defineConfig({
                   link: '/zh-cn/appendix/image-gen-intro'
                 },
                 { text: 'AI 音频模型', link: '/zh-cn/appendix/audio-intro' },
+                {
+                  text: '上下文工程',
+                  link: '/zh-cn/appendix/context-engineering'
+                },
                 { text: 'Agent 智能体', link: '/zh-cn/appendix/agent-intro' },
                 {
                   text: 'AI 能力词典',
@@ -561,7 +561,7 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Web 基础',
+              text: '前端开发',
               collapsed: false,
               items: [
                 {
@@ -581,14 +581,6 @@ export default defineConfig({
                   link: '/zh-cn/appendix/canvas-intro'
                 },
                 {
-                  text: '后端进化史',
-                  link: '/zh-cn/appendix/backend-evolution'
-                },
-                {
-                  text: '后端编程语言',
-                  link: '/zh-cn/appendix/backend-languages'
-                },
-                {
                   text: 'URL 到浏览器显示',
                   link: '/zh-cn/appendix/url-to-browser'
                 },
@@ -599,29 +591,37 @@ export default defineConfig({
               ]
             },
             {
-              text: '开发基础',
+              text: '后端开发',
               collapsed: false,
               items: [
-                { text: 'IDE 原理', link: '/zh-cn/appendix/ide-intro' },
-                { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' },
-                { text: 'Git 详细介绍', link: '/zh-cn/appendix/git-intro' },
-                { text: '数据库原理', link: '/zh-cn/appendix/database-intro' },
                 {
-                  text: '计算机网络',
-                  link: '/zh-cn/appendix/computer-networks'
+                  text: '后端进化史',
+                  link: '/zh-cn/appendix/backend-evolution'
                 },
-                { text: '部署与上线', link: '/zh-cn/appendix/deployment' }
-              ]
-            },
-            {
-              text: '后端进阶',
-              collapsed: false,
-              items: [
+                {
+                  text: '后端编程语言',
+                  link: '/zh-cn/appendix/backend-languages'
+                },
+                { text: '数据库原理', link: '/zh-cn/appendix/database-intro' },
                 { text: '系统缓存设计', link: '/zh-cn/appendix/cache-design' },
                 { text: '消息队列设计', link: '/zh-cn/appendix/queue-design' },
                 { text: '鉴权原理与实战', link: '/zh-cn/appendix/auth-design' },
                 { text: '埋点设计', link: '/zh-cn/appendix/tracking-design' },
                 { text: '线上运维', link: '/zh-cn/appendix/operations' }
+              ]
+            },
+            {
+              text: '通用技能',
+              collapsed: false,
+              items: [
+                { text: 'IDE 原理', link: '/zh-cn/appendix/ide-intro' },
+                { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' },
+                { text: 'Git 详细介绍', link: '/zh-cn/appendix/git-intro' },
+                {
+                  text: '计算机网络',
+                  link: '/zh-cn/appendix/computer-networks'
+                },
+                { text: '部署与上线', link: '/zh-cn/appendix/deployment' }
               ]
             }
           ]

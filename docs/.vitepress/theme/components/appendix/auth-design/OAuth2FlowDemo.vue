@@ -1,673 +1,346 @@
 <!--
   OAuth2FlowDemo.vue
-  OAuth 2.0 授权流程演示
+  OAuth2 / OIDC 授权码流程（手动推进，更贴近真实接入）
 -->
 <template>
-  <div class="oauth2-flow-demo">
+  <div class="oauth2-demo">
     <div class="header">
-      <div class="title">OAuth 2.0 授权码流程</div>
-      <div class="subtitle">第三方登录（如微信登录）的完整流程</div>
+      <div class="title">🔑 OAuth2：第三方登录（授权码流程）</div>
+      <div class="subtitle">
+        用最常见的 Authorization Code Flow（建议配合
+        PKCE）。默认手动推进，不自动下一步。
+      </div>
     </div>
 
     <div class="controls">
-      <button
-        class="action-btn"
-        @click="startFlow"
-        :disabled="isProcessing || currentStep > 0"
-      >
-        <span class="btn-icon">🚀</span>
-        <span class="btn-text">开始授权流程</span>
+      <button class="btn primary" @click="start" :disabled="step !== 0">
+        开始
       </button>
+      <button class="btn" @click="prev" :disabled="step <= 1">上一步</button>
       <button
-        class="action-btn"
-        @click="nextStep"
-        :disabled="isProcessing || currentStep === 0 || currentStep >= maxSteps"
+        class="btn primary"
+        @click="next"
+        :disabled="step === 0 || step >= maxStep"
       >
-        <span class="btn-icon">➡️</span>
-        <span class="btn-text">下一步</span>
+        下一步
       </button>
-      <button
-        class="action-btn reset"
-        @click="resetFlow"
-        :disabled="isProcessing"
-      >
-        <span class="btn-icon">🔄</span>
-        <span class="btn-text">重置</span>
+      <button class="btn" @click="reset">重置</button>
+      <button class="btn" @click="copy(currentCmd)" :disabled="!currentCmd">
+        {{ copied ? '已复制' : '复制命令' }}
       </button>
     </div>
 
-    <div class="flow-visualization">
-      <div class="actors">
-        <div class="actor user" :class="{ active: isUserActive }">
-          <div class="actor-icon">👤</div>
-          <div class="actor-label">用户</div>
-        </div>
+    <div v-if="step > 0" class="progress">
+      Step {{ step }} / {{ maxStep }} · {{ steps[step - 1]?.title }}
+    </div>
 
-        <div class="actor client" :class="{ active: isClientActive }">
-          <div class="actor-icon">🌐</div>
-          <div class="actor-label">第三方应用</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">角色</div>
+        <div class="role">
+          <div class="pill">Client（你的应用）</div>
+          <div class="pill">Authorization Server（微信/Google 等）</div>
+          <div class="pill">Resource Server（你的 API）</div>
         </div>
-
-        <div class="actor auth-server" :class="{ active: isAuthServerActive }">
-          <div class="actor-icon">🔐</div>
-          <div class="actor-label">授权服务器</div>
-          <div class="actor-sub">微信/Google</div>
-        </div>
-
-        <div
-          class="actor resource-server"
-          :class="{ active: isResourceServerActive }"
-        >
-          <div class="actor-icon">📊</div>
-          <div class="actor-label">资源服务器</div>
-          <div class="actor-sub">用户信息 API</div>
+        <div class="desc">
+          OAuth2
+          的核心：<strong>你的应用不再保存用户在第三方的密码</strong>，而是拿到授权码/令牌后去换取用户信息。
         </div>
       </div>
 
-      <div class="current-action" v-if="currentAction">
-        <div class="action-icon">{{ currentAction.icon }}</div>
-        <div class="action-text">{{ currentAction.text }}</div>
-        <div class="action-detail" v-if="currentAction.detail">
-          {{ currentAction.detail }}
-        </div>
-      </div>
-
-      <div class="data-exchange" v-if="currentDataExchange">
-        <div class="exchange-title">数据交换</div>
-        <div class="exchange-content">
-          <div
-            class="exchange-item"
-            v-for="(item, index) in currentDataExchange"
-            :key="index"
-          >
-            <span class="exchange-label">{{ item.label }}:</span>
-            <span class="exchange-value">{{ item.value }}</span>
-          </div>
+      <div class="card">
+        <div class="card-title">本步要做什么</div>
+        <div class="desc">{{ steps[step - 1]?.desc || '点击开始' }}</div>
+        <div v-if="steps[step - 1]?.warn" class="warn">
+          <div class="warn-title">注意</div>
+          <div class="warn-text">{{ steps[step - 1]?.warn }}</div>
         </div>
       </div>
     </div>
 
-    <div class="flow-steps">
-      <div class="steps-title">流程步骤</div>
-      <div class="steps-list">
-        <div
-          v-for="(step, index) in flowSteps"
-          :key="index"
-          class="step-item"
-          :class="{
-            active: currentStep === index + 1,
-            completed: currentStep > index + 1,
-            current: currentStep === index + 1
-          }"
-        >
-          <div class="step-number">{{ index + 1 }}</div>
-          <div class="step-content">
-            <div class="step-title">{{ step.title }}</div>
-            <div class="step-desc">{{ step.desc }}</div>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-title">请求/命令示例（可照抄）</div>
+      <pre
+        class="code"
+      ><code>{{ currentCmd || '（点击开始后显示）' }}</code></pre>
+      <div class="hint">
+        这是“示例请求”，不是你电脑上真实发出去的请求；你可以把参数替换成自己的
+        client_id / redirect_uri。
       </div>
     </div>
 
-    <div class="security-notes">
-      <div class="notes-title">安全要点</div>
-      <div class="notes-list">
-        <div class="note-item">
-          <div class="note-icon">🔒</div>
-          <div class="note-content">
-            <div class="note-title">code 只能用一次</div>
-            <div class="note-text">授权码使用后立即失效，防止截获重放</div>
-          </div>
-        </div>
-        <div class="note-item">
-          <div class="note-icon">🎲</div>
-          <div class="note-content">
-            <div class="note-title">state 防 CSRF</div>
-            <div class="note-text">
-              生成随机字符串，回调时验证，防止恶意网站伪造
-            </div>
-          </div>
-        </div>
-        <div class="note-item">
-          <div class="note-icon">🔗</div>
-          <div class="note-content">
-            <div class="note-title">redirect_uri 必须匹配</div>
-            <div class="note-text">提前在授权服务器注册，防止重定向攻击</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="participants-table">
-      <div class="table-title">OAuth 2.0 核心角色</div>
-      <table>
-        <thead>
-          <tr>
-            <th>角色</th>
-            <th>说明</th>
-            <th>例子</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Resource Owner</strong></td>
-            <td>资源所有者（用户）</td>
-            <td>你</td>
-          </tr>
-          <tr>
-            <td><strong>Client</strong></td>
-            <td>第三方应用</td>
-            <td>某个网站</td>
-          </tr>
-          <tr>
-            <td><strong>Authorization Server</strong></td>
-            <td>授权服务器</td>
-            <td>微信、Google</td>
-          </tr>
-          <tr>
-            <td><strong>Resource Server</strong></td>
-            <td>资源服务器</td>
-            <td>微信的用户信息 API</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card">
+      <div class="card-title">你真正需要记住的 4 件事</div>
+      <ul class="list">
+        <li>
+          <strong>redirect_uri 必须白名单：</strong>避免被人把 code
+          劫持到自己的站。
+        </li>
+        <li><strong>state 必须校验：</strong>防 CSRF（登录也会被 CSRF）。</li>
+        <li><strong>code 只能用一次且很快过期：</strong>泄露影响有限。</li>
+        <li>
+          <strong>access token 要短 + refresh token 要保护：</strong>refresh
+          token 更像“长期钥匙”。
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
-const currentStep = ref(0)
-const isProcessing = ref(false)
-const maxSteps = 5
+const maxStep = 6
+const step = ref(0)
+const copied = ref(false)
 
-const currentAction = ref(null)
-const currentDataExchange = ref(null)
+const params = {
+  clientId: 'your_client_id',
+  redirectUri: 'https://your.app/callback',
+  scope: 'openid profile email',
+  state: 'random_state_123',
+  code: 'auth_code_xyz',
+  codeVerifier: 'pkce_verifier_...',
+  codeChallenge: 'pkce_challenge_...'
+}
 
-const flowSteps = [
+const steps = [
   {
-    title: '用户点击"使用微信登录"',
-    desc: '第三方应用重定向到微信授权页面'
+    title: '1) 跳转到授权页',
+    desc: '你的应用把用户重定向到授权服务器，让用户登录并授权。',
+    warn: 'redirect_uri 必须白名单；state 用于防 CSRF。'
   },
   {
-    title: '用户扫码并同意授权',
-    desc: '微信重定向回第三方应用，携带授权码 code'
+    title: '2) 用户授权',
+    desc: '用户在第三方确认“允许此应用读取基本信息”。（这一步发生在第三方页面）'
   },
   {
-    title: '后端用 code 换取 access_token',
-    desc: '第三方应用后端调用微信 API，使用 code 换取 token'
+    title: '3) 带 code 回调',
+    desc: '授权服务器把用户带回 redirect_uri，并附上一次性的授权码 code。'
   },
   {
-    title: '用 access_token 获取用户信息',
-    desc: '调用微信用户信息 API，获取用户数据'
+    title: '4) 用 code 换 token',
+    desc: '你的后端（或移动端 + PKCE）调用 token endpoint，把 code 换成 access token。'
   },
   {
-    title: '创建或更新本地用户',
-    desc: '第三方应用创建本地用户，生成本系统的 JWT'
+    title: '5) 用 token 拉取用户信息',
+    desc: '携带 access token 请求 userinfo（或你自己业务的资源服务）。'
+  },
+  {
+    title: '6) 建立你自己的登录态',
+    desc: 'OAuth2 只解决“第三方授权”，你的系统还要创建自己的 session/JWT（并做授权）。',
+    warn: '不要把第三方 access token 当作你系统的权限 token；两者用途不同。'
   }
 ]
 
-const stepActions = {
-  1: {
-    icon: '👆',
-    text: '用户点击授权按钮',
-    detail: '重定向到微信授权页面',
-    dataExchange: [
-      { label: 'URL', value: 'open.weixin.qq.com/connect/qrconnect' },
-      { label: 'appid', value: 'wx1234567890' },
-      { label: 'redirect_uri', value: 'https://yourapp.com/callback' },
-      { label: 'response_type', value: 'code' },
-      { label: 'state', value: 'random_state_string' }
-    ],
-    activeActors: ['client', 'auth-server']
-  },
-  2: {
-    icon: '✅',
-    text: '用户同意授权',
-    detail: '微信重定向回第三方应用',
-    dataExchange: [
-      { label: 'Callback URL', value: 'https://yourapp.com/callback' },
-      { label: 'code', value: 'AUTHORIZATION_CODE' },
-      { label: 'state', value: 'random_state_string' }
-    ],
-    activeActors: ['user', 'auth-server', 'client']
-  },
-  3: {
-    icon: '🔄',
-    text: '后端交换 Token',
-    detail: '使用 code 换取 access_token',
-    dataExchange: [
-      { label: 'POST', value: 'api.weixin.qq.com/sns/oauth2/access_token' },
-      { label: 'appid', value: 'wx1234567890' },
-      { label: 'secret', value: '***' },
-      { label: 'code', value: 'AUTHORIZATION_CODE' },
-      { label: 'grant_type', value: 'authorization_code' }
-    ],
-    activeActors: ['client', 'auth-server']
-  },
-  4: {
-    icon: '📊',
-    text: '获取用户信息',
-    detail: '使用 access_token 调用用户信息 API',
-    dataExchange: [
-      { label: 'GET', value: 'api.weixin.qq.com/sns/userinfo' },
-      { label: 'access_token', value: 'ACCESS_TOKEN' },
-      { label: 'openid', value: 'USER_OPENID' },
-      { label: '返回', value: '{ nickname, headimgurl, ... }' }
-    ],
-    activeActors: ['client', 'resource-server']
-  },
-  5: {
-    icon: '🎉',
-    text: '创建本地用户',
-    detail: '生成第三方应用的 JWT Token',
-    dataExchange: [
-      { label: '操作', value: '创建或更新本地用户' },
-      { label: '生成', value: '本地 JWT Token' },
-      { label: '返回', value: '{ token, user_info }' }
-    ],
-    activeActors: ['client']
+const currentCmd = computed(() => {
+  if (step.value === 0) return ''
+  if (step.value === 1) {
+    return `GET https://auth.server/authorize?response_type=code&client_id=${params.clientId}&redirect_uri=${encodeURIComponent(
+      params.redirectUri
+    )}&scope=${encodeURIComponent(params.scope)}&state=${params.state}&code_challenge=${params.codeChallenge}&code_challenge_method=S256`
+  }
+  if (step.value === 2) {
+    return `（用户在授权页点击“同意/授权”）`
+  }
+  if (step.value === 3) {
+    return `302 ${params.redirectUri}?code=${params.code}&state=${params.state}`
+  }
+  if (step.value === 4) {
+    return `POST https://auth.server/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=${params.code}&
+redirect_uri=${encodeURIComponent(params.redirectUri)}&
+client_id=${params.clientId}&
+code_verifier=${params.codeVerifier}`
+  }
+  if (step.value === 5) {
+    return `GET https://auth.server/userinfo
+Authorization: Bearer <access_token>`
+  }
+  return `你的后端：
+1) 读取 userinfo（拿到第三方 user_id）
+2) 在你系统里创建/绑定用户
+3) 返回你自己的 session cookie 或 JWT`
+})
+
+const start = () => {
+  step.value = 1
+}
+
+const next = () => {
+  step.value = Math.min(maxStep, step.value + 1)
+}
+
+const prev = () => {
+  step.value = Math.max(1, step.value - 1)
+}
+
+const reset = () => {
+  step.value = 0
+  copied.value = false
+}
+
+const copy = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text)
+    copied.value = true
+    setTimeout(() => {
+      copied.value = false
+    }, 800)
+  } catch {
+    copied.value = false
   }
 }
-
-const isUserActive = computed(() =>
-  stepActions[currentStep.value]?.activeActors.includes('user')
-)
-const isClientActive = computed(() =>
-  stepActions[currentStep.value]?.activeActors.includes('client')
-)
-const isAuthServerActive = computed(() =>
-  stepActions[currentStep.value]?.activeActors.includes('auth-server')
-)
-const isResourceServerActive = computed(() =>
-  stepActions[currentStep.value]?.activeActors.includes('resource-server')
-)
-
-const startFlow = async () => {
-  isProcessing.value = true
-  currentStep.value = 1
-  await executeStep(1)
-  isProcessing.value = false
-}
-
-const nextStep = async () => {
-  if (currentStep.value >= maxSteps) return
-
-  isProcessing.value = true
-  currentStep.value++
-  await executeStep(currentStep.value)
-  isProcessing.value = false
-}
-
-const executeStep = async (step) => {
-  const action = stepActions[step]
-  currentAction.value = {
-    icon: action.icon,
-    text: action.text,
-    detail: action.detail
-  }
-  currentDataExchange.value = action.dataExchange
-
-  await delay(1500)
-}
-
-const resetFlow = () => {
-  currentStep.value = 0
-  currentAction.value = null
-  currentDataExchange.value = null
-}
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 </script>
 
 <style scoped>
-.oauth2-flow-demo {
+.oauth2-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem;
-  margin: 1.5rem 0;
-  font-family: var(--vp-font-family-base);
+  margin: 1rem 0;
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
 .subtitle {
+  margin-top: 0.25rem;
   color: var(--vp-c-text-2);
   font-size: 0.9rem;
 }
 
 .controls {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.action-btn {
-  flex: 1;
-  min-width: 120px;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 8px;
-  background: var(--vp-c-brand);
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
 }
 
-.action-btn:disabled {
+.btn {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.btn.primary {
+  background: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-bg);
+}
+
+.btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.action-btn:hover:not(:disabled) {
-  background: #2563eb;
-}
-
-.action-btn.reset {
-  background: #64748b;
-}
-
-.action-btn.reset:hover:not(:disabled) {
-  background: #475569;
-}
-
-.btn-icon {
-  font-size: 1.2rem;
-}
-
-.flow-visualization {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
-}
-
-.actors {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.actor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 2px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  transition: all 0.3s ease;
-  opacity: 0.5;
-}
-
-.actor.active {
-  opacity: 1;
-  border-color: var(--vp-c-brand);
-  background: rgba(59, 130, 246, 0.1);
-  transform: scale(1.05);
-}
-
-.actor-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.actor-label {
-  font-weight: 600;
+.progress {
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-.actor-sub {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-}
-
-.current-action {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 2px solid var(--vp-c-brand);
-}
-
-.action-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.action-text {
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.action-detail {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-}
-
-.data-exchange {
-  background: #1e293b;
-  border-radius: 8px;
-  padding: 1rem;
-}
-
-.exchange-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #94a3b8;
   margin-bottom: 0.75rem;
 }
 
-.exchange-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.exchange-item {
-  display: flex;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  font-family: 'Courier New', monospace;
-}
-
-.exchange-label {
-  color: #94a3b8;
-  min-width: 120px;
-}
-
-.exchange-value {
-  color: #e2e8f0;
-  word-break: break-all;
-}
-
-.flow-steps {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
-}
-
-.steps-title {
-  font-weight: 700;
-  font-size: 1rem;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.step-item {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
+.card {
+  background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 1rem;
 }
 
-.step-item.completed {
-  opacity: 0.6;
+.card-title {
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--vp-c-text-1);
 }
 
-.step-item.current {
-  border-color: var(--vp-c-brand);
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.step-number {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  color: white;
+.role {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.95rem;
-  flex-shrink: 0;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
 }
 
-.step-content {
-  flex: 1;
+.pill {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-2);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85rem;
 }
 
-.step-title {
-  font-weight: 600;
-  font-size: 0.95rem;
+.desc {
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+}
+
+.warn {
+  margin-top: 0.75rem;
+  border: 1px solid rgba(var(--vp-c-brand-rgb), 0.18);
+  background: rgba(var(--vp-c-brand-rgb), 0.06);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.warn-title {
+  font-weight: 800;
+  color: var(--vp-c-text-1);
   margin-bottom: 0.25rem;
 }
 
-.step-desc {
-  font-size: 0.85rem;
+.warn-text {
   color: var(--vp-c-text-2);
+  line-height: 1.7;
 }
 
-.security-notes {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
+.code {
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
+  overflow-x: auto;
 }
 
-.notes-title {
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.note-item {
-  display: flex;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border-left: 4px solid #f59e0b;
-}
-
-.note-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.note-content {
-  flex: 1;
-}
-
-.note-title {
-  font-weight: 600;
+.hint {
+  margin-top: 0.75rem;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
-  margin-bottom: 0.25rem;
+  line-height: 1.7;
 }
 
-.note-text {
-  font-size: 0.85rem;
+.list {
+  margin: 0;
+  padding-left: 1.1rem;
   color: var(--vp-c-text-2);
-  line-height: 1.5;
+  line-height: 1.75;
 }
 
-.participants-table {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.table-title {
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead th {
-  padding: 0.75rem;
-  text-align: left;
-  font-weight: 700;
-  font-size: 0.85rem;
-  border-bottom: 2px solid var(--vp-c-divider);
-}
-
-tbody td {
-  padding: 0.75rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-  font-size: 0.85rem;
-}
-
-tbody tr:last-child td {
-  border-bottom: none;
-}
-
-@media (max-width: 768px) {
-  .actors {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .exchange-item {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .exchange-label {
-    min-width: auto;
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
