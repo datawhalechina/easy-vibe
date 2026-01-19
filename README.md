@@ -44,9 +44,6 @@
   <a href="docs-readme/de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
 </p>
 
-<p align="center"> 
-   <h3>⭐ 欢迎点击 <span style="color: #660874;">Star</span> 加速更新 ❤️</h3> 
-</p>
 
 </div>
 <table align="center">
@@ -99,8 +96,9 @@
     </td>
   </tr>
 </table>
-
----
+<div align="center">
+  <h3>⭐ 欢迎 <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">点击此处Star</a> 加速更新 ❤️</h3>
+</div>
 
 在 AI 时代，把想法变成产品的人，往往技术不是最强，而是最先迈出行动。
 

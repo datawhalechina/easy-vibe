@@ -27,6 +27,15 @@ import TerminalHandsOn from './components/appendix/terminal-intro/TerminalHandsO
 import EscapeParserDemo from './components/appendix/terminal-intro/EscapeParserDemo.vue'
 import CookedRawDemo from './components/appendix/terminal-intro/CookedRawDemo.vue'
 
+// API Intro Components
+import ApiQuickStartDemo from './components/appendix/api-intro/ApiQuickStartDemo.vue'
+import ApiConceptDemo from './components/appendix/api-intro/ApiConceptDemo.vue'
+import RequestResponseFlow from './components/appendix/api-intro/RequestResponseFlow.vue'
+import ApiMethodDemo from './components/appendix/api-intro/ApiMethodDemo.vue'
+import ApiDocumentDemo from './components/appendix/api-intro/ApiDocumentDemo.vue'
+import ApiPlayground from './components/appendix/api-intro/ApiPlayground.vue'
+import RealWorldApiDemo from './components/appendix/api-intro/RealWorldApiDemo.vue'
+
 // LLM Intro Components
 import EmbeddingDemo from './components/appendix/llm-intro/EmbeddingDemo.vue'
 import LinearAttentionDemo from './components/appendix/llm-intro/LinearAttentionDemo.vue'
@@ -276,6 +285,15 @@ export default {
     app.component('TerminalDefinition', TerminalDefinition)
     app.component('TerminalOSDemo', TerminalOSDemo)
     app.component('TerminalHandsOn', TerminalHandsOn)
+
+    // API Intro Components Registration
+    app.component('ApiQuickStartDemo', ApiQuickStartDemo)
+    app.component('ApiConceptDemo', ApiConceptDemo)
+    app.component('RequestResponseFlow', RequestResponseFlow)
+    app.component('ApiMethodDemo', ApiMethodDemo)
+    app.component('ApiDocumentDemo', ApiDocumentDemo)
+    app.component('ApiPlayground', ApiPlayground)
+    app.component('RealWorldApiDemo', RealWorldApiDemo)
 
     // LLM Intro Components Registration
     app.component('EmbeddingDemo', EmbeddingDemo)

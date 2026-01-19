@@ -614,6 +614,7 @@ export default defineConfig({
               text: '通用技能',
               collapsed: false,
               items: [
+                { text: 'API 入门', link: '/zh-cn/appendix/api-intro' },
                 { text: 'IDE 原理', link: '/zh-cn/appendix/ide-intro' },
                 { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' },
                 { text: 'Git 详细介绍', link: '/zh-cn/appendix/git-intro' },
