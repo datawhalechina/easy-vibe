@@ -120,6 +120,18 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 | **第二阶段** | 全栈开发、AI 集成、数据库        | 完整的全栈 AI 应用    |
 | **第三阶段** | claude code 进阶、小程序安卓开发 | 生产级多平台应用      |
 
+## 🔥 News
+- **[2026-01-19]** 发布 Prompt Engineering、AI 演进史、鉴权设计、Git 原理等一系列交互式演示组件，大幅提升可视化学习体验。
+
+<details>
+<summary>Past News</summary>
+
+- **[2026-01-16]** 重构项目结构，正式确立“新手入门”章节，降低上手门槛。
+- **[2026-01-14]** 完成第一阶段“产品原型构建”文档的大规模更新。
+- **[2026-01-13]** 完成文档架构重构，全面支持多语言 (i18n)。
+- **[2026-01-01]** 发布项目核心学习地图 (Learning Map)，明确学习路径。
+</details>
+
 ### 📖 内容导航
 
 <div align="center">
@@ -250,7 +262,24 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 ### 特别感谢
 
 - 感谢 [@Sm1les](https://github.com/Sm1les) 对本项目的帮助与支持
-- 感谢所有为本项目做出贡献的开发者们 ❤️
+- 感谢所有为本项目做出贡献的开发者们和支持点赞的朋友们 ❤️
+
+<div align="center"> 
+ 
+ <p> 
+   <a href="https://github.com/datawhalechina/easy-vibe/stargazers"><img src="https://reporoster.com/stars/datawhalechina/easy-vibe" alt="Stargazers"/></a> 
+   &nbsp;&nbsp; 
+   <a href="https://github.com/datawhalechina/easy-vibe/network/members"><img src="https://reporoster.com/forks/datawhalechina/easy-vibe" alt="Forkers"/></a> 
+ </p> 
+ 
+ <a href="https://www.star-history.com/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
+   <picture> 
+     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
+     <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&legend=top-left" /> 
+   </picture> 
+ </a>
+</div>
+
 
 <div align=center style="margin-top: 30px;">
   <a href="https://github.com/datawhalechina/easy-vibe/graphs/contributors">
