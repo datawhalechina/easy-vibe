@@ -1,457 +1,266 @@
 <!--
   AuthBasicsDemo.vue
-  鉴权基础概念演示
+  鉴权基础：你到底在“传什么”来证明身份？
 -->
 <template>
   <div class="auth-basics-demo">
     <div class="header">
-      <div class="title">为什么要鉴权？</div>
-      <div class="subtitle">理解系统安全的第一道防线</div>
+      <div class="title">🧰 鉴权的 4 种常见“凭证”</div>
+      <div class="subtitle">
+        选一个方案，看看请求长什么样、优缺点是什么、最常见坑是什么。
+      </div>
     </div>
 
-    <div class="building-metaphor">
-      <div class="building">
-        <div class="building-header">
-          <div class="building-icon">🏢</div>
-          <div class="building-text">后端系统 = 一栋大楼</div>
-        </div>
+    <div class="tabs">
+      <button
+        v-for="m in methods"
+        :key="m.id"
+        class="tab"
+        :class="{ active: current === m.id }"
+        @click="current = m.id"
+      >
+        {{ m.name }}
+        <span class="tag">{{ m.bestFor }}</span>
+      </button>
+    </div>
 
-        <div class="building-areas">
-          <div
-            v-for="area in areas"
-            :key="area.key"
-            class="area"
-            :class="{
-              protected: area.protected,
-              'can-access': canAccess(area)
-            }"
-            @click="toggleProtection(area)"
-          >
-            <div class="area-icon">{{ area.icon }}</div>
-            <div class="area-label">{{ area.label }}</div>
-            <div class="area-status" v-if="area.protected">
-              <div class="lock-icon">🔒</div>
-              <div class="lock-text">需要{{ area.requiredRole }}</div>
-            </div>
-            <div class="area-access" v-if="canAccess(area)">
-              <div class="access-icon">✅</div>
-              <div class="access-text">可访问</div>
-            </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">请求长什么样</div>
+        <pre class="code"><code>{{ active.example }}</code></pre>
+        <div class="hint">{{ active.note }}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">什么时候用 / 不用</div>
+        <div class="two">
+          <div class="box">
+            <div class="box-title">✅ 适合</div>
+            <ul class="list">
+              <li v-for="(x, i) in active.pros" :key="i">{{ x }}</li>
+            </ul>
+          </div>
+          <div class="box">
+            <div class="box-title">⚠️ 不适合 / 风险</div>
+            <ul class="list">
+              <li v-for="(x, i) in active.cons" :key="i">{{ x }}</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="user-control">
-      <div class="control-title">当前用户角色</div>
-      <div class="role-selector">
-        <button
-          v-for="role in roles"
-          :key="role.key"
-          class="role-btn"
-          :class="{ active: currentRole === role.key }"
-          @click="setRole(role.key)"
-        >
-          <span class="role-icon">{{ role.icon }}</span>
-          <span class="role-name">{{ role.name }}</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="scenarios">
-      <div class="section-title">保护资源的理由</div>
-      <div class="scenario-cards">
-        <div
-          v-for="scenario in scenarios"
-          :key="scenario.key"
-          class="scenario-card"
-          :class="`scenario-${scenario.key}`"
-        >
-          <div class="scenario-icon">{{ scenario.icon }}</div>
-          <div class="scenario-title">{{ scenario.title }}</div>
-          <div class="scenario-desc">{{ scenario.description }}</div>
-          <div class="scenario-example">{{ scenario.example }}</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="key-point">
-      <div class="key-point-icon">💡</div>
-      <div class="key-point-text">
-        <strong>关键点：</strong
-        >鉴权是第一道防线，所有敏感操作都必须先验证身份。
-        没有鉴权的系统就像没有门禁的大楼，任何人都可以进出。
+    <div class="card">
+      <div class="card-title">一句话口诀</div>
+      <div class="desc">
+        <strong>先认证（你是谁）</strong
+        >，再授权（你能做什么）。凭证只是“证明身份的方式”，授权永远要在服务端执行。
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
-const currentRole = ref('guest')
+const methods = [
+  {
+    id: 'basic',
+    name: 'HTTP Basic',
+    bestFor: '内部工具',
+    example: `GET /api/profile
+Authorization: Basic <base64(username:password)>`,
+    note: 'Base64 不是加密；必须配合 HTTPS，且不建议用于公网生产。',
+    pros: ['最简单，所有客户端都支持', '适合内部/临时调试工具'],
+    cons: [
+      '每次请求都带密码（风险大）',
+      '无法“注销”（除非服务端改密码）',
+      '不适合现代业务'
+    ]
+  },
+  {
+    id: 'cookie',
+    name: 'Session + Cookie',
+    bestFor: '传统 Web',
+    example: `POST /login
+→ 200 OK
+Set-Cookie: session_id=abc; HttpOnly; Secure; SameSite=Lax
 
-const roles = [
-  { key: 'guest', name: '访客', icon: '👤' },
-  { key: 'user', name: '普通用户', icon: '👤' },
-  { key: 'vip', name: 'VIP 用户', icon: '⭐' },
-  { key: 'admin', name: '管理员', icon: '👨‍💼' }
-]
+GET /api/profile
+Cookie: session_id=abc`,
+    note: '浏览器会自动带 Cookie；因此一定要做 CSRF 防护（SameSite / CSRF Token）。',
+    pros: ['服务端可控（可主动注销）', '适合 SSR/同域 Web', '实现直观'],
+    cons: ['服务端有状态（需要共享 session）', '跨域复杂', '容易被 CSRF 影响']
+  },
+  {
+    id: 'jwt',
+    name: 'JWT Bearer',
+    bestFor: 'API/移动端',
+    example: `POST /login
+→ { "access_token": "..." }
 
-const areas = ref([
-  {
-    key: 'lobby',
-    label: '大厅',
-    icon: '🚪',
-    protected: false,
-    requiredRole: null
+GET /api/profile
+Authorization: Bearer <access_token>`,
+    note: 'JWT payload 可解码；不要放敏感信息。建议短 access token + refresh token。',
+    pros: ['无状态，易扩展', '跨域友好', '移动端/多服务常用'],
+    cons: [
+      '难以全局注销（需要额外机制）',
+      'token 变大，每次都要带',
+      '设计不好会导致权限失控'
+    ]
   },
   {
-    key: 'profile',
-    label: '个人资料',
-    icon: '👤',
-    protected: true,
-    requiredRole: '登录'
-  },
-  {
-    key: 'vip-lounge',
-    label: 'VIP 休息室',
-    icon: '⭐',
-    protected: true,
-    requiredRole: 'VIP'
-  },
-  {
-    key: 'admin-room',
-    label: '管理员办公室',
-    icon: '👨‍💼',
-    protected: true,
-    requiredRole: '管理员'
-  }
-])
-
-const scenarios = [
-  {
-    key: 'privacy',
-    icon: '🔐',
-    title: '隐私保护',
-    description: '个人信息、聊天记录只能本人查看',
-    example: '你的微信聊天记录，别人不能看'
-  },
-  {
-    key: 'permission',
-    icon: '🛡️',
-    title: '权限控制',
-    description: '不同角色有不同的操作权限',
-    example: '管理员可以删除用户，普通用户不行'
-  },
-  {
-    key: 'abuse',
-    icon: '🚫',
-    title: '防止滥用',
-    description: '防止恶意调用、刷接口、爬虫',
-    example: '限制 API 调用频率，防止服务被攻击'
+    id: 'apikey',
+    name: 'API Key',
+    bestFor: '服务到服务',
+    example: `GET /api/metrics
+X-API-Key: <your_api_key>`,
+    note: 'API Key 更像“门禁卡”，要配合限流、IP 白名单、轮换、最小权限。',
+    pros: ['实现简单', '适合服务间/脚本访问', '易于轮换（如果设计得当）'],
+    cons: ['通常缺少用户上下文', '泄露后影响大', '需要做权限/轮换/审计']
   }
 ]
 
-const setRole = (role) => {
-  currentRole.value = role
-}
-
-const toggleProtection = (area) => {
-  area.protected = !area.protected
-}
-
-const canAccess = (area) => {
-  if (!area.protected) return true
-
-  const roleAccess = {
-    guest: [],
-    user: ['登录'],
-    vip: ['登录', 'VIP'],
-    admin: ['登录', 'VIP', '管理员']
-  }
-
-  const permissions = roleAccess[currentRole.value] || []
-  return permissions.includes(area.requiredRole)
-}
+const current = ref(methods[0].id)
+const active = computed(
+  () => methods.find((m) => m.id === current.value) || methods[0]
+)
 </script>
 
 <style scoped>
 .auth-basics-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem;
-  margin: 1.5rem 0;
-  font-family: var(--vp-font-family-base);
+  margin: 1rem 0;
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
 .subtitle {
+  margin-top: 0.25rem;
   color: var(--vp-c-text-2);
   font-size: 0.9rem;
 }
 
-.building-metaphor {
-  margin-bottom: 1.5rem;
-}
-
-.building {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.25rem;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.building-header {
+.tabs {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.building-icon {
-  font-size: 2rem;
-}
-
-.building-text {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.building-areas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.75rem;
-}
-
-.area {
-  position: relative;
-  background: var(--vp-c-bg-soft);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.area:hover {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
-}
-
-.area.protected {
-  border-color: #f59e0b;
-  background: rgba(245, 158, 11, 0.05);
-}
-
-.area.can-access {
-  border-color: #22c55e;
-  background: rgba(34, 197, 94, 0.05);
-}
-
-.area-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.area-label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.area-status,
-.area-access {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  font-size: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.lock-icon,
-.access-icon {
-  font-size: 1rem;
-}
-
-.lock-text {
-  color: #f59e0b;
-  font-weight: 600;
-}
-
-.access-text {
-  color: #22c55e;
-  font-weight: 600;
-}
-
-.user-control {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.25rem;
-  border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
-}
-
-.control-title {
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  font-size: 0.95rem;
-}
-
-.role-selector {
-  display: flex;
-  gap: 0.5rem;
   flex-wrap: wrap;
-}
-
-.role-btn {
-  flex: 1;
-  min-width: 100px;
-  padding: 0.75rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg-soft);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.role-btn:hover {
-  border-color: var(--vp-c-brand);
-}
-
-.role-btn.active {
-  border-color: var(--vp-c-brand);
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.role-icon {
-  font-size: 1.2rem;
-}
-
-.scenarios {
-  margin-bottom: 1.5rem;
-}
-
-.section-title {
-  font-weight: 600;
   margin-bottom: 1rem;
-  font-size: 1rem;
 }
 
-.scenario-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.scenario-card {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.25rem;
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
   border: 1px solid var(--vp-c-divider);
-  transition: all 0.2s ease;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.875rem;
 }
 
-.scenario-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.tab.active {
+  border-color: rgba(var(--vp-c-brand-rgb), 0.35);
+  box-shadow: 0 0 0 3px rgba(var(--vp-c-brand-rgb), 0.12);
 }
 
-.scenario-icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-.scenario-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
-}
-
-.scenario-desc {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-.scenario-example {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  font-style: italic;
-  padding: 0.5rem;
+.tag {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 6px;
-  border-left: 3px solid var(--vp-c-brand);
+  color: var(--vp-c-text-2);
+  font-weight: 600;
 }
 
-.scenario-privacy .scenario-icon {
-  filter: hue-rotate(200deg);
-}
-.scenario-permission .scenario-icon {
-  filter: hue-rotate(120deg);
-}
-.scenario-abuse .scenario-icon {
-  filter: hue-rotate(0deg);
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.key-point {
-  display: flex;
-  gap: 0.75rem;
-  background: rgba(59, 130, 246, 0.1);
-  border-left: 4px solid var(--vp-c-brand);
-  padding: 1rem;
+.card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
+  padding: 1rem;
 }
 
-.key-point-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
+.card-title {
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--vp-c-text-1);
 }
 
-.key-point-text {
+.code {
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  overflow-x: auto;
+  color: var(--vp-c-text-1);
+}
+
+.hint {
+  margin-top: 0.75rem;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-.key-point-text strong {
-  color: var(--vp-c-brand);
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
 }
 
-@media (max-width: 768px) {
-  .building-areas {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.box {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
 
-  .scenario-cards {
+.box-title {
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-1);
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+}
+
+.desc {
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+}
+
+@media (max-width: 720px) {
+  .grid {
     grid-template-columns: 1fr;
   }
-
-  .role-selector {
-    flex-direction: column;
-  }
-
-  .role-btn {
-    min-width: auto;
+  .two {
+    grid-template-columns: 1fr;
   }
 }
 </style>

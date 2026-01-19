@@ -1,688 +1,361 @@
 <!--
   SessionCookieDemo.vue
-  Session + Cookie 工作流程演示
+  Session + Cookie（手动推进，更贴近真实 Web 登录态）
 -->
 <template>
-  <div class="session-cookie-demo">
+  <div class="session-demo">
     <div class="header">
-      <div class="title">Session + Cookie 工作流程</div>
-      <div class="subtitle">Web 开发的经典鉴权方案</div>
+      <div class="title">🍪 Session + Cookie：有状态登录</div>
+      <div class="subtitle">
+        默认手动推进：先看清楚状态再进入下一步（避免“自动下一步”误解）。
+      </div>
     </div>
 
     <div class="controls">
-      <button
-        class="action-btn login"
-        @click="performLogin"
-        :disabled="isLoggedIn"
-      >
-        <span class="btn-icon">🔑</span>
-        <span class="btn-text">模拟登录</span>
+      <button class="btn primary" @click="start" :disabled="step !== 0">
+        开始
       </button>
+      <button class="btn" @click="prev" :disabled="step <= 1">上一步</button>
       <button
-        class="action-btn request"
-        @click="performRequest"
-        :disabled="!isLoggedIn"
+        class="btn primary"
+        @click="next"
+        :disabled="step === 0 || step >= maxStep"
       >
-        <span class="btn-icon">🌐</span>
-        <span class="btn-text">发送请求</span>
+        下一步
       </button>
-      <button
-        class="action-btn logout"
-        @click="performLogout"
-        :disabled="!isLoggedIn"
-      >
-        <span class="btn-icon">🚪</span>
-        <span class="btn-text">退出登录</span>
-      </button>
+      <button class="btn" @click="reset">重置</button>
     </div>
 
-    <div class="visual-container">
-      <div class="client-server">
-        <div class="client">
-          <div class="device-header">
-            <span class="device-icon">💻</span>
-            <span class="device-label">浏览器</span>
+    <div v-if="step > 0" class="progress">
+      Step {{ step }} / {{ maxStep }} · {{ steps[step - 1]?.title }}
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">浏览器（客户端）</div>
+        <div class="box">
+          <div class="box-title">Cookie Jar</div>
+          <div v-if="cookie" class="kv">
+            <div class="k">session_id</div>
+            <div class="v mono">{{ cookie }}</div>
           </div>
-          <div class="device-content">
-            <div class="cookie-jar">
-              <div class="jar-label">Cookie 存储</div>
-              <div class="jar-content">
-                <div v-if="sessionCookie" class="cookie-item">
-                  <div class="cookie-key">session_id</div>
-                  <div class="cookie-value">{{ sessionCookie }}</div>
-                </div>
-                <div v-else class="cookie-empty">暂无 Cookie</div>
-              </div>
-            </div>
-            <div class="request-preview" v-if="currentRequest">
-              <div class="preview-title">当前请求</div>
-              <div class="preview-content">
-                <div class="preview-line">{{ currentRequest }}</div>
-              </div>
-            </div>
-          </div>
+          <div v-else class="empty">暂无 Cookie</div>
         </div>
 
-        <div class="connection">
-          <div class="connection-line" :class="{ active: isTransferring }">
-            <div class="data-packet" v-if="isTransferring">
-              {{ transferData }}
+        <div class="box">
+          <div class="box-title">本步请求</div>
+          <pre class="code"><code>{{ clientRequest }}</code></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">服务器</div>
+        <div class="box">
+          <div class="box-title">Session Store（Redis/Memory）</div>
+          <div v-if="session" class="kv">
+            <div class="k mono">{{ cookie }}</div>
+            <div class="v">
+              <div class="row"><span class="muted">user_id</span> 123</div>
+              <div class="row"><span class="muted">username</span> alice</div>
+              <div class="row"><span class="muted">role</span> admin</div>
             </div>
           </div>
+          <div v-else class="empty">暂无 Session</div>
         </div>
 
-        <div class="server">
-          <div class="device-header">
-            <span class="device-icon">🖥️</span>
-            <span class="device-label">服务器</span>
-          </div>
-          <div class="device-content">
-            <div class="session-storage">
-              <div class="storage-label">Session 存储 (Redis/Memory)</div>
-              <div class="storage-content">
-                <div v-if="serverSession" class="session-item">
-                  <div class="session-key">{{ sessionCookie }}</div>
-                  <div class="session-data">
-                    <div class="data-row">
-                      <span class="data-key">user_id:</span>
-                      <span class="data-value">{{
-                        serverSession.user_id
-                      }}</span>
-                    </div>
-                    <div class="data-row">
-                      <span class="data-key">username:</span>
-                      <span class="data-value">{{
-                        serverSession.username
-                      }}</span>
-                    </div>
-                    <div class="data-row">
-                      <span class="data-key">role:</span>
-                      <span class="data-value">{{ serverSession.role }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div v-else class="session-empty">暂无 Session</div>
-              </div>
-            </div>
-          </div>
+        <div class="box">
+          <div class="box-title">本步响应</div>
+          <pre class="code"><code>{{ serverResponse }}</code></pre>
         </div>
       </div>
     </div>
 
-    <div class="flow-steps" v-if="currentStep">
-      <div class="steps-title">流程说明</div>
-      <div class="steps-list">
-        <div
-          v-for="(step, index) in currentStep.steps"
-          :key="index"
-          class="step-item"
-          :class="{ active: step.active }"
-        >
-          <div class="step-number">{{ index + 1 }}</div>
-          <div class="step-content">{{ step.text }}</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="info-cards">
-      <div class="info-card pros">
-        <div class="card-icon">✅</div>
-        <div class="card-title">优点</div>
-        <ul class="card-list">
-          <li>简单直观，易于理解</li>
-          <li>服务端可以主动注销</li>
-          <li>Session 信息存储在服务端，相对安全</li>
-        </ul>
-      </div>
-
-      <div class="info-card cons">
-        <div class="card-icon">⚠️</div>
-        <div class="card-title">缺点</div>
-        <ul class="card-list">
-          <li>服务器有状态，需要存储 Session</li>
-          <li>多台服务器需要共享 Session（如 Redis）</li>
-          <li>跨域困难，Cookie 默认不能跨域</li>
-          <li>容易受到 CSRF 攻击</li>
-        </ul>
+    <div class="card">
+      <div class="card-title">{{ steps[step - 1]?.title || '流程说明' }}</div>
+      <div class="desc">{{ steps[step - 1]?.desc }}</div>
+      <div v-if="steps[step - 1]?.warn" class="warn">
+        <div class="warn-title">注意</div>
+        <div class="warn-text">{{ steps[step - 1]?.warn }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
-const isLoggedIn = ref(false)
-const isTransferring = ref(false)
-const sessionCookie = ref('')
-const serverSession = ref(null)
-const currentRequest = ref('')
-const transferData = ref('')
-const currentStep = ref(null)
+const maxStep = 5
+const step = ref(0)
 
-const steps = {
-  login: {
-    steps: [
-      { text: '用户提交用户名密码', active: false },
-      { text: '服务器验证身份', active: false },
-      { text: '创建 Session 并存储用户信息', active: false },
-      { text: '返回 Set-Cookie: session_id=xxx', active: false },
-      { text: '浏览器保存 Cookie', active: false }
-    ]
+const cookie = ref('')
+const session = ref(false)
+
+const steps = [
+  {
+    title: '1) 登录请求（POST /login）',
+    desc: '用户提交用户名/密码，服务器验证成功后创建 Session。'
   },
-  request: {
-    steps: [
-      { text: '浏览器自动带上 Cookie', active: false },
-      { text: '服务器根据 session_id 查找 Session', active: false },
-      { text: '找到 Session，验证通过', active: false },
-      { text: '返回请求的数据', active: false }
-    ]
+  {
+    title: '2) 服务器 Set-Cookie',
+    desc: '服务器返回 Set-Cookie: session_id=...；浏览器保存 Cookie。',
+    warn: 'Cookie 建议加 HttpOnly + Secure + SameSite；同时要考虑 CSRF 防护。'
   },
-  logout: {
-    steps: [
-      { text: '用户点击退出', active: false },
-      { text: '服务器删除 Session', active: false },
-      { text: '清除浏览器 Cookie', active: false },
-      { text: '退出成功', active: false }
-    ]
+  {
+    title: '3) 后续请求自动带 Cookie',
+    desc: '浏览器对同域请求会自动带上 Cookie，服务器用 session_id 查 Session。'
+  },
+  {
+    title: '4) 授权判断（role/权限）',
+    desc: '认证（你是谁）之后，仍需要授权（你能做什么）。比如 admin 才能访问管理接口。'
+  },
+  {
+    title: '5) 注销',
+    desc: '服务器删除 Session（或让其过期），并让浏览器清理 Cookie。'
+  }
+]
+
+const start = () => {
+  step.value = 1
+  cookie.value = ''
+  session.value = false
+}
+
+const next = () => {
+  step.value = Math.min(maxStep, step.value + 1)
+  applyState()
+}
+
+const prev = () => {
+  step.value = Math.max(1, step.value - 1)
+  applyState()
+}
+
+const reset = () => {
+  step.value = 0
+  cookie.value = ''
+  session.value = false
+}
+
+const applyState = () => {
+  if (step.value <= 1) {
+    cookie.value = ''
+    session.value = false
+    return
+  }
+  if (step.value >= 2) {
+    if (!cookie.value)
+      cookie.value = 'sess_' + Math.random().toString(36).slice(2, 10)
+    session.value = true
+  }
+  if (step.value >= 5) {
+    // logout (show as empty state by step title/response)
+    // We don't auto-clear state; keep it visible until reset to avoid “auto” confusion.
   }
 }
 
-const performLogin = async () => {
-  const sessionId = generateSessionId()
-  const stepsData = steps.login
+const clientRequest = computed(() => {
+  if (step.value === 0) return '（点击开始）'
+  if (step.value === 1) {
+    return `POST /login
+Content-Type: application/json
 
-  for (let i = 0; i < stepsData.steps.length; i++) {
-    stepsData.steps[i].active = true
-    currentStep.value = stepsData
-
-    if (i === 0) {
-      currentRequest.value =
-        'POST /login\n{ username: "alice", password: "***" }'
-      transferData.value = '登录请求'
-      isTransferring.value = true
-      await delay(800)
-    } else if (i === 2) {
-      serverSession.value = {
-        user_id: 123,
-        username: 'alice',
-        role: 'user'
-      }
-      await delay(600)
-    } else if (i === 3) {
-      transferData.value = 'Set-Cookie'
-      isTransferring.value = true
-      await delay(800)
-      sessionCookie.value = sessionId
-      isLoggedIn.value = true
-    } else {
-      await delay(500)
-    }
+{"username":"alice","password":"******"}`
   }
-
-  isTransferring.value = false
-  currentRequest.value = ''
-  transferData.value = ''
-}
-
-const performRequest = async () => {
-  const stepsData = steps.request
-
-  for (let i = 0; i < stepsData.steps.length; i++) {
-    stepsData.steps[i].active = true
-    currentStep.value = stepsData
-
-    if (i === 0) {
-      currentRequest.value = `GET /api/user/profile\nCookie: session_id=${sessionCookie.value}`
-      transferData.value = '请求 + Cookie'
-      isTransferring.value = true
-      await delay(800)
-    } else if (i === 1) {
-      isTransferring.value = false
-      await delay(600)
-    } else if (i === 3) {
-      transferData.value = '响应数据'
-      isTransferring.value = true
-      await delay(800)
-    } else {
-      await delay(500)
-    }
+  if (step.value === 2) return '（等待服务器响应并写入 Cookie）'
+  if (step.value === 3) {
+    return `GET /api/user/profile
+Cookie: session_id=${cookie.value}`
   }
-
-  isTransferring.value = false
-  currentRequest.value = ''
-  transferData.value = ''
-}
-
-const performLogout = async () => {
-  const stepsData = steps.logout
-
-  for (let i = 0; i < stepsData.steps.length; i++) {
-    stepsData.steps[i].active = true
-    currentStep.value = stepsData
-
-    if (i === 0) {
-      currentRequest.value = 'POST /logout'
-      transferData.value = '退出请求'
-      isTransferring.value = true
-      await delay(800)
-    } else if (i === 1) {
-      serverSession.value = null
-      await delay(600)
-    } else if (i === 2) {
-      sessionCookie.value = ''
-      isLoggedIn.value = false
-      await delay(500)
-    } else {
-      await delay(400)
-    }
+  if (step.value === 4) {
+    return `GET /api/admin/users
+Cookie: session_id=${cookie.value}`
   }
+  return `POST /logout
+Cookie: session_id=${cookie.value}`
+})
 
-  isTransferring.value = false
-  currentRequest.value = ''
-  transferData.value = ''
-}
-
-const generateSessionId = () => {
-  return 'sess_' + Math.random().toString(36).substring(2, 15)
-}
-
-const delay = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+const serverResponse = computed(() => {
+  if (step.value === 0) return ''
+  if (step.value === 1) return '200 OK (credentials valid)'
+  if (step.value === 2) {
+    return `200 OK
+Set-Cookie: session_id=${cookie.value}; HttpOnly; Secure; SameSite=Lax`
+  }
+  if (step.value === 3) return '200 OK (profile payload...)'
+  if (step.value === 4)
+    return '200 OK (admin data...) / 403 Forbidden (if not admin)'
+  return `200 OK
+Set-Cookie: session_id=; Max-Age=0`
+})
 </script>
 
 <style scoped>
-.session-cookie-demo {
+.session-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem;
-  margin: 1.5rem 0;
-  font-family: var(--vp-font-family-base);
+  margin: 1rem 0;
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
 .subtitle {
+  margin-top: 0.25rem;
   color: var(--vp-c-text-2);
   font-size: 0.9rem;
 }
 
 .controls {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.action-btn {
-  flex: 1;
-  min-width: 140px;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
 }
 
-.action-btn:disabled {
+.btn {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.btn.primary {
+  background: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-bg);
+}
+
+.btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.action-btn.login {
-  background: #22c55e;
-  color: white;
-}
-
-.action-btn.login:hover:not(:disabled) {
-  background: #16a34a;
-}
-
-.action-btn.request {
-  background: #3b82f6;
-  color: white;
-}
-
-.action-btn.request:hover:not(:disabled) {
-  background: #2563eb;
-}
-
-.action-btn.logout {
-  background: #ef4444;
-  color: white;
-}
-
-.action-btn.logout:hover:not(:disabled) {
-  background: #dc2626;
-}
-
-.btn-icon {
-  font-size: 1.2rem;
-}
-
-.visual-container {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
-}
-
-.client-server {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.client,
-.server {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.device-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.device-icon {
-  font-size: 1.5rem;
-}
-
-.device-label {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.device-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.cookie-jar,
-.session-storage {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.jar-label,
-.storage-label {
-  font-weight: 600;
-  font-size: 0.85rem;
+.progress {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
   margin-bottom: 0.75rem;
-  color: var(--vp-c-brand);
 }
 
-.jar-content,
-.storage-content {
-  min-height: 80px;
-}
-
-.cookie-item,
-.session-item {
-  background: white;
-  border-radius: 6px;
-  padding: 0.75rem;
-  border: 1px solid var(--vp-c-divider);
-  font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
-}
-
-.cookie-key {
-  font-weight: 600;
-  color: var(--vp-c-brand);
-  margin-bottom: 0.4rem;
-}
-
-.cookie-value {
-  color: var(--vp-c-text-2);
-  word-break: break-all;
-}
-
-.session-key {
-  font-weight: 600;
-  color: #8b5cf6;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.session-data {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.data-row {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.data-key {
-  color: var(--vp-c-brand);
-  font-weight: 600;
-}
-
-.data-value {
-  color: var(--vp-c-text-2);
-}
-
-.cookie-empty,
-.session-empty {
-  text-align: center;
-  color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  padding: 1rem;
-  font-style: italic;
-}
-
-.request-preview {
-  background: #1e293b;
-  border-radius: 6px;
-  padding: 0.75rem;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.preview-title {
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: #94a3b8;
-  margin-bottom: 0.5rem;
-}
-
-.preview-content {
-  font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
-  color: #e2e8f0;
-  line-height: 1.5;
-}
-
-.preview-line {
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-.connection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-}
-
-.connection-line {
-  width: 100px;
-  height: 4px;
-  background: var(--vp-c-divider);
-  border-radius: 2px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.connection-line.active {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-}
-
-.data-packet {
-  position: absolute;
-  background: white;
-  padding: 0.4rem 0.75rem;
-  border-radius: 6px;
-  border: 2px solid var(--vp-c-brand);
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
-  animation: pulse 0.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.flow-steps {
-  background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.25rem;
-  border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
-}
-
-.steps-title {
-  font-weight: 700;
-  font-size: 1rem;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.step-item {
-  display: flex;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 8px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
-}
-
-.step-item.active {
-  border-color: var(--vp-c-brand);
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.step-number {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-
-.step-content {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-}
-
-.info-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.info-card {
+.card {
   background: var(--vp-c-bg);
-  border-radius: 10px;
-  padding: 1.25rem;
   border: 1px solid var(--vp-c-divider);
-}
-
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .card-title {
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--vp-c-text-1);
+}
+
+.box {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  padding: 0.75rem;
   margin-bottom: 0.75rem;
 }
 
-.card-list {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.card-list li {
+.box-title {
+  font-weight: 800;
+  color: var(--vp-c-text-1);
   margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
-.info-card.pros .card-list li {
-  color: #16a34a;
+.empty {
+  color: var(--vp-c-text-3);
+  font-style: italic;
 }
 
-.info-card.cons .card-list li {
-  color: #dc2626;
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.75rem;
+  align-items: start;
 }
 
-@media (max-width: 768px) {
-  .client-server {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+.k {
+  font-weight: 800;
+  color: var(--vp-c-text-1);
+}
 
-  .connection {
-    display: none;
-  }
+.v {
+  color: var(--vp-c-text-2);
+  line-height: 1.7;
+}
 
-  .info-cards {
+.row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.muted {
+  color: var(--vp-c-text-3);
+  min-width: 72px;
+}
+
+.mono {
+  font-family: var(--vp-font-family-mono);
+  word-break: break-all;
+}
+
+.code {
+  margin: 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  overflow-x: auto;
+  color: var(--vp-c-text-1);
+}
+
+.desc {
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+}
+
+.warn {
+  margin-top: 0.75rem;
+  border: 1px solid rgba(var(--vp-c-brand-rgb), 0.18);
+  background: rgba(var(--vp-c-brand-rgb), 0.06);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.warn-title {
+  font-weight: 800;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.25rem;
+}
+
+.warn-text {
+  color: var(--vp-c-text-2);
+  line-height: 1.7;
+}
+
+@media (max-width: 720px) {
+  .grid {
     grid-template-columns: 1fr;
   }
 }

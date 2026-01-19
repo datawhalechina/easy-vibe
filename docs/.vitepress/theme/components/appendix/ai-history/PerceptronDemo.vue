@@ -96,7 +96,7 @@ const output = computed(() => {
 .perceptron-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background: white;
+  background: var(--vp-c-bg-soft);
   padding: 1.5rem;
   margin: 1rem 0;
   overflow-x: auto;
@@ -123,19 +123,20 @@ const output = computed(() => {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid #94a3b8;
+  border: 2px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f1f5f9;
+  background: var(--vp-c-bg);
   position: relative;
+  color: var(--vp-c-text-1);
 }
 
 .output-node.active {
-  background: #4ade80;
-  border-color: #16a34a;
-  color: white;
+  background: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-bg);
   font-weight: bold;
 }
 
@@ -145,7 +146,7 @@ const output = computed(() => {
   top: -15px;
   width: 80px;
   text-align: center;
-  color: #64748b;
+  color: var(--vp-c-text-2);
 }
 
 .val-input {
@@ -169,7 +170,7 @@ const output = computed(() => {
 
 .weight-line {
   height: 2px;
-  background: #475569;
+  background: var(--vp-c-text-2);
   position: absolute;
   left: 0;
   right: 0;
@@ -184,9 +185,9 @@ const output = computed(() => {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: white;
+  background: var(--vp-c-bg);
   padding: 2px 4px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--vp-c-divider);
   border-radius: 4px;
   z-index: 2;
 }
@@ -195,14 +196,14 @@ const output = computed(() => {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: #3b82f6;
-  color: white;
+  background: var(--vp-c-brand);
+  color: var(--vp-c-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(var(--vp-c-brand-rgb), 0.35);
 }
 
 .sum-part {
@@ -218,11 +219,11 @@ const output = computed(() => {
 .bias-control {
   position: absolute;
   bottom: -30px;
-  background: white;
-  color: #333;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
   padding: 2px 8px;
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--vp-c-divider);
   font-size: 0.7rem;
   display: flex;
   align-items: center;
@@ -230,21 +231,21 @@ const output = computed(() => {
 }
 .bias-input {
   width: 30px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--vp-c-divider);
   border-radius: 2px;
   text-align: center;
 }
 
 .formula-bar {
   margin-top: 2rem;
-  background: #f8fafc;
+  background: var(--vp-c-bg);
   padding: 1rem;
   border-radius: 6px;
-  font-family: monospace;
+  font-family: var(--vp-font-family-mono);
   font-size: 0.8rem;
-  color: #334155;
+  color: var(--vp-c-text-1);
   text-align: center;
-  border: 1px dashed #cbd5e1;
+  border: 1px dashed var(--vp-c-divider);
 }
 
 input[type='range'] {

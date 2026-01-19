@@ -121,11 +121,22 @@
         </div>
       </div>
     </div>
+
+    <div class="bottom">
+      <div class="block">
+        <div class="block-title">当前等价命令</div>
+        <pre class="mono"><code>{{ historyText }}</code></pre>
+      </div>
+      <div class="block">
+        <div class="block-title">git status（模拟）</div>
+        <pre class="mono"><code>{{ statusText }}</code></pre>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const fileIdCounter = ref(1)
 
@@ -139,6 +150,32 @@ const workingFiles = ref([
 
 const stagedFiles = ref([])
 const commits = ref([])
+const history = ref(['$ git status'])
+
+const pushHistory = (line) => {
+  history.value.push(line)
+  if (history.value.length > 6)
+    history.value.splice(0, history.value.length - 6)
+}
+
+const historyText = computed(() => history.value.join('\n'))
+
+const statusText = computed(() => {
+  const lines = ['On branch main']
+  if (stagedFiles.value.length === 0 && workingFiles.value.length === 0) {
+    lines.push('nothing to commit, working tree clean')
+    return lines.join('\n')
+  }
+  if (stagedFiles.value.length) {
+    lines.push('Changes to be committed:')
+    stagedFiles.value.forEach((f) => lines.push(`  new file:   ${f.name}`))
+  }
+  if (workingFiles.value.length) {
+    lines.push('Untracked files:')
+    workingFiles.value.forEach((f) => lines.push(`  ${f.name}`))
+  }
+  return lines.join('\n')
+})
 
 const createNewFile = () => {
   const types = [
@@ -152,6 +189,7 @@ const createNewFile = () => {
     name: randomType.name,
     icon: randomType.icon
   })
+  pushHistory(`$ touch ${randomType.name}`)
 }
 
 const addToStaging = (file) => {
@@ -159,6 +197,7 @@ const addToStaging = (file) => {
   if (index !== -1) {
     workingFiles.value.splice(index, 1)
     stagedFiles.value.push(file)
+    pushHistory(`$ git add ${file.name}`)
   }
 }
 
@@ -167,6 +206,7 @@ const unstageFile = (file) => {
   if (index !== -1) {
     stagedFiles.value.splice(index, 1)
     workingFiles.value.push(file)
+    pushHistory(`$ git restore --staged ${file.name}`)
   }
 }
 
@@ -190,14 +230,16 @@ const commitFiles = () => {
     message: randomMsg,
     files: files.map((f) => f.name)
   })
+
+  pushHistory(`$ git commit -m "${randomMsg}"`)
 }
 </script>
 
 <style scoped>
 .three-areas-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background-color: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
   padding: 1rem;
   margin: 1rem 0;
   font-family: var(--vp-font-family-mono);
@@ -215,12 +257,11 @@ const commitFiles = () => {
 .zone {
   flex: 1;
   background: var(--vp-c-bg);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 12px;
-  border: 2px solid transparent;
+  border: 1px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
   min-height: 300px;
 }
 
@@ -262,8 +303,7 @@ const commitFiles = () => {
 
 /* 1. Working Desk */
 .zone.working {
-  border-color: #f59e0b;
-  background: #fffbeb;
+  border-color: rgba(var(--vp-c-brand-rgb), 0.25);
 }
 .desk-surface {
   flex: 1;
@@ -272,14 +312,15 @@ const commitFiles = () => {
   align-content: flex-start;
   gap: 8px;
   padding: 8px;
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background: var(--vp-c-bg-soft);
   background-size: 10px 10px;
   border-radius: 8px;
+  border: 1px dashed var(--vp-c-divider);
 }
 
 .file-card {
-  background: white;
-  border: 1px solid #d1d5db;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   padding: 8px;
   width: 80px;
@@ -289,15 +330,12 @@ const commitFiles = () => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: all 0.2s;
   position: relative;
 }
 
 .file-card:hover {
-  transform: translateY(-4px) rotate(2deg);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-  border-color: #f59e0b;
+  border-color: var(--vp-c-brand);
 }
 
 .file-icon {
@@ -316,8 +354,8 @@ const commitFiles = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(245, 158, 11, 0.9);
-  color: white;
+  background: rgba(var(--vp-c-brand-rgb), 0.9);
+  color: var(--vp-c-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -332,8 +370,8 @@ const commitFiles = () => {
 }
 
 .create-btn {
-  background: #f59e0b;
-  color: white;
+  background: var(--vp-c-brand);
+  color: var(--vp-c-bg);
   border: none;
   padding: 4px 12px;
   border-radius: 12px;
@@ -344,8 +382,7 @@ const commitFiles = () => {
 
 /* 2. Staging Box */
 .zone.staging {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: rgba(var(--vp-c-brand-rgb), 0.25);
 }
 .box-container {
   flex: 1;
@@ -360,8 +397,8 @@ const commitFiles = () => {
 .box-body {
   width: 100%;
   height: 140px;
-  background: #dbeafe;
-  border: 2px solid #3b82f6;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
   border-top: none;
   border-radius: 0 0 8px 8px;
   position: relative;
@@ -389,10 +426,10 @@ const commitFiles = () => {
   font-size: 0.8rem;
 }
 .file-card.mini:hover {
-  border-color: #ef4444;
+  border-color: var(--vp-c-brand);
 }
 .file-card.mini .action-hint {
-  background: rgba(239, 68, 68, 0.9);
+  background: rgba(var(--vp-c-brand-rgb), 0.9);
 }
 
 .box-flap {
@@ -400,8 +437,8 @@ const commitFiles = () => {
   top: -20px;
   width: 45%;
   height: 20px;
-  background: #93c5fd;
-  border: 2px solid #3b82f6;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
   border-bottom: none;
   transition: all 0.5s;
 }
@@ -423,30 +460,27 @@ const commitFiles = () => {
   text-align: center;
 }
 .commit-btn {
-  background: #3b82f6;
-  color: white;
+  background: var(--vp-c-brand);
+  color: var(--vp-c-bg);
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
 }
 .commit-btn:disabled {
-  background: #93c5fd;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-2);
   cursor: not-allowed;
-  box-shadow: none;
 }
 .commit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(59, 130, 246, 0.4);
+  opacity: 0.95;
 }
 
 /* 3. Repo Cabinet */
 .zone.repo {
-  border-color: #10b981;
-  background: #ecfdf5;
+  border-color: rgba(var(--vp-c-brand-rgb), 0.25);
 }
 .cabinet-body {
   flex: 1;
@@ -457,22 +491,21 @@ const commitFiles = () => {
 }
 
 .drawer-item {
-  background: white;
-  border: 1px solid #10b981;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 4px;
   height: 50px;
   display: flex;
   align-items: center;
   padding: 0 12px;
   gap: 12px;
-  box-shadow: 0 2px 0 #059669; /* 3D effect */
   position: relative;
 }
 .drawer-handle {
   width: 30px;
   height: 6px;
-  background: #d1fae5;
-  border: 1px solid #10b981;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 2px;
 }
 .commit-info {
@@ -482,8 +515,8 @@ const commitFiles = () => {
 }
 .commit-hash {
   font-size: 0.6rem;
-  color: #10b981;
-  font-family: monospace;
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-mono);
 }
 .commit-msg {
   font-size: 0.8rem;
@@ -518,6 +551,38 @@ const commitFiles = () => {
   white-space: nowrap;
 }
 .arrow-head {
+  font-size: 0.8rem;
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.block {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 0.75rem;
+  min-width: 260px;
+}
+
+.block-title {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.5rem;
+}
+
+.mono {
+  margin: 0;
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  overflow-x: auto;
+  color: var(--vp-c-text-1);
   font-size: 0.8rem;
 }
 
@@ -570,6 +635,10 @@ const commitFiles = () => {
   .arrow-line {
     width: 2px;
     height: 20px;
+  }
+
+  .bottom {
+    grid-template-columns: 1fr;
   }
 }
 </style>

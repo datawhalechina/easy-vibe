@@ -4,6 +4,10 @@
       <div class="repos">
         <div class="repo">
           <div class="header">💻 本地</div>
+          <div class="meta">
+            <span class="badge">main</span>
+            <span class="hint"> Ahead {{ ahead }} / Behind {{ behind }} </span>
+          </div>
           <div class="commits">
             <div v-for="c in local" :key="c" class="commit-dot">
               <span class="dot local"></span>
@@ -17,6 +21,10 @@
 
         <div class="repo">
           <div class="header">☁️ 远程</div>
+          <div class="meta">
+            <span class="badge">origin/main</span>
+            <span class="hint">模拟队友提交在这里发生</span>
+          </div>
           <div class="commits">
             <div v-for="c in remote" :key="c" class="commit-dot">
               <span class="dot remote"></span>
@@ -29,22 +37,26 @@
 
       <div class="controls">
         <button @click="localCommit" class="btn">本地提交</button>
+        <button @click="remoteCommit" class="btn">远程新增提交</button>
         <button
           @click="push"
           :disabled="local.length <= remote.length"
           class="btn"
         >
-          推送 Push
+          git push
         </button>
-        <button @click="pull" :disabled="!hasRemote" class="btn">
-          拉取 Pull
+        <button @click="pull" :disabled="behind === 0" class="btn">
+          git pull
         </button>
         <button @click="reset" class="btn secondary">重置</button>
       </div>
     </div>
 
     <div class="info-box">
-      <p><strong>💡 远程协作:</strong> Push 上传，Pull 下载，保持同步</p>
+      <p>
+        <strong>💡 远程协作:</strong> 你本地落后（Behind）就
+        pull，你本地领先（Ahead）就 push。
+      </p>
     </div>
   </div>
 </template>
@@ -53,23 +65,33 @@
 import { ref, computed } from 'vue'
 const local = ref([])
 const remote = ref([])
-const hasRemote = ref(false)
 
 const localCommit = () => {
   local.value.push(Math.random().toString(16).substr(2, 7))
 }
+
+const remoteCommit = () => {
+  remote.value.push(Math.random().toString(16).substr(2, 7))
+}
+
 const push = () => {
-  remote.value.push(...local.value.slice(remote.value.length))
-  hasRemote.value = false
+  remote.value = [...local.value]
 }
+
 const pull = () => {
-  if (hasRemote.value) local.value.push(Math.random().toString(16).substr(2, 7))
-  hasRemote.value = false
+  local.value = [...remote.value]
 }
+
+const ahead = computed(() =>
+  Math.max(0, local.value.length - remote.value.length)
+)
+const behind = computed(() =>
+  Math.max(0, remote.value.length - local.value.length)
+)
+
 const reset = () => {
   local.value = []
   remote.value = []
-  hasRemote.value = false
 }
 </script>
 
@@ -98,6 +120,26 @@ const reset = () => {
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-2);
+  font-size: 0.75rem;
+  font-family: var(--vp-font-family-mono);
+}
+.hint {
+  color: var(--vp-c-text-3);
+  font-size: 0.75rem;
+}
 .commits {
   min-height: 80px;
 }
@@ -113,13 +155,13 @@ const reset = () => {
   border-radius: 50%;
 }
 .dot.local {
-  background: #3b82f6;
+  background: var(--vp-c-brand);
 }
 .dot.remote {
-  background: #10b981;
+  background: rgba(var(--vp-c-brand-rgb), 0.5);
 }
 .hash {
-  font-family: monospace;
+  font-family: var(--vp-font-family-mono);
   font-size: 0.875rem;
   color: var(--vp-c-text-2);
 }

@@ -197,21 +197,17 @@ const stages = [
 
 <style scoped>
 .ai-evolution-demo {
-  border-radius: 16px;
-  background: var(--vp-c-bg);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
-  margin: 2rem 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
+  margin: 1rem 0;
 }
 
 /* Reusing Timeline Styles from FrontendEvolutionDemo for consistency */
 .timeline-container {
   padding: 2rem 1rem 1rem;
-  background: linear-gradient(to bottom, var(--vp-c-bg-soft), var(--vp-c-bg));
+  background: var(--vp-c-bg-soft);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -325,13 +321,7 @@ const stages = [
 .header-section h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(
-    120deg,
-    #10b981,
-    #3b82f6
-  ); /* Green to Blue for AI */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--vp-c-text-1);
 }
 
 .stage-index {
@@ -362,29 +352,24 @@ const stages = [
 
 .mac-window {
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--vp-c-divider);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: white;
-  transition: transform 0.3s;
-}
-.mac-window:hover {
-  transform: translateY(-5px);
+  background: var(--vp-c-bg);
 }
 
 .concept-window {
-  background: #f8fafc;
+  background: var(--vp-c-bg);
 }
 .app-window {
-  background: white;
+  background: var(--vp-c-bg);
 }
 
 .window-bar {
   padding: 0.8rem 1rem;
-  background: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--vp-c-bg-soft);
+  border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
   align-items: center;
   position: relative;
@@ -400,13 +385,13 @@ const stages = [
   border-radius: 50%;
 }
 .light.red {
-  background: #ff5f56;
+  background: var(--vp-c-red-1, #ef4444);
 }
 .light.yellow {
-  background: #ffbd2e;
+  background: var(--vp-c-yellow-1, #f59e0b);
 }
 .light.green {
-  background: #27c93f;
+  background: var(--vp-c-green-1, #22c55e);
 }
 
 .window-title {
@@ -432,30 +417,30 @@ const stages = [
 /* Visualizations */
 /* Symbolism */
 .logic-gate {
-  border: 2px solid #334155;
+  border: 2px solid var(--vp-c-divider);
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
-  background: white;
+  background: var(--vp-c-bg);
 }
 .input-group {
   display: flex;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 0.5rem;
-  font-family: monospace;
+  font-family: var(--vp-font-family-mono);
 }
 .gate-box {
-  background: #334155;
-  color: white;
+  background: var(--vp-c-brand);
+  color: var(--vp-c-bg);
   padding: 4px 10px;
   margin: 0.5rem 0;
   border-radius: 4px;
 }
 .math-note {
   margin-top: 1rem;
-  font-family: monospace;
-  color: #64748b;
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-text-2);
   font-size: 0.8rem;
 }
 
@@ -467,15 +452,16 @@ const stages = [
   gap: 1rem;
 }
 .tree-node {
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--vp-c-divider);
   padding: 6px 12px;
   border-radius: 20px;
-  background: white;
+  background: var(--vp-c-bg);
   font-size: 0.8rem;
+  color: var(--vp-c-text-1);
 }
 .tree-node.root {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
   font-weight: bold;
 }
 .branches {
@@ -490,15 +476,15 @@ const stages = [
 }
 .condition {
   font-size: 0.7rem;
-  color: #64748b;
-  background: #f1f5f9;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-alt);
   padding: 2px 6px;
   border-radius: 4px;
 }
 .kb-note {
   margin-top: 1rem;
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--vp-c-text-2);
   font-style: italic;
 }
 
@@ -518,17 +504,17 @@ const stages = [
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #cbd5e1;
-  border: 1px solid #94a3b8;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
 }
 .layer.input .neuron {
-  background: #93c5fd;
+  background: rgba(var(--vp-c-brand-rgb), 0.25);
 }
 .layer.hidden .neuron {
-  background: #fca5a5;
+  background: rgba(var(--vp-c-brand-rgb), 0.18);
 }
 .layer.output .neuron {
-  background: #86efac;
+  background: rgba(var(--vp-c-brand-rgb), 0.12);
 }
 .connections {
   position: absolute;
@@ -540,13 +526,13 @@ const stages = [
   opacity: 0.2;
 }
 .connections line {
-  stroke: #000;
+  stroke: var(--vp-c-text-2);
   stroke-width: 1;
 }
 .dl-note {
   margin-top: 2rem;
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--vp-c-text-2);
 }
 
 /* GenAI */
@@ -558,16 +544,16 @@ const stages = [
   width: 100%;
 }
 .transformer-block {
-  border: 2px solid #8b5cf6;
+  border: 2px solid var(--vp-c-brand);
   border-radius: 8px;
   padding: 0.5rem;
   width: 120px;
   text-align: center;
-  background: #f5f3ff;
+  background: rgba(var(--vp-c-brand-rgb), 0.08);
 }
 .block-layer {
-  border: 1px solid #ddd6fe;
-  background: white;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
   margin: 4px 0;
   padding: 4px;
   font-size: 0.7rem;
@@ -575,10 +561,10 @@ const stages = [
 }
 .chat-sim {
   width: 100%;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 1rem;
-  background: white;
+  background: var(--vp-c-bg);
   font-size: 0.8rem;
 }
 .msg {
@@ -588,14 +574,14 @@ const stages = [
   max-width: 80%;
 }
 .msg.user {
-  background: #eff6ff;
+  background: rgba(var(--vp-c-brand-rgb), 0.1);
   margin-left: auto;
-  color: #1e40af;
+  color: var(--vp-c-text-1);
 }
 .msg.ai {
-  background: #f0fdf4;
+  background: var(--vp-c-bg-soft);
   margin-right: auto;
-  color: #166534;
+  color: var(--vp-c-text-1);
 }
 
 /* Impact Card */

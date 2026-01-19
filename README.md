@@ -12,7 +12,7 @@
 # Easy-Vibe : Learn vibe coding from 0 to 1
 
 <p align="center">
-  📌 <a href="https://datawhalechina.github.io/easy-vibe/">开始在线阅读 (Start Reading Online)</a>
+  📌 <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读 (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/prompt-engineering.html">交互式教程 (Interactive Tutorial)</a>
 </p>
 
 <p align="center">
@@ -48,6 +48,57 @@
 </p>
 
 </div>
+
+<table align="center">
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="assets/gif-header.png" width="100%">
+      <br>
+      <strong>新手专属学习地图</strong>
+      <br>
+      <sub>零基础专属指引，清晰规划路径，告别“学了忘”</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="assets/gif-tutorial.png" width="100%">
+      <br>
+      <strong>手把手图文教程</strong>
+      <br>
+      <sub>保姆级图文详解，如同私教在旁，跟着做就能学会</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="assets/gif-ide.gif" width="100%">
+      <br>
+      <strong>沉浸式模拟编程</strong>
+      <br>
+      <sub>虚拟鼠标自动导览，带你快速上手 IDE 核心用法</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="assets/gif-diffusion.gif" width="100%">
+      <br>
+      <strong>看得见的 AI 原理</strong>
+      <br>
+      <sub>算法原理动画化，一眼看懂 AI 如何“画”出图片</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="assets/gif-rag.gif" width="100%">
+      <br>
+      <strong>像玩游戏一样学 RAG</strong>
+      <br>
+      <sub>独家交互组件，点击即可看清 RAG 数据流向</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="assets/git-terminal.gif" width="100%">
+      <br>
+      <strong>可视化终端原理</strong>
+      <br>
+      <sub>命令行操作可视化，直观展示后台逻辑与原理</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
