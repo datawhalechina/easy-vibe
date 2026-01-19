@@ -46,15 +46,14 @@
         </div>
 
         <div class="action-buttons">
-          <button @click="addRule" class="add-rule-btn" :disabled="ruleCount >= maxRules">
+          <button
+            @click="addRule"
+            class="add-rule-btn"
+            :disabled="ruleCount >= maxRules"
+          >
             ✨ 添加规则 ({{ ruleCount }}/{{ maxRules }})
           </button>
-          <button @click="autoGenerate" class="auto-btn" :disabled="autoGenerating">
-            ⚡ 自动生成
-          </button>
-          <button @click="resetRules" class="reset-btn">
-            🔄 重置
-          </button>
+          <button @click="resetRules" class="reset-btn">🔄 重置</button>
         </div>
       </div>
 
@@ -62,7 +61,9 @@
         <div class="counter-display">
           <div class="counter-label">需要的规则总数</div>
           <transition name="count-update" mode="out-in">
-            <div :key="totalRules" class="counter-value">{{ formatNumber(totalRules) }}</div>
+            <div :key="totalRules" class="counter-value">
+              {{ formatNumber(totalRules) }}
+            </div>
           </transition>
           <div class="counter-formula">
             = {{ valuesPerFeature }}<sup>{{ featureCount }}</sup> =
@@ -85,7 +86,10 @@
               <div class="rule-content">
                 <code>{{ rule.text }}</code>
               </div>
-              <div class="rule-visual" :style="{ background: rule.gradient }"></div>
+              <div
+                class="rule-visual"
+                :style="{ background: rule.gradient }"
+              ></div>
             </div>
           </transition-group>
         </div>
@@ -146,7 +150,8 @@
         <li>...</li>
       </ul>
       <p class="conclusion">
-        <strong>结论</strong>：规则永远写不完，这就是为什么我们需要<strong>机器学习</strong>！
+        <strong>结论</strong
+        >：规则永远写不完，这就是为什么我们需要<strong>机器学习</strong>！
       </p>
     </div>
   </div>
@@ -159,7 +164,6 @@ const featureCount = ref(3)
 const valuesPerFeature = ref(3)
 const ruleCount = ref(0)
 const ruleIdCounter = ref(0)
-const autoGenerating = ref(false)
 const displayedRules = ref([])
 const maxRules = 20
 
@@ -201,7 +205,8 @@ const valueOptions = computed(() => {
 
 const generateRuleText = () => {
   const conditions = features.value.map((feature, index) => {
-    const value = valueOptions.value[Math.floor(Math.random() * valuesPerFeature.value)]
+    const value =
+      valueOptions.value[Math.floor(Math.random() * valuesPerFeature.value)]
     return `${feature}=${value}`
   })
   return `IF ${conditions.join(' AND ')} THEN ...`
@@ -217,31 +222,18 @@ const addRule = () => {
     displayedRules.value.push({
       id: ruleIdCounter.value++,
       text: generateRuleText(),
-      color: getFeatureColor(Math.floor(Math.random() * featureCount.value) + 1),
+      color: getFeatureColor(
+        Math.floor(Math.random() * featureCount.value) + 1
+      ),
       gradient: generateColor()
     })
     ruleCount.value++
   }
 }
 
-const autoGenerate = async () => {
-  if (autoGenerating.value) return
-
-  autoGenerating.value = true
-  const interval = setInterval(() => {
-    if (ruleCount.value >= maxRules) {
-      clearInterval(interval)
-      autoGenerating.value = false
-    } else {
-      addRule()
-    }
-  }, 100)
-}
-
 const resetRules = () => {
   displayedRules.value = []
   ruleCount.value = 0
-  autoGenerating.value = false
 }
 
 const formatNumber = (num) => {
@@ -448,8 +440,15 @@ watch([featureCount, valuesPerFeature], () => {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 .counter-label {
@@ -512,9 +511,16 @@ watch([featureCount, valuesPerFeature], () => {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 .rules-container {
@@ -590,8 +596,13 @@ watch([featureCount, valuesPerFeature], () => {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .warning-content h5 {

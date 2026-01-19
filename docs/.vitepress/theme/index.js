@@ -194,6 +194,7 @@ import PromptQuickStartDemo from './components/appendix/prompt-engineering/Promp
 import PromptComparisonDemo from './components/appendix/prompt-engineering/PromptComparisonDemo.vue'
 import FewShotDemo from './components/appendix/prompt-engineering/FewShotDemo.vue'
 import ChainOfThoughtDemo from './components/appendix/prompt-engineering/ChainOfThoughtDemo.vue'
+import PromptTemplatesDemo from './components/appendix/prompt-engineering/PromptTemplatesDemo.vue'
 
 // Context Engineering Components
 import AgentContextFlow from './components/appendix/context-engineering/AgentContextFlow.vue'
@@ -449,6 +450,7 @@ export default {
     app.component('PromptComparisonDemo', PromptComparisonDemo)
     app.component('FewShotDemo', FewShotDemo)
     app.component('ChainOfThoughtDemo', ChainOfThoughtDemo)
+    app.component('PromptTemplatesDemo', PromptTemplatesDemo)
 
     // Context Engineering Components Registration
     app.component('AgentContextFlow', AgentContextFlow)

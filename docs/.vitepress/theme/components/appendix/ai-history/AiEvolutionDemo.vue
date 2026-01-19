@@ -1,142 +1,78 @@
 <template>
   <div class="ai-evolution-demo">
-    <!-- Timeline -->
-    <div class="timeline-container">
-      <div class="timeline-track"></div>
+    <div class="header">
+      <div class="title">AI 进化：规则 → 学习 → 生成</div>
+      <div class="subtitle">
+        点击切换阶段；不自动推进，避免“点一下就连续发生很多事”的误解。
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="AI Evolution Stages">
       <button
         v-for="(stage, index) in stages"
-        :key="index"
-        class="timeline-node"
-        :class="{
-          active: currentStage === index,
-          passed: currentStage > index
-        }"
+        :key="stage.key"
+        class="tab"
+        :class="{ active: currentStage === index }"
+        role="tab"
+        :aria-selected="currentStage === index"
         @click="currentStage = index"
       >
-        <div class="node-dot">
-          <div class="inner-dot"></div>
-        </div>
-        <div class="node-content">
-          <span class="year-badge">{{ stage.year }}</span>
-          <span class="node-label">{{ stage.label }}</span>
-        </div>
+        <div class="tab-year">{{ stage.year }}</div>
+        <div class="tab-label">{{ stage.label }}</div>
       </button>
     </div>
 
-    <!-- Content -->
-    <div class="content-wrapper">
-      <transition name="fade-slide" mode="out-in">
-        <div :key="currentStage" class="stage-content">
-          <div class="header-section">
-            <h3>
-              <span class="stage-index"
-                >{{ indexToRoman(currentStage + 1) }}.</span
-              >
-              {{ stages[currentStage].title }}
-            </h3>
-            <p>{{ stages[currentStage].desc }}</p>
+    <div class="stage">
+      <div class="stage-head">
+        <div class="stage-title">{{ stages[currentStage].title }}</div>
+        <div class="stage-desc">{{ stages[currentStage].desc }}</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">核心思想</div>
+          <ul class="list">
+            <li v-for="(item, i) in stages[currentStage].core" :key="i">
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">代表应用</div>
+          <div class="pill-row">
+            <span
+              v-for="(tag, i) in stages[currentStage].examples"
+              :key="i"
+              class="pill"
+              >{{ tag }}</span
+            >
           </div>
+          <div class="note">{{ stages[currentStage].appDesc }}</div>
+        </div>
 
-          <div class="visualization-grid">
-            <!-- Concept/Logic View -->
-            <div class="mac-window concept-window">
-              <div class="window-bar">
-                <div class="traffic-lights">
-                  <span class="light red"></span>
-                  <span class="light yellow"></span>
-                  <span class="light green"></span>
-                </div>
-                <div class="window-title">Core Logic</div>
-              </div>
-              <div class="concept-canvas">
-                <!-- Stage 0: Symbolism -->
-                <div v-if="currentStage === 0" class="vis-symbolism">
-                  <div class="logic-gate">
-                    <div class="input-group">
-                      <span class="input-val">A: True</span>
-                      <span class="input-val">B: False</span>
-                    </div>
-                    <div class="gate-box">AND Rule</div>
-                    <div class="output-val">Output: False</div>
-                  </div>
-                  <div class="math-note">If A and B then C</div>
-                </div>
-
-                <!-- Stage 1: Expert Systems -->
-                <div v-if="currentStage === 1" class="vis-expert">
-                  <div class="decision-tree">
-                    <div class="tree-node root">Is it raining?</div>
-                    <div class="branches">
-                      <div class="branch">
-                        <span class="condition">Yes</span>
-                        <div class="tree-node leaf">Take Umbrella</div>
-                      </div>
-                      <div class="branch">
-                        <span class="condition">No</span>
-                        <div class="tree-node leaf">Go Out</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="kb-note">Knowledge Base + Inference Engine</div>
-                </div>
-
-                <!-- Stage 2: Deep Learning -->
-                <div v-if="currentStage === 2" class="vis-dl">
-                  <div class="neural-net">
-                    <div class="layer input">
-                      <div class="neuron" v-for="n in 3" :key="`i-${n}`"></div>
-                    </div>
-                    <div class="layer hidden">
-                      <div class="neuron" v-for="n in 4" :key="`h-${n}`"></div>
-                    </div>
-                    <div class="layer output">
-                      <div class="neuron" v-for="n in 2" :key="`o-${n}`"></div>
-                    </div>
-                    <!-- Connections drawn via CSS/SVG ideally, simplified here -->
-                    <svg class="connections">
-                      <line x1="10" y1="20" x2="60" y2="10" />
-                      <line x1="10" y1="20" x2="60" y2="30" />
-                      <!-- Abstract lines -->
-                    </svg>
-                  </div>
-                  <div class="dl-note">Feature Extraction (Black Box)</div>
-                </div>
-
-                <!-- Stage 3: GenAI -->
-                <div v-if="currentStage === 3" class="vis-genai">
-                  <div class="transformer-block">
-                    <div class="block-layer attn">Self-Attention</div>
-                    <div class="block-layer ff">Feed Forward</div>
-                    <div class="block-layer norm">Norm & Add</div>
-                  </div>
-                  <div class="chat-sim">
-                    <div class="msg user">"Draw a cat"</div>
-                    <div class="msg ai">Generates 🐱...</div>
-                  </div>
-                </div>
-              </div>
+        <div class="card full">
+          <div class="card-title">优势 / 局限</div>
+          <div class="two-col">
+            <div class="col">
+              <div class="col-title">优势</div>
+              <ul class="list">
+                <li v-for="(item, i) in stages[currentStage].pros" :key="i">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
-
-            <!-- Application/Impact View -->
-            <div class="mac-window app-window">
-              <div class="window-bar">
-                <div class="window-title">Real-world Impact</div>
-              </div>
-              <div class="app-canvas">
-                <div class="impact-card">
-                  <div class="impact-icon">{{ stages[currentStage].icon }}</div>
-                  <div class="impact-title">
-                    {{ stages[currentStage].appTitle }}
-                  </div>
-                  <div class="impact-desc">
-                    {{ stages[currentStage].appDesc }}
-                  </div>
-                </div>
-              </div>
+            <div class="col">
+              <div class="col-title">局限</div>
+              <ul class="list">
+                <li v-for="(item, i) in stages[currentStage].cons" :key="i">
+                  {{ item }}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -146,475 +82,226 @@ import { ref } from 'vue'
 
 const currentStage = ref(0)
 
-const indexToRoman = (num) => {
-  const map = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV' }
-  return map[num] || num
-}
-
 const stages = [
   {
-    year: '1950s-1970s',
-    label: 'Symbolism',
-    title: 'The Dawn: Logic & Rules',
-    desc: 'AI started as "Symbolic AI". Scientists believed intelligence could be described by formal logic and rules. If we can write down all the rules of the world, a computer can be intelligent.',
-    icon: '♟️',
-    appTitle: 'Chess & Logic',
+    key: 'symbolic',
+    year: '1950s–1980s',
+    label: '符号主义',
+    title: '规则与逻辑推理（专家系统）',
+    desc: '相信“智能 = 规则 + 推理”。把专家经验写成 If/Then 规则与知识库。',
+    core: [
+      '知识用“符号/规则”表达：If 条件 Then 结论',
+      '推理引擎按规则匹配、触发、推导',
+      '可解释：能指出用了哪条规则'
+    ],
+    pros: ['可解释性强', '在边界明确的垂直领域有效'],
+    cons: [
+      '规则写不完（组合爆炸）',
+      '脆弱：世界稍变就失效',
+      '难处理不确定性与常识'
+    ],
+    examples: ['专家系统', 'MYCIN', '逻辑推理'],
     appDesc:
-      'Programs could solve logic puzzles and play simple chess, but failed at "common sense" or recognizing a cat in a photo.'
+      '适合“规则明确”的任务（如部分诊断流程、合规校验），但遇到现实世界的灰度与噪声会迅速失效。'
   },
   {
-    year: '1980s-1990s',
-    label: 'Expert Systems',
-    title: 'Knowledge Engineering',
-    desc: 'The era of "Expert Systems". We tried to hard-code human expertise (e.g., medical diagnosis rules) into databases. Useful for specific domains, but brittle and hard to maintain.',
-    icon: '🏥',
-    appTitle: 'MYCIN / Deep Blue',
-    appDesc:
-      'Systems that could diagnose blood infections or beat Garry Kasparov at chess (Deep Blue, 1997), but still lacked true learning capability.'
-  },
-  {
+    key: 'dl',
     year: '2010s',
-    label: 'Deep Learning',
-    title: 'Connectionism & Big Data',
-    desc: 'The breakthrough of Neural Networks. Inspired by the human brain, computers learned patterns from massive data instead of being told rules. AlexNet (2012) changed everything.',
-    icon: '🧠',
-    appTitle: 'AlphaGo & FaceID',
+    label: '深度学习',
+    title: '从数据中学习（连接主义）',
+    desc: '相信“智能 = 表示学习 + 统计优化”。用神经网络从大量数据里自动学特征与决策边界。',
+    core: [
+      '用参数（权重）表示知识；通过优化让参数拟合数据',
+      '特征提取从“手写规则”变成“自动学习”',
+      '数据、算力、算法（GPU + 大数据 + 网络结构）共同推动'
+    ],
+    pros: ['强大的模式识别能力', '同一范式覆盖多任务（视觉/语音/推荐等）'],
+    cons: ['数据需求大', '可解释性较弱', '对分布外/对抗样本敏感'],
+    examples: ['AlexNet', 'ImageNet', 'AlphaGo'],
     appDesc:
-      'AI learned to see (ImageNet), hear (Siri), and play Go (AlphaGo). It surpassed humans in specific perceptual tasks.'
+      '擅长“感知类”任务（图像、语音、推荐）；但对“为何这么判”解释不够直观，且对数据分布较敏感。'
   },
   {
+    key: 'genai',
     year: '2020s+',
-    label: 'Generative AI',
-    title: 'Generative Intelligence (LLMs)',
-    desc: 'The Transformer architecture allowed AI to understand context and generate new content. AI moved from "classifying" (is this a cat?) to "creating" (draw a cat).',
-    icon: '✨',
-    appTitle: 'ChatGPT & Midjourney',
+    label: '生成式 AI',
+    title: '从“分类”到“生成”（大模型）',
+    desc: '用 Transformer 建模上下文关系，学习“下一 token”分布，从而能生成文本/代码/图像等新内容。',
+    core: [
+      '统一接口：给提示词（prompt）→ 生成输出',
+      '能力来源：规模化预训练 + 指令微调/对齐',
+      '把很多任务“变成一个生成问题”'
+    ],
+    pros: ['通用性强（多任务）', '交互友好（自然语言接口）'],
+    cons: [
+      '可能幻觉',
+      '安全与权限边界复杂',
+      '需要系统化评测与约束（格式/工具/检索）'
+    ],
+    examples: ['ChatGPT', 'GPT-4', 'Midjourney'],
     appDesc:
-      'AI that can write code, poetry, paint images, and reason across multiple domains. A step towards AGI (General Intelligence).'
+      '更像“通用助手”：能写、能改、能解释、能生成；但要通过提示词、上下文与工具链把它约束到可验收、可控。'
   }
 ]
 </script>
 
 <style scoped>
 .ai-evolution-demo {
-  border-radius: 8px;
-  background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  overflow: hidden;
-  margin: 1rem 0;
-}
-
-/* Reusing Timeline Styles from FrontendEvolutionDemo for consistency */
-.timeline-container {
-  padding: 2rem 1rem 1rem;
   background: var(--vp-c-bg-soft);
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  color: var(--vp-c-text-1);
 }
 
-.timeline-track {
-  position: absolute;
-  top: 2.5rem;
-  left: 3rem;
-  right: 3rem;
-  height: 2px;
-  background: var(--vp-c-divider);
-  z-index: 0;
+.header {
+  margin-bottom: 1rem;
 }
 
-.timeline-node {
-  position: relative;
-  z-index: 1;
-  background: transparent;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  padding: 0;
-  width: 25%;
-  transition: all 0.3s ease;
-  opacity: 0.6;
+.title {
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.timeline-node:hover {
-  opacity: 0.9;
-}
-.timeline-node.active,
-.timeline-node.passed {
-  opacity: 1;
+.subtitle {
+  margin-top: 0.25rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
 }
 
-.node-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.tab {
+  text-align: left;
+  border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-text-3);
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
+  color: var(--vp-c-text-1);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.inner-dot {
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-  transition: all 0.3s;
+.tab:hover {
+  border-color: rgba(var(--vp-c-brand-rgb), 0.55);
 }
 
-.timeline-node.active .node-dot {
+.tab.active {
   border-color: var(--vp-c-brand);
-  transform: scale(1.3);
-  box-shadow: 0 0 0 4px var(--vp-c-bg-soft);
-}
-.timeline-node.active .inner-dot {
-  width: 8px;
-  height: 8px;
-}
-.timeline-node.passed .node-dot {
-  border-color: var(--vp-c-brand);
-  background: var(--vp-c-brand);
+  box-shadow: 0 0 0 3px rgba(var(--vp-c-brand-rgb), 0.12);
 }
 
-.node-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.year-badge {
+.tab-year {
   font-size: 0.75rem;
+  color: var(--vp-c-text-2);
   font-family: var(--vp-font-family-mono);
-  background: var(--vp-c-bg-alt);
-  padding: 2px 6px;
-  border-radius: 4px;
-  color: var(--vp-c-text-2);
 }
 
-.node-label {
-  font-size: 0.85rem;
-  font-weight: 600;
+.tab-label {
+  margin-top: 0.15rem;
+  font-weight: 800;
+}
+
+.stage-head {
+  margin-bottom: 0.75rem;
+}
+
+.stage-title {
+  font-weight: 900;
   color: var(--vp-c-text-1);
 }
 
-/* Content Area */
-.content-wrapper {
-  padding: 2rem;
-  min-height: 400px;
-}
-
-.header-section {
-  text-align: center;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
-
-.header-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-1);
-}
-
-.stage-index {
-  color: var(--vp-c-text-3);
-  -webkit-text-fill-color: var(--vp-c-text-3);
-  margin-right: 0.5rem;
-  font-weight: normal;
-}
-.header-section p {
-  font-size: 1rem;
+.stage-desc {
+  margin-top: 0.25rem;
   color: var(--vp-c-text-2);
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
-/* Visualization */
-.visualization-grid {
+.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: stretch;
+  gap: 0.75rem;
 }
 
-@media (max-width: 768px) {
-  .visualization-grid {
+@media (max-width: 720px) {
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
     grid-template-columns: 1fr;
   }
 }
 
-.mac-window {
-  border-radius: 12px;
-  border: 1px solid var(--vp-c-divider);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background: var(--vp-c-bg);
-}
-
-.concept-window {
-  background: var(--vp-c-bg);
-}
-.app-window {
-  background: var(--vp-c-bg);
-}
-
-.window-bar {
-  padding: 0.8rem 1rem;
-  background: var(--vp-c-bg-soft);
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.traffic-lights {
-  display: flex;
-  gap: 6px;
-}
-.light {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.light.red {
-  background: var(--vp-c-red-1, #ef4444);
-}
-.light.yellow {
-  background: var(--vp-c-yellow-1, #f59e0b);
-}
-.light.green {
-  background: var(--vp-c-green-1, #22c55e);
-}
-
-.window-title {
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  font-weight: 600;
-}
-
-.concept-canvas,
-.app-canvas {
-  padding: 2rem;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 250px;
-}
-
-/* Visualizations */
-/* Symbolism */
-.logic-gate {
-  border: 2px solid var(--vp-c-divider);
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  background: var(--vp-c-bg);
-}
-.input-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-  font-family: var(--vp-font-family-mono);
-}
-.gate-box {
-  background: var(--vp-c-brand);
-  color: var(--vp-c-bg);
-  padding: 4px 10px;
-  margin: 0.5rem 0;
-  border-radius: 4px;
-}
-.math-note {
-  margin-top: 1rem;
-  font-family: var(--vp-font-family-mono);
-  color: var(--vp-c-text-2);
-  font-size: 0.8rem;
-}
-
-/* Expert Systems */
-.decision-tree {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.tree-node {
-  border: 1px solid var(--vp-c-divider);
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: var(--vp-c-bg);
-  font-size: 0.8rem;
-  color: var(--vp-c-text-1);
-}
-.tree-node.root {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
-  font-weight: bold;
-}
-.branches {
-  display: flex;
-  gap: 2rem;
-}
-.branch {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-.condition {
-  font-size: 0.7rem;
-  color: var(--vp-c-text-2);
-  background: var(--vp-c-bg-alt);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-.kb-note {
-  margin-top: 1rem;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  font-style: italic;
-}
-
-/* Deep Learning */
-.neural-net {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  position: relative;
-}
-.layer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.neuron {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-}
-.layer.input .neuron {
-  background: rgba(var(--vp-c-brand-rgb), 0.25);
-}
-.layer.hidden .neuron {
-  background: rgba(var(--vp-c-brand-rgb), 0.18);
-}
-.layer.output .neuron {
-  background: rgba(var(--vp-c-brand-rgb), 0.12);
-}
-.connections {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.2;
-}
-.connections line {
-  stroke: var(--vp-c-text-2);
-  stroke-width: 1;
-}
-.dl-note {
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-}
-
-/* GenAI */
-.vis-genai {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  width: 100%;
-}
-.transformer-block {
-  border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 0.5rem;
-  width: 120px;
-  text-align: center;
-  background: rgba(var(--vp-c-brand-rgb), 0.08);
-}
-.block-layer {
+.card {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  margin: 4px 0;
-  padding: 4px;
-  font-size: 0.7rem;
-  border-radius: 4px;
-}
-.chat-sim {
-  width: 100%;
-  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 1rem;
-  background: var(--vp-c-bg);
-  font-size: 0.8rem;
 }
-.msg {
-  padding: 6px 10px;
-  border-radius: 12px;
-  margin-bottom: 0.5rem;
-  max-width: 80%;
+
+.card.full {
+  grid-column: 1 / -1;
 }
-.msg.user {
-  background: rgba(var(--vp-c-brand-rgb), 0.1);
-  margin-left: auto;
+
+.card-title {
+  font-weight: 900;
   color: var(--vp-c-text-1);
+  margin-bottom: 0.5rem;
 }
-.msg.ai {
-  background: var(--vp-c-bg-soft);
-  margin-right: auto;
+
+.list {
+  margin: 0;
+  padding-left: 1.15rem;
   color: var(--vp-c-text-1);
 }
 
-/* Impact Card */
-.impact-card {
-  text-align: center;
-}
-.impact-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-.impact-title {
-  font-size: 1.2rem;
-  font-weight: bold;
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
-  color: var(--vp-c-text-1);
 }
-.impact-desc {
-  font-size: 0.9rem;
+
+.pill {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-2);
-  line-height: 1.5;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
-/* Transitions */
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: all 0.4s ease;
+.note {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
 }
-.fade-slide-enter-from {
-  opacity: 0;
-  transform: translateY(20px);
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
 }
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
+
+@media (max-width: 720px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col-title {
+  font-weight: 900;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.35rem;
 }
 </style>
