@@ -43,12 +43,13 @@
   <a href="docs-readme/de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
 </p>
 
+<img src="assets/header.png" width="100%" />
+
 <p align="center"> 
    <h3>⭐ 欢迎点击 <span style="color: #660874;">Star</span> 加速更新 ❤️</h3> 
 </p>
 
 </div>
-
 <table align="center">
   <tr>
     <td width="50%" valign="top" align="center">
