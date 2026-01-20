@@ -286,12 +286,161 @@ caption = caption_image(image_path)
 
 ![](images/index-2026-01-20-15-35-41.png)
 
-# 4. 接入图像生成 API：Qwen Image / Qwen Image Edit
+# 4. 接入图像生成 API：Seedream 即梦
 
 在前面的部分我们主要和文本相关的任务打交道，接下来我们将尝试接入图片生成的功能，支持从文字描述生成图片，或者对图片进行修改。
 
 ::: info ℹ️ 原理延伸
 如果你想了解更多原理相关的内容，请查看附录：[图像生成入门](/zh-cn/appendix/image-gen-intro)。
+
+::: details 了解更多：什么是 [Seedream 即梦](https://seed.bytedance.com/en/seedream4_5)？
+
+![](images/index-2026-01-20-23-15-17.png)
+
+> 也许你已经知道 Nano Banana（Google 开发），但你最好不要错过 Seedream。Seedream 4.5 是字节跳动打造的新一代图像创作模型。它将图像生成和图像编辑能力集成到一个统一的架构中。这使得它能够灵活处理复杂的多模态任务，如基于知识的生成、复杂推理和参考一致性。此外，它的推理速度比前代产品快得多，并且可以生成分辨率高达 4K 的令人惊叹的高清图像。
+>
+> ![](images/index-2026-01-20-23-15-38.png)
+> ![](images/index-2026-01-20-23-15-50.png)
+
+**主要能力：**
+
+- **文生图**：用文字描述生成图片，支持多种风格（写实、卡通、水墨、赛博朋克等）
+- **风格迁移**：将一张图片转换成指定的艺术风格
+- **图像变体**：基于参考图生成相似风格的新图
+- **分辨率提升**：增强图片清晰度和细节
+- **图像编辑**：在现有图片上进行编辑和修改，通过自然语言指令
+
+**为什么选择 Seedream？**
+
+- **国内网络稳定**：国内访问速度快，延迟低
+- **效果优秀**：在电商、素材场景下表现稳定可靠
+- **中文优化**：对中文提示词理解更准确，适合国内用户
+- **速度快**：生成效率高，响应时间短
+- **质量稳定**：生成分辨率高达 4K 的高清图像
+
+**典型应用场景：**
+
+- 电商：生成主图、详情页配图、促销海报
+- 社交媒体：生成头像、表情包、配图
+- 设计：快速出概念图、素材图、背景图
+- 营销：制作广告图、活动 banner、节日海报
+
+**与 Qwen3 VL 的配合：**
+
+这两个 API 可以串联使用：先用 Qwen3 VL 分析参考图，理解画面内容；再用 Seedream 基于分析参考图的提示词内容生成新图片。
+:::
+
+你可能在抖音、B 站或 YouTube 上看到的很多 "AI 海报 / AI 主图 / AI 角色图"，本质上都是用到这部分介绍的技术。你需要做的事情很简单：把用户输入整理成一句话，请求图片 API，然后把返回的图片展示出来。此时用到的模型叫做图片生成 / 图片编辑模型。
+
+我们将逐步演示如何将 Seedream API 集成到你的项目中（通过 AI IDE 辅助完成）。
+
+[访问首页页面](https://www.volcengine.com/experience/ark?launch=seedream)后，点击登录。
+
+![](images/index-2026-01-20-23-12-07.png)
+
+登录后，找到页面右上角的充值选项。
+
+![](images/index-2026-01-20-23-12-22.png)
+
+进行充值需要实名认证。
+
+![](images/index-2026-01-20-23-12-30.png)
+
+认证成功后，你可以[充值 1 元用于测试](https://console.volcengine.com/finance/fund/recharge)。
+
+返回[初始界面](https://www.volcengine.com/experience/ark?launch=seedream)并点击 API 访问。
+
+![](images/index-2026-01-20-23-12-43.png)
+
+首先，创建一个 API key，然后点击选择选项。
+
+![](images/index-2026-01-20-23-13-01.png)
+
+这将带你进入第 2 步。在这里，你需要确认调用的服务是 Seedream 4.5，并复制提供的调用示例。（此处截图时间比较早起，故而模型版本仍然是 4.0）
+
+![](images/index-2026-01-20-23-13-11.png)
+
+准备好 API Key 和调用示例后，你可以直接将它们粘贴到 AI IDE 中，让它生成前端交互演示或把能力接入现有原型。注意到在图片中可以选择是文生图还是多张图片生成单张图，你需要根据当前的需求进行选择参考代码。
+
+::: warning ⚠️ 重要提示
+这里的默认示例相对复杂。记得禁用 **"添加水印"** 和 **"流式响应"**，以确保不生成水印且不会发生请求失败。
+:::
+
+由于我们之后使用的是参考图生成模式，我们先去的是多张图生成单张图的功能。参考代码复制如下：
+
+```
+curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer xxxxxxx" \
+  -d '{
+    "model": "doubao-seedream-4-5-251128",
+    "prompt": "将图1的服装换为图2的服装",
+    "image": ["https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream4_imagesToimage_1.png", "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream4_imagesToimage_2.png"],
+    "sequential_image_generation": "disabled",
+    "response_format": "url",
+    "size": "2K",
+    "stream": false,
+    "watermark": true
+}'
+```
+有了图像参考代码后，我们让 AI IDE 支持电商中常用的图像任务功能：
+```
+请你基于下面 API，帮我实现这个工程中，电商业务的常见功能（例如海报生成、抖音电商首图生成等等）
+
+<此处粘贴 API KEY以及图像编辑代码>
+```
+
+实现效果如下:
+
+![](images/index-2026-01-20-23-21-13.png)
+
+值得注意的是，由于生成图片可能会经常遇到一些奇怪的问题，建议你需要让 AI IDE 能够显示完整的报错信息，方便复制粘贴进行修改（否则可能会反复显示生成失败但是不知道为什么），例如你可以说：
+
+```
+不要只显示图片生成失败，每次都显示完整的失败原因，比如图片不匹配、请求错误、超时等等！
+```
+
+有时候修改后更新并不会应用到网页中，如果你发现修改后网页一直还在报错（反复多次），也可以试试直接对 AI IDE 说：请你重启这个项目。
+
+在电商的业务中，我们可能会想让用户上传的衣服能够自动穿在人物身上，又或者是自动生成商品吸引人的售卖图、海报。这里我们尝试的提示词是让它生成一个电商海报：
+
+![](images/index-2026-01-20-23-14-10.png)
+
+你可以根据自己想象的业务场景，使用文生图或者图生图 API 实现不同的功能。
+
+## 更多不同图像服务选型
+
+下面给出其他选择。建议你先跑通 Qwen 生图的结果，再根据效果与成本使用下列服务做替换（根据实际使用感受选择）。
+
+### Recraft 集成
+
+如果你的原型更偏“设计生产”（例如生成品牌风格插画、营销海报、矢量风格素材），Recraft 往往会更顺手。接入方式与上一节完全一致：**拿到 Key + 找到官方示例 + 让 AI IDE 把示例落到你的按钮/页面里**。
+
+::: details 了解更多：什么是 Recraft？
+
+> Recraft 是一款面向设计师、插画师和营销人员的 AI 工具——于 2022 年在美国成立，总部位于伦敦。它帮助生成/迭代视觉效果（图像、矢量艺术、3D 图形），具有高质量输出（任何文本大小/长度）、精确元素定位和品牌一致性设计等优势。受到 200 个国家/地区 300 多万用户（包括奥美、Netflix）的信任，并已创建了 3.5 亿多张图像，其团队旨在使其成为必备的设计师工具，确保创作者能够控制他们的 AI 辅助工作流程。
+>
+> ![](images/index-2026-01-20-23-23-34.png)
+> ![](images/index-2026-01-20-23-23-42.png)
+
+首先，我们仍然需要找到[ API 入口](https://www.recraft.ai/profile/api)以获取 API Key。
+
+由于这里没有提供免费额度，我们需要自己充值 1,000 积分。这个网站支持支付宝和微信支付，所以很容易获得 1,000 积分（注意：不要充值超过必要的金额）。
+
+![](images/image40.png)
+
+之后，我们仍然遵循同样的方法：去官方文档找到相应的请求示例：
+
+- <https://www.recraft.ai/docs/api-reference/getting-started>
+- <https://www.recraft.ai/docs/api-reference/usage>
+- <https://www.recraft.ai/docs/api-reference/guides>
+
+:::
+
+
+### Qwen Image / Qwen Image Edit 集成
+
+如果你希望使用更简单的方式接入图像生成服务，可以考虑 Qwen Image（通义万相）。思路同样不变：把它当成一个"图片生成 API"，接到你的原型按钮上即可。
 
 ::: details 了解更多：Qwen Image / Qwen Image Edit 是什么？
 
@@ -343,22 +492,15 @@ caption = caption_image(image_path)
 - 社交媒体：生成头像、表情包、配图
 - 设计：快速出概念图、素材图、背景图
 - 营销：制作广告图、活动 banner、节日海报
-
-**与 Qwen3 VL 的配合：**
-
-这两个 API 可以串联使用：先用 Qwen3 VL 分析参考图，理解画面内容；再用 Qwen Image 根据分析结果生成新图；最后用 Qwen Image Edit 进行局部优化。这种「理解 → 生成 → 编辑」的流程，是 AI 素材生成的完整链路。
-
 :::
 
-你可能在抖音、B 站或 YouTube 上看到的很多 “AI 海报 / AI 主图 / AI 角色图”，本质上都是用到这部分介绍的技术。你需要做的事情很简单：把用户输入整理成一句话，请求图片 API，然后把返回的图片展示出来。此时用到的模型叫做图片生成 / 图片编辑模型。
+查看 [SiliconFlow](https://siliconflow.cn/) 的官网。左侧有一个"Playground"部分，你可以在不进行 API 调用的情况下试用不同的模型。在网页顶部有一个"Filters"按钮；点击它可以筛选右侧的模型列表。
 
-查看 SiliconFlow 的官网。左侧有一个“Playground”部分，你可以在不进行 API 调用的情况下试用不同的模型。在网页顶部有一个“Filters”按钮；点击它可以筛选右侧的模型列表。
-
-如果你选择“Image”，你将只看到当前支持的所有文生图模型。在这种情况下，我们将使用 Qwen/Qwen-Image。
+如果你选择"Image"，你将只看到当前支持的所有文生图模型。在这种情况下，我们将使用 Qwen/Qwen-Image。
 
 ![](images/index-2026-01-20-15-52-56.png)
 
-一切设置好后，我们需要参考相应的图像生成 API 文档。你可以在官方文档页面找到任何标记为“API Reference”的部分。点击它，然后导航到[图像生成的 API 部分](https://docs.siliconflow.cn/cn/api-reference/images/images-generations)并找到相关的请求示例。
+一切设置好后，我们需要参考相应的图像生成 API 文档。你可以在官方文档页面找到任何标记为"API Reference"的部分。点击它，然后导航到[图像生成的 API 部分](https://docs.siliconflow.cn/cn/api-reference/images/images-generations)并找到相关的请求示例。
 
 你可以把下列请求示例和 API KEY 一起发给 AI IDE， 即可实现图像生成的功能。
 
@@ -375,10 +517,6 @@ curl --request POST \
 '
 ```
 这里的模型可以使用 Qwen/Qwen-Image 或者 Qwen/Qwen-Image-Edit-2509。
-
-但是，我们注意到对于这个 API 来说，只有提示词 prompt，并没有输入图片的接口，没法用来进行图像编辑的操作。
-
-在电商的业务中，我们可能会想让用户上传的衣服能够自动穿在人物身上，又或者是自动生成商品吸引人的售卖图、海报，故而需要用到编辑模型，我们可以用下面的 API 进行图像编辑请求：
 
 ::: details 图像编辑参考代码
 
@@ -490,124 +628,6 @@ else:
     if result:
         print(f"Response: {result}")
 ```
-:::
-
-有了图像编辑代码后，我们让 AI IDE 支持电商中常用的图像任务功能：
-
-```
-基于下面 API，帮我实现这个工程中，电商业务的常见功能（例如海报生成、抖音电商首图生成等等）
-
-<此处粘贴 API KEY以及图像编辑代码>
-```
-
-实现效果如下:
-
-![](images/index-2026-01-20-16-58-51.png)
-
-值得注意的是，由于生成图片可能会经常遇到一些奇怪的问题，建议你需要让 AI IDE 能够显示完整的报错信息，方便复制粘贴进行修改（否则可能会反复显示生成失败但是不知道为什么），例如你可以说：
-
-```
-不要只显示图片生成失败，每次都显示完整的失败原因，比如图片不匹配、请求错误、超时等等！
-```
-
-有时候修改后更新并不会应用到网页中，如果你发现修改后网页一直还在报错（反复多次），也可以试试直接对 AI IDE 说：请你重启这个项目。
-
-## 更多不同图像服务选型
-
-下面给出其他选择。建议你先跑通 Qwen 生图的结果，再根据效果与成本使用下列服务做替换（根据实际使用感受选择）。
-
-### Recraft 集成
-
-如果你的原型更偏“设计生产”（例如生成品牌风格插画、营销海报、矢量风格素材），Recraft 往往会更顺手。接入方式与上一节完全一致：**拿到 Key + 找到官方示例 + 让 AI IDE 把示例落到你的按钮/页面里**。
-
-::: details 了解更多：什么是 Recraft？
-
-> Recraft 是一款面向设计师、插画师和营销人员的 AI 工具——于 2022 年在美国成立，总部位于伦敦。它帮助生成/迭代视觉效果（图像、矢量艺术、3D 图形），具有高质量输出（任何文本大小/长度）、精确元素定位和品牌一致性设计等优势。受到 200 个国家/地区 300 多万用户（包括奥美、Netflix）的信任，并已创建了 3.5 亿多张图像，其团队旨在使其成为必备的设计师工具，确保创作者能够控制他们的 AI 辅助工作流程。
->
-> ![](images/image37.png)
->
-> ![](images/image38.png)
->
-> ![](images/image39.png)
-
-首先，我们仍然需要找到 API 入口以获取 API Key：<https://www.recraft.ai/profile/api>
-
-由于这里没有提供免费额度，我们需要自己充值 1,000 积分。这个网站支持支付宝和微信支付，所以很容易获得 1,000 积分（注意：不要充值超过必要的金额）。
-
-![](images/image40.png)
-
-之后，我们仍然遵循同样的方法：去官方文档找到相应的请求示例：
-
-- <https://www.recraft.ai/docs/api-reference/getting-started>
-- <https://www.recraft.ai/docs/api-reference/usage>
-- <https://www.recraft.ai/docs/api-reference/guides>
-
-:::
-
-
-### Seedream即梦 集成
-
-如果你希望使用国内网络更稳定、且效果不错的图像生成服务，可以考虑 Seedream（火山引擎）。思路同样不变：把它当成一个“图片生成 API”，接到你的原型按钮上即可。
-
-::: details 了解更多：什么是 Seedream 即梦？
-
-模型介绍：<https://seed.bytedance.com/en/seedream4_0>
-
-![](images/image43.png)
-
-> 也许你已经知道 Nano Banana（Google 开发），但你最好不要错过 Seedream。Seedream 4.0 是字节跳动打造的新一代图像创作模型。它将图像生成和图像编辑能力集成到一个统一的架构中。这使得它能够灵活处理复杂的多模态任务，如基于知识的生成、复杂推理和参考一致性。此外，它的推理速度比前代产品快得多，并且可以生成分辨率高达 4K 的令人惊叹的高清图像。
->
-> ![](images/image44.png)
->
-> ![](images/image45.png)
->
-> ![](images/image46.png)
-
-我们将逐步演示如何将 Seedream API 集成到你的项目中（通过 AI IDE 辅助完成）。
-
-入口：<https://www.volcengine.com/experience/ark?launch=seedream>
-
-访问页面后，点击登录。
-
-![](images/image47.png)
-
-登录后，找到页面右上角的充值选项。
-
-![](images/image48.png)
-
-进行充值需要实名认证。
-
-![](images/image49.png)
-
-认证成功后，你可以充值 1 元用于测试。
-
-充值入口：<https://console.volcengine.com/finance/fund/recharge>
-
-![](images/image50.png)
-
-返回初始界面并点击 API 访问。
-
-![](images/image51.png)
-
-首先，创建一个 API key，然后点击选择选项。
-
-![](images/image52.png)
-
-这将带你进入第 2 步。在这里，你需要确认调用的服务是 Seedream 4.0，并复制提供的调用示例。
-
-![](images/image53.png)
-
-准备好 API Key 和调用示例后，你可以直接将它们粘贴到 AI IDE 中，让它生成前端交互演示或把能力接入现有原型。
-
-::: warning ⚠️ 重要提示
-这里的默认示例相对复杂。记得禁用 **“添加水印”** 和 **“流式响应”**，以确保不生成水印且不会发生请求失败。
-
-![](images/image54.png)
-
-输入提示词后，你将收到生成的结果。享受它吧！
-
-![](images/image55.png)
-
 :::
 
 # 附录：如何找到“当前更强”的 AI 模型
