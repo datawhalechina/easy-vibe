@@ -1,194 +1,231 @@
 <!--
-  ApiDocumentDemo.vue - 简化版
-  目标：用简单的示例展示如何阅读 API 文档
+  ApiDocumentDemo.vue - 翻译版
+  目标：一键把"黑话"翻译成"人话"
 -->
 <template>
   <div class="demo">
-    <div class="title">📖 怎么读 API 文档？</div>
-    <p class="subtitle">找到这 3 个信息就够了</p>
+    <div class="header">
+      <div class="title-area">
+        <span class="icon">📖</span>
+        <span class="title">API 文档翻译机</span>
+      </div>
+      <button class="translate-btn" @click="isHuman = !isHuman">
+        {{ isHuman ? '🔄 还原回黑话' : '✨ 翻译成人话' }}
+      </button>
+    </div>
 
-    <div class="doc-example">
-      <div class="doc-header">API 文档示例</div>
-      <div class="doc-body">
-        <div class="section">
-          <div class="section-title">📍 1️⃣ 入口在哪</div>
-          <div class="section-content">
-            <code>GET /api/users/{id}</code>
-            <p class="hint">这就是你要调用的"按钮"</p>
-          </div>
+    <div class="doc-container">
+      <!-- 模拟 API 文档 -->
+      <div class="api-doc">
+        <div class="doc-row method-row">
+          <span class="label">Method:</span>
+          <span class="value method" :class="{ human: isHuman }">
+            {{ isHuman ? '我要下单 (POST)' : 'POST' }}
+          </span>
         </div>
 
-        <div class="section">
-          <div class="section-title">📝 2️⃣ 要填什么</div>
-          <div class="section-content">
-            <div class="param">
-              <span class="param-name">id</span>
-              <span class="param-desc">用户编号（必填）</span>
+        <div class="doc-row url-row">
+          <span class="label">Endpoint:</span>
+          <span class="value url" :class="{ human: isHuman }">
+            {{ isHuman ? '去哪里找厨师' : 'https://api.deepseek.com/chat' }}
+          </span>
+        </div>
+
+        <div class="doc-row headers-row">
+          <span class="label">Headers:</span>
+          <div class="code-block" :class="{ human: isHuman }">
+            <div class="line">
+              <span class="key">{{ isHuman ? '我是谁:' : 'Authorization:' }}</span>
+              <span class="val">{{ isHuman ? ' 这是我的会员卡号' : ' Bearer sk-8f9s...' }}</span>
             </div>
-            <p class="hint">你需要提供这个参数</p>
+            <div class="line">
+              <span class="key">{{ isHuman ? '用什么语言:' : 'Content-Type:' }}</span>
+              <span class="val">{{ isHuman ? ' 标准格式(JSON)' : ' application/json' }}</span>
+            </div>
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-title">✅ 3️⃣ 会得到什么</div>
-          <div class="section-content">
-            <pre><code>{
-  "id": "123",
-  "name": "张三",
-  "email": "zhang@example.com"
-}</code></pre>
-            <p class="hint">成功时返回的数据格式</p>
+        <div class="doc-row body-row">
+          <span class="label">Body:</span>
+          <div class="code-block" :class="{ human: isHuman }">
+            <div class="line">{</div>
+            <div class="line indent">
+              <span class="key">"model":</span>
+              <span class="val">"deepseek-chat",</span>
+              <span class="comment" v-if="isHuman"> // 选个聪明的厨师</span>
+            </div>
+            <div class="line indent">
+              <span class="key">"messages":</span>
+              <span class="val">[...]</span>
+              <span class="comment" v-if="isHuman"> // 我要说的话</span>
+            </div>
+            <div class="line">}</div>
+          </div>
+        </div>
+
+        <div class="doc-row response-row">
+          <span class="label">Response:</span>
+          <div class="code-block" :class="{ human: isHuman }">
+             <div class="line">
+              <span class="key">{{ isHuman ? '状态:' : 'Status:' }}</span>
+              <span class="status-ok">{{ isHuman ? '搞定了 (200)' : '200 OK' }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="tips">
-      <p><strong>💡 小贴士：</strong></p>
-      <ul>
-        <li>先确认这个 API 是不是你需要的</li>
-        <li>再看要填什么参数（必填 vs 可选）</li>
-        <li>最后看返回什么、失败会怎样</li>
-      </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-// 无需脚本逻辑
+import { ref } from 'vue'
+
+const isHuman = ref(false)
 </script>
 
 <style scoped>
 .demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 20px;
   background: var(--vp-c-bg-soft);
-  margin: 16px 0;
+  margin: 24px 0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.header {
+  padding: 16px 20px;
+  background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--vp-c-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 24px;
 }
 
 .title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--vp-c-text-1);
+  font-weight: 600;
+  font-size: 16px;
 }
 
-.subtitle {
-  color: var(--vp-c-text-2);
-  margin-bottom: 16px;
+.translate-btn {
+  background: var(--vp-c-brand-1);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.doc-example {
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 16px;
+.translate-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.doc-header {
-  background: var(--vp-c-bg-soft);
-  padding: 12px 16px;
-  font-weight: bold;
-  font-size: 14px;
-  border-bottom: 1px solid var(--vp-c-divider);
+.doc-container {
+  padding: 20px;
 }
 
-.doc-body {
-  padding: 16px;
-}
-
-.section {
-  margin-bottom: 16px;
-  padding: 12px;
-  background: var(--vp-c-bg-soft);
+.api-doc {
+  background: #1e293b;
   border-radius: 8px;
+  padding: 20px;
+  color: #e2e8f0;
+  font-family: monospace;
+  font-size: 14px;
 }
 
-.section:last-child {
+.doc-row {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.doc-row:last-child {
   margin-bottom: 0;
 }
 
-.section-title {
+.label {
+  width: 80px;
+  color: #94a3b8;
   font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: var(--vp-c-text-1);
+  flex-shrink: 0;
+  padding-top: 2px;
 }
 
-.section-content {
-  margin-left: 0;
+.value {
+  color: #38bdf8;
+  transition: all 0.3s;
 }
 
-code {
-  background: #1e293b;
-  color: #e2e8f0;
-  padding: 4px 8px;
+.method {
+  font-weight: bold;
+  color: #eab308;
+}
+
+.method.human {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  padding: 2px 6px;
   border-radius: 4px;
-  font-family: 'Monaco', 'Menlo', monospace;
-  font-size: 13px;
 }
 
-.hint {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--vp-c-text-2);
+.url.human {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.code-block {
+  flex: 1;
+  background: #0f172a;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  transition: all 0.3s;
+}
+
+.code-block.human {
+  background: #1e293b;
+  border-color: #64748b;
+}
+
+.line {
+  line-height: 1.6;
+}
+
+.indent {
+  padding-left: 20px;
+}
+
+.key {
+  color: #94a3b8;
+}
+
+.val {
+  color: #a5f3fc;
+}
+
+.comment {
+  color: #22c55e;
   font-style: italic;
 }
 
-.param {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.param-name {
-  background: #dbeafe;
-  color: #1e40af;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-family: 'Monaco', 'Menlo', monospace;
-  font-size: 12px;
+.status-ok {
+  color: #22c55e;
   font-weight: bold;
-}
-
-.param-desc {
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-}
-
-pre {
-  background: #1e293b;
-  border-radius: 6px;
-  padding: 12px;
-  overflow-x: auto;
-  margin: 8px 0;
-}
-
-pre code {
-  background: transparent;
-  padding: 0;
-  color: #e2e8f0;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.tips {
-  background: var(--vp-c-bg);
-  padding: 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--vp-c-text-2);
-}
-
-.tips ul {
-  margin: 8px 0 0 20px;
-}
-
-.tips li {
-  margin: 4px 0;
 }
 </style>
