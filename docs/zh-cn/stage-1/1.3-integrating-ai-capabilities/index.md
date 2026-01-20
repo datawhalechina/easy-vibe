@@ -22,11 +22,9 @@ const duration = '约 <strong>1 天</strong>'
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'API 基础', description: '可跳过，但很有用' },
-      { title: '接入文字', description: '5 分钟跑通一次' },
-      { title: '接入图片', description: '5 分钟跑通一次' },
-      { title: '实战接入', description: '接进上节原型' },
-      { title: '模型选型', description: '看榜单做选择' }
+      { title: 'API 基础', description: '理解核心概念与安全规范' },
+      { title: '接入文字', description: 'DeepSeek 文本生成实战' },
+      { title: '接入图片', description: 'VLM 图像理解与生成' }
     ]" />
   </ClientOnly>
 </div>
@@ -65,6 +63,17 @@ API Key 是你请求 AI 服务的「通行证」，它是一串密码字符串�
 
 我们会在下面的内容中**直接把 API KEY 粘贴到 AI IDE 中进行操作**，**在正规的项目里不要这么做！！**，由于我们是练习可以这么做。（等你更加熟练后，你能够让 AI 生成一个配置文件，你只需要把 API KEY 放入配置文件即可）
 :::
+
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="1" :items="[
+      { title: 'API 基础', description: '理解核心概念与安全规范' },
+      { title: '接入文字', description: 'DeepSeek 文本生成实战' },
+      { title: '接入图片', description: 'VLM 图像理解与生成' }
+    ]" />
+  </ClientOnly>
+</div>
 
 # 2. 接入文本生成 API：DeepSeek
 
@@ -285,6 +294,17 @@ caption = caption_image(image_path)
 ![](images/index-2026-01-20-15-34-36.png)
 
 ![](images/index-2026-01-20-15-35-41.png)
+
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="2" :items="[
+      { title: 'API 基础', description: '理解核心概念与安全规范' },
+      { title: '接入文字', description: 'DeepSeek 文本生成实战' },
+      { title: '接入图片', description: 'VLM 图像理解与生成' }
+    ]" />
+  </ClientOnly>
+</div>
 
 # 4. 接入图像生成 API：Seedream 即梦
 
