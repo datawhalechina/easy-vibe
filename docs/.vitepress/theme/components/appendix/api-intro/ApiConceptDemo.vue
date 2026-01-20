@@ -1,447 +1,222 @@
 <!--
   ApiConceptDemo.vue
-  参考 ide-intro 的“虚拟 UI + 先玩再讲”风格。
-  目标：用一个简单的“分类小游戏”讲清楚 API 到底要写清楚什么，
-  以及哪些是“你不用管的内部细节”。
+  目标：互动演示 API 必须写清楚的 4 个要点
 -->
 <template>
-  <div class="wrap">
-    <div class="head">
-      <div class="title">API 到底是什么？（先玩 10 秒）</div>
-      <div class="sub">
-        下面有一些卡片。请你把它们分成两类：<b>必须写清楚</b> vs
-        <b>不用写给别人看</b>。
+  <div class="demo">
+    <div class="title">📋 API 必须写清楚的 4 件事</div>
+    <p class="subtitle">点每一项看看是什么意思</p>
+
+    <div class="cards">
+      <div
+        v-for="item in items"
+        :key="item.id"
+        :class="['card', { active: selectedId === item.id }]"
+        @click="select(item.id)"
+      >
+        <div class="card-icon">{{ item.icon }}</div>
+        <div class="card-title">{{ item.title }}</div>
+        <div class="card-hint">{{ item.hint }}</div>
       </div>
     </div>
 
-    <div class="arena">
-      <div class="cards">
-        <div class="cardsTitle">卡片池</div>
-        <div class="cardGrid">
-          <button
-            v-for="c in pool"
-            :key="c.id"
-            class="card"
-            @click="pick(c.id)"
-          >
-            <div class="cardTop">
-              <span class="tag" :class="c.type">{{ c.typeLabel }}</span>
-            </div>
-            <div class="cardText">{{ c.text }}</div>
-          </button>
-        </div>
-        <div class="muted">
-          提示：API
-          的核心就是“怎么用”。所以：入口、要填什么、会返回什么、失败怎么说。
-        </div>
+    <div class="detail" v-if="selected">
+      <div class="detail-header">
+        <span class="detail-icon">{{ selected.icon }}</span>
+        <span class="detail-title">{{ selected.title }}</span>
       </div>
-
-      <div class="bins">
-        <div class="bin must">
-          <div class="binHead">
-            <div class="binTitle">必须写清楚</div>
-            <div class="binHint">不写清楚就会用错</div>
-          </div>
-          <div class="drop">
-            <div v-if="must.length === 0" class="empty">点卡片，把它放进来</div>
-            <button v-for="id in must" :key="id" class="chip" @click="undo(id)">
-              {{ byId(id).text }}
-              <span class="x">×</span>
-            </button>
-          </div>
+      <div class="detail-body">
+        <div class="detail-desc">{{ selected.desc }}</div>
+        <div class="detail-example">
+          <strong>例子：</strong>
+          <code>{{ selected.example }}</code>
         </div>
-
-        <div class="bin internal">
-          <div class="binHead">
-            <div class="binTitle">不用写给别人看</div>
-            <div class="binHint">这是内部实现，换了也不影响“怎么用”</div>
-          </div>
-          <div class="drop">
-            <div v-if="internal.length === 0" class="empty">
-              点卡片，把它放进来
-            </div>
-            <button
-              v-for="id in internal"
-              :key="id"
-              class="chip"
-              @click="undo(id)"
-            >
-              {{ byId(id).text }}
-              <span class="x">×</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bar">
-      <button class="btn" @click="check">检查一下</button>
-      <button class="ghost" @click="reset">重来</button>
-      <div class="score">
-        <span
-          >正确：<b>{{ score.ok }}</b></span
-        >
-        <span
-          >错误：<b>{{ score.bad }}</b></span
-        >
-      </div>
-    </div>
-
-    <div class="result" v-if="checked">
-      <div class="resultTitle">结论（新手版一句话）</div>
-      <div class="resultText">
-        API =
-        你告诉别人“这个按钮怎么按”。<b>入口在哪</b>、<b>要填什么</b>、<b>会得到什么</b>、<b>失败怎么说</b>。
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const all = [
-  // must
+const selectedId = ref('entry')
+
+const items = [
   {
-    id: 'where',
-    bucket: 'must',
-    type: 'must',
-    typeLabel: '必填脑子',
-    text: '入口在哪（网址 / 函数名）'
+    id: 'entry',
+    icon: '📍',
+    title: '入口在哪',
+    hint: '网址 / 函数名',
+    desc: '你要调用的"按钮"在哪里。是 HTTP 网址，还是代码里的函数名？',
+    example: 'GET /api/users/{id}'
   },
   {
-    id: 'input',
-    bucket: 'must',
-    type: 'must',
-    typeLabel: '必填脑子',
-    text: '要填什么（需要哪些信息）'
+    id: 'params',
+    icon: '📝',
+    title: '要填什么',
+    hint: '需要哪些参数',
+    desc: '调用这个 API 时，你需要提供哪些信息？哪些是必填的，哪些是可选的？',
+    example: 'id（必填）、page（可选）'
   },
   {
-    id: 'output',
-    bucket: 'must',
-    type: 'must',
-    typeLabel: '必填脑子',
-    text: '会拿到什么（成功的结果）'
+    id: 'response',
+    icon: '✅',
+    title: '会得到什么',
+    hint: '返回什么数据',
+    desc: '成功的时候，API 会返回什么数据？有哪些字段，分别代表什么意思？',
+    example: '{ id, name, email }'
   },
   {
     id: 'error',
-    bucket: 'must',
-    type: 'must',
-    typeLabel: '必填脑子',
-    text: '失败怎么说（提示/原因）'
-  },
-
-  // internal
-  {
-    id: 'db',
-    bucket: 'internal',
-    type: 'internal',
-    typeLabel: '内部',
-    text: '数据库表怎么设计'
-  },
-  {
-    id: 'topo',
-    bucket: 'internal',
-    type: 'internal',
-    typeLabel: '内部',
-    text: '服务有几个机器/怎么部署'
-  },
-  {
-    id: 'perf',
-    bucket: 'internal',
-    type: 'internal',
-    typeLabel: '内部',
-    text: '内部怎么做性能优化'
+    icon: '⚠️',
+    title: '失败怎么说',
+    hint: '错误提示',
+    desc: '调用失败的时候会返回什么错误信息？你应该怎么处理这些错误？',
+    example: '401 没权限、404 找不到、429 太频繁'
   }
 ]
 
-const must = ref([])
-const internal = ref([])
-const checked = ref(false)
-const score = reactive({ ok: 0, bad: 0 })
+const selected = computed(() => items.find(i => i.id === selectedId.value))
 
-const used = computed(() => new Set([...must.value, ...internal.value]))
-const pool = computed(() => all.filter((c) => !used.value.has(c.id)))
-
-function byId(id) {
-  return all.find((x) => x.id === id) || { id, text: id }
-}
-
-function pick(id) {
-  // 简化交互：按顺序放进“必须写清楚”，再点一次放进“内部”
-  // 这样新手不需要理解拖拽，也不需要想“放哪儿”：玩起来更顺。
-  // 如果想放“内部”，可以先把它放错，再点 chip 撤回重新放。
-  if (must.value.length <= internal.value.length) {
-    must.value.push(id)
-  } else {
-    internal.value.push(id)
-  }
-  checked.value = false
-}
-
-function undo(id) {
-  must.value = must.value.filter((x) => x !== id)
-  internal.value = internal.value.filter((x) => x !== id)
-  checked.value = false
-}
-
-function reset() {
-  must.value = []
-  internal.value = []
-  checked.value = false
-  score.ok = 0
-  score.bad = 0
-}
-
-function check() {
-  let ok = 0
-  let bad = 0
-  for (const id of must.value) {
-    byId(id).bucket === 'must' ? (ok += 1) : (bad += 1)
-  }
-  for (const id of internal.value) {
-    byId(id).bucket === 'internal' ? (ok += 1) : (bad += 1)
-  }
-  score.ok = ok
-  score.bad = bad
-  checked.value = true
+function select(id) {
+  selectedId.value = id
 }
 </script>
 
 <style scoped>
-.wrap {
+.demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 12px;
+  padding: 20px;
   background: var(--vp-c-bg-soft);
-  padding: 16px;
-}
-
-.head {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  margin: 16px 0;
 }
 
 .title {
-  font-weight: 900;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
   color: var(--vp-c-text-1);
 }
 
-.sub {
-  font-size: 13px;
+.subtitle {
   color: var(--vp-c-text-2);
-  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.arena {
-  margin-top: 12px;
+.cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 12px;
-}
-
-.cards,
-.bin {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg);
-  padding: 12px;
-}
-
-.cardsTitle {
-  font-weight: 900;
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-}
-
-.cardGrid {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .card {
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 10px 12px;
-  text-align: left;
+  padding: 16px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .card:hover {
   border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
 }
 
-.cardTop {
-  display: flex;
-  justify-content: flex-end;
+.card.active {
+  border-color: var(--vp-c-brand-1);
+  background: #f0f9ff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-.tag {
-  font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-2);
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
 }
 
-.tag.must {
-  border-color: color-mix(in srgb, #22c55e 40%, var(--vp-c-divider));
-  background: color-mix(in srgb, #22c55e 12%, var(--vp-c-bg));
-  color: #166534;
-}
-
-.tag.internal {
-  border-color: color-mix(in srgb, #f59e0b 45%, var(--vp-c-divider));
-  background: color-mix(in srgb, #f59e0b 14%, var(--vp-c-bg));
-  color: #92400e;
-}
-
-.cardText {
-  margin-top: 8px;
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.4;
-}
-
-.bins {
-  display: grid;
-  gap: 12px;
-}
-
-.binHead {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: baseline;
-}
-
-.binTitle {
-  font-weight: 900;
-  font-size: 13px;
+.card-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
   color: var(--vp-c-text-1);
 }
 
-.binHint {
-  font-size: 12px;
+.card-hint {
+  font-size: 13px;
   color: var(--vp-c-text-2);
 }
 
-.drop {
-  margin-top: 10px;
-  min-height: 120px;
-  border: 1px dashed var(--vp-c-divider);
+.detail {
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-brand-1);
   border-radius: 12px;
-  padding: 10px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: flex-start;
-  align-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.detail-icon {
+  font-size: 28px;
+}
+
+.detail-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--vp-c-text-1);
+}
+
+.detail-body {
+  line-height: 1.8;
+}
+
+.detail-desc {
+  font-size: 15px;
+  color: var(--vp-c-text-1);
+  margin-bottom: 16px;
+}
+
+.detail-example {
   background: var(--vp-c-bg-soft);
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--vp-c-brand-1);
 }
 
-.empty {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-}
-
-.chip {
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
+.detail-example strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
   color: var(--vp-c-text-1);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
 }
 
-.x {
-  font-weight: 900;
-  color: var(--vp-c-text-3);
-}
-
-.bar {
-  margin-top: 12px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.btn {
-  border: 1px solid var(--vp-c-brand-1);
-  background: var(--vp-c-brand-1);
-  color: #fff;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.ghost {
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.score {
-  margin-left: auto;
-  display: flex;
-  gap: 12px;
-  color: var(--vp-c-text-2);
-  font-size: 12px;
-}
-
-.result {
-  margin-top: 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg);
+.detail-example code {
+  display: block;
+  background: #1e293b;
+  color: #e2e8f0;
   padding: 12px;
-}
-
-.resultTitle {
-  font-weight: 900;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', monospace;
   font-size: 13px;
-  color: var(--vp-c-text-1);
-}
-
-.resultText {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--vp-c-text-2);
   line-height: 1.6;
-}
-
-.muted {
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-@media (max-width: 720px) {
-  .arena {
-    grid-template-columns: 1fr;
-  }
-  .cardGrid {
-    grid-template-columns: 1fr;
-  }
-  .score {
-    margin-left: 0;
-  }
+  white-space: pre-wrap;
 }
 </style>

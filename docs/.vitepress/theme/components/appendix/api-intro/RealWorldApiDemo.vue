@@ -1,60 +1,172 @@
 <!--
   RealWorldApiDemo.vue
-  参考 ide-intro 的“虚拟 UI + 一眼看懂”的风格。
-  目标：解释“为什么 SDK 的调用也叫 API”：
-  - 左边：SDK 按钮（你调用函数）
-  - 右边：HTTP 按钮（你发请求）
-  两个按钮得到的结果一样：只是包装方式不同。
+  目标：展示真实场景中调用 AI 服务的两种方式
 -->
 <template>
-  <div class="wrap">
-    <div class="head">
-      <div class="title">SDK vs HTTP：其实都是“按按钮拿结果”</div>
-      <div class="sub">
-        你可以把它理解成：<b>同一个按钮</b>，只是有两种“按法”。
+  <div class="demo">
+    <div class="title">🤖 真实场景：让 AI 帮你写产品文案</div>
+    <p class="subtitle">体验两种调用方式的区别</p>
+
+    <div class="scenario">
+      <div class="scenario-header">
+        <span class="scenario-icon">📝</span>
+        <span class="scenario-title">你的需求</span>
+      </div>
+      <div class="scenario-body">
+        我想让 AI 帮智能手表写一段吸引人的产品文案
       </div>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <div class="cardTitle">方式 A：SDK 按钮（调用函数）</div>
-        <div class="cardBody">
-          <button class="call sdk" :disabled="busy" @click="call('sdk')">
-            {{ busy ? '执行中…' : '按一下（SDK）' }}
-          </button>
-          <div class="muted">你写的通常是：<b>client.users.get(...)</b></div>
-          <details class="details">
-            <summary>（选看）长什么样</summary>
-            <pre class="code"><code>{{ sdkCode }}</code></pre>
-          </details>
-        </div>
+    <div class="modes">
+      <div class="mode-tabs">
+        <button
+          :class="['tab', { active: mode === 'http' }]"
+          @click="mode = 'http'"
+        >
+          🌐 HTTP API（外卖模式）
+        </button>
+        <button
+          :class="['tab', { active: mode === 'sdk' }]"
+          @click="mode = 'sdk'"
+        >
+          📦 SDK（堂食模式）
+        </button>
       </div>
 
-      <div class="card">
-        <div class="cardTitle">方式 B：HTTP 按钮（发请求）</div>
-        <div class="cardBody">
-          <button class="call http" :disabled="busy" @click="call('http')">
-            {{ busy ? '执行中…' : '按一下（HTTP）' }}
-          </button>
-          <div class="muted">你写的通常是：<b>fetch(url, headers)</b></div>
-          <details class="details">
-            <summary>（选看）长什么样</summary>
-            <pre class="code"><code>{{ httpCode }}</code></pre>
-          </details>
-        </div>
-      </div>
+      <div class="mode-content">
+        <!-- HTTP 模式 -->
+        <div v-if="mode === 'http'" class="mode-details">
+          <div class="steps">
+            <div class="step" :class="{ active: currentStep >= 1 }">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-title">找到网址（打开外卖 APP）</div>
+                <div class="step-code">https://api.openai.com/v1/chat/completions</div>
+              </div>
+            </div>
 
-      <div class="card">
-        <div class="cardTitle">结果（两边一样）</div>
-        <div class="cardBody">
-          <div v-if="!res" class="muted">先按一下左边或右边的按钮。</div>
-          <div v-else class="resBox">
-            <div class="badge">返回</div>
-            <div class="resText">{{ res }}</div>
+            <div class="step" :class="{ active: currentStep >= 2 }">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <div class="step-title">准备订单（填写信息）</div>
+                <div class="step-code">
+                  Authorization: Bearer 你的API密钥<br>
+                  Content-Type: application/json
+                </div>
+              </div>
+            </div>
+
+            <div class="step" :class="{ active: currentStep >= 3 }">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-title">下单（发送请求）</div>
+                <div class="step-code">
+                  {<br>
+                  &nbsp;&nbsp;"model": "gpt-4",<br>
+                  &nbsp;&nbsp;"messages": [<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{ "role": "system", "content": "你是营销文案专家" },<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{ "role": "user", "content": "写智能手表文案" }<br>
+                  &nbsp;&nbsp;]<br>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <div class="step" :class="{ active: currentStep >= 4 }">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <div class="step-title">等待配送（解析响应）</div>
+                <div class="step-code">
+                  response.choices[0].message.content<br>
+                  <span class="step-hint">⚠️ 需要自己处理解析错误</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="tip">
-            结论：<b>SDK 的“函数入口”也叫 API</b
-            >，因为它也是对外公开的“怎么用”。
+
+          <div class="summary">
+            <p><strong>💡 HTTP API 特点：</strong></p>
+            <ul>
+              <li>✅ 灵活：任何语言都能用</li>
+              <li>❌ 复杂：要手动处理很多细节</li>
+              <li>❌ 容易出错：鉴权、数据格式、错误处理都要自己写</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SDK 模式 -->
+        <div v-else class="mode-details">
+          <div class="steps">
+            <div class="step" :class="{ active: currentStep >= 1 }">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <div class="step-title">走进餐厅（安装 SDK）</div>
+                <div class="step-code">import OpenAI from 'openai'</div>
+              </div>
+            </div>
+
+            <div class="step" :class="{ active: currentStep >= 2 }">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <div class="step-title">找服务员（初始化客户端）</div>
+                <div class="step-code">
+                  const client = new OpenAI({<br>
+                  &nbsp;&nbsp;apiKey: '你的密钥'<br>
+                  })
+                </div>
+              </div>
+            </div>
+
+            <div class="step" :class="{ active: currentStep >= 3 }">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-title">直接点菜（调用函数）</div>
+                <div class="step-code">
+                  const response = await client.chat.completions.create({<br>
+                  &nbsp;&nbsp;model: 'gpt-4',<br>
+                  &nbsp;&nbsp;messages: [<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{ role: 'system', content: '你是营销文案专家' },<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;{ role: 'user', content: '写智能手表文案' }<br>
+                  &nbsp;&nbsp;]<br>
+                  })
+                </div>
+              </div>
+            </div>
+
+            <div class="step" :class="{ active: currentStep >= 4 }">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <div class="step-title">享用美食（直接使用）</div>
+                <div class="step-code">
+                  console.log(response.choices[0].message.content)<br>
+                  <span class="step-hint">✅ SDK 帮你处理好了所有细节</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary">
+            <p><strong>💡 SDK 特点：</strong></p>
+            <ul>
+              <li>✅ 简单：只管调用函数</li>
+              <li>✅ 省心：SDK 自动处理鉴权、错误、数据格式</li>
+              <li>❌ 限制：通常只能在特定语言使用</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="action">
+        <button class="run-btn" :disabled="running" @click="runDemo">
+          {{ running ? '调用中...' : '🚀 开始调用 AI' }}
+        </button>
+
+        <div class="result" v-if="result">
+          <div class="result-header">
+            {{ mode === 'http' ? '🌐 HTTP API 返回' : '📦 SDK 返回' }}
+          </div>
+          <div class="result-body">
+            "这款智能手表，是你的贴身健康管家。全天候心率监测，运动模式自动识别..."
           </div>
         </div>
       </div>
@@ -63,189 +175,272 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
-const busy = ref(false)
-const res = ref('')
+const mode = ref('http')
+const currentStep = ref(0)
+const running = ref(false)
+const result = ref(null)
 
-const sdkCode = computed(
-  () => `import { AcmeClient } from 'acme-sdk'
+async function runDemo() {
+  running.value = true
+  result.value = null
+  currentStep.value = 0
 
-const client = new AcmeClient({ apiKey: '****' })
-const user = await client.users.get({ id: 'u_123' })
-console.log(user)`
-)
+  // 模拟逐步执行
+  for (let i = 1; i <= 4; i++) {
+    await new Promise(resolve => setTimeout(resolve, 600))
+    currentStep.value = i
+  }
 
-const httpCode = computed(
-  () => `const res = await fetch('https://api.acme.com/v1/users/u_123', {
-  headers: { 'X-Api-Key': '****' }
-})
-const user = await res.json()
-console.log(user)`
-)
-
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms))
-}
-
-async function call(which) {
-  if (busy.value) return
-  busy.value = true
-  res.value = ''
-  await sleep(280)
-  res.value =
-    which === 'sdk'
-      ? '用户：{ id: "u_123", name: "Alice" }（模拟）'
-      : '用户：{ id: "u_123", name: "Alice" }（模拟）'
-  busy.value = false
+  await new Promise(resolve => setTimeout(resolve, 400))
+  result.value = true
+  running.value = false
 }
 </script>
 
 <style scoped>
-.wrap {
+.demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
+  border-radius: 12px;
+  padding: 20px;
   background: var(--vp-c-bg-soft);
-  padding: 16px;
-}
-
-.head {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  margin: 16px 0;
 }
 
 .title {
-  font-weight: 900;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
   color: var(--vp-c-text-1);
 }
 
-.sub {
-  font-size: 13px;
+.subtitle {
   color: var(--vp-c-text-2);
-  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.grid {
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.card {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+.scenario {
   background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-brand-1);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.scenario-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.scenario-icon {
+  font-size: 24px;
+}
+
+.scenario-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--vp-c-text-1);
+}
+
+.scenario-body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--vp-c-text-1);
+  padding-left: 32px;
+}
+
+.modes {
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.cardTitle {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--vp-c-divider);
-  font-weight: 900;
-  font-size: 13px;
-  color: var(--vp-c-text-1);
+.mode-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--vp-c-divider);
 }
 
-.cardBody {
-  padding: 12px;
+.tab {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background: var(--vp-c-bg-soft);
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+  background: var(--vp-c-bg);
+}
+
+.tab.active {
+  background: var(--vp-c-bg);
+  border-bottom-color: var(--vp-c-brand-1);
+}
+
+.mode-content {
+  padding: 20px;
+}
+
+.steps {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-.call {
-  width: 100%;
-  border-radius: 12px;
-  padding: 12px 12px;
-  font-weight: 900;
-  cursor: pointer;
-  border: 1px solid var(--vp-c-divider);
+.step {
+  display: flex;
+  gap: 16px;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.step.active .step-number {
+  background: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  color: white;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 6px;
   color: var(--vp-c-text-1);
 }
 
-.call.sdk {
-  border-color: color-mix(in srgb, #22c55e 45%, var(--vp-c-divider));
+.step-code {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  position: relative;
 }
 
-.call.http {
-  border-color: color-mix(in srgb, #60a5fa 45%, var(--vp-c-divider));
+.step-hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 4px;
 }
 
-.call:disabled {
+.step.active .step-hint {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.summary {
+  background: var(--vp-c-bg-soft);
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.summary p {
+  margin-bottom: 8px;
+}
+
+.summary ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.summary li {
+  margin: 4px 0;
+}
+
+.action {
+  padding: 20px;
+  border-top: 2px solid var(--vp-c-divider);
+}
+
+.run-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--vp-c-brand-1);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.run-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.run-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.muted {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
+.result {
+  margin-top: 16px;
+  animation: fadeIn 0.3s ease;
 }
 
-.details {
-  border: 1px dashed var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  padding: 10px 12px;
-}
-
-.details summary {
-  cursor: pointer;
-  font-weight: 900;
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-}
-
-.code {
-  margin: 10px 0 0;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  font-size: 12px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-word;
-  color: var(--vp-c-text-1);
-}
-
-.resBox {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  padding: 10px 12px;
-}
-
-.badge {
-  display: inline-block;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  border-radius: 999px;
-  padding: 2px 10px;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.resText {
-  margin-top: 8px;
-  font-size: 13px;
-  font-weight: 900;
-  color: var(--vp-c-text-1);
-}
-
-.tip {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-@media (max-width: 720px) {
-  .grid {
-    grid-template-columns: 1fr;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--vp-c-text-1);
+}
+
+.result-body {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #166534;
 }
 </style>
