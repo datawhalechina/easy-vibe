@@ -290,16 +290,16 @@ export default defineConfig({
               link: '/zh-cn/stage-1/1.4-complete-project-practice/'
             },
             {
-              text: '5. 大作业：完成一个 Web 应用原型',
-              link: '/zh-cn/stage-1/1.5-final-project/'
-            },
-            {
               text: '附录 A：产品思维补充',
               link: '/zh-cn/stage-1/appendix-a-product-thinking/'
             },
             {
               text: '附录 B：常见报错及解决方案',
               link: '/zh-cn/stage-1/appendix-b-common-errors/'
+            },
+            {
+              text: '附录 C：产业多分类场景方向参考',
+              link: '/zh-cn/stage-1/appendix-industry-scenarios/'
             },
             {
               text: '扩展阅读 1：7 款主流 Vibe Coding 在线平台实测对比',
