@@ -34,8 +34,7 @@
 | [初级二：认识 AI IDE 工具](/zh-cn/stage-1/1.1-introduction-to-ai-ide/)        | 学会使用 IDE，掌握界面结构和高效提示方式          | ✅   |
 | [初级三：动手做出原型](/zh-cn/stage-1/1.2-building-prototype/)                | 从产品分析拆解，到多页面产品原型实现的完整闭环    | ✅   |
 | [初级四：给原型加上 AI 能力](/zh-cn/stage-1/1.3-integrating-ai-capabilities/) | 理解并完成常见 AI 能力（文本图片视频）的 API 接入 | ✅   |
-| [初级五：完整项目实战](/zh-cn/stage-1/1.4-complete-project-practice/)         | 模拟真实场景、接受用户反馈迭代并完成项目展示      | ✅   |
-| [大作业：做一个完整的 Web 应用原型并展示](/zh-cn/stage-1/1.5-final-project/)  | 独立用 AI IDE 落地并演示一个可用 Web 应用         | ✅   |
+| [初级五：完整项目实战](/zh-cn/stage-1/1.4-complete-project-practice/)         | 模拟真实场景、接受用户反馈迭代并完成项目展示（含大作业）      | ✅   |
 
 #### 附录
 
