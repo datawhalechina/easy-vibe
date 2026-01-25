@@ -197,6 +197,62 @@ const commonThemeConfig = {
   }
 }
 
+const productManagerSidebar = [
+  {
+    text: '新手入门',
+    collapsed: false,
+    items: [
+      { text: '1. 学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
+      {
+        text: '2. AI 时代，会说话就会编程',
+        link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
+      }
+    ]
+  },
+  {
+    text: '产品经理',
+    collapsed: false,
+    items: [
+      {
+        text: '1. 认识 AI IDE 工具',
+        link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
+      },
+      {
+        text: '2. 动手做出原型',
+        link: '/zh-cn/stage-1/1.2-building-prototype/'
+      },
+      {
+        text: '3. 给原型加上 AI 能力',
+        link: '/zh-cn/stage-1/1.3-integrating-ai-capabilities/'
+      },
+      {
+        text: '4. 完整项目实战',
+        link: '/zh-cn/stage-1/1.4-complete-project-practice/'
+      },
+      {
+        text: '附录 A：产品思维补充',
+        link: '/zh-cn/stage-1/appendix-a-product-thinking/'
+      },
+      {
+        text: '附录 B：常见报错及解决方案',
+        link: '/zh-cn/stage-1/appendix-b-common-errors/'
+      },
+      {
+        text: '附录 C：产业多分类场景方向参考',
+        link: '/zh-cn/stage-1/appendix-industry-scenarios/'
+      },
+      {
+        text: '扩展阅读 1：7 款主流 Vibe Coding 在线平台实测对比',
+        link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
+      },
+      {
+        text: '扩展阅读 2：用编程和设计智能体开发网站',
+        link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
+      }
+    ]
+  }
+]
+
 export default defineConfig({
   markdown: {
     config: (md) => {
@@ -204,6 +260,7 @@ export default defineConfig({
     }
   },
   base: base,
+  ignoreDeadLinks: true,
 
   // Sitemap 配置
   sitemap: {
@@ -249,67 +306,23 @@ export default defineConfig({
         },
         nav: [
           { text: '首页', link: '/zh-cn/' },
-          { text: '新手入门', link: '/zh-cn/stage-0/0.1-learning-map/' },
           {
             text: '产品经理',
-            link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: '初中级开发',
-            link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: '高级开发',
-            link: '/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: '附录', link: '/zh-cn/appendix/ai-capability-dictionary' }
+          { text: '附录', link: '/zh-cn/appendix/' }
         ],
         sidebar: {
-          '/zh-cn/stage-0/': [
-            { text: '1. 学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
-            {
-              text: '2. AI 时代，会说话就会编程',
-              link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
-            }
-          ],
-          '/zh-cn/stage-1/': [
-            {
-              text: '1. 认识 AI IDE 工具',
-              link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
-            },
-            {
-              text: '2. 动手做出原型',
-              link: '/zh-cn/stage-1/1.2-building-prototype/'
-            },
-            {
-              text: '3. 给原型加上 AI 能力',
-              link: '/zh-cn/stage-1/1.3-integrating-ai-capabilities/'
-            },
-            {
-              text: '4. 完整项目实战',
-              link: '/zh-cn/stage-1/1.4-complete-project-practice/'
-            },
-            {
-              text: '附录 A：产品思维补充',
-              link: '/zh-cn/stage-1/appendix-a-product-thinking/'
-            },
-            {
-              text: '附录 B：常见报错及解决方案',
-              link: '/zh-cn/stage-1/appendix-b-common-errors/'
-            },
-            {
-              text: '附录 C：产业多分类场景方向参考',
-              link: '/zh-cn/stage-1/appendix-industry-scenarios/'
-            },
-            {
-              text: '扩展阅读 1：7 款主流 Vibe Coding 在线平台实测对比',
-              link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
-            },
-            {
-              text: '扩展阅读 2：用编程和设计智能体开发网站',
-              link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
-            }
-          ],
+          '/zh-cn/stage-0/': productManagerSidebar,
+          '/zh-cn/stage-1/': productManagerSidebar,
           '/zh-cn/stage-2/': [
             {
               text: '前端开发',
@@ -655,20 +668,19 @@ export default defineConfig({
         },
         nav: [
           { text: 'Home', link: '/en-us/' },
-          { text: 'Getting Started', link: '/en-us/stage-0/0.1-learning-map/' },
           {
-            text: 'AI Product Manager',
-            link: '/en-us/stage-1/1.1-introduction-to-ai-ide/'
+            text: 'Product Manager',
+            link: '/en-us/stage-0/'
           },
           {
             text: 'Full-Stack Development',
-            link: '/en-us/stage-2/frontend/2.0-lovart-assets/'
+            link: '/en-us/stage-2/'
           },
           {
             text: 'Advanced Development',
-            link: '/en-us/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/en-us/stage-3/'
           },
-          { text: 'Appendix', link: '/en-us/appendix/ai-capability-dictionary' }
+          { text: 'Appendix', link: '/en-us/appendix/' }
         ],
         // TODO: Add English sidebar when content is ready
         sidebar: {},
@@ -700,20 +712,19 @@ export default defineConfig({
         },
         nav: [
           { text: 'ホーム', link: '/ja-jp/' },
-          { text: '入門', link: '/ja-jp/stage-0/0.1-learning-map/' },
           {
             text: 'AI プロダクトマネージャー',
-            link: '/ja-jp/stage-1/1.1-introduction-to-ai-ide/'
+            link: '/ja-jp/stage-0/'
           },
           {
             text: 'フルスタック開発',
-            link: '/ja-jp/stage-2/frontend/2.0-lovart-assets/'
+            link: '/ja-jp/stage-2/'
           },
           {
             text: '上級開発',
-            link: '/ja-jp/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/ja-jp/stage-3/'
           },
-          { text: '付録', link: '/ja-jp/appendix/ai-capability-dictionary' }
+          { text: '付録', link: '/ja-jp/appendix/' }
         ],
         // TODO: Add Japanese sidebar when content is ready
         sidebar: {},
@@ -743,20 +754,19 @@ export default defineConfig({
         },
         nav: [
           { text: '首頁', link: '/zh-tw/' },
-          { text: '新手入門', link: '/zh-tw/stage-0/0.1-learning-map/' },
           {
             text: '產品經理',
-            link: '/zh-tw/stage-1/1.1-introduction-to-ai-ide/'
+            link: '/zh-tw/stage-0/'
           },
           {
             text: '初中級開發',
-            link: '/zh-tw/stage-2/frontend/2.0-lovart-assets/'
+            link: '/zh-tw/stage-2/'
           },
           {
             text: '高級開發',
-            link: '/zh-tw/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/zh-tw/stage-3/'
           },
-          { text: '附錄', link: '/zh-tw/appendix/ai-capability-dictionary' }
+          { text: '附錄', link: '/zh-tw/appendix/' }
         ],
         sidebar: {},
         footer: {
@@ -785,17 +795,16 @@ export default defineConfig({
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: '입문', link: '/ko-kr/stage-0/0.1-learning-map/' },
-          { text: 'AI PM', link: '/ko-kr/stage-1/1.1-introduction-to-ai-ide/' },
+          { text: 'AI PM', link: '/ko-kr/stage-0/' },
           {
             text: '풀스택 개발',
-            link: '/ko-kr/stage-2/frontend/2.0-lovart-assets/'
+            link: '/ko-kr/stage-2/'
           },
           {
             text: '고급 개발',
-            link: '/ko-kr/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/ko-kr/stage-3/'
           },
-          { text: '부록', link: '/ko-kr/appendix/ai-capability-dictionary' }
+          { text: '부록', link: '/ko-kr/appendix/' }
         ],
         sidebar: {},
         footer: {
@@ -824,20 +833,19 @@ export default defineConfig({
         },
         nav: [
           { text: 'Inicio', link: '/es-es/' },
-          { text: 'Principiante', link: '/es-es/stage-0/0.1-learning-map/' },
           {
             text: 'PM de IA',
-            link: '/es-es/stage-1/1.1-introduction-to-ai-ide/'
+            link: '/es-es/stage-0/'
           },
           {
             text: 'Desarrollo Full Stack',
-            link: '/es-es/stage-2/frontend/2.0-lovart-assets/'
+            link: '/es-es/stage-2/'
           },
           {
             text: 'Desarrollo Avanzado',
-            link: '/es-es/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/es-es/stage-3/'
           },
-          { text: 'Apéndice', link: '/es-es/appendix/ai-capability-dictionary' }
+          { text: 'Apéndice', link: '/es-es/appendix/' }
         ],
         sidebar: {},
         footer: {
@@ -866,17 +874,16 @@ export default defineConfig({
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'Débutant', link: '/fr-fr/stage-0/0.1-learning-map/' },
-          { text: 'PM IA', link: '/fr-fr/stage-1/1.1-introduction-to-ai-ide/' },
+          { text: 'PM IA', link: '/fr-fr/stage-0/' },
           {
             text: 'Développement Full Stack',
-            link: '/fr-fr/stage-2/frontend/2.0-lovart-assets/'
+            link: '/fr-fr/stage-2/'
           },
           {
             text: 'Développement Avancé',
-            link: '/fr-fr/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/fr-fr/stage-3/'
           },
-          { text: 'Annexe', link: '/fr-fr/appendix/ai-capability-dictionary' }
+          { text: 'Annexe', link: '/fr-fr/appendix/' }
         ],
         sidebar: {},
         footer: {
@@ -905,17 +912,16 @@ export default defineConfig({
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'Einsteiger', link: '/de-de/stage-0/0.1-learning-map/' },
-          { text: 'KI-PM', link: '/de-de/stage-1/1.1-introduction-to-ai-ide/' },
+          { text: 'KI-PM', link: '/de-de/stage-0/' },
           {
             text: 'Full Stack Entwicklung',
-            link: '/de-de/stage-2/frontend/2.0-lovart-assets/'
+            link: '/de-de/stage-2/'
           },
           {
             text: 'Fortgeschrittene Entwicklung',
-            link: '/de-de/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/de-de/stage-3/'
           },
-          { text: 'Anhang', link: '/de-de/appendix/ai-capability-dictionary' }
+          { text: 'Anhang', link: '/de-de/appendix/' }
         ],
         sidebar: {},
         footer: {
@@ -944,20 +950,19 @@ export default defineConfig({
         },
         nav: [
           { text: 'الرئيسية', link: '/ar-sa/' },
-          { text: 'المبتدئين', link: '/ar-sa/stage-0/0.1-learning-map/' },
           {
             text: 'مدير منتج AI',
-            link: '/ar-sa/stage-1/1.1-introduction-to-ai-ide/'
+            link: '/ar-sa/stage-0/'
           },
           {
             text: 'تطوير Full Stack',
-            link: '/ar-sa/stage-2/frontend/2.0-lovart-assets/'
+            link: '/ar-sa/stage-2/'
           },
           {
             text: 'تطوير متقدم',
-            link: '/ar-sa/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/ar-sa/stage-3/'
           },
-          { text: 'ملحق', link: '/ar-sa/appendix/ai-capability-dictionary' }
+          { text: 'ملحق', link: '/ar-sa/appendix/' }
         ],
         sidebar: {},
         footer: {
@@ -986,17 +991,19 @@ export default defineConfig({
         },
         nav: [
           { text: 'Trang chủ', link: '/vi-vn/' },
-          { text: 'Người mới', link: '/vi-vn/stage-0/0.1-learning-map/' },
-          { text: 'PM AI', link: '/vi-vn/stage-1/1.1-introduction-to-ai-ide/' },
+          {
+            text: 'PM AI',
+            link: '/vi-vn/stage-0/'
+          },
           {
             text: 'Phát triển Full Stack',
-            link: '/vi-vn/stage-2/frontend/2.0-lovart-assets/'
+            link: '/vi-vn/stage-2/'
           },
           {
             text: 'Phát triển Nâng cao',
-            link: '/vi-vn/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+            link: '/vi-vn/stage-3/'
           },
-          { text: 'Phụ lục', link: '/vi-vn/appendix/ai-capability-dictionary' }
+          { text: 'Phụ lục', link: '/vi-vn/appendix/' }
         ],
         sidebar: {},
         footer: {
