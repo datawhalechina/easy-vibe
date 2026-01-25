@@ -42,25 +42,19 @@ const base = site.value.base
 </script>
 
 <div class="stage-container">
-  <a :href="base + 'ja-jp/stage-0/0.1-learning-map/'" class="stage-card">
-    <div class="stage-icon">🌱</div>
-    <h3>Stage 0: 入門</h3>
-    <p>プロダクト、運用、非技術的背景に適しています。ゲームを通じて AI プログラミングロジックを理解し、自信を構築しましょう。</p>
-    <span>詳しく見る →</span>
-  </a>
-  <a :href="base + 'ja-jp/stage-1/1.1-introduction-to-ai-ide/'" class="stage-card">
+  <a :href="base + 'ja-jp/stage-0/'" class="stage-card">
     <div class="stage-icon">🎨</div>
     <h3>Stage 1: AI プロダクトマネージャー</h3>
-    <p>Vibe Coding ワークフローをマスターしましょう。要件を分解し、高品質な Web アプリケーションプロトタイプを独立して完成させる方法を学びます。</p>
+    <p>プロダクト、運用、非技術的背景に適しています。ゲームを通じて AI プログラミングロジックを理解し、Vibe Coding ワークフローをマスターしましょう。</p>
     <span>詳しく見る →</span>
   </a>
-  <a :href="base + 'ja-jp/stage-2/frontend/2.0-lovart-assets/'" class="stage-card">
+  <a :href="base + 'ja-jp/stage-2/'" class="stage-card">
     <div class="stage-icon">💻</div>
     <h3>Stage 2: フルスタック開発</h3>
     <p>フルスタック開発に深く潜り込みましょう。フロントエンドコンポーネント化、データベース設計、バックエンド API 開発、デプロイメント。</p>
     <span>詳しく見る →</span>
   </a>
-  <a :href="base + 'ja-jp/stage-3/core-skills/3.1-mcp-claudecode-skills/'" class="stage-card">
+  <a :href="base + 'ja-jp/stage-3/'" class="stage-card">
     <div class="stage-icon">🚀</div>
     <h3>Stage 3: 上級開発</h3>
     <p>複雑なクロスプラットフォームアプリケーションを構築しましょう。WeChat ミニプログラム実戦、より高レベルの AI ネイティブアプリケーション開発に挑戦します。</p>
