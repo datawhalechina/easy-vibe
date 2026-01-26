@@ -194,6 +194,10 @@ const commonThemeConfig = {
   // ],
   outline: {
     level: [1, 6]
+  },
+  footer: {
+    message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a> | <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010602202215" rel="noreferrer" target="_blank">京公网安备11010602202215号</a>',
+    copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
   }
 }
 
@@ -640,10 +644,6 @@ export default defineConfig({
             }
           ]
         },
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
 
@@ -684,10 +684,6 @@ export default defineConfig({
         ],
         // TODO: Add English sidebar when content is ready
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
 
@@ -728,10 +724,6 @@ export default defineConfig({
         ],
         // TODO: Add Japanese sidebar when content is ready
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'zh-tw': {
@@ -769,10 +761,6 @@ export default defineConfig({
           { text: '附錄', link: '/zh-tw/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'ko-kr': {
@@ -807,10 +795,6 @@ export default defineConfig({
           { text: '부록', link: '/ko-kr/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'es-es': {
@@ -848,10 +832,6 @@ export default defineConfig({
           { text: 'Apéndice', link: '/es-es/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'fr-fr': {
@@ -886,10 +866,6 @@ export default defineConfig({
           { text: 'Annexe', link: '/fr-fr/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'de-de': {
@@ -924,10 +900,6 @@ export default defineConfig({
           { text: 'Anhang', link: '/de-de/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'ar-sa': {
@@ -965,10 +937,6 @@ export default defineConfig({
           { text: 'ملحق', link: '/ar-sa/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     },
     'vi-vn': {
@@ -1006,10 +974,6 @@ export default defineConfig({
           { text: 'Phụ lục', link: '/vi-vn/appendix/' }
         ],
         sidebar: {},
-        footer: {
-          message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a>',
-          copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
-        }
       }
     }
   }
