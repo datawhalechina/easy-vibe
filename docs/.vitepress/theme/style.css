@@ -60,6 +60,7 @@
 
 .vp-doc :where(h1, h2, h3, h4, h5, h6) {
   line-height: 1.3;
+  scroll-margin-top: calc(var(--vp-nav-height, 64px) + 24px);
 }
 
 .vp-doc :where(h1) {
@@ -199,6 +200,26 @@
   height: auto !important;
 }
 
+/* 布局调整：增加内容区域的最大宽度，并适当增加内边距 */
+@media (min-width: 960px) {
+  .VPDoc:not(.has-sidebar) .container {
+    max-width: 1280px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  .VPDoc.has-sidebar .container {
+    max-width: 100% !important; /* 移除强制宽度限制，让内容自然对齐 */
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+  /* 强制统一首页 Hero 区域的宽度和边距，使其与下方 Features 区域对齐 */
+  .VPHomeHero .container {
+    max-width: 1280px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
 .vp-doc img.img-limit-height {
   max-height: 450px !important;
   max-width: 100% !important;
@@ -243,4 +264,62 @@
 
 .VPSidebarItem .VPLink:hover {
   text-decoration: none !important;
+}
+
+/* iOS/Apple Style Enhancements */
+
+/* System Font Stack */
+:root {
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section Refinements */
+.VPHomeHero .name {
+  background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(66, 211, 146, 0.3));
+}
+
+.VPHomeHero .text {
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+}
+
+.VPHomeHero .action .VPButton.brand {
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #42d392, #647eff);
+  border: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.VPHomeHero .action .VPButton.brand:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.VPHomeHero .action .VPButton.alt {
+  border-radius: 20px;
+  border-color: var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
+  transition: transform 0.2s;
+}
+
+.VPHomeHero .action .VPButton.alt:hover {
+  transform: scale(1.05);
+  background-color: var(--vp-c-bg);
 }
