@@ -323,3 +323,8 @@
   transform: scale(1.05);
   background-color: var(--vp-c-bg);
 }
+
+/* HomeFeatures Sections Scroll Offset */
+.section-container {
+  scroll-margin-top: 80px;
+}

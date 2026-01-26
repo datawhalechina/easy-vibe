@@ -8,6 +8,56 @@ const { site, page, lang } = useData()
 const activeTab = ref('home')
 const showLangMenu = ref(false)
 
+// Appendix Scroll Logic
+const appendixWrapper = ref(null)
+const totalPages = ref(1)
+const currentPage = ref(0)
+
+const updatePagination = () => {
+  if (appendixWrapper.value) {
+    const { scrollLeft, clientWidth, scrollWidth } = appendixWrapper.value
+    // If scrollWidth is close to clientWidth, only 1 page
+    if (scrollWidth <= clientWidth + 5) {
+      totalPages.value = 1
+      currentPage.value = 0
+    } else {
+      totalPages.value = Math.ceil(scrollWidth / clientWidth)
+      currentPage.value = Math.round(scrollLeft / clientWidth)
+    }
+  }
+}
+
+const onAppendixScroll = () => {
+  if (!appendixWrapper.value) return
+  const { scrollLeft, clientWidth } = appendixWrapper.value
+  const newPage = Math.round(scrollLeft / clientWidth)
+  if (currentPage.value !== newPage) {
+    currentPage.value = newPage
+  }
+}
+
+const scrollToPage = (pageIndex) => {
+  if (appendixWrapper.value) {
+    const width = appendixWrapper.value.clientWidth
+    appendixWrapper.value.scrollTo({
+      left: pageIndex * width,
+      behavior: 'smooth'
+    })
+  }
+}
+
+const autoScroll = () => {
+  if (appendixWrapper.value) {
+    const { scrollLeft, clientWidth, scrollWidth } = appendixWrapper.value
+    const maxScroll = scrollWidth - clientWidth
+    if (scrollLeft >= maxScroll - 20) {
+      appendixWrapper.value.scrollTo({ left: 0, behavior: 'smooth' })
+    } else {
+      appendixWrapper.value.scrollBy({ left: clientWidth, behavior: 'smooth' })
+    }
+  }
+}
+
 const i18n = {
   'zh-cn': {
     nav: {
@@ -31,8 +81,8 @@ const i18n = {
     },
     stage2: {
       cat: 'Stage 2 · 初中级开发',
-      title: '深入全栈，<br><span class="highlight">构建真实应用。</span>',
-      sub: '掌握前后端分离架构，亲手打造包含数据库、API 和复杂交互的完整商业级项目。',
+      title: '全栈之力，<br><span class="highlight">一手掌握。</span>',
+      sub: '以前端为笔，后端为墨。从数据库设计到交互界面，独立构建完整的商业级应用。',
       cards: [
         { title: '全栈开发', headline: '独立完成前后端。', desc: '从数据库设计到 API 开发，再到前端组件化，完整构建一个现代化 Web 应用。', link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/' },
         { title: '真实项目', headline: '拒绝玩具代码。', desc: '深入理解用户鉴权、数据存储、文件上传等核心业务逻辑。', link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase' },
@@ -41,19 +91,38 @@ const i18n = {
     },
     stage3: {
       cat: 'Stage 3 · 高级开发',
-      title: '高阶实战，<br><span class="highlight">挑战无限可能。</span>',
-      sub: '进军移动端小程序与 AI 原生应用开发，探索大模型时代的无限机遇。',
+      title: '复杂系统，<br><span class="highlight">尽在掌控。</span>',
+      sub: '从跨平台应用到高可用 AI 架构。让智能体在生产环境中长时间稳定运行，构建真正的商业级护城河。',
       cards: [
-        { title: '微信小程序', desc: '跨平台开发，触达亿级用户。', link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/' },
-        { title: 'AI 原生应用', desc: 'RAG、Agent，探索 LLM 的无限可能。', link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future' },
-        { title: '复杂业务架构', desc: '应对高并发、高可用场景的架构设计。', link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/' },
-        { title: '个人品牌', desc: '构建属于自己的个人网页与学术博客。', link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/' }
+        { title: '多端发布', desc: '一套代码，覆盖 Web、小程序与 App，触达所有用户。', link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/' },
+        { title: 'AI 智能体', desc: '构建具备记忆与规划能力的 Agent，实现自主任务执行。', link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future' },
+        { title: '长效稳定', desc: '掌握异步任务与队列技术，确保 AI 复杂任务稳定完成。', link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/' },
+        { title: '商业闭环', desc: '集成支付与会员系统，将你的 AI 创意转化为商业产品。', link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/' }
+      ]
+    },
+    appendix: {
+      cat: 'Appendix · 附录',
+      title: '让代码，<br><span class="highlight">活灵活现。</span>',
+      sub: '告别晦涩的文字堆砌。用动态演示和实时交互，重新定义技术文档。',
+      cards: [
+        { title: 'AI 进化史', desc: '回顾人工智能发展历程中的关键里程碑。', link: '/zh-cn/appendix/ai-evolution' },
+        { title: '提示词工程', desc: '掌握与 AI 高效对话的技巧，解锁潜力。', link: '/zh-cn/appendix/prompt-engineering' },
+        { title: '大语言模型', desc: '深入浅出解析 LLM 的工作原理与应用。', link: '/zh-cn/appendix/llm-intro' },
+        { title: 'Agent 智能体', desc: '探索具备自主决策与执行能力的 AI 架构。', link: '/zh-cn/appendix/agent-intro' },
+        { title: '前端基础', desc: 'HTML/CSS/JS 三大基石，入门必修课。', link: '/zh-cn/appendix/web-basics' },
+        { title: '前端进化史', desc: '了解前端技术栈演变，把握发展趋势。', link: '/zh-cn/appendix/frontend-evolution' },
+        { title: '后端架构', desc: '从单体到微服务，探索架构演进之路。', link: '/zh-cn/appendix/backend-evolution' },
+        { title: '后端语言', desc: '对比主流后端语言特性，选择最佳技术栈。', link: '/zh-cn/appendix/backend-languages' },
+        { title: '数据库原理', desc: '理解数据库核心原理，掌握数据存储艺术。', link: '/zh-cn/appendix/database-intro' },
+        { title: 'API 设计', desc: 'API 接口设计与开发的基础知识。', link: '/zh-cn/appendix/api-intro' },
+        { title: 'Git 版本控制', desc: '深入理解 Git 原理与高级用法。', link: '/zh-cn/appendix/git-intro' },
+        { title: '计算机网络', desc: '网络协议与通信原理的基础知识。', link: '/zh-cn/appendix/computer-networks' }
       ]
     },
     footer: {
-      title: '准备好开始了吗？',
-      desc: 'Easy-Vibe，让编程像呼吸一样自然。',
-      btn: '立即开启'
+      title: '你的想法，<br>此刻上线。',
+      desc: '从灵感到现实，只差这一个开始。',
+      btn: '>_ Start'
     }
   },
   'en-us': {
@@ -95,6 +164,25 @@ const i18n = {
         { title: 'AI Native Apps', desc: 'RAG, Agent. Explore the limits of LLMs.', link: '/en-us/stage-3/' },
         { title: 'Complex Arch', desc: 'High concurrency, High availability architecture design.', link: '/en-us/stage-3/' },
         { title: 'Personal Brand', desc: 'Build your own website and academic blog.', link: '/en-us/stage-3/' }
+      ]
+    },
+    appendix: {
+      cat: 'Appendix',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI History', desc: 'Milestones in AI evolution.', link: '/en-us/appendix/ai-evolution' },
+        { title: 'Prompt Eng', desc: 'Master AI communication skills.', link: '/en-us/appendix/prompt-engineering' },
+        { title: 'LLM Intro', desc: 'Understanding Large Language Models.', link: '/en-us/appendix/llm-intro' },
+        { title: 'AI Agents', desc: 'Autonomous decision-making AI.', link: '/en-us/appendix/agent-intro' },
+        { title: 'Web Basics', desc: 'HTML/CSS/JS fundamentals.', link: '/en-us/appendix/web-basics' },
+        { title: 'Frontend Evo', desc: 'Evolution of frontend tech stack.', link: '/en-us/appendix/frontend-evolution' },
+        { title: 'Backend Arch', desc: 'From monolith to microservices.', link: '/en-us/appendix/backend-evolution' },
+        { title: 'Backend Lang', desc: 'Choosing the right tech stack.', link: '/en-us/appendix/backend-languages' },
+        { title: 'Database', desc: 'Core principles of data storage.', link: '/en-us/appendix/database-intro' },
+        { title: 'API Design', desc: 'Designing robust interfaces.', link: '/en-us/appendix/api-intro' },
+        { title: 'Git', desc: 'Version control mastery.', link: '/en-us/appendix/git-intro' },
+        { title: 'Networks', desc: 'Protocols and communication.', link: '/en-us/appendix/computer-networks' }
       ]
     },
     footer: {
@@ -144,6 +232,17 @@ const i18n = {
         { title: 'パーソナルブランド', desc: '自分のウェブサイトと学術ブログを構築。', link: '/ja-jp/stage-3/' }
       ]
     },
+    appendix: {
+      cat: 'Appendix · 付録',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/ja-jp/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/ja-jp/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/ja-jp/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/ja-jp/appendix/git-intro' }
+      ]
+    },
     footer: {
       title: '準備はいいですか？',
       desc: 'Easy-Vibe、呼吸するように自然にコーディング。',
@@ -189,6 +288,17 @@ const i18n = {
         { title: 'AI 原生應用', desc: 'RAG、Agent，探索 LLM 的無限可能。', link: '/zh-tw/stage-3/' },
         { title: '複雜業務架構', desc: '應對高並發、高可用場景的架構設計。', link: '/zh-tw/stage-3/' },
         { title: '個人品牌', desc: '構建屬於自己的個人網頁與學術博客。', link: '/zh-tw/stage-3/' }
+      ]
+    },
+    appendix: {
+      cat: 'Appendix · 附錄',
+      title: '百科全書，<br><span class="highlight">夯實基礎。</span>',
+      sub: '從計算機網絡到 AI 原理，補齊你的技術拼圖。',
+      cards: [
+        { title: '人工智能', desc: 'LLM、Agent、RAG，深入 AI 底層原理。', link: '/zh-tw/appendix/ai-evolution' },
+        { title: '前端開發', desc: '瀏覽器原理、性能優化、Canvas 圖形學。', link: '/zh-tw/appendix/web-basics' },
+        { title: '後端架構', desc: '高並發、分佈式、微服務架構設計。', link: '/zh-tw/appendix/backend-evolution' },
+        { title: '通用技能', desc: 'Git、網絡、IDE 原理，開發者必備素養。', link: '/zh-tw/appendix/git-intro' }
       ]
     },
     footer: {
@@ -238,6 +348,17 @@ const i18n = {
         { title: '퍼스널 브랜딩', desc: '나만의 웹사이트와 학술 블로그 구축.', link: '/ko-kr/stage-3/' }
       ]
     },
+    appendix: {
+      cat: 'Appendix · 부록',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/ko-kr/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/ko-kr/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/ko-kr/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/ko-kr/appendix/git-intro' }
+      ]
+    },
     footer: {
       title: '시작할 준비 되셨나요?',
       desc: 'Easy-Vibe, 숨 쉬듯 자연스러운 코딩.',
@@ -283,6 +404,17 @@ const i18n = {
         { title: 'Apps Nativas IA', desc: 'RAG, Agent. Explora los límites de los LLMs.', link: '/es-es/stage-3/' },
         { title: 'Arq. Compleja', desc: 'Diseño de arquitectura de alta concurrencia y alta disponibilidad.', link: '/es-es/stage-3/' },
         { title: 'Marca Personal', desc: 'Construye tu propio sitio web y blog académico.', link: '/es-es/stage-3/' }
+      ]
+    },
+    appendix: {
+      cat: 'Appendix · Apéndice',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/es-es/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/es-es/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/es-es/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/es-es/appendix/git-intro' }
       ]
     },
     footer: {
@@ -332,6 +464,17 @@ const i18n = {
         { title: 'Marque Perso', desc: 'Construisez votre propre site web et blog académique.', link: '/fr-fr/stage-3/' }
       ]
     },
+    appendix: {
+      cat: 'Appendix · Annexe',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/fr-fr/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/fr-fr/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/fr-fr/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/fr-fr/appendix/git-intro' }
+      ]
+    },
     footer: {
       title: 'Prêt à commencer ?',
       desc: 'Easy-Vibe, rendez le codage aussi naturel que la respiration.',
@@ -377,6 +520,17 @@ const i18n = {
         { title: 'KI-Native Apps', desc: 'RAG, Agent. Erkunde die Grenzen von LLMs.', link: '/de-de/stage-3/' },
         { title: 'Komplexe Arch', desc: 'Architekturdesign für hohe Gleichzeitigkeit und hohe Verfügbarkeit.', link: '/de-de/stage-3/' },
         { title: 'Persönliche Marke', desc: 'Baue deine eigene Website und deinen akademischen Blog.', link: '/de-de/stage-3/' }
+      ]
+    },
+    appendix: {
+      cat: 'Appendix · Anhang',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/de-de/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/de-de/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/de-de/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/de-de/appendix/git-intro' }
       ]
     },
     footer: {
@@ -426,6 +580,17 @@ const i18n = {
         { title: 'العلامة التجارية الشخصية', desc: 'ابنِ موقعك الخاص ومدونتك الأكاديمية.', link: '/ar-sa/stage-3/' }
       ]
     },
+    appendix: {
+      cat: 'Appendix · ملحق',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/ar-sa/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/ar-sa/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/ar-sa/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/ar-sa/appendix/git-intro' }
+      ]
+    },
     footer: {
       title: 'جاهز للبدء؟',
       desc: 'Easy-Vibe، اجعل البرمجة طبيعية كالتنفس.',
@@ -471,6 +636,17 @@ const i18n = {
         { title: 'App AI Native', desc: 'RAG, Agent. Khám phá giới hạn của LLM.', link: '/vi-vn/stage-3/' },
         { title: 'Kiến trúc phức tạp', desc: 'Thiết kế kiến trúc chịu tải cao và sẵn sàng cao.', link: '/vi-vn/stage-3/' },
         { title: 'Thương hiệu cá nhân', desc: 'Xây dựng website và blog học thuật của riêng bạn.', link: '/vi-vn/stage-3/' }
+      ]
+    },
+    appendix: {
+      cat: 'Appendix · Phụ lục',
+      title: 'Encyclopedia, <br><span class="highlight">Solid Foundation.</span>',
+      sub: 'From Computer Networks to AI Principles, complete your tech puzzle.',
+      cards: [
+        { title: 'AI Fundamentals', desc: 'LLM, Agent, RAG. Dive into AI internals.', link: '/vi-vn/appendix/ai-evolution' },
+        { title: 'Frontend', desc: 'Browser internals, Performance, Canvas.', link: '/vi-vn/appendix/web-basics' },
+        { title: 'Backend', desc: 'High concurrency, Distributed systems, Microservices.', link: '/vi-vn/appendix/backend-evolution' },
+        { title: 'General Skills', desc: 'Git, Networks, IDE internals.', link: '/vi-vn/appendix/git-intro' }
       ]
     },
     footer: {
@@ -530,8 +706,11 @@ const scrollTo = (id) => {
   }
   const el = document.getElementById(id)
   if (el) {
-    const navHeight = 64 // Approximate nav height
-    const offset = el.offsetTop - navHeight - 20
+    const navHeight = 48 // Approximate nav height
+    // Use getBoundingClientRect for better accuracy
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset
+    // Increase buffer to ensure section header is clearly visible below nav
+    const offset = elementPosition - navHeight - 64
     window.scrollTo({ top: offset, behavior: 'smooth' })
     activeTab.value = id
   }
@@ -546,10 +725,19 @@ const closeLangMenu = (e) => {
 
 onMounted(() => {
   document.addEventListener('click', closeLangMenu)
+  if (appendixWrapper.value) {
+    appendixWrapper.value.addEventListener('scroll', onAppendixScroll)
+    updatePagination()
+    window.addEventListener('resize', updatePagination)
+  }
 })
 
 onUnmounted(() => {
   document.removeEventListener('click', closeLangMenu)
+  if (appendixWrapper.value) {
+    appendixWrapper.value.removeEventListener('scroll', onAppendixScroll)
+  }
+  window.removeEventListener('resize', updatePagination)
 })
 
 // Stage 1: 产品经理 (Web 原型)
@@ -639,6 +827,82 @@ const stage3Cards = [
     link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
   }
 ]
+
+// Appendix: 附录
+const appendixCards = [
+  {
+    title: '人工智能',
+    desc: 'LLM、Agent、RAG，深入 AI 底层原理。',
+    tag: 'AI',
+    link: '/zh-cn/appendix/ai-evolution'
+  },
+  {
+    title: '提示词工程',
+    desc: '掌握与 AI 高效对话的技巧，解锁潜力。',
+    tag: 'AI',
+    link: '/zh-cn/appendix/prompt-engineering'
+  },
+  {
+    title: '大语言模型',
+    desc: '深入浅出解析 LLM 的工作原理与应用。',
+    tag: 'AI',
+    link: '/zh-cn/appendix/llm-intro'
+  },
+  {
+    title: 'Agent 智能体',
+    desc: '探索具备自主决策与执行能力的 AI 架构。',
+    tag: 'AI',
+    link: '/zh-cn/appendix/agent-intro'
+  },
+  {
+    title: '前端基础',
+    desc: 'HTML/CSS/JS 三大基石，入门必修课。',
+    tag: 'Frontend',
+    link: '/zh-cn/appendix/web-basics'
+  },
+  {
+    title: '前端进化史',
+    desc: '了解前端技术栈演变，把握发展趋势。',
+    tag: 'Frontend',
+    link: '/zh-cn/appendix/frontend-evolution'
+  },
+  {
+    title: '后端架构',
+    desc: '从单体到微服务，探索架构演进之路。',
+    tag: 'Backend',
+    link: '/zh-cn/appendix/backend-evolution'
+  },
+  {
+    title: '后端语言',
+    desc: '对比主流后端语言特性，选择最佳技术栈。',
+    tag: 'Backend',
+    link: '/zh-cn/appendix/backend-languages'
+  },
+  {
+    title: '数据库原理',
+    desc: '理解数据库核心原理，掌握数据存储艺术。',
+    tag: 'Database',
+    link: '/zh-cn/appendix/database-intro'
+  },
+  {
+    title: 'API 设计',
+    desc: 'API 接口设计与开发的基础知识。',
+    tag: 'API',
+    link: '/zh-cn/appendix/api-intro'
+  },
+  {
+    title: 'Git 版本控制',
+    desc: '深入理解 Git 原理与高级用法。',
+    tag: 'General',
+    link: '/zh-cn/appendix/git-intro'
+  },
+  {
+    title: '计算机网络',
+    desc: '网络协议与通信原理的基础知识。',
+    tag: 'General',
+    link: '/zh-cn/appendix/computer-networks'
+  }
+]
 </script>
 
 <template>
@@ -652,18 +916,24 @@ const stage3Cards = [
           <button :class="{ active: activeTab === 'pm' }" @click="scrollTo('pm')">{{ t.nav.pm }}</button>
           <button :class="{ active: activeTab === 'junior' }" @click="scrollTo('junior')">{{ t.nav.junior }}</button>
           <button :class="{ active: activeTab === 'senior' }" @click="scrollTo('senior')">{{ t.nav.senior }}</button>
-          <a class="nav-link-item" :href="withBase('/zh-cn/appendix/')">{{ t.nav.appendix }}</a>
+          <button :class="{ active: activeTab === 'appendix' }" @click="scrollTo('appendix')">{{ t.nav.appendix }}</button>
         </div>
         <div class="nav-action">
           <div class="nav-icons">
             <!-- Language Switcher -->
             <div class="lang-switch-wrapper">
-              <button class="icon-btn" aria-label="Change language" @click.stop="toggleLangMenu">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
+              <button 
+                type="button" 
+                class="button" 
+                aria-haspopup="true" 
+                :aria-expanded="showLangMenu" 
+                aria-label="Change language" 
+                @click.stop="toggleLangMenu"
+              >
+                <span class="text">
+                  <span class="vpi-languages option-icon"></span>
+                  <span class="vpi-chevron-down text-icon"></span>
+                </span>
               </button>
               <!-- Dropdown Menu -->
               <div class="lang-dropdown glass" v-if="showLangMenu">
@@ -679,11 +949,7 @@ const stage3Cards = [
             </div>
             
             <!-- GitHub Link -->
-            <a class="icon-btn" href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </a>
+            <GitHubStars class="nav-github-stars" />
           </div>
           <a class="buy-btn" :href="withBase('/zh-cn/stage-0/0.1-learning-map/')">{{ t.footer.btn }}</a>
         </div>
@@ -764,9 +1030,52 @@ const stage3Cards = [
       </div>
     </section>
 
+    <!-- Appendix -->
+    <section id="appendix" class="section-container">
+      <div class="section-header">
+        <h2 class="section-category">{{ t.appendix.cat }}</h2>
+        <h3 class="section-headline" v-html="t.appendix.title"></h3>
+        <p class="section-sub">{{ t.appendix.sub }}</p>
+      </div>
+
+      <div class="appendix-scroll-wrapper" ref="appendixWrapper">
+        <div class="appendix-track">
+          <a v-for="(card, index) in t.appendix.cards" :key="index" :href="withBase(card.link)" class="appendix-card">
+            <div class="appendix-icon-wrapper" :class="'icon-' + (index % 4)">
+               <span class="appendix-emoji">{{ ['🤖', '🧠', '🎨', '🚀', '⚙️', '💾', '🛠️', '🌐'][index] || '📚' }}</span>
+            </div>
+            <div class="appendix-content">
+              <p class="appendix-text">
+                <span class="appendix-title">{{ card.title }}.</span>
+                {{ card.desc }}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Slider Indicator -->
+      <div class="appendix-controls" v-if="totalPages > 1">
+        <button class="control-btn play-btn" @click="autoScroll" aria-label="Auto Scroll">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 5.76795C11.1667 6.15285 11.1667 7.1151 10.5 7.5L2.25 12.2631C1.58333 12.648 0.75 12.1669 0.75 11.3971L0.75 1.87084C0.75 1.10104 1.58333 0.61991 2.25 1.00481L10.5 5.76795Z" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="indicator-track">
+          <div 
+            v-for="i in totalPages" 
+            :key="i"
+            class="indicator-dot"
+            :class="{ active: currentPage === i - 1 }"
+            @click="scrollToPage(i - 1)"
+          ></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer Callout -->
     <div class="footer-callout">
-      <h2>{{ t.footer.title }}</h2>
+      <h2 v-html="t.footer.title"></h2>
       <p>{{ t.footer.desc }}</p>
       <a class="buy-btn large" :href="withBase('/zh-cn/stage-0/0.1-learning-map/')">{{ t.footer.btn }}</a>
     </div>
@@ -778,7 +1087,7 @@ const stage3Cards = [
 .apple-container {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
   color: var(--vp-c-text-1);
-  overflow: hidden;
+  /* overflow: hidden; Removed to fix scrolling issue */
 }
 
 a {
@@ -810,10 +1119,10 @@ a {
 }
 
 .nav-content {
-  max-width: 1280px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 40px;
-  height: 52px;
+  padding: 0 20px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -821,64 +1130,132 @@ a {
 
 .nav-title {
   font-weight: 600;
-  font-size: 21px;
+  font-size: 19px;
+  color: #000 !important;
+  flex-shrink: 0;
+  letter-spacing: -0.01em;
 }
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   align-items: center;
+  margin: 0 24px;
 }
 
 .nav-links button, .nav-link-item {
   background: none;
   border: none;
   font-size: 12px;
-  color: var(--vp-c-text-2);
+  color: #000 !important;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
   padding: 0;
   margin: 0;
   line-height: 1;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
 .nav-links button:hover,
 .nav-links button.active,
 .nav-link-item:hover {
-  color: var(--vp-c-text-1);
+  color: #000 !important;
+  opacity: 1;
 }
 
 .nav-action {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 28px;
+  flex-shrink: 0;
 }
 
 .nav-icons {
   display: flex;
-  gap: 12px;
+  gap: 24px;
+  align-items: center;
 }
 
 .icon-btn {
   background: none;
   border: none;
   padding: 0;
-  color: var(--vp-c-text-1);
+  color: #000 !important;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
+  opacity: 1;
   transition: opacity 0.2s;
 }
 
 .icon-btn:hover {
+  opacity: 0.7;
+}
+
+.button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #000 !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.button .text {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.button .option-icon {
+  width: 20px;
+  height: 20px;
+  color: #000 !important;
+}
+
+.button .text-icon {
+  width: 14px;
+  height: 14px;
+  color: #000 !important;
+}
+
+/* GitHub Stars Styles */
+:deep(.nav-github-stars) {
+  display: flex;
+  align-items: center;
+}
+
+:deep(.nav-github-stars .github-stars-link) {
+  color: #000 !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+:deep(.nav-github-stars .github-stars-link:hover) {
+  opacity: 0.7;
+}
+
+:deep(.nav-github-stars .github-stars-wrapper) {
+  padding-left: 0 !important;
 }
 
 /* Lang Switcher */
 .lang-switch-wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .lang-dropdown {
@@ -917,8 +1294,8 @@ a {
 }
 
 .buy-btn {
-  background: var(--vp-c-brand-1);
-  color: white;
+  background: #000;
+  color: #fff !important;
   padding: 4px 12px;
   border-radius: 980px;
   font-size: 12px;
@@ -927,7 +1304,7 @@ a {
 }
 
 .buy-btn:hover {
-  background: var(--vp-c-brand-2);
+  background: #333;
   transform: scale(1.02);
 }
 
@@ -1155,6 +1532,171 @@ a {
   opacity: 0.5;
 }
 
+/* Appendix Horizontal Scroll */
+.appendix-scroll-wrapper {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  margin: 0 -20px;
+  padding: 0 20px;
+  scrollbar-width: none;
+}
+
+.appendix-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.appendix-track {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
+  gap: 32px 24px;
+  width: max-content;
+  padding-bottom: 10px;
+}
+
+.appendix-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none !important;
+  color: inherit !important;
+  background: transparent;
+  padding: 0;
+  border: none;
+  scroll-snap-align: start;
+  width: 100%;
+}
+
+/* Slider Controls */
+.appendix-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.control-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--vp-c-bg-soft);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--vp-c-text-1);
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  background: var(--vp-c-bg-mute);
+  transform: scale(1.05);
+}
+
+.indicator-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 6px 12px;
+  border-radius: 20px;
+  height: 44px;
+}
+
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--vp-c-text-3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity: 0.5;
+}
+
+.indicator-dot.active {
+  width: 32px;
+  background: var(--vp-c-text-1);
+  opacity: 1;
+}
+
+.indicator-dot:hover {
+  opacity: 0.8;
+}
+
+/* Remove hover effects */
+.appendix-card:hover {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.appendix-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 17.5px; /* Apple continuous curve approximation */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 16px;
+  /* Glassmorphism / VisionOS Style */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  /* No transition */
+}
+
+/* Remove hover effects on icon */
+.appendix-card:hover .appendix-icon-wrapper {
+  /* No transform or shadow change */
+}
+
+/* Transparent Tinted Gradients for icons (VisionOS Style) */
+/* AI - Blue */
+.icon-0 { 
+  background: linear-gradient(180deg, rgba(0, 122, 255, 0.16) 0%, rgba(0, 122, 255, 0.06) 100%);
+  border: 1px solid rgba(0, 122, 255, 0.15);
+}
+/* Frontend - Orange */
+.icon-1 { 
+  background: linear-gradient(180deg, rgba(255, 149, 0, 0.16) 0%, rgba(255, 149, 0, 0.06) 100%);
+  border: 1px solid rgba(255, 149, 0, 0.15);
+}
+/* Backend - Pink */
+.icon-2 { 
+  background: linear-gradient(180deg, rgba(255, 45, 85, 0.16) 0%, rgba(255, 45, 85, 0.06) 100%);
+  border: 1px solid rgba(255, 45, 85, 0.15);
+}
+/* General - Green */
+.icon-3 { 
+  background: linear-gradient(180deg, rgba(52, 199, 89, 0.16) 0%, rgba(52, 199, 89, 0.06) 100%);
+  border: 1px solid rgba(52, 199, 89, 0.15);
+}
+
+.appendix-content {
+  text-align: left;
+}
+
+.appendix-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.appendix-title {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-right: 6px;
+  font-size: 13px;
+}
+
 /* Footer */
 .footer-callout {
   text-align: center;
@@ -1166,6 +1708,7 @@ a {
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 /* Responsive */

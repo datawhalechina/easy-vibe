@@ -223,12 +223,32 @@ watch(lineHeight, (next) => {
   font-size: 18px;
   font-weight: 500;
   white-space: pre-wrap;
-  color: var(--vp-c-text-2);
+  color: #000000;
   min-height: 28px;
   display: flex;
-  /* 确保左对齐 */
-  text-align: left;
-  justify-content: flex-start;
+  /* 居中对齐 */
+  text-align: center;
+  justify-content: center;
+}
+
+/* 强制 HomeHero 内容居中 */
+.VPHomeHero .container {
+  text-align: center;
+}
+.VPHomeHero .main {
+  margin: 0 auto;
+}
+.VPHomeHero .name,
+.VPHomeHero .text {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.VPHomeHero .text {
+  color: #000000 !important;
+}
+.VPHomeHero .actions {
+  justify-content: center;
 }
 
 @media (min-width: 640px) {
