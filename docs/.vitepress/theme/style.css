@@ -328,3 +328,15 @@
 .section-container {
   scroll-margin-top: 80px;
 }
+
+/* Home Hero Full Screen */
+.VPHomeHero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--vp-nav-height, 64px) !important;
+  padding-bottom: 18vh !important;
+  box-sizing: border-box;
+}
