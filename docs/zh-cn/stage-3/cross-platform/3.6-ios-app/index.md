@@ -1,4 +1,4 @@
-如何构建一个最简单的 iOS App
+# 如何构建iOS程序-SwiftUI原生开发
 
 ## 第 1 章：什么是 iOS App 和 iOS App 开发
 
@@ -111,7 +111,18 @@ iOS 应用只能在 macOS 系统上进行开发和编译，这是 Apple 平台�
 
 ![](images/image9.png)
 
-完成以上步骤后，这台 iPhone 即可用于后续的真机调试和应用安装。该设置只需开启一次。
+如果你的 iPhone 之前从未连接过 Xcode 或其他开发工具，可能会出现「在『隐私与安全』中找不到开发者模式」的情况。这并不是系统问题，而是因为开发者模式尚未被系统激活。
+
+此时可以通过以下方式触发开发者模式的显示：
+
+1. 打开「设置」→「隐私与安全」→「分析与改进」
+2. 打开「与开发者共享」
+3. 返回上一级设置页面，再次进入「隐私与安全」，向下滑动到页面底部
+4. 此时即可看到「开发者模式」选项，按提示开启并重启设备
+
+完成以上操作后，开发者模式只需开启一次，后续使用 Xcode 进行真机调试时无需重复配置。
+
+![](images/image10.png)
 
 ### 2.2 必须安装的软件
 
@@ -121,17 +132,17 @@ iOS 应用只能在 macOS 系统上进行开发和编译，这是 Apple 平台�
 
 Xcode 是 Apple 官方提供的 iOS 开发工具。在本教程中，它主要用于创建 iOS 项目、编译 Swift / SwiftUI 代码，以及将应用运行到模拟器或真机上。
 
-![](images/image10.png)
+![](images/image11.png)
 
 Xcode 可以直接在 App Store 中搜索并安装。安装完成后，首次打开会看到欢迎界面，后续创建项目将从这里开始。
 
-![](images/image11.png)
+![](images/image12.png)
 
 #### 2.2.2 Trae
 
 Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项目放在 Trae 中，通过对话的方式与 AI 协作完成开发。
 
-![](images/image12.png)
+![](images/image13.png)
 
 ### 2.3 Apple ID 与开发调试说明
 
@@ -157,7 +168,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 打开 Xcode。在欢迎界面中，选择创建一个新项目。
 
-![](images/image13.png)
+![](images/image14.png)
 
 点击  **Create new project** ，进入项目模板选择界面。
 
@@ -168,7 +179,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 1. Platform：iOS
 2. Application 类型：App
 
-![](images/image14.png)
+![](images/image15.png)
 
 点击  **Next** ，进入项目信息配置。
 
@@ -184,17 +195,17 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 6. Storage：选择 Core Data（用于后续保存历史数据）
 7. 其他选项保持默认
 
-![](images/image15.png)
+![](images/image16.png)
 
 点击  **Next** ，选择项目存放位置。
 
-![](images/image16.png)
+![](images/image17.png)
 
 ### 3.4 项目创建完成后的结构认识
 
 项目创建完成后，Xcode 会自动打开工程。此时不需要理解所有文件，只需要认识几个关键点。
 
-![](images/image17.png)
+![](images/image18.png)
 
 在默认工程中，你会看到：
 
@@ -210,13 +221,13 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 在 Xcode 顶部工具栏中，保持默认的 iPhone 模拟器选项，点击左上角的 ▶︎ **Run** 按钮。
 
-![](images/image18.png)
-
 ![](images/image19.png)
+
+![](images/image20.png)
 
 如果一切正常，模拟器中会显示一个可以正常启动的空白 App。首次编译时间可能较长，后续章节中我们会通过 HTML 原型的方式减少编译等待。
 
-![](images/image20.png)
+![](images/image21.png)
 
 如需停止运行，点击 ▶︎ 按钮旁边的 **Stop** 即可。
 
@@ -236,7 +247,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 你需要做的只是：**用 Trae 打开刚刚创建的 iOS 项目文件夹。**
 
-![](images/image21.png)
+![](images/image22.png)
 
 ## 第 4 章：AI 辅助开发实战 —— 从零打造「冰箱大厨（FridgeChef）」
 
@@ -278,7 +289,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 生成完成后，简单浏览一遍文档，确认功能点是否符合你的预期即可。
 
-![](images/image22.png)
+![](images/image23.png)
 
 ### 4.2 第二阶段：视觉原型
 
@@ -309,7 +320,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 生成完成后，在文件列表中找到 `index.html`，直接在浏览器中打开。
 
-![](images/image23.png)
+![](images/image24.png)
 
 此时的重点不是细节是否完美，而是判断：**页面结构是否合理、主要元素是否齐全、整体方向是否正确。**
 
@@ -322,7 +333,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 1. 将 `index.html` 文件（或浏览器截图）上传到 Trae
 2. 告诉 AI 参考该文件，生成 SwiftUI 代码
 
-📋 **复制** **指令**  **（Prompt）** ：
+📋  **复制指令（Prompt）** ：
 
 ```Plain
 【已上传 index.html】
@@ -340,26 +351,26 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 完成后，打开 Xcode 运行模拟器，你会看到一个已经具备完整视觉结构的原生 App。
 
-![](images/image24.png)
+![](images/image25.png)
 
 ### 4.4 第四阶段：接入 AI API
 
 界面完成后，App 仍然只是一个展示层。接下来需要接入真实的 AI 能力，本教程使用的是 **SiliconFlow（硅基流动）** 提供的大模型服务：
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](images/image25.png)
+![](images/image26.png)
 
 SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地在 iOS 项目中通过标准网络请求进行调用。
 
-![](images/image26.png)
+![](images/image27.png)
 
 在开始之前，你需要在官网注册账号并创建一个 API Key。
 
-![](images/image27.png)
+![](images/image28.png)
 
 该 Key 将用于后续的模型调用。
 
-📋 **复制** **指令**  **（Prompt）** ：
+📋  **复制指令（Prompt）** ：
 
 ```Plain
 现在我们要接入 AI 能力。
@@ -390,7 +401,7 @@ SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地�
 1. 打开 `FridgeChef.xcdatamodeld`
 2. 新建 Entity，命名为 `RecipeEntity`
 
-![](images/image28.png)
+![](images/image29.png)
 
 3. 添加属性：
    1. `id`: **UUID**
@@ -400,11 +411,11 @@ SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地�
    5. `desc`: **String**
    6. `timestamp`: **Date**
    7. `colorIndex`: **Integer 16**
-      ![](images/image29.png)
+      ![](images/image30.png)
 
 **第二步：让 AI 编写逻辑代码**
 
-📋 **复制** **指令**  **（Prompt）** ：
+📋  **复制指令（Prompt）** ：
 
 ```Plain
 我已经完成了 Core Data 的 Entity 配置。
@@ -422,7 +433,7 @@ Entity：RecipeEntity
 
 最后一步，是为 App 准备一个正式的图标。这里使用 **Lovart** 生成图标素材：[https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](images/image30.png)![](images/image31.png)
+![](images/image31.png)![](images/image32.png)
 
 📋  **复制到 Lovart 的 Prompt** ：
 
@@ -436,15 +447,15 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 生成后，将图片裁剪为 1024×1024，拖入 Xcode 的 `Assets.xcassets` → `AppIcon` 中。
 
-![](images/image32.png)
-
 ![](images/image33.png)
 
 ![](images/image34.png)
 
+![](images/image35.png)
+
 重新运行 App，你会看到一个完整、可识别的真实 iOS 应用。
 
-![](images/image35.png)
+![](images/image36.png)
 
 ### 4.7 第七阶段：体验进阶
 
@@ -470,7 +481,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 生成完成后，在浏览器中打开这个 HTML 文件。
 
-![](images/image36.png)
+![](images/image37.png)
 
 当 HTML 版本已经定稿，就可以开始修改 iOS 项目。
 
@@ -500,7 +511,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 * 视觉风格发生了明显变化
 * 应用整体质感显著提升
 
-![](images/image37.png)
+![](images/image38.png)
 
 ## 第 5 章：运行、调试与错误处理
 
@@ -517,17 +528,17 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 将 iPhone 通过数据线连接到 Mac。
 
-![](images/image38.png)
+![](images/image39.png)
 
 首次连接时，手机会弹出「是否信任此电脑」，选择信任并输入解锁密码。
 
-![](images/image39.png)
+![](images/image40.png)
 
 在 Xcode 的设备列表中，选择你的 iPhone，然后再次点击 ▶️ Run。
 
 此时，你应该可以在手机桌面看到「冰箱大厨」的图标，并且可以正常打开和使用。
 
-![](images/image40.png)
+![](images/image41.png)
 
 这一步，标志着一次完整的 iOS 开发闭环已经完成。
 
@@ -546,7 +557,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 4. **逻辑错误**
    程序不崩，但行为不符合预期，例如按钮无响应、数据未刷新。
 
-![](images/image41.png)
+![](images/image42.png)
 
 当出现任何错误，只需 **把完整的报错信息，原样复制进 Trae 的对话框。** Trae 会在理解项目上下文的前提下，帮你完成Debug工作。
 
@@ -588,7 +599,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
   `"Device Locked"`
 * 已点击“信任”，但 Xcode 仍然卡住
 
-![](images/image42.png)
+![](images/image43.png)
 
 **原因说明：**
 
@@ -613,7 +624,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 * 系统提示
   “不受信任的开发者（Untrusted Developer）”
 
-![](images/image43.png)
+![](images/image44.png)
 
 **原因说明：**
 
@@ -627,7 +638,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 4. 在“开发者 App”中找到你的 Apple ID
 5. 点击  **信任** ，并再次确认
 
-![](images/image44.png)
+![](images/image45.png)
 
 完成后，回到桌面重新点击 App，即可正常运行。
 
@@ -637,7 +648,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 如果你希望进一步将 App 正式发布到  **Apple App Store** ，让所有用户都能下载使用，则需要进入一套更正式的发布流程。由于该流程涉及付费账号、审核规范与合规要求，且并非本教程的实践重点，下面内容仅作为 **整体参考与路径指引** 。
 
-![](images/image45.png)
+![](images/image46.png)
 
 > 以下内容参考了 Apple 官方审核要求以及公开讨论（包括知乎原创经验分享）。链接见附录。※如果链接失效，可搜索相关标题或关键词查阅原始内容。
 
@@ -705,7 +716,7 @@ Apple 会从以下几个方面审核 App：
 
 ## 第7章：总结
 
-![](images/image46.png)
+![](images/image47.png)
 
 Congrats! 到这里你已经把完整的i0S App开发流程从0到1亲手走了一遍。从把环境搭好、跑起项目，再到界面、功能、数据、真机运行一步步落地，中间步骤都顺利完成了，很棒哦! 更重要的是，你不是通过死背Swift语法走到这一步，而是把一切交给AI~  不管你是什么专业，每一次的尝试都只会让你更快更顺，你发现i0S开发也不是那么困难，哪怕一行代码都不会写，也能实现自己的应用。
 
