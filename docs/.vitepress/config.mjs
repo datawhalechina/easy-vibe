@@ -445,11 +445,11 @@ export default defineConfig({
                   link: '/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
                 },
                 {
-                  text: '高级五：如何构建安卓程序',
+                  text: '高级五：如何构建安卓程序-compose 原生开发',
                   link: '/zh-cn/stage-3/cross-platform/3.5-android-app/'
                 },
                 {
-                  text: '高级六：如何构建 iOS 程序',
+                  text: '高级六：如何构建 iOS 程序-swiftUI原生开发',
                   link: '/zh-cn/stage-3/cross-platform/3.6-ios-app/'
                 }
               ]
