@@ -70,13 +70,13 @@ const i18n = {
       start: '开始学习'
     },
     stage1: {
-      cat: 'Stage 1 · 产品经理',
+      cat: 'Stage 1 · 新手与产品原型',
       title: '零基础入门，<br><span class="highlight">做自己的产品经理。</span>',
       sub: '不需要计算机专业背景，只要会说话，就能通过 AI 将你的创意转化为高保真的 Web 原型。',
       cards: [
-        { title: 'AI 产品经理', desc: '从想法到高保真原型，你只需要会说话。', sub: '适合非技术背景', link: '/zh-cn/stage-0/0.1-learning-map/' },
-        { title: '游戏化入门', desc: '通过制作贪吃蛇、俄罗斯方块，打破对代码的恐惧。', sub: '边玩边学', link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/' },
-        { title: 'Vibe Coding', desc: '掌握 AI 时代的编程核心：提示词工程与上下文管理。', sub: '核心心法', link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/' }
+        { title: 'AI 产品经理', desc: '从想法到高保真原型，你只需要会说话。', sub: '适合非技术背景', link: '/zh-cn/stage-0/' },
+        { title: '游戏化入门', desc: '通过制作贪吃蛇、俄罗斯方块，打破对代码的恐惧。', sub: '边玩边学', link: '/zh-cn/stage-0/' },
+        { title: 'Vibe Coding', desc: '掌握 AI 时代的编程核心：提示词工程与上下文管理。', sub: '核心心法', link: '/zh-cn/stage-0/' }
       ]
     },
     stage2: {
@@ -121,7 +121,7 @@ const i18n = {
     },
     footer: {
       title: '你的想法，<br>此刻上线。',
-      desc: '从灵感到现实，只差这一个开始。',
+      desc: '灵感到现实，何不从现在开始。',
       btn: '>_ Start'
     }
   },
@@ -136,7 +136,7 @@ const i18n = {
       start: 'Start Learning'
     },
     stage1: {
-      cat: 'Stage 1 · Product Manager',
+      cat: 'Stage 1 · Novice & PM',
       title: 'Zero to Hero, <br><span class="highlight">Be Your Own PM.</span>',
       sub: 'No CS background needed. Just speak your idea, and AI will turn it into high-fidelity web prototypes.',
       cards: [
@@ -202,7 +202,7 @@ const i18n = {
       start: '学習を開始'
     },
     stage1: {
-      cat: 'Stage 1 · プロダクトマネージャー',
+      cat: 'Stage 1 · 初心者とPM',
       title: 'ゼロからの入門、<br><span class="highlight">自分だけのPMになる。</span>',
       sub: 'CSの背景は不要。アイデアを話すだけで、AIが高精度のWebプロトタイプに変換します。',
       cards: [
@@ -260,7 +260,7 @@ const i18n = {
       start: '開始學習'
     },
     stage1: {
-      cat: 'Stage 1 · 產品經理',
+      cat: 'Stage 1 · 新手與產品原型',
       title: '零基礎入門，<br><span class="highlight">做自己的產品經理。</span>',
       sub: '不需要計算機專業背景，只要會說話，就能通過 AI 將你的創意轉化為高保真的 Web 原型。',
       cards: [
@@ -318,7 +318,7 @@ const i18n = {
       start: '학습 시작'
     },
     stage1: {
-      cat: 'Stage 1 · 제품 관리자',
+      cat: 'Stage 1 · 초보자 & PM',
       title: '제로 베이스 입문,<br><span class="highlight">나만의 PM이 되다.</span>',
       sub: 'CS 배경지식이 없어도 괜찮습니다. 아이디어를 말하기만 하면 AI가 고품질 웹 프로토타입으로 변환해줍니다.',
       cards: [
@@ -376,7 +376,7 @@ const i18n = {
       start: 'Empezar'
     },
     stage1: {
-      cat: 'Stage 1 · Gerente de Producto',
+      cat: 'Stage 1 · Principiante y PM',
       title: 'De Cero a Héroe,<br><span class="highlight">Sé tu propio PM.</span>',
       sub: 'No necesitas experiencia en CS. Solo di tu idea y la IA la convertirá en prototipos web de alta fidelidad.',
       cards: [
@@ -434,7 +434,7 @@ const i18n = {
       start: 'Commencer'
     },
     stage1: {
-      cat: 'Stage 1 · Chef de Produit',
+      cat: 'Stage 1 · Débutant & PM',
       title: 'De Zéro à Héros,<br><span class="highlight">Soyez votre propre PM.</span>',
       sub: 'Pas besoin de background CS. Parlez juste de votre idée, et l\'IA la transformera en prototypes web haute fidélité.',
       cards: [
@@ -492,7 +492,7 @@ const i18n = {
       start: 'Starten'
     },
     stage1: {
-      cat: 'Stage 1 · Produktmanager',
+      cat: 'Stage 1 · Anfänger & PM',
       title: 'Von Null auf Hundert,<br><span class="highlight">Sei dein eigener PM.</span>',
       sub: 'Kein CS-Hintergrund nötig. Sprich einfach deine Idee aus, und KI verwandelt sie in High-Fidelity-Web-Prototypen.',
       cards: [
@@ -608,7 +608,7 @@ const i18n = {
       start: 'Bắt đầu học'
     },
     stage1: {
-      cat: 'Stage 1 · Quản lý sản phẩm',
+      cat: 'Stage 1 · Người mới & PM',
       title: 'Từ số 0 đến Hero,<br><span class="highlight">Tự làm PM cho chính mình.</span>',
       sub: 'Không cần nền tảng CS. Chỉ cần nói ra ý tưởng, AI sẽ biến nó thành nguyên mẫu web độ trung thực cao.',
       cards: [
@@ -967,24 +967,16 @@ const appendixCards = [
         <p class="section-sub">{{ t.stage1.sub }}</p>
       </div>
 
-      <div class="bento-grid">
-        <a :href="withBase(t.stage1.cards[0].link)" class="bento-item large" :style="{ background: stage1Cards[0].color }">
-          <div class="card-content">
-            <span class="card-icon">{{ stage1Cards[0].icon }}</span>
-            <h4>{{ t.stage1.cards[0].title }}</h4>
-            <p>{{ t.stage1.cards[0].desc }}</p>
-            <span class="card-sub">{{ t.stage1.cards[0].sub }}</span>
+      <div class="feature-grid">
+        <a v-for="(card, i) in stage1Cards" :key="i" :href="withBase(t.stage1.cards[i].link)" class="feature-card glass">
+          <div class="feature-icon" :style="{ background: card.color }">
+            {{ card.icon }}
+          </div>
+          <div class="feature-content">
+            <h4>{{ t.stage1.cards[i].title }}</h4>
+            <p>{{ t.stage1.cards[i].desc }}</p>
           </div>
         </a>
-        <div class="bento-column">
-          <a v-for="(card, i) in stage1Cards.slice(1)" :key="i" :href="withBase(t.stage1.cards[i+1].link)" class="bento-item small" :style="{ background: card.color }">
-            <div class="card-content">
-              <span class="card-icon">{{ card.icon }}</span>
-              <h4>{{ t.stage1.cards[i+1].title }}</h4>
-              <p>{{ t.stage1.cards[i+1].desc }}</p>
-            </div>
-          </a>
-        </div>
       </div>
     </section>
 
@@ -1736,5 +1728,87 @@ a {
 /* Global layout fix for fixed nav */
 .VPHome {
   padding-top: 52px !important;
+}
+</style>
+
+<style scoped>
+/* Feature Grid (Apple Store Style) */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: var(--vp-c-bg-soft);
+  border-radius: 18px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none !important;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dark .feature-card {
+  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--vp-c-bg-mute);
+}
+
+.feature-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.feature-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-content h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--vp-c-text-1);
+  line-height: 1.3;
+}
+
+.feature-content p {
+  font-size: 15px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 960px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .feature-card {
+    padding: 24px;
+  }
 }
 </style>

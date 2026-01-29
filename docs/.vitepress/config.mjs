@@ -311,7 +311,7 @@ export default defineConfig({
         nav: [
           { text: '首页', link: '/zh-cn/' },
           {
-            text: '产品经理',
+            text: '新手与产品原型',
             link: '/zh-cn/stage-0/'
           },
           {
@@ -669,7 +669,7 @@ export default defineConfig({
         nav: [
           { text: 'Home', link: '/en-us/' },
           {
-            text: 'Product Manager',
+            text: 'Novice & PM',
             link: '/en-us/stage-0/'
           },
           {
@@ -709,7 +709,7 @@ export default defineConfig({
         nav: [
           { text: 'ホーム', link: '/ja-jp/' },
           {
-            text: 'AI プロダクトマネージャー',
+            text: '初心者とPM',
             link: '/ja-jp/stage-0/'
           },
           {
@@ -747,7 +747,7 @@ export default defineConfig({
         nav: [
           { text: '首頁', link: '/zh-tw/' },
           {
-            text: '產品經理',
+            text: '新手與產品原型',
             link: '/zh-tw/stage-0/'
           },
           {
@@ -783,7 +783,7 @@ export default defineConfig({
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: 'AI PM', link: '/ko-kr/stage-0/' },
+          { text: '초보자 & PM', link: '/ko-kr/stage-0/' },
           {
             text: '풀스택 개발',
             link: '/ko-kr/stage-2/'
@@ -818,7 +818,7 @@ export default defineConfig({
         nav: [
           { text: 'Inicio', link: '/es-es/' },
           {
-            text: 'PM de IA',
+            text: 'Principiante y PM',
             link: '/es-es/stage-0/'
           },
           {
@@ -854,7 +854,7 @@ export default defineConfig({
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'PM IA', link: '/fr-fr/stage-0/' },
+          { text: 'Débutant & PM', link: '/fr-fr/stage-0/' },
           {
             text: 'Développement Full Stack',
             link: '/fr-fr/stage-2/'
@@ -888,7 +888,7 @@ export default defineConfig({
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'KI-PM', link: '/de-de/stage-0/' },
+          { text: 'Anfänger & PM', link: '/de-de/stage-0/' },
           {
             text: 'Full Stack Entwicklung',
             link: '/de-de/stage-2/'
@@ -923,7 +923,7 @@ export default defineConfig({
         nav: [
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
-            text: 'مدير منتج AI',
+            text: 'مبتدأ & PM',
             link: '/ar-sa/stage-0/'
           },
           {
@@ -960,7 +960,7 @@ export default defineConfig({
         nav: [
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
-            text: 'PM AI',
+            text: 'Người mới & PM',
             link: '/vi-vn/stage-0/'
           },
           {

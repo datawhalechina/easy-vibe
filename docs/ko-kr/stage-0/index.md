@@ -7,13 +7,13 @@ Welcome to the AI Product Manager stage. Here, you will start from scratch and m
 ### Getting Started
 Suitable for product, operations, and non-technical backgrounds. Understand AI programming logic through games and build confidence.
 
-- [1. Learning Map](/ko-kr/stage-0/0.1-learning-map/)
-- [2. If you can speak, you can code](/ko-kr/stage-0/0.2-ai-capabilities-through-games/)
+- 1. Learning Map (Coming Soon)
+- 2. If you can speak, you can code (Coming Soon)
 
 ### Product Manager
 Master the Vibe Coding workflow. Learn to break down requirements and independently complete high-fidelity web application prototypes.
 
-- [1. Introduction to AI IDE](/ko-kr/stage-1/1.1-introduction-to-ai-ide/)
-- [2. Building a Prototype](/ko-kr/stage-1/1.2-building-prototype/)
-- [3. Integrating AI Capabilities](/ko-kr/stage-1/1.3-integrating-ai-capabilities/)
-- [4. Complete Project Practice](/ko-kr/stage-1/1.4-complete-project-practice/)
+- 1. Introduction to AI IDE (Coming Soon)
+- 2. Building a Prototype (Coming Soon)
+- 3. Integrating AI Capabilities (Coming Soon)
+- 4. Complete Project Practice (Coming Soon)

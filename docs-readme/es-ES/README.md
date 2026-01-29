@@ -53,8 +53,7 @@ Cuando intentas escribir código con IA, encuentras errores constantes, a menudo
 
 Este tutorial está específicamente diseñado para llevarte de 0 a 1, dominando progresivamente las técnicas de Vibe Coding:
 
-- **Etapa 0**: **Introducción rápida a través de mini juegos** para adquirir habilidades de Vibe Coding
-- **Etapa 1**: Desde la perspectiva de un product manager, **habilidades de Vibe Coding y comprensión del negocio**, implementando un prototipo de aplicación web
+- **Etapa 1**: **De mini juegos a prototipos web**, dominar los conceptos básicos de programación de IA y pensamiento de producto
 - **Etapa 2**: Aprender **desarrollo frontend/backend y capacidades de IA** relacionadas con técnicas de Vibe Coding, completando una aplicación completa
 - **Etapa 3**: Dominar la construcción de **aplicaciones complejas multiplataforma**, avanzando hacia aplicaciones de nivel de producción
 
@@ -76,17 +75,12 @@ Creemos que al dominar Vibe Coding y combinarlo con entrenamiento sistemático, 
 
 [Diccionario de capacidades de IA: conceptos centrales comunes de IA, términos y explicaciones de escenarios](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
-### 0. Jardín de Infancia
+### 1. Entrada de Novatos y Prototipo de Producto
 
 | Capítulo                                                                                                                            | Contenido clave                                                                                  | Estado |
 | :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :----- |
 | [Prólogo: Mapa de aprendizaje](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                        | Guía general de la ruta de aprendizaje                                                           | ✅     |
 | [Principiante 1: La era de la IA, si puedes hablar puedes programar](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experimentar por primera vez las capacidades de programación con IA a través de casos como Snake | ✅     |
-
-### 1. Product Manager de IA
-
-| Capítulo                                                                                                                  | Contenido clave                                                                                                          | Estado |
-| :------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------- | :----- |
 | [Principiante 2: Conociendo herramientas de IDE de IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)            | Aprender a usar el IDE, crear mini juegos localmente                                                                     | ✅     |
 | [Principiante 3: Haz un prototipo tú mismo](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                           | Análisis de requisitos, generación de una sola página con IA, hasta generar prototipos de productos de múltiples páginas | ✅     |
 | [Principiante 4: Añade capacidades de IA al prototipo](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)       | Aprender a conectar capacidades comunes de IA (texto, imagen, video)                                                     | ✅     |

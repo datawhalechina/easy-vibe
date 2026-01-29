@@ -53,8 +53,7 @@ Wenn du versuchst, mit KI Code zu schreiben, ständig auf Fehler stößt, oft au
 
 Dieses Tutorial ist speziell dafür konzipiert, dich von 0 auf 1 zu bringen und Vibe Coding-Techniken schrittweise zu meistern:
 
-- **Stufe 0**: **Schneller Einstieg über Mini-Spiele** zum Erwerb von Vibe Coding-Fähigkeiten
-- **Stufe 1**: Aus der Perspektive eines Product Managers, **Vibe Coding-Fähigkeiten und Geschäftsverständnis**, Implementierung eines Web-App-Prototyps
+- **Stufe 1**: **Von Mini-Spielen zu Web-Prototypen**, Beherrschung von KI-Programmiergrundlagen und Produktdenken
 - **Stufe 2**: Lernen von **Frontend/Backend-Entwicklung und KI-Fähigkeiten** im Zusammenhang mit Vibe Coding-Techniken, Vervollständigung einer kompletten Anwendung
 - **Stufe 3**: Beherrschung des Baus von **plattformübergreifenden komplexen Anwendungen**, hin zu produktionsreifen Anwendungen
 
@@ -76,17 +75,12 @@ Wir glauben, dass durch die Beherrschung von Vibe Coding in Kombination mit syst
 
 [KI-Fähigkeitslexikon: gängige KI-Kernkonzepte und Begriffe, Szenario-Erklärungen](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
-### 0. Kindergarten
+### 1. Anfängereinstieg und Produktprototyp
 
 | Kapitel                                                                                                                                     | Schlüsselinhalt                                                     | Status |
 | :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------ | :----- |
 | [Vorwort: Lernkarte](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                                          | Gesamtführung durch den Lernpfad                                    | ✅     |
 | [Anfänger 1: KI-Zeitalter, wenn du sprechen kannst, kannst du programmieren](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Erste Erfahrung mit KI-Programmierfähigkeiten durch Fälle wie Snake | ✅     |
-
-### 1. KI-Produktmanager
-
-| Kapitel                                                                                                                       | Schlüsselinhalt                                                                                     | Status |
-| :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- | :----- |
 | [Anfänger 2: KI-IDE-Tools kennenlernen](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                               | IDE-Nutzung lernen, lokal Mini-Spiele erstellen                                                     | ✅     |
 | [Anfänger 3: Einen Prototyp selbst bauen](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                 | Anforderungsanalyse, KI-generierte Einzelseite, bis zu Generierung von Mehrseiten-Produktprototypen | ✅     |
 | [Anfänger 4: KI-Fähigkeiten zum Prototyp hinzufügen](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)             | Verbindung gängiger KI-Fähigkeiten (Text, Bild, Video) lernen                                       | ✅     |
