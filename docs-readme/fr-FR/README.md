@@ -53,8 +53,7 @@ Quand vous essayez d'écrire du code avec l'IA, vous rencontrez des erreurs cons
 
 Ce tutoriel est spécialement conçu pour vous mener de 0 à 1, maîtrisant progressivement les techniques de Vibe Coding :
 
-- **Étape 0** : **Introduction rapide par des mini-jeux** pour acquérir les compétences de Vibe Coding
-- **Étape 1** : Du point de vue d'un product manager, **compétences de Vibe Coding et compréhension des métiers**, implémentation d'un prototype d'application web
+- **Étape 1** : Des **mini-jeux aux prototypes web**, maîtriser les bases de la programmation IA et la pensée produit
 - **Étape 2** : Apprendre le **développement frontend/backend et les capacités d'IA** liées aux techniques de Vibe Coding, compléter une application complète
 - **Étape 3** : Maîtriser la construction d'**applications complexes multiplateformes**, vers des applications de niveau production
 
@@ -76,17 +75,12 @@ Nous croyons qu'en maîtrisant Vibe Coding et en le combinant avec un entraînem
 
 [Dictionnaire des capacités IA : concepts centraux IA courants, termes et explications de scénarios](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
-### 0. Maternelle
+### 1. Entrée débutant et prototype de produit
 
 | Chapitre                                                                                                                           | Contenu clé                                                                                     | Statut |
 | :--------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- | :----- |
 | [Préface : Carte d'apprentissage](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                    | Guide général du parcours d'apprentissage                                                       | ✅     |
 | [Débutant 1 : L'ère de l'IA, savoir parler c'est savoir programmer](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Découvrir pour la première fois les capacités de programmation IA à travers des cas comme Snake | ✅     |
-
-### 1. Product Manager IA
-
-| Chapitre                                                                                                                     | Contenu clé                                                                                                      | Statut |
-| :--------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :----- |
 | [Débutant 2 : Découvrir les outils IDE IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                           | Apprendre à utiliser l'IDE, créer des mini-jeux localement                                                       | ✅     |
 | [Débutant 3 : Créer un prototype soi-même](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                               | Analyse des besoins, génération d'une seule page par l'IA, jusqu'à générer des prototypes de produits multipages | ✅     |
 | [Débutant 4 : Ajouter des capacités IA au prototype](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | Apprendre à connecter des capacités IA courantes (texte, image, vidéo)                                           | ✅     |

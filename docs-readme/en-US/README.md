@@ -56,8 +56,7 @@ When you try to write code with AI, encounter constant errors, often want to giv
 
 This tutorial is specifically designed to take you from 0 to 1, progressively mastering Vibe Coding techniques:
 
-- **Stage 0**: Get started with **vibe coding skills through simple games**
-- **Stage 1**: **Vibe coding skills and business understanding** from a product manager perspective, implementing web application prototypes
+- **Stage 1**: From **Games to Web Prototypes**, mastering AI programming basics and product thinking
 - **Stage 2**: Learn **frontend/backend development and AI capabilities** related vibe coding techniques, complete full applications
 - **Stage 3**: Master **multi-platform complex application** construction solutions, moving towards production-grade applications
 
@@ -79,17 +78,12 @@ We believe that by mastering Vibe Coding combined with systematic training, one 
 
 [AI Capability Dictionary: Common AI Core Concepts, Terminology, and Scenario Explanations](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
-### Stage 0: Kindergarten
+### Stage 1: Novice Entry & Product Prototype
 
 | Chapter                                                                                                           | Key Content                                                          | Status |
 | :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------- | :----- |
 | [Preface: Learning Map](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                             | Overall learning path overview                                       | ✅     |
 | [Primary 1: Programming by Speaking in the AI Era](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experience AI programming capabilities through Snake and other cases | ✅     |
-
-### Stage 1: AI Product Manager
-
-| Chapter                                                                                                                   | Key Content                                                                         | Status |
-| :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------- | :----- |
 | [Primary 2: Understanding AI IDE Tools](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                           | Learn to use IDE, create small games locally                                        | ✅     |
 | [Primary 3: Building Prototypes Hands-On](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                             | From requirement analysis, AI-generated single page to multi-page product prototype | ✅     |
 | [Primary 4: Adding AI Capabilities to Prototypes](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | Learn to integrate common AI capabilities (text, image, video)                      | ✅     |
