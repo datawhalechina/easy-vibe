@@ -19,9 +19,7 @@
             <div class="example-item">• 获取文章列表</div>
           </div>
         </div>
-        <div class="method-tip">
-          💡 可以安全重试，不会改变服务器数据
-        </div>
+        <div class="method-tip">💡 可以安全重试，不会改变服务器数据</div>
       </div>
 
       <div class="method-card post">
@@ -35,9 +33,7 @@
             <div class="example-item">• 发表评论</div>
           </div>
         </div>
-        <div class="method-tip">
-          ⚠️ 不能随意重试，可能会重复创建
-        </div>
+        <div class="method-tip">⚠️ 不能随意重试，可能会重复创建</div>
       </div>
 
       <div class="method-card put">
@@ -50,9 +46,7 @@
             <div class="example-item">• 更换文章全部内容</div>
           </div>
         </div>
-        <div class="method-tip">
-          ⚠️ 会覆盖整个资源，需要提供完整数据
-        </div>
+        <div class="method-tip">⚠️ 会覆盖整个资源，需要提供完整数据</div>
       </div>
 
       <div class="method-card patch">
@@ -65,9 +59,7 @@
             <div class="example-item">• 更新文章标题</div>
           </div>
         </div>
-        <div class="method-tip">
-          💡 只传需要修改的字段，更灵活
-        </div>
+        <div class="method-tip">💡 只传需要修改的字段，更灵活</div>
       </div>
 
       <div class="method-card delete">
@@ -81,9 +73,7 @@
             <div class="example-item">• 删除评论</div>
           </div>
         </div>
-        <div class="method-tip">
-          ⚠️ 操作不可逆，删除后无法恢复
-        </div>
+        <div class="method-tip">⚠️ 操作不可逆，删除后无法恢复</div>
       </div>
     </div>
 
@@ -136,7 +126,10 @@
     <div class="tips">
       <p><strong>💡 新手建议：</strong></p>
       <ul>
-        <li>先学会 <strong>GET</strong>（查询）和 <strong>POST</strong>（创建）就够用了</li>
+        <li>
+          先学会 <strong>GET</strong>（查询）和
+          <strong>POST</strong>（创建）就够用了
+        </li>
         <li>PUT/PATCH/DELETE 可以慢慢学，理解原理更重要</li>
         <li>实际开发中，GET 和 POST 占了 80% 的使用场景</li>
       </ul>
@@ -184,11 +177,21 @@
   position: relative;
 }
 
-.method-card.get { border-color: #3b82f6; }
-.method-card.post { border-color: #22c55e; }
-.method-card.put { border-color: #f59e0b; }
-.method-card.patch { border-color: #8b5cf6; }
-.method-card.delete { border-color: #ef4444; }
+.method-card.get {
+  border-color: #3b82f6;
+}
+.method-card.post {
+  border-color: #22c55e;
+}
+.method-card.put {
+  border-color: #f59e0b;
+}
+.method-card.patch {
+  border-color: #8b5cf6;
+}
+.method-card.delete {
+  border-color: #ef4444;
+}
 
 .method-badge {
   position: absolute;
@@ -201,11 +204,21 @@
   color: white;
 }
 
-.method-card.get .method-badge { background: #3b82f6; }
-.method-card.post .method-badge { background: #22c55e; }
-.method-card.put .method-badge { background: #f59e0b; }
-.method-card.patch .method-badge { background: #8b5cf6; }
-.method-card.delete .method-badge { background: #ef4444; }
+.method-card.get .method-badge {
+  background: #3b82f6;
+}
+.method-card.post .method-badge {
+  background: #22c55e;
+}
+.method-card.put .method-badge {
+  background: #f59e0b;
+}
+.method-card.patch .method-badge {
+  background: #8b5cf6;
+}
+.method-card.delete .method-badge {
+  background: #ef4444;
+}
 
 .method-title {
   font-size: 16px;
@@ -307,11 +320,21 @@ tr:last-child td {
   color: white;
 }
 
-.badge.get { background: #3b82f6; }
-.badge.post { background: #22c55e; }
-.badge.put { background: #f59e0b; }
-.badge.patch { background: #8b5cf6; }
-.badge.delete { background: #ef4444; }
+.badge.get {
+  background: #3b82f6;
+}
+.badge.post {
+  background: #22c55e;
+}
+.badge.put {
+  background: #f59e0b;
+}
+.badge.patch {
+  background: #8b5cf6;
+}
+.badge.delete {
+  background: #ef4444;
+}
 
 .tips {
   background: var(--vp-c-bg);

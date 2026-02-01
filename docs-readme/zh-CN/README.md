@@ -78,17 +78,17 @@
 
 [AI 能力词典：常见 AI 核心概念与名词、场景解释](docs/zh-cn/appendix/ai-capability-dictionary.md)
 
-### 一、新手入门与产品原型
+### 一、新手入门 & PM - 从游戏到 Web 应用原型
 
-| 章节                                                                                             | 关键内容                                          | 状态 |
-| :----------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
-| [前言：学习地图](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                   | 整体学习路径导览                                  | ✅   |
-| [初级一：AI 时代，会说话就会编程](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 通过贪吃蛇等案例初步感受 AI 编程的能力            | ✅   |
-| [初级二：认识 AI IDE 工具](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)        | 学会使用 IDE，在本地制作小游戏                    | ✅   |
-| [初级三：动手做出原型](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                | 从需求分析、AI 生成单页面，再到生成多页面产品原型 | ✅   |
-| [初级四：给原型加上 AI 能力](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md) | 学会接入常见 AI 能力（文本、图片、视频）          | ✅   |
-| [初级五：完整项目实战](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)         | 模拟真实场景、接受用户反馈迭代，完整化项目        | ✅   |
-| [大作业：做一个完整的 Web 应用原型并展示](docs/zh-cn/stage-1/1.5-final-project/index.md)  | 完整实现应用，展示应用效果                        | ✅   |
+| 章节                                                                                                 | 关键内容                                          | 状态 |
+| :--------------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
+| [前言：学习地图](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                       | 整体学习路径导览                                  | ✅   |
+| [初级一：AI 时代，会说话就会编程](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md)     | 通过贪吃蛇等案例初步感受 AI 编程的能力            | ✅   |
+| [初级二：认识 AI IDE 工具](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                   | 学会使用 IDE，在本地制作小游戏                    | ✅   |
+| [初级三：动手做出原型](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                           | 从需求分析、AI 生成单页面，再到生成多页面产品原型 | ✅   |
+| [初级四：给原型加上 AI 能力](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | 学会接入常见 AI 能力（文本、图片、视频）          | ✅   |
+| [初级五：完整项目实战](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                    | 模拟真实场景、接受用户反馈迭代，完整化项目        | ✅   |
+| [大作业：做一个完整的 Web 应用原型并展示](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md) | 完整实现应用，展示应用效果                        | ✅   |
 
 #### 附录
 

@@ -11,10 +11,16 @@ defineProps({
 
 <template>
   <div class="category-index">
-    <div v-for="(category, index) in categories" :key="index" class="category-section">
+    <div
+      v-for="(category, index) in categories"
+      :key="index"
+      class="category-section"
+    >
       <h2 v-if="category.title" class="category-title">{{ category.title }}</h2>
-      <p v-if="category.description" class="category-desc">{{ category.description }}</p>
-      
+      <p v-if="category.description" class="category-desc">
+        {{ category.description }}
+      </p>
+
       <div class="card-grid">
         <ArticleCard
           v-for="(item, i) in category.items"

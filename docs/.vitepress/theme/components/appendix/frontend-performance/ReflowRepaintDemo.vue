@@ -27,7 +27,11 @@
         <div class="performance-meter">
           <div class="meter-label">性能影响</div>
           <div class="meter-bar">
-            <div class="meter-fill" :class="performanceLevel.class" :style="{ width: performanceImpact + '%' }"></div>
+            <div
+              class="meter-fill"
+              :class="performanceLevel.class"
+              :style="{ width: performanceImpact + '%' }"
+            ></div>
           </div>
           <div class="meter-value" :class="performanceLevel.class">
             {{ performanceLevel.text }}
@@ -59,16 +63,24 @@
           <h4>重绘操作 (Repaint)</h4>
           <p class="control-desc">只改变外观，不触发布局</p>
           <button @click="changeColor" class="btn repaint">改变颜色</button>
-          <button @click="changeBackground" class="btn repaint">改变背景</button>
+          <button @click="changeBackground" class="btn repaint">
+            改变背景
+          </button>
           <button @click="toggleBorder" class="btn repaint">切换边框</button>
         </div>
 
         <div class="control-section">
           <h4>合成操作 (Composite)</h4>
           <p class="control-desc">只触发合成，性能最佳</p>
-          <button @click="transformTranslate" class="btn composite">Transform 位移</button>
-          <button @click="transformRotate" class="btn composite">Transform 旋转</button>
-          <button @click="changeOpacity" class="btn composite">改变透明度</button>
+          <button @click="transformTranslate" class="btn composite">
+            Transform 位移
+          </button>
+          <button @click="transformRotate" class="btn composite">
+            Transform 旋转
+          </button>
+          <button @click="changeOpacity" class="btn composite">
+            改变透明度
+          </button>
         </div>
       </div>
     </div>
@@ -76,17 +88,24 @@
     <div class="info-section">
       <div class="info-card">
         <h4>什么是重排 (Reflow)？</h4>
-        <p>当元素的位置、尺寸发生变化时，浏览器需要重新计算布局，这个过程叫重排。重排开销最大，因为要重新计算所有受影响元素的位置。</p>
+        <p>
+          当元素的位置、尺寸发生变化时，浏览器需要重新计算布局，这个过程叫重排。重排开销最大，因为要重新计算所有受影响元素的位置。
+        </p>
       </div>
 
       <div class="info-card">
         <h4>什么是重绘 (Repaint)？</h4>
-        <p>当元素的外观（颜色、背景）发生变化，但位置不变时，浏览器只需要重新绘制像素，这个过程叫重绘。比重排快，但仍有开销。</p>
+        <p>
+          当元素的外观（颜色、背景）发生变化，但位置不变时，浏览器只需要重新绘制像素，这个过程叫重绘。比重排快，但仍有开销。
+        </p>
       </div>
 
       <div class="info-card">
         <h4>什么是合成 (Composite)？</h4>
-        <p>使用 transform 和 opacity 等属性，浏览器可以在合成层上完成变化，完全不触发布局和绘制。性能最佳，推荐优先使用。</p>
+        <p>
+          使用 transform 和 opacity
+          等属性，浏览器可以在合成层上完成变化，完全不触发布局和绘制。性能最佳，推荐优先使用。
+        </p>
       </div>
     </div>
   </div>
@@ -96,9 +115,45 @@
 import { ref, computed } from 'vue'
 
 const boxes = ref([
-  { id: 1, x: 0, y: 0, width: 80, height: 80, color: '#3b82f6', bg: '#dbeafe', rotation: 0, opacity: 1, border: false, selected: false },
-  { id: 2, x: 100, y: 0, width: 80, height: 80, color: '#8b5cf6', bg: '#ede9fe', rotation: 0, opacity: 1, border: false, selected: false },
-  { id: 3, x: 0, y: 100, width: 80, height: 80, color: '#ec4899', bg: '#fce7f3', rotation: 0, opacity: 1, border: false, selected: false }
+  {
+    id: 1,
+    x: 0,
+    y: 0,
+    width: 80,
+    height: 80,
+    color: '#3b82f6',
+    bg: '#dbeafe',
+    rotation: 0,
+    opacity: 1,
+    border: false,
+    selected: false
+  },
+  {
+    id: 2,
+    x: 100,
+    y: 0,
+    width: 80,
+    height: 80,
+    color: '#8b5cf6',
+    bg: '#ede9fe',
+    rotation: 0,
+    opacity: 1,
+    border: false,
+    selected: false
+  },
+  {
+    id: 3,
+    x: 0,
+    y: 100,
+    width: 80,
+    height: 80,
+    color: '#ec4899',
+    bg: '#fce7f3',
+    rotation: 0,
+    opacity: 1,
+    border: false,
+    selected: false
+  }
 ])
 
 const currentOperation = ref('无')
@@ -131,7 +186,7 @@ function getBoxStyle(box) {
 }
 
 function selectBox(id) {
-  boxes.value.forEach(b => b.selected = b.id === id)
+  boxes.value.forEach((b) => (b.selected = b.id === id))
 }
 
 function updateMetrics(operation, impact, affected) {
@@ -141,14 +196,14 @@ function updateMetrics(operation, impact, affected) {
 }
 
 function changeWidth() {
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.width = 60 + Math.random() * 60
   })
   updateMetrics('改变宽度', 90, boxes.value.length)
 }
 
 function changePosition() {
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.x = Math.random() * 150
     box.y = Math.random() * 150
   })
@@ -175,7 +230,7 @@ function addBox() {
 
 function changeColor() {
   const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b']
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.color = colors[Math.floor(Math.random() * colors.length)]
   })
   updateMetrics('改变颜色', 50, boxes.value.length)
@@ -183,35 +238,35 @@ function changeColor() {
 
 function changeBackground() {
   const bgs = ['#dbeafe', '#ede9fe', '#fce7f3', '#d1fae5', '#fef3c7']
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.bg = bgs[Math.floor(Math.random() * bgs.length)]
   })
   updateMetrics('改变背景', 45, boxes.value.length)
 }
 
 function toggleBorder() {
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.border = !box.border
   })
   updateMetrics('切换边框', 55, boxes.value.length)
 }
 
 function transformTranslate() {
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.x += Math.random() * 20 - 10
   })
   updateMetrics('Transform 位移', 10, boxes.value.length)
 }
 
 function transformRotate() {
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.rotation += Math.random() * 30 - 15
   })
   updateMetrics('Transform 旋转', 10, boxes.value.length)
 }
 
 function changeOpacity() {
-  boxes.value.forEach(box => {
+  boxes.value.forEach((box) => {
     box.opacity = 0.5 + Math.random() * 0.5
   })
   updateMetrics('改变透明度', 10, boxes.value.length)

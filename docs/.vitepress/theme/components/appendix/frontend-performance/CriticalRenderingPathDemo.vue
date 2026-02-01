@@ -6,7 +6,9 @@
   <div class="crp-demo">
     <div class="header">
       <div class="title">关键渲染路径 (Critical Rendering Path)</div>
-      <div class="subtitle">浏览器如何将 HTML、CSS 和 JavaScript 转换为像素</div>
+      <div class="subtitle">
+        浏览器如何将 HTML、CSS 和 JavaScript 转换为像素
+      </div>
     </div>
 
     <div class="demo-container">
@@ -152,7 +154,9 @@
           }"
           @click="setStep(step.name)"
         >
-          <div class="segment-label" :style="{ color: step.color }">{{ step.label }}</div>
+          <div class="segment-label" :style="{ color: step.color }">
+            {{ step.label }}
+          </div>
         </div>
       </div>
       <div class="timeline-scale">
@@ -182,7 +186,10 @@
         <div class="tip-icon">⚙️</div>
         <div class="tip-content">
           <h4>优化 JavaScript</h4>
-          <p>JS 会阻塞 DOM 构建。使用 <code>defer</code> 或 <code>async</code> 属性。</p>
+          <p>
+            JS 会阻塞 DOM 构建。使用 <code>defer</code> 或
+            <code>async</code> 属性。
+          </p>
         </div>
       </div>
 
@@ -190,7 +197,10 @@
         <div class="tip-icon">📐</div>
         <div class="tip-content">
           <h4>减少重排</h4>
-          <p>批量修改样式，避免逐帧操作。使用 <code>transform</code> 代替位置属性。</p>
+          <p>
+            批量修改样式，避免逐帧操作。使用
+            <code>transform</code> 代替位置属性。
+          </p>
         </div>
       </div>
     </div>
@@ -205,10 +215,22 @@ const currentStep = ref('dom')
 const timelineSteps = [
   { name: 'dom', label: 'DOM', start: 0, width: 20, color: '#3b82f6' },
   { name: 'cssom', label: 'CSSOM', start: 20, width: 15, color: '#8b5cf6' },
-  { name: 'render', label: 'Render Tree', start: 35, width: 10, color: '#ec4899' },
+  {
+    name: 'render',
+    label: 'Render Tree',
+    start: 35,
+    width: 10,
+    color: '#ec4899'
+  },
   { name: 'layout', label: 'Layout', start: 45, width: 15, color: '#f59e0b' },
   { name: 'paint', label: 'Paint', start: 60, width: 20, color: '#10b981' },
-  { name: 'composite', label: 'Composite', start: 80, width: 20, color: '#06b6d4' }
+  {
+    name: 'composite',
+    label: 'Composite',
+    start: 80,
+    width: 20,
+    color: '#06b6d4'
+  }
 ]
 
 const totalDuration = computed(() => {

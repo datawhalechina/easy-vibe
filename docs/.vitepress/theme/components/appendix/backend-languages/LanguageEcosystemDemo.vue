@@ -41,7 +41,9 @@
                 </div>
                 <div class="stat">
                   <span class="stat-label">周下载量</span>
-                  <span class="stat-value">{{ formatDownloads(pkg.downloads) }}</span>
+                  <span class="stat-value">{{
+                    formatDownloads(pkg.downloads)
+                  }}</span>
                 </div>
               </div>
               <div class="pkg-command">
@@ -61,7 +63,10 @@
         </div>
 
         <!-- Web Frameworks -->
-        <div v-else-if="selectedTab === 'frameworks'" class="frameworks-section">
+        <div
+          v-else-if="selectedTab === 'frameworks'"
+          class="frameworks-section"
+        >
           <div class="frameworks-table-wrapper">
             <table class="frameworks-table">
               <thead>
@@ -134,7 +139,7 @@
                   <div class="bar-container">
                     <div
                       class="bar-fill"
-                      :style="{ width: (lang.stars / 100) + '%' }"
+                      :style="{ width: lang.stars / 100 + '%' }"
                     >
                       <span class="bar-value">{{ lang.stars }}M</span>
                     </div>
@@ -158,7 +163,7 @@
                   <div class="bar-container">
                     <div
                       class="bar-fill questions"
-                      :style="{ width: (lang.questions / 30) + '%' }"
+                      :style="{ width: lang.questions / 30 + '%' }"
                     >
                       <span class="bar-value">{{ lang.questions }}M</span>
                     </div>
@@ -173,15 +178,22 @@
             <div class="insight-grid">
               <div class="insight-card">
                 <h6>最活跃</h6>
-                <p>JavaScript/Node.js 社区最活跃，NPM 每周新增数万个包，问题响应速度最快。</p>
+                <p>
+                  JavaScript/Node.js 社区最活跃，NPM
+                  每周新增数万个包，问题响应速度最快。
+                </p>
               </div>
               <div class="insight-card">
                 <h6>最专业</h6>
-                <p>Java 社区最专业，企业级问题讨论深入，Stack Overflow 质量最高。</p>
+                <p>
+                  Java 社区最专业，企业级问题讨论深入，Stack Overflow 质量最高。
+                </p>
               </div>
               <div class="insight-card">
                 <h6>增长最快</h6>
-                <p>Rust 和 Go 社区增长最快，新一代开发者涌入，问题讨论质量高。</p>
+                <p>
+                  Rust 和 Go 社区增长最快，新一代开发者涌入，问题讨论质量高。
+                </p>
               </div>
               <div class="insight-card">
                 <h6>最友好</h6>
@@ -221,7 +233,9 @@
                 <div class="resource-section">
                   <h6>推荐书籍</h6>
                   <ul>
-                    <li v-for="book in resource.books" :key="book">{{ book }}</li>
+                    <li v-for="book in resource.books" :key="book">
+                      {{ book }}
+                    </li>
                   </ul>
                 </div>
                 <div class="resource-section">
@@ -460,7 +474,7 @@ const learningResources = [
     icon: '💚',
     docQuality: 4,
     docComment: 'MDN 文档权威，但碎片化',
-    books: ['Eloquent JavaScript', 'You Don\'t Know JS'],
+    books: ['Eloquent JavaScript', "You Don't Know JS"],
     courses: ['freeCodeCamp', 'Udemy', 'Codecademy'],
     learningCurve: 75,
     curveLabel: '中等'

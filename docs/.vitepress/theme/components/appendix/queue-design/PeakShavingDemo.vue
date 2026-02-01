@@ -45,9 +45,9 @@
         </div>
 
         <div class="actions">
-          <button 
-            class="action-btn burst-btn" 
-            @click="triggerBurst" 
+          <button
+            class="action-btn burst-btn"
+            @click="triggerBurst"
             :disabled="isBursting"
           >
             ⚡️ 模拟秒杀流量突增
@@ -64,22 +64,33 @@
         <div class="metrics-grid">
           <div class="metric-item">
             <div class="m-label">当前入站流量</div>
-            <div class="m-value blue">{{ currentRequestRate }} <span class="unit">req/s</span></div>
+            <div class="m-value blue">
+              {{ currentRequestRate }} <span class="unit">req/s</span>
+            </div>
           </div>
           <div class="metric-item">
             <div class="m-label">队列积压量</div>
-            <div class="m-value orange">{{ queueLength }} <span class="unit">msgs</span></div>
+            <div class="m-value orange">
+              {{ queueLength }} <span class="unit">msgs</span>
+            </div>
             <div class="m-bar-bg">
-              <div class="m-bar-fill" :style="{ width: queuePercent + '%', background: queueColor }"></div>
+              <div
+                class="m-bar-fill"
+                :style="{ width: queuePercent + '%', background: queueColor }"
+              ></div>
             </div>
           </div>
           <div class="metric-item">
             <div class="m-label">实际处理速率</div>
-            <div class="m-value green">{{ currentProcessRate }} <span class="unit">req/s</span></div>
+            <div class="m-value green">
+              {{ currentProcessRate }} <span class="unit">req/s</span>
+            </div>
           </div>
           <div class="metric-item">
             <div class="m-label">丢弃请求 (限流)</div>
-            <div class="m-value red">{{ rejectedCount }} <span class="unit">req</span></div>
+            <div class="m-value red">
+              {{ rejectedCount }} <span class="unit">req</span>
+            </div>
           </div>
         </div>
 
@@ -87,9 +98,15 @@
         <div class="chart-container">
           <canvas ref="chartCanvas" width="600" height="200"></canvas>
           <div class="chart-legend">
-            <span class="legend-item"><span class="dot blue"></span>入站流量 (用户请求)</span>
-            <span class="legend-item"><span class="dot green"></span>处理流量 (系统负载)</span>
-            <span class="legend-item"><span class="dot orange"></span>队列积压</span>
+            <span class="legend-item"
+              ><span class="dot blue"></span>入站流量 (用户请求)</span
+            >
+            <span class="legend-item"
+              ><span class="dot green"></span>处理流量 (系统负载)</span
+            >
+            <span class="legend-item"
+              ><span class="dot orange"></span>队列积压</span
+            >
           </div>
         </div>
       </div>
@@ -100,7 +117,7 @@
       <div class="tip-content">
         <strong>核心原理：</strong>
         当<strong>入站流量</strong>（蓝色）超过<strong>处理能力</strong>（绿色直线）时，多余的请求会被存入<strong>消息队列</strong>（橙色区域）。
-        <br/>
+        <br />
         一旦流量高峰过去，系统会继续全速处理队列中的积压，直到队列清空。这就是"削峰填谷"。
       </div>
     </div>
@@ -111,14 +128,14 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 // 核心状态
-const processRate = ref(200)      // 消费速率 (req/s)
-const queueCapacity = ref(2000)   // 队列容量
-const queueLength = ref(0)        // 当前队列长度
-const rejectedCount = ref(0)      // 总丢弃数
+const processRate = ref(200) // 消费速率 (req/s)
+const queueCapacity = ref(2000) // 队列容量
+const queueLength = ref(0) // 当前队列长度
+const rejectedCount = ref(0) // 总丢弃数
 
 // 实时状态（用于展示和图表）
 const currentRequestRate = ref(100) // 当前产生的请求速率
-const currentProcessRate = ref(0)   // 当前实际处理的速率
+const currentProcessRate = ref(0) // 当前实际处理的速率
 const isBursting = ref(false)
 
 // 图表相关
@@ -138,7 +155,7 @@ const updateLoop = () => {
   // 1. 生成流量 (模拟波动的入站流量)
   // 如果在突发模式下，流量激增；否则维持在低水位波动
   let targetInput = isBursting.value ? 2000 : 100 + Math.random() * 50
-  
+
   // 平滑过渡入站流量
   const smoothing = 0.1
   currentRequestRate.value = Math.round(
@@ -147,12 +164,12 @@ const updateLoop = () => {
 
   // 2. 计算本帧新增请求
   const newRequests = Math.round(currentRequestRate.value * dt * 10) // 放大系数以便观察
-  
+
   // 3. 入队逻辑
   const availableSpace = queueCapacity.value - queueLength.value
   const accepted = Math.min(newRequests, availableSpace)
   const rejected = newRequests - accepted
-  
+
   queueLength.value += accepted
   rejectedCount.value += rejected
 
@@ -161,9 +178,9 @@ const updateLoop = () => {
   // 如果队列足够多，就满负荷处理；否则只处理队列里有的
   const maxProcessable = Math.round(processRate.value * dt * 10)
   const processed = Math.min(queueLength.value, maxProcessable)
-  
+
   queueLength.value -= processed
-  
+
   // 计算瞬时处理速率 (用于显示)
   currentProcessRate.value = Math.round(processed / (dt * 10))
 
@@ -186,14 +203,17 @@ const updateLoop = () => {
 // 绘图逻辑
 const drawChart = () => {
   if (!ctx || !chartCanvas.value) return
-  
+
   // 动态调整画布大小以匹配显示尺寸（解决模糊和拉伸问题）
   const canvas = chartCanvas.value
   const dpr = window.devicePixelRatio || 1
   const rect = canvas.getBoundingClientRect()
-  
+
   // 只有当尺寸变化时才重置 canvas 尺寸
-  if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
+  if (
+    canvas.width !== rect.width * dpr ||
+    canvas.height !== rect.height * dpr
+  ) {
     canvas.width = rect.width * dpr
     canvas.height = rect.height * dpr
     // 缩放上下文以适配 DPR
@@ -203,19 +223,19 @@ const drawChart = () => {
   // 逻辑宽高（CSS像素）
   const width = rect.width
   const height = rect.height
-  
+
   // 必须清除整个物理画布区域
   ctx.clearRect(0, 0, width, height) // 由于 scale 了，这里用逻辑宽高即可吗？
   // 不，clearRect 受 scale 影响。所以 clearRect(0,0, width, height) 是对的。
   // 但是为了安全，通常建议用 save/restore 或者直接重置 transform 清除。
   // 简单起见，我们假设 ctx.scale 已经生效。
-  
+
   // 实际上，最好是在 resize 时只设置一次 scale。
   // 让我们简化一下：每帧都重置 transform 并清除
   ctx.setTransform(1, 0, 0, 1, 0, 0)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.scale(dpr, dpr)
-  
+
   // 绘制网格背景
   ctx.strokeStyle = '#eee'
   ctx.lineWidth = 1
@@ -232,7 +252,7 @@ const drawChart = () => {
   // 找出最大值用于Y轴缩放
   const maxVal = Math.max(
     2000, // 固定最小刻度
-    ...dataHistory.map(d => Math.max(d.input, d.queue))
+    ...dataHistory.map((d) => Math.max(d.input, d.queue))
   )
   const yScale = (val) => height - (val / maxVal) * height * 0.9 // 留点余量
   const xScale = (index) => (index / (historyLength - 1)) * width
@@ -246,7 +266,7 @@ const drawChart = () => {
   })
   ctx.lineTo(width, height)
   ctx.fill()
-  
+
   // 队列线
   ctx.strokeStyle = '#f97316' // Orange
   ctx.lineWidth = 2
@@ -282,7 +302,7 @@ const drawChart = () => {
 const triggerBurst = () => {
   if (isBursting.value) return
   isBursting.value = true
-  
+
   // 3秒后恢复
   setTimeout(() => {
     isBursting.value = false
@@ -315,7 +335,7 @@ onMounted(() => {
     const rect = chartCanvas.value.getBoundingClientRect()
     // 简单处理：这里由于是固定width/height属性，暂时不处理resize
   }
-  
+
   lastTime = Date.now()
   animationFrameId = requestAnimationFrame(updateLoop)
 })
@@ -484,10 +504,18 @@ onUnmounted(() => {
   opacity: 0.7;
 }
 
-.m-value.blue { color: #3b82f6; }
-.m-value.green { color: #22c55e; }
-.m-value.orange { color: #f97316; }
-.m-value.red { color: #ef4444; }
+.m-value.blue {
+  color: #3b82f6;
+}
+.m-value.green {
+  color: #22c55e;
+}
+.m-value.orange {
+  color: #f97316;
+}
+.m-value.red {
+  color: #ef4444;
+}
 
 .m-bar-bg {
   height: 4px;
@@ -539,9 +567,15 @@ canvas {
   height: 8px;
   border-radius: 50%;
 }
-.dot.blue { background: #3b82f6; }
-.dot.green { background: #22c55e; }
-.dot.orange { background: #f97316; }
+.dot.blue {
+  background: #3b82f6;
+}
+.dot.green {
+  background: #22c55e;
+}
+.dot.orange {
+  background: #f97316;
+}
 
 .scenario-tips {
   margin-top: 16px;

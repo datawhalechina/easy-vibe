@@ -77,15 +77,15 @@ Nous croyons qu'en maîtrisant Vibe Coding et en le combinant avec un entraînem
 
 ### 1. Entrée débutant et prototype de produit
 
-| Chapitre                                                                                                                           | Contenu clé                                                                                     | Statut |
-| :--------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------- | :----- |
-| [Préface : Carte d'apprentissage](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                    | Guide général du parcours d'apprentissage                                                       | ✅     |
-| [Débutant 1 : L'ère de l'IA, savoir parler c'est savoir programmer](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Découvrir pour la première fois les capacités de programmation IA à travers des cas comme Snake | ✅     |
-| [Débutant 2 : Découvrir les outils IDE IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                           | Apprendre à utiliser l'IDE, créer des mini-jeux localement                                                       | ✅     |
-| [Débutant 3 : Créer un prototype soi-même](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                               | Analyse des besoins, génération d'une seule page par l'IA, jusqu'à générer des prototypes de produits multipages | ✅     |
-| [Débutant 4 : Ajouter des capacités IA au prototype](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | Apprendre à connecter des capacités IA courantes (texte, image, vidéo)                                           | ✅     |
-| [Débutant 5 : Projet complet pratique](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                            | Simuler des scénarios réels, accepter les feedbacks des utilisateurs pour itérer, compléter le projet            | ✅     |
-| [Projet final : Créer un prototype complet d'application web et le présenter](docs/zh-cn/stage-1/1.5-final-project/index.md) | Implémenter complètement l'application, présenter les effets de l'application                                    | ✅     |
+| Chapitre                                                                                                                           | Contenu clé                                                                                                      | Statut |
+| :--------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :----- |
+| [Préface : Carte d'apprentissage](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                    | Guide général du parcours d'apprentissage                                                                        | ✅     |
+| [Débutant 1 : L'ère de l'IA, savoir parler c'est savoir programmer](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Découvrir pour la première fois les capacités de programmation IA à travers des cas comme Snake                  | ✅     |
+| [Débutant 2 : Découvrir les outils IDE IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                                 | Apprendre à utiliser l'IDE, créer des mini-jeux localement                                                       | ✅     |
+| [Débutant 3 : Créer un prototype soi-même](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                     | Analyse des besoins, génération d'une seule page par l'IA, jusqu'à générer des prototypes de produits multipages | ✅     |
+| [Débutant 4 : Ajouter des capacités IA au prototype](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)                  | Apprendre à connecter des capacités IA courantes (texte, image, vidéo)                                           | ✅     |
+| [Débutant 5 : Projet complet pratique](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                                  | Simuler des scénarios réels, accepter les feedbacks des utilisateurs pour itérer, compléter le projet            | ✅     |
+| [Projet final : Créer un prototype complet d'application web et le présenter](docs/zh-cn/stage-1/1.5-final-project/index.md)       | Implémenter complètement l'application, présenter les effets de l'application                                    | ✅     |
 
 #### Annexes
 

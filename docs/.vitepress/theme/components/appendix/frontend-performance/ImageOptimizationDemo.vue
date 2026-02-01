@@ -19,7 +19,9 @@
       >
         <div class="format-header">
           <div class="format-name">{{ format.name }}</div>
-          <div class="format-badge" :class="format.badgeClass">{{ format.badge }}</div>
+          <div class="format-badge" :class="format.badgeClass">
+            {{ format.badge }}
+          </div>
         </div>
 
         <div class="format-preview" :style="{ background: format.gradient }">
@@ -41,7 +43,10 @@
           <div class="metric">
             <span class="metric-label">质量</span>
             <div class="quality-bar">
-              <div class="quality-fill" :style="{ width: format.quality + '%' }"></div>
+              <div
+                class="quality-fill"
+                :style="{ width: format.quality + '%' }"
+              ></div>
             </div>
           </div>
           <div class="metric">
@@ -72,14 +77,19 @@
         </thead>
         <tbody>
           <tr v-for="format in formats" :key="format.name">
-            <td><strong>{{ format.name }}</strong></td>
+            <td>
+              <strong>{{ format.name }}</strong>
+            </td>
             <td>{{ format.sizeLevel }}</td>
             <td>{{ format.qualityLevel }}</td>
             <td>{{ format.transparency ? '✓' : '✗' }}</td>
             <td>{{ format.animation ? '✓' : '✗' }}</td>
             <td>
               <div class="recommendation">
-                <div class="stars">{{ '★'.repeat(Math.round(format.rating)) }}{{ '☆'.repeat(5 - Math.round(format.rating)) }}</div>
+                <div class="stars">
+                  {{ '★'.repeat(Math.round(format.rating))
+                  }}{{ '☆'.repeat(5 - Math.round(format.rating)) }}
+                </div>
               </div>
             </td>
           </tr>
@@ -95,7 +105,10 @@
           <ul>
             <li>优先使用 WebP 格式，可减少 30-50% 的大小</li>
             <li>为旧浏览器提供 JPEG/PNG 降级方案</li>
-            <li>使用 <code class="inline-code">&lt;picture&gt;</code> 元素实现自动降级</li>
+            <li>
+              使用
+              <code class="inline-code">&lt;picture&gt;</code> 元素实现自动降级
+            </li>
             <li>照片使用 JPEG，图标使用 PNG 或 SVG</li>
           </ul>
         </div>

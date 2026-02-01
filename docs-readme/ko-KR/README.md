@@ -77,15 +77,15 @@ AI로 코드를 작성하려고 할 때 오류가 계속 발생하고, 포기하
 
 ### 1. 초보자 입문 및 제품 프로토타입
 
-| 장                                                                                                               | 주요 내용                                                   | 상태 |
-| :--------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :--- |
-| [서론: 학습 맵](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                    | 전체 학습 경로 가이드                                       | ✅   |
-| [초급 1: AI 시대, 말할 수 있으면 프로그래밍 가능](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 스네이크 게임 등 사례를 통해 AI 프로그래밍 능력을 처음 체험 | ✅   |
-| [초급 2: AI IDE 도구 이해](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                         | IDE 사용법 배우기, 로컬에서 미니게임 제작                                    | ✅   |
-| [초급 3: 직접 프로토타입 만들기](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                       | 요구사항 분석, AI 단일 페이지 생성, 다중 페이지 프로덕트 프로토타입 생성으로 | ✅   |
-| [초급 4: 프로토타입에 AI 능력 추가](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)           | 일반적인 AI 능력(텍스트, 이미지, 비디오) 연결 방법 습득                      | ✅   |
-| [초급 5: 완전 프로젝트 실전](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                    | 실제 시나리오 시뮬레이션, 사용자 피드백 수용 반복 개선, 프로젝트 완성        | ✅   |
-| [대 과제: 완전한 웹 애플리케이션 프로토타입 만들기 및 전시](docs/zh-cn/stage-1/1.5-final-project/index.md) | 애플리케이션 완전 구현, 애플리케이션 효과 전시                               | ✅   |
+| 장                                                                                                               | 주요 내용                                                                    | 상태 |
+| :--------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :--- |
+| [서론: 학습 맵](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                    | 전체 학습 경로 가이드                                                        | ✅   |
+| [초급 1: AI 시대, 말할 수 있으면 프로그래밍 가능](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 스네이크 게임 등 사례를 통해 AI 프로그래밍 능력을 처음 체험                  | ✅   |
+| [초급 2: AI IDE 도구 이해](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                               | IDE 사용법 배우기, 로컬에서 미니게임 제작                                    | ✅   |
+| [초급 3: 직접 프로토타입 만들기](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                             | 요구사항 분석, AI 단일 페이지 생성, 다중 페이지 프로덕트 프로토타입 생성으로 | ✅   |
+| [초급 4: 프로토타입에 AI 능력 추가](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)                 | 일반적인 AI 능력(텍스트, 이미지, 비디오) 연결 방법 습득                      | ✅   |
+| [초급 5: 완전 프로젝트 실전](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                          | 실제 시나리오 시뮬레이션, 사용자 피드백 수용 반복 개선, 프로젝트 완성        | ✅   |
+| [대 과제: 완전한 웹 애플리케이션 프로토타입 만들기 및 전시](docs/zh-cn/stage-1/1.5-final-project/index.md)       | 애플리케이션 완전 구현, 애플리케이션 효과 전시                               | ✅   |
 
 #### 부록
 

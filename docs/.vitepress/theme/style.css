@@ -270,7 +270,10 @@
 
 /* System Font Stack */
 :root {
-  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --vp-font-family-base:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
 }
 
 /* Glassmorphism Utilities */
@@ -304,7 +307,9 @@
   border-radius: 20px;
   background-image: linear-gradient(to right, #42d392, #647eff);
   border: none;
-  transition: transform 0.2s, opacity 0.2s;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
 }
 
 .VPHomeHero .action .VPButton.brand:hover {

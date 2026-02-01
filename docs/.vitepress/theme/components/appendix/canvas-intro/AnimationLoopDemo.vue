@@ -38,17 +38,18 @@
       <div class="parameters">
         <div class="param-row">
           <label>Speed / 速度: {{ speed }}x</label>
-          <input type="range" v-model.number="speed" min="0.1" max="3" step="0.1" />
+          <input
+            type="range"
+            v-model.number="speed"
+            min="0.1"
+            max="3"
+            step="0.1"
+          />
         </div>
 
         <div class="param-row">
           <label>Object Count / 对象数量: {{ objectCount }}</label>
-          <input
-            type="range"
-            v-model.number="objectCount"
-            min="1"
-            max="10"
-          />
+          <input type="range" v-model.number="objectCount" min="1" max="10" />
         </div>
       </div>
 
@@ -99,7 +100,8 @@
       <p>
         <span class="icon">💡</span>
         <strong>提示：</strong>
-        动画的本质是快速连续绘制静态画面。Canvas 每秒可以绘制 60 帧（60FPS），形成流畅的动画效果。
+        动画的本质是快速连续绘制静态画面。Canvas 每秒可以绘制 60
+        帧（60FPS），形成流畅的动画效果。
       </p>
     </div>
   </div>
@@ -259,7 +261,13 @@ const drawBouncingBall = (ctx) => {
     // 高光效果
     ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'
     ctx.beginPath()
-    ctx.arc(ball.x - ball.radius * 0.3, ball.y - ball.radius * 0.3, ball.radius * 0.4, 0, Math.PI * 2)
+    ctx.arc(
+      ball.x - ball.radius * 0.3,
+      ball.y - ball.radius * 0.3,
+      ball.radius * 0.4,
+      0,
+      Math.PI * 2
+    )
     ctx.fill()
   })
 }
@@ -487,7 +495,7 @@ onUnmounted(() => {
   color: #555;
 }
 
-.param-row input[type="range"] {
+.param-row input[type='range'] {
   width: 100%;
 }
 

@@ -1,51 +1,76 @@
 <template>
-  <div class="prompt-templates-demo">
-    <div class="header">
-      <div class="title">
-        <div class="h">常见场景模板（标签切换，可直接复制）</div>
-        <div class="sub">选一个场景 → 复制 → 把占位符替换成你的内容。</div>
+  <el-card class="templates-card" shadow="hover">
+    <template #header>
+      <div class="card-header">
+        <div class="header-left">
+          <h3 class="title">常见场景模板（标签切换，可直接复制）</h3>
+          <p class="subtitle">选一个场景 → 复制 → 把占位符替换成你的内容。</p>
+        </div>
+        <div class="header-right">
+          <el-input
+            v-model="q"
+            placeholder="搜索模板（如：会议 / debug / 翻译）"
+            :prefix-icon="Search"
+            clearable
+            style="width: 240px"
+          />
+          <el-button 
+            type="primary" 
+            :icon="copied ? Check : CopyDocument" 
+            @click="copy(active.template)" 
+            :disabled="!active"
+          >
+            {{ copied ? '已复制' : '复制模板' }}
+          </el-button>
+        </div>
       </div>
-      <div class="actions">
-        <input
-          v-model="q"
-          class="search"
-          placeholder="搜索模板（如：会议 / debug / 翻译）"
-        />
-        <button class="btn" @click="copy(active.template)" :disabled="!active">
-          {{ copied ? '已复制' : '复制模板' }}
-        </button>
-      </div>
+    </template>
+
+    <div class="tags-container">
+      <el-space wrap>
+        <el-button
+          v-for="t in filtered"
+          :key="t.id"
+          :type="activeId === t.id ? 'primary' : ''"
+          round
+          size="small"
+          @click="select(t.id)"
+        >
+          {{ t.title }}
+        </el-button>
+      </el-space>
+      <el-empty 
+        v-if="filtered.length === 0" 
+        description="没搜到匹配模板" 
+        :image-size="60"
+      />
     </div>
 
-    <div class="tabs">
-      <button
-        v-for="t in filtered"
-        :key="t.id"
-        class="tab"
-        :class="{ active: activeId === t.id }"
-        @click="select(t.id)"
-      >
-        {{ t.title }}
-        <span class="tag">{{ t.category }}</span>
-      </button>
-      <div v-if="filtered.length === 0" class="empty">
-        没搜到匹配模板：{{ q }}
+    <div v-if="active" class="content-area">
+      <el-alert
+        :title="active.desc"
+        type="info"
+        :closable="false"
+        show-icon
+        class="desc-alert"
+      />
+      
+      <el-card shadow="never" class="code-card">
+        <pre class="code-block"><code>{{ active.template }}</code></pre>
+      </el-card>
+
+      <div v-if="active.note" class="note-section">
+        <el-tag type="warning" size="small">Note</el-tag>
+        <span class="note-text">{{ active.note }}</span>
       </div>
     </div>
-
-    <div v-if="active" class="content">
-      <div class="meta">
-        <div class="desc">{{ active.desc }}</div>
-        <div v-if="active.note" class="note">{{ active.note }}</div>
-      </div>
-
-      <pre class="code"><code>{{ active.template }}</code></pre>
-    </div>
-  </div>
+  </el-card>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import { Search, CopyDocument, Check } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 
 const q = ref('')
 const copied = ref(false)
@@ -160,161 +185,99 @@ const copy = async (text) => {
   try {
     await navigator.clipboard.writeText(text)
     copied.value = true
+    ElMessage.success('模板已复制到剪贴板')
     setTimeout(() => {
       copied.value = false
-    }, 800)
+    }, 2000)
   } catch {
     copied.value = false
+    ElMessage.error('复制失败，请手动复制')
   }
 }
 </script>
 
 <style scoped>
-.prompt-templates-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg-soft);
-  padding: 1.25rem;
-  margin: 1rem 0;
+.templates-card {
+  margin: 16px 0;
 }
 
-.header {
+.card-header {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.title .h {
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-  font-size: 1rem;
-}
-
-.title .sub {
-  margin-top: 0.25rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-}
-
-.actions {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 16px;
 }
 
-.search {
-  min-width: 220px;
-  padding: 0.45rem 0.6rem;
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
+.header-left {
+  flex: 1;
+  min-width: 200px;
 }
 
-.btn {
-  padding: 0.45rem 0.75rem;
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.75rem 0 1rem;
-}
-
-.tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.875rem;
-}
-
-.tab.active {
-  border-color: rgba(var(--vp-c-brand-rgb), 0.35);
-  box-shadow: 0 0 0 3px rgba(var(--vp-c-brand-rgb), 0.12);
-}
-
-.tag {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
-  font-weight: 600;
-}
-
-.empty {
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-  padding: 0.5rem 0.25rem;
-}
-
-.meta {
-  margin-bottom: 0.75rem;
-}
-
-.desc {
-  color: var(--vp-c-text-1);
-  line-height: 1.6;
-}
-
-.note {
-  margin-top: 0.5rem;
-  padding: 0.75rem;
-  border-radius: 6px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  color: var(--vp-c-text-2);
-}
-
-.code {
+.title {
   margin: 0;
-  padding: 0.75rem;
-  border-radius: 8px;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  overflow-x: auto;
-  color: var(--vp-c-text-1);
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
-@media (max-width: 720px) {
-  .header {
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tags-container {
+  margin-bottom: 20px;
+}
+
+.desc-alert {
+  margin-bottom: 16px;
+}
+
+.code-card {
+  background-color: var(--vp-c-bg-alt);
+  border-radius: 4px;
+}
+
+.code-block {
+  margin: 0;
+  font-family: monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  color: var(--vp-c-text-1);
+}
+
+.note-section {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note-text {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+
+@media (max-width: 768px) {
+  .card-header {
     flex-direction: column;
-    align-items: stretch;
   }
-  .actions {
-    justify-content: flex-start;
-  }
-  .search {
-    min-width: 0;
+  
+  .header-right {
     width: 100%;
+    justify-content: space-between;
+  }
+  
+  .header-right .el-input {
+    flex: 1;
   }
 }
 </style>

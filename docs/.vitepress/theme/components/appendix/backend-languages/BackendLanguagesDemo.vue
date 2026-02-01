@@ -72,7 +72,10 @@
           <div class="detail-section">
             <h4>核心特点</h4>
             <ul>
-              <li v-for="feature in getLangDetail(selectedLang).features" :key="feature">
+              <li
+                v-for="feature in getLangDetail(selectedLang).features"
+                :key="feature"
+              >
                 {{ feature }}
               </li>
             </ul>
@@ -80,7 +83,10 @@
           <div class="detail-section">
             <h4>典型应用</h4>
             <ul>
-              <li v-for="app in getLangDetail(selectedLang).applications" :key="app">
+              <li
+                v-for="app in getLangDetail(selectedLang).applications"
+                :key="app"
+              >
                 {{ app }}
               </li>
             </ul>
@@ -91,7 +97,10 @@
               <div class="pros">
                 <strong>优势：</strong>
                 <ul>
-                  <li v-for="pro in getLangDetail(selectedLang).pros" :key="pro">
+                  <li
+                    v-for="pro in getLangDetail(selectedLang).pros"
+                    :key="pro"
+                  >
                     {{ pro }}
                   </li>
                 </ul>
@@ -99,7 +108,10 @@
               <div class="cons">
                 <strong>劣势：</strong>
                 <ul>
-                  <li v-for="con in getLangDetail(selectedLang).cons" :key="con">
+                  <li
+                    v-for="con in getLangDetail(selectedLang).cons"
+                    :key="con"
+                  >
                     {{ con }}
                   </li>
                 </ul>
@@ -325,7 +337,7 @@ const langDetails = {
       '❌ 版本兼容性问题多'
     ]
   },
-  "C#": {
+  'C#': {
     title: 'C# - Windows 生态的王者',
     features: [
       '微软 Visual Studio 极其强大',
@@ -393,12 +405,7 @@ const langDetails = {
       '浏览器引擎（Chrome V8）',
       'AI 框架底层（PyTorch、TF）'
     ],
-    pros: [
-      '✅ 性能极致',
-      '✅ 底层控制力强',
-      '✅ 游戏开发标准',
-      '✅ 生态成熟'
-    ],
+    pros: ['✅ 性能极致', '✅ 底层控制力强', '✅ 游戏开发标准', '✅ 生态成熟'],
     cons: [
       '❌ 学习曲线极其陡峭',
       '❌ 内存管理复杂（易泄漏）',
@@ -408,12 +415,7 @@ const langDetails = {
   },
   Ruby: {
     title: 'Ruby - 快速开发的典范',
-    features: [
-      'Ruby on Rails 框架',
-      '约定优于配置',
-      '代码优雅',
-      '快速开发'
-    ],
+    features: ['Ruby on Rails 框架', '约定优于配置', '代码优雅', '快速开发'],
     applications: [
       '初创公司（GitHub、Airbnb）',
       '快速原型（MVP、黑客松）',

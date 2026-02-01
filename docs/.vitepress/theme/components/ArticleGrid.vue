@@ -11,11 +11,7 @@ defineProps({
 
 <template>
   <div class="article-grid">
-    <ArticleCard
-      v-for="(item, i) in items"
-      :key="i"
-      v-bind="item"
-    />
+    <ArticleCard v-for="(item, i) in items" :key="i" v-bind="item" />
   </div>
 </template>
 

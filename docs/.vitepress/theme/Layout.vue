@@ -195,7 +195,10 @@ watch(lineHeight, (next) => {
     </template>
     <template #home-hero-info-after>
       <div
-        v-if="frontmatter.layout === 'home' && (frontmatter.hero?.tagline || frontmatter.hero?.typingTagline)"
+        v-if="
+          frontmatter.layout === 'home' &&
+          (frontmatter.hero?.tagline || frontmatter.hero?.typingTagline)
+        "
         class="vp-typed-tagline"
       >
         <ClientOnly>

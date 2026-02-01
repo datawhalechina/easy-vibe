@@ -13,7 +13,13 @@
       <label>
         模拟加载时间：<strong>{{ loadTime }}</strong> 秒
       </label>
-      <input v-model.number="loadTime" type="range" min="0.5" max="5" step="0.1" />
+      <input
+        v-model.number="loadTime"
+        type="range"
+        min="0.5"
+        max="5"
+        step="0.1"
+      />
       <button @click="startLoading" :disabled="isLoading">
         {{ isLoading ? '加载中...' : '模拟加载' }}
       </button>
@@ -69,10 +75,19 @@
       <div class="section">
         <h4>指标说明</h4>
         <ul>
-          <li><strong>FCP</strong>：浏览器首次绘制内容的时间（用户第一次看到页面有内容）</li>
+          <li>
+            <strong>FCP</strong
+            >：浏览器首次绘制内容的时间（用户第一次看到页面有内容）
+          </li>
           <li><strong>LCP</strong>：最大内容绘制完成的时间（主要内容可见）</li>
-          <li><strong>FID</strong>：用户首次交互到浏览器响应的时间（页面是否可交互）</li>
-          <li><strong>CLS</strong>：页面布局在加载过程中的稳定性（是否发生意外跳动）</li>
+          <li>
+            <strong>FID</strong
+            >：用户首次交互到浏览器响应的时间（页面是否可交互）
+          </li>
+          <li>
+            <strong>CLS</strong
+            >：页面布局在加载过程中的稳定性（是否发生意外跳动）
+          </li>
         </ul>
       </div>
 
@@ -106,7 +121,9 @@ const isLoading = ref(false)
 const fcp = computed(() => (loadTime.value * 0.3).toFixed(1))
 const lcp = computed(() => (loadTime.value * 0.7).toFixed(1))
 const fid = computed(() => Math.round(loadTime.value * 80))
-const cls = computed(() => (loadTime.value > 3 ? '0.25' : loadTime.value > 2 ? '0.15' : '0.05'))
+const cls = computed(() =>
+  loadTime.value > 3 ? '0.25' : loadTime.value > 2 ? '0.15' : '0.05'
+)
 
 const fcpStatus = computed(() => {
   const value = parseFloat(fcp.value)
@@ -228,17 +245,29 @@ function startLoading() {
 
 .metric-card.good {
   border-color: #22c55e;
-  background: linear-gradient(135deg, var(--vp-c-bg) 0%, rgba(34, 197, 94, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--vp-c-bg) 0%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
 }
 
 .metric-card.needs-improvement {
   border-color: #f59e0b;
-  background: linear-gradient(135deg, var(--vp-c-bg) 0%, rgba(245, 158, 11, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--vp-c-bg) 0%,
+    rgba(245, 158, 11, 0.05) 100%
+  );
 }
 
 .metric-card.poor {
   border-color: #ef4444;
-  background: linear-gradient(135deg, var(--vp-c-bg) 0%, rgba(239, 68, 68, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--vp-c-bg) 0%,
+    rgba(239, 68, 68, 0.05) 100%
+  );
 }
 
 .metric-header {

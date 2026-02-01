@@ -53,11 +53,11 @@ iOS App 是运行在 iPhone 操作系统上的原生应用程序，它启动速�
 
 ![](images/image6.png)
 
-* 从原型到原生的整体思路
+- 从原型到原生的整体思路
 
 在具体实现上，本教程采用分阶段推进的方式。我们会先借助 AI 使用 HTML 和 CSS 快速生成界面原型，在浏览器中确认布局结构和信息层级。
 
-* 整体开发流程预览
+- 整体开发流程预览
 
 整体上，后续章节将依次经历以下几个阶段：
 
@@ -170,7 +170,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 ![](images/image14.png)
 
-点击  **Create new project** ，进入项目模板选择界面。
+点击 **Create new project** ，进入项目模板选择界面。
 
 ### 3.2 选择应用模板与技术栈
 
@@ -181,7 +181,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 ![](images/image15.png)
 
-点击  **Next** ，进入项目信息配置。
+点击 **Next** ，进入项目信息配置。
 
 ### 3.3 配置项目信息
 
@@ -197,7 +197,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 ![](images/image16.png)
 
-点击  **Next** ，选择项目存放位置。
+点击 **Next** ，选择项目存放位置。
 
 ![](images/image17.png)
 
@@ -209,9 +209,9 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 在默认工程中，你会看到：
 
-* 一个以项目名命名的文件夹
-* 一个 `App` 结尾的 Swift 文件（应用入口）
-* 一个 `ContentView.swift` 文件（默认页面）
+- 一个以项目名命名的文件夹
+- 一个 `App` 结尾的 Swift 文件（应用入口）
+- 一个 `ContentView.swift` 文件（默认页面）
 
 这就是一个最小可运行的 iOS App。
 
@@ -254,35 +254,35 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 这一章是整个教程的核心部分。
 
 本教程不会采用传统的「先写 SwiftUI、反复编译、不断调整预览」的方式，而是使用一套更高效的流程：
-**先用 ****HTML**** 快速验证界面结构，再将结果迁移到 SwiftUI，最后逐步补齐业务逻辑、本地数据和体验细节。**
+**先用 \*\***HTML\***\* 快速验证界面结构，再将结果迁移到 SwiftUI，最后逐步补齐业务逻辑、本地数据和体验细节。**
 
 ### 4.1 第一阶段：需求梳理
 
-在开始写代码之前，第一步不是搭页面，而是明确要做什么。**先让 AI 像****产品经理****一样，把需求整理成一份结构清晰的说明文档。**
+在开始写代码之前，第一步不是搭页面，而是明确要做什么。**先让 AI 像\*\***产品经理\***\*一样，把需求整理成一份结构清晰的说明文档。**
 
 在 Trae 的对话窗口中输入下面这段指令。Trae 会在项目根目录中生成一份 `REQUIREMENTS.md` 文件，用于描述整个 App 的功能和结构。
 
-📋 **复制** **指令**  **（Prompt）** ：
+📋 **复制** **指令** **（Prompt）** ：
 
 ```Plain
 我们现在要开发一个名为「冰箱大厨（FridgeChef）」的 iOS App。
 
-1. 核心理念  
-这是一个解决“冰箱剩菜不知道怎么做”的 AI 助手。  
+1. 核心理念
+这是一个解决“冰箱剩菜不知道怎么做”的 AI 助手。
 用户输入冰箱里剩余的食材，App 调用大模型生成可执行的食谱。
 
-2. 核心功能  
-- 首页（Home）：  
-  显示一个明显的「开始烹饪」入口，下方以卡片或列表形式展示历史生成过的食谱记录。  
-- 输入页（Input）：  
-  用户输入食材，支持文本输入或简单的快捷标签。  
-- 结果页（Result）：  
+2. 核心功能
+- 首页（Home）：
+  显示一个明显的「开始烹饪」入口，下方以卡片或列表形式展示历史生成过的食谱记录。
+- 输入页（Input）：
+  用户输入食材，支持文本输入或简单的快捷标签。
+- 结果页（Result）：
   展示 AI 生成的食谱，包括菜名、食材列表和制作步骤。
 
-3. 技术要求  
-- 使用 SwiftUI  
-- 数据保存在本地（Core Data）  
-- 支持基础的页面跳转与状态更新  
+3. 技术要求
+- 使用 SwiftUI
+- 数据保存在本地（Core Data）
+- 支持基础的页面跳转与状态更新
 
 请你以产品经理的视角，帮我整理一份清晰、结构化的 REQUIREMENTS.md 文档，并保存在项目根目录。
 ```
@@ -293,27 +293,27 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 ### 4.2 第二阶段：视觉原型
 
-让 AI 用 **HTML**** + ****CSS** 快速画出一份高保真界面原型，用于确认整体布局和风格。继续在 Trae 中输入指令：
+让 AI 用 **HTML\*\*** + \***\*CSS** 快速画出一份高保真界面原型，用于确认整体布局和风格。继续在 Trae 中输入指令：
 
-📋 **复制** **指令**  **（Prompt）** ：
+📋 **复制** **指令** **（Prompt）** ：
 
 ```Plain
-需求已经确认。  
+需求已经确认。
 请使用 HTML + Tailwind CSS，为我生成一个高保真的界面原型。
 
-设计风格：Neo-Pop（新波普风格）  
-配色：  
-- 背景：淡奶油色 #FFFDF5  
-- 强调色：酸性绿 #CCFF00、热粉色  
+设计风格：Neo-Pop（新波普风格）
+配色：
+- 背景：淡奶油色 #FFFDF5
+- 强调色：酸性绿 #CCFF00、热粉色
 
-视觉特征：  
-- 3px 粗黑色描边  
-- 不带模糊的硬阴影（偏移 4px）  
-- 大圆角卡片，整体偏贴纸 / 漫画感  
+视觉特征：
+- 3px 粗黑色描边
+- 不带模糊的硬阴影（偏移 4px）
+- 大圆角卡片，整体偏贴纸 / 漫画感
 
-布局要求：  
-- 首页使用类似 Bento Grid 的布局  
-- 包含首页和输入页两个界面  
+布局要求：
+- 首页使用类似 Bento Grid 的布局
+- 包含首页和输入页两个界面
 
 请生成一个单文件 index.html，并模拟 iPhone 屏幕比例包裹内容。
 ```
@@ -333,7 +333,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 1. 将 `index.html` 文件（或浏览器截图）上传到 Trae
 2. 告诉 AI 参考该文件，生成 SwiftUI 代码
 
-📋  **复制指令（Prompt）** ：
+📋 **复制指令（Prompt）** ：
 
 ```Plain
 【已上传 index.html】
@@ -343,9 +343,9 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 任务：使用 SwiftUI 在当前项目中复刻这个界面。
 
 要求：
-1. 封装一个 NeoPopStyle 修饰符，包含背景色、粗描边和硬阴影  
-2. 创建 HomeView.swift，对应首页布局  
-3. 创建 InputView.swift，对应输入页面  
+1. 封装一个 NeoPopStyle 修饰符，包含背景色、粗描边和硬阴影
+2. 创建 HomeView.swift，对应首页布局
+3. 创建 InputView.swift，对应输入页面
 4. 目前使用 Mock Data 填充内容，确保在 Xcode 预览和模拟器中可以正常显示
 ```
 
@@ -370,7 +370,7 @@ SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地�
 
 该 Key 将用于后续的模型调用。
 
-📋  **复制指令（Prompt）** ：
+📋 **复制指令（Prompt）** ：
 
 ```Plain
 现在我们要接入 AI 能力。
@@ -415,17 +415,17 @@ SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地�
 
 **第二步：让 AI 编写逻辑代码**
 
-📋  **复制指令（Prompt）** ：
+📋 **复制指令（Prompt）** ：
 
 ```Plain
 我已经完成了 Core Data 的 Entity 配置。
 
-Entity：RecipeEntity  
+Entity：RecipeEntity
 属性：id, name, difficulty, timestamp,colorindex,cookTime,desc
 
 请完成以下任务：
-1. 在生成食谱成功后，将数据保存到 Core Data  
-2. 首页使用 FetchRequest 读取历史记录并按时间倒序展示  
+1. 在生成食谱成功后，将数据保存到 Core Data
+2. 首页使用 FetchRequest 读取历史记录并按时间倒序展示
 3. 当数据库为空时，显示一个友好的空状态提示
 ```
 
@@ -435,7 +435,7 @@ Entity：RecipeEntity
 
 ![](images/image31.png)![](images/image32.png)
 
-📋  **复制到 Lovart 的 Prompt** ：
+📋 **复制到 Lovart 的 Prompt** ：
 
 ```Plain
 Subject: A cute anthropomorphic fridge character with a happy face
@@ -507,9 +507,9 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 重新点击 Xcode 的 Run 按钮。如果一切正常，你会看到：
 
-* 功能与之前完全一致
-* 视觉风格发生了明显变化
-* 应用整体质感显著提升
+- 功能与之前完全一致
+- 视觉风格发生了明显变化
+- 应用整体质感显著提升
 
 ![](images/image38.png)
 
@@ -569,17 +569,17 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 **常见现象：**
 
-* Xcode 报红，提示
+- Xcode 报红，提示
   `"Communication with Apple failed"`
   或
   `"No profiles for 'com.xxx.xxx' were found"`
-* 提示
+- 提示
   `"Your team has no devices which are compatible"`
 
 **原因说明：**
 
-* Bundle Identifier 不唯一或无效
-* 当前 iPhone 尚未注册到你的 Apple ID 用于开发调试
+- Bundle Identifier 不唯一或无效
+- 当前 iPhone 尚未注册到你的 Apple ID 用于开发调试
 
 **解决方法：**
 
@@ -593,19 +593,19 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 **常见现象：**
 
-* Xcode 顶部显示
+- Xcode 顶部显示
   `"Device is not available because pairing is in progress"`
-* 提示
+- 提示
   `"Device Locked"`
-* 已点击“信任”，但 Xcode 仍然卡住
+- 已点击“信任”，但 Xcode 仍然卡住
 
 ![](images/image43.png)
 
 **原因说明：**
 
-* iPhone 处于锁屏状态
-* 配对流程未完全完成
-* Xcode 连接状态未刷新
+- iPhone 处于锁屏状态
+- 配对流程未完全完成
+- Xcode 连接状态未刷新
 
 **解决方法：**
 
@@ -620,8 +620,8 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 **常见现象：**
 
-* App 已成功安装到 iPhone 桌面
-* 系统提示
+- App 已成功安装到 iPhone 桌面
+- 系统提示
   “不受信任的开发者（Untrusted Developer）”
 
 ![](images/image44.png)
@@ -636,7 +636,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 2. 进入「通用」
 3. 点击「VPN 与设备管理」
 4. 在“开发者 App”中找到你的 Apple ID
-5. 点击  **信任** ，并再次确认
+5. 点击 **信任** ，并再次确认
 
 ![](images/image45.png)
 
@@ -646,7 +646,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 在本教程中，我们主要完成的是 **个人开发调试版 App 的完整闭环** ：从创建项目、开发功能、运行调试，到最终可以在真机上成功安装和使用。
 
-如果你希望进一步将 App 正式发布到  **Apple App Store** ，让所有用户都能下载使用，则需要进入一套更正式的发布流程。由于该流程涉及付费账号、审核规范与合规要求，且并非本教程的实践重点，下面内容仅作为 **整体参考与路径指引** 。
+如果你希望进一步将 App 正式发布到 **Apple App Store** ，让所有用户都能下载使用，则需要进入一套更正式的发布流程。由于该流程涉及付费账号、审核规范与合规要求，且并非本教程的实践重点，下面内容仅作为 **整体参考与路径指引** 。
 
 ![](images/image46.png)
 
@@ -656,10 +656,10 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 要将 App 发布到 App Store，必须加入 Apple 的付费开发者计划：
 
-* **Apple Developer Program** （每年 $99 美元）
-* 官方网址：[https://developer.apple.com/](https://developer.apple.com/)
+- **Apple Developer Program** （每年 $99 美元）
+- 官方网址：[https://developer.apple.com/](https://developer.apple.com/)
 
-加入后，你才能使用  **App Store Connect** ，进行 App 创建、版本管理和正式发布。
+加入后，你才能使用 **App Store Connect** ，进行 App 创建、版本管理和正式发布。
 
 ### 6.2 App Store Connect：创建 App 条目
 
@@ -686,10 +686,10 @@ App 提交后会进入 Apple 的审核队列，审核时间通常为 1–3 天�
 
 Apple 会从以下几个方面审核 App：
 
-* 功能与稳定性
-* 隐私与数据合规
-* 元数据与实际功能一致性
-* 是否涉及侵权或误导行为
+- 功能与稳定性
+- 隐私与数据合规
+- 元数据与实际功能一致性
+- 是否涉及侵权或误导行为
 
 如果不符合要求，审核会被拒绝，并给出具体原因，开发者需要根据反馈进行修改后重新提交。
 
@@ -697,9 +697,9 @@ Apple 会从以下几个方面审核 App：
 
 当审核被拒时，你可以：
 
-* 根据反馈修改代码或描述
-* 重新提交版本
-* 通过 App Store Connect 向审核团队进行说明和沟通
+- 根据反馈修改代码或描述
+- 重新提交版本
+- 通过 App Store Connect 向审核团队进行说明和沟通
 
 这是 App 上架过程中非常常见的一步，并不代表项目失败。
 
@@ -707,19 +707,19 @@ Apple 会从以下几个方面审核 App：
 
 以下内容参考了 Apple 官方文档及公开经验分享：
 
-* App Store Review Guidelines（Apple 官方）
+- App Store Review Guidelines（Apple 官方）
   [https://developer.apple.com/app-store/review/guidelines/](https://developer.apple.com/app-store/review/guidelines/?utm_source=chatgpt.com)
-* App 提交审核官方说明
+- App 提交审核官方说明
   [https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review](https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review?utm_source=chatgpt.com)
-* 图文详解｜iOS App 上架全流程及审核避坑指南（知乎）
+- 图文详解｜iOS App 上架全流程及审核避坑指南（知乎）
   [https://zhuanlan.zhihu.com/p/146128612](https://zhuanlan.zhihu.com/p/146128612)
 
 ## 第7章：总结
 
 ![](images/image47.png)
 
-Congrats! 到这里你已经把完整的i0S App开发流程从0到1亲手走了一遍。从把环境搭好、跑起项目，再到界面、功能、数据、真机运行一步步落地，中间步骤都顺利完成了，很棒哦! 更重要的是，你不是通过死背Swift语法走到这一步，而是把一切交给AI~  不管你是什么专业，每一次的尝试都只会让你更快更顺，你发现i0S开发也不是那么困难，哪怕一行代码都不会写，也能实现自己的应用。
+Congrats! 到这里你已经把完整的i0S App开发流程从0到1亲手走了一遍。从把环境搭好、跑起项目，再到界面、功能、数据、真机运行一步步落地，中间步骤都顺利完成了，很棒哦! 更重要的是，你不是通过死背Swift语法走到这一步，而是把一切交给AI~ 不管你是什么专业，每一次的尝试都只会让你更快更顺，你发现i0S开发也不是那么困难，哪怕一行代码都不会写，也能实现自己的应用。
 
 回头看，整个流程其实并不复杂:想清楚要做什么，用HTML快速试界面，转换为SwiftUI代码，接上API和本地数据，最后跑一遍调试就好了。基于此，在未来你还可以随手做一个只给自己用的闹钟、一个极简Todo List，或者用喜欢明星的语气做个对话机器人。
 
-这就是这套教程最核心的地方，也是easy-vibe最想教会你的事情! 期待住各位vibe coding大师们的最新杰作!  期待被你的作品美晕的一天!
+这就是这套教程最核心的地方，也是easy-vibe最想教会你的事情! 期待住各位vibe coding大师们的最新杰作! 期待被你的作品美晕的一天!

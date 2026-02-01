@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
+    "claude": "^0.1.1",
+    "codex": "^0.2.3",
     "element-plus": "^2.13.1",
     "typeit": "^8.8.7",
     "viewerjs": "^1.11.7",

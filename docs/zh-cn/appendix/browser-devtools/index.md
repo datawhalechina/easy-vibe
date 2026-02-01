@@ -64,6 +64,10 @@ DevTools 最强大的功能之一就是**实时修改**。下方的演示包含�
 
 ### 3.1 Elements (元素面板)
 
+<ClientOnly>
+  <DevToolsElementsDemo />
+</ClientOnly>
+
 **作用**：查看和实时编辑页面的 HTML 和 CSS。
 
 - **左侧 (DOM 树)**：显示网页的 HTML 结构。你可以双击标签或文本进行修改，甚至拖拽节点改变位置。
@@ -74,6 +78,10 @@ DevTools 最强大的功能之一就是**实时修改**。下方的演示包含�
 
 ### 3.2 Console (控制台面板)
 
+<ClientOnly>
+  <DevToolsConsoleDemo />
+</ClientOnly>
+
 **作用**：查看日志信息，运行 JavaScript 代码。
 
 - **日志输出**：网页运行时的 `console.log()` 信息、警告（黄色）和报错（红色）都会显示在这里。
@@ -83,6 +91,10 @@ DevTools 最强大的功能之一就是**实时修改**。下方的演示包含�
   - "验证一个 JS 函数的返回值。" -> 直接在控制台运行测试。
 
 ### 3.3 Network (网络面板)
+
+<ClientOnly>
+  <DevToolsNetworkDemo />
+</ClientOnly>
 
 **作用**：监控所有网络请求。
 
@@ -101,6 +113,10 @@ DevTools 最强大的功能之一就是**实时修改**。下方的演示包含�
 
 ### 3.4 Sources (源代码面板)
 
+<ClientOnly>
+  <DevToolsSourcesDemo />
+</ClientOnly>
+
 **作用**：查看源代码，调试 JavaScript。
 
 - **断点调试**：点击行号可以设置“断点 (Breakpoint)”。当代码执行到这一行时会**暂停**，让你有机会查看当前的变量值，并单步执行代码。
@@ -108,6 +124,10 @@ DevTools 最强大的功能之一就是**实时修改**。下方的演示包含�
   - "代码逻辑哪里出错了？" -> 打断点，一步步看着代码跑，看变量值是否符合预期。
 
 ### 3.5 Application (应用面板)
+
+<ClientOnly>
+  <DevToolsApplicationDemo />
+</ClientOnly>
 
 **作用**：查看和管理浏览器存储。
 

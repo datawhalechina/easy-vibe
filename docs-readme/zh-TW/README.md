@@ -77,15 +77,15 @@
 
 ### 一、新手入門與產品原型
 
-| 章节                                                                                                | 關鍵內容                               | 狀態 |
-| :-------------------------------------------------------------------------------------------------- | :------------------------------------- | :--- |
-| [前言：學習地圖](../docs/zh-cn/stage-0/0.1-learning-map/index.md)                                   | 整體學習路徑導覽                       | ✅   |
-| [初級一：AI 時代，會說話就會編程](../docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 通過貪吃蛇等案例初步感受 AI 編程的能力 | ✅   |
-| [初級二：認識 AI IDE 工具](../docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)        | 學會使用 IDE，在本地製作小遊戲                    | ✅   |
-| [初級三：動手做出原型](../docs/zh-cn/stage-1/1.2-building-prototype/index.md)                | 從需求分析、AI 生成單頁面，再到生成多頁面產品原型 | ✅   |
-| [初級四：給原型加上 AI 能力](../docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md) | 學會接入常見 AI 能力（文本、圖片、影片）          | ✅   |
-| [初級五：完整專案實戰](../docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)         | 模擬真實場景、接受用戶反饋迭代，完整化專案        | ✅   |
-| [大作業：做一個完整的 Web 應用原型並展示](../docs/zh-cn/stage-1/1.5-final-project/index.md)  | 完整實現應用，展示應用效果                        | ✅   |
+| 章节                                                                                                | 關鍵內容                                          | 狀態 |
+| :-------------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
+| [前言：學習地圖](../docs/zh-cn/stage-0/0.1-learning-map/index.md)                                   | 整體學習路徑導覽                                  | ✅   |
+| [初級一：AI 時代，會說話就會編程](../docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 通過貪吃蛇等案例初步感受 AI 編程的能力            | ✅   |
+| [初級二：認識 AI IDE 工具](../docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)               | 學會使用 IDE，在本地製作小遊戲                    | ✅   |
+| [初級三：動手做出原型](../docs/zh-cn/stage-1/1.2-building-prototype/index.md)                       | 從需求分析、AI 生成單頁面，再到生成多頁面產品原型 | ✅   |
+| [初級四：給原型加上 AI 能力](../docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)        | 學會接入常見 AI 能力（文本、圖片、影片）          | ✅   |
+| [初級五：完整專案實戰](../docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                | 模擬真實場景、接受用戶反饋迭代，完整化專案        | ✅   |
+| [大作業：做一個完整的 Web 應用原型並展示](../docs/zh-cn/stage-1/1.5-final-project/index.md)         | 完整實現應用，展示應用效果                        | ✅   |
 
 #### 附錄
 

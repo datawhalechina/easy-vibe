@@ -65,7 +65,14 @@
       <div class="stats">
         <div class="stat-item">
           <span class="label">FPS:</span>
-          <span class="value" :class="{ good: fps >= 55, warning: fps >= 30 && fps < 55, bad: fps < 30 }">
+          <span
+            class="value"
+            :class="{
+              good: fps >= 55,
+              warning: fps >= 30 && fps < 55,
+              bad: fps < 30
+            }"
+          >
             {{ fps }}
           </span>
         </div>
@@ -116,17 +123,23 @@
             <tr v-if="useDirtyRect">
               <td>Dirty Rect / 脏矩形</td>
               <td>{{ fps }}</td>
-              <td>{{ (((fps - baselineFps) / baselineFps) * 100).toFixed(1) }}%</td>
+              <td>
+                {{ (((fps - baselineFps) / baselineFps) * 100).toFixed(1) }}%
+              </td>
             </tr>
             <tr v-if="useOffscreenCanvas">
               <td>Offscreen Canvas / 离屏画布</td>
               <td>{{ fps }}</td>
-              <td>{{ (((fps - baselineFps) / baselineFps) * 100).toFixed(1) }}%</td>
+              <td>
+                {{ (((fps - baselineFps) / baselineFps) * 100).toFixed(1) }}%
+              </td>
             </tr>
             <tr v-if="useBatching">
               <td>Batch Rendering / 批量渲染</td>
               <td>{{ fps }}</td>
-              <td>{{ (((fps - baselineFps) / baselineFps) * 100).toFixed(1) }}%</td>
+              <td>
+                {{ (((fps - baselineFps) / baselineFps) * 100).toFixed(1) }}%
+              </td>
             </tr>
           </tbody>
         </table>
@@ -335,7 +348,12 @@ const drawRedrawTest = (ctx) => {
     // 只重绘移动的对象
     objects.forEach((obj) => {
       if (obj.moved) {
-        ctx.clearRect(obj.oldX - obj.size - 1, obj.oldY - obj.size - 1, obj.size * 2 + 2, obj.size * 2 + 2)
+        ctx.clearRect(
+          obj.oldX - obj.size - 1,
+          obj.oldY - obj.size - 1,
+          obj.size * 2 + 2,
+          obj.size * 2 + 2
+        )
         ctx.fillStyle = obj.color
         ctx.beginPath()
         ctx.arc(obj.x, obj.y, obj.size, 0, Math.PI * 2)
@@ -471,7 +489,12 @@ const animate = (timestamp) => {
   fpsTime += deltaTime
   if (fpsTime >= 1000) {
     fps.value = Math.round((frameCount * 1000) / fpsTime)
-    if (!showComparison.value && !useDirtyRect.value && !useOffscreenCanvas.value && !useBatching.value) {
+    if (
+      !showComparison.value &&
+      !useDirtyRect.value &&
+      !useOffscreenCanvas.value &&
+      !useBatching.value
+    ) {
       baselineFps.value = fps.value
     }
     frameCount = 0
@@ -594,7 +617,7 @@ onUnmounted(() => {
   color: #555;
 }
 
-.param-row input[type="range"] {
+.param-row input[type='range'] {
   width: 100%;
 }
 
@@ -627,7 +650,7 @@ onUnmounted(() => {
   border: 1px solid #ddd;
 }
 
-.toggle-option input[type="checkbox"] {
+.toggle-option input[type='checkbox'] {
   width: 18px;
   height: 18px;
   cursor: pointer;

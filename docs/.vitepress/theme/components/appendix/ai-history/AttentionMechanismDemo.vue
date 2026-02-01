@@ -1,54 +1,65 @@
 <template>
   <div class="attention-mechanism-demo">
-    <div class="demo-header">
-      <h4>👁️ 注意力机制演示</h4>
-      <p>点击词语，观察它如何"关注"句子中的其他词</p>
-    </div>
+    <el-card shadow="hover">
+      <template #header>
+        <div class="card-header">
+          <h4>👁️ 注意力机制演示</h4>
+          <p class="subtitle">点击词语，观察它如何"关注"句子中的其他词</p>
+        </div>
+      </template>
 
-    <div class="sentence-container">
-      <div class="sentence">
-        <span
-          v-for="(word, index) in sentence"
-          :key="index"
-          :class="['word-token', { active: activeIndex === index, source: activeIndex === index }]"
-          @click="selectWord(index)"
-        >
-          {{ word }}
-        </span>
-      </div>
+      <div class="sentence-container">
+        <div class="sentence">
+          <el-tag
+            v-for="(word, index) in sentence"
+            :key="index"
+            :type="activeIndex === index ? 'primary' : 'info'"
+            :effect="activeIndex === index ? 'dark' : 'plain'"
+            class="word-token"
+            @click="selectWord(index)"
+          >
+            {{ word }}
+          </el-tag>
+        </div>
 
-      <div class="attention-heatmap">
-        <transition-group name="fade">
+        <div class="attention-bars" v-if="activeIndex !== null">
           <div
             v-for="(attention, index) in attentionWeights"
             :key="index"
-            v-show="activeIndex !== null"
-            :class="['attention-bar', { highlight: attention.weight > 0.5 }]"
-            :style="{ width: (attention.weight * 100) + '%', opacity: activeIndex !== null ? 1 : 0 }"
+            class="attention-item"
           >
-            <span class="attention-label">{{ attention.word }}: {{ (attention.weight * 100).toFixed(0) }}%</span>
+            <div class="word-label">{{ attention.word }}</div>
+            <el-progress
+              :percentage="Math.round(attention.weight * 100)"
+              :status="attention.weight > 0.5 ? 'exception' : ''"
+              :color="customColors"
+              class="attention-progress"
+            />
           </div>
-        </transition-group>
+        </div>
+        <el-empty
+          v-else
+          description="👆 点击句子中的任意词语开始"
+          :image-size="60"
+        />
       </div>
-    </div>
 
-    <div class="explanation-panel">
-      <div v-if="activeIndex !== null" class="explanation-content">
-        <h5>当前词: "{{ sentence[activeIndex] }}"</h5>
-        <p><strong>注意力权重:</strong></p>
-        <ul>
-          <li v-for="(item, index) in attentionWeights" :key="index">
-            "{{ item.word }}" - {{ (item.weight * 100).toFixed(0) }}% 的关注度
-          </li>
-        </ul>
-        <p class="insight">
-          💡 <strong>关键洞察:</strong> {{ getInsight(activeIndex) }}
-        </p>
-      </div>
-      <div v-else class="placeholder">
-        👆 点击句子中的任意词语开始
-      </div>
-    </div>
+      <el-collapse-transition>
+        <div v-if="activeIndex !== null" class="explanation-panel">
+          <el-alert
+            type="success"
+            :closable="false"
+            show-icon
+            class="insight-alert"
+          >
+            <template #title>
+              <span class="insight-title">关键洞察</span>
+            </template>
+            <p>{{ getInsight(activeIndex) }}</p>
+          </el-alert>
+        </div>
+      </el-collapse-transition>
+    </el-card>
   </div>
 </template>
 
@@ -58,15 +69,22 @@ import { ref, computed } from 'vue'
 const sentence = ref(['小明', '把', '苹果', '给了', '他', '的', '母亲'])
 const activeIndex = ref(null)
 
+const customColors = [
+  { color: '#909399', percentage: 20 },
+  { color: '#e6a23c', percentage: 40 },
+  { color: '#f56c6c', percentage: 80 },
+  { color: '#67c23a', percentage: 100 }
+]
+
 // 注意力权重矩阵（模拟）
 const attentionMatrix = {
-  0: [0.15, 0.05, 0.60, 0.05, 0.05, 0.05, 0.05], // 小明 主要关注 苹果、他
-  1: [0.10, 0.10, 0.40, 0.30, 0.05, 0.03, 0.02], // 把 主要关注 苹果、给了
-  2: [0.50, 0.10, 0.15, 0.15, 0.05, 0.03, 0.02], // 苹果 主要关注 小明
-  3: [0.10, 0.10, 0.35, 0.15, 0.20, 0.05, 0.05], // 给了 主要关注 苹果、他
-  4: [0.65, 0.05, 0.10, 0.10, 0.05, 0.03, 0.02], // 他 主要关注 小明
+  0: [0.15, 0.05, 0.6, 0.05, 0.05, 0.05, 0.05], // 小明 主要关注 苹果、他
+  1: [0.1, 0.1, 0.4, 0.3, 0.05, 0.03, 0.02], // 把 主要关注 苹果、给了
+  2: [0.5, 0.1, 0.15, 0.15, 0.05, 0.03, 0.02], // 苹果 主要关注 小明
+  3: [0.1, 0.1, 0.35, 0.15, 0.2, 0.05, 0.05], // 给了 主要关注 苹果、他
+  4: [0.65, 0.05, 0.1, 0.1, 0.05, 0.03, 0.02], // 他 主要关注 小明
   5: [0.08, 0.05, 0.07, 0.08, 0.62, 0.05, 0.05], // 的 主要关注 他
-  6: [0.25, 0.10, 0.15, 0.15, 0.20, 0.10, 0.05]  // 母亲 关注多个词
+  6: [0.25, 0.1, 0.15, 0.15, 0.2, 0.1, 0.05] // 母亲 关注多个词
 }
 
 const insights = {
@@ -93,159 +111,79 @@ const selectWord = (index) => {
 }
 
 const getInsight = (index) => {
-  return insights[index] || '模型正在理解这个词的上下文关系。'
+  return insights[index]
 }
 </script>
 
 <style scoped>
 .attention-mechanism-demo {
-  margin: 1rem 0;
-  padding: 1.5rem;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  color: var(--vp-c-text-1);
+  margin: 20px 0;
 }
 
-.demo-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 1.5rem;
-}
-
-.demo-header p {
+.card-header h4 {
   margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.sentence-container {
-  background: var(--vp-c-bg);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
-  margin-bottom: 1.5rem;
+.subtitle {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  margin: 4px 0 0;
 }
 
 .sentence {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: var(--vp-c-bg-alt);
+  border-radius: 8px;
 }
 
 .word-token {
-  padding: 0.5rem 1rem;
-  background: var(--vp-c-bg-alt);
-  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  user-select: none;
-  border: 1px solid var(--vp-c-divider);
+  font-size: 16px;
+  padding: 8px 16px;
+  transition: all 0.2s;
 }
 
 .word-token:hover {
-  border-color: var(--vp-c-brand);
+  transform: translateY(-2px);
 }
 
-.word-token.active {
-  background: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-bg);
+.attention-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.attention-heatmap {
-  min-height: 150px;
+.attention-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.attention-bar {
-  margin-bottom: 0.75rem;
-  padding: 0.5rem 1rem;
-  background: rgba(var(--vp-c-brand-rgb), 0.2);
-  border: 1px solid rgba(var(--vp-c-brand-rgb), 0.25);
-  border-radius: 4px;
-  color: var(--vp-c-text-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: all 0.5s ease;
+.word-label {
+  width: 40px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.attention-bar.highlight {
-  background: rgba(var(--vp-c-brand-rgb), 0.35);
-  border-color: rgba(var(--vp-c-brand-rgb), 0.4);
-}
-
-.attention-label {
-  white-space: nowrap;
+.attention-progress {
+  flex: 1;
 }
 
 .explanation-panel {
-  background: var(--vp-c-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
+  margin-top: 16px;
 }
 
-.explanation-content h5 {
-  margin: 0 0 1rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 1.25rem;
-}
-
-.explanation-content p {
-  margin-bottom: 0.75rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.explanation-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1rem 0;
-}
-
-.explanation-content li {
-  padding: 0.5rem;
-  background: var(--vp-c-bg-soft);
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  border-left: 3px solid var(--vp-c-brand);
-  font-size: 0.875rem;
-  color: var(--vp-c-text-1);
-}
-
-.insight {
-  padding: 1rem;
-  background: rgba(var(--vp-c-brand-rgb), 0.08);
-  border: 1px solid rgba(var(--vp-c-brand-rgb), 0.15);
-  border-radius: 6px;
-  color: var(--vp-c-text-1);
-  line-height: 1.6;
-}
-
-.placeholder {
-  text-align: center;
-  padding: 2rem;
-  color: var(--vp-c-text-2);
-  font-size: 1.125rem;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateX(-20px);
+.insight-title {
+  font-weight: bold;
+  font-size: 14px;
 }
 </style>

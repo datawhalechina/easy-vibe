@@ -77,15 +77,15 @@ Wir glauben, dass durch die Beherrschung von Vibe Coding in Kombination mit syst
 
 ### 1. Anfängereinstieg und Produktprototyp
 
-| Kapitel                                                                                                                                     | Schlüsselinhalt                                                     | Status |
-| :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------ | :----- |
-| [Vorwort: Lernkarte](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                                          | Gesamtführung durch den Lernpfad                                    | ✅     |
-| [Anfänger 1: KI-Zeitalter, wenn du sprechen kannst, kannst du programmieren](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Erste Erfahrung mit KI-Programmierfähigkeiten durch Fälle wie Snake | ✅     |
-| [Anfänger 2: KI-IDE-Tools kennenlernen](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                               | IDE-Nutzung lernen, lokal Mini-Spiele erstellen                                                     | ✅     |
-| [Anfänger 3: Einen Prototyp selbst bauen](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                 | Anforderungsanalyse, KI-generierte Einzelseite, bis zu Generierung von Mehrseiten-Produktprototypen | ✅     |
-| [Anfänger 4: KI-Fähigkeiten zum Prototyp hinzufügen](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)             | Verbindung gängiger KI-Fähigkeiten (Text, Bild, Video) lernen                                       | ✅     |
-| [Anfänger 5: Komplettes Projektpraxis](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                             | Reale Szenarien simulieren, Benutzerfeedback zur Iteration akzeptieren, Projekt completed           | ✅     |
-| [Großes Projekt: Einen kompletten Web-App-Prototyp erstellen und präsentieren](docs/zh-cn/stage-1/1.5-final-project/index.md) | Anwendung vollständig implementieren, Anwendungseffekte präsentieren                                | ✅     |
+| Kapitel                                                                                                                                     | Schlüsselinhalt                                                                                     | Status |
+| :------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------- | :----- |
+| [Vorwort: Lernkarte](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                                          | Gesamtführung durch den Lernpfad                                                                    | ✅     |
+| [Anfänger 1: KI-Zeitalter, wenn du sprechen kannst, kannst du programmieren](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Erste Erfahrung mit KI-Programmierfähigkeiten durch Fälle wie Snake                                 | ✅     |
+| [Anfänger 2: KI-IDE-Tools kennenlernen](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                                             | IDE-Nutzung lernen, lokal Mini-Spiele erstellen                                                     | ✅     |
+| [Anfänger 3: Einen Prototyp selbst bauen](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                               | Anforderungsanalyse, KI-generierte Einzelseite, bis zu Generierung von Mehrseiten-Produktprototypen | ✅     |
+| [Anfänger 4: KI-Fähigkeiten zum Prototyp hinzufügen](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)                           | Verbindung gängiger KI-Fähigkeiten (Text, Bild, Video) lernen                                       | ✅     |
+| [Anfänger 5: Komplettes Projektpraxis](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                                           | Reale Szenarien simulieren, Benutzerfeedback zur Iteration akzeptieren, Projekt completed           | ✅     |
+| [Großes Projekt: Einen kompletten Web-App-Prototyp erstellen und präsentieren](docs/zh-cn/stage-1/1.5-final-project/index.md)               | Anwendung vollständig implementieren, Anwendungseffekte präsentieren                                | ✅     |
 
 #### Anhänge
 

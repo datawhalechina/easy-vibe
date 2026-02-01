@@ -1,81 +1,126 @@
 <template>
   <div class="perceptron-demo">
-    <div class="neuron-viz">
-      <!-- Inputs -->
-      <div class="inputs-col">
-        <div class="input-node">
-          <span class="label">Input 1 (x₁)</span>
-          <input type="number" v-model="x1" class="val-input" />
+    <el-card shadow="hover">
+      <template #header>
+        <div class="card-header">
+          <h4>感知机 (Perceptron) 演示</h4>
+          <p class="subtitle">最简单的神经元：输入 x 权重 + 偏置 = 输出</p>
         </div>
-        <div class="input-node">
-          <span class="label">Input 2 (x₂)</span>
-          <input type="number" v-model="x2" class="val-input" />
+      </template>
+
+      <div class="neuron-viz-container">
+        <!-- Inputs -->
+        <div class="col inputs-col">
+          <div class="node-wrapper">
+            <el-tag effect="dark">输入 A</el-tag>
+            <el-input-number v-model="x1" size="small" :step="1" />
+          </div>
+          <div class="node-wrapper">
+            <el-tag effect="dark">输入 B</el-tag>
+            <el-input-number v-model="x2" size="small" :step="1" />
+          </div>
+        </div>
+
+        <!-- Weights Visual -->
+        <div class="col weights-col">
+          <div class="weight-group">
+            <div
+              class="weight-line"
+              :style="{
+                height: Math.abs(w1) * 2 + 2 + 'px',
+                opacity: Math.abs(w1) / 5 + 0.2
+              }"
+            ></div>
+            <div class="weight-control">
+              <span class="label">权重 A: {{ w1 }}</span>
+              <el-slider
+                v-model="w1"
+                :min="-5"
+                :max="5"
+                :step="0.1"
+                size="small"
+              />
+            </div>
+          </div>
+
+          <div class="weight-group">
+            <div
+              class="weight-line"
+              :style="{
+                height: Math.abs(w2) * 2 + 2 + 'px',
+                opacity: Math.abs(w2) / 5 + 0.2
+              }"
+            ></div>
+            <div class="weight-control">
+              <span class="label">权重 B: {{ w2 }}</span>
+              <el-slider
+                v-model="w2"
+                :min="-5"
+                :max="5"
+                :step="0.1"
+                size="small"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Neuron Body -->
+        <div class="col neuron-col">
+          <div class="neuron-circle">
+            <div class="sum-symbol">总分</div>
+            <div class="sum-value">{{ weightedSum.toFixed(1) }}</div>
+          </div>
+          <div class="bias-control mt-2">
+            <span class="label">基础分 (Bias):</span>
+            <el-input-number v-model="bias" size="small" :step="1" />
+          </div>
+        </div>
+
+        <!-- Output -->
+        <div class="col output-col">
+          <el-icon class="arrow-icon"><Right /></el-icon>
+          <div class="node-wrapper">
+            <el-tag :type="output > 0 ? 'success' : 'info'" effect="dark"
+              >结果 (Output)</el-tag
+            >
+            <div class="output-value" :class="{ active: output > 0 }">
+              {{ output }}
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Weights (Edges) -->
-      <div class="weights-col">
-        <div
-          class="weight-line"
-          :style="{
-            width: Math.abs(w1) * 2 + 2 + 'px',
-            opacity: Math.abs(w1) / 5 + 0.2
-          }"
-        ></div>
-        <div class="weight-control top">
-          w₁: <input type="range" v-model="w1" min="-5" max="5" step="0.1" />
-          {{ w1 }}
-        </div>
+      <el-divider />
 
-        <div
-          class="weight-line"
-          :style="{
-            width: Math.abs(w2) * 2 + 2 + 'px',
-            opacity: Math.abs(w2) / 5 + 0.2
-          }"
-        ></div>
-        <div class="weight-control bottom">
-          w₂: <input type="range" v-model="w2" min="-5" max="5" step="0.1" />
-          {{ w2 }}
-        </div>
+      <div class="formula-bar">
+        <el-alert type="info" :closable="false">
+          <template #title>
+            <div class="formula-content">
+              <div>
+                <strong>总分计算: </strong>
+                <span class="calc-step">
+                  (输入A {{ x1 }} × 权重 {{ w1 }}) + (输入B {{ x2 }} × 权重 {{ w2 }}) + 基础分 {{ bias }} =
+                  {{ weightedSum.toFixed(1) }}
+                </span>
+              </div>
+              <div class="mt-1">
+                <strong>判断结果: </strong>
+                <span class="calc-step"> 
+                   {{ weightedSum.toFixed(1) }} {{ weightedSum > 0 ? '>' : '≤' }} 0 
+                   → 输出 {{ output }} ({{ output > 0 ? '激活' : '静默' }})
+                </span>
+              </div>
+            </div>
+          </template>
+        </el-alert>
       </div>
-
-      <!-- Neuron (Sum & Activation) -->
-      <div class="neuron-body">
-        <div class="sum-part">
-          <div class="math">∑</div>
-          <div class="val">{{ weightedSum.toFixed(1) }}</div>
-        </div>
-        <div class="bias-control">
-          Bias: <input type="number" v-model="bias" class="bias-input" />
-        </div>
-      </div>
-
-      <!-- Output -->
-      <div class="output-col">
-        <div class="arrow">➔</div>
-        <div class="output-node" :class="{ active: output > 0 }">
-          <span class="label">Output (y)</span>
-          <div class="val">{{ output }}</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="formula-bar">
-      Formula:
-      <code
-        >({{ x1 }} * {{ w1 }}) + ({{ x2 }} * {{ w2 }}) + {{ bias }} =
-        {{ weightedSum.toFixed(1) }}</code
-      >
-      <br />
-      Activation:
-      <code>Step( {{ weightedSum.toFixed(1) }} ) = {{ output }}</code>
-    </div>
+    </el-card>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import { Right } from '@element-plus/icons-vue'
 
 const x1 = ref(1)
 const x2 = ref(0)
@@ -94,161 +139,117 @@ const output = computed(() => {
 
 <style scoped>
 .perceptron-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
-  margin: 1rem 0;
-  overflow-x: auto;
+  margin: 20px 0;
 }
 
-.neuron-viz {
+.card-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  margin: 4px 0 0;
+}
+
+.neuron-viz-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 500px;
-  gap: 1rem;
+  gap: 20px;
+  padding: 20px 0;
+  overflow-x: auto;
 }
 
-.inputs-col,
-.output-col {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.input-node,
-.output-node {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid var(--vp-c-divider);
+.col {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: var(--vp-c-bg);
-  position: relative;
-  color: var(--vp-c-text-1);
+  gap: 20px;
 }
 
-.output-node.active {
-  background: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-bg);
-  font-weight: bold;
-}
-
-.label {
-  font-size: 0.6rem;
-  position: absolute;
-  top: -15px;
-  width: 80px;
-  text-align: center;
-  color: var(--vp-c-text-2);
-}
-
-.val-input {
-  width: 40px;
-  text-align: center;
-  border: none;
-  background: transparent;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.weights-col {
-  flex: 1;
+.node-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 120px;
+  gap: 8px;
+}
+
+.weight-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 120px;
 }
 
 .weight-line {
+  width: 100%;
+  background-color: var(--el-color-primary);
   height: 2px;
-  background: var(--vp-c-text-2);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform-origin: left center;
+  min-height: 2px;
 }
-/* Simplified visual lines for CSS only demo - ideally SVG */
-/* This is a simplified representation */
 
 .weight-control {
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: var(--vp-c-bg);
-  padding: 2px 4px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  z-index: 2;
+  width: 100%;
+  text-align: center;
 }
 
-.neuron-body {
-  width: 100px;
-  height: 100px;
+.label {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+
+.neuron-circle {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: var(--vp-c-brand);
-  color: var(--vp-c-bg);
+  border: 2px solid var(--el-color-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  border: 1px solid rgba(var(--vp-c-brand-rgb), 0.35);
+  background-color: var(--vp-c-bg);
 }
 
-.sum-part {
-  text-align: center;
-}
-.math {
-  font-size: 1.5rem;
-}
-.val {
+.sum-symbol {
+  font-size: 24px;
   font-weight: bold;
 }
 
-.bias-control {
-  position: absolute;
-  bottom: -30px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-  padding: 2px 8px;
-  border-radius: 10px;
-  border: 1px solid var(--vp-c-divider);
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.bias-input {
-  width: 30px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 2px;
-  text-align: center;
+.sum-value {
+  font-family: monospace;
 }
 
-.formula-bar {
-  margin-top: 2rem;
-  background: var(--vp-c-bg);
-  padding: 1rem;
-  border-radius: 6px;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.8rem;
-  color: var(--vp-c-text-1);
-  text-align: center;
-  border: 1px dashed var(--vp-c-divider);
+.arrow-icon {
+  font-size: 24px;
+  color: var(--vp-c-text-2);
 }
 
-input[type='range'] {
-  width: 60px;
+.output-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--vp-c-text-2);
+}
+
+.output-value.active {
+  color: var(--el-color-success);
+}
+
+.mt-1 {
+  margin-top: 4px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.formula-content code {
+  background-color: var(--vp-c-bg-alt);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
 }
 </style>

@@ -3,58 +3,77 @@
   “清晰 vs 模糊”对比：把一个提示词拆成四块（任务/上下文/要求/输出），并展示哪些块缺失会导致输出跑偏。
 -->
 <template>
-  <div class="cmp">
-    <div class="header">
-      <div>
-        <div class="title">清晰 vs 模糊：差的不是“废话”，而是“缺项”</div>
-        <div class="subtitle">勾选你想补充的信息，看看输出会怎么变。</div>
+  <el-card class="cmp-card" shadow="hover">
+    <template #header>
+      <div class="card-header">
+        <div>
+          <h3 class="title">清晰 vs 模糊：差的不是“废话”，而是“缺项”</h3>
+          <p class="subtitle">勾选你想补充的信息，看看输出会怎么变。</p>
+        </div>
+        <div class="task-select">
+          <el-select v-model="task" placeholder="选择任务" style="width: 200px">
+            <el-option label="写一段技术博客开头" value="blog" />
+            <el-option label="把内容输出成 JSON" value="json" />
+          </el-select>
+        </div>
       </div>
-      <div class="task">
-        <select v-model="task">
-          <option value="blog">写一段技术博客开头</option>
-          <option value="json">把内容输出成 JSON</option>
-        </select>
-      </div>
+    </template>
+
+    <div class="options-container">
+      <el-checkbox v-model="useRole" label="角色（你是谁）" border />
+      <el-checkbox v-model="useAudience" label="受众（写给谁）" border />
+      <el-checkbox
+        v-model="useConstraints"
+        label="约束（长度/要点数）"
+        border
+      />
+      <el-checkbox v-model="useFormat" label="输出格式（JSON/列表）" border />
     </div>
 
-    <div class="options">
-      <label><input type="checkbox" v-model="useRole" /> 角色（你是谁）</label>
-      <label
-        ><input type="checkbox" v-model="useAudience" /> 受众（写给谁）</label
-      >
-      <label
-        ><input type="checkbox" v-model="useConstraints" />
-        约束（长度/要点数）</label
-      >
-      <label
-        ><input type="checkbox" v-model="useFormat" />
-        输出格式（JSON/列表）</label
-      >
-    </div>
-
-    <div class="grid">
-      <div class="panel">
-        <div class="panel-title">你给 AI 的提示词</div>
-        <pre><code>{{ prompt }}</code></pre>
+    <div class="grid-layout">
+      <el-card shadow="never" class="panel input-panel">
+        <template #header>
+          <div class="panel-header">你给 AI 的提示词</div>
+        </template>
+        <div class="code-block">
+          <pre><code>{{ prompt }}</code></pre>
+        </div>
         <div class="checklist">
-          <div class="item" v-for="i in checklist" :key="i.text">
-            <span :class="['dot', i.ok ? 'ok' : 'bad']"></span>
+          <div class="check-item" v-for="i in checklist" :key="i.text">
+            <el-tag
+              :type="i.ok ? 'success' : 'danger'"
+              size="small"
+              effect="dark"
+              style="margin-right: 8px; min-width: 60px; text-align: center;"
+            >
+              {{ i.ok ? 'OK' : 'MISSING' }}
+            </el-tag>
             <span>{{ i.text }}</span>
           </div>
         </div>
-      </div>
-      <div class="panel">
-        <div class="panel-title">AI 输出（示意）</div>
-        <div class="output">{{ output }}</div>
-        <div class="warn" v-if="warnings.length">
-          <div class="warn-title">可能的问题</div>
-          <ul>
-            <li v-for="w in warnings" :key="w">{{ w }}</li>
-          </ul>
+      </el-card>
+
+      <el-card shadow="never" class="panel output-panel">
+        <template #header>
+          <div class="panel-header">AI 输出（示意）</div>
+        </template>
+        <div class="output-content">{{ output }}</div>
+
+        <div v-if="warnings.length" class="warnings-section">
+          <el-alert
+            v-for="w in warnings"
+            :key="w"
+            :title="w"
+            type="warning"
+            show-icon
+            :closable="false"
+            style="margin-top: 8px"
+          />
         </div>
-      </div>
+        <el-empty v-else description="完美！没有明显问题。" :image-size="60" />
+      </el-card>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script setup>
@@ -98,154 +117,146 @@ const prompt = computed(() => {
 
 const checklist = computed(() => [
   { text: '任务清晰（要做什么）', ok: true },
-  { text: '角色（用什么口吻）', ok: useRole.value },
-  { text: '受众/用途（给谁用）', ok: useAudience.value },
-  { text: '约束（长度/数量/范围）', ok: useConstraints.value },
-  { text: '输出格式（如何交付）', ok: useFormat.value }
+  { text: '角色定义（你是谁）', ok: useRole.value },
+  { text: '上下文/受众（给谁看）', ok: useAudience.value },
+  { text: '具体约束（怎么做）', ok: useConstraints.value },
+  { text: '格式要求（输出长啥样）', ok: useFormat.value }
 ])
-
-const warnings = computed(() => {
-  const w = []
-  if (!useAudience.value) w.push('语气可能过专业或太泛')
-  if (!useConstraints.value) w.push('长度/结构可能不稳定')
-  if (task.value === 'json' && !useFormat.value)
-    w.push('可能输出成一大段话，不是 JSON')
-  if (task.value === 'blog' && !useFormat.value)
-    w.push('可能加标题/分段，超出预期')
-  return w
-})
 
 const output = computed(() => {
   if (task.value === 'blog') {
-    if (warnings.value.length >= 2) {
-      return '提示词工程是一种与 AI 沟通的方法，它可以帮助你获得更好的输出......（可能偏长/风格不稳）'
+    if (!useConstraints.value && !useAudience.value) {
+      return '提示词工程（Prompt Engineering）是指通过优化输入给大语言模型的文本提示，来引导模型生成更准确、高质量输出的技术。它涉及到理解模型的工作原理、设计有效的指令结构以及不断迭代测试。'
     }
-    return '把 AI 当成新来的同事：你说得越清楚，它越不容易跑偏。提示词工程就是把“要做什么、给谁、怎么交付”一次说明白。'
+    if (useAudience.value && !useConstraints.value) {
+      return '嘿，大家好！今天咱们来聊聊“提示词工程”。简单说，它就像是教你怎么跟超级聪明的机器人说话。只要你说得对，它就能帮你干大事！'
+    }
+    return '嘿，朋友们！听说过“提示词工程”吗？其实它就像是在点外卖——你得告诉厨师（AI）你要微辣还是特辣（约束），是给小孩吃还是大人吃（受众）。说得越清楚，送来的饭（回答）才越合你胃口！今天咱们就来学学怎么“点菜”。'
   }
 
   // json
   if (!useFormat.value) {
-    return '这段文字主要讲提示词工程的重要性，并强调需要清晰任务、约束和格式……（但不是 JSON）'
+    return '这段文字主要讲了提示词工程的作用，以及它需要的三个要素：清晰任务、约束和格式。关键词包括提示词工程、模型输出质量等。'
   }
-  return `{\n  \"summary\": \"提示词工程能提升输出质量，关键在于清晰任务、约束与格式。\",\n  \"keywords\": [\"提示词工程\", \"任务清晰\", \"约束\", \"格式\"]\n}`
+  return `{
+  "summary": "提示词工程通过明确任务、约束及格式提升模型输出。",
+  "keywords": ["提示词工程", "输出质量", "清晰任务", "约束", "格式"]
+}`
+})
+
+const warnings = computed(() => {
+  const w = []
+  if (!useRole.value) w.push('缺少角色设定，AI 语气可能不够专业或统一。')
+  if (!useAudience.value)
+    w.push('未指定受众，AI 可能不知道该用深奥术语还是大白话。')
+  if (!useConstraints.value) w.push('没给约束，AI 容易啰嗦或者写太短。')
+  if (!useFormat.value) w.push('没规定格式，后续程序很难自动解析结果。')
+  return w
 })
 </script>
 
 <style scoped>
-.cmp {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  padding: 16px;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.cmp-card {
+  margin: 16px 0;
 }
 
-.header {
+.card-header {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  align-items: flex-start;
   flex-wrap: wrap;
+  gap: 16px;
 }
 
 .title {
-  font-weight: 800;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
 }
+
 .subtitle {
-  color: var(--vp-c-text-2);
-  font-size: 13px;
-}
-
-select {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 8px 10px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-}
-
-.options {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 10px 12px;
+  margin: 4px 0 0;
   font-size: 14px;
+  color: var(--vp-c-text-2);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
+  margin-bottom: 24px;
 }
 
-.panel {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.panel-header {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.code-block {
+  background-color: var(--vp-c-bg-alt);
   padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.code-block pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: var(--vp-font-family-mono);
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.output-content {
+  background-color: var(--vp-c-bg-soft);
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  min-height: 80px;
+}
+
+.warnings-section {
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.panel-title {
-  font-weight: 700;
-}
-pre {
-  margin: 0;
-  background: #0b1221;
-  color: #e5e7eb;
-  border-radius: 8px;
-  padding: 12px;
-  font-family: var(--vp-font-family-mono);
-  font-size: 13px;
-  overflow-x: auto;
-  white-space: pre-wrap;
-}
-
-.checklist {
-  display: grid;
-  gap: 6px;
-}
-.item {
-  display: flex;
   gap: 8px;
-  align-items: center;
-  color: var(--vp-c-text-2);
-  font-size: 13px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.dot.ok {
-  background: #22c55e;
-}
-.dot.bad {
-  background: #ef4444;
 }
 
-.output {
-  white-space: pre-wrap;
-  line-height: 1.6;
-}
-.warn {
-  border-top: 1px dashed var(--vp-c-divider);
-  padding-top: 10px;
-}
-.warn-title {
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-ul {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--vp-c-text-2);
+@media (max-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-select {
+    width: 100%;
+  }
+
+  .task-select .el-select {
+    width: 100% !important;
+  }
 }
 </style>

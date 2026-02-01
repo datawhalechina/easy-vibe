@@ -1,7 +1,11 @@
 // auth-design 公共组件配置
 
 // 生成按钮类名
-export const getButtonClasses = (variant = 'primary', disabled = false, size = 'medium') => {
+export const getButtonClasses = (
+  variant = 'primary',
+  disabled = false,
+  size = 'medium'
+) => {
   const base = 'auth-demo-btn'
   const classes = [base]
 
@@ -83,7 +87,10 @@ export const getTableRowClasses = (highlight = false, index = 0) => {
 }
 
 // 生成图标容器类名
-export const getIconContainerClasses = (size = 'medium', variant = 'default') => {
+export const getIconContainerClasses = (
+  size = 'medium',
+  variant = 'default'
+) => {
   return `auth-icon-container auth-icon-container-${size} auth-icon-container-${variant}`
 }
 

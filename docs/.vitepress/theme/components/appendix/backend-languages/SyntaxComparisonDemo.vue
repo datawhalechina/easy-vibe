@@ -38,7 +38,9 @@
           </div>
           <div class="stat-item">
             <span class="stat-label">字符数：</span>
-            <span class="stat-value">{{ getCharCount(selectedLang) }} 字符</span>
+            <span class="stat-value"
+              >{{ getCharCount(selectedLang) }} 字符</span
+            >
           </div>
           <div class="stat-item">
             <span class="stat-label">复杂度：</span>
@@ -129,7 +131,7 @@ func main() {
     filename: 'HelloWorld.java',
     complexity: '冗长'
   },
-  "C#": {
+  'C#': {
     code: `using System;
 
 class Program {
@@ -160,14 +162,17 @@ int main() {
 }
 
 const analyses = {
-  Python: 'Python 的语法极其简洁，只有一行代码。这也是为什么它被称为"伪代码语言"——读起来就像英语一样自然。没有任何样板代码，直接表达意图。',
+  Python:
+    'Python 的语法极其简洁，只有一行代码。这也是为什么它被称为"伪代码语言"——读起来就像英语一样自然。没有任何样板代码，直接表达意图。',
   Ruby: 'Ruby 受 Perl 影响，语法非常优雅。puts 是 "put string" 的缩写，字符串不需要括号（虽然可以加）。Ruby 哲学是"程序员快乐至上"。',
   Go: 'Go 的语法虽然比 Python 冗长，但非常清晰。package main、import、func main() 都是必要的显式声明，这让代码更容易理解和维护。',
-  'Node.js': 'Node.js 使用 JavaScript，语法简单直接。console.log() 是浏览器和 Node.js 通用的输出方式。前端开发者零学习成本。',
+  'Node.js':
+    'Node.js 使用 JavaScript，语法简单直接。console.log() 是浏览器和 Node.js 通用的输出方式。前端开发者零学习成本。',
   Java: 'Java 是典型的"仪式感"语言。class、public static void main、String[] args 都是必须的样板代码。虽然冗长，但结构清晰，适合大型项目。',
   'C#': 'C# 和 Java 非常相似，同样需要 class 和 Main 方法。using System 类似 Java 的 import，但更现代一些。.NET Core 后跨平台能力大幅提升。',
   Rust: 'Rust 的 fn main() 和 println! 宏看起来简洁，但 println! 后面的 ! 表示这是一个宏（不是函数）。Rust 的简洁来自于零成本抽象的设计哲学。',
-  'C++': 'C++ 需要 #include 头文件，std::cout 使用流操作符 <<，return 0 表示程序成功退出。虽然比 C 语言简洁（printf），但依然保留了很多底层细节。'
+  'C++':
+    'C++ 需要 #include 头文件，std::cout 使用流操作符 <<，return 0 表示程序成功退出。虽然比 C 语言简洁（printf），但依然保留了很多底层细节。'
 }
 
 const getCode = (lang) => {

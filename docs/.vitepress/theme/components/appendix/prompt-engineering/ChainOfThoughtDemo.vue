@@ -1,213 +1,367 @@
-<!--
-  ChainOfThoughtDemo.vue
-  “先计划再输出”演示（更易懂版本）。
-
-  注意：这里不强调让模型展示冗长推理，而是用“先列计划/检查点”来降低跑偏概率。
--->
 <template>
-  <div class="cot">
-    <div class="header">
-      <div>
-        <div class="title">复杂任务：先“列计划”，再“交付结果”</div>
-        <div class="subtitle">你要的是：不漏步骤 + 可检查 + 不跑题。</div>
+  <el-card class="cot-demo-card" shadow="hover">
+    <template #header>
+      <div class="controls-header">
+        <div class="control-group">
+          <span class="label">任务场景：</span>
+          <el-select v-model="currentTask" style="width: 200px">
+            <el-option label="代码审查 (Code Review)" value="debug" />
+            <el-option label="行程规划 (Travel Plan)" value="travel" />
+          </el-select>
+        </div>
+        
+        <div class="control-group">
+          <span class="label">思考模式：</span>
+          <el-radio-group v-model="currentMode">
+            <el-radio-button 
+              v-for="m in modes" 
+              :key="m.id"
+              :label="m.id"
+            >
+              {{ m.label }}
+            </el-radio-button>
+          </el-radio-group>
+        </div>
       </div>
-      <div class="controls">
-        <select v-model="task">
-          <option value="debug">代码审查</option>
-          <option value="plan">行程规划</option>
-        </select>
-        <button
-          v-for="m in modes"
-          :key="m.id"
-          :class="['mode', { active: mode === m.id }]"
-          @click="mode = m.id"
-        >
-          {{ m.label }}
-        </button>
-      </div>
+    </template>
+
+    <div class="demo-content">
+      <el-row :gutter="20">
+        <!-- Left: Prompt Input -->
+        <el-col :xs="24" :md="10">
+          <el-card shadow="never" class="prompt-panel">
+            <template #header>
+              <div class="panel-header">
+                <el-icon><EditPen /></el-icon>
+                <span>输入提示词 (Prompt)</span>
+              </div>
+            </template>
+            <div class="prompt-text">{{ currentScenario.prompt }}</div>
+            <div class="action-area">
+              <el-button 
+                type="primary" 
+                :loading="isPlaying"
+                @click="runSimulation" 
+                class="run-btn"
+                size="large"
+              >
+                {{ isPlaying ? '生成中...' : '开始生成' }}
+              </el-button>
+            </div>
+          </el-card>
+        </el-col>
+
+        <!-- Right: AI Output Process -->
+        <el-col :xs="24" :md="14">
+          <el-card shadow="never" class="output-panel">
+            <template #header>
+              <div class="panel-header">
+                <div class="left">
+                  <el-icon><Cpu /></el-icon>
+                  <span>AI 思考与输出</span>
+                </div>
+                <el-tag :type="statusType" effect="dark" size="small">{{ statusText }}</el-tag>
+              </div>
+            </template>
+            
+            <div class="output-container" ref="outputContainer">
+              <el-empty 
+                v-if="!hasRun && !isPlaying" 
+                description="点击“开始生成”观察 AI 如何处理任务..." 
+                :image-size="80"
+              />
+              
+              <el-timeline v-else>
+                <el-timeline-item
+                  v-for="(step, index) in displaySteps"
+                  :key="index"
+                  :type="getStepType(index)"
+                  :hollow="index > currentStepIndex"
+                  :timestamp="currentStepIndex === index ? 'Thinking...' : ''"
+                  placement="top"
+                >
+                  <h4 class="step-title">{{ step.title }}</h4>
+                  <div class="step-content" v-if="step.content">
+                    {{ step.displayedContent }}<span v-if="currentStepIndex === index" class="typing-cursor">|</span>
+                  </div>
+                </el-timeline-item>
+              </el-timeline>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
     </div>
 
-    <div class="grid">
-      <div class="panel">
-        <div class="panel-title">提示词 / Prompt</div>
-        <pre><code>{{ prompt }}</code></pre>
-      </div>
-      <div class="panel">
-        <div class="panel-title">输出（示意）</div>
-        <div class="output">{{ output }}</div>
-      </div>
+    <!-- Insight/Analysis Section -->
+    <div class="insight-section" v-if="hasRun || isPlaying">
+      <el-alert
+        :type="currentMode === 'direct' ? 'warning' : 'success'"
+        :closable="false"
+        show-icon
+      >
+        <template #title>
+          <span class="insight-title">模式分析</span>
+        </template>
+        <template #default>
+          <div v-if="currentMode === 'direct'">
+            <strong>直接输出模式：</strong> 模型急于给出结果，容易忽略边界情况或细节，导致内容泛泛而谈。
+          </div>
+          <div v-else>
+            <strong>CoT (思维链) 模式：</strong> 强迫模型先“思考”再“行动”。通过列出清单/计划，它相当于给自己建立了“检查点”，大大降低了遗漏和跑偏的概率。
+          </div>
+        </template>
+      </el-alert>
     </div>
-
-    <div class="why">
-      <div class="why-title">为什么这样更稳？</div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="k">✅ 不漏步骤</div>
-          <div class="v">计划就是清单，能一项项对照。</div>
-        </div>
-        <div class="why-card">
-          <div class="k">✅ 更好验收</div>
-          <div class="v">你知道该检查什么，而不是只看“像不像”。</div>
-        </div>
-        <div class="why-card">
-          <div class="k">✅ 更少返工</div>
-          <div class="v">先对齐方向，再生成结果，减少来回修。</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </el-card>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
+import { EditPen, Cpu } from '@element-plus/icons-vue'
 
-const task = ref('debug')
-const mode = ref('plan-first')
+const currentTask = ref('debug')
+const currentMode = ref('plan-first')
+const isPlaying = ref(false)
+const hasRun = ref(false)
+const currentStepIndex = ref(0)
+
+// Data Scenarios
+const scenarios = {
+  debug: {
+    prompt: `Review the following code:
+function add(a, b) {
+  return a - b;
+}`,
+    direct: [
+      { title: '直接输出', content: 'The function `add` incorrectly uses the subtraction operator `-` instead of `+`. It should be `return a + b;`.' }
+    ],
+    cot: [
+      { title: '1. 理解意图', content: 'User wants to add two numbers.' },
+      { title: '2. 检查实现', content: 'Line 2 uses `-` operator.' },
+      { title: '3. 发现矛盾', content: 'Function name is `add` but logic is subtraction.' },
+      { title: '4. 最终输出', content: 'The function has a bug: it subtracts instead of adds. Fix: change `-` to `+`.' }
+    ]
+  },
+  travel: {
+    prompt: 'Plan a 2-day trip to Paris for an art lover.',
+    direct: [
+      { title: '直接输出', content: 'Day 1: Eiffel Tower, Louvre. Day 2: Montmartre, Orsay Museum. Enjoy!' }
+    ],
+    cot: [
+      { title: '1. 分析需求', content: 'Destination: Paris. Duration: 2 days. Interest: Art.' },
+      { title: '2. 筛选景点', content: 'Must-sees: Louvre (Mona Lisa), Musee d\'Orsay (Impressionism), Pompidou (Modern).' },
+      { title: '3. 规划路线', content: 'Cluster locations to save travel time.' },
+      { title: '4. 最终行程', content: 'Day 1: Louvre (morning) -> Tuileries -> Orangerie. Day 2: Orsay (morning) -> Montmartre -> Sacré-Cœur.' }
+    ]
+  }
+}
 
 const modes = [
-  { id: 'direct', label: '直接输出' },
-  { id: 'plan-first', label: '先列计划再输出' }
+  { id: 'direct', label: '直接回答 (Zero-Shot)' },
+  { id: 'plan-first', label: '思维链 (Chain-of-Thought)' }
 ]
 
-const prompt = computed(() => {
-  if (task.value === 'debug') {
-    if (mode.value === 'direct') {
-      return '帮我看看这段代码有什么问题，并给修复建议。'
-    }
-    return `你是资深前端工程师。\n任务：代码审查。\n要求：\n1) 先列“检查清单”（3-5 项），说明你将检查什么\n2) 再输出问题列表（每条包含：现象/原因/修复）\n3) 最后给一段修复后的代码（仅关键片段）`
-  }
-  // plan
-  if (mode.value === 'direct') return '帮我做一个上海三日游行程，越详细越好。'
-  return `你是旅行规划师。\n任务：上海三日游。\n要求：\n1) 先列“规划原则”（交通/节奏/预算）\n2) 再给 Day1-Day3 行程（每段 3-5 个地点）\n3) 每天最后给一句“备选方案”\n输出：Markdown`
+const currentScenario = computed(() => scenarios[currentTask.value])
+const targetSteps = computed(() => {
+  return currentMode.value === 'direct' 
+    ? currentScenario.value.direct 
+    : currentScenario.value.cot
 })
 
-const output = computed(() => {
-  if (task.value === 'debug') {
-    if (mode.value === 'direct') {
-      return '代码可能有一些问题，比如命名不规范、性能不佳……（容易泛泛而谈/漏点）'
-    }
-    return `检查清单：\n- 边界条件（空值/类型）\n- 异步/错误处理\n- 性能（重复计算/循环）\n- 可读性（命名/拆分）\n\n问题列表：\n1) 现象：…\n   原因：…\n   修复：…\n2) 现象：…\n   原因：…\n   修复：…\n\n修复片段：\n// ...关键修改代码...`
-  }
-  if (mode.value === 'direct') {
-    return 'Day1：外滩…Day2：迪士尼…Day3：田子坊…（可能太散/不成体系）'
-  }
-  return `规划原则：\n- 交通：地铁优先\n- 节奏：上午景点，下午咖啡/逛街\n- 预算：人均 300-500/天\n\nDay1：外滩 → 南京路 → 人民广场\n备选：雨天去博物馆\n\nDay2：豫园 → 城隍庙 → 新天地\n备选：改为室内商场+展览\n\nDay3：武康路 → 安福路 → 徐汇滨江\n备选：去书店/美术馆`
+// Display state
+const displaySteps = ref([])
+
+const statusText = computed(() => {
+  if (isPlaying.value) return 'Thinking...'
+  if (hasRun.value) return 'Completed'
+  return 'Idle'
 })
+
+const statusType = computed(() => {
+  if (isPlaying.value) return 'primary'
+  if (hasRun.value) return 'success'
+  return 'info'
+})
+
+const getStepType = (index) => {
+  if (index < currentStepIndex.value) return 'success'
+  if (index === currentStepIndex.value) return 'primary'
+  return ''
+}
+
+// Reset when controls change
+watch([currentTask, currentMode], () => {
+  reset()
+})
+
+function reset() {
+  isPlaying.value = false
+  hasRun.value = false
+  currentStepIndex.value = 0
+  displaySteps.value = []
+}
+
+async function runSimulation() {
+  if (isPlaying.value) return
+  reset()
+  isPlaying.value = true
+  
+  // Initialize steps structure
+  displaySteps.value = targetSteps.value.map(s => ({
+    ...s,
+    displayedContent: ''
+  }))
+
+  for (let i = 0; i < displaySteps.value.length; i++) {
+    currentStepIndex.value = i
+    const step = displaySteps.value[i]
+    const fullContent = step.content
+    
+    // Simulate typing effect
+    for (let j = 0; j <= fullContent.length; j++) {
+      step.displayedContent = fullContent.slice(0, j)
+      await new Promise(r => setTimeout(r, 20)) // typing speed
+    }
+    await new Promise(r => setTimeout(r, 500)) // pause between steps
+  }
+
+  isPlaying.value = false
+  hasRun.value = true
+  currentStepIndex.value = displaySteps.value.length // Mark all done
+}
 </script>
 
 <style scoped>
-.cot {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  padding: 16px;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.cot-demo-card {
+  margin: 16px 0;
 }
 
-.header {
+.controls-header {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.title {
-  font-weight: 800;
-}
-.subtitle {
-  color: var(--vp-c-text-2);
-  font-size: 13px;
-}
-
-.controls {
-  display: flex;
-  gap: 8px;
   align-items: center;
   flex-wrap: wrap;
-}
-select {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 8px 10px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-}
-.mode {
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  padding: 8px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-.mode.active {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  gap: 16px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.panel {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 12px;
+
+.label {
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+}
+
+.demo-content {
+  margin-bottom: 24px;
+}
+
+.prompt-panel, .output-panel {
+  height: 100%;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-.panel-title {
-  font-weight: 700;
-}
-pre {
-  margin: 0;
-  background: #0b1221;
-  color: #e5e7eb;
-  border-radius: 8px;
-  padding: 12px;
-  font-family: var(--vp-font-family-mono);
-  font-size: 13px;
-  overflow-x: auto;
-  white-space: pre-wrap;
-}
-.output {
-  white-space: pre-wrap;
-  line-height: 1.6;
 }
 
-.why {
-  background: var(--vp-c-bg);
-  border: 1px dashed var(--vp-c-divider);
-  border-radius: 10px;
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.panel-header .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.prompt-text {
+  background-color: var(--vp-c-bg-alt);
   padding: 12px;
-}
-.why-title {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-}
-.why-card {
+  border-radius: 4px;
+  font-family: monospace;
+  white-space: pre-wrap;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 10px;
-  background: var(--vp-c-bg-soft);
+  min-height: 120px;
+  margin-bottom: 16px;
 }
-.k {
-  font-weight: 800;
+
+.action-area {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
 }
-.v {
-  color: var(--vp-c-text-2);
+
+.run-btn {
+  width: 100%;
+}
+
+.output-container {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0 4px;
+}
+
+.step-title {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step-content {
   font-size: 13px;
-  margin-top: 4px;
+  color: var(--vp-c-text-2);
   line-height: 1.5;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.insight-section {
+  margin-top: 16px;
+}
+
+.insight-title {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .controls-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .control-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .control-group .el-select, 
+  .control-group .el-radio-group {
+    width: 100%;
+  }
+  
+  .prompt-panel {
+    margin-bottom: 16px;
+    min-height: auto;
+  }
 }
 </style>

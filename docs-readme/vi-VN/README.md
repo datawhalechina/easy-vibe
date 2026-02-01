@@ -77,15 +77,15 @@ Chúng tôi tin rằng thông qua việc làm chủ Vibe Coding kết hợp vớ
 
 ### 1. Nhập môn cho người mới và Nguyên mẫu sản phẩm
 
-| Chương                                                                                                        | Nội dung chính                                                         | Trạng thái |
-| :------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------- | :--------- |
-| [Lời nói đầu: Bản đồ học tập](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                         | Hướng dẫn lộ trình học tập tổng thể                                    | ✅         |
-| [Sơ cấp 1: Kỷ nguyên AI, biết nói là biết lập trình](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Trải nghiệm khả năng lập trình AI lần đầu qua các trường hợp như Snake | ✅         |
-| [Sơ cấp 2: Biết các công cụ IDE AI](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                      | Học sử dụng IDE, tạo mini-game cục bộ                                                  | ✅         |
-| [Sơ cấp 3: Tự làm nguyên mẫu](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                | Phân tích yêu cầu, tạo trang đơn bằng AI, đến tạo nguyên mẫu sản phẩm đa trang         | ✅         |
-| [Sơ cấp 4: Thêm khả năng AI vào nguyên mẫu](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)         | Học kết nối các khả năng AI phổ biến (văn bản, hình ảnh, video)                        | ✅         |
-| [Sơ cấp 5: Dự án hoàn chỉnh thực chiến](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)               | Mô phỏng kịch bản thực tế, chấp nhận phản hồi người dùng để cải tiến, hoàn thành dự án | ✅         |
-| [Đề tài lớn: Tạo nguyên mẫu ứng dụng web hoàn chỉnh và trưng bày](docs/zh-cn/stage-1/1.5-final-project/index.md) | Thực hiện ứng dụng hoàn chỉnh, trình bày hiệu ứng ứng dụng                             | ✅         |
+| Chương                                                                                                              | Nội dung chính                                                                         | Trạng thái |
+| :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------- | :--------- |
+| [Lời nói đầu: Bản đồ học tập](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                         | Hướng dẫn lộ trình học tập tổng thể                                                    | ✅         |
+| [Sơ cấp 1: Kỷ nguyên AI, biết nói là biết lập trình](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Trải nghiệm khả năng lập trình AI lần đầu qua các trường hợp như Snake                 | ✅         |
+| [Sơ cấp 2: Biết các công cụ IDE AI](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                         | Học sử dụng IDE, tạo mini-game cục bộ                                                  | ✅         |
+| [Sơ cấp 3: Tự làm nguyên mẫu](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                   | Phân tích yêu cầu, tạo trang đơn bằng AI, đến tạo nguyên mẫu sản phẩm đa trang         | ✅         |
+| [Sơ cấp 4: Thêm khả năng AI vào nguyên mẫu](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | Học kết nối các khả năng AI phổ biến (văn bản, hình ảnh, video)                        | ✅         |
+| [Sơ cấp 5: Dự án hoàn chỉnh thực chiến](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                  | Mô phỏng kịch bản thực tế, chấp nhận phản hồi người dùng để cải tiến, hoàn thành dự án | ✅         |
+| [Đề tài lớn: Tạo nguyên mẫu ứng dụng web hoàn chỉnh và trưng bày](docs/zh-cn/stage-1/1.5-final-project/index.md)    | Thực hiện ứng dụng hoàn chỉnh, trình bày hiệu ứng ứng dụng                             | ✅         |
 
 #### Phụ lục
 

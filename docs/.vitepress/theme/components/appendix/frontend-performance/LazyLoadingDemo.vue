@@ -42,7 +42,11 @@
         </div>
       </div>
 
-      <div class="scroll-container" ref="scrollContainer" @scroll="handleScroll">
+      <div
+        class="scroll-container"
+        ref="scrollContainer"
+        @scroll="handleScroll"
+      >
         <div class="content-area">
           <div class="placeholder">向下滚动查看更多内容</div>
 
@@ -50,10 +54,16 @@
             v-for="(image, index) in images"
             :key="index"
             class="image-item"
-            :ref="el => setImageRef(el, index)"
+            :ref="(el) => setImageRef(el, index)"
           >
-            <div class="image-wrapper" :class="{ loading: image.loading, loaded: image.loaded }">
-              <div v-if="!image.loaded && mode === 'lazy'" class="placeholder-box">
+            <div
+              class="image-wrapper"
+              :class="{ loading: image.loading, loaded: image.loaded }"
+            >
+              <div
+                v-if="!image.loaded && mode === 'lazy'"
+                class="placeholder-box"
+              >
                 <div class="spinner"></div>
                 <div class="placeholder-text">加载中...</div>
               </div>
@@ -75,17 +85,27 @@
       <div class="explanation">
         <div class="explanation-item">
           <h4>💡 懒加载原理</h4>
-          <p>只有当图片进入视口（用户可见区域）时才开始加载。使用 Intersection Observer API 可以高效实现。</p>
+          <p>
+            只有当图片进入视口（用户可见区域）时才开始加载。使用 Intersection
+            Observer API 可以高效实现。
+          </p>
         </div>
 
         <div class="explanation-item">
           <h4>📊 性能收益</h4>
-          <p>懒加载可以节省 30-60% 的带宽，大幅提升首屏加载速度，特别是在移动端效果显著。</p>
+          <p>
+            懒加载可以节省 30-60%
+            的带宽，大幅提升首屏加载速度，特别是在移动端效果显著。
+          </p>
         </div>
 
         <div class="explanation-item">
           <h4>🔧 实现方式</h4>
-          <p><code>loading="lazy"</code> 属性是最简单的方式，现代浏览器都支持。需要更多控制时使用 Intersection Observer。</p>
+          <p>
+            <code>loading="lazy"</code>
+            属性是最简单的方式，现代浏览器都支持。需要更多控制时使用
+            Intersection Observer。
+          </p>
         </div>
       </div>
     </div>
@@ -103,12 +123,15 @@ const imageRefs = ref([])
 const images = ref([])
 
 const loadedImages = computed(() => {
-  return images.value.filter(img => img.loaded).length
+  return images.value.filter((img) => img.loaded).length
 })
 
 const savedBandwidth = computed(() => {
   if (mode.value === 'eager') return 0
-  const notLoaded = images.value.filter(img => !img.loaded && !imageRefs.value[images.value.indexOf(img)]?.isVisible).length
+  const notLoaded = images.value.filter(
+    (img) =>
+      !img.loaded && !imageRefs.value[images.value.indexOf(img)]?.isVisible
+  ).length
   return notLoaded * 150 // 假设每张图片 150KB
 })
 
@@ -167,10 +190,13 @@ function loadImage(index) {
   image.loading = true
 
   // 模拟加载延迟
-  setTimeout(() => {
-    image.loaded = true
-    image.loading = false
-  }, 300 + Math.random() * 500)
+  setTimeout(
+    () => {
+      image.loaded = true
+      image.loading = false
+    },
+    300 + Math.random() * 500
+  )
 }
 
 watch(mode, () => {
@@ -342,7 +368,9 @@ onMounted(() => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .placeholder-text {

@@ -32,7 +32,8 @@
         <h4>Instructions / 操作说明</h4>
         <ul>
           <li v-if="currentMode === 'click'">
-            <strong>Click Mode：</strong>点击画布创建圆形，按住 Shift 可创建不同颜色
+            <strong>Click Mode：</strong>点击画布创建圆形，按住 Shift
+            可创建不同颜色
           </li>
           <li v-if="currentMode === 'drag'">
             <strong>Drag Mode：</strong>拖拽圆形移动位置，拖拽时会改变颜色
@@ -41,7 +42,8 @@
             <strong>Hover Mode：</strong>鼠标悬停在圆形上会高亮显示并显示坐标
           </li>
           <li v-if="currentMode === 'keyboard'">
-            <strong>Keyboard Mode：</strong>使用方向键移动选中的圆形，Delete 键删除
+            <strong>Keyboard Mode：</strong>使用方向键移动选中的圆形，Delete
+            键删除
           </li>
         </ul>
       </div>
@@ -129,7 +131,14 @@ const modes = [
   { value: 'keyboard', label: 'Keyboard / 键盘' }
 ]
 
-const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c']
+const colors = [
+  '#e74c3c',
+  '#3498db',
+  '#2ecc71',
+  '#f39c12',
+  '#9b59b6',
+  '#1abc9c'
+]
 
 const currentCode = computed(() => {
   const templates = {
@@ -289,7 +298,13 @@ const draw = () => {
     // 高光
     ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'
     ctx.beginPath()
-    ctx.arc(circle.x - circle.radius * 0.3, circle.y - circle.radius * 0.3, circle.radius * 0.4, 0, Math.PI * 2)
+    ctx.arc(
+      circle.x - circle.radius * 0.3,
+      circle.y - circle.radius * 0.3,
+      circle.radius * 0.4,
+      0,
+      Math.PI * 2
+    )
     ctx.fill()
 
     // 选中状态
@@ -311,7 +326,11 @@ const draw = () => {
       // 显示坐标
       ctx.fillStyle = '#2c3e50'
       ctx.font = '12px Arial'
-      ctx.fillText(`(${Math.round(circle.x)}, ${Math.round(circle.y)})`, circle.x + circle.radius + 10, circle.y)
+      ctx.fillText(
+        `(${Math.round(circle.x)}, ${Math.round(circle.y)})`,
+        circle.x + circle.radius + 10,
+        circle.y
+      )
     }
   })
 }
@@ -320,7 +339,9 @@ const handleClick = (e) => {
   if (currentMode.value !== 'click') return
 
   const { x, y } = getMousePos(e)
-  const color = e.shiftKey ? colors[Math.floor(Math.random() * colors.length)] : '#3498db'
+  const color = e.shiftKey
+    ? colors[Math.floor(Math.random() * colors.length)]
+    : '#3498db'
 
   circles.value.push({
     x,
@@ -336,7 +357,11 @@ const handleClick = (e) => {
 const handleMouseMove = (e) => {
   const { x, y } = getMousePos(e)
 
-  if (currentMode.value === 'drag' && isDragging.value && selectedCircle.value) {
+  if (
+    currentMode.value === 'drag' &&
+    isDragging.value &&
+    selectedCircle.value
+  ) {
     selectedCircle.value.x = x
     selectedCircle.value.y = y
     draw()
@@ -355,7 +380,10 @@ const handleMouseMove = (e) => {
     if (found !== hoveredCircle.value) {
       hoveredCircle.value = found
       if (found) {
-        addLog(`Hovering circle at (${Math.round(found.x)}, ${Math.round(found.y)})`, 'info')
+        addLog(
+          `Hovering circle at (${Math.round(found.x)}, ${Math.round(found.y)})`,
+          'info'
+        )
       }
     }
     draw()
@@ -372,14 +400,20 @@ const handleMouseDown = (e) => {
     if (dist < circle.radius) {
       isDragging.value = true
       selectedCircle.value = circle
-      addLog(`Started dragging circle at (${Math.round(x)}, ${Math.round(y)})`, 'info')
+      addLog(
+        `Started dragging circle at (${Math.round(x)}, ${Math.round(y)})`,
+        'info'
+      )
     }
   })
 }
 
 const handleMouseUp = () => {
   if (isDragging.value) {
-    addLog(`Dropped circle at (${Math.round(selectedCircle.value.x)}, ${Math.round(selectedCircle.value.y)})`, 'success')
+    addLog(
+      `Dropped circle at (${Math.round(selectedCircle.value.x)}, ${Math.round(selectedCircle.value.y)})`,
+      'success'
+    )
   }
   isDragging.value = false
   selectedCircle.value = null

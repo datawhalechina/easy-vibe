@@ -49,7 +49,6 @@ API 是计算机领域的一个重要抽象概念，我们可以简单理解为�
 5. **响应结果**：AI处理完后返回给你的内容，比如生成的文章、图片等。
 6. **错误处理**：当出现问题时（如API Key错误、请求太频繁等），知道如何排查解决。
 
-
 ::: info ℹ️ 什么是 API
 对于 API 的更深入的解释，请看附录：[API 入门](/zh-cn/appendix/api-intro)。
 
@@ -57,13 +56,13 @@ API 是计算机领域的一个重要抽象概念，我们可以简单理解为�
 API Key 是你请求 AI 服务的「通行证」，它是一串密码字符串，用于身份验证和计费。
 
 由于 API Key 直接关联账户和费用，务必注意：
+
 - 绝对**不要分享到群聊、截图上传网络**或发布在公开论坛
 - **不要硬编码到代码中**并提交到 Git 仓库（尤其是公开仓库）
 - 如怀疑 Key 已泄露，**立即更换新 Key**
 
 我们会在下面的内容中**直接把 API KEY 粘贴到 AI IDE 中进行操作**，**在正规的项目里不要这么做！！**，由于我们是练习可以这么做。（等你更加熟练后，你能够让 AI 生成一个配置文件，你只需要把 API KEY 放入配置文件即可）
 :::
-
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -77,7 +76,6 @@ API Key 是你请求 AI 服务的「通行证」，它是一串密码字符串�
 
 # 2. 接入文本生成 API：DeepSeek
 
-
 虽然 API 涉及这些技术概念，但在原型开发阶段，实际操作可以非常简单高效。核心思路就是：
 
 > **找到官方示例、拿到 API Key、让 AI IDE 帮你接到按钮上。**
@@ -85,7 +83,6 @@ API Key 是你请求 AI 服务的「通行证」，它是一串密码字符串�
 掌握了这些概念后，你会发现无论是接入文字模型还是图像模型，其本质流程都是一样的：当用户点击按钮时，前端整理输入并发起请求；接口返回结果后，再把结果展示到页面上。接下来，我们就通过实际操作来验证这一点。
 
 在 `1.2 动手做出原型` 里，你已经做出了一个可交互的原型。接下来我们要做的，是把原型里“看起来像 AI 的功能”变成真正可用的能力：**当用户点击按钮时，原型会向外部的 AI 服务发出请求，并把返回的文字展示出来。**
-
 
 ::: info ℹ️ 原理延伸
 如果你想了解更多原理相关的内容，请查看附录：[大语言模型（LLM）入门](/zh-cn/appendix/llm-intro)。
@@ -149,6 +146,7 @@ curl  \
         "stream": false
       }'
 ```
+
 经过一段时间的 AI 代码生成，我们很容易得到对应的文案生成按钮进行测试，如果你找不到入口，可以让 AI IDE 告诉你从什么页面可以点到该页面，如果实在找不到，可以让 AI IDE 直接基于你的想法重构改进，得到最后的文案生成结果。
 
 ![](images/index-2026-01-20-14-23-23.png)
@@ -160,8 +158,9 @@ curl  \
 如果发现每次不一样并且合乎逻辑，你可以放心认为此时已经正常调用 API 生成。你也可以在 [API 使用管理平台](https://platform.deepseek.com/usage)查看是否成功调用（虽然可能需要等几分钟才能看到）。
 
 # 3. 接入图像转文字 API：Qwen3 VL
+
 ::: info ℹ️ 原理延伸
-如果你想了解更多原理相关的内容，请查看附录：[视觉语言模型（VLM）入门](/zh-cn/appendix/vlm-intro)。      
+如果你想了解更多原理相关的内容，请查看附录：[视觉语言模型（VLM）入门](/zh-cn/appendix/vlm-intro)。
 
 ::: details 了解更多：Qwen3 VL 是什么？
 
@@ -269,17 +268,18 @@ def caption_image(image_path: str) -> str:
             ]
         }
     ]
-    
+
     client = OpenAI(
         api_key=SILICONFLOW_API_KEY,
         base_url=SILICONFLOW_BASE_URL
     )
-    
+
     return get_vlm_completion(client, messages)
 
 image_path = "images.jpg"
 caption = caption_image(image_path)
 ```
+
 :::
 
 在这个场景中，我们直接尝试让 AI IDE 帮我们实现将上传的图片，自动生成电商卖点文本、关键词的功能，如下所示：
@@ -294,7 +294,6 @@ caption = caption_image(image_path)
 ![](images/index-2026-01-20-15-34-36.png)
 
 ![](images/index-2026-01-20-15-35-41.png)
-
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -403,7 +402,9 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
     "watermark": true
 }'
 ```
+
 有了图像参考代码后，我们让 AI IDE 支持电商中常用的图像任务功能：
+
 ```
 请你基于下面 API，帮我实现这个工程中，电商业务的常见功能（例如海报生成、抖音电商首图生成等等）
 
@@ -457,7 +458,6 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 
 :::
 
-
 ### Qwen Image / Qwen Image Edit 集成
 
 如果你希望使用更简单的方式接入图像生成服务，可以考虑 Qwen Image（通义万相）。思路同样不变：把它当成一个"图片生成 API"，接到你的原型按钮上即可。
@@ -491,7 +491,6 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 - **图像扩展**：扩展图片边界，生成新内容
 - **智能修图**：自动美化、调整光影、修复瑕疵
 
-
 ![](images/index-2026-01-20-14-46-17.png)
 
 ![](images/index-2026-01-20-14-46-29.png)
@@ -512,7 +511,7 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 - 社交媒体：生成头像、表情包、配图
 - 设计：快速出概念图、素材图、背景图
 - 营销：制作广告图、活动 banner、节日海报
-:::
+  :::
 
 查看 [SiliconFlow](https://siliconflow.cn/) 的官网。左侧有一个"Playground"部分，你可以在不进行 API 调用的情况下试用不同的模型。在网页顶部有一个"Filters"按钮；点击它可以筛选右侧的模型列表。
 
@@ -536,6 +535,7 @@ curl --request POST \
 }
 '
 ```
+
 这里的模型可以使用 Qwen/Qwen-Image 或者 Qwen/Qwen-Image-Edit-2509。
 
 ::: details 图像编辑参考代码
@@ -605,7 +605,7 @@ def save_image_from_url(image_url: str, output_path: str = "image.png") -> bool:
     except Exception as e:
         print(f"Error saving image: {e}")
         return False
-        
+
 prompt: str = "让天空变成傍晚，有月亮和星星，梦幻风格"
 negative_prompt: str = "模糊, 低质量, 扭曲"
 image_url: str = "https://inews.gtimg.com/om_bt/Os3eJ8u3SgB3Kd-zrRRhgfR5hUvdwcVPKUTNO6O7sZfUwAA/641"
@@ -648,6 +648,7 @@ else:
     if result:
         print(f"Response: {result}")
 ```
+
 :::
 
 # 附录：如何找到“当前更强”的 AI 模型
@@ -687,8 +688,6 @@ Artificial Analysis 更适合把“效果 / 价格 / 速度”放在同一张表
 ::: tip ✅ 建议
 不要凭感觉争论“哪个更强”。更可靠的做法是：用同一组输入同时测试 2~3 个模型，再结合榜单与价格做决定。
 :::
-
-
 
 ## 总结
 
@@ -742,4 +741,3 @@ Artificial Analysis 更适合把“效果 / 价格 / 速度”放在同一张表
 - 把内容策划、商品上架、数据分析等环节串联成一条完整的业务流程
 - 将本节课学到的 AI 能力（LLM 文案生成、文生图、图像编辑等）嵌入到实际业务节点中
 - 实现一个真正可用的"电商 AI 工作台"，而不是孤立的 demo
-

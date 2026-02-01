@@ -45,7 +45,9 @@
         </div>
         <div class="info-item" v-if="selectedPoint">
           <span class="label">Selected Point:</span>
-          <span class="value">({{ selectedPoint.x }}, {{ selectedPoint.y }})</span>
+          <span class="value"
+            >({{ selectedPoint.x }}, {{ selectedPoint.y }})</span
+          >
         </div>
       </div>
     </div>
@@ -65,18 +67,14 @@
     <div class="explanation">
       <h4>Canvas Coordinate System / Canvas 坐标系统</h4>
       <ul>
-        <li>
-          <strong>Origin / 原点：</strong>在左上角，坐标为 (0, 0)
-        </li>
+        <li><strong>Origin / 原点：</strong>在左上角，坐标为 (0, 0)</li>
         <li>
           <strong>X Axis / X 轴：</strong>向右为正方向，从 0 到 canvas.width
         </li>
         <li>
           <strong>Y Axis / Y 轴：</strong>向下为正方向，从 0 到 canvas.height
         </li>
-        <li>
-          <strong>Unit / 单位：</strong>像素 (px)，与 CSS 像素 1:1 对应
-        </li>
+        <li><strong>Unit / 单位：</strong>像素 (px)，与 CSS 像素 1:1 对应</li>
       </ul>
     </div>
 
@@ -112,7 +110,8 @@ ctx.fill()</code></pre>
       <p>
         <span class="icon">💡</span>
         <strong>提示：</strong>
-        Canvas 的 Y 轴方向与传统数学坐标系相反，向下为正。这在处理图形定位时需要特别注意。
+        Canvas 的 Y
+        轴方向与传统数学坐标系相反，向下为正。这在处理图形定位时需要特别注意。
       </p>
     </div>
   </div>
@@ -187,7 +186,8 @@ const drawAxis = (ctx) => {
 const drawPoints = (ctx) => {
   points.forEach((point, index) => {
     // 绘制点
-    ctx.fillStyle = index === 0 ? '#e74c3c' : index === 1 ? '#3498db' : '#2ecc71'
+    ctx.fillStyle =
+      index === 0 ? '#e74c3c' : index === 1 ? '#3498db' : '#2ecc71'
     ctx.beginPath()
     ctx.arc(point.x, point.y, 8, 0, Math.PI * 2)
     ctx.fill()
@@ -196,7 +196,11 @@ const drawPoints = (ctx) => {
     if (showCoordinates.value) {
       ctx.fillStyle = '#2c3e50'
       ctx.font = '12px Arial'
-      ctx.fillText(`(${Math.round(point.x)}, ${Math.round(point.y)})`, point.x + 12, point.y - 12)
+      ctx.fillText(
+        `(${Math.round(point.x)}, ${Math.round(point.y)})`,
+        point.x + 12,
+        point.y - 12
+      )
     }
   })
 }
@@ -293,7 +297,7 @@ onMounted(() => {
   font-size: 14px;
 }
 
-.toggle-option input[type="checkbox"] {
+.toggle-option input[type='checkbox'] {
   width: 18px;
   height: 18px;
   cursor: pointer;

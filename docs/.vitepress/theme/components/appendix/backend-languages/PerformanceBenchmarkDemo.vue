@@ -111,10 +111,12 @@ const benchmarkData = {
 }
 
 const explanations = {
-  hello: '简单的 Hello World HTTP 响应测试。C++ 和 Rust 在这个测试中展现出接近硬件的性能优势。Go 和 Node.js 表现也很优秀，因为它们的 HTTP 栈经过高度优化。Python 和 Ruby 由于解释器开销，性能相对较低。',
+  hello:
+    '简单的 Hello World HTTP 响应测试。C++ 和 Rust 在这个测试中展现出接近硬件的性能优势。Go 和 Node.js 表现也很优秀，因为它们的 HTTP 栈经过高度优化。Python 和 Ruby 由于解释器开销，性能相对较低。',
   json: 'JSON 序列化/反序列化测试。这个测试考验语言的 JSON 处理能力。C++ 和 Rust 依然领先，但 Node.js 的表现也不错（V8 引擎优化）。Python 的标准库 json 模块性能尚可，但比编译型语言慢很多。',
   db: '模拟数据库查询（连接池 + 查询）。这个测试更接近真实应用。性能差距缩小了，因为瓶颈主要在数据库 I/O 而非语言本身。但依然能看到编译型语言（C++、Rust、Go）的优势。',
-  compute: 'CPU 密集型计算（斐波那契数列）。这个测试充分暴露了 Node.js 的短板：单线程 + V8 编译优化不如静态语言。Python 和 Ruby 表现最差，因为它们是解释型语言，且 GIL 限制了多线程性能。C++ 和 Rust 几乎是唯一选择。'
+  compute:
+    'CPU 密集型计算（斐波那契数列）。这个测试充分暴露了 Node.js 的短板：单线程 + V8 编译优化不如静态语言。Python 和 Ruby 表现最差，因为它们是解释型语言，且 GIL 限制了多线程性能。C++ 和 Rust 几乎是唯一选择。'
 }
 
 const currentResults = ref([])

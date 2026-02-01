@@ -155,7 +155,16 @@ const tasks = [
   { id: 'micro', name: '微服务' }
 ]
 
-const languages = ['Python', 'Ruby', 'Go', 'Node.js', 'Java', 'C#', 'Rust', 'C++']
+const languages = [
+  'Python',
+  'Ruby',
+  'Go',
+  'Node.js',
+  'Java',
+  'C#',
+  'Rust',
+  'C++'
+]
 
 const taskMetrics = {
   rest: {
@@ -164,7 +173,7 @@ const taskMetrics = {
     Go: { lines: 80, time: 5, debug: 1.5 },
     'Node.js': { lines: 60, time: 4.5, debug: 2 },
     Java: { lines: 150, time: 8, debug: 2 },
-    "C#": { lines: 120, time: 7, debug: 2 },
+    'C#': { lines: 120, time: 7, debug: 2 },
     Rust: { lines: 100, time: 10, debug: 3 },
     'C++': { lines: 180, time: 12, debug: 5 },
     linesInsight:
@@ -180,7 +189,7 @@ const taskMetrics = {
     Go: { lines: 300, time: 12, debug: 4 },
     'Node.js': { lines: 250, time: 11, debug: 5 },
     Java: { lines: 500, time: 20, debug: 6 },
-    "C#": { lines: 400, time: 18, debug: 6 },
+    'C#': { lines: 400, time: 18, debug: 6 },
     Rust: { lines: 350, time: 25, debug: 8 },
     'C++': { lines: 600, time: 30, debug: 12 },
     linesInsight:
@@ -196,7 +205,7 @@ const taskMetrics = {
     Go: { lines: 40, time: 2, debug: 0.5 },
     'Node.js': { lines: 25, time: 1.5, debug: 0.5 },
     Java: { lines: 80, time: 4, debug: 1 },
-    "C#": { lines: 70, time: 3.5, debug: 1 },
+    'C#': { lines: 70, time: 3.5, debug: 1 },
     Rust: { lines: 50, time: 4, debug: 1 },
     'C++': { lines: 100, time: 5, debug: 2 },
     linesInsight:
@@ -212,7 +221,7 @@ const taskMetrics = {
     Go: { lines: 120, time: 7, debug: 2 },
     'Node.js': { lines: 110, time: 6.5, debug: 3 },
     Java: { lines: 250, time: 15, debug: 4 },
-    "C#": { lines: 200, time: 13, debug: 4 },
+    'C#': { lines: 200, time: 13, debug: 4 },
     Rust: { lines: 140, time: 18, debug: 5 },
     'C++': { lines: 300, time: 22, debug: 8 },
     linesInsight:
@@ -238,7 +247,13 @@ const sortedLanguages = computed(() => {
 })
 
 const getBarWidth = (value) => {
-  const max = Math.max(...Object.values(currentMetrics.value).flatMap((v) => [v.lines, v.time * 20, v.debug * 20]))
+  const max = Math.max(
+    ...Object.values(currentMetrics.value).flatMap((v) => [
+      v.lines,
+      v.time * 20,
+      v.debug * 20
+    ])
+  )
   return (value / max) * 100
 }
 
@@ -248,9 +263,15 @@ const getTaskDetail = (taskId) => {
 
 const getRadarPosition = (langName) => {
   const metrics = currentMetrics.value[langName]
-  const avgLines = Object.values(currentMetrics.value).reduce((sum, v) => sum + v.lines, 0) / languages.length
-  const avgTime = Object.values(currentMetrics.value).reduce((sum, v) => sum + v.time, 0) / languages.length
-  const avgDebug = Object.values(currentMetrics.value).reduce((sum, v) => sum + v.debug, 0) / languages.length
+  const avgLines =
+    Object.values(currentMetrics.value).reduce((sum, v) => sum + v.lines, 0) /
+    languages.length
+  const avgTime =
+    Object.values(currentMetrics.value).reduce((sum, v) => sum + v.time, 0) /
+    languages.length
+  const avgDebug =
+    Object.values(currentMetrics.value).reduce((sum, v) => sum + v.debug, 0) /
+    languages.length
 
   // Normalize metrics (lower is better, so we invert)
   const linesScore = 1 - metrics.lines / 300 // Max lines ~300

@@ -41,22 +41,12 @@
 
         <div class="param-row">
           <label>Stroke Width / 描边宽度: {{ strokeWidth }}px</label>
-          <input
-            type="range"
-            v-model.number="strokeWidth"
-            min="1"
-            max="20"
-          />
+          <input type="range" v-model.number="strokeWidth" min="1" max="20" />
         </div>
 
         <div class="param-row" v-if="currentShape === 'rect'">
           <label>Size / 大小: {{ rectSize }}px</label>
-          <input
-            type="range"
-            v-model.number="rectSize"
-            min="20"
-            max="200"
-          />
+          <input type="range" v-model.number="rectSize" min="20" max="200" />
         </div>
 
         <div class="param-row" v-if="currentShape === 'circle'">
@@ -71,12 +61,7 @@
 
         <div class="param-row" v-if="currentShape === 'line'">
           <label>Line Length / 线条长度: {{ lineLength }}px</label>
-          <input
-            type="range"
-            v-model.number="lineLength"
-            min="50"
-            max="300"
-          />
+          <input type="range" v-model.number="lineLength" min="50" max="300" />
         </div>
       </div>
 
@@ -104,7 +89,8 @@
       <p>
         <span class="icon">💡</span>
         <strong>提示：</strong>
-        Canvas 是一个位图画布，所有绘制都是像素操作。绘制后无法修改已有内容，只能覆盖或清除重绘。
+        Canvas
+        是一个位图画布，所有绘制都是像素操作。绘制后无法修改已有内容，只能覆盖或清除重绘。
       </p>
     </div>
   </div>
@@ -312,11 +298,11 @@ onMounted(() => {
   color: #555;
 }
 
-.param-row input[type="range"] {
+.param-row input[type='range'] {
   width: 100%;
 }
 
-.param-row input[type="color"] {
+.param-row input[type='color'] {
   width: 100%;
   height: 36px;
   border: 1px solid #ddd;

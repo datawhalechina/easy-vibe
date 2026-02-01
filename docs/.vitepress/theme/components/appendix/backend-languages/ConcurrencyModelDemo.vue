@@ -30,7 +30,9 @@
               <div class="stat-bar">
                 <div
                   class="stat-fill"
-                  :style="{ width: getModelDetail(selectedModel).concurrency + '%' }"
+                  :style="{
+                    width: getModelDetail(selectedModel).concurrency + '%'
+                  }"
                 ></div>
               </div>
             </div>

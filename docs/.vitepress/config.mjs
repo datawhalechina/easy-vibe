@@ -196,8 +196,10 @@ const commonThemeConfig = {
     level: [1, 6]
   },
   footer: {
-    message: '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a> | <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010602202215" rel="noreferrer" target="_blank">京公网安备11010602202215号</a>',
-    copyright: '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
+    message:
+      '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a> | <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010602202215" rel="noreferrer" target="_blank">京公网安备11010602202215号</a>',
+    copyright:
+      '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
   }
 }
 
@@ -312,17 +314,17 @@ export default defineConfig({
           { text: '首页', link: '/zh-cn/' },
           {
             text: '新手与产品原型',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/intro'
           },
           {
             text: '初中级开发',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/intro'
           },
           {
             text: '高级开发',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/intro'
           },
-          { text: '附录', link: '/zh-cn/appendix/' }
+          { text: '附录', link: '/zh-cn/appendix/intro' }
         ],
         sidebar: {
           '/zh-cn/stage-0/': productManagerSidebar,
@@ -643,7 +645,7 @@ export default defineConfig({
               ]
             }
           ]
-        },
+        }
       }
     },
 
@@ -670,20 +672,20 @@ export default defineConfig({
           { text: 'Home', link: '/en-us/' },
           {
             text: 'Novice & PM',
-            link: '/en-us/stage-0/'
+            link: '/en-us/stage-0/intro'
           },
           {
             text: 'Full-Stack Development',
-            link: '/en-us/stage-2/'
+            link: '/en-us/stage-2/intro'
           },
           {
             text: 'Advanced Development',
-            link: '/en-us/stage-3/'
+            link: '/en-us/stage-3/intro'
           },
-          { text: 'Appendix', link: '/en-us/appendix/' }
+          { text: 'Appendix', link: '/en-us/appendix/intro' }
         ],
         // TODO: Add English sidebar when content is ready
-        sidebar: {},
+        sidebar: {}
       }
     },
 
@@ -710,20 +712,20 @@ export default defineConfig({
           { text: 'ホーム', link: '/ja-jp/' },
           {
             text: '初心者とPM',
-            link: '/ja-jp/stage-0/'
+            link: '/ja-jp/stage-0/intro'
           },
           {
             text: 'フルスタック開発',
-            link: '/ja-jp/stage-2/'
+            link: '/ja-jp/stage-2/intro'
           },
           {
             text: '上級開発',
-            link: '/ja-jp/stage-3/'
+            link: '/ja-jp/stage-3/intro'
           },
-          { text: '付録', link: '/ja-jp/appendix/' }
+          { text: '付録', link: '/ja-jp/appendix/intro' }
         ],
         // TODO: Add Japanese sidebar when content is ready
-        sidebar: {},
+        sidebar: {}
       }
     },
     'zh-tw': {
@@ -748,19 +750,19 @@ export default defineConfig({
           { text: '首頁', link: '/zh-tw/' },
           {
             text: '新手與產品原型',
-            link: '/zh-tw/stage-0/'
+            link: '/zh-tw/stage-0/intro'
           },
           {
             text: '初中級開發',
-            link: '/zh-tw/stage-2/'
+            link: '/zh-tw/stage-2/intro'
           },
           {
             text: '高級開發',
-            link: '/zh-tw/stage-3/'
+            link: '/zh-tw/stage-3/intro'
           },
-          { text: '附錄', link: '/zh-tw/appendix/' }
+          { text: '附錄', link: '/zh-tw/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     },
     'ko-kr': {
@@ -783,18 +785,18 @@ export default defineConfig({
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: '초보자 & PM', link: '/ko-kr/stage-0/' },
+          { text: '초보자 & PM', link: '/ko-kr/stage-0/intro' },
           {
             text: '풀스택 개발',
-            link: '/ko-kr/stage-2/'
+            link: '/ko-kr/stage-2/intro'
           },
           {
             text: '고급 개발',
-            link: '/ko-kr/stage-3/'
+            link: '/ko-kr/stage-3/intro'
           },
-          { text: '부록', link: '/ko-kr/appendix/' }
+          { text: '부록', link: '/ko-kr/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     },
     'es-es': {
@@ -819,19 +821,19 @@ export default defineConfig({
           { text: 'Inicio', link: '/es-es/' },
           {
             text: 'Principiante y PM',
-            link: '/es-es/stage-0/'
+            link: '/es-es/stage-0/intro'
           },
           {
             text: 'Desarrollo Full Stack',
-            link: '/es-es/stage-2/'
+            link: '/es-es/stage-2/intro'
           },
           {
             text: 'Desarrollo Avanzado',
-            link: '/es-es/stage-3/'
+            link: '/es-es/stage-3/intro'
           },
-          { text: 'Apéndice', link: '/es-es/appendix/' }
+          { text: 'Apéndice', link: '/es-es/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     },
     'fr-fr': {
@@ -854,18 +856,18 @@ export default defineConfig({
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'Débutant & PM', link: '/fr-fr/stage-0/' },
+          { text: 'Débutant & PM', link: '/fr-fr/stage-0/intro' },
           {
             text: 'Développement Full Stack',
-            link: '/fr-fr/stage-2/'
+            link: '/fr-fr/stage-2/intro'
           },
           {
             text: 'Développement Avancé',
-            link: '/fr-fr/stage-3/'
+            link: '/fr-fr/stage-3/intro'
           },
-          { text: 'Annexe', link: '/fr-fr/appendix/' }
+          { text: 'Annexe', link: '/fr-fr/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     },
     'de-de': {
@@ -888,18 +890,18 @@ export default defineConfig({
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'Anfänger & PM', link: '/de-de/stage-0/' },
+          { text: 'Anfänger & PM', link: '/de-de/stage-0/intro' },
           {
             text: 'Full Stack Entwicklung',
-            link: '/de-de/stage-2/'
+            link: '/de-de/stage-2/intro'
           },
           {
             text: 'Fortgeschrittene Entwicklung',
-            link: '/de-de/stage-3/'
+            link: '/de-de/stage-3/intro'
           },
-          { text: 'Anhang', link: '/de-de/appendix/' }
+          { text: 'Anhang', link: '/de-de/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     },
     'ar-sa': {
@@ -924,19 +926,19 @@ export default defineConfig({
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
             text: 'مبتدأ & PM',
-            link: '/ar-sa/stage-0/'
+            link: '/ar-sa/stage-0/intro'
           },
           {
             text: 'تطوير Full Stack',
-            link: '/ar-sa/stage-2/'
+            link: '/ar-sa/stage-2/intro'
           },
           {
             text: 'تطوير متقدم',
-            link: '/ar-sa/stage-3/'
+            link: '/ar-sa/stage-3/intro'
           },
-          { text: 'ملحق', link: '/ar-sa/appendix/' }
+          { text: 'ملحق', link: '/ar-sa/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     },
     'vi-vn': {
@@ -961,19 +963,19 @@ export default defineConfig({
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
             text: 'Người mới & PM',
-            link: '/vi-vn/stage-0/'
+            link: '/vi-vn/stage-0/intro'
           },
           {
             text: 'Phát triển Full Stack',
-            link: '/vi-vn/stage-2/'
+            link: '/vi-vn/stage-2/intro'
           },
           {
             text: 'Phát triển Nâng cao',
-            link: '/vi-vn/stage-3/'
+            link: '/vi-vn/stage-3/intro'
           },
-          { text: 'Phụ lục', link: '/vi-vn/appendix/' }
+          { text: 'Phụ lục', link: '/vi-vn/appendix/intro' }
         ],
-        sidebar: {},
+        sidebar: {}
       }
     }
   }

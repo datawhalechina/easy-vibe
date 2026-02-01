@@ -9,6 +9,8 @@ import { useRoute, useData } from 'vitepress'
 import './style.css'
 import Layout from './Layout.vue'
 import HomeFeatures from './components/HomeFeatures.vue'
+import NavGrid from './components/NavGrid.vue'
+import NavCard from './components/NavCard.vue'
 import CategoryIndex from './components/CategoryIndex.vue'
 import ArticleGrid from './components/ArticleGrid.vue'
 import StepBar from './components/StepBar.vue'
@@ -207,6 +209,9 @@ import PromptComparisonDemo from './components/appendix/prompt-engineering/Promp
 import FewShotDemo from './components/appendix/prompt-engineering/FewShotDemo.vue'
 import ChainOfThoughtDemo from './components/appendix/prompt-engineering/ChainOfThoughtDemo.vue'
 import PromptTemplatesDemo from './components/appendix/prompt-engineering/PromptTemplatesDemo.vue'
+import PromptRobustnessDemo from './components/appendix/prompt-engineering/PromptRobustnessDemo.vue'
+import PromptSecurityDemo from './components/appendix/prompt-engineering/PromptSecurityDemo.vue'
+import TrainingProcessDemo from './components/appendix/prompt-engineering/TrainingProcessDemo.vue'
 
 // Context Engineering Components
 import AgentContextFlow from './components/appendix/context-engineering/AgentContextFlow.vue'
@@ -237,6 +242,11 @@ import IdeArchitectureDemo from './components/appendix/ide-intro/IdeArchitecture
 import AiHelpDemo from './components/appendix/ide-intro/AiHelpDemo.vue'
 import BrowserDevToolsDemo from './components/appendix/browser-devtools/BrowserDevToolsDemo.vue'
 import BrowserDevToolsLiveDemo from './components/appendix/browser-devtools/BrowserDevToolsLiveDemo.vue'
+import DevToolsElementsDemo from './components/appendix/browser-devtools/DevToolsElementsDemo.vue'
+import DevToolsConsoleDemo from './components/appendix/browser-devtools/DevToolsConsoleDemo.vue'
+import DevToolsNetworkDemo from './components/appendix/browser-devtools/DevToolsNetworkDemo.vue'
+import DevToolsSourcesDemo from './components/appendix/browser-devtools/DevToolsSourcesDemo.vue'
+import DevToolsApplicationDemo from './components/appendix/browser-devtools/DevToolsApplicationDemo.vue'
 
 // Tracking Design Components
 import TrackingOverviewDemo from './components/appendix/tracking-design/TrackingOverviewDemo.vue'
@@ -272,6 +282,8 @@ export default {
   enhanceApp({ app }) {
     app.use(ElementPlus)
     app.component('HomeFeatures', HomeFeatures)
+    app.component('NavGrid', NavGrid)
+    app.component('NavCard', NavCard)
     app.component('CategoryIndex', CategoryIndex)
     app.component('ArticleGrid', ArticleGrid)
     app.component('StepBar', StepBar)
@@ -475,6 +487,9 @@ export default {
     app.component('FewShotDemo', FewShotDemo)
     app.component('ChainOfThoughtDemo', ChainOfThoughtDemo)
     app.component('PromptTemplatesDemo', PromptTemplatesDemo)
+    app.component('PromptRobustnessDemo', PromptRobustnessDemo)
+    app.component('PromptSecurityDemo', PromptSecurityDemo)
+    app.component('TrainingProcessDemo', TrainingProcessDemo)
 
     // Context Engineering Components Registration
     app.component('AgentContextFlow', AgentContextFlow)
@@ -506,6 +521,11 @@ export default {
     app.component('AiHelpDemo', AiHelpDemo)
     app.component('BrowserDevToolsDemo', BrowserDevToolsDemo)
     app.component('BrowserDevToolsLiveDemo', BrowserDevToolsLiveDemo)
+    app.component('DevToolsElementsDemo', DevToolsElementsDemo)
+    app.component('DevToolsConsoleDemo', DevToolsConsoleDemo)
+    app.component('DevToolsNetworkDemo', DevToolsNetworkDemo)
+    app.component('DevToolsSourcesDemo', DevToolsSourcesDemo)
+    app.component('DevToolsApplicationDemo', DevToolsApplicationDemo)
 
     // Tracking Design Components Registration
     app.component('TrackingOverviewDemo', TrackingOverviewDemo)

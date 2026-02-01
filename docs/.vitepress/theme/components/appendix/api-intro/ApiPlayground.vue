@@ -1,82 +1,97 @@
-<!--
-  ApiPlayground.vue - 闯关版
-  目标：通过"通关"的方式让用户体验 401/404/200
--->
 <template>
-  <div class="demo">
+  <div class="api-playground">
     <div class="header">
-      <span class="icon">🎮</span>
-      <span class="title">练手场：搞崩它，再修好它</span>
+      <div class="title">🧪 API 练手场</div>
+      <div class="subtitle">随便玩，坏了算我的</div>
     </div>
 
-    <div class="playground">
-      <!-- 控制台 -->
-      <div class="console">
-        <div class="console-header">
-          <div class="dots">
-            <span></span><span></span><span></span>
-          </div>
-          <span class="console-title">API Console</span>
+    <div class="playground-layout">
+      <div class="left-panel">
+        <div class="panel-title">发送请求</div>
+
+        <div class="input-group">
+          <label>Endpoint（网址）</label>
+          <input
+            v-model="endpoint"
+            type="text"
+            placeholder="/users/123"
+            class="input"
+          />
         </div>
-        
-        <div class="console-body">
-          <div class="input-group">
-            <label>METHOD</label>
-            <select v-model="method" class="method-select" :class="method">
-              <option value="GET">GET</option>
-              <option value="POST">POST</option>
-            </select>
-          </div>
 
-          <div class="input-group">
-            <label>URL</label>
-            <div class="url-input-wrapper">
-              <span class="host">https://api.game.com</span>
-              <input v-model="path" type="text" class="url-input" placeholder="/users/1" />
-            </div>
+        <div class="input-group">
+          <label>方法</label>
+          <div class="method-buttons">
+            <button
+              v-for="m in methods"
+              :key="m"
+              :class="['method-btn', { active: method === m }]"
+              @click="method = m"
+            >
+              {{ m }}
+            </button>
           </div>
-
-          <div class="input-group">
-            <label>HEADERS</label>
-            <div class="code-editor">
-              Authorization: <input v-model="token" placeholder="(空)" class="code-input" />
-            </div>
-          </div>
-
-          <button class="send-btn" @click="sendRequest" :disabled="loading">
-            {{ loading ? 'Sending...' : 'SEND REQUEST' }}
-          </button>
         </div>
+
+        <div class="input-group" v-if="method === 'POST'">
+          <label>Body（JSON）</label>
+          <textarea
+            v-model="body"
+            class="textarea"
+            placeholder='{"name": "张三"}'
+          ></textarea>
+        </div>
+
+        <div class="input-group">
+          <label>API Key</label>
+          <input
+            v-model="apiKey"
+            type="password"
+            placeholder="sk-..."
+            class="input"
+          />
+        </div>
+
+        <button class="send-btn" @click="sendRequest" :disabled="loading">
+          {{ loading ? '发送中...' : '🚀 发送请求' }}
+        </button>
       </div>
 
-      <!-- 任务区 -->
-      <div class="mission-panel">
-        <div class="mission-title">👇 点这些按钮试错</div>
-        <div class="scenarios">
-          <button class="scenario-btn error-401" @click="loadScenario('401')">
-            1. 没带钥匙 (401)
-          </button>
-          <button class="scenario-btn error-404" @click="loadScenario('404')">
-            2. 找错人了 (404)
-          </button>
-          <button class="scenario-btn success-200" @click="loadScenario('200')">
-            3. 成功通关 (200)
-          </button>
+      <div class="right-panel">
+        <div class="panel-title">响应结果</div>
+
+        <div v-if="!response" class="empty-state">
+          <span class="empty-icon">📭</span>
+          <p>点击发送按钮，看看会发生什么</p>
+          <p class="hint">可以试试输入错误的地址或 Key</p>
+        </div>
+
+        <div v-else class="response-content">
+          <div class="status-bar" :class="getStatusClass(response.status)">
+            <span class="status-code">{{ response.status }}</span>
+            <span class="status-text">{{ response.statusText }}</span>
+          </div>
+
+          <div class="response-body">
+            <pre>{{ JSON.stringify(response.data, null, 2) }}</pre>
+          </div>
+
+          <div class="explanation" v-if="response.explanation">
+            💡 {{ response.explanation }}
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- 结果区 -->
-      <div class="result-area" v-if="result">
-        <div class="status-bar" :class="result.statusClass">
-          <span class="status-code">{{ result.code }}</span>
-          <span class="status-text">{{ result.text }}</span>
-        </div>
-        <div class="response-preview">
-          {{ result.data }}
-        </div>
-        <div class="result-tip">
-          <strong>💡 现象解析：</strong> {{ result.tip }}
-        </div>
+    <div class="tips">
+      <div class="tip-title">可以试试这些玩法：</div>
+      <div class="tip-list">
+        <button @click="tryEndpoint('/users')">✅ GET /users</button>
+        <button @click="tryEndpoint('/users/123')">✅ GET /users/123</button>
+        <button @click="tryEndpoint('/posts')">✅ GET /posts</button>
+        <button @click="tryError401">❌ 401 没带 Key</button>
+        <button @click="tryError404">❌ 404 地址错了</button>
+        <button @click="tryError429">❌ 429 点太快了</button>
       </div>
     </div>
   </div>
@@ -85,74 +100,127 @@
 <script setup>
 import { ref } from 'vue'
 
+const endpoint = ref('/users')
 const method = ref('GET')
-const path = ref('/secret-treasure')
-const token = ref('')
+const methods = ['GET', 'POST']
+const body = ref('{\n  "name": "张三",\n  "age": 25\n}')
+const apiKey = ref('')
 const loading = ref(false)
-const result = ref(null)
+const response = ref(null)
 
-function loadScenario(type) {
-  result.value = null
-  if (type === '401') {
-    method.value = 'GET'
-    path.value = '/secret-treasure'
-    token.value = '' // Empty token
-  } else if (type === '404') {
-    method.value = 'GET'
-    path.value = '/nothing-here'
-    token.value = 'Bearer my-secret-key'
-  } else if (type === '200') {
-    method.value = 'GET'
-    path.value = '/secret-treasure'
-    token.value = 'Bearer my-secret-key'
-  }
+function tryEndpoint(path) {
+  endpoint.value = path
+  method.value = 'GET'
+  apiKey.value = 'sk-test123'
+}
+
+function tryError401() {
+  endpoint.value = '/users'
+  method.value = 'GET'
+  apiKey.value = ''
+}
+
+function tryError404() {
+  endpoint.value = '/unknown-path'
+  method.value = 'GET'
+  apiKey.value = 'sk-test123'
+}
+
+function tryError429() {
+  endpoint.value = '/users'
+  method.value = 'GET'
+  apiKey.value = 'sk-test123'
+}
+
+function getStatusClass(status) {
+  if (status >= 200 && status < 300) return 'success'
+  if (status >= 400 && status < 500) return 'client-error'
+  if (status >= 500) return 'server-error'
+  return ''
 }
 
 function sendRequest() {
   loading.value = true
-  result.value = null
-  
+  response.value = null
+
   setTimeout(() => {
     loading.value = false
-    
-    // Logic
-    if (path.value === '/nothing-here') {
-      result.value = {
-        code: 404,
-        text: 'Not Found',
-        statusClass: 'error',
-        data: 'Error: The resource "/nothing-here" does not exist.',
-        tip: '请求的路径不存在。服务器无法找到对应的资源，因此返回 404 状态码。'
+
+    if (!apiKey.value) {
+      response.value = {
+        status: 401,
+        statusText: 'Unauthorized',
+        data: { error: 'Invalid API key' },
+        explanation: '没带 API Key，等于没带钱就想吃饭，被拒绝了'
       }
       return
     }
 
-    if (!token.value || token.value.trim() === '') {
-      result.value = {
-        code: 401,
-        text: 'Unauthorized',
-        statusClass: 'error',
-        data: 'Error: Missing authentication token.',
-        tip: '请求头中缺少鉴权 Token。服务器无法识别身份，因此拒绝访问并返回 401。'
+    if (endpoint.value === '/users' && method.value === 'GET') {
+      response.value = {
+        status: 200,
+        statusText: 'OK',
+        data: {
+          users: [
+            { id: 1, name: '张三', email: 'zhangsan@example.com' },
+            { id: 2, name: '李四', email: 'lisi@example.com' },
+            { id: 3, name: '王五', email: 'wangwu@example.com' }
+          ],
+          total: 3
+        },
+        explanation: '成功了！服务器返回了用户列表'
       }
-      return
-    }
-
-    if (path.value === '/secret-treasure') {
-      result.value = {
-        code: 200,
-        text: 'OK',
-        statusClass: 'success',
-        data: '🎉 Congratulations! You found the secret treasure: [Gold, Diamond, Ruby]',
-        tip: '请求成功。路径正确且鉴权通过，服务器正常返回了数据。'
+    } else if (endpoint.value === '/users/123' && method.value === 'GET') {
+      response.value = {
+        status: 200,
+        statusText: 'OK',
+        data: { id: 123, name: '张三', email: 'zhangsan@example.com' },
+        explanation: '找到了！服务器返回了单个用户信息'
+      }
+    } else if (endpoint.value === '/posts' && method.value === 'GET') {
+      response.value = {
+        status: 200,
+        statusText: 'OK',
+        data: {
+          posts: [
+            { id: 1, title: '学习 API 的第一天', author: '张三' },
+            { id: 2, title: 'API 原来这么简单', author: '李四' }
+          ]
+        },
+        explanation: '成功了！服务器返回了文章列表'
+      }
+    } else if (endpoint.value === '/posts' && method.value === 'POST') {
+      response.value = {
+        status: 201,
+        statusText: 'Created',
+        data: {
+          id: 3,
+          title: '学习 API 的第一天',
+          author: '张三',
+          created_at: '2025-01-15T10:30:00Z'
+        },
+        explanation: '新建成功了！服务器返回了新创建的帖子'
+      }
+    } else if (endpoint.value === '/unknown-path') {
+      response.value = {
+        status: 404,
+        statusText: 'Not Found',
+        data: { error: 'Resource not found' },
+        explanation: '地址错了，这个接口不存在'
+      }
+    } else if (endpoint.value === '/users' && method.value === 'GET') {
+      response.value = {
+        status: 429,
+        statusText: 'Too Many Requests',
+        data: { error: 'Rate limit exceeded' },
+        explanation: '点太快了！1 秒内只能请求 5 次，你超了'
       }
     } else {
-       result.value = {
-        code: 404,
-        text: 'Not Found',
-        statusClass: 'error',
-        data: 'Error: Resource not found.',
-        tip: '路径错误。'
+      response.value = {
+        status: 404,
+        statusText: 'Not Found',
+        data: { error: 'Endpoint not found' },
+        explanation: '这个地址不存在，换一个试试？'
       }
     }
   }, 500)
@@ -160,230 +228,256 @@ function sendRequest() {
 </script>
 
 <style scoped>
-.demo {
+.api-playground {
+  background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  background: var(--vp-c-bg-soft);
+  padding: 20px;
   margin: 24px 0;
-  overflow: hidden;
 }
 
 .header {
-  padding: 12px 20px;
-  background: var(--vp-c-bg);
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-}
-
-.playground {
-  padding: 20px;
-}
-
-.console {
-  background: #1e293b;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.console-header {
-  background: #0f172a;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
-.dots {
-  display: flex;
-  gap: 6px;
+.subtitle {
+  font-size: 14px;
+  color: var(--vp-c-text-2);
 }
 
-.dots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #334155;
-}
-.dots span:nth-child(1) { background: #ef4444; }
-.dots span:nth-child(2) { background: #eab308; }
-.dots span:nth-child(3) { background: #22c55e; }
-
-.console-title {
-  color: #94a3b8;
-  font-size: 12px;
-  font-family: monospace;
+.playground-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.console-body {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+@media (max-width: 768px) {
+  .playground-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.left-panel,
+.right-panel {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.panel-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--vp-c-text-1);
+}
+
+.input-group {
+  margin-bottom: 12px;
 }
 
 .input-group label {
   display: block;
-  color: #64748b;
-  font-size: 11px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 500;
   margin-bottom: 6px;
+  color: var(--vp-c-text-2);
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  font-size: 14px;
   font-family: monospace;
+  background: var(--vp-c-bg-soft);
 }
 
-.method-select {
-  background: #334155;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
+.input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
 }
 
-.method-select.GET { color: #22c55e; }
-.method-select.POST { color: #eab308; }
+.textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: monospace;
+  background: var(--vp-c-bg-soft);
+  resize: vertical;
+}
 
-.url-input-wrapper {
+.method-buttons {
   display: flex;
-  align-items: center;
-  background: #0f172a;
-  border-radius: 4px;
-  border: 1px solid #334155;
-  padding-left: 12px;
+  gap: 8px;
 }
 
-.host {
-  color: #64748b;
+.method-btn {
+  padding: 6px 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
   font-size: 13px;
-  font-family: monospace;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.url-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: #fff;
-  padding: 8px;
-  font-family: monospace;
-  font-size: 13px;
-}
-
-.code-editor {
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 4px;
-  padding: 8px 12px;
-  color: #eab308;
-  font-family: monospace;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-}
-
-.code-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: #fff;
-  margin-left: 8px;
-  font-family: monospace;
+.method-btn.active {
+  background: var(--vp-c-brand);
+  color: white;
+  border-color: var(--vp-c-brand);
 }
 
 .send-btn {
-  background: #3b82f6;
+  width: 100%;
+  padding: 12px;
+  background: var(--vp-c-brand);
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  font-family: monospace;
-  transition: all 0.2s;
-}
-
-.send-btn:hover {
-  background: #2563eb;
-}
-
-.mission-panel {
-  margin-bottom: 20px;
-}
-
-.mission-title {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  margin-bottom: 10px;
+  border-radius: 8px;
   font-weight: 600;
-}
-
-.scenarios {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.scenario-btn {
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
   cursor: pointer;
-  border: 1px solid transparent;
-  background: var(--vp-c-bg);
-  transition: all 0.2s;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-top: 8px;
+  transition: opacity 0.2s;
 }
 
-.scenario-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.send-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-.error-401 { color: #ef4444; border-color: rgba(239,68,68,0.2); }
-.error-404 { color: #f97316; border-color: rgba(249,115,22,0.2); }
-.success-200 { color: #22c55e; border-color: rgba(34,197,94,0.2); }
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--vp-c-text-3);
+}
 
-.result-area {
-  animation: slideUp 0.3s ease;
+.empty-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.hint {
+  font-size: 12px;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+.response-content {
+  animation: fadeIn 0.3s ease;
 }
 
 .status-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   padding: 8px 12px;
-  border-radius: 6px 6px 0 0;
-  font-weight: bold;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.status-bar.success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-bar.client-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-bar.server-error {
+  background: #fecaca;
+  color: #7f1d1d;
+}
+
+.status-code {
+  font-weight: 700;
   font-family: monospace;
 }
 
-.status-bar.success { background: #dcfce7; color: #166534; }
-.status-bar.error { background: #fee2e2; color: #991b1b; }
-
-.response-preview {
+.response-body {
   background: #1e293b;
-  color: #e2e8f0;
-  padding: 16px;
-  font-family: monospace;
-  font-size: 13px;
-  border-left: 1px solid #334155;
-  border-right: 1px solid #334155;
-}
-
-.result-tip {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-top: none;
+  border-radius: 6px;
   padding: 12px;
-  border-radius: 0 0 6px 6px;
-  font-size: 14px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 180px;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.response-body pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 12px;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+}
+
+.explanation {
+  background: var(--vp-c-bg-soft);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  border-left: 3px solid var(--vp-c-brand);
+}
+
+.tips {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.tip-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--vp-c-text-2);
+}
+
+.tip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tip-list button {
+  padding: 6px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tip-list button:hover {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

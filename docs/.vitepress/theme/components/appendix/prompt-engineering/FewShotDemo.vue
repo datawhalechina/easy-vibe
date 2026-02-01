@@ -8,48 +8,66 @@
   - 看提示词和输出如何变化
 -->
 <template>
-  <div class="few">
-    <div class="header">
-      <div>
-        <div class="title">示例的力量：让风格“跟你走”</div>
-        <div class="subtitle">你不是让 AI 更聪明，而是让它更像你要的样子。</div>
-      </div>
-      <div class="controls">
-        <select v-model="tone">
-          <option value="casual">随意口语</option>
-          <option value="formal">正式书面</option>
-        </select>
-        <button
-          :class="['toggle', { active: withExamples }]"
-          @click="withExamples = !withExamples"
-        >
-          {{ withExamples ? '已提供示例' : '不提供示例' }}
-        </button>
-      </div>
-    </div>
-
-    <div class="grid">
-      <div class="panel">
-        <div class="panel-title">提示词 / Prompt</div>
-        <pre><code>{{ prompt }}</code></pre>
-      </div>
-      <div class="panel">
-        <div class="panel-title">AI 输出（示意）</div>
-        <div class="output">{{ output }}</div>
-        <div class="hint">{{ hint }}</div>
-      </div>
-    </div>
-
-    <div class="examples" v-if="withExamples">
-      <div class="examples-title">示例（AI 会“照着学”）</div>
-      <div class="examples-grid">
-        <div class="ex" v-for="e in examples" :key="e.in">
-          <div class="in">输入：{{ e.in }}</div>
-          <div class="out">输出：{{ e.out }}</div>
+  <el-card class="few-shot-card" shadow="hover">
+    <template #header>
+      <div class="card-header">
+        <div>
+          <h3 class="title">示例的力量：让风格“跟你走”</h3>
+          <p class="subtitle">你不是让 AI 更聪明，而是让它更像你要的样子。</p>
+        </div>
+        <div class="controls">
+          <el-select v-model="tone" style="width: 140px">
+            <el-option label="随意口语" value="casual" />
+            <el-option label="正式书面" value="formal" />
+          </el-select>
+          <el-switch
+            v-model="withExamples"
+            active-text="提供示例"
+            inactive-text="无示例"
+            inline-prompt
+            style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
+          />
         </div>
       </div>
+    </template>
+
+    <div class="grid-layout">
+      <el-card shadow="never" class="panel">
+        <template #header>
+          <div class="panel-header">提示词 / Prompt</div>
+        </template>
+        <div class="code-block">
+          <pre><code>{{ prompt }}</code></pre>
+        </div>
+      </el-card>
+
+      <el-card shadow="never" class="panel">
+        <template #header>
+          <div class="panel-header">AI 输出（示意）</div>
+        </template>
+        <div class="output-content">{{ output }}</div>
+        <el-alert
+          :title="hint"
+          :type="withExamples ? 'success' : 'warning'"
+          show-icon
+          :closable="false"
+          style="margin-top: 16px;"
+        />
+      </el-card>
     </div>
-  </div>
+
+    <div class="examples-section" v-if="withExamples">
+      <el-divider content-position="left">示例（AI 会“照着学”）</el-divider>
+      <el-row :gutter="12">
+        <el-col :span="8" v-for="e in examples" :key="e.in">
+          <el-card shadow="hover" class="example-item" :body-style="{ padding: '12px' }">
+            <div class="ex-in">输入：{{ e.in }}</div>
+            <div class="ex-out">输出：{{ e.out }}</div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+  </el-card>
 </template>
 
 <script setup>
@@ -99,120 +117,99 @@ const hint = computed(() => {
 </script>
 
 <style scoped>
-.few {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  padding: 16px;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.few-shot-card {
+  margin: 16px 0;
 }
 
-.header {
+.card-header {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  align-items: flex-start;
   flex-wrap: wrap;
+  gap: 16px;
 }
+
 .title {
-  font-weight: 800;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
 }
+
 .subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
   color: var(--vp-c-text-2);
-  font-size: 13px;
 }
+
 .controls {
   display: flex;
-  gap: 10px;
   align-items: center;
-  flex-wrap: wrap;
-}
-select {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 8px 10px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-}
-.toggle {
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  padding: 8px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-.toggle.active {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  gap: 16px;
 }
 
-.grid {
+.grid-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-}
-.panel {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.panel-title {
-  font-weight: 700;
-}
-pre {
-  margin: 0;
-  background: #0b1221;
-  color: #e5e7eb;
-  border-radius: 8px;
-  padding: 12px;
-  font-family: var(--vp-font-family-mono);
-  font-size: 13px;
-  overflow-x: auto;
-  white-space: pre-wrap;
-}
-.output {
-  white-space: pre-wrap;
-  line-height: 1.6;
-}
-.hint {
-  color: var(--vp-c-text-2);
-  font-size: 13px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
-.examples {
-  background: var(--vp-c-bg);
-  border: 1px dashed var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 12px;
+.panel-header {
+  font-weight: 600;
+  font-size: 15px;
 }
-.examples-title {
-  font-weight: 700;
+
+.code-block {
+  background-color: var(--vp-c-bg-alt);
+  border-radius: 4px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.output-content {
+  background-color: var(--vp-c-bg-soft);
+  padding: 16px;
+  border-radius: 6px;
+  min-height: 60px;
+  white-space: pre-wrap;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.example-item {
+  font-size: 13px;
   margin-bottom: 8px;
 }
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
-}
-.ex {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 10px;
-  background: var(--vp-c-bg-soft);
-}
-.in {
+
+.ex-in {
   color: var(--vp-c-text-2);
-  font-size: 13px;
+  margin-bottom: 4px;
 }
-.out {
-  font-weight: 700;
-  margin-top: 4px;
+
+.ex-out {
+  font-weight: 600;
+  color: var(--vp-c-brand);
+}
+
+@media (max-width: 768px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-header {
+    flex-direction: column;
+  }
+  
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 </style>

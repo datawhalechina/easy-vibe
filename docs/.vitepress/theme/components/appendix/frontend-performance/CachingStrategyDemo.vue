@@ -14,7 +14,10 @@
         v-for="strategy in strategies"
         :key="strategy.name"
         @click="selectStrategy(strategy)"
-        :class="['strategy-btn', { active: selectedStrategy.name === strategy.name }]"
+        :class="[
+          'strategy-btn',
+          { active: selectedStrategy.name === strategy.name }
+        ]"
       >
         <span class="strategy-icon">{{ strategy.icon }}</span>
         <span class="strategy-name">{{ strategy.name }}</span>
@@ -43,11 +46,18 @@
               <h2>{{ selectedStrategy.pageTitle }}</h2>
             </div>
             <div class="page-body">
-              <div class="resource-item" v-for="(resource, index) in selectedStrategy.resources" :key="index">
+              <div
+                class="resource-item"
+                v-for="(resource, index) in selectedStrategy.resources"
+                :key="index"
+              >
                 <div class="resource-icon">{{ resource.icon }}</div>
                 <div class="resource-info">
                   <div class="resource-name">{{ resource.name }}</div>
-                  <div class="resource-status" :class="resource.cached ? 'cached' : 'network'">
+                  <div
+                    class="resource-status"
+                    :class="resource.cached ? 'cached' : 'network'"
+                  >
                     {{ resource.cached ? '✓ 来自缓存' : '↓ 从服务器下载' }}
                   </div>
                 </div>
@@ -68,7 +78,10 @@
           <div class="metric-value" :class="selectedStrategy.performanceClass">
             {{ selectedStrategy.loadTime }}
           </div>
-          <div class="metric-change" :class="{ positive: selectedStrategy.isFast }">
+          <div
+            class="metric-change"
+            :class="{ positive: selectedStrategy.isFast }"
+          >
             {{ selectedStrategy.compared }}
           </div>
         </div>
@@ -78,11 +91,12 @@
             <span class="metric-icon">💾</span>
             <span class="metric-title">缓存命中</span>
           </div>
-          <div class="metric-value">
-            {{ selectedStrategy.cacheHit }}%
-          </div>
+          <div class="metric-value">{{ selectedStrategy.cacheHit }}%</div>
           <div class="metric-bar">
-            <div class="metric-fill" :style="{ width: selectedStrategy.cacheHit + '%' }"></div>
+            <div
+              class="metric-fill"
+              :style="{ width: selectedStrategy.cacheHit + '%' }"
+            ></div>
           </div>
         </div>
 
@@ -122,8 +136,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="strategy in strategies" :key="strategy.name" :class="{ highlighted: selectedStrategy.name === strategy.name }">
-            <td><strong>{{ strategy.name }}</strong></td>
+          <tr
+            v-for="strategy in strategies"
+            :key="strategy.name"
+            :class="{ highlighted: selectedStrategy.name === strategy.name }"
+          >
+            <td>
+              <strong>{{ strategy.name }}</strong>
+            </td>
             <td>{{ strategy.speed }}</td>
             <td>{{ strategy.updateDifficulty }}</td>
             <td>{{ strategy.useCase }}</td>
@@ -148,10 +168,34 @@ const strategies = [
     url: 'https://example.com/',
     pageTitle: '页面加载缓慢',
     resources: [
-      { icon: '📄', name: 'index.html', size: '5 KB', time: '200ms', cached: false },
-      { icon: '🎨', name: 'style.css', size: '50 KB', time: '300ms', cached: false },
-      { icon: '⚙️', name: 'app.js', size: '200 KB', time: '800ms', cached: false },
-      { icon: '🖼️', name: 'image.jpg', size: '150 KB', time: '500ms', cached: false }
+      {
+        icon: '📄',
+        name: 'index.html',
+        size: '5 KB',
+        time: '200ms',
+        cached: false
+      },
+      {
+        icon: '🎨',
+        name: 'style.css',
+        size: '50 KB',
+        time: '300ms',
+        cached: false
+      },
+      {
+        icon: '⚙️',
+        name: 'app.js',
+        size: '200 KB',
+        time: '800ms',
+        cached: false
+      },
+      {
+        icon: '🖼️',
+        name: 'image.jpg',
+        size: '150 KB',
+        time: '500ms',
+        cached: false
+      }
     ],
     loadTime: '1.8s',
     performanceClass: 'poor',
@@ -160,7 +204,8 @@ const strategies = [
     cacheHit: 0,
     requests: 4,
     requestDesc: '所有资源都从网络下载',
-    description: '不使用任何缓存，每次访问都要重新下载所有资源。速度最慢，但内容总是最新的。',
+    description:
+      '不使用任何缓存，每次访问都要重新下载所有资源。速度最慢，但内容总是最新的。',
     code: '# 禁用缓存\nCache-Control: no-cache',
     speed: '慢',
     updateDifficulty: '容易',
@@ -172,10 +217,34 @@ const strategies = [
     url: 'https://example.com/',
     pageTitle: '页面加载较快',
     resources: [
-      { icon: '📄', name: 'index.html', size: '5 KB', time: '50ms', cached: true },
-      { icon: '🎨', name: 'style.css', size: '50 KB', time: '30ms', cached: true },
-      { icon: '⚙️', name: 'app.js', size: '200 KB', time: '20ms', cached: true },
-      { icon: '🖼️', name: 'image.jpg', size: '150 KB', time: '25ms', cached: true }
+      {
+        icon: '📄',
+        name: 'index.html',
+        size: '5 KB',
+        time: '50ms',
+        cached: true
+      },
+      {
+        icon: '🎨',
+        name: 'style.css',
+        size: '50 KB',
+        time: '30ms',
+        cached: true
+      },
+      {
+        icon: '⚙️',
+        name: 'app.js',
+        size: '200 KB',
+        time: '20ms',
+        cached: true
+      },
+      {
+        icon: '🖼️',
+        name: 'image.jpg',
+        size: '150 KB',
+        time: '25ms',
+        cached: true
+      }
     ],
     loadTime: '125ms',
     performanceClass: 'good',
@@ -184,7 +253,8 @@ const strategies = [
     cacheHit: 100,
     requests: 0,
     requestDesc: '所有资源都来自缓存',
-    description: '设置固定的过期时间（如 1 年）。速度极快，但更新内容需要用户清除缓存或强制刷新。',
+    description:
+      '设置固定的过期时间（如 1 年）。速度极快，但更新内容需要用户清除缓存或强制刷新。',
     code: '# Nginx 配置\nlocation ~* \\.(js|css|jpg|png)$ {\n  expires: 1y;\n  add_header: Cache-Control: public;\n}',
     speed: '极快',
     updateDifficulty: '困难',
@@ -196,10 +266,34 @@ const strategies = [
     url: 'https://example.com/',
     pageTitle: '页面加载快',
     resources: [
-      { icon: '📄', name: 'index.html', size: '5 KB', time: '50ms', cached: true },
-      { icon: '🎨', name: 'style.css', size: '50 KB', time: '30ms', cached: true },
-      { icon: '⚙️', name: 'app.js', size: '200 KB', time: '350ms', cached: false },
-      { icon: '🖼️', name: 'image.jpg', size: '150 KB', time: '25ms', cached: true }
+      {
+        icon: '📄',
+        name: 'index.html',
+        size: '5 KB',
+        time: '50ms',
+        cached: true
+      },
+      {
+        icon: '🎨',
+        name: 'style.css',
+        size: '50 KB',
+        time: '30ms',
+        cached: true
+      },
+      {
+        icon: '⚙️',
+        name: 'app.js',
+        size: '200 KB',
+        time: '350ms',
+        cached: false
+      },
+      {
+        icon: '🖼️',
+        name: 'image.jpg',
+        size: '150 KB',
+        time: '25ms',
+        cached: true
+      }
     ],
     loadTime: '455ms',
     performanceClass: 'medium',
@@ -208,7 +302,8 @@ const strategies = [
     cacheHit: 75,
     requests: 1,
     requestDesc: '仅下载已更新的资源',
-    description: '使用 ETag 或 Last-Modified 进行验证。资源未改变时返回 304，资源改变时下载新内容。',
+    description:
+      '使用 ETag 或 Last-Modified 进行验证。资源未改变时返回 304，资源改变时下载新内容。',
     code: '# Nginx 配置\nlocation / {\n  etag on;\n  add_header Cache-Control: must-revalidate;\n}',
     speed: '快',
     updateDifficulty: '容易',
@@ -220,10 +315,28 @@ const strategies = [
     url: 'https://example.com/',
     pageTitle: '页面极速加载',
     resources: [
-      { icon: '📄', name: 'index.html', size: '5 KB', time: '10ms', cached: true },
-      { icon: '🎨', name: 'style.css', size: '50 KB', time: '5ms', cached: true },
+      {
+        icon: '📄',
+        name: 'index.html',
+        size: '5 KB',
+        time: '10ms',
+        cached: true
+      },
+      {
+        icon: '🎨',
+        name: 'style.css',
+        size: '50 KB',
+        time: '5ms',
+        cached: true
+      },
       { icon: '⚙️', name: 'app.js', size: '200 KB', time: '5ms', cached: true },
-      { icon: '🖼️', name: 'image.jpg', size: '150 KB', time: '5ms', cached: true }
+      {
+        icon: '🖼️',
+        name: 'image.jpg',
+        size: '150 KB',
+        time: '5ms',
+        cached: true
+      }
     ],
     loadTime: '25ms',
     performanceClass: 'excellent',
@@ -232,8 +345,9 @@ const strategies = [
     cacheHit: 100,
     requests: 0,
     requestDesc: '完全离线可用',
-    description: 'Service Worker 拦截网络请求，从缓存中返回资源。可实现离线访问和即时加载。',
-    code: '// 注册 Service Worker\nif (\'serviceWorker\' in navigator) {\n  navigator.serviceWorker.register(\'/sw.js\');\n}\n\n// sw.js\ncaches.open(\'v1\').then(cache => {\n  cache.addAll([\'/\', \'/style.css\', \'/app.js\']);\n});',
+    description:
+      'Service Worker 拦截网络请求，从缓存中返回资源。可实现离线访问和即时加载。',
+    code: "// 注册 Service Worker\nif ('serviceWorker' in navigator) {\n  navigator.serviceWorker.register('/sw.js');\n}\n\n// sw.js\ncaches.open('v1').then(cache => {\n  cache.addAll(['/', '/style.css', '/app.js']);\n});",
     speed: '极快',
     updateDifficulty: '中等',
     useCase: 'PWA 应用和关键资源'
@@ -416,7 +530,9 @@ onMounted(() => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {

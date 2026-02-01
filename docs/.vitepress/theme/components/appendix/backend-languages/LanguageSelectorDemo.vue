@@ -167,7 +167,12 @@ const timeConstraints = [
 ]
 
 const recommendation = computed(() => {
-  if (!answers.value.projectType || !answers.value.performance || !answers.value.team || !answers.value.time) {
+  if (
+    !answers.value.projectType ||
+    !answers.value.performance ||
+    !answers.value.team ||
+    !answers.value.time
+  ) {
     return null
   }
 
@@ -178,7 +183,8 @@ const recommendation = computed(() => {
     return {
       language: 'Python',
       icon: '🐍',
-      reason: 'AI/ML 领域的绝对统治地位，生态无与伦比（NumPy、PyTorch、TensorFlow）。虽然性能不如 C++/Rust，但 95% 的 AI 项目都在用 Python。',
+      reason:
+        'AI/ML 领域的绝对统治地位，生态无与伦比（NumPy、PyTorch、TensorFlow）。虽然性能不如 C++/Rust，但 95% 的 AI 项目都在用 Python。',
       alternatives: ['C++ (模型部署)', 'Julia (科学计算)']
     }
   }
@@ -187,7 +193,8 @@ const recommendation = computed(() => {
     return {
       language: 'C++',
       icon: '⚡',
-      reason: '游戏开发的行业标准（Unreal Engine）。极致性能，底层控制力强。如果使用 Unity 引擎，则 C# 是首选。',
+      reason:
+        '游戏开发的行业标准（Unreal Engine）。极致性能，底层控制力强。如果使用 Unity 引擎，则 C# 是首选。',
       alternatives: ['C# (Unity)', 'Rust (独立游戏)']
     }
   }
@@ -197,14 +204,16 @@ const recommendation = computed(() => {
       return {
         language: 'Rust',
         icon: '🦀',
-        reason: '内存安全 + 极致性能，现代化系统语言。虽然学习曲线陡峭，但编译时保证无内存泄漏，适合长期维护的基础设施。',
+        reason:
+          '内存安全 + 极致性能，现代化系统语言。虽然学习曲线陡峭，但编译时保证无内存泄漏，适合长期维护的基础设施。',
         alternatives: ['C++ (传统选择)', 'Go (云原生)']
       }
     }
     return {
       language: 'Go',
       icon: '🐹',
-      reason: '云原生时代的宠儿（Docker、K8s 都是 Go 写的）。简洁语法 + 原生并发 + 快速编译，非常适合系统编程和 DevOps 工具。',
+      reason:
+        '云原生时代的宠儿（Docker、K8s 都是 Go 写的）。简洁语法 + 原生并发 + 快速编译，非常适合系统编程和 DevOps 工具。',
       alternatives: ['Rust (更安全)', 'C++ (更成熟)']
     }
   }
@@ -214,14 +223,16 @@ const recommendation = computed(() => {
       return {
         language: 'Go',
         icon: '🐹',
-        reason: '云原生的首选语言。Goroutine 轻量级并发可轻松处理百万级请求，编译后的单一可执行文件部署极其简单。',
+        reason:
+          '云原生的首选语言。Goroutine 轻量级并发可轻松处理百万级请求，编译后的单一可执行文件部署极其简单。',
         alternatives: ['Java (Spring Cloud)', 'Rust (极致性能)']
       }
     }
     return {
       language: 'Node.js',
       icon: '💚',
-      reason: '前后端统一，减少语言切换成本。NPM 生态丰富，适合 I/O 密集型的微服务。',
+      reason:
+        '前后端统一，减少语言切换成本。NPM 生态丰富，适合 I/O 密集型的微服务。',
       alternatives: ['Go (更高性能)', 'Python (快速开发)']
     }
   }
@@ -230,7 +241,8 @@ const recommendation = computed(() => {
     return {
       language: 'Node.js',
       icon: '💚',
-      reason: '前端团队零学习成本，TypeScript 提供类型安全。全栈开发减少沟通成本，适合快速迭代和 MVP 开发。',
+      reason:
+        '前端团队零学习成本，TypeScript 提供类型安全。全栈开发减少沟通成本，适合快速迭代和 MVP 开发。',
       alternatives: ['Go (后端性能优化)', 'TypeScript (类型安全)']
     }
   }
@@ -239,7 +251,8 @@ const recommendation = computed(() => {
     return {
       language: 'Python',
       icon: '🐍',
-      reason: '利用团队现有技能，快速开发。Django/FastAPI 生态成熟，适合数据驱动的 Web 应用。',
+      reason:
+        '利用团队现有技能，快速开发。Django/FastAPI 生态成熟，适合数据驱动的 Web 应用。',
       alternatives: ['Go (性能提升)', 'Node.js (全栈)']
     }
   }
@@ -248,7 +261,8 @@ const recommendation = computed(() => {
     return {
       language: 'Java',
       icon: '☕',
-      reason: '企业级开发的最佳选择。Spring Boot 生态极其成熟，团队熟悉度高，维护成本最低。',
+      reason:
+        '企业级开发的最佳选择。Spring Boot 生态极其成熟，团队熟悉度高，维护成本最低。',
       alternatives: ['Go (云原生)', 'Kotlin (更现代)']
     }
   }
@@ -258,7 +272,8 @@ const recommendation = computed(() => {
       return {
         language: 'Python',
         icon: '🐍',
-        reason: '开发速度最快的语言。FastAPI/Django 让你在几天内就能搭建起完整的 Web 应用，适合快速验证想法和 MVP。',
+        reason:
+          '开发速度最快的语言。FastAPI/Django 让你在几天内就能搭建起完整的 Web 应用，适合快速验证想法和 MVP。',
         alternatives: ['Ruby (Rails)', 'Node.js (全栈)']
       }
     }
@@ -269,7 +284,8 @@ const recommendation = computed(() => {
     return {
       language: 'Go',
       icon: '🐹',
-      reason: '高性能 + 简洁语法 + 快速开发的最佳平衡点。Goroutine 并发模型让处理高并发变得简单，而不会像 Java 那么复杂。',
+      reason:
+        '高性能 + 简洁语法 + 快速开发的最佳平衡点。Goroutine 并发模型让处理高并发变得简单，而不会像 Java 那么复杂。',
       alternatives: ['Rust (更安全)', 'C++ (更极致)']
     }
   }
@@ -278,7 +294,8 @@ const recommendation = computed(() => {
     return {
       language: 'Go',
       icon: '🐹',
-      reason: '云原生时代的高性能语言。相比 Java 更简洁，相比 Node.js 性能更好，相比 C++ 更容易维护。',
+      reason:
+        '云原生时代的高性能语言。相比 Java 更简洁，相比 Node.js 性能更好，相比 C++ 更容易维护。',
       alternatives: ['Java (更成熟)', 'Node.js (更灵活)']
     }
   }
@@ -287,7 +304,8 @@ const recommendation = computed(() => {
   return {
     language: 'Node.js',
     icon: '💚',
-    reason: '前后端统一，生态庞大，适合大多数 Web 应用和 API 服务。NPM 拥有世界最大的包仓库，几乎任何功能都能找到现成的库。',
+    reason:
+      '前后端统一，生态庞大，适合大多数 Web 应用和 API 服务。NPM 拥有世界最大的包仓库，几乎任何功能都能找到现成的库。',
     alternatives: ['Go (更高性能)', 'Python (更简单)']
   }
 })

@@ -35,12 +35,20 @@
           <span class="label">Headers:</span>
           <div class="code-block" :class="{ human: isHuman }">
             <div class="line">
-              <span class="key">{{ isHuman ? '我是谁:' : 'Authorization:' }}</span>
-              <span class="val">{{ isHuman ? ' 这是我的会员卡号' : ' Bearer sk-8f9s...' }}</span>
+              <span class="key">{{
+                isHuman ? '我是谁:' : 'Authorization:'
+              }}</span>
+              <span class="val">{{
+                isHuman ? ' 这是我的会员卡号' : ' Bearer sk-8f9s...'
+              }}</span>
             </div>
             <div class="line">
-              <span class="key">{{ isHuman ? '用什么语言:' : 'Content-Type:' }}</span>
-              <span class="val">{{ isHuman ? ' 标准格式(JSON)' : ' application/json' }}</span>
+              <span class="key">{{
+                isHuman ? '用什么语言:' : 'Content-Type:'
+              }}</span>
+              <span class="val">{{
+                isHuman ? ' 标准格式(JSON)' : ' application/json'
+              }}</span>
             </div>
           </div>
         </div>
@@ -66,9 +74,11 @@
         <div class="doc-row response-row">
           <span class="label">Response:</span>
           <div class="code-block" :class="{ human: isHuman }">
-             <div class="line">
+            <div class="line">
               <span class="key">{{ isHuman ? '状态:' : 'Status:' }}</span>
-              <span class="status-ok">{{ isHuman ? '搞定了 (200)' : '200 OK' }}</span>
+              <span class="status-ok">{{
+                isHuman ? '搞定了 (200)' : '200 OK'
+              }}</span>
             </div>
           </div>
         </div>
@@ -90,7 +100,7 @@ const isHuman = ref(false)
   background: var(--vp-c-bg-soft);
   margin: 24px 0;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .header {

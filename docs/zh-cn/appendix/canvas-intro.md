@@ -10,16 +10,17 @@ Canvas（画布）是 HTML5 提供的一个通过 JavaScript 绘制 2D 图形的
 
 在 Web 开发中，绘制图形主要有两种方式：Canvas 和 SVG（Scalable Vector Graphics）。它们各有优劣：
 
-| 特性 | Canvas | SVG |
-| :--- | :--- | :--- |
-| **类型** | 位图（光栅图形） | 矢量图形 |
-| **DOM** | 单个 `<canvas>` 元素 | 每个图形都是 DOM 元素 |
-| **交互** | 需要手动计算碰撞 | 天然支持事件绑定 |
-| **性能** | 适合大量对象 | 适合少量复杂对象 |
-| **缩放** | 放大会失真 | 无限缩放不失真 |
-| **应用** | 游戏、数据可视化 | 图标、插画 |
+| 特性     | Canvas               | SVG                   |
+| :------- | :------------------- | :-------------------- |
+| **类型** | 位图（光栅图形）     | 矢量图形              |
+| **DOM**  | 单个 `<canvas>` 元素 | 每个图形都是 DOM 元素 |
+| **交互** | 需要手动计算碰撞     | 天然支持事件绑定      |
+| **性能** | 适合大量对象         | 适合少量复杂对象      |
+| **缩放** | 放大会失真           | 无限缩放不失真        |
+| **应用** | 游戏、数据可视化     | 图标、插画            |
 
 **简单总结**：
+
 - **Canvas** = 像素画，画完就变成像素，性能好但交互麻烦
 - **SVG** = 矢量图，每个图形都是对象，交互方便但对象多了会慢
 
@@ -53,6 +54,7 @@ const ctx = canvas.getContext('2d') // 获取 2D 上下文
 ```
 
 **关键概念**：
+
 - `canvas` 是 DOM 元素，控制画布的大小和位置
 - `ctx` 是绘图工具，所有的绘制操作都通过它完成
 - `'2d'` 表示使用 2D 渲染上下文（WebGL 使用 `'webgl'`）
@@ -111,6 +113,7 @@ ctx.fill() // 或 ctx.stroke()
 ```
 
 **参数说明**：
+
 - `x, y`：圆心坐标
 - `radius`：半径
 - `startAngle, endAngle`：起始和结束角度（弧度制）
@@ -267,6 +270,7 @@ img.onload = () => {
 ```
 
 **参数说明**：
+
 - `sx, sy, sWidth, sHeight`：源图像的裁剪区域
 - `dx, dy, dWidth, dHeight`：目标画布的绘制区域
 
@@ -315,6 +319,7 @@ animate()
 ```
 
 **为什么用 requestAnimationFrame 而不是 setInterval？**
+
 - 自动优化，通常为 60FPS（每秒 60 帧）
 - 页面不可见时自动暂停，节省资源
 - 与浏览器刷新周期同步，避免画面撕裂
@@ -340,7 +345,7 @@ ctx.fillStyle = 'rgba(255, 255, 255, 0.1)'
 ctx.fillRect(0, 0, canvas.width, canvas.height)
 
 // 方法3：只清除变化区域（脏矩形优化）
-objects.forEach(obj => {
+objects.forEach((obj) => {
   if (obj.moved) {
     ctx.clearRect(obj.oldX, obj.oldY, obj.size, obj.size)
     obj.draw(ctx)
@@ -418,7 +423,7 @@ canvas.addEventListener('mousemove', (e) => {
   const y = e.clientY - rect.top
 
   // 检测是否悬停在某个对象上
-  objects.forEach(obj => {
+  objects.forEach((obj) => {
     const dist = Math.sqrt((x - obj.x) ** 2 + (y - obj.y) ** 2)
     if (dist < obj.radius) {
       canvas.style.cursor = 'pointer'
@@ -437,7 +442,7 @@ let selectedObject = null
 canvas.addEventListener('mousedown', (e) => {
   const { x, y } = getMousePos(e)
 
-  objects.forEach(obj => {
+  objects.forEach((obj) => {
     const dist = Math.sqrt((x - obj.x) ** 2 + (y - obj.y) ** 2)
     if (dist < obj.radius) {
       isDragging = true
@@ -470,7 +475,7 @@ canvas.focus()
 canvas.addEventListener('keydown', (e) => {
   const step = 10
 
-  switch(e.key) {
+  switch (e.key) {
     case 'ArrowUp':
       selectedObject.y -= step
       break
@@ -484,7 +489,7 @@ canvas.addEventListener('keydown', (e) => {
       selectedObject.x += step
       break
     case 'Delete':
-      objects = objects.filter(obj => obj !== selectedObject)
+      objects = objects.filter((obj) => obj !== selectedObject)
       break
   }
 
@@ -590,8 +595,8 @@ function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   // 更新和绘制粒子
-  particles = particles.filter(p => !p.isDead())
-  particles.forEach(p => {
+  particles = particles.filter((p) => !p.isDead())
+  particles.forEach((p) => {
     p.update()
     p.draw(ctx)
   })
@@ -645,7 +650,7 @@ function draw() {
   ctx.drawImage(offscreenCanvas, 0, 0)
 
   // 只绘制动态对象
-  objects.forEach(obj => obj.draw(ctx))
+  objects.forEach((obj) => obj.draw(ctx))
 }
 ```
 
@@ -669,7 +674,7 @@ function draw() {
   ctx.drawImage(backgroundLayer, 0, 0)
 
   // 绘制动态对象
-  objects.forEach(obj => obj.draw(ctx))
+  objects.forEach((obj) => obj.draw(ctx))
 }
 ```
 
@@ -679,10 +684,15 @@ function draw() {
 
 ```javascript
 function draw() {
-  objects.forEach(obj => {
+  objects.forEach((obj) => {
     if (obj.moved) {
       // 清除旧位置
-      ctx.clearRect(obj.oldX - obj.size, obj.oldY - obj.size, obj.size * 2, obj.size * 2)
+      ctx.clearRect(
+        obj.oldX - obj.size,
+        obj.oldY - obj.size,
+        obj.size * 2,
+        obj.size * 2
+      )
 
       // 绘制新位置
       obj.draw(ctx)
@@ -700,7 +710,7 @@ function draw() {
 ```javascript
 // 按颜色分组
 const batches = {}
-objects.forEach(obj => {
+objects.forEach((obj) => {
   if (!batches[obj.color]) {
     batches[obj.color] = []
   }
@@ -708,9 +718,9 @@ objects.forEach(obj => {
 })
 
 // 批量绘制相同颜色的对象
-Object.keys(batches).forEach(color => {
+Object.keys(batches).forEach((color) => {
   ctx.fillStyle = color // 只设置一次颜色
-  batches[color].forEach(obj => {
+  batches[color].forEach((obj) => {
     ctx.beginPath()
     ctx.arc(obj.x, obj.y, obj.size, 0, Math.PI * 2)
     ctx.fill()
@@ -830,13 +840,13 @@ animate()
 
 ### 8.5 选择建议
 
-| 库 | 优势 | 劣势 | 适用场景 |
-| :--- | :--- | :--- | :--- |
-| **原生 Canvas** | 轻量、无依赖 | 开发效率低 | 学习、简单图形 |
-| **Fabric.js** | 对象模型、交互友好 | 性能一般 | 图片编辑器、白板 |
-| **Konva.js** | 高性能、API 简洁 | 体积较大 | 复杂图形应用 |
-| **PixiJS** | 超高性能、WebGL | 学习曲线陡 | 大型游戏 |
-| **Three.js** | 3D 能力强 | 过于重量级 | 2.5D 游戏 |
+| 库              | 优势               | 劣势       | 适用场景         |
+| :-------------- | :----------------- | :--------- | :--------------- |
+| **原生 Canvas** | 轻量、无依赖       | 开发效率低 | 学习、简单图形   |
+| **Fabric.js**   | 对象模型、交互友好 | 性能一般   | 图片编辑器、白板 |
+| **Konva.js**    | 高性能、API 简洁   | 体积较大   | 复杂图形应用     |
+| **PixiJS**      | 超高性能、WebGL    | 学习曲线陡 | 大型游戏         |
+| **Three.js**    | 3D 能力强          | 过于重量级 | 2.5D 游戏        |
 
 ---
 
@@ -934,18 +944,18 @@ showFPS()
 
 ## 10. 名词速查表 (Glossary)
 
-| 名词 | 解释 |
-| :--- | :--- |
-| **Context / 上下文** | Canvas 的渲染环境，通过 `getContext('2d')` 获取，所有绘制操作都通过它完成 |
-| **Path / 路径** | 由一系列点连接成的轨迹，是 Canvas 绘图的基础 |
-| **Stroke / 描边** | 绘制路径的轮廓线 |
-| **Fill / 填充** | 用颜色填充路径内部 |
-| **requestAnimationFrame** | 浏览器提供的动画 API，在每次重绘前调用回调函数 |
-| **Offscreen Canvas** | 离屏 Canvas，用于预渲染静态内容以提高性能 |
-| **Dirty Rect** | 脏矩形优化，只重绘变化的部分 |
-| **Particle System** | 粒子系统，由大量小粒子组成的特效系统 |
-| **Collision Detection** | 碰撞检测，判断鼠标或对象是否点击了某个图形 |
-| **Raster vs Vector** | 位图 vs 矢量图，Canvas 是位图，SVG 是矢量图 |
+| 名词                      | 解释                                                                      |
+| :------------------------ | :------------------------------------------------------------------------ |
+| **Context / 上下文**      | Canvas 的渲染环境，通过 `getContext('2d')` 获取，所有绘制操作都通过它完成 |
+| **Path / 路径**           | 由一系列点连接成的轨迹，是 Canvas 绘图的基础                              |
+| **Stroke / 描边**         | 绘制路径的轮廓线                                                          |
+| **Fill / 填充**           | 用颜色填充路径内部                                                        |
+| **requestAnimationFrame** | 浏览器提供的动画 API，在每次重绘前调用回调函数                            |
+| **Offscreen Canvas**      | 离屏 Canvas，用于预渲染静态内容以提高性能                                 |
+| **Dirty Rect**            | 脏矩形优化，只重绘变化的部分                                              |
+| **Particle System**       | 粒子系统，由大量小粒子组成的特效系统                                      |
+| **Collision Detection**   | 碰撞检测，判断鼠标或对象是否点击了某个图形                                |
+| **Raster vs Vector**      | 位图 vs 矢量图，Canvas 是位图，SVG 是矢量图                               |
 
 ---
 

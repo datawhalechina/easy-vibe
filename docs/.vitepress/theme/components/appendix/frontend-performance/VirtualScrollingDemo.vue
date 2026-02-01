@@ -16,9 +16,14 @@ const containerRef = ref(null)
 
 // Virtual scrolling calculations
 const startIndex = computed(() => Math.floor(scrollTop.value / ITEM_HEIGHT))
-const endIndex = computed(() => Math.min(TOTAL_ITEMS, startIndex.value + Math.ceil(CONTAINER_HEIGHT / ITEM_HEIGHT) + 2))
+const endIndex = computed(() =>
+  Math.min(
+    TOTAL_ITEMS,
+    startIndex.value + Math.ceil(CONTAINER_HEIGHT / ITEM_HEIGHT) + 2
+  )
+)
 const visibleItems = computed(() => {
-  return items.slice(startIndex.value, endIndex.value).map(item => ({
+  return items.slice(startIndex.value, endIndex.value).map((item) => ({
     ...item,
     top: item.id * ITEM_HEIGHT
   }))
@@ -47,23 +52,28 @@ const renderedCount = computed(() => visibleItems.value.length)
       </div>
       <div class="stat-box">
         <div class="stat-label">Memory Saved</div>
-        <div class="stat-value">~{{ ((1 - renderedCount / TOTAL_ITEMS) * 100).toFixed(1) }}%</div>
+        <div class="stat-value">
+          ~{{ ((1 - renderedCount / TOTAL_ITEMS) * 100).toFixed(1) }}%
+        </div>
       </div>
     </div>
 
-    <div 
-      class="scroll-container" 
+    <div
+      class="scroll-container"
       ref="containerRef"
       @scroll="onScroll"
       :style="{ height: CONTAINER_HEIGHT + 'px' }"
     >
       <div class="scroll-phantom" :style="{ height: totalHeight + 'px' }"></div>
       <div class="visible-list">
-        <div 
-          v-for="item in visibleItems" 
+        <div
+          v-for="item in visibleItems"
           :key="item.id"
           class="list-item"
-          :style="{ transform: `translateY(${item.top}px)`, height: ITEM_HEIGHT + 'px' }"
+          :style="{
+            transform: `translateY(${item.top}px)`,
+            height: ITEM_HEIGHT + 'px'
+          }"
         >
           <span class="item-index">{{ item.id + 1 }}</span>
           <span class="item-content">{{ item.content }}</span>
@@ -73,10 +83,11 @@ const renderedCount = computed(() => visibleItems.value.length)
 
     <div class="explanation">
       <p>
-        <strong>How it works:</strong> Instead of rendering all {{ TOTAL_ITEMS }} items at once, 
-        we only render the items currently visible in the viewport (plus a small buffer). 
-        As you scroll, we calculate which items should be visible and position them absolutely 
-        to create the illusion of a full list.
+        <strong>How it works:</strong> Instead of rendering all
+        {{ TOTAL_ITEMS }} items at once, we only render the items currently
+        visible in the viewport (plus a small buffer). As you scroll, we
+        calculate which items should be visible and position them absolutely to
+        create the illusion of a full list.
       </p>
     </div>
   </div>

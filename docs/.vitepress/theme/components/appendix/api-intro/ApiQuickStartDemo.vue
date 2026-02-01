@@ -5,10 +5,10 @@
 <template>
   <div class="demo">
     <div class="header">
-      <span class="icon">💡</span>
-      <span class="title">试试看：获取一条技术格言</span>
+      <span class="icon">🌐</span>
+      <span class="title">试试看：获取当前时间</span>
     </div>
-    
+
     <div class="content">
       <div class="action-area">
         <button class="call-btn" :disabled="calling" @click="callApi">
@@ -24,17 +24,21 @@
         <div class="response-card" v-else-if="result">
           <div class="response-header">
             <span class="status-badge success">200 OK</span>
-            <span class="time">耗时: 230ms</span>
+            <span class="time">耗时: {{ result.time }}ms</span>
           </div>
           <div class="response-body">
-            {{ result.data }}
+            <div class="time-display">{{ result.timeString }}</div>
+            <div class="timezone">{{ result.timezone }}</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      <p>👆 <strong>流程演示：</strong> 点击按钮 -> 发送请求 -> 服务器处理 -> 返回数据。</p>
+      <p>
+        👆 <strong>流程演示：</strong> 点击按钮 -> 发送请求 -> 服务器处理 ->
+        返回数据。
+      </p>
     </div>
   </div>
 </template>
@@ -45,27 +49,27 @@ import { ref } from 'vue'
 const calling = ref(false)
 const result = ref(null)
 
-const quotes = [
-  "Talk is cheap. Show me the code. — Linus Torvalds",
-  "Programs must be written for people to read, and only incidentally for machines to execute. — Abelson & Sussman",
-  "Truth can only be found in one place: the code. — Robert C. Martin",
-  "Simplicity is the soul of efficiency. — Austin Freeman",
-  "Code is like humor. When you have to explain it, it’s bad. — Cory House"
-]
-
 function callApi() {
   calling.value = true
   result.value = null
 
-  // 模拟 API 网络延迟
+  const startTime = Date.now()
+
   setTimeout(() => {
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+    const now = new Date()
+    const timeString = now.toLocaleString('zh-CN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    })
+
     result.value = {
-      success: true,
-      data: randomQuote
+      time: Date.now() - startTime,
+      timeString: `🕐 ${timeString}`,
+      timezone: '亚洲/上海 (UTC+8)'
     }
     calling.value = false
-  }, 800)
+  }, 300 + Math.random() * 200)
 }
 </script>
 
@@ -76,7 +80,7 @@ function callApi() {
   background: var(--vp-c-bg-soft);
   margin: 24px 0;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .header {
@@ -161,9 +165,19 @@ function callApi() {
 }
 
 .response-body {
-  font-size: 15px;
-  line-height: 1.5;
+  text-align: center;
+}
+
+.time-display {
+  font-size: 24px;
+  font-weight: 600;
   color: var(--vp-c-text-1);
+  margin-bottom: 4px;
+}
+
+.timezone {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
 }
 
 .loading-dots span {
@@ -172,12 +186,16 @@ function callApi() {
   margin: 0 2px;
 }
 
-.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
-.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 .footer {
   padding: 12px 20px;
-  background: rgba(0,0,0,0.02);
+  background: rgba(0, 0, 0, 0.02);
   border-top: 1px solid var(--vp-c-divider);
   font-size: 13px;
   color: var(--vp-c-text-2);
@@ -185,13 +203,25 @@ function callApi() {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
-  0% { opacity: 0.2; }
-  20% { opacity: 1; }
-  100% { opacity: 0.2; }
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 </style>

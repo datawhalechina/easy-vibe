@@ -41,17 +41,18 @@
 
         <div class="param-row">
           <label>Particle Size / 粒子大小: {{ particleSize }}</label>
-          <input
-            type="range"
-            v-model.number="particleSize"
-            min="1"
-            max="10"
-          />
+          <input type="range" v-model.number="particleSize" min="1" max="10" />
         </div>
 
         <div class="param-row">
           <label>Speed / 速度: {{ speed }}</label>
-          <input type="range" v-model.number="speed" min="0.5" max="3" step="0.1" />
+          <input
+            type="range"
+            v-model.number="speed"
+            min="0.5"
+            max="3"
+            step="0.1"
+          />
         </div>
 
         <div class="param-row">
@@ -205,7 +206,16 @@ function animate() {
 }`
 })
 
-const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e91e63', '#00bcd4']
+const colors = [
+  '#e74c3c',
+  '#3498db',
+  '#2ecc71',
+  '#f39c12',
+  '#9b59b6',
+  '#1abc9c',
+  '#e91e63',
+  '#00bcd4'
+]
 
 class Particle {
   constructor(x, y, effect) {
@@ -284,7 +294,10 @@ const draw = () => {
   const ctx = canvas.getContext('2d')
 
   // 清除画布（使用半透明背景产生拖尾效果）
-  ctx.fillStyle = currentEffect.value === 'trail' ? 'rgba(250, 250, 250, 0.2)' : 'rgba(250, 250, 250, 1)'
+  ctx.fillStyle =
+    currentEffect.value === 'trail'
+      ? 'rgba(250, 250, 250, 0.2)'
+      : 'rgba(250, 250, 250, 1)'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
   // 更新和绘制粒子
@@ -432,7 +445,7 @@ onUnmounted(() => {
   color: #555;
 }
 
-.param-row input[type="range"] {
+.param-row input[type='range'] {
   width: 100%;
 }
 

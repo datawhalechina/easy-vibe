@@ -77,15 +77,15 @@ Creemos que al dominar Vibe Coding y combinarlo con entrenamiento sistemático, 
 
 ### 1. Entrada de Novatos y Prototipo de Producto
 
-| Capítulo                                                                                                                            | Contenido clave                                                                                  | Estado |
-| :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :----- |
-| [Prólogo: Mapa de aprendizaje](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                        | Guía general de la ruta de aprendizaje                                                           | ✅     |
-| [Principiante 1: La era de la IA, si puedes hablar puedes programar](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experimentar por primera vez las capacidades de programación con IA a través de casos como Snake | ✅     |
-| [Principiante 2: Conociendo herramientas de IDE de IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)            | Aprender a usar el IDE, crear mini juegos localmente                                                                     | ✅     |
-| [Principiante 3: Haz un prototipo tú mismo](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                           | Análisis de requisitos, generación de una sola página con IA, hasta generar prototipos de productos de múltiples páginas | ✅     |
-| [Principiante 4: Añade capacidades de IA al prototipo](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)       | Aprender a conectar capacidades comunes de IA (texto, imagen, video)                                                     | ✅     |
-| [Principiante 5: Proyecto completo práctico](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                   | Simular escenarios reales, aceptar feedback de usuarios para iterar, completar el proyecto                               | ✅     |
-| [Proyecto final: Haz un prototipo completo de aplicación web y preséntalo](docs/zh-cn/stage-1/1.5-final-project/index.md) | Implementar completamente la aplicación, mostrar los efectos de la aplicación                                            | ✅     |
+| Capítulo                                                                                                                            | Contenido clave                                                                                                          | Estado |
+| :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :----- |
+| [Prólogo: Mapa de aprendizaje](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                        | Guía general de la ruta de aprendizaje                                                                                   | ✅     |
+| [Principiante 1: La era de la IA, si puedes hablar puedes programar](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experimentar por primera vez las capacidades de programación con IA a través de casos como Snake                         | ✅     |
+| [Principiante 2: Conociendo herramientas de IDE de IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                      | Aprender a usar el IDE, crear mini juegos localmente                                                                     | ✅     |
+| [Principiante 3: Haz un prototipo tú mismo](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                     | Análisis de requisitos, generación de una sola página con IA, hasta generar prototipos de productos de múltiples páginas | ✅     |
+| [Principiante 4: Añade capacidades de IA al prototipo](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)                 | Aprender a conectar capacidades comunes de IA (texto, imagen, video)                                                     | ✅     |
+| [Principiante 5: Proyecto completo práctico](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                             | Simular escenarios reales, aceptar feedback de usuarios para iterar, completar el proyecto                               | ✅     |
+| [Proyecto final: Haz un prototipo completo de aplicación web y preséntalo](docs/zh-cn/stage-1/1.5-final-project/index.md)           | Implementar completamente la aplicación, mostrar los efectos de la aplicación                                            | ✅     |
 
 #### Apéndices
 
