@@ -223,13 +223,19 @@ import ContextCompressionDemo from './components/appendix/context-engineering/Co
 
 // Agent Intro Components
 import AgentWorkflowDemo from './components/appendix/agent-intro/AgentWorkflowDemo.vue'
-// import AgentLevelDemo from './components/appendix/agent-intro/AgentLevelDemo.vue'
-// import AgentArchitectureDemo from './components/appendix/agent-intro/AgentArchitectureDemo.vue'
-// import AgentTaskFlowDemo from './components/appendix/agent-intro/AgentTaskFlowDemo.vue'
+import AgentLevelDemo from './components/appendix/agent-intro/AgentLevelDemo.vue'
+import AgentArchitectureDemo from './components/appendix/agent-intro/AgentArchitectureDemo.vue'
+import AgentTaskFlowDemo from './components/appendix/agent-intro/AgentTaskFlowDemo.vue'
 import FrameworkComparisonDemo from './components/appendix/agent-intro/FrameworkComparisonDemo.vue'
-// import FrameworkSelectionDemo from './components/appendix/agent-intro/FrameworkSelectionDemo.vue'
-// import AgentChallengesDemo from './components/appendix/agent-intro/AgentChallengesDemo.vue'
+import FrameworkSelectionDemo from './components/appendix/agent-intro/FrameworkSelectionDemo.vue'
+import AgentChallengesDemo from './components/appendix/agent-intro/AgentChallengesDemo.vue'
 import AgentFutureDemo from './components/appendix/agent-intro/AgentFutureDemo.vue'
+import AgentQuickStartDemo from './components/appendix/agent-intro/AgentQuickStartDemo.vue'
+import AgentToolUseDemo from './components/appendix/agent-intro/AgentToolUseDemo.vue'
+import AgentPlanningDemo from './components/appendix/agent-intro/AgentPlanningDemo.vue'
+import AgentMemoryDemo from './components/appendix/agent-intro/AgentMemoryDemo.vue'
+import AgentMultiToolPrinciple from './components/appendix/agent-intro/AgentMultiToolPrinciple.vue'
+import AgentMemoryPrinciple from './components/appendix/agent-intro/AgentMemoryPrinciple.vue'
 
 // Database Intro Components
 import DatabaseIndexDemo from './components/appendix/database-intro/DatabaseIndexDemo.vue'
@@ -501,13 +507,19 @@ export default {
 
     // Agent Intro Components Registration
     app.component('AgentWorkflowDemo', AgentWorkflowDemo)
-    // app.component('AgentLevelDemo', AgentLevelDemo)
-    // app.component('AgentArchitectureDemo', AgentArchitectureDemo)
-    // app.component('AgentTaskFlowDemo', AgentTaskFlowDemo)
+    app.component('AgentLevelDemo', AgentLevelDemo)
+    app.component('AgentArchitectureDemo', AgentArchitectureDemo)
+    app.component('AgentTaskFlowDemo', AgentTaskFlowDemo)
     app.component('FrameworkComparisonDemo', FrameworkComparisonDemo)
-    // app.component('FrameworkSelectionDemo', FrameworkSelectionDemo)
-    // app.component('AgentChallengesDemo', AgentChallengesDemo)
+    app.component('FrameworkSelectionDemo', FrameworkSelectionDemo)
+    app.component('AgentChallengesDemo', AgentChallengesDemo)
     app.component('AgentFutureDemo', AgentFutureDemo)
+    app.component('AgentQuickStartDemo', AgentQuickStartDemo)
+    app.component('AgentToolUseDemo', AgentToolUseDemo)
+    app.component('AgentPlanningDemo', AgentPlanningDemo)
+    app.component('AgentMemoryDemo', AgentMemoryDemo)
+    app.component('AgentMultiToolPrinciple', AgentMultiToolPrinciple)
+    app.component('AgentMemoryPrinciple', AgentMemoryPrinciple)
 
     // Database Intro Components Registration
     app.component('DatabaseIndexDemo', DatabaseIndexDemo)

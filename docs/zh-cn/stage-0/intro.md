@@ -12,12 +12,12 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-0/0.1-learning-map/"
+    href="/easy-vibe/zh-cn/stage-0/0.1-learning-map/"
     title="1. 学习地图"
     description="了解整个学习路径，明确每个阶段的目标和收获。"
   />
   <NavCard
-    href="/zh-cn/stage-0/0.2-ai-capabilities-through-games/"
+    href="/easy-vibe/zh-cn/stage-0/0.2-ai-capabilities-through-games/"
     title="2. AI 时代，会说话就会编程"
     description="通过贪吃蛇等小游戏，体验 AI 编程的魅力，打破对编程的恐惧。"
   />
@@ -29,32 +29,32 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
+    href="/easy-vibe/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
     title="1. 认识 AI IDE 工具"
     description="了解当前主流的 AI 编程工具，选择最适合你的开发搭档。"
   />
   <NavCard
-    href="/zh-cn/stage-1/1.2-building-prototype/"
+    href="/easy-vibe/zh-cn/stage-1/1.2-building-prototype/"
     title="2. 动手做出原型"
     description="学习如何快速将产品想法转化为可视化的原型，进行低成本试错。"
   />
   <NavCard
-    href="/zh-cn/stage-1/1.3-integrating-ai-capabilities/"
+    href="/easy-vibe/zh-cn/stage-1/1.3-integrating-ai-capabilities/"
     title="3. 给原型加上 AI 能力"
     description="通过集成简单的 AI API，让你的原型具备智能交互能力。"
   />
   <NavCard
-    href="/zh-cn/stage-1/1.4-complete-project-practice/"
+    href="/easy-vibe/zh-cn/stage-1/1.4-complete-project-practice/"
     title="4. 完整项目实战"
     description="综合运用所学知识，从 0 到 1 完成一个完整的产品原型开发。"
   />
   <NavCard
-    href="/zh-cn/stage-1/appendix-a-product-thinking/"
+    href="/easy-vibe/zh-cn/stage-1/appendix-a-product-thinking/"
     title="附录 A：产品思维补充"
     description="补充产品经理必备的思维模型，提升需求分析与产品设计能力。"
   />
   <NavCard
-    href="/zh-cn/stage-1/appendix-b-common-errors/"
+    href="/easy-vibe/zh-cn/stage-1/appendix-b-common-errors/"
     title="附录 B：常见报错及解决方案"
     description="汇总开发过程中常见的报错信息及解决方法，助你快速排查问题。"
   />

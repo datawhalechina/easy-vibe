@@ -98,16 +98,16 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 
 <style scoped>
 .chapter-introduction {
-  margin: 24px 0;
-  border-radius: 16px;
+  margin: 16px 0;
+  border-radius: 12px;
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .objective-section {
-  padding: 24px 28px;
+  padding: 16px 20px;
   background: linear-gradient(
     to right,
     rgba(var(--vp-c-brand-rgb), 0.05),
@@ -119,25 +119,25 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 .objective-label {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   color: var(--vp-c-brand);
 }
 
 .icon {
-  font-size: 1.4em;
-  margin-right: 8px;
+  font-size: 1.2em;
+  margin-right: 6px;
 }
 
 .title {
-  font-size: 1em;
+  font-size: 0.95em;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .content {
-  font-size: 1.15em;
-  line-height: 1.7;
+  font-size: 1em;
+  line-height: 1.5;
   color: var(--vp-c-text-1);
   font-weight: 500;
 }
@@ -146,30 +146,30 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 .tags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
 }
 .description-text {
-  font-size: 1.15em;
-  line-height: 1.7;
+  font-size: 1em;
+  line-height: 1.5;
   color: var(--vp-c-text-1);
 }
 
 .description-text.has-tags {
-  margin-top: 16px;
-  font-size: 1em;
+  margin-top: 10px;
+  font-size: 0.95em;
   color: var(--vp-c-text-2);
   border-top: 1px solid var(--vp-c-divider);
-  padding-top: 12px;
+  padding-top: 10px;
 }
 
 .objective-tag {
   display: inline-flex;
   align-items: center;
-  padding: 6px 14px;
+  padding: 4px 10px;
   background-color: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
   border-radius: 99px;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 600;
   color: var(--vp-c-text-1);
   transition: all 0.2s;
@@ -193,9 +193,9 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .metric-card {
-  flex: 1 1 240px;
+  flex: 1 1 200px;
   background-color: var(--vp-c-bg-soft);
-  padding: 20px 24px;
+  padding: 14px 18px;
   display: flex;
   align-items: flex-start;
   gap: 16px;
@@ -207,7 +207,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .card-icon {
-  font-size: 1.7em;
+  font-size: 1.4em;
   line-height: 1;
   padding-top: 2px;
 }
@@ -219,16 +219,16 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 }
 
 .card-label {
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: var(--vp-c-text-2);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .card-value {
-  font-size: 1em;
-  line-height: 1.5;
+  font-size: 0.95em;
+  line-height: 1.4;
   color: var(--vp-c-text-1);
 }
 
@@ -236,7 +236,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
   display: inline-block;
   color: var(--vp-c-brand-dark);
   font-weight: 800;
-  font-size: 1.15em;
+  font-size: 1.1em;
   margin-top: 2px;
 }
 
@@ -244,21 +244,21 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 .output-container {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .core-output {
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: 800;
   color: var(--vp-c-brand);
-  line-height: 1.4;
+  line-height: 1.3;
   margin-bottom: 2px;
 }
 
 .output-desc {
-  font-size: 0.93em;
+  font-size: 0.9em;
   color: var(--vp-c-text-2);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .output-desc :deep(strong) {
@@ -269,12 +269,12 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
 /* Mobile adjustments */
 @media (max-width: 640px) {
   .metric-card {
-    padding: 16px 20px;
+    padding: 12px 16px;
     flex-basis: 100%;
   }
 
   .objective-section {
-    padding: 20px;
+    padding: 14px 16px;
   }
 }
 </style>

@@ -10,12 +10,12 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/"
+    href="/easy-vibe/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/"
     title="高级一：MCP 与 ClaudeCode Skills"
     description="掌握 Model Context Protocol (MCP)，扩展 AI 编程工具的能力边界"
   />
   <NavCard
-    href="/zh-cn/stage-3/core-skills/3.2-long-running-tasks/"
+    href="/easy-vibe/zh-cn/stage-3/core-skills/3.2-long-running-tasks/"
     title="高级二：如何让 Coding Tools 长时间工作"
     description="学习如何让 AI 编码工具处理长时间运行的复杂任务"
   />
@@ -27,22 +27,22 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/"
+    href="/easy-vibe/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/"
     title="高级三：如何构建微信小程序"
     description="从零开始开发微信小程序，掌握小程序开发的核心流程"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/"
+    href="/easy-vibe/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/"
     title="高级四：如何构建微信小程序（包含后端）"
     description="构建带有后端支持的完整微信小程序应用"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.5-android-app/"
+    href="/easy-vibe/zh-cn/stage-3/cross-platform/3.5-android-app/"
     title="高级五：如何构建安卓程序"
     description="使用现代跨平台框架构建 Android 原生应用"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.6-ios-app/"
+    href="/easy-vibe/zh-cn/stage-3/cross-platform/3.6-ios-app/"
     title="高级六：如何构建 iOS 程序"
     description="开发并发布 iOS 应用，掌握 iOS 生态的开发规范"
   />
@@ -54,7 +54,7 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/"
+    href="/easy-vibe/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/"
     title="高级七：如何构建属于自己的个人网页与学术博客"
     description="使用现代化技术栈搭建高性能、高颜值的个人博客"
   />
@@ -66,12 +66,12 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future"
+    href="/easy-vibe/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future"
     title="高级 AI 一：什么是 RAG 以及它如何工作"
     description="深入理解检索增强生成 (RAG) 的原理及其在 AI 应用中的价值"
   />
   <NavCard
-    href="/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/"
+    href="/easy-vibe/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/"
     title="高级 AI 二：中高级 RAG 与工作流编排 - 以 LangGraph 为例"
     description="学习使用 LangGraph 编排复杂的 AI 工作流，构建高级 RAG 系统"
   />

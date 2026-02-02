@@ -1,56 +1,111 @@
+<!--
+  SlidingWindowDemo.vue
+  滑动窗口机制演示
+
+  用途：
+  展示 "Sliding Window" (滑动窗口) 如何处理长对话。
+  当新消息进入时，最旧的消息被移除上下文，演示遗忘机制。
+
+  交互功能：
+  - 发送消息：用户可发送消息，AI 自动回复。
+  - 自动演示：一键模拟长对话，观察窗口滑动。
+  - 视觉反馈：清晰展示哪些消息在"窗口内"（活跃），哪些在"窗口外"（遗忘）。
+-->
 <template>
   <div class="sliding-window-demo">
-    <div class="viz-container">
-      <!-- Hidden Messages (History) -->
-      <div class="message-zone history">
-        <div class="zone-label">History (Forgotten)</div>
-        <transition-group name="list">
-          <div
-            v-for="msg in historyMessages"
-            :key="msg.id"
-            class="message-bubble faded"
-          >
-            <span class="role">{{ msg.role }}:</span> {{ msg.content }}
-          </div>
-        </transition-group>
+    <div class="control-panel">
+      <div class="info-stat">
+        <span class="label">Window Size / 窗口大小</span>
+        <span class="value">{{ windowSize }} Messages</span>
       </div>
+      <div class="actions">
+        <button class="action-btn" @click="autoPlay" :disabled="isAutoPlaying">
+          ▶ Auto Play
+        </button>
+        <button class="action-btn outline" @click="reset">
+          ↺ Reset
+        </button>
+      </div>
+    </div>
 
-      <!-- Active Window -->
-      <div class="window-frame">
-        <div class="window-header">
-          <span>Active Context Window</span>
-          <span class="capacity">Capacity: {{ windowSize }} msgs</span>
+    <div class="visualization-area">
+      <div class="conversation-stream">
+        <!-- Forgotten / History Zone -->
+        <div class="zone history-zone">
+          <div class="zone-label">
+            <span class="icon">🗑️</span> Forgotten (History)
+          </div>
+          <transition-group name="fade-list">
+            <div
+              v-for="msg in historyMessages"
+              :key="msg.id"
+              class="message-bubble history"
+              :class="msg.role.toLowerCase()"
+            >
+              <div class="avatar">{{ msg.role === 'User' ? '👤' : '🤖' }}</div>
+              <div class="content">
+                <div class="role-name">{{ msg.role }}</div>
+                <div class="text">{{ msg.content }}</div>
+              </div>
+            </div>
+          </transition-group>
+          <div v-if="historyMessages.length === 0" class="empty-placeholder">
+            No history yet...
+          </div>
         </div>
-        <div class="message-zone active">
-          <transition-group name="list">
+
+        <!-- Divider -->
+        <div class="window-divider">
+          <span>⬆ Out of Context</span>
+          <div class="divider-line"></div>
+          <span>⬇ In Context</span>
+        </div>
+
+        <!-- Active Window Zone -->
+        <div class="zone active-zone">
+          <div class="zone-label">
+            <span class="icon">🖼️</span> Active Context Window
+          </div>
+          <transition-group name="slide-list">
             <div
               v-for="msg in activeMessages"
               :key="msg.id"
-              class="message-bubble"
-              :class="msg.role"
+              class="message-bubble active"
+              :class="msg.role.toLowerCase()"
             >
-              <span class="role">{{ msg.role }}:</span> {{ msg.content }}
+              <div class="avatar">{{ msg.role === 'User' ? '👤' : '🤖' }}</div>
+              <div class="content">
+                <div class="role-name">{{ msg.role }}</div>
+                <div class="text">{{ msg.content }}</div>
+              </div>
             </div>
           </transition-group>
-          <div v-if="activeMessages.length === 0" class="empty-state">
-            Start chatting to fill the window...
+          <div v-if="activeMessages.length === 0" class="empty-placeholder">
+            Start the conversation...
           </div>
         </div>
       </div>
     </div>
 
-    <div class="controls">
-      <div class="input-group">
-        <input
-          v-model="newMessage"
-          @keyup.enter="sendMessage"
-          placeholder="Type a message..."
-        />
-        <button @click="sendMessage">Send</button>
-      </div>
-      <div class="actions">
-        <button class="secondary" @click="reset">Reset</button>
-      </div>
+    <div class="input-section">
+      <input
+        v-model="newMessage"
+        @keyup.enter="sendMessage"
+        placeholder="Type a message..."
+        :disabled="isAutoPlaying"
+      />
+      <button class="send-btn" @click="sendMessage" :disabled="!newMessage.trim() || isAutoPlaying">
+        Send
+      </button>
+    </div>
+
+    <div class="info-box">
+      <p>
+        <span class="icon">💡</span>
+        <strong>Note:</strong>
+        滑动窗口是最简单的记忆管理策略。它保证了 Token 永远不会溢出，但代价是"健忘"。
+        一旦消息滑出窗口（进入上方灰色区域），模型就完全不知道它的存在了。
+      </p>
     </div>
   </div>
 </template>
@@ -61,6 +116,7 @@ import { ref, computed } from 'vue'
 const windowSize = 4
 const messages = ref([])
 const newMessage = ref('')
+const isAutoPlaying = ref(false)
 let msgId = 0
 
 const activeMessages = computed(() => {
@@ -68,36 +124,60 @@ const activeMessages = computed(() => {
 })
 
 const historyMessages = computed(() => {
-  return messages.value.slice(
-    0,
-    Math.max(0, messages.value.length - windowSize)
-  )
+  return messages.value.slice(0, Math.max(0, messages.value.length - windowSize))
 })
 
 const sendMessage = () => {
   if (!newMessage.value.trim()) return
 
-  messages.value.push({
-    id: msgId++,
-    role: 'User',
-    content: newMessage.value
-  })
+  addMessage('User', newMessage.value)
+  const userText = newMessage.value
+  newMessage.value = ''
 
   // Simulate AI response
   setTimeout(() => {
-    messages.value.push({
-      id: msgId++,
-      role: 'AI',
-      content: `Response to "${newMessage.value}"`
-    })
-  }, 500)
+    addMessage('AI', `I heard you say "${userText}". Interesting!`)
+  }, 600)
+}
 
-  newMessage.value = ''
+const addMessage = (role, content) => {
+  messages.value.push({
+    id: msgId++,
+    role,
+    content
+  })
+}
+
+const autoPlay = async () => {
+  isAutoPlaying.value = true
+  const script = [
+    "Hello there!",
+    "Hi! I'm an AI assistant.",
+    "What is your name?",
+    "I am Model GPT-X.",
+    "Do you remember my first message?",
+    "Yes, you said 'Hello there!'.",
+    "Tell me a joke.",
+    "Why did the chicken cross the road?",
+    "To get to the other side!",
+    "Haha, classic.",
+    "Wait, what was my name again?",
+    "I... I don't remember. It fell out of my context window!"
+  ]
+
+  for (const line of script) {
+    if (!isAutoPlaying.value) break
+    const role = messages.value.length % 2 === 0 ? 'User' : 'AI'
+    addMessage(role, line)
+    await new Promise(r => setTimeout(r, 1500))
+  }
+  isAutoPlaying.value = false
 }
 
 const reset = () => {
   messages.value = []
   msgId = 0
+  isAutoPlaying.value = false
 }
 </script>
 
@@ -111,127 +191,260 @@ const reset = () => {
   font-family: var(--vp-font-family-mono);
 }
 
-.viz-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  min-height: 300px;
-}
-
-.message-zone {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.message-zone.history {
-  opacity: 0.5;
-  border-bottom: 2px dashed var(--vp-c-divider);
-  padding-bottom: 1rem;
-}
-
-.window-frame {
-  border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 1rem;
-  background: var(--vp-c-bg);
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.window-header {
+.control-panel {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: var(--vp-c-brand);
-  border-bottom: 1px solid var(--vp-c-divider);
-  padding-bottom: 0.5rem;
-}
-
-.message-bubble {
-  padding: 0.5rem 0.8rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: var(--vp-c-bg);
+  padding: 1rem;
   border-radius: 6px;
-  background: var(--vp-c-bg-alt);
-  font-size: 0.9rem;
   border: 1px solid var(--vp-c-divider);
 }
 
-.message-bubble.User {
-  align-self: flex-end;
-  background: #eff6ff;
-  border-color: #bfdbfe;
-  color: #1e3a8a;
-}
-
-.message-bubble.AI {
-  align-self: flex-start;
-  background: #f0fdf4;
-  border-color: #bbf7d0;
-  color: #14532d;
-}
-
-.message-bubble.faded {
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-3);
-  border-color: transparent;
-}
-
-.empty-state {
-  text-align: center;
-  color: var(--vp-c-text-3);
-  margin-top: 2rem;
-}
-
-.controls {
+.info-stat {
   display: flex;
   flex-direction: column;
+}
+
+.info-stat .label {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+}
+
+.info-stat .value {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
   gap: 0.5rem;
 }
 
-.input-group {
+.action-btn {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  background-color: var(--vp-c-brand);
+  color: white;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn.outline {
+  background-color: transparent;
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.visualization-area {
+  margin-bottom: 1.5rem;
+  background: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.conversation-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zone {
+  padding: 1rem;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.history-zone {
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px dashed var(--vp-c-divider);
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+}
+
+.active-zone {
+  background-color: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-brand);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 0.5rem;
+  min-height: 150px;
+}
+
+.zone-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.window-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--vp-c-text-3);
+  font-size: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--vp-c-divider);
+}
+
+.message-bubble {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  transition: all 0.5s ease;
+}
+
+.message-bubble.history {
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+.message-bubble.user .avatar {
+  order: 1;
+}
+
+.message-bubble.user {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.message-bubble.user .content {
+  align-items: flex-end;
+}
+
+.avatar {
+  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vp-c-bg-soft);
+  border-radius: 50%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.role-name {
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  margin-bottom: 0.2rem;
+}
+
+.text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.empty-placeholder {
+  text-align: center;
+  color: var(--vp-c-text-3);
+  font-style: italic;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.input-section {
   display: flex;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 input {
   flex: 1;
-  padding: 0.6rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
 }
 
-button {
-  padding: 0.5rem 1rem;
+input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
+}
+
+.send-btn {
+  padding: 0 1.5rem;
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-button.secondary {
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
-  border: 1px solid var(--vp-c-divider);
+.send-btn:hover {
+  background: var(--vp-c-brand-dark);
 }
 
-/* Transitions */
-.list-enter-active,
-.list-leave-active {
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.info-box {
+  background-color: var(--vp-c-bg-alt);
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+}
+
+.info-box .icon {
+  margin-right: 0.5rem;
+}
+
+/* Animations */
+.slide-list-enter-active,
+.slide-list-leave-active,
+.fade-list-enter-active,
+.fade-list-leave-active {
   transition: all 0.5s ease;
 }
-.list-enter-from {
+
+.slide-list-enter-from {
   opacity: 0;
   transform: translateY(20px);
 }
-.list-leave-to {
+
+.slide-list-leave-to {
   opacity: 0;
   transform: translateY(-20px);
+}
+
+.fade-list-enter-from {
+  opacity: 0;
+}
+.fade-list-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>

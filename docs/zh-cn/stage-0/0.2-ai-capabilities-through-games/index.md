@@ -3,13 +3,9 @@
 这是一个**基于项目制学习**的学习教程。我们鼓励你跟随步骤一步步操作，并尝试复现结果。
 不要担心犯错或修改内容，我们永远相信你可以做到，请你永远记住：
 
-<el-card shadow="hover" style="border-radius: 16px; border: 2px dashed #FFB6C1; background-color: #FFF0F5; margin: 20px 0;">
-  <div style="text-align: center;">
-    <div style="font-size: 24px; font-weight: 600; color: #595959;">
-       完成比完美更重要 🐣
-    </div>
-  </div>
-</el-card>
+<div style="display: inline-block; padding: 8px 20px; border-radius: 8px; border: 1px dashed #FFB6C1; background: linear-gradient(135deg, #FFF0F5 0%, #FFE4EC 100%); margin: 12px 0;">
+  <span style="font-size: 15px; font-weight: 500; color: #666;">完成比完美更重要 🐣</span>
+</div>
 
 <script setup>
 const duration = '约 <strong>4 小时</strong>，可分多次完成'

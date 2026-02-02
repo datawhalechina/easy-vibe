@@ -1,670 +1,531 @@
+<!--
+ * Component: AgentContextFlow.vue
+ * Description: Visualizes the data flow in an agentic system, showing how context is built, used, and updated during interactions.
+ * Features:
+ *  - Step-by-step visualization of the Agent Loop (Input -> Context -> Decision -> Action -> Observation -> Update)
+ *  - Animation of data flowing between components
+ *  - Metrics display for context usage and cache hits
+-->
+
+<script setup>
+import { ref, computed, onUnmounted } from 'vue'
+
+const steps = [
+  { id: 'input', label: '用户输入', icon: '👤', desc: '用户提出问题或指令' },
+  { id: 'context', label: '构建上下文', icon: '📚', desc: '检索历史消息与相关知识' },
+  { id: 'reasoning', label: '模型推理', icon: '🧠', desc: 'LLM 分析意图并规划行动' },
+  { id: 'action', label: '工具调用', icon: '🔧', desc: '执行外部工具或 API' },
+  { id: 'observation', label: '观察结果', icon: '👁️', desc: '获取工具执行的返回结果' },
+  { id: 'update', label: '更新上下文', icon: '📝', desc: '将结果追加到记忆中' }
+]
+
+const currentStepIndex = ref(-1)
+const isAutoPlaying = ref(false)
+const iteration = ref(1)
+const contextTokens = ref(120)
+const cacheHitRate = ref(0)
+const autoPlayInterval = ref(null)
+
+// Simulation data
+const currentScenario = computed(() => {
+  const scenarios = [
+    { input: "查询北京天气", action: "WeatherAPI.get('Beijing')", result: "晴, 25°C", response: "北京今天晴，气温25度。" },
+    { input: "计算 123 * 456", action: "Calculator.mul(123, 456)", result: "56088", response: "结果是 56088。" },
+    { input: "搜索最新的 AI 新闻", action: "Search.query('AI news')", result: "Found 5 articles...", response: "最近的 AI 新闻包括..." }
+  ]
+  return scenarios[(iteration.value - 1) % scenarios.length]
+})
+
+const currentStep = computed(() => {
+  if (currentStepIndex.value === -1) return null
+  return steps[currentStepIndex.value]
+})
+
+const progress = computed(() => {
+  if (currentStepIndex.value === -1) return 0
+  return ((currentStepIndex.value + 1) / steps.length) * 100
+})
+
+const nextStep = () => {
+  if (currentStepIndex.value < steps.length - 1) {
+    currentStepIndex.value++
+    // Update metrics based on step
+    if (steps[currentStepIndex.value].id === 'context') {
+      contextTokens.value += 50
+    } else if (steps[currentStepIndex.value].id === 'update') {
+      contextTokens.value += 30
+      cacheHitRate.value = Math.min(95, cacheHitRate.value + 15)
+    }
+  } else {
+    // Loop finished, prepare next iteration
+    currentStepIndex.value = -1
+    iteration.value++
+    setTimeout(() => {
+      if (isAutoPlaying.value) nextStep()
+    }, 500)
+  }
+}
+
+const toggleAutoPlay = () => {
+  isAutoPlaying.value = !isAutoPlaying.value
+  if (isAutoPlaying.value) {
+    if (currentStepIndex.value === steps.length - 1) {
+      currentStepIndex.value = -1
+      iteration.value++
+    }
+    runAutoPlay()
+  } else {
+    clearTimeout(autoPlayInterval.value)
+  }
+}
+
+const runAutoPlay = () => {
+  if (!isAutoPlaying.value) return
+  
+  nextStep()
+  
+  // Determine delay based on current step
+  const delay = currentStepIndex.value === -1 ? 500 : 1500
+  
+  autoPlayInterval.value = setTimeout(() => {
+    runAutoPlay()
+  }, delay)
+}
+
+const reset = () => {
+  isAutoPlaying.value = false
+  clearTimeout(autoPlayInterval.value)
+  currentStepIndex.value = -1
+  iteration.value = 1
+  contextTokens.value = 120
+  cacheHitRate.value = 0
+}
+
+onUnmounted(() => {
+  clearTimeout(autoPlayInterval.value)
+})
+</script>
+
 <template>
   <div class="agent-context-flow">
-    <div class="flow-controls">
-      <button class="control-btn" @click="startSimulation" :disabled="running">
-        🚀 开始演示
-      </button>
-      <button class="control-btn reset" @click="reset" v-if="completed">
-        🔄 重新演示
-      </button>
-    </div>
-
-    <div class="flow-visualization">
-      <div class="user-input">
-        <div class="input-icon">👤</div>
-        <div class="input-content">
-          <div class="input-label">用户输入</div>
-          <div class="input-text">{{ userInput }}</div>
-        </div>
+    <!-- Control Panel -->
+    <div class="control-panel">
+      <div class="controls-left">
+        <button 
+          class="action-btn primary" 
+          @click="toggleAutoPlay"
+        >
+          {{ isAutoPlaying ? '⏸ 暂停' : '▶ 自动运行' }}
+        </button>
+        <button 
+          class="action-btn secondary" 
+          @click="nextStep"
+          :disabled="isAutoPlaying || currentStepIndex === steps.length - 1"
+        >
+          下一步 ➝
+        </button>
+        <button 
+          class="action-btn text" 
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
-
-      <div class="arrow-down">↓</div>
-
-      <div class="context-window" :class="{ active: step >= 1 }">
-        <div class="window-header">
-          <span class="window-title">上下文窗口</span>
-          <span class="window-size">{{ contextTokens }} tokens</span>
-        </div>
-        <div class="window-content">
-          <div
-            v-for="(item, index) in contextItems"
-            :key="index"
-            class="context-item"
-            :class="{ cached: item.cached, active: item.active }"
-          >
-            <div class="item-type">{{ item.type }}</div>
-            <div class="item-content">{{ item.content }}</div>
-            <div class="item-tokens">{{ item.tokens }} tokens</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="arrow-down">↓</div>
-
-      <div class="agent-decision" :class="{ active: step >= 2 }">
-        <div class="decision-icon">🤖</div>
-        <div class="decision-content">
-          <div class="decision-label">Agent 决策</div>
-          <div class="decision-text">{{ currentAction }}</div>
-        </div>
-      </div>
-
-      <div class="arrow-down">↓</div>
-
-      <div class="tool-execution" :class="{ active: step >= 3 }">
-        <div class="tool-icon">🔧</div>
-        <div class="tool-content">
-          <div class="tool-label">工具执行</div>
-          <div class="tool-name">{{ currentTool }}</div>
-        </div>
-      </div>
-
-      <div class="arrow-down">↓</div>
-
-      <div class="observation" :class="{ active: step >= 4 }">
-        <div class="obs-icon">👁️</div>
-        <div class="obs-content">
-          <div class="obs-label">观察结果</div>
-          <div class="obs-text">{{ observation }}</div>
-        </div>
-      </div>
-
-      <div class="arrow-down">↓</div>
-
-      <div class="context-update" :class="{ active: step >= 5 }">
-        <div class="update-icon">📝</div>
-        <div class="update-content">
-          <div class="update-label">更新上下文</div>
-          <div class="update-text">动作 + 结果被追加到上下文</div>
-        </div>
+      <div class="status-indicator">
+        <span class="status-dot" :class="{ active: isAutoPlaying }"></span>
+        {{ isAutoPlaying ? '运行中' : '等待中' }}
       </div>
     </div>
 
-    <div class="metrics">
-      <div class="metric-card">
-        <div class="metric-title">KV 缓存命中率</div>
-        <div class="metric-value">{{ cacheHitRate }}%</div>
-        <div class="metric-desc">
-          节省成本: {{ (costSavings * 100).toFixed(0) }}%
+    <!-- Visualization Area -->
+    <div class="visualization-area">
+      <!-- Central Flow Diagram -->
+      <div class="flow-container">
+        <div 
+          v-for="(step, index) in steps" 
+          :key="step.id"
+          class="flow-step"
+          :class="{ 
+            active: index === currentStepIndex,
+            completed: index < currentStepIndex,
+            pending: index > currentStepIndex
+          }"
+        >
+          <div class="step-connector" v-if="index > 0"></div>
+          <div class="step-node">
+            <div class="step-icon">{{ step.icon }}</div>
+            <div class="step-label">{{ step.label }}</div>
+          </div>
         </div>
       </div>
 
-      <div class="metric-card">
-        <div class="metric-title">上下文长度</div>
-        <div class="metric-value">{{ contextTokens }}</div>
-        <div class="metric-desc">迭代: {{ iteration }} 步</div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-title">已用工具</div>
-        <div class="metric-value">{{ toolsUsed.length }}</div>
-        <div class="metric-desc">
-          {{ toolsUsed.join(', ') || '无' }}
-        </div>
+      <!-- Detail View -->
+      <div class="detail-view">
+        <transition name="fade" mode="out-in">
+          <div v-if="currentStep" :key="currentStep.id" class="step-detail">
+            <div class="detail-header">
+              <h3>{{ currentStep.icon }} {{ currentStep.label }}</h3>
+              <p>{{ currentStep.desc }}</p>
+            </div>
+            <div class="detail-content">
+              <div class="scenario-info" v-if="currentStep.id === 'input'">
+                <strong>输入:</strong> {{ currentScenario.input }}
+              </div>
+              <div class="scenario-info" v-else-if="currentStep.id === 'action'">
+                <strong>执行:</strong> <code>{{ currentScenario.action }}</code>
+              </div>
+              <div class="scenario-info" v-else-if="currentStep.id === 'observation'">
+                <strong>结果:</strong> {{ currentScenario.result }}
+              </div>
+              <div class="scenario-info" v-else-if="currentStep.id === 'update'">
+                 上下文已更新，准备下一轮对话。
+              </div>
+              <div class="scenario-info" v-else>
+                 正在处理...
+              </div>
+            </div>
+          </div>
+          <div v-else class="step-detail placeholder">
+            <div class="empty-state">
+              <span class="empty-icon">👋</span>
+              <p>点击"自动运行"或"下一步"开始 Agent 流程演示</p>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
 
-    <div class="explanation" v-if="explanationText">
-      <div class="exp-title">💡 当前步骤说明</div>
-      <div class="exp-content">{{ explanationText }}</div>
-    </div>
-
-    <div class="principles">
-      <div class="principle-title">🎯 Agent 上下文工程核心原则</div>
-      <div class="principle-list">
-        <div class="principle-item">
-          <div class="principle-icon">1️⃣</div>
-          <div class="principle-content">
-            <strong>保持前缀稳定</strong>
-            <br />
-            系统提示和工具定义不要频繁变化，提高 KV 缓存命中率
-          </div>
-        </div>
-        <div class="principle-item">
-          <div class="principle-icon">2️⃣</div>
-          <div class="principle-content">
-            <strong>只追加不修改</strong>
-            <br />
-            上下文应该只追加新的动作和观察，不修改历史内容
-          </div>
-        </div>
-        <div class="principle-item">
-          <div class="principle-icon">3️⃣</div>
-          <div class="principle-content">
-            <strong>遮蔽而非移除</strong>
-            <br />
-            不动态添加/删除工具，而是通过 logits 掩码控制可用工具
-          </div>
-        </div>
-        <div class="principle-item">
-          <div class="principle-icon">4️⃣</div>
-          <div class="principle-content">
-            <strong>文件系统作为外部记忆</strong>
-            <br />
-            大型内容（网页、PDF）写入文件，上下文只保留路径
-          </div>
-        </div>
+    <!-- Metrics/Info Section -->
+    <div class="metrics-panel">
+      <div class="metric-item">
+        <div class="metric-label">迭代轮次</div>
+        <div class="metric-value">#{{ iteration }}</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">上下文长度</div>
+        <div class="metric-value">{{ contextTokens }} tokens</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">KV 缓存命中</div>
+        <div class="metric-value highlight">{{ cacheHitRate }}%</div>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { computed, ref } from 'vue'
-
-const userInput = ref('帮我搜索最新的 AI 技术文章')
-const running = ref(false)
-const completed = ref(false)
-const step = ref(0)
-const iteration = ref(0)
-const contextTokens = ref(0)
-const currentAction = ref('')
-const currentTool = ref('')
-const observation = ref('')
-const toolsUsed = ref([])
-
-const contextItems = ref([
-  {
-    type: '系统提示',
-    content: '你是一个 AI 助手，可以使用搜索和文件工具',
-    tokens: 150,
-    cached: true,
-    active: false
-  },
-  {
-    type: '工具定义',
-    content: 'search: 搜索网络信息',
-    tokens: 80,
-    cached: true,
-    active: false
-  },
-  {
-    type: '工具定义',
-    content: 'write_file: 写入文件',
-    tokens: 75,
-    cached: true,
-    active: false
-  }
-])
-
-const steps = [
-  {
-    step: 1,
-    action: '分析用户需求',
-    tool: '',
-    obs: '',
-    explanation:
-      'Agent 首先解析用户的请求，决定需要采取什么行动。系统提示和工具定义从缓存读取（绿色），节省成本！',
-    addTokens: 50
-  },
-  {
-    step: 2,
-    action: '选择工具: search',
-    tool: 'search',
-    obs: '',
-    explanation:
-      'Agent 根据用户需求选择合适的工具。注意：工具定义在缓存中，不需要重新计算！',
-    addTokens: 30
-  },
-  {
-    step: 3,
-    action: '执行搜索',
-    tool: 'search',
-    obs: '找到 5 篇相关文章',
-    explanation: '工具执行完成，返回观察结果。结果会被追加到上下文中。',
-    addTokens: 100
-  },
-  {
-    step: 4,
-    action: '决定保存摘要',
-    tool: 'write_file',
-    obs: '文件已保存',
-    explanation:
-      'Agent 将搜索结果写入文件，而不是在上下文中保留所有内容。这样上下文保持精简！',
-    addTokens: 60
-  },
-  {
-    step: 5,
-    action: '完成任务',
-    tool: '',
-    obs: '已保存到 summary.md',
-    explanation:
-      '任务完成！整个过程中，系统提示和工具定义只缓存一次，每次迭代只追加新的动作和观察结果。',
-    addTokens: 40
-  }
-]
-
-const cacheHitRate = computed(() => {
-  const cachedTokens = contextItems.value
-    .filter((item) => item.cached)
-    .reduce((sum, item) => sum + item.tokens, 0)
-  const totalTokens = contextTokens.value
-  return totalTokens > 0 ? ((cachedTokens / totalTokens) * 100).toFixed(1) : 0
-})
-
-const costSavings = computed(() => {
-  return cacheHitRate.value > 0 ? (cacheHitRate.value / 100) * 0.9 : 0
-})
-
-const explanationText = computed(() => {
-  if (step.value === 0) return '点击"开始演示"查看 Agent 如何管理上下文'
-  const currentStepData = steps[step.value - 1]
-  return currentStepData ? currentStepData.explanation : ''
-})
-
-const startSimulation = () => {
-  running.value = true
-  completed.value = false
-  step.value = 0
-  iteration.value = 0
-  contextTokens.value = 305
-  toolsUsed.value = []
-
-  let currentStepIndex = 0
-  const interval = setInterval(() => {
-    if (currentStepIndex < steps.length) {
-      const stepData = steps[currentStepIndex]
-      step.value = stepData.step
-      currentAction.value = stepData.action
-      currentTool.value = stepData.tool
-      observation.value = stepData.obs
-
-      if (stepData.tool) {
-        toolsUsed.value.push(stepData.tool)
-      }
-
-      // 追加新的上下文项
-      if (stepData.obs) {
-        contextItems.value.push({
-          type: '观察结果',
-          content: stepData.obs,
-          tokens: stepData.addTokens,
-          cached: false,
-          active: true
-        })
-      } else {
-        contextItems.value.push({
-          type: '思考',
-          content: stepData.action,
-          tokens: stepData.addTokens,
-          cached: false,
-          active: true
-        })
-      }
-
-      contextTokens.value += stepData.addTokens
-      iteration.value++
-      currentStepIndex++
-    } else {
-      clearInterval(interval)
-      running.value = false
-      completed.value = true
-    }
-  }, 1500)
-}
-
-const reset = () => {
-  running.value = false
-  completed.value = false
-  step.value = 0
-  iteration.value = 0
-  contextTokens.value = 0
-  currentAction.value = ''
-  currentTool.value = ''
-  observation.value = ''
-  toolsUsed.value = []
-  contextItems.value = [
-    {
-      type: '系统提示',
-      content: '你是一个 AI 助手，可以使用搜索和文件工具',
-      tokens: 150,
-      cached: true,
-      active: false
-    },
-    {
-      type: '工具定义',
-      content: 'search: 搜索网络信息',
-      tokens: 80,
-      cached: true,
-      active: false
-    },
-    {
-      type: '工具定义',
-      content: 'write_file: 写入文件',
-      tokens: 75,
-      cached: true,
-      active: false
-    }
-  ]
-}
-</script>
-
 <style scoped>
 .agent-context-flow {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 20px;
-  background: var(--vp-c-bg-soft);
-  margin: 20px 0;
-}
-
-.flow-controls {
+  background-color: var(--vp-c-bg-soft);
+  overflow: hidden;
+  margin: 1rem 0;
   display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.control-btn {
-  padding: 12px 24px;
-  background: var(--vp-c-brand);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.control-btn:hover:not(:disabled) {
-  background: var(--vp-c-brand-dark);
-}
-
-.control-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.control-btn.reset {
-  background: #22c55e;
-}
-
-.control-btn.reset:hover {
-  background: #16a34a;
-}
-
-.flow-visualization {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-}
-
-.user-input,
-.agent-decision,
-.tool-execution,
-.observation,
-.context-update {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border-left: 4px solid var(--vp-c-divider);
-  margin-bottom: 15px;
-  opacity: 0.5;
-  transition: all 0.3s;
-}
-
-.user-input.active,
-.agent-decision.active,
-.tool-execution.active,
-.observation.active,
-.context-update.active {
-  opacity: 1;
-  border-left-color: var(--vp-c-brand);
-}
-
-.user-input {
-  border-left-color: #3b82f6;
-}
-
-.agent-decision {
-  border-left-color: #8b5cf6;
-}
-
-.tool-execution {
-  border-left-color: #f59e0b;
-}
-
-.observation {
-  border-left-color: #10b981;
-}
-
-.context-update {
-  border-left-color: #ef4444;
-  margin-bottom: 0;
-}
-
-.input-icon,
-.decision-icon,
-.tool-icon,
-.obs-icon,
-.update-icon {
-  font-size: 2rem;
-}
-
-.input-content,
-.decision-content,
-.tool-content,
-.obs-content,
-.update-content {
-  flex: 1;
-}
-
-.input-label,
-.decision-label,
-.tool-label,
-.obs-label,
-.update-label {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.input-text,
-.decision-text,
-.tool-name,
-.obs-text,
-.update-text {
-  font-size: 0.95rem;
-  color: var(--vp-c-text-1);
-  font-weight: 600;
-}
-
-.arrow-down {
-  text-align: center;
-  font-size: 1.5rem;
-  color: var(--vp-c-text-3);
-  margin: 5px 0;
-}
-
-.context-window {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  border: 2px solid var(--vp-c-divider);
-  opacity: 0.5;
-  transition: all 0.3s;
-}
-
-.context-window.active {
-  opacity: 1;
-  border-color: var(--vp-c-brand);
-}
-
-.window-header {
+/* Control Panel */
+.control-panel {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
+  padding: 1rem;
+  background-color: var(--vp-c-bg);
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.window-title {
+.controls-left {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
   font-size: 0.9rem;
-  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.action-btn.primary {
+  background-color: var(--vp-c-brand);
+  color: white;
+}
+.action-btn.primary:hover {
+  background-color: var(--vp-c-brand-dark);
+}
+
+.action-btn.secondary {
+  background-color: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-divider);
+}
+.action-btn.secondary:hover:not(:disabled) {
+  background-color: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand);
+}
+.action-btn.secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn.text {
+  background: none;
+  color: var(--vp-c-text-2);
+}
+.action-btn.text:hover {
   color: var(--vp-c-text-1);
 }
 
-.window-size {
-  font-size: 0.8rem;
-  color: var(--vp-c-brand);
-  font-family: monospace;
-  font-weight: 600;
-}
-
-.window-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.context-item {
+.status-indicator {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 6px;
-  background: var(--vp-c-bg);
-  transition: all 0.3s;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
 }
 
-.context-item.cached {
-  border-left: 3px solid #22c55e;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--vp-c-divider);
+  transition: background-color 0.3s;
+}
+.status-dot.active {
+  background-color: var(--vp-c-green);
+  box-shadow: 0 0 4px var(--vp-c-green);
 }
 
-.context-item.active {
-  border-left: 3px solid var(--vp-c-brand);
-  background: var(--vp-c-bg-soft);
+/* Visualization Area */
+.visualization-area {
+  padding: 2rem 1rem;
+  background-color: var(--vp-c-bg-alt);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
 }
 
-.item-type {
+.flow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 80px;
+}
+
+.step-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+  width: 100%;
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-label {
   font-size: 0.75rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: var(--vp-c-divider);
-  color: var(--vp-c-text-3);
-  font-weight: 600;
-  min-width: 70px;
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+  transition: color 0.3s;
   text-align: center;
 }
 
-.item-content {
-  flex: 1;
-  font-size: 0.85rem;
+.step-connector {
+  position: absolute;
+  top: 20px;
+  left: -50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--vp-c-divider);
+  z-index: 1;
+  transform: translateY(-50%);
+  transition: background-color 0.5s ease;
+}
+
+/* Active State */
+.flow-step.active .step-icon {
+  background-color: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--vp-c-brand-dimm);
+}
+.flow-step.active .step-label {
+  color: var(--vp-c-brand);
+  font-weight: bold;
+}
+
+/* Completed State */
+.flow-step.completed .step-icon {
+  background-color: var(--vp-c-brand-dimm);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand-dark);
+}
+.flow-step.completed .step-connector {
+  background-color: var(--vp-c-brand);
+}
+
+/* Detail View */
+.detail-view {
+  width: 100%;
+  max-width: 500px;
+  min-height: 120px;
+  background-color: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.detail-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--vp-c-text-1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.detail-header p {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.9rem;
   color: var(--vp-c-text-2);
 }
 
-.item-tokens {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-  font-family: monospace;
-  min-width: 60px;
-  text-align: right;
+.detail-content {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
-.metrics {
+.scenario-info code {
+  background-color: var(--vp-c-bg-mute);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--vp-font-mono);
+  font-size: 0.85rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--vp-c-text-3);
+  text-align: center;
+  padding: 1rem;
+}
+.empty-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Transitions */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Metrics Panel */
+.metrics-panel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--vp-c-bg);
+  border-top: 1px solid var(--vp-c-divider);
+  position: relative;
 }
 
-@media (max-width: 768px) {
-  .metrics {
-    grid-template-columns: 1fr;
-  }
+.metric-item {
+  text-align: center;
 }
 
-.metric-card {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 15px;
-  border-left: 4px solid var(--vp-c-brand);
-}
-
-.metric-title {
+.metric-label {
   font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  font-weight: 600;
-  margin-bottom: 8px;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.2rem;
 }
 
 .metric-value {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-mono);
+}
+.metric-value.highlight {
   color: var(--vp-c-brand);
-  margin-bottom: 4px;
 }
 
-.metric-desc {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
+.progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
 }
 
-.explanation {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-left: 4px solid var(--vp-c-brand);
+.progress-bar {
+  height: 100%;
+  background-color: var(--vp-c-brand);
+  transition: width 0.3s linear;
 }
 
-.exp-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
-}
-
-.exp-content {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.8;
-}
-
-.principles {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.principle-title {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-  margin-bottom: 15px;
-}
-
-.principle-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.principle-item {
-  display: flex;
-  gap: 15px;
-  padding: 15px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-}
-
-.principle-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.principle-content {
-  flex: 1;
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.8;
+@media (max-width: 640px) {
+  .flow-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .step-connector {
+    width: 2px;
+    height: 20px;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flow-step {
+    width: 100%;
+    min-width: unset;
+  }
+  .controls-left span {
+    display: none;
+  }
 }
 </style>

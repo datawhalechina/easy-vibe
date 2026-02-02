@@ -13,9 +13,7 @@ const duration = '约 <strong>1 天</strong>'
 
 <ChapterIntroduction :duration="duration" :tags="['API', '文本模型', '文生图', '原型集成']" coreOutput="原型接入 1 个文本模型 + 1 个图像模型（可选）" expectedOutput="可调用真实 API 的 AI 原型">
 
-在上一节中，你已经做出了一个「能跑起来」的产品原型；但只靠静态页面和前端逻辑，它离“能真正帮你提高效率”还差一步：把 AI 能力接进来。
-
-本章会用非常务实的视角讲清楚一件事：**接入任何 AI API，本质上都是“拿到 API Key + 读懂官方示例 + 让 AI 帮你落到代码里”**。你会以 DeepSeek 作为文本模型示例，并从多个图像生成服务中挑一个集成到自己的原型里。
+上一节搭好的原型目前还只是静态页面。本章**接入真实 AI 能力**：拿到 API Key、读懂官方示例、让 AI IDE 帮你集成到代码里。以 DeepSeek 文本模型为例，并可选接入图像生成服务。
 
 </ChapterIntroduction>
 
