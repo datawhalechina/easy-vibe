@@ -1,11 +1,6 @@
 <!--
  * Component: RAGSimulationDemo.vue
- * Description: Demonstrates the Retrieval-Augmented Generation (RAG) process.
- * Features:
- *  - Interactive search simulation
- *  - Visual representation of Vector DB and Document retrieval
- *  - Step-by-step animation of the RAG pipeline
- *  - Visualization of context augmentation
+ * Description: Demonstrates the Retrieval-Augmented Generation (RAG) process with a vertical, intuitive flow.
 -->
 
 <script setup>
@@ -14,65 +9,48 @@ import { ref, computed } from 'vue'
 const query = ref('如何重置密码？')
 const lastQuery = ref('')
 const isSearching = ref(false)
-const currentStep = ref(0)
-const searchTime = ref(0)
+const currentStep = ref(0) // 0: Idle, 1: Searching/Scanning, 2: Retrieved/Assembling, 3: Done
 
 const documents = ref([
   {
     id: 1,
     title: '密码重置指南',
     content: '用户可以通过点击设置页面的"忘记密码"链接来重置密码。系统会发送验证邮件。',
-    vector: [0.12, 0.88, 0.05],
     score: 0
   },
   {
     id: 2,
     title: '定价策略',
     content: '基础版每月 $10，专业版每月 $29。企业版需要联系销售团队获取报价。',
-    vector: [0.85, 0.15, 0.10],
     score: 0
   },
   {
     id: 3,
     title: 'API 文档',
     content: '所有 API 请求都需要在 Header 中包含 Bearer Token 进行身份验证。',
-    vector: [0.30, 0.20, 0.95],
     score: 0
   },
   {
     id: 4,
     title: '账户安全',
     content: '为了账户安全，建议开启双重认证 (2FA)。定期修改密码也是好习惯。',
-    vector: [0.15, 0.85, 0.12],
     score: 0
   }
 ])
 
-const steps = [
-  { id: 1, label: 'Embedding', desc: '将问题转换为向量' },
-  { id: 2, label: 'Similarity Search', desc: '计算向量相似度' },
-  { id: 3, label: 'Retrieval', desc: '提取 Top-K 相关文档' },
-  { id: 4, label: 'Augmentation', desc: '注入上下文窗口' }
-]
-
 const retrievedDocs = computed(() => {
   return documents.value
-    .filter(doc => doc.score > 0.7)
+    .filter(doc => doc.score > 0.6)
     .sort((a, b) => b.score - a.score)
 })
 
-const calculateSimilarity = (q, docVector) => {
-  // Mock similarity calculation based on keywords for demo purposes
-  // In reality, this would be a vector dot product
-  if (q.includes('密码') || q.includes('安全')) {
-    if (docVector[1] > 0.8) return 0.92 + (Math.random() * 0.05)
-    if (docVector[0] > 0.8) return 0.15
-    return 0.4 + (Math.random() * 0.1)
-  }
-  if (q.includes('价格') || q.includes('多少钱')) {
-    if (docVector[0] > 0.8) return 0.95
-    return 0.1
-  }
+const calculateSimilarity = (q, docContent) => {
+  // Simple keyword matching simulation
+  if (q.includes('密码') && (docContent.includes('密码') || docContent.includes('安全'))) return 0.95
+  if (q.includes('价格') && docContent.includes('价')) return 0.9
+  if (q.includes('API') && docContent.includes('API')) return 0.9
+  
+  // Random noise for non-matches
   return Math.random() * 0.3
 }
 
@@ -82,470 +60,387 @@ const search = async () => {
   isSearching.value = true
   lastQuery.value = query.value
   currentStep.value = 1
-  searchTime.value = 0
   
   // Reset scores
   documents.value.forEach(d => d.score = 0)
 
-  // Step 1: Embedding (Simulated)
-  await new Promise(r => setTimeout(r, 800))
-  currentStep.value = 2
-
-  // Step 2: Search
-  const startTime = performance.now()
-  documents.value.forEach(doc => {
-    doc.score = calculateSimilarity(query.value, doc.vector)
-  })
-  await new Promise(r => setTimeout(r, 800))
-  searchTime.value = Math.round(performance.now() - startTime) + 45 // Add base latency
-  currentStep.value = 3
-
-  // Step 3: Retrieval
-  await new Promise(r => setTimeout(r, 800))
-  currentStep.value = 4
+  // Step 1: Simulate Scanning (1.5s)
+  await new Promise(r => setTimeout(r, 600))
   
-  // Step 4: Complete
-  await new Promise(r => setTimeout(r, 800))
+  // Calculate scores
+  documents.value.forEach(doc => {
+    doc.score = calculateSimilarity(query.value, doc.content + doc.title)
+  })
+  
+  await new Promise(r => setTimeout(r, 800)) // Wait for scan animation to finish visual impact
+  
+  currentStep.value = 2 // Transition to retrieval
+  
+  // Step 2: Assemble Context (1s)
+  await new Promise(r => setTimeout(r, 1000))
+  currentStep.value = 3 // Done
+  
   isSearching.value = false
 }
 </script>
 
 <template>
-  <div class="rag-simulation-demo">
-    <!-- Control Panel -->
-    <div class="control-panel">
-      <div class="search-bar">
+  <div class="rag-demo">
+    
+    <!-- Step 1: User Input -->
+    <div class="step-section input-section">
+      <div class="step-label">
+        <span class="step-num">1</span>
+        <span class="step-text">用户提问 (User Query)</span>
+      </div>
+      <div class="search-box">
         <input 
           v-model="query" 
           type="text" 
-          placeholder="输入问题 (例如: 怎么重置密码?)"
+          placeholder="输入问题..."
           @keyup.enter="search"
           :disabled="isSearching"
         />
         <button 
-          class="search-btn" 
+          class="action-btn" 
           @click="search"
           :disabled="isSearching || !query"
         >
-          {{ isSearching ? '检索中...' : '🔍 开始检索' }}
+          {{ isSearching ? '检索中...' : '🚀 开始检索' }}
         </button>
       </div>
-      <div class="step-indicator">
-        <div 
-          v-for="s in steps" 
-          :key="s.id"
-          class="step-dot"
-          :class="{ active: currentStep >= s.id, current: currentStep === s.id }"
-          :title="s.label"
-        ></div>
-      </div>
     </div>
 
-    <!-- Main Visualization -->
-    <div class="viz-container">
+    <!-- Arrow Connection -->
+    <div class="flow-arrow" :class="{ active: currentStep >= 1 }">
+      <div class="line"></div>
+      <div class="icon">🔍</div>
+    </div>
+
+    <!-- Step 2: Library Scanning -->
+    <div class="step-section library-section" :class="{ 'is-scanning': currentStep === 1 }">
+      <div class="step-label">
+        <span class="step-num">2</span>
+        <span class="step-text">图书馆检索 (Retrieval)</span>
+        <span class="status-badge" v-if="currentStep === 1">正在扫描...</span>
+        <span class="status-badge success" v-if="currentStep >= 2">命中 {{ retrievedDocs.length }} 条</span>
+      </div>
       
-      <!-- Left: Vector Database -->
-      <div class="panel vector-db" :class="{ dimmed: currentStep === 4 }">
-        <div class="panel-header">
-          <span class="icon">🗄️</span> 向量数据库 (Knowledge Base)
-        </div>
-        <div class="doc-list">
-          <div 
-            v-for="doc in documents" 
-            :key="doc.id"
-            class="doc-card"
-            :class="{ 
-              'scanning': currentStep === 2,
-              'matched': doc.score > 0.7 && currentStep >= 3,
-              'rejected': doc.score <= 0.7 && currentStep >= 3
-            }"
-            :style="{ '--score': doc.score }"
-          >
-            <div class="doc-icon">📄</div>
-            <div class="doc-info">
-              <div class="doc-title">{{ doc.title }}</div>
-              <div class="doc-preview">{{ doc.content.substring(0, 20) }}...</div>
-            </div>
-            <div class="doc-score" v-if="currentStep >= 2 && doc.score > 0">
-              {{ (doc.score * 100).toFixed(0) }}%
-            </div>
-            <div class="vector-visual">
-              <span v-for="(v,i) in doc.vector" :key="i" :style="{ height: v * 10 + 'px' }"></span>
-            </div>
+      <div class="docs-grid">
+        <div 
+          v-for="doc in documents" 
+          :key="doc.id"
+          class="doc-card"
+          :class="{ 
+            'matched': doc.score > 0.6 && currentStep >= 2,
+            'ignored': doc.score <= 0.6 && currentStep >= 2
+          }"
+        >
+          <div class="doc-header">
+            <span class="doc-icon">📄</span>
+            <span class="doc-title">{{ doc.title }}</span>
+            <span class="doc-score" v-if="currentStep >= 2 && doc.score > 0.6">
+              {{ (doc.score * 100).toFixed(0) }}% 相关
+            </span>
           </div>
-        </div>
-      </div>
-
-      <!-- Center: Pipeline Visuals -->
-      <div class="pipeline-arrow">
-        <div class="arrow-line" :class="{ active: isSearching }"></div>
-        <div class="pipeline-status" v-if="currentStep > 0">
-          {{ steps[currentStep - 1]?.label }}
-        </div>
-      </div>
-
-      <!-- Right: Augmented Context -->
-      <div class="panel context-window" :class="{ active: currentStep === 4 }">
-        <div class="panel-header">
-          <span class="icon">🤖</span> 增强后的上下文 (Final Prompt)
-        </div>
-        <div class="prompt-content">
-          <div class="prompt-section system">
-            <span class="tag">System</span>
-            <p>你是一个帮助用户的 AI 助手。请基于以下上下文回答用户的问题。</p>
-          </div>
+          <div class="doc-content">{{ doc.content }}</div>
           
-          <div class="prompt-section context" v-if="currentStep >= 3">
-            <span class="tag">Context (RAG)</span>
-            <div v-if="retrievedDocs.length > 0">
-              <div v-for="doc in retrievedDocs" :key="doc.id" class="retrieved-item">
-                <span class="bullet">•</span> {{ doc.content }}
-              </div>
-            </div>
-            <div v-else class="empty-context">
-              (暂无相关文档)
-            </div>
-          </div>
-          
-          <div class="prompt-section user" v-if="lastQuery">
-            <span class="tag">User</span>
-            <p>{{ lastQuery }}</p>
-          </div>
-          <div class="placeholder-text" v-else>
-            等待查询...
-          </div>
+          <!-- Visual effect for scanning -->
+          <div class="scan-line" v-if="currentStep === 1"></div>
         </div>
       </div>
-
     </div>
 
-    <!-- Metrics Footer -->
-    <div class="metrics-footer">
-      <div class="metric">
-        <span class="label">检索耗时:</span>
-        <span class="value">{{ searchTime }} ms</span>
+    <!-- Arrow Connection -->
+    <div class="flow-arrow" :class="{ active: currentStep >= 2 }">
+      <div class="line"></div>
+      <div class="icon">✂️ 复制粘贴</div>
+    </div>
+
+    <!-- Step 3: Context Assembly -->
+    <div class="step-section context-section" :class="{ active: currentStep >= 3 }">
+      <div class="step-label">
+        <span class="step-num">3</span>
+        <span class="step-text">最终上下文 (Final Prompt)</span>
       </div>
-      <div class="metric">
-        <span class="label">命中数量:</span>
-        <span class="value">{{ retrievedDocs.length }} docs</span>
+      
+      <div class="blackboard">
+        <div class="chalk-text system">
+          <span class="role-badge">SYSTEM</span>
+          你是一个专业的 AI 助手。请基于下方【检索到的资料】回答用户的提问。
+        </div>
+        
+        <div class="retrieved-block" v-if="currentStep >= 2">
+          <div class="block-header">📚 检索到的资料 (Context)</div>
+          <div v-if="retrievedDocs.length > 0">
+             <div v-for="doc in retrievedDocs" :key="doc.id" class="retrieved-item">
+               {{ doc.content }}
+             </div>
+          </div>
+          <div v-else class="empty-state">
+            (未找到相关资料)
+          </div>
+        </div>
+        
+        <div class="chalk-text user">
+          <span class="role-badge">USER</span>
+          {{ lastQuery || '等待提问...' }}
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <style scoped>
-.rag-simulation-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
-  overflow: hidden;
-  margin: 1rem 0;
+.rag-demo {
   display: flex;
   flex-direction: column;
+  gap: 0;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
 }
 
-.control-panel {
+.step-section {
+  position: relative;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
   padding: 1rem;
-  background-color: var(--vp-c-bg);
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  transition: all 0.3s ease;
 }
 
-.search-bar {
+.step-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--vp-c-text-1);
+}
+
+.step-num {
+  background: var(--vp-c-brand);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Input Section */
+.search-box {
   display: flex;
   gap: 0.5rem;
-  flex: 1;
-  min-width: 280px;
 }
 
 input {
   flex: 1;
-  padding: 0.5rem 0.8rem;
+  padding: 0.6rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  background-color: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
-}
-input:focus {
-  border-color: var(--vp-c-brand);
-  outline: none;
+  background: var(--vp-c-bg-alt);
+  font-size: 0.9rem;
 }
 
-.search-btn {
-  padding: 0.5rem 1rem;
-  background-color: var(--vp-c-brand);
+.action-btn {
+  background: var(--vp-c-brand);
   color: white;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s;
 }
-.search-btn:hover:not(:disabled) {
-  background-color: var(--vp-c-brand-dark);
-}
-.search-btn:disabled {
+.action-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.step-indicator {
-  display: flex;
-  gap: 0.4rem;
-}
-.step-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--vp-c-divider);
-  transition: all 0.3s;
-}
-.step-dot.active {
-  background-color: var(--vp-c-brand);
-}
-.step-dot.current {
-  transform: scale(1.4);
-  box-shadow: 0 0 4px var(--vp-c-brand);
-}
-
-/* Viz Container */
-.viz-container {
-  display: flex;
-  padding: 1.5rem;
-  gap: 1rem;
-  background-color: var(--vp-c-bg-alt);
-  min-height: 350px;
-  align-items: stretch;
-}
-
-.panel {
-  flex: 1;
-  background-color: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s ease;
-}
-.panel.dimmed {
-  opacity: 0.6;
-  filter: grayscale(0.5);
-}
-.panel.active {
-  border-color: var(--vp-c-brand);
-  box-shadow: 0 0 15px rgba(var(--vp-c-brand-rgb), 0.1);
-}
-
-.panel-header {
-  padding: 0.8rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--vp-c-bg-soft);
-}
-
-.doc-list {
-  padding: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  overflow-y: auto;
-  max-height: 300px;
+/* Library Section */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.8rem;
 }
 
 .doc-card {
-  padding: 0.6rem;
+  background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.doc-card.matched {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand-dimm);
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.doc-card.ignored {
+  opacity: 0.4;
+  filter: grayscale(0.8);
+}
+
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.doc-score {
+  color: var(--vp-c-brand);
+  font-size: 0.75rem;
+}
+
+.doc-content {
+  color: var(--vp-c-text-2);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Scanning Animation */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: scan 1s infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Context Section */
+.blackboard {
+  background: #2b2b2b;
+  color: #e0e0e0;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  border: 2px solid #444;
+}
+
+.role-badge {
+  display: inline-block;
+  background: #444;
+  color: #aaa;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.chalk-text {
+  margin-bottom: 0.8rem;
+}
+
+.retrieved-block {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--vp-c-brand);
+  padding: 0.6rem;
+  margin: 0.5rem 0 1rem 0;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.block-header {
+  color: var(--vp-c-brand);
+  font-weight: bold;
+  font-size: 0.75rem;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.retrieved-item {
+  margin-bottom: 0.4rem;
+  padding-left: 0.8rem;
+  position: relative;
+}
+.retrieved-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #888;
+}
+
+/* Arrows */
+.flow-arrow {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.85rem;
+  justify-content: center;
+  height: 40px;
+  color: var(--vp-c-divider);
   position: relative;
-  transition: all 0.3s;
-  background-color: var(--vp-c-bg);
 }
 
-.doc-card.scanning {
-  animation: pulse 1s infinite;
-  border-color: var(--vp-c-brand-dimm);
-}
-.doc-card.matched {
-  border-color: var(--vp-c-green);
-  background-color: var(--vp-c-green-dimm);
-  transform: translateX(5px);
-}
-.doc-card.rejected {
-  opacity: 0.5;
+.flow-arrow .line {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: var(--vp-c-divider);
+  z-index: 0;
 }
 
-.doc-icon {
+.flow-arrow .icon {
+  background: var(--vp-c-bg-soft);
+  padding: 4px;
+  z-index: 1;
   font-size: 1.2rem;
 }
-.doc-info {
-  flex: 1;
-  overflow: hidden;
+
+.flow-arrow.active .line {
+  background: var(--vp-c-brand);
 }
-.doc-title {
-  font-weight: 600;
-  color: var(--vp-c-text-1);
+.flow-arrow.active .icon {
+  animation: bounce 1s infinite;
 }
-.doc-preview {
-  color: var(--vp-c-text-2);
+
+.status-badge {
   font-size: 0.75rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.doc-score {
-  font-family: var(--vp-font-mono);
-  font-weight: bold;
-  color: var(--vp-c-brand);
-}
-.vector-visual {
-  display: flex;
-  gap: 2px;
-  align-items: flex-end;
-  height: 15px;
-  width: 20px;
-}
-.vector-visual span {
-  width: 4px;
-  background-color: var(--vp-c-text-3);
-  border-radius: 1px;
-}
-
-/* Pipeline Arrow */
-.pipeline-arrow {
-  width: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.arrow-line {
-  width: 100%;
-  height: 4px;
-  background-color: var(--vp-c-divider);
-  border-radius: 2px;
-  transition: all 0.3s;
-}
-.arrow-line.active {
-  background: linear-gradient(90deg, var(--vp-c-brand), var(--vp-c-brand-light));
-  background-size: 200% 100%;
-  animation: flow 1s linear infinite;
-}
-.pipeline-status {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--vp-c-brand);
-  color: white;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  z-index: 10;
-}
-
-/* Context Window */
-.prompt-content {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-family: var(--vp-font-mono);
-  font-size: 0.85rem;
-  overflow-y: auto;
-}
-
-.prompt-section {
-  background-color: var(--vp-c-bg-soft);
-  padding: 0.8rem;
-  border-radius: 6px;
-  border-left: 3px solid transparent;
-}
-.prompt-section.system {
-  border-left-color: var(--vp-c-yellow);
-}
-.prompt-section.context {
-  border-left-color: var(--vp-c-green);
-  background-color: rgba(var(--vp-c-green-rgb), 0.1);
-}
-.prompt-section.user {
-  border-left-color: var(--vp-c-brand);
-}
-
-.tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-2);
 }
-.retrieved-item {
-  margin-top: 0.4rem;
-  color: var(--vp-c-text-1);
-}
-.empty-context {
-  color: var(--vp-c-text-3);
-  font-style: italic;
-  text-align: center;
-}
-.placeholder-text {
-  text-align: center;
-  color: var(--vp-c-text-3);
-  margin-top: 2rem;
+
+.status-badge.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
 }
 
-/* Metrics Footer */
-.metrics-footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.8rem;
-  background-color: var(--vp-c-bg);
-  border-top: 1px solid var(--vp-c-divider);
-  font-size: 0.85rem;
-}
-.metric .label {
-  color: var(--vp-c-text-2);
-  margin-right: 0.5rem;
-}
-.metric .value {
-  font-weight: bold;
-  color: var(--vp-c-text-1);
-}
-
-@keyframes flow {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.6; }
-  100% { opacity: 1; }
-}
-
-@media (max-width: 768px) {
-  .viz-container {
-    flex-direction: column;
-  }
-  .pipeline-arrow {
-    width: 100%;
-    height: 40px;
-    flex-direction: row;
-  }
-  .arrow-line {
-    width: 4px;
-    height: 100%;
-  }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
 }
 </style>

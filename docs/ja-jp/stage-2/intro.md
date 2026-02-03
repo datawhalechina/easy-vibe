@@ -9,170 +9,142 @@
 モダンなフロントエンド開発をマスターし、コンポーネントライブラリとデザインツールの使用方法を学ぶ：
 
 <NavGrid>
+  <a href="/ja-jp/stage-2/frontend/2.1-figma-mastergo/" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🖼️</span>
+        <span class="card-title">フロントエンド1</span>
+      </div>
+      <div class="card-desc">FigmaとMasterGo入門</div>
+    </div>
+  </a>
 
+  <a href="/ja-jp/stage-2/frontend/2.2-ui-design/" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">✨</span>
+        <span class="card-title">フロントエンド2</span>
+      </div>
+      <div class="card-desc">初めてのモダンアプリ - UIデザイン</div>
+    </div>
+  </a>
+
+  <a href="/ja-jp/stage-2/frontend/2.3-multi-product-ui/" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">📐</span>
+        <span class="card-title">フロントエンド3</span>
+      </div>
+      <div class="card-desc">UIデザインガイドラインとマルチプロダクト</div>
+    </div>
+  </a>
+
+  <a href="/ja-jp/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🧙</span>
+        <span class="card-title">フロントエンド4</span>
+      </div>
+      <div class="card-desc">ホグワーツ肖像画を作ろう</div>
+    </div>
+  </a>
 </NavGrid>
-    <div class="card-desc">Lovartで素材を作成</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/frontend/2.1-figma-mastergo/" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🖼️</span>
-      <span class="card-title">フロントエンド1</span>
-    </div>
-    <div class="card-desc">FigmaとMasterGo入門</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/frontend/2.2-ui-design/" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">✨</span>
-      <span class="card-title">フロントエンド2</span>
-    </div>
-    <div class="card-desc">初めてのモダンアプリ - UIデザイン</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/frontend/2.3-multi-product-ui/" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">📐</span>
-      <span class="card-title">フロントエンド3</span>
-    </div>
-    <div class="card-desc">UIデザインガイドラインとマルチプロダクト</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🧙</span>
-      <span class="card-title">フロントエンド4</span>
-    </div>
-    <div class="card-desc">ホグワーツ肖像画を作ろう</div>
-  </div>
-</a>
-
-</div>
 
 ### バックエンドとフルスタック
 
 API設計、データベース管理、アプリケーションデプロイメント戦略を学ぶ：
 
 <NavGrid>
+  <a href="/ja-jp/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🗄️</span>
+        <span class="card-title">バックエンド2</span>
+      </div>
+      <div class="card-desc">データベースからSupabaseへ</div>
+    </div>
+  </a>
 
+  <a href="/ja-jp/stage-2/backend/2.3-ai-interface-code/" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🤖</span>
+        <span class="card-title">バックエンド3</span>
+      </div>
+      <div class="card-desc">AI支援インターフェースコードとドキュメント</div>
+    </div>
+  </a>
+
+  <a href="/ja-jp/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🌿</span>
+        <span class="card-title">バックエンド4</span>
+      </div>
+      <div class="card-desc">Gitワークフロー</div>
+    </div>
+  </a>
+
+  <a href="/ja-jp/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🚀</span>
+        <span class="card-title">バックエンド5</span>
+      </div>
+      <div class="card-desc">Zeaburデプロイメント</div>
+    </div>
+  </a>
+
+  <a href="/ja-jp/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">💻</span>
+        <span class="card-title">バックエンド6</span>
+      </div>
+      <div class="card-desc">モダンCLI開発ツール</div>
+    </div>
+  </a>
+
+  <a href="/ja-jp/stage-2/backend/2.7-stripe-payment/" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">💳</span>
+        <span class="card-title">バックエンド7</span>
+      </div>
+      <div class="card-desc">Stripe決済システムの統合</div>
+    </div>
+  </a>
 </NavGrid>
-    <div class="card-desc">APIとは</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🗄️</span>
-      <span class="card-title">バックエンド2</span>
-    </div>
-    <div class="card-desc">データベースからSupabaseへ</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/backend/2.3-ai-interface-code/" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🤖</span>
-      <span class="card-title">バックエンド3</span>
-    </div>
-    <div class="card-desc">AI支援インターフェースコードとドキュメント</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🌿</span>
-      <span class="card-title">バックエンド4</span>
-    </div>
-    <div class="card-desc">Gitワークフロー</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🚀</span>
-      <span class="card-title">バックエンド5</span>
-    </div>
-    <div class="card-desc">Zeaburデプロイメント</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">💻</span>
-      <span class="card-title">バックエンド6</span>
-    </div>
-    <div class="card-desc">モダンCLI開発ツール</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/backend/2.7-stripe-payment/" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">💳</span>
-      <span class="card-title">バックエンド7</span>
-    </div>
-    <div class="card-desc">Stripe決済システムの統合</div>
-  </div>
-</a>
-
-</div>
 
 ### 課題
 
 実践プロジェクトを通じてフルスタック開発スキルを固める：
 
 <NavGrid>
-
-</NavGrid>
-    <div class="card-desc">初めてのモダンアプリ - フルスタック</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/assignments/2.2-modern-frontend-trae/" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🎯</span>
-      <span class="card-title">課題2</span>
+  <a href="/ja-jp/stage-2/assignments/2.2-modern-frontend-trae/" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🎯</span>
+        <span class="card-title">課題2</span>
+      </div>
+      <div class="card-desc">モダンフロントエンド + Trae</div>
     </div>
-    <div class="card-desc">モダンフロントエンド + Trae</div>
-  </div>
-</a>
-
-</div>
+  </a>
+</NavGrid>
 
 ### AI機能拡張
 
 <NavGrid>
-
-</NavGrid>
-    <div class="card-desc">Dify入門とナレッジベース統合</div>
-  </div>
-</a>
-
-<a href="/ja-jp/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook" class="card-link">
-  <div class="content-card">
-    <div class="card-header">
-      <span class="card-icon">🎭</span>
-      <span class="card-title">AI 2</span>
+  <a href="/ja-jp/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook" class="card-link">
+    <div class="content-card">
+      <div class="card-header">
+        <span class="card-icon">🎭</span>
+        <span class="card-title">AI 2</span>
+      </div>
+      <div class="card-desc">AI辞書クエリとマルチモーダルAPI</div>
     </div>
-    <div class="card-desc">AI辞書クエリとマルチモーダルAPI</div>
-  </div>
-</a>
-
-</div>
+  </a>
+</NavGrid>
 
 ## 対象者
 
@@ -200,42 +172,44 @@ API設計、データベース管理、アプリケーションデプロイメ�
 .card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .content-card {
+  background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   transition: all 0.3s ease;
-  background: var(--vp-c-bg-soft);
+  height: 100%;
 }
 
 .content-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .card-icon {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .card-title {
   font-weight: 600;
-  color: var(--vp-c-brand);
-  font-size: 14px;
+  font-size: 16px;
+  color: var(--vp-c-text-1);
 }
 
 .card-desc {
-  color: var(--vp-c-text-2);
   font-size: 14px;
+  color: var(--vp-c-text-2);
   line-height: 1.5;
 }
 </style>

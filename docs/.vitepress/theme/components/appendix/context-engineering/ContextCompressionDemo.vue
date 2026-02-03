@@ -1,10 +1,6 @@
 <!--
  * Component: ContextCompressionDemo.vue
- * Description: Demonstrates various context compression techniques to save tokens.
- * Features:
- *  - Strategies: Summarization, Extraction, Structured Format (JSON)
- *  - Real-time comparison of original vs compressed text
- *  - Metrics display (Token count, Compression Ratio)
+ * Description: Demonstrates various context compression techniques with a clear vertical flow.
 -->
 
 <script setup>
@@ -15,9 +11,9 @@ const originalText = ref(
 )
 
 const strategies = [
-  { id: 'summary', label: '📝 摘要生成', desc: '保留大意，缩减篇幅' },
-  { id: 'extract', label: '🔑 关键词提取', desc: '提取核心要点' },
-  { id: 'json', label: '⚙️ 结构化数据', desc: '转换为 JSON 格式' }
+  { id: 'summary', label: '📝 摘要生成', desc: '保留大意' },
+  { id: 'extract', label: '🔑 关键词', desc: '提炼要点' },
+  { id: 'json', label: '⚙️ 结构化', desc: '转 JSON' }
 ]
 
 const currentMode = ref('')
@@ -39,7 +35,7 @@ const compress = async (mode) => {
   compressedText.value = ''
 
   // Simulate API delay
-  await new Promise(r => setTimeout(r, 600))
+  await new Promise(r => setTimeout(r, 800))
 
   if (mode === 'summary') {
     compressedText.value = '上下文工程旨在优化 LLM 提示词以解决上下文窗口限制。主要技术包括摘要生成（浓缩关键信息）、RAG（按需检索相关片段）以及结构化数据转换（提高信息密度）。'
@@ -59,8 +55,9 @@ const compress = async (mode) => {
 
 <template>
   <div class="context-compression-demo">
-    <!-- Control Panel -->
-    <div class="control-panel">
+    <!-- 1. Strategy Selection -->
+    <div class="section control-panel">
+      <div class="section-label">1. 选择压缩策略</div>
       <div class="strategy-group">
         <button
           v-for="s in strategies"
@@ -68,7 +65,6 @@ const compress = async (mode) => {
           class="strategy-btn"
           :class="{ active: currentMode === s.id }"
           @click="compress(s.id)"
-          :title="s.desc"
         >
           <div class="btn-label">{{ s.label }}</div>
           <div class="btn-desc">{{ s.desc }}</div>
@@ -76,92 +72,102 @@ const compress = async (mode) => {
       </div>
     </div>
 
-    <!-- Main Comparison Area -->
-    <div class="comparison-area">
-      <!-- Original -->
-      <div class="text-column original">
-        <div class="column-header">
-          <span class="badge">原始文本</span>
-          <span class="meta">{{ originalTokens }} Tokens</span>
+    <!-- 2. Input Area -->
+    <div class="section input-area">
+      <div class="section-header">
+        <span class="label">原始文本 (Original)</span>
+        <span class="token-count">{{ originalTokens }} tokens</span>
+      </div>
+      <textarea 
+        v-model="originalText" 
+        class="text-content original-input"
+        placeholder="在此输入长文本..."
+      ></textarea>
+    </div>
+
+    <!-- Connector / Process -->
+    <div class="flow-connector">
+      <div class="line"></div>
+      <div class="process-icon" :class="{ spinning: isCompressing }">
+        {{ isCompressing ? '⚙️' : '⬇️' }}
+      </div>
+      <div class="badge-container" v-if="compressedText && !isCompressing">
+        <span class="ratio-badge">-{{ compressionRatio }}%</span>
+      </div>
+    </div>
+
+    <!-- 3. Output Area -->
+    <div class="section output-area" :class="{ 'has-result': compressedText }">
+      <div class="section-header">
+        <span class="label">压缩后 (Compressed)</span>
+        <span class="token-count" v-if="compressedText">{{ compressedTokens }} tokens</span>
+      </div>
+      
+      <div class="text-content result-box">
+        <div v-if="isCompressing" class="loading-state">
+          <span class="spinner"></span> 正在压缩...
         </div>
-        <textarea 
-          v-model="originalText" 
-          class="text-content"
-          placeholder="在此输入长文本..."
-        ></textarea>
+        <pre v-else-if="compressedText">{{ compressedText }}</pre>
+        <div v-else class="placeholder">
+          请点击上方按钮开始压缩
+        </div>
       </div>
 
-      <!-- Arrow -->
-      <div class="process-arrow">
-        <div class="arrow-icon" :class="{ compressing: isCompressing }">
-          {{ isCompressing ? '⚙️' : '➡️' }}
+      <!-- Mini Metrics (Inside Output Area) -->
+      <div class="mini-metrics" v-if="compressedText && !isCompressing">
+        <div class="metric-item">
+          <span class="metric-label">节省空间</span>
+          <span class="metric-val highlight">{{ compressionRatio }}%</span>
         </div>
-        <div class="ratio-badge" v-if="compressedText && !isCompressing">
-          -{{ compressionRatio }}%
-        </div>
-      </div>
-
-      <!-- Compressed -->
-      <div class="text-column compressed">
-        <div class="column-header">
-          <span class="badge success">压缩后</span>
-          <span class="meta" v-if="compressedText">{{ compressedTokens }} Tokens</span>
-        </div>
-        <div class="text-content result-box" :class="{ empty: !compressedText }">
-          <div v-if="isCompressing" class="loading-state">
-            <span class="spinner"></span> 压缩中...
-          </div>
-          <pre v-else-if="compressedText">{{ compressedText }}</pre>
-          <div v-else class="placeholder">
-            请选择一种压缩策略
-            <br>
-            <small>点击上方按钮开始</small>
-          </div>
+        <div class="metric-bar">
+          <div class="bar-fill" :style="{ width: (100 - compressionRatio) + '%' }"></div>
         </div>
       </div>
     </div>
 
-    <!-- Metrics Bar -->
-    <div class="metrics-bar" v-if="compressedText && !isCompressing">
-      <div class="progress-bg">
-        <div class="progress-fill" :style="{ width: (100 - compressionRatio) + '%' }"></div>
-        <div class="progress-label">占用空间: {{ 100 - compressionRatio }}%</div>
-      </div>
-      <div class="saved-label">节省了 {{ compressionRatio }}% 的 Token</div>
-    </div>
   </div>
 </template>
 
 <style scoped>
 .context-compression-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: var(--vp-c-bg-soft);
-  overflow: hidden;
-  margin: 1rem 0;
+  max-width: 600px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 0;
 }
 
-.control-panel {
+.section {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
   padding: 1rem;
-  background-color: var(--vp-c-bg);
-  border-bottom: 1px solid var(--vp-c-divider);
+  transition: all 0.3s ease;
 }
 
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* Control Panel */
 .strategy-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
 }
 
 .strategy-btn {
-  flex: 1;
-  min-width: 140px;
-  padding: 0.8rem;
+  padding: 0.6rem 0.4rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-alt);
   cursor: pointer;
   transition: all 0.2s;
@@ -177,176 +183,165 @@ const compress = async (mode) => {
   border-color: var(--vp-c-brand);
   background-color: var(--vp-c-brand-dimm);
   color: var(--vp-c-brand-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .btn-label {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   margin-bottom: 0.2rem;
   color: var(--vp-c-text-1);
 }
 
 .btn-desc {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--vp-c-text-2);
 }
 
-/* Comparison Area */
-.comparison-area {
-  display: flex;
-  padding: 1.5rem;
-  gap: 1rem;
-  align-items: stretch;
-  min-height: 250px;
-}
-
-.text-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.column-header {
+/* Text Areas */
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.6rem;
   font-size: 0.85rem;
 }
 
-.badge {
-  background-color: var(--vp-c-bg-mute);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  color: var(--vp-c-text-2);
+.label {
   font-weight: 600;
-}
-.badge.success {
-  background-color: var(--vp-c-green-dimm);
-  color: var(--vp-c-green-dark);
+  color: var(--vp-c-text-1);
 }
 
-.meta {
-  color: var(--vp-c-text-2);
+.token-count {
   font-family: var(--vp-font-mono);
+  color: var(--vp-c-text-2);
+  font-size: 0.75rem;
+  background: var(--vp-c-bg-mute);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .text-content {
-  flex: 1;
   width: 100%;
-  padding: 1rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  background-color: var(--vp-c-bg);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  resize: none;
+  background-color: var(--vp-c-bg-alt);
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--vp-c-text-1);
   font-family: var(--vp-font-mono);
 }
-.text-content:focus {
+
+.original-input {
+  min-height: 100px;
+  padding: 0.75rem;
+  resize: vertical;
+}
+
+.original-input:focus {
   border-color: var(--vp-c-brand);
   outline: none;
 }
 
 .result-box {
-  background-color: var(--vp-c-bg-alt);
-  overflow-y: auto;
-  position: relative;
+  min-height: 100px;
+  padding: 0.75rem;
+  overflow-x: auto;
+  background-color: #f6f8fa; /* Light code bg style */
 }
-.result-box.empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.dark .result-box {
+  background-color: #161b22;
 }
 
 .placeholder {
   color: var(--vp-c-text-3);
-  text-align: center;
-}
-
-/* Process Arrow */
-.process-arrow {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  width: 50px;
+  justify-content: center;
+  height: 100%;
+  min-height: 80px;
+  font-size: 0.85rem;
 }
 
-.arrow-icon {
-  font-size: 1.5rem;
-  transition: transform 0.5s;
+/* Connector */
+.flow-connector {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.arrow-icon.compressing {
+
+.line {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: var(--vp-c-divider);
+}
+
+.process-icon {
+  z-index: 1;
+  background: var(--vp-c-bg-soft);
+  padding: 4px;
+  font-size: 1.2rem;
+  color: var(--vp-c-text-2);
+}
+
+.spinning {
   animation: spin 1s linear infinite;
 }
 
-.ratio-badge {
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: var(--vp-c-green);
-  background-color: var(--vp-c-green-dimm);
-  padding: 0.2rem 0.4rem;
-  border-radius: 10px;
-}
-
-/* Metrics Bar */
-.metrics-bar {
-  padding: 1rem;
-  background-color: var(--vp-c-bg);
-  border-top: 1px solid var(--vp-c-divider);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.progress-bg {
-  flex: 1;
-  height: 20px;
-  background-color: var(--vp-c-bg-mute);
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.progress-fill {
-  height: 100%;
-  background-color: var(--vp-c-brand);
-  transition: width 0.5s ease;
-}
-
-.progress-label {
+.badge-container {
   position: absolute;
-  left: 10px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ratio-badge {
+  background: var(--vp-c-green-dimm);
+  color: var(--vp-c-green-dark);
   font-size: 0.75rem;
-  color: white;
-  text-shadow: 0 0 2px rgba(0,0,0,0.5);
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* Metrics */
+.mini-metrics {
+  margin-top: 1rem;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 0.8rem;
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.highlight {
+  color: var(--vp-c-green);
   font-weight: bold;
 }
 
-.saved-label {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: var(--vp-c-green);
+.metric-bar {
+  height: 6px;
+  background: var(--vp-c-bg-mute);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--vp-c-brand);
+  transition: width 0.5s ease;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-@media (max-width: 640px) {
-  .comparison-area {
-    flex-direction: column;
-  }
-  .process-arrow {
-    width: 100%;
-    flex-direction: row;
-    height: 40px;
-  }
 }
 </style>

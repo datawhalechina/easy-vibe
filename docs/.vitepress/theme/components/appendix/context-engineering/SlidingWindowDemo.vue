@@ -15,15 +15,15 @@
   <div class="sliding-window-demo">
     <div class="control-panel">
       <div class="info-stat">
-        <span class="label">Window Size / 窗口大小</span>
-        <span class="value">{{ windowSize }} Messages</span>
+        <span class="label">窗口里最多能记住几条对话</span>
+        <span class="value">最多 {{ windowSize }} 条</span>
       </div>
       <div class="actions">
         <button class="action-btn" @click="autoPlay" :disabled="isAutoPlaying">
-          ▶ Auto Play
+          ▶ 自动演示
         </button>
         <button class="action-btn outline" @click="reset">
-          ↺ Reset
+          ↺ 重新开始
         </button>
       </div>
     </div>
@@ -33,7 +33,7 @@
         <!-- Forgotten / History Zone -->
         <div class="zone history-zone">
           <div class="zone-label">
-            <span class="icon">🗑️</span> Forgotten (History)
+            <span class="icon">🗑️</span> 已被遗忘的内容
           </div>
           <transition-group name="fade-list">
             <div
@@ -50,21 +50,21 @@
             </div>
           </transition-group>
           <div v-if="historyMessages.length === 0" class="empty-placeholder">
-            No history yet...
+            这里暂时还没有被“挤出去”的对话
           </div>
         </div>
 
         <!-- Divider -->
         <div class="window-divider">
-          <span>⬆ Out of Context</span>
+          <span>⬆ 窗口外（模型已经看不到）</span>
           <div class="divider-line"></div>
-          <span>⬇ In Context</span>
+          <span>⬇ 窗口内（模型还能看到）</span>
         </div>
 
         <!-- Active Window Zone -->
         <div class="zone active-zone">
           <div class="zone-label">
-            <span class="icon">🖼️</span> Active Context Window
+            <span class="icon">🖼️</span> 当前还在记忆里的对话
           </div>
           <transition-group name="slide-list">
             <div
@@ -81,7 +81,7 @@
             </div>
           </transition-group>
           <div v-if="activeMessages.length === 0" class="empty-placeholder">
-            Start the conversation...
+            从这里开始聊天，看看旧对话是怎么被“挤出去”的
           </div>
         </div>
       </div>
@@ -91,20 +91,20 @@
       <input
         v-model="newMessage"
         @keyup.enter="sendMessage"
-        placeholder="Type a message..."
+        placeholder="在这里输入一条消息，然后点发送"
         :disabled="isAutoPlaying"
       />
       <button class="send-btn" @click="sendMessage" :disabled="!newMessage.trim() || isAutoPlaying">
-        Send
+        发送消息
       </button>
     </div>
 
     <div class="info-box">
       <p>
         <span class="icon">💡</span>
-        <strong>Note:</strong>
-        滑动窗口是最简单的记忆管理策略。它保证了 Token 永远不会溢出，但代价是"健忘"。
-        一旦消息滑出窗口（进入上方灰色区域），模型就完全不知道它的存在了。
+        <strong>说明：</strong>
+        滑动窗口是最简单的记忆管理方式：新的进来，旧的出去。
+        好处是永远不会“撑爆脑子”，代价就是——一旦滑出窗口（上面灰色区域），模型就完全忘了它存在过。
       </p>
     </div>
   </div>
@@ -151,25 +151,25 @@ const addMessage = (role, content) => {
 const autoPlay = async () => {
   isAutoPlaying.value = true
   const script = [
-    "Hello there!",
-    "Hi! I'm an AI assistant.",
-    "What is your name?",
-    "I am Model GPT-X.",
-    "Do you remember my first message?",
-    "Yes, you said 'Hello there!'.",
-    "Tell me a joke.",
-    "Why did the chicken cross the road?",
-    "To get to the other side!",
-    "Haha, classic.",
-    "Wait, what was my name again?",
-    "I... I don't remember. It fell out of my context window!"
+    '你好，我是张三。',
+    '你好呀，我是你的 AI 助手。',
+    '我今天有点累，帮我记录一下待办吧。',
+    '没问题，你可以把待办一条条发给我。',
+    '第一件事：给客户发邮件。',
+    '好的，已经记下来了。',
+    '第二件事：晚上去买菜做饭。',
+    '收到，也帮你记住了。',
+    '第三件事：记得给女朋友买花。',
+    '这条也帮你写在“小黑板”上了。',
+    '现在还记得我第一句话说了什么吗？',
+    '呃……我只看得到窗口里的几条，最早那句已经被挤出去了。'
   ]
 
   for (const line of script) {
     if (!isAutoPlaying.value) break
     const role = messages.value.length % 2 === 0 ? 'User' : 'AI'
     addMessage(role, line)
-    await new Promise(r => setTimeout(r, 1500))
+    await new Promise((r) => setTimeout(r, 1500))
   }
   isAutoPlaying.value = false
 }
@@ -186,7 +186,7 @@ const reset = () => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
   font-family: var(--vp-font-family-mono);
 }
@@ -195,9 +195,9 @@ const reset = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   background: var(--vp-c-bg);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
@@ -245,10 +245,10 @@ const reset = () => {
 }
 
 .visualization-area {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   background: var(--vp-c-bg-alt);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -259,7 +259,7 @@ const reset = () => {
 }
 
 .zone {
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   transition: all 0.3s;
 }
@@ -276,14 +276,14 @@ const reset = () => {
   border: 2px solid var(--vp-c-brand);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-top: 0.5rem;
-  min-height: 150px;
+  min-height: 100px;
 }
 
 .zone-label {
   font-size: 0.8rem;
   font-weight: bold;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -306,9 +306,9 @@ const reset = () => {
 
 .message-bubble {
   display: flex;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  padding: 0.6rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
   border-radius: 6px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
@@ -334,9 +334,9 @@ const reset = () => {
 }
 
 .avatar {
-  font-size: 1.2rem;
-  width: 2rem;
-  height: 2rem;
+  font-size: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -347,37 +347,37 @@ const reset = () => {
 .content {
   display: flex;
   flex-direction: column;
-  max-width: 80%;
+  max-width: 85%;
 }
 
 .role-name {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-3);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
 .text {
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.3;
 }
 
 .empty-placeholder {
   text-align: center;
   color: var(--vp-c-text-3);
   font-style: italic;
-  padding: 1rem;
-  font-size: 0.9rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .input-section {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 input {
   flex: 1;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   background: var(--vp-c-bg);
@@ -390,7 +390,7 @@ input:focus {
 }
 
 .send-btn {
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   background: var(--vp-c-brand);
   color: white;
   border: none;
@@ -398,6 +398,7 @@ input:focus {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 0.9rem;
 }
 
 .send-btn:hover {
@@ -411,10 +412,10 @@ input:focus {
 
 .info-box {
   background-color: var(--vp-c-bg-alt);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--vp-c-text-2);
 }
 

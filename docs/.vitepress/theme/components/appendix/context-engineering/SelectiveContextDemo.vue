@@ -17,12 +17,12 @@
       <div class="stat-group">
         <div class="stat-item">
           <span class="value">{{ totalMessages }}</span>
-          <span class="label">Total Messages</span>
+          <span class="label">现在一共记了几条</span>
         </div>
         <div class="stat-divider">/</div>
         <div class="stat-item">
           <span class="value">{{ maxSlots }}</span>
-          <span class="label">Window Capacity</span>
+          <span class="label">黑板最多能记几条</span>
         </div>
       </div>
       <div class="usage-bar">
@@ -39,8 +39,8 @@
       <div class="context-section pinned-section">
         <div class="section-header">
           <span class="icon">📌</span>
-          <span class="title">Pinned Context (Protected)</span>
-          <span class="count">{{ pinnedMessages.length }} items</span>
+          <span class="title">钉住区（永远保留的重要信息）</span>
+          <span class="count">当前 {{ pinnedMessages.length }} 条</span>
         </div>
         <div class="message-list">
           <transition-group name="list">
@@ -56,10 +56,10 @@
                   class="pin-btn active" 
                   @click="togglePin(msg)"
                   :disabled="msg.role === 'System'"
-                  title="Unpin message"
+                  title="取消钉住"
                 >
-                  <span v-if="msg.role === 'System'">🔒 Fixed</span>
-                  <span v-else>📌 Unpin</span>
+                  <span v-if="msg.role === 'System'">🔒 系统信息固定在这</span>
+                  <span v-else>📌 取消钉住</span>
                 </button>
               </div>
               <div class="card-content">{{ msg.content }}</div>
@@ -72,8 +72,8 @@
       <div class="context-section scrolling-section">
         <div class="section-header">
           <span class="icon">📜</span>
-          <span class="title">Scrolling Context (FIFO)</span>
-          <span class="count">{{ scrollingMessages.length }} items</span>
+          <span class="title">会被“挤走”的普通对话（先进先出）</span>
+          <span class="count">当前 {{ scrollingMessages.length }} 条</span>
         </div>
         <div class="message-list">
           <transition-group name="list">
@@ -85,15 +85,15 @@
             >
               <div class="card-header">
                 <span class="role-badge">{{ msg.role }}</span>
-                <button class="pin-btn" @click="togglePin(msg)" title="Pin message">
-                  📌 Pin
+                <button class="pin-btn" @click="togglePin(msg)" title="把这条钉在黑板上">
+                  📌 钉住这条
                 </button>
               </div>
               <div class="card-content">{{ msg.content }}</div>
             </div>
           </transition-group>
           <div v-if="scrollingMessages.length === 0" class="empty-state">
-            No scrolling messages...
+            这里是“普通对话区”，暂时还空着
           </div>
         </div>
       </div>
@@ -104,24 +104,24 @@
         <input
           v-model="newMessage"
           @keyup.enter="sendMessage"
-          placeholder="Add a new fact or message..."
+          placeholder="在这里输入一条新的信息，比如“我叫小明”"
         />
         <button class="send-btn" @click="sendMessage" :disabled="!newMessage.trim()">
-          Add
+          添加到黑板
         </button>
       </div>
       <div class="presets">
-        <button class="preset-btn" @click="addPreset('My name is Alice.')">User: My name is Alice</button>
-        <button class="preset-btn" @click="addPreset('The password is 1234.')">User: Password is 1234</button>
+        <button class="preset-btn" @click="addPreset('我的名字叫 Alice。')">用户：我的名字叫 Alice</button>
+        <button class="preset-btn" @click="addPreset('系统密码是 1234。')">用户：系统密码是 1234</button>
       </div>
     </div>
 
     <div class="info-box">
       <p>
         <span class="icon">💡</span>
-        <strong>Note:</strong>
-        "选择性保留" 解决了滑动窗口的遗忘问题。
-        System Prompt 通常被永久钉住。用户也可以通过某些机制（如 RAG 或 记忆模块）将重要信息（如名字、密码）钉在窗口中，防止被挤出。
+        <strong>说明：</strong>
+        “选择性保留”就是：重要的就钉在黑板上，普通的让它自己滑走。
+        系统提示通常会永久钉住，用户的关键信息（比如名字、账号、重要偏好）也可以通过记忆模块或 RAG 钉在这里，避免被新对话挤掉。
       </p>
     </div>
   </div>
@@ -194,7 +194,7 @@ const togglePin = (msg) => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
   font-family: var(--vp-font-family-mono);
 }
@@ -202,10 +202,10 @@ const togglePin = (msg) => {
 .control-panel {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
   background: var(--vp-c-bg);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
@@ -259,8 +259,8 @@ const togglePin = (msg) => {
 .visualization-area {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .context-section {
@@ -276,7 +276,7 @@ const togglePin = (msg) => {
 }
 
 .section-header {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   background: var(--vp-c-bg-alt);
   border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
@@ -298,15 +298,15 @@ const togglePin = (msg) => {
 }
 
 .message-list {
-  padding: 1rem;
-  min-height: 80px;
+  padding: 0.5rem;
+  min-height: 60px;
 }
 
 .message-card {
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   background: var(--vp-c-bg);
   transition: all 0.3s ease;
 }
@@ -327,11 +327,11 @@ const togglePin = (msg) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .role-badge {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   font-weight: bold;
   padding: 2px 6px;
@@ -344,8 +344,8 @@ const togglePin = (msg) => {
   background: transparent;
   border: 1px solid var(--vp-c-divider);
   border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 0.75rem;
+  padding: 2px 6px;
+  font-size: 0.7rem;
   cursor: pointer;
   color: var(--vp-c-text-2);
   transition: all 0.2s;
@@ -369,19 +369,19 @@ const togglePin = (msg) => {
 }
 
 .card-content {
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.3;
 }
 
 .empty-state {
   text-align: center;
   color: var(--vp-c-text-3);
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .input-section {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .input-group {
@@ -392,7 +392,7 @@ const togglePin = (msg) => {
 
 input {
   flex: 1;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   background: var(--vp-c-bg);
@@ -405,13 +405,14 @@ input:focus {
 }
 
 .send-btn {
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   background: var(--vp-c-brand);
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .send-btn:disabled {
@@ -442,10 +443,10 @@ input:focus {
 
 .info-box {
   background-color: var(--vp-c-bg-alt);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--vp-c-text-2);
 }
 

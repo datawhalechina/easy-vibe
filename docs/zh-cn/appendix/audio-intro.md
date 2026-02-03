@@ -2,6 +2,16 @@
 
 > 💡 **学习指南**：声音是空气的振动，也是情感的载体。本章节将带你了解 AI 如何"听懂"声音，又是如何像人一样"开口说话"甚至"作曲"的。从语音识别到音乐生成，探索音频 AI 的完整技术栈。
 
+<script setup>
+import AudioQuickStartDemo from '../../.vitepress/theme/components/appendix/audio-intro/AudioQuickStartDemo.vue'
+import MelSpectrogramDemo from '../../.vitepress/theme/components/appendix/audio-intro/MelSpectrogramDemo.vue'
+import TTSPipelineDemo from '../../.vitepress/theme/components/appendix/audio-intro/TTSPipelineDemo.vue'
+import VoiceCloningDemo from '../../.vitepress/theme/components/appendix/audio-intro/VoiceCloningDemo.vue'
+import ASRvsTTSDemo from '../../.vitepress/theme/components/appendix/audio-intro/ASRvsTTSDemo.vue'
+import AudioTokenizationDemo from '../../.vitepress/theme/components/appendix/audio-intro/AudioTokenizationDemo.vue'
+import EmotionControlDemo from '../../.vitepress/theme/components/appendix/audio-intro/EmotionControlDemo.vue'
+</script>
+
 ## 0. 快速上手：如何让 AI 说话？
 
 ### 0.1 常见的 AI 音频工具
@@ -38,6 +48,8 @@
 - **场景**：开车、做饭、运动时，打字不方便，但说话很容易。
 - **未来**：AI 助手将通过语音成为我们的自然伙伴。
 
+<AudioQuickStartDemo />
+
 ## 1. 概念界定：音频的数字化 (Definition)
 
 _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字化的音频信号**。_
@@ -48,8 +60,6 @@ _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字�
 
 - **传统信号处理**：处理原始波形（WAV 文件）。
 - **AI 音频模型**：处理更有意义的"中间表示"。
-
-<AudioWaveformDemo />
 
 本质上，音频 AI 是一个**从物理信号到语义表示**的转换过程：
 
@@ -96,7 +106,7 @@ _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字�
 2.  **生成**：用图像生成模型（如 CNN、Diffusion）生成频谱图。
 3.  **还原**：通过**声码器 (Vocoder)** 将频谱图还原为音频波形。
 
-<SpectrogramViz />
+<MelSpectrogramDemo />
 
 **代表模型**：Tacotron 2, FastSpeech, F5-TTS
 
@@ -133,19 +143,108 @@ _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字�
 
 这让 AI 更关注人耳敏感的部分，忽略不重要的细节。
 
-## 4. 生成机制：从 GPT 到 Flow (Generation Methods)
+## 4. TTS 流程全景 (TTS Pipeline)
+
+文本转语音（TTS）是音频 AI 最核心的应用之一。让我们深入了解其完整流程。
+
+<TTSPipelineDemo />
+
+### 4.1 自回归 vs 非自回归
+
+| 特性 | 自回归 (AR) | 非自回归 (NAR) | 流匹配 (Flow) |
+|------|------------|---------------|--------------|
+| 生成方式 | 逐个时间步 | 一次性生成 | 流匹配路径 |
+| 速度 | 慢 | 快 | 很快 |
+| 音质 | 高 | 中高 | 高 |
+| 代表模型 | Tacotron 2 | FastSpeech 2 | F5-TTS |
+
+### 4.2 关键组件
+
+1. **文本前端 (Text Frontend)**：将文本转换为音素序列，处理多音字、数字、缩写等。
+2. **声学模型 (Acoustic Model)**：将音素转换为声学特征（梅尔频谱）。
+3. **声码器 (Vocoder)**：将声学特征还原为音频波形。
+
+## 5. ASR 与 TTS：语音的双向转换 (ASR vs TTS)
+
+语音识别（ASR）和语音合成（TTS）是音频 AI 的两个核心方向，它们互为逆过程。
+
+<ASRvsTTSDemo />
+
+### 5.1 ASR：音频 → 文本
+
+- **输入**：音频波形
+- **输出**：文本/Token
+- **核心任务**：模式识别、分类
+- **代表模型**：Whisper, Conformer
+
+### 5.2 TTS：文本 → 音频
+
+- **输入**：文本序列
+- **输出**：音频波形
+- **核心任务**：序列生成、回归
+- **代表模型**：F5-TTS, CosyVoice
+
+### 5.3 联合应用
+
+- **语音助手**：ASR → LLM → TTS
+- **实时翻译**：ASR → 翻译 → TTS
+- **字幕生成**：视频 → ASR → 字幕
+
+## 6. 声音克隆：零样本能力的魔法 (Zero-Shot Voice Cloning)
+
+早期的 TTS 需要几十小时的数据来训练一个声音。现在，我们只需要几秒钟。
+
+<VoiceCloningDemo />
+
+### 6.1 声音编码器 (Speaker Encoder)
+
+声音编码器是一个神经网络，它的任务是：**把一段音频压缩成一个固定长度的向量（Embedding）**。
+
+这个向量捕捉了声音的"身份"：
+
+- 音色（低沉 vs 清脆）
+- 声道特征（男声 vs 女声）
+- 说话风格（语速、停顿习惯）
+
+### 6.2 零样本合成流程
+
+有了声音编码器，我们就能实现"一句话克隆"：
+
+1.  **提取声音特征**：参考音频 → 声音编码器 → 声音向量（如 256 维）
+2.  **条件生成**：文本 + 声音向量 → TTS 模型 → 音频
+
+这就是 ElevenLabs、CosyVoice 等工具的核心技术。
+
+## 7. 情感与风格控制 (Emotion & Style Control)
+
+现代 TTS 系统不仅能合成自然的语音，还能精确控制情感、语速、语调等风格特征。
+
+<EmotionControlDemo />
+
+### 7.1 全局风格 Token (GST)
+
+GST (Global Style Token) 是一种从参考音频中提取风格特征的方法。模型学习将情感、语速、语调等风格信息编码成一组 Token，在推理时可以通过选择或插值这些 Token 来控制合成风格。
+
+### 7.2 细粒度控制
+
+现代 TTS 模型支持细粒度的风格控制：
+
+- **速度控制**：调整音频播放速度而不改变音调
+- **音调控制**：改变基频 (F0) 曲线
+- **能量控制**：调整音量包络
+- **停顿控制**：调整句间和短语间的停顿长度
+
+## 8. 生成机制演进 (Generation Evolution)
 
 音频生成模型经历了从模仿人类到直接建模的演进。
 
-### 4.1 Audio Language Model (如 VALL-E, AudioLM)
+### 8.1 Audio Language Model (如 VALL-E, AudioLM)
 
 这一派的思想是：**把声音当语言学**。
 
 - **原理**：使用 GPT 架构（Decoder-only Transformer）。
 - **输入**：文本 Token + 音频 Token
 - **预测**：像成语接龙一样，根据前面的声音，预测下一个声音 Token。
-
-<AutoregressiveAudioDemo />
 
 **优点**：
 
@@ -157,7 +256,7 @@ _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字�
 - 容易"胡言乱语"（重复、漏词）
 - 生成速度慢（必须逐个 Token 生成）
 
-### 4.2 Flow Matching TTS (如 F5-TTS, CosyVoice, Matcha-TTS)
+### 8.2 Flow Matching TTS (如 F5-TTS, CosyVoice, Matcha-TTS)
 
 这是目前最前沿的流派，结合了生成模型的最新进展。
 
@@ -173,36 +272,14 @@ _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字�
 - **鲁棒性强**：不容易丢字漏字
 - **零样本克隆**：给一段几秒钟的参考音频，立马就能模仿它的音色和语调
 
-## 5. 声音克隆：零样本能力的魔法 (Zero-Shot Voice Cloning)
-
-早期的 TTS 需要几十小时的数据来训练一个声音。现在，我们只需要几秒钟。
-
-### 5.1 声音编码器 (Speaker Encoder)
-
-声音编码器是一个神经网络，它的任务是：**把一段音频压缩成一个固定长度的向量（Embedding）**。
-
-这个向量捕捉了声音的"身份"：
-
-- 音色（低沉 vs 清脆）
-- 声道特征（男声 vs 女声）
-- 说话风格（语速、停顿习惯）
-
-### 5.2 零样本合成流程
-
-有了声音编码器，我们就能实现"一句话克隆"：
-
-1.  **提取声音特征**：参考音频 → 声音编码器 → 声音向量（如 256 维）
-2.  **条件生成**：文本 + 声音向量 → TTS 模型 → 音频
-
-这就是 ElevenLabs、CosyVoice 等工具的核心技术。
-
-## 6. 总结 (Summary)
+## 9. 总结 (Summary)
 
 音频 AI 的进化，正在从"信号处理"走向"语义理解"。
 
 - **Tokenization** 把声音变成了语言，让 GPT 能"开口说话"。
 - **Flow Matching** 把生成速度提升了数十倍，让实时语音合成成为可能。
 - **Speaker Encoder** 让声音克隆像换皮肤一样简单。
+- **Emotion Control** 让 AI 语音充满情感，适应各种场景。
 
 未来的 AI（如 GPT-4o），将不再需要把声音转成文字再转回去，而是**直接在统一的多模态空间里理解声音的笑声、语气和情绪**。
 
@@ -218,3 +295,5 @@ _很多人以为 AI 直接处理"声音"，但实际上 AI 处理的是**数字�
 | **零样本克隆** | Zero-Shot Cloning            | 只需几秒参考音频就能模仿任何声音。           |
 | **流匹配**     | Flow Matching                | 一种高效的生成方法，用于最新的 TTS 模型。    |
 | **声音编码器** | Speaker Encoder              | 提取声音身份特征的神经网络。                 |
+| **GST**        | Global Style Token           | 全局风格 Token，用于情感控制。               |
+| **神经编解码器**| Neural Codec                 | 将音频压缩为离散 Token 的模型。              |

@@ -50,7 +50,7 @@
 > - OpenAI 系列：GPT-4、GPT-4.1、GPT-4o、GPT-5.1 等
 > - Google 系列：Gemini 1.5 Pro、Gemini 1.5 Flash 等
 > - Anthropic 系列：Claude 3.5 Sonnet、Claude 3.5 Haiku 等
-> - 国内模型：通义千问 Qwen 系列、文心一言 ERNIE Bot 系列、GLM/智谱清言、百度的文心大模型家族、腾讯混元、讯飞星火、月之暗面的 Kimi 背后的大模型等
+> - 国内模型：通义千问 Qwen 系列、文心一言 ERNIE Bot 系列、GLM/智谱清言、腾讯混元、讯飞星火、月之暗面的 Kimi 背后的大模型等
 >
 > 更偏视觉和视频方向的大模型和服务，包括：
 >

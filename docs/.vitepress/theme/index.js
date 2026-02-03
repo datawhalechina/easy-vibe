@@ -215,11 +215,16 @@ import TrainingProcessDemo from './components/appendix/prompt-engineering/Traini
 
 // Context Engineering Components
 import AgentContextFlow from './components/appendix/context-engineering/AgentContextFlow.vue'
+import IntroProblemReasonSolution from './components/appendix/context-engineering/IntroProblemReasonSolution.vue'
 import ContextWindowVisualizer from './components/appendix/context-engineering/ContextWindowVisualizer.vue'
 import SlidingWindowDemo from './components/appendix/context-engineering/SlidingWindowDemo.vue'
 import SelectiveContextDemo from './components/appendix/context-engineering/SelectiveContextDemo.vue'
 import RAGSimulationDemo from './components/appendix/context-engineering/RAGSimulationDemo.vue'
 import ContextCompressionDemo from './components/appendix/context-engineering/ContextCompressionDemo.vue'
+import MemoryPalaceDemo from './components/appendix/context-engineering/MemoryPalaceDemo.vue'
+import MemoryPalaceActionDemo from './components/appendix/context-engineering/MemoryPalaceActionDemo.vue'
+import KVCacheDemo from './components/appendix/context-engineering/KVCacheDemo.vue'
+import LostInMiddleDemo from './components/appendix/context-engineering/LostInMiddleDemo.vue'
 
 // Agent Intro Components
 import AgentWorkflowDemo from './components/appendix/agent-intro/AgentWorkflowDemo.vue'
@@ -499,11 +504,16 @@ export default {
 
     // Context Engineering Components Registration
     app.component('AgentContextFlow', AgentContextFlow)
+    app.component('IntroProblemReasonSolution', IntroProblemReasonSolution)
     app.component('ContextWindowVisualizer', ContextWindowVisualizer)
     app.component('SlidingWindowDemo', SlidingWindowDemo)
     app.component('SelectiveContextDemo', SelectiveContextDemo)
     app.component('RAGSimulationDemo', RAGSimulationDemo)
     app.component('ContextCompressionDemo', ContextCompressionDemo)
+    app.component('MemoryPalaceDemo', MemoryPalaceDemo)
+    app.component('MemoryPalaceActionDemo', MemoryPalaceActionDemo)
+    app.component('KVCacheDemo', KVCacheDemo)
+    app.component('LostInMiddleDemo', LostInMiddleDemo)
 
     // Agent Intro Components Registration
     app.component('AgentWorkflowDemo', AgentWorkflowDemo)

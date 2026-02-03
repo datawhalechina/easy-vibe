@@ -18,12 +18,12 @@
       <div class="stat-group">
         <div class="stat-item">
           <span class="value" :class="{ error: isOverflow }">{{ usedTokens }}</span>
-          <span class="label">Used Tokens</span>
+          <span class="label">已经写了多少个 token</span>
         </div>
         <div class="stat-divider">/</div>
         <div class="stat-item">
           <span class="value">{{ maxTokens }}</span>
-          <span class="label">Limit</span>
+          <span class="label">黑板最多能写几个 token</span>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
       <div class="window-frame" :class="{ overflow: isOverflow }">
         <div class="window-header">
           <span class="icon">🧠</span>
-          <span>Model Context Window</span>
+          <span>模型能看到的“小黑板”（上下文窗口）</span>
         </div>
         
         <div class="token-stream">
@@ -63,23 +63,23 @@
 
         <div v-if="isOverflow" class="overflow-indicator">
           <div class="overflow-line"></div>
-          <span class="overflow-text">⚠️ Context Limit Reached (Truncated)</span>
+          <span class="overflow-text">⚠️ 达到上下文上限 (已截断)</span>
         </div>
       </div>
     </div>
 
     <div class="input-section">
       <div class="input-header">
-        <label>Input Text / 输入内容</label>
+        <label>输入内容（看黑板怎么被一点点写满）</label>
         <div class="actions">
-          <button class="action-btn" @click="fillLorem(30)">+ Short</button>
-          <button class="action-btn" @click="fillLorem(120)">+ Overflow</button>
-          <button class="action-btn outline" @click="clear">Clear</button>
+        <button class="action-btn" @click="fillLorem(10)">填一段短文本</button>
+        <button class="action-btn" @click="fillLorem(60)">一下子塞满黑板</button>
+          <button class="action-btn outline" @click="clear">清空</button>
         </div>
       </div>
       <textarea
         v-model="inputText"
-        placeholder="Type here to see how tokens fill up the memory..."
+        placeholder="在这里输入几句话，看看小黑板是怎么逐渐被写满的..."
         rows="4"
       ></textarea>
     </div>
@@ -87,9 +87,9 @@
     <div class="info-box">
       <p>
         <span class="icon">💡</span>
-        <strong>Note:</strong>
-        Context Window 是模型的短期记忆。就像黑板只有那么大，写满了就必须擦掉旧的才能写新的。
-        一旦溢出，模型不仅会"忘记"前面的内容，甚至可能无法处理新的请求。
+        <strong>说明：</strong>
+        上下文窗口可以理解成模型的“小黑板”。黑板只有这么大，写满了就必须擦掉旧的才能写新的。
+        一旦溢出，最早写的那部分内容就会被擦掉，模型会完全“看不见”它们。
       </p>
     </div>
   </div>
@@ -99,16 +99,18 @@
 import { ref, computed } from 'vue'
 
 const maxTokens = 100
-const inputText = ref('Context engineering is the art of managing information.')
+const inputText = ref('上下文工程（Context Engineering）是指优化提供给大语言模型（LLM）的提示词。')
 
 // Simple mock tokenizer: split by space for demonstration
 // In reality, tokens are subwords, but space-split is good enough for concept
 const tokenizedText = computed(() => {
   if (!inputText.value) return []
-  return inputText.value
-    .trim()
-    .split(/\s+/)
-    .filter((t) => t)
+  // Improved tokenizer:
+  // 1. Matches continuous English words/numbers ([a-zA-Z0-9]+)
+  // 2. OR matches any other single character (including Chinese, punctuation)
+  // This provides a better visual approximation for mixed Chinese/English text
+  const matches = inputText.value.match(/[a-zA-Z0-9]+|./g) || []
+  return matches.filter(t => t.trim().length > 0)
 })
 
 const usedTokens = computed(() => tokenizedText.value.length)
@@ -128,9 +130,8 @@ const getTokenClass = (index) => {
 
 const fillLorem = (count) => {
   const words = [
-    'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 
-    'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 
-    'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua'
+    '人工智能', '深度学习', '神经网络', '大模型', 'Transformer', '注意力机制', 
+    '上下文窗口', 'Token', 'Embedding', '微调', '预训练', '推理', '生成', 'RAG'
   ]
   const newText = Array.from({ length: count }, () => words[Math.floor(Math.random() * words.length)]).join(' ')
   inputText.value = newText
@@ -146,7 +147,7 @@ const clear = () => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
   font-family: var(--vp-font-family-mono);
 }
@@ -154,10 +155,10 @@ const clear = () => {
 .control-panel {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
   background: var(--vp-c-bg);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
@@ -175,7 +176,7 @@ const clear = () => {
 }
 
 .stat-item .value {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   line-height: 1;
 }
@@ -223,14 +224,14 @@ const clear = () => {
 }
 
 .visualization-area {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .window-frame {
   border: 2px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg);
-  min-height: 120px;
+  min-height: 100px;
   position: relative;
   transition: border-color 0.3s;
   overflow: hidden;
@@ -242,8 +243,8 @@ const clear = () => {
 
 .window-header {
   background: var(--vp-c-bg-alt);
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
   font-weight: bold;
   border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
@@ -252,11 +253,11 @@ const clear = () => {
 }
 
 .token-stream {
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  max-height: 200px;
+  gap: 2px;
+  max-height: 150px;
   overflow-y: auto;
 }
 

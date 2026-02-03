@@ -1,318 +1,687 @@
+<!--
+  AudioTokenizationDemo.vue
+  音频 Tokenization 演示组件
+
+  用途：
+  展示音频如何通过神经编解码器(如 EnCodec、SoundStream)被压缩成离散的 Token。
+
+  交互功能：
+  - 音频压缩/解压流程
+  - 不同码率对比
+  - Token 可视化
+  - 重建质量评估
+-->
 <template>
-  <div class="tokenization-demo">
+  <div class="audio-tokenization-demo">
     <el-card shadow="never">
-      <div class="controls">
-        <el-button type="primary" @click="playDemo" :loading="isPlaying">
-          <el-icon><VideoPlay /></el-icon> 演示处理流程
-        </el-button>
-      </div>
-
-      <el-steps
-        :active="activeStep"
-        align-center
-        finish-status="success"
-        class="steps"
-      >
-        <el-step title="音频信号" description="连续波形" />
-        <el-step title="切片 (Chunking)" description="20ms/帧" />
-        <el-step title="量化 (Quantization)" description="查字典" />
-        <el-step title="Token 序列" description="离散数字" />
-      </el-steps>
-
-      <div class="stage-display">
-        <!-- Stage 0: Audio -->
-        <div v-if="activeStep === 0" class="stage-content audio-stage">
-          <div class="waveform-viz">
-            <div
-              class="wave-bar"
-              v-for="n in 20"
-              :key="n"
-              :style="{
-                height: 30 + Math.random() * 50 + '%',
-                animationDelay: n * 0.1 + 's'
-              }"
-            ></div>
-          </div>
-          <div class="stage-desc">原始的连续模拟信号或高采样率数字信号</div>
+      <template #header>
+        <div class="header-title">
+          <el-icon><Grid /></el-icon>
+          <span>🎵 音频 Tokenization：神经编解码器</span>
         </div>
+      </template>
 
-        <!-- Stage 1: Chunks -->
-        <div v-if="activeStep === 1" class="stage-content chunks-stage">
-          <div class="chunks-container">
-            <div class="chunk-item" v-for="n in 5" :key="n">
-              <span class="chunk-label">Frame {{ n }}</span>
-            </div>
-          </div>
-          <div class="stage-desc">
-            将音频切分为固定长度的小片段（例如 20ms）
-          </div>
-        </div>
-
-        <!-- Stage 2: Codebook -->
-        <div v-if="activeStep === 2" class="stage-content codebook-stage">
-          <div class="codebook-grid">
-            <div
-              class="codebook-entry"
-              v-for="n in 9"
-              :key="n"
-              :class="{ highlight: n === currentMatch }"
-            >
-              {{ 1024 + n * 50 }}
-            </div>
-          </div>
-          <div class="stage-desc">
-            在预训练的"声音字典"中寻找最接近的特征向量
-          </div>
-        </div>
-
-        <!-- Stage 3: Tokens -->
-        <div v-if="activeStep === 3" class="stage-content token-stage">
-          <div class="token-list">
-            <el-tag
-              v-for="(token, index) in tokens"
-              :key="index"
-              effect="dark"
-              size="large"
-              class="token-tag"
-            >
-              {{ token }}
-            </el-tag>
-          </div>
-          <div class="stage-desc">最终转换为 GPT 可以理解的数字序列</div>
-        </div>
-      </div>
-
-      <el-divider />
-
-      <div class="comparison-box">
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <div class="compare-card">
-              <div class="compare-title">文本 GPT</div>
-              <div class="compare-content">
-                <el-tag type="info">我</el-tag>
-                <el-tag type="info">爱</el-tag>
-                <el-tag type="info">编</el-tag>
-                <el-tag type="info">程</el-tag>
+      <div class="demo-content">
+        <!-- 流程图 -->
+        <div class="codec-flow">
+          <div class="flow-section encode">
+            <div class="section-title">🔽 编码器 (Encoder)</div>
+            <div class="flow-steps">
+              <div class="codec-step">
+                <div class="step-visual">
+                  <canvas ref="originalWaveformCanvas" width="150" height="60" />
+                </div>
+                <div class="step-label">原始波形</div>
+                <div class="step-meta">24kHz, 16-bit</div>
+              </div>
+              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <div class="codec-step">
+                <div class="step-visual">
+                  <div class="cnn-layers">
+                    <div class="cnn-layer" v-for="i in 4" :key="i" :style="{ opacity: 0.3 + i * 0.2 }">
+                      Conv {{ i }}
+                    </div>
+                  </div>
+                </div>
+                <div class="step-label">CNN 下采样</div>
+                <div class="step-meta">降维 320x</div>
+              </div>
+              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <div class="codec-step">
+                <div class="step-visual">
+                  <div class="vq-codebook">
+                    <div class="codebook-grid">
+                      <div
+                        v-for="i in 16"
+                        :key="i"
+                        class="codebook-cell"
+                        :class="{ active: i <= 4 }"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="step-label">VQ 量化</div>
+                <div class="step-meta">离散 Token</div>
               </div>
             </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="compare-card highlight-border">
-              <div class="compare-title">音频 GPT</div>
-              <div class="compare-content">
-                <el-tag type="warning">1024</el-tag>
-                <el-tag type="warning">5678</el-tag>
-                <el-tag type="warning">2340</el-tag>
-                <el-tag type="warning">8901</el-tag>
+          </div>
+
+          <div class="flow-divider">
+            <div class="divider-line"></div>
+            <div class="divider-label">压缩后: ~1.5 kbps</div>
+            <div class="divider-line"></div>
+          </div>
+
+          <div class="flow-section decode">
+            <div class="section-title">🔼 解码器 (Decoder)</div>
+            <div class="flow-steps reverse">
+              <div class="codec-step">
+                <div class="step-visual">
+                  <div class="token-sequence">
+                    <span
+                      v-for="(token, i) in [42, 128, 7, 255, 33, 91]"
+                      :key="i"
+                      class="token"
+                      :style="{ background: `hsl(${token}, 70%, 50%)` }"
+                    >
+                      {{ token }}
+                    </span>
+                  </div>
+                </div>
+                <div class="step-label">离散 Token</div>
+                <div class="step-meta">Codebook 索引</div>
+              </div>
+              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <div class="codec-step">
+                <div class="step-visual">
+                  <div class="cnn-layers">
+                    <div class="cnn-layer" v-for="i in 4" :key="i" :style="{ opacity: 1 - i * 0.15 }">
+                      ConvT {{ 5 - i }}
+                    </div>
+                  </div>
+                </div>
+                <div class="step-label">转置卷积</div>
+                <div class="step-meta">上采样</div>
+              </div>
+              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <div class="codec-step">
+                <div class="step-visual">
+                  <canvas ref="reconstructedWaveformCanvas" width="150" height="60" />
+                </div>
+                <div class="step-label">重建波形</div>
+                <div class="step-meta">24kHz</div>
               </div>
             </div>
-          </el-col>
-        </el-row>
+          </div>
+        </div>
+
+        <!-- 码率对比 -->
+        <div class="bitrate-comparison">
+          <div class="comparison-title">📊 不同码率对比</div>
+          <div class="bitrate-cards">
+            <div
+              v-for="config in bitrateConfigs"
+              :key="config.name"
+              class="bitrate-card"
+              :class="{ active: selectedBitrate === config.name }"
+              @click="selectedBitrate = config.name"
+            >
+              <div class="bitrate-value">{{ config.bitrate }}</div>
+              <div class="bitrate-name">{{ config.name }}</div>
+              <div class="bitrate-detail">
+                <div class="detail-item">
+                  <span class="label">采样率:</span>
+                  <span>{{ config.sampleRate }}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="label">帧率:</span>
+                  <span>{{ config.frameRate }}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="label">码本大小:</span>
+                  <span>{{ config.codebookSize }}</span>
+                </div>
+              </div>
+              <el-rate
+                v-model="config.quality"
+                disabled
+                show-score
+                text-color="#ff9900"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Token 可视化 -->
+        <div class="token-visualization">
+          <div class="viz-title">🔢 Token 序列可视化</div>
+          <div class="token-display">
+            <div class="token-ruler">
+              <span v-for="i in 20" :key="i" class="ruler-mark">{{ i * 0.1 }}s</span>
+            </div>
+            <div class="token-stream">
+              <div
+                v-for="(token, i) in tokenSequence"
+                :key="i"
+                class="token-block"
+                :style="{
+                  background: `hsl(${token % 360}, 70%, ${50 + (token % 20)}%)`,
+                  height: `${20 + (token % 30)}px`
+                }"
+                :title="`Token: ${token}`"
+              />
+            </div>
+          </div>
+          <div class="token-legend">
+            <span class="legend-item">
+              <span class="legend-color" style="background: #409eff"></span>
+              低频成分
+            </span>
+            <span class="legend-item">
+              <span class="legend-color" style="background: #67c23a"></span>
+              中频成分
+            </span>
+            <span class="legend-item">
+              <span class="legend-color" style="background: #e6a23c"></span>
+              高频成分
+            </span>
+          </div>
+        </div>
+
+        <!-- 应用场景 -->
+        <div class="applications">
+          <div class="apps-title">🎯 为什么需要音频 Tokenization？</div>
+          <div class="apps-grid">
+            <div class="app-card">
+              <div class="app-icon">🚀</div>
+              <div class="app-title">高效传输</div>
+              <div class="app-desc">
+                将音频压缩到 ~1.5 kbps，比原始音频小 256 倍，适合网络传输
+              </div>
+            </div>
+            <div class="app-card">
+              <div class="app-icon">🧠</div>
+              <div class="app-title">语言模型友好</div>
+              <div class="app-desc">
+                离散 Token 可以被 LLM 直接处理，实现文本到音频的统一建模
+              </div>
+            </div>
+            <div class="app-card">
+              <div class="app-icon">🎵</div>
+              <div class="app-title">音乐生成</div>
+              <div class="app-desc">
+                MusicGen、AudioLDM 等模型使用音频 Token 生成音乐和音效
+              </div>
+            </div>
+            <div class="app-card">
+              <div class="app-icon">🗣️</div>
+              <div class="app-title">语音合成</div>
+              <div class="app-desc">
+                VALL-E、SoundStorm 等 TTS 模型直接生成音频 Token
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <el-alert
-        title="为什么要做 Tokenization?"
-        type="warning"
-        :closable="false"
-        description="因为 GPT 本质上是一个'预测下一个数字'的机器。只有把连续的声音变成离散的数字，才能用 GPT 来生成音频。"
-        show-icon
-      />
+      <div class="info-box">
+        <p>
+          <span class="icon">💡</span>
+          <strong>神经音频编解码器：</strong>
+          EnCodec (Meta)、SoundStream (Google)、SNAC 等模型使用 VQ-VAE 架构将音频压缩成离散 Token。这些 Token 可以被语言模型处理，实现高质量的音频生成和压缩。
+        </p>
+      </div>
     </el-card>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { VideoPlay } from '@element-plus/icons-vue'
+import { ref, onMounted } from 'vue'
+import { Grid, ArrowRight } from '@element-plus/icons-vue'
 
-const activeStep = ref(0)
-const isPlaying = ref(false)
-const currentMatch = ref(0)
-const tokens = [1024, 5678, 2340, 8901, 3342]
+const selectedBitrate = ref('EnCodec-24k')
+const originalWaveformCanvas = ref(null)
+const reconstructedWaveformCanvas = ref(null)
 
-const playDemo = async () => {
-  if (isPlaying.value) return
-  isPlaying.value = true
-  activeStep.value = 0
-
-  // Step 0 -> 1
-  await wait(1000)
-  activeStep.value = 1
-
-  // Step 1 -> 2
-  await wait(1500)
-  activeStep.value = 2
-
-  // Simulate codebook matching
-  for (let i = 0; i < 5; i++) {
-    currentMatch.value = Math.floor(Math.random() * 9) + 1
-    await wait(200)
+const bitrateConfigs = [
+  {
+    name: 'EnCodec-24k',
+    bitrate: '1.5 kbps',
+    sampleRate: '24 kHz',
+    frameRate: '75 Hz',
+    codebookSize: '1024',
+    quality: 4
+  },
+  {
+    name: 'EnCodec-48k',
+    bitrate: '3.0 kbps',
+    sampleRate: '48 kHz',
+    frameRate: '75 Hz',
+    codebookSize: '1024',
+    quality: 5
+  },
+  {
+    name: 'SoundStream',
+    bitrate: '6.0 kbps',
+    sampleRate: '16 kHz',
+    frameRate: '50 Hz',
+    codebookSize: '1024',
+    quality: 4.5
+  },
+  {
+    name: 'SNAC',
+    bitrate: '0.98 kbps',
+    sampleRate: '24 kHz',
+    frameRate: '43 Hz',
+    codebookSize: '4096',
+    quality: 4
   }
-  currentMatch.value = 0
+]
 
-  // Step 2 -> 3
-  activeStep.value = 3
+// 生成模拟 Token 序列
+const tokenSequence = Array.from({ length: 50 }, () => Math.floor(Math.random() * 1024))
 
-  isPlaying.value = false
+// 绘制波形
+const drawWaveform = (canvas, isNoisy = false) => {
+  if (!canvas) return
+
+  const ctx = canvas.getContext('2d')
+  const width = canvas.width
+  const height = canvas.height
+
+  ctx.clearRect(0, 0, width, height)
+
+  ctx.strokeStyle = '#409eff'
+  ctx.lineWidth = 1.5
+  ctx.beginPath()
+
+  for (let x = 0; x < width; x++) {
+    const t = x / width
+    let y = height / 2
+
+    // 基础波形
+    y += Math.sin(t * Math.PI * 8) * 15
+    y += Math.sin(t * Math.PI * 16) * 10
+
+    // 添加噪声（重建版本）
+    if (isNoisy) {
+      y += (Math.random() - 0.5) * 8
+    }
+
+    if (x === 0) {
+      ctx.moveTo(x, y)
+    } else {
+      ctx.lineTo(x, y)
+    }
+  }
+
+  ctx.stroke()
+
+  // 中心线
+  ctx.strokeStyle = '#e0e0e0'
+  ctx.lineWidth = 1
+  ctx.beginPath()
+  ctx.moveTo(0, height / 2)
+  ctx.lineTo(width, height / 2)
+  ctx.stroke()
 }
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+onMounted(() => {
+  drawWaveform(originalWaveformCanvas.value, false)
+  drawWaveform(reconstructedWaveformCanvas.value, true)
+})
 </script>
 
 <style scoped>
-.tokenization-demo {
-  margin: 20px 0;
+.audio-tokenization-demo {
+  margin: 1rem 0;
 }
 
-.controls {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.steps {
-  margin-bottom: 30px;
-}
-
-.stage-display {
-  background: var(--el-fill-color-light);
-  border-radius: 8px;
-  padding: 30px;
-  min-height: 200px;
+.header-title {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.demo-content {
+  display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
-.stage-content {
+.codec-flow {
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.flow-section {
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--vp-c-brand);
+}
+
+.flow-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.flow-steps.reverse {
+  flex-direction: row-reverse;
+}
+
+.codec-step {
   text-align: center;
+  min-width: 120px;
+}
+
+.step-visual {
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-visual canvas {
   width: 100%;
+  height: auto;
 }
 
-.stage-desc {
-  margin-top: 15px;
-  color: var(--el-text-color-secondary);
-  font-size: 0.9em;
+.step-label {
+  font-weight: 500;
+  font-size: 0.875rem;
 }
 
-/* Audio Stage */
-.waveform-viz {
-  height: 80px;
+.step-meta {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+}
+
+.flow-arrow {
+  color: var(--vp-c-text-3);
+}
+
+.cnn-layers {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.wave-bar {
-  width: 6px;
-  background: var(--el-color-primary);
-  border-radius: 3px;
-  animation: wave 1s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%,
-  100% {
-    height: 30%;
-    opacity: 0.5;
-  }
-  50% {
-    height: 100%;
-    opacity: 1;
-  }
-}
-
-/* Chunks Stage */
-.chunks-container {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-}
-
-.chunk-item {
-  width: 60px;
-  height: 60px;
-  background: var(--el-color-primary-light-8);
-  border: 1px solid var(--el-color-primary);
+.cnn-layer {
+  background: #409eff;
+  color: white;
+  padding: 4px 8px;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 0.7rem;
 }
 
-.chunk-label {
-  font-size: 10px;
-  color: var(--el-color-primary);
+.vq-codebook {
+  padding: 8px;
 }
 
-/* Codebook Stage */
 .codebook-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 300px;
-  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
 }
 
-.codebook-entry {
-  padding: 10px;
-  background: var(--el-bg-color);
-  border: 1px solid var(--el-border-color);
+.codebook-cell {
+  width: 16px;
+  height: 16px;
+  background: #e0e0e0;
+  border-radius: 2px;
+}
+
+.codebook-cell.active {
+  background: #67c23a;
+}
+
+.token-sequence {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  max-width: 120px;
+}
+
+.token {
+  padding: 2px 6px;
   border-radius: 4px;
-  font-family: monospace;
-  transition: all 0.3s;
-}
-
-.codebook-entry.highlight {
-  background: var(--el-color-warning);
+  font-size: 0.7rem;
   color: white;
-  transform: scale(1.1);
-  border-color: var(--el-color-warning);
-}
-
-/* Token Stage */
-.token-list {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.token-tag {
   font-family: monospace;
-  font-weight: bold;
 }
 
-.comparison-box {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.compare-card {
-  background: var(--el-bg-color-page);
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid transparent;
-}
-
-.highlight-border {
-  border-color: var(--el-color-warning);
-  background: var(--el-color-warning-light-9);
-}
-
-.compare-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 0.9em;
-}
-
-.compare-content {
+.flow-divider {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--vp-c-divider);
+}
+
+.divider-label {
+  font-size: 0.875rem;
+  color: var(--vp-c-text-3);
+  white-space: nowrap;
+}
+
+.bitrate-comparison {
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.comparison-title {
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.bitrate-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.bitrate-card {
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.bitrate-card:hover {
+  border-color: var(--vp-c-brand);
+}
+
+.bitrate-card.active {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-mute);
+}
+
+.bitrate-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--vp-c-brand);
+  margin-bottom: 4px;
+}
+
+.bitrate-name {
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.bitrate-detail {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  margin-bottom: 12px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+.detail-item .label {
+  color: var(--vp-c-text-2);
+}
+
+.token-visualization {
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.viz-title {
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.token-display {
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.token-ruler {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+}
+
+.ruler-mark {
+  min-width: 30px;
+}
+
+.token-stream {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 60px;
+}
+
+.token-block {
+  flex: 1;
+  min-width: 8px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.token-block:hover {
+  transform: scaleY(1.2);
+  z-index: 1;
+}
+
+.token-legend {
+  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.applications {
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.apps-title {
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.app-card {
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.app-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.app-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.app-desc {
+  font-size: 0.8rem;
+  color: var(--vp-c-text-3);
+  line-height: 1.5;
+}
+
+.info-box {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--vp-c-bg-mute);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.icon {
+  font-size: 1.2em;
+}
+
+@media (max-width: 640px) {
+  .flow-steps {
+    flex-direction: column;
+  }
+
+  .flow-steps.reverse {
+    flex-direction: column;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
 }
 </style>
