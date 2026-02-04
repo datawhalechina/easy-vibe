@@ -144,6 +144,11 @@ import GPTEvolutionDemo from './components/appendix/ai-history/GPTEvolutionDemo.
 import ImperativeVsDeclarativeDemo from './components/appendix/web-basics/ImperativeVsDeclarativeDemo.vue'
 import ComponentReusabilityDemo from './components/appendix/web-basics/ComponentReusabilityDemo.vue'
 
+// Frontend Evolution Components
+import EvolutionSliceRequestDemo from './components/appendix/frontend-evolution/SliceRequestDemo.vue'
+import EvolutionResponsiveGridDemo from './components/appendix/frontend-evolution/ResponsiveGridDemo.vue'
+import EvolutionJQueryVsStateDemo from './components/appendix/frontend-evolution/JQueryVsStateDemo.vue'
+
 import BackendEvolutionDemo from './components/appendix/backend-evolution/BackendEvolutionDemo.vue'
 import MonolithVsMicroserviceDemo from './components/appendix/backend-evolution/MonolithVsMicroserviceDemo.vue'
 import CgiQueueDemo from './components/appendix/backend-evolution/CgiQueueDemo.vue'
@@ -154,6 +159,7 @@ import ServerlessCostAutoScaleDemo from './components/appendix/backend-evolution
 
 // Frontend Performance Components
 import PerformanceMetricsDemo from './components/appendix/frontend-performance/PerformanceMetricsDemo.vue'
+import PerformanceOverviewDemo from './components/appendix/frontend-performance/PerformanceOverviewDemo.vue'
 import ReflowRepaintDemo from './components/appendix/frontend-performance/ReflowRepaintDemo.vue'
 import ImageOptimizationDemo from './components/appendix/frontend-performance/ImageOptimizationDemo.vue'
 import LazyLoadingDemo from './components/appendix/frontend-performance/LazyLoadingDemo.vue'
@@ -433,6 +439,11 @@ export default {
     app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
 
+    // Frontend Evolution Components Registration
+    app.component('EvolutionSliceRequestDemo', EvolutionSliceRequestDemo)
+    app.component('EvolutionResponsiveGridDemo', EvolutionResponsiveGridDemo)
+    app.component('EvolutionJQueryVsStateDemo', EvolutionJQueryVsStateDemo)
+
     app.component('BackendEvolutionDemo', BackendEvolutionDemo)
     app.component('MonolithVsMicroserviceDemo', MonolithVsMicroserviceDemo)
     app.component('CgiQueueDemo', CgiQueueDemo)
@@ -441,8 +452,9 @@ export default {
     app.component('CacheHitRatioDemo', CacheHitRatioDemo)
     app.component('ServerlessCostAutoScaleDemo', ServerlessCostAutoScaleDemo)
 
-    // Frontend Performance Components Registration
+    // Frontend Performance Components
     app.component('PerformanceMetricsDemo', PerformanceMetricsDemo)
+    app.component('PerformanceOverviewDemo', PerformanceOverviewDemo)
     app.component('ReflowRepaintDemo', ReflowRepaintDemo)
     app.component('ImageOptimizationDemo', ImageOptimizationDemo)
     app.component('LazyLoadingDemo', LazyLoadingDemo)

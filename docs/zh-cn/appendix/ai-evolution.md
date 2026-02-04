@@ -49,6 +49,8 @@ function decideTrafficLight(color) {
     return 'caution'
   } else if (color === 'green') {
     return 'go'
+  } else {
+    return 'unknown'
   }
 }
 ```
@@ -60,10 +62,10 @@ function decideTrafficLight(color) {
 它的工作原理是：
 
 ```lisp
-;; MYCIN 系统的规则示例 (伪代码)
+// MYCIN 系统的规则示例 (伪代码)
 (IF
-  (organism IS gram-positive)
-  (morphology IS coccus)
+  (organism IS gram-positive) AND
+  (morphology IS coccus) AND
   (growth-chains IS chains)
 THEN
   (identity IS 0.7 streptococcus))
@@ -242,7 +244,7 @@ _数据示例 (训练数据格式)_：
 
 - **黑盒问题**：虽然能识别猫，但我们说不清"它是怎么识别的"
 - **数据饥渴**：需要海量标注数据，获取成本高
-- **缺乏常识**：能认猫，但不知道"猫会怕狗"
+- **缺乏常识**：能识别出这是“猫”，但理解不了“猫喜欢抓老鼠”或“猫通常怕狗”这种常识关系（因为它只是在做像素级的统计匹配，而非真正的概念理解）
 
 ---
 

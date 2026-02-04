@@ -39,11 +39,41 @@
 它就像是一个翻译官，负责将人类的文字翻译成机器能读懂的数字序列。
 
 现代 LLM (如 GPT-4) 通常使用 **Subword Tokenization (子词分词)** 技术（如 BPE 算法）。
-它的聪明之处在于：
+它的聪明之处在于：**常用词保持完整，生僻词拆分**。
 
-- **常用词**（如 "apple"）保持完整，作为一个 Token。
-- **生僻词**（如 "applepie"）拆分成常见片段（"apple" + "pie"）。
-  这样既能覆盖所有词汇，又不会让词表变得无限大。
+以下是一个真实的 BPE 分词示例（基于 GPT-4 Tokenizer）：
+
+**Input**: `"The quick brown fox jumps over the lazy dog. \n今天天气真不错！"`
+
+**Token List**:
+
+```text
+index=791,   string='The' 
+index=4062,  string=' quick' 
+index=14198, string=' brown' 
+index=39935, string=' fox' 
+index=83368, string=' jumps'   <-- 如果被拆分，可能会是 ' jump' + 's'
+index=927,   string=' over' 
+index=279,   string=' the' 
+index=16053, string=' lazy' 
+index=3290,  string=' dog' 
+index=13,    string='.' 
+index=198,   string='\n'       <-- 换行符 
+index=33838, string='今天'      <-- 常用词直接合并 
+index=54580, string='天气' 
+index=20265, string='真' 
+index=57672, string='不错' 
+index=171,   string='！' 
+```
+
+> **关于生僻字的处理**：
+> 如果遇到词表中不存在的生僻字（假设“今”字很生僻），模型会回退到 **Byte 级别** 进行编码。
+> 1.  Raw Input: `今`
+> 2.  Bytes: `\xE4 \xBB \x8A`
+> 3.  BPE 查找: 先找 `\xE4\xBB\x8A` -> 没找到 -> 拆分为 `\xE4\xBB` (ID=1001) + `\x8A` (ID=2002)。
+> 4.  最终 Token: `[1001, 2002]`。
+>
+> 这种机制保证了**无论输入什么字符，模型都能处理，永远不会出现 OOV (Out Of Vocabulary) 问题**。
 
 <TokenizationDemo />
 
@@ -340,11 +370,14 @@ Thinking Model 就是学会了这种**慢思考 (System 2)** 能力的模型。
   - **代表**：GPT-3, Llama-2。
 
 - **MoE (混合专家模型)**：
-  - **比喻**：一个**专家团队**。有一个前台（Router）负责分发问题。
-    - 问代码 -> 分给程序员专家。
-    - 问数学 -> 分给数学家专家。
-    - 问文学 -> 分给文学家专家。
-  - **特点**：虽然总人数多（参数量大），但回答一个问题时只有几个人干活（激活参数少）。**又博学，又快**。
+  - **比喻**：一个**流水线上的专家团**（每处理一个字就换一次人）。
+  - **核心机制 (Token-Level Routing)**：
+    MoE 的精髓在于**原生 Token 级路由**。它**绝不是**按“任务类型”分工（比如把数学题全给数学专家），而是**按“当前生成的字”实时分工**。
+    - 当模型生成“`def`”时，路由给**代码专家**。
+    - 当模型生成“`love`”时，路由给**文学专家**。
+    - 当模型生成“`3.14`”时，路由给**数学专家**。
+    这意味着，哪怕在同一句话里，不同的字也往往由不同的专家处理。
+  - **特点**：虽然总人数多（参数量大），但处理每个字时只有几个人干活（激活参数少）。**又博学，又快**。
   - **代表**：GPT-4, DeepSeek-V3, Mixtral。
 
 <MoEDemo />
@@ -376,6 +409,16 @@ Thinking Model 就是学会了这种**慢思考 (System 2)** 能力的模型。
   - **代价**：虽然快，但在“压缩”过程中可能会丢失一些细节（比如忘记了苹果是红色的）。
 
 <LinearAttentionDemo />
+
+### 7.7 架构大比拼：RNN vs Transformer vs RWKV
+
+| 架构 | 核心机制 | 复杂度 (长度 N) | 并行训练 | 推理速度 | 遗忘问题 | 代表模型 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **RNN** | 串行递归 | $O(N)$ (低) | ❌ 不可 | 慢 (串行) | 严重 (长距离遗忘) | LSTM, GRU |
+| **Transformer** | 全局注意力 | $O(N^2)$ (极高) | ✅ 可 | 中 (KV Cache) | 无 (但受限于窗口) | GPT-4, Llama |
+| **RWKV / Linear** | 线性注意力 | $O(N)$ (低) | ✅ 可 | 快 (恒定显存) | 轻微 (有压缩损耗) | RWKV, MiniMax |
+
+> **RWKV / Linear Attention** 试图结合前两者的优点：像 Transformer 一样并行训练，像 RNN 一样高效推理。
 
 ---
 

@@ -205,13 +205,94 @@ Prettier configuration (`.prettierrc`):
 
 Run `npm run format` before committing code changes.
 
+## Interactive Vue Components
+
+### Component Registration
+
+All interactive Vue components for the documentation are registered in `docs/.vitepress/theme/index.js`. To add a new component:
+
+1. Create the `.vue` file in the appropriate subdirectory of `docs/.vitepress/theme/components/`
+2. Import the component in `docs/.vitepress/theme/index.js`
+3. Register the component using `app.component('ComponentName', ComponentName)` in the `enhanceApp` function
+
+### Component Categories
+
+Components are organized by topic:
+
+- `appendix/llm-intro/` - Large Language Model interactive demos
+- `appendix/vlm-intro/` - Vision Language Model interactive demos
+- `appendix/git-intro/` - Git workflow visualizations
+- `appendix/terminal-intro/` - Terminal/CLI interactive demos
+- `appendix/web-basics/` - HTML/CSS/JavaScript fundamentals
+- `appendix/auth-design/` - Authentication/authorization demos
+- `appendix/cache-design/` - Caching strategy visualizations
+- `appendix/database-intro/` - Database fundamentals
+- `appendix/queue-design/` - Message queue demos
+- `appendix/operations/` - DevOps/monitoring demos
+- `appendix/deployment/` - Deployment architecture demos
+- `appendix/frontend-performance/` - Frontend performance demos
+- `appendix/frontend-evolution/` - Frontend history/evolution demos
+- `appendix/backend-evolution/` - Backend architecture evolution
+- `appendix/backend-languages/` - Backend language comparisons
+
+### Using Components in Markdown
+
+Components can be used directly in markdown files:
+
+```markdown
+## LLM Basics
+
+<LLMQuickStartDemo />
+
+### Tokenization
+
+<TokenizationDemo />
+```
+
+### Component Development Best Practices
+
+1. **Props**: Use props for configurable demo parameters
+2. **Styling**: Use scoped CSS or Tailwind-like utility classes
+3. **Responsiveness**: Ensure components work on mobile and desktop
+4. **Accessibility**: Include aria labels where appropriate
+5. **i18n**: Keep text content minimal or use props for text
+
+## Multi-language Support
+
+### Supported Locales
+
+The project supports 13 languages:
+
+- `zh-cn` - Simplified Chinese (primary)
+- `zh-tw` - Traditional Chinese
+- `en-us` - English (US)
+- `ja-jp` - Japanese
+- `ko-kr` - Korean
+- `es-es` - Spanish
+- `fr-fr` - French
+- `de-de` - German
+- `ar-sa` - Arabic
+- `vi-vn` - Vietnamese
+
+### Adding Multi-language Content
+
+1. Create content in `docs/{locale}/` following the same structure as `docs/zh-cn/`
+2. Add locale configuration in `docs/.vitepress/config.mjs` under `locales`
+3. Copy the sidebar structure from `zh-cn` and translate the text values
+
+### Content Translation Priority
+
+1. **Primary**: `zh-cn` (Simplified Chinese) - always complete this first
+2. **Secondary**: `en-us` (English) - for international reach
+3. **Tertiary**: Other languages based on contributor availability
+
 ## Permissions
 
 The project has configured bash permissions in `.claude/settings.local.json`:
 
 - File operations: `which`, `find`, `mv`, `tree`, `cat`, `curl`, `lsof`, `mkdir`, `cp`, `ls`
 - Process management: `xargs ps`, `kill`
-- Development: `npm run dev`
+- Development: `npm run dev`, `npm run build`, `npm run preview`, `npm run format`
 
 ## Key Context for Development
 

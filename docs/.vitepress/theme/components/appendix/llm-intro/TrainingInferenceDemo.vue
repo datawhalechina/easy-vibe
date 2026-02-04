@@ -238,8 +238,8 @@
                   >
                     {{
                       isPredictionCorrect
-                        ? '✅ Parameters Good'
-                        : '❌ Update Weights'
+                        ? '✅ Good Prediction'
+                        : '🔧 Adjusting Weights'
                     }}
                   </div>
                 </div>

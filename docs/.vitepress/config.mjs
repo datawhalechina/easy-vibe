@@ -314,7 +314,7 @@ export default defineConfig({
           { text: '首页', link: '/zh-cn/' },
           {
             text: '新手与产品原型',
-            link: '/zh-cn/stage-0/intro'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: '初中级开发',
@@ -672,7 +672,7 @@ export default defineConfig({
           { text: 'Home', link: '/en-us/' },
           {
             text: 'Novice & PM',
-            link: '/en-us/stage-0/intro'
+            link: '/en-us/stage-0/'
           },
           {
             text: 'Full-Stack Development',
@@ -712,7 +712,7 @@ export default defineConfig({
           { text: 'ホーム', link: '/ja-jp/' },
           {
             text: '初心者とPM',
-            link: '/ja-jp/stage-0/intro'
+            link: '/ja-jp/stage-0/'
           },
           {
             text: 'フルスタック開発',
@@ -750,7 +750,7 @@ export default defineConfig({
           { text: '首頁', link: '/zh-tw/' },
           {
             text: '新手與產品原型',
-            link: '/zh-tw/stage-0/intro'
+            link: '/zh-tw/stage-0/'
           },
           {
             text: '初中級開發',
@@ -785,7 +785,7 @@ export default defineConfig({
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: '초보자 & PM', link: '/ko-kr/stage-0/intro' },
+          { text: '초보자 & PM', link: '/ko-kr/stage-0/' },
           {
             text: '풀스택 개발',
             link: '/ko-kr/stage-2/intro'
@@ -821,7 +821,7 @@ export default defineConfig({
           { text: 'Inicio', link: '/es-es/' },
           {
             text: 'Principiante y PM',
-            link: '/es-es/stage-0/intro'
+            link: '/es-es/stage-0/'
           },
           {
             text: 'Desarrollo Full Stack',
@@ -856,7 +856,7 @@ export default defineConfig({
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'Débutant & PM', link: '/fr-fr/stage-0/intro' },
+          { text: 'Débutant & PM', link: '/fr-fr/stage-0/' },
           {
             text: 'Développement Full Stack',
             link: '/fr-fr/stage-2/intro'
@@ -890,7 +890,7 @@ export default defineConfig({
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'Anfänger & PM', link: '/de-de/stage-0/intro' },
+          { text: 'Anfänger & PM', link: '/de-de/stage-0/' },
           {
             text: 'Full Stack Entwicklung',
             link: '/de-de/stage-2/intro'
@@ -926,7 +926,7 @@ export default defineConfig({
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
             text: 'مبتدأ & PM',
-            link: '/ar-sa/stage-0/intro'
+            link: '/ar-sa/stage-0/'
           },
           {
             text: 'تطوير Full Stack',
@@ -963,7 +963,7 @@ export default defineConfig({
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
             text: 'Người mới & PM',
-            link: '/vi-vn/stage-0/intro'
+            link: '/vi-vn/stage-0/'
           },
           {
             text: 'Phát triển Full Stack',
