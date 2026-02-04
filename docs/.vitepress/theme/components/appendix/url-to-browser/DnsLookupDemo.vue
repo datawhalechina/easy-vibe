@@ -1,724 +1,649 @@
 <!--
   DnsLookupDemo.vue
-  DNS查询演示 - 查地址簿 vs 真实DNS查询 双栏对照
-
-  用途：
-  用"查地址簿"的生活化比喻，配合真实DNS查询过程，
-  让0基础用户理解域名如何转换成IP地址。
+  DNS查询演示 - 增强技术细节版
+  
+  设计理念：
+  1. 循循善诱：通过"接力跑腿"的比喻，展示浏览器如何一步步找到IP。
+  2. 技术硬核：新增终端模拟器，展示真实的 dig/系统命令输出，解决"太抽象"的问题。
+  3. 紧凑布局：横向流式布局，固定底部详情板。
 -->
 <template>
-  <div class="dns-lookup-demo">
-    <!-- 标题区 -->
-    <div class="demo-header">
-      <div class="header-title">
-        <span class="title-icon">[地址簿]</span>
-        <span>查地址簿 vs DNS查询</span>
+  <div class="dns-compact">
+    <!-- 顶部控制栏 -->
+    <div class="top-bar">
+      <div class="title-section">
+        <span class="app-icon">🌐</span>
+        <span class="app-title">DNS 寻址原理</span>
       </div>
-      <div class="header-subtitle">生活比喻 ↔ 技术实现 双栏对照</div>
-    </div>
+      
+      <div class="target-select">
+        <span class="label">目标：</span>
+        <select v-model="selectedTargetIndex" :disabled="isSearching" @change="reset">
+          <option v-for="(t, i) in targets" :key="t.name" :value="i">
+            {{ t.name }} ({{ t.domain }})
+          </option>
+        </select>
+      </div>
 
-    <!-- 场景设置 -->
-    <div class="scenario-setup">
-      <div class="setup-text">
-        快递员要送包裹给 <strong>"{{ currentTarget.name }}"</strong>（{{ currentTarget.domain }}），
-        但他只知道名字，不知道具体门牌号...
-      </div>
-      <div class="target-selector">
-        <span class="selector-label">换个目标：</span>
-        <button
-          v-for="target in targets"
-          :key="target.name"
-          @click="selectTarget(target)"
-          class="target-chip"
-          :class="{ active: currentTarget.name === target.name }"
-          :disabled="isSearching"
+      <div class="actions">
+        <button 
+          class="action-btn primary" 
+          @click="startAutoSearch"
+          v-if="!isSearching && !isFinished"
         >
-          {{ target.name }}
+          ▶ 开始寻址
+        </button>
+        <button 
+          class="action-btn secondary" 
+          @click="nextStep"
+          v-if="isSearching && !autoPlay"
+        >
+          ⏭ 下一步
+        </button>
+        <button 
+          class="action-btn outline" 
+          @click="reset"
+          v-if="isFinished || isSearching"
+        >
+          ↺ 重置
         </button>
       </div>
     </div>
 
-    <!-- 开始查询按钮 -->
-    <div class="start-action" v-if="!isSearching && !showResult">
-      <button class="start-btn" @click="startSearch">
-        [查询] 开始查询地址
-      </button>
+    <!-- 进度条/状态展示 -->
+    <div class="status-bar">
+      <div v-if="!isSearching && !isFinished" class="status-text">
+        <span class="icon">👋</span>
+        准备出发：去问问 <strong>{{ targets[selectedTargetIndex].domain }}</strong> 的 IP 是多少？
+      </div>
+      <div v-else-if="isSearching" class="status-text running">
+        <span class="icon spin">⏳</span>
+        正在询问：{{ queryLevels[currentStep]?.analogyName }}...
+      </div>
+      <div v-else class="status-text success">
+        <span class="icon">✅</span>
+        找到了！IP 地址是：<strong>{{ targets[selectedTargetIndex].ip }}</strong>
+      </div>
     </div>
 
-    <!-- 双栏对照展示 -->
-    <div class="comparison-container" v-if="isSearching || showResult">
-      <!-- 左侧：生活比喻（查地址簿） -->
-      <div class="comparison-side analogy-side">
-        <div class="side-header">
-          <span class="side-icon">[生活]</span>
-          <span class="side-title">查地址簿流程</span>
+    <!-- 可视化流程 (横向) -->
+    <div class="flow-stage">
+      <div 
+        v-for="(level, index) in queryLevels"
+        :key="level.id"
+        class="flow-step"
+        :class="{ 
+          active: currentStep === index,
+          passed: currentStep > index,
+          pending: currentStep < index
+        }"
+        @click="jumpToStep(index)"
+      >
+        <div class="step-icon-box" :style="{ '--step-color': level.color }">
+          <span class="step-icon">{{ level.analogyIcon }}</span>
         </div>
-        <div class="analogy-flow">
-          <div
-            v-for="(level, index) in queryLevels"
-            :key="level.id"
-            class="flow-level"
-            :class="{
-              passed: currentStep > index,
-              current: currentStep === index,
-              pending: currentStep < index
-            }"
-          >
-            <div class="level-icon">{{ level.analogyIcon }}</div>
-            <div class="level-content">
-              <div class="level-name">{{ level.analogyName }}</div>
-              <div class="level-role">{{ level.analogyRole }}</div>
-              <div class="level-action" v-if="currentStep === index">
-                <span class="action-text">{{ level.analogyAction }}</span>
+        <div class="step-label">{{ level.analogyName }}</div>
+        
+        <!-- 连接线 -->
+        <div class="step-line" v-if="index < queryLevels.length - 1"></div>
+      </div>
+    </div>
+
+    <!-- 底部双面板：左侧生活比喻，右侧技术终端 -->
+    <div class="info-panels">
+      <!-- 左侧：生活场景 -->
+      <div class="detail-panel analogy-panel">
+        <transition name="fade" mode="out-in">
+          <div v-if="currentStep >= 0" class="panel-content" :key="currentStep">
+            <div class="panel-header" :style="{ color: currentLevel.color }">
+              <span class="header-icon">{{ currentLevel.analogyIcon }}</span>
+              <span class="header-title">{{ currentLevel.analogyName }} ({{ currentLevel.techName }})</span>
+            </div>
+            <div class="panel-body">
+              <p class="analogy-text">{{ currentLevel.analogyAction }}</p>
+              <div class="tech-hint-badge">
+                {{ currentLevel.techAction }}
               </div>
             </div>
           </div>
-        </div>
+          <div v-else class="panel-placeholder">
+            <span>生活场景视角</span>
+          </div>
+        </transition>
       </div>
 
-      <!-- 中间：连接指示 -->
-      <div class="connection-indicator">
-        <div class="indicator-line" v-for="i in 5" :key="i">
-          <span class="indicator-arrow">→</span>
-          <span class="indicator-text">对应</span>
+      <!-- 右侧：硬核终端 -->
+      <div class="detail-panel terminal-panel">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="terminal-title">Terminal</div>
         </div>
-      </div>
-
-      <!-- 右侧：技术实现（真实DNS） -->
-      <div class="comparison-side tech-side">
-        <div class="side-header">
-          <span class="side-icon">[技术]</span>
-          <span class="side-title">DNS查询流程</span>
-        </div>
-        <div class="tech-flow">
-          <div
-            v-for="(level, index) in queryLevels"
-            :key="level.id"
-            class="flow-level"
-            :class="{
-              passed: currentStep > index,
-              current: currentStep === index,
-              pending: currentStep < index
-            }"
-          >
-            <div class="level-icon" :style="{ background: level.techColor }">{{ level.techIcon }}</div>
-            <div class="level-content">
-              <div class="level-name">{{ level.techName }}</div>
-              <div class="level-role">{{ level.techRole }}</div>
-              <div class="level-action" v-if="currentStep === index">
-                <code class="action-code">{{ level.techAction }}</code>
-              </div>
+        <transition name="fade" mode="out-in">
+          <div v-if="currentStep >= 0" class="terminal-body" :key="currentStep">
+            <div class="cmd-line">
+              <span class="prompt">$</span>
+              <span class="cmd">{{ formatText(currentLevel.techCommand) }}</span>
+            </div>
+            <div class="cmd-output">
+              <pre>{{ formatText(currentLevel.techOutput) }}</pre>
             </div>
           </div>
-        </div>
+          <div v-else class="terminal-placeholder">
+            <span>Waiting for command...</span>
+          </div>
+        </transition>
       </div>
     </div>
 
-    <!-- 查询结果 -->
-    <div class="result-section" v-if="showResult">
-      <div class="result-card">
-        <div class="result-header">[成功] 查询成功！</div>
-        <div class="result-body">
-          <div class="result-row">
-            <span class="result-label">域名（名字）：</span>
-            <code class="result-value">{{ currentTarget.domain }}</code>
-          </div>
-          <div class="result-row">
-            <span class="result-label">IP地址（门牌号）：</span>
-            <code class="result-value highlight">{{ currentTarget.ip }}</code>
-          </div>
-        </div>
-      </div>
-
-      <!-- 技术说明卡片 -->
-      <div class="tech-explanation">
-        <div class="explanation-header">
-          <span class="explanation-icon">[详解]</span>
-          <span>DNS查询技术详解</span>
-        </div>
-        <div class="explanation-body">
-          <div class="explanation-item">
-            <strong>[查询] 查询类型：</strong>
-            <p><strong>递归查询</strong>：浏览器只发一次请求，本地DNS负责层层查询后返回结果（像委托代理）</p>
-            <p><strong>迭代查询</strong>：每层只告诉下一层去哪查，浏览器需要多次查询（像自己跑腿）</p>
-          </div>
-          <div class="explanation-item">
-            <strong>[缓存] 缓存机制：</strong>
-            <p>查询结果会被缓存在浏览器、操作系统、路由器、本地DNS服务器等多个层级，下次直接返回，大大加速访问。</p>
-          </div>
-          <div class="explanation-item">
-            <strong>[根] 根域名服务器：</strong>
-            <p>全球只有13组根服务器（字母A-M命名），管理所有顶级域（.com/.org/.cn等）。它们知道每个顶级域由谁管理。</p>
-          </div>
-        </div>
-      </div>
-
-      <button class="reset-btn" @click="reset">[重置] 再查一次</button>
-    </div>
-
-    <!-- 层级说明（未开始查询时显示） -->
-    <div class="levels-info" v-if="!isSearching && !showResult">
-      <div class="info-title">[对照] DNS查询层级对照表</div>
-      <div class="info-grid">
-        <div class="info-card" v-for="level in queryLevels" :key="level.id">
-          <div class="info-analogy">
-            <span class="info-icon">{{ level.analogyIcon }}</span>
-            <span class="info-name">{{ level.analogyName }}</span>
-          </div>
-          <div class="info-arrow">↓</div>
-          <div class="info-tech">
-            <span class="info-icon" :style="{ background: level.techColor }">{{ level.techIcon }}</span>
-            <span class="info-name">{{ level.techName }}</span>
-          </div>
-          <div class="info-desc">{{ level.description }}</div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onUnmounted } from 'vue'
 
 const targets = [
   { name: '百度', domain: 'baidu.com', ip: '110.242.68.66' },
   { name: '谷歌', domain: 'google.com', ip: '142.250.80.46' },
-  { name: 'GitHub', domain: 'github.com', ip: '140.82.114.4' },
-  { name: 'B站', domain: 'bilibili.com', ip: '120.92.78.57' }
+  { name: 'GitHub', domain: 'github.com', ip: '140.82.114.4' }
 ]
 
-const currentTarget = ref(targets[0])
+const selectedTargetIndex = ref(0)
+const currentStep = ref(-1)
 const isSearching = ref(false)
-const showResult = ref(false)
-const currentStep = ref(0)
+const isFinished = ref(false)
+const autoPlay = ref(false)
+let timer = null
 
 const queryLevels = [
   {
     id: 'browser',
-    analogyIcon: '自',
-    analogyName: '翻通讯录',
-    analogyRole: '快递员自己',
-    analogyAction: '先看看自己记没记过这个地址',
-    techIcon: '浏',
+    analogyName: '通讯录',
+    analogyIcon: '📒',
+    analogyAction: '先翻翻自己的通讯录（缓存），看最近有没有记过。',
+    techIcon: 'Browser',
     techName: '浏览器缓存',
-    techRole: '本地缓存',
-    techAction: '检查 DNS cache',
-    techColor: '#67c23a',
-    description: '浏览器会缓存最近访问过的域名，避免重复查询'
+    techAction: '检查 Browser DNS Cache',
+    color: '#67c23a',
+    techCommand: 'chrome://net-internals/#dns',
+    techOutput: 'Active entries: 0\nCache miss: No entry found for ${domain}',
+    qa: {
+      title: '🤔 浏览器能记多久？',
+      content: [
+        {
+          q: '是一直记着吗？',
+          a: '不是的。通常只有几分钟（比如 chrome 是一分钟）。而且每家浏览器（Chrome, Firefox）的"记性"都不太一样。'
+        }
+      ]
+    }
   },
   {
     id: 'os',
-    analogyIcon: '本',
-    analogyName: '查记事本',
-    analogyRole: '自己的记录',
-    analogyAction: '看看之前有没有记过',
-    techIcon: '系',
-    techName: '操作系统缓存',
-    techRole: 'OS DNS Cache',
-    techAction: '检查 hosts 文件',
-    techColor: '#95d475',
-    description: '操作系统也有DNS缓存，hosts文件可手动指定域名映射'
+    analogyName: '记事本',
+    analogyIcon: '📝',
+    analogyAction: '问问操作系统（管家），查查系统 hosts 文件或缓存。',
+    techIcon: 'OS',
+    techName: '系统缓存/Hosts',
+    techAction: '检查 OS Cache / hosts',
+    color: '#409eff',
+    techCommand: 'cat /etc/hosts',
+    techOutput: '127.0.0.1 localhost\n::1 localhost\n# No match for ${domain}',
+    qa: {
+      title: '🤔 什么是 hosts 文件？',
+      content: [
+        {
+          q: '它有什么用？',
+          a: '它是你电脑里的"私人通讯录"。你可以在这里手动强行指定 IP（比如开发时把 test.com 指向本机）。黑客有时也改这里来劫持网站。'
+        }
+      ]
+    }
   },
   {
-    id: 'recursive',
-    analogyIcon: '服',
-    analogyName: '社区服务中心',
-    analogyRole: '帮跑腿的人',
-    analogyAction: '帮用户查询，自己跑遍各部门',
-    techIcon: '递',
-    techName: '本地DNS服务器',
-    techRole: 'Recursive Resolver',
-    techAction: 'ISP DNS 查询',
-    techColor: '#409eff',
-    description: '通常由网络运营商提供，负责递归查询并缓存结果'
+    id: 'ldns',
+    analogyName: '传达室',
+    analogyIcon: '💁',
+    analogyAction: '问小区的传达室（本地DNS），让他帮忙去外面问。',
+    techIcon: 'LDNS',
+    techName: '本地DNS (递归)',
+    techAction: '向 ISP DNS 发起递归查询',
+    color: '#e6a23c',
+    techCommand: 'dig ${domain} @192.168.1.1',
+    techOutput: ';; QUESTION SECTION:\n;${domain}. IN A\n\n;; ANSWER SECTION:\n(empty) -> Recursion Desired',
+    qa: {
+      title: '🤔 为什么叫"递归"？',
+      content: [
+        {
+          q: '通俗点解释？',
+          a: '就像你问传达室大爷，大爷去帮你跑腿问一圈回来告诉你结果。你只问了一次，大爷跑了好几趟，这就叫递归（帮你跑到底）。'
+        }
+      ]
+    }
   },
   {
     id: 'root',
-    analogyIcon: '根',
-    analogyName: '国务院',
-    analogyRole: '最高管理机构',
-    analogyAction: '.com 归谁管？去问它！',
-    techIcon: '根',
+    analogyName: '总局',
+    analogyIcon: '🏛️',
+    analogyAction: '传达室问全球总局：".com" 归谁管？',
+    techIcon: 'Root',
     techName: '根域名服务器',
-    techRole: 'Root Server',
-    techAction: '返回 TLD 服务器地址',
-    techColor: '#e6a23c',
-    description: '全球13组，管理所有顶级域，知道.com/.cn等归谁管'
+    techAction: '查询 Root Server',
+    color: '#f56c6c',
+    techCommand: 'dig ${domain} @a.root-servers.net +norecurse',
+    techOutput: ';; AUTHORITY SECTION:\ncom. 172800 IN NS a.gtld-servers.net.\n;; ADDITIONAL SECTION:\na.gtld-servers.net. IN A 192.5.6.30',
+    qa: {
+      title: '🤔 全球只有13台吗？',
+      content: [
+        {
+          q: '那样不会被挤爆吗？',
+          a: '不是13台，是13组！每组都有几百台"分身"（镜像服务器）分布在全球，包括中国也有，所以不用担心断网。'
+        }
+      ]
+    }
   },
   {
     id: 'tld',
-    analogyIcon: '省',
-    analogyName: '省政府',
-    analogyRole: '省级管理机构',
-    analogyAction: 'baidu.com 归谁管？',
-    techIcon: '顶',
-    techName: '顶级域服务器',
-    techRole: 'TLD Server',
-    techAction: '返回权威DNS地址',
-    techColor: '#f56c6c',
-    description: '管理特定顶级域（如Verisign管理.com），知道具体域名归谁管'
+    analogyName: '分局',
+    analogyIcon: '🏢',
+    analogyAction: '去问 ".com" 分局：baidu.com 归谁管？',
+    techIcon: 'TLD',
+    techName: '顶级域名服务器',
+    techAction: '查询 TLD Server',
+    color: '#909399',
+    techCommand: 'dig ${domain} @a.gtld-servers.net +norecurse',
+    techOutput: ';; AUTHORITY SECTION:\n${domain}. 172800 IN NS ns1.${domain}.\n;; ADDITIONAL SECTION:\nns1.${domain}. IN A 202.108.22.5',
+    qa: {
+      title: '🤔 谁在管理 .com？',
+      content: [
+        {
+          q: '所有的后缀都一样吗？',
+          a: '不一样。.com 归 Verisign 公司管，.cn 归中国互联网络信息中心(CNNIC)管。所以要找不同的"分局"。'
+        }
+      ]
+    }
   },
   {
     id: 'auth',
-    analogyIcon: '户',
-    analogyName: '户籍系统',
-    analogyRole: '最终档案',
-    analogyAction: '查到具体门牌号了！',
-    techIcon: '权',
+    analogyName: '办事处',
+    analogyIcon: '📍',
+    analogyAction: '找到目标办事处：请告诉我 www 的 IP。',
+    techIcon: 'Auth',
     techName: '权威DNS服务器',
-    techRole: 'Authoritative DNS',
-    techAction: '返回 A 记录',
-    techColor: '#b37feb',
-    description: '域名所有者设置的DNS服务器，保存着域名到IP的最终映射'
+    techAction: '查询 Authoritative Server',
+    color: '#8e44ad',
+    techCommand: 'dig ${domain} @ns1.${domain} +norecurse',
+    techOutput: ';; ANSWER SECTION:\n${domain}. 600 IN A ${ip}\n;; Query time: 24 msec',
+    qa: {
+      title: '🤔 为什么叫"权威"？',
+      content: [
+        {
+          q: '它说的话最准吗？',
+          a: '对！因为它就是域名的主人（比如百度自己）管理的服务器，它说的话是一手资料，不像前面的可能只是传话。'
+        }
+      ]
+    }
   }
 ]
 
-const selectTarget = (target) => {
-  currentTarget.value = target
-  reset()
+const currentLevel = computed(() => 
+  currentStep.value >= 0 ? queryLevels[currentStep.value] : {}
+)
+
+// 简单的模板替换函数
+const formatText = (text) => {
+  if (!text) return ''
+  const currentTarget = targets[selectedTargetIndex.value]
+  return text
+    .replace(/\${domain}/g, currentTarget.domain)
+    .replace(/\${ip}/g, currentTarget.ip)
 }
 
-const startSearch = () => {
+const startAutoSearch = () => {
+  reset()
   isSearching.value = true
-  showResult.value = false
-  currentStep.value = 0
-
-  // 模拟查询过程
-  const steps = [0, 1, 2, 3, 4, 5]
-  let i = 0
-
-  const nextStep = () => {
-    if (i < steps.length) {
-      currentStep.value = steps[i]
-      i++
-      setTimeout(nextStep, 800)
-    } else {
-      setTimeout(() => {
-        showResult.value = true
-        isSearching.value = false
-      }, 500)
-    }
-  }
-
+  autoPlay.value = true
   nextStep()
 }
 
-const reset = () => {
-  isSearching.value = false
-  showResult.value = false
-  currentStep.value = 0
+const nextStep = () => {
+  if (currentStep.value < queryLevels.length - 1) {
+    currentStep.value++
+    if (autoPlay.value) {
+      timer = setTimeout(nextStep, 2500) // 增加时间给用户看终端
+    }
+  } else {
+    finish()
+  }
 }
+
+const finish = () => {
+  isFinished.value = true
+  isSearching.value = false
+  autoPlay.value = false
+}
+
+const reset = () => {
+  currentStep.value = -1
+  isSearching.value = false
+  isFinished.value = false
+  autoPlay.value = false
+  clearTimeout(timer)
+}
+
+const jumpToStep = (index) => {
+  if (isSearching.value && autoPlay.value) return
+  currentStep.value = index
+  isSearching.value = true
+  isFinished.value = false
+}
+
+onUnmounted(() => {
+  clearTimeout(timer)
+})
 </script>
 
 <style scoped>
-.dns-lookup-demo {
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 20px 0;
-}
-
-/* 头部 */
-.demo-header {
-  text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-.header-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.title-icon {
-  font-size: 14px;
-  color: var(--vp-c-brand);
-  font-weight: 600;
-}
-.header-subtitle {
-  font-size: 13px;
-  color: var(--vp-c-text-3);
-  margin-top: 4px;
-}
-
-/* 场景设置 */
-.scenario-setup {
-  background: linear-gradient(135deg, rgba(64, 158, 255, 0.1), rgba(103, 194, 58, 0.1));
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-.setup-text {
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-  line-height: 1.6;
-  margin-bottom: 12px;
-}
-.setup-text strong {
-  color: var(--vp-c-brand);
-}
-.target-selector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.selector-label {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-}
-.target-chip {
-  padding: 6px 12px;
-  background: white;
+.dns-compact {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 16px;
-  cursor: pointer;
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  transition: all 0.2s;
-}
-.target-chip:hover:not(:disabled) {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
-}
-.target-chip.active {
-  background: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  color: white;
-}
-.target-chip:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* 开始按钮 */
-.start-action {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.start-btn {
-  padding: 12px 32px;
-  background: linear-gradient(135deg, var(--vp-c-brand), #67c23a);
-  color: white;
-  border: none;
-  border-radius: 24px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-.start-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(64, 158, 255, 0.3);
-}
-
-/* 双栏对照容器 */
-.comparison-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-/* 侧边栏 */
-.comparison-side {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-}
-.side-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  font-weight: 600;
-  font-size: 14px;
-  color: white;
-}
-.analogy-side .side-header {
-  background: linear-gradient(90deg, #67c23a, #95d475);
-}
-.tech-side .side-header {
-  background: linear-gradient(90deg, #409eff, #79bbff);
-}
-.side-icon {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* 流程展示 */
-.analogy-flow, .tech-flow {
-  padding: 12px;
-}
-.flow-level {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  margin-bottom: 8px;
-  background: var(--vp-c-bg-soft);
   border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
-  transition: all 0.3s;
-  opacity: 0.4;
-}
-.flow-level.passed {
-  opacity: 0.7;
-  border-color: #67c23a;
-  background: rgba(103, 194, 58, 0.1);
-}
-.flow-level.current {
-  opacity: 1;
-  border-color: var(--vp-c-brand);
-  background: rgba(64, 158, 255, 0.1);
-  transform: scale(1.02);
-}
-.level-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-.analogy-flow .level-icon {
-  background: #fff3e0;
-  color: #666;
-}
-.level-content {
-  flex: 1;
-}
-.level-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-}
-.level-role {
-  font-size: 11px;
-  color: var(--vp-c-text-3);
-}
-.level-action {
-  margin-top: 4px;
-}
-.action-text {
-  font-size: 11px;
-  color: var(--vp-c-brand);
-  background: white;
-  padding: 2px 8px;
-  border-radius: 10px;
-}
-.action-code {
-  font-size: 10px;
-  color: var(--vp-c-brand);
-  background: white;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: monospace;
+  background: var(--vp-c-bg);
+  padding: 16px;
+  margin: 16px 0;
+  font-size: 14px;
 }
 
-/* 连接指示器 */
-.connection-indicator {
+.top-bar {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 40px 0;
-}
-.indicator-line {
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 2px;
-}
-.indicator-arrow {
-  font-size: 18px;
-  color: var(--vp-c-brand);
-  font-weight: bold;
-}
-.indicator-text {
-  font-size: 10px;
-  color: var(--vp-c-text-3);
-  writing-mode: vertical-rl;
-}
-
-/* 结果区域 */
-.result-section {
-  animation: fadeIn 0.5s ease;
-}
-.result-card {
-  background: linear-gradient(135deg, #67c23a, #85ce61);
-  border-radius: 12px;
-  padding: 20px;
-  color: white;
   margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.result-header {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.result-row {
+
+.title-section {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
-  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
 }
-.result-label {
-  opacity: 0.9;
+
+.target-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
 }
-.result-value {
-  font-family: monospace;
-  background: rgba(255,255,255,0.2);
+
+.target-select select {
   padding: 4px 8px;
   border-radius: 4px;
-}
-.result-value.highlight {
-  background: rgba(255,255,255,0.3);
-  font-weight: 600;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
 }
 
-/* 技术说明 */
-.tech-explanation {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+.action-btn {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
 }
-.explanation-header {
+
+.action-btn.primary { background: var(--vp-c-brand); color: white; }
+.action-btn.secondary { background: var(--vp-c-bg-alt); border-color: var(--vp-c-divider); color: var(--vp-c-text-1); }
+.action-btn.outline { border: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); background: transparent; }
+
+.status-bar {
+  background: var(--vp-c-bg-soft);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-text strong { color: var(--vp-c-brand); margin: 0 4px; }
+
+/* 流程图部分 */
+.flow-stage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 0 4px;
+  position: relative;
+  overflow-x: auto;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 50px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.flow-step:last-child { flex: 0 0 auto; }
+.flow-step.active, .flow-step.passed { opacity: 1; }
+
+.step-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--vp-c-bg-alt);
+  border: 2px solid var(--vp-c-divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+  font-size: 18px;
+}
+
+.flow-step.active .step-icon-box {
+  border-color: var(--step-color);
+  background: var(--step-color);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.flow-step.passed .step-icon-box {
+  border-color: var(--step-color);
+  color: var(--step-color);
+}
+
+.step-label {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+}
+
+.flow-step.active .step-label {
+  color: var(--step-color);
+  font-weight: bold;
+}
+
+.step-line {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--vp-c-divider);
+  z-index: 1;
+}
+
+.flow-step.passed .step-line { background: var(--step-color); }
+
+/* 底部双面板布局 */
+.info-panels {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .info-panels { grid-template-columns: 1fr; }
+}
+
+.detail-panel {
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  overflow: hidden;
+  height: 180px; /* 固定高度防止跳动 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 左侧生活比喻面板 */
+.analogy-panel {
+  padding: 16px;
+  position: relative;
+}
+
+.panel-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-.explanation-icon {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--vp-c-brand);
-}
-.explanation-item {
-  margin-bottom: 12px;
-}
-.explanation-item strong {
-  display: block;
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-  margin-bottom: 4px;
-}
-.explanation-item p {
-  margin: 4px 0;
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  line-height: 1.5;
-}
-
-/* 重置按钮 */
-.reset-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  transition: all 0.2s;
-}
-.reset-btn:hover {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
-}
-
-/* 层级信息 */
-.levels-info {
-  margin-top: 20px;
-}
-.info-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
-}
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-}
-.info-card {
-  background: white;
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-.info-analogy, .info-tech {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.info-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-}
-.info-analogy .info-icon {
-  background: #fff3e0;
-  color: #666;
-}
-.info-name {
-  font-size: 12px;
-  font-weight: 600;
-}
-.info-arrow {
   font-size: 16px;
-  color: var(--vp-c-brand);
-  margin: 4px 0;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
-.info-desc {
-  font-size: 11px;
-  color: var(--vp-c-text-3);
+
+.panel-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.analogy-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+}
+
+.tech-hint-badge {
+  display: inline-block;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  align-self: flex-start;
   margin-top: 8px;
+}
+
+.panel-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vp-c-text-3);
+  font-size: 14px;
+}
+
+/* 右侧终端面板 */
+.terminal-panel {
+  background: #1e1e1e; /* 强制深色背景 */
+  border-color: #333;
+  color: #d4d4d4;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.terminal-header {
+  background: #2d2d2d;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+  margin-right: 12px;
+}
+
+.terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #555;
+}
+.terminal-dots span:nth-child(1) { background: #ff5f56; }
+.terminal-dots span:nth-child(2) { background: #ffbd2e; }
+.terminal-dots span:nth-child(3) { background: #27c93f; }
+
+.terminal-title {
+  font-size: 12px;
+  color: #999;
+}
+
+.terminal-body {
+  padding: 12px;
+  font-size: 12px;
   line-height: 1.4;
+  overflow-y: auto;
+  flex: 1;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.cmd-line {
+  display: flex;
+  gap: 8px;
+  color: #fff;
+  margin-bottom: 8px;
 }
 
-/* 响应式 */
-@media (max-width: 768px) {
-  .comparison-container {
-    grid-template-columns: 1fr;
-  }
-  .connection-indicator {
-    flex-direction: row;
-    padding: 8px 0;
-    justify-content: center;
-    gap: 16px;
-  }
-  .indicator-text {
-    writing-mode: horizontal-tb;
-  }
+.prompt { color: #27c93f; font-weight: bold; }
+.cmd { color: #fff; }
+
+.cmd-output pre {
+  margin: 0;
+  color: #aaa;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.terminal-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 13px;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Dark mode 适配 - 这里主要针对非终端部分 */
+:root.dark .dns-compact {
+  background: var(--vp-c-bg);
 }
 </style>

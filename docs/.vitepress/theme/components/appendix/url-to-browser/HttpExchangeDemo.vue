@@ -1,135 +1,126 @@
 <!--
   HttpExchangeDemo.vue
-  HTTP请求响应演示 - 快递员送达对话类比
-
-  用途：
-  用"快递员和收件人对话"的生活化比喻，让用户理解HTTP请求和响应的过程。
-  把枯燥的HTTP协议变成直观的对话场景。
+  HTTP请求响应演示 - 紧凑交互版
+  
+  设计理念：
+  1. 循循善诱：用"快递员投递"类比 HTTP 请求响应。
+  2. 紧凑布局：横向舞台，固定底部详情板。
 -->
 <template>
-  <div class="delivery-dialog-demo">
-    <!-- 标题 -->
-    <div class="dialog-header">
-      <span class="dialog-icon">[送达]</span>
-      <span class="dialog-title">送达对话：请求与响应</span>
-    </div>
-
-    <!-- 场景选择 -->
-    <div class="scenario-selector">
-      <div class="selector-label">选择送达场景：</div>
-      <div class="scenario-buttons">
-        <button
-          v-for="scene in scenarios"
-          :key="scene.id"
-          @click="selectScenario(scene)"
-          class="scenario-btn"
-          :class="{ active: currentScenario?.id === scene.id }"
-          :disabled="isDelivering"
+  <div class="http-compact">
+    <!-- 顶部标题与场景选择 -->
+    <div class="top-bar">
+      <div class="title-section">
+        <span class="app-icon">📦</span>
+        <span class="app-title">HTTP 请求/响应</span>
+      </div>
+      
+      <div class="scenario-tabs">
+        <button 
+          v-for="s in scenarios" 
+          :key="s.id"
+          @click="selectScenario(s)"
+          class="tab-btn"
+          :class="{ active: currentScenario.id === s.id }"
+          :disabled="isAnimating"
         >
-          <span class="btn-text">{{ scene.name }}</span>
+          {{ s.name }}
+        </button>
+      </div>
+
+      <div class="actions">
+         <button 
+          class="action-btn primary" 
+          @click="toggleAutoPlay"
+        >
+          {{ isAutoPlaying ? '⏸' : '▶ 演示' }}
+        </button>
+        <button 
+          class="action-btn outline" 
+          @click="reset"
+        >
+          ↺
         </button>
       </div>
     </div>
 
-    <!-- 对话场景 -->
-    <div class="dialog-scene" v-if="currentScenario">
-      <div class="scene-background">
-        <!-- 快递员（请求方） -->
-        <div class="character courier">
-          <div class="char-avatar">送</div>
-          <div class="char-name">快递员（浏览器）</div>
+    <!-- 核心可视化舞台 -->
+    <div class="stage-area">
+      <!-- 客户端 -->
+      <div class="actor client">
+        <div class="avatar-box">
+          <span class="avatar-icon">🧑‍💻</span>
+          <span class="avatar-label">浏览器</span>
+        </div>
+      </div>
+
+      <!-- 传输通道 -->
+      <div class="channel">
+        <div class="channel-bg"></div>
+        
+        <!-- 请求包 -->
+        <div class="packet request" :class="{ moving: step === 1, done: step > 1 }">
+          <span class="packet-icon">📤</span>
+          <span class="packet-label">GET</span>
         </div>
 
-        <!-- 对话区域 -->
-        <div class="conversation-area">
-          <!-- 请求消息 -->
-          <div class="message request" :class="{ sent: step >= 1 }">
-            <div class="message-bubble">
-              <div class="bubble-header">
-                <span class="method-badge" :class="currentScenario.method.toLowerCase()">
-                  {{ currentScenario.method }}
-                </span>
-                <span class="path-text">{{ currentScenario.path }}</span>
-              </div>
-              <div class="bubble-body">{{ currentScenario.requestText }}</div>
-            </div>
-            <div class="message-meta">请求</div>
-          </div>
-
-          <!-- 传输动画 -->
-          <div class="transit-animation" v-if="step === 2">
-            <div class="transit-line"></div>
-            <div class="transit-package">包</div>
-          </div>
-
-          <!-- 响应消息 -->
-          <div class="message response" :class="{ sent: step >= 3 }">
-            <div class="message-meta">响应</div>
-            <div class="message-bubble" :class="currentScenario.statusType">
-              <div class="bubble-header">
-                <span class="status-badge" :class="currentScenario.statusType">
-                  {{ currentScenario.status }}
-                </span>
-                <span class="status-text">{{ currentScenario.statusText }}</span>
-              </div>
-              <div class="bubble-body">{{ currentScenario.responseText }}</div>
-            </div>
-          </div>
+        <!-- 响应包 -->
+        <div class="packet response" :class="{ moving: step === 2, done: step > 2 }" v-if="step >= 2">
+          <span class="packet-icon">📦</span>
+          <span class="packet-label">{{ currentScenario.status }}</span>
         </div>
+      </div>
 
-        <!-- 收件人（响应方） -->
-        <div class="character recipient">
-          <div class="char-avatar">收</div>
-          <div class="char-name">收件人（服务器）</div>
+      <!-- 服务器 -->
+      <div class="actor server">
+        <div class="avatar-box">
+          <span class="avatar-icon">🏢</span>
+          <span class="avatar-label">服务器</span>
         </div>
       </div>
     </div>
 
-    <!-- 控制按钮 -->
-    <div class="dialog-controls">
-      <button
-        class="control-btn primary"
-        @click="nextStep"
-        :disabled="isDelivering || step >= 3"
-      >
-        {{ step === 0 ? '[开始]' : step === 3 ? '对话完成' : '[下一步]' }}
-      </button>
-      <button class="control-btn" @click="reset" v-if="step > 0">
-        [重置]
-      </button>
-    </div>
+    <!-- 底部详情面板 (固定高度) -->
+    <div class="detail-panel">
+      <transition name="fade" mode="out-in">
+        <div v-if="step > 0" class="detail-content" :key="step">
+           <!-- 左侧状态徽章 -->
+           <div class="detail-left" :style="{ borderColor: getStatusColor() }">
+             <div class="status-badge" :class="currentScenario.statusType">
+               {{ step === 1 ? '请求中' : currentScenario.status + ' ' + currentScenario.statusText }}
+             </div>
+           </div>
+           
+           <div class="detail-divider"></div>
 
-    <!-- 状态码说明 -->
-    <div class="status-legend">
-      <div class="legend-title">[对照] HTTP状态码速查：</div>
-      <div class="legend-grid">
-        <div class="legend-item success">
-          <span class="status-dot"></span>
-          <span class="status-code">2xx</span>
-          <span class="status-meaning">成功送达</span>
+           <!-- 右侧详情 -->
+           <div class="detail-right">
+             <div class="info-row">
+               <span class="tag life">快递员说</span>
+               <span class="text highlight">
+                 {{ step === 1 ? currentScenario.requestText : currentScenario.responseText }}
+               </span>
+             </div>
+             <div class="info-row">
+               <span class="tag tech">技术报文</span>
+               <span class="text code">
+                 {{ step === 1 ? `${currentScenario.method} ${currentScenario.path} HTTP/1.1` : `HTTP/1.1 ${currentScenario.status} ${currentScenario.statusText}` }}
+               </span>
+             </div>
+           </div>
         </div>
-        <div class="legend-item redirect">
-          <span class="status-dot"></span>
-          <span class="status-code">3xx</span>
-          <span class="status-meaning">地址变更</span>
+        
+        <div v-else class="detail-placeholder">
+          <span class="guide-bounce">📦</span>
+          <span>选择一个场景，点击"演示"看看发生了什么</span>
         </div>
-        <div class="legend-item client-error">
-          <span class="status-dot"></span>
-          <span class="status-code">4xx</span>
-          <span class="status-meaning">请求有误</span>
-        </div>
-        <div class="legend-item server-error">
-          <span class="status-dot"></span>
-          <span class="status-code">5xx</span>
-          <span class="status-meaning">服务器问题</span>
-        </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 
 const scenarios = [
   {
@@ -137,397 +128,381 @@ const scenarios = [
     name: '正常送达',
     method: 'GET',
     path: '/index.html',
-    requestText: '您好，这是您的包裹，请签收！',
+    requestText: '您好，请给我 index.html 的包裹！',
     status: '200',
     statusText: 'OK',
     statusType: 'success',
-    responseText: '好的，收到了，谢谢！'
+    responseText: '好的，这是您的 index.html，请签收！',
+    qa: {
+      title: '🤔 200 OK 是什么意思？',
+      content: [
+        {
+          q: '200 这个数字代表什么？',
+          a: '就像快递单上的"已妥投"。代表一切顺利，服务器成功找到了你要的东西并给了你。'
+        },
+        {
+          q: 'GET 是什么？',
+          a: '就像你对服务员说"给我来一份菜单"。是向服务器"索要"东西的意思。绝大多数网页访问都是 GET 请求。'
+        }
+      ]
+    }
   },
   {
     id: 'notfound',
-    name: '地址错误',
+    name: '查无此人',
     method: 'GET',
     path: '/nopage',
-    requestText: '您好，送包裹到这个地方。',
+    requestText: '您好，我要找 nopage 这个人。',
     status: '404',
     statusText: 'Not Found',
-    statusType: 'client-error',
-    responseText: '这里没有这个人，您送错地方了。'
+    statusType: 'error',
+    responseText: '抱歉，这里查无此人 (404)。',
+    qa: {
+      title: '🤔 为什么叫 404？',
+      content: [
+        {
+          q: '是谁的错？',
+          a: '通常是"你"（客户端）的错。4开头的代码都代表客户端问题，比如你地址输错了，或者这个网页已经被删除了。'
+        }
+      ]
+    }
   },
   {
     id: 'redirect',
-    name: '地址变更',
+    name: '搬家了',
     method: 'GET',
-    path: '/old-address',
-    requestText: '您好，送包裹到这个地址。',
+    path: '/old-path',
+    requestText: '您好，送到 old-path 这里。',
     status: '301',
     statusText: 'Moved',
-    statusType: 'redirect',
-    responseText: '这里搬走了，请送到新地址。'
+    statusType: 'warn',
+    responseText: '这里搬家了，请去新地址 (301)。',
+    qa: {
+      title: '🤔 301 重定向是什么？',
+      content: [
+        {
+          q: '浏览器会怎么做？',
+          a: '浏览器收到 301 后，会自动去访问新的地址。这个过程很快，你可能都感觉不到。'
+        },
+        {
+          q: '为什么要重定向？',
+          a: '就像店铺搬迁要在门口贴个告示。保证收藏了旧网址的老顾客也能找到新店。'
+        }
+      ]
+    }
   },
   {
-    id: 'error',
-    name: '家中故障',
-    method: 'POST',
-    path: '/api/order',
-    requestText: '您好，我来送您订购的商品。',
+    id: 'servererror',
+    name: '系统崩溃',
+    method: 'GET',
+    path: '/api/data',
+    requestText: '您好，我要取数据。',
     status: '500',
     statusText: 'Error',
-    statusType: 'server-error',
-    responseText: '抱歉，我们家系统出问题了，暂时无法接收。'
+    statusType: 'error',
+    responseText: '抱歉，仓库塌了，暂时无法取货 (500)。',
+    qa: {
+      title: '🤔 500 是谁的错？',
+      content: [
+        {
+          q: '我能修好它吗？',
+          a: '不能。5开头的代码代表"服务器"出问题了（比如代码崩了、数据库挂了）。跟你没关系，只能等待网站管理员修复。'
+        }
+      ]
+    }
   }
 ]
 
 const currentScenario = ref(scenarios[0])
-const step = ref(0)
-const isDelivering = ref(false)
+const step = ref(0) // 0: Idle, 1: Requesting, 2: Responding, 3: Done
+const isAnimating = ref(false)
+const isAutoPlaying = ref(false)
+let timer = null
 
-const selectScenario = (scenario) => {
-  currentScenario.value = scenario
+const selectScenario = (s) => {
+  if (isAnimating.value) return
+  currentScenario.value = s
   reset()
 }
 
-const nextStep = () => {
-  if (step.value < 3) {
-    isDelivering.value = true
-    step.value++
-
-    if (step.value === 2) {
-      setTimeout(() => {
-        step.value++
-        isDelivering.value = false
-      }, 1000)
-    } else {
-      isDelivering.value = false
-    }
+const toggleAutoPlay = () => {
+  if (isAutoPlaying.value) {
+    reset()
+  } else {
+    startAnimation()
   }
+}
+
+const startAnimation = () => {
+  if (isAnimating.value) return
+  isAnimating.value = true
+  isAutoPlaying.value = true
+  step.value = 1
+  
+  // Step 1: Request (Client -> Server)
+  timer = setTimeout(() => {
+    step.value = 2
+    // Step 2: Response (Server -> Client)
+    timer = setTimeout(() => {
+      step.value = 3
+      isAnimating.value = false
+      isAutoPlaying.value = false
+    }, 1500)
+  }, 1500)
 }
 
 const reset = () => {
+  clearTimeout(timer)
   step.value = 0
-  isDelivering.value = false
+  isAnimating.value = false
+  isAutoPlaying.value = false
 }
+
+const getStatusColor = () => {
+  if (step.value === 1) return '#3b82f6' // Blue for request
+  const type = currentScenario.value.statusType
+  if (type === 'success') return '#10b981'
+  if (type === 'warn') return '#f59e0b'
+  if (type === 'error') return '#ef4444'
+  return '#909399'
+}
+
+onUnmounted(() => {
+  clearTimeout(timer)
+})
 </script>
 
 <style scoped>
-.delivery-dialog-demo {
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 20px 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+.http-compact {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  padding: 16px;
+  margin: 16px 0;
+  font-size: 14px;
 }
 
-/* 头部 */
-.dialog-header {
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-section {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-.dialog-icon {
-  font-size: 14px;
-  color: var(--vp-c-brand);
+  gap: 8px;
   font-weight: 600;
-}
-.dialog-title {
-  font-size: 17px;
-  font-weight: 700;
   color: var(--vp-c-text-1);
 }
 
-/* 场景选择 */
-.scenario-selector {
-  margin-bottom: 20px;
-}
-.selector-label {
-  font-size: 13px;
-  color: var(--vp-c-text-3);
-  margin-bottom: 10px;
-}
-.scenario-buttons {
+.scenario-tabs {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.scenario-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.scenario-btn:hover:not(:disabled) {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
-}
-.scenario-btn.active {
-  background: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  color: white;
-}
-.scenario-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.btn-text { font-size: 13px; }
-
-/* 对话场景 */
-.dialog-scene {
-  background: var(--vp-c-bg);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.scene-background {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  background: var(--vp-c-bg-alt);
+  padding: 2px;
+  border-radius: 6px;
+  gap: 2px;
 }
 
-/* 角色 */
-.character {
-  text-align: center;
-  flex-shrink: 0;
-}
-.char-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.courier .char-avatar {
-  background: linear-gradient(135deg, #409eff, #67c23a);
-}
-.recipient .char-avatar {
-  background: linear-gradient(135deg, #e6a23c, #f56c6c);
-}
-.char-name {
+.tab-btn {
+  padding: 2px 10px;
+  border-radius: 4px;
   font-size: 12px;
-  color: var(--vp-c-text-2);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: var(--vp-c-brand);
+  color: white;
   font-weight: 500;
 }
 
-/* 对话区域 */
-.conversation-area {
-  flex: 1;
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn.primary {
+  background: var(--vp-c-brand);
+  color: white;
+  border: 1px solid var(--vp-c-brand);
+}
+
+.action-btn.outline {
+  background: transparent;
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+}
+
+/* 舞台区 */
+.stage-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 0 30px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.actor {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.message {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  opacity: 0.3;
-  transform: translateY(10px);
-  transition: all 0.4s;
-}
-.message.sent {
-  opacity: 1;
-  transform: translateY(0);
-}
-.message.request {
-  justify-content: flex-end;
-}
-.message.response {
-  justify-content: flex-start;
+  width: 60px;
+  z-index: 2;
 }
 
-.message-bubble {
-  max-width: 280px;
-  padding: 14px;
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  border: 2px solid var(--vp-c-divider);
-}
-.message.request .message-bubble {
-  background: #409eff;
-  border-color: #409eff;
-  color: white;
-}
-.message.response .message-bubble.success {
-  background: #67c23a;
-  border-color: #67c23a;
-  color: white;
-}
-.message.response .message-bubble.redirect {
-  background: #e6a23c;
-  border-color: #e6a23c;
-  color: white;
-}
-.message.response .message-bubble.client-error {
-  background: #f56c6c;
-  border-color: #f56c6c;
-  color: white;
-}
-.message.response .message-bubble.server-error {
-  background: #909399;
-  border-color: #909399;
-  color: white;
-}
+.avatar-icon { font-size: 28px; }
+.avatar-label { font-size: 12px; color: var(--vp-c-text-2); margin-top: 4px; }
 
-.bubble-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-.method-badge, .status-badge {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  font-family: monospace;
-  background: rgba(255,255,255,0.2);
-}
-.path-text, .status-text {
-  font-size: 12px;
-  opacity: 0.9;
-}
-.bubble-body {
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.message-meta {
-  font-size: 11px;
-  color: var(--vp-c-text-3);
-  font-weight: 500;
-}
-
-/* 传输动画 */
-.transit-animation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+.channel {
+  flex: 1;
   height: 40px;
+  margin: 0 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
-.transit-line {
+
+.channel-bg {
+  position: absolute;
   width: 100%;
   height: 2px;
   background: var(--vp-c-divider);
+  top: 50%;
 }
-.transit-package {
+
+.packet {
   position: absolute;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--vp-c-brand);
-  animation: deliver 1s ease-in-out;
-}
-
-@keyframes deliver {
-  0% { transform: translateX(-100px); }
-  50% { transform: translateX(0) scale(1.2); }
-  100% { transform: translateX(100px); }
-}
-
-/* 控制按钮 */
-.dialog-controls {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.control-btn {
-  padding: 12px 24px;
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 24px;
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--vp-c-text-2);
-  transition: all 0.3s;
-}
-.control-btn:hover:not(:disabled) {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
-}
-.control-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.control-btn.primary {
-  background: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  color: white;
-}
-.control-btn.primary:hover:not(:disabled) {
-  background: #66b1ff;
+  flex-direction: column;
+  align-items: center;
+  transition: all 1.5s ease-in-out;
+  opacity: 0;
+  top: 0;
 }
 
-/* 状态码说明 */
-.status-legend {
-  padding: 16px;
-  background: var(--vp-c-bg);
-  border-radius: 12px;
+.packet-icon { font-size: 20px; }
+.packet-label { font-size: 10px; color: var(--vp-c-text-2); background: var(--vp-c-bg); padding: 0 2px; }
+
+.packet.request { left: 0; opacity: 1; }
+.packet.request.moving { left: 100%; transform: translateX(-100%); opacity: 0; } 
+/* Request moves from 0 to 100% then disappears */
+
+.packet.response { left: 100%; transform: translateX(-100%); opacity: 0; }
+.packet.response.moving { left: 0; transform: translateX(0); opacity: 1; }
+/* Response starts at 100%, moves to 0 */
+
+/* 动画调整 */
+.packet.request.moving {
+  animation: sendRequest 1.5s forwards;
 }
-.legend-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
+
+.packet.response.moving {
+  animation: sendResponse 1.5s forwards;
 }
-.legend-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+
+@keyframes sendRequest {
+  0% { left: 0; opacity: 1; transform: translateX(0); }
+  90% { left: 100%; opacity: 1; transform: translateX(-100%); }
+  100% { left: 100%; opacity: 0; transform: translateX(-100%); }
 }
-.legend-item {
+
+@keyframes sendResponse {
+  0% { left: 100%; opacity: 1; transform: translateX(-100%); }
+  100% { left: 0; opacity: 1; transform: translateX(0); }
+}
+
+/* 详情面板 */
+.detail-panel {
+  height: 80px;
+  background: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.detail-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.detail-left {
+  padding-right: 16px;
+  border-right: 2px solid transparent;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+.status-badge.success { background: #10b981; }
+.status-badge.warn { background: #f59e0b; }
+.status-badge.error { background: #ef4444; }
+
+.detail-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--vp-c-divider);
+  margin: 0 16px;
+}
+
+.detail-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-}
-.status-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.legend-item.success .status-dot { background: #67c23a; }
-.legend-item.redirect .status-dot { background: #e6a23c; }
-.legend-item.client-error .status-dot { background: #f56c6c; }
-.legend-item.server-error .status-dot { background: #909399; }
-.status-code {
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-}
-.status-meaning {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
 }
 
-@media (max-width: 640px) {
-  .scene-background {
-    flex-direction: column;
-  }
-  .character {
-    order: -1;
-  }
-  .legend-grid {
-    grid-template-columns: 1fr;
-  }
+.tag {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
 }
+.tag.life { background: #e6f7ff; color: #1890ff; }
+.tag.tech { background: #f6ffed; color: #52c41a; }
+
+.text { font-size: 13px; color: var(--vp-c-text-1); }
+.text.highlight { font-weight: 500; color: var(--vp-c-brand); }
+.text.code { font-family: monospace; }
+
+.detail-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--vp-c-text-3);
+  width: 100%;
+  justify-content: center;
+}
+
+.guide-bounce { animation: bounce 1.5s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 </style>
