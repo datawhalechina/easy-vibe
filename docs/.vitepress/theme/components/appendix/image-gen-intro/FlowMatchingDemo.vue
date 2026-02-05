@@ -1,364 +1,306 @@
 <template>
   <div class="flow-matching-demo">
-    <el-card shadow="never">
+    <div class="demo-card">
       <div class="controls">
-        <el-button type="primary" @click="startAnimation" :disabled="isPlaying">
-          <el-icon><VideoPlay /></el-icon> 开始对比演示 (Start Demo)
-        </el-button>
+        <button class="play-btn" @click="startRace" :disabled="isPlaying">
+          <span class="icon">{{ isPlaying ? 'Running...' : '🚀 开始比赛 (Start Race)' }}</span>
+        </button>
       </div>
 
-      <div class="comparison-grid">
-        <!-- Diffusion -->
-        <div class="viz-panel">
-          <div class="panel-header">
-            <el-icon color="#F56C6C"><RefreshLeft /></el-icon>
-            <span>Diffusion (扩散模型)</span>
+      <div class="track-container">
+        <!-- Track 1: Diffusion -->
+        <div class="track">
+          <div class="track-info">
+            <span class="track-name">Diffusion (迷宫模式)</span>
+            <span class="step-count">{{ diffSteps }} Steps</span>
           </div>
           <div class="canvas-wrapper">
-            <canvas ref="diffCanvasRef" width="300" height="200"></canvas>
-            <div class="labels">
-              <span class="label-noise">噪声 (Noise)</span>
-              <span class="label-img">图像 (Image)</span>
-            </div>
-          </div>
-          <div class="stats-box">
-            <el-statistic title="步数 (Steps)" :value="diffSteps" />
-            <el-tag type="danger">路径弯曲 (Curved)</el-tag>
+            <canvas ref="diffCanvasRef" width="400" height="100"></canvas>
+            <div class="marker start">噪声</div>
+            <div class="marker end">图像</div>
           </div>
         </div>
 
-        <!-- Flow Matching -->
-        <div class="viz-panel">
-          <div class="panel-header">
-            <el-icon color="#67C23A"><Right /></el-icon>
-            <span>Flow Matching (流匹配)</span>
+        <!-- Track 2: Flow Matching -->
+        <div class="track">
+          <div class="track-info">
+            <span class="track-name">Flow Matching (直通模式)</span>
+            <span class="step-count highlight">{{ flowSteps }} Steps</span>
           </div>
           <div class="canvas-wrapper">
-            <canvas ref="flowCanvasRef" width="300" height="200"></canvas>
-            <div class="labels">
-              <span class="label-noise">噪声 (Noise)</span>
-              <span class="label-img">图像 (Image)</span>
-            </div>
-          </div>
-          <div class="stats-box">
-            <el-statistic title="步数 (Steps)" :value="flowSteps" />
-            <el-tag type="success">路径直线 (Straight)</el-tag>
+            <canvas ref="flowCanvasRef" width="400" height="100"></canvas>
+            <div class="marker start">噪声</div>
+            <div class="marker end">图像</div>
           </div>
         </div>
       </div>
+    </div>
 
-      <el-divider />
-
-      <el-alert
-        title="为什么 Flow Matching 更快？"
-        type="success"
-        :closable="false"
-        show-icon
-      >
-        <template #default>
-          <p>
-            <strong>Diffusion</strong>
-            就像在迷雾中摸索，路径充满了随机性，需要走很多弯路（步数多）才能到达终点。
-            <br />
-            <strong>Flow Matching</strong> 就像使用了 GPS
-            导航，直接找到了从噪声到图像的<strong
-              >直线最优路径 (Optimal Transport)</strong
-            >，因此只需要极少的步数。
-          </p>
-        </template>
-      </el-alert>
-    </el-card>
+    <div class="info-bar">
+      <span class="icon">💡</span>
+      <span>
+        <strong>核心区别：</strong>
+        Diffusion 就像在走迷宫，虽然也能到终点，但绕了很多弯路（步数多）。Flow Matching 则是直接修了一条直线高速公路，所以 8 步就能走完别人 50 步的路。
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { VideoPlay, RefreshLeft, Right } from '@element-plus/icons-vue'
 
 const diffCanvasRef = ref(null)
 const flowCanvasRef = ref(null)
 const isPlaying = ref(false)
 const diffSteps = ref(0)
 const flowSteps = ref(0)
+let animationId = null
 
-let animationFrame = null
+// Constants
+const TARGET_STEPS_DIFF = 50
+const TARGET_STEPS_FLOW = 8
+const DURATION = 3000 // 3 seconds for the whole race
 
-// Animation State
-let diffProgress = 0
-let flowProgress = 0
-const diffSpeed = 0.005 // Slow
-const flowSpeed = 0.02 // Fast
+// Particles state
+let particles = []
+const NUM_PARTICLES = 5
 
-// Particles
-const particles = []
-
-onMounted(() => {
-  drawStatic(diffCanvasRef.value, 'curve')
-  drawStatic(flowCanvasRef.value, 'line')
-})
-
-onUnmounted(() => {
-  stopAnimation()
-})
-
-const startAnimation = () => {
-  if (isPlaying.value) return
-  isPlaying.value = true
-  diffProgress = 0
-  flowProgress = 0
-  diffSteps.value = 0
-  flowSteps.value = 0
-
-  animate()
-}
-
-const stopAnimation = () => {
-  isPlaying.value = false
-  if (animationFrame) {
-    cancelAnimationFrame(animationFrame)
-    animationFrame = null
-  }
-}
-
-const animate = () => {
-  let finished = 0
-
-  // Update Diffusion
-  if (diffProgress < 1) {
-    diffProgress += diffSpeed
-    diffSteps.value = Math.floor(diffProgress * 50) // Simulate 50 steps
-    drawFrame(diffCanvasRef.value, diffProgress, 'curve')
-  } else {
-    diffSteps.value = 50
-    drawFrame(diffCanvasRef.value, 1, 'curve')
-    finished++
+class Particle {
+  constructor(type) {
+    this.type = type // 'diff' or 'flow'
+    this.progress = 0
+    this.path = []
+    this.noiseOffset = Math.random() * 1000
+    this.yOffset = (Math.random() - 0.5) * 60 // Spread vertically
   }
 
-  // Update Flow
-  if (flowProgress < 1) {
-    flowProgress += flowSpeed
-    flowSteps.value = Math.floor(flowProgress * 8) // Simulate 8 steps
-    drawFrame(flowCanvasRef.value, flowProgress, 'line')
-  } else {
-    flowSteps.value = 8
-    drawFrame(flowCanvasRef.value, 1, 'line')
-    finished++
+  update(dt) {
+    // Speed varies: Flow is faster because it covers distance in fewer steps? 
+    // Actually, let's make them finish at the same TIME, but show the path difference.
+    // Or make Flow finish faster. Let's make Flow finish faster.
+    
+    const speed = this.type === 'flow' ? 0.8 : 0.3
+    this.progress += speed * dt
+    
+    if (this.progress > 1) this.progress = 1
+    
+    // Calculate Position
+    const startX = 20
+    const endX = 380
+    const startY = 50 + this.yOffset
+    const endY = 50
+    
+    // Linear interpolation base
+    let x = startX + (endX - startX) * this.progress
+    let y = startY + (endY - startY) * this.progress
+    
+    if (this.type === 'diff') {
+      // Add noise to path
+      if (this.progress < 1) {
+        const noise = Math.sin(this.progress * 20 + this.noiseOffset) * 30 * (1 - this.progress)
+        y += noise
+      }
+    }
+    
+    this.path.push({x, y})
+    return {x, y}
   }
 
-  if (finished < 2) {
-    animationFrame = requestAnimationFrame(animate)
-  } else {
-    isPlaying.value = false
-  }
-}
-
-const drawStatic = (canvas, type) => {
-  if (!canvas) return
-  const ctx = canvas.getContext('2d')
-  const w = canvas.width
-  const h = canvas.height
-
-  ctx.clearRect(0, 0, w, h)
-  drawBackground(ctx, w, h)
-  drawPath(ctx, w, h, type, false)
-  drawEndpoints(ctx, w, h)
-}
-
-const drawFrame = (canvas, progress, type) => {
-  if (!canvas) return
-  const ctx = canvas.getContext('2d')
-  const w = canvas.width
-  const h = canvas.height
-
-  ctx.clearRect(0, 0, w, h)
-  drawBackground(ctx, w, h)
-  drawPath(ctx, w, h, type, true) // active path
-  drawEndpoints(ctx, w, h)
-
-  // Draw Particle
-  const pos = getPosition(progress, type, w, h)
-
-  // Draw Trail
-  ctx.beginPath()
-  if (type === 'curve') {
-    ctx.moveTo(30, h - 30)
-    // Re-calculate curve up to progress
-    for (let t = 0; t <= progress; t += 0.01) {
-      const p = getPosition(t, type, w, h)
+  draw(ctx) {
+    ctx.beginPath()
+    ctx.moveTo(this.path[0].x, this.path[0].y)
+    for (let p of this.path) {
       ctx.lineTo(p.x, p.y)
     }
-  } else {
-    ctx.moveTo(30, h - 30)
-    ctx.lineTo(pos.x, pos.y)
+    ctx.strokeStyle = this.type === 'flow' ? '#10b981' : '#f43f5e'
+    ctx.lineWidth = 2
+    ctx.stroke()
+    
+    const current = this.path[this.path.length - 1]
+    ctx.beginPath()
+    ctx.arc(current.x, current.y, 4, 0, Math.PI * 2)
+    ctx.fillStyle = this.type === 'flow' ? '#10b981' : '#f43f5e'
+    ctx.fill()
   }
-  ctx.strokeStyle = type === 'curve' ? '#F56C6C' : '#67C23A'
-  ctx.lineWidth = 3
-  ctx.stroke()
-
-  // Draw Head
-  ctx.beginPath()
-  ctx.arc(pos.x, pos.y, 6, 0, Math.PI * 2)
-  ctx.fillStyle = type === 'curve' ? '#F56C6C' : '#67C23A'
-  ctx.fill()
-  ctx.strokeStyle = '#fff'
-  ctx.lineWidth = 2
-  ctx.stroke()
 }
 
-const drawBackground = (ctx, w, h) => {
-  ctx.fillStyle = '#f9f9f9' // Light bg
-  // Grid
-  ctx.strokeStyle = '#eee'
+const startRace = () => {
+  if (isPlaying.value) return
+  isPlaying.value = true
+  diffSteps.value = 0
+  flowSteps.value = 0
+  particles = []
+  
+  // Create particles
+  for(let i=0; i<NUM_PARTICLES; i++) {
+    particles.push(new Particle('diff'))
+    particles.push(new Particle('flow'))
+  }
+  
+  let lastTime = performance.now()
+  
+  const animate = (time) => {
+    const dt = (time - lastTime) / 1000
+    lastTime = time
+    
+    const dCtx = diffCanvasRef.value.getContext('2d')
+    const fCtx = flowCanvasRef.value.getContext('2d')
+    
+    // Clear
+    dCtx.clearRect(0, 0, 400, 100)
+    fCtx.clearRect(0, 0, 400, 100)
+    
+    // Draw Guidelines
+    drawGuide(dCtx)
+    drawGuide(fCtx)
+    
+    let allFinished = true
+    
+    particles.forEach(p => {
+      p.update(dt)
+      if (p.progress < 1) allFinished = false
+      
+      if (p.type === 'diff') p.draw(dCtx)
+      else p.draw(fCtx)
+    })
+    
+    // Update steps counter simulation
+    // Flow finishes in 8 steps, Diff in 50
+    // Map progress to steps
+    const flowP = particles.find(p => p.type === 'flow')
+    const diffP = particles.find(p => p.type === 'diff')
+    
+    if (flowP) flowSteps.value = Math.floor(flowP.progress * TARGET_STEPS_FLOW)
+    if (diffP) diffSteps.value = Math.floor(diffP.progress * TARGET_STEPS_DIFF)
+    
+    if (!allFinished) {
+      animationId = requestAnimationFrame(animate)
+    } else {
+      isPlaying.value = false
+      flowSteps.value = TARGET_STEPS_FLOW
+      diffSteps.value = TARGET_STEPS_DIFF
+    }
+  }
+  
+  requestAnimationFrame(animate)
+}
+
+const drawGuide = (ctx) => {
+  ctx.strokeStyle = 'rgba(128,128,128,0.1)'
   ctx.lineWidth = 1
-  ctx.beginPath()
-  for (let x = 0; x <= w; x += 20) {
-    ctx.moveTo(x, 0)
-    ctx.lineTo(x, h)
-  }
-  for (let y = 0; y <= h; y += 20) {
-    ctx.moveTo(0, y)
-    ctx.lineTo(w, y)
-  }
-  ctx.stroke()
-}
-
-const drawEndpoints = (ctx, w, h) => {
-  // Start (Noise)
-  ctx.beginPath()
-  ctx.arc(30, h - 30, 8, 0, Math.PI * 2)
-  ctx.fillStyle = '#909399'
-  ctx.fill()
-
-  // End (Image)
-  ctx.beginPath()
-  ctx.arc(w - 30, 30, 8, 0, Math.PI * 2)
-  ctx.fillStyle = '#409EFF'
-  ctx.fill()
-}
-
-const drawPath = (ctx, w, h, type, isActive) => {
-  ctx.beginPath()
-  ctx.moveTo(30, h - 30)
-
-  if (type === 'line') {
-    ctx.lineTo(w - 30, 30)
-  } else {
-    // Bezier curve for diffusion
-    ctx.quadraticCurveTo(w * 0.2, 30, w - 30, 30)
-  }
-
-  ctx.strokeStyle = isActive ? 'rgba(0,0,0,0.1)' : '#ddd'
-  ctx.lineWidth = 2
   ctx.setLineDash([5, 5])
+  ctx.beginPath()
+  ctx.moveTo(20, 50)
+  ctx.lineTo(380, 50)
   ctx.stroke()
   ctx.setLineDash([])
 }
 
-const getPosition = (t, type, w, h) => {
-  const startX = 30
-  const startY = h - 30
-  const endX = w - 30
-  const endY = 30
+onMounted(() => {
+  // Initial draw
+  const dCtx = diffCanvasRef.value.getContext('2d')
+  const fCtx = flowCanvasRef.value.getContext('2d')
+  drawGuide(dCtx)
+  drawGuide(fCtx)
+})
 
-  if (type === 'line') {
-    return {
-      x: startX + (endX - startX) * t,
-      y: startY + (endY - startY) * t
-    }
-  } else {
-    // Quadratic Bezier: (1-t)^2 * P0 + 2(1-t)t * P1 + t^2 * P2
-    // Control Point
-    const cpX = w * 0.2
-    const cpY = 30
-
-    const x =
-      Math.pow(1 - t, 2) * startX +
-      2 * (1 - t) * t * cpX +
-      Math.pow(t, 2) * endX
-    const y =
-      Math.pow(1 - t, 2) * startY +
-      2 * (1 - t) * t * cpY +
-      Math.pow(t, 2) * endY
-
-    // Add some random jitter for diffusion look if t < 1
-    // const jitter = t < 1 ? (Math.random() - 0.5) * 5 : 0
-    // return { x: x + jitter, y: y + jitter }
-    return { x, y }
-  }
-}
+onUnmounted(() => {
+  if (animationId) cancelAnimationFrame(animationId)
+})
 </script>
 
 <style scoped>
 .flow-matching-demo {
   margin: 20px 0;
+  font-family: var(--vp-font-family-base);
+}
+
+.demo-card {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 20px;
 }
 
 .controls {
-  text-align: center;
   margin-bottom: 20px;
-}
-
-.comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 600px) {
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.viz-panel {
-  background: var(--el-fill-color-light);
-  border-radius: 8px;
-  padding: 15px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
 }
 
-.panel-header {
+.play-btn {
+  background: var(--vp-c-brand);
+  color: white;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.play-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.play-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.track {
+  margin-bottom: 24px;
+}
+
+.track-info {
   display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: bold;
-  font-size: 0.9em;
-  color: var(--el-text-color-primary);
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step-count {
+  font-family: monospace;
+  background: var(--vp-c-bg-alt);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.step-count.highlight {
+  color: #10b981;
 }
 
 .canvas-wrapper {
   position: relative;
-  background: #fff;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  height: 100px;
 }
+
+.marker {
+  position: absolute;
+  bottom: 4px;
+  font-size: 10px;
+  color: var(--vp-c-text-3);
+}
+
+.marker.start { left: 10px; }
+.marker.end { right: 10px; }
 
 canvas {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
 }
 
-.labels {
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
+.info-bar {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
   display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  color: #999;
-  pointer-events: none;
-}
-
-.stats-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 5px;
+  gap: 8px;
+  line-height: 1.4;
+  padding: 0 8px;
 }
 </style>

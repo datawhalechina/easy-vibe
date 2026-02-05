@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is **Easy-Vibe**, an educational curriculum for learning AI Vibe Coding from zero to advanced levels. It's a documentation-based project using **VitePress** to serve educational content about AI-assisted software development.
+**Easy-Vibe** is an educational curriculum for learning AI Vibe Coding from zero to advanced levels. It's a documentation-based project using **VitePress** to serve educational content about AI-assisted software development.
 
 The curriculum follows a progressive four-stage structure:
 

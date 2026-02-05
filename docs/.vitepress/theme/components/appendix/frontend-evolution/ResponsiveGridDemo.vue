@@ -1,126 +1,135 @@
 <!--
-  ResponsiveGridDemo.vue
-  响应式布局演示 - 重构版
-
-  用途：
-  用"智能变形相框"的比喻，让零基础用户理解响应式设计。
-  通过可拖动的滑块，直观展示同一套代码如何适配不同屏幕尺寸。
+  ResponsiveGridDemo.vue - 魔法衣柜
+  用"衣服自动叠放"的比喻来解释响应式布局
 -->
 <template>
-  <div class="responsive-demo">
-    <div class="scenario-intro">
-      <div class="emoji-scene">🖼️ 📱 💻</div>
-      <h4>智能变形相框</h4>
-      <p>想象你有一张照片，它会自动调整大小和布局，在任何相框里都好看！</p>
+  <div class="magic-closet">
+    <!-- 故事开头 -->
+    <div class="story-box">
+      <div class="story-emoji">👗✨🚪</div>
+      <h4 class="story-title">小美的魔法衣柜</h4>
+      <p class="story-text">
+        小美有一件神奇的魔法衣柜！不管你把它放在大房间还是小房间，<br>
+        <strong>里面的衣服都会自动叠好、排好，完美适应空间大小！</strong>
+      </p>
     </div>
 
-    <div class="device-presets">
-      <button
-        v-for="device in devices"
-        :key="device.id"
-        :class="['device-btn', { active: screenWidth === device.width }]"
-        @click="setDevice(device.width)"
-      >
-        <span class="device-icon">{{ device.icon }}</span>
-        <span class="device-name">{{ device.name }}</span>
-        <span class="device-size">{{ device.width }}px</span>
-      </button>
-    </div>
-
-    <div class="slider-control">
-      <div class="slider-labels">
-        <span>📱 手机</span>
-        <span>
-          <input
-            type="range"
-            v-model="screenWidth"
-            :min="320"
-            :max="1400"
-            step="10"
-            class="width-slider"
-          />
-        </span>
-        <span>💻 电脑</span>
+    <!-- 衣柜宽度调节 -->
+    <div class="closet-control">
+      <div class="control-label">
+        <span>🚪 拖动把手，把衣柜放进不同房间：</span>
+        <span class="room-label">{{ currentRoom.name }}</span>
       </div>
-      <div class="current-width">
-        当前宽度: <strong>{{ screenWidth }}px</strong> - {{ currentBreakpoint.name }}
+
+      <div class="slider-box">
+        <span class="slider-emoji">🏠小</span>
+        <input
+          type="range"
+          v-model="closetWidth"
+          :min="280"
+          :max="900"
+          step="10"
+          class="magic-slider"
+        />
+        <span class="slider-emoji">大🏰</span>
+      </div>
+
+      <div class="width-hint">
+        当前衣柜宽度：<strong>{{ closetWidth }}px</strong> | 可以放下 <strong>{{ clothesPerRow }}</strong> 件衣服
       </div>
     </div>
 
-    <div class="viewport-preview">
-      <div class="viewport-header">
-        <span class="viewport-device">{{ currentDevice }}</span>
-        <span class="viewport-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+    <!-- 魔法衣柜展示 -->
+    <div class="closet-display" :style="{ width: closetWidth + 'px' }">
+      <div class="closet-header">
+        <span class="closet-icon">🚪</span>
+        <span class="closet-title">小美的魔法衣柜</span>
+        <span class="closet-icon">🪄</span>
       </div>
 
-      <div class="viewport-content" :style="{ width: screenWidth + 'px' }">
-        <div class="demo-grid" :class="gridClass">
+      <div class="closet-interior">
+        <div class="clothes-rack" :style="rackStyle">
           <div
-            v-for="(item, index) in gridItems"
+            v-for="(item, index) in clothes"
             :key="index"
-            class="grid-item"
+            class="clothing-item"
+            :class="{ 'folded': isSmallSpace }"
             :style="{ animationDelay: (index * 0.1) + 's' }"
           >
-            <div class="item-icon">{{ item.icon }}</div>
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-desc">{{ item.description }}</div>
+            <div class="item-hanger">🪝</div>
+            <div class="item-emoji">{{ item.emoji }}</div>
+            <div class="item-name">{{ item.name }}</div>
+            <div class="fold-hint" v-if="isSmallSpace">叠好了!</div>
           </div>
         </div>
       </div>
+
+      <div class="closet-footer">
+        <span>✨ 衣服数量：{{ clothes.length }}件</span>
+        <span>📐 排列方式：{{ arrangementMode }}</span>
+      </div>
     </div>
 
-    <div class="breakpoint-indicator">
-      <div class="bp-track">
-        <div
-          v-for="bp in breakpoints"
-          :key="bp.name"
-          class="bp-point"
-          :class="{ active: screenWidth >= bp.min && screenWidth < (bp.max || 9999) }"
-          :style="{ left: ((bp.min - 320) / (1400 - 320)) * 100 + '%' }"
-        >
-          <span class="bp-label">{{ bp.name }}</span>
-          <span class="bp-range">{{ bp.min }}px</span>
+    <!-- 魔法原理说明 -->
+    <div class="magic-explain">
+      <div class="explain-title">🔮 魔法原理揭秘</div>
+      <div class="explain-cards">
+        <div class="explain-card">
+          <div class="card-icon">📱</div>
+          <div class="card-title">小房间（手机）</div>
+          <div class="card-desc">衣柜只有 320px 宽，衣服会自动叠起来，<strong>1列</strong>排开</div>
+        </div>
+        <div class="explain-arrow">➡️</div>
+        <div class="explain-card">
+          <div class="card-icon">📲</div>
+          <div class="card-title">中房间（平板）</div>
+          <div class="card-desc">衣柜有 768px 宽，衣服舒展开，<strong>2列</strong>排开</div>
+        </div>
+        <div class="explain-arrow">➡️</div>
+        <div class="explain-card">
+          <div class="card-icon">💻</div>
+          <div class="card-title">大房间（电脑）</div>
+          <div class="card-desc">衣柜有 1200px 宽，衣服完全展开，<strong>3列</strong>排开</div>
         </div>
       </div>
     </div>
 
-    <div class="code-preview">
+    <!-- 代码展示 -->
+    <div class="code-section">
       <div class="code-header">
-        <span class="code-title">💻 响应式 CSS 代码</span>
-        <span class="code-lang">CSS</span>
+        <span>💻 魔法咒语（CSS代码）</span>
+        <span class="code-tag">CSS</span>
       </div>
-      <pre class="code-block"><code>/* 默认：手机端（单列） */
-.grid {
+      <pre class="code-content"><code>/* 默认：小房间，衣服叠成1列 */
+.closet {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+  gap: 10px;
+  grid-template-columns: 1fr;  /* 1列 */
 }
 
-/* 平板端：双列（640px 以上） */
+/* 中房间：衣服排成2列 */
 @media (min-width: 640px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .closet {
+    grid-template-columns: repeat(2, 1fr);  /* 2列 */
   }
 }
 
-/* 电脑端：三列（1024px 以上） */
+/* 大房间：衣服排成3列 */
 @media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+  .closet {
+    grid-template-columns: repeat(3, 1fr);  /* 3列 */
   }
 }</code></pre>
     </div>
 
-    <div class="tips-box">
-      <div class="tips-icon">🎯</div>
-      <div class="tips-content">
-        <strong>关键点：</strong>
-        响应式布局通过 CSS 媒体查询（Media Query）自动适配不同屏幕。
-        就像智能相框，无论大屏小屏，内容都能完美展示！
+    <!-- 总结 -->
+    <div class="summary-box">
+      <div class="summary-icon">🎯</div>
+      <div class="summary-content">
+        <strong>关键 takeaway：</strong>
+        响应式布局就像小美的魔法衣柜，<strong>同一套衣服（内容）</strong>，
+        会根据<strong>房间大小（屏幕宽度）</strong>自动调整排列方式！
+        这就是 CSS 媒体查询（Media Query）的魔法！
       </div>
     </div>
   </div>
@@ -129,404 +138,404 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const screenWidth = ref(375)
+// 衣柜宽度（模拟屏幕宽度）
+const closetWidth = ref(375)
 
-const devices = [
-  { id: 'iphone-se', name: 'iPhone SE', width: 375, icon: '📱' },
-  { id: 'iphone-14', name: 'iPhone 14', width: 390, icon: '📱' },
-  { id: 'ipad-mini', name: 'iPad Mini', width: 768, icon: '📲' },
-  { id: 'macbook', name: 'MacBook', width: 1280, icon: '💻' },
-  { id: 'desktop', name: '桌面显示器', width: 1400, icon: '🖥️' }
+// 房间类型
+const rooms = [
+  { name: '小房间（手机）', min: 280, max: 639, cols: 1, icon: '📱' },
+  { name: '中房间（平板）', min: 640, max: 1023, cols: 2, icon: '📲' },
+  { name: '大房间（电脑）', min: 1024, max: 900, cols: 3, icon: '💻' }
 ]
 
-const breakpoints = [
-  { name: 'sm', min: 320, max: 640 },
-  { name: 'md', min: 640, max: 1024 },
-  { name: 'lg', min: 1024, max: 9999 }
-]
-
-const currentBreakpoint = computed(() => {
-  if (screenWidth.value < 640) return { name: '手机端（小屏）', cols: 1 }
-  if (screenWidth.value < 1024) return { name: '平板端（中屏）', cols: 2 }
-  return { name: '电脑端（大屏）', cols: 3 }
+// 当前房间
+const currentRoom = computed(() => {
+  const room = rooms.find(r => closetWidth.value >= r.min && closetWidth.value <= r.max)
+  return room || rooms[0]
 })
 
-const currentDevice = computed(() => {
-  const device = devices.find(d => d.width === screenWidth.value)
-  return device ? device.name : `${screenWidth.value}px 视口`
+// 每行衣服数量
+const clothesPerRow = computed(() => currentRoom.value.cols)
+
+// 是否小空间（需要叠衣服）
+const isSmallSpace = computed(() => closetWidth.value < 500)
+
+// 排列模式文字
+const arrangementMode = computed(() => {
+  if (closetWidth.value < 640) return '小空间模式（叠放）'
+  if (closetWidth.value < 1024) return '中等空间（舒展）'
+  return '大空间（完全展开）'
 })
 
-const gridClass = computed(() => {
-  if (screenWidth.value < 640) return 'grid-cols-1'
-  if (screenWidth.value < 1024) return 'grid-cols-2'
-  return 'grid-cols-3'
+// 衣柜网格样式
+const rackStyle = computed(() => {
+  const cols = currentRoom.value.cols
+  return {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${cols}, 1fr)`,
+    gap: '10px'
+  }
 })
 
-const setDevice = (width) => {
-  screenWidth.value = width
-}
-
-const gridItems = [
-  { icon: '📷', title: '摄影', description: '捕捉精彩瞬间' },
-  { icon: '🎨', title: '设计', description: '创造视觉美感' },
-  { icon: '💻', title: '编程', description: '构建数字世界' },
-  { icon: '🎵', title: '音乐', description: '谱写动人旋律' },
-  { icon: '📚', title: '阅读', description: '探索知识海洋' },
-  { icon: '✈️', title: '旅行', description: '发现世界之美' }
+// 衣服列表
+const clothes = [
+  { emoji: '👗', name: '连衣裙' },
+  { emoji: '👔', name: '衬衫' },
+  { emoji: '👖', name: '牛仔裤' },
+  { emoji: '🧥', name: '大衣' },
+  { emoji: '👘', name: '和服' },
+  { emoji: '🥻', name: '纱丽' }
 ]
 </script>
 
 <style scoped>
-.responsive-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
-  padding: 1.5rem;
-  margin: 1rem 0;
+.magic-closet {
+  border: 2px solid #e0d5c8;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #faf6f0 0%, #f5ebe0 100%);
+  padding: 24px;
+  margin: 20px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
-.scenario-intro {
+/* 故事框 */
+.story-box {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(77, 208, 225, 0.2), rgba(126, 87, 194, 0.2));
-  border-radius: 12px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff5e6, #ffecd2);
+  border-radius: 16px;
+  border: 2px dashed #ffb347;
 }
 
-.emoji-scene {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  animation: float 3s ease-in-out infinite;
+.story-emoji {
+  font-size: 48px;
+  margin-bottom: 8px;
+  animation: bounce 2s infinite;
 }
 
-@keyframes float {
+@keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-.scenario-intro h4 {
-  margin: 0.5rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 1.2rem;
+.story-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #8b4513;
+  margin: 0 0 8px 0;
 }
 
-.scenario-intro p {
+.story-text {
+  font-size: 14px;
+  color: #666;
   margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
-.device-presets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+/* 衣柜控制 */
+.closet-control {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e0e0;
 }
 
-.device-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-  cursor: pointer;
-  transition: all 0.2s;
-  min-width: 80px;
-}
-
-.device-btn:hover {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
-}
-
-.device-btn.active {
-  border-color: var(--vp-c-brand);
-  background: var(--vp-c-brand-soft);
-}
-
-.device-icon {
-  font-size: 1.5rem;
-}
-
-.device-name {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-}
-
-.device-size {
-  font-size: 0.625rem;
-  color: var(--vp-c-text-2);
-}
-
-.slider-control {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.slider-labels {
+.control-label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #333;
 }
 
-.width-slider {
-  width: 100%;
-  height: 8px;
+.room-label {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.slider-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.slider-emoji {
+  font-size: 20px;
+}
+
+.magic-slider {
+  flex: 1;
+  height: 10px;
   -webkit-appearance: none;
   appearance: none;
-  background: linear-gradient(90deg, #4dd0e1, #7e57c2);
-  border-radius: 4px;
+  background: linear-gradient(90deg, #ffb347, #ff6b6b, #4ecdc4);
+  border-radius: 5px;
   outline: none;
 }
 
-.width-slider::-webkit-slider-thumb {
+.magic-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   background: white;
-  border: 3px solid #7e57c2;
+  border: 4px solid #ff6b6b;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.current-width {
+.width-hint {
   text-align: center;
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+  font-size: 13px;
+  color: #666;
+  background: #f8f9fa;
+  padding: 8px;
+  border-radius: 8px;
 }
 
-.viewport-preview {
-  border: 2px solid var(--vp-c-brand);
-  border-radius: 12px;
-  overflow: hidden;
+/* 衣柜展示 */
+.closet-display {
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  border-radius: 16px;
+  padding: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.closet-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, #d2691e, #cd853f);
+  border-radius: 12px 12px 0 0;
+}
+
+.closet-icon {
+  font-size: 24px;
+}
+
+.closet-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.closet-interior {
+  background: linear-gradient(135deg, #f5f5dc, #faf0e6);
+  padding: 16px;
+  min-height: 200px;
+}
+
+.clothes-rack {
+  display: grid;
+  gap: 12px;
+}
+
+.clothing-item {
   background: white;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: popIn 0.5s ease both;
 }
 
-.viewport-header {
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.clothing-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.clothing-item.folded {
+  padding: 8px;
+}
+
+.item-hanger {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.item-emoji {
+  font-size: 40px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.clothing-item.folded .item-emoji {
+  font-size: 28px;
+}
+
+.item-name {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+}
+
+.clothing-item.folded .item-name {
+  font-size: 11px;
+}
+
+.fold-hint {
+  font-size: 10px;
+  color: #ff6b6b;
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+.closet-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  background: var(--vp-c-brand-soft);
-  border-bottom: 1px solid var(--vp-c-brand);
-}
-
-.viewport-device {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--vp-c-brand-dark);
-}
-
-.viewport-dots {
-  display: flex;
-  gap: 4px;
-}
-
-.viewport-dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--vp-c-brand);
-}
-
-.viewport-content {
-  margin: 0 auto;
-  transition: width 0.3s ease;
-  overflow: hidden;
-}
-
-.demo-grid {
-  display: grid;
-  gap: 0.75rem;
-  padding: 1rem;
-}
-
-.grid-cols-1 {
-  grid-template-columns: 1fr;
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-item {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  padding: 1rem;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #d2691e, #cd853f);
+  border-radius: 0 0 12px 12px;
+  font-size: 12px;
   color: white;
+}
+
+/* 魔法原理说明 */
+.magic-explain {
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px dashed #7e57c2;
+}
+
+.explain-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5e35b1;
   text-align: center;
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.5s ease both;
+  margin-bottom: 16px;
 }
 
-.grid-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.item-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.item-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.item-desc {
-  font-size: 0.75rem;
-  opacity: 0.9;
-}
-
-.breakpoint-indicator {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.bp-track {
-  position: relative;
-  height: 40px;
-  background: linear-gradient(90deg, #4dd0e1 0%, #7e57c2 50%, #ab47bc 100%);
-  border-radius: 20px;
-}
-
-.bp-point {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.explain-cards {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.bp-point.active .bp-label {
+.explain-card {
   background: white;
-  color: #333;
-  font-weight: 700;
-  transform: scale(1.1);
-}
-
-.bp-label {
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #555;
-  transition: all 0.3s;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 140px;
 }
 
-.bp-range {
-  font-size: 0.625rem;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
 }
 
-.code-preview {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+.card-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.explain-arrow {
+  font-size: 24px;
+  color: #7e57c2;
+}
+
+/* 代码区域 */
+.code-section {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .code-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0.75rem;
-  background: var(--vp-c-bg-alt);
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.code-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-}
-
-.code-lang {
-  font-size: 0.75rem;
-  padding: 0.125rem 0.5rem;
-  background: var(--vp-c-brand);
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  border-radius: 4px;
+  font-weight: bold;
 }
 
-.code-block {
+.code-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.code-content {
   margin: 0;
-  padding: 1rem;
-  background: #1e1e2e;
-  color: #a6accd;
-  font-size: 0.8125rem;
+  padding: 16px;
+  background: #2d2d2d;
+  color: #f8f8f2;
+  font-size: 13px;
   line-height: 1.6;
   overflow-x: auto;
 }
 
-.tips-box {
+/* 总结框 */
+.summary-box {
   display: flex;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
-  border-radius: 8px;
-  border-left: 4px solid #2196f3;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border-radius: 12px;
+  border-left: 4px solid #28a745;
 }
 
-.tips-icon {
-  font-size: 1.5rem;
+.summary-icon {
+  font-size: 32px;
+  flex-shrink: 0;
 }
 
-.tips-content {
+.summary-content {
   flex: 1;
-  font-size: 0.9rem;
-  color: #444;
+  font-size: 14px;
+  color: #155724;
   line-height: 1.6;
 }
 
+/* 响应式调整 */
 @media (max-width: 768px) {
-  .scene-body {
-    grid-template-columns: 1fr;
-  }
-
-  .device-presets {
+  .explain-cards {
     flex-direction: column;
   }
 
-  .bp-track {
-    height: 60px;
+  .explain-arrow {
+    transform: rotate(90deg);
+  }
+
+  .closet-display {
+    transform: scale(0.9);
+    transform-origin: top center;
   }
 }
 </style>

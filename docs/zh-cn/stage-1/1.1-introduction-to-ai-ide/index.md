@@ -139,11 +139,16 @@ VS Code 的核心理念是“一切皆插件”。它通过插件机制支持各
 > - 自动生成测试：IDE 可以自动生成针对不同函数和模块的测试代码，方便你进行有针对性的测试。
 > - Agent 式任务执行：智能 Agent 可以自动生成、打包、安装、运行和修改代码，在很多任务上可以部分替代初级软件工程师的工作。
 
+::: details Trae
+
 ### [Trae](https://www.trae.ai/)
 
 ![](images/image8.png)
 
 Trae 是字节跳动推出的一款 AI 编程助手，支持 100 多种编程语言，并能集成到主流 IDE 中。它的功能包括：用自然语言生成代码、自动调试、把设计稿转换为 React/Vue 组件等。在 2025 年 8 月的更新之后，Trae 新增了智能依赖导入、重命名建议、任务清单管理等功能；SOLO 模式也开始支持后端代码生成和技术架构文档编辑。
+:::
+
+::: details Cursor
 
 ### [Cursor](https://cursor.com/)
 
@@ -152,18 +157,27 @@ Cursor 是 Anysphere 开发的一款 AI 代码编辑器，基于 VS Code 定制�
 目前，Cursor 可以说是“带前端界面的 AI IDE”中综合体验最好的一款之一，用户数量庞大，功能迭代频率也很高。它最大的缺点是价格较高——专业版大约需要每月 20 美元。
 
 ![](images/image9.png)
+:::
+
+::: details Qoder
 
 ### [Qoder](https://qoder.com/)
 
 Qoder 是阿里巴巴推出的一款强调“透明协作”和“增强上下文工程能力”的 AI IDE。它通过 Action Flow 支持把任务拆解成多个步骤，并实时跟踪 AI 的执行过程；还支持多模型动态路由和任务状态机管理，非常适合在中大型项目中做架构治理和对遗留系统进行“反向工程”分析。
 
 ![](images/image10.png)
+:::
+
+::: details CodeBuddy
 
 ### [CodeBuddy](https://www.codebuddy.com/)
 
 CodeBuddy 是腾讯云推出的一款 AI 编程工具，强调对中文指令的支持以及企业级合规能力。它提供代码补全、批量代码审查和多模型切换等功能；其中的 Craft 智能体可以实现多文件代码生成和 API 集成。企业版支持私有化部署，并通过了三级等保认证，适合金融、医疗等对数据安全要求较高的行业。
 
 ![](images/image11.png)
+:::
+
+::: details VS Code + Cline
 
 ### VS Code + [Cline](https://cline.bot/)
 
@@ -172,6 +186,7 @@ Cline 是 VS Code（Visual Studio Code）的一款 AI 编程 Agent 插件，可�
 ![](images/image13.png)
 
 ![](images/image14.png)
+:::
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -614,7 +629,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
       <span style="font-size: 12px; color: #909399">看到不懂的计算机名词时，来这里快速查含义，推荐通读一遍。</span>
     </el-col>
     <el-col :span="12">
-      <a href="../../appendix/ide-intro/index.md#appendix-2-map" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
+      <a href="../../appendix/ide-intro/" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
       <span style="font-size: 12px; color: #909399">不知道 AI IDE 的界面有什么用的时候，拿以下内容和 AI 对话进行查阅，或者直接查看。</span>
     </el-col>
   </el-row>

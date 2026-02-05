@@ -1,0 +1,1490 @@
+# 反向代理与网关：Nginx / API Gateway 在系统中的位置
+
+> 💡 **学习指南**：反向代理解决的是"流量怎么分发"，API 网关解决的是"请求怎么处理"。本章节会围绕一个问题展开：**在高并发的互联网架构中，如何把流量安全、高效地送到正确的服务？**
+
+在开始之前，建议你先补两块"基础砖"：
+
+- **HTTP 基础**：可以先阅读 [Web 基础](./web-basics/) 的「HTTP 协议」部分。
+- **服务器部署**：如果你还不熟悉 [部署相关概念](./deployment/)，建议先了解基础。
+
+---
+
+## 0. 引言：为什么网站访问慢了、挂了、被攻击了？
+
+<ReverseProxyDemo />
+
+很多人在实际搭建网站时都会遇到类似的情况：
+
+- 网站流量一高就卡顿，用户体验很差；
+- 某台服务器宕机，整个网站就不可用了；
+- 网站被 DDoS 攻击，服务器直接被打垮；
+- 后台管理接口暴露在外网，被黑客扫描攻击。
+
+直觉上，我们会以为是：**"服务器配置不够"**。
+但大多数时候，问题并不在于服务器"性能差"，而在于我们**没有把流量处理好**。
+
+面对这些挑战，单纯依靠"升级服务器"已经捉襟见肘。我们需要一套更系统的流量管理方法，在高并发的场景下，把流量安全、高效地分发到正确的服务。这正是**反向代理与网关**试图解决的问题。
+
+---
+
+## 1. 什么是"反向代理"？（定义 + 场景）
+
+先给一个简短的工作定义，再看几个典型场景。
+
+> 反向代理，是部署在服务器端的"流量中转站"，接收客户端请求，转发给内部服务器，并将响应返回给客户端。客户端只知道反向代理的存在，不知道真实服务器的地址。
+
+你可以简单地把它理解成三件事：**接收请求、转发请求、返回响应**。
+常见会用到它的场景包括：
+
+- **负载均衡**：将流量分发到多台服务器，避免单点压力过大。
+- **安全防护**：隐藏真实服务器 IP，防止直接攻击。
+- **SSL 终结**：在网关层处理 HTTPS，后端服务使用 HTTP，降低计算开销。
+- **动静分离**：静态资源直接由 Nginx 返回，动态请求转发给应用服务器。
+
+接下来，我们就从一个真实团队的"踩坑经历"出发，看看他们是怎么一点点从"单机部署"进化到"网关架构"的。
+
+---
+
+## 2. 从"血泪教训"说起：某电商大促踩过的坑
+
+本章案例来自 **某电商平台**（日活千万级用户）。
+与普通网站不同，电商平台在双十一等大促期间，流量会呈指数级增长，对系统的稳定性、性能、安全性都提出了极高要求。
+
+这带来了核心矛盾：
+- **如果只用一台服务器**：流量一高就宕机，用户体验极差。
+- **如果直接暴露多台服务器**：客户端需要知道多个 IP，无法实现负载均衡，而且安全性极差。
+
+该平台的技术团队经历过多次架构重构，才明白一个道理：**流量不能只靠"挡"，而要靠"疏"和"导"。**
+
+### 2.1 四次重构教会我们什么？
+
+该平台的 CTO 在架构分享会上讲过一个"踩坑史"：
+
+| 阶段 | 遇到的问题 | 当时的想法 | 结果 |
+| :--- | :--- | :--- | :--- |
+| **第一次** | 单台服务器扛不住流量 | "换一台更好的服务器" | 流量再涨还是扛不住 |
+| **第二次** | 多台服务器不知如何分发流量 | "直接暴露多个 IP 给用户" | 用户访问混乱，无法实现负载均衡 |
+| **第三次** | 网站被 DDoS 攻击，真实 IP 暴露 | "在每台服务器上都配置防火墙" | 管理复杂，防护效果差 |
+| **第四次** | HTTPS 配置复杂，证书管理混乱 | "每台服务器都配置 SSL 证书" | 证书更新麻烦，配置不一致 |
+
+**核心领悟**：**不是服务器越多越好，而是流量管理越智能越好**。
+
+### 2.2 反向代理到底像什么？
+
+**直接暴露服务器** = **没有门卫的大楼**：
+- 任何人都可以直接找到房间（IP）。
+- 来访者（请求）不知道去哪个房间，可能都挤在一个房间。
+- 安全隐患大，坏人可以直接找到房间搞破坏。
+
+**反向代理** = **有前台的大楼**：
+- 来访者（客户端）只知道前台地址（反向代理 IP）。
+- 前台根据情况把来访者引导到不同的房间（服务器）。
+- 房间的真实位置对外保密，安全性高。
+
+**该平台的经验**：**大楼要有前台，流量要过网关**。
+
+---
+
+## 3. 第一步：Nginx 架构 - 为什么它能扛住百万并发？
+
+<NginxArchitectureDemo />
+
+在深入配置之前，我们需要理解 Nginx 为什么能处理如此高的并发。这不是魔法，而是精心设计的架构。
+
+### 3.1 Master-Worker 进程模型
+
+Nginx 采用**多进程**架构，而不是多线程：
+
+**Master 进程（管理者）**：
+- 负责读取和验证配置文件。
+- 管理 Worker 进程（启动、停止、重新加载）。
+- 不处理具体请求。
+
+**Worker 进程（工作者）**：
+- 实际处理 HTTP 请求。
+- 每个 Worker 是独立的进程，相互隔离。
+- 数量通常设置为 CPU 核心数，避免上下文切换开销。
+
+**优势**：
+- 一个 Worker 崩溃，不会影响其他 Worker。
+- 充分利用多核 CPU。
+- 避免多线程编程的复杂性。
+
+### 3.2 事件驱动 + 异步非阻塞
+
+这是 Nginx 高性能的核心秘密：
+
+**传统 Apache（多进程/线程模型）**：
+- 一个连接 = 一个进程/线程。
+- 并发数受限于系统进程/线程数。
+- 大量连接时，进程切换开销巨大。
+
+**Nginx（事件驱动模型）**：
+- 使用 epoll（Linux）/ kqueue（macOS）等高效 I/O 多路复用机制。
+- 一个 Worker 进程可以同时处理数万个连接。
+- 连接没有数据时，不会占用 CPU，有新数据时通过事件通知唤醒。
+
+**比喻**：
+- Apache 像餐厅里每个顾客配一个服务员（进程）。
+- Nginx 像一个超级服务员，同时服务所有顾客，谁需要服务就去谁那里，而不是一直站在某个顾客旁边。
+
+### 3.3 生产环境配置建议
+
+```nginx
+# 设置 Worker 进程数，通常等于 CPU 核心数
+worker_processes auto;
+
+# 设置每个 Worker 的最大连接数
+# 总并发连接数 = worker_processes * worker_connections
+events {
+    worker_connections 4096;
+    use epoll;  # Linux 下使用 epoll
+    multi_accept on;  # 尽可能接受更多连接
+}
+
+http {
+    # 开启文件高效传输
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+
+    # 长连接超时时间
+    keepalive_timeout 65;
+
+    # Gzip 压缩
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css application/json application/javascript;
+}
+```
+
+---
+
+## 4. 第二步：API 网关 - 系统的"统一大门"
+
+<ApiGatewayDemo />
+
+如果说反向代理是"流量中转站"，那么 API 网关就是"智能调度中心"。它不仅仅是转发请求，还承担了很多横切关注点的处理。
+
+### 4.1 为什么需要 API 网关？
+
+想象一个没有网关的系统：
+- 客户端需要知道多个服务的地址（用户服务、订单服务、支付服务...）。
+- 每个服务都要自己做认证、限流、日志。
+- 协议不统一，有的用 HTTP，有的用 gRPC。
+- 服务升级时，客户端也需要跟着改。
+
+**有了 API 网关之后**：
+- 客户端只需要知道网关地址，网关负责路由到正确服务。
+- 认证、限流、日志等横切逻辑统一在网关处理。
+- 网关可以做协议转换，对外统一暴露 HTTP。
+- 后端服务升级，只需要改网关配置，客户端无感知。
+
+### 4.2 API 网关的核心功能
+
+| 功能 | 说明 | 典型场景 |
+| :--- | :--- | :--- |
+| **路由转发** | 根据 URL、Header 等规则，将请求转发到不同服务 | `/api/users` → 用户服务，`/api/orders` → 订单服务 |
+| **负载均衡** | 同一个服务有多实例时，分摊流量 | 用户服务有 3 台实例，轮询分发请求 |
+| **认证鉴权** | 统一校验 JWT、OAuth Token | 未登录用户无法访问 `/api/admin` |
+| **限流熔断** | 控制流量上限，防止服务被压垮 | 每秒最多 1000 请求，超过返回 429 |
+| **协议转换** | 对外 HTTP，内部可转 gRPC | 客户端用 HTTP，网关转 gRPC 调用内部服务 |
+| **灰度发布** | 按 Header 或比例，将部分流量导到新版本 | 5% 用户体验新版本，95% 用旧版本 |
+| **日志监控** | 统一记录请求日志，便于分析和排障 | 记录每次请求的耗时、状态码、返回大小 |
+
+### 4.3 Nginx vs Kong vs Spring Cloud Gateway
+
+市面上有很多网关产品，如何选择？
+
+| 维度 | Nginx | Kong | Spring Cloud Gateway |
+| :--- | :--- | :--- | :--- |
+| **定位** | 高性能反向代理/负载均衡 | 开源 API 网关 | Spring 生态网关 |
+| **性能** | 极高（C 语言，事件驱动） | 高（基于 OpenResty） | 中等（Java，响应式） |
+| **功能** | 基础负载均衡、静态文件、缓存 | 丰富的插件生态（认证、限流、日志等） | 与 Spring Cloud 深度集成 |
+| **配置** | 配置文件（nginx.conf） | REST API + 配置文件 | Java 配置 / YAML |
+| **扩展** | C 模块 / Lua 脚本 | Lua 插件 | Java 过滤器 |
+| **适用场景** | 静态资源、七层负载均衡、SSL 终结 | 微服务 API 网关、多租户 SaaS | Spring Cloud 微服务架构 |
+
+**选型建议**：
+- **中小型项目 / 静态资源为主**：Nginx 足够。
+- **大型微服务 / 需要丰富插件**：Kong。
+- **Spring Cloud 全家桶**：Spring Cloud Gateway。
+
+---
+
+## 5. 第三步：路由与负载均衡 - 把请求送到正确的地方
+
+<RoutingRulesDemo />
+<LoadBalancingDemo />
+
+网关的核心职责之一，就是**把请求送到正确的地方**。这涉及两个关键能力：**路由**（去哪台服务器）和**负载均衡**（怎么分配流量）。
+
+### 5.1 路由规则：从 URL 到服务
+
+想象一个电商系统，不同的 URL 对应不同的服务：
+- `/api/users/*` → 用户服务
+- `/api/orders/*` → 订单服务
+- `/api/products/*` → 商品服务
+- `/api/pay/*` → 支付服务
+
+**Nginx 配置示例**：
+
+```nginx
+server {
+    listen 80;
+    server_name api.example.com;
+
+    # 用户服务
+    location /api/users/ {
+        proxy_pass http://user-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 订单服务
+    location /api/orders/ {
+        proxy_pass http://order-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 商品服务
+    location /api/products/ {
+        proxy_pass http://product-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 支付服务（需要更高安全级别）
+    location /api/pay/ {
+        # 限制 IP 访问
+        allow 10.0.0.0/8;
+        deny all;
+
+        proxy_pass http://payment-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+**高级路由规则**：
+
+```nginx
+# 基于请求方法的路由
+if ($request_method = POST) {
+    proxy_pass http://write-service;
+}
+
+# 基于 Header 的路由（灰度发布）
+if ($http_x_version = "v2") {
+    proxy_pass http://api-v2;
+}
+
+# 基于 Cookie 的路由（AB 测试）
+if ($cookie_test_group = "B") {
+    proxy_pass http://variant-b;
+}
+
+# 基于 Query 参数的路由
+if ($arg_format = "json") {
+    proxy_pass http://json-api;
+}
+```
+
+### 5.2 负载均衡：四种策略对比
+
+当同一个服务有多个实例时，如何选择？
+
+| 策略 | 原理 | 适用场景 | 优点 | 缺点 |
+| :--- | :--- | :--- | :--- | :--- |
+| **轮询** (Round Robin) | 按顺序依次分配给每台服务器 | 服务器性能相近 | 简单公平 | 不考虑服务器当前负载 |
+| **加权轮询** (Weighted RR) | 按权重比例分配，权重高的分配更多 | 服务器性能不均 | 充分利用高性能服务器 | 需要合理设置权重 |
+| **最少连接** (Least Connections) | 分配给当前连接数最少的服务器 | 长连接场景（WebSocket、视频流） | 动态适应负载变化 | 需要实时统计连接数 |
+| **IP 哈希** (IP Hash) | 根据客户端 IP 计算哈希，同一 IP 永远分配到同一台服务器 | 需要会话保持的场景 | 保证会话一致性 | 某个 IP 流量大时会造成单点压力 |
+
+**Nginx 配置示例**：
+
+```nginx
+# 定义 upstream 组
+upstream backend {
+    # 轮询（默认）
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+    server 10.0.1.12:8080;
+}
+
+upstream backend_weighted {
+    # 加权轮询
+    server 10.0.1.10:8080 weight=3;  # 性能好，承担更多流量
+    server 10.0.1.11:8080 weight=2;
+    server 10.0.1.12:8080 weight=1;  # 性能差，承担较少流量
+}
+
+upstream backend_least_conn {
+    # 最少连接
+    least_conn;
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+    server 10.0.1.12:8080;
+}
+
+upstream backend_ip_hash {
+    # IP 哈希（会话保持）
+    ip_hash;
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+    server 10.0.1.12:8080;
+}
+
+server {
+    listen 80;
+    server_name api.example.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # 健康检查（需要第三方模块或 Nginx Plus）
+        # health_check;
+    }
+}
+```
+
+### 5.3 避坑指南：负载均衡的常见误区
+
+#### 误区 1：忽视健康检查
+
+```nginx
+# ❌ 错误：没有健康检查，后端服务宕机了，流量还会继续发送
+upstream backend {
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;  # 这台宕机了，请求会失败
+}
+
+# ✅ 正确：配置健康检查（Nginx Plus 或第三方模块）
+upstream backend {
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+
+    # 主动健康检查（Nginx Plus 或配置 check 模块）
+    check interval=3000 rise=2 fall=3 timeout=1000 type=http;
+    check_http_send "GET /health HTTP/1.0\r\n\r\n";
+    check_http_expect_alive http_2xx http_3xx;
+}
+```
+
+#### 误区 2：会话保持滥用
+
+```nginx
+# ❌ 错误：所有请求都使用 IP 哈希，导致负载不均
+upstream backend {
+    ip_hash;  # 某些 IP 流量特别大，导致单点压力
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+}
+
+# ✅ 正确：需要会话保持的才用 IP 哈希，其他用轮询
+upstream backend {
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+}
+
+upstream backend_session {
+    ip_hash;
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+}
+
+server {
+    location /api/ {
+        proxy_pass http://backend;  # 普通 API，无需会话保持
+    }
+
+    location /cart/ {
+        proxy_pass http://backend_session;  # 购物车，需要会话保持
+    }
+}
+```
+
+#### 误区 3：忽视后端获取真实 IP
+
+```nginx
+# ❌ 错误：后端应用获取到的 IP 是 Nginx 的 IP，不是客户端真实 IP
+server {
+    location / {
+        proxy_pass http://backend;
+        # 缺少 Header 设置
+    }
+}
+
+# ✅ 正确：传递真实 IP 和协议信息
+server {
+    location / {
+        proxy_pass http://backend;
+
+        # 必须设置的 Header
+        proxy_set_header Host $host;  # 原始 Host
+        proxy_set_header X-Real-IP $remote_addr;  # 客户端真实 IP
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 代理链
+        proxy_set_header X-Forwarded-Proto $scheme;  # 原始协议（http/https）
+
+        # 如果后端也是 Nginx，可以设置真实端口
+        proxy_set_header X-Forwarded-Port $server_port;
+    }
+}
+```
+
+后端应用（以 Node.js Express 为例）获取真实 IP：
+
+```javascript
+const express = require('express');
+const app = express();
+
+// 信任代理（必须设置，否则 X-Forwarded-* 会被忽略）
+app.set('trust proxy', true);
+
+app.get('/api/test', (req, res) => {
+    res.json({
+        // 客户端真实 IP（经过代理链后的第一个 IP）
+        realIp: req.ip,
+
+        // 完整的代理链（客户端, 代理1, 代理2, ...）
+        forwardedFor: req.get('X-Forwarded-For'),
+
+        // 原始协议（http 或 https）
+        protocol: req.protocol,
+
+        // 原始 Host
+        host: req.get('Host')
+    });
+});
+
+app.listen(3000);
+```
+
+---
+
+## 4. 第三步：限流与熔断 - 防止系统被"流量洪水"冲垮
+
+<RateLimitingDemo />
+
+在高并发场景下，保护系统不被突发流量压垮，是网关的核心职责之一。这需要用到**限流**和**熔断**机制。
+
+### 4.1 限流算法对比：令牌桶 vs 漏桶 vs 滑动窗口
+
+| 算法 | 核心思想 | 突发流量 | 适用场景 | 实现复杂度 |
+| :--- | :--- | :--- | :--- | :--- |
+| **令牌桶** | 桶里装令牌，有令牌才能通过 | 允许一定程度的突发 | API 限流、带宽控制 | 中等 |
+| **漏桶** | 请求进桶，匀速流出处理 | 强制平滑，突发会被缓存或拒绝 | 需要严格匀速处理的场景 | 中等 |
+| **滑动窗口** | 统计时间窗口内的请求数 | 严格按窗口计数，超出一律拒绝 | 精确统计（如"1分钟内最多100次"） | 较高 |
+
+### 4.2 Nginx 限流配置实战
+
+```nginx
+# 定义限流区域（放在 http 块中）
+
+# 1. 基于 IP 的限流（漏桶算法）
+# zone=mylimit:10m - 区域名称和内存大小（10MB 约可存储 16 万 IP）
+# rate=10r/s - 每秒允许 10 个请求
+limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
+
+# 2. 基于 IP 的连接数限制（防止单个 IP 建立过多连接）
+limit_conn_zone $binary_remote_addr zone=addr:10m;
+
+# 3. 基于服务端点的限流（不区分 IP，保护后端整体）
+limit_req_zone $server_name zone=server_limit:10m rate=100r/s;
+
+server {
+    listen 80;
+    server_name api.example.com;
+
+    # 用户服务 - 普通限流
+    location /api/users/ {
+        # 应用限流
+        # burst=20 - 桶容量，允许突发 20 个请求
+        # nodelay - 不延迟处理突发请求（立即处理或拒绝）
+        limit_req zone=mylimit burst=20 nodelay;
+
+        # 限制单个 IP 的连接数
+        limit_conn addr 10;
+
+        proxy_pass http://user-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 订单服务 - 更严格的限流
+    location /api/orders/ {
+        # 更严格的限流：每秒 5 个请求
+        limit_req_zone $binary_remote_addr zone=order_limit:10m rate=5r/s;
+        limit_req zone=order_limit burst=10 nodelay;
+
+        proxy_pass http://order-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 支付服务 - 最高级别保护
+    location /api/pay/ {
+        # 多层限流保护
+
+        # 第一层：单 IP 限流（每秒 2 个请求）
+        limit_req_zone $binary_remote_addr zone=pay_ip_limit:10m rate=2r/s;
+        limit_req zone=pay_ip_limit burst=5 nodelay;
+
+        # 第二层：全局限流（保护后端数据库）
+        limit_req zone=server_limit burst=50 nodelay;
+
+        # 第三层：连接数限制
+        limit_conn addr 5;
+
+        # 只允许内网访问（额外安全层）
+        allow 10.0.0.0/8;
+        deny all;
+
+        proxy_pass http://payment-service;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        # 支付接口增加超时时间
+        proxy_connect_timeout 30s;
+        proxy_send_timeout 30s;
+        proxy_read_timeout 30s;
+    }
+
+    # 限流后的处理
+    # 当请求被限流时，返回 429 Too Many Requests
+    error_page 429 /429.html;
+    location = /429.html {
+        internal;
+        return 429 '{"error": "Too Many Requests", "message": "Rate limit exceeded. Please try again later."}';
+        add_header Content-Type application/json;
+    }
+}
+```
+
+### 4.3 熔断降级：当依赖服务出问题时
+
+限流是防止外部流量压垮系统，**熔断**是防止内部依赖故障扩散。
+
+**熔断器的工作原理**：
+1. **关闭状态**：正常转发请求，同时统计错误率。
+2. **开启状态**：当错误率超过阈值，熔断器开启，直接返回错误，不再转发请求。
+3. **半开状态**：经过一段时间后，允许少量请求通过试探，如果成功则关闭熔断器。
+
+**Nginx 实现熔断（使用 Lua 模块或第三方模块）**：
+
+```nginx
+# 使用 nginx-upsync-module 或 lua-resty-healthcheck 实现健康检查和熔断
+
+upstream backend {
+    server 10.0.1.10:8080;
+    server 10.0.1.11:8080;
+
+    # 健康检查（需要 nginx_upstream_check_module）
+    check interval=3000 rise=2 fall=3 timeout=1000 type=http;
+    check_http_send "GET /health HTTP/1.0\r\n\r\n";
+    check_http_expect_alive http_2xx http_3xx;
+}
+
+server {
+    location / {
+        proxy_pass http://backend;
+
+        # 代理错误时返回自定义错误页（降级）
+        proxy_intercept_errors on;
+        error_page 500 502 503 504 /fallback.html;
+    }
+
+    location = /fallback.html {
+        internal;
+        # 返回降级数据（如缓存数据、简化版页面）
+        return 200 '{"status": "degraded", "message": "Service temporarily unavailable. Showing cached data."}';
+        add_header Content-Type application/json;
+    }
+}
+```
+
+**使用 OpenResty + Lua 实现更完善的熔断**：
+
+```lua
+-- 使用 lua-resty-circuit-breaker 库实现熔断
+local circuit_breaker = require "resty.circuit-breaker"
+
+local cb = circuit_breaker.new({
+    name = "payment_service",
+    group = "payment",
+    -- 熔断策略
+    failure_threshold = 5,      -- 连续失败 5 次触发熔断
+    success_threshold = 2,    -- 连续成功 2 次关闭熔断
+    timeout = 60,              -- 熔断后等待 60 秒进入半开状态
+    -- 错误类型
+    expected_statuses = {200, 201},  -- 期望的 HTTP 状态码
+    ignored_statuses = {404, 422},   -- 不计入失败的 status
+})
+
+-- 使用熔断器执行请求
+local ok, err = cb:execute(function()
+    -- 发起 HTTP 请求
+    local httpc = require "resty.http".new()
+    local res, err = httpc:request_uri("http://payment-service/charge", {
+        method = "POST",
+        body = body,
+        headers = {
+            ["Content-Type"] = "application/json",
+        },
+    })
+
+    if not res then
+        return nil, err
+    end
+
+    return res
+end)
+
+if not ok then
+    -- 熔断器开启或请求失败，执行降级逻辑
+    ngx.log(ngx.WARN, "Circuit breaker open or request failed: ", err)
+
+    -- 返回降级响应
+    ngx.status = 503
+    ngx.say('{"error": "Service temporarily unavailable", "fallback": true}')
+    return
+end
+
+-- 请求成功，返回正常响应
+ngx.status = res.status
+ngx.say(res.body)
+```
+
+---
+
+## 6. 第四步：认证与安全 - 守护大门的"门卫"
+
+<AuthMiddlewareDemo />
+
+网关是系统的统一入口，自然也成为**安全防护的第一道防线**。在网关层处理认证和安全，可以避免每个后端服务重复实现。
+
+### 6.1 在网关层统一认证
+
+**传统方式（每个服务各自认证）**：
+- 用户服务、订单服务、支付服务...每个都要校验 JWT。
+- 代码重复，维护困难。
+-  secret 分散在各个服务，泄露风险高。
+
+**网关统一认证**：
+- 客户端携带 Token 访问网关。
+- 网关校验 Token 合法性（签名、过期时间）。
+- 校验通过后，将用户信息（如 user_id）添加到请求头，转发给后端服务。
+- 后端服务无需校验，直接从 Header 获取用户信息。
+
+**Nginx + Lua 实现 JWT 校验**：
+
+```nginx
+server {
+    listen 80;
+    server_name api.example.com;
+
+    location / {
+        # 使用 access_by_lua_block 进行认证
+        access_by_lua_block {
+            local jwt = require "resty.jwt"
+
+            -- 从请求头获取 Token
+            local auth_header = ngx.var.http_authorization
+            if not auth_header then
+                ngx.status = 401
+                ngx.say('{"error": "Missing authorization header"}')
+                ngx.exit(ngx.HTTP_UNAUTHORIZED)
+            end
+
+            -- 提取 Token（Bearer token）
+            local token = auth_header:match("^Bearer%s+(.+)$")
+            if not token then
+                ngx.status = 401
+                ngx.say('{"error": "Invalid authorization format"}')
+                ngx.exit(ngx.HTTP_UNAUTHORIZED)
+            end
+
+            -- 验证 JWT
+            local jwt_obj = jwt:verify("your-secret-key", token)
+            if not jwt_obj.verified then
+                ngx.status = 401
+                ngx.say('{"error": "Invalid or expired token"}')
+                ngx.exit(ngx.HTTP_UNAUTHORIZED)
+            end
+
+            -- 将用户信息设置到变量，供后续使用
+            ngx.var.user_id = jwt_obj.payload.sub
+            ngx.var.user_role = jwt_obj.payload.role
+        }
+
+        # 将用户信息传递给后端服务
+        proxy_set_header X-User-ID $user_id;
+        proxy_set_header X-User-Role $user_role;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        proxy_pass http://backend;
+    }
+
+    # 公开接口，无需认证
+    location /api/public/ {
+        proxy_pass http://backend;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+### 6.2 HTTPS 与 SSL 终结
+
+<SslTerminationDemo />
+
+HTTPS 是现代 Web 应用的标配。但如果在每台后端服务器都配置 HTTPS，会带来很多麻烦：
+- 证书管理复杂，每台服务器都要部署、更新证书。
+- 后端服务需要处理 TLS 握手，消耗 CPU 资源。
+- 配置容易出错，不一致。
+
+**SSL 终结（SSL Termination）** 方案：
+- 只在网关（Nginx）层配置 HTTPS 和证书。
+- 网关负责 TLS 握手和加解密。
+- 网关和后端服务之间使用 HTTP 明文传输（内部网络可信）。
+- 后端服务专注于业务逻辑，无需处理 TLS。
+
+**SSL 终结流程**：
+1. 客户端发送 HTTPS 请求到 Nginx。
+2. Nginx 和客户端完成 TLS 握手，建立加密通道。
+3. Nginx 解密请求，得到明文 HTTP 请求。
+4. Nginx 将明文 HTTP 请求转发给后端服务（通过内部网络）。
+5. 后端服务处理请求，返回明文 HTTP 响应给 Nginx。
+6. Nginx 加密响应，通过 HTTPS 返回给客户端。
+
+**Nginx HTTPS 配置**：
+
+```nginx
+server {
+    # 监听 443 端口，启用 SSL
+    listen 443 ssl http2;
+    server_name api.example.com;
+
+    # SSL 证书配置
+    ssl_certificate /etc/nginx/ssl/api.example.com.crt;  # 证书文件
+    ssl_certificate_key /etc/nginx/ssl/api.example.com.key;  # 私钥文件
+
+    # SSL 协议和密码套件（安全配置）
+    ssl_protocols TLSv1.2 TLSv1.3;  # 只启用安全的 TLS 版本
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;  # 强密码套件
+    ssl_prefer_server_ciphers off;  # 优先使用客户端支持的密码套件
+
+    # SSL 会话缓存（提升性能）
+    ssl_session_cache shared:SSL:50m;  # 会话缓存大小
+    ssl_session_timeout 1d;  # 会话超时时间
+    ssl_session_tickets off;  # 禁用会话票证（前向安全）
+
+    # OCSP Stapling（提升性能和隐私）
+    ssl_stapling on;  # 启用 OCSP Stapling
+    ssl_stapling_verify on;  # 验证 OCSP 响应
+    ssl_trusted_certificate /etc/nginx/ssl/chain.crt;  # 信任链
+    resolver 8.8.8.8 8.8.4.4 valid=300s;  # DNS 解析器
+    resolver_timeout 5s;  # DNS 解析超时
+
+    # 安全响应头
+    add_header Strict-Transport-Security "max-age=63072000" always;  # HSTS
+    add_header X-Frame-Options "SAMEORIGIN" always;  # 防止点击劫持
+    add_header X-Content-Type-Options "nosniff" always;  # 防止 MIME 嗅探
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;  # Referrer 策略
+
+    # SSL 终结后，转发到后端 HTTP 服务
+    location / {
+        proxy_pass http://backend;  # 后端使用 HTTP
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;  # 传递原始协议（https）
+        proxy_set_header X-Forwarded-Port 443;  # 传递原始端口
+    }
+}
+
+# HTTP 重定向到 HTTPS（强制 HTTPS）
+server {
+    listen 80;
+    server_name api.example.com;
+
+    # 所有 HTTP 请求 301 重定向到 HTTPS
+    return 301 https://$server_name$request_uri;
+}
+```
+
+### 6.3 安全配置清单
+
+| 配置项 | 说明 | 推荐值 |
+| :--- | :--- | :--- |
+| **SSL 协议** | 启用的 TLS 版本 | `TLSv1.2 TLSv1.3`（禁用 SSLv3、TLSv1.0/1.1） |
+| **密码套件** | 加密算法组合 | 优先使用 `ECDHE` + `AES-GCM`，禁用 `RC4`、`DES`、`MD5` |
+| **HSTS** | 强制 HTTPS | `max-age=63072000`（两年） |
+| **证书有效期** | SSL 证书过期时间 | 不超过 397 天（行业规范） |
+| **OCSP Stapling** | 证书状态检查 | 启用，提升性能和隐私 |
+| **Session Tickets** | 会话恢复机制 | 禁用（前向安全考虑）或定期轮换密钥 |
+
+---
+
+## 7. 系统整合：打造完整的网关架构
+
+现在，是时候把之前学到的所有组件整合起来，搭建一个完整的网关架构了。
+
+### 7.1 完整架构图
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           客户端（浏览器/APP）                                 │
+└───────────────────────────────┬─────────────────────────────────────────────┘
+                                │ HTTPS
+                                ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           外层：CDN + WAF                                    │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  CDN（内容分发网络）                                                 │   │
+│  │  - 静态资源缓存（图片、CSS、JS）                                      │   │
+│  │  - 就近访问，降低延迟                                                 │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  WAF（Web 应用防火墙）                                                │   │
+│  │  - 防护 SQL 注入、XSS 攻击                                            │   │
+│  │  - 拦截恶意 Bot、爬虫                                                 │   │
+│  │  - CC 攻击防护（Challenge Collapsar）                                 │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        中层：API 网关（Nginx/Kong）                           │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  第一层：SSL 终结 + 安全防护                                          │   │
+│  │  - HTTPS / TLS 1.3                                                   │   │
+│  │  - HSTS、安全响应头                                                   │   │
+│  │  - OCSP Stapling                                                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  第二层：认证与鉴权                                                    │   │
+│  │  - JWT Token 校验                                                    │   │
+│  │  - OAuth 2.0 / SSO 集成                                               │   │
+│  │  - API Key 管理                                                       │   │
+│  │  - 权限校验（RBAC）                                                   │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  第三层：流量控制                                                      │   │
+│  │  - 限流（Rate Limiting）- 令牌桶/漏桶算法                              │   │
+│  │  - 熔断（Circuit Breaking）- 防止故障扩散                               │   │
+│  │  - 降级（Degradation）- 服务不可用时的备用方案                           │   │
+│  │  - 灰度发布（Canary Release）- 按比例分配流量                            │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  第四层：路由与负载均衡                                                 │   │
+│  │  - 路径路由（Path-based Routing）                                      │   │
+│  │  - 域名路由（Host-based Routing）                                      │   │
+│  │  - Header 路由（Header-based Routing）                                 │   │
+│  │  - 负载均衡算法（轮询/加权/最少连接/IP 哈希）                             │   │
+│  │  - 服务发现（Service Discovery）集成                                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  第五层：协议转换与数据处理                                             │   │
+│  │  - SSL 终结（HTTPS ↔ HTTP）                                           │   │
+│  │  - 协议转换（HTTP ↔ gRPC / WebSocket）                                 │   │
+│  │  - 请求/响应转换（JSON ↔ XML）                                         │   │
+│  │  - 数据压缩（Gzip / Brotli）                                           │   │
+│  │  - 缓存（Cache）- 静态资源和 API 响应                                    │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         内层：微服务集群                                     │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐          │
+│  │  用户服务    │  │  订单服务    │  │  商品服务    │  │  支付服务    │          │
+│  │  User Svc   │  │  Order Svc  │  │ Product Svc │  │ Payment Svc │          │
+│  │             │  │             │  │             │  │             │          │
+│  │  服务注册    │  │  服务注册    │  │  服务注册    │  │  服务注册    │          │
+│  │   Consul    │  │   Consul    │  │   Consul    │  │   Consul    │          │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘          │
+│         │                │                │                │               │
+│         └────────────────┴────────────────┴────────────────┘               │
+│                                       │                                      │
+│                    服务发现与配置中心（Consul / etcd）                          │
+│                    - 服务注册与发现                                            │
+│                    - 健康检查                                                  │
+│                    - KV 配置存储                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 7.2 实战代码模板：完整的 Nginx 网关配置
+
+```nginx
+# /etc/nginx/nginx.conf
+
+user nginx;
+worker_processes auto;  # 自动设置为 CPU 核心数
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+# 加载动态模块（根据实际需要启用）
+# load_module modules/ngx_http_geoip2_module.so;
+
+# 工作模式和连接数上限
+events {
+    use epoll;  # Linux 下使用 epoll
+    worker_connections 4096;  # 每个 Worker 的最大连接数
+    multi_accept on;  # 尽可能接受更多连接
+}
+
+http {
+    # 基础设置
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    # 日志格式
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for" '
+                    'rt=$request_time uct="$upstream_connect_time" '
+                    'uht="$upstream_header_time" urt="$upstream_response_time"';
+
+    access_log /var/log/nginx/access.log main;
+
+    # 性能优化
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+
+    # Gzip 压缩
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_min_length 1000;
+    gzip_types text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml;
+
+    # 安全响应头
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # 防止点击劫持（可选）
+    # add_header Content-Security-Policy "default-src 'self'; frame-ancestors 'self';" always;
+
+    # 上游服务定义
+    # 用户服务（加权轮询）
+    upstream user_service {
+        server 10.0.1.10:8080 weight=3;
+        server 10.0.1.11:8080 weight=2;
+        keepalive 32;
+    }
+
+    # 订单服务（最少连接）
+    upstream order_service {
+        least_conn;
+        server 10.0.1.20:8080;
+        server 10.0.1.21:8080;
+        server 10.0.1.22:8080;
+        keepalive 32;
+    }
+
+    # 商品服务（IP 哈希，会话保持）
+    upstream product_service {
+        ip_hash;
+        server 10.0.1.30:8080;
+        server 10.0.1.31:8080;
+        keepalive 32;
+    }
+
+    # 支付服务（严格的负载均衡 + 健康检查）
+    upstream payment_service {
+        server 10.0.1.40:8080 weight=2;
+        server 10.0.1.41:8080 backup;  # 备份服务器
+        keepalive 32;
+    }
+
+    # 限流区域定义
+    # 普通 API 限流：每秒 10 请求
+    limit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;
+
+    # 严格限流：每秒 2 请求（用于敏感接口）
+    limit_req_zone $binary_remote_addr zone=strict_limit:10m rate=2r/s;
+
+    # 全局限流：保护后端整体
+    limit_req_zone $server_name zone=global_limit:10m rate=100r/s;
+
+    # 连接数限制
+    limit_conn_zone $binary_remote_addr zone=conn_limit:10m;
+
+    # 虚拟主机配置
+    server {
+        listen 80;
+        server_name api.example.com;
+
+        # 强制 HTTPS
+        return 301 https://$server_name$request_uri;
+    }
+
+    server {
+        listen 443 ssl http2;
+        server_name api.example.com;
+
+        # SSL 配置（略，见上文）
+        ssl_certificate /etc/nginx/ssl/api.example.com.crt;
+        ssl_certificate_key /etc/nginx/ssl/api.example.com.key;
+        # ... 其他 SSL 配置
+
+        # 全局限流
+        limit_req zone=global_limit burst=200 nodelay;
+
+        # ===== 用户服务路由 =====
+        location /api/users/ {
+            # 应用限流
+            limit_req zone=api_limit burst=20 nodelay;
+            limit_conn conn_limit 10;
+
+            # 超时设置
+            proxy_connect_timeout 5s;
+            proxy_send_timeout 10s;
+            proxy_read_timeout 10s;
+
+            proxy_pass http://user_service;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            # 错误处理
+            proxy_intercept_errors on;
+            error_page 500 502 503 504 /error.html;
+        }
+
+        # ===== 订单服务路由 =====
+        location /api/orders/ {
+            # 更严格的限流
+            limit_req zone=strict_limit burst=10 nodelay;
+            limit_conn conn_limit 5;
+
+            proxy_pass http://order_service;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # ===== 商品服务路由 =====
+        location /api/products/ {
+            # 缓存静态资源
+            location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
+                expires 30d;
+                add_header Cache-Control "public, immutable";
+            }
+
+            proxy_pass http://product_service;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # ===== 支付服务路由（最高安全级别） =====
+        location /api/pay/ {
+            # 多重限流保护
+            limit_req zone=strict_limit burst=5 nodelay;
+            limit_req zone=global_limit burst=50 nodelay;
+            limit_conn conn_limit 3;
+
+            # 只允许内网访问（额外安全层）
+            allow 10.0.0.0/8;
+            allow 172.16.0.0/12;
+            allow 192.168.0.0/16;
+            deny all;
+
+            # 详细日志记录
+            access_log /var/log/nginx/payment-access.log detailed;
+
+            proxy_pass http://payment_service;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            # 支付接口增加超时时间
+            proxy_connect_timeout 30s;
+            proxy_send_timeout 30s;
+            proxy_read_timeout 30s;
+        }
+
+        # 健康检查端点
+        location /health {
+            access_log off;
+            return 200 "healthy\n";
+            add_header Content-Type text/plain;
+        }
+
+        # 错误页面
+        location /error.html {
+            internal;
+            root /var/www/html;
+        }
+
+        # 限流错误处理
+        error_page 429 /429.html;
+        location = /429.html {
+            internal;
+            return 429 '{"error": "Too Many Requests", "message": "Rate limit exceeded. Please try again later."}';
+            add_header Content-Type application/json;
+        }
+    }
+}
+```
+
+### 7.3 为什么这样设计最强？
+
+这个架构的设计哲学，是为了解决三个核心矛盾：
+
+**1. 高性能与高可用（负载均衡 + 健康检查）**
+- **矛盾**：单台服务器性能有限，容易成为瓶颈；多台服务器需要协调，避免单点故障。
+- **解法**：使用 Nginx 作为负载均衡器，支持多种负载均衡算法（轮询、加权、最少连接、IP 哈希）。配合健康检查，自动剔除故障节点，保证服务高可用。
+
+**2. 安全性与易用性（SSL 终结 + 统一认证）**
+- **矛盾**：HTTPS 保证安全，但配置复杂、证书管理麻烦；每个服务都认证，代码重复、维护困难。
+- **解法**：在 Nginx 层统一做 SSL 终结和认证。客户端只需信任 Nginx 的证书，后端服务之间使用 HTTP 明文通信，简化配置。认证逻辑统一在网关处理，后端服务专注于业务逻辑。
+
+**3. 灵活性与稳定性（限流熔断 + 灰度发布）**
+- **矛盾**：新功能需要快速上线验证，但全量发布风险大；突发流量可能压垮系统，需要保护机制。
+- **解法**：使用 Nginx 的限流和熔断功能，防止系统被突发流量压垮。配合灰度发布，按 Header 或比例将部分流量导到新版本，验证稳定性后再全量上线。
+
+---
+
+## 8. 实战模板：直接抄作业
+
+为了让你更直观地理解这套机制是如何运作的，我们为你准备了**全链路配置模板**。
+
+### 场景 1：中小型 Web 应用（单域名，多服务）
+
+> 适用场景：创业公司官网 + 后台管理 + API 服务
+
+```nginx
+# /etc/nginx/nginx.conf
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+events {
+    use epoll;
+    worker_connections 4096;
+    multi_accept on;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log /var/log/nginx/access.log main;
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_min_length 1000;
+    gzip_types text/plain text/css text/xml application/json application/javascript;
+
+    # 安全响应头
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+
+    # 上游服务
+    upstream app_servers {
+        server 127.0.0.1:3000;
+        server 127.0.0.1:3001;
+        keepalive 32;
+    }
+
+    upstream api_servers {
+        server 127.0.0.1:4000;
+        keepalive 32;
+    }
+
+    # 限流配置
+    limit_req_zone $binary_remote_addr zone=general:10m rate=10r/s;
+    limit_req_zone $binary_remote_addr zone=api:10m rate=20r/s;
+
+    # HTTP 服务器
+    server {
+        listen 80;
+        server_name example.com www.example.com;
+
+        # 强制 HTTPS（生产环境启用）
+        # return 301 https://$server_name$request_uri;
+
+        # 静态文件
+        location /static/ {
+            alias /var/www/html/static/;
+            expires 30d;
+            add_header Cache-Control "public, immutable";
+        }
+
+        location /images/ {
+            alias /var/www/html/images/;
+            expires 90d;
+            add_header Cache-Control "public, immutable";
+        }
+
+        # 前端应用
+        location / {
+            limit_req zone=general burst=20 nodelay;
+
+            proxy_pass http://app_servers;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # API 接口
+        location /api/ {
+            limit_req zone=api burst=40 nodelay;
+
+            proxy_pass http://api_servers;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # 健康检查
+        location /health {
+            access_log off;
+            return 200 "healthy\n";
+            add_header Content-Type text/plain;
+        }
+    }
+
+    # HTTPS 服务器（生产环境启用）
+    # server {
+    #     listen 443 ssl http2;
+    #     server_name example.com www.example.com;
+    #
+    #     ssl_certificate /etc/nginx/ssl/example.com.crt;
+    #     ssl_certificate_key /etc/nginx/ssl/example.com.key;
+    #     ssl_protocols TLSv1.2 TLSv1.3;
+    #     ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;
+    #     ssl_prefer_server_ciphers off;
+    #     ssl_session_cache shared:SSL:50m;
+    #     ssl_session_timeout 1d;
+    #
+    #     # 复制 HTTP 服务器的 location 配置
+    #     # ...
+    # }
+}
+```
+
+### 场景 2：微服务架构（多域名，复杂路由）
+
+> 适用场景：大型互联网公司，多业务线，多团队协作
+
+```nginx
+# 微服务架构下的 Nginx 配置示例
+# 特点：多域名、复杂路由、服务发现集成
+
+# 服务发现集成（使用 Consul 或 etcd）
+# 需要 nginx-upsync-module 模块
+upstream user_service {
+    # 从 Consul 自动发现服务实例
+    upsync 127.0.0.1:8500/v1/catalog/service/user-service upsync_timeout=6m upsync_interval=500ms;
+    upsync_dump_path /var/nginx/conf/user_service.conf;
+
+    # 默认服务器（Consul 不可用时使用）
+    server 127.0.0.1:11111 down;
+
+    keepalive 64;
+    keepalive_timeout 60s;
+    keepalive_requests 1000;
+}
+
+# 动态 upstream 示例（Lua + Redis）
+upstream dynamic_backend {
+    server 0.0.0.0;  # 占位符
+
+    balancer_by_lua_block {
+        local balancer = require "ngx.balancer"
+        local resty_redis = require "resty.redis"
+
+        -- 从 Redis 获取可用后端列表
+        local redis = resty_redis:new()
+        redis:connect("127.0.0.1", 6379)
+
+        local backends, err = redis:smembers("backends:available")
+        if not backends or #backends == 0 then
+            ngx.log(ngx.ERR, "no available backends")
+            return ngx.exit(503)
+        end
+
+        -- 简单的轮询选择
+        local hash = ngx.var.remote_addr .. ngx.var.request_uri
+        local index = ngx.crc32_short(hash) % #backends + 1
+        local selected = backends[index]
+
+        -- 设置后端地址
+        local ok, err = balancer.set_current_peer(selected, 80)
+        if not ok then
+            ngx.log(ngx.ERR, "failed to set peer: ", err)
+            return ngx.exit(500)
+        end
+    }
+}
+
+# 基于 Host 的多域名路由
+server {
+    listen 80;
+    server_name api.user.example.com;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name api.user.example.com;
+
+    ssl_certificate /etc/nginx/ssl/user.example.com.crt;
+    ssl_certificate_key /etc/nginx/ssl/user.example.com.key;
+
+    # JWT 认证（使用 Lua）
+    access_by_lua_block {
+        local jwt = require "resty.jwt"
+
+        local auth_header = ngx.var.http_authorization
+        if not auth_header then
+            ngx.exit(401)
+        end
+
+        local token = auth_header:match("^Bearer%s+(.+)$")
+        if not token then
+            ngx.exit(401)
+        end
+
+        local jwt_obj = jwt:verify(os.getenv("JWT_SECRET"), token)
+        if not jwt_obj.verified then
+            ngx.exit(401)
+        end
+
+        -- 将用户信息设置到变量
+        ngx.var.user_id = jwt_obj.payload.sub
+        ngx.var.user_role = jwt_obj.payload.role
+    }
+
+    location / {
+        # 权限控制
+        if ($user_role != "user" && $user_role != "admin") {
+            return 403;
+        }
+
+        proxy_pass http://user_service;
+        proxy_set_header Host $host;
+        proxy_set_header X-User-ID $user_id;
+        proxy_set_header X-User-Role $user_role;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# Admin API（管理后台，更严格的权限控制）
+server {
+    listen 443 ssl http2;
+    server_name api.admin.example.com;
+
+    ssl_certificate /etc/nginx/ssl/admin.example.com.crt;
+    ssl_certificate_key /etc/nginx/ssl/admin.example.com.key;
+
+    # IP 白名单（只允许公司内网访问）
+    allow 10.0.0.0/8;
+    allow 172.16.0.0/12;
+    allow 192.168.0.0/16;
+    deny all;
+
+    # 严格的限流
+    limit_req zone=strict_limit burst=5 nodelay;
+    limit_conn conn_limit 5;
+
+    # 只允许管理员角色访问
+    set $admin_required 1;
+
+    location / {
+        if ($user_role != "admin") {
+            return 403;
+        }
+
+        proxy_pass http://admin_service;
+        proxy_set_header Host $host;
+        proxy_set_header X-User-ID $user_id;
+        proxy_set_header X-User-Role $user_role;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+---
+
+## 9. 名词对照表
+
+| 英文术语 | 中文对照 | 解释 |
+| :--- | :--- | :--- |
+| **Reverse Proxy** | 反向代理 | 部署在服务器端，接收客户端请求并转发给内部服务器的代理服务。客户端只知道反向代理的存在，不知道真实服务器地址。 |
+| **Forward Proxy** | 正向代理 | 部署在客户端侧，代替客户端访问外部资源的代理服务。服务端看到的是代理的 IP，不知道真实客户端。典型应用：VPN、翻墙工具。 |
+| **API Gateway** | API 网关 | 位于客户端和后端服务之间的中间层，提供路由、认证、限流、日志等功能，是微服务架构的"统一大门"。 |
+| **Load Balancing** | 负载均衡 | 将请求流量分配到多台服务器，避免单台服务器过载，提高系统可用性和性能。 |
+| **Rate Limiting** | 限流 | 限制单位时间内的请求数量，防止系统被突发流量压垮。常用算法：令牌桶、漏桶、滑动窗口。 |
+| **Circuit Breaking** | 熔断 | 当依赖服务出现故障时，自动切断调用，防止故障扩散，并提供降级方案。 |
+| **SSL Termination** | SSL 终结 | 在网关层处理 HTTPS 加密解密，后端服务使用 HTTP，降低后端计算开销，简化证书管理。 |
+| **Health Check** | 健康检查 | 定期检查后端服务的健康状态，自动剔除故障节点，保证流量只发送到健康的服务实例。 |
+| **Sticky Session** | 会话保持 | 将同一客户端的请求始终路由到同一台后端服务器，用于需要保持会话状态的场景。 |
+| **Blue-Green Deployment** | 蓝绿部署 | 同时运行两个生产环境（蓝、绿），切换流量实现零停机发布。 |
+| **Canary Release** | 灰度发布 | 将少量流量导到新版本，验证稳定性后逐步扩大比例，降低发布风险。 |
+| **Upstream** | 上游 | 在 Nginx 配置中，指代后端服务器组。 |
+| **Location** | 位置块 | Nginx 中用于匹配请求 URL 并定义处理规则的配置块。 |
+| **Worker Process** | 工作进程 | Nginx 中实际处理请求的进程，多个 Worker 并行工作，充分利用多核 CPU。 |
+| **Master Process** | 主进程 | Nginx 中负责管理 Worker 进程（启动、停止、重新加载配置）的控制进程。 |
+| **Event-Driven** | 事件驱动 | 一种编程模型，通过监听和响应事件（如 I/O 就绪）来处理并发，Nginx 的核心架构。 |
+| **epoll / kqueue** | I/O 多路复用 | Linux/macOS 下的高性能 I/O 事件通知机制，允许单个进程同时处理大量连接。 |
+
+---
+
+## 总结：反向代理与网关的本质
+
+经过这一章的学习，我们可以得出几个核心结论：
+
+**从实践来看**：
+- 反向代理解决的是"流量怎么分发"的问题，通过负载均衡、健康检查、会话保持等机制，将流量高效、可靠地送达后端服务。
+- API 网关解决的是"请求怎么处理"的问题，在统一的入口点处理横切关注点（认证、限流、日志等），让后端服务专注于业务逻辑。
+
+**从架构视角看**：
+- 网关是系统的"门面"，所有流量都经过这里，是安全防护的第一道防线，也是性能优化的关键节点。
+- 合理的网关架构，可以将单台服务器的处理能力扩展到整个集群，将单点故障风险分散到多个节点，将复杂的安全策略收敛到统一入口。
+
+**从运维视角看**：
+- 证书管理、限流策略、路由规则，都应该在网关层统一配置，避免分散在各个服务。
+- 监控和日志也应该在网关层统一收集，便于分析流量模式、排查问题、审计安全事件。
+
+目标是：在给定的资源和性能约束下，让每一次请求都能被安全、高效、可靠地处理。
