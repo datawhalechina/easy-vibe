@@ -869,6 +869,11 @@ export default {
     const { frontmatter } = useData()
     let viewer = null
 
+    // Skip browser-only initialization during SSR
+    if (import.meta.env.SSR) {
+      return
+    }
+
     const initViewer = () => {
       // 销毁旧实例
       if (viewer) {
