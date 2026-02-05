@@ -1,59 +1,45 @@
 <template>
   <div class="prompt-visualizer">
-    <div class="demo-container">
-      <!-- Left: Prompt -->
-      <div class="prompt-section">
-        <div class="section-title">📝 提示词</div>
-        <div class="prompt-input">
-          "cyberpunk cat, neon lights, futuristic city"
-        </div>
-
-        <div class="token-list">
-          <div
-            v-for="(token, index) in tokens"
-            :key="index"
-            class="token-item"
-            :style="{ opacity: token.weight }"
-          >
-            <div class="token-text">{{ token.text }}</div>
-            <div class="token-weight">
-              权重: {{ (token.weight * 100).toFixed(0) }}%
-            </div>
-          </div>
-        </div>
+    <div class="viz-card">
+      <div class="input-display">
+        <span class="label">Prompt:</span>
+        <span class="text">"cyberpunk cat, neon lights, futuristic city"</span>
       </div>
 
-      <!-- Right: Attention Visualization -->
-      <div class="attention-section">
-        <div class="section-title">🎯 交叉注意力可视化</div>
-        <div class="attention-grid">
-          <div
-            v-for="(item, index) in attentionMap"
-            :key="index"
-            class="attention-cell"
-          >
-            <div class="cell-token">{{ item.token }}</div>
-            <div class="cell-bar">
-              <div
-                class="bar-fill"
-                :style="{ width: item.attention * 100 + '%' }"
-              ></div>
-            </div>
-            <div class="cell-value">
-              {{ (item.attention * 100).toFixed(0) }}%
-            </div>
-          </div>
+      <div class="tokens-row">
+        <div 
+          v-for="(token, index) in tokens" 
+          :key="index"
+          class="token-pill"
+          :style="{ opacity: 0.4 + (token.weight * 0.6) }"
+        >
+          {{ token.text }}
+          <div class="tooltip">关注度: {{ (token.weight * 100).toFixed(0) }}%</div>
+        </div>
+      </div>
+      
+      <div class="arrow-down">⬇️ CLIP Encoding & Attention</div>
+      
+      <div class="image-map">
+        <!-- Abstract representation of an image being attended to -->
+        <div class="map-layer" style="background: #2b0055; opacity: 0.9;">
+          <span>City Base</span>
+        </div>
+        <div class="map-layer" style="background: #ff00aa; width: 60%; height: 60%; opacity: 0.8;">
+          <span>Neon Glow</span>
+        </div>
+        <div class="map-layer" style="background: #fff; width: 30%; height: 30%; border-radius: 50%;">
+          <span>Cat</span>
         </div>
       </div>
     </div>
 
-    <div class="explanation">
-      <p>
-        <span class="icon">💡</span>
-        <strong>交叉注意力机制</strong>让 AI 理解提示词的每个词。
-        当生成图片时，AI 会"关注"不同的词： "cyberpunk" 影响整体风格，"cat"
-        决定主体，"neon lights" 控制灯光效果。 词的顺序和权重都会影响最终画面！
-      </p>
+    <div class="info-bar">
+      <span class="icon">💡</span>
+      <span>
+        <strong>交叉注意力 (Cross-Attention)：</strong>
+        AI 在画画时，每画一笔都会回头看一眼 Prompt。当它画背景时，"city" 单词会亮起来；当它画主角时，"cat" 单词会亮起来。
+      </span>
     </div>
   </div>
 </template>
@@ -62,153 +48,128 @@
 import { ref } from 'vue'
 
 const tokens = ref([
-  { text: 'cyberpunk', weight: 0.9 },
+  { text: 'cyberpunk', weight: 0.8 },
   { text: 'cat', weight: 1.0 },
   { text: 'neon', weight: 0.7 },
   { text: 'lights', weight: 0.6 },
-  { text: 'futuristic', weight: 0.8 },
-  { text: 'city', weight: 0.5 }
-])
-
-const attentionMap = ref([
-  { token: 'cyberpunk', attention: 0.9 },
-  { token: 'cat', attention: 1.0 },
-  { token: 'neon', attention: 0.7 },
-  { token: 'lights', attention: 0.6 },
-  { token: 'futuristic', attention: 0.8 },
-  { token: 'city', attention: 0.5 }
+  { text: 'futuristic', weight: 0.5 },
+  { text: 'city', weight: 0.9 }
 ])
 </script>
 
 <style scoped>
 .prompt-visualizer {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 20px;
-  background: var(--vp-c-bg-soft);
   margin: 20px 0;
+  font-family: var(--vp-font-family-base);
 }
 
-.demo-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .demo-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.section-title {
-  font-weight: bold;
-  font-size: 0.95rem;
-  color: var(--vp-c-text-1);
-  margin-bottom: 15px;
-}
-
-.prompt-section {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 15px;
-}
-
-.prompt-input {
+.viz-card {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.input-display {
   font-family: monospace;
-  font-size: 0.85rem;
-  color: var(--vp-c-text-1);
-  margin-bottom: 15px;
-}
-
-.token-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.token-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--vp-c-bg-soft);
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-
-.token-text {
-  color: var(--vp-c-text-1);
-  font-weight: 600;
-}
-
-.token-weight {
-  color: var(--vp-c-brand);
-  font-size: 0.75rem;
-}
-
-.attention-section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 15px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  width: 100%;
+  text-align: center;
 }
 
-.attention-grid {
+.label {
+  color: var(--vp-c-text-2);
+  margin-right: 8px;
+}
+
+.tokens-row {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
 }
 
-.attention-cell {
+.token-pill {
+  background: var(--vp-c-brand);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  cursor: help;
+  transition: transform 0.2s;
+}
+
+.token-pill:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  margin-bottom: 6px;
+}
+
+.token-pill:hover .tooltip {
+  opacity: 1;
+}
+
+.arrow-down {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  font-weight: 600;
+}
+
+.image-map {
+  width: 200px;
+  height: 200px;
+  background: #000;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
+  justify-content: center;
 }
 
-.cell-token {
-  width: 80px;
-  color: var(--vp-c-text-1);
-  font-weight: 600;
+.map-layer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-.cell-bar {
-  flex: 1;
-  height: 20px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.bar-fill {
-  height: 100%;
-  background: var(--vp-c-brand);
-  border-radius: 3px;
-  transition: width 0.5s ease;
-}
-
-.cell-value {
-  width: 40px;
-  text-align: right;
-  color: var(--vp-c-brand);
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-
-.explanation {
-  padding: 12px;
-  background: var(--vp-c-bg-mute);
-  border-radius: 6px;
-  font-size: 0.9em;
-  line-height: 1.6;
-}
-
-.icon {
-  font-size: 1.2em;
+.info-bar {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  display: flex;
+  gap: 8px;
+  line-height: 1.4;
+  padding: 0 8px;
 }
 </style>

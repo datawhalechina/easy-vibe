@@ -1,127 +1,140 @@
 <!--
-  SliceRequestDemo.vue
-  切图时代请求次数演示 - 重构版
-
-  用途：
-  用外卖点餐的比喻，让零基础用户理解 HTTP 请求的概念。
-  通过可视化的外卖小哥动画，展示切图时代 vs 雪碧图的性能差异。
+  SliceRequestDemo.vue - 搬家快递大作战
+  用"搬家打包"的比喻来解释 HTTP 请求优化（切图 vs 雪碧图）
 -->
 <template>
-  <div class="slice-demo">
-    <div class="scenario-intro">
-      <div class="emoji-scene">🍕 📱 🛵</div>
-      <h4>外卖点餐模拟器</h4>
-      <p>想象一下你在点披萨外卖。每次下单，外卖小哥就要跑一趟。</p>
+  <div class="moving-game">
+    <!-- 故事引入 -->
+    <div class="story-box">
+      <div class="story-emoji">📦🚚🏠</div>
+      <h4 class="story-title">小明搬家记</h4>
+      <p class="story-text">
+        小明要搬 6 箱书到新房子。有两种搬家方式：<br>
+        <strong>A 方案：一箱一箱搬</strong>（切图模式） vs <strong>B 方案：一次性打包运走</strong>（雪碧图模式）<br>
+        看看哪种更省时间？
+      </p>
     </div>
 
-    <div class="mode-tabs">
-      <button
-        v-for="mode in modes"
-        :key="mode.id"
-        :class="['mode-tab', { active: currentMode === mode.id }]"
-        @click="switchMode(mode.id)"
+    <!-- 模式选择 -->
+    <div class="mode-selector">
+      <div
+        class="mode-card"
+        :class="{ active: mode === 'separate' }"
+        @click="mode = 'separate'"
       >
-        <span class="tab-icon">{{ mode.icon }}</span>
-        <span class="tab-label">{{ mode.label }}</span>
-        <span class="tab-desc">{{ mode.desc }}</span>
-      </button>
+        <div class="mode-icon">🛵</div>
+        <div class="mode-name">A 方案：一箱一趟</div>
+        <div class="mode-desc">小面包车，一次拉一箱</div>
+        <div class="mode-detail">需要 6 趟运输</div>
+      </div>
+
+      <div class="vs-divider">VS</div>
+
+      <div
+        class="mode-card"
+        :class="{ active: mode === 'packed' }"
+        @click="mode = 'packed'"
+      >
+        <div class="mode-icon">🚚</div>
+        <div class="mode-name">B 方案：打包一车拉</div>
+        <div class="mode-desc">大卡车，6箱一次运走</div>
+        <div class="mode-detail">只需 1 趟运输</div>
+      </div>
     </div>
 
-    <div class="restaurant-scene">
-      <div class="scene-header">
-        <div class="restaurant-info">
-          <span class="restaurant-emoji">🏪</span>
-          <span class="restaurant-name">前端披萨店</span>
+    <!-- 动画演示区 -->
+    <div class="animation-area">
+      <!-- 起点 -->
+      <div class="location start">
+        <div class="location-icon">🏠</div>
+        <div class="location-label">旧家</div>
+        <div class="boxes-remaining">
+          剩余箱子: <span class="count">{{ remainingBoxes }}</span>
         </div>
-        <div class="delivery-stats">
-          <div class="stat">
-            <span class="stat-label">外卖小哥跑了:</span>
-            <span class="stat-value deliveries">{{ deliveryCount }}</span>
-            <span class="stat-unit">趟</span>
+      </div>
+
+      <!-- 道路 -->
+      <div class="road">
+        <div class="road-line"></div>
+
+        <!-- 运输车辆 -->
+        <div
+          v-for="vehicle in vehicles"
+          :key="vehicle.id"
+          class="vehicle"
+          :class="{ 'moving': vehicle.isMoving }"
+          :style="{ left: vehicle.position + '%' }"
+        >
+          <div class="vehicle-body">
+            {{ mode === 'separate' ? '🛵' : '🚚' }}
           </div>
-          <div class="stat time-stat">
-            <span class="stat-label">总耗时:</span>
-            <span class="stat-value time">{{ totalTime }}</span>
-            <span class="stat-unit">秒</span>
+          <div class="vehicle-cargo" v-if="vehicle.cargo > 0">
+            {{ mode === 'separate' ? '📦' : '📦×' + vehicle.cargo }}
           </div>
         </div>
       </div>
 
-      <div class="scene-body">
-        <div class="kitchen-area">
-          <div class="kitchen-label">🍳 后厨（服务器）</div>
-          <div class="food-items">
-            <div
-              v-for="(item, index) in foodItems"
-              :key="index"
-              class="food-item"
-              :class="{ preparing: item.status === 'preparing', ready: item.status === 'ready' }"
-            >
-              <span class="food-emoji">{{ item.emoji }}</span>
-              <span class="food-name">{{ item.name }}</span>
-              <span class="food-status">{{ getStatusText(item.status) }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="delivery-lane">
-          <div class="lane-label">🛵 配送路线（网络）</div>
-          <div class="delivery-runway">
-            <div
-              v-for="(rider, index) in activeRiders"
-              :key="rider.id"
-              class="rider"
-              :style="{ left: rider.position + '%' }"
-            >
-              <div class="rider-emoji">{{ rider.mode === 'sprite' ? '🚚' : '🛵' }}</div>
-              <div class="rider-package">
-                <span v-for="emoji in rider.packages" :key="emoji">{{ emoji }}</span>
-              </div>
-            </div>
-            <div v-if="activeRiders.length === 0" class="empty-lane">
-              等待下单...
-            </div>
-          </div>
-        </div>
-
-        <div class="customer-area">
-          <div class="customer-label">🏠 你家（浏览器）</div>
-          <div class="received-items">
-            <div v-if="receivedItems.length === 0" class="empty-plate">
-              🍽️ 等待美食送达...
-            </div>
-            <div v-else class="food-on-table">
-              <div
-                v-for="(item, index) in receivedItems"
-                :key="index"
-                class="received-item"
-                :class="{ fresh: item.isNew }"
-              >
-                <span class="item-emoji">{{ item.emoji }}</span>
-                <span class="item-name">{{ item.name }}</span>
-              </div>
-            </div>
-          </div>
+      <!-- 终点 -->
+      <div class="location end">
+        <div class="location-icon">🏡</div>
+        <div class="location-label">新家</div>
+        <div class="boxes-delivered">
+          已送达: <span class="count">{{ deliveredBoxes }}</span>/6
         </div>
       </div>
     </div>
 
-    <div class="control-panel">
-      <button class="order-btn" @click="placeOrder" :disabled="isOrdering">
-        <span class="btn-icon">{{ isOrdering ? '⏳' : '🛒' }}</span>
-        <span class="btn-text">{{ isOrdering ? '配 送 中...' : '下 单 点 餐' }}</span>
+    <!-- 统计面板 -->
+    <div class="stats-panel">
+      <div class="stat-item">
+        <div class="stat-label">运输趟数</div>
+        <div class="stat-value" :class="{ 'good': trips <= 2, 'bad': trips > 2 }">
+          {{ trips }} 趟
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">总耗时</div>
+        <div class="stat-value">{{ totalTime.toFixed(1) }} 秒</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">效率评分</div>
+        <div class="stat-value" :class="efficiencyClass">
+          {{ efficiency }}
+        </div>
+      </div>
+    </div>
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button
+        class="btn btn-primary"
+        @click="startSimulation"
+        :disabled="isRunning"
+      >
+        {{ isRunning ? '运输中...' : '开始搬家' }}
       </button>
-      <button class="reset-btn" @click="resetScene">
-        <span class="btn-icon">🔄</span>
-        <span class="btn-text">重新开始</span>
+      <button
+        class="btn btn-secondary"
+        @click="resetSimulation"
+      >
+        重置
       </button>
     </div>
 
-    <div class="explanation-box">
-      <div class="explanation-icon">💡</div>
-      <div class="explanation-content">
-        <strong>{{ currentMode === 'slice' ? '切图时代' : '雪碧图时代' }}：</strong>
-        {{ currentExplanation }}
+    <!-- 知识点总结 -->
+    <div class="knowledge-box">
+      <div class="knowledge-title">💡 核心原理</div>
+      <div class="knowledge-content">
+        <p v-if="mode === 'separate'">
+          <strong>切图模式（分开请求）：</strong>就像一箱一箱搬，每次只拉一件货。
+          浏览器要发起 6 次 HTTP 请求，每次都要建立连接、传输数据，
+          <span class="highlight-bad">效率低、耗时长</span>。
+        </p>
+        <p v-else>
+          <strong>雪碧图模式（合并请求）：</strong>就像用大卡车一次性拉走所有箱子。
+          浏览器只需 1 次 HTTP 请求就能获取所有图片，
+          <span class="highlight-good">大幅减少连接开销，速度更快</span>！
+        </p>
       </div>
     </div>
   </div>
@@ -130,588 +143,461 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const currentMode = ref('slice')
-const isOrdering = ref(false)
-const deliveryCount = ref(0)
+// 模式选择
+const mode = ref('separate')
+
+// 运行状态
+const isRunning = ref(false)
+const trips = ref(0)
 const totalTime = ref(0)
-const activeRiders = ref([])
-const receivedItems = ref([])
+const remainingBoxes = ref(6)
+const deliveredBoxes = ref(0)
 
-const modes = [
-  {
-    id: 'slice',
-    label: '切图时代',
-    icon: '🛵',
-    desc: '每次只送一道菜'
-  },
-  {
-    id: 'sprite',
-    label: '雪碧图时代',
-    icon: '🚚',
-    desc: '一次送完整桌菜'
+// 车辆动画
+const vehicles = ref([])
+
+// 计算效率评分
+const efficiency = computed(() => {
+  if (mode.value === 'packed') {
+    return trips.value <= 1 ? '优秀' : '良好'
+  } else {
+    return trips.value <= 3 ? '一般' : '低效'
   }
-]
-
-const foodItems = [
-  { emoji: '🍕', name: '披萨底', status: 'ready' },
-  { emoji: '🧀', name: '芝士', status: 'ready' },
-  { emoji: '🍄', name: '蘑菇', status: 'ready' },
-  { emoji: '🥓', name: '培根', status: 'ready' },
-  { emoji: '🫑', name: '青椒', status: 'ready' },
-  { emoji: '🍅', name: '番茄酱', status: 'ready' }
-]
-
-const currentExplanation = computed(() => {
-  return currentMode.value === 'slice'
-    ? '每张小图都单独发一个 HTTP 请求。就像点外卖时，每道菜都单独叫一个外卖小哥，跑 6 趟才能送齐！'
-    : '把所有小图合并成一张大图。就像把一桌菜装进一个保温箱，一个外卖小哥一趟就全送来了！'
 })
 
-const getStatusText = (status) => {
-  const map = { ready: '✓ 就绪', preparing: '⏳ 制作中', delivering: '🛵 配送中' }
-  return map[status] || status
-}
+const efficiencyClass = computed(() => {
+  const score = efficiency.value
+  if (score === '优秀') return 'excellent'
+  if (score === '良好') return 'good'
+  if (score === '一般') return 'average'
+  return 'poor'
+})
 
-let riderIdCounter = 0
+// 开始模拟
+const startSimulation = async () => {
+  if (isRunning.value) return
 
-const switchMode = (mode) => {
-  currentMode.value = mode
-  resetScene()
-}
+  isRunning.value = true
+  resetStats()
 
-const resetScene = () => {
-  isOrdering.value = false
-  deliveryCount.value = 0
-  totalTime.value = 0
-  activeRiders.value = []
-  receivedItems.value = []
-  riderIdCounter = 0
-}
-
-const placeOrder = async () => {
-  if (isOrdering.value) return
-  isOrdering.value = true
-  receivedItems.value = []
-
-  const items = [...foodItems]
-
-  if (currentMode.value === 'slice') {
-    // 切图模式：每个食材单独配送
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i]
-      deliveryCount.value++
-
-      // 创建骑手
-      const rider = {
-        id: riderIdCounter++,
-        position: 0,
-        mode: 'slice',
-        packages: [item.emoji]
-      }
-      activeRiders.value = [rider]
-
-      // 动画：去程 - 使用响应式方式更新
-      await animateRiderReactive(rider, 100, 800)
-
-      // 送达
-      receivedItems.value.push({ ...item, isNew: true })
-      setTimeout(() => { if (receivedItems.value[i]) receivedItems.value[i].isNew = false }, 500)
-
-      // 动画：返程 - 使用响应式方式更新
-      await animateRiderReactive(rider, 0, 600)
-
-      totalTime.value += 1.4
-      activeRiders.value = []
+  if (mode.value === 'separate') {
+    // 分开运输：一箱一趟
+    for (let i = 0; i < 6; i++) {
+      await runTrip(1)
+      trips.value++
     }
   } else {
-    // 雪碧图模式：一次送全部
-    deliveryCount.value = 1
-
-    const rider = {
-      id: riderIdCounter++,
-      position: 0,
-      mode: 'sprite',
-      packages: items.map(i => i.emoji)
-    }
-    activeRiders.value = [rider]
-
-    // 动画：去程
-    await animateRider(rider, 100, 1500)
-
-    // 全部送达
-    items.forEach((item, idx) => {
-      setTimeout(() => {
-        receivedItems.value.push({ ...item, isNew: true })
-        setTimeout(() => {
-          const found = receivedItems.value.find(r => r.name === item.name && r.isNew)
-          if (found) found.isNew = false
-        }, 500)
-      }, idx * 100)
-    })
-
-    totalTime.value = 2.5
-
-    // 动画：返程
-    await animateRider(rider, 0, 1000)
-    activeRiders.value = []
+    // 打包运输：6箱一趟
+    await runTrip(6)
+    trips.value = 1
   }
 
-  isOrdering.value = false
+  isRunning.value = false
 }
 
-// 响应式动画函数 - 使用 Vue 的响希方式更新位置
-const animateRiderReactive = (rider, targetPosition, duration) => {
-  return new Promise(resolve => {
-    const startPosition = rider.position
-    const startTime = performance.now()
-    let isActive = true
-
-    const animate = (currentTime) => {
-      if (!isActive) return
-
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
-
-      // 缓动函数
-      const easeProgress = 1 - Math.pow(1 - progress, 3)
-
-      // 使用 Vue 的方式触发更新 - 直接修改对象属性
-      const newPosition = startPosition + (targetPosition - startPosition) * easeProgress
-
-      // 通过强制触发 Vue 响应的方式更新
-      rider.position = newPosition
-
-      // 手动触发 Vue 的更新（通过操作数组）
-      const riders = activeRiders.value
-      const index = riders.indexOf(rider)
-      if (index !== -1) {
-        // 通过替换对象强制触发响应
-        riders[index] = { ...rider, position: newPosition }
-      }
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        isActive = false
-        resolve()
-      }
+// 单次运输动画
+const runTrip = (cargoCount) => {
+  return new Promise((resolve) => {
+    // 创建车辆
+    const vehicle = {
+      id: Date.now(),
+      position: 0,
+      cargo: cargoCount,
+      isMoving: true
     }
+    vehicles.value = [vehicle]
 
-    requestAnimationFrame(animate)
+    // 更新剩余箱子
+    remainingBoxes.value = Math.max(0, remainingBoxes.value - cargoCount)
+
+    // 动画：去程
+    const goTrip = setInterval(() => {
+      vehicle.position += 2
+      if (vehicle.position >= 100) {
+        clearInterval(goTrip)
+
+        // 送达
+        deliveredBoxes.value += cargoCount
+
+        // 动画：返程
+        setTimeout(() => {
+          const returnTrip = setInterval(() => {
+            vehicle.position -= 2
+            if (vehicle.position <= 0) {
+              clearInterval(returnTrip)
+              vehicles.value = []
+              resolve()
+            }
+          }, 20)
+        }, 300)
+      }
+    }, 20)
+
+    // 累计时间
+    totalTime.value += 2.5
   })
+}
+
+// 重置模拟
+const resetSimulation = () => {
+  isRunning.value = false
+  vehicles.value = []
+  resetStats()
+}
+
+const resetStats = () => {
+  trips.value = 0
+  totalTime.value = 0
+  remainingBoxes.value = 6
+  deliveredBoxes.value = 0
 }
 </script>
 
 <style scoped>
-.slice-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
-  padding: 1.5rem;
-  margin: 1rem 0;
+.moving-game {
+  border: 2px solid #e8e8e8;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  padding: 24px;
+  margin: 20px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
-.scenario-intro {
+/* 故事框 */
+.story-box {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(255, 183, 77, 0.2), rgba(255, 138, 101, 0.2));
-  border-radius: 12px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  border-radius: 16px;
+  border: 2px dashed #ffc107;
 }
 
-.emoji-scene {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  animation: bounce 2s infinite;
+.story-emoji {
+  font-size: 48px;
+  margin-bottom: 8px;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.story-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #8b4513;
+  margin: 0 0 8px 0;
 }
 
-.scenario-intro h4 {
-  margin: 0.5rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 1.2rem;
-}
-
-.scenario-intro p {
+.story-text {
+  font-size: 14px;
+  color: #666;
   margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
-.mode-tabs {
+/* 模式选择 */
+.mode-selector {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.mode-tab {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 1rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg);
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.mode-card {
+  background: white;
+  border: 3px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 200px;
+  flex: 1;
+  max-width: 280px;
 }
 
-.mode-tab:hover {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
+.mode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.mode-tab.active {
-  border-color: var(--vp-c-brand);
-  background: linear-gradient(135deg, var(--vp-c-brand-soft), var(--vp-c-bg));
-}
-
-.tab-icon {
-  font-size: 2rem;
-}
-
-.tab-label {
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-}
-
-.tab-desc {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-}
-
-.restaurant-scene {
-  background: linear-gradient(180deg, #e3f2fd 0%, #f5f5f5 100%);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.scene-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.restaurant-info {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.restaurant-emoji {
-  font-size: 1.5rem;
-}
-
-.restaurant-name {
-  font-weight: 600;
-  color: #333;
-}
-
-.delivery-stats {
-  display: flex;
-  gap: 1rem;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.875rem;
-}
-
-.stat-label {
-  color: #666;
-}
-
-.stat-value {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.stat-value.deliveries {
-  color: #ff6b6b;
-}
-
-.stat-value.time {
-  color: #4ecdc4;
-}
-
-.scene-body {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  gap: 1rem;
-  padding: 1rem;
-  min-height: 250px;
-}
-
-.kitchen-area,
-.delivery-lane,
-.customer-area {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
-  padding: 0.75rem;
-}
-
-.kitchen-label,
-.lane-label,
-.customer-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #666;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.food-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.food-item {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem;
-  background: #f5f5f5;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  transition: all 0.3s;
-}
-
-.food-item.preparing {
-  background: #fff3e0;
-}
-
-.food-item.delivering {
-  background: #e3f2fd;
-}
-
-.food-item.ready {
+.mode-card.active {
+  border-color: #4caf50;
   background: #e8f5e9;
 }
 
-.food-emoji {
-  font-size: 1rem;
+.mode-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
 }
 
-.food-name {
-  flex: 1;
-  font-weight: 500;
+.mode-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
 }
 
-.food-status {
-  font-size: 0.625rem;
+.mode-desc {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.mode-detail {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e65100;
+  padding: 4px 12px;
+  background: #fff3e0;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.vs-divider {
+  font-size: 24px;
+  font-weight: bold;
   color: #999;
+  padding: 0 8px;
 }
 
-.delivery-runway {
+/* 动画演示区 */
+.animation-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+}
+
+.location {
+  text-align: center;
+  min-width: 100px;
+}
+
+.location-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.location-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.boxes-remaining,
+.boxes-delivered {
+  font-size: 12px;
+  color: #666;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.count {
+  font-weight: bold;
+  color: #e65100;
+  font-size: 16px;
+}
+
+.road {
+  flex: 1;
   position: relative;
-  height: 120px;
-  background: linear-gradient(90deg, #e8eaf6 0%, #c5cae9 50%, #e8eaf6 100%);
+  height: 80px;
+  background: linear-gradient(to bottom, #e8eaf6 0%, #c5cae9 100%);
   border-radius: 8px;
   overflow: hidden;
 }
 
-.delivery-runway::before {
-  content: '';
+.road-line {
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
   background: repeating-linear-gradient(
     90deg,
-    #9fa8da 0px,
-    #9fa8da 20px,
+    #7986cb 0px,
+    #7986cb 20px,
     transparent 20px,
     transparent 40px
   );
+  transform: translateY(-50%);
 }
 
-.rider {
+.vehicle {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: left 0.1s linear;
+  transition: none;
 }
 
-.rider-emoji {
-  font-size: 2rem;
-  animation: rider-bounce 0.5s infinite alternate;
+.vehicle-body {
+  font-size: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
-@keyframes rider-bounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-3px); }
-}
-
-.rider-package {
-  display: flex;
-  gap: 2px;
-  margin-top: 2px;
-  padding: 2px 4px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  font-size: 0.75rem;
-}
-
-.empty-lane {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: #9fa8da;
-  font-size: 0.875rem;
-}
-
-.received-items {
-  min-height: 150px;
-}
-
-.empty-plate {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 150px;
-  color: #999;
-  font-size: 0.875rem;
-}
-
-.food-on-table {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-.received-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5rem;
-  background: #f5f5f5;
+.vehicle-cargo {
+  font-size: 12px;
+  background: white;
+  padding: 2px 6px;
   border-radius: 8px;
-  transition: all 0.3s;
+  margin-top: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-weight: bold;
+  color: #e65100;
 }
 
-.received-item.fresh {
-  animation: item-arrive 0.5s ease;
-  background: #e8f5e9;
+/* 统计面板 */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-@keyframes item-arrive {
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
+.stat-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  border: 2px solid #e0e0e0;
 }
 
-.item-emoji {
-  font-size: 1.5rem;
-}
-
-.item-name {
-  font-size: 0.625rem;
+.stat-label {
+  font-size: 13px;
   color: #666;
-  margin-top: 0.25rem;
+  margin-bottom: 8px;
 }
 
-.control-panel {
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stat-value.good {
+  color: #4caf50;
+}
+
+.stat-value.bad {
+  color: #f44336;
+}
+
+.stat-value.excellent {
+  color: #2196f3;
+}
+
+.stat-value.good {
+  color: #4caf50;
+}
+
+.stat-value.poor {
+  color: #ff9800;
+}
+
+/* 控制按钮 */
+.controls {
   display: flex;
-  gap: 1rem;
   justify-content: center;
-  margin-top: 1rem;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.order-btn,
-.reset-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.5rem;
+.btn {
+  padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
-.order-btn {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
-  color: white;
-}
-
-.order-btn:hover:not(:disabled) {
+.btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.order-btn:disabled {
-  opacity: 0.7;
+.btn:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-.reset-btn {
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.btn-secondary {
   background: #f5f5f5;
   color: #666;
 }
 
-.reset-btn:hover {
-  background: #e0e0e0;
-}
-
-.explanation-box {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1rem;
-  padding: 1rem;
+/* 知识点总结 */
+.knowledge-box {
   background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
-  border-radius: 8px;
+  border-radius: 12px;
+  padding: 20px;
   border-left: 4px solid #2196f3;
 }
 
-.explanation-icon {
-  font-size: 1.5rem;
+.knowledge-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1565c0;
+  margin-bottom: 12px;
 }
 
-.explanation-content {
-  flex: 1;
-  font-size: 0.9rem;
-  color: #444;
+.knowledge-content {
+  font-size: 14px;
   line-height: 1.6;
+  color: #333;
 }
 
+.knowledge-content p {
+  margin: 0;
+}
+
+.highlight-good {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.highlight-bad {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* 响应式 */
 @media (max-width: 768px) {
-  .scene-body {
+  .mode-selector {
+    flex-direction: column;
+  }
+
+  .vs-divider {
+    transform: rotate(90deg);
+  }
+
+  .animation-area {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .road {
+    width: 100%;
+    height: 60px;
+  }
+
+  .stats-panel {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .delivery-stats {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .mode-tabs {
-    flex-direction: column;
-  }
-
-  .control-panel {
-    flex-direction: column;
   }
 }
 </style>

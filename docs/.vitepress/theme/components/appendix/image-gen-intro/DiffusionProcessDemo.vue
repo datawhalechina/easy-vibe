@@ -1,333 +1,283 @@
 <template>
-  <div class="diffusion-process-demo">
-    <el-card shadow="never">
-      <template #header>
-        <div class="header-controls">
-          <div class="mode-toggles">
-            <el-radio-group v-model="mode" size="large">
-              <el-radio-button label="forward">
-                <el-icon><TopRight /></el-icon> 加噪 (Forward)
-              </el-radio-button>
-              <el-radio-button label="reverse">
-                <el-icon><BottomLeft /></el-icon> 去噪 (Reverse)
-              </el-radio-button>
-            </el-radio-group>
-          </div>
-          <el-button type="primary" circle @click="togglePlay">
-            <el-icon v-if="isPlaying"><VideoPause /></el-icon>
-            <el-icon v-else><VideoPlay /></el-icon>
-          </el-button>
-        </div>
-      </template>
-
-      <div class="canvas-container">
-        <canvas
-          ref="canvasRef"
-          width="300"
-          height="300"
-          class="noise-canvas"
-        ></canvas>
-        <div class="step-indicator">
-          <span class="step-text"
-            >Step: {{ currentStep }} / {{ totalSteps }}</span
-          >
-          <el-progress
-            :percentage="
-              mode === 'forward'
-                ? (currentStep / totalSteps) * 100
-                : ((totalSteps - currentStep) / totalSteps) * 100
-            "
-            :status="mode === 'forward' ? 'exception' : 'success'"
-            :show-text="false"
-            :stroke-width="4"
-          />
+  <div class="diffusion-magic">
+    <div class="magic-frame">
+      <!-- The Canvas -->
+      <div class="canvas-wrapper">
+        <canvas ref="canvasRef" width="300" height="300"></canvas>
+        
+        <!-- Overlay Status -->
+        <div class="status-overlay" :class="{ visible: isProcessing }">
+          <div class="step-counter">Step {{ currentStep }} / {{ totalSteps }}</div>
+          <div class="step-desc">{{ stepDescription }}</div>
         </div>
       </div>
 
-      <div class="slider-control">
-        <el-slider
-          v-model="currentStep"
-          :min="0"
-          :max="totalSteps"
-          :format-tooltip="formatTooltip"
-          @input="draw"
-        />
-        <div class="slider-labels">
-          <span>{{
-            mode === 'forward' ? '原图 (Original)' : '纯噪声 (Noise)'
-          }}</span>
-          <span>{{
-            mode === 'forward' ? '纯噪声 (Noise)' : '原图 (Original)'
-          }}</span>
-        </div>
+      <!-- Controls -->
+      <div class="controls">
+        <button class="magic-btn" @click="startDenoise" :disabled="isProcessing">
+          <span class="icon">✨</span>
+          {{ isProcessing ? '去噪中...' : '开始去噪 (Denoise)' }}
+        </button>
+        
+        <button class="reset-btn" @click="reset" :disabled="isProcessing">
+          <span class="icon">🔄</span> 重置
+        </button>
       </div>
+    </div>
 
-      <el-alert
-        :title="
-          mode === 'forward' ? '训练阶段：破坏数据' : '生成阶段：创造数据'
-        "
-        :type="mode === 'forward' ? 'warning' : 'success'"
-        :description="
-          mode === 'forward'
-            ? 'AI 通过学习如何「一点点加噪」，掌握了噪声的规律。这就像教它把积木推倒。'
-            : 'AI 通过预测并减去噪声，从混沌中还原出图像。这就像它学会了把推倒的积木重新搭好。'
-        "
-        show-icon
-        :closable="false"
-        class="explanation-alert"
-      />
-    </el-card>
+    <div class="info-bar">
+      <span class="icon">💡</span>
+      <span>
+        <strong>观察重点：</strong>
+        注意看，图像不是一下子变出来的，而是像在雾气中慢慢显影。这就是 Diffusion 的核心——它在不断猜测“噪声背后的真相”。
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch, onUnmounted } from 'vue'
-import {
-  VideoPlay,
-  VideoPause,
-  TopRight,
-  BottomLeft
-} from '@element-plus/icons-vue'
+import { ref, onMounted, computed } from 'vue'
 
 const canvasRef = ref(null)
-const mode = ref('reverse')
+const isProcessing = ref(false)
 const currentStep = ref(0)
-const totalSteps = 100
-const isPlaying = ref(false)
+const totalSteps = 50
 let animationFrame = null
-let originalImage = null
 
-// Load a base image (using a generated pattern to avoid external dependencies)
-const loadBaseImage = () => {
-  const canvas = document.createElement('canvas')
-  canvas.width = 300
-  canvas.height = 300
-  const ctx = canvas.getContext('2d')
-
-  // Draw a simple landscape
-  // Sky
+// Use a simple gradient pattern as the "Target Image" to avoid external assets
+const drawTargetImage = (ctx) => {
+  // Draw a sunset landscape
   const gradient = ctx.createLinearGradient(0, 0, 0, 300)
-  gradient.addColorStop(0, '#87CEEB')
-  gradient.addColorStop(1, '#E0F7FA')
+  gradient.addColorStop(0, '#2c3e50')
+  gradient.addColorStop(0.5, '#e67e22')
+  gradient.addColorStop(1, '#f1c40f')
   ctx.fillStyle = gradient
   ctx.fillRect(0, 0, 300, 300)
-
-  // Sun
+  
+  // Draw a sun
   ctx.beginPath()
-  ctx.arc(240, 60, 30, 0, Math.PI * 2)
-  ctx.fillStyle = '#FFD700'
+  ctx.arc(150, 200, 60, 0, Math.PI * 2)
+  ctx.fillStyle = '#f39c12'
   ctx.fill()
-
-  // Mountains
+  
+  // Draw mountains
   ctx.beginPath()
   ctx.moveTo(0, 300)
-  ctx.lineTo(100, 150)
+  ctx.lineTo(100, 200)
   ctx.lineTo(200, 250)
-  ctx.lineTo(300, 100)
+  ctx.lineTo(300, 150)
   ctx.lineTo(300, 300)
-  ctx.fillStyle = '#4CAF50'
+  ctx.fillStyle = '#2c3e50'
   ctx.fill()
-
-  // House
-  ctx.fillStyle = '#795548'
-  ctx.fillRect(50, 220, 60, 60)
-  ctx.beginPath()
-  ctx.moveTo(40, 220)
-  ctx.lineTo(80, 180)
-  ctx.lineTo(120, 220)
-  ctx.fillStyle = '#F44336'
-  ctx.fill()
-
-  originalImage = ctx.getImageData(0, 0, 300, 300)
 }
 
-const generateNoise = (width, height) => {
-  const size = width * height * 4
-  const data = new Uint8ClampedArray(size)
-  for (let i = 0; i < size; i += 4) {
-    const val = Math.random() * 255
-    data[i] = val // R
-    data[i + 1] = val // G
-    data[i + 2] = val // B
-    data[i + 3] = 255 // A
+const drawNoise = (ctx, amount) => {
+  const w = 300
+  const h = 300
+  const idata = ctx.getImageData(0, 0, w, h)
+  const buffer = new Uint32Array(idata.data.buffer)
+  
+  // We need to blend the target image with noise based on 'amount' (0 to 1)
+  // But since we can't easily read back the target image every frame efficiently without offscreen canvas,
+  // let's do a simpler trick: Draw target, then draw semi-transparent noise on top.
+  
+  // Actually, let's generate noise overlay.
+  // Amount 1.0 = Full Noise (Opaque)
+  // Amount 0.0 = No Noise (Transparent)
+  
+  // Clear and draw target first
+  drawTargetImage(ctx)
+  
+  if (amount <= 0) return
+
+  const noiseCanvas = document.createElement('canvas')
+  noiseCanvas.width = w
+  noiseCanvas.height = h
+  const nCtx = noiseCanvas.getContext('2d')
+  const nImgData = nCtx.createImageData(w, h)
+  const data = nImgData.data
+  
+  for (let i = 0; i < data.length; i += 4) {
+    const gray = Math.random() * 255
+    data[i] = gray     // R
+    data[i+1] = gray   // G
+    data[i+2] = gray   // B
+    data[i+3] = 255    // Alpha
   }
-  return new ImageData(data, width, height)
+  nCtx.putImageData(nImgData, 0, 0)
+  
+  ctx.globalAlpha = amount
+  ctx.drawImage(noiseCanvas, 0, 0)
+  ctx.globalAlpha = 1.0
 }
 
-// Pre-generate noise to keep it consistent
-let noiseImage = null
+const stepDescription = computed(() => {
+  if (currentStep.value === 0) return '纯噪声 (Pure Noise)'
+  if (currentStep.value < 10) return '隐约出现轮廓...'
+  if (currentStep.value < 30) return '色彩开始浮现...'
+  if (currentStep.value < 50) return '细节逐渐清晰...'
+  return '生成完成 (Done)!'
+})
+
+const startDenoise = () => {
+  if (isProcessing.value) return
+  isProcessing.value = true
+  currentStep.value = 0
+  
+  const animate = () => {
+    if (currentStep.value >= totalSteps) {
+      isProcessing.value = false
+      return
+    }
+    
+    currentStep.value++
+    const noiseLevel = 1 - (currentStep.value / totalSteps)
+    // Non-linear ease out for better visual
+    const visualNoise = Math.pow(noiseLevel, 1.5) 
+    
+    const ctx = canvasRef.value.getContext('2d')
+    drawNoise(ctx, visualNoise)
+    
+    animationFrame = requestAnimationFrame(animate)
+  }
+  
+  animate()
+}
+
+const reset = () => {
+  if (animationFrame) cancelAnimationFrame(animationFrame)
+  isProcessing.value = false
+  currentStep.value = 0
+  const ctx = canvasRef.value.getContext('2d')
+  drawNoise(ctx, 1.0)
+}
 
 onMounted(() => {
-  loadBaseImage()
-  noiseImage = generateNoise(300, 300)
-  // Always start from step 0 (Start of the process)
-  // Forward: Step 0 = Clean Image
-  // Reverse: Step 0 = Noisy Image
-  currentStep.value = 0
-  draw()
+  reset()
 })
-
-onUnmounted(() => {
-  stopAnimation()
-})
-
-const draw = () => {
-  const canvas = canvasRef.value
-  if (!canvas || !originalImage) return
-  const ctx = canvas.getContext('2d')
-
-  // Calculate noise ratio based on mode and step
-  // Forward: 0 -> 100 (Clean -> Noisy)
-  // Reverse: 100 -> 0 (Noisy -> Clean)
-  // But wait, the slider is just "Progress".
-  // Let's define currentStep as "Amount of Noise" for simplicity in logic,
-  // but for UI, we want:
-  // Forward Mode: Slider 0 (Clean) -> 100 (Noisy)
-  // Reverse Mode: Slider 0 (Noisy) -> 100 (Clean)
-
-  let noiseRatio = 0
-  if (mode.value === 'forward') {
-    noiseRatio = currentStep.value / totalSteps
-  } else {
-    // In reverse mode, slider 0 means start (Noisy), 100 means end (Clean)
-    // So noise amount is 1 - slider
-    noiseRatio = 1 - currentStep.value / totalSteps
-  }
-
-  // Non-linear interpolation for better visual effect
-  // noiseRatio = Math.pow(noiseRatio, 1.5)
-
-  const w = canvas.width
-  const h = canvas.height
-  const output = ctx.createImageData(w, h)
-  const d = output.data
-  const o = originalImage.data
-  const n = noiseImage.data
-
-  for (let i = 0; i < d.length; i += 4) {
-    // Simple linear interpolation
-    // Pixel = (1 - alpha) * Original + alpha * Noise
-    // Note: This is a simplified diffusion visualization.
-    // Real diffusion adds noise: x_t = sqrt(alpha_bar) * x_0 + sqrt(1 - alpha_bar) * epsilon
-
-    // Using simple blending for visualization
-    d[i] = o[i] * (1 - noiseRatio) + n[i] * noiseRatio
-    d[i + 1] = o[i + 1] * (1 - noiseRatio) + n[i + 1] * noiseRatio
-    d[i + 2] = o[i + 2] * (1 - noiseRatio) + n[i + 2] * noiseRatio
-    d[i + 3] = 255
-  }
-
-  ctx.putImageData(output, 0, 0)
-}
-
-const togglePlay = () => {
-  if (isPlaying.value) {
-    stopAnimation()
-  } else {
-    startAnimation()
-  }
-}
-
-const startAnimation = () => {
-  isPlaying.value = true
-  // Reset if at end
-  if (currentStep.value >= totalSteps) {
-    currentStep.value = 0
-  }
-
-  const animate = () => {
-    if (currentStep.value < totalSteps) {
-      currentStep.value += 1
-      draw()
-      animationFrame = requestAnimationFrame(animate)
-    } else {
-      stopAnimation()
-    }
-  }
-  animationFrame = requestAnimationFrame(animate)
-}
-
-const stopAnimation = () => {
-  isPlaying.value = false
-  if (animationFrame) {
-    cancelAnimationFrame(animationFrame)
-    animationFrame = null
-  }
-}
-
-watch(mode, () => {
-  stopAnimation()
-  currentStep.value = 0
-  draw()
-})
-
-const formatTooltip = (val) => {
-  return `Step ${val}`
-}
 </script>
 
 <style scoped>
-.diffusion-process-demo {
+.diffusion-magic {
   margin: 20px 0;
+  max-width: 400px; /* Compact width */
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--vp-font-family-base);
 }
 
-.header-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.magic-frame {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.canvas-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
+.canvas-wrapper {
   position: relative;
-}
-
-.noise-canvas {
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
-  height: auto;
-}
-
-.step-indicator {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.8em;
-  font-weight: bold;
-  backdrop-filter: blur(4px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  width: 80%;
-}
-
-.step-indicator .el-progress {
   width: 100%;
+  padding-bottom: 100%; /* Square aspect ratio */
+  background: #000;
 }
 
-.slider-control {
-  padding: 0 20px;
-  margin-bottom: 20px;
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
 }
 
-.slider-labels {
+.status-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.status-overlay.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-counter {
+  font-size: 10px;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.step-desc {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.controls {
+  padding: 16px;
   display: flex;
-  justify-content: space-between;
-  font-size: 0.8em;
-  color: var(--el-text-color-secondary);
-  margin-top: -10px;
+  gap: 12px;
+  background: var(--vp-c-bg);
+  border-top: 1px solid var(--vp-c-divider);
 }
 
-.explanation-alert {
-  margin-top: 20px;
+button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.magic-btn {
+  background: var(--vp-c-brand);
+  color: white;
+}
+
+.magic-btn:hover:not(:disabled) {
+  background: var(--vp-c-brand-dark);
+}
+
+.magic-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+  flex: 0.4;
+}
+
+.reset-btn:hover:not(:disabled) {
+  background: var(--vp-c-bg-mute);
+}
+
+.info-bar {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  display: flex;
+  gap: 8px;
+  line-height: 1.4;
+  padding: 0 8px;
 }
 </style>

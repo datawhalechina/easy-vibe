@@ -72,6 +72,7 @@ import LatentSpaceViz from './components/appendix/image-gen-intro/LatentSpaceViz
 import DiffusionProcessDemo from './components/appendix/image-gen-intro/DiffusionProcessDemo.vue'
 import FlowMatchingDemo from './components/appendix/image-gen-intro/FlowMatchingDemo.vue'
 import PromptVisualizer from './components/appendix/image-gen-intro/PromptVisualizer.vue'
+import ImageGenQuickStartDemo from './components/appendix/image-gen-intro/ImageGenQuickStartDemo.vue'
 
 // Audio Intro Components
 import AudioWaveformDemo from './components/appendix/audio-intro/AudioWaveformDemo.vue'
@@ -150,6 +151,18 @@ import EvolutionResponsiveGridDemo from './components/appendix/frontend-evolutio
 import EvolutionJQueryVsStateDemo from './components/appendix/frontend-evolution/JQueryVsStateDemo.vue'
 
 import BackendEvolutionDemo from './components/appendix/backend-evolution/BackendEvolutionDemo.vue'
+import BackendQuickStartDemo from './components/appendix/backend-evolution/BackendQuickStartDemo.vue'
+import EvolutionIntroDemo from './components/appendix/backend-evolution/EvolutionIntroDemo.vue'
+import PhysicalServerDemo from './components/appendix/backend-evolution/PhysicalServerDemo.vue'
+import MonolithDemo from './components/appendix/backend-evolution/MonolithDemo.vue'
+import ContainerDockerDemo from './components/appendix/backend-evolution/ContainerDockerDemo.vue'
+import MicroservicesDemo from './components/appendix/backend-evolution/MicroservicesDemo.vue'
+import KubernetesDemo from './components/appendix/backend-evolution/KubernetesDemo.vue'
+import ServerlessDemo from './components/appendix/backend-evolution/ServerlessDemo.vue'
+import ArchitectureComparisonDemo from './components/appendix/backend-evolution/ArchitectureComparisonDemo.vue'
+import DeploymentFlowDemo from './components/appendix/backend-evolution/DeploymentFlowDemo.vue'
+import TechStackTimelineDemo from './components/appendix/backend-evolution/TechStackTimelineDemo.vue'
+import ScalingStrategyDemo from './components/appendix/backend-evolution/ScalingStrategyDemo.vue'
 import MonolithVsMicroserviceDemo from './components/appendix/backend-evolution/MonolithVsMicroserviceDemo.vue'
 import CgiQueueDemo from './components/appendix/backend-evolution/CgiQueueDemo.vue'
 import MonolithReleaseRiskDemo from './components/appendix/backend-evolution/MonolithReleaseRiskDemo.vue'
@@ -208,6 +221,11 @@ import PubSubDemo from './components/appendix/queue-design/PubSubDemo.vue'
 import DeadLetterQueueDemo from './components/appendix/queue-design/DeadLetterQueueDemo.vue'
 import DelayedMessageDemo from './components/appendix/queue-design/DelayedMessageDemo.vue'
 import SeckillSystemDemo from './components/appendix/queue-design/SeckillSystemDemo.vue'
+import MQArchitectureDemo from './components/appendix/queue-design/MQArchitectureDemo.vue'
+import ProducerConsumerDemo from './components/appendix/queue-design/ProducerConsumerDemo.vue'
+import ReliabilityDemo from './components/appendix/queue-design/ReliabilityDemo.vue'
+import IdempotenceDemo from './components/appendix/queue-design/IdempotenceDemo.vue'
+import MQComparisonDemo from './components/appendix/queue-design/MQComparisonDemo.vue'
 
 // Prompt Engineering Components
 import PromptQuickStartDemo from './components/appendix/prompt-engineering/PromptQuickStartDemo.vue'
@@ -252,6 +270,11 @@ import AgentMemoryPrinciple from './components/appendix/agent-intro/AgentMemoryP
 import DatabaseIndexDemo from './components/appendix/database-intro/DatabaseIndexDemo.vue'
 import RelationalDataDemo from './components/appendix/database-intro/RelationalDataDemo.vue'
 import SqlPlaygroundDemo from './components/appendix/database-intro/SqlPlaygroundDemo.vue'
+import DatabaseEvolutionDemo from './components/appendix/database-intro/DatabaseEvolutionDemo.vue'
+import DatabaseRelationDemo from './components/appendix/database-intro/DatabaseRelationDemo.vue'
+import BPlusTreeDemo from './components/appendix/database-intro/BPlusTreeDemo.vue'
+import TransactionACIDDemo from './components/appendix/database-intro/TransactionACIDDemo.vue'
+import QueryOptimizationDemo from './components/appendix/database-intro/QueryOptimizationDemo.vue'
 
 // IDE Intro Components
 import VirtualVSCodeDemo from './components/appendix/ide-intro/VirtualVSCodeDemo.vue'
@@ -290,8 +313,119 @@ import PerformanceBenchmarkDemo from './components/appendix/backend-languages/Pe
 import SyntaxComparisonDemo from './components/appendix/backend-languages/SyntaxComparisonDemo.vue'
 import ConcurrencyModelDemo from './components/appendix/backend-languages/ConcurrencyModelDemo.vue'
 import LanguageSelectorDemo from './components/appendix/backend-languages/LanguageSelectorDemo.vue'
+
+// Concurrency Models Components
+import ProcessThreadCoroutineDemo from './components/appendix/concurrency-models/ProcessThreadCoroutineDemo.vue'
+import ProcessIsolationDemo from './components/appendix/concurrency-models/ProcessIsolationDemo.vue'
+import ThreadSchedulingDemo from './components/appendix/concurrency-models/ThreadSchedulingDemo.vue'
+import CoroutineLightweightDemo from './components/appendix/concurrency-models/CoroutineLightweightDemo.vue'
+import AsyncAwaitDemo from './components/appendix/concurrency-models/AsyncAwaitDemo.vue'
+import EventLoopDemo from './components/appendix/concurrency-models/EventLoopDemo.vue'
+import ConcurrentVsParallelDemo from './components/appendix/concurrency-models/ConcurrentVsParallelDemo.vue'
+import GoroutineGreenThreadDemo from './components/appendix/concurrency-models/GoroutineGreenThreadDemo.vue'
 import DeveloperEfficiencyDemo from './components/appendix/backend-languages/DeveloperEfficiencyDemo.vue'
 import LanguageEcosystemDemo from './components/appendix/backend-languages/LanguageEcosystemDemo.vue'
+import MemoryManagementDemo from './components/appendix/backend-languages/MemoryManagementDemo.vue'
+
+// Component State Management Components
+import ComponentHierarchyDemo from './components/appendix/component-state-management/ComponentHierarchyDemo.vue'
+import PropsFlowDemo from './components/appendix/component-state-management/PropsFlowDemo.vue'
+import EventBusDemo from './components/appendix/component-state-management/EventBusDemo.vue'
+import StateManagementComparisonDemo from './components/appendix/component-state-management/StateManagementComparisonDemo.vue'
+import ReduxFlowDemo from './components/appendix/component-state-management/ReduxFlowDemo.vue'
+import VuexPiniaDemo from './components/appendix/component-state-management/VuexPiniaDemo.vue'
+import MobxReactivityDemo from './components/appendix/component-state-management/MobxReactivityDemo.vue'
+import ZustandJotaiDemo from './components/appendix/component-state-management/ZustandJotaiDemo.vue'
+
+// Cloud Services Components
+import CloudServicesMapDemo from './components/appendix/cloud-services/CloudServicesMapDemo.vue'
+import AwsVsAliyunDemo from './components/appendix/cloud-services/AwsVsAliyunDemo.vue'
+import ComputeServicesDemo from './components/appendix/cloud-services/ComputeServicesDemo.vue'
+import StorageServicesDemo from './components/appendix/cloud-services/StorageServicesDemo.vue'
+import NetworkServicesDemo from './components/appendix/cloud-services/NetworkServicesDemo.vue'
+import SecurityServicesDemo from './components/appendix/cloud-services/SecurityServicesDemo.vue'
+import PricingModelDemo from './components/appendix/cloud-services/PricingModelDemo.vue'
+import ServiceSelectionDemo from './components/appendix/cloud-services/ServiceSelectionDemo.vue'
+import DatabaseServicesDemo from './components/appendix/cloud-services/DatabaseServicesDemo.vue'
+import K8sServicesDemo from './components/appendix/cloud-services/K8sServicesDemo.vue'
+
+// Gateway Proxy Components
+import ReverseProxyDemo from './components/appendix/gateway-proxy/ReverseProxyDemo.vue'
+import ApiGatewayDemo from './components/appendix/gateway-proxy/ApiGatewayDemo.vue'
+import NginxArchitectureDemo from './components/appendix/gateway-proxy/NginxArchitectureDemo.vue'
+import RoutingRulesDemo from './components/appendix/gateway-proxy/RoutingRulesDemo.vue'
+import RateLimitingDemo from './components/appendix/gateway-proxy/RateLimitingDemo.vue'
+import AuthMiddlewareDemo from './components/appendix/gateway-proxy/AuthMiddlewareDemo.vue'
+import LoadBalancingDemo from './components/appendix/gateway-proxy/LoadBalancingDemo.vue'
+import SslTerminationDemo from './components/appendix/gateway-proxy/SslTerminationDemo.vue'
+
+// Load Balancing Components
+import LoadBalancerTypesDemo from './components/appendix/load-balancing/LoadBalancerTypesDemo.vue'
+import HealthCheckDemo from './components/appendix/load-balancing/HealthCheckDemo.vue'
+import SessionPersistenceDemo from './components/appendix/load-balancing/SessionPersistenceDemo.vue'
+import WeightedRoutingDemo from './components/appendix/load-balancing/WeightedRoutingDemo.vue'
+import BlueGreenDeploymentDemo from './components/appendix/load-balancing/BlueGreenDeploymentDemo.vue'
+import CanaryReleaseDemo from './components/appendix/load-balancing/CanaryReleaseDemo.vue'
+import AutoScalingDemo from './components/appendix/load-balancing/AutoScalingDemo.vue'
+import MultiRegionDemo from './components/appendix/load-balancing/MultiRegionDemo.vue'
+
+// Scheduled Tasks Components
+// import CronExpressionDemo from './components/appendix/scheduled-tasks/CronExpressionDemo.vue'
+// import TaskSchedulerDemo from './components/appendix/scheduled-tasks/TaskSchedulerDemo.vue'
+// import BatchProcessingDemo from './components/appendix/scheduled-tasks/BatchProcessingDemo.vue'
+// import JobQueueDemo from './components/appendix/scheduled-tasks/JobQueueDemo.vue'
+// import RetryMechanismDemo from './components/appendix/scheduled-tasks/RetryMechanismDemo.vue'
+// import DistributedLockDemo from './components/appendix/scheduled-tasks/DistributedLockDemo.vue'
+// import TaskMonitoringDemo from './components/appendix/scheduled-tasks/TaskMonitoringDemo.vue'
+// import SchedulingConflictDemo from './components/appendix/scheduled-tasks/SchedulingConflictDemo.vue'
+
+// Cloud IAM Components
+import IamRamComparisonDemo from './components/appendix/cloud-iam/IamRamComparisonDemo.vue'
+import IdentityProviderDemo from './components/appendix/cloud-iam/IdentityProviderDemo.vue'
+import RolePolicyDemo from './components/appendix/cloud-iam/RolePolicyDemo.vue'
+import PermissionHierarchyDemo from './components/appendix/cloud-iam/PermissionHierarchyDemo.vue'
+import AccessKeyManagementDemo from './components/appendix/cloud-iam/AccessKeyManagementDemo.vue'
+import MfaSecurityDemo from './components/appendix/cloud-iam/MfaSecurityDemo.vue'
+import CrossAccountAccessDemo from './components/appendix/cloud-iam/CrossAccountAccessDemo.vue'
+import BestPracticesDemo from './components/appendix/cloud-iam/BestPracticesDemo.vue'
+
+// Backend Layered Architecture Components
+import LayeredArchitectureDemo from './components/appendix/backend-layered-architecture/LayeredArchitectureDemo.vue'
+import ControllerLayerDemo from './components/appendix/backend-layered-architecture/ControllerLayerDemo.vue'
+import ServiceLayerDemo from './components/appendix/backend-layered-architecture/ServiceLayerDemo.vue'
+import RepositoryLayerDemo from './components/appendix/backend-layered-architecture/RepositoryLayerDemo.vue'
+import DomainModelDemo from './components/appendix/backend-layered-architecture/DomainModelDemo.vue'
+import DtoFlowDemo from './components/appendix/backend-layered-architecture/DtoFlowDemo.vue'
+
+// Browser Rendering Pipeline Components
+import DomToRenderTreeDemo from './components/appendix/browser-rendering-pipeline/DomToRenderTreeDemo.vue'
+import LayoutReflowDemo from './components/appendix/browser-rendering-pipeline/LayoutReflowDemo.vue'
+import PaintLayerDemo from './components/appendix/browser-rendering-pipeline/PaintLayerDemo.vue'
+import CompositeDemo from './components/appendix/browser-rendering-pipeline/CompositeDemo.vue'
+import MacroMicroTaskDemo from './components/appendix/browser-rendering-pipeline/MacroMicroTaskDemo.vue'
+import RenderingPerformanceDemo from './components/appendix/browser-rendering-pipeline/RenderingPerformanceDemo.vue'
+
+// Cache Design Extra Components
+import CacheArchitectureOverview from './components/appendix/cache-design/CacheArchitectureOverview.vue'
+import CacheHierarchyDemo from './components/appendix/cache-design/CacheHierarchyDemo.vue'
+import CachePatternComparisonDemo from './components/appendix/cache-design/CachePatternComparisonDemo.vue'
+import EcommerceCacheArchitectureDemo from './components/appendix/cache-design/EcommerceCacheArchitectureDemo.vue'
+import CacheMonitoringDashboardDemo from './components/appendix/cache-design/CacheMonitoringDashboardDemo.vue'
+
+// Cloud Storage CDN Extra Components
+import EdgeNodeDistributionDemo from './components/appendix/cloud-storage-cdn/EdgeNodeDistributionDemo.vue'
+import CachePolicyDemo from './components/appendix/cloud-storage-cdn/CachePolicyDemo.vue'
+import TrafficSchedulingDemo from './components/appendix/cloud-storage-cdn/TrafficSchedulingDemo.vue'
+import HttpsOptimizationDemo from './components/appendix/cloud-storage-cdn/HttpsOptimizationDemo.vue'
+import AccessAnalyticsDemo from './components/appendix/cloud-storage-cdn/AccessAnalyticsDemo.vue'
+
+// API Design Extra Components
+import ErrorHandlingDemo from './components/appendix/api-design/ErrorHandlingDemo.vue'
+import VersioningStrategyDemo from './components/appendix/api-design/VersioningStrategyDemo.vue'
+import DocumentationDemo from './components/appendix/api-design/DocumentationDemo.vue'
+import ResourceAnalogy from './components/appendix/api-design/ResourceAnalogy.vue'
+import RequestStructureDemo from './components/appendix/api-design/RequestStructureDemo.vue'
+import ResponseStructureDemo from './components/appendix/api-design/ResponseStructureDemo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -364,6 +498,7 @@ export default {
     app.component('DiffusionProcessDemo', DiffusionProcessDemo)
     app.component('FlowMatchingDemo', FlowMatchingDemo)
     app.component('PromptVisualizer', PromptVisualizer)
+    app.component('ImageGenQuickStartDemo', ImageGenQuickStartDemo)
 
     // Audio Intro Components Registration
     app.component('AudioWaveformDemo', AudioWaveformDemo)
@@ -445,6 +580,18 @@ export default {
     app.component('EvolutionJQueryVsStateDemo', EvolutionJQueryVsStateDemo)
 
     app.component('BackendEvolutionDemo', BackendEvolutionDemo)
+    app.component('BackendQuickStartDemo', BackendQuickStartDemo)
+    app.component('EvolutionIntroDemo', EvolutionIntroDemo)
+    app.component('PhysicalServerDemo', PhysicalServerDemo)
+    app.component('MonolithDemo', MonolithDemo)
+    app.component('ContainerDockerDemo', ContainerDockerDemo)
+    app.component('MicroservicesDemo', MicroservicesDemo)
+    app.component('KubernetesDemo', KubernetesDemo)
+    app.component('ServerlessDemo', ServerlessDemo)
+    app.component('ArchitectureComparisonDemo', ArchitectureComparisonDemo)
+    app.component('DeploymentFlowDemo', DeploymentFlowDemo)
+    app.component('TechStackTimelineDemo', TechStackTimelineDemo)
+    app.component('ScalingStrategyDemo', ScalingStrategyDemo)
     app.component('MonolithVsMicroserviceDemo', MonolithVsMicroserviceDemo)
     app.component('CgiQueueDemo', CgiQueueDemo)
     app.component('MonolithReleaseRiskDemo', MonolithReleaseRiskDemo)
@@ -591,6 +738,131 @@ export default {
     app.component('LanguageSelectorDemo', LanguageSelectorDemo)
     app.component('DeveloperEfficiencyDemo', DeveloperEfficiencyDemo)
     app.component('LanguageEcosystemDemo', LanguageEcosystemDemo)
+    app.component('MemoryManagementDemo', MemoryManagementDemo)
+
+    // Concurrency Models Components Registration
+    app.component('ProcessThreadCoroutineDemo', ProcessThreadCoroutineDemo)
+    app.component('ProcessIsolationDemo', ProcessIsolationDemo)
+    app.component('ThreadSchedulingDemo', ThreadSchedulingDemo)
+    app.component('CoroutineLightweightDemo', CoroutineLightweightDemo)
+    app.component('AsyncAwaitDemo', AsyncAwaitDemo)
+    app.component('EventLoopDemo', EventLoopDemo)
+    app.component('ConcurrentVsParallelDemo', ConcurrentVsParallelDemo)
+    app.component('GoroutineGreenThreadDemo', GoroutineGreenThreadDemo)
+
+    // Component State Management Components Registration
+    app.component('ComponentHierarchyDemo', ComponentHierarchyDemo)
+    app.component('PropsFlowDemo', PropsFlowDemo)
+    app.component('EventBusDemo', EventBusDemo)
+    app.component('StateManagementComparisonDemo', StateManagementComparisonDemo)
+    app.component('ReduxFlowDemo', ReduxFlowDemo)
+    app.component('VuexPiniaDemo', VuexPiniaDemo)
+    app.component('MobxReactivityDemo', MobxReactivityDemo)
+    app.component('ZustandJotaiDemo', ZustandJotaiDemo)
+
+    // Scheduled Tasks Components Registration
+    // app.component('CronExpressionDemo', CronExpressionDemo)
+    // app.component('TaskSchedulerDemo', TaskSchedulerDemo)
+    // app.component('BatchProcessingDemo', BatchProcessingDemo)
+    // app.component('JobQueueDemo', JobQueueDemo)
+    // app.component('RetryMechanismDemo', RetryMechanismDemo)
+    // app.component('DistributedLockDemo', DistributedLockDemo)
+    // app.component('TaskMonitoringDemo', TaskMonitoringDemo)
+    // app.component('SchedulingConflictDemo', SchedulingConflictDemo)
+
+    // Cloud Services Components Registration
+    app.component('CloudServicesMapDemo', CloudServicesMapDemo)
+    app.component('AwsVsAliyunDemo', AwsVsAliyunDemo)
+    app.component('ComputeServicesDemo', ComputeServicesDemo)
+    app.component('StorageServicesDemo', StorageServicesDemo)
+    app.component('NetworkServicesDemo', NetworkServicesDemo)
+    app.component('SecurityServicesDemo', SecurityServicesDemo)
+    app.component('PricingModelDemo', PricingModelDemo)
+    app.component('ServiceSelectionDemo', ServiceSelectionDemo)
+    app.component('DatabaseServicesDemo', DatabaseServicesDemo)
+    app.component('K8sServicesDemo', K8sServicesDemo)
+
+    // Cloud IAM Components Registration
+    app.component('IamRamComparisonDemo', IamRamComparisonDemo)
+    app.component('IdentityProviderDemo', IdentityProviderDemo)
+    app.component('RolePolicyDemo', RolePolicyDemo)
+    app.component('PermissionHierarchyDemo', PermissionHierarchyDemo)
+    app.component('AccessKeyManagementDemo', AccessKeyManagementDemo)
+    app.component('MfaSecurityDemo', MfaSecurityDemo)
+    app.component('CrossAccountAccessDemo', CrossAccountAccessDemo)
+    app.component('BestPracticesDemo', BestPracticesDemo)
+
+    // Gateway Proxy Components Registration
+    app.component('ReverseProxyDemo', ReverseProxyDemo)
+    app.component('ApiGatewayDemo', ApiGatewayDemo)
+    app.component('NginxArchitectureDemo', NginxArchitectureDemo)
+    app.component('RoutingRulesDemo', RoutingRulesDemo)
+    app.component('RateLimitingDemo', RateLimitingDemo)
+    app.component('AuthMiddlewareDemo', AuthMiddlewareDemo)
+    app.component('LoadBalancingDemo', LoadBalancingDemo)
+    app.component('SslTerminationDemo', SslTerminationDemo)
+
+    // Load Balancing Components Registration
+    app.component('LoadBalancerTypesDemo', LoadBalancerTypesDemo)
+    app.component('HealthCheckDemo', HealthCheckDemo)
+    app.component('SessionPersistenceDemo', SessionPersistenceDemo)
+    app.component('WeightedRoutingDemo', WeightedRoutingDemo)
+    app.component('BlueGreenDeploymentDemo', BlueGreenDeploymentDemo)
+    app.component('CanaryReleaseDemo', CanaryReleaseDemo)
+    app.component('AutoScalingDemo', AutoScalingDemo)
+    app.component('MultiRegionDemo', MultiRegionDemo)
+
+    // Backend Layered Architecture Components Registration
+    app.component('LayeredArchitectureDemo', LayeredArchitectureDemo)
+    app.component('ControllerLayerDemo', ControllerLayerDemo)
+    app.component('ServiceLayerDemo', ServiceLayerDemo)
+    app.component('RepositoryLayerDemo', RepositoryLayerDemo)
+    app.component('DomainModelDemo', DomainModelDemo)
+    app.component('DtoFlowDemo', DtoFlowDemo)
+
+    // Browser Rendering Pipeline Components Registration
+    app.component('DomToRenderTreeDemo', DomToRenderTreeDemo)
+    app.component('LayoutReflowDemo', LayoutReflowDemo)
+    app.component('PaintLayerDemo', PaintLayerDemo)
+    app.component('CompositeDemo', CompositeDemo)
+    app.component('MacroMicroTaskDemo', MacroMicroTaskDemo)
+    app.component('RenderingPerformanceDemo', RenderingPerformanceDemo)
+
+    // Cache Design Extra Components Registration
+    app.component('CacheArchitectureOverview', CacheArchitectureOverview)
+    app.component('CacheHierarchyDemo', CacheHierarchyDemo)
+    app.component('CachePatternComparisonDemo', CachePatternComparisonDemo)
+    app.component('EcommerceCacheArchitectureDemo', EcommerceCacheArchitectureDemo)
+    app.component('CacheMonitoringDashboardDemo', CacheMonitoringDashboardDemo)
+
+    // Cloud Storage CDN Extra Components Registration
+    app.component('EdgeNodeDistributionDemo', EdgeNodeDistributionDemo)
+    app.component('CachePolicyDemo', CachePolicyDemo)
+    app.component('TrafficSchedulingDemo', TrafficSchedulingDemo)
+    app.component('HttpsOptimizationDemo', HttpsOptimizationDemo)
+    app.component('AccessAnalyticsDemo', AccessAnalyticsDemo)
+
+    // API Design Extra Components Registration
+    app.component('ErrorHandlingDemo', ErrorHandlingDemo)
+    app.component('VersioningStrategyDemo', VersioningStrategyDemo)
+    app.component('DocumentationDemo', DocumentationDemo)
+    app.component('ResourceAnalogy', ResourceAnalogy)
+    app.component('RequestStructureDemo', RequestStructureDemo)
+    app.component('ResponseStructureDemo', ResponseStructureDemo)
+
+    // Database Intro Extra Components Registration
+    app.component('DatabaseEvolutionDemo', DatabaseEvolutionDemo)
+    app.component('DatabaseRelationDemo', DatabaseRelationDemo)
+    app.component('BPlusTreeDemo', BPlusTreeDemo)
+    app.component('TransactionACIDDemo', TransactionACIDDemo)
+    app.component('QueryOptimizationDemo', QueryOptimizationDemo)
+
+    // Queue Design Extra Components Registration
+    app.component('MQArchitectureDemo', MQArchitectureDemo)
+    app.component('ProducerConsumerDemo', ProducerConsumerDemo)
+    app.component('ReliabilityDemo', ReliabilityDemo)
+    app.component('IdempotenceDemo', IdempotenceDemo)
+    app.component('MQComparisonDemo', MQComparisonDemo)
   },
   setup() {
     const route = useRoute()

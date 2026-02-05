@@ -1,231 +1,150 @@
 <!--
-  JQueryVsStateDemo.vue
-  jQuery vs 数据驱动对比演示 - 重构版
-
-  用途：
-  用"餐厅服务员"的比喻，让零基础用户理解命令式 vs 声明式的区别。
-  通过并排的交互式计数器，直观展示两种编程范式的差异。
+  JQueryVsStateDemo.vue - 餐厅账本对比
+  用"手工记账 vs 智能管家"的比喻来解释 jQuery vs Vue/React
 -->
 <template>
-  <div class="jquery-state-demo">
-    <div class="scenario-intro">
-      <div class="emoji-scene">🍽️ 👨‍🍳 📝</div>
-      <h4>餐厅服务员模拟器</h4>
-      <p>想象一下你在餐厅当服务员，有两种工作方式，你会选哪种？</p>
+  <div class="restaurant-demo">
+    <!-- 故事引入 -->
+    <div class="story-intro">
+      <div class="story-icon">👨‍🍳📒🤖</div>
+      <h3 class="story-title">老张的餐厅账本</h3>
+      <p class="story-desc">
+        老张开了家餐厅，每天要点菜、做菜、算账。有两种记账方式：<br>
+        <strong>传统方式：老张手工记</strong>（jQuery 模式） vs <strong>智能方式：请个管家</strong>（Vue/React 模式）<br>
+        看看哪种更轻松？
+      </p>
     </div>
 
-    <div class="comparison-container">
-      <!-- 左边：jQuery 模式 -->
-      <div class="side-panel jquery-panel">
-        <div class="panel-header">
-          <div class="mode-badge jquery">
-            <span class="badge-icon">🏃</span>
-            <span class="badge-text">跑腿王模式</span>
-          </div>
-          <div class="mode-subtitle">命令式（jQuery）</div>
+    <!-- 模式选择 -->
+    <div class="mode-tabs">
+      <button
+        class="tab-btn"
+        :class="{ active: mode === 'manual' }"
+        @click="mode = 'manual'"
+      >
+        <span class="tab-icon">✍️</span>
+        <span class="tab-text">手工记账</span>
+        <span class="tab-sub">jQuery 方式</span>
+      </button>
+      <button
+        class="tab-btn"
+        :class="{ active: mode === 'smart' }"
+        @click="mode = 'smart'"
+      >
+        <span class="tab-icon">🤖</span>
+        <span class="tab-text">智能管家</span>
+        <span class="tab-sub">Vue/React 方式</span>
+      </button>
+    </div>
+
+    <!-- 对比展示区 -->
+    <div class="comparison-showcase">
+      <!-- 左侧：场景描述 -->
+      <div class="scenario-panel">
+        <div class="scenario-header">
+          <span class="scenario-icon">{{ mode === 'manual' ? '👨‍🍳' : '🤖' }}</span>
+          <span class="scenario-title">{{ mode === 'manual' ? '老张手工记账' : '智能管家记账' }}</span>
         </div>
 
-        <div class="scenario-visual">
-          <div class="visual-label">后厨 → 吧台 → 收银台</div>
-          <div class="runner-path">
-            <div class="station kitchen" :class="{ active: jqActiveStation === 'kitchen' }">
-              <span class="station-icon">🍳</span>
-              <span class="station-name">后厨</span>
-            </div>
-            <div class="path-arrow" :class="{ active: jqActiveStation === 'bar' }">→</div>
-            <div class="station bar" :class="{ active: jqActiveStation === 'bar' }">
-              <span class="station-icon">🥤</span>
-              <span class="station-name">吧台</span>
-            </div>
-            <div class="path-arrow" :class="{ active: jqActiveStation === 'cashier' }">→</div>
-            <div class="station cashier" :class="{ active: jqActiveStation === 'cashier' }">
-              <span class="station-icon">💰</span>
-              <span class="station-name">收银</span>
+        <div class="scenario-content">
+          <div class="step-list">
+            <div
+              v-for="(step, index) in currentSteps"
+              :key="index"
+              class="step-item"
+              :class="{ active: index === currentStep }"
+            >
+              <div class="step-number">{{ index + 1 }}</div>
+              <div class="step-text">{{ step }}</div>
             </div>
           </div>
-        </div>
-
-        <div class="demo-counter">
-          <div class="counter-display">
-            <div class="display-label">当前计数</div>
-            <div class="display-value">{{ jqCount }}</div>
-          </div>
-
-          <div class="counter-controls">
-            <button class="ctrl-btn decrement" @click="updateJq(-1)" :disabled="jqCount <= 0">
-              <span class="btn-icon">➖</span>
-              <span class="btn-label">减 1</span>
-            </button>
-            <button class="ctrl-btn increment" @click="updateJq(1)">
-              <span class="btn-icon">➕</span>
-              <span class="btn-label">加 1</span>
-            </button>
-          </div>
-
-          <div class="status-bars">
-            <div class="status-item">
-              <span class="status-label">进度条</span>
-              <div class="progress-bar">
-                <div class="progress-fill" :style="{ width: jqProgress + '%' }"></div>
-              </div>
-              <span class="status-value">{{ jqProgress }}%</span>
-            </div>
-            <div class="status-item">
-              <span class="status-label">状态</span>
-              <span class="status-badge" :class="jqStatusClass">{{ jqStatus }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="code-snippet">
-          <div class="snippet-header">
-            <span class="snippet-title">💻 代码实现</span>
-            <span class="snippet-lang">jQuery</span>
-          </div>
-          <pre class="snippet-code"><code>// 需要手动更新每个元素
-function updateCounter(change) {
-  var count = parseInt($('#counter').text());
-  var newCount = count + change;
-
-  // 更新计数显示
-  $('#counter').text(newCount);
-
-  // 更新进度条
-  var progress = (newCount / 10) * 100;
-  $('#progress').css('width', progress + '%');
-
-  // 更新状态文字
-  if (newCount > 5) {
-    $('#status').text('高！').addClass('warning');
-  } else {
-    $('#status').text('正常').removeClass('warning');
-  }
-
-  // 如果忘了更新某个地方...
-  // 界面就会不一致！😱
-}</code></pre>
-        </div>
-
-        <div class="pain-points">
-          <div class="pain-title">😫 痛点</div>
-          <ul class="pain-list">
-            <li>每次都要亲自跑三个地方更新</li>
-            <li>漏改一个地方，界面就不一致</li>
-            <li>代码分散，难以维护</li>
-            <li>累得半死，还容易出错</li>
-          </ul>
         </div>
       </div>
 
-      <!-- VS 标识 -->
-      <div class="vs-divider">
-        <div class="vs-badge">VS</div>
+      <!-- 右侧：账本展示 -->
+      <div class="ledger-panel">
+        <div class="ledger-header">
+          <span class="ledger-icon">📒</span>
+          <span class="ledger-title">今日账本</span>
+          <span class="ledger-status" :class="mode">{{ ledgerStatus }}</span>
+        </div>
+
+        <div class="ledger-content">
+          <!-- 订单列表 -->
+          <div class="order-list">
+            <div
+              v-for="order in orders"
+              :key="order.id"
+              class="order-item"
+              :class="{ completed: order.completed }"
+            >
+              <div class="order-info">
+                <span class="order-name">{{ order.name }}</span>
+                <span class="order-price">¥{{ order.price }}</span>
+              </div>
+              <div class="order-status">
+                {{ order.completed ? '✓' : '○' }}
+              </div>
+            </div>
+          </div>
+
+          <!-- 总计 -->
+          <div class="total-section">
+            <div class="total-row">
+              <span>菜品数量：</span>
+              <span class="total-value">{{ completedCount }}/{{ orders.length }} 份</span>
+            </div>
+            <div class="total-row total-final">
+              <span>今日营收：</span>
+              <span class="total-amount">¥{{ totalRevenue }}</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <!-- 右边：Vue 模式 -->
-      <div class="side-panel vue-panel">
-        <div class="panel-header">
-          <div class="mode-badge vue">
-            <span class="badge-icon">👔</span>
-            <span class="badge-text">指挥家模式</span>
-          </div>
-          <div class="mode-subtitle">声明式（Vue）</div>
+    <!-- 操作按钮 -->
+    <div class="action-buttons">
+      <button
+        class="btn btn-primary"
+        @click="processOrder"
+        :disabled="isProcessing || allCompleted"
+      >
+        {{ isProcessing ? '处理中...' : allCompleted ? '今日完成！' : '下一道菜' }}
+      </button>
+      <button
+        class="btn btn-secondary"
+        @click="resetDemo"
+      >
+        重新开始
+      </button>
+    </div>
+
+    <!-- 优缺点对比 -->
+    <div class="comparison-table">
+      <div class="table-header">
+        <div class="table-title">💡 两种方式对比</div>
+      </div>
+      <div class="table-content">
+        <div class="comparison-row header">
+          <div class="col-feature">特点</div>
+          <div class="col-manual">手工记账 (jQuery)</div>
+          <div class="col-smart">智能管家 (Vue/React)</div>
         </div>
-
-        <div class="scenario-visual">
-          <div class="visual-label">我只管改单子，其他自动同步！</div>
-          <div class="conductor-scene">
-            <div class="conductor">🎩</div>
-            <div class="orchestra">
-              <div class="musician" :class="{ playing: vueCount > 0 }">
-                <span class="musician-icon">🎸</span>
-                <span class="musician-role">计数</span>
-              </div>
-              <div class="musician" :class="{ playing: vueProgress > 0 }">
-                <span class="musician-icon">📊</span>
-                <span class="musician-role">进度</span>
-              </div>
-              <div class="musician" :class="{ playing: vueCount > 5 }">
-                <span class="musician-icon">🚦</span>
-                <span class="musician-role">状态</span>
-              </div>
-            </div>
-          </div>
+        <div class="comparison-row">
+          <div class="col-feature">工作方式</div>
+          <div class="col-manual">手动改每一处</div>
+          <div class="col-smart">改数据，界面自动变</div>
         </div>
-
-        <div class="demo-counter">
-          <div class="counter-display">
-            <div class="display-label">当前计数</div>
-            <div class="display-value">{{ vueCount }}</div>
-          </div>
-
-          <div class="counter-controls">
-            <button class="ctrl-btn decrement" @click="vueCount--" :disabled="vueCount <= 0">
-              <span class="btn-icon">➖</span>
-              <span class="btn-label">减 1</span>
-            </button>
-            <button class="ctrl-btn increment" @click="vueCount++">
-              <span class="btn-icon">➕</span>
-              <span class="btn-label">加 1</span>
-            </button>
-          </div>
-
-          <div class="status-bars">
-            <div class="status-item">
-              <span class="status-label">进度条</span>
-              <div class="progress-bar">
-                <div class="progress-fill vue" :style="{ width: vueProgress + '%' }"></div>
-              </div>
-              <span class="status-value">{{ vueProgress }}%</span>
-            </div>
-            <div class="status-item">
-              <span class="status-label">状态</span>
-              <span class="status-badge" :class="vueStatusClass">{{ vueStatus }}</span>
-            </div>
-          </div>
+        <div class="comparison-row">
+          <div class="col-feature">容易出错</div>
+          <div class="col-manual">容易漏改某处</div>
+          <div class="col-smart">自动同步，不易错</div>
         </div>
-
-        <div class="code-snippet">
-          <div class="snippet-header">
-            <span class="snippet-title">💻 代码实现</span>
-            <span class="snippet-lang">Vue</span>
-          </div>
-          <pre class="snippet-code"><code>// 只需要定义数据和规则
-data() {
-  return {
-    count: 0
-  }
-},
-computed: {
-  // 进度自动计算
-  progress() {
-    return (this.count / 10) * 100;
-  },
-  // 状态自动判断
-  status() {
-    return this.count > 5 ? '高！' : '正常';
-  },
-  isWarning() {
-    return this.count > 5;
-  }
-}
-
-// 模板里只需要声明关系
-&lt;template&gt;
-  &lt;div class="status" :class="{ warning: isWarning }"&gt;
-    {{ status }}
-  &lt;/div&gt;
-&lt;/template&gt;</code></pre>
-        </div>
-
-        <div class="benefits">
-          <div class="benefit-title">✨ 优势</div>
-          <ul class="benefit-list">
-            <li>只需改数据，不用手动更新每个地方</li>
-            <li>界面自动同步，永远保持一致</li>
-            <li>代码结构清晰，容易维护</li>
-            <li>轻松优雅，不易出错</li>
-          </ul>
+        <div class="comparison-row">
+          <div class="col-feature">适合场景</div>
+          <div class="col-manual">简单页面</div>
+          <div class="col-smart">复杂交互应用</div>
         </div>
       </div>
     </div>
@@ -235,570 +154,495 @@ computed: {
 <script setup>
 import { ref, computed } from 'vue'
 
-// jQuery 模式的状态
-const jqCount = ref(0)
-const jqActiveStation = ref('')
+// 当前模式
+const mode = ref('manual')
 
-// Vue 模式的状态
-const vueCount = ref(0)
+// 处理状态
+const isProcessing = ref(false)
+const currentStep = ref(0)
 
-// jQuery 计算属性
-const jqProgress = computed(() => Math.min((jqCount.value / 10) * 100, 100))
+// 订单数据
+const orders = ref([
+  { id: 1, name: '宫保鸡丁', price: 38, completed: false },
+  { id: 2, name: '鱼香肉丝', price: 32, completed: false },
+  { id: 3, name: '麻婆豆腐', price: 18, completed: false },
+  { id: 4, name: '糖醋排骨', price: 48, completed: false }
+])
 
-const jqStatus = computed(() => {
-  if (jqCount.value > 5) return '高！'
-  if (jqCount.value > 0) return '正常'
-  return '初始'
+// 手工记账步骤
+const manualSteps = [
+  '翻开账本，找到对应菜品',
+  '手动计算价格，写到本子上',
+  '再算一遍总数，防止算错',
+  '把完成的菜标记一下'
+]
+
+// 智能管家步骤
+const smartSteps = [
+  '告诉管家：这道菜做好了',
+  '管家自动更新账本',
+  '总数自动计算，不会出错',
+  '所有数据实时同步'
+]
+
+// 当前步骤列表
+const currentSteps = computed(() => {
+  return mode.value === 'manual' ? manualSteps : smartSteps
 })
 
-const jqStatusClass = computed(() => {
-  if (jqCount.value > 5) return 'warning'
-  if (jqCount.value > 0) return 'normal'
-  return 'initial'
+// 计算属性
+const completedCount = computed(() => orders.value.filter(o => o.completed).length)
+const totalRevenue = computed(() => orders.value.filter(o => o.completed).reduce((sum, o) => sum + o.price, 0))
+const allCompleted = computed(() => orders.value.every(o => o.completed))
+
+const ledgerStatus = computed(() => {
+  if (allCompleted.value) return '已完成'
+  return mode.value === 'manual' ? '手工计算中...' : '自动同步中...'
 })
 
-// Vue 计算属性
-const vueProgress = computed(() => Math.min((vueCount.value / 10) * 100, 100))
+// 处理下一道菜
+const processOrder = async () => {
+  if (isProcessing.value || allCompleted.value) return
 
-const vueStatus = computed(() => {
-  if (vueCount.value > 5) return '高！'
-  if (vueCount.value > 0) return '正常'
-  return '初始'
-})
+  isProcessing.value = true
+  currentStep.value = 0
 
-const vueStatusClass = computed(() => {
-  if (vueCount.value > 5) return 'warning'
-  if (vueCount.value > 0) return 'normal'
-  return 'initial'
-})
+  // 找到第一个未完成的订单
+  const orderIndex = orders.value.findIndex(o => !o.completed)
 
-// jQuery 更新函数（模拟需要手动更新多个地方）
-const updateJq = async (change) => {
-  const newCount = jqCount.value + change
-  if (newCount < 0) return
+  // 模拟步骤执行
+  for (let i = 0; i < currentSteps.value.length; i++) {
+    currentStep.value = i
+    await sleep(400)
+  }
 
-  // 模拟需要跑三个地方更新
-  // 第一站：后厨（计数）
-  jqActiveStation.value = 'kitchen'
-  await sleep(300)
-  jqCount.value = newCount
+  // 完成订单
+  if (orderIndex !== -1) {
+    orders.value[orderIndex].completed = true
+  }
 
-  // 第二站：吧台（进度条）
-  jqActiveStation.value = 'bar'
-  await sleep(300)
-
-  // 第三站：收银台（状态）
-  jqActiveStation.value = 'cashier'
-  await sleep(300)
-
-  jqActiveStation.value = ''
+  isProcessing.value = false
+  currentStep.value = 0
 }
 
+// 重置演示
+const resetDemo = () => {
+  isProcessing.value = false
+  currentStep.value = 0
+  orders.value.forEach(o => o.completed = false)
+}
+
+// 辅助函数
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 </script>
 
 <style scoped>
-.jquery-state-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
-  padding: 1.5rem;
-  margin: 1rem 0;
+.restaurant-demo {
+  border: 2px solid #e8e8e8;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+  padding: 24px;
+  margin: 20px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
-.scenario-intro {
+/* 故事引入 */
+.story-intro {
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(255, 183, 77, 0.2), rgba(255, 138, 101, 0.2));
-  border-radius: 12px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  border-radius: 16px;
+  border: 2px dashed #ffc107;
 }
 
-.emoji-scene {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  animation: bounce 2s infinite;
+.story-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.story-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e65100;
+  margin: 0 0 8px 0;
 }
 
-.scenario-intro h4 {
-  margin: 0.5rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 1.2rem;
-}
-
-.scenario-intro p {
+.story-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
   margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
 }
 
-.comparison-container {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 1rem;
-  align-items: stretch;
-}
-
-.side-panel {
-  border: 2px solid var(--vp-c-divider);
+/* 模式选项卡 */
+.mode-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: white;
+  padding: 8px;
   border-radius: 12px;
-  overflow: hidden;
-  background: var(--vp-c-bg);
+  border: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+  flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.jquery-panel {
-  border-color: #ff7043;
-}
-
-.vue-panel {
-  border-color: #42b883;
-}
-
-.panel-header {
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.mode-badge {
-  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  gap: 4px;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.mode-badge.jquery {
-  background: linear-gradient(135deg, #ff7043, #f4511e);
+.tab-btn:hover {
+  background: #f5f5f5;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
 }
 
-.mode-badge.vue {
-  background: linear-gradient(135deg, #42b883, #35495e);
+.tab-icon {
+  font-size: 32px;
+}
+
+.tab-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tab-sub {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* 对比展示区 */
+.comparison-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .comparison-showcase {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 场景面板 */
+.scenario-panel {
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.scenario-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #ffecb3, #ffe082);
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.scenario-icon {
+  font-size: 28px;
+}
+
+.scenario-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.scenario-content {
+  padding: 16px;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.step-item.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  transform: translateX(8px);
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #333;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.step-item.active .step-number {
+  background: rgba(255, 255, 255, 0.2);
   color: white;
 }
 
-.badge-icon {
-  font-size: 1.25rem;
+.step-text {
+  font-size: 14px;
+  flex: 1;
 }
 
-.mode-subtitle {
-  font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+/* 账本面板 */
+.ledger-panel {
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+  overflow: hidden;
 }
 
-.scenario-visual {
-  padding: 1rem;
-  background: var(--vp-c-bg-soft);
-  border-bottom: 1px solid var(--vp-c-divider);
+.ledger-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+  border-bottom: 2px solid #e0e0e0;
 }
 
-.visual-label {
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
+.ledger-icon {
+  font-size: 28px;
 }
 
-.runner-path {
+.ledger-title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.ledger-status {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: white;
+  color: #666;
+}
+
+.ledger-status.manual {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.ledger-content {
+  padding: 16px;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.order-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.25rem;
-}
-
-.station {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 8px;
-  background: #f5f5f5;
-  transition: all 0.3s;
-  min-width: 60px;
-}
-
-.station.active {
-  background: #ff7043;
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(255, 112, 67, 0.4);
-}
-
-.station-icon {
-  font-size: 1.5rem;
-}
-
-.station-name {
-  font-size: 0.625rem;
-  margin-top: 0.25rem;
-}
-
-.path-arrow {
-  font-size: 1.5rem;
-  color: #ccc;
-  transition: all 0.3s;
-}
-
-.path-arrow.active {
-  color: #ff7043;
-  transform: translateX(5px);
-}
-
-.conductor-scene {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.conductor {
-  font-size: 3rem;
-  animation: conduct 2s ease-in-out infinite;
-}
-
-@keyframes conduct {
-  0%, 100% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-}
-
-.orchestra {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.musician {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5rem;
+  padding: 12px;
   background: #f5f5f5;
   border-radius: 8px;
-  transition: all 0.3s;
-  min-width: 60px;
+  transition: all 0.3s ease;
 }
 
-.musician.playing {
-  background: #42b883;
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(66, 184, 131, 0.4);
+.order-item.completed {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
 }
 
-.musician-icon {
-  font-size: 1.5rem;
-}
-
-.musician-role {
-  font-size: 0.625rem;
-  margin-top: 0.25rem;
-}
-
-.demo-counter {
-  padding: 1rem;
-  flex: 1;
-}
-
-.counter-display {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.display-label {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.25rem;
-}
-
-.display-value {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--vp-c-brand);
-  line-height: 1;
-}
-
-.counter-controls {
+.order-info {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.ctrl-btn {
-  flex: 1;
+.order-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.order-price {
+  font-size: 13px;
+  color: #e65100;
+  font-weight: bold;
+}
+
+.order-status {
+  font-size: 18px;
+}
+
+.total-section {
+  border-top: 2px dashed #e0e0e0;
+  padding-top: 12px;
+}
+
+.total-row {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.total-row.total-final {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  border-top: 2px solid #e0e0e0;
+  margin-top: 8px;
+  padding-top: 12px;
+}
+
+.total-amount {
+  color: #4caf50;
+  font-size: 20px;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
   justify-content: center;
-  gap: 0.25rem;
-  padding: 0.75rem;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
-.ctrl-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.jquery-panel .ctrl-btn.decrement {
-  background: #ffccbc;
-  color: #bf360c;
-}
-
-.jquery-panel .ctrl-btn.increment {
-  background: #ff7043;
-  color: white;
-}
-
-.vue-panel .ctrl-btn.decrement {
-  background: #c8e6c9;
-  color: #2e7d32;
-}
-
-.vue-panel .ctrl-btn.increment {
-  background: #42b883;
-  color: white;
-}
-
-.ctrl-btn:not(:disabled):hover {
+.btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.btn-icon {
-  font-size: 1rem;
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.status-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
 }
 
-.status-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.status-label {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-  min-width: 50px;
-}
-
-.progress-bar {
-  flex: 1;
-  height: 8px;
-  background: #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: 4px;
-  transition: width 0.3s ease;
-}
-
-.jquery-panel .progress-fill {
-  background: linear-gradient(90deg, #ff7043, #f4511e);
-}
-
-.vue-panel .progress-fill {
-  background: linear-gradient(90deg, #42b883, #35495e);
-}
-
-.status-value {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-  min-width: 35px;
-  text-align: right;
-}
-
-.status-badge {
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.status-badge.initial {
+.btn-secondary {
   background: #f5f5f5;
-  color: #999;
+  color: #666;
 }
 
-.status-badge.normal {
-  background: #c8e6c9;
-  color: #2e7d32;
-}
-
-.status-badge.warning {
-  background: #ffccbc;
-  color: #bf360c;
-}
-
-.code-snippet {
-  margin: 1rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+/* 对比表格 */
+.comparison-table {
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
   overflow: hidden;
 }
 
-.snippet-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  background: var(--vp-c-bg-alt);
-  border-bottom: 1px solid var(--vp-c-divider);
+.table-header {
+  padding: 16px;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-bottom: 2px solid #e0e0e0;
 }
 
-.snippet-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
+.table-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1565c0;
 }
 
-.snippet-lang {
-  font-size: 0.75rem;
-  padding: 0.125rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 600;
+.table-content {
+  padding: 0;
 }
 
-.jquery-panel .snippet-lang {
-  background: #ff7043;
-  color: white;
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1.4fr;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.vue-panel .snippet-lang {
-  background: #42b883;
-  color: white;
+.comparison-row:last-child {
+  border-bottom: none;
 }
 
-.snippet-code {
-  margin: 0;
-  padding: 0.75rem;
-  background: #1e1e2e;
-  color: #a6accd;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  overflow-x: auto;
+.comparison-row.header {
+  background: #f5f5f5;
+  font-weight: bold;
+  color: #333;
 }
 
-.pain-points,
-.benefits {
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
+.col-feature {
+  color: #666;
 }
 
-.pain-points {
-  background: #fff3e0;
-  border-left: 4px solid #ff7043;
-}
-
-.benefits {
-  background: #e8f5e9;
-  border-left: 4px solid #42b883;
-}
-
-.pain-title,
-.benefit-title {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.pain-title {
+.col-manual {
   color: #e65100;
 }
 
-.benefit-title {
-  color: #2e7d32;
+.col-smart {
+  color: #4caf50;
 }
 
-.pain-list,
-.benefit-list {
-  margin: 0;
-  padding-left: 1.25rem;
-  font-size: 0.875rem;
-  line-height: 1.6;
+.comparison-row.header .col-manual,
+.comparison-row.header .col-smart {
+  color: #333;
 }
 
-.pain-list li {
-  color: #bf360c;
-  margin-bottom: 0.25rem;
-}
-
-.benefit-list li {
-  color: #1b5e20;
-  margin-bottom: 0.25rem;
-}
-
-.vs-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vs-badge {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-@media (max-width: 1024px) {
-  .comparison-container {
+/* 响应式 */
+@media (max-width: 768px) {
+  .comparison-showcase {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 
-  .vs-divider {
-    order: -1;
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .vs-badge {
-    width: 40px;
-    height: 40px;
-    font-size: 0.875rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .runner-path,
-  .orchestra {
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .comparison-row.header {
+    display: none;
   }
 
-  .counter-controls {
+  .mode-tabs {
     flex-direction: column;
-  }
-
-  .status-item {
-    flex-wrap: wrap;
   }
 }
 </style>

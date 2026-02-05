@@ -606,6 +606,22 @@ export default defineConfig({
                 {
                   text: '浏览器调试器',
                   link: '/zh-cn/appendix/browser-devtools'
+                },
+                {
+                  text: '浏览器渲染原理',
+                  link: '/zh-cn/appendix/browser-rendering-pipeline'
+                },
+                {
+                  text: '前端路由原理',
+                  link: '/zh-cn/appendix/frontend-routing'
+                },
+                {
+                  text: '组件状态管理',
+                  link: '/zh-cn/appendix/component-state-management'
+                },
+                {
+                  text: '前端工程化',
+                  link: '/zh-cn/appendix/frontend-engineering'
                 }
               ]
             },
@@ -618,15 +634,47 @@ export default defineConfig({
                   link: '/zh-cn/appendix/backend-evolution'
                 },
                 {
+                  text: '后端分层架构',
+                  link: '/zh-cn/appendix/backend-layered-architecture'
+                },
+                {
                   text: '后端编程语言',
                   link: '/zh-cn/appendix/backend-languages'
+                },
+                {
+                  text: '并发编程模型',
+                  link: '/zh-cn/appendix/concurrency-models'
+                },
+                {
+                  text: '接口设计规范',
+                  link: '/zh-cn/appendix/api-design'
                 },
                 { text: '数据库原理', link: '/zh-cn/appendix/database-intro' },
                 { text: '系统缓存设计', link: '/zh-cn/appendix/cache-design' },
                 { text: '消息队列设计', link: '/zh-cn/appendix/queue-design' },
                 { text: '鉴权原理与实战', link: '/zh-cn/appendix/auth-design' },
+                { text: '网关与反向代理', link: '/zh-cn/appendix/gateway-proxy' },
+                { text: '负载均衡策略', link: '/zh-cn/appendix/load-balancing' },
                 { text: '埋点设计', link: '/zh-cn/appendix/tracking-design' },
                 { text: '线上运维', link: '/zh-cn/appendix/operations' }
+              ]
+            },
+            {
+              text: '云计算与服务',
+              collapsed: false,
+              items: [
+                {
+                  text: '云服务基础',
+                  link: '/zh-cn/appendix/cloud-services'
+                },
+                {
+                  text: 'IAM 权限管理',
+                  link: '/zh-cn/appendix/cloud-iam'
+                },
+                {
+                  text: '对象存储与 CDN',
+                  link: '/zh-cn/appendix/cloud-storage-cdn'
+                }
               ]
             },
             {
