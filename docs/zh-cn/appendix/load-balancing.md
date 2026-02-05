@@ -11,7 +11,9 @@
 
 ## 0. 引言：当一台服务器扛不住的时候
 
-<LoadBalancerTypesDemo />
+<ClientOnly>
+  <LoadBalancerTypesDemo />
+</ClientOnly>
 
 想象你开了一家网红奶茶店。刚开业时，店里只有一个收银台，顾客排队点单，一切井然有序。但随着口碑传播，排队的人越来越多，一个收银台根本应付不过来——顾客等得不耐烦，抱怨连连，甚至有人转身离开。
 
@@ -22,7 +24,9 @@
 
 **负载均衡（Load Balancing）就是第二个方案的"总指挥"。** 它站在所有收银台前面，帮顾客决定："你去1号台，你去2号台..." 确保每个收银台的 workload 相对平均，不让任何一个台累垮。
 
-<IntroProblemReasonSolution />
+<ClientOnly>
+  <IntroProblemReasonSolution />
+</ClientOnly>
 
 ---
 
@@ -76,7 +80,9 @@
 
 **健康检查（Health Check）就是防止这种情况发生的"哨兵"。** 它定期"体检"每台服务器，发现"生病"的立即从队列中移除，等"康复"了再请回来。
 
-<HealthCheckDemo />
+<ClientOnly>
+  <HealthCheckDemo />
+</ClientOnly>
 
 ### 2.1 主动健康检查 vs 被动健康检查
 
@@ -120,7 +126,9 @@
 
 **会话保持（Session Persistence/Sticky Session）** 就是解决这个问题的方法：确保同一个用户的请求，始终被路由到同一台后端服务器。
 
-<SessionPersistenceDemo />
+<ClientOnly>
+  <SessionPersistenceDemo />
+</ClientOnly>
 
 ### 3.1 三种会话保持机制对比
 
@@ -158,7 +166,9 @@
 
 **核心思想**：同时维护两套完全相同的生产环境（蓝环境和绿环境），但只有一个环境对外提供服务。
 
-<BlueGreenDeploymentDemo />
+<ClientOnly>
+  <BlueGreenDeploymentDemo />
+</ClientOnly>
 
 **工作流程**：
 
@@ -189,7 +199,9 @@
 
 金丝雀发布得名于历史上的"煤矿金丝雀"——矿工带着金丝雀下井，如果金丝雀出现异常，说明有毒气体泄漏，矿工立即撤离。在软件发布中，金丝雀发布就是先让一小部分用户试用新版本，观察没有问题后再逐步扩大范围。
 
-<CanaryReleaseDemo />
+<ClientOnly>
+  <CanaryReleaseDemo />
+</ClientOnly>
 
 **核心思想**：
 
@@ -231,7 +243,9 @@
 
 **自动扩缩容（Auto Scaling）就是让系统像餐厅一样"灵活排班"**——忙的时候自动加服务器，闲的时候自动减服务器。
 
-<AutoScalingDemo />
+<ClientOnly>
+  <AutoScalingDemo />
+</ClientOnly>
 
 ### 5.1 扩容指标的选择
 
@@ -284,7 +298,9 @@
 
 **单点故障是系统架构中的"阿喀琉斯之踵"**。多区域部署（Multi-Region Deployment）就是解决这个问题的方法：在不同地理位置部署多个数据中心，即使一个区域完全不可用，其他区域也能继续提供服务。
 
-<MultiRegionDemo />
+<ClientOnly>
+  <MultiRegionDemo />
+</ClientOnly>
 
 ### 6.1 异地多活架构的核心概念
 
