@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 import TextType from './components/TextType.vue'
 import GitHubStars from './components/GitHubStars.vue'
 import { onMounted, ref, watch } from 'vue'
+import ReadingProgress from './components/ReadingProgress.vue'
 import { Setting } from '@element-plus/icons-vue'
 
 const { frontmatter } = useData()
@@ -211,6 +212,9 @@ watch(lineHeight, (next) => {
       </div>
     </template>
   </DefaultTheme.Layout>
+  <ClientOnly>
+    <ReadingProgress />
+  </ClientOnly>  
 </template>
 
 <style>
