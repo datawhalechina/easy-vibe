@@ -4,7 +4,321 @@ description: '本文档汇总了 LLM 大模型在多个产业中的落地应用�
 ---
 
 <script setup>
+import { computed, ref } from 'vue'
+
 const duration = '约 <strong>6 小时</strong>'
+
+const interestPoint = ref('')
+const purpose = ref('')
+
+// 每个行业的主题池
+const topicPool = {
+  'manufacturing': [
+    { title: '新能源客车外观 AI 辅助设计平台', desc: '基于图片生成模型进行外观概念设计' },
+    { title: '智能图纸设计与审查助手', desc: '利用 RAG 技术构建企业设计规范知识库' },
+    { title: '技术文档自动生成与管理', desc: '基于 LLM 自动生成产品规格书和操作手册' },
+    { title: '生产设备巡检报告自动生成助手', desc: '语音描述设备状态，结构化生成巡检报告' },
+    { title: '工业设备故障诊断知识问答助手', desc: '基于历史故障案例构建向量知识库' }
+  ],
+  'customer-service': [
+    { title: '多渠道智能客服自动回复与工单生成系统', desc: '接入多渠道消息，LLM 理解意图后生成回复' },
+    { title: '潜在客户挖掘与跟进建议助手', desc: '分析历史对话记录，识别高意向客户' },
+    { title: '企业内部知识智能检索与问答管家', desc: '基于内部文档构建向量知识库' },
+    { title: '客服对话智能小结与工单生成工具', desc: '自动生成会话小结并提取关键信息' },
+    { title: '客服金牌话术推荐知识库系统', desc: '分析优秀案例，提炼金牌话术模板' }
+  ],
+  'education': [
+    { title: '个性化语言学习路径规划与智能导学系统', desc: '评估学习者水平，规划每日学习任务' },
+    { title: '教案自动化编写与教学资源推送平台', desc: '根据课程大纲生成教案框架' },
+    { title: '作业自动化批阅与学情诊断分析系统', desc: '自动批改主观题并生成批改建议' },
+    { title: '人才岗位胜任力模型构建与学习地图', desc: '分析岗位 JD 提取能力要求' },
+    { title: '外语口语一对一情景化实战演练', desc: 'LLM 扮演不同角色进行口语对话' }
+  ],
+  'programming': [
+    { title: '智能代码补全与 Bug 自动修复助手', desc: 'IDE 插件实时提供代码补全建议' },
+    { title: '低代码应用构建与流程自动化平台', desc: '自然语言描述需求，转换为低代码配置' },
+    { title: '单元测试用例生成系统', desc: 'AST 解析源代码，生成边界条件测试用例' },
+    { title: '代码智能分析与语言迁移工具', desc: '分析代码质量并提供优化建议' },
+    { title: '前端界面（UI）代码自动生成工具', desc: '设计稿图片识别，生成响应式 CSS' }
+  ],
+  'healthcare': [
+    { title: '医学检验报告智能解读助手', desc: 'OCR 识别关键指标，解读异常值' },
+    { title: '基于知识检索技术的健康咨询专家', desc: '构建医学知识图谱，RAG 检索生成回答' },
+    { title: '临床科研数据决策分析平台', desc: '整合 EMR 数据，辅助生成统计分析代码' },
+    { title: '医学影像报告自动生成工具', desc: '描述影像特征，自动生成结构化报告' },
+    { title: '慢病管理用药提醒智能助手', desc: '生成个性化用药提醒，支持用药禁忌检查' }
+  ],
+  'security': [
+    { title: '代码安全漏洞检测与修复引擎', desc: 'SAST 扫描代码，分析漏洞原理' },
+    { title: 'AI 生成式钓鱼邮件智能识别与拦截系统', desc: '分析邮件内容，识别 AI 生成的钓鱼邮件' },
+    { title: '安全运营日报自动生成助手', desc: '日志汇总，自动提取关键事件' },
+    { title: '渗透测试报告智能生成助手', desc: '根据漏洞描述自动生成报告' },
+    { title: '威胁情报智能查询与分析助手', desc: '对接多源威胁情报，解读情报内容' }
+  ],
+  'finance': [
+    { title: '信贷尽调报告智能生成助手', desc: '输入财务数据，自动生成信贷尽调报告' },
+    { title: '私人银行财富管理智能顾问', desc: '分析客户风险偏好，生成资产配置建议' },
+    { title: 'IPO 招股书智能生成与合规校验助手', desc: '模块化模板，自动填充业务描述' },
+    { title: '企业财务报告自动生成与经营异常预警系统', desc: '自动生成财务分析和管理层讨论' },
+    { title: '保险代理人智能话术陪练', desc: '模拟对话，评估话术合规性和说服力' }
+  ],
+  'enterprise': [
+    { title: '企业合同全生命周期合规性审查与修改建议平台', desc: '条款比对法规库，生成合规性审查报告' },
+    { title: '销售会话语音转写与话术推荐', desc: 'ASR 转写，分析会话并推荐金牌话术' },
+    { title: '营销内容智能生成与设计系统', desc: '生成营销文案和卖点提炼' },
+    { title: '竞品广告投放分析平台', desc: '采集竞品广告，分析投放策略' },
+    { title: '全网热点选题智能分析与内容推荐系统', desc: '分析热点趋势并推荐选题角度' }
+  ],
+  'content': [
+    { title: '影视与小说内容创作辅助平台', desc: '提供故事大纲、角色设定、对白生成' },
+    { title: '企业品牌故事与公关软文智能撰写助手', desc: '输入品牌关键词，生成多风格文案' },
+    { title: '虚拟数字人直播互动与推流管理系统', desc: '数字人形象 + TTS 语音 + LLM 对话' },
+    { title: '短视频脚本生成与智能剪辑', desc: '生成短视频脚本和分镜' },
+    { title: '营销内容智能生成与设计系统', desc: '生成营销文案和卖点提炼' }
+  ],
+  'government': [
+    { title: '12345 政务热线智能语音导航与自动分派系统', desc: '语音识别，理解诉求并智能分派' },
+    { title: '政务服务大厅智能导办与政策问答机器人', desc: '政务知识库 RAG 检索' },
+    { title: '惠企政策智能匹配与精准推送平台', desc: '企业画像自动匹配适用政策' },
+    { title: '行政审批材料智能预审与合规校验助手', desc: 'OCR 识别和关键信息提取' },
+    { title: '城市网格化事件智能识别与调度管理平台', desc: '识别事件类型并分派' }
+  ],
+  'legal': [
+    { title: '合同风险漏洞一键"找茬"Agent', desc: '对照风险清单识别潜在问题' },
+    { title: '类似案件胜诉率 AI 智能评估顾问', desc: '案件特征提取，类案检索匹配' },
+    { title: '法律法规变更实时监测与业务影响分析雷达', desc: '解析变更内容并评估业务影响' },
+    { title: '律师函 AIGC 自动起草工具', desc: '事实陈述输入，生成规范律师函' },
+    { title: '复杂法律条款"翻译"为大白话的解释插件', desc: '生成通俗易懂的解释' }
+  ],
+  'travel': [
+    { title: '基于 AIGC 的懒人路书生成器', desc: '生成每日行程安排' },
+    { title: '全网机票酒店价格趋势预测与低价自动锁定机器人', desc: 'ML 模型预测价格趋势' },
+    { title: '签证材料智能预审与自动化填表辅助系统', desc: 'OCR 识别信息完整性检查' },
+    { title: '出境游实时语音翻译与菜单视觉汉化管家', desc: '离线语音翻译，菜单图片 OCR' },
+    { title: '旅行足迹自动生成精美游记与社交文案助手', desc: '照片信息提取，生成游记文案' }
+  ],
+  'emotion': [
+    { title: '基于 LLM 大模型的 24 小时深度陪伴虚拟伴侣', desc: '记忆系统存储对话历史' },
+    { title: '多模态情感识别与心理疏导 AI 顾问', desc: '语音语调分析 + 文字情感识别' },
+    { title: '阿尔茨海默症老人 AI 认知训练与记忆唤醒数字人', desc: '认知游戏训练，老照片触发记忆' },
+    { title: '社恐人士的 AIGC 模拟社交演练教练', desc: '虚拟社交场景模拟' },
+    { title: '全天候心情监测与 AI 正向情绪激励助手', desc: '分析心情趋势并生成激励内容' }
+  ],
+  'entertainment': [
+    { title: '基于 LLM 驱动的开放世界游戏 NPC 自主决策引擎', desc: 'NPC 行为树融合 LLM 决策' },
+    { title: '沉浸式剧本杀 AIGC 剧情推演与 DM 控场辅助工具', desc: '玩家选择触发剧情分支' },
+    { title: '互动小说结局生成式修改器', desc: '读者选择影响剧情走向' },
+    { title: '电竞战局 CV 视觉分析与 AI 智能解说员', desc: '游戏画面实时分析' },
+    { title: '多角色 TTS 语音合成有声书自动生成系统', desc: '文本角色分配，个性化音色生成' }
+  ],
+  'ecommerce': [
+    { title: '高转化率 AIGC 商品详情页批量生产工具', desc: '生成卖点文案和场景描述' },
+    { title: '服装虚拟模特 AI 智能试穿与展示视频生成工厂', desc: '虚拟模特试穿效果生成' },
+    { title: '跨境电商多语言 LLM 本地化翻译与润色助手', desc: '商品描述多语言翻译' },
+    { title: '24 小时全天候 AIGC 数字人直播带货系统', desc: '数字人形象 + 实时话术生成' },
+    { title: '市场流行趋势 AI 洞察与爆款预测引擎', desc: '洞察趋势热点，选品建议' }
+  ],
+  'energy': [
+    { title: '家庭用电行为 AI 分析与节能策略顾问', desc: '用电模式分析，生成节能建议' },
+    { title: '光伏组件缺陷无人机 CV 视觉识别系统', desc: '无人机巡检拍摄，热红外图像分析' },
+    { title: '电力现货交易价格 AI 趋势预测与自动获利策略 Agent', desc: '价格预测模型，策略生成' },
+    { title: '企业全链路碳排放 AI 自动核算与 ESG 报告生成助手', desc: '碳排放因子计算，ESG 报告生成' },
+    { title: '电网极端天气负荷 AI 预测与应急调度指挥系统', desc: '负荷预测模型，调度策略生成' }
+  ],
+  'av-media': [
+    { title: '长视频精彩片段 AI 识别与短视频自动剪辑工具', desc: '视频内容分析，关键帧识别' },
+    { title: '视频背景噪音 AI 智能分离与人声增强助手', desc: '音频分离模型，去除背景噪音' },
+    { title: '老旧影像 4K 超分修复与 AI 智能上色工作台', desc: '视频超分辨率模型，AI 自动上色' },
+    { title: '文字转真人级 TTS 配音与情感控制系统', desc: '多音色 TTS 模型，情感控制' },
+    { title: '会议录音 AI 智能转写与核心待办提取助手', desc: '多人会议语音分离转写' }
+  ],
+  'ai-marketing': [
+    { title: '小红书爆款文案 AIGC 自动撰写引擎', desc: '生成种草文案，emoji 优化' },
+    { title: '营销海报 AI 智能排版与多尺寸适配工具', desc: '海报模板智能匹配' },
+    { title: '品牌 LOGO 创意 AIGC 生成与 VI 体系构建平台', desc: 'LOGO 创意生成，VI 规范生成' },
+    { title: '全网热点 AI 追踪与借势营销创意生成助手', desc: '分析营销角度，创意方案生成' },
+    { title: '短视频脚本创意 AIGC 生成与分镜指导助手', desc: '脚本和分镜生成，拍摄建议' }
+  ],
+  'data-intelligence': [
+    { title: '自然语言转 SQL 语句自动生成工具', desc: '自然语言查询转换为 SQL' },
+    { title: '企业数据资产目录智能盘点与分类系统', desc: '元数据采集，自动分类' },
+    { title: '数据质量异常自动检测与修复建议引擎', desc: '规则引擎 + ML 模型检测异常' },
+    { title: '智能报表生成与可视化配置助手', desc: '对话式生成报表配置' },
+    { title: '数据指标口径智能问答助手', desc: '基于指标定义文档构建知识库' }
+  ]
+}
+
+// 预定义的推荐链路映射表
+const recommendationMap = {
+  // 兴趣点: 创意内容
+  'creative-content': {
+    'increase-efficiency': ['content', 'av-media', 'ai-marketing', 'entertainment'],
+    'reduce-cost': ['content', 'ecommerce', 'ai-marketing'],
+    'improve-experience': ['entertainment', 'emotion', 'travel', 'content'],
+    'innovate-business': ['ai-marketing', 'content', 'av-media', 'entertainment']
+  },
+  // 兴趣点: 技术服务
+  'tech-service': {
+    'increase-efficiency': ['programming', 'enterprise', 'data-intelligence', 'customer-service'],
+    'reduce-cost': ['programming', 'enterprise', 'manufacturing'],
+    'improve-experience': ['customer-service', 'enterprise', 'programming'],
+    'innovate-business': ['data-intelligence', 'programming', 'security', 'enterprise']
+  },
+  // 兴趣点: 数据智能
+  'data-intel': {
+    'increase-efficiency': ['data-intelligence', 'finance', 'enterprise', 'manufacturing'],
+    'reduce-cost': ['data-intelligence', 'manufacturing', 'energy'],
+    'improve-experience': ['data-intelligence', 'customer-service', 'ecommerce'],
+    'innovate-business': ['data-intelligence', 'finance', 'security', 'ai-marketing']
+  },
+  // 兴趣点: 用户服务
+  'user-service': {
+    'increase-efficiency': ['customer-service', 'ecommerce', 'travel', 'enterprise'],
+    'reduce-cost': ['customer-service', 'ecommerce', 'enterprise'],
+    'improve-experience': ['customer-service', 'emotion', 'travel', 'ecommerce', 'entertainment'],
+    'innovate-business': ['ecommerce', 'travel', 'emotion', 'entertainment']
+  },
+  // 兴趣点: 行业解决方案
+  'industry-solution': {
+    'increase-efficiency': ['manufacturing', 'healthcare', 'finance', 'government'],
+    'reduce-cost': ['manufacturing', 'energy', 'enterprise', 'finance'],
+    'improve-experience': ['healthcare', 'education', 'government', 'travel'],
+    'innovate-business': ['finance', 'security', 'legal', 'healthcare', 'government']
+  }
+}
+
+const interestOptions = [
+  { label: '创意内容生成', value: 'creative-content', desc: '文案、图片、视频等创意内容' },
+  { label: '技术服务工具', value: 'tech-service', desc: '开发工具、自动化、代码辅助' },
+  { label: '数据智能分析', value: 'data-intel', desc: '数据分析、预测、智能决策' },
+  { label: '用户服务体验', value: 'user-service', desc: '客服、营销、用户体验' },
+  { label: '行业解决方案', value: 'industry-solution', desc: '特定行业的深度应用' }
+]
+
+const purposeOptions = [
+  { label: '提升效率', value: 'increase-efficiency', desc: '自动化、加速流程' },
+  { label: '降低成本', value: 'reduce-cost', desc: '减少人力、优化资源' },
+  { label: '改善体验', value: 'improve-experience', desc: '用户满意度、服务质量' },
+  { label: '业务创新', value: 'innovate-business', desc: '新产品、新模式' }
+]
+
+const industries = [
+  { key: 'manufacturing', name: '工业制造业', anchor: '#_1-工业制造业' },
+  { key: 'customer-service', name: '智能客服', anchor: '#_2-智能客服' },
+  { key: 'education', name: '教育行业', anchor: '#_3-教育行业' },
+  { key: 'programming', name: '智能编程', anchor: '#_4-智能编程' },
+  { key: 'healthcare', name: '医疗方向', anchor: '#_5-医疗方向' },
+  { key: 'security', name: '网络安全', anchor: '#_6-网络安全' },
+  { key: 'finance', name: '金融管理、保险银行业', anchor: '#_7-金融管理、保险银行业' },
+  { key: 'enterprise', name: '企业服务', anchor: '#_8-企业服务' },
+  { key: 'content', name: '内容生产与运营', anchor: '#_9-内容生产与运营' },
+  { key: 'government', name: '智慧政务管理', anchor: '#_10-智慧政务管理' },
+  { key: 'legal', name: '法律事务与合同管理', anchor: '#_11-法律事务与合同管理' },
+  { key: 'travel', name: '旅游与出行服务', anchor: '#_12-旅游与出行服务' },
+  { key: 'emotion', name: '情感陪伴', anchor: '#_13-情感陪伴' },
+  { key: 'entertainment', name: '休闲娱乐', anchor: '#_14-休闲娱乐' },
+  { key: 'ecommerce', name: '电商服务', anchor: '#_15-电商服务' },
+  { key: 'energy', name: '能源', anchor: '#_16-能源' },
+  { key: 'av-media', name: '音视频', anchor: '#_17-音视频' },
+  { key: 'ai-marketing', name: 'AI 营销', anchor: '#_18-ai-营销' },
+  { key: 'data-intelligence', name: '数据智能', anchor: '#_19-数据智能' }
+]
+
+// 计算推荐结果 - 从主题池中随机抽取
+const recommendationTopics = computed(() => {
+  if (!interestPoint.value || !purpose.value) return []
+  
+  const keys = recommendationMap[interestPoint.value]?.[purpose.value] || []
+  const topics = []
+  
+  // 从每个推荐行业中随机抽取 1-2 个主题
+  keys.forEach(key => {
+    const industry = industries.find(item => item.key === key)
+    const industryTopics = topicPool[key] || []
+    
+    if (industry && industryTopics.length > 0) {
+      // 随机抽取 1-2 个主题
+      const count = Math.floor(Math.random() * 2) + 1
+      const shuffled = [...industryTopics].sort(() => Math.random() - 0.5)
+      const selected = shuffled.slice(0, Math.min(count, shuffled.length))
+      
+      selected.forEach(topic => {
+        topics.push({
+          ...topic,
+          industryKey: key,
+          industryName: industry.name,
+          industryAnchor: industry.anchor
+        })
+      })
+    }
+  })
+  
+  // 随机排序并限制总数
+  return topics.sort(() => Math.random() - 0.5).slice(0, 8)
+})
+
+// 获取当前选择的描述
+const currentSelection = computed(() => {
+  const interest = interestOptions.find(i => i.value === interestPoint.value)
+  const pur = purposeOptions.find(p => p.value === purpose.value)
+  return {
+    interest: interest?.label || '',
+    purpose: pur?.label || ''
+  }
+})
+
+const scrollToAnchor = (anchor) => {
+  // 延迟滚动确保DOM更新完成
+  setTimeout(() => {
+    // 尝试通过ID查找（支持多种格式）
+    let element = document.querySelector(anchor)
+    
+    // 如果找不到，尝试其他可能的ID格式
+    if (!element) {
+      // 尝试去掉下划线前缀
+      const altAnchor = anchor.replace('#_', '#')
+      element = document.querySelector(altAnchor)
+    }
+    
+    // 如果还是找不到，通过标题文本查找
+    if (!element) {
+      // 从锚点提取行业名称
+      const anchorText = decodeURIComponent(anchor.replace('#', '').replace(/^_/, ''))
+      const headings = document.querySelectorAll('h2, h3')
+      
+      for (let heading of headings) {
+        const headingText = heading.textContent.trim()
+        // 完全匹配或包含匹配
+        const cleanHeading = headingText.replace(/^\d+\.\s*/, '')
+        if (cleanHeading === anchorText || headingText.includes(anchorText)) {
+          element = heading
+          break
+        }
+      }
+    }
+    
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+      // 高亮显示目标段落
+      element.style.backgroundColor = '#f0f9ff'
+      element.style.transition = 'background-color 0.3s'
+      element.style.padding = '8px'
+      element.style.borderRadius = '4px'
+      setTimeout(() => {
+        element.style.backgroundColor = ''
+        element.style.padding = ''
+      }, 2000)
+    }
+  }, 100)
+}
+
+const resetSelection = () => {
+  interestPoint.value = ''
+  purpose.value = ''
+}
 </script>
 
 # 产业多分类场景方向参考
@@ -16,6 +330,87 @@ const duration = '约 <strong>6 小时</strong>'
 本文档汇总了 LLM 大模型在多个产业中的落地应用场景，为 AI 应用开发者提供参考。每个场景都具备实际落地的可行性，涵盖从需求分析到技术实现的完整思路。
 
 </ChapterIntroduction>
+
+## 行业方向快速选择
+
+<el-card shadow="hover" style="margin-top: 16px; margin-bottom: 24px; border-left: 5px solid #409EFF;">
+  <div style="font-weight: 600; margin-bottom: 8px;">找到适合你的应用场景</div>
+  <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+    选择你的兴趣方向和想要实现的目的，系统会推荐相关的行业场景，点击标签即可跳转到对应章节。
+  </div>
+  <el-row :gutter="16">
+    <el-col :span="12">
+      <el-select v-model="interestPoint" placeholder="选择兴趣方向" style="width: 100%;">
+        <el-option 
+          v-for="item in interestOptions" 
+          :key="item.value" 
+          :label="item.label" 
+          :value="item.value">
+          <div style="display: flex; flex-direction: column;">
+            <span>{{ item.label }}</span>
+            <span style="font-size: 12px; color: #909399;">{{ item.desc }}</span>
+          </div>
+        </el-option>
+      </el-select>
+    </el-col>
+    <el-col :span="12">
+      <el-select v-model="purpose" placeholder="选择实现目的" style="width: 100%;">
+        <el-option 
+          v-for="item in purposeOptions" 
+          :key="item.value" 
+          :label="item.label" 
+          :value="item.value">
+          <div style="display: flex; flex-direction: column;">
+            <span>{{ item.label }}</span>
+            <span style="font-size: 12px; color: #909399;">{{ item.desc }}</span>
+          </div>
+        </el-option>
+      </el-select>
+    </el-col>
+  </el-row>
+  
+  <!-- 推荐结果展示 - 表格形式 -->
+  <div v-if="recommendationTopics.length > 0" style="margin-top: 16px;">
+    <div style="font-weight: 600; margin-bottom: 10px; color: #409EFF;">
+      为你推荐 {{ recommendationTopics.length }} 个应用场景
+      <span style="font-weight: normal; color: #909399; font-size: 13px; margin-left: 8px;">
+        ({{ currentSelection.interest }} + {{ currentSelection.purpose }})
+      </span>
+    </div>
+    <el-table 
+      :data="recommendationTopics" 
+      style="width: 100%; cursor: pointer;"
+      @row-click="(row) => scrollToAnchor(row.industryAnchor)"
+      highlight-current-row>
+      <el-table-column prop="title" label="应用场景" min-width="300">
+        <template #default="scope">
+          <div style="font-weight: 500; color: #303133;">{{ scope.row.title }}</div>
+          <div style="font-size: 12px; color: #909399; margin-top: 4px;">{{ scope.row.desc }}</div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="industryName" label="所属行业" width="180" align="center">
+        <template #default="scope">
+          <el-tag type="info" effect="light" size="small">{{ scope.row.industryName }}</el-tag>
+        </template>
+      </el-table-column>
+    </el-table>
+    <div style="margin-top: 10px; font-size: 12px; color: #909399;">
+      💡 点击表格任意行即可跳转到对应行业章节
+    </div>
+  </div>
+  
+  <!-- 未完全选择时的提示 -->
+  <div v-else-if="!interestPoint || !purpose" style="margin-top: 14px; color: #909399; font-size: 13px;">
+    <span v-if="!interestPoint && !purpose">💡 请选择兴趣方向和实现目的</span>
+    <span v-else-if="!interestPoint">💡 请选择兴趣方向</span>
+    <span v-else>💡 请选择实现目的</span>
+  </div>
+  
+  <!-- 重置按钮 -->
+  <div v-if="interestPoint || purpose" style="margin-top: 12px;">
+    <el-button size="small" @click="resetSelection">重新选择</el-button>
+  </div>
+</el-card>
 
 ## 行业快速介绍
 
@@ -46,11 +441,11 @@ const duration = '约 <strong>6 小时</strong>'
    - 进阶级：工业质检、医疗影像分析、代码智能助手
    - 专业级：金融风控、网络安全、多模态复杂应用
 
-## 1. 工业制造业
+## 1. 工业制造业 
 
 工业制造业场景主要围绕设计辅助、生产优化、智能运维三大方向展开。常见应用包括利用 AI 辅助产品外观设计、自动化图纸审查、技术文档智能生成、工业设备故障诊断等，能够显著提升设计效率和降低运维成本。
 
-| 序号 | 应用场景名称                   | 实现参考                                                                                                         |
+| 序号 | 应用场景名称                   | 实现参考                                                                                                        |
 | :--: | ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 |  1   | 新能源客车外观 AI 辅助设计平台 | 基于图片生成模型进行外观概念设计，结合 LLM 进行设计规范检查和创意迭代；集成 Three.js 3D 渲染服务                 |
 |  2   | 智能图纸设计与审查助手         | 利用 RAG 技术构建企业设计规范知识库，DALL·E 生成参考图辅助理解；集成 CAD API 实现图纸自动化解析                  |
