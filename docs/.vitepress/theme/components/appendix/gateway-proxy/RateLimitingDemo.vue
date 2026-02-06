@@ -221,7 +221,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive } from 'vue'
+import { ref, computed, reactive, onMounted, onUnmounted } from 'vue'
 
 const currentAlgo = ref('token')
 const isMatching = ref(false)
@@ -447,19 +447,36 @@ const getStatusEmoji = (status) => {
   }
 }
 
-// 定时补充令牌
-setInterval(() => {
-  if (bucketState.tokens < bucketState.capacity) {
-    bucketState.tokens = Math.min(bucketState.tokens + bucketState.rate, bucketState.capacity)
-  }
-}, 1000)
+let tokenInterval = null
+let leakyInterval = null
 
-// 定时漏桶流出
-setInterval(() => {
-  if (leakyState.current > 0) {
-    leakyState.current = Math.max(0, leakyState.current - leakyState.rate)
+onMounted(() => {
+  tokenInterval = setInterval(() => {
+    if (bucketState.tokens < bucketState.capacity) {
+      bucketState.tokens = Math.min(
+        bucketState.tokens + bucketState.rate,
+        bucketState.capacity
+      )
+    }
+  }, 1000)
+
+  leakyInterval = setInterval(() => {
+    if (leakyState.current > 0) {
+      leakyState.current = Math.max(0, leakyState.current - leakyState.rate)
+    }
+  }, 1000)
+})
+
+onUnmounted(() => {
+  if (tokenInterval) {
+    clearInterval(tokenInterval)
+    tokenInterval = null
   }
-}, 1000)
+  if (leakyInterval) {
+    clearInterval(leakyInterval)
+    leakyInterval = null
+  }
+})
 </script>
 
 <style scoped>
