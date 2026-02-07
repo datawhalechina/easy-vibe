@@ -3,8 +3,11 @@
     <div 
       v-if="showProgress" 
       class="reading-progress"
-      @click="scrollToTop"
-      :title="'阅读进度 ' + progress + '%'"
+      :class="{ 'is-dragging': isDragging }"
+      @mousedown="startDrag"
+      @touchstart="startDrag"
+      @click="handleClick"
+      :title="isDragging ? '拖动调整位置' : '阅读进度 ' + progress + '%'"
     >
       <svg class="progress-ring" viewBox="0 0 56 56">
         <circle
@@ -22,9 +25,12 @@
         />
       </svg>
       <Transition name="content-switch">
-        <div v-if="showArrow" key="arrow" class="progress-arrow">↑</div>
+        <div v-if="showArrow && !isDragging" key="arrow" class="progress-arrow">↑</div>
         <div v-else key="percent" class="progress-text">{{ progress }}%</div>
       </Transition>
+      
+      <!-- 拖拽时的提示 -->
+      <div v-if="isDragging" class="drag-hint">拖动调整</div>
     </div>
   </Transition>
 </template>
@@ -38,10 +44,19 @@ const showArrow = ref(false)
 const circumference = 2 * Math.PI * 24 // 2πr，r=24
 let scrollTimer: number | null = null
 
+// 拖拽相关状态
+const isDragging = ref(false)
+const startY = ref(0)
+const startProgress = ref(0)
+let dragRafId: number | null = null
+
 const updateProgress = () => {
+  // 拖拽时不更新进度，避免冲突
+  if (isDragging.value) return
+  
   const scrollTop = window.scrollY
   const docHeight = document.documentElement.scrollHeight - window.innerHeight
-  const scrollPercent = (scrollTop / docHeight) * 100
+  const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
   
   progress.value = Math.min(Math.round(scrollPercent), 100)
   showProgress.value = scrollTop > 0 // 开始滚动就显示
@@ -62,7 +77,82 @@ const updateProgress = () => {
   }, 1500)
 }
 
-const scrollToTop = () => {
+// 开始拖拽
+const startDrag = (e: MouseEvent | TouchEvent) => {
+  e.preventDefault()
+  
+  isDragging.value = true
+  startY.value = 'touches' in e ? e.touches[0].clientY : e.clientY
+  startProgress.value = progress.value
+  
+  // 添加全局事件监听
+  document.addEventListener('mousemove', onDrag, { passive: false })
+  document.addEventListener('mouseup', endDrag)
+  document.addEventListener('touchmove', onDrag, { passive: false })
+  document.addEventListener('touchend', endDrag)
+}
+
+// 拖拽中
+const onDrag = (e: MouseEvent | TouchEvent) => {
+  if (!isDragging.value) return
+  e.preventDefault()
+  
+  const currentY = 'touches' in e ? e.touches[0].clientY : e.clientY
+  const deltaY = startY.value - currentY // 向上拖动为正值
+  
+  // 每拖动 3 像素调整 1% 进度
+  const sensitivity = 3
+  const progressDelta = deltaY / sensitivity
+  
+  // 计算新的进度值
+  let newProgress = startProgress.value + progressDelta
+  newProgress = Math.max(0, Math.min(100, newProgress))
+  
+  // 使用 requestAnimationFrame 优化性能
+  if (dragRafId) {
+    cancelAnimationFrame(dragRafId)
+  }
+  
+  dragRafId = requestAnimationFrame(() => {
+    progress.value = Math.round(newProgress)
+    
+    // 实时滚动页面
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight
+    if (docHeight > 0) {
+      window.scrollTo({
+        top: (progress.value / 100) * docHeight,
+        behavior: 'auto' // 拖拽时使用 auto 避免延迟
+      })
+    }
+  })
+}
+
+// 结束拖拽
+const endDrag = () => {
+  isDragging.value = false
+  
+  // 清除事件监听
+  document.removeEventListener('mousemove', onDrag)
+  document.removeEventListener('mouseup', endDrag)
+  document.removeEventListener('touchmove', onDrag)
+  document.removeEventListener('touchend', endDrag)
+  
+  if (dragRafId) {
+    cancelAnimationFrame(dragRafId)
+    dragRafId = null
+  }
+  
+  // 恢复箭头显示
+  if (window.scrollY > 0) {
+    showArrow.value = true
+  }
+}
+
+// 点击回到顶部
+const handleClick = (e: MouseEvent) => {
+  // 如果是拖拽结束后的点击，不触发回到顶部
+  if (isDragging.value) return
+  
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
@@ -79,6 +169,14 @@ onUnmounted(() => {
   if (scrollTimer) {
     clearTimeout(scrollTimer)
   }
+  // 清理拖拽事件
+  document.removeEventListener('mousemove', onDrag)
+  document.removeEventListener('mouseup', endDrag)
+  document.removeEventListener('touchmove', onDrag)
+  document.removeEventListener('touchend', endDrag)
+  if (dragRafId) {
+    cancelAnimationFrame(dragRafId)
+  }
 })
 </script>
 
@@ -89,12 +187,13 @@ onUnmounted(() => {
   right: 32px;
   width: 56px;
   height: 56px;
-  cursor: pointer;
+  cursor: grab;
   z-index: 100;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  touch-action: none;
 }
 
 .reading-progress:focus {
@@ -119,6 +218,12 @@ onUnmounted(() => {
   transform: scale(0.95);
 }
 
+.reading-progress.is-dragging {
+  cursor: grabbing;
+  transform: scale(1.15);
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
+}
+
 .progress-ring {
   position: absolute;
   top: 0;
@@ -140,7 +245,11 @@ onUnmounted(() => {
   stroke-width: 3;
   stroke-linecap: round;
   stroke-dasharray: 150.796; /* 2πr = 2 * 3.14159 * 24 */
-  transition: stroke-dashoffset 0.3s ease;
+  transition: stroke-dashoffset 0.1s ease;
+}
+
+.reading-progress.is-dragging .progress-ring-circle {
+  transition: none; /* 拖拽时移除过渡动画，更跟手 */
 }
 
 .progress-text {
@@ -174,6 +283,31 @@ onUnmounted(() => {
   }
   50% {
     transform: translate(-50%, -60%);
+  }
+}
+
+/* 拖拽提示 */
+.drag-hint {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 
