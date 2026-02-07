@@ -261,7 +261,9 @@ AI 出现之后,第一次给了普通人一个全新的可能：你不需要会�
 随着蛇的成长，LLM 生成一个连续的故事诗，图像模型创建一个无缝的长卷或全景图，所以玩家同时在“写作、绘画和玩耍”。
 ```
 
-此外，我们还可以要求 LLM 帮你直接生成项目级的提示词。在上一节中，我们只自己写了贪吃蛇游戏的提示词。现在让我们尝试让大模型生成一个带有整体框架和实现路径的提示词（你可以直接用 z.ai 生成）：
+此外，我们还可以要求 LLM 帮你直接生成项目级的提示词。在上一节中，我们只自己写了贪吃蛇游戏的提示词。现在让我们尝试让大模型生成一个带有整体框架和实现路径的提示词（你可以直接用 z.ai 生成）。
+
+如果你想学习如何写出更好的提示词，可以查看[提示词工程附录](../../appendix/prompt-engineering/index.md)。
 
 > 我想让 AI 生成一个网页贪吃蛇游戏，需要一个更完整的提示词，让生成结果更令人印象深刻和有趣。请生成相应的提示词。当前目标是：生成一个贪吃蛇游戏，需要实现吃不同单词生成诗歌的功能，并且应该包含图像生成模块。
 
@@ -465,156 +467,146 @@ z.ai 的回复将会是这样的：
 
 ## <span id="appendix-1">[附录 1：我们需要前端开发知识吗？](#appendix-nav)</span>
 
-在 Vibe Coding 阶段，我们不再要求每一位用户都具备专业的编程能力。这种模式下，你的核心任务主要体现在两个方面：
+::: tip 💡 一句话总结
+你不需要会写代码，但了解基础概念能让你更好地向 AI 描述需求。
+:::
 
-1. 能够用自然语言，比较清晰地描述自己想要的界面和交互效果；
-2. 当 AI 给出的结果不符合预期或出现报错时，能够把报错信息、截图等上下文整理后，再反馈给 AI，协助其完成修正。
+<el-row :gutter="16" style="margin: 20px 0;">
+  <el-col :span="12" :xs="24" style="margin-bottom: 16px;">
+    <el-card shadow="hover" style="border-radius: 12px; height: 100%;">
+      <template #header>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">👁️</span>
+          <span style="font-weight: bold;">前端</span>
+          <el-tag type="success" size="small">可见</el-tag>
+        </div>
+      </template>
+      <div style="color: #606266; line-height: 1.8;">
+        用户能<strong>看到、点到</strong>的所有内容
+        <ul style="margin: 12px 0; padding-left: 20px;">
+          <li>网页标题、文字、图片</li>
+          <li>按钮、输入框、下拉菜单</li>
+          <li>游戏界面、动画效果</li>
+        </ul>
+      </div>
+    </el-card>
+  </el-col>
+  <el-col :span="12" :xs="24" style="margin-bottom: 16px;">
+    <el-card shadow="hover" style="border-radius: 12px; height: 100%;">
+      <template #header>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">⚙️</span>
+          <span style="font-weight: bold;">后端</span>
+          <el-tag type="info" size="small">不可见</el-tag>
+        </div>
+      </template>
+      <div style="color: #606266; line-height: 1.8;">
+        运行在服务器上的数据处理
+        <ul style="margin: 12px 0; padding-left: 20px;">
+          <li>用户分数存储</li>
+          <li>登录账号验证</li>
+          <li>关卡内容分配</li>
+        </ul>
+      </div>
+    </el-card>
+  </el-col>
+</el-row>
 
-在这个前提下，即便你从未写过一行代码，也可以通过与 AI 的持续对话，逐步搭建出可用的原型。
+### 前端三件套
 
-但是，如果我们对前端开发的一些基础概念有所了解，就可以更准确地提出需求，更有效地利用 AI 的能力。这也是本附录希望补充说明的部分。
+浏览器通过三种"代码"来构建页面：
 
-### 什么是前端？
+<el-tabs type="border-card" style="margin: 20px 0;">
+  <el-tab-pane label="🏗️ HTML - 骨架">
+    <div style="padding: 10px;">
+      <p><strong>作用：</strong>定义页面上<strong>有什么</strong>元素</p>
+      <p><strong>类比：</strong>房子的结构草图（墙、门、窗在哪里）</p>
+      <el-card style="background: #f5f7fa; margin-top: 12px;">
+        <pre style="margin: 0;"><code>&lt;button&gt;点我&lt;/button&gt;
+&lt;h1&gt;标题&lt;/h1&gt;
+&lt;img src="photo.png"&gt;</code></pre>
+      </el-card>
+    </div>
+  </el-tab-pane>
+  <el-tab-pane label="🎨 CSS - 样式">
+    <div style="padding: 10px;">
+      <p><strong>作用：</strong>控制元素<strong>长什么样</strong></p>
+      <p><strong>类比：</strong>房子的装修（颜色、材质、布局）</p>
+      <el-card style="background: #f5f7fa; margin-top: 12px;">
+        <pre style="margin: 0;"><code>button {
+  background: blue;
+  color: white;
+  border-radius: 8px;
+}</code></pre>
+      </el-card>
+    </div>
+  </el-tab-pane>
+  <el-tab-pane label="⚡ JavaScript - 行为">
+    <div style="padding: 10px;">
+      <p><strong>作用：</strong>让页面<strong>动起来</strong></p>
+      <p><strong>类比：</strong>房子的电路开关（点击后的响应）</p>
+      <el-card style="background: #f5f7fa; margin-top: 12px;">
+        <pre style="margin: 0;"><code>button.onclick = () => {
+  alert('你点了我！')
+}</code></pre>
+      </el-card>
+    </div>
+  </el-tab-pane>
+</el-tabs>
 
-在一个典型的应用系统中，我们通常会将其大致分为两个部分：
+### 代码如何变成页面？
 
-- 一部分是直接呈现在用户面前的界面，以及与界面相关的交互；
-- 另一部分是运行在服务器上的数据处理和业务逻辑。
+<ClientOnly>
+  <div style="margin-top: 40px; margin-bottom: 20px;">
+    <StepBar
+      :active="4"
+      :items="[
+        { title: 'HTML', description: '浏览器解析结构' },
+        { title: 'CSS', description: '应用样式渲染' },
+        { title: 'JavaScript', description: '绑定交互逻辑' },
+        { title: '页面呈现', description: '用户看到效果' }
+      ]"
+    />
+  </div>
+</ClientOnly>
 
-其中，前者通常被称为**前端**，后者则被称为**后端**。
+### 现代前端框架
 
-从结果上看，前端就是**用户“能看到、能点到”的那一层内容**。例如：
+当页面变复杂时，我们使用框架来组织代码：
 
-- 网页上的标题、段落文字和图片；
-- 按钮、输入框、下拉菜单、勾选框等交互控件；
-- 排行榜页面、游戏界面、动态动画效果等。
+<el-row :gutter="16" style="margin: 20px 0;">
+  <el-col :span="8" :xs="24" style="margin-bottom: 12px;">
+    <el-card shadow="hover" style="text-align: center; border-radius: 12px;">
+      <div style="font-size: 32px; margin-bottom: 8px;">🧩</div>
+      <div style="font-weight: bold; margin-bottom: 8px;">组件化</div>
+      <div style="font-size: 13px; color: #909399;">把页面拆成可复用的模块</div>
+    </el-card>
+  </el-col>
+  <el-col :span="8" :xs="24" style="margin-bottom: 12px;">
+    <el-card shadow="hover" style="text-align: center; border-radius: 12px;">
+      <div style="font-size: 32px; margin-bottom: 8px;">🔄</div>
+      <div style="font-weight: bold; margin-bottom: 8px;">状态驱动</div>
+      <div style="font-size: 13px; color: #909399;">数据变化自动更新界面</div>
+    </el-card>
+  </el-col>
+  <el-col :span="8" :xs="24" style="margin-bottom: 12px;">
+    <el-card shadow="hover" style="text-align: center; border-radius: 12px;">
+      <div style="font-size: 32px; margin-bottom: 8px;">🤖</div>
+      <div style="font-weight: bold; margin-bottom: 8px;">AI 友好</div>
+      <div style="font-size: 13px; color: #909399;">结构清晰，便于自动生成</div>
+    </el-card>
+  </el-col>
+</el-row>
 
-后端则更多负责**“看不见”的部分**，例如：
+### 在 Vibe Coding 中
 
-- 用户分数存放在什么地方；
-- 登录时如何校验账号和密码是否正确；
-- 针对不同用户，如何分配不同的关卡或内容。
+**核心要点：你不需要写代码，只需要会描述。**
 
-**前端开发**的工作，就是在浏览器这一“运行环境”中，把上述可视化界面和交互行为搭建出来，使用户能够顺畅地查看信息、提交表单、进行操作。
+了解前端概念后，你可以这样跟 AI 描述需求：
 
-### 1. 前端基础三件套：从“页面是哪儿来的”说起
+> "用 React 做一个排行榜页面，右侧显示分数列表，点击某行在下方展示玩家详情，风格简洁现代。"
 
-前端页面并不是“凭空出现”的。  
-当我们在浏览器中打开一个网址时，浏览器会从服务器获取一份描述页面的“说明书”，然后按照这份说明书的内容，一步步把界面“画”出来，并让它能够响应用户的操作。
-
-这份“说明书”，通常由三类内容共同组成：
-
-- HTML
-- CSS
-- JavaScript
-
-从工程角度看，它们本质上都属于**代码**：  
-也就是一段一段、遵循固定规则的文本指令；这些指令虽然是人写出来的，但最终是**由浏览器来阅读和执行**的。
-
-为了方便理解，我们可以把这三者类比为一栋房子的不同方面：
-
-1. **HTML：搭骨架，告诉浏览器“有什么”**  
-   HTML 负责描述页面上的“结构”和“元素”。对浏览器来说，HTML 就像是一张建筑结构草图：哪里有一堵墙，哪里有一扇门，哪里有一扇窗。
-   - 例如：页面中有一个标题、一段文字、一个按钮、一张图片。
-
-2. **CSS：定样式，告诉浏览器“长什么样”**  
-   CSS 负责控制界面的视觉呈现。它相当于给已经搭好的“骨架”穿上合适的“衣服”和“装修”。
-   - 例如：按钮是蓝色的、带圆角；文字需要居中对齐；背景需要是浅灰色。
-
-3. **JavaScript：管行为，告诉浏览器“怎么动起来”**  
-   JavaScript 负责页面的交互逻辑和动态行为。它更像是这栋房子里的“电路”和“开关”，决定各种设备在什么情况下被触发。
-   - 例如：点击按钮后弹出提示；表单提交前先检查是否填写完整；游戏角色按一定规则移动。
-
-这三者虽然形式上都是“代码”，但承担的职责并不相同。浏览器会在加载页面时，将它们分别读入，然后按既定顺序执行：先根据 HTML 搭出结构，再根据 CSS 进行渲染，最后由 JavaScript 负责交互和逻辑，让整个页面真正“活起来”。
-
-### 2. 一个简单的执行链路示例
-
-下面我们通过一个极简示例，来直观感受一下“从代码到效果”的完整链路。
-
-![](images/image9.png)
-
-假设我们希望在页面上放置一个可以点击的按钮，并在点击时给用户一个提示。
-
-1. **HTML：声明有一个按钮**
-
-   ```html
-   <button>点我</button>
-   ```
-
-   当浏览器读到这行代码时，会理解为：  
-   页面上需要出现一个按钮，按钮上的文字是“点我”。
-
-2. **CSS：设置按钮的外观**
-
-   ```css
-   button {
-     background-color: #3498db; /* 蓝色背景 */
-     color: white; /* 白色文字 */
-     border: none; /* 无边框 */
-     padding: 10px 20px; /* 适当留白 */
-     border-radius: 4px; /* 稍微圆角 */
-   }
-   ```
-
-   浏览器在渲染页面时，会把这段样式规则应用到刚才创建的按钮上，使其变成一个蓝底白字、带圆角的按钮。
-
-3. **JavaScript：定义点击时的行为**
-
-   ```javascript
-   document.querySelector('button').onclick = function () {
-     alert('你点了我！')
-   }
-   ```
-
-   当浏览器执行到这段 JavaScript 时，会给按钮绑定一个“点击事件”。  
-   此后，每当用户点击这个按钮时，页面上就会弹出提示框。
-
-从用户的视角来看，只是“打开网页 → 看到一个按钮 → 点了一下 → 出现提示”。  
-但在背后，浏览器实际上经历了一个完整的执行过程：**解析 HTML → 应用 CSS → 执行 JavaScript → 响应用户操作**。
-
-这就是前端“三件套”在一个最简场景下的协同方式。
-
-### 3. 现代前端框架：在“三件套”之上的进一步抽象
-
-随着前端应用不断演进，单纯依赖 HTML、CSS 和 JavaScript 手工组织代码，逐渐暴露出一系列问题：
-
-- 页面结构日益复杂，代码量急剧增加；
-- 相同的界面片段需要多处复制粘贴，维护成本高；
-- 数据变化频繁时，需要手动更新界面，容易出错。
-
-在这种背景下，**现代前端框架**应运而生。所谓“框架”，可以理解为一套经过实践检验的**固定结构和约定**，帮助开发者在统一的规则下组织代码，从而降低复杂度、提高可维护性。
-
-以常见的 React 为例，现代前端框架通常带来以下几方面的能力提升：
-
-1. **组件化：把页面拆成可复用的“模块”**  
-   一个完整的页面，可以被拆解为若干相对独立的区域：导航栏、侧边栏、内容区、评论列表、按钮组等。  
-   在框架中，每一个区域都可以被定义为一个“组件”，组件内部负责自己的结构、样式和行为，同时又可以被组合、嵌套和复用。  
-   这样做的直接好处是：修改或复用某一部分时，只需关注对应组件即可，避免整页代码纠缠在一起。
-
-2. **状态驱动：数据变化带动界面更新**  
-   传统方式下，当数据发生变化时（例如排行榜分数更新），开发者往往需要手动找到对应的界面元素，逐条更新内容。  
-   在框架中，我们只需要更新组件内部维护的“状态”，框架就会自动计算出哪些地方需要重新渲染，并完成界面更新。这种“数据驱动界面”的方式，大大减少了手工操作和出错概率。
-
-3. **统一规范：结构清晰，便于协同与自动生成**  
-   现代前端框架通常对文件组织、组件命名、数据流转等方面提供明确约定。  
-   对于 AI 而言，这种稳定、一致的结构更加友好，有利于自动生成质量更高、逻辑更清晰的代码，也更便于后续维护和扩展。
-
-![](images/image11.png)
-
-### 4. 在 Vibe Coding 中如何利用这些能力？
-
-在 Vibe Coding 的实践中，我们并不要求每一位用户都深度掌握 HTML、CSS、JavaScript 或某一前端框架的所有细节。
-
-更现实的目标是：
-
-- 在概念层面，理解“前端页面是由浏览器执行一组规则生成的”，这组规则主要由 HTML、CSS 和 JavaScript 组成，它们本质上都是代码；
-- 知道现代前端框架（如 React）是在这三者之上，对页面结构和交互逻辑的一种进一步组织方式，有助于 AI 更稳定地生成可维护的前端代码。
-
-基于这些认识，在与 AI 协作时，我们可以给出更具指向性的指令，例如：
-
-> “请使用 React 帮我实现一个包含排行榜的页面，右侧展示分数列表，点击某一行时在下方显示该玩家的详细信息，整体风格简洁、现代。”
-
-在这种模式下，**你不必亲自完成每一行代码的书写**，而是通过理解基本概念与角色分工，扮演好“提出需求、检查结果、反复迭代”的角色，让 AI 负责具体实现细节，从而大幅降低前端开发的门槛。
+如果你想深入理解 HTML、CSS、JavaScript 等前端基础知识，可以查看[Web 基础附录](../../appendix/web-basics.md)。想了解前端技术的发展历程，可以查看[前端进化史附录](../../appendix/frontend-evolution.md)。
 
 ## <span id="appendix-2">[附录 2：到底什么是 Vibe Coding](#appendix-nav)</span>
 
