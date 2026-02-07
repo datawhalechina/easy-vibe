@@ -556,47 +556,43 @@ z.ai 的回复将会是这样的：
 
 ### 代码如何变成页面？
 
-<ClientOnly>
-  <div style="margin-top: 40px; margin-bottom: 20px;">
-    <StepBar
-      :active="4"
-      :items="[
-        { title: 'HTML', description: '浏览器解析结构' },
-        { title: 'CSS', description: '应用样式渲染' },
-        { title: 'JavaScript', description: '绑定交互逻辑' },
-        { title: '页面呈现', description: '用户看到效果' }
-      ]"
-    />
-  </div>
-</ClientOnly>
+当你打开一个网页时，浏览器会按顺序处理三种代码：
 
-### 现代前端框架
+**1. HTML —— 定义页面结构**
+浏览器首先解析 HTML，了解页面上有哪些元素（标题、段落、图片、按钮等），以及它们的层级关系。
 
-当页面变复杂时，我们使用框架来组织代码：
+**2. CSS —— 应用样式**
+然后浏览器根据 CSS 规则，给这些元素添加样式：颜色、大小、位置、间距等，让页面变得美观。
 
-<el-row :gutter="16" style="margin: 20px 0;">
-  <el-col :span="8" :xs="24" style="margin-bottom: 12px;">
-    <el-card shadow="hover" style="text-align: center; border-radius: 12px;">
-      <div style="font-size: 32px; margin-bottom: 8px;">🧩</div>
-      <div style="font-weight: bold; margin-bottom: 8px;">组件化</div>
-      <div style="font-size: 13px; color: #909399;">把页面拆成可复用的模块</div>
-    </el-card>
-  </el-col>
-  <el-col :span="8" :xs="24" style="margin-bottom: 12px;">
-    <el-card shadow="hover" style="text-align: center; border-radius: 12px;">
-      <div style="font-size: 32px; margin-bottom: 8px;">🔄</div>
-      <div style="font-weight: bold; margin-bottom: 8px;">状态驱动</div>
-      <div style="font-size: 13px; color: #909399;">数据变化自动更新界面</div>
-    </el-card>
-  </el-col>
-  <el-col :span="8" :xs="24" style="margin-bottom: 12px;">
-    <el-card shadow="hover" style="text-align: center; border-radius: 12px;">
-      <div style="font-size: 32px; margin-bottom: 8px;">🤖</div>
-      <div style="font-weight: bold; margin-bottom: 8px;">AI 友好</div>
-      <div style="font-size: 13px; color: #909399;">结构清晰，便于自动生成</div>
-    </el-card>
-  </el-col>
-</el-row>
+**3. JavaScript —— 添加交互**
+最后执行 JavaScript 代码，让页面"动起来"：响应点击、提交表单、播放动画等。
+
+**4. 页面呈现**
+三者的配合结果就是你最终看到的网页。
+
+### 现代前端框架：从 HTML 到 React/Vue
+
+前面介绍的 HTML、CSS、JavaScript 是前端开发的"三件套"，它们是所有网页的基础。但当页面变得复杂时，直接用这三件套开发会遇到挑战：代码难以维护、重复劳动多、数据同步麻烦。
+
+**现代前端框架**（如 React、Vue、Angular）建立在 HTML/CSS/JS 之上，让开发更高效：
+
+**1. HTML/CSS/JS（基础阶段）**
+直接操作页面元素，适合简单页面。但当代码量增大时，所有逻辑混在一起，难以维护。
+
+**2. jQuery（过渡阶段）**
+简化了 DOM 操作，让代码更简洁。但仍需手动管理页面状态，数据变化时要自己找到对应的元素并更新。
+
+**3. React/Vue（现代阶段）**
+采用组件化和状态驱动的设计：
+- **组件化**：把页面拆成独立的可复用模块（如按钮、卡片、导航栏）
+- **状态驱动**：数据变化时，框架自动更新对应的界面，无需手动操作
+
+::: tip 💡 简单理解
+- **HTML/CSS/JS** = 基础材料（砖块、水泥、钢筋）
+- **React/Vue** = 建筑框架（提供了搭建房屋的规范和工具）
+
+在 AI 辅助编程时代，你不需要深入掌握框架的所有细节，只需要理解它们的基本概念，就能通过自然语言描述让 AI 帮你生成代码。
+:::
 
 ### 在 Vibe Coding 中
 
