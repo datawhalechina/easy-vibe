@@ -170,6 +170,13 @@
   margin-bottom: 0 !important;
 }
 
+/* 图片默认居中显示 */
+.vp-doc img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* 图片高度限制策略：根据长宽比调整最大高度 */
 /* 越高的图片（长宽比越大），限制的高度越小，避免占用过多纵向空间 */
 .vp-doc img.img-tall {
