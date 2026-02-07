@@ -85,7 +85,92 @@ onMounted(() => {
   applyFontSize(saved)
   applyLineHeight(savedLineHeight)
   isHydrated.value = true
+
+  // 初始化 outline 自动滚动功能
+  initOutlineAutoScroll()
 })
+
+// ============================================
+// Outline 侧边栏自动滚动跟随功能
+// 当页面滚动时，自动滚动 outline 让当前激活项保持在可视区域
+// ============================================
+function initOutlineAutoScroll() {
+  // 使用 MutationObserver 监听 outline 的变化
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        const target = mutation.target
+        if (target.classList.contains('active') && target.tagName === 'A') {
+          scrollOutlineToActiveItem(target)
+        }
+      }
+    }
+  })
+
+  // 开始监听
+  const startObserving = () => {
+    const outlineContainer = document.querySelector('.VPDocAsideOutline')
+    if (outlineContainer) {
+      observer.observe(outlineContainer, {
+        attributes: true,
+        subtree: true,
+        attributeFilter: ['class']
+      })
+    }
+  }
+
+  // 页面加载完成后开始监听
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startObserving)
+  } else {
+    startObserving()
+  }
+
+  // 同时监听路由变化（VitePress 是 SPA）
+  const originalPushState = history.pushState
+  const originalReplaceState = history.replaceState
+
+  history.pushState = function (...args) {
+    originalPushState.apply(this, args)
+    setTimeout(startObserving, 100)
+  }
+
+  history.replaceState = function (...args) {
+    originalReplaceState.apply(this, args)
+    setTimeout(startObserving, 100)
+  }
+
+  window.addEventListener('popstate', () => {
+    setTimeout(startObserving, 100)
+  })
+}
+
+// 滚动 outline 让当前激活项保持在可视区域中心
+function scrollOutlineToActiveItem(activeLink) {
+  const outlineContainer = document.querySelector('.VPDocAsideOutline')
+  if (!outlineContainer || !activeLink) return
+
+  const containerRect = outlineContainer.getBoundingClientRect()
+  const linkRect = activeLink.getBoundingClientRect()
+
+  // 计算链接相对于容器的位置
+  const linkTop = linkRect.top - containerRect.top + outlineContainer.scrollTop
+  const linkHeight = linkRect.height
+  const containerHeight = containerRect.height
+
+  // 判断链接是否在可视区域外
+  const isAbove = linkRect.top < containerRect.top + 20
+  const isBelow = linkRect.bottom > containerRect.bottom - 20
+
+  if (isAbove || isBelow) {
+    // 将激活项滚动到容器中间位置
+    const targetScrollTop = linkTop - containerHeight / 2 + linkHeight / 2
+    outlineContainer.scrollTo({
+      top: targetScrollTop,
+      behavior: 'smooth'
+    })
+  }
+}
 
 watch(fontSize, (next) => {
   if (!isHydrated.value) return

@@ -345,3 +345,52 @@
   padding-bottom: 18vh !important;
   box-sizing: border-box;
 }
+
+/* ============================================
+   Outline 侧边栏指示标滚动修复
+   问题：当页面内容很长时，outline 中的指示标(marker)
+   会移动到可见区域之外，用户看不到当前阅读位置
+   ============================================ */
+
+/* 让 outline 容器可以独立滚动 */
+.VPDocAsideOutline {
+  max-height: calc(100vh - var(--vp-nav-height, 64px) - 32px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+.VPDocAsideOutline::-webkit-scrollbar {
+  width: 4px;
+}
+
+.VPDocAsideOutline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.VPDocAsideOutline::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 2px;
+}
+
+.VPDocAsideOutline::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-3);
+}
+
+/* Firefox 滚动条样式 */
+.VPDocAsideOutline {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+
+/* 确保 outline 内容区域正确显示 */
+.VPDocAsideOutline .content {
+  position: relative;
+  min-height: min-content;
+}
+
+/* 确保 marker 指示标始终在可见区域内 */
+.VPDocAsideOutline.has-outline .outline-marker {
+  position: absolute;
+  will-change: top;
+}
