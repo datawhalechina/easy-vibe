@@ -13,7 +13,11 @@ const duration = '约 <strong>1 天</strong>'
 
 <ChapterIntroduction :duration="duration" :tags="['API', '文本模型', '文生图', '原型集成']" coreOutput="原型接入 1 个文本模型 + 1 个图像模型（可选）" expectedOutput="可调用真实 API 的 AI 原型">
 
-上一节搭好的原型目前还只是静态页面。本章**接入真实 AI 能力**：拿到 API Key、读懂官方示例、让 AI IDE 帮你集成到代码里。以 DeepSeek 文本模型为例，并可选接入图像生成服务。
+前面两章我们学会了用 AI IDE 搭建原型，也掌握了从业务需求到产品设计的完整流程。但现在的原型还不能真正运行——点击按钮不会真的生成内容，页面上的文字都是写死的。
+
+这一章要让原型"活"起来：我们会接入真实的 AI 能力，从拿到 API Key 开始，到读懂官方文档、让 AI IDE 帮你把接口集成进代码里。你会以 DeepSeek 文本模型为例，学会怎么让应用真正调用大模型生成内容；如果感兴趣，还可以选做图像生成的接入。
+
+学完这章，你的原型就不再是静态页面，而是能调用真实 AI 能力的应用。
 
 </ChapterIntroduction>
 
@@ -699,7 +703,7 @@ Artificial Analysis 更适合把“效果 / 价格 / 速度”放在同一张表
 
 剩下的工作，IDE 和现代化的开发工具会帮你完成。专注于你的业务逻辑，底层调用的事交给这些成熟的 SDK 和工具链。
 
-## 5. 📚 作业：集成你的第一个 AI 能力
+# 5. 📚 作业：集成你的第一个 AI 能力
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
