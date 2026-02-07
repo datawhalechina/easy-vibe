@@ -6,11 +6,14 @@ hero:
   text: 'KI-Coding-Guide von Grund auf'
   tagline: 'Ein neues Coding-Paradigma für alle. Egal ob PM oder Full Stack Dev, finde hier deinen KI-Coding-Pfad.'
   typingTagline:
-    - Code, mit Seele erfüllt.
-    - Intelligenz, die deine Gedanken versteht.
-    - Komplexe Systeme, auf einen Blick klar.
-    - Inspiration, sofort umgesetzt.
-    - Programmieren, wie es sein sollte.
+    - Coding, neu gedacht.
+    - Komplexität, vereinfacht.
+    - Jeder Schritt, genau richtig.
+    - Denken. Bauen.
+    - Dein Tempo. AI hält mit.
+    - Vom ersten Zeichen zum kompletten System.
+    - Weniger Reibung. Mehr Kreation.
+    - So sollte Programmieren sich anfühlen.
   actions:
     - theme: brand
       text: Starten

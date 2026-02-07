@@ -6,11 +6,14 @@ hero:
   text: 'AI Coding Guide from Scratch'
   tagline: 'A new coding paradigm for everyone. Whether you are a PM or a Full Stack Dev, find your AI coding path here.'
   typingTagline:
-    - Code, infused with soul.
-    - Intelligence, understanding your thoughts.
-    - Complex systems, clear at a glance.
-    - Inspiration, instantly realized.
-    - Coding, as it should be.
+    - Coding, reimagined.
+    - Complexity, simplified.
+    - Every step, just right.
+    - Think it. Build it.
+    - Your pace. AI keeps up.
+    - From first character to complete system.
+    - Less friction. More creation.
+    - This is how coding should feel.
   actions:
     - theme: brand
       text: Start Learning
