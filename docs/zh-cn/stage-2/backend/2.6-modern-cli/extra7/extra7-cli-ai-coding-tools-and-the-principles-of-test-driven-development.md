@@ -182,16 +182,62 @@ please help me configure and start Claude Code
 
 #### 使用 Kimi K2 作为后端（推荐）
 
-https://platform.moonshot.cn/console/account
+Kimi K2 是月之暗面（Moonshot AI）推出的新一代大语言模型，在代码理解和生成能力上表现出色。Kimi K2 支持超长上下文窗口（最高可达 200K tokens），能够轻松处理大型代码库和复杂项目。
 
-```Plain
+**核心优势：**
+- **超长上下文**：支持 200K 上下文窗口，可以一次性处理整个项目的代码
+- **代码能力强**：在代码生成、重构和调试方面表现优异
+- **中文理解好**：对中文编程需求的理解更加准确
+- **工具调用稳定**：支持稳定的函数调用和工具使用
+
+**获取 API Key：**
+
+访问 https://platform.moonshot.cn/console/account 注册并获取 API Key。
+
+**配置方法：**
+
+```Bash
 export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
 export ANTHROPIC_AUTH_TOKEN=sk-YOURKEY
 ```
 
+#### 使用 Minimax 作为后端（推荐）
+
+Minimax 是稀宇科技（MiniMax）推出的新一代大语言模型，在编程任务上表现优异。Minimax 模型以其出色的推理能力和代码生成质量而闻名，特别适合复杂的编程场景。
+
+**核心优势：**
+- **推理能力强**：在复杂逻辑推理和代码架构设计方面表现出色
+- **代码质量高**：生成的代码结构清晰、可读性好
+- **多语言支持**：支持多种编程语言的代码生成和转换
+- **响应速度快**：API 响应速度快，适合高频调用场景
+
+**获取 API Key：**
+
+访问 https://platform.minimaxi.com/user-center/basic-information/interface-key 注册并获取 API Key。
+
+**配置方法：**
+
+```Bash
+export ANTHROPIC_BASE_URL=https://api.minimaxi.com/anthropic
+export ANTHROPIC_AUTH_TOKEN=YOUR_MINIMAX_API_KEY
+export ANTHROPIC_MODEL=MiniMax-Text-01
+```
+
 #### 使用 DeepSeek 作为后端（推荐）
 
-https://platform.deepseek.com/usage
+DeepSeek 是深度求索推出的开源大语言模型，以其出色的代码能力和高性价比受到开发者欢迎。DeepSeek Coder 专门针对编程任务进行了优化训练。
+
+**核心优势：**
+- **代码能力突出**：在代码生成、代码理解和 Bug 修复方面表现优异
+- **开源可定制**：模型开源，可以根据需求进行微调
+- **性价比高**：API 价格相对较低，适合高频使用
+- **中文支持好**：对中文编程场景理解准确
+
+**获取 API Key：**
+
+访问 https://platform.deepseek.com/usage 注册并获取 API Key。
+
+**配置方法：**
 
 ```Bash
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
@@ -200,6 +246,28 @@ export API_TIMEOUT_MS=600000
 export ANTHROPIC_MODEL=deepseek-chat
 export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+```
+
+#### 使用火山引擎 Coding Plan 作为后端（推荐）
+
+火山引擎（Volcano Engine）是字节跳动旗下的云服务平台，提供企业级的 AI 模型服务。火山引擎的 Coding Plan 专门为编程场景优化，提供稳定、高效的代码生成能力。
+
+**核心优势：**
+- **企业级稳定性**：提供服务等级协议（SLA），保障服务稳定性
+- **代码场景优化**：针对编程任务进行了专门优化
+- **丰富模型选择**：支持多种模型，包括 Doubao-pro、Doubao-lite 等
+- **国内访问快**：国内节点部署，访问速度快
+
+**获取 API Key：**
+
+访问 https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey 注册并获取 API Key。
+
+**配置方法：**
+
+```Bash
+export ANTHROPIC_BASE_URL=https://ark.volces.com/api/anthropic
+export ANTHROPIC_AUTH_TOKEN=YOUR_VOLCANO_API_KEY
+export ANTHROPIC_MODEL=doubao-pro-32k
 ```
 
 #### 其他兼容 Anthropic 的 API
@@ -219,7 +287,7 @@ export ANTHROPIC_BASE_URL="https://dashscope.aliyuncs.com/apps/anthropic"
 export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 ```
 
-#### 使用 Claude Code Route 作为后端（进阶用法）
+::: details 使用 Claude Code Route 作为后端（进阶用法）
 
 上面我们讲解了如何用 GLM 官方 API 替换 Claude Code 的 Anthropic 接口。接下来，我们来看一下 Claude Code Router 这个工具是如何让 Claude Code 适配更多模型 API 的。
 
@@ -227,7 +295,7 @@ export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 
 ![](images/image16.png)
 
-该工具还提供了方便的 UI/CLI 配置管理能力，并通过“转换器（converter）”适配不同平台的 API 格式。它支持 GitHub Actions 等自动化集成以及自定义扩展，解决了“单一模型无法覆盖所有场景”以及“频繁切换平台很麻烦”的问题，帮助用户更灵活、低成本地利用 AI 工具。
+该工具还提供了方便的 UI/CLI 配置管理能力，并通过"转换器（converter）"适配不同平台的 API 格式。它支持 GitHub Actions 等自动化集成以及自定义扩展，解决了"单一模型无法覆盖所有场景"以及"频繁切换平台很麻烦"的问题，帮助用户更灵活、低成本地利用 AI 工具。
 
 ![](images/image17.png)
 
@@ -251,13 +319,13 @@ npm install -g @musistudio/claude-code-router
 
 ![](images/image19.png)
 
-此时点击 “Add Provider” 按钮，就会看到如下界面。你需要：
+此时点击 "Add Provider" 按钮，就会看到如下界面。你需要：
 
 1. 在 Name 中输入模型提供商的名字；
 2. 在 API Full URL 中填写该提供商的 OpenAI 兼容接口地址；
 3. 在 API Key 中填写对应平台的 API Key；
-4. 在 Models 区域中填写模型名称，点击 “Add Model” 添加；
-5. 最后点击 “Save” 保存配置。
+4. 在 Models 区域中填写模型名称，点击 "Add Model" 添加；
+5. 最后点击 "Save" 保存配置。
 
 （界面往下滚动还有很多高级选项，但目前你可以先忽略它们。）
 
@@ -276,6 +344,8 @@ npm install -g @musistudio/claude-code-router
 之后，只需在终端中输入 `ccr code`，即可通过 Claude Code Router 启动 Claude Code 的编码工作流。
 
 ![](images/image24.png)
+
+:::
 
 #### Claude Code 的进阶用法
 

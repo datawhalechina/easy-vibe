@@ -260,7 +260,7 @@ const productManagerSidebar = [
     collapsed: false,
     items: [
       {
-        text: '常见报错与排查方法',
+        text: '写代码时遇到错误怎么办',
         link: '/zh-cn/stage-1/appendix-b-common-errors/'
       },
       {
@@ -393,7 +393,7 @@ export default defineConfig({
                   link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github'
                 },
                 {
-                  text: '后端五：Zeabur 部署',
+                  text: '后端五：如何部署 Web 应用',
                   link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications'
                 },
                 {
