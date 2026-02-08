@@ -1,5 +1,5 @@
 ---
-title: '认识 AI IDE 工具 - Claude Code、Cursor、Trae 教程'
+title: '学会 AI 编程工具 - Claude Code、Cursor、Trae 教程'
 description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor、Trae 等工具的使用。掌握 IDE 界面、AI 对话技巧，用本地 AI IDE 从零开发贪吃蛇游戏。'
 ---
 
@@ -7,7 +7,7 @@ description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor
 const duration = '约 <strong>1 天</strong>，可分多次完成'
 </script>
 
-# 初级二：认识 AI IDE 工具
+# 初级二：学会 AI 编程工具
 
 ## 本章导读
 

@@ -210,7 +210,7 @@ const productManagerSidebar = [
     items: [
       { text: '1. 学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
       {
-        text: '2. AI 时代，会说话就会编程',
+        text: '2. 对话式编程入门',
         link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
       }
     ]
@@ -220,19 +220,23 @@ const productManagerSidebar = [
     collapsed: false,
     items: [
       {
-        text: '1. 认识 AI IDE 工具',
+        text: '1. 学会 AI 编程工具',
         link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
       },
       {
-        text: '2. 动手做出原型',
+        text: '2. 找到好点子',
+        link: '/zh-cn/stage-1/1.0-finding-great-idea/'
+      },
+      {
+        text: '3. 搭建产品原型',
         link: '/zh-cn/stage-1/1.2-building-prototype/'
       },
       {
-        text: '3. 给原型加上 AI 能力',
+        text: '4. 接入 AI 能力',
         link: '/zh-cn/stage-1/1.3-integrating-ai-capabilities/'
       },
       {
-        text: '4. 完整项目实战',
+        text: '5. 完整项目实战',
         link: '/zh-cn/stage-1/1.4-complete-project-practice/'
       }
     ]
@@ -242,11 +246,11 @@ const productManagerSidebar = [
     collapsed: false,
     items: [
       {
-        text: '产品思维补充',
+        text: '产品思维与方案设计',
         link: '/zh-cn/stage-1/appendix-a-product-thinking/'
       },
       {
-        text: '产业场景方向参考',
+        text: 'AI 行业应用场景参考',
         link: '/zh-cn/stage-1/appendix-industry-scenarios/'
       }
     ]
@@ -256,15 +260,15 @@ const productManagerSidebar = [
     collapsed: false,
     items: [
       {
-        text: '常见报错及解决方案',
+        text: '常见报错与排查方法',
         link: '/zh-cn/stage-1/appendix-b-common-errors/'
       },
       {
-        text: '7 款主流 Vibe Coding 平台实测对比',
+        text: '七款 AI 编程工具对比',
         link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
       },
       {
-        text: '用编程和设计智能体开发网站',
+        text: '用设计和编程 Agent 设计网站',
         link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
       }
     ]
