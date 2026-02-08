@@ -250,8 +250,12 @@ const productManagerSidebar = [
         link: '/zh-cn/stage-1/appendix-a-product-thinking/'
       },
       {
-        text: 'AI 行业应用场景参考',
+        text: 'AI 行业应用场景参考 (B端)',
         link: '/zh-cn/stage-1/appendix-industry-scenarios/'
+      },
+      {
+        text: 'AI 消费场景灵感参考 (C端)',
+        link: '/zh-cn/stage-1/appendix-c-consumer-scenarios/'
       }
     ]
   },

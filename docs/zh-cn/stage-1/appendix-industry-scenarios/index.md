@@ -1,6 +1,6 @@
 ---
-title: '产业多分类场景方向参考'
-description: '本文档汇总了 LLM 大模型在多个产业中的落地应用场景，包括工业制造业、智能客服、教育行业、智能编程、医疗方向、网络安全、金融管理、企业服务等领域的具体应用方向，为 AI 应用开发者提供参考。'
+title: 'B 端产业应用场景方向参考'
+description: '本文档汇总了 LLM 大模型在 B 端企业场景中的落地应用，包括工业制造业、智能客服、教育行业、智能编程、医疗方向、网络安全、金融管理、企业服务等领域的具体应用方向，为面向企业客户的 AI 应用开发者提供参考。'
 ---
 
 <script setup>
@@ -321,13 +321,13 @@ const resetSelection = () => {
 }
 </script>
 
-# 产业多分类场景方向参考
+# B 端产业应用场景方向参考
 
 ## 章节导读
 
-<ChapterIntroduction :duration="duration" :tags="['产业应用', 'AI 场景', '落地参考', '行业方案']" coreOutput="了解 15+ 行业应用场景" expectedOutput="找到适合自己项目的方向">
+<ChapterIntroduction :duration="duration" :tags="['B 端应用', '产业应用', 'AI 场景', '落地参考', '行业方案']" coreOutput="了解 15+ B 端行业应用场景" expectedOutput="找到适合企业客户的项目方向">
 
-本文档汇总了 <strong>LLM 大模型在多个产业中的落地应用场景</strong>，为 AI 应用开发者提供参考。每个场景都具备<strong>实际落地的可行性</strong>，涵盖从<strong>需求分析到技术实现</strong>的完整思路。
+本文档汇总了 <strong>LLM 大模型在 B 端企业场景中的落地应用</strong>。与 C 端关注用户体验和情感不同，B 端产品更注重<strong>解决实际业务需求、提升效率、降低成本</strong>。每个场景都具备<strong>实际落地的可行性</strong>，涵盖从<strong>需求分析到技术实现</strong>的完整思路，适合面向企业客户的 AI 应用开发者参考。
 
 </ChapterIntroduction>
 
