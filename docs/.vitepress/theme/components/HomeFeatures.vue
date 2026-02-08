@@ -63,22 +63,22 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 教程',
       home: '首页',
-      pm: '产品经理',
+      pm: '零基础入门',
       junior: '初中级开发',
       senior: '高级开发',
       appendix: '附录',
       start: '开始学习'
     },
     stage1: {
-      cat: 'Stage 1 · 新手与产品原型',
+      cat: 'Stage 1 · 零基础入门',
       title:
-        '零基础入门，<br><span class="highlight">做自己的产品经理。</span>',
-      sub: '不需要计算机专业背景，只要会说话，就能通过 AI 将你的创意转化为高保真的 Web 原型。',
+        '没有技术背景？<br><span class="highlight">正好。</span>',
+      sub: '不看专业、不看出身——会说话，你就能做产品。',
       cards: [
         {
-          title: 'AI 产品经理',
-          desc: '从想法到高保真原型，你只需要会说话。',
-          sub: '适合非技术背景',
+          title: '零门槛上手',
+          desc: '从想法到可交互原型，只需要会说话。',
+          sub: '全年龄友好',
           link: '/zh-cn/stage-0/'
         },
         {
@@ -97,8 +97,8 @@ const i18n = {
     },
     stage2: {
       cat: 'Stage 2 · 初中级开发',
-      title: '全栈之力，<br><span class="highlight">一手掌握。</span>',
-      sub: '以前端为笔，后端为墨。从数据库设计到交互界面，独立构建完整的商业级应用。',
+      title: '一个人，<br><span class="highlight">就是一支团队。</span>',
+      sub: '从前端到后端，从数据库到上线。',
       cards: [
         {
           title: '全栈开发',
@@ -122,8 +122,8 @@ const i18n = {
     },
     stage3: {
       cat: 'Stage 3 · 高级开发',
-      title: '复杂系统，<br><span class="highlight">尽在掌控。</span>',
-      sub: '从跨平台应用到高可用 AI 架构。让智能体在生产环境中长时间稳定运行，构建真正的商业级护城河。',
+      title: '产品和结果，<br><span class="highlight">我全都要。</span>',
+      sub: '突破时间与设备限制，让 AI 产品随处可见。',
       cards: [
         {
           title: '多端发布',
