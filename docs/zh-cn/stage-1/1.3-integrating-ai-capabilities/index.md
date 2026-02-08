@@ -13,11 +13,11 @@ const duration = '约 <strong>1 天</strong>'
 
 <ChapterIntroduction :duration="duration" :tags="['API', '文本模型', '文生图', '原型集成']" coreOutput="原型接入 1 个文本模型 + 1 个图像模型（可选）" expectedOutput="可调用真实 API 的 AI 原型">
 
-前面两章我们学会了用 AI IDE 搭建原型，也掌握了从业务需求到产品设计的完整流程。但现在的原型还不能真正运行——点击按钮不会真的生成内容，页面上的文字都是写死的。
+前面两章我们学会了用 AI IDE 搭建原型，也掌握了从业务需求到产品设计的完整流程。但现在的原型还<strong>不能真正运行</strong>——点击按钮不会真的生成内容，页面上的文字都是写死的。
 
-这一章要让原型"活"起来：我们会接入真实的 AI 能力，从拿到 API Key 开始，到读懂官方文档、让 AI IDE 帮你把接口集成进代码里。你会以 DeepSeek 文本模型为例，学会怎么让应用真正调用大模型生成内容；如果感兴趣，还可以选做图像生成的接入。
+这一章要让原型<strong>"活"起来</strong>：我们会接入<strong>真实的 AI 能力</strong>，从拿到 API Key 开始，到读懂官方文档、让 AI IDE 帮你把接口集成进代码里。你会以 <strong>DeepSeek 文本模型</strong>为例，学会怎么让应用<strong>真正调用大模型生成内容</strong>；如果感兴趣，还可以<strong>选做图像生成的接入</strong>。
 
-学完这章，你的原型就不再是静态页面，而是能调用真实 AI 能力的应用。
+学完这章，你的原型就<strong>不再是静态页面</strong>，而是<strong>能调用真实 AI 能力的应用</strong>。
 
 </ChapterIntroduction>
 

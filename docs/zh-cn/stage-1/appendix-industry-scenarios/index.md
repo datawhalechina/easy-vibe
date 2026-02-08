@@ -327,7 +327,7 @@ const resetSelection = () => {
 
 <ChapterIntroduction :duration="duration" :tags="['产业应用', 'AI 场景', '落地参考', '行业方案']" coreOutput="了解 15+ 行业应用场景" expectedOutput="找到适合自己项目的方向">
 
-本文档汇总了 LLM 大模型在多个产业中的落地应用场景，为 AI 应用开发者提供参考。每个场景都具备实际落地的可行性，涵盖从需求分析到技术实现的完整思路。
+本文档汇总了 <strong>LLM 大模型在多个产业中的落地应用场景</strong>，为 AI 应用开发者提供参考。每个场景都具备<strong>实际落地的可行性</strong>，涵盖从<strong>需求分析到技术实现</strong>的完整思路。
 
 </ChapterIntroduction>
 

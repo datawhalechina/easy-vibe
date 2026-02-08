@@ -1,6 +1,6 @@
-# 新手与产品原型
+# 动手做第一个 AI 产品
 
-欢迎来到 **AI 产品经理** 阶段！这是 Easy-Vibe 教程的起点，专为零基础学习者设计。
+欢迎来到 **动手做第一个 AI 产品** 阶段！这是 Easy-Vibe 教程的起点，专为零基础学习者设计。
 
 ## 你将学到什么
 
@@ -23,7 +23,7 @@
   />
 </NavGrid>
 
-### 产品经理
+### 产品原型实战
 
 掌握 Vibe Coding 工作流，学会拆解需求，独立完成高保真 Web 应用原型：
 
@@ -48,15 +48,54 @@
     title="4. 完整项目实战"
     description="综合运用所学知识，从 0 到 1 完成一个完整的产品原型开发。"
   />
+</NavGrid>
+
+### 附录：业务思维
+
+**为什么需要**：当你需要提升产品思维、了解行业应用场景时，这些内容能帮你建立更全面的产品视角。
+
+**什么时候看**：
+- 在动手做原型前，先了解产品思维，能帮你更好地规划和设计
+- 当你有产品想法但不确定方向时，参考产业场景案例
+- 完成项目后，用产品思维复盘和优化你的作品
+
+<NavGrid>
   <NavCard
     href="/easy-vibe/zh-cn/stage-1/appendix-a-product-thinking/"
-    title="附录 A：产品思维补充"
+    title="产品思维补充"
     description="补充产品经理必备的思维模型，提升需求分析与产品设计能力。"
   />
   <NavCard
+    href="/easy-vibe/zh-cn/stage-1/appendix-industry-scenarios/"
+    title="产业场景方向参考"
+    description="了解 AI 在不同产业的应用场景，寻找产品灵感与方向。"
+  />
+</NavGrid>
+
+### 附录：技术方案
+
+**为什么需要**：在开发过程中遇到技术问题或想了解更优工具时，这些技术附录能提供即查即用的解决方案。
+
+**什么时候看**：
+- 遇到报错不知道如何解决时，查阅常见报错及解决方案
+- 想对比不同 AI 编程工具时，参考平台实测对比
+- 想学习更高级的开发技巧时，查看智能体开发案例
+
+<NavGrid>
+  <NavCard
     href="/easy-vibe/zh-cn/stage-1/appendix-b-common-errors/"
-    title="附录 B：常见报错及解决方案"
+    title="常见报错及解决方案"
     description="汇总开发过程中常见的报错信息及解决方法，助你快速排查问题。"
+  />
+  <NavCard
+    href="/easy-vibe/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial"
+    title="7 款主流 Vibe Coding 平台实测对比"
+    description="对比测试主流 AI 编程平台，帮你选择最适合的工具。"
+  />
+  <NavCard
+    href="/easy-vibe/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents"
+    title="用编程和设计智能体开发网站"
+    description="学习如何使用 AI 智能体协同工作，提升开发效率。"
   />
 </NavGrid>
 
@@ -67,10 +106,14 @@
 - 对 AI 编程感兴趣的非技术背景人士
 - 希望提升原型设计能力的设计师
 
-## 学习路径
+## 怎么学？
+
+建议按这个顺序进行操作：
 
 ```
-新手入门 → 产品经理基础 → AI 能力集成 → 完整项目实战
+先玩玩游戏建立信心 → 跟着教程做原型 → 给原型加上 AI 功能 → 独立完成一个完整项目
 ```
 
-准备好开始你的 AI 编程之旅了吗？点击左侧导航开始学习吧！
+不用一口气看完，边做边学效果最好。遇到问题时，记得去附录里查查解决方案。
+
+现在就开始吧，左侧导航选第一节！

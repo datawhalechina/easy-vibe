@@ -216,7 +216,7 @@ const productManagerSidebar = [
     ]
   },
   {
-    text: '产品经理',
+    text: '产品原型实战',
     collapsed: false,
     items: [
       {
@@ -234,25 +234,37 @@ const productManagerSidebar = [
       {
         text: '4. 完整项目实战',
         link: '/zh-cn/stage-1/1.4-complete-project-practice/'
-      },
+      }
+    ]
+  },
+  {
+    text: '附录：业务思维',
+    collapsed: false,
+    items: [
       {
-        text: '附录 A：产品思维补充',
+        text: '产品思维补充',
         link: '/zh-cn/stage-1/appendix-a-product-thinking/'
       },
       {
-        text: '附录 B：常见报错及解决方案',
+        text: '产业场景方向参考',
+        link: '/zh-cn/stage-1/appendix-industry-scenarios/'
+      }
+    ]
+  },
+  {
+    text: '附录：技术方案',
+    collapsed: false,
+    items: [
+      {
+        text: '常见报错及解决方案',
         link: '/zh-cn/stage-1/appendix-b-common-errors/'
       },
       {
-        text: '附录 C：产业多分类场景方向参考',
-        link: '/zh-cn/stage-1/appendix-industry-scenarios/'
-      },
-      {
-        text: '扩展阅读 1：7 款主流 Vibe Coding 在线平台实测对比',
+        text: '7 款主流 Vibe Coding 平台实测对比',
         link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
       },
       {
-        text: '扩展阅读 2：用编程和设计智能体开发网站',
+        text: '用编程和设计智能体开发网站',
         link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
       }
     ]
@@ -313,7 +325,7 @@ export default defineConfig({
         nav: [
           { text: '首页', link: '/zh-cn/' },
           {
-            text: '新手与产品原型',
+            text: '零基础入门',
             link: '/zh-cn/stage-0/'
           },
           {

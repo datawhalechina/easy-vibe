@@ -13,16 +13,16 @@ const duration = '约 <strong>8 小时</strong>'
 
 <ChapterIntroduction :duration="duration" :tags="['业务分析', '原型设计', 'AI 辅助编程', '多页面应用']" coreOutput="1 个电商素材工作台原型" expectedOutput="可交互的 Web 原型">
 
-前面玩的是 AI 游戏，这一章却要解决一个现实问题：老板丢给你一句"用 AI 提高商品发布到电商平台的效率" —— 你怎么把它变成能用的产品原型？
+前面玩的是 AI 游戏，这一章却要解决一个<strong>现实问题</strong>：老板丢给你一句"用 AI 提高商品发布到电商平台的效率" —— 你怎么把它变成<strong>能用的产品原型</strong>？
 
-和前面做贪吃蛇、计算器不同，真实业务不能凭空想功能：
+和前面做贪吃蛇、计算器不同，<strong>真实业务不能凭空想功能</strong>：
 
-1. **明确痛点**：找运营聊聊，从模糊的"提高效率"里挖出真正的痛点
-2. **挑重点做**：一堆问题里先解决最痛的那个，别想着一次性做全
-3. **快速验证**：用 AI IDE 先做单页面原型，跑通了再扩展成多页面
-4. **做出能用的东西**：最后交付一个能演示、能操作的电商素材工作台
+1. <strong>明确痛点</strong>：找运营聊聊，从模糊的"提高效率"里挖出<strong>真正的痛点</strong>
+2. <strong>挑重点做</strong>：一堆问题里先解决<strong>最痛的那个</strong>，别想着一次性做全
+3. <strong>快速验证</strong>：用 AI IDE 先做<strong>单页面原型</strong>，跑通了再扩展成多页面
+4. <strong>做出能用的东西</strong>：最后交付一个<strong>能演示、能操作的电商素材工作台</strong>
 
-我们将学会从做玩具到做应用的转变，学会共情和思考客户的真实需求。
+我们将学会从<strong>做玩具到做应用的转变</strong>，学会<strong>共情和思考客户的真实需求</strong>。
 
 </ChapterIntroduction>
 

@@ -162,6 +162,13 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
   padding-top: 10px;
 }
 
+/* Support for bold text in slot content */
+.description-text :deep(strong),
+.description-text :deep(b) {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
 .objective-tag {
   display: inline-flex;
   align-items: center;

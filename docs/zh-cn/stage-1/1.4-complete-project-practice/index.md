@@ -13,11 +13,11 @@ const duration = '约 <strong>3 天</strong>'
 
 <ChapterIntroduction :duration="duration" :tags="['产品思维', '模拟数据', '交互完善', 'LocalStorage']" coreOutput="1 个功能完备的 AI 产品原型" expectedOutput="包含完整链路与真实数据的 Web 应用">
 
-上一章接入了 AI 能力，Demo 能跑起来了，但离真正的"产品"还差得远：页面一刷新数据就没了，报错就白屏，列表里只有"测试数据 1、测试数据 2"，用户点错了也没法撤销...
+上一章接入了 AI 能力，Demo 能跑起来了，但离真正的"产品"还<strong>差得远</strong>：页面一刷新<strong>数据就没了</strong>，报错就<strong>白屏</strong>，列表里只有"测试数据 1、测试数据 2"，用户点错了也<strong>没法撤销</strong>...
 
-这一章要把这些坑都填上：我们会补全产品的完整链路，用 AI 生成逼真的业务数据替代假数据，加上错误处理和用户反馈，最后打磨出一个拿得出手、能给别人演示的完整原型。
+这一章要把这些<strong>坑都填上</strong>：我们会<strong>补全产品的完整链路</strong>，用 AI 生成<strong>逼真的业务数据</strong>替代假数据，加上<strong>错误处理和用户反馈</strong>，最后打磨出一个<strong>拿得出手、能给别人演示</strong>的完整原型。
 
-这是初级阶段的最后一章，走完这一步，你就完成了从"完全不会编程"到"能独立做出 AI 产品原型"的蜕变。
+这是初级阶段的<strong>最后一章</strong>，走完这一步，你就完成了从"完全不会编程"到"<strong>能独立做出 AI 产品原型</strong>"的蜕变。
 
 </ChapterIntroduction>
 
