@@ -76,22 +76,22 @@ const i18n = {
       sub: '不看专业、不看出身——会说话，你就能做产品。',
       cards: [
         {
-          title: '零门槛上手',
-          desc: '从想法到可交互原型，只需要会说话。',
+          title: '学习地图',
+          desc: '了解从零基础到全栈开发的完整学习路径，明确每个阶段的目标和收获。',
           sub: '全年龄友好',
-          link: '/zh-cn/stage-0/'
+          link: '/zh-cn/stage-0/0.1-learning-map/'
         },
         {
           title: '游戏化入门',
-          desc: '通过制作贪吃蛇、俄罗斯方块，打破对代码的恐惧。',
+          desc: '通过制作贪吃蛇等 AI 原生小游戏，体验 AI 编程的魅力，打破对代码的恐惧。',
           sub: '边玩边学',
-          link: '/zh-cn/stage-0/'
+          link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
         },
         {
-          title: 'Vibe Coding',
-          desc: '掌握 AI 时代的编程核心：提示词工程与上下文管理。',
+          title: '产品原型实战',
+          desc: '掌握 Vibe Coding 工作流，从想法到可交互原型，独立完成高保真 Web 应用。',
           sub: '核心心法',
-          link: '/zh-cn/stage-0/'
+          link: '/zh-cn/stage-1/1.0-finding-great-idea/'
         }
       ]
     },

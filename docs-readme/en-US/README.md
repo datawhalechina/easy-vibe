@@ -90,12 +90,21 @@ We believe that by mastering Vibe Coding combined with systematic training, one 
 | [Primary 5: Complete Project Practice](docs/en-us/stage-0/)                                     | Simulate real scenarios, accept user feedback iterations, complete projects         | 🚧     |
 | [Final Assignment: Build a Complete Web Application Prototype and Present](docs/en-us/stage-0/) | Fully implement application, showcase application effects                           | 🚧     |
 
-#### Appendix
+#### Appendix: Business Thinking
 
-| Chapter                                                        | Key Content                                              | Status |
-| :------------------------------------------------------------- | :------------------------------------------------------- | :----- |
-| [Appendix A: Product Thinking Supplement](docs/en-us/stage-0/) | Thinking framework needed to build products from scratch | 🚧     |
-| [Appendix B: Common Errors and Solutions](docs/en-us/stage-0/) | Common errors in vibe coding and troubleshooting methods | 🚧     |
+| Chapter                                                                 | Key Content                                                            | Status |
+| :---------------------------------------------------------------------- | :--------------------------------------------------------------------- | :----- |
+| [Appendix A: Product Thinking and Solution Design](docs/en-us/stage-1/appendix-a-product-thinking/) | Thinking framework needed to build products from scratch               | 🚧     |
+| [Appendix B: AI Industry Application Scenarios (B2B)](docs/en-us/stage-1/appendix-industry-scenarios/) | Understand AI applications in different industries                     | 🚧     |
+| [Appendix C: AI Consumer Scenario Inspiration (B2C)](docs/en-us/stage-1/appendix-c-consumer-scenarios/) | Explore AI applications in consumer products                           | 🚧     |
+
+#### Appendix: Technical Solutions
+
+| Chapter                                                                 | Key Content                                                            | Status |
+| :---------------------------------------------------------------------- | :--------------------------------------------------------------------- | :----- |
+| [Appendix D: What to Do When Encountering Errors](docs/en-us/stage-1/appendix-b-common-errors/) | Common errors in vibe coding and troubleshooting methods               | 🚧     |
+| [Appendix E: Comparison of Seven AI Programming Tools](docs/en-us/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md) | Compare and test mainstream AI programming platforms                   | 🚧     |
+| [Appendix F: Designing Websites with Design and Programming Agents](docs/en-us/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Learn how to use AI agents collaboratively                             | 🚧     |
 
 ### Stage 2: Intermediate Developer
 

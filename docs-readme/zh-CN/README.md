@@ -84,18 +84,27 @@
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
 | [前言：学习地图](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                       | 整体学习路径导览                                  | ✅   |
 | [初级一：AI 时代，会说话就会编程](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md)     | 通过贪吃蛇等案例初步感受 AI 编程的能力            | ✅   |
-| [初级二：认识 AI IDE 工具](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                   | 学会使用 IDE，在本地制作小游戏                    | ✅   |
-| [初级三：动手做出原型](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                           | 从需求分析、AI 生成单页面，再到生成多页面产品原型 | ✅   |
-| [初级四：给原型加上 AI 能力](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | 学会接入常见 AI 能力（文本、图片、视频）          | ✅   |
-| [初级五：完整项目实战](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                    | 模拟真实场景、接受用户反馈迭代，完整化项目        | ✅   |
-| [大作业：做一个完整的 Web 应用原型并展示](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md) | 完整实现应用，展示应用效果                        | ✅   |
+| [初级二：寻找好想法](docs/zh-cn/stage-1/1.0-finding-great-idea/index.md)                             | 学会寻找和验证产品想法，找到值得做的项目          | ✅   |
+| [初级三：认识 AI IDE 工具](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                   | 学会使用 IDE，在本地制作小游戏                    | ✅   |
+| [初级四：动手做出原型](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                           | 从需求分析、AI 生成单页面，再到生成多页面产品原型 | ✅   |
+| [初级五：给原型加上 AI 能力](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)            | 学会接入常见 AI 能力（文本、图片、视频）          | ✅   |
+| [初级六：完整项目实战](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                    | 模拟真实场景、接受用户反馈迭代，完整化项目        | ✅   |
 
-#### 附录
+#### 附录：业务思维
 
-| 章节                                                                              | 关键内容                           | 状态 |
-| :-------------------------------------------------------------------------------- | :--------------------------------- | :--- |
-| [附录A：产品思维补充](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)    | 从零到一做产品需要考虑的思维框架   | ✅   |
-| [附录B：常见报错及解决方案](docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | vibe coding 中的常见错误及排查方法 | ✅   |
+| 章节                                                                                       | 关键内容                                   | 状态 |
+| :----------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
+| [附录A：产品思维与方案设计](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)       | 从零到一做产品需要考虑的思维框架           | ✅   |
+| [附录B：AI 行业应用场景参考 (B端)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | 了解 AI 在不同产业的应用场景               | ✅   |
+| [附录C：AI 消费场景灵感参考 (C端)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 探索 AI 在消费级产品中的应用场景           | ✅   |
+
+#### 附录：技术方案
+
+| 章节                                                                                                                                                      | 关键内容                                   | 状态 |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
+| [附录D：写代码时遇到错误怎么办](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                     | vibe coding 中的常见错误及排查方法         | ✅   |
+| [附录E：七款 AI 编程工具对比](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                   | 对比测试主流 AI 编程平台                   | ✅   |
+| [附录F：用设计和编程 Agent 设计网站](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | 学习如何使用 AI 智能体协同工作             | ✅   |
 
 ### 二、初中级开发工程师
 

@@ -210,7 +210,7 @@ const productManagerSidebar = [
     items: [
       { text: '1. 学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
       {
-        text: '2. 对话式编程入门',
+        text: '2. AI 时代，会说话就会编程',
         link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
       }
     ]
