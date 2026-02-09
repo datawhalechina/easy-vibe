@@ -196,8 +196,10 @@ Kimi K2 是月之暗面（Moonshot AI）推出的新一代大语言模型，在�
 
 **配置方法：**
 
+参考文档：https://platform.moonshot.cn/docs/guide/agent-support
+
 ```Bash
-export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
+export ANTHROPIC_BASE_URL=https://api.moonshot.cn/anthropic
 export ANTHROPIC_AUTH_TOKEN=sk-YOURKEY
 ```
 
