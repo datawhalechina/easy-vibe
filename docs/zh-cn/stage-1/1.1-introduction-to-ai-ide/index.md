@@ -19,6 +19,10 @@ const duration = '约 <strong>1 天</strong>，可分多次完成'
 
 学完这一章，你将会<strong>掌握和程序员相似的开发流程</strong>。
 
+::: tip 💡 进阶提示
+如果你有一定的编程基础，想要提前使用更强大的工具，可以结合参考 [现代 CLI Coding 工具](../../stage-2/backend/2.6-modern-cli/extra7/) 使用命令行方式进行开发。
+:::
+
 </ChapterIntroduction>
 
 <div style="margin: 50px 0;">
