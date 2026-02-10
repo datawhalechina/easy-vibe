@@ -92,19 +92,19 @@ We believe that by mastering Vibe Coding combined with systematic training, one 
 
 #### Appendix: Business Thinking
 
-| Chapter                                                                 | Key Content                                                            | Status |
-| :---------------------------------------------------------------------- | :--------------------------------------------------------------------- | :----- |
-| [Appendix A: Product Thinking and Solution Design](docs/en-us/stage-1/appendix-a-product-thinking/) | Thinking framework needed to build products from scratch               | 🚧     |
-| [Appendix B: AI Industry Application Scenarios (B2B)](docs/en-us/stage-1/appendix-industry-scenarios/) | Understand AI applications in different industries                     | 🚧     |
-| [Appendix C: AI Consumer Scenario Inspiration (B2C)](docs/en-us/stage-1/appendix-c-consumer-scenarios/) | Explore AI applications in consumer products                           | 🚧     |
+| Chapter                                                                                                 | Key Content                                              | Status |
+| :------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- | :----- |
+| [Appendix A: Product Thinking and Solution Design](docs/en-us/stage-1/appendix-a-product-thinking/)     | Thinking framework needed to build products from scratch | 🚧     |
+| [Appendix B: AI Industry Application Scenarios (B2B)](docs/en-us/stage-1/appendix-industry-scenarios/)  | Understand AI applications in different industries       | 🚧     |
+| [Appendix C: AI Consumer Scenario Inspiration (B2C)](docs/en-us/stage-1/appendix-c-consumer-scenarios/) | Explore AI applications in consumer products             | 🚧     |
 
 #### Appendix: Technical Solutions
 
-| Chapter                                                                 | Key Content                                                            | Status |
-| :---------------------------------------------------------------------- | :--------------------------------------------------------------------- | :----- |
-| [Appendix D: What to Do When Encountering Errors](docs/en-us/stage-1/appendix-b-common-errors/) | Common errors in vibe coding and troubleshooting methods               | 🚧     |
-| [Appendix E: Comparison of Seven AI Programming Tools](docs/en-us/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md) | Compare and test mainstream AI programming platforms                   | 🚧     |
-| [Appendix F: Designing Websites with Design and Programming Agents](docs/en-us/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Learn how to use AI agents collaboratively                             | 🚧     |
+| Chapter                                                                                                                                                                                  | Key Content                                              | Status |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | :----- |
+| [Appendix D: What to Do When Encountering Errors](docs/en-us/stage-1/appendix-b-common-errors/)                                                                                          | Common errors in vibe coding and troubleshooting methods | 🚧     |
+| [Appendix E: Comparison of Seven AI Programming Tools](docs/en-us/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                         | Compare and test mainstream AI programming platforms     | 🚧     |
+| [Appendix F: Designing Websites with Design and Programming Agents](docs/en-us/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Learn how to use AI agents collaboratively               | 🚧     |
 
 ### Stage 2: Intermediate Developer
 

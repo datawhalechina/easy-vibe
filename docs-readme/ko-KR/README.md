@@ -89,19 +89,19 @@ AI로 코드를 작성하려고 할 때 오류가 계속 발생하고, 포기하
 
 #### 부록: 비즈니스 사고
 
-| 장                                                                                                  | 주요 내용                                    | 상태 |
-| :-------------------------------------------------------------------------------------------------- | :------------------------------------------- | :--- |
+| 장                                                                                                    | 주요 내용                                           | 상태 |
+| :---------------------------------------------------------------------------------------------------- | :-------------------------------------------------- | :--- |
 | [부록 A: 프로덕트 사고 및 솔루션 설계](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)       | 0에서 1까지 프로덕트 만들 때 필요한 사고 프레임워크 | ✅   |
-| [부록 B: AI 산업 적용 시나리오 참조 (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md)   | 다양한 산업에서 AI 적용 사례 이해            | ✅   |
-| [부록 C: AI 소비 시나리오 영감 참조 (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 소비자 제품에서 AI 적용 사례 탐색            | ✅   |
+| [부록 B: AI 산업 적용 시나리오 참조 (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md)   | 다양한 산업에서 AI 적용 사례 이해                   | ✅   |
+| [부록 C: AI 소비 시나리오 영감 참조 (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 소비자 제품에서 AI 적용 사례 탐색                   | ✅   |
 
 #### 부록: 기술 솔루션
 
-| 장                                                                                                                                                      | 주요 내용                                    | 상태 |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------- | :--- |
-| [부록 D: 코드 작성 시 오류 발생 시 대처 방법](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                     | Vibe Coding의 일반적인 오류 및 문제 해결 방법 | ✅   |
-| [부록 E: 7가지 AI 프로그래밍 도구 비교](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                       | 주요 AI 프로그래밍 플랫폼 비교 테스트        | ✅   |
-| [부록 F: 디자인 및 프로그래밍 에이전트로 웹사이트 설계](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | AI 에이전트 협업 사용 방법 학습              | ✅   |
+| 장                                                                                                                                                                           | 주요 내용                                     | 상태 |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- | :--- |
+| [부록 D: 코드 작성 시 오류 발생 시 대처 방법](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                          | Vibe Coding의 일반적인 오류 및 문제 해결 방법 | ✅   |
+| [부록 E: 7가지 AI 프로그래밍 도구 비교](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                            | 주요 AI 프로그래밍 플랫폼 비교 테스트         | ✅   |
+| [부록 F: 디자인 및 프로그래밍 에이전트로 웹사이트 설계](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | AI 에이전트 협업 사용 방법 학습               | ✅   |
 
 ### 2. 초중급 개발 엔지니어
 

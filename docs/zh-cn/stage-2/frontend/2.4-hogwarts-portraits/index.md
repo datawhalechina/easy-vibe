@@ -533,9 +533,9 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
 
 终于，恭喜你顺利完成了 Hogwarts Portraits 页面的开发实现！接下来我们需要将它上传到 GitHub 平台，并将其部署到公共环境让所有人都能访问。
 
-你需要参考该教程，对如何使用 Github 进行研究，将自己的项目上传至 Github：[什么是 Github](https://datawhalechina.github.io/easy-vibe/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.html)
+你需要参考该教程，对如何使用 Github 进行研究，将自己的项目上传至 Github：[什么是 Github](https://datawhalechina.github.io/easy-vibe/stage-2/backend/2.4-git-workflow/extra1/)
 
-此外，你还需要学会如何使用 Zeabur，将其连接到 Github，并成功部署你的项目：[什么是 Zeabur](https://datawhalechina.github.io/easy-vibe/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.html)
+此外，你还需要学会如何使用 Zeabur，将其连接到 Github，并成功部署你的项目：[什么是 Zeabur](https://datawhalechina.github.io/easy-vibe/stage-2/backend/2.5-zeabur-deployment/extra6/)
 
 如果你觉得自己开发一套 Hogwarts Portraits 项目很困难，你可以先从参考别的项目开始进行修改，本节课的官方代码地址为：https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 

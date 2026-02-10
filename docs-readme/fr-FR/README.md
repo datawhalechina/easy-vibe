@@ -89,19 +89,19 @@ Nous croyons qu'en maîtrisant Vibe Coding et en le combinant avec un entraînem
 
 #### Annexes : Pensée Business
 
-| Chapitre                                                                                       | Contenu clé                                                            | Statut |
-| :--------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- | :----- |
-| [Annexe A : Pensée Produit et Conception de Solution](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Cadres de pensée nécessaires pour créer un produit de zéro à un        | ✅     |
-| [Annexe B : Référence des Scénarios d'Application AI dans l'Industrie (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | Comprendre les applications AI dans différentes industries             | ✅     |
-| [Annexe C : Référence d'Inspiration des Scénarios de Consommation AI (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | Explorer les applications AI dans les produits grand public            | ✅     |
+| Chapitre                                                                                                                               | Contenu clé                                                     | Statut |
+| :------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- | :----- |
+| [Annexe A : Pensée Produit et Conception de Solution](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)                         | Cadres de pensée nécessaires pour créer un produit de zéro à un | ✅     |
+| [Annexe B : Référence des Scénarios d'Application AI dans l'Industrie (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md)  | Comprendre les applications AI dans différentes industries      | ✅     |
+| [Annexe C : Référence d'Inspiration des Scénarios de Consommation AI (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | Explorer les applications AI dans les produits grand public     | ✅     |
 
 #### Annexes : Solutions Techniques
 
-| Chapitre                                                                                                                                                      | Contenu clé                                                            | Statut |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------- | :----- |
-| [Annexe D : Que Faire en Cas d'Erreur lors de l'Écriture de Code](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                       | Erreurs courantes en Vibe Coding et méthodes de dépannage              | ✅     |
-| [Annexe E : Comparaison de 7 Outils de Programmation AI](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)            | Comparer et tester les principales plateformes de programmation AI     | ✅     |
-| [Annexe F : Concevoir des Sites Web avec des Agents de Design et de Programmation](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Apprendre à utiliser les agents AI de manière collaborative            | ✅     |
+| Chapitre                                                                                                                                                                                                | Contenu clé                                                        | Statut |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------- | :----- |
+| [Annexe D : Que Faire en Cas d'Erreur lors de l'Écriture de Code](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                                 | Erreurs courantes en Vibe Coding et méthodes de dépannage          | ✅     |
+| [Annexe E : Comparaison de 7 Outils de Programmation AI](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                                      | Comparer et tester les principales plateformes de programmation AI | ✅     |
+| [Annexe F : Concevoir des Sites Web avec des Agents de Design et de Programmation](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Apprendre à utiliser les agents AI de manière collaborative        | ✅     |
 
 ### 2. Ingénieur de Développement Niveau Débutant-Intermédiaire
 

@@ -89,18 +89,18 @@ Chúng tôi tin rằng thông qua việc làm chủ Vibe Coding kết hợp vớ
 
 #### Phụ lục: Tư duy Kinh doanh
 
-| Chương                                                                                       | Nội dung chính                                              | Trạng thái |
-| :------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :--------- |
-| [Phụ lục A: Tư duy Sản phẩm và Thiết kế Giải pháp](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Các khung tư duy cần thiết để tạo sản phẩm từ số không đến một | ✅         |
-| [Phụ lục B: Tham khảo Ứng dụng AI trong Ngành (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | Hiểu các ứng dụng AI trong các ngành khác nhau              | ✅         |
-| [Phụ lục C: Tham khảo Cảm hứng Kịch bản Tiêu dùng AI (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | Khám phá các ứng dụng AI trong sản phẩm tiêu dùng           | ✅         |
+| Chương                                                                                                                 | Nội dung chính                                                 | Trạng thái |
+| :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :--------- |
+| [Phụ lục A: Tư duy Sản phẩm và Thiết kế Giải pháp](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)            | Các khung tư duy cần thiết để tạo sản phẩm từ số không đến một | ✅         |
+| [Phụ lục B: Tham khảo Ứng dụng AI trong Ngành (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md)          | Hiểu các ứng dụng AI trong các ngành khác nhau                 | ✅         |
+| [Phụ lục C: Tham khảo Cảm hứng Kịch bản Tiêu dùng AI (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | Khám phá các ứng dụng AI trong sản phẩm tiêu dùng              | ✅         |
 
 #### Phụ lục: Giải pháp Kỹ thuật
 
-| Chương                                                                                                                                                      | Nội dung chính                                              | Trạng thái |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :--------- |
-| [Phụ lục D: Làm gì khi Gặp lỗi khi Viết Code](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                         | Các lỗi phổ biến trong Vibe Coding và phương pháp khắc phục | ✅         |
-| [Phụ lục E: So sánh 7 Công cụ Lập trình AI](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                       | So sánh và thử nghiệm các nền tảng lập trình AI chính       | ✅         |
+| Chương                                                                                                                                                                             | Nội dung chính                                              | Trạng thái |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :--------- |
+| [Phụ lục D: Làm gì khi Gặp lỗi khi Viết Code](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                                | Các lỗi phổ biến trong Vibe Coding và phương pháp khắc phục | ✅         |
+| [Phụ lục E: So sánh 7 Công cụ Lập trình AI](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                              | So sánh và thử nghiệm các nền tảng lập trình AI chính       | ✅         |
 | [Phụ lục F: Thiết kế Website với Agent Thiết kế và Lập trình](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Học cách sử dụng AI Agent cộng tác                          | ✅         |
 
 ### 2. Kỹ sư phát triển cấp sơ-trung

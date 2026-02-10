@@ -29,14 +29,14 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.0-finding-great-idea/"
-    title="1. 找到好点子"
-    description="学会寻找和验证产品想法，找到值得做的项目。"
+    href="/easy-vibe/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
+    title="1. 学会 AI 编程工具"
+    description="了解当前主流的 AI 编程工具，选择最适合你的开发搭档。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
-    title="2. 学会 AI 编程工具"
-    description="了解当前主流的 AI 编程工具，选择最适合你的开发搭档。"
+    href="/easy-vibe/zh-cn/stage-1/1.0-finding-great-idea/"
+    title="2. 找到好点子"
+    description="学会寻找和验证产品想法，找到值得做的项目。"
   />
   <NavCard
     href="/easy-vibe/zh-cn/stage-1/1.2-building-prototype/"

@@ -30,7 +30,7 @@
     description="学习主流 UI 设计规范，提升产品设计的一致性与美感"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits"
+    href="/easy-vibe/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/"
     title="前端四：一起做霍格沃茨画像"
     description="实战项目：结合 AI 生成的图像，构建一个交互式的霍格沃茨画像应用"
   />
@@ -42,12 +42,12 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api"
+    href="/easy-vibe/zh-cn/stage-2/backend/2.1-what-is-api/extra2/"
     title="后端一：什么是 API"
     description="理解 API 的核心概念，它是前后端交互的桥梁"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase"
+    href="/easy-vibe/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/"
     title="后端二：从数据库到 Supabase"
     description="掌握关系型数据库基础，并学习使用 Supabase 这一现代 BaaS 平台"
   />
@@ -57,17 +57,17 @@
     description="利用 AI 辅助生成后端接口代码及标准的接口文档，提升开发效率"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github"
+    href="/easy-vibe/zh-cn/stage-2/backend/2.4-git-workflow/extra1/"
     title="后端四：Git 工作流"
     description="掌握 Git 版本控制系统的核心操作与协作流程"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications"
-    title="后端五：Zeabur 部署"
+    href="/easy-vibe/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/"
+    title="后端五：如何部署 Web 应用"
     description="学习使用 Zeabur 快速部署你的全栈应用到云端"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development"
+    href="/easy-vibe/zh-cn/stage-2/backend/2.6-modern-cli/extra7/"
     title="后端六：现代 CLI 开发工具"
     description="探索现代 CLI 工具，提升命令行环境下的开发体验"
   />
@@ -99,12 +99,12 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration"
+    href="/easy-vibe/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/"
     title="AI 一：Dify 入门与知识库集成"
     description="学习使用 Dify 构建 AI 应用，并集成私有知识库"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook"
+    href="/easy-vibe/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/"
     title="AI 二：学会查询 AI 词典与集成多模态 API"
     description="探索更多 AI 能力，集成视觉、语音等多模态 API"
   />

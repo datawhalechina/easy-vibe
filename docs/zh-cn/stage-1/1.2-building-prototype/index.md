@@ -253,7 +253,7 @@ const duration = '约 <strong>8 小时</strong>'
 ## 2. 10分钟产出原型：让 AI IDE 落地"核心玩法"
 
 ::: info 💡 编程 Plan 建议
-如果你觉得当前 IDE 不够聪明，或者觉得很快就花完了额度，你可以去买一个**编程 Plan 计划**。提前预习参考[这个文章](../../stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md)使用 Claude 进行编程。
+如果你觉得当前 IDE 不够聪明，或者觉得很快就花完了额度，你可以去买一个**编程 Plan 计划**。提前预习参考[这个文章](../../stage-2/backend/2.6-modern-cli/extra7/)使用 Claude 进行编程。
 :::
 
 Thinking 是好事，但不可 over thinking，我们就此控制过度反思，尝试从单个页面开始制作原型。

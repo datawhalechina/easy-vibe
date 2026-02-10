@@ -89,19 +89,19 @@ Wir glauben, dass durch die Beherrschung von Vibe Coding in Kombination mit syst
 
 #### Anhänge: Geschäftsdenken
 
-| Kapitel                                                                                       | Schlüsselinhalt                                                                       | Status |
-| :-------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :----- |
-| [Anhang A: Produktdenken und Lösungsdesign](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Denkrahmen, die für die Erstellung eines Produkts von Null auf Eins erforderlich sind | ✅     |
-| [Anhang B: Referenz für KI-Branchenanwendungsszenarien (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | Verstehen der KI-Anwendungen in verschiedenen Branchen                                | ✅     |
+| Kapitel                                                                                                                      | Schlüsselinhalt                                                                       | Status |
+| :--------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :----- |
+| [Anhang A: Produktdenken und Lösungsdesign](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)                         | Denkrahmen, die für die Erstellung eines Produkts von Null auf Eins erforderlich sind | ✅     |
+| [Anhang B: Referenz für KI-Branchenanwendungsszenarien (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md)       | Verstehen der KI-Anwendungen in verschiedenen Branchen                                | ✅     |
 | [Anhang C: Referenz für KI-Verbrauchsszenarien-Inspiration (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | Erkunden der KI-Anwendungen in Verbraucherprodukten                                   | ✅     |
 
 #### Anhänge: Technische Lösungen
 
-| Kapitel                                                                                                                                                      | Schlüsselinhalt                                                                       | Status |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :----- |
-| [Anhang D: Was Tun bei Fehlern beim Schreiben von Code](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                | Häufige Fehler in Vibe Coding und Methoden zur Fehlerbehebung                         | ✅     |
-| [Anhang E: Vergleich von 7 KI-Programmierungstools](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                | Vergleich und Testen der wichtigsten KI-Programmierplattformen                        | ✅     |
-| [Anhang F: Websites mit Design- und Programmieragenten Entwerfen](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Lernen der kollaborativen Nutzung von KI-Agenten                                      | ✅     |
+| Kapitel                                                                                                                                                                                | Schlüsselinhalt                                                | Status |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :----- |
+| [Anhang D: Was Tun bei Fehlern beim Schreiben von Code](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                          | Häufige Fehler in Vibe Coding und Methoden zur Fehlerbehebung  | ✅     |
+| [Anhang E: Vergleich von 7 KI-Programmierungstools](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                          | Vergleich und Testen der wichtigsten KI-Programmierplattformen | ✅     |
+| [Anhang F: Websites mit Design- und Programmieragenten Entwerfen](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Lernen der kollaborativen Nutzung von KI-Agenten               | ✅     |
 
 ### 2. Entwicklungsingenieur auf Anfänger-Fortgeschrittenen-Niveau
 

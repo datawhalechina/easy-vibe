@@ -372,7 +372,7 @@ export default defineConfig({
                 },
                 {
                   text: '前端四：一起做霍格沃茨画像',
-                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits'
+                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
                 }
               ]
             },
@@ -382,11 +382,11 @@ export default defineConfig({
               items: [
                 {
                   text: '后端一：什么是 API',
-                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api'
+                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/'
                 },
                 {
                   text: '后端二：从数据库到 Supabase',
-                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase'
+                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
                 },
                 {
                   text: '后端三：大模型辅助编写接口代码与接口文档',
@@ -394,15 +394,15 @@ export default defineConfig({
                 },
                 {
                   text: '后端四：Git 工作流',
-                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github'
+                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/'
                 },
                 {
                   text: '后端五：如何部署 Web 应用',
-                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications'
+                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
                 },
                 {
                   text: '后端六：现代 CLI 开发工具',
-                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development'
+                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/'
                 },
                 {
                   text: '后端七：如何集成 Stripe 等收费系统',
@@ -430,11 +430,11 @@ export default defineConfig({
               items: [
                 {
                   text: 'AI 一：Dify 入门与知识库集成',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration'
+                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/'
                 },
                 {
                   text: 'AI 二：学会查询 AI 词典与集成多模态 API',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook'
+                  link: '/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/'
                 }
               ]
             }
@@ -492,7 +492,7 @@ export default defineConfig({
               items: [
                 {
                   text: '高级 AI 一：什么是 RAG 以及它如何工作',
-                  link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future'
+                  link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
                 },
                 {
                   text: '高级 AI 二：中高级 RAG 与工作流编排 - 以 LangGraph 为例',
@@ -513,23 +513,23 @@ export default defineConfig({
               items: [
                 {
                   text: 'Extra 1: Git & GitHub',
-                  link: '/zh-cn/extra/extra1/extra1-what-is-git-and-what-is-github'
+                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/'
                 },
                 {
                   text: 'Extra 2: What is API',
-                  link: '/zh-cn/extra/extra2/extra2-what-is-api'
+                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/'
                 },
                 {
                   text: 'Extra 5: What is RAG',
-                  link: '/zh-cn/extra/extra5/extra5-what-is-rag-and-how-does-it-work-and-future'
+                  link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
                 },
                 {
                   text: 'Extra 6: Zeabur Deployment',
-                  link: '/zh-cn/extra/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications'
+                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
                 },
                 {
                   text: 'Extra 7: CLI AI Tools & TDD',
-                  link: '/zh-cn/extra/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development'
+                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/'
                 }
               ]
             }
@@ -555,15 +555,15 @@ export default defineConfig({
               items: [
                 {
                   text: '前端四：霍格沃茨画像',
-                  link: '/zh-cn/project/chapter4/chapter4-lets-build-hogwarts-portraits'
+                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
                 },
                 {
                   text: '后端二：Supabase 数据库',
-                  link: '/zh-cn/project/chapter5/chapter5-from-database-to-supabase'
+                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
                 },
                 {
                   text: 'AI 一：Dify & Knowledge Base',
-                  link: '/zh-cn/project/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration'
+                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/'
                 }
               ]
             }

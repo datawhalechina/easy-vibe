@@ -1,4 +1,4 @@
-# Project 5: 从数据库到 Supabase
+# 从数据库到 Supabase
 
 在上节课中，我们学会了 UI 设计程序 Mastergo 和 Figma 的基本用法，能够使用 github 进行代码的获取与版本管理，并通过 Zeabur 部署网站将自己的应用 / 网站传达给更多人使用。
 

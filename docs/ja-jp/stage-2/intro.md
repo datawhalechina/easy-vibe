@@ -39,7 +39,7 @@
     </div>
   </a>
 
-  <a href="/ja-jp/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits" class="card-link">
+  <a href="/ja-jp/stage-2/frontend/2.4-hogwarts-portraits/" class="card-link">
     <div class="content-card">
       <div class="card-header">
         <span class="card-icon">🧙</span>
@@ -55,7 +55,7 @@
 API設計、データベース管理、アプリケーションデプロイメント戦略を学ぶ：
 
 <NavGrid>
-  <a href="/ja-jp/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase" class="card-link">
+  <a href="/ja-jp/stage-2/backend/2.2-database-supabase/chapter5/" class="card-link">
     <div class="content-card">
       <div class="card-header">
         <span class="card-icon">🗄️</span>
@@ -75,7 +75,7 @@ API設計、データベース管理、アプリケーションデプロイメ�
     </div>
   </a>
 
-  <a href="/ja-jp/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github" class="card-link">
+  <a href="/ja-jp/stage-2/backend/2.4-git-workflow/extra1/" class="card-link">
     <div class="content-card">
       <div class="card-header">
         <span class="card-icon">🌿</span>
@@ -85,7 +85,7 @@ API設計、データベース管理、アプリケーションデプロイメ�
     </div>
   </a>
 
-  <a href="/ja-jp/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications" class="card-link">
+  <a href="/ja-jp/stage-2/backend/2.5-zeabur-deployment/extra6/" class="card-link">
     <div class="content-card">
       <div class="card-header">
         <span class="card-icon">🚀</span>
@@ -95,7 +95,7 @@ API設計、データベース管理、アプリケーションデプロイメ�
     </div>
   </a>
 
-  <a href="/ja-jp/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development" class="card-link">
+  <a href="/ja-jp/stage-2/backend/2.6-modern-cli/extra7/" class="card-link">
     <div class="content-card">
       <div class="card-header">
         <span class="card-icon">💻</span>
@@ -135,7 +135,7 @@ API設計、データベース管理、アプリケーションデプロイメ�
 ### AI機能拡張
 
 <NavGrid>
-  <a href="/ja-jp/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook" class="card-link">
+  <a href="/ja-jp/stage-2/ai-capabilities/2.2-multimodal-api/extra3/" class="card-link">
     <div class="content-card">
       <div class="card-header">
         <span class="card-icon">🎭</span>

@@ -66,7 +66,7 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future"
+    href="/easy-vibe/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/"
     title="高级 AI 一：什么是 RAG 以及它如何工作"
     description="深入理解检索增强生成 (RAG) 的原理及其在 AI 应用中的价值"
   />
