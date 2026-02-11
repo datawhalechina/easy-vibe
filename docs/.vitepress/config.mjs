@@ -208,9 +208,9 @@ const productManagerSidebar = [
     text: '新手入门',
     collapsed: false,
     items: [
-      { text: '1. 学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
+      { text: '学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
       {
-        text: '2. AI 时代，会说话就会编程',
+        text: 'AI 时代，会说话就会编程',
         link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
       }
     ]
@@ -220,23 +220,23 @@ const productManagerSidebar = [
     collapsed: false,
     items: [
       {
-        text: '1. 学会 AI 编程工具',
+        text: '学会 AI 编程工具',
         link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
       },
       {
-        text: '2. 找到好点子',
+        text: '找到好点子',
         link: '/zh-cn/stage-1/1.0-finding-great-idea/'
       },
       {
-        text: '3. 搭建产品原型',
+        text: '搭建产品原型',
         link: '/zh-cn/stage-1/1.2-building-prototype/'
       },
       {
-        text: '4. 接入 AI 能力',
+        text: '接入 AI 能力',
         link: '/zh-cn/stage-1/1.3-integrating-ai-capabilities/'
       },
       {
-        text: '5. 完整项目实战',
+        text: '完整项目实战',
         link: '/zh-cn/stage-1/1.4-complete-project-practice/'
       }
     ]
