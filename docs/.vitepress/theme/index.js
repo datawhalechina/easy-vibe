@@ -350,6 +350,21 @@ import ServiceSelectionDemo from './components/appendix/cloud-services/ServiceSe
 import DatabaseServicesDemo from './components/appendix/cloud-services/DatabaseServicesDemo.vue'
 import K8sServicesDemo from './components/appendix/cloud-services/K8sServicesDemo.vue'
 
+// Cloud Services Simple Components (new)
+import CloudServicesOverview from './components/appendix/cloud-services/CloudServicesOverview.vue'
+import ProviderComparison from './components/appendix/cloud-services/ProviderComparison.vue'
+import PricingCalculator from './components/appendix/cloud-services/PricingCalculator.vue'
+import ComputeInstanceDemo from './components/appendix/cloud-services/ComputeInstanceDemo.vue'
+import StorageTypeDemo from './components/appendix/cloud-services/StorageTypeDemo.vue'
+import ApiCallDemo from './components/appendix/cloud-services/ApiCallDemo.vue'
+import CloudHistoryDemo from './components/appendix/cloud-services/CloudHistoryDemo.vue'
+import DeployWorkflowDemo from './components/appendix/cloud-services/DeployWorkflowDemo.vue'
+import RegionLatencyDemo from './components/appendix/cloud-services/RegionLatencyDemo.vue'
+
+// Cloud IAM Simple Components (new)
+import IAMStructure from './components/appendix/cloud-iam/IAMStructure.vue'
+import PolicyEditorDemo from './components/appendix/cloud-iam/PolicyEditorDemo.vue'
+
 // Gateway Proxy Components
 import ReverseProxyDemo from './components/appendix/gateway-proxy/ReverseProxyDemo.vue'
 import ApiGatewayDemo from './components/appendix/gateway-proxy/ApiGatewayDemo.vue'
@@ -783,6 +798,21 @@ export default {
     app.component('ServiceSelectionDemo', ServiceSelectionDemo)
     app.component('DatabaseServicesDemo', DatabaseServicesDemo)
     app.component('K8sServicesDemo', K8sServicesDemo)
+
+    // Cloud Services Simple Components Registration (new)
+    app.component('CloudServicesOverview', CloudServicesOverview)
+    app.component('ProviderComparison', ProviderComparison)
+    app.component('PricingCalculator', PricingCalculator)
+    app.component('ComputeInstanceDemo', ComputeInstanceDemo)
+    app.component('StorageTypeDemo', StorageTypeDemo)
+    app.component('ApiCallDemo', ApiCallDemo)
+    app.component('CloudHistoryDemo', CloudHistoryDemo)
+    app.component('DeployWorkflowDemo', DeployWorkflowDemo)
+    app.component('RegionLatencyDemo', RegionLatencyDemo)
+
+    // Cloud IAM Simple Components Registration (new)
+    app.component('IAMStructure', IAMStructure)
+    app.component('PolicyEditorDemo', PolicyEditorDemo)
 
     // Cloud IAM Components Registration
     app.component('IamRamComparisonDemo', IamRamComparisonDemo)
