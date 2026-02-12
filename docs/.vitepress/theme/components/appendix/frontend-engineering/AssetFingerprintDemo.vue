@@ -221,7 +221,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 
 const showHash = ref(true)
 const selectedNode = ref(null)
@@ -310,8 +310,6 @@ const getNode = (id) => files.value.find(f => f.id === id)
 onMounted(() => {
   simulateBuild()
 })
-
-import { watch } from 'vue'
 </script>
 
 <style scoped>

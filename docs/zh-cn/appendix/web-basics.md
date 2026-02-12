@@ -212,7 +212,79 @@ h1 {
 
 ---
 
-## 3. JavaScript：为什么页面需要“思考”？
+## 3. JavaScript：为什么页面需要"思考"？
+
+### 3.0 JavaScript 和 ECMAScript 是什么关系？
+
+你可能听说过 **ECMAScript** 这个词，它和 JavaScript 是什么关系？
+
+简单来说：**ECMAScript 是标准，JavaScript 是实现。**
+
+打个比方：
+- **ECMAScript** 就像"普通话标准规范"，定义了语法规则
+- **JavaScript** 就像"实际说的普通话"，是浏览器真正运行的语言
+
+为什么会有两个名字？这有一段历史：
+
+- 1995 年，网景公司创造了 JavaScript
+- 1996 年，微软推出了 JScript（和 JavaScript 类似但不完全一样）
+- 为了避免各家浏览器"方言"不统一，1997 年 ECMA 国际组织制定了标准，命名为 ECMAScript
+
+**所以**：所有浏览器都遵循 ECMAScript 标准，但大家习惯叫它 JavaScript。你写的是 JavaScript，它遵循的是 ECMAScript 规范。
+
+**版本演进是什么意思？**
+
+JavaScript 这门语言不是一成不变的，它在不断"升级"。就像手机系统从 iOS 14 升级到 iOS 15、iOS 16 一样，JavaScript 也有自己的"版本号"，这些版本号就是 **ES 标准**。
+
+每个新版本都会增加新功能、新语法，让开发者写代码更方便。但浏览器需要时间来"学会"这些新语法——就像老手机可能装不了新系统一样，老浏览器也不支持新语法。
+
+**关键版本一览**：
+
+| 版本 | 发布年份 | 重要特性 | 浏览器支持 |
+|------|----------|----------|------------|
+| **ES5** | 2009 | `strict mode`、`JSON`、`Array.map/filter/reduce` | 所有浏览器 ✅ |
+| **ES6/ES2015** | 2015 | `let/const`、箭头函数、`class`、**ES 模块**、`Promise` | 现代浏览器 ✅ |
+| **ES2016** | 2016 | `includes()`、指数运算符 `**` | 现代浏览器 ✅ |
+| **ES2017** | 2017 | `async/await`、`Object.entries()` | 现代浏览器 ✅ |
+| **ES2020** | 2020 | 可选链 `?.`、空值合并 `??`、`BigInt` | 现代浏览器 ✅ |
+| **ES2022** | 2022 | 顶层 `await`、`at()`、私有字段 `#` | 较新浏览器 |
+| **ES2024** | 2024 | `Object.groupBy()`、`Promise.withResolvers()` | 最新浏览器 |
+
+> 💡 **实用建议**：现代浏览器已经支持大部分 ES6+ 特性。如果你需要兼容老浏览器（如 IE），可以用 Babel 等工具把新语法"翻译"成老语法。
+
+### 3.0.1 TypeScript 和 JavaScript 是什么关系？
+
+你可能还听说过 **TypeScript（TS）**，它和 JavaScript 又是什么关系？
+
+**一句话概括：TypeScript = JavaScript + 类型系统。**
+
+| 对比项 | JavaScript | TypeScript |
+|--------|------------|------------|
+| **类型系统** | 动态类型（运行时才知道类型） | 静态类型（写代码时就知道类型） |
+| **编译** | 不需要编译，浏览器直接运行 | 需要编译成 JavaScript 才能运行 |
+| **错误检查** | 运行时才发现错误 | 写代码时就能发现错误 |
+| **学习曲线** | 入门简单 | 需要学习类型语法 |
+| **适用场景** | 小型项目、快速原型 | 大型项目、团队协作 |
+
+**代码对比**：
+
+```javascript
+// JavaScript - 动态类型，变量可以随便变
+let name = "张三"
+name = 123  // 不报错，但可能出问题
+```
+
+```typescript
+// TypeScript - 静态类型，类型写死了
+let name: string = "张三"
+name = 123  // 编译时报错：不能把数字赋给字符串
+```
+
+**为什么大型项目偏爱 TypeScript？**
+
+想象你在团队里开发一个复杂系统，代码几万行。JavaScript 的灵活性在这里变成了"灾难"——你不知道这个函数期望接收什么类型的参数，也不知道它返回什么。TypeScript 强制你写清楚类型，就像给代码加了"说明书"，IDE 也能给你更好的提示。
+
+> 💡 **建议**：初学者先学 JavaScript，打好基础后再学 TypeScript。现代前端框架（Vue 3、React）都强烈推荐使用 TypeScript。
 
 ### 3.1 没有 JS 会怎样？
 
@@ -406,14 +478,18 @@ graph TD
 
 ## 7. 名词速查表 (Glossary)
 
-| 名词           | 全称                      | 解释                               |
-| :------------- | :------------------------ | :--------------------------------- |
-| **HTML**       | HyperText Markup Language | 用标签描述网页结构与语义。         |
-| **CSS**        | Cascading Style Sheets    | 控制颜色、布局、动效的样式语言。   |
-| **JavaScript** | JavaScript                | 让页面具备逻辑与交互的脚本语言。   |
-| **DOM**        | Document Object Model     | 用对象树表示页面，可被 JS 读写。   |
-| **Flexbox**    | Flexible Box Layout       | 一种一维布局方案，易于对齐与分布。 |
-| **Box Model**  | CSS Box Model             | 元素从内容到外边距的层层盒子。     |
+| 名词             | 全称                      | 解释                                     |
+| :--------------- | :------------------------ | :--------------------------------------- |
+| **HTML**         | HyperText Markup Language | 用标签描述网页结构与语义。               |
+| **CSS**          | Cascading Style Sheets    | 控制颜色、布局、动效的样式语言。         |
+| **JavaScript**   | JavaScript                | 让页面具备逻辑与交互的脚本语言。         |
+| **ECMAScript**   | ECMAScript                | JavaScript 的语言标准规范，定义语法规则。 |
+| **ES 标准**      | ECMAScript Standard       | JavaScript 的版本号，如 ES5、ES6、ES2024。 |
+| **ES 模块**      | ES Modules                | ECMAScript 的官方模块化方案（import/export）。 |
+| **TypeScript**   | TypeScript                | JavaScript 的超集，增加了静态类型系统。  |
+| **DOM**          | Document Object Model     | 用对象树表示页面，可被 JS 读写。         |
+| **Flexbox**      | Flexible Box Layout       | 一种一维布局方案，易于对齐与分布。       |
+| **Box Model**    | CSS Box Model             | 元素从内容到外边距的层层盒子。           |
 
 ---
 

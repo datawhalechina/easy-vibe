@@ -252,6 +252,16 @@ import MemoryPalaceActionDemo from './components/appendix/context-engineering/Me
 import KVCacheDemo from './components/appendix/context-engineering/KVCacheDemo.vue'
 import LostInMiddleDemo from './components/appendix/context-engineering/LostInMiddleDemo.vue'
 
+// Frontend Engineering Components
+import BuildPipelineDemo from './components/appendix/frontend-engineering/BuildPipelineDemo.vue'
+import BundlerComparisonDemo from './components/appendix/frontend-engineering/BundlerComparisonDemo.vue'
+import TreeShakingDemo from './components/appendix/frontend-engineering/TreeShakingDemo.vue'
+import CodeSplittingDemo from './components/appendix/frontend-engineering/CodeSplittingDemo.vue'
+import HotReloadDemo from './components/appendix/frontend-engineering/HotReloadDemo.vue'
+import DependencyGraphDemo from './components/appendix/frontend-engineering/DependencyGraphDemo.vue'
+import SourceMapDemo from './components/appendix/frontend-engineering/SourceMapDemo.vue'
+import AssetFingerprintDemo from './components/appendix/frontend-engineering/AssetFingerprintDemo.vue'
+
 // Agent Intro Components
 import AgentWorkflowDemo from './components/appendix/agent-intro/AgentWorkflowDemo.vue'
 import AgentLevelDemo from './components/appendix/agent-intro/AgentLevelDemo.vue'
@@ -692,6 +702,16 @@ export default {
     app.component('MemoryPalaceActionDemo', MemoryPalaceActionDemo)
     app.component('KVCacheDemo', KVCacheDemo)
     app.component('LostInMiddleDemo', LostInMiddleDemo)
+
+    // Frontend Engineering Components Registration
+    app.component('BuildPipelineDemo', BuildPipelineDemo)
+    app.component('BundlerComparisonDemo', BundlerComparisonDemo)
+    app.component('TreeShakingDemo', TreeShakingDemo)
+    app.component('CodeSplittingDemo', CodeSplittingDemo)
+    app.component('HotReloadDemo', HotReloadDemo)
+    app.component('DependencyGraphDemo', DependencyGraphDemo)
+    app.component('SourceMapDemo', SourceMapDemo)
+    app.component('AssetFingerprintDemo', AssetFingerprintDemo)
 
     // Agent Intro Components Registration
     app.component('AgentWorkflowDemo', AgentWorkflowDemo)
