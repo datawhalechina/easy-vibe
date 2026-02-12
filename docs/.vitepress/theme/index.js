@@ -16,6 +16,7 @@ import ArticleGrid from './components/ArticleGrid.vue'
 import StepBar from './components/StepBar.vue'
 import ChapterIntroduction from './components/ChapterIntroduction.vue'
 import ReadingProgress from './components/ReadingProgress.vue'
+import SummaryCard from './components/SummaryCard.vue'
 import WebTerminal from './components/appendix/terminal-intro/WebTerminal.vue'
 import TerminalGrid from './components/appendix/terminal-intro/TerminalGrid.vue'
 import CellInspector from './components/appendix/terminal-intro/CellInspector.vue'
@@ -455,7 +456,8 @@ export default {
     app.component('ArticleGrid', ArticleGrid)
     app.component('StepBar', StepBar)
     app.component('ChapterIntroduction', ChapterIntroduction)
-    app.component('ReadingProgress', ReadingProgress)    
+    app.component('ReadingProgress', ReadingProgress)
+    app.component('SummaryCard', SummaryCard)
     app.component('WebTerminal', WebTerminal)
     app.component('TerminalGrid', TerminalGrid)
     app.component('CellInspector', CellInspector)
