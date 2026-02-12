@@ -308,8 +308,6 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 4. 选择适合你的套餐并完成支付
 6. 支付成功后，你会获得一个 API Key 或 Plan ID
 
-
-
 **可选：直接接入大模型 API（以 DeepSeek 为例）**
 
 1. 访问 DeepSeek 平台：https://platform.deepseek.com/usage
@@ -317,6 +315,10 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 3. 在充值页面购买 10 元的 Token 包
 4. 充值成功后，在 API Keys 页面创建并复制 API Key
 5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
+
+![](images/index-2026-02-12-14-14-51.png)
+
+![](images/index-2026-02-12-14-15-29.png)
 
 ::: tip 🎯 自定义模型推荐
 
