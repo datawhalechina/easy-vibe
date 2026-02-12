@@ -292,7 +292,7 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 
 以下是国内主流云服务厂商提供的 Coding Plan 推荐选项：
 
-- 智谱 AI（BigModel Plan）：https://bigmodel.cn/glm-coding
+- 智谱 AI（BigModel Plan）：https://bigmodel.cn/glm-coding  
 - 火山引擎（字节云 AI Plan）：https://www.volcengine.com/activity/codingplan
 
 > 💡 **也可以直接接入大模型 API**
@@ -302,13 +302,13 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 
 接入 Coding Plan 的步骤非常简单，只需几分钟即可完成：
 
-**第一步：购买 Coding Plan**
-
-1. 访问你选择的云服务厂商官网（如智谱 AI：https://bigmodel.cn/glm-coding，火山引擎：https://www.volcengine.com/activity/codingplan）
+1. 访问你选择的云服务厂商官网（如智谱 AI：https://bigmodel.cn/glm-coding ，火山引擎：https://www.volcengine.com/activity/codingplan）
 2. 注册账号并登录
 3. 找到 "定价" 或 "Coding Plan" 页面
 4. 选择适合你的套餐并完成支付
-5. 支付成功后，你会获得一个 API Key 或 Plan ID
+6. 支付成功后，你会获得一个 API Key 或 Plan ID
+
+
 
 **可选：直接接入大模型 API（以 DeepSeek 为例）**
 
@@ -318,22 +318,22 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 4. 充值成功后，在 API Keys 页面创建并复制 API Key
 5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
 
-**第二步：在 Trae 中配置 Coding Plan**
+::: tip 🎯 自定义模型推荐
 
-1. 打开 Trae 的侧边栏，找到模型选择区域
-2. 点击当前模型名称，打开模型选择面板
-3. 点击 **"Add Model"** 或 **"添加模型"** 按钮
-![](images/index-2026-02-12-14-14-51.png)
-4. 在 **Provider** 下拉菜单中，选择对应的 Coding Plan 类型：
-   - 对于智谱 AI，选择 `bigmodel-plan`
-   - 对于火山引擎，选择 `volcengine-plan`
-![](images/index-2026-02-12-14-15-29.png)
-5. 输入你购买的 Coding Plan 提供的 API Key 或 Plan ID
-6. 点击 **"确认"** 或 **"保存"**
+在 Trae 中接入自定义模型时，我们**默认推荐使用 OpenRouter 方案**。OpenRouter 提供了统一的 API 接口，可以方便地接入多种大语言模型。
 
-配置完成后，你就可以在模型选择列表中看到新添加的 Coding Plan 模型，选择它即可开始使用。
+**推荐免费模型：**
+
+- **`openrouter/free`**：这是一个默认使用免费 LLM API 的模型选项，可以直接在 Trae 的 Custom Model 接入中使用，无需付费即可体验 AI 编程功能。
+
+**截至 2026 年 2 月 12 日，你还可以使用 StepFun 的免费 API：**
+
+- **`stepfun/step-3.5-flash:free`**：StepFun（阶跃星辰）提供的免费模型，同样支持在 Trae 中直接接入使用。
+
+这些免费选项非常适合初学者体验，在正式投入生产环境前，可以先通过这些免费方案熟悉 AI IDE 的工作流程。
 
 :::
+
 
 ### 4.3 第二步：在侧边栏聊天，让 AI 用 React 设计贪吃蛇游戏
 
