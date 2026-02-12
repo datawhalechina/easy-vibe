@@ -1,15 +1,11 @@
----
-title: '学会 AI 编程工具 - Claude Code、Cursor、Trae 教程'
-description: '深入了解 AI IDE 工具：学习 VS Code、Claude Code、Cursor、Trae 等工具的使用。掌握 IDE 界面、AI 对话技巧，用本地 AI IDE 从零开发贪吃蛇游戏。'
----
-
-<script setup>
-const duration = '约 <strong>1 天</strong>，可分多次完成'
-</script>
 
 # 初级二：学会 AI 编程工具
 
 ## 本章导读
+
+<script setup>
+const duration = '约 <strong>1 天</strong>，可分多次完成'
+</script>
 
 <ChapterIntroduction :duration="duration" :tags="['本地开发环境搭建', 'IDE 与 AI IDE', '高效开发技巧']" coreOutput="1 个自创小游戏" expectedOutput="使用 Trae 产出">
 
@@ -230,6 +226,22 @@ Trae 分为国际版和中国版。国际版需要能够访问海外网络，但
 国际版下载地址：https://www.trae.ai/
 中国版下载地址：https://www.trae.cn/
 
+##### Trae 定价与使用方式
+
+::: info 💡 版本选择提示
+- 如果你主要在国内使用，建议优先选择国内版，网络访问更稳定，且支持国产大模型
+- 如果你需要使用 GPT-5 等海外模型，且网络条件允许，可以选择国际版
+- 如果已有第三方模型的 API Key，接入第三方模型可以灵活控制成本
+:::
+
+关于 Trae 的费用和使用方式，有以下几个选项可供选择：
+
+- **国内版（推荐）**：基础使用是免费的，但由于用户较多可能需要排队等待。
+- **国际版**：订阅价格大约为每月 3 美元左右，可以访问 GPT-5 等海外模型，但需要能够访问海外网络。
+- **第三方模型接入**：如果你已经有国内大模型的 Token API（如 DeepSeek、通义千问、Kimi 等），可以通过 Trae 的第三方模型配置功能将这些 API 接入使用。各大云服务厂商（如阿里云、腾讯云、百度云等）通常提供 Coding Plan 订阅计划，购买后可以以更优惠的价格使用其大模型 API。这样你可以自由选择自己喜欢的模型，同时控制使用成本。
+
+建议初学者从国内版免费版开始体验，如果遇到排队问题或需要更稳定的服务，可以考虑接入第三方模型并购买对应云厂商的 Coding Plan 计划。
+
 #### 4.1.3 Trae 界面简介
 
 从界面形态上看，Trae 与我们日常使用的 VS Code 高度相似：同样是左侧资源管理器、中间编辑区、右侧扩展面板的经典三栏布局。
@@ -265,6 +277,63 @@ Trae 分为国际版和中国版。国际版需要能够访问海外网络，但
 以本小节示例为例，可以在本地新建一个名为 snake-game-react 的空文件夹。
 
 随后，打开已安装好的 AI IDE，在启动界面选择打开文件夹或Open Folder，将该空文件夹作为项目根目录导入；也可以直接将文件夹拖入 IDE 窗口完成打开。此时，左侧资源管理器中不会出现任何代码文件，表示我们正从一个完全空白的项目状态开始。
+
+::: details 📚 可选：接入云服务厂商的 API 或 Coding Plan
+
+**什么是 Coding Plan**
+
+Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以在一定时期内**无限制或高频次地使用**该厂商的大模型 API。相比于按 Token 计费的方式，Coding Plan 更像是"包月套餐"——你付一笔固定的费用，就能放心大胆地一直用，不用担心每次调用都要计费。
+
+**为什么需要购买 Coding Plan**
+
+你可能会问：既然可以直接使用 API 调用大模型，为什么还要购买 Coding Plan 呢？主要有以下原因：**可以一直用**：Coding Plan 最核心的优势就是你可以随时、频繁地调用大模型，不用担心用多了费用爆炸，也不需要频繁看计费表
+
+**推荐的国内云服务 Coding Plan**
+
+以下是国内主流云服务厂商提供的 Coding Plan 推荐选项：
+
+- 智谱 AI（BigModel Plan）：https://bigmodel.cn/glm-coding
+- 火山引擎（字节云 AI Plan）：https://www.volcengine.com/activity/codingplan
+
+> 💡 **也可以直接接入大模型 API**
+> 除了 Coding Plan，你也可以直接通过 Add Model 接入各大模型的 API。建议先充值 10 元感受一下能用多久，比如 DeepSeek 等性价比较高的模型。
+
+**如何接入 Coding Plan**
+
+接入 Coding Plan 的步骤非常简单，只需几分钟即可完成：
+
+**第一步：购买 Coding Plan**
+
+1. 访问你选择的云服务厂商官网（如智谱 AI：https://bigmodel.cn/glm-coding，火山引擎：https://www.volcengine.com/activity/codingplan）
+2. 注册账号并登录
+3. 找到 "定价" 或 "Coding Plan" 页面
+4. 选择适合你的套餐并完成支付
+5. 支付成功后，你会获得一个 API Key 或 Plan ID
+
+**可选：直接接入大模型 API（以 DeepSeek 为例）**
+
+1. 访问 DeepSeek 平台：https://platform.deepseek.com/usage
+2. 注册账号并登录
+3. 在充值页面购买 10 元的 Token 包
+4. 充值成功后，在 API Keys 页面创建并复制 API Key
+5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
+
+**第二步：在 Trae 中配置 Coding Plan**
+
+1. 打开 Trae 的侧边栏，找到模型选择区域
+2. 点击当前模型名称，打开模型选择面板
+3. 点击 **"Add Model"** 或 **"添加模型"** 按钮
+![](images/index-2026-02-12-14-14-51.png)
+4. 在 **Provider** 下拉菜单中，选择对应的 Coding Plan 类型：
+   - 对于智谱 AI，选择 `bigmodel-plan`
+   - 对于火山引擎，选择 `volcengine-plan`
+![](images/index-2026-02-12-14-15-29.png)
+5. 输入你购买的 Coding Plan 提供的 API Key 或 Plan ID
+6. 点击 **"确认"** 或 **"保存"**
+
+配置完成后，你就可以在模型选择列表中看到新添加的 Coding Plan 模型，选择它即可开始使用。
+
+:::
 
 ### 4.3 第二步：在侧边栏聊天，让 AI 用 React 设计贪吃蛇游戏
 
