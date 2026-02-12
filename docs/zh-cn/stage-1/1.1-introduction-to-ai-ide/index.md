@@ -316,6 +316,8 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 4. 充值成功后，在 API Keys 页面创建并复制 API Key
 5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
 
+通过下列界面，你可以成功添加
+
 ![](images/index-2026-02-12-14-14-51.png)
 
 ![](images/index-2026-02-12-14-15-29.png)
