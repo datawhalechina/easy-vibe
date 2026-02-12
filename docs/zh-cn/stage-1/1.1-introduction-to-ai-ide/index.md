@@ -309,20 +309,6 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 4. 选择适合你的套餐并完成支付
 5. 支付成功后，你会获得一个 API Key 或 Plan ID
 
-**可选：直接接入大模型 API（以 DeepSeek 为例）**
-
-1. 访问 DeepSeek 平台：https://platform.deepseek.com/usage
-2. 注册账号并登录
-3. 在充值页面购买 10 元的 Token 包
-4. 充值成功后，在 API Keys 页面创建并复制 API Key
-5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
-
-通过下列界面，你可以成功添加
-
-![](images/index-2026-02-12-14-14-51.png)
-
-![](images/index-2026-02-12-14-15-29.png)
-
 ::: tip 🎯 自定义模型推荐
 
 在 Trae 中接入自定义模型时，我们**默认推荐使用 OpenRouter 方案**。OpenRouter 提供了统一的 API 接口，可以方便地接入多种大语言模型。
@@ -338,6 +324,20 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 这些免费选项非常适合初学者体验，在正式投入生产环境前，可以先通过这些免费方案熟悉 AI IDE 的工作流程。
 
 :::
+
+**可选：直接接入大模型 API（以 DeepSeek 为例）**
+
+1. 访问 DeepSeek 平台：https://platform.deepseek.com/usage
+2. 注册账号并登录
+3. 在充值页面购买 10 元的 Token 包
+4. 充值成功后，在 API Keys 页面创建并复制 API Key
+5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
+
+通过下列界面，你可以成功添加
+
+![](images/index-2026-02-12-14-14-51.png)
+
+![](images/index-2026-02-12-14-15-29.png)
 
 
 ### 4.3 第二步：在侧边栏聊天，让 AI 用 React 设计贪吃蛇游戏
