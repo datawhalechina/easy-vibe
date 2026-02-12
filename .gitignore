@@ -6,3 +6,4 @@ docs/.vitepress/cache
 temp/*
 CLAUDE.md
 MULTI_LANGUAGE_PLAN.md
+.trae
