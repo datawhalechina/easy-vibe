@@ -296,7 +296,8 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 - 火山引擎（字节云 AI Plan）：https://www.volcengine.com/activity/codingplan
 
 > 💡 **也可以直接接入大模型 API**
-> 除了 Coding Plan，你也可以直接通过 Add Model 接入各大模型的 API。建议先充值 10 元感受一下能用多久，比如 DeepSeek 等性价比较高的模型。
+> 除了 Coding Plan，你也可以直接通过 Add Model 接入各大模型的 API。你可以参考下文接入 OpenRouter StepFun 免费 API 的方式，将 API 接入 Trae 进行使用。经测试可满足基本的编程需求。
+> 如果需要充值，建议先充值 10 元感受一下能用多久，比如 DeepSeek 等性价比较高的模型
 
 **如何接入 Coding Plan**
 
@@ -306,7 +307,7 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 2. 注册账号并登录
 3. 找到 "定价" 或 "Coding Plan" 页面
 4. 选择适合你的套餐并完成支付
-6. 支付成功后，你会获得一个 API Key 或 Plan ID
+5. 支付成功后，你会获得一个 API Key 或 Plan ID
 
 **可选：直接接入大模型 API（以 DeepSeek 为例）**
 
