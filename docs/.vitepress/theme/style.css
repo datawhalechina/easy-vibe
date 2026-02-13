@@ -77,6 +77,10 @@
   border-top: 0 !important;
 }
 
+.vp-doc h2 .header-anchor {
+  top: 10px !important;
+}
+
 .vp-doc :where(h3) {
   margin: 18px 0 8px;
 }
