@@ -102,29 +102,13 @@ import SubnetCalculator from './components/appendix/web-basics/SubnetCalculator.
 import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTroubleshooting.vue'
 
 // Deployment appendix components
-import DeploymentArchitecture from './components/appendix/deployment/DeploymentArchitecture.vue'
-import DnsFlowDemo from './components/appendix/deployment/DnsFlowDemo.vue'
-import ServerSizerDemo from './components/appendix/deployment/ServerSizerDemo.vue'
-import HttpsNginxDemo from './components/appendix/deployment/HttpsNginxDemo.vue'
-import CdnCacheDemo from './components/appendix/deployment/CdnCacheDemo.vue'
-import CicdPipelineDemo from './components/appendix/deployment/CicdPipelineDemo.vue'
-import RollbackSwitchDemo from './components/appendix/deployment/RollbackSwitchDemo.vue'
-import ObservabilityBackupDemo from './components/appendix/deployment/ObservabilityBackupDemo.vue'
 import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
 import DeploymentBuildDemo from './components/appendix/deployment/DeploymentBuildDemo.vue'
 import DeploymentServerDemo from './components/appendix/deployment/DeploymentServerDemo.vue'
-import DeploymentSSHDemo from './components/appendix/deployment/DeploymentSSHDemo.vue'
-import DeploymentEnvironmentDemo from './components/appendix/deployment/DeploymentEnvironmentDemo.vue'
-import DeploymentNginxDemo from './components/appendix/deployment/DeploymentNginxDemo.vue'
-import DeploymentLbDemo from './components/appendix/deployment/DeploymentLbDemo.vue'
-import DeploymentMonitorDemo from './components/appendix/deployment/DeploymentMonitorDemo.vue'
-import DeploymentBackupDemo from './components/appendix/deployment/DeploymentBackupDemo.vue'
-import DeploymentTroubleshootDemo from './components/appendix/deployment/DeploymentTroubleshootDemo.vue'
-import DeploymentChecklistDemo from './components/appendix/deployment/DeploymentChecklistDemo.vue'
 import DeploymentDnsDemo from './components/appendix/deployment/DeploymentDnsDemo.vue'
 import DeploymentHttpsDemo from './components/appendix/deployment/DeploymentHttpsDemo.vue'
-import DeploymentCdnDemo from './components/appendix/deployment/DeploymentCdnDemo.vue'
 import DeploymentCicdDemo from './components/appendix/deployment/DeploymentCicdDemo.vue'
+import DeploymentMonitorDemo from './components/appendix/deployment/DeploymentMonitorDemo.vue'
 import CssBoxModel from './components/appendix/web-basics/CssBoxModel.vue'
 import CssFlexbox from './components/appendix/web-basics/CssFlexbox.vue'
 import CssLayoutDemo from './components/appendix/web-basics/CssLayoutDemo.vue'
@@ -583,29 +567,13 @@ export default {
     app.component('SubnetCalculator', SubnetCalculator)
     app.component('NetworkTroubleshooting', NetworkTroubleshooting)
     // Deployment appendix
-    app.component('DeploymentArchitecture', DeploymentArchitecture)
-    app.component('DnsFlowDemo', DnsFlowDemo)
-    app.component('ServerSizerDemo', ServerSizerDemo)
-    app.component('HttpsNginxDemo', HttpsNginxDemo)
-    app.component('CdnCacheDemo', CdnCacheDemo)
-    app.component('CicdPipelineDemo', CicdPipelineDemo)
-    app.component('RollbackSwitchDemo', RollbackSwitchDemo)
-    app.component('ObservabilityBackupDemo', ObservabilityBackupDemo)
     app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
     app.component('DeploymentBuildDemo', DeploymentBuildDemo)
     app.component('DeploymentServerDemo', DeploymentServerDemo)
-    app.component('DeploymentSSHDemo', DeploymentSSHDemo)
-    app.component('DeploymentEnvironmentDemo', DeploymentEnvironmentDemo)
-    app.component('DeploymentNginxDemo', DeploymentNginxDemo)
-    app.component('DeploymentLbDemo', DeploymentLbDemo)
-    app.component('DeploymentMonitorDemo', DeploymentMonitorDemo)
-    app.component('DeploymentBackupDemo', DeploymentBackupDemo)
-    app.component('DeploymentTroubleshootDemo', DeploymentTroubleshootDemo)
-    app.component('DeploymentChecklistDemo', DeploymentChecklistDemo)
     app.component('DeploymentDnsDemo', DeploymentDnsDemo)
     app.component('DeploymentHttpsDemo', DeploymentHttpsDemo)
-    app.component('DeploymentCdnDemo', DeploymentCdnDemo)
     app.component('DeploymentCicdDemo', DeploymentCicdDemo)
+    app.component('DeploymentMonitorDemo', DeploymentMonitorDemo)
     app.component('CssBoxModel', CssBoxModel)
     app.component('CssFlexbox', CssFlexbox)
     app.component('CssLayoutDemo', CssLayoutDemo)
