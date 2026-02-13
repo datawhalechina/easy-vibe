@@ -2,43 +2,44 @@
   <div class="cross-account-access-demo">
     <div class="demo-header">
       <h4>跨账号访问流程演示</h4>
-      <p class="demo-desc">角色扮演（AssumeRole）获取临时凭证</p>
+      <p class="intro-text">角色扮演（AssumeRole）获取临时凭证</p>
     </div>
 
-    <div class="flow-diagram">
-      <div class="account-box source">
-        <div class="account-header">账号 A（源账号）</div>
-        <div class="account-content">
-          <div class="entity">IAM User / Application</div>
-          <div class="action">调用 sts:AssumeRole</div>
+    <div class="demo-content">
+      <div class="flow-diagram">
+        <div class="account-box source">
+          <div class="account-header">账号 A（源账号）</div>
+          <div class="account-content">
+            <div class="entity">IAM User / Application</div>
+            <div class="action">调用 sts:AssumeRole</div>
+          </div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="account-box sts">
+          <div class="account-header">STS 服务</div>
+          <div class="account-content">
+            <div class="step">1. 验证源身份</div>
+            <div class="step">2. 检查信任策略</div>
+            <div class="step">3. 生成临时凭证</div>
+          </div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="account-box target">
+          <div class="account-header">账号 B（目标账号）</div>
+          <div class="account-content">
+            <div class="entity">CrossAccountRole</div>
+            <div class="resource">访问 S3 / EC2 等资源</div>
+          </div>
         </div>
       </div>
 
-      <div class="arrow">→</div>
-
-      <div class="account-box sts">
-        <div class="account-header">STS 服务</div>
-        <div class="account-content">
-          <div class="step">1. 验证源身份</div>
-          <div class="step">2. 检查信任策略</div>
-          <div class="step">3. 生成临时凭证</div>
-        </div>
-      </div>
-
-      <div class="arrow">→</div>
-
-      <div class="account-box target">
-        <div class="account-header">账号 B（目标账号）</div>
-        <div class="account-content">
-          <div class="entity">CrossAccountRole</div>
-          <div class="resource">访问 S3 / EC2 等资源</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="code-example">
-      <h5>Python 代码示例</h5>
-      <pre><code>import boto3
+      <div class="code-example">
+        <h5>Python 代码示例</h5>
+        <pre><code>import boto3
 
 # 在账号 A 中使用 IAM 用户凭证
 sts_client = boto3.client('sts')
@@ -60,58 +61,74 @@ s3_client = boto3.client(
     aws_secret_access_key=credentials['SecretAccessKey'],
     aws_session_token=credentials['SessionToken']
 )</code></pre>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>💡 跨账号访问优势：</strong>通过角色扮演实现跨账号访问，无需在每个账号创建 IAM 用户，临时凭证自动过期，更安全更易管理。
     </div>
   </div>
 </template>
 
+<script setup>
+// No script needed for this static demo
+</script>
+
 <style scoped>
 .cross-account-access-demo {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.demo-desc {
+.intro-text {
   margin: 0;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
+}
+
+.demo-content {
+  margin-bottom: 1rem;
 }
 
 .flow-diagram {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
 .account-box {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 16px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1rem;
   min-width: 180px;
-  color: #333;
 }
 
 .account-header {
   font-weight: 700;
   font-size: 0.85rem;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #eee;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
 }
 
 .account-content {
@@ -119,23 +136,23 @@ s3_client = boto3.client(
 }
 
 .entity {
-  background: #e3f2fd;
-  padding: 6px 10px;
+  background: var(--vp-c-brand-soft);
+  padding: 0.375rem 0.625rem;
   border-radius: 4px;
-  margin-bottom: 8px;
-  color: #1565c0;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-brand-1);
   font-weight: 500;
 }
 
 .action {
-  color: #666;
+  color: var(--vp-c-text-3);
   font-style: italic;
 }
 
 .step {
-  padding: 4px 0;
-  color: #666;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 0.25rem 0;
+  color: var(--vp-c-text-2);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .step:last-child {
@@ -143,28 +160,30 @@ s3_client = boto3.client(
 }
 
 .resource {
-  background: #e8f5e9;
-  padding: 6px 10px;
+  background: rgba(var(--vp-c-brand-rgb), 0.1);
+  padding: 0.375rem 0.625rem;
   border-radius: 4px;
-  margin-top: 8px;
-  color: #2e7d32;
+  margin-top: 0.5rem;
+  color: var(--vp-c-brand);
 }
 
 .arrow {
   font-size: 2rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--vp-c-text-3);
 }
 
 .code-example {
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1.25rem;
 }
 
 .code-example h5 {
-  margin: 0 0 12px 0;
-  color: #fff;
+  margin: 0 0 0.75rem 0;
+  color: var(--vp-c-text-1);
   font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .code-example pre {
@@ -173,10 +192,25 @@ s3_client = boto3.client(
 }
 
 .code-example code {
-  color: #d4d4d4;
-  font-family: 'Consolas', 'Monaco', monospace;
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-mono);
   font-size: 0.8rem;
   line-height: 1.5;
+}
+
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {

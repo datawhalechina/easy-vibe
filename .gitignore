@@ -7,3 +7,6 @@ temp/*
 CLAUDE.md
 MULTI_LANGUAGE_PLAN.md
 .trae
+scripts/collapse_code_blocks.py
+.gitignore
+scripts/verify.sh

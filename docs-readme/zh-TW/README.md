@@ -89,19 +89,19 @@
 
 #### 附錄：業務思維
 
-| 章節                                                                                       | 關鍵內容                                   | 狀態 |
-| :----------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
-| [附錄A：產品思維與方案設計](../docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)    | 從零到一做產品需要考慮的思維框架           | ✅   |
-| [附錄B：AI 行業應用場景參考 (B端)](../docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | 了解 AI 在不同產業的應用場景               | ✅   |
-| [附錄C：AI 消費場景靈感參考 (C端)](../docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 探索 AI 在消費級產品中的應用場景           | ✅   |
+| 章節                                                                                             | 關鍵內容                         | 狀態 |
+| :----------------------------------------------------------------------------------------------- | :------------------------------- | :--- |
+| [附錄A：產品思維與方案設計](../docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)          | 從零到一做產品需要考慮的思維框架 | ✅   |
+| [附錄B：AI 行業應用場景參考 (B端)](../docs/zh-cn/stage-1/appendix-industry-scenarios/index.md)   | 了解 AI 在不同產業的應用場景     | ✅   |
+| [附錄C：AI 消費場景靈感參考 (C端)](../docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 探索 AI 在消費級產品中的應用場景 | ✅   |
 
 #### 附錄：技術方案
 
-| 章節                                                                                                                                                      | 關鍵內容                                   | 狀態 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
-| [附錄D：寫代碼時遇到錯誤怎麼辦](../docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                  | vibe coding 中的常見錯誤及排查方法         | ✅   |
-| [附錄E：七款 AI 編程工具對比](../docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                | 對比測試主流 AI 編程平台                   | ✅   |
-| [附錄F：用設計和編程 Agent 設計網站](../docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | 學習如何使用 AI 智能體協同工作             | ✅   |
+| 章節                                                                                                                                                         | 關鍵內容                           | 狀態 |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------- | :--- |
+| [附錄D：寫代碼時遇到錯誤怎麼辦](../docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                     | vibe coding 中的常見錯誤及排查方法 | ✅   |
+| [附錄E：七款 AI 編程工具對比](../docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                   | 對比測試主流 AI 編程平台           | ✅   |
+| [附錄F：用設計和編程 Agent 設計網站](../docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | 學習如何使用 AI 智能體協同工作     | ✅   |
 
 ### 二、初中級開發工程師
 

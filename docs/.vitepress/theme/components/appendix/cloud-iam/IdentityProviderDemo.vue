@@ -2,37 +2,43 @@
   <div class="identity-provider-demo">
     <div class="demo-header">
       <h4>身份提供商(IdP)集成流程</h4>
-      <p class="demo-desc">点击步骤查看 SSO 单点登录流程</p>
+      <p class="intro-text">点击步骤查看 SSO 单点登录流程</p>
     </div>
 
-    <div class="sso-flow">
-      <div class="flow-step" v-for="(step, index) in steps" :key="index"
-           :class="{ active: currentStep === index, completed: currentStep > index }"
-           @click="goToStep(index)">
-        <div class="step-number">{{ index + 1 }}</div>
-        <div class="step-content">
-          <span class="step-title">{{ step.title }}</span>
-          <span class="step-desc">{{ step.desc }}</span>
+    <div class="demo-content">
+      <div class="sso-flow">
+        <div class="flow-step" v-for="(step, index) in steps" :key="index"
+             :class="{ active: currentStep === index, completed: currentStep > index }"
+             @click="goToStep(index)">
+          <div class="step-number">{{ index + 1 }}</div>
+          <div class="step-content">
+            <span class="step-title">{{ step.title }}</span>
+            <span class="step-desc">{{ step.desc }}</span>
+          </div>
+          <div class="step-arrow" v-if="index < steps.length - 1">→</div>
         </div>
-        <div class="step-arrow" v-if="index < steps.length - 1">→</div>
+      </div>
+
+      <div class="detail-panel" v-if="currentStepData">
+        <h5>{{ currentStepData.title }}</h5>
+        <p>{{ currentStepData.detail }}</p>
+
+        <div class="code-block" v-if="currentStepData.code">
+          <pre><code>{{ currentStepData.code }}</code></pre>
+        </div>
+
+        <div class="entity-flow" v-if="currentStepData.flow">
+          <div class="flow-row" v-for="(row, i) in currentStepData.flow" :key="i">
+            <span class="entity" :class="row.from.type">{{ row.from.name }}</span>
+            <span class="action">{{ row.action }}</span>
+            <span class="entity" :class="row.to.type">{{ row.to.name }}</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="detail-panel" v-if="currentStepData">
-      <h5>{{ currentStepData.title }}</h5>
-      <p>{{ currentStepData.detail }}</p>
-
-      <div class="code-block" v-if="currentStepData.code">
-        <pre><code>{{ currentStepData.code }}</code></pre>
-      </div>
-
-      <div class="entity-flow" v-if="currentStepData.flow">
-        <div class="flow-row" v-for="(row, i) in currentStepData.flow" :key="i">
-          <span class="entity" :class="row.from.type">{{ row.from.name }}</span>
-          <span class="action">{{ row.action }}</span>
-          <span class="entity" :class="row.to.type">{{ row.to.name }}</span>
-        </div>
-      </div>
+    <div class="info-box">
+      <strong>💡 SSO 优势：</strong>通过企业 IdP 统一管理用户身份，避免在每个云平台单独创建账号，提高安全性和管理效率。
     </div>
   </div>
 </template>
@@ -164,70 +170,86 @@ function goToStep(index) {
 
 <style scoped>
 .identity-provider-demo {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.demo-desc {
+.intro-text {
   margin: 0;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
+}
+
+.demo-content {
+  margin-bottom: 1rem;
 }
 
 .sso-flow {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .flow-step {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   min-width: 120px;
 }
 
 .flow-step:hover,
 .flow-step.active {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand);
   transform: scale(1.02);
 }
 
 .flow-step.completed {
-  background: rgba(76, 175, 80, 0.3);
+  background: rgba(var(--vp-c-brand-rgb), 0.1);
+  border-color: var(--vp-c-brand);
 }
 
 .step-number {
   width: 24px;
   height: 24px;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
   font-weight: bold;
+  color: var(--vp-c-text-1);
+}
+
+.flow-step.active .step-number {
+  background: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-bg);
 }
 
 .step-content {
@@ -239,44 +261,48 @@ function goToStep(index) {
 .step-title {
   font-size: 0.75rem;
   font-weight: 600;
+  color: var(--vp-c-text-1);
   white-space: nowrap;
 }
 
 .step-desc {
   font-size: 0.6rem;
-  opacity: 0.8;
+  color: var(--vp-c-text-3);
   white-space: nowrap;
 }
 
 .step-arrow {
   font-size: 1.2rem;
-  opacity: 0.6;
+  color: var(--vp-c-text-3);
 }
 
 .detail-panel {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 20px;
-  color: #333;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .detail-panel h5 {
-  margin: 0 0 12px 0;
+  margin: 0 0 0.75rem 0;
   font-size: 1.1rem;
-  color: #1e3c72;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
 }
 
 .detail-panel p {
-  margin: 0 0 16px 0;
+  margin: 0 0 1rem 0;
   font-size: 0.9rem;
   line-height: 1.5;
+  color: var(--vp-c-text-2);
 }
 
 .code-block {
-  background: #1e1e1e;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 16px;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
   overflow-x: auto;
 }
 
@@ -285,59 +311,75 @@ function goToStep(index) {
 }
 
 .code-block code {
-  color: #d4d4d4;
+  color: var(--vp-c-text-2);
   font-size: 0.75rem;
   line-height: 1.4;
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: var(--vp-font-family-mono);
 }
 
 .entity-flow {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .flow-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 8px;
-  background: #f5f5f5;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: var(--vp-c-bg-alt);
   border-radius: 6px;
 }
 
 .entity {
-  padding: 4px 10px;
+  padding: 0.25rem 0.625rem;
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
 }
 
 .entity.user {
-  background: #e3f2fd;
-  color: #1565c0;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 .entity.app {
-  background: #f3e5f5;
-  color: #7b1fa2;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  color: var(--vp-c-brand-delta);
 }
 
 .entity.idp {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: rgba(var(--vp-c-brand-rgb), 0.1);
+  color: var(--vp-c-brand);
 }
 
 .entity.cloud {
-  background: #fff3e0;
-  color: #ef6c00;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
 }
 
 .action {
   font-size: 0.75rem;
-  color: #666;
+  color: var(--vp-c-text-3);
   font-weight: 500;
+}
+
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {
@@ -356,7 +398,7 @@ function goToStep(index) {
 
   .flow-row {
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25rem;
   }
 }
 </style>

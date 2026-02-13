@@ -1,703 +1,632 @@
 # 组件化与状态管理模式总览
 
-> **学习指南**：组件化解决的是"代码该怎么拆"，状态管理解决的是"数据该怎么流"。本章节会围绕一个问题展开：**当应用规模越来越大，组件之间该如何优雅地共享和同步数据？**
-
-在开始之前，建议你先补两块"基础砖"：
-
-- **Vue/React 基础组件**：如果你还不熟悉组件的 props、events、生命周期等概念，建议先回顾一下 [前端框架入门](../stage-1/)。
-- **JavaScript 模块化**：了解 ES Module 和 CommonJS 的基本用法，有助于理解状态管理库的设计哲学。
+::: tip 🎯 核心问题
+**当应用越来越大，组件之间该如何优雅地共享和同步数据？** 你可能会遇到这样的困境：用户在商品页添加了购物车，但头部的购物车数量没更新；两个不相关的组件需要同一份数据，却不知道该怎么传递。本章将带你从"混乱的数据传递"进化到"清晰的状态管理"。
+:::
 
 ---
 
-## 0. 引言：从"一盘散沙"到"井然有序"
+## 1. 为什么要"组件化与状态管理"？
+
+### 1.1 从小作坊到工厂：前端开发的演变
+
+在正式开始之前，先问你一个问题：**你有没有试过在厨房里做一顿大餐？**
+
+如果你只是给自己煮一碗面，那很简单——一个锅、一把面、一点调料，十秒钟搞定。但如果你要开一家餐厅，每天服务几百个顾客，就不能再"想做什么做什么"了。你需要标准化的菜谱、明确的分工、统一的采购流程，这样才能保证每道菜的质量稳定、出餐效率高。
+
+前端开发也一样。一个人写小项目，代码随便放哪里都行。但当团队变大、项目变复杂后，就需要一套系统的方法来组织代码和管理数据。这就是**组件化与状态管理**要解决的问题。
+
+::: tip 🤔 什么是"组件"和"状态"？
+在继续之前，先解释两个核心术语：
+
+**组件（Component）**：就像乐高积木，每个积木是一个独立的部分，有自己的形状、颜色、功能。你可以把多个积木拼在一起，搭建出复杂的城堡。在前端开发中，一个按钮、一个表单、一个导航栏，都可以是一个组件。
+
+**状态（State）**：就是组件的"记忆"。比如一个按钮，它"记住"了自己是"禁用"还是"启用"状态；一个购物车组件，它"记住"了里面有哪些商品。状态会变化，而状态变化会触发界面更新。
+
+**组件化 + 状态管理 = 有组织的代码 + 清晰的数据流**
+:::
+
+<div style="display: flex; gap: 20px; margin: 20px 0;">
+<div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;">
+
+**🏠 小作坊模式**
+- 代码写在一个文件里，像在一口锅里煮所有菜
+- 数据到处传递，像服务员端着盘子在餐厅乱跑
+- 改一处可能影响其他地方，像盐放多了整道菜都毁了
+
+</div>
+<div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;">
+
+**🏭 工厂模式**
+- 代码拆分成组件，像餐厅分成前厅、后厨、采购部
+- 数据集中管理，像有统一的仓库和配送系统
+- 改动影响范围清晰，像换个菜不会影响整个餐厅
+
+</div>
+</div>
+
+### 1.2 一个真实的踩坑故事：为什么你需要了解状态管理
+
+你可能会说："我用的不是 Vue/React 吗？它们不是已经有状态管理了吗？" 让我讲一个真实的故事，你就会明白为什么系统性地理解组件化和状态管理如此重要。
+
+::: warning 小美的踩坑记
+小美是某电商公司的产品经理转前端开发，刚接手公司的购物车功能重构。她之前用的是 jQuery 时代的老项目，现在要用 Vue 3 改造。
+
+小美想："购物车逻辑很简单，存个数组就行了。" 于是她开始写代码：
+- 在商品详情页组件里，用一个数组 `cart` 存储购物车数据
+- 在购物车页面组件里，又定义了一个 `cartItems` 数组
+- 在头部导航栏组件里，还有一个 `cartCount` 变量
+
+问题很快出现了：
+1. **数据不同步**：用户在商品详情页添加了商品，但购物车页面的数据没更新
+2. **重复代码**：小美不得不写了好几个"添加到购物车"的函数，分别放在不同的组件里
+3. **维护困难**：运营说要加一个"清空购物车"功能，小美发现要改三个地方
+
+后来她请教前端架构师阿强，阿强看了一眼代码就说："你犯了状态管理的大忌——同一份数据在多个地方存储。"
+
+解决方案很简单：用 Pinia 创建一个全局的购物车状态管理，所有组件都从同一个地方读写数据。这样改动之后，所有问题迎刃而解。
+
+小美从此明白了一个道理：**不理解组件化和状态管理，你会写出难以维护的"意大利面条代码"。**
+:::
+
+::: info 💡 核心启示
+组件化和状态管理不是框架的"附加功能"，而是现代前端开发的基石。理解它们，你才能设计出清晰的架构、写出可维护的代码、在团队协作中游刃有余。
+:::
+
+---
+
+## 2. 核心概念：理解组件化的本质
+
+::: tip 🤔 什么是"组件化思维"？
+组件化思维，就是一种把复杂界面拆分成独立、可复用、职责单一的代码单元的方法。
+
+打个比方：想象你在组装一台电脑。你会把 CPU、内存、硬盘、显卡这些部件分别买回来，然后组装在一起。每个部件都有明确的功能，你可以随时替换某个部件，而不影响其他部分。
+
+组件化就是让前端代码也能这样"模块化"——每个组件负责自己的事情，通过明确的接口和其他组件协作。
+:::
+
+### 2.1 用餐厅比喻理解组件化
+
+让我们用餐厅的比喻来理解组件化的核心思想：
+
+| 概念 | 🍽️ 餐厅比喻 | 实际作用 | 具体例子 |
+|------|-------------|----------|----------|
+| **组件** | 餐厅的各个部门（前厅、后厨、采购部） | 每个部门负责自己的事情 | 按钮组件负责点击，表单组件负责输入 |
+| **Props（属性）** | 顾客给服务员点的菜单 | 父组件给子组件传递数据 | 父组件把"用户名"传给头像组件 |
+| **Events（事件）** | 服务员通知后厨"有新订单" | 子组件通知父组件发生了什么 | 按钮组件告诉父组件"我被点击了" |
+| **State（状态）** | 后厨的"当前订单列表" | 组件内部存储的数据 | 购物车组件记住里面有哪些商品 |
+
+::: tip 📊 从表格中你能看到什么？
+让我们逐行解读这张表：
+
+**组件**：就像餐厅有不同的部门，前端页面也由不同的组件组成。每个组件是一个独立的部分，有自己的职责。
+
+**Props**：这是父组件给子组件"传递数据"的方式。就像顾客点菜时告诉服务员要吃什么，父组件也可以通过 props 把数据（比如用户名、商品信息）传给子组件。注意：props 是"单向"的，只能从父传给子，不能反向传递。
+
+**Events**：当子组件需要通知父组件时（比如按钮被点击、表单提交），就会触发事件。就像服务员接到订单后通知后厨"开始做菜"。这样保持了数据流的单向性——子组件不能直接修改父组件的数据，只能"发消息"。
+
+**State**：这是组件内部的"记忆"。就像后厨要记住当前有哪些订单，组件也需要记住自己的状态（比如购物车有哪些商品、按钮是否被禁用）。状态变化时，组件会自动更新界面。
+:::
 
 <ComponentHierarchyDemo />
 
-很多前端开发者在项目初期都会经历这样的阶段：
+### 2.2 Props 和 Events：父子组件的"官方通道"
 
-- 页面功能少的时候，数据直接放组件里，props 传来传去还能应付；
-- 业务复杂了，组件层级越来越深，props drilling（属性钻取）像打地鼠一样令人崩溃；
-- 两个不相干的组件需要共享同一份数据，开始搞事件总线、全局变量，结果代码像意大利面一样纠缠不清。
-
-**直觉上，我们会以为是："这个框架不够强大"。** 但大多数时候，问题并不在于工具，而在于我们**没有设计好组件的职责边界和数据流向**。
-
-面对这些挑战，单纯依靠"写更多代码"已经捉襟见肘。我们需要一套系统的方法论，来在复杂的组件树中优雅地管理共享状态。这正是**组件化与状态管理**试图解决的问题。
-
----
-
-## 1. 什么是"组件化思维"？（定义 + 场景）
-
-先给一个简短的工作定义，再看几个典型场景。
-
-> 组件化思维，是一种将用户界面拆分为独立、可复用、职责单一的代码单元的工程方法，每个组件封装自己的结构（HTML）、表现（CSS）和行为（JS），并通过明确的接口与其他组件通信。
-
-你可以简单地把它理解成三件事：**高内聚、低耦合、可复用**。
-常见会用到它的场景包括：
-
-- **UI 组件库开发**（如 Element Plus、Ant Design）
-- **大型单页应用（SPA）**的页面拆分
-- **跨项目复用**的业务组件封装
-
-接下来，我们就从一个真实团队的"血泪教训"出发，看看他们是怎么一点点从"面条代码"进化到"组件化架构"的。
-
----
-
-## 2. 从"血泪教训"说起：某电商团队的组件化重构
-
-### 2.1 初始阶段：一团乱麻的"大泥球"
-
-某电商团队在 2019 年启动了一个促销活动后台管理系统。初期为了快速上线，采用了传统的 jQuery + 服务端渲染模式。
-
-**代码结构大概长这样：**
-
-```html
-<!-- promotion-edit.html -->
-<div id="page">
-  <div class="header">...</div>
-
-  <!-- 活动基本信息表单 -->
-  <form id="basic-info">
-    <input name="activityName" />
-    <input name="startTime" type="datetime-local" />
-    <!-- 200+ 行的表单字段... -->
-  </form>
-
-  <!-- 商品选择弹窗（隐藏在页面里） -->
-  <div id="product-modal" style="display:none">
-    <!-- 商品列表、搜索、分页... -->
-  </div>
-
-  <!-- 优惠券规则配置（另一个弹窗） -->
-  <div id="coupon-modal" style="display:none">
-    <!-- 复杂的规则配置表单... -->
-  </div>
-
-  <script>
-    // 1000+ 行的 jQuery 代码，处理各种交互
-    $(function() {
-      // 初始化日期选择器
-      $('#startTime').datetimepicker({...});
-
-      // 打开商品弹窗
-      $('#select-product-btn').click(function() {
-        $('#product-modal').show();
-        loadProductList();
-      });
-
-      // 提交表单（200+ 行的表单验证和提交逻辑）
-      $('#submit-btn').click(function() {
-        // ...
-      });
-    });
-  </script>
-</div>
-```
-
-**当时的痛点：**
-
-| 问题 | 表现 | 影响 |
-| :--- | :--- | :--- |
-| **代码冗余** | 商品选择弹窗在 5 个页面复制粘贴 | 修改一次要改 5 处，经常漏改 |
-| **耦合严重** | 表单验证逻辑散落在 HTML、JS、CSS 中 | 改一个字段可能引发连锁 Bug |
-| **难以测试** | 所有逻辑都挂在 jQuery 回调里 | 无法单元测试，只能靠人工点 |
-| **团队协作难** | 5 个前端同时改一个文件 | Git 冲突频发，合并痛苦 |
-
-### 2.2 第一次重构：Vue 2 的曙光
-
-2020 年，团队决定用 Vue 2 重构系统。这次重构的核心目标是：**按页面维度拆分组件**。
-
-**重构后的代码结构：**
-
-```vue
-<!-- ActivityEdit.vue -->
-<template>
-  <div class="activity-edit">
-    <PageHeader title="编辑活动" />
-
-    <BasicInfoForm v-model="activityData" />
-
-    <ProductSelector
-      v-model="activityData.productIds"
-      @open="showProductModal = true"
-    />
-
-    <CouponRules
-      v-model="activityData.coupons"
-      @open="showCouponModal = true"
-    />
-
-    <div class="actions">
-      <el-button @click="save">保存</el-button>
-      <el-button @click="publish">发布</el-button>
-    </div>
-
-    <!-- 弹窗组件 -->
-    <ProductModal
-      v-model:visible="showProductModal"
-      @select="onProductSelect"
-    />
-    <CouponModal
-      v-model:visible="showCouponModal"
-      @confirm="onCouponConfirm"
-    />
-  </div>
-</template>
-
-<script>
-export default {
-  components: {
-    PageHeader,
-    BasicInfoForm,
-    ProductSelector,
-    CouponRules,
-    ProductModal,
-    CouponModal
-  },
-  data() {
-    return {
-      activityData: {
-        name: '',
-        startTime: null,
-        productIds: [],
-        coupons: []
-      },
-      showProductModal: false,
-      showCouponModal: false
-    }
-  },
-  methods: {
-    save() {
-      // 保存逻辑
-    },
-    publish() {
-      // 发布逻辑
-    }
-  }
-}
-</script>
-```
-
-**这次重构带来的改变：**
-
-- **组件复用**：商品选择弹窗从 5 个页面复制粘贴，变成了 1 个 `<ProductModal>` 组件到处复用
-- **职责分离**：每个组件只负责自己的逻辑，表单验证拆到 `<BasicInfoForm>` 内部
-- **团队协作**：5 个前端可以并行开发不同组件，Git 冲突大幅减少
-
-但很快，新的问题又出现了...
-
-### 2.3 第二次重构：状态管理的觉醒
-
-随着业务复杂度增加，组件之间的通信变得越来越复杂。
-
-**典型场景：购物车状态同步**
-
-用户在一个页面把商品加入购物车，购物车图标上的数字要实时更新。但购物车状态散落在多个组件中：
-
-```vue
-<!-- Header.vue -->
-<template>
-  <header>
-    <div class="cart-icon">
-      <i class="icon-cart"></i>
-      <span class="badge">{{ cartCount }}</span>
-    </div>
-  </header>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      cartCount: 0  // 自己的购物车数量
-    }
-  },
-  created() {
-    // 方案1：事件总线
-    this.$bus.$on('cart-updated', (count) => {
-      this.cartCount = count
-    })
-
-    // 方案2：localStorage 轮询
-    setInterval(() => {
-      this.cartCount = JSON.parse(localStorage.getItem('cart')).length
-    }, 1000)
-  }
-}
-</script>
-```
-
-**问题爆发：**
-
-| 反模式 | 代码表现 | 后果 |
-| :--- | :--- | :--- |
-| **事件总线地狱** | `$bus.$emit` 满天飞，不知道谁监听谁 | 调试困难，内存泄漏 |
-| **Props Drilling** | 数据层层传递，中间组件只是"搬运工" | 中间组件被迫耦合 |
-| **LocalStorage 滥用** | 把状态存 localStorage 然后轮询 | 性能差，数据不一致 |
-| **全局变量** | `window.sharedState` 直接修改 | 无法追踪变化，Bug 难定位 |
-
-**最终解决方案：Vuex + 组件化设计规范**
-
-团队引入了 Vuex 作为集中式状态管理，并制定了组件设计规范：
-
-```javascript
-// store/modules/cart.js
-export default {
-  namespaced: true,
-  state: {
-    items: [],
-    selectedIds: []
-  },
-  getters: {
-    totalCount: state => state.items.reduce((sum, item) => sum + item.quantity, 0),
-    totalPrice: state => state.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  },
-  mutations: {
-    ADD_ITEM(state, item) {
-      const existing = state.items.find(i => i.id === item.id)
-      if (existing) {
-        existing.quantity += item.quantity
-      } else {
-        state.items.push(item)
-      }
-    },
-    REMOVE_ITEM(state, itemId) {
-      state.items = state.items.filter(i => i.id !== itemId)
-    }
-  },
-  actions: {
-    async addToCart({ commit }, product) {
-      // 可以在这里调用 API
-      commit('ADD_ITEM', { ...product, quantity: 1 })
-    }
-  }
-}
-```
-
-重构后的组件代码：
-
-```vue
-<!-- Header.vue -->
-<template>
-  <header>
-    <div class="cart-icon" @click="goToCart">
-      <i class="icon-cart"></i>
-      <span v-if="cartCount > 0" class="badge">{{ cartCount }}</span>
-    </div>
-  </header>
-</template>
-
-<script>
-import { mapGetters } from 'vuex'
-
-export default {
-  computed: {
-    ...mapGetters('cart', ['totalCount'])
-  }
-}
-</script>
-```
-
-通过这两次重构，团队总结出了组件化开发的**核心心法**：
-
-1. **组件化是手段，不是目的**：不要为了拆而拆，组件的边界应该对应业务的边界。
-2. **状态往上提，事件往下传**：共享状态尽量放在共同的父组件或状态管理库中。
-3. **单向数据流是底线**：不要直接修改 props，不要跨组件直接修改状态。
-
----
-
-## 3. 组件通信的"七种武器"
-
-在深入状态管理库之前，我们先搞清楚组件之间有哪些通信方式，以及它们各自的适用场景。
-
-### 3.1 Props / Emit：父子组件的"官方通道"
-
-这是 Vue/React 中最基础、最推荐的父子通信方式。
-
-<PropsFlowDemo />
+在前端框架（Vue、React）中，**Props 和 Events 是父子组件通信的标准方式**。
 
 **Vue 示例：**
 
 ```vue
-<!-- Parent.vue -->
+<!-- Parent.vue - 父组件 -->
 <template>
   <div>
+    <!-- 像给服务员递菜单一样，通过 props 传递数据 -->
     <Child
-      :user="currentUser"
-      :theme="darkMode"
-      @update:profile="handleProfileUpdate"
-      @delete="handleDelete"
+      :user-name="currentUser.name"
+      :is-admin="currentUser.isAdmin"
+      @delete-user="handleDelete"
     />
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      currentUser: { id: 1, name: '张三' },
-      darkMode: true
-    }
-  },
-  methods: {
-    handleProfileUpdate(newProfile) {
-      this.currentUser = { ...this.currentUser, ...newProfile }
-    },
-    handleDelete(userId) {
-      console.log('删除用户:', userId)
-    }
-  }
+<script setup>
+import { ref } from 'vue'
+import Child from './Child.vue'
+
+const currentUser = ref({
+  name: '张三',
+  isAdmin: true
+})
+
+const handleDelete = (userId) => {
+  console.log('删除用户:', userId)
+  // 处理删除逻辑
 }
 </script>
 ```
 
 ```vue
-<!-- Child.vue -->
+<!-- Child.vue - 子组件 -->
 <template>
-  <div :class="['user-card', theme ? 'dark' : 'light']">
-    <h3>{{ user.name }}</h3>
-    <input v-model="localProfile.bio" placeholder="个人简介" />
-    <button @click="saveProfile">保存</button>
-    <button @click="requestDelete">删除</button>
+  <div class="user-card">
+    <h3>{{ userName }}</h3>
+    <span v-if="isAdmin" class="badge">管理员</span>
+    <button @click="requestDelete">删除用户</button>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    user: { type: Object, required: true },
-    theme: { type: Boolean, default: false }
-  },
-  data() {
-    return {
-      localProfile: { bio: '' }
-    }
-  },
-  watch: {
-    user: {
-      immediate: true,
-      handler(newVal) {
-        this.localProfile = { ...newVal }
-      }
-    }
-  },
-  methods: {
-    saveProfile() {
-      // 通过事件通知父组件更新
-      this.$emit('update:profile', this.localProfile)
-    },
-    requestDelete() {
-      this.$emit('delete', this.user.id)
-    }
-  }
+<script setup>
+// 接收父组件传来的数据
+const props = defineProps({
+  userName: { type: String, required: true },
+  isAdmin: { type: Boolean, default: false }
+})
+
+// 定义可以触发的事件
+const emit = defineEmits(['delete-user'])
+
+const requestDelete = () => {
+  // 通过事件通知父组件
+  emit('delete-user', props.userName)
 }
 </script>
 ```
 
-**最佳实践：**
+::: tip 💡 核心原则
+**Props 向下，Events 向上**——这是组件通信的黄金法则。
 
-1. **Props 向下传递，Events 向上传递**：保持单向数据流
-2. **Props 尽量只读**：不要在子组件直接修改 props
-3. **事件命名要语义化**：`update:xxx` 表示更新，`delete`、`submit` 表示动作
+- 父组件通过 **props** 把数据传给子组件（像给下属分配任务）
+- 子组件通过 **events** 通知父组件发生了什么（像下属汇报工作）
 
-### 3.2 Event Bus：跨组件通信的"小道消息"
+这样保持了数据流的清晰和单向性，避免了"谁都可以改数据"的混乱局面。
+:::
 
-当两个没有直接父子关系的组件需要通信时，Event Bus（事件总线）是一种简单的方案。
+<PropsFlowDemo />
+
+### 2.3 单向数据流：为什么不能直接修改 props？
+
+很多初学者会犯一个错误：在子组件里直接修改 props 的值。
+
+```vue
+<!-- ❌ 错误做法 -->
+<script setup>
+const props = defineProps({
+  count: { type: Number, default: 0 }
+})
+
+// 直接修改 props - 这是被禁止的！
+props.count = 10  // 会报错
+</script>
+```
+
+**为什么不能直接修改 props？**
+
+想象一下：你从图书馆借了一本书（props），然后在书上乱涂乱画（修改 props）。其他借这本书的人（其他组件）也会看到你的涂鸦，这会导致混乱。正确的做法是：如果你需要修改数据，应该让父组件来改，子组件只是"请求修改"。
+
+```vue
+<!-- ✅ 正确做法 -->
+<script setup>
+const props = defineProps({
+  count: { type: Number, default: 0 }
+})
+
+const emit = defineEmits(['update-count'])
+
+// 通过事件请求父组件修改
+const increment = () => {
+  emit('update-count', props.count + 1)
+}
+</script>
+```
+
+---
+
+## 3. 从"混沌"到"有序"：组件通信的演进之路
+
+::: tip 🤔 为什么需要演进？
+随着项目变大，组件之间的通信会变得越来越复杂。让我们看看一个真实团队是如何一步步进化出清晰的状态管理方案的。
+
+这不仅仅是"工具升级"，而是**整个思维方式的变化**——从"随意传递数据"到"设计清晰的数据流"。
+:::
+
+### 3.1 演进的全景图
+
+下面这张表展示了组件通信方式演进的四个阶段，你可以看到问题是如何一步步被解决的：
+
+| 阶段 | 通信方式 | 典型问题 | 核心变化 |
+|------|---------|----------|----------|
+| **阶段一：自由传递** | 直接修改、全局变量 | 数据不同步、难以调试 | 没有规范，怎么传都行 |
+| **阶段二：Props/Events** | 父子组件标准通信 | Props Drilling（层层传递） | 有了规范，但深层嵌套很麻烦 |
+| **阶段三：状态管理库** | Vuex/Redux/Pinia | 学习成本、样板代码 | 数据集中管理，调试方便 |
+| **阶段四：现代化方案** | 组合式函数/原子化 | 需要理解新概念 | 更灵活、更简洁 |
 
 <EventBusDemo />
 
-**实现方式：**
+::: tip 📊 从表格中你能看到什么？
+让我们逐行解读这张表：
+
+**阶段一 → 阶段二**：从"没有规范"到"有规范"。这是质的飞跃——你开始用标准的 props/events 通信，数据流变得清晰。但代价是当组件层级很深时，数据要一层层传递，很麻烦（这就是 Props Drilling）。
+
+**阶段二 → 阶段三**：从"分散管理"到"集中管理"。你开始用 Vuex/Redux 这样的状态管理库，把共享数据放在一个全局的"仓库"里，所有组件都从这里读写数据。这样解决了 Props Drilling，但学习成本变高了。
+
+**阶段三 → 阶段四**：从"重量级"到"轻量级"。新的方案（如 Vue 3 的 Composition API、React 的 Hooks）让状态管理更灵活、更简洁。你不再一定要用全局的 store，可以按需组合小的状态单元。
+
+**总结一下**：演进不只是"换了更好的工具"，而是**整个思维方式的升级**——从随意传递数据，到设计清晰的数据流。
+:::
+
+### 3.2 阶段一：自由传递——混乱的开始
+
+为什么叫"自由传递"？因为这个阶段没有任何规范，数据想怎么传就怎么传——全局变量、直接修改、事件总线满天飞。
+
+**典型场景：购物车数据分散在各处**
 
 ```javascript
-// eventBus.js
-import { createApp } from 'vue'
-
-// 创建一个空的 Vue 实例作为事件总线
-const EventBus = createApp({})
-
-export default EventBus
-```
-
-**使用示例：**
-
-```vue
-<!-- 组件 A：发送消息 -->
-<template>
-  <button @click="notifyUserLoggedIn">用户登录</button>
-</template>
-
-<script>
-import EventBus from './eventBus'
-
-export default {
-  methods: {
-    notifyUserLoggedIn() {
-      // 发送事件，带上用户数据
-      EventBus.$emit('user:login', {
-        userId: 123,
-        username: '张三',
-        timestamp: Date.now()
-      })
-    }
-  }
-}
-</script>
-```
-
-```vue
-<!-- 组件 B：接收消息 -->
-<template>
-  <div class="notification-bar">
-    <span v-if="lastLoginUser">欢迎回来，{{ lastLoginUser.username }}!</span>
-  </div>
-</template>
-
-<script>
-import EventBus from './eventBus'
-
+// 商品详情页组件
 export default {
   data() {
     return {
-      lastLoginUser: null
+      localCart: []  // 自己维护一份购物车数据
     }
   },
-  created() {
-    // 监听登录事件
-    EventBus.$on('user:login', this.handleUserLogin)
-  },
-  beforeUnmount() {
-    // 重要：组件销毁时取消监听，防止内存泄漏
-    EventBus.$off('user:login', this.handleUserLogin)
-  },
   methods: {
-    handleUserLogin(userData) {
-      console.log('收到登录事件:', userData)
-      this.lastLoginUser = userData
-
-      // 3秒后清空提示
-      setTimeout(() => {
-        this.lastLoginUser = null
-      }, 3000)
+    addToCart(product) {
+      this.localCart.push(product)
+      // 试图同步到其他组件
+      window.cart = this.localCart  // ❌ 全局变量！
     }
   }
 }
-</script>
+
+// 购物车页面组件
+export default {
+  data() {
+    return {
+      cartItems: []  // 又一份购物车数据
+    }
+  },
+  mounted() {
+    // 试图从全局变量读取
+    this.cartItems = window.cart || []  // ❌ 不可靠！
+  }
+}
+
+// 头部导航组件
+export default {
+  data() {
+    return {
+      cartCount: 0  // 还有第三份数据！
+    }
+  },
+  mounted() {
+    // 轮询检查变化（多么荒谬）
+    setInterval(() => {
+      this.cartCount = window.cart?.length || 0
+    }, 1000)  // ❌ 性能差！
+  }
+}
 ```
 
-**Event Bus 的优缺点：**
+**这个阶段的特点：**
+- ✅ **优点**：简单直接，没有任何学习成本
+- ❌ **缺点**：数据分散、难以同步、调试困难、一团乱麻
 
-| 优点 | 缺点 |
-| :--- | :--- |
-| 实现简单，无需额外依赖 | 难以追踪事件流向，调试困难 |
-| 适合小范围、临时性的通信 | 容易形成"事件 spaghetti" |
-| 解耦发送方和接收方 | 必须手动管理订阅/取消订阅，容易内存泄漏 |
+### 3.3 阶段二：Props/Events——规范的建立
 
-**什么时候用，什么时候不用：**
+自由传递的混乱让团队意识到：**我们需要规范**。于是开始使用框架提供的标准通信方式：props 和 events。
 
-- **可以用**：两个距离较远、但逻辑上有关联的组件，且通信频率不高
-- **不要用**：组件层级简单、可以用 props/emit 解决；或者通信逻辑复杂、需要状态持久化
-
-### 3.3 Provide / Inject：跨层级传值的"秘密通道"
-
-当数据需要从祖先组件传递给深层嵌套的后代组件时，逐层传递 props 会非常繁琐。Vue 的 Provide / Inject 机制可以解决这个问题。
-
-**使用场景：**
-
-- 主题配置（深色/浅色模式）
-- 用户信息（当前登录用户）
-- 国际化配置
-- 表单控件之间的通信
-
-**代码示例：**
+**典型场景：Props Drilling（属性钻取）**
 
 ```vue
 <!-- 祖先组件：App.vue -->
 <template>
-  <div :class="['app', theme]">
-    <!-- 深层嵌套的组件树 -->
-    <Layout>
-      <Sidebar>
-        <Menu>
-          <MenuItem v-for="item in menuItems" :key="item.id" />
-        </Menu>
-      </Sidebar>
-      <MainContent>
-        <RouterView />
-      </MainContent>
-    </Layout>
+  <div class="app">
+    <!-- 层层传递用户信息 -->
+    <Layout :user-name="userName" />
   </div>
 </template>
 
-<script>
-import { provide, ref } from 'vue'
+<script setup>
+import { ref } from 'vue'
+import Layout from './Layout.vue'
 
-export default {
-  setup() {
-    // 响应式的主题配置
-    const theme = ref('light')
-    const userInfo = ref({
-      id: 123,
-      name: '张三',
-      role: 'admin'
-    })
+const userName = ref('张三')
+</script>
+```
 
-    // 切换主题的方法
-    const toggleTheme = () => {
-      theme.value = theme.value === 'light' ? 'dark' : 'light'
+```vue
+<!-- 中间层：Layout.vue -->
+<template>
+  <div class="layout">
+    <Header :user-name="userName" />  <!-- 只是传递，不使用 -->
+    <Main>
+      <Page :user-name="userName" />  <!-- 只是传递，不使用 -->
+    </Main>
+  </div>
+</template>
+
+<script setup>
+const props = defineProps({
+  userName: String
+})
+</script>
+```
+
+```vue
+<!-- 真正需要的地方：Header.vue -->
+<template>
+  <header>
+    <span>{{ userName }}</span>  <!-- 终于用到了 -->
+  </header>
+</template>
+
+<script setup>
+const props = defineProps({
+  userName: String
+})
+</script>
+```
+
+**这个阶段的特点：**
+- ✅ **优点**：数据流清晰、单向流动、易于理解
+- ❌ **缺点**：Props Drilling（层层传递很麻烦）、跨组件通信困难
+
+::: tip 🤔 什么是 Props Drilling？
+Props Drilling 指的是：**数据要通过很多中间组件，一层层往下传，但这些中间组件并不真正使用这些数据**。
+
+就像你要给住在五楼的人送快递，但规定必须每一层楼都要签收一次。一二三四楼的人只是帮你"传快递"，他们并不需要这个快递，但必须参与进来。这显然很麻烦。
+:::
+
+### 3.4 阶段三：状态管理库——集中式管理
+
+Props Drilling 的痛点催生了状态管理库（Vuex、Redux、Pinia）。它们的核心思想是：**把共享数据放在一个全局的"仓库"里，所有组件都从这里读写数据**。
+
+**典型场景：用 Pinia 管理购物车**
+
+```javascript
+// stores/cart.js - 全局购物车状态
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+export const useCartStore = defineStore('cart', () => {
+  // 所有购物车数据集中在这里
+  const items = ref([])
+
+  // 计算属性：商品数量
+  const itemCount = computed(() =>
+    items.value.reduce((sum, item) => sum + item.quantity, 0)
+  )
+
+  // 方法：添加商品
+  const addItem = (product) => {
+    const existing = items.value.find(item => item.id === product.id)
+    if (existing) {
+      existing.quantity++
+    } else {
+      items.value.push({ ...product, quantity: 1 })
     }
-
-    // 提供给后代组件
-    provide('theme', theme)
-    provide('userInfo', userInfo)
-    provide('toggleTheme', toggleTheme)
-
-    return { theme }
   }
+
+  return {
+    items,
+    itemCount,
+    addItem
+  }
+})
+```
+
+```vue
+<!-- 商品详情页组件 -->
+<script setup>
+import { useCartStore } from '@/stores/cart'
+
+const cart = useCartStore()
+
+const addToCart = (product) => {
+  cart.addItem(product)  // 直接调用，无需层层传递
 }
 </script>
 ```
 
 ```vue
-<!-- 深层后代组件：MenuItem.vue（可能是第 5+ 层嵌套） -->
+<!-- 头部导航组件 -->
 <template>
-  <div :class="['menu-item', theme]">
-    <span class="icon">{{ icon }}</span>
-    <span class="label">{{ label }}</span>
+  <header>
+    <span>购物车 ({{ cart.itemCount }})</span>
+  </header>
+</template>
 
-    <!-- 管理员才能看到设置按钮 -->
-    <button
-      v-if="userInfo?.role === 'admin'"
-      class="settings-btn"
-      @click="openSettings"
-    >
-      设置
-    </button>
+<script setup>
+import { useCartStore } from '@/stores/cart'
+
+const cart = useCartStore()  // 直接读取，自动同步
+</script>
+```
+
+**这个阶段的特点：**
+- ✅ **优点**：数据集中管理、解决 Props Drilling、调试工具强大
+- ❌ **缺点**：学习成本、需要写额外代码（样板代码）、对简单项目可能过度设计
+
+### 3.5 阶段四：现代化方案——灵活与简洁
+
+状态管理库虽然强大，但也有"大炮打蚊子"的问题。对于中小型项目，更灵活、更轻量的方案出现了。
+
+**典型场景：用 Composable/Hooks 复用状态逻辑**
+
+```javascript
+// composables/useCart.js - 可复用的购物车逻辑
+import { ref, computed } from 'vue'
+
+export function useCart() {
+  const items = ref([])
+
+  const itemCount = computed(() =>
+    items.value.reduce((sum, item) => sum + item.quantity, 0)
+  )
+
+  const addItem = (product) => {
+    const existing = items.value.find(item => item.id === product.id)
+    if (existing) {
+      existing.quantity++
+    } else {
+      items.value.push({ ...product, quantity: 1 })
+    }
+  }
+
+  return {
+    items,
+    itemCount,
+    addItem
+  }
+}
+```
+
+```vue
+<!-- 在任何组件中使用 -->
+<script setup>
+import { useCart } from '@/composables/useCart'
+
+// 每次调用都会创建一个新的状态实例
+// 适合组件内部的局部状态
+const { items, itemCount, addItem } = useCart()
+</script>
+```
+
+**这个阶段的特点：**
+- ✅ **优点**：灵活、轻量、可组合、按需使用
+- ❌ **缺点**：需要理解组合式思维、跨组件共享需要额外处理
+
+---
+
+## 4. 状态管理库详解：Vuex vs Pinia vs Redux
+
+::: tip 🤔 如何选择状态管理库？
+面对不同的状态管理库，你可能会困惑：到底该选哪一个？
+
+其实没有"最好"的库，只有"最适合"的。选择时考虑这些因素：
+- **你用什么框架？** Vue 用 Pinia，React 用 Redux/Zustand
+- **项目多大？** 小项目用 Composable，大项目用状态管理库
+- **团队经验？** 选团队熟悉的，或学习成本低的
+
+接下来的内容会详细介绍主流状态管理库的特点和使用场景。
+:::
+
+### 4.1 主流状态管理库对比
+
+| 特性 | Redux | Vuex | Pinia | Zustand |
+| :--- | :--- | :--- | :--- | :--- |
+| **适用框架** | React | Vue | Vue | React |
+| **学习曲线** | 陡峭 | 中等 | 平缓 | 平缓 |
+| **样板代码** | 多 | 中等 | 少 | 极少 |
+| **TypeScript** | 良好 | 良好 | 优秀 | 优秀 |
+| **调试工具** | 强大 | 良好 | 优秀 | 良好 |
+| **适用场景** | 大型项目 | Vue 2/3 中大型项目 | Vue 3 新项目 | React 中小型项目 |
+
+::: tip 📊 从表格中你能看到什么？
+让我们逐行解读这张表：
+
+**Redux**：React 生态的老牌状态管理库。优点是规范严格、调试工具强大，但缺点是样板代码多、学习曲线陡峭。适合大型项目和需要严格规范的团队。
+
+**Vuex**：Vue 2 时代的官方状态管理库。设计理念类似 Redux，但更贴合 Vue 的响应式系统。现在仍然可以用，但新项目推荐用 Pinia。
+
+**Pinia**：Vue 3 官方推荐的新一代状态管理库。语法简洁、TypeScript 支持好、学习成本低。**这是 Vue 3 项目的首选**。
+
+**Zustand**：React 生态的轻量级状态管理库。API 极简、几乎无样板代码。适合中小型 React 项目。
+:::
+
+<StateManagementComparisonDemo />
+
+### 4.2 Pinia 实战：Vue 3 的推荐选择
+
+Pinia 是 Vue 团队官方推荐的状态管理库，专为 Vue 3 设计。它比 Vuex 更简洁、更易用。
+
+**为什么叫 Pinia？**
+
+Pinia 是西班牙语"菠萝"的意思。菠萝是一种由很多小花组成的水果，每个小花都很独立，但整体上又是一个统一的整体。这正好比喻了 Pinia 的设计理念——**每个 store 是独立的，但可以组合使用**。
+
+**核心概念：**
+
+::: details 查看完整代码示例
+```javascript
+// stores/user.js - 用户状态管理
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+export const useUserStore = defineStore('user', () => {
+  // 1. State：存储数据
+  const userInfo = ref(null)
+  const isLoggedIn = computed(() => !!userInfo.value)
+
+  // 2. Actions：修改数据的方法
+  const login = async (username, password) => {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password })
+    })
+    const user = await response.json()
+    userInfo.value = user  // 直接修改，Pinia 会处理响应式
+  }
+
+  const logout = () => {
+    userInfo.value = null
+  }
+
+  // 3. Getters：计算属性
+  const displayName = computed(() => {
+    return userInfo.value?.name || '游客'
+  })
+
+  return {
+    userInfo,
+    isLoggedIn,
+    login,
+    logout,
+    displayName
+  }
+})
+```
+:::
+
+**在组件中使用：**
+
+```vue
+<template>
+  <div class="user-panel">
+    <span v-if="user.isLoggedIn">欢迎，{{ user.displayName }}</span>
+    <button v-if="user.isLoggedIn" @click="user.logout">退出登录</button>
+    <button v-else @click="showLoginDialog">登录</button>
   </div>
 </template>
 
-<script>
-import { inject } from 'vue'
+<script setup>
+import { useUserStore } from '@/stores/user'
 
-export default {
-  props: {
-    icon: String,
-    label: String
-  },
-  setup() {
-    // 注入祖先提供的数据
-    const theme = inject('theme', 'light') // 提供默认值
-    const userInfo = inject('userInfo', {})
+// 直接获取 store，所有内容都是响应式的
+const user = useUserStore()
 
-    const openSettings = () => {
-      console.log('打开设置，当前主题:', theme.value)
-    }
-
-    return { theme, userInfo, openSettings }
-  }
+const showLoginDialog = () => {
+  // 显示登录对话框...
 }
 </script>
 ```
 
-**Provide / Inject 的特点：**
+**Pinia 的优势：**
 
-| 优点 | 缺点 |
-| :--- | :--- |
-| 解决跨层级通信问题，无需逐层传递 props | 破坏了组件的封装性，难以追踪数据来源 |
-| 适合提供全局配置、主题、用户上下文等 | 过度使用会导致组件间耦合严重 |
-| 与响应式系统配合良好 | 不适合频繁变化的数据（如表单输入） |
+| 优势 | 说明 | 对比 Vuex |
+|------|------|----------|
+| **简洁的 API** | 不需要 mutations，直接修改 state | Vuex 需要 mutations 和 actions 分开 |
+| **TypeScript 友好** | 原生类型推导，不需要额外配置 | Vuex 需要复杂的类型定义 |
+| **自动模块化** | 每个 store 文件自动成为模块 | Vuex 需要手动配置 namespaced |
+| **更小的体积** | 打包后约 1KB | Vuex 约 3KB |
 
-**使用建议：**
+<VuexPiniaDemo />
 
-- **适合**：主题、语言、当前用户、全局配置等相对稳定的数据
-- **不适合**：频繁变化的业务数据、组件间复杂的交互逻辑
+### 4.3 Redux 实战：React 的经典选择
 
----
+Redux 是 React 生态中最经典的状态管理库，以严格的单向数据流著称。
 
-## 4. 状态管理的"进化论"
+**为什么叫 Redux？**
 
-前面我们讲了组件之间的通信方式，但当应用规模进一步扩大，单纯依靠组件自身的机制已经不够用了。这时候就需要专门的状态管理方案。
-
-### 4.1 为什么需要专门的状态管理？
-
-<StateManagementComparisonDemo />
-
-让我们看一个典型的购物车场景：
-
-**没有状态管理时的问题：**
-
-```javascript
-// 问题1：状态分散在各个组件
-// Header.vue 有自己的 cartCount
-// CartPage.vue 有自己的 cartItems
-// ProductDetail.vue 也有自己的 localCart
-
-// 问题2：同步困难
-// 在 ProductDetail 添加商品到购物车
-// Header 的购物车数量不会自动更新
-
-// 问题3：数据不一致
-// 用户在 CartPage 删除了商品
-// 但 ProductDetail 的"已加入购物车"按钮还是选中状态
-
-// 问题4：难以持久化
-// 用户刷新页面，购物车数据丢失
-```
-
-**有状态管理时的好处：**
-
-```javascript
-// 1. 单一数据源
-// 整个应用只有一份购物车状态
-const store = {
-  cart: {
-    items: [],
-    selectedIds: []
-  }
-}
-
-// 2. 响应式同步
-// 任何地方修改购物车，所有相关组件自动更新
-
-// 3. 状态可追溯
-// 每次修改都有记录，可以调试、回滚
-
-// 4. 易于持久化
-// 可以方便地保存到 localStorage 或服务器
-```
-
-### 4.2 状态管理的核心概念
-
-无论你选择哪种状态管理方案，以下概念都是通用的：
-
-| 概念 | 解释 | 类比 |
-| :--- | :--- | :--- |
-| **State** | 应用的状态数据 | 数据库中的数据 |
-| **Getter** | 从 state 派生的计算属性 | SQL 查询视图 |
-| **Mutation** | 修改 state 的唯一方式（同步） | 数据库事务 |
-| **Action** | 提交 mutation 的方法（可异步） | 业务逻辑层 |
-| **Store** | 容纳以上所有内容的对象 | 数据库实例 |
-
-### 4.3 主流状态管理库对比
-
-<StateManagementComparisonDemo />
-
-| 特性 | Redux | Vuex | Pinia | MobX | Zustand | Jotai |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **框架** | React | Vue | Vue | React/Vue | React | React |
-| **学习曲线** | 陡峭 | 中等 | 平缓 | 中等 | 平缓 | 平缓 |
-| **样板代码** | 多 | 中等 | 少 | 少 | 极少 | 极少 |
-| **TypeScript** | 良好 | 良好 | 优秀 | 良好 | 优秀 | 优秀 |
-| **中间件支持** | 丰富 | 有 | 无 | 无 | 无 | 无 |
-| **适用场景** | 大型应用 | 中大型 Vue 应用 | 中小型 Vue 应用 | 中大型应用 | 中小型应用 | 原子化状态 |
-
----
-
-## 5. 各框架状态管理详解
-
-### 5.1 Redux：严格而强大的状态管理
-
-<ReduxFlowDemo />
-
-Redux 是 React 生态中最经典的状态管理方案，以严格的单向数据流著称。
+Redux 是 "Reduced Flux" 的缩写。Flux 是 Facebook 早期提出的应用架构模式，Redux 简化了 Flux 的概念，所以叫 "Reduced Flux"。
 
 **核心原则：**
 
@@ -705,14 +634,13 @@ Redux 是 React 生态中最经典的状态管理方案，以严格的单向数�
 2. **State 只读**：唯一改变 state 的方法是触发 action
 3. **使用纯函数修改**：Reducer 必须是纯函数
 
-**代码示例：**
-
+::: details 查看完整代码示例
 ```javascript
-// 1. Action Types
+// 1. 定义 Action Types
 const ADD_TODO = 'ADD_TODO'
 const TOGGLE_TODO = 'TOGGLE_TODO'
 
-// 2. Action Creators
+// 2. 定义 Action Creators
 const addTodo = (text) => ({
   type: ADD_TODO,
   payload: { id: Date.now(), text, completed: false }
@@ -723,10 +651,9 @@ const toggleTodo = (id) => ({
   payload: { id }
 })
 
-// 3. Reducer
+// 3. 定义 Reducer（纯函数）
 const initialState = {
-  todos: [],
-  filter: 'all' // all, active, completed
+  todos: []
 }
 
 const todoReducer = (state = initialState, action) => {
@@ -750,15 +677,22 @@ const todoReducer = (state = initialState, action) => {
   }
 }
 
-// 4. Store
+// 4. 创建 Store
 import { createStore } from 'redux'
 const store = createStore(todoReducer)
+```
+:::
 
-// 5. 在 React 中使用
+**在 React 中使用：**
+
+```jsx
 import { useSelector, useDispatch } from 'react-redux'
 
 function TodoList() {
+  // 读取 state
   const todos = useSelector(state => state.todos)
+
+  // 获取 dispatch 函数
   const dispatch = useDispatch()
 
   return (
@@ -783,711 +717,96 @@ function TodoList() {
 | :--- | :--- |
 | 严格的数据流，易于调试 | 样板代码多，学习曲线陡峭 |
 | 时间旅行调试（Time Travel） | 简单的状态也需要写很多代码 |
-| 丰富的中间件生态（redux-thunk, redux-saga） | 不适合小型项目 |
+| 丰富的中间件生态 | 不适合小型项目 |
 | 可预测的状态更新 | 需要理解函数式编程概念 |
 
-### 5.2 Vuex 与 Pinia：Vue 生态的状态管理双雄
-
-<VuexPiniaDemo />
-
-#### 5.2.1 Vuex：经典的选择
-
-Vuex 是 Vue 2 时代的官方状态管理库，设计理念与 Redux 类似，但更贴合 Vue 的响应式系统。
-
-**核心概念：**
-
-```javascript
-// store/index.js
-import { createStore } from 'vuex'
-
-export default createStore({
-  // State: 存储应用的状态数据
-  state: {
-    user: null,
-    cart: {
-      items: [],
-      selectedIds: []
-    },
-    theme: 'light'
-  },
-
-  // Getters: 从 state 派生的计算属性
-  getters: {
-    isLoggedIn: state => !!state.user,
-    cartTotal: state => {
-      return state.cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-    },
-    cartItemCount: state => {
-      return state.cart.items.reduce((count, item) => count + item.quantity, 0)
-    }
-  },
-
-  // Mutations: 修改 state 的唯一方式（必须是同步的）
-  mutations: {
-    SET_USER(state, user) {
-      state.user = user
-    },
-    ADD_TO_CART(state, product) {
-      const existing = state.cart.items.find(item => item.id === product.id)
-      if (existing) {
-        existing.quantity++
-      } else {
-        state.cart.items.push({ ...product, quantity: 1 })
-      }
-    },
-    REMOVE_FROM_CART(state, productId) {
-      state.cart.items = state.cart.items.filter(item => item.id !== productId)
-    },
-    SET_THEME(state, theme) {
-      state.theme = theme
-    }
-  },
-
-  // Actions: 提交 mutation 的方法（可以包含异步操作）
-  actions: {
-    // 用户登录
-    async login({ commit }, credentials) {
-      try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          body: JSON.stringify(credentials)
-        })
-        const user = await response.json()
-        commit('SET_USER', user)
-        return { success: true }
-      } catch (error) {
-        return { success: false, error: error.message }
-      }
-    },
-
-    // 添加到购物车（可能涉及 API 调用）
-    async addToCart({ commit, state }, product) {
-      // 先乐观更新 UI
-      commit('ADD_TO_CART', product)
-
-      try {
-        // 同步到服务器
-        await fetch('/api/cart', {
-          method: 'POST',
-          body: JSON.stringify({
-            productId: product.id,
-            quantity: 1
-          })
-        })
-      } catch (error) {
-        // 如果失败，回滚状态
-        commit('REMOVE_FROM_CART', product.id)
-        throw error
-      }
-    }
-  },
-
-  // Modules: 将 store 分割成模块
-  modules: {
-    user: {
-      namespaced: true,
-      state: () => ({
-        profile: null,
-        preferences: {}
-      }),
-      mutations: {
-        SET_PROFILE(state, profile) {
-          state.profile = profile
-        }
-      }
-    },
-    cart: {
-      namespaced: true,
-      state: () => ({
-        items: [],
-        selectedIds: []
-      }),
-      getters: {
-        total: state => state.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-      }
-    }
-  }
-})
-```
-
-**在组件中使用 Vuex：**
-
-```vue
-<template>
-  <div class="cart">
-    <span>购物车 ({{ cartItemCount }})</span>
-    <span>总计: ¥{{ cartTotal }}</span>
-    <button @click="addItem">添加商品</button>
-  </div>
-</template>
-
-<script>
-import { mapState, mapGetters, mapActions } from 'vuex'
-
-export default {
-  computed: {
-    // 方式1：使用辅助函数
-    ...mapState(['user']),
-    ...mapGetters(['cartTotal', 'cartItemCount']),
-
-    // 方式2：使用命名空间模块
-    ...mapState('cart', ['items']),
-
-    // 方式3：直接访问（适合简单场景）
-    userName() {
-      return this.$store.state.user?.name
-    }
-  },
-  methods: {
-    ...mapActions(['addToCart']),
-
-    async addItem() {
-      await this.addToCart({ id: 1, name: '商品A', price: 100 })
-    }
-  }
-}
-</script>
-```
-
-#### 5.2.2 Pinia：新一代的优雅之选
-
-Pinia 是 Vue 团队官方推荐的新一代状态管理库，专为 Vue 3 设计，但也支持 Vue 2。
-
-**Pinia 相比 Vuex 的优势：**
-
-| 特性 | Vuex | Pinia |
-| :--- | :--- | :--- |
-| 语法 | 选项式 API | 组合式 API（更现代） |
-| 类型支持 | 需要额外配置 | 原生 TypeScript 支持 |
-| 代码量 | 需要 mutations、actions 分开 | 更简洁，直接修改 state |
-| 模块化 | 需要 namespaced | 自动模块化 |
-| 开发工具 | 支持 | 支持，且体验更好 |
-
-**Pinia 代码示例：**
-
-```javascript
-// stores/counter.js
-import { defineStore } from 'pinia'
-
-// 方式1：选项式 API（类似 Vuex）
-export const useCounterStore = defineStore('counter', {
-  state: () => ({
-    count: 0,
-    name: '计数器'
-  }),
-  getters: {
-    doubleCount: (state) => state.count * 2,
-    // 可以访问其他 getter
-    doubleCountPlusOne() {
-      return this.doubleCount + 1
-    }
-  },
-  actions: {
-    increment() {
-      this.count++
-    },
-    async fetchCount() {
-      const response = await fetch('/api/count')
-      const data = await response.json()
-      this.count = data.count
-    }
-  }
-})
-
-// 方式2：组合式 API（推荐，更符合 Vue3 风格）
-import { ref, computed } from 'vue'
-
-export const useCartStore = defineStore('cart', () => {
-  // State
-  const items = ref([])
-  const selectedIds = ref([])
-
-  // Getters
-  const totalCount = computed(() =>
-    items.value.reduce((sum, item) => sum + item.quantity, 0)
-  )
-
-  const totalPrice = computed(() =>
-    items.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  )
-
-  // Actions
-  function addItem(product) {
-    const existing = items.value.find(item => item.id === product.id)
-    if (existing) {
-      existing.quantity++
-    } else {
-      items.value.push({ ...product, quantity: 1 })
-    }
-  }
-
-  function removeItem(productId) {
-    items.value = items.value.filter(item => item.id !== productId)
-  }
-
-  async function checkout() {
-    // 调用支付 API
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      body: JSON.stringify({ items: items.value })
-    })
-    if (response.ok) {
-      items.value = [] // 清空购物车
-    }
-  }
-
-  return {
-    items,
-    selectedIds,
-    totalCount,
-    totalPrice,
-    addItem,
-    removeItem,
-    checkout
-  }
-})
-```
-
-**在组件中使用 Pinia：**
-
-```vue
-<template>
-  <div class="cart-page">
-    <h2>购物车 ({{ cart.totalCount }})</h2>
-
-    <div v-for="item in cart.items" :key="item.id" class="cart-item">
-      <span>{{ item.name }}</span>
-      <span>¥{{ item.price }} x {{ item.quantity }}</span>
-      <button @click="cart.removeItem(item.id)">删除</button>
-    </div>
-
-    <div class="cart-summary">
-      <p>总计: ¥{{ cart.totalPrice }}</p>
-      <button @click="cart.checkout" :disabled="cart.items.length === 0">
-        结算
-      </button>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { useCartStore } from '@/stores/cart'
-
-// 直接获取 store 实例，所有属性和方法都是响应式的
-const cart = useCartStore()
-</script>
-```
-
-**Vuex vs Pinia 的选择建议：**
-
-- **新项目**：直接选择 Pinia，官方推荐，体验更好
-- **Vue 2 老项目**：可以继续使用 Vuex，或者迁移到 Pinia（Pinia 支持 Vue 2）
-- **大型项目需要中间件**：如果依赖 Redux 生态的中间件（如 redux-saga），可以考虑 Redux
-
-### 5.3 MobX：响应式编程的魔法
+<ReduxFlowDemo />
 
 <MobxReactivityDemo />
 
-MobX 是一个基于响应式编程（Reactive Programming）的状态管理库，通过自动追踪依赖来实现状态更新。
-
-**核心概念：**
-
-```javascript
-import { makeAutoObservable } from 'mobx'
-
-class TodoStore {
-  todos = []
-  filter = 'all' // all, active, completed
-
-  constructor() {
-    // 自动将所有属性和方法转为响应式
-    makeAutoObservable(this)
-  }
-
-  // 计算属性（自动追踪依赖）
-  get filteredTodos() {
-    switch (this.filter) {
-      case 'active':
-        return this.todos.filter(t => !t.completed)
-      case 'completed':
-        return this.todos.filter(t => t.completed)
-      default:
-        return this.todos
-    }
-  }
-
-  get stats() {
-    return {
-      total: this.todos.length,
-      active: this.todos.filter(t => !t.completed).length,
-      completed: this.todos.filter(t => t.completed).length
-    }
-  }
-
-  // Action：修改状态
-  addTodo(text) {
-    this.todos.push({
-      id: Date.now(),
-      text,
-      completed: false
-    })
-  }
-
-  toggleTodo(id) {
-    const todo = this.todos.find(t => t.id === id)
-    if (todo) {
-      todo.completed = !todo.completed
-    }
-  }
-
-  removeTodo(id) {
-    this.todos = this.todos.filter(t => t.id !== id)
-  }
-
-  setFilter(filter) {
-    this.filter = filter
-  }
-}
-
-// 创建 store 实例
-const todoStore = new TodoStore()
-export default todoStore
-```
-
-**在 React 中使用：**
-
-```jsx
-import { observer } from 'mobx-react-lite'
-import todoStore from './TodoStore'
-
-// 使用 observer 包裹组件，使其自动追踪使用的状态
-const TodoList = observer(() => {
-  return (
-    <div>
-      <div className="filters">
-        {['all', 'active', 'completed'].map(filter => (
-          <button
-            key={filter}
-            onClick={() => todoStore.setFilter(filter)}
-            className={todoStore.filter === filter ? 'active' : ''}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
-
-      <ul>
-        {todoStore.filteredTodos.map(todo => (
-          <li key={todo.id}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => todoStore.toggleTodo(todo.id)}
-            />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-              {todo.text}
-            </span>
-            <button onClick={() => todoStore.removeTodo(todo.id)}>删除</button>
-          </li>
-        ))}
-      </ul>
-
-      <div className="stats">
-        总计: {todoStore.stats.total} |
-        进行中: {todoStore.stats.active} |
-        已完成: {todoStore.stats.completed}
-      </div>
-    </div>
-  )
-})
-```
-
-**MobX 的优缺点：**
-
-| 优点 | 缺点 |
-| :--- | :--- |
-| 自动追踪依赖，无需手动优化 | 魔法般的响应式可能让人困惑 |
-| 代码量少，接近原生 JavaScript | 装饰器语法需要额外配置 |
-| 面向对象风格，易于理解 | 调试工具不如 Redux 强大 |
-| 性能优秀，只更新需要的组件 | 大型团队需要约定规范 |
-
-### 5.4 Zustand 与 Jotai：轻量级的新星
-
 <ZustandJotaiDemo />
 
-#### 5.4.1 Zustand：极简主义的选择
-
-Zustand（德语"状态"）是一个轻量级的状态管理库，核心代码只有几百行。
-
-**基本用法：**
-
-```javascript
-import { create } from 'zustand'
-
-// 创建 store
-const useStore = create((set, get) => ({
-  // State
-  bears: 0,
-  fish: 100,
-
-  // Actions
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-
-  // 使用 get 访问当前状态
-  eatFish: () => {
-    const { fish, bears } = get()
-    if (fish > 0) {
-      set({ fish: fish - 1, bears: bears + 0.1 })
-    }
-  },
-
-  // 异步 action
-  fetchBears: async () => {
-    const response = await fetch('/api/bears')
-    const bears = await response.json()
-    set({ bears })
-  }
-}))
-
-// 在 React 组件中使用
-function BearCounter() {
-  // 只订阅需要的字段，实现细粒度更新
-  const bears = useStore((state) => state.bears)
-  const increase = useStore((state) => state.increasePopulation)
-
-  return (
-    <div>
-      <h1>{bears} bears around here...</h1>
-      <button onClick={increase}>Add bear</button>
-    </div>
-  )
-}
-```
-
-**Zustand 的优势：**
-
-1. **极简 API**：核心只有 `create`、`set`、`get` 三个概念
-2. **无需 Provider**：没有 Context 的包裹问题
-3. **细粒度订阅**：组件只订阅需要的状态片段
-4. **中间件支持**：持久化、日志、 immer 等
-
-```javascript
-// 使用中间件
-import { persist, createJSONStorage } from 'zustand/middleware'
-
-const useStore = create(
-  persist(
-    (set, get) => ({
-      bears: 0,
-      increase: () => set((state) => ({ bears: state.bears + 1 }))
-    }),
-    {
-      name: 'bear-storage', // localStorage 的 key
-      storage: createJSONStorage(() => localStorage)
-    }
-  )
-)
-```
-
-#### 5.4.2 Jotai：原子化的状态管理
-
-Jotai 采用"原子（Atom）"的概念来管理状态，灵感来自 Recoil。
-
-**核心概念：**
-
-```javascript
-import { atom, useAtom } from 'jotai'
-
-// 定义原子状态
-const countAtom = atom(0)
-
-// 派生原子（类似 computed）
-const doubledCountAtom = atom((get) => get(countAtom) * 2)
-
-// 可写派生原子
-const incrementAtom = atom(
-  (get) => get(countAtom),
-  (get, set, update) => {
-    set(countAtom, get(countAtom) + update)
-  }
-)
-
-// 在组件中使用
-function Counter() {
-  const [count, setCount] = useAtom(countAtom)
-  const [doubled] = useAtom(doubledCountAtom)
-  const [, increment] = useAtom(incrementAtom)
-
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <p>Doubled: {doubled}</p>
-      <button onClick={() => setCount(c => c + 1)}>+1</button>
-      <button onClick={() => increment(5)}>+5</button>
-    </div>
-  )
-}
-```
-
-**Jotai 的特点：**
-
-1. **原子化**：状态拆分成独立的小单元，按需组合
-2. **细粒度更新**：只有订阅的原子变化时才重渲染
-3. **派生状态**：类似 computed，自动追踪依赖
-4. **异步支持**：内置对异步原子的支持
-
-```javascript
-// 异步原子
-const userAtom = atom(null)
-
-const fetchUserAtom = atom(
-  (get) => get(userAtom),
-  async (get, set, userId) => {
-    const response = await fetch(`/api/users/${userId}`)
-    const user = await response.json()
-    set(userAtom, user)
-  }
-)
-
-// 使用
-function UserProfile({ userId }) {
-  const [user, fetchUser] = useAtom(fetchUserAtom)
-
-  useEffect(() => {
-    fetchUser(userId)
-  }, [userId])
-
-  if (!user) return <div>Loading...</div>
-  return <div>Hello, {user.name}</div>
-}
-```
-
 ---
 
-## 6. 如何选择适合你的状态管理方案？
+## 5. 实战指南：如何设计状态管理？
 
-面对这么多选择，你可能会感到困惑。以下是一些实用的决策建议：
+::: tip 🤔 什么时候需要状态管理库？
+不是所有项目都需要状态管理库。在引入之前，先问自己几个问题：
 
-### 6.1 决策树
+1. **有多少组件需要共享这份数据？**
+   - 如果只有 2-3 个组件，用 props/events 就够了
+   - 如果有 5+ 个组件，考虑状态管理库
 
-```
-你的项目规模？
-├── 小型项目 (< 10 个组件)
-│   └── 使用组件自带的状态管理即可
-│       （useState / ref）
-│
-├── 中型项目 (10-50 个组件)
-│   ├── 使用 Vue？
-│   │   └── Pinia（推荐）或 Vuex
-│   └── 使用 React？
-│       ├── 需要严格的数据流？→ Redux Toolkit
-│       └── 追求简洁？→ Zustand
-│
-└── 大型项目 (> 50 个组件，多团队协作)
-    ├── 使用 Vue？
-    │   ├── 需要严格规范？→ Vuex + Modules
-    │   └── 追求开发效率？→ Pinia
-    ├── 使用 React？
-    │   ├── 企业级应用？→ Redux + Redux Toolkit
-    │   ├── 需要细粒度控制？→ Recoil / Jotai
-    │   └── 追求简洁？→ Zustand
-    └── 跨框架需求？
-        └── 考虑 RxJS 或原生事件机制
-```
+2. **这份数据会经常变化吗？**
+   - 如果几乎不变（如用户信息），用 Provide/Inject
+   - 如果经常变化（如购物车），用状态管理库
 
-### 6.2 各方案适用场景速查表
+3. **团队规模多大？**
+   - 个人或小团队：简单的方案就行
+   - 大团队：需要严格的规范和强大的调试工具
 
-| 如果你... | 推荐方案 | 理由 |
-| :--- | :--- | :--- |
-| 刚开始学 Vue 3 | Pinia | 官方推荐，语法简单，TypeScript 支持好 |
-| 维护 Vue 2 老项目 | Vuex | 稳定成熟，生态丰富 |
-| 做企业级 React 项目 | Redux Toolkit | 规范严格，调试工具强大 |
-| 做中小型 React 项目 | Zustand | 极简，无样板代码 |
-| 需要原子化状态管理 | Jotai / Recoil | 细粒度控制，派生状态强大 |
-| 喜欢面向对象风格 | MobX | 自动追踪依赖，代码直观 |
-| 追求极致性能 | 原生 Context + useReducer | 零依赖，完全可控 |
+**记住：从简单开始，按需升级。**
+:::
 
-### 6.3 避坑指南
+### 5.1 状态设计的原则
 
-**不要这样用：**
+无论你选择哪种状态管理方案，都应该遵循以下原则：
+
+**原则一：单一数据源**
+
+同一份数据只应该在一个地方存储。不要在多个组件里重复定义相同的数据。
 
 ```javascript
-// ❌ 错误：直接修改 state
-store.state.user.name = '李四'
+// ❌ 错误：数据分散在各处
+const ProductDetail = { cart: [] }
+const CartPage = { items: [] }
+const Header = { count: 0 }
 
-// ❌ 错误：在组件外修改 state
-setTimeout(() => {
-  store.count++
-}, 1000)
-
-// ❌ 错误：在 getter 中修改 state
-getters: {
-  doubleCount(state) {
-    state.count *= 2  // 副作用！
-    return state.count
-  }
-}
-
-// ❌ 错误：不取消事件监听
-export default {
-  created() {
-    EventBus.$on('event', this.handler)
-  }
-  // 忘记在 beforeUnmount 中取消订阅
-}
+// ✅ 正确：数据集中管理
+const cartStore = { items: [] }  // 唯一的数据源
 ```
 
-**推荐这样用：**
+**原则二：不可变性**
+
+修改状态时，应该创建新对象，而不是直接修改原对象。
 
 ```javascript
-// ✅ 正确：通过 mutation/action 修改 state
-store.commit('SET_USER_NAME', '李四')
-// 或 Pinia：
-store.userName = '李四'  // Pinia 允许直接修改，因为它底层已经处理了响应式
+// ❌ 错误：直接修改
+state.items.push(newItem)
 
-// ✅ 正确：在 action 中处理异步
-actions: {
-  async fetchUser({ commit }) {
-    const user = await api.getUser()
-    commit('SET_USER', user)
-  }
-}
-
-// ✅ 正确：getter 是纯函数
-getters: {
-  doubleCount: (state) => state.count * 2
-}
-
-// ✅ 正确：及时取消订阅
-export default {
-  created() {
-    this.unsubscribe = store.$subscribe((mutation, state) => {
-      console.log(mutation, state)
-    })
-  },
-  beforeUnmount() {
-    this.unsubscribe()
-  }
-}
+// ✅ 正确：创建新对象
+state.items = [...state.items, newItem]
 ```
 
----
+**原则三：状态往上提，事件往下传**
 
-## 7. 实战：电商购物车状态管理设计
+共享状态应该放在最近的公共祖先组件或全局 store 中，而不是分散在各个子组件里。
 
-让我们综合运用前面的知识，设计一个电商购物车系统的状态管理方案。
+```vue
+<!-- ❌ 错误：状态在子组件中 -->
+<Parent>
+  <Child :data="childData" @update="childData = $event" />
+</Parent>
 
-### 7.1 需求分析
+<!-- ✅ 正确：状态在父组件中 -->
+<Parent>
+  <Child :data="parentData" @update="parentData = $event" />
+</Parent>
+```
+
+### 5.2 实战案例：电商购物车状态设计
+
+让我们综合运用前面的知识，设计一个电商购物车的状态管理方案。
+
+**需求分析：**
 
 - 商品列表页可以添加商品到购物车
 - 购物车页面可以查看、修改数量、删除商品
 - 头部导航显示购物车商品数量
 - 支持选择/取消选择商品，计算选中商品总价
-- 支持全选/取消全选
 - 数据持久化到 localStorage
 
-### 7.2 状态设计（Pinia）
+**状态设计（Pinia）：**
 
 ```javascript
 // stores/cart.js
@@ -1495,11 +814,9 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 export const useCartStore = defineStore('cart', () => {
-  // ============ State ============
-  const items = ref([])
-  const selectedIds = ref([])
-  const isLoading = ref(false)
-  const error = ref(null)
+  // ============ State（状态）============
+  const items = ref([])  // 购物车商品列表
+  const selectedIds = ref([])  // 选中的商品 ID
 
   // 从 localStorage 恢复数据
   const initFromStorage = () => {
@@ -1510,7 +827,7 @@ export const useCartStore = defineStore('cart', () => {
         items.value = data.items || []
         selectedIds.value = data.selectedIds || []
       } catch (e) {
-        console.error('Failed to parse cart data:', e)
+        console.error('读取购物车数据失败:', e)
       }
     }
   }
@@ -1523,7 +840,7 @@ export const useCartStore = defineStore('cart', () => {
     }))
   }
 
-  // ============ Getters ============
+  // ============ Getters（计算属性）============
   const itemCount = computed(() =>
     items.value.reduce((sum, item) => sum + item.quantity, 0)
   )
@@ -1532,7 +849,6 @@ export const useCartStore = defineStore('cart', () => {
     items.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
   )
 
-  // 选中商品相关计算
   const selectedItems = computed(() =>
     items.value.filter(item => selectedIds.value.includes(item.id))
   )
@@ -1541,11 +857,7 @@ export const useCartStore = defineStore('cart', () => {
     selectedItems.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
   )
 
-  const isAllSelected = computed(() =>
-    items.value.length > 0 && selectedIds.value.length === items.value.length
-  )
-
-  // ============ Actions ============
+  // ============ Actions（方法）============
   const addItem = (product) => {
     const existing = items.value.find(item => item.id === product.id)
     if (existing) {
@@ -1587,21 +899,6 @@ export const useCartStore = defineStore('cart', () => {
     persist()
   }
 
-  const toggleSelectAll = () => {
-    if (isAllSelected.value) {
-      selectedIds.value = []
-    } else {
-      selectedIds.value = items.value.map(item => item.id)
-    }
-    persist()
-  }
-
-  const clearCart = () => {
-    items.value = []
-    selectedIds.value = []
-    persist()
-  }
-
   // 初始化
   initFromStorage()
 
@@ -1609,64 +906,33 @@ export const useCartStore = defineStore('cart', () => {
     // State
     items,
     selectedIds,
-    isLoading,
-    error,
     // Getters
     itemCount,
     totalPrice,
     selectedItems,
     selectedTotalPrice,
-    isAllSelected,
     // Actions
     addItem,
     updateQuantity,
     removeItem,
-    toggleSelection,
-    toggleSelectAll,
-    clearCart
+    toggleSelection
   }
 })
 ```
 
-### 7.3 组件中使用
+**在组件中使用：**
 
 ```vue
-<!-- CartIcon.vue -->
+<!-- 商品详情页：ProductDetail.vue -->
 <template>
-  <div class="cart-icon" @click="goToCart">
-    <i class="icon-cart"></i>
-    <span v-if="cart.itemCount > 0" class="badge">
-      {{ cart.itemCount }}
-    </span>
-  </div>
-</template>
-
-<script setup>
-import { useCartStore } from '@/stores/cart'
-
-const cart = useCartStore()
-
-const goToCart = () => {
-  router.push('/cart')
-}
-</script>
-```
-
-```vue
-<!-- ProductCard.vue -->
-<template>
-  <div class="product-card">
-    <img :src="product.image" :alt="product.name" />
-    <h3>{{ product.name }}</h3>
+  <div class="product-detail">
+    <h2>{{ product.name }}</h2>
     <p class="price">¥{{ product.price }}</p>
-    <button @click="addToCart" :disabled="isInCart">
-      {{ isInCart ? '已加入' : '加入购物车' }}
-    </button>
+    <button @click="addToCart">加入购物车</button>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
 import { useCartStore } from '@/stores/cart'
 
 const props = defineProps({
@@ -1675,63 +941,227 @@ const props = defineProps({
 
 const cart = useCartStore()
 
-const isInCart = computed(() =>
-  cart.items.some(item => item.id === props.product.id)
-)
-
 const addToCart = () => {
   cart.addItem({
     id: props.product.id,
     name: props.product.name,
-    price: props.product.price,
-    image: props.product.image
+    price: props.product.price
   })
 }
 </script>
 ```
 
+```vue
+<!-- 头部导航：Header.vue -->
+<template>
+  <header class="header">
+    <div class="logo">我的商店</div>
+    <nav>
+      <RouterLink to="/">首页</RouterLink>
+      <RouterLink to="/cart">
+        购物车 ({{ cart.itemCount }})
+      </RouterLink>
+    </nav>
+  </header>
+</template>
+
+<script setup>
+import { useCartStore } from '@/stores/cart'
+
+const cart = useCartStore()  // 直接使用，自动响应变化
+</script>
+```
+
 ---
 
-## 8. 名词对照表
+## 6. 常见踩坑与避坑指南
 
-| 英文术语 | 中文对照 | 解释 |
+::: warning ⚠️ 这些坑，90% 的初学者都会踩
+在状态管理的实践中，有些错误特别常见。让我总结一下最常见的坑，以及如何避免它们。
+:::
+
+### 6.1 坑一：直接修改 Props 或 State
+
+**错误代码：**
+
+```javascript
+// ❌ 直接修改 props
+props.user.name = '李四'
+
+// ❌ 直接修改 Vuex 的 state
+store.state.user.name = '李四'
+
+// ❌ 直接修改数组元素
+state.items[0].name = '新名称'
+```
+
+**为什么这样不行？**
+
+前端框架（Vue/React）需要"追踪"数据的变化，才能自动更新界面。如果你直接修改对象或数组，框架可能无法检测到变化，导致界面不更新。
+
+**正确做法：**
+
+```javascript
+// ✅ Vue 3 / Pinia：直接修改顶层属性
+store.user.name = '李四'  // Pinia 会自动处理响应式
+
+// ✅ Vue 2 / Vuex：通过 mutation
+mutations: {
+  UPDATE_USER_NAME(state, newName) {
+    state.user.name = newName
+  }
+}
+
+// ✅ 修改数组：创建新数组
+state.items = state.items.map((item, index) =>
+  index === 0 ? { ...item, name: '新名称' } : item
+)
+```
+
+### 6.2 坑二：在 Getter 中修改状态
+
+**错误代码：**
+
+```javascript
+// ❌ 在 getter 中修改状态
+getters: {
+  doubleCount(state) {
+    state.count *= 2  // 副作用！
+    return state.count
+  }
+}
+```
+
+**为什么这样不行？**
+
+Getter 应该是"纯函数"，只负责计算和返回值，不应该有任何副作用（修改状态）。如果在 getter 中修改状态，会导致无限循环、难以调试的问题。
+
+**正确做法：**
+
+```javascript
+// ✅ Getter 只计算，不修改
+getters: {
+  doubleCount(state) {
+    return state.count * 2
+  }
+}
+
+// ✅ 如果需要修改，用 action
+actions: {
+  doubleCountAndSave({ commit }) {
+    commit('SET_DOUBLE_COUNT')
+  }
+}
+```
+
+### 6.3 坑三：忘记清理事件监听
+
+**错误代码：**
+
+```javascript
+// ❌ 忘记取消订阅
+export default {
+  created() {
+    EventBus.$on('cart-updated', this.handleCartUpdate)
+  }
+  // 组件销毁了，但监听还在！
+}
+```
+
+**为什么这样不行？**
+
+如果组件销毁了但事件监听还在，会导致内存泄漏（占用的内存无法释放）。在单页应用中，用户不断切换页面，这些未清理的监听器会越积越多，最终导致页面卡顿。
+
+**正确做法：**
+
+```javascript
+// ✅ 及时取消订阅
+export default {
+  created() {
+    EventBus.$on('cart-updated', this.handleCartUpdate)
+  },
+  beforeUnmount() {  // Vue 3 用 beforeUnmount，Vue 2 用 beforeDestroy
+    EventBus.$off('cart-updated', this.handleCartUpdate)
+  }
+}
+```
+
+### 6.4 坑四：过度使用状态管理
+
+**错误代码：**
+
+```javascript
+// ❌ 把所有状态都放进 store
+const store = useStore()
+store.inputValue = '用户输入'
+store.isModalOpen = true
+store.currentTab = 'profile'
+```
+
+**为什么这样不行？**
+
+不是所有状态都需要放进全局 store。如果一个状态只在一个组件中使用（如输入框的值、模态框的开关），放在组件内部就行。过度使用状态管理会让代码变得复杂。
+
+**正确做法：**
+
+```javascript
+// ✅ 局部状态用组件内部管理
+const inputValue = ref('')
+
+// ✅ 只有需要共享的状态才放 store
+const userInfo = useUserStore()  // 多个组件需要用户信息
+const cart = useCartStore()  // 多个组件需要购物车数据
+```
+
+---
+
+## 7. 总结与建议
+
+### 7.1 核心知识点回顾
+
+让我们用一张表格来回顾组件化与状态管理的核心概念：
+
+| 概念 | 一句话解释 | 解决的问题 | 典型工具 |
+|------|-----------|-----------|----------|
+| **组件化** | 把界面拆成独立的、可复用的部分 | 代码复用、职责分离 | Vue/React 组件 |
+| **Props** | 父组件给子组件传递数据 | 父子通信 | Vue/React 内置 |
+| **Events** | 子组件通知父组件发生了什么 | 子父通信 | Vue/React 内置 |
+| **State** | 组件内部存储的数据 | 记忆组件的状态 | Vue/React 内置 |
+| **状态管理库** | 集中管理全局共享状态 | 跨组件通信、Props Drilling | Pinia、Redux、Zustand |
+| **单一数据源** | 同一份数据只在一个地方存储 | 数据不一致、同步困难 | 状态管理库的核心原则 |
+
+### 7.2 不同场景的选择建议
+
+| 场景 | 推荐方案 | 理由 |
 | :--- | :--- | :--- |
-| **State** | 状态 | 应用的数据存储，是状态管理的核心。 |
-| **Props** | 属性 | 父组件向子组件传递数据的方式。 |
-| **Event/Action** | 事件/动作 | 组件通知父组件或触发状态变更的方式。 |
-| **Store** | 存储/仓库 | 集中管理状态的对象。 |
-| **Getter** | 获取器 | 从 state 派生的计算属性。 |
-| **Mutation** | 变更 | Vuex 中修改 state 的唯一方式，必须是同步的。 |
-| **Reducer** | 归约器 | Redux 中处理 state 更新的纯函数。 |
-| **Dispatch** | 派发 | 触发 action 或 mutation 的操作。 |
-| **Subscribe** | 订阅 | 监听状态变化的操作。 |
-| **Reactive** | 响应式 | 数据变化自动触发更新的机制。 |
-| **Computed** | 计算属性 | 基于其他状态派生的状态。 |
-| **Module** | 模块 | 将 store 分割成多个子模块的方式。 |
-| **Namespaced** | 命名空间 | 模块内部的 action/mutation 自动带命名前缀。 |
-| **Hydration** | 注水 | SSR 中将服务端状态同步到客户端的过程。 |
-| **Time Travel** | 时间旅行 | Redux DevTools 中回溯状态变化的功能。 |
+| **父子组件通信** | Props + Events | 框架内置，简单直接 |
+| **跨层级传值** | Provide / Inject | 避免层层传递 |
+| **组件内局部状态** | ref / useState | 简单，不需要额外工具 |
+| **中型 Vue 项目** | Pinia | 官方推荐，学习成本低 |
+| **中型 React 项目** | Zustand | 极简，无样板代码 |
+| **大型 Vue 项目** | Pinia + 规范 | 灵活且可扩展 |
+| **大型 React 项目** | Redux Toolkit | 规范严格，生态丰富 |
+| **跨组件复用逻辑** | Composable / Hooks | 灵活，可组合 |
 
----
+### 7.3 学习建议
 
-## 总结
+**对于初学者：**
 
-状态管理是前端开发中永恒的话题。从简单的 props 传递到复杂的全局状态管理，没有银弹，只有适合当前场景的方案。
+1. **先掌握基础**：理解 props、events、state 这些基本概念
+2. **从小项目开始**：不要一开始就上状态管理库
+3. **多写代码**：理论学再多，不如动手实践
+
+**对于进阶者：**
+
+1. **读源码**：理解 Pinia/Redux 的工作原理
+2. **学模式**：了解常见的设计模式（如观察者模式、发布订阅模式）
+3. **关注生态**：学习相关的工具（如 DevTools、中间件）
 
 **记住这些核心原则：**
 
-1. **从简单开始**：不要过早引入复杂的状态管理库，props 和 emit 能解决大部分问题。
-2. **状态往上提**：共享状态尽量放在共同的父组件或状态管理库中。
-3. **单一数据源**：避免同一份数据在多个地方存储。
-4. **不可变性**：修改状态时创建新对象，而不是直接修改原对象。
-5. **按需选择**：根据团队技术栈和项目规模选择合适的方案。
+1. **从简单开始**：不要过早引入复杂的状态管理库
+2. **单一数据源**：避免同一份数据在多个地方存储
+3. **不可变性**：修改状态时创建新对象，而不是直接修改
+4. **按需选择**：根据项目规模和团队情况选择合适的方案
 
-**不同场景的选择建议：**
-
-- **小型项目**：props / emit + Provide / Inject
-- **中型 Vue 项目**：Pinia
-- **中型 React 项目**：Zustand 或 React Query
-- **大型项目**：Redux Toolkit、Vuex/Pinia + 严格规范
-- **需要细粒度控制**：MobX、Jotai、Recoil
-
-希望这篇指南能帮助你在面对复杂的状态管理问题时，做出明智的选择。
+希望这篇文章能帮助你建立起对组件化与状态管理的整体认知。当你在实际项目中遇到复杂的数据流问题时，能够知道从哪里入手、如何设计、怎样实现。

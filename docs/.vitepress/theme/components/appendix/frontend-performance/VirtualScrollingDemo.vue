@@ -1,14 +1,18 @@
+<!--
+  VirtualScrollingDemo.vue
+  虚拟滚动演示
+-->
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 
 const TOTAL_ITEMS = 10000
 const ITEM_HEIGHT = 50
-const CONTAINER_HEIGHT = 400
+const CONTAINER_HEIGHT = 280
 
 // Generate mock data
 const items = Array.from({ length: TOTAL_ITEMS }, (_, i) => ({
   id: i,
-  content: `Item #${i + 1} - This is a long list item content to simulate real data.`
+  content: `Item #${i + 1} - 虚拟滚动列表项内容`
 }))
 
 const scrollTop = ref(0)
@@ -41,17 +45,23 @@ const renderedCount = computed(() => visibleItems.value.length)
 
 <template>
   <div class="demo-container">
+    <div class="demo-header">
+      <span class="icon">📜</span>
+      <span class="title">虚拟滚动</span>
+      <span class="subtitle">只渲染可见区域的列表项</span>
+    </div>
+
     <div class="controls">
       <div class="stat-box">
-        <div class="stat-label">Total Items</div>
+        <div class="stat-label">总数据量</div>
         <div class="stat-value">{{ TOTAL_ITEMS.toLocaleString() }}</div>
       </div>
       <div class="stat-box highlight">
-        <div class="stat-label">Rendered DOM Nodes</div>
+        <div class="stat-label">实际渲染</div>
         <div class="stat-value">{{ renderedCount }}</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Memory Saved</div>
+        <div class="stat-label">节省内存</div>
         <div class="stat-value">
           ~{{ ((1 - renderedCount / TOTAL_ITEMS) * 100).toFixed(1) }}%
         </div>
@@ -81,14 +91,9 @@ const renderedCount = computed(() => visibleItems.value.length)
       </div>
     </div>
 
-    <div class="explanation">
-      <p>
-        <strong>How it works:</strong> Instead of rendering all
-        {{ TOTAL_ITEMS }} items at once, we only render the items currently
-        visible in the viewport (plus a small buffer). As you scroll, we
-        calculate which items should be visible and position them absolutely to
-        create the illusion of a full list.
-      </p>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>工作原理：</strong>不渲染全部 {{ TOTAL_ITEMS }} 项，只渲染视口中可见的项（加上少量缓冲）。滚动时计算应该显示哪些项，并使用绝对定位创建完整列表的错觉。性能从 O(n) 优化到 O(1)。
     </div>
   </div>
 </template>
@@ -97,40 +102,52 @@ const renderedCount = computed(() => visibleItems.value.length)
 .demo-container {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 16px;
-  background-color: var(--vp-c-bg-soft);
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
 }
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
 .controls {
   display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
 .stat-box {
-  background-color: var(--vp-c-bg);
-  padding: 12px;
+  background: var(--vp-c-bg);
+  padding: 0.6rem;
   border-radius: 6px;
   flex: 1;
-  min-width: 120px;
+  min-width: 100px;
   text-align: center;
   border: 1px solid var(--vp-c-divider);
 }
 
 .stat-box.highlight {
   border-color: var(--vp-c-brand);
-  background-color: var(--vp-c-brand-dimm);
+  background: var(--vp-c-brand-dimm);
 }
 
 .stat-label {
-  font-size: 12px;
+  font-size: 0.7rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .stat-value {
-  font-size: 20px;
+  font-size: 1.1rem;
   font-weight: bold;
   color: var(--vp-c-text-1);
 }
@@ -138,9 +155,10 @@ const renderedCount = computed(() => visibleItems.value.length)
 .scroll-container {
   overflow-y: auto;
   position: relative;
-  background-color: var(--vp-c-bg);
+  background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
+  margin-bottom: 0.75rem;
 }
 
 .scroll-phantom {
@@ -157,7 +175,7 @@ const renderedCount = computed(() => visibleItems.value.length)
   left: 0;
   right: 0;
   height: 100%;
-  pointer-events: none; /* Let scroll events pass through to container */
+  pointer-events: none;
 }
 
 .list-item {
@@ -167,10 +185,10 @@ const renderedCount = computed(() => visibleItems.value.length)
   right: 0;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 1rem;
   border-bottom: 1px solid var(--vp-c-divider);
   box-sizing: border-box;
-  background-color: var(--vp-c-bg); /* Ensure background covers phantom */
+  background: var(--vp-c-bg);
 }
 
 .item-index {
@@ -178,6 +196,7 @@ const renderedCount = computed(() => visibleItems.value.length)
   color: var(--vp-c-brand);
   width: 50px;
   flex-shrink: 0;
+  font-size: 0.85rem;
 }
 
 .item-content {
@@ -185,12 +204,16 @@ const renderedCount = computed(() => visibleItems.value.length)
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.85rem;
 }
 
-.explanation {
-  margin-top: 16px;
-  font-size: 14px;
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  line-height: 1.5;
 }
+
+.info-box .icon { margin-right: 0.25rem; }
 </style>

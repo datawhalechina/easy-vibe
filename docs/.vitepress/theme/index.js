@@ -110,6 +110,21 @@ import CdnCacheDemo from './components/appendix/deployment/CdnCacheDemo.vue'
 import CicdPipelineDemo from './components/appendix/deployment/CicdPipelineDemo.vue'
 import RollbackSwitchDemo from './components/appendix/deployment/RollbackSwitchDemo.vue'
 import ObservabilityBackupDemo from './components/appendix/deployment/ObservabilityBackupDemo.vue'
+import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
+import DeploymentBuildDemo from './components/appendix/deployment/DeploymentBuildDemo.vue'
+import DeploymentServerDemo from './components/appendix/deployment/DeploymentServerDemo.vue'
+import DeploymentSSHDemo from './components/appendix/deployment/DeploymentSSHDemo.vue'
+import DeploymentEnvironmentDemo from './components/appendix/deployment/DeploymentEnvironmentDemo.vue'
+import DeploymentNginxDemo from './components/appendix/deployment/DeploymentNginxDemo.vue'
+import DeploymentLbDemo from './components/appendix/deployment/DeploymentLbDemo.vue'
+import DeploymentMonitorDemo from './components/appendix/deployment/DeploymentMonitorDemo.vue'
+import DeploymentBackupDemo from './components/appendix/deployment/DeploymentBackupDemo.vue'
+import DeploymentTroubleshootDemo from './components/appendix/deployment/DeploymentTroubleshootDemo.vue'
+import DeploymentChecklistDemo from './components/appendix/deployment/DeploymentChecklistDemo.vue'
+import DeploymentDnsDemo from './components/appendix/deployment/DeploymentDnsDemo.vue'
+import DeploymentHttpsDemo from './components/appendix/deployment/DeploymentHttpsDemo.vue'
+import DeploymentCdnDemo from './components/appendix/deployment/DeploymentCdnDemo.vue'
+import DeploymentCicdDemo from './components/appendix/deployment/DeploymentCicdDemo.vue'
 import CssBoxModel from './components/appendix/web-basics/CssBoxModel.vue'
 import CssFlexbox from './components/appendix/web-basics/CssFlexbox.vue'
 import CssLayoutDemo from './components/appendix/web-basics/CssLayoutDemo.vue'
@@ -148,9 +163,13 @@ import ImperativeVsDeclarativeDemo from './components/appendix/web-basics/Impera
 import ComponentReusabilityDemo from './components/appendix/web-basics/ComponentReusabilityDemo.vue'
 
 // Frontend Evolution Components
+import FrontendEvolutionTimelineDemo from './components/appendix/frontend-evolution/FrontendEvolutionDemo.vue'
 import EvolutionSliceRequestDemo from './components/appendix/frontend-evolution/SliceRequestDemo.vue'
 import EvolutionResponsiveGridDemo from './components/appendix/frontend-evolution/ResponsiveGridDemo.vue'
 import EvolutionJQueryVsStateDemo from './components/appendix/frontend-evolution/JQueryVsStateDemo.vue'
+import EvolutionRoutingModeDemo from './components/appendix/frontend-evolution/RoutingModeDemo.vue'
+import EvolutionRenderingStrategyDemo from './components/appendix/frontend-evolution/RenderingStrategyDemo.vue'
+import EvolutionImperativeVsDeclarativeDemo from './components/appendix/frontend-evolution/ImperativeVsDeclarativeDemo.vue'
 
 import BackendEvolutionDemo from './components/appendix/backend-evolution/BackendEvolutionDemo.vue'
 import BackendQuickStartDemo from './components/appendix/backend-evolution/BackendQuickStartDemo.vue'
@@ -261,6 +280,17 @@ import HotReloadDemo from './components/appendix/frontend-engineering/HotReloadD
 import DependencyGraphDemo from './components/appendix/frontend-engineering/DependencyGraphDemo.vue'
 import SourceMapDemo from './components/appendix/frontend-engineering/SourceMapDemo.vue'
 import AssetFingerprintDemo from './components/appendix/frontend-engineering/AssetFingerprintDemo.vue'
+
+// Frontend Routing Components
+import HashVsHistoryDemo from './components/appendix/frontend-routing/HashVsHistoryDemo.vue'
+import DynamicRoutesDemo from './components/appendix/frontend-routing/DynamicRoutesDemo.vue'
+import MpaRoutingDemo from './components/appendix/frontend-routing/MpaRoutingDemo.vue'
+import NestedRoutesDemo from './components/appendix/frontend-routing/NestedRoutesDemo.vue'
+import RouteGuardsDemo from './components/appendix/frontend-routing/RouteGuardsDemo.vue'
+import RouteMatchingDemo from './components/appendix/frontend-routing/RouteMatchingDemo.vue'
+import RouterArchitectureDemo from './components/appendix/frontend-routing/RouterArchitectureDemo.vue'
+import RoutingModesDemo from './components/appendix/frontend-routing/RoutingModesDemo.vue'
+import SpaNavigationDemo from './components/appendix/frontend-routing/SpaNavigationDemo.vue'
 
 // Agent Intro Components
 import AgentWorkflowDemo from './components/appendix/agent-intro/AgentWorkflowDemo.vue'
@@ -431,6 +461,7 @@ import PaintLayerDemo from './components/appendix/browser-rendering-pipeline/Pai
 import CompositeDemo from './components/appendix/browser-rendering-pipeline/CompositeDemo.vue'
 import MacroMicroTaskDemo from './components/appendix/browser-rendering-pipeline/MacroMicroTaskDemo.vue'
 import RenderingPerformanceDemo from './components/appendix/browser-rendering-pipeline/RenderingPerformanceDemo.vue'
+import RenderingPipelineDemo from './components/appendix/browser-rendering-pipeline/RenderingPipelineDemo.vue'
 
 // Cache Design Extra Components
 import CacheArchitectureOverview from './components/appendix/cache-design/CacheArchitectureOverview.vue'
@@ -560,6 +591,21 @@ export default {
     app.component('CicdPipelineDemo', CicdPipelineDemo)
     app.component('RollbackSwitchDemo', RollbackSwitchDemo)
     app.component('ObservabilityBackupDemo', ObservabilityBackupDemo)
+    app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
+    app.component('DeploymentBuildDemo', DeploymentBuildDemo)
+    app.component('DeploymentServerDemo', DeploymentServerDemo)
+    app.component('DeploymentSSHDemo', DeploymentSSHDemo)
+    app.component('DeploymentEnvironmentDemo', DeploymentEnvironmentDemo)
+    app.component('DeploymentNginxDemo', DeploymentNginxDemo)
+    app.component('DeploymentLbDemo', DeploymentLbDemo)
+    app.component('DeploymentMonitorDemo', DeploymentMonitorDemo)
+    app.component('DeploymentBackupDemo', DeploymentBackupDemo)
+    app.component('DeploymentTroubleshootDemo', DeploymentTroubleshootDemo)
+    app.component('DeploymentChecklistDemo', DeploymentChecklistDemo)
+    app.component('DeploymentDnsDemo', DeploymentDnsDemo)
+    app.component('DeploymentHttpsDemo', DeploymentHttpsDemo)
+    app.component('DeploymentCdnDemo', DeploymentCdnDemo)
+    app.component('DeploymentCicdDemo', DeploymentCicdDemo)
     app.component('CssBoxModel', CssBoxModel)
     app.component('CssFlexbox', CssFlexbox)
     app.component('CssLayoutDemo', CssLayoutDemo)
@@ -604,9 +650,13 @@ export default {
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
 
     // Frontend Evolution Components Registration
+    app.component('FrontendEvolutionDemo', FrontendEvolutionTimelineDemo)
     app.component('EvolutionSliceRequestDemo', EvolutionSliceRequestDemo)
     app.component('EvolutionResponsiveGridDemo', EvolutionResponsiveGridDemo)
     app.component('EvolutionJQueryVsStateDemo', EvolutionJQueryVsStateDemo)
+    app.component('RoutingModeDemo', EvolutionRoutingModeDemo)
+    app.component('RenderingStrategyDemo', EvolutionRenderingStrategyDemo)
+    app.component('ImperativeVsDeclarativeDemo', EvolutionImperativeVsDeclarativeDemo)
 
     app.component('BackendEvolutionDemo', BackendEvolutionDemo)
     app.component('BackendQuickStartDemo', BackendQuickStartDemo)
@@ -712,6 +762,17 @@ export default {
     app.component('DependencyGraphDemo', DependencyGraphDemo)
     app.component('SourceMapDemo', SourceMapDemo)
     app.component('AssetFingerprintDemo', AssetFingerprintDemo)
+
+    // Frontend Routing Components Registration
+    app.component('HashVsHistoryDemo', HashVsHistoryDemo)
+    app.component('DynamicRoutesDemo', DynamicRoutesDemo)
+    app.component('MpaRoutingDemo', MpaRoutingDemo)
+    app.component('NestedRoutesDemo', NestedRoutesDemo)
+    app.component('RouteGuardsDemo', RouteGuardsDemo)
+    app.component('RouteMatchingDemo', RouteMatchingDemo)
+    app.component('RouterArchitectureDemo', RouterArchitectureDemo)
+    app.component('RoutingModesDemo', RoutingModesDemo)
+    app.component('SpaNavigationDemo', SpaNavigationDemo)
 
     // Agent Intro Components Registration
     app.component('AgentWorkflowDemo', AgentWorkflowDemo)
@@ -881,6 +942,7 @@ export default {
     app.component('CompositeDemo', CompositeDemo)
     app.component('MacroMicroTaskDemo', MacroMicroTaskDemo)
     app.component('RenderingPerformanceDemo', RenderingPerformanceDemo)
+    app.component('RenderingPipelineDemo', RenderingPipelineDemo)
 
     // Cache Design Extra Components Registration
     app.component('CacheArchitectureOverview', CacheArchitectureOverview)

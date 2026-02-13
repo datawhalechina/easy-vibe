@@ -1,80 +1,53 @@
 <template>
-  <div class="demo-container">
-    <h4>浏览器渲染管线全景图</h4>
-    <p class="demo-description">点击每个阶段查看详情，观察数据如何在管线中流动</p>
+  <div class="rendering-pipeline-demo">
+    <div class="demo-header">
+      <span class="icon">🏭</span>
+      <span class="title">渲染管线</span>
+      <span class="subtitle">从代码到像素的五步旅程</span>
+    </div>
 
-    <div class="pipeline-container">
-      <div class="pipeline-flow">
-        <div
-          v-for="(stage, index) in stages"
-          :key="stage.id"
-          class="stage-card"
-          :class="{
-            active: activeStage === index,
-            completed: activeStage > index,
-            pending: activeStage < index
-          }"
-          @click="selectStage(index)"
-        >
-          <div class="stage-icon">{{ stage.icon }}</div>
-          <div class="stage-name">{{ stage.name }}</div>
-          <div class="stage-time">{{ stage.time }}</div>
-        </div>
+    <div class="intro-text">
+      想象你在<span class="highlight">印刷厂</span>工作：稿件要排版、印刷、装订，最后才能变成书本。浏览器渲染网页也一样，HTML 和 CSS 要经过一道道"工序"，才能变成屏幕上的画面。
+    </div>
 
-        <div class="flow-arrows">
-          <div v-for="i in stages.length - 1" :key="i" class="flow-arrow">
-            <span class="arrow-line"></span>
-            <span class="arrow-head">▶</span>
-          </div>
-        </div>
+    <div class="pipeline">
+      <div
+        v-for="(stage, i) in stages"
+        :key="stage.id"
+        class="stage"
+        :class="{ active: activeStage === stage.id }"
+        @click="activeStage = activeStage === stage.id ? null : stage.id"
+      >
+        <div class="stage-icon">{{ stage.icon }}</div>
+        <div class="stage-name">{{ stage.name }}</div>
+        <div class="stage-simple">{{ stage.simple }}</div>
+        <div v-if="i < stages.length - 1" class="arrow">→</div>
       </div>
+    </div>
 
-      <div class="stage-detail" v-if="activeStage >= 0">
+    <Transition name="fade">
+      <div v-if="activeStage" class="stage-detail">
         <div class="detail-header">
-          <span class="detail-icon">{{ stages[activeStage].icon }}</span>
-          <span class="detail-title">{{ stages[activeStage].name }}</span>
+          <span class="detail-icon">{{ currentStage?.icon }}</span>
+          <span class="detail-title">{{ currentStage?.name }}</span>
         </div>
         <div class="detail-content">
-          <p>{{ stages[activeStage].description }}</p>
-          <div class="detail-meta">
-            <div class="meta-item">
-              <span class="meta-label">输入:</span>
-              <span class="meta-value">{{ stages[activeStage].input }}</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">输出:</span>
-              <span class="meta-value">{{ stages[activeStage].output }}</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">耗时:</span>
-              <span class="meta-value">{{ stages[activeStage].time }}</span>
-            </div>
+          <p class="detail-desc">{{ currentStage?.detailDesc }}</p>
+          <div class="detail-example">
+            <div class="example-label">🌰 举个例子：</div>
+            <div class="example-content">{{ currentStage?.example }}</div>
           </div>
         </div>
       </div>
+    </Transition>
+
+    <div v-if="!activeStage" class="hint-text">
+      👆 点击上方任意阶段，查看详细解释
     </div>
 
-    <div class="simulation-controls">
-      <el-button type="primary" @click="startSimulation" :disabled="isSimulating">
-        {{ isSimulating ? '模拟中...' : '开始模拟' }}
-      </el-button>
-      <el-button @click="resetSimulation">重置</el-button>
-      <el-slider v-model="simulationSpeed" :min="1" :max="5" :step="1" style="width: 150px;" />
-    </div>
-
-    <div class="pipeline-stats" v-if="showStats">
-      <div class="stat-card">
-        <div class="stat-value">{{ totalTime }}ms</div>
-        <div class="stat-label">总耗时</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">{{ bottleneckStage }}</div>
-        <div class="stat-label">瓶颈阶段</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">{{ optimizationTip }}</div>
-        <div class="stat-label">优化建议</div>
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>每个阶段各司其职，前面的阶段为后面阶段准备数据。理解这个流程，你就能知道什么时候用什么方式修改页面，才能避免性能问题。
     </div>
   </div>
 </template>
@@ -82,322 +55,237 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const stages = [
+const activeStage = ref(null)
+
+const stages = ref([
   {
-    id: 'html',
-    icon: '📄',
-    name: 'HTML解析',
-    time: '15ms',
-    description: '浏览器接收HTML字节流，进行词法分析和语法分析，构建DOM树。这是渲染管线的起点。',
-    input: 'HTML字节流',
-    output: 'DOM树'
+    id: 1,
+    icon: '🌲',
+    name: '构建DOM/CSSOM',
+    simple: '解析代码',
+    detailDesc: '浏览器把 HTML 标签解析成 DOM 树（骨架），把 CSS 解析成 CSSOM 树（样式）。这两个树是并行构建的，但 CSS 会阻塞渲染，因为浏览器必须知道样式才能正确显示页面。',
+    example: '浏览器读到 <div class="container">，会在 DOM 树中创建一个 div 节点；读到 .container { width: 100px }，会在 CSSOM 树中记录这个样式规则。'
   },
   {
-    id: 'css',
+    id: 2,
     icon: '🎨',
-    name: 'CSS解析',
-    time: '12ms',
-    description: '解析CSS样式表，处理选择器优先级，构建CSSOM树。CSSOM与DOM是并行构建的。',
-    input: 'CSS字节流',
-    output: 'CSSOM树'
-  },
-  {
-    id: 'render',
-    icon: '🌳',
     name: '构建渲染树',
-    time: '8ms',
-    description: '将DOM树和CSSOM树合并，生成渲染树。只包含可见节点，并计算每个节点的样式。',
-    input: 'DOM + CSSOM',
-    output: '渲染树'
+    simple: '合并筛选',
+    detailDesc: '把 DOM 树和 CSSOM 树合并，生成渲染树。只包含真正会显示在页面上的元素（不包括 head、script、display:none 的元素等）。',
+    example: '就像从完整的建筑图纸中抠出"看得见的部分"，去掉墙里的电线、管道，只保留墙面和家具。这样后续的计算会更高效。'
   },
   {
-    id: 'layout',
+    id: 3,
     icon: '📐',
-    name: '布局 (Reflow)',
-    time: '25ms',
-    description: '计算每个节点在视口中的精确位置和大小。这是最耗时的阶段之一，牵一发而动全身。',
-    input: '渲染树',
-    output: '几何信息'
+    name: '布局',
+    simple: '计算位置',
+    detailDesc: '计算每个元素在屏幕上的精确位置和大小（几何信息）。这是最昂贵的操作之一，因为改一个元素可能影响其他元素的位置（"牵一发而动全身"）。',
+    example: '浏览器算出："这个 div 在距离顶部 100px 的地方，宽度 200px，高度 50px"。如果改了这个 div 的宽度，它的子元素、兄弟元素的位置都要重新计算。'
   },
   {
-    id: 'paint',
+    id: 4,
     icon: '✏️',
-    name: '绘制 (Paint)',
-    time: '18ms',
-    description: '将每个节点转换为屏幕上的实际像素。包括文本、颜色、图像、边框等视觉内容。',
-    input: '几何信息',
-    output: '绘制记录'
+    name: '绘制',
+    simple: '填充颜色',
+    detailDesc: '把"计算好位置"的元素真正"画"成像素。包括填充背景色、绘制文字、绘制边框等。只改变外观（如 color、background-color）会触发重绘，成本比重排低。',
+    example: '就像给家具上漆：改家具颜色只需要重新上漆（重绘），但改家具位置需要重新摆放所有家具（重排）。'
   },
   {
-    id: 'composite',
+    id: 5,
     icon: '🔮',
-    name: '合成 (Composite)',
-    time: '5ms',
-    description: '将多个图层按照正确的层级顺序合并为最终图像。利用GPU加速，是现代浏览器的优化重点。',
-    input: '绘制记录',
-    output: '屏幕像素'
+    name: '合成',
+    simple: '合并图层',
+    detailDesc: '现代浏览器的终极武器。把多个绘制层（Layer）按照正确的顺序合并成最终画面。利用 GPU 并行处理，性能极佳。transform 和 opacity 动画只触发这一步。',
+    example: '就像 Photoshop 的图层：每个图层单独画，最后合并在一起。某些元素（如动画）会被提升到独立层，变化时只需要调整位置和透明度，不需要重绘。'
   }
-]
+])
 
-const activeStage = ref(0)
-const isSimulating = ref(false)
-const simulationSpeed = ref(3)
-const showStats = ref(false)
-
-const totalTime = computed(() => {
-  return stages.reduce((sum, stage) => sum + parseInt(stage.time), 0)
+const currentStage = computed(() => {
+  return stages.value.find(s => s.id === activeStage.value)
 })
-
-const bottleneckStage = computed(() => '布局阶段')
-const optimizationTip = computed(() => '减少DOM操作')
-
-function selectStage(index) {
-  activeStage.value = index
-}
-
-function startSimulation() {
-  isSimulating.value = true
-  showStats.value = true
-  activeStage.value = 0
-
-  const interval = setInterval(() => {
-    if (activeStage.value < stages.length - 1) {
-      activeStage.value++
-    } else {
-      clearInterval(interval)
-      isSimulating.value = false
-    }
-  }, (6 - simulationSpeed.value) * 800)
-}
-
-function resetSimulation() {
-  isSimulating.value = false
-  activeStage.value = 0
-  showStats.value = false
-}
 </script>
 
 <style scoped>
-.demo-container {
-  padding: 20px;
-  background: #f5f7fa;
+.rendering-pipeline-demo {
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
-h4 {
-  margin: 0 0 8px 0;
-  color: #303133;
-}
-
-.demo-description {
-  color: #606266;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-.pipeline-container {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.pipeline-flow {
+.demo-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
-  margin-bottom: 20px;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+
+.intro-text {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+}
+
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+.pipeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
   overflow-x: auto;
-  padding-bottom: 10px;
 }
 
-.stage-card {
-  flex-shrink: 0;
-  width: 100px;
-  padding: 12px 8px;
-  border: 2px solid #e4e7ed;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  background: white;
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
   position: relative;
-  z-index: 1;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.stage-card:hover {
-  border-color: #409eff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(64, 158, 255, 0.2);
+.stage:hover {
+  background: var(--vp-c-bg-soft);
 }
 
-.stage-card.active {
-  border-color: #409eff;
-  background: #ecf5ff;
-  box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.2);
-}
-
-.stage-card.completed {
-  border-color: #67c23a;
-  background: #f0f9eb;
+.stage.active {
+  background: var(--vp-c-brand-soft);
 }
 
 .stage-icon {
-  font-size: 24px;
-  margin-bottom: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--vp-c-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.stage:hover .stage-icon {
+  transform: scale(1.1);
 }
 
 .stage-name {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: #303133;
-  margin-bottom: 2px;
+  color: var(--vp-c-text-1);
 }
 
-.stage-time {
-  font-size: 11px;
-  color: #909399;
+.stage-simple {
+  font-size: 0.7rem;
+  color: var(--vp-c-brand-1);
+  margin-top: 0.2rem;
+  font-weight: 500;
 }
 
-.flow-arrows {
+.arrow {
   position: absolute;
-  top: 50%;
-  left: 50px;
-  right: 50px;
-  height: 2px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  pointer-events: none;
-  z-index: 0;
+  right: -12px;
+  top: 20px;
+  color: var(--vp-c-text-3);
+  font-size: 1rem;
 }
 
-.flow-arrow {
-  display: flex;
-  align-items: center;
-  color: #c0c4cc;
-  font-size: 12px;
-}
-
-.arrow-line {
-  width: 30px;
-  height: 2px;
-  background: #dcdfe6;
-}
-
-.arrow-head {
-  margin-left: -5px;
+.hint-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
+  margin-top: 0.75rem;
 }
 
 .stage-detail {
-  background: #f5f7fa;
+  background: var(--vp-c-bg);
   border-radius: 8px;
-  padding: 16px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .detail-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .detail-icon {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .detail-title {
-  font-size: 16px;
   font-weight: 600;
-  color: #303133;
+  font-size: 1rem;
+  color: var(--vp-c-text-1);
 }
 
-.detail-content {
-  color: #606266;
-  font-size: 14px;
+.detail-desc {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
   line-height: 1.6;
+  margin-bottom: 0.75rem;
 }
 
-.detail-content p {
-  margin: 0 0 12px 0;
+.detail-example {
+  background: var(--vp-c-bg-soft);
+  padding: 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--vp-c-brand);
 }
 
-.detail-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #e4e7ed;
-}
-
-.meta-item {
-  display: flex;
-  gap: 6px;
-  font-size: 13px;
-}
-
-.meta-label {
-  color: #909399;
-}
-
-.meta-value {
-  color: #409eff;
+.example-label {
+  font-size: 0.8rem;
   font-weight: 500;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.5rem;
 }
 
-.simulation-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+.example-content {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-1);
+  line-height: 1.5;
 }
 
-.pipeline-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.stat-card {
-  background: white;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
-.stat-value {
-  font-size: 20px;
-  font-weight: 600;
-  color: #409eff;
-  margin-bottom: 4px;
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.75rem;
 }
 
-.stat-label {
-  font-size: 12px;
-  color: #909399;
-}
-
-@media (max-width: 768px) {
-  .pipeline-flow {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .flow-arrows {
-    display: none;
-  }
-
-  .stage-card {
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .detail-meta {
-    flex-direction: column;
-    gap: 8px;
-  }
-}
+.info-box .icon { margin-right: 0.25rem; }
 </style>

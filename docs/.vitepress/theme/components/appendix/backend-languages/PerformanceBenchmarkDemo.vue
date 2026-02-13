@@ -1,45 +1,41 @@
 <template>
   <div class="performance-benchmark-demo">
-    <div class="benchmark-controls">
-      <h4>性能基准测试</h4>
-      <div class="control-group">
-        <label>测试场景：</label>
+    <div class="demo-header">
+      <span class="icon">🏁</span>
+      <span class="title">性能赛道</span>
+      <span class="subtitle">不同语言的竞速测试</span>
+    </div>
+
+    <div class="intro-text">
+      想象你在<span class="highlight">赛车场</span>：F1 赛车（C++、Rust）速度极快但难以驾驭，家用轿车（Python、Ruby）舒适但速度慢，跑车（Go、Java）在速度和操控之间取得平衡。
+    </div>
+
+    <div class="control-panel">
+      <div class="scenario-selector">
+        <label>选择赛道：</label>
         <select v-model="selectedScenario" @change="runBenchmark">
-          <option value="hello">Hello World (简单 HTTP)</option>
-          <option value="json">JSON 序列化</option>
-          <option value="db">数据库查询</option>
-          <option value="compute">CPU 密集计算</option>
+          <option v-for="scenario in scenarios" :key="scenario.id" :value="scenario.id">
+            {{ scenario.label }}
+          </option>
         </select>
       </div>
       <button class="run-btn" @click="runBenchmark" :disabled="isRunning">
-        {{ isRunning ? '测试中...' : '▶ 运行测试' }}
+        {{ isRunning ? '测试中...' : '▶ 开始测试' }}
       </button>
     </div>
 
     <div class="results-panel">
-      <div class="results-header">
-        <h5>测试结果（Requests/Second）</h5>
-        <div class="legend">
-          <span class="legend-item"
-            ><span class="dot" style="background: #f59e0b"></span> 高性能</span
-          >
-          <span class="legend-item"
-            ><span class="dot" style="background: #10b981"></span> 中等</span
-          >
-          <span class="legend-item"
-            ><span class="dot" style="background: #6366f1"></span> 较低</span
-          >
-        </div>
+      <div class="panel-header">
+        <span class="panel-title">测试结果（Requests/Second）</span>
       </div>
-
-      <transition-group name="bar" tag="div" class="chart-container">
+      <div class="bars-container">
         <div
           v-for="result in sortedResults"
           :key="result.language"
-          class="chart-bar-wrapper"
+          class="bar-wrapper"
         >
           <div class="bar-label">{{ result.language }}</div>
-          <div class="bar-container">
+          <div class="bar-track">
             <div
               class="bar-fill"
               :class="getBarClass(result.rps)"
@@ -49,14 +45,12 @@
             </div>
           </div>
         </div>
-      </transition-group>
+      </div>
     </div>
 
-    <div class="explanation-panel">
-      <h5>💡 性能解释</h5>
-      <div class="explanation-content">
-        <p>{{ getCurrentExplanation() }}</p>
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <span>{{ getCurrentExplanation() }}</span>
     </div>
   </div>
 </template>
@@ -67,56 +61,57 @@ import { ref, computed } from 'vue'
 const selectedScenario = ref('hello')
 const isRunning = ref(false)
 
+const scenarios = [
+  { id: 'hello', label: '🏁 简单 HTTP (Hello World)' },
+  { id: 'json', label: '📦 JSON 序列化' },
+  { id: 'db', label: '🗄️ 数据库查询' },
+  { id: 'compute', label: '⚙️ CPU 密集计算' }
+]
+
 const benchmarkData = {
-  hello: {
-    'C++': { rps: 1500000, time: 0.5 },
-    Rust: { rps: 1200000, time: 0.6 },
-    Go: { rps: 1000000, time: 0.7 },
-    Java: { rps: 700000, time: 1.0 },
-    'Node.js': { rps: 800000, time: 0.9 },
-    Python: { rps: 200000, time: 2.5 },
-    Ruby: { rps: 150000, time: 3.0 },
-    PHP: { rps: 250000, time: 2.0 }
-  },
-  json: {
-    'C++': { rps: 800000, time: 1.0 },
-    Rust: { rps: 700000, time: 1.1 },
-    Go: { rps: 600000, time: 1.2 },
-    Java: { rps: 500000, time: 1.5 },
-    'Node.js': { rps: 450000, time: 1.6 },
-    Python: { rps: 150000, time: 4.0 },
-    Ruby: { rps: 120000, time: 5.0 },
-    PHP: { rps: 180000, time: 3.5 }
-  },
-  db: {
-    'C++': { rps: 300000, time: 2.5 },
-    Rust: { rps: 280000, time: 2.6 },
-    Go: { rps: 250000, time: 3.0 },
-    Java: { rps: 200000, time: 3.5 },
-    'Node.js': { rps: 220000, time: 3.2 },
-    Python: { rps: 80000, time: 8.0 },
-    Ruby: { rps: 70000, time: 9.0 },
-    PHP: { rps: 90000, time: 7.5 }
-  },
-  compute: {
-    'C++': { rps: 500000, time: 1.5 },
-    Rust: { rps: 480000, time: 1.6 },
-    Go: { rps: 400000, time: 2.0 },
-    Java: { rps: 350000, time: 2.3 },
-    'Node.js': { rps: 50000, time: 15.0 },
-    Python: { rps: 30000, time: 25.0 },
-    Ruby: { rps: 25000, time: 30.0 },
-    PHP: { rps: 35000, time: 20.0 }
-  }
+  hello: [
+    { language: 'C++', rps: 1500000 },
+    { language: 'Rust', rps: 1200000 },
+    { language: 'Go', rps: 1000000 },
+    { language: 'Node.js', rps: 800000 },
+    { language: 'Java', rps: 700000 },
+    { language: 'Python', rps: 200000 },
+    { language: 'Ruby', rps: 150000 }
+  ],
+  json: [
+    { language: 'C++', rps: 800000 },
+    { language: 'Rust', rps: 700000 },
+    { language: 'Go', rps: 600000 },
+    { language: 'Node.js', rps: 450000 },
+    { language: 'Java', rps: 500000 },
+    { language: 'Python', rps: 150000 },
+    { language: 'Ruby', rps: 120000 }
+  ],
+  db: [
+    { language: 'C++', rps: 300000 },
+    { language: 'Rust', rps: 280000 },
+    { language: 'Go', rps: 250000 },
+    { language: 'Node.js', rps: 220000 },
+    { language: 'Java', rps: 200000 },
+    { language: 'Python', rps: 80000 },
+    { language: 'Ruby', rps: 70000 }
+  ],
+  compute: [
+    { language: 'C++', rps: 500000 },
+    { language: 'Rust', rps: 480000 },
+    { language: 'Go', rps: 400000 },
+    { language: 'Java', rps: 350000 },
+    { language: 'Node.js', rps: 50000 },
+    { language: 'Python', rps: 30000 },
+    { language: 'Ruby', rps: 25000 }
+  ]
 }
 
 const explanations = {
-  hello:
-    '简单的 Hello World HTTP 响应测试。C++ 和 Rust 在这个测试中展现出接近硬件的性能优势。Go 和 Node.js 表现也很优秀，因为它们的 HTTP 栈经过高度优化。Python 和 Ruby 由于解释器开销，性能相对较低。',
-  json: 'JSON 序列化/反序列化测试。这个测试考验语言的 JSON 处理能力。C++ 和 Rust 依然领先，但 Node.js 的表现也不错（V8 引擎优化）。Python 的标准库 json 模块性能尚可，但比编译型语言慢很多。',
-  db: '模拟数据库查询（连接池 + 查询）。这个测试更接近真实应用。性能差距缩小了，因为瓶颈主要在数据库 I/O 而非语言本身。但依然能看到编译型语言（C++、Rust、Go）的优势。',
-  compute:
-    'CPU 密集型计算（斐波那契数列）。这个测试充分暴露了 Node.js 的短板：单线程 + V8 编译优化不如静态语言。Python 和 Ruby 表现最差，因为它们是解释型语言，且 GIL 限制了多线程性能。C++ 和 Rust 几乎是唯一选择。'
+  hello: '简单的 HTTP 响应测试。C++ 和 Rust 展现出接近硬件的性能优势。Go 和 Node.js 表现优秀（HTTP 栈经过高度优化）。Python 和 Ruby 由于解释器开销，性能相对较低。',
+  json: 'JSON 序列化测试。C++ 和 Rust 依然领先，Node.js 的 V8 引擎优化让它的表现也不错。Python 标准库 json 模块性能尚可，但比编译型语言慢很多。',
+  db: '模拟数据库查询。性能差距缩小，因为瓶颈主要在数据库 I/O。但编译型语言（C++、Rust、Go）的优势依然明显。',
+  compute: 'CPU 密集型计算（斐波那契）。Node.js 的短板暴露：单线程 + V8 优化不如静态语言。Python 和 Ruby 表现最差（解释型语言 + GIL 限制）。'
 }
 
 const currentResults = ref([])
@@ -129,16 +124,10 @@ const runBenchmark = () => {
   isRunning.value = true
   currentResults.value = []
 
-  // 模拟测试延迟
   setTimeout(() => {
-    const data = benchmarkData[selectedScenario.value]
-    currentResults.value = Object.entries(data).map(([language, stats]) => ({
-      language,
-      rps: stats.rps,
-      time: stats.time
-    }))
+    currentResults.value = benchmarkData[selectedScenario.value]
     isRunning.value = false
-  }, 1000)
+  }, 800)
 }
 
 const getBarWidth = (rps) => {
@@ -147,8 +136,8 @@ const getBarWidth = (rps) => {
 }
 
 const getBarClass = (rps) => {
-  if (rps >= 800000) return 'bar-high'
-  if (rps >= 300000) return 'bar-medium'
+  if (rps >= 500000) return 'bar-high'
+  if (rps >= 200000) return 'bar-medium'
   return 'bar-low'
 }
 
@@ -162,69 +151,106 @@ const getCurrentExplanation = () => {
   return explanations[selectedScenario.value]
 }
 
-// 初始运行一次
 runBenchmark()
 </script>
 
 <style scoped>
 .performance-benchmark-demo {
-  background: var(--vp-c-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
-.benchmark-controls {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.benchmark-controls h4 {
-  margin: 0;
-  color: var(--vp-c-brand);
-  font-size: 1.2rem;
-}
-
-.control-group {
+.demo-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.control-group label {
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.intro-text {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+}
+
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+.control-panel {
+  background: var(--vp-c-bg);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scenario-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.scenario-selector label {
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
 }
 
-.control-group select {
-  padding: 0.5rem 1rem;
+.scenario-selector select {
+  padding: 0.4rem 0.75rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  background: var(--vp-c-bg);
+  background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-1);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   cursor: pointer;
 }
 
 .run-btn {
-  padding: 0.5rem 1.5rem;
+  padding: 0.4rem 0.8rem;
   background: var(--vp-c-brand);
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s;
+  font-size: 0.85rem;
 }
 
 .run-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  background: var(--vp-c-brand-dark);
 }
 
 .run-btn:disabled {
@@ -233,68 +259,47 @@ runBenchmark()
 }
 
 .results-panel {
-  margin-bottom: 2rem;
+  background: var(--vp-c-bg);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
 
-.results-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+.panel-header {
+  margin-bottom: 0.75rem;
 }
 
-.results-header h5 {
-  margin: 0;
+.panel-title {
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
-  font-size: 1.1rem;
 }
 
-.legend {
-  display: flex;
-  gap: 1rem;
-  font-size: 0.85rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.chart-container {
+.bars-container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.chart-bar-wrapper {
+.bar-wrapper {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .bar-label {
-  min-width: 80px;
+  min-width: 70px;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
-  font-size: 0.9rem;
 }
 
-.bar-container {
+.bar-track {
   flex: 1;
-  height: 40px;
+  height: 24px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
-  position: relative;
 }
 
 .bar-fill {
@@ -302,87 +307,35 @@ runBenchmark()
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 1rem;
-  transition: width 0.8s ease-out;
+  padding-right: 0.5rem;
+  transition: width 0.5s ease;
   color: white;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.75rem;
 }
 
 .bar-high {
-  background: linear-gradient(90deg, #f59e0b, #d97706);
+  background: var(--vp-c-green-1);
 }
 
 .bar-medium {
-  background: linear-gradient(90deg, #10b981, #059669);
+  background: var(--vp-c-yellow-1);
 }
 
 .bar-low {
-  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  background: var(--vp-c-brand-1);
 }
 
-.bar-enter-active,
-.bar-leave-active {
-  transition: all 0.5s ease;
-}
-
-.bar-enter-from {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-.bar-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.explanation-panel {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  border-left: 4px solid var(--vp-c-brand);
-}
-
-.explanation-panel h5 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: var(--vp-c-brand);
-  font-size: 1.1rem;
-}
-
-.explanation-content p {
-  margin: 0;
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .benchmark-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .control-group {
-    flex: 1;
-  }
-
-  .run-btn {
-    width: 100%;
-  }
-
-  .results-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .bar-label {
-    min-width: 60px;
-    font-size: 0.8rem;
-  }
-
-  .bar-value {
-    font-size: 0.8rem;
-  }
+.info-box .icon {
+  margin-right: 0.25rem;
 }
 </style>

@@ -1,8 +1,13 @@
 <template>
   <div class="hash-vs-history-demo">
     <div class="demo-header">
-      <h4>Hash vs History 模式对比</h4>
-      <p class="demo-desc">直观对比两种主流路由模式的URL变化、浏览器行为和兼容性</p>
+      <span class="icon">⚖️</span>
+      <span class="title">路由模式对比</span>
+      <span class="subtitle">Hash vs History</span>
+    </div>
+
+    <div class="intro-text">
+      想象你在<span class="highlight">邮寄包裹</span>：Hash模式像是把地址写在<span class="highlight">便签条</span>上（#后面），History模式则是直接写在<span class="highlight">信封</span>上。前者简单但不够正式，后者美观但需要服务端配合。
     </div>
 
     <div class="comparison-container">
@@ -47,11 +52,7 @@
 
         <div class="characteristics">
           <div class="char-item">
-            <span class="char-label">URL格式</span>
-            <code>/#/path</code>
-          </div>
-          <div class="char-item">
-            <span class="char-label">浏览器兼容</span>
+            <span class="char-label">兼容性</span>
             <span class="badge good">IE8+</span>
           </div>
           <div class="char-item">
@@ -106,11 +107,7 @@
 
         <div class="characteristics">
           <div class="char-item">
-            <span class="char-label">URL格式</span>
-            <code>/path</code>
-          </div>
-          <div class="char-item">
-            <span class="char-label">浏览器兼容</span>
+            <span class="char-label">兼容性</span>
             <span class="badge medium">IE10+</span>
           </div>
           <div class="char-item">
@@ -125,26 +122,9 @@
       </div>
     </div>
 
-    <div class="summary-section">
-      <h4>如何选择？</h4>
-      <div class="decision-tree">
-        <div class="decision-item">
-          <span class="decision-q">需要支持IE8/9？</span>
-          <span class="decision-a">→ 选 Hash 模式</span>
-        </div>
-        <div class="decision-item">
-          <span class="decision-q">重视SEO？</span>
-          <span class="decision-a">→ 选 History 模式</span>
-        </div>
-        <div class="decision-item">
-          <span class="decision-q">无法修改服务端配置？</span>
-          <span class="decision-a">→ 选 Hash 模式</span>
-        </div>
-        <div class="decision-item">
-          <span class="decision-q">追求URL美观？</span>
-          <span class="decision-a">→ 选 History 模式</span>
-        </div>
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>选择建议：</strong>现代项目优先选History模式（URL美观、SEO友好），如果需要兼容老浏览器或无法修改服务端配置，再用Hash模式。
     </div>
   </div>
 </template>
@@ -182,47 +162,59 @@ const getPageContent = (path) => {
 
 <style scoped>
 .hash-vs-history-demo {
-  padding: 20px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  margin: 20px 0;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 8px 0;
-  color: var(--vp-c-text-1);
-}
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
-.demo-desc {
-  margin: 0;
+.intro-text {
+  font-size: 0.9rem;
   color: var(--vp-c-text-2);
-  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+}
+
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
 }
 
 .comparison-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mode-column {
   background: var(--vp-c-bg);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .mode-header {
-  padding: 16px;
+  padding: 0.75rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
 }
 
 .mode-header.hash {
@@ -236,12 +228,12 @@ const getPageContent = (path) => {
 }
 
 .mode-icon {
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .mode-title {
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
@@ -251,15 +243,15 @@ const getPageContent = (path) => {
 
 .browser-toolbar {
   background: var(--vp-c-bg-soft);
-  padding: 10px 12px;
+  padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
 }
 
 .window-controls {
   display: flex;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .dot {
@@ -275,10 +267,10 @@ const getPageContent = (path) => {
 .address-bar {
   flex: 1;
   background: var(--vp-c-bg);
-  padding: 5px 10px;
+  padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  font-size: 12px;
-  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.7rem;
+  font-family: monospace;
 }
 
 .protocol, .host { color: var(--vp-c-text-3); }
@@ -287,21 +279,21 @@ const getPageContent = (path) => {
 
 .browser-viewport {
   display: flex;
-  min-height: 160px;
+  min-height: 120px;
 }
 
 .nav-bar {
-  width: 80px;
+  width: 60px;
   background: var(--vp-c-bg-soft);
-  padding: 12px 0;
+  padding: 0.5rem 0;
   border-right: 1px solid var(--vp-c-divider);
 }
 
 .nav-item {
   display: block;
-  padding: 8px 12px;
+  padding: 0.5rem 0.5rem;
   color: var(--vp-c-text-2);
-  font-size: 13px;
+  font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -319,31 +311,31 @@ const getPageContent = (path) => {
 
 .page-content {
   flex: 1;
-  padding: 16px;
+  padding: 0.75rem;
 }
 
 .page-content h3 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
 }
 
 .page-content p {
   margin: 0;
-  font-size: 13px;
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .characteristics {
-  padding: 16px;
+  padding: 0.75rem;
 }
 
 .char-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
@@ -352,21 +344,14 @@ const getPageContent = (path) => {
 }
 
 .char-label {
-  font-size: 13px;
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
 }
 
-.char-item code {
-  background: var(--vp-c-bg-soft);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 12px;
-}
-
 .badge {
-  padding: 2px 8px;
+  padding: 0.125rem 0.5rem;
   border-radius: 12px;
-  font-size: 11px;
+  font-size: 0.65rem;
   font-weight: 500;
 }
 
@@ -390,56 +375,20 @@ const getPageContent = (path) => {
   color: #ff5f56;
 }
 
-.summary-section {
-  background: var(--vp-c-bg);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 24px;
-}
-
-.summary-section h4 {
-  margin: 0 0 16px 0;
-  color: var(--vp-c-text-1);
-  font-size: 16px;
-}
-
-.decision-tree {
-  display: grid;
-  gap: 12px;
-}
-
-.decision-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 16px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border-left: 3px solid var(--vp-c-brand);
-}
-
-.decision-q {
-  font-size: 14px;
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  flex: 1;
+  margin-top: 1rem;
 }
 
-.decision-a {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--vp-c-brand);
-  white-space: nowrap;
-}
+.info-box .icon { margin-right: 0.25rem; }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .comparison-container {
     grid-template-columns: 1fr;
-  }
-
-  .decision-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
   }
 }
 </style>

@@ -673,8 +673,14 @@ export default defineConfig({
                 { text: '系统缓存设计', link: '/zh-cn/appendix/cache-design' },
                 { text: '消息队列设计', link: '/zh-cn/appendix/queue-design' },
                 { text: '鉴权原理与实战', link: '/zh-cn/appendix/auth-design' },
-                { text: '网关与反向代理', link: '/zh-cn/appendix/gateway-proxy' },
-                { text: '负载均衡策略', link: '/zh-cn/appendix/load-balancing' },
+                {
+                  text: '网关与反向代理',
+                  link: '/zh-cn/appendix/gateway-proxy'
+                },
+                {
+                  text: '负载均衡策略',
+                  link: '/zh-cn/appendix/load-balancing'
+                },
                 { text: '埋点设计', link: '/zh-cn/appendix/tracking-design' },
                 { text: '线上运维', link: '/zh-cn/appendix/operations' }
               ]

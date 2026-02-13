@@ -1,302 +1,372 @@
-<script setup>
-import { ref, computed } from 'vue'
-
-const users = ref([
-  { id: 101, name: '张三', score: 100 },
-  { id: 102, name: '李四', score: 85 },
-  { id: 103, name: '王五', score: 120 },
-  { id: 104, name: '赵六', score: 90 }
-])
-
-const commands = [
-  {
-    label: '查询所有用户',
-    sql: 'SELECT * FROM users;',
-    action: 'read_all'
-  },
-  {
-    label: '查询分数 > 90',
-    sql: 'SELECT * FROM users WHERE score > 90;',
-    action: 'read_filter'
-  },
-  {
-    label: '给张三加 10 分',
-    sql: 'UPDATE users SET score = score + 10 WHERE name = "张三";',
-    action: 'update_add'
-  }
-]
-
-const currentSql = ref('')
-const terminalOutput = ref([])
-const displayedUsers = ref([...users.value])
-const isAnimating = ref(false)
-
-const execute = async (cmd) => {
-  if (isAnimating.value) return
-  isAnimating.value = true
-  currentSql.value = cmd.sql
-
-  // Reset display for read operations
-  if (cmd.action.startsWith('read')) {
-    displayedUsers.value = [] // clear first
-    await new Promise((r) => setTimeout(r, 300))
-  }
-
-  terminalOutput.value.push({ type: 'cmd', text: `> ${cmd.sql}` })
-
-  await new Promise((r) => setTimeout(r, 500))
-
-  if (cmd.action === 'read_all') {
-    displayedUsers.value = [...users.value]
-    terminalOutput.value.push({
-      type: 'result',
-      text: `Returned ${users.value.length} rows.`
-    })
-  } else if (cmd.action === 'read_filter') {
-    displayedUsers.value = users.value.filter((u) => u.score > 90)
-    terminalOutput.value.push({
-      type: 'result',
-      text: `Returned ${displayedUsers.value.length} rows.`
-    })
-  } else if (cmd.action === 'update_add') {
-    const target = users.value.find((u) => u.name === '张三')
-    if (target) {
-      target.score += 10
-      displayedUsers.value = [...users.value] // refresh display
-      terminalOutput.value.push({ type: 'success', text: `Updated 1 row.` })
-    }
-  }
-
-  // Scroll terminal to bottom
-  setTimeout(() => {
-    const term = document.querySelector('.sql-terminal-body')
-    if (term) term.scrollTop = term.scrollHeight
-  }, 100)
-
-  isAnimating.value = false
-}
-</script>
-
 <template>
-  <div class="sql-playground">
-    <div class="left-panel">
-      <div class="panel-header">数据库表: users</div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>score</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="u in displayedUsers" :key="u.id" class="fade-in">
-              <td>{{ u.id }}</td>
-              <td>{{ u.name }}</td>
-              <td>
-                <span
-                  :class="{ 'score-up': u.name === '张三' && u.score > 100 }"
-                  >{{ u.score }}</span
-                >
-              </td>
-            </tr>
-            <tr v-if="displayedUsers.length === 0">
-              <td colspan="3" class="empty-hint">（无数据或正在查询...）</td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="sql-playground-demo">
+    <div class="demo-header">
+      <span class="icon">💻</span>
+      <span class="title">SQL 练习场</span>
+      <span class="subtitle">体验 SQL 的 CRUD 操作</span>
+    </div>
+
+    <div class="intro-text">
+      SQL 就像和数据库<span class="highlight">对话</span>：你说"给我找所有年龄大于 25 的用户"，数据库就会执行查询并返回结果。即使不会编程，也能很快上手。
+    </div>
+
+    <div class="playground-container">
+      <div class="operation-selector">
+        <button
+          v-for="op in operations"
+          :key="op.key"
+          class="op-btn"
+          :class="{ active: currentOp === op.key }"
+          @click="currentOp = op.key"
+        >
+          <span class="op-icon">{{ op.icon }}</span>
+          <span class="op-name">{{ op.name }}</span>
+          <span class="op-keyword">{{ op.keyword }}</span>
+        </button>
+      </div>
+
+      <div class="content-area">
+        <div class="example-section">
+          <div class="section-title">📝 示例 SQL</div>
+          <div class="code-block">
+            <pre><code>{{ currentOperation.example }}</code></pre>
+          </div>
+        </div>
+
+        <div class="explanation-section">
+          <div class="section-title">💡 逐词翻译</div>
+          <div class="explanation-list">
+            <div v-for="(item, i) in currentOperation.explanation" :key="i" class="explanation-item">
+              <span class="keyword">{{ item.keyword }}</span>
+              <span class="meaning">{{ item.meaning }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <div class="section-title">📊 返回结果</div>
+        <div class="result-table">
+          <div class="table-header">
+            <div v-for="col in currentOperation.result.columns" :key="col" class="header-cell">
+              {{ col }}
+            </div>
+          </div>
+          <div class="table-body">
+            <div v-for="(row, i) in currentOperation.result.rows" :key="i" class="table-row">
+              <div v-for="(cell, j) in row" :key="j" class="table-cell">
+                {{ cell }}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="right-panel">
-      <div class="panel-header">SQL 终端</div>
-      <div class="sql-terminal-body">
-        <div v-for="(line, i) in terminalOutput" :key="i" :class="line.type">
-          {{ line.text }}
-        </div>
-        <div class="cursor-line">_</div>
-      </div>
+    <div class="warning-box" v-if="currentOperation.warning">
+      <span class="icon">⚠️</span>
+      <span v-html="currentOperation.warning"></span>
+    </div>
 
-      <div class="actions">
-        <div class="action-label">常用指令:</div>
-        <div class="btn-group">
-          <button
-            v-for="cmd in commands"
-            :key="cmd.label"
-            @click="execute(cmd)"
-            :disabled="isAnimating"
-            class="cmd-btn"
-          >
-            {{ cmd.label }}
-          </button>
-        </div>
-        <div class="current-sql" v-if="currentSql">
-          执行中: <code>{{ currentSql }}</code>
-        </div>
-      </div>
+    <div class="info-box">
+      <span class="icon">🎯</span>
+      <strong>核心概念：</strong>CRUD 涵盖了所有数据管理的基本需求。无论是淘宝、微信、抖音，它们的数据库操作本质上就是这四种：增、删、改、查。
     </div>
   </div>
 </template>
 
+<script setup>
+import { ref, computed } from 'vue'
+
+const currentOp = ref('SELECT')
+
+const operations = {
+  SELECT: {
+    key: 'SELECT',
+    name: '查询',
+    icon: '🔍',
+    keyword: 'SELECT ... FROM',
+    example: "SELECT name, age FROM users WHERE age > 25;",
+    explanation: [
+      { keyword: 'SELECT name, age', meaning: '选择 name 和 age 这两列' },
+      { keyword: 'FROM users', meaning: '从 users 这张表' },
+      { keyword: 'WHERE age > 25', meaning: '在 age 大于 25 的条件下' }
+    ],
+    result: {
+      columns: ['name', 'age'],
+      rows: [
+        ['李四', 30],
+        ['王五', 28]
+      ]
+    }
+  },
+  INSERT: {
+    key: 'INSERT',
+    name: '插入',
+    icon: '➕',
+    keyword: 'INSERT INTO',
+    example: "INSERT INTO users (name, age, city) VALUES ('赵六', 35, '广州');",
+    explanation: [
+      { keyword: 'INSERT INTO users', meaning: '插入到 users 表' },
+      { keyword: '(name, age, city)', meaning: '这几列' },
+      { keyword: "VALUES ('赵六', 35, '广州')", meaning: '值分别是...' }
+    ],
+    result: {
+      columns: ['结果'],
+      rows: [['✅ 成功插入 1 行']]
+    },
+    warning: '<strong>注意：</strong>字符串要用单引号包围，数字不需要引号。'
+  },
+  UPDATE: {
+    key: 'UPDATE',
+    name: '更新',
+    icon: '✏️',
+    keyword: 'UPDATE ... SET',
+    example: "UPDATE users SET age = age + 1 WHERE city = '北京';",
+    explanation: [
+      { keyword: 'UPDATE users', meaning: '更新 users 表' },
+      { keyword: 'SET age = age + 1', meaning: '把 age 设为 age + 1' },
+      { keyword: "WHERE city = '北京'", meaning: '只修改城市为北京的行' }
+    ],
+    result: {
+      columns: ['结果'],
+      rows: [['✅ 成功更新 2 行']]
+    },
+    warning: '<strong>重要警告：</strong>如果忘记写 WHERE，会修改<strong>所有行</strong>！这是最危险的操作之一。'
+  },
+  DELETE: {
+    key: 'DELETE',
+    name: '删除',
+    icon: '🗑️',
+    keyword: 'DELETE FROM',
+    example: 'DELETE FROM users WHERE user_id = 4;',
+    explanation: [
+      { keyword: 'DELETE FROM users', meaning: '从 users 表删除' },
+      { keyword: 'WHERE user_id = 4', meaning: '只删除 user_id 为 4 的行' }
+    ],
+    result: {
+      columns: ['结果'],
+      rows: [['✅ 成功删除 1 行']]
+    },
+    warning: '<strong>重要警告：</strong>和 UPDATE 一样，如果忘记写 WHERE，会删除<strong>整张表</strong>的所有数据！'
+  }
+}
+
+const currentOperation = computed(() => operations[currentOp.value])
+</script>
+
 <style scoped>
-.sql-playground {
-  display: flex;
-  border: 1px solid #333;
+.sql-playground-demo {
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background: #1e1e1e;
-  color: #ccc;
-  font-family: 'Consolas', monospace;
-  overflow: hidden;
-  min-height: 350px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
 }
-.left-panel {
-  flex: 1;
-  border-right: 1px solid #444;
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+
+.intro-text {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+}
+
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+.operation-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .operation-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.op-btn {
   display: flex;
   flex-direction: column;
-}
-.right-panel {
-  flex: 1.2;
-  display: flex;
-  flex-direction: column;
-  background: #252526;
-}
-.panel-header {
-  background: #333;
-  padding: 8px 15px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-  border-bottom: 1px solid #444;
-}
-
-.table-container {
-  padding: 15px;
-  flex: 1;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-th,
-td {
-  border: 1px solid #444;
-  padding: 6px 10px;
-  text-align: left;
-}
-th {
-  color: #569cd6;
-}
-td {
-  color: #ce9178;
-}
-td:first-child {
-  color: #b5cea8;
-} /* id color */
-
-.sql-terminal-body {
-  flex: 1;
-  padding: 15px;
-  font-size: 13px;
-  overflow-y: auto;
-  max-height: 200px;
-}
-.cmd {
-  color: #fff;
-  margin-top: 5px;
-}
-.result {
-  color: #aaa;
-  margin-bottom: 5px;
-}
-.success {
-  color: #67c23a;
-  margin-bottom: 5px;
-}
-.cursor-line {
-  animation: blink 1s infinite;
-}
-
-.actions {
-  padding: 15px;
-  background: #2d2d2d;
-  border-top: 1px solid #444;
-}
-.action-label {
-  font-size: 12px;
-  margin-bottom: 8px;
-  color: #999;
-}
-.btn-group {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.cmd-btn {
-  background: #0e639c;
-  border: none;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 3px;
+  align-items: center;
+  gap: 4px;
+  padding: 0.75rem 0.5rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 12px;
-  transition: background 0.2s;
-}
-.cmd-btn:hover {
-  background: #1177bb;
-}
-.cmd-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  transition: all 0.2s;
 }
 
-.current-sql {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #888;
-}
-.current-sql code {
-  color: #dcdcaa;
-  background: transparent;
+.op-btn:hover {
+  background: var(--vp-c-bg-soft);
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease-in;
+.op-btn.active {
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand);
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+.op-icon { font-size: 1.25rem; }
+.op-name { font-size: 0.8rem; font-weight: 500; }
+.op-keyword { font-size: 0.65rem; color: var(--vp-c-text-3); font-family: monospace; }
+
+.content-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .content-area {
+    grid-template-columns: 1fr;
   }
 }
 
-.score-up {
-  color: #67c23a;
-  font-weight: bold;
-  animation: pulse 0.5s;
+.example-section, .explanation-section {
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
 }
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.4);
-  }
-  100% {
-    transform: scale(1);
-  }
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-1);
 }
-.empty-hint {
+
+.code-block {
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  color: var(--vp-c-brand-1);
+  line-height: 1.5;
+}
+
+.explanation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.explanation-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.keyword {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.meaning {
+  color: var(--vp-c-text-2);
+  line-height: 1.4;
+}
+
+.result-section {
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  margin-bottom: 0.75rem;
+}
+
+.result-table {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  background: var(--vp-c-bg-soft);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.header-cell {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
   text-align: center;
-  color: #666;
-  font-style: italic;
-  padding: 20px;
-  border: none;
 }
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
+  display: grid;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-1);
+  text-align: center;
+}
+
+.warning-box {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+
+.warning-box .icon {
+  margin-right: 0.25rem;
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+
+.info-box .icon { margin-right: 0.25rem; }
 </style>

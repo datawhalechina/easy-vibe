@@ -1,121 +1,61 @@
 <template>
   <div class="mobx-reactivity-demo">
     <div class="demo-header">
-      <h4>MobX 响应式原理演示</h4>
-      <p class="hint">体验 MobX 的自动依赖追踪机制，理解 Observable、Action 和 Reaction 的关系</p>
+      <span class="icon">⚡</span>
+      <span class="title">MobX 响应式原理</span>
+      <span class="subtitle">自动追踪依赖的魔法</span>
     </div>
 
-    <!-- 可视化图表 -->
-    <div class="visualization-area">
-      <div class="flow-diagram">
-        <!-- Observable -->
-        <div class="box-container observable-side">
-          <div class="box-title">Observable (可观察状态)</div>
-          <div class="state-boxes">
-            <div
-              v-for="item in todos"
-              :key="item.id"
-              class="state-item"
-              :class="{ completed: item.completed, changed: recentlyChanged === item.id }"
-            >
-              <span class="item-text">{{ item.text }}</span>
-              <span class="item-status">{{ item.completed ? '✓' : '○' }}</span>
-            </div>
-          </div>
+    <div class="intro-text">
+      想象你在<span class="highlight">魔术表演</span>现场：魔术师（Observable）改变物品，所有盯着看的观众（Reaction）都会自动注意到变化，不需要一个个去通知他们。
+    </div>
+
+    <div class="demo-content">
+      <div class="state-display">
+        <div class="state-header">
+          <span class="state-icon">📦</span>
+          <span class="state-title">Observable 状态</span>
         </div>
-
-        <!-- 连接箭头 -->
-        <div class="connection-area">
-          <div class="arrow-bidirectional">
-            <div class="arrow-label top">追踪依赖</div>
-            <div class="arrow-line">
-              <div class="particles">
-                <span v-for="i in 3" :key="i" class="particle">●</span>
-              </div>
-            </div>
-            <div class="arrow-label bottom">触发更新</div>
-          </div>
-        </div>
-
-        <!-- Reaction -->
-        <div class="box-container reaction-side">
-          <div class="box-title">Reaction (响应/副作用)</div>
-          <div class="reactions-list">
-            <div class="reaction-item computed">
-              <div class="reaction-header">
-                <span class="reaction-icon">🧮</span>
-                <span class="reaction-name">Computed: 待办统计</span>
-              </div>
-              <div class="reaction-value">
-                共 {{ todos.length }} 项，已完成 {{ completedCount }} 项
-              </div>
-            </div>
-
-            <div class="reaction-item autorun">
-              <div class="reaction-header">
-                <span class="reaction-icon">🔄</span>
-                <span class="reaction-name">Autorun: 自动保存</span>
-              </div>
-              <div class="reaction-status" :class="{ active: autoSaveActive }">
-                {{ autoSaveActive ? '💾 已自动保存到 localStorage' : '⏸️ 等待变更...' }}
-              </div>
-            </div>
-
-            <div class="reaction-item reaction">
-              <div class="reaction-header">
-                <span class="reaction-icon">👀</span>
-                <span class="reaction-name">Reaction: 变更日志</span>
-              </div>
-              <div class="reaction-log">
-                <div v-for="(log, index) in changeLogs" :key="index" class="log-entry">
-                  <span class="log-time">{{ log.time }}</span>
-                  <span class="log-action">{{ log.action }}</span>
-                </div>
-              </div>
-            </div>
+        <div class="todo-list">
+          <div
+            v-for="todo in todos"
+            :key="todo.id"
+            class="todo-item"
+            :class="{ completed: todo.completed, changed: recentlyChanged === todo.id }"
+            @click="toggleTodo(todo.id)"
+          >
+            <span class="todo-status">{{ todo.completed ? '✓' : '○' }}</span>
+            <span class="todo-text">{{ todo.text }}</span>
           </div>
         </div>
       </div>
+
+      <div class="reaction-display">
+        <div class="reaction-header">
+          <span class="reaction-icon">🔄</span>
+          <span class="reaction-title">自动响应</span>
+        </div>
+        <div class="reaction-stats">
+          <div class="stat-item">
+            <span class="stat-label">总计：</span>
+            <span class="stat-value">{{ todos.length }} 项</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">已完成：</span>
+            <span class="stat-value completed">{{ completedCount }} 项</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="interaction-area">
+        <input v-model="newTodoText" placeholder="输入待办事项..." @keyup.enter="addTodo" class="todo-input" />
+        <button @click="addTodo" class="add-btn">➕ 添加</button>
+      </div>
     </div>
 
-    <!-- Action 区域 -->
-    <div class="action-area">
-      <div class="action-title">🎮 交互控制台 (Action)</div>
-      <div class="action-controls">
-        <div class="input-group">
-          <input v-model="newTodoText" placeholder="输入待办事项..." @keyup.enter="addTodo" />
-          <button @click="addTodo">添加</button>
-        </div>
-        <div class="quick-actions">
-          <button @click="completeAll">全部完成</button>
-          <button @click="clearCompleted">清除已完成</button>
-          <button @click="reset">重置</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 说明区域 -->
-    <div class="explanation-area">
-      <div class="explanation-card">
-        <h5>📦 Observable (可观察状态)</h5>
-        <p>使用 <code>observable</code> 或类属性装饰器 <code>@observable</code> 定义的状态。当状态变化时，所有依赖它的 Reaction 会自动重新执行。</p>
-      </div>
-
-      <div class="explanation-card">
-        <h5>⚡ Action (动作)</h5>
-        <p>使用 <code>action</code> 或 <code>@action</code> 装饰器标记的方法。用于修改 Observable 状态。Action 会批量处理变更通知，避免中间状态的重复渲染。</p>
-      </div>
-
-      <div class="explanation-card"
->
-        <h5>🔄 Reaction (响应)</h5>
-        <p>当 Observable 状态变化时自动执行的副作用。包括：</p>
-        <ul>
-          <li><code>autorun</code>: 自动追踪依赖并执行</li>
-          <li><code>reaction</code>: 对特定数据变化作出反应</li>
-          <li><code>when</code>: 条件满足时执行一次</li>
-        </ul>
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>MobX 自动追踪状态和响应的关系，状态变化时自动触发相关更新。就像魔术，你只管改变数据，UI 会自动更新。
     </div>
   </div>
 </template>
@@ -123,7 +63,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 
-// 状态
 const todos = ref([
   { id: 1, text: '学习 MobX', completed: false },
   { id: 2, text: '理解响应式原理', completed: true }
@@ -131,15 +70,11 @@ const todos = ref([
 
 const newTodoText = ref('')
 const recentlyChanged = ref(null)
-const autoSaveActive = ref(false)
-const changeLogs = ref([])
 
-// 计算属性（模拟 MobX 的 computed）
 const completedCount = computed(() => {
   return todos.value.filter(t => t.completed).length
 })
 
-// 方法（模拟 MobX 的 action）
 const addTodo = () => {
   if (!newTodoText.value.trim()) return
 
@@ -156,8 +91,6 @@ const addTodo = () => {
   setTimeout(() => {
     recentlyChanged.value = null
   }, 500)
-
-  addLog('添加待办', newTodo.text)
 }
 
 const toggleTodo = (id) => {
@@ -168,472 +101,225 @@ const toggleTodo = (id) => {
     setTimeout(() => {
       recentlyChanged.value = null
     }, 500)
-    addLog(todo.completed ? '完成待办' : '取消完成', todo.text)
   }
 }
-
-const completeAll = () => {
-  todos.value.forEach(t => t.completed = true)
-  addLog('全部完成', `${todos.value.length} 项`)
-}
-
-const clearCompleted = () => {
-  const count = todos.value.filter(t => t.completed).length
-  todos.value = todos.value.filter(t => !t.completed)
-  addLog('清除已完成', `${count} 项`)
-}
-
-const reset = () => {
-  todos.value = [
-    { id: 1, text: '学习 MobX', completed: false },
-    { id: 2, text: '理解响应式原理', completed: true }
-  ]
-  changeLogs.value = []
-  addLog('重置', '恢复初始状态')
-}
-
-const addLog = (action, detail) => {
-  const now = new Date()
-  const time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`
-  changeLogs.value.unshift({ time, action, detail })
-  if (changeLogs.value.length > 10) {
-    changeLogs.value = changeLogs.value.slice(0, 10)
-  }
-}
-
-// 模拟 autorun - 自动保存
-watch(todos, () => {
-  autoSaveActive.value = true
-  setTimeout(() => {
-    autoSaveActive.value = false
-  }, 1000)
-}, { deep: true })
 </script>
 
 <style scoped>
 .mobx-reactivity-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 20px;
   background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 8px 0;
-  color: var(--vp-c-text-1);
+.demo-header .icon {
+  font-size: 1.25rem;
 }
 
-.hint {
-  margin: 0;
-  font-size: 14px;
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
-.visualization-area {
+.intro-text {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 6px;
 }
 
-.flow-diagram {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 20px;
-  align-items: start;
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
 }
 
-@media (max-width: 968px) {
-  .flow-diagram {
-    grid-template-columns: 1fr;
-  }
-
-  .connection-area {
-    transform: rotate(90deg);
-    padding: 40px 0 !important;
-  }
+.demo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.box-container {
-  background: var(--vp-c-bg-soft);
+.state-display,
+.reaction-display {
+  background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 16px;
+  padding: 1rem;
 }
 
-.box-container.observable-side {
-  border-color: #ff6b6b;
-}
-
-.box-container.reaction-side {
-  border-color: #4ecdc4;
-}
-
-.box-title {
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
+.state-header,
+.reaction-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.state-boxes {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.state-icon,
+.reaction-icon {
+  font-size: 1.25rem;
 }
 
-.state-item {
+.state-title,
+.reaction-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--vp-c-bg-soft);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.state-item:hover {
-  border-color: var(--vp-c-brand);
+.todo-item:hover {
+  background: var(--vp-c-bg);
   transform: translateX(4px);
 }
 
-.state-item.completed {
+.todo-item.completed {
   background: #f0fdf4;
-  border-color: #86efac;
 }
 
-.state-item.changed {
-  animation: highlight 0.5s ease;
-}
-
-@keyframes highlight {
-  0%, 100% { background: var(--vp-c-bg); }
-  50% { background: #fef3c7; }
-}
-
-.item-text {
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-}
-
-.state-item.completed .item-text {
+.todo-item.completed .todo-text {
   text-decoration: line-through;
   color: var(--vp-c-text-3);
 }
 
-.item-status {
-  font-size: 14px;
-  color: #22c55e;
+.todo-item.changed {
+  animation: highlight 0.5s ease;
 }
 
-.connection-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 0;
+@keyframes highlight {
+  0%, 100% { background: var(--vp-c-bg-soft); }
+  50% { background: #fef3c7; }
 }
 
-.arrow-bidirectional {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.arrow-label {
-  font-size: 11px;
-  color: var(--vp-c-text-3);
-  padding: 4px 8px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  white-space: nowrap;
-}
-
-.arrow-label.top {
-  margin-bottom: 4px;
-}
-
-.arrow-label.bottom {
-  margin-top: 4px;
-}
-
-.arrow-line {
-  position: relative;
-  width: 3px;
-  height: 80px;
-  background: linear-gradient(to bottom, #ff6b6b, #4ecdc4);
-  border-radius: 2px;
-}
-
-.particles {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 10px 0;
-}
-
-.particle {
-  font-size: 8px;
+.todo-status {
+  font-size: 1.25rem;
   color: var(--vp-c-brand);
-  animation: flow 1.5s linear infinite;
-  opacity: 0;
 }
 
-.particle:nth-child(1) { animation-delay: 0s; }
-.particle:nth-child(2) { animation-delay: 0.5s; }
-.particle:nth-child(3) { animation-delay: 1s; }
-
-@keyframes flow {
-  0% {
-    opacity: 0;
-    transform: translateY(0);
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-}
-
-.reactions-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.reaction-item {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 12px;
-  transition: all 0.3s ease;
-}
-
-.reaction-item.computed {
-  border-left: 4px solid #8b5cf6;
-}
-
-.reaction-item.autorun {
-  border-left: 4px solid #f59e0b;
-}
-
-.reaction-item.reaction {
-  border-left: 4px solid #ec4899;
-}
-
-.reaction-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
-}
-
-.reaction-icon {
-  font-size: 14px;
-}
-
-.reaction-name {
-  font-weight: 600;
-  font-size: 12px;
+.todo-text {
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
 }
 
-.reaction-value {
-  font-size: 13px;
+.reaction-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.stat-label {
   color: var(--vp-c-text-2);
-  font-family: monospace;
-  padding: 4px 8px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 4px;
 }
 
-.reaction-status {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-  padding: 4px 8px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 4px;
+.stat-value {
+  font-weight: 600;
+  color: var(--vp-c-brand);
 }
 
-.reaction-status.active {
+.stat-value.completed {
   color: #22c55e;
-  background: #dcfce7;
 }
 
-.reaction-log {
-  max-height: 100px;
-  overflow-y: auto;
-}
-
-.log-entry {
+.interaction-area {
   display: flex;
-  gap: 8px;
-  font-size: 11px;
-  padding: 3px 0;
-  border-bottom: 1px solid var(--vp-c-divider);
+  gap: 0.75rem;
 }
 
-.log-entry:last-child {
-  border-bottom: none;
-}
-
-.log-time {
-  color: var(--vp-c-text-3);
-  font-family: monospace;
-}
-
-.log-action {
-  color: var(--vp-c-text-2);
-}
-
-.action-area {
-  margin-top: 20px;
-  padding: 16px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-}
-
-.action-title {
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin-bottom: 12px;
-  font-size: 14px;
-}
-
-.action-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.input-group {
-  display: flex;
-  gap: 8px;
-}
-
-.input-group input {
+.todo-input {
   flex: 1;
-  padding: 8px 12px;
+  padding: 0.6rem 1rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 0.9rem;
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
 }
 
-.input-group input:focus {
+.todo-input:focus {
   outline: none;
   border-color: var(--vp-c-brand);
 }
 
-.input-group button {
-  padding: 8px 16px;
+.add-btn {
+  padding: 0.6rem 1.5rem;
   background: var(--vp-c-brand);
   color: white;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.input-group button:hover {
-  background: var(--vp-c-brand-dark);
+.add-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.quick-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.quick-actions button {
-  padding: 6px 12px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.quick-actions button:hover {
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand);
+.info-box .icon {
+  margin-right: 0.25rem;
 }
 
-.explanation-area {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
+@media (max-width: 768px) {
+  .interaction-area {
+    flex-direction: column;
+  }
 
-.explanation-card {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.explanation-card h5 {
-  margin: 0 0 10px 0;
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-}
-
-.explanation-card p {
-  margin: 0;
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.explanation-card code {
-  background: var(--vp-c-bg-soft);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-family: monospace;
-  font-size: 12px;
-  color: var(--vp-c-brand);
-}
-
-.explanation-card ul {
-  margin: 8px 0 0 0;
-  padding-left: 18px;
-}
-
-.explanation-card li {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  margin: 4px 0;
-}
-
-@media (max-width: 640px) {
-  .quick-actions {
-    justify-content: center;
+  .reaction-stats {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 </style>

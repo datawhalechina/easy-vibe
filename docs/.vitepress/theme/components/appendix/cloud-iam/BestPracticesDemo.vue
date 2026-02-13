@@ -2,51 +2,57 @@
   <div class="best-practices-demo">
     <div class="demo-header">
       <h4>云账号权限管理最佳实践清单</h4>
-      <p class="demo-desc">点击查看详细的实施指南和代码示例</p>
+      <p class="intro-text">点击查看详细的实施指南和代码示例</p>
     </div>
 
-    <div class="practices-grid">
-      <div
-        v-for="(practice, index) in bestPractices"
-        :key="index"
-        class="practice-card"
-        :class="{ expanded: expandedCard === index }"
-        @click="toggleCard(index)"
-      >
-        <div class="card-header">
-          <div class="icon-wrapper" :style="{ background: practice.color }">
-            <span class="icon">{{ practice.icon }}</span>
-          </div>
-          <div class="title-wrapper">
-            <h5>{{ practice.title }}</h5>
-            <span class="priority" :class="practice.priority">{{ practice.priorityText }}</span>
-          </div>
-          <div class="expand-icon">{{ expandedCard === index ? '−' : '+' }}</div>
-        </div>
-
-        <div class="card-body" v-if="expandedCard === index">
-          <p class="description">{{ practice.description }}</p>
-
-          <div class="checklist">
-            <h6>✓ 检查清单</h6>
-            <ul>
-              <li v-for="(item, i) in practice.checklist" :key="i">{{ item }}</li>
-            </ul>
+    <div class="demo-content">
+      <div class="practices-grid">
+        <div
+          v-for="(practice, index) in bestPractices"
+          :key="index"
+          class="practice-card"
+          :class="{ expanded: expandedCard === index }"
+          @click="toggleCard(index)"
+        >
+          <div class="card-header">
+            <div class="icon-wrapper" :style="{ background: practice.color }">
+              <span class="icon">{{ practice.icon }}</span>
+            </div>
+            <div class="title-wrapper">
+              <h5>{{ practice.title }}</h5>
+              <span class="priority" :class="practice.priority">{{ practice.priorityText }}</span>
+            </div>
+            <div class="expand-icon">{{ expandedCard === index ? '−' : '+' }}</div>
           </div>
 
-          <div class="code-example" v-if="practice.code">
-            <h6>代码示例</h6>
-            <pre><code>{{ practice.code }}</code></pre>
-          </div>
+          <div class="card-body" v-if="expandedCard === index">
+            <p class="description">{{ practice.description }}</p>
 
-          <div class="tools" v-if="practice.tools">
-            <h6>推荐工具</h6>
-            <div class="tool-tags">
-              <span v-for="(tool, i) in practice.tools" :key="i" class="tool-tag">{{ tool }}</span>
+            <div class="checklist">
+              <h6>✓ 检查清单</h6>
+              <ul>
+                <li v-for="(item, i) in practice.checklist" :key="i">{{ item }}</li>
+              </ul>
+            </div>
+
+            <div class="code-example" v-if="practice.code">
+              <h6>代码示例</h6>
+              <pre><code>{{ practice.code }}</code></pre>
+            </div>
+
+            <div class="tools" v-if="practice.tools">
+              <h6>推荐工具</h6>
+              <div class="tool-tags">
+                <span v-for="(tool, i) in practice.tools" :key="i" class="tool-tag">{{ tool }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <strong>💡 实施建议：</strong>按照优先级从 P0 开始逐步实施最佳实践。每个改进都能显著提升账号安全性，不要试图一次性完成所有改进。
     </div>
   </div>
 </template>
@@ -62,7 +68,7 @@ const bestPractices = [
     title: '根账号保护',
     priority: 'p0',
     priorityText: 'P0 - 最高优先级',
-    color: '#f44336',
+    color: 'rgba(var(--vp-c-brand-delta-rgb), 0.15)',
     description: '根账号是云服务的所有者，拥有所有权限。必须实施最高级别的保护措施。',
     checklist: [
       '启用 MFA（推荐硬件 MFA 设备）',
@@ -84,7 +90,7 @@ aws iam attach-user-policy --user-name AdminUser \
     title: '用户权限最小化',
     priority: 'p0',
     priorityText: 'P0 - 最高优先级',
-    color: '#ff9800',
+    color: 'rgba(var(--vp-c-brand-rgb), 0.1)',
     description: '遵循最小权限原则，只授予用户完成工作所需的最低权限。',
     checklist: [
       '避免使用 AdministratorAccess 等全权限策略',
@@ -122,7 +128,7 @@ aws iam attach-user-policy --user-name AdminUser \
     title: '优先使用 IAM 角色',
     priority: 'p1',
     priorityText: 'P1 - 高优先级',
-    color: '#4caf50',
+    color: 'var(--vp-c-brand-soft)',
     description: 'IAM 角色没有长期凭证，通过临时凭证访问，大大降低凭证泄露风险。',
     checklist: [
       'EC2 实例使用实例角色(Instance Profile)',
@@ -160,7 +166,7 @@ s3_cross = boto3.client(
     title: '访问密钥安全管理',
     priority: 'p1',
     priorityText: 'P1 - 高优先级',
-    color: '#2196f3',
+    color: 'rgba(var(--vp-c-brand-rgb), 0.1)',
     description: '如果必须使用访问密钥(AK/SK)，需要实施严格的安全管理措施。',
     checklist: [
       '绝不将 AK/SK 硬编码在代码或配置文件中',
@@ -208,7 +214,7 @@ s3 = boto3.client(
     title: '监控与审计',
     priority: 'p2',
     priorityText: 'P2 - 中优先级',
-    color: '#9c27b0',
+    color: 'var(--vp-c-bg-alt)',
     description: '建立全面的监控和审计机制，及时发现和响应安全事件。',
     checklist: [
       '启用 CloudTrail 记录所有 API 调用',
@@ -252,64 +258,69 @@ function toggleCard(index) {
 
 <style scoped>
 .best-practices-demo {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.demo-desc {
+.intro-text {
   margin: 0;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
+}
+
+.demo-content {
+  margin-bottom: 1rem;
 }
 
 .practices-grid {
   display: grid;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .practice-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1.25rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
 }
 
 .practice-card:hover {
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--vp-c-brand);
   transform: translateY(-2px);
 }
 
 .practice-card.expanded {
-  background: rgba(255, 255, 255, 0.95);
-  color: #333;
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-alt);
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .icon-wrapper {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,12 +333,14 @@ function toggleCard(index) {
 }
 
 .title-wrapper h5 {
-  margin: 0 0 4px 0;
+  margin: 0 0 0.25rem 0;
   font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
 }
 
 .priority {
-  padding: 2px 8px;
+  padding: 0.125rem 0.5rem;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 600;
@@ -335,46 +348,48 @@ function toggleCard(index) {
 }
 
 .priority.p0 {
-  background: #f44336;
-  color: white;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  color: var(--vp-c-brand-delta);
 }
 
 .priority.p1 {
-  background: #ff9800;
-  color: white;
+  background: rgba(var(--vp-c-brand-rgb), 0.1);
+  color: var(--vp-c-brand);
 }
 
 .priority.p2 {
-  background: #2196f3;
-  color: white;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 .expand-icon {
   font-size: 1.5rem;
   font-weight: 300;
-  opacity: 0.7;
+  color: var(--vp-c-text-3);
 }
 
 .card-body {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .description {
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
+  color: var(--vp-c-text-2);
 }
 
 .checklist {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .checklist h6 {
-  margin: 0 0 12px 0;
+  margin: 0 0 0.75rem 0;
   font-size: 0.9rem;
-  color: #667eea;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
 }
 
 .checklist ul {
@@ -384,63 +399,82 @@ function toggleCard(index) {
 }
 
 .checklist li {
-  padding: 6px 0;
-  padding-left: 24px;
+  padding: 0.375rem 0;
+  padding-left: 1.5rem;
   position: relative;
   font-size: 0.9rem;
+  color: var(--vp-c-text-2);
 }
 
 .checklist li:before {
   content: '☐';
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: var(--vp-c-brand);
 }
 
 .code-example {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .code-example h6 {
-  margin: 0 0 12px 0;
+  margin: 0 0 0.75rem 0;
   font-size: 0.9rem;
-  color: #667eea;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
 }
 
 .code-example pre {
-  background: #1e1e1e;
-  border-radius: 8px;
-  padding: 16px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.75rem;
   overflow-x: auto;
   margin: 0;
 }
 
 .code-example code {
-  color: #d4d4d4;
-  font-family: 'Consolas', 'Monaco', monospace;
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-mono);
   font-size: 0.8rem;
   line-height: 1.5;
 }
 
 .tools h6 {
-  margin: 0 0 12px 0;
+  margin: 0 0 0.75rem 0;
   font-size: 0.9rem;
-  color: #667eea;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
 }
 
 .tool-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .tool-tag {
-  padding: 4px 12px;
-  background: #e3f2fd;
-  color: #1565c0;
+  padding: 0.25rem 0.75rem;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {

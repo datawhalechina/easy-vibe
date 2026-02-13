@@ -1,17 +1,39 @@
 <template>
   <div class="memory-management-demo">
     <div class="demo-header">
-      <h4>内存管理机制可视化</h4>
+      <span class="icon">🧠</span>
+      <span class="title">内存管理</span>
+      <span class="subtitle">不同语言的内存处理方式</span>
     </div>
-    <div class="memory-models">
-      <div class="model-card" v-for="model in models" :key="model.name">
+
+    <div class="intro-text">
+      想象你在<span class="highlight">收拾房间</span>：有的房间有自动扫地机器人定期清理（GC），有的需要自己动手整理（手动管理），有的房间设计得不会变乱（所有权系统）。
+    </div>
+
+    <div class="models-container">
+      <div
+        v-for="model in models"
+        :key="model.name"
+        class="model-card"
+      >
         <div class="model-icon">{{ model.icon }}</div>
         <div class="model-name">{{ model.name }}</div>
-        <div class="model-desc">{{ model.desc }}</div>
+        <div class="model-desc">{{ model.description }}</div>
         <div class="model-languages">
-          <span v-for="lang in model.languages" :key="lang" class="lang-tag">{{ lang }}</span>
+          <span
+            v-for="lang in model.languages"
+            :key="lang"
+            class="lang-tag"
+          >
+            {{ lang }}
+          </span>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>GC 语言（Java、Go、Python）让开发者省心，但有性能开销。手动管理（C、C++）性能最好但容易内存泄漏。Rust 的所有权系统编译时保证安全，无运行时开销。
     </div>
   </div>
 </template>
@@ -21,19 +43,19 @@ const models = [
   {
     name: '垃圾回收 (GC)',
     icon: '♻️',
-    desc: '运行时自动回收不再使用的内存',
+    description: '运行时自动回收不再使用的内存',
     languages: ['Java', 'Go', 'Python', 'Node.js']
   },
   {
     name: '手动管理',
     icon: '🔧',
-    desc: '开发者显式申请和释放内存',
+    description: '开发者显式申请和释放内存',
     languages: ['C', 'C++']
   },
   {
     name: '所有权系统',
     icon: '🔒',
-    desc: '编译时通过规则保证内存安全',
+    description: '编译时通过规则保证内存安全',
     languages: ['Rust']
   }
 ]
@@ -43,41 +65,109 @@ const models = [
 .memory-management-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 20px;
   background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
-.memory-models {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
-.model-card {
-  padding: 16px;
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.intro-text {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
+  border-radius: 6px;
+}
+
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+.models-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.model-card {
+  background: var(--vp-c-bg);
+  padding: 1rem;
   border-radius: 6px;
   text-align: center;
   border: 1px solid var(--vp-c-divider);
 }
+
 .model-icon {
-  font-size: 2em;
-  margin-bottom: 8px;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
+
 .model-name {
-  font-weight: bold;
-  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.25rem;
 }
+
 .model-desc {
-  font-size: 0.9em;
+  font-size: 0.8rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
 }
+
+.model-languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
 .lang-tag {
-  display: inline-block;
-  padding: 2px 6px;
-  margin: 2px;
-  background: var(--vp-c-bg-mute);
+  padding: 0.2rem 0.5rem;
+  background: var(--vp-c-bg-soft);
   border-radius: 4px;
-  font-size: 0.8em;
+  font-size: 0.7rem;
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+.info-box .icon {
+  margin-right: 0.25rem;
 }
 </style>

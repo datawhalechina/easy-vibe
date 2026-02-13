@@ -2,79 +2,85 @@
   <div class="iam-ram-comparison-demo">
     <div class="demo-header">
       <h4>AWS IAM vs 阿里云 RAM 对比</h4>
-      <p class="demo-desc">点击各个模块查看详细对比</p>
+      <p class="intro-text">点击各个模块查看详细对比</p>
     </div>
 
-    <div class="comparison-container">
-      <!-- AWS IAM Column -->
-      <div class="platform-column aws-column">
-        <div class="platform-header aws">
-          <div class="logo">AWS</div>
-          <h5>IAM</h5>
-          <span class="subtitle">Identity and Access Management</span>
+    <div class="demo-content">
+      <div class="comparison-container">
+        <!-- AWS IAM Column -->
+        <div class="platform-column aws-column">
+          <div class="platform-header aws">
+            <div class="logo">AWS</div>
+            <h5>IAM</h5>
+            <span class="subtitle">Identity and Access Management</span>
+          </div>
+
+          <div class="features-list">
+            <div
+              v-for="(feature, index) in awsFeatures"
+              :key="index"
+              class="feature-item"
+              :class="{ active: selectedFeature === `aws-${index}` }"
+              @click="selectFeature('aws', index)"
+            >
+              <div class="feature-icon">{{ feature.icon }}</div>
+              <div class="feature-content">
+                <span class="feature-name">{{ feature.name }}</span>
+                <span class="feature-desc">{{ feature.desc }}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="features-list">
-          <div
-            v-for="(feature, index) in awsFeatures"
-            :key="index"
-            class="feature-item"
-            :class="{ active: selectedFeature === `aws-${index}` }"
-            @click="selectFeature('aws', index)"
-          >
-            <div class="feature-icon">{{ feature.icon }}</div>
-            <div class="feature-content">
-              <span class="feature-name">{{ feature.name }}</span>
-              <span class="feature-desc">{{ feature.desc }}</span>
+        <!-- Comparison Details -->
+        <div class="comparison-details" v-if="selectedFeatureData">
+          <div class="detail-card">
+            <h6>{{ selectedFeatureData.name }}</h6>
+            <div class="comparison-row">
+              <div class="aws-detail">
+                <span class="label">AWS IAM</span>
+                <p>{{ selectedFeatureData.awsDetail }}</p>
+                <code v-if="selectedFeatureData.awsExample">{{ selectedFeatureData.awsExample }}</code>
+              </div>
+              <div class="vs-divider">VS</div>
+              <div class="ram-detail">
+                <span class="label">阿里云 RAM</span>
+                <p>{{ selectedFeatureData.ramDetail }}</p>
+                <code v-if="selectedFeatureData.ramExample">{{ selectedFeatureData.ramExample }}</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alibaba Cloud RAM Column -->
+        <div class="platform-column ram-column">
+          <div class="platform-header ram">
+            <div class="logo">阿里云</div>
+            <h5>RAM</h5>
+            <span class="subtitle">Resource Access Management</span>
+          </div>
+
+          <div class="features-list">
+            <div
+              v-for="(feature, index) in ramFeatures"
+              :key="index"
+              class="feature-item"
+              :class="{ active: selectedFeature === `ram-${index}` }"
+              @click="selectFeature('ram', index)"
+            >
+              <div class="feature-icon">{{ feature.icon }}</div>
+              <div class="feature-content">
+                <span class="feature-name">{{ feature.name }}</span>
+                <span class="feature-desc">{{ feature.desc }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Comparison Details -->
-      <div class="comparison-details" v-if="selectedFeatureData">
-        <div class="detail-card">
-          <h6>{{ selectedFeatureData.name }}</h6>
-          <div class="comparison-row">
-            <div class="aws-detail">
-              <span class="label">AWS IAM</span>
-              <p>{{ selectedFeatureData.awsDetail }}</p>
-              <code v-if="selectedFeatureData.awsExample">{{ selectedFeatureData.awsExample }}</code>
-            </div>
-            <div class="vs-divider">VS</div>
-            <div class="ram-detail">
-              <span class="label">阿里云 RAM</span>
-              <p>{{ selectedFeatureData.ramDetail }}</p>
-              <code v-if="selectedFeatureData.ramExample">{{ selectedFeatureData.ramExample }}</code>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Alibaba Cloud RAM Column -->
-      <div class="platform-column ram-column">
-        <div class="platform-header ram">
-          <div class="logo">阿里云</div>
-          <h5>RAM</h5>
-          <span class="subtitle">Resource Access Management</span>
-        </div>
-
-        <div class="features-list">
-          <div
-            v-for="(feature, index) in ramFeatures"
-            :key="index"
-            class="feature-item"
-            :class="{ active: selectedFeature === `ram-${index}` }"
-            @click="selectFeature('ram', index)"
-          >
-            <div class="feature-icon">{{ feature.icon }}</div>
-            <div class="feature-content">
-              <span class="feature-name">{{ feature.name }}</span>
-              <span class="feature-desc">{{ feature.desc }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="info-box">
+      <strong>💡 提示：</strong>IAM 和 RAM 的核心概念基本一致，只是术语和实现细节略有不同。掌握一个平台后，可以快速迁移到另一个平台。
     </div>
   </div>
 </template>
@@ -154,91 +160,101 @@ function selectFeature(platform, index) {
 
 <style scoped>
 .iam-ram-comparison-demo {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.demo-desc {
+.intro-text {
   margin: 0;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
+}
+
+.demo-content {
+  margin-bottom: 1rem;
 }
 
 .comparison-container {
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
-  gap: 16px;
+  gap: 1rem;
   align-items: start;
 }
 
 .platform-column {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .platform-header {
-  padding: 16px;
+  padding: 1rem;
   text-align: center;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .platform-header.aws {
-  background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
+  background: var(--vp-c-brand-soft);
 }
 
 .platform-header.ram {
-  background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
 }
 
 .platform-header .logo {
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .platform-header h5 {
   margin: 0;
   font-size: 1.1rem;
+  color: var(--vp-c-text-1);
 }
 
 .platform-header .subtitle {
   font-size: 0.7rem;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
 }
 
 .features-list {
-  padding: 12px;
+  padding: 0.75rem;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
-  margin-bottom: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  margin-bottom: 0.5rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .feature-item:hover,
 .feature-item.active {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand);
   transform: translateX(4px);
 }
 
@@ -255,21 +271,22 @@ function selectFeature(platform, index) {
 .feature-name {
   font-weight: 600;
   font-size: 0.85rem;
+  color: var(--vp-c-text-1);
 }
 
 .feature-desc {
   font-size: 0.7rem;
-  opacity: 0.8;
+  color: var(--vp-c-text-3);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .comparison-details {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 20px;
-  color: #333;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .detail-card {
@@ -277,31 +294,25 @@ function selectFeature(platform, index) {
 }
 
 .detail-card h6 {
-  margin: 0 0 16px 0;
+  margin: 0 0 1rem 0;
   font-size: 1.1rem;
-  color: #667eea;
+  color: var(--vp-c-brand-1);
 }
 
 .comparison-row {
   display: flex;
   align-items: stretch;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .aws-detail,
 .ram-detail {
   flex: 1;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   text-align: left;
-}
-
-.aws-detail {
-  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-}
-
-.ram-detail {
-  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
 }
 
 .aws-detail .label,
@@ -309,32 +320,36 @@ function selectFeature(platform, index) {
   display: block;
   font-weight: 700;
   font-size: 0.8rem;
-  margin-bottom: 6px;
+  margin-bottom: 0.375rem;
+  color: var(--vp-c-text-1);
 }
 
 .aws-detail .label {
-  color: #ff6f00;
+  color: var(--vp-c-brand-1);
 }
 
 .ram-detail .label {
-  color: #c2185b;
+  color: var(--vp-c-brand-delta);
 }
 
 .aws-detail p,
 .ram-detail p {
-  margin: 0 0 8px 0;
+  margin: 0 0 0.5rem 0;
   font-size: 0.8rem;
   line-height: 1.4;
+  color: var(--vp-c-text-2);
 }
 
 .aws-detail code,
 .ram-detail code {
   display: block;
-  padding: 6px;
-  background: rgba(0, 0, 0, 0.05);
+  padding: 0.375rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 4px;
   font-size: 0.65rem;
   word-break: break-all;
+  color: var(--vp-c-text-2);
 }
 
 .vs-divider {
@@ -343,14 +358,29 @@ function selectFeature(platform, index) {
   justify-content: center;
   font-weight: 700;
   font-size: 0.9rem;
-  color: #999;
-  padding: 0 8px;
+  color: var(--vp-c-text-3);
+  padding: 0 0.5rem;
+}
+
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 1024px) {
   .comparison-container {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 1rem;
   }
 
   .comparison-details {
@@ -362,7 +392,7 @@ function selectFeature(platform, index) {
   }
 
   .vs-divider {
-    padding: 8px 0;
+    padding: 0.5rem 0;
   }
 }
 </style>

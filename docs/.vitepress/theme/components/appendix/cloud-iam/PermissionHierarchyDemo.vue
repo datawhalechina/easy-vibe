@@ -2,60 +2,66 @@
   <div class="permission-hierarchy-demo">
     <div class="demo-header">
       <h4>权限层级结构</h4>
-      <p class="demo-desc">点击层级查看详细权限范围</p>
+      <p class="intro-text">点击层级查看详细权限范围</p>
     </div>
 
-    <div class="hierarchy-container">
-      <div
-        v-for="(level, index) in hierarchyLevels"
-        :key="index"
-        class="level-row"
-        :class="{ active: selectedLevel === index }"
-        @click="selectLevel(index)"
-      >
-        <div class="level-icon">{{ level.icon }}</div>
-        <div class="level-content">
-          <span class="level-name">{{ level.name }}</span>
-          <span class="level-scope">{{ level.scope }}</span>
+    <div class="demo-content">
+      <div class="hierarchy-container">
+        <div
+          v-for="(level, index) in hierarchyLevels"
+          :key="index"
+          class="level-row"
+          :class="{ active: selectedLevel === index }"
+          @click="selectLevel(index)"
+        >
+          <div class="level-icon">{{ level.icon }}</div>
+          <div class="level-content">
+            <span class="level-name">{{ level.name }}</span>
+            <span class="level-scope">{{ level.scope }}</span>
+          </div>
+          <div class="permission-badges">
+            <span
+              v-for="(perm, i) in level.permissions.slice(0, 3)"
+              :key="i"
+              class="badge"
+            >
+              {{ perm }}
+            </span>
+            <span v-if="level.permissions.length > 3" class="badge more">
+              +{{ level.permissions.length - 3 }}
+            </span>
+          </div>
         </div>
-        <div class="permission-badges">
-          <span
-            v-for="(perm, i) in level.permissions.slice(0, 3)"
-            :key="i"
-            class="badge"
-          >
-            {{ perm }}
-          </span>
-          <span v-if="level.permissions.length > 3" class="badge more">
-            +{{ level.permissions.length - 3 }}
-          </span>
+      </div>
+
+      <div class="detail-panel" v-if="selectedLevelData">
+        <h5>{{ selectedLevelData.name }} 详情</h5>
+        <div class="detail-section">
+          <span class="label">权限范围:</span>
+          <span class="value">{{ selectedLevelData.scope }}</span>
+        </div>
+        <div class="detail-section">
+          <span class="label">典型场景:</span>
+          <span class="value">{{ selectedLevelData.scenario }}</span>
+        </div>
+        <div class="detail-section permissions-list">
+          <span class="label">拥有权限:</span>
+          <div class="permissions-grid">
+            <span
+              v-for="(perm, i) in selectedLevelData.permissions"
+              :key="i"
+              class="perm-tag"
+              :class="perm.type"
+            >
+              {{ perm.name }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="detail-panel" v-if="selectedLevelData">
-      <h5>{{ selectedLevelData.name }} 详情</h5>
-      <div class="detail-section">
-        <span class="label">权限范围:</span>
-        <span class="value">{{ selectedLevelData.scope }}</span>
-      </div>
-      <div class="detail-section">
-        <span class="label">典型场景:</span>
-        <span class="value">{{ selectedLevelData.scenario }}</span>
-      </div>
-      <div class="detail-section permissions-list">
-        <span class="label">拥有权限:</span>
-        <div class="permissions-grid">
-          <span
-            v-for="(perm, i) in selectedLevelData.permissions"
-            :key="i"
-            class="perm-tag"
-            :class="perm.type"
-          >
-            {{ perm.name }}
-          </span>
-        </div>
-      </div>
+    <div class="info-box">
+      <strong>💡 最小权限原则：</strong>始终授予用户完成工作所需的最小权限。从低权限开始，根据实际需求逐步提升，而不是一开始就授予高权限。
     </div>
   </div>
 </template>
@@ -141,52 +147,59 @@ function selectLevel(index) {
 
 <style scoped>
 .permission-hierarchy-demo {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.demo-desc {
+.intro-text {
   margin: 0;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
+}
+
+.demo-content {
+  margin-bottom: 1rem;
 }
 
 .hierarchy-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .level-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .level-row:hover,
 .level-row.active {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateX(8px);
+  background: var(--vp-c-bg-alt);
+  border-color: var(--vp-c-brand);
+  transform: translateX(4px);
 }
 
 .level-icon {
@@ -196,8 +209,9 @@ function selectLevel(index) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
 }
 
 .level-content {
@@ -209,64 +223,70 @@ function selectLevel(index) {
 .level-name {
   font-weight: 600;
   font-size: 0.95rem;
+  color: var(--vp-c-text-1);
 }
 
 .level-scope {
   font-size: 0.75rem;
-  opacity: 0.8;
+  color: var(--vp-c-text-3);
 }
 
 .permission-badges {
   display: flex;
-  gap: 4px;
+  gap: 0.25rem;
   flex-wrap: wrap;
   justify-content: flex-end;
   max-width: 150px;
 }
 
 .badge {
-  padding: 2px 8px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  padding: 0.125rem 0.5rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
   font-size: 0.65rem;
   white-space: nowrap;
+  color: var(--vp-c-text-2);
 }
 
 .badge.more {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand-1);
 }
 
 .detail-panel {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 20px;
-  color: #333;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .detail-panel h5 {
-  margin: 0 0 16px 0;
+  margin: 0 0 1rem 0;
   font-size: 1.1rem;
-  color: #667eea;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #eee;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .detail-section {
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .detail-section .label {
   font-weight: 600;
-  color: #666;
+  color: var(--vp-c-text-2);
   min-width: 80px;
   font-size: 0.85rem;
 }
 
 .detail-section .value {
-  color: #333;
+  color: var(--vp-c-text-1);
   font-size: 0.9rem;
   flex: 1;
 }
@@ -274,69 +294,86 @@ function selectLevel(index) {
 .permissions-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0.375rem;
   flex: 1;
 }
 
 .perm-tag {
-  padding: 4px 10px;
+  padding: 0.25rem 0.625rem;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 500;
 }
 
 .perm-tag.full {
-  background: #f44336;
-  color: white;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  color: var(--vp-c-brand-delta);
 }
 
 .perm-tag.read,
 .perm-tag.user,
 .perm-tag.readonly {
-  background: #4caf50;
-  color: white;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 .perm-tag.limited,
-.perm-tag.role,
-.perm-tag.limited {
-  background: #ff9800;
-  color: white;
+.perm-tag.role {
+  background: rgba(var(--vp-c-brand-rgb), 0.1);
+  color: var(--vp-c-brand);
 }
 
 .perm-tag.deny,
 .perm-tag.critical {
-  background: #9c27b0;
-  color: white;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  color: var(--vp-c-brand-delta);
 }
 
 .perm-tag.temp,
 .perm-tag.conditional,
 .perm-tag.service {
-  background: #2196f3;
-  color: white;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
 }
 
 .perm-tag.admin,
 .perm-tag.org,
 .perm-tag.billing {
-  background: #673ab7;
-  color: white;
+  background: rgba(var(--vp-c-brand-rgb), 0.15);
+  color: var(--vp-c-brand);
 }
 
 .perm-tag.api,
 .perm-tag.programmatic,
 .perm-tag.security {
-  background: #607d8b;
-  color: white;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
 }
 
 .perm-tag.cross,
 .perm-tag.secure,
 .perm-tag.audit,
 .perm-tag.policy {
-  background: #795548;
-  color: white;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+}
+
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {
@@ -348,12 +385,12 @@ function selectLevel(index) {
     width: 100%;
     justify-content: flex-start;
     max-width: none;
-    margin-top: 8px;
+    margin-top: 0.5rem;
   }
 
   .detail-section {
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25rem;
   }
 }
 </style>

@@ -2,98 +2,93 @@
   <div class="access-key-management-demo">
     <div class="demo-header">
       <h4>访问密钥（AK/SK）生命周期管理</h4>
-      <p class="demo-desc">模拟 AK/SK 的创建、使用和轮换流程</p>
+      <p class="intro-text">模拟 AK/SK 的创建、使用和轮换流程</p>
     </div>
 
-    <div class="lifecycle-container">
-      <!-- AK/SK Card -->
-      <div class="aksk-card">
-        <div class="card-header">
-          <span class="status-badge" :class="akStatus">{{ statusText }}</span>
-          <span class="age-indicator">已创建 {{ akAge }} 天</span>
-        </div>
+    <div class="demo-content">
+      <div class="lifecycle-container">
+        <!-- AK/SK Card -->
+        <div class="aksk-card">
+          <div class="card-header">
+            <span class="status-badge" :class="akStatus">{{ statusText }}</span>
+            <span class="age-indicator">已创建 {{ akAge }} 天</span>
+          </div>
 
-        <div class="credentials-display">
-          <div class="credential-row">
-            <span class="label">Access Key ID:</span>
-            <div class="value-container">
-              <span class="value">{{ maskedAK }}</span>
-              <button class="icon-btn" @click="toggleAKVisibility">
-                {{ showAK ? '🙈' : '👁️' }}
-              </button>
+          <div class="credentials-display">
+            <div class="credential-row">
+              <span class="label">Access Key ID:</span>
+              <div class="value-container">
+                <span class="value">{{ maskedAK }}</span>
+                <button class="icon-btn" @click="toggleAKVisibility">
+                  {{ showAK ? '🙈' : '👁️' }}
+                </button>
+              </div>
+            </div>
+
+            <div class="credential-row">
+              <span class="label">Secret Access Key:</span>
+              <div class="value-container">
+                <span class="value">{{ maskedSK }}</span>
+                <button class="icon-btn" @click="toggleSKVisibility">
+                  {{ showSK ? '🙈' : '👁️' }}
+                </button>
+              </div>
             </div>
           </div>
 
-          <div class="credential-row">
-            <span class="label">Secret Access Key:</span>
-            <div class="value-container">
-              <span class="value">{{ maskedSK }}</span>
-              <button class="icon-btn" @click="toggleSKVisibility">
-                {{ showSK ? '🙈' : '👁️' }}
-              </button>
+          <div class="usage-stats">
+            <div class="stat-item">
+              <span class="stat-value">{{ apiCalls }}</span>
+              <span class="stat-label">API 调用</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">{{ lastUsed }}</span>
+              <span class="stat-label">最后使用</span>
             </div>
           </div>
         </div>
 
-        <div class="usage-stats">
-          <div class="stat-item">
-            <span class="stat-value">{{ apiCalls }}</span>
-            <span class="stat-label">API 调用</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">{{ lastUsed }}</span>
-            <span class="stat-label">最后使用</span>
-          </div>
+        <!-- Action Buttons -->
+        <div class="action-panel">
+          <button
+            class="action-btn primary"
+            @click="rotateKey"
+            :disabled="isRotating"
+          >
+            <span class="btn-icon">🔄</span>
+            <span class="btn-text">轮换密钥</span>
+          </button>
+
+          <button
+            class="action-btn warning"
+            @click="deactivateKey"
+            :disabled="akStatus === 'inactive'"
+          >
+            <span class="btn-icon">⏸️</span>
+            <span class="btn-text">{{ akStatus === 'inactive' ? '已禁用' : '禁用密钥' }}</span>
+          </button>
+
+          <button
+            class="action-btn danger"
+            @click="deleteKey"
+          >
+            <span class="btn-icon">🗑️</span>
+            <span class="btn-text">删除密钥</span>
+          </button>
         </div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="action-panel">
-        <button
-          class="action-btn primary"
-          @click="rotateKey"
-          :disabled="isRotating"
-        >
-          <span class="btn-icon">🔄</span>
-          <span class="btn-text">轮换密钥</span>
-        </button>
-
-        <button
-          class="action-btn warning"
-          @click="deactivateKey"
-          :disabled="akStatus === 'inactive'"
-        >
-          <span class="btn-icon">⏸️</span>
-          <span class="btn-text">{{ akStatus === 'inactive' ? '已禁用' : '禁用密钥' }}</span>
-        </button>
-
-        <button
-          class="action-btn danger"
-          @click="deleteKey"
-        >
-          <span class="btn-icon">🗑️</span>
-          <span class="btn-text">删除密钥</span>
-        </button>
+      <!-- Rotation Progress -->
+      <div class="rotation-progress" v-if="isRotating">
+        <div class="progress-bar">
+          <div class="progress-fill" :style="{ width: rotationProgress + '%' }"></div>
+        </div>
+        <span class="progress-text">{{ rotationStatus }}</span>
       </div>
     </div>
 
-    <!-- Rotation Progress -->
-    <div class="rotation-progress" v-if="isRotating">
-      <div class="progress-bar">
-        <div class="progress-fill" :style="{ width: rotationProgress + '%' }"></div>
-      </div>
-      <span class="progress-text">{{ rotationStatus }}</span>
-    </div>
-
-    <!-- Best Practices -->
-    <div class="best-practices">
-      <h5>🔒 AK/SK 安全管理最佳实践</h5>
-      <ul>
-        <li v-for="(tip, i) in securityTips" :key="i">
-          <span class="tip-icon">{{ tip.icon }}</span>
-          <span class="tip-text">{{ tip.text }}</span>
-        </li>
-      </ul>
+    <div class="info-box">
+      <strong>💡 安全提示：</strong>访问密钥泄露是云安全事件的主要原因之一。建议优先使用 IAM 角色替代访问密钥，如果必须使用，请务必定期轮换。
     </div>
   </div>
 </template>
@@ -198,129 +193,127 @@ function deleteKey() {
     alert('密钥已删除（演示模式）')
   }
 }
-
-// Security Tips
-const securityTips = [
-  { icon: '🔄', text: '每 90 天轮换一次访问密钥' },
-  { icon: '🔒', text: '绝不将 AK/SK 硬编码在代码中' },
-  { icon: '👁️', text: '定期审计和监控密钥使用情况' },
-  { icon: '🗑️', text: '及时删除不再使用的访问密钥' },
-  { icon: '🛡️', text: '优先使用 IAM 角色替代访问密钥' }
-]
 </script>
 
 <style scoped>
 .access-key-management-demo {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
 }
 
-.demo-desc {
+.intro-text {
   margin: 0;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
   font-size: 0.9rem;
+}
+
+.demo-content {
+  margin-bottom: 1rem;
 }
 
 .lifecycle-container {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 /* AK/SK Card */
 .aksk-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1.25rem;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .status-badge {
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .status-badge.active {
-  background: #4caf50;
-  color: white;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 .status-badge.inactive {
-  background: #f44336;
-  color: white;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  color: var(--vp-c-brand-delta);
 }
 
 .age-indicator {
   font-size: 0.75rem;
-  opacity: 0.7;
+  color: var(--vp-c-text-3);
 }
 
 .credentials-display {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .credential-row {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .credential-row .label {
   font-size: 0.7rem;
-  opacity: 0.7;
+  color: var(--vp-c-text-3);
   text-transform: uppercase;
 }
 
 .value-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .value {
   flex: 1;
-  padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  font-family: monospace;
+  font-family: var(--vp-font-family-mono);
   font-size: 0.8rem;
   word-break: break-all;
+  color: var(--vp-c-text-1);
 }
 
 .icon-btn {
-  padding: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
+  padding: 0.5rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
@@ -328,51 +321,53 @@ const securityTips = [
 }
 
 .icon-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--vp-c-bg-alt);
 }
 
 .usage-stats {
   display: flex;
-  gap: 16px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.125rem;
 }
 
 .stat-value {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #4caf50;
+  color: var(--vp-c-brand-1);
 }
 
 .stat-label {
   font-size: 0.7rem;
-  opacity: 0.7;
+  color: var(--vp-c-text-3);
 }
 
 /* Action Panel */
 .action-panel {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .action-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 18px;
-  border: none;
-  border-radius: 10px;
+  gap: 0.625rem;
+  padding: 0.875rem 1.125rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   font-size: 0.9rem;
   font-weight: 500;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
 }
 
 .action-btn:disabled {
@@ -381,33 +376,36 @@ const securityTips = [
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-  color: white;
+  background: var(--vp-c-brand);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-bg);
 }
 
 .action-btn.primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--vp-c-brand-rgb), 0.3);
 }
 
 .action-btn.warning {
-  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-  color: white;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.1);
+  border-color: var(--vp-c-brand-delta);
+  color: var(--vp-c-brand-delta);
 }
 
 .action-btn.warning:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--vp-c-brand-delta-rgb), 0.2);
 }
 
 .action-btn.danger {
-  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-  color: white;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  border-color: var(--vp-c-brand-delta);
+  color: var(--vp-c-brand-delta);
 }
 
 .action-btn.danger:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(244, 67, 54, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--vp-c-brand-delta-rgb), 0.2);
 }
 
 .btn-icon {
@@ -416,24 +414,24 @@ const securityTips = [
 
 /* Rotation Progress */
 .rotation-progress {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .progress-bar {
   height: 8px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--vp-c-bg-alt);
   border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4caf50 0%, #8bc34a 100%);
+  background: var(--vp-c-brand);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -442,49 +440,22 @@ const securityTips = [
   display: block;
   text-align: center;
   font-size: 0.9rem;
-  opacity: 0.9;
+  color: var(--vp-c-text-2);
 }
 
-/* Best Practices */
-.best-practices {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
 }
 
-.best-practices h5 {
-  margin: 0 0 16px 0;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.best-practices ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.best-practices li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.best-practices li:last-child {
-  border-bottom: none;
-}
-
-.tip-icon {
-  font-size: 1.2rem;
-}
-
-.tip-text {
-  font-size: 0.85rem;
-  opacity: 0.9;
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {

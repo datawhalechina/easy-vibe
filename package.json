@@ -7,7 +7,8 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "verify": "bash scripts/verify.sh"
   },
   "keywords": [
     "easy-vibe",

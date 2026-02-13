@@ -1,29 +1,34 @@
 <template>
   <div class="dynamic-routes-demo">
     <div class="demo-header">
-      <h4>动态路由与参数</h4>
-      <p class="demo-desc">探索动态参数、正则匹配和可选参数的使用方式</p>
+      <span class="icon">🔗</span>
+      <span class="title">动态路由</span>
+      <span class="subtitle">让URL变身数据容器</span>
+    </div>
+
+    <div class="intro-text">
+      想象你在<span class="highlight">图书馆</span>找书：每本书都有编号（动态参数），你需要根据这个编号找到对应的书籍。动态路由就像这样，用<span class="highlight">占位符</span>匹配不同的内容。
     </div>
 
     <div class="demo-content">
-      <!-- 路由参数类型说明 -->
+      <!-- 参数类型说明 -->
       <div class="param-types">
         <div
           v-for="type in paramTypes"
           :key="type.name"
           :class="['param-card', { active: selectedType === type.name }]"
-          @click="selectedType = type.name"
+          @click="selectType(type)"
         >
           <div class="param-pattern">{{ type.pattern }}</div>
-          <div class="param-name">{{ type.name }}</div>
-          <div class="param-desc">{{ type.description }}</div>
+          <div class="param-name">{{ type.label }}</div>
+          <div class="param-example">例: {{ type.example }}</div>
         </div>
       </div>
 
       <!-- 参数解析演示 -->
       <div class="parsing-demo">
         <div class="demo-section">
-          <h5>测试路径</h5>
+          <h5>📍 测试路径</h5>
           <div class="input-group">
             <span class="input-prefix">/</span>
             <input
@@ -34,10 +39,11 @@
               @input="parsePath"
             >
           </div>
+          <div class="hint-text">试试输入：user/123 或 products/electronics/456</div>
         </div>
 
         <div class="demo-section">
-          <h5>匹配结果</h5>
+          <h5>🎯 匹配结果</h5>
           <div v-if="parseResult" class="result-box">
             <div class="result-row">
               <span class="result-label">匹配路由:</span>
@@ -59,10 +65,16 @@
             </div>
           </div>
           <div v-else class="no-result">
-            输入路径查看解析结果
+            <div class="no-match-icon">🔍</div>
+            <div>输入路径查看解析结果</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>动态路由用占位符（如 :id）捕获URL中的变量值，就像给数据贴上了"标签"，让组件可以通过这些标签获取具体内容。
     </div>
   </div>
 </template>
@@ -77,30 +89,33 @@ const paramTypes = [
   {
     name: 'required',
     pattern: ':id',
-    description: '必填参数，URL中必须有对应的值',
-    example: '/user/123'
+    label: '必填参数',
+    example: '/user/123',
+    description: 'URL中必须有对应的值'
   },
   {
     name: 'optional',
     pattern: ':id?',
-    description: '可选参数，可以省略',
-    example: '/user 或 /user/123'
+    label: '可选参数',
+    example: '/user 或 /user/123',
+    description: '可以省略的参数'
   },
   {
     name: 'multiple',
     pattern: ':id+',
-    description: '一个或多个，至少有一个值',
-    example: '/files/a 或 /files/a/b/c'
+    label: '重复参数',
+    example: '/files/a/b/c',
+    description: '一个或多个值'
   },
   {
     name: 'zeroOrMore',
     pattern: ':id*',
-    description: '零个或多个，可以没有',
-    example: '/tags 或 /tags/vue/router'
+    label: '灵活参数',
+    example: '/tags 或 /tags/vue/router',
+    description: '零个或多个值'
   }
 ]
 
-// 模拟的路由配置
 const routePatterns = [
   { pattern: '/user/:id', name: 'UserDetail' },
   { pattern: '/user/:id/profile', name: 'UserProfile' },
@@ -110,11 +125,15 @@ const routePatterns = [
   { pattern: '/files/:path*', name: 'FileBrowser' }
 ]
 
+const selectType = (type) => {
+  selectedType.value = type.name
+  testPath.value = type.example.split(' 或 ')[0].replace('/', '')
+}
+
 const parsePath = () => {
   const path = testPath.value.trim()
   if (!path) return null
 
-  // 简化的匹配逻辑
   for (const route of routePatterns) {
     const match = matchRoute(route.pattern, path)
     if (match) {
@@ -129,18 +148,16 @@ const parsePath = () => {
 }
 
 const matchRoute = (pattern, path) => {
-  // 将 :param 转换为正则
   const regexPattern = pattern
-    .replace(/:([^/]+)\*/g, '(.*)') // :path* → (.*)
-    .replace(/:([^/]+)\?/g, '([^/]*)') // :keyword? → ([^/]*)
-    .replace(/:([^/]+)/g, '([^/]+)') // :id → ([^/]+)
+    .replace(/:([^/]+)\*/g, '(.*)')
+    .replace(/:([^/]+)\?/g, '([^/]*)')
+    .replace(/:([^/]+)/g, '([^/]+)')
 
   const regex = new RegExp(`^${regexPattern}$`)
   const match = path.match(regex)
 
   if (!match) return null
 
-  // 提取参数名
   const paramNames = []
   const paramRegex = /:([^/]+)/g
   let paramMatch
@@ -148,7 +165,6 @@ const matchRoute = (pattern, path) => {
     paramNames.push(paramMatch[1].replace(/[?*+]$/, ''))
   }
 
-  // 构建参数对象
   const params = {}
   paramNames.forEach((name, index) => {
     params[name] = match[index + 1]
@@ -159,57 +175,71 @@ const matchRoute = (pattern, path) => {
 
 const parseResult = computed(() => parsePath())
 
-// 初始化
 parsePath()
 </script>
 
 <style scoped>
 .dynamic-routes-demo {
-  padding: 20px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  margin: 20px 0;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 8px 0;
-  color: var(--vp-c-text-1);
-}
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
-.demo-desc {
-  margin: 0;
+.intro-text {
+  font-size: 0.9rem;
   color: var(--vp-c-text-2);
-  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+}
+
+.intro-text .highlight {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
 }
 
 .demo-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .param-types {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
 }
 
 .param-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 16px;
+  padding: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
+  text-align: center;
 }
 
 .param-card:hover {
   border-color: var(--vp-c-brand);
+  transform: translateY(-2px);
 }
 
 .param-card.active {
@@ -218,42 +248,42 @@ parsePath()
 }
 
 .param-pattern {
-  font-family: 'Monaco', 'Menlo', monospace;
-  font-size: 16px;
+  font-family: monospace;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--vp-c-brand);
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .param-name {
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--vp-c-text-1);
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
-.param-desc {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  line-height: 1.4;
+.param-example {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  font-family: monospace;
 }
 
 .parsing-demo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .demo-section {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .demo-section h5 {
-  margin: 0 0 12px 0;
-  font-size: 13px;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
   font-weight: 500;
 }
@@ -265,73 +295,80 @@ parsePath()
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   overflow: hidden;
+  margin-bottom: 0.5rem;
 }
 
 .input-prefix {
-  padding: 10px 8px 10px 12px;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
   color: var(--vp-c-text-3);
   font-family: monospace;
-  font-size: 14px;
+  font-size: 0.85rem;
 }
 
 .demo-input {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 10px 12px 10px 0;
-  font-size: 14px;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  font-size: 0.85rem;
   color: var(--vp-c-text-1);
   outline: none;
   font-family: monospace;
 }
 
+.hint-text {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  margin-top: 0.5rem;
+}
+
 .result-box {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .result-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .result-label {
-  font-size: 12px;
+  font-size: 0.8rem;
   color: var(--vp-c-text-3);
   min-width: 60px;
 }
 
 .result-value {
-  font-size: 13px;
+  font-size: 0.85rem;
   color: var(--vp-c-text-1);
   font-family: monospace;
   background: var(--vp-c-bg-soft);
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
   border-radius: 4px;
 }
 
 .result-params {
-  padding-top: 12px;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--vp-c-divider);
 }
 
 .params-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .param-tag {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
   background: var(--vp-c-brand-soft);
-  padding: 4px 10px;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 
 .param-key {
@@ -349,14 +386,30 @@ parsePath()
 
 .no-result {
   text-align: center;
-  padding: 32px;
+  padding: 2rem 1rem;
   color: var(--vp-c-text-3);
-  font-size: 13px;
+  font-size: 0.85rem;
 }
+
+.no-match-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
+}
+
+.info-box .icon { margin-right: 0.25rem; }
 
 @media (max-width: 768px) {
   .param-types {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .parsing-demo {
