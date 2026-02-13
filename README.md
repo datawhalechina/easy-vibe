@@ -259,6 +259,7 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 - [Yerim Kang](https://github.com/yerim25)（实践项目部分-清华大学）
 - 赵芷霖（实践项目部分-清华大学）
 - [李亦萱](https://yixuan20.github.io/)（页面美术设计-清华大学）
+- 刘思怡（实践项目部分-清华大学）
 - AI Vibe Coding 101 内测群完整给建议体验的小伙伴们
 
 ### 特别感谢
