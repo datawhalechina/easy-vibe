@@ -182,6 +182,100 @@ HTML 的基本单位是"标签"（tag）。标签用尖括号 `< >` 包裹，成
 **什么时候用 div？** 当没有合适的语义标签时。比如一个纯装饰性的容器。
 :::
 
+### 2.5 如何记住这么多 HTML 标签？
+
+::: tip 🎯 新手困惑
+
+"HTML 标签有一百多个，怎么记得住？"
+
+**答案是：不需要全部记住。** 实际开发中，90% 的情况只用 20 个左右的标签。
+:::
+
+#### 按用途分类记忆
+
+**一、页面结构类（画骨架）**
+
+| 标签 | 记忆口诀 | 用途 |
+|------|----------|------|
+| `<header>` | 头 | 页面或区块的头部 |
+| `<nav>` | 导航 | 导航链接区域 |
+| `<main>` | 主体 | 页面主要内容（每页只有一个） |
+| `<article>` | 文章 | 独立的内容块（可以单独拿走还有意义） |
+| `<section>` | 章节 | 有主题的内容分组 |
+| `<aside>` | 旁边 | 侧边栏、补充内容 |
+| `<footer>` | 脚 | 页面或区块的底部 |
+
+**记忆方法**：想象一张报纸——有报头（header）、目录（nav）、正文（main/article）、专栏（aside）、报脚（footer）。
+
+**二、内容标记类（说清楚是什么）**
+
+| 标签 | 记忆口诀 | 用途 |
+|------|----------|------|
+| `<h1>`-`<h6>` | 标题1-6 | 标题层级，h1 最大最重要 |
+| `<p>` | 段落 | 一段文字 |
+| `<ul>`/`<ol>`/`<li>` | 无序/有序/列表项 | 列表 |
+| `<a>` | 锚点 | 链接，跳转用 |
+| `<img>` | 图片 | 图片 |
+| `<video>`/`<audio>` | 视频/音频 | 多媒体 |
+| `<strong>`/`<em>` | 强调/斜体强调 | 语义化的强调 |
+
+**记忆方法**：`<a>` 是 anchor（锚）的缩写，想象船抛锚停在一个地方，链接就是"停"到另一个页面。
+
+**三、表单交互类（收集用户输入）**
+
+| 标签 | 记忆口诀 | 用途 |
+|------|----------|------|
+| `<form>` | 表单 | 表单容器 |
+| `<input>` | 输入 | 各种输入框（type 决定类型） |
+| `<textarea>` | 文本区域 | 多行文本输入 |
+| `<select>`/`<option>` | 选择/选项 | 下拉选择 |
+| `<button>` | 按钮 | 按钮 |
+| `<label>` | 标签 | 输入框的说明文字 |
+
+**记忆方法**：`<input>` 的 type 属性决定它长什么样：
+- `type="text"` → 文本框
+- `type="password"` → 密码框
+- `type="email"` → 邮箱框
+- `type="checkbox"` → 复选框
+- `type="radio"` → 单选框
+
+**四、容器类（分组用）**
+
+| 标签 | 记忆口诀 | 用途 |
+|------|----------|------|
+| `<div>` | 大盒子 | 块级容器，独占一行 |
+| `<span>` | 小盒子 | 行内容器，只占内容宽度 |
+
+**记忆方法**：div = division（分区），span = span（跨度）。div 用来划分大区域，span 用来标记文字片段。
+
+#### 遇到不认识的标签怎么办？
+
+**方法一：猜英文单词**
+
+很多标签是英文单词的缩写：
+- `<abbr>` = abbreviation（缩写）
+- `<blockquote>` = block quote（块引用）
+- `<caption>` = caption（标题/说明）
+- `<figcaption>` = figure caption（图片说明）
+
+**方法二：查 MDN**
+
+[MDN HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element) 有所有标签的详细说明。
+
+**方法三：问 AI**
+
+> "HTML 中的 `<dl>` 标签是什么意思？什么时候用？"
+
+#### 不用刻意背标签
+
+**真正的工作流程是这样的**：
+
+1. 你知道要用一个"容器" → 写 `<div>`
+2. 后来发现这是"导航区域" → 改成 `<nav>`
+3. 后来发现这是"独立文章" → 改成 `<article>`
+
+**先写出来，再优化语义**。标签可以随时改，不用一开始就纠结用哪个。
+
 ---
 
 ## 3. CSS：网页的皮肤
@@ -403,6 +497,182 @@ $primary-color: #3b82f6;
 2. **项目大了再用 SCSS**：小项目直接写 CSS 更简单
 3. **现代 CSS 已经支持变量**：`--primary-color: #3b82f6;` 原生就能用
 :::
+
+### 3.8 如何记住这么多 CSS 属性？
+
+::: tip 🎯 新手困惑
+
+"CSS 属性有好几百个，怎么记得住？"
+
+**答案是：按用途分类，记住核心属性，其他的用到再查。**
+:::
+
+#### 按用途分类记忆
+
+**一、文字排版类（管文字长什么样）**
+
+| 属性 | 记忆口诀 | 常用值 |
+|------|----------|--------|
+| `color` | 颜色 | `red`、`#fff`、`rgb(0,0,0)` |
+| `font-size` | 字号 | `16px`、`1rem`、`1.5em` |
+| `font-weight` | 字重 | `normal`、`bold`、`100`-`900` |
+| `font-family` | 字体 | `"微软雅黑"`、`sans-serif` |
+| `line-height` | 行高 | `1.5`、`24px` |
+| `text-align` | 文字对齐 | `left`、`center`、`right` |
+| `text-decoration` | 文字装饰 | `none`、`underline`、`line-through` |
+
+**记忆方法**：想象你在 Word 里排版——改颜色、改大小、加粗、改字体、调行距、对齐、加下划线。
+
+**二、盒模型类（管元素占多大空间）**
+
+| 属性 | 记忆口诀 | 常用值 |
+|------|----------|--------|
+| `width`/`height` | 宽/高 | `100px`、`50%`、`100vw` |
+| `padding` | 内边距 | `10px`、`10px 20px` |
+| `margin` | 外边距 | `10px`、`auto`（居中用） |
+| `border` | 边框 | `1px solid #ccc` |
+| `border-radius` | 圆角 | `4px`、`50%`（圆形） |
+| `box-sizing` | 盒模型 | `border-box`（推荐） |
+
+**记忆方法**：padding 是"内"边距（内容到边框的距离），margin 是"外"边距（边框到其他元素的距离）。
+
+**简写规则**：
+```css
+/* 四个值：上 右 下 左（顺时针） */
+padding: 10px 20px 15px 25px;
+
+/* 两个值：上下 左右 */
+padding: 10px 20px;
+
+/* 一个值：四个方向都一样 */
+padding: 10px;
+```
+
+**三、背景与边框类（管元素长什么样）**
+
+| 属性 | 记忆口诀 | 常用值 |
+|------|----------|--------|
+| `background` | 背景 | `#fff`、`url(bg.jpg)`、`linear-gradient(...)` |
+| `background-color` | 背景色 | `#fff`、`rgba(0,0,0,0.5)` |
+| `background-image` | 背景图 | `url(photo.jpg)` |
+| `background-size` | 背景大小 | `cover`、`contain`、`100%` |
+| `background-position` | 背景位置 | `center`、`top left` |
+| `box-shadow` | 盒阴影 | `0 2px 10px rgba(0,0,0,0.1)` |
+| `opacity` | 透明度 | `0`-`1`（0 完全透明） |
+
+**记忆方法**：`background` 是简写，可以一次设置多个值：
+```css
+background: #fff url(bg.jpg) no-repeat center/cover;
+/*          颜色  图片      是否重复   位置/大小 */
+```
+
+**四、布局类（管元素怎么排列）**
+
+| 属性 | 记忆口诀 | 常用值 |
+|------|----------|--------|
+| `display` | 显示方式 | `block`、`inline`、`flex`、`grid`、`none` |
+| `position` | 定位 | `static`、`relative`、`absolute`、`fixed`、`sticky` |
+| `top`/`right`/`bottom`/`left` | 四个方向 | `10px`、`50%`（配合 position 使用） |
+| `z-index` | 层级 | 数字越大越在上层 |
+| `float` | 浮动 | `left`、`right`（老方法，不推荐） |
+| `overflow` | 溢出处理 | `visible`、`hidden`、`scroll`、`auto` |
+
+**position 记忆方法**：
+- `static`：默认，正常流
+- `relative`：相对自己原来的位置偏移
+- `absolute`：相对最近的定位祖先元素定位
+- `fixed`：相对视口定位（滚动也不动）
+- `sticky`：滚动到一定位置后固定
+
+**五、Flexbox 布局类（一维布局神器）**
+
+| 属性 | 记忆口诀 | 作用 |
+|------|----------|------|
+| `display: flex` | 开启 Flex | 容器变成 Flex 容器 |
+| `flex-direction` | 方向 | `row`（横向）、`column`（纵向） |
+| `justify-content` | 主轴对齐 | 元素在主轴上怎么排 |
+| `align-items` | 交叉轴对齐 | 元素在交叉轴上怎么对齐 |
+| `flex-wrap` | 换行 | `nowrap`、`wrap` |
+| `gap` | 间隙 | 元素之间的间距 |
+| `flex` | 弹性 | 子元素的伸缩比例 |
+
+**记忆方法**：
+- `justify` = 证明/对齐 → 主轴对齐
+- `align` = 排列/对齐 → 交叉轴对齐
+
+**六、动画过渡类（管元素怎么动）**
+
+| 属性 | 记忆口诀 | 常用值 |
+|------|----------|--------|
+| `transition` | 过渡 | `all 0.3s ease` |
+| `transform` | 变换 | `translate(10px)`、`rotate(45deg)`、`scale(1.1)` |
+| `animation` | 动画 | `fadeIn 1s ease forwards` |
+
+**简写规则**：
+```css
+/* transition: 属性 时长 缓动函数 延迟 */
+transition: all 0.3s ease 0s;
+
+/* transform 可以组合多个变换 */
+transform: translateX(10px) rotate(45deg) scale(1.1);
+```
+
+#### 遇到不认识的属性怎么办？
+
+**方法一：猜英文单词**
+
+很多属性是英文单词或缩写：
+- `margin` = 边缘、余地
+- `padding` = 填充
+- `border` = 边界
+- `visibility` = 可见性
+- `cursor` = 光标
+
+**方法二：按场景联想**
+
+当你想实现某个效果时，想想"关键词"：
+
+| 我想... | 可能的属性 |
+|---------|------------|
+| 改颜色 | `color`、`background-color`、`border-color` |
+| 改大小 | `width`、`height`、`font-size` |
+| 改位置 | `margin`、`position`、`top/left` |
+| 改间距 | `padding`、`margin`、`gap` |
+| 隐藏元素 | `display: none`、`visibility: hidden`、`opacity: 0` |
+| 居中 | `margin: auto`、`text-align: center`、`justify-content: center` |
+| 加圆角 | `border-radius` |
+| 加阴影 | `box-shadow`、`text-shadow` |
+| 加动画 | `transition`、`animation` |
+
+**方法三：查 MDN 或问 AI**
+
+[MDN CSS 属性参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference) 有所有属性的详细说明。
+
+> "CSS 中如何让文字只显示一行，超出部分用省略号？"
+
+**方法四：用开发者工具"偷师"**
+
+看到喜欢的网页效果：
+1. 右键 → "检查"
+2. 选中元素，看 Styles 面板
+3. 直接复制 CSS 属性
+
+#### 不用刻意背属性
+
+**真正的工作流程是这样的**：
+
+1. 你知道要"居中" → 搜索"CSS 居中"
+2. 复制代码，改改数值
+3. 用多了就记住了
+
+**推荐的学习路径**：
+
+1. **先掌握盒模型**：`width`、`height`、`padding`、`margin`、`border`
+2. **再掌握 Flexbox**：`display: flex`、`justify-content`、`align-items`
+3. **然后掌握定位**：`position`、`top/left`、`z-index`
+4. **最后学动画**：`transition`、`transform`、`animation`
+
+其他属性用到再查，用多了自然就记住了。
 
 ---
 
