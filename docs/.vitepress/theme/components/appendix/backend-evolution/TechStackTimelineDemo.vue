@@ -1,8 +1,9 @@
 <template>
   <div class="tech-stack-timeline-demo">
     <div class="demo-header">
-      <h4>📚 技术栈演进时间线</h4>
-      <p>每个时代的主流技术栈</p>
+      <span class="icon">📚</span>
+      <span class="title">技术栈演进时间线</span>
+      <span class="subtitle">每个时代的主流技术栈</span>
     </div>
 
     <div class="timeline">
@@ -106,6 +107,8 @@ const eras = [
   background: var(--vp-c-bg-soft);
   padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
@@ -246,5 +249,24 @@ const eras = [
   .tech-categories {
     grid-template-columns: 1fr;
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

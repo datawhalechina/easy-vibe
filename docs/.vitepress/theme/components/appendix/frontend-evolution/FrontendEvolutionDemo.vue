@@ -4,100 +4,62 @@
 -->
 <template>
   <div class="evolution-timeline">
-    <div class="timeline-header">
-      <span class="header-icon">🚀</span>
-      <span class="header-title">前端开发演进时间线</span>
-      <span class="header-subtitle">从"贴海报"到"搭乐高"的 20 年变迁</span>
+    <div class="demo-header">
+      <span class="icon">🚀</span>
+      <span class="title">前端演进时间线</span>
+      <span class="subtitle">从"贴海报"到"搭乐高"的20年变迁</span>
     </div>
 
-    <!-- 时间线 -->
-    <div class="timeline-container">
-      <div
-        v-for="(era, index) in eras"
-        :key="era.id"
-        class="era-item"
-        :class="{ active: activeEra === era.id }"
-        @click="activeEra = activeEra === era.id ? null : era.id"
-      >
-        <div class="era-marker">
-          <div class="era-dot">{{ era.emoji }}</div>
-          <div v-if="index < eras.length - 1" class="era-line"></div>
-        </div>
-
-        <div class="era-content">
-          <div class="era-header">
-            <span class="era-year">{{ era.year }}</span>
-            <span class="era-name">{{ era.name }}</span>
+    <div class="demo-content">
+      <!-- 时间线 -->
+      <div class="timeline-container">
+        <div
+          v-for="(era, index) in eras"
+          :key="era.id"
+          class="era-item"
+          :class="{ active: activeEra === era.id }"
+          @click="activeEra = activeEra === era.id ? null : era.id"
+        >
+          <div class="era-marker">
+            <div class="era-dot">{{ era.emoji }}</div>
+            <div v-if="index < eras.length - 1" class="era-line"></div>
           </div>
 
-          <div class="era-brief">{{ era.brief }}</div>
-
-          <Transition name="expand">
-            <div v-if="activeEra === era.id" class="era-detail">
-              <div class="detail-section">
-                <div class="section-title">🔑 关键技术</div>
-                <div class="tech-tags">
-                  <span
-                    v-for="tech in era.technologies"
-                    :key="tech"
-                    class="tech-tag"
-                  >{{ tech }}</span>
-                </div>
-              </div>
-
-              <div class="detail-section">
-                <div class="section-title">💪 优点</div>
-                <div class="benefit-list">
-                  <div
-                    v-for="benefit in era.pros"
-                    :key="benefit"
-                    class="benefit-item"
-                  >
-                    <span class="check-icon">✓</span>
-                    <span>{{ benefit }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="detail-section">
-                <div class="section-title">⚠️ 缺点</div>
-                <div class="problem-list">
-                  <div
-                    v-for="problem in era.cons"
-                    :key="problem"
-                    class="problem-item"
-                  >
-                    <span class="warn-icon">!</span>
-                    <span>{{ problem }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="detail-section" v-if="era.metaphor">
-                <div class="section-title">💡 生活比喻</div>
-                <div class="metaphor-box">{{ era.metaphor }}</div>
-              </div>
+          <div class="era-content">
+            <div class="era-header">
+              <span class="era-year">{{ era.year }}</span>
+              <span class="era-name">{{ era.name }}</span>
             </div>
-          </Transition>
+
+            <div class="era-brief">{{ era.brief }}</div>
+
+            <Transition name="expand">
+              <div v-if="activeEra === era.id" class="era-detail">
+                <div class="detail-section">
+                  <div class="section-title">🔑 关键技术</div>
+                  <div class="tech-tags">
+                    <span
+                      v-for="tech in era.technologies.slice(0, 5)"
+                      :key="tech"
+                      class="tech-tag"
+                    >{{ tech }}</span>
+                  </div>
+                </div>
+
+                <div class="detail-section" v-if="era.metaphor">
+                  <div class="section-title">💡 生活比喻</div>
+                  <div class="metaphor-box">{{ era.metaphor }}</div>
+                </div>
+              </div>
+            </Transition>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 提示 -->
-    <div class="timeline-hint">
-      <span>👆</span>
-      <span>点击任意时代，查看详细信息</span>
-    </div>
-
-    <!-- 核心要点 -->
-    <div class="key-takeaway">
-      <span class="takeaway-icon">🎯</span>
-      <div class="takeaway-content">
-        <strong>核心思想：</strong>
-        前端技术的演进，本质是为了解决两个问题：
-        <strong>提升开发效率</strong>（从手动到自动化）和
-        <strong>支撑更复杂的应用</strong>（从简单页面到桌面级应用）。
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>前端技术的演进，本质是为了解决两个问题：提升开发效率（从手动到自动化）和支撑更复杂的应用（从简单页面到桌面级应用）。
     </div>
   </div>
 </template>
@@ -168,37 +130,39 @@ const eras = [
 
 <style scoped>
 .evolution-timeline {
-  border: 2px solid #e0e0e0;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
-  padding: 24px;
-  margin: 20px 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
-.timeline-header {
-  text-align: center;
-  margin-bottom: 32px;
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.header-icon {
-  font-size: 48px;
-  display: block;
-  margin-bottom: 12px;
+.demo-header .icon {
+  font-size: 1.25rem;
 }
 
-.header-title {
-  display: block;
-  font-size: 24px;
+.demo-header .title {
   font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
+  font-size: 1rem;
 }
 
-.header-subtitle {
-  display: block;
-  font-size: 14px;
-  color: #666;
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  margin-bottom: 0.5rem;
 }
 
 /* 时间线容器 */
@@ -208,8 +172,8 @@ const eras = [
 
 .era-item {
   display: flex;
-  gap: 20px;
-  margin-bottom: 24px;
+  gap: 1rem;
+  margin-bottom: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -231,89 +195,88 @@ const eras = [
 }
 
 .era-dot {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--vp-c-brand);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1;
   transition: all 0.3s ease;
 }
 
 .era-item:hover .era-dot {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .era-line {
   width: 4px;
   flex: 1;
-  background: linear-gradient(180deg, #667eea, #e0e0e0);
+  background: var(--vp-c-divider);
   margin-top: 8px;
-  min-height: 40px;
+  min-height: 30px;
 }
 
 /* 内容区域 */
 .era-content {
   flex: 1;
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  border: 2px solid #e0e0e0;
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  padding: 0.75rem;
+  border: 2px solid var(--vp-c-divider);
   transition: all 0.3s ease;
 }
 
 .era-item:hover .era-content {
-  border-color: #667eea;
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.1);
+  border-color: var(--vp-c-brand);
 }
 
 .era-item.active .era-content {
-  border-color: #667eea;
-  background: linear-gradient(135deg, #f8f9ff, #ffffff);
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-soft);
 }
 
 .era-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .era-year {
-  padding: 4px 12px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 2px 10px;
+  background: var(--vp-c-brand);
   color: white;
-  border-radius: 12px;
-  font-size: 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: bold;
 }
 
 .era-name {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
-  color: #333;
+  color: var(--vp-c-text-1);
 }
 
 .era-brief {
-  font-size: 14px;
-  color: #666;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
   line-height: 1.5;
 }
 
 /* 详情展开 */
 .era-detail {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 2px dashed #e0e0e0;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 2px dashed var(--vp-c-divider);
 }
 
 .detail-section {
-  margin-bottom: 16px;
+  margin-bottom: 0.75rem;
 }
 
 .detail-section:last-child {
@@ -321,124 +284,36 @@ const eras = [
 }
 
 .section-title {
-  font-size: 13px;
+  font-size: 0.8rem;
   font-weight: bold;
-  color: #667eea;
-  margin-bottom: 8px;
+  color: var(--vp-c-brand);
+  margin-bottom: 0.5rem;
 }
 
 /* 技术标签 */
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .tech-tag {
-  padding: 4px 12px;
-  background: #f0f4ff;
-  color: #667eea;
-  border-radius: 12px;
-  font-size: 12px;
+  padding: 2px 10px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand);
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: 500;
-}
-
-/* 优点列表 */
-.benefit-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.benefit-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #16a34a;
-}
-
-.check-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  background: #dcfce7;
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-/* 缺点列表 */
-.problem-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.problem-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #dc2626;
-}
-
-.warn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  background: #fecaca;
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: bold;
 }
 
 /* 比喻框 */
 .metaphor-box {
-  background: linear-gradient(135deg, #fff7ed, #ffedd5);
-  border-left: 4px solid #f97316;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  color: #9a3412;
-  line-height: 1.6;
-}
-
-/* 提示 */
-.timeline-hint {
-  text-align: center;
-  font-size: 13px;
-  color: #666;
-  margin: 16px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-/* 核心要点 */
-.key-takeaway {
-  display: flex;
-  gap: 12px;
-  padding: 16px;
-  background: linear-gradient(135deg, #dcfce7, #d1fae5);
-  border-radius: 12px;
-  border-left: 4px solid #16a34a;
-}
-
-.takeaway-icon {
-  font-size: 24px;
-  flex-shrink: 0;
-}
-
-.takeaway-content {
-  flex: 1;
-  font-size: 14px;
-  color: #14532d;
+  background: var(--vp-c-bg-alt);
+  border-left: 4px solid var(--vp-c-brand);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
   line-height: 1.6;
 }
 
@@ -457,28 +332,25 @@ const eras = [
 
 .expand-enter-to,
 .expand-leave-from {
-  max-height: 1000px;
+  max-height: 600px;
   opacity: 1;
 }
 
-/* 响应式 */
-@media (max-width: 768px) {
-  .era-item {
-    flex-direction: column;
-    gap: 12px;
-  }
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
+}
 
-  .era-marker {
-    flex-direction: row;
-    gap: 12px;
-  }
+.info-box .icon {
+  flex-shrink: 0;
+}
 
-  .era-line {
-    width: 100%;
-    height: 4px;
-    min-height: 0;
-    margin-top: 0;
-    margin-left: 8px;
-  }
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

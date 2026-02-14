@@ -1,8 +1,9 @@
 <template>
   <div class="role-policy-demo">
     <div class="demo-header">
-      <h4>角色与策略关系可视化</h4>
-      <p class="intro-text">拖动查看角色如何关联多个策略</p>
+      <span class="icon">🎭</span>
+      <span class="title">角色与策略</span>
+      <span class="subtitle">理解角色如何关联多个策略</span>
     </div>
 
     <div class="demo-content">
@@ -80,7 +81,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 策略叠加：</strong>一个角色可以附加多个策略，最终的权限是所有策略的叠加结果。Deny 策略优先级高于 Allow。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>策略叠加——一个角色可以附加多个策略，最终的权限是所有策略的叠加结果。Deny 策略优先级高于 Allow。
     </div>
   </div>
 </template>

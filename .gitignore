@@ -10,3 +10,7 @@ MULTI_LANGUAGE_PLAN.md
 scripts/collapse_code_blocks.py
 .gitignore
 scripts/verify.sh
+REFACTORING_PLAN.md
+.gitignore
+.gitignore
+REFACTORING_REPORT.md

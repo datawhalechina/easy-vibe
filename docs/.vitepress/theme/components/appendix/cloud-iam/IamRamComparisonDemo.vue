@@ -1,8 +1,9 @@
 <template>
   <div class="iam-ram-comparison-demo">
     <div class="demo-header">
-      <h4>AWS IAM vs 阿里云 RAM 对比</h4>
-      <p class="intro-text">点击各个模块查看详细对比</p>
+      <span class="icon">🔐</span>
+      <span class="title">IAM vs RAM 对比</span>
+      <span class="subtitle">理解不同云厂商的权限管理服务</span>
     </div>
 
     <div class="demo-content">
@@ -80,7 +81,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 提示：</strong>IAM 和 RAM 的核心概念基本一致，只是术语和实现细节略有不同。掌握一个平台后，可以快速迁移到另一个平台。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>IAM 和 RAM 的核心概念基本一致，只是术语和实现细节略有不同。掌握一个平台后，可以快速迁移到另一个平台。
     </div>
   </div>
 </template>
@@ -163,31 +165,24 @@ function selectFeature(platform, index) {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
   max-height: 600px;
   overflow-y: auto;
 }
 
 .demo-header {
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-}
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
-.intro-text {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
-}
-
-.demo-content {
-  margin-bottom: 1rem;
-}
+.demo-content { margin-bottom: 0.75rem; }
 
 .comparison-container {
   display: grid;
@@ -214,7 +209,7 @@ function selectFeature(platform, index) {
 }
 
 .platform-header.ram {
-  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  background: var(--vp-c-bg-soft);
 }
 
 .platform-header .logo {
@@ -234,9 +229,7 @@ function selectFeature(platform, index) {
   color: var(--vp-c-text-2);
 }
 
-.features-list {
-  padding: 0.75rem;
-}
+.features-list { padding: 0.75rem; }
 
 .feature-item {
   display: flex;
@@ -258,9 +251,7 @@ function selectFeature(platform, index) {
   transform: translateX(4px);
 }
 
-.feature-icon {
-  font-size: 1.2rem;
-}
+.feature-icon { font-size: 1.2rem; }
 
 .feature-content {
   display: flex;
@@ -289,13 +280,11 @@ function selectFeature(platform, index) {
   padding: 1rem;
 }
 
-.detail-card {
-  text-align: center;
-}
+.detail-card { text-align: center; }
 
 .detail-card h6 {
   margin: 0 0 1rem 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--vp-c-brand-1);
 }
 
@@ -324,18 +313,13 @@ function selectFeature(platform, index) {
   color: var(--vp-c-text-1);
 }
 
-.aws-detail .label {
-  color: var(--vp-c-brand-1);
-}
-
-.ram-detail .label {
-  color: var(--vp-c-brand-delta);
-}
+.aws-detail .label { color: var(--vp-c-brand-1); }
+.ram-detail .label { color: var(--vp-c-brand-delta); }
 
 .aws-detail p,
 .ram-detail p {
   margin: 0 0 0.5rem 0;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   color: var(--vp-c-text-2);
 }
@@ -347,7 +331,7 @@ function selectFeature(platform, index) {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 4px;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   word-break: break-all;
   color: var(--vp-c-text-2);
 }
@@ -363,19 +347,17 @@ function selectFeature(platform, index) {
 }
 
 .info-box {
-  padding: 0.75rem;
   background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-left: 4px solid var(--vp-c-brand);
+  padding: 0.75rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
 }
 
-.info-box strong {
-  color: var(--vp-c-text-1);
-}
+.info-box .icon { flex-shrink: 0; }
 
 @media (max-width: 1024px) {
   .comparison-container {
@@ -383,16 +365,8 @@ function selectFeature(platform, index) {
     gap: 1rem;
   }
 
-  .comparison-details {
-    order: -1;
-  }
-
-  .comparison-row {
-    flex-direction: column;
-  }
-
-  .vs-divider {
-    padding: 0.5rem 0;
-  }
+  .comparison-details { order: -1; }
+  .comparison-row { flex-direction: column; }
+  .vs-divider { padding: 0.5rem 0; }
 }
 </style>

@@ -1,8 +1,9 @@
 <template>
   <div class="cross-account-access-demo">
     <div class="demo-header">
-      <h4>跨账号访问流程演示</h4>
-      <p class="intro-text">角色扮演（AssumeRole）获取临时凭证</p>
+      <span class="icon">🔗</span>
+      <span class="title">跨账号访问</span>
+      <span class="subtitle">理解跨账号访问的 AssumeRole 机制</span>
     </div>
 
     <div class="demo-content">
@@ -65,7 +66,8 @@ s3_client = boto3.client(
     </div>
 
     <div class="info-box">
-      <strong>💡 跨账号访问优势：</strong>通过角色扮演实现跨账号访问，无需在每个账号创建 IAM 用户，临时凭证自动过期，更安全更易管理。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>通过角色扮演实现跨账号访问，无需在每个账号创建 IAM 用户，临时凭证自动过期，更安全更易管理。
     </div>
   </div>
 </template>

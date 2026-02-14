@@ -1,8 +1,9 @@
 <template>
   <div class="evolution-intro-demo">
-    <div class="intro-header">
-      <h3>后端架构进化之旅</h3>
-      <p>用一个餐厅的成长历程，理解后端架构的 30 年变迁</p>
+    <div class="demo-header">
+      <span class="icon">🏗️</span>
+      <span class="title">后端架构进化之旅</span>
+      <span class="subtitle">用餐厅比喻理解 30 年架构演进</span>
     </div>
 
     <div class="timeline-cards">
@@ -20,7 +21,7 @@
       </div>
     </div>
 
-    <div class="stage-detail">
+    <div class="stage-detail" v-if="currentStage !== null">
       <Transition name="fade" mode="out-in">
         <div :key="currentStage" class="detail-panel">
           <div class="detail-header">
@@ -45,6 +46,11 @@
           </div>
         </div>
       </Transition>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>架构演进是为了解决上一个时代的痛点，但也带来了新的复杂度。没有最好的架构，只有最适合的架构。
     </div>
   </div>
 </template>
@@ -116,84 +122,95 @@ const stages = [
 
 <style scoped>
 .evolution-intro-demo {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 16px;
-  padding: 32px;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
-.intro-header {
-  text-align: center;
-  margin-bottom: 32px;
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.intro-header h3 {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
+.demo-header .icon {
+  font-size: 1.25rem;
 }
 
-.intro-header p {
-  font-size: 14px;
-  opacity: 0.9;
-  margin: 0;
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--vp-c-text-1);
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .timeline-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .stage-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--vp-c-bg);
   border: 2px solid transparent;
-  border-radius: 12px;
-  padding: 16px 12px;
+  border-radius: 8px;
+  padding: 0.75rem 0.5rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 .stage-card:hover {
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--vp-c-brand);
   transform: translateY(-2px);
 }
 
 .stage-card.active {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stage-era {
-  font-size: 11px;
-  opacity: 0.7;
-  margin-bottom: 4px;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  margin-bottom: 0.25rem;
 }
 
 .stage-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .stage-name {
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 2px;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.25rem;
 }
 
 .stage-arch {
-  font-size: 11px;
-  opacity: 0.7;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
 }
 
 .stage-detail {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  padding: 24px;
+  background: var(--vp-c-bg);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .detail-panel {
@@ -208,56 +225,76 @@ const stages = [
 .detail-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .detail-icon {
-  font-size: 32px;
+  font-size: 1.5rem;
 }
 
 .detail-header h4 {
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0;
+  color: var(--vp-c-text-1);
 }
 
 .detail-content {
   display: grid;
-  gap: 16px;
+  gap: 0.75rem;
 }
 
 .detail-section h5 {
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin: 0 0 8px 0;
-  color: #ffd700;
+  margin: 0 0 0.5rem 0;
+  color: var(--vp-c-brand);
 }
 
 .detail-section p {
-  font-size: 13px;
+  font-size: 0.8rem;
   line-height: 1.6;
-  margin: 0;
-  opacity: 0.9;
+  margin: 0 0 0.5rem 0;
+  color: var(--vp-c-text-2);
 }
 
 .detail-section ul {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 1rem;
 }
 
 .detail-section li {
-  font-size: 13px;
+  font-size: 0.8rem;
   line-height: 1.6;
-  margin-bottom: 4px;
-  opacity: 0.9;
+  margin-bottom: 0.25rem;
+  color: var(--vp-c-text-2);
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .fade-enter-from {
@@ -275,8 +312,8 @@ const stages = [
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .stage-detail {
-    padding: 16px;
+  .detail-content {
+    grid-template-columns: 1fr;
   }
 }
 </style>

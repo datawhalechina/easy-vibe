@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "build": "vitepress build docs --force",
     "preview": "vitepress preview docs",
     "format": "prettier --write .",
     "verify": "bash scripts/verify.sh"

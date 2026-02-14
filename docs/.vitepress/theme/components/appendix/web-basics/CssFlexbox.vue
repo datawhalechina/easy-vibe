@@ -1,73 +1,86 @@
 <!--
   CssFlexbox.vue
-  Flex 速学：三个按钮控制方向/对齐/换行，实时看盒子怎么排。
+  Flex 布局速学：三个按钮控制方向/对齐/换行，实时看盒子怎么排
 -->
 <template>
   <div class="flex-demo">
-    <div class="controls">
-      <div class="control-item">
-        <div class="control-header">
-          <label>主轴方向 (flex-direction)</label>
+    <div class="demo-header">
+      <span class="icon">📐</span>
+      <span class="title">Flex 布局</span>
+      <span class="subtitle">一行代码搞定排列对齐（通俗说：自动排版）</span>
+    </div>
+
+    <div class="demo-content">
+      <div class="controls">
+        <div class="control-item">
+          <div class="control-header">
+            <label>主轴方向 (flex-direction)</label>
+          </div>
+          <div class="chips">
+            <button
+              v-for="d in directions"
+              :key="d.id"
+              :class="['chip', { active: dir === d.id }]"
+              @click="dir = d.id"
+            >
+              {{ d.label }}
+            </button>
+          </div>
         </div>
-        <div class="chips">
-          <button
-            v-for="d in directions"
-            :key="d.id"
-            :class="['chip', { active: dir === d.id }]"
-            @click="dir = d.id"
-          >
-            {{ d.label }}
-          </button>
+        <div class="control-item">
+          <div class="control-header">
+            <label>主轴对齐 (justify-content)</label>
+          </div>
+          <div class="chips">
+            <button
+              v-for="j in justifies"
+              :key="j.id"
+              :class="['chip', { active: justify === j.id }]"
+              @click="justify = j.id"
+            >
+              {{ j.label }}
+            </button>
+          </div>
+        </div>
+        <div class="control-item">
+          <div class="control-header">
+            <label>是否换行 (flex-wrap)</label>
+          </div>
+          <div class="chips">
+            <button
+              v-for="w in wraps"
+              :key="w.id"
+              :class="['chip', { active: wrap === w.id }]"
+              @click="wrap = w.id"
+            >
+              {{ w.label }}
+            </button>
+          </div>
         </div>
       </div>
-      <div class="control-item">
-        <div class="control-header">
-          <label>主轴对齐 (justify-content)</label>
-        </div>
-        <div class="chips">
-          <button
-            v-for="j in justifies"
-            :key="j.id"
-            :class="['chip', { active: justify === j.id }]"
-            @click="justify = j.id"
-          >
-            {{ j.label }}
-          </button>
+
+      <div class="canvas-container">
+        <div class="canvas" :style="boxStyle">
+          <div v-for="n in 6" :key="n" class="item">{{ n }}</div>
         </div>
       </div>
-      <div class="control-item">
-        <div class="control-header">
-          <label>是否换行 (flex-wrap)</label>
-        </div>
-        <div class="chips">
-          <button
-            v-for="w in wraps"
-            :key="w.id"
-            :class="['chip', { active: wrap === w.id }]"
-            @click="wrap = w.id"
-          >
-            {{ w.label }}
-          </button>
+
+      <div class="code-block">
+        <div class="code-title">CSS 代码片段</div>
+        <div class="code-content">
+          <div class="line">.container {</div>
+          <div class="line">display: flex;</div>
+          <div class="line">flex-direction: {{ dir }};</div>
+          <div class="line">justify-content: {{ justify }};</div>
+          <div class="line">flex-wrap: {{ wrap }};</div>
+          <div class="line">}</div>
         </div>
       </div>
     </div>
 
-    <div class="canvas-container">
-      <div class="canvas" :style="boxStyle">
-        <div v-for="n in 8" :key="n" class="item">{{ n }}</div>
-      </div>
-    </div>
-
-    <div class="code-block">
-      <div class="code-title">CSS 代码片段</div>
-      <div class="code-content">
-        <div class="line">.container {</div>
-        <div class="line">display: flex;</div>
-        <div class="line">flex-direction: {{ dir }};</div>
-        <div class="line">justify-content: {{ justify }};</div>
-        <div class="line">flex-wrap: {{ wrap }};</div>
-        <div class="line">}</div>
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>Flex 让元素自动排列，不用手动计算位置。就像书架上的书，会自动对齐。
     </div>
   </div>
 </template>
@@ -99,7 +112,7 @@ const boxStyle = computed(() => ({
   justifyContent: justify.value,
   flexWrap: wrap.value,
   gap: '12px',
-  minHeight: '200px',
+  minHeight: '180px',
   padding: '16px'
 }))
 </script>
@@ -107,50 +120,76 @@ const boxStyle = computed(() => ({
 <style scoped>
 .flex-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 24px;
-  margin: 24px 0;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.demo-header {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  margin-bottom: 0.5rem;
 }
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .control-item {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 16px;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.5rem;
 }
 
 .control-header label {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--vp-c-text-1);
-  font-size: 13px;
+  font-size: 0.8rem;
 }
 
 .chips {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .chip {
-  padding: 6px 12px;
+  padding: 0.25rem 0.75rem;
   border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-alt);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 0.8rem;
   transition: all 0.2s;
 }
 
@@ -161,82 +200,83 @@ const boxStyle = computed(() => ({
 .chip.active {
   border-color: var(--vp-c-brand);
   color: var(--vp-c-brand);
-  background: var(--vp-c-brand-dimm);
+  background: var(--vp-c-brand-soft);
   font-weight: 600;
 }
 
 .canvas-container {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 4px; /* Tiny padding for the inner canvas */
+  border-radius: 8px;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .canvas {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  /* border: 1px dashed var(--vp-c-divider); */
+  border-radius: 6px;
   background-image: radial-gradient(var(--vp-c-divider) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 .item {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0ea5e9, #10b981);
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  background: var(--vp-c-brand);
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   display: grid;
   place-items: center;
-  font-size: 18px;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+  transition: all 0.3s;
   flex-shrink: 0;
-}
-
-.val {
-  font-family: var(--vp-font-family-mono);
-  color: var(--vp-c-brand);
-  font-weight: 600;
-  font-size: 13px;
-}
-
-input[type='range'] {
-  width: 100%;
-  accent-color: var(--vp-c-brand);
-  cursor: pointer;
-  margin-top: 8px;
 }
 
 .code-block {
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 8px;
+  padding: 0.75rem;
 }
 
 .code-title {
-  font-weight: 700;
-  margin-bottom: 8px;
-  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
   color: var(--vp-c-text-2);
 }
 
 .code-content {
-  background: #0b1221;
-  color: #e5e7eb;
-  border-radius: 8px;
-  padding: 16px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  border-radius: 6px;
+  padding: 0.75rem;
   font-family: var(--vp-font-family-mono);
-  font-size: 13px;
+  font-size: 0.75rem;
   overflow-x: auto;
   line-height: 1.6;
 }
 
 .line {
   white-space: pre;
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

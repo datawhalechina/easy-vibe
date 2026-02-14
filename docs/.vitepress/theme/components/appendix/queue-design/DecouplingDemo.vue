@@ -1,13 +1,13 @@
 <!--
-  CouplingDemo.vue
+  DecouplingDemo.vue
   系统解耦演示 - 同步 vs 异步对比
 -->
 <template>
-  <div class="coupling-demo">
+  <div class="decoupling-demo">
     <div class="demo-header">
       <span class="icon">🔗</span>
-      <span class="title">系统解耦</span>
-      <span class="subtitle">从紧耦合到松耦合</span>
+      <span class="title">系统解耦演示</span>
+      <span class="subtitle">从紧耦合到松耦合的演进</span>
     </div>
 
     <div class="mode-switch">
@@ -31,7 +31,7 @@
       <!-- 紧耦合模式 -->
       <div v-if="!useAsync" class="synchronous-mode">
         <div class="scenario">
-          <div class="scenario-title">❌ 紧耦合问题</div>
+          <div class="scenario-title">❌ 紧耦合的致命问题</div>
           <div class="flow-diagram">
             <div class="service-box order">
               <div class="service-name">订单服务</div>
@@ -59,14 +59,18 @@
             >
               <div class="service-name">通知服务</div>
               <div class="service-desc">发送短信/邮件</div>
-              <div v-if="notificationFailed" class="error-msg">服务宕机 ❌</div>
+              <div v-if="notificationFailed" class="error-msg">
+                服务宕机 ❌
+              </div>
             </div>
           </div>
 
           <div class="problem-list">
             <div class="problem-item">
               <span class="icon">⚠️</span>
-              <span><strong>依赖性强：</strong>通知服务宕机,订单创建失败</span>
+              <span
+                ><strong>依赖性强：</strong>通知服务宕机,订单创建失败</span
+              >
             </div>
             <div class="problem-item">
               <span class="icon">⚠️</span>
@@ -77,7 +81,9 @@
             </div>
             <div class="problem-item">
               <span class="icon">⚠️</span>
-              <span><strong>扩展难：</strong>增加新服务需要修改订单代码</span>
+              <span
+                ><strong>扩展难：</strong>增加新服务需要修改订单代码</span
+              >
             </div>
           </div>
 
@@ -90,7 +96,7 @@
       <!-- 松耦合模式 -->
       <div v-else class="asynchronous-mode">
         <div class="scenario">
-          <div class="scenario-title">✅ 松耦合优势</div>
+          <div class="scenario-title">✅ 松耦合的核心优势</div>
           <div class="flow-diagram">
             <div class="service-box order">
               <div class="service-name">订单服务</div>
@@ -129,7 +135,9 @@
           <div class="benefit-list">
             <div class="benefit-item">
               <span class="icon">✅</span>
-              <span><strong>独立运行：</strong>通知服务宕机不影响订单创建</span>
+              <span
+                ><strong>独立运行：</strong>通知服务宕机不影响订单创建</span
+              >
             </div>
             <div class="benefit-item">
               <span class="icon">✅</span>
@@ -139,7 +147,9 @@
             </div>
             <div class="benefit-item">
               <span class="icon">✅</span>
-              <span><strong>易扩展：</strong>增加新消费者无需修改订单代码</span>
+              <span
+                ><strong>易扩展：</strong>增加新消费者无需修改订单代码</span
+              >
             </div>
           </div>
 
@@ -168,7 +178,12 @@ const messageInQueue = ref(false)
 const syncCalls = ref([
   { id: 1, service: '调用库存服务', active: false, status: '处理中...' },
   { id: 2, service: '调用积分服务', active: false, status: '处理中...' },
-  { id: 3, service: '调用通知服务', active: false, status: '失败!订单回滚' }
+  {
+    id: 3,
+    service: '调用通知服务',
+    active: false,
+    status: '失败!订单回滚'
+  }
 ])
 
 const testSyncCall = () => {
@@ -195,54 +210,53 @@ const testAsyncCall = () => {
 </script>
 
 <style scoped>
-.coupling-demo {
+.decoupling-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 12px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 20px;
+  margin: 20px 0;
+  font-family: var(--vp-font-family-base);
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .demo-header .icon {
-  font-size: 1.25rem;
+  font-size: 24px;
 }
 
 .demo-header .title {
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 18px;
   color: var(--vp-c-text-1);
 }
 
 .demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
+  font-size: 14px;
+  margin-left: 8px;
 }
 
 .mode-switch {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .mode-btn {
   flex: 1;
-  padding: 0.5rem 0.75rem;
+  padding: 12px 16px;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 14px;
   transition: all 0.2s;
 }
 
@@ -257,13 +271,13 @@ const testAsyncCall = () => {
 }
 
 .demo-content {
-  margin-bottom: 0.75rem;
+  margin-bottom: 16px;
 }
 
 .scenario-title {
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
+  font-size: 16px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
@@ -271,73 +285,73 @@ const testAsyncCall = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
+  gap: 16px;
+  padding: 20px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
+  border-radius: 12px;
+  margin-bottom: 16px;
 }
 
 .service-box {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 0.75rem;
+  border-radius: 12px;
+  padding: 16px;
   text-align: center;
-  min-width: 140px;
+  min-width: 160px;
   transition: all 0.3s;
 }
 
 .service-box.failed {
   border-color: var(--vp-c-danger);
-  background: var(--vp-c-danger-soft);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .service-name {
   font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 0.25rem;
+  font-size: 15px;
+  margin-bottom: 6px;
 }
 
 .service-desc {
-  font-size: 0.75rem;
+  font-size: 13px;
   color: var(--vp-c-text-2);
 }
 
 .error-msg {
-  margin-top: 0.5rem;
-  padding: 0.35rem 0.5rem;
+  margin-top: 10px;
+  padding: 8px 12px;
   background: var(--vp-c-danger);
   color: white;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .arrows {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
   width: 100%;
-  max-width: 250px;
+  max-width: 280px;
 }
 
 .sync-call {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 6px;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
   transition: all 0.3s;
 }
 
 .sync-call.active {
-  background: var(--vp-c-danger-soft);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .call-line {
   width: 2px;
-  height: 20px;
+  height: 24px;
   background: var(--vp-c-divider);
 }
 
@@ -346,13 +360,13 @@ const testAsyncCall = () => {
 }
 
 .call-label {
-  font-size: 0.75rem;
+  font-size: 13px;
   color: var(--vp-c-text-2);
   flex: 1;
 }
 
 .call-status {
-  font-size: 0.7rem;
+  font-size: 12px;
   color: var(--vp-c-danger);
   font-weight: 600;
 }
@@ -360,73 +374,73 @@ const testAsyncCall = () => {
 .mq-bridge {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 16px;
 }
 
 .mq-box {
-  background: var(--vp-c-brand-soft);
+  background: rgba(59, 130, 246, 0.1);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 0.75rem;
+  border-radius: 12px;
+  padding: 16px;
   text-align: center;
-  min-width: 120px;
+  min-width: 140px;
 }
 
 .mq-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 32px;
+  margin-bottom: 8px;
 }
 
 .mq-label {
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 15px;
 }
 
 .msg-indicator {
-  margin-top: 0.5rem;
-  padding: 0.35rem 0.5rem;
+  margin-top: 10px;
+  padding: 8px 12px;
   background: var(--vp-c-success);
   color: white;
-  border-radius: 4px;
-  font-size: 0.7rem;
+  border-radius: 8px;
+  font-size: 12px;
   font-weight: 600;
 }
 
 .flow-arrow {
-  font-size: 1.25rem;
+  font-size: 24px;
   color: var(--vp-c-brand);
 }
 
 .consumers-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
 }
 
 .consumer-box {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 6px;
-  padding: 0.5rem;
+  border-radius: 8px;
+  padding: 12px;
   text-align: center;
   transition: all 0.3s;
 }
 
 .consumer-box.failed {
   border-color: var(--vp-c-warning);
-  background: var(--vp-c-warning-soft);
+  background: rgba(245, 158, 11, 0.1);
 }
 
 .consumer-name {
-  font-size: 0.75rem;
+  font-size: 13px;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 6px;
 }
 
 .consumer-status {
-  font-size: 0.65rem;
+  font-size: 12px;
   color: var(--vp-c-text-2);
 }
 
@@ -434,42 +448,42 @@ const testAsyncCall = () => {
 .benefit-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .problem-item,
 .benefit-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .problem-item {
-  background: var(--vp-c-danger-soft);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .benefit-item {
-  background: var(--vp-c-success-soft);
+  background: rgba(34, 197, 94, 0.1);
 }
 
 .icon {
-  font-size: 1rem;
+  font-size: 18px;
   flex-shrink: 0;
 }
 
 .test-btn {
   width: 100%;
-  padding: 0.5rem;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 14px;
   transition: all 0.2s;
 }
 
@@ -493,13 +507,13 @@ const testAsyncCall = () => {
 
 .info-box {
   background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 14px;
   color: var(--vp-c-text-2);
-  margin-top: 0.75rem;
+  margin-top: 16px;
   display: flex;
-  gap: 0.25rem;
+  gap: 8px;
 }
 
 .info-box .icon {

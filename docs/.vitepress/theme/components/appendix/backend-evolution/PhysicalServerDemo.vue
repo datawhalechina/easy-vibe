@@ -1,8 +1,9 @@
 <template>
   <div class="physical-server-demo">
     <div class="demo-header">
-      <h4>🖥️ 物理服务器时代演示</h4>
-      <p>点击"发送请求"，观察早期 CGI 服务器的处理瓶颈</p>
+      <span class="icon">🖥️</span>
+      <span class="title">物理服务器时代演示</span>
+      <span class="subtitle">观察早期 CGI 服务器的处理瓶颈</span>
     </div>
 
     <div class="demo-stage">
@@ -85,27 +86,9 @@
       </div>
     </div>
 
-    <div class="demo-explanation">
-      <h5>💡 早期的痛点在哪里？</h5>
-      <ul>
-        <li>
-          <strong>进程启动开销</strong>：每个请求都要启动新的 CGI
-          进程，就像每来一个客人都要重新搭一个厨房
-        </li>
-        <li>
-          <strong>资源无法复用</strong>：数据库连接每次都要重新建立，CPU
-          频繁在进程间切换
-        </li>
-        <li>
-          <strong>扩展困难</strong>：只能买更强的单机（垂直扩展），无法通过增加机器分担压力
-        </li>
-      </ul>
-      <p class="demo-conclusion">
-        这就是<strong>物理服务器 + CGI</strong>时代的核心问题：<span
-          class="highlight"
-          >进程级隔离带来了稳定性，但也带来了巨大的性能开销</span
-        >。
-      </p>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>进程级隔离带来了稳定性，但也带来了巨大的性能开销。
     </div>
   </div>
 </template>
@@ -192,24 +175,35 @@ const sendRequest = async () => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
   color: var(--vp-c-text-1);
 }
 
-.demo-header p {
-  margin: 0;
-  font-size: 0.9rem;
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .demo-stage {
@@ -471,5 +465,24 @@ const sendRequest = async () => {
     width: 100%;
     height: 3px;
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

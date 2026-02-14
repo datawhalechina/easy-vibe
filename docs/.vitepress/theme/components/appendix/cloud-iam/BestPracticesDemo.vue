@@ -1,8 +1,9 @@
 <template>
   <div class="best-practices-demo">
     <div class="demo-header">
-      <h4>云账号权限管理最佳实践清单</h4>
-      <p class="intro-text">点击查看详细的实施指南和代码示例</p>
+      <span class="icon">✅</span>
+      <span class="title">权限管理最佳实践</span>
+      <span class="subtitle">理解云账号安全管理的核心原则</span>
     </div>
 
     <div class="demo-content">
@@ -52,7 +53,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 实施建议：</strong>按照优先级从 P0 开始逐步实施最佳实践。每个改进都能显著提升账号安全性，不要试图一次性完成所有改进。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>按照优先级从 P0 开始逐步实施最佳实践。每个改进都能显著提升账号安全性，不要试图一次性完成所有改进。
     </div>
   </div>
 </template>

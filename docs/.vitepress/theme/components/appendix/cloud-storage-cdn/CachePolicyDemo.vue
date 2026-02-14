@@ -1,13 +1,19 @@
 <template>
   <div class="demo-container">
     <div class="demo-header">
-      <h4>{{ title }}</h4>
-      <p class="hint">{{ description }}</p>
+      <span class="icon">⚙️</span>
+      <span class="title">{{ title }}</span>
+      <span class="subtitle">{{ description }}</span>
     </div>
     <div class="demo-content">
       <el-alert type="info" :closable="false">
         缓存策略演示组件占位符 - 待实现具体交互
       </el-alert>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>缓存策略平衡命中率和新鲜度，TTL 设置太短会导致频繁回源，太长会导致内容过期。
     </div>
   </div>
 </template>

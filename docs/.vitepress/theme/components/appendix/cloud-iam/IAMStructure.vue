@@ -1,6 +1,13 @@
 <template>
   <div class="iam-structure">
-    <div class="structure-layers">
+    <div class="demo-header">
+      <span class="icon">🏗️</span>
+      <span class="title">IAM 五大核心概念</span>
+      <span class="subtitle">云上权限管理的基础构件</span>
+    </div>
+
+    <div class="demo-content">
+      <div class="structure-layers">
       <div 
         v-for="(layer, index) in layers" 
         :key="index"
@@ -14,21 +21,27 @@
           <div class="layer-desc">{{ layer.shortDesc }}</div>
         </div>
       </div>
-    </div>
-    
-    <div v-if="selectedLayerData" class="layer-detail">
-      <div class="detail-header">
-        <span class="detail-icon">{{ selectedLayerData.icon }}</span>
-        <span class="detail-name">{{ selectedLayerData.name }}</span>
       </div>
-      <div class="detail-desc">{{ selectedLayerData.description }}</div>
-      <div class="detail-examples">
-        <div class="example-title">示例：</div>
-        <ul>
-          <li v-for="(example, i) in selectedLayerData.examples" :key="i">
-            {{ example }}
-          </li>
-        </ul>
+
+      <div v-if="selectedLayerData" class="layer-detail">
+          <div class="detail-header">
+            <span class="detail-icon">{{ selectedLayerData.icon }}</span>
+            <span class="detail-name">{{ selectedLayerData.name }}</span>
+          </div>
+          <div class="detail-desc">{{ selectedLayerData.description }}</div>
+          <div class="detail-examples">
+            <div class="example-title">示例：</div>
+            <ul>
+              <li v-for="(example, i) in selectedLayerData.examples" :key="i">
+                {{ example }}
+              </li>
+            </ul>
+          </div>
+      </div>
+
+      <div class="info-box">
+        <span class="icon">💡</span>
+        <strong>核心思想：</strong>IAM 就像公司的门禁系统——根账号是老板（拥有所有钥匙），用户是员工（有特定权限），角色是临时访客证（有时效），策略是"谁能进哪些门"的规则。
       </div>
     </div>
   </div>
@@ -113,9 +126,39 @@ function selectLayer(index) {
 .iam-structure {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
+  background: var(--vp-c-bg-soft);
   padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  margin-bottom: 0.5rem;
 }
 
 .structure-layers {
@@ -220,5 +263,24 @@ function selectLayer(index) {
 
 .detail-examples li:last-child {
   margin-bottom: 0;
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>
