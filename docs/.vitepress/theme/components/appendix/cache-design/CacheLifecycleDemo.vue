@@ -338,7 +338,7 @@ onUnmounted(() => {
 .cache-entry {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   transition: all 0.3s;
 }
@@ -456,7 +456,7 @@ onUnmounted(() => {
 .action-btn {
   padding: 0.75rem 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -508,7 +508,7 @@ onUnmounted(() => {
   flex-direction: column;
   gap: 0.5rem;
   max-height: 200px;
-  overflow-y: auto;
+  
 }
 
 .event {
@@ -555,9 +555,9 @@ onUnmounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 

@@ -131,9 +131,9 @@ const active = computed(
 .auth-basics-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header {
@@ -197,8 +197,8 @@ const active = computed(
 .card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .card-title {
@@ -233,7 +233,7 @@ const active = computed(
 .box {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 

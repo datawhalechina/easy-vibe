@@ -531,7 +531,7 @@ const layerDetails = {
   gap: 12px;
   padding: 10px 12px;
   background: rgba(0, 212, 255, 0.1);
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 0.875rem;
   color: #e6f1ff;

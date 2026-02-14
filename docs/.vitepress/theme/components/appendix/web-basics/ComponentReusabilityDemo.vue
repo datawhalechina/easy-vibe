@@ -89,17 +89,17 @@ const remove = (id) => {
 <style scoped>
 .component-reusability-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   display: flex;
   flex-direction: column;
 }
 
 .toolbox {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 0.75rem;
   border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
   gap: 1rem;

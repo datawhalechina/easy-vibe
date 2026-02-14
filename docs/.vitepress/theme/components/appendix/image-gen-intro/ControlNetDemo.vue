@@ -495,7 +495,7 @@ watch([selectedControl, controlStrength], updateDisplay)
 
 <style scoped>
 .controlnet-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-title {
@@ -519,7 +519,7 @@ watch([selectedControl, controlStrength], updateDisplay)
 
 .control-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   cursor: pointer;
@@ -559,7 +559,7 @@ watch([selectedControl, controlStrength], updateDisplay)
   flex-wrap: wrap;
   padding: 20px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .workflow-step {
@@ -578,7 +578,7 @@ watch([selectedControl, controlStrength], updateDisplay)
   width: 160px;
   height: 160px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 
@@ -600,7 +600,7 @@ watch([selectedControl, controlStrength], updateDisplay)
 
 .strength-control {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -620,7 +620,7 @@ watch([selectedControl, controlStrength], updateDisplay)
 
 .comparison-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -652,7 +652,7 @@ watch([selectedControl, controlStrength], updateDisplay)
   width: 150px;
   height: 150px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 
@@ -663,7 +663,7 @@ watch([selectedControl, controlStrength], updateDisplay)
 
 .use-cases {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -681,7 +681,7 @@ watch([selectedControl, controlStrength], updateDisplay)
 
 .use-case-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
 }

@@ -315,10 +315,10 @@ onMounted(() => {
 <style scoped>
 .asset-fingerprint-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -412,7 +412,7 @@ onMounted(() => {
 .files-panel,
 .cache-panel {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
 }
@@ -439,7 +439,7 @@ onMounted(() => {
 
 .files-list {
   max-height: 300px;
-  overflow-y: auto;
+  
 }
 
 .file-item {
@@ -539,7 +539,7 @@ onMounted(() => {
 }
 
 .cache-visualization {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .cache-legend {
@@ -677,8 +677,8 @@ onMounted(() => {
 
 .file-details {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
   margin-bottom: 1rem;
 }
@@ -695,7 +695,7 @@ onMounted(() => {
 .detail-icon {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;

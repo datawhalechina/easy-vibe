@@ -266,7 +266,7 @@ const reset = () => { currentStep.value = 0 }
 .user-input-bar {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 14px;
   margin-bottom: 16px;
   font-size: 14px;
@@ -460,7 +460,7 @@ const reset = () => { currentStep.value = 0 }
 .final-result {
   background: var(--vp-c-brand-soft);
   border-left: 3px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px 14px;
   margin-bottom: 16px;
   font-size: 13px;
@@ -513,7 +513,7 @@ const reset = () => { currentStep.value = 0 }
   gap: 8px;
   padding: 10px 14px;
   background: var(--vp-c-brand-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   color: var(--vp-c-text-1);
 }

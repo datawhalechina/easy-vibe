@@ -3,49 +3,47 @@
     <div class="demo-header">
       <span class="icon">🔐</span>
       <span class="title">多因素认证</span>
-      <span class="subtitle">理解 MFA 双因素认证流程</span>
+      <span class="subtitle">MFA 双因素认证流程</span>
     </div>
 
-    <div class="demo-content">
+    <div class="main-area">
       <div class="mfa-flow">
         <div class="auth-step" :class="{ active: step >= 1, completed: step > 1 }">
-          <div class="step-icon">🔐</div>
-          <div class="step-label">密码验证</div>
+          <span class="step-icon">🔐</span>
+          <span class="step-label">密码</span>
         </div>
-        <div class="step-arrow">→</div>
+        <span class="step-arrow">→</span>
         <div class="auth-step" :class="{ active: step >= 2, completed: step > 2 }">
-          <div class="step-icon">📱</div>
-          <div class="step-label">MFA 验证</div>
+          <span class="step-icon">📱</span>
+          <span class="step-label">MFA</span>
         </div>
-        <div class="step-arrow">→</div>
+        <span class="step-arrow">→</span>
         <div class="auth-step" :class="{ active: step >= 3 }">
-          <div class="step-icon">✅</div>
-          <div class="step-label">登录成功</div>
+          <span class="step-icon">✅</span>
+          <span class="step-label">成功</span>
         </div>
       </div>
 
       <div class="auth-panel" v-if="step === 1">
-        <h5>请输入密码</h5>
-        <input type="password" v-model="password" placeholder="输入密码" @keyup.enter="verifyPassword" />
+        <div class="panel-title">请输入密码</div>
+        <input type="password" v-model="password" placeholder="输入任意密码" @keyup.enter="verifyPassword" />
         <button @click="verifyPassword" :disabled="!password">验证密码</button>
       </div>
 
       <div class="auth-panel" v-if="step === 2">
-        <h5>MFA 验证</h5>
+        <div class="panel-title">MFA 验证码</div>
         <div class="totp-display">
           <span class="totp-code">{{ totpCode }}</span>
-          <div class="totp-timer">
-            <div class="timer-bar" :style="{ width: timerWidth + '%' }"></div>
-          </div>
+          <div class="totp-hint">模拟验证码</div>
         </div>
-        <input type="text" v-model="userCode" placeholder="输入6位验证码" maxlength="6" @keyup.enter="verifyMFA" />
+        <input type="text" v-model="userCode" placeholder="输入上方验证码" maxlength="6" @keyup.enter="verifyMFA" />
         <button @click="verifyMFA" :disabled="userCode.length !== 6">验证</button>
       </div>
 
-      <div class="success-message" v-if="step === 3">
-        <div class="success-icon">🎉</div>
-        <h5>登录成功！</h5>
-        <p>已通过 MFA 双因素认证</p>
+      <div class="success-panel" v-if="step === 3">
+        <span class="success-icon">🎉</span>
+        <div class="success-title">登录成功！</div>
+        <div class="success-desc">已通过 MFA 双因素认证</div>
         <button @click="reset">重新演示</button>
       </div>
     </div>
@@ -58,43 +56,27 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 
 const step = ref(1)
 const password = ref('')
 const userCode = ref('')
 const totpCode = ref('123456')
-const timerWidth = ref(100)
-let timerInterval = null
 
 function generateTOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString()
-}
-
-function startTimer() {
-  timerWidth.value = 100
-  if (timerInterval) clearInterval(timerInterval)
-  timerInterval = setInterval(() => {
-    timerWidth.value -= 1.67
-    if (timerWidth.value <= 0) {
-      totpCode.value = generateTOTP()
-      timerWidth.value = 100
-    }
-  }, 100)
 }
 
 function verifyPassword() {
   if (password.value) {
     step.value = 2
     totpCode.value = generateTOTP()
-    startTimer()
   }
 }
 
 function verifyMFA() {
   if (userCode.value.length === 6) {
     step.value = 3
-    if (timerInterval) clearInterval(timerInterval)
   }
 }
 
@@ -102,55 +84,39 @@ function reset() {
   step.value = 1
   password.value = ''
   userCode.value = ''
-  if (timerInterval) clearInterval(timerInterval)
 }
-
-onMounted(() => {
-  if (step.value === 2) startTimer()
-})
-
-onUnmounted(() => {
-  if (timerInterval) clearInterval(timerInterval)
-})
 </script>
 
 <style scoped>
 .mfa-security-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-}
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
-.intro-text {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
-}
-
-.demo-content {
-  margin-bottom: 1rem;
+.main-area {
+  margin-bottom: 0.75rem;
 }
 
 .mfa-flow {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
@@ -158,13 +124,13 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: 0.25rem;
+  padding: 0.6rem 0.8rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   opacity: 0.5;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
 .auth-step.active {
@@ -173,178 +139,107 @@ onUnmounted(() => {
   border-color: var(--vp-c-brand);
 }
 
-.auth-step.completed {
-  opacity: 1;
-  background: rgba(var(--vp-c-brand-rgb), 0.1);
-  border-color: var(--vp-c-brand);
-}
-
-.step-icon {
-  font-size: 2rem;
-}
-
-.step-label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-}
-
-.step-arrow {
-  font-size: 1.5rem;
-  color: var(--vp-c-text-3);
-}
+.step-icon { font-size: 1.25rem; }
+.step-label { font-size: 0.7rem; font-weight: 500; }
+.step-arrow { font-size: 1rem; color: var(--vp-c-text-3); }
 
 .auth-panel {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.25rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
-.auth-panel h5 {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  font-weight: 700;
+.panel-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
   color: var(--vp-c-text-1);
 }
 
 .auth-panel input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
+  border-radius: 4px;
   background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-1);
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
   box-sizing: border-box;
-}
-
-.auth-panel input::placeholder {
-  color: var(--vp-c-text-3);
 }
 
 .auth-panel button {
   width: 100%;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   background: var(--vp-c-brand);
-  color: var(--vp-c-bg);
-  font-size: 1rem;
+  color: #fff;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
-.auth-panel button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.auth-panel button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--vp-c-brand-rgb), 0.3);
-}
+.auth-panel button:disabled { opacity: 0.5; cursor: not-allowed; }
+.auth-panel button:hover:not(:disabled) { opacity: 0.9; }
 
 .totp-display {
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 1rem;
+  border-radius: 4px;
+  padding: 0.5rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .totp-code {
   display: block;
-  font-size: 2.5rem;
-  font-weight: 700;
-  font-family: var(--vp-font-family-mono);
-  letter-spacing: 0.2em;
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-1);
-}
-
-.totp-timer {
-  height: 4px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.timer-bar {
-  height: 100%;
-  background: var(--vp-c-brand);
-  transition: width 0.1s linear;
-}
-
-.success-message {
-  background: var(--vp-c-brand-soft);
-  border: 1px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 2rem;
-  text-align: center;
-  margin-bottom: 1.25rem;
-}
-
-.success-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.success-message h5 {
-  margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-family-mono);
+  letter-spacing: 0.1em;
+  color: var(--vp-c-brand);
 }
 
-.success-message p {
-  margin: 0 0 1.25rem 0;
-  color: var(--vp-c-text-2);
+.totp-hint {
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
 }
 
-.success-message button {
-  padding: 0.75rem 2rem;
-  border: 1px solid var(--vp-c-divider);
+.success-panel {
+  background: var(--vp-c-brand-soft);
+  border: 1px solid var(--vp-c-brand);
   border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.success-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.success-title { font-size: 1rem; font-weight: 700; color: var(--vp-c-text-1); margin-bottom: 0.25rem; }
+.success-desc { font-size: 0.8rem; color: var(--vp-c-text-2); margin-bottom: 0.75rem; }
+
+.success-panel button {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 600;
-}
-
-.success-message button:hover {
-  background: var(--vp-c-bg-alt);
-  transform: translateY(-2px);
 }
 
 .info-box {
-  padding: 0.75rem;
   background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-left: 4px solid var(--vp-c-brand);
+  padding: 0.6rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
 }
 
-.info-box strong {
-  color: var(--vp-c-text-1);
-}
-
-@media (max-width: 768px) {
-  .mfa-flow {
-    flex-direction: column;
-  }
-
-  .step-arrow {
-    transform: rotate(90deg);
-  }
-}
+.info-box .icon { flex-shrink: 0; }
+.info-box strong { color: var(--vp-c-text-1); }
 </style>

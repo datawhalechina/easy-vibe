@@ -86,7 +86,7 @@ const stage = ref(1)
 .pipeline-demo {
   padding: 20px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 20px 0;
 }
 
@@ -126,7 +126,7 @@ const stage = ref(1)
 
 .component-box {
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
   text-align: center;
   min-width: 100px;
@@ -184,7 +184,7 @@ const stage = ref(1)
 .data-example {
   background: var(--vp-c-bg);
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 

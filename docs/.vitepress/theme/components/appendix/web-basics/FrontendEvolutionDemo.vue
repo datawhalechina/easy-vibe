@@ -482,7 +482,7 @@ export default {
 }
 
 .editor-content {
-  padding: 1rem;
+  padding: 0.75rem;
   overflow: auto;
   flex: 1;
 }
@@ -515,7 +515,7 @@ export default {
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0.8rem 1.2rem;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   font-weight: 600;
   font-size: 0.9rem;

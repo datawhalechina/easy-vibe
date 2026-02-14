@@ -336,7 +336,7 @@ const activeServer = ref(0)
   padding: 0.75rem 1rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.9rem;
@@ -414,7 +414,7 @@ const activeServer = ref(0)
   gap: 0.5rem;
   position: relative;
   padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
   min-width: 80px;
 }
@@ -470,7 +470,7 @@ const activeServer = ref(0)
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   transition: all 0.3s;
 }
 
@@ -577,7 +577,7 @@ const activeServer = ref(0)
 }
 
 .detail-card {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .card-header {
@@ -630,7 +630,7 @@ const activeServer = ref(0)
 .config-item {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 

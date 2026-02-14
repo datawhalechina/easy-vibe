@@ -311,7 +311,7 @@ const flatNext = () => {
 .code-area {
   flex: 2;
   background: #f5f7fa;
-  overflow-y: auto;
+  
   font-family: monospace;
   border-right: 1px solid #dcdfe6;
 }

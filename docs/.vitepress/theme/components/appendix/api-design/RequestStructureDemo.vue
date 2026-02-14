@@ -48,7 +48,7 @@
 <style scoped>
 .demo-container {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
 }
@@ -82,7 +82,7 @@
 
 .section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   border-left: 4px solid var(--vp-c-brand);
 }

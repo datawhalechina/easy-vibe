@@ -237,7 +237,7 @@ function getStatusClass(status) {
 .response-detail {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 

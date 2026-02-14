@@ -253,7 +253,7 @@ const toggleMode = () => {
 .diagram-stage {
   background: var(--vp-c-bg);
   border: 1px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 18px;
 }
 
@@ -465,7 +465,7 @@ const toggleMode = () => {
 .info-card {
   background: var(--vp-c-bg-mute);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .info-card h3 {

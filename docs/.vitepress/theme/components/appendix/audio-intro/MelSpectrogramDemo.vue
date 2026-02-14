@@ -342,7 +342,7 @@ watch([selectedType, fftSize, melBins], updateVisualization)
   margin-bottom: 24px;
   padding: 16px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .audio-types {
@@ -405,7 +405,7 @@ watch([selectedType, fftSize, melBins], updateVisualization)
 
 .visualization {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -416,7 +416,7 @@ watch([selectedType, fftSize, melBins], updateVisualization)
 
 .viz-section.highlight {
   border: 2px solid #67c23a;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -486,7 +486,7 @@ watch([selectedType, fftSize, melBins], updateVisualization)
 
 .explanation {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -518,7 +518,7 @@ watch([selectedType, fftSize, melBins], updateVisualization)
   height: 80px;
   padding: 10px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .freq-bars .bar {
@@ -545,7 +545,7 @@ watch([selectedType, fftSize, melBins], updateVisualization)
   gap: 12px;
   padding: 16px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   line-height: 1.6;
 }

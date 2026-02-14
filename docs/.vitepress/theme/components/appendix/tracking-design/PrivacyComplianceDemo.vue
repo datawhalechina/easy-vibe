@@ -482,7 +482,7 @@ const toggleCheck = (index) => {
 
 .step-code {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   overflow-x: auto;
 }
@@ -550,7 +550,7 @@ const toggleCheck = (index) => {
   justify-content: space-between;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 0.75rem;
 }
 
@@ -637,7 +637,7 @@ input:checked + .toggle-slider:before {
   flex: 1;
   padding: 0.75rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -691,7 +691,7 @@ input:checked + .toggle-slider:before {
   gap: 0.75rem;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .item-icon {
@@ -707,7 +707,7 @@ input:checked + .toggle-slider:before {
 .action-btn {
   padding: 0.75rem;
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: white;
   font-size: 0.9rem;
   font-weight: 600;
@@ -754,7 +754,7 @@ input:checked + .toggle-slider:before {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
 }
@@ -801,7 +801,7 @@ input:checked + .toggle-slider:before {
   gap: 0.5rem;
   padding: 0.75rem;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }

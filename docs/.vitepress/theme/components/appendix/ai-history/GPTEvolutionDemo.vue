@@ -149,7 +149,7 @@ const handleTabClick = (tab) => {
 }
 
 .main-card {
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .card-header {

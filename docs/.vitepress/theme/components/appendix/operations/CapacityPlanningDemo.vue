@@ -313,8 +313,8 @@ const costOptions = computed(() => {
 
 .result-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   margin-bottom: 0.75rem;
 }
 
@@ -398,8 +398,8 @@ const costOptions = computed(() => {
 
 .tip-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .tip-icon {

@@ -391,7 +391,7 @@ const scrollToBottom = () => {
   flex: 1;
   background: var(--vp-c-bg);
   border: 1px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
 }
@@ -460,7 +460,7 @@ const scrollToBottom = () => {
   align-items: center;
   justify-content: center;
   background: linear-gradient(to bottom, #87ceeb 50%, #e0e0e0 50%);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -527,7 +527,7 @@ const scrollToBottom = () => {
 .factory-image {
   background: #f8f9fa;
   border: 2px solid #e9ecef;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   width: 260px;
   height: 180px;
@@ -662,13 +662,13 @@ const scrollToBottom = () => {
   flex-direction: column;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .messages {
   flex: 1;
   padding: 15px;
-  overflow-y: auto;
+  
   display: flex;
   flex-direction: column;
   gap: 12px;

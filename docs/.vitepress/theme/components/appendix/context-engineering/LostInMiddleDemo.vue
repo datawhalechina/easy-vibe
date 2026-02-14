@@ -112,10 +112,10 @@ const getScoreClass = (score) => {
 <style scoped>
 .lost-in-middle-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -151,7 +151,7 @@ const getScoreClass = (score) => {
 .context-bar {
   height: 40px;
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   position: relative;
   margin-bottom: 0.75rem;
   background: var(--vp-c-bg);

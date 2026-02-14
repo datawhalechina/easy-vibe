@@ -135,10 +135,10 @@ const clsStatus = computed(() => {
 <style scoped>
 .metrics-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -182,7 +182,7 @@ const clsStatus = computed(() => {
 .metric-card {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.85rem;
   position: relative;
   transition: all 0.3s;

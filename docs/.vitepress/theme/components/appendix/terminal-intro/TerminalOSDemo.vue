@@ -421,7 +421,7 @@ const nextStep = async () => {
   padding: 8px 16px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -445,7 +445,7 @@ const nextStep = async () => {
 }
 
 .terminal-window {
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(128, 128, 128, 0.2);

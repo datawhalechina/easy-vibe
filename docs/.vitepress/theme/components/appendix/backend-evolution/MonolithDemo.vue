@@ -131,52 +131,50 @@ const reset = () => {
 <style scoped>
 .monolith-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .demo-header .icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .demo-header .title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
 }
 
 .demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
 }
 
 .monolith-diagram {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .monolith-box {
   flex: 1;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.5rem;
   transition: all 0.3s;
 }
 
@@ -189,23 +187,24 @@ const reset = () => {
   text-align: center;
   font-weight: 600;
   color: var(--vp-c-brand);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--vp-c-divider);
+  font-size: 0.75rem;
 }
 
 .modules-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .module-box {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.75rem;
+  border-radius: 4px;
+  padding: 0.4rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
@@ -226,21 +225,21 @@ const reset = () => {
 }
 
 .module-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  margin-bottom: 0.1rem;
 }
 
 .module-name {
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 .module-status {
-  font-size: 0.7rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 10px;
+  font-size: 0.55rem;
+  padding: 0.05rem 0.25rem;
+  border-radius: 6px;
   display: inline-block;
 }
 
@@ -263,38 +262,38 @@ const reset = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
+  gap: 0.3rem;
+  padding: 0.4rem;
   background: var(--vp-c-bg-soft);
   border: 1px dashed var(--vp-c-divider);
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .db-icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .db-label {
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-2);
 }
 
 .request-flow {
-  width: 150px;
+  width: 100px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .flow-request {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
+  gap: 0.25rem;
+  padding: 0.3rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  font-size: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.6rem;
 }
 
 .flow-request.active {
@@ -317,19 +316,19 @@ const reset = () => {
 
 .controls {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.4rem;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
 .control-btn {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -347,34 +346,6 @@ const reset = () => {
   background: rgba(239, 68, 68, 0.1);
 }
 
-.demo-explanation {
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--vp-c-divider);
-}
-
-.demo-explanation h5 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 0.75rem 0;
-}
-
-.demo-explanation ul {
-  margin: 0 0 1rem 0;
-  padding-left: 1.25rem;
-}
-
-.demo-explanation li {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-  margin-bottom: 0.4rem;
-}
-
-.demo-explanation li strong {
-  color: var(--vp-c-text-1);
-}
-
 @media (max-width: 768px) {
   .monolith-diagram {
     flex-direction: column;
@@ -389,13 +360,13 @@ const reset = () => {
 
 .info-box {
   background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .info-box .icon {

@@ -46,16 +46,16 @@ defineProps({
 <style scoped>
 .dns-lookup-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
 .concept-explanation {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   margin-bottom: 2rem;
 }
@@ -104,7 +104,7 @@ defineProps({
 .fake-output {
   background: var(--vp-c-bg-alt);
   padding: 0.8rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1.2rem;
   font-weight: bold;
   border: 2px solid var(--vp-c-divider);

@@ -294,9 +294,9 @@ initializeProducts()
 
 .description {
   margin-bottom: 1.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 4px solid var(--vp-c-brand);
 }
 
@@ -330,7 +330,7 @@ initializeProducts()
   gap: 1rem;
   padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid #94a3b8;
 }
 
@@ -365,8 +365,8 @@ initializeProducts()
 
 .cache-state {
   background: var(--vp-c-bg);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
 }
 
 .cache-title {
@@ -425,7 +425,7 @@ initializeProducts()
 .product {
   background: var(--vp-c-bg);
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   text-align: center;
   transition: all 0.3s;
@@ -466,7 +466,7 @@ initializeProducts()
   gap: 0.75rem;
   padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .icon {
@@ -491,7 +491,7 @@ initializeProducts()
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;

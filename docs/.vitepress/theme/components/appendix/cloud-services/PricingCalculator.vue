@@ -92,9 +92,9 @@ const recommendation = computed(() => {
 <style scoped>
 .pricing-calculator {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   background: var(--vp-c-bg-soft);
 }
 

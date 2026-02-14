@@ -145,7 +145,7 @@ const tokens = ref([
   height: 200px;
   background: #000;
   position: relative;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   display: flex;
   align-items: center;

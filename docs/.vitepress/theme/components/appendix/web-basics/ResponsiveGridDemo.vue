@@ -102,7 +102,7 @@ const gridStyle = computed(() => ({
 .card {
   background: rgba(59, 130, 246, 0.12);
   border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   font-size: 0.9rem;
   text-align: center;

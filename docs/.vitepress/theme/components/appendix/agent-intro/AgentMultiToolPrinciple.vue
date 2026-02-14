@@ -435,7 +435,7 @@ const truncate = (str, len) => str.length > len ? str.slice(0, len) + '...' : st
 .phase {
   margin-bottom: 12px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   opacity: 0.5;
   transition: all 0.3s;
@@ -525,7 +525,7 @@ const truncate = (str, len) => str.length > len ? str.slice(0, len) + '...' : st
   gap: 12px;
   padding: 12px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid transparent;
   transition: all 0.3s;
   position: relative;
@@ -685,7 +685,7 @@ const truncate = (str, len) => str.length > len ? str.slice(0, len) + '...' : st
 .final-output {
   padding: 12px;
   background: #dcfce7;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .output-bubble {
@@ -704,7 +704,7 @@ const truncate = (str, len) => str.length > len ? str.slice(0, len) + '...' : st
 
 .control-btn {
   padding: 10px 24px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
@@ -762,7 +762,7 @@ const truncate = (str, len) => str.length > len ? str.slice(0, len) + '...' : st
 .explanation-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 14px;
   text-align: center;
 }
@@ -788,7 +788,7 @@ const truncate = (str, len) => str.length > len ? str.slice(0, len) + '...' : st
 .comparison-section {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 14px;
 }
 

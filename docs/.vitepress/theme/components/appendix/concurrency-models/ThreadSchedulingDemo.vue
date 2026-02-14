@@ -358,7 +358,7 @@ onUnmounted(() => {
 .demo-container {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 h4 {
@@ -375,7 +375,7 @@ h4 {
 
 .memory-view {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   margin-bottom: 16px;
 }

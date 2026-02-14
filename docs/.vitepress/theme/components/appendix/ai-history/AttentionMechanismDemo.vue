@@ -140,7 +140,7 @@ const getInsight = (index) => {
   margin-bottom: 24px;
   padding: 16px;
   background-color: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .word-token {

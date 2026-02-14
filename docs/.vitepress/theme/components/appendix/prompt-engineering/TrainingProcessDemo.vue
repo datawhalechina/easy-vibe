@@ -224,7 +224,7 @@ const selectPrediction = (item) => {
 /* Pre-training styles */
 .editor-window {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #d4d4d4;
   font-family: monospace;
   overflow: hidden;
@@ -308,7 +308,7 @@ const selectPrediction = (item) => {
 /* Fine-tuning styles */
 .chat-window {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
   min-height: 200px;

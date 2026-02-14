@@ -304,7 +304,7 @@ async function runSimulation() {
 .output-container {
   min-height: 300px;
   max-height: 400px;
-  overflow-y: auto;
+  
   padding: 0 4px;
 }
 

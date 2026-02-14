@@ -545,7 +545,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   width: 100%;
   padding: 8px 12px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   box-sizing: border-box;
 }
@@ -580,7 +580,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .nav-btn {
   padding: 8px 16px;
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: white;
   cursor: pointer;
   font-size: 13px;
@@ -607,7 +607,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .status-indicator {
   text-align: center;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
 }
 
@@ -621,14 +621,14 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   background: #fff3e0;
   color: #e65100;
   padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .status-text.spa {
   background: #e3f2fd;
   color: #1565c0;
   padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .status-icon {

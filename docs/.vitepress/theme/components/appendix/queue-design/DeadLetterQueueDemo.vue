@@ -261,11 +261,11 @@ addMessage = addMessageWithAutoProcess
 .dlq-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {
@@ -337,7 +337,7 @@ addMessage = addMessageWithAutoProcess
 .queue-box {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -361,7 +361,7 @@ addMessage = addMessageWithAutoProcess
 
 .message-list {
   max-height: 150px;
-  overflow-y: auto;
+  
   padding: 0.5rem;
 }
 
@@ -446,8 +446,8 @@ addMessage = addMessageWithAutoProcess
 .processor-box {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   text-align: center;
   min-height: 150px;
   display: flex;
@@ -507,7 +507,7 @@ addMessage = addMessageWithAutoProcess
 
 .stat-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   text-align: center;
   border: 1px solid var(--vp-c-divider);

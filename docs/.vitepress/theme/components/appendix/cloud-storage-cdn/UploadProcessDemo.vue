@@ -318,7 +318,7 @@ const resetDemo = () => {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
@@ -392,7 +392,7 @@ const resetDemo = () => {
   gap: 0.75rem;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid var(--vp-c-divider);
   transition: all 0.3s;
 }

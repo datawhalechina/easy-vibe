@@ -334,7 +334,7 @@ onMounted(() => {
 
 <style scoped>
 .audio-tokenization-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-title {
@@ -352,7 +352,7 @@ onMounted(() => {
 
 .codec-flow {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -385,7 +385,7 @@ onMounted(() => {
 
 .step-visual {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   margin-bottom: 8px;
   min-height: 80px;
@@ -484,7 +484,7 @@ onMounted(() => {
 
 .bitrate-comparison {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -502,7 +502,7 @@ onMounted(() => {
 
 .bitrate-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   cursor: pointer;
@@ -549,7 +549,7 @@ onMounted(() => {
 
 .token-visualization {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -561,7 +561,7 @@ onMounted(() => {
 
 .token-display {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   overflow-x: auto;
 }
@@ -619,7 +619,7 @@ onMounted(() => {
 
 .applications {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -637,7 +637,7 @@ onMounted(() => {
 
 .app-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
 }

@@ -390,7 +390,7 @@ const currentScenario = computed(() => {
 
 .provider-pricing {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
 }
 
@@ -455,7 +455,7 @@ const currentScenario = computed(() => {
 .guide-item {
   padding: 12px;
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid #00d4ff;
 }
 

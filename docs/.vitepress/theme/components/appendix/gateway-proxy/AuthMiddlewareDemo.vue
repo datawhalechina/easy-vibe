@@ -470,8 +470,8 @@ const currentNginxConfig = computed(() => nginxConfigs.find(c => c.id === curren
 .step-content {
   flex: 1;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -517,7 +517,7 @@ const currentNginxConfig = computed(() => nginxConfigs.find(c => c.id === curren
 
 .token-part {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -622,8 +622,8 @@ const currentNginxConfig = computed(() => nginxConfigs.find(c => c.id === curren
   gap: 1rem;
   align-items: flex-start;
   background: white;
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid #22c55e;
 }
 

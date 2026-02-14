@@ -299,7 +299,7 @@ onMounted(() => {
   padding: 0.5rem 1rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s;
 }
 
@@ -319,9 +319,9 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -359,7 +359,7 @@ onMounted(() => {
 
 canvas {
   border: 3px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: crosshair;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -369,7 +369,7 @@ canvas {
   margin: 1.5rem 0;
   padding: 1.25rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 

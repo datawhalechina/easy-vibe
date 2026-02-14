@@ -217,12 +217,10 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 <style scoped>
 .jquery-vs-state-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 /* 标题区 */
@@ -260,7 +258,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   margin-bottom: 1rem;
   background: var(--vp-c-bg);
   padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 
@@ -319,7 +317,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 /* 场景面板 */
 .scenario-panel {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   overflow: hidden;
 }
@@ -344,7 +342,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 }
 
 .scenario-content {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .step-list {
@@ -395,7 +393,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 /* 账本面板 */
 .ledger-panel {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   overflow: hidden;
 }
@@ -439,7 +437,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 }
 
 .ledger-content {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .order-list {

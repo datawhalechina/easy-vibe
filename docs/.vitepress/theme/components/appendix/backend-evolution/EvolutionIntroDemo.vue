@@ -123,50 +123,48 @@ const stages = [
 <style scoped>
 .evolution-intro-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .demo-header .icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .demo-header .title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
 }
 
 .demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
 }
 
 .timeline-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .stage-card {
   background: var(--vp-c-bg);
-  border: 2px solid transparent;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
   padding: 0.75rem 0.5rem;
   text-align: center;
   cursor: pointer;
@@ -175,68 +173,67 @@ const stages = [
 
 .stage-card:hover {
   border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .stage-card.active {
   border-color: var(--vp-c-brand);
   background: var(--vp-c-brand-soft);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stage-era {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: var(--vp-c-text-3);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 .stage-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
 }
 
 .stage-name {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 .stage-arch {
-  font-size: 0.7rem;
+  font-size: 0.55rem;
   color: var(--vp-c-text-3);
 }
 
 .stage-detail {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 4px;
+  padding: 0.5rem;
 }
 
 .detail-panel {
-  animation: fadeIn 0.4s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .detail-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .detail-icon {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .detail-header h4 {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
   margin: 0;
   color: var(--vp-c-text-1);
@@ -244,31 +241,32 @@ const stages = [
 
 .detail-content {
   display: grid;
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
 }
 
 .detail-section h5 {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
   color: var(--vp-c-brand);
 }
 
 .detail-section p {
-  font-size: 0.8rem;
-  line-height: 1.6;
-  margin: 0 0 0.5rem 0;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  margin: 0 0 0.3rem 0;
   color: var(--vp-c-text-2);
 }
 
 .detail-section ul {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 0.75rem;
 }
 
 .detail-section li {
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.6rem;
+  line-height: 1.4;
   margin-bottom: 0.25rem;
   color: var(--vp-c-text-2);
 }

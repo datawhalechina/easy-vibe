@@ -634,7 +634,7 @@ onUnmounted(() => {
   background: linear-gradient(180deg, #fef3c7, #fde68a);
   border: 3px solid #f59e0b;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -655,7 +655,7 @@ onUnmounted(() => {
   align-content: flex-start;
   padding: 0.5rem;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .token {
@@ -679,7 +679,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
 }
 
@@ -711,7 +711,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .queue-title {
@@ -726,7 +726,7 @@ onUnmounted(() => {
   flex-direction: column;
   gap: 0.5rem;
   max-height: 250px;
-  overflow-y: auto;
+  
 }
 
 .request-item {
@@ -790,14 +790,14 @@ onUnmounted(() => {
   background: linear-gradient(180deg, #dbeafe, #bfdbfe);
   border: 3px solid #3b82f6;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
   position: relative;
 }
 
 .bucket-content {
   height: 150px;
   background: rgba(255, 255, 255, 0.7);
-  border-radius: 8px;
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
 }
@@ -866,7 +866,7 @@ onUnmounted(() => {
 
 /* 滑动窗口可视化 */
 .sliding-window-vis {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .window-container {
@@ -904,7 +904,7 @@ onUnmounted(() => {
   align-items: flex-end;
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .time-slot {
@@ -937,9 +937,9 @@ onUnmounted(() => {
 .window-stats {
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -1060,8 +1060,8 @@ onUnmounted(() => {
 .config-code {
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   overflow-x: auto;
   font-size: 0.85rem;
   line-height: 1.6;
@@ -1070,8 +1070,8 @@ onUnmounted(() => {
 
 .config-explanation {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .exp-title {

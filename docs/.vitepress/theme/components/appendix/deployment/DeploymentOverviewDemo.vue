@@ -486,10 +486,10 @@ function hideTooltip() {
 <style scoped>
 .deployment-overview {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   position: relative;
 }
 
@@ -550,7 +550,7 @@ function hideTooltip() {
   padding: 0.5rem 0.75rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s ease;
   flex-shrink: 0;
   min-width: 80px;
@@ -637,7 +637,7 @@ function hideTooltip() {
 
 .tooltip-content {
   max-height: 500px;
-  overflow-y: auto;
+  
 }
 
 .tooltip-section {

@@ -356,7 +356,7 @@ const toggleStep = (index) => {
 <style scoped>
 .network-troubleshooting {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -364,7 +364,7 @@ const toggleStep = (index) => {
 
 .problem-selector {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
 }
@@ -388,7 +388,7 @@ const toggleStep = (index) => {
   gap: 10px;
   padding: 12px 15px;
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   cursor: pointer;
   transition: all 0.2s;
@@ -420,7 +420,7 @@ const toggleStep = (index) => {
 
 .solution-panel {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
 }
@@ -465,7 +465,7 @@ const toggleStep = (index) => {
   gap: 15px;
   padding: 15px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid var(--vp-c-divider);
   cursor: pointer;
   transition: all 0.2s;
@@ -545,7 +545,7 @@ const toggleStep = (index) => {
 
 .related-tools {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
 }
 
@@ -584,7 +584,7 @@ const toggleStep = (index) => {
 
 .common-commands {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
 }
@@ -632,7 +632,7 @@ const toggleStep = (index) => {
 
 .troubleshooting-tips {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   border-left: 4px solid var(--vp-c-brand);
 }

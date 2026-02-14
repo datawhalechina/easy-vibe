@@ -152,7 +152,7 @@ const runShortcut = (cmd) => {
 
 .console-body {
   height: 250px;
-  overflow-y: auto;
+  
   background-color: #f5f7fa;
   border: 1px solid #e4e7ed;
   border-radius: 4px;

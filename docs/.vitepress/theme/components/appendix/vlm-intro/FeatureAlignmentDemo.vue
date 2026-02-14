@@ -174,7 +174,7 @@ const isCalculatingLoss = computed(() => step.value === 2)
   justify-content: center;
   background: var(--vp-c-bg);
   border: 1px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px 10px;
   overflow: hidden;
   gap: 10px;
@@ -233,7 +233,7 @@ const isCalculatingLoss = computed(() => step.value === 2)
   align-items: center;
   justify-content: center;
   border: 1.5px solid;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
   min-width: 70px;
   position: relative;

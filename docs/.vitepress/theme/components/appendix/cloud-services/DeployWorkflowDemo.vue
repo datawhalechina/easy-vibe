@@ -123,10 +123,10 @@ function prevStep() {
 <style scoped>
 .deploy-workflow-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .workflow-steps {
@@ -204,7 +204,7 @@ function prevStep() {
 .step-detail {
   background: var(--vp-c-bg);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1rem;
 }
 

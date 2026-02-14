@@ -181,10 +181,10 @@ const sendRequest = async () => {
 <style scoped>
 .kv-cache-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -354,7 +354,7 @@ input:checked + .slider:before {
 
 .metric-card {
   background: var(--vp-c-bg-alt);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   text-align: center;
   position: relative;
@@ -390,7 +390,7 @@ input:checked + .slider:before {
 
 .info-box {
   background-color: var(--vp-c-bg-alt);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   font-size: 0.9rem;
   color: var(--vp-c-text-2);

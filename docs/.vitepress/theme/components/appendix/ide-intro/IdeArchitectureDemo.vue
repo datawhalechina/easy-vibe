@@ -285,7 +285,7 @@ const setScenario = (key) => {
 .tabs {
   display: flex;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 4px;
   margin-bottom: 16px;
   gap: 4px;
@@ -359,7 +359,7 @@ const setScenario = (key) => {
 /* VS Code Style */
 .vscode .editor-window {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 1px solid #333;
@@ -403,7 +403,7 @@ const setScenario = (key) => {
 .comp-box {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   min-height: 60px;
   display: flex;
@@ -510,7 +510,7 @@ const setScenario = (key) => {
 /* Terminal */
 .terminal-box {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   font-family: 'Consolas', monospace;
   border: 1px solid #333;

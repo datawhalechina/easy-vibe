@@ -707,9 +707,9 @@ const alignmentState = ref('base')
 <style scoped>
 .ti-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
   overflow: hidden;
 }
@@ -781,7 +781,7 @@ const alignmentState = ref('base')
 .result-box {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   margin-bottom: 1rem;
   min-height: 3rem;
@@ -841,7 +841,7 @@ const alignmentState = ref('base')
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px 6px 0 0;
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -887,12 +887,12 @@ const alignmentState = ref('base')
   flex: 1;
   background: #1e1e1e;
   color: #d4d4d4;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   font-family: 'Menlo', 'Monaco', monospace;
   font-size: 0.8rem;
   line-height: 1.4;
-  overflow-y: auto;
+  
   max-height: 300px;
 }
 
@@ -974,8 +974,8 @@ const alignmentState = ref('base')
   position: relative;
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .stage-label {
@@ -1224,7 +1224,7 @@ const alignmentState = ref('base')
   display: flex;
   flex-direction: column;
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -1267,7 +1267,7 @@ const alignmentState = ref('base')
 .log-console {
   flex: 1;
   padding: 10px;
-  overflow-y: auto;
+  
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.75rem;
   color: #d4d4d4;
@@ -1329,7 +1329,7 @@ const alignmentState = ref('base')
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
@@ -1374,7 +1374,7 @@ const alignmentState = ref('base')
 .scenario {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
 }
 
@@ -1401,7 +1401,7 @@ const alignmentState = ref('base')
 
 .bubble {
   background: var(--vp-c-bg-alt);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 0 12px 12px 12px;
   flex: 1;
   position: relative;

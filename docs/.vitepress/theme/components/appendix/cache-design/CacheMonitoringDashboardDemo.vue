@@ -246,10 +246,10 @@ onUnmounted(() => {
 <style scoped>
 .cache-monitoring-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -288,7 +288,7 @@ onUnmounted(() => {
 .metric-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   display: flex;
   gap: 0.75rem;
@@ -367,7 +367,7 @@ onUnmounted(() => {
 .request-log {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 1rem;
   overflow: hidden;
 }
@@ -400,7 +400,7 @@ onUnmounted(() => {
 
 .log-list {
   max-height: 180px;
-  overflow-y: auto;
+  
   padding: 0.5rem;
 }
 

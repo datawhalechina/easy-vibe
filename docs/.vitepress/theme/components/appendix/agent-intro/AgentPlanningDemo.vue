@@ -304,7 +304,7 @@ reset()
 .goal-bar {
   background: var(--vp-c-brand-soft);
   border-left: 3px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px 14px;
   margin-bottom: 16px;
   font-size: 14px;
@@ -403,7 +403,7 @@ reset()
 .log-box, .thought-box {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -431,7 +431,7 @@ reset()
   padding: 10px 12px;
   min-height: 100px;
   max-height: 140px;
-  overflow-y: auto;
+  
 }
 
 .empty {
@@ -534,7 +534,7 @@ reset()
   gap: 8px;
   padding: 10px 14px;
   background: var(--vp-c-brand-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   color: var(--vp-c-text-1);
 }

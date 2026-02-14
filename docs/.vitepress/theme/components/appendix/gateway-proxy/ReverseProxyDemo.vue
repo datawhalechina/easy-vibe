@@ -223,7 +223,7 @@ const currentScenarios = computed(() => mode.value === 'forward' ? forwardScenar
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 12px;
   min-width: 100px;
   text-align: center;

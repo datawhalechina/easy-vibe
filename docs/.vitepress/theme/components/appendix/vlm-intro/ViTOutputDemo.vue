@@ -225,7 +225,7 @@ const items = [
   gap: 6px;
   background: #fff;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 .dark .grid-container {
@@ -278,7 +278,7 @@ const items = [
   gap: 4px;
   padding: 10px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
   max-width: 100%;
@@ -329,7 +329,7 @@ const items = [
   margin-top: 24px;
   background: #fff;
   border: 1px solid #e9ecef;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   min-height: 120px;
   display: flex;
@@ -371,7 +371,7 @@ const items = [
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 .dark .large-icon {
   background: #343a40;

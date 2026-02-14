@@ -33,7 +33,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   padding: 0.75rem;
   font-size: 0.82rem;

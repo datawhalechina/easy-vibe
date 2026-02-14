@@ -422,7 +422,7 @@ watch(serverCount, (newVal) => {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -523,7 +523,7 @@ watch(serverCount, (newVal) => {
   background: linear-gradient(135deg, rgba(var(--vp-c-brand-rgb), 0.1), rgba(var(--vp-c-brand-rgb), 0.05));
   border: 2px solid var(--vp-c-brand);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1.5rem;
   display: flex;
   gap: 1rem;
@@ -596,7 +596,7 @@ watch(serverCount, (newVal) => {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   transition: all 0.3s;
 }
 
@@ -714,7 +714,7 @@ watch(serverCount, (newVal) => {
 .request-queue {
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--vp-c-divider);
 }
@@ -746,7 +746,7 @@ watch(serverCount, (newVal) => {
   flex-direction: column;
   gap: 0.25rem;
   max-height: 200px;
-  overflow-y: auto;
+  
 }
 
 .queue-item {
@@ -792,7 +792,7 @@ watch(serverCount, (newVal) => {
 .strategy-stats {
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -812,7 +812,7 @@ watch(serverCount, (newVal) => {
 
 .stat-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   text-align: center;
   border: 1px solid var(--vp-c-divider);

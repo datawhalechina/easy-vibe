@@ -274,7 +274,7 @@ onUnmounted(() => {
 .canvas-wrapper {
   position: relative;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   height: 100px;
 }

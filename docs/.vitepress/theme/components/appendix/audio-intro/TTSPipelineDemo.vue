@@ -301,7 +301,7 @@ watch([selectedArch, activeStage], drawVisualization)
 .arch-btn {
   padding: 12px 20px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   cursor: pointer;
   display: flex;
@@ -344,7 +344,7 @@ watch([selectedArch, activeStage], drawVisualization)
   flex-wrap: wrap;
   padding: 20px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 20px;
 }
 
@@ -358,7 +358,7 @@ watch([selectedArch, activeStage], drawVisualization)
 .stage-content {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px 16px;
   text-align: center;
   transition: all 0.2s;
@@ -406,7 +406,7 @@ watch([selectedArch, activeStage], drawVisualization)
 
 .stage-detail {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -433,7 +433,7 @@ watch([selectedArch, activeStage], drawVisualization)
 
 .detail-canvas {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 16px;
 }
 
@@ -459,7 +459,7 @@ watch([selectedArch, activeStage], drawVisualization)
 
 .comparison-table {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -475,7 +475,7 @@ watch([selectedArch, activeStage], drawVisualization)
   flex-direction: column;
   gap: 1px;
   background: var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -510,7 +510,7 @@ watch([selectedArch, activeStage], drawVisualization)
 
 .models-section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -529,7 +529,7 @@ watch([selectedArch, activeStage], drawVisualization)
 
 .model-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   border: 2px solid transparent;
@@ -567,7 +567,7 @@ watch([selectedArch, activeStage], drawVisualization)
   gap: 12px;
   padding: 16px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   line-height: 1.6;
 }

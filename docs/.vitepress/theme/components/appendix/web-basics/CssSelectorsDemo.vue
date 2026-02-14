@@ -103,7 +103,7 @@ const activeType = ref(null)
 <style scoped>
 .selectors-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 20px;
   margin: 20px 0;

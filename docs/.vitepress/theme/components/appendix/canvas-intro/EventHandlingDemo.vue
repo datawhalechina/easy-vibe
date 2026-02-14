@@ -523,7 +523,7 @@ onMounted(() => {
   padding: 0.5rem 1rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
@@ -546,9 +546,9 @@ onMounted(() => {
 
 .instructions {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -583,7 +583,7 @@ onMounted(() => {
 
 .log-container {
   max-height: 150px;
-  overflow-y: auto;
+  
   background: white;
   border-radius: 6px;
   padding: 10px;
@@ -653,7 +653,7 @@ onMounted(() => {
 
 canvas {
   border: 3px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: crosshair;
   outline: none;
   background: #ffffff;
@@ -695,7 +695,7 @@ canvas:focus {
   margin: 1.5rem 0;
   padding: 1.25rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 

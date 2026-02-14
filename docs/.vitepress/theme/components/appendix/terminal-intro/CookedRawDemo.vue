@@ -191,7 +191,7 @@ const handleRawMode = (e) => {
   padding: 10px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.2s;
@@ -205,7 +205,7 @@ const handleRawMode = (e) => {
 
 .demo-container {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   border: 1px solid #333;
   position: relative;

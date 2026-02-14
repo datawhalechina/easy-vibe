@@ -161,10 +161,10 @@ onUnmounted(() => {
 <style scoped>
 .serverless-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -199,8 +199,8 @@ onUnmounted(() => {
 .function-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
@@ -276,8 +276,8 @@ onUnmounted(() => {
 .auto-scaling-panel {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .scaling-title {
@@ -335,8 +335,8 @@ onUnmounted(() => {
 .traffic-simulator {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   margin-bottom: 1.5rem;
 }
 

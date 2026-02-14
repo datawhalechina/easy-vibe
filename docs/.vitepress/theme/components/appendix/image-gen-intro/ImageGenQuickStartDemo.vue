@@ -190,7 +190,7 @@ canvas {
   align-items: center;
   gap: 12px;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .spinner {

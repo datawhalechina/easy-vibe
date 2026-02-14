@@ -392,7 +392,7 @@ const currentScenario = computed(() => scenarioData[selectedScenario.value])
 
 .service-card {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -467,7 +467,7 @@ const currentScenario = computed(() => scenarioData[selectedScenario.value])
   gap: 10px;
   background: rgba(255, 255, 255, 0.03);
   padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid #00d4ff;
 }
 

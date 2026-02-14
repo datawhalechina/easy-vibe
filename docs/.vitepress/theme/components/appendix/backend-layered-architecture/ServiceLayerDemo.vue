@@ -422,7 +422,7 @@ const principles = [
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
@@ -496,7 +496,7 @@ const principles = [
 
 .flow-step {
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -644,7 +644,7 @@ const principles = [
 .principle-card {
   padding: 14px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid #e6a23c;
 }
 

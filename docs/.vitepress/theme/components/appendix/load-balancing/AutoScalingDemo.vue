@@ -361,7 +361,7 @@ onUnmounted(() => {
   gap: 1rem;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -466,7 +466,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   transition: all 0.3s;
 }
 
@@ -684,7 +684,7 @@ onUnmounted(() => {
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s;
 }
 
@@ -753,8 +753,8 @@ onUnmounted(() => {
 .practice-card {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   text-align: center;
 }
 

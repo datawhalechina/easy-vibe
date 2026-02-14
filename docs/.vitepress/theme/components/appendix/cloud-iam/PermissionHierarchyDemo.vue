@@ -3,11 +3,11 @@
     <div class="demo-header">
       <span class="icon">🏛️</span>
       <span class="title">权限层级结构</span>
-      <span class="subtitle">理解不同权限级别的范围差异</span>
+      <span class="subtitle">不同权限级别的范围差异</span>
     </div>
 
-    <div class="demo-content">
-      <div class="hierarchy-container">
+    <div class="main-area">
+      <div class="levels-list">
         <div
           v-for="(level, index) in hierarchyLevels"
           :key="index"
@@ -15,55 +15,33 @@
           :class="{ active: selectedLevel === index }"
           @click="selectLevel(index)"
         >
-          <div class="level-icon">{{ level.icon }}</div>
-          <div class="level-content">
+          <span class="level-icon">{{ level.icon }}</span>
+          <div class="level-info">
             <span class="level-name">{{ level.name }}</span>
             <span class="level-scope">{{ level.scope }}</span>
-          </div>
-          <div class="permission-badges">
-            <span
-              v-for="(perm, i) in level.permissions.slice(0, 3)"
-              :key="i"
-              class="badge"
-            >
-              {{ perm }}
-            </span>
-            <span v-if="level.permissions.length > 3" class="badge more">
-              +{{ level.permissions.length - 3 }}
-            </span>
           </div>
         </div>
       </div>
 
       <div class="detail-panel" v-if="selectedLevelData">
-        <h5>{{ selectedLevelData.name }} 详情</h5>
-        <div class="detail-section">
-          <span class="label">权限范围:</span>
+        <div class="detail-title">{{ selectedLevelData.name }}</div>
+        <div class="detail-row">
+          <span class="label">范围：</span>
           <span class="value">{{ selectedLevelData.scope }}</span>
         </div>
-        <div class="detail-section">
-          <span class="label">典型场景:</span>
+        <div class="detail-row">
+          <span class="label">场景：</span>
           <span class="value">{{ selectedLevelData.scenario }}</span>
         </div>
-        <div class="detail-section permissions-list">
-          <span class="label">拥有权限:</span>
-          <div class="permissions-grid">
-            <span
-              v-for="(perm, i) in selectedLevelData.permissions"
-              :key="i"
-              class="perm-tag"
-              :class="perm.type"
-            >
-              {{ perm.name }}
-            </span>
-          </div>
+        <div class="perms-list">
+          <span v-for="(perm, i) in selectedLevelData.permissions.slice(0, 3)" :key="i" class="perm-tag">{{ perm.name }}</span>
         </div>
       </div>
     </div>
 
     <div class="info-box">
       <span class="icon">💡</span>
-      <strong>核心思想：</strong>最小权限原则——始终授予用户完成工作所需的最小权限。从低权限开始，根据实际需求逐步提升，而不是一开始就授予高权限。
+      <strong>核心思想：</strong>最小权限原则——始终授予用户完成工作所需的最小权限。
     </div>
   </div>
 </template>
@@ -76,71 +54,42 @@ const selectedLevel = ref(0)
 const hierarchyLevels = [
   {
     icon: '👑',
-    name: '根账号 (Root)',
+    name: '根账号',
     scope: '全账号最高权限',
-    scenario: '账号所有者，拥有云服务的所有权限',
-    permissions: [
-      { name: '完全管理权限', type: 'full' },
-      { name: '账单管理', type: 'billing' },
-      { name: '组织架构管理', type: 'org' },
-      { name: '关闭账号', type: 'critical' },
-      { name: '恢复已删除资源', type: 'admin' }
-    ]
+    scenario: '账号所有者，拥有所有权限',
+    permissions: [{ name: '完全管理' }, { name: '账单管理' }, { name: '关闭账号' }]
   },
   {
     icon: '👤',
     name: 'IAM 管理员',
     scope: 'IAM 全权限',
     scenario: '管理所有 IAM 用户、角色、策略',
-    permissions: [
-      { name: '创建/删除用户', type: 'user' },
-      { name: '创建/删除角色', type: 'role' },
-      { name: '管理策略', type: 'policy' },
-      { name: '查看凭证报告', type: 'audit' }
-    ]
+    permissions: [{ name: '创建/删除用户' }, { name: '管理策略' }, { name: '查看凭证' }]
   },
   {
     icon: '👥',
-    name: '普通 IAM 用户',
+    name: '普通用户',
     scope: '受限权限',
-    scenario: '日常开发人员，只能访问特定资源',
-    permissions: [
-      { name: '只读访问 EC2', type: 'read' },
-      { name: '读写指定 S3 桶', type: 'limited' },
-      { name: '查看 CloudWatch 日志', type: 'read' },
-      { name: '无法创建 IAM 资源', type: 'deny' }
-    ]
+    scenario: '日常开发，只能访问特定资源',
+    permissions: [{ name: '只读 EC2' }, { name: '读写 S3' }, { name: '查看日志' }]
   },
   {
     icon: '🎭',
-    name: '临时角色 (Role)',
+    name: '临时角色',
     scope: '按策略定义',
-    scenario: '跨账号访问、服务角色、临时授权',
-    permissions: [
-      { name: '临时凭证 (1-12小时)', type: 'temp' },
-      { name: '按信任策略授权', type: 'conditional' },
-      { name: '可跨账号使用', type: 'cross' },
-      { name: '无长期凭证', type: 'secure' }
-    ]
+    scenario: '跨账号访问、临时授权',
+    permissions: [{ name: '临时凭证' }, { name: '跨账号' }, { name: '无长期凭证' }]
   },
   {
     icon: '🔑',
-    name: '服务账号 / 应用',
-    scope: 'API 访问权限',
-    scenario: '应用程序、CI/CD 流水线、自动化脚本',
-    permissions: [
-      { name: 'AK/SK 或临时凭证', type: 'api' },
-      { name: '特定服务 API 权限', type: 'service' },
-      { name: '无控制台访问', type: 'programmatic' },
-      { name: '建议定期轮换密钥', type: 'security' }
-    ]
+    name: '服务账号',
+    scope: 'API 访问',
+    scenario: '应用程序、CI/CD 流水线',
+    permissions: [{ name: 'AK/SK' }, { name: '特定 API' }, { name: '定期轮换' }]
   }
 ]
 
-const selectedLevelData = computed(() => {
-  if (selectedLevel.value === null) return null
-  return hierarchyLevels[selectedLevel.value]
-})
+const selectedLevelData = computed(() => hierarchyLevels[selectedLevel.value])
 
 function selectLevel(index) {
   selectedLevel.value = index
@@ -151,248 +100,102 @@ function selectLevel(index) {
 .permission-hierarchy-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
-  margin-bottom: 1rem;
-}
-
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-}
-
-.intro-text {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
-}
-
-.demo-content {
-  margin-bottom: 1rem;
-}
-
-.hierarchy-container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
+
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+
+.main-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .main-area { grid-template-columns: 1fr; }
+}
+
+.levels-list { display: flex; flex-direction: column; gap: 0.4rem; }
 
 .level-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
-.level-row:hover,
-.level-row.active {
-  background: var(--vp-c-bg-alt);
-  border-color: var(--vp-c-brand);
-  transform: translateX(4px);
-}
+.level-row:hover { border-color: var(--vp-c-brand); }
+.level-row.active { border-color: var(--vp-c-brand); background: var(--vp-c-brand-soft); }
 
-.level-icon {
-  font-size: 1.6rem;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-}
+.level-icon { font-size: 1.25rem; }
 
-.level-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.level-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--vp-c-text-1);
-}
-
-.level-scope {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-}
-
-.permission-badges {
-  display: flex;
-  gap: 0.25rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  max-width: 150px;
-}
-
-.badge {
-  padding: 0.125rem 0.5rem;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  font-size: 0.65rem;
-  white-space: nowrap;
-  color: var(--vp-c-text-2);
-}
-
-.badge.more {
-  background: var(--vp-c-brand-soft);
-  border-color: var(--vp-c-brand);
-  color: var(--vp-c-brand-1);
-}
+.level-info { display: flex; flex-direction: column; }
+.level-name { font-weight: 600; font-size: 0.85rem; color: var(--vp-c-text-1); }
+.level-scope { font-size: 0.7rem; color: var(--vp-c-text-2); }
 
 .detail-panel {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
-.detail-panel h5 {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  font-weight: 700;
+.detail-title {
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--vp-c-brand-1);
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.detail-section {
-  margin-bottom: 0.75rem;
+.detail-row {
   display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
 }
 
-.detail-section .label {
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-  min-width: 80px;
-  font-size: 0.85rem;
-}
+.detail-row .label { color: var(--vp-c-text-2); }
+.detail-row .value { color: var(--vp-c-text-1); }
 
-.detail-section .value {
-  color: var(--vp-c-text-1);
-  font-size: 0.9rem;
-  flex: 1;
-}
-
-.permissions-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-  flex: 1;
-}
+.perms-list { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
 
 .perm-tag {
-  padding: 0.25rem 0.625rem;
-  border-radius: 4px;
   font-size: 0.7rem;
-  font-weight: 500;
-}
-
-.perm-tag.full {
-  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
-  color: var(--vp-c-brand-delta);
-}
-
-.perm-tag.read,
-.perm-tag.user,
-.perm-tag.readonly {
+  padding: 0.15rem 0.4rem;
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
-}
-
-.perm-tag.limited,
-.perm-tag.role {
-  background: rgba(var(--vp-c-brand-rgb), 0.1);
-  color: var(--vp-c-brand);
-}
-
-.perm-tag.deny,
-.perm-tag.critical {
-  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
-  color: var(--vp-c-brand-delta);
-}
-
-.perm-tag.temp,
-.perm-tag.conditional,
-.perm-tag.service {
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  color: var(--vp-c-text-1);
-}
-
-.perm-tag.admin,
-.perm-tag.org,
-.perm-tag.billing {
-  background: rgba(var(--vp-c-brand-rgb), 0.15);
-  color: var(--vp-c-brand);
-}
-
-.perm-tag.api,
-.perm-tag.programmatic,
-.perm-tag.security {
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  color: var(--vp-c-text-2);
-}
-
-.perm-tag.cross,
-.perm-tag.secure,
-.perm-tag.audit,
-.perm-tag.policy {
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  color: var(--vp-c-text-2);
+  border-radius: 3px;
 }
 
 .info-box {
-  padding: 0.75rem;
   background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-left: 4px solid var(--vp-c-brand);
+  padding: 0.6rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
 }
 
-.info-box strong {
-  color: var(--vp-c-text-1);
-}
-
-@media (max-width: 768px) {
-  .level-row {
-    flex-wrap: wrap;
-  }
-
-  .permission-badges {
-    width: 100%;
-    justify-content: flex-start;
-    max-width: none;
-    margin-top: 0.5rem;
-  }
-
-  .detail-section {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-}
+.info-box .icon { flex-shrink: 0; }
+.info-box strong { color: var(--vp-c-text-1); }
 </style>

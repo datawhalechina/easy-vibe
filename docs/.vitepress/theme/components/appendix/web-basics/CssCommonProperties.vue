@@ -135,7 +135,7 @@ const categories = [
         desc: '圆角',
         categoryLabel: '边框',
         fullDesc: '让盒子的角变圆润。现在的按钮通常都有点圆角。',
-        example: 'border-radius: 8px;'
+        example: 'border-radius: 6px;'
       },
       {
         name: 'box-shadow',
@@ -194,7 +194,7 @@ const categories = [
 <style scoped>
 .css-props-ref {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 20px;
   margin: 20px 0;
@@ -264,7 +264,7 @@ const categories = [
   margin-top: 20px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   animation: fadeIn 0.3s ease;
 }

@@ -233,7 +233,7 @@ const runVerify = () => {
   margin-bottom: 24px;
   background-color: var(--vp-c-bg-soft);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .input-display {
@@ -282,7 +282,7 @@ const runVerify = () => {
   margin-top: 12px;
   background: var(--vp-c-bg-soft);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .plan-result {
@@ -301,7 +301,7 @@ const runVerify = () => {
 
 .monitor-log {
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   border: 1px solid var(--vp-c-divider);
 }

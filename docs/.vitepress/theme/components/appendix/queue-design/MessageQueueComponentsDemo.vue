@@ -280,7 +280,7 @@ const consumeMessage = () => {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   transition: all 0.3s;
 }
@@ -421,7 +421,7 @@ const consumeMessage = () => {
 .detail-card {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -469,7 +469,7 @@ const consumeMessage = () => {
 .message-flow {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

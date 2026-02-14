@@ -131,34 +131,32 @@ const eras = [
 <style scoped>
 .evolution-timeline {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .demo-header .icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .demo-header .title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
 }
 
 .demo-content {
@@ -172,8 +170,8 @@ const eras = [
 
 .era-item {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -195,15 +193,15 @@ const eras = [
 }
 
 .era-dot {
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--vp-c-brand);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
   transition: all 0.3s ease;
 }
@@ -214,20 +212,20 @@ const eras = [
 }
 
 .era-line {
-  width: 4px;
+  width: 2px;
   flex: 1;
   background: var(--vp-c-divider);
-  margin-top: 8px;
-  min-height: 30px;
+  margin-top: 4px;
+  min-height: 20px;
 }
 
 /* 内容区域 */
 .era-content {
   flex: 1;
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 0.75rem;
-  border: 2px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.5rem;
+  border: 1px solid var(--vp-c-divider);
   transition: all 0.3s ease;
 }
 
@@ -243,40 +241,40 @@ const eras = [
 .era-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .era-year {
-  padding: 2px 10px;
+  padding: 1px 6px;
   background: var(--vp-c-brand);
   color: white;
-  border-radius: 8px;
-  font-size: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
   font-weight: bold;
 }
 
 .era-name {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: bold;
   color: var(--vp-c-text-1);
 }
 
 .era-brief {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* 详情展开 */
 .era-detail {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 2px dashed var(--vp-c-divider);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--vp-c-divider);
 }
 
 .detail-section {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.4rem;
 }
 
 .detail-section:last-child {
@@ -284,37 +282,35 @@ const eras = [
 }
 
 .section-title {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
   color: var(--vp-c-brand);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
-/* 技术标签 */
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .tech-tag {
-  padding: 2px 10px;
+  padding: 1px 6px;
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-brand);
-  border-radius: 8px;
-  font-size: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
   font-weight: 500;
 }
 
-/* 比喻框 */
 .metaphor-box {
   background: var(--vp-c-bg-alt);
-  border-left: 4px solid var(--vp-c-brand);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  border-left: 2px solid var(--vp-c-brand);
+  padding: 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
   color: var(--vp-c-text-2);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* 动画 */
@@ -332,7 +328,7 @@ const eras = [
 
 .expand-enter-to,
 .expand-leave-from {
-  max-height: 600px;
+  
   opacity: 1;
 }
 

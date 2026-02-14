@@ -361,7 +361,7 @@ const selectMQ = (name) => {
   padding: 0.75rem 1rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -420,8 +420,8 @@ const selectMQ = (name) => {
 
 .metric {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .metric-label {
@@ -547,7 +547,7 @@ th.highlight {
 .recommendation {
   background: rgba(59, 130, 246, 0.1);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 

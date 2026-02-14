@@ -186,7 +186,7 @@ const borderDevices = [
 .vpc-architecture-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -287,7 +287,7 @@ const borderDevices = [
   gap: 6px;
   padding: 12px 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid #e0e0e0;
   cursor: pointer;
   transition: all 0.3s;
@@ -404,7 +404,7 @@ const borderDevices = [
 /* AZ Container */
 .az-container {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
