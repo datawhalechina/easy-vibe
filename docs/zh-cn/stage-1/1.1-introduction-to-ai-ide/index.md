@@ -284,6 +284,8 @@ Trae 分为国际版和中国版。国际版需要能够访问海外网络，但
 
 ::: details 📚 可选：接入云服务厂商的 API 或 Coding Plan
 
+本节将介绍如何接入云服务厂商的 API 或 Coding Plan，以获得更稳定、更频繁的模型调用。结尾部分会给出 Trae 中接入的截图。
+
 **什么是 Coding Plan**
 
 Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以在一定时期内**无限制或高频次地使用**该厂商的大模型 API。相比于按 Token 计费的方式，Coding Plan 更像是"包月套餐"——你付一笔固定的费用，就能放心大胆地一直用，不用担心每次调用都要计费。
@@ -317,18 +319,17 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 
 在 Trae 中接入自定义模型时，我们**默认推荐使用 OpenRouter 方案**。OpenRouter 提供了统一的 API 接口，可以方便地接入多种大语言模型。
 
-**推荐免费模型：**
-
-- **`openrouter/free`**：这是一个默认使用免费 LLM API 的模型选项，可以直接在 Trae 的 Custom Model 接入中使用，无需付费即可体验 AI 编程功能。
-
 **截至 2026 年 2 月 12 日，你还可以使用 StepFun 的免费 API：**
 
 - **`stepfun/step-3.5-flash:free`**：StepFun（阶跃星辰）提供的免费模型，同样支持在 Trae 中直接接入使用。
 
+**其它免费模型：**
+
+- **`openrouter/free`**：这是一个默认使用免费 LLM API 的模型选项，可以直接在 Trae 的 Custom Model 接入中使用（直接写进模型 ID 即可），无需付费即可体验 AI 编程功能。
+
 这些免费选项非常适合初学者体验，在正式投入生产环境前，可以先通过这些免费方案熟悉 AI IDE 的工作流程。
 
-
-**可选：直接接入大模型 API（以 DeepSeek 为例）**
+**可选：接入大模型调用 API（以 DeepSeek 为例）**
 
 1. 访问 DeepSeek 平台：https://platform.deepseek.com/usage
 2. 注册账号并登录
@@ -336,7 +337,7 @@ Coding Plan 是各大云服务厂商推出的订阅计划，购买后你可以�
 4. 充值成功后，在 API Keys 页面创建并复制 API Key
 5. 在 Trae 中点击 **"Add Model"**，找到 DeepSeek，选择对应模型，输入 API Key 即可使用
 
-通过下列界面，你可以成功添加
+通过下列界面，你可以成功添加（注意看选择模型的选项后，下面有一个“自定义模型“，点击后才可以输入模型 ID，此时可以输入上述推荐的模型 ID 如 `stepfun/step-3.5-flash:free` 直接写入即可，同时点击下方的获取 Key 前往官网获得对应的 API Key 写入即可正常使用。）
 
 ![](images/index-2026-02-12-14-14-51.png)
 
