@@ -436,7 +436,7 @@ onUnmounted(() => {
   padding: 0.75rem 0.5rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -565,8 +565,8 @@ onUnmounted(() => {
   background: linear-gradient(135deg, #f8fafc, #f1f5f9);
   border: 2px solid #e2e8f0;
   border-radius: 12px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .lb-header {
@@ -598,7 +598,7 @@ onUnmounted(() => {
   gap: 0.75rem;
   background: white;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #e2e8f0;
 }
 
@@ -625,7 +625,7 @@ onUnmounted(() => {
 .session-table {
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -666,7 +666,7 @@ onUnmounted(() => {
 .hash-ring {
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -729,7 +729,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -845,7 +845,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .comparison-title {

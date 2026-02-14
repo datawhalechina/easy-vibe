@@ -143,7 +143,7 @@ function callApi() {
 .response-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   animation: slideUp 0.3s ease-out;
 }

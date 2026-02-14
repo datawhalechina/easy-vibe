@@ -467,7 +467,7 @@ const getInsightText = (idx) => {
   margin-top: 15px;
   background: var(--vp-c-yellow-dimm);
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   gap: 8px;
   align-items: flex-start;

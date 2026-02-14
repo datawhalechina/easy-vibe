@@ -295,8 +295,8 @@ function setStep(step) {
 .code-block {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   overflow-x: auto;
 }
 
@@ -329,8 +329,8 @@ code {
 .step {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   transition: all 0.3s;
   opacity: 0.6;
 }
@@ -437,8 +437,8 @@ code {
 .paint-box {
   background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   min-width: 120px;
 }
 
@@ -542,8 +542,8 @@ code {
 .tip-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   display: flex;
   gap: 0.8rem;
 }

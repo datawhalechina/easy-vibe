@@ -211,7 +211,7 @@ function reset() {
 .demo-container {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 h4 {
@@ -236,7 +236,7 @@ h4 {
 
 .section {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 
@@ -260,7 +260,7 @@ h4 {
 .cpu-core {
   background: #f5f7fa;
   border: 2px solid #e4e7ed;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   transition: all 0.3s;
@@ -354,7 +354,7 @@ h4 {
 
 .comparison-table {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -377,7 +377,7 @@ h4 {
 
 .comparison-item {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 
@@ -412,7 +412,7 @@ h4 {
 
 .need-table {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 

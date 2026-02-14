@@ -349,7 +349,7 @@ async function runDemo() {
   background: #1e293b;
   color: #e2e8f0;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: 'Monaco', 'Menlo', monospace;
   font-size: 12px;
   line-height: 1.6;
@@ -371,7 +371,7 @@ async function runDemo() {
 .summary {
   background: var(--vp-c-bg-soft);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   line-height: 1.8;
 }
@@ -443,7 +443,7 @@ async function runDemo() {
 .result-body {
   background: #f0fdf4;
   border: 2px solid #86efac;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   font-size: 14px;
   line-height: 1.6;

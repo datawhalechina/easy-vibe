@@ -180,7 +180,7 @@
 .layer-box {
   padding: 16px 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 500;
   color: #303133;
   text-align: center;

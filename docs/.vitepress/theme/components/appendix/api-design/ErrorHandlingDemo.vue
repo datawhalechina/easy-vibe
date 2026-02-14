@@ -188,7 +188,7 @@ const errorCodeItems = [
   flex: 1;
   padding: 12px;
   border: 2px solid;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -227,7 +227,7 @@ const errorCodeItems = [
 
 .comparison {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 

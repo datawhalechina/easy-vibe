@@ -326,7 +326,7 @@ const parseUrl = () => {
   align-items: center;
   background: var(--vp-c-bg-alt);
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 8px 12px;
   transition: all 0.2s;
 }
@@ -411,7 +411,7 @@ const parseUrl = () => {
 .tech-view {
   flex: 1;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -464,7 +464,7 @@ const parseUrl = () => {
 .life-view {
   flex: 1;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   position: relative;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -482,7 +482,7 @@ const parseUrl = () => {
   background: var(--vp-c-bg-alt);
   border: 1px dashed var(--vp-c-divider);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   position: relative;
 }
 .ticket-hole {
@@ -570,7 +570,7 @@ const parseUrl = () => {
   margin-top: 16px;
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   font-size: 13px;
 }
@@ -603,7 +603,7 @@ const parseUrl = () => {
   font-size: 13px;
   padding: 12px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px dashed var(--vp-c-divider);
 }
 

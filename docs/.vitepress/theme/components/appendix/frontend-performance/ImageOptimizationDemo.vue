@@ -247,7 +247,7 @@ function selectFormat(name) {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -306,7 +306,7 @@ function selectFormat(name) {
 
 .format-preview {
   height: 120px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;

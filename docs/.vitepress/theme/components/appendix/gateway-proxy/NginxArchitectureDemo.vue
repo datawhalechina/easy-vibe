@@ -366,7 +366,7 @@ const resetSimulation = () => {
 .compare-item {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
 }
 
@@ -435,7 +435,7 @@ const resetSimulation = () => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -466,9 +466,9 @@ const resetSimulation = () => {
 
 .stat-item {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stat-value {

@@ -459,7 +459,7 @@ onUnmounted(() => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -505,7 +505,7 @@ onUnmounted(() => {
 
 .flow-card {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -550,7 +550,7 @@ onUnmounted(() => {
 
 .practice-card {
   background: white;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

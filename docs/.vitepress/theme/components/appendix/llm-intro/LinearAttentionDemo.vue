@@ -348,7 +348,7 @@ const connectionCount = computed(() => {
   display: flex;
   justify-content: center;
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 15px;
   overflow: hidden;
 }
@@ -438,7 +438,7 @@ const connectionCount = computed(() => {
   margin-top: 20px;
   background: var(--vp-c-bg-mute);
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.9em;
   line-height: 1.6;
   border-left: 4px solid var(--vp-c-brand);

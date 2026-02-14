@@ -365,7 +365,7 @@ const pressMultipleTimes = () => {
   padding: 12px 16px;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
@@ -450,7 +450,7 @@ const pressMultipleTimes = () => {
   align-items: center;
   gap: 8px;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
 }
 
@@ -494,7 +494,7 @@ const pressMultipleTimes = () => {
 .control-panel {
   background: var(--vp-c-bg);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 16px;
 }
 
@@ -606,7 +606,7 @@ const pressMultipleTimes = () => {
 .result-log {
   background: var(--vp-c-bg);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 16px;
 }
 
@@ -618,7 +618,7 @@ const pressMultipleTimes = () => {
 
 .log-list {
   max-height: 200px;
-  overflow-y: auto;
+  
 }
 
 .log-item {
@@ -667,7 +667,7 @@ const pressMultipleTimes = () => {
 
 .comparison-item {
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-align: center;
 }
 
@@ -730,7 +730,7 @@ const pressMultipleTimes = () => {
   padding: 16px;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
@@ -831,7 +831,7 @@ const pressMultipleTimes = () => {
 .explanation-box {
   background: var(--vp-c-bg);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .explanation-title {
@@ -865,7 +865,7 @@ const pressMultipleTimes = () => {
   padding: 16px;
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   color: var(--vp-c-text-1);
   margin-top: 16px;

@@ -140,7 +140,7 @@ const currentDim = ref(dimensions[0])
   border-radius: 12px;
   background-color: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-sans);
 }
 
@@ -200,7 +200,7 @@ const currentDim = ref(dimensions[0])
   align-items: stretch;
   background-color: var(--vp-c-bg);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -310,7 +310,7 @@ const currentDim = ref(dimensions[0])
 
 .summary-bar {
   margin-top: 1.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--vp-c-brand-dimm);
   border-radius: 6px;
   text-align: center;

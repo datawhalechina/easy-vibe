@@ -585,7 +585,7 @@ onUnmounted(() => {
   padding: 0.5rem 1rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
@@ -736,7 +736,7 @@ onUnmounted(() => {
 
 canvas {
   border: 3px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
@@ -745,7 +745,7 @@ canvas {
   margin: 1.5rem 0;
   padding: 1.25rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -815,7 +815,7 @@ canvas {
   margin: 1.5rem 0;
   padding: 1.25rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 

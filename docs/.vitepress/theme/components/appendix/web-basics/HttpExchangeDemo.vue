@@ -192,9 +192,9 @@ const statusClass = computed(() => {
 <style scoped>
 .http-exchange-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family:
     system-ui,
     -apple-system,
@@ -338,8 +338,8 @@ html.dark .log-row.selected {
 
 .tab-content {
   flex: 1;
-  overflow-y: auto;
-  padding: 1rem;
+  
+  padding: 0.75rem;
 }
 
 .section {

@@ -312,7 +312,7 @@ onUnmounted(() => {
   padding: 0.75rem 0.5rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -406,7 +406,7 @@ onUnmounted(() => {
 }
 
 .panel-content {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 /* Single Server */
@@ -460,7 +460,7 @@ onUnmounted(() => {
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: white;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -484,7 +484,7 @@ onUnmounted(() => {
   padding: 0.5rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s;
   min-width: 60px;
 }
@@ -553,7 +553,7 @@ onUnmounted(() => {
 }
 
 .detail-content {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .detail-section {
@@ -609,7 +609,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .comparison-title {

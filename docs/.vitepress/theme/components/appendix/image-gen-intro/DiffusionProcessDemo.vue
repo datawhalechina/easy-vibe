@@ -198,7 +198,7 @@ canvas {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #fff;
   opacity: 0;
   transform: translateY(10px);
@@ -236,7 +236,7 @@ button {
   flex: 1;
   border: none;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;

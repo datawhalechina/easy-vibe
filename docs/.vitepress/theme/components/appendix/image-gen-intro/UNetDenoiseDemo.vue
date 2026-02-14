@@ -363,7 +363,7 @@ onUnmounted(stopAnimation)
 
 <style scoped>
 .unet-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-controls {
@@ -415,7 +415,7 @@ onUnmounted(stopAnimation)
   width: 200px;
   height: 200px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 
@@ -440,7 +440,7 @@ onUnmounted(stopAnimation)
 .operation-box {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px 16px;
   text-align: center;
   min-width: 80px;
@@ -467,7 +467,7 @@ onUnmounted(stopAnimation)
 .timeline-section {
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .timeline-label {
@@ -478,7 +478,7 @@ onUnmounted(stopAnimation)
 .compare-section {
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .compare-display {
@@ -505,7 +505,7 @@ onUnmounted(stopAnimation)
   width: 150px;
   height: 150px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 

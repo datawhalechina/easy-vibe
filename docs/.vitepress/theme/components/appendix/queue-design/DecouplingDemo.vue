@@ -253,7 +253,7 @@ const testAsyncCall = () => {
   padding: 12px 16px;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
@@ -323,7 +323,7 @@ const testAsyncCall = () => {
   padding: 8px 12px;
   background: var(--vp-c-danger);
   color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 600;
 }
@@ -341,7 +341,7 @@ const testAsyncCall = () => {
   align-items: center;
   gap: 10px;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
 }
 
@@ -401,7 +401,7 @@ const testAsyncCall = () => {
   padding: 8px 12px;
   background: var(--vp-c-success);
   color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
 }
@@ -422,7 +422,7 @@ const testAsyncCall = () => {
 .consumer-box {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   text-align: center;
   transition: all 0.3s;
@@ -458,7 +458,7 @@ const testAsyncCall = () => {
   align-items: flex-start;
   gap: 10px;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -480,7 +480,7 @@ const testAsyncCall = () => {
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
@@ -508,7 +508,7 @@ const testAsyncCall = () => {
 .info-box {
   background: var(--vp-c-bg-alt);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   color: var(--vp-c-text-2);
   margin-top: 16px;

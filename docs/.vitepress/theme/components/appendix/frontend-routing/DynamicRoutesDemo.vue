@@ -181,12 +181,12 @@ parsePath()
 <style scoped>
 .dynamic-routes-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {
@@ -230,7 +230,7 @@ parsePath()
 .param-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -277,8 +277,8 @@ parsePath()
 .demo-section {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .demo-section h5 {

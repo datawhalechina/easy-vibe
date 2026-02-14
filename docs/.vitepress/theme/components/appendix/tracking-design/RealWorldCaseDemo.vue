@@ -380,7 +380,7 @@ const formatNumber = (num) => {
   padding: 0.75rem 2rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -456,7 +456,7 @@ const formatNumber = (num) => {
   background: linear-gradient(90deg, var(--vp-c-brand), #3b82f6);
   color: white;
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -473,7 +473,7 @@ const formatNumber = (num) => {
 
 .ab-metrics {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
@@ -514,9 +514,9 @@ const formatNumber = (num) => {
 
 .ab-conclusion {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background: #dcfce7;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
 }
 
@@ -533,7 +533,7 @@ const formatNumber = (num) => {
 }
 
 .segment-card {
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
   text-align: center;
 }
@@ -581,7 +581,7 @@ const formatNumber = (num) => {
   align-items: flex-end;
   height: 200px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
 }
 
@@ -632,7 +632,7 @@ const formatNumber = (num) => {
 .event-item {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
 }

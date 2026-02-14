@@ -122,10 +122,10 @@ function resetDemo() {
 <style scoped>
 .layout-reflow-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -142,7 +142,7 @@ function resetDemo() {
 .demo-content {
   background: var(--vp-c-bg);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .control-panel {
@@ -199,7 +199,7 @@ function resetDemo() {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 6px;
   min-height: 150px;

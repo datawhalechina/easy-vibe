@@ -190,8 +190,8 @@ const isComplete = computed(() => currentStep.value === 4)
 .layer-block {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   opacity: 0;
   transform: translateY(20px) scale(0.95);
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -271,12 +271,12 @@ const isComplete = computed(() => currentStep.value === 4)
   color: var(--vp-c-text-3);
   padding: 2rem;
   border: 2px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 /* Controls */
 .control-area {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-top: 1px solid var(--vp-c-divider);
   display: flex;
@@ -310,7 +310,7 @@ const isComplete = computed(() => currentStep.value === 4)
 
 /* Explanation */
 .explanation-box {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-alt);
   border-top: 1px solid var(--vp-c-divider);
 }

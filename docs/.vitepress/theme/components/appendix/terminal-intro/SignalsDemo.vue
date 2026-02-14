@@ -296,7 +296,7 @@ reset()
 .terminal-window {
   background: #000;
   border: 1px solid #27272a;
-  border-radius: 8px;
+  border-radius: 6px;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -325,7 +325,7 @@ reset()
   padding: 15px;
   flex: 1;
   font-size: 14px;
-  overflow-y: auto;
+  
 }
 
 .term-line {

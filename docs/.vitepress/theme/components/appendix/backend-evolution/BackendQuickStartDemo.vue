@@ -367,7 +367,7 @@ const currentStageData = computed(() => stageData[currentStage.value])
   gap: 10px;
   padding: 10px 12px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
 }
 

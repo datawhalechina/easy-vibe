@@ -294,7 +294,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
   display: inline-flex;
   background: var(--vp-c-bg-mute);
   padding: 4px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 12px;
 }
 
@@ -331,7 +331,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
   width: 100%;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   position: relative;
 }
@@ -415,7 +415,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 .dense-block {
   width: 80%;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   transition: all 0.2s;
 }
@@ -468,7 +468,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 .router-node {
   background: var(--vp-c-bg-mute);
   border: 2px dashed var(--vp-c-text-3);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 8px;
   text-align: center;
   margin-bottom: 12px;

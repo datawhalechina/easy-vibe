@@ -238,7 +238,7 @@ const views = [
 <style scoped>
 .deployment-architecture {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -246,7 +246,7 @@ const views = [
 
 .architecture-view {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
 }
@@ -314,7 +314,7 @@ const views = [
 .origin-node {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
   text-align: center;
   margin: 0 auto;
@@ -418,7 +418,7 @@ const views = [
 
 .info-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   border-left: 4px solid var(--vp-c-brand);
 }

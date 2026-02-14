@@ -303,7 +303,7 @@ onMounted(() => {
   padding: 0.625rem 1.25rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
@@ -402,7 +402,7 @@ onMounted(() => {
 
 canvas {
   border: 3px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: #ffffff;
   max-width: 100%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);

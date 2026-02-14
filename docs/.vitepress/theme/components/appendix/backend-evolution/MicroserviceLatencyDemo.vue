@@ -150,7 +150,7 @@ const insightIcon = computed(() => {
 .architecture {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -248,7 +248,7 @@ const insightIcon = computed(() => {
   margin-top: 1.5rem;
   padding: 0.75rem 1rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 

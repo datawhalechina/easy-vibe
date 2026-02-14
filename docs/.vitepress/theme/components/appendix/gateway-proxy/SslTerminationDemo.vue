@@ -324,7 +324,7 @@ const bestPractices = [
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 12px;
@@ -532,8 +532,8 @@ const bestPractices = [
   gap: 1rem;
   align-items: flex-start;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   border-left: 3px solid var(--vp-c-brand);
 }
 
@@ -580,8 +580,8 @@ const bestPractices = [
 
 .nginx-config {
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   overflow-x: auto;
 }
 
@@ -607,8 +607,8 @@ const bestPractices = [
 .practice-card {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .practice-header {

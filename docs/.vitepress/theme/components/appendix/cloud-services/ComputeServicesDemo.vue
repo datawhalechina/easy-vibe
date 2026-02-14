@@ -257,7 +257,7 @@ const recommendations = computed(() => {
 
 .slider-group {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 

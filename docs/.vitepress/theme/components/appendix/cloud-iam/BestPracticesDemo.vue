@@ -3,50 +3,26 @@
     <div class="demo-header">
       <span class="icon">✅</span>
       <span class="title">权限管理最佳实践</span>
-      <span class="subtitle">理解云账号安全管理的核心原则</span>
+      <span class="subtitle">按优先级实施安全措施</span>
     </div>
 
-    <div class="demo-content">
-      <div class="practices-grid">
-        <div
-          v-for="(practice, index) in bestPractices"
-          :key="index"
-          class="practice-card"
-          :class="{ expanded: expandedCard === index }"
-          @click="toggleCard(index)"
-        >
-          <div class="card-header">
-            <div class="icon-wrapper" :style="{ background: practice.color }">
-              <span class="icon">{{ practice.icon }}</span>
-            </div>
-            <div class="title-wrapper">
-              <h5>{{ practice.title }}</h5>
-              <span class="priority" :class="practice.priority">{{ practice.priorityText }}</span>
-            </div>
-            <div class="expand-icon">{{ expandedCard === index ? '−' : '+' }}</div>
-          </div>
-
-          <div class="card-body" v-if="expandedCard === index">
-            <p class="description">{{ practice.description }}</p>
-
-            <div class="checklist">
-              <h6>✓ 检查清单</h6>
-              <ul>
-                <li v-for="(item, i) in practice.checklist" :key="i">{{ item }}</li>
-              </ul>
-            </div>
-
-            <div class="code-example" v-if="practice.code">
-              <h6>代码示例</h6>
-              <pre><code>{{ practice.code }}</code></pre>
-            </div>
-
-            <div class="tools" v-if="practice.tools">
-              <h6>推荐工具</h6>
-              <div class="tool-tags">
-                <span v-for="(tool, i) in practice.tools" :key="i" class="tool-tag">{{ tool }}</span>
-              </div>
-            </div>
+    <div class="practices-list">
+      <div
+        v-for="(practice, index) in bestPractices"
+        :key="index"
+        class="practice-item"
+        :class="{ active: expandedCard === index }"
+        @click="toggleCard(index)"
+      >
+        <div class="item-header">
+          <span class="item-icon">{{ practice.icon }}</span>
+          <span class="item-title">{{ practice.title }}</span>
+          <span class="item-priority" :class="practice.priority">{{ practice.priorityText }}</span>
+        </div>
+        <div class="item-body" v-if="expandedCard === index">
+          <p class="item-desc">{{ practice.description }}</p>
+          <div class="item-checks">
+            <span v-for="(item, i) in practice.checklist.slice(0, 3)" :key="i" class="check-tag">✓ {{ item }}</span>
           </div>
         </div>
       </div>
@@ -54,7 +30,7 @@
 
     <div class="info-box">
       <span class="icon">💡</span>
-      <strong>核心思想：</strong>按照优先级从 P0 开始逐步实施最佳实践。每个改进都能显著提升账号安全性，不要试图一次性完成所有改进。
+      <strong>核心思想：</strong>按照优先级从 P0 开始逐步实施。每个改进都能显著提升账号安全性。
     </div>
   </div>
 </template>
@@ -69,187 +45,41 @@ const bestPractices = [
     icon: '👑',
     title: '根账号保护',
     priority: 'p0',
-    priorityText: 'P0 - 最高优先级',
-    color: 'rgba(var(--vp-c-brand-delta-rgb), 0.15)',
-    description: '根账号是云服务的所有者，拥有所有权限。必须实施最高级别的保护措施。',
-    checklist: [
-      '启用 MFA（推荐硬件 MFA 设备）',
-      '创建 IAM 管理员用户用于日常操作',
-      '删除或锁定根账号的访问密钥',
-      '配置根账号使用告警',
-      '设置账号恢复联系信息'
-    ],
-    code: `# AWS CLI - 创建管理员用户并禁用根账号 AK
-aws iam create-user --user-name AdminUser
-aws iam attach-user-policy --user-name AdminUser \
-  --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
-
-# 删除根账号访问密钥（必须使用根账号登录控制台操作）`,
-    tools: ['硬件 MFA (YubiKey)', '虚拟 MFA (Google Authenticator)', 'AWS IAM', '阿里云 RAM']
+    priorityText: 'P0',
+    description: '根账号是云服务的所有者，必须实施最高级别的保护。',
+    checklist: ['启用 MFA', '创建 IAM 管理员用户', '删除根账号访问密钥']
   },
   {
     icon: '👤',
     title: '用户权限最小化',
     priority: 'p0',
-    priorityText: 'P0 - 最高优先级',
-    color: 'rgba(var(--vp-c-brand-rgb), 0.1)',
+    priorityText: 'P0',
     description: '遵循最小权限原则，只授予用户完成工作所需的最低权限。',
-    checklist: [
-      '避免使用 AdministratorAccess 等全权限策略',
-      '使用 IAM 用户组批量管理权限',
-      '定期审查和删除未使用的 IAM 用户',
-      '为不同角色创建细粒度的自定义策略',
-      '使用 IAM Access Analyzer 识别过度宽松的权限'
-    ],
-    code: `{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:PutObject",
-        "s3:ListBucket"
-      ],
-      "Resource": [
-        "arn:aws:s3:::my-bucket",
-        "arn:aws:s3:::my-bucket/*"
-      ],
-      "Condition": {
-        "StringEquals": {
-          "aws:RequestedRegion": "ap-northeast-1"
-        }
-      }
-    }
-  ]
-}`,
-    tools: ['IAM Policy Simulator', 'IAM Access Analyzer', 'AWS CloudTrail', 'AWS Config']
+    checklist: ['避免全权限策略', '使用用户组管理', '定期审查用户']
   },
   {
     icon: '🎭',
     title: '优先使用 IAM 角色',
     priority: 'p1',
-    priorityText: 'P1 - 高优先级',
-    color: 'var(--vp-c-brand-soft)',
-    description: 'IAM 角色没有长期凭证，通过临时凭证访问，大大降低凭证泄露风险。',
-    checklist: [
-      'EC2 实例使用实例角色(Instance Profile)',
-      'Lambda 函数使用执行角色',
-      'ECS 任务使用任务角色',
-      '跨账号访问使用角色扮演(AssumeRole)',
-      'CI/CD 流水线使用 OIDC 联邦身份'
-    ],
-    code: `import boto3
-
-# EC2 实例自动使用附加的实例角色
-# 无需提供任何凭证
-s3 = boto3.client('s3')
-
-# 跨账号角色扮演
-sts = boto3.client('sts')
-assumed_role = sts.assume_role(
-    RoleArn='arn:aws:iam::123456789012:role/CrossAccountRole',
-    RoleSessionName='MyApplication',
-    DurationSeconds=3600
-)
-
-# 使用临时凭证
-temp_creds = assumed_role['Credentials']
-s3_cross = boto3.client(
-    's3',
-    aws_access_key_id=temp_creds['AccessKeyId'],
-    aws_secret_access_key=temp_creds['SecretAccessKey'],
-    aws_session_token=temp_creds['SessionToken']
-)`,
-    tools: ['IAM Roles', 'AWS STS', 'EC2 Instance Profiles', 'Lambda Execution Roles']
+    priorityText: 'P1',
+    description: 'IAM 角色没有长期凭证，通过临时凭证访问，降低泄露风险。',
+    checklist: ['EC2 使用实例角色', 'Lambda 使用执行角色', '跨账号用 AssumeRole']
   },
   {
     icon: '🔑',
     title: '访问密钥安全管理',
     priority: 'p1',
-    priorityText: 'P1 - 高优先级',
-    color: 'rgba(var(--vp-c-brand-rgb), 0.1)',
-    description: '如果必须使用访问密钥(AK/SK)，需要实施严格的安全管理措施。',
-    checklist: [
-      '绝不将 AK/SK 硬编码在代码或配置文件中',
-      '使用环境变量或密钥管理服务(如 AWS Secrets Manager)',
-      '每 90 天轮换一次访问密钥',
-      '定期审查和删除未使用的访问密钥',
-      '启用 CloudTrail 记录所有 AK/SK 的使用情况'
-    ],
-    code: `# ❌ 错误做法 - 硬编码凭证
-import boto3
-
-s3 = boto3.client(
-    's3',
-    aws_access_key_id='AKIAIOSFODNN7EXAMPLE',
-    aws_secret_access_key='wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
-)
-
-# ✅ 正确做法 - 使用环境变量
-import boto3
-import os
-
-s3 = boto3.client(
-    's3',
-    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
-    aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
-)
-
-# ✅ 正确做法 - 使用 AWS Secrets Manager
-import boto3
-import json
-
-secrets_client = boto3.client('secretsmanager')
-secret_value = secrets_client.get_secret_value(SecretId='my-app/credentials')
-credentials = json.loads(secret_value['SecretString'])
-
-s3 = boto3.client(
-    's3',
-    aws_access_key_id=credentials['access_key_id'],
-    aws_secret_access_key=credentials['secret_access_key']
-)`,
-    tools: ['AWS Secrets Manager', 'HashiCorp Vault', 'Azure Key Vault', 'GCP Secret Manager']
+    priorityText: 'P1',
+    description: '如果必须使用 AK/SK，需要实施严格的安全管理措施。',
+    checklist: ['不硬编码凭证', '使用密钥管理服务', '定期轮换密钥']
   },
   {
     icon: '📊',
     title: '监控与审计',
     priority: 'p2',
-    priorityText: 'P2 - 中优先级',
-    color: 'var(--vp-c-bg-alt)',
-    description: '建立全面的监控和审计机制，及时发现和响应安全事件。',
-    checklist: [
-      '启用 CloudTrail 记录所有 API 调用',
-      '配置关键操作的实时告警（根账号使用、策略变更等）',
-      '使用 IAM Access Analyzer 持续分析权限',
-      '定期审查 IAM 用户和权限配置',
-      '将日志存储到独立的审计账号，防止篡改'
-    ],
-    code: `# AWS CloudTrail 配置示例
-aws cloudtrail create-trail \
-  --name OrganizationTrail \
-  --s3-bucket-name my-cloudtrail-bucket \
-  --is-organization-trail \
-  --enable-log-file-validation \
-  --is-multi-region-trail
-
-# CloudWatch 告警配置 - 根账号使用
-aws cloudwatch put-metric-alarm \
-  --alarm-name RootAccountUsageAlarm \
-  --alarm-description "Alert when root account is used" \
-  --metric-name RootAccountUsage \
-  --namespace CloudTrailMetrics \
-  --statistic Sum \
-  --period 300 \
-  --evaluation-periods 1 \
-  --threshold 1 \
-  --comparison-operator GreaterThanOrEqualToThreshold
-
-# IAM Access Analyzer 创建分析器
-aws accessanalyzer create-analyzer \
-  --analyzer-name MyOrgAnalyzer \
-  --type ORGANIZATION`,
-    tools: ['AWS CloudTrail', 'AWS CloudWatch', 'IAM Access Analyzer', 'AWS Config', 'AWS Security Hub']
+    priorityText: 'P2',
+    description: '建立全面的监控和审计机制，及时发现安全事件。',
+    checklist: ['启用 CloudTrail', '配置关键操作告警', '定期审查权限']
   }
 ]
 
@@ -262,236 +92,102 @@ function toggleCard(index) {
 .best-practices-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+
+.practices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
 }
 
-.intro-text {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
-}
-
-.demo-content {
-  margin-bottom: 1rem;
-}
-
-.practices-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.practice-card {
+.practice-item {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1.25rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
-.practice-card:hover {
-  border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
-}
-
-.practice-card.expanded {
+.practice-item:hover { border-color: var(--vp-c-brand); }
+.practice-item.active {
   border-color: var(--vp-c-brand);
   background: var(--vp-c-bg-alt);
 }
 
-.card-header {
+.item-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  padding: 0.6rem;
 }
 
-.icon-wrapper {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
+.item-icon { font-size: 1rem; }
+.item-title { font-weight: 600; font-size: 0.85rem; flex: 1; }
 
-.title-wrapper {
-  flex: 1;
-}
-
-.title-wrapper h5 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.1rem;
+.item-priority {
+  font-size: 0.65rem;
   font-weight: 700;
-  color: var(--vp-c-text-1);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
 }
 
-.priority {
-  padding: 0.125rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
+.item-priority.p0 { background: var(--vp-c-danger); color: #fff; }
+.item-priority.p1 { background: var(--vp-c-warning); color: #fff; }
+.item-priority.p2 { background: var(--vp-c-brand-soft); color: var(--vp-c-brand-1); }
 
-.priority.p0 {
-  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
-  color: var(--vp-c-brand-delta);
-}
-
-.priority.p1 {
-  background: rgba(var(--vp-c-brand-rgb), 0.1);
-  color: var(--vp-c-brand);
-}
-
-.priority.p2 {
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-}
-
-.expand-icon {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--vp-c-text-3);
-}
-
-.card-body {
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
+.item-body {
+  padding: 0 0.6rem 0.6rem;
   border-top: 1px solid var(--vp-c-divider);
+  margin-top: 0;
+  padding-top: 0.5rem;
 }
 
-.description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: var(--vp-c-text-2);
-}
-
-.checklist {
-  margin-bottom: 1.25rem;
-}
-
-.checklist h6 {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-}
-
-.checklist ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.checklist li {
-  padding: 0.375rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-}
-
-.checklist li:before {
-  content: '☐';
-  position: absolute;
-  left: 0;
-  color: var(--vp-c-brand);
-}
-
-.code-example {
-  margin-bottom: 1.25rem;
-}
-
-.code-example h6 {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-}
-
-.code-example pre {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.75rem;
-  overflow-x: auto;
-  margin: 0;
-}
-
-.code-example code {
-  color: var(--vp-c-text-2);
-  font-family: var(--vp-font-family-mono);
+.item-desc {
   font-size: 0.8rem;
-  line-height: 1.5;
+  color: var(--vp-c-text-2);
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
 }
 
-.tools h6 {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-}
-
-.tool-tags {
+.item-checks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
-.tool-tag {
-  padding: 0.25rem 0.75rem;
+.check-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  border-radius: 3px;
 }
 
 .info-box {
-  padding: 0.75rem;
   background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-left: 4px solid var(--vp-c-brand);
+  padding: 0.6rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
 }
 
-.info-box strong {
-  color: var(--vp-c-text-1);
-}
-
-@media (max-width: 768px) {
-  .card-header {
-    flex-wrap: wrap;
-  }
-
-  .icon-wrapper {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-
-  .title-wrapper h5 {
-    font-size: 1rem;
-  }
-}
+.info-box .icon { flex-shrink: 0; }
+.info-box strong { color: var(--vp-c-text-1); }
 </style>

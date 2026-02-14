@@ -43,7 +43,7 @@
 .pos-demo {
   padding: 20px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 20px 0;
   overflow-x: auto;
 }

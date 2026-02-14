@@ -213,7 +213,7 @@ watch([featureCount, valuesPerFeature], () => {
   text-align: center;
   background-color: var(--vp-c-bg-alt);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .formula-suffix {
@@ -234,7 +234,7 @@ watch([featureCount, valuesPerFeature], () => {
   width: 50px;
   height: 50px;
   border: 2px solid;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;

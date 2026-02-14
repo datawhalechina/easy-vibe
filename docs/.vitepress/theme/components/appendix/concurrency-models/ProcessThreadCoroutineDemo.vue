@@ -177,7 +177,7 @@ resetSimulation()
 .demo-container {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 20px 0;
 }
 
@@ -212,7 +212,7 @@ resetSimulation()
 .core {
   background: white;
   border: 2px solid #dcdfe6;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   transition: all 0.3s;
@@ -253,7 +253,7 @@ resetSimulation()
 
 .task-queue {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 

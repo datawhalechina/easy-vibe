@@ -199,7 +199,7 @@ const reasonText = computed(() =>
   border: 1px dashed var(--vp-c-divider);
   border-radius: 12px;
   background: var(--vp-c-bg);
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .nav {
@@ -213,7 +213,7 @@ const reasonText = computed(() =>
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
   padding: 0.35rem 0.7rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.85rem;
   cursor: pointer;
 }
@@ -254,7 +254,7 @@ const reasonText = computed(() =>
 .form input {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.45rem 0.6rem;
   font-size: 0.9rem;
 }
@@ -270,7 +270,7 @@ const reasonText = computed(() =>
   background: rgba(99, 102, 241, 0.15);
   color: #4338ca;
   padding: 0.2rem 0.55rem;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   margin: 0 0.35rem;
 }

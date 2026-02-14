@@ -337,7 +337,7 @@ button.active {
 .terminal-window {
   background: #000;
   border: 1px solid #27272a;
-  border-radius: 8px;
+  border-radius: 6px;
   height: 320px;
   display: flex;
   flex-direction: column;

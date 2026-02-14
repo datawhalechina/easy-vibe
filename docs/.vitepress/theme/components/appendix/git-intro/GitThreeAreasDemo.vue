@@ -251,13 +251,13 @@ const commitFiles = () => {
 <style scoped>
 .three-areas-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
-  max-height: 600px;
-  overflow-y: auto;
+  
+  
 }
 
 .demo-header {
@@ -299,7 +299,7 @@ const commitFiles = () => {
 .zone {
   flex: 1;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   border: 1px solid var(--vp-c-divider);
   display: flex;
@@ -356,7 +356,7 @@ const commitFiles = () => {
   padding: 8px;
   background: var(--vp-c-bg-soft);
   background-size: 10px 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px dashed var(--vp-c-divider);
 }
 
@@ -449,7 +449,7 @@ const commitFiles = () => {
   align-content: flex-start;
   padding: 8px;
   gap: 4px;
-  overflow-y: auto;
+  
 }
 
 .file-card.mini {
@@ -606,7 +606,7 @@ const commitFiles = () => {
 .block {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   min-width: 260px;
 }

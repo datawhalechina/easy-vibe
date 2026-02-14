@@ -276,7 +276,7 @@ const tabs = [
   gap: 8px;
   padding: 20px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 20px;
 }
 
@@ -284,7 +284,7 @@ const tabs = [
   width: 100%;
   max-width: 400px;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-align: center;
   border-left: 4px solid;
 }
@@ -329,7 +329,7 @@ const tabs = [
 .arch-characteristics {
   padding: 16px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .arch-characteristics h5 {
@@ -357,7 +357,7 @@ const tabs = [
   gap: 16px;
   padding: 20px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 20px;
 }
 
@@ -369,7 +369,7 @@ const tabs = [
 
 .clean-layer {
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 4px solid;
 }
 
@@ -407,7 +407,7 @@ const tabs = [
 
 .dependency-rule {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   border: 2px dashed #1890ff;
@@ -485,7 +485,7 @@ const tabs = [
 
 .rec-card {
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   position: relative;
 }

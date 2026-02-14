@@ -270,7 +270,7 @@ const jumpToStep = (index) => {
   align-items: center;
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 4px;
   min-width: 280px;
   transition: all 0.3s;
@@ -522,7 +522,7 @@ input {
 /* 底部动态信息条 */
 .dynamic-info-bar {
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   height: 50px; /* 极简高度 */
   display: flex;
   align-items: center;

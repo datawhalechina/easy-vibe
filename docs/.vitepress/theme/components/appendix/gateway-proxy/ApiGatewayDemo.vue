@@ -265,7 +265,7 @@ const setActive = (func) => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -357,8 +357,8 @@ const setActive = (func) => {
 
 .detail-example {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

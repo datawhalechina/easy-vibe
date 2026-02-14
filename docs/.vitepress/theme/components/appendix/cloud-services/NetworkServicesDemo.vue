@@ -329,7 +329,7 @@ const removeItem = (index) => {
   gap: 8px;
   padding: 10px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: grab;
   transition: all 0.2s ease;
 }
@@ -580,7 +580,7 @@ const removeItem = (index) => {
 
 .config-footer {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px 16px;
 }
 
@@ -618,7 +618,7 @@ const removeItem = (index) => {
 
   .components-panel {
     max-height: 200px;
-    overflow-y: auto;
+    
   }
 
   .config-content {

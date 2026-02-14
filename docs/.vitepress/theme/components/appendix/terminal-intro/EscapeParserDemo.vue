@@ -211,7 +211,7 @@ const play = async () => {
 <style scoped>
 .parser-demo {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   color: #fff;
   font-family: 'Menlo', monospace;

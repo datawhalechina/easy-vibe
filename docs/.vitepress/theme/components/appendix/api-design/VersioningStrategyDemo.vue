@@ -239,7 +239,7 @@ const currentStrategy = computed(() =>
 .strategy-card {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -290,7 +290,7 @@ const currentStrategy = computed(() =>
 .strategy-detail {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 

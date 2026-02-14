@@ -235,7 +235,7 @@ const sendUdpData = () => {
 <style scoped>
 .tcp-udp-comparison {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -257,7 +257,7 @@ const sendUdpData = () => {
 .protocol-card {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -352,7 +352,7 @@ const sendUdpData = () => {
 
 .handshake-demo {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
 }
 
@@ -420,7 +420,7 @@ const sendUdpData = () => {
 
 .comparison-table {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
   overflow-x: auto;
@@ -456,7 +456,7 @@ tr:last-child td {
 
 .real-world-example {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -481,7 +481,7 @@ tr:last-child td {
 
 .scenario {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
 }
 

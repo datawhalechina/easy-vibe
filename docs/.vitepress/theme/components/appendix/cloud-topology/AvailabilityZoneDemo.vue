@@ -232,7 +232,7 @@ const getAzStatusText = (az) => {
 .availability-zone-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -243,7 +243,7 @@ const getAzStatusText = (az) => {
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .architecture-container {
@@ -284,7 +284,7 @@ const getAzStatusText = (az) => {
   gap: 6px;
   padding: 12px 16px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   min-width: 80px;
 }
 
@@ -507,7 +507,7 @@ const getAzStatusText = (az) => {
   margin-top: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 

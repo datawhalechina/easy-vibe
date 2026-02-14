@@ -161,10 +161,10 @@ const reset = () => {
 <style scoped>
 .tcp-handshake-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -388,7 +388,7 @@ Here I want it to appear and move.
 
 .description-box {
   margin-top: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 6px;
   text-align: center;

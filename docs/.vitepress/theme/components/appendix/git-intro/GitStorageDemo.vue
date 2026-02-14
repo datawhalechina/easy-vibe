@@ -65,10 +65,10 @@ const savedPercent = computed(() =>
 <style scoped>
 .storage-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .mode-selector {
@@ -140,7 +140,7 @@ const savedPercent = computed(() =>
 }
 
 .info-box {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-left: 4px solid var(--vp-c-brand);
   border-radius: 4px;

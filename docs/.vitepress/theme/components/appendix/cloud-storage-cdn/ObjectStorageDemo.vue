@@ -230,81 +230,79 @@ const getFileIcon = (type) => {
 .object-storage-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .icon { font-size: 1rem; }
+.demo-header .title { font-weight: bold; font-size: 0.9rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.75rem; margin-left: 0.4rem; }
 
 .storage-architecture {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem;
 }
 
 .account-layer {
   background: var(--vp-c-brand-soft);
-  padding: 0.75rem;
-  border-radius: 8px;
+  padding: 0.5rem;
+  border-radius: 6px;
   text-align: center;
   border: 2px solid var(--vp-c-brand);
+  grid-column: 1 / -1;
 }
 
 .account-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .account-name {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--vp-c-brand-1);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 .account-desc {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-2);
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
 }
 
 .connector {
-  text-align: center;
-  color: var(--vp-c-text-3);
-  font-size: 1rem;
+  display: none;
 }
 
 .buckets-container {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 0.75rem;
+  border-radius: 6px;
+  padding: 0.5rem;
 }
 
 .section-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
   font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.4rem;
   color: var(--vp-c-text-1);
 }
 
 .section-desc {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: normal;
   color: var(--vp-c-text-2);
   margin-left: auto;
@@ -312,17 +310,16 @@ const getFileIcon = (type) => {
 
 .buckets-row {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .bucket-card {
   flex: 1;
-  min-width: 120px;
+  min-width: 80px;
   background: var(--vp-c-bg-soft);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  padding: 0.35rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
@@ -330,58 +327,58 @@ const getFileIcon = (type) => {
 
 .bucket-card:hover {
   border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .bucket-card.active {
   border-color: var(--vp-c-brand);
   background: var(--vp-c-brand-soft);
-  box-shadow: 0 0 3px var(--vp-c-brand-dimm);
+  box-shadow: 0 0 2px var(--vp-c-brand-dimm);
 }
 
-.bucket-icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
+.bucket-icon { font-size: 1.1rem; margin-bottom: 0.1rem; }
 
 .bucket-name {
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-1);
   word-break: break-all;
 }
 
 .bucket-meta {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   color: var(--vp-c-text-2);
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
 }
 
 .bucket-size {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: var(--vp-c-brand);
   font-weight: 600;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
 }
 
 .objects-container {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 0.75rem;
-  min-height: 120px;
+  border-radius: 6px;
+  padding: 0.5rem;
+  min-height: 80px;
 }
 
 .objects-list {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.25rem;
 }
 
 .object-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.5rem;
+  gap: 0.3rem;
+  padding: 0.3rem 0.4rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -395,7 +392,7 @@ const getFileIcon = (type) => {
   border: 1px solid var(--vp-c-brand);
 }
 
-.object-icon { font-size: 1rem; }
+.object-icon { font-size: 0.85rem; }
 
 .object-info {
   flex: 1;
@@ -403,7 +400,7 @@ const getFileIcon = (type) => {
 }
 
 .object-key {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
   white-space: nowrap;
@@ -412,69 +409,63 @@ const getFileIcon = (type) => {
 }
 
 .object-meta {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   color: var(--vp-c-text-2);
 }
 
 .object-arrow {
   color: var(--vp-c-text-3);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .objects-placeholder,
 .metadata-placeholder {
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.75rem;
   color: var(--vp-c-text-2);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .metadata-container {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 0.75rem;
-  min-height: 120px;
+  border-radius: 6px;
+  padding: 0.5rem;
+  min-height: 80px;
 }
 
 .metadata-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-@media (max-width: 768px) {
-  .metadata-content {
-    grid-template-columns: 1fr;
-  }
+  gap: 0.4rem;
 }
 
 .metadata-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 6px;
-  padding: 0.5rem;
+  border-radius: 4px;
+  padding: 0.35rem;
 }
 
 .metadata-section-title {
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--vp-c-brand);
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .metadata-list {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.15rem;
 }
 
 .metadata-item {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  font-size: 0.7rem;
+  gap: 0;
+  font-size: 0.6rem;
 }
 
 .metadata-key {
@@ -490,13 +481,14 @@ const getFileIcon = (type) => {
 
 .info-box {
   background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   display: flex;
-  gap: 0.25rem;
+  gap: 0.2rem;
+  grid-column: 1 / -1;
 }
 
 .info-box .icon { flex-shrink: 0; }

@@ -237,7 +237,7 @@
 .method-examples {
   background: var(--vp-c-bg-soft);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 12px;
 }
 
@@ -249,7 +249,7 @@
 
 .method-tip {
   padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -339,7 +339,7 @@ tr:last-child td {
 .tips {
   background: var(--vp-c-bg);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   line-height: 1.8;
   color: var(--vp-c-text-2);

@@ -231,12 +231,10 @@ function updateJq(change) {
 <style scoped>
 .imperative-declarative-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 /* 标题区 */
@@ -344,8 +342,8 @@ function updateJq(change) {
 .counter-ui {
   background-color: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;

@@ -29,11 +29,11 @@ const description = ref('展示CDN的HTTPS优化技术，包括TLS握手优化�
 .https-optimization-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {

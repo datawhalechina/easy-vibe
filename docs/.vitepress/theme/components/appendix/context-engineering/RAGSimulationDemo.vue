@@ -209,8 +209,8 @@ const search = async () => {
   position: relative;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   transition: all 0.3s ease;
 }
 
@@ -338,7 +338,7 @@ input {
 .blackboard {
   background: #2b2b2b;
   color: #e0e0e0;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
   font-size: 0.85rem;

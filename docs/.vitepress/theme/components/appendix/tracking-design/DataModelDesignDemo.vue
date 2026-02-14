@@ -419,7 +419,7 @@ const selectModel = (modelId) => {
   padding: 0.75rem 2rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -488,7 +488,7 @@ const selectModel = (modelId) => {
 }
 
 .rule-item {
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
 }
 
@@ -526,7 +526,7 @@ const selectModel = (modelId) => {
   text-align: center;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -580,7 +580,7 @@ const selectModel = (modelId) => {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
 }
@@ -693,7 +693,7 @@ const selectModel = (modelId) => {
 
 .mapping-step {
   flex: 1;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
   text-align: center;
@@ -735,7 +735,7 @@ const selectModel = (modelId) => {
 
 .dimension-group {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
 }
 
@@ -858,7 +858,7 @@ const selectModel = (modelId) => {
 .use-case-item {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
 }

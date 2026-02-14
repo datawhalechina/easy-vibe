@@ -291,7 +291,7 @@ const drComparisonData = [
 .disaster-recovery-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -301,7 +301,7 @@ const drComparisonData = [
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -386,7 +386,7 @@ const drComparisonData = [
 /* AZ Block */
 .az-block {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   border-left: 4px solid #409eff;
   transition: all 0.3s;
@@ -530,7 +530,7 @@ const drComparisonData = [
   gap: 12px;
   padding: 16px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .link-group {
@@ -711,7 +711,7 @@ const drComparisonData = [
 
 .explanation-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 

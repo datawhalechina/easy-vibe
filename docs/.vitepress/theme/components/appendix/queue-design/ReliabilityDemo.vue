@@ -345,7 +345,7 @@ const simulateConsume = () => {
   margin-bottom: 20px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .component {
@@ -388,7 +388,7 @@ const simulateConsume = () => {
   align-items: center;
   gap: 6px;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
 }
 
@@ -483,7 +483,7 @@ const simulateConsume = () => {
 .replication-info {
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -514,7 +514,7 @@ const simulateConsume = () => {
   margin-bottom: 20px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .flow-step {
@@ -579,7 +579,7 @@ const simulateConsume = () => {
   padding: 16px;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   text-align: center;
 }
 
@@ -608,7 +608,7 @@ const simulateConsume = () => {
 .control-panel {
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-item {
@@ -693,7 +693,7 @@ const simulateConsume = () => {
   padding: 16px;
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   color: var(--vp-c-text-1);
 }

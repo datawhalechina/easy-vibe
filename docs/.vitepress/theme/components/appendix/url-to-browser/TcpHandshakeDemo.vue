@@ -317,7 +317,7 @@ const getCurrentStepColor = () => {
 <style scoped>
 .tcp-compact {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   padding: 16px;
   margin: 16px 0;
@@ -372,7 +372,7 @@ const getCurrentStepColor = () => {
   align-items: center;
   height: 140px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0 30px;
   position: relative;
   margin-bottom: 20px;
@@ -526,7 +526,7 @@ const getCurrentStepColor = () => {
 .detail-panel {
   min-height: 80px; /* 改为最小高度 */
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   padding: 12px 16px;
   display: flex;

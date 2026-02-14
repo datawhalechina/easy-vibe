@@ -261,7 +261,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   padding: 12px;
   min-height: 120px;
   max-height: 160px;
-  overflow-y: auto;
+  
 }
 
 .msg-row {
@@ -421,7 +421,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   gap: 8px;
   padding: 10px 14px;
   background: #dcfce7;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 16px;
   font-size: 12px;
   color: #166534;
@@ -433,7 +433,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   gap: 8px;
   padding: 10px 14px;
   background: var(--vp-c-brand-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   color: var(--vp-c-text-1);
 }

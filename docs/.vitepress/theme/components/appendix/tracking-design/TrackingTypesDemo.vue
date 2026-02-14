@@ -327,7 +327,7 @@ const selectType = (typeId) => {
   padding: 0.75rem 2rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -431,7 +431,7 @@ const selectType = (typeId) => {
   gap: 0.75rem;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .use-case-icon {
@@ -474,7 +474,7 @@ const selectType = (typeId) => {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
   border: 2px solid var(--vp-c-divider);
@@ -507,7 +507,7 @@ const selectType = (typeId) => {
 .layer-box {
   background: white;
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   text-align: center;
   font-size: 0.85rem;

@@ -163,7 +163,7 @@ const steps = [
 .n {
   width: 26px;
   height: 26px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   background: var(--vp-c-bg-soft);

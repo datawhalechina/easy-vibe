@@ -98,10 +98,10 @@ const reset = () => {
 <style scoped>
 .remote-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 .repos {
   display: grid;
@@ -112,8 +112,8 @@ const reset = () => {
 }
 .repo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
 }
 .header {
@@ -172,7 +172,7 @@ const reset = () => {
 .empty {
   color: var(--vp-c-text-3);
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 .controls {
   display: flex;
@@ -199,7 +199,7 @@ const reset = () => {
   border-color: var(--vp-c-divider);
 }
 .info-box {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-left: 4px solid var(--vp-c-brand);
   border-radius: 4px;

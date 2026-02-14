@@ -455,7 +455,7 @@ onUnmounted(() => {
 
 .stage-col {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
@@ -481,7 +481,7 @@ onUnmounted(() => {
   font-size: 11px;
   color: var(--vp-c-text-2);
   line-height: 1.5;
-  overflow-y: auto;
+  
 }
 .indent { margin-left: 12px; }
 .style-tag { color: #e6a23c; }
@@ -650,7 +650,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
 }
 .check-mark {
@@ -771,7 +771,7 @@ onUnmounted(() => {
   margin-top: 16px;
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   font-size: 13px;
 }

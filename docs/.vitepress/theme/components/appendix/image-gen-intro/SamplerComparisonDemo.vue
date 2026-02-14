@@ -356,7 +356,7 @@ watch([selectedSampler, steps], drawPathVisualization)
 
 <style scoped>
 .sampler-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-title {
@@ -380,7 +380,7 @@ watch([selectedSampler, steps], drawPathVisualization)
 
 .sampler-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   cursor: pointer;
   transition: all 0.2s;
@@ -437,7 +437,7 @@ watch([selectedSampler, steps], drawPathVisualization)
 
 .visualization-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -460,7 +460,7 @@ watch([selectedSampler, steps], drawPathVisualization)
 
 .path-visualization {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   margin-bottom: 16px;
 }
@@ -477,7 +477,7 @@ watch([selectedSampler, steps], drawPathVisualization)
 
 .recommendation-matrix {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -492,7 +492,7 @@ watch([selectedSampler, steps], drawPathVisualization)
   flex-direction: column;
   gap: 1px;
   background: var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 

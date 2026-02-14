@@ -261,7 +261,7 @@ const getLayerStyle = (layerId) => {
 <style scoped>
 .action-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   margin: 1.5rem 0;
   overflow: hidden;
@@ -328,7 +328,7 @@ const getLayerStyle = (layerId) => {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-y: auto;
+  
   background: #f9f9f9;
 }
 .dark .chat-window {
@@ -426,7 +426,7 @@ const getLayerStyle = (layerId) => {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  overflow-y: auto;
+  
 }
 
 .layer-box {
@@ -472,7 +472,7 @@ const getLayerStyle = (layerId) => {
   border-radius: 4px;
   white-space: pre-wrap;
   max-height: 80px;
-  overflow-y: auto;
+  
 }
 
 .mini-line {
