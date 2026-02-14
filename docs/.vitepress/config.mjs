@@ -587,6 +587,7 @@ export default defineConfig({
               text: '二、开发环境与工具',
               collapsed: false,
               items: [
+                { text: '集成开发环境 (IDE) 基础', link: '/zh-cn/appendix/2-development-tools/ide-basics' },
                 { text: '命令行与 Shell 脚本', link: '/zh-cn/appendix/2-development-tools/command-line-shell' },
                 { text: '编辑器与 AI 编程助手', link: '/zh-cn/appendix/2-development-tools/editors-and-ai' },
                 { text: 'Git：代码的时光机', link: '/zh-cn/appendix/2-development-tools/git-version-control' },
