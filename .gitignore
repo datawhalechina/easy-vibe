@@ -4,6 +4,8 @@ tools/*
 docs/.vitepress/dist
 docs/.vitepress/cache
 temp/*
+docs/zh-cn/appendix-old-backup*/
+docs/zh-cn/appendix-dirs-backup*/
 CLAUDE.md
 MULTI_LANGUAGE_PLAN.md
 .trae

@@ -344,7 +344,7 @@ export default defineConfig({
             text: '高级开发',
             link: '/zh-cn/stage-3/intro'
           },
-          { text: '附录', link: '/zh-cn/appendix/intro' }
+          { text: '附录', link: '/zh-cn/appendix/index' }
         ],
         sidebar: {
           '/zh-cn/stage-0/': productManagerSidebar,
@@ -570,152 +570,155 @@ export default defineConfig({
           ],
           '/zh-cn/appendix/': [
             {
-              text: '人工智能基础',
+              text: '一、计算机是怎么回事',
               collapsed: false,
               items: [
-                {
-                  text: '提示词工程',
-                  link: '/zh-cn/appendix/prompt-engineering'
-                },
-                {
-                  text: '人工智能进化史',
-                  link: '/zh-cn/appendix/ai-evolution'
-                },
-                { text: '大语言模型', link: '/zh-cn/appendix/llm-intro' },
-                { text: '多模态大模型', link: '/zh-cn/appendix/vlm-intro' },
-                {
-                  text: 'AI 绘画原理',
-                  link: '/zh-cn/appendix/image-gen-intro'
-                },
-                { text: 'AI 音频模型', link: '/zh-cn/appendix/audio-intro' },
-                {
-                  text: '上下文工程',
-                  link: '/zh-cn/appendix/context-engineering'
-                },
-                { text: 'Agent 智能体', link: '/zh-cn/appendix/agent-intro' },
-                {
-                  text: 'AI 能力词典',
-                  link: '/zh-cn/appendix/ai-capability-dictionary'
-                }
+                { text: '从晶体管到 CPU', link: '/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu' },
+                { text: '操作系统（进程 / 内存 / 文件系统）', link: '/zh-cn/appendix/1-computer-fundamentals/operating-systems' },
+                { text: '数据的编码、存储与传输', link: '/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage' },
+                { text: '网络：两台电脑如何对话', link: '/zh-cn/appendix/1-computer-fundamentals/computer-networks' },
+                { text: '数据结构', link: '/zh-cn/appendix/1-computer-fundamentals/data-structures' },
+                { text: '算法思维入门', link: '/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking' },
+                { text: '编程语言图谱', link: '/zh-cn/appendix/1-computer-fundamentals/programming-languages' },
+                { text: '类型系统与编译原理入门', link: '/zh-cn/appendix/1-computer-fundamentals/type-systems-compilers' }
               ]
             },
             {
-              text: '前端开发',
+              text: '二、开发环境与工具',
               collapsed: false,
               items: [
-                {
-                  text: 'HTML/CSS/JS 基础',
-                  link: '/zh-cn/appendix/web-basics'
-                },
-                {
-                  text: '前端进化史',
-                  link: '/zh-cn/appendix/frontend-evolution'
-                },
-                {
-                  text: '前端性能优化',
-                  link: '/zh-cn/appendix/frontend-performance'
-                },
-                {
-                  text: 'Canvas 2D 入门',
-                  link: '/zh-cn/appendix/canvas-intro'
-                },
-                {
-                  text: 'URL 到浏览器显示',
-                  link: '/zh-cn/appendix/url-to-browser'
-                },
-                {
-                  text: '浏览器调试器',
-                  link: '/zh-cn/appendix/browser-devtools'
-                },
-                {
-                  text: '浏览器渲染原理',
-                  link: '/zh-cn/appendix/browser-rendering-pipeline'
-                },
-                {
-                  text: '前端路由原理',
-                  link: '/zh-cn/appendix/frontend-routing'
-                },
-                {
-                  text: '组件状态管理',
-                  link: '/zh-cn/appendix/component-state-management'
-                },
-                {
-                  text: '前端工程化',
-                  link: '/zh-cn/appendix/frontend-engineering'
-                }
+                { text: '命令行与 Shell 脚本', link: '/zh-cn/appendix/2-development-tools/command-line-shell' },
+                { text: '编辑器与 AI 编程助手', link: '/zh-cn/appendix/2-development-tools/editors-and-ai' },
+                { text: 'Git：代码的时光机', link: '/zh-cn/appendix/2-development-tools/git-version-control' },
+                { text: '环境变量与 PATH', link: '/zh-cn/appendix/2-development-tools/environment-path' },
+                { text: '端口与 localhost', link: '/zh-cn/appendix/2-development-tools/ports-localhost' },
+                { text: 'SSH 与密钥认证', link: '/zh-cn/appendix/2-development-tools/ssh-authentication' },
+                { text: '包管理器（npm / pip / cargo）', link: '/zh-cn/appendix/2-development-tools/package-managers' },
+                { text: '调试的艺术', link: '/zh-cn/appendix/2-development-tools/debugging-art/' },
+                { text: '正则表达式', link: '/zh-cn/appendix/2-development-tools/regex' }
               ]
             },
             {
-              text: '后端开发',
+              text: '三、浏览器与前端',
               collapsed: false,
               items: [
-                {
-                  text: '后端进化史',
-                  link: '/zh-cn/appendix/backend-evolution'
-                },
-                {
-                  text: '后端分层架构',
-                  link: '/zh-cn/appendix/backend-layered-architecture'
-                },
-                {
-                  text: '后端编程语言',
-                  link: '/zh-cn/appendix/backend-languages'
-                },
-                {
-                  text: '并发编程模型',
-                  link: '/zh-cn/appendix/concurrency-models'
-                },
-                {
-                  text: '接口设计规范',
-                  link: '/zh-cn/appendix/api-design'
-                },
-                { text: '数据库原理', link: '/zh-cn/appendix/database-intro' },
-                { text: '系统缓存设计', link: '/zh-cn/appendix/cache-design' },
-                { text: '消息队列设计', link: '/zh-cn/appendix/queue-design' },
-                { text: '鉴权原理与实战', link: '/zh-cn/appendix/auth-design' },
-                {
-                  text: '网关与反向代理',
-                  link: '/zh-cn/appendix/gateway-proxy'
-                },
-                {
-                  text: '负载均衡策略',
-                  link: '/zh-cn/appendix/load-balancing'
-                },
-                { text: '埋点设计', link: '/zh-cn/appendix/tracking-design' },
-                { text: '线上运维', link: '/zh-cn/appendix/operations' }
+                { text: 'JavaScript 语言深入', link: '/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive' },
+                { text: 'TypeScript：给 JS 加上类型系统', link: '/zh-cn/appendix/3-browser-and-frontend/typescript' },
+                { text: '前端框架对比（React / Vue / Svelte / Angular）', link: '/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks' },
+                { text: '浏览器是一个操作系统', link: '/zh-cn/appendix/3-browser-and-frontend/browser-as-os' },
+                { text: '浏览器渲染管道', link: '/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering' },
+                { text: 'HTML / CSS 布局体系', link: '/zh-cn/appendix/3-browser-and-frontend/html-css-layout' },
+                { text: 'JavaScript 运行时', link: '/zh-cn/appendix/3-browser-and-frontend/javascript-runtime' },
+                { text: '前端框架的本质', link: '/zh-cn/appendix/3-browser-and-frontend/frontend-framework-nature' },
+                { text: '状态管理哲学', link: '/zh-cn/appendix/3-browser-and-frontend/state-management' },
+                { text: '路由与导航', link: '/zh-cn/appendix/3-browser-and-frontend/routing-navigation' },
+                { text: '图形与动画（Canvas / SVG / WebGL）', link: '/zh-cn/appendix/3-browser-and-frontend/graphics-animation' },
+                { text: '实时通信（WebSocket / SSE）', link: '/zh-cn/appendix/3-browser-and-frontend/realtime-communication' },
+                { text: '网页性能的度量与优化', link: '/zh-cn/appendix/3-browser-and-frontend/web-performance' },
+                { text: '前端工程化全貌', link: '/zh-cn/appendix/3-browser-and-frontend/frontend-engineering' },
+                { text: '无障碍与国际化', link: '/zh-cn/appendix/3-browser-and-frontend/a11n-i18n' }
               ]
             },
             {
-              text: '云计算与服务',
+              text: '四、服务器与后端',
               collapsed: false,
               items: [
-                {
-                  text: '云服务基础',
-                  link: '/zh-cn/appendix/cloud-services'
-                },
-                {
-                  text: 'IAM 权限管理',
-                  link: '/zh-cn/appendix/cloud-iam'
-                },
-                {
-                  text: '对象存储与 CDN',
-                  link: '/zh-cn/appendix/cloud-storage-cdn'
-                }
+                { text: '后端语言对比（Node.js / Go / Java / Rust）', link: '/zh-cn/appendix/4-server-and-backend/backend-languages' },
+                { text: '客户端语言对比（Swift / Kotlin / Dart）', link: '/zh-cn/appendix/4-server-and-backend/client-languages' },
+                { text: '跨平台方案对比（React Native / Flutter / Electron / Tauri）', link: '/zh-cn/appendix/4-server-and-backend/cross-platform' },
+                { text: 'HTTP 协议', link: '/zh-cn/appendix/4-server-and-backend/http-protocol' },
+                { text: '一个请求的完整旅程', link: '/zh-cn/appendix/4-server-and-backend/request-journey' },
+                { text: 'Web 框架的本质', link: '/zh-cn/appendix/4-server-and-backend/web-frameworks' },
+                { text: 'API 设计哲学（REST / GraphQL / gRPC）', link: '/zh-cn/appendix/4-server-and-backend/api-design' },
+                { text: 'API 入门', link: '/zh-cn/appendix/4-server-and-backend/api-intro' },
+                { text: '序列化与数据格式', link: '/zh-cn/appendix/4-server-and-backend/serialization' },
+                { text: '认证与授权体系', link: '/zh-cn/appendix/4-server-and-backend/auth-authorization' },
+                { text: '并发、异步与多线程', link: '/zh-cn/appendix/4-server-and-backend/concurrency-async' },
+                { text: '缓存的层次与策略', link: '/zh-cn/appendix/4-server-and-backend/caching' },
+                { text: '消息队列与事件驱动', link: '/zh-cn/appendix/4-server-and-backend/message-queues' },
+                { text: '异步任务队列与生产消费模型', link: '/zh-cn/appendix/4-server-and-backend/async-task-queues' },
+                { text: '限流与背压控制', link: '/zh-cn/appendix/4-server-and-backend/rate-limiting-backpressure' },
+                { text: '搜索引擎原理', link: '/zh-cn/appendix/4-server-and-backend/search-engines' },
+                { text: '文件存储与对象存储', link: '/zh-cn/appendix/4-server-and-backend/file-storage' },
+                { text: '后端分层架构', link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture' }
               ]
             },
             {
-              text: '通用技能',
+              text: '五、数据',
               collapsed: false,
               items: [
-                { text: 'API 入门', link: '/zh-cn/appendix/api-intro' },
-                { text: 'IDE 原理', link: '/zh-cn/appendix/ide-intro' },
-                { text: '终端入门', link: '/zh-cn/appendix/terminal-intro' },
-                { text: 'Git 详细介绍', link: '/zh-cn/appendix/git-intro' },
-                {
-                  text: '计算机网络',
-                  link: '/zh-cn/appendix/computer-networks'
-                },
-                { text: '部署与上线', link: '/zh-cn/appendix/deployment' }
+                { text: 'SQL', link: '/zh-cn/appendix/5-data/sql' },
+                { text: '数据库原理（索引 / 事务 / 查询优化）', link: '/zh-cn/appendix/5-data/database-fundamentals' },
+                { text: '数据模型全景（文档 / 图 / 时序 / 向量）', link: '/zh-cn/appendix/5-data/data-models' },
+                { text: '数据埋点与用户行为采集', link: '/zh-cn/appendix/5-data/data-tracking' },
+                { text: '数据分析基础（统计 / 指标 / 漏斗）', link: '/zh-cn/appendix/5-data/data-analysis' },
+                { text: 'A/B 测试与实验驱动', link: '/zh-cn/appendix/5-data/ab-testing' },
+                { text: '数据可视化与仪表盘', link: '/zh-cn/appendix/5-data/data-visualization' },
+                { text: '数据治理与数据质量', link: '/zh-cn/appendix/5-data/data-governance' }
+              ]
+            },
+            {
+              text: '六、架构与系统设计',
+              collapsed: false,
+              items: [
+                { text: '从单体到微服务的演进', link: '/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices' },
+                { text: '分布式系统的挑战', link: '/zh-cn/appendix/6-architecture-and-system-design/distributed-systems' },
+                { text: '高可用与容灾', link: '/zh-cn/appendix/6-architecture-and-system-design/high-availability' },
+                { text: '系统设计方法论', link: '/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology' }
+              ]
+            },
+            {
+              text: '七、基础设施与运维',
+              collapsed: false,
+              items: [
+                { text: 'Linux 基础', link: '/zh-cn/appendix/7-infrastructure-and-operations/linux-basics' },
+                { text: 'Docker 容器化', link: '/zh-cn/appendix/7-infrastructure-and-operations/docker-containers' },
+                { text: 'Kubernetes 编排', link: '/zh-cn/appendix/7-infrastructure-and-operations/kubernetes' },
+                { text: 'CI / CD 自动化', link: '/zh-cn/appendix/7-infrastructure-and-operations/ci-cd' },
+                { text: '域名、DNS 与 HTTPS', link: '/zh-cn/appendix/7-infrastructure-and-operations/dns-https' },
+                { text: '负载均衡与网关', link: '/zh-cn/appendix/7-infrastructure-and-operations/load-balancing-gateway' },
+                { text: '网关与反向代理', link: '/zh-cn/appendix/7-infrastructure-and-operations/gateway-proxy' },
+                { text: '云平台实战', link: '/zh-cn/appendix/7-infrastructure-and-operations/cloud-platforms' },
+                { text: 'IAM 权限管理', link: '/zh-cn/appendix/7-infrastructure-and-operations/cloud-iam' },
+                { text: '对象存储与 CDN', link: '/zh-cn/appendix/7-infrastructure-and-operations/cloud-storage-cdn' },
+                { text: '基础设施即代码', link: '/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code' },
+                { text: '监控、日志与告警', link: '/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging' },
+                { text: '故障排查与应急响应', link: '/zh-cn/appendix/7-infrastructure-and-operations/incident-response' }
+              ]
+            },
+            {
+              text: '八、人工智能',
+              collapsed: false,
+              items: [
+                { text: 'AI 简史与核心概念', link: '/zh-cn/appendix/8-artificial-intelligence/ai-history' },
+                { text: '神经网络与深度学习', link: '/zh-cn/appendix/8-artificial-intelligence/neural-networks' },
+                { text: 'Transformer 与注意力机制', link: '/zh-cn/appendix/8-artificial-intelligence/transformer-attention' },
+                { text: '大语言模型的工作原理', link: '/zh-cn/appendix/8-artificial-intelligence/llm-principles' },
+                { text: '提示词工程', link: '/zh-cn/appendix/8-artificial-intelligence/prompt-engineering' },
+                { text: '上下文工程', link: '/zh-cn/appendix/8-artificial-intelligence/context-engineering' },
+                { text: '多模态模型（视觉 / 音频 / 视频）', link: '/zh-cn/appendix/8-artificial-intelligence/multimodal-models' },
+                { text: '图像生成原理', link: '/zh-cn/appendix/8-artificial-intelligence/image-generation' },
+                { text: '语音合成与识别', link: '/zh-cn/appendix/8-artificial-intelligence/speech-synthesis-recognition' },
+                { text: 'Embedding 与向量检索', link: '/zh-cn/appendix/8-artificial-intelligence/embedding-vector-retrieval' },
+                { text: 'RAG 架构', link: '/zh-cn/appendix/8-artificial-intelligence/rag' },
+                { text: 'AI Agent 与工具调用', link: '/zh-cn/appendix/8-artificial-intelligence/ai-agents' },
+                { text: 'AI 协议（MCP 等）', link: '/zh-cn/appendix/8-artificial-intelligence/ai-protocols' },
+                { text: '模型微调与部署', link: '/zh-cn/appendix/8-artificial-intelligence/model-finetuning-deployment' },
+                { text: 'AI 原生应用设计', link: '/zh-cn/appendix/8-artificial-intelligence/ai-native-app-design' },
+                { text: 'AI 能力词典', link: '/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary' }
+              ]
+            },
+            {
+              text: '九、工程素养',
+              collapsed: false,
+              items: [
+                { text: '代码质量与重构', link: '/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring' },
+                { text: '测试策略', link: '/zh-cn/appendix/9-engineering-excellence/testing-strategies' },
+                { text: '设计模式', link: '/zh-cn/appendix/9-engineering-excellence/design-patterns' },
+                { text: '安全思维与攻防基础', link: '/zh-cn/appendix/9-engineering-excellence/security-thinking' },
+                { text: '技术文档写作', link: '/zh-cn/appendix/9-engineering-excellence/technical-writing' },
+                { text: '开源协作', link: '/zh-cn/appendix/9-engineering-excellence/open-source-collaboration' },
+                { text: '技术选型方法论', link: '/zh-cn/appendix/9-engineering-excellence/technology-selection' }
               ]
             }
           ]

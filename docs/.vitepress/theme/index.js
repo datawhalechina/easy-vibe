@@ -81,6 +81,12 @@ import AudioWaveformDemo from './components/appendix/audio-intro/AudioWaveformDe
 import AudioTokenizationDemo from './components/appendix/audio-intro/AudioTokenizationDemo.vue'
 import SpectrogramViz from './components/appendix/audio-intro/SpectrogramViz.vue'
 import AutoregressiveAudioDemo from './components/appendix/audio-intro/AutoregressiveAudioDemo.vue'
+import AudioQuickStartDemo from './components/appendix/audio-intro/AudioQuickStartDemo.vue'
+import MelSpectrogramDemo from './components/appendix/audio-intro/MelSpectrogramDemo.vue'
+import TTSPipelineDemo from './components/appendix/audio-intro/TTSPipelineDemo.vue'
+import VoiceCloningDemo from './components/appendix/audio-intro/VoiceCloningDemo.vue'
+import ASRvsTTSDemo from './components/appendix/audio-intro/ASRvsTTSDemo.vue'
+import EmotionControlDemo from './components/appendix/audio-intro/EmotionControlDemo.vue'
 
 // Web Basics Components
 import WebTechTriad from './components/appendix/web-basics/WebTechTriad.vue'
@@ -122,6 +128,9 @@ import TcpHandshakeDemo from './components/appendix/web-basics/TcpHandshakeDemo.
 import UrlParserDemo from './components/appendix/web-basics/UrlParserDemo.vue'
 import HttpExchangeDemo from './components/appendix/web-basics/HttpExchangeDemo.vue'
 import BrowserRenderingDemo from './components/appendix/web-basics/BrowserRenderingDemo.vue'
+
+// URL to Browser Components
+import UrlToBrowserQuickStart from './components/appendix/url-to-browser/UrlToBrowserQuickStart.vue'
 import FrontendEvolutionDemo from './components/appendix/web-basics/FrontendEvolutionDemo.vue'
 import SliceRequestDemo from './components/appendix/web-basics/SliceRequestDemo.vue'
 import ResponsiveGridDemo from './components/appendix/web-basics/ResponsiveGridDemo.vue'
@@ -550,10 +559,17 @@ export default {
     app.component('AudioTokenizationDemo', AudioTokenizationDemo)
     app.component('SpectrogramViz', SpectrogramViz)
     app.component('AutoregressiveAudioDemo', AutoregressiveAudioDemo)
+    app.component('AudioQuickStartDemo', AudioQuickStartDemo)
+    app.component('MelSpectrogramDemo', MelSpectrogramDemo)
+    app.component('TTSPipelineDemo', TTSPipelineDemo)
+    app.component('VoiceCloningDemo', VoiceCloningDemo)
+    app.component('ASRvsTTSDemo', ASRvsTTSDemo)
+    app.component('EmotionControlDemo', EmotionControlDemo)
 
     // Web Basics Components Registration
     app.component('WebTechTriad', WebTechTriad)
     app.component('UrlToBrowserDemo', UrlToBrowserDemo)
+    app.component('UrlToBrowserQuickStart', UrlToBrowserQuickStart)
     app.component('GitWorkflowDemo', GitWorkflowDemo)
     app.component('GitThreeAreasDemo', GitThreeAreasDemo)
     app.component('GitStorageDemo', GitStorageDemo)
