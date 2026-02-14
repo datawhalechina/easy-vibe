@@ -1,8 +1,9 @@
 <template>
   <div class="architecture-comparison-demo">
     <div class="demo-header">
-      <h4>🏗️ 架构演进对比</h4>
-      <p>四个时代的核心架构特征对比</p>
+      <span class="icon">🏗️</span>
+      <span class="title">架构演进对比</span>
+      <span class="subtitle">四个时代的核心架构特征</span>
     </div>
 
     <div class="comparison-grid">
@@ -49,6 +50,11 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想:</strong>架构演进是为了解决上一个时代的痛点,但也带来了新的复杂度。
     </div>
   </div>
 </template>
@@ -108,24 +114,35 @@ const currentEra = computed(() => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
   color: var(--vp-c-text-1);
 }
 
-.demo-header p {
-  margin: 0;
-  font-size: 0.9rem;
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .comparison-grid {
@@ -152,8 +169,7 @@ const currentEra = computed(() => {
 
 .era-card.active {
   border-color: var(--vp-c-brand);
-  background: rgba(102, 126, 234, 0.1);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  background: var(--vp-c-brand-soft);
 }
 
 .era-icon {
@@ -269,6 +285,25 @@ const currentEra = computed(() => {
   border-radius: 4px;
   font-size: 0.8rem;
   color: var(--vp-c-text-2);
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {

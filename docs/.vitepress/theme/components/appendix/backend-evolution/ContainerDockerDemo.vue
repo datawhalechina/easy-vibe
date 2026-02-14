@@ -1,8 +1,9 @@
 <template>
   <div class="container-docker-demo">
     <div class="demo-header">
-      <h4>🐳 Docker 容器化演示</h4>
-      <p>理解容器如何让应用"一次打包，到处运行"</p>
+      <span class="icon">🐳</span>
+      <span class="title">Docker 容器化演示</span>
+      <span class="subtitle">理解容器如何让应用"一次打包，到处运行"</span>
     </div>
 
     <div class="docker-visualization">
@@ -46,6 +47,11 @@
         <div class="benefit-desc">{{ benefit.desc }}</div>
       </div>
     </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>容器化让应用"一次构建，到处运行"，解决了环境一致性和快速部署的问题。
+    </div>
   </div>
 </template>
 
@@ -69,24 +75,35 @@ const benefits = [
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
   color: var(--vp-c-text-1);
 }
 
-.demo-header p {
-  margin: 0;
-  font-size: 0.9rem;
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .docker-visualization {
@@ -267,5 +284,24 @@ const benefits = [
   .benefits-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

@@ -4,9 +4,10 @@
 -->
 <template>
   <div class="upload-process-demo">
-    <div class="header">
-      <div class="title">文件上传流程</div>
-      <div class="subtitle">直传 vs 分片上传 vs 断点续传</div>
+    <div class="demo-header">
+      <span class="icon">📤</span>
+      <span class="title">文件上传流程</span>
+      <span class="subtitle">理解直传、分片、断点续传三种方式</span>
     </div>
 
     <!-- 上传方式选择 -->
@@ -178,6 +179,11 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>大文件分片上传提高可靠性，网络中断可以从断点续传，避免重复上传整个文件。
     </div>
   </div>
 </template>

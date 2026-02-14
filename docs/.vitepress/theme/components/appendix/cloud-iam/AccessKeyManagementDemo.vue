@@ -1,8 +1,9 @@
 <template>
   <div class="access-key-management-demo">
     <div class="demo-header">
-      <h4>访问密钥（AK/SK）生命周期管理</h4>
-      <p class="intro-text">模拟 AK/SK 的创建、使用和轮换流程</p>
+      <span class="icon">🔑</span>
+      <span class="title">访问密钥管理</span>
+      <span class="subtitle">理解 AK/SK 生命周期和轮换流程</span>
     </div>
 
     <div class="demo-content">
@@ -88,7 +89,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 安全提示：</strong>访问密钥泄露是云安全事件的主要原因之一。建议优先使用 IAM 角色替代访问密钥，如果必须使用，请务必定期轮换。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>访问密钥泄露是云安全事件的主要原因之一。建议优先使用 IAM 角色替代访问密钥，如果必须使用，请务必定期轮换。
     </div>
   </div>
 </template>

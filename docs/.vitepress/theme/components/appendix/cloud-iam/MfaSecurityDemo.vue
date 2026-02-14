@@ -1,8 +1,9 @@
 <template>
   <div class="mfa-security-demo">
     <div class="demo-header">
-      <h4>MFA 多因素认证模拟</h4>
-      <p class="intro-text">体验 MFA 双因素认证流程</p>
+      <span class="icon">🔐</span>
+      <span class="title">多因素认证</span>
+      <span class="subtitle">理解 MFA 双因素认证流程</span>
     </div>
 
     <div class="demo-content">
@@ -50,7 +51,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 MFA 安全价值：</strong>启用 MFA 可降低 99.9% 的账号被盗风险。即使密码泄露，攻击者没有你的 MFA 设备也无法登录。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>启用 MFA 可降低 99.9% 的账号被盗风险。即使密码泄露，攻击者没有你的 MFA 设备也无法登录。
     </div>
   </div>
 </template>

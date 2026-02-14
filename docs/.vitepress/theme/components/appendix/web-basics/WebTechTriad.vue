@@ -303,6 +303,8 @@ const handleBtnClick = () => {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 /* New Config Panel Styles */

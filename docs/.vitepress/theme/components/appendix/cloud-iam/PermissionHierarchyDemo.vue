@@ -1,8 +1,9 @@
 <template>
   <div class="permission-hierarchy-demo">
     <div class="demo-header">
-      <h4>权限层级结构</h4>
-      <p class="intro-text">点击层级查看详细权限范围</p>
+      <span class="icon">🏛️</span>
+      <span class="title">权限层级结构</span>
+      <span class="subtitle">理解不同权限级别的范围差异</span>
     </div>
 
     <div class="demo-content">
@@ -61,7 +62,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 最小权限原则：</strong>始终授予用户完成工作所需的最小权限。从低权限开始，根据实际需求逐步提升，而不是一开始就授予高权限。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>最小权限原则——始终授予用户完成工作所需的最小权限。从低权限开始，根据实际需求逐步提升，而不是一开始就授予高权限。
     </div>
   </div>
 </template>

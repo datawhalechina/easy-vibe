@@ -1,8 +1,9 @@
 <template>
   <div class="identity-provider-demo">
     <div class="demo-header">
-      <h4>身份提供商(IdP)集成流程</h4>
-      <p class="intro-text">点击步骤查看 SSO 单点登录流程</p>
+      <span class="icon">🔐</span>
+      <span class="title">身份提供商集成</span>
+      <span class="subtitle">理解企业 SSO 单点登录流程</span>
     </div>
 
     <div class="demo-content">
@@ -38,7 +39,8 @@
     </div>
 
     <div class="info-box">
-      <strong>💡 SSO 优势：</strong>通过企业 IdP 统一管理用户身份，避免在每个云平台单独创建账号，提高安全性和管理效率。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>通过企业 IdP 统一管理用户身份，避免在每个云平台单独创建账号，提高安全性和管理效率。
     </div>
   </div>
 </template>

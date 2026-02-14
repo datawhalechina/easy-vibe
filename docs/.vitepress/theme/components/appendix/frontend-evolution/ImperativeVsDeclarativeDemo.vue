@@ -1,19 +1,19 @@
 <!--
-  ImperativeVsDeclarativeDemo.vue
-  命令式 vs 声明式编程对比演示
-
-  用途：
-  通过并排的交互式计数器，直观展示 Imperative（jQuery）和 Declarative（Vue）
-  在代码量和心智负担上的差异。
-
-  交互功能：
-  - 两个可交互的计数器。
-  - 切换展示背后的代码实现。
-  - 高亮显示 jQuery 需要手动更新的多个 DOM 节点 vs Vue 的自动绑定。
+  ImperativeVsDeclarativeDemo.vue - 命令式 vs 声明式编程对比
+  用"画画的两种方式"来解释 jQuery vs Vue/React 的区别
 -->
 <template>
   <div class="imperative-declarative-demo">
+    <!-- 标题区 -->
     <div class="demo-header">
+      <span class="icon">🎨</span>
+      <span class="title">编程范式对比</span>
+      <span class="subtitle">告诉"怎么做" vs 告诉"要什么"</span>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="demo-content">
+      <!-- 视图切换 -->
       <div class="toggle-group">
         <button
           v-for="view in views"
@@ -24,14 +24,13 @@
           {{ view.label }}
         </button>
       </div>
-    </div>
 
     <div class="comparison-container">
       <!-- Imperative Side (jQuery) -->
       <div class="side imperative-side">
         <div class="side-header">
-          <span class="badge imperative">jQuery / Imperative</span>
-          <h4>"Tell me HOW"</h4>
+          <span class="badge imperative">jQuery / 命令式</span>
+          <span class="sub-label">通俗说法: 告诉怎么做</span>
         </div>
 
         <div class="demo-area">
@@ -112,8 +111,8 @@
       <!-- Declarative Side (Vue) -->
       <div class="side declarative-side">
         <div class="side-header">
-          <span class="badge declarative">Vue / Declarative</span>
-          <h4>"Tell me WHAT"</h4>
+          <span class="badge declarative">Vue / 声明式</span>
+          <span class="sub-label">通俗说法: 告诉要什么</span>
         </div>
 
         <div class="demo-area">
@@ -188,10 +187,19 @@
       </div>
     </div>
 
+    <!-- 底部控制 -->
     <div class="demo-controls">
       <button class="toggle-btn" @click="showAnalysis = !showAnalysis">
         {{ showAnalysis ? '隐藏' : '显示' }}对比分析
       </button>
+    </div>
+    </div>
+
+    <!-- 信息框 -->
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>
+      命令式编程需要一步步告诉浏览器"怎么做"，声明式编程只需告诉浏览器"要什么"，框架会自动处理细节。
     </div>
   </div>
 </template>
@@ -224,13 +232,40 @@ function updateJq(change) {
 .imperative-declarative-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
+/* 标题区 */
 .demo-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  margin-bottom: 0.5rem;
 }
 
 .toggle-group {
@@ -275,9 +310,10 @@ function updateJq(change) {
 
 .side-header {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-.badge {
+.side-header .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
@@ -285,14 +321,11 @@ function updateJq(change) {
   font-weight: 600;
 }
 
-.badge.imperative {
-  background-color: rgba(7, 105, 173, 0.2);
-  color: #0769ad;
-}
-
-.badge.declarative {
-  background-color: rgba(66, 184, 131, 0.2);
-  color: #2c8a5e;
+.side-header .sub-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
 }
 
 .side-header h4 {
@@ -356,7 +389,7 @@ function updateJq(change) {
 }
 
 .status-text.warning {
-  color: #f87171;
+  color: var(--vp-c-warning);
   font-weight: 600;
 }
 
@@ -406,8 +439,8 @@ function updateJq(change) {
 }
 
 .imperative-code {
-  background-color: #1e1e2e;
-  color: #a6accd;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
 }
 
 .imperative-code code {
@@ -415,8 +448,8 @@ function updateJq(change) {
 }
 
 .declarative-code {
-  background-color: #1e1e2e;
-  color: #a6accd;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
 }
 
 .declarative-code code {
@@ -433,7 +466,7 @@ function updateJq(change) {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0769ad, #42b883);
+  background: var(--vp-c-brand);
   color: white;
   display: flex;
   align-items: center;
@@ -460,21 +493,41 @@ function updateJq(change) {
 }
 
 .pain-point {
-  background-color: rgba(248, 113, 113, 0.1);
-  color: #dc2626;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-danger);
 }
 
 .benefit {
-  background-color: rgba(74, 222, 128, 0.1);
-  color: #16a34a;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-success);
 }
 
 .demo-controls {
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--vp-c-divider);
+}
+
+/* 信息框 */
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 
 @media (max-width: 768px) {

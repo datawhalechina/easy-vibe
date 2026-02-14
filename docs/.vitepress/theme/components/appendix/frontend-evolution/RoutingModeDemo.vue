@@ -4,15 +4,23 @@
 -->
 <template>
   <div class="routing-demo">
-    <!-- 故事引入 -->
-    <div class="story-box">
-      <div class="story-emoji">📖📄✨</div>
-      <h4 class="story-title">小明看书记</h4>
-      <p class="story-text">
-        小明喜欢看书。有两种看书方式：<br>
-        <strong>MPA 方式：像翻书</strong>，每翻一页都要换一本书 <strong>SPA 方式：像换纸</strong>，在同一本书里换内容
-      </p>
+    <!-- 标题区 -->
+    <div class="demo-header">
+      <span class="icon">📖</span>
+      <span class="title">路由模式对比</span>
+      <span class="subtitle">MPA 多页应用 vs SPA 单页应用</span>
     </div>
+
+    <!-- 主内容区 -->
+    <div class="demo-content">
+      <!-- 故事引入 -->
+      <div class="story-box">
+        <p class="story-text">
+          <strong>通俗说法：</strong>小明喜欢看书，有两种看书方式：<br>
+          <strong>MPA 方式（像翻书）</strong>：每翻一页都要换一本书<br>
+          <strong>SPA 方式（像换纸）</strong>：在同一本书里换内容
+        </p>
+      </div>
 
     <!-- 模式选择 -->
     <div class="mode-selector">
@@ -23,7 +31,7 @@
       >
         <div class="mode-icon">📚</div>
         <div class="mode-name">MPA 多页应用</div>
-        <div class="mode-sub">像翻书：每次都换一本</div>
+        <div class="mode-sub">通俗说法: 像翻书</div>
         <div class="mode-desc">每点一次链接，浏览器向服务器要新页面</div>
       </div>
 
@@ -36,7 +44,7 @@
       >
         <div class="mode-icon">📄</div>
         <div class="mode-name">SPA 单页应用</div>
-        <div class="mode-sub">像换纸：同一本书换内容</div>
+        <div class="mode-sub">通俗说法: 像换纸</div>
         <div class="mode-desc">只加载一次，后续只切换内容</div>
       </div>
     </div>
@@ -185,14 +193,13 @@
     </div>
 
     <!-- 核心要点 -->
-    <div class="key-takeaway">
-      <div class="takeaway-icon">🎯</div>
-      <div class="takeaway-content">
-        <strong>核心差异：</strong>
-        <strong>MPA</strong> 每次切换都要"整页刷新"，像翻书，适合内容为主的网站；
-        <strong>SPA</strong> 只加载一次，后续"局部更新"，像换纸，适合交互复杂的应用。
-        关键是：<strong>状态会不会丢</strong>。
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>
+      <strong>MPA</strong> 每次切换都要"整页刷新"，像翻书，适合内容为主的网站；
+      <strong>SPA</strong> 只加载一次，后续"局部更新"，像换纸，适合交互复杂的应用。
+      关键是：<strong>状态会不会丢</strong>。
+    </div>
     </div>
   </div>
 </template>
@@ -251,7 +258,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 <style scoped>
 .routing-demo {
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--vp-c-divider);
   border-radius: 16px;
   background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
   padding: 24px;
@@ -303,7 +310,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   min-width: 200px;
   max-width: 280px;
   background: white;
-  border: 3px solid #e0e0e0;
+  border: 3px solid var(--vp-c-divider);
   border-radius: 16px;
   padding: 20px;
   text-align: center;
@@ -356,7 +363,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .demo-area {
   background: white;
   border-radius: 16px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--vp-c-divider);
   padding: 20px;
   margin-bottom: 24px;
 }
@@ -493,7 +500,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 /* 阅读区 */
 .reading-paper {
   background: white;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--vp-c-divider);
   border-radius: 12px;
   padding: 16px;
   min-height: 200px;
@@ -524,7 +531,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .state-test {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 2px dashed #e0e0e0;
+  border-top: 2px dashed var(--vp-c-divider);
 }
 
 .test-label {
@@ -537,7 +544,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .test-input {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   font-size: 13px;
   box-sizing: border-box;
@@ -572,7 +579,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 .nav-btn {
   padding: 8px 16px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--vp-c-divider);
   border-radius: 8px;
   background: white;
   cursor: pointer;
@@ -632,7 +639,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .comparison-table {
   background: white;
   border-radius: 16px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--vp-c-divider);
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -655,7 +662,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   grid-template-columns: 1fr 1.5fr 1.5fr;
   gap: 16px;
   padding: 16px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .comparison-row:last-child {

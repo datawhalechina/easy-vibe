@@ -1,134 +1,136 @@
 <!--
   GitWorkflowDemo.vue
-  Git 工作流演示 - 简洁版
+  Git 基础工作流演示 - 寄快递版
 
-  用途：展示 Git 的基本工作流程
-  交互：初始化、提交、创建分支、合并
+  展示 Git 的基本工作流程：修改 → 暂存 → 提交
+  高度控制：紧凑布局，确保在 600px 内
 -->
 <template>
   <div class="git-workflow-demo">
-    <!-- 控制面板 -->
-    <div class="control-panel">
-      <button
-        @click="initRepo"
-        :disabled="inited || mergePending"
-        class="action-btn"
-      >
-        🎯 初始化仓库
-      </button>
-      <button
-        @click="makeCommit"
-        :disabled="!inited || mergePending"
-        class="action-btn"
-      >
-        ✅ 提交
-      </button>
-      <button
-        @click="createBranch"
-        :disabled="!inited || hasBranch || mergePending"
-        class="action-btn"
-      >
-        🌿 创建分支
-      </button>
-      <button
-        @click="prepareMerge"
-        :disabled="!hasBranch || mergePending"
-        class="action-btn"
-      >
-        🔀 准备合并
-      </button>
-      <button @click="finishMerge" :disabled="!mergePending" class="action-btn">
-        ✅ 完成合并
-      </button>
-      <button @click="reset" class="action-btn secondary">🔄 重置</button>
+    <div class="demo-header">
+      <span class="icon">📦</span>
+      <span class="title">Git 工作流</span>
+      <span class="subtitle">修改 → 暂存 → 提交，三步走</span>
     </div>
 
-    <!-- 提交历史可视化 -->
-    <div class="visualization">
-      <div class="graph-container">
-        <svg viewBox="0 0 400 150" class="git-graph">
-          <!-- 主分支线 -->
-          <line
-            x1="50"
-            y1="60"
-            x2="350"
-            y2="60"
-            stroke="#3b82f6"
-            stroke-width="3"
-          />
+    <div class="demo-content">
+      <!-- 文件状态区域 -->
+      <div class="file-area">
+        <div class="area-header">
+          <span class="area-icon">📝</span>
+          <span class="area-name">工作区</span>
+          <span class="area-desc">你正在改的文件</span>
+        </div>
+        <div class="file-list">
+          <div
+            v-for="file in files"
+            :key="file.name"
+            class="file-item"
+            :class="{
+              'modified': file.status === 'modified',
+              'staged': file.status === 'staged',
+              'committed': file.status === 'committed'
+            }"
+          >
+            <span class="file-icon">{{ getIcon(file.status) }}</span>
+            <span class="file-name">{{ file.name }}</span>
+            <span class="file-status">{{ getStatusText(file.status) }}</span>
+          </div>
+        </div>
+      </div>
 
-          <!-- 分支线 -->
-          <line
-            v-if="hasBranch"
-            x1="150"
-            y1="60"
-            x2="150"
-            y2="100"
-            stroke="#10b981"
-            stroke-width="3"
-          />
-          <line
-            v-if="hasBranch"
-            x1="150"
-            y1="100"
-            x2="300"
-            y2="100"
-            stroke="#10b981"
-            stroke-width="3"
-          />
+      <!-- 箭头 -->
+      <div class="arrow-group" v-if="!allCommitted">
+        <div class="arrow" :class="{ active: hasStaged }">↓</div>
+        <div class="arrow-label" v-if="hasStaged">git add</div>
+      </div>
 
-          <!-- 合并线 -->
-          <path
-            v-if="mergePending"
-            d="M 300 100 Q 320 80, 320 60"
-            fill="none"
-            stroke="var(--vp-c-brand)"
-            stroke-width="2"
-            stroke-dasharray="5,5"
-          />
+      <!-- 暂存区 -->
+      <div class="stage-area">
+        <div class="area-header">
+          <span class="area-icon">📋</span>
+          <span class="area-name">暂存区</span>
+          <span class="area-desc">准备打包的文件</span>
+        </div>
+        <div class="file-list">
+          <div
+            v-for="file in stagedFiles"
+            :key="file.name"
+            class="file-item staged"
+          >
+            <span class="file-icon">📌</span>
+            <span class="file-name">{{ file.name }}</span>
+            <span class="file-status">待提交</span>
+          </div>
+          <div v-if="stagedFiles.length === 0" class="empty-tip">
+            暂无文件
+          </div>
+        </div>
+      </div>
 
-          <!-- 提交节点 -->
-          <circle
-            v-for="(commit, i) in mainCommits"
-            :key="'main-' + i"
-            :cx="80 + i * 60"
-            cy="60"
-            r="10"
-            fill="#3b82f6"
-          />
-          <circle
-            v-for="(commit, i) in branchCommits"
-            :key="'branch-' + i"
-            :cx="200 + i * 60"
-            cy="100"
-            r="10"
-            fill="#10b981"
-          />
-        </svg>
+      <!-- 箭头 -->
+      <div class="arrow-group" v-if="hasStaged">
+        <div class="arrow active">↓</div>
+        <div class="arrow-label">git commit</div>
+      </div>
+
+      <!-- 仓库区 -->
+      <div class="repo-area">
+        <div class="area-header">
+          <span class="area-icon">🏪</span>
+          <span class="area-name">仓库</span>
+          <span class="area-desc">已保存的版本</span>
+        </div>
+        <div class="commit-list">
+          <div
+            v-for="(commit, i) in commits"
+            :key="i"
+            class="commit-item"
+          >
+            <span class="commit-icon">✅</span>
+            <span class="commit-msg">{{ commit.msg }}</span>
+          </div>
+          <div v-if="commits.length === 0" class="empty-tip">
+            暂无提交
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- 状态信息 -->
-    <div class="status-panel">
-      <div class="status-item">
-        <span class="label">提交数:</span>
-        <span class="value">{{ mainCommits.length }}</span>
-      </div>
-      <div class="status-item">
-        <span class="label">分支:</span>
-        <span class="value">{{ hasBranch ? '2' : '1' }}</span>
-      </div>
-      <div class="status-item">
-        <span class="label">状态:</span>
-        <span class="value">{{ status }}</span>
-      </div>
+    <!-- 操作按钮 -->
+    <div class="action-panel">
+      <button
+        @click="modifyFile"
+        class="action-btn"
+        :disabled="allModified"
+      >
+        ✏️ 修改文件
+      </button>
+      <button
+        @click="stageFiles"
+        class="action-btn"
+        :disabled="!hasModified || allStaged"
+      >
+        📌 暂存修改
+      </button>
+      <button
+        @click="commitFiles"
+        class="action-btn"
+        :disabled="!hasStaged"
+      >
+        ✅ 提交版本
+      </button>
+      <button
+        @click="reset"
+        class="action-btn secondary"
+      >
+        🔄 重置
+      </button>
     </div>
 
-    <!-- 说明 -->
     <div class="info-box">
-      <p>
-        <strong>💡 工作流程:</strong> 初始化 → 提交 → 创建分支 → 开发 → 合并
-      </p>
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>工作区修改 → 暂存区挑选 → 仓库永久保存
     </div>
   </div>
 </template>
@@ -136,56 +138,92 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const inited = ref(false)
-const hasBranch = ref(false)
-const mergePending = ref(false)
-const mainCommits = ref([])
-const branchCommits = ref([])
+const files = ref([
+  { name: 'index.html', status: 'unmodified' },
+  { name: 'app.js', status: 'unmodified' },
+  { name: 'style.css', status: 'unmodified' }
+])
 
-const status = computed(() => {
-  if (mergePending.value) return '准备合并：检查改动/解决冲突后再完成合并'
-  if (hasBranch) return '分支已创建'
-  if (inited) return '已初始化'
-  return '未初始化'
-})
+const commits = ref([])
 
-const initRepo = () => {
-  inited.value = true
-  mainCommits.value = [{ hash: 'abc123' }]
-}
+const hasModified = computed(() =>
+  files.value.some(f => f.status === 'modified')
+)
 
-const makeCommit = () => {
-  if (inited.value) {
-    mainCommits.value.push({ hash: Math.random().toString(16).substr(2, 6) })
+const hasStaged = computed(() =>
+  files.value.some(f => f.status === 'staged')
+)
+
+const allCommitted = computed(() =>
+  files.value.every(f => f.status === 'committed')
+)
+
+const allModified = computed(() =>
+  files.value.every(f => f.status === 'modified')
+)
+
+const allStaged = computed(() =>
+  files.value.every(f => f.status === 'staged' || f.status === 'committed')
+)
+
+const stagedFiles = computed(() =>
+  files.value.filter(f => f.status === 'staged')
+)
+
+const getIcon = (status) => {
+  switch (status) {
+    case 'modified': return '📝'
+    case 'staged': return '📌'
+    case 'committed': return '✅'
+    default: return '📄'
   }
 }
 
-const createBranch = () => {
-  if (inited.value && !hasBranch.value) {
-    hasBranch.value = true
-    branchCommits.value = [{ hash: 'def456' }]
+const getStatusText = (status) => {
+  switch (status) {
+    case 'modified': return '已修改'
+    case 'staged': return '已暂存'
+    case 'committed': return '已提交'
+    default: return '未修改'
   }
 }
 
-const prepareMerge = () => {
-  if (!hasBranch.value) return
-  mergePending.value = true
+const modifyFile = () => {
+  const unmodified = files.value.filter(f => f.status === 'unmodified' || f.status === 'committed')
+  if (unmodified.length > 0) {
+    const file = unmodified[0]
+    file.status = 'modified'
+  }
 }
 
-const finishMerge = () => {
-  if (!mergePending.value) return
-  mainCommits.value.push({ hash: Math.random().toString(16).substr(2, 6) })
-  hasBranch.value = false
-  branchCommits.value = []
-  mergePending.value = false
+const stageFiles = () => {
+  files.value.forEach(f => {
+    if (f.status === 'modified') {
+      f.status = 'staged'
+    }
+  })
+}
+
+const commitFiles = () => {
+  const staged = files.value.filter(f => f.status === 'staged')
+  if (staged.length > 0) {
+    files.value.forEach(f => {
+      if (f.status === 'staged') {
+        f.status = 'committed'
+      }
+    })
+    commits.value.push({
+      msg: `提交了 ${staged.length} 个文件`,
+      files: staged.map(f => f.name)
+    })
+  }
 }
 
 const reset = () => {
-  inited.value = false
-  hasBranch.value = false
-  mergePending.value = false
-  mainCommits.value = []
-  branchCommits.value = []
+  files.value.forEach(f => {
+    f.status = 'unmodified'
+  })
+  commits.value = []
 }
 </script>
 
@@ -193,94 +231,230 @@ const reset = () => {
 .git-workflow-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
   margin: 1rem 0;
+  max-height: 550px;
+  overflow-y: auto;
 }
 
-.control-panel {
+.demo-header {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--vp-c-text-1);
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.area-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.area-icon {
+  font-size: 1.1rem;
+}
+
+.area-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--vp-c-text-1);
+}
+
+.area-desc {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  margin-left: 0.5rem;
+}
+
+.file-area,
+.stage-area,
+.repo-area {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.file-list,
+.commit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 60px;
+}
+
+.file-item,
+.commit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.file-item.modified {
+  background: var(--vp-c-bg-alt);
+  border-left: 3px solid var(--vp-c-warning);
+}
+
+.file-item.staged {
+  background: var(--vp-c-brand-soft);
+  border-left: 3px solid var(--vp-c-brand);
+}
+
+.file-item.committed {
+  background: var(--vp-c-bg-alt);
+  border-left: 3px solid var(--vp-c-success);
+  opacity: 0.7;
+}
+
+.file-icon {
+  font-size: 1rem;
+}
+
+.file-name {
+  flex: 1;
+  color: var(--vp-c-text-1);
+}
+
+.file-status {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+}
+
+.commit-item {
+  font-size: 0.8rem;
+}
+
+.commit-icon {
+  font-size: 0.9rem;
+}
+
+.commit-msg {
+  flex: 1;
+  color: var(--vp-c-text-2);
+}
+
+.empty-tip {
+  text-align: center;
+  color: var(--vp-c-text-3);
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+
+.arrow-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: var(--vp-c-text-3);
+  transition: all 0.3s;
+}
+
+.arrow.active {
+  color: var(--vp-c-brand);
+  transform: scale(1.2);
+}
+
+.arrow-label {
+  font-size: 0.7rem;
+  color: var(--vp-c-brand);
+  font-family: monospace;
+}
+
+.action-panel {
+  display: flex;
+  gap: 0.5rem;
   flex-wrap: wrap;
+  margin-top: 0.75rem;
 }
 
 .action-btn {
-  padding: 0.625rem 1.25rem;
-  border: 2px solid var(--vp-c-brand);
-  background: var(--vp-c-bg);
-  color: var(--vp-c-brand);
+  padding: 0.5rem 1rem;
+  background: var(--vp-c-brand);
+  color: white;
+  border: none;
   border-radius: 6px;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  flex: 1;
+  min-width: 100px;
 }
 
 .action-btn:hover:not(:disabled) {
-  background: var(--vp-c-brand);
-  color: var(--vp-c-bg);
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .action-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
-  border-color: var(--vp-c-divider);
-  color: var(--vp-c-text-2);
+  background: var(--vp-c-divider);
 }
 
 .action-btn.secondary {
-  border-color: var(--vp-c-divider);
-}
-
-.visualization {
-  margin: 1.5rem 0;
-}
-
-.graph-container {
-  background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  background: transparent;
   border: 1px solid var(--vp-c-divider);
-}
-
-.git-graph {
-  width: 100%;
-  height: auto;
-}
-
-.status-panel {
-  display: flex;
-  gap: 2rem;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
-}
-
-.status-item {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.status-item .label {
   color: var(--vp-c-text-2);
 }
 
-.status-item .value {
-  font-weight: 600;
+.action-btn.secondary:hover:not(:disabled) {
+  border-color: var(--vp-c-brand);
   color: var(--vp-c-brand);
 }
 
 .info-box {
-  padding: 1rem;
-  background: var(--vp-c-bg);
-  border-left: 4px solid var(--vp-c-brand);
-  border-radius: 4px;
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
   margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
 }
 
-.info-box p {
-  margin: 0;
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
   color: var(--vp-c-text-1);
-  line-height: 1.6;
 }
 </style>

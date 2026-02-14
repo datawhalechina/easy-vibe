@@ -4,6 +4,12 @@
 -->
 <template>
   <div class="box-demo">
+    <div class="demo-header">
+      <span class="icon">📦</span>
+      <span class="title">CSS 盒模型</span>
+      <span class="subtitle">理解元素尺寸的构成（通俗说：盒子的四层包装）</span>
+    </div>
+
     <div class="controls">
       <div class="control-item">
         <div class="control-header">
@@ -67,6 +73,11 @@
       </div>
     </div>
 
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>每个元素都是一个"盒子"，从内到外依次是：内容区 → 内边距 → 边框 → 外边距。
+    </div>
+
     <div class="code-block">
       <div class="code-title">CSS 代码片段</div>
       <div class="code-content">
@@ -99,13 +110,37 @@ const total = computed(
 <style scoped>
 .box-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 24px;
-  margin: 24px 0;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1rem;
+}
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .controls {
@@ -309,5 +344,23 @@ input[type='range'] {
 
 .line {
   white-space: pre;
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

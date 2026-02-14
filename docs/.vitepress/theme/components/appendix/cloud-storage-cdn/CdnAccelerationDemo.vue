@@ -4,9 +4,10 @@
 -->
 <template>
   <div class="cdn-acceleration-demo">
-    <div class="header">
-      <div class="title">CDN 加速原理</div>
-      <div class="subtitle">边缘节点、源站与回源的协同工作</div>
+    <div class="demo-header">
+      <span class="icon">🌐</span>
+      <span class="title">CDN 加速原理</span>
+      <span class="subtitle">边缘节点、源站与回源的协同工作</span>
     </div>
 
     <div class="cdn-architecture">
@@ -64,7 +65,7 @@
               </div>
               <div class="stat">
                 <span class="stat-label">命中</span>
-                <span class="stat-value" :style="{ color: node.hitRate > 80 ? '#22c55e' : '#f59e0b' }">
+                <span class="stat-value" :style="{ color: node.hitRate > 80 ? 'var(--vp-c-brand-1)' : 'var(--vp-c-brand)' }">
                   {{ node.hitRate }}%
                 </span>
               </div>
@@ -135,24 +136,29 @@
       <div class="stats-title">📊 访问统计</div>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: '#22c55e' }">{{ stats.cacheHit }}</div>
+          <div class="stat-value" :style="{ color: 'var(--vp-c-brand-1)' }">{{ stats.cacheHit }}</div>
           <div class="stat-label">缓存命中</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: '#ef4444' }">{{ stats.cacheMiss }}</div>
+          <div class="stat-value" :style="{ color: 'var(--vp-c-brand-delta)' }">{{ stats.cacheMiss }}</div>
           <div class="stat-label">缓存未命中</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: stats.hitRate > 80 ? '#22c55e' : '#f59e0b' }">
+          <div class="stat-value" :style="{ color: stats.hitRate > 80 ? 'var(--vp-c-brand-1)' : 'var(--vp-c-brand)' }">
             {{ stats.hitRate }}%
           </div>
           <div class="stat-label">命中率</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: '#3b82f6' }">{{ stats.avgResponseTime }}ms</div>
+          <div class="stat-value" :style="{ color: 'var(--vp-c-brand)' }">{{ stats.avgResponseTime }}ms</div>
           <div class="stat-label">平均响应</div>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>CDN就像在全球开了分店——用户访问最近的分店拿资源，不用都跑总店来，速度自然快。
     </div>
   </div>
 </template>
@@ -285,21 +291,32 @@ const resetDemo = () => {
   padding: 1.5rem;
   margin: 1.5rem 0;
   font-family: var(--vp-font-family-base);
+  max-height: 600px;
+  overflow-y: auto;
 }
 
-.header {
-  margin-bottom: 1.5rem;
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.title {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+.demo-header .icon {
+  font-size: 1.25rem;
 }
 
-.subtitle {
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .cdn-architecture {
@@ -338,27 +355,27 @@ const resetDemo = () => {
 }
 
 .layer-status.hit {
-  background: #dcfce7;
-  color: #166534;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 .layer-status.miss {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
+  color: var(--vp-c-brand-delta);
 }
 
 .layer-status.active {
-  background: #dbeafe;
-  color: #1e40af;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 /* 用户层 */
 .users-map {
   position: relative;
   height: 120px;
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  background: var(--vp-c-bg-soft);
   border-radius: 8px;
-  border: 1px solid #bae6fd;
+  border: 1px solid var(--vp-c-divider);
   overflow: hidden;
 }
 
@@ -396,18 +413,18 @@ const resetDemo = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--vp-c-bg);
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .user-label {
   font-size: 0.65rem;
   font-weight: 600;
-  color: #0369a1;
+  color: var(--vp-c-brand-1);
   margin-top: 0.25rem;
   white-space: nowrap;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--vp-c-bg);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
 }
@@ -511,8 +528,8 @@ const resetDemo = () => {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: linear-gradient(135deg, #fef3c7, #fde68a);
-  border: 2px solid #f59e0b;
+  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider);
   border-radius: 8px;
 }
 
@@ -528,12 +545,12 @@ const resetDemo = () => {
 .server-name {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #92400e;
+  color: var(--vp-c-text-1);
 }
 
 .server-address {
   font-size: 0.75rem;
-  color: #b45309;
+  color: var(--vp-c-text-2);
   font-family: var(--vp-font-family-mono);
 }
 
@@ -543,14 +560,14 @@ const resetDemo = () => {
   gap: 0.4rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #15803d;
+  color: var(--vp-c-brand-1);
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--vp-c-brand-1);
   animation: statusPulse 2s infinite;
 }
 
@@ -560,8 +577,8 @@ const resetDemo = () => {
 }
 
 .back-to-source-flow {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   padding: 1rem;
   margin-top: 0.5rem;
@@ -571,7 +588,7 @@ const resetDemo = () => {
   text-align: center;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #dc2626;
+  color: var(--vp-c-brand-delta);
   margin-bottom: 0.5rem;
 }
 
@@ -589,11 +606,11 @@ const resetDemo = () => {
 
 .flow-step {
   font-size: 0.75rem;
-  color: #991b1b;
-  background: white;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
   padding: 0.4rem 0.6rem;
   border-radius: 4px;
-  border-left: 3px solid #dc2626;
+  border-left: 3px solid var(--vp-c-brand);
 }
 
 /* 控制区 */
@@ -639,13 +656,13 @@ const resetDemo = () => {
 }
 
 .control-btn.reset {
-  background: #fef2f2;
-  border-color: #fecaca;
-  color: #dc2626;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.1);
+  border-color: var(--vp-c-brand-delta);
+  color: var(--vp-c-brand-delta);
 }
 
 .control-btn.reset:hover {
-  background: #fee2e2;
+  background: rgba(var(--vp-c-brand-delta-rgb), 0.15);
 }
 
 /* 统计面板 */
@@ -692,5 +709,24 @@ const resetDemo = () => {
 .stat-label {
   font-size: 0.7rem;
   color: var(--vp-c-text-2);
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

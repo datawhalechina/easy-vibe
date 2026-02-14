@@ -222,6 +222,7 @@ import MessageQueueComponentsDemo from './components/appendix/queue-design/Messa
 import PointToPointVsPubSubDemo from './components/appendix/queue-design/PointToPointVsPubSubDemo.vue'
 import MessageQueueComparisonDemo from './components/appendix/queue-design/MessageQueueComparisonDemo.vue'
 import CouplingDemo from './components/appendix/queue-design/CouplingDemo.vue'
+import DecouplingDemo from './components/appendix/queue-design/DecouplingDemo.vue'
 import PubSubDemo from './components/appendix/queue-design/PubSubDemo.vue'
 import DeadLetterQueueDemo from './components/appendix/queue-design/DeadLetterQueueDemo.vue'
 import DelayedMessageDemo from './components/appendix/queue-design/DelayedMessageDemo.vue'
@@ -693,6 +694,7 @@ export default {
     app.component('PointToPointVsPubSubDemo', PointToPointVsPubSubDemo)
     app.component('MessageQueueComparisonDemo', MessageQueueComparisonDemo)
     app.component('CouplingDemo', CouplingDemo)
+    app.component('DecouplingDemo', DecouplingDemo)
     app.component('PubSubDemo', PubSubDemo)
     app.component('DeadLetterQueueDemo', DeadLetterQueueDemo)
     app.component('DelayedMessageDemo', DelayedMessageDemo)

@@ -1,5 +1,11 @@
 <template>
   <div class="policy-editor-demo">
+    <div class="demo-header">
+      <span class="icon">📋</span>
+      <span class="title">策略编辑器</span>
+      <span class="subtitle">理解 IAM 策略的 JSON 结构</span>
+    </div>
+
     <div class="editor-layout">
       <div class="editor-panel">
         <div class="panel-title">策略编辑器</div>
@@ -41,6 +47,11 @@
           <span class="effect-text">{{ effect.name }}</span>
         </div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>策略由 Effect、Action、Resource、Condition 四个核心元素组成，理解这四个元素的作用是编写 IAM 策略的基础。
     </div>
   </div>
 </template>

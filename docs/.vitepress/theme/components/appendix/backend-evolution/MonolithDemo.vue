@@ -1,8 +1,9 @@
 <template>
   <div class="monolith-demo">
     <div class="demo-header">
-      <h4>🏢 单体架构演示</h4>
-      <p>观察单体应用如何处理请求，以及模块间的依赖关系</p>
+      <span class="icon">🏢</span>
+      <span class="title">单体架构演示</span>
+      <span class="subtitle">观察单体应用如何处理请求</span>
     </div>
 
     <div class="monolith-diagram">
@@ -47,13 +48,9 @@
       <button class="control-btn" @click="reset">重置</button>
     </div>
 
-    <div class="demo-explanation">
-      <h5>💡 单体架构的特点</h5>
-      <ul>
-        <li><strong>共享进程空间</strong>：所有模块在同一个进程中运行，内存共享</li>
-        <li><strong>数据库耦合</strong>：所有模块共享同一个数据库，Schema变更影响全局</li>
-        <li><strong>级联故障</strong>：一个模块崩溃可能导致整个进程挂掉（雪崩效应）</li>
-      </ul>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>所有模块在同一个进程中运行，内存共享，但一个模块崩溃可能导致整个进程挂掉（雪崩效应）。
     </div>
   </div>
 </template>
@@ -136,24 +133,35 @@ const reset = () => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem 0;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .demo-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
   color: var(--vp-c-text-1);
 }
 
-.demo-header p {
-  margin: 0;
-  font-size: 0.9rem;
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
 .monolith-diagram {
@@ -377,5 +385,24 @@ const reset = () => {
     flex-direction: row;
     flex-wrap: wrap;
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>
