@@ -1,9 +1,8 @@
 <template>
   <div class="triad">
     <div class="demo-header">
-      <span class="icon">🎭</span>
-      <span class="title">三剑客协作</span>
-      <span class="subtitle">同一段页面，切换看 HTML/CSS/JS 各自的作用</span>
+      <span class="title">HTML / CSS / JavaScript 协作演示</span>
+      <span class="subtitle">同一段页面，切换查看三者各自的作用</span>
     </div>
 
     <div class="main-area">
@@ -15,6 +14,7 @@
             :class="['mode-btn', { active: current === m.id }]"
             @click="current = m.id"
           >
+            <span class="mode-icon">{{ m.icon }}</span>
             {{ m.label }}
           </button>
         </div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="explain-section">
-          <div class="explain-label">发生了什么</div>
+          <div class="explain-label">执行过程</div>
           <ol class="steps">
             <li v-for="s in steps" :key="s">{{ s }}</li>
           </ol>
@@ -52,8 +52,7 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
-      <strong>核心思想：</strong>HTML 是骨架，CSS 是皮肤，JS 是大脑。三者分工明确，缺一不可。
+      <strong>分工原则：</strong>HTML 定义结构（是什么），CSS 定义样式（长什么样），JavaScript 定义行为（能做什么）。
     </div>
   </div>
 </template>
@@ -62,9 +61,9 @@
 import { computed, ref } from 'vue'
 
 const modes = [
-  { id: 'html', label: 'HTML' },
-  { id: 'css', label: 'CSS' },
-  { id: 'js', label: 'JS' }
+  { id: 'html', label: 'HTML', icon: '结构' },
+  { id: 'css', label: 'CSS', icon: '样式' },
+  { id: 'js', label: 'JavaScript', icon: '行为' }
 ]
 
 const current = ref('html')
@@ -72,9 +71,9 @@ const clicks = ref(0)
 const selectedPart = ref('h1')
 
 const codeTitle = computed(() => {
-  if (current.value === 'html') return 'HTML：定义结构'
-  if (current.value === 'css') return 'CSS：定义样式'
-  return 'JS：定义行为'
+  if (current.value === 'html') return 'HTML 代码'
+  if (current.value === 'css') return 'CSS 代码'
+  return 'JavaScript 代码'
 })
 
 const codeLines = computed(() => {
@@ -87,12 +86,15 @@ const codeLines = computed(() => {
   }
   if (current.value === 'css') {
     return [
-      { key: 'h1', text: '.hero { color: #0ea5e9; font-size: 20px; }' },
-      { key: 'p', text: '.desc { color: #666; }' },
-      { key: 'btn', text: '.cta { background: #0ea5e9; color: #fff; }' }
+      { key: 'h1', text: '.hero {' },
+      { key: 'h1', text: '  color: #0ea5e9;' },
+      { key: 'h1', text: '  font-size: 20px;' },
+      { key: 'h1', text: '}' },
+      { key: 'btn', text: '.cta { background: #0ea5e9; }' }
     ]
   }
   return [
+    { key: 'btn', text: "const btn = document.querySelector('.cta')" },
     { key: 'btn', text: "btn.addEventListener('click', () => {" },
     { key: 'btn', text: '  count++' },
     { key: 'btn', text: "  btn.textContent = '点我 (' + count + ')'" },
@@ -102,12 +104,24 @@ const codeLines = computed(() => {
 
 const steps = computed(() => {
   if (current.value === 'html') {
-    return ['浏览器读取标签，知道"这是标题、这是按钮"', '按默认样式显示（所以看起来朴素）']
+    return [
+      '浏览器解析标签，识别内容类型',
+      'h1 是标题，p 是段落，button 是按钮',
+      '按默认样式渲染（此时看起来很朴素）'
+    ]
   }
   if (current.value === 'css') {
-    return ['读取选择器，找到对应元素', '应用颜色、字号、间距等样式']
+    return [
+      '解析选择器，找到对应元素',
+      '应用颜色、字号、间距等样式规则',
+      '页面外观发生变化'
+    ]
   }
-  return ['给按钮绑定点击事件', '点击时更新计数和文字']
+  return [
+    '通过选择器获取按钮元素',
+    '注册 click 事件监听器',
+    '点击时执行回调函数，更新计数'
+  ]
 })
 
 const handleBtnClick = () => {
@@ -119,28 +133,35 @@ const handleBtnClick = () => {
 <style scoped>
 .triad {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 0.75rem;
-  margin: 0.5rem 0;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .demo-header {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--vp-c-text-1);
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+}
 
 .main-area {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -152,24 +173,33 @@ const handleBtnClick = () => {
 .left-panel {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .modes {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .mode-btn {
   flex: 1;
-  padding: 0.4rem 0.5rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   cursor: pointer;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.mode-icon {
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
 }
 
 .mode-btn:hover { background: var(--vp-c-bg-soft); }
@@ -179,43 +209,62 @@ const handleBtnClick = () => {
   background: var(--vp-c-brand-soft);
 }
 
+.mode-btn.active .mode-icon {
+  color: var(--vp-c-brand);
+}
+
 .preview {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.75rem;
+  border-radius: 8px;
+  padding: 1rem;
   background: var(--vp-c-bg);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  transition: all 0.3s;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 4px;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   margin-right: 8px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 11px;
   flex-shrink: 0;
 }
 
-.hero { margin: 0; cursor: pointer; display: flex; align-items: center; font-size: 1rem; }
-.desc { margin: 0; color: var(--vp-c-text-2); cursor: pointer; display: flex; align-items: center; font-size: 0.9rem; }
+.hero { 
+  margin: 0; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+.desc { 
+  margin: 0; 
+  color: var(--vp-c-text-2); 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  font-size: 0.9rem;
+}
 .cta {
   width: fit-content;
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   background: var(--vp-c-bg);
   display: flex;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: all 0.2s;
 }
 
@@ -225,68 +274,80 @@ const handleBtnClick = () => {
   border-radius: 4px;
 }
 
-.preview.css .hero { color: var(--vp-c-brand); font-size: 1.1rem; }
-.preview.css .desc { color: var(--vp-c-text-2); }
-.preview.css .cta { background: var(--vp-c-brand); color: #fff; border-color: var(--vp-c-brand); }
+.preview.css .hero { color: var(--vp-c-brand); font-weight: 600; }
+.preview.css .cta { 
+  background: var(--vp-c-brand); 
+  color: #fff; 
+  border-color: var(--vp-c-brand); 
+}
 
-.preview.js .cta { background: #22c55e; color: #fff; border-color: #22c55e; }
-.preview.js { border-color: rgba(34, 197, 94, 0.4); }
+.preview.js .cta { 
+  background: #22c55e; 
+  color: #fff; 
+  border-color: #22c55e; 
+}
+.preview.js { border-color: rgba(34, 197, 94, 0.3); }
 
 .right-panel {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .code-section, .explain-section {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.6rem;
+  border-radius: 8px;
+  padding: 0.75rem;
 }
 
 .code-label, .explain-label {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .code-block {
-  background: #0b1221;
+  background: #1a1a2e;
   color: #e5e7eb;
-  border-radius: 4px;
-  padding: 0.5rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   font-family: var(--vp-font-family-mono);
-  font-size: 0.7rem;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  overflow-x: auto;
 }
 
 .line { padding-left: 0.25rem; }
 .hl {
-  background: var(--vp-c-brand-dimm);
+  background: rgba(14, 165, 233, 0.2);
   border-left: 2px solid var(--vp-c-brand);
-  font-weight: 600;
+  margin-left: -0.25rem;
+  padding-left: 0.5rem;
 }
 
 .steps {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 1.25rem;
   color: var(--vp-c-text-2);
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.steps li {
+  margin-bottom: 0.25rem;
 }
 
 .info-box {
   background: var(--vp-c-bg-alt);
-  padding: 0.6rem;
-  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
   font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  display: flex;
-  gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 .info-box strong { color: var(--vp-c-text-1); }
 </style>
