@@ -445,8 +445,8 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '高级一：MCP 与 ClaudeCode Skills',
-                  link: '/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/'
+                  text: '高级一：MCP 与 Claude Code Skills',
+                  link: '/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/'
                 },
                 {
                   text: '高级二：如何让 Coding Tools 长时间工作',

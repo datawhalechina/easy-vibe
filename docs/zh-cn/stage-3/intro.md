@@ -10,8 +10,8 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/"
-    title="高级一：MCP 与 ClaudeCode Skills"
+    href="/easy-vibe/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/"
+    title="高级一：MCP 与 Claude Code Skills"
     description="掌握 Model Context Protocol (MCP)，扩展 AI 编程工具的能力边界"
   />
   <NavCard
