@@ -575,7 +575,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 此外，你还需要在 ADVANCED SETTING 中写入提示词，让大模型能够正确根据用户输入进行分类测试。示例提示词如下：
 
-```Plain
+```
 从 buy_food / complain / chitchat / other 中选择一个最合适的标签。如果用户在抱怨的同时也点了餐，请优先判断其核心情绪，若重点在于表达不满，应归为 complain。如果只是轻微吐槽但主要意图是下单，则归为 buy_food。若实在难以判断，使用 other 作为兜底
 ```
 
@@ -623,7 +623,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 - `original_text` ← `user_text`
 - `final_reply` ← `variable_aggregator`
 
-```Plain
+```
 {
   "intent": "{{ intent }}",
   "original_text": "{{ original_text }}",
@@ -758,7 +758,7 @@ Builder with MCP 模式则为 Agent 提供了更多工具（例如让大模型�
 
 注意：请将 `{DIFY_API_URL}` 替换为实际的 Dify API 地址。
 
-```JSON
+```json
 key:
 app-zKdCHUXXXXXXXX
 
@@ -998,7 +998,7 @@ Zeabur 的网页默认是通过 HTTPS 访问的，因此我们只需要把原来
 
 注意：请将 `{DIFY_API_URL}` 替换为实际的 Dify API 地址。
 
-```Python
+```python
 from flask import Flask, request, Response
 import requests
 

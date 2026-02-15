@@ -264,7 +264,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 📋 **复制** **指令** **（Prompt）** ：
 
-```Plain
+```
 我们现在要开发一个名为「冰箱大厨（FridgeChef）」的 iOS App。
 
 1. 核心理念
@@ -297,7 +297,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 📋 **复制** **指令** **（Prompt）** ：
 
-```Plain
+```
 需求已经确认。
 请使用 HTML + Tailwind CSS，为我生成一个高保真的界面原型。
 
@@ -335,7 +335,7 @@ Trae 是本教程中进行主要开发工作的环境。你会把整个 iOS 项�
 
 📋 **复制指令（Prompt）** ：
 
-```Plain
+```
 【已上传 index.html】
 
 请阅读这个 HTML 文件的布局和样式。
@@ -372,7 +372,7 @@ SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地�
 
 📋 **复制指令（Prompt）** ：
 
-```Plain
+```
 现在我们要接入 AI 能力。
 
 请创建 APIService.swift。
@@ -417,7 +417,7 @@ SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地�
 
 📋 **复制指令（Prompt）** ：
 
-```Plain
+```
 我已经完成了 Core Data 的 Entity 配置。
 
 Entity：RecipeEntity
@@ -437,7 +437,7 @@ Entity：RecipeEntity
 
 📋 **复制到 Lovart 的 Prompt** ：
 
-```Plain
+```
 Subject: A cute anthropomorphic fridge character with a happy face
 Style: Minimalistic App Icon, Neo-pop style, thick black outlines, vector art
 Colors: Acid green (#CCFF00) and deep blue
@@ -463,7 +463,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 📋 参考 Prompt：
 
-```Plain
+```
 目前 App 的功能已经完成，但我想尝试一种更有视觉冲击力的 UI 风格。
 请先使用 HTML + Tailwind CSS 为我生成一个新的设计稿，文件名为 design_v2.html。
 设计风格：Neo-Pop（新波普 / 多巴胺风格）
@@ -487,7 +487,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 📋 参考 Prompt：
 
-```Plain
+```
 【已上传 design_v2.html】
 请分析这个 HTML 的视觉风格，并将它移植到当前 iOS 项目中。
 任务要求：
