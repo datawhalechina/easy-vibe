@@ -10,7 +10,7 @@ Deeply master the MCP protocol and Claude Code advanced techniques to improve de
 <NavGrid>
   <NavCard
     href="#"
-    title="Advanced 1: MCP & ClaudeCode Skills"
+    title="Advanced 1: MCP & Claude Code Skills"
     description="Master Model Context Protocol (MCP) to extend the capabilities of AI programming tools"
   />
   <NavCard

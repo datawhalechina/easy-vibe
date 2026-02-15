@@ -480,9 +480,16 @@ import RequestStructureDemo from './components/appendix/api-design/RequestStruct
 import ResponseStructureDemo from './components/appendix/api-design/ResponseStructureDemo.vue'
 
 // JavaScript Intro Components
+import VariableBoxDemo from './components/appendix/javascript-intro/VariableBoxDemo.vue'
+import ReferenceDemo from './components/appendix/javascript-intro/ReferenceDemo.vue'
+import FunctionMachineDemo from './components/appendix/javascript-intro/FunctionMachineDemo.vue'
+import ScopeDemo from './components/appendix/javascript-intro/ScopeDemo.vue'
+import ClosureDemo from './components/appendix/javascript-intro/ClosureDemo.vue'
+import DOMTreeDemo from './components/appendix/javascript-intro/DOMTreeDemo.vue'
+import AsyncRestaurantDemo from './components/appendix/javascript-intro/AsyncRestaurantDemo.vue'
+import JSEventLoopDemo from './components/appendix/javascript-intro/JSEventLoopDemo.vue'
 import VariableScopeDemo from './components/appendix/javascript-intro/VariableScopeDemo.vue'
 import DataTypeDemo from './components/appendix/javascript-intro/DataTypeDemo.vue'
-import ClosureDemo from './components/appendix/javascript-intro/ClosureDemo.vue'
 import ThisContextDemo from './components/appendix/javascript-intro/ThisContextDemo.vue'
 import PrototypeDemo from './components/appendix/javascript-intro/PrototypeDemo.vue'
 import AsyncDemo from './components/appendix/javascript-intro/AsyncDemo.vue'
@@ -641,15 +648,6 @@ export default {
 
     app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
-
-    // Frontend Evolution Components Registration
-    app.component('FrontendEvolutionDemo', FrontendEvolutionTimelineDemo)
-    app.component('EvolutionSliceRequestDemo', EvolutionSliceRequestDemo)
-    app.component('EvolutionResponsiveGridDemo', EvolutionResponsiveGridDemo)
-    app.component('EvolutionJQueryVsStateDemo', EvolutionJQueryVsStateDemo)
-    app.component('RoutingModeDemo', EvolutionRoutingModeDemo)
-    app.component('RenderingStrategyDemo', EvolutionRenderingStrategyDemo)
-    app.component('ImperativeVsDeclarativeDemo', EvolutionImperativeVsDeclarativeDemo)
 
     app.component('BackendEvolutionDemo', BackendEvolutionDemo)
     app.component('BackendQuickStartDemo', BackendQuickStartDemo)
@@ -975,12 +973,19 @@ export default {
     app.component('MQComparisonDemo', MQComparisonDemo)
 
     // JavaScript Intro Components Registration
+    app.component('VariableBoxDemo', VariableBoxDemo)
+    app.component('ReferenceDemo', ReferenceDemo)
+    app.component('FunctionMachineDemo', FunctionMachineDemo)
+    app.component('ScopeDemo', ScopeDemo)
     app.component('VariableScopeDemo', VariableScopeDemo)
     app.component('DataTypeDemo', DataTypeDemo)
     app.component('ClosureDemo', ClosureDemo)
     app.component('ThisContextDemo', ThisContextDemo)
     app.component('PrototypeDemo', PrototypeDemo)
     app.component('AsyncDemo', AsyncDemo)
+    app.component('DOMTreeDemo', DOMTreeDemo)
+    app.component('AsyncRestaurantDemo', AsyncRestaurantDemo)
+    app.component('JSEventLoopDemo', JSEventLoopDemo)
   },
   setup() {
     const route = useRoute()

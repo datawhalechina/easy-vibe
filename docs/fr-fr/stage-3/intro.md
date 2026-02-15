@@ -10,7 +10,7 @@ Maîtriser en profondeur le protocole MCP et les techniques avancées de Claude 
 <NavGrid>
   <NavCard
     href="#"
-    title="Avancé 1 : Compétences MCP et ClaudeCode"
+    title="Avancé 1 : Compétences MCP et Claude Code"
     description="Maîtriser Model Context Protocol (MCP) pour étendre les capacités des outils de programmation IA"
   />
   <NavCard

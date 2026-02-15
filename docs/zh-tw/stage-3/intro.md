@@ -10,7 +10,7 @@
 <NavGrid>
   <NavCard
     href="#"
-    title="高級一：MCP 與 ClaudeCode Skills"
+    title="高級一：MCP 與 Claude Code Skills"
     description="掌握 Model Context Protocol (MCP)，擴展 AI 編程工具的能力邊界"
   />
   <NavCard

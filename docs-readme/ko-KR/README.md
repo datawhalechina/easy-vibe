@@ -140,7 +140,7 @@ AI로 코드를 작성하려고 할 때 오류가 계속 발생하고, 포기하
 
 | 장                                                                                                                                       | 주요 내용                                                                               | 상태 |
 | :--------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- | :--- |
-| [고급 1: MCP와 ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/)                                             | MCP와 Skills를 통해 IDE 능력 확장, 외부 서비스를 도구로 연결                            | 🚧   |
+| [고급 1: MCP와 Claude Code Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/)                                             | MCP와 Skills를 통해 IDE 능력 확장, 외부 서비스를 도구로 연결                            | 🚧   |
 | [고급 2: Coding Tools를 장시간 작동시키는 방법](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/)                                  | 장시간 실행되는 작업 설계 및 구성, Coding Tools를 더 안정적이고 신뢰할 수 있게          | 🚧   |
 | [고급 3: 멀티플랫폼 개발: 위챗 미니 프로그램 구축 방법](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/)                       | 위챗 미니 프로그램 생태계 이해, 공식 템플릿부터 출시까지 프론트엔드 미니 프로그램 완성  | ✅   |
 | [고급 4: 멀티플랫폼 개발: 위챗 미니 프로그램 구축 방법 - 백엔드 포함](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | 미니 프로그램에 데이터베이스와 백엔드 로직 통합, 완전한 비즈니스 폐루프 실현            | 🚧   |
