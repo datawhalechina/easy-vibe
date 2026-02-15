@@ -479,6 +479,14 @@ import ResourceAnalogy from './components/appendix/api-design/ResourceAnalogy.vu
 import RequestStructureDemo from './components/appendix/api-design/RequestStructureDemo.vue'
 import ResponseStructureDemo from './components/appendix/api-design/ResponseStructureDemo.vue'
 
+// JavaScript Intro Components
+import VariableScopeDemo from './components/appendix/javascript-intro/VariableScopeDemo.vue'
+import DataTypeDemo from './components/appendix/javascript-intro/DataTypeDemo.vue'
+import ClosureDemo from './components/appendix/javascript-intro/ClosureDemo.vue'
+import ThisContextDemo from './components/appendix/javascript-intro/ThisContextDemo.vue'
+import PrototypeDemo from './components/appendix/javascript-intro/PrototypeDemo.vue'
+import AsyncDemo from './components/appendix/javascript-intro/AsyncDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -965,6 +973,14 @@ export default {
     app.component('ReliabilityDemo', ReliabilityDemo)
     app.component('IdempotenceDemo', IdempotenceDemo)
     app.component('MQComparisonDemo', MQComparisonDemo)
+
+    // JavaScript Intro Components Registration
+    app.component('VariableScopeDemo', VariableScopeDemo)
+    app.component('DataTypeDemo', DataTypeDemo)
+    app.component('ClosureDemo', ClosureDemo)
+    app.component('ThisContextDemo', ThisContextDemo)
+    app.component('PrototypeDemo', PrototypeDemo)
+    app.component('AsyncDemo', AsyncDemo)
   },
   setup() {
     const route = useRoute()
