@@ -129,7 +129,7 @@ Trae 是我们进行 **Vibe Coding** 的主战场。你可以把它简单理解�
 
 在左侧项目文件目录中，依次展开 `gradle` -> `wrapper`，双击打开 `gradle-wrapper.properties` 文件。 将下载源更改为腾讯镜像源，如下：
 
-```Plain
+```
 distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 ```
 
@@ -173,7 +173,7 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 
 项目创建成功后，左侧会出现 **Project** 面板。切换为 **Android** 视图（默认），你会看到如下关键目录：
 
-```Plain
+```
 app/
 ├── manifests/
 │   └── AndroidManifest.xml            ← 应用“身份证”， 声明应用名、入口 Activity（MainActivity）
@@ -212,7 +212,7 @@ app/
 
 在 Trae 中打开我们刚才创建的项目目录，在右侧的聊天框（Chat）中，输入下面这段 Prompt（提示词）：
 
-```Plain
+```
 你是一个资深的 Android 开发专家。 请帮我把当前的 MainActivity.kt 重写，把它变成一个“电子木鱼”应用。 需求如下：
 1. 屏幕背景是黑色。
 2. 屏幕正中间显示一个木鱼的图案，大小适中，颜色为白色。
@@ -298,7 +298,7 @@ app/
 
 素材就位后，回到 Trae。Trae 会再次修改代码，帮你处理复杂音频加载和动画逻辑，只需要告诉它我们要用哪些素材，将以下 Prompt 输入对话框：
 
-```Plain
+```
 我已经把素材放进去了：图片路径是 res/drawable/white_muyu.png，声音特效路径是res/raw/voice.mp3，请帮我更新代码：
 1. 把中间的木鱼图标换成我的木鱼图片。
 2. 每次点击木鱼时，播放敲击音效。
@@ -336,7 +336,7 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 
 请将以下这段“高阶指令”发送给 Trae：
 
-```Plain
+```
 请修改当前的动画逻辑，解决“快速点击不触发”的问题。
 当前问题： 现在似乎只有一个动画状态，导致我必须等上一个“+1”完全消失后，点击才有反应。
 修改要求：
@@ -357,7 +357,7 @@ AI 生成的代码不一定一次就完美，就像顶尖的程序员也无法�
 
 请将下面这段精心设计好的 Prompt 发送给 Trae，它会一次性帮你搞定弹窗逻辑、数据切换和硬件调用：
 
-```Plain
+```
 角色设定：你是一个 Android Jetpack Compose 开发专家。
 任务：请在现有代码基础上，为电子木鱼 App 增加“自定义文案”和“震动反馈”功能。
 具体需求如下：

@@ -64,12 +64,12 @@ Logo 是决定你网站第一印象的关键元素之一。想要从 AI 设计 A
 
 **示例提示词**
 
-```Plain
+```
 "请为我设计一个极简风格的 Logo，品牌名称是 ‘My First Website’。
 使用黑色 (#171721) 和橙色 (#FF7130)，并将文字放在一个圆形内部。"
 ```
 
-```Plain
+```
 "请设计一个以 ‘AIID’ 为品牌名的 Logo。
 整体风格要未来感、干净简洁，主色为蓝色与白色。
 将象征 AI 的抽象图形与文字相结合，并导出为带透明背景的 PNG。"
@@ -148,7 +148,7 @@ Logo 是决定你网站第一印象的关键元素之一。想要从 AI 设计 A
 
 **示例提示词**
 
-```Plain
+```
 "请设计一个由 Home、About、Contact 三个版块构成的单页网站。
 使用配色 #171721、#FF7130 和 #FF3C68。
 整体风格要现代、简洁。"
@@ -219,7 +219,7 @@ Logo 是决定你网站第一印象的关键元素之一。想要从 AI 设计 A
 
 **示例**
 
-```HTML
+```html
 <h1>Hello!</h1>
 <p>This is my first website.</p>
 <a href="contact.html">Contact</a>
@@ -233,7 +233,7 @@ Logo 是决定你网站第一印象的关键元素之一。想要从 AI 设计 A
 
 **示例**
 
-```CSS
+```css
 h1 {
   color: #FF7130;   /* Text color */
   font-size: 36px;  /* Font size */
@@ -254,13 +254,13 @@ body {
 
 **示例**
 
-```JavaScript
+```javascript
 function showAlert() {
   alert("The button has been clicked!");
 }
 ```
 
-```HTML
+```html
 <button onclick="showAlert()">Click me</button>
 ```
 
@@ -268,7 +268,7 @@ function showAlert() {
 
 **示例提示词**
 
-```Plain
+```
 "请为一个包含 Home、About 和 Contact 版块的单页网站编写 HTML 和 CSS。
 使用配色 #171721、#FF7130、#FF3C68。
 背景为黑色，文字为白色。"
@@ -282,7 +282,7 @@ function showAlert() {
 
 如果你重新启动了 Agent，或者网站画面没有出现，可以输入类似这样的提示：
 
-```Plain
+```
 "Please activate the project"
 ```
 

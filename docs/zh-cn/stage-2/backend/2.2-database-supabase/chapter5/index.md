@@ -32,7 +32,7 @@
 
 一般而言，数据在程序中有不同的表现形式，最简单的就是变量，我们可以用不同变量记录简单的数字：
 
-```Plain
+```python
 # Python variable definition examples
 
 # Integer variable: stores age information
@@ -66,7 +66,7 @@ user_info = {
 
 但对于结构复杂、具有层级关系或字段不固定的数据，我们可以用 JSON 格式进行描述 —— 它是互联网通用的数据中间格式，几乎所有程序都能读取解析，跨系统传数据很方便。例如，一个订单可能包含多个商品，每个商品又有自己的名称、数量和价格。用传统的表格来表示会很笨拙：要么得拆成 “订单表”“商品表” 多张表，靠关联字段才能体现 “订单包含商品” 的关系；要么在一张表用 “商品 1 名称、商品 1 价格、商品 2 名称……” 这类冗余字段，遇到商品数量不固定时根本没法适配；而 JSON 能直接用嵌套结构把 “订单 - 商品 - 商品属性” 的层级说清，既直观又灵活。
 
-```JSON
+```json
 {
   "order_id": 901,
   "user_id": 1001,
@@ -191,7 +191,7 @@ user_info = {
 
 若需查询 “Alice 发表的《初识 SQL》（post_id=1）的完整信息（含文章内容、作者、评论、标签）”，需执行多表连接（JOIN）查询，通过外键关联 5 张表并聚合数据，SQL 语句如下：
 
-```SQL
+```sql
 SELECT
     p.title,
     p.content,
@@ -224,7 +224,7 @@ NoSQL 数据库（如 MongoDB、Redis）的设计思路与 SQL 相反，它不�
 
 `posts` 集合中的一个文档示例：
 
-```JSON
+```json
 {
   "_id": 1,
   "title": "初识SQL",
@@ -386,7 +386,7 @@ Edge Functions 的函数使用 secrets 中暴露的密钥作为环境变量，�
 
 请求 Supabase Edge Function 时，需在请求头携带对应的 Supabase 密钥，下面是一个极简示例：
 
-```JavaScript
+```javascript
 // 核心配置（替换为你的实际信息）
 const projectId = "你的 Supabase 项目ID";
 const functionName = "目标 Edge Function 名称";
@@ -474,7 +474,7 @@ Project Settings 是 Supabase 项目的高级配置部分，你可在此实现�
 
 例如，在创建 `学生表`的时候，我们可以这样定义外键：（`所属班级编号` 这一列是一个外键。这个外键引用了 `班级表` 里的 `班级编号` 这一列。）
 
-```SQL
+```sql
 CREATE TABLE 学生表 (
     学生学号 INT PRIMARY KEY,
     学生姓名 VARCHAR(50),
@@ -522,7 +522,7 @@ https://github.com/THU-SIGS-AIID/Project5-Supabase-Demos/tree/main/apps/sql-exam
 
 `CREATE TABLE` 语句用于为新表定义模式（Schema），包括其列（Columns）、对应的数据类型（Data Types）以及任何约束（Constraints），简单理解是创建了一个数据表。
 
-```SQL
+```sql
 -- Step 1: Create the 'orders' table
 -- This file is fully independent and creates a sample table for later steps.
 CREATE TABLE IF NOT EXISTS orders (
@@ -549,7 +549,7 @@ CREATE TABLE IF NOT EXISTS orders (
 
 表结构创建完毕后，下一步是使用 `INSERT INTO` 语句向表中添加数据行。
 
-```SQL
+```sql
 -- Step 2: Insert initial rows into the orders table
 -- Provides realistic, varied data for demo/testing. All values are self-contained.
 INSERT INTO orders (user_id, status, amount, details, placed_at, is_paid) VALUES
@@ -583,7 +583,7 @@ INSERT INTO orders (user_id, status, amount, details, placed_at, is_paid) VALUES
 
 `SELECT` 语句用于从表中检索数据。通过使用不同的子句，可以实现对数据的精确筛选、排序和格式化，我们可参考以下语句一步步执行查看结果：
 
-```SQL
+```sql
 -- Step 3: SELECT query examples for the orders table
 
 -- Example 1: Select all fields for all orders
@@ -631,7 +631,7 @@ SELECT id, details -> 'items' AS item_list FROM orders;
 
 在 2.3.2 中，我们演示的是开头时刻初始化批量插入数据，现在我们查看如何新增插入单条数据。
 
-```SQL
+```sql
 -- Step 4: INSERT a new order (single row)
 -- Example: Add a new paid order for user 2012 with one Chicken Burger
 INSERT INTO orders (user_id, status, amount, details, is_paid)
@@ -657,7 +657,7 @@ VALUES (
 
 在实际工作中，我们需要对数据表进行频繁数据更新，我们能够用 `UPDATE` 语句修改表中已存在的记录。
 
-```SQL
+```sql
 -- Step 5: UPDATE example
 -- Example: Mark order with id=1 as paid and update its status
 UPDATE orders SET status = 'paid', is_paid = true WHERE id = 1;
@@ -675,7 +675,7 @@ UPDATE orders SET status = 'paid', is_paid = true WHERE id = 1;
 
 `DELETE` 语句可用于从表中移除记录，并结合条件对指定部分的数据进行修改。
 
-```SQL
+```sql
 -- Step 6: DELETE example
 -- Example: Delete orders older than 2 days to clean up old data
 DELETE FROM orders WHERE placed_at < now() - interval '2 days';
@@ -738,7 +738,7 @@ Clone 后，你同样可以让 Trae 或者是 ClaudeCode 帮你启动项目，�
 
 首先，我们需要在 Supabase 中创建需要的数据表的相关内容。进入 Project1 项目目录看到名为 `scripts`的文件夹，其中包含 1 个 `init.sql`数据库脚本文件，它能帮我们自动完成所有数据库相关资源的创建（包括表结构、初始数据等），之后我们会经常用到该文件进行数据库中表的初始化。
 
-```SQL
+```sql
 ......
 
 -- ============================================================================
@@ -791,7 +791,7 @@ comment on column public.menu_items.updated_at is 'Timestamp when the item was l
 
 在项目根目录创建一个 .env 文件，并填入你的 Supabase 凭证：
 
-```Plain
+```
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
@@ -830,7 +830,7 @@ Project1 实现了 “菜单 CRUD + 数据库连接” ，Project2 将引入更�
 
 Project2 包含独立的登录页，支持用户通过「邮箱 + 密码」的方式登录。其核心逻辑是调用 Supabase Auth 提供的原生方法，快速实现认证流程，无需手动开发复杂的登录校验逻辑：
 
-```Plain
+```
 const { error: err } = await supabaseClient.auth.signUp({
   email,
   password,
@@ -1067,7 +1067,7 @@ Supabase 的实时功能是其最强大的特性之一，为构建协作文档�
 
 一般而言，该功能可以在 Table Editor 中找到 Enable Realtime 点击后启动， 但更方便的是通过 SQL 脚本初始化执行，例如：
 
-```SQL
+```sql
 -- Enable realtime replication
 ALTER TABLE public.chat_messages REPLICA IDENTITY FULL;
 DO $$
@@ -1087,7 +1087,7 @@ END $$;
 
 基于上面的特殊数据表，我们能够使用监听代码对表内数据变动进行实时监听。我们需要实现的是当一个用户发送消息时，其他所有在线用户都能立刻在屏幕上看到这条消息。通过订阅 chat_messages 表的 INSERT 事件能够实现这一点。
 
-```TypeScript
+```typescript
     const sub = supabase
       .channel('chat_messages_channel')
       .on('postgres_changes', {
@@ -1121,7 +1121,7 @@ Presence 的核心思想是： 让每个客户端声明自己的在线状态，�
 
 首先，我们创建了一个频道 `lobby_presence` 来专门处理这些交互，并在配置中指定一个唯一的 key 来标识当前用户。这个 key 通常是用户的 ID。
 
-```Plain
+```
 const ch = supabase.channel
 ('lobby_presence', {
   config: {
@@ -1134,7 +1134,7 @@ const ch = supabase.channel
 
 一旦频道创建成功，我们需要订阅它。在订阅成功的回调（ status === 'SUBSCRIBED' ）中，我们调用 channel.track() 方法。这个方法会将当前用户的信息（例如用户ID、名称、头像颜色等）广播给频道内的所有其他客户端，宣告自己的“在线”状态。
 
-```Plain
+```
 const me = {
   id: anonymousUser.id,
   name: anonymousUser.name,
@@ -1154,7 +1154,7 @@ ch.subscribe(async (status) => {
 
 channel.presenceState() 方法会返回一个对象，包含了当前频道内所有在线用户的状态信息。我们将其处理后更新到应用的 state 中，从而渲染出完整的在线用户列表。
 
-```Plain
+```
 ch.on('presence', { event: 'sync' }, () 
 => {
   const state = ch.presenceState();
@@ -1171,7 +1171,7 @@ ch.on('presence', { event: 'sync' }, () 
 
 除了 sync 事件，我们还可以监听 join 和 leave 事件，以便在有新用户进入或离开时做出即时响应，例如显示一个 "User has joined" 的通知。
 
-```Plain
+```
 ch.on('presence', { event: 'join' }, ({ 
 key, newPresences }) => {
   console.log('User joined:', key, 
@@ -1195,7 +1195,7 @@ Broadcast 的工作模式主要依赖两个核心方法： channel.send() 用于
 
 我们为 mousemove 事件添加了一个监听器。当鼠标移动时，我们构造一个包含用户 ID、坐标和颜色的 payload，然后通过 channel.send() 将其广播出去，并指定事件名称为 'cursor'。
 
-```TypeScript
+```typescript
 const handleMouseMove = (e) => {
   const payload = {
     id: anonymousUser.id,
@@ -1219,7 +1219,7 @@ document.addEventListener('mousemove', handleMouseMove);
 
 在同一个频道内，所有客户端都使用 channel.on() 来监听 broadcast 类型的、且 event 为 'cursor' 的消息。一旦收到匹配的消息，回调函数就会被触发。我们从 payload 中解析出发送方的数据，并用它来更新本地的 online 状态，从而在屏幕上实时渲染出其他用户光标的位置。
 
-```TypeScript
+```typescript
 ch.on('broadcast', { event: 'cursor' }, ({ payload }) => {
   setOnline((prev) => ({
     ...prev,
@@ -1254,7 +1254,7 @@ Storage 内的所有文件都可以通过一个公开的 URL 直接访问，但�
 
 例如，我们可以创建一条策略，只允许用户上传到以自己 user_id 命名的文件夹下，并且只能上传图片类型的文件：
 
-```Plain
+```
 CREATE POLICY "Allow authenticated 
 uploads to avatars bucket"
 ON storage.objects FOR INSERT
@@ -1283,7 +1283,7 @@ Supabase 提供了两种截然不同的策略来获取这个 URL，它们在安�
 
 这是最直接的方式。如果你的文件存放在一个**Public Bucket** 中，你可以获取一个固定、永久的公开链接。
 
-```TypeScript
+```typescript
 const { data } = supabase.storage
   .from('avatars')
   .getPublicUrl('public/avatar1.png');
@@ -1298,7 +1298,7 @@ const publicUrl = data.publicUrl;
 
 为了解决公开 URL 的安全和成本问题，Supabase 提供了生成临时签名 URL 的方式。这是绝大多数线上应用推荐的最佳实践，比如文生图应用给用户生成限时查看的图片链接、电商平台仅让下单用户获取临时发票下载地址、付费内容平台为订阅用户提供短期有效的课程播放链接，既防文件盗用又能避免流量盗刷，适配性极强。
 
-```TypeScript
+```typescript
 const { data, error } = await supabase.storage
   .from('avatars')
   .createSignedUrl('private/user-invoice.pdf', 3600); // 链接有效期为 3600 秒 (1小时)
@@ -1335,7 +1335,7 @@ Edge Function 是 Serverless（无服务器架构）生态中极具核心价值�
 
 参考 `project-burger-shop-edge-function-5/scripts/llm-chat.ts`的代码，我们来看看它是如何工作的：
 
-```TypeScript
+```typescript
 // scripts/llm-chat.ts
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { OpenAI } from "npm:openai";
@@ -1421,7 +1421,7 @@ Clerk 是一款专注于身份认证与用户管理的专业开发工具，核�
       ![](images/image64.png)
    3. 将它们复制到你的 `.env.local` 文件中（参考本项目 `.env.example`）：
 
-      ```Bash
+      ```bash
       NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
       CLERK_SECRET_KEY=sk_test_...
       ```
@@ -1452,7 +1452,7 @@ Clerk 是一款专注于身份认证与用户管理的专业开发工具，核�
 
 在开始之前，我们需要配置同步信息所需的数据表：
 
-```SQL
+```sql
 -- File: init.sql
 
 -- 1. Create `users` table for synced Clerk users

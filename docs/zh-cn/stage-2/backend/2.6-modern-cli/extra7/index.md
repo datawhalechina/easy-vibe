@@ -105,7 +105,7 @@ GLM（General Language Model）是智谱 AI 自主研发的一系列大型语言
 
 如果你觉得命令行安装步骤麻烦，或者中途出现错误，可以直接让 Trae 的 Agent 帮你完成安装。
 
-```Python
+```python
 # 安装 Claude Code
 npm install -g @anthropic-ai/claude-code
 
@@ -127,7 +127,7 @@ claude
 
 如果你使用的是 **国内版 GLM**，请使用以下变量配置：
 
-```Python
+```python
 # 在 Cmd 中运行以下命令
 # 注意将 `your_zhipu_api_key` 替换为你刚刚获取到的 API Key
 setx ANTHROPIC_AUTH_TOKEN your_zhipu_api_key
@@ -136,7 +136,7 @@ setx ANTHROPIC_BASE_URL https://open.bigmodel.cn/api/anthropic
 
 如果你使用的是 **国际版 GLM**，请使用下面的配置：
 
-```Python
+```python
 # 在 Cmd 中运行以下命令
 # 同样注意替换掉 `your_zai_api_key`
 setx ANTHROPIC_AUTH_TOKEN your_zai_api_key
@@ -147,7 +147,7 @@ setx ANTHROPIC_BASE_URL https://api.z.ai/api/anthropic
 
 ⚠️ 如果你是通过 Trae 帮你配置“永久环境变量”，那么配置完成后 **必须重启 Trae**，否则它内置终端里的环境变量不会更新，可能导致登录失败或网络连接错误。
 
-```Python
+```python
 Based on my environment variable settings:
 setx ANTHROPIC_AUTH_TOKEN your_zai_api_key
 setx ANTHROPIC_BASE_URL https://api.z.ai/api/anthropic
@@ -198,7 +198,7 @@ Kimi K2 是月之暗面（Moonshot AI）推出的新一代大语言模型，在�
 
 参考文档：https://platform.moonshot.cn/docs/guide/agent-support
 
-```Bash
+```bash
 export ANTHROPIC_BASE_URL=https://api.moonshot.cn/anthropic
 export ANTHROPIC_AUTH_TOKEN=sk-YOURKEY
 ```
@@ -219,7 +219,7 @@ Minimax 是稀宇科技（MiniMax）推出的新一代大语言模型，在编�
 
 **配置方法：**
 
-```Bash
+```bash
 export ANTHROPIC_BASE_URL=https://api.minimaxi.com/anthropic
 export ANTHROPIC_AUTH_TOKEN=YOUR_MINIMAX_API_KEY
 export ANTHROPIC_MODEL=MiniMax-Text-01
@@ -241,7 +241,7 @@ DeepSeek 是深度求索推出的开源大语言模型，以其出色的代码�
 
 **配置方法：**
 
-```Bash
+```bash
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 export ANTHROPIC_AUTH_TOKEN=YOU_DEEPSEEK_API_KEY
 export API_TIMEOUT_MS=600000
@@ -266,7 +266,7 @@ export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
 **配置方法：**
 
-```Bash
+```bash
 export ANTHROPIC_BASE_URL=https://ark.volces.com/api/anthropic
 export ANTHROPIC_AUTH_TOKEN=YOUR_VOLCANO_API_KEY
 export ANTHROPIC_MODEL=doubao-pro-32k
@@ -276,7 +276,7 @@ export ANTHROPIC_MODEL=doubao-pro-32k
 
 Siliconflow：
 
-```Bash
+```bash
 export ANTHROPIC_BASE_URL="https://api.siliconflow.cn/"
 export ANTHROPIC_MODEL="moonshotai/Kimi-K2-Instruct-0905"    # 可以自行修改所需模型
 export ANTHROPIC_API_KEY="YOUR_SILICONCLOUD_API_KEY"    # 请替换 API Key
@@ -284,7 +284,7 @@ export ANTHROPIC_API_KEY="YOUR_SILICONCLOUD_API_KEY"    # 请替换 API Key
 
 阿里云 DashScope（Aliyuncs）：https://help.aliyun.com/zh/model-studio/get-api-key
 
-```Python
+```python
 export ANTHROPIC_BASE_URL="https://dashscope.aliyuncs.com/apps/anthropic"
 export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 ```
@@ -303,7 +303,7 @@ export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 
 下面我们简单介绍如何安装 Claude Code Router。大致需要以下步骤（同样可以让 Trae 帮你执行），以准备好相关环境：
 
-```Markdown
+```markdown
 npm install -g @anthropic-ai/claude-code
 npm install -g @musistudio/claude-code-router
 ```
@@ -395,7 +395,7 @@ https://docs.claude.com/en/docs/claude-code/slash-commands
 
 `CLAUDE.md` 本身没有强制格式要求，只要简洁、便于人类阅读即可。例如：
 
-```Plain
+```
 # Bash commands
 - npm run build: Build the project
 - npm run typecheck: Run the typechecker
@@ -440,7 +440,7 @@ Claude Code 会把编程任务拆解成一个持续的“感知—思考—行�
 
 你可以通过下面的命令安装 Codex：
 
-```Plain
+```
 npm i -g @openai/codex
 ```
 
@@ -469,7 +469,7 @@ npm i -g @openai/codex
 
 接下来，我们需要把获取到的 Key 填入下面的提示词中，并把整段提示词交给 Trae，让它帮你完成整个配置过程：
 
-````Bash
+````bash
 My API key is: [Paste your obtained sk-xxxxx key here]
 
 Please help me complete the following configuration tasks:
@@ -533,7 +533,7 @@ AI 确实可以在这个需求基础上直接拆分任务，然后一步步完�
 
 这时，AI 可能会给出类似下面这样完整的 PRD：
 
-```Plain
+```
 Product Requirements Document (PRD): “Today’s Plan” App
 Document Version: 1.0
 Creation Date: October 27, 2023
