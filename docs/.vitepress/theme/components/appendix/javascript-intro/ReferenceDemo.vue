@@ -1,140 +1,106 @@
 <script setup>
 import { ref } from 'vue'
 
-// 基本类型
+const basicStep = ref(0)
 const basicA = ref(10)
 const basicB = ref(null)
-const basicStep = ref(0)
-const basicMessage = ref('')
 
-// 引用类型
-const obj1Data = ref({ name: '张三', age: 25 })
-const obj2Exists = ref(false)
-const obj2Age = ref('')
-const refMessage = ref('')
+const refStep = ref(0)
+const objData = ref({ age: 25 })
 
-const basicCopy = () => {
-  basicB.value = basicA.value
-  basicStep.value = 1
-  basicMessage.value = '✅ 基本类型复制的是值本身'
-}
+const basicCopy = () => { basicB.value = basicA.value; basicStep.value = 1 }
+const basicModify = () => { basicB.value = 20; basicStep.value = 2 }
+const basicReset = () => { basicStep.value = 0; basicB.value = null }
 
-const basicModify = () => {
-  if (basicB.value === null) {
-    basicMessage.value = '⚠️ 请先复制'
-    return
-  }
-  basicB.value = 20
-  basicMessage.value = '✅ 修改 b 不影响 a'
-}
-
-const refCopy = () => {
-  obj2Exists.value = true
-  obj2Age.value = obj1Data.value.age
-  refMessage.value = '⚠️ 两个变量指向同一份数据'
-}
-
-const refModify = () => {
-  if (!obj2Exists.value) {
-    refMessage.value = '⚠️ 请先复制'
-    return
-  }
-  obj1Data.value.age = 30
-  obj2Age.value = 30
-  refMessage.value = '❌ 两个变量指向同一份数据，改了一个另一个也变了！'
-}
-
-const refSpreadCopy = () => {
-  obj2Exists.value = true
-  obj2Age.value = 25
-  refMessage.value = '✅ 用展开运算符创建真正的副本，现在互不影响'
-}
+const refCopy = () => { refStep.value = 1 }
+const refModify = () => { objData.value.age = 30; refStep.value = 2 }
+const refSpread = () => { refStep.value = 3 }
+const refReset = () => { refStep.value = 0; objData.value.age = 25 }
 </script>
 
 <template>
   <div class="reference-demo">
-    <h3>值 vs 引用</h3>
-
-    <div class="demo-container">
+    <div class="demo-title">🔄 值 vs 引用</div>
+    
+    <div class="compare-grid">
       <!-- 左侧：基本类型 -->
-      <div class="demo-section basic-section">
-        <h4>基本类型（复制值）</h4>
-
-        <div class="visualization">
-          <div class="box" :class="{ 'active': basicA !== null }">
-            <div class="box-label">a</div>
-            <div class="box-value">{{ basicA }}</div>
+      <div class="compare-box">
+        <div class="box-header blue">基本类型（复制值）</div>
+        
+        <div class="memory-area">
+          <div class="vars-row">
+            <div class="var-item" :class="{ active: basicStep >= 0 }">
+              <span class="var-label">a</span>
+              <span class="var-val">{{ basicA }}</span>
+            </div>
+            <div class="var-item" :class="{ active: basicStep >= 1, changed: basicStep >= 2 }">
+              <span class="var-label">b</span>
+              <span class="var-val">{{ basicB ?? '?' }}</span>
+            </div>
           </div>
-
-          <div class="arrow" v-if="basicStep >= 1">
-            <div class="arrow-line"></div>
-            <div class="arrow-head">→</div>
-          </div>
-
-          <div class="box" :class="{ 'active': basicB !== null }" v-if="basicStep >= 1">
-            <div class="box-label">b</div>
-            <div class="box-value">{{ basicB }}</div>
-          </div>
+          <div class="copy-arrow" v-if="basicStep >= 1">↓ 复制值</div>
         </div>
-
-        <div class="message" v-if="basicMessage">{{ basicMessage }}</div>
-
-        <div class="controls">
-          <button @click="basicCopy" class="btn-primary">let b = a（复制）</button>
-          <button @click="basicModify" class="btn-secondary">b = 20</button>
+        
+        <div class="result-text" :class="basicStep === 2 ? 'success' : 'info'">
+          {{ basicStep === 0 ? '点击复制' : basicStep === 1 ? 'b 得到 10' : '✅ 修改 b 不影响 a' }}
+        </div>
+        
+        <div class="btn-group">
+          <button @click="basicCopy" :disabled="basicStep >= 1">复制</button>
+          <button @click="basicModify" :disabled="basicStep !== 1">改 b</button>
+          <button @click="basicReset" class="reset">重置</button>
         </div>
       </div>
-
+      
       <!-- 右侧：引用类型 -->
-      <div class="demo-section reference-section">
-        <h4>引用类型（复制地址）</h4>
-
-        <div class="visualization">
-          <!-- 数据区 -->
-          <div class="data-area">
-            <div class="data-label">数据区</div>
-            <div class="data-content">
-              <div>{{ `{ name: "${obj1Data.name}", age: ${obj1Data.age} }` }}</div>
+      <div class="compare-box">
+        <div class="box-header orange">引用类型（复制地址）</div>
+        
+        <div class="memory-area">
+          <div class="vars-row">
+            <div class="var-item" :class="{ active: refStep >= 0 }">
+              <span class="var-label">obj1</span>
+              <span class="var-addr">0x001</span>
+            </div>
+            <div class="var-item" :class="{ active: refStep >= 1 }">
+              <span class="var-label">obj2</span>
+              <span class="var-addr">{{ refStep >= 1 ? '0x001' : '?' }}</span>
             </div>
           </div>
-
-          <div class="pointers">
-            <div class="pointer">
-              <div class="pointer-label">obj1</div>
-              <div class="arrow-line-down"></div>
-            </div>
-
-            <div class="pointer" v-if="obj2Exists">
-              <div class="pointer-label">obj2</div>
-              <div class="arrow-line-down"></div>
-            </div>
+          <div class="data-box" :class="{ changed: refStep === 2, copied: refStep === 3 }">
+            <div class="data-addr">0x001</div>
+            <div class="data-content">{ age: {{ objData.age }} }</div>
           </div>
+          <div class="copy-arrow" v-if="refStep >= 1">指向同一地址</div>
         </div>
-
-        <div class="message" v-if="refMessage">{{ refMessage }}</div>
-
-        <div class="controls">
-          <button @click="refCopy" class="btn-primary">let obj2 = obj1（复制）</button>
-          <button @click="refModify" class="btn-danger">obj2.age = 30</button>
-          <button @click="refSpreadCopy" class="btn-success">用展开运算符创建副本</button>
+        
+        <div class="result-text" :class="refStep === 2 ? 'warning' : refStep === 3 ? 'success' : 'info'">
+          {{ refStep === 0 ? '点击复制' : refStep === 1 ? '共享地址' : refStep === 2 ? '⚠️ 一改全变' : '✅ 已分离' }}
+        </div>
+        
+        <div class="btn-group">
+          <button @click="refCopy" :disabled="refStep >= 1">复制</button>
+          <button @click="refModify" :disabled="refStep !== 1">修改</button>
+          <button @click="refSpread" :disabled="refStep !== 2">展开</button>
+          <button @click="refReset" class="reset">重置</button>
         </div>
       </div>
     </div>
-
-    <div class="code-display">
-      <h4>代码</h4>
-      <pre><code>// 基本类型
-let a = {{ basicA }}
-{{ basicB !== null ? `let b = ${basicB}` : '' }}
-{{ basicB !== null ? `b = ${basicB}` : '' }}
-console.log(a)  // {{ basicA }}
-
-// 引用类型
-let obj1 = { name: "{{ obj1Data.name }}", age: {{ obj1Data.age }} }
-{{ obj2Exists ? 'let obj2 = obj1  // 指向同一份数据' : '' }}
-{{ obj2Exists ? `obj2.age = ${obj1Data.age}` : '' }}
-console.log(obj1.age)  // {{ obj1Data.age }}
-</code></pre>
+    
+    <div class="code-compare">
+      <div class="code-col">
+        <div class="code-title">基本类型</div>
+        <pre><code>let a = 10
+let b = a  // b=10
+b = 20     // a还是10</code></pre>
+      </div>
+      <div class="code-col">
+        <div class="code-title">引用类型</div>
+        <pre><code>let obj1 = {age:25}
+let obj2 = obj1
+obj2.age=30 // obj1也变了！
+// 用 {...obj1} 复制</code></pre>
+      </div>
     </div>
   </div>
 </template>
@@ -143,235 +109,221 @@ console.log(obj1.age)  // {{ obj1Data.age }}
 .reference-demo {
   border: 1px solid var(--vp-c-border);
   border-radius: 12px;
-  padding: 24px;
-  margin: 24px 0;
+  padding: 20px;
+  margin: 16px 0;
   background: var(--vp-c-bg);
 }
 
-h3 {
-  margin: 0 0 20px 0;
-  font-size: 18px;
+.demo-title {
+  font-size: 16px;
   font-weight: 600;
   color: var(--vp-c-text-1);
+  margin-bottom: 16px;
 }
 
-h4 {
-  margin: 0 0 16px 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-}
-
-.demo-container {
+.compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 768px) {
-  .demo-container {
+  .compare-grid {
     grid-template-columns: 1fr;
   }
 }
 
-.demo-section {
-  border: 1px dashed var(--vp-c-border);
-  border-radius: 8px;
-  padding: 20px;
+.compare-box {
+  border: 1px solid var(--vp-c-border);
+  border-radius: 10px;
+  padding: 16px;
   background: var(--vp-c-bg-soft);
 }
 
-.visualization {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 16px;
-  min-height: 120px;
+.box-header {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  color: white;
 }
 
-.box {
-  width: 80px;
-  height: 80px;
-  border: 2px solid var(--vp-c-border);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.box-header.blue {
+  background: #3b82f6;
+}
+
+.box-header.orange {
+  background: #f59e0b;
+}
+
+.memory-area {
   background: var(--vp-c-bg);
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
 }
 
-.box.active {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(62, 175, 124, 0.1);
-}
-
-.box-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-  margin-bottom: 4px;
-}
-
-.box-value {
-  font-size: 24px;
-  font-weight: 600;
-  font-family: 'Courier New', monospace;
-  color: var(--vp-c-brand-1);
-}
-
-.arrow {
+.vars-row {
   display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.arrow-line {
-  width: 40px;
-  height: 2px;
-  background: var(--vp-c-brand-1);
-}
-
-.arrow-head {
-  font-size: 24px;
-  color: var(--vp-c-brand-1);
-}
-
-.data-area {
-  text-align: center;
-}
-
-.data-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
+  gap: 12px;
+  justify-content: center;
   margin-bottom: 8px;
 }
 
-.data-content {
-  border: 2px solid var(--vp-c-brand-1);
-  border-radius: 8px;
-  padding: 12px;
-  background: var(--vp-c-bg);
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
-  color: var(--vp-c-text-1);
-}
-
-.pointers {
+.var-item {
   display: flex;
-  gap: 24px;
-  margin-top: 12px;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px;
+  border: 2px solid var(--vp-c-border);
+  border-radius: 6px;
+  opacity: 0.4;
+  transition: all 0.3s;
 }
 
-.pointer {
-  text-align: center;
+.var-item.active {
+  opacity: 1;
+  border-color: #3b82f6;
 }
 
-.pointer-label {
-  font-size: 12px;
-  font-weight: 600;
+.var-item.changed {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
+.var-label {
+  font-size: 11px;
   color: var(--vp-c-text-2);
-  margin-bottom: 4px;
 }
 
-.arrow-line-down {
-  width: 2px;
-  height: 30px;
-  background: var(--vp-c-brand-1);
-  margin: 0 auto;
+.var-val, .var-addr {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: monospace;
+  color: #3b82f6;
 }
 
-.message {
+.var-addr {
+  color: #8b5cf6;
+  font-size: 14px;
+}
+
+.copy-arrow {
+  text-align: center;
+  font-size: 11px;
+  color: var(--vp-c-text-2);
+  padding: 4px;
+}
+
+.data-box {
+  border: 2px solid #8b5cf6;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  background: #f3e8ff;
+  margin-top: 8px;
+}
+
+.data-box.changed {
+  border-color: #ef4444;
+  background: #fee2e2;
+}
+
+.data-box.copied {
+  border-color: #10b981;
+  background: #d1fae5;
+}
+
+.data-addr {
+  font-size: 10px;
+  color: #6b7280;
+}
+
+.data-content {
+  font-family: monospace;
+  font-size: 13px;
+  color: #374151;
+}
+
+.result-text {
   text-align: center;
   padding: 8px;
   border-radius: 6px;
+  font-size: 12px;
   margin-bottom: 12px;
-  font-size: 13px;
-  font-weight: 500;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
 }
 
-.controls {
+.result-text.info {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.result-text.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.result-text.warning {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-group {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-button {
+.btn-group button {
   padding: 6px 12px;
   border: none;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  border-radius: 4px;
+  font-size: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-.btn-primary {
-  background: var(--vp-c-brand-1);
+  background: #3b82f6;
   color: white;
 }
 
-.btn-primary:hover {
-  background: var(--vp-c-brand-2);
+.btn-group button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-.btn-secondary {
-  background: var(--vp-c-bg-soft);
+.btn-group button.reset {
+  background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-border);
 }
 
-.btn-secondary:hover {
-  background: var(--vp-c-bg-soft-hover);
+.code-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.btn-danger {
-  background: #f56565;
-  color: white;
-}
-
-.btn-danger:hover {
-  background: #e53e3e;
-}
-
-.btn-success {
-  background: #38a169;
-  color: white;
-}
-
-.btn-success:hover {
-  background: #2f855a;
-}
-
-.code-display {
+.code-col {
   background: #1e1e1e;
   border-radius: 8px;
-  padding: 16px;
-  overflow-x: auto;
+  padding: 12px;
 }
 
-.code-display h4 {
-  color: #d4d4d4;
-  margin-bottom: 12px;
+.code-title {
+  color: #9ca3af;
+  font-size: 11px;
+  margin-bottom: 8px;
 }
 
-.code-display pre {
+.code-col pre {
   margin: 0;
 }
 
-.code-display code {
-  font-family: 'Courier New', monospace;
-  font-size: 13px;
-  line-height: 1.6;
+.code-col code {
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1.5;
   color: #d4d4d4;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const activeScope = ref('block') // 'global', 'function', 'block'
+const activeScope = ref('global')
 const explanation = ref('')
 
 const scopes = [
@@ -9,31 +9,36 @@ const scopes = [
     id: 'global',
     name: '全局作用域',
     color: '#a0aec0',
-    variables: ['appName = "Todo"'],
-    canSee: ['appName']
+    vars: [{ name: 'appName', value: '"Todo"', own: true }]
   },
   {
     id: 'function',
     name: '函数 greet() 作用域',
     color: '#4299e1',
-    variables: ['message = "你好"'],
-    canSee: ['appName', 'message']
+    vars: [
+      { name: 'appName', value: '"Todo"', own: false, from: '全局' },
+      { name: 'message', value: '"你好"', own: true }
+    ]
   },
   {
     id: 'block',
     name: 'if 块作用域',
     color: '#38a169',
-    variables: ['greeting = message + appName'],
-    canSee: ['appName', 'message', 'greeting']
+    vars: [
+      { name: 'appName', value: '"Todo"', own: false, from: '全局' },
+      { name: 'message', value: '"你好"', own: false, from: '函数' },
+      { name: 'greeting', value: 'message+appName', own: true }
+    ]
   }
 ]
 
 const updateExplanation = () => {
-  const scope = scopes.find(s => s.id === activeScope.value)
-  if (scope) {
-    const visible = scope.canSee.map(v => `✅ ${v}`).join('、')
-    explanation.value = `在这个位置，你能使用这些变量：${visible}`
+  const texts = {
+    global: '在全局作用域，只能使用全局变量 appName',
+    function: '在函数作用域，可以使用自己的 message 和全局的 appName（作用域链查找）',
+    block: '在块级作用域，可以使用自己的 greeting，以及外层的 message 和 appName'
   }
+  explanation.value = texts[activeScope.value]
 }
 
 updateExplanation()
@@ -41,67 +46,54 @@ updateExplanation()
 
 <template>
   <div class="scope-demo">
-    <h3>作用域：变量的"可见范围"</h3>
+    <h3>🔍 作用域：变量的"可见范围"</h3>
 
-    <div class="scopes-container">
-      <!-- 全局作用域 -->
-      <div
-        class="scope global-scope"
-        :class="{ 'active': activeScope === 'global' }"
-        @click="activeScope = 'global'; updateExplanation()"
+    <div class="scope-selector">
+      <button
+        v-for="scope in scopes"
+        :key="scope.id"
+        @click="activeScope = scope.id; updateExplanation()"
+        class="scope-btn"
+        :class="{ active: activeScope === scope.id }"
+        :style="{ borderColor: scope.color }"
       >
-        <div class="scope-header">全局作用域</div>
-        <div class="scope-content">
-          <div class="variable" :class="{ 'visible': activeScope === 'global', 'dimmed': activeScope !== 'global' }">
-            appName = "Todo"
+        {{ scope.name }}
+      </button>
+    </div>
+
+    <div class="scope-visual">
+      <!-- 作用域层级图 -->
+      <div class="scope-levels">
+        <div
+          v-for="(scope, index) in scopes"
+          :key="scope.id"
+          class="level"
+          :class="{ active: activeScope === scope.id, dimmed: activeScope !== scope.id }"
+          :style="{ borderLeftColor: scope.color }"
+        >
+          <div class="level-header" :style="{ color: scope.color }">
+            {{ scope.name }}
           </div>
-
-          <!-- 函数作用域 -->
-          <div class="nested-scope">
+          <div class="level-vars">
             <div
-              class="scope function-scope"
-              :class="{ 'active': activeScope === 'function' }"
-              @click.stop="activeScope = 'function'; updateExplanation()"
+              v-for="v in scope.vars"
+              :key="v.name"
+              class="var-tag"
+              :class="{ own: v.own, inherited: !v.own }"
             >
-              <div class="scope-header">函数 greet() 作用域</div>
-              <div class="scope-content">
-                <div class="variable" :class="{ 'visible': ['global', 'function'].includes(activeScope), 'dimmed': !['global', 'function'].includes(activeScope) }">
-                  appName = "Todo"
-                </div>
-                <div class="variable" :class="{ 'visible': activeScope === 'function', 'dimmed': activeScope !== 'function' }">
-                  message = "你好"
-                </div>
-
-                <!-- 块级作用域 -->
-                <div class="nested-scope">
-                  <div
-                    class="scope block-scope"
-                    :class="{ 'active': activeScope === 'block' }"
-                    @click.stop="activeScope = 'block'; updateExplanation()"
-                  >
-                    <div class="scope-header">if 块作用域</div>
-                    <div class="scope-content">
-                      <div class="variable" :class="{ 'visible': true, 'dimmed': false }">
-                        appName = "Todo"
-                      </div>
-                      <div class="variable" :class="{ 'visible': true, 'dimmed': false }">
-                        message = "你好"
-                      </div>
-                      <div class="variable" :class="{ 'visible': activeScope === 'block', 'dimmed': activeScope !== 'block' }">
-                        greeting = message + appName
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <span class="var-name">{{ v.name }}</span>
+              <span class="var-value">= {{ v.value }}</span>
+              <span v-if="!v.own" class="var-from">← {{ v.from }}</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="explanation" v-if="explanation">
-      {{ explanation }}
+      <!-- 说明 -->
+      <div class="explanation-box">
+        <div class="explanation-title">💡 当前位置可见的变量</div>
+        <div class="explanation-text">{{ explanation }}</div>
+      </div>
     </div>
 
     <div class="code-display">
@@ -112,7 +104,7 @@ function greet() {
   const message = "你好"  // 函数作用域
 
   if (true) {
-    const greeting = message + appName  // 块级作用域 ✅ 能看到外层的
+    const greeting = message + appName  // 块级作用域
     console.log(greeting)
   }
 
@@ -138,112 +130,133 @@ h3 {
   color: var(--vp-c-text-1);
 }
 
-.scopes-container {
+.scope-selector {
   display: flex;
-  justify-content: center;
+  gap: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.scope {
-  border: 3px solid var(--vp-c-border);
-  border-radius: 12px;
-  padding: 20px;
+.scope-btn {
+  padding: 10px 16px;
+  border: 2px solid var(--vp-c-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+}
+
+.scope-btn:hover {
   background: var(--vp-c-bg-soft);
 }
 
-.scope:hover {
-  border-color: var(--vp-c-brand-1);
-  transform: scale(1.02);
+.scope-btn.active {
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand);
 }
 
-.scope.active {
-  border-width: 4px;
-  box-shadow: 0 0 0 4px rgba(62, 175, 124, 0.1);
+.scope-visual {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.global-scope {
-  border-color: #a0aec0;
+@media (max-width: 768px) {
+  .scope-visual {
+    grid-template-columns: 1fr;
+  }
 }
 
-.global-scope.active {
-  border-color: #a0aec0;
-  box-shadow: 0 0 0 4px rgba(160, 174, 192, 0.2);
-}
-
-.function-scope {
-  border-color: #4299e1;
-}
-
-.function-scope.active {
-  border-color: #4299e1;
-  box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.2);
-}
-
-.block-scope {
-  border-color: #38a169;
-}
-
-.block-scope.active {
-  border-color: #38a169;
-  box-shadow: 0 0 0 4px rgba(56, 161, 105, 0.2);
-}
-
-.scope-header {
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.scope-content {
+.scope-levels {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+.level {
+  border-left: 4px solid;
+  padding: 12px 16px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s ease;
+}
+
+.level.active {
+  background: var(--vp-c-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.level.dimmed {
+  opacity: 0.6;
+}
+
+.level-header {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.level-vars {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.nested-scope {
+.var-tag {
   display: flex;
-  justify-content: center;
-  margin-top: 12px;
-}
-
-.variable {
-  padding: 8px 12px;
-  border-radius: 6px;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
   font-family: 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  background: var(--vp-c-bg);
-  transition: all 0.3s ease;
 }
 
-.variable.visible {
-  color: var(--vp-c-text-1);
+.var-tag.own {
+  background: var(--vp-c-brand-soft);
+  border: 1px solid var(--vp-c-brand);
+}
+
+.var-tag.inherited {
+  background: var(--vp-c-bg-alt);
+  border: 1px dashed var(--vp-c-border);
+}
+
+.var-name {
   font-weight: 600;
-}
-
-.variable.dimmed {
-  color: var(--vp-c-text-3);
-  opacity: 0.5;
-}
-
-.explanation {
-  text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
-  animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.var-value {
+  color: var(--vp-c-text-2);
+}
+
+.var-from {
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+  font-style: italic;
+}
+
+.explanation-box {
+  background: var(--vp-c-brand-soft);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.explanation-title {
+  font-weight: 600;
+  color: var(--vp-c-brand);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.explanation-text {
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .code-display {
@@ -269,16 +282,5 @@ h3 {
   font-size: 13px;
   line-height: 1.6;
   color: #d4d4d4;
-}
-
-@media (max-width: 768px) {
-  .scopes-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .scope {
-    min-width: 280px;
-  }
 }
 </style>

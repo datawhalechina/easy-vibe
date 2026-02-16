@@ -494,6 +494,19 @@ import ThisContextDemo from './components/appendix/javascript-intro/ThisContextD
 import PrototypeDemo from './components/appendix/javascript-intro/PrototypeDemo.vue'
 import AsyncDemo from './components/appendix/javascript-intro/AsyncDemo.vue'
 
+// JavaScript Runtime Components
+import RuntimeEnvironmentDemo from './components/appendix/js-runtime/RuntimeEnvironmentDemo.vue'
+import CallStackDemo from './components/appendix/js-runtime/CallStackDemo.vue'
+import TaskQueueDemo from './components/appendix/js-runtime/TaskQueueDemo.vue'
+import MemoryLeakDemo from './components/appendix/js-runtime/MemoryLeakDemo.vue'
+import GarbageCollectionDemo from './components/appendix/js-runtime/GarbageCollectionDemo.vue'
+
+// TypeScript Intro Components
+import TypeAnnotationDemo from './components/appendix/typescript-intro/TypeAnnotationDemo.vue'
+import InterfaceDemo from './components/appendix/typescript-intro/InterfaceDemo.vue'
+import GenericDemo from './components/appendix/typescript-intro/GenericDemo.vue'
+import TypeInferenceDemo from './components/appendix/typescript-intro/TypeInferenceDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -935,6 +948,7 @@ export default {
     app.component('MacroMicroTaskDemo', MacroMicroTaskDemo)
     app.component('RenderingPerformanceDemo', RenderingPerformanceDemo)
     app.component('RenderingPipelineDemo', RenderingPipelineDemo)
+    app.component('EventLoopDemo', JSEventLoopDemo) // Alias for browser rendering context
 
     // Cache Design Extra Components Registration
     app.component('CacheArchitectureOverview', CacheArchitectureOverview)
@@ -986,6 +1000,19 @@ export default {
     app.component('DOMTreeDemo', DOMTreeDemo)
     app.component('AsyncRestaurantDemo', AsyncRestaurantDemo)
     app.component('JSEventLoopDemo', JSEventLoopDemo)
+
+    // JavaScript Runtime Components Registration
+    app.component('RuntimeEnvironmentDemo', RuntimeEnvironmentDemo)
+    app.component('CallStackDemo', CallStackDemo)
+    app.component('TaskQueueDemo', TaskQueueDemo)
+    app.component('MemoryLeakDemo', MemoryLeakDemo)
+    app.component('GarbageCollectionDemo', GarbageCollectionDemo)
+
+    // TypeScript Intro Components Registration
+    app.component('TypeAnnotationDemo', TypeAnnotationDemo)
+    app.component('InterfaceDemo', InterfaceDemo)
+    app.component('GenericDemo', GenericDemo)
+    app.component('TypeInferenceDemo', TypeInferenceDemo)
   },
   setup() {
     const route = useRoute()

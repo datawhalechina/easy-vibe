@@ -76,15 +76,19 @@
               <div class="code-line">obj2.x = 20</div>
               <div class="code-line result">// obj1.x = 20 (变了!)</div>
             </div>
-            <div class="visual-box">
-              <div class="ref-box">
-                <div>obj1 →</div>
-                <div class="memory-box">{x: 20}</div>
+            <div class="visual-box ref-visual">
+              <div class="ref-boxes">
+                <div class="ref-var-box">
+                  <div class="ref-var-name">obj1</div>
+                  <div class="ref-var-arrow">→</div>
+                </div>
+                <div class="ref-var-box">
+                  <div class="ref-var-name">obj2</div>
+                  <div class="ref-var-arrow">→</div>
+                </div>
               </div>
-              <div class="arrow">指向同一位置</div>
-              <div class="ref-box">
-                <div>obj2 →</div>
-              </div>
+              <div class="arrow down-arrow">指向同一位置</div>
+              <div class="memory-box">{x: 20}</div>
             </div>
           </div>
         </div>
@@ -467,6 +471,40 @@ const convertType = () => {
   color: var(--vp-c-text-3);
   font-size: 0.75rem;
   text-align: center;
+}
+
+/* 修复引用类型可视化 */
+.ref-visual {
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ref-boxes {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.ref-var-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ref-var-name {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  font-family: monospace;
+}
+
+.ref-var-arrow {
+  color: var(--vp-c-brand);
+  font-weight: bold;
+}
+
+.down-arrow {
+  color: var(--vp-c-brand);
+  font-size: 0.8rem;
 }
 
 .ref-types-list {
