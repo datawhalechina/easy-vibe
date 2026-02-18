@@ -125,7 +125,7 @@ const navigate = (page) => {
   background: var(--vp-c-brand);
   color: white;
   padding: 0.35rem 0.7rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.85rem;
   cursor: pointer;
 }
@@ -134,7 +134,7 @@ const navigate = (page) => {
   margin-top: 1rem;
   border: 1px dashed var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   min-height: 60px;
   display: flex;

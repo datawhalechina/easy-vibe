@@ -52,15 +52,15 @@ const resolve = (choice) => {
 <style scoped>
 .conflict-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 .editor {
   background: #1f2937;
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   font-family: monospace;
   margin-bottom: 1rem;
 }
@@ -105,7 +105,7 @@ const resolve = (choice) => {
   color: var(--vp-c-bg);
 }
 .info-box {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-left: 4px solid var(--vp-c-brand);
   border-radius: 4px;

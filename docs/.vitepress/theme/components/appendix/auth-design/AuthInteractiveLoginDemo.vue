@@ -377,9 +377,9 @@ const resetDemo = () => {
 .auth-interactive-login {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header {
@@ -421,7 +421,7 @@ const resetDemo = () => {
 .mode-btn {
   padding: 0.6rem 1.2rem;
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   cursor: pointer;
   font-size: 0.9rem;
@@ -616,8 +616,8 @@ const resetDemo = () => {
 
 .flow-stage {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
   animation: slideIn 0.4s ease;
 }
@@ -827,7 +827,7 @@ const resetDemo = () => {
 .reset-btn {
   padding: 0.75rem 2rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #64748b;
   color: white;
   font-weight: 600;

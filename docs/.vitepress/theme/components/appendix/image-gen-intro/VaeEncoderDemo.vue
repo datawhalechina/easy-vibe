@@ -219,7 +219,7 @@ watch(mode, updateDisplay)
 
 <style scoped>
 .vae-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-controls {
@@ -257,7 +257,7 @@ watch(mode, updateDisplay)
   width: 200px;
   height: 200px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   border: 2px solid var(--vp-c-divider);
 }
@@ -291,7 +291,7 @@ watch(mode, updateDisplay)
   margin-top: 16px;
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .latent-title {

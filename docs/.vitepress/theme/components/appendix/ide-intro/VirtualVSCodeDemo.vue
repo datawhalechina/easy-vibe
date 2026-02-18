@@ -1529,7 +1529,7 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   max-height: 200px;
-  overflow-y: auto;
+  
   padding: 4px 0;
 }
 
@@ -2119,7 +2119,7 @@ onUnmounted(() => {
   flex: 1;
   display: flex;
   padding-top: 4px;
-  overflow-y: auto;
+  
 }
 .line-numbers {
   width: 40px;
@@ -2148,7 +2148,7 @@ onUnmounted(() => {
   flex: 1;
   background: #1e1e1e;
   padding: 30px;
-  overflow-y: auto;
+  
   color: #ccc;
   display: flex;
   justify-content: center;
@@ -2325,7 +2325,7 @@ onUnmounted(() => {
 .panel-body {
   flex: 1;
   padding: 8px 12px;
-  overflow-y: auto;
+  
   font-family: 'Consolas', 'Monaco', monospace;
   font-size: 11px;
 }

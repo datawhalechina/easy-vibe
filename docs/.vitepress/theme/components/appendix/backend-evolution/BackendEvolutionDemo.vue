@@ -433,8 +433,8 @@ const stages = [
 .server-box {
   background: #cbd5e1;
   border: 2px solid #94a3b8;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   text-align: center;
 }
 .file-system {
@@ -464,7 +464,7 @@ const stages = [
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 .module {
   background: #bfdbfe;

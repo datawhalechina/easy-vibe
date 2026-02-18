@@ -127,7 +127,7 @@ const quitVim = () => {
 
 .terminal-frame {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid #333;
@@ -274,7 +274,7 @@ const quitVim = () => {
 .controls {
   margin-top: 15px;
   background: #f6f6f7;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
   border: 1px solid #eee;
 }

@@ -369,7 +369,7 @@ onMounted(() => {
 
 .demo-area {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -412,7 +412,7 @@ onMounted(() => {
 .audio-card {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   cursor: pointer;
@@ -472,7 +472,7 @@ onMounted(() => {
   width: 100%;
   padding: 12px;
   border: 2px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   cursor: pointer;
   color: var(--vp-c-text-2);
@@ -499,7 +499,7 @@ onMounted(() => {
   gap: 8px;
   padding: 12px 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   opacity: 0.5;
   transition: all 0.3s;
 }
@@ -525,7 +525,7 @@ onMounted(() => {
 
 .feature-viz {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
 }
@@ -545,7 +545,7 @@ onMounted(() => {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   font-size: 14px;
   resize: vertical;
@@ -558,7 +558,7 @@ onMounted(() => {
   background: linear-gradient(120deg, #409eff, #67c23a);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
@@ -595,7 +595,7 @@ onMounted(() => {
   margin-top: 16px;
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid #67c23a;
 }
 
@@ -653,7 +653,7 @@ onMounted(() => {
 
 .tips-section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -675,7 +675,7 @@ onMounted(() => {
   gap: 12px;
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .tip-icon {
@@ -699,7 +699,7 @@ onMounted(() => {
   gap: 12px;
   padding: 16px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   line-height: 1.6;
 }

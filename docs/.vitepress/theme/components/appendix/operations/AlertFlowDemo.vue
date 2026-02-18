@@ -281,9 +281,9 @@ const triggerScenario = async (scenarioId) => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   transition: all 0.3s;
 }
@@ -360,7 +360,7 @@ const triggerScenario = async (scenarioId) => {
 }
 
 .alert-header {
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -398,7 +398,7 @@ const triggerScenario = async (scenarioId) => {
 }
 
 .alert-body {
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -426,7 +426,7 @@ const triggerScenario = async (scenarioId) => {
 .level-guide {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

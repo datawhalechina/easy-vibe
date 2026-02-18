@@ -274,7 +274,7 @@ const train = () => {
 .result-box {
   background-color: var(--vp-c-bg-alt);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   text-align: center;
 }

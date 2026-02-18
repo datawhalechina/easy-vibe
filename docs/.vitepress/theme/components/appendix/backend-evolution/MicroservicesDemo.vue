@@ -134,10 +134,10 @@ const resetFlow = () => {
 <style scoped>
 .microservices-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -166,8 +166,8 @@ const resetFlow = () => {
 .service-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -249,8 +249,8 @@ const resetFlow = () => {
 .communication-flow {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .communication-flow h5 {

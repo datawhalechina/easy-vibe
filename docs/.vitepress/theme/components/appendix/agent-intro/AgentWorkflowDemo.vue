@@ -179,7 +179,7 @@ const reset = () => {
 .icon {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   background: var(--vp-c-bg-soft);

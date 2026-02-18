@@ -376,7 +376,7 @@ onMounted(() => {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   transition: all 0.3s;
   opacity: 0.6;
@@ -430,7 +430,7 @@ onMounted(() => {
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -777,7 +777,7 @@ onMounted(() => {
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   opacity: 0.5;
   transition: all 0.3s;
 }

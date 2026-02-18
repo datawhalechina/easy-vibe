@@ -217,7 +217,7 @@ const scrollToBottom = () => {
 
 .messages {
   flex: 1;
-  overflow-y: auto;
+  
   padding: 20px;
   display: flex;
   flex-direction: column;

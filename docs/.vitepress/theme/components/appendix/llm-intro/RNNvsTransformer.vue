@@ -249,9 +249,9 @@ const getAttentionColor = (sourceIdx, targetIdx) => {
 <style scoped>
 .arch-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
   overflow: hidden;
 }
@@ -323,7 +323,7 @@ const getAttentionColor = (sourceIdx, targetIdx) => {
   width: 100px;
   height: 80px;
   border: 2px solid var(--vp-c-text-2);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -381,7 +381,7 @@ const getAttentionColor = (sourceIdx, targetIdx) => {
 .attention-info {
   text-align: center;
   min-height: 3rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--vp-c-bg);
   border-radius: 6px;
   border: 1px solid var(--vp-c-divider);

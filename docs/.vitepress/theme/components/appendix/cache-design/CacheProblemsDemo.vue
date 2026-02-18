@@ -495,7 +495,7 @@ initializeCacheItems()
 .problem-btn {
   flex: 1;
   min-width: 150px;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -578,7 +578,7 @@ initializeCacheItems()
   gap: 0.75rem;
   padding: 0.75rem 1.5rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   min-width: 250px;
   justify-content: center;
@@ -622,7 +622,7 @@ initializeCacheItems()
   background: #ef4444;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -638,7 +638,7 @@ initializeCacheItems()
   background: #22c55e;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -684,9 +684,9 @@ initializeCacheItems()
 
 .hotkey-badge {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background: #fef3c7;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid #f59e0b;
   font-weight: 600;
 }
@@ -700,8 +700,8 @@ initializeCacheItems()
 
 .concurrent-requests {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
 }
 
 .requests-title {
@@ -751,9 +751,9 @@ initializeCacheItems()
 
 .mutex-visual {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background: #eff6ff;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid #3b82f6;
 }
 
@@ -809,9 +809,9 @@ initializeCacheItems()
 
 .mass-explosion {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background: #fef2f2;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid #ef4444;
 }
 
@@ -831,9 +831,9 @@ initializeCacheItems()
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   transition: all 0.3s;
 }
@@ -873,9 +873,9 @@ initializeCacheItems()
 }
 
 .solution-item {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 4px solid var(--vp-c-brand);
 }
 

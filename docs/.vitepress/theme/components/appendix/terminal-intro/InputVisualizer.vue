@@ -175,7 +175,7 @@ const handleKeydown = (e) => {
   background: #10b981;
   color: #fff;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -228,7 +228,7 @@ const handleKeydown = (e) => {
 .info-box {
   background: #18181b; /* Zinc 900 */
   padding: 16px 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   min-width: 140px;
   border: 1px solid #27272a;
 }

@@ -231,7 +231,7 @@ const consumeMessage = () => {
   background: var(--vp-c-brand);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   font-weight: 600;
@@ -267,7 +267,7 @@ const consumeMessage = () => {
   border-radius: 10px;
   min-height: 200px;
   max-height: 280px;
-  overflow-y: auto;
+  
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
@@ -336,7 +336,7 @@ const consumeMessage = () => {
 .compare-col {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

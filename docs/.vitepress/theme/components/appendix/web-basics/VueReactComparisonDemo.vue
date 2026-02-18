@@ -227,7 +227,7 @@ const steps = computed(() => {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .panel-title {

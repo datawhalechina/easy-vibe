@@ -183,10 +183,10 @@ const startSearch = async () => {
 <style scoped>
 .db-index-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -302,7 +302,7 @@ const startSearch = async () => {
 
 .view-container {
   max-height: 300px;
-  overflow-y: auto;
+  
 }
 
 .grid {

@@ -101,7 +101,7 @@ const simulateResize = () => {
 .advanced-tui {
   background: #0a0a0a;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #333;
   font-family: 'Menlo', monospace;
 }

@@ -203,8 +203,8 @@ const nextStage = () => {
 
 .component-wrapper {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  /* padding: 1rem; */
+  border-radius: 6px;
+  /* padding: 0.75rem; */
 }
 
 .action-footer {

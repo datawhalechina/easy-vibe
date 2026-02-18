@@ -1,6 +1,13 @@
 <template>
   <div class="three-areas-demo">
-    <div class="scene">
+    <div class="demo-header">
+      <span class="icon">📂</span>
+      <span class="title">Git 三区概念</span>
+      <span class="subtitle">工作区 → 暂存区 → 仓库</span>
+    </div>
+
+    <div class="demo-content">
+      <div class="scene">
       <!-- 1. Working Directory (Desk) -->
       <div class="zone working">
         <div class="zone-header">
@@ -121,6 +128,7 @@
         </div>
       </div>
     </div>
+    </div>
 
     <div class="bottom">
       <div class="block">
@@ -131,6 +139,11 @@
         <div class="block-title">git status（模拟）</div>
         <pre class="mono"><code>{{ statusText }}</code></pre>
       </div>
+    </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>Git 的三区就像餐厅——工作区是餐桌（随便放），暂存区是备菜盘（准备上菜），仓库是菜单（永久记录）。
     </div>
   </div>
 </template>
@@ -238,12 +251,41 @@ const commitFiles = () => {
 <style scoped>
 .three-areas-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
-  overflow-x: auto;
+  
+  
+}
+
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.demo-header .icon {
+  font-size: 1.25rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  margin-bottom: 0.5rem;
 }
 
 .scene {
@@ -257,7 +299,7 @@ const commitFiles = () => {
 .zone {
   flex: 1;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   border: 1px solid var(--vp-c-divider);
   display: flex;
@@ -314,7 +356,7 @@ const commitFiles = () => {
   padding: 8px;
   background: var(--vp-c-bg-soft);
   background-size: 10px 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px dashed var(--vp-c-divider);
 }
 
@@ -407,7 +449,7 @@ const commitFiles = () => {
   align-content: flex-start;
   padding: 8px;
   gap: 4px;
-  overflow-y: auto;
+  
 }
 
 .file-card.mini {
@@ -564,7 +606,7 @@ const commitFiles = () => {
 .block {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   min-width: 260px;
 }
@@ -640,5 +682,24 @@ const commitFiles = () => {
   .bottom {
     grid-template-columns: 1fr;
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

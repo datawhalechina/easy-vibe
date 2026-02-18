@@ -60,10 +60,10 @@ onUnmounted(() => {
 <style scoped>
 .deployment-monitor {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 0.75rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header {

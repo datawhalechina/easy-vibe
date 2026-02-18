@@ -140,7 +140,7 @@ AI でコードを書こうとしてエラーが続き、諦めかけたくな�
 
 | 章                                                                                                                                                          | 主要内容                                                                                                        | 状態 |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- | :--- |
-| [上級一：MCP と ClaudeCode Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claudecode-skills/)                                                               | MCP と Skills を通じて IDE 能力を拡張し、外部サービスをツールとして接続                                         | 🚧   |
+| [上級一：MCP と Claude Code Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/)                                                               | MCP と Skills を通じて IDE 能力を拡張し、外部サービスをツールとして接続                                         | 🚧   |
 | [上級二：Coding Tools を長時間動作させる方法](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/)                                                       | 長時間動作するタスクを設計・設定し、Coding Tools をより安定して信頼性の高いものに                               | 🚧   |
 | [上級三：マルチプラットフォーム開発：WeChat ミニプログラムの構築方法](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/)                            | WeChat ミニプログラムのエコシステムを理解し、公式テンプレートからリリースまでフロントエンドミニプログラムを完成 | ✅   |
 | [上級四：マルチプラットフォーム開発：WeChat ミニプログラムの構築方法 - バックエンド含む](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | ミニプログラムにデータベースとバックエンドロジックを統合し、完全な業務クローズドループを実現                    | 🚧   |

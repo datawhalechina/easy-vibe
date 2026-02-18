@@ -385,7 +385,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 <style scoped>
 .lora-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-title {
@@ -403,7 +403,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .concept-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -417,7 +417,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .model-box {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px 24px;
   text-align: center;
   border: 2px solid var(--vp-c-divider);
@@ -460,7 +460,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .weight-control-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -479,7 +479,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .comparison-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -515,7 +515,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
   width: 160px;
   height: 160px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 
@@ -530,7 +530,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .fusion-section {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -575,7 +575,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
   width: 200px;
   height: 200px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-brand);
 }
 
@@ -598,7 +598,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .use-cases {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -616,7 +616,7 @@ watch([loraWeight, selectedLoRA, activeLoRAs], updateDisplay, { deep: true })
 
 .use-case-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
 }

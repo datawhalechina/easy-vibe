@@ -275,7 +275,7 @@ onUnmounted(() => {
 <style scoped>
 .http-compact {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   padding: 16px;
   margin: 16px 0;
@@ -352,7 +352,7 @@ onUnmounted(() => {
   align-items: center;
   height: 100px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0 30px;
   position: relative;
   margin-bottom: 20px;
@@ -431,7 +431,7 @@ onUnmounted(() => {
 .detail-panel {
   height: 80px;
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   padding: 0 16px;
   display: flex;

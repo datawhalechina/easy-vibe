@@ -417,7 +417,7 @@ function toggleExpand(number) {
   align-items: center;
   padding: 12px 20px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -465,7 +465,7 @@ function toggleExpand(number) {
 .status-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.2s ease;

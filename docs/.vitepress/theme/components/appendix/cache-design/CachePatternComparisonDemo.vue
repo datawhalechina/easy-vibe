@@ -191,10 +191,10 @@ const patterns = [
 <style scoped>
 .cache-pattern-comparison-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -236,7 +236,7 @@ const patterns = [
   padding: 0.75rem 1rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -275,9 +275,9 @@ const patterns = [
 }
 
 .pattern-header {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -296,9 +296,9 @@ const patterns = [
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -331,8 +331,8 @@ const patterns = [
 }
 
 .pros, .cons {
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
 }
 
 .pros {
@@ -359,8 +359,8 @@ const patterns = [
 
 .comparison-table {
   background: var(--vp-c-bg);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   margin-bottom: 1rem;
 }

@@ -154,7 +154,7 @@ const updateStyle = (prop, value) => {
 
 .dom-content, .style-content {
   padding: 10px;
-  overflow-y: auto;
+  
   flex: 1;
 }
 

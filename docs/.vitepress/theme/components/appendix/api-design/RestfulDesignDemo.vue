@@ -194,9 +194,9 @@ const activePrinciple = computed(() =>
 .restful-design-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header {
@@ -225,8 +225,8 @@ const activePrinciple = computed(() =>
 .principle-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
@@ -260,7 +260,7 @@ const activePrinciple = computed(() =>
 .detail-panel {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.25rem;
 }
 

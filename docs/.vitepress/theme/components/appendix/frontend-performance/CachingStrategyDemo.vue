@@ -417,7 +417,7 @@ onMounted(() => {
   padding: 0.8rem 1rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
@@ -549,7 +549,7 @@ onMounted(() => {
   margin-bottom: 2rem;
   padding: 2rem;
   background: linear-gradient(135deg, var(--vp-c-brand), #8b5cf6);
-  border-radius: 8px;
+  border-radius: 6px;
   color: #fff;
 }
 
@@ -570,7 +570,7 @@ onMounted(() => {
   gap: 1rem;
   padding: 0.8rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
 }
 
@@ -627,8 +627,8 @@ onMounted(() => {
 .metric-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .metric-header {
@@ -725,7 +725,7 @@ onMounted(() => {
 
 .code-example {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -739,7 +739,7 @@ onMounted(() => {
 
 code {
   display: block;
-  padding: 1rem;
+  padding: 0.75rem;
   font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
   font-size: 0.8rem;
   color: var(--vp-c-text-1);

@@ -323,7 +323,7 @@ const getUsageColor = (usage) => {
   width: 100%;
   padding-bottom: 50%;
   background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -346,7 +346,7 @@ const getUsageColor = (usage) => {
   transform: translate(-50%, -50%);
   background: white;
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.5rem;
   text-align: center;
   cursor: pointer;
@@ -491,7 +491,7 @@ const getUsageColor = (usage) => {
 .detail-item {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -573,7 +573,7 @@ const getUsageColor = (usage) => {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
 }
 

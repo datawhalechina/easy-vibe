@@ -168,7 +168,7 @@ const selectRegion = (id) => {
 .resource-topology-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .controls {
@@ -218,7 +218,7 @@ const selectRegion = (id) => {
   align-items: center;
   padding: 16px;
   border: 2px solid #e4e7ed;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -254,7 +254,7 @@ const selectRegion = (id) => {
 .region-card {
   padding: 12px;
   border: 2px solid #e4e7ed;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -304,7 +304,7 @@ const selectRegion = (id) => {
 .resource-category {
   padding: 16px;
   border: 2px solid #e4e7ed;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
 }
 
@@ -357,7 +357,7 @@ const selectRegion = (id) => {
   margin-top: 20px;
   padding: 16px;
   background: #f0f9eb;
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 4px solid #67c23a;
 }
 

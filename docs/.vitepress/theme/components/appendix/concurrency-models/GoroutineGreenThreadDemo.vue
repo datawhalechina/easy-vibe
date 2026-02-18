@@ -218,7 +218,7 @@ initGMP()
 .demo-container {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 h4 {
@@ -236,7 +236,7 @@ h4 {
 
 .gmp-view {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   margin-bottom: 16px;
 }
@@ -249,7 +249,7 @@ h4 {
 
 .queue-section {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -291,7 +291,7 @@ h4 {
 .processors-section,
 .machines-section {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -314,7 +314,7 @@ h4 {
 .processor {
   background: white;
   border: 2px solid #e4e7ed;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
   transition: all 0.3s;
 }

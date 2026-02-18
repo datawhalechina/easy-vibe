@@ -142,10 +142,10 @@ const layers = [
 <style scoped>
 .cache-architecture-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -185,7 +185,7 @@ const layers = [
 .layer {
   width: 100%;
   max-width: 400px;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s;
 }
 

@@ -250,7 +250,7 @@ const toggleDetails = (section) => {
   margin-top: 12px;
   padding: 16px;
   background: #f0f7ff;
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 4px solid #409eff;
 }
 
@@ -297,7 +297,7 @@ const toggleDetails = (section) => {
   text-align: center;
   padding: 16px 12px;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.3s ease;
 }
 

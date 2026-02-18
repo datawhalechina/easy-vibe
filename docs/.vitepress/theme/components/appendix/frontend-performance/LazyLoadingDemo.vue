@@ -257,7 +257,7 @@ onMounted(() => {
   padding: 0.6rem 1.2rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
@@ -286,7 +286,7 @@ onMounted(() => {
   flex: 1;
   min-width: 120px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.8rem;
   text-align: center;
 }
@@ -311,15 +311,15 @@ onMounted(() => {
 
 .scroll-container {
   height: 400px;
-  overflow-y: auto;
+  
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 1.5rem;
   background: var(--vp-c-bg-soft);
 }
 
 .content-area {
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .placeholder {
@@ -336,7 +336,7 @@ onMounted(() => {
 .image-wrapper {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -383,7 +383,7 @@ onMounted(() => {
   height: 150px;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem;
   gap: 1rem;
 }
 
@@ -422,8 +422,8 @@ onMounted(() => {
 
 .explanation-item {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .explanation-item h4 {

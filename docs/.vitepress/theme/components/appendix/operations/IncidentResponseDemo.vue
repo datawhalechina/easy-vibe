@@ -231,7 +231,7 @@ const phases = [
 .phase {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-radius: 10px;
   border: 2px solid var(--vp-c-divider);
@@ -305,7 +305,7 @@ const phases = [
 .phase-actions {
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-top: 0.75rem;
 }
 
@@ -354,7 +354,7 @@ const phases = [
 .incident-meta {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--vp-c-divider);
 }
@@ -397,7 +397,7 @@ const phases = [
 .best-practices {
   background: rgba(var(--vp-c-brand-rgb), 0.05);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-brand);
 }
 
@@ -415,8 +415,8 @@ const phases = [
 
 .practice-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   text-align: center;
 }
 

@@ -208,7 +208,7 @@ const resetAll = () => {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .pane-title {
@@ -359,7 +359,7 @@ const resetAll = () => {
   color: var(--vp-c-text-2);
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.35rem 0.5rem;
 }
 

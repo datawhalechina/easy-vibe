@@ -1,50 +1,51 @@
-<!--
-  BigFrontendScopeDemo.vue
-  前端 vs 大前端（跨端）范围演示
--->
 <template>
   <div class="bigfe-demo">
-    <div class="header">
-      <div class="title">前端 vs 大前端：到底“前端”都包含什么？</div>
-      <div class="subtitle">点一下不同“端”，立刻看到它跑在哪里、怎么发布</div>
+    <div class="demo-header">
+      <span class="icon">🌐</span>
+      <span class="title">前端 vs 大前端</span>
+      <span class="subtitle">了解不同平台的运行环境和技术栈</span>
     </div>
 
-    <div class="platforms">
-      <button
-        v-for="p in platforms"
-        :key="p.key"
-        class="platform"
-        :class="{ active: current === p.key }"
-        @click="current = p.key"
-      >
-        <span class="icon">{{ p.icon }}</span>
-        <span>{{ p.label }}</span>
-      </button>
+    <div class="demo-content">
+      <div class="platforms">
+        <button
+          v-for="p in platforms"
+          :key="p.key"
+          class="platform"
+          :class="{ active: current === p.key }"
+          @click="current = p.key"
+        >
+          <span class="icon">{{ p.icon }}</span>
+          <span>{{ p.label }}</span>
+        </button>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="label">运行环境</div>
+          <div class="value">{{ currentData.runtime }}</div>
+        </div>
+        <div class="card">
+          <div class="label">主要技术</div>
+          <div class="value">{{ currentData.stack }}</div>
+        </div>
+        <div class="card">
+          <div class="label">发布方式</div>
+          <div class="value">{{ currentData.release }}</div>
+        </div>
+      </div>
+
+      <div class="skills">
+        <div class="skills-title">哪些能力是"共通的"？</div>
+        <div class="tags">
+          <span v-for="t in commonSkills.slice(0, 6)" :key="t" class="tag">{{ t }}</span>
+        </div>
+      </div>
     </div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="label">运行环境</div>
-        <div class="value">{{ currentData.runtime }}</div>
-      </div>
-      <div class="card">
-        <div class="label">主要技术</div>
-        <div class="value">{{ currentData.stack }}</div>
-      </div>
-      <div class="card">
-        <div class="label">发布方式</div>
-        <div class="value">{{ currentData.release }}</div>
-      </div>
-    </div>
-
-    <div class="skills">
-      <div class="skills-title">哪些能力是“共通的”？</div>
-      <div class="tags">
-        <span v-for="t in commonSkills" :key="t" class="tag">{{ t }}</span>
-      </div>
-      <div class="skills-note">
-        大前端的核心不是“会更多框架”，而是：<strong>用同一套工程能力，把体验交付到不同平台</strong>。
-      </div>
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>大前端不是"会更多框架"，而是用同一套工程能力，把体验交付到不同平台。
     </div>
   </div>
 </template>
@@ -53,11 +54,11 @@
 import { ref, computed } from 'vue'
 
 const platforms = [
-  { key: 'web', label: 'Web 网站', icon: '🌐' },
-  { key: 'h5', label: 'H5 活动页', icon: '📱' },
+  { key: 'web', label: 'Web网站', icon: '🌐' },
+  { key: 'h5', label: 'H5活动页', icon: '📱' },
   { key: 'miniapp', label: '小程序', icon: '🧩' },
-  { key: 'native', label: 'App（原生）', icon: '📲' },
-  { key: 'cross', label: '跨端 App', icon: '🧱' },
+  { key: 'native', label: '原生App', icon: '📲' },
+  { key: 'cross', label: '跨端App', icon: '🧱' },
   { key: 'desktop', label: '桌面应用', icon: '🖥️' }
 ]
 
@@ -112,32 +113,45 @@ const commonSkills = [
 <style scoped>
 .bigfe-demo {
   border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  font-family: var(--vp-font-family-base);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
-.header {
-  margin-bottom: 1rem;
+.demo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.title {
-  font-weight: 700;
-  font-size: 1.05rem;
+.demo-header .icon {
+  font-size: 1.25rem;
 }
 
-.subtitle {
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.demo-content {
+  margin-bottom: 0.5rem;
 }
 
 .platforms {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0.75rem 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .platform {
@@ -150,22 +164,25 @@ const commonSkills = [
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.platform:hover {
+  background: var(--vp-c-bg-soft);
 }
 
 .platform.active {
-  border-color: #3b82f6;
-  color: #1d4ed8;
-  background: rgba(59, 130, 246, 0.12);
-}
-
-.icon {
-  font-size: 1rem;
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+  font-weight: 600;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .card {
@@ -185,17 +202,19 @@ const commonSkills = [
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.35;
+  color: var(--vp-c-text-1);
 }
 
 .skills {
-  margin-top: 1rem;
   border-top: 1px dashed var(--vp-c-divider);
-  padding-top: 1rem;
+  padding-top: 0.75rem;
 }
 
 .skills-title {
   font-weight: 600;
   margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--vp-c-text-1);
 }
 
 .tags {
@@ -208,14 +227,26 @@ const commonSkills = [
   font-size: 0.8rem;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  background: rgba(34, 197, 94, 0.12);
-  color: #15803d;
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-divider);
 }
 
-.skills-note {
-  margin-top: 0.75rem;
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem;
+  border-radius: 6px;
   font-size: 0.85rem;
   color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

@@ -211,7 +211,7 @@ const subnets = [
 .network-flow-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -221,7 +221,7 @@ const subnets = [
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -273,7 +273,7 @@ const subnets = [
   gap: 6px;
   padding: 12px 16px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   min-width: 80px;
 }
 
@@ -401,7 +401,7 @@ const subnets = [
   gap: 6px;
   padding: 12px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   min-width: 100px;
   border: 2px solid transparent;
   transition: all 0.3s;
@@ -475,7 +475,7 @@ const subnets = [
 
 .subnet {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   border-left: 4px solid;
 }
@@ -586,7 +586,7 @@ const subnets = [
   margin-top: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 

@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "build": "npm run lint && vitepress build docs --force",
     "preview": "vitepress preview docs",
     "format": "prettier --write .",
-    "verify": "bash scripts/verify.sh"
+    "verify": "bash scripts/verify.sh",
+    "lint": "eslint docs/.vitepress/theme",
+    "lint:fix": "eslint docs/.vitepress/theme --fix"
   },
   "keywords": [
     "easy-vibe",
@@ -21,6 +23,10 @@
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^9.30.0",
+    "vue-eslint-parser": "^9.4.3",
     "markdown-it-katex": "^2.0.3",
     "prettier": "^3.7.4"
   },

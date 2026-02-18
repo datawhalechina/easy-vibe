@@ -208,7 +208,7 @@ const mode = ref('discriminative')
   gap: 10px;
   background-color: var(--vp-c-bg);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .io-box {

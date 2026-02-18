@@ -145,10 +145,10 @@ const clear = () => {
 <style scoped>
 .context-visualizer {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -229,7 +229,7 @@ const clear = () => {
 
 .window-frame {
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   min-height: 100px;
   position: relative;
@@ -258,7 +258,7 @@ const clear = () => {
   flex-wrap: wrap;
   gap: 2px;
   max-height: 150px;
-  overflow-y: auto;
+  
 }
 
 .token-chip {
@@ -368,7 +368,7 @@ textarea:focus {
 
 .info-box {
   background-color: var(--vp-c-bg-alt);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   font-size: 0.9rem;
   line-height: 1.5;

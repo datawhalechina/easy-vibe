@@ -22,7 +22,7 @@ const description = ref('展示消息队列的整体架构，包括生产者、�
 <style scoped>
 .demo-container {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
 }

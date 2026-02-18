@@ -144,7 +144,7 @@ const typeText = () => {
   width: 100px;
   height: 100px;
   background: #e2e8f0;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;

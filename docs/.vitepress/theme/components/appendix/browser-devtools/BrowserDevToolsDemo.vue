@@ -1523,7 +1523,7 @@ onUnmounted(() => {
 }
 .console-output {
   flex: 1;
-  overflow-y: auto;
+  
   font-family: Consolas, 'Lucida Console', monospace;
   font-size: 11px;
 }

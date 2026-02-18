@@ -89,7 +89,7 @@ const borderColor = ref('#000000')
 <style scoped>
 .css-playground {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 20px;
   margin: 20px 0;
@@ -101,7 +101,7 @@ const borderColor = ref('#000000')
 .demo-box {
   background: var(--vp-c-bg);
   border: 1px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   height: 150px;
   display: flex;
   align-items: center;
@@ -168,7 +168,7 @@ input[type='color'] {
 
 .code-preview {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   color: #d4d4d4;
   font-family: var(--vp-font-family-mono);

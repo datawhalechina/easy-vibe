@@ -328,7 +328,7 @@ const reset = () => {
 .app-instance {
   background: #eff6ff;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 0.5rem;
   border: 1px solid #bfdbfe;
 }
@@ -416,7 +416,7 @@ const reset = () => {
 .redis-cluster {
   background: #fef2f2;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #fecaca;
 }
 
@@ -462,7 +462,7 @@ const reset = () => {
   margin-bottom: 1rem;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .metric {
@@ -505,7 +505,7 @@ const reset = () => {
 .pros,
 .cons {
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .pros {
@@ -555,7 +555,7 @@ const reset = () => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
@@ -581,9 +581,9 @@ const reset = () => {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 4px solid var(--vp-c-brand);
 }
 

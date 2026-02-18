@@ -239,7 +239,7 @@ calculate()
 <style scoped>
 .subnet-calculator {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -247,7 +247,7 @@ calculate()
 
 .calculator-input {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
   display: flex;
@@ -311,7 +311,7 @@ calculate()
 
 .result-section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -460,7 +460,7 @@ calculate()
 
 .example-presets {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
 }
@@ -503,7 +503,7 @@ calculate()
 
 .info-box {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   border-left: 4px solid var(--vp-c-brand);
 }

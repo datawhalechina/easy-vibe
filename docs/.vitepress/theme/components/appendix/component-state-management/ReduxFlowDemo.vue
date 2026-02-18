@@ -106,12 +106,12 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 <style scoped>
 .redux-flow-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {
@@ -165,7 +165,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   gap: 0.75rem;
   padding: 2rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 1rem;
 }
 
@@ -207,7 +207,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -232,9 +232,9 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .flow-stage {
@@ -244,7 +244,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   padding: 0.75rem 1rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.85rem;
   transition: all 0.3s ease;
 }

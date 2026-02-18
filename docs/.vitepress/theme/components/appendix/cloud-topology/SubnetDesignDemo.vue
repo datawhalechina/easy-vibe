@@ -202,7 +202,7 @@ const selectSubnet = (index) => {
 .subnet-design-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -213,7 +213,7 @@ const selectSubnet = (index) => {
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .panel-section {
@@ -278,7 +278,7 @@ const selectSubnet = (index) => {
 
 .subnet-cell {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   border: 2px solid transparent;
   cursor: pointer;
@@ -356,7 +356,7 @@ const selectSubnet = (index) => {
   background: #333;
   color: white;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   z-index: 10;
   margin-bottom: 8px;
@@ -373,7 +373,7 @@ const selectSubnet = (index) => {
 /* Calculation Panel */
 .calculation-panel {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -447,7 +447,7 @@ const selectSubnet = (index) => {
 /* Tips Panel */
 .tips-panel {
   background: #f0f9eb;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   border-left: 4px solid #67c23a;
 }

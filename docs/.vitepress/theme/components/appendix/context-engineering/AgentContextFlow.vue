@@ -149,10 +149,10 @@ const totalHeight = computed(() => systemHeight.value + historyHeight.value + in
 <style scoped>
 .agent-context-flow {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 /* 1. 顶部统计栏 */

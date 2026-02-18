@@ -1,8 +1,9 @@
 <template>
   <div class="tech-stack-timeline-demo">
     <div class="demo-header">
-      <h4>📚 技术栈演进时间线</h4>
-      <p>每个时代的主流技术栈</p>
+      <span class="icon">📚</span>
+      <span class="title">技术栈演进时间线</span>
+      <span class="subtitle">每个时代的主流技术栈</span>
     </div>
 
     <div class="timeline">
@@ -102,137 +103,127 @@ const eras = [
 <style scoped>
 .tech-stack-timeline-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .demo-header h4 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1rem;
+  margin: 0 0 0.15rem 0;
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
 }
 
 .demo-header p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
 }
 
 .timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
 }
 
 .era-section {
   display: flex;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.25rem;
   cursor: pointer;
   transition: all 0.2s;
+  background: var(--vp-c-bg);
+  border-radius: 4px;
+  padding: 0.4rem;
 }
 
 .era-section:hover,
 .era-section.active {
-  background: var(--vp-c-bg);
-  border-radius: 6px;
+  background: var(--vp-c-brand-soft);
 }
 
 .era-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 24px;
+  display: none;
 }
 
 .era-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--vp-c-divider);
-  border: 2px solid var(--vp-c-bg);
-  transition: all 0.2s;
+  display: none;
 }
 
 .era-section.active .era-dot {
-  background: var(--vp-c-brand);
-  border-color: var(--vp-c-brand);
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+  display: none;
 }
 
 .era-line {
-  flex: 1;
-  width: 2px;
-  background: var(--vp-c-divider);
-  margin: 4px 0;
+  display: none;
 }
 
 .era-content {
   flex: 1;
-  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .era-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.25rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
 }
 
 .era-icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .era-name {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.7rem;
   color: var(--vp-c-text-1);
 }
 
 .era-period {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: var(--vp-c-text-3);
   background: var(--vp-c-bg-soft);
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
+  padding: 0.05rem 0.25rem;
+  border-radius: 3px;
 }
 
 .tech-categories {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .category {
   background: var(--vp-c-bg-soft);
-  border-radius: 4px;
-  padding: 0.5rem;
+  border-radius: 3px;
+  padding: 0.25rem;
 }
 
 .category-name {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 600;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: 0.15rem;
 }
 
 .tech-tag {
-  font-size: 0.7rem;
-  padding: 0.1rem 0.35rem;
+  font-size: 0.55rem;
+  padding: 0.05rem 0.2rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 3px;
+  border-radius: 2px;
   color: var(--vp-c-text-2);
 }
 
@@ -243,8 +234,27 @@ const eras = [
 }
 
 @media (max-width: 768px) {
-  .tech-categories {
-    grid-template-columns: 1fr;
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

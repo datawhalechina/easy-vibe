@@ -333,7 +333,7 @@ onUnmounted(() => {
   padding: 0.6rem 1rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
@@ -369,7 +369,7 @@ onUnmounted(() => {
 .result-section {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -377,7 +377,7 @@ onUnmounted(() => {
   margin-bottom: 1rem;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .scenario-name {
@@ -450,7 +450,7 @@ onUnmounted(() => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -470,7 +470,7 @@ onUnmounted(() => {
   position: relative;
   height: 150px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -510,7 +510,7 @@ onUnmounted(() => {
 .msg-bubble {
   background: white;
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.5rem;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -565,9 +565,9 @@ onUnmounted(() => {
 
 .result-box {
   max-height: 250px;
-  overflow-y: auto;
+  
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -611,7 +611,7 @@ onUnmounted(() => {
 .use-cases {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid var(--vp-c-divider);
 }
@@ -629,7 +629,7 @@ onUnmounted(() => {
 
 .case-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   text-align: center;
 }
@@ -654,7 +654,7 @@ onUnmounted(() => {
 .implementation {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

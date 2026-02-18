@@ -1,230 +1,175 @@
 <template>
   <div class="cross-account-access-demo">
     <div class="demo-header">
-      <h4>跨账号访问流程演示</h4>
-      <p class="intro-text">角色扮演（AssumeRole）获取临时凭证</p>
+      <span class="icon">🔗</span>
+      <span class="title">跨账号访问</span>
+      <span class="subtitle">AssumeRole 机制</span>
     </div>
 
-    <div class="demo-content">
-      <div class="flow-diagram">
-        <div class="account-box source">
-          <div class="account-header">账号 A（源账号）</div>
-          <div class="account-content">
-            <div class="entity">IAM User / Application</div>
-            <div class="action">调用 sts:AssumeRole</div>
-          </div>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="account-box sts">
-          <div class="account-header">STS 服务</div>
-          <div class="account-content">
-            <div class="step">1. 验证源身份</div>
-            <div class="step">2. 检查信任策略</div>
-            <div class="step">3. 生成临时凭证</div>
-          </div>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="account-box target">
-          <div class="account-header">账号 B（目标账号）</div>
-          <div class="account-content">
-            <div class="entity">CrossAccountRole</div>
-            <div class="resource">访问 S3 / EC2 等资源</div>
-          </div>
-        </div>
+    <div class="flow-diagram">
+      <div class="account-box source">
+        <div class="account-header">账号 A（源）</div>
+        <div class="entity">IAM User</div>
+        <div class="action">sts:AssumeRole</div>
       </div>
+      <span class="arrow">→</span>
+      <div class="account-box sts">
+        <div class="account-header">STS 服务</div>
+        <div class="step">验证身份</div>
+        <div class="step">生成临时凭证</div>
+      </div>
+      <span class="arrow">→</span>
+      <div class="account-box target">
+        <div class="account-header">账号 B（目标）</div>
+        <div class="entity">CrossAccountRole</div>
+        <div class="resource">访问 S3/EC2</div>
+      </div>
+    </div>
 
-      <div class="code-example">
-        <h5>Python 代码示例</h5>
-        <pre><code>import boto3
-
-# 在账号 A 中使用 IAM 用户凭证
-sts_client = boto3.client('sts')
-
-# 扮演账号 B 的角色
-assumed_role = sts_client.assume_role(
+    <div class="code-block">
+      <div class="code-title">Python 示例</div>
+      <pre><code>sts = boto3.client('sts')
+assumed = sts.assume_role(
     RoleArn='arn:aws:iam::123456789012:role/CrossAccountRole',
-    RoleSessionName='MySession',
-    DurationSeconds=3600
+    RoleSessionName='MySession'
 )
-
-# 获取临时凭证
-credentials = assumed_role['Credentials']
-
-# 使用临时凭证访问账号 B 的资源
-s3_client = boto3.client(
-    's3',
-    aws_access_key_id=credentials['AccessKeyId'],
-    aws_secret_access_key=credentials['SecretAccessKey'],
-    aws_session_token=credentials['SessionToken']
-)</code></pre>
-      </div>
+# 使用临时凭证访问目标账号资源</code></pre>
     </div>
 
     <div class="info-box">
-      <strong>💡 跨账号访问优势：</strong>通过角色扮演实现跨账号访问，无需在每个账号创建 IAM 用户，临时凭证自动过期，更安全更易管理。
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>通过角色扮演实现跨账号访问，临时凭证自动过期，更安全更易管理。
     </div>
   </div>
 </template>
 
 <script setup>
-// No script needed for this static demo
 </script>
 
 <style scoped>
 .cross-account-access-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-}
-
-.intro-text {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
-}
-
-.demo-content {
-  margin-bottom: 1rem;
-}
+.demo-header .icon { font-size: 1.25rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
 .flow-diagram {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
 .account-box {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
-  min-width: 180px;
+  border-radius: 6px;
+  padding: 0.6rem;
+  min-width: 120px;
 }
 
 .account-header {
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--vp-c-divider);
   color: var(--vp-c-text-1);
 }
 
-.account-content {
-  font-size: 0.8rem;
-}
-
 .entity {
   background: var(--vp-c-brand-soft);
-  padding: 0.375rem 0.625rem;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  margin-bottom: 0.25rem;
   color: var(--vp-c-brand-1);
+  font-size: 0.7rem;
   font-weight: 500;
 }
 
 .action {
   color: var(--vp-c-text-3);
+  font-size: 0.7rem;
   font-style: italic;
 }
 
 .step {
-  padding: 0.25rem 0;
+  padding: 0.15rem 0;
   color: var(--vp-c-text-2);
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.step:last-child {
-  border-bottom: none;
+  font-size: 0.7rem;
 }
 
 .resource {
-  background: rgba(var(--vp-c-brand-rgb), 0.1);
-  padding: 0.375rem 0.625rem;
-  border-radius: 4px;
-  margin-top: 0.5rem;
+  background: var(--vp-c-brand-soft);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  margin-top: 0.25rem;
   color: var(--vp-c-brand);
+  font-size: 0.7rem;
 }
 
 .arrow {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: var(--vp-c-text-3);
 }
 
-.code-example {
+.code-block {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1.25rem;
+  border-radius: 6px;
+  padding: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
-.code-example h5 {
-  margin: 0 0 0.75rem 0;
+.code-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
   color: var(--vp-c-text-1);
-  font-size: 0.9rem;
-  font-weight: 700;
 }
 
-.code-example pre {
+.code-block pre {
   margin: 0;
   overflow-x: auto;
 }
 
-.code-example code {
+.code-block code {
   color: var(--vp-c-text-2);
   font-family: var(--vp-font-family-mono);
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: 0.7rem;
+  line-height: 1.4;
 }
 
 .info-box {
-  padding: 0.75rem;
   background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-left: 4px solid var(--vp-c-brand);
+  padding: 0.6rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
+  display: flex;
+  gap: 0.25rem;
 }
 
-.info-box strong {
-  color: var(--vp-c-text-1);
-}
+.info-box .icon { flex-shrink: 0; }
+.info-box strong { color: var(--vp-c-text-1); }
 
-@media (max-width: 768px) {
-  .flow-diagram {
-    flex-direction: column;
-  }
-
-  .arrow {
-    transform: rotate(90deg);
-  }
-
-  .account-box {
-    min-width: auto;
-    width: 100%;
-  }
+@media (max-width: 640px) {
+  .flow-diagram { flex-direction: column; }
+  .arrow { transform: rotate(90deg); }
 }
 </style>

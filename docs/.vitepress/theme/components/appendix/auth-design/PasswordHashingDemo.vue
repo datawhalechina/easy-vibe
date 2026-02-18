@@ -227,9 +227,9 @@ onMounted(() => {
 .password-hashing-demo {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header {
@@ -258,8 +258,8 @@ onMounted(() => {
 .card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
 }
 
 .card-title {
@@ -345,7 +345,7 @@ onMounted(() => {
 .mono-box {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   overflow-x: auto;
 }
@@ -366,7 +366,7 @@ onMounted(() => {
   margin-top: 0.75rem;
   border: 1px solid rgba(var(--vp-c-brand-rgb), 0.18);
   background: rgba(var(--vp-c-brand-rgb), 0.06);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 

@@ -101,10 +101,10 @@ const renderedCount = computed(() => visibleItems.value.length)
 <style scoped>
 .demo-container {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -153,7 +153,7 @@ const renderedCount = computed(() => visibleItems.value.length)
 }
 
 .scroll-container {
-  overflow-y: auto;
+  
   position: relative;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);

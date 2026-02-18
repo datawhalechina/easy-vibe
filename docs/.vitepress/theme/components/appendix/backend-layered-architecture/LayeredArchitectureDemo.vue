@@ -334,7 +334,7 @@ const layerInfo = computed(() => {
   margin-top: 16px;
   background: #f6ffed;
   border: 1px solid #b7eb8f;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #389e0d;
   font-size: 13px;
 }

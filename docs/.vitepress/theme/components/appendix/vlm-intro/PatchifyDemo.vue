@@ -144,7 +144,7 @@ const getMiniPatchStyle = (n) => {
 <style scoped>
 .patchify-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -293,7 +293,7 @@ const getMiniPatchStyle = (n) => {
   width: 100%;
   background: var(--vp-c-bg);
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   animation: slideUp 0.5s ease;
 }

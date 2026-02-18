@@ -339,9 +339,9 @@ const hoveredPart = ref(null)
 <style scoped>
 .browser-rendering-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
   overflow: hidden;
 }
@@ -354,7 +354,7 @@ const hoveredPart = ref(null)
 
 .step-btn {
   flex: 1;
-  padding: 1rem;
+  padding: 0.75rem;
   border: none;
   background: transparent;
   display: flex;
@@ -453,10 +453,10 @@ const hoveredPart = ref(null)
 }
 
 .code-content {
-  padding: 1rem;
+  padding: 0.75rem;
   font-size: 0.8rem;
   font-family: monospace;
-  overflow-y: auto;
+  
 }
 
 .line {
@@ -506,7 +506,7 @@ const hoveredPart = ref(null)
   flex-direction: column;
   align-items: center;
   position: relative;
-  overflow-y: auto;
+  
 }
 
 /* Blocks Animation */

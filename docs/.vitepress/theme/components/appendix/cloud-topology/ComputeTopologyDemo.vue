@@ -309,7 +309,7 @@ const backendServices = [
 .compute-topology-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -319,7 +319,7 @@ const backendServices = [
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -355,7 +355,7 @@ const backendServices = [
 
 .server-rack {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -406,7 +406,7 @@ const backendServices = [
 
 .hypervisor {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -507,7 +507,7 @@ const backendServices = [
 .control-plane {
   background: #f0f9ff;
   border: 1px solid #bae6fd;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -564,7 +564,7 @@ const backendServices = [
 .node {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -636,7 +636,7 @@ const backendServices = [
 .functions-section,
 .backend-section {
   background: #fafafa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -685,7 +685,7 @@ const backendServices = [
 .function-card {
   background: white;
   border: 1px solid #e4e7ed;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -752,7 +752,7 @@ const backendServices = [
   margin-top: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 

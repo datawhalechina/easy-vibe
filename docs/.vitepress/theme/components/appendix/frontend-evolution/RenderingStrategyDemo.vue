@@ -359,7 +359,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   gap: 4px;
   padding: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -453,7 +453,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
   width: 48px;
   height: 48px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -571,7 +571,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .info-label {
   padding: 8px 16px;
   background: #e0e0e0;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 /* 性能指标 */
@@ -627,7 +627,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 .btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;

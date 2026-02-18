@@ -201,7 +201,7 @@ generateTasks()
 .demo-container {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 h4 {
@@ -229,7 +229,7 @@ h4 {
 
 .code-block {
   background: #282c34;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -273,7 +273,7 @@ h4 {
 
 .timeline-container {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   margin-bottom: 16px;
 }
@@ -363,7 +363,7 @@ h4 {
 
 .stat-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   text-align: center;
 }

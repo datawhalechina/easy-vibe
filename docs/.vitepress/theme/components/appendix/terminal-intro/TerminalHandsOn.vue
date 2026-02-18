@@ -584,7 +584,7 @@ watch(currentOS, () => {
 .ai-helper {
   margin-bottom: 20px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   background: var(--vp-c-bg);
 }
@@ -613,7 +613,7 @@ watch(currentOS, () => {
 
 .chat-bubble {
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.9rem;
   margin-bottom: 10px;
   max-width: 90%;
@@ -675,7 +675,7 @@ watch(currentOS, () => {
   padding: 15px;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   color: #10b981;
   font-weight: bold;
   display: flex;
@@ -786,7 +786,7 @@ watch(currentOS, () => {
 .terminal-body {
   flex: 1;
   padding: 10px;
-  overflow-y: auto;
+  
   cursor: text;
   font-size: 14px;
   line-height: 1.5;

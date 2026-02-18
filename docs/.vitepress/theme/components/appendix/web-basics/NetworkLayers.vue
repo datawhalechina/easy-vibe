@@ -151,7 +151,7 @@ const layers = [
 <style scoped>
 .network-layers {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -170,7 +170,7 @@ const layers = [
   gap: 15px;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
   cursor: pointer;
   transition: all 0.3s;
@@ -228,7 +228,7 @@ const layers = [
 
 .layer-detail {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 25px;
   border-left: 4px solid var(--vp-c-brand);
@@ -277,7 +277,7 @@ const layers = [
 
 .data-flow {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
