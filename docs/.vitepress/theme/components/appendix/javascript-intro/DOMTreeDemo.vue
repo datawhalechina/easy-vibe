@@ -34,16 +34,23 @@ const removeItem = () => {
       <div class="webpage-preview">
         <div class="browser-bar">
           <div class="dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+            <span class="dot red" />
+            <span class="dot yellow" />
+            <span class="dot green" />
           </div>
         </div>
         <div class="webpage-content">
           <h1>{{ title }}</h1>
-          <p :style="{ color: paragraphColor }">欢迎光临</p>
+          <p :style="{ color: paragraphColor }">
+            欢迎光临
+          </p>
           <ul>
-            <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+            <li
+              v-for="(item, index) in items"
+              :key="index"
+            >
+              {{ item }}
+            </li>
           </ul>
         </div>
       </div>
@@ -56,18 +63,28 @@ const removeItem = () => {
             <div class="tree-node">
               <span class="tag">&lt;body&gt;</span>
               <div class="tree-children">
-                <div class="tree-node" :class="{ 'active': title === 'Hello World!' }">
+                <div
+                  class="tree-node"
+                  :class="{ 'active': title === 'Hello World!' }"
+                >
                   <span class="tag">&lt;h1&gt;</span>
                   <span class="text">{{ title }}</span>
                 </div>
-                <div class="tree-node" :class="{ 'active': paragraphColor === 'red' }">
+                <div
+                  class="tree-node"
+                  :class="{ 'active': paragraphColor === 'red' }"
+                >
                   <span class="tag">&lt;p&gt;</span>
                   <span class="text">欢迎光临</span>
                 </div>
                 <div class="tree-node">
                   <span class="tag">&lt;ul&gt;</span>
                   <div class="tree-children">
-                    <div class="tree-node" v-for="(item, index) in items" :key="index">
+                    <div
+                      v-for="(item, index) in items"
+                      :key="index"
+                      class="tree-node"
+                    >
                       <span class="tag">&lt;li&gt;</span>
                       <span class="text">{{ item }}</span>
                     </div>
@@ -81,10 +98,30 @@ const removeItem = () => {
     </div>
 
     <div class="controls">
-      <button @click="modifyTitle" class="btn-primary">修改标题</button>
-      <button @click="addItem" class="btn-secondary">添加列表项</button>
-      <button @click="changeColor" class="btn-secondary">改变段落颜色</button>
-      <button @click="removeItem" class="btn-danger">删除列表项</button>
+      <button
+        class="btn-primary"
+        @click="modifyTitle"
+      >
+        修改标题
+      </button>
+      <button
+        class="btn-secondary"
+        @click="addItem"
+      >
+        添加列表项
+      </button>
+      <button
+        class="btn-secondary"
+        @click="changeColor"
+      >
+        改变段落颜色
+      </button>
+      <button
+        class="btn-danger"
+        @click="removeItem"
+      >
+        删除列表项
+      </button>
     </div>
 
     <div class="code-display">

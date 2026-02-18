@@ -48,8 +48,18 @@
       </div>
 
       <div class="interaction-area">
-        <input v-model="newTodoText" placeholder="输入待办事项..." @keyup.enter="addTodo" class="todo-input" />
-        <button @click="addTodo" class="add-btn">➕ 添加</button>
+        <input
+          v-model="newTodoText"
+          placeholder="输入待办事项..."
+          class="todo-input"
+          @keyup.enter="addTodo"
+        >
+        <button
+          class="add-btn"
+          @click="addTodo"
+        >
+          ➕ 添加
+        </button>
       </div>
     </div>
 

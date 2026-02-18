@@ -14,25 +14,48 @@
           :class="['layer', { active: activeLayer === i }]"
           @click="activeLayer = i"
         >
-          <div class="layer-num">{{ 5 - i }}</div>
-          <div class="layer-info">
-            <div class="layer-name">{{ layer.name }}</div>
-            <div class="layer-protocol">{{ layer.protocols }}</div>
+          <div class="layer-num">
+            {{ 5 - i }}
           </div>
-          <div class="layer-device" v-if="layer.device">{{ layer.device }}</div>
+          <div class="layer-info">
+            <div class="layer-name">
+              {{ layer.name }}
+            </div>
+            <div class="layer-protocol">
+              {{ layer.protocols }}
+            </div>
+          </div>
+          <div
+            v-if="layer.device"
+            class="layer-device"
+          >
+            {{ layer.device }}
+          </div>
         </div>
       </div>
 
-      <div class="layer-detail" v-if="currentLayer">
+      <div
+        v-if="currentLayer"
+        class="layer-detail"
+      >
         <div class="detail-header">
           <span class="detail-name">{{ currentLayer.name }}</span>
           <span class="detail-analogy">{{ currentLayer.analogy }}</span>
         </div>
-        <div class="detail-desc">{{ currentLayer.desc }}</div>
+        <div class="detail-desc">
+          {{ currentLayer.desc }}
+        </div>
         <div class="detail-tasks">
-          <div class="task-title">核心任务</div>
+          <div class="task-title">
+            核心任务
+          </div>
           <ul>
-            <li v-for="(task, j) in currentLayer.tasks" :key="j">{{ task }}</li>
+            <li
+              v-for="(task, j) in currentLayer.tasks"
+              :key="j"
+            >
+              {{ task }}
+            </li>
           </ul>
         </div>
         <div class="detail-unit">
@@ -42,16 +65,29 @@
       </div>
 
       <div class="encapsulation-demo">
-        <div class="encap-title">数据封装过程</div>
+        <div class="encap-title">
+          数据封装过程
+        </div>
         <div class="encap-flow">
-          <div class="encap-step" v-for="(step, i) in encapsulation" :key="i">
-            <div class="step-layer">{{ step.layer }}</div>
+          <div
+            v-for="(step, i) in encapsulation"
+            :key="i"
+            class="encap-step"
+          >
+            <div class="step-layer">
+              {{ step.layer }}
+            </div>
             <div class="step-data">
-              <span class="header" v-if="step.header">{{ step.header }}</span>
+              <span
+                v-if="step.header"
+                class="header"
+              >{{ step.header }}</span>
               <span class="payload">{{ step.payload }}</span>
             </div>
           </div>
-          <div class="arrow">↓ 发送</div>
+          <div class="arrow">
+            ↓ 发送
+          </div>
         </div>
       </div>
     </div>

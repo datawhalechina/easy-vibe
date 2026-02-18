@@ -2,7 +2,9 @@
   <div class="database-services-demo">
     <div class="demo-header">
       <h4>数据库选型助手</h4>
-      <p class="demo-desc">根据您的业务特点，推荐最适合的数据库方案</p>
+      <p class="demo-desc">
+        根据您的业务特点，推荐最适合的数据库方案
+      </p>
     </div>
 
     <div class="db-selection">
@@ -19,7 +21,10 @@
         </button>
       </div>
 
-      <div v-if="selectedCategory" class="db-comparison">
+      <div
+        v-if="selectedCategory"
+        class="db-comparison"
+      >
         <div class="comparison-header">
           <span class="aws-badge">AWS</span>
           <span class="vs-text">对比</span>
@@ -29,29 +34,45 @@
         <div class="db-cards">
           <div class="db-card">
             <div class="db-header aws">
-              <div class="db-name">{{ currentCategory.aws }}</div>
+              <div class="db-name">
+                {{ currentCategory.aws }}
+              </div>
             </div>
             <div class="db-body">
               <div class="feature-list">
-                <div v-for="(feat, i) in currentCategory.awsFeatures" :key="i" class="feature">
+                <div
+                  v-for="(feat, i) in currentCategory.awsFeatures"
+                  :key="i"
+                  class="feature"
+                >
                   ✓ {{ feat }}
                 </div>
               </div>
-              <div class="price-tag">{{ currentCategory.awsPrice }}</div>
+              <div class="price-tag">
+                {{ currentCategory.awsPrice }}
+              </div>
             </div>
           </div>
 
           <div class="db-card">
             <div class="db-header aliyun">
-              <div class="db-name">{{ currentCategory.aliyun }}</div>
+              <div class="db-name">
+                {{ currentCategory.aliyun }}
+              </div>
             </div>
             <div class="db-body">
               <div class="feature-list">
-                <div v-for="(feat, i) in currentCategory.aliyunFeatures" :key="i" class="feature">
+                <div
+                  v-for="(feat, i) in currentCategory.aliyunFeatures"
+                  :key="i"
+                  class="feature"
+                >
                   ✓ {{ feat }}
                 </div>
               </div>
-              <div class="price-tag aliyun">{{ currentCategory.aliyunPrice }}</div>
+              <div class="price-tag aliyun">
+                {{ currentCategory.aliyunPrice }}
+              </div>
             </div>
           </div>
         </div>

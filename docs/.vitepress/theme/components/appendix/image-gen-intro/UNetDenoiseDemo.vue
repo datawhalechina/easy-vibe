@@ -19,18 +19,30 @@
           <span class="title">🧠 UNet 去噪模型</span>
           <div class="controls">
             <el-button-group>
-              <el-button @click="stepBackward" :disabled="currentStep <= 0">
+              <el-button
+                :disabled="currentStep <= 0"
+                @click="stepBackward"
+              >
                 <el-icon><ArrowLeft /></el-icon>
               </el-button>
               <el-button @click="togglePlay">
-                <el-icon v-if="isPlaying"><VideoPause /></el-icon>
-                <el-icon v-else><VideoPlay /></el-icon>
+                <el-icon v-if="isPlaying">
+                  <VideoPause />
+                </el-icon>
+                <el-icon v-else>
+                  <VideoPlay />
+                </el-icon>
               </el-button>
-              <el-button @click="stepForward" :disabled="currentStep >= totalSteps">
+              <el-button
+                :disabled="currentStep >= totalSteps"
+                @click="stepForward"
+              >
                 <el-icon><ArrowRight /></el-icon>
               </el-button>
             </el-button-group>
-            <el-button @click="reset">重置</el-button>
+            <el-button @click="reset">
+              重置
+            </el-button>
           </div>
         </div>
       </template>
@@ -39,7 +51,9 @@
         <!-- 主展示区 -->
         <div class="main-display">
           <div class="display-section">
-            <div class="section-label">当前噪声图像 (Noisy Image)</div>
+            <div class="section-label">
+              当前噪声图像 (Noisy Image)
+            </div>
             <canvas
               ref="noisyCanvas"
               width="256"
@@ -47,22 +61,36 @@
               class="display-canvas"
             />
             <div class="timestep-info">
-              <el-tag type="info">Timestep: {{ currentStep }} / {{ totalSteps }}</el-tag>
-              <el-tag :type="getNoiseLevelType()">噪声强度: {{ getNoiseLevel() }}%</el-tag>
+              <el-tag type="info">
+                Timestep: {{ currentStep }} / {{ totalSteps }}
+              </el-tag>
+              <el-tag :type="getNoiseLevelType()">
+                噪声强度: {{ getNoiseLevel() }}%
+              </el-tag>
             </div>
           </div>
 
           <div class="arrow-section">
-            <el-icon :size="24"><ArrowRight /></el-icon>
+            <el-icon :size="24">
+              <ArrowRight />
+            </el-icon>
             <div class="model-box">
-              <div class="model-name">UNet / DiT</div>
-              <div class="model-desc">预测噪声</div>
+              <div class="model-name">
+                UNet / DiT
+              </div>
+              <div class="model-desc">
+                预测噪声
+              </div>
             </div>
-            <el-icon :size="24"><ArrowRight /></el-icon>
+            <el-icon :size="24">
+              <ArrowRight />
+            </el-icon>
           </div>
 
           <div class="display-section">
-            <div class="section-label">预测的噪声 (Predicted Noise)</div>
+            <div class="section-label">
+              预测的噪声 (Predicted Noise)
+            </div>
             <canvas
               ref="noiseCanvas"
               width="256"
@@ -70,21 +98,36 @@
               class="display-canvas noise-preview"
             />
             <div class="noise-stats">
-              <el-tag size="small" type="warning">噪声估计</el-tag>
+              <el-tag
+                size="small"
+                type="warning"
+              >
+                噪声估计
+              </el-tag>
             </div>
           </div>
 
           <div class="arrow-section">
-            <el-icon :size="24"><ArrowRight /></el-icon>
+            <el-icon :size="24">
+              <ArrowRight />
+            </el-icon>
             <div class="operation-box">
-              <div class="op-name">减法</div>
-              <div class="op-formula">x - ε</div>
+              <div class="op-name">
+                减法
+              </div>
+              <div class="op-formula">
+                x - ε
+              </div>
             </div>
-            <el-icon :size="24"><ArrowRight /></el-icon>
+            <el-icon :size="24">
+              <ArrowRight />
+            </el-icon>
           </div>
 
           <div class="display-section">
-            <div class="section-label">去噪结果 (Denoised)</div>
+            <div class="section-label">
+              去噪结果 (Denoised)
+            </div>
             <canvas
               ref="denoisedCanvas"
               width="256"
@@ -102,7 +145,9 @@
 
         <!-- 时间轴 -->
         <div class="timeline-section">
-          <div class="timeline-label">去噪时间轴</div>
+          <div class="timeline-label">
+            去噪时间轴
+          </div>
           <el-slider
             v-model="currentStep"
             :min="0"
@@ -120,9 +165,14 @@
             v-model="showComparison"
             active-text="显示对比 (有/无文本引导)"
           />
-          <div v-if="showComparison" class="compare-display">
+          <div
+            v-if="showComparison"
+            class="compare-display"
+          >
             <div class="compare-item">
-              <div class="compare-label">无引导 (Unconditional)</div>
+              <div class="compare-label">
+                无引导 (Unconditional)
+              </div>
               <canvas
                 ref="uncondCanvas"
                 width="200"
@@ -131,7 +181,9 @@
               />
             </div>
             <div class="compare-item">
-              <div class="compare-label">有引导 (CFG Scale=7.5)</div>
+              <div class="compare-label">
+                有引导 (CFG Scale=7.5)
+              </div>
               <canvas
                 ref="condCanvas"
                 width="200"

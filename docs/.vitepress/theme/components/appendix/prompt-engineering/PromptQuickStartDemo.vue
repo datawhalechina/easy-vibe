@@ -1,15 +1,27 @@
 <template>
   <div class="quick-start-demo-container">
-    <el-card class="quick-start-card" shadow="hover">
+    <el-card
+      class="quick-start-card"
+      shadow="hover"
+    >
       <template #header>
         <div class="header-content">
           <div class="title-group">
-            <div class="title">🕹️ 互动体验：提示词进化论</div>
-            <div class="subtitle">不要一次性写好，试着像搭积木一样优化你的指令。</div>
+            <div class="title">
+              🕹️ 互动体验：提示词进化论
+            </div>
+            <div class="subtitle">
+              不要一次性写好，试着像搭积木一样优化你的指令。
+            </div>
           </div>
           <div class="controls">
             <span class="label">选择任务：</span>
-            <el-select v-model="taskId" @change="reset" style="width: 160px" size="large">
+            <el-select
+              v-model="taskId"
+              style="width: 160px"
+              size="large"
+              @change="reset"
+            >
               <el-option
                 v-for="t in tasks"
                 :key="t.id"
@@ -25,23 +37,34 @@
       <div class="game-area">
         <!-- 左侧：提示词构建 -->
         <div class="prompt-builder">
-          <div class="section-title">你的指令 (Prompt)</div>
+          <div class="section-title">
+            你的指令 (Prompt)
+          </div>
           
           <div class="prompt-box">
             <!-- 基础层 -->
-            <div class="block base" :class="{ active: true }">
+            <div
+              class="block base"
+              :class="{ active: true }"
+            >
               <span class="icon">📝</span>
               <span class="text">{{ basePrompt }}</span>
             </div>
 
             <!-- 进阶层：清晰指令 -->
-            <div v-if="level >= 1" class="block clear animate-in">
+            <div
+              v-if="level >= 1"
+              class="block clear animate-in"
+            >
               <span class="icon">🎯</span>
               <span class="text">{{ clearPromptAddon }}</span>
             </div>
 
             <!-- 专家层：结构化 -->
-            <div v-if="level >= 2" class="block pro animate-in">
+            <div
+              v-if="level >= 2"
+              class="block pro animate-in"
+            >
               <span class="icon">🧠</span>
               <span class="text">{{ proPromptAddon }}</span>
             </div>
@@ -50,24 +73,34 @@
           <!-- 升级按钮 -->
           <div class="upgrade-controls">
             <div class="level-info">
-              <el-tag :type="levelColor" effect="dark" size="small" style="margin-bottom: 4px;">Level {{ level }}</el-tag>
-              <span class="level-desc" :style="{ color: levelColorCode }">{{ levelLabel }}</span>
+              <el-tag
+                :type="levelColor"
+                effect="dark"
+                size="small"
+                style="margin-bottom: 4px;"
+              >
+                Level {{ level }}
+              </el-tag>
+              <span
+                class="level-desc"
+                :style="{ color: levelColorCode }"
+              >{{ levelLabel }}</span>
             </div>
             
             <div class="actions">
               <el-button-group>
                 <el-button 
                   :disabled="level === 0"
-                  @click="downgrade"
                   icon="Minus"
+                  @click="downgrade"
                 >
                   ➖ 降级
                 </el-button>
                 <el-button 
                   type="primary" 
                   :disabled="level === 2"
-                  @click="upgrade"
                   icon="Plus"
+                  @click="upgrade"
                 >
                   升级 ➕
                 </el-button>
@@ -79,8 +112,8 @@
             type="primary" 
             size="large" 
             :loading="isRunning"
-            @click="run"
             style="width: 100%; font-weight: bold; font-size: 1.1rem;"
+            @click="run"
           >
             {{ isRunning ? '生成中...' : '🚀 发送给 AI' }}
           </el-button>
@@ -91,8 +124,14 @@
           <div class="section-title">
             <span>AI 回复 (Output)</span>
             <!-- 历史记录切换 -->
-            <div class="history-tabs" v-if="hasAnyHistory">
-              <el-radio-group v-model="viewLevel" size="small">
+            <div
+              v-if="hasAnyHistory"
+              class="history-tabs"
+            >
+              <el-radio-group
+                v-model="viewLevel"
+                size="small"
+              >
                 <el-radio-button 
                   v-for="l in availableLevels" 
                   :key="l" 
@@ -106,8 +145,14 @@
 
           <div class="chat-window">
             <!-- 空状态 -->
-            <div v-if="!hasRun && !hasAnyHistory" class="empty-state">
-              <el-empty description="点击左侧“发送”按钮，看看 AI 会怎么回。" :image-size="100" />
+            <div
+              v-if="!hasRun && !hasAnyHistory"
+              class="empty-state"
+            >
+              <el-empty
+                description="点击左侧“发送”按钮，看看 AI 会怎么回。"
+                :image-size="100"
+              />
             </div>
 
             <!-- 内容区域 -->
@@ -122,24 +167,50 @@
               >
                 <template #title>
                   正在查看 Level {{ viewLevel }} 的历史记录 (当前是 L{{ level }})
-                  <el-button link type="primary" @click="viewLevel = level" style="padding: 0; vertical-align: baseline;">回到当前</el-button>
+                  <el-button
+                    link
+                    type="primary"
+                    style="padding: 0; vertical-align: baseline;"
+                    @click="viewLevel = level"
+                  >
+                    回到当前
+                  </el-button>
                 </template>
               </el-alert>
 
-              <div class="message-bubble" :class="{ typing: isRunning && viewLevel === level }">
-                <div class="avatar">🤖</div>
+              <div
+                class="message-bubble"
+                :class="{ typing: isRunning && viewLevel === level }"
+              >
+                <div class="avatar">
+                  🤖
+                </div>
                 <div class="content">
-                  <div v-if="isRunning && viewLevel === level" class="typing-indicator">
-                    <span></span><span></span><span></span>
+                  <div
+                    v-if="isRunning && viewLevel === level"
+                    class="typing-indicator"
+                  >
+                    <span /><span /><span />
                   </div>
-                  <div v-else class="markdown-body" v-html="renderMarkdown(getOutputForLevel(viewLevel))"></div>
+                  <div
+                    v-else
+                    class="markdown-body"
+                    v-html="renderMarkdown(getOutputForLevel(viewLevel))"
+                  />
                 </div>
               </div>
               
               <!-- 点评气泡 -->
-              <div v-if="(!isRunning || viewLevel !== level) && getOutputForLevel(viewLevel)" class="feedback-bubble animate-pop">
-                <div class="feedback-title">💡 {{ getFeedbackForLevel(viewLevel).title }}</div>
-                <div class="feedback-text">{{ getFeedbackForLevel(viewLevel).text }}</div>
+              <div
+                v-if="(!isRunning || viewLevel !== level) && getOutputForLevel(viewLevel)"
+                class="feedback-bubble animate-pop"
+              >
+                <div class="feedback-title">
+                  💡 {{ getFeedbackForLevel(viewLevel).title }}
+                </div>
+                <div class="feedback-text">
+                  {{ getFeedbackForLevel(viewLevel).text }}
+                </div>
               </div>
             </div>
           </div>

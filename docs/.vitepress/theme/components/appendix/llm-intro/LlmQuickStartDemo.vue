@@ -1,46 +1,62 @@
 <template>
   <div class="llm-quick-start">
     <div class="header">
-      <div class="title">🤖 LLM 初体验：从闲聊到业务实战</div>
+      <div class="title">
+        🤖 LLM 初体验：从闲聊到业务实战
+      </div>
       <div class="subtitle">
         大模型不仅能聊天，更是生产力工具。试试看它如何处理这些业务需求：
       </div>
     </div>
 
     <div class="chat-window">
-      <div v-if="messages.length === 0" class="empty-state">
-        <div class="emoji">💼</div>
+      <div
+        v-if="messages.length === 0"
+        class="empty-state"
+      >
+        <div class="emoji">
+          💼
+        </div>
         <p>请选择一个业务场景开始体验</p>
       </div>
 
-      <div class="messages" ref="messagesRef">
+      <div
+        ref="messagesRef"
+        class="messages"
+      >
         <div
           v-for="(msg, index) in messages"
           :key="index"
           class="message"
           :class="msg.role"
         >
-          <div class="avatar">{{ msg.role === 'user' ? '🧑‍💻' : '🤖' }}</div>
+          <div class="avatar">
+            {{ msg.role === 'user' ? '🧑‍💻' : '🤖' }}
+          </div>
           <div class="content">
-            <div v-if="msg.role === 'user'" class="user-text">
+            <div
+              v-if="msg.role === 'user'"
+              class="user-text"
+            >
               {{ msg.content }}
             </div>
-            <div v-else class="assistant-content">
+            <div
+              v-else
+              class="assistant-content"
+            >
               <pre v-if="msg.isCode"><code>{{ msg.content }}<span
                 v-if="
                   isGenerating &&
-                  index === messages.length - 1
+                    index === messages.length - 1
                 "
                 class="cursor"
-                >|</span
-              ></code></pre>
+              >|</span></code></pre>
               <div v-else>
                 {{ msg.content
                 }}<span
                   v-if="isGenerating && index === messages.length - 1"
                   class="cursor"
-                  >|</span
-                >
+                >|</span>
               </div>
             </div>
           </div>
@@ -49,18 +65,26 @@
     </div>
 
     <div class="input-area">
-      <div class="quick-actions" v-if="!isGenerating">
+      <div
+        v-if="!isGenerating"
+        class="quick-actions"
+      >
         <button
           v-for="q in questions"
           :key="q.text"
-          @click="ask(q)"
           class="action-btn"
+          @click="ask(q)"
         >
           <span class="btn-icon">{{ q.icon }}</span>
           <span class="btn-text">{{ q.text }}</span>
         </button>
       </div>
-      <div class="status-text" v-else>正在思考业务逻辑并生成 Token...</div>
+      <div
+        v-else
+        class="status-text"
+      >
+        正在思考业务逻辑并生成 Token...
+      </div>
     </div>
   </div>
 </template>

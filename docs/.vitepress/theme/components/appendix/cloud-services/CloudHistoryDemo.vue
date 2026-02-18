@@ -8,18 +8,31 @@
         :class="{ active: selectedEvent === index }"
         @click="selectedEvent = index"
       >
-        <div class="timeline-dot"></div>
+        <div class="timeline-dot" />
         <div class="timeline-content">
-          <div class="timeline-year">{{ event.year }}</div>
-          <div class="timeline-title">{{ event.title }}</div>
+          <div class="timeline-year">
+            {{ event.year }}
+          </div>
+          <div class="timeline-title">
+            {{ event.title }}
+          </div>
         </div>
       </div>
     </div>
     
-    <div v-if="selectedEventData" class="event-detail">
-      <div class="detail-year">{{ selectedEventData.year }}</div>
-      <div class="detail-title">{{ selectedEventData.title }}</div>
-      <div class="detail-desc">{{ selectedEventData.description }}</div>
+    <div
+      v-if="selectedEventData"
+      class="event-detail"
+    >
+      <div class="detail-year">
+        {{ selectedEventData.year }}
+      </div>
+      <div class="detail-title">
+        {{ selectedEventData.title }}
+      </div>
+      <div class="detail-desc">
+        {{ selectedEventData.description }}
+      </div>
       <div class="detail-impact">
         <span class="impact-label">影响:</span>
         <span class="impact-text">{{ selectedEventData.impact }}</span>

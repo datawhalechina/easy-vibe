@@ -98,9 +98,9 @@ const resetAll = () => {
       <button
         v-for="scenario in scenarios"
         :key="scenario.value"
-        @click="activeScenario = scenario.value"
         :class="{ 'active': activeScenario === scenario.value }"
         class="scenario-tab"
+        @click="activeScenario = scenario.value"
       >
         <span class="tab-icon">{{ scenario.icon }}</span>
         <span class="tab-label">{{ scenario.label }}</span>
@@ -119,10 +119,16 @@ const resetAll = () => {
           :class="{ 'warning': memoryUsage > 70, 'danger': memoryUsage > 90 }"
           :style="{ width: `${memoryUsage}%` }"
         >
-          <span v-if="memoryUsage > 10" class="memory-text">{{ memoryUsage }}%</span>
+          <span
+            v-if="memoryUsage > 10"
+            class="memory-text"
+          >{{ memoryUsage }}%</span>
         </div>
       </div>
-      <div v-if="memoryUsage > 90" class="memory-alert">
+      <div
+        v-if="memoryUsage > 90"
+        class="memory-alert"
+      >
         ⚠️ 内存占用过高!可能导致页面卡顿或崩溃
       </div>
     </div>
@@ -130,7 +136,10 @@ const resetAll = () => {
     <!-- 场景内容 -->
     <div class="scenario-content">
       <!-- 全局变量场景 -->
-      <div v-if="activeScenario === 'global-vars'" class="scenario-panel">
+      <div
+        v-if="activeScenario === 'global-vars'"
+        class="scenario-panel"
+      >
         <h4>全局变量泄漏</h4>
 
         <div class="scenario-description">
@@ -139,10 +148,16 @@ const resetAll = () => {
         </div>
 
         <div class="action-buttons">
-          <button @click="addGlobalVariable" class="btn-add">
+          <button
+            class="btn-add"
+            @click="addGlobalVariable"
+          >
             ➕ 添加全局变量
           </button>
-          <button @click="clearGlobalVariables" class="btn-clear">
+          <button
+            class="btn-clear"
+            @click="clearGlobalVariables"
+          >
             🗑️ 清空全局变量
           </button>
         </div>
@@ -161,10 +176,16 @@ const resetAll = () => {
               <span class="item-time">{{ item.timestamp }}</span>
               <span class="item-size">{{ item.data.length }} 项数据</span>
             </div>
-            <div v-if="globalMemory.length === 0" class="empty-state">
+            <div
+              v-if="globalMemory.length === 0"
+              class="empty-state"
+            >
               暂无全局变量
             </div>
-            <div v-if="globalMemory.length > 5" class="more-items">
+            <div
+              v-if="globalMemory.length > 5"
+              class="more-items"
+            >
               ... 还有 {{ globalMemory.length - 5 }} 项
             </div>
           </div>
@@ -181,7 +202,10 @@ function addItem() {
       </div>
 
       <!-- 事件监听场景 -->
-      <div v-if="activeScenario === 'event-listeners'" class="scenario-panel">
+      <div
+        v-if="activeScenario === 'event-listeners'"
+        class="scenario-panel"
+      >
         <h4>事件监听器泄漏</h4>
 
         <div class="scenario-description">
@@ -190,10 +214,16 @@ function addItem() {
         </div>
 
         <div class="action-buttons">
-          <button @click="addEventListener" class="btn-add">
+          <button
+            class="btn-add"
+            @click="addEventListener"
+          >
             ➕ 添加事件监听
           </button>
-          <button @click="removeAllListeners" class="btn-clear">
+          <button
+            class="btn-clear"
+            @click="removeAllListeners"
+          >
             🗑️ 移除所有监听
           </button>
         </div>
@@ -208,16 +238,24 @@ function addItem() {
               :key="listener.id"
               class="listener-item"
             >
-              <div class="listener-icon">🎯</div>
+              <div class="listener-icon">
+                🎯
+              </div>
               <div class="listener-info">
                 <span class="listener-id">监听器 #{{ listener.id }}</span>
                 <span class="listener-status">活跃中</span>
               </div>
             </div>
-            <div v-if="eventListeners.length === 0" class="empty-state">
+            <div
+              v-if="eventListeners.length === 0"
+              class="empty-state"
+            >
               暂无事件监听器
             </div>
-            <div v-if="eventListeners.length > 5" class="more-items">
+            <div
+              v-if="eventListeners.length > 5"
+              class="more-items"
+            >
               ... 还有 {{ eventListeners.length - 5 }} 个监听器
             </div>
           </div>
@@ -240,7 +278,10 @@ button.removeEventListener('click', handler)</code></pre>
       </div>
 
       <!-- 闭包场景 -->
-      <div v-if="activeScenario === 'closures'" class="scenario-panel">
+      <div
+        v-if="activeScenario === 'closures'"
+        class="scenario-panel"
+      >
         <h4>闭包引用泄漏</h4>
 
         <div class="scenario-description">
@@ -249,10 +290,16 @@ button.removeEventListener('click', handler)</code></pre>
         </div>
 
         <div class="action-buttons">
-          <button @click="createClosure" class="btn-add">
+          <button
+            class="btn-add"
+            @click="createClosure"
+          >
             ➕ 创建闭包
           </button>
-          <button @click="clearClosures" class="btn-clear">
+          <button
+            class="btn-clear"
+            @click="clearClosures"
+          >
             🗑️ 清空闭包
           </button>
         </div>
@@ -267,17 +314,25 @@ button.removeEventListener('click', handler)</code></pre>
               :key="item.id"
               class="closure-item"
             >
-              <div class="closure-icon">🔒</div>
+              <div class="closure-icon">
+                🔒
+              </div>
               <div class="closure-info">
                 <span class="closure-id">闭包 #{{ item.id }}</span>
                 <span class="closure-time">{{ item.timestamp }}</span>
                 <span class="closure-size">持有 {{ item.data.length }} 项数据</span>
               </div>
             </div>
-            <div v-if="closureItems.length === 0" class="empty-state">
+            <div
+              v-if="closureItems.length === 0"
+              class="empty-state"
+            >
               暂无闭包
             </div>
-            <div v-if="closureItems.length > 5" class="more-items">
+            <div
+              v-if="closureItems.length > 5"
+              class="more-items"
+            >
               ... 还有 {{ closureItems.length - 5 }} 个闭包
             </div>
           </div>
@@ -306,7 +361,10 @@ handler = null  // 释放引用</code></pre>
 
     <!-- 重置按钮 -->
     <div class="global-actions">
-      <button @click="resetAll" class="btn-reset">
+      <button
+        class="btn-reset"
+        @click="resetAll"
+      >
         🔄 重置所有场景
       </button>
     </div>

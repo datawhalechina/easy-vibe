@@ -5,8 +5,12 @@
 <template>
   <div class="locality-demo">
     <div class="header">
-      <div class="title">局部性原理演示</div>
-      <div class="subtitle">理解缓存为什么有效</div>
+      <div class="title">
+        局部性原理演示
+      </div>
+      <div class="subtitle">
+        理解缓存为什么有效
+      </div>
     </div>
 
     <div class="tabs">
@@ -28,18 +32,20 @@
 
     <div class="tab-content">
       <!-- Temporal Locality -->
-      <div v-if="activeTab === 'temporal'" class="temporal-demo">
+      <div
+        v-if="activeTab === 'temporal'"
+        class="temporal-demo"
+      >
         <div class="description">
-          <strong>时间局部性</strong
-          >：如果你访问了某个数据，未来很可能再次访问它。
-          <br />
-          <span class="example"
-            >例子：用户登录后，每次请求都需要查询用户信息</span
-          >
+          <strong>时间局部性</strong>：如果你访问了某个数据，未来很可能再次访问它。
+          <br>
+          <span class="example">例子：用户登录后，每次请求都需要查询用户信息</span>
         </div>
 
         <div class="timeline">
-          <div class="timeline-title">访问时间线</div>
+          <div class="timeline-title">
+            访问时间线
+          </div>
           <div class="timeline-events">
             <div
               v-for="(event, index) in temporalEvents"
@@ -47,7 +53,9 @@
               class="event"
               :class="{ hit: event.hit, miss: !event.hit }"
             >
-              <div class="event-time">{{ event.time }}</div>
+              <div class="event-time">
+                {{ event.time }}
+              </div>
               <div class="event-action">
                 <span class="user-icon">👤</span>
                 <span>查询 user_{{ event.userId }}</span>
@@ -60,7 +68,9 @@
         </div>
 
         <div class="cache-state">
-          <div class="cache-title">当前缓存状态</div>
+          <div class="cache-title">
+            当前缓存状态
+          </div>
           <div class="cache-items">
             <div
               v-for="item in cacheItems"
@@ -68,24 +78,32 @@
               class="cache-item"
               :class="{ active: item.active }"
             >
-              <div class="item-id">{{ item.id }}</div>
-              <div class="item-hits">命中 {{ item.hits }} 次</div>
+              <div class="item-id">
+                {{ item.id }}
+              </div>
+              <div class="item-hits">
+                命中 {{ item.hits }} 次
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Spatial Locality -->
-      <div v-if="activeTab === 'spatial'" class="spatial-demo">
+      <div
+        v-if="activeTab === 'spatial'"
+        class="spatial-demo"
+      >
         <div class="description">
-          <strong>空间局部性</strong
-          >：如果你访问了某个数据，很可能访问它附近的数据。
-          <br />
+          <strong>空间局部性</strong>：如果你访问了某个数据，很可能访问它附近的数据。
+          <br>
           <span class="example">例子：浏览商品列表时，通常会翻到下一页</span>
         </div>
 
         <div class="product-grid">
-          <div class="grid-title">商品浏览序列</div>
+          <div class="grid-title">
+            商品浏览序列
+          </div>
           <div class="products">
             <div
               v-for="product in products"
@@ -97,7 +115,9 @@
                 current: product.current
               }"
             >
-              <div class="product-id">{{ product.id }}</div>
+              <div class="product-id">
+                {{ product.id }}
+              </div>
               <div class="product-status">
                 <span v-if="product.current">👁️ 当前</span>
                 <span v-else-if="product.cached">⚡ 已缓存</span>
@@ -109,14 +129,18 @@
 
         <div class="spatial-explanation">
           <div class="explanation-item">
-            <div class="icon">📊</div>
+            <div class="icon">
+              📊
+            </div>
             <div class="text">
               <strong>预取策略</strong>：当你浏览第 5 个商品时，系统自动将 6-8
               预加载到缓存
             </div>
           </div>
           <div class="explanation-item">
-            <div class="icon">🎯</div>
+            <div class="icon">
+              🎯
+            </div>
             <div class="text">
               <strong>命中率提升</strong>：空间局部性让缓存命中率达到 70-90%
             </div>
@@ -126,22 +150,44 @@
     </div>
 
     <div class="interactive-controls">
-      <button class="control-btn" @click="addEvent">添加访问事件</button>
-      <button class="control-btn secondary" @click="reset">重置</button>
+      <button
+        class="control-btn"
+        @click="addEvent"
+      >
+        添加访问事件
+      </button>
+      <button
+        class="control-btn secondary"
+        @click="reset"
+      >
+        重置
+      </button>
     </div>
 
     <div class="stats">
       <div class="stat-item">
-        <div class="stat-label">总访问次数</div>
-        <div class="stat-value">{{ totalAccess }}</div>
+        <div class="stat-label">
+          总访问次数
+        </div>
+        <div class="stat-value">
+          {{ totalAccess }}
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">缓存命中</div>
-        <div class="stat-value hit">{{ hitCount }}</div>
+        <div class="stat-label">
+          缓存命中
+        </div>
+        <div class="stat-value hit">
+          {{ hitCount }}
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">命中率</div>
-        <div class="stat-value">{{ hitRate }}%</div>
+        <div class="stat-label">
+          命中率
+        </div>
+        <div class="stat-value">
+          {{ hitRate }}%
+        </div>
       </div>
     </div>
   </div>

@@ -1,60 +1,109 @@
 <template>
   <div class="resource-topology-demo">
     <div class="controls">
-      <el-radio-group v-model="viewMode" size="small">
-        <el-radio-button label="overview">全景视图</el-radio-button>
-        <el-radio-button label="compute">计算视角</el-radio-button>
-        <el-radio-button label="network">网络视角</el-radio-button>
-        <el-radio-button label="storage">存储视角</el-radio-button>
+      <el-radio-group
+        v-model="viewMode"
+        size="small"
+      >
+        <el-radio-button label="overview">
+          全景视图
+        </el-radio-button>
+        <el-radio-button label="compute">
+          计算视角
+        </el-radio-button>
+        <el-radio-button label="network">
+          网络视角
+        </el-radio-button>
+        <el-radio-button label="storage">
+          存储视角
+        </el-radio-button>
       </el-radio-group>
     </div>
 
-    <div class="topology-container" ref="topologyRef">
+    <div
+      ref="topologyRef"
+      class="topology-container"
+    >
       <!-- 云服务商层 -->
       <div class="layer cloud-provider">
-        <div class="layer-title">☁️ 云服务商</div>
-        <div class="provider-grid">
-          <div v-for="provider in providers" :key="provider.name"
-               class="provider-card"
-               :class="{ active: selectedProvider === provider.name }"
-               @click="selectProvider(provider.name)">
-            <div class="provider-icon">{{ provider.icon }}</div>
-            <div class="provider-name">{{ provider.name }}</div>
-          </div>
+        <div class="layer-title">
+          ☁️ 云服务商
         </div>
-      </div>
-
-      <!-- 连接箭头 -->
-      <div class="connection-arrow">⬇️</div>
-
-      <!-- 地域/可用区层 -->
-      <div class="layer region-layer">
-        <div class="layer-title">🌍 地域 & 可用区</div>
-        <div class="region-grid">
-          <div v-for="region in regions" :key="region.id"
-               class="region-card"
-               :class="{ active: selectedRegion === region.id }"
-               @click="selectRegion(region.id)">
-            <div class="region-name">{{ region.name }}</div>
-            <div class="region-azs">
-              <span v-for="az in region.azs" :key="az" class="az-badge">{{ az }}</span>
+        <div class="provider-grid">
+          <div
+            v-for="provider in providers"
+            :key="provider.name"
+            class="provider-card"
+            :class="{ active: selectedProvider === provider.name }"
+            @click="selectProvider(provider.name)"
+          >
+            <div class="provider-icon">
+              {{ provider.icon }}
+            </div>
+            <div class="provider-name">
+              {{ provider.name }}
             </div>
           </div>
         </div>
       </div>
 
       <!-- 连接箭头 -->
-      <div class="connection-arrow">⬇️</div>
+      <div class="connection-arrow">
+        ⬇️
+      </div>
+
+      <!-- 地域/可用区层 -->
+      <div class="layer region-layer">
+        <div class="layer-title">
+          🌍 地域 & 可用区
+        </div>
+        <div class="region-grid">
+          <div
+            v-for="region in regions"
+            :key="region.id"
+            class="region-card"
+            :class="{ active: selectedRegion === region.id }"
+            @click="selectRegion(region.id)"
+          >
+            <div class="region-name">
+              {{ region.name }}
+            </div>
+            <div class="region-azs">
+              <span
+                v-for="az in region.azs"
+                :key="az"
+                class="az-badge"
+              >{{ az }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 连接箭头 -->
+      <div class="connection-arrow">
+        ⬇️
+      </div>
 
       <!-- 资源拓扑层 -->
       <div class="layer resource-layer">
-        <div class="layer-title">🎯 资源拓扑</div>
+        <div class="layer-title">
+          🎯 资源拓扑
+        </div>
         <div class="resource-grid">
           <!-- 计算资源 -->
-          <div class="resource-category" :class="{ highlight: viewMode === 'compute' || viewMode === 'overview' }">
-            <div class="category-title">💻 计算</div>
+          <div
+            class="resource-category"
+            :class="{ highlight: viewMode === 'compute' || viewMode === 'overview' }"
+          >
+            <div class="category-title">
+              💻 计算
+            </div>
             <div class="resource-list">
-              <div v-for="item in computeResources" :key="item.name" class="resource-item">
+              <div
+                v-for="item in computeResources"
+                :key="item.name"
+                class="resource-item"
+              >
                 <span class="resource-icon">{{ item.icon }}</span>
                 <span class="resource-name">{{ item.name }}</span>
               </div>
@@ -62,10 +111,19 @@
           </div>
 
           <!-- 网络资源 -->
-          <div class="resource-category" :class="{ highlight: viewMode === 'network' || viewMode === 'overview' }">
-            <div class="category-title">🌐 网络</div>
+          <div
+            class="resource-category"
+            :class="{ highlight: viewMode === 'network' || viewMode === 'overview' }"
+          >
+            <div class="category-title">
+              🌐 网络
+            </div>
             <div class="resource-list">
-              <div v-for="item in networkResources" :key="item.name" class="resource-item">
+              <div
+                v-for="item in networkResources"
+                :key="item.name"
+                class="resource-item"
+              >
                 <span class="resource-icon">{{ item.icon }}</span>
                 <span class="resource-name">{{ item.name }}</span>
               </div>
@@ -73,10 +131,19 @@
           </div>
 
           <!-- 存储资源 -->
-          <div class="resource-category" :class="{ highlight: viewMode === 'storage' || viewMode === 'overview' }">
-            <div class="category-title">💾 存储</div>
+          <div
+            class="resource-category"
+            :class="{ highlight: viewMode === 'storage' || viewMode === 'overview' }"
+          >
+            <div class="category-title">
+              💾 存储
+            </div>
             <div class="resource-list">
-              <div v-for="item in storageResources" :key="item.name" class="resource-item">
+              <div
+                v-for="item in storageResources"
+                :key="item.name"
+                class="resource-item"
+              >
                 <span class="resource-icon">{{ item.icon }}</span>
                 <span class="resource-name">{{ item.name }}</span>
               </div>
@@ -87,16 +154,26 @@
     </div>
 
     <!-- 信息面板 -->
-    <div class="info-panel" v-if="showInfo">
+    <div
+      v-if="showInfo"
+      class="info-panel"
+    >
       <div class="info-header">
         <h4>💡 拓扑说明</h4>
-        <el-button type="text" @click="showInfo = false">关闭</el-button>
+        <el-button
+          type="text"
+          @click="showInfo = false"
+        >
+          关闭
+        </el-button>
       </div>
       <div class="info-content">
         <p><strong>当前视图：</strong>{{ viewModeText }}</p>
         <p><strong>选中云商：</strong>{{ selectedProvider || '未选择' }}</p>
         <p><strong>选中地域：</strong>{{ selectedRegion || '未选择' }}</p>
-        <p class="tip">💡 提示：点击云服务商和地域可以查看不同组合的资源拓扑</p>
+        <p class="tip">
+          💡 提示：点击云服务商和地域可以查看不同组合的资源拓扑
+        </p>
       </div>
     </div>
   </div>

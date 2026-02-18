@@ -27,7 +27,9 @@
                 class="input-btn" 
                 :class="{ on: inputA }"
                 @click="inputA = !inputA"
-              >{{ inputA ? '1' : '0' }}</button>
+              >
+                {{ inputA ? '1' : '0' }}
+              </button>
             </div>
             <div class="input-item">
               <span>B:</span>
@@ -35,49 +37,170 @@
                 class="input-btn" 
                 :class="{ on: inputB }"
                 @click="inputB = !inputB"
-              >{{ inputB ? '1' : '0' }}</button>
+              >
+                {{ inputB ? '1' : '0' }}
+              </button>
             </div>
           </div>
 
           <div class="gate-symbol">
-            <svg viewBox="0 0 120 80" class="gate-svg">
+            <svg
+              viewBox="0 0 120 80"
+              class="gate-svg"
+            >
               <template v-if="activeGate === 'AND'">
-                <path d="M20,20 L20,60 L60,60 Q90,60 90,40 Q90,20 60,20 Z" fill="none" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="90" y1="40" x2="110" y2="40" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="30" x2="20" y2="30" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="50" x2="20" y2="50" stroke="var(--vp-c-brand)" stroke-width="2"/>
+                <path
+                  d="M20,20 L20,60 L60,60 Q90,60 90,40 Q90,20 60,20 Z"
+                  fill="none"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="90"
+                  y1="40"
+                  x2="110"
+                  y2="40"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="30"
+                  x2="20"
+                  y2="30"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="50"
+                  x2="20"
+                  y2="50"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
               </template>
               <template v-else-if="activeGate === 'OR'">
-                <path d="M20,20 Q40,40 20,60 Q60,60 90,40 Q60,20 20,20" fill="none" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="90" y1="40" x2="110" y2="40" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="30" x2="25" y2="30" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="50" x2="25" y2="50" stroke="var(--vp-c-brand)" stroke-width="2"/>
+                <path
+                  d="M20,20 Q40,40 20,60 Q60,60 90,40 Q60,20 20,20"
+                  fill="none"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="90"
+                  y1="40"
+                  x2="110"
+                  y2="40"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="30"
+                  x2="25"
+                  y2="30"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="50"
+                  x2="25"
+                  y2="50"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
               </template>
               <template v-else-if="activeGate === 'NOT'">
-                <polygon points="20,20 80,40 20,60" fill="none" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <circle cx="85" cy="40" r="5" fill="none" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="90" y1="40" x2="110" y2="40" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="40" x2="20" y2="40" stroke="var(--vp-c-brand)" stroke-width="2"/>
+                <polygon
+                  points="20,20 80,40 20,60"
+                  fill="none"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="85"
+                  cy="40"
+                  r="5"
+                  fill="none"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="90"
+                  y1="40"
+                  x2="110"
+                  y2="40"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="40"
+                  x2="20"
+                  y2="40"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
               </template>
               <template v-else-if="activeGate === 'XOR'">
-                <path d="M25,20 Q45,40 25,60 Q65,60 95,40 Q65,20 25,20" fill="none" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <path d="M15,20 Q35,40 15,60" fill="none" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="95" y1="40" x2="115" y2="40" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="30" x2="30" y2="30" stroke="var(--vp-c-brand)" stroke-width="2"/>
-                <line x1="0" y1="50" x2="30" y2="50" stroke="var(--vp-c-brand)" stroke-width="2"/>
+                <path
+                  d="M25,20 Q45,40 25,60 Q65,60 95,40 Q65,20 25,20"
+                  fill="none"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <path
+                  d="M15,20 Q35,40 15,60"
+                  fill="none"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="95"
+                  y1="40"
+                  x2="115"
+                  y2="40"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="30"
+                  x2="30"
+                  y2="30"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
+                <line
+                  x1="0"
+                  y1="50"
+                  x2="30"
+                  y2="50"
+                  stroke="var(--vp-c-brand)"
+                  stroke-width="2"
+                />
               </template>
             </svg>
-            <div class="gate-name">{{ activeGate }}</div>
+            <div class="gate-name">
+              {{ activeGate }}
+            </div>
           </div>
 
           <div class="output">
             <span class="output-label">输出:</span>
-            <span class="output-value" :class="{ on: output }">{{ output ? '1' : '0' }}</span>
+            <span
+              class="output-value"
+              :class="{ on: output }"
+            >{{ output ? '1' : '0' }}</span>
           </div>
         </div>
 
         <div class="truth-table-mini">
-          <div class="table-title">{{ activeGate }} 真值表</div>
+          <div class="table-title">
+            {{ activeGate }} 真值表
+          </div>
           <table>
             <thead>
               <tr>
@@ -87,8 +210,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in currentTruthTable" :key="row.a + '-' + row.b" 
-                  :class="{ highlight: row.a === inputA && row.b === inputB && (activeGate !== 'NOT') }">
+              <tr
+                v-for="row in currentTruthTable"
+                :key="row.a + '-' + row.b" 
+                :class="{ highlight: row.a === inputA && row.b === inputB && (activeGate !== 'NOT') }"
+              >
                 <td>{{ row.a }}</td>
                 <td>{{ row.b }}</td>
                 <td>{{ row.out }}</td>
@@ -99,8 +225,12 @@
       </div>
 
       <div class="gate-explanation">
-        <div class="exp-title">{{ currentGate.expTitle }}</div>
-        <div class="exp-content">{{ currentGate.expContent }}</div>
+        <div class="exp-title">
+          {{ currentGate.expTitle }}
+        </div>
+        <div class="exp-content">
+          {{ currentGate.expContent }}
+        </div>
       </div>
     </div>
 

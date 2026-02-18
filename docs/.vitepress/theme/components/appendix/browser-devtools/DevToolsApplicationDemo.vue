@@ -59,11 +59,21 @@ const clearAll = () => {
 </script>
 
 <template>
-  <el-card class="app-demo" shadow="hover">
+  <el-card
+    class="app-demo"
+    shadow="hover"
+  >
     <template #header>
       <div class="header">
         <span class="title">Application (应用面板)</span>
-        <el-button type="danger" size="small" icon="Delete" @click="clearAll">Clear All</el-button>
+        <el-button
+          type="danger"
+          size="small"
+          icon="Delete"
+          @click="clearAll"
+        >
+          Clear All
+        </el-button>
       </div>
     </template>
 
@@ -94,26 +104,54 @@ const clearAll = () => {
 
       <div class="content">
         <div class="toolbar">
-            <el-input 
-                v-model="newEntry.key" 
-                placeholder="Key" 
-                size="small" 
-                style="width: 120px" 
-            />
-            <el-input 
-                v-model="newEntry.value" 
-                placeholder="Value" 
-                size="small" 
-                style="width: 120px" 
-            />
-            <el-button type="primary" size="small" @click="addEntry">Add</el-button>
+          <el-input 
+            v-model="newEntry.key" 
+            placeholder="Key" 
+            size="small" 
+            style="width: 120px" 
+          />
+          <el-input 
+            v-model="newEntry.value" 
+            placeholder="Value" 
+            size="small" 
+            style="width: 120px" 
+          />
+          <el-button
+            type="primary"
+            size="small"
+            @click="addEntry"
+          >
+            Add
+          </el-button>
         </div>
 
-        <el-table :data="storageData[activeTab]" style="width: 100%" height="250" border>
-          <el-table-column prop="key" label="Key" width="120" />
-          <el-table-column prop="value" label="Value" min-width="150" />
-          <el-table-column v-if="activeTab === 'cookies'" prop="domain" label="Domain" width="110" />
-          <el-table-column label="Action" width="70" align="center">
+        <el-table
+          :data="storageData[activeTab]"
+          style="width: 100%"
+          height="250"
+          border
+        >
+          <el-table-column
+            prop="key"
+            label="Key"
+            width="120"
+          />
+          <el-table-column
+            prop="value"
+            label="Value"
+            min-width="150"
+          />
+          <el-table-column
+            v-if="activeTab === 'cookies'"
+            prop="domain"
+            label="Domain"
+            width="110"
+          />
+          <el-table-column
+            label="Action"
+            width="70"
+            align="center"
+          >
             <template #default="scope">
               <el-button 
                 type="danger" 
@@ -126,14 +164,23 @@ const clearAll = () => {
           </el-table-column>
         </el-table>
         
-        <div class="info-bar" v-if="activeTab === 'local'">
-            持久化存储：即便关闭浏览器，数据也会保留。
+        <div
+          v-if="activeTab === 'local'"
+          class="info-bar"
+        >
+          持久化存储：即便关闭浏览器，数据也会保留。
         </div>
-        <div class="info-bar" v-else-if="activeTab === 'session'">
-            临时存储：关闭标签页后，数据会被清空。
+        <div
+          v-else-if="activeTab === 'session'"
+          class="info-bar"
+        >
+          临时存储：关闭标签页后，数据会被清空。
         </div>
-        <div class="info-bar" v-else>
-            Cookies：通常用于身份验证，会随请求发送给服务器。
+        <div
+          v-else
+          class="info-bar"
+        >
+          Cookies：通常用于身份验证，会随请求发送给服务器。
         </div>
       </div>
     </div>

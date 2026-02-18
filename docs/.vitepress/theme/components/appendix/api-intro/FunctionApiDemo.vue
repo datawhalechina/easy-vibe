@@ -1,14 +1,20 @@
 <template>
   <div class="function-api-demo">
     <div class="header">
-      <div class="title">🔧 你早就在用 API 了</div>
-      <div class="subtitle">函数就是最基础的 API</div>
+      <div class="title">
+        🔧 你早就在用 API 了
+      </div>
+      <div class="subtitle">
+        函数就是最基础的 API
+      </div>
     </div>
 
     <div class="demo-container">
       <div class="left">
         <div class="code-panel">
-          <div class="code-title">📝 代码</div>
+          <div class="code-title">
+            📝 代码
+          </div>
           <pre><code><span class="keyword">def</span> <span class="function">greet</span>(name, greeting=<span class="string">"你好"</span>):
     <span class="keyword">return</span> f<span class="string">"{greeting}，{name}！"</span>
 
@@ -48,22 +54,43 @@ print(result)</code></pre>
         </div>
 
         <div class="try-it">
-          <div class="try-title">🎮 试试调用：</div>
+          <div class="try-title">
+            🎮 试试调用：
+          </div>
           <div class="interactive">
             <input
               v-model="name"
               placeholder="输入名字"
               class="name-input"
-            />
-            <select v-model="greeting" class="greeting-select">
-              <option value="你好">你好</option>
-              <option value="Hello">Hello</option>
-              <option value="早上好">早上好</option>
-              <option value="晚安">晚安</option>
+            >
+            <select
+              v-model="greeting"
+              class="greeting-select"
+            >
+              <option value="你好">
+                你好
+              </option>
+              <option value="Hello">
+                Hello
+              </option>
+              <option value="早上好">
+                早上好
+              </option>
+              <option value="晚安">
+                晚安
+              </option>
             </select>
-            <button @click="callFunction" class="call-btn">调用 greet()</button>
+            <button
+              class="call-btn"
+              @click="callFunction"
+            >
+              调用 greet()
+            </button>
           </div>
-          <div class="result" v-if="result">
+          <div
+            v-if="result"
+            class="result"
+          >
             <span class="arrow">→</span>
             <code>{{ result }}</code>
           </div>

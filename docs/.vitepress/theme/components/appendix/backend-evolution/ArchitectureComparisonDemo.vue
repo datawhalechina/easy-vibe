@@ -7,15 +7,32 @@
     </div>
 
     <div class="comparison-grid">
-      <div class="era-card" v-for="era in eras" :key="era.name" :class="{ active: selectedEra === era.name }" @click="selectedEra = era.name">
-        <div class="era-icon">{{ era.icon }}</div>
-        <div class="era-name">{{ era.name }}</div>
-        <div class="era-year">{{ era.year }}</div>
-        <div class="era-tag">{{ era.tag }}</div>
+      <div
+        v-for="era in eras"
+        :key="era.name"
+        class="era-card"
+        :class="{ active: selectedEra === era.name }"
+        @click="selectedEra = era.name"
+      >
+        <div class="era-icon">
+          {{ era.icon }}
+        </div>
+        <div class="era-name">
+          {{ era.name }}
+        </div>
+        <div class="era-year">
+          {{ era.year }}
+        </div>
+        <div class="era-tag">
+          {{ era.tag }}
+        </div>
       </div>
     </div>
 
-    <div class="detail-panel" v-if="selectedEra">
+    <div
+      v-if="selectedEra"
+      class="detail-panel"
+    >
       <div class="detail-header">
         <span class="detail-icon">{{ currentEra.icon }}</span>
         <h5>{{ currentEra.name }} ({{ currentEra.year }})</h5>
@@ -25,28 +42,47 @@
         <div class="feature-section">
           <h6>🏗️ 架构特征</h6>
           <ul>
-            <li v-for="(feat, i) in currentEra.features" :key="i">{{ feat }}</li>
+            <li
+              v-for="(feat, i) in currentEra.features"
+              :key="i"
+            >
+              {{ feat }}
+            </li>
           </ul>
         </div>
 
         <div class="feature-section">
           <h6>✅ 优点</h6>
           <ul>
-            <li v-for="(pro, i) in currentEra.pros" :key="i">{{ pro }}</li>
+            <li
+              v-for="(pro, i) in currentEra.pros"
+              :key="i"
+            >
+              {{ pro }}
+            </li>
           </ul>
         </div>
 
         <div class="feature-section">
           <h6>❌ 痛点</h6>
           <ul>
-            <li v-for="(con, i) in currentEra.cons" :key="i">{{ con }}</li>
+            <li
+              v-for="(con, i) in currentEra.cons"
+              :key="i"
+            >
+              {{ con }}
+            </li>
           </ul>
         </div>
 
         <div class="tech-stack">
           <h6>🔧 典型技术</h6>
           <div class="tech-tags">
-            <span v-for="(tech, i) in currentEra.techs" :key="i" class="tech-tag">{{ tech }}</span>
+            <span
+              v-for="(tech, i) in currentEra.techs"
+              :key="i"
+              class="tech-tag"
+            >{{ tech }}</span>
           </div>
         </div>
       </div>

@@ -6,8 +6,12 @@
   <div class="cgi-demo">
     <div class="panel">
       <div class="panel-header">
-        <div class="title">CGI 串行处理：排队效应</div>
-        <div class="subtitle">请求越多，响应越慢</div>
+        <div class="title">
+          CGI 串行处理：排队效应
+        </div>
+        <div class="subtitle">
+          请求越多，响应越慢
+        </div>
       </div>
 
       <div class="controls">
@@ -20,36 +24,61 @@
           min="1"
           max="200"
           step="1"
-        />
+        >
 
         <div class="toggles">
           <label class="toggle">
-            <input v-model="staticCache" type="checkbox" />
+            <input
+              v-model="staticCache"
+              type="checkbox"
+            >
             启用静态缓存 (减少脚本开销)
           </label>
-          <button class="burst" @click="simulateBurst">模拟秒杀</button>
+          <button
+            class="burst"
+            @click="simulateBurst"
+          >
+            模拟秒杀
+          </button>
         </div>
       </div>
 
       <div class="stats">
         <div class="stat">
-          <div class="label">平均响应时间</div>
-          <div class="value">{{ avgResponse }} ms</div>
+          <div class="label">
+            平均响应时间
+          </div>
+          <div class="value">
+            {{ avgResponse }} ms
+          </div>
           <div class="meter">
-            <div class="bar" :style="{ width: responseBar + '%' }"></div>
+            <div
+              class="bar"
+              :style="{ width: responseBar + '%' }"
+            />
           </div>
         </div>
         <div class="stat">
-          <div class="label">排队请求数</div>
-          <div class="value">{{ queueLength }}</div>
+          <div class="label">
+            排队请求数
+          </div>
+          <div class="value">
+            {{ queueLength }}
+          </div>
           <div class="meter">
-            <div class="bar warn" :style="{ width: queueBar + '%' }"></div>
+            <div
+              class="bar warn"
+              :style="{ width: queueBar + '%' }"
+            />
           </div>
         </div>
       </div>
 
       <div class="note">
-        <span class="dot" :class="statusClass"></span>
+        <span
+          class="dot"
+          :class="statusClass"
+        />
         <span>{{ statusText }}</span>
       </div>
     </div>

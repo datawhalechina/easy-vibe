@@ -26,7 +26,13 @@
           <div class="cfg-slider-section">
             <div class="cfg-label">
               <span>CFG Scale</span>
-              <el-tag type="primary" effect="dark" size="large">{{ cfgScale }}</el-tag>
+              <el-tag
+                type="primary"
+                effect="dark"
+                size="large"
+              >
+                {{ cfgScale }}
+              </el-tag>
             </div>
             <el-slider
               v-model="cfgScale"
@@ -59,7 +65,9 @@
         <div class="comparison-display">
           <div class="comparison-item">
             <div class="item-label">
-              <el-tag type="info">无条件生成</el-tag>
+              <el-tag type="info">
+                无条件生成
+              </el-tag>
               <span class="cfg-value">CFG = 1</span>
             </div>
             <canvas
@@ -68,20 +76,30 @@
               height="200"
               class="comparison-canvas"
             />
-            <div class="item-desc">忽略提示词，自由发挥</div>
+            <div class="item-desc">
+              忽略提示词，自由发挥
+            </div>
           </div>
 
           <div class="comparison-arrow">
-            <el-icon :size="32"><ArrowRight /></el-icon>
+            <el-icon :size="32">
+              <ArrowRight />
+            </el-icon>
             <div class="guidance-formula">
-              <div class="formula">输出 = 无条件 + CFG × (有条件 - 无条件)</div>
-              <div class="formula-desc">CFG 越大，提示词影响越强</div>
+              <div class="formula">
+                输出 = 无条件 + CFG × (有条件 - 无条件)
+              </div>
+              <div class="formula-desc">
+                CFG 越大，提示词影响越强
+              </div>
             </div>
           </div>
 
           <div class="comparison-item">
             <div class="item-label">
-              <el-tag type="success">当前设置</el-tag>
+              <el-tag type="success">
+                当前设置
+              </el-tag>
               <span class="cfg-value">CFG = {{ cfgScale }}</span>
             </div>
             <canvas
@@ -90,13 +108,17 @@
               height="200"
               class="comparison-canvas"
             />
-            <div class="item-desc">{{ getCfgDescription() }}</div>
+            <div class="item-desc">
+              {{ getCfgDescription() }}
+            </div>
           </div>
         </div>
 
         <!-- CFG 效果展示 -->
         <div class="cfg-effects">
-          <div class="effects-title">不同 CFG 值的效果对比</div>
+          <div class="effects-title">
+            不同 CFG 值的效果对比
+          </div>
           <div class="effects-grid">
             <div
               v-for="effect in cfgEffects"
@@ -111,30 +133,54 @@
                 height="120"
                 class="effect-canvas"
               />
-              <div class="effect-label">CFG {{ effect.value }}</div>
-              <div class="effect-desc">{{ effect.desc }}</div>
+              <div class="effect-label">
+                CFG {{ effect.value }}
+              </div>
+              <div class="effect-desc">
+                {{ effect.desc }}
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 推荐设置 -->
         <div class="recommendations">
-          <div class="rec-title">🎯 推荐设置</div>
+          <div class="rec-title">
+            🎯 推荐设置
+          </div>
           <div class="rec-grid">
             <div class="rec-item">
-              <div class="rec-scenario">创意探索</div>
-              <div class="rec-value">CFG 3-5</div>
-              <div class="rec-desc">给 AI 更多自由，适合艺术探索</div>
+              <div class="rec-scenario">
+                创意探索
+              </div>
+              <div class="rec-value">
+                CFG 3-5
+              </div>
+              <div class="rec-desc">
+                给 AI 更多自由，适合艺术探索
+              </div>
             </div>
             <div class="rec-item">
-              <div class="rec-scenario">平衡模式</div>
-              <div class="rec-value">CFG 7-9</div>
-              <div class="rec-desc">大多数场景的最佳选择</div>
+              <div class="rec-scenario">
+                平衡模式
+              </div>
+              <div class="rec-value">
+                CFG 7-9
+              </div>
+              <div class="rec-desc">
+                大多数场景的最佳选择
+              </div>
             </div>
             <div class="rec-item">
-              <div class="rec-scenario">精确控制</div>
-              <div class="rec-value">CFG 12-15</div>
-              <div class="rec-desc">严格遵循提示词，但可能过饱和</div>
+              <div class="rec-scenario">
+                精确控制
+              </div>
+              <div class="rec-value">
+                CFG 12-15
+              </div>
+              <div class="rec-desc">
+                严格遵循提示词，但可能过饱和
+              </div>
             </div>
           </div>
         </div>

@@ -1,8 +1,14 @@
 <template>
   <div class="model-evolution-demo">
     <div class="controls-header">
-      <div class="toggle-container" @click="toggleMode">
-        <div class="toggle-track" :class="{ active: isVLM }">
+      <div
+        class="toggle-container"
+        @click="toggleMode"
+      >
+        <div
+          class="toggle-track"
+          :class="{ active: isVLM }"
+        >
           <div class="toggle-thumb">
             {{ isVLM ? '👁️' : '🧠' }}
           </div>
@@ -24,8 +30,13 @@
 
     <div class="diagram-stage">
       <div class="lanes">
-        <div class="lane lane-vision" v-show="isVLM">
-          <div class="lane-title">Vision Path (视觉路径)</div>
+        <div
+          v-show="isVLM"
+          class="lane lane-vision"
+        >
+          <div class="lane-title">
+            Vision Path (视觉路径)
+          </div>
           <div class="lane-flow">
             <div class="node input-node">
               <span class="icon">🖼️</span>
@@ -43,7 +54,9 @@
             </div>
             <span class="mini-arrow">→</span>
             <div class="token-box token-box-vision">
-              <div class="token-box-title">Vision Tokens (视觉 Token)</div>
+              <div class="token-box-title">
+                Vision Tokens (视觉 Token)
+              </div>
               <div class="tokens">
                 <span class="token vision">v1</span>
                 <span class="token vision">v2</span>
@@ -55,7 +68,9 @@
         </div>
 
         <div class="lane lane-text">
-          <div class="lane-title">Text Path (文字路径)</div>
+          <div class="lane-title">
+            Text Path (文字路径)
+          </div>
           <div class="lane-flow">
             <div class="node input-node">
               <span class="icon">⌨️</span>
@@ -68,7 +83,9 @@
             </div>
             <span class="mini-arrow">→</span>
             <div class="token-box">
-              <div class="token-box-title">Text Tokens (文字 Token)</div>
+              <div class="token-box-title">
+                Text Tokens (文字 Token)
+              </div>
               <div class="tokens">
                 <span class="token text">t1</span>
                 <span class="token text">t2</span>
@@ -80,9 +97,14 @@
         </div>
 
         <div class="merge-stage">
-          <div class="merge-title">Token Sequence (输入序列)</div>
+          <div class="merge-title">
+            Token Sequence (输入序列)
+          </div>
           <div class="sequence">
-            <div v-if="isVLM" class="sequence-row">
+            <div
+              v-if="isVLM"
+              class="sequence-row"
+            >
               <span class="sequence-tag vision">Vision (视觉)</span>
               <div class="tokens">
                 <span class="token vision">v1</span>
@@ -101,10 +123,8 @@
               </div>
             </div>
             <div class="sequence-hint">
-              <span v-if="isVLM"
-                >Concat: [Vision Tokens] + [Text Tokens]
-                (拼接：视觉在前，文字在后)</span
-              >
+              <span v-if="isVLM">Concat: [Vision Tokens] + [Text Tokens]
+                (拼接：视觉在前，文字在后)</span>
               <span v-else>Only [Text Tokens] (只有文字 Token)</span>
             </div>
           </div>
@@ -126,12 +146,23 @@
     </div>
 
     <div class="interactive-info">
-      <transition name="fade" mode="out-in">
-        <div class="info-card" v-if="!isVLM" key="llm">
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="!isVLM"
+          key="llm"
+          class="info-card"
+        >
           <h3>Standard LLM Flow (标准大模型流程)</h3>
           <p>Prompt → Embedding → Token Sequence → LLM → Response。</p>
         </div>
-        <div class="info-card vlm-info" v-else key="vlm">
+        <div
+          v-else
+          key="vlm"
+          class="info-card vlm-info"
+        >
           <h3>VLM = LLM + Vision Encoder (视觉大模型原理)</h3>
           <ul>
             <li><strong>ViT (The Eye):</strong> 把图片编码成视觉特征。</li>

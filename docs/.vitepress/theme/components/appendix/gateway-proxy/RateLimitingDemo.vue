@@ -5,12 +5,18 @@
 <template>
   <div class="rate-limiting-demo">
     <div class="header">
-      <div class="title">⚡ 限流算法：系统不会被"流量洪水"冲垮的秘诀</div>
-      <div class="subtitle">想象成水坝的闸门——控制水流速度，防止下游被淹没</div>
+      <div class="title">
+        ⚡ 限流算法：系统不会被"流量洪水"冲垮的秘诀
+      </div>
+      <div class="subtitle">
+        想象成水坝的闸门——控制水流速度，防止下游被淹没
+      </div>
     </div>
 
     <div class="algorithm-selector">
-      <div class="selector-title">选择限流算法</div>
+      <div class="selector-title">
+        选择限流算法
+      </div>
       <div class="algorithm-tabs">
         <button
           v-for="algo in algorithms"
@@ -26,44 +32,70 @@
 
     <div class="visualization-area">
       <div class="vis-header">
-        <div class="vis-title">{{ currentAlgoData.visualTitle }}</div>
+        <div class="vis-title">
+          {{ currentAlgoData.visualTitle }}
+        </div>
         <div class="vis-controls">
-          <button class="control-btn" @click="toggleSimulation" :disabled="isSimulating">
+          <button
+            class="control-btn"
+            :disabled="isSimulating"
+            @click="toggleSimulation"
+          >
             {{ isSimulating ? '模拟中...' : '▶ 开始模拟' }}
           </button>
-          <button class="control-btn reset" @click="resetSimulation">↺ 重置</button>
+          <button
+            class="control-btn reset"
+            @click="resetSimulation"
+          >
+            ↺ 重置
+          </button>
         </div>
       </div>
 
       <!-- 令牌桶可视化 -->
-      <div v-if="currentAlgo === 'token'" class="token-bucket-vis">
+      <div
+        v-if="currentAlgo === 'token'"
+        class="token-bucket-vis"
+      >
         <div class="bucket-container">
           <div class="bucket">
-            <div class="bucket-label">令牌桶</div>
+            <div class="bucket-label">
+              令牌桶
+            </div>
             <div class="tokens-area">
               <div
                 v-for="n in bucketState.tokens"
                 :key="n"
                 class="token"
                 :style="{ animationDelay: `${n * 0.1}s` }"
-              >🪙</div>
+              >
+                🪙
+              </div>
             </div>
-            <div class="bucket-capacity">{{ bucketState.tokens }} / {{ bucketState.capacity }} 令牌</div>
+            <div class="bucket-capacity">
+              {{ bucketState.tokens }} / {{ bucketState.capacity }} 令牌
+            </div>
           </div>
           <div class="token-producer">
-            <div class="producer-label">⏰ 令牌产生器 ({{ bucketState.rate }}/秒)</div>
+            <div class="producer-label">
+              ⏰ 令牌产生器 ({{ bucketState.rate }}/秒)
+            </div>
             <div class="producer-stream">
               <div
                 v-for="n in 3"
                 :key="n"
                 class="producing-token"
                 :style="{ animationDelay: `${n * 0.3}s` }"
-              >🪙</div>
+              >
+                🪙
+              </div>
             </div>
           </div>
         </div>
         <div class="requests-queue">
-          <div class="queue-title">📥 请求队列</div>
+          <div class="queue-title">
+            📥 请求队列
+          </div>
           <div class="requests">
             <div
               v-for="(req, index) in requestQueue"
@@ -80,46 +112,65 @@
       </div>
 
       <!-- 漏桶可视化 -->
-      <div v-if="currentAlgo === 'leaky'" class="leaky-bucket-vis">
+      <div
+        v-if="currentAlgo === 'leaky'"
+        class="leaky-bucket-vis"
+      >
         <div class="leaky-container">
           <div class="leaky-bucket">
-            <div class="bucket-label">漏桶</div>
+            <div class="bucket-label">
+              漏桶
+            </div>
             <div class="bucket-content">
               <div
                 class="water-level"
                 :style="{ height: `${(leakyState.current / leakyState.capacity) * 100}%` }"
-              ></div>
+              />
             </div>
-            <div class="bucket-stats">{{ leakyState.current }} / {{ leakyState.capacity }} 请求</div>
+            <div class="bucket-stats">
+              {{ leakyState.current }} / {{ leakyState.capacity }} 请求
+            </div>
           </div>
           <div class="leak-hole">
-            <div class="hole">🔘</div>
-            <div class="leak-rate">⏱️ 流出速率: {{ leakyState.rate }}/秒</div>
+            <div class="hole">
+              🔘
+            </div>
+            <div class="leak-rate">
+              ⏱️ 流出速率: {{ leakyState.rate }}/秒
+            </div>
           </div>
         </div>
         <div class="leaky-legend">
           <div class="legend-item">
-            <span class="legend-color water"></span>
+            <span class="legend-color water" />
             <span>桶内请求（排队中）</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color hole"></span>
+            <span class="legend-color hole" />
             <span>匀速流出（处理中）</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color overflow"></span>
+            <span class="legend-color overflow" />
             <span>桶满溢出（被拒绝）</span>
           </div>
         </div>
       </div>
 
       <!-- 滑动窗口可视化 -->
-      <div v-if="currentAlgo === 'sliding'" class="sliding-window-vis">
+      <div
+        v-if="currentAlgo === 'sliding'"
+        class="sliding-window-vis"
+      >
         <div class="window-container">
-          <div class="window-label">⏰ 时间窗口（过去1分钟）</div>
+          <div class="window-label">
+            ⏰ 时间窗口（过去1分钟）
+          </div>
           <div class="window-timeline">
             <div class="time-marks">
-              <span v-for="n in 6" :key="n">{{ 60 - (n - 1) * 10 }}s</span>
+              <span
+                v-for="n in 6"
+                :key="n"
+              >{{ 60 - (n - 1) * 10 }}s</span>
             </div>
             <div class="window-bars">
               <div
@@ -129,7 +180,10 @@
                 :class="{ active: slot.count > 0, current: index === slidingWindow.currentSlot }"
                 :style="{ height: `${Math.min((slot.count / 20) * 100, 100)}%` }"
               >
-                <span class="slot-count" v-if="slot.count > 0">{{ slot.count }}</span>
+                <span
+                  v-if="slot.count > 0"
+                  class="slot-count"
+                >{{ slot.count }}</span>
               </div>
             </div>
           </div>
@@ -144,7 +198,10 @@
             </div>
             <div class="stat">
               <span class="stat-label">剩余额度:</span>
-              <span class="stat-value" :class="{ warning: slidingWindow.remaining < 20 }">{{ slidingWindow.remaining }}</span>
+              <span
+                class="stat-value"
+                :class="{ warning: slidingWindow.remaining < 20 }"
+              >{{ slidingWindow.remaining }}</span>
             </div>
           </div>
         </div>
@@ -152,7 +209,9 @@
     </div>
 
     <div class="comparison-section">
-      <div class="section-title">📊 三种算法对比</div>
+      <div class="section-title">
+        📊 三种算法对比
+      </div>
       <table class="comparison-table">
         <thead>
           <tr>
@@ -164,31 +223,41 @@
         </thead>
         <tbody>
           <tr>
-            <td class="dim">核心思想</td>
+            <td class="dim">
+              核心思想
+            </td>
             <td>桶里装令牌，有令牌才能通过</td>
             <td>请求进桶，匀速流出处理</td>
             <td>统计时间窗口内的请求数</td>
           </tr>
           <tr>
-            <td class="dim">突发流量</td>
+            <td class="dim">
+              突发流量
+            </td>
             <td>✅ 允许一定程度的突发（桶里有令牌）</td>
             <td>❌ 强制平滑，突发会被缓存或拒绝</td>
             <td>❌ 严格按窗口计数，超出一律拒绝</td>
           </tr>
           <tr>
-            <td class="dim">适用场景</td>
+            <td class="dim">
+              适用场景
+            </td>
             <td>API 限流、带宽控制（允许突发）</td>
             <td>需要严格匀速处理的场景（如消息队列）</td>
             <td>精确统计（如"1分钟内最多100次"）</td>
           </tr>
           <tr>
-            <td class="dim">实现复杂度</td>
+            <td class="dim">
+              实现复杂度
+            </td>
             <td>中等</td>
             <td>中等</td>
             <td>较高（需要记录每个时间窗口的请求）</td>
           </tr>
           <tr>
-            <td class="dim">Nginx 配置</td>
+            <td class="dim">
+              Nginx 配置
+            </td>
             <td>limit_req_zone (漏桶)</td>
             <td>limit_req_zone (漏桶)</td>
             <td>需第三方模块或 Lua</td>
@@ -198,7 +267,9 @@
     </div>
 
     <div class="nginx-config">
-      <div class="config-title">📝 Nginx 限流配置示例</div>
+      <div class="config-title">
+        📝 Nginx 限流配置示例
+      </div>
       <div class="config-tabs">
         <button
           v-for="config in nginxConfigs"
@@ -211,9 +282,16 @@
       </div>
       <pre class="config-code"><code>{{ currentNginxConfig.code }}</code></pre>
       <div class="config-explanation">
-        <div class="exp-title">💡 配置说明</div>
+        <div class="exp-title">
+          💡 配置说明
+        </div>
         <ul>
-          <li v-for="(item, index) in currentNginxConfig.explanation" :key="index">{{ item }}</li>
+          <li
+            v-for="(item, index) in currentNginxConfig.explanation"
+            :key="index"
+          >
+            {{ item }}
+          </li>
         </ul>
       </div>
     </div>

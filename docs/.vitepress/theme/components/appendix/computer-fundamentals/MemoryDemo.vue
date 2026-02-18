@@ -21,30 +21,48 @@
             :style="{ height: block.size + '%' }"
             @click="selectedBlock = i"
           >
-            <span class="block-label" v-if="block.size > 5">{{ block.name }}</span>
-            <span class="block-size" v-if="block.size > 8">{{ block.sizeMB }}MB</span>
+            <span
+              v-if="block.size > 5"
+              class="block-label"
+            >{{ block.name }}</span>
+            <span
+              v-if="block.size > 8"
+              class="block-size"
+            >{{ block.sizeMB }}MB</span>
           </div>
         </div>
       </div>
 
       <div class="memory-info">
         <div class="info-section">
-          <div class="section-title">内存分配策略</div>
+          <div class="section-title">
+            内存分配策略
+          </div>
           <div class="strategy-tabs">
             <button 
               v-for="s in strategies" 
               :key="s.name"
               :class="['strat-btn', { active: activeStrategy === s.name }]"
               @click="activeStrategy = s.name"
-            >{{ s.name }}</button>
+            >
+              {{ s.name }}
+            </button>
           </div>
-          <div class="strategy-desc">{{ currentStrategy.desc }}</div>
+          <div class="strategy-desc">
+            {{ currentStrategy.desc }}
+          </div>
         </div>
 
         <div class="info-section">
-          <div class="section-title">虚拟内存的作用</div>
+          <div class="section-title">
+            虚拟内存的作用
+          </div>
           <div class="vm-benefits">
-            <div class="benefit-item" v-for="b in benefits" :key="b.title">
+            <div
+              v-for="b in benefits"
+              :key="b.title"
+              class="benefit-item"
+            >
               <span class="benefit-icon">{{ b.icon }}</span>
               <div class="benefit-content">
                 <span class="benefit-title">{{ b.title }}</span>

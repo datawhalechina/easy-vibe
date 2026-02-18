@@ -3,37 +3,91 @@
     <h4>事件循环 (Event Loop) 演示</h4>
 
     <div class="controls">
-      <el-button type="primary" size="small" @click="startSimulation" :disabled="isRunning">
+      <el-button
+        type="primary"
+        size="small"
+        :disabled="isRunning"
+        @click="startSimulation"
+      >
         {{ isRunning ? '运行中...' : '开始模拟' }}
       </el-button>
-      <el-button size="small" @click="addTask" :disabled="tasks.length >= 10">
+      <el-button
+        size="small"
+        :disabled="tasks.length >= 10"
+        @click="addTask"
+      >
         添加任务
       </el-button>
-      <el-button size="small" @click="addMicrotask" :disabled="microtasks.length >= 5">
+      <el-button
+        size="small"
+        :disabled="microtasks.length >= 5"
+        @click="addMicrotask"
+      >
         添加微任务
       </el-button>
-      <el-button size="small" @click="reset">重置</el-button>
+      <el-button
+        size="small"
+        @click="reset"
+      >
+        重置
+      </el-button>
 
-      <el-select v-model="simulationSpeed" size="small" style="width: 120px;">
-        <el-option :value="1" label="慢速" />
-        <el-option :value="2" label="正常" />
-        <el-option :value="3" label="快速" />
-        <el-option :value="4" label="极快" />
-        <el-option :value="5" label="即时" />
+      <el-select
+        v-model="simulationSpeed"
+        size="small"
+        style="width: 120px;"
+      >
+        <el-option
+          :value="1"
+          label="慢速"
+        />
+        <el-option
+          :value="2"
+          label="正常"
+        />
+        <el-option
+          :value="3"
+          label="快速"
+        />
+        <el-option
+          :value="4"
+          label="极快"
+        />
+        <el-option
+          :value="5"
+          label="即时"
+        />
       </el-select>
     </div>
 
     <div class="event-loop-container">
       <!-- 调用栈 -->
       <div class="section">
-        <div class="section-title">调用栈 (Call Stack)</div>
+        <div class="section-title">
+          调用栈 (Call Stack)
+        </div>
         <div class="stack-container">
-          <div v-for="(frame, idx) in callStack" :key="idx" class="stack-frame" :class="{ active: idx === 0 }"
-            :style="{ animationDelay: idx * 0.1 + 's' }">
-            <div class="frame-name">{{ frame.name }}</div>
-            <div class="frame-line" v-if="frame.line">第 {{ frame.line }} 行</div>
+          <div
+            v-for="(frame, idx) in callStack"
+            :key="idx"
+            class="stack-frame"
+            :class="{ active: idx === 0 }"
+            :style="{ animationDelay: idx * 0.1 + 's' }"
+          >
+            <div class="frame-name">
+              {{ frame.name }}
+            </div>
+            <div
+              v-if="frame.line"
+              class="frame-line"
+            >
+              第 {{ frame.line }} 行
+            </div>
           </div>
-          <div v-if="callStack.length === 0" class="empty-stack">
+          <div
+            v-if="callStack.length === 0"
+            class="empty-stack"
+          >
             栈为空
           </div>
         </div>
@@ -41,32 +95,67 @@
 
       <!-- 事件循环 -->
       <div class="section event-loop">
-        <div class="section-title">事件循环 (Event Loop)</div>
+        <div class="section-title">
+          事件循环 (Event Loop)
+        </div>
         <div class="loop-container">
-          <div class="loop-arrow" :class="{ rotating: isRunning }">
-            <svg viewBox="0 0 100 100" class="loop-svg">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#409eff" stroke-width="4" stroke-dasharray="200" stroke-linecap="round"
-                class="loop-circle" />
-              <polygon points="85,50 75,45 75,55" fill="#409eff" class="loop-arrowhead" />
+          <div
+            class="loop-arrow"
+            :class="{ rotating: isRunning }"
+          >
+            <svg
+              viewBox="0 0 100 100"
+              class="loop-svg"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke="#409eff"
+                stroke-width="4"
+                stroke-dasharray="200"
+                stroke-linecap="round"
+                class="loop-circle"
+              />
+              <polygon
+                points="85,50 75,45 75,55"
+                fill="#409eff"
+                class="loop-arrowhead"
+              />
             </svg>
           </div>
-          <div class="loop-label">检查</div>
+          <div class="loop-label">
+            检查
+          </div>
         </div>
 
         <div class="loop-description">
-          <div class="step" :class="{ active: currentStep === 1 }">
+          <div
+            class="step"
+            :class="{ active: currentStep === 1 }"
+          >
             <span class="step-num">1</span>
             <span class="step-text">执行调用栈中的同步代码</span>
           </div>
-          <div class="step" :class="{ active: currentStep === 2 }">
+          <div
+            class="step"
+            :class="{ active: currentStep === 2 }"
+          >
             <span class="step-num">2</span>
             <span class="step-text">执行所有微任务 (microtasks)</span>
           </div>
-          <div class="step" :class="{ active: currentStep === 3 }">
+          <div
+            class="step"
+            :class="{ active: currentStep === 3 }"
+          >
             <span class="step-num">3</span>
             <span class="step-text">渲染 UI (如果需要)</span>
           </div>
-          <div class="step" :class="{ active: currentStep === 4 }">
+          <div
+            class="step"
+            :class="{ active: currentStep === 4 }"
+          >
             <span class="step-num">4</span>
             <span class="step-text">执行宏任务 (macrotask)</span>
           </div>
@@ -75,31 +164,51 @@
 
       <!-- 任务队列 -->
       <div class="section">
-        <div class="section-title">任务队列</div>
+        <div class="section-title">
+          任务队列
+        </div>
 
         <div class="queue microtask-queue">
-          <div class="queue-title">微任务队列 (Microtasks)</div>
+          <div class="queue-title">
+            微任务队列 (Microtasks)
+          </div>
           <div class="queue-items">
-            <div v-for="(task, idx) in microtasks" :key="task.id" class="queue-item microtask"
-              :style="{ animationDelay: idx * 0.1 + 's' }">
+            <div
+              v-for="(task, idx) in microtasks"
+              :key="task.id"
+              class="queue-item microtask"
+              :style="{ animationDelay: idx * 0.1 + 's' }"
+            >
               <span class="task-name">{{ task.name }}</span>
               <span class="task-priority">高优先级</span>
             </div>
-            <div v-if="microtasks.length === 0" class="empty-queue">
+            <div
+              v-if="microtasks.length === 0"
+              class="empty-queue"
+            >
               队列为空
             </div>
           </div>
         </div>
 
         <div class="queue macrotask-queue">
-          <div class="queue-title">宏任务队列 (Macrotasks)</div>
+          <div class="queue-title">
+            宏任务队列 (Macrotasks)
+          </div>
           <div class="queue-items">
-            <div v-for="(task, idx) in tasks" :key="task.id" class="queue-item macrotask"
-              :style="{ animationDelay: idx * 0.15 + 's' }">
+            <div
+              v-for="(task, idx) in tasks"
+              :key="task.id"
+              class="queue-item macrotask"
+              :style="{ animationDelay: idx * 0.15 + 's' }"
+            >
               <span class="task-name">{{ task.name }}</span>
               <span class="task-type">{{ task.type }}</span>
             </div>
-            <div v-if="tasks.length === 0" class="empty-queue">
+            <div
+              v-if="tasks.length === 0"
+              class="empty-queue"
+            >
               队列为空
             </div>
           </div>

@@ -6,35 +6,68 @@
   <div class="levels">
     <div class="header">
       <div>
-        <div class="title">Agent 能力分级（从聊天到协作）</div>
-        <div class="subtitle">拖动看看：等级越高，越像“能独立干活的同事”。</div>
+        <div class="title">
+          Agent 能力分级（从聊天到协作）
+        </div>
+        <div class="subtitle">
+          拖动看看：等级越高，越像“能独立干活的同事”。
+        </div>
       </div>
-      <div class="badge">当前：{{ current.name }}</div>
+      <div class="badge">
+        当前：{{ current.name }}
+      </div>
     </div>
 
     <div class="slider">
-      <input type="range" min="0" max="5" step="1" v-model.number="level" />
+      <input
+        v-model.number="level"
+        type="range"
+        min="0"
+        max="5"
+        step="1"
+      >
       <div class="ticks">
-        <span v-for="n in 6" :key="n">{{ n - 1 }}</span>
+        <span
+          v-for="n in 6"
+          :key="n"
+        >{{ n - 1 }}</span>
       </div>
     </div>
 
     <div class="grid">
       <div class="card">
-        <div class="k">能做什么</div>
+        <div class="k">
+          能做什么
+        </div>
         <ul>
-          <li v-for="x in current.can" :key="x">{{ x }}</li>
+          <li
+            v-for="x in current.can"
+            :key="x"
+          >
+            {{ x }}
+          </li>
         </ul>
       </div>
       <div class="card">
-        <div class="k">容易出的问题</div>
+        <div class="k">
+          容易出的问题
+        </div>
         <ul>
-          <li v-for="x in current.risk" :key="x">{{ x }}</li>
+          <li
+            v-for="x in current.risk"
+            :key="x"
+          >
+            {{ x }}
+          </li>
         </ul>
       </div>
       <div class="card">
-        <div class="k">典型任务</div>
-        <div class="v">{{ current.example }}</div>
+        <div class="k">
+          典型任务
+        </div>
+        <div class="v">
+          {{ current.example }}
+        </div>
       </div>
     </div>
   </div>

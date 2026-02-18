@@ -2,12 +2,16 @@
   <div class="demo-container">
     <div class="demo-header">
       <h4>HTTP 请求结构解析</h4>
-      <p class="hint">详解 HTTP 请求的组成部分</p>
+      <p class="hint">
+        详解 HTTP 请求的组成部分
+      </p>
     </div>
     <div class="demo-content">
       <div class="structure-box">
         <div class="section request-line">
-          <div class="label">请求行</div>
+          <div class="label">
+            请求行
+          </div>
           <div class="content">
             <code>GET /api/users/123 HTTP/1.1</code>
           </div>
@@ -17,24 +21,32 @@
         </div>
 
         <div class="section headers">
-          <div class="label">请求头</div>
+          <div class="label">
+            请求头
+          </div>
           <div class="content header-list">
             <div><code>Host: api.example.com</code></div>
             <div><code>Content-Type: application/json</code></div>
             <div><code>Authorization: Bearer token123</code></div>
           </div>
-          <div class="explain">元信息：域名、数据格式、认证等</div>
+          <div class="explain">
+            元信息：域名、数据格式、认证等
+          </div>
         </div>
 
         <div class="section body">
-          <div class="label">请求体 (可选)</div>
+          <div class="label">
+            请求体 (可选)
+          </div>
           <div class="content">
             <pre>{
   "name": "张三",
   "email": "zhangsan@example.com"
 }</pre>
           </div>
-          <div class="explain">POST/PUT 请求携带的数据</div>
+          <div class="explain">
+            POST/PUT 请求携带的数据
+          </div>
         </div>
       </div>
     </div>

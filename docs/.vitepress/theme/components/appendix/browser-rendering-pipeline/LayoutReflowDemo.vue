@@ -10,13 +10,25 @@
       <div class="control-panel">
         <div class="control-group">
           <label>选择要修改的属性：</label>
-          <select v-model="selectedProperty" @change="resetDemo">
-            <option value="transform">transform: translateY() (只触发合成)</option>
-            <option value="width">width (触发重排)</option>
-            <option value="marginLeft">margin-left (触发重排)</option>
+          <select
+            v-model="selectedProperty"
+            @change="resetDemo"
+          >
+            <option value="transform">
+              transform: translateY() (只触发合成)
+            </option>
+            <option value="width">
+              width (触发重排)
+            </option>
+            <option value="marginLeft">
+              margin-left (触发重排)
+            </option>
           </select>
         </div>
-        <button class="toggle-btn" @click="toggleAnimation">
+        <button
+          class="toggle-btn"
+          @click="toggleAnimation"
+        >
           {{ isAnimating ? '停止动画' : '开始动画' }}
         </button>
       </div>
@@ -38,11 +50,17 @@
         <div class="stats-panel">
           <div class="stat-item">
             <span class="stat-label">触发阶段：</span>
-            <span class="stat-value" :class="statClass">{{ currentStage }}</span>
+            <span
+              class="stat-value"
+              :class="statClass"
+            >{{ currentStage }}</span>
           </div>
           <div class="stat-item">
             <span class="stat-label">性能影响：</span>
-            <span class="stat-value" :class="performanceClass">{{ performanceImpact }}</span>
+            <span
+              class="stat-value"
+              :class="performanceClass"
+            >{{ performanceImpact }}</span>
           </div>
           <div class="stat-item">
             <span class="stat-label">是否影响其他元素：</span>

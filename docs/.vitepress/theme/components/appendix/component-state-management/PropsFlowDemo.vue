@@ -12,7 +12,9 @@
 
     <div class="demo-content">
       <div class="component-box parent">
-        <div class="component-label">👨 父组件 (寄件人)</div>
+        <div class="component-label">
+          👨 父组件 (寄件人)
+        </div>
         <div class="data-display">
           <div class="data-row">
             <span class="key">包裹内容:</span>
@@ -20,7 +22,10 @@
           </div>
           <div class="data-row">
             <span class="key">包装颜色:</span>
-            <span class="value" :class="theme">{{ theme === 'light' ? '亮色' : '暗色' }}</span>
+            <span
+              class="value"
+              :class="theme"
+            >{{ theme === 'light' ? '亮色' : '暗色' }}</span>
           </div>
         </div>
         <div class="props-output">
@@ -32,25 +37,42 @@
         </div>
       </div>
 
-      <div class="flow-arrow" :class="{ active: isFlowing }">
-        <div class="arrow-body">▼</div>
-        <div class="flow-text">{{ isFlowing ? '快递派送中...' : 'Props 单向传递' }}</div>
+      <div
+        class="flow-arrow"
+        :class="{ active: isFlowing }"
+      >
+        <div class="arrow-body">
+          ▼
+        </div>
+        <div class="flow-text">
+          {{ isFlowing ? '快递派送中...' : 'Props 单向传递' }}
+        </div>
       </div>
 
       <div class="component-box child">
-        <div class="component-label">👦 子组件 (收件人)</div>
+        <div class="component-label">
+          👦 子组件 (收件人)
+        </div>
         <div class="props-display">
-          <div class="label">📬 接收包裹:</div>
+          <div class="label">
+            📬 接收包裹:
+          </div>
           <div class="prop-item">
             <span class="prop-name">user</span>
             <span class="prop-value">{{ user.name }} ({{ user.age }}岁)</span>
           </div>
           <div class="prop-item">
             <span class="prop-name">theme</span>
-            <span class="prop-value" :class="theme">{{ theme === 'light' ? '亮色' : '暗色' }}</span>
+            <span
+              class="prop-value"
+              :class="theme"
+            >{{ theme === 'light' ? '亮色' : '暗色' }}</span>
           </div>
         </div>
-        <button class="emit-btn" @click="handleEmit">
+        <button
+          class="emit-btn"
+          @click="handleEmit"
+        >
           📞 打电话给爸爸改名字
         </button>
       </div>
@@ -59,11 +81,27 @@
     <div class="interaction-area">
       <div class="control-group">
         <label>📝 修改包裹内容：</label>
-        <input v-model="user.name" placeholder="收件人姓名" @input="triggerFlow" />
-        <input v-model.number="user.age" type="number" placeholder="年龄" @input="triggerFlow" />
-        <select v-model="theme" @change="triggerFlow">
-          <option value="light">亮色包装</option>
-          <option value="dark">暗色包装</option>
+        <input
+          v-model="user.name"
+          placeholder="收件人姓名"
+          @input="triggerFlow"
+        >
+        <input
+          v-model.number="user.age"
+          type="number"
+          placeholder="年龄"
+          @input="triggerFlow"
+        >
+        <select
+          v-model="theme"
+          @change="triggerFlow"
+        >
+          <option value="light">
+            亮色包装
+          </option>
+          <option value="dark">
+            暗色包装
+          </option>
         </select>
       </div>
     </div>

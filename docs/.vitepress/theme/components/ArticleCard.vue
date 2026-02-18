@@ -10,12 +10,22 @@ defineProps({
 </script>
 
 <template>
-  <a :href="withBase(link)" class="article-card">
+  <a
+    :href="withBase(link)"
+    class="article-card"
+  >
     <div class="card-content">
       <h3 class="title">{{ title }}</h3>
       <p class="description">{{ description }}</p>
-      <div v-if="tags && tags.length" class="tags">
-        <span v-for="tag in tags" :key="tag" class="tag">{{ tag }}</span>
+      <div
+        v-if="tags && tags.length"
+        class="tags"
+      >
+        <span
+          v-for="tag in tags"
+          :key="tag"
+          class="tag"
+        >{{ tag }}</span>
       </div>
     </div>
     <div class="arrow">→</div>

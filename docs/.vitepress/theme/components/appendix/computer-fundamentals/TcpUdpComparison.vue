@@ -24,14 +24,21 @@
         </button>
       </div>
 
-      <div class="protocol-detail" v-if="currentProtocol">
+      <div
+        v-if="currentProtocol"
+        class="protocol-detail"
+      >
         <div class="detail-header">
           <span class="detail-name">{{ currentProtocol.name }}</span>
           <span class="detail-full">{{ currentProtocol.fullName }}</span>
         </div>
         
         <div class="feature-grid">
-          <div class="feature-item" v-for="(feature, i) in currentProtocol.features" :key="i">
+          <div
+            v-for="(feature, i) in currentProtocol.features"
+            :key="i"
+            class="feature-item"
+          >
             <span class="feature-icon">{{ feature.icon }}</span>
             <span class="feature-name">{{ feature.name }}</span>
             <span class="feature-value">{{ feature.value }}</span>
@@ -39,9 +46,15 @@
         </div>
 
         <div class="mechanism-section">
-          <div class="mechanism-title">核心机制</div>
+          <div class="mechanism-title">
+            核心机制
+          </div>
           <div class="mechanism-list">
-            <div class="mechanism-item" v-for="(m, i) in currentProtocol.mechanisms" :key="i">
+            <div
+              v-for="(m, i) in currentProtocol.mechanisms"
+              :key="i"
+              class="mechanism-item"
+            >
               <span class="mechanism-name">{{ m.name }}</span>
               <span class="mechanism-desc">{{ m.desc }}</span>
             </div>
@@ -49,18 +62,28 @@
         </div>
 
         <div class="use-cases">
-          <div class="use-title">适用场景</div>
+          <div class="use-title">
+            适用场景
+          </div>
           <div class="use-tags">
-            <span class="use-tag" v-for="(use, i) in currentProtocol.useCases" :key="i">{{ use }}</span>
+            <span
+              v-for="(use, i) in currentProtocol.useCases"
+              :key="i"
+              class="use-tag"
+            >{{ use }}</span>
           </div>
         </div>
       </div>
 
       <div class="visual-demo">
-        <div class="visual-title">传输过程演示</div>
+        <div class="visual-title">
+          传输过程演示
+        </div>
         <div class="transmission-demo">
           <div class="sender">
-            <div class="node-label">发送方</div>
+            <div class="node-label">
+              发送方
+            </div>
             <div class="packets">
               <div 
                 v-for="(packet, i) in packets" 
@@ -73,16 +96,33 @@
           </div>
           
           <div class="network-channel">
-            <div class="channel-label">网络通道</div>
-            <div class="channel-status" :class="{ congested: isCongested }">
+            <div class="channel-label">
+              网络通道
+            </div>
+            <div
+              class="channel-status"
+              :class="{ congested: isCongested }"
+            >
               {{ isCongested ? '拥堵' : '正常' }}
             </div>
-            <button class="demo-btn" @click="runDemo">开始演示</button>
-            <button class="demo-btn" @click="toggleCongestion">{{ isCongested ? '恢复网络' : '模拟丢包' }}</button>
+            <button
+              class="demo-btn"
+              @click="runDemo"
+            >
+              开始演示
+            </button>
+            <button
+              class="demo-btn"
+              @click="toggleCongestion"
+            >
+              {{ isCongested ? '恢复网络' : '模拟丢包' }}
+            </button>
           </div>
           
           <div class="receiver">
-            <div class="node-label">接收方</div>
+            <div class="node-label">
+              接收方
+            </div>
             <div class="received-packets">
               <div 
                 v-for="(packet, i) in receivedPackets" 
@@ -96,15 +136,25 @@
         </div>
         
         <div class="demo-log">
-          <div class="log-title">传输日志</div>
+          <div class="log-title">
+            传输日志
+          </div>
           <div class="log-content">
-            <div v-for="(log, i) in logs" :key="i" class="log-item">{{ log }}</div>
+            <div
+              v-for="(log, i) in logs"
+              :key="i"
+              class="log-item"
+            >
+              {{ log }}
+            </div>
           </div>
         </div>
       </div>
 
       <div class="comparison-table">
-        <div class="table-title">特性对比</div>
+        <div class="table-title">
+          特性对比
+        </div>
         <table>
           <thead>
             <tr>
@@ -114,10 +164,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(row, i) in comparisonData" :key="i">
-              <td class="feature-col">{{ row.feature }}</td>
-              <td :class="{ highlight: row.tcpBetter }">{{ row.tcp }}</td>
-              <td :class="{ highlight: !row.tcpBetter }">{{ row.udp }}</td>
+            <tr
+              v-for="(row, i) in comparisonData"
+              :key="i"
+            >
+              <td class="feature-col">
+                {{ row.feature }}
+              </td>
+              <td :class="{ highlight: row.tcpBetter }">
+                {{ row.tcp }}
+              </td>
+              <td :class="{ highlight: !row.tcpBetter }">
+                {{ row.udp }}
+              </td>
             </tr>
           </tbody>
         </table>

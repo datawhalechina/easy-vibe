@@ -338,11 +338,11 @@ export default defineConfig({
           },
           {
             text: '初中级开发',
-            link: '/zh-cn/stage-2/intro'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: '高级开发',
-            link: '/zh-cn/stage-3/intro'
+            link: '/zh-cn/stage-3/'
           },
           { text: '附录', link: '/zh-cn/appendix/index' }
         ],
@@ -754,13 +754,13 @@ export default defineConfig({
           },
           {
             text: 'Full-Stack Development',
-            link: '/en-us/stage-2/intro'
+            link: '/en-us/stage-2/'
           },
           {
             text: 'Advanced Development',
-            link: '/en-us/stage-3/intro'
+            link: '/en-us/stage-3/'
           },
-          { text: 'Appendix', link: '/en-us/appendix/intro' }
+          { text: 'Appendix', link: '/en-us/appendix/' }
         ],
         // TODO: Add English sidebar when content is ready
         sidebar: {}
@@ -794,13 +794,13 @@ export default defineConfig({
           },
           {
             text: 'フルスタック開発',
-            link: '/ja-jp/stage-2/intro'
+            link: '/ja-jp/stage-2/'
           },
           {
             text: '上級開発',
-            link: '/ja-jp/stage-3/intro'
+            link: '/ja-jp/stage-3/'
           },
-          { text: '付録', link: '/ja-jp/appendix/intro' }
+          { text: '付録', link: '/ja-jp/appendix/' }
         ],
         // TODO: Add Japanese sidebar when content is ready
         sidebar: {}
@@ -832,13 +832,13 @@ export default defineConfig({
           },
           {
             text: '初中級開發',
-            link: '/zh-tw/stage-2/intro'
+            link: '/zh-tw/stage-2/'
           },
           {
             text: '高級開發',
-            link: '/zh-tw/stage-3/intro'
+            link: '/zh-tw/stage-3/'
           },
-          { text: '附錄', link: '/zh-tw/appendix/intro' }
+          { text: '附錄', link: '/zh-tw/appendix/' }
         ],
         sidebar: {}
       }
@@ -866,13 +866,13 @@ export default defineConfig({
           { text: '초보자 & PM', link: '/ko-kr/stage-0/' },
           {
             text: '풀스택 개발',
-            link: '/ko-kr/stage-2/intro'
+            link: '/ko-kr/stage-2/'
           },
           {
             text: '고급 개발',
-            link: '/ko-kr/stage-3/intro'
+            link: '/ko-kr/stage-3/'
           },
-          { text: '부록', link: '/ko-kr/appendix/intro' }
+          { text: '부록', link: '/ko-kr/appendix/' }
         ],
         sidebar: {}
       }
@@ -903,13 +903,13 @@ export default defineConfig({
           },
           {
             text: 'Desarrollo Full Stack',
-            link: '/es-es/stage-2/intro'
+            link: '/es-es/stage-2/'
           },
           {
             text: 'Desarrollo Avanzado',
-            link: '/es-es/stage-3/intro'
+            link: '/es-es/stage-3/'
           },
-          { text: 'Apéndice', link: '/es-es/appendix/intro' }
+          { text: 'Apéndice', link: '/es-es/appendix/' }
         ],
         sidebar: {}
       }
@@ -937,13 +937,13 @@ export default defineConfig({
           { text: 'Débutant & PM', link: '/fr-fr/stage-0/' },
           {
             text: 'Développement Full Stack',
-            link: '/fr-fr/stage-2/intro'
+            link: '/fr-fr/stage-2/'
           },
           {
             text: 'Développement Avancé',
-            link: '/fr-fr/stage-3/intro'
+            link: '/fr-fr/stage-3/'
           },
-          { text: 'Annexe', link: '/fr-fr/appendix/intro' }
+          { text: 'Annexe', link: '/fr-fr/appendix/' }
         ],
         sidebar: {}
       }
@@ -971,13 +971,13 @@ export default defineConfig({
           { text: 'Anfänger & PM', link: '/de-de/stage-0/' },
           {
             text: 'Full Stack Entwicklung',
-            link: '/de-de/stage-2/intro'
+            link: '/de-de/stage-2/'
           },
           {
             text: 'Fortgeschrittene Entwicklung',
-            link: '/de-de/stage-3/intro'
+            link: '/de-de/stage-3/'
           },
-          { text: 'Anhang', link: '/de-de/appendix/intro' }
+          { text: 'Anhang', link: '/de-de/appendix/' }
         ],
         sidebar: {}
       }
@@ -1008,13 +1008,13 @@ export default defineConfig({
           },
           {
             text: 'تطوير Full Stack',
-            link: '/ar-sa/stage-2/intro'
+            link: '/ar-sa/stage-2/'
           },
           {
             text: 'تطوير متقدم',
-            link: '/ar-sa/stage-3/intro'
+            link: '/ar-sa/stage-3/'
           },
-          { text: 'ملحق', link: '/ar-sa/appendix/intro' }
+          { text: 'ملحق', link: '/ar-sa/appendix/' }
         ],
         sidebar: {}
       }
@@ -1045,13 +1045,13 @@ export default defineConfig({
           },
           {
             text: 'Phát triển Full Stack',
-            link: '/vi-vn/stage-2/intro'
+            link: '/vi-vn/stage-2/'
           },
           {
             text: 'Phát triển Nâng cao',
-            link: '/vi-vn/stage-3/intro'
+            link: '/vi-vn/stage-3/'
           },
-          { text: 'Phụ lục', link: '/vi-vn/appendix/intro' }
+          { text: 'Phụ lục', link: '/vi-vn/appendix/' }
         ],
         sidebar: {}
       }

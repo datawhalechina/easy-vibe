@@ -6,7 +6,10 @@
       <span class="subtitle">理解 CDN 智能调度和负载均衡</span>
     </div>
     <div class="demo-content">
-      <el-alert type="info" :closable="false">
+      <el-alert
+        type="info"
+        :closable="false"
+      >
         流量调度演示组件占位符 - 待实现具体交互
       </el-alert>
     </div>

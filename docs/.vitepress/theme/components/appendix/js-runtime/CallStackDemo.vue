@@ -102,7 +102,9 @@ const stop = () => {
         <h4>调用栈</h4>
         <div class="stack-container">
           <div class="stack-base">
-            <div class="stack-label">栈底</div>
+            <div class="stack-label">
+              栈底
+            </div>
           </div>
 
           <div class="stack-frames">
@@ -114,18 +116,27 @@ const stop = () => {
                 :class="{ 'active': frame.active }"
                 :style="{ bottom: `${index * 60}px` }"
               >
-                <div class="frame-function">{{ frame.function }}()</div>
-                <div class="frame-code">{{ frame.code }}</div>
+                <div class="frame-function">
+                  {{ frame.function }}()
+                </div>
+                <div class="frame-code">
+                  {{ frame.code }}
+                </div>
               </div>
             </transition-group>
 
-            <div v-if="callStack.length === 0" class="empty-stack">
+            <div
+              v-if="callStack.length === 0"
+              class="empty-stack"
+            >
               栈为空
             </div>
           </div>
 
           <div class="stack-top">
-            <div class="stack-label">栈顶</div>
+            <div class="stack-label">
+              栈顶
+            </div>
           </div>
         </div>
 
@@ -145,7 +156,10 @@ const stop = () => {
     <div class="output-section">
       <h4>输出</h4>
       <div class="output-container">
-        <div v-if="output.length === 0" class="empty-output">
+        <div
+          v-if="output.length === 0"
+          class="empty-output"
+        >
           等待输出...
         </div>
         <transition-group name="output">
@@ -162,16 +176,32 @@ const stop = () => {
 
     <!-- 控制按钮 -->
     <div class="controls">
-      <button @click="play" :disabled="isAnimating" class="btn-play">
+      <button
+        :disabled="isAnimating"
+        class="btn-play"
+        @click="play"
+      >
         {{ isAnimating ? '执行中...' : '▶ 自动演示' }}
       </button>
-      <button @click="nextStep" :disabled="isAnimating || currentStep >= codeSteps.length" class="btn-step">
+      <button
+        :disabled="isAnimating || currentStep >= codeSteps.length"
+        class="btn-step"
+        @click="nextStep"
+      >
         ⏭ 单步执行
       </button>
-      <button @click="stop" :disabled="!isAnimating" class="btn-stop">
+      <button
+        :disabled="!isAnimating"
+        class="btn-stop"
+        @click="stop"
+      >
         ⏸ 停止
       </button>
-      <button @click="reset" :disabled="isAnimating" class="btn-reset">
+      <button
+        :disabled="isAnimating"
+        class="btn-reset"
+        @click="reset"
+      >
         🔄 重置
       </button>
     </div>

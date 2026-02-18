@@ -3,13 +3,27 @@
     <h4>线程调度演示</h4>
 
     <div class="controls">
-      <el-radio-group v-model="schedulingPolicy" size="small">
-        <el-radio-button label="fifo">FIFO (先来先服务)</el-radio-button>
-        <el-radio-button label="roundrobin">时间片轮转</el-radio-button>
-        <el-radio-button label="priority">优先级调度</el-radio-button>
+      <el-radio-group
+        v-model="schedulingPolicy"
+        size="small"
+      >
+        <el-radio-button label="fifo">
+          FIFO (先来先服务)
+        </el-radio-button>
+        <el-radio-button label="roundrobin">
+          时间片轮转
+        </el-radio-button>
+        <el-radio-button label="priority">
+          优先级调度
+        </el-radio-button>
       </el-radio-group>
 
-      <el-button type="primary" size="small" @click="addThread" :disabled="threads.length >= 6">
+      <el-button
+        type="primary"
+        size="small"
+        :disabled="threads.length >= 6"
+        @click="addThread"
+      >
         添加线程
       </el-button>
 
@@ -21,7 +35,10 @@
         {{ isRunning ? '暂停' : '开始调度' }}
       </el-button>
 
-      <el-button size="small" @click="reset">
+      <el-button
+        size="small"
+        @click="reset"
+      >
         重置
       </el-button>
     </div>
@@ -29,12 +46,24 @@
     <div class="timeline-container">
       <div class="timeline-header">
         <span class="timeline-label">时间轴</span>
-        <div class="time-marker">0ms</div>
-        <div class="time-marker">100ms</div>
-        <div class="time-marker">200ms</div>
-        <div class="time-marker">300ms</div>
-        <div class="time-marker">400ms</div>
-        <div class="time-marker">500ms</div>
+        <div class="time-marker">
+          0ms
+        </div>
+        <div class="time-marker">
+          100ms
+        </div>
+        <div class="time-marker">
+          200ms
+        </div>
+        <div class="time-marker">
+          300ms
+        </div>
+        <div class="time-marker">
+          400ms
+        </div>
+        <div class="time-marker">
+          500ms
+        </div>
       </div>
 
       <div class="thread-rows">
@@ -44,11 +73,17 @@
           class="thread-row"
         >
           <div class="thread-info">
-            <div class="thread-name" :style="{ color: thread.color }">
+            <div
+              class="thread-name"
+              :style="{ color: thread.color }"
+            >
               {{ thread.name }}
             </div>
             <div class="thread-details">
-              <el-tag size="small" :type="thread.state === 'running' ? 'success' : thread.state === 'ready' ? 'warning' : 'info'">
+              <el-tag
+                size="small"
+                :type="thread.state === 'running' ? 'success' : thread.state === 'ready' ? 'warning' : 'info'"
+              >
                 {{ stateText(thread.state) }}
               </el-tag>
               <span class="priority">优先级: {{ thread.priority }}</span>
@@ -63,8 +98,14 @@
               :class="{ running: slot.state === 'running', blocked: slot.state === 'blocked' }"
               :style="{ left: slot.start + '%', width: slot.width + '%', backgroundColor: slot.state === 'running' ? thread.color : '#dcdfe6' }"
             >
-              <span v-if="slot.state === 'running'" class="slot-label">运行</span>
-              <span v-else class="slot-label">等待</span>
+              <span
+                v-if="slot.state === 'running'"
+                class="slot-label"
+              >运行</span>
+              <span
+                v-else
+                class="slot-label"
+              >等待</span>
             </div>
 
             <div
@@ -72,7 +113,7 @@
               class="current-indicator"
               :style="{ left: currentTime + '%', backgroundColor: thread.color }"
             >
-              <div class="indicator-arrow"></div>
+              <div class="indicator-arrow" />
             </div>
           </div>
         </div>
@@ -81,20 +122,36 @@
 
     <div class="stats-panel">
       <div class="stat-item">
-        <div class="stat-value">{{ completedThreads }}</div>
-        <div class="stat-label">已完成线程</div>
+        <div class="stat-value">
+          {{ completedThreads }}
+        </div>
+        <div class="stat-label">
+          已完成线程
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">{{ contextSwitches }}</div>
-        <div class="stat-label">上下文切换</div>
+        <div class="stat-value">
+          {{ contextSwitches }}
+        </div>
+        <div class="stat-label">
+          上下文切换
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">{{ avgWaitTime }}ms</div>
-        <div class="stat-label">平均等待时间</div>
+        <div class="stat-value">
+          {{ avgWaitTime }}ms
+        </div>
+        <div class="stat-label">
+          平均等待时间
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-value">{{ throughput }}</div>
-        <div class="stat-label">吞吐量 (线程/秒)</div>
+        <div class="stat-value">
+          {{ throughput }}
+        </div>
+        <div class="stat-label">
+          吞吐量 (线程/秒)
+        </div>
       </div>
     </div>
 

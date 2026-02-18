@@ -9,7 +9,10 @@
         <span class="icon">📖</span>
         <span class="title">API 文档翻译机</span>
       </div>
-      <button class="translate-btn" @click="isHuman = !isHuman">
+      <button
+        class="translate-btn"
+        @click="isHuman = !isHuman"
+      >
         {{ isHuman ? '🔄 还原回黑话' : '✨ 翻译成人话' }}
       </button>
     </div>
@@ -19,21 +22,30 @@
       <div class="api-doc">
         <div class="doc-row method-row">
           <span class="label">Method:</span>
-          <span class="value method" :class="{ human: isHuman }">
+          <span
+            class="value method"
+            :class="{ human: isHuman }"
+          >
             {{ isHuman ? '我要下单 (POST)' : 'POST' }}
           </span>
         </div>
 
         <div class="doc-row url-row">
           <span class="label">Endpoint:</span>
-          <span class="value url" :class="{ human: isHuman }">
+          <span
+            class="value url"
+            :class="{ human: isHuman }"
+          >
             {{ isHuman ? '去哪里找厨师' : 'https://api.deepseek.com/chat' }}
           </span>
         </div>
 
         <div class="doc-row headers-row">
           <span class="label">Headers:</span>
-          <div class="code-block" :class="{ human: isHuman }">
+          <div
+            class="code-block"
+            :class="{ human: isHuman }"
+          >
             <div class="line">
               <span class="key">{{
                 isHuman ? '我是谁:' : 'Authorization:'
@@ -55,25 +67,41 @@
 
         <div class="doc-row body-row">
           <span class="label">Body:</span>
-          <div class="code-block" :class="{ human: isHuman }">
-            <div class="line">{</div>
+          <div
+            class="code-block"
+            :class="{ human: isHuman }"
+          >
+            <div class="line">
+              {
+            </div>
             <div class="line indent">
               <span class="key">"model":</span>
               <span class="val">"deepseek-chat",</span>
-              <span class="comment" v-if="isHuman"> // 选个聪明的厨师</span>
+              <span
+                v-if="isHuman"
+                class="comment"
+              > // 选个聪明的厨师</span>
             </div>
             <div class="line indent">
               <span class="key">"messages":</span>
               <span class="val">[...]</span>
-              <span class="comment" v-if="isHuman"> // 我要说的话</span>
+              <span
+                v-if="isHuman"
+                class="comment"
+              > // 我要说的话</span>
             </div>
-            <div class="line">}</div>
+            <div class="line">
+              }
+            </div>
           </div>
         </div>
 
         <div class="doc-row response-row">
           <span class="label">Response:</span>
-          <div class="code-block" :class="{ human: isHuman }">
+          <div
+            class="code-block"
+            :class="{ human: isHuman }"
+          >
             <div class="line">
               <span class="key">{{ isHuman ? '状态:' : 'Status:' }}</span>
               <span class="status-ok">{{

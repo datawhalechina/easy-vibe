@@ -4,9 +4,9 @@
       <div class="controls">
         <el-button
           type="primary"
-          @click="playDemo"
           :loading="isPlaying"
           icon="VideoPlay"
+          @click="playDemo"
         >
           开始对比演示
         </el-button>
@@ -14,10 +14,18 @@
 
       <div class="comparison-container">
         <!-- Left: Autoregressive -->
-        <el-card shadow="hover" class="method-card">
+        <el-card
+          shadow="hover"
+          class="method-card"
+        >
           <template #header>
             <div class="method-header">
-              <el-icon :size="20" color="#F56C6C"><Timer /></el-icon>
+              <el-icon
+                :size="20"
+                color="#F56C6C"
+              >
+                <Timer />
+              </el-icon>
               <span class="method-title">自回归 (Autoregressive)</span>
             </div>
           </template>
@@ -38,12 +46,21 @@
               </div>
             </div>
             <div class="stats">
-              <el-descriptions :column="1" size="small" border>
-                <el-descriptions-item label="生成方式"
-                  >串行 (Serial)</el-descriptions-item
-                >
+              <el-descriptions
+                :column="1"
+                size="small"
+                border
+              >
+                <el-descriptions-item label="生成方式">
+                  串行 (Serial)
+                </el-descriptions-item>
                 <el-descriptions-item label="速度">
-                  <el-tag type="danger" size="small">慢 (Slow)</el-tag>
+                  <el-tag
+                    type="danger"
+                    size="small"
+                  >
+                    慢 (Slow)
+                  </el-tag>
                 </el-descriptions-item>
               </el-descriptions>
             </div>
@@ -51,16 +68,27 @@
         </el-card>
 
         <!-- Right: Flow Matching -->
-        <el-card shadow="hover" class="method-card">
+        <el-card
+          shadow="hover"
+          class="method-card"
+        >
           <template #header>
             <div class="method-header">
-              <el-icon :size="20" color="#67C23A"><Lightning /></el-icon>
+              <el-icon
+                :size="20"
+                color="#67C23A"
+              >
+                <Lightning />
+              </el-icon>
               <span class="method-title">流匹配 (Flow Matching)</span>
             </div>
           </template>
           <div class="method-body">
             <div class="visual-area">
-              <div class="flow-field" :style="{ opacity: flowProgress }">
+              <div
+                class="flow-field"
+                :style="{ opacity: flowProgress }"
+              >
                 <div
                   v-for="n in 20"
                   :key="n"
@@ -69,23 +97,34 @@
                     height: flowProgress * (30 + Math.random() * 70) + '%',
                     transitionDelay: n * 0.02 + 's'
                   }"
-                ></div>
+                />
               </div>
               <div
-                class="flow-overlay"
                 v-if="flowProgress < 1 && flowProgress > 0"
+                class="flow-overlay"
               >
-                <el-icon class="is-loading"><Loading /></el-icon>
+                <el-icon class="is-loading">
+                  <Loading />
+                </el-icon>
                 <span>Denoising...</span>
               </div>
             </div>
             <div class="stats">
-              <el-descriptions :column="1" size="small" border>
-                <el-descriptions-item label="生成方式"
-                  >并行 (Parallel)</el-descriptions-item
-                >
+              <el-descriptions
+                :column="1"
+                size="small"
+                border
+              >
+                <el-descriptions-item label="生成方式">
+                  并行 (Parallel)
+                </el-descriptions-item>
                 <el-descriptions-item label="速度">
-                  <el-tag type="success" size="small">极快 (Fast)</el-tag>
+                  <el-tag
+                    type="success"
+                    size="small"
+                  >
+                    极快 (Fast)
+                  </el-tag>
                 </el-descriptions-item>
               </el-descriptions>
             </div>
@@ -95,12 +134,17 @@
 
       <el-divider />
 
-      <el-alert title="技术演进" type="success" :closable="false" show-icon>
+      <el-alert
+        title="技术演进"
+        type="success"
+        :closable="false"
+        show-icon
+      >
         <template #default>
           <p>
             <strong>自回归</strong> (如 VALL-E)
             像人说话一样，必须说完上一个字才能说下一个字，所以很慢。
-            <br />
+            <br>
             <strong>流匹配</strong> (如 F5-TTS)
             像画画一样，可以同时在画布的所有角落开始上色，效率提升了 10-20 倍。
           </p>
@@ -139,13 +183,12 @@ const playDemo = async () => {
   })
 
   // Start AR (Slow)
-  const arPromise = new Promise(async (resolve) => {
+  const arPromise = (async () => {
     for (const token of arTokensSource) {
       await new Promise((r) => setTimeout(r, 400)) // 400ms per token
       displayedArTokens.value.push(token)
     }
-    resolve()
-  })
+  })()
 
   await Promise.all([flowPromise, arPromise])
   isPlaying.value = false

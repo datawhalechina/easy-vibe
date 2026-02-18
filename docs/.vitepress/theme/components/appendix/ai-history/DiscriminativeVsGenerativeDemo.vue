@@ -4,14 +4,19 @@
       <template #header>
         <div class="card-header">
           <h4>🎯 判别式 vs 生成式 AI</h4>
-          <p class="subtitle">理解两种不同的 AI 范式</p>
+          <p class="subtitle">
+            理解两种不同的 AI 范式
+          </p>
         </div>
       </template>
 
       <div class="comparison-container">
         <el-row :gutter="20">
           <!-- Discriminative AI -->
-          <el-col :xs="24" :sm="12">
+          <el-col
+            :xs="24"
+            :sm="12"
+          >
             <el-card
               shadow="always"
               class="ai-panel discriminative"
@@ -19,15 +24,24 @@
               @click="mode = 'discriminative'"
             >
               <div class="panel-header">
-                <div class="icon">🔍</div>
+                <div class="icon">
+                  🔍
+                </div>
                 <h5>判别式 AI</h5>
-                <el-tag size="small" type="success">分类/识别</el-tag>
+                <el-tag
+                  size="small"
+                  type="success"
+                >
+                  分类/识别
+                </el-tag>
               </div>
 
               <div class="panel-content">
                 <div class="input-output">
                   <div class="io-box input">
-                    <div class="io-label">输入</div>
+                    <div class="io-label">
+                      输入
+                    </div>
                     <div class="io-content">
                       <div class="svg-placeholder green">
                         <span class="svg-text">猫图</span>
@@ -40,10 +54,19 @@
                   </div>
 
                   <div class="io-box output">
-                    <div class="io-label">输出</div>
+                    <div class="io-label">
+                      输出
+                    </div>
                     <div class="io-content">
-                      <el-tag effect="dark" type="success">这是猫</el-tag>
-                      <div class="probability">置信度: 98%</div>
+                      <el-tag
+                        effect="dark"
+                        type="success"
+                      >
+                        这是猫
+                      </el-tag>
+                      <div class="probability">
+                        置信度: 98%
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -52,8 +75,6 @@
                   <h6>典型应用:</h6>
                   <div class="example-tags">
                     <el-tag
-                      size="small"
-                      effect="plain"
                       v-for="tag in [
                         '图像分类',
                         '垃圾邮件过滤',
@@ -61,8 +82,11 @@
                         '人脸识别'
                       ]"
                       :key="tag"
-                      >{{ tag }}</el-tag
+                      size="small"
+                      effect="plain"
                     >
+                      {{ tag }}
+                    </el-tag>
                   </div>
                 </div>
               </div>
@@ -70,7 +94,10 @@
           </el-col>
 
           <!-- Generative AI -->
-          <el-col :xs="24" :sm="12">
+          <el-col
+            :xs="24"
+            :sm="12"
+          >
             <el-card
               shadow="always"
               class="ai-panel generative"
@@ -78,17 +105,28 @@
               @click="mode = 'generative'"
             >
               <div class="panel-header">
-                <div class="icon">✨</div>
+                <div class="icon">
+                  ✨
+                </div>
                 <h5>生成式 AI</h5>
-                <el-tag size="small" type="primary">创造/生成</el-tag>
+                <el-tag
+                  size="small"
+                  type="primary"
+                >
+                  创造/生成
+                </el-tag>
               </div>
 
               <div class="panel-content">
                 <div class="input-output">
                   <div class="io-box input">
-                    <div class="io-label">输入</div>
+                    <div class="io-label">
+                      输入
+                    </div>
                     <div class="io-content">
-                      <div class="prompt-text">"一只戴墨镜的猫"</div>
+                      <div class="prompt-text">
+                        "一只戴墨镜的猫"
+                      </div>
                     </div>
                   </div>
 
@@ -97,7 +135,9 @@
                   </div>
 
                   <div class="io-box output">
-                    <div class="io-label">输出</div>
+                    <div class="io-label">
+                      输出
+                    </div>
                     <div class="io-content">
                       <div class="svg-placeholder blue">
                         <span class="svg-text">生成图像 ✓</span>
@@ -110,9 +150,6 @@
                   <h6>典型应用:</h6>
                   <div class="example-tags">
                     <el-tag
-                      size="small"
-                      effect="plain"
-                      type="primary"
                       v-for="tag in [
                         'ChatGPT',
                         'Midjourney',
@@ -120,8 +157,12 @@
                         '音乐创作'
                       ]"
                       :key="tag"
-                      >{{ tag }}</el-tag
+                      size="small"
+                      effect="plain"
+                      type="primary"
                     >
+                      {{ tag }}
+                    </el-tag>
                   </div>
                 </div>
               </div>

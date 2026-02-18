@@ -16,9 +16,15 @@
         :key="eco.name"
         class="eco-card"
       >
-        <div class="eco-icon">{{ eco.icon }}</div>
-        <div class="eco-name">{{ eco.name }}</div>
-        <div class="eco-lang">{{ eco.language }}</div>
+        <div class="eco-icon">
+          {{ eco.icon }}
+        </div>
+        <div class="eco-name">
+          {{ eco.name }}
+        </div>
+        <div class="eco-lang">
+          {{ eco.language }}
+        </div>
         <div class="eco-stats">
           <div class="stat">
             <span class="stat-label">包数量</span>

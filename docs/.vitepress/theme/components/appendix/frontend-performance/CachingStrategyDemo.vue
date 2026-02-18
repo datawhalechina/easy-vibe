@@ -5,19 +5,23 @@
 <template>
   <div class="caching-demo">
     <div class="header">
-      <div class="title">缓存策略：速度与更新的平衡</div>
-      <div class="subtitle">对比不同缓存策略的效果</div>
+      <div class="title">
+        缓存策略：速度与更新的平衡
+      </div>
+      <div class="subtitle">
+        对比不同缓存策略的效果
+      </div>
     </div>
 
     <div class="strategy-selector">
       <button
         v-for="strategy in strategies"
         :key="strategy.name"
-        @click="selectStrategy(strategy)"
         :class="[
           'strategy-btn',
           { active: selectedStrategy.name === strategy.name }
         ]"
+        @click="selectStrategy(strategy)"
       >
         <span class="strategy-icon">{{ strategy.icon }}</span>
         <span class="strategy-name">{{ strategy.name }}</span>
@@ -28,32 +32,46 @@
       <div class="browser-window">
         <div class="browser-header">
           <div class="browser-controls">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+            <span class="dot red" />
+            <span class="dot yellow" />
+            <span class="dot green" />
           </div>
-          <div class="browser-url">{{ selectedStrategy.url }}</div>
+          <div class="browser-url">
+            {{ selectedStrategy.url }}
+          </div>
         </div>
 
         <div class="browser-content">
-          <div class="loading-overlay" v-if="isLoading">
-            <div class="spinner"></div>
-            <div class="loading-text">加载中... ({{ loadingProgress }}%)</div>
+          <div
+            v-if="isLoading"
+            class="loading-overlay"
+          >
+            <div class="spinner" />
+            <div class="loading-text">
+              加载中... ({{ loadingProgress }}%)
+            </div>
           </div>
 
-          <div class="page-content" v-else>
+          <div
+            v-else
+            class="page-content"
+          >
             <div class="page-hero">
               <h2>{{ selectedStrategy.pageTitle }}</h2>
             </div>
             <div class="page-body">
               <div
-                class="resource-item"
                 v-for="(resource, index) in selectedStrategy.resources"
                 :key="index"
+                class="resource-item"
               >
-                <div class="resource-icon">{{ resource.icon }}</div>
+                <div class="resource-icon">
+                  {{ resource.icon }}
+                </div>
                 <div class="resource-info">
-                  <div class="resource-name">{{ resource.name }}</div>
+                  <div class="resource-name">
+                    {{ resource.name }}
+                  </div>
                   <div
                     class="resource-status"
                     :class="resource.cached ? 'cached' : 'network'"
@@ -61,8 +79,12 @@
                     {{ resource.cached ? '✓ 来自缓存' : '↓ 从服务器下载' }}
                   </div>
                 </div>
-                <div class="resource-size">{{ resource.size }}</div>
-                <div class="resource-time">{{ resource.time }}</div>
+                <div class="resource-size">
+                  {{ resource.size }}
+                </div>
+                <div class="resource-time">
+                  {{ resource.time }}
+                </div>
               </div>
             </div>
           </div>
@@ -75,7 +97,10 @@
             <span class="metric-icon">⚡</span>
             <span class="metric-title">加载时间</span>
           </div>
-          <div class="metric-value" :class="selectedStrategy.performanceClass">
+          <div
+            class="metric-value"
+            :class="selectedStrategy.performanceClass"
+          >
             {{ selectedStrategy.loadTime }}
           </div>
           <div
@@ -91,12 +116,14 @@
             <span class="metric-icon">💾</span>
             <span class="metric-title">缓存命中</span>
           </div>
-          <div class="metric-value">{{ selectedStrategy.cacheHit }}%</div>
+          <div class="metric-value">
+            {{ selectedStrategy.cacheHit }}%
+          </div>
           <div class="metric-bar">
             <div
               class="metric-fill"
               :style="{ width: selectedStrategy.cacheHit + '%' }"
-            ></div>
+            />
           </div>
         </div>
 
@@ -119,7 +146,9 @@
       <h3>{{ selectedStrategy.name }} 说明</h3>
       <p>{{ selectedStrategy.description }}</p>
       <div class="code-example">
-        <div class="code-header">配置示例</div>
+        <div class="code-header">
+          配置示例
+        </div>
         <pre><code>{{ selectedStrategy.code }}</code></pre>
       </div>
     </div>

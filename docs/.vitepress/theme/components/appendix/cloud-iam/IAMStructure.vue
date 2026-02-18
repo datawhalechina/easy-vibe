@@ -26,10 +26,16 @@
           <span class="detail-icon">{{ selectedLayerData.icon }}</span>
           <span class="detail-name">{{ selectedLayerData.name }}</span>
         </div>
-        <div class="detail-desc">{{ selectedLayerData.description }}</div>
+        <div class="detail-desc">
+          {{ selectedLayerData.description }}
+        </div>
         <div class="detail-examples">
           <span class="example-label">示例：</span>
-          <span v-for="(example, i) in selectedLayerData.examples.slice(0, 2)" :key="i" class="example-tag">{{ example }}</span>
+          <span
+            v-for="(example, i) in selectedLayerData.examples.slice(0, 2)"
+            :key="i"
+            class="example-tag"
+          >{{ example }}</span>
         </div>
       </div>
     </div>

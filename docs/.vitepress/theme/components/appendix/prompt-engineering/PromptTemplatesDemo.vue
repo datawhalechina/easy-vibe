@@ -1,10 +1,17 @@
 <template>
-  <el-card class="templates-card" shadow="hover">
+  <el-card
+    class="templates-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="card-header">
         <div class="header-left">
-          <h3 class="title">常见场景模板（标签切换，可直接复制）</h3>
-          <p class="subtitle">选一个场景 → 复制 → 把占位符替换成你的内容。</p>
+          <h3 class="title">
+            常见场景模板（标签切换，可直接复制）
+          </h3>
+          <p class="subtitle">
+            选一个场景 → 复制 → 把占位符替换成你的内容。
+          </p>
         </div>
         <div class="header-right">
           <el-input
@@ -17,8 +24,8 @@
           <el-button 
             type="primary" 
             :icon="copied ? Check : CopyDocument" 
-            @click="copy(active.template)" 
-            :disabled="!active"
+            :disabled="!active" 
+            @click="copy(active.template)"
           >
             {{ copied ? '已复制' : '复制模板' }}
           </el-button>
@@ -46,7 +53,10 @@
       />
     </div>
 
-    <div v-if="active" class="content-area">
+    <div
+      v-if="active"
+      class="content-area"
+    >
       <el-alert
         :title="active.desc"
         type="info"
@@ -55,12 +65,23 @@
         class="desc-alert"
       />
       
-      <el-card shadow="never" class="code-card">
+      <el-card
+        shadow="never"
+        class="code-card"
+      >
         <pre class="code-block"><code>{{ active.template }}</code></pre>
       </el-card>
 
-      <div v-if="active.note" class="note-section">
-        <el-tag type="warning" size="small">Note</el-tag>
+      <div
+        v-if="active.note"
+        class="note-section"
+      >
+        <el-tag
+          type="warning"
+          size="small"
+        >
+          Note
+        </el-tag>
         <span class="note-text">{{ active.note }}</span>
       </div>
     </div>

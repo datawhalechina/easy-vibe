@@ -8,31 +8,46 @@
   <div class="risk">
     <div class="header">
       <div>
-        <div class="title">Agent 的挑战：没护栏就容易“翻车”</div>
-        <div class="subtitle">打开这些护栏，风险会明显下降。</div>
+        <div class="title">
+          Agent 的挑战：没护栏就容易“翻车”
+        </div>
+        <div class="subtitle">
+          打开这些护栏，风险会明显下降。
+        </div>
       </div>
-      <div class="score" :class="scoreClass">风险分数：{{ score }}/100</div>
+      <div
+        class="score"
+        :class="scoreClass"
+      >
+        风险分数：{{ score }}/100
+      </div>
     </div>
 
     <div class="controls">
-      <label class="toggle"
-        ><input type="checkbox" v-model="maxSteps" />
-        最大迭代次数（防死循环）</label
+      <label class="toggle"><input
+        v-model="maxSteps"
+        type="checkbox"
       >
-      <label class="toggle"
-        ><input type="checkbox" v-model="budget" /> 预算上限（防烧钱）</label
-      >
-      <label class="toggle"
-        ><input type="checkbox" v-model="confirm" /> 危险操作二次确认</label
-      >
-      <label class="toggle"
-        ><input type="checkbox" v-model="sandbox" /> 沙箱执行（隔离系统）</label
-      >
+        最大迭代次数（防死循环）</label>
+      <label class="toggle"><input
+        v-model="budget"
+        type="checkbox"
+      > 预算上限（防烧钱）</label>
+      <label class="toggle"><input
+        v-model="confirm"
+        type="checkbox"
+      > 危险操作二次确认</label>
+      <label class="toggle"><input
+        v-model="sandbox"
+        type="checkbox"
+      > 沙箱执行（隔离系统）</label>
     </div>
 
     <div class="grid">
       <div class="card">
-        <div class="k">常见风险</div>
+        <div class="k">
+          常见风险
+        </div>
         <ul>
           <li>重复尝试 → 死循环</li>
           <li>乱用工具 → 误删/误发</li>
@@ -41,13 +56,23 @@
         </ul>
       </div>
       <div class="card">
-        <div class="k">你现在开启了什么？</div>
-        <div class="v">{{ enabledList }}</div>
-        <div class="note">建议：最少也要有“最大步数 + 确认”。</div>
+        <div class="k">
+          你现在开启了什么？
+        </div>
+        <div class="v">
+          {{ enabledList }}
+        </div>
+        <div class="note">
+          建议：最少也要有“最大步数 + 确认”。
+        </div>
       </div>
       <div class="card">
-        <div class="k">一句话建议</div>
-        <div class="v">{{ advice }}</div>
+        <div class="k">
+          一句话建议
+        </div>
+        <div class="v">
+          {{ advice }}
+        </div>
       </div>
     </div>
   </div>

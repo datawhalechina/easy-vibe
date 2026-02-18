@@ -19,10 +19,18 @@
         </div>
         <div class="table-content">
           <div class="table-row header">
-            <div class="cell primary-key">🔑 user_id</div>
-            <div class="cell">name</div>
-            <div class="cell">phone</div>
-            <div class="cell">address</div>
+            <div class="cell primary-key">
+              🔑 user_id
+            </div>
+            <div class="cell">
+              name
+            </div>
+            <div class="cell">
+              phone
+            </div>
+            <div class="cell">
+              address
+            </div>
           </div>
           <div
             v-for="user in users"
@@ -32,18 +40,30 @@
             @mouseenter="highlightedUserId = user.user_id"
             @mouseleave="highlightedUserId = null"
           >
-            <div class="cell primary-key">{{ user.user_id }}</div>
-            <div class="cell">{{ user.name }}</div>
-            <div class="cell">{{ user.phone }}</div>
-            <div class="cell">{{ user.address }}</div>
+            <div class="cell primary-key">
+              {{ user.user_id }}
+            </div>
+            <div class="cell">
+              {{ user.name }}
+            </div>
+            <div class="cell">
+              {{ user.phone }}
+            </div>
+            <div class="cell">
+              {{ user.address }}
+            </div>
           </div>
         </div>
       </div>
 
       <div class="relation-arrow">
-        <div class="arrow-line"></div>
-        <div class="arrow-head">➤</div>
-        <div class="relation-label">user_id (外键) → user_id (主键)</div>
+        <div class="arrow-line" />
+        <div class="arrow-head">
+          ➤
+        </div>
+        <div class="relation-label">
+          user_id (外键) → user_id (主键)
+        </div>
       </div>
 
       <div class="table-card orders-table">
@@ -54,10 +74,18 @@
         </div>
         <div class="table-content">
           <div class="table-row header">
-            <div class="cell primary-key">🔑 order_id</div>
-            <div class="cell">book_name</div>
-            <div class="cell foreign-key">🔗 user_id</div>
-            <div class="cell">price</div>
+            <div class="cell primary-key">
+              🔑 order_id
+            </div>
+            <div class="cell">
+              book_name
+            </div>
+            <div class="cell foreign-key">
+              🔗 user_id
+            </div>
+            <div class="cell">
+              price
+            </div>
           </div>
           <div
             v-for="order in filteredOrders"
@@ -65,17 +93,27 @@
             class="table-row"
             :class="{ highlighted: highlightedUserId === order.user_id }"
           >
-            <div class="cell primary-key">{{ order.order_id }}</div>
-            <div class="cell">{{ order.book_name }}</div>
-            <div class="cell foreign-key">{{ order.user_id }}</div>
-            <div class="cell">{{ order.price }}</div>
+            <div class="cell primary-key">
+              {{ order.order_id }}
+            </div>
+            <div class="cell">
+              {{ order.book_name }}
+            </div>
+            <div class="cell foreign-key">
+              {{ order.user_id }}
+            </div>
+            <div class="cell">
+              {{ order.price }}
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="explanation-box">
-      <div class="explanation-title">💡 核心概念</div>
+      <div class="explanation-title">
+        💡 核心概念
+      </div>
       <div class="explanation-content">
         <p><strong>主键（Primary Key）</strong>：用户表的 <code>user_id</code> 是主键，唯一标识每个用户。</p>
         <p><strong>外键（Foreign Key）</strong>：订单表的 <code>user_id</code> 是外键，指向用户表的主键。</p>

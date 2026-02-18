@@ -3,36 +3,73 @@
     <div class="panel">
       <div class="areas">
         <div class="area">
-          <div class="header">💻 工作区 ({{ work.length }})</div>
-          <div v-for="f in work" :key="f" class="file">📄 {{ f }}</div>
-          <div v-if="work.length === 0" class="empty">空</div>
+          <div class="header">
+            💻 工作区 ({{ work.length }})
+          </div>
+          <div
+            v-for="f in work"
+            :key="f"
+            class="file"
+          >
+            📄 {{ f }}
+          </div>
+          <div
+            v-if="work.length === 0"
+            class="empty"
+          >
+            空
+          </div>
         </div>
 
         <div class="area">
-          <div class="header">📚 Stash 栈 ({{ stash.length }})</div>
-          <div v-for="(s, i) in stash" :key="i" class="stash-item">
+          <div class="header">
+            📚 Stash 栈 ({{ stash.length }})
+          </div>
+          <div
+            v-for="(s, i) in stash"
+            :key="i"
+            class="stash-item"
+          >
             <span class="num">{{ i + 1 }}</span>
             <span class="msg">{{ s }}</span>
           </div>
-          <div v-if="stash.length === 0" class="empty">空</div>
+          <div
+            v-if="stash.length === 0"
+            class="empty"
+          >
+            空
+          </div>
         </div>
       </div>
 
       <div class="controls">
-        <button @click="doWork" :disabled="work.length > 0" class="btn">
+        <button
+          :disabled="work.length > 0"
+          class="btn"
+          @click="doWork"
+        >
           修改
         </button>
         <button
-          @click="save"
           :disabled="work.length === 0 || stash.length >= 3"
           class="btn"
+          @click="save"
         >
           保存
         </button>
-        <button @click="pop" :disabled="stash.length === 0" class="btn">
+        <button
+          :disabled="stash.length === 0"
+          class="btn"
+          @click="pop"
+        >
           恢复
         </button>
-        <button @click="reset" class="btn secondary">重置</button>
+        <button
+          class="btn secondary"
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
     </div>
 

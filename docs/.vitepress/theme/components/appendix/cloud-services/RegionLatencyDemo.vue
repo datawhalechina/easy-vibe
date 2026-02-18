@@ -16,9 +16,15 @@
 
     <div class="latency-table">
       <div class="table-header">
-        <div class="col region">云厂商地域</div>
-        <div class="col latency">延迟</div>
-        <div class="col rating">推荐度</div>
+        <div class="col region">
+          云厂商地域
+        </div>
+        <div class="col latency">
+          延迟
+        </div>
+        <div class="col rating">
+          推荐度
+        </div>
       </div>
       <div
         v-for="item in latencyData"
@@ -26,14 +32,21 @@
         class="table-row"
         :class="{ best: item.rating === '⭐⭐⭐' }"
       >
-        <div class="col region">{{ item.region }}</div>
+        <div class="col region">
+          {{ item.region }}
+        </div>
         <div class="col latency">
           <div class="latency-bar">
-            <div class="bar-fill" :style="{ width: item.percent + '%' }"></div>
+            <div
+              class="bar-fill"
+              :style="{ width: item.percent + '%' }"
+            />
             <span class="latency-value">{{ item.latency }}ms</span>
           </div>
         </div>
-        <div class="col rating">{{ item.rating }}</div>
+        <div class="col rating">
+          {{ item.rating }}
+        </div>
       </div>
     </div>
 

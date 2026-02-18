@@ -8,17 +8,33 @@
   - 看提示词和输出如何变化
 -->
 <template>
-  <el-card class="few-shot-card" shadow="hover">
+  <el-card
+    class="few-shot-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="card-header">
         <div>
-          <h3 class="title">示例的力量：让风格“跟你走”</h3>
-          <p class="subtitle">你不是让 AI 更聪明，而是让它更像你要的样子。</p>
+          <h3 class="title">
+            示例的力量：让风格“跟你走”
+          </h3>
+          <p class="subtitle">
+            你不是让 AI 更聪明，而是让它更像你要的样子。
+          </p>
         </div>
         <div class="controls">
-          <el-select v-model="tone" style="width: 140px">
-            <el-option label="随意口语" value="casual" />
-            <el-option label="正式书面" value="formal" />
+          <el-select
+            v-model="tone"
+            style="width: 140px"
+          >
+            <el-option
+              label="随意口语"
+              value="casual"
+            />
+            <el-option
+              label="正式书面"
+              value="formal"
+            />
           </el-select>
           <el-switch
             v-model="withExamples"
@@ -32,20 +48,32 @@
     </template>
 
     <div class="grid-layout">
-      <el-card shadow="never" class="panel">
+      <el-card
+        shadow="never"
+        class="panel"
+      >
         <template #header>
-          <div class="panel-header">提示词 / Prompt</div>
+          <div class="panel-header">
+            提示词 / Prompt
+          </div>
         </template>
         <div class="code-block">
           <pre><code>{{ prompt }}</code></pre>
         </div>
       </el-card>
 
-      <el-card shadow="never" class="panel">
+      <el-card
+        shadow="never"
+        class="panel"
+      >
         <template #header>
-          <div class="panel-header">AI 输出（示意）</div>
+          <div class="panel-header">
+            AI 输出（示意）
+          </div>
         </template>
-        <div class="output-content">{{ output }}</div>
+        <div class="output-content">
+          {{ output }}
+        </div>
         <el-alert
           :title="hint"
           :type="withExamples ? 'success' : 'warning'"
@@ -56,13 +84,30 @@
       </el-card>
     </div>
 
-    <div class="examples-section" v-if="withExamples">
-      <el-divider content-position="left">示例（AI 会“照着学”）</el-divider>
+    <div
+      v-if="withExamples"
+      class="examples-section"
+    >
+      <el-divider content-position="left">
+        示例（AI 会“照着学”）
+      </el-divider>
       <el-row :gutter="12">
-        <el-col :span="8" v-for="e in examples" :key="e.in">
-          <el-card shadow="hover" class="example-item" :body-style="{ padding: '12px' }">
-            <div class="ex-in">输入：{{ e.in }}</div>
-            <div class="ex-out">输出：{{ e.out }}</div>
+        <el-col
+          v-for="e in examples"
+          :key="e.in"
+          :span="8"
+        >
+          <el-card
+            shadow="hover"
+            class="example-item"
+            :body-style="{ padding: '12px' }"
+          >
+            <div class="ex-in">
+              输入：{{ e.in }}
+            </div>
+            <div class="ex-out">
+              输出：{{ e.out }}
+            </div>
           </el-card>
         </el-col>
       </el-row>

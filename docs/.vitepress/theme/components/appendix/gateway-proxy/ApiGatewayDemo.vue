@@ -5,82 +5,147 @@
 <template>
   <div class="api-gateway-demo">
     <div class="header">
-      <div class="title">🚪 API 网关：系统的"统一大门"</div>
-      <div class="subtitle">想象成写字楼的「前台」——所有访客都要先经过这里，才能到达不同的办公室</div>
+      <div class="title">
+        🚪 API 网关：系统的"统一大门"
+      </div>
+      <div class="subtitle">
+        想象成写字楼的「前台」——所有访客都要先经过这里，才能到达不同的办公室
+      </div>
     </div>
 
     <div class="architecture-view">
       <div class="layer client-layer">
-        <div class="layer-title">客户端 (来访者)</div>
+        <div class="layer-title">
+          客户端 (来访者)
+        </div>
         <div class="clients">
-          <div class="client-item">📱 App</div>
-          <div class="client-item">💻 Web</div>
-          <div class="client-item">🔧 第三方</div>
+          <div class="client-item">
+            📱 App
+          </div>
+          <div class="client-item">
+            💻 Web
+          </div>
+          <div class="client-item">
+            🔧 第三方
+          </div>
         </div>
       </div>
 
-      <div class="arrow-down">⬇️ 统一入口</div>
+      <div class="arrow-down">
+        ⬇️ 统一入口
+      </div>
 
       <div class="layer gateway-layer">
-        <div class="layer-title">🚪 API 网关 (前台)</div>
+        <div class="layer-title">
+          🚪 API 网关 (前台)
+        </div>
         <div class="gateway-box">
-          <div class="gateway-function" :class="{ active: activeFunc === 'auth' }" @click="setActive('auth')">
+          <div
+            class="gateway-function"
+            :class="{ active: activeFunc === 'auth' }"
+            @click="setActive('auth')"
+          >
             <span class="func-icon">🔐</span>
             <span class="func-name">身份认证</span>
           </div>
-          <div class="gateway-function" :class="{ active: activeFunc === 'rate' }" @click="setActive('rate')">
+          <div
+            class="gateway-function"
+            :class="{ active: activeFunc === 'rate' }"
+            @click="setActive('rate')"
+          >
             <span class="func-icon">⚡</span>
             <span class="func-name">限流熔断</span>
           </div>
-          <div class="gateway-function" :class="{ active: activeFunc === 'route' }" @click="setActive('route')">
+          <div
+            class="gateway-function"
+            :class="{ active: activeFunc === 'route' }"
+            @click="setActive('route')"
+          >
             <span class="func-icon">🧭</span>
             <span class="func-name">路由转发</span>
           </div>
-          <div class="gateway-function" :class="{ active: activeFunc === 'transform' }" @click="setActive('transform')">
+          <div
+            class="gateway-function"
+            :class="{ active: activeFunc === 'transform' }"
+            @click="setActive('transform')"
+          >
             <span class="func-icon">🔄</span>
             <span class="func-name">协议转换</span>
           </div>
         </div>
       </div>
 
-      <div class="arrow-down">⬇️ 分发请求</div>
+      <div class="arrow-down">
+        ⬇️ 分发请求
+      </div>
 
       <div class="layer backend-layer">
-        <div class="layer-title">⚙️ 后端服务 (各个部门)</div>
+        <div class="layer-title">
+          ⚙️ 后端服务 (各个部门)
+        </div>
         <div class="services">
           <div class="service-card">
-            <div class="service-icon">👤</div>
-            <div class="service-name">用户服务</div>
-            <div class="service-tech">/api/users</div>
+            <div class="service-icon">
+              👤
+            </div>
+            <div class="service-name">
+              用户服务
+            </div>
+            <div class="service-tech">
+              /api/users
+            </div>
           </div>
           <div class="service-card">
-            <div class="service-icon">📦</div>
-            <div class="service-name">订单服务</div>
-            <div class="service-tech">/api/orders</div>
+            <div class="service-icon">
+              📦
+            </div>
+            <div class="service-name">
+              订单服务
+            </div>
+            <div class="service-tech">
+              /api/orders
+            </div>
           </div>
           <div class="service-card">
-            <div class="service-icon">💳</div>
-            <div class="service-name">支付服务</div>
-            <div class="service-tech">/api/pay</div>
+            <div class="service-icon">
+              💳
+            </div>
+            <div class="service-name">
+              支付服务
+            </div>
+            <div class="service-tech">
+              /api/pay
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="function-detail" v-if="activeFunc">
+    <div
+      v-if="activeFunc"
+      class="function-detail"
+    >
       <div class="detail-header">
         <span class="detail-icon">{{ currentFunction.icon }}</span>
         <span class="detail-name">{{ currentFunction.name }}</span>
       </div>
-      <div class="detail-desc">{{ currentFunction.desc }}</div>
+      <div class="detail-desc">
+        {{ currentFunction.desc }}
+      </div>
       <div class="detail-example">
-        <div class="example-title">💡 实际场景</div>
-        <div class="example-content">{{ currentFunction.example }}</div>
+        <div class="example-title">
+          💡 实际场景
+        </div>
+        <div class="example-content">
+          {{ currentFunction.example }}
+        </div>
       </div>
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">🤔 没有网关 vs 有网关的区别</div>
+      <div class="table-title">
+        🤔 没有网关 vs 有网关的区别
+      </div>
       <table>
         <thead>
           <tr>

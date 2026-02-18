@@ -23,7 +23,10 @@
         </button>
       </div>
 
-      <div class="status-codes" v-if="filteredCodes.length > 0">
+      <div
+        v-if="filteredCodes.length > 0"
+        class="status-codes"
+      >
         <div
           v-for="code in filteredCodes"
           :key="code.number"
@@ -32,12 +35,18 @@
           @click="toggleExpand(code.number)"
         >
           <div class="status-header">
-            <span class="status-number" :class="getCategoryClass(code.number)">{{ code.number }}</span>
+            <span
+              class="status-number"
+              :class="getCategoryClass(code.number)"
+            >{{ code.number }}</span>
             <span class="status-name">{{ code.name }}</span>
             <span class="expand-icon">{{ expandedCode === code.number ? '▼' : '▶' }}</span>
           </div>
 
-          <div class="status-detail" v-show="expandedCode === code.number">
+          <div
+            v-show="expandedCode === code.number"
+            class="status-detail"
+          >
             <div class="detail-section">
               <h4>💡 含义解释</h4>
               <p>{{ code.description }}</p>
@@ -46,15 +55,26 @@
             <div class="detail-section">
               <h4>📝 使用场景</h4>
               <ul>
-                <li v-for="(scenario, idx) in code.scenarios" :key="idx">{{ scenario }}</li>
+                <li
+                  v-for="(scenario, idx) in code.scenarios"
+                  :key="idx"
+                >
+                  {{ scenario }}
+                </li>
               </ul>
             </div>
 
-            <div class="detail-section" v-if="code.example">
+            <div
+              v-if="code.example"
+              class="detail-section"
+            >
               <h4>💻 示例代码</h4>
               <div class="code-example">
                 <div class="code-request">
-                  <span class="method-badge" :class="getCategoryClass(code.number)">{{ code.example.method }}</span>
+                  <span
+                    class="method-badge"
+                    :class="getCategoryClass(code.number)"
+                  >{{ code.example.method }}</span>
                   <code>{{ code.example.path }}</code>
                 </div>
                 <div class="code-response">

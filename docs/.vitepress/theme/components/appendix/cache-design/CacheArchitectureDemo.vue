@@ -13,16 +13,29 @@
 
     <div class="architecture-flow">
       <div class="flow-layer user">
-        <div class="layer-label">用户请求</div>
-        <div class="request-icon">👤</div>
+        <div class="layer-label">
+          用户请求
+        </div>
+        <div class="request-icon">
+          👤
+        </div>
       </div>
 
-      <div class="arrow">↓</div>
+      <div class="arrow">
+        ↓
+      </div>
 
-      <div class="flow-layer cache" :class="{ active: currentLayer === 'cache' }">
-        <div class="layer-label">缓存层 (Cache)</div>
+      <div
+        class="flow-layer cache"
+        :class="{ active: currentLayer === 'cache' }"
+      >
+        <div class="layer-label">
+          缓存层 (Cache)
+        </div>
         <div class="cache-box">
-          <div class="cache-icon">⚡</div>
+          <div class="cache-icon">
+            ⚡
+          </div>
           <div class="cache-stats">
             <div>命中率: {{ hitRate }}%</div>
             <div>响应时间: ~1ms</div>
@@ -31,16 +44,23 @@
       </div>
 
       <div class="arrow">
-        ↓ <span v-if="showMiss" class="miss-text">未命中</span>
+        ↓ <span
+          v-if="showMiss"
+          class="miss-text"
+        >未命中</span>
       </div>
 
       <div
         class="flow-layer database"
         :class="{ active: currentLayer === 'database' }"
       >
-        <div class="layer-label">数据库层 (Database)</div>
+        <div class="layer-label">
+          数据库层 (Database)
+        </div>
         <div class="database-box">
-          <div class="database-icon">🗄️</div>
+          <div class="database-icon">
+            🗄️
+          </div>
           <div class="database-stats">
             <div>响应时间: ~50ms</div>
             <div>持久化存储</div>
@@ -50,21 +70,37 @@
     </div>
 
     <div class="comparison">
-      <div class="comparison-title">访问速度对比</div>
+      <div class="comparison-title">
+        访问速度对比
+      </div>
       <div class="speed-bars">
         <div class="speed-item">
-          <div class="label">缓存命中</div>
-          <div class="bar-container">
-            <div class="bar fast" :style="{ width: '5%' }"></div>
+          <div class="label">
+            缓存命中
           </div>
-          <div class="time">~1ms</div>
+          <div class="bar-container">
+            <div
+              class="bar fast"
+              :style="{ width: '5%' }"
+            />
+          </div>
+          <div class="time">
+            ~1ms
+          </div>
         </div>
         <div class="speed-item">
-          <div class="label">数据库查询</div>
-          <div class="bar-container">
-            <div class="bar slow" :style="{ width: '100%' }"></div>
+          <div class="label">
+            数据库查询
           </div>
-          <div class="time">~50ms</div>
+          <div class="bar-container">
+            <div
+              class="bar slow"
+              :style="{ width: '100%' }"
+            />
+          </div>
+          <div class="time">
+            ~50ms
+          </div>
         </div>
       </div>
       <div class="conclusion">
@@ -73,8 +109,16 @@
     </div>
 
     <div class="interactive-demo">
-      <button class="demo-btn" @click="simulateRequest">模拟请求</button>
-      <div class="demo-result" v-if="lastResult">
+      <button
+        class="demo-btn"
+        @click="simulateRequest"
+      >
+        模拟请求
+      </button>
+      <div
+        v-if="lastResult"
+        class="demo-result"
+      >
         <span :class="{ hit: lastResult.hit, miss: !lastResult.hit }">
           {{ lastResult.hit ? '✅ 缓存命中' : '❌ 缓存未命中，访问数据库' }}
         </span>

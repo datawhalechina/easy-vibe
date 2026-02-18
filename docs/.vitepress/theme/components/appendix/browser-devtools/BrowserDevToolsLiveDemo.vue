@@ -182,21 +182,29 @@ const selectNode = (node) => {
     <div class="virtual-page-container">
       <div class="virtual-browser-bar">
         <div class="dots">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
+          <span class="dot red" />
+          <span class="dot yellow" />
+          <span class="dot green" />
         </div>
-        <div class="address-bar">http://localhost:3000/demo</div>
+        <div class="address-bar">
+          http://localhost:3000/demo
+        </div>
       </div>
       <div
         class="virtual-page-content"
         :style="liveStyles.container"
         @click.self="selectNode('container')"
       >
-        <h1 :style="liveStyles.h1" @click.stop="selectNode('h1')">
+        <h1
+          :style="liveStyles.h1"
+          @click.stop="selectNode('h1')"
+        >
           {{ liveContent.h1 }}
         </h1>
-        <button :style="liveStyles.button" @click.stop="selectNode('button')">
+        <button
+          :style="liveStyles.button"
+          @click.stop="selectNode('button')"
+        >
           {{ liveContent.button }}
         </button>
       </div>
@@ -214,20 +222,33 @@ const selectNode = (node) => {
             class="icon-btn element-picker"
             title="选择页面中的元素以进行检查"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#6e6e6e">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="#6e6e6e"
+            >
               <path
                 d="M4 4h9v2H4V4zm0 4h5v2H4V8zm0 4h5v2H4v-2zm12-5l-4 4h3v4h2v-4h3l-4-4z"
               />
             </svg>
           </div>
-          <div class="icon-btn device-toggle" title="切换设备工具栏">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#6e6e6e">
+          <div
+            class="icon-btn device-toggle"
+            title="切换设备工具栏"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="#6e6e6e"
+            >
               <path
                 d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"
               />
             </svg>
           </div>
-          <div class="separator"></div>
+          <div class="separator" />
           <div class="tabs">
             <div
               v-for="tab in tabs"
@@ -241,81 +262,87 @@ const selectNode = (node) => {
           </div>
         </div>
         <div class="header-right">
-          <div class="icon-btn settings">⚙️</div>
-          <div class="icon-btn close">×</div>
+          <div class="icon-btn settings">
+            ⚙️
+          </div>
+          <div class="icon-btn close">
+            ×
+          </div>
         </div>
       </div>
 
       <!-- Body -->
       <div class="devtools-body">
         <!-- Elements Panel -->
-        <div v-if="activeTab === 'elements'" class="panel elements-panel">
+        <div
+          v-if="activeTab === 'elements'"
+          class="panel elements-panel"
+        >
           <div class="dom-tree-panel">
             <div class="dom-tree-content">
               <div
                 class="dom-node"
-                @click="selectNode('container')"
                 :class="{ selected: selectedNode === 'container' }"
+                @click="selectNode('container')"
               >
                 <div class="line-content">
                   <span class="arrow expanded">▼</span>
                   <span class="tag-name">div</span>
-                  <span class="attr-name">class</span>=<span class="attr-val"
-                    >"virtual-page-content"</span
-                  >
-                  <span class="node-trail" v-if="selectedNode === 'container'"
-                    >== $0</span
-                  >
+                  <span class="attr-name">class</span>=<span class="attr-val">"virtual-page-content"</span>
+                  <span
+                    v-if="selectedNode === 'container'"
+                    class="node-trail"
+                  >== $0</span>
                 </div>
                 <div class="children">
                   <div
                     class="dom-node"
-                    @click.stop="selectNode('h1')"
                     :class="{ selected: selectedNode === 'h1' }"
+                    @click.stop="selectNode('h1')"
                   >
                     <div class="line-content">
-                      <span class="indent"></span>
+                      <span class="indent" />
                       <span class="tag-name">h1</span>
-                      <span class="node-trail" v-if="selectedNode === 'h1'"
-                        >== $0</span
-                      >
+                      <span
+                        v-if="selectedNode === 'h1'"
+                        class="node-trail"
+                      >== $0</span>
                     </div>
                     <div class="line-content">
-                      <span class="indent"></span>
+                      <span class="indent" />
                       <input
                         v-model="liveContent.h1"
                         class="dom-text-input"
                         @click.stop="selectNode('h1')"
-                      />
+                      >
                     </div>
                     <div class="line-content">
-                      <span class="indent"></span
-                      ><span class="tag-name">/h1</span>
+                      <span class="indent" /><span class="tag-name">/h1</span>
                     </div>
                   </div>
                   <div
                     class="dom-node"
-                    @click.stop="selectNode('button')"
                     :class="{ selected: selectedNode === 'button' }"
+                    @click.stop="selectNode('button')"
                   >
                     <div class="line-content">
-                      <span class="indent"></span>
+                      <span class="indent" />
                       <span class="tag-name">button</span>
-                      <span class="node-trail" v-if="selectedNode === 'button'"
-                        >== $0</span
-                      >
+                      <span
+                        v-if="selectedNode === 'button'"
+                        class="node-trail"
+                      >== $0</span>
                     </div>
                     <div class="line-content">
-                      <span class="indent"></span>
+                      <span class="indent" />
                       <input
                         v-model="liveContent.button"
                         class="dom-text-input"
                         @click.stop="selectNode('button')"
-                      />
+                      >
                     </div>
                     <div class="line-content">
-                      <span class="indent"></span
-                      ><span class="tag-name">/button</span>
+                      <span class="indent" /><span class="tag-name">/button</span>
                     </div>
                   </div>
                 </div>
@@ -333,15 +360,31 @@ const selectNode = (node) => {
           <!-- Interactive Styles Panel -->
           <div class="styles-panel">
             <div class="styles-tabs">
-              <div class="style-tab active">样式 (Styles)</div>
-              <div class="style-tab">计算 (Computed)</div>
+              <div class="style-tab active">
+                样式 (Styles)
+              </div>
+              <div class="style-tab">
+                计算 (Computed)
+              </div>
             </div>
             <div class="styles-content">
               <!-- Preset Selector -->
-              <div class="style-section" v-if="availablePresets.length > 0">
-                <div class="style-section-title">✨ 快速预设 (Presets)</div>
-                <select class="preset-select" @change="applyPreset">
-                  <option value="" disabled selected>
+              <div
+                v-if="availablePresets.length > 0"
+                class="style-section"
+              >
+                <div class="style-section-title">
+                  ✨ 快速预设 (Presets)
+                </div>
+                <select
+                  class="preset-select"
+                  @change="applyPreset"
+                >
+                  <option
+                    value=""
+                    disabled
+                    selected
+                  >
                     选择一种风格 (Select Preset)...
                   </option>
                   <option
@@ -356,29 +399,35 @@ const selectNode = (node) => {
 
               <!-- CSS Properties -->
               <div class="style-rule">
-                <div class="selector">element.style {</div>
+                <div class="selector">
+                  element.style {
+                </div>
                 <div
-                  class="property"
                   v-for="(val, key) in currentStyles"
                   :key="key"
+                  class="property"
                 >
-                  <span class="prop-name">{{ key }}</span
-                  >:
+                  <span class="prop-name">{{ key }}</span>:
                   <input
                     v-model="liveStyles[selectedNode][key]"
                     class="style-input"
-                  />
+                  >
                   ;
                 </div>
-                <div class="selector">}</div>
+                <div class="selector">
+                  }
+                </div>
               </div>
-              <div class="style-add-hint"></div>
+              <div class="style-add-hint" />
             </div>
           </div>
         </div>
 
         <!-- Other Panels (Simplified placeholders) -->
-        <div v-else class="panel placeholder-panel">
+        <div
+          v-else
+          class="panel placeholder-panel"
+        >
           <div class="placeholder-text">
             此演示主要展示 Elements 面板的实时编辑功能。请切换回 "元素" 面板。
           </div>

@@ -5,16 +5,26 @@
 <template>
   <div class="privacy-compliance-demo">
     <div class="header">
-      <div class="title">隐私合规最佳实践</div>
-      <div class="subtitle">GDPR、PIPL 等法规要求下的埋点系统设计</div>
+      <div class="title">
+        隐私合规最佳实践
+      </div>
+      <div class="subtitle">
+        GDPR、PIPL 等法规要求下的埋点系统设计
+      </div>
     </div>
 
     <div class="compliance-cards">
       <div class="compliance-card gdpr">
         <div class="card-header">
-          <div class="card-icon">🇪🇺</div>
-          <div class="card-title">GDPR</div>
-          <div class="card-subtitle">欧盟数据保护法规</div>
+          <div class="card-icon">
+            🇪🇺
+          </div>
+          <div class="card-title">
+            GDPR
+          </div>
+          <div class="card-subtitle">
+            欧盟数据保护法规
+          </div>
         </div>
         <div class="card-body">
           <div class="requirement-list">
@@ -40,9 +50,15 @@
 
       <div class="compliance-card pipl">
         <div class="card-header">
-          <div class="card-icon">🇨🇳</div>
-          <div class="card-title">PIPL</div>
-          <div class="card-subtitle">中国个人信息保护法</div>
+          <div class="card-icon">
+            🇨🇳
+          </div>
+          <div class="card-title">
+            PIPL
+          </div>
+          <div class="card-subtitle">
+            中国个人信息保护法
+          </div>
         </div>
         <div class="card-body">
           <div class="requirement-list">
@@ -68,14 +84,29 @@
     </div>
 
     <div class="implementation-steps">
-      <div class="steps-title">实施步骤</div>
+      <div class="steps-title">
+        实施步骤
+      </div>
       <div class="steps-container">
-        <div class="step-item" v-for="(step, index) in steps" :key="index">
-          <div class="step-number">{{ index + 1 }}</div>
+        <div
+          v-for="(step, index) in steps"
+          :key="index"
+          class="step-item"
+        >
+          <div class="step-number">
+            {{ index + 1 }}
+          </div>
           <div class="step-content">
-            <div class="step-name">{{ step.name }}</div>
-            <div class="step-desc">{{ step.desc }}</div>
-            <div class="step-code" v-if="step.code">
+            <div class="step-name">
+              {{ step.name }}
+            </div>
+            <div class="step-desc">
+              {{ step.desc }}
+            </div>
+            <div
+              v-if="step.code"
+              class="step-code"
+            >
               <pre><code>{{ step.code }}</code></pre>
             </div>
           </div>
@@ -84,80 +115,120 @@
     </div>
 
     <div class="consent-flow-demo">
-      <div class="flow-title">隐私同意流程演示</div>
+      <div class="flow-title">
+        隐私同意流程演示
+      </div>
       <div class="consent-simulation">
         <div class="simulation-screen">
-          <div v-if="!userConsented" class="consent-dialog">
+          <div
+            v-if="!userConsented"
+            class="consent-dialog"
+          >
             <div class="dialog-header">
-              <div class="dialog-title">🔐 隐私设置</div>
-              <div class="dialog-subtitle">我们需要您的同意来收集数据</div>
+              <div class="dialog-title">
+                🔐 隐私设置
+              </div>
+              <div class="dialog-subtitle">
+                我们需要您的同意来收集数据
+              </div>
             </div>
 
             <div class="dialog-body">
               <div class="consent-item">
                 <div class="consent-info">
-                  <div class="consent-name">必要数据</div>
+                  <div class="consent-name">
+                    必要数据
+                  </div>
                   <div class="consent-desc">
                     应用程序运行所必需的数据（崩溃日志、性能指标）
                   </div>
                 </div>
-                <div class="consent-status required">必需</div>
+                <div class="consent-status required">
+                  必需
+                </div>
               </div>
 
               <div class="consent-item">
                 <div class="consent-info">
-                  <div class="consent-name">行为分析</div>
+                  <div class="consent-name">
+                    行为分析
+                  </div>
                   <div class="consent-desc">
                     收集用户行为数据用于产品优化（页面浏览、按钮点击）
                   </div>
                 </div>
                 <label class="consent-toggle">
                   <input
-                    type="checkbox"
                     v-model="consents.analytics"
+                    type="checkbox"
                     :disabled="!userConsented"
-                  />
-                  <span class="toggle-slider"></span>
+                  >
+                  <span class="toggle-slider" />
                 </label>
               </div>
 
               <div class="consent-item">
                 <div class="consent-info">
-                  <div class="consent-name">个性化推荐</div>
-                  <div class="consent-desc">基于您的兴趣提供个性化内容推荐</div>
+                  <div class="consent-name">
+                    个性化推荐
+                  </div>
+                  <div class="consent-desc">
+                    基于您的兴趣提供个性化内容推荐
+                  </div>
                 </div>
                 <label class="consent-toggle">
                   <input
-                    type="checkbox"
                     v-model="consents.personalization"
+                    type="checkbox"
                     :disabled="!userConsented"
-                  />
-                  <span class="toggle-slider"></span>
+                  >
+                  <span class="toggle-slider" />
                 </label>
               </div>
             </div>
 
             <div class="dialog-footer">
-              <button class="dialog-btn secondary" @click="rejectAll">
+              <button
+                class="dialog-btn secondary"
+                @click="rejectAll"
+              >
                 拒绝全部
               </button>
-              <button class="dialog-btn primary" @click="acceptSelected">
+              <button
+                class="dialog-btn primary"
+                @click="acceptSelected"
+              >
                 接受选中
               </button>
             </div>
           </div>
 
-          <div v-else class="consented-view">
-            <div class="consented-icon">✅</div>
-            <div class="consented-title">感谢您的同意</div>
-            <div class="consented-desc">您已经同意收集以下类型的数据：</div>
+          <div
+            v-else
+            class="consented-view"
+          >
+            <div class="consented-icon">
+              ✅
+            </div>
+            <div class="consented-title">
+              感谢您的同意
+            </div>
+            <div class="consented-desc">
+              您已经同意收集以下类型的数据：
+            </div>
 
             <div class="consented-list">
-              <div class="consented-item" v-if="consents.analytics">
+              <div
+                v-if="consents.analytics"
+                class="consented-item"
+              >
                 <span class="item-icon">📊</span>
                 <span>行为分析数据</span>
               </div>
-              <div class="consented-item" v-if="consents.personalization">
+              <div
+                v-if="consents.personalization"
+                class="consented-item"
+              >
                 <span class="item-icon">🎯</span>
                 <span>个性化推荐数据</span>
               </div>
@@ -168,10 +239,16 @@
             </div>
 
             <div class="consented-actions">
-              <button class="action-btn" @click="changeSettings">
+              <button
+                class="action-btn"
+                @click="changeSettings"
+              >
                 修改设置
               </button>
-              <button class="action-btn danger" @click="deleteData">
+              <button
+                class="action-btn danger"
+                @click="deleteData"
+              >
                 删除我的数据
               </button>
             </div>
@@ -181,12 +258,18 @@
     </div>
 
     <div class="data-protection">
-      <div class="protection-title">🛡️ 数据保护措施</div>
+      <div class="protection-title">
+        🛡️ 数据保护措施
+      </div>
       <div class="protection-grid">
         <div class="protection-item">
-          <div class="protection-icon">🔒</div>
+          <div class="protection-icon">
+            🔒
+          </div>
           <div class="protection-content">
-            <div class="protection-name">数据加密</div>
+            <div class="protection-name">
+              数据加密
+            </div>
             <div class="protection-desc">
               传输层 HTTPS 加密，存储层 AES-256 加密
             </div>
@@ -194,9 +277,13 @@
         </div>
 
         <div class="protection-item">
-          <div class="protection-icon">🎭</div>
+          <div class="protection-icon">
+            🎭
+          </div>
           <div class="protection-content">
-            <div class="protection-name">数据脱敏</div>
+            <div class="protection-name">
+              数据脱敏
+            </div>
             <div class="protection-desc">
               手机号、邮箱等敏感信息自动脱敏处理
             </div>
@@ -204,9 +291,13 @@
         </div>
 
         <div class="protection-item">
-          <div class="protection-icon">⏰</div>
+          <div class="protection-icon">
+            ⏰
+          </div>
           <div class="protection-content">
-            <div class="protection-name">数据保留期限</div>
+            <div class="protection-name">
+              数据保留期限
+            </div>
             <div class="protection-desc">
               不同类型数据设置不同保留期限，自动清理过期数据
             </div>
@@ -214,17 +305,25 @@
         </div>
 
         <div class="protection-item">
-          <div class="protection-icon">👤</div>
+          <div class="protection-icon">
+            👤
+          </div>
           <div class="protection-content">
-            <div class="protection-name">用户控制权</div>
-            <div class="protection-desc">用户可查看、导出、删除自己的数据</div>
+            <div class="protection-name">
+              用户控制权
+            </div>
+            <div class="protection-desc">
+              用户可查看、导出、删除自己的数据
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="checklist">
-      <div class="checklist-title">✅ 合规检查清单</div>
+      <div class="checklist-title">
+        ✅ 合规检查清单
+      </div>
       <div class="checklist-items">
         <div
           v-for="(item, index) in checklistItems"

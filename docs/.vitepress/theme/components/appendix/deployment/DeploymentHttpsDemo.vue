@@ -12,12 +12,20 @@
 
     <div class="compare">
       <div class="col">
-        <div class="title">HTTP</div>
-        <div class="item">❌ 明文传输</div>
+        <div class="title">
+          HTTP
+        </div>
+        <div class="item">
+          ❌ 明文传输
+        </div>
       </div>
       <div class="col highlight">
-        <div class="title">HTTPS</div>
-        <div class="item">✅ 加密传输</div>
+        <div class="title">
+          HTTPS
+        </div>
+        <div class="item">
+          ✅ 加密传输
+        </div>
       </div>
     </div>
 

@@ -15,12 +15,18 @@
   <div class="animation-demo">
     <div class="control-panel">
       <div class="playback-controls">
-        <button class="play-btn" @click="togglePlay">
+        <button
+          class="play-btn"
+          @click="togglePlay"
+        >
           <span class="icon">{{ isPlaying ? '⏸️' : '▶️' }}</span>
           {{ isPlaying ? 'Pause' : 'Play' }}
         </button>
 
-        <button class="reset-btn" @click="resetAnimation">
+        <button
+          class="reset-btn"
+          @click="resetAnimation"
+        >
           <span class="icon">🔄</span>
           Reset / 重置
         </button>
@@ -29,9 +35,15 @@
       <div class="animation-selector">
         <label>Animation / 动画类型</label>
         <select v-model="animationType">
-          <option value="bounce">Bouncing Ball / 弹跳球</option>
-          <option value="rotate">Rotating Square / 旋转方块</option>
-          <option value="wave">Wave / 波浪</option>
+          <option value="bounce">
+            Bouncing Ball / 弹跳球
+          </option>
+          <option value="rotate">
+            Rotating Square / 旋转方块
+          </option>
+          <option value="wave">
+            Wave / 波浪
+          </option>
         </select>
       </div>
 
@@ -39,17 +51,22 @@
         <div class="param-row">
           <label>Speed / 速度: {{ speed }}x</label>
           <input
-            type="range"
             v-model.number="speed"
+            type="range"
             min="0.1"
             max="3"
             step="0.1"
-          />
+          >
         </div>
 
         <div class="param-row">
           <label>Object Count / 对象数量: {{ objectCount }}</label>
-          <input type="range" v-model.number="objectCount" min="1" max="10" />
+          <input
+            v-model.number="objectCount"
+            type="range"
+            min="1"
+            max="10"
+          >
         </div>
       </div>
 
@@ -66,7 +83,11 @@
     </div>
 
     <div class="canvas-container">
-      <canvas ref="canvasRef" width="600" height="400"></canvas>
+      <canvas
+        ref="canvasRef"
+        width="600"
+        height="400"
+      />
     </div>
 
     <div class="code-display">

@@ -59,7 +59,9 @@ const reset = () => {
             <span class="type-badge string">string</span>
             <span class="var-name">name</span>
           </div>
-          <div class="card-value">{{ name }}</div>
+          <div class="card-value">
+            {{ name }}
+          </div>
           <div class="card-code">
             <code>const name: string = "{{ name }}"</code>
           </div>
@@ -71,7 +73,9 @@ const reset = () => {
             <span class="type-badge number">number</span>
             <span class="var-name">age</span>
           </div>
-          <div class="card-value">{{ age }}</div>
+          <div class="card-value">
+            {{ age }}
+          </div>
           <div class="card-code">
             <code>const age: number = {{ age }}</code>
           </div>
@@ -84,7 +88,7 @@ const reset = () => {
             <span class="var-name">isActive</span>
           </div>
           <div class="card-value">
-            <span :class="['status-dot', isActive ? 'active' : 'inactive']"></span>
+            <span :class="['status-dot', isActive ? 'active' : 'inactive']" />
             {{ isActive ? 'true' : 'false' }}
           </div>
           <div class="card-code">
@@ -103,27 +107,45 @@ const reset = () => {
 
       <!-- 操作按钮 -->
       <div class="controls">
-        <button @click="modifyName" class="btn-primary">
+        <button
+          class="btn-primary"
+          @click="modifyName"
+        >
           修改 name (正确)
         </button>
-        <button @click="modifyAgeError" class="btn-danger">
+        <button
+          class="btn-danger"
+          @click="modifyAgeError"
+        >
           赋值错误类型
         </button>
-        <button @click="toggleActive" class="btn-secondary">
+        <button
+          class="btn-secondary"
+          @click="toggleActive"
+        >
           切换 isActive
         </button>
-        <button @click="reset" class="btn-ghost">重置</button>
+        <button
+          class="btn-ghost"
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
 
       <!-- 代码对比 -->
       <div class="code-comparison">
         <div class="code-panel javascript">
-          <div class="panel-header">JavaScript (无类型检查)</div>
+          <div class="panel-header">
+            JavaScript (无类型检查)
+          </div>
           <pre><code>let name = "张三"
 name = 123  // ✅ 运行时才会报错（可能很晚才发现）</code></pre>
         </div>
         <div class="code-panel typescript">
-          <div class="panel-header">TypeScript (编译时检查)</div>
+          <div class="panel-header">
+            TypeScript (编译时检查)
+          </div>
           <pre><code>let name: string = "张三"
 name = 123  // ❌ 编译时立即报错（写代码时就发现）</code></pre>
         </div>

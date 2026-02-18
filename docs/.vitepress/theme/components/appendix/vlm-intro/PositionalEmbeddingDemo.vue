@@ -3,31 +3,56 @@
     <div class="demo-row">
       <!-- Input Feature -->
       <div class="grid-wrapper">
-        <div class="grid-title">Feature Vectors</div>
+        <div class="grid-title">
+          Feature Vectors
+        </div>
         <div class="grid-box feature-grid">
-          <div v-for="n in 9" :key="'f' + n" class="cell feature-cell">V</div>
+          <div
+            v-for="n in 9"
+            :key="'f' + n"
+            class="cell feature-cell"
+          >
+            V
+          </div>
         </div>
       </div>
 
-      <div class="op">+</div>
+      <div class="op">
+        +
+      </div>
 
       <!-- Positional Embedding -->
       <div class="grid-wrapper">
-        <div class="grid-title">Position Embeddings</div>
+        <div class="grid-title">
+          Position Embeddings
+        </div>
         <div class="grid-box pos-grid">
-          <div v-for="n in 9" :key="'p' + n" class="cell pos-cell">{{ n }}</div>
+          <div
+            v-for="n in 9"
+            :key="'p' + n"
+            class="cell pos-cell"
+          >
+            {{ n }}
+          </div>
         </div>
       </div>
 
-      <div class="op">=</div>
+      <div class="op">
+        =
+      </div>
 
       <!-- Result -->
       <div class="grid-wrapper">
-        <div class="grid-title">Input to Transformer</div>
+        <div class="grid-title">
+          Input to Transformer
+        </div>
         <div class="grid-box result-grid">
-          <div v-for="n in 9" :key="'r' + n" class="cell result-cell">
-            <span class="v">V</span><span class="plus">+</span
-            ><span class="p">{{ n }}</span>
+          <div
+            v-for="n in 9"
+            :key="'r' + n"
+            class="cell result-cell"
+          >
+            <span class="v">V</span><span class="plus">+</span><span class="p">{{ n }}</span>
           </div>
         </div>
       </div>

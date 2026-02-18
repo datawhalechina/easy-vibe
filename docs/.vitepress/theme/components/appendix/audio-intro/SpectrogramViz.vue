@@ -6,7 +6,12 @@
         <div class="viz-box">
           <div class="viz-header">
             <span class="viz-title">🌊 波形 (Waveform)</span>
-            <el-tag size="small" type="success">Time Domain</el-tag>
+            <el-tag
+              size="small"
+              type="success"
+            >
+              Time Domain
+            </el-tag>
           </div>
           <div class="viz-content waveform-container">
             <div class="wave-bars">
@@ -18,10 +23,14 @@
                   height: 20 + Math.random() * 60 + '%',
                   animationDelay: n * 0.05 + 's'
                 }"
-              ></div>
+              />
             </div>
-            <div class="axis-label x-axis">时间 (Time) →</div>
-            <div class="axis-label y-axis">振幅 (Amplitude) ↑</div>
+            <div class="axis-label x-axis">
+              时间 (Time) →
+            </div>
+            <div class="axis-label y-axis">
+              振幅 (Amplitude) ↑
+            </div>
           </div>
         </div>
 
@@ -36,12 +45,25 @@
         <div class="viz-box">
           <div class="viz-header">
             <span class="viz-title">🎨 频谱图 (Spectrogram)</span>
-            <el-tag size="small" type="warning">Freq Domain</el-tag>
+            <el-tag
+              size="small"
+              type="warning"
+            >
+              Freq Domain
+            </el-tag>
           </div>
           <div class="viz-content spectrogram-container">
-            <canvas ref="canvasRef" width="200" height="100"></canvas>
-            <div class="axis-label x-axis">时间 (Time) →</div>
-            <div class="axis-label y-axis">频率 (Freq) ↑</div>
+            <canvas
+              ref="canvasRef"
+              width="200"
+              height="100"
+            />
+            <div class="axis-label x-axis">
+              时间 (Time) →
+            </div>
+            <div class="axis-label y-axis">
+              频率 (Freq) ↑
+            </div>
           </div>
         </div>
       </div>
@@ -57,11 +79,11 @@
         <template #default>
           <div class="legend">
             <div class="legend-item">
-              <div class="color-box low"></div>
+              <div class="color-box low" />
               低能量 (安静)
             </div>
             <div class="legend-item">
-              <div class="color-box high"></div>
+              <div class="color-box high" />
               高能量 (响亮)
             </div>
           </div>

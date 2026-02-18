@@ -6,7 +6,10 @@
       <span class="subtitle">理解 CDN 访问统计和日志分析</span>
     </div>
     <div class="demo-content">
-      <el-alert type="info" :closable="false">
+      <el-alert
+        type="info"
+        :closable="false"
+      >
         访问分析演示组件占位符 - 待实现具体交互
       </el-alert>
     </div>

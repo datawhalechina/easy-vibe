@@ -6,8 +6,12 @@
   <div class="cmp">
     <div class="header">
       <div>
-        <div class="title">主流框架对比（先看“适配度”）</div>
-        <div class="subtitle">先选你的关注点，再看推荐。</div>
+        <div class="title">
+          主流框架对比（先看“适配度”）
+        </div>
+        <div class="subtitle">
+          先选你的关注点，再看推荐。
+        </div>
       </div>
       <div class="focus">
         <button
@@ -34,17 +38,25 @@
         :key="fw.name"
         :class="['row', { best: fw.name === best }]"
       >
-        <div class="name">{{ fw.name }}</div>
+        <div class="name">
+          {{ fw.name }}
+        </div>
         <div>{{ fw.learn }}</div>
         <div>{{ fw.control }}</div>
         <div>{{ fw.multi }}</div>
-        <div class="use">{{ fw.use }}</div>
+        <div class="use">
+          {{ fw.use }}
+        </div>
       </div>
     </div>
 
     <div class="rec">
-      <div class="rec-title">此刻更推荐：{{ best }}</div>
-      <div class="rec-body">{{ reason }}</div>
+      <div class="rec-title">
+        此刻更推荐：{{ best }}
+      </div>
+      <div class="rec-body">
+        {{ reason }}
+      </div>
     </div>
   </div>
 </template>

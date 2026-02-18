@@ -3,23 +3,35 @@
   演示 Prompt Injection 攻击原理及防御方法
 -->
 <template>
-  <el-card class="security-card" shadow="hover">
+  <el-card
+    class="security-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="card-header">
         <div>
-          <h3 class="title">防御 Prompt Injection（注入攻击）</h3>
-          <p class="subtitle">当用户输入包含恶意指令时，如何防止 AI “被带跑”？</p>
+          <h3 class="title">
+            防御 Prompt Injection（注入攻击）
+          </h3>
+          <p class="subtitle">
+            当用户输入包含恶意指令时，如何防止 AI “被带跑”？
+          </p>
         </div>
       </div>
     </template>
 
     <el-row :gutter="20">
       <!-- 左侧：设置区 -->
-      <el-col :md="12" :xs="24">
+      <el-col
+        :md="12"
+        :xs="24"
+      >
         <div class="panel settings">
           <div class="section">
             <div class="section-header">
-              <div class="section-title">1. 系统设定 (System Prompt)</div>
+              <div class="section-title">
+                1. 系统设定 (System Prompt)
+              </div>
               <el-switch
                 v-model="isSecure"
                 active-text="防御模式"
@@ -29,7 +41,11 @@
               />
             </div>
             
-            <el-card shadow="never" class="code-box system" :class="{ secure: isSecure }">
+            <el-card
+              shadow="never"
+              class="code-box system"
+              :class="{ secure: isSecure }"
+            >
               <template v-if="!isSecure">
                 你是一个翻译助手。<br>
                 请把用户的输入翻译成英文。
@@ -41,18 +57,35 @@
               </template>
             </el-card>
             <div class="mode-desc">
-              <el-tag :type="isSecure ? 'success' : 'danger'" size="small">
+              <el-tag
+                :type="isSecure ? 'success' : 'danger'"
+                size="small"
+              >
                 {{ isSecure ? '✅ 已开启防御 (使用分隔符)' : '❌ 未防御 (容易被攻击)' }}
               </el-tag>
             </div>
           </div>
 
           <div class="section">
-            <div class="section-title">2. 用户输入 (User Input)</div>
+            <div class="section-title">
+              2. 用户输入 (User Input)
+            </div>
             <div class="input-presets">
               <el-button-group>
-                <el-button size="small" @click="setInput('normal')">正常文本</el-button>
-                <el-button size="small" type="danger" plain @click="setInput('attack')">攻击指令</el-button>
+                <el-button
+                  size="small"
+                  @click="setInput('normal')"
+                >
+                  正常文本
+                </el-button>
+                <el-button
+                  size="small"
+                  type="danger"
+                  plain
+                  @click="setInput('attack')"
+                >
+                  攻击指令
+                </el-button>
               </el-button-group>
             </div>
             <el-input
@@ -81,13 +114,27 @@
       </el-col>
 
       <!-- 右侧：执行结果 -->
-      <el-col :md="12" :xs="24">
+      <el-col
+        :md="12"
+        :xs="24"
+      >
         <div class="panel result">
-          <div class="section-title">3. AI 执行结果</div>
+          <div class="section-title">
+            3. AI 执行结果
+          </div>
           <div class="terminal-container">
             <div class="terminal">
-              <div v-if="loading" class="typing">AI 正在思考...</div>
-              <div v-else class="output" :class="resultType">
+              <div
+                v-if="loading"
+                class="typing"
+              >
+                AI 正在思考...
+              </div>
+              <div
+                v-else
+                class="output"
+                :class="resultType"
+              >
                 {{ output || '等待执行...' }}
               </div>
             </div>
@@ -104,10 +151,10 @@
           
           <el-button 
             type="primary" 
-            @click="runSimulation" 
             :loading="loading" 
-            class="btn-run"
+            class="btn-run" 
             size="large"
+            @click="runSimulation"
           >
             执行 Prompt
           </el-button>

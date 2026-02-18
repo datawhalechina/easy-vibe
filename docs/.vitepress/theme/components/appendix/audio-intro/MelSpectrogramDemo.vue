@@ -14,7 +14,9 @@
 <template>
   <div class="mel-spec-demo">
     <div class="header">
-      <div class="title">📊 梅尔频谱：AI 如何"看懂"声音</div>
+      <div class="title">
+        📊 梅尔频谱：AI 如何"看懂"声音
+      </div>
       <div class="subtitle">
         声音是波，但 AI 看到的是频谱图。探索波形如何变成 AI 能理解的"图像"
       </div>
@@ -25,9 +27,9 @@
         <button
           v-for="type in audioTypes"
           :key="type.id"
-          @click="selectType(type.id)"
           class="type-btn"
           :class="{ active: selectedType === type.id }"
+          @click="selectType(type.id)"
         >
           <span class="type-icon">{{ type.icon }}</span>
           <span>{{ type.name }}</span>
@@ -38,23 +40,23 @@
         <div class="param">
           <label>FFT 窗口</label>
           <input
-            type="range"
             v-model="fftSize"
+            type="range"
             min="256"
             max="2048"
             step="256"
-          />
+          >
           <span class="value">{{ fftSize }}</span>
         </div>
         <div class="param">
           <label>梅尔滤波器</label>
           <input
-            type="range"
             v-model="melBins"
+            type="range"
             min="20"
             max="128"
             step="4"
-          />
+          >
           <span class="value">{{ melBins }}</span>
         </div>
       </div>
@@ -67,7 +69,11 @@
           <span class="viz-title">🔊 波形 (时域)</span>
           <span class="viz-desc">原始音频振幅随时间变化</span>
         </div>
-        <canvas ref="waveformCanvas" width="600" height="100"></canvas>
+        <canvas
+          ref="waveformCanvas"
+          width="600"
+          height="100"
+        />
       </div>
 
       <div class="transform-arrow">
@@ -82,31 +88,55 @@
             <span class="viz-title">📈 线性频谱</span>
             <span class="viz-tag">高频分辨率低</span>
           </div>
-          <canvas ref="linearCanvas" width="280" height="150"></canvas>
+          <canvas
+            ref="linearCanvas"
+            width="280"
+            height="150"
+          />
         </div>
 
-        <div class="vs">VS</div>
+        <div class="vs">
+          VS
+        </div>
 
         <div class="viz-section highlight">
           <div class="viz-header">
             <span class="viz-title">🎯 梅尔频谱</span>
             <span class="viz-tag success">符合人耳感知</span>
           </div>
-          <canvas ref="melCanvas" width="280" height="150"></canvas>
+          <canvas
+            ref="melCanvas"
+            width="280"
+            height="150"
+          />
         </div>
       </div>
     </div>
 
     <div class="explanation">
-      <div class="exp-title">🎧 为什么用梅尔刻度？</div>
+      <div class="exp-title">
+        🎧 为什么用梅尔刻度？
+      </div>
       <div class="exp-content">
         <div class="exp-item">
           <div class="exp-visual">
             <div class="freq-bars human">
-              <div class="bar" style="height: 80%"></div>
-              <div class="bar" style="height: 60%"></div>
-              <div class="bar" style="height: 40%"></div>
-              <div class="bar" style="height: 20%"></div>
+              <div
+                class="bar"
+                style="height: 80%"
+              />
+              <div
+                class="bar"
+                style="height: 60%"
+              />
+              <div
+                class="bar"
+                style="height: 40%"
+              />
+              <div
+                class="bar"
+                style="height: 20%"
+              />
             </div>
           </div>
           <div class="exp-text">
@@ -117,10 +147,22 @@
         <div class="exp-item">
           <div class="exp-visual">
             <div class="freq-bars linear">
-              <div class="bar" style="height: 10%"></div>
-              <div class="bar" style="height: 20%"></div>
-              <div class="bar" style="height: 70%"></div>
-              <div class="bar" style="height: 90%"></div>
+              <div
+                class="bar"
+                style="height: 10%"
+              />
+              <div
+                class="bar"
+                style="height: 20%"
+              />
+              <div
+                class="bar"
+                style="height: 70%"
+              />
+              <div
+                class="bar"
+                style="height: 90%"
+              />
             </div>
           </div>
           <div class="exp-text">

@@ -16,9 +16,9 @@
       <button
         v-for="tab in tabs"
         :key="tab.id"
-        @click="activeTab = tab.id"
         class="tab-btn"
         :class="{ active: activeTab === tab.id }"
+        @click="activeTab = tab.id"
       >
         {{ tab.label }}
       </button>
@@ -26,24 +26,40 @@
 
     <div class="content-area">
       <!-- 原始类型 -->
-      <div v-if="activeTab === 'primitive'" class="primitive-types">
+      <div
+        v-if="activeTab === 'primitive'"
+        class="primitive-types"
+      >
         <div class="type-grid">
           <div
             v-for="type in primitiveTypes"
             :key="type.name"
             class="type-card"
-            @click="selectedType = type"
             :class="{ selected: selectedType?.name === type.name }"
+            @click="selectedType = type"
           >
-            <div class="type-icon">{{ type.icon }}</div>
-            <div class="type-name">{{ type.name }}</div>
-            <div class="type-example">{{ type.example }}</div>
+            <div class="type-icon">
+              {{ type.icon }}
+            </div>
+            <div class="type-name">
+              {{ type.name }}
+            </div>
+            <div class="type-example">
+              {{ type.example }}
+            </div>
           </div>
         </div>
 
-        <div v-if="selectedType" class="type-detail">
-          <div class="detail-title">📝 {{ selectedType.name }} 详细说明</div>
-          <div class="detail-desc">{{ selectedType.description }}</div>
+        <div
+          v-if="selectedType"
+          class="type-detail"
+        >
+          <div class="detail-title">
+            📝 {{ selectedType.name }} 详细说明
+          </div>
+          <div class="detail-desc">
+            {{ selectedType.description }}
+          </div>
           <div class="detail-note">
             <strong>💡 关键特性：</strong>{{ selectedType.note }}
           </div>
@@ -51,66 +67,130 @@
       </div>
 
       <!-- 引用类型 -->
-      <div v-else-if="activeTab === 'reference'" class="reference-types">
+      <div
+        v-else-if="activeTab === 'reference'"
+        class="reference-types"
+      >
         <div class="comparison-box">
           <div class="compare-side">
-            <div class="side-title">原始类型赋值</div>
+            <div class="side-title">
+              原始类型赋值
+            </div>
             <div class="code-example">
-              <div class="code-line">let a = 10</div>
-              <div class="code-line">let b = a</div>
-              <div class="code-line">b = 20</div>
-              <div class="code-line result">// a = 10 (不变)</div>
+              <div class="code-line">
+                let a = 10
+              </div>
+              <div class="code-line">
+                let b = a
+              </div>
+              <div class="code-line">
+                b = 20
+              </div>
+              <div class="code-line result">
+                // a = 10 (不变)
+              </div>
             </div>
             <div class="visual-box">
-              <div class="value-box">a = 10</div>
-              <div class="arrow">复制</div>
-              <div class="value-box">b = 20</div>
+              <div class="value-box">
+                a = 10
+              </div>
+              <div class="arrow">
+                复制
+              </div>
+              <div class="value-box">
+                b = 20
+              </div>
             </div>
           </div>
 
           <div class="compare-side">
-            <div class="side-title">引用类型赋值</div>
+            <div class="side-title">
+              引用类型赋值
+            </div>
             <div class="code-example">
-              <div class="code-line">let obj1 = {x: 10}</div>
-              <div class="code-line">let obj2 = obj1</div>
-              <div class="code-line">obj2.x = 20</div>
-              <div class="code-line result">// obj1.x = 20 (变了!)</div>
+              <div class="code-line">
+                let obj1 = {x: 10}
+              </div>
+              <div class="code-line">
+                let obj2 = obj1
+              </div>
+              <div class="code-line">
+                obj2.x = 20
+              </div>
+              <div class="code-line result">
+                // obj1.x = 20 (变了!)
+              </div>
             </div>
             <div class="visual-box ref-visual">
               <div class="ref-boxes">
                 <div class="ref-var-box">
-                  <div class="ref-var-name">obj1</div>
-                  <div class="ref-var-arrow">→</div>
+                  <div class="ref-var-name">
+                    obj1
+                  </div>
+                  <div class="ref-var-arrow">
+                    →
+                  </div>
                 </div>
                 <div class="ref-var-box">
-                  <div class="ref-var-name">obj2</div>
-                  <div class="ref-var-arrow">→</div>
+                  <div class="ref-var-name">
+                    obj2
+                  </div>
+                  <div class="ref-var-arrow">
+                    →
+                  </div>
                 </div>
               </div>
-              <div class="arrow down-arrow">指向同一位置</div>
-              <div class="memory-box">{x: 20}</div>
+              <div class="arrow down-arrow">
+                指向同一位置
+              </div>
+              <div class="memory-box">
+                {x: 20}
+              </div>
             </div>
           </div>
         </div>
 
         <div class="ref-types-list">
-          <div class="ref-type-item" v-for="type in referenceTypes" :key="type.name">
-            <div class="ref-icon">{{ type.icon }}</div>
+          <div
+            v-for="type in referenceTypes"
+            :key="type.name"
+            class="ref-type-item"
+          >
+            <div class="ref-icon">
+              {{ type.icon }}
+            </div>
             <div class="ref-info">
-              <div class="ref-name">{{ type.name }}</div>
-              <div class="ref-desc">{{ type.description }}</div>
+              <div class="ref-name">
+                {{ type.name }}
+              </div>
+              <div class="ref-desc">
+                {{ type.description }}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 类型转换 -->
-      <div v-else class="type-conversion">
+      <div
+        v-else
+        class="type-conversion"
+      >
         <div class="conversion-playground">
           <div class="input-section">
             <label>输入一个值：</label>
-            <input v-model="inputValue" type="text" placeholder="试试输入 '123' 或 'hello'" @keyup.enter="convertType" />
-            <button @click="convertType" class="convert-btn">转换</button>
+            <input
+              v-model="inputValue"
+              type="text"
+              placeholder="试试输入 '123' 或 'hello'"
+              @keyup.enter="convertType"
+            >
+            <button
+              class="convert-btn"
+              @click="convertType"
+            >
+              转换
+            </button>
           </div>
 
           <div class="results-section">
@@ -120,7 +200,10 @@
             </div>
             <div class="result-row">
               <span class="result-label">Number():</span>
-              <span class="result-value" :class="{ error: conversionResults.number === 'NaN' }">
+              <span
+                class="result-value"
+                :class="{ error: conversionResults.number === 'NaN' }"
+              >
                 {{ conversionResults.number }}
               </span>
             </div>
@@ -131,11 +214,19 @@
           </div>
 
           <div class="falsy-values">
-            <div class="falsy-title">⚠️ 转成 false 的值（falsy values）：</div>
-            <div class="falsy-list">
-              <span v-for="val in falsyValues" :key="val" class="falsy-item">{{ val }}</span>
+            <div class="falsy-title">
+              ⚠️ 转成 false 的值（falsy values）：
             </div>
-            <div class="falsy-note">其他所有值（包括空数组 []、空对象 {}）都转成 true</div>
+            <div class="falsy-list">
+              <span
+                v-for="val in falsyValues"
+                :key="val"
+                class="falsy-item"
+              >{{ val }}</span>
+            </div>
+            <div class="falsy-note">
+              其他所有值（包括空数组 []、空对象 {}）都转成 true
+            </div>
           </div>
         </div>
       </div>

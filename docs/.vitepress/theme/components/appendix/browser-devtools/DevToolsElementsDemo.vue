@@ -35,7 +35,10 @@ const updateStyle = (prop, value) => {
 </script>
 
 <template>
-  <el-card class="elements-demo" shadow="hover">
+  <el-card
+    class="elements-demo"
+    shadow="hover"
+  >
     <template #header>
       <div class="header">
         <span class="title">Elements (元素面板)</span>
@@ -45,7 +48,9 @@ const updateStyle = (prop, value) => {
     <div class="devtools-layout">
       <!-- Left: DOM Tree -->
       <div class="panel dom-panel">
-        <div class="panel-header">DOM Tree</div>
+        <div class="panel-header">
+          DOM Tree
+        </div>
         <div class="dom-content">
           <div class="dom-line">
             <span class="tag">&lt;div</span> <span class="attr">id</span>="app" <span class="attr">class</span>="container"<span class="tag">&gt;</span>
@@ -79,18 +84,24 @@ const updateStyle = (prop, value) => {
 
       <!-- Right: Styles -->
       <div class="panel style-panel">
-        <div class="panel-header">Styles ({{ selectedElement === 'box' ? '.box' : '.text' }})</div>
+        <div class="panel-header">
+          Styles ({{ selectedElement === 'box' ? '.box' : '.text' }})
+        </div>
         <div class="style-content">
           <div class="css-rule">
             <span class="selector">{{ selectedElement === 'box' ? '.box' : '.text' }}</span> {
-            <div v-for="(value, prop) in styles[selectedElement]" :key="prop" class="css-prop">
+            <div
+              v-for="(value, prop) in styles[selectedElement]"
+              :key="prop"
+              class="css-prop"
+            >
               <span class="prop-name">{{ prop }}</span>: 
               <span class="prop-value">
-                  <!-- Simple editable input simulation -->
-                  <input 
-                    v-model="styles[selectedElement][prop]" 
-                    class="style-input"
-                  />
+                <!-- Simple editable input simulation -->
+                <input 
+                  v-model="styles[selectedElement][prop]" 
+                  class="style-input"
+                >
               </span>;
             </div>
             }
@@ -101,7 +112,9 @@ const updateStyle = (prop, value) => {
 
     <!-- Preview Area -->
     <div class="preview-area">
-      <div class="preview-label">页面预览 (Page Preview)</div>
+      <div class="preview-label">
+        页面预览 (Page Preview)
+      </div>
       <div class="preview-content">
         <div :style="styles.box">
           <span :style="styles.text">Hello DevTools</span>
@@ -110,7 +123,7 @@ const updateStyle = (prop, value) => {
     </div>
     
     <div class="footer-tip">
-        点击左侧 DOM 树中的元素，在右侧 Styles 面板修改样式，下方预览会实时更新。
+      点击左侧 DOM 树中的元素，在右侧 Styles 面板修改样式，下方预览会实时更新。
     </div>
   </el-card>
 </template>

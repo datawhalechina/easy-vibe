@@ -13,38 +13,66 @@
     <div class="demo-content">
       <div class="counter-display">
         <span class="counter-label">当前库存：</span>
-        <span class="counter-value" :class="{ changed: countChanged }">{{ count }}</span>
+        <span
+          class="counter-value"
+          :class="{ changed: countChanged }"
+        >{{ count }}</span>
         <span class="counter-unit">本书</span>
       </div>
 
       <div class="action-buttons">
-        <button class="action-btn" @click="dispatchAction('INCREMENT')">
+        <button
+          class="action-btn"
+          @click="dispatchAction('INCREMENT')"
+        >
           <span class="btn-icon">➕</span>
           进货 (+1)
         </button>
-        <button class="action-btn" @click="dispatchAction('DECREMENT')">
+        <button
+          class="action-btn"
+          @click="dispatchAction('DECREMENT')"
+        >
           <span class="btn-icon">➖</span>
           出货 (-1)
         </button>
-        <button class="action-btn reset" @click="dispatchAction('RESET')">
+        <button
+          class="action-btn reset"
+          @click="dispatchAction('RESET')"
+        >
           <span class="btn-icon">🔄</span>
           重置库存
         </button>
       </div>
 
       <Transition name="fade">
-        <div v-if="flowStage" class="flow-stages">
-          <div class="flow-stage" :class="{ active: flowStage === 'action' }">
+        <div
+          v-if="flowStage"
+          class="flow-stages"
+        >
+          <div
+            class="flow-stage"
+            :class="{ active: flowStage === 'action' }"
+          >
             <span class="stage-icon">📝</span>
             <span class="stage-text">Action: {{ currentAction.type }}</span>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-stage" :class="{ active: flowStage === 'reducer' }">
+          <div class="flow-arrow">
+            →
+          </div>
+          <div
+            class="flow-stage"
+            :class="{ active: flowStage === 'reducer' }"
+          >
             <span class="stage-icon">⚙️</span>
             <span class="stage-text">Reducer 处理中...</span>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-stage" :class="{ active: flowStage === 'store' }">
+          <div class="flow-arrow">
+            →
+          </div>
+          <div
+            class="flow-stage"
+            :class="{ active: flowStage === 'store' }"
+          >
             <span class="stage-icon">📦</span>
             <span class="stage-text">Store 已更新</span>
           </div>

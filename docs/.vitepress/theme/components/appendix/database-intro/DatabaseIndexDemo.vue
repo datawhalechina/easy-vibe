@@ -86,16 +86,16 @@ const startSearch = async () => {
         <button
           class="mode-btn"
           :class="{ active: mode === 'scan' }"
-          @click="mode = 'scan'"
           :disabled="isSearching"
+          @click="mode = 'scan'"
         >
           🐢 全表扫描 O(n)
         </button>
         <button
           class="mode-btn"
           :class="{ active: mode === 'index' }"
-          @click="mode = 'index'"
           :disabled="isSearching"
+          @click="mode = 'index'"
         >
           ⚡ 索引查找 O(log n)
         </button>
@@ -103,8 +103,8 @@ const startSearch = async () => {
 
       <button
         class="search-btn"
-        @click="startSearch"
         :disabled="isSearching"
+        @click="startSearch"
       >
         {{ isSearching ? '查找中...' : '开始查找' }}
       </button>
@@ -112,7 +112,10 @@ const startSearch = async () => {
 
     <div class="visualization-area">
       <!-- Full Scan Visualization -->
-      <div v-if="mode === 'scan'" class="view-container scan-view">
+      <div
+        v-if="mode === 'scan'"
+        class="view-container scan-view"
+      >
         <div class="grid">
           <div
             v-for="(item, index) in data"
@@ -133,7 +136,10 @@ const startSearch = async () => {
       </div>
 
       <!-- Index Visualization -->
-      <div v-else class="view-container index-view">
+      <div
+        v-else
+        class="view-container index-view"
+      >
         <div class="grid">
           <div
             v-for="(item, index) in data"
@@ -154,19 +160,31 @@ const startSearch = async () => {
       </div>
     </div>
 
-    <div class="stats-box" v-if="!isSearching && searchResult">
+    <div
+      v-if="!isSearching && searchResult"
+      class="stats-box"
+    >
       <div class="stat-item">
         <span class="stat-icon">🎯</span>
         <div class="stat-content">
-          <div class="stat-label">查找结果</div>
-          <div class="stat-value">{{ searchResult.value }}</div>
+          <div class="stat-label">
+            查找结果
+          </div>
+          <div class="stat-value">
+            {{ searchResult.value }}
+          </div>
         </div>
       </div>
       <div class="stat-item">
         <span class="stat-icon">{{ mode === 'scan' ? '🐢' : '⚡' }}</span>
         <div class="stat-content">
-          <div class="stat-label">操作次数</div>
-          <div class="stat-value" :class="mode">
+          <div class="stat-label">
+            操作次数
+          </div>
+          <div
+            class="stat-value"
+            :class="mode"
+          >
             {{ mode === 'scan' ? scanCurrentIndex + 1 : treeActiveNodes.length }} 次
           </div>
         </div>

@@ -4,15 +4,23 @@
       <template #header>
         <div class="card-header">
           <h4>🔄 反向传播演示</h4>
-          <p class="subtitle">观察神经网络如何通过误差反向调整权重</p>
+          <p class="subtitle">
+            观察神经网络如何通过误差反向调整权重
+          </p>
         </div>
       </template>
 
       <div class="demo-content">
         <div class="network-view">
-          <svg class="network-svg" viewBox="0 0 600 300">
+          <svg
+            class="network-svg"
+            viewBox="0 0 600 300"
+          >
             <!-- Layers visualization -->
-            <g v-for="(layer, lIndex) in 3" :key="lIndex">
+            <g
+              v-for="(layer, lIndex) in 3"
+              :key="lIndex"
+            >
               <text
                 :x="100 + lIndex * 200"
                 y="20"
@@ -54,7 +62,11 @@
         <el-divider />
 
         <div class="controls-panel">
-          <el-steps :active="currentStep" align-center finish-status="success">
+          <el-steps
+            :active="currentStep"
+            align-center
+            finish-status="success"
+          >
             <el-step
               v-for="(step, index) in steps"
               :key="index"
@@ -84,13 +96,16 @@
           />
 
           <div class="action-buttons mt-4 flex justify-center gap-4">
-            <el-button @click="resetDemo" :disabled="currentStep === 0">
+            <el-button
+              :disabled="currentStep === 0"
+              @click="resetDemo"
+            >
               重置
             </el-button>
             <el-button
               type="primary"
-              @click="nextStep"
               :disabled="currentStep >= 4"
+              @click="nextStep"
             >
               {{ currentStep < 4 ? '下一步' : '完成' }}
             </el-button>

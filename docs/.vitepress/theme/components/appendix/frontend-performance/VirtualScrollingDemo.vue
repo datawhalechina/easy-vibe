@@ -53,15 +53,25 @@ const renderedCount = computed(() => visibleItems.value.length)
 
     <div class="controls">
       <div class="stat-box">
-        <div class="stat-label">总数据量</div>
-        <div class="stat-value">{{ TOTAL_ITEMS.toLocaleString() }}</div>
+        <div class="stat-label">
+          总数据量
+        </div>
+        <div class="stat-value">
+          {{ TOTAL_ITEMS.toLocaleString() }}
+        </div>
       </div>
       <div class="stat-box highlight">
-        <div class="stat-label">实际渲染</div>
-        <div class="stat-value">{{ renderedCount }}</div>
+        <div class="stat-label">
+          实际渲染
+        </div>
+        <div class="stat-value">
+          {{ renderedCount }}
+        </div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">节省内存</div>
+        <div class="stat-label">
+          节省内存
+        </div>
         <div class="stat-value">
           ~{{ ((1 - renderedCount / TOTAL_ITEMS) * 100).toFixed(1) }}%
         </div>
@@ -69,12 +79,15 @@ const renderedCount = computed(() => visibleItems.value.length)
     </div>
 
     <div
-      class="scroll-container"
       ref="containerRef"
-      @scroll="onScroll"
+      class="scroll-container"
       :style="{ height: CONTAINER_HEIGHT + 'px' }"
+      @scroll="onScroll"
     >
-      <div class="scroll-phantom" :style="{ height: totalHeight + 'px' }"></div>
+      <div
+        class="scroll-phantom"
+        :style="{ height: totalHeight + 'px' }"
+      />
       <div class="visible-list">
         <div
           v-for="item in visibleItems"

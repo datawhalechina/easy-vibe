@@ -89,8 +89,17 @@
       </div>
 
       <div class="preview-area">
-        <div class="canvas" :style="boxStyle">
-          <div v-for="n in 6" :key="n" class="item">{{ n }}</div>
+        <div
+          class="canvas"
+          :style="boxStyle"
+        >
+          <div
+            v-for="n in 6"
+            :key="n"
+            class="item"
+          >
+            {{ n }}
+          </div>
         </div>
         <div class="axis-hint">
           <span class="axis-tag main">主轴方向: {{ dir === 'row' ? '水平 →' : '垂直 ↓' }}</span>
@@ -100,7 +109,9 @@
     </div>
 
     <div class="code-row">
-      <div class="code-label">CSS</div>
+      <div class="code-label">
+        CSS
+      </div>
       <code class="code-text">{{ cssCode }}</code>
     </div>
 

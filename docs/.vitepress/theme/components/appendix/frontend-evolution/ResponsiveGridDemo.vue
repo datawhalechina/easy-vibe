@@ -6,8 +6,12 @@
   <div class="magic-closet">
     <!-- 故事开头 -->
     <div class="story-box">
-      <div class="story-emoji">👗✨🚪</div>
-      <h4 class="story-title">小美的魔法衣柜</h4>
+      <div class="story-emoji">
+        👗✨🚪
+      </div>
+      <h4 class="story-title">
+        小美的魔法衣柜
+      </h4>
       <p class="story-text">
         小美有一件神奇的魔法衣柜！不管你把它放在大房间还是小房间，<br>
         <strong>里面的衣服都会自动叠好、排好，完美适应空间大小！</strong>
@@ -24,13 +28,13 @@
       <div class="slider-box">
         <span class="slider-emoji">🏠小</span>
         <input
-          type="range"
           v-model="closetWidth"
+          type="range"
           :min="280"
           :max="900"
           step="10"
           class="magic-slider"
-        />
+        >
         <span class="slider-emoji">大🏰</span>
       </div>
 
@@ -40,7 +44,10 @@
     </div>
 
     <!-- 魔法衣柜展示 -->
-    <div class="closet-display" :style="{ width: closetWidth + 'px' }">
+    <div
+      class="closet-display"
+      :style="{ width: closetWidth + 'px' }"
+    >
       <div class="closet-header">
         <span class="closet-icon">🚪</span>
         <span class="closet-title">小美的魔法衣柜</span>
@@ -48,7 +55,10 @@
       </div>
 
       <div class="closet-interior">
-        <div class="clothes-rack" :style="rackStyle">
+        <div
+          class="clothes-rack"
+          :style="rackStyle"
+        >
           <div
             v-for="(item, index) in clothes"
             :key="index"
@@ -56,10 +66,21 @@
             :class="{ 'folded': isSmallSpace }"
             :style="{ animationDelay: (index * 0.1) + 's' }"
           >
-            <div class="item-hanger">🪝</div>
-            <div class="item-emoji">{{ item.emoji }}</div>
-            <div class="item-name">{{ item.name }}</div>
-            <div class="fold-hint" v-if="isSmallSpace">叠好了!</div>
+            <div class="item-hanger">
+              🪝
+            </div>
+            <div class="item-emoji">
+              {{ item.emoji }}
+            </div>
+            <div class="item-name">
+              {{ item.name }}
+            </div>
+            <div
+              v-if="isSmallSpace"
+              class="fold-hint"
+            >
+              叠好了!
+            </div>
           </div>
         </div>
       </div>
@@ -72,24 +93,48 @@
 
     <!-- 魔法原理说明 -->
     <div class="magic-explain">
-      <div class="explain-title">🔮 魔法原理揭秘</div>
+      <div class="explain-title">
+        🔮 魔法原理揭秘
+      </div>
       <div class="explain-cards">
         <div class="explain-card">
-          <div class="card-icon">📱</div>
-          <div class="card-title">小房间（手机）</div>
-          <div class="card-desc">衣柜只有 320px 宽，衣服会自动叠起来，<strong>1列</strong>排开</div>
+          <div class="card-icon">
+            📱
+          </div>
+          <div class="card-title">
+            小房间（手机）
+          </div>
+          <div class="card-desc">
+            衣柜只有 320px 宽，衣服会自动叠起来，<strong>1列</strong>排开
+          </div>
         </div>
-        <div class="explain-arrow">➡️</div>
-        <div class="explain-card">
-          <div class="card-icon">📲</div>
-          <div class="card-title">中房间（平板）</div>
-          <div class="card-desc">衣柜有 768px 宽，衣服舒展开，<strong>2列</strong>排开</div>
+        <div class="explain-arrow">
+          ➡️
         </div>
-        <div class="explain-arrow">➡️</div>
         <div class="explain-card">
-          <div class="card-icon">💻</div>
-          <div class="card-title">大房间（电脑）</div>
-          <div class="card-desc">衣柜有 1200px 宽，衣服完全展开，<strong>3列</strong>排开</div>
+          <div class="card-icon">
+            📲
+          </div>
+          <div class="card-title">
+            中房间（平板）
+          </div>
+          <div class="card-desc">
+            衣柜有 768px 宽，衣服舒展开，<strong>2列</strong>排开
+          </div>
+        </div>
+        <div class="explain-arrow">
+          ➡️
+        </div>
+        <div class="explain-card">
+          <div class="card-icon">
+            💻
+          </div>
+          <div class="card-title">
+            大房间（电脑）
+          </div>
+          <div class="card-desc">
+            衣柜有 1200px 宽，衣服完全展开，<strong>3列</strong>排开
+          </div>
         </div>
       </div>
     </div>
@@ -124,7 +169,9 @@
 
     <!-- 总结 -->
     <div class="summary-box">
-      <div class="summary-icon">🎯</div>
+      <div class="summary-icon">
+        🎯
+      </div>
       <div class="summary-content">
         <strong>关键 takeaway：</strong>
         响应式布局就像小美的魔法衣柜，<strong>同一套衣服（内容）</strong>，

@@ -8,13 +8,22 @@
         :class="{ active: selectedType === type.id }"
         @click="selectedType = type.id"
       >
-        <div class="type-icon">{{ type.icon }}</div>
-        <div class="type-name">{{ type.name }}</div>
-        <div class="type-example">{{ type.example }}</div>
+        <div class="type-icon">
+          {{ type.icon }}
+        </div>
+        <div class="type-name">
+          {{ type.name }}
+        </div>
+        <div class="type-example">
+          {{ type.example }}
+        </div>
       </div>
     </div>
     
-    <div v-if="selectedTypeData" class="type-detail">
+    <div
+      v-if="selectedTypeData"
+      class="type-detail"
+    >
       <div class="detail-row">
         <span class="label">特点</span>
         <span class="value">{{ selectedTypeData.features }}</span>

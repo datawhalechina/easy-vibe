@@ -6,7 +6,10 @@
       <span class="subtitle">{{ description }}</span>
     </div>
     <div class="demo-content">
-      <el-alert type="info" :closable="false">
+      <el-alert
+        type="info"
+        :closable="false"
+      >
         缓存策略演示组件占位符 - 待实现具体交互
       </el-alert>
     </div>

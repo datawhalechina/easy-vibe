@@ -5,8 +5,12 @@
 <template>
   <div class="cache-lifecycle-demo">
     <div class="header">
-      <div class="title">缓存生命周期演示</div>
-      <div class="subtitle">观察缓存条目从创建到淘汰的完整过程</div>
+      <div class="title">
+        缓存生命周期演示
+      </div>
+      <div class="subtitle">
+        观察缓存条目从创建到淘汰的完整过程
+      </div>
     </div>
 
     <div class="cache-container">
@@ -33,24 +37,26 @@
           }"
         >
           <div class="entry-header">
-            <div class="entry-id">{{ entry.key }}</div>
+            <div class="entry-id">
+              {{ entry.key }}
+            </div>
             <div class="entry-status">
-              <span v-if="entry.status === 'new'" class="status-badge new"
-                >NEW</span
-              >
-              <span v-if="entry.status === 'hit'" class="status-badge hit"
-                >HIT</span
-              >
+              <span
+                v-if="entry.status === 'new'"
+                class="status-badge new"
+              >NEW</span>
+              <span
+                v-if="entry.status === 'hit'"
+                class="status-badge hit"
+              >HIT</span>
               <span
                 v-if="entry.status === 'expiring'"
                 class="status-badge expiring"
-                >EXPIRING</span
-              >
+              >EXPIRING</span>
               <span
                 v-if="entry.status === 'evicting'"
                 class="status-badge evicting"
-                >EVICTING</span
-              >
+              >EVICTING</span>
             </div>
           </div>
           <div class="entry-ttl">
@@ -58,9 +64,11 @@
               <div
                 class="ttl-fill"
                 :style="{ width: entry.ttlPercent + '%' }"
-              ></div>
+              />
             </div>
-            <div class="ttl-text">TTL: {{ entry.ttl }}s</div>
+            <div class="ttl-text">
+              TTL: {{ entry.ttl }}s
+            </div>
           </div>
           <div class="entry-meta">
             <span>命中: {{ entry.hits }}</span>
@@ -73,8 +81,18 @@
     <div class="controls">
       <div class="control-group">
         <label>操作</label>
-        <button class="action-btn read" @click="readData">读取数据</button>
-        <button class="action-btn write" @click="writeData">写入新数据</button>
+        <button
+          class="action-btn read"
+          @click="readData"
+        >
+          读取数据
+        </button>
+        <button
+          class="action-btn write"
+          @click="writeData"
+        >
+          写入新数据
+        </button>
       </div>
 
       <div class="control-group">
@@ -90,7 +108,9 @@
     </div>
 
     <div class="timeline">
-      <div class="timeline-title">事件时间线</div>
+      <div class="timeline-title">
+        事件时间线
+      </div>
       <div class="timeline-events">
         <div
           v-for="(event, index) in events"
@@ -98,7 +118,9 @@
           class="event"
           :class="event.type"
         >
-          <div class="event-time">{{ event.time }}</div>
+          <div class="event-time">
+            {{ event.time }}
+          </div>
           <div class="event-content">
             <span class="event-icon">{{ event.icon }}</span>
             <span class="event-text">{{ event.text }}</span>
@@ -109,19 +131,19 @@
 
     <div class="legend">
       <div class="legend-item">
-        <span class="legend-color new"></span>
+        <span class="legend-color new" />
         <span>新写入</span>
       </div>
       <div class="legend-item">
-        <span class="legend-color hit"></span>
+        <span class="legend-color hit" />
         <span>缓存命中</span>
       </div>
       <div class="legend-item">
-        <span class="legend-color expiring"></span>
+        <span class="legend-color expiring" />
         <span>即将过期</span>
       </div>
       <div class="legend-item">
-        <span class="legend-color evicting"></span>
+        <span class="legend-color evicting" />
         <span>淘汰中</span>
       </div>
     </div>

@@ -18,15 +18,26 @@
         :class="{ active: selectedLang === lang.name }"
         @click="selectedLang = lang.name"
       >
-        <div class="lang-icon">{{ lang.icon }}</div>
-        <div class="lang-name">{{ lang.name }}</div>
-        <div class="lang-metaphor">{{ lang.metaphor }}</div>
-        <div class="lang-description">{{ lang.description }}</div>
+        <div class="lang-icon">
+          {{ lang.icon }}
+        </div>
+        <div class="lang-name">
+          {{ lang.name }}
+        </div>
+        <div class="lang-metaphor">
+          {{ lang.metaphor }}
+        </div>
+        <div class="lang-description">
+          {{ lang.description }}
+        </div>
       </div>
     </div>
 
     <Transition name="fade">
-      <div v-if="selectedLang" class="lang-detail">
+      <div
+        v-if="selectedLang"
+        class="lang-detail"
+      >
         <div class="detail-header">
           <span class="detail-icon">{{ getCurrentLang().icon }}</span>
           <span class="detail-title">{{ getCurrentLang().name }}</span>
@@ -36,7 +47,10 @@
           <div class="detail-section">
             <h6>🎯 适用场景</h6>
             <ul>
-              <li v-for="scenario in getCurrentLang().scenarios" :key="scenario">
+              <li
+                v-for="scenario in getCurrentLang().scenarios"
+                :key="scenario"
+              >
                 {{ scenario }}
               </li>
             </ul>
@@ -45,21 +59,34 @@
           <div class="detail-section">
             <h6>✅ 优势</h6>
             <ul>
-              <li v-for="pro in getCurrentLang().pros" :key="pro">{{ pro }}</li>
+              <li
+                v-for="pro in getCurrentLang().pros"
+                :key="pro"
+              >
+                {{ pro }}
+              </li>
             </ul>
           </div>
 
           <div class="detail-section">
             <h6>❌ 劣势</h6>
             <ul>
-              <li v-for="con in getCurrentLang().cons" :key="con">{{ con }}</li>
+              <li
+                v-for="con in getCurrentLang().cons"
+                :key="con"
+              >
+                {{ con }}
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </Transition>
 
-    <div v-if="!selectedLang" class="hint-text">
+    <div
+      v-if="!selectedLang"
+      class="hint-text"
+    >
       👆 点击上方任意语言，查看详细说明
     </div>
 

@@ -16,61 +16,126 @@
       <button
         v-for="tab in tabs"
         :key="tab.id"
-        @click="activeTab = tab.id"
         class="tab-btn"
         :class="{ active: activeTab === tab.id }"
+        @click="activeTab = tab.id"
       >
         {{ tab.label }}
       </button>
     </div>
 
     <!-- 原型基础 -->
-    <div v-if="activeTab === 'basic'" class="tab-content">
+    <div
+      v-if="activeTab === 'basic'"
+      class="tab-content"
+    >
       <div class="concept-explanation">
         <div class="code-panel">
-          <div class="code-title">创建对象的方式</div>
+          <div class="code-title">
+            创建对象的方式
+          </div>
           <div class="code-block">
-            <div class="code-line comment">// 方式 1：对象字面量</div>
-            <div class="code-line">const obj1 = { name: "对象1" }</div>
-            <div class="code-line">obj1.__proto__ === Object.prototype <span class="comment">// true</span></div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 方式 2：构造函数</div>
-            <div class="code-line">function Person(name) {</div>
-            <div class="code-line indent">this.name = name</div>
-            <div class="code-line">}</div>
-            <div class="code-line">const p = new Person("张三")</div>
-            <div class="code-line">p.__proto__ === Person.prototype <span class="comment">// true</span></div>
+            <div class="code-line comment">
+              // 方式 1：对象字面量
+            </div>
+            <div class="code-line">
+              const obj1 = { name: "对象1" }
+            </div>
+            <div class="code-line">
+              obj1.__proto__ === Object.prototype <span class="comment">// true</span>
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 方式 2：构造函数
+            </div>
+            <div class="code-line">
+              function Person(name) {
+            </div>
+            <div class="code-line indent">
+              this.name = name
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line">
+              const p = new Person("张三")
+            </div>
+            <div class="code-line">
+              p.__proto__ === Person.prototype <span class="comment">// true</span>
+            </div>
           </div>
         </div>
 
         <div class="prototype-visual">
           <div class="prototype-chain">
-            <div class="chain-node" :class="{ active: chainLevel >= 0 }" @click="chainLevel = 0">
-              <div class="node-title">对象实例 (p)</div>
+            <div
+              class="chain-node"
+              :class="{ active: chainLevel >= 0 }"
+              @click="chainLevel = 0"
+            >
+              <div class="node-title">
+                对象实例 (p)
+              </div>
               <div class="node-content">
-                <div class="property">name: "张三"</div>
-                <div class="proto-link">__proto__ →</div>
+                <div class="property">
+                  name: "张三"
+                </div>
+                <div class="proto-link">
+                  __proto__ →
+                </div>
               </div>
             </div>
 
-            <div class="chain-arrow" v-if="chainLevel >= 0">↓ 查找</div>
+            <div
+              v-if="chainLevel >= 0"
+              class="chain-arrow"
+            >
+              ↓ 查找
+            </div>
 
-            <div class="chain-node constructor" :class="{ active: chainLevel >= 1 }" @click="chainLevel = 1">
-              <div class="node-title">Person.prototype</div>
+            <div
+              class="chain-node constructor"
+              :class="{ active: chainLevel >= 1 }"
+              @click="chainLevel = 1"
+            >
+              <div class="node-title">
+                Person.prototype
+              </div>
               <div class="node-content">
-                <div class="method">constructor: Person</div>
-                <div class="proto-link">__proto__ →</div>
+                <div class="method">
+                  constructor: Person
+                </div>
+                <div class="proto-link">
+                  __proto__ →
+                </div>
               </div>
             </div>
 
-            <div class="chain-arrow" v-if="chainLevel >= 1">↓ 查找</div>
+            <div
+              v-if="chainLevel >= 1"
+              class="chain-arrow"
+            >
+              ↓ 查找
+            </div>
 
-            <div class="chain-node object" :class="{ active: chainLevel >= 2 }" @click="chainLevel = 2">
-              <div class="node-title">Object.prototype</div>
+            <div
+              class="chain-node object"
+              :class="{ active: chainLevel >= 2 }"
+              @click="chainLevel = 2"
+            >
+              <div class="node-title">
+                Object.prototype
+              </div>
               <div class="node-content">
-                <div class="method">toString()</div>
-                <div class="method">hasOwnProperty()</div>
-                <div class="proto-link">__proto__ → null</div>
+                <div class="method">
+                  toString()
+                </div>
+                <div class="method">
+                  hasOwnProperty()
+                </div>
+                <div class="proto-link">
+                  __proto__ → null
+                </div>
               </div>
             </div>
           </div>
@@ -94,75 +159,149 @@
     </div>
 
     <!-- 原型继承 -->
-    <div v-else-if="activeTab === 'inheritance'" class="tab-content">
+    <div
+      v-else-if="activeTab === 'inheritance'"
+      class="tab-content"
+    >
       <div class="inheritance-demo">
         <div class="inheritance-code">
-          <div class="code-title">原型继承示例</div>
+          <div class="code-title">
+            原型继承示例
+          </div>
           <div class="code-block">
-            <div class="code-line comment">// 父类构造函数</div>
-            <div class="code-line">function Animal(name) {</div>
-            <div class="code-line indent">this.name = name</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line">Animal.prototype.eat = function() {</div>
-            <div class="code-line indent">return this.name + " 在吃东西"</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 子类构造函数</div>
-            <div class="code-line">function Dog(name, breed) {</div>
-            <div class="code-line indent">Animal.call(this, name) <span class="comment">// 继承属性</span></div>
-            <div class="code-line indent">this.breed = breed</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 继承方法</div>
-            <div class="code-line">Dog.prototype = Object.create(Animal.prototype)</div>
-            <div class="code-line">Dog.prototype.constructor = Dog</div>
+            <div class="code-line comment">
+              // 父类构造函数
+            </div>
+            <div class="code-line">
+              function Animal(name) {
+            </div>
+            <div class="code-line indent">
+              this.name = name
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              Animal.prototype.eat = function() {
+            </div>
+            <div class="code-line indent">
+              return this.name + " 在吃东西"
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 子类构造函数
+            </div>
+            <div class="code-line">
+              function Dog(name, breed) {
+            </div>
+            <div class="code-line indent">
+              Animal.call(this, name) <span class="comment">// 继承属性</span>
+            </div>
+            <div class="code-line indent">
+              this.breed = breed
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 继承方法
+            </div>
+            <div class="code-line">
+              Dog.prototype = Object.create(Animal.prototype)
+            </div>
+            <div class="code-line">
+              Dog.prototype.constructor = Dog
+            </div>
           </div>
         </div>
 
         <div class="inheritance-visual">
           <div class="class-diagram">
             <div class="class-box parent">
-              <div class="class-title">Animal (父类)</div>
+              <div class="class-title">
+                Animal (父类)
+              </div>
               <div class="class-content">
                 <div class="class-section">
-                  <div class="section-title">属性</div>
-                  <div class="section-item">name: String</div>
+                  <div class="section-title">
+                    属性
+                  </div>
+                  <div class="section-item">
+                    name: String
+                  </div>
                 </div>
                 <div class="class-section">
-                  <div class="section-title">方法 (prototype)</div>
-                  <div class="section-item">eat()</div>
+                  <div class="section-title">
+                    方法 (prototype)
+                  </div>
+                  <div class="section-item">
+                    eat()
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="inherit-arrow">↓ 继承</div>
+            <div class="inherit-arrow">
+              ↓ 继承
+            </div>
 
             <div class="class-box child">
-              <div class="class-title">Dog (子类)</div>
+              <div class="class-title">
+                Dog (子类)
+              </div>
               <div class="class-content">
                 <div class="class-section">
-                  <div class="section-title">属性</div>
-                  <div class="section-item">name: String</div>
-                  <div class="section-item">breed: String</div>
+                  <div class="section-title">
+                    属性
+                  </div>
+                  <div class="section-item">
+                    name: String
+                  </div>
+                  <div class="section-item">
+                    breed: String
+                  </div>
                 </div>
                 <div class="class-section">
-                  <div class="section-title">方法 (prototype)</div>
-                  <div class="section-item">eat() <span class="inherited">[继承]</span></div>
-                  <div class="section-item">bark() <span class="own">[新增]</span></div>
+                  <div class="section-title">
+                    方法 (prototype)
+                  </div>
+                  <div class="section-item">
+                    eat() <span class="inherited">[继承]</span>
+                  </div>
+                  <div class="section-item">
+                    bark() <span class="own">[新增]</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="inheritance-playground">
-            <div class="playground-title">试试创建实例</div>
-            <div class="input-group">
-              <input v-model="dogName" placeholder="狗狗名字" />
-              <input v-model="dogBreed" placeholder="品种" />
-              <button @click="createDog">创建</button>
+            <div class="playground-title">
+              试试创建实例
             </div>
-            <div v-if="dogInstance" class="instance-result">
+            <div class="input-group">
+              <input
+                v-model="dogName"
+                placeholder="狗狗名字"
+              >
+              <input
+                v-model="dogBreed"
+                placeholder="品种"
+              >
+              <button @click="createDog">
+                创建
+              </button>
+            </div>
+            <div
+              v-if="dogInstance"
+              class="instance-result"
+            >
               <div class="result-item">
                 <span class="label">名字：</span>
                 <span class="value">{{ dogInstance.name }}</span>
@@ -173,8 +312,16 @@
               </div>
               <div class="result-item">
                 <span class="label">调用 eat()：</span>
-                <button @click="callEat" class="action-btn">调用</button>
-                <span v-if="eatResult" class="method-result">{{ eatResult }}</span>
+                <button
+                  class="action-btn"
+                  @click="callEat"
+                >
+                  调用
+                </button>
+                <span
+                  v-if="eatResult"
+                  class="method-result"
+                >{{ eatResult }}</span>
               </div>
             </div>
           </div>
@@ -183,90 +330,185 @@
     </div>
 
     <!-- class 语法 -->
-    <div v-else class="tab-content">
+    <div
+      v-else
+      class="tab-content"
+    >
       <div class="class-syntax-demo">
         <div class="syntax-comparison">
           <div class="syntax-panel old">
-            <div class="panel-title">ES5 构造函数</div>
+            <div class="panel-title">
+              ES5 构造函数
+            </div>
             <div class="code-block">
-              <div class="code-line">function Person(name) {</div>
-              <div class="code-line indent">this.name = name</div>
-              <div class="code-line">}</div>
-              <div class="code-line"></div>
-              <div class="code-line">Person.prototype.greet = function() {</div>
-              <div class="code-line indent">return "你好，我是" + this.name</div>
-              <div class="code-line">}</div>
-              <div class="code-line"></div>
-              <div class="code-line">const p = new Person("小明")</div>
+              <div class="code-line">
+                function Person(name) {
+              </div>
+              <div class="code-line indent">
+                this.name = name
+              </div>
+              <div class="code-line">
+                }
+              </div>
+              <div class="code-line" />
+              <div class="code-line">
+                Person.prototype.greet = function() {
+              </div>
+              <div class="code-line indent">
+                return "你好，我是" + this.name
+              </div>
+              <div class="code-line">
+                }
+              </div>
+              <div class="code-line" />
+              <div class="code-line">
+                const p = new Person("小明")
+              </div>
             </div>
           </div>
 
           <div class="syntax-panel new">
-            <div class="panel-title">ES6 class 语法</div>
+            <div class="panel-title">
+              ES6 class 语法
+            </div>
             <div class="code-block">
-              <div class="code-line">class Person {</div>
-              <div class="code-line indent">constructor(name) {</div>
-              <div class="code-line indent indent">this.name = name</div>
-              <div class="code-line indent">}</div>
-              <div class="code-line"></div>
-              <div class="code-line indent">greet() {</div>
-              <div class="code-line indent indent">return "你好，我是" + this.name</div>
-              <div class="code-line indent">}</div>
-              <div class="code-line">}</div>
-              <div class="code-line"></div>
-              <div class="code-line">const p = new Person("小明")</div>
+              <div class="code-line">
+                class Person {
+              </div>
+              <div class="code-line indent">
+                constructor(name) {
+              </div>
+              <div class="code-line indent indent">
+                this.name = name
+              </div>
+              <div class="code-line indent">
+                }
+              </div>
+              <div class="code-line" />
+              <div class="code-line indent">
+                greet() {
+              </div>
+              <div class="code-line indent indent">
+                return "你好，我是" + this.name
+              </div>
+              <div class="code-line indent">
+                }
+              </div>
+              <div class="code-line">
+                }
+              </div>
+              <div class="code-line" />
+              <div class="code-line">
+                const p = new Person("小明")
+              </div>
             </div>
           </div>
         </div>
 
         <div class="class-features">
           <div class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <div class="feature-title">更清晰的语法</div>
-            <div class="feature-desc">class 语法让面向对象编程更直观，但本质还是基于原型</div>
+            <div class="feature-icon">
+              🎯
+            </div>
+            <div class="feature-title">
+              更清晰的语法
+            </div>
+            <div class="feature-desc">
+              class 语法让面向对象编程更直观，但本质还是基于原型
+            </div>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">🔗</div>
-            <div class="feature-title">继承更简单</div>
-            <div class="feature-desc">使用 extends 关键字实现继承，代码更简洁</div>
+            <div class="feature-icon">
+              🔗
+            </div>
+            <div class="feature-title">
+              继承更简单
+            </div>
+            <div class="feature-desc">
+              使用 extends 关键字实现继承，代码更简洁
+            </div>
           </div>
 
           <div class="feature-card">
-            <div class="feature-icon">⚠️</div>
-            <div class="feature-title">注意</div>
-            <div class="feature-desc">class 只是语法糖，底层仍然是原型链机制</div>
+            <div class="feature-icon">
+              ⚠️
+            </div>
+            <div class="feature-title">
+              注意
+            </div>
+            <div class="feature-desc">
+              class 只是语法糖，底层仍然是原型链机制
+            </div>
           </div>
         </div>
 
         <div class="inheritance-example">
-          <div class="code-title">class 继承示例</div>
+          <div class="code-title">
+            class 继承示例
+          </div>
           <div class="code-block">
-            <div class="code-line">class Animal {</div>
-            <div class="code-line indent">constructor(name) {</div>
-            <div class="code-line indent indent">this.name = name</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line indent">eat() {</div>
-            <div class="code-line indent indent">return this.name + " 在吃东西"</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line">class Dog extends Animal {</div>
-            <div class="code-line indent">constructor(name, breed) {</div>
-            <div class="code-line indent indent">super(name) <span class="comment">// 调用父类构造函数</span></div>
-            <div class="code-line indent indent">this.breed = breed</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line indent">bark() {</div>
-            <div class="code-line indent indent">return "汪汪！"</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line">}</div>
+            <div class="code-line">
+              class Animal {
+            </div>
+            <div class="code-line indent">
+              constructor(name) {
+            </div>
+            <div class="code-line indent indent">
+              this.name = name
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line indent">
+              eat() {
+            </div>
+            <div class="code-line indent indent">
+              return this.name + " 在吃东西"
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              class Dog extends Animal {
+            </div>
+            <div class="code-line indent">
+              constructor(name, breed) {
+            </div>
+            <div class="code-line indent indent">
+              super(name) <span class="comment">// 调用父类构造函数</span>
+            </div>
+            <div class="code-line indent indent">
+              this.breed = breed
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line indent">
+              bark() {
+            </div>
+            <div class="code-line indent indent">
+              return "汪汪！"
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line">
+              }
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="key-points">
-      <div class="point-title">🎯 核心要点</div>
+      <div class="point-title">
+        🎯 核心要点
+      </div>
       <ul class="point-list">
         <li>每个对象都有 <code>__proto__</code> 属性，指向其构造函数的 <code>prototype</code></li>
         <li>访问对象属性时，先在自身查找，找不到就沿着原型链向上查找</li>

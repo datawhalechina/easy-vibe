@@ -3,11 +3,26 @@
     <h4>async/await 机制演示</h4>
 
     <div class="controls">
-      <el-button type="primary" size="small" @click="runExample" :disabled="isRunning">
+      <el-button
+        type="primary"
+        size="small"
+        :disabled="isRunning"
+        @click="runExample"
+      >
         {{ isRunning ? '运行中...' : '运行示例' }}
       </el-button>
-      <el-button size="small" @click="reset">重置</el-button>
-      <el-checkbox v-model="showDetails" size="small">显示详细信息</el-checkbox>
+      <el-button
+        size="small"
+        @click="reset"
+      >
+        重置
+      </el-button>
+      <el-checkbox
+        v-model="showDetails"
+        size="small"
+      >
+        显示详细信息
+      </el-checkbox>
     </div>
 
     <div class="code-section">
@@ -35,31 +50,60 @@
         <h5>执行时间线</h5>
         <div class="timeline">
           <div class="time-axis">
-            <div class="axis-label">0ms</div>
-            <div class="axis-label">50ms</div>
-            <div class="axis-label">100ms</div>
-            <div class="axis-label">150ms</div>
-            <div class="axis-label">200ms</div>
+            <div class="axis-label">
+              0ms
+            </div>
+            <div class="axis-label">
+              50ms
+            </div>
+            <div class="axis-label">
+              100ms
+            </div>
+            <div class="axis-label">
+              150ms
+            </div>
+            <div class="axis-label">
+              200ms
+            </div>
           </div>
 
           <div class="thread-rows">
             <div class="thread-row">
-              <div class="row-label">事件循环</div>
+              <div class="row-label">
+                事件循环
+              </div>
               <div class="row-track">
-                <div class="execution-segment event-loop" style="width: 100%;">
+                <div
+                  class="execution-segment event-loop"
+                  style="width: 100%;"
+                >
                   调度中
                 </div>
               </div>
             </div>
 
-            <div v-for="(task, idx) in tasks" :key="task.id" class="thread-row">
-              <div class="row-label">任务 {{ task.id }}</div>
+            <div
+              v-for="(task, idx) in tasks"
+              :key="task.id"
+              class="thread-row"
+            >
+              <div class="row-label">
+                任务 {{ task.id }}
+              </div>
               <div class="row-track">
-                <template v-for="(segment, sidx) in task.segments" :key="sidx">
-                  <div class="execution-segment"
+                <template
+                  v-for="(segment, sidx) in task.segments"
+                  :key="sidx"
+                >
+                  <div
+                    class="execution-segment"
                     :class="{ 'active': segment.type === 'active', 'io': segment.type === 'io' }"
-                    :style="{ left: segment.start + '%', width: segment.width + '%', backgroundColor: segment.color }">
-                    <span v-if="segment.width > 8" class="segment-label">
+                    :style="{ left: segment.start + '%', width: segment.width + '%', backgroundColor: segment.color }"
+                  >
+                    <span
+                      v-if="segment.width > 8"
+                      class="segment-label"
+                    >
                       {{ segment.type === 'active' ? '执行' : 'I/O' }}
                     </span>
                   </div>
@@ -72,28 +116,48 @@
 
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-title">并发任务数</div>
-          <div class="stat-value">{{ tasks.length }}</div>
+          <div class="stat-title">
+            并发任务数
+          </div>
+          <div class="stat-value">
+            {{ tasks.length }}
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-title">总执行时间</div>
-          <div class="stat-value">{{ totalTime }}ms</div>
+          <div class="stat-title">
+            总执行时间
+          </div>
+          <div class="stat-value">
+            {{ totalTime }}ms
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-title">I/O 等待时间</div>
-          <div class="stat-value">{{ ioWaitTime }}ms</div>
+          <div class="stat-title">
+            I/O 等待时间
+          </div>
+          <div class="stat-value">
+            {{ ioWaitTime }}ms
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-title">CPU 利用率</div>
-          <div class="stat-value">{{ cpuUtilization }}%</div>
+          <div class="stat-title">
+            CPU 利用率
+          </div>
+          <div class="stat-value">
+            {{ cpuUtilization }}%
+          </div>
         </div>
       </div>
     </div>
 
     <div class="explanation">
-      <el-alert title="async/await 的优势" type="success"
+      <el-alert
+        title="async/await 的优势"
+        type="success"
         description="当一个任务遇到 I/O 操作(如网络请求)时，await 会让出 CPU，事件循环调度其他任务执行。I/O 完成后，任务从断点恢复。这种方式让单个线程可以并发处理数千个任务。"
-        show-icon :closable="false" />
+        show-icon
+        :closable="false"
+      />
     </div>
   </div>
 </template>

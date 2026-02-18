@@ -17,12 +17,24 @@
         <div class="item-header">
           <span class="item-icon">{{ practice.icon }}</span>
           <span class="item-title">{{ practice.title }}</span>
-          <span class="item-priority" :class="practice.priority">{{ practice.priorityText }}</span>
+          <span
+            class="item-priority"
+            :class="practice.priority"
+          >{{ practice.priorityText }}</span>
         </div>
-        <div class="item-body" v-if="expandedCard === index">
-          <p class="item-desc">{{ practice.description }}</p>
+        <div
+          v-if="expandedCard === index"
+          class="item-body"
+        >
+          <p class="item-desc">
+            {{ practice.description }}
+          </p>
           <div class="item-checks">
-            <span v-for="(item, i) in practice.checklist.slice(0, 3)" :key="i" class="check-tag">✓ {{ item }}</span>
+            <span
+              v-for="(item, i) in practice.checklist.slice(0, 3)"
+              :key="i"
+              class="check-tag"
+            >✓ {{ item }}</span>
           </div>
         </div>
       </div>

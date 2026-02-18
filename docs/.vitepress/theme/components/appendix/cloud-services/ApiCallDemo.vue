@@ -7,10 +7,16 @@
         class="step"
         :class="{ active: currentStep >= index, completed: currentStep > index }"
       >
-        <div class="step-num">{{ index + 1 }}</div>
+        <div class="step-num">
+          {{ index + 1 }}
+        </div>
         <div class="step-content">
-          <div class="step-title">{{ step.title }}</div>
-          <div class="step-desc">{{ step.desc }}</div>
+          <div class="step-title">
+            {{ step.title }}
+          </div>
+          <div class="step-desc">
+            {{ step.desc }}
+          </div>
         </div>
       </div>
     </div>
@@ -18,18 +24,26 @@
     <div class="action-panel">
       <button 
         class="action-btn" 
-        @click="nextStep"
         :disabled="currentStep >= steps.length"
+        @click="nextStep"
       >
         {{ currentStep >= steps.length ? '已完成' : '下一步' }}
       </button>
-      <button class="action-btn outline" @click="reset">
+      <button
+        class="action-btn outline"
+        @click="reset"
+      >
         重置
       </button>
     </div>
     
-    <div v-if="currentStep > 0" class="code-preview">
-      <div class="code-title">{{ steps[currentStep - 1].codeTitle }}</div>
+    <div
+      v-if="currentStep > 0"
+      class="code-preview"
+    >
+      <div class="code-title">
+        {{ steps[currentStep - 1].codeTitle }}
+      </div>
       <pre><code>{{ steps[currentStep - 1].code }}</code></pre>
     </div>
   </div>

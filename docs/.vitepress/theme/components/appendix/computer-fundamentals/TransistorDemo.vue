@@ -8,22 +8,85 @@
 
     <div class="demo-content">
       <div class="switch-container">
-        <div class="switch-area" @click="toggleSwitch">
+        <div
+          class="switch-area"
+          @click="toggleSwitch"
+        >
           <div class="transistor-symbol">
-            <svg viewBox="0 0 100 80" class="transistor-svg">
-              <line x1="10" y1="40" x2="35" y2="40" stroke="var(--vp-c-text-1)" stroke-width="2"/>
-              <line x1="65" y1="40" x2="90" y2="40" stroke="var(--vp-c-text-1)" stroke-width="2"/>
-              <line x1="50" y1="20" x2="50" y2="35" stroke="var(--vp-c-text-1)" stroke-width="2"/>
-              <line x1="50" y1="45" x2="50" y2="60" stroke="var(--vp-c-text-1)" stroke-width="2"/>
-              <line x1="35" y1="30" x2="35" y2="50" stroke="var(--vp-c-text-1)" stroke-width="3"/>
-              <line x1="65" y1="30" x2="65" y2="50" stroke="var(--vp-c-text-1)" stroke-width="3"/>
-              <line x1="35" y1="40" x2="65" y2="40" stroke="var(--vp-c-text-1)" stroke-width="2"/>
-              <circle cx="50" cy="60" r="4" fill="var(--vp-c-text-1)"/>
+            <svg
+              viewBox="0 0 100 80"
+              class="transistor-svg"
+            >
+              <line
+                x1="10"
+                y1="40"
+                x2="35"
+                y2="40"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="2"
+              />
+              <line
+                x1="65"
+                y1="40"
+                x2="90"
+                y2="40"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="2"
+              />
+              <line
+                x1="50"
+                y1="20"
+                x2="50"
+                y2="35"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="2"
+              />
+              <line
+                x1="50"
+                y1="45"
+                x2="50"
+                y2="60"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="2"
+              />
+              <line
+                x1="35"
+                y1="30"
+                x2="35"
+                y2="50"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="3"
+              />
+              <line
+                x1="65"
+                y1="30"
+                x2="65"
+                y2="50"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="3"
+              />
+              <line
+                x1="35"
+                y1="40"
+                x2="65"
+                y2="40"
+                stroke="var(--vp-c-text-1)"
+                stroke-width="2"
+              />
+              <circle
+                cx="50"
+                cy="60"
+                r="4"
+                fill="var(--vp-c-text-1)"
+              />
             </svg>
           </div>
           <div class="switch-label">
             <span class="state-label">{{ isOn ? 'ON (1)' : 'OFF (0)' }}</span>
-            <div class="current-flow" :class="{ active: isOn }">
+            <div
+              class="current-flow"
+              :class="{ active: isOn }"
+            >
               <span class="flow-indicator">电流</span>
             </div>
           </div>
@@ -31,7 +94,9 @@
       </div>
 
       <div class="truth-table">
-        <div class="table-title">晶体管状态表</div>
+        <div class="table-title">
+          晶体管状态表
+        </div>
         <table>
           <thead>
             <tr>

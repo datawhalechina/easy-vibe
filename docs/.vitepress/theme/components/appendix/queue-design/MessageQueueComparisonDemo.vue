@@ -5,8 +5,12 @@
 <template>
   <div class="mq-comparison-demo">
     <div class="header">
-      <div class="title">主流消息队列对比</div>
-      <div class="subtitle">选择不同 MQ，查看特性对比和适用场景</div>
+      <div class="title">
+        主流消息队列对比
+      </div>
+      <div class="subtitle">
+        选择不同 MQ，查看特性对比和适用场景
+      </div>
     </div>
 
     <div class="mq-selector">
@@ -24,48 +28,74 @@
     <div class="mq-details">
       <div class="mq-card">
         <div class="mq-header">
-          <div class="mq-name">{{ currentMQ.label }}</div>
-          <div class="mq-tag">{{ currentMQ.positioning }}</div>
+          <div class="mq-name">
+            {{ currentMQ.label }}
+          </div>
+          <div class="mq-tag">
+            {{ currentMQ.positioning }}
+          </div>
         </div>
 
         <div class="metrics-grid">
           <div class="metric">
-            <div class="metric-label">吞吐量</div>
-            <div class="metric-value">{{ currentMQ.throughput }}</div>
+            <div class="metric-label">
+              吞吐量
+            </div>
+            <div class="metric-value">
+              {{ currentMQ.throughput }}
+            </div>
             <div class="metric-bar">
               <div
                 class="bar-fill"
                 :style="{ width: currentMQ.throughputPercent + '%' }"
-              ></div>
+              />
             </div>
           </div>
 
           <div class="metric">
-            <div class="metric-label">延迟</div>
-            <div class="metric-value">{{ currentMQ.latency }}</div>
-            <div class="metric-desc">{{ currentMQ.latencyDesc }}</div>
+            <div class="metric-label">
+              延迟
+            </div>
+            <div class="metric-value">
+              {{ currentMQ.latency }}
+            </div>
+            <div class="metric-desc">
+              {{ currentMQ.latencyDesc }}
+            </div>
           </div>
 
           <div class="metric">
-            <div class="metric-label">可靠性</div>
-            <div class="metric-value">{{ currentMQ.reliability }}</div>
-            <div class="metric-desc">{{ currentMQ.reliabilityDesc }}</div>
+            <div class="metric-label">
+              可靠性
+            </div>
+            <div class="metric-value">
+              {{ currentMQ.reliability }}
+            </div>
+            <div class="metric-desc">
+              {{ currentMQ.reliabilityDesc }}
+            </div>
           </div>
 
           <div class="metric">
-            <div class="metric-label">学习曲线</div>
-            <div class="metric-value">{{ currentMQ.learning }}</div>
+            <div class="metric-label">
+              学习曲线
+            </div>
+            <div class="metric-value">
+              {{ currentMQ.learning }}
+            </div>
             <div class="metric-bar">
               <div
                 class="bar-fill learning"
                 :style="{ width: currentMQ.learningPercent + '%' }"
-              ></div>
+              />
             </div>
           </div>
         </div>
 
         <div class="features">
-          <div class="feature-title">核心特性</div>
+          <div class="feature-title">
+            核心特性
+          </div>
           <div class="feature-list">
             <div
               v-for="feature in currentMQ.features"
@@ -78,18 +108,28 @@
         </div>
 
         <div class="use-cases">
-          <div class="use-case-title">✅ 适用场景</div>
+          <div class="use-case-title">
+            ✅ 适用场景
+          </div>
           <ul class="use-case-list">
-            <li v-for="useCase in currentMQ.useCases" :key="useCase">
+            <li
+              v-for="useCase in currentMQ.useCases"
+              :key="useCase"
+            >
               {{ useCase }}
             </li>
           </ul>
         </div>
 
         <div class="not-recommended">
-          <div class="not-title">⚠️ 不推荐场景</div>
+          <div class="not-title">
+            ⚠️ 不推荐场景
+          </div>
           <ul class="not-list">
-            <li v-for="item in currentMQ.notRecommended" :key="item">
+            <li
+              v-for="item in currentMQ.notRecommended"
+              :key="item"
+            >
               {{ item }}
             </li>
           </ul>
@@ -98,7 +138,9 @@
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">快速对比表</div>
+      <div class="table-title">
+        快速对比表
+      </div>
       <table>
         <thead>
           <tr>
@@ -168,23 +210,37 @@
     </div>
 
     <div class="recommendation">
-      <div class="rec-title">💡 选择建议</div>
+      <div class="rec-title">
+        💡 选择建议
+      </div>
       <div class="rec-content">
-        <div v-if="selectedMQ === 'rabbitmq'" class="rec-text">
+        <div
+          v-if="selectedMQ === 'rabbitmq'"
+          class="rec-text"
+        >
           <strong>RabbitMQ</strong>
           是最稳妥的选择，适合大多数传统业务场景。如果团队有 AMQP
           经验，或者需要复杂的路由规则，优先选择它。
         </div>
-        <div v-else-if="selectedMQ === 'kafka'" class="rec-text">
+        <div
+          v-else-if="selectedMQ === 'kafka'"
+          class="rec-text"
+        >
           <strong>Kafka</strong> 适合大数据量和流式处理场景。如果需要处理百万级
           TPS，或者需要消息回溯、与大数据生态集成，选择 Kafka。
         </div>
-        <div v-else-if="selectedMQ === 'rocketmq'" class="rec-text">
+        <div
+          v-else-if="selectedMQ === 'rocketmq'"
+          class="rec-text"
+        >
           <strong>RocketMQ</strong>
           是阿里开源，特别适合电商、金融场景。如果需要事务消息、顺序消息、延迟消息等高级特性，RocketMQ
           是最佳选择。
         </div>
-        <div v-else class="rec-text">
+        <div
+          v-else
+          class="rec-text"
+        >
           <strong>Redis Stream</strong> 最轻量，适合小团队和 MVP
           验证。如果已经有 Redis 基础设施，且对可靠性要求不是极高，可以先用
           Redis Stream 快速实现。

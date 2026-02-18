@@ -16,8 +16,16 @@ defineProps({
       :key="index"
       class="category-section"
     >
-      <h2 v-if="category.title" class="category-title">{{ category.title }}</h2>
-      <p v-if="category.description" class="category-desc">
+      <h2
+        v-if="category.title"
+        class="category-title"
+      >
+        {{ category.title }}
+      </h2>
+      <p
+        v-if="category.description"
+        class="category-desc"
+      >
         {{ category.description }}
       </p>
 

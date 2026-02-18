@@ -60,13 +60,30 @@ const addFailedRequest = () => {
 </script>
 
 <template>
-  <el-card class="network-demo" shadow="hover">
+  <el-card
+    class="network-demo"
+    shadow="hover"
+  >
     <template #header>
       <div class="header">
         <span class="title">Network (网络面板)</span>
         <div class="actions">
-          <el-button type="primary" size="small" icon="Refresh" @click="refresh">刷新页面</el-button>
-          <el-button type="danger" size="small" icon="Warning" @click="addFailedRequest">模拟请求失败</el-button>
+          <el-button
+            type="primary"
+            size="small"
+            icon="Refresh"
+            @click="refresh"
+          >
+            刷新页面
+          </el-button>
+          <el-button
+            type="danger"
+            size="small"
+            icon="Warning"
+            @click="addFailedRequest"
+          >
+            模拟请求失败
+          </el-button>
         </div>
       </div>
     </template>
@@ -75,37 +92,68 @@ const addFailedRequest = () => {
       :data="requests" 
       style="width: 100%" 
       height="300" 
-      @row-click="showDetails"
       class="network-table"
+      @row-click="showDetails"
     >
-      <el-table-column prop="name" label="Name" min-width="120">
-          <template #default="scope">
-              <span :class="{ error: scope.row.status >= 400 }">{{ scope.row.name }}</span>
-          </template>
-      </el-table-column>
-      <el-table-column prop="status" label="Status" width="80">
+      <el-table-column
+        prop="name"
+        label="Name"
+        min-width="120"
+      >
         <template #default="scope">
-          <el-tag :type="scope.row.status >= 400 ? 'danger' : 'success'" size="small">
+          <span :class="{ error: scope.row.status >= 400 }">{{ scope.row.name }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="status"
+        label="Status"
+        width="80"
+      >
+        <template #default="scope">
+          <el-tag
+            :type="scope.row.status >= 400 ? 'danger' : 'success'"
+            size="small"
+          >
             {{ scope.row.status }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="type" label="Type" width="90" />
-      <el-table-column prop="size" label="Size" width="80" />
-      <el-table-column prop="time" label="Time" width="80">
-          <template #default="scope">{{ scope.row.time }}ms</template>
+      <el-table-column
+        prop="type"
+        label="Type"
+        width="90"
+      />
+      <el-table-column
+        prop="size"
+        label="Size"
+        width="80"
+      />
+      <el-table-column
+        prop="time"
+        label="Time"
+        width="80"
+      >
+        <template #default="scope">
+          {{ scope.row.time }}ms
+        </template>
       </el-table-column>
-      <el-table-column label="Waterfall" min-width="150">
+      <el-table-column
+        label="Waterfall"
+        min-width="150"
+      >
         <template #default="scope">
           <div class="timeline-container">
-            <div class="timeline-bar" :style="getTimelineStyle(scope.row)"></div>
+            <div
+              class="timeline-bar"
+              :style="getTimelineStyle(scope.row)"
+            />
           </div>
         </template>
       </el-table-column>
     </el-table>
 
     <div class="footer-tip">
-        💡 点击某一行可以查看请求详情
+      💡 点击某一行可以查看请求详情
     </div>
 
     <!-- Detail Drawer -->
@@ -127,30 +175,32 @@ const addFailedRequest = () => {
               <p><strong>Status Code:</strong> {{ selectedRequest.status }}</p>
             </div>
             <div class="detail-section">
-                <h4>Response Headers</h4>
-                <p><strong>Content-Type:</strong> {{ selectedRequest.type === 'document' ? 'text/html' : selectedRequest.type === 'fetch' ? 'application/json' : 'text/plain' }}</p>
-                <p><strong>Cache-Control:</strong> max-age=3600</p>
+              <h4>Response Headers</h4>
+              <p><strong>Content-Type:</strong> {{ selectedRequest.type === 'document' ? 'text/html' : selectedRequest.type === 'fetch' ? 'application/json' : 'text/plain' }}</p>
+              <p><strong>Cache-Control:</strong> max-age=3600</p>
             </div>
           </el-tab-pane>
           <el-tab-pane label="Preview">
             <div class="preview-box">
-                <div v-if="selectedRequest.status >= 400">
-                    ⚠️ Failed to load response data
+              <div v-if="selectedRequest.status >= 400">
+                ⚠️ Failed to load response data
+              </div>
+              <div v-else-if="selectedRequest.type === 'fetch' || selectedRequest.type === 'xhr'">
+                <pre>{ "id": 123, "data": "Sample API response" }</pre>
+              </div>
+              <div v-else-if="selectedRequest.type === 'png' || selectedRequest.type === 'jpeg'">
+                <div class="fake-image">
+                  Image Preview
                 </div>
-                <div v-else-if="selectedRequest.type === 'fetch' || selectedRequest.type === 'xhr'">
-                    <pre>{ "id": 123, "data": "Sample API response" }</pre>
-                </div>
-                <div v-else-if="selectedRequest.type === 'png' || selectedRequest.type === 'jpeg'">
-                    <div class="fake-image">Image Preview</div>
-                </div>
-                <div v-else>
-                    <pre>&lt;html&gt;...&lt;/html&gt;</pre>
-                </div>
+              </div>
+              <div v-else>
+                <pre>&lt;html&gt;...&lt;/html&gt;</pre>
+              </div>
             </div>
           </el-tab-pane>
           <el-tab-pane label="Response">
             <div class="response-raw">
-                (Raw response data would appear here)
+              (Raw response data would appear here)
             </div>
           </el-tab-pane>
         </el-tabs>

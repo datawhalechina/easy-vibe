@@ -16,82 +16,158 @@
       <button
         v-for="tab in tabs"
         :key="tab.id"
-        @click="activeTab = tab.id"
         class="tab-btn"
         :class="{ active: activeTab === tab.id }"
+        @click="activeTab = tab.id"
       >
         {{ tab.label }}
       </button>
     </div>
 
     <!-- 函数基础 -->
-    <div v-if="activeTab === 'basic'" class="tab-content">
+    <div
+      v-if="activeTab === 'basic'"
+      class="tab-content"
+    >
       <div class="function-showcase">
         <div class="code-panel">
-          <div class="code-title">函数声明方式</div>
+          <div class="code-title">
+            函数声明方式
+          </div>
           <div class="code-block">
-            <div class="code-line comment">// 1. 函数声明</div>
-            <div class="code-line">function greet(name) {</div>
-            <div class="code-line indent">return "Hello " + name</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 2. 函数表达式</div>
-            <div class="code-line">const greet = function(name) {</div>
-            <div class="code-line indent">return "Hello " + name</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 3. 箭头函数 (ES6)</div>
-            <div class="code-line">const greet = (name) => {</div>
-            <div class="code-line indent">return "Hello " + name</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 简化版（单行可省略 return）</div>
-            <div class="code-line">const greet = name => "Hello " + name</div>
+            <div class="code-line comment">
+              // 1. 函数声明
+            </div>
+            <div class="code-line">
+              function greet(name) {
+            </div>
+            <div class="code-line indent">
+              return "Hello " + name
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 2. 函数表达式
+            </div>
+            <div class="code-line">
+              const greet = function(name) {
+            </div>
+            <div class="code-line indent">
+              return "Hello " + name
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 3. 箭头函数 (ES6)
+            </div>
+            <div class="code-line">
+              const greet = (name) => {
+            </div>
+            <div class="code-line indent">
+              return "Hello " + name
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 简化版（单行可省略 return）
+            </div>
+            <div class="code-line">
+              const greet = name => "Hello " + name
+            </div>
           </div>
         </div>
 
         <div class="playground">
-          <div class="playground-title">试试调用函数</div>
+          <div class="playground-title">
+            试试调用函数
+          </div>
           <div class="input-group">
-            <input v-model="functionName" placeholder="输入你的名字" />
-            <button @click="callFunction">调用</button>
+            <input
+              v-model="functionName"
+              placeholder="输入你的名字"
+            >
+            <button @click="callFunction">
+              调用
+            </button>
           </div>
           <div class="output">
-            <span v-if="functionResult" class="result">{{ functionResult }}</span>
-            <span v-else class="placeholder">点击"调用"按钮看结果...</span>
+            <span
+              v-if="functionResult"
+              class="result"
+            >{{ functionResult }}</span>
+            <span
+              v-else
+              class="placeholder"
+            >点击"调用"按钮看结果...</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 闭包演示 -->
-    <div v-else-if="activeTab === 'closure'" class="tab-content">
+    <div
+      v-else-if="activeTab === 'closure'"
+      class="tab-content"
+    >
       <div class="closure-visual">
         <div class="scenario-selector">
-          <button @click="closureScenario = 'counter'" :class="{ active: closureScenario === 'counter' }">
+          <button
+            :class="{ active: closureScenario === 'counter' }"
+            @click="closureScenario = 'counter'"
+          >
             计数器
           </button>
-          <button @click="closureScenario = 'config'" :class="{ active: closureScenario === 'config' }">
+          <button
+            :class="{ active: closureScenario === 'config' }"
+            @click="closureScenario = 'config'"
+          >
             配置器
           </button>
         </div>
 
-        <div v-if="closureScenario === 'counter'" class="counter-demo">
+        <div
+          v-if="closureScenario === 'counter'"
+          class="counter-demo"
+        >
           <div class="code-panel small">
-            <div class="code-line">function createCounter() {</div>
-            <div class="code-line indent">let count = 0 <span class="comment">// 私有变量</span></div>
-            <div class="code-line indent">return function() {</div>
-            <div class="code-line indent indent">count++</div>
-            <div class="code-line indent indent">return count</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line">const counter = createCounter()</div>
+            <div class="code-line">
+              function createCounter() {
+            </div>
+            <div class="code-line indent">
+              let count = 0 <span class="comment">// 私有变量</span>
+            </div>
+            <div class="code-line indent">
+              return function() {
+            </div>
+            <div class="code-line indent indent">
+              count++
+            </div>
+            <div class="code-line indent indent">
+              return count
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              const counter = createCounter()
+            </div>
           </div>
 
           <div class="closure-animation">
             <div class="closure-box">
-              <div class="box-title">闭包环境</div>
+              <div class="box-title">
+                闭包环境
+              </div>
               <div class="closure-var">
                 <span class="var-label">count = </span>
                 <span class="var-value">{{ counterValue }}</span>
@@ -99,7 +175,10 @@
             </div>
 
             <div class="controls-area">
-              <button @click="incrementCounter" class="action-btn primary">
+              <button
+                class="action-btn primary"
+                @click="incrementCounter"
+              >
                 调用 counter()
               </button>
             </div>
@@ -116,36 +195,78 @@
           </div>
         </div>
 
-        <div v-else class="config-demo">
+        <div
+          v-else
+          class="config-demo"
+        >
           <div class="code-panel small">
-            <div class="code-line">function makeMultiplier(times) {</div>
-            <div class="code-line indent">return function(n) {</div>
-            <div class="code-line indent indent">return n * times</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line">const double = makeMultiplier(2)</div>
-            <div class="code-line">const triple = makeMultiplier(3)</div>
+            <div class="code-line">
+              function makeMultiplier(times) {
+            </div>
+            <div class="code-line indent">
+              return function(n) {
+            </div>
+            <div class="code-line indent indent">
+              return n * times
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              const double = makeMultiplier(2)
+            </div>
+            <div class="code-line">
+              const triple = makeMultiplier(3)
+            </div>
           </div>
 
           <div class="multiplier-playground">
             <div class="function-list">
-              <div class="func-item" @click="activeMultiplier = 'double'" :class="{ active: activeMultiplier === 'double' }">
-                <div class="func-name">double = makeMultiplier(2)</div>
-                <div class="func-desc">闭包捕获 times = 2</div>
+              <div
+                class="func-item"
+                :class="{ active: activeMultiplier === 'double' }"
+                @click="activeMultiplier = 'double'"
+              >
+                <div class="func-name">
+                  double = makeMultiplier(2)
+                </div>
+                <div class="func-desc">
+                  闭包捕获 times = 2
+                </div>
               </div>
-              <div class="func-item" @click="activeMultiplier = 'triple'" :class="{ active: activeMultiplier === 'triple' }">
-                <div class="func-name">triple = makeMultiplier(3)</div>
-                <div class="func-desc">闭包捕获 times = 3</div>
+              <div
+                class="func-item"
+                :class="{ active: activeMultiplier === 'triple' }"
+                @click="activeMultiplier = 'triple'"
+              >
+                <div class="func-name">
+                  triple = makeMultiplier(3)
+                </div>
+                <div class="func-desc">
+                  闭包捕获 times = 3
+                </div>
               </div>
             </div>
 
             <div class="multiplier-input">
-              <input v-model.number="multiplyNumber" type="number" placeholder="输入数字" />
-              <button @click="doMultiply">计算</button>
+              <input
+                v-model.number="multiplyNumber"
+                type="number"
+                placeholder="输入数字"
+              >
+              <button @click="doMultiply">
+                计算
+              </button>
             </div>
 
-            <div v-if="multiplyResult" class="multiply-result">
+            <div
+              v-if="multiplyResult"
+              class="multiply-result"
+            >
               <span class="result-equation">{{ multiplyResult }}</span>
             </div>
           </div>
@@ -154,23 +275,32 @@
     </div>
 
     <!-- 作用域链 -->
-    <div v-else class="tab-content">
+    <div
+      v-else
+      class="tab-content"
+    >
       <div class="scope-chain-demo">
         <div class="nested-visual">
           <div class="scope-level global">
-            <div class="level-title">全局作用域</div>
+            <div class="level-title">
+              全局作用域
+            </div>
             <div class="level-vars">
               <span class="var-tag">globalVar = "全局"</span>
             </div>
 
             <div class="scope-level outer">
-              <div class="level-title">外层函数作用域</div>
+              <div class="level-title">
+                外层函数作用域
+              </div>
               <div class="level-vars">
                 <span class="var-tag">outerVar = "外层"</span>
               </div>
 
               <div class="scope-level inner">
-                <div class="level-title">内层函数作用域</div>
+                <div class="level-title">
+                  内层函数作用域
+                </div>
                 <div class="level-vars">
                   <span class="var-tag">innerVar = "内层"</span>
                 </div>
@@ -180,11 +310,21 @@
         </div>
 
         <div class="lookup-demo">
-          <div class="lookup-title">🔍 变量查找过程（作用域链）</div>
+          <div class="lookup-title">
+            🔍 变量查找过程（作用域链）
+          </div>
           <div class="lookup-steps">
-            <div class="lookup-step" v-for="(step, i) in lookupSteps" :key="i">
-              <div class="step-num">{{ i + 1 }}</div>
-              <div class="step-content">{{ step }}</div>
+            <div
+              v-for="(step, i) in lookupSteps"
+              :key="i"
+              class="lookup-step"
+            >
+              <div class="step-num">
+                {{ i + 1 }}
+              </div>
+              <div class="step-content">
+                {{ step }}
+              </div>
             </div>
           </div>
 

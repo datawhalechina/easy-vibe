@@ -23,8 +23,13 @@
         </div>
       </div>
 
-      <div class="detail-panel" v-if="selectedLevelData">
-        <div class="detail-title">{{ selectedLevelData.name }}</div>
+      <div
+        v-if="selectedLevelData"
+        class="detail-panel"
+      >
+        <div class="detail-title">
+          {{ selectedLevelData.name }}
+        </div>
         <div class="detail-row">
           <span class="label">范围：</span>
           <span class="value">{{ selectedLevelData.scope }}</span>
@@ -34,7 +39,11 @@
           <span class="value">{{ selectedLevelData.scenario }}</span>
         </div>
         <div class="perms-list">
-          <span v-for="(perm, i) in selectedLevelData.permissions.slice(0, 3)" :key="i" class="perm-tag">{{ perm.name }}</span>
+          <span
+            v-for="(perm, i) in selectedLevelData.permissions.slice(0, 3)"
+            :key="i"
+            class="perm-tag"
+          >{{ perm.name }}</span>
         </div>
       </div>
     </div>

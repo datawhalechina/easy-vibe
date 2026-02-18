@@ -19,9 +19,15 @@
           :class="['param-card', { active: selectedType === type.name }]"
           @click="selectType(type)"
         >
-          <div class="param-pattern">{{ type.pattern }}</div>
-          <div class="param-name">{{ type.label }}</div>
-          <div class="param-example">例: {{ type.example }}</div>
+          <div class="param-pattern">
+            {{ type.pattern }}
+          </div>
+          <div class="param-name">
+            {{ type.label }}
+          </div>
+          <div class="param-example">
+            例: {{ type.example }}
+          </div>
         </div>
       </div>
 
@@ -39,17 +45,25 @@
               @input="parsePath"
             >
           </div>
-          <div class="hint-text">试试输入：user/123 或 products/electronics/456</div>
+          <div class="hint-text">
+            试试输入：user/123 或 products/electronics/456
+          </div>
         </div>
 
         <div class="demo-section">
           <h5>🎯 匹配结果</h5>
-          <div v-if="parseResult" class="result-box">
+          <div
+            v-if="parseResult"
+            class="result-box"
+          >
             <div class="result-row">
               <span class="result-label">匹配路由:</span>
               <code class="result-value">{{ parseResult.route }}</code>
             </div>
-            <div v-if="Object.keys(parseResult.params).length" class="result-params">
+            <div
+              v-if="Object.keys(parseResult.params).length"
+              class="result-params"
+            >
               <span class="result-label">提取参数:</span>
               <div class="params-grid">
                 <div
@@ -64,8 +78,13 @@
               </div>
             </div>
           </div>
-          <div v-else class="no-result">
-            <div class="no-match-icon">🔍</div>
+          <div
+            v-else
+            class="no-result"
+          >
+            <div class="no-match-icon">
+              🔍
+            </div>
             <div>输入路径查看解析结果</div>
           </div>
         </div>

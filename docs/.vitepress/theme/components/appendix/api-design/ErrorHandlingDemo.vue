@@ -28,7 +28,10 @@
       </div>
 
       <!-- 错误示范 -->
-      <div v-if="selectedTab === 'bad'" class="comparison bad">
+      <div
+        v-if="selectedTab === 'bad'"
+        class="comparison bad"
+      >
         <div class="response-preview">
           <div class="status-line bad">
             <span>HTTP/1.1</span>
@@ -65,7 +68,10 @@
       </div>
 
       <!-- 正确示范 -->
-      <div v-if="selectedTab === 'good'" class="comparison good">
+      <div
+        v-if="selectedTab === 'good'"
+        class="comparison good"
+      >
         <div class="response-preview">
           <div class="status-line">
             <span>HTTP/1.1</span>
@@ -105,7 +111,11 @@
         <div class="error-codes">
           <h4>错误码体系</h4>
           <div class="code-list">
-            <div v-for="item in errorCodeItems" :key="item.code" class="code-item">
+            <div
+              v-for="item in errorCodeItems"
+              :key="item.code"
+              class="code-item"
+            >
               <span class="code-badge">{{ item.code }}</span>
               <span class="code-desc">{{ item.desc }}</span>
             </div>

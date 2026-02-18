@@ -7,58 +7,99 @@
 
     <div class="k8s-architecture">
       <div class="control-plane">
-        <div class="plane-title">控制平面 (Control Plane)</div>
+        <div class="plane-title">
+          控制平面 (Control Plane)
+        </div>
         <div class="components">
-          <div class="component" v-for="comp in controlPlane" :key="comp.name"
-               :class="{ active: activeComponent === comp.name }"
-               @click="activeComponent = comp.name">
-            <div class="comp-icon">{{ comp.icon }}</div>
-            <div class="comp-name">{{ comp.name }}</div>
-            <div class="comp-desc">{{ comp.desc }}</div>
+          <div
+            v-for="comp in controlPlane"
+            :key="comp.name"
+            class="component"
+            :class="{ active: activeComponent === comp.name }"
+            @click="activeComponent = comp.name"
+          >
+            <div class="comp-icon">
+              {{ comp.icon }}
+            </div>
+            <div class="comp-name">
+              {{ comp.name }}
+            </div>
+            <div class="comp-desc">
+              {{ comp.desc }}
+            </div>
           </div>
         </div>
       </div>
 
       <div class="worker-nodes">
-        <div class="plane-title">工作节点 (Worker Nodes)</div>
+        <div class="plane-title">
+          工作节点 (Worker Nodes)
+        </div>
         <div class="nodes-container">
-          <div class="node" v-for="node in workerNodes" :key="node.name"
-               :class="{
-                 active: node.status === 'active',
-                 failed: node.status === 'failed',
-                 selected: selectedNode === node.name
-               }"
-               @click="selectNode(node.name)">
+          <div
+            v-for="node in workerNodes"
+            :key="node.name"
+            class="node"
+            :class="{
+              active: node.status === 'active',
+              failed: node.status === 'failed',
+              selected: selectedNode === node.name
+            }"
+            @click="selectNode(node.name)"
+          >
             <div class="node-header">
               <span class="node-icon">{{ node.icon }}</span>
               <span class="node-name">{{ node.name }}</span>
-              <span class="node-status" :class="node.status">{{ node.statusText }}</span>
+              <span
+                class="node-status"
+                :class="node.status"
+              >{{ node.statusText }}</span>
             </div>
             <div class="node-resources">
               <div class="resource">
                 <span class="res-label">CPU:</span>
                 <div class="res-bar">
-                  <div class="res-fill" :style="{ width: node.cpu + '%' }" :class="{ high: node.cpu > 80 }"></div>
+                  <div
+                    class="res-fill"
+                    :style="{ width: node.cpu + '%' }"
+                    :class="{ high: node.cpu > 80 }"
+                  />
                 </div>
                 <span class="res-value">{{ node.cpu }}%</span>
               </div>
               <div class="resource">
                 <span class="res-label">内存:</span>
                 <div class="res-bar">
-                  <div class="res-fill" :style="{ width: node.memory + '%' }" :class="{ high: node.memory > 80 }"></div>
+                  <div
+                    class="res-fill"
+                    :style="{ width: node.memory + '%' }"
+                    :class="{ high: node.memory > 80 }"
+                  />
                 </div>
                 <span class="res-value">{{ node.memory }}%</span>
               </div>
             </div>
             <div class="node-pods">
-              <div class="pods-label">运行 Pod: {{ node.pods }} 个</div>
+              <div class="pods-label">
+                运行 Pod: {{ node.pods }} 个
+              </div>
               <div class="pods-grid">
-                <div v-for="n in Math.min(node.pods, 8)" :key="n" class="pod-dot" :class="{
-                  running: node.status === 'active',
-                  pending: node.status === 'pending',
-                  failed: node.status === 'failed'
-                }"></div>
-                <div v-if="node.pods > 8" class="pod-more">+{{ node.pods - 8 }}</div>
+                <div
+                  v-for="n in Math.min(node.pods, 8)"
+                  :key="n"
+                  class="pod-dot"
+                  :class="{
+                    running: node.status === 'active',
+                    pending: node.status === 'pending',
+                    failed: node.status === 'failed'
+                  }"
+                />
+                <div
+                  v-if="node.pods > 8"
+                  class="pod-more"
+                >
+                  +{{ node.pods - 8 }}
+                </div>
               </div>
             </div>
           </div>
@@ -67,14 +108,45 @@
     </div>
 
     <div class="k8s-controls">
-      <button class="control-btn" @click="simulateScheduling" :disabled="isScheduling">{{ isScheduling ? '调度中...' : '🚀 模拟 Pod 调度' }}</button>
-      <button class="control-btn" @click="simulateScaling" :disabled="isScaling">{{ isScaling ? '扩容中...' : '📈 自动扩容' }}</button>
-      <button class="control-btn danger" @click="simulateFailure" :disabled="isFailing">{{ isFailing ? '故障注入中...' : '💥 模拟节点故障' }}</button>
-      <button class="control-btn" @click="resetCluster">🔄 重置集群</button>
+      <button
+        class="control-btn"
+        :disabled="isScheduling"
+        @click="simulateScheduling"
+      >
+        {{ isScheduling ? '调度中...' : '🚀 模拟 Pod 调度' }}
+      </button>
+      <button
+        class="control-btn"
+        :disabled="isScaling"
+        @click="simulateScaling"
+      >
+        {{ isScaling ? '扩容中...' : '📈 自动扩容' }}
+      </button>
+      <button
+        class="control-btn danger"
+        :disabled="isFailing"
+        @click="simulateFailure"
+      >
+        {{ isFailing ? '故障注入中...' : '💥 模拟节点故障' }}
+      </button>
+      <button
+        class="control-btn"
+        @click="resetCluster"
+      >
+        🔄 重置集群
+      </button>
     </div>
 
-    <div class="k8s-logs" v-if="logs.length > 0">
-      <div class="log-entry" v-for="(log, idx) in logs.slice(-5)" :key="idx" :class="log.level">
+    <div
+      v-if="logs.length > 0"
+      class="k8s-logs"
+    >
+      <div
+        v-for="(log, idx) in logs.slice(-5)"
+        :key="idx"
+        class="log-entry"
+        :class="log.level"
+      >
         <span class="log-time">{{ log.time }}</span>
         <span class="log-message">{{ log.message }}</span>
       </div>

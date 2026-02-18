@@ -5,8 +5,12 @@
 <template>
   <div class="data-model-design-demo">
     <div class="header">
-      <div class="title">数据模型设计</div>
-      <div class="subtitle">埋点数据的核心三要素：事件、用户、会话</div>
+      <div class="title">
+        数据模型设计
+      </div>
+      <div class="subtitle">
+        埋点数据的核心三要素：事件、用户、会话
+      </div>
     </div>
 
     <div class="model-tabs">
@@ -23,11 +27,18 @@
 
     <div class="model-content">
       <!-- 事件模型 -->
-      <div v-if="selectedModel === 'event'" class="model-detail">
+      <div
+        v-if="selectedModel === 'event'"
+        class="model-detail"
+      >
         <div class="model-intro">
-          <div class="intro-icon">📊</div>
+          <div class="intro-icon">
+            📊
+          </div>
           <div class="intro-text">
-            <div class="intro-title">事件模型 (Event Model)</div>
+            <div class="intro-title">
+              事件模型 (Event Model)
+            </div>
             <div class="intro-desc">
               一个事件 = 用户的一次行为动作，是埋点系统中最基本的数据单元
             </div>
@@ -35,10 +46,14 @@
         </div>
 
         <div class="event-naming">
-          <div class="section-title">命名规范</div>
+          <div class="section-title">
+            命名规范
+          </div>
           <div class="naming-rules">
             <div class="rule-item good">
-              <div class="rule-label">✅ 好的命名</div>
+              <div class="rule-label">
+                ✅ 好的命名
+              </div>
               <div class="rule-examples">
                 <code>click_button</code>
                 <code>view_page</code>
@@ -47,7 +62,9 @@
               </div>
             </div>
             <div class="rule-item bad">
-              <div class="rule-label">❌ 不好的命名</div>
+              <div class="rule-label">
+                ❌ 不好的命名
+              </div>
               <div class="rule-examples">
                 <code>button_click</code>
                 <code>page_view</code>
@@ -56,11 +73,15 @@
               </div>
             </div>
           </div>
-          <div class="naming-tip">💡 原则：动词在前，名词在后，简洁明确</div>
+          <div class="naming-tip">
+            💡 原则：动词在前，名词在后，简洁明确
+          </div>
         </div>
 
         <div class="event-structure">
-          <div class="section-title">事件数据结构</div>
+          <div class="section-title">
+            事件数据结构
+          </div>
           <div class="code-example">
             <pre><code>{
   <span class="key">"event"</span>: <span class="string">"click_button"</span>,
@@ -86,36 +107,60 @@
         </div>
 
         <div class="event-best-practices">
-          <div class="section-title">最佳实践</div>
+          <div class="section-title">
+            最佳实践
+          </div>
           <div class="practices-grid">
             <div class="practice-item">
-              <div class="practice-icon">🎯</div>
+              <div class="practice-icon">
+                🎯
+              </div>
               <div class="practice-content">
-                <div class="practice-title">明确事件目标</div>
+                <div class="practice-title">
+                  明确事件目标
+                </div>
                 <div class="practice-desc">
                   每个事件都应有明确的业务分析目标
                 </div>
               </div>
             </div>
             <div class="practice-item">
-              <div class="practice-icon">📝</div>
+              <div class="practice-icon">
+                📝
+              </div>
               <div class="practice-content">
-                <div class="practice-title">属性完整丰富</div>
-                <div class="practice-desc">包含所有可能影响业务决策的维度</div>
+                <div class="practice-title">
+                  属性完整丰富
+                </div>
+                <div class="practice-desc">
+                  包含所有可能影响业务决策的维度
+                </div>
               </div>
             </div>
             <div class="practice-item">
-              <div class="practice-icon">🔄</div>
+              <div class="practice-icon">
+                🔄
+              </div>
               <div class="practice-content">
-                <div class="practice-title">保持命名一致</div>
-                <div class="practice-desc">同一类型事件使用统一的命名规范</div>
+                <div class="practice-title">
+                  保持命名一致
+                </div>
+                <div class="practice-desc">
+                  同一类型事件使用统一的命名规范
+                </div>
               </div>
             </div>
             <div class="practice-item">
-              <div class="practice-icon">🚫</div>
+              <div class="practice-icon">
+                🚫
+              </div>
               <div class="practice-content">
-                <div class="practice-title">避免过度采集</div>
-                <div class="practice-desc">只采集必要数据，减少隐私风险</div>
+                <div class="practice-title">
+                  避免过度采集
+                </div>
+                <div class="practice-desc">
+                  只采集必要数据，减少隐私风险
+                </div>
               </div>
             </div>
           </div>
@@ -123,11 +168,18 @@
       </div>
 
       <!-- 用户模型 -->
-      <div v-if="selectedModel === 'user'" class="model-detail">
+      <div
+        v-if="selectedModel === 'user'"
+        class="model-detail"
+      >
         <div class="model-intro">
-          <div class="intro-icon">👤</div>
+          <div class="intro-icon">
+            👤
+          </div>
           <div class="intro-text">
-            <div class="intro-title">用户模型 (User Model)</div>
+            <div class="intro-title">
+              用户模型 (User Model)
+            </div>
             <div class="intro-desc">
               跨设备关联用户身份，实现用户全生命周期管理
             </div>
@@ -135,12 +187,18 @@
         </div>
 
         <div class="user-identity">
-          <div class="section-title">身份识别体系</div>
+          <div class="section-title">
+            身份识别体系
+          </div>
           <div class="identity-types">
             <div class="identity-card primary">
               <div class="identity-header">
-                <div class="identity-icon">🆔</div>
-                <div class="identity-name">user_id</div>
+                <div class="identity-icon">
+                  🆔
+                </div>
+                <div class="identity-name">
+                  user_id
+                </div>
               </div>
               <div class="identity-info">
                 <div class="info-row">
@@ -160,8 +218,12 @@
 
             <div class="identity-card secondary">
               <div class="identity-header">
-                <div class="identity-icon">📱</div>
-                <div class="identity-name">device_id</div>
+                <div class="identity-icon">
+                  📱
+                </div>
+                <div class="identity-name">
+                  device_id
+                </div>
               </div>
               <div class="identity-info">
                 <div class="info-row">
@@ -181,8 +243,12 @@
 
             <div class="identity-card tertiary">
               <div class="identity-header">
-                <div class="identity-icon">🌐</div>
-                <div class="identity-name">session_id</div>
+                <div class="identity-icon">
+                  🌐
+                </div>
+                <div class="identity-name">
+                  session_id
+                </div>
               </div>
               <div class="identity-info">
                 <div class="info-row">
@@ -203,28 +269,40 @@
         </div>
 
         <div class="id-mapping">
-          <div class="section-title">ID Mapping（身份打通）</div>
+          <div class="section-title">
+            ID Mapping（身份打通）
+          </div>
           <div class="mapping-flow">
             <div class="mapping-step">
-              <div class="step-title">注册前（匿名）</div>
+              <div class="step-title">
+                注册前（匿名）
+              </div>
               <div class="step-code">
-                <code>device_id: "device_123"</code><br />
+                <code>device_id: "device_123"</code><br>
                 <code>user_id: null</code>
               </div>
             </div>
-            <div class="mapping-arrow">→</div>
+            <div class="mapping-arrow">
+              →
+            </div>
             <div class="mapping-step">
-              <div class="step-title">注册后（登录）</div>
+              <div class="step-title">
+                注册后（登录）
+              </div>
               <div class="step-code">
-                <code>device_id: "device_123"</code><br />
+                <code>device_id: "device_123"</code><br>
                 <code>user_id: "user_456"</code>
               </div>
             </div>
-            <div class="mapping-arrow">→</div>
+            <div class="mapping-arrow">
+              →
+            </div>
             <div class="mapping-step">
-              <div class="step-title">数据分析</div>
+              <div class="step-title">
+                数据分析
+              </div>
               <div class="step-desc">
-                通过 device_id 关联<br />
+                通过 device_id 关联<br>
                 用户注册前后行为
               </div>
             </div>
@@ -232,10 +310,14 @@
         </div>
 
         <div class="user-profile">
-          <div class="section-title">用户画像维度</div>
+          <div class="section-title">
+            用户画像维度
+          </div>
           <div class="profile-dimensions">
             <div class="dimension-group">
-              <div class="group-title">基础属性</div>
+              <div class="group-title">
+                基础属性
+              </div>
               <div class="dimension-list">
                 <span class="dimension-tag">性别</span>
                 <span class="dimension-tag">年龄</span>
@@ -244,7 +326,9 @@
               </div>
             </div>
             <div class="dimension-group">
-              <div class="group-title">行为特征</div>
+              <div class="group-title">
+                行为特征
+              </div>
               <div class="dimension-list">
                 <span class="dimension-tag">活跃度</span>
                 <span class="dimension-tag">偏好</span>
@@ -253,7 +337,9 @@
               </div>
             </div>
             <div class="dimension-group">
-              <div class="group-title">设备信息</div>
+              <div class="group-title">
+                设备信息
+              </div>
               <div class="dimension-list">
                 <span class="dimension-tag">平台</span>
                 <span class="dimension-tag">操作系统</span>
@@ -266,11 +352,18 @@
       </div>
 
       <!-- 会话模型 -->
-      <div v-if="selectedModel === 'session'" class="model-detail">
+      <div
+        v-if="selectedModel === 'session'"
+        class="model-detail"
+      >
         <div class="model-intro">
-          <div class="intro-icon">⏱️</div>
+          <div class="intro-icon">
+            ⏱️
+          </div>
           <div class="intro-text">
-            <div class="intro-title">会话模型 (Session Model)</div>
+            <div class="intro-title">
+              会话模型 (Session Model)
+            </div>
             <div class="intro-desc">
               用户一次连续的使用过程，用于分析用户粘性和转化
             </div>
@@ -278,19 +371,31 @@
         </div>
 
         <div class="session-definition">
-          <div class="section-title">会话定义</div>
+          <div class="section-title">
+            会话定义
+          </div>
           <div class="session-rules">
             <div class="rule-card web">
-              <div class="rule-icon">🌐</div>
+              <div class="rule-icon">
+                🌐
+              </div>
               <div class="rule-content">
-                <div class="rule-title">Web 会话</div>
-                <div class="rule-desc">连续浏览，无操作超过 30 分钟则结束</div>
+                <div class="rule-title">
+                  Web 会话
+                </div>
+                <div class="rule-desc">
+                  连续浏览，无操作超过 30 分钟则结束
+                </div>
               </div>
             </div>
             <div class="rule-card app">
-              <div class="rule-icon">📱</div>
+              <div class="rule-icon">
+                📱
+              </div>
               <div class="rule-content">
-                <div class="rule-title">App 会话</div>
+                <div class="rule-title">
+                  App 会话
+                </div>
                 <div class="rule-desc">
                   App 从后台回到前台，超过 5 分钟则新会话
                 </div>
@@ -300,60 +405,108 @@
         </div>
 
         <div class="session-metrics">
-          <div class="section-title">会话关键指标</div>
+          <div class="section-title">
+            会话关键指标
+          </div>
           <div class="metrics-grid">
             <div class="metric-card">
-              <div class="metric-icon">📊</div>
-              <div class="metric-name">会话时长</div>
-              <div class="metric-value">8m 32s</div>
-              <div class="metric-desc">用户平均使用时长</div>
+              <div class="metric-icon">
+                📊
+              </div>
+              <div class="metric-name">
+                会话时长
+              </div>
+              <div class="metric-value">
+                8m 32s
+              </div>
+              <div class="metric-desc">
+                用户平均使用时长
+              </div>
             </div>
             <div class="metric-card">
-              <div class="metric-icon">📄</div>
-              <div class="metric-name">会话深度</div>
-              <div class="metric-value">12.5</div>
-              <div class="metric-desc">平均浏览页面数</div>
+              <div class="metric-icon">
+                📄
+              </div>
+              <div class="metric-name">
+                会话深度
+              </div>
+              <div class="metric-value">
+                12.5
+              </div>
+              <div class="metric-desc">
+                平均浏览页面数
+              </div>
             </div>
             <div class="metric-card">
-              <div class="metric-icon">🔄</div>
-              <div class="metric-name">会话频率</div>
-              <div class="metric-value">3.2/天</div>
-              <div class="metric-desc">日均打开次数</div>
+              <div class="metric-icon">
+                🔄
+              </div>
+              <div class="metric-name">
+                会话频率
+              </div>
+              <div class="metric-value">
+                3.2/天
+              </div>
+              <div class="metric-desc">
+                日均打开次数
+              </div>
             </div>
             <div class="metric-card">
-              <div class="metric-icon">💼</div>
-              <div class="metric-name">跳出率</div>
-              <div class="metric-value">35.2%</div>
-              <div class="metric-desc">单页面跳出比例</div>
+              <div class="metric-icon">
+                💼
+              </div>
+              <div class="metric-name">
+                跳出率
+              </div>
+              <div class="metric-value">
+                35.2%
+              </div>
+              <div class="metric-desc">
+                单页面跳出比例
+              </div>
             </div>
           </div>
         </div>
 
         <div class="session-use-cases">
-          <div class="section-title">典型应用场景</div>
+          <div class="section-title">
+            典型应用场景
+          </div>
           <div class="use-case-list">
             <div class="use-case-item">
-              <div class="use-case-number">1</div>
+              <div class="use-case-number">
+                1
+              </div>
               <div class="use-case-content">
-                <div class="use-case-title">转化漏斗分析</div>
+                <div class="use-case-title">
+                  转化漏斗分析
+                </div>
                 <div class="use-case-desc">
                   分析用户从进入到完成目标的转化路径，识别流失环节
                 </div>
               </div>
             </div>
             <div class="use-case-item">
-              <div class="use-case-number">2</div>
+              <div class="use-case-number">
+                2
+              </div>
               <div class="use-case-content">
-                <div class="use-case-title">用户粘性分析</div>
+                <div class="use-case-title">
+                  用户粘性分析
+                </div>
                 <div class="use-case-desc">
                   通过会话时长和频次，评估产品吸引力和用户忠诚度
                 </div>
               </div>
             </div>
             <div class="use-case-item">
-              <div class="use-case-number">3</div>
+              <div class="use-case-number">
+                3
+              </div>
               <div class="use-case-content">
-                <div class="use-case-title">用户分群</div>
+                <div class="use-case-title">
+                  用户分群
+                </div>
                 <div class="use-case-desc">
                   基于会话行为特征，将用户分为高价值、流失风险等群体
                 </div>

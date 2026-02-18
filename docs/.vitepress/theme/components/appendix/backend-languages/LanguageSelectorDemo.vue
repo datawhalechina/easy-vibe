@@ -17,7 +17,9 @@
         class="question-card"
         :class="{ active: currentQuestion === index }"
       >
-        <div class="question-number">{{ index + 1 }}</div>
+        <div class="question-number">
+          {{ index + 1 }}
+        </div>
         <div class="question-content">
           <h6>{{ question.text }}</h6>
           <div class="options">
@@ -36,19 +38,29 @@
     </div>
 
     <Transition name="fade">
-      <div v-if="recommendation" class="recommendation-panel">
+      <div
+        v-if="recommendation"
+        class="recommendation-panel"
+      >
         <div class="rec-header">
           <span class="rec-icon">{{ recommendation.icon }}</span>
           <div class="rec-title">
             <h6>推荐语言</h6>
-            <div class="rec-name">{{ recommendation.language }}</div>
+            <div class="rec-name">
+              {{ recommendation.language }}
+            </div>
           </div>
         </div>
         <div class="rec-reason">
           <strong>选择理由：</strong>
           <p>{{ recommendation.reason }}</p>
         </div>
-        <button class="reset-btn" @click="reset">🔄 重新选择</button>
+        <button
+          class="reset-btn"
+          @click="reset"
+        >
+          🔄 重新选择
+        </button>
       </div>
     </Transition>
 

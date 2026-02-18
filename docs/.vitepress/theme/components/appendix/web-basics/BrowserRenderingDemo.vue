@@ -25,7 +25,9 @@
       <div class="visualization-window">
         <!-- HTML/CSS Source -->
         <div class="source-view">
-          <div class="window-title">积木说明书 (HTML/CSS)</div>
+          <div class="window-title">
+            积木说明书 (HTML/CSS)
+          </div>
           <div class="code-content">
             <!-- HTML Highlighted always after Step 0 -->
             <div
@@ -139,7 +141,7 @@
               &lt;/html&gt;
             </div>
 
-            <div class="spacer"></div>
+            <div class="spacer" />
 
             <!-- CSS Highlighted precisely based on step usage -->
             <!-- Layout properties -->
@@ -191,11 +193,15 @@
           </div>
         </div>
 
-        <div class="transform-arrow">→</div>
+        <div class="transform-arrow">
+          →
+        </div>
 
         <!-- Render Result -->
         <div class="result-view">
-          <div class="window-title">{{ steps[currentStep].resultTitle }}</div>
+          <div class="window-title">
+            {{ steps[currentStep].resultTitle }}
+          </div>
 
           <div class="render-canvas">
             <!-- Step 1: DOM (Skeleton) -->
@@ -240,9 +246,10 @@
                       @mouseleave="hoveredPart = null"
                     >
                       <span class="block-label">img.icon</span>
-                      <span v-if="currentStep >= 3" class="content-img"
-                        >🏰</span
-                      >
+                      <span
+                        v-if="currentStep >= 3"
+                        class="content-img"
+                      >🏰</span>
                     </div>
 
                     <!-- Title -->
@@ -257,9 +264,10 @@
                       @mouseleave="hoveredPart = null"
                     >
                       <span class="block-label">h2.title</span>
-                      <span v-if="currentStep >= 3" class="content"
-                        >乐高城堡</span
-                      >
+                      <span
+                        v-if="currentStep >= 3"
+                        class="content"
+                      >乐高城堡</span>
                     </div>
 
                     <!-- Button -->
@@ -274,9 +282,10 @@
                       @mouseleave="hoveredPart = null"
                     >
                       <span class="block-label">button.btn</span>
-                      <span v-if="currentStep >= 3" class="content-btn"
-                        >购买</span
-                      >
+                      <span
+                        v-if="currentStep >= 3"
+                        class="content-btn"
+                      >购买</span>
                     </div>
                   </div>
                 </div>
@@ -284,16 +293,31 @@
             </transition-group>
 
             <!-- Overlays for different steps -->
-            <div v-if="currentStep === 1" class="overlay-info style-info">
-              <div class="brush">🖌️ 正在上色 (Style)...</div>
+            <div
+              v-if="currentStep === 1"
+              class="overlay-info style-info"
+            >
+              <div class="brush">
+                🖌️ 正在上色 (Style)...
+              </div>
             </div>
 
-            <div v-if="currentStep === 2" class="overlay-info layout-info">
-              <div class="ruler">📏 正在排版 (Layout)...</div>
+            <div
+              v-if="currentStep === 2"
+              class="overlay-info layout-info"
+            >
+              <div class="ruler">
+                📏 正在排版 (Layout)...
+              </div>
             </div>
 
-            <div v-if="currentStep === 3" class="overlay-info paint-info">
-              <div class="paint">✨ 绘制完成 (Paint)!</div>
+            <div
+              v-if="currentStep === 3"
+              class="overlay-info paint-info"
+            >
+              <div class="paint">
+                ✨ 绘制完成 (Paint)!
+              </div>
             </div>
           </div>
         </div>

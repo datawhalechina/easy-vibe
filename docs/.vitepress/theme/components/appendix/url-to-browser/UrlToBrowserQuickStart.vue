@@ -11,52 +11,66 @@
 <template>
   <div class="quick-start-compact">
     <!-- 顶部：极简输入栏 -->
-    <div class="input-bar" :class="{ 'is-active': isActive }">
+    <div
+      class="input-bar"
+      :class="{ 'is-active': isActive }"
+    >
       <div class="input-wrapper">
         <span class="protocol">https://</span>
         <input 
           v-model="url" 
           type="text" 
           placeholder="输入网址，开始旅程..."
-          @keyup.enter="handleMainAction"
           :disabled="isActive && !isFinished"
-        />
+          @keyup.enter="handleMainAction"
+        >
         
         <!-- 主操作按钮 -->
         <button 
           class="start-btn" 
           :class="{ 'next-btn': isActive && !isFinished, 'reset-btn': isFinished }"
-          @click="handleMainAction" 
-          :disabled="!url"
+          :disabled="!url" 
+          @click="handleMainAction"
         >
           {{ mainButtonText }}
         </button>
       </div>
       
       <!-- 步骤控制按钮组 -->
-      <div class="step-controls" v-if="isActive">
+      <div
+        v-if="isActive"
+        class="step-controls"
+      >
         <button 
           class="control-btn" 
-          @click="prevStep" 
-          :disabled="currentStep === 0"
+          :disabled="currentStep === 0" 
           title="上一步"
+          @click="prevStep"
         >
           ⬅️
         </button>
         <button 
           class="control-btn" 
-          @click="nextStep" 
-          :disabled="isFinished"
+          :disabled="isFinished" 
           title="下一步"
+          @click="nextStep"
         >
           ➡️
         </button>
       </div>
 
       <!-- 快速体验按钮 (仅在未开始时显示) -->
-      <div class="quick-chips" v-if="!isActive">
+      <div
+        v-if="!isActive"
+        class="quick-chips"
+      >
         <span class="chip-label">试一试:</span>
-        <button v-for="u in quickUrls" :key="u" @click="quickStart(u)" class="chip">
+        <button
+          v-for="u in quickUrls"
+          :key="u"
+          class="chip"
+          @click="quickStart(u)"
+        >
           {{ u }}
         </button>
       </div>
@@ -66,7 +80,10 @@
     <div class="conveyor-stage">
       <!-- 进度轨道 -->
       <div class="track-line">
-        <div class="track-progress" :style="{ width: packagePosition + '%' }"></div>
+        <div
+          class="track-progress"
+          :style="{ width: packagePosition + '%' }"
+        />
       </div>
 
       <!-- 站点节点 -->
@@ -83,19 +100,23 @@
       >
         <div class="station-icon-box">
           <span class="station-icon">{{ step.icon }}</span>
-          <div class="station-status-dot"></div>
+          <div class="station-status-dot" />
         </div>
-        <div class="station-label">{{ step.name }}</div>
+        <div class="station-label">
+          {{ step.name }}
+        </div>
       </div>
 
       <!-- 移动的包裹 (绝对定位) -->
       <div 
+        v-show="isActive"
         class="moving-package"
         :style="{ '--package-pos': packagePosition }"
-        v-show="isActive"
       >
-        <div class="package-body">📦</div>
-        <div class="package-shadow"></div>
+        <div class="package-body">
+          📦
+        </div>
+        <div class="package-shadow" />
         <!-- 动态提示气泡 -->
         <div class="package-bubble">
           <span class="bubble-analogy">{{ steps[currentStep]?.analogyAction }}</span>
@@ -105,26 +126,38 @@
 
     <!-- 底部：动态对照条 -->
     <div class="dynamic-info-bar">
-      <transition name="slide-up" mode="out-in">
-        <div v-if="isActive" :key="currentStep" class="info-content">
+      <transition
+        name="slide-up"
+        mode="out-in"
+      >
+        <div
+          v-if="isActive"
+          :key="currentStep"
+          class="info-content"
+        >
           <div class="info-left">
             <span class="stage-badge">第 {{ currentStep + 1 }} 站</span>
             <span class="stage-title">{{ steps[currentStep].title }}</span>
           </div>
-          <div class="info-divider"></div>
+          <div class="info-divider" />
           <div class="info-right">
             <div class="mapping-item">
               <span class="mapping-icon">🚚</span>
               <span class="mapping-text">生活：{{ steps[currentStep].analogyDesc }}</span>
             </div>
-            <div class="mapping-arrow">↔️</div>
+            <div class="mapping-arrow">
+              ↔️
+            </div>
             <div class="mapping-item">
               <span class="mapping-icon">💻</span>
               <span class="mapping-text">技术：{{ steps[currentStep].techDesc }}</span>
             </div>
           </div>
         </div>
-        <div v-else class="info-placeholder">
+        <div
+          v-else
+          class="info-placeholder"
+        >
           👈 在左上角输入网址，开启网络快递之旅
         </div>
       </transition>

@@ -8,7 +8,10 @@
 
     <div class="main-area">
       <div class="role-section">
-        <div class="role-card" @click="showTrust = !showTrust">
+        <div
+          class="role-card"
+          @click="showTrust = !showTrust"
+        >
           <span class="role-icon">🎭</span>
           <div class="role-info">
             <span class="role-name">CrossAccountS3AccessRole</span>
@@ -16,9 +19,18 @@
           </div>
           <span class="expand-icon">{{ showTrust ? '▼' : '▶' }}</span>
         </div>
-        <div class="trust-policy" v-if="showTrust">
-          <div class="trust-title">🔐 信任策略</div>
-          <div class="trust-item" v-for="(t, i) in trustPolicy" :key="i">
+        <div
+          v-if="showTrust"
+          class="trust-policy"
+        >
+          <div class="trust-title">
+            🔐 信任策略
+          </div>
+          <div
+            v-for="(t, i) in trustPolicy"
+            :key="i"
+            class="trust-item"
+          >
             <span class="principal">{{ t.principal }}</span>
             <span class="action">{{ t.action }}</span>
           </div>
@@ -37,9 +49,19 @@
             <span class="policy-icon">{{ policy.icon }}</span>
             <span class="policy-name">{{ policy.name }}</span>
           </div>
-          <div class="policy-perms" v-if="selectedPolicy === index">
-            <div class="perm" v-for="(p, i) in policy.permissions" :key="i">
-              <span class="effect" :class="p.effect.toLowerCase()">{{ p.effect }}</span>
+          <div
+            v-if="selectedPolicy === index"
+            class="policy-perms"
+          >
+            <div
+              v-for="(p, i) in policy.permissions"
+              :key="i"
+              class="perm"
+            >
+              <span
+                class="effect"
+                :class="p.effect.toLowerCase()"
+              >{{ p.effect }}</span>
               <span class="action">{{ p.action }}</span>
             </div>
           </div>

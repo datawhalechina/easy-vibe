@@ -86,7 +86,6 @@ const search = async () => {
 
 <template>
   <div class="rag-demo">
-    
     <!-- Step 1: User Input -->
     <div class="step-section input-section">
       <div class="step-label">
@@ -98,13 +97,13 @@ const search = async () => {
           v-model="query" 
           type="text" 
           placeholder="输入问题..."
-          @keyup.enter="search"
           :disabled="isSearching"
-        />
+          @keyup.enter="search"
+        >
         <button 
           class="action-btn" 
-          @click="search"
           :disabled="isSearching || !query"
+          @click="search"
         >
           {{ isSearching ? '检索中...' : '🚀 开始检索' }}
         </button>
@@ -112,18 +111,32 @@ const search = async () => {
     </div>
 
     <!-- Arrow Connection -->
-    <div class="flow-arrow" :class="{ active: currentStep >= 1 }">
-      <div class="line"></div>
-      <div class="icon">🔍</div>
+    <div
+      class="flow-arrow"
+      :class="{ active: currentStep >= 1 }"
+    >
+      <div class="line" />
+      <div class="icon">
+        🔍
+      </div>
     </div>
 
     <!-- Step 2: Library Scanning -->
-    <div class="step-section library-section" :class="{ 'is-scanning': currentStep === 1 }">
+    <div
+      class="step-section library-section"
+      :class="{ 'is-scanning': currentStep === 1 }"
+    >
       <div class="step-label">
         <span class="step-num">2</span>
         <span class="step-text">图书馆检索 (Retrieval)</span>
-        <span class="status-badge" v-if="currentStep === 1">正在扫描...</span>
-        <span class="status-badge success" v-if="currentStep >= 2">命中 {{ retrievedDocs.length }} 条</span>
+        <span
+          v-if="currentStep === 1"
+          class="status-badge"
+        >正在扫描...</span>
+        <span
+          v-if="currentStep >= 2"
+          class="status-badge success"
+        >命中 {{ retrievedDocs.length }} 条</span>
       </div>
       
       <div class="docs-grid">
@@ -139,26 +152,42 @@ const search = async () => {
           <div class="doc-header">
             <span class="doc-icon">📄</span>
             <span class="doc-title">{{ doc.title }}</span>
-            <span class="doc-score" v-if="currentStep >= 2 && doc.score > 0.6">
+            <span
+              v-if="currentStep >= 2 && doc.score > 0.6"
+              class="doc-score"
+            >
               {{ (doc.score * 100).toFixed(0) }}% 相关
             </span>
           </div>
-          <div class="doc-content">{{ doc.content }}</div>
+          <div class="doc-content">
+            {{ doc.content }}
+          </div>
           
           <!-- Visual effect for scanning -->
-          <div class="scan-line" v-if="currentStep === 1"></div>
+          <div
+            v-if="currentStep === 1"
+            class="scan-line"
+          />
         </div>
       </div>
     </div>
 
     <!-- Arrow Connection -->
-    <div class="flow-arrow" :class="{ active: currentStep >= 2 }">
-      <div class="line"></div>
-      <div class="icon">✂️ 复制粘贴</div>
+    <div
+      class="flow-arrow"
+      :class="{ active: currentStep >= 2 }"
+    >
+      <div class="line" />
+      <div class="icon">
+        ✂️ 复制粘贴
+      </div>
     </div>
 
     <!-- Step 3: Context Assembly -->
-    <div class="step-section context-section" :class="{ active: currentStep >= 3 }">
+    <div
+      class="step-section context-section"
+      :class="{ active: currentStep >= 3 }"
+    >
       <div class="step-label">
         <span class="step-num">3</span>
         <span class="step-text">最终上下文 (Final Prompt)</span>
@@ -170,14 +199,26 @@ const search = async () => {
           你是一个专业的 AI 助手。请基于下方【检索到的资料】回答用户的提问。
         </div>
         
-        <div class="retrieved-block" v-if="currentStep >= 2">
-          <div class="block-header">📚 检索到的资料 (Context)</div>
-          <div v-if="retrievedDocs.length > 0">
-             <div v-for="doc in retrievedDocs" :key="doc.id" class="retrieved-item">
-               {{ doc.content }}
-             </div>
+        <div
+          v-if="currentStep >= 2"
+          class="retrieved-block"
+        >
+          <div class="block-header">
+            📚 检索到的资料 (Context)
           </div>
-          <div v-else class="empty-state">
+          <div v-if="retrievedDocs.length > 0">
+            <div
+              v-for="doc in retrievedDocs"
+              :key="doc.id"
+              class="retrieved-item"
+            >
+              {{ doc.content }}
+            </div>
+          </div>
+          <div
+            v-else
+            class="empty-state"
+          >
             (未找到相关资料)
           </div>
         </div>
@@ -188,7 +229,6 @@ const search = async () => {
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

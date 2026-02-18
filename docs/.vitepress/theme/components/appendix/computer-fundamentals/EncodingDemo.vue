@@ -13,7 +13,9 @@
           :key="tab.name"
           :class="['tab-btn', { active: activeTab === tab.name }]"
           @click="activeTab = tab.name"
-        >{{ tab.label }}</button>
+        >
+          {{ tab.label }}
+        </button>
       </div>
 
       <div class="encoding-area">
@@ -23,22 +25,32 @@
             v-model="inputValue" 
             class="input-field"
             :placeholder="currentTab.placeholder"
-          />
+          >
         </div>
 
         <div class="output-section">
-          <div class="output-label">编码结果：</div>
+          <div class="output-label">
+            编码结果：
+          </div>
           <div class="output-box">
             <code>{{ encodedResult }}</code>
           </div>
-          <div class="output-info" v-if="currentTab.name === 'text'">
+          <div
+            v-if="currentTab.name === 'text'"
+            class="output-info"
+          >
             <span>字符数: {{ inputValue.length }}</span>
             <span>字节数: {{ byteCount }}</span>
           </div>
         </div>
 
-        <div class="encoding-table" v-if="currentTab.name === 'text' && inputValue">
-          <div class="table-title">字符编码详情</div>
+        <div
+          v-if="currentTab.name === 'text' && inputValue"
+          class="encoding-table"
+        >
+          <div class="table-title">
+            字符编码详情
+          </div>
           <div class="char-list">
             <div 
               v-for="(char, i) in inputValue.slice(0, 10)" 

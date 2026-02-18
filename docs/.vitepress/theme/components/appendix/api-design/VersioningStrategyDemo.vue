@@ -19,19 +19,35 @@
           @click="selectedStrategy = strategy.id"
         >
           <div class="strategy-header">
-            <div class="strategy-name">{{ strategy.name }}</div>
+            <div class="strategy-name">
+              {{ strategy.name }}
+            </div>
             <div class="strategy-stars">
-              <span v-for="n in strategy.stars" :key="n" class="star">⭐</span>
+              <span
+                v-for="n in strategy.stars"
+                :key="n"
+                class="star"
+              >⭐</span>
             </div>
           </div>
-          <div class="strategy-example">{{ strategy.example }}</div>
+          <div class="strategy-example">
+            {{ strategy.example }}
+          </div>
         </div>
       </div>
 
-      <div class="strategy-detail" v-if="currentStrategy">
+      <div
+        v-if="currentStrategy"
+        class="strategy-detail"
+      >
         <div class="detail-header">
-          <div class="detail-title">{{ currentStrategy.name }}</div>
-          <div class="detail-recommendation" :class="currentStrategy.level">
+          <div class="detail-title">
+            {{ currentStrategy.name }}
+          </div>
+          <div
+            class="detail-recommendation"
+            :class="currentStrategy.level"
+          >
             {{ currentStrategy.level === 'high' ? '强烈推荐' : currentStrategy.level === 'medium' ? '可以使用' : '不推荐' }}
           </div>
         </div>
@@ -40,14 +56,24 @@
           <div class="detail-section">
             <h4>✅ 优点</h4>
             <ul>
-              <li v-for="(pro, idx) in currentStrategy.pros" :key="idx">{{ pro }}</li>
+              <li
+                v-for="(pro, idx) in currentStrategy.pros"
+                :key="idx"
+              >
+                {{ pro }}
+              </li>
             </ul>
           </div>
 
           <div class="detail-section">
             <h4>❌ 缺点</h4>
             <ul>
-              <li v-for="(con, idx) in currentStrategy.cons" :key="idx">{{ con }}</li>
+              <li
+                v-for="(con, idx) in currentStrategy.cons"
+                :key="idx"
+              >
+                {{ con }}
+              </li>
             </ul>
           </div>
         </div>
@@ -55,9 +81,13 @@
         <div class="detail-section example">
           <h4>💻 实现示例</h4>
           <div class="code-box">
-            <div class="code-header">Request</div>
+            <div class="code-header">
+              Request
+            </div>
             <pre><code>{{ currentStrategy.codeExample.request }}</code></pre>
-            <div class="code-header">Response Headers</div>
+            <div class="code-header">
+              Response Headers
+            </div>
             <pre><code>{{ currentStrategy.codeExample.response }}</code></pre>
           </div>
         </div>
@@ -65,7 +95,12 @@
         <div class="detail-section tips">
           <h4>💡 最佳实践</h4>
           <ul>
-            <li v-for="(tip, idx) in currentStrategy.tips" :key="idx">{{ tip }}</li>
+            <li
+              v-for="(tip, idx) in currentStrategy.tips"
+              :key="idx"
+            >
+              {{ tip }}
+            </li>
           </ul>
         </div>
       </div>

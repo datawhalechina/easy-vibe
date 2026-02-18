@@ -11,17 +11,29 @@
     </div>
 
     <div class="scenarios">
-      <div class="scenario" :class="{ active: scenario === 'personal' }" @click="scenario = 'personal'">
+      <div
+        class="scenario"
+        :class="{ active: scenario === 'personal' }"
+        @click="scenario = 'personal'"
+      >
         <span class="name">个人博客</span>
         <span class="spec">1核 1G</span>
         <span class="cost">¥50/月</span>
       </div>
-      <div class="scenario" :class="{ active: scenario === 'small' }" @click="scenario = 'small'">
+      <div
+        class="scenario"
+        :class="{ active: scenario === 'small' }"
+        @click="scenario = 'small'"
+      >
         <span class="name">小型电商</span>
         <span class="spec">2核 4G</span>
         <span class="cost">¥300/月</span>
       </div>
-      <div class="scenario" :class="{ active: scenario === 'medium' }" @click="scenario = 'medium'">
+      <div
+        class="scenario"
+        :class="{ active: scenario === 'medium' }"
+        @click="scenario = 'medium'"
+      >
         <span class="name">中型应用</span>
         <span class="spec">4核 8G</span>
         <span class="cost">¥1000/月</span>

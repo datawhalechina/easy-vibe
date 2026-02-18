@@ -1,8 +1,12 @@
 <template>
   <div class="canary-release-demo">
     <div class="header">
-      <div class="title">金丝雀发布</div>
-      <div class="subtitle">灰度发布策略，小流量先行验证新版本</div>
+      <div class="title">
+        金丝雀发布
+      </div>
+      <div class="subtitle">
+        灰度发布策略，小流量先行验证新版本
+      </div>
     </div>
 
     <!-- 流量分配控制 -->
@@ -15,24 +19,24 @@
       <div class="slider-container">
         <div class="version-labels">
           <span class="version-label stable">
-            <span class="dot blue"></span>
+            <span class="dot blue" />
             稳定版 v{{ stableVersion }}
           </span>
           <span class="percentage stable">{{ 100 - canaryPercentage }}%</span>
         </div>
 
         <input
-          type="range"
           v-model.number="canaryPercentage"
+          type="range"
           min="0"
           max="100"
           step="5"
           class="traffic-slider"
-        />
+        >
 
         <div class="version-labels">
           <span class="version-label canary">
-            <span class="dot yellow"></span>
+            <span class="dot yellow" />
             金丝雀 v{{ canaryVersion }}
           </span>
           <span class="percentage canary">{{ canaryPercentage }}%</span>
@@ -66,7 +70,9 @@
 
       <div class="traffic-pipeline">
         <div class="pipeline-stage">
-          <div class="stage-label">用户请求</div>
+          <div class="stage-label">
+            用户请求
+          </div>
           <div class="request-bubbles">
             <div
               v-for="(req, index) in requestQueue"
@@ -80,12 +86,18 @@
           </div>
         </div>
 
-        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-arrow">
+          →
+        </div>
 
         <div class="pipeline-stage">
-          <div class="stage-label">负载均衡器</div>
+          <div class="stage-label">
+            负载均衡器
+          </div>
           <div class="lb-diagram">
-            <div class="lb-icon">⚖️</div>
+            <div class="lb-icon">
+              ⚖️
+            </div>
             <div class="routing-logic">
               <div class="logic-line">
                 <span class="logic-label">Canary:</span>
@@ -95,13 +107,19 @@
           </div>
         </div>
 
-        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-arrow">
+          →
+        </div>
 
         <div class="pipeline-stage">
-          <div class="stage-label">后端服务</div>
+          <div class="stage-label">
+            后端服务
+          </div>
           <div class="backend-pods">
             <div class="pod-group stable">
-              <div class="pod-label">稳定版 v{{ stableVersion }}</div>
+              <div class="pod-label">
+                稳定版 v{{ stableVersion }}
+              </div>
               <div class="pods-row">
                 <div
                   v-for="i in 3"
@@ -115,7 +133,9 @@
               </div>
             </div>
             <div class="pod-group canary">
-              <div class="pod-label">金丝雀 v{{ canaryVersion }}</div>
+              <div class="pod-label">
+                金丝雀 v{{ canaryVersion }}
+              </div>
               <div class="pods-row">
                 <div
                   v-for="i in 2"
@@ -135,7 +155,9 @@
 
     <!-- 金丝雀发布策略 -->
     <div class="canary-strategy">
-      <div class="strategy-title">金丝雀发布最佳实践</div>
+      <div class="strategy-title">
+        金丝雀发布最佳实践
+      </div>
 
       <div class="strategy-grid">
         <div class="strategy-card">

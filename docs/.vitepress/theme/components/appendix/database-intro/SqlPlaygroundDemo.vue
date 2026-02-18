@@ -27,16 +27,24 @@
 
       <div class="content-area">
         <div class="example-section">
-          <div class="section-title">📝 示例 SQL</div>
+          <div class="section-title">
+            📝 示例 SQL
+          </div>
           <div class="code-block">
             <pre><code>{{ currentOperation.example }}</code></pre>
           </div>
         </div>
 
         <div class="explanation-section">
-          <div class="section-title">💡 逐词翻译</div>
+          <div class="section-title">
+            💡 逐词翻译
+          </div>
           <div class="explanation-list">
-            <div v-for="(item, i) in currentOperation.explanation" :key="i" class="explanation-item">
+            <div
+              v-for="(item, i) in currentOperation.explanation"
+              :key="i"
+              class="explanation-item"
+            >
               <span class="keyword">{{ item.keyword }}</span>
               <span class="meaning">{{ item.meaning }}</span>
             </div>
@@ -45,16 +53,30 @@
       </div>
 
       <div class="result-section">
-        <div class="section-title">📊 返回结果</div>
+        <div class="section-title">
+          📊 返回结果
+        </div>
         <div class="result-table">
           <div class="table-header">
-            <div v-for="col in currentOperation.result.columns" :key="col" class="header-cell">
+            <div
+              v-for="col in currentOperation.result.columns"
+              :key="col"
+              class="header-cell"
+            >
               {{ col }}
             </div>
           </div>
           <div class="table-body">
-            <div v-for="(row, i) in currentOperation.result.rows" :key="i" class="table-row">
-              <div v-for="(cell, j) in row" :key="j" class="table-cell">
+            <div
+              v-for="(row, i) in currentOperation.result.rows"
+              :key="i"
+              class="table-row"
+            >
+              <div
+                v-for="(cell, j) in row"
+                :key="j"
+                class="table-cell"
+              >
                 {{ cell }}
               </div>
             </div>
@@ -63,9 +85,12 @@
       </div>
     </div>
 
-    <div class="warning-box" v-if="currentOperation.warning">
+    <div
+      v-if="currentOperation.warning"
+      class="warning-box"
+    >
       <span class="icon">⚠️</span>
-      <span v-html="currentOperation.warning"></span>
+      <span v-html="currentOperation.warning" />
     </div>
 
     <div class="info-box">

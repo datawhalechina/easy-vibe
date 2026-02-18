@@ -25,41 +25,64 @@
         </button>
       </div>
 
-    <div class="comparison-container">
-      <!-- Imperative Side (jQuery) -->
-      <div class="side imperative-side">
-        <div class="side-header">
-          <span class="badge imperative">jQuery / 命令式</span>
-          <span class="sub-label">通俗说法: 告诉怎么做</span>
-        </div>
-
-        <div class="demo-area">
-          <!-- The UI -->
-          <div class="counter-ui">
-            <div class="display-value" id="jq-display">{{ jqCount }}</div>
-            <div class="meters">
-              <div class="meter-label">Progress:</div>
-              <div class="meter-bar">
-                <div
-                  class="meter-fill"
-                  id="jq-meter"
-                  :style="{ width: jqProgress + '%' }"
-                ></div>
-              </div>
-              <div class="status-text" id="jq-status">
-                {{ jqStatus }}
-              </div>
-            </div>
-            <div class="controls">
-              <button class="btn-decrement" @click="updateJq(-1)">-</button>
-              <button class="btn-increment" @click="updateJq(1)">+</button>
-            </div>
+      <div class="comparison-container">
+        <!-- Imperative Side (jQuery) -->
+        <div class="side imperative-side">
+          <div class="side-header">
+            <span class="badge imperative">jQuery / 命令式</span>
+            <span class="sub-label">通俗说法: 告诉怎么做</span>
           </div>
 
-          <!-- The Code -->
-          <div v-show="currentView === 'code'" class="code-panel">
-            <div class="code-block imperative-code">
-              <pre><code>function updateCounter(change) {
+          <div class="demo-area">
+            <!-- The UI -->
+            <div class="counter-ui">
+              <div
+                id="jq-display"
+                class="display-value"
+              >
+                {{ jqCount }}
+              </div>
+              <div class="meters">
+                <div class="meter-label">
+                  Progress:
+                </div>
+                <div class="meter-bar">
+                  <div
+                    id="jq-meter"
+                    class="meter-fill"
+                    :style="{ width: jqProgress + '%' }"
+                  />
+                </div>
+                <div
+                  id="jq-status"
+                  class="status-text"
+                >
+                  {{ jqStatus }}
+                </div>
+              </div>
+              <div class="controls">
+                <button
+                  class="btn-decrement"
+                  @click="updateJq(-1)"
+                >
+                  -
+                </button>
+                <button
+                  class="btn-increment"
+                  @click="updateJq(1)"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            <!-- The Code -->
+            <div
+              v-show="currentView === 'code'"
+              class="code-panel"
+            >
+              <div class="code-block imperative-code">
+                <pre><code>function updateCounter(change) {
   // 1. Get current value
   var count = parseInt($('#counter').text());
 
@@ -83,64 +106,89 @@
   // 6. Update DOM element 4...
   // Oops! Forgot to update the color indicator!
 }</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div
+            v-if="showAnalysis"
+            class="pain-points"
+          >
+            <div class="pain-point">
+              <span class="icon">⚠️</span>
+              <span>需要手动操作多个 DOM 元素</span>
+            </div>
+            <div class="pain-point">
+              <span class="icon">🐛</span>
+              <span>容易遗漏更新，导致界面不一致</span>
+            </div>
+            <div class="pain-point">
+              <span class="icon">🍝</span>
+              <span>逻辑分散，代码难以维护</span>
             </div>
           </div>
         </div>
 
-        <div class="pain-points" v-if="showAnalysis">
-          <div class="pain-point">
-            <span class="icon">⚠️</span>
-            <span>需要手动操作多个 DOM 元素</span>
-          </div>
-          <div class="pain-point">
-            <span class="icon">🐛</span>
-            <span>容易遗漏更新，导致界面不一致</span>
-          </div>
-          <div class="pain-point">
-            <span class="icon">🍝</span>
-            <span>逻辑分散，代码难以维护</span>
+        <!-- VS Divider -->
+        <div class="vs-divider">
+          <div class="vs-badge">
+            VS
           </div>
         </div>
-      </div>
 
-      <!-- VS Divider -->
-      <div class="vs-divider">
-        <div class="vs-badge">VS</div>
-      </div>
+        <!-- Declarative Side (Vue) -->
+        <div class="side declarative-side">
+          <div class="side-header">
+            <span class="badge declarative">Vue / 声明式</span>
+            <span class="sub-label">通俗说法: 告诉要什么</span>
+          </div>
 
-      <!-- Declarative Side (Vue) -->
-      <div class="side declarative-side">
-        <div class="side-header">
-          <span class="badge declarative">Vue / 声明式</span>
-          <span class="sub-label">通俗说法: 告诉要什么</span>
-        </div>
-
-        <div class="demo-area">
-          <!-- The UI -->
-          <div class="counter-ui">
-            <div class="display-value">{{ vueCount }}</div>
-            <div class="meters">
-              <div class="meter-label">Progress:</div>
-              <div class="meter-bar">
+          <div class="demo-area">
+            <!-- The UI -->
+            <div class="counter-ui">
+              <div class="display-value">
+                {{ vueCount }}
+              </div>
+              <div class="meters">
+                <div class="meter-label">
+                  Progress:
+                </div>
+                <div class="meter-bar">
+                  <div
+                    class="meter-fill"
+                    :style="{ width: vueProgress + '%' }"
+                  />
+                </div>
                 <div
-                  class="meter-fill"
-                  :style="{ width: vueProgress + '%' }"
-                ></div>
+                  class="status-text"
+                  :class="{ warning: vueCount > 5 }"
+                >
+                  {{ vueStatus }}
+                </div>
               </div>
-              <div class="status-text" :class="{ warning: vueCount > 5 }">
-                {{ vueStatus }}
+              <div class="controls">
+                <button
+                  class="btn-decrement"
+                  @click="vueCount--"
+                >
+                  -
+                </button>
+                <button
+                  class="btn-increment"
+                  @click="vueCount++"
+                >
+                  +
+                </button>
               </div>
             </div>
-            <div class="controls">
-              <button class="btn-decrement" @click="vueCount--">-</button>
-              <button class="btn-increment" @click="vueCount++">+</button>
-            </div>
-          </div>
 
-          <!-- The Code -->
-          <div v-show="currentView === 'code'" class="code-panel">
-            <div class="code-block declarative-code">
-              <pre><code>export default {
+            <!-- The Code -->
+            <div
+              v-show="currentView === 'code'"
+              class="code-panel"
+            >
+              <div class="code-block declarative-code">
+                <pre><code>export default {
   data() {
     return {
       count: 0
@@ -166,33 +214,39 @@
     {{ status }}
   &lt;/div&gt;
 &lt;/template&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div
+            v-if="showAnalysis"
+            class="benefits"
+          >
+            <div class="benefit">
+              <span class="icon">✅</span>
+              <span>只关注数据，不用手动操作 DOM</span>
+            </div>
+            <div class="benefit">
+              <span class="icon">🔄</span>
+              <span>数据变化自动同步到所有相关视图</span>
+            </div>
+            <div class="benefit">
+              <span class="icon">🧩</span>
+              <span>代码结构清晰，易于维护</span>
             </div>
           </div>
         </div>
-
-        <div class="benefits" v-if="showAnalysis">
-          <div class="benefit">
-            <span class="icon">✅</span>
-            <span>只关注数据，不用手动操作 DOM</span>
-          </div>
-          <div class="benefit">
-            <span class="icon">🔄</span>
-            <span>数据变化自动同步到所有相关视图</span>
-          </div>
-          <div class="benefit">
-            <span class="icon">🧩</span>
-            <span>代码结构清晰，易于维护</span>
-          </div>
-        </div>
       </div>
-    </div>
 
-    <!-- 底部控制 -->
-    <div class="demo-controls">
-      <button class="toggle-btn" @click="showAnalysis = !showAnalysis">
-        {{ showAnalysis ? '隐藏' : '显示' }}对比分析
-      </button>
-    </div>
+      <!-- 底部控制 -->
+      <div class="demo-controls">
+        <button
+          class="toggle-btn"
+          @click="showAnalysis = !showAnalysis"
+        >
+          {{ showAnalysis ? '隐藏' : '显示' }}对比分析
+        </button>
+      </div>
     </div>
 
     <!-- 信息框 -->

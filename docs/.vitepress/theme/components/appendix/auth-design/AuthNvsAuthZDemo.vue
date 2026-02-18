@@ -5,7 +5,9 @@
 <template>
   <div class="authn-authz-demo">
     <div class="header">
-      <div class="title">🪪 AuthN vs 🛂 AuthZ：一个请求到底会经历什么？</div>
+      <div class="title">
+        🪪 AuthN vs 🛂 AuthZ：一个请求到底会经历什么？
+      </div>
       <div class="subtitle">
         选择“谁在请求”与“要做什么”，看看认证/授权分别在哪一步起作用。
       </div>
@@ -13,7 +15,9 @@
 
     <div class="grid">
       <div class="card">
-        <div class="card-title">选择请求</div>
+        <div class="card-title">
+          选择请求
+        </div>
 
         <label class="label">身份（AuthN：你是谁）</label>
         <div class="row">
@@ -48,18 +52,26 @@
       </div>
 
       <div class="card">
-        <div class="card-title">模拟结果</div>
+        <div class="card-title">
+          模拟结果
+        </div>
 
         <div class="result">
           <div class="line">
             <span class="k">AuthN（认证）</span>
-            <span class="v" :class="authn.ok ? 'ok' : 'bad'">
+            <span
+              class="v"
+              :class="authn.ok ? 'ok' : 'bad'"
+            >
               {{ authn.ok ? '通过' : '失败' }}
             </span>
           </div>
           <div class="line">
             <span class="k">AuthZ（授权）</span>
-            <span class="v" :class="authz.ok ? 'ok' : 'bad'">
+            <span
+              class="v"
+              :class="authz.ok ? 'ok' : 'bad'"
+            >
               {{ authz.ok ? '允许' : '拒绝' }}
             </span>
           </div>
@@ -74,7 +86,9 @@
     </div>
 
     <div class="card">
-      <div class="card-title">关键点</div>
+      <div class="card-title">
+        关键点
+      </div>
       <ul class="list">
         <li><strong>认证失败：</strong>你是谁都不确定 → 通常返回 401。</li>
         <li>
@@ -82,8 +96,7 @@
           403。
         </li>
         <li>
-          <strong>授权规则要在服务端：</strong
-          >别相信前端的“是否显示按钮”，那只是 UX。
+          <strong>授权规则要在服务端：</strong>别相信前端的“是否显示按钮”，那只是 UX。
         </li>
       </ul>
     </div>

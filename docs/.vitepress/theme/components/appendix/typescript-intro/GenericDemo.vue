@@ -75,7 +75,9 @@ const loadExample = (type) => {
     <div class="demo-container">
       <!-- 泛型概念说明 -->
       <div class="concept-box">
-        <div class="concept-icon">💡</div>
+        <div class="concept-icon">
+          💡
+        </div>
         <div class="concept-text">
           <strong>泛型就像"通用模板"</strong> - 可以处理不同类型的数据，同时保持类型安全
         </div>
@@ -126,62 +128,93 @@ function reverseArray&lt;T&gt;(arr: T[]): T[] {
               type="text"
               :placeholder="selectedType === 'number' ? '1, 2, 3, 4, 5' : '苹果, 香蕉, 橙子'"
               class="text-input"
-            />
+            >
           </div>
 
           <div class="example-buttons">
-            <button @click="loadExample('number')" class="btn-example">
+            <button
+              class="btn-example"
+              @click="loadExample('number')"
+            >
               加载数字示例
             </button>
-            <button @click="loadExample('string')" class="btn-example">
+            <button
+              class="btn-example"
+              @click="loadExample('string')"
+            >
               加载字符串示例
             </button>
           </div>
 
           <div class="action-buttons">
-            <button @click="executeReverse" class="btn-primary">
+            <button
+              class="btn-primary"
+              @click="executeReverse"
+            >
               执行反转
             </button>
-            <button @click="reset" class="btn-secondary">
+            <button
+              class="btn-secondary"
+              @click="reset"
+            >
               重置
             </button>
           </div>
         </div>
 
         <!-- 结果展示 -->
-        <div v-if="showResult" class="result-display">
+        <div
+          v-if="showResult"
+          class="result-display"
+        >
           <div class="result-header">
             <span class="result-icon">📊</span>
             <span>执行结果</span>
           </div>
 
-          <div v-if="result && !result.error" class="result-content">
+          <div
+            v-if="result && !result.error"
+            class="result-content"
+          >
             <div class="result-item">
-              <div class="result-label">输入类型：</div>
-              <div class="result-value type-badge">{{ result.type }}</div>
+              <div class="result-label">
+                输入类型：
+              </div>
+              <div class="result-value type-badge">
+                {{ result.type }}
+              </div>
             </div>
 
             <div class="result-item">
-              <div class="result-label">输入数组：</div>
+              <div class="result-label">
+                输入数组：
+              </div>
               <div class="result-value array-display">
                 [{{ result.input.join(', ') }}]
               </div>
             </div>
 
             <div class="result-item">
-              <div class="result-label">输出数组：</div>
+              <div class="result-label">
+                输出数组：
+              </div>
               <div class="result-value array-display output">
                 [{{ result.output.join(', ') }}]
               </div>
             </div>
 
             <div class="type-info">
-              <div class="info-icon">✅</div>
+              <div class="info-icon">
+                ✅
+              </div>
               <div>类型安全：输入 {{ result.type }}，输出 {{ result.type }}</div>
             </div>
           </div>
 
-          <div v-else class="error-display">
+          <div
+            v-else
+            class="error-display"
+          >
             {{ result?.error || result }}
           </div>
         </div>
@@ -192,7 +225,9 @@ function reverseArray&lt;T&gt;(arr: T[]): T[] {
         <h4>📝 泛型使用示例</h4>
         <div class="example-grid">
           <div class="example-card">
-            <div class="example-title">数字数组</div>
+            <div class="example-title">
+              数字数组
+            </div>
             <pre><code class="typescript">const nums = [1, 2, 3, 4, 5]
 const reversed = reverseArray&lt;number&gt;(nums)
 // 结果: [5, 4, 3, 2, 1]
@@ -200,7 +235,9 @@ const reversed = reverseArray&lt;number&gt;(nums)
           </div>
 
           <div class="example-card">
-            <div class="example-title">字符串数组</div>
+            <div class="example-title">
+              字符串数组
+            </div>
             <pre><code class="typescript">const strs = ["a", "b", "c"]
 const reversed = reverseArray&lt;string&gt;(strs)
 // 结果: ["c", "b", "a"]

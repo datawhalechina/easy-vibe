@@ -1,12 +1,24 @@
 <template>
-  <el-card class="cot-demo-card" shadow="hover">
+  <el-card
+    class="cot-demo-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="controls-header">
         <div class="control-group">
           <span class="label">任务场景：</span>
-          <el-select v-model="currentTask" style="width: 200px">
-            <el-option label="代码审查 (Code Review)" value="debug" />
-            <el-option label="行程规划 (Travel Plan)" value="travel" />
+          <el-select
+            v-model="currentTask"
+            style="width: 200px"
+          >
+            <el-option
+              label="代码审查 (Code Review)"
+              value="debug"
+            />
+            <el-option
+              label="行程规划 (Travel Plan)"
+              value="travel"
+            />
           </el-select>
         </div>
         
@@ -28,22 +40,30 @@
     <div class="demo-content">
       <el-row :gutter="20">
         <!-- Left: Prompt Input -->
-        <el-col :xs="24" :md="10">
-          <el-card shadow="never" class="prompt-panel">
+        <el-col
+          :xs="24"
+          :md="10"
+        >
+          <el-card
+            shadow="never"
+            class="prompt-panel"
+          >
             <template #header>
               <div class="panel-header">
                 <el-icon><EditPen /></el-icon>
                 <span>输入提示词 (Prompt)</span>
               </div>
             </template>
-            <div class="prompt-text">{{ currentScenario.prompt }}</div>
+            <div class="prompt-text">
+              {{ currentScenario.prompt }}
+            </div>
             <div class="action-area">
               <el-button 
                 type="primary" 
                 :loading="isPlaying"
-                @click="runSimulation" 
-                class="run-btn"
+                class="run-btn" 
                 size="large"
+                @click="runSimulation"
               >
                 {{ isPlaying ? '生成中...' : '开始生成' }}
               </el-button>
@@ -52,19 +72,34 @@
         </el-col>
 
         <!-- Right: AI Output Process -->
-        <el-col :xs="24" :md="14">
-          <el-card shadow="never" class="output-panel">
+        <el-col
+          :xs="24"
+          :md="14"
+        >
+          <el-card
+            shadow="never"
+            class="output-panel"
+          >
             <template #header>
               <div class="panel-header">
                 <div class="left">
                   <el-icon><Cpu /></el-icon>
                   <span>AI 思考与输出</span>
                 </div>
-                <el-tag :type="statusType" effect="dark" size="small">{{ statusText }}</el-tag>
+                <el-tag
+                  :type="statusType"
+                  effect="dark"
+                  size="small"
+                >
+                  {{ statusText }}
+                </el-tag>
               </div>
             </template>
             
-            <div class="output-container" ref="outputContainer">
+            <div
+              ref="outputContainer"
+              class="output-container"
+            >
               <el-empty 
                 v-if="!hasRun && !isPlaying" 
                 description="点击“开始生成”观察 AI 如何处理任务..." 
@@ -80,9 +115,17 @@
                   :timestamp="currentStepIndex === index ? 'Thinking...' : ''"
                   placement="top"
                 >
-                  <h4 class="step-title">{{ step.title }}</h4>
-                  <div class="step-content" v-if="step.content">
-                    {{ step.displayedContent }}<span v-if="currentStepIndex === index" class="typing-cursor">|</span>
+                  <h4 class="step-title">
+                    {{ step.title }}
+                  </h4>
+                  <div
+                    v-if="step.content"
+                    class="step-content"
+                  >
+                    {{ step.displayedContent }}<span
+                      v-if="currentStepIndex === index"
+                      class="typing-cursor"
+                    >|</span>
                   </div>
                 </el-timeline-item>
               </el-timeline>
@@ -93,7 +136,10 @@
     </div>
 
     <!-- Insight/Analysis Section -->
-    <div class="insight-section" v-if="hasRun || isPlaying">
+    <div
+      v-if="hasRun || isPlaying"
+      class="insight-section"
+    >
       <el-alert
         :type="currentMode === 'direct' ? 'warning' : 'success'"
         :closable="false"

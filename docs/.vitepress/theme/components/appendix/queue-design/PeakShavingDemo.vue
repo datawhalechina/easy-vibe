@@ -5,8 +5,12 @@
 <template>
   <div class="peak-shaving-demo">
     <div class="header">
-      <div class="title">削峰填谷：把高峰"摊平"</div>
-      <div class="subtitle">模拟流量突增场景，观察队列如何保护后端系统</div>
+      <div class="title">
+        削峰填谷：把高峰"摊平"
+      </div>
+      <div class="subtitle">
+        模拟流量突增场景，观察队列如何保护后端系统
+      </div>
     </div>
 
     <div class="main-layout">
@@ -24,8 +28,10 @@
             max="1000"
             step="50"
             class="range-input process-range"
-          />
-          <div class="desc">后端系统的最大处理速度</div>
+          >
+          <div class="desc">
+            后端系统的最大处理速度
+          </div>
         </div>
 
         <div class="control-group">
@@ -40,19 +46,24 @@
             max="10000"
             step="500"
             class="range-input queue-range"
-          />
-          <div class="desc">消息队列能暂存的最大请求数</div>
+          >
+          <div class="desc">
+            消息队列能暂存的最大请求数
+          </div>
         </div>
 
         <div class="actions">
           <button
             class="action-btn burst-btn"
-            @click="triggerBurst"
             :disabled="isBursting"
+            @click="triggerBurst"
           >
             ⚡️ 模拟秒杀流量突增
           </button>
-          <button class="action-btn reset-btn" @click="reset">
+          <button
+            class="action-btn reset-btn"
+            @click="reset"
+          >
             🔄 重置系统
           </button>
         </div>
@@ -63,13 +74,17 @@
         <!-- 状态指标卡片 -->
         <div class="metrics-grid">
           <div class="metric-item">
-            <div class="m-label">当前入站流量</div>
+            <div class="m-label">
+              当前入站流量
+            </div>
             <div class="m-value blue">
               {{ currentRequestRate }} <span class="unit">req/s</span>
             </div>
           </div>
           <div class="metric-item">
-            <div class="m-label">队列积压量</div>
+            <div class="m-label">
+              队列积压量
+            </div>
             <div class="m-value orange">
               {{ queueLength }} <span class="unit">msgs</span>
             </div>
@@ -77,17 +92,21 @@
               <div
                 class="m-bar-fill"
                 :style="{ width: queuePercent + '%', background: queueColor }"
-              ></div>
+              />
             </div>
           </div>
           <div class="metric-item">
-            <div class="m-label">实际处理速率</div>
+            <div class="m-label">
+              实际处理速率
+            </div>
             <div class="m-value green">
               {{ currentProcessRate }} <span class="unit">req/s</span>
             </div>
           </div>
           <div class="metric-item">
-            <div class="m-label">丢弃请求 (限流)</div>
+            <div class="m-label">
+              丢弃请求 (限流)
+            </div>
             <div class="m-value red">
               {{ rejectedCount }} <span class="unit">req</span>
             </div>
@@ -96,28 +115,28 @@
 
         <!-- 实时图表 -->
         <div class="chart-container">
-          <canvas ref="chartCanvas" width="600" height="200"></canvas>
+          <canvas
+            ref="chartCanvas"
+            width="600"
+            height="200"
+          />
           <div class="chart-legend">
-            <span class="legend-item"
-              ><span class="dot blue"></span>入站流量 (用户请求)</span
-            >
-            <span class="legend-item"
-              ><span class="dot green"></span>处理流量 (系统负载)</span
-            >
-            <span class="legend-item"
-              ><span class="dot orange"></span>队列积压</span
-            >
+            <span class="legend-item"><span class="dot blue" />入站流量 (用户请求)</span>
+            <span class="legend-item"><span class="dot green" />处理流量 (系统负载)</span>
+            <span class="legend-item"><span class="dot orange" />队列积压</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="scenario-tips">
-      <div class="tip-icon">💡</div>
+      <div class="tip-icon">
+        💡
+      </div>
       <div class="tip-content">
         <strong>核心原理：</strong>
         当<strong>入站流量</strong>（蓝色）超过<strong>处理能力</strong>（绿色直线）时，多余的请求会被存入<strong>消息队列</strong>（橙色区域）。
-        <br />
+        <br>
         一旦流量高峰过去，系统会继续全速处理队列中的积压，直到队列清空。这就是"削峰填谷"。
       </div>
     </div>

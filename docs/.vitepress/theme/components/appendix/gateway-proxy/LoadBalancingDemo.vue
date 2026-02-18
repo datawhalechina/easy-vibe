@@ -5,12 +5,18 @@
 <template>
   <div class="load-balancing-demo">
     <div class="header">
-      <div class="title">⚖️ 负载均衡：把"压力"均匀分摊到多台服务器</div>
-      <div class="subtitle">想象成银行的取号系统——把客户均匀分配到各个窗口，避免某个窗口排长队</div>
+      <div class="title">
+        ⚖️ 负载均衡：把"压力"均匀分摊到多台服务器
+      </div>
+      <div class="subtitle">
+        想象成银行的取号系统——把客户均匀分配到各个窗口，避免某个窗口排长队
+      </div>
     </div>
 
     <div class="strategy-selector">
-      <div class="selector-title">选择负载均衡策略</div>
+      <div class="selector-title">
+        选择负载均衡策略
+      </div>
       <div class="strategy-tabs">
         <button
           v-for="strategy in strategies"
@@ -20,36 +26,64 @@
         >
           <span class="tab-icon">{{ strategy.icon }}</span>
           <span class="tab-name">{{ strategy.name }}</span>
-          <span class="tab-badge" v-if="strategy.badge">{{ strategy.badge }}</span>
+          <span
+            v-if="strategy.badge"
+            class="tab-badge"
+          >{{ strategy.badge }}</span>
         </button>
       </div>
     </div>
 
     <div class="simulation-area">
       <div class="sim-header">
-        <div class="sim-title">🎮 负载均衡模拟器</div>
+        <div class="sim-title">
+          🎮 负载均衡模拟器
+        </div>
         <div class="sim-controls">
-          <button class="sim-btn" @click="startSimulation" :disabled="isSimulating">
+          <button
+            class="sim-btn"
+            :disabled="isSimulating"
+            @click="startSimulation"
+          >
             {{ isSimulating ? '运行中...' : '▶ 开始模拟' }}
           </button>
-          <button class="sim-btn reset" @click="resetSimulation">↺ 重置</button>
+          <button
+            class="sim-btn reset"
+            @click="resetSimulation"
+          >
+            ↺ 重置
+          </button>
         </div>
       </div>
 
       <div class="strategy-explanation">
-        <div class="exp-icon">💡</div>
+        <div class="exp-icon">
+          💡
+        </div>
         <div class="exp-content">
-          <div class="exp-title">{{ currentStrategyData.name }} - {{ currentStrategyData.shortDesc }}</div>
-          <div class="exp-desc">{{ currentStrategyData.fullDesc }}</div>
+          <div class="exp-title">
+            {{ currentStrategyData.name }} - {{ currentStrategyData.shortDesc }}
+          </div>
+          <div class="exp-desc">
+            {{ currentStrategyData.fullDesc }}
+          </div>
         </div>
       </div>
 
       <div class="servers-pool">
         <div class="pool-header">
-          <div class="pool-title">🏢 后端服务器集群</div>
+          <div class="pool-title">
+            🏢 后端服务器集群
+          </div>
           <div class="pool-config">
             <label>服务器数量:</label>
-            <input type="range" v-model="serverCount" min="2" max="6" :disabled="isSimulating" />
+            <input
+              v-model="serverCount"
+              type="range"
+              min="2"
+              max="6"
+              :disabled="isSimulating"
+            >
             <span>{{ serverCount }} 台</span>
           </div>
         </div>
@@ -62,9 +96,16 @@
             :style="{ borderColor: server.color }"
           >
             <div class="server-header">
-              <div class="server-icon">🖥️</div>
-              <div class="server-name">{{ server.name }}</div>
-              <div class="server-status" :style="{ background: server.color }">
+              <div class="server-icon">
+                🖥️
+              </div>
+              <div class="server-name">
+                {{ server.name }}
+              </div>
+              <div
+                class="server-status"
+                :style="{ background: server.color }"
+              >
                 {{ server.load }}%
               </div>
             </div>
@@ -78,23 +119,28 @@
                 <span class="metric-label">权重:</span>
                 <input
                   v-if="currentStrategy === 'weighted'"
-                  type="number"
                   v-model.number="server.weight"
+                  type="number"
                   min="1"
                   max="10"
                   :disabled="isSimulating"
                   class="weight-input"
-                />
+                >
                 <span v-else>{{ server.weight }}</span>
               </div>
             </div>
 
             <div class="load-bar">
-              <div class="load-fill" :style="{ width: server.load + '%', background: server.color }"></div>
+              <div
+                class="load-fill"
+                :style="{ width: server.load + '%', background: server.color }"
+              />
             </div>
 
             <div class="recent-requests">
-              <div class="req-label">最近请求:</div>
+              <div class="req-label">
+                最近请求:
+              </div>
               <div class="req-list">
                 <span
                   v-for="(req, idx) in server.recentRequests"
@@ -112,7 +158,9 @@
 
       <div class="request-queue">
         <div class="queue-header">
-          <div class="queue-title">📨 请求队列</div>
+          <div class="queue-title">
+            📨 请求队列
+          </div>
           <div class="queue-stats">
             <span>总请求: {{ totalRequests }}</span>
             <span>待处理: {{ pendingRequests.length }}</span>
@@ -127,32 +175,57 @@
           >
             <span class="req-id">#{{ req.id }}</span>
             <span class="req-arrow">→</span>
-            <span v-if="req.assignedServer" class="req-target" :style="{ color: req.serverColor }">
+            <span
+              v-if="req.assignedServer"
+              class="req-target"
+              :style="{ color: req.serverColor }"
+            >
               {{ req.assignedServer }}
             </span>
-            <span v-else class="req-status">{{ req.statusText }}</span>
+            <span
+              v-else
+              class="req-status"
+            >{{ req.statusText }}</span>
           </div>
         </div>
       </div>
 
       <div class="strategy-stats">
-        <div class="stats-title">📊 负载分布统计</div>
+        <div class="stats-title">
+          📊 负载分布统计
+        </div>
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-value">{{ avgLoad }}%</div>
-            <div class="stat-label">平均负载</div>
+            <div class="stat-value">
+              {{ avgLoad }}%
+            </div>
+            <div class="stat-label">
+              平均负载
+            </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value">{{ maxLoad }}%</div>
-            <div class="stat-label">最高负载</div>
+            <div class="stat-value">
+              {{ maxLoad }}%
+            </div>
+            <div class="stat-label">
+              最高负载
+            </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value">{{ loadStdDev }}</div>
-            <div class="stat-label">负载标准差</div>
+            <div class="stat-value">
+              {{ loadStdDev }}
+            </div>
+            <div class="stat-label">
+              负载标准差
+            </div>
           </div>
           <div class="stat-card">
-            <div class="stat-value">{{ mostBusyServer || '-' }}</div>
-            <div class="stat-label">最忙服务器</div>
+            <div class="stat-value">
+              {{ mostBusyServer || '-' }}
+            </div>
+            <div class="stat-label">
+              最忙服务器
+            </div>
           </div>
         </div>
       </div>

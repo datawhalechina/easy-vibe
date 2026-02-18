@@ -5,8 +5,12 @@
 <template>
   <div class="reverse-proxy-demo">
     <div class="header">
-      <div class="title">🔄 反向代理 vs 正向代理</div>
-      <div class="subtitle">一句话区分：正向代理是"客户端的代理"，反向代理是"服务器的代理"</div>
+      <div class="title">
+        🔄 反向代理 vs 正向代理
+      </div>
+      <div class="subtitle">
+        一句话区分：正向代理是"客户端的代理"，反向代理是"服务器的代理"
+      </div>
     </div>
 
     <div class="mode-selector">
@@ -25,52 +29,104 @@
     </div>
 
     <div class="flow-container">
-      <div class="flow-row" v-if="mode === 'forward'">
+      <div
+        v-if="mode === 'forward'"
+        class="flow-row"
+      >
         <div class="flow-card client">
-          <div class="icon">👤</div>
-          <div class="label">用户 (想翻墙)</div>
+          <div class="icon">
+            👤
+          </div>
+          <div class="label">
+            用户 (想翻墙)
+          </div>
         </div>
         <div class="arrow-box">
-          <div class="arrow">→</div>
-          <div class="note">发给代理</div>
+          <div class="arrow">
+            →
+          </div>
+          <div class="note">
+            发给代理
+          </div>
         </div>
         <div class="flow-card proxy forward">
-          <div class="icon">🔓</div>
-          <div class="label">正向代理 (VPN/SS)</div>
-          <div class="tag">代理客户端</div>
+          <div class="icon">
+            🔓
+          </div>
+          <div class="label">
+            正向代理 (VPN/SS)
+          </div>
+          <div class="tag">
+            代理客户端
+          </div>
         </div>
         <div class="arrow-box">
-          <div class="arrow">→</div>
-          <div class="note">转发请求</div>
+          <div class="arrow">
+            →
+          </div>
+          <div class="note">
+            转发请求
+          </div>
         </div>
         <div class="flow-card target">
-          <div class="icon">🌐</div>
-          <div class="label">目标网站 (Google)</div>
+          <div class="icon">
+            🌐
+          </div>
+          <div class="label">
+            目标网站 (Google)
+          </div>
         </div>
       </div>
 
-      <div class="flow-row" v-if="mode === 'reverse'">
+      <div
+        v-if="mode === 'reverse'"
+        class="flow-row"
+      >
         <div class="flow-card client">
-          <div class="icon">👤</div>
-          <div class="label">用户 (浏览器)</div>
+          <div class="icon">
+            👤
+          </div>
+          <div class="label">
+            用户 (浏览器)
+          </div>
         </div>
         <div class="arrow-box">
-          <div class="arrow">→</div>
-          <div class="note">访问域名</div>
+          <div class="arrow">
+            →
+          </div>
+          <div class="note">
+            访问域名
+          </div>
         </div>
         <div class="flow-card proxy reverse">
-          <div class="icon">🛡️</div>
-          <div class="label">反向代理 (Nginx)</div>
-          <div class="tag">代理服务器</div>
+          <div class="icon">
+            🛡️
+          </div>
+          <div class="label">
+            反向代理 (Nginx)
+          </div>
+          <div class="tag">
+            代理服务器
+          </div>
         </div>
         <div class="arrow-box">
-          <div class="arrow">→</div>
-          <div class="note">负载均衡</div>
+          <div class="arrow">
+            →
+          </div>
+          <div class="note">
+            负载均衡
+          </div>
         </div>
         <div class="flow-card server">
-          <div class="icon">⚙️</div>
-          <div class="label">后端服务器集群</div>
-          <div class="sub-label">Web1 | Web2 | Web3</div>
+          <div class="icon">
+            ⚙️
+          </div>
+          <div class="label">
+            后端服务器集群
+          </div>
+          <div class="sub-label">
+            Web1 | Web2 | Web3
+          </div>
         </div>
       </div>
     </div>
@@ -81,19 +137,33 @@
           {{ mode === 'forward' ? '🔓 正向代理特点' : '🛡️ 反向代理特点' }}
         </div>
         <ul class="detail-list">
-          <li v-for="(item, index) in currentFeatures" :key="index">{{ item }}</li>
+          <li
+            v-for="(item, index) in currentFeatures"
+            :key="index"
+          >
+            {{ item }}
+          </li>
         </ul>
       </div>
       <div class="detail-card">
-        <div class="detail-title">💡 典型使用场景</div>
+        <div class="detail-title">
+          💡 典型使用场景
+        </div>
         <ul class="detail-list">
-          <li v-for="(item, index) in currentScenarios" :key="index">{{ item }}</li>
+          <li
+            v-for="(item, index) in currentScenarios"
+            :key="index"
+          >
+            {{ item }}
+          </li>
         </ul>
       </div>
     </div>
 
     <div class="memory-trick">
-      <div class="trick-title">🧠 记忆口诀</div>
+      <div class="trick-title">
+        🧠 记忆口诀
+      </div>
       <div class="trick-content">
         <p v-if="mode === 'forward'">
           <strong>"正向代理 = 代理客户端"</strong> —— 客户端知情，服务器只知道代理IP

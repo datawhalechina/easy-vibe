@@ -7,7 +7,9 @@
     <div class="comparison">
       <!-- Left: CSS Rules -->
       <div class="column css-col">
-        <div class="col-title">CSS (样式表)</div>
+        <div class="col-title">
+          CSS (样式表)
+        </div>
         <div class="rules-list">
           <div
             class="rule-item"
@@ -15,8 +17,12 @@
             @mouseenter="activeType = 'tag'"
             @mouseleave="activeType = null"
           >
-            <div class="selector">p</div>
-            <div class="block">{ color: #333; }</div>
+            <div class="selector">
+              p
+            </div>
+            <div class="block">
+              { color: #333; }
+            </div>
             <div class="explanation">
               <span class="badge tag">标签选择器</span>
               直接写标签名，选中所有 <code>&lt;p&gt;</code>
@@ -29,8 +35,12 @@
             @mouseenter="activeType = 'class'"
             @mouseleave="activeType = null"
           >
-            <div class="selector">.card</div>
-            <div class="block">{ background: white; }</div>
+            <div class="selector">
+              .card
+            </div>
+            <div class="block">
+              { background: white; }
+            </div>
             <div class="explanation">
               <span class="badge class">类选择器</span>
               以 <code>.</code> 开头，选中所有 <code>class="card"</code>
@@ -43,8 +53,12 @@
             @mouseenter="activeType = 'id'"
             @mouseleave="activeType = null"
           >
-            <div class="selector">#submit-btn</div>
-            <div class="block">{ font-weight: bold; }</div>
+            <div class="selector">
+              #submit-btn
+            </div>
+            <div class="block">
+              { font-weight: bold; }
+            </div>
             <div class="explanation">
               <span class="badge id">ID 选择器</span>
               以 <code>#</code> 开头，选中唯一 <code>id="submit-btn"</code>
@@ -55,19 +69,32 @@
 
       <!-- Center: Connector -->
       <div class="connector">
-        <div class="line-path" :class="activeType"></div>
-        <div class="icon">🔗</div>
+        <div
+          class="line-path"
+          :class="activeType"
+        />
+        <div class="icon">
+          🔗
+        </div>
       </div>
 
       <!-- Right: HTML Structure -->
       <div class="column html-col">
-        <div class="col-title">HTML (结构)</div>
+        <div class="col-title">
+          HTML (结构)
+        </div>
         <div class="code-view">
-          <div class="html-line" :class="{ highlight: activeType === 'tag' }">
+          <div
+            class="html-line"
+            :class="{ highlight: activeType === 'tag' }"
+          >
             &lt;p&gt;我是普通段落&lt;/p&gt;
           </div>
 
-          <div class="html-line" :class="{ highlight: activeType === 'class' }">
+          <div
+            class="html-line"
+            :class="{ highlight: activeType === 'class' }"
+          >
             &lt;div <span class="attr">class="card"</span>&gt;
           </div>
 
@@ -80,11 +107,17 @@
             &lt;p&gt;我是卡片里的段落&lt;/p&gt;
           </div>
 
-          <div class="html-line" :class="{ highlight: activeType === 'class' }">
+          <div
+            class="html-line"
+            :class="{ highlight: activeType === 'class' }"
+          >
             &lt;/div&gt;
           </div>
 
-          <div class="html-line" :class="{ highlight: activeType === 'id' }">
+          <div
+            class="html-line"
+            :class="{ highlight: activeType === 'id' }"
+          >
             &lt;button
             <span class="attr">id="submit-btn"</span>&gt;提交&lt;/button&gt;
           </div>

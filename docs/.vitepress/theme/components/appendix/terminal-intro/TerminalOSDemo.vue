@@ -12,34 +12,43 @@
       </button>
     </div>
 
-    <div class="terminal-window" :class="currentOS">
+    <div
+      class="terminal-window"
+      :class="currentOS"
+    >
       <div class="window-bar">
         <div class="window-buttons">
-          <span class="btn close"></span>
-          <span class="btn minimize"></span>
-          <span class="btn maximize"></span>
+          <span class="btn close" />
+          <span class="btn minimize" />
+          <span class="btn maximize" />
         </div>
-        <div class="window-title">{{ currentOSConfig.title }}</div>
+        <div class="window-title">
+          {{ currentOSConfig.title }}
+        </div>
         <div class="window-controls">
-          <button class="control-btn" @click="resetDemo" title="Reset">
+          <button
+            class="control-btn"
+            title="Reset"
+            @click="resetDemo"
+          >
             ↺
           </button>
         </div>
       </div>
       <div
         class="terminal-content"
-        @click="nextStep"
         :class="{ clickable: !isTyping && !isFinished }"
+        @click="nextStep"
       >
         <!-- Start Overlay -->
         <div
-          class="start-overlay"
           v-if="
             lines.length === 0 ||
-            (lines.length === 1 &&
-              lines[0].content === '' &&
-              currentStepIndex === -1)
+              (lines.length === 1 &&
+                lines[0].content === '' &&
+                currentStepIndex === -1)
           "
+          class="start-overlay"
         >
           <div class="start-hint">
             <span class="icon">👆</span>
@@ -48,17 +57,26 @@
         </div>
 
         <!-- Completed Overlay -->
-        <div class="completed-overlay" v-if="isFinished">
-          <div class="completed-hint" @click.stop="resetDemo">
+        <div
+          v-if="isFinished"
+          class="completed-overlay"
+        >
+          <div
+            class="completed-hint"
+            @click.stop="resetDemo"
+          >
             <span class="icon">✅</span>
             <span class="text">演示结束，点击重置 / Finished (Reset)</span>
           </div>
         </div>
 
-        <div v-for="(line, index) in lines" :key="index" class="line">
+        <div
+          v-for="(line, index) in lines"
+          :key="index"
+          class="line"
+        >
           <template v-if="line.type === 'input'">
-            <span class="prompt">{{ line.prompt }}</span
-            ><span class="cmd-text">{{ line.content }}</span>
+            <span class="prompt">{{ line.prompt }}</span><span class="cmd-text">{{ line.content }}</span>
           </template>
           <template v-else>
             <span class="output-text">{{ line.content }}</span>
@@ -67,25 +85,33 @@
 
         <!-- Active Input Line (when not animating or just waiting) -->
         <div
-          class="line input-line"
           v-if="
             lines.length === 0 ||
-            (!isTyping &&
-              lines[lines.length - 1].type !== 'input' &&
-              !isFinished)
+              (!isTyping &&
+                lines[lines.length - 1].type !== 'input' &&
+                !isFinished)
           "
+          class="line input-line"
         >
           <span class="prompt">{{ currentOSConfig.prompt }}</span>
           <span class="cursor">_</span>
-          <span v-if="lines.length === 0" class="hint">
-            (点击屏幕继续 / Click screen to continue)</span
+          <span
+            v-if="lines.length === 0"
+            class="hint"
           >
-          <span v-else class="hint blink-hint"> ⏎ </span>
+            (点击屏幕继续 / Click screen to continue)</span>
+          <span
+            v-else
+            class="hint blink-hint"
+          > ⏎ </span>
         </div>
       </div>
 
       <!-- Explanation Bar -->
-      <div class="explanation-bar" :class="{ visible: currentExplanation }">
+      <div
+        class="explanation-bar"
+        :class="{ visible: currentExplanation }"
+      >
         <span class="icon">💡</span>
         <span class="text">{{ currentExplanation }}</span>
       </div>

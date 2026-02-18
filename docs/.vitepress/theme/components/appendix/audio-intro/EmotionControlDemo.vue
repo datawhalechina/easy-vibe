@@ -24,7 +24,9 @@
       <div class="demo-content">
         <!-- 情感选择 -->
         <div class="emotion-selector">
-          <div class="selector-title">选择情感风格</div>
+          <div class="selector-title">
+            选择情感风格
+          </div>
           <div class="emotion-grid">
             <div
               v-for="emotion in emotions"
@@ -33,16 +35,24 @@
               :class="{ active: selectedEmotion === emotion.id }"
               @click="selectEmotion(emotion.id)"
             >
-              <div class="emotion-emoji">{{ emotion.emoji }}</div>
-              <div class="emotion-name">{{ emotion.name }}</div>
-              <div class="emotion-desc">{{ emotion.description }}</div>
+              <div class="emotion-emoji">
+                {{ emotion.emoji }}
+              </div>
+              <div class="emotion-name">
+                {{ emotion.name }}
+              </div>
+              <div class="emotion-desc">
+                {{ emotion.description }}
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 情感向量可视化 -->
         <div class="emotion-embedding">
-          <div class="embedding-title">情感向量空间 (Emotion Embedding)</div>
+          <div class="embedding-title">
+            情感向量空间 (Emotion Embedding)
+          </div>
           <canvas
             ref="emotionCanvas"
             width="400"
@@ -66,14 +76,23 @@
 
         <!-- 参数控制 -->
         <div class="parameter-controls">
-          <div class="control-title">🎚️ 细粒度控制</div>
+          <div class="control-title">
+            🎚️ 细粒度控制
+          </div>
           <div class="controls-grid">
             <div class="control-item">
               <div class="control-label">
                 <span>语速</span>
-                <el-tag size="small">{{ speed }}x</el-tag>
+                <el-tag size="small">
+                  {{ speed }}x
+                </el-tag>
               </div>
-              <el-slider v-model="speed" :min="0.5" :max="2" :step="0.1" />
+              <el-slider
+                v-model="speed"
+                :min="0.5"
+                :max="2"
+                :step="0.1"
+              />
               <div class="control-hint">
                 <span>慢</span>
                 <span>正常</span>
@@ -84,9 +103,16 @@
             <div class="control-item">
               <div class="control-label">
                 <span>音调</span>
-                <el-tag size="small">{{ pitch > 0 ? '+' : '' }}{{ pitch }}</el-tag>
+                <el-tag size="small">
+                  {{ pitch > 0 ? '+' : '' }}{{ pitch }}
+                </el-tag>
               </div>
-              <el-slider v-model="pitch" :min="-10" :max="10" :step="1" />
+              <el-slider
+                v-model="pitch"
+                :min="-10"
+                :max="10"
+                :step="1"
+              />
               <div class="control-hint">
                 <span>低</span>
                 <span>正常</span>
@@ -97,9 +123,16 @@
             <div class="control-item">
               <div class="control-label">
                 <span>音量动态</span>
-                <el-tag size="small">{{ energy }}%</el-tag>
+                <el-tag size="small">
+                  {{ energy }}%
+                </el-tag>
               </div>
-              <el-slider v-model="energy" :min="50" :max="150" :step="5" />
+              <el-slider
+                v-model="energy"
+                :min="50"
+                :max="150"
+                :step="5"
+              />
               <div class="control-hint">
                 <span>柔和</span>
                 <span>适中</span>
@@ -110,9 +143,16 @@
             <div class="control-item">
               <div class="control-label">
                 <span>停顿控制</span>
-                <el-tag size="small">{{ pause }}ms</el-tag>
+                <el-tag size="small">
+                  {{ pause }}ms
+                </el-tag>
               </div>
-              <el-slider v-model="pause" :min="0" :max="500" :step="50" />
+              <el-slider
+                v-model="pause"
+                :min="0"
+                :max="500"
+                :step="50"
+              />
               <div class="control-hint">
                 <span>紧凑</span>
                 <span>自然</span>
@@ -124,7 +164,9 @@
 
         <!-- 文本输入和预览 -->
         <div class="preview-section">
-          <div class="preview-title">🎙️ 预览合成</div>
+          <div class="preview-title">
+            🎙️ 预览合成
+          </div>
           <el-input
             v-model="previewText"
             type="textarea"
@@ -133,7 +175,10 @@
             class="preview-input"
           />
           <div class="preview-actions">
-            <el-button type="primary" @click="synthesize">
+            <el-button
+              type="primary"
+              @click="synthesize"
+            >
               <el-icon><VideoPlay /></el-icon>
               合成预览
             </el-button>

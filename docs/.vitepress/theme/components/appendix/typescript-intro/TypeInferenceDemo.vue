@@ -107,7 +107,9 @@ const codeComparisons = ref([
       <!-- 概念说明 -->
       <div class="concept-section">
         <div class="concept-card">
-          <div class="concept-icon">🧠</div>
+          <div class="concept-icon">
+            🧠
+          </div>
           <div class="concept-content">
             <h4>什么是类型推断？</h4>
             <p>TypeScript 很聪明，它能根据你写的代码自动推断出变量的类型，不需要每次都手动标注。</p>
@@ -125,8 +127,12 @@ const codeComparisons = ref([
             :class="['example-card', { active: currentExample.id === example.id }]"
             @click="selectExample(example)"
           >
-            <div class="example-code">{{ example.code }}</div>
-            <div class="example-type">→ {{ example.inferredType }}</div>
+            <div class="example-code">
+              {{ example.code }}
+            </div>
+            <div class="example-type">
+              → {{ example.inferredType }}
+            </div>
           </div>
         </div>
       </div>
@@ -142,20 +148,28 @@ const codeComparisons = ref([
             <pre><code class="typescript">{{ currentExample.code }}</code></pre>
           </div>
 
-          <div class="inference-arrow">→</div>
+          <div class="inference-arrow">
+            →
+          </div>
 
           <div class="type-panel">
             <div class="panel-header">
               <span class="type-icon">🏷️</span>
               <span>推断的类型</span>
             </div>
-            <div class="inferred-type">{{ currentExample.inferredType }}</div>
+            <div class="inferred-type">
+              {{ currentExample.inferredType }}
+            </div>
           </div>
         </div>
 
         <div class="explanation">
-          <div class="explanation-icon">💡</div>
-          <div class="explanation-text">{{ currentExample.explanation }}</div>
+          <div class="explanation-icon">
+            💡
+          </div>
+          <div class="explanation-text">
+            {{ currentExample.explanation }}
+          </div>
         </div>
       </div>
 
@@ -169,10 +183,16 @@ const codeComparisons = ref([
 
       <!-- 操作按钮 -->
       <div class="controls">
-        <button @click="tryTypeError" class="btn-danger">
+        <button
+          class="btn-danger"
+          @click="tryTypeError"
+        >
           尝试类型错误
         </button>
-        <button @click="showError = false; errorMessage = ''" class="btn-secondary">
+        <button
+          class="btn-secondary"
+          @click="showError = false; errorMessage = ''"
+        >
           清除消息
         </button>
       </div>
@@ -186,9 +206,14 @@ const codeComparisons = ref([
             :key="index"
             class="practice-card"
           >
-            <div class="practice-header">{{ practice.title }}</div>
+            <div class="practice-header">
+              {{ practice.title }}
+            </div>
             <ul class="practice-list">
-              <li v-for="(item, i) in practice.items" :key="i">
+              <li
+                v-for="(item, i) in practice.items"
+                :key="i"
+              >
                 {{ item }}
               </li>
             </ul>
@@ -204,14 +229,20 @@ const codeComparisons = ref([
           :key="index"
           class="comparison-item"
         >
-          <div class="comparison-scenario">{{ comparison.scenario }}</div>
+          <div class="comparison-scenario">
+            {{ comparison.scenario }}
+          </div>
           <div class="comparison-codes">
             <div class="comparison-code">
-              <div class="code-label">使用推断</div>
+              <div class="code-label">
+                使用推断
+              </div>
               <pre><code class="typescript">{{ comparison.withInference }}</code></pre>
             </div>
             <div class="comparison-code">
-              <div class="code-label">显式注解</div>
+              <div class="code-label">
+                显式注解
+              </div>
               <pre><code class="typescript">{{ comparison.withAnnotation }}</code></pre>
             </div>
           </div>

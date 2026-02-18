@@ -22,184 +22,295 @@
         </p>
       </div>
 
-    <!-- 模式选择 -->
-    <div class="mode-selector">
-      <div
-        class="mode-card"
-        :class="{ active: mode === 'mpa' }"
-        @click="switchMode('mpa')"
-      >
-        <div class="mode-icon">📚</div>
-        <div class="mode-name">MPA 多页应用</div>
-        <div class="mode-sub">通俗说法: 像翻书</div>
-        <div class="mode-desc">每点一次链接，浏览器向服务器要新页面</div>
+      <!-- 模式选择 -->
+      <div class="mode-selector">
+        <div
+          class="mode-card"
+          :class="{ active: mode === 'mpa' }"
+          @click="switchMode('mpa')"
+        >
+          <div class="mode-icon">
+            📚
+          </div>
+          <div class="mode-name">
+            MPA 多页应用
+          </div>
+          <div class="mode-sub">
+            通俗说法: 像翻书
+          </div>
+          <div class="mode-desc">
+            每点一次链接，浏览器向服务器要新页面
+          </div>
+        </div>
+
+        <div class="vs-divider">
+          VS
+        </div>
+
+        <div
+          class="mode-card"
+          :class="{ active: mode === 'spa' }"
+          @click="switchMode('spa')"
+        >
+          <div class="mode-icon">
+            📄
+          </div>
+          <div class="mode-name">
+            SPA 单页应用
+          </div>
+          <div class="mode-sub">
+            通俗说法: 像换纸
+          </div>
+          <div class="mode-desc">
+            只加载一次，后续只切换内容
+          </div>
+        </div>
       </div>
 
-      <div class="vs-divider">VS</div>
+      <!-- 动画演示 -->
+      <div class="demo-area">
+        <div class="demo-header">
+          <span>当前模式：</span>
+          <span
+            class="mode-badge"
+            :class="mode"
+          >{{ mode === 'mpa' ? 'MPA 多页应用' : 'SPA 单页应用' }}</span>
+        </div>
 
-      <div
-        class="mode-card"
-        :class="{ active: mode === 'spa' }"
-        @click="switchMode('spa')"
-      >
-        <div class="mode-icon">📄</div>
-        <div class="mode-name">SPA 单页应用</div>
-        <div class="mode-sub">通俗说法: 像换纸</div>
-        <div class="mode-desc">只加载一次，后续只切换内容</div>
-      </div>
-    </div>
+        <!-- 场景模拟 -->
+        <div class="scene-container">
+          <!-- 书架（服务器） -->
+          <div class="server-side">
+            <div class="server-icon">
+              📚
+            </div>
+            <div class="server-label">
+              书架（服务器）
+            </div>
+            <div class="books-shelf">
+              <div
+                v-for="page in pages"
+                :key="page.id"
+                class="book-item"
+                :class="{
+                  active: currentPage === page.id,
+                  loading: mode === 'mpa' && isLoading && page.id === targetPage
+                }"
+              >
+                {{ page.emoji }}
+              </div>
+            </div>
+          </div>
 
-    <!-- 动画演示 -->
-    <div class="demo-area">
-      <div class="demo-header">
-        <span>当前模式：</span>
-        <span class="mode-badge" :class="mode">{{ mode === 'mpa' ? 'MPA 多页应用' : 'SPA 单页应用' }}</span>
-      </div>
-
-      <!-- 场景模拟 -->
-      <div class="scene-container">
-        <!-- 书架（服务器） -->
-        <div class="server-side">
-          <div class="server-icon">📚</div>
-          <div class="server-label">书架（服务器）</div>
-          <div class="books-shelf">
+          <!-- 传输过程 -->
+          <div class="transfer-area">
             <div
+              v-if="mode === 'mpa' && isLoading"
+              class="transfer-animation"
+            >
+              <div class="transfer-icon">
+                {{ pages.find(p => p.id === targetPage)?.emoji }}
+              </div>
+              <div class="transfer-arrow">
+                →
+              </div>
+            </div>
+            <div
+              v-else
+              class="transfer-placeholder"
+            >
+              <span>{{ mode === 'mpa' ? '点击页面传输' : '无需传输' }}</span>
+            </div>
+          </div>
+
+          <!-- 阅读区（浏览器） -->
+          <div class="browser-side">
+            <div class="browser-icon">
+              📖
+            </div>
+            <div class="browser-label">
+              阅读区（浏览器）
+            </div>
+            <div class="reading-paper">
+              <Transition
+                :name="mode === 'mpa' ? 'page-flip' : 'content-fade'"
+                mode="out-in"
+              >
+                <div
+                  :key="currentPage"
+                  class="page-content"
+                >
+                  <div class="page-emoji">
+                    {{ getCurrentPage.emoji }}
+                  </div>
+                  <div class="page-title">
+                    {{ getCurrentPage.title }}
+                  </div>
+                  <div class="page-text">
+                    {{ getCurrentPage.content }}
+                  </div>
+                </div>
+              </Transition>
+
+              <!-- 状态保留测试 -->
+              <div class="state-test">
+                <div class="test-label">
+                  ✏️ 状态保留测试：
+                </div>
+                <input
+                  v-model="userInput"
+                  type="text"
+                  placeholder="在这里输入文字，然后切换页面..."
+                  class="test-input"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 导航控制 -->
+        <div class="navigation-controls">
+          <div class="nav-label">
+            切换页面：
+          </div>
+          <div class="nav-buttons">
+            <button
               v-for="page in pages"
               :key="page.id"
-              class="book-item"
-              :class="{
-                active: currentPage === page.id,
-                loading: mode === 'mpa' && isLoading && page.id === targetPage
-              }"
+              class="nav-btn"
+              :class="{ active: currentPage === page.id }"
+              :disabled="isLoading"
+              @click="navigateTo(page.id)"
             >
-              {{ page.emoji }}
-            </div>
+              {{ page.emoji }} {{ page.title }}
+            </button>
           </div>
         </div>
 
-        <!-- 传输过程 -->
-        <div class="transfer-area">
-          <div v-if="mode === 'mpa' && isLoading" class="transfer-animation">
-            <div class="transfer-icon">{{ pages.find(p => p.id === targetPage)?.emoji }}</div>
-            <div class="transfer-arrow">→</div>
-          </div>
-          <div v-else class="transfer-placeholder">
-            <span>{{ mode === 'mpa' ? '点击页面传输' : '无需传输' }}</span>
-          </div>
-        </div>
-
-        <!-- 阅读区（浏览器） -->
-        <div class="browser-side">
-          <div class="browser-icon">📖</div>
-          <div class="browser-label">阅读区（浏览器）</div>
-          <div class="reading-paper">
-            <Transition :name="mode === 'mpa' ? 'page-flip' : 'content-fade'" mode="out-in">
-              <div :key="currentPage" class="page-content">
-                <div class="page-emoji">{{ getCurrentPage.emoji }}</div>
-                <div class="page-title">{{ getCurrentPage.title }}</div>
-                <div class="page-text">{{ getCurrentPage.content }}</div>
-              </div>
-            </Transition>
-
-            <!-- 状态保留测试 -->
-            <div class="state-test">
-              <div class="test-label">✏️ 状态保留测试：</div>
-              <input
-                v-model="userInput"
-                type="text"
-                placeholder="在这里输入文字，然后切换页面..."
-                class="test-input"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 导航控制 -->
-      <div class="navigation-controls">
-        <div class="nav-label">切换页面：</div>
-        <div class="nav-buttons">
-          <button
-            v-for="page in pages"
-            :key="page.id"
-            class="nav-btn"
-            :class="{ active: currentPage === page.id }"
-            @click="navigateTo(page.id)"
-            :disabled="isLoading"
+        <!-- 状态指示 -->
+        <div class="status-indicator">
+          <div
+            v-if="mode === 'mpa'"
+            class="status-text mpa"
           >
-            {{ page.emoji }} {{ page.title }}
-          </button>
+            <span class="status-icon">📚</span>
+            <span>每次切换都要从书架拿新书（服务器请求）</span>
+          </div>
+          <div
+            v-else
+            class="status-text spa"
+          >
+            <span class="status-icon">⚡</span>
+            <span>内容已经下载好了，切换不需要再拿（前端路由）</span>
+          </div>
         </div>
       </div>
 
-      <!-- 状态指示 -->
-      <div class="status-indicator">
-        <div v-if="mode === 'mpa'" class="status-text mpa">
-          <span class="status-icon">📚</span>
-          <span>每次切换都要从书架拿新书（服务器请求）</span>
+      <!-- 对比表格 -->
+      <div class="comparison-table">
+        <div class="table-title">
+          📊 MPA vs SPA 对比
         </div>
-        <div v-else class="status-text spa">
-          <span class="status-icon">⚡</span>
-          <span>内容已经下载好了，切换不需要再拿（前端路由）</span>
+        <div class="table-content">
+          <div class="comparison-row header">
+            <div class="col-feature">
+              特点
+            </div>
+            <div class="col-mpa">
+              MPA 多页应用
+            </div>
+            <div class="col-spa">
+              SPA 单页应用
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              比喻
+            </div>
+            <div class="col-mpa">
+              翻书：每翻一页换一本书
+            </div>
+            <div class="col-spa">
+              换纸：同一本书里换内容
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              页面切换
+            </div>
+            <div class="col-mpa">
+              每次都重新加载整个页面
+            </div>
+            <div class="col-spa">
+              只加载一次，后续只切换内容
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              速度体验
+            </div>
+            <div class="col-mpa">
+              每次都有"白屏-加载"的过程
+            </div>
+            <div class="col-spa">
+              页面切换流畅，无白屏
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              状态保留
+            </div>
+            <div class="col-mpa">
+              切换页面后，输入的内容会丢失
+            </div>
+            <div class="col-spa">
+              切换页面后，输入的内容还在
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              搜索引擎
+            </div>
+            <div class="col-mpa">
+              容易被搜索到（SEO 友好）
+            </div>
+            <div class="col-spa">
+              需要额外处理才能被搜索到
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              首屏加载
+            </div>
+            <div class="col-mpa">
+              服务器直接给 HTML，首屏快
+            </div>
+            <div class="col-spa">
+              需要先下载 JS，首屏可能慢
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="col-feature">
+              适合场景
+            </div>
+            <div class="col-mpa">
+              博客、新闻、企业官网
+            </div>
+            <div class="col-spa">
+              淘宝、网易云音乐、后台系统
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- 对比表格 -->
-    <div class="comparison-table">
-      <div class="table-title">📊 MPA vs SPA 对比</div>
-      <div class="table-content">
-        <div class="comparison-row header">
-          <div class="col-feature">特点</div>
-          <div class="col-mpa">MPA 多页应用</div>
-          <div class="col-spa">SPA 单页应用</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">比喻</div>
-          <div class="col-mpa">翻书：每翻一页换一本书</div>
-          <div class="col-spa">换纸：同一本书里换内容</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">页面切换</div>
-          <div class="col-mpa">每次都重新加载整个页面</div>
-          <div class="col-spa">只加载一次，后续只切换内容</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">速度体验</div>
-          <div class="col-mpa">每次都有"白屏-加载"的过程</div>
-          <div class="col-spa">页面切换流畅，无白屏</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">状态保留</div>
-          <div class="col-mpa">切换页面后，输入的内容会丢失</div>
-          <div class="col-spa">切换页面后，输入的内容还在</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">搜索引擎</div>
-          <div class="col-mpa">容易被搜索到（SEO 友好）</div>
-          <div class="col-spa">需要额外处理才能被搜索到</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">首屏加载</div>
-          <div class="col-mpa">服务器直接给 HTML，首屏快</div>
-          <div class="col-spa">需要先下载 JS，首屏可能慢</div>
-        </div>
-        <div class="comparison-row">
-          <div class="col-feature">适合场景</div>
-          <div class="col-mpa">博客、新闻、企业官网</div>
-          <div class="col-spa">淘宝、网易云音乐、后台系统</div>
-        </div>
+      <!-- 核心要点 -->
+      <div class="info-box">
+        <span class="icon">💡</span>
+        <strong>核心思想：</strong>
+        <strong>MPA</strong> 每次切换都要"整页刷新"，像翻书，适合内容为主的网站；
+        <strong>SPA</strong> 只加载一次，后续"局部更新"，像换纸，适合交互复杂的应用。
+        关键是：<strong>状态会不会丢</strong>。
       </div>
-    </div>
-
-    <!-- 核心要点 -->
-    <div class="info-box">
-      <span class="icon">💡</span>
-      <strong>核心思想：</strong>
-      <strong>MPA</strong> 每次切换都要"整页刷新"，像翻书，适合内容为主的网站；
-      <strong>SPA</strong> 只加载一次，后续"局部更新"，像换纸，适合交互复杂的应用。
-      关键是：<strong>状态会不会丢</strong>。
-    </div>
     </div>
   </div>
 </template>

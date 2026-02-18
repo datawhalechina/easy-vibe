@@ -8,55 +8,94 @@
 
     <div class="demo-content">
       <div class="timeline">
-        <div class="timeline-item" v-for="(era, i) in eras" :key="i">
-          <div class="era-year">{{ era.year }}</div>
+        <div
+          v-for="(era, i) in eras"
+          :key="i"
+          class="timeline-item"
+        >
+          <div class="era-year">
+            {{ era.year }}
+          </div>
           <div class="era-content">
-            <div class="era-name">{{ era.name }}</div>
-            <div class="era-langs">{{ era.languages.join(' → ') }}</div>
-            <div class="era-desc">{{ era.desc }}</div>
+            <div class="era-name">
+              {{ era.name }}
+            </div>
+            <div class="era-langs">
+              {{ era.languages.join(' → ') }}
+            </div>
+            <div class="era-desc">
+              {{ era.desc }}
+            </div>
           </div>
         </div>
       </div>
 
       <div class="paradigm-section">
-        <div class="section-title">编程范式</div>
+        <div class="section-title">
+          编程范式
+        </div>
         <div class="paradigm-tabs">
           <button 
             v-for="p in paradigms" 
             :key="p.name"
             :class="['tab-btn', { active: activeParadigm === p.name }]"
             @click="activeParadigm = p.name"
-          >{{ p.name }}</button>
+          >
+            {{ p.name }}
+          </button>
         </div>
-        <div class="paradigm-content" v-if="currentParadigm">
-          <div class="paradigm-desc">{{ currentParadigm.desc }}</div>
+        <div
+          v-if="currentParadigm"
+          class="paradigm-content"
+        >
+          <div class="paradigm-desc">
+            {{ currentParadigm.desc }}
+          </div>
           <div class="paradigm-langs">
             <span class="label">代表语言：</span>
-            <span v-for="lang in currentParadigm.languages" :key="lang" class="lang-tag">{{ lang }}</span>
+            <span
+              v-for="lang in currentParadigm.languages"
+              :key="lang"
+              class="lang-tag"
+            >{{ lang }}</span>
           </div>
           <div class="paradigm-example">
-            <div class="example-label">代码示例</div>
+            <div class="example-label">
+              代码示例
+            </div>
             <pre><code>{{ currentParadigm.example }}</code></pre>
           </div>
         </div>
       </div>
 
       <div class="type-section">
-        <div class="section-title">类型系统分类</div>
+        <div class="section-title">
+          类型系统分类
+        </div>
         <div class="type-grid">
-          <div class="type-card" v-for="t in typeCategories" :key="t.name">
+          <div
+            v-for="t in typeCategories"
+            :key="t.name"
+            class="type-card"
+          >
             <div class="card-header">
               <span class="card-name">{{ t.name }}</span>
               <span class="card-type">{{ t.type }}</span>
             </div>
-            <div class="card-desc">{{ t.desc }}</div>
-            <div class="card-examples">{{ t.examples.join(', ') }}</div>
+            <div class="card-desc">
+              {{ t.desc }}
+            </div>
+            <div class="card-examples">
+              {{ t.examples.join(', ') }}
+            </div>
           </div>
         </div>
       </div>
 
       <div class="comparison-table">
-        <div class="table-title">语言特性对比</div>
+        <div class="table-title">
+          语言特性对比
+        </div>
         <table>
           <thead>
             <tr>
@@ -68,8 +107,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="lang in languageComparison" :key="lang.name">
-              <td class="lang-name">{{ lang.name }}</td>
+            <tr
+              v-for="lang in languageComparison"
+              :key="lang.name"
+            >
+              <td class="lang-name">
+                {{ lang.name }}
+              </td>
               <td>{{ lang.type }}</td>
               <td>{{ lang.paradigm }}</td>
               <td>{{ lang.runtime }}</td>

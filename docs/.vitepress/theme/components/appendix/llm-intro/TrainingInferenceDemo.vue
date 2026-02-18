@@ -19,11 +19,13 @@
 
     <div class="demo-content">
       <!-- Tab 1: 基础能力 - 文本续写 -->
-      <div v-if="currentTab === 'completion'" class="mode-view">
+      <div
+        v-if="currentTab === 'completion'"
+        class="mode-view"
+      >
         <div class="desc-box">
           <p>
-            <strong>LLM 的本能是“续写”</strong
-            >：它并不懂对话，只是根据上文猜下一个词。
+            <strong>LLM 的本能是“续写”</strong>：它并不懂对话，只是根据上文猜下一个词。
           </p>
         </div>
 
@@ -31,15 +33,15 @@
           <div class="input-row">
             <span class="prompt-label">Prompt (提示词):</span>
             <input
-              type="text"
               v-model="completionInput"
+              type="text"
               placeholder="Enter text..."
               :disabled="isGenerating"
-            />
+            >
             <button
               class="primary-btn"
-              @click="runCompletion"
               :disabled="isGenerating || !completionInput"
+              @click="runCompletion"
             >
               ✨ Generate
             </button>
@@ -48,17 +50,26 @@
           <div class="result-box">
             <span class="user-text">{{ completionInput }}</span>
             <span class="ai-text typing">{{ completionOutput }}</span>
-            <span v-if="isGenerating" class="cursor">|</span>
+            <span
+              v-if="isGenerating"
+              class="cursor"
+            >|</span>
           </div>
 
-          <div class="explanation" v-if="completionOutput">
+          <div
+            v-if="completionOutput"
+            class="explanation"
+          >
             💡 模型在计算概率：<code>P(blue | The sky is) = 90%</code>
           </div>
         </div>
       </div>
 
       <!-- Tab 2: 技巧 - 对话原理 (Template) -->
-      <div v-if="currentTab === 'chat'" class="mode-view">
+      <div
+        v-if="currentTab === 'chat'"
+        class="mode-view"
+      >
         <div class="desc-box">
           <p>
             <strong>如何让它对话？</strong>
@@ -68,34 +79,54 @@
 
         <div class="chat-container">
           <div class="chat-ui-half">
-            <div class="half-label">用户看到的 (Chat UI)</div>
+            <div class="half-label">
+              用户看到的 (Chat UI)
+            </div>
             <div class="chat-messages">
-              <div class="msg bot">我是 AI 助手，你好！</div>
-              <div class="msg user">{{ chatInput || '...' }}</div>
-              <div class="msg bot" v-if="chatOutput">{{ chatOutput }}</div>
+              <div class="msg bot">
+                我是 AI 助手，你好！
+              </div>
+              <div class="msg user">
+                {{ chatInput || '...' }}
+              </div>
+              <div
+                v-if="chatOutput"
+                class="msg bot"
+              >
+                {{ chatOutput }}
+              </div>
             </div>
             <div class="input-area">
               <input
                 v-model="chatInput"
                 placeholder="Say hello..."
                 @keyup.enter="runChat"
-              />
-              <button @click="runChat" :disabled="isGenerating">Send</button>
+              >
+              <button
+                :disabled="isGenerating"
+                @click="runChat"
+              >
+                Send
+              </button>
             </div>
           </div>
 
-          <div class="arrow-divider">➡️ 转换 ➡️</div>
+          <div class="arrow-divider">
+            ➡️ 转换 ➡️
+          </div>
 
           <div class="model-view-half">
-            <div class="half-label">模型看到的 (Raw Prompt)</div>
+            <div class="half-label">
+              模型看到的 (Raw Prompt)
+            </div>
             <div class="raw-prompt">
-              <span class="sys-tag">&lt;|system|&gt;</span><br />
-              You are a helpful assistant.<br />
-              <span class="bot-tag">&lt;|assistant|&gt;</span><br />
-              我是 AI 助手，你好！<br />
-              <span class="user-tag">&lt;|user|&gt;</span><br />
-              {{ chatInput || '...' }}<br />
-              <span class="bot-tag">&lt;|assistant|&gt;</span><br />
+              <span class="sys-tag">&lt;|system|&gt;</span><br>
+              You are a helpful assistant.<br>
+              <span class="bot-tag">&lt;|assistant|&gt;</span><br>
+              我是 AI 助手，你好！<br>
+              <span class="user-tag">&lt;|user|&gt;</span><br>
+              {{ chatInput || '...' }}<br>
+              <span class="bot-tag">&lt;|assistant|&gt;</span><br>
               <span class="ai-text typing">{{ chatOutput }}</span>
             </div>
           </div>
@@ -103,7 +134,10 @@
       </div>
 
       <!-- Tab 3: 原理 - 训练 (Training) -->
-      <div v-if="currentTab === 'train'" class="mode-view">
+      <div
+        v-if="currentTab === 'train'"
+        class="mode-view"
+      >
         <div class="desc-box">
           <p>
             <strong>Training (训练原理)</strong>:
@@ -116,26 +150,27 @@
           <!-- 左侧：训练过程可视化 -->
           <div class="train-process-panel card-panel">
             <div class="panel-header">
-              <span class="step-badge"
-                >Step {{ currentStep }}/{{ totalSteps }}</span
-              >
+              <span class="step-badge">Step {{ currentStep }}/{{ totalSteps }}</span>
               <span class="panel-title">Training Process</span>
             </div>
 
             <div class="data-flow">
               <!-- Input Section -->
               <div class="flow-stage input-stage">
-                <div class="stage-label">1. Input (输入)</div>
+                <div class="stage-label">
+                  1. Input (输入)
+                </div>
                 <div
                   v-if="currentStep === 0"
                   class="content-box input placeholder"
                 >
                   <span class="text-content">点击下方按钮开始训练</span>
                 </div>
-                <div v-else class="content-box input">
-                  <span class="text-content"
-                    >"{{ currentTrainData.input }}"</span
-                  >
+                <div
+                  v-else
+                  class="content-box input"
+                >
+                  <span class="text-content">"{{ currentTrainData.input }}"</span>
                 </div>
                 <div class="matrix-viz">
                   <span class="matrix-label">Embedding:</span>
@@ -148,20 +183,30 @@
                         opacity: inputEmbeddingOpacities[n - 1] ?? 0.6,
                         transform: `scaleY(${inputEmbeddingOpacities[n - 1] ?? 1})`
                       }"
-                    ></span>
+                    />
                   </div>
                 </div>
               </div>
 
-              <div v-if="currentStep > 0" class="process-arrow">
-                <div class="arrow-line"></div>
-                <div class="process-badge">Model Matrix Ops</div>
-                <div class="arrow-line"></div>
+              <div
+                v-if="currentStep > 0"
+                class="process-arrow"
+              >
+                <div class="arrow-line" />
+                <div class="process-badge">
+                  Model Matrix Ops
+                </div>
+                <div class="arrow-line" />
               </div>
 
               <!-- Prediction vs Target Section -->
-              <div v-if="currentStep > 0" class="flow-stage comparison">
-                <div class="stage-label">2. Prediction vs Target</div>
+              <div
+                v-if="currentStep > 0"
+                class="flow-stage comparison"
+              >
+                <div class="stage-label">
+                  2. Prediction vs Target
+                </div>
 
                 <div class="compare-row">
                   <div class="compare-item">
@@ -181,12 +226,14 @@
                           :style="{
                             opacity: predEmbeddingOpacities[n - 1] ?? 0.6
                           }"
-                        ></span>
+                        />
                       </div>
                     </div>
                   </div>
 
-                  <div class="vs-badge">VS</div>
+                  <div class="vs-badge">
+                    VS
+                  </div>
 
                   <div class="compare-item">
                     <span class="sub-label">Target</span>
@@ -202,7 +249,7 @@
                           :style="{
                             opacity: targetEmbeddingOpacities[n - 1] ?? 0.9
                           }"
-                        ></span>
+                        />
                       </div>
                     </div>
                   </div>
@@ -210,14 +257,16 @@
               </div>
 
               <!-- Loss Section -->
-              <div v-if="currentStep > 0" class="flow-stage loss-stage">
+              <div
+                v-if="currentStep > 0"
+                class="flow-stage loss-stage"
+              >
                 <div class="stage-header">
                   <span class="stage-label">3. Loss Calculation</span>
                   <span
                     class="loss-val-badge"
                     :style="{ backgroundColor: getLossColor(currentLoss) }"
-                    >Loss: {{ currentLoss.toFixed(4) }}</span
-                  >
+                  >Loss: {{ currentLoss.toFixed(4) }}</span>
                 </div>
                 <div class="loss-bar-container">
                   <div class="loss-bar-bg">
@@ -227,7 +276,7 @@
                         width: Math.min((currentLoss / 3) * 100, 100) + '%',
                         backgroundColor: getLossColor(currentLoss)
                       }"
-                    ></div>
+                    />
                   </div>
                   <div
                     class="loss-feedback"
@@ -253,7 +302,10 @@
               <span class="panel-title">Training Metrics</span>
             </div>
             <div class="chart-container">
-              <svg viewBox="0 0 300 150" class="loss-chart">
+              <svg
+                viewBox="0 0 300 150"
+                class="loss-chart"
+              >
                 <!-- Background Grid -->
                 <defs>
                   <pattern
@@ -289,7 +341,11 @@
                     />
                   </linearGradient>
                 </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
+                <rect
+                  width="100%"
+                  height="100%"
+                  fill="url(#grid)"
+                />
 
                 <!-- Axes -->
                 <line
@@ -336,14 +392,17 @@
             <div class="log-console-container">
               <div class="console-header">
                 <div class="window-dots">
-                  <span class="dot red"></span>
-                  <span class="dot yellow"></span>
-                  <span class="dot green"></span>
+                  <span class="dot red" />
+                  <span class="dot yellow" />
+                  <span class="dot green" />
                 </div>
                 <span class="console-title">training_log.txt</span>
               </div>
               <div class="log-console">
-                <div v-if="trainingLogs.length === 0" class="log-placeholder">
+                <div
+                  v-if="trainingLogs.length === 0"
+                  class="log-placeholder"
+                >
                   Waiting for training to start...
                 </div>
                 <div
@@ -351,24 +410,18 @@
                   :key="idx"
                   class="log-item"
                 >
-                  <span class="log-step"
-                    >[Step {{ String(log.step).padStart(2, '0') }}]</span
-                  >
+                  <span class="log-step">[Step {{ String(log.step).padStart(2, '0') }}]</span>
                   <span
                     class="log-loss"
                     :style="{ color: getLossColor(log.loss) }"
-                    >Loss={{ log.loss.toFixed(2) }}</span
-                  >
-                  <span class="log-detail"
-                    >{{ log.input }} ->
+                  >Loss={{ log.loss.toFixed(2) }}</span>
+                  <span class="log-detail">{{ log.input }} ->
                     <span
                       :class="{
                         'text-green': log.pred === log.target,
                         'text-red': log.pred !== log.target
                       }"
-                      >{{ log.pred }}</span
-                    ></span
-                  >
+                    >{{ log.pred }}</span></span>
                 </div>
               </div>
             </div>
@@ -378,21 +431,31 @@
         <div class="action-bar">
           <button
             class="train-btn"
-            @click="handleTrainClick"
             :class="{ 'is-restart': currentStep >= totalSteps }"
+            @click="handleTrainClick"
           >
-            <span class="btn-icon" v-if="currentStep === 0">🚀</span>
-            <span class="btn-icon" v-else-if="currentStep >= totalSteps"
-              >🔄</span
-            >
-            <span class="btn-icon" v-else>▶️</span>
+            <span
+              v-if="currentStep === 0"
+              class="btn-icon"
+            >🚀</span>
+            <span
+              v-else-if="currentStep >= totalSteps"
+              class="btn-icon"
+            >🔄</span>
+            <span
+              v-else
+              class="btn-icon"
+            >▶️</span>
             {{ trainButtonText }}
           </button>
         </div>
       </div>
 
       <!-- Tab 4: 进阶 - 微调与对齐 (RLHF) -->
-      <div v-if="currentTab === 'rlhf'" class="mode-view">
+      <div
+        v-if="currentTab === 'rlhf'"
+        class="mode-view"
+      >
         <div class="desc-box">
           <p>
             <strong>从“胡说”到“好助手”</strong>：通过 RLHF (人类反馈)
@@ -408,23 +471,36 @@
                 class="radio-option"
                 :class="{ active: alignmentState === 'base' }"
               >
-                <input type="radio" v-model="alignmentState" value="base" />
+                <input
+                  v-model="alignmentState"
+                  type="radio"
+                  value="base"
+                >
                 Base Model (未对齐)
               </label>
               <label
                 class="radio-option"
                 :class="{ active: alignmentState === 'aligned' }"
               >
-                <input type="radio" v-model="alignmentState" value="aligned" />
+                <input
+                  v-model="alignmentState"
+                  type="radio"
+                  value="aligned"
+                >
                 Aligned Model (已对齐)
               </label>
             </div>
           </div>
 
           <div class="scenario">
-            <div class="user-query">User: "如何制造混乱？"</div>
+            <div class="user-query">
+              User: "如何制造混乱？"
+            </div>
 
-            <div class="model-response" :class="alignmentState">
+            <div
+              class="model-response"
+              :class="alignmentState"
+            >
               <div class="avatar">
                 {{ alignmentState === 'base' ? '🤪' : '🤖' }}
               </div>
@@ -439,10 +515,14 @@
             </div>
 
             <div class="analysis">
-              <span v-if="alignmentState === 'base'" class="bad-tag"
-                >⚠️ Unsafe / Not Helpful</span
-              >
-              <span v-else class="good-tag">✅ Safe & Helpful</span>
+              <span
+                v-if="alignmentState === 'base'"
+                class="bad-tag"
+              >⚠️ Unsafe / Not Helpful</span>
+              <span
+                v-else
+                class="good-tag"
+              >✅ Safe & Helpful</span>
             </div>
           </div>
         </div>

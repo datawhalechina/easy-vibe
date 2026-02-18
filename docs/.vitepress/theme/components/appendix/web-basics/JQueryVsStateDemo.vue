@@ -5,7 +5,9 @@
 <template>
   <div class="jq-demo">
     <div class="header">
-      <div class="title">什么是 jQuery？用“购物车数量”秒懂</div>
+      <div class="title">
+        什么是 jQuery？用“购物车数量”秒懂
+      </div>
       <div class="subtitle">
         左边：像 jQuery 一样手动改页面（容易漏）。右边：像 Vue/React
         一样只改状态。
@@ -15,48 +17,83 @@
     <div class="panes">
       <!-- jQuery-like -->
       <div class="pane">
-        <div class="pane-title">jQuery 思路：到处改 DOM</div>
+        <div class="pane-title">
+          jQuery 思路：到处改 DOM
+        </div>
         <div class="mock-app">
           <div class="topbar">
             <span>🛒 角标：</span>
-            <span class="badge" :class="{ wrong: jqBadgeWrong }">{{
+            <span
+              class="badge"
+              :class="{ wrong: jqBadgeWrong }"
+            >{{
               jqBadge
             }}</span>
           </div>
           <div class="content">
             <div class="row">
               购物车页数量：
-              <span class="num" :class="{ wrong: jqPageWrong }">{{
+              <span
+                class="num"
+                :class="{ wrong: jqPageWrong }"
+              >{{
                 jqPage
               }}</span>
             </div>
             <div class="row">
               结算按钮：
-              <button class="checkout">去结算 ({{ jqButtonLabel }})</button>
+              <button class="checkout">
+                去结算 ({{ jqButtonLabel }})
+              </button>
             </div>
           </div>
         </div>
 
         <div class="controls">
-          <div class="control-title">模拟“你写的命令”</div>
+          <div class="control-title">
+            模拟“你写的命令”
+          </div>
           <div class="btns">
-            <button @click="jqIncreaseData">数据 +1（但还没改页面）</button>
-            <button @click="jqUpdateBadge">改角标</button>
-            <button @click="jqUpdateCartPage">改购物车页</button>
-            <button @click="jqUpdateCheckoutButton">改结算按钮</button>
+            <button @click="jqIncreaseData">
+              数据 +1（但还没改页面）
+            </button>
+            <button @click="jqUpdateBadge">
+              改角标
+            </button>
+            <button @click="jqUpdateCartPage">
+              改购物车页
+            </button>
+            <button @click="jqUpdateCheckoutButton">
+              改结算按钮
+            </button>
           </div>
 
-          <div class="hint" :class="{ danger: jqInconsistent }">
+          <div
+            class="hint"
+            :class="{ danger: jqInconsistent }"
+          >
             {{ jqHint }}
           </div>
 
           <div class="log">
-            <div class="log-title">命令日志</div>
-            <div v-if="jqLogs.length === 0" class="log-empty">
+            <div class="log-title">
+              命令日志
+            </div>
+            <div
+              v-if="jqLogs.length === 0"
+              class="log-empty"
+            >
               （还没有操作）
             </div>
-            <div v-else class="log-list">
-              <div v-for="(l, idx) in jqLogs" :key="idx" class="log-item">
+            <div
+              v-else
+              class="log-list"
+            >
+              <div
+                v-for="(l, idx) in jqLogs"
+                :key="idx"
+                class="log-item"
+              >
                 {{ l }}
               </div>
             </div>
@@ -66,7 +103,9 @@
 
       <!-- State-driven -->
       <div class="pane">
-        <div class="pane-title">Vue/React 思路：只改 State</div>
+        <div class="pane-title">
+          Vue/React 思路：只改 State
+        </div>
         <div class="mock-app">
           <div class="topbar">
             <span>🛒 角标：</span>
@@ -78,23 +117,39 @@
             </div>
             <div class="row">
               结算按钮：
-              <button class="checkout">去结算 ({{ state }} 件)</button>
+              <button class="checkout">
+                去结算 ({{ state }} 件)
+              </button>
             </div>
           </div>
         </div>
 
         <div class="controls">
-          <div class="control-title">你只需要做一件事</div>
+          <div class="control-title">
+            你只需要做一件事
+          </div>
           <div class="btns">
-            <button class="primary" @click="state = state + 1">state +1</button>
-            <button class="secondary" @click="resetAll">重置</button>
+            <button
+              class="primary"
+              @click="state = state + 1"
+            >
+              state +1
+            </button>
+            <button
+              class="secondary"
+              @click="resetAll"
+            >
+              重置
+            </button>
           </div>
           <div class="hint ok">
             State 变了，界面三处会自动同步，不需要你“手动找 DOM 去改”。
           </div>
 
           <div class="mini">
-            <div class="mini-title">这里的两个新词</div>
+            <div class="mini-title">
+              这里的两个新词
+            </div>
             <div class="mini-item">
               <strong>DOM</strong>：浏览器里的页面结构（按钮/文字/图片都在里面）
             </div>

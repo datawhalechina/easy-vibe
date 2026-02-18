@@ -20,9 +20,16 @@
     </div>
 
     <div class="detail-panel">
-      <div class="detail-title">{{ currentStepData.title }}</div>
-      <p class="detail-desc">{{ currentStepData.detail }}</p>
-      <div class="flow-row" v-if="currentStepData.flow">
+      <div class="detail-title">
+        {{ currentStepData.title }}
+      </div>
+      <p class="detail-desc">
+        {{ currentStepData.detail }}
+      </p>
+      <div
+        v-if="currentStepData.flow"
+        class="flow-row"
+      >
         <span class="entity user">{{ currentStepData.flow[0].from.name }}</span>
         <span class="action">{{ currentStepData.flow[0].action }}</span>
         <span class="entity cloud">{{ currentStepData.flow[0].to.name }}</span>

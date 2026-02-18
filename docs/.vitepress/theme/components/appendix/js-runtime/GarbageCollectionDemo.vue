@@ -133,15 +133,15 @@ const stop = () => {
         <h4>对象引用关系</h4>
         <div class="legend">
           <div class="legend-item">
-            <span class="legend-color unmarked"></span>
+            <span class="legend-color unmarked" />
             <span>未标记</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color marked"></span>
+            <span class="legend-color marked" />
             <span>已标记(可达)</span>
           </div>
           <div class="legend-item">
-            <span class="legend-color collected"></span>
+            <span class="legend-color collected" />
             <span>已回收</span>
           </div>
         </div>
@@ -151,8 +151,12 @@ const stop = () => {
         <!-- 根对象 -->
         <div class="root-object">
           <div class="object-box root">
-            <div class="object-icon">🌳</div>
-            <div class="object-name">Root</div>
+            <div class="object-icon">
+              🌳
+            </div>
+            <div class="object-name">
+              Root
+            </div>
           </div>
         </div>
 
@@ -167,22 +171,53 @@ const stop = () => {
               'collected': obj.collected
             }"
           >
-            <div class="object-box" :style="{ borderColor: obj.color }">
-              <div class="object-icon" :style="{ background: obj.color }">
+            <div
+              class="object-box"
+              :style="{ borderColor: obj.color }"
+            >
+              <div
+                class="object-icon"
+                :style="{ background: obj.color }"
+              >
                 {{ obj.collected ? '💀' : '📦' }}
               </div>
-              <div class="object-name">{{ obj.name }}</div>
-              <div v-if="obj.marked" class="object-status">✓ 可达</div>
-              <div v-if="obj.collected" class="object-status collected">✗ 回收</div>
+              <div class="object-name">
+                {{ obj.name }}
+              </div>
+              <div
+                v-if="obj.marked"
+                class="object-status"
+              >
+                ✓ 可达
+              </div>
+              <div
+                v-if="obj.collected"
+                class="object-status collected"
+              >
+                ✗ 回收
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 引用连线 (用SVG绘制) -->
-        <svg class="connections" viewBox="0 0 600 400">
+        <svg
+          class="connections"
+          viewBox="0 0 600 400"
+        >
           <defs>
-            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-              <polygon points="0 0, 10 3.5, 0 7" fill="#a0aec0" />
+            <marker
+              id="arrowhead"
+              markerWidth="10"
+              markerHeight="7"
+              refX="9"
+              refY="3.5"
+              orient="auto"
+            >
+              <polygon
+                points="0 0, 10 3.5, 0 7"
+                fill="#a0aec0"
+              />
             </marker>
           </defs>
           <!-- Root -> obj1 -->
@@ -240,16 +275,32 @@ const stop = () => {
 
     <!-- 控制按钮 -->
     <div class="controls">
-      <button @click="play" :disabled="isAnimating" class="btn-play">
+      <button
+        :disabled="isAnimating"
+        class="btn-play"
+        @click="play"
+      >
         {{ isAnimating ? '执行中...' : '▶ 自动演示' }}
       </button>
-      <button @click="nextStep" :disabled="isAnimating || currentStep >= steps.length" class="btn-step">
+      <button
+        :disabled="isAnimating || currentStep >= steps.length"
+        class="btn-step"
+        @click="nextStep"
+      >
         ⏭ 单步执行
       </button>
-      <button @click="stop" :disabled="!isAnimating" class="btn-stop">
+      <button
+        :disabled="!isAnimating"
+        class="btn-stop"
+        @click="stop"
+      >
         ⏸ 停止
       </button>
-      <button @click="reset" :disabled="isAnimating" class="btn-reset">
+      <button
+        :disabled="isAnimating"
+        class="btn-reset"
+        @click="reset"
+      >
         🔄 重置
       </button>
     </div>
@@ -297,28 +348,36 @@ const stop = () => {
       <h4>实际应用技巧</h4>
       <div class="tips-grid">
         <div class="tip-card">
-          <div class="tip-icon">💡</div>
+          <div class="tip-icon">
+            💡
+          </div>
           <div class="tip-content">
             <strong>及时解除引用</strong>
             <p>对象不再使用时,将其设为 null</p>
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">🔒</div>
+          <div class="tip-icon">
+            🔒
+          </div>
           <div class="tip-content">
             <strong>避免意外的全局变量</strong>
             <p>使用 const/let 代替 var</p>
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">🧹</div>
+          <div class="tip-icon">
+            🧹
+          </div>
           <div class="tip-content">
             <strong>清理事件监听</strong>
             <p>组件销毁时移除所有监听器</p>
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">📊</div>
+          <div class="tip-icon">
+            📊
+          </div>
           <div class="tip-content">
             <strong>定期检查内存</strong>
             <p>用 DevTools Memory 面板监控</p>

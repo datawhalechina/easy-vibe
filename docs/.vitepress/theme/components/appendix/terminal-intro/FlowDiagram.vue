@@ -13,69 +13,111 @@
 <template>
   <div class="flow-diagram">
     <div class="stack-col">
-      <div class="stack-label">TERMINAL STACK</div>
+      <div class="stack-label">
+        TERMINAL STACK
+      </div>
 
-      <div class="stack-box kbd" :class="{ active: activeStage === 'kbd' }">
+      <div
+        class="stack-box kbd"
+        :class="{ active: activeStage === 'kbd' }"
+      >
         <div class="box-header">
           <span class="box-icon">[kbd]</span>
           <span class="box-title">You (Keyboard)</span>
         </div>
-        <div class="box-desc">Physical keystrokes</div>
+        <div class="box-desc">
+          Physical keystrokes
+        </div>
       </div>
 
-      <div class="arrow">↓ / ↑</div>
+      <div class="arrow">
+        ↓ / ↑
+      </div>
 
-      <div class="stack-box tty" :class="{ active: activeStage === 'tty' }">
+      <div
+        class="stack-box tty"
+        :class="{ active: activeStage === 'tty' }"
+      >
         <div class="box-header">
           <span class="box-icon">[tty]</span>
           <span class="box-title">Terminal Emulator</span>
         </div>
-        <div class="box-desc">Encodes input, renders output</div>
+        <div class="box-desc">
+          Encodes input, renders output
+        </div>
       </div>
 
-      <div class="arrow">↓ / ↑</div>
+      <div class="arrow">
+        ↓ / ↑
+      </div>
 
-      <div class="stack-box pty" :class="{ active: activeStage === 'pty' }">
+      <div
+        class="stack-box pty"
+        :class="{ active: activeStage === 'pty' }"
+      >
         <div class="box-header">
           <span class="box-icon">[pty]</span>
           <span class="box-title">PTY (Pseudo-Terminal)</span>
         </div>
-        <div class="box-desc">Bidirectional pipe</div>
+        <div class="box-desc">
+          Bidirectional pipe
+        </div>
       </div>
 
-      <div class="arrow">↓ / ↑</div>
+      <div class="arrow">
+        ↓ / ↑
+      </div>
 
-      <div class="stack-box sh" :class="{ active: activeStage === 'sh' }">
+      <div
+        class="stack-box sh"
+        :class="{ active: activeStage === 'sh' }"
+      >
         <div class="box-header">
           <span class="box-icon">[sh]</span>
           <span class="box-title">Shell / Program</span>
         </div>
-        <div class="box-desc">bash, zsh, or any CLI program</div>
+        <div class="box-desc">
+          bash, zsh, or any CLI program
+        </div>
       </div>
     </div>
 
     <div class="output-col">
-      <div class="output-label">OUTPUT</div>
+      <div class="output-label">
+        OUTPUT
+      </div>
 
       <div class="terminal-preview">
-        <div class="term-header"><span></span><span></span><span></span></div>
+        <div class="term-header">
+          <span /><span /><span />
+        </div>
         <div class="term-body">
           <span class="prompt">$ </span>
           <span class="typed-text">{{ displayText }}</span>
-          <span class="cursor" :class="{ blinking: !isAnimating }"></span>
+          <span
+            class="cursor"
+            :class="{ blinking: !isAnimating }"
+          />
         </div>
       </div>
 
       <div class="status-box">
-        <div class="status-title" :class="statusColor">{{ statusTitle }}</div>
-        <div class="status-desc">{{ statusDesc }}</div>
+        <div
+          class="status-title"
+          :class="statusColor"
+        >
+          {{ statusTitle }}
+        </div>
+        <div class="status-desc">
+          {{ statusDesc }}
+        </div>
       </div>
 
       <div class="controls">
         <button
           class="play-btn"
-          @click="startAnimation"
           :disabled="isAnimating"
+          @click="startAnimation"
         >
           {{ isAnimating ? 'Simulating...' : 'Simulate Keystroke' }}
         </button>

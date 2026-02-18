@@ -2,28 +2,36 @@
   <div class="controller-layer-demo">
     <div class="demo-header">
       <h4>🎮 Controller 层：请求的"接待员"</h4>
-      <p class="subtitle">点击流程节点查看 Controller 如何接收和处理请求</p>
+      <p class="subtitle">
+        点击流程节点查看 Controller 如何接收和处理请求
+      </p>
     </div>
 
     <div class="flow-container">
       <!-- 请求发起 -->
       <div class="flow-step">
-        <div class="step-icon">🌐</div>
+        <div class="step-icon">
+          🌐
+        </div>
         <div class="step-content">
-          <div class="step-title">客户端发起请求</div>
+          <div class="step-title">
+            客户端发起请求
+          </div>
           <div class="step-code">
             POST /api/users/register
             Content-Type: application/json
             {
-              "username": "张三",
-              "email": "zhangsan@example.com",
-              "password": "123456"
+            "username": "张三",
+            "email": "zhangsan@example.com",
+            "password": "123456"
             }
           </div>
         </div>
       </div>
 
-      <div class="arrow-connector">⬇️ 请求到达</div>
+      <div class="arrow-connector">
+        ⬇️ 请求到达
+      </div>
 
       <!-- Controller 接收 -->
       <div
@@ -31,28 +39,34 @@
         :class="{ active: showDetails === 'controller' }"
         @click="toggleDetails('controller')"
       >
-        <div class="step-icon">🎮</div>
+        <div class="step-icon">
+          🎮
+        </div>
         <div class="step-content">
-          <div class="step-title">Controller 接收并解析请求</div>
+          <div class="step-title">
+            Controller 接收并解析请求
+          </div>
           <div class="step-code">
             @RestController
             @RequestMapping("/api/users")
             public class UserController {
 
-              @PostMapping("/register")
-              public ResponseEntity&lt;UserDTO&gt; register(
-                @RequestBody @Valid UserRegisterRequest request
-              ) {
-                // 调用 Service 处理业务
-                UserDTO user = userService.register(request);
-                return ResponseEntity.ok(user);
-              }
+            @PostMapping("/register")
+            public ResponseEntity&lt;UserDTO&gt; register(
+            @RequestBody @Valid UserRegisterRequest request
+            ) {
+            // 调用 Service 处理业务
+            UserDTO user = userService.register(request);
+            return ResponseEntity.ok(user);
+            }
             }
           </div>
         </div>
       </div>
 
-      <div class="arrow-connector">⬇️ 参数校验 + 调用</div>
+      <div class="arrow-connector">
+        ⬇️ 参数校验 + 调用
+      </div>
 
       <!-- 校验逻辑 -->
       <div
@@ -60,23 +74,30 @@
         :class="{ active: showDetails === 'validation' }"
         @click="toggleDetails('validation')"
       >
-        <div class="step-icon">✅</div>
+        <div class="step-icon">
+          ✅
+        </div>
         <div class="step-content">
-          <div class="step-title">参数校验（Controller 的职责之一）</div>
+          <div class="step-title">
+            参数校验（Controller 的职责之一）
+          </div>
           <div class="step-code">
             public class UserRegisterRequest {
-              @NotBlank(message = "用户名不能为空")
-              @Size(min = 2, max = 20, message = "用户名长度2-20")
-              private String username;
+            @NotBlank(message = "用户名不能为空")
+            @Size(min = 2, max = 20, message = "用户名长度2-20")
+            private String username;
 
-              @Email(message = "邮箱格式不正确")
-              private String email;
+            @Email(message = "邮箱格式不正确")
+            private String email;
 
-              @Size(min = 6, message = "密码至少6位")
-              private String password;
+            @Size(min = 6, message = "密码至少6位")
+            private String password;
             }
           </div>
-          <div v-if="showDetails === 'validation'" class="detail-panel">
+          <div
+            v-if="showDetails === 'validation'"
+            class="detail-panel"
+          >
             <h5>为什么校验要放在 Controller？</h5>
             <ul>
               <li>🛡️ 第一道防线：尽早拦截非法请求</li>
@@ -87,26 +108,32 @@
         </div>
       </div>
 
-      <div class="arrow-connector">⬇️ 返回结果</div>
+      <div class="arrow-connector">
+        ⬇️ 返回结果
+      </div>
 
       <!-- 响应返回 -->
       <div class="flow-step">
-        <div class="step-icon">📤</div>
+        <div class="step-icon">
+          📤
+        </div>
         <div class="step-content">
-          <div class="step-title">Controller 封装响应返回给客户端</div>
+          <div class="step-title">
+            Controller 封装响应返回给客户端
+          </div>
           <div class="step-code">
             HTTP/1.1 200 OK
             Content-Type: application/json
 
             {
-              "code": 200,
-              "message": "注册成功",
-              "data": {
-                "id": 10001,
-                "username": "张三",
-                "email": "zhangsan@example.com",
-                "createdAt": "2024-01-15T10:30:00Z"
-              }
+            "code": 200,
+            "message": "注册成功",
+            "data": {
+            "id": 10001,
+            "username": "张三",
+            "email": "zhangsan@example.com",
+            "createdAt": "2024-01-15T10:30:00Z"
+            }
             }
           </div>
         </div>
@@ -118,24 +145,48 @@
       <h5>🎯 Controller 的核心职责</h5>
       <div class="duty-grid">
         <div class="duty-item">
-          <div class="duty-icon">📡</div>
-          <div class="duty-title">接收请求</div>
-          <div class="duty-desc">映射 HTTP 请求到方法</div>
+          <div class="duty-icon">
+            📡
+          </div>
+          <div class="duty-title">
+            接收请求
+          </div>
+          <div class="duty-desc">
+            映射 HTTP 请求到方法
+          </div>
         </div>
         <div class="duty-item">
-          <div class="duty-icon">✅</div>
-          <div class="duty-title">参数校验</div>
-          <div class="duty-desc">基础格式和必填校验</div>
+          <div class="duty-icon">
+            ✅
+          </div>
+          <div class="duty-title">
+            参数校验
+          </div>
+          <div class="duty-desc">
+            基础格式和必填校验
+          </div>
         </div>
         <div class="duty-item">
-          <div class="duty-icon">🔄</div>
-          <div class="duty-title">调用 Service</div>
-          <div class="duty-desc">将请求转发给业务层</div>
+          <div class="duty-icon">
+            🔄
+          </div>
+          <div class="duty-title">
+            调用 Service
+          </div>
+          <div class="duty-desc">
+            将请求转发给业务层
+          </div>
         </div>
         <div class="duty-item">
-          <div class="duty-icon">📦</div>
-          <div class="duty-title">封装响应</div>
-          <div class="duty-desc">统一响应格式返回</div>
+          <div class="duty-icon">
+            📦
+          </div>
+          <div class="duty-title">
+            封装响应
+          </div>
+          <div class="duty-desc">
+            统一响应格式返回
+          </div>
         </div>
       </div>
     </div>

@@ -5,25 +5,41 @@
 <template>
   <div class="cache-comparison-demo">
     <div class="header">
-      <div class="title">本地缓存 vs 分布式缓存</div>
-      <div class="subtitle">对比两种缓存架构的性能和特点</div>
+      <div class="title">
+        本地缓存 vs 分布式缓存
+      </div>
+      <div class="subtitle">
+        对比两种缓存架构的性能和特点
+      </div>
     </div>
 
     <div class="comparison-view">
       <!-- Local Cache -->
       <div class="cache-side local">
         <div class="side-header">
-          <div class="title">本地缓存 (Local Cache)</div>
-          <div class="tag">进程内</div>
+          <div class="title">
+            本地缓存 (Local Cache)
+          </div>
+          <div class="tag">
+            进程内
+          </div>
         </div>
 
         <div class="architecture">
           <div class="app-instance">
-            <div class="instance-label">应用实例 1</div>
+            <div class="instance-label">
+              应用实例 1
+            </div>
             <div class="cache-box">
-              <div class="cache-label">缓存</div>
+              <div class="cache-label">
+                缓存
+              </div>
               <div class="cache-data">
-                <div v-for="item in localCache1" :key="item" class="data-item">
+                <div
+                  v-for="item in localCache1"
+                  :key="item"
+                  class="data-item"
+                >
                   {{ item }}
                 </div>
               </div>
@@ -31,11 +47,19 @@
           </div>
 
           <div class="app-instance">
-            <div class="instance-label">应用实例 2</div>
+            <div class="instance-label">
+              应用实例 2
+            </div>
             <div class="cache-box">
-              <div class="cache-label">缓存</div>
+              <div class="cache-label">
+                缓存
+              </div>
               <div class="cache-data">
-                <div v-for="item in localCache2" :key="item" class="data-item">
+                <div
+                  v-for="item in localCache2"
+                  :key="item"
+                  class="data-item"
+                >
                   {{ item }}
                 </div>
               </div>
@@ -45,29 +69,53 @@
 
         <div class="metrics">
           <div class="metric">
-            <div class="metric-label">响应时间</div>
-            <div class="metric-value fast">~1 ms</div>
+            <div class="metric-label">
+              响应时间
+            </div>
+            <div class="metric-value fast">
+              ~1 ms
+            </div>
           </div>
           <div class="metric">
-            <div class="metric-label">容量</div>
-            <div class="metric-value">~1 GB</div>
+            <div class="metric-label">
+              容量
+            </div>
+            <div class="metric-value">
+              ~1 GB
+            </div>
           </div>
           <div class="metric">
-            <div class="metric-label">一致性</div>
-            <div class="metric-value warning">低</div>
+            <div class="metric-label">
+              一致性
+            </div>
+            <div class="metric-value warning">
+              低
+            </div>
           </div>
         </div>
 
         <div class="pros-cons">
           <div class="pros">
-            <div class="list-title">✅ 优点</div>
-            <div class="list-item">极快（无网络开销）</div>
-            <div class="list-item">简单（内存 Map）</div>
+            <div class="list-title">
+              ✅ 优点
+            </div>
+            <div class="list-item">
+              极快（无网络开销）
+            </div>
+            <div class="list-item">
+              简单（内存 Map）
+            </div>
           </div>
           <div class="cons">
-            <div class="list-title">❌ 缺点</div>
-            <div class="list-item">容量受限</div>
-            <div class="list-item">实例间不一致</div>
+            <div class="list-title">
+              ❌ 缺点
+            </div>
+            <div class="list-item">
+              容量受限
+            </div>
+            <div class="list-item">
+              实例间不一致
+            </div>
           </div>
         </div>
       </div>
@@ -75,33 +123,51 @@
       <!-- Distributed Cache -->
       <div class="cache-side distributed">
         <div class="side-header">
-          <div class="title">分布式缓存 (Distributed Cache)</div>
-          <div class="tag">独立服务</div>
+          <div class="title">
+            分布式缓存 (Distributed Cache)
+          </div>
+          <div class="tag">
+            独立服务
+          </div>
         </div>
 
         <div class="architecture">
           <div class="instances-row">
             <div class="app-instance-small">
-              <div class="instance-label-small">实例 1</div>
+              <div class="instance-label-small">
+                实例 1
+              </div>
             </div>
             <div class="app-instance-small">
-              <div class="instance-label-small">实例 2</div>
+              <div class="instance-label-small">
+                实例 2
+              </div>
             </div>
             <div class="app-instance-small">
-              <div class="instance-label-small">实例 3</div>
+              <div class="instance-label-small">
+                实例 3
+              </div>
             </div>
           </div>
 
           <div class="network-layer">
-            <div class="network-label">网络</div>
-            <div class="network-arrows">⬇️ ⬇️ ⬇️</div>
+            <div class="network-label">
+              网络
+            </div>
+            <div class="network-arrows">
+              ⬇️ ⬇️ ⬇️
+            </div>
           </div>
 
           <div class="redis-cluster">
-            <div class="cluster-label">Redis 集群</div>
+            <div class="cluster-label">
+              Redis 集群
+            </div>
             <div class="redis-nodes">
               <div class="redis-node">
-                <div class="node-label">Node 1</div>
+                <div class="node-label">
+                  Node 1
+                </div>
                 <div class="node-data">
                   <div
                     v-for="item in redisData1"
@@ -113,7 +179,9 @@
                 </div>
               </div>
               <div class="redis-node">
-                <div class="node-label">Node 2</div>
+                <div class="node-label">
+                  Node 2
+                </div>
                 <div class="node-data">
                   <div
                     v-for="item in redisData2"
@@ -125,7 +193,9 @@
                 </div>
               </div>
               <div class="redis-node">
-                <div class="node-label">Node 3</div>
+                <div class="node-label">
+                  Node 3
+                </div>
                 <div class="node-data">
                   <div
                     v-for="item in redisData3"
@@ -142,48 +212,96 @@
 
         <div class="metrics">
           <div class="metric">
-            <div class="metric-label">响应时间</div>
-            <div class="metric-value medium">~5 ms</div>
+            <div class="metric-label">
+              响应时间
+            </div>
+            <div class="metric-value medium">
+              ~5 ms
+            </div>
           </div>
           <div class="metric">
-            <div class="metric-label">容量</div>
-            <div class="metric-value">~100 GB</div>
+            <div class="metric-label">
+              容量
+            </div>
+            <div class="metric-value">
+              ~100 GB
+            </div>
           </div>
           <div class="metric">
-            <div class="metric-label">一致性</div>
-            <div class="metric-value good">高</div>
+            <div class="metric-label">
+              一致性
+            </div>
+            <div class="metric-value good">
+              高
+            </div>
           </div>
         </div>
 
         <div class="pros-cons">
           <div class="pros">
-            <div class="list-title">✅ 优点</div>
-            <div class="list-item">容量可扩展</div>
-            <div class="list-item">全局共享</div>
+            <div class="list-title">
+              ✅ 优点
+            </div>
+            <div class="list-item">
+              容量可扩展
+            </div>
+            <div class="list-item">
+              全局共享
+            </div>
           </div>
           <div class="cons">
-            <div class="list-title">❌ 缺点</div>
-            <div class="list-item">网络延迟</div>
-            <div class="list-item">需要维护</div>
+            <div class="list-title">
+              ❌ 缺点
+            </div>
+            <div class="list-item">
+              网络延迟
+            </div>
+            <div class="list-item">
+              需要维护
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="interactive-demo">
-      <div class="demo-title">交互演示：写入和读取数据</div>
+      <div class="demo-title">
+        交互演示：写入和读取数据
+      </div>
       <div class="demo-controls">
-        <button class="demo-btn" @click="simulateWrite">写入数据</button>
-        <button class="demo-btn secondary" @click="simulateRead">
+        <button
+          class="demo-btn"
+          @click="simulateWrite"
+        >
+          写入数据
+        </button>
+        <button
+          class="demo-btn secondary"
+          @click="simulateRead"
+        >
           读取数据
         </button>
-        <button class="demo-btn reset" @click="reset">重置</button>
+        <button
+          class="demo-btn reset"
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
 
-      <div class="demo-result" v-if="lastOperation">
-        <div class="result-icon">{{ lastOperation.icon }}</div>
-        <div class="result-text">{{ lastOperation.text }}</div>
-        <div class="result-detail">{{ lastOperation.detail }}</div>
+      <div
+        v-if="lastOperation"
+        class="demo-result"
+      >
+        <div class="result-icon">
+          {{ lastOperation.icon }}
+        </div>
+        <div class="result-text">
+          {{ lastOperation.text }}
+        </div>
+        <div class="result-detail">
+          {{ lastOperation.detail }}
+        </div>
       </div>
     </div>
   </div>

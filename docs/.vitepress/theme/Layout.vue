@@ -270,7 +270,11 @@ watch(lineHeight, (next) => {
     <template #nav-bar-content-after>
       <GitHubStars />
       <ClientOnly>
-        <el-popover placement="bottom-end" trigger="click" :width="260">
+        <el-popover
+          placement="bottom-end"
+          trigger="click"
+          :width="260"
+        >
           <template #reference>
             <button
               class="ev-fontsize-button"
@@ -278,14 +282,20 @@ watch(lineHeight, (next) => {
               aria-label="阅读设置"
               style="margin-left: 16px; padding: 0; width: 32px"
             >
-              <el-icon :size="16"><Setting /></el-icon>
+              <el-icon :size="16">
+                <Setting />
+              </el-icon>
             </button>
           </template>
           <div class="ev-fontsize-panel">
             <div class="ev-setting-group">
               <div class="ev-setting-header">
-                <div class="ev-setting-title">字号</div>
-                <div class="ev-setting-value">{{ fontSize }}px</div>
+                <div class="ev-setting-title">
+                  字号
+                </div>
+                <div class="ev-setting-value">
+                  {{ fontSize }}px
+                </div>
               </div>
               <div class="ev-fontsize-actions">
                 <button
@@ -320,8 +330,12 @@ watch(lineHeight, (next) => {
 
             <div class="ev-setting-group">
               <div class="ev-setting-header">
-                <div class="ev-setting-title">行距</div>
-                <div class="ev-setting-value">{{ lineHeight.toFixed(2) }}</div>
+                <div class="ev-setting-title">
+                  行距
+                </div>
+                <div class="ev-setting-value">
+                  {{ lineHeight.toFixed(2) }}
+                </div>
               </div>
               <div class="ev-fontsize-actions">
                 <button
@@ -361,7 +375,7 @@ watch(lineHeight, (next) => {
       <div
         v-if="
           frontmatter.layout === 'home' &&
-          (frontmatter.hero?.tagline || frontmatter.hero?.typingTagline)
+            (frontmatter.hero?.tagline || frontmatter.hero?.typingTagline)
         "
         class="vp-typed-tagline"
       >

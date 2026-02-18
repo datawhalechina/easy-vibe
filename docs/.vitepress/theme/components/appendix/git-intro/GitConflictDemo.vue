@@ -14,7 +14,9 @@
         <div class="line current">
           <span class="ln">4</span> console.log('Welcome') // 当前版本
         </div>
-        <div class="line conflict"><span class="ln">5</span>=======</div>
+        <div class="line conflict">
+          <span class="ln">5</span>=======
+        </div>
         <div class="line incoming">
           <span class="ln">6</span> console.log('Greetings') // 传入版本
         </div>
@@ -27,11 +29,24 @@
       </div>
 
       <div class="actions">
-        <button @click="resolve('current')" class="action-btn">保留当前</button>
-        <button @click="resolve('incoming')" class="action-btn">
+        <button
+          class="action-btn"
+          @click="resolve('current')"
+        >
+          保留当前
+        </button>
+        <button
+          class="action-btn"
+          @click="resolve('incoming')"
+        >
           保留传入
         </button>
-        <button @click="resolve('manual')" class="action-btn">手动合并</button>
+        <button
+          class="action-btn"
+          @click="resolve('manual')"
+        >
+          手动合并
+        </button>
       </div>
     </div>
 

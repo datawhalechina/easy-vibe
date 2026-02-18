@@ -5,8 +5,12 @@
 <template>
   <div class="cache-problems-demo">
     <div class="header">
-      <div class="title">缓存的三大问题</div>
-      <div class="subtitle">穿透、击穿、雪崩的场景与解决方案</div>
+      <div class="title">
+        缓存的三大问题
+      </div>
+      <div class="subtitle">
+        穿透、击穿、雪崩的场景与解决方案
+      </div>
     </div>
 
     <div class="problem-selector">
@@ -24,9 +28,14 @@
 
     <div class="problem-content">
       <!-- 缓存穿透 -->
-      <div v-if="activeProblem === 'penetration'" class="problem-detail">
+      <div
+        v-if="activeProblem === 'penetration'"
+        class="problem-detail"
+      >
         <div class="problem-intro">
-          <div class="intro-title">什么是缓存穿透？</div>
+          <div class="intro-title">
+            什么是缓存穿透？
+          </div>
           <div class="intro-text">
             查询一个<strong>不存在的数据</strong>（如恶意请求
             id=-1），缓存没有，数据库也没有。 导致每次请求都直接打到数据库。
@@ -34,51 +43,78 @@
         </div>
 
         <div class="problem-scenario">
-          <div class="scenario-title">场景模拟</div>
+          <div class="scenario-title">
+            场景模拟
+          </div>
           <div class="scenario-diagram">
             <div class="flow-item request">
-              <div class="flow-icon">🔥</div>
-              <div class="flow-text">请求 id=-999</div>
+              <div class="flow-icon">
+                🔥
+              </div>
+              <div class="flow-text">
+                请求 id=-999
+              </div>
             </div>
-            <div class="flow-arrow">↓</div>
-            <div class="flow-item cache" :class="{ miss: true }">
-              <div class="flow-icon">❌</div>
-              <div class="flow-text">缓存未命中</div>
+            <div class="flow-arrow">
+              ↓
             </div>
-            <div class="flow-arrow">↓</div>
+            <div
+              class="flow-item cache"
+              :class="{ miss: true }"
+            >
+              <div class="flow-icon">
+                ❌
+              </div>
+              <div class="flow-text">
+                缓存未命中
+              </div>
+            </div>
+            <div class="flow-arrow">
+              ↓
+            </div>
             <div
               class="flow-item database"
               :class="{ overloaded: dbPressure >= 80 }"
             >
-              <div class="flow-icon">🗄️</div>
-              <div class="flow-text">数据库查询（不存在）</div>
+              <div class="flow-icon">
+                🗄️
+              </div>
+              <div class="flow-text">
+                数据库查询（不存在）
+              </div>
             </div>
           </div>
 
           <div class="controls">
             <button
               class="attack-btn"
-              @click="simulatePenetration"
               :disabled="simulating"
+              @click="simulatePenetration"
             >
               {{ simulating ? '攻击中...' : '模拟恶意攻击' }}
             </button>
           </div>
 
           <div class="pressure-meter">
-            <div class="meter-label">数据库压力</div>
+            <div class="meter-label">
+              数据库压力
+            </div>
             <div class="meter-bar">
               <div
                 class="meter-fill"
                 :style="{ width: dbPressure + '%' }"
-              ></div>
+              />
             </div>
-            <div class="meter-value">{{ dbPressure }}%</div>
+            <div class="meter-value">
+              {{ dbPressure }}%
+            </div>
           </div>
         </div>
 
         <div class="solutions">
-          <div class="solutions-title">解决方案</div>
+          <div class="solutions-title">
+            解决方案
+          </div>
           <div class="solution-list">
             <div class="solution-item">
               <div class="solution-header">
@@ -87,7 +123,7 @@
               </div>
               <div class="solution-desc">
                 在缓存前加一层过滤器，快速判断"这个 id 肯定不存在"。
-                <br />
+                <br>
                 <span class="note">100% 判断不存在，但可能有误判</span>
               </div>
             </div>
@@ -105,25 +141,34 @@
       </div>
 
       <!-- 缓存击穿 -->
-      <div v-if="activeProblem === 'breakdown'" class="problem-detail">
+      <div
+        v-if="activeProblem === 'breakdown'"
+        class="problem-detail"
+      >
         <div class="problem-intro">
-          <div class="intro-title">什么是缓存击穿？</div>
+          <div class="intro-title">
+            什么是缓存击穿？
+          </div>
           <div class="intro-text">
             某个<strong>热点数据</strong>过期（如微博热搜），瞬间几百万请求同时打到数据库。
           </div>
         </div>
 
         <div class="problem-scenario">
-          <div class="scenario-title">场景模拟</div>
+          <div class="scenario-title">
+            场景模拟
+          </div>
           <div class="hotkey-scenario">
             <div class="hotkey-badge">
               🔥 热点数据
-              <br />
+              <br>
               <span class="key">user:12345</span>
             </div>
 
             <div class="concurrent-requests">
-              <div class="requests-title">并发请求</div>
+              <div class="requests-title">
+                并发请求
+              </div>
               <div class="requests-container">
                 <div
                   v-for="(req, index) in concurrentRequests"
@@ -131,23 +176,34 @@
                   class="request-item"
                   :class="req.status"
                 >
-                  <div class="request-id">请求 {{ req.id }}</div>
-                  <div class="request-status">{{ req.statusText }}</div>
+                  <div class="request-id">
+                    请求 {{ req.id }}
+                  </div>
+                  <div class="request-status">
+                    {{ req.statusText }}
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="mutex-visual" v-if="showMutex">
-              <div class="mutex-badge">🔒 互斥锁</div>
-              <div class="mutex-text">只有一个线程能查数据库</div>
+            <div
+              v-if="showMutex"
+              class="mutex-visual"
+            >
+              <div class="mutex-badge">
+                🔒 互斥锁
+              </div>
+              <div class="mutex-text">
+                只有一个线程能查数据库
+              </div>
             </div>
           </div>
 
           <div class="controls">
             <button
               class="attack-btn"
-              @click="simulateBreakdown"
               :disabled="simulating"
+              @click="simulateBreakdown"
             >
               {{ simulating ? '模拟中...' : '模拟热点过期' }}
             </button>
@@ -155,7 +211,9 @@
         </div>
 
         <div class="solutions">
-          <div class="solutions-title">解决方案</div>
+          <div class="solutions-title">
+            解决方案
+          </div>
           <div class="solution-list">
             <div class="solution-item">
               <div class="solution-header">
@@ -164,7 +222,7 @@
               </div>
               <div class="solution-desc">
                 只允许一个线程查数据库，其他线程等待。
-                <br />
+                <br>
                 <span class="note">优点：简单；缺点：阻塞其他请求</span>
               </div>
             </div>
@@ -175,10 +233,8 @@
               </div>
               <div class="solution-desc">
                 不设置 TTL，而是在 value 里存一个过期时间字段。
-                <br />
-                <span class="note"
-                  >查询时发现"逻辑过期"，异步更新缓存，同时返回旧数据</span
-                >
+                <br>
+                <span class="note">查询时发现"逻辑过期"，异步更新缓存，同时返回旧数据</span>
               </div>
             </div>
           </div>
@@ -186,9 +242,14 @@
       </div>
 
       <!-- 缓存雪崩 -->
-      <div v-if="activeProblem === 'avalanche'" class="problem-detail">
+      <div
+        v-if="activeProblem === 'avalanche'"
+        class="problem-detail"
+      >
         <div class="problem-intro">
-          <div class="intro-title">什么是缓存雪崩？</div>
+          <div class="intro-title">
+            什么是缓存雪崩？
+          </div>
           <div class="intro-text">
             大量缓存<strong>同时过期</strong>（如系统重启后，所有缓存都在
             00:00:00 过期）， 数据库瞬间被打爆。
@@ -196,7 +257,9 @@
         </div>
 
         <div class="problem-scenario">
-          <div class="scenario-title">场景模拟</div>
+          <div class="scenario-title">
+            场景模拟
+          </div>
           <div class="avalanche-visual">
             <div class="cache-items">
               <div
@@ -205,38 +268,61 @@
                 class="cache-item"
                 :class="{ expired: item.expired }"
               >
-                <div class="item-key">{{ item.key }}</div>
-                <div class="item-ttl">TTL: {{ item.ttl }}s</div>
+                <div class="item-key">
+                  {{ item.key }}
+                </div>
+                <div class="item-ttl">
+                  TTL: {{ item.ttl }}s
+                </div>
               </div>
             </div>
 
-            <div class="mass-explosion" v-if="massExplosion">
-              <div class="explosion-icon">💥</div>
-              <div class="explosion-text">同时过期！</div>
+            <div
+              v-if="massExplosion"
+              class="mass-explosion"
+            >
+              <div class="explosion-icon">
+                💥
+              </div>
+              <div class="explosion-text">
+                同时过期！
+              </div>
             </div>
 
-            <div class="db-overload" :class="{ critical: dbPressure >= 90 }">
-              <div class="db-icon">🗄️</div>
-              <div class="db-status">数据库负载: {{ dbPressure }}%</div>
+            <div
+              class="db-overload"
+              :class="{ critical: dbPressure >= 90 }"
+            >
+              <div class="db-icon">
+                🗄️
+              </div>
+              <div class="db-status">
+                数据库负载: {{ dbPressure }}%
+              </div>
             </div>
           </div>
 
           <div class="controls">
             <button
               class="attack-btn"
-              @click="simulateAvalanche"
               :disabled="simulating"
+              @click="simulateAvalanche"
             >
               {{ simulating ? '模拟中...' : '模拟缓存雪崩' }}
             </button>
-            <button class="solution-btn" @click="applyRandomTTL">
+            <button
+              class="solution-btn"
+              @click="applyRandomTTL"
+            >
               应用解决方案（随机 TTL）
             </button>
           </div>
         </div>
 
         <div class="solutions">
-          <div class="solutions-title">解决方案</div>
+          <div class="solutions-title">
+            解决方案
+          </div>
           <div class="solution-list">
             <div class="solution-item">
               <div class="solution-header">
@@ -245,10 +331,8 @@
               </div>
               <div class="solution-desc">
                 避免同时过期，TTL 加上随机值。
-                <br />
-                <span class="code"
-                  >ttl = 600 + random.randint(-60, 60) # 600 ± 60 秒</span
-                >
+                <br>
+                <span class="code">ttl = 600 + random.randint(-60, 60) # 600 ± 60 秒</span>
               </div>
             </div>
             <div class="solution-item">
@@ -258,10 +342,8 @@
               </div>
               <div class="solution-desc">
                 系统启动时，主动加载热点数据到缓存。
-                <br />
-                <span class="note"
-                  >使用定时任务，提前刷新即将过期的热点数据</span
-                >
+                <br>
+                <span class="note">使用定时任务，提前刷新即将过期的热点数据</span>
               </div>
             </div>
             <div class="solution-item">
@@ -271,7 +353,7 @@
               </div>
               <div class="solution-desc">
                 当数据库压力过大时，暂时停止更新缓存，直接返回降级数据。
-                <br />
+                <br>
                 <span class="note">如"系统繁忙，请稍后再试"</span>
               </div>
             </div>
@@ -281,7 +363,9 @@
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">三大问题对比</div>
+      <div class="table-title">
+        三大问题对比
+      </div>
       <table class="problems-table">
         <thead>
           <tr>

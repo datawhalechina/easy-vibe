@@ -2,37 +2,69 @@
   <div class="disaster-recovery-demo">
     <!-- 控制面板 -->
     <div class="control-panel">
-      <el-radio-group v-model="drMode" size="small">
-        <el-radio-button label="same-city">同城双活</el-radio-button>
-        <el-radio-button label="remote">异地灾备</el-radio-button>
-        <el-radio-button label="three-center">两地三中心</el-radio-button>
-        <el-radio-button label="switchover">故障切换</el-radio-button>
+      <el-radio-group
+        v-model="drMode"
+        size="small"
+      >
+        <el-radio-button label="same-city">
+          同城双活
+        </el-radio-button>
+        <el-radio-button label="remote">
+          异地灾备
+        </el-radio-button>
+        <el-radio-button label="three-center">
+          两地三中心
+        </el-radio-button>
+        <el-radio-button label="switchover">
+          故障切换
+        </el-radio-button>
       </el-radio-group>
 
-      <el-switch v-model="showRPO" active-text="显示 RPO/RTO" style="margin-left: 20px" />
+      <el-switch
+        v-model="showRPO"
+        active-text="显示 RPO/RTO"
+        style="margin-left: 20px"
+      />
     </div>
 
     <!-- 灾备架构图 -->
     <div class="dr-architecture">
       <!-- 生产中心 -->
-      <div class="dr-center production" :class="{ degraded: drMode === 'switchover' && switchoverStep >= 2 }">
+      <div
+        class="dr-center production"
+        :class="{ degraded: drMode === 'switchover' && switchoverStep >= 2 }"
+      >
         <div class="center-header">
-          <div class="center-badge production">生产</div>
-          <div class="center-title">生产中心 (Region A)</div>
-          <div class="center-location">📍 北京</div>
+          <div class="center-badge production">
+            生产
+          </div>
+          <div class="center-title">
+            生产中心 (Region A)
+          </div>
+          <div class="center-location">
+            📍 北京
+          </div>
         </div>
 
         <div class="center-content">
           <!-- 可用区 A -->
-          <div class="az-block" :class="{ failed: drMode === 'switchover' && switchoverStep >= 1 }">
+          <div
+            class="az-block"
+            :class="{ failed: drMode === 'switchover' && switchoverStep >= 1 }"
+          >
             <div class="az-header">
               <span class="az-name">可用区 A</span>
-              <span class="az-status" :class="getAzStatus('A')">{{ getAzStatusText('A') }}</span>
+              <span
+                class="az-status"
+                :class="getAzStatus('A')"
+              >{{ getAzStatusText('A') }}</span>
             </div>
 
             <div class="az-resources">
               <div class="resource-group">
-                <div class="group-title">计算</div>
+                <div class="group-title">
+                  计算
+                </div>
                 <div class="resource-tags">
                   <span class="tag">ECS × 8</span>
                   <span class="tag primary">SLB 主</span>
@@ -40,7 +72,9 @@
               </div>
 
               <div class="resource-group">
-                <div class="group-title">数据库</div>
+                <div class="group-title">
+                  数据库
+                </div>
                 <div class="resource-tags">
                   <span class="tag primary">RDS 主</span>
                   <span class="tag">Redis 主</span>
@@ -50,7 +84,10 @@
           </div>
 
           <!-- 可用区 B (同城灾备) -->
-          <div class="az-block standby" v-if="drMode !== 'remote'">
+          <div
+            v-if="drMode !== 'remote'"
+            class="az-block standby"
+          >
             <div class="az-header">
               <span class="az-name">可用区 B</span>
               <span class="az-status standby">热备</span>
@@ -58,7 +95,9 @@
 
             <div class="az-resources">
               <div class="resource-group">
-                <div class="group-title">计算</div>
+                <div class="group-title">
+                  计算
+                </div>
                 <div class="resource-tags">
                   <span class="tag">ECS × 6</span>
                   <span class="tag standby">SLB 备</span>
@@ -66,7 +105,9 @@
               </div>
 
               <div class="resource-group">
-                <div class="group-title">数据库</div>
+                <div class="group-title">
+                  数据库
+                </div>
                 <div class="resource-tags">
                   <span class="tag standby">RDS 备</span>
                   <span class="tag">Redis 备</span>
@@ -77,7 +118,10 @@
         </div>
 
         <!-- RPO/RTO 指示器 -->
-        <div class="rpo-indicator" v-if="showRPO">
+        <div
+          v-if="showRPO"
+          class="rpo-indicator"
+        >
           <div class="rpo-item">
             <span class="rpo-label">RPO</span>
             <span class="rpo-value">{{ getRPO() }}</span>
@@ -91,37 +135,68 @@
 
       <!-- 复制链路 -->
       <div class="replication-links">
-        <div class="link-group same-city" v-if="drMode === 'same-city' || drMode === 'three-center'">
-          <div class="link-line"></div>
-          <div class="link-label">同步复制</div>
-          <div class="link-bandwidth">延迟 &lt; 5ms</div>
+        <div
+          v-if="drMode === 'same-city' || drMode === 'three-center'"
+          class="link-group same-city"
+        >
+          <div class="link-line" />
+          <div class="link-label">
+            同步复制
+          </div>
+          <div class="link-bandwidth">
+            延迟 &lt; 5ms
+          </div>
         </div>
 
-        <div class="link-group remote" v-if="drMode === 'remote' || drMode === 'three-center'">
-          <div class="link-line async"></div>
-          <div class="link-label">异步复制</div>
-          <div class="link-bandwidth">RPO ≈ 5s</div>
+        <div
+          v-if="drMode === 'remote' || drMode === 'three-center'"
+          class="link-group remote"
+        >
+          <div class="link-line async" />
+          <div class="link-label">
+            异步复制
+          </div>
+          <div class="link-bandwidth">
+            RPO ≈ 5s
+          </div>
         </div>
       </div>
 
       <!-- 灾备中心 -->
-      <div class="dr-center disaster-recovery" :class="{ active: drMode === 'switchover' && switchoverStep >= 2 }">
+      <div
+        class="dr-center disaster-recovery"
+        :class="{ active: drMode === 'switchover' && switchoverStep >= 2 }"
+      >
         <div class="center-header">
-          <div class="center-badge dr">灾备</div>
-          <div class="center-title">灾备中心 (Region B)</div>
-          <div class="center-location">📍 {{ drMode === 'same-city' ? '北京 (可用区 C)' : '上海' }}</div>
+          <div class="center-badge dr">
+            灾备
+          </div>
+          <div class="center-title">
+            灾备中心 (Region B)
+          </div>
+          <div class="center-location">
+            📍 {{ drMode === 'same-city' ? '北京 (可用区 C)' : '上海' }}
+          </div>
         </div>
 
         <div class="center-content">
-          <div class="az-block dr-standby" :class="{ promoted: drMode === 'switchover' && switchoverStep >= 3 }">
+          <div
+            class="az-block dr-standby"
+            :class="{ promoted: drMode === 'switchover' && switchoverStep >= 3 }"
+          >
             <div class="az-header">
               <span class="az-name">{{ drMode === 'same-city' ? '可用区 C' : '可用区 A' }}</span>
-              <span class="az-status" :class="getDrAzStatus()">{{ getDrAzStatusText() }}</span>
+              <span
+                class="az-status"
+                :class="getDrAzStatus()"
+              >{{ getDrAzStatusText() }}</span>
             </div>
 
             <div class="az-resources">
               <div class="resource-group">
-                <div class="group-title">计算</div>
+                <div class="group-title">
+                  计算
+                </div>
                 <div class="resource-tags">
                   <span class="tag">ECS × 4</span>
                   <span :class="['tag', drMode === 'switchover' && switchoverStep >= 3 ? 'primary' : 'standby']">
@@ -131,7 +206,9 @@
               </div>
 
               <div class="resource-group">
-                <div class="group-title">数据库</div>
+                <div class="group-title">
+                  数据库
+                </div>
                 <div class="resource-tags">
                   <span :class="['tag', drMode === 'switchover' && switchoverStep >= 3 ? 'primary' : 'standby']">
                     RDS {{ drMode === 'switchover' && switchoverStep >= 3 ? '主' : '备' }}
@@ -146,61 +223,137 @@
     </div>
 
     <!-- 切换进度 (仅在故障切换模式显示) -->
-    <div class="switchover-progress" v-if="drMode === 'switchover'">
-      <div class="progress-title">故障切换进度</div>
-      <el-steps :active="switchoverStep" finish-status="success">
-        <el-step title="检测故障" description="监控系统发现可用区 A 故障" />
-        <el-step title="停止写入" description="切离主库，暂停业务写入" />
-        <el-step title="提升备库" description="灾备中心数据库提升为主库" />
-        <el-step title="流量切换" description="DNS 切换到灾备中心 SLB" />
-        <el-step title="恢复服务" description="业务在灾备中心正常运行" />
+    <div
+      v-if="drMode === 'switchover'"
+      class="switchover-progress"
+    >
+      <div class="progress-title">
+        故障切换进度
+      </div>
+      <el-steps
+        :active="switchoverStep"
+        finish-status="success"
+      >
+        <el-step
+          title="检测故障"
+          description="监控系统发现可用区 A 故障"
+        />
+        <el-step
+          title="停止写入"
+          description="切离主库，暂停业务写入"
+        />
+        <el-step
+          title="提升备库"
+          description="灾备中心数据库提升为主库"
+        />
+        <el-step
+          title="流量切换"
+          description="DNS 切换到灾备中心 SLB"
+        />
+        <el-step
+          title="恢复服务"
+          description="业务在灾备中心正常运行"
+        />
       </el-steps>
 
       <div class="progress-actions">
-        <el-button @click="prevStep" :disabled="switchoverStep === 0">上一步</el-button>
-        <el-button type="primary" @click="nextStep" :disabled="switchoverStep === 5">下一步</el-button>
-        <el-button @click="resetSwitchover">重置</el-button>
+        <el-button
+          :disabled="switchoverStep === 0"
+          @click="prevStep"
+        >
+          上一步
+        </el-button>
+        <el-button
+          type="primary"
+          :disabled="switchoverStep === 5"
+          @click="nextStep"
+        >
+          下一步
+        </el-button>
+        <el-button @click="resetSwitchover">
+          重置
+        </el-button>
       </div>
     </div>
 
     <!-- 架构对比表 -->
     <div class="comparison-section">
-      <div class="comparison-title">📊 灾备架构方案对比</div>
+      <div class="comparison-title">
+        📊 灾备架构方案对比
+      </div>
 
       <div class="comparison-table">
         <div class="table-header">
-          <div class="header-cell">对比维度</div>
-          <div class="header-cell">同城双活</div>
-          <div class="header-cell">异地灾备</div>
-          <div class="header-cell">两地三中心</div>
+          <div class="header-cell">
+            对比维度
+          </div>
+          <div class="header-cell">
+            同城双活
+          </div>
+          <div class="header-cell">
+            异地灾备
+          </div>
+          <div class="header-cell">
+            两地三中心
+          </div>
         </div>
 
-        <div class="table-row" v-for="row in drComparisonData" :key="row.dimension">
-          <div class="cell dimension">{{ row.dimension }}</div>
-          <div class="cell">{{ row.sameCity }}</div>
-          <div class="cell">{{ row.remote }}</div>
-          <div class="cell highlight">{{ row.threeCenter }}</div>
+        <div
+          v-for="row in drComparisonData"
+          :key="row.dimension"
+          class="table-row"
+        >
+          <div class="cell dimension">
+            {{ row.dimension }}
+          </div>
+          <div class="cell">
+            {{ row.sameCity }}
+          </div>
+          <div class="cell">
+            {{ row.remote }}
+          </div>
+          <div class="cell highlight">
+            {{ row.threeCenter }}
+          </div>
         </div>
       </div>
     </div>
 
     <!-- RPO/RTO 说明 -->
     <div class="rpo-rto-explanation">
-      <div class="explanation-title">💡 RPO 与 RTO 说明</div>
+      <div class="explanation-title">
+        💡 RPO 与 RTO 说明
+      </div>
 
       <div class="explanation-grid">
         <div class="explanation-card">
-          <div class="card-icon">⏰</div>
-          <div class="card-title">RPO (恢复点目标)</div>
-          <div class="card-desc">可接受的数据丢失量，即最后一次备份到故障发生的时间间隔</div>
-          <div class="card-example">示例：RPO = 5秒，意味着最多丢失5秒的数据</div>
+          <div class="card-icon">
+            ⏰
+          </div>
+          <div class="card-title">
+            RPO (恢复点目标)
+          </div>
+          <div class="card-desc">
+            可接受的数据丢失量，即最后一次备份到故障发生的时间间隔
+          </div>
+          <div class="card-example">
+            示例：RPO = 5秒，意味着最多丢失5秒的数据
+          </div>
         </div>
 
         <div class="explanation-card">
-          <div class="card-icon">🔄</div>
-          <div class="card-title">RTO (恢复时间目标)</div>
-          <div class="card-desc">从故障发生到业务恢复所需的最长时间</div>
-          <div class="card-example">示例：RTO = 30分钟，意味着30分钟内必须恢复服务</div>
+          <div class="card-icon">
+            🔄
+          </div>
+          <div class="card-title">
+            RTO (恢复时间目标)
+          </div>
+          <div class="card-desc">
+            从故障发生到业务恢复所需的最长时间
+          </div>
+          <div class="card-example">
+            示例：RTO = 30分钟，意味着30分钟内必须恢复服务
+          </div>
         </div>
       </div>
     </div>

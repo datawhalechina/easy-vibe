@@ -1,13 +1,19 @@
 <template>
   <div class="weighted-routing-demo">
     <div class="header">
-      <div class="title">加权路由策略</div>
-      <div class="subtitle">按性能、成本、地理位置智能分配流量</div>
+      <div class="title">
+        加权路由策略
+      </div>
+      <div class="subtitle">
+        按性能、成本、地理位置智能分配流量
+      </div>
     </div>
 
     <!-- 策略选择器 -->
     <div class="strategy-selector">
-      <div class="strategy-label">加权策略：</div>
+      <div class="strategy-label">
+        加权策略：
+      </div>
       <div class="strategy-buttons">
         <button
           v-for="strategy in strategies"
@@ -26,16 +32,20 @@
     <div class="visualization">
       <!-- 流量进入 -->
       <div class="traffic-incoming">
-        <div class="traffic-label">总流量</div>
-        <div class="traffic-value">{{ totalTraffic }} req/s</div>
+        <div class="traffic-label">
+          总流量
+        </div>
+        <div class="traffic-value">
+          {{ totalTraffic }} req/s
+        </div>
         <div class="traffic-slider">
           <input
-            type="range"
             v-model.number="totalTraffic"
+            type="range"
             min="100"
             max="10000"
             step="100"
-          />
+          >
           <div class="slider-labels">
             <span>100</span>
             <span>5000</span>
@@ -46,7 +56,9 @@
 
       <!-- 权重分配可视化 -->
       <div class="weight-allocation">
-        <div class="allocation-title">权重分配</div>
+        <div class="allocation-title">
+          权重分配
+        </div>
         <div class="allocation-bars">
           <div
             v-for="(server, index) in weightedServers"
@@ -54,10 +66,16 @@
             class="allocation-item"
           >
             <div class="server-info">
-              <div class="server-icon">🖥️</div>
+              <div class="server-icon">
+                🖥️
+              </div>
               <div class="server-details">
-                <div class="server-name">{{ server.name }}</div>
-                <div class="server-specs">{{ server.specs }}</div>
+                <div class="server-name">
+                  {{ server.name }}
+                </div>
+                <div class="server-specs">
+                  {{ server.specs }}
+                </div>
               </div>
             </div>
             <div class="weight-bar-container">
@@ -76,13 +94,13 @@
             </div>
             <div class="weight-control">
               <input
-                type="range"
                 v-model.number="server.weight"
+                type="range"
                 min="1"
                 max="10"
                 step="1"
                 class="weight-slider"
-              />
+              >
               <span class="weight-label">权重: {{ server.weight }}</span>
             </div>
           </div>
@@ -91,7 +109,9 @@
 
       <!-- 实时流量动画 -->
       <div class="traffic-animation">
-        <div class="animation-title">实时流量</div>
+        <div class="animation-title">
+          实时流量
+        </div>
         <div class="traffic-flows">
           <div
             v-for="(flow, index) in trafficFlows"
@@ -99,7 +119,10 @@
             class="flow-item"
             :style="{ animationDelay: flow.delay + 's' }"
           >
-            <div class="flow-packet" :style="{ background: flow.color }"></div>
+            <div
+              class="flow-packet"
+              :style="{ background: flow.color }"
+            />
           </div>
         </div>
         <div class="server-indicators">
@@ -117,7 +140,9 @@
 
     <!-- 策略详情对比 -->
     <div class="strategy-comparison">
-      <div class="comparison-title">加权策略对比</div>
+      <div class="comparison-title">
+        加权策略对比
+      </div>
       <div class="comparison-grid">
         <div
           v-for="strategy in strategies"
@@ -130,11 +155,20 @@
             <span class="card-name">{{ strategy.name }}</span>
           </div>
           <div class="card-body">
-            <p class="card-desc">{{ strategy.description }}</p>
+            <p class="card-desc">
+              {{ strategy.description }}
+            </p>
             <div class="use-cases">
-              <div class="use-case-title">适用场景：</div>
+              <div class="use-case-title">
+                适用场景：
+              </div>
               <ul>
-                <li v-for="useCase in strategy.useCases" :key="useCase">{{ useCase }}</li>
+                <li
+                  v-for="useCase in strategy.useCases"
+                  :key="useCase"
+                >
+                  {{ useCase }}
+                </li>
               </ul>
             </div>
           </div>

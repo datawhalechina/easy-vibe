@@ -18,39 +18,67 @@ const props = defineProps({
 <template>
   <div class="summary-card">
     <div class="summary-header">
-      <div class="header-icon">📚</div>
+      <div class="header-icon">
+        📚
+      </div>
       <div class="header-content">
-        <div class="summary-title">{{ title }}</div>
+        <div class="summary-title">
+          {{ title }}
+        </div>
       </div>
     </div>
 
     <div class="summary-body">
       <!-- Sections -->
-      <div v-if="sections.length > 0" class="sections-container">
-        <div v-for="(section, index) in sections" :key="index" class="section-item">
+      <div
+        v-if="sections.length > 0"
+        class="sections-container"
+      >
+        <div
+          v-for="(section, index) in sections"
+          :key="index"
+          class="section-item"
+        >
           <div class="section-header">
             <span class="section-number">{{ section.number }}</span>
             <span class="section-title">{{ section.title }}</span>
           </div>
           <ul class="section-list">
-            <li v-for="(item, itemIndex) in section.items" :key="itemIndex" class="list-item">
+            <li
+              v-for="(item, itemIndex) in section.items"
+              :key="itemIndex"
+              class="list-item"
+            >
               <span class="item-marker">•</span>
-              <span class="item-content" v-html="item"></span>
+              <span
+                class="item-content"
+                v-html="item"
+              />
             </li>
           </ul>
         </div>
       </div>
 
       <!-- Outputs -->
-      <div v-if="outputs.length > 0" class="outputs-section">
+      <div
+        v-if="outputs.length > 0"
+        class="outputs-section"
+      >
         <div class="outputs-header">
           <span class="outputs-icon">📦</span>
           <span class="outputs-title">本幕输出：</span>
         </div>
         <ul class="outputs-list">
-          <li v-for="(output, index) in outputs" :key="index" class="output-item">
+          <li
+            v-for="(output, index) in outputs"
+            :key="index"
+            class="output-item"
+          >
             <span class="output-marker">✓</span>
-            <span class="output-content" v-html="output"></span>
+            <span
+              class="output-content"
+              v-html="output"
+            />
           </li>
         </ul>
       </div>

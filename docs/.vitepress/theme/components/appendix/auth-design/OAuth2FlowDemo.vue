@@ -5,7 +5,9 @@
 <template>
   <div class="oauth2-demo">
     <div class="header">
-      <div class="title">🔑 OAuth2：第三方登录（授权码流程）</div>
+      <div class="title">
+        🔑 OAuth2：第三方登录（授权码流程）
+      </div>
       <div class="subtitle">
         用最常见的 Authorization Code Flow（建议配合
         PKCE）。默认手动推进，不自动下一步。
@@ -13,34 +15,64 @@
     </div>
 
     <div class="controls">
-      <button class="btn primary" @click="start" :disabled="step !== 0">
-        开始
-      </button>
-      <button class="btn" @click="prev" :disabled="step <= 1">上一步</button>
       <button
         class="btn primary"
-        @click="next"
+        :disabled="step !== 0"
+        @click="start"
+      >
+        开始
+      </button>
+      <button
+        class="btn"
+        :disabled="step <= 1"
+        @click="prev"
+      >
+        上一步
+      </button>
+      <button
+        class="btn primary"
         :disabled="step === 0 || step >= maxStep"
+        @click="next"
       >
         下一步
       </button>
-      <button class="btn" @click="reset">重置</button>
-      <button class="btn" @click="copy(currentCmd)" :disabled="!currentCmd">
+      <button
+        class="btn"
+        @click="reset"
+      >
+        重置
+      </button>
+      <button
+        class="btn"
+        :disabled="!currentCmd"
+        @click="copy(currentCmd)"
+      >
         {{ copied ? '已复制' : '复制命令' }}
       </button>
     </div>
 
-    <div v-if="step > 0" class="progress">
+    <div
+      v-if="step > 0"
+      class="progress"
+    >
       Step {{ step }} / {{ maxStep }} · {{ steps[step - 1]?.title }}
     </div>
 
     <div class="grid">
       <div class="card">
-        <div class="card-title">角色</div>
+        <div class="card-title">
+          角色
+        </div>
         <div class="role">
-          <div class="pill">Client（你的应用）</div>
-          <div class="pill">Authorization Server（微信/Google 等）</div>
-          <div class="pill">Resource Server（你的 API）</div>
+          <div class="pill">
+            Client（你的应用）
+          </div>
+          <div class="pill">
+            Authorization Server（微信/Google 等）
+          </div>
+          <div class="pill">
+            Resource Server（你的 API）
+          </div>
         </div>
         <div class="desc">
           OAuth2
@@ -49,17 +81,30 @@
       </div>
 
       <div class="card">
-        <div class="card-title">本步要做什么</div>
-        <div class="desc">{{ steps[step - 1]?.desc || '点击开始' }}</div>
-        <div v-if="steps[step - 1]?.warn" class="warn">
-          <div class="warn-title">注意</div>
-          <div class="warn-text">{{ steps[step - 1]?.warn }}</div>
+        <div class="card-title">
+          本步要做什么
+        </div>
+        <div class="desc">
+          {{ steps[step - 1]?.desc || '点击开始' }}
+        </div>
+        <div
+          v-if="steps[step - 1]?.warn"
+          class="warn"
+        >
+          <div class="warn-title">
+            注意
+          </div>
+          <div class="warn-text">
+            {{ steps[step - 1]?.warn }}
+          </div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">请求/命令示例（可照抄）</div>
+      <div class="card-title">
+        请求/命令示例（可照抄）
+      </div>
       <pre
         class="code"
       ><code>{{ currentCmd || '（点击开始后显示）' }}</code></pre>
@@ -70,7 +115,9 @@
     </div>
 
     <div class="card">
-      <div class="card-title">你真正需要记住的 4 件事</div>
+      <div class="card-title">
+        你真正需要记住的 4 件事
+      </div>
       <ul class="list">
         <li>
           <strong>redirect_uri 必须白名单：</strong>避免被人把 code

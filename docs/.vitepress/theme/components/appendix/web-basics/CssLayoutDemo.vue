@@ -68,7 +68,10 @@
     </div>
 
     <div class="preview-area">
-      <div class="container" :style="containerStyle">
+      <div
+        class="container"
+        :style="containerStyle"
+      >
         <div
           v-for="n in itemCount"
           :key="n"
@@ -81,7 +84,9 @@
     </div>
 
     <div class="code-display">
-      <div class="code-header">👆 点击代码行可以暂时禁用该属性</div>
+      <div class="code-header">
+        👆 点击代码行可以暂时禁用该属性
+      </div>
       <pre>.container {
   display: flex;
   <div 

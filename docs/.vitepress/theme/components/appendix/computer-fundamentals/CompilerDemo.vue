@@ -8,7 +8,9 @@
 
     <div class="demo-content">
       <div class="pipeline-visual">
-        <div class="pipeline-title">编译流程</div>
+        <div class="pipeline-title">
+          编译流程
+        </div>
         <div class="pipeline-stages">
           <div 
             v-for="(stage, i) in stages" 
@@ -16,39 +18,73 @@
             :class="['stage', { active: activeStage === i }]"
             @click="activeStage = i"
           >
-            <div class="stage-num">{{ i + 1 }}</div>
-            <div class="stage-name">{{ stage.name }}</div>
-            <div class="stage-output">{{ stage.output }}</div>
+            <div class="stage-num">
+              {{ i + 1 }}
+            </div>
+            <div class="stage-name">
+              {{ stage.name }}
+            </div>
+            <div class="stage-output">
+              {{ stage.output }}
+            </div>
           </div>
-          <div class="stage-arrow" v-for="i in stages.length - 1" :key="'arrow-' + i">→</div>
+          <div
+            v-for="i in stages.length - 1"
+            :key="'arrow-' + i"
+            class="stage-arrow"
+          >
+            →
+          </div>
         </div>
       </div>
 
-      <div class="stage-detail" v-if="currentStage">
+      <div
+        v-if="currentStage"
+        class="stage-detail"
+      >
         <div class="detail-header">
           <span class="detail-name">{{ currentStage.name }}</span>
         </div>
-        <div class="detail-desc">{{ currentStage.desc }}</div>
+        <div class="detail-desc">
+          {{ currentStage.desc }}
+        </div>
         <div class="detail-tasks">
-          <div class="task-title">主要任务</div>
+          <div class="task-title">
+            主要任务
+          </div>
           <ul>
-            <li v-for="(task, j) in currentStage.tasks" :key="j">{{ task }}</li>
+            <li
+              v-for="(task, j) in currentStage.tasks"
+              :key="j"
+            >
+              {{ task }}
+            </li>
           </ul>
         </div>
         <div class="detail-example">
-          <div class="example-title">示例</div>
+          <div class="example-title">
+            示例
+          </div>
           <pre><code>{{ currentStage.example }}</code></pre>
         </div>
       </div>
 
       <div class="interactive-demo">
-        <div class="demo-title">词法分析演示</div>
+        <div class="demo-title">
+          词法分析演示
+        </div>
         <div class="lexer-input">
           <label>输入代码：</label>
-          <input v-model="sourceCode" type="text" placeholder="例如: int x = 10 + 5;" />
+          <input
+            v-model="sourceCode"
+            type="text"
+            placeholder="例如: int x = 10 + 5;"
+          >
         </div>
         <div class="lexer-output">
-          <div class="output-title">词法单元 (Tokens)</div>
+          <div class="output-title">
+            词法单元 (Tokens)
+          </div>
           <div class="tokens">
             <div 
               v-for="(token, i) in tokens" 
@@ -63,20 +99,44 @@
       </div>
 
       <div class="ast-demo">
-        <div class="demo-title">语法树 (AST) 可视化</div>
+        <div class="demo-title">
+          语法树 (AST) 可视化
+        </div>
         <div class="ast-input">
           <label>表达式：</label>
-          <input v-model="expression" type="text" placeholder="例如: 1 + 2 * 3" />
+          <input
+            v-model="expression"
+            type="text"
+            placeholder="例如: 1 + 2 * 3"
+          >
         </div>
         <div class="ast-visual">
-          <div class="ast-node root" v-if="ast">
-            <div class="node-value">{{ ast.value }}</div>
-            <div class="node-children" v-if="ast.left || ast.right">
-              <div class="ast-node left" v-if="ast.left">
-                <div class="node-value">{{ ast.left.value }}</div>
+          <div
+            v-if="ast"
+            class="ast-node root"
+          >
+            <div class="node-value">
+              {{ ast.value }}
+            </div>
+            <div
+              v-if="ast.left || ast.right"
+              class="node-children"
+            >
+              <div
+                v-if="ast.left"
+                class="ast-node left"
+              >
+                <div class="node-value">
+                  {{ ast.left.value }}
+                </div>
               </div>
-              <div class="ast-node right" v-if="ast.right">
-                <div class="node-value">{{ ast.right.value }}</div>
+              <div
+                v-if="ast.right"
+                class="ast-node right"
+              >
+                <div class="node-value">
+                  {{ ast.right.value }}
+                </div>
               </div>
             </div>
           </div>
@@ -84,14 +144,30 @@
       </div>
 
       <div class="comparison-section">
-        <div class="section-title">编译型 vs 解释型 vs JIT</div>
+        <div class="section-title">
+          编译型 vs 解释型 vs JIT
+        </div>
         <div class="comparison-grid">
-          <div class="comparison-item" v-for="(item, i) in executionModels" :key="i">
-            <div class="item-name">{{ item.name }}</div>
-            <div class="item-flow">{{ item.flow }}</div>
-            <div class="item-pros">{{ item.pros }}</div>
-            <div class="item-cons">{{ item.cons }}</div>
-            <div class="item-langs">{{ item.langs }}</div>
+          <div
+            v-for="(item, i) in executionModels"
+            :key="i"
+            class="comparison-item"
+          >
+            <div class="item-name">
+              {{ item.name }}
+            </div>
+            <div class="item-flow">
+              {{ item.flow }}
+            </div>
+            <div class="item-pros">
+              {{ item.pros }}
+            </div>
+            <div class="item-cons">
+              {{ item.cons }}
+            </div>
+            <div class="item-langs">
+              {{ item.langs }}
+            </div>
           </div>
         </div>
       </div>

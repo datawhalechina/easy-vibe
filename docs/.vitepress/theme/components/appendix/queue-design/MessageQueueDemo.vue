@@ -5,26 +5,44 @@
 <template>
   <div class="mq-demo">
     <div class="header">
-      <div class="title">消息队列：异步通信的"缓冲器"</div>
-      <div class="subtitle">观察消息如何通过队列实现异步处理</div>
+      <div class="title">
+        消息队列：异步通信的"缓冲器"
+      </div>
+      <div class="subtitle">
+        观察消息如何通过队列实现异步处理
+      </div>
     </div>
 
     <div class="flow-container">
       <div class="section producer">
-        <div class="section-title">生产者 Producer</div>
-        <div class="box producer-box">
-          <div class="icon">📤</div>
-          <div class="label">订单服务</div>
+        <div class="section-title">
+          生产者 Producer
         </div>
-        <button class="send-btn" @click="sendMessage" :disabled="sending">
+        <div class="box producer-box">
+          <div class="icon">
+            📤
+          </div>
+          <div class="label">
+            订单服务
+          </div>
+        </div>
+        <button
+          class="send-btn"
+          :disabled="sending"
+          @click="sendMessage"
+        >
           {{ sending ? '发送中...' : '发送消息' }}
         </button>
       </div>
 
       <div class="section broker">
-        <div class="section-title">消息代理 Broker</div>
+        <div class="section-title">
+          消息代理 Broker
+        </div>
         <div class="queue-container">
-          <div class="queue-label">消息队列 Queue</div>
+          <div class="queue-label">
+            消息队列 Queue
+          </div>
           <div class="queue-box">
             <transition-group name="message">
               <div
@@ -36,22 +54,43 @@
                 #{{ msg.id }}
               </div>
             </transition-group>
-            <div v-if="messages.length === 0" class="empty-queue">队列为空</div>
+            <div
+              v-if="messages.length === 0"
+              class="empty-queue"
+            >
+              队列为空
+            </div>
           </div>
           <div class="queue-stats">
-            <div class="stat">消息数: {{ messages.length }}</div>
-            <div class="stat">容量: {{ queueCapacity }}</div>
+            <div class="stat">
+              消息数: {{ messages.length }}
+            </div>
+            <div class="stat">
+              容量: {{ queueCapacity }}
+            </div>
           </div>
         </div>
       </div>
 
       <div class="section consumer">
-        <div class="section-title">消费者 Consumer</div>
-        <div class="box consumer-box" :class="{ processing: isProcessing }">
-          <div class="icon">{{ isProcessing ? '⚙️' : '📥' }}</div>
-          <div class="label">{{ isProcessing ? '处理中...' : '库存服务' }}</div>
+        <div class="section-title">
+          消费者 Consumer
         </div>
-        <div v-if="processedMessage" class="processed-msg">
+        <div
+          class="box consumer-box"
+          :class="{ processing: isProcessing }"
+        >
+          <div class="icon">
+            {{ isProcessing ? '⚙️' : '📥' }}
+          </div>
+          <div class="label">
+            {{ isProcessing ? '处理中...' : '库存服务' }}
+          </div>
+        </div>
+        <div
+          v-if="processedMessage"
+          class="processed-msg"
+        >
           已处理: #{{ processedMessage }}
         </div>
       </div>
@@ -60,41 +99,78 @@
     <div class="controls">
       <div class="control">
         <label>
-          <input v-model="autoConsume" type="checkbox" />
+          <input
+            v-model="autoConsume"
+            type="checkbox"
+          >
           自动消费
         </label>
       </div>
       <div class="control">
         <label>
-          <input v-model="showSync" type="checkbox" />
+          <input
+            v-model="showSync"
+            type="checkbox"
+          >
           显示同步对比
         </label>
       </div>
     </div>
 
-    <div v-if="showSync" class="comparison">
+    <div
+      v-if="showSync"
+      class="comparison"
+    >
       <div class="compare-col sync">
-        <div class="compare-title">同步调用 (Synchronous)</div>
-        <div class="compare-flow">
-          <div class="flow-item">A 调用 B</div>
-          <div class="arrow">⬇️</div>
-          <div class="flow-item wait">B 处理 (阻塞等待)</div>
-          <div class="arrow">⬇️</div>
-          <div class="flow-item">B 返回结果</div>
+        <div class="compare-title">
+          同步调用 (Synchronous)
         </div>
-        <div class="compare-desc">总耗时 = 300ms + 500ms = 800ms</div>
+        <div class="compare-flow">
+          <div class="flow-item">
+            A 调用 B
+          </div>
+          <div class="arrow">
+            ⬇️
+          </div>
+          <div class="flow-item wait">
+            B 处理 (阻塞等待)
+          </div>
+          <div class="arrow">
+            ⬇️
+          </div>
+          <div class="flow-item">
+            B 返回结果
+          </div>
+        </div>
+        <div class="compare-desc">
+          总耗时 = 300ms + 500ms = 800ms
+        </div>
       </div>
 
       <div class="compare-col async">
-        <div class="compare-title">异步调用 (Asynchronous)</div>
-        <div class="compare-flow">
-          <div class="flow-item">A 发送消息</div>
-          <div class="arrow">⬇️</div>
-          <div class="flow-item highlight">消息队列缓冲</div>
-          <div class="arrow">⬇️</div>
-          <div class="flow-item">B 稍后处理</div>
+        <div class="compare-title">
+          异步调用 (Asynchronous)
         </div>
-        <div class="compare-desc">A 只需 10ms，B 在后台慢慢处理</div>
+        <div class="compare-flow">
+          <div class="flow-item">
+            A 发送消息
+          </div>
+          <div class="arrow">
+            ⬇️
+          </div>
+          <div class="flow-item highlight">
+            消息队列缓冲
+          </div>
+          <div class="arrow">
+            ⬇️
+          </div>
+          <div class="flow-item">
+            B 稍后处理
+          </div>
+        </div>
+        <div class="compare-desc">
+          A 只需 10ms，B 在后台慢慢处理
+        </div>
       </div>
     </div>
   </div>

@@ -29,32 +29,55 @@
 
     <div class="demo-content">
       <!-- 银行转账场景 -->
-      <div v-if="scenario === 'transfer'" class="transfer-scenario">
+      <div
+        v-if="scenario === 'transfer'"
+        class="transfer-scenario"
+      >
         <div class="scenario-header">
-          <div class="title">❌ 非幂等操作: 银行转账</div>
-          <div class="subtitle">重复消费会导致多次扣款</div>
+          <div class="title">
+            ❌ 非幂等操作: 银行转账
+          </div>
+          <div class="subtitle">
+            重复消费会导致多次扣款
+          </div>
         </div>
 
         <div class="account-system">
           <div class="account-card sender">
-            <div class="account-name">发送方</div>
+            <div class="account-name">
+              发送方
+            </div>
             <div class="account-balance">
               余额: ¥<span class="balance-amount">{{ senderBalance }}</span>
             </div>
           </div>
 
           <div class="transfer-flow">
-            <div class="flow-animation" :class="{ active: isTransferring }">
-              <div class="money-icon">💰</div>
-              <div class="flow-label">转账 ¥100</div>
+            <div
+              class="flow-animation"
+              :class="{ active: isTransferring }"
+            >
+              <div class="money-icon">
+                💰
+              </div>
+              <div class="flow-label">
+                转账 ¥100
+              </div>
             </div>
-            <div class="retry-info" v-if="retryCount > 0">
-              <div class="retry-badge">重试 {{ retryCount }} 次</div>
+            <div
+              v-if="retryCount > 0"
+              class="retry-info"
+            >
+              <div class="retry-badge">
+                重试 {{ retryCount }} 次
+              </div>
             </div>
           </div>
 
           <div class="account-card receiver">
-            <div class="account-name">接收方</div>
+            <div class="account-name">
+              接收方
+            </div>
             <div class="account-balance">
               余额: ¥<span class="balance-amount">{{ receiverBalance }}</span>
             </div>
@@ -71,7 +94,7 @@
                   :class="{ active: useIdempotence }"
                   @click="useIdempotence = !useIdempotence"
                 >
-                  <span class="toggle-slider"></span>
+                  <span class="toggle-slider" />
                 </button>
                 <span class="toggle-label">{{ useIdempotence ? '已启用' : '未启用' }}</span>
               </div>
@@ -79,14 +102,17 @@
 
             <button
               class="action-btn"
-              @click="simulateTransfer"
               :disabled="isTransferring"
+              @click="simulateTransfer"
             >
               {{ isTransferring ? '处理中...' : '模拟重复消费' }}
             </button>
           </div>
 
-          <div class="idempotence-info" v-if="useIdempotence">
+          <div
+            v-if="useIdempotence"
+            class="idempotence-info"
+          >
             <div class="info-item">
               <span class="info-icon">🔑</span>
               <span class="info-text">每笔交易有唯一ID,重复请求被自动过滤</span>
@@ -95,7 +121,9 @@
         </div>
 
         <div class="result-log">
-          <div class="log-header">处理日志</div>
+          <div class="log-header">
+            处理日志
+          </div>
           <div class="log-list">
             <div
               v-for="(log, index) in logs"
@@ -106,7 +134,10 @@
               <span class="log-time">{{ log.time }}</span>
               <span class="log-message">{{ log.message }}</span>
             </div>
-            <div v-if="logs.length === 0" class="log-empty">
+            <div
+              v-if="logs.length === 0"
+              class="log-empty"
+            >
               暂无日志,点击按钮开始模拟
             </div>
           </div>
@@ -114,32 +145,53 @@
 
         <div class="comparison-box">
           <div class="comparison-item bad">
-            <div class="comp-header">❌ 无幂等保护</div>
+            <div class="comp-header">
+              ❌ 无幂等保护
+            </div>
             <div class="comp-body">
-              <div class="comp-result">扣款 ¥{{ (retryCount + 1) * 100 }}</div>
-              <div class="comp-desc">重复消费造成多次扣款</div>
+              <div class="comp-result">
+                扣款 ¥{{ (retryCount + 1) * 100 }}
+              </div>
+              <div class="comp-desc">
+                重复消费造成多次扣款
+              </div>
             </div>
           </div>
           <div class="comparison-item good">
-            <div class="comp-header">✅ 有幂等保护</div>
+            <div class="comp-header">
+              ✅ 有幂等保护
+            </div>
             <div class="comp-body">
-              <div class="comp-result">扣款 ¥100</div>
-              <div class="comp-desc">重复请求被过滤,只扣一次</div>
+              <div class="comp-result">
+                扣款 ¥100
+              </div>
+              <div class="comp-desc">
+                重复请求被过滤,只扣一次
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 电梯按钮场景 -->
-      <div v-else class="elevator-scenario">
+      <div
+        v-else
+        class="elevator-scenario"
+      >
         <div class="scenario-header">
-          <div class="title">✅ 天然幂等操作: 电梯按钮</div>
-          <div class="subtitle">无论按多少次,电梯只响应一次</div>
+          <div class="title">
+            ✅ 天然幂等操作: 电梯按钮
+          </div>
+          <div class="subtitle">
+            无论按多少次,电梯只响应一次
+          </div>
         </div>
 
         <div class="elevator-system">
           <div class="elevator-panel">
-            <div class="panel-title">电梯按钮面板</div>
+            <div class="panel-title">
+              电梯按钮面板
+            </div>
             <div class="button-grid">
               <button
                 v-for="floor in floors"
@@ -169,8 +221,13 @@
                 <span class="floor-num">{{ floor }}F</span>
               </div>
             </div>
-            <div class="elevator-car" :style="{ bottom: elevatorPosition }">
-              <div class="car-icon">🛗</div>
+            <div
+              class="elevator-car"
+              :style="{ bottom: elevatorPosition }"
+            >
+              <div class="car-icon">
+                🛗
+              </div>
             </div>
           </div>
         </div>
@@ -178,7 +235,10 @@
         <div class="control-panel">
           <div class="control-item">
             <label>快速连按3次</label>
-            <button class="action-btn" @click="pressMultipleTimes">
+            <button
+              class="action-btn"
+              @click="pressMultipleTimes"
+            >
               🚀 连续点击
             </button>
           </div>
@@ -189,7 +249,9 @@
         </div>
 
         <div class="explanation-box">
-          <div class="explanation-title">为什么电梯按钮是幂等的?</div>
+          <div class="explanation-title">
+            为什么电梯按钮是幂等的?
+          </div>
           <div class="explanation-list">
             <div class="explanation-item">
               <span class="icon">✅</span>
@@ -209,7 +271,9 @@
     </div>
 
     <div class="principle-box">
-      <div class="principle-icon">🎯</div>
+      <div class="principle-icon">
+        🎯
+      </div>
       <div class="principle-content">
         <strong>幂等性核心原则:</strong>
         {{ scenario === 'transfer'

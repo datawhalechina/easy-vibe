@@ -235,16 +235,42 @@ const flatNext = () => {
 </script>
 
 <template>
-  <el-card class="sources-demo" shadow="hover">
+  <el-card
+    class="sources-demo"
+    shadow="hover"
+  >
     <template #header>
       <div class="header">
         <span class="title">Sources (源代码调试)</span>
         <div class="controls">
-            <el-button-group>
-                <el-button type="success" size="small" icon="VideoPlay" @click="flatRun" :disabled="isRunning && demoState.line !== -1 && !breakpoints.includes(demoState.line)">Run</el-button>
-                <el-button type="primary" size="small" icon="VideoPause" @click="flatResume" :disabled="!breakpoints.includes(demoState.line)">Resume</el-button>
-                <el-button type="info" size="small" icon="ArrowRight" @click="flatNext">Step</el-button>
-            </el-button-group>
+          <el-button-group>
+            <el-button
+              type="success"
+              size="small"
+              icon="VideoPlay"
+              :disabled="isRunning && demoState.line !== -1 && !breakpoints.includes(demoState.line)"
+              @click="flatRun"
+            >
+              Run
+            </el-button>
+            <el-button
+              type="primary"
+              size="small"
+              icon="VideoPause"
+              :disabled="!breakpoints.includes(demoState.line)"
+              @click="flatResume"
+            >
+              Resume
+            </el-button>
+            <el-button
+              type="info"
+              size="small"
+              icon="ArrowRight"
+              @click="flatNext"
+            >
+              Step
+            </el-button>
+          </el-button-group>
         </div>
       </div>
     </template>
@@ -261,38 +287,50 @@ const flatNext = () => {
           }"
           @click="toggleBreakpoint(index)"
         >
-          <div class="line-num">{{ index + 1 }}</div>
-          <div class="code-text">{{ line }}</div>
+          <div class="line-num">
+            {{ index + 1 }}
+          </div>
+          <div class="code-text">
+            {{ line }}
+          </div>
         </div>
       </div>
 
       <div class="sidebar">
         <div class="section">
-            <div class="section-title">Scope (Variables)</div>
-            <div class="var-list">
-                <div class="var-item">
-                    <span class="name">count:</span>
-                    <span class="value">{{ demoState.vars.count !== undefined ? demoState.vars.count : 'undefined' }}</span>
-                </div>
-                <div class="var-item">
-                    <span class="name">max:</span>
-                    <span class="value">{{ demoState.vars.max !== undefined ? demoState.vars.max : 'undefined' }}</span>
-                </div>
+          <div class="section-title">
+            Scope (Variables)
+          </div>
+          <div class="var-list">
+            <div class="var-item">
+              <span class="name">count:</span>
+              <span class="value">{{ demoState.vars.count !== undefined ? demoState.vars.count : 'undefined' }}</span>
             </div>
+            <div class="var-item">
+              <span class="name">max:</span>
+              <span class="value">{{ demoState.vars.max !== undefined ? demoState.vars.max : 'undefined' }}</span>
+            </div>
+          </div>
         </div>
         <div class="section">
-            <div class="section-title">Console Output</div>
-            <div class="output-list">
-                <div v-for="(log, i) in demoState.output" :key="i" class="log-line">
-                    {{ log }}
-                </div>
+          <div class="section-title">
+            Console Output
+          </div>
+          <div class="output-list">
+            <div
+              v-for="(log, i) in demoState.output"
+              :key="i"
+              class="log-line"
+            >
+              {{ log }}
             </div>
+          </div>
         </div>
       </div>
     </div>
     
     <div class="footer-tip">
-        点击行号设置断点。点击 Run 开始执行，代码将在断点处暂停。
+      点击行号设置断点。点击 Run 开始执行，代码将在断点处暂停。
     </div>
   </el-card>
 </template>

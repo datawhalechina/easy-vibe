@@ -5,21 +5,25 @@
 <template>
   <div class="lazy-loading-demo">
     <div class="header">
-      <div class="title">图片懒加载：节省带宽，提升性能</div>
-      <div class="subtitle">对比懒加载和立即加载的区别</div>
+      <div class="title">
+        图片懒加载：节省带宽，提升性能
+      </div>
+      <div class="subtitle">
+        对比懒加载和立即加载的区别
+      </div>
     </div>
 
     <div class="demo-container">
       <div class="mode-selector">
         <button
-          @click="mode = 'eager'"
           :class="['mode-btn', { active: mode === 'eager' }]"
+          @click="mode = 'eager'"
         >
           📦 立即加载
         </button>
         <button
-          @click="mode = 'lazy'"
           :class="['mode-btn', { active: mode === 'lazy' }]"
+          @click="mode = 'lazy'"
         >
           ⏳ 懒加载
         </button>
@@ -32,7 +36,10 @@
         </div>
         <div class="stat">
           <span class="stat-label">节省流量</span>
-          <span class="stat-value" :class="{ positive: savedBandwidth > 0 }">
+          <span
+            class="stat-value"
+            :class="{ positive: savedBandwidth > 0 }"
+          >
             {{ savedBandwidth > 0 ? '-' : '' }}{{ savedBandwidth }} KB
           </span>
         </div>
@@ -43,18 +50,20 @@
       </div>
 
       <div
-        class="scroll-container"
         ref="scrollContainer"
+        class="scroll-container"
         @scroll="handleScroll"
       >
         <div class="content-area">
-          <div class="placeholder">向下滚动查看更多内容</div>
+          <div class="placeholder">
+            向下滚动查看更多内容
+          </div>
 
           <div
             v-for="(image, index) in images"
             :key="index"
-            class="image-item"
             :ref="(el) => setImageRef(el, index)"
+            class="image-item"
           >
             <div
               class="image-wrapper"
@@ -64,21 +73,36 @@
                 v-if="!image.loaded && mode === 'lazy'"
                 class="placeholder-box"
               >
-                <div class="spinner"></div>
-                <div class="placeholder-text">加载中...</div>
+                <div class="spinner" />
+                <div class="placeholder-text">
+                  加载中...
+                </div>
               </div>
-              <div v-else-if="image.loaded" class="image-box">
-                <div class="image-icon">🖼️</div>
+              <div
+                v-else-if="image.loaded"
+                class="image-box"
+              >
+                <div class="image-icon">
+                  🖼️
+                </div>
                 <div class="image-info">
-                  <div class="image-size">{{ image.size }}</div>
-                  <div class="image-dim">{{ image.dimensions }}</div>
+                  <div class="image-size">
+                    {{ image.size }}
+                  </div>
+                  <div class="image-dim">
+                    {{ image.dimensions }}
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="image-caption">图片 {{ index + 1 }}</div>
+            <div class="image-caption">
+              图片 {{ index + 1 }}
+            </div>
           </div>
 
-          <div class="placeholder">已经到底了</div>
+          <div class="placeholder">
+            已经到底了
+          </div>
         </div>
       </div>
 

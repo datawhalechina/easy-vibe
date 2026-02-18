@@ -2,10 +2,15 @@
   <div class="demo-container">
     <div class="demo-header">
       <h4>{{ title }}</h4>
-      <p class="hint">{{ description }}</p>
+      <p class="hint">
+        {{ description }}
+      </p>
     </div>
     <div class="demo-content">
-      <el-alert type="info" :closable="false">
+      <el-alert
+        type="info"
+        :closable="false"
+      >
         边缘节点分布演示组件占位符 - 待实现具体交互
       </el-alert>
     </div>

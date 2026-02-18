@@ -3,40 +3,72 @@
     <div class="comparison-grid">
       <div class="protocol-card tcp">
         <div class="protocol-header">
-          <div class="protocol-icon">🔒</div>
-          <div class="protocol-title">TCP</div>
-          <div class="protocol-subtitle">传输控制协议</div>
+          <div class="protocol-icon">
+            🔒
+          </div>
+          <div class="protocol-title">
+            TCP
+          </div>
+          <div class="protocol-subtitle">
+            传输控制协议
+          </div>
         </div>
 
         <div class="protocol-features">
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">可靠传输</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              可靠传输
+            </div>
           </div>
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">面向连接</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              面向连接
+            </div>
           </div>
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">流量控制</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              流量控制
+            </div>
           </div>
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">拥塞控制</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              拥塞控制
+            </div>
           </div>
           <div class="feature-item bad">
-            <div class="feature-icon">✗</div>
-            <div class="feature-text">速度较慢</div>
+            <div class="feature-icon">
+              ✗
+            </div>
+            <div class="feature-text">
+              速度较慢
+            </div>
           </div>
           <div class="feature-item bad">
-            <div class="feature-icon">✗</div>
-            <div class="feature-text">开销较大</div>
+            <div class="feature-icon">
+              ✗
+            </div>
+            <div class="feature-text">
+              开销较大
+            </div>
           </div>
         </div>
 
         <div class="protocol-example">
-          <div class="example-title">应用场景</div>
+          <div class="example-title">
+            应用场景
+          </div>
           <div class="example-tags">
             <span class="tag">网页浏览</span>
             <span class="tag">文件传输</span>
@@ -45,22 +77,48 @@
         </div>
 
         <div class="handshake-demo">
-          <div class="demo-title">三次握手</div>
+          <div class="demo-title">
+            三次握手
+          </div>
           <div class="handshake-steps">
-            <div class="step" :class="{ active: tcpStep >= 1 }">
-              <div class="step-arrow">→</div>
-              <div class="step-text">SYN</div>
+            <div
+              class="step"
+              :class="{ active: tcpStep >= 1 }"
+            >
+              <div class="step-arrow">
+                →
+              </div>
+              <div class="step-text">
+                SYN
+              </div>
             </div>
-            <div class="step" :class="{ active: tcpStep >= 2 }">
-              <div class="step-arrow">←</div>
-              <div class="step-text">SYN-ACK</div>
+            <div
+              class="step"
+              :class="{ active: tcpStep >= 2 }"
+            >
+              <div class="step-arrow">
+                ←
+              </div>
+              <div class="step-text">
+                SYN-ACK
+              </div>
             </div>
-            <div class="step" :class="{ active: tcpStep >= 3 }">
-              <div class="step-arrow">→</div>
-              <div class="step-text">ACK</div>
+            <div
+              class="step"
+              :class="{ active: tcpStep >= 3 }"
+            >
+              <div class="step-arrow">
+                →
+              </div>
+              <div class="step-text">
+                ACK
+              </div>
             </div>
           </div>
-          <button class="demo-btn" @click="startTcpHandshake">
+          <button
+            class="demo-btn"
+            @click="startTcpHandshake"
+          >
             {{ tcpStep === 0 ? '演示握手' : '重新演示' }}
           </button>
         </div>
@@ -68,40 +126,72 @@
 
       <div class="protocol-card udp">
         <div class="protocol-header">
-          <div class="protocol-icon">⚡</div>
-          <div class="protocol-title">UDP</div>
-          <div class="protocol-subtitle">用户数据报协议</div>
+          <div class="protocol-icon">
+            ⚡
+          </div>
+          <div class="protocol-title">
+            UDP
+          </div>
+          <div class="protocol-subtitle">
+            用户数据报协议
+          </div>
         </div>
 
         <div class="protocol-features">
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">快速传输</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              快速传输
+            </div>
           </div>
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">开销小</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              开销小
+            </div>
           </div>
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">无连接</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              无连接
+            </div>
           </div>
           <div class="feature-item good">
-            <div class="feature-icon">✓</div>
-            <div class="feature-text">支持多播</div>
+            <div class="feature-icon">
+              ✓
+            </div>
+            <div class="feature-text">
+              支持多播
+            </div>
           </div>
           <div class="feature-item bad">
-            <div class="feature-icon">✗</div>
-            <div class="feature-text">不可靠</div>
+            <div class="feature-icon">
+              ✗
+            </div>
+            <div class="feature-text">
+              不可靠
+            </div>
           </div>
           <div class="feature-item bad">
-            <div class="feature-icon">✗</div>
-            <div class="feature-text">可能丢包</div>
+            <div class="feature-icon">
+              ✗
+            </div>
+            <div class="feature-text">
+              可能丢包
+            </div>
           </div>
         </div>
 
         <div class="protocol-example">
-          <div class="example-title">应用场景</div>
+          <div class="example-title">
+            应用场景
+          </div>
           <div class="example-tags">
             <span class="tag">视频直播</span>
             <span class="tag">在线游戏</span>
@@ -110,14 +200,23 @@
         </div>
 
         <div class="handshake-demo">
-          <div class="demo-title">直接发送</div>
+          <div class="demo-title">
+            直接发送
+          </div>
           <div class="handshake-steps">
             <div class="step direct">
-              <div class="step-arrow">→</div>
-              <div class="step-text">直接发送数据</div>
+              <div class="step-arrow">
+                →
+              </div>
+              <div class="step-text">
+                直接发送数据
+              </div>
             </div>
           </div>
-          <button class="demo-btn" @click="sendUdpData">
+          <button
+            class="demo-btn"
+            @click="sendUdpData"
+          >
             {{ udpSent ? '再发一次' : '发送数据' }}
           </button>
         </div>
@@ -169,37 +268,55 @@
     </div>
 
     <div class="real-world-example">
-      <div class="example-title">🎬 实际应用示例</div>
+      <div class="example-title">
+        🎬 实际应用示例
+      </div>
       <div class="scenario-grid">
         <div class="scenario">
-          <div class="scenario-icon">📺</div>
-          <div class="scenario-name">视频直播</div>
+          <div class="scenario-icon">
+            📺
+          </div>
+          <div class="scenario-name">
+            视频直播
+          </div>
           <div class="scenario-desc">
-            使用 <strong>UDP</strong>，因为： <br />• 丢几帧没关系，关键是实时
-            <br />• 重传会造成延迟和卡顿
+            使用 <strong>UDP</strong>，因为： <br>• 丢几帧没关系，关键是实时
+            <br>• 重传会造成延迟和卡顿
           </div>
         </div>
         <div class="scenario">
-          <div class="scenario-icon">🌐</div>
-          <div class="scenario-name">网页浏览</div>
+          <div class="scenario-icon">
+            🌐
+          </div>
+          <div class="scenario-name">
+            网页浏览
+          </div>
           <div class="scenario-desc">
-            使用 <strong>TCP</strong>，因为： <br />• 内容必须完整准确 <br />•
+            使用 <strong>TCP</strong>，因为： <br>• 内容必须完整准确 <br>•
             丢失任何数据都不可接受
           </div>
         </div>
         <div class="scenario">
-          <div class="scenario-icon">🎮</div>
-          <div class="scenario-name">在线游戏</div>
+          <div class="scenario-icon">
+            🎮
+          </div>
+          <div class="scenario-name">
+            在线游戏
+          </div>
           <div class="scenario-desc">
-            使用 <strong>UDP</strong>，因为： <br />• 响应速度比准确更重要
-            <br />• 实时同步玩家位置
+            使用 <strong>UDP</strong>，因为： <br>• 响应速度比准确更重要
+            <br>• 实时同步玩家位置
           </div>
         </div>
         <div class="scenario">
-          <div class="scenario-icon">📧</div>
-          <div class="scenario-name">邮件发送</div>
+          <div class="scenario-icon">
+            📧
+          </div>
+          <div class="scenario-name">
+            邮件发送
+          </div>
           <div class="scenario-desc">
-            使用 <strong>TCP</strong>，因为： <br />• 邮件内容不能丢失 <br />•
+            使用 <strong>TCP</strong>，因为： <br>• 邮件内容不能丢失 <br>•
             可靠性是第一要务
           </div>
         </div>

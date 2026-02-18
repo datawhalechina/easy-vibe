@@ -21,8 +21,13 @@
             <span class="layer-count">{{ layer.count }}</span>
           </div>
           <Transition name="fade">
-            <div v-if="activeLayer === i" class="layer-detail">
-              <p class="detail-desc">{{ layer.desc }}</p>
+            <div
+              v-if="activeLayer === i"
+              class="layer-detail"
+            >
+              <p class="detail-desc">
+                {{ layer.desc }}
+              </p>
               <div class="detail-example">
                 <span class="example-label">🌰 例子：</span>
                 <span class="example-content">{{ layer.example }}</span>
@@ -33,9 +38,15 @@
       </div>
 
       <div class="cpu-components">
-        <div class="comp-title">CPU 核心组件</div>
+        <div class="comp-title">
+          CPU 核心组件
+        </div>
         <div class="comp-grid">
-          <div class="comp-item" v-for="comp in components" :key="comp.name">
+          <div
+            v-for="comp in components"
+            :key="comp.name"
+            class="comp-item"
+          >
             <span class="comp-icon">{{ comp.icon }}</span>
             <span class="comp-name">{{ comp.name }}</span>
             <span class="comp-desc">{{ comp.desc }}</span>

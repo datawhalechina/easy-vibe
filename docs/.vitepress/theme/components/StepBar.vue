@@ -1,5 +1,8 @@
 <template>
-  <el-steps :active="active" align-center>
+  <el-steps
+    :active="active"
+    align-center
+  >
     <el-step
       v-for="(item, index) in items"
       :key="index"

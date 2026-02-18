@@ -4,8 +4,8 @@
       <div class="control-group">
         <label>关键信息大概在整段话的哪个位置：{{ needlePosition }}%</label>
         <input 
-          type="range" 
           v-model.number="needlePosition" 
+          type="range" 
           min="0" 
           max="100" 
           step="1"
@@ -17,25 +17,37 @@
     <div class="visualization-area">
       <!-- Context Window Bar -->
       <div class="context-bar">
-        <div class="context-label start">Start (System)</div>
-        <div class="context-label end">End (Query)</div>
+        <div class="context-label start">
+          Start (System)
+        </div>
+        <div class="context-label end">
+          End (Query)
+        </div>
         
         <!-- Attention Heatmap Background -->
-        <div class="attention-heatmap"></div>
+        <div class="attention-heatmap" />
         
         <!-- Needle Marker -->
         <div 
           class="needle-marker"
           :style="{ left: `${needlePosition}%` }"
         >
-          <div class="needle-icon">📍</div>
-          <div class="needle-tooltip">关键事实</div>
+          <div class="needle-icon">
+            📍
+          </div>
+          <div class="needle-tooltip">
+            关键事实
+          </div>
         </div>
       </div>
 
       <!-- Probability Curve Chart -->
       <div class="chart-container">
-        <svg viewBox="0 0 100 60" preserveAspectRatio="none" class="chart-svg">
+        <svg
+          viewBox="0 0 100 60"
+          preserveAspectRatio="none"
+          class="chart-svg"
+        >
           <!-- U-Curve Path -->
           <path 
             d="M 0 5 Q 50 55 100 5" 
@@ -52,21 +64,34 @@
             fill="var(--vp-c-brand)"
           />
         </svg>
-        <div class="chart-label y-axis">被记住的概率</div>
-        <div class="chart-label x-axis">在上下文里的位置</div>
+        <div class="chart-label y-axis">
+          被记住的概率
+        </div>
+        <div class="chart-label x-axis">
+          在上下文里的位置
+        </div>
       </div>
     </div>
 
     <div class="metrics-panel">
       <div class="metric-card">
-        <div class="metric-value" :class="getScoreClass(retrievalProb)">
+        <div
+          class="metric-value"
+          :class="getScoreClass(retrievalProb)"
+        >
           {{ retrievalProb.toFixed(1) }}%
         </div>
-        <div class="metric-label">检索成功率</div>
+        <div class="metric-label">
+          检索成功率
+        </div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">{{ positionLabel }}</div>
-        <div class="metric-label">位置描述</div>
+        <div class="metric-value">
+          {{ positionLabel }}
+        </div>
+        <div class="metric-label">
+          位置描述
+        </div>
       </div>
     </div>
 

@@ -17,55 +17,106 @@
       <button
         v-for="tab in tabs"
         :key="tab.id"
-        @click="activeTab = tab.id"
         class="tab-btn"
         :class="{ active: activeTab === tab.id }"
+        @click="activeTab = tab.id"
       >
         {{ tab.label }}
       </button>
     </div>
 
     <!-- 回调函数 -->
-    <div v-if="activeTab === 'callback'" class="tab-content">
+    <div
+      v-if="activeTab === 'callback'"
+      class="tab-content"
+    >
       <div class="callback-demo">
         <div class="concept-card">
-          <div class="concept-icon">🔄</div>
-          <div class="concept-title">回调函数 (Callback)</div>
+          <div class="concept-icon">
+            🔄
+          </div>
+          <div class="concept-title">
+            回调函数 (Callback)
+          </div>
           <div class="concept-desc">
             把函数作为参数传给另一个函数，等操作完成后再调用它。这是最早的异步处理方式。
           </div>
         </div>
 
         <div class="code-example">
-          <div class="code-title">回调函数示例</div>
+          <div class="code-title">
+            回调函数示例
+          </div>
           <div class="code-block">
-            <div class="code-line comment">// 模拟异步操作（如网络请求）</div>
-            <div class="code-line">function fetchData(callback) {</div>
-            <div class="code-line indent">setTimeout(() => {</div>
-            <div class="code-line indent indent">const data = { id: 1, name: "数据" }</div>
-            <div class="code-line indent indent">callback(data)</div>
-            <div class="code-line indent">}, 1000)</div>
-            <div class="code-line">}</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 使用回调</div>
-            <div class="code-line">fetchData(function(data) {</div>
-            <div class="code-line indent">console.log("收到数据:", data)</div>
-            <div class="code-line">})</div>
+            <div class="code-line comment">
+              // 模拟异步操作（如网络请求）
+            </div>
+            <div class="code-line">
+              function fetchData(callback) {
+            </div>
+            <div class="code-line indent">
+              setTimeout(() => {
+            </div>
+            <div class="code-line indent indent">
+              const data = { id: 1, name: "数据" }
+            </div>
+            <div class="code-line indent indent">
+              callback(data)
+            </div>
+            <div class="code-line indent">
+              }, 1000)
+            </div>
+            <div class="code-line">
+              }
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 使用回调
+            </div>
+            <div class="code-line">
+              fetchData(function(data) {
+            </div>
+            <div class="code-line indent">
+              console.log("收到数据:", data)
+            </div>
+            <div class="code-line">
+              })
+            </div>
           </div>
         </div>
 
         <div class="callback-problem">
-          <div class="problem-title">⚠️ 回调地狱问题</div>
+          <div class="problem-title">
+            ⚠️ 回调地狱问题
+          </div>
           <div class="code-block bad">
-            <div class="code-line">getData(function(a) {</div>
-            <div class="code-line indent">getMoreData(a, function(b) {</div>
-            <div class="code-line indent indent">getMoreData(b, function(c) {</div>
-            <div class="code-line indent indent indent">getMoreData(c, function(d) {</div>
-            <div class="code-line indent indent indent indent">// 无限嵌套...</div>
-            <div class="code-line indent indent indent">})</div>
-            <div class="code-line indent indent">})</div>
-            <div class="code-line indent">})</div>
-            <div class="code-line">})</div>
+            <div class="code-line">
+              getData(function(a) {
+            </div>
+            <div class="code-line indent">
+              getMoreData(a, function(b) {
+            </div>
+            <div class="code-line indent indent">
+              getMoreData(b, function(c) {
+            </div>
+            <div class="code-line indent indent indent">
+              getMoreData(c, function(d) {
+            </div>
+            <div class="code-line indent indent indent indent">
+              // 无限嵌套...
+            </div>
+            <div class="code-line indent indent indent">
+              })
+            </div>
+            <div class="code-line indent indent">
+              })
+            </div>
+            <div class="code-line indent">
+              })
+            </div>
+            <div class="code-line">
+              })
+            </div>
           </div>
           <div class="problem-desc">
             多个异步操作嵌套会导致代码难以维护，被称为"回调地狱"。
@@ -75,82 +126,173 @@
     </div>
 
     <!-- Promise -->
-    <div v-else-if="activeTab === 'promise'" class="tab-content">
+    <div
+      v-else-if="activeTab === 'promise'"
+      class="tab-content"
+    >
       <div class="promise-demo">
         <div class="promise-states">
-          <div class="state-title">Promise 的三种状态</div>
+          <div class="state-title">
+            Promise 的三种状态
+          </div>
           <div class="states-diagram">
-            <div class="state-box pending" :class="{ active: promiseState === 'pending' }">
-              <div class="state-name">Pending</div>
-              <div class="state-desc">进行中</div>
+            <div
+              class="state-box pending"
+              :class="{ active: promiseState === 'pending' }"
+            >
+              <div class="state-name">
+                Pending
+              </div>
+              <div class="state-desc">
+                进行中
+              </div>
             </div>
-            <div class="state-arrow" v-if="promiseState === 'pending'">⏳</div>
+            <div
+              v-if="promiseState === 'pending'"
+              class="state-arrow"
+            >
+              ⏳
+            </div>
 
             <div class="state-branch">
               <div class="branch-top">
-                <div class="state-box fulfilled" :class="{ active: promiseState === 'fulfilled' }">
-                  <div class="state-name">Fulfilled</div>
-                  <div class="state-desc">已成功</div>
+                <div
+                  class="state-box fulfilled"
+                  :class="{ active: promiseState === 'fulfilled' }"
+                >
+                  <div class="state-name">
+                    Fulfilled
+                  </div>
+                  <div class="state-desc">
+                    已成功
+                  </div>
                 </div>
-                <div class="state-arrow" v-if="promiseState === 'fulfilled'">✅</div>
+                <div
+                  v-if="promiseState === 'fulfilled'"
+                  class="state-arrow"
+                >
+                  ✅
+                </div>
               </div>
 
               <div class="branch-bottom">
-                <div class="state-box rejected" :class="{ active: promiseState === 'rejected' }">
-                  <div class="state-name">Rejected</div>
-                  <div class="state-desc">已失败</div>
+                <div
+                  class="state-box rejected"
+                  :class="{ active: promiseState === 'rejected' }"
+                >
+                  <div class="state-name">
+                    Rejected
+                  </div>
+                  <div class="state-desc">
+                    已失败
+                  </div>
                 </div>
-                <div class="state-arrow" v-if="promiseState === 'rejected'">❌</div>
+                <div
+                  v-if="promiseState === 'rejected'"
+                  class="state-arrow"
+                >
+                  ❌
+                </div>
               </div>
             </div>
           </div>
 
           <div class="promise-actions">
-            <button @click="simulatePromise('fulfilled')" class="action-btn success">
+            <button
+              class="action-btn success"
+              @click="simulatePromise('fulfilled')"
+            >
               模拟成功
             </button>
-            <button @click="simulatePromise('rejected')" class="action-btn error">
+            <button
+              class="action-btn error"
+              @click="simulatePromise('rejected')"
+            >
               模拟失败
             </button>
           </div>
         </div>
 
         <div class="promise-usage">
-          <div class="code-title">Promise 使用示例</div>
+          <div class="code-title">
+            Promise 使用示例
+          </div>
           <div class="code-block">
-            <div class="code-line comment">// 创建 Promise</div>
-            <div class="code-line">const promise = new Promise((resolve, reject) => {</div>
-            <div class="code-line indent">const success = Math.random() > 0.5</div>
-            <div class="code-line indent">if (success) {</div>
-            <div class="code-line indent indent">resolve("操作成功！")</div>
-            <div class="code-line indent">} else {</div>
-            <div class="code-line indent indent">reject("操作失败！")</div>
-            <div class="code-line indent">}</div>
-            <div class="code-line">})</div>
-            <div class="code-line"></div>
-            <div class="code-line comment">// 使用 then/catch</div>
-            <div class="code-line">promise</div>
-            <div class="code-line indent">.then(result => console.log(result))</div>
-            <div class="code-line indent">.catch(error => console.error(error))</div>
+            <div class="code-line comment">
+              // 创建 Promise
+            </div>
+            <div class="code-line">
+              const promise = new Promise((resolve, reject) => {
+            </div>
+            <div class="code-line indent">
+              const success = Math.random() > 0.5
+            </div>
+            <div class="code-line indent">
+              if (success) {
+            </div>
+            <div class="code-line indent indent">
+              resolve("操作成功！")
+            </div>
+            <div class="code-line indent">
+              } else {
+            </div>
+            <div class="code-line indent indent">
+              reject("操作失败！")
+            </div>
+            <div class="code-line indent">
+              }
+            </div>
+            <div class="code-line">
+              })
+            </div>
+            <div class="code-line" />
+            <div class="code-line comment">
+              // 使用 then/catch
+            </div>
+            <div class="code-line">
+              promise
+            </div>
+            <div class="code-line indent">
+              .then(result => console.log(result))
+            </div>
+            <div class="code-line indent">
+              .catch(error => console.error(error))
+            </div>
           </div>
 
           <div class="promise-chain">
-            <div class="chain-title">链式调用</div>
+            <div class="chain-title">
+              链式调用
+            </div>
             <div class="chain-visual">
               <div class="chain-step">
-                <div class="step-box">Promise</div>
-                <div class="step-arrow">→</div>
+                <div class="step-box">
+                  Promise
+                </div>
+                <div class="step-arrow">
+                  →
+                </div>
               </div>
               <div class="chain-step">
-                <div class="step-box then">.then()</div>
-                <div class="step-arrow">→</div>
+                <div class="step-box then">
+                  .then()
+                </div>
+                <div class="step-arrow">
+                  →
+                </div>
               </div>
               <div class="chain-step">
-                <div class="step-box then">.then()</div>
-                <div class="step-arrow">→</div>
+                <div class="step-box then">
+                  .then()
+                </div>
+                <div class="step-arrow">
+                  →
+                </div>
               </div>
               <div class="chain-step">
-                <div class="step-box catch">.catch()</div>
+                <div class="step-box catch">
+                  .catch()
+                </div>
               </div>
             </div>
           </div>
@@ -159,61 +301,132 @@
     </div>
 
     <!-- async/await -->
-    <div v-else-if="activeTab === 'async'" class="tab-content">
+    <div
+      v-else-if="activeTab === 'async'"
+      class="tab-content"
+    >
       <div class="async-await-demo">
         <div class="comparison-view">
           <div class="compare-panel promise">
-            <div class="panel-title">Promise 链式调用</div>
+            <div class="panel-title">
+              Promise 链式调用
+            </div>
             <div class="code-block">
-              <div class="code-line">function fetchUser() {</div>
-              <div class="code-line indent">return fetch('/user')</div>
-              <div class="code-line indent indent">.then(res => res.json())</div>
-              <div class="code-line indent indent">.then(user => {</div>
-              <div class="code-line indent indent indent">return fetch(`/posts/${user.id}`)</div>
-              <div class="code-line indent indent">})</div>
-              <div class="code-line indent indent">.then(res => res.json())</div>
-              <div class="code-line indent indent">.then(posts => {</div>
-              <div class="code-line indent indent indent">console.log(posts)</div>
-              <div class="code-line indent indent">})</div>
-              <div class="code-line">}</div>
+              <div class="code-line">
+                function fetchUser() {
+              </div>
+              <div class="code-line indent">
+                return fetch('/user')
+              </div>
+              <div class="code-line indent indent">
+                .then(res => res.json())
+              </div>
+              <div class="code-line indent indent">
+                .then(user => {
+              </div>
+              <div class="code-line indent indent indent">
+                return fetch(`/posts/${user.id}`)
+              </div>
+              <div class="code-line indent indent">
+                })
+              </div>
+              <div class="code-line indent indent">
+                .then(res => res.json())
+              </div>
+              <div class="code-line indent indent">
+                .then(posts => {
+              </div>
+              <div class="code-line indent indent indent">
+                console.log(posts)
+              </div>
+              <div class="code-line indent indent">
+                })
+              </div>
+              <div class="code-line">
+                }
+              </div>
             </div>
           </div>
 
           <div class="compare-panel async">
-            <div class="panel-title">async/await 语法</div>
+            <div class="panel-title">
+              async/await 语法
+            </div>
             <div class="code-block">
-              <div class="code-line">async function fetchUser() {</div>
-              <div class="code-line indent">try {</div>
-              <div class="code-line indent indent">const res = await fetch('/user')</div>
-              <div class="code-line indent indent">const user = await res.json()</div>
-              <div class="code-line indent indent">const postRes = await fetch(`/posts/${user.id}`)</div>
-              <div class="code-line indent indent">const posts = await postRes.json()</div>
-              <div class="code-line indent indent">console.log(posts)</div>
-              <div class="code-line indent">} catch (error) {</div>
-              <div class="code-line indent indent">console.error(error)</div>
-              <div class="code-line indent">}</div>
-              <div class="code-line">}</div>
+              <div class="code-line">
+                async function fetchUser() {
+              </div>
+              <div class="code-line indent">
+                try {
+              </div>
+              <div class="code-line indent indent">
+                const res = await fetch('/user')
+              </div>
+              <div class="code-line indent indent">
+                const user = await res.json()
+              </div>
+              <div class="code-line indent indent">
+                const postRes = await fetch(`/posts/${user.id}`)
+              </div>
+              <div class="code-line indent indent">
+                const posts = await postRes.json()
+              </div>
+              <div class="code-line indent indent">
+                console.log(posts)
+              </div>
+              <div class="code-line indent">
+                } catch (error) {
+              </div>
+              <div class="code-line indent indent">
+                console.error(error)
+              </div>
+              <div class="code-line indent">
+                }
+              </div>
+              <div class="code-line">
+                }
+              </div>
             </div>
           </div>
         </div>
 
         <div class="async-playground">
-          <div class="playground-title">async/await 特点</div>
+          <div class="playground-title">
+            async/await 特点
+          </div>
           <div class="feature-grid">
             <div class="feature-item">
-              <div class="feature-icon">📖</div>
-              <div class="feature-name">更像同步代码</div>
-              <div class="feature-desc">用同步的方式写异步代码，更易读</div>
+              <div class="feature-icon">
+                📖
+              </div>
+              <div class="feature-name">
+                更像同步代码
+              </div>
+              <div class="feature-desc">
+                用同步的方式写异步代码，更易读
+              </div>
             </div>
             <div class="feature-item">
-              <div class="feature-icon">🎯</div>
-              <div class="feature-name">错误处理简单</div>
-              <div class="feature-desc">用 try/catch 处理错误，而非 .catch()</div>
+              <div class="feature-icon">
+                🎯
+              </div>
+              <div class="feature-name">
+                错误处理简单
+              </div>
+              <div class="feature-desc">
+                用 try/catch 处理错误，而非 .catch()
+              </div>
             </div>
             <div class="feature-item">
-              <div class="feature-icon">⚡</div>
-              <div class="feature-name">调试友好</div>
-              <div class="feature-desc">可以在 debugger 中设置断点</div>
+              <div class="feature-icon">
+                ⚡
+              </div>
+              <div class="feature-name">
+                调试友好
+              </div>
+              <div class="feature-desc">
+                可以在 debugger 中设置断点
+              </div>
             </div>
           </div>
 
@@ -230,41 +443,75 @@
     </div>
 
     <!-- 事件循环 -->
-    <div v-else class="tab-content">
+    <div
+      v-else
+      class="tab-content"
+    >
       <div class="event-loop-demo">
         <div class="loop-visual">
-          <div class="loop-title">事件循环 (Event Loop)</div>
+          <div class="loop-title">
+            事件循环 (Event Loop)
+          </div>
           <div class="loop-diagram">
             <div class="diagram-section">
-              <div class="section-title">调用栈 (Call Stack)</div>
+              <div class="section-title">
+                调用栈 (Call Stack)
+              </div>
               <div class="stack-box">
-                <div v-for="(item, i) in callStack" :key="i" class="stack-item">
+                <div
+                  v-for="(item, i) in callStack"
+                  :key="i"
+                  class="stack-item"
+                >
                   {{ item }}
                 </div>
-                <div v-if="callStack.length === 0" class="stack-empty">空</div>
+                <div
+                  v-if="callStack.length === 0"
+                  class="stack-empty"
+                >
+                  空
+                </div>
               </div>
             </div>
 
             <div class="diagram-arrows">
-              <div class="arrow-right">入栈 →</div>
-              <div class="arrow-left">← 出栈</div>
+              <div class="arrow-right">
+                入栈 →
+              </div>
+              <div class="arrow-left">
+                ← 出栈
+              </div>
             </div>
 
             <div class="diagram-section">
-              <div class="section-title">任务队列</div>
+              <div class="section-title">
+                任务队列
+              </div>
               <div class="task-queues">
                 <div class="queue-box">
-                  <div class="queue-title">宏任务 (Macro Tasks)</div>
+                  <div class="queue-title">
+                    宏任务 (Macro Tasks)
+                  </div>
                   <div class="queue-items">
-                    <div v-for="(task, i) in macroTasks" :key="i" class="task-item macro">
+                    <div
+                      v-for="(task, i) in macroTasks"
+                      :key="i"
+                      class="task-item macro"
+                    >
                       {{ task }}
                     </div>
                   </div>
                 </div>
                 <div class="queue-box">
-                  <div class="queue-title">微任务 (Micro Tasks)</div>
+                  <div class="queue-title">
+                    微任务 (Micro Tasks)
+                  </div>
                   <div class="queue-items">
-                    <div v-for="(task, i) in microTasks" :key="i" class="task-item micro">
+                    <div
+                      v-for="(task, i) in microTasks"
+                      :key="i"
+                      class="task-item micro"
+                    >
                       {{ task }}
                     </div>
                   </div>
@@ -274,7 +521,9 @@
           </div>
 
           <div class="loop-rules">
-            <div class="rule-title">执行规则</div>
+            <div class="rule-title">
+              执行规则
+            </div>
             <ol class="rule-list">
               <li>执行同步代码（调用栈中的代码）</li>
               <li>调用栈为空时，先执行所有微任务</li>
@@ -285,22 +534,38 @@
         </div>
 
         <div class="code-challenge">
-          <div class="challenge-title">🤔 猜猜输出顺序</div>
+          <div class="challenge-title">
+            🤔 猜猜输出顺序
+          </div>
           <div class="code-block">
-            <div class="code-line">console.log("1")</div>
-            <div class="code-line"></div>
-            <div class="code-line">setTimeout(() => console.log("2"), 0) <span class="comment">// 宏任务</span></div>
-            <div class="code-line"></div>
-            <div class="code-line">Promise.resolve().then(() => console.log("3")) <span class="comment">// 微任务</span></div>
-            <div class="code-line"></div>
-            <div class="code-line">console.log("4")</div>
+            <div class="code-line">
+              console.log("1")
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              setTimeout(() => console.log("2"), 0) <span class="comment">// 宏任务</span>
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              Promise.resolve().then(() => console.log("3")) <span class="comment">// 微任务</span>
+            </div>
+            <div class="code-line" />
+            <div class="code-line">
+              console.log("4")
+            </div>
           </div>
 
-          <button @click="showEventLoopAnswer" class="answer-btn">
+          <button
+            class="answer-btn"
+            @click="showEventLoopAnswer"
+          >
             {{ showAnswer ? '隐藏答案' : '查看答案' }}
           </button>
 
-          <div v-if="showAnswer" class="answer-reveal">
+          <div
+            v-if="showAnswer"
+            class="answer-reveal"
+          >
             <div class="output-order">
               <div class="order-item">
                 <span class="order-num">1</span>

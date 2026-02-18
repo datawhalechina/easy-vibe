@@ -5,8 +5,12 @@
 <template>
   <div class="serverless-demo">
     <div class="header">
-      <div class="title">Serverless：按需付费 + 自动扩缩</div>
-      <div class="subtitle">调整调用量与耗时，比较固定服务器成本</div>
+      <div class="title">
+        Serverless：按需付费 + 自动扩缩
+      </div>
+      <div class="subtitle">
+        调整调用量与耗时，比较固定服务器成本
+      </div>
     </div>
 
     <div class="controls">
@@ -20,39 +24,68 @@
           min="0"
           max="5000000"
           step="50000"
-        />
+        >
       </div>
       <div class="control">
         <label>
           平均耗时：<strong>{{ durationMs }} ms</strong>
         </label>
-        <input v-model="durationMs" type="range" min="20" max="800" step="10" />
+        <input
+          v-model="durationMs"
+          type="range"
+          min="20"
+          max="800"
+          step="10"
+        >
       </div>
       <div class="control">
         <label>
           峰值并发：<strong>{{ peakRps }}</strong> rps
         </label>
-        <input v-model="peakRps" type="range" min="10" max="8000" step="50" />
+        <input
+          v-model="peakRps"
+          type="range"
+          min="10"
+          max="8000"
+          step="50"
+        >
       </div>
     </div>
 
     <div class="cards">
       <div class="card">
-        <div class="card-title">Serverless 估算</div>
-        <div class="card-value">${{ serverlessCost }}</div>
-        <div class="card-desc">按量计费（示意）</div>
+        <div class="card-title">
+          Serverless 估算
+        </div>
+        <div class="card-value">
+          ${{ serverlessCost }}
+        </div>
+        <div class="card-desc">
+          按量计费（示意）
+        </div>
       </div>
       <div class="card">
-        <div class="card-title">固定服务器</div>
-        <div class="card-value">${{ serverCost }}</div>
-        <div class="card-desc">需预留 {{ requiredServers }} 台服务器</div>
+        <div class="card-title">
+          固定服务器
+        </div>
+        <div class="card-value">
+          ${{ serverCost }}
+        </div>
+        <div class="card-desc">
+          需预留 {{ requiredServers }} 台服务器
+        </div>
       </div>
     </div>
 
     <div class="autoscale">
-      <div class="label">扩缩容状态</div>
+      <div class="label">
+        扩缩容状态
+      </div>
       <div class="scale-bar">
-        <div class="scale" :style="{ width: scalePercent + '%' }"></div>
+        <div
+          class="scale"
+          :style="{ width: scalePercent + '%' }"
+        />
       </div>
       <div class="scale-text">
         {{ scaleHint }}

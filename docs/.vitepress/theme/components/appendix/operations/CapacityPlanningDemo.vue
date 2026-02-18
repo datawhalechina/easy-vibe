@@ -5,35 +5,59 @@
 <template>
   <div class="capacity-demo">
     <div class="header">
-      <div class="title">容量规划计算器 (Capacity Planning)</div>
-      <div class="subtitle">估算系统需要多少台服务器才能满足需求</div>
+      <div class="title">
+        容量规划计算器 (Capacity Planning)
+      </div>
+      <div class="subtitle">
+        估算系统需要多少台服务器才能满足需求
+      </div>
     </div>
 
     <div class="calculator">
       <div class="input-section">
-        <div class="section-title">📊 业务指标</div>
+        <div class="section-title">
+          📊 业务指标
+        </div>
         <div class="input-grid">
           <div class="input-group">
             <label>日活用户 (DAU)</label>
-            <input v-model.number="dau" type="number" min="1" step="1000" />
+            <input
+              v-model.number="dau"
+              type="number"
+              min="1"
+              step="1000"
+            >
             <span class="unit">人</span>
           </div>
 
           <div class="input-group">
             <label>人均请求/天</label>
-            <input v-model.number="requestsPerUser" type="number" min="1" />
+            <input
+              v-model.number="requestsPerUser"
+              type="number"
+              min="1"
+            >
             <span class="unit">次</span>
           </div>
 
           <div class="input-group">
             <label>高峰时段占比</label>
-            <input v-model.number="peakRatio" type="number" min="1" max="100" />
+            <input
+              v-model.number="peakRatio"
+              type="number"
+              min="1"
+              max="100"
+            >
             <span class="unit">%</span>
           </div>
 
           <div class="input-group">
             <label>单机 QPS 能力</label>
-            <input v-model.number="serverQps" type="number" min="1" />
+            <input
+              v-model.number="serverQps"
+              type="number"
+              min="1"
+            >
             <span class="unit">次/秒</span>
           </div>
 
@@ -45,54 +69,72 @@
               min="1"
               max="3"
               step="0.1"
-            />
+            >
             <span class="unit">倍</span>
           </div>
         </div>
 
         <div class="tips">
           💡
-          <span class="tip-text"
-            >通常高峰期流量是平均流量的 2-3 倍，建议预留 50-100%
-            冗余应对突发流量</span
-          >
+          <span class="tip-text">通常高峰期流量是平均流量的 2-3 倍，建议预留 50-100%
+            冗余应对突发流量</span>
         </div>
       </div>
 
       <div class="output-section">
-        <div class="section-title">📈 容量评估结果</div>
+        <div class="section-title">
+          📈 容量评估结果
+        </div>
 
         <div class="result-card">
-          <div class="result-label">日均总请求量</div>
+          <div class="result-label">
+            日均总请求量
+          </div>
           <div class="result-value">
             {{ totalRequests.toLocaleString() }} 次/天
           </div>
         </div>
 
         <div class="result-card highlight">
-          <div class="result-label">高峰期 QPS (目标)</div>
-          <div class="result-value">{{ targetQPS.toLocaleString() }} 次/秒</div>
+          <div class="result-label">
+            高峰期 QPS (目标)
+          </div>
+          <div class="result-value">
+            {{ targetQPS.toLocaleString() }} 次/秒
+          </div>
         </div>
 
         <div class="result-card">
-          <div class="result-label">理论所需服务器</div>
-          <div class="result-value">{{ minServers }} 台</div>
+          <div class="result-label">
+            理论所需服务器
+          </div>
+          <div class="result-value">
+            {{ minServers }} 台
+          </div>
         </div>
 
         <div class="result-card highlight">
-          <div class="result-label">推荐配置 (含冗余)</div>
-          <div class="result-value large">{{ recommendedServers }} 台</div>
+          <div class="result-label">
+            推荐配置 (含冗余)
+          </div>
+          <div class="result-value large">
+            {{ recommendedServers }} 台
+          </div>
         </div>
 
         <div class="cost-estimate">
-          <div class="cost-title">💰 月成本估算 (云服务器)</div>
+          <div class="cost-title">
+            💰 月成本估算 (云服务器)
+          </div>
           <div class="cost-options">
             <div
-              class="cost-option"
               v-for="option in costOptions"
               :key="option.name"
+              class="cost-option"
             >
-              <div class="option-name">{{ option.name }}</div>
+              <div class="option-name">
+                {{ option.name }}
+              </div>
               <div class="option-price">
                 ¥{{ option.price.toLocaleString() }}/月
               </div>
@@ -103,32 +145,50 @@
     </div>
 
     <div class="planning-tips">
-      <div class="tips-title">🎯 容量规划要点</div>
+      <div class="tips-title">
+        🎯 容量规划要点
+      </div>
       <div class="tips-grid">
         <div class="tip-card">
-          <div class="tip-icon">1️⃣</div>
-          <div class="tip-title">以峰值为核心</div>
+          <div class="tip-icon">
+            1️⃣
+          </div>
+          <div class="tip-title">
+            以峰值为核心
+          </div>
           <div class="tip-desc">
             不能按平均流量规划，必须按高峰期流量（通常是平均的 2-3 倍）来准备
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">2️⃣</div>
-          <div class="tip-title">预留冗余空间</div>
+          <div class="tip-icon">
+            2️⃣
+          </div>
+          <div class="tip-title">
+            预留冗余空间
+          </div>
           <div class="tip-desc">
             至少预留 50% 冗余，用于应对突发流量、服务器故障、维护窗口
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">3️⃣</div>
-          <div class="tip-title">定期压测验证</div>
+          <div class="tip-icon">
+            3️⃣
+          </div>
+          <div class="tip-title">
+            定期压测验证
+          </div>
           <div class="tip-desc">
             每季度进行压力测试，验证实际容量是否满足预估
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">4️⃣</div>
-          <div class="tip-title">弹性扩缩容</div>
+          <div class="tip-icon">
+            4️⃣
+          </div>
+          <div class="tip-title">
+            弹性扩缩容
+          </div>
           <div class="tip-desc">
             结合云服务的自动扩缩容，在高峰期自动增加实例
           </div>
@@ -137,7 +197,9 @@
     </div>
 
     <div class="formula-section">
-      <div class="formula-title">📐 计算公式</div>
+      <div class="formula-title">
+        📐 计算公式
+      </div>
       <div class="formula-list">
         <div class="formula-item">
           <span class="formula-label">日均请求量：</span>

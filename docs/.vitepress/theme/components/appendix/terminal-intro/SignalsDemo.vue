@@ -24,7 +24,9 @@
             <span class="key">Ctrl</span>+<span class="key">C</span>
             <span class="action">Interrupt</span>
           </div>
-          <div class="signal-name">SIGINT</div>
+          <div class="signal-name">
+            SIGINT
+          </div>
         </div>
 
         <div
@@ -36,7 +38,9 @@
             <span class="key">Ctrl</span>+<span class="key">Z</span>
             <span class="action">Suspend</span>
           </div>
-          <div class="signal-name">SIGTSTP</div>
+          <div class="signal-name">
+            SIGTSTP
+          </div>
         </div>
       </div>
 
@@ -46,7 +50,9 @@
             <span class="highlight">Ctrl+C</span> →
             <span class="signal-green">SIGINT</span>
           </div>
-          <div class="info-desc">Stop the running program</div>
+          <div class="info-desc">
+            Stop the running program
+          </div>
           <p>
             Sends SIGINT (signal interrupt) to the foreground process. Most
             programs respond by stopping immediately. It's how you cancel a
@@ -62,7 +68,9 @@
             <span class="highlight">Ctrl+Z</span> →
             <span class="signal-blue">SIGTSTP</span>
           </div>
-          <div class="info-desc">Suspend the running program</div>
+          <div class="info-desc">
+            Suspend the running program
+          </div>
           <p>
             Sends SIGTSTP (signal terminal stop). The process is paused and put
             in the background. You can resume it later with `fg` command.
@@ -73,7 +81,9 @@
           </div>
         </div>
         <div v-else>
-          <div class="info-header">Select a signal</div>
+          <div class="info-header">
+            Select a signal
+          </div>
           <p>Click on a signal type above to see how it works.</p>
         </div>
       </div>
@@ -82,7 +92,9 @@
     <div class="right-panel">
       <div class="terminal-window">
         <div class="window-header">
-          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="dots">
+            <span /><span /><span />
+          </div>
         </div>
         <div class="window-content">
           <div
@@ -93,24 +105,54 @@
           >
             {{ line.text }}
           </div>
-          <div v-if="isRunning" class="term-line output">sleeping...</div>
-          <div v-if="inputBuffer" class="term-line input">
-            <span class="prompt">$</span> {{ inputBuffer
-            }}<span class="cursor"></span>
+          <div
+            v-if="isRunning"
+            class="term-line output"
+          >
+            sleeping...
           </div>
-          <div v-else class="term-line input">
-            <span class="prompt">$</span> <span class="cursor"></span>
+          <div
+            v-if="inputBuffer"
+            class="term-line input"
+          >
+            <span class="prompt">$</span> {{ inputBuffer
+            }}<span class="cursor" />
+          </div>
+          <div
+            v-else
+            class="term-line input"
+          >
+            <span class="prompt">$</span> <span class="cursor" />
           </div>
         </div>
       </div>
 
       <div class="controls">
-        <button class="btn" @click="runCommand" :disabled="isRunning">
+        <button
+          class="btn"
+          :disabled="isRunning"
+          @click="runCommand"
+        >
           Run Command
         </button>
-        <button class="btn" @click="sendSignal('SIGINT')">Ctrl+C</button>
-        <button class="btn" @click="sendSignal('SIGTSTP')">Ctrl+Z</button>
-        <button class="btn secondary" @click="reset">Reset</button>
+        <button
+          class="btn"
+          @click="sendSignal('SIGINT')"
+        >
+          Ctrl+C
+        </button>
+        <button
+          class="btn"
+          @click="sendSignal('SIGTSTP')"
+        >
+          Ctrl+Z
+        </button>
+        <button
+          class="btn secondary"
+          @click="reset"
+        >
+          Reset
+        </button>
       </div>
 
       <div class="state-display">

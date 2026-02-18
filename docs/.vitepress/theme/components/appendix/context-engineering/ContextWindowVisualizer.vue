@@ -17,10 +17,15 @@
     <div class="control-panel">
       <div class="stat-group">
         <div class="stat-item">
-          <span class="value" :class="{ error: isOverflow }">{{ usedTokens }}</span>
+          <span
+            class="value"
+            :class="{ error: isOverflow }"
+          >{{ usedTokens }}</span>
           <span class="label">已经写了多少个 token</span>
         </div>
-        <div class="stat-divider">/</div>
+        <div class="stat-divider">
+          /
+        </div>
         <div class="stat-item">
           <span class="value">{{ maxTokens }}</span>
           <span class="label">黑板最多能写几个 token</span>
@@ -35,14 +40,19 @@
               width: `${Math.min(usagePercentage, 100)}%`,
               backgroundColor: progressBarColor
             }"
-          ></div>
+          />
         </div>
-        <div class="percentage-label">{{ usagePercentage.toFixed(1) }}%</div>
+        <div class="percentage-label">
+          {{ usagePercentage.toFixed(1) }}%
+        </div>
       </div>
     </div>
 
     <div class="visualization-area">
-      <div class="window-frame" :class="{ overflow: isOverflow }">
+      <div
+        class="window-frame"
+        :class="{ overflow: isOverflow }"
+      >
         <div class="window-header">
           <span class="icon">🧠</span>
           <span>模型能看到的“小黑板”（上下文窗口）</span>
@@ -61,8 +71,11 @@
           </transition-group>
         </div>
 
-        <div v-if="isOverflow" class="overflow-indicator">
-          <div class="overflow-line"></div>
+        <div
+          v-if="isOverflow"
+          class="overflow-indicator"
+        >
+          <div class="overflow-line" />
           <span class="overflow-text">⚠️ 达到上下文上限 (已截断)</span>
         </div>
       </div>
@@ -72,16 +85,31 @@
       <div class="input-header">
         <label>输入内容（看黑板怎么被一点点写满）</label>
         <div class="actions">
-        <button class="action-btn" @click="fillLorem(10)">填一段短文本</button>
-        <button class="action-btn" @click="fillLorem(60)">一下子塞满黑板</button>
-          <button class="action-btn outline" @click="clear">清空</button>
+          <button
+            class="action-btn"
+            @click="fillLorem(10)"
+          >
+            填一段短文本
+          </button>
+          <button
+            class="action-btn"
+            @click="fillLorem(60)"
+          >
+            一下子塞满黑板
+          </button>
+          <button
+            class="action-btn outline"
+            @click="clear"
+          >
+            清空
+          </button>
         </div>
       </div>
       <textarea
         v-model="inputText"
         placeholder="在这里输入几句话，看看小黑板是怎么逐渐被写满的..."
         rows="4"
-      ></textarea>
+      />
     </div>
 
     <div class="info-box">

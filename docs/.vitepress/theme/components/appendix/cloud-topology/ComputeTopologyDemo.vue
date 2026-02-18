@@ -2,30 +2,61 @@
   <div class="compute-topology-demo">
     <!-- 控制面板 -->
     <div class="control-panel">
-      <el-radio-group v-model="viewMode" size="small">
-        <el-radio-button label="overview">概览</el-radio-button>
-        <el-radio-button label="vm">虚拟机</el-radio-button>
-        <el-radio-button label="container">容器</el-radio-button>
-        <el-radio-button label="serverless">无服务器</el-radio-button>
+      <el-radio-group
+        v-model="viewMode"
+        size="small"
+      >
+        <el-radio-button label="overview">
+          概览
+        </el-radio-button>
+        <el-radio-button label="vm">
+          虚拟机
+        </el-radio-button>
+        <el-radio-button label="container">
+          容器
+        </el-radio-button>
+        <el-radio-button label="serverless">
+          无服务器
+        </el-radio-button>
       </el-radio-group>
 
-      <el-switch v-model="showMetrics" active-text="显示指标" style="margin-left: 20px" />
+      <el-switch
+        v-model="showMetrics"
+        active-text="显示指标"
+        style="margin-left: 20px"
+      />
     </div>
 
     <!-- 计算架构图 -->
     <div class="compute-architecture">
       <!-- 物理基础设施层 -->
-      <div class="layer physical-layer" v-if="viewMode === 'overview' || viewMode === 'vm'">
+      <div
+        v-if="viewMode === 'overview' || viewMode === 'vm'"
+        class="layer physical-layer"
+      >
         <div class="layer-header">
           <span class="layer-icon">🏭</span>
           <span class="layer-title">物理基础设施</span>
         </div>
         <div class="layer-content">
-          <div class="server-rack" v-for="rack in serverRacks" :key="rack.id">
-            <div class="rack-header">{{ rack.name }}</div>
+          <div
+            v-for="rack in serverRacks"
+            :key="rack.id"
+            class="server-rack"
+          >
+            <div class="rack-header">
+              {{ rack.name }}
+            </div>
             <div class="rack-servers">
-              <div v-for="server in rack.servers" :key="server.id" class="server-node">
-                <div class="server-indicator" :class="server.status"></div>
+              <div
+                v-for="server in rack.servers"
+                :key="server.id"
+                class="server-node"
+              >
+                <div
+                  class="server-indicator"
+                  :class="server.status"
+                />
               </div>
             </div>
           </div>
@@ -33,34 +64,54 @@
       </div>
 
       <!-- 虚拟化层 -->
-      <div class="layer virtualization-layer" v-if="viewMode === 'overview' || viewMode === 'vm'">
+      <div
+        v-if="viewMode === 'overview' || viewMode === 'vm'"
+        class="layer virtualization-layer"
+      >
         <div class="layer-header">
           <span class="layer-icon">🔧</span>
           <span class="layer-title">虚拟化层</span>
         </div>
         <div class="layer-content">
           <div class="hypervisor-cluster">
-            <div class="hypervisor" v-for="hv in hypervisors" :key="hv.id">
+            <div
+              v-for="hv in hypervisors"
+              :key="hv.id"
+              class="hypervisor"
+            >
               <div class="hv-header">
                 <span class="hv-icon">🔨</span>
                 <span class="hv-name">{{ hv.name }}</span>
               </div>
               <div class="vms-list">
-                <div v-for="vm in hv.vms" :key="vm.id" class="vm-item">
+                <div
+                  v-for="vm in hv.vms"
+                  :key="vm.id"
+                  class="vm-item"
+                >
                   <div class="vm-info">
                     <span class="vm-icon">💻</span>
                     <span class="vm-name">{{ vm.name }}</span>
                   </div>
-                  <div class="vm-metrics" v-if="showMetrics">
+                  <div
+                    v-if="showMetrics"
+                    class="vm-metrics"
+                  >
                     <div class="metric">
                       <div class="metric-bar">
-                        <div class="metric-fill" :style="{ width: vm.cpu + '%' }"></div>
+                        <div
+                          class="metric-fill"
+                          :style="{ width: vm.cpu + '%' }"
+                        />
                       </div>
                       <span class="metric-label">CPU</span>
                     </div>
                     <div class="metric">
                       <div class="metric-bar">
-                        <div class="metric-fill memory" :style="{ width: vm.memory + '%' }"></div>
+                        <div
+                          class="metric-fill memory"
+                          :style="{ width: vm.memory + '%' }"
+                        />
                       </div>
                       <span class="metric-label">内存</span>
                     </div>
@@ -73,7 +124,10 @@
       </div>
 
       <!-- 容器层 -->
-      <div class="layer container-layer" v-if="viewMode === 'overview' || viewMode === 'container'">
+      <div
+        v-if="viewMode === 'overview' || viewMode === 'container'"
+        class="layer container-layer"
+      >
         <div class="layer-header">
           <span class="layer-icon">📦</span>
           <span class="layer-title">容器编排层 (Kubernetes)</span>
@@ -82,28 +136,54 @@
           <div class="k8s-cluster">
             <!-- 控制平面 -->
             <div class="control-plane">
-              <div class="cp-title">控制平面</div>
+              <div class="cp-title">
+                控制平面
+              </div>
               <div class="cp-components">
-                <div class="cp-comp" v-for="comp in controlPlaneComponents" :key="comp.name">
-                  <div class="comp-icon">{{ comp.icon }}</div>
-                  <div class="comp-name">{{ comp.name }}</div>
+                <div
+                  v-for="comp in controlPlaneComponents"
+                  :key="comp.name"
+                  class="cp-comp"
+                >
+                  <div class="comp-icon">
+                    {{ comp.icon }}
+                  </div>
+                  <div class="comp-name">
+                    {{ comp.name }}
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- 工作节点 -->
             <div class="worker-nodes">
-              <div class="nodes-title">工作节点</div>
+              <div class="nodes-title">
+                工作节点
+              </div>
               <div class="nodes-grid">
-                <div class="node" v-for="node in workerNodes" :key="node.name">
+                <div
+                  v-for="node in workerNodes"
+                  :key="node.name"
+                  class="node"
+                >
                   <div class="node-header">
                     <span class="node-icon">🔧</span>
                     <span class="node-name">{{ node.name }}</span>
-                    <span class="node-status" :class="node.status"></span>
+                    <span
+                      class="node-status"
+                      :class="node.status"
+                    />
                   </div>
                   <div class="pods-list">
-                    <div class="pod" v-for="pod in node.pods" :key="pod.name">
-                      <div class="pod-color" :style="{ background: pod.color }"></div>
+                    <div
+                      v-for="pod in node.pods"
+                      :key="pod.name"
+                      class="pod"
+                    >
+                      <div
+                        class="pod-color"
+                        :style="{ background: pod.color }"
+                      />
                       <span class="pod-name">{{ pod.name }}</span>
                     </div>
                   </div>
@@ -115,7 +195,10 @@
       </div>
 
       <!-- 无服务器层 -->
-      <div class="layer serverless-layer" v-if="viewMode === 'overview' || viewMode === 'serverless'">
+      <div
+        v-if="viewMode === 'overview' || viewMode === 'serverless'"
+        class="layer serverless-layer"
+      >
         <div class="layer-header">
           <span class="layer-icon">⚡</span>
           <span class="layer-title">无服务器计算 (Function Compute)</span>
@@ -124,29 +207,51 @@
           <div class="serverless-arch">
             <!-- 触发器 -->
             <div class="triggers-section">
-              <div class="section-title">触发器</div>
+              <div class="section-title">
+                触发器
+              </div>
               <div class="triggers-list">
-                <div class="trigger" v-for="trigger in triggers" :key="trigger.name">
-                  <div class="trigger-icon">{{ trigger.icon }}</div>
-                  <div class="trigger-name">{{ trigger.name }}</div>
+                <div
+                  v-for="trigger in triggers"
+                  :key="trigger.name"
+                  class="trigger"
+                >
+                  <div class="trigger-icon">
+                    {{ trigger.icon }}
+                  </div>
+                  <div class="trigger-name">
+                    {{ trigger.name }}
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- 函数计算 -->
             <div class="functions-section">
-              <div class="section-title">函数计算实例</div>
+              <div class="section-title">
+                函数计算实例
+              </div>
               <div class="functions-list">
-                <div class="function-card" v-for="func in functions" :key="func.name">
+                <div
+                  v-for="func in functions"
+                  :key="func.name"
+                  class="function-card"
+                >
                   <div class="func-header">
                     <span class="func-icon">⚙️</span>
                     <span class="func-name">{{ func.name }}</span>
                   </div>
-                  <div class="func-metrics" v-if="showMetrics">
+                  <div
+                    v-if="showMetrics"
+                    class="func-metrics"
+                  >
                     <div class="metric-row">
                       <span class="metric-label">并发：</span>
                       <div class="concurrency-bar">
-                        <div class="concurrency-fill" :style="{ width: (func.concurrency / 100 * 100) + '%' }"></div>
+                        <div
+                          class="concurrency-fill"
+                          :style="{ width: (func.concurrency / 100 * 100) + '%' }"
+                        />
                       </div>
                       <span class="metric-value">{{ func.concurrency }}</span>
                     </div>
@@ -161,11 +266,21 @@
 
             <!-- 后端服务 -->
             <div class="backend-section">
-              <div class="section-title">后端服务</div>
+              <div class="section-title">
+                后端服务
+              </div>
               <div class="backend-services">
-                <div class="service" v-for="svc in backendServices" :key="svc.name">
-                  <div class="service-icon">{{ svc.icon }}</div>
-                  <div class="service-name">{{ svc.name }}</div>
+                <div
+                  v-for="svc in backendServices"
+                  :key="svc.name"
+                  class="service"
+                >
+                  <div class="service-icon">
+                    {{ svc.icon }}
+                  </div>
+                  <div class="service-name">
+                    {{ svc.name }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -176,7 +291,9 @@
 
     <!-- 说明 -->
     <div class="architecture-legend">
-      <div class="legend-title">计算资源类型说明：</div>
+      <div class="legend-title">
+        计算资源类型说明：
+      </div>
       <div class="legend-items">
         <div class="legend-item">
           <span class="legend-icon">🔧</span>

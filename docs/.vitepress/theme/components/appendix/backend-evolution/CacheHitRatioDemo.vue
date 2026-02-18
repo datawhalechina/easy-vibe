@@ -5,41 +5,72 @@
 <template>
   <div class="cache-demo">
     <div class="header">
-      <div class="title">缓存命中率：速度与成本的杠杆</div>
-      <div class="subtitle">调整命中率，观察平均延迟与数据库压力</div>
+      <div class="title">
+        缓存命中率：速度与成本的杠杆
+      </div>
+      <div class="subtitle">
+        调整命中率，观察平均延迟与数据库压力
+      </div>
     </div>
 
     <div class="controls">
       <label>
         缓存命中率：<strong>{{ hitRatio }}%</strong>
       </label>
-      <input v-model="hitRatio" type="range" min="0" max="100" step="1" />
+      <input
+        v-model="hitRatio"
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+      >
       <label class="toggle">
-        <input v-model="cacheEnabled" type="checkbox" />
+        <input
+          v-model="cacheEnabled"
+          type="checkbox"
+        >
         启用缓存
       </label>
     </div>
 
     <div class="metrics">
       <div class="metric-card">
-        <div class="label">平均延迟</div>
-        <div class="value">{{ avgLatency }} ms</div>
+        <div class="label">
+          平均延迟
+        </div>
+        <div class="value">
+          {{ avgLatency }} ms
+        </div>
         <div class="meter">
-          <div class="bar" :style="{ width: latencyBar + '%' }"></div>
+          <div
+            class="bar"
+            :style="{ width: latencyBar + '%' }"
+          />
         </div>
       </div>
       <div class="metric-card">
-        <div class="label">数据库请求比例</div>
-        <div class="value">{{ dbRate }}%</div>
+        <div class="label">
+          数据库请求比例
+        </div>
+        <div class="value">
+          {{ dbRate }}%
+        </div>
         <div class="meter">
-          <div class="bar warn" :style="{ width: dbRate + '%' }"></div>
+          <div
+            class="bar warn"
+            :style="{ width: dbRate + '%' }"
+          />
         </div>
       </div>
     </div>
 
     <div class="legend">
-      <div class="item"><span class="dot cache"></span>缓存命中</div>
-      <div class="item"><span class="dot db"></span>数据库读取</div>
+      <div class="item">
+        <span class="dot cache" />缓存命中
+      </div>
+      <div class="item">
+        <span class="dot db" />数据库读取
+      </div>
     </div>
   </div>
 </template>

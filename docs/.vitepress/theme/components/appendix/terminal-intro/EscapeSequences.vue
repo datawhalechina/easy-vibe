@@ -26,11 +26,14 @@
             :key="index"
             class="swatch"
             :style="{ backgroundColor: color }"
-            @click="applyColor(index)"
             :title="`^[[38;5;${index}m`"
-          ></div>
+            @click="applyColor(index)"
+          />
         </div>
-        <div class="hint-text" v-if="activeColor">
+        <div
+          v-if="activeColor"
+          class="hint-text"
+        >
           Sequence:
           <span class="code">^[[38;5;{{ palette.indexOf(activeColor) }}m</span>
         </div>
@@ -43,17 +46,29 @@
           <span class="zh">样式序列</span>
         </div>
         <div class="btn-group">
-          <button @click="applyStyle('1')" :class="{ active: isBold }">
+          <button
+            :class="{ active: isBold }"
+            @click="applyStyle('1')"
+          >
             <span class="btn-code">^[[1m</span>
             <span class="btn-label">Bold / 加粗</span>
           </button>
-          <button @click="applyStyle('4')" :class="{ active: isUnderline }">
+          <button
+            :class="{ active: isUnderline }"
+            @click="applyStyle('4')"
+          >
             <span class="btn-code">^[[4m</span>
             <span class="btn-label">Underline / 下划线</span>
           </button>
         </div>
-        <div class="btn-group" style="margin-top: 8px">
-          <button @click="resetStyle" class="reset-btn">
+        <div
+          class="btn-group"
+          style="margin-top: 8px"
+        >
+          <button
+            class="reset-btn"
+            @click="resetStyle"
+          >
             <span class="btn-code">^[[0m</span>
             <span class="btn-label">Reset / 重置所有样式</span>
           </button>
@@ -86,22 +101,32 @@
     <div class="preview">
       <div class="terminal-window">
         <div class="window-header">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <div class="window-title">Terminal Preview</div>
+          <div class="dots">
+            <span /><span /><span />
+          </div>
+          <div class="window-title">
+            Terminal Preview
+          </div>
         </div>
         <div class="window-content">
           <div class="sequence-display-area">
             <span class="label">Last Sequence:</span>
-            <span v-if="lastSequence" class="sequence-code">{{
+            <span
+              v-if="lastSequence"
+              class="sequence-code"
+            >{{
               lastSequence
             }}</span>
-            <span v-else class="placeholder">Waiting for input...</span>
+            <span
+              v-else
+              class="placeholder"
+            >Waiting for input...</span>
           </div>
 
           <div
+            v-if="isContentVisible"
             class="main-display"
             :style="currentStyle"
-            v-if="isContentVisible"
           >
             Hello World
           </div>
@@ -109,10 +134,13 @@
           <div class="cursor-line">
             <span class="prompt">$</span>
             <span
-              class="cursor-placeholder"
               v-if="cursorMode === 'absolute'"
-            ></span>
-            <span class="cursor-block" :style="cursorStyle"></span>
+              class="cursor-placeholder"
+            />
+            <span
+              class="cursor-block"
+              :style="cursorStyle"
+            />
           </div>
         </div>
       </div>

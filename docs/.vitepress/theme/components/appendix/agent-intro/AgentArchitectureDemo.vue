@@ -6,8 +6,12 @@
   <div class="arch">
     <div class="header">
       <div>
-        <div class="title">Agent 由哪些模块拼起来？</div>
-        <div class="subtitle">点一下模块，看它“负责什么”。</div>
+        <div class="title">
+          Agent 由哪些模块拼起来？
+        </div>
+        <div class="subtitle">
+          点一下模块，看它“负责什么”。
+        </div>
       </div>
     </div>
 
@@ -24,21 +28,33 @@
         </button>
 
         <div class="pipes">
-          <div class="pipe">用户目标 → 计划 → 工具调用 → 结果 → 再计划…</div>
-          <div class="pipe small">（记忆会贯穿整个过程）</div>
+          <div class="pipe">
+            用户目标 → 计划 → 工具调用 → 结果 → 再计划…
+          </div>
+          <div class="pipe small">
+            （记忆会贯穿整个过程）
+          </div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">{{ current.icon }} {{ current.name }}</div>
-        <div class="panel-body">{{ current.desc }}</div>
+        <div class="panel-title">
+          {{ current.icon }} {{ current.name }}
+        </div>
+        <div class="panel-body">
+          {{ current.desc }}
+        </div>
 
         <div class="io">
-          <div class="io-title">典型输入</div>
+          <div class="io-title">
+            典型输入
+          </div>
           <pre><code>{{ current.input }}</code></pre>
         </div>
         <div class="io">
-          <div class="io-title">典型输出</div>
+          <div class="io-title">
+            典型输出
+          </div>
           <pre><code>{{ current.output }}</code></pre>
         </div>
       </div>

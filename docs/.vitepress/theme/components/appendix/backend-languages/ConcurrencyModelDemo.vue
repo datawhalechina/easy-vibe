@@ -18,15 +18,30 @@
         :class="{ active: selectedModel === model.name }"
         @click="selectedModel = model.name"
       >
-        <div class="model-icon">{{ model.icon }}</div>
-        <div class="model-name">{{ model.name }}</div>
-        <div class="model-lang">{{ model.language }}</div>
-        <div class="model-desc">{{ model.description }}</div>
+        <div class="model-icon">
+          {{ model.icon }}
+        </div>
+        <div class="model-name">
+          {{ model.name }}
+        </div>
+        <div class="model-lang">
+          {{ model.language }}
+        </div>
+        <div class="model-desc">
+          {{ model.description }}
+        </div>
       </div>
     </div>
 
-    <Transition name="fade" mode="out-in">
-      <div v-if="selectedModel" :key="selectedModel" class="model-detail">
+    <Transition
+      name="fade"
+      mode="out-in"
+    >
+      <div
+        v-if="selectedModel"
+        :key="selectedModel"
+        class="model-detail"
+      >
         <div class="detail-header">
           <h6>{{ getModelInfo().title }}</h6>
         </div>
@@ -35,13 +50,19 @@
           <div class="stat-item">
             <span class="stat-label">并发能力</span>
             <div class="stat-bar">
-              <div class="stat-fill" :style="{ width: getModelInfo().concurrency + '%' }"></div>
+              <div
+                class="stat-fill"
+                :style="{ width: getModelInfo().concurrency + '%' }"
+              />
             </div>
           </div>
           <div class="stat-item">
             <span class="stat-label">内存开销</span>
             <div class="stat-bar">
-              <div class="stat-fill memory" :style="{ width: getModelInfo().memory + '%' }"></div>
+              <div
+                class="stat-fill memory"
+                :style="{ width: getModelInfo().memory + '%' }"
+              />
             </div>
           </div>
         </div>
@@ -54,13 +75,23 @@
           <div class="pros">
             <strong>✅ 优势</strong>
             <ul>
-              <li v-for="pro in getModelInfo().pros" :key="pro">{{ pro }}</li>
+              <li
+                v-for="pro in getModelInfo().pros"
+                :key="pro"
+              >
+                {{ pro }}
+              </li>
             </ul>
           </div>
           <div class="cons">
             <strong>❌ 劣势</strong>
             <ul>
-              <li v-for="con in getModelInfo().cons" :key="con">{{ con }}</li>
+              <li
+                v-for="con in getModelInfo().cons"
+                :key="con"
+              >
+                {{ con }}
+              </li>
             </ul>
           </div>
         </div>

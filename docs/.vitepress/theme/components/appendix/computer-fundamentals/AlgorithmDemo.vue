@@ -13,7 +13,9 @@
           :key="algo.name"
           :class="['tab-btn', { active: activeAlgo === algo.name }]"
           @click="activeAlgo = algo.name"
-        >{{ algo.name }}</button>
+        >
+          {{ algo.name }}
+        </button>
       </div>
 
       <div class="algorithm-visual">
@@ -23,11 +25,24 @@
         </div>
 
         <div class="visual-content">
-          <div v-if="activeAlgo === '二分查找'" class="binary-search">
+          <div
+            v-if="activeAlgo === '二分查找'"
+            class="binary-search"
+          >
             <div class="search-input">
               <span>在有序数组中查找：</span>
-              <input v-model.number="searchTarget" type="number" class="num-input" placeholder="输入数字" />
-              <button class="search-btn" @click="runBinarySearch">查找</button>
+              <input
+                v-model.number="searchTarget"
+                type="number"
+                class="num-input"
+                placeholder="输入数字"
+              >
+              <button
+                class="search-btn"
+                @click="runBinarySearch"
+              >
+                查找
+              </button>
             </div>
             <div class="array-display">
               <div 
@@ -43,15 +58,37 @@
                 {{ num }}
               </div>
             </div>
-            <div class="search-info" v-if="searchSteps.length">
-              <div class="step" v-for="(step, i) in searchSteps" :key="i">{{ step }}</div>
+            <div
+              v-if="searchSteps.length"
+              class="search-info"
+            >
+              <div
+                v-for="(step, i) in searchSteps"
+                :key="i"
+                class="step"
+              >
+                {{ step }}
+              </div>
             </div>
           </div>
 
-          <div v-else-if="activeAlgo === '排序'" class="sorting">
+          <div
+            v-else-if="activeAlgo === '排序'"
+            class="sorting"
+          >
             <div class="sort-controls">
-              <button class="sort-btn" @click="resetArray">重置数组</button>
-              <button class="sort-btn" @click="runSort">开始排序</button>
+              <button
+                class="sort-btn"
+                @click="resetArray"
+              >
+                重置数组
+              </button>
+              <button
+                class="sort-btn"
+                @click="runSort"
+              >
+                开始排序
+              </button>
             </div>
             <div class="array-display">
               <div 
@@ -63,57 +100,125 @@
                 {{ num }}
               </div>
             </div>
-            <div class="sort-info">{{ sortStatus }}</div>
+            <div class="sort-info">
+              {{ sortStatus }}
+            </div>
           </div>
 
-          <div v-else-if="activeAlgo === '递归'" class="recursion">
+          <div
+            v-else-if="activeAlgo === '递归'"
+            class="recursion"
+          >
             <div class="recursion-input">
               <span>计算斐波那契数列第</span>
-              <input v-model.number="fibN" type="number" min="1" max="15" class="num-input" />
+              <input
+                v-model.number="fibN"
+                type="number"
+                min="1"
+                max="15"
+                class="num-input"
+              >
               <span>项</span>
-              <button class="calc-btn" @click="calcFib">计算</button>
+              <button
+                class="calc-btn"
+                @click="calcFib"
+              >
+                计算
+              </button>
             </div>
-            <div class="fib-result" v-if="fibResult !== null">
+            <div
+              v-if="fibResult !== null"
+              class="fib-result"
+            >
               <span class="result-value">F({{ fibN }}) = {{ fibResult }}</span>
             </div>
-            <div class="recursion-tree" v-if="fibSteps.length">
-              <div class="tree-title">递归调用过程</div>
+            <div
+              v-if="fibSteps.length"
+              class="recursion-tree"
+            >
+              <div class="tree-title">
+                递归调用过程
+              </div>
               <div class="tree-content">
-                <div v-for="(step, i) in fibSteps.slice(0, 8)" :key="i" class="tree-node">
+                <div
+                  v-for="(step, i) in fibSteps.slice(0, 8)"
+                  :key="i"
+                  class="tree-node"
+                >
                   {{ step }}
                 </div>
-                <div v-if="fibSteps.length > 8" class="tree-more">... 共 {{ fibSteps.length }} 次调用</div>
+                <div
+                  v-if="fibSteps.length > 8"
+                  class="tree-more"
+                >
+                  ... 共 {{ fibSteps.length }} 次调用
+                </div>
               </div>
             </div>
           </div>
 
-          <div v-else-if="activeAlgo === '贪心'" class="greedy">
-            <div class="greedy-desc">硬币找零问题：用最少的硬币凑出指定金额</div>
+          <div
+            v-else-if="activeAlgo === '贪心'"
+            class="greedy"
+          >
+            <div class="greedy-desc">
+              硬币找零问题：用最少的硬币凑出指定金额
+            </div>
             <div class="greedy-input">
               <span>目标金额：</span>
-              <input v-model.number="coinTarget" type="number" min="1" class="num-input" />
-              <button class="calc-btn" @click="calcCoins">计算</button>
+              <input
+                v-model.number="coinTarget"
+                type="number"
+                min="1"
+                class="num-input"
+              >
+              <button
+                class="calc-btn"
+                @click="calcCoins"
+              >
+                计算
+              </button>
             </div>
             <div class="coins-available">
               可用硬币：{{ coins.join(', ') }} 元
             </div>
-            <div class="coin-result" v-if="coinResult.length">
-              <div class="result-title">找零方案：</div>
-              <div class="coin-list">
-                <span v-for="(c, i) in coinResult" :key="i" class="coin">{{ c }}元</span>
+            <div
+              v-if="coinResult.length"
+              class="coin-result"
+            >
+              <div class="result-title">
+                找零方案：
               </div>
-              <div class="result-summary">共 {{ coinResult.length }} 枚硬币</div>
+              <div class="coin-list">
+                <span
+                  v-for="(c, i) in coinResult"
+                  :key="i"
+                  class="coin"
+                >{{ c }}元</span>
+              </div>
+              <div class="result-summary">
+                共 {{ coinResult.length }} 枚硬币
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="complexity-info">
-        <div class="info-title">时间复杂度速查</div>
+        <div class="info-title">
+          时间复杂度速查
+        </div>
         <div class="complexity-list">
-          <div class="complexity-item" v-for="c in complexities" :key="c.name">
+          <div
+            v-for="c in complexities"
+            :key="c.name"
+            class="complexity-item"
+          >
             <span class="c-name">{{ c.name }}</span>
-            <span class="c-value" :class="c.class">{{ c.value }}</span>
+            <span
+              class="c-value"
+              :class="c.class"
+            >{{ c.value }}</span>
             <span class="c-desc">{{ c.desc }}</span>
           </div>
         </div>

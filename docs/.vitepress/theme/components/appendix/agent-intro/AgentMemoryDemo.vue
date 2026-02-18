@@ -1,7 +1,9 @@
 <template>
   <div class="memory-demo">
     <div class="header">
-      <div class="title">💾 Agent 的记忆系统</div>
+      <div class="title">
+        💾 Agent 的记忆系统
+      </div>
     </div>
 
     <!-- 快捷操作 -->
@@ -10,29 +12,52 @@
         v-for="action in quickActions"
         :key="action"
         class="action-btn"
-        @click="sendMessage(action)"
         :disabled="isTyping"
+        @click="sendMessage(action)"
       >
         {{ action }}
       </button>
-      <button class="action-btn reset" @click="resetConversation">🔄 重置</button>
+      <button
+        class="action-btn reset"
+        @click="resetConversation"
+      >
+        🔄 重置
+      </button>
     </div>
 
     <!-- 主区域 -->
     <div class="main-area">
       <!-- 对话区 -->
       <div class="chat-box">
-        <div class="box-header">💬 对话</div>
-        <div class="messages" ref="chatContainer">
-          <div v-for="(msg, i) in messages.slice(-4)" :key="i" class="msg-row" :class="msg.role">
+        <div class="box-header">
+          💬 对话
+        </div>
+        <div
+          ref="chatContainer"
+          class="messages"
+        >
+          <div
+            v-for="(msg, i) in messages.slice(-4)"
+            :key="i"
+            class="msg-row"
+            :class="msg.role"
+          >
             <span class="avatar">{{ msg.role === 'user' ? '👤' : '🤖' }}</span>
             <span class="text">{{ msg.content }}</span>
           </div>
-          <div v-if="isTyping" class="msg-row assistant typing">
+          <div
+            v-if="isTyping"
+            class="msg-row assistant typing"
+          >
             <span class="avatar">🤖</span>
-            <span class="dots"><span></span><span></span><span></span></span>
+            <span class="dots"><span /><span /><span /></span>
           </div>
-          <div v-if="messages.length === 0" class="empty-msg">点击上方按钮开始对话</div>
+          <div
+            v-if="messages.length === 0"
+            class="empty-msg"
+          >
+            点击上方按钮开始对话
+          </div>
         </div>
       </div>
 
@@ -44,11 +69,20 @@
             <span class="count">{{ shortTermMemory.length }}</span>
           </div>
           <div class="card-body">
-            <div v-for="(item, i) in shortTermMemory.slice(-3)" :key="i" class="mem-item">
+            <div
+              v-for="(item, i) in shortTermMemory.slice(-3)"
+              :key="i"
+              class="mem-item"
+            >
               <span class="role">{{ item.role === 'user' ? 'U' : 'A' }}</span>
               <span class="content">{{ truncate(item.content, 20) }}</span>
             </div>
-            <div v-if="shortTermMemory.length === 0" class="empty">空</div>
+            <div
+              v-if="shortTermMemory.length === 0"
+              class="empty"
+            >
+              空
+            </div>
           </div>
         </div>
 
@@ -58,11 +92,20 @@
             <span class="count">{{ Object.keys(workingMemory).length }}</span>
           </div>
           <div class="card-body">
-            <div v-for="(v, k) in workingMemory" :key="k" class="mem-item kv">
+            <div
+              v-for="(v, k) in workingMemory"
+              :key="k"
+              class="mem-item kv"
+            >
               <span class="key">{{ k }}</span>
               <span class="value">{{ v }}</span>
             </div>
-            <div v-if="Object.keys(workingMemory).length === 0" class="empty">空</div>
+            <div
+              v-if="Object.keys(workingMemory).length === 0"
+              class="empty"
+            >
+              空
+            </div>
           </div>
         </div>
 
@@ -72,18 +115,30 @@
             <span class="count">{{ longTermMemory.length }}</span>
           </div>
           <div class="card-body">
-            <div v-for="(item, i) in longTermMemory.slice(-2)" :key="i" class="mem-item">
+            <div
+              v-for="(item, i) in longTermMemory.slice(-2)"
+              :key="i"
+              class="mem-item"
+            >
               <span class="tag">{{ item.category }}</span>
               <span class="content">{{ item.content }}</span>
             </div>
-            <div v-if="longTermMemory.length === 0" class="empty">空</div>
+            <div
+              v-if="longTermMemory.length === 0"
+              class="empty"
+            >
+              空
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 记忆操作提示 -->
-    <div v-if="lastOp" class="op-bar">
+    <div
+      v-if="lastOp"
+      class="op-bar"
+    >
       <span>{{ lastOp.icon }}</span>
       <span>{{ lastOp.text }}</span>
     </div>

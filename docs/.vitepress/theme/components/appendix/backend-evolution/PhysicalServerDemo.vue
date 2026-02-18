@@ -8,7 +8,9 @@
 
     <div class="demo-stage">
       <div class="client-zone">
-        <div class="zone-title">👤 用户浏览器</div>
+        <div class="zone-title">
+          👤 用户浏览器
+        </div>
         <div class="request-queue">
           <div
             v-for="(req, idx) in pendingRequests"
@@ -30,7 +32,10 @@
       </div>
 
       <div class="connection-zone">
-        <div class="network-line" :class="{ busy: isProcessing }">
+        <div
+          class="network-line"
+          :class="{ busy: isProcessing }"
+        >
           <div class="packets">
             <div
               v-for="pkt in packets"
@@ -43,27 +48,35 @@
             </div>
           </div>
         </div>
-        <div class="latency-display" v-if="currentLatency > 0">
+        <div
+          v-if="currentLatency > 0"
+          class="latency-display"
+        >
           ⏱️ {{ currentLatency }}ms
         </div>
       </div>
 
       <div class="server-zone">
-        <div class="zone-title">🖥️ CGI 服务器</div>
+        <div class="zone-title">
+          🖥️ CGI 服务器
+        </div>
         <div class="server-status">
           <div
             class="status-indicator"
             :class="{ processing: isProcessing }"
           >
-            <span class="status-dot"></span>
+            <span class="status-dot" />
             <span class="status-text">{{ serverStatus }}</span>
           </div>
-          <div class="cpu-usage" v-if="isProcessing">
+          <div
+            v-if="isProcessing"
+            class="cpu-usage"
+          >
             <div class="cpu-bar">
               <div
                 class="cpu-fill"
                 :style="{ width: cpuUsage + '%' }"
-              ></div>
+              />
             </div>
             <span class="cpu-text">CPU: {{ cpuUsage }}%</span>
           </div>
@@ -79,7 +92,7 @@
               <div
                 class="proc-bar"
                 :style="{ width: proc.progress + '%' }"
-              ></div>
+              />
             </div>
           </div>
         </div>

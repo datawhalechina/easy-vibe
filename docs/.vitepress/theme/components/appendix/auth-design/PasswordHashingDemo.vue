@@ -9,7 +9,9 @@
 <template>
   <div class="password-hashing-demo">
     <div class="header">
-      <div class="title">🔐 密码存储：哈希 + 盐 + 慢</div>
+      <div class="title">
+        🔐 密码存储：哈希 + 盐 + 慢
+      </div>
       <div class="subtitle">
         演示 PBKDF2（模拟慢哈希）如何抵抗彩虹表/暴力破解；真实项目通常选
         bcrypt/Argon2。
@@ -18,7 +20,9 @@
 
     <div class="grid">
       <div class="card">
-        <div class="card-title">输入</div>
+        <div class="card-title">
+          输入
+        </div>
 
         <label class="label">密码</label>
         <input
@@ -27,7 +31,7 @@
           class="input"
           placeholder="例如：123456"
           @input="debouncedRecompute"
-        />
+        >
 
         <div class="row">
           <div class="col">
@@ -42,29 +46,43 @@
               max="200000"
               step="1000"
               @input="debouncedRecompute"
-            />
-            <div class="hint">越大越慢，暴力破解成本越高（但登录也更慢）。</div>
+            >
+            <div class="hint">
+              越大越慢，暴力破解成本越高（但登录也更慢）。
+            </div>
           </div>
         </div>
 
         <div class="row">
           <label class="toggle">
-            <input v-model="saltEnabled" type="checkbox" @change="recompute" />
+            <input
+              v-model="saltEnabled"
+              type="checkbox"
+              @change="recompute"
+            >
             <span>启用盐（salt）</span>
           </label>
-          <button class="btn" @click="regenSalt" :disabled="!saltEnabled">
+          <button
+            class="btn"
+            :disabled="!saltEnabled"
+            @click="regenSalt"
+          >
             生成新盐
           </button>
         </div>
 
         <div class="mono-box">
-          <div class="mono-label">salt</div>
+          <div class="mono-label">
+            salt
+          </div>
           <code class="mono">{{ saltEnabled ? saltHex : '(disabled)' }}</code>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">输出（模拟）</div>
+        <div class="card-title">
+          输出（模拟）
+        </div>
 
         <div class="status">
           <span class="badge">Algorithm: PBKDF2-SHA256</span>
@@ -72,12 +90,16 @@
         </div>
 
         <div class="mono-box">
-          <div class="mono-label">derived key (hex)</div>
+          <div class="mono-label">
+            derived key (hex)
+          </div>
           <code class="mono">{{ hashHex || '（请输入密码）' }}</code>
         </div>
 
         <div class="alert">
-          <div class="alert-title">结论</div>
+          <div class="alert-title">
+            结论
+          </div>
           <div class="alert-text">
             不要存明文；不要用无盐的快速哈希（MD5/SHA1/SHA256 直接 hash 密码）。
             应使用“专门的密码哈希/KDF（慢 + 盐）”，并设置合理成本。
@@ -92,15 +114,23 @@
       </div>
       <div class="two">
         <div class="mono-box">
-          <div class="mono-label">salt A</div>
+          <div class="mono-label">
+            salt A
+          </div>
           <code class="mono">{{ saltA }}</code>
-          <div class="mono-label">hash A</div>
+          <div class="mono-label">
+            hash A
+          </div>
           <code class="mono">{{ hashA || '-' }}</code>
         </div>
         <div class="mono-box">
-          <div class="mono-label">salt B</div>
+          <div class="mono-label">
+            salt B
+          </div>
           <code class="mono">{{ saltB }}</code>
-          <div class="mono-label">hash B</div>
+          <div class="mono-label">
+            hash B
+          </div>
           <code class="mono">{{ hashB || '-' }}</code>
         </div>
       </div>

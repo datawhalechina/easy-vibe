@@ -4,78 +4,124 @@
       <div class="flow-container">
         <!-- Step 1: Prompt -->
         <div class="flow-item">
-          <el-card shadow="hover" class="node-card">
+          <el-card
+            shadow="hover"
+            class="node-card"
+          >
             <template #header>
               <div class="node-header">
-                <el-icon :size="20"><EditPen /></el-icon>
+                <el-icon :size="20">
+                  <EditPen />
+                </el-icon>
                 <span>提示词 (Prompt)</span>
               </div>
             </template>
             <div class="node-content">
-              <el-tag type="info" effect="plain">"一只可爱的猫"</el-tag>
+              <el-tag
+                type="info"
+                effect="plain"
+              >
+                "一只可爱的猫"
+              </el-tag>
             </div>
           </el-card>
         </div>
 
         <div class="arrow-connector">
-          <el-icon :size="24"><Right /></el-icon>
+          <el-icon :size="24">
+            <Right />
+          </el-icon>
         </div>
 
         <!-- Step 2: Text Encoder -->
         <div class="flow-item">
-          <el-card shadow="hover" class="node-card">
+          <el-card
+            shadow="hover"
+            class="node-card"
+          >
             <template #header>
               <div class="node-header">
-                <el-icon :size="20"><Microphone /></el-icon>
+                <el-icon :size="20">
+                  <Microphone />
+                </el-icon>
                 <span>文本编码器</span>
               </div>
             </template>
             <div class="node-content">
-              <div class="model-name">CLIP / T5</div>
-              <div class="data-shape">Vector [768]</div>
+              <div class="model-name">
+                CLIP / T5
+              </div>
+              <div class="data-shape">
+                Vector [768]
+              </div>
             </div>
           </el-card>
         </div>
 
         <div class="arrow-connector">
-          <el-icon :size="24"><Right /></el-icon>
+          <el-icon :size="24">
+            <Right />
+          </el-icon>
         </div>
 
         <!-- Step 3: UNet/DiT -->
         <div class="flow-item main-node">
-          <el-card shadow="hover" class="node-card highlight">
+          <el-card
+            shadow="hover"
+            class="node-card highlight"
+          >
             <template #header>
               <div class="node-header">
-                <el-icon :size="20" color="#E6A23C"><Cpu /></el-icon>
+                <el-icon
+                  :size="20"
+                  color="#E6A23C"
+                >
+                  <Cpu />
+                </el-icon>
                 <span>生成模型</span>
               </div>
             </template>
             <div class="node-content">
-              <div class="model-name">UNet / DiT</div>
+              <div class="model-name">
+                UNet / DiT
+              </div>
               <div class="action-badge">
-                <el-tag type="warning" size="small" effect="dark"
-                  >去噪 (Denoise)</el-tag
+                <el-tag
+                  type="warning"
+                  size="small"
+                  effect="dark"
                 >
+                  去噪 (Denoise)
+                </el-tag>
               </div>
             </div>
           </el-card>
         </div>
 
         <div class="arrow-connector">
-          <el-icon :size="24"><Right /></el-icon>
+          <el-icon :size="24">
+            <Right />
+          </el-icon>
         </div>
 
         <!-- Step 4: VAE Decoder -->
         <div class="flow-item">
-          <el-card shadow="hover" class="node-card">
+          <el-card
+            shadow="hover"
+            class="node-card"
+          >
             <template #header>
               <div class="node-header">
-                <el-icon :size="20"><View /></el-icon>
+                <el-icon :size="20">
+                  <View />
+                </el-icon>
                 <span>图像解码器</span>
               </div>
             </template>
             <div class="node-content">
-              <div class="model-name">VAE Decoder</div>
+              <div class="model-name">
+                VAE Decoder
+              </div>
               <div class="final-output">
                 <el-icon><Picture /></el-icon> Image
               </div>
@@ -90,7 +136,9 @@
         <el-col :span="8">
           <div class="explanation-item">
             <div class="exp-icon">
-              <el-icon color="#409EFF"><Microphone /></el-icon>
+              <el-icon color="#409EFF">
+                <Microphone />
+              </el-icon>
             </div>
             <div class="exp-text">
               <h4>耳朵 (Text Encoder)</h4>
@@ -101,7 +149,9 @@
         <el-col :span="8">
           <div class="explanation-item">
             <div class="exp-icon">
-              <el-icon color="#E6A23C"><Cpu /></el-icon>
+              <el-icon color="#E6A23C">
+                <Cpu />
+              </el-icon>
             </div>
             <div class="exp-text">
               <h4>大脑 (UNet/DiT)</h4>
@@ -114,7 +164,9 @@
         <el-col :span="8">
           <div class="explanation-item">
             <div class="exp-icon">
-              <el-icon color="#67C23A"><View /></el-icon>
+              <el-icon color="#67C23A">
+                <View />
+              </el-icon>
             </div>
             <div class="exp-text">
               <h4>眼睛 (VAE)</h4>

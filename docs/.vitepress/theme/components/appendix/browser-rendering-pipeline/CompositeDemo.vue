@@ -28,7 +28,9 @@
 
       <div class="composite-result">
         <div class="result-box">
-          <div class="result-title">合成结果</div>
+          <div class="result-title">
+            合成结果
+          </div>
           <div class="result-display">
             <div
               v-for="layer in layers"
@@ -44,7 +46,10 @@
       </div>
 
       <div class="control-panel">
-        <button class="action-btn" @click="toggleAnimation">
+        <button
+          class="action-btn"
+          @click="toggleAnimation"
+        >
           {{ isAnimating ? '⏸ 暂停动画' : '▶️ 开始动画' }}
         </button>
       </div>

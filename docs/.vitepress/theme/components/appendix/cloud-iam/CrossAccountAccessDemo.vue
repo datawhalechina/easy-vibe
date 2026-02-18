@@ -8,26 +8,46 @@
 
     <div class="flow-diagram">
       <div class="account-box source">
-        <div class="account-header">账号 A（源）</div>
-        <div class="entity">IAM User</div>
-        <div class="action">sts:AssumeRole</div>
+        <div class="account-header">
+          账号 A（源）
+        </div>
+        <div class="entity">
+          IAM User
+        </div>
+        <div class="action">
+          sts:AssumeRole
+        </div>
       </div>
       <span class="arrow">→</span>
       <div class="account-box sts">
-        <div class="account-header">STS 服务</div>
-        <div class="step">验证身份</div>
-        <div class="step">生成临时凭证</div>
+        <div class="account-header">
+          STS 服务
+        </div>
+        <div class="step">
+          验证身份
+        </div>
+        <div class="step">
+          生成临时凭证
+        </div>
       </div>
       <span class="arrow">→</span>
       <div class="account-box target">
-        <div class="account-header">账号 B（目标）</div>
-        <div class="entity">CrossAccountRole</div>
-        <div class="resource">访问 S3/EC2</div>
+        <div class="account-header">
+          账号 B（目标）
+        </div>
+        <div class="entity">
+          CrossAccountRole
+        </div>
+        <div class="resource">
+          访问 S3/EC2
+        </div>
       </div>
     </div>
 
     <div class="code-block">
-      <div class="code-title">Python 示例</div>
+      <div class="code-title">
+        Python 示例
+      </div>
       <pre><code>sts = boto3.client('sts')
 assumed = sts.assume_role(
     RoleArn='arn:aws:iam::123456789012:role/CrossAccountRole',

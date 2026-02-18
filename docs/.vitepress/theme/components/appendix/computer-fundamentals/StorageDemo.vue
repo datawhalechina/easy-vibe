@@ -16,14 +16,25 @@
           :style="{ width: level.width }"
           @click="activeLevel = i"
         >
-          <div class="level-name">{{ level.name }}</div>
-          <div class="level-speed">{{ level.speed }}</div>
-          <div class="level-size">{{ level.size }}</div>
+          <div class="level-name">
+            {{ level.name }}
+          </div>
+          <div class="level-speed">
+            {{ level.speed }}
+          </div>
+          <div class="level-size">
+            {{ level.size }}
+          </div>
         </div>
       </div>
 
-      <div class="level-detail" v-if="currentLevel">
-        <div class="detail-title">{{ currentLevel.name }} 详情</div>
+      <div
+        v-if="currentLevel"
+        class="level-detail"
+      >
+        <div class="detail-title">
+          {{ currentLevel.name }} 详情
+        </div>
         <div class="detail-grid">
           <div class="detail-item">
             <span class="label">访问速度</span>
@@ -42,7 +53,9 @@
             <span class="value">{{ currentLevel.volatile }}</span>
           </div>
         </div>
-        <div class="detail-desc">{{ currentLevel.desc }}</div>
+        <div class="detail-desc">
+          {{ currentLevel.desc }}
+        </div>
       </div>
     </div>
 

@@ -13,12 +13,24 @@
     <div class="controls">
       <div class="control">
         <label>失败率：</label>
-        <input v-model.number="failureRate" type="range" min="0" max="100" step="10" />
+        <input
+          v-model.number="failureRate"
+          type="range"
+          min="0"
+          max="100"
+          step="10"
+        >
         <span class="value">{{ failureRate }}%</span>
       </div>
       <div class="control">
         <label>最大重试：</label>
-        <input v-model.number="maxRetries" type="range" min="1" max="5" step="1" />
+        <input
+          v-model.number="maxRetries"
+          type="range"
+          min="1"
+          max="5"
+          step="1"
+        >
         <span class="value">{{ maxRetries }}</span>
       </div>
     </div>
@@ -26,7 +38,9 @@
     <div class="demo-content">
       <div class="flow-container">
         <div class="main-queue-section">
-          <div class="section-title">📦 主队列</div>
+          <div class="section-title">
+            📦 主队列
+          </div>
           <div class="queue-box main-queue">
             <div class="queue-header">
               <span>正常消息队列</span>
@@ -39,42 +53,73 @@
                 class="message-item"
                 :class="{ processing: msg.processing }"
               >
-                <div class="msg-id">#{{ msg.id }}</div>
-                <div class="msg-retries" v-if="msg.retries > 0">
+                <div class="msg-id">
+                  #{{ msg.id }}
+                </div>
+                <div
+                  v-if="msg.retries > 0"
+                  class="msg-retries"
+                >
                   重试: {{ msg.retries }}/{{ maxRetries }}
                 </div>
               </div>
-              <div v-if="mainQueue.length === 0" class="empty">队列为空</div>
-              <div v-else-if="mainQueue.length > 3" class="more">
+              <div
+                v-if="mainQueue.length === 0"
+                class="empty"
+              >
+                队列为空
+              </div>
+              <div
+                v-else-if="mainQueue.length > 3"
+                class="more"
+              >
                 还有 {{ mainQueue.length - 3 }} 条...
               </div>
             </div>
           </div>
-          <button class="add-btn" @click="addMessage" :disabled="processing">
+          <button
+            class="add-btn"
+            :disabled="processing"
+            @click="addMessage"
+          >
             + 添加消息
           </button>
         </div>
 
         <div class="processing-section">
-          <div class="section-title">⚙️ 消费处理</div>
+          <div class="section-title">
+            ⚙️ 消费处理
+          </div>
           <div class="processor-box">
-            <div class="processor-icon" :class="{ active: processing }">
+            <div
+              class="processor-icon"
+              :class="{ active: processing }"
+            >
               {{ processing ? '⚙️' : '💤' }}
             </div>
             <div class="processor-status">
               {{ processing ? '处理中...' : '空闲' }}
             </div>
-            <div v-if="currentMessage" class="current-msg">
+            <div
+              v-if="currentMessage"
+              class="current-msg"
+            >
               处理: #{{ currentMessage.id }}
             </div>
-            <div v-if="lastResult" class="last-result" :class="lastResult.type">
+            <div
+              v-if="lastResult"
+              class="last-result"
+              :class="lastResult.type"
+            >
               {{ lastResult.message }}
             </div>
           </div>
         </div>
 
         <div class="dlq-section">
-          <div class="section-title">⚠️ 死信队列</div>
+          <div class="section-title">
+            ⚠️ 死信队列
+          </div>
           <div class="queue-box dead-letter">
             <div class="queue-header">
               <span>失败消息</span>
@@ -86,21 +131,31 @@
                 :key="msg.id"
                 class="message-item failed"
               >
-                <div class="msg-id">#{{ msg.id }}</div>
-                <div class="msg-error">{{ msg.error }}</div>
+                <div class="msg-id">
+                  #{{ msg.id }}
+                </div>
+                <div class="msg-error">
+                  {{ msg.error }}
+                </div>
               </div>
-              <div v-if="deadLetterQueue.length === 0" class="empty">
+              <div
+                v-if="deadLetterQueue.length === 0"
+                class="empty"
+              >
                 无失败消息
               </div>
-              <div v-else-if="deadLetterQueue.length > 2" class="more">
+              <div
+                v-else-if="deadLetterQueue.length > 2"
+                class="more"
+              >
                 还有 {{ deadLetterQueue.length - 2 }} 条...
               </div>
             </div>
           </div>
           <button
             class="retry-btn"
-            @click="retryDeadLetters"
             :disabled="deadLetterQueue.length === 0"
+            @click="retryDeadLetters"
           >
             🔄 重试死信
           </button>
@@ -109,20 +164,36 @@
 
       <div class="stats">
         <div class="stat-card">
-          <div class="stat-label">总消息数</div>
-          <div class="stat-value">{{ totalMessages }}</div>
+          <div class="stat-label">
+            总消息数
+          </div>
+          <div class="stat-value">
+            {{ totalMessages }}
+          </div>
         </div>
         <div class="stat-card success">
-          <div class="stat-label">成功处理</div>
-          <div class="stat-value">{{ successCount }}</div>
+          <div class="stat-label">
+            成功处理
+          </div>
+          <div class="stat-value">
+            {{ successCount }}
+          </div>
         </div>
         <div class="stat-card warning">
-          <div class="stat-label">进入死信</div>
-          <div class="stat-value">{{ deadLetterCount }}</div>
+          <div class="stat-label">
+            进入死信
+          </div>
+          <div class="stat-value">
+            {{ deadLetterCount }}
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">成功率</div>
-          <div class="stat-value">{{ successRate }}%</div>
+          <div class="stat-label">
+            成功率
+          </div>
+          <div class="stat-value">
+            {{ successRate }}%
+          </div>
         </div>
       </div>
     </div>

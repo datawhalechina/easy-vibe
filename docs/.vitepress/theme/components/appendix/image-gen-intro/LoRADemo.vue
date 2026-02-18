@@ -26,21 +26,43 @@
         <div class="concept-section">
           <div class="concept-visual">
             <div class="model-box base">
-              <div class="box-title">基础模型</div>
-              <div class="box-size">4-8 GB</div>
-              <div class="box-desc">通用知识</div>
+              <div class="box-title">
+                基础模型
+              </div>
+              <div class="box-size">
+                4-8 GB
+              </div>
+              <div class="box-desc">
+                通用知识
+              </div>
             </div>
-            <div class="plus-sign">+</div>
+            <div class="plus-sign">
+              +
+            </div>
             <div class="model-box lora">
-              <div class="box-title">LoRA 权重</div>
-              <div class="box-size">50-200 MB</div>
-              <div class="box-desc">特定风格/角色</div>
+              <div class="box-title">
+                LoRA 权重
+              </div>
+              <div class="box-size">
+                50-200 MB
+              </div>
+              <div class="box-desc">
+                特定风格/角色
+              </div>
             </div>
-            <div class="equals-sign">=</div>
+            <div class="equals-sign">
+              =
+            </div>
             <div class="model-box result">
-              <div class="box-title">定制模型</div>
-              <div class="box-size">无需合并</div>
-              <div class="box-desc">动态加载</div>
+              <div class="box-title">
+                定制模型
+              </div>
+              <div class="box-size">
+                无需合并
+              </div>
+              <div class="box-desc">
+                动态加载
+              </div>
             </div>
           </div>
         </div>
@@ -49,7 +71,12 @@
         <div class="weight-control-section">
           <div class="weight-header">
             <span>LoRA 权重调节</span>
-            <el-tag type="primary" effect="dark">{{ loraWeight }}</el-tag>
+            <el-tag
+              type="primary"
+              effect="dark"
+            >
+              {{ loraWeight }}
+            </el-tag>
           </div>
           <el-slider
             v-model="loraWeight"
@@ -67,21 +94,33 @@
 
           <div class="lora-selector">
             <el-radio-group v-model="selectedLoRA">
-              <el-radio-button label="anime">动漫风格</el-radio-button>
-              <el-radio-button label="realistic">写实风格</el-radio-button>
-              <el-radio-button label="sketch">素描风格</el-radio-button>
-              <el-radio-button label="3d">3D 风格</el-radio-button>
+              <el-radio-button label="anime">
+                动漫风格
+              </el-radio-button>
+              <el-radio-button label="realistic">
+                写实风格
+              </el-radio-button>
+              <el-radio-button label="sketch">
+                素描风格
+              </el-radio-button>
+              <el-radio-button label="3d">
+                3D 风格
+              </el-radio-button>
             </el-radio-group>
           </div>
         </div>
 
         <!-- 效果对比 -->
         <div class="comparison-section">
-          <div class="comparison-title">生成效果对比</div>
+          <div class="comparison-title">
+            生成效果对比
+          </div>
           <div class="comparison-grid">
             <div class="comparison-item">
               <div class="item-label">
-                <el-tag type="info">仅基础模型</el-tag>
+                <el-tag type="info">
+                  仅基础模型
+                </el-tag>
               </div>
               <canvas
                 ref="baseCanvas"
@@ -89,12 +128,16 @@
                 height="200"
                 class="comparison-canvas"
               />
-              <div class="item-desc">通用风格</div>
+              <div class="item-desc">
+                通用风格
+              </div>
             </div>
 
             <div class="comparison-item main">
               <div class="item-label">
-                <el-tag type="success">基础 + LoRA ({{ loraWeight }})</el-tag>
+                <el-tag type="success">
+                  基础 + LoRA ({{ loraWeight }})
+                </el-tag>
               </div>
               <canvas
                 ref="loraCanvas"
@@ -102,21 +145,29 @@
                 height="200"
                 class="comparison-canvas main-canvas"
               />
-              <div class="item-desc">{{ getLoRADescription() }}</div>
+              <div class="item-desc">
+                {{ getLoRADescription() }}
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 多 LoRA 融合 -->
         <div class="fusion-section">
-          <div class="fusion-title">🔀 多 LoRA 融合</div>
+          <div class="fusion-title">
+            🔀 多 LoRA 融合
+          </div>
           <div class="fusion-controls">
             <div
               v-for="(lora, index) in activeLoRAs"
               :key="index"
               class="fusion-item"
             >
-              <el-tag :type="lora.type" closable @close="removeLoRA(index)">
+              <el-tag
+                :type="lora.type"
+                closable
+                @close="removeLoRA(index)"
+              >
                 {{ lora.name }}
               </el-tag>
               <el-slider
@@ -130,16 +181,29 @@
               <span class="weight-display">{{ lora.weight }}</span>
             </div>
             <el-dropdown @command="addLoRA">
-              <el-button type="primary" size="small">
+              <el-button
+                type="primary"
+                size="small"
+              >
                 <el-icon><Plus /></el-icon> 添加 LoRA
               </el-button>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item command="anime">动漫风格</el-dropdown-item>
-                  <el-dropdown-item command="realistic">写实风格</el-dropdown-item>
-                  <el-dropdown-item command="sketch">素描风格</el-dropdown-item>
-                  <el-dropdown-item command="3d">3D 风格</el-dropdown-item>
-                  <el-dropdown-item command="watercolor">水彩风格</el-dropdown-item>
+                  <el-dropdown-item command="anime">
+                    动漫风格
+                  </el-dropdown-item>
+                  <el-dropdown-item command="realistic">
+                    写实风格
+                  </el-dropdown-item>
+                  <el-dropdown-item command="sketch">
+                    素描风格
+                  </el-dropdown-item>
+                  <el-dropdown-item command="3d">
+                    3D 风格
+                  </el-dropdown-item>
+                  <el-dropdown-item command="watercolor">
+                    水彩风格
+                  </el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -153,7 +217,9 @@
               class="fusion-canvas"
             />
             <div class="fusion-formula">
-              <div class="formula-title">融合公式</div>
+              <div class="formula-title">
+                融合公式
+              </div>
               <div class="formula-content">
                 输出 = 基础模型 + Σ(LoRAᵢ × 权重ᵢ)
               </div>
@@ -163,27 +229,53 @@
 
         <!-- 应用场景 -->
         <div class="use-cases">
-          <div class="use-cases-title">🎯 LoRA 典型应用</div>
+          <div class="use-cases-title">
+            🎯 LoRA 典型应用
+          </div>
           <div class="use-cases-grid">
             <div class="use-case-card">
-              <div class="use-case-icon">👤</div>
-              <div class="use-case-title">角色一致性</div>
-              <div class="use-case-desc">训练特定角色，保持形象一致</div>
+              <div class="use-case-icon">
+                👤
+              </div>
+              <div class="use-case-title">
+                角色一致性
+              </div>
+              <div class="use-case-desc">
+                训练特定角色，保持形象一致
+              </div>
             </div>
             <div class="use-case-card">
-              <div class="use-case-icon">🎨</div>
-              <div class="use-case-title">艺术风格</div>
-              <div class="use-case-desc">模仿特定画家或艺术风格</div>
+              <div class="use-case-icon">
+                🎨
+              </div>
+              <div class="use-case-title">
+                艺术风格
+              </div>
+              <div class="use-case-desc">
+                模仿特定画家或艺术风格
+              </div>
             </div>
             <div class="use-case-card">
-              <div class="use-case-icon">👗</div>
-              <div class="use-case-title">服装概念</div>
-              <div class="use-case-desc">特定服装或配饰设计</div>
+              <div class="use-case-icon">
+                👗
+              </div>
+              <div class="use-case-title">
+                服装概念
+              </div>
+              <div class="use-case-desc">
+                特定服装或配饰设计
+              </div>
             </div>
             <div class="use-case-card">
-              <div class="use-case-icon">🏢</div>
-              <div class="use-case-title">产品展示</div>
-              <div class="use-case-desc">特定产品或品牌风格</div>
+              <div class="use-case-icon">
+                🏢
+              </div>
+              <div class="use-case-title">
+                产品展示
+              </div>
+              <div class="use-case-desc">
+                特定产品或品牌风格
+              </div>
             </div>
           </div>
         </div>

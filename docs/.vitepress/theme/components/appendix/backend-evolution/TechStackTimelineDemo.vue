@@ -15,8 +15,8 @@
         @click="activeEra = idx"
       >
         <div class="era-marker">
-          <div class="era-dot"></div>
-          <div class="era-line"></div>
+          <div class="era-dot" />
+          <div class="era-line" />
         </div>
 
         <div class="era-content">
@@ -27,8 +27,14 @@
           </div>
 
           <div class="tech-categories">
-            <div class="category" v-for="(cat, cIdx) in era.categories" :key="cIdx">
-              <div class="category-name">{{ cat.name }}</div>
+            <div
+              v-for="(cat, cIdx) in era.categories"
+              :key="cIdx"
+              class="category"
+            >
+              <div class="category-name">
+                {{ cat.name }}
+              </div>
               <div class="tech-tags">
                 <span
                   v-for="(tech, tIdx) in cat.techs"

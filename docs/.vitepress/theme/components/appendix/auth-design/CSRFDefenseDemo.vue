@@ -5,7 +5,9 @@
 <template>
   <div class="csrf-demo">
     <div class="header">
-      <div class="title">🛡️ CSRF：为什么“自动带 Cookie”会出事？</div>
+      <div class="title">
+        🛡️ CSRF：为什么“自动带 Cookie”会出事？
+      </div>
       <div class="subtitle">
         手动推进一个最小攻击链，再看 3 个最常用防护手段（SameSite / CSRF Token /
         双重提交）。
@@ -13,51 +15,78 @@
     </div>
 
     <div class="controls">
-      <button class="btn primary" @click="start" :disabled="step !== 0">
-        开始
-      </button>
-      <button class="btn" @click="prev" :disabled="step <= 1">上一步</button>
       <button
         class="btn primary"
-        @click="next"
+        :disabled="step !== 0"
+        @click="start"
+      >
+        开始
+      </button>
+      <button
+        class="btn"
+        :disabled="step <= 1"
+        @click="prev"
+      >
+        上一步
+      </button>
+      <button
+        class="btn primary"
         :disabled="step === 0 || step >= maxStep"
+        @click="next"
       >
         下一步
       </button>
-      <button class="btn" @click="reset">重置</button>
+      <button
+        class="btn"
+        @click="reset"
+      >
+        重置
+      </button>
     </div>
 
-    <div v-if="step > 0" class="progress">
+    <div
+      v-if="step > 0"
+      class="progress"
+    >
       Step {{ step }} / {{ maxStep }} · {{ steps[step - 1]?.title }}
     </div>
 
     <div class="grid">
       <div class="card">
-        <div class="card-title">场景</div>
+        <div class="card-title">
+          场景
+        </div>
         <div class="desc">
           假设你登录了 <strong>bank.com</strong>（Cookie
           已存在）。你又打开了一个恶意网站
           <strong>evil.com</strong>，它偷偷发起转账请求。
         </div>
         <div class="box">
-          <div class="box-title">你的 Cookie（浏览器会自动带）</div>
+          <div class="box-title">
+            你的 Cookie（浏览器会自动带）
+          </div>
           <code class="mono">Cookie: session_id=abc123</code>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">本步请求</div>
+        <div class="card-title">
+          本步请求
+        </div>
         <pre class="code"><code>{{ requestText }}</code></pre>
-        <div class="desc">{{ steps[step - 1]?.desc }}</div>
+        <div class="desc">
+          {{ steps[step - 1]?.desc }}
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">防护怎么选？（优先顺序）</div>
+      <div class="card-title">
+        防护怎么选？（优先顺序）
+      </div>
       <ol class="list">
         <li>
-          <strong>SameSite Cookie：</strong
-          >对大多数“跨站表单/图片”请求非常有效（Lax/Strict）。
+          <strong>SameSite Cookie：</strong>对大多数“跨站表单/图片”请求非常有效（Lax/Strict）。
         </li>
         <li>
           <strong>CSRF Token：</strong>在表单/请求头里带
@@ -69,7 +98,9 @@
         </li>
       </ol>
       <div class="warn">
-        <div class="warn-title">注意</div>
+        <div class="warn-title">
+          注意
+        </div>
         <div class="warn-text">
           CSRF 主要针对“Cookie 自动携带”的场景。若你用 Authorization:
           Bearer（不自动发送），CSRF 风险会显著降低，但仍要考虑 XSS/Token

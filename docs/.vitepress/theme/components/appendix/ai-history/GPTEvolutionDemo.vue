@@ -1,6 +1,9 @@
 <template>
   <div class="gpt-evolution-demo">
-    <el-card shadow="hover" class="main-card">
+    <el-card
+      shadow="hover"
+      class="main-card"
+    >
       <template #header>
         <div class="card-header">
           <span class="title">🚀 GPT 进化历程</span>
@@ -10,7 +13,12 @@
 
       <div class="demo-content">
         <!-- Replace Vertical Timeline with Horizontal Tabs -->
-        <el-tabs v-model="activeModelName" type="card" class="evolution-tabs" @tab-click="handleTabClick">
+        <el-tabs
+          v-model="activeModelName"
+          type="card"
+          class="evolution-tabs"
+          @tab-click="handleTabClick"
+        >
           <el-tab-pane
             v-for="(model, index) in gptModels"
             :key="index"
@@ -19,7 +27,12 @@
           >
             <div class="model-view">
               <div class="model-info-header">
-                <el-tag effect="dark" size="large">{{ model.year }}</el-tag>
+                <el-tag
+                  effect="dark"
+                  size="large"
+                >
+                  {{ model.year }}
+                </el-tag>
                 <div class="model-stats">
                   <div class="stat-item">
                     <span class="label">参数量</span>
@@ -53,7 +66,9 @@
           </el-tab-pane>
         </el-tabs>
 
-        <el-divider class="compact-divider">进化趋势</el-divider>
+        <el-divider class="compact-divider">
+          进化趋势
+        </el-divider>
 
         <div class="evolution-insight">
           <div class="insight-row">

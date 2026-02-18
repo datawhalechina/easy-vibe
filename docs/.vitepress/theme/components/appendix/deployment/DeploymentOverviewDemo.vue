@@ -7,105 +7,250 @@
 
     <div class="demo-content">
       <div class="flow-section">
-        <div class="section-title">开发阶段</div>
+        <div class="section-title">
+          开发阶段
+        </div>
         <div class="service-flow">
-          <div class="flow-step" :class="{ active: currentStep >= 1 }" @mouseenter="(e) => showTooltip(e, 'git')" @mouseleave="hideTooltip">
-            <div class="step-title">Git</div>
-            <div class="tech-term">代码版本控制</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 1 }"
+            @mouseenter="(e) => showTooltip(e, 'git')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Git
+            </div>
+            <div class="tech-term">
+              代码版本控制
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 2 }" @mouseenter="(e) => showTooltip(e, 'cicd')" @mouseleave="hideTooltip">
-            <div class="step-title">CI/CD</div>
-            <div class="tech-term">自动化流水线</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 2 }"
+            @mouseenter="(e) => showTooltip(e, 'cicd')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              CI/CD
+            </div>
+            <div class="tech-term">
+              自动化流水线
+            </div>
           </div>
         </div>
       </div>
 
       <div class="flow-section">
-        <div class="section-title">构建阶段</div>
+        <div class="section-title">
+          构建阶段
+        </div>
         <div class="service-flow">
-          <div class="flow-step" :class="{ active: currentStep >= 3 }" @mouseenter="(e) => showTooltip(e, 'test')" @mouseleave="hideTooltip">
-            <div class="step-title">Test</div>
-            <div class="tech-term">自动化测试</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 3 }"
+            @mouseenter="(e) => showTooltip(e, 'test')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Test
+            </div>
+            <div class="tech-term">
+              自动化测试
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 4 }" @mouseenter="(e) => showTooltip(e, 'build')" @mouseleave="hideTooltip">
-            <div class="step-title">Build</div>
-            <div class="tech-term">编译打包</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 4 }"
+            @mouseenter="(e) => showTooltip(e, 'build')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Build
+            </div>
+            <div class="tech-term">
+              编译打包
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 5 }" @mouseenter="(e) => showTooltip(e, 'artifact')" @mouseleave="hideTooltip">
-            <div class="step-title">Artifact</div>
-            <div class="tech-term">构建产物存储</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 5 }"
+            @mouseenter="(e) => showTooltip(e, 'artifact')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Artifact
+            </div>
+            <div class="tech-term">
+              构建产物存储
+            </div>
           </div>
         </div>
       </div>
 
       <div class="flow-section">
-        <div class="section-title">部署阶段</div>
+        <div class="section-title">
+          部署阶段
+        </div>
         <div class="service-flow">
-          <div class="flow-step" :class="{ active: currentStep >= 6 }" @mouseenter="(e) => showTooltip(e, 'server')" @mouseleave="hideTooltip">
-            <div class="step-title">Server</div>
-            <div class="tech-term">服务器环境</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 6 }"
+            @mouseenter="(e) => showTooltip(e, 'server')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Server
+            </div>
+            <div class="tech-term">
+              服务器环境
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 7 }" @mouseenter="(e) => showTooltip(e, 'deploy')" @mouseleave="hideTooltip">
-            <div class="step-title">Deploy</div>
-            <div class="tech-term">部署应用</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 7 }"
+            @mouseenter="(e) => showTooltip(e, 'deploy')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Deploy
+            </div>
+            <div class="tech-term">
+              部署应用
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 8 }" @mouseenter="(e) => showTooltip(e, 'nginx')" @mouseleave="hideTooltip">
-            <div class="step-title">Nginx</div>
-            <div class="tech-term">反向代理</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 8 }"
+            @mouseenter="(e) => showTooltip(e, 'nginx')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Nginx
+            </div>
+            <div class="tech-term">
+              反向代理
+            </div>
           </div>
         </div>
       </div>
 
       <div class="flow-section">
-        <div class="section-title">网络配置</div>
+        <div class="section-title">
+          网络配置
+        </div>
         <div class="service-flow">
-          <div class="flow-step" :class="{ active: currentStep >= 9 }" @mouseenter="(e) => showTooltip(e, 'https')" @mouseleave="hideTooltip">
-            <div class="step-title">HTTPS</div>
-            <div class="tech-term">SSL证书</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 9 }"
+            @mouseenter="(e) => showTooltip(e, 'https')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              HTTPS
+            </div>
+            <div class="tech-term">
+              SSL证书
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 10 }" @mouseenter="(e) => showTooltip(e, 'cdn')" @mouseleave="hideTooltip">
-            <div class="step-title">CDN</div>
-            <div class="tech-term">内容分发加速</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 10 }"
+            @mouseenter="(e) => showTooltip(e, 'cdn')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              CDN
+            </div>
+            <div class="tech-term">
+              内容分发加速
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 11 }" @mouseenter="(e) => showTooltip(e, 'dns')" @mouseleave="hideTooltip">
-            <div class="step-title">DNS</div>
-            <div class="tech-term">域名解析</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 11 }"
+            @mouseenter="(e) => showTooltip(e, 'dns')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              DNS
+            </div>
+            <div class="tech-term">
+              域名解析
+            </div>
           </div>
         </div>
       </div>
 
       <div class="flow-section">
-        <div class="section-title">运维阶段</div>
+        <div class="section-title">
+          运维阶段
+        </div>
         <div class="service-flow">
-          <div class="flow-step" :class="{ active: currentStep >= 12 }" @mouseenter="(e) => showTooltip(e, 'monitor')" @mouseleave="hideTooltip">
-            <div class="step-title">Monitor</div>
-            <div class="tech-term">监控状态</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 12 }"
+            @mouseenter="(e) => showTooltip(e, 'monitor')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Monitor
+            </div>
+            <div class="tech-term">
+              监控状态
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 13 }" @mouseenter="(e) => showTooltip(e, 'log')" @mouseleave="hideTooltip">
-            <div class="step-title">Log</div>
-            <div class="tech-term">日志收集</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 13 }"
+            @mouseenter="(e) => showTooltip(e, 'log')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Log
+            </div>
+            <div class="tech-term">
+              日志收集
+            </div>
           </div>
           <span class="flow-arrow">→</span>
-          <div class="flow-step" :class="{ active: currentStep >= 14 }" @mouseenter="(e) => showTooltip(e, 'alert')" @mouseleave="hideTooltip">
-            <div class="step-title">Alert</div>
-            <div class="tech-term">告警通知</div>
+          <div
+            class="flow-step"
+            :class="{ active: currentStep >= 14 }"
+            @mouseenter="(e) => showTooltip(e, 'alert')"
+            @mouseleave="hideTooltip"
+          >
+            <div class="step-title">
+              Alert
+            </div>
+            <div class="tech-term">
+              告警通知
+            </div>
           </div>
         </div>
       </div>
 
       <Teleport to="body">
         <Transition name="fade">
-          <div v-if="tooltipVisible" class="tooltip-box" :style="tooltipStyle">
-            <div class="tooltip-title">{{ tooltipContent.title }}</div>
-            <div class="tooltip-content" v-html="tooltipContent.content"></div>
+          <div
+            v-if="tooltipVisible"
+            class="tooltip-box"
+            :style="tooltipStyle"
+          >
+            <div class="tooltip-title">
+              {{ tooltipContent.title }}
+            </div>
+            <div
+              class="tooltip-content"
+              v-html="tooltipContent.content"
+            />
           </div>
         </Transition>
       </Teleport>

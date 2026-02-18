@@ -1,26 +1,48 @@
 <template>
-  <el-card class="training-card" shadow="hover">
+  <el-card
+    class="training-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="card-header">
-        <h3 class="title">从训练数据看模型行为</h3>
+        <h3 class="title">
+          从训练数据看模型行为
+        </h3>
         <div class="mode-switch-container">
-          <el-radio-group v-model="mode" size="large">
-            <el-radio-button label="pretrain">1. 预训练 (Pre-training)</el-radio-button>
-            <el-radio-button label="finetune">2. 微调 (Fine-tuning)</el-radio-button>
+          <el-radio-group
+            v-model="mode"
+            size="large"
+          >
+            <el-radio-button label="pretrain">
+              1. 预训练 (Pre-training)
+            </el-radio-button>
+            <el-radio-button label="finetune">
+              2. 微调 (Fine-tuning)
+            </el-radio-button>
           </el-radio-group>
         </div>
       </div>
     </template>
 
     <!-- PRE-TRAINING MODE -->
-    <div v-if="mode === 'pretrain'" class="demo-content">
-      <el-card shadow="never" class="concept-card">
+    <div
+      v-if="mode === 'pretrain'"
+      class="demo-content"
+    >
+      <el-card
+        shadow="never"
+        class="concept-card"
+      >
         <div class="concept-content">
-          <div class="icon">📚</div>
+          <div class="icon">
+            📚
+          </div>
           <div class="info">
             <h4>博览群书 (Reading the Web)</h4>
             <p>核心目标：<strong>预测下一个 Token</strong></p>
-            <p class="sub">模型阅读了海量文本，它的本能是"把句子接下去"。</p>
+            <p class="sub">
+              模型阅读了海量文本，它的本能是"把句子接下去"。
+            </p>
           </div>
         </div>
       </el-card>
@@ -28,12 +50,12 @@
       <div class="interactive-area">
         <div class="editor-window">
           <div class="window-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="dot red" /><span class="dot yellow" /><span class="dot green" />
             <span class="window-title">Next Token Predictor</span>
           </div>
           <div class="editor-content">
             <span class="text-gray">Source: Wikipedia / Books</span>
-            <br/><br/>
+            <br><br>
             <p>
               Natural selection, proposed by Darwin in 
               <span class="highlight">{{ currentPrediction || '...' }}</span>
@@ -42,17 +64,32 @@
         </div>
 
         <div class="controls">
-          <el-button type="primary" size="large" @click="predictNext" :loading="isPredicting">
+          <el-button
+            type="primary"
+            size="large"
+            :loading="isPredicting"
+            @click="predictNext"
+          >
             {{ isPredicting ? '计算概率中...' : '预测下一个词 (Predict)' }}
           </el-button>
         </div>
 
         <el-collapse-transition>
-          <div v-if="predictions.length > 0" class="predictions-panel">
+          <div
+            v-if="predictions.length > 0"
+            class="predictions-panel"
+          >
             <h5>概率分布 (Top 3 Candidates)</h5>
             <div class="chart-container">
-              <div v-for="(item, index) in predictions" :key="index" class="bar-row" @click="selectPrediction(item)">
-                <div class="label">{{ item.token }}</div>
+              <div
+                v-for="(item, index) in predictions"
+                :key="index"
+                class="bar-row"
+                @click="selectPrediction(item)"
+              >
+                <div class="label">
+                  {{ item.token }}
+                </div>
                 <div class="bar-container">
                   <el-progress 
                     :percentage="item.prob" 
@@ -63,21 +100,33 @@
                 </div>
               </div>
             </div>
-            <p class="hint">👆 点击预测词填入（模型只是在根据统计学规律"瞎蒙"）</p>
+            <p class="hint">
+              👆 点击预测词填入（模型只是在根据统计学规律"瞎蒙"）
+            </p>
           </div>
         </el-collapse-transition>
       </div>
     </div>
 
     <!-- FINE-TUNING MODE -->
-    <div v-if="mode === 'finetune'" class="demo-content">
-      <el-card shadow="never" class="concept-card">
+    <div
+      v-if="mode === 'finetune'"
+      class="demo-content"
+    >
+      <el-card
+        shadow="never"
+        class="concept-card"
+      >
         <div class="concept-content">
-          <div class="icon">🎓</div>
+          <div class="icon">
+            🎓
+          </div>
           <div class="info">
             <h4>学习规矩 (Instruction Tuning)</h4>
             <p>核心目标：<strong>听懂指令 (Follow Instructions)</strong></p>
-            <p class="sub">通过 (问题 → 标准答案) 数据对，教会模型"像个助手一样说话"。</p>
+            <p class="sub">
+              通过 (问题 → 标准答案) 数据对，教会模型"像个助手一样说话"。
+            </p>
           </div>
         </div>
       </el-card>
@@ -85,18 +134,33 @@
       <div class="interactive-area">
         <div class="chat-window">
           <div class="message user">
-            <div class="avatar">👤</div>
-            <div class="bubble">我如何退货？</div>
+            <div class="avatar">
+              👤
+            </div>
+            <div class="bubble">
+              我如何退货？
+            </div>
           </div>
           
           <el-collapse-transition>
-            <div v-if="ftState === 'base'" class="message ai base-model">
-              <div class="avatar">🤖</div>
+            <div
+              v-if="ftState === 'base'"
+              class="message ai base-model"
+            >
+              <div class="avatar">
+                🤖
+              </div>
               <div class="bubble">
-                <el-tag type="info" size="small" class="badge">预训练模型 (Base Model)</el-tag>
+                <el-tag
+                  type="info"
+                  size="small"
+                  class="badge"
+                >
+                  预训练模型 (Base Model)
+                </el-tag>
                 <div class="bubble-text">
                   退货是指消费者将购买的商品退回给卖家的过程。在电子商务中，退货率通常在 20% 左右。根据《消费者权益保护法》...
-                  <br/><br/>
+                  <br><br>
                   <small>❌ (它在背书，不是在回答你)</small>
                 </div>
               </div>
@@ -104,10 +168,21 @@
           </el-collapse-transition>
 
           <el-collapse-transition>
-            <div v-if="ftState === 'tuned'" class="message ai tuned-model">
-              <div class="avatar">✨</div>
+            <div
+              v-if="ftState === 'tuned'"
+              class="message ai tuned-model"
+            >
+              <div class="avatar">
+                ✨
+              </div>
               <div class="bubble">
-                <el-tag type="success" size="small" class="badge">微调模型 (Instruct Model)</el-tag>
+                <el-tag
+                  type="success"
+                  size="small"
+                  class="badge"
+                >
+                  微调模型 (Instruct Model)
+                </el-tag>
                 <div class="bubble-text">
                   办理退货很简单，请按以下步骤操作：
                   <ol>
@@ -123,11 +198,20 @@
         </div>
 
         <div class="controls center-controls">
-          <el-radio-group v-model="ftState" size="large">
-            <el-radio-button label="base">原始模型 (Base)</el-radio-button>
-            <el-radio-button label="tuned">微调后 (Instruct)</el-radio-button>
+          <el-radio-group
+            v-model="ftState"
+            size="large"
+          >
+            <el-radio-button label="base">
+              原始模型 (Base)
+            </el-radio-button>
+            <el-radio-button label="tuned">
+              微调后 (Instruct)
+            </el-radio-button>
           </el-radio-group>
-          <p class="hint">切换开关，观察模型行为的巨大差异</p>
+          <p class="hint">
+            切换开关，观察模型行为的巨大差异
+          </p>
         </div>
       </div>
     </div>

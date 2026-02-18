@@ -14,21 +14,34 @@
           :style="{ opacity: 0.4 + (token.weight * 0.6) }"
         >
           {{ token.text }}
-          <div class="tooltip">关注度: {{ (token.weight * 100).toFixed(0) }}%</div>
+          <div class="tooltip">
+            关注度: {{ (token.weight * 100).toFixed(0) }}%
+          </div>
         </div>
       </div>
       
-      <div class="arrow-down">⬇️ CLIP Encoding & Attention</div>
+      <div class="arrow-down">
+        ⬇️ CLIP Encoding & Attention
+      </div>
       
       <div class="image-map">
         <!-- Abstract representation of an image being attended to -->
-        <div class="map-layer" style="background: #2b0055; opacity: 0.9;">
+        <div
+          class="map-layer"
+          style="background: #2b0055; opacity: 0.9;"
+        >
           <span>City Base</span>
         </div>
-        <div class="map-layer" style="background: #ff00aa; width: 60%; height: 60%; opacity: 0.8;">
+        <div
+          class="map-layer"
+          style="background: #ff00aa; width: 60%; height: 60%; opacity: 0.8;"
+        >
           <span>Neon Glow</span>
         </div>
-        <div class="map-layer" style="background: #fff; width: 30%; height: 30%; border-radius: 50%;">
+        <div
+          class="map-layer"
+          style="background: #fff; width: 30%; height: 30%; border-radius: 50%;"
+        >
           <span>Cat</span>
         </div>
       </div>

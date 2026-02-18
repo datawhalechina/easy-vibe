@@ -26,12 +26,20 @@
             :style="{ left: user.x + '%', top: user.y + '%' }"
             @click="selectUser(user)"
           >
-            <div class="user-icon">{{ user.icon }}</div>
-            <div class="user-label">{{ user.name }}</div>
+            <div class="user-icon">
+              {{ user.icon }}
+            </div>
+            <div class="user-label">
+              {{ user.name }}
+            </div>
           </div>
 
           <!-- 请求动画线 -->
-          <div v-if="requestAnimation" class="request-line" :style="requestLineStyle"></div>
+          <div
+            v-if="requestAnimation"
+            class="request-line"
+            :style="requestLineStyle"
+          />
         </div>
       </div>
 
@@ -40,7 +48,10 @@
         <div class="layer-title">
           <span class="icon">🌐</span>
           <span>CDN 边缘节点 (Edge Nodes)</span>
-          <span class="layer-status" :class="{ hit: cacheHit, miss: !cacheHit && showCacheStatus }">
+          <span
+            class="layer-status"
+            :class="{ hit: cacheHit, miss: !cacheHit && showCacheStatus }"
+          >
             {{ cacheStatusText }}
           </span>
         </div>
@@ -53,10 +64,16 @@
             :class="{ active: activeNode === node.id, serving: servingNode === node.id }"
             @click="selectNode(node)"
           >
-            <div class="node-icon">{{ node.icon }}</div>
+            <div class="node-icon">
+              {{ node.icon }}
+            </div>
             <div class="node-info">
-              <div class="node-name">{{ node.name }}</div>
-              <div class="node-location">{{ node.location }}</div>
+              <div class="node-name">
+                {{ node.name }}
+              </div>
+              <div class="node-location">
+                {{ node.location }}
+              </div>
             </div>
             <div class="node-stats">
               <div class="stat">
@@ -65,7 +82,10 @@
               </div>
               <div class="stat">
                 <span class="stat-label">命中</span>
-                <span class="stat-value" :style="{ color: node.hitRate > 80 ? 'var(--vp-c-brand-1)' : 'var(--vp-c-brand)' }">
+                <span
+                  class="stat-value"
+                  :style="{ color: node.hitRate > 80 ? 'var(--vp-c-brand-1)' : 'var(--vp-c-brand)' }"
+                >
                   {{ node.hitRate }}%
                 </span>
               </div>
@@ -79,33 +99,53 @@
         <div class="layer-title">
           <span class="icon">🏢</span>
           <span>源站 (Origin Server)</span>
-          <span class="layer-status" :class="{ active: showBackToSource }">
+          <span
+            class="layer-status"
+            :class="{ active: showBackToSource }"
+          >
             {{ backToSourceText }}
           </span>
         </div>
 
         <div class="origin-servers">
           <div class="origin-server">
-            <div class="server-icon">🗄️</div>
+            <div class="server-icon">
+              🗄️
+            </div>
             <div class="server-info">
-              <div class="server-name">对象存储源站</div>
-              <div class="server-address">bucket.oss-cn-beijing.aliyuncs.com</div>
+              <div class="server-name">
+                对象存储源站
+              </div>
+              <div class="server-address">
+                bucket.oss-cn-beijing.aliyuncs.com
+              </div>
             </div>
             <div class="server-status">
-              <span class="status-dot active"></span>
+              <span class="status-dot active" />
               <span class="status-text">健康</span>
             </div>
           </div>
 
-          <div v-if="showBackToSource" class="back-to-source-flow">
+          <div
+            v-if="showBackToSource"
+            class="back-to-source-flow"
+          >
             <div class="flow-arrow">
               <span>⬆️ 回源请求</span>
             </div>
             <div class="flow-detail">
-              <div class="flow-step">1. CDN 节点未命中缓存</div>
-              <div class="flow-step">2. 向源站发起回源请求</div>
-              <div class="flow-step">3. 源站返回文件内容</div>
-              <div class="flow-step">4. CDN 缓存并响应用户</div>
+              <div class="flow-step">
+                1. CDN 节点未命中缓存
+              </div>
+              <div class="flow-step">
+                2. 向源站发起回源请求
+              </div>
+              <div class="flow-step">
+                3. 源站返回文件内容
+              </div>
+              <div class="flow-step">
+                4. CDN 缓存并响应用户
+              </div>
             </div>
           </div>
         </div>
@@ -114,17 +154,28 @@
 
     <!-- 交互控制区 -->
     <div class="demo-controls">
-      <div class="controls-title">🎮 模拟演示</div>
+      <div class="controls-title">
+        🎮 模拟演示
+      </div>
       <div class="controls-row">
-        <button class="control-btn" @click="simulateCacheHit">
+        <button
+          class="control-btn"
+          @click="simulateCacheHit"
+        >
           <span>✅</span>
           <span>模拟缓存命中</span>
         </button>
-        <button class="control-btn" @click="simulateCacheMiss">
+        <button
+          class="control-btn"
+          @click="simulateCacheMiss"
+        >
           <span>❌</span>
           <span>模拟缓存未命中（回源）</span>
         </button>
-        <button class="control-btn reset" @click="resetDemo">
+        <button
+          class="control-btn reset"
+          @click="resetDemo"
+        >
           <span>🔄</span>
           <span>重置</span>
         </button>
@@ -133,25 +184,53 @@
 
     <!-- 统计信息 -->
     <div class="stats-panel">
-      <div class="stats-title">📊 访问统计</div>
+      <div class="stats-title">
+        📊 访问统计
+      </div>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: 'var(--vp-c-brand-1)' }">{{ stats.cacheHit }}</div>
-          <div class="stat-label">缓存命中</div>
+          <div
+            class="stat-value"
+            :style="{ color: 'var(--vp-c-brand-1)' }"
+          >
+            {{ stats.cacheHit }}
+          </div>
+          <div class="stat-label">
+            缓存命中
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: 'var(--vp-c-brand-delta)' }">{{ stats.cacheMiss }}</div>
-          <div class="stat-label">缓存未命中</div>
+          <div
+            class="stat-value"
+            :style="{ color: 'var(--vp-c-brand-delta)' }"
+          >
+            {{ stats.cacheMiss }}
+          </div>
+          <div class="stat-label">
+            缓存未命中
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: stats.hitRate > 80 ? 'var(--vp-c-brand-1)' : 'var(--vp-c-brand)' }">
+          <div
+            class="stat-value"
+            :style="{ color: stats.hitRate > 80 ? 'var(--vp-c-brand-1)' : 'var(--vp-c-brand)' }"
+          >
             {{ stats.hitRate }}%
           </div>
-          <div class="stat-label">命中率</div>
+          <div class="stat-label">
+            命中率
+          </div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" :style="{ color: 'var(--vp-c-brand)' }">{{ stats.avgResponseTime }}ms</div>
-          <div class="stat-label">平均响应</div>
+          <div
+            class="stat-value"
+            :style="{ color: 'var(--vp-c-brand)' }"
+          >
+            {{ stats.avgResponseTime }}ms
+          </div>
+          <div class="stat-label">
+            平均响应
+          </div>
         </div>
       </div>
     </div>

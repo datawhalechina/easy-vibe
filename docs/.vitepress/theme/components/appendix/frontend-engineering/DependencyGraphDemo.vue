@@ -7,31 +7,75 @@
     </div>
 
     <div class="graph-container">
-      <svg class="graph-svg" viewBox="0 0 500 300">
+      <svg
+        class="graph-svg"
+        viewBox="0 0 500 300"
+      >
         <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="6" refX="18" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="var(--vp-c-text-3)" />
+          <marker
+            id="arrow"
+            markerWidth="8"
+            markerHeight="6"
+            refX="18"
+            refY="3"
+            orient="auto"
+          >
+            <polygon
+              points="0 0, 8 3, 0 6"
+              fill="var(--vp-c-text-3)"
+            />
           </marker>
         </defs>
 
-        <line v-for="edge in edges" :key="edge.id"
-          :x1="getNode(edge.source).x" :y1="getNode(edge.source).y"
-          :x2="getNode(edge.target).x" :y2="getNode(edge.target).y"
-          stroke="var(--vp-c-text-3)" stroke-width="1.5" marker-end="url(#arrow)"
+        <line
+          v-for="edge in edges"
+          :key="edge.id"
+          :x1="getNode(edge.source).x"
+          :y1="getNode(edge.source).y"
+          :x2="getNode(edge.target).x"
+          :y2="getNode(edge.target).y"
+          stroke="var(--vp-c-text-3)"
+          stroke-width="1.5"
+          marker-end="url(#arrow)"
         />
 
-        <g v-for="node in nodes" :key="node.id" :transform="`translate(${node.x}, ${node.y})`">
-          <circle :r="node.r" :fill="node.color" stroke="white" stroke-width="2" />
-          <text y="4" text-anchor="middle" fill="white" font-size="12">{{ node.icon }}</text>
-          <text :y="node.r + 14" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10">{{ node.name }}</text>
+        <g
+          v-for="node in nodes"
+          :key="node.id"
+          :transform="`translate(${node.x}, ${node.y})`"
+        >
+          <circle
+            :r="node.r"
+            :fill="node.color"
+            stroke="white"
+            stroke-width="2"
+          />
+          <text
+            y="4"
+            text-anchor="middle"
+            fill="white"
+            font-size="12"
+          >{{ node.icon }}</text>
+          <text
+            :y="node.r + 14"
+            text-anchor="middle"
+            fill="var(--vp-c-text-1)"
+            font-size="10"
+          >{{ node.name }}</text>
         </g>
       </svg>
     </div>
 
     <div class="legend">
-      <div class="legend-item"><span class="dot entry"></span>入口文件</div>
-      <div class="legend-item"><span class="dot module"></span>模块</div>
-      <div class="legend-item"><span class="arrow">→</span>依赖关系</div>
+      <div class="legend-item">
+        <span class="dot entry" />入口文件
+      </div>
+      <div class="legend-item">
+        <span class="dot module" />模块
+      </div>
+      <div class="legend-item">
+        <span class="arrow">→</span>依赖关系
+      </div>
     </div>
 
     <div class="info-box">

@@ -2,7 +2,9 @@
   <div class="domain-model-demo">
     <div class="demo-header">
       <h4>📦 Domain 层：领域模型设计</h4>
-      <p class="subtitle">Domain 是业务概念的载体，所有层的依赖基础</p>
+      <p class="subtitle">
+        Domain 是业务概念的载体，所有层的依赖基础
+      </p>
     </div>
 
     <!-- 领域模型对比 -->
@@ -20,7 +22,10 @@
 
       <div class="comparison-content">
         <!-- 贫血模型 vs 充血模型 -->
-        <div v-if="currentTab === 'comparison'" class="tab-panel">
+        <div
+          v-if="currentTab === 'comparison'"
+          class="tab-panel"
+        >
           <div class="model-cards">
             <div class="model-card anemic">
               <div class="card-header">
@@ -30,7 +35,9 @@
               </div>
               <div class="card-content">
                 <div class="code-section">
-                  <div class="code-label">Entity（只有 getter/setter）</div>
+                  <div class="code-label">
+                    Entity（只有 getter/setter）
+                  </div>
                   <pre><code>@Entity
 public class Order {
     @Id
@@ -48,7 +55,9 @@ public class Order {
                 </div>
 
                 <div class="code-section">
-                  <div class="code-label">Service（所有业务逻辑都在这里）</div>
+                  <div class="code-label">
+                    Service（所有业务逻辑都在这里）
+                  </div>
                   <pre><code>@Service
 public class OrderService {
 
@@ -72,7 +81,9 @@ public class OrderService {
                 </div>
 
                 <div class="problems">
-                  <div class="problem-title">😫 贫血模型的问题</div>
+                  <div class="problem-title">
+                    😫 贫血模型的问题
+                  </div>
                   <ul>
                     <li><strong>违背面向对象</strong>：对象只有数据没有行为，变成了 "数据结构"</li>
                     <li><strong>逻辑分散</strong>：同样的业务规则可能在多个 Service 重复</li>
@@ -90,7 +101,9 @@ public class OrderService {
               </div>
               <div class="card-content">
                 <div class="code-section">
-                  <div class="code-label">Entity（包含业务逻辑）</div>
+                  <div class="code-label">
+                    Entity（包含业务逻辑）
+                  </div>
                   <pre><code>@Entity
 public class Order {
     @Id
@@ -139,7 +152,9 @@ public class Order {
                 </div>
 
                 <div class="code-section">
-                  <div class="code-label">Service（只做协调，不做业务判断）</div>
+                  <div class="code-label">
+                    Service（只做协调，不做业务判断）
+                  </div>
                   <pre><code>@Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -168,7 +183,9 @@ public class OrderService {
                 </div>
 
                 <div class="benefits">
-                  <div class="benefit-title">😊 充血模型的优势</div>
+                  <div class="benefit-title">
+                    😊 充血模型的优势
+                  </div>
                   <ul>
                     <li><strong>符合面向对象</strong>：数据和行为封装在一起，是真正的 "对象"</li>
                     <li><strong>业务内聚</strong>：规则跟着对象走，改一处处处生效</li>
@@ -182,7 +199,10 @@ public class OrderService {
         </div>
 
         <!-- 值对象 -->
-        <div v-else-if="currentTab === 'valueobject'" class="tab-panel">
+        <div
+          v-else-if="currentTab === 'valueobject'"
+          class="tab-panel"
+        >
           <div class="value-object-content">
             <div class="concept-intro">
               <h5>💎 什么是值对象（Value Object）？</h5>
@@ -191,7 +211,9 @@ public class OrderService {
 
             <div class="vo-examples">
               <div class="example-card">
-                <div class="example-title">📍 地址 Address</div>
+                <div class="example-title">
+                  📍 地址 Address
+                </div>
                 <pre><code>// 值对象：不可变、无 ID
 public record Address(
     String province,    // 省
@@ -221,7 +243,9 @@ System.out.println(addr1.equals(addr2)); // true - 值对象比较的是值</cod
               </div>
 
               <div class="example-card">
-                <div class="example-title">💰 金钱 Money</div>
+                <div class="example-title">
+                  💰 金钱 Money
+                </div>
                 <pre><code>// 金钱是经典的值对象
 public record Money(
     BigDecimal amount,

@@ -20,13 +20,22 @@ defineProps({
 </script>
 
 <template>
-  <a :href="href" class="nav-card-link">
+  <a
+    :href="href"
+    class="nav-card-link"
+  >
     <div class="nav-card">
       <div class="card-header">
-        <span v-if="icon" class="card-icon">{{ icon }}</span>
+        <span
+          v-if="icon"
+          class="card-icon"
+        >{{ icon }}</span>
         <span class="card-title">{{ title }}</span>
       </div>
-      <div v-if="description" class="card-desc">{{ description }}</div>
+      <div
+        v-if="description"
+        class="card-desc"
+      >{{ description }}</div>
     </div>
   </a>
 </template>

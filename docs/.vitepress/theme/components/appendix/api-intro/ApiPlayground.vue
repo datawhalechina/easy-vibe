@@ -1,13 +1,19 @@
 <template>
   <div class="api-playground">
     <div class="header">
-      <div class="title">🧪 API 练手场</div>
-      <div class="subtitle">随便玩，坏了算我的</div>
+      <div class="title">
+        🧪 API 练手场
+      </div>
+      <div class="subtitle">
+        随便玩，坏了算我的
+      </div>
     </div>
 
     <div class="playground-layout">
       <div class="left-panel">
-        <div class="panel-title">发送请求</div>
+        <div class="panel-title">
+          发送请求
+        </div>
 
         <div class="input-group">
           <label>Endpoint（网址）</label>
@@ -16,7 +22,7 @@
             type="text"
             placeholder="/users/123"
             class="input"
-          />
+          >
         </div>
 
         <div class="input-group">
@@ -33,13 +39,16 @@
           </div>
         </div>
 
-        <div class="input-group" v-if="method === 'POST'">
+        <div
+          v-if="method === 'POST'"
+          class="input-group"
+        >
           <label>Body（JSON）</label>
           <textarea
             v-model="body"
             class="textarea"
-            placeholder='{"name": "张三"}'
-          ></textarea>
+            placeholder="{&quot;name&quot;: &quot;张三&quot;}"
+          />
         </div>
 
         <div class="input-group">
@@ -49,25 +58,42 @@
             type="password"
             placeholder="sk-..."
             class="input"
-          />
+          >
         </div>
 
-        <button class="send-btn" @click="sendRequest" :disabled="loading">
+        <button
+          class="send-btn"
+          :disabled="loading"
+          @click="sendRequest"
+        >
           {{ loading ? '发送中...' : '🚀 发送请求' }}
         </button>
       </div>
 
       <div class="right-panel">
-        <div class="panel-title">响应结果</div>
-
-        <div v-if="!response" class="empty-state">
-          <span class="empty-icon">📭</span>
-          <p>点击发送按钮，看看会发生什么</p>
-          <p class="hint">可以试试输入错误的地址或 Key</p>
+        <div class="panel-title">
+          响应结果
         </div>
 
-        <div v-else class="response-content">
-          <div class="status-bar" :class="getStatusClass(response.status)">
+        <div
+          v-if="!response"
+          class="empty-state"
+        >
+          <span class="empty-icon">📭</span>
+          <p>点击发送按钮，看看会发生什么</p>
+          <p class="hint">
+            可以试试输入错误的地址或 Key
+          </p>
+        </div>
+
+        <div
+          v-else
+          class="response-content"
+        >
+          <div
+            class="status-bar"
+            :class="getStatusClass(response.status)"
+          >
             <span class="status-code">{{ response.status }}</span>
             <span class="status-text">{{ response.statusText }}</span>
           </div>
@@ -76,7 +102,10 @@
             <pre>{{ JSON.stringify(response.data, null, 2) }}</pre>
           </div>
 
-          <div class="explanation" v-if="response.explanation">
+          <div
+            v-if="response.explanation"
+            class="explanation"
+          >
             💡 {{ response.explanation }}
           </div>
         </div>
@@ -84,14 +113,28 @@
     </div>
 
     <div class="tips">
-      <div class="tip-title">可以试试这些玩法：</div>
+      <div class="tip-title">
+        可以试试这些玩法：
+      </div>
       <div class="tip-list">
-        <button @click="tryEndpoint('/users')">✅ GET /users</button>
-        <button @click="tryEndpoint('/users/123')">✅ GET /users/123</button>
-        <button @click="tryEndpoint('/posts')">✅ GET /posts</button>
-        <button @click="tryError401">❌ 401 没带 Key</button>
-        <button @click="tryError404">❌ 404 地址错了</button>
-        <button @click="tryError429">❌ 429 点太快了</button>
+        <button @click="tryEndpoint('/users')">
+          ✅ GET /users
+        </button>
+        <button @click="tryEndpoint('/users/123')">
+          ✅ GET /users/123
+        </button>
+        <button @click="tryEndpoint('/posts')">
+          ✅ GET /posts
+        </button>
+        <button @click="tryError401">
+          ❌ 401 没带 Key
+        </button>
+        <button @click="tryError404">
+          ❌ 404 地址错了
+        </button>
+        <button @click="tryError429">
+          ❌ 429 点太快了
+        </button>
       </div>
     </div>
   </div>
@@ -208,7 +251,7 @@ function sendRequest() {
         data: { error: 'Resource not found' },
         explanation: '地址错了，这个接口不存在'
       }
-    } else if (endpoint.value === '/users' && method.value === 'GET') {
+    } else if (endpoint.value === '/users' && method.value === 'DELETE') {
       response.value = {
         status: 429,
         statusText: 'Too Many Requests',

@@ -16,30 +16,46 @@
           </div>
           <div class="code-preview">
             <code>
-              // 手动操作 DOM<br />
-              $('#count').text(val);<br />
+              // 手动操作 DOM<br>
+              $('#count').text(val);<br>
               if (val > 5) $('#msg').show();
             </code>
           </div>
           <div class="interactive-area">
             <div class="output-box">
               Count: <span id="imp-count-display">{{ impCount }}</span>
-              <div v-show="impShowMsg" class="warning-msg">⚠️ Count is high!</div>
+              <div
+                v-show="impShowMsg"
+                class="warning-msg"
+              >
+                ⚠️ Count is high!
+              </div>
             </div>
             <div class="actions">
-              <button @click="impIncrement" class="btn">Step 1: Value++</button>
-              <button @click="impUpdateText" class="btn" :disabled="!impChanged">
+              <button
+                class="btn"
+                @click="impIncrement"
+              >
+                Step 1: Value++
+              </button>
+              <button
+                class="btn"
+                :disabled="!impChanged"
+                @click="impUpdateText"
+              >
                 Step 2: Update Text
               </button>
               <button
-                @click="impCheckState"
                 class="btn"
                 :disabled="!impTextUpdated"
+                @click="impCheckState"
               >
                 Step 3: Check Logic
               </button>
             </div>
-            <div class="status-log">{{ impStatus }}</div>
+            <div class="status-log">
+              {{ impStatus }}
+            </div>
           </div>
         </div>
 
@@ -59,10 +75,18 @@
           <div class="interactive-area">
             <div class="output-box">
               Count: <span>{{ decCount }}</span>
-              <div v-if="decCount > 5" class="warning-msg">⚠️ Count is high!</div>
+              <div
+                v-if="decCount > 5"
+                class="warning-msg"
+              >
+                ⚠️ Count is high!
+              </div>
             </div>
             <div class="actions">
-              <button @click="decIncrement" class="btn primary">
+              <button
+                class="btn primary"
+                @click="decIncrement"
+              >
                 Value++ (Auto Render)
               </button>
             </div>

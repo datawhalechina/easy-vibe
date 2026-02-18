@@ -11,22 +11,34 @@
 
     <div class="content">
       <div class="flow">
-        <div class="step" :class="{ done: buildProgress >= 25 }">
+        <div
+          class="step"
+          :class="{ done: buildProgress >= 25 }"
+        >
           <span class="num">1</span>
           <span class="text">解析依赖</span>
         </div>
         <span class="arrow">→</span>
-        <div class="step" :class="{ done: buildProgress >= 50 }">
+        <div
+          class="step"
+          :class="{ done: buildProgress >= 50 }"
+        >
           <span class="num">2</span>
           <span class="text">编译转换</span>
         </div>
         <span class="arrow">→</span>
-        <div class="step" :class="{ done: buildProgress >= 75 }">
+        <div
+          class="step"
+          :class="{ done: buildProgress >= 75 }"
+        >
           <span class="num">3</span>
           <span class="text">打包压缩</span>
         </div>
         <span class="arrow">→</span>
-        <div class="step" :class="{ done: buildProgress >= 100 }">
+        <div
+          class="step"
+          :class="{ done: buildProgress >= 100 }"
+        >
           <span class="num">4</span>
           <span class="text">完成</span>
         </div>
@@ -34,12 +46,21 @@
 
       <div class="progress">
         <div class="bar">
-          <div class="fill" :style="{ width: `${buildProgress}%` }"></div>
+          <div
+            class="fill"
+            :style="{ width: `${buildProgress}%` }"
+          />
         </div>
-        <div class="percent">{{ buildProgress }}%</div>
+        <div class="percent">
+          {{ buildProgress }}%
+        </div>
       </div>
 
-      <button @click="startBuild" class="build-btn" :disabled="building">
+      <button
+        class="build-btn"
+        :disabled="building"
+        @click="startBuild"
+      >
         {{ building ? '构建中...' : '▶ 开始构建' }}
       </button>
     </div>

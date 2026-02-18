@@ -5,8 +5,12 @@
 <template>
   <div class="multi-level-cache-demo">
     <div class="header">
-      <div class="title">多级缓存架构</div>
-      <div class="subtitle">每一层都是上一层的"保护伞"</div>
+      <div class="title">
+        多级缓存架构
+      </div>
+      <div class="subtitle">
+        每一层都是上一层的"保护伞"
+      </div>
     </div>
 
     <div class="cache-levels">
@@ -20,33 +24,53 @@
           miss: level.status === 'miss'
         }"
       >
-        <div class="level-number">L{{ level.layer }}</div>
+        <div class="level-number">
+          L{{ level.layer }}
+        </div>
         <div class="level-content">
           <div class="level-header">
-            <div class="level-name">{{ level.name }}</div>
+            <div class="level-name">
+              {{ level.name }}
+            </div>
             <div class="level-meta">
               <span class="latency">{{ level.latency }}</span>
               <span class="capacity">{{ level.capacity }}</span>
             </div>
           </div>
-          <div class="level-description">{{ level.description }}</div>
-          <div class="level-status" v-if="level.status">
-            <span v-if="level.status === 'hit'" class="status-badge hit"
-              >✅ 命中</span
-            >
-            <span v-if="level.status === 'miss'" class="status-badge miss"
-              >❌ 未命中</span
-            >
+          <div class="level-description">
+            {{ level.description }}
+          </div>
+          <div
+            v-if="level.status"
+            class="level-status"
+          >
+            <span
+              v-if="level.status === 'hit'"
+              class="status-badge hit"
+            >✅ 命中</span>
+            <span
+              v-if="level.status === 'miss'"
+              class="status-badge miss"
+            >❌ 未命中</span>
           </div>
         </div>
-        <div class="level-arrow" v-if="index < cacheLevels.length - 1">↓</div>
+        <div
+          v-if="index < cacheLevels.length - 1"
+          class="level-arrow"
+        >
+          ↓
+        </div>
       </div>
     </div>
 
     <div class="controls">
       <div class="control-group">
         <label>请求数据</label>
-        <button class="request-btn" @click="makeRequest" :disabled="processing">
+        <button
+          class="request-btn"
+          :disabled="processing"
+          @click="makeRequest"
+        >
           {{ processing ? '处理中...' : '发起请求' }}
         </button>
       </div>
@@ -55,18 +79,29 @@
         <label>模拟场景</label>
         <select
           v-model="scenario"
-          @change="onScenarioChange"
           class="scenario-select"
+          @change="onScenarioChange"
         >
-          <option value="normal">正常访问 (70% 命中率)</option>
-          <option value="cold">冷启动 (0% 命中率)</option>
-          <option value="hot">热点数据 (95% 命中率)</option>
+          <option value="normal">
+            正常访问 (70% 命中率)
+          </option>
+          <option value="cold">
+            冷启动 (0% 命中率)
+          </option>
+          <option value="hot">
+            热点数据 (95% 命中率)
+          </option>
         </select>
       </div>
     </div>
 
-    <div class="request-flow" v-if="requestHistory.length > 0">
-      <div class="flow-title">请求流程</div>
+    <div
+      v-if="requestHistory.length > 0"
+      class="request-flow"
+    >
+      <div class="flow-title">
+        请求流程
+      </div>
       <div class="flow-timeline">
         <div
           v-for="(event, index) in requestHistory"
@@ -74,70 +109,96 @@
           class="flow-event"
           :class="event.type"
         >
-          <div class="event-level">{{ event.level }}</div>
+          <div class="event-level">
+            {{ event.level }}
+          </div>
           <div class="event-action">
             <span class="event-icon">{{ event.icon }}</span>
             <span class="event-text">{{ event.action }}</span>
           </div>
-          <div class="event-time">{{ event.time }}ms</div>
+          <div class="event-time">
+            {{ event.time }}ms
+          </div>
         </div>
       </div>
     </div>
 
     <div class="statistics">
       <div class="stat-card">
-        <div class="stat-label">总请求数</div>
-        <div class="stat-value">{{ stats.totalRequests }}</div>
+        <div class="stat-label">
+          总请求数
+        </div>
+        <div class="stat-value">
+          {{ stats.totalRequests }}
+        </div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">缓存命中</div>
-        <div class="stat-value hit">{{ stats.cacheHits }}</div>
+        <div class="stat-label">
+          缓存命中
+        </div>
+        <div class="stat-value hit">
+          {{ stats.cacheHits }}
+        </div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">命中率</div>
-        <div class="stat-value">{{ stats.hitRate }}%</div>
+        <div class="stat-label">
+          命中率
+        </div>
+        <div class="stat-value">
+          {{ stats.hitRate }}%
+        </div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">平均响应时间</div>
-        <div class="stat-value">{{ stats.avgLatency }}ms</div>
+        <div class="stat-label">
+          平均响应时间
+        </div>
+        <div class="stat-value">
+          {{ stats.avgLatency }}ms
+        </div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">数据库访问</div>
-        <div class="stat-value db">{{ stats.dbAccess }}</div>
+        <div class="stat-label">
+          数据库访问
+        </div>
+        <div class="stat-value db">
+          {{ stats.dbAccess }}
+        </div>
       </div>
     </div>
 
     <div class="explanation">
-      <div class="explanation-title">多级缓存的优势</div>
+      <div class="explanation-title">
+        多级缓存的优势
+      </div>
       <div class="explanation-grid">
         <div class="explanation-item">
-          <div class="item-icon">🛡️</div>
+          <div class="item-icon">
+            🛡️
+          </div>
           <div class="item-text">
             <strong>逐级过滤</strong>
-            <br />
-            <span class="item-detail"
-              >每层过滤掉大部分请求，最终到达数据库的可能只有 1%</span
-            >
+            <br>
+            <span class="item-detail">每层过滤掉大部分请求，最终到达数据库的可能只有 1%</span>
           </div>
         </div>
         <div class="explanation-item">
-          <div class="item-icon">⚡</div>
+          <div class="item-icon">
+            ⚡
+          </div>
           <div class="item-text">
             <strong>极速响应</strong>
-            <br />
-            <span class="item-detail"
-              >上层缓存命中时，响应时间从 50ms 降至 0-10ms</span
-            >
+            <br>
+            <span class="item-detail">上层缓存命中时，响应时间从 50ms 降至 0-10ms</span>
           </div>
         </div>
         <div class="explanation-item">
-          <div class="item-icon">💰</div>
+          <div class="item-icon">
+            💰
+          </div>
           <div class="item-text">
             <strong>降低成本</strong>
-            <br />
-            <span class="item-detail"
-              >减少昂贵的数据库查询，节省服务器资源</span
-            >
+            <br>
+            <span class="item-detail">减少昂贵的数据库查询，节省服务器资源</span>
           </div>
         </div>
       </div>

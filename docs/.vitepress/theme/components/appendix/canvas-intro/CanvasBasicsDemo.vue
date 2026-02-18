@@ -38,53 +38,93 @@
         <div class="parameters">
           <div class="param-row">
             <label>Fill Color / 填充颜色</label>
-            <input type="color" v-model="fillColor" />
+            <input
+              v-model="fillColor"
+              type="color"
+            >
           </div>
 
           <div class="param-row">
             <label>Stroke Color / 描边颜色</label>
-            <input type="color" v-model="strokeColor" />
+            <input
+              v-model="strokeColor"
+              type="color"
+            >
           </div>
 
           <div class="param-row">
             <label>Stroke Width / 描边宽度: {{ strokeWidth }}px</label>
-            <input type="range" v-model.number="strokeWidth" min="1" max="20" />
+            <input
+              v-model.number="strokeWidth"
+              type="range"
+              min="1"
+              max="20"
+            >
           </div>
 
-          <div class="param-row" v-if="currentShape === 'rect'">
+          <div
+            v-if="currentShape === 'rect'"
+            class="param-row"
+          >
             <label>Size / 大小: {{ rectSize }}px</label>
-            <input type="range" v-model.number="rectSize" min="20" max="200" />
+            <input
+              v-model.number="rectSize"
+              type="range"
+              min="20"
+              max="200"
+            >
           </div>
 
-          <div class="param-row" v-if="currentShape === 'circle'">
+          <div
+            v-if="currentShape === 'circle'"
+            class="param-row"
+          >
             <label>Radius / 半径: {{ circleRadius }}px</label>
             <input
-              type="range"
               v-model.number="circleRadius"
+              type="range"
               min="10"
               max="150"
-            />
+            >
           </div>
 
-          <div class="param-row" v-if="currentShape === 'line'">
+          <div
+            v-if="currentShape === 'line'"
+            class="param-row"
+          >
             <label>Line Length / 线条长度: {{ lineLength }}px</label>
-            <input type="range" v-model.number="lineLength" min="50" max="300" />
+            <input
+              v-model.number="lineLength"
+              type="range"
+              min="50"
+              max="300"
+            >
           </div>
         </div>
 
-        <button class="draw-btn" @click="draw">
+        <button
+          class="draw-btn"
+          @click="draw"
+        >
           <span class="icon">🎨</span>
           Draw / 绘制
         </button>
 
-        <button class="clear-btn" @click="clearCanvas">
+        <button
+          class="clear-btn"
+          @click="clearCanvas"
+        >
           <span class="icon">🗑️</span>
           Clear / 清除
         </button>
       </div>
 
       <div class="canvas-container">
-        <canvas ref="canvasRef" width="600" height="400"></canvas>
+        <canvas
+          ref="canvasRef"
+          width="600"
+          height="400"
+        />
       </div>
 
       <div class="code-display">

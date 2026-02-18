@@ -35,7 +35,9 @@
           </div>
 
           <div class="prompt-analysis">
-            <div class="analysis-title">关键词分析</div>
+            <div class="analysis-title">
+              关键词分析
+            </div>
             <div class="keywords-list">
               <div
                 v-for="(keyword, index) in analyzedKeywords"
@@ -76,11 +78,16 @@
         <div class="preview-panel">
           <div class="preview-tabs">
             <el-tabs v-model="activeTab">
-              <el-tab-pane label="结构解析" name="structure">
+              <el-tab-pane
+                label="结构解析"
+                name="structure"
+              >
                 <div class="structure-viz">
                   <div class="structure-section">
                     <div class="section-header">
-                      <el-tag type="primary">主体 (Subject)</el-tag>
+                      <el-tag type="primary">
+                        主体 (Subject)
+                      </el-tag>
                     </div>
                     <div class="section-content">
                       {{ extractSubject() || '未检测到主体' }}
@@ -89,7 +96,9 @@
 
                   <div class="structure-section">
                     <div class="section-header">
-                      <el-tag type="success">风格 (Style)</el-tag>
+                      <el-tag type="success">
+                        风格 (Style)
+                      </el-tag>
                     </div>
                     <div class="section-content">
                       {{ extractStyle() || '未检测到风格词' }}
@@ -98,7 +107,9 @@
 
                   <div class="structure-section">
                     <div class="section-header">
-                      <el-tag type="warning">质量 (Quality)</el-tag>
+                      <el-tag type="warning">
+                        质量 (Quality)
+                      </el-tag>
                     </div>
                     <div class="section-content">
                       {{ extractQuality() || '未检测到质量词' }}
@@ -107,7 +118,9 @@
 
                   <div class="structure-section">
                     <div class="section-header">
-                      <el-tag type="info">环境 (Environment)</el-tag>
+                      <el-tag type="info">
+                        环境 (Environment)
+                      </el-tag>
                     </div>
                     <div class="section-content">
                       {{ extractEnvironment() || '未检测到环境描述' }}
@@ -116,7 +129,10 @@
                 </div>
               </el-tab-pane>
 
-              <el-tab-pane label="对比示例" name="comparison">
+              <el-tab-pane
+                label="对比示例"
+                name="comparison"
+              >
                 <div class="comparison-list">
                   <div
                     v-for="(example, index) in promptExamples"
@@ -125,13 +141,20 @@
                     :class="{ active: selectedExample === index }"
                     @click="selectExample(index)"
                   >
-                    <div class="example-prompt">{{ example.prompt }}</div>
-                    <div class="example-desc">{{ example.description }}</div>
+                    <div class="example-prompt">
+                      {{ example.prompt }}
+                    </div>
+                    <div class="example-desc">
+                      {{ example.description }}
+                    </div>
                   </div>
                 </div>
               </el-tab-pane>
 
-              <el-tab-pane label="负面提示词" name="negative">
+              <el-tab-pane
+                label="负面提示词"
+                name="negative"
+              >
                 <div class="negative-prompt-section">
                   <label>负面提示词 (Negative Prompt)</label>
                   <el-input

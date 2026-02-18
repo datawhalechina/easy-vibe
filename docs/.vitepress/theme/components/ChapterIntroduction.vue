@@ -44,52 +44,97 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
       </div>
       <div class="content">
         <!-- If tags are provided, show tags list -->
-        <div v-if="hasTags" class="tags-container">
-          <span v-for="(tag, index) in tags" :key="index" class="objective-tag">
+        <div
+          v-if="hasTags"
+          class="tags-container"
+        >
+          <span
+            v-for="(tag, index) in tags"
+            :key="index"
+            class="objective-tag"
+          >
             {{ tag }}
           </span>
         </div>
 
         <!-- Slot content (full description) always rendered below tags if tags exist, or alone if not -->
-        <div class="description-text" :class="{ 'has-tags': hasTags }">
-          <slot></slot>
+        <div
+          class="description-text"
+          :class="{ 'has-tags': hasTags }"
+        >
+          <slot />
         </div>
       </div>
     </div>
 
     <!-- Metrics Grid -->
-    <div v-if="hasMeta" class="metrics-grid">
+    <div
+      v-if="hasMeta"
+      class="metrics-grid"
+    >
       <!-- Duration Card -->
-      <div v-if="duration" class="metric-card time-card">
-        <div class="card-icon">⏱️</div>
+      <div
+        v-if="duration"
+        class="metric-card time-card"
+      >
+        <div class="card-icon">
+          ⏱️
+        </div>
         <div class="card-content">
-          <div class="card-label">预计耗时</div>
-          <div class="card-value" v-html="duration"></div>
+          <div class="card-label">
+            预计耗时
+          </div>
+          <div
+            class="card-value"
+            v-html="duration"
+          />
         </div>
       </div>
 
       <!-- Output Card -->
-      <div v-if="expectedOutput || coreOutput" class="metric-card output-card">
-        <div class="card-icon">📦</div>
+      <div
+        v-if="expectedOutput || coreOutput"
+        class="metric-card output-card"
+      >
+        <div class="card-icon">
+          📦
+        </div>
         <div class="card-content">
-          <div class="card-label">预期产出</div>
+          <div class="card-label">
+            预期产出
+          </div>
           <div class="output-container">
-            <div v-if="coreOutput" class="core-output">{{ coreOutput }}</div>
+            <div
+              v-if="coreOutput"
+              class="core-output"
+            >
+              {{ coreOutput }}
+            </div>
             <div
               v-if="expectedOutput"
               class="output-desc"
               v-html="expectedOutput"
-            ></div>
+            />
           </div>
         </div>
       </div>
 
       <!-- Assignment Card -->
-      <div v-if="assignment" class="metric-card task-card">
-        <div class="card-icon">📝</div>
+      <div
+        v-if="assignment"
+        class="metric-card task-card"
+      >
+        <div class="card-icon">
+          📝
+        </div>
         <div class="card-content">
-          <div class="card-label">课后任务</div>
-          <div class="card-value" v-html="assignment"></div>
+          <div class="card-label">
+            课后任务
+          </div>
+          <div
+            class="card-value"
+            v-html="assignment"
+          />
         </div>
       </div>
     </div>

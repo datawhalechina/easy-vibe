@@ -90,20 +90,49 @@ const runShortcut = (cmd) => {
 </script>
 
 <template>
-  <el-card class="console-demo" shadow="hover">
+  <el-card
+    class="console-demo"
+    shadow="hover"
+  >
     <template #header>
       <div class="header">
         <span class="title">Console (控制台)</span>
-        <el-button size="small" @click="clearConsole" icon="Delete" circle title="Clear console" />
+        <el-button
+          size="small"
+          icon="Delete"
+          circle
+          title="Clear console"
+          @click="clearConsole"
+        />
       </div>
     </template>
     
-    <div class="console-body" ref="consoleRef">
-      <div v-for="(log, index) in logs" :key="index" class="log-item" :class="log.type">
-        <span class="icon" v-if="log.type === 'error'">❌</span>
-        <span class="icon" v-else-if="log.type === 'warn'">⚠️</span>
-        <span class="icon" v-else-if="log.type === 'info'">ℹ️</span>
-        <span class="icon" v-else-if="log.type === 'result'">⬅️</span>
+    <div
+      ref="consoleRef"
+      class="console-body"
+    >
+      <div
+        v-for="(log, index) in logs"
+        :key="index"
+        class="log-item"
+        :class="log.type"
+      >
+        <span
+          v-if="log.type === 'error'"
+          class="icon"
+        >❌</span>
+        <span
+          v-else-if="log.type === 'warn'"
+          class="icon"
+        >⚠️</span>
+        <span
+          v-else-if="log.type === 'info'"
+          class="icon"
+        >ℹ️</span>
+        <span
+          v-else-if="log.type === 'result'"
+          class="icon"
+        >⬅️</span>
         <span class="content">{{ log.message }}</span>
       </div>
     </div>
@@ -114,7 +143,9 @@ const runShortcut = (cmd) => {
         placeholder="输入 JS 代码，按回车执行..."
         @keyup.enter="executeCommand"
       >
-        <template #prepend>></template>
+        <template #prepend>
+          >
+        </template>
       </el-input>
     </div>
     

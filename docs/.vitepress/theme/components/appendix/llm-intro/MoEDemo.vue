@@ -25,15 +25,17 @@
     <div class="visual-stage">
       <!-- Step 1: Input Selection -->
       <div class="stage-section input-section">
-        <div class="section-label">1. 选择输入 (Select Input)</div>
+        <div class="section-label">
+          1. 选择输入 (Select Input)
+        </div>
         <div class="task-selector">
           <button
             v-for="(task, idx) in tasks"
             :key="idx"
             class="task-btn"
             :class="{ selected: selectedTask.label === task.label }"
-            @click="selectTask(task)"
             :disabled="processing"
+            @click="selectTask(task)"
           >
             <span class="task-icon">{{ task.icon }}</span>
             <span class="task-text">{{ task.label }}</span>
@@ -44,10 +46,16 @@
       <!-- Processing Pipeline -->
       <div class="pipeline-container">
         <!-- Token Flow Animation -->
-        <div class="token-flow-viz" v-if="processing">
+        <div
+          v-if="processing"
+          class="token-flow-viz"
+        >
           <div class="current-token-display">
             <span class="token-label">Current Token:</span>
-            <span class="token-badge" :style="{ borderColor: getExpertColor(currentToken?.expert) }">
+            <span
+              class="token-badge"
+              :style="{ borderColor: getExpertColor(currentToken?.expert) }"
+            >
               {{ currentToken?.text || '...' }}
             </span>
           </div>
@@ -57,34 +65,57 @@
         <div class="stage-section process-section">
           <div class="section-label">
             2. 模型处理 (Processing)
-            <span v-if="processing" class="status-badge">生成中...</span>
+            <span
+              v-if="processing"
+              class="status-badge"
+            >生成中...</span>
           </div>
 
           <!-- Dense Visualization -->
-          <div v-if="architecture === 'dense'" class="dense-visualization">
+          <div
+            v-if="architecture === 'dense'"
+            class="dense-visualization"
+          >
             <div
               class="dense-block"
               :class="{ activating: processing && currentStep === 'expert' }"
             >
-              <div class="dense-label">Dense FFN Layers</div>
-              <div class="neuron-grid">
-                <div v-for="n in 32" :key="n" class="neuron"></div>
+              <div class="dense-label">
+                Dense FFN Layers
               </div>
-              <div class="activation-info" v-if="processing">
+              <div class="neuron-grid">
+                <div
+                  v-for="n in 32"
+                  :key="n"
+                  class="neuron"
+                />
+              </div>
+              <div
+                v-if="processing"
+                class="activation-info"
+              >
                 🔥 激活率: 100% (All Parameters)
               </div>
             </div>
           </div>
 
           <!-- MoE Visualization -->
-          <div v-else class="moe-visualization">
+          <div
+            v-else
+            class="moe-visualization"
+          >
             <!-- Router -->
             <div
               class="router-node"
               :class="{ active: processing && currentStep === 'router' }"
             >
-              <div class="router-label">Router (Token 分发)</div>
-              <div class="router-action" v-if="processing && currentToken">
+              <div class="router-label">
+                Router (Token 分发)
+              </div>
+              <div
+                v-if="processing && currentToken"
+                class="router-action"
+              >
                 Routing "{{ currentToken.text.trim() }}" → {{ experts[currentToken.expert].name }}
               </div>
             </div>
@@ -100,9 +131,9 @@
                   inactive: processing && currentStep === 'expert' && currentToken?.expert !== idx
                 }"
                 :style="{
-                   borderColor: processing && currentStep === 'expert' && currentToken?.expert === idx ? expert.color : ''
+                  borderColor: processing && currentStep === 'expert' && currentToken?.expert === idx ? expert.color : ''
                 }"
-              ></div>
+              />
             </div>
 
             <!-- Experts -->
@@ -116,14 +147,18 @@
                   inactive: processing && currentStep === 'expert' && currentToken?.expert !== idx
                 }"
                 :style="{
-                   borderColor: processing && currentStep === 'expert' && currentToken?.expert === idx ? expert.color : ''
+                  borderColor: processing && currentStep === 'expert' && currentToken?.expert === idx ? expert.color : ''
                 }"
               >
-                <div class="expert-icon">{{ expert.icon }}</div>
-                <div class="expert-name">{{ expert.name }}</div>
+                <div class="expert-icon">
+                  {{ expert.icon }}
+                </div>
+                <div class="expert-name">
+                  {{ expert.name }}
+                </div>
                 <div
-                  class="expert-status"
                   v-if="processing && currentStep === 'expert' && currentToken?.expert === idx"
+                  class="expert-status"
                   :style="{ color: expert.color }"
                 >
                   ⚡ Active
@@ -136,7 +171,9 @@
 
       <!-- Step 3: Output -->
       <div class="stage-section output-section">
-        <div class="section-label">3. 逐步生成 (Output Stream)</div>
+        <div class="section-label">
+          3. 逐步生成 (Output Stream)
+        </div>
         <div class="output-box">
           <span class="output-content">
             <span
@@ -146,16 +183,28 @@
               :style="{ color: architecture === 'moe' ? experts[token.expert].color : 'inherit' }"
               :title="architecture === 'moe' ? `Expert: ${experts[token.expert].name}` : ''"
             >{{ token.text }}</span>
-            <span v-if="processing" class="cursor">|</span>
+            <span
+              v-if="processing"
+              class="cursor"
+            >|</span>
           </span>
-          <div v-if="generatedTokens.length === 0 && !processing" class="placeholder">点击运行查看生成过程...</div>
+          <div
+            v-if="generatedTokens.length === 0 && !processing"
+            class="placeholder"
+          >
+            点击运行查看生成过程...
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Controls -->
     <div class="demo-controls">
-      <button class="run-btn" @click="runDemo" :disabled="processing">
+      <button
+        class="run-btn"
+        :disabled="processing"
+        @click="runDemo"
+      >
         {{ processing ? '正在生成 (Generating)...' : '▶️ 开始生成 (Run Generation)' }}
       </button>
     </div>

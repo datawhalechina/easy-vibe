@@ -1674,12 +1674,15 @@ const appendixCards = [
                 @click.stop="toggleLangMenu"
               >
                 <span class="text">
-                  <span class="vpi-languages option-icon"></span>
-                  <span class="vpi-chevron-down text-icon"></span>
+                  <span class="vpi-languages option-icon" />
+                  <span class="vpi-chevron-down text-icon" />
                 </span>
               </button>
               <!-- Dropdown Menu -->
-              <div class="lang-dropdown glass" v-if="showLangMenu">
+              <div
+                v-if="showLangMenu"
+                class="lang-dropdown glass"
+              >
                 <button
                   v-for="locale in locales"
                   :key="locale.code"
@@ -1697,21 +1700,33 @@ const appendixCards = [
           <a
             class="buy-btn"
             :href="withBase('/zh-cn/stage-0/0.1-learning-map/')"
-            >{{ t.footer.btn }}</a
-          >
+          >{{ t.footer.btn }}</a>
         </div>
       </div>
     </nav>
 
     <!-- Home Anchor -->
-    <div id="home" style="height: 0"></div>
+    <div
+      id="home"
+      style="height: 0"
+    />
 
     <!-- Stage 1: Product Manager -->
-    <section id="pm" class="section-container">
+    <section
+      id="pm"
+      class="section-container"
+    >
       <div class="section-header">
-        <h2 class="section-category">{{ t.stage1.cat }}</h2>
-        <h3 class="section-headline" v-html="t.stage1.title"></h3>
-        <p class="section-sub">{{ t.stage1.sub }}</p>
+        <h2 class="section-category">
+          {{ t.stage1.cat }}
+        </h2>
+        <h3
+          class="section-headline"
+          v-html="t.stage1.title"
+        />
+        <p class="section-sub">
+          {{ t.stage1.sub }}
+        </p>
       </div>
 
       <div class="feature-grid">
@@ -1721,7 +1736,10 @@ const appendixCards = [
           :href="withBase(t.stage1.cards[i].link)"
           class="feature-card glass"
         >
-          <div class="feature-icon" :style="{ background: card.color }">
+          <div
+            class="feature-icon"
+            :style="{ background: card.color }"
+          >
             {{ card.icon }}
           </div>
           <div class="feature-content">
@@ -1733,11 +1751,21 @@ const appendixCards = [
     </section>
 
     <!-- Stage 2: Junior/Mid Dev -->
-    <section id="junior" class="section-container">
+    <section
+      id="junior"
+      class="section-container"
+    >
       <div class="section-header">
-        <h2 class="section-category">{{ t.stage2.cat }}</h2>
-        <h3 class="section-headline" v-html="t.stage2.title"></h3>
-        <p class="section-sub">{{ t.stage2.sub }}</p>
+        <h2 class="section-category">
+          {{ t.stage2.cat }}
+        </h2>
+        <h3
+          class="section-headline"
+          v-html="t.stage2.title"
+        />
+        <p class="section-sub">
+          {{ t.stage2.sub }}
+        </p>
       </div>
 
       <div class="comm-grid">
@@ -1751,7 +1779,7 @@ const appendixCards = [
             class="comm-visual"
             :style="{ backgroundColor: card.imageColor }"
           >
-            <div class="visual-placeholder"></div>
+            <div class="visual-placeholder" />
           </div>
           <div class="comm-text">
             <h4 class="comm-title">{{ t.stage2.cards[index].title }}</h4>
@@ -1763,11 +1791,21 @@ const appendixCards = [
     </section>
 
     <!-- Stage 3: Senior Dev -->
-    <section id="senior" class="section-container">
+    <section
+      id="senior"
+      class="section-container"
+    >
       <div class="section-header">
-        <h2 class="section-category">{{ t.stage3.cat }}</h2>
-        <h3 class="section-headline" v-html="t.stage3.title"></h3>
-        <p class="section-sub">{{ t.stage3.sub }}</p>
+        <h2 class="section-category">
+          {{ t.stage3.cat }}
+        </h2>
+        <h3
+          class="section-headline"
+          v-html="t.stage3.title"
+        />
+        <p class="section-sub">
+          {{ t.stage3.sub }}
+        </p>
       </div>
 
       <div class="scroll-container">
@@ -1781,21 +1819,34 @@ const appendixCards = [
             <div class="prod-tag">{{ card.tag }}</div>
             <h4>{{ t.stage3.cards[index].title }}</h4>
             <p>{{ t.stage3.cards[index].desc }}</p>
-            <div class="prod-visual"></div>
+            <div class="prod-visual" />
           </a>
         </div>
       </div>
     </section>
 
     <!-- Appendix -->
-    <section id="appendix" class="section-container">
+    <section
+      id="appendix"
+      class="section-container"
+    >
       <div class="section-header">
-        <h2 class="section-category">{{ t.appendix.cat }}</h2>
-        <h3 class="section-headline" v-html="t.appendix.title"></h3>
-        <p class="section-sub">{{ t.appendix.sub }}</p>
+        <h2 class="section-category">
+          {{ t.appendix.cat }}
+        </h2>
+        <h3
+          class="section-headline"
+          v-html="t.appendix.title"
+        />
+        <p class="section-sub">
+          {{ t.appendix.sub }}
+        </p>
       </div>
 
-      <div class="appendix-scroll-wrapper" ref="appendixWrapper">
+      <div
+        ref="appendixWrapper"
+        class="appendix-scroll-wrapper"
+      >
         <div class="appendix-track">
           <a
             v-for="(card, index) in t.appendix.cards"
@@ -1803,7 +1854,10 @@ const appendixCards = [
             :href="withBase(card.link)"
             class="appendix-card"
           >
-            <div class="appendix-icon-wrapper" :class="'icon-' + (index % 4)">
+            <div
+              class="appendix-icon-wrapper"
+              :class="'icon-' + (index % 4)"
+            >
               <span class="appendix-emoji">{{
                 ['🤖', '🧠', '🎨', '🚀', '⚙️', '💾', '🛠️', '🌐'][index] || '📚'
               }}</span>
@@ -1819,11 +1873,14 @@ const appendixCards = [
       </div>
 
       <!-- Slider Indicator -->
-      <div class="appendix-controls" v-if="totalPages > 1">
+      <div
+        v-if="totalPages > 1"
+        class="appendix-controls"
+      >
         <button
           class="control-btn play-btn"
-          @click="autoScroll"
           aria-label="Auto Scroll"
+          @click="autoScroll"
         >
           <svg
             width="12"
@@ -1845,20 +1902,19 @@ const appendixCards = [
             class="indicator-dot"
             :class="{ active: currentPage === i - 1 }"
             @click="scrollToPage(i - 1)"
-          ></div>
+          />
         </div>
       </div>
     </section>
 
     <!-- Footer Callout -->
     <div class="footer-callout">
-      <h2 v-html="t.footer.title"></h2>
+      <h2 v-html="t.footer.title" />
       <p>{{ t.footer.desc }}</p>
       <a
         class="buy-btn large"
         :href="withBase('/zh-cn/stage-0/0.1-learning-map/')"
-        >{{ t.footer.btn }}</a
-      >
+      >{{ t.footer.btn }}</a>
     </div>
   </div>
 </template>

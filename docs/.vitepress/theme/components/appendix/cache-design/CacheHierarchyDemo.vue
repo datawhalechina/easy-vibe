@@ -26,7 +26,10 @@
         <div class="layer-stats">
           <div class="stat">
             <span class="stat-label">速度</span>
-            <span class="stat-value" :class="layer.speedClass">{{ layer.speed }}</span>
+            <span
+              class="stat-value"
+              :class="layer.speedClass"
+            >{{ layer.speed }}</span>
           </div>
           <div class="stat">
             <span class="stat-label">容量</span>
@@ -37,36 +40,81 @@
             <span class="stat-value">{{ layer.cost }}</span>
           </div>
         </div>
-        <div v-if="index < layers.length - 1" class="arrow">↓</div>
+        <div
+          v-if="index < layers.length - 1"
+          class="arrow"
+        >
+          ↓
+        </div>
       </div>
     </div>
 
     <div class="data-flow">
-      <div class="flow-title">数据流动演示</div>
+      <div class="flow-title">
+        数据流动演示
+      </div>
       <div class="flow-steps">
-        <div class="flow-step" :class="{ active: flowStep >= 1 }">
-          <div class="step-number">1</div>
-          <div class="step-text">查询 L1 缓存</div>
-          <div class="step-time">~1ns</div>
+        <div
+          class="flow-step"
+          :class="{ active: flowStep >= 1 }"
+        >
+          <div class="step-number">
+            1
+          </div>
+          <div class="step-text">
+            查询 L1 缓存
+          </div>
+          <div class="step-time">
+            ~1ns
+          </div>
         </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step" :class="{ active: flowStep >= 2 }">
-          <div class="step-number">2</div>
-          <div class="step-text">未命中，查 L2</div>
-          <div class="step-time">~10ns</div>
+        <div class="flow-arrow">
+          ↓
         </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step" :class="{ active: flowStep >= 3 }">
-          <div class="step-number">3</div>
-          <div class="step-text">未命中，查 L3</div>
-          <div class="step-time">~100ns</div>
+        <div
+          class="flow-step"
+          :class="{ active: flowStep >= 2 }"
+        >
+          <div class="step-number">
+            2
+          </div>
+          <div class="step-text">
+            未命中，查 L2
+          </div>
+          <div class="step-time">
+            ~10ns
+          </div>
+        </div>
+        <div class="flow-arrow">
+          ↓
+        </div>
+        <div
+          class="flow-step"
+          :class="{ active: flowStep >= 3 }"
+        >
+          <div class="step-number">
+            3
+          </div>
+          <div class="step-text">
+            未命中，查 L3
+          </div>
+          <div class="step-time">
+            ~100ns
+          </div>
         </div>
       </div>
-      <button class="simulate-btn" @click="simulateFlow">模拟数据查找</button>
+      <button
+        class="simulate-btn"
+        @click="simulateFlow"
+      >
+        模拟数据查找
+      </button>
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">各层级对比</div>
+      <div class="table-title">
+        各层级对比
+      </div>
       <table>
         <thead>
           <tr>
@@ -77,7 +125,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="layer in layers" :key="layer.id" :class="{ active: activeLayer === layer.id }">
+          <tr
+            v-for="layer in layers"
+            :key="layer.id"
+            :class="{ active: activeLayer === layer.id }"
+          >
             <td>{{ layer.name }}</td>
             <td>{{ layer.speed }}</td>
             <td>{{ layer.capacity }}</td>

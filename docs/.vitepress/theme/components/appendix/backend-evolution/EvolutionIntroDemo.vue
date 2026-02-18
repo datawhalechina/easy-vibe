@@ -14,16 +14,33 @@
         :class="{ active: currentStage === idx }"
         @click="currentStage = idx"
       >
-        <div class="stage-era">{{ stage.era }}</div>
-        <div class="stage-icon">{{ stage.icon }}</div>
-        <div class="stage-name">{{ stage.name }}</div>
-        <div class="stage-arch">{{ stage.arch }}</div>
+        <div class="stage-era">
+          {{ stage.era }}
+        </div>
+        <div class="stage-icon">
+          {{ stage.icon }}
+        </div>
+        <div class="stage-name">
+          {{ stage.name }}
+        </div>
+        <div class="stage-arch">
+          {{ stage.arch }}
+        </div>
       </div>
     </div>
 
-    <div class="stage-detail" v-if="currentStage !== null">
-      <Transition name="fade" mode="out-in">
-        <div :key="currentStage" class="detail-panel">
+    <div
+      v-if="currentStage !== null"
+      class="stage-detail"
+    >
+      <Transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          :key="currentStage"
+          class="detail-panel"
+        >
           <div class="detail-header">
             <span class="detail-icon">{{ stages[currentStage].icon }}</span>
             <h4>{{ stages[currentStage].restaurant }}</h4>
@@ -40,7 +57,12 @@
             <div class="detail-section">
               <h5>⚡ 核心痛点</h5>
               <ul>
-                <li v-for="(pain, i) in stages[currentStage].pains" :key="i">{{ pain }}</li>
+                <li
+                  v-for="(pain, i) in stages[currentStage].pains"
+                  :key="i"
+                >
+                  {{ pain }}
+                </li>
               </ul>
             </div>
           </div>

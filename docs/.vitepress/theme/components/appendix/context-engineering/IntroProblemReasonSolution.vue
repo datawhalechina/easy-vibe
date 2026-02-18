@@ -1,7 +1,9 @@
 <template>
   <div class="intro-prs">
     <div class="prs-item">
-      <div class="prs-title">问题</div>
+      <div class="prs-title">
+        问题
+      </div>
       <ul>
         <li><strong>上下文难以保持一致</strong>：对话一长，前后语义容易脱节。</li>
         <li><strong>关键事实容易丢失</strong>：早期给出的信息在后续轮次中难以被准确引用。</li>
@@ -9,7 +11,9 @@
       </ul>
     </div>
     <div class="prs-item">
-      <div class="prs-title">可能的成因</div>
+      <div class="prs-title">
+        可能的成因
+      </div>
       <ul>
         <li><strong>视野仅限当前调用</strong>：模型只能依赖这一轮提供的上下文。</li>
         <li><strong>信息缺乏结构化组织</strong>：重要信息与次要细节混在一起，难以形成稳定记忆。</li>
@@ -17,7 +21,9 @@
       </ul>
     </div>
     <div class="prs-item">
-      <div class="prs-title">带来的影响</div>
+      <div class="prs-title">
+        带来的影响
+      </div>
       <ul>
         <li><strong>回答质量不稳定</strong>：对话越长，模型越难保持一致性和可追溯性。</li>
         <li><strong>成本难以预估</strong>：每轮上下文大小高度波动，调用费用不可控。</li>

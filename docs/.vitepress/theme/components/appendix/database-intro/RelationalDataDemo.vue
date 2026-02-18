@@ -100,7 +100,10 @@ const setHover = (id) => {
 
     <div class="content-area">
       <!-- Excel Mode -->
-      <div v-if="activeTab === 'excel'" class="excel-view">
+      <div
+        v-if="activeTab === 'excel'"
+        class="excel-view"
+      >
         <div class="table-wrapper">
           <table>
             <thead>
@@ -109,18 +112,29 @@ const setHover = (id) => {
                 <th>日期</th>
                 <th>书名</th>
                 <th>价格</th>
-                <th class="highlight-col">购买者</th>
-                <th class="highlight-col">电话</th>
+                <th class="highlight-col">
+                  购买者
+                </th>
+                <th class="highlight-col">
+                  电话
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in excelData" :key="row.id">
+              <tr
+                v-for="row in excelData"
+                :key="row.id"
+              >
                 <td>{{ row.id }}</td>
                 <td>{{ row.date }}</td>
                 <td>{{ row.book }}</td>
                 <td>{{ row.price }}</td>
-                <td class="highlight-cell">{{ row.user }}</td>
-                <td class="highlight-cell">{{ row.phone }}</td>
+                <td class="highlight-cell">
+                  {{ row.user }}
+                </td>
+                <td class="highlight-cell">
+                  {{ row.phone }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -132,11 +146,16 @@ const setHover = (id) => {
       </div>
 
       <!-- DB Mode -->
-      <div v-else class="db-view">
+      <div
+        v-else
+        class="db-view"
+      >
         <div class="db-layout">
           <!-- Users Table -->
           <div class="db-table users-table">
-            <div class="table-title">👥 用户表 (Users)</div>
+            <div class="table-title">
+              👥 用户表 (Users)
+            </div>
             <table>
               <thead>
                 <tr>
@@ -153,7 +172,9 @@ const setHover = (id) => {
                   @mouseenter="setHover(u.id)"
                   @mouseleave="setHover(null)"
                 >
-                  <td class="primary-key">{{ u.id }}</td>
+                  <td class="primary-key">
+                    {{ u.id }}
+                  </td>
                   <td>{{ u.name }}</td>
                   <td>{{ u.phone }}</td>
                 </tr>
@@ -163,20 +184,28 @@ const setHover = (id) => {
 
           <!-- Connection Lines (Visual only, simplified) -->
           <div class="connector">
-            <div class="arrow-label">🔗 外键关联</div>
-            <div class="arrow">⬅️ Join ➡️</div>
+            <div class="arrow-label">
+              🔗 外键关联
+            </div>
+            <div class="arrow">
+              ⬅️ Join ➡️
+            </div>
           </div>
 
           <!-- Orders Table -->
           <div class="db-table orders-table">
-            <div class="table-title">📦 订单表 (Orders)</div>
+            <div class="table-title">
+              📦 订单表 (Orders)
+            </div>
             <table>
               <thead>
                 <tr>
                   <th>订单号</th>
                   <th>书名</th>
                   <th>价格</th>
-                  <th class="highlight-col">用户 ID (外键)</th>
+                  <th class="highlight-col">
+                    用户 ID (外键)
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -190,7 +219,9 @@ const setHover = (id) => {
                   <td>{{ o.id }}</td>
                   <td>{{ o.book }}</td>
                   <td>{{ o.price }}</td>
-                  <td class="highlight-cell foreign-key">{{ o.user_id }}</td>
+                  <td class="highlight-cell foreign-key">
+                    {{ o.user_id }}
+                  </td>
                 </tr>
               </tbody>
             </table>

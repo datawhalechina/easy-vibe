@@ -4,81 +4,143 @@
 -->
 <template>
   <div class="demo">
-    <div class="title">🔍 HTTP 方法：GET、POST、PUT、DELETE 是什么？</div>
-    <p class="subtitle">把它们想象成对数据的"操作方式"</p>
+    <div class="title">
+      🔍 HTTP 方法：GET、POST、PUT、DELETE 是什么？
+    </div>
+    <p class="subtitle">
+      把它们想象成对数据的"操作方式"
+    </p>
 
     <div class="methods-grid">
       <div class="method-card get">
-        <div class="method-badge">GET</div>
-        <div class="method-title">📖 获取（查询）</div>
+        <div class="method-badge">
+          GET
+        </div>
+        <div class="method-title">
+          📖 获取（查询）
+        </div>
         <div class="method-desc">
           <p><strong>只看不改</strong> - 从服务器获取数据</p>
           <div class="method-examples">
-            <div class="example-item">• 查询用户信息</div>
-            <div class="example-item">• 搜索商品</div>
-            <div class="example-item">• 获取文章列表</div>
+            <div class="example-item">
+              • 查询用户信息
+            </div>
+            <div class="example-item">
+              • 搜索商品
+            </div>
+            <div class="example-item">
+              • 获取文章列表
+            </div>
           </div>
         </div>
-        <div class="method-tip">💡 可以安全重试，不会改变服务器数据</div>
+        <div class="method-tip">
+          💡 可以安全重试，不会改变服务器数据
+        </div>
       </div>
 
       <div class="method-card post">
-        <div class="method-badge">POST</div>
-        <div class="method-title">➕ 创建（新增）</div>
+        <div class="method-badge">
+          POST
+        </div>
+        <div class="method-title">
+          ➕ 创建（新增）
+        </div>
         <div class="method-desc">
           <p><strong>新建数据</strong> - 在服务器创建新资源</p>
           <div class="method-examples">
-            <div class="example-item">• 创建新用户</div>
-            <div class="example-item">• 提交订单</div>
-            <div class="example-item">• 发表评论</div>
+            <div class="example-item">
+              • 创建新用户
+            </div>
+            <div class="example-item">
+              • 提交订单
+            </div>
+            <div class="example-item">
+              • 发表评论
+            </div>
           </div>
         </div>
-        <div class="method-tip">⚠️ 不能随意重试，可能会重复创建</div>
+        <div class="method-tip">
+          ⚠️ 不能随意重试，可能会重复创建
+        </div>
       </div>
 
       <div class="method-card put">
-        <div class="method-badge">PUT</div>
-        <div class="method-title">✏️ 更新（替换）</div>
+        <div class="method-badge">
+          PUT
+        </div>
+        <div class="method-title">
+          ✏️ 更新（替换）
+        </div>
         <div class="method-desc">
           <p><strong>整体替换</strong> - 用新数据完全替换旧数据</p>
           <div class="method-examples">
-            <div class="example-item">• 修改用户全部信息</div>
-            <div class="example-item">• 更换文章全部内容</div>
+            <div class="example-item">
+              • 修改用户全部信息
+            </div>
+            <div class="example-item">
+              • 更换文章全部内容
+            </div>
           </div>
         </div>
-        <div class="method-tip">⚠️ 会覆盖整个资源，需要提供完整数据</div>
+        <div class="method-tip">
+          ⚠️ 会覆盖整个资源，需要提供完整数据
+        </div>
       </div>
 
       <div class="method-card patch">
-        <div class="method-badge">PATCH</div>
-        <div class="method-title">🔧 修改（部分）</div>
+        <div class="method-badge">
+          PATCH
+        </div>
+        <div class="method-title">
+          🔧 修改（部分）
+        </div>
         <div class="method-desc">
           <p><strong>局部更新</strong> - 只修改资源的部分字段</p>
           <div class="method-examples">
-            <div class="example-item">• 只修改用户昵称</div>
-            <div class="example-item">• 更新文章标题</div>
+            <div class="example-item">
+              • 只修改用户昵称
+            </div>
+            <div class="example-item">
+              • 更新文章标题
+            </div>
           </div>
         </div>
-        <div class="method-tip">💡 只传需要修改的字段，更灵活</div>
+        <div class="method-tip">
+          💡 只传需要修改的字段，更灵活
+        </div>
       </div>
 
       <div class="method-card delete">
-        <div class="method-badge">DELETE</div>
-        <div class="method-title">🗑️ 删除</div>
+        <div class="method-badge">
+          DELETE
+        </div>
+        <div class="method-title">
+          🗑️ 删除
+        </div>
         <div class="method-desc">
           <p><strong>移除数据</strong> - 从服务器删除资源</p>
           <div class="method-examples">
-            <div class="example-item">• 删除用户</div>
-            <div class="example-item">• 取消订单</div>
-            <div class="example-item">• 删除评论</div>
+            <div class="example-item">
+              • 删除用户
+            </div>
+            <div class="example-item">
+              • 取消订单
+            </div>
+            <div class="example-item">
+              • 删除评论
+            </div>
           </div>
         </div>
-        <div class="method-tip">⚠️ 操作不可逆，删除后无法恢复</div>
+        <div class="method-tip">
+          ⚠️ 操作不可逆，删除后无法恢复
+        </div>
       </div>
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">📊 快速对比</div>
+      <div class="table-title">
+        📊 快速对比
+      </div>
       <table>
         <thead>
           <tr>

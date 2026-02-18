@@ -52,10 +52,10 @@ updateExplanation()
       <button
         v-for="scope in scopes"
         :key="scope.id"
-        @click="activeScope = scope.id; updateExplanation()"
         class="scope-btn"
         :class="{ active: activeScope === scope.id }"
         :style="{ borderColor: scope.color }"
+        @click="activeScope = scope.id; updateExplanation()"
       >
         {{ scope.name }}
       </button>
@@ -71,7 +71,10 @@ updateExplanation()
           :class="{ active: activeScope === scope.id, dimmed: activeScope !== scope.id }"
           :style="{ borderLeftColor: scope.color }"
         >
-          <div class="level-header" :style="{ color: scope.color }">
+          <div
+            class="level-header"
+            :style="{ color: scope.color }"
+          >
             {{ scope.name }}
           </div>
           <div class="level-vars">
@@ -83,7 +86,10 @@ updateExplanation()
             >
               <span class="var-name">{{ v.name }}</span>
               <span class="var-value">= {{ v.value }}</span>
-              <span v-if="!v.own" class="var-from">← {{ v.from }}</span>
+              <span
+                v-if="!v.own"
+                class="var-from"
+              >← {{ v.from }}</span>
             </div>
           </div>
         </div>
@@ -91,8 +97,12 @@ updateExplanation()
 
       <!-- 说明 -->
       <div class="explanation-box">
-        <div class="explanation-title">💡 当前位置可见的变量</div>
-        <div class="explanation-text">{{ explanation }}</div>
+        <div class="explanation-title">
+          💡 当前位置可见的变量
+        </div>
+        <div class="explanation-text">
+          {{ explanation }}
+        </div>
       </div>
     </div>
 

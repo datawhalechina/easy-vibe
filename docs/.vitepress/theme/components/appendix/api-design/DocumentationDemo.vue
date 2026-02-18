@@ -23,11 +23,21 @@
         </button>
       </div>
 
-      <div class="tool-detail" v-if="currentTool">
+      <div
+        v-if="currentTool"
+        class="tool-detail"
+      >
         <div class="tool-header">
-          <div class="tool-title">{{ currentTool.name }}</div>
+          <div class="tool-title">
+            {{ currentTool.name }}
+          </div>
           <div class="tool-tags">
-            <span class="tag" :class="tag.class" v-for="tag in currentTool.tags" :key="tag.text">
+            <span
+              v-for="tag in currentTool.tags"
+              :key="tag.text"
+              class="tag"
+              :class="tag.class"
+            >
               {{ tag.text }}
             </span>
           </div>
@@ -40,7 +50,11 @@
         <div class="feature-section">
           <h4>核心特性</h4>
           <div class="feature-list">
-            <div v-for="(feature, idx) in currentTool.features" :key="idx" class="feature-item">
+            <div
+              v-for="(feature, idx) in currentTool.features"
+              :key="idx"
+              class="feature-item"
+            >
               <span class="feature-icon">✓</span>
               <span class="feature-text">{{ feature }}</span>
             </div>
@@ -57,9 +71,17 @@
         <div class="tools-section">
           <h4>🔧 推荐工具</h4>
           <div class="tools-grid">
-            <div v-for="(rec, idx) in currentTool.recommendations" :key="idx" class="tool-card">
-              <div class="rec-name">{{ rec.name }}</div>
-              <div class="rec-desc">{{ rec.description }}</div>
+            <div
+              v-for="(rec, idx) in currentTool.recommendations"
+              :key="idx"
+              class="tool-card"
+            >
+              <div class="rec-name">
+                {{ rec.name }}
+              </div>
+              <div class="rec-desc">
+                {{ rec.description }}
+              </div>
             </div>
           </div>
         </div>

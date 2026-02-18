@@ -2,9 +2,9 @@
   <div class="buffer-demo">
     <div class="terminal-frame">
       <div class="window-bar">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
+        <span class="dot red" />
+        <span class="dot yellow" />
+        <span class="dot green" />
         <span class="title">Terminal - Buffer Switching Demo</span>
       </div>
 
@@ -14,7 +14,9 @@
           <div class="line">
             <span class="prompt">➜</span> <span class="cmd">ls -la</span>
           </div>
-          <div class="line output">total 16</div>
+          <div class="line output">
+            total 16
+          </div>
           <div class="line output">
             drwxr-xr-x 2 user staff 64 Jan 15 10:00 .
           </div>
@@ -28,7 +30,9 @@
             <span class="prompt">➜</span>
             <span class="cmd">echo "Hello World"</span>
           </div>
-          <div class="line output">Hello World</div>
+          <div class="line output">
+            Hello World
+          </div>
           <div class="line">
             <span class="prompt">➜</span> <span class="cmd">vim notes.txt</span>
           </div>
@@ -37,29 +41,54 @@
 
         <!-- Alternate Buffer (Layer 1) -->
         <transition name="slide-up">
-          <div v-if="isAltBufferActive" class="buffer alt-buffer">
+          <div
+            v-if="isAltBufferActive"
+            class="buffer alt-buffer"
+          >
             <div class="vim-header">
               <span class="filename">notes.txt</span>
               <span class="modified">[+]</span>
             </div>
             <div class="vim-body">
-              <div class="line-num">1</div>
-              <div class="code">This is a text file opened in Vim.</div>
-              <div class="line-num">2</div>
-              <div class="code"></div>
-              <div class="line-num">3</div>
-              <div class="code">Notice how this interface takes up</div>
-              <div class="line-num">4</div>
-              <div class="code">the entire screen?</div>
-              <div class="line-num">5</div>
-              <div class="code"></div>
-              <div class="line-num">6</div>
+              <div class="line-num">
+                1
+              </div>
+              <div class="code">
+                This is a text file opened in Vim.
+              </div>
+              <div class="line-num">
+                2
+              </div>
+              <div class="code" />
+              <div class="line-num">
+                3
+              </div>
+              <div class="code">
+                Notice how this interface takes up
+              </div>
+              <div class="line-num">
+                4
+              </div>
+              <div class="code">
+                the entire screen?
+              </div>
+              <div class="line-num">
+                5
+              </div>
+              <div class="code" />
+              <div class="line-num">
+                6
+              </div>
               <div class="code">
                 It is running in the
                 <span class="highlight">Alternate Buffer</span>.
               </div>
-              <div class="line-num">~</div>
-              <div class="line-num">~</div>
+              <div class="line-num">
+                ~
+              </div>
+              <div class="line-num">
+                ~
+              </div>
             </div>
             <div class="vim-status-bar">
               <span class="mode">NORMAL</span>
@@ -81,7 +110,10 @@
             This is the standard scrolling log. Commands are executed line by
             line.
           </p>
-          <button class="action-btn" @click="openVim">
+          <button
+            class="action-btn"
+            @click="openVim"
+          >
             Execute `vim notes.txt`
           </button>
         </div>
@@ -91,7 +123,10 @@
             A separate "canvas" for full-screen apps. It hides the history but
             doesn't delete it.
           </p>
-          <button class="action-btn red" @click="quitVim">
+          <button
+            class="action-btn red"
+            @click="quitVim"
+          >
             Execute `:q` (Quit)
           </button>
         </div>

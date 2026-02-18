@@ -2,17 +2,29 @@
   <div class="service-selection-demo">
     <div class="demo-header">
       <h4>云服务选型决策树</h4>
-      <p class="demo-desc">回答几个简单问题，获取最适合您的云服务方案</p>
+      <p class="demo-desc">
+        回答几个简单问题，获取最适合您的云服务方案
+      </p>
     </div>
 
-    <div v-if="!result" class="decision-flow">
+    <div
+      v-if="!result"
+      class="decision-flow"
+    >
       <div class="progress-bar">
-        <div class="progress-fill" :style="{ width: progress + '%' }"></div>
+        <div
+          class="progress-fill"
+          :style="{ width: progress + '%' }"
+        />
       </div>
 
       <div class="question-card">
-        <div class="question-number">问题 {{ currentStep + 1 }}/{{ questions.length }}</div>
-        <h5 class="question-text">{{ currentQuestion.text }}</h5>
+        <div class="question-number">
+          问题 {{ currentStep + 1 }}/{{ questions.length }}
+        </div>
+        <h5 class="question-text">
+          {{ currentQuestion.text }}
+        </h5>
 
         <div class="options-list">
           <button
@@ -29,7 +41,10 @@
       </div>
     </div>
 
-    <div v-else class="result-panel">
+    <div
+      v-else
+      class="result-panel"
+    >
       <div class="result-header">
         <span class="result-icon">🎯</span>
         <h5>推荐方案</h5>
@@ -37,32 +52,51 @@
 
       <div class="recommendation-cards">
         <div class="rec-card primary">
-          <div class="rec-badge">最佳匹配</div>
-          <div class="rec-icon">{{ result.primary.icon }}</div>
-          <div class="rec-title">{{ result.primary.name }}</div>
+          <div class="rec-badge">
+            最佳匹配
+          </div>
+          <div class="rec-icon">
+            {{ result.primary.icon }}
+          </div>
+          <div class="rec-title">
+            {{ result.primary.name }}
+          </div>
           <div class="rec-services">
             <span class="service aws">{{ result.primary.aws }}</span>
             <span class="vs">vs</span>
             <span class="service aliyun">{{ result.primary.aliyun }}</span>
           </div>
-          <div class="rec-reason">{{ result.primary.reason }}</div>
+          <div class="rec-reason">
+            {{ result.primary.reason }}
+          </div>
         </div>
 
         <div class="rec-card secondary">
-          <div class="rec-badge alt">备选</div>
-          <div class="rec-icon">{{ result.secondary.icon }}</div>
-          <div class="rec-title">{{ result.secondary.name }}</div>
+          <div class="rec-badge alt">
+            备选
+          </div>
+          <div class="rec-icon">
+            {{ result.secondary.icon }}
+          </div>
+          <div class="rec-title">
+            {{ result.secondary.name }}
+          </div>
           <div class="rec-services">
             <span class="service aws">{{ result.secondary.aws }}</span>
             <span class="vs">vs</span>
             <span class="service aliyun">{{ result.secondary.aliyun }}</span>
           </div>
-          <div class="rec-reason">{{ result.secondary.reason }}</div>
+          <div class="rec-reason">
+            {{ result.secondary.reason }}
+          </div>
         </div>
       </div>
 
       <div class="result-actions">
-        <button class="restart-btn" @click="restart">
+        <button
+          class="restart-btn"
+          @click="restart"
+        >
           <span>↺</span> 重新测试
         </button>
       </div>

@@ -16,7 +16,10 @@
         <div class="service-header">
           <span class="service-icon">{{ service.icon }}</span>
           <span class="service-name">{{ service.name }}</span>
-          <span class="service-status" :class="service.status">{{ service.statusText }}</span>
+          <span
+            class="service-status"
+            :class="service.status"
+          >{{ service.statusText }}</span>
         </div>
         <div class="service-details">
           <div class="detail-row">
@@ -38,18 +41,39 @@
     <div class="communication-flow">
       <h5>服务间通信链路</h5>
       <div class="flow-visualization">
-        <div class="flow-step" v-for="(step, idx) in flowSteps" :key="idx"
-             :class="{ active: currentFlowStep === idx, completed: currentFlowStep > idx }">
-          <div class="step-number">{{ idx + 1 }}</div>
+        <div
+          v-for="(step, idx) in flowSteps"
+          :key="idx"
+          class="flow-step"
+          :class="{ active: currentFlowStep === idx, completed: currentFlowStep > idx }"
+        >
+          <div class="step-number">
+            {{ idx + 1 }}
+          </div>
           <div class="step-content">
-            <div class="step-service">{{ step.service }}</div>
-            <div class="step-action">{{ step.action }}</div>
+            <div class="step-service">
+              {{ step.service }}
+            </div>
+            <div class="step-action">
+              {{ step.action }}
+            </div>
           </div>
         </div>
       </div>
       <div class="flow-controls">
-        <button class="flow-btn" @click="startFlow" :disabled="isFlowRunning">开始流程</button>
-        <button class="flow-btn" @click="resetFlow">重置</button>
+        <button
+          class="flow-btn"
+          :disabled="isFlowRunning"
+          @click="startFlow"
+        >
+          开始流程
+        </button>
+        <button
+          class="flow-btn"
+          @click="resetFlow"
+        >
+          重置
+        </button>
       </div>
     </div>
   </div>

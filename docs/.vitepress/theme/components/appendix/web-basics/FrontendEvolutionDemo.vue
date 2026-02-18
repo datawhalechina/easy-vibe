@@ -2,7 +2,7 @@
   <div class="frontend-evolution-demo">
     <!-- Modern Timeline -->
     <div class="timeline-container">
-      <div class="timeline-track"></div>
+      <div class="timeline-track" />
       <button
         v-for="(stage, index) in stages"
         :key="index"
@@ -14,7 +14,7 @@
         @click="currentStage = index"
       >
         <div class="node-dot">
-          <div class="inner-dot"></div>
+          <div class="inner-dot" />
         </div>
         <div class="node-content">
           <span class="year-badge">{{ stage.year }}</span>
@@ -24,13 +24,17 @@
     </div>
 
     <div class="content-wrapper">
-      <transition name="fade-slide" mode="out-in">
-        <div :key="currentStage" class="stage-content">
+      <transition
+        name="fade-slide"
+        mode="out-in"
+      >
+        <div
+          :key="currentStage"
+          class="stage-content"
+        >
           <div class="header-section">
             <h3>
-              <span class="stage-index"
-                >{{ indexToRoman(currentStage + 1) }}.</span
-              >
+              <span class="stage-index">{{ indexToRoman(currentStage + 1) }}.</span>
               {{ stages[currentStage].title }}
             </h3>
             <p>{{ stages[currentStage].desc }}</p>
@@ -41,9 +45,9 @@
             <div class="mac-window code-window">
               <div class="window-bar">
                 <div class="traffic-lights">
-                  <span class="light red"></span>
-                  <span class="light yellow"></span>
-                  <span class="light green"></span>
+                  <span class="light red" />
+                  <span class="light yellow" />
+                  <span class="light green" />
                 </div>
                 <div class="window-title">
                   {{ stages[currentStage].codeTitle }}
@@ -57,30 +61,45 @@
             <!-- Diagram View -->
             <div class="mac-window diagram-window">
               <div class="window-bar">
-                <div class="window-title">Architecture Pattern</div>
+                <div class="window-title">
+                  Architecture Pattern
+                </div>
               </div>
               <div class="diagram-canvas">
                 <!-- Stage 0: Static -->
-                <div v-if="currentStage === 0" class="diagram static">
+                <div
+                  v-if="currentStage === 0"
+                  class="diagram static"
+                >
                   <div class="flow-stack">
                     <div class="concept-box html">
                       <span class="icon">📄</span> HTML (Content)
                     </div>
-                    <div class="flow-arrow">↓</div>
+                    <div class="flow-arrow">
+                      ↓
+                    </div>
                     <div class="concept-box browser">
                       <span class="icon">🌍</span> Browser (Display)
                     </div>
                   </div>
-                  <div class="side-note">Server sends complete HTML</div>
+                  <div class="side-note">
+                    Server sends complete HTML
+                  </div>
                 </div>
 
                 <!-- Stage 1: jQuery -->
-                <div v-if="currentStage === 1" class="diagram jquery">
+                <div
+                  v-if="currentStage === 1"
+                  class="diagram jquery"
+                >
                   <div class="concept-box dom">
                     <span class="icon">🌳</span> DOM Tree
                   </div>
                   <div class="chaos-arrows">
-                    <svg viewBox="0 0 100 60" class="chaos-svg">
+                    <svg
+                      viewBox="0 0 100 60"
+                      class="chaos-svg"
+                    >
                       <path
                         d="M10,10 Q50,5 90,10"
                         class="arrow-path"
@@ -115,45 +134,70 @@
                         refY="3.5"
                         orient="auto"
                       >
-                        <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+                        <polygon
+                          points="0 0, 10 3.5, 0 7"
+                          fill="#666"
+                        />
                       </marker>
                     </defs>
                   </svg>
                 </div>
 
                 <!-- Stage 2: MVC -->
-                <div v-if="currentStage === 2" class="diagram mvc">
+                <div
+                  v-if="currentStage === 2"
+                  class="diagram mvc"
+                >
                   <div class="mvc-triangle">
-                    <div class="concept-box model">Model</div>
-                    <div class="concept-box view">View</div>
-                    <div class="concept-box controller">Controller</div>
+                    <div class="concept-box model">
+                      Model
+                    </div>
+                    <div class="concept-box view">
+                      View
+                    </div>
+                    <div class="concept-box controller">
+                      Controller
+                    </div>
 
                     <!-- Connecting Lines -->
-                    <div class="line m-v"></div>
-                    <div class="line v-c"></div>
-                    <div class="line c-m"></div>
+                    <div class="line m-v" />
+                    <div class="line v-c" />
+                    <div class="line c-m" />
                   </div>
-                  <div class="mvc-desc">Two-way Binding</div>
+                  <div class="mvc-desc">
+                    Two-way Binding
+                  </div>
                 </div>
 
                 <!-- Stage 3: Component -->
-                <div v-if="currentStage === 3" class="diagram component">
+                <div
+                  v-if="currentStage === 3"
+                  class="diagram component"
+                >
                   <div class="comp-structure">
                     <div class="comp-box root">
                       <span class="comp-label">App</span>
                       <div class="comp-children">
-                        <div class="comp-box header">Header</div>
+                        <div class="comp-box header">
+                          Header
+                        </div>
                         <div class="comp-box list">
                           ProductList
                           <div class="comp-children row">
-                            <div class="comp-box item">Item</div>
-                            <div class="comp-box item">Item</div>
+                            <div class="comp-box item">
+                              Item
+                            </div>
+                            <div class="comp-box item">
+                              Item
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="flow-pill">State ➔ UI = f(State)</div>
+                  <div class="flow-pill">
+                    State ➔ UI = f(State)
+                  </div>
                 </div>
               </div>
             </div>

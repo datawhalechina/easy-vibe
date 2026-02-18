@@ -13,10 +13,18 @@
     <div class="demo-content">
       <div class="comparison-table">
         <div class="table-header">
-          <div class="header-col first">工具</div>
-          <div class="header-col">难度</div>
-          <div class="header-col">大小</div>
-          <div class="header-col">框架</div>
+          <div class="header-col first">
+            工具
+          </div>
+          <div class="header-col">
+            难度
+          </div>
+          <div class="header-col">
+            大小
+          </div>
+          <div class="header-col">
+            框架
+          </div>
         </div>
         <div class="table-body">
           <div
@@ -32,12 +40,18 @@
             </div>
             <div class="row-col">
               <div class="curve-bar">
-                <div class="curve-fill" :style="{ width: lib.learningCurve + '%', background: getCurveColor(lib.learningCurve) }"></div>
+                <div
+                  class="curve-fill"
+                  :style="{ width: lib.learningCurve + '%', background: getCurveColor(lib.learningCurve) }"
+                />
               </div>
               <span class="curve-label">{{ getCurveLabel(lib.learningCurve) }}</span>
             </div>
             <div class="row-col">
-              <span class="size-badge" :class="getSizeClass(lib.bundleSize)">{{ lib.bundleSize }}</span>
+              <span
+                class="size-badge"
+                :class="getSizeClass(lib.bundleSize)"
+              >{{ lib.bundleSize }}</span>
             </div>
             <div class="row-col">
               <span class="framework-text">{{ lib.framework }}</span>
@@ -47,29 +61,46 @@
       </div>
 
       <Transition name="fade">
-        <div v-if="selectedLibrary" class="library-detail">
+        <div
+          v-if="selectedLibrary"
+          class="library-detail"
+        >
           <div class="detail-header">
             <span class="detail-icon">{{ selectedLibrary.icon }}</span>
             <div class="detail-title">
               <h5>{{ selectedLibrary.name }}</h5>
-              <p class="tagline">{{ selectedLibrary.tagline }}</p>
+              <p class="tagline">
+                {{ selectedLibrary.tagline }}
+              </p>
             </div>
           </div>
 
           <div class="detail-grid">
             <div class="detail-section compact">
-              <div class="section-title">🎯 适用场景</div>
-              <div class="section-content">{{ selectedLibrary.scenarios.join('、') }}</div>
+              <div class="section-title">
+                🎯 适用场景
+              </div>
+              <div class="section-content">
+                {{ selectedLibrary.scenarios.join('、') }}
+              </div>
             </div>
 
             <div class="detail-section compact">
-              <div class="section-title green">✅ 优点</div>
-              <div class="section-content">{{ selectedLibrary.pros.slice(0, 2).join('；') }}</div>
+              <div class="section-title green">
+                ✅ 优点
+              </div>
+              <div class="section-content">
+                {{ selectedLibrary.pros.slice(0, 2).join('；') }}
+              </div>
             </div>
 
             <div class="detail-section compact">
-              <div class="section-title red">❌ 缺点</div>
-              <div class="section-content">{{ selectedLibrary.cons.slice(0, 2).join('；') }}</div>
+              <div class="section-title red">
+                ❌ 缺点
+              </div>
+              <div class="section-content">
+                {{ selectedLibrary.cons.slice(0, 2).join('；') }}
+              </div>
             </div>
           </div>
         </div>

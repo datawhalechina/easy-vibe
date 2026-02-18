@@ -8,7 +8,9 @@
 
     <div class="main-area">
       <div class="platform-col aws">
-        <div class="platform-header">AWS IAM</div>
+        <div class="platform-header">
+          AWS IAM
+        </div>
         <div
           v-for="(feature, index) in features"
           :key="index"
@@ -22,24 +24,41 @@
       </div>
 
       <div class="comparison-col">
-        <div class="comparison-card" v-if="selectedFeatureData">
-          <div class="comp-title">{{ selectedFeatureData.name }}</div>
+        <div
+          v-if="selectedFeatureData"
+          class="comparison-card"
+        >
+          <div class="comp-title">
+            {{ selectedFeatureData.name }}
+          </div>
           <div class="comp-row">
             <div class="comp-item aws">
-              <div class="comp-label">AWS IAM</div>
-              <div class="comp-desc">{{ selectedFeatureData.awsDetail }}</div>
+              <div class="comp-label">
+                AWS IAM
+              </div>
+              <div class="comp-desc">
+                {{ selectedFeatureData.awsDetail }}
+              </div>
             </div>
-            <div class="comp-vs">VS</div>
+            <div class="comp-vs">
+              VS
+            </div>
             <div class="comp-item ram">
-              <div class="comp-label">阿里云 RAM</div>
-              <div class="comp-desc">{{ selectedFeatureData.ramDetail }}</div>
+              <div class="comp-label">
+                阿里云 RAM
+              </div>
+              <div class="comp-desc">
+                {{ selectedFeatureData.ramDetail }}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="platform-col ram">
-        <div class="platform-header">阿里云 RAM</div>
+        <div class="platform-header">
+          阿里云 RAM
+        </div>
         <div
           v-for="(feature, index) in features"
           :key="index"
