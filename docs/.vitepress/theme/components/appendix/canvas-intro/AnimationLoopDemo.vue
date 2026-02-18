@@ -408,14 +408,15 @@ onUnmounted(() => {
 
 <style scoped>
 .animation-demo {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  background: #fafafa;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .control-panel {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .playback-controls {
@@ -426,13 +427,16 @@ onUnmounted(() => {
 
 .play-btn,
 .reset-btn {
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .play-btn {
@@ -442,7 +446,8 @@ onUnmounted(() => {
 
 .play-btn:hover {
   background: #27ae60;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
 }
 
 .reset-btn {
@@ -452,28 +457,35 @@ onUnmounted(() => {
 
 .reset-btn:hover {
   background: #7f8c8d;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(149, 165, 166, 0.4);
 }
 
 .animation-selector {
-  margin-bottom: 15px;
+  margin-bottom: 1.25rem;
 }
 
 .animation-selector label {
   display: block;
   font-weight: 600;
-  margin-bottom: 8px;
-  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
 }
 
 .animation-selector select {
   width: 100%;
-  padding: 8px 12px;
-  border: 2px solid #ddd;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--vp-c-divider);
   border-radius: 6px;
-  font-size: 14px;
-  background: white;
+  font-size: 0.875rem;
+  background: var(--vp-c-bg);
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.animation-selector select:hover {
+  border-color: var(--vp-c-brand);
 }
 
 .parameters {
@@ -531,30 +543,35 @@ onUnmounted(() => {
 .canvas-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--vp-c-bg);
+  border-radius: 12px;
+  border: 2px solid var(--vp-c-divider);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 canvas {
-  border: 2px solid #ddd;
-  border-radius: 4px;
+  border: 3px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .code-display {
-  margin-top: 20px;
-  padding: 15px;
-  background: #2c3e50;
-  border-radius: 6px;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: #1e293b;
+  border-radius: 12px;
   overflow-x: auto;
+  border: 2px solid #334155;
 }
 
 .code-display h4 {
-  color: #ecf0f1;
-  margin: 0 0 10px 0;
-  font-size: 14px;
+  color: #f8fafc;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .code-display pre {
@@ -562,54 +579,60 @@ canvas {
 }
 
 .code-display code {
-  color: #ecf0f1;
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 1.6;
+  color: #e2e8f0;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  line-height: 1.7;
 }
 
 .explanation {
-  margin: 20px 0;
-  padding: 15px;
-  background: white;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--vp-c-bg);
   border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .explanation h4 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
+  margin: 0 0 0.75rem 0;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .explanation ul {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 
 .explanation li {
-  margin-bottom: 8px;
-  color: #555;
-  font-size: 14px;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 .info-box {
-  margin-top: 15px;
-  padding: 12px;
-  background: #fff3cd;
-  border-left: 4px solid #ffc107;
-  border-radius: 4px;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
 }
 
 .info-box p {
   margin: 0;
-  font-size: 14px;
-  color: #856404;
+  font-size: 0.875rem;
+  color: #92400e;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
+  line-height: 1.6;
 }
 
 .info-box .icon {
-  font-size: 16px;
+  font-size: 1.125rem;
   flex-shrink: 0;
 }
 </style>

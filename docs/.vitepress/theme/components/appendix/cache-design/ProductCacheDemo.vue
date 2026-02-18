@@ -479,7 +479,7 @@ const resetDemo = () => {
 .layer {
   width: 100%;
   max-width: 400px;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 10px;
   border: 2px solid var(--vp-c-divider);
   transition: all 0.3s;
@@ -585,7 +585,7 @@ const resetDemo = () => {
   min-width: 150px;
   padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.9rem;
 }
 
@@ -594,7 +594,7 @@ const resetDemo = () => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -615,16 +615,16 @@ const resetDemo = () => {
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
 }
 
 .query-result {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 1rem;
   border-left: 4px solid var(--vp-c-brand);
 }
@@ -742,8 +742,8 @@ const resetDemo = () => {
 
 .metric-card {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   text-align: center;
 }
 
@@ -772,8 +772,8 @@ const resetDemo = () => {
 
 .hit-rate-display {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   margin-bottom: 1rem;
 }
 
@@ -812,8 +812,8 @@ const resetDemo = () => {
 
 .cache-stats-detail {
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
 }
 
 .stats-title {
@@ -867,9 +867,9 @@ const resetDemo = () => {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .feature-icon {
@@ -905,8 +905,8 @@ const resetDemo = () => {
 .code-block {
   background: #1e293b;
   color: #e2e8f0;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   overflow-x: auto;
   font-size: 0.8rem;
   line-height: 1.6;

@@ -297,7 +297,7 @@ const comparisonData = [
 .storage-topology-demo {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .control-panel {
@@ -307,7 +307,7 @@ const comparisonData = [
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -344,7 +344,7 @@ const comparisonData = [
 
 .method-card {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
   position: relative;
@@ -382,7 +382,7 @@ const comparisonData = [
   background: #333;
   color: white;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 12px;
   z-index: 10;
   margin-bottom: 8px;
@@ -398,7 +398,7 @@ const comparisonData = [
 
 .gateway-card {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   border-left: 4px solid;
 }

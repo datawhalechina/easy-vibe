@@ -164,10 +164,10 @@ const hmrTools = [
 <style scoped>
 .hot-reload-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -185,7 +185,7 @@ const hmrTools = [
 .comparison {
   display: flex;
   gap: 1rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   align-items: stretch;
 }
 
@@ -198,7 +198,7 @@ const hmrTools = [
 .method-card {
   flex: 1;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   overflow: hidden;
 }
@@ -290,7 +290,7 @@ const hmrTools = [
 
 .flow-diagram {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -345,7 +345,7 @@ const hmrTools = [
 
 .support-table {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   padding: 0.75rem;
   overflow-x: auto;

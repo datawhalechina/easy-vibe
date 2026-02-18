@@ -374,10 +374,10 @@ const reset = () => {
 <style scoped>
 .bundler-comparison-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -451,8 +451,8 @@ const reset = () => {
 
 .radar-container {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
   display: flex;
   align-items: center;
@@ -481,8 +481,8 @@ const reset = () => {
 
 .legend {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
@@ -534,7 +534,7 @@ const reset = () => {
   width: 100%;
   border-collapse: collapse;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--vp-c-divider);
   font-size: 0.85rem;
@@ -614,7 +614,7 @@ const reset = () => {
 
 .scenario-card {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
   transition: all 0.2s;

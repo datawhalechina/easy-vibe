@@ -223,14 +223,14 @@ const setMode = (mode) => {
 <style scoped>
 .embedding-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
 .demo-controls {
-  padding: 1rem;
+  padding: 0.75rem;
   border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
@@ -264,7 +264,7 @@ button.active {
 }
 
 .canvas-container {
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--vp-c-bg);
   display: flex;
   justify-content: center;

@@ -596,7 +596,7 @@ const principles = [
   margin-bottom: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
@@ -670,7 +670,7 @@ const principles = [
 
 .flow-step {
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -813,7 +813,7 @@ const principles = [
   padding: 10px 20px;
   border: 2px solid #dcdfe6;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
@@ -880,7 +880,7 @@ const principles = [
 
 .code-block {
   background: #2d2d2d;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   margin: 0;
   overflow-x: auto;
@@ -897,7 +897,7 @@ const principles = [
   margin-top: 20px;
   padding: 16px;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .problems-list h5 {
@@ -952,7 +952,7 @@ const principles = [
 
 .table-header {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   color: #303133;
   font-size: 13px;
@@ -1029,7 +1029,7 @@ const principles = [
   .table-row {
     padding: 16px;
     border: 1px solid #ebeef5;
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 12px;
   }
 }

@@ -150,7 +150,7 @@ const isHuman = ref(false)
 
 .api-doc {
   background: #1e293b;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   color: #e2e8f0;
   font-family: monospace;

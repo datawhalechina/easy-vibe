@@ -154,10 +154,10 @@ function sleep(ms) {
 <style scoped>
 .macro-micro-task-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -189,7 +189,7 @@ function sleep(ms) {
 .demo-content {
   background: var(--vp-c-bg);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .event-loop-flow {
@@ -216,7 +216,7 @@ function sleep(ms) {
 .execution-box {
   background: var(--vp-c-bg-soft);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem;
   min-height: 80px;
   display: flex;
   align-items: center;

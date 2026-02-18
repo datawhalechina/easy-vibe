@@ -400,7 +400,7 @@ const selectNode = (node) => {
 /* Virtual Page Preview */
 .virtual-page-container {
   border: 1px solid #d0d7de;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -471,7 +471,7 @@ const selectNode = (node) => {
 /* DevTools Simulator (Enhanced) */
 .browser-devtools-demo {
   border: 1px solid #d0d7de;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #ffffff;
   color: #202124;
   font-family: 'Segoe UI', '.SFNSDisplay', 'Roboto', sans-serif;

@@ -230,7 +230,7 @@ function reset() {
 .demo-container {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 h4 {
@@ -255,7 +255,7 @@ h4 {
 
 .section {
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 

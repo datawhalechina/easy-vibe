@@ -588,7 +588,7 @@ const truncate = (str, len) => str?.length > len ? str.slice(0, len) + '...' : s
 /* 对话区 */
 .chat-area {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   margin-bottom: 16px;
 }
@@ -613,7 +613,7 @@ const truncate = (str, len) => str?.length > len ? str.slice(0, len) + '...' : s
 
 .messages {
   max-height: 200px;
-  overflow-y: auto;
+  
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -732,7 +732,7 @@ const truncate = (str, len) => str?.length > len ? str.slice(0, len) + '...' : s
 .memory-panel {
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s;
@@ -778,7 +778,7 @@ const truncate = (str, len) => str?.length > len ? str.slice(0, len) + '...' : s
   padding: 10px;
   min-height: 80px;
   max-height: 120px;
-  overflow-y: auto;
+  
 }
 
 .empty {
@@ -1060,7 +1060,7 @@ const truncate = (str, len) => str?.length > len ? str.slice(0, len) + '...' : s
   gap: 12px;
   padding: 12px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .practice-icon {

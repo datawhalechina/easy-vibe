@@ -89,12 +89,12 @@ const layers = [
 <style scoped>
 .router-architecture-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {
@@ -133,7 +133,7 @@ const layers = [
 .layer {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -184,7 +184,7 @@ const layers = [
 
 .data-flow {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
   margin-bottom: 1rem;

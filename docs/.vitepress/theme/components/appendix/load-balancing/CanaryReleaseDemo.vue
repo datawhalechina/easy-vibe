@@ -318,7 +318,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1rem;
 }
 
@@ -551,7 +551,7 @@ onUnmounted(() => {
 .pod-group {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 

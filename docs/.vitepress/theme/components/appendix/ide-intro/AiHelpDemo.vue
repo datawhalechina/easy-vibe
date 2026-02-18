@@ -366,7 +366,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
   left: 5%;
   width: 90%;
   height: 90%;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -721,7 +721,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 .messages-container {
   flex: 1;
-  overflow-y: auto;
+  
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -777,7 +777,7 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 .ai-bubble {
   background: #444654;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 

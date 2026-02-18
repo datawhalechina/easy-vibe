@@ -86,7 +86,6 @@ onMounted(() => {
   applyLineHeight(savedLineHeight)
   isHydrated.value = true
 
-  // 初始化 outline 自动滚动功能
   initOutlineAutoScroll()
 })
 
@@ -95,7 +94,34 @@ onMounted(() => {
 // 当页面滚动时，自动滚动 outline 让当前激活项保持在可视区域
 // ============================================
 function initOutlineAutoScroll() {
-  // 使用 MutationObserver 监听 outline 的变化
+  const outlineSelectors = [
+    '.VPDocAsideOutline',
+    '.VPTableOfContents',
+    '.vitepress-doc-sidebar',
+    '.sidebar-outline',
+    'aside'
+  ]
+
+  const sidebarSelectors = [
+    '.VPSidebar',
+    '.VPDocSidebar',
+    '.vitepress-doc-sidebar'
+  ]
+
+  let outlineContainer = null
+  for (const selector of outlineSelectors) {
+    outlineContainer = document.querySelector(selector)
+    if (outlineContainer) break
+  }
+
+  if (!outlineContainer) return
+
+  let sidebarContainer = null
+  for (const selector of sidebarSelectors) {
+    sidebarContainer = document.querySelector(selector)
+    if (sidebarContainer) break
+  }
+
   const observer = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -107,7 +133,17 @@ function initOutlineAutoScroll() {
     }
   })
 
-  // 开始监听
+  const sidebarObserver = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        const target = mutation.target
+        if (target.classList.contains('is-active')) {
+          scrollSidebarToActiveItem(target)
+        }
+      }
+    }
+  })
+
   const startObserving = () => {
     const outlineContainer = document.querySelector('.VPDocAsideOutline')
     if (outlineContainer) {
@@ -116,32 +152,48 @@ function initOutlineAutoScroll() {
         subtree: true,
         attributeFilter: ['class']
       })
+
+      const existingActive = outlineContainer.querySelector('.active')
+      if (existingActive) {
+        scrollOutlineToActiveItem(existingActive)
+      }
+    }
+
+    if (sidebarContainer) {
+      sidebarObserver.observe(sidebarContainer, {
+        attributes: true,
+        subtree: true,
+        attributeFilter: ['class']
+      })
+
+      const existingSidebarActive = sidebarContainer.querySelector('.is-active')
+      if (existingSidebarActive) {
+        scrollSidebarToActiveItem(existingSidebarActive)
+      }
     }
   }
 
-  // 页面加载完成后开始监听
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startObserving)
   } else {
     startObserving()
   }
 
-  // 同时监听路由变化（VitePress 是 SPA）
   const originalPushState = history.pushState
   const originalReplaceState = history.replaceState
 
   history.pushState = function (...args) {
     originalPushState.apply(this, args)
-    setTimeout(startObserving, 100)
+    setTimeout(startObserving, 300)
   }
 
   history.replaceState = function (...args) {
     originalReplaceState.apply(this, args)
-    setTimeout(startObserving, 100)
+    setTimeout(startObserving, 300)
   }
 
   window.addEventListener('popstate', () => {
-    setTimeout(startObserving, 100)
+    setTimeout(startObserving, 300)
   })
 }
 
@@ -166,6 +218,32 @@ function scrollOutlineToActiveItem(activeLink) {
     // 将激活项滚动到容器中间位置
     const targetScrollTop = linkTop - containerHeight / 2 + linkHeight / 2
     outlineContainer.scrollTo({
+      top: targetScrollTop,
+      behavior: 'smooth'
+    })
+  }
+}
+
+// 滚动侧边栏让当前激活项保持在可视区域中心
+function scrollSidebarToActiveItem(activeItem) {
+  const sidebarContainer = document.querySelector('.VPSidebar') || document.querySelector('.VPDocSidebar')
+  if (!sidebarContainer || !activeItem) return
+
+  const targetElement = activeItem.querySelector('.item') || activeItem.querySelector('a') || activeItem
+
+  const containerRect = sidebarContainer.getBoundingClientRect()
+  const targetRect = targetElement.getBoundingClientRect()
+
+  const targetTop = targetRect.top - containerRect.top + sidebarContainer.scrollTop
+  const targetHeight = targetRect.height
+  const targetCenterY = targetTop + targetHeight / 2
+
+  const isInside = targetRect.top >= containerRect.top - 20 &&
+                     targetRect.bottom <= containerRect.bottom + 20
+
+  if (!isInside) {
+    const targetScrollTop = targetCenterY - containerRect.height / 2
+    sidebarContainer.scrollTo({
       top: targetScrollTop,
       behavior: 'smooth'
     })

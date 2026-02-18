@@ -1,83 +1,114 @@
-<!--
-  CssBoxModel.vue
-  盒模型速懂：三根滑杆 + 颜色区分，实时显示总宽高、渲染顺序提示和 CSS 片段。
--->
 <template>
   <div class="box-demo">
-    <div class="controls">
-      <div class="control-item">
-        <div class="control-header">
-          <label>Padding (内边距)</label>
-          <span class="val">{{ padding }}px</span>
-        </div>
-        <input type="range" min="0" max="50" v-model.number="padding" />
-      </div>
-      <div class="control-item">
-        <div class="control-header">
-          <label>Border (边框)</label>
-          <span class="val">{{ border }}px</span>
-        </div>
-        <input type="range" min="0" max="30" v-model.number="border" />
-      </div>
-      <div class="control-item">
-        <div class="control-header">
-          <label>Margin (外边距)</label>
-          <span class="val">{{ margin }}px</span>
-        </div>
-        <input type="range" min="0" max="50" v-model.number="margin" />
-      </div>
+    <div class="demo-header">
+      <span class="title">CSS 盒模型</span>
+      <span class="subtitle">理解元素实际占用空间的构成</span>
     </div>
 
-    <div class="stage-container">
-      <div class="stage-scroll">
-        <div class="layer margin" :style="{ padding: margin + 'px' }">
-          <span class="layer-label" v-if="margin >= 15">Margin</span>
-          <div class="layer border" :style="{ borderWidth: border + 'px' }">
-            <span class="layer-label" v-if="border >= 10">Border</span>
-            <div class="layer padding" :style="{ padding: padding + 'px' }">
-              <span class="layer-label" v-if="padding >= 15">Padding</span>
-              <div class="content">
-                <div class="content-inner">
-                  内容区<br />
-                  {{ contentW }} × {{ contentH }}
+    <div class="scenario">
+      <strong>场景：</strong>你要做三个并排卡片，容器宽度 900px，每个卡片设 width: 200px。结果第三个掉下去了——为什么？
+    </div>
+
+    <div class="main-area">
+      <div class="left-panel">
+        <div class="controls">
+          <div class="control-row">
+            <label>width</label>
+            <input type="range" min="60" max="150" v-model.number="contentW" />
+            <span class="val">{{ contentW }}px</span>
+          </div>
+          <div class="control-row">
+            <label>padding</label>
+            <input type="range" min="0" max="30" v-model.number="padding" />
+            <span class="val">{{ padding }}px</span>
+          </div>
+          <div class="control-row">
+            <label>border</label>
+            <input type="range" min="0" max="15" v-model.number="border" />
+            <span class="val">{{ border }}px</span>
+          </div>
+          <div class="control-row">
+            <label>margin</label>
+            <input type="range" min="0" max="20" v-model.number="margin" />
+            <span class="val">{{ margin }}px</span>
+          </div>
+        </div>
+
+        <div class="box-sizing-toggle">
+          <span class="toggle-label">box-sizing:</span>
+          <button 
+            :class="['toggle-btn', { active: boxSizing === 'content-box' }]"
+            @click="boxSizing = 'content-box'"
+          >
+            content-box
+          </button>
+          <button 
+            :class="['toggle-btn', { active: boxSizing === 'border-box' }]"
+            @click="boxSizing = 'border-box'"
+          >
+            border-box
+          </button>
+        </div>
+
+        <div class="visual">
+          <div class="layer margin" :style="{ padding: margin + 'px' }">
+            <span class="layer-label" v-if="margin >= 8">margin</span>
+            <div class="layer border" :style="{ borderWidth: border + 'px' }">
+              <span class="layer-label" v-if="border >= 5">border</span>
+              <div class="layer padding" :style="{ padding: padding + 'px' }">
+                <span class="layer-label" v-if="padding >= 8">padding</span>
+                <div class="content" :style="{ width: contentW + 'px' }">
+                  content<br>{{ contentW }}px
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="right-panel">
+        <div class="result-card">
+          <div class="result-header">
+            <span class="result-title">实际占用宽度</span>
+            <span class="result-value">{{ total }}px</span>
+          </div>
+          <div class="formula">
+            <template v-if="boxSizing === 'content-box'">
+              {{ contentW }} + {{ padding }}×2 + {{ border }}×2 + {{ margin }}×2 = {{ total }}px
+            </template>
+            <template v-else>
+              {{ contentW }}px（已包含 padding 和 border） + {{ margin }}×2 = {{ total }}px
+            </template>
+          </div>
+          <div class="result-hint" :class="{ warning: total * 3 > 900 }">
+            <template v-if="total * 3 > 900">
+              三个卡片需要 {{ total * 3 }}px，超出容器 900px，第三个会掉下去
+            </template>
+            <template v-else>
+              三个卡片共 {{ total * 3 }}px，可以放下
+            </template>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-title">CSS</div>
+          <div class="code-content">
+            <div class="line">.box {</div>
+            <div class="line hl">  box-sizing: {{ boxSizing }};</div>
+            <div class="line">  width: {{ contentW }}px;</div>
+            <div class="line">  padding: {{ padding }}px;</div>
+            <div class="line">  border: {{ border }}px solid #ccc;</div>
+            <div class="line">  margin: {{ margin }}px;</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="meta">
-      <div class="meta-row main">
-        <span class="meta-label">总占用宽度：</span>
-        <span class="meta-value">{{ total }}px</span>
-      </div>
-      <div class="meta-detail">
-        <div class="detail-item">
-          <span class="detail-label">渲染顺序</span>
-          <span class="detail-text">内容 → Padding → Border → Margin</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">计算公式</span>
-          <span class="detail-text"
-            >Margin(×2) + Border(×2) + Padding(×2) + 内容宽</span
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="code-block">
-      <div class="code-title">CSS 代码片段</div>
-      <div class="code-content">
-        <div class="line">.box {</div>
-        <div class="line">width: {{ contentW }}px;</div>
-        <div class="line">height: {{ contentH }}px;</div>
-        <div class="line">padding: {{ padding }}px;</div>
-        <div class="line">border: {{ border }}px solid #0ea5e9;</div>
-        <div class="line">margin: {{ margin }}px;</div>
-        <div class="line">}</div>
-      </div>
+    <div class="info-box">
+      <strong>关键区别：</strong>
+      <code>content-box</code>（默认）的 width 只是内容宽度；
+      <code>border-box</code> 的 width 包含 content + padding + border。推荐全局设置 <code>box-sizing: border-box</code>。
     </div>
   </div>
 </template>
@@ -85,229 +116,313 @@
 <script setup>
 import { computed, ref } from 'vue'
 
-const contentW = 120
-const contentH = 80
-const padding = ref(20)
-const border = ref(10)
-const margin = ref(20)
+const contentW = ref(100)
+const padding = ref(15)
+const border = ref(5)
+const margin = ref(10)
+const boxSizing = ref('content-box')
 
-const total = computed(
-  () => margin.value * 2 + border.value * 2 + padding.value * 2 + contentW
-)
+const total = computed(() => {
+  if (boxSizing.value === 'border-box') {
+    return contentW.value + margin.value * 2
+  }
+  return contentW.value + padding.value * 2 + border.value * 2 + margin.value * 2
+})
 </script>
 
 <style scoped>
 .box-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 24px;
-  margin: 24px 0;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.demo-header {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-header .title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--vp-c-text-1);
+}
+
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+}
+
+.scenario {
+  background: var(--vp-c-warning-soft);
+  border: 1px solid var(--vp-c-warning-dimm);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+  margin-bottom: 1rem;
+}
+
+.scenario strong {
+  color: var(--vp-c-text-1);
+}
+
+.main-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .main-area { grid-template-columns: 1fr; }
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.control-item {
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+}
+
+.control-row label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  min-width: 55px;
+  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-family-mono);
+}
+
+.control-row input[type='range'] {
+  flex: 1;
+  height: 4px;
+  accent-color: var(--vp-c-brand);
+}
+
+.control-row .val {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  color: var(--vp-c-brand);
+  min-width: 40px;
+  text-align: right;
+}
+
+.box-sizing-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.toggle-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+  font-family: var(--vp-font-family-mono);
+}
+
+.toggle-btn {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  background: var(--vp-c-bg);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-family: var(--vp-font-family-mono);
+  transition: all 0.2s;
+}
+
+.toggle-btn:hover { background: var(--vp-c-bg-soft); }
+.toggle-btn.active {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+  background: var(--vp-c-brand-soft);
+}
+
+.visual {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.control-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-}
-
-label {
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-}
-.val {
-  font-family: var(--vp-font-family-mono);
-  color: var(--vp-c-brand);
-  font-weight: 600;
-}
-
-input[type='range'] {
-  width: 100%;
-  accent-color: var(--vp-c-brand);
-  cursor: pointer;
-}
-
-.stage-container {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 20px;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-}
-
-.stage-scroll {
-  overflow: auto;
-  max-width: 100%;
-  padding: 10px; /* space for scrollbar if needed */
+  min-height: 140px;
 }
 
 .layer {
   position: relative;
   border-radius: 4px;
-  transition: all 0.2s ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s;
 }
 
 .layer-label {
   position: absolute;
   top: 2px;
   left: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  opacity: 0.7;
-  pointer-events: none;
+  font-size: 9px;
+  font-weight: 600;
+  opacity: 0.6;
+  font-family: var(--vp-font-family-mono);
 }
 
-/* Margin Layer */
 .margin {
-  background-color: #f9fafb; /* gray-50 */
-  border: 1px dashed #d1d5db; /* gray-300 */
-  color: #6b7280;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px dashed rgba(251, 191, 36, 0.5);
 }
-.margin > .layer-label {
-  color: #6b7280;
-}
+.margin .layer-label { color: #d97706; }
 
-/* Border Layer */
 .border {
-  background-color: #e0f2fe; /* sky-100 */
+  background: rgba(14, 165, 233, 0.1);
   border-style: solid;
-  border-color: #7dd3fc; /* sky-300 */
-  color: #0284c7;
+  border-color: var(--vp-c-brand);
 }
-.border > .layer-label {
-  color: #0284c7;
-}
+.border .layer-label { color: var(--vp-c-brand); }
 
-/* Padding Layer */
 .padding {
-  background-color: #dbeafe; /* blue-100 */
-  border: 1px dashed #93c5fd; /* blue-300 */
-  color: #2563eb;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px dashed rgba(34, 197, 94, 0.5);
 }
-.padding > .layer-label {
-  color: #2563eb;
-}
+.padding .layer-label { color: #16a34a; }
 
-/* Content Box */
 .content {
   background: var(--vp-c-brand);
   color: #fff;
   border-radius: 4px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.7rem;
+  height: 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  width: 120px;
-  height: 80px;
-  flex-shrink: 0;
-}
-
-.content-inner {
   text-align: center;
-  font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
-.meta {
+.right-panel {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  background: var(--vp-c-bg-alt);
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider);
+  gap: 0.75rem;
 }
 
-.meta-row.main {
+.result-card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.result-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
 }
 
-.meta-value {
-  color: var(--vp-c-brand);
-}
-
-.meta-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.detail-item {
-  display: flex;
-  gap: 12px;
-  font-size: 13px;
-  align-items: flex-start;
-}
-
-.detail-label {
+.result-title {
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--vp-c-text-2);
-  min-width: 60px;
-  flex-shrink: 0;
 }
 
-.detail-text {
-  color: var(--vp-c-text-1);
+.result-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--vp-c-brand);
   font-family: var(--vp-font-family-mono);
+}
+
+.formula {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+}
+
+.result-hint {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--vp-c-success);
+  padding: 0.4rem 0.6rem;
+  background: var(--vp-c-success-soft);
+  border-radius: 4px;
+}
+
+.result-hint.warning {
+  color: var(--vp-c-warning);
+  background: var(--vp-c-warning-soft);
 }
 
 .code-block {
-  background: var(--vp-c-bg-alt);
+  background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 8px;
+  padding: 0.75rem;
+  flex: 1;
 }
 
 .code-title {
-  font-weight: 700;
-  margin-bottom: 8px;
-  font-size: 13px;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--vp-c-text-2);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .code-content {
-  background: #0b1221;
+  background: #1a1a2e;
   color: #e5e7eb;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 6px;
+  padding: 0.75rem;
   font-family: var(--vp-font-family-mono);
-  font-size: 13px;
-  overflow-x: auto;
+  font-size: 0.75rem;
   line-height: 1.6;
 }
 
-.line {
-  white-space: pre;
+.line { white-space: pre; }
+.hl {
+  color: var(--vp-c-brand);
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong { color: var(--vp-c-text-1); }
+.info-box code {
+  background: var(--vp-c-bg-soft);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
 }
 </style>

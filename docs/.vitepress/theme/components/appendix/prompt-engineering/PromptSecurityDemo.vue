@@ -260,7 +260,7 @@ const runSimulation = () => {
   background: #1e1e1e;
   color: #fff;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: monospace;
   flex-grow: 1;
   min-height: 150px;

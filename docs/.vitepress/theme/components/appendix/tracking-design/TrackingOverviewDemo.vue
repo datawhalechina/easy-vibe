@@ -444,7 +444,7 @@ const formatNumber = (num) => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
   border-radius: 10px;
 }

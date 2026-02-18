@@ -397,7 +397,7 @@ const clearLog = () => {
   margin-bottom: 1rem;
   padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   width: 100%;
 }
 
@@ -419,7 +419,7 @@ const clearLog = () => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -439,7 +439,7 @@ const clearLog = () => {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   min-width: 160px;
   transition: all 0.3s;
@@ -490,7 +490,7 @@ const clearLog = () => {
 .subscriber-card {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   transition: all 0.3s;
 }
@@ -540,7 +540,7 @@ const clearLog = () => {
 .real-time-log {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
   margin-bottom: 1.5rem;
 }
@@ -573,7 +573,7 @@ const clearLog = () => {
 
 .log-content {
   max-height: 250px;
-  overflow-y: auto;
+  
   background: var(--vp-c-bg-soft);
   border-radius: 6px;
   padding: 0.75rem;
@@ -583,7 +583,7 @@ const clearLog = () => {
 .log-empty {
   text-align: center;
   color: var(--vp-c-text-3);
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .log-entry {
@@ -617,7 +617,7 @@ const clearLog = () => {
 .use-cases {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -634,8 +634,8 @@ const clearLog = () => {
 
 .case-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   text-align: center;
 }
 

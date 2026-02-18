@@ -23,7 +23,7 @@ const description = ref('展示电商系统中的多级缓存架构设计，包�
 <style scoped>
 .demo-container {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
 }

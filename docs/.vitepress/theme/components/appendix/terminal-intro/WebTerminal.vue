@@ -572,7 +572,7 @@ onMounted(() => {
 
 .terminal-container {
   background-color: #0a0a0a;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   border: 1px solid #27272a;
@@ -622,7 +622,7 @@ onMounted(() => {
 .terminal-body {
   padding: 15px;
   flex: 1;
-  overflow-y: auto;
+  
   color: #e4e4e7;
   font-size: 14px;
   line-height: 1.6;
@@ -677,7 +677,7 @@ input {
 .cheat-sheet {
   background: #18181b;
   border: 1px solid #27272a;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -702,7 +702,7 @@ input {
 
 .sheet-content {
   padding: 15px;
-  overflow-y: auto;
+  
   flex: 1;
 }
 

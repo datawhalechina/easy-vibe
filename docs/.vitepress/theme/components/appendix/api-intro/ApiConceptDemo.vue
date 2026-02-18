@@ -250,7 +250,7 @@ function sendRequest() {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.2s;
@@ -303,7 +303,7 @@ function sendRequest() {
   font-family: monospace;
   font-size: 12px;
   overflow-x: auto;
-  overflow-y: auto;
+  
   max-height: 200px;
   margin: 0;
 }

@@ -448,14 +448,14 @@ onUnmounted(() => {
   display: flex;
   gap: 0.75rem;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .start-btn,
 .reset-btn {
   padding: 0.75rem 2rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -495,7 +495,7 @@ onUnmounted(() => {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .layer-title {
@@ -513,7 +513,7 @@ onUnmounted(() => {
 
 .stat-box {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   text-align: center;
 }
@@ -546,7 +546,7 @@ onUnmounted(() => {
   grid-column: 1 / -1;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stock-bar {
@@ -600,7 +600,7 @@ onUnmounted(() => {
 
 .queue-box {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
 }
 
@@ -641,8 +641,8 @@ onUnmounted(() => {
 .real-time-stats {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -661,7 +661,7 @@ onUnmounted(() => {
   text-align: center;
   padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stat-item .stat-label {
@@ -679,8 +679,8 @@ onUnmounted(() => {
 .log-section {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -707,9 +707,9 @@ onUnmounted(() => {
 
 .log-content {
   max-height: 300px;
-  overflow-y: auto;
+  
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   font-size: 0.8rem;
 }
@@ -717,7 +717,7 @@ onUnmounted(() => {
 .log-empty {
   text-align: center;
   color: var(--vp-c-text-3);
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .log-entry {
@@ -759,7 +759,7 @@ onUnmounted(() => {
 .key-points {
   background: rgba(59, 130, 246, 0.1);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 

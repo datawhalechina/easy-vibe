@@ -345,7 +345,7 @@ onUnmounted(() => {
 <style scoped>
 .dns-compact {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   padding: 16px;
   margin: 16px 0;
@@ -501,7 +501,7 @@ onUnmounted(() => {
 }
 
 .detail-panel {
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-alt);
   overflow: hidden;
@@ -605,7 +605,7 @@ onUnmounted(() => {
   padding: 12px;
   font-size: 12px;
   line-height: 1.4;
-  overflow-y: auto;
+  
   flex: 1;
 }
 

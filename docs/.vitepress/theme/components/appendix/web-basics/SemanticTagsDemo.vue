@@ -168,7 +168,7 @@ pre {
   margin: 0;
   background: #0b1221;
   color: #e5e7eb;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
   font-family: var(--vp-font-family-mono);
   font-size: 13px;
@@ -177,7 +177,7 @@ pre {
 .preview-box {
   border: 1px dashed var(--vp-c-divider);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
 }
 .tip {

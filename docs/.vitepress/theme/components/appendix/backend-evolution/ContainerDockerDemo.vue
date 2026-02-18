@@ -1,8 +1,9 @@
 <template>
   <div class="container-docker-demo">
     <div class="demo-header">
-      <h4>🐳 Docker 容器化演示</h4>
-      <p>理解容器如何让应用"一次打包，到处运行"</p>
+      <span class="icon">🐳</span>
+      <span class="title">Docker 容器化演示</span>
+      <span class="subtitle">理解容器如何让应用"一次打包，到处运行"</span>
     </div>
 
     <div class="docker-visualization">
@@ -46,6 +47,11 @@
         <div class="benefit-desc">{{ benefit.desc }}</div>
       </div>
     </div>
+
+    <div class="info-box">
+      <span class="icon">💡</span>
+      <strong>核心思想：</strong>容器化让应用"一次构建，到处运行"，解决了环境一致性和快速部署的问题。
+    </div>
   </div>
 </template>
 
@@ -67,41 +73,50 @@ const benefits = [
 <style scoped>
 .container-docker-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.demo-header h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
+.demo-header .icon {
+  font-size: 1rem;
+}
+
+.demo-header .title {
+  font-weight: bold;
+  font-size: 0.9rem;
   color: var(--vp-c-text-1);
 }
 
-.demo-header p {
-  margin: 0;
-  font-size: 0.9rem;
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
 }
 
 .docker-visualization {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
   align-items: stretch;
 }
 
 .layer {
   flex: 1;
   background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  padding: 0.5rem;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -112,9 +127,9 @@ const benefits = [
 }
 
 .layer h5 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: var(--vp-c-text-1);
 }
 
@@ -122,14 +137,14 @@ const benefits = [
 .docker-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .layer-item {
-  padding: 0.6rem;
-  border-radius: 4px;
+  padding: 0.3rem;
+  border-radius: 3px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
 }
 
 .layer-item.app {
@@ -164,47 +179,47 @@ const benefits = [
 .containers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .container-box {
   background: rgba(102, 126, 234, 0.1);
   border: 1px solid rgba(102, 126, 234, 0.3);
-  border-radius: 6px;
-  padding: 0.5rem;
+  border-radius: 4px;
+  padding: 0.25rem;
   text-align: center;
 }
 
 .container-app {
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   color: var(--vp-c-brand);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
 .container-deps {
-  font-size: 0.7rem;
+  font-size: 0.55rem;
   color: var(--vp-c-text-2);
 }
 
 .docker-engine {
-  padding: 0.6rem;
+  padding: 0.3rem;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 4px;
+  border-radius: 3px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: #059669;
 }
 
 .host-os,
 .hardware {
-  padding: 0.6rem;
+  padding: 0.3rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 4px;
+  border-radius: 3px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-2);
 }
 
@@ -213,45 +228,45 @@ const benefits = [
   align-items: center;
   font-weight: 700;
   color: var(--vp-c-text-3);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
 }
 
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
 }
 
 .benefit-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 4px;
+  padding: 0.5rem;
   text-align: center;
   transition: all 0.2s;
 }
 
 .benefit-card:hover {
   border-color: var(--vp-c-brand);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .benefit-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .benefit-title {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: var(--vp-c-text-1);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 .benefit-desc {
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-2);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 @media (max-width: 768px) {
@@ -261,11 +276,30 @@ const benefits = [
 
   .vs-divider {
     justify-content: center;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
   }
 
   .benefits-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.info-box {
+  background: var(--vp-c-bg-alt);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.info-box .icon {
+  flex-shrink: 0;
+}
+
+.info-box strong {
+  color: var(--vp-c-text-1);
 }
 </style>

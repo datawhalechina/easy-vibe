@@ -307,7 +307,7 @@ watch(cfgScale, updateDisplay)
 
 <style scoped>
 .cfg-scale-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-title {
@@ -325,7 +325,7 @@ watch(cfgScale, updateDisplay)
 
 .cfg-control {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -358,7 +358,7 @@ watch(cfgScale, updateDisplay)
   flex-wrap: wrap;
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .comparison-item {
@@ -383,7 +383,7 @@ watch(cfgScale, updateDisplay)
   width: 180px;
   height: 180px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
 }
 
@@ -422,7 +422,7 @@ watch(cfgScale, updateDisplay)
 
 .cfg-effects {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -445,7 +445,7 @@ watch(cfgScale, updateDisplay)
   gap: 8px;
   padding: 12px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
   border: 2px solid transparent;
@@ -479,7 +479,7 @@ watch(cfgScale, updateDisplay)
 
 .recommendations {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -497,7 +497,7 @@ watch(cfgScale, updateDisplay)
 
 .rec-item {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   text-align: center;
 }

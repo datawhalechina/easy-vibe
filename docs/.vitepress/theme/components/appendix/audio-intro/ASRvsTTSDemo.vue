@@ -378,7 +378,7 @@ onMounted(() => {
 
 .flow-section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -418,7 +418,7 @@ onMounted(() => {
   padding: 16px;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -458,14 +458,14 @@ onMounted(() => {
   padding: 12px;
   background: var(--vp-c-bg-soft);
   border: 1px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   color: var(--vp-c-text-2);
 }
 
 .audio-preview {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
 }
 
@@ -479,7 +479,7 @@ onMounted(() => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
   display: flex;
@@ -512,7 +512,7 @@ onMounted(() => {
 
 .result-box {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
   border: 1px solid var(--vp-c-divider);
 }
@@ -540,7 +540,7 @@ textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   font-size: 14px;
   resize: vertical;
@@ -654,7 +654,7 @@ textarea {
 
 .comparison-section {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -673,7 +673,7 @@ textarea {
 
 .comp-card {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   text-align: center;
 }
@@ -705,7 +705,7 @@ textarea {
 
 .pipeline-comparison {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -724,7 +724,7 @@ textarea {
 
 .pipeline {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 
@@ -761,7 +761,7 @@ textarea {
   gap: 12px;
   padding: 16px;
   background: var(--vp-c-bg-mute);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   line-height: 1.6;
 }

@@ -202,7 +202,7 @@ const viewMode = ref('conversion')
 
 .flow-step {
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   border-left: 4px solid #409eff;
 }
@@ -286,7 +286,7 @@ const viewMode = ref('conversion')
 
 .table-header {
   background: #f5f7fa;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   color: #303133;
   font-size: 13px;

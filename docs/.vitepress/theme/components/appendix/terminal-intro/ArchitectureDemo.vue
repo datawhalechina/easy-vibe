@@ -596,7 +596,7 @@ const reset = () => {
 .node {
   background: #18181b;
   border: 2px solid #27272a;
-  border-radius: 8px;
+  border-radius: 6px;
   width: 140px;
   height: 130px;
   display: flex;
@@ -757,7 +757,7 @@ const reset = () => {
   gap: 20px;
   background: #18181b;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #27272a;
 }
 

@@ -22,7 +22,7 @@ const description = ref('演示生产者如何将消息放入队列，消费者�
 <style scoped>
 .demo-container {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
 }

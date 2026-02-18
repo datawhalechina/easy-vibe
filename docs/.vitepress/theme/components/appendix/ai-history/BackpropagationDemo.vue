@@ -234,7 +234,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   background-color: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
 }
 

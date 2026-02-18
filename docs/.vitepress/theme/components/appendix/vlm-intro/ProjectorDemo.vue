@@ -88,7 +88,7 @@ const mode = ref('linear')
 <style scoped>
 .projector-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
   background: var(--vp-c-bg-soft);
   margin: 20px 0;
@@ -178,7 +178,7 @@ const mode = ref('linear')
 .projector-box {
   background: var(--vp-c-bg-mute);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
   text-align: center;
   min-width: 100px;

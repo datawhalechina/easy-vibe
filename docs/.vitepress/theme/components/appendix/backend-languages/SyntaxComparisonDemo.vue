@@ -122,12 +122,12 @@ const getLineCount = (lang) => {
 <style scoped>
 .syntax-comparison-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {
@@ -256,7 +256,7 @@ const getLineCount = (lang) => {
 
 .code-content {
   margin: 0;
-  padding: 1rem;
+  padding: 0.75rem;
   background: #1e1e1e;
   color: #d4d4d4;
   font-family: 'Monaco', 'Menlo', monospace;

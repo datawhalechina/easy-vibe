@@ -247,7 +247,7 @@ const processMessage = (consumer) => {
   padding: 0.75rem 1rem;
   border: 2px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -267,7 +267,7 @@ const processMessage = (consumer) => {
   margin-bottom: 1.5rem;
   padding: 0.75rem 1rem;
   background: rgba(59, 130, 246, 0.1);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .desc-text {
@@ -304,7 +304,7 @@ const processMessage = (consumer) => {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-brand);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   min-width: 140px;
   margin-bottom: 0.75rem;
@@ -335,7 +335,7 @@ const processMessage = (consumer) => {
   background: var(--vp-c-brand);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   font-weight: 600;
@@ -370,7 +370,7 @@ const processMessage = (consumer) => {
 .consumer-box {
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   text-align: center;
   transition: all 0.3s;
@@ -433,7 +433,7 @@ tr:hover td {
 .example-scenario {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

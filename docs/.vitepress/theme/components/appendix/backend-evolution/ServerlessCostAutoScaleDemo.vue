@@ -142,7 +142,7 @@ const scaleHint = computed(() => {
 .card {
   background: var(--vp-c-bg);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 

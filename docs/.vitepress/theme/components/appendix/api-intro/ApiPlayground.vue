@@ -345,7 +345,7 @@ function sendRequest() {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   margin-top: 8px;
@@ -415,7 +415,7 @@ function sendRequest() {
   padding: 12px;
   margin-bottom: 12px;
   overflow-x: auto;
-  overflow-y: auto;
+  
   max-height: 180px;
 }
 

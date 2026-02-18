@@ -166,10 +166,10 @@ const tokens = computed(() => {
 <style scoped>
 .token-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -293,7 +293,7 @@ textarea:focus {
   background-color: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 0.75rem;
   min-height: 100px;
   margin-bottom: 1rem;
 }

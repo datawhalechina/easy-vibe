@@ -402,7 +402,7 @@ const selectMethod = (methodId) => {
 
 .method-code {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   margin-top: 1rem;
 }
@@ -517,7 +517,7 @@ const selectMethod = (methodId) => {
 .recommendation-item {
   background: white;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid #f59e0b;
 }
 

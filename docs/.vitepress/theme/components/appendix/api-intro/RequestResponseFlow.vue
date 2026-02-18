@@ -163,7 +163,7 @@ function send() {
   padding: 10px 20px;
   font-size: 14px;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -183,7 +183,7 @@ function send() {
 
 .result-box {
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
 }

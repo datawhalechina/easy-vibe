@@ -181,7 +181,7 @@ const toggleThoughts = () => {
 .thinking-demo {
   padding: 20px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 20px 0;
   border: 1px solid var(--vp-c-divider);
 }
@@ -243,7 +243,7 @@ const toggleThoughts = () => {
   padding: 10px 15px;
   background: var(--vp-c-brand-dimm);
   border: 2px solid var(--vp-c-brand);
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: bold;
   color: var(--vp-c-brand-dark);
   white-space: nowrap;

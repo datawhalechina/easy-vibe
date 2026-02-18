@@ -159,7 +159,7 @@ const deployRelease = () => {
 
 .module-btn {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   padding: 0.5rem;
   font-size: 0.9rem;
@@ -186,7 +186,7 @@ const deployRelease = () => {
 .risk-meter {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -217,7 +217,7 @@ const deployRelease = () => {
   margin-top: 1rem;
   width: 100%;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.6rem;
   background: var(--vp-c-brand);
   color: #fff;
@@ -229,7 +229,7 @@ const deployRelease = () => {
   margin-top: 0.75rem;
   font-size: 0.9rem;
   padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   border: 1px dashed var(--vp-c-divider);
 }

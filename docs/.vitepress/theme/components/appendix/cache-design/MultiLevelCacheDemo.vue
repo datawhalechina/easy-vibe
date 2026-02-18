@@ -339,7 +339,7 @@ const makeRequest = async () => {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-radius: 10px;
   border: 2px solid var(--vp-c-divider);
@@ -369,7 +369,7 @@ const makeRequest = async () => {
   justify-content: center;
   background: var(--vp-c-brand);
   color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 700;
   font-size: 1.1rem;
   flex-shrink: 0;
@@ -458,7 +458,7 @@ const makeRequest = async () => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -478,7 +478,7 @@ const makeRequest = async () => {
   padding: 0.75rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
 }
@@ -509,7 +509,7 @@ const makeRequest = async () => {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.85rem;
 }
 
@@ -551,7 +551,7 @@ const makeRequest = async () => {
 .stat-card {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   text-align: center;
   border: 1px solid var(--vp-c-divider);
 }
@@ -598,9 +598,9 @@ const makeRequest = async () => {
 .explanation-item {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .item-icon {

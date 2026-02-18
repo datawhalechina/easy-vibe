@@ -386,7 +386,7 @@ onUnmounted(() => {
 .controls-panel {
   background: var(--vp-c-bg);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   display: flex;
   flex-direction: column;
@@ -480,7 +480,7 @@ onUnmounted(() => {
 .metric-item {
   background: var(--vp-c-bg);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -534,7 +534,7 @@ onUnmounted(() => {
   flex: 1;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -581,7 +581,7 @@ canvas {
   margin-top: 16px;
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   display: flex;
   gap: 12px;

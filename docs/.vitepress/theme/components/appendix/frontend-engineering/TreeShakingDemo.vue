@@ -149,10 +149,10 @@ const cacheMisses = ref(8)
 <style scoped>
 .tree-shaking-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -171,7 +171,7 @@ const cacheMisses = ref(8)
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 @media (max-width: 768px) {
@@ -183,7 +183,7 @@ const cacheMisses = ref(8)
 .source-panel,
 .control-panel {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
 }

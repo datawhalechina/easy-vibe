@@ -108,10 +108,10 @@ const currentStage = computed(() => {
 <style scoped>
 .rendering-pipeline-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
@@ -158,7 +158,7 @@ const currentStage = computed(() => {
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s ease;
 }
 
@@ -173,7 +173,7 @@ const currentStage = computed(() => {
 .stage-icon {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-brand);
   display: flex;
   align-items: center;
@@ -217,8 +217,8 @@ const currentStage = computed(() => {
 
 .stage-detail {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   margin-top: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }

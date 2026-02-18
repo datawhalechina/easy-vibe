@@ -310,7 +310,7 @@ onMounted(() => {
   gap: 1rem;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -335,7 +335,7 @@ onMounted(() => {
   padding: 0.5rem 0.75rem;
   background: var(--vp-c-bg-soft);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.85rem;
@@ -445,7 +445,7 @@ onMounted(() => {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .server-info {
@@ -549,7 +549,7 @@ onMounted(() => {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .animation-title {

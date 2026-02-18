@@ -156,10 +156,10 @@ const parts = computed(() => {
 <style scoped>
 .url-parser-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg);
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -272,8 +272,8 @@ const parts = computed(() => {
 }
 
 .url-segment {
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   border: 2px solid transparent; /* Prepare for border color */
   background: var(--vp-c-bg-alt);
   transition: all 0.2s;

@@ -279,7 +279,7 @@ onUnmounted(() => {
   margin-top: 16px;
   background: var(--vp-c-bg-alt);
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   line-height: 1.5;
   color: var(--vp-c-text-2);

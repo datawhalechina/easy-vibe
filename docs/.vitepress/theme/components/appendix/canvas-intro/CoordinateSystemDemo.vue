@@ -272,117 +272,140 @@ onMounted(() => {
 
 <style scoped>
 .coordinate-demo {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  background: #fafafa;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .control-panel {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .toggle-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .toggle-option {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.toggle-option:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-soft);
 }
 
 .toggle-option input[type='checkbox'] {
   width: 18px;
   height: 18px;
   cursor: pointer;
+  accent-color: var(--vp-c-brand);
 }
 
 .info-display {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  padding: 12px;
-  background: white;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
   border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .info-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13px;
+  font-size: 0.875rem;
 }
 
 .info-item .label {
   font-weight: 600;
-  color: #555;
+  color: var(--vp-c-text-2);
 }
 
 .info-item .value {
-  font-family: 'Courier New', monospace;
-  color: #2c3e50;
-  background: #f0f0f0;
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
 .canvas-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--vp-c-bg);
+  border-radius: 12px;
+  border: 2px solid var(--vp-c-divider);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 canvas {
-  border: 2px solid #ddd;
-  border-radius: 4px;
+  border: 3px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: crosshair;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .explanation {
-  margin: 20px 0;
-  padding: 15px;
-  background: white;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--vp-c-bg);
   border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .explanation h4 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
+  margin: 0 0 0.75rem 0;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .explanation ul {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 
 .explanation li {
-  margin-bottom: 8px;
-  color: #555;
-  font-size: 14px;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 .code-display {
-  margin-top: 20px;
-  padding: 15px;
-  background: #2c3e50;
-  border-radius: 6px;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: #1e293b;
+  border-radius: 12px;
   overflow-x: auto;
+  border: 2px solid #334155;
 }
 
 .code-display h4 {
-  color: #ecf0f1;
-  margin: 0 0 10px 0;
-  font-size: 14px;
+  color: #f8fafc;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .code-display pre {
@@ -390,31 +413,33 @@ canvas {
 }
 
 .code-display code {
-  color: #ecf0f1;
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 1.6;
+  color: #e2e8f0;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  line-height: 1.7;
 }
 
 .info-box {
-  margin-top: 15px;
-  padding: 12px;
-  background: #fff3cd;
-  border-left: 4px solid #ffc107;
-  border-radius: 4px;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
 }
 
 .info-box p {
   margin: 0;
-  font-size: 14px;
-  color: #856404;
+  font-size: 0.875rem;
+  color: #92400e;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
+  line-height: 1.6;
 }
 
 .info-box .icon {
-  font-size: 16px;
+  font-size: 1.125rem;
   flex-shrink: 0;
 }
 </style>

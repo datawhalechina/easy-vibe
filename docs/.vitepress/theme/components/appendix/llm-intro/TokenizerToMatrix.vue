@@ -198,9 +198,9 @@ const getHeatmapColor = (val) => {
 <style scoped>
 .matrix-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
   overflow: hidden;
 }
@@ -209,7 +209,7 @@ const getHeatmapColor = (val) => {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--vp-c-bg-alt);
   border-bottom: 1px solid var(--vp-c-divider);
 }

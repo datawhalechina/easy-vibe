@@ -421,7 +421,7 @@ const performClick = () => {
   height: 80px;
   background: #000;
   border: 1px solid #3f3f46;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
   color: #22c55e;
   font-size: 12px;

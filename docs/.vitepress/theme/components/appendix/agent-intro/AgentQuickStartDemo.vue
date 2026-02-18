@@ -476,7 +476,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
 .thinking-section {
   margin-bottom: 10px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -516,7 +516,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
 .tools-section {
   margin-bottom: 10px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -530,7 +530,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   gap: 10px;
   padding: 10px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 8px;
   border: 1px solid var(--vp-c-divider);
   transition: all 0.3s;
@@ -603,7 +603,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   padding: 12px;
   background: #dcfce7;
   border: 1px solid #86efac;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .response-header {
@@ -628,7 +628,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
   cursor: pointer;
   transition: background 0.2s;
@@ -651,7 +651,7 @@ const wait = (ms) => new Promise(r => setTimeout(r, ms))
   margin-top: 16px;
   padding: 12px 16px;
   background: var(--vp-c-brand-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
 }
 

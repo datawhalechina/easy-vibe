@@ -184,10 +184,10 @@ const reset = () => {
 <style scoped>
 .sliding-window-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
   font-family: var(--vp-font-family-mono);
 }
 
@@ -247,7 +247,7 @@ const reset = () => {
 .visualization-area {
   margin-bottom: 1rem;
   background: var(--vp-c-bg-alt);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }

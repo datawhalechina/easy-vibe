@@ -427,7 +427,7 @@ const simulateWriteBehind = async () => {
   padding: 0.75rem 1.5rem;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -511,7 +511,7 @@ const simulateWriteBehind = async () => {
   gap: 1rem;
   padding: 0.75rem 1.5rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   transition: all 0.3s;
 }
@@ -576,8 +576,8 @@ const simulateWriteBehind = async () => {
 }
 
 .branch {
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   transition: all 0.3s;
 }
@@ -621,7 +621,7 @@ const simulateWriteBehind = async () => {
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s;
@@ -658,9 +658,9 @@ const simulateWriteBehind = async () => {
 }
 
 .arch-block {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .arch-title {
@@ -679,7 +679,7 @@ const simulateWriteBehind = async () => {
 .flow-box {
   padding: 0.75rem 1.5rem;
   background: white;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 2px solid var(--vp-c-divider);
   font-weight: 600;
 }
@@ -759,8 +759,8 @@ const simulateWriteBehind = async () => {
 .code-block {
   background: #1e293b;
   color: #e2e8f0;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
+  border-radius: 6px;
   overflow-x: auto;
   font-size: 0.85rem;
   line-height: 1.6;

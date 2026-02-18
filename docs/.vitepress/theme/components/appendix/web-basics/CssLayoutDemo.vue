@@ -183,7 +183,7 @@ const getItemColor = (n) => {
 <style scoped>
 .layout-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
   padding: 20px;
   margin: 20px 0;
@@ -237,7 +237,7 @@ const getItemColor = (n) => {
 .preview-area {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   height: 200px;
   margin-bottom: 16px;
   overflow: hidden;
@@ -260,7 +260,7 @@ const getItemColor = (n) => {
   justify-content: center;
   color: white;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
 }
@@ -268,7 +268,7 @@ const getItemColor = (n) => {
 .code-display {
   background: #1e293b;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #e2e8f0;
   font-family: monospace;
   font-size: 13px;

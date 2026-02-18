@@ -491,14 +491,15 @@ onMounted(() => {
 
 <style scoped>
 .event-demo {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  background: #fafafa;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .control-panel {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .mode-selector {
@@ -514,53 +515,60 @@ onMounted(() => {
 
 .button-group {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .button-group button {
-  padding: 8px 16px;
-  border: 2px solid #ddd;
-  background: white;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
 }
 
 .button-group button:hover {
-  border-color: #3498db;
-  background: #f0f8ff;
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button-group button.active {
-  border-color: #3498db;
-  background: #3498db;
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-brand);
   color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .instructions {
-  margin-bottom: 15px;
-  padding: 12px;
-  background: white;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
   border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .instructions h4 {
-  margin: 0 0 8px 0;
-  color: #2c3e50;
-  font-size: 14px;
+  margin: 0 0 0.5rem 0;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .instructions ul {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 
 .instructions li {
-  margin-bottom: 6px;
-  color: #555;
-  font-size: 13px;
+  margin-bottom: 0.375rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.813rem;
+  line-height: 1.5;
 }
 
 .event-log {
@@ -575,7 +583,7 @@ onMounted(() => {
 
 .log-container {
   max-height: 150px;
-  overflow-y: auto;
+  
   background: white;
   border-radius: 6px;
   padding: 10px;
@@ -635,36 +643,41 @@ onMounted(() => {
 .canvas-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--vp-c-bg);
+  border-radius: 12px;
+  border: 2px solid var(--vp-c-divider);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 canvas {
-  border: 2px solid #ddd;
-  border-radius: 4px;
+  border: 3px solid var(--vp-c-divider);
+  border-radius: 6px;
   cursor: crosshair;
   outline: none;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 canvas:focus {
-  border-color: #3498db;
+  border-color: var(--vp-c-brand);
 }
 
 .code-display {
-  margin-top: 20px;
-  padding: 15px;
-  background: #2c3e50;
-  border-radius: 6px;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: #1e293b;
+  border-radius: 12px;
   overflow-x: auto;
+  border: 2px solid #334155;
 }
 
 .code-display h4 {
-  color: #ecf0f1;
-  margin: 0 0 10px 0;
-  font-size: 14px;
+  color: #f8fafc;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .code-display pre {
@@ -672,32 +685,36 @@ canvas:focus {
 }
 
 .code-display code {
-  color: #ecf0f1;
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 1.6;
+  color: #e2e8f0;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.75rem;
+  line-height: 1.7;
 }
 
 .explanation {
-  margin: 20px 0;
-  padding: 15px;
-  background: white;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--vp-c-bg);
   border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .explanation h4 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
+  margin: 0 0 0.75rem 0;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .explanation ul {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 
 .explanation li {
-  margin-bottom: 8px;
-  color: #555;
-  font-size: 14px;
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 </style>

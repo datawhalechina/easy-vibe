@@ -387,9 +387,9 @@ const setScenario = (s) => {
   display: flex;
   gap: 2rem;
   margin-bottom: 1.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   flex-wrap: wrap;
 }
 
@@ -524,7 +524,7 @@ const setScenario = (s) => {
 .span-detail {
   background: var(--vp-c-bg);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid var(--vp-c-divider);
 }
@@ -568,9 +568,9 @@ const setScenario = (s) => {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.85rem;
 }
 
@@ -600,8 +600,8 @@ const setScenario = (s) => {
 
 .tips {
   background: rgba(var(--vp-c-brand-rgb), 0.05);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-brand);
 }
 

@@ -323,7 +323,7 @@ const applyPreset = (preset) => {
 .input-group select {
   padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.95rem;
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
@@ -337,11 +337,11 @@ const applyPreset = (preset) => {
 
 .match-btn {
   width: 100%;
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-brand);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -534,7 +534,7 @@ code {
   padding: 0.6rem 1rem;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.9rem;

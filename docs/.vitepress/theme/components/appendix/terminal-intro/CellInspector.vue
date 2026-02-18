@@ -171,7 +171,7 @@ const cellStyle = computed(() => ({
   align-items: center;
   justify-content: center;
   border: 1px solid #27272a;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #000;
   aspect-ratio: 3/4;
 }

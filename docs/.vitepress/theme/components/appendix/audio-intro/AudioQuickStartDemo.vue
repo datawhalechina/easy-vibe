@@ -462,7 +462,7 @@ onUnmounted(() => {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   resize: vertical;
   background: var(--vp-c-bg);
@@ -504,7 +504,7 @@ onUnmounted(() => {
 .action-btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-mute);
   cursor: pointer;
   font-size: 14px;
@@ -557,7 +557,7 @@ onUnmounted(() => {
   width: 100%;
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .result-label {
@@ -592,7 +592,7 @@ onUnmounted(() => {
   gap: 12px;
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   opacity: 0.5;
   transition: all 0.2s;
 }
@@ -692,7 +692,7 @@ onUnmounted(() => {
 .embedding-viz {
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .viz-title {
@@ -720,7 +720,7 @@ onUnmounted(() => {
 .waveform-container {
   padding: 16px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .waveform-container canvas {
@@ -777,7 +777,7 @@ onUnmounted(() => {
   gap: 8px;
   padding: 12px;
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 13px;
 }
 

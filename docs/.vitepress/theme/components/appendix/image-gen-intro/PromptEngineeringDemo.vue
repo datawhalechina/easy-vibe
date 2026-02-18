@@ -285,7 +285,7 @@ const addNegativePreset = (preset) => {
 
 <style scoped>
 .prompt-engineering-demo {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .header-title {
@@ -323,7 +323,7 @@ const addNegativePreset = (preset) => {
 
 .prompt-analysis {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 
@@ -396,7 +396,7 @@ const addNegativePreset = (preset) => {
 
 .preview-panel {
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px;
 }
 

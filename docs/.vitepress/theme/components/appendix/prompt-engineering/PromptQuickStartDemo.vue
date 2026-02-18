@@ -383,7 +383,7 @@ const run = () => {
   display: flex;
   gap: 10px;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   align-items: flex-start;
@@ -430,7 +430,7 @@ const run = () => {
   align-items: center;
   background: var(--vp-c-bg-alt);
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -530,7 +530,7 @@ const run = () => {
   background: rgba(var(--vp-c-yellow-rgb), 0.1);
   border: 1px solid rgba(var(--vp-c-yellow-rgb), 0.3);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-top: auto;
 }
 

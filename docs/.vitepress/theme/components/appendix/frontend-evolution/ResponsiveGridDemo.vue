@@ -299,7 +299,7 @@ const clothes = [
   color: #666;
   background: #f8f9fa;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 /* 衣柜展示 */

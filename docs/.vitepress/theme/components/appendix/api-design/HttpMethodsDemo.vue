@@ -268,7 +268,7 @@ const currentMethod = computed(() =>
 .method-detail {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 20px;
 }
 
@@ -306,7 +306,7 @@ const currentMethod = computed(() =>
   align-items: center;
   padding: 12px;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   opacity: 0.6;
   transition: all 0.2s ease;
@@ -361,7 +361,7 @@ const currentMethod = computed(() =>
 .example-item {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 12px;
   margin-bottom: 12px;
 }

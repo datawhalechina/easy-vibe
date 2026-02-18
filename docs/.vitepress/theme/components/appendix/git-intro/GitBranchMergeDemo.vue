@@ -125,10 +125,10 @@ const reset = () => {
 <style scoped>
 .branch-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--vp-c-bg-soft);
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 .controls {
   display: flex;
@@ -157,10 +157,10 @@ const reset = () => {
 }
 .graph {
   background: var(--vp-c-bg);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 .graph svg {
   width: 100%;
@@ -171,7 +171,7 @@ const reset = () => {
   gap: 2rem;
 }
 .info-box {
-  padding: 1rem;
+  padding: 0.75rem;
   background: var(--vp-c-bg);
   border-left: 4px solid var(--vp-c-brand);
   border-radius: 4px;

@@ -81,6 +81,12 @@ import AudioWaveformDemo from './components/appendix/audio-intro/AudioWaveformDe
 import AudioTokenizationDemo from './components/appendix/audio-intro/AudioTokenizationDemo.vue'
 import SpectrogramViz from './components/appendix/audio-intro/SpectrogramViz.vue'
 import AutoregressiveAudioDemo from './components/appendix/audio-intro/AutoregressiveAudioDemo.vue'
+import AudioQuickStartDemo from './components/appendix/audio-intro/AudioQuickStartDemo.vue'
+import MelSpectrogramDemo from './components/appendix/audio-intro/MelSpectrogramDemo.vue'
+import TTSPipelineDemo from './components/appendix/audio-intro/TTSPipelineDemo.vue'
+import VoiceCloningDemo from './components/appendix/audio-intro/VoiceCloningDemo.vue'
+import ASRvsTTSDemo from './components/appendix/audio-intro/ASRvsTTSDemo.vue'
+import EmotionControlDemo from './components/appendix/audio-intro/EmotionControlDemo.vue'
 
 // Web Basics Components
 import WebTechTriad from './components/appendix/web-basics/WebTechTriad.vue'
@@ -100,6 +106,26 @@ import NetworkLayers from './components/appendix/web-basics/NetworkLayers.vue'
 import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.vue'
 import SubnetCalculator from './components/appendix/web-basics/SubnetCalculator.vue'
 import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTroubleshooting.vue'
+
+// Computer Fundamentals Components
+import TransistorDemo from './components/appendix/computer-fundamentals/TransistorDemo.vue'
+import LogicGateDemo from './components/appendix/computer-fundamentals/LogicGateDemo.vue'
+import AdderDemo from './components/appendix/computer-fundamentals/AdderDemo.vue'
+import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
+import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
+import MemoryDemo from './components/appendix/computer-fundamentals/MemoryDemo.vue'
+import FilesystemDemo from './components/appendix/computer-fundamentals/FilesystemDemo.vue'
+import EncodingDemo from './components/appendix/computer-fundamentals/EncodingDemo.vue'
+import StorageDemo from './components/appendix/computer-fundamentals/StorageDemo.vue'
+import TransmissionDemo from './components/appendix/computer-fundamentals/TransmissionDemo.vue'
+import DataStructureDemo from './components/appendix/computer-fundamentals/DataStructureDemo.vue'
+import AlgorithmDemo from './components/appendix/computer-fundamentals/AlgorithmDemo.vue'
+import LanguageMapDemo from './components/appendix/computer-fundamentals/LanguageMapDemo.vue'
+import TypeSystemDemo from './components/appendix/computer-fundamentals/TypeSystemDemo.vue'
+import CompilerDemo from './components/appendix/computer-fundamentals/CompilerDemo.vue'
+import CFNetworkLayers from './components/appendix/computer-fundamentals/NetworkLayers.vue'
+import CFSubnetCalculator from './components/appendix/computer-fundamentals/SubnetCalculator.vue'
+import CFTcpUdpComparison from './components/appendix/computer-fundamentals/TcpUdpComparison.vue'
 
 // Deployment appendix components
 import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
@@ -122,6 +148,9 @@ import TcpHandshakeDemo from './components/appendix/web-basics/TcpHandshakeDemo.
 import UrlParserDemo from './components/appendix/web-basics/UrlParserDemo.vue'
 import HttpExchangeDemo from './components/appendix/web-basics/HttpExchangeDemo.vue'
 import BrowserRenderingDemo from './components/appendix/web-basics/BrowserRenderingDemo.vue'
+
+// URL to Browser Components
+import UrlToBrowserQuickStart from './components/appendix/url-to-browser/UrlToBrowserQuickStart.vue'
 import FrontendEvolutionDemo from './components/appendix/web-basics/FrontendEvolutionDemo.vue'
 import SliceRequestDemo from './components/appendix/web-basics/SliceRequestDemo.vue'
 import ResponsiveGridDemo from './components/appendix/web-basics/ResponsiveGridDemo.vue'
@@ -222,6 +251,7 @@ import MessageQueueComponentsDemo from './components/appendix/queue-design/Messa
 import PointToPointVsPubSubDemo from './components/appendix/queue-design/PointToPointVsPubSubDemo.vue'
 import MessageQueueComparisonDemo from './components/appendix/queue-design/MessageQueueComparisonDemo.vue'
 import CouplingDemo from './components/appendix/queue-design/CouplingDemo.vue'
+import DecouplingDemo from './components/appendix/queue-design/DecouplingDemo.vue'
 import PubSubDemo from './components/appendix/queue-design/PubSubDemo.vue'
 import DeadLetterQueueDemo from './components/appendix/queue-design/DeadLetterQueueDemo.vue'
 import DelayedMessageDemo from './components/appendix/queue-design/DelayedMessageDemo.vue'
@@ -469,6 +499,34 @@ import ResourceAnalogy from './components/appendix/api-design/ResourceAnalogy.vu
 import RequestStructureDemo from './components/appendix/api-design/RequestStructureDemo.vue'
 import ResponseStructureDemo from './components/appendix/api-design/ResponseStructureDemo.vue'
 
+// JavaScript Intro Components
+import VariableBoxDemo from './components/appendix/javascript-intro/VariableBoxDemo.vue'
+import ReferenceDemo from './components/appendix/javascript-intro/ReferenceDemo.vue'
+import FunctionMachineDemo from './components/appendix/javascript-intro/FunctionMachineDemo.vue'
+import ScopeDemo from './components/appendix/javascript-intro/ScopeDemo.vue'
+import ClosureDemo from './components/appendix/javascript-intro/ClosureDemo.vue'
+import DOMTreeDemo from './components/appendix/javascript-intro/DOMTreeDemo.vue'
+import AsyncRestaurantDemo from './components/appendix/javascript-intro/AsyncRestaurantDemo.vue'
+import JSEventLoopDemo from './components/appendix/javascript-intro/JSEventLoopDemo.vue'
+import VariableScopeDemo from './components/appendix/javascript-intro/VariableScopeDemo.vue'
+import DataTypeDemo from './components/appendix/javascript-intro/DataTypeDemo.vue'
+import ThisContextDemo from './components/appendix/javascript-intro/ThisContextDemo.vue'
+import PrototypeDemo from './components/appendix/javascript-intro/PrototypeDemo.vue'
+import AsyncDemo from './components/appendix/javascript-intro/AsyncDemo.vue'
+
+// JavaScript Runtime Components
+import RuntimeEnvironmentDemo from './components/appendix/js-runtime/RuntimeEnvironmentDemo.vue'
+import CallStackDemo from './components/appendix/js-runtime/CallStackDemo.vue'
+import TaskQueueDemo from './components/appendix/js-runtime/TaskQueueDemo.vue'
+import MemoryLeakDemo from './components/appendix/js-runtime/MemoryLeakDemo.vue'
+import GarbageCollectionDemo from './components/appendix/js-runtime/GarbageCollectionDemo.vue'
+
+// TypeScript Intro Components
+import TypeAnnotationDemo from './components/appendix/typescript-intro/TypeAnnotationDemo.vue'
+import InterfaceDemo from './components/appendix/typescript-intro/InterfaceDemo.vue'
+import GenericDemo from './components/appendix/typescript-intro/GenericDemo.vue'
+import TypeInferenceDemo from './components/appendix/typescript-intro/TypeInferenceDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -549,10 +607,17 @@ export default {
     app.component('AudioTokenizationDemo', AudioTokenizationDemo)
     app.component('SpectrogramViz', SpectrogramViz)
     app.component('AutoregressiveAudioDemo', AutoregressiveAudioDemo)
+    app.component('AudioQuickStartDemo', AudioQuickStartDemo)
+    app.component('MelSpectrogramDemo', MelSpectrogramDemo)
+    app.component('TTSPipelineDemo', TTSPipelineDemo)
+    app.component('VoiceCloningDemo', VoiceCloningDemo)
+    app.component('ASRvsTTSDemo', ASRvsTTSDemo)
+    app.component('EmotionControlDemo', EmotionControlDemo)
 
     // Web Basics Components Registration
     app.component('WebTechTriad', WebTechTriad)
     app.component('UrlToBrowserDemo', UrlToBrowserDemo)
+    app.component('UrlToBrowserQuickStart', UrlToBrowserQuickStart)
     app.component('GitWorkflowDemo', GitWorkflowDemo)
     app.component('GitThreeAreasDemo', GitThreeAreasDemo)
     app.component('GitStorageDemo', GitStorageDemo)
@@ -566,6 +631,27 @@ export default {
     app.component('TcpUdpComparison', TcpUdpComparison)
     app.component('SubnetCalculator', SubnetCalculator)
     app.component('NetworkTroubleshooting', NetworkTroubleshooting)
+
+    // Computer Fundamentals Components Registration
+    app.component('TransistorDemo', TransistorDemo)
+    app.component('LogicGateDemo', LogicGateDemo)
+    app.component('AdderDemo', AdderDemo)
+    app.component('CpuArchitectureDemo', CpuArchitectureDemo)
+    app.component('ProcessDemo', ProcessDemo)
+    app.component('MemoryDemo', MemoryDemo)
+    app.component('FilesystemDemo', FilesystemDemo)
+    app.component('EncodingDemo', EncodingDemo)
+    app.component('StorageDemo', StorageDemo)
+    app.component('TransmissionDemo', TransmissionDemo)
+    app.component('DataStructureDemo', DataStructureDemo)
+    app.component('AlgorithmDemo', AlgorithmDemo)
+    app.component('LanguageMapDemo', LanguageMapDemo)
+    app.component('TypeSystemDemo', TypeSystemDemo)
+    app.component('CompilerDemo', CompilerDemo)
+    app.component('CFNetworkLayers', CFNetworkLayers)
+    app.component('CFSubnetCalculator', CFSubnetCalculator)
+    app.component('CFTcpUdpComparison', CFTcpUdpComparison)
+
     // Deployment appendix
     app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
     app.component('DeploymentBuildDemo', DeploymentBuildDemo)
@@ -616,15 +702,6 @@ export default {
 
     app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
-
-    // Frontend Evolution Components Registration
-    app.component('FrontendEvolutionDemo', FrontendEvolutionTimelineDemo)
-    app.component('EvolutionSliceRequestDemo', EvolutionSliceRequestDemo)
-    app.component('EvolutionResponsiveGridDemo', EvolutionResponsiveGridDemo)
-    app.component('EvolutionJQueryVsStateDemo', EvolutionJQueryVsStateDemo)
-    app.component('RoutingModeDemo', EvolutionRoutingModeDemo)
-    app.component('RenderingStrategyDemo', EvolutionRenderingStrategyDemo)
-    app.component('ImperativeVsDeclarativeDemo', EvolutionImperativeVsDeclarativeDemo)
 
     app.component('BackendEvolutionDemo', BackendEvolutionDemo)
     app.component('BackendQuickStartDemo', BackendQuickStartDemo)
@@ -693,6 +770,7 @@ export default {
     app.component('PointToPointVsPubSubDemo', PointToPointVsPubSubDemo)
     app.component('MessageQueueComparisonDemo', MessageQueueComparisonDemo)
     app.component('CouplingDemo', CouplingDemo)
+    app.component('DecouplingDemo', DecouplingDemo)
     app.component('PubSubDemo', PubSubDemo)
     app.component('DeadLetterQueueDemo', DeadLetterQueueDemo)
     app.component('DelayedMessageDemo', DelayedMessageDemo)
@@ -911,6 +989,7 @@ export default {
     app.component('MacroMicroTaskDemo', MacroMicroTaskDemo)
     app.component('RenderingPerformanceDemo', RenderingPerformanceDemo)
     app.component('RenderingPipelineDemo', RenderingPipelineDemo)
+    app.component('EventLoopDemo', JSEventLoopDemo) // Alias for browser rendering context
 
     // Cache Design Extra Components Registration
     app.component('CacheArchitectureOverview', CacheArchitectureOverview)
@@ -947,6 +1026,34 @@ export default {
     app.component('ReliabilityDemo', ReliabilityDemo)
     app.component('IdempotenceDemo', IdempotenceDemo)
     app.component('MQComparisonDemo', MQComparisonDemo)
+
+    // JavaScript Intro Components Registration
+    app.component('VariableBoxDemo', VariableBoxDemo)
+    app.component('ReferenceDemo', ReferenceDemo)
+    app.component('FunctionMachineDemo', FunctionMachineDemo)
+    app.component('ScopeDemo', ScopeDemo)
+    app.component('VariableScopeDemo', VariableScopeDemo)
+    app.component('DataTypeDemo', DataTypeDemo)
+    app.component('ClosureDemo', ClosureDemo)
+    app.component('ThisContextDemo', ThisContextDemo)
+    app.component('PrototypeDemo', PrototypeDemo)
+    app.component('AsyncDemo', AsyncDemo)
+    app.component('DOMTreeDemo', DOMTreeDemo)
+    app.component('AsyncRestaurantDemo', AsyncRestaurantDemo)
+    app.component('JSEventLoopDemo', JSEventLoopDemo)
+
+    // JavaScript Runtime Components Registration
+    app.component('RuntimeEnvironmentDemo', RuntimeEnvironmentDemo)
+    app.component('CallStackDemo', CallStackDemo)
+    app.component('TaskQueueDemo', TaskQueueDemo)
+    app.component('MemoryLeakDemo', MemoryLeakDemo)
+    app.component('GarbageCollectionDemo', GarbageCollectionDemo)
+
+    // TypeScript Intro Components Registration
+    app.component('TypeAnnotationDemo', TypeAnnotationDemo)
+    app.component('InterfaceDemo', InterfaceDemo)
+    app.component('GenericDemo', GenericDemo)
+    app.component('TypeInferenceDemo', TypeInferenceDemo)
   },
   setup() {
     const route = useRoute()

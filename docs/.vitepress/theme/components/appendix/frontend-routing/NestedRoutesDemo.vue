@@ -196,12 +196,12 @@ const navigateTo = (path) => {
 <style scoped>
 .nested-routes-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
-  max-height: 600px;
-  overflow-y: auto;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  
+  
 }
 
 .demo-header {
@@ -239,14 +239,14 @@ const navigateTo = (path) => {
 
 .routes-hierarchy {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem;
   border: 1px solid var(--vp-c-divider);
 }
 
 .tree-view {
   max-height: 280px;
-  overflow-y: auto;
+  
 }
 
 .tree-node {
@@ -284,7 +284,7 @@ const navigateTo = (path) => {
 
 .render-preview {
   background: var(--vp-c-bg);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--vp-c-divider);
   overflow: hidden;
 }
@@ -314,7 +314,7 @@ const navigateTo = (path) => {
 }
 
 .router-view-hierarchy {
-  padding: 1rem;
+  padding: 0.75rem;
   min-height: 180px;
 }
 
