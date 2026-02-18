@@ -107,6 +107,26 @@ import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.
 import SubnetCalculator from './components/appendix/web-basics/SubnetCalculator.vue'
 import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTroubleshooting.vue'
 
+// Computer Fundamentals Components
+import TransistorDemo from './components/appendix/computer-fundamentals/TransistorDemo.vue'
+import LogicGateDemo from './components/appendix/computer-fundamentals/LogicGateDemo.vue'
+import AdderDemo from './components/appendix/computer-fundamentals/AdderDemo.vue'
+import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
+import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
+import MemoryDemo from './components/appendix/computer-fundamentals/MemoryDemo.vue'
+import FilesystemDemo from './components/appendix/computer-fundamentals/FilesystemDemo.vue'
+import EncodingDemo from './components/appendix/computer-fundamentals/EncodingDemo.vue'
+import StorageDemo from './components/appendix/computer-fundamentals/StorageDemo.vue'
+import TransmissionDemo from './components/appendix/computer-fundamentals/TransmissionDemo.vue'
+import DataStructureDemo from './components/appendix/computer-fundamentals/DataStructureDemo.vue'
+import AlgorithmDemo from './components/appendix/computer-fundamentals/AlgorithmDemo.vue'
+import LanguageMapDemo from './components/appendix/computer-fundamentals/LanguageMapDemo.vue'
+import TypeSystemDemo from './components/appendix/computer-fundamentals/TypeSystemDemo.vue'
+import CompilerDemo from './components/appendix/computer-fundamentals/CompilerDemo.vue'
+import CFNetworkLayers from './components/appendix/computer-fundamentals/NetworkLayers.vue'
+import CFSubnetCalculator from './components/appendix/computer-fundamentals/SubnetCalculator.vue'
+import CFTcpUdpComparison from './components/appendix/computer-fundamentals/TcpUdpComparison.vue'
+
 // Deployment appendix components
 import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
 import DeploymentBuildDemo from './components/appendix/deployment/DeploymentBuildDemo.vue'
@@ -611,6 +631,27 @@ export default {
     app.component('TcpUdpComparison', TcpUdpComparison)
     app.component('SubnetCalculator', SubnetCalculator)
     app.component('NetworkTroubleshooting', NetworkTroubleshooting)
+
+    // Computer Fundamentals Components Registration
+    app.component('TransistorDemo', TransistorDemo)
+    app.component('LogicGateDemo', LogicGateDemo)
+    app.component('AdderDemo', AdderDemo)
+    app.component('CpuArchitectureDemo', CpuArchitectureDemo)
+    app.component('ProcessDemo', ProcessDemo)
+    app.component('MemoryDemo', MemoryDemo)
+    app.component('FilesystemDemo', FilesystemDemo)
+    app.component('EncodingDemo', EncodingDemo)
+    app.component('StorageDemo', StorageDemo)
+    app.component('TransmissionDemo', TransmissionDemo)
+    app.component('DataStructureDemo', DataStructureDemo)
+    app.component('AlgorithmDemo', AlgorithmDemo)
+    app.component('LanguageMapDemo', LanguageMapDemo)
+    app.component('TypeSystemDemo', TypeSystemDemo)
+    app.component('CompilerDemo', CompilerDemo)
+    app.component('CFNetworkLayers', CFNetworkLayers)
+    app.component('CFSubnetCalculator', CFSubnetCalculator)
+    app.component('CFTcpUdpComparison', CFTcpUdpComparison)
+
     // Deployment appendix
     app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
     app.component('DeploymentBuildDemo', DeploymentBuildDemo)

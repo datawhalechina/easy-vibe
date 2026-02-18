@@ -9,7 +9,7 @@
 
 现代计算机网络就像一个**快递公司**,采用五层分层模型,每层负责不同的工作:
 
-<NetworkLayers />
+<CFNetworkLayers />
 
 ::: tip 💡 为什么需要分层?
 想象一个没有分工的快递公司:
@@ -309,7 +309,7 @@ IP:     192.168.1.10
 - `/24` 表示前 24 位是网络位
 - 剩余 8 位是主机位(2^8 - 2 = 254 个可用 IP)
 
-<SubnetCalculator />
+<CFSubnetCalculator />
 
 ### 3.3 路由器:GPS 导航
 
@@ -431,7 +431,7 @@ PING google.com (142.250.185.238): 56 data bytes
 
 ### 4.2 TCP vs UDP:挂号信 vs 平信
 
-<TcpUdpComparison />
+<CFTcpUdpComparison />
 
 **选择建议**:
 
