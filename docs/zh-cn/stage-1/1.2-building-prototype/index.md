@@ -340,7 +340,7 @@ AI 会返回一份结构化的需求和对应的提示词。你自己检查一�
 
 #### 2.2.1 准备工作：了解 AI IDE 的基本操作
 
-如果你还不熟悉 AI IDE（如 Cursor、Trae、Windsurf 等）的基本使用方式，建议先看附录中的[可视化教程](http://localhost:5173/easy-vibe/zh-cn/appendix/ide-intro/)，了解如何：
+如果你还不熟悉 AI IDE（如 Cursor、Trae、Windsurf 等）的基本使用方式，建议先看附录中的[IDE 基础教程](/zh-cn/appendix/2-development-tools/ide-basics/)，了解如何：
 - 创建新项目
 - 与 AI Agent 对话
 - 理解 AI 的代码生成过程
