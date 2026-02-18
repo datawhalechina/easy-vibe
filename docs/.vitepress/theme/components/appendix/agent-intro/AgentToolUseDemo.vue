@@ -1,7 +1,9 @@
 <template>
   <div class="tool-use-demo">
     <div class="header">
-      <div class="title">🔧 揭秘：Agent 如何调用工具？</div>
+      <div class="title">
+        🔧 揭秘：Agent 如何调用工具？
+      </div>
     </div>
 
     <!-- 场景选择 -->
@@ -24,35 +26,73 @@
     </div>
 
     <!-- 横向流程 -->
-    <div ref="flowRowRef" class="flow-row">
+    <div
+      ref="flowRowRef"
+      class="flow-row"
+    >
       <!-- 步骤1: 理解 -->
-      <div class="flow-card" :class="{ active: currentStep >= 1 }">
-        <div class="card-num">1</div>
+      <div
+        class="flow-card"
+        :class="{ active: currentStep >= 1 }"
+      >
+        <div class="card-num">
+          1
+        </div>
         <div class="card-body">
-          <div class="card-title">分析需求</div>
-          <div v-if="currentStep >= 1" class="card-content">
+          <div class="card-title">
+            分析需求
+          </div>
+          <div
+            v-if="currentStep >= 1"
+            class="card-content"
+          >
             <div class="intent-box">
-              <div class="intent-label">用户想要：</div>
-              <div class="intent-value">{{ currentData.intent.type }}</div>
+              <div class="intent-label">
+                用户想要：
+              </div>
+              <div class="intent-value">
+                {{ currentData.intent.type }}
+              </div>
             </div>
             <div class="extract-box">
-              <div class="extract-label">提取信息：</div>
+              <div class="extract-label">
+                提取信息：
+              </div>
               <div class="extract-tags">
-                <span v-for="(e, i) in currentData.intent.entities" :key="i" class="entity">{{ e }}</span>
+                <span
+                  v-for="(e, i) in currentData.intent.entities"
+                  :key="i"
+                  class="entity"
+                >{{ e }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="flow-arrow" :class="{ active: currentStep >= 2 }">→</div>
+      <div
+        class="flow-arrow"
+        :class="{ active: currentStep >= 2 }"
+      >
+        →
+      </div>
 
       <!-- 步骤2: 选工具 -->
-      <div class="flow-card" :class="{ active: currentStep >= 2 }">
-        <div class="card-num">2</div>
+      <div
+        class="flow-card"
+        :class="{ active: currentStep >= 2 }"
+      >
+        <div class="card-num">
+          2
+        </div>
         <div class="card-body">
-          <div class="card-title">选择工具</div>
-          <div v-if="currentStep >= 2" class="card-content">
+          <div class="card-title">
+            选择工具
+          </div>
+          <div
+            v-if="currentStep >= 2"
+            class="card-content"
+          >
             <div class="tool-list">
               <div
                 v-for="tool in currentData.availableTools.slice(0, 2)"
@@ -62,34 +102,67 @@
               >
                 <span>{{ tool.icon }}</span>
                 <span class="tool-name">{{ tool.name }}</span>
-                <span v-if="tool.selected" class="check">✓</span>
+                <span
+                  v-if="tool.selected"
+                  class="check"
+                >✓</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="flow-arrow" :class="{ active: currentStep >= 3 }">→</div>
+      <div
+        class="flow-arrow"
+        :class="{ active: currentStep >= 3 }"
+      >
+        →
+      </div>
 
       <!-- 步骤3: 构造参数 -->
-      <div class="flow-card" :class="{ active: currentStep >= 3 }">
-        <div class="card-num">3</div>
+      <div
+        class="flow-card"
+        :class="{ active: currentStep >= 3 }"
+      >
+        <div class="card-num">
+          3
+        </div>
         <div class="card-body">
-          <div class="card-title">构造参数</div>
-          <div v-if="currentStep >= 3" class="card-content">
+          <div class="card-title">
+            构造参数
+          </div>
+          <div
+            v-if="currentStep >= 3"
+            class="card-content"
+          >
             <code class="params-code">{{ JSON.stringify(currentData.finalParams.params) }}</code>
           </div>
         </div>
       </div>
 
-      <div class="flow-arrow" :class="{ active: currentStep >= 4 }">→</div>
+      <div
+        class="flow-arrow"
+        :class="{ active: currentStep >= 4 }"
+      >
+        →
+      </div>
 
       <!-- 步骤4: 执行 -->
-      <div class="flow-card" :class="{ active: currentStep >= 4 }">
-        <div class="card-num">4</div>
+      <div
+        class="flow-card"
+        :class="{ active: currentStep >= 4 }"
+      >
+        <div class="card-num">
+          4
+        </div>
         <div class="card-body">
-          <div class="card-title">执行返回</div>
-          <div v-if="currentStep >= 4" class="card-content">
+          <div class="card-title">
+            执行返回
+          </div>
+          <div
+            v-if="currentStep >= 4"
+            class="card-content"
+          >
             <div class="exec-flow">
               <span class="from">Agent</span>
               <span class="arrow">→</span>
@@ -103,25 +176,44 @@
     </div>
 
     <!-- 最终结果 -->
-    <div v-if="currentStep >= 4" class="final-result">
+    <div
+      v-if="currentStep >= 4"
+      class="final-result"
+    >
       <span class="result-label">💬 回复：</span>
       <span class="result-text">{{ currentData.finalResponse }}</span>
     </div>
 
     <!-- 控制栏 -->
     <div class="control-bar">
-      <button v-if="currentStep === 0" class="ctrl-btn primary" @click="nextStep">
+      <button
+        v-if="currentStep === 0"
+        class="ctrl-btn primary"
+        @click="nextStep"
+      >
         ▶ 开始演示
       </button>
-      <button v-else-if="currentStep < 4" class="ctrl-btn primary" @click="nextStep">
+      <button
+        v-else-if="currentStep < 4"
+        class="ctrl-btn primary"
+        @click="nextStep"
+      >
         下一步 →
       </button>
-      <button v-else class="ctrl-btn" @click="reset">
+      <button
+        v-else
+        class="ctrl-btn"
+        @click="reset"
+      >
         🔄 重置
       </button>
       
       <div class="step-dots">
-        <span v-for="n in 4" :key="n" :class="['dot', { active: currentStep >= n }]"></span>
+        <span
+          v-for="n in 4"
+          :key="n"
+          :class="['dot', { active: currentStep >= n }]"
+        />
       </div>
     </div>
 

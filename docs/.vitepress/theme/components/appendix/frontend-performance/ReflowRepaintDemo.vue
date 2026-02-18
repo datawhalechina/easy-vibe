@@ -37,54 +37,113 @@
         </div>
 
         <div class="performance-meter">
-          <div class="meter-label">性能影响</div>
+          <div class="meter-label">
+            性能影响
+          </div>
           <div class="meter-bar">
             <div
               class="meter-fill"
               :class="performanceLevel.class"
               :style="{ width: performanceImpact + '%' }"
-            ></div>
+            />
           </div>
-          <div class="meter-value" :class="performanceLevel.class">
+          <div
+            class="meter-value"
+            :class="performanceLevel.class"
+          >
             {{ performanceLevel.text }}
           </div>
         </div>
 
         <div class="stats">
           <div class="stat-item">
-            <div class="stat-label">操作类型</div>
-            <div class="stat-value">{{ currentOperation }}</div>
+            <div class="stat-label">
+              操作类型
+            </div>
+            <div class="stat-value">
+              {{ currentOperation }}
+            </div>
           </div>
           <div class="stat-item">
-            <div class="stat-label">影响范围</div>
-            <div class="stat-value">{{ affectedElements }} 个元素</div>
+            <div class="stat-label">
+              影响范围
+            </div>
+            <div class="stat-value">
+              {{ affectedElements }} 个元素
+            </div>
           </div>
         </div>
       </div>
 
       <div class="controls">
-        <div v-if="activeTab === 'reflow'" class="control-group">
-          <button @click="changeWidth" class="btn high-impact">改变宽度</button>
-          <button @click="changePosition" class="btn high-impact">改变位置</button>
-          <button @click="addBox" class="btn high-impact">添加元素</button>
+        <div
+          v-if="activeTab === 'reflow'"
+          class="control-group"
+        >
+          <button
+            class="btn high-impact"
+            @click="changeWidth"
+          >
+            改变宽度
+          </button>
+          <button
+            class="btn high-impact"
+            @click="changePosition"
+          >
+            改变位置
+          </button>
+          <button
+            class="btn high-impact"
+            @click="addBox"
+          >
+            添加元素
+          </button>
         </div>
 
-        <div v-if="activeTab === 'repaint'" class="control-group">
-          <button @click="changeColor" class="btn medium-impact">改变颜色</button>
-          <button @click="changeBackground" class="btn medium-impact">
+        <div
+          v-if="activeTab === 'repaint'"
+          class="control-group"
+        >
+          <button
+            class="btn medium-impact"
+            @click="changeColor"
+          >
+            改变颜色
+          </button>
+          <button
+            class="btn medium-impact"
+            @click="changeBackground"
+          >
             改变背景
           </button>
-          <button @click="toggleBorder" class="btn medium-impact">切换边框</button>
+          <button
+            class="btn medium-impact"
+            @click="toggleBorder"
+          >
+            切换边框
+          </button>
         </div>
 
-        <div v-if="activeTab === 'composite'" class="control-group">
-          <button @click="transformTranslate" class="btn low-impact">
+        <div
+          v-if="activeTab === 'composite'"
+          class="control-group"
+        >
+          <button
+            class="btn low-impact"
+            @click="transformTranslate"
+          >
             Transform 位移
           </button>
-          <button @click="transformRotate" class="btn low-impact">
+          <button
+            class="btn low-impact"
+            @click="transformRotate"
+          >
             Transform 旋转
           </button>
-          <button @click="changeOpacity" class="btn low-impact">
+          <button
+            class="btn low-impact"
+            @click="changeOpacity"
+          >
             改变透明度
           </button>
         </div>
@@ -92,18 +151,30 @@
     </div>
 
     <Transition name="fade">
-      <div v-if="activeTab" class="tab-info">
-        <div v-if="activeTab === 'reflow'" class="info-content">
+      <div
+        v-if="activeTab"
+        class="tab-info"
+      >
+        <div
+          v-if="activeTab === 'reflow'"
+          class="info-content"
+        >
           <p>
             <strong>重排 (Reflow)</strong>：当元素的位置、尺寸发生变化时，浏览器需要重新计算布局。重排开销最大，因为要重新计算所有受影响元素的位置。
           </p>
         </div>
-        <div v-if="activeTab === 'repaint'" class="info-content">
+        <div
+          v-if="activeTab === 'repaint'"
+          class="info-content"
+        >
           <p>
             <strong>重绘 (Repaint)</strong>：当元素的外观（颜色、背景）发生变化，但位置不变时，浏览器只需要重新绘制像素。比重排快，但仍有开销。
           </p>
         </div>
-        <div v-if="activeTab === 'composite'" class="info-content">
+        <div
+          v-if="activeTab === 'composite'"
+          class="info-content"
+        >
           <p>
             <strong>合成 (Composite)</strong>：使用 transform 和 opacity 等属性，浏览器可以在合成层上完成变化，完全不触发布局和绘制。性能最佳，推荐优先使用。
           </p>

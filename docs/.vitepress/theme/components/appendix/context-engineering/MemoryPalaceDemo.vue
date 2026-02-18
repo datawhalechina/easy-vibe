@@ -59,7 +59,6 @@ const isComplete = computed(() => currentStep.value === 4)
 
 <template>
   <div class="memory-palace-demo">
-    
     <!-- Visual Area -->
     <div class="palace-container">
       <div class="palace-stack">
@@ -71,11 +70,20 @@ const isComplete = computed(() => currentStep.value === 4)
           <div class="layer-content">
             <span class="icon">{{ steps[3].icon }}</span>
             <div class="text">
-              <div class="layer-title">{{ steps[3].title }}</div>
-              <div class="layer-desc">{{ steps[3].desc }}</div>
+              <div class="layer-title">
+                {{ steps[3].title }}
+              </div>
+              <div class="layer-desc">
+                {{ steps[3].desc }}
+              </div>
             </div>
           </div>
-          <div class="layer-detail" v-if="currentStep >= 4">{{ steps[3].detail }}</div>
+          <div
+            v-if="currentStep >= 4"
+            class="layer-detail"
+          >
+            {{ steps[3].detail }}
+          </div>
         </div>
 
         <!-- Layer 3: Chat -->
@@ -86,11 +94,20 @@ const isComplete = computed(() => currentStep.value === 4)
           <div class="layer-content">
             <span class="icon">{{ steps[2].icon }}</span>
             <div class="text">
-              <div class="layer-title">{{ steps[2].title }}</div>
-              <div class="layer-desc">{{ steps[2].desc }}</div>
+              <div class="layer-title">
+                {{ steps[2].title }}
+              </div>
+              <div class="layer-desc">
+                {{ steps[2].desc }}
+              </div>
             </div>
           </div>
-          <div class="layer-detail" v-if="currentStep >= 3">{{ steps[2].detail }}</div>
+          <div
+            v-if="currentStep >= 3"
+            class="layer-detail"
+          >
+            {{ steps[2].detail }}
+          </div>
         </div>
 
         <!-- Layer 2: Task -->
@@ -101,11 +118,20 @@ const isComplete = computed(() => currentStep.value === 4)
           <div class="layer-content">
             <span class="icon">{{ steps[1].icon }}</span>
             <div class="text">
-              <div class="layer-title">{{ steps[1].title }}</div>
-              <div class="layer-desc">{{ steps[1].desc }}</div>
+              <div class="layer-title">
+                {{ steps[1].title }}
+              </div>
+              <div class="layer-desc">
+                {{ steps[1].desc }}
+              </div>
             </div>
           </div>
-          <div class="layer-detail" v-if="currentStep >= 2">{{ steps[1].detail }}</div>
+          <div
+            v-if="currentStep >= 2"
+            class="layer-detail"
+          >
+            {{ steps[1].detail }}
+          </div>
         </div>
 
         <!-- Layer 1: Base -->
@@ -116,15 +142,27 @@ const isComplete = computed(() => currentStep.value === 4)
           <div class="layer-content">
             <span class="icon">{{ steps[0].icon }}</span>
             <div class="text">
-              <div class="layer-title">{{ steps[0].title }}</div>
-              <div class="layer-desc">{{ steps[0].desc }}</div>
+              <div class="layer-title">
+                {{ steps[0].title }}
+              </div>
+              <div class="layer-desc">
+                {{ steps[0].desc }}
+              </div>
             </div>
           </div>
-          <div class="layer-detail" v-if="currentStep >= 1">{{ steps[0].detail }}</div>
+          <div
+            v-if="currentStep >= 1"
+            class="layer-detail"
+          >
+            {{ steps[0].detail }}
+          </div>
         </div>
         
         <!-- Empty State Placeholder -->
-        <div class="empty-placeholder" v-if="currentStep === 0">
+        <div
+          v-if="currentStep === 0"
+          class="empty-placeholder"
+        >
           🚧 空地：点击下方按钮开始建造记忆宫殿
         </div>
       </div>
@@ -135,28 +173,48 @@ const isComplete = computed(() => currentStep.value === 4)
       <div class="step-indicator">
         当前进度: {{ currentStep }}/4
       </div>
-      <button class="build-btn" @click="nextStep" :class="{ 'reset-mode': isComplete }">
+      <button
+        class="build-btn"
+        :class="{ 'reset-mode': isComplete }"
+        @click="nextStep"
+      >
         {{ isComplete ? '🔄 重置重建' : (currentStep === 0 ? '🏗️ 开始建造' : '➕ 添加下一层') }}
       </button>
     </div>
 
     <!-- Explanation Box -->
-    <div class="explanation-box" v-if="currentStep > 0">
-      <div class="exp-title">为什么这样设计？</div>
-      <div class="exp-content" v-if="currentStep === 1">
+    <div
+      v-if="currentStep > 0"
+      class="explanation-box"
+    >
+      <div class="exp-title">
+        为什么这样设计？
+      </div>
+      <div
+        v-if="currentStep === 1"
+        class="exp-content"
+      >
         **地基最稳**：把 System Prompt 放在最前面，利用 KV Cache 机制，让 AI "背下来"，后续请求**速度快且免费**。
       </div>
-      <div class="exp-content" v-if="currentStep === 2">
+      <div
+        v-if="currentStep === 2"
+        class="exp-content"
+      >
         **目标明确**：无论聊得多嗨，任务目标（如“写一个 Python 爬虫”）必须**钉死**，防止 AI 聊偏了。
       </div>
-      <div class="exp-content" v-if="currentStep === 3">
+      <div
+        v-if="currentStep === 3"
+        class="exp-content"
+      >
         **保持鲜活**：最近的对话最重要，用滑动窗口保留，**旧的自动忘掉**，给新信息腾地方。
       </div>
-      <div class="exp-content" v-if="currentStep === 4">
+      <div
+        v-if="currentStep === 4"
+        class="exp-content"
+      >
         **无限外脑**：遇到不懂的，不要瞎编，去“图书馆”查资料。**用完即走**，不占宝贵的脑容量。
       </div>
     </div>
-
   </div>
 </template>
 

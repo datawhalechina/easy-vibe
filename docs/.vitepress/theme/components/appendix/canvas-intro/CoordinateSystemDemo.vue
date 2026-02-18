@@ -15,17 +15,26 @@
     <div class="control-panel">
       <div class="toggle-group">
         <label class="toggle-option">
-          <input type="checkbox" v-model="showGrid" />
+          <input
+            v-model="showGrid"
+            type="checkbox"
+          >
           <span>Show Grid / 显示网格</span>
         </label>
 
         <label class="toggle-option">
-          <input type="checkbox" v-model="showAxis" />
+          <input
+            v-model="showAxis"
+            type="checkbox"
+          >
           <span>Show Axis / 显示坐标轴</span>
         </label>
 
         <label class="toggle-option">
-          <input type="checkbox" v-model="showCoordinates" />
+          <input
+            v-model="showCoordinates"
+            type="checkbox"
+          >
           <span>Show Coordinates / 显示坐标</span>
         </label>
       </div>
@@ -43,11 +52,12 @@
           <span class="label">Mouse Position:</span>
           <span class="value">({{ mouseX }}, {{ mouseY }})</span>
         </div>
-        <div class="info-item" v-if="selectedPoint">
+        <div
+          v-if="selectedPoint"
+          class="info-item"
+        >
           <span class="label">Selected Point:</span>
-          <span class="value"
-            >({{ selectedPoint.x }}, {{ selectedPoint.y }})</span
-          >
+          <span class="value">({{ selectedPoint.x }}, {{ selectedPoint.y }})</span>
         </div>
       </div>
     </div>
@@ -61,7 +71,7 @@
         @mousedown="handleMouseDown"
         @mouseup="handleMouseUp"
         @mouseleave="handleMouseUp"
-      ></canvas>
+      />
     </div>
 
     <div class="explanation">

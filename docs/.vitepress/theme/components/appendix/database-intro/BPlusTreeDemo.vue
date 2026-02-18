@@ -18,17 +18,37 @@
         </div>
         <div class="card-content">
           <div class="data-rows">
-            <div v-for="i in 20" :key="i" class="data-row" :class="{ found: scanMode === 'found' && i === targetId }">
+            <div
+              v-for="i in 20"
+              :key="i"
+              class="data-row"
+              :class="{ found: scanMode === 'found' && i === targetId }"
+            >
               <span class="row-id">{{ String(i).padStart(3, '0') }}</span>
               <span class="row-name">用户{{ i }}</span>
             </div>
           </div>
           <div class="scan-info">
-            <p v-if="!scanMode">👆 点击"开始查找"看全表扫描有多慢</p>
-            <p v-else-if="scanMode === 'scanning'">正在扫描... 第 {{ scanCount }} 条</p>
-            <p v-else class="found">✅ 找到了！扫描了 {{ scanCount }} 条记录，耗时 {{ scanTime }}秒</p>
+            <p v-if="!scanMode">
+              👆 点击"开始查找"看全表扫描有多慢
+            </p>
+            <p v-else-if="scanMode === 'scanning'">
+              正在扫描... 第 {{ scanCount }} 条
+            </p>
+            <p
+              v-else
+              class="found"
+            >
+              ✅ 找到了！扫描了 {{ scanCount }} 条记录，耗时 {{ scanTime }}秒
+            </p>
           </div>
-          <button v-if="!scanMode" @click="startScan" class="btn">开始查找</button>
+          <button
+            v-if="!scanMode"
+            class="btn"
+            @click="startScan"
+          >
+            开始查找
+          </button>
         </div>
       </div>
 
@@ -40,15 +60,25 @@
         <div class="card-content">
           <div class="tree-structure">
             <div class="tree-level root">
-              <div class="node-label">根节点</div>
-              <div class="node">1-100</div>
+              <div class="node-label">
+                根节点
+              </div>
+              <div class="node">
+                1-100
+              </div>
             </div>
             <div class="tree-level intermediate">
-              <div class="node-label">中间节点</div>
-              <div class="node">1-10</div>
+              <div class="node-label">
+                中间节点
+              </div>
+              <div class="node">
+                1-10
+              </div>
             </div>
             <div class="tree-level leaf">
-              <div class="node-label">叶子节点</div>
+              <div class="node-label">
+                叶子节点
+              </div>
               <div
                 v-for="i in 10"
                 :key="i"
@@ -60,31 +90,62 @@
             </div>
           </div>
           <div class="index-info">
-            <p v-if="!indexMode">👆 点击"开始查找"看索引有多快</p>
-            <p v-else-if="indexMode === 'searching'">正在搜索... 第 {{ indexStep }} 步</p>
-            <p v-else class="found">✅ 找到了！只用了 {{ indexSteps.length }} 步，耗时 {{ indexTime }}秒</p>
+            <p v-if="!indexMode">
+              👆 点击"开始查找"看索引有多快
+            </p>
+            <p v-else-if="indexMode === 'searching'">
+              正在搜索... 第 {{ indexStep }} 步
+            </p>
+            <p
+              v-else
+              class="found"
+            >
+              ✅ 找到了！只用了 {{ indexSteps.length }} 步，耗时 {{ indexTime }}秒
+            </p>
           </div>
-          <button v-if="!indexMode" @click="startIndex" class="btn">开始查找</button>
+          <button
+            v-if="!indexMode"
+            class="btn"
+            @click="startIndex"
+          >
+            开始查找
+          </button>
         </div>
       </div>
     </div>
 
     <div class="stats-box">
       <div class="stat-item">
-        <div class="stat-label">数据量</div>
-        <div class="stat-value">100 万条</div>
+        <div class="stat-label">
+          数据量
+        </div>
+        <div class="stat-value">
+          100 万条
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">全表扫描</div>
-        <div class="stat-value slow">平均 50 万次比较</div>
+        <div class="stat-label">
+          全表扫描
+        </div>
+        <div class="stat-value slow">
+          平均 50 万次比较
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">B+ 树索引</div>
-        <div class="stat-value fast">仅 3 次比较</div>
+        <div class="stat-label">
+          B+ 树索引
+        </div>
+        <div class="stat-value fast">
+          仅 3 次比较
+        </div>
       </div>
       <div class="stat-item">
-        <div class="stat-label">速度提升</div>
-        <div class="stat-value highlight">10 万倍+</div>
+        <div class="stat-label">
+          速度提升
+        </div>
+        <div class="stat-value highlight">
+          10 万倍+
+        </div>
       </div>
     </div>
 

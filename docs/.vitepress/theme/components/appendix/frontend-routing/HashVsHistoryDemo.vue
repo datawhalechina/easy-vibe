@@ -21,9 +21,9 @@
         <div class="browser-mockup">
           <div class="browser-toolbar">
             <div class="window-controls">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
+              <span class="dot red" />
+              <span class="dot yellow" />
+              <span class="dot green" />
             </div>
             <div class="address-bar">
               <span class="protocol">https://</span>
@@ -76,9 +76,9 @@
         <div class="browser-mockup">
           <div class="browser-toolbar">
             <div class="window-controls">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
+              <span class="dot red" />
+              <span class="dot yellow" />
+              <span class="dot green" />
             </div>
             <div class="address-bar">
               <span class="protocol">https://</span>

@@ -13,7 +13,9 @@
 <template>
   <div class="audio-quick-start">
     <div class="header">
-      <div class="title">🎙️ AI 音频初体验：让机器开口说话</div>
+      <div class="title">
+        🎙️ AI 音频初体验：让机器开口说话
+      </div>
       <div class="subtitle">
         从语音合成到声音克隆，探索 AI 如何让机器拥有"声音"
       </div>
@@ -25,9 +27,9 @@
         <button
           v-for="scene in scenes"
           :key="scene.id"
-          @click="selectScene(scene)"
           class="scene-btn"
           :class="{ active: currentScene?.id === scene.id }"
+          @click="selectScene(scene)"
         >
           <span class="scene-icon">{{ scene.icon }}</span>
           <span class="scene-name">{{ scene.name }}</span>
@@ -36,58 +38,86 @@
 
       <!-- 演示区域 -->
       <div class="demo-area">
-        <div v-if="!currentScene" class="empty-state">
-          <div class="emoji">🎵</div>
+        <div
+          v-if="!currentScene"
+          class="empty-state"
+        >
+          <div class="emoji">
+            🎵
+          </div>
           <p>选择一个场景开始体验 AI 音频</p>
         </div>
 
         <!-- TTS 场景 -->
-        <div v-else-if="currentScene.id === 'tts'" class="tts-demo">
+        <div
+          v-else-if="currentScene.id === 'tts'"
+          class="tts-demo"
+        >
           <div class="input-section">
             <textarea
               v-model="ttsText"
               rows="3"
               placeholder="输入要合成的文本..."
-            ></textarea>
+            />
           </div>
           <div class="voice-selector">
             <span class="label">声音:</span>
             <button
               v-for="voice in voices"
               :key="voice.id"
-              @click="selectedVoice = voice.id"
               class="voice-btn"
               :class="{ active: selectedVoice === voice.id }"
+              @click="selectedVoice = voice.id"
             >
               {{ voice.icon }} {{ voice.name }}
             </button>
           </div>
-          <button @click="synthesize" class="action-btn primary" :disabled="isProcessing">
+          <button
+            class="action-btn primary"
+            :disabled="isProcessing"
+            @click="synthesize"
+          >
             <span v-if="isProcessing">合成中...</span>
             <span v-else>🎙️ 合成语音</span>
           </button>
 
           <!-- 波形可视化 -->
-          <div v-if="showWaveform" class="waveform-container">
-            <canvas ref="waveformCanvas" width="400" height="80"></canvas>
+          <div
+            v-if="showWaveform"
+            class="waveform-container"
+          >
+            <canvas
+              ref="waveformCanvas"
+              width="400"
+              height="80"
+            />
             <div class="audio-controls">
-              <button @click="togglePlay" class="play-btn">
+              <button
+                class="play-btn"
+                @click="togglePlay"
+              >
                 {{ isPlaying ? '⏸️' : '▶️' }}
               </button>
               <div class="progress-bar">
-                <div class="progress" :style="{ width: progress + '%' }"></div>
+                <div
+                  class="progress"
+                  :style="{ width: progress + '%' }"
+                />
               </div>
             </div>
           </div>
         </div>
 
         <!-- ASR 场景 -->
-        <div v-else-if="currentScene.id === 'asr'" class="asr-demo">
+        <div
+          v-else-if="currentScene.id === 'asr'"
+          class="asr-demo"
+        >
           <div class="record-section">
             <button
-              @click="toggleRecording"
               class="record-btn"
               :class="{ recording: isRecording }"
+              @click="toggleRecording"
             >
               <span class="record-icon">{{ isRecording ? '⏹️' : '🎤' }}</span>
               <span>{{ isRecording ? '停止录音' : '开始录音' }}</span>
@@ -95,64 +125,134 @@
           </div>
 
           <!-- 录音波形 -->
-          <div v-if="isRecording || hasRecorded" class="waveform-container">
-            <canvas ref="recordCanvas" width="400" height="80"></canvas>
+          <div
+            v-if="isRecording || hasRecorded"
+            class="waveform-container"
+          >
+            <canvas
+              ref="recordCanvas"
+              width="400"
+              height="80"
+            />
           </div>
 
           <!-- 识别结果 -->
-          <div v-if="transcription" class="result-box">
-            <div class="result-label">识别结果:</div>
-            <div class="result-text">{{ transcription }}</div>
+          <div
+            v-if="transcription"
+            class="result-box"
+          >
+            <div class="result-label">
+              识别结果:
+            </div>
+            <div class="result-text">
+              {{ transcription }}
+            </div>
           </div>
         </div>
 
         <!-- 声音克隆场景 -->
-        <div v-else-if="currentScene.id === 'clone'" class="clone-demo">
+        <div
+          v-else-if="currentScene.id === 'clone'"
+          class="clone-demo"
+        >
           <div class="clone-steps">
-            <div class="step" :class="{ active: cloneStep >= 1, done: cloneStep > 1 }">
-              <div class="step-num">1</div>
+            <div
+              class="step"
+              :class="{ active: cloneStep >= 1, done: cloneStep > 1 }"
+            >
+              <div class="step-num">
+                1
+              </div>
               <div class="step-content">
-                <div class="step-title">录制参考音频</div>
-                <button @click="recordReference" class="step-btn" :disabled="cloneStep !== 1">
+                <div class="step-title">
+                  录制参考音频
+                </div>
+                <button
+                  class="step-btn"
+                  :disabled="cloneStep !== 1"
+                  @click="recordReference"
+                >
                   {{ cloneStep > 1 ? '✓ 已完成' : '🎙️ 录制 5 秒' }}
                 </button>
               </div>
             </div>
-            <div class="step-arrow">→</div>
-            <div class="step" :class="{ active: cloneStep >= 2, done: cloneStep > 2 }">
-              <div class="step-num">2</div>
+            <div class="step-arrow">
+              →
+            </div>
+            <div
+              class="step"
+              :class="{ active: cloneStep >= 2, done: cloneStep > 2 }"
+            >
+              <div class="step-num">
+                2
+              </div>
               <div class="step-content">
-                <div class="step-title">提取声纹特征</div>
-                <div v-if="cloneStep === 2" class="processing">
-                  <div class="spinner"></div>
+                <div class="step-title">
+                  提取声纹特征
+                </div>
+                <div
+                  v-if="cloneStep === 2"
+                  class="processing"
+                >
+                  <div class="spinner" />
                   <span>分析中...</span>
                 </div>
               </div>
             </div>
-            <div class="step-arrow">→</div>
-            <div class="step" :class="{ active: cloneStep >= 3 }">
-              <div class="step-num">3</div>
+            <div class="step-arrow">
+              →
+            </div>
+            <div
+              class="step"
+              :class="{ active: cloneStep >= 3 }"
+            >
+              <div class="step-num">
+                3
+              </div>
               <div class="step-content">
-                <div class="step-title">合成克隆语音</div>
-                <div v-if="cloneStep === 3" class="clone-input">
-                  <input v-model="cloneText" placeholder="输入要合成的文本" />
-                  <button @click="synthesizeClone" class="step-btn">合成</button>
+                <div class="step-title">
+                  合成克隆语音
                 </div>
-                <div v-if="cloneStep > 3" class="success-msg">✓ 克隆成功!</div>
+                <div
+                  v-if="cloneStep === 3"
+                  class="clone-input"
+                >
+                  <input
+                    v-model="cloneText"
+                    placeholder="输入要合成的文本"
+                  >
+                  <button
+                    class="step-btn"
+                    @click="synthesizeClone"
+                  >
+                    合成
+                  </button>
+                </div>
+                <div
+                  v-if="cloneStep > 3"
+                  class="success-msg"
+                >
+                  ✓ 克隆成功!
+                </div>
               </div>
             </div>
           </div>
 
           <!-- 声纹可视化 -->
-          <div v-if="cloneStep >= 2" class="embedding-viz">
-            <div class="viz-title">声纹特征向量 (256维)</div>
+          <div
+            v-if="cloneStep >= 2"
+            class="embedding-viz"
+          >
+            <div class="viz-title">
+              声纹特征向量 (256维)
+            </div>
             <div class="embedding-bars">
               <div
                 v-for="(val, i) in embeddingValues"
                 :key="i"
                 class="bar"
                 :style="{ height: val + '%', opacity: 0.3 + val / 100 }"
-              ></div>
+              />
             </div>
           </div>
         </div>

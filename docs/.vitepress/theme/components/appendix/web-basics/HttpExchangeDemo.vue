@@ -3,14 +3,26 @@
     <div class="browser-frame">
       <!-- Address Bar (Simplified) -->
       <div class="address-bar">
-        <select v-model="method" class="method-select" :disabled="loading">
+        <select
+          v-model="method"
+          class="method-select"
+          :disabled="loading"
+        >
           <option>GET</option>
           <option>POST</option>
           <option>PUT</option>
           <option>DELETE</option>
         </select>
-        <input v-model="path" class="url-input" :disabled="loading" />
-        <button @click="sendRequest" :disabled="loading" class="send-btn">
+        <input
+          v-model="path"
+          class="url-input"
+          :disabled="loading"
+        >
+        <button
+          :disabled="loading"
+          class="send-btn"
+          @click="sendRequest"
+        >
           {{ loading ? '...' : t.send }}
         </button>
       </div>
@@ -25,22 +37,33 @@
             <span>{{ t.cols.time }}</span>
           </div>
           <div
+            v-if="requestSent"
             class="log-row"
             :class="{ active: requestSent, selected: true }"
-            v-if="requestSent"
           >
             <span class="col-name">{{ path.split('/').pop() || 'index' }}</span>
-            <span class="col-status" :class="statusClass">{{
+            <span
+              class="col-status"
+              :class="statusClass"
+            >{{
               responseStatus
             }}</span>
             <span class="col-type">document</span>
             <span class="col-time">{{ loading ? 'Pending' : '45ms' }}</span>
           </div>
-          <div v-else class="empty-state">{{ t.noRequests }}</div>
+          <div
+            v-else
+            class="empty-state"
+          >
+            {{ t.noRequests }}
+          </div>
         </div>
 
         <!-- Details Panel (Right) -->
-        <div class="details-panel" v-if="requestSent">
+        <div
+          v-if="requestSent"
+          class="details-panel"
+        >
           <div class="tabs">
             <button
               v-for="tabKey in ['headers', 'response', 'preview']"
@@ -54,9 +77,14 @@
 
           <div class="tab-content">
             <!-- Headers Tab -->
-            <div v-if="activeTab === 'headers'" class="headers-view">
+            <div
+              v-if="activeTab === 'headers'"
+              class="headers-view"
+            >
               <div class="section">
-                <div class="section-title">{{ t.general }}</div>
+                <div class="section-title">
+                  {{ t.general }}
+                </div>
                 <div class="kv-row">
                   <span class="key">{{ t.requestUrl }}:</span>
                   <span class="value">https://api.example.com{{ path }}</span>
@@ -68,17 +96,22 @@
                 <div class="kv-row">
                   <span class="key">{{ t.statusCode }}:</span>
                   <span class="value">
-                    <span class="status-dot" :class="statusClass"></span>
+                    <span
+                      class="status-dot"
+                      :class="statusClass"
+                    />
                     {{ responseStatus || '...' }}
                   </span>
                 </div>
               </div>
               <div class="section">
-                <div class="section-title">{{ t.responseHeaders }}</div>
+                <div class="section-title">
+                  {{ t.responseHeaders }}
+                </div>
                 <div
-                  class="kv-row"
                   v-for="(val, key) in responseHeaders"
                   :key="key"
+                  class="kv-row"
                 >
                   <span class="key">{{ key }}:</span>
                   <span class="value">{{ val }}</span>
@@ -87,24 +120,36 @@
             </div>
 
             <!-- Response Tab -->
-            <div v-if="activeTab === 'response'" class="code-view">
+            <div
+              v-if="activeTab === 'response'"
+              class="code-view"
+            >
               <pre>{{ responseBody }}</pre>
             </div>
 
             <!-- Preview Tab -->
-            <div v-if="activeTab === 'preview'" class="preview-view">
+            <div
+              v-if="activeTab === 'preview'"
+              class="preview-view"
+            >
               <div
                 v-if="method === 'GET'"
                 class="html-preview"
                 v-html="responseBody"
-              ></div>
-              <div v-else class="json-preview">
+              />
+              <div
+                v-else
+                class="json-preview"
+              >
                 JSON Data: {{ responseBody }}
               </div>
             </div>
           </div>
         </div>
-        <div v-else class="details-placeholder">
+        <div
+          v-else
+          class="details-placeholder"
+        >
           {{ t.placeholder }}
         </div>
       </div>

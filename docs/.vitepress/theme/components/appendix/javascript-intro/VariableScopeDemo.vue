@@ -15,32 +15,58 @@
 
     <div class="code-display">
       <div class="code-block">
-        <div class="code-line" v-for="(line, i) in codeLines" :key="i" :class="{ active: currentLine === i }">
+        <div
+          v-for="(line, i) in codeLines"
+          :key="i"
+          class="code-line"
+          :class="{ active: currentLine === i }"
+        >
           <span class="line-num">{{ i + 1 }}</span>
-          <span class="line-code" v-html="highlightCode(line)"></span>
+          <span
+            class="line-code"
+            v-html="highlightCode(line)"
+          />
         </div>
       </div>
 
       <div class="visualization">
         <div class="scope-area global-scope">
-          <div class="scope-title">全局作用域（房子外）</div>
+          <div class="scope-title">
+            全局作用域（房子外）
+          </div>
           <div class="scope-vars">
-            <div v-if="step >= 1" class="var-item" :class="{ error: step === 4 }">
+            <div
+              v-if="step >= 1"
+              class="var-item"
+              :class="{ error: step === 4 }"
+            >
               <span class="var-type">var</span>
               <span class="var-name">globalVar</span>
               <span class="var-value">= "外面"</span>
             </div>
           </div>
 
-          <div class="scope-area block-scope" v-if="step >= 2">
-            <div class="scope-title">块级作用域（房间内）</div>
+          <div
+            v-if="step >= 2"
+            class="scope-area block-scope"
+          >
+            <div class="scope-title">
+              块级作用域（房间内）
+            </div>
             <div class="scope-vars">
-              <div v-if="step >= 2" class="var-item" :class="{ error: step === 4 }">
+              <div
+                v-if="step >= 2"
+                class="var-item"
+                :class="{ error: step === 4 }"
+              >
                 <span class="var-type">var</span>
                 <span class="var-name">blockVar</span>
                 <span class="var-value">= "房间里"</span>
               </div>
-              <div v-if="step >= 3" class="var-item let">
+              <div
+                v-if="step >= 3"
+                class="var-item let"
+              >
                 <span class="var-type">let</span>
                 <span class="var-name">blockLet</span>
                 <span class="var-value">= "只有房间内能用"</span>
@@ -50,9 +76,16 @@
         </div>
 
         <div class="console-output">
-          <div class="console-title">控制台输出</div>
+          <div class="console-title">
+            控制台输出
+          </div>
           <div class="console-lines">
-            <div v-for="(output, i) in consoleOutput" :key="i" class="console-line" :class="{ error: output.error }">
+            <div
+              v-for="(output, i) in consoleOutput"
+              :key="i"
+              class="console-line"
+              :class="{ error: output.error }"
+            >
               {{ output.text }}
             </div>
           </div>
@@ -61,10 +94,27 @@
     </div>
 
     <div class="controls">
-      <button @click="prevStep" :disabled="step === 0" class="control-btn">← 上一步</button>
+      <button
+        :disabled="step === 0"
+        class="control-btn"
+        @click="prevStep"
+      >
+        ← 上一步
+      </button>
       <span class="step-indicator">{{ step + 1 }} / {{ maxSteps }}</span>
-      <button @click="nextStep" :disabled="step === maxSteps" class="control-btn">下一步 →</button>
-      <button @click="reset" class="control-btn secondary">重置</button>
+      <button
+        :disabled="step === maxSteps"
+        class="control-btn"
+        @click="nextStep"
+      >
+        下一步 →
+      </button>
+      <button
+        class="control-btn secondary"
+        @click="reset"
+      >
+        重置
+      </button>
     </div>
 
     <div class="info-box">

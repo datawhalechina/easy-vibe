@@ -63,9 +63,9 @@ const reset = () => {
         <button
           v-for="tab in tabs"
           :key="tab.value"
-          @click="activeTab = tab.value"
           :class="{ 'active': activeTab === tab.value }"
           class="tab-btn"
+          @click="activeTab = tab.value"
         >
           <span class="tab-icon">{{ tab.icon }}</span>
           <span class="tab-label">{{ tab.label }}</span>
@@ -74,7 +74,10 @@ const reset = () => {
 
       <div class="tab-content">
         <!-- 浏览器环境 -->
-        <div v-if="activeTab === 'browser'" class="environment-content">
+        <div
+          v-if="activeTab === 'browser'"
+          class="environment-content"
+        >
           <h4>浏览器环境</h4>
 
           <div class="api-grid">
@@ -83,9 +86,15 @@ const reset = () => {
               :key="api.name"
               class="api-card"
             >
-              <div class="api-name">{{ api.name }}</div>
-              <div class="api-description">{{ api.description }}</div>
-              <div class="api-example">{{ api.example }}</div>
+              <div class="api-name">
+                {{ api.name }}
+              </div>
+              <div class="api-description">
+                {{ api.description }}
+              </div>
+              <div class="api-example">
+                {{ api.example }}
+              </div>
             </div>
           </div>
 
@@ -102,7 +111,10 @@ const reset = () => {
         </div>
 
         <!-- Node.js 环境 -->
-        <div v-if="activeTab === 'nodejs'" class="environment-content">
+        <div
+          v-if="activeTab === 'nodejs'"
+          class="environment-content"
+        >
           <h4>Node.js 环境</h4>
 
           <div class="api-grid">
@@ -111,9 +123,15 @@ const reset = () => {
               :key="api.name"
               class="api-card"
             >
-              <div class="api-name">{{ api.name }}</div>
-              <div class="api-description">{{ api.description }}</div>
-              <div class="api-example">{{ api.example }}</div>
+              <div class="api-name">
+                {{ api.name }}
+              </div>
+              <div class="api-description">
+                {{ api.description }}
+              </div>
+              <div class="api-example">
+                {{ api.example }}
+              </div>
             </div>
           </div>
 
@@ -154,7 +172,10 @@ const reset = () => {
           <div class="result-content">
             {{ browserResult || '点击"在浏览器运行"查看结果' }}
           </div>
-          <button @click="runInBrowser" class="run-btn">
+          <button
+            class="run-btn"
+            @click="runInBrowser"
+          >
             在浏览器运行
           </button>
         </div>
@@ -167,13 +188,20 @@ const reset = () => {
           <div class="result-content">
             {{ nodeResult || '需要在 Node.js 环境中运行' }}
           </div>
-          <button @click="runInNode" class="run-btn" disabled>
+          <button
+            class="run-btn"
+            disabled
+            @click="runInNode"
+          >
             需要终端运行
           </button>
         </div>
       </div>
 
-      <button @click="reset" class="reset-btn">
+      <button
+        class="reset-btn"
+        @click="reset"
+      >
         重置
       </button>
     </div>
@@ -183,7 +211,9 @@ const reset = () => {
       <p><strong>核心区别:</strong></p>
       <p>浏览器运行时专注于用户界面和网页交互,提供 DOM、BOM、fetch 等前端专用 API。</p>
       <p>Node.js 运行时专注于服务器端开发,提供文件系统、HTTP 服务器、进程管理等后端专用 API。</p>
-      <p class="highlight">同样的 JavaScript 语法,但能用的 API 完全不同——这就是"环境判断"的重要性。</p>
+      <p class="highlight">
+        同样的 JavaScript 语法,但能用的 API 完全不同——这就是"环境判断"的重要性。
+      </p>
     </div>
   </div>
 </template>

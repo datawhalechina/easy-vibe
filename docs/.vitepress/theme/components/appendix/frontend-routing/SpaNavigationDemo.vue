@@ -16,10 +16,16 @@
         :key="index"
         class="flow-step"
       >
-        <div class="step-number">{{ index + 1 }}</div>
+        <div class="step-number">
+          {{ index + 1 }}
+        </div>
         <div class="step-content">
-          <div class="step-title">{{ step.title }}</div>
-          <div class="step-desc">{{ step.desc }}</div>
+          <div class="step-title">
+            {{ step.title }}
+          </div>
+          <div class="step-desc">
+            {{ step.desc }}
+          </div>
         </div>
       </div>
     </div>
@@ -30,22 +36,34 @@
         <div class="tip-item">
           <span class="tip-icon">🎯</span>
           <div class="tip-content">
-            <div class="tip-title">路由懒加载</div>
-            <div class="tip-desc">按需加载页面组件，减少初始包体积</div>
+            <div class="tip-title">
+              路由懒加载
+            </div>
+            <div class="tip-desc">
+              按需加载页面组件，减少初始包体积
+            </div>
           </div>
         </div>
         <div class="tip-item">
           <span class="tip-icon">🛡️</span>
           <div class="tip-content">
-            <div class="tip-title">守卫预加载</div>
-            <div class="tip-desc">在beforeEnter中预加载数据，提升用户体验</div>
+            <div class="tip-title">
+              守卫预加载
+            </div>
+            <div class="tip-desc">
+              在beforeEnter中预加载数据，提升用户体验
+            </div>
           </div>
         </div>
         <div class="tip-item">
           <span class="tip-icon">⚡</span>
           <div class="tip-content">
-            <div class="tip-title">过渡动画</div>
-            <div class="tip-desc">添加页面切换动画，让导航更流畅</div>
+            <div class="tip-title">
+              过渡动画
+            </div>
+            <div class="tip-desc">
+              添加页面切换动画，让导航更流畅
+            </div>
           </div>
         </div>
       </div>

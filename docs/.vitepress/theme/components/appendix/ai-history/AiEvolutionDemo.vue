@@ -1,27 +1,54 @@
 <template>
   <div class="evolution-demo">
-    <el-card class="main-card" shadow="hover">
+    <el-card
+      class="main-card"
+      shadow="hover"
+    >
       <template #header>
         <div class="header-container">
           <div class="title-area">
             <span class="main-title">AI 进化模拟器</span>
           </div>
-          <el-steps :active="currentStage" finish-status="success" align-center class="compact-steps" simple>
-            <el-step v-for="stage in stages" :key="stage.id" :title="stage.label" />
+          <el-steps
+            :active="currentStage"
+            finish-status="success"
+            align-center
+            class="compact-steps"
+            simple
+          >
+            <el-step
+              v-for="stage in stages"
+              :key="stage.id"
+              :title="stage.label"
+            />
           </el-steps>
         </div>
       </template>
 
       <!-- Stage 1: Rule Based (Traffic Light Example) -->
-      <div v-if="currentStage === 0" class="stage-pane">
-        <el-alert type="info" :closable="false" show-icon class="compact-alert mb-2">
-          <template #title><span class="alert-title">阶段一：规则时代 (Rule-Based)</span></template>
-          <template #default><span class="alert-desc">就像教小孩：如果看到红灯，就停下。</span></template>
+      <div
+        v-if="currentStage === 0"
+        class="stage-pane"
+      >
+        <el-alert
+          type="info"
+          :closable="false"
+          show-icon
+          class="compact-alert mb-2"
+        >
+          <template #title>
+            <span class="alert-title">阶段一：规则时代 (Rule-Based)</span>
+          </template>
+          <template #default>
+            <span class="alert-desc">就像教小孩：如果看到红灯，就停下。</span>
+          </template>
         </el-alert>
         
         <div class="game-area-grid">
           <div class="panel left-panel">
-            <div class="panel-header">规则库 (Code)</div>
+            <div class="panel-header">
+              规则库 (Code)
+            </div>
             <div class="code-block">
               <div class="code-line">
                 <span class="keyword">function</span> <span class="function">decideTrafficLight</span>(color) {
@@ -35,27 +62,55 @@
               <div class="code-line indent">
                 <span class="keyword">else if</span> (color === <span class="string">'green'</span>) <span class="keyword">return</span> <span class="string">'go'</span>
               </div>
-              <div class="code-line">}</div>
+              <div class="code-line">
+                }
+              </div>
             </div>
           </div>
           <div class="panel right-panel">
-            <div class="panel-header">测试输入</div>
+            <div class="panel-header">
+              测试输入
+            </div>
             <div class="input-controls">
-              <el-select v-model="ruleColor" size="small" style="width: 120px;">
-                <el-option value="red" label="🔴 红灯" />
-                <el-option value="yellow" label="🟡 黄灯" />
-                <el-option value="green" label="🟢 绿灯" />
-                <el-option value="blue" label="🔵 蓝灯" />
+              <el-select
+                v-model="ruleColor"
+                size="small"
+                style="width: 120px;"
+              >
+                <el-option
+                  value="red"
+                  label="🔴 红灯"
+                />
+                <el-option
+                  value="yellow"
+                  label="🟡 黄灯"
+                />
+                <el-option
+                  value="green"
+                  label="🟢 绿灯"
+                />
+                <el-option
+                  value="blue"
+                  label="🔵 蓝灯"
+                />
               </el-select>
-              <div class="arrow">→</div>
+              <div class="arrow">
+                →
+              </div>
               <el-tag :type="ruleResult === 'stop' ? 'danger' : ruleResult === 'caution' ? 'warning' : ruleResult === 'go' ? 'success' : 'info'">
                 {{ ruleResult }}
               </el-tag>
             </div>
-            <div class="hint-text" v-if="ruleResult === 'Unknown'">
+            <div
+              v-if="ruleResult === 'Unknown'"
+              class="hint-text"
+            >
               规则库中没有定义"蓝灯"，所以系统不知道该做什么。这就是规则系统的局限性：无法处理未定义的规则。
             </div>
-            <div class="hint-text" v-else>
+            <div
+              v-else
+              class="hint-text"
+            >
               系统严格按照预定义的规则执行指令。
             </div>
           </div>
@@ -63,122 +118,245 @@
       </div>
 
       <!-- Stage 2: Machine Learning (Interactive 2D Plot) -->
-      <div v-else-if="currentStage === 1" class="stage-pane">
-        <el-alert type="info" :closable="false" show-icon class="compact-alert mb-2">
-          <template #title><span class="alert-title">阶段二：机器学习 (Machine Learning)</span></template>
-          <template #default><span class="alert-desc">点击画布添加数据点，训练模型自动寻找分类边界 (Decision Boundary)。</span></template>
+      <div
+        v-else-if="currentStage === 1"
+        class="stage-pane"
+      >
+        <el-alert
+          type="info"
+          :closable="false"
+          show-icon
+          class="compact-alert mb-2"
+        >
+          <template #title>
+            <span class="alert-title">阶段二：机器学习 (Machine Learning)</span>
+          </template>
+          <template #default>
+            <span class="alert-desc">点击画布添加数据点，训练模型自动寻找分类边界 (Decision Boundary)。</span>
+          </template>
         </el-alert>
 
         <div class="game-area-grid">
-          <div class="panel left-panel canvas-container" @click="addPoint">
-             <!-- Simple SVG Plot -->
-             <svg width="100%" height="200" class="ml-plot">
-                <!-- Background Regions (Visible after training) -->
-                <rect v-if="modelTrained" x="0" y="0" width="100%" height="100%" :fill="boundaryColor" />
+          <div
+            class="panel left-panel canvas-container"
+            @click="addPoint"
+          >
+            <!-- Simple SVG Plot -->
+            <svg
+              width="100%"
+              height="200"
+              class="ml-plot"
+            >
+              <!-- Background Regions (Visible after training) -->
+              <rect
+                v-if="modelTrained"
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                :fill="boundaryColor"
+              />
                 
-                <!-- Decision Line -->
-                <line v-if="modelTrained" :x1="line.x1" :y1="line.y1" :x2="line.x2" :y2="line.y2" stroke="#333" stroke-width="2" stroke-dasharray="4" />
+              <!-- Decision Line -->
+              <line
+                v-if="modelTrained"
+                :x1="line.x1"
+                :y1="line.y1"
+                :x2="line.x2"
+                :y2="line.y2"
+                stroke="#333"
+                stroke-width="2"
+                stroke-dasharray="4"
+              />
 
-                <!-- Points -->
-                <circle 
-                  v-for="(p, i) in points" 
-                  :key="i" 
-                  :cx="p.x" 
-                  :cy="p.y" 
-                  r="6" 
-                  :fill="p.type === 'A' ? '#409eff' : '#e6a23c'" 
-                  stroke="white" 
-                  stroke-width="2" 
-                />
-             </svg>
-             <div class="canvas-hint" v-if="points.length === 0">👆 点击此处添加数据点</div>
+              <!-- Points -->
+              <circle 
+                v-for="(p, i) in points" 
+                :key="i" 
+                :cx="p.x" 
+                :cy="p.y" 
+                r="6" 
+                :fill="p.type === 'A' ? '#409eff' : '#e6a23c'" 
+                stroke="white" 
+                stroke-width="2" 
+              />
+            </svg>
+            <div
+              v-if="points.length === 0"
+              class="canvas-hint"
+            >
+              👆 点击此处添加数据点
+            </div>
           </div>
 
           <div class="panel right-panel">
-            <div class="panel-header">控制面板</div>
+            <div class="panel-header">
+              控制面板
+            </div>
             <div class="control-group">
               <span class="label">当前类别:</span>
-              <el-radio-group v-model="currentClass" size="small">
-                <el-radio-button label="A"><span style="color: #409eff">● 蓝类</span></el-radio-button>
-                <el-radio-button label="B"><span style="color: #e6a23c">● 橙类</span></el-radio-button>
+              <el-radio-group
+                v-model="currentClass"
+                size="small"
+              >
+                <el-radio-button label="A">
+                  <span style="color: #409eff">● 蓝类</span>
+                </el-radio-button>
+                <el-radio-button label="B">
+                  <span style="color: #e6a23c">● 橙类</span>
+                </el-radio-button>
               </el-radio-group>
             </div>
             
             <div class="control-group mt-2">
-              <el-button type="primary" size="small" @click="trainLinearModel" :disabled="points.length < 2">
+              <el-button
+                type="primary"
+                size="small"
+                :disabled="points.length < 2"
+                @click="trainLinearModel"
+              >
                 ⚡ 开始训练 (Fit)
               </el-button>
-              <el-button size="small" :icon="Delete" circle @click="clearPoints" />
+              <el-button
+                size="small"
+                :icon="Delete"
+                circle
+                @click="clearPoints"
+              />
             </div>
 
             <div class="stats-info mt-2">
-              <p v-if="!modelTrained" class="text-desc">机器学习不再依赖硬编码规则，而是通过统计学方法（如寻找中心点或线性回归）在数据之间划出一条"界线"。试试在不同位置添加点，看看界线如何变化。</p>
-              <p v-else class="text-desc">模型已训练！它找到了一条最佳分割线。新进来的数据将根据它在红区还是蓝区被自动分类。</p>
+              <p
+                v-if="!modelTrained"
+                class="text-desc"
+              >
+                机器学习不再依赖硬编码规则，而是通过统计学方法（如寻找中心点或线性回归）在数据之间划出一条"界线"。试试在不同位置添加点，看看界线如何变化。
+              </p>
+              <p
+                v-else
+                class="text-desc"
+              >
+                模型已训练！它找到了一条最佳分割线。新进来的数据将根据它在红区还是蓝区被自动分类。
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Stage 3: Deep Learning (3x3 Grid Feature Extraction) -->
-      <div v-else class="stage-pane">
-        <el-alert type="info" :closable="false" show-icon class="compact-alert mb-2">
-          <template #title><span class="alert-title">阶段三：深度学习 (Deep Learning)</span></template>
-          <template #default><span class="alert-desc">神经网络通过多层结构自动提取特征（Feature Extraction）。点击格子绘制图案。</span></template>
+      <div
+        v-else
+        class="stage-pane"
+      >
+        <el-alert
+          type="info"
+          :closable="false"
+          show-icon
+          class="compact-alert mb-2"
+        >
+          <template #title>
+            <span class="alert-title">阶段三：深度学习 (Deep Learning)</span>
+          </template>
+          <template #default>
+            <span class="alert-desc">神经网络通过多层结构自动提取特征（Feature Extraction）。点击格子绘制图案。</span>
+          </template>
         </el-alert>
 
         <div class="game-area-grid">
           <div class="panel left-panel grid-container">
-             <div class="pixel-grid">
-               <div 
-                 v-for="(pixel, i) in pixels" 
-                 :key="i" 
-                 class="pixel" 
-                 :class="{ active: pixel }"
-                 @click="togglePixel(i)"
-               ></div>
-             </div>
-             <div class="grid-actions">
-               <el-button size="small" link @click="preset('x')">❌ X型</el-button>
-               <el-button size="small" link @click="preset('plus')">➕ 十字</el-button>
-               <el-button size="small" link @click="clearPixels">清空</el-button>
-             </div>
+            <div class="pixel-grid">
+              <div 
+                v-for="(pixel, i) in pixels" 
+                :key="i" 
+                class="pixel" 
+                :class="{ active: pixel }"
+                @click="togglePixel(i)"
+              />
+            </div>
+            <div class="grid-actions">
+              <el-button
+                size="small"
+                link
+                @click="preset('x')"
+              >
+                ❌ X型
+              </el-button>
+              <el-button
+                size="small"
+                link
+                @click="preset('plus')"
+              >
+                ➕ 十字
+              </el-button>
+              <el-button
+                size="small"
+                link
+                @click="clearPixels"
+              >
+                清空
+              </el-button>
+            </div>
           </div>
 
           <div class="panel right-panel">
-            <div class="panel-header">神经网络层级透视</div>
+            <div class="panel-header">
+              神经网络层级透视
+            </div>
             
             <!-- Visualization of Layers -->
             <div class="network-viz">
               <div class="layer input-layer">
-                <div class="layer-label">输入层 (Pixels)</div>
+                <div class="layer-label">
+                  输入层 (Pixels)
+                </div>
                 <div class="nodes">
-                  <span v-for="n in 9" :key="n" class="node mini" :class="{active: pixels[n-1]}"></span>
+                  <span
+                    v-for="n in 9"
+                    :key="n"
+                    class="node mini"
+                    :class="{active: pixels[n-1]}"
+                  />
                 </div>
               </div>
               
-              <div class="arrow-down">⬇️ 卷积/提取特征</div>
+              <div class="arrow-down">
+                ⬇️ 卷积/提取特征
+              </div>
 
               <div class="layer hidden-layer">
-                <div class="layer-label">隐藏层 (Features)</div>
+                <div class="layer-label">
+                  隐藏层 (Features)
+                </div>
                 <div class="feature-detectors">
-                  <div class="feature" :class="{detected: features.center}">
+                  <div
+                    class="feature"
+                    :class="{detected: features.center}"
+                  >
                     <span class="f-icon">⏺</span> 中心点
                   </div>
-                  <div class="feature" :class="{detected: features.corners}">
+                  <div
+                    class="feature"
+                    :class="{detected: features.corners}"
+                  >
                     <span class="f-icon">Corners</span> 四角
                   </div>
-                  <div class="feature" :class="{detected: features.cross}">
+                  <div
+                    class="feature"
+                    :class="{detected: features.cross}"
+                  >
                     <span class="f-icon">➕</span> 交叉
                   </div>
                 </div>
               </div>
 
-              <div class="arrow-down">⬇️ 输出层</div>
+              <div class="arrow-down">
+                ⬇️ 输出层
+              </div>
 
               <div class="layer output-layer">
-                 <div class="prediction-box">
-                   识别结果: <span class="result-text">{{ prediction }}</span>
-                 </div>
+                <div class="prediction-box">
+                  识别结果: <span class="result-text">{{ prediction }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -187,12 +365,24 @@
 
       <!-- Footer Navigation -->
       <div class="footer-nav mt-2 flex justify-end">
-         <el-button-group>
-          <el-button size="small" :disabled="currentStage === 0" @click="currentStage--">上一步</el-button>
-          <el-button size="small" type="primary" :disabled="currentStage === 2" @click="currentStage++">下一步</el-button>
+        <el-button-group>
+          <el-button
+            size="small"
+            :disabled="currentStage === 0"
+            @click="currentStage--"
+          >
+            上一步
+          </el-button>
+          <el-button
+            size="small"
+            type="primary"
+            :disabled="currentStage === 2"
+            @click="currentStage++"
+          >
+            下一步
+          </el-button>
         </el-button-group>
       </div>
-
     </el-card>
   </div>
 </template>

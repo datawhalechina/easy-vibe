@@ -22,19 +22,28 @@
             <span class="guard-icon">{{ guard.icon }}</span>
             <span class="guard-name">{{ guard.name }}</span>
           </div>
-          <div class="guard-desc">{{ guard.shortDesc }}</div>
+          <div class="guard-desc">
+            {{ guard.shortDesc }}
+          </div>
         </div>
       </div>
 
       <Transition name="fade">
-        <div v-if="activeGuard" class="guard-detail">
+        <div
+          v-if="activeGuard"
+          class="guard-detail"
+        >
           <div class="detail-header">
             <span class="detail-icon">{{ currentGuard?.icon }}</span>
             <span class="detail-title">{{ currentGuard?.name }}</span>
           </div>
-          <div class="detail-desc">{{ currentGuard?.description }}</div>
+          <div class="detail-desc">
+            {{ currentGuard?.description }}
+          </div>
           <div class="detail-example">
-            <div class="example-label">💻 代码示例：</div>
+            <div class="example-label">
+              💻 代码示例：
+            </div>
             <pre class="code-block">{{ currentGuard?.example }}</pre>
           </div>
         </div>
@@ -49,10 +58,16 @@
           :key="index"
           class="flow-step"
         >
-          <div class="step-number">{{ index + 1 }}</div>
+          <div class="step-number">
+            {{ index + 1 }}
+          </div>
           <div class="step-content">
-            <div class="step-name">{{ step.name }}</div>
-            <div class="step-desc">{{ step.description }}</div>
+            <div class="step-name">
+              {{ step.name }}
+            </div>
+            <div class="step-desc">
+              {{ step.description }}
+            </div>
           </div>
         </div>
       </div>

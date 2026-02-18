@@ -4,30 +4,61 @@
   场景：策划团建活动
 -->
 <template>
-  <el-card class="robustness-card" shadow="hover">
+  <el-card
+    class="robustness-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="card-header">
         <div>
-          <h3 class="title">让 AI 更“稳”：拒绝瞎猜，学会反问与自查</h3>
-          <p class="subtitle">面对模糊指令，AI 应该“不懂就问”而不是“一本正经胡说”。</p>
+          <h3 class="title">
+            让 AI 更“稳”：拒绝瞎猜，学会反问与自查
+          </h3>
+          <p class="subtitle">
+            面对模糊指令，AI 应该“不懂就问”而不是“一本正经胡说”。
+          </p>
         </div>
       </div>
     </template>
 
     <div class="controls-section">
-      <el-row :gutter="20" align="middle">
-        <el-col :span="12" :xs="24">
+      <el-row
+        :gutter="20"
+        align="middle"
+      >
+        <el-col
+          :span="12"
+          :xs="24"
+        >
           <div class="input-display">
             <span class="label">你的指令：</span>
-            <el-tag type="info" size="large" effect="plain">“帮我策划一个团建活动。”</el-tag>
+            <el-tag
+              type="info"
+              size="large"
+              effect="plain"
+            >
+              “帮我策划一个团建活动。”
+            </el-tag>
           </div>
         </el-col>
-        <el-col :span="12" :xs="24">
+        <el-col
+          :span="12"
+          :xs="24"
+        >
           <div class="mode-switch">
-            <el-radio-group v-model="mode" @change="resetState">
-              <el-radio-button label="raw">直接生成</el-radio-button>
-              <el-radio-button label="clarify">允许提问</el-radio-button>
-              <el-radio-button label="verify">要求自检</el-radio-button>
+            <el-radio-group
+              v-model="mode"
+              @change="resetState"
+            >
+              <el-radio-button label="raw">
+                直接生成
+              </el-radio-button>
+              <el-radio-button label="clarify">
+                允许提问
+              </el-radio-button>
+              <el-radio-button label="verify">
+                要求自检
+              </el-radio-button>
             </el-radio-group>
           </div>
         </el-col>
@@ -36,69 +67,146 @@
 
     <div class="simulation-area">
       <!-- 模式 1: 直接生成 -->
-      <div v-if="mode === 'raw'" class="scenario raw">
+      <div
+        v-if="mode === 'raw'"
+        class="scenario raw"
+      >
         <div class="chat-bubble ai">
           <div class="avatar-container">
-            <el-avatar :size="40" style="background-color: var(--vp-c-brand)">AI</el-avatar>
+            <el-avatar
+              :size="40"
+              style="background-color: var(--vp-c-brand)"
+            >
+              AI
+            </el-avatar>
           </div>
-          <el-card shadow="never" class="bubble-content">
+          <el-card
+            shadow="never"
+            class="bubble-content"
+          >
             <p>好的！为您推荐以下活动：</p>
             <ol>
               <li>豪华游艇出海派对（人均 5000）</li>
               <li>也就是去楼下吃个火锅（人均 100）</li>
               <li>徒步穿越无人区（高风险）</li>
             </ol>
-            <div class="note">（AI 内心：你不说预算和人数，我就随便猜了...）</div>
+            <div class="note">
+              （AI 内心：你不说预算和人数，我就随便猜了...）
+            </div>
           </el-card>
         </div>
-        <el-alert title="结果不可控：AI 只能盲猜，方案可能完全不靠谱" type="error" show-icon :closable="false" />
+        <el-alert
+          title="结果不可控：AI 只能盲猜，方案可能完全不靠谱"
+          type="error"
+          show-icon
+          :closable="false"
+        />
       </div>
 
       <!-- 模式 2: 澄清问题 -->
-      <div v-if="mode === 'clarify'" class="scenario clarify">
+      <div
+        v-if="mode === 'clarify'"
+        class="scenario clarify"
+      >
         <div class="chat-bubble ai">
           <div class="avatar-container">
-            <el-avatar :size="40" style="background-color: var(--vp-c-brand)">AI</el-avatar>
+            <el-avatar
+              :size="40"
+              style="background-color: var(--vp-c-brand)"
+            >
+              AI
+            </el-avatar>
           </div>
-          <el-card shadow="never" class="bubble-content">
+          <el-card
+            shadow="never"
+            class="bubble-content"
+          >
             <p>收到。为了给出精准建议，我需要确认 3 点：</p>
-            <el-form label-position="top" size="small" class="questions-form">
+            <el-form
+              label-position="top"
+              size="small"
+              class="questions-form"
+            >
               <el-row :gutter="12">
-                <el-col :span="8" :xs="24">
+                <el-col
+                  :span="8"
+                  :xs="24"
+                >
                   <el-form-item label="1. 人数规模？">
                     <el-select v-model="answers.count">
-                      <el-option label="10人小团队" value="10" />
-                      <el-option label="100人大大公司" value="100" />
+                      <el-option
+                        label="10人小团队"
+                        value="10"
+                      />
+                      <el-option
+                        label="100人大大公司"
+                        value="100"
+                      />
                     </el-select>
                   </el-form-item>
                 </el-col>
-                <el-col :span="8" :xs="24">
+                <el-col
+                  :span="8"
+                  :xs="24"
+                >
                   <el-form-item label="2. 人均预算？">
                     <el-select v-model="answers.budget">
-                      <el-option label="低（<200元）" value="low" />
-                      <el-option label="高（>1000元）" value="high" />
+                      <el-option
+                        label="低（<200元）"
+                        value="low"
+                      />
+                      <el-option
+                        label="高（>1000元）"
+                        value="high"
+                      />
                     </el-select>
                   </el-form-item>
                 </el-col>
-                <el-col :span="8" :xs="24">
+                <el-col
+                  :span="8"
+                  :xs="24"
+                >
                   <el-form-item label="3. 偏好？">
                     <el-select v-model="answers.type">
-                      <el-option label="轻松吃喝" value="relax" />
-                      <el-option label="户外运动" value="active" />
+                      <el-option
+                        label="轻松吃喝"
+                        value="relax"
+                      />
+                      <el-option
+                        label="户外运动"
+                        value="active"
+                      />
                     </el-select>
                   </el-form-item>
                 </el-col>
               </el-row>
-              <el-button type="primary" @click="generatePlan" style="margin-top: 8px">生成方案</el-button>
+              <el-button
+                type="primary"
+                style="margin-top: 8px"
+                @click="generatePlan"
+              >
+                生成方案
+              </el-button>
             </el-form>
           </el-card>
         </div>
         
-        <div v-if="planResult" class="chat-bubble ai result fade-in">
+        <div
+          v-if="planResult"
+          class="chat-bubble ai result fade-in"
+        >
           <div class="avatar-container">
-            <el-avatar :size="40" style="background-color: var(--vp-c-brand)">AI</el-avatar>
+            <el-avatar
+              :size="40"
+              style="background-color: var(--vp-c-brand)"
+            >
+              AI
+            </el-avatar>
           </div>
-          <el-card shadow="never" class="bubble-content plan-result">
+          <el-card
+            shadow="never"
+            class="bubble-content plan-result"
+          >
             <p>基于您的要求（{{ answerSummary }}），推荐方案：</p>
             <div class="plan-card">
               <h3>{{ planResult.title }}</h3>
@@ -109,47 +217,122 @@
       </div>
 
       <!-- 模式 3: 自我修正 -->
-      <div v-if="mode === 'verify'" class="scenario verify">
-        <el-alert type="info" show-icon :closable="false" style="margin-bottom: 20px">
+      <div
+        v-if="mode === 'verify'"
+        class="scenario verify"
+      >
+        <el-alert
+          type="info"
+          show-icon
+          :closable="false"
+          style="margin-bottom: 20px"
+        >
           <template #title>
             指令升级：策划一个活动，<strong>必须包含素食选项</strong>，且<strong>总预算不超过 2000 元</strong>。
           </template>
         </el-alert>
         
-        <el-steps :active="verifyStep" align-center finish-status="success" style="margin-bottom: 24px">
-          <el-step title="初次生成" :icon="Edit" />
-          <el-step title="自我检查" :icon="View" />
-          <el-step title="修正输出" :icon="CircleCheck" />
+        <el-steps
+          :active="verifyStep"
+          align-center
+          finish-status="success"
+          style="margin-bottom: 24px"
+        >
+          <el-step
+            title="初次生成"
+            :icon="Edit"
+          />
+          <el-step
+            title="自我检查"
+            :icon="View"
+          />
+          <el-step
+            title="修正输出"
+            :icon="CircleCheck"
+          />
         </el-steps>
 
         <div class="monitor-log">
           <el-collapse-transition>
-            <div v-if="verifyStep >= 1" class="log-item">
-              <el-tag size="small" type="info">生成草稿</el-tag>
+            <div
+              v-if="verifyStep >= 1"
+              class="log-item"
+            >
+              <el-tag
+                size="small"
+                type="info"
+              >
+                生成草稿
+              </el-tag>
               <span class="log-text">“全牛宴烧烤，预计花费 3000 元...”</span>
             </div>
           </el-collapse-transition>
           <el-collapse-transition>
-            <div v-if="verifyStep >= 2" class="log-item check-fail">
-              <el-tag size="small" type="danger">自检发现</el-tag>
+            <div
+              v-if="verifyStep >= 2"
+              class="log-item check-fail"
+            >
+              <el-tag
+                size="small"
+                type="danger"
+              >
+                自检发现
+              </el-tag>
               <div class="check-list">
-                <div class="fail-item"><el-icon color="#f56c6c"><Close /></el-icon> 包含素食？否（全是肉）</div>
-                <div class="fail-item"><el-icon color="#f56c6c"><Close /></el-icon> 预算&lt;2000？否（3000超标）</div>
+                <div class="fail-item">
+                  <el-icon color="#f56c6c">
+                    <Close />
+                  </el-icon> 包含素食？否（全是肉）
+                </div>
+                <div class="fail-item">
+                  <el-icon color="#f56c6c">
+                    <Close />
+                  </el-icon> 预算&lt;2000？否（3000超标）
+                </div>
               </div>
             </div>
           </el-collapse-transition>
           <el-collapse-transition>
-            <div v-if="verifyStep >= 3" class="log-item success">
-              <el-tag size="small" type="success">修正后</el-tag>
+            <div
+              v-if="verifyStep >= 3"
+              class="log-item success"
+            >
+              <el-tag
+                size="small"
+                type="success"
+              >
+                修正后
+              </el-tag>
               <span class="log-text">“田园蔬菜自助 + 少量烤肉，预计花费 1800 元。” ✅</span>
             </div>
           </el-collapse-transition>
         </div>
         
-        <div class="actions" style="text-align: center; margin-top: 20px;">
-          <el-button v-if="verifyStep === 0" type="primary" @click="runVerify" size="large">开始运行</el-button>
-          <el-button v-else-if="verifyStep === 3" @click="verifyStep = 0">重置演示</el-button>
-          <el-button v-else loading disabled>处理中...</el-button>
+        <div
+          class="actions"
+          style="text-align: center; margin-top: 20px;"
+        >
+          <el-button
+            v-if="verifyStep === 0"
+            type="primary"
+            size="large"
+            @click="runVerify"
+          >
+            开始运行
+          </el-button>
+          <el-button
+            v-else-if="verifyStep === 3"
+            @click="verifyStep = 0"
+          >
+            重置演示
+          </el-button>
+          <el-button
+            v-else
+            loading
+            disabled
+          >
+            处理中...
+          </el-button>
         </div>
       </div>
     </div>

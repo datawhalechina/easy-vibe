@@ -15,10 +15,10 @@
         <button
           v-for="(step, index) in steps"
           :key="step.id"
-          @click="goToStep(index)"
           class="step-chip"
           :class="{ active: currentStep === index, completed: currentStep > index }"
           :disabled="isAutoPlaying"
+          @click="goToStep(index)"
         >
           <span class="chip-num">{{ index + 1 }}</span>
           <span class="chip-name">{{ step.shortName }}</span>
@@ -35,12 +35,24 @@
           <span class="col-title">收到的代码</span>
         </div>
         <div class="code-preview">
-          <div class="code-line">&lt;div class="box"&gt;</div>
-          <div class="code-line indent">Hello</div>
-          <div class="code-line">&lt;/div&gt;</div>
-          <div class="code-line style-tag">&lt;style&gt;</div>
-          <div class="code-line indent">.box { bg: blue }</div>
-          <div class="code-line style-tag">&lt;/style&gt;</div>
+          <div class="code-line">
+            &lt;div class="box"&gt;
+          </div>
+          <div class="code-line indent">
+            Hello
+          </div>
+          <div class="code-line">
+            &lt;/div&gt;
+          </div>
+          <div class="code-line style-tag">
+            &lt;style&gt;
+          </div>
+          <div class="code-line indent">
+            .box { bg: blue }
+          </div>
+          <div class="code-line style-tag">
+            &lt;/style&gt;
+          </div>
         </div>
       </div>
 
@@ -53,60 +65,134 @@
         
         <div class="process-stage">
           <!-- 步骤展示 -->
-          <transition name="fade" mode="out-in">
-            <div :key="currentStep" class="step-content">
+          <transition
+            name="fade"
+            mode="out-in"
+          >
+            <div
+              :key="currentStep"
+              class="step-content"
+            >
               <div class="step-visual">
                 <!-- 1. HTML解析 -->
-                <div v-if="currentStep === 0" class="visual-tree">
-                  <div class="tree-node root">html</div>
-                  <div class="tree-line">│</div>
-                  <div class="tree-node body">body</div>
-                  <div class="tree-line">│</div>
-                  <div class="tree-node div highlight">div.box</div>
+                <div
+                  v-if="currentStep === 0"
+                  class="visual-tree"
+                >
+                  <div class="tree-node root">
+                    html
+                  </div>
+                  <div class="tree-line">
+                    │
+                  </div>
+                  <div class="tree-node body">
+                    body
+                  </div>
+                  <div class="tree-line">
+                    │
+                  </div>
+                  <div class="tree-node div highlight">
+                    div.box
+                  </div>
                 </div>
 
                 <!-- 2. CSS解析 -->
-                <div v-else-if="currentStep === 1" class="visual-css">
+                <div
+                  v-else-if="currentStep === 1"
+                  class="visual-css"
+                >
                   <div class="css-card">
                     <span class="selector">.box</span>
-                    <div class="rule">background: <span class="value">blue</span></div>
+                    <div class="rule">
+                      background: <span class="value">blue</span>
+                    </div>
                   </div>
                 </div>
 
                 <!-- 3. 合并渲染树 -->
-                <div v-else-if="currentStep === 2" class="visual-combine">
-                  <div class="combine-item dom">DOM树</div>
-                  <div class="combine-plus">+</div>
-                  <div class="combine-item css">CSS树</div>
-                  <div class="combine-arrow">→</div>
-                  <div class="combine-result">渲染树</div>
+                <div
+                  v-else-if="currentStep === 2"
+                  class="visual-combine"
+                >
+                  <div class="combine-item dom">
+                    DOM树
+                  </div>
+                  <div class="combine-plus">
+                    +
+                  </div>
+                  <div class="combine-item css">
+                    CSS树
+                  </div>
+                  <div class="combine-arrow">
+                    →
+                  </div>
+                  <div class="combine-result">
+                    渲染树
+                  </div>
                 </div>
 
                 <!-- 4. 布局计算 -->
-                <div v-else-if="currentStep === 3" class="visual-layout">
-                  <div class="layout-box" :class="{ measured: isMeasured }">
-                    <span class="measure-label" v-if="isMeasured">100px × 100px</span>
-                    <div class="ruler-h" v-if="isMeasured"></div>
-                    <div class="ruler-v" v-if="isMeasured"></div>
+                <div
+                  v-else-if="currentStep === 3"
+                  class="visual-layout"
+                >
+                  <div
+                    class="layout-box"
+                    :class="{ measured: isMeasured }"
+                  >
+                    <span
+                      v-if="isMeasured"
+                      class="measure-label"
+                    >100px × 100px</span>
+                    <div
+                      v-if="isMeasured"
+                      class="ruler-h"
+                    />
+                    <div
+                      v-if="isMeasured"
+                      class="ruler-v"
+                    />
                   </div>
                 </div>
 
                 <!-- 5. 绘制 -->
-                <div v-else-if="currentStep === 4" class="visual-paint">
-                  <div class="paint-layer bg" :class="{ painted: isPainted }">背景层</div>
-                  <div class="paint-layer text" :class="{ painted: isPainted }">文字层</div>
+                <div
+                  v-else-if="currentStep === 4"
+                  class="visual-paint"
+                >
+                  <div
+                    class="paint-layer bg"
+                    :class="{ painted: isPainted }"
+                  >
+                    背景层
+                  </div>
+                  <div
+                    class="paint-layer text"
+                    :class="{ painted: isPainted }"
+                  >
+                    文字层
+                  </div>
                 </div>
 
                 <!-- 6. 合成 -->
-                <div v-else class="visual-final">
-                  <div class="final-box">Hello</div>
-                  <div class="check-mark">✨</div>
+                <div
+                  v-else
+                  class="visual-final"
+                >
+                  <div class="final-box">
+                    Hello
+                  </div>
+                  <div class="check-mark">
+                    ✨
+                  </div>
                 </div>
               </div>
               
               <div class="step-desc">
                 <span class="step-badge">{{ currentStep + 1 }}. {{ steps[currentStep].name }}</span>
-                <p class="step-text">{{ steps[currentStep].desc }}</p>
+                <p class="step-text">
+                  {{ steps[currentStep].desc }}
+                </p>
               </div>
             </div>
           </transition>
@@ -121,21 +207,30 @@
         </div>
         <div class="screen-preview">
           <div class="browser-toolbar">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+            <span class="dot red" />
+            <span class="dot yellow" />
+            <span class="dot green" />
           </div>
           <div class="viewport">
             <transition name="scale">
-              <div v-if="currentStep >= 5" class="final-render">
+              <div
+                v-if="currentStep >= 5"
+                class="final-render"
+              >
                 Hello
               </div>
-              <div v-else-if="currentStep >= 4" class="skeleton-render">
-                <div class="sk-box"></div>
+              <div
+                v-else-if="currentStep >= 4"
+                class="skeleton-render"
+              >
+                <div class="sk-box" />
               </div>
             </transition>
-            <div v-if="currentStep < 4" class="loading-spinner">
-              <div class="spinner"></div>
+            <div
+              v-if="currentStep < 4"
+              class="loading-spinner"
+            >
+              <div class="spinner" />
             </div>
           </div>
         </div>
@@ -147,32 +242,56 @@
       <div class="analogy-bar">
         <span class="analogy-icon">💡</span>
         <span class="analogy-text">
-          <strong>核心机制：</strong> <span v-html="steps[currentStep].analogy"></span>
+          <strong>核心机制：</strong> <span v-html="steps[currentStep].analogy" />
         </span>
       </div>
       
       <div class="action-buttons">
-        <button class="ctrl-btn" @click="prevStep" :disabled="currentStep <= 0 || isAutoPlaying">
+        <button
+          class="ctrl-btn"
+          :disabled="currentStep <= 0 || isAutoPlaying"
+          @click="prevStep"
+        >
           上一步
         </button>
-        <button class="ctrl-btn primary" @click="toggleAutoPlay">
+        <button
+          class="ctrl-btn primary"
+          @click="toggleAutoPlay"
+        >
           {{ isAutoPlaying ? '暂停演示' : '自动演示' }}
         </button>
-        <button class="ctrl-btn" @click="nextStep" :disabled="currentStep >= steps.length - 1 || isAutoPlaying">
+        <button
+          class="ctrl-btn"
+          :disabled="currentStep >= steps.length - 1 || isAutoPlaying"
+          @click="nextStep"
+        >
           下一步
         </button>
       </div>
     </div>
 
     <!-- 技术答疑面板 -->
-    <div class="qa-panel" v-if="steps[currentStep].qa">
+    <div
+      v-if="steps[currentStep].qa"
+      class="qa-panel"
+    >
       <div class="qa-header">
         {{ steps[currentStep].qa.title }}
       </div>
       <div class="qa-content">
-        <div v-for="(item, idx) in steps[currentStep].qa.content" :key="idx" class="qa-item">
-          <div class="qa-q" v-html="'Q: ' + item.q"></div>
-          <div class="qa-a" v-html="item.a"></div>
+        <div
+          v-for="(item, idx) in steps[currentStep].qa.content"
+          :key="idx"
+          class="qa-item"
+        >
+          <div
+            class="qa-q"
+            v-html="'Q: ' + item.q"
+          />
+          <div
+            class="qa-a"
+            v-html="item.a"
+          />
         </div>
       </div>
     </div>

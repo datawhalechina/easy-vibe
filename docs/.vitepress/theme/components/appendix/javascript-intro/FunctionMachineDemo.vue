@@ -41,11 +41,19 @@ const currentCode = ref(`const calculatePrice = (price, discount) => {
         <div class="input-group">
           <label>
             价格:
-            <input v-model.number="price" type="number" min="0" :disabled="isRunning" />
+            <input
+              v-model.number="price"
+              type="number"
+              min="0"
+              :disabled="isRunning"
+            >
           </label>
           <label>
             折扣:
-            <select v-model.number="discount" :disabled="isRunning">
+            <select
+              v-model.number="discount"
+              :disabled="isRunning"
+            >
               <option :value="0.8">8 折 (0.8)</option>
               <option :value="0.5">5 折 (0.5)</option>
               <option :value="0.7">7 折 (0.7)</option>
@@ -58,7 +66,9 @@ const currentCode = ref(`const calculatePrice = (price, discount) => {
       <div class="pipeline-section machine-section">
         <h4>函数</h4>
         <div class="machine">
-          <div class="machine-label">calculatePrice</div>
+          <div class="machine-label">
+            calculatePrice
+          </div>
           <div class="machine-code">
             <pre v-if="functionType === 'declaration'"><code>return price * discount</code></pre>
             <pre v-else-if="functionType === 'expression'"><code>return price * discount</code></pre>
@@ -70,28 +80,50 @@ const currentCode = ref(`const calculatePrice = (price, discount) => {
           <button
             v-for="type in functionTypes"
             :key="type.value"
-            @click="functionType = type.value"
             :class="{ active: functionType === type.value }"
             class="type-btn"
+            @click="functionType = type.value"
           >
             {{ type.label }}
           </button>
         </div>
-        <div class="tip" v-if="functionType !== 'arrow'">✏️ 写法不同，但做的事一模一样</div>
+        <div
+          v-if="functionType !== 'arrow'"
+          class="tip"
+        >
+          ✏️ 写法不同，但做的事一模一样
+        </div>
       </div>
 
       <!-- 输出区 -->
       <div class="pipeline-section output-section">
         <h4>返回值（输出）</h4>
-        <div class="output-display" :class="{ 'processing': isRunning }">
-          <div v-if="result === null" class="placeholder">?</div>
-          <div v-else class="result">¥{{ result.toFixed(2) }}</div>
+        <div
+          class="output-display"
+          :class="{ 'processing': isRunning }"
+        >
+          <div
+            v-if="result === null"
+            class="placeholder"
+          >
+            ?
+          </div>
+          <div
+            v-else
+            class="result"
+          >
+            ¥{{ result.toFixed(2) }}
+          </div>
         </div>
       </div>
     </div>
 
     <div class="controls">
-      <button @click="execute" :disabled="isRunning" class="btn-execute">
+      <button
+        :disabled="isRunning"
+        class="btn-execute"
+        @click="execute"
+      >
         {{ isRunning ? '处理中...' : '执行 ▶' }}
       </button>
     </div>

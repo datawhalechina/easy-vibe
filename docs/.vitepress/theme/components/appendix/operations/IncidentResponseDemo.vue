@@ -5,8 +5,12 @@
 <template>
   <div class="incident-demo">
     <div class="header">
-      <div class="title">故障响应流程 (Incident Response)</div>
-      <div class="subtitle">专业团队如何处理线上故障</div>
+      <div class="title">
+        故障响应流程 (Incident Response)
+      </div>
+      <div class="subtitle">
+        专业团队如何处理线上故障
+      </div>
     </div>
 
     <div class="timeline">
@@ -19,27 +23,47 @@
         ]"
         @click="activePhase = index"
       >
-        <div class="phase-marker">{{ index + 1 }}</div>
+        <div class="phase-marker">
+          {{ index + 1 }}
+        </div>
         <div class="phase-content">
-          <div class="phase-title">{{ phase.title }}</div>
-          <div class="phase-time">{{ phase.time }}</div>
-          <div class="phase-desc">{{ phase.desc }}</div>
-          <div v-if="activePhase === index" class="phase-actions">
-            <div class="action-title">关键动作：</div>
+          <div class="phase-title">
+            {{ phase.title }}
+          </div>
+          <div class="phase-time">
+            {{ phase.time }}
+          </div>
+          <div class="phase-desc">
+            {{ phase.desc }}
+          </div>
+          <div
+            v-if="activePhase === index"
+            class="phase-actions"
+          >
+            <div class="action-title">
+              关键动作：
+            </div>
             <ul class="action-list">
-              <li v-for="action in phase.actions" :key="action">
+              <li
+                v-for="action in phase.actions"
+                :key="action"
+              >
                 {{ action }}
               </li>
             </ul>
-            <div v-if="phase.tools" class="tools-section">
-              <div class="tools-title">常用工具：</div>
+            <div
+              v-if="phase.tools"
+              class="tools-section"
+            >
+              <div class="tools-title">
+                常用工具：
+              </div>
               <div class="tools-list">
                 <span
                   v-for="tool in phase.tools"
                   :key="tool"
                   class="tool-tag"
-                  >{{ tool }}</span
-                >
+                >{{ tool }}</span>
               </div>
             </div>
           </div>
@@ -47,32 +71,55 @@
       </div>
     </div>
 
-    <div class="incident-meta" v-if="activePhase === phases.length - 1">
-      <div class="meta-title">📋 故障复盘报告 (Post-mortem)</div>
+    <div
+      v-if="activePhase === phases.length - 1"
+      class="incident-meta"
+    >
+      <div class="meta-title">
+        📋 故障复盘报告 (Post-mortem)
+      </div>
       <div class="meta-content">
         <div class="meta-section">
-          <div class="meta-label">故障等级：</div>
-          <div class="meta-value level-p1">P1 - 高优先级</div>
+          <div class="meta-label">
+            故障等级：
+          </div>
+          <div class="meta-value level-p1">
+            P1 - 高优先级
+          </div>
         </div>
         <div class="meta-section">
-          <div class="meta-label">影响范围：</div>
-          <div class="meta-value">约 15% 用户无法访问订单服务</div>
+          <div class="meta-label">
+            影响范围：
+          </div>
+          <div class="meta-value">
+            约 15% 用户无法访问订单服务
+          </div>
         </div>
         <div class="meta-section">
-          <div class="meta-label">故障时长：</div>
-          <div class="meta-value">23 分钟</div>
+          <div class="meta-label">
+            故障时长：
+          </div>
+          <div class="meta-value">
+            23 分钟
+          </div>
         </div>
         <div class="meta-section">
-          <div class="meta-label">根本原因：</div>
-          <div class="meta-value">数据库连接池配置过小，高峰期连接耗尽</div>
+          <div class="meta-label">
+            根本原因：
+          </div>
+          <div class="meta-value">
+            数据库连接池配置过小，高峰期连接耗尽
+          </div>
         </div>
         <div class="meta-section">
-          <div class="meta-label">改进措施：</div>
+          <div class="meta-label">
+            改进措施：
+          </div>
           <div class="meta-value">
             1. 增加连接池大小至 200
-            <br />
+            <br>
             2. 添加连接池监控告警
-            <br />
+            <br>
             3. 优化慢查询，减少连接占用时间
           </div>
         </div>
@@ -80,32 +127,50 @@
     </div>
 
     <div class="best-practices">
-      <div class="practice-title">🎯 故障处理最佳实践</div>
+      <div class="practice-title">
+        🎯 故障处理最佳实践
+      </div>
       <div class="practice-grid">
         <div class="practice-card">
-          <div class="practice-icon">⚡</div>
-          <div class="practice-name">快速响应</div>
+          <div class="practice-icon">
+            ⚡
+          </div>
+          <div class="practice-name">
+            快速响应
+          </div>
           <div class="practice-desc">
             建立 15 分钟响应机制，P0 故障立即电话通知
           </div>
         </div>
         <div class="practice-card">
-          <div class="practice-icon">📢</div>
-          <div class="practice-name">信息同步</div>
+          <div class="practice-icon">
+            📢
+          </div>
+          <div class="practice-name">
+            信息同步
+          </div>
           <div class="practice-desc">
             定期向用户和内部同步故障进展，避免猜测
           </div>
         </div>
         <div class="practice-card">
-          <div class="practice-icon">🔍</div>
-          <div class="practice-name">保留现场</div>
+          <div class="practice-icon">
+            🔍
+          </div>
+          <div class="practice-name">
+            保留现场
+          </div>
           <div class="practice-desc">
             故障现场数据（日志、监控）完整留存，便于分析
           </div>
         </div>
         <div class="practice-card">
-          <div class="practice-icon">📝</div>
-          <div class="practice-name">blameless 文化</div>
+          <div class="practice-icon">
+            📝
+          </div>
+          <div class="practice-name">
+            blameless 文化
+          </div>
           <div class="practice-desc">
             复盘对事不对人，聚焦流程改进而非个人责任
           </div>

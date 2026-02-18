@@ -34,12 +34,20 @@
 
     <div class="compare">
       <div class="col">
-        <div class="title">手动部署</div>
-        <div class="item">❌ 容易出错</div>
+        <div class="title">
+          手动部署
+        </div>
+        <div class="item">
+          ❌ 容易出错
+        </div>
       </div>
       <div class="col highlight">
-        <div class="title">CI/CD</div>
-        <div class="item">✅ 快速可靠</div>
+        <div class="title">
+          CI/CD
+        </div>
+        <div class="item">
+          ✅ 快速可靠
+        </div>
       </div>
     </div>
   </div>

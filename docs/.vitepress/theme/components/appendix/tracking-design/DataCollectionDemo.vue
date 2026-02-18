@@ -5,8 +5,12 @@
 <template>
   <div class="data-collection-demo">
     <div class="header">
-      <div class="title">数据采集方案</div>
-      <div class="subtitle">客户端、服务端、CDN三种采集方式对比</div>
+      <div class="title">
+        数据采集方案
+      </div>
+      <div class="subtitle">
+        客户端、服务端、CDN三种采集方式对比
+      </div>
     </div>
 
     <div class="collection-methods">
@@ -14,32 +18,62 @@
         v-for="method in methods"
         :key="method.id"
         class="method-card"
-        @click="selectedMethod = method.id"
         :class="{ active: selectedMethod === method.id }"
+        @click="selectedMethod = method.id"
       >
-        <div class="method-icon">{{ method.icon }}</div>
-        <div class="method-name">{{ method.name }}</div>
-        <div class="method-desc">{{ method.desc }}</div>
+        <div class="method-icon">
+          {{ method.icon }}
+        </div>
+        <div class="method-name">
+          {{ method.name }}
+        </div>
+        <div class="method-desc">
+          {{ method.desc }}
+        </div>
 
-        <div class="method-details" v-if="selectedMethod === method.id">
+        <div
+          v-if="selectedMethod === method.id"
+          class="method-details"
+        >
           <div class="detail-section">
-            <div class="section-title">✅ 优点</div>
+            <div class="section-title">
+              ✅ 优点
+            </div>
             <ul class="detail-list">
-              <li v-for="(pro, i) in method.pros" :key="i">{{ pro }}</li>
+              <li
+                v-for="(pro, i) in method.pros"
+                :key="i"
+              >
+                {{ pro }}
+              </li>
             </ul>
           </div>
 
           <div class="detail-section">
-            <div class="section-title">❌ 缺点</div>
+            <div class="section-title">
+              ❌ 缺点
+            </div>
             <ul class="detail-list">
-              <li v-for="(con, i) in method.cons" :key="i">{{ con }}</li>
+              <li
+                v-for="(con, i) in method.cons"
+                :key="i"
+              >
+                {{ con }}
+              </li>
             </ul>
           </div>
 
           <div class="detail-section">
-            <div class="section-title">🎯 适用场景</div>
+            <div class="section-title">
+              🎯 适用场景
+            </div>
             <ul class="detail-list">
-              <li v-for="(use, i) in method.useCases" :key="i">{{ use }}</li>
+              <li
+                v-for="(use, i) in method.useCases"
+                :key="i"
+              >
+                {{ use }}
+              </li>
             </ul>
           </div>
         </div>
@@ -47,12 +81,17 @@
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">方案对比</div>
+      <div class="table-title">
+        方案对比
+      </div>
       <table class="comparison">
         <thead>
           <tr>
             <th>对比维度</th>
-            <th v-for="method in methods" :key="method.id">
+            <th
+              v-for="method in methods"
+              :key="method.id"
+            >
               {{ method.name }}
             </th>
           </tr>
@@ -60,25 +99,37 @@
         <tbody>
           <tr>
             <td>数据准确性</td>
-            <td v-for="method in methods" :key="method.id">
+            <td
+              v-for="method in methods"
+              :key="method.id"
+            >
               {{ method.accuracy }}
             </td>
           </tr>
           <tr>
             <td>实时性</td>
-            <td v-for="method in methods" :key="method.id">
+            <td
+              v-for="method in methods"
+              :key="method.id"
+            >
               {{ method.realtime }}
             </td>
           </tr>
           <tr>
             <td>开发成本</td>
-            <td v-for="method in methods" :key="method.id">
+            <td
+              v-for="method in methods"
+              :key="method.id"
+            >
               {{ method.cost }}
             </td>
           </tr>
           <tr>
             <td>维护成本</td>
-            <td v-for="method in methods" :key="method.id">
+            <td
+              v-for="method in methods"
+              :key="method.id"
+            >
               {{ method.maintenance }}
             </td>
           </tr>

@@ -3,20 +3,46 @@
     <h4>并发 (Concurrency) vs 并行 (Parallelism) 演示</h4>
 
     <div class="controls">
-      <el-radio-group v-model="demoMode" size="small">
-        <el-radio-button label="concurrent">单核并发</el-radio-button>
-        <el-radio-button label="parallel">多核并行</el-radio-button>
-        <el-radio-button label="hybrid">混合模式</el-radio-button>
+      <el-radio-group
+        v-model="demoMode"
+        size="small"
+      >
+        <el-radio-button label="concurrent">
+          单核并发
+        </el-radio-button>
+        <el-radio-button label="parallel">
+          多核并行
+        </el-radio-button>
+        <el-radio-button label="hybrid">
+          混合模式
+        </el-radio-button>
       </el-radio-group>
 
-      <el-button type="primary" size="small" @click="startDemo" :disabled="isRunning">
+      <el-button
+        type="primary"
+        size="small"
+        :disabled="isRunning"
+        @click="startDemo"
+      >
         {{ isRunning ? '运行中...' : '开始演示' }}
       </el-button>
 
-      <el-button size="small" @click="reset">重置</el-button>
+      <el-button
+        size="small"
+        @click="reset"
+      >
+        重置
+      </el-button>
 
-      <el-slider v-model="workerCount" :min="1" :max="8" :step="1" show-stops style="width: 150px;"
-        v-if="demoMode === 'parallel' || demoMode === 'hybrid'" />
+      <el-slider
+        v-if="demoMode === 'parallel' || demoMode === 'hybrid'"
+        v-model="workerCount"
+        :min="1"
+        :max="8"
+        :step="1"
+        show-stops
+        style="width: 150px;"
+      />
     </div>
 
     <div class="demo-grid">
@@ -26,36 +52,70 @@
           {{ demoMode === 'concurrent' ? 'CPU 核心 (单核)' : 'CPU 核心 (' + cpuCores.length + '核)' }}
         </div>
 
-        <div class="cpu-grid" :class="{ 'single-core': demoMode === 'concurrent' }">
-          <div v-for="(core, idx) in cpuCores" :key="idx" class="cpu-core" :class="{
-            'active': core.active,
-            'concurrent-mode': demoMode === 'concurrent',
-            'parallel-mode': demoMode === 'parallel'
-          }"
-            :style="{ backgroundColor: core.active ? core.color : '#f5f7fa' }">
-            <div class="core-number">CPU {{ idx + 1 }}</div>
-            <div class="core-task" v-if="core.task">{{ core.task }}</div>
-            <div class="core-status">{{ core.active ? '运行中' : '空闲' }}</div>
+        <div
+          class="cpu-grid"
+          :class="{ 'single-core': demoMode === 'concurrent' }"
+        >
+          <div
+            v-for="(core, idx) in cpuCores"
+            :key="idx"
+            class="cpu-core"
+            :class="{
+              'active': core.active,
+              'concurrent-mode': demoMode === 'concurrent',
+              'parallel-mode': demoMode === 'parallel'
+            }"
+            :style="{ backgroundColor: core.active ? core.color : '#f5f7fa' }"
+          >
+            <div class="core-number">
+              CPU {{ idx + 1 }}
+            </div>
+            <div
+              v-if="core.task"
+              class="core-task"
+            >
+              {{ core.task }}
+            </div>
+            <div class="core-status">
+              {{ core.active ? '运行中' : '空闲' }}
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 任务视图 -->
       <div class="section">
-        <div class="section-title">任务执行</div>
+        <div class="section-title">
+          任务执行
+        </div>
 
         <div class="task-timeline">
-          <div v-for="(task, idx) in demoTasks" :key="task.id" class="task-row">
+          <div
+            v-for="(task, idx) in demoTasks"
+            :key="task.id"
+            class="task-row"
+          >
             <div class="task-info">
-              <div class="task-name">任务 {{ task.id }}</div>
-              <div class="task-duration">{{ task.duration }}ms</div>
+              <div class="task-name">
+                任务 {{ task.id }}
+              </div>
+              <div class="task-duration">
+                {{ task.duration }}ms
+              </div>
             </div>
 
             <div class="task-track">
-              <div v-for="(segment, sidx) in task.segments" :key="sidx" class="task-segment"
+              <div
+                v-for="(segment, sidx) in task.segments"
+                :key="sidx"
+                class="task-segment"
                 :class="{ 'execution': segment.type === 'execution', 'waiting': segment.type === 'waiting' }"
-                :style="{ left: segment.start + '%', width: segment.width + '%' }">
-                <span v-if="segment.width > 5" class="segment-text">
+                :style="{ left: segment.start + '%', width: segment.width + '%' }"
+              >
+                <span
+                  v-if="segment.width > 5"
+                  class="segment-text"
+                >
                   {{ segment.type === 'execution' ? '执行' : '等待' }}
                 </span>
               </div>
@@ -66,26 +126,46 @@
     </div>
 
     <div class="comparison-table">
-      <div class="table-header">并发 vs 并行 对比</div>
+      <div class="table-header">
+        并发 vs 并行 对比
+      </div>
 
       <div class="comparison-grid">
         <div class="comparison-item">
-          <div class="item-icon">🔄</div>
-          <div class="item-title">并发 (Concurrency)</div>
-          <div class="item-desc">多个任务交替执行，宏观上同时推进</div>
-          <div class="item-examples"><strong>例子:</strong> 单核CPU多线程、协程调度、异步I/O</div>
+          <div class="item-icon">
+            🔄
+          </div>
+          <div class="item-title">
+            并发 (Concurrency)
+          </div>
+          <div class="item-desc">
+            多个任务交替执行，宏观上同时推进
+          </div>
+          <div class="item-examples">
+            <strong>例子:</strong> 单核CPU多线程、协程调度、异步I/O
+          </div>
         </div>
 
         <div class="comparison-item">
-          <div class="item-icon">⚡</div>
-          <div class="item-title">并行 (Parallelism)</div>
-          <div class="item-desc">多个任务真正同时执行</div>
-          <div class="item-examples"><strong>例子:</strong> 多核CPU计算、GPU并行计算、分布式处理</div>
+          <div class="item-icon">
+            ⚡
+          </div>
+          <div class="item-title">
+            并行 (Parallelism)
+          </div>
+          <div class="item-desc">
+            多个任务真正同时执行
+          </div>
+          <div class="item-examples">
+            <strong>例子:</strong> 多核CPU计算、GPU并行计算、分布式处理
+          </div>
         </div>
       </div>
 
       <div class="need-table">
-        <div class="need-title">需要什么条件?</div>
+        <div class="need-title">
+          需要什么条件?
+        </div>
 
         <div class="need-items">
           <div class="need-item">

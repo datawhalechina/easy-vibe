@@ -9,36 +9,78 @@
     <div class="main-area">
       <div class="aksk-card">
         <div class="card-header">
-          <span class="status-badge" :class="akStatus">{{ statusText }}</span>
+          <span
+            class="status-badge"
+            :class="akStatus"
+          >{{ statusText }}</span>
           <span class="age">已创建 {{ akAge }} 天</span>
         </div>
         <div class="credentials">
           <div class="cred-row">
             <span class="label">Access Key:</span>
             <span class="value">{{ maskedAK }}</span>
-            <button class="toggle-btn" @click="showAK = !showAK">{{ showAK ? '🙈' : '👁️' }}</button>
+            <button
+              class="toggle-btn"
+              @click="showAK = !showAK"
+            >
+              {{ showAK ? '🙈' : '👁️' }}
+            </button>
           </div>
           <div class="cred-row">
             <span class="label">Secret Key:</span>
             <span class="value">{{ maskedSK }}</span>
-            <button class="toggle-btn" @click="showSK = !showSK">{{ showSK ? '🙈' : '👁️' }}</button>
+            <button
+              class="toggle-btn"
+              @click="showSK = !showSK"
+            >
+              {{ showSK ? '🙈' : '👁️' }}
+            </button>
           </div>
         </div>
         <div class="stats">
-          <div class="stat"><span class="v">{{ apiCalls }}</span><span class="l">API调用</span></div>
-          <div class="stat"><span class="v">{{ lastUsed }}</span><span class="l">最后使用</span></div>
+          <div class="stat">
+            <span class="v">{{ apiCalls }}</span><span class="l">API调用</span>
+          </div>
+          <div class="stat">
+            <span class="v">{{ lastUsed }}</span><span class="l">最后使用</span>
+          </div>
         </div>
       </div>
 
       <div class="action-panel">
-        <button class="btn primary" @click="rotateKey" :disabled="isRotating">🔄 轮换</button>
-        <button class="btn warning" @click="deactivateKey" :disabled="akStatus === 'inactive'">⏸️ 禁用</button>
-        <button class="btn danger" @click="deleteKey">🗑️ 删除</button>
+        <button
+          class="btn primary"
+          :disabled="isRotating"
+          @click="rotateKey"
+        >
+          🔄 轮换
+        </button>
+        <button
+          class="btn warning"
+          :disabled="akStatus === 'inactive'"
+          @click="deactivateKey"
+        >
+          ⏸️ 禁用
+        </button>
+        <button
+          class="btn danger"
+          @click="deleteKey"
+        >
+          🗑️ 删除
+        </button>
       </div>
     </div>
 
-    <div class="rotation-bar" v-if="isRotating">
-      <div class="bar"><div class="fill" :style="{ width: rotationProgress + '%' }"></div></div>
+    <div
+      v-if="isRotating"
+      class="rotation-bar"
+    >
+      <div class="bar">
+        <div
+          class="fill"
+          :style="{ width: rotationProgress + '%' }"
+        />
+      </div>
       <span class="text">{{ rotationStatus }}</span>
     </div>
 

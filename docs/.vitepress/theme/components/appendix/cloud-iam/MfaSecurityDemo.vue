@@ -8,43 +8,94 @@
 
     <div class="main-area">
       <div class="mfa-flow">
-        <div class="auth-step" :class="{ active: step >= 1, completed: step > 1 }">
+        <div
+          class="auth-step"
+          :class="{ active: step >= 1, completed: step > 1 }"
+        >
           <span class="step-icon">🔐</span>
           <span class="step-label">密码</span>
         </div>
         <span class="step-arrow">→</span>
-        <div class="auth-step" :class="{ active: step >= 2, completed: step > 2 }">
+        <div
+          class="auth-step"
+          :class="{ active: step >= 2, completed: step > 2 }"
+        >
           <span class="step-icon">📱</span>
           <span class="step-label">MFA</span>
         </div>
         <span class="step-arrow">→</span>
-        <div class="auth-step" :class="{ active: step >= 3 }">
+        <div
+          class="auth-step"
+          :class="{ active: step >= 3 }"
+        >
           <span class="step-icon">✅</span>
           <span class="step-label">成功</span>
         </div>
       </div>
 
-      <div class="auth-panel" v-if="step === 1">
-        <div class="panel-title">请输入密码</div>
-        <input type="password" v-model="password" placeholder="输入任意密码" @keyup.enter="verifyPassword" />
-        <button @click="verifyPassword" :disabled="!password">验证密码</button>
+      <div
+        v-if="step === 1"
+        class="auth-panel"
+      >
+        <div class="panel-title">
+          请输入密码
+        </div>
+        <input
+          v-model="password"
+          type="password"
+          placeholder="输入任意密码"
+          @keyup.enter="verifyPassword"
+        >
+        <button
+          :disabled="!password"
+          @click="verifyPassword"
+        >
+          验证密码
+        </button>
       </div>
 
-      <div class="auth-panel" v-if="step === 2">
-        <div class="panel-title">MFA 验证码</div>
+      <div
+        v-if="step === 2"
+        class="auth-panel"
+      >
+        <div class="panel-title">
+          MFA 验证码
+        </div>
         <div class="totp-display">
           <span class="totp-code">{{ totpCode }}</span>
-          <div class="totp-hint">模拟验证码</div>
+          <div class="totp-hint">
+            模拟验证码
+          </div>
         </div>
-        <input type="text" v-model="userCode" placeholder="输入上方验证码" maxlength="6" @keyup.enter="verifyMFA" />
-        <button @click="verifyMFA" :disabled="userCode.length !== 6">验证</button>
+        <input
+          v-model="userCode"
+          type="text"
+          placeholder="输入上方验证码"
+          maxlength="6"
+          @keyup.enter="verifyMFA"
+        >
+        <button
+          :disabled="userCode.length !== 6"
+          @click="verifyMFA"
+        >
+          验证
+        </button>
       </div>
 
-      <div class="success-panel" v-if="step === 3">
+      <div
+        v-if="step === 3"
+        class="success-panel"
+      >
         <span class="success-icon">🎉</span>
-        <div class="success-title">登录成功！</div>
-        <div class="success-desc">已通过 MFA 双因素认证</div>
-        <button @click="reset">重新演示</button>
+        <div class="success-title">
+          登录成功！
+        </div>
+        <div class="success-desc">
+          已通过 MFA 双因素认证
+        </div>
+        <button @click="reset">
+          重新演示
+        </button>
       </div>
     </div>
 

@@ -21,7 +21,7 @@
             v-model="inputText"
             rows="3"
             placeholder="Type something to see how AI reads it..."
-          ></textarea>
+          />
         </div>
 
         <div class="settings-group">
@@ -31,21 +31,33 @@
               class="radio-option"
               :class="{ active: algorithm === 'bpe' }"
             >
-              <input type="radio" v-model="algorithm" value="bpe" />
+              <input
+                v-model="algorithm"
+                type="radio"
+                value="bpe"
+              >
               <span>BPE (GPT-4)</span>
             </label>
             <label
               class="radio-option"
               :class="{ active: algorithm === 'word' }"
             >
-              <input type="radio" v-model="algorithm" value="word" />
+              <input
+                v-model="algorithm"
+                type="radio"
+                value="word"
+              >
               <span>Word (Legacy)</span>
             </label>
             <label
               class="radio-option"
               :class="{ active: algorithm === 'char' }"
             >
-              <input type="radio" v-model="algorithm" value="char" />
+              <input
+                v-model="algorithm"
+                type="radio"
+                value="char"
+              >
               <span>Character (Raw)</span>
             </label>
           </div>
@@ -65,7 +77,9 @@
     </div>
 
     <!-- Tokenizer Process Visualization -->
-    <div class="tokenizer-arrow">⬇</div>
+    <div class="tokenizer-arrow">
+      ⬇
+    </div>
 
     <div class="visualization-area">
       <div class="token-list">
@@ -79,8 +93,11 @@
         >
           <span class="token-text">{{ token.text }}</span>
           <span class="token-id">{{ token.id }}</span>
-          <div class="tooltip" v-if="hoverIndex === index">
-            ID: {{ token.id }}<br />
+          <div
+            v-if="hoverIndex === index"
+            class="tooltip"
+          >
+            ID: {{ token.id }}<br>
             Type: {{ token.type }}
           </div>
         </div>

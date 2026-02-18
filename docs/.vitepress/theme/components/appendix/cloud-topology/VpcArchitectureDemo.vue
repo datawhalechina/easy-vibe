@@ -2,11 +2,22 @@
   <div class="vpc-architecture-demo">
     <!-- 控制面板 -->
     <div class="control-panel">
-      <el-radio-group v-model="viewMode" size="small">
-        <el-radio-button label="full">完整架构</el-radio-button>
-        <el-radio-button label="public">公网访问</el-radio-button>
-        <el-radio-button label="private">私网隔离</el-radio-button>
-        <el-radio-button label="hybrid">混合云</el-radio-button>
+      <el-radio-group
+        v-model="viewMode"
+        size="small"
+      >
+        <el-radio-button label="full">
+          完整架构
+        </el-radio-button>
+        <el-radio-button label="public">
+          公网访问
+        </el-radio-button>
+        <el-radio-button label="private">
+          私网隔离
+        </el-radio-button>
+        <el-radio-button label="hybrid">
+          混合云
+        </el-radio-button>
       </el-radio-group>
       <el-switch
         v-model="showDetails"
@@ -18,126 +29,183 @@
     <!-- VPC 架构图 -->
     <div class="vpc-container">
       <!-- 外部互联网 -->
-      <div class="internet-zone" v-if="showInternet">
+      <div
+        v-if="showInternet"
+        class="internet-zone"
+      >
         <div class="zone-header">
           <span class="zone-icon">🌐</span>
           <span class="zone-title">互联网 (Internet)</span>
         </div>
         <div class="zone-content">
           <div class="internet-user">
-            <div class="user-avatar">👤</div>
-            <div class="user-label">用户</div>
+            <div class="user-avatar">
+              👤
+            </div>
+            <div class="user-label">
+              用户
+            </div>
           </div>
           <div class="internet-user">
-            <div class="user-avatar">🏢</div>
-            <div class="user-label">企业</div>
+            <div class="user-avatar">
+              🏢
+            </div>
+            <div class="user-label">
+              企业
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 连接箭头 -->
-      <div class="connection-flow" v-if="showInternet">
-        <div class="flow-line"></div>
+      <div
+        v-if="showInternet"
+        class="connection-flow"
+      >
+        <div class="flow-line" />
         <div class="flow-devices">
-          <div class="device" v-for="device in borderDevices" :key="device.name"
-               :class="device.type"
-               @mouseenter="hoverDevice = device.name"
-               @mouseleave="hoverDevice = null"
-003e
-            <div class="device-icon">{{ device.icon }}</div>
-            <div class="device-name">{{ device.name }}</div>
-            <div class="device-tooltip" v-if="hoverDevice === device.name && showDetails">
-              {{ device.description }}
-            </div>
+          <div
+            v-for="device in borderDevices"
+            :key="device.name"
+            class="device"
+            :class="device.type"
+            003e
+            <div
+            class="device-icon"
+            @mouseenter="hoverDevice = device.name"
+            @mouseleave="hoverDevice = null"
+          >
+            {{ device.icon }}
+          </div>
+          <div class="device-name">
+            {{ device.name }}
+          </div>
+          <div
+            v-if="hoverDevice === device.name && showDetails"
+            class="device-tooltip"
+          >
+            {{ device.description }}
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- VPC 主体 -->
-      <div class="vpc-zone">
-        <div class="vpc-header">
-          <div class="vpc-title">
-            <span class="vpc-icon">🏠</span>
-            <span>专有网络 VPC</span>
-            <span class="vpc-id">vpc-2ze7p8w7c9d6x5y4</span>
+    <!-- VPC 主体 -->
+    <div class="vpc-zone">
+      <div class="vpc-header">
+        <div class="vpc-title">
+          <span class="vpc-icon">🏠</span>
+          <span>专有网络 VPC</span>
+          <span class="vpc-id">vpc-2ze7p8w7c9d6x5y4</span>
+        </div>
+        <div class="vpc-meta">
+          <span class="meta-item">📍 华北2 (北京)</span>
+          <span class="meta-item">🌐 172.16.0.0/12</span>
+        </div>
+      </div>
+
+      <div class="vpc-content">
+        <!-- 可用区 1 -->
+        <div class="az-container">
+          <div class="az-header">
+            <span class="az-name">可用区 A</span>
+            <span class="az-status online">在线</span>
           </div>
-          <div class="vpc-meta">
-            <span class="meta-item">📍 华北2 (北京)</span>
-            <span class="meta-item">🌐 172.16.0.0/12</span>
+          <div class="subnets">
+            <div
+              class="subnet public"
+              @mouseenter="hoverSubnet = 'public-a'"
+              @mouseleave="hoverSubnet = null"
+            >
+              <div class="subnet-header">
+                <span class="subnet-type">🌐 公网子网</span>
+                <span class="subnet-cidr">172.16.1.0/24</span>
+              </div>
+              <div class="subnet-resources">
+                <div class="resource-tag">
+                  🖥️ ECS × 2
+                </div>
+                <div class="resource-tag">
+                  ⚖️ SLB
+                </div>
+                <div class="resource-tag">
+                  🌐 NAT
+                </div>
+              </div>
+              <div
+                v-if="hoverSubnet === 'public-a' && showDetails"
+                class="subnet-tooltip"
+              >
+                公网子网：可直接访问互联网，部署对外服务
+              </div>
+            </div>
+
+            <div
+              class="subnet private"
+              @mouseenter="hoverSubnet = 'private-a'"
+              @mouseleave="hoverSubnet = null"
+            >
+              <div class="subnet-header">
+                <span class="subnet-type">🔒 私网子网</span>
+                <span class="subnet-cidr">172.16.2.0/24</span>
+              </div>
+              <div class="subnet-resources">
+                <div class="resource-tag">
+                  🖥️ ECS × 4
+                </div>
+                <div class="resource-tag">
+                  🗄️ RDS
+                </div>
+                <div class="resource-tag">
+                  📦 Redis
+                </div>
+              </div>
+              <div
+                v-if="hoverSubnet === 'private-a' && showDetails"
+                class="subnet-tooltip"
+              >
+                私网子网：无法直接访问互联网，部署核心服务
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="vpc-content">
-          <!-- 可用区 1 -->
-          <div class="az-container">
-            <div class="az-header">
-              <span class="az-name">可用区 A</span>
-              <span class="az-status online">在线</span>
-            </div>
-            <div class="subnets">
-              <div class="subnet public"
-                   @mouseenter="hoverSubnet = 'public-a'"
-                   @mouseleave="hoverSubnet = null">
-                <div class="subnet-header">
-                  <span class="subnet-type">🌐 公网子网</span>
-                  <span class="subnet-cidr">172.16.1.0/24</span>
-                </div>
-                <div class="subnet-resources">
-                  <div class="resource-tag">🖥️ ECS × 2</div>
-                  <div class="resource-tag">⚖️ SLB</div>
-                  <div class="resource-tag">🌐 NAT</div>
-                </div>
-                <div class="subnet-tooltip" v-if="hoverSubnet === 'public-a' && showDetails">
-                  公网子网：可直接访问互联网，部署对外服务
-                </div>
-              </div>
-
-              <div class="subnet private"
-                   @mouseenter="hoverSubnet = 'private-a'"
-                   @mouseleave="hoverSubnet = null">
-                <div class="subnet-header">
-                  <span class="subnet-type">🔒 私网子网</span>
-                  <span class="subnet-cidr">172.16.2.0/24</span>
-                </div>
-                <div class="subnet-resources">
-                  <div class="resource-tag">🖥️ ECS × 4</div>
-                  <div class="resource-tag">🗄️ RDS</div>
-                  <div class="resource-tag">📦 Redis</div>
-                </div>
-                <div class="subnet-tooltip" v-if="hoverSubnet === 'private-a' && showDetails">
-                  私网子网：无法直接访问互联网，部署核心服务
-                </div>
-              </div>
-            </div>
+        <!-- 可用区 2 -->
+        <div class="az-container">
+          <div class="az-header">
+            <span class="az-name">可用区 B</span>
+            <span class="az-status online">在线</span>
           </div>
-
-          <!-- 可用区 2 -->
-          <div class="az-container">
-            <div class="az-header">
-              <span class="az-name">可用区 B</span>
-              <span class="az-status online">在线</span>
-            </div>
-            <div class="subnets">
-              <div class="subnet public">
-                <div class="subnet-header">
-                  <span class="subnet-type">🌐 公网子网</span>
-                  <span class="subnet-cidr">172.16.3.0/24</span>
+          <div class="subnets">
+            <div class="subnet public">
+              <div class="subnet-header">
+                <span class="subnet-type">🌐 公网子网</span>
+                <span class="subnet-cidr">172.16.3.0/24</span>
+              </div>
+              <div class="subnet-resources">
+                <div class="resource-tag">
+                  🖥️ ECS × 2
                 </div>
-                <div class="subnet-resources">
-                  <div class="resource-tag">🖥️ ECS × 2</div>
-                  <div class="resource-tag">⚖️ SLB</div>
+                <div class="resource-tag">
+                  ⚖️ SLB
                 </div>
               </div>
+            </div>
 
-              <div class="subnet private">
-                <div class="subnet-header">
-                  <span class="subnet-type">🔒 私网子网</span>
-                  <span class="subnet-cidr">172.16.4.0/24</span>
+            <div class="subnet private">
+              <div class="subnet-header">
+                <span class="subnet-type">🔒 私网子网</span>
+                <span class="subnet-cidr">172.16.4.0/24</span>
+              </div>
+              <div class="subnet-resources">
+                <div class="resource-tag">
+                  🖥️ ECS × 4
                 </div>
-                <div class="subnet-resources">
-                  <div class="resource-tag">🖥️ ECS × 4</div>
-                  <div class="resource-tag">🗄️ RDS Slave</div>
-                  <div class="resource-tag">📦 Redis Slave</div>
+                <div class="resource-tag">
+                  🗄️ RDS Slave
+                </div>
+                <div class="resource-tag">
+                  📦 Redis Slave
                 </div>
               </div>
             </div>
@@ -145,6 +213,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

@@ -25,21 +25,30 @@
     </div>
 
     <div class="pattern-content">
-      <div v-if="activePattern === 'cache-aside'" class="pattern-detail">
+      <div
+        v-if="activePattern === 'cache-aside'"
+        class="pattern-detail"
+      >
         <div class="pattern-header">
           <h3>Cache-Aside (旁路缓存)</h3>
-          <p class="pattern-desc">最常用的模式，应用代码直接控制缓存</p>
+          <p class="pattern-desc">
+            最常用的模式，应用代码直接控制缓存
+          </p>
         </div>
 
         <div class="flow-diagram">
           <div class="flow-step read">
-            <div class="step-icon">📖</div>
+            <div class="step-icon">
+              📖
+            </div>
             <div class="step-content">
               <strong>读取：</strong>先查缓存 → 没有就查数据库 → 写入缓存
             </div>
           </div>
           <div class="flow-step write">
-            <div class="step-icon">✏️</div>
+            <div class="step-icon">
+              ✏️
+            </div>
             <div class="step-content">
               <strong>更新：</strong>先更新数据库 → <span class="highlight">删除</span>缓存（不是更新！）
             </div>
@@ -48,33 +57,54 @@
 
         <div class="pros-cons">
           <div class="pros">
-            <div class="list-title">✅ 优点</div>
-            <div class="list-item">灵活，可精细控制</div>
-            <div class="list-item">适合大多数场景</div>
+            <div class="list-title">
+              ✅ 优点
+            </div>
+            <div class="list-item">
+              灵活，可精细控制
+            </div>
+            <div class="list-item">
+              适合大多数场景
+            </div>
           </div>
           <div class="cons">
-            <div class="list-title">❌ 缺点</div>
-            <div class="list-item">代码复杂度较高</div>
-            <div class="list-item">需要手动维护一致性</div>
+            <div class="list-title">
+              ❌ 缺点
+            </div>
+            <div class="list-item">
+              代码复杂度较高
+            </div>
+            <div class="list-item">
+              需要手动维护一致性
+            </div>
           </div>
         </div>
       </div>
 
-      <div v-if="activePattern === 'read-through'" class="pattern-detail">
+      <div
+        v-if="activePattern === 'read-through'"
+        class="pattern-detail"
+      >
         <div class="pattern-header">
           <h3>Read-Through (读穿透)</h3>
-          <p class="pattern-desc">缓存库负责从数据库加载数据</p>
+          <p class="pattern-desc">
+            缓存库负责从数据库加载数据
+          </p>
         </div>
 
         <div class="flow-diagram">
           <div class="flow-step">
-            <div class="step-icon">📖</div>
+            <div class="step-icon">
+              📖
+            </div>
             <div class="step-content">
               <strong>读取：</strong>应用只调 cache.get()，缓存库负责查数据库
             </div>
           </div>
           <div class="flow-step">
-            <div class="step-icon">✏️</div>
+            <div class="step-icon">
+              ✏️
+            </div>
             <div class="step-content">
               <strong>写入：</strong>通常与 Write-Through 配合，同步写缓存和数据库
             </div>
@@ -83,33 +113,54 @@
 
         <div class="pros-cons">
           <div class="pros">
-            <div class="list-title">✅ 优点</div>
-            <div class="list-item">代码简洁</div>
-            <div class="list-item">一致性更好</div>
+            <div class="list-title">
+              ✅ 优点
+            </div>
+            <div class="list-item">
+              代码简洁
+            </div>
+            <div class="list-item">
+              一致性更好
+            </div>
           </div>
           <div class="cons">
-            <div class="list-title">❌ 缺点</div>
-            <div class="list-item">需要专门的缓存库</div>
-            <div class="list-item">灵活性较低</div>
+            <div class="list-title">
+              ❌ 缺点
+            </div>
+            <div class="list-item">
+              需要专门的缓存库
+            </div>
+            <div class="list-item">
+              灵活性较低
+            </div>
           </div>
         </div>
       </div>
 
-      <div v-if="activePattern === 'write-behind'" class="pattern-detail">
+      <div
+        v-if="activePattern === 'write-behind'"
+        class="pattern-detail"
+      >
         <div class="pattern-header">
           <h3>Write-Behind (异步写回)</h3>
-          <p class="pattern-desc">写入时只写缓存，异步批量写数据库</p>
+          <p class="pattern-desc">
+            写入时只写缓存，异步批量写数据库
+          </p>
         </div>
 
         <div class="flow-diagram">
           <div class="flow-step">
-            <div class="step-icon">⚡</div>
+            <div class="step-icon">
+              ⚡
+            </div>
             <div class="step-content">
               <strong>写入：</strong>立即写缓存 → 异步批量写数据库
             </div>
           </div>
           <div class="flow-step">
-            <div class="step-icon">⚠️</div>
+            <div class="step-icon">
+              ⚠️
+            </div>
             <div class="step-content">
               <strong>风险：</strong>缓存崩溃会导致数据丢失
             </div>
@@ -118,21 +169,35 @@
 
         <div class="pros-cons">
           <div class="pros">
-            <div class="list-title">✅ 优点</div>
-            <div class="list-item">写入极快</div>
-            <div class="list-item">适合写多场景</div>
+            <div class="list-title">
+              ✅ 优点
+            </div>
+            <div class="list-item">
+              写入极快
+            </div>
+            <div class="list-item">
+              适合写多场景
+            </div>
           </div>
           <div class="cons">
-            <div class="list-title">❌ 缺点</div>
-            <div class="list-item">可能丢失数据</div>
-            <div class="list-item">一致性差</div>
+            <div class="list-title">
+              ❌ 缺点
+            </div>
+            <div class="list-item">
+              可能丢失数据
+            </div>
+            <div class="list-item">
+              一致性差
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">三种模式对比</div>
+      <div class="table-title">
+        三种模式对比
+      </div>
       <table>
         <thead>
           <tr>

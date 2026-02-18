@@ -26,7 +26,10 @@
         <div class="response-header">
           <div class="status-line">
             <span class="http-version">HTTP/1.1</span>
-            <span class="status-code" :class="getStatusClass(currentResponse.status)">{{ currentResponse.status }}</span>
+            <span
+              class="status-code"
+              :class="getStatusClass(currentResponse.status)"
+            >{{ currentResponse.status }}</span>
             <span class="status-text">{{ currentResponse.statusText }}</span>
           </div>
         </div>
@@ -53,12 +56,18 @@
         <div class="field-descriptions">
           <h4>字段说明</h4>
           <div class="field-list">
-            <div v-for="field in currentResponse.fields" :key="field.name" class="field-item">
+            <div
+              v-for="field in currentResponse.fields"
+              :key="field.name"
+              class="field-item"
+            >
               <div class="field-name">
                 <code>{{ field.name }}</code>
                 <span class="field-type">{{ field.type }}</span>
               </div>
-              <div class="field-desc">{{ field.description }}</div>
+              <div class="field-desc">
+                {{ field.description }}
+              </div>
             </div>
           </div>
         </div>

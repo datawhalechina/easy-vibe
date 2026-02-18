@@ -14,11 +14,15 @@
 <template>
   <div class="grid-demo">
     <div class="terminal-screen">
-      <div class="grid-row" v-for="(row, rIndex) in rows" :key="rIndex">
+      <div
+        v-for="(row, rIndex) in rows"
+        :key="rIndex"
+        class="grid-row"
+      >
         <div
-          class="grid-cell"
           v-for="(cell, cIndex) in row"
           :key="cIndex"
+          class="grid-cell"
           :class="{
             'active-cursor': cursor.r === rIndex && cursor.c === cIndex,
             drawn: cell.drawn
@@ -34,13 +38,18 @@
     <div class="controls">
       <input
         ref="inputRef"
-        type="text"
         v-model="inputText"
+        type="text"
         placeholder="Type here..."
         class="text-input"
         @keydown="handleKeydown"
-      />
-      <button class="btn" @click="clearGrid">Clear</button>
+      >
+      <button
+        class="btn"
+        @click="clearGrid"
+      >
+        Clear
+      </button>
       <span class="hint">Click/Drag cells to draw, Type to insert text</span>
     </div>
   </div>

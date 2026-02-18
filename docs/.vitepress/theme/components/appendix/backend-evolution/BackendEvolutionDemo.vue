@@ -2,7 +2,7 @@
   <div class="backend-evolution-demo">
     <!-- Timeline -->
     <div class="timeline-container">
-      <div class="timeline-track"></div>
+      <div class="timeline-track" />
       <button
         v-for="(stage, index) in stages"
         :key="index"
@@ -14,7 +14,7 @@
         @click="currentStage = index"
       >
         <div class="node-dot">
-          <div class="inner-dot"></div>
+          <div class="inner-dot" />
         </div>
         <div class="node-content">
           <span class="year-badge">{{ stage.year }}</span>
@@ -25,13 +25,17 @@
 
     <!-- Content -->
     <div class="content-wrapper">
-      <transition name="fade-slide" mode="out-in">
-        <div :key="currentStage" class="stage-content">
+      <transition
+        name="fade-slide"
+        mode="out-in"
+      >
+        <div
+          :key="currentStage"
+          class="stage-content"
+        >
           <div class="header-section">
             <h3>
-              <span class="stage-index"
-                >{{ indexToRoman(currentStage + 1) }}.</span
-              >
+              <span class="stage-index">{{ indexToRoman(currentStage + 1) }}.</span>
               {{ stages[currentStage].title }}
             </h3>
             <p>{{ stages[currentStage].desc }}</p>
@@ -42,21 +46,34 @@
             <div class="mac-window arch-window">
               <div class="window-bar">
                 <div class="traffic-lights">
-                  <span class="light red"></span>
-                  <span class="light yellow"></span>
-                  <span class="light green"></span>
+                  <span class="light red" />
+                  <span class="light yellow" />
+                  <span class="light green" />
                 </div>
-                <div class="window-title">Server Architecture</div>
+                <div class="window-title">
+                  Server Architecture
+                </div>
               </div>
               <div class="arch-canvas">
                 <!-- Stage 0: CGI/Static -->
-                <div v-if="currentStage === 0" class="arch-static">
+                <div
+                  v-if="currentStage === 0"
+                  class="arch-static"
+                >
                   <div class="server-box">
-                    <div class="server-icon">🖥️ Physical Server</div>
+                    <div class="server-icon">
+                      🖥️ Physical Server
+                    </div>
                     <div class="file-system">
-                      <div class="file">index.html</div>
-                      <div class="file">script.pl</div>
-                      <div class="file">image.jpg</div>
+                      <div class="file">
+                        index.html
+                      </div>
+                      <div class="file">
+                        script.pl
+                      </div>
+                      <div class="file">
+                        image.jpg
+                      </div>
                     </div>
                   </div>
                   <div class="request-arrow">
@@ -66,26 +83,42 @@
                 </div>
 
                 <!-- Stage 1: Monolith -->
-                <div v-if="currentStage === 1" class="arch-monolith">
+                <div
+                  v-if="currentStage === 1"
+                  class="arch-monolith"
+                >
                   <div class="server-box big">
                     <div class="server-icon">
                       🦍 Monolithic App (Tomcat/Django)
                     </div>
                     <div class="modules-grid">
-                      <div class="module">User</div>
-                      <div class="module">Order</div>
-                      <div class="module">Payment</div>
-                      <div class="module">Product</div>
+                      <div class="module">
+                        User
+                      </div>
+                      <div class="module">
+                        Order
+                      </div>
+                      <div class="module">
+                        Payment
+                      </div>
+                      <div class="module">
+                        Product
+                      </div>
                     </div>
                     <div class="db-connection">
                       <span>⬇ SQL</span>
-                      <div class="db-icon">🗄️ Single DB</div>
+                      <div class="db-icon">
+                        🗄️ Single DB
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Stage 2: Microservices -->
-                <div v-if="currentStage === 2" class="arch-micro">
+                <div
+                  v-if="currentStage === 2"
+                  class="arch-micro"
+                >
                   <div class="cloud-bg">
                     <div class="service-mesh">
                       <div class="service user">
@@ -102,15 +135,26 @@
                       </div>
                     </div>
                   </div>
-                  <div class="comm-lines">HTTP/gRPC</div>
+                  <div class="comm-lines">
+                    HTTP/gRPC
+                  </div>
                 </div>
 
                 <!-- Stage 3: Serverless -->
-                <div v-if="currentStage === 3" class="arch-serverless">
+                <div
+                  v-if="currentStage === 3"
+                  class="arch-serverless"
+                >
                   <div class="function-cloud">
-                    <div class="func-node">λ Login</div>
-                    <div class="func-node">λ Checkout</div>
-                    <div class="func-node">λ ResizeImg</div>
+                    <div class="func-node">
+                      λ Login
+                    </div>
+                    <div class="func-node">
+                      λ Checkout
+                    </div>
+                    <div class="func-node">
+                      λ ResizeImg
+                    </div>
                   </div>
                   <div class="baas-layer">
                     <span>BaaS (Auth0, Supabase, Stripe)</span>
@@ -122,15 +166,21 @@
             <!-- Deployment/Ops View -->
             <div class="mac-window ops-window">
               <div class="window-bar">
-                <div class="window-title">Deployment & Ops</div>
+                <div class="window-title">
+                  Deployment & Ops
+                </div>
               </div>
               <div class="ops-canvas">
                 <div class="ops-card">
-                  <div class="ops-icon">{{ stages[currentStage].opsIcon }}</div>
+                  <div class="ops-icon">
+                    {{ stages[currentStage].opsIcon }}
+                  </div>
                   <div class="ops-title">
                     {{ stages[currentStage].opsTitle }}
                   </div>
-                  <div class="ops-desc">{{ stages[currentStage].opsDesc }}</div>
+                  <div class="ops-desc">
+                    {{ stages[currentStage].opsDesc }}
+                  </div>
                 </div>
               </div>
             </div>

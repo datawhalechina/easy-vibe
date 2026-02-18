@@ -11,20 +11,50 @@
         <div class="input-group">
           <label>IP 地址</label>
           <div class="ip-inputs">
-            <input v-model="ip[0]" type="number" min="0" max="255" @input="calculate" />
+            <input
+              v-model="ip[0]"
+              type="number"
+              min="0"
+              max="255"
+              @input="calculate"
+            >
             <span>.</span>
-            <input v-model="ip[1]" type="number" min="0" max="255" @input="calculate" />
+            <input
+              v-model="ip[1]"
+              type="number"
+              min="0"
+              max="255"
+              @input="calculate"
+            >
             <span>.</span>
-            <input v-model="ip[2]" type="number" min="0" max="255" @input="calculate" />
+            <input
+              v-model="ip[2]"
+              type="number"
+              min="0"
+              max="255"
+              @input="calculate"
+            >
             <span>.</span>
-            <input v-model="ip[3]" type="number" min="0" max="255" @input="calculate" />
+            <input
+              v-model="ip[3]"
+              type="number"
+              min="0"
+              max="255"
+              @input="calculate"
+            >
           </div>
         </div>
         <div class="input-group">
           <label>子网掩码 (CIDR)</label>
           <div class="cidr-input">
             <span>/</span>
-            <input v-model.number="cidr" type="number" min="8" max="30" @input="calculate" />
+            <input
+              v-model.number="cidr"
+              type="number"
+              min="8"
+              max="30"
+              @input="calculate"
+            >
           </div>
         </div>
       </div>
@@ -53,7 +83,9 @@
       </div>
 
       <div class="binary-section">
-        <div class="binary-title">二进制表示</div>
+        <div class="binary-title">
+          二进制表示
+        </div>
         <div class="binary-row">
           <span class="binary-label">IP 地址:</span>
           <span class="binary-value">{{ ipBinary }}</span>
@@ -73,7 +105,9 @@
       </div>
 
       <div class="visual-section">
-        <div class="visual-title">地址结构可视化</div>
+        <div class="visual-title">
+          地址结构可视化
+        </div>
         <div class="address-visual">
           <div class="bit-blocks">
             <div 
@@ -85,8 +119,8 @@
             </div>
           </div>
           <div class="legend">
-            <span class="legend-item"><span class="network-box"></span> 网络位 ({{ cidr }}位)</span>
-            <span class="legend-item"><span class="host-box"></span> 主机位 ({{ 32 - cidr }}位)</span>
+            <span class="legend-item"><span class="network-box" /> 网络位 ({{ cidr }}位)</span>
+            <span class="legend-item"><span class="host-box" /> 主机位 ({{ 32 - cidr }}位)</span>
           </div>
         </div>
       </div>

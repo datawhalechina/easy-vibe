@@ -6,13 +6,19 @@
   <div class="sel">
     <div class="header">
       <div>
-        <div class="title">三问选框架</div>
-        <div class="subtitle">目标：先跑通一个最小 Agent，再逐步增强。</div>
+        <div class="title">
+          三问选框架
+        </div>
+        <div class="subtitle">
+          目标：先跑通一个最小 Agent，再逐步增强。
+        </div>
       </div>
     </div>
 
     <div class="q">
-      <div class="q-title">1) 你更在乎什么？</div>
+      <div class="q-title">
+        1) 你更在乎什么？
+      </div>
       <div class="opts">
         <button
           v-for="o in q1"
@@ -26,7 +32,9 @@
     </div>
 
     <div class="q">
-      <div class="q-title">2) 你的任务像哪种？</div>
+      <div class="q-title">
+        2) 你的任务像哪种？
+      </div>
       <div class="opts">
         <button
           v-for="o in q2"
@@ -40,7 +48,9 @@
     </div>
 
     <div class="q">
-      <div class="q-title">3) 需要多 Agent 分工吗？</div>
+      <div class="q-title">
+        3) 需要多 Agent 分工吗？
+      </div>
       <div class="opts">
         <button
           v-for="o in q3"
@@ -54,10 +64,18 @@
     </div>
 
     <div class="result">
-      <div class="r-title">推荐：{{ rec.name }}</div>
-      <div class="r-body">{{ rec.reason }}</div>
-      <div class="r-note"><strong>注意：</strong>{{ rec.note }}</div>
-      <div class="r-next"><strong>下一步：</strong>{{ rec.next }}</div>
+      <div class="r-title">
+        推荐：{{ rec.name }}
+      </div>
+      <div class="r-body">
+        {{ rec.reason }}
+      </div>
+      <div class="r-note">
+        <strong>注意：</strong>{{ rec.note }}
+      </div>
+      <div class="r-next">
+        <strong>下一步：</strong>{{ rec.next }}
+      </div>
     </div>
   </div>
 </template>

@@ -17,11 +17,21 @@
           <span class="mode-title">MPA (多页面应用)</span>
         </div>
         <div class="flow-steps">
-          <div class="step">1. 用户点击链接</div>
-          <div class="step">2. 浏览器发送 HTTP 请求</div>
-          <div class="step">3. 服务器返回完整 HTML</div>
-          <div class="step">4. 浏览器解析并渲染新页面</div>
-          <div class="step">5. 页面资源重新加载 (JS/CSS)</div>
+          <div class="step">
+            1. 用户点击链接
+          </div>
+          <div class="step">
+            2. 浏览器发送 HTTP 请求
+          </div>
+          <div class="step">
+            3. 服务器返回完整 HTML
+          </div>
+          <div class="step">
+            4. 浏览器解析并渲染新页面
+          </div>
+          <div class="step">
+            5. 页面资源重新加载 (JS/CSS)
+          </div>
         </div>
         <div class="mode-features">
           <div class="feature">
@@ -45,12 +55,24 @@
           <span class="mode-title">SPA (单页面应用)</span>
         </div>
         <div class="flow-steps">
-          <div class="step">1. 用户点击链接</div>
-          <div class="step">2. 拦截默认行为</div>
-          <div class="step">3. 更新 URL (History API)</div>
-          <div class="step">4. 匹配路由配置</div>
-          <div class="step">5. 动态渲染新组件</div>
-          <div class="step">6. 页面无刷新更新</div>
+          <div class="step">
+            1. 用户点击链接
+          </div>
+          <div class="step">
+            2. 拦截默认行为
+          </div>
+          <div class="step">
+            3. 更新 URL (History API)
+          </div>
+          <div class="step">
+            4. 匹配路由配置
+          </div>
+          <div class="step">
+            5. 动态渲染新组件
+          </div>
+          <div class="step">
+            6. 页面无刷新更新
+          </div>
         </div>
         <div class="mode-features">
           <div class="feature">

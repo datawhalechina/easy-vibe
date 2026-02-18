@@ -19,17 +19,17 @@
         <button 
           v-for="s in scenarios" 
           :key="s.id"
-          @click="selectScenario(s)"
           class="tab-btn"
           :class="{ active: currentScenario.id === s.id }"
           :disabled="isAnimating"
+          @click="selectScenario(s)"
         >
           {{ s.name }}
         </button>
       </div>
 
       <div class="actions">
-         <button 
+        <button 
           class="action-btn primary" 
           @click="toggleAutoPlay"
         >
@@ -56,16 +56,23 @@
 
       <!-- 传输通道 -->
       <div class="channel">
-        <div class="channel-bg"></div>
+        <div class="channel-bg" />
         
         <!-- 请求包 -->
-        <div class="packet request" :class="{ moving: step === 1, done: step > 1 }">
+        <div
+          class="packet request"
+          :class="{ moving: step === 1, done: step > 1 }"
+        >
           <span class="packet-icon">📤</span>
           <span class="packet-label">GET</span>
         </div>
 
         <!-- 响应包 -->
-        <div class="packet response" :class="{ moving: step === 2, done: step > 2 }" v-if="step >= 2">
+        <div
+          v-if="step >= 2"
+          class="packet response"
+          :class="{ moving: step === 2, done: step > 2 }"
+        >
           <span class="packet-icon">📦</span>
           <span class="packet-label">{{ currentScenario.status }}</span>
         </div>
@@ -82,35 +89,51 @@
 
     <!-- 底部详情面板 (固定高度) -->
     <div class="detail-panel">
-      <transition name="fade" mode="out-in">
-        <div v-if="step > 0" class="detail-content" :key="step">
-           <!-- 左侧状态徽章 -->
-           <div class="detail-left" :style="{ borderColor: getStatusColor() }">
-             <div class="status-badge" :class="currentScenario.statusType">
-               {{ step === 1 ? '请求中' : currentScenario.status + ' ' + currentScenario.statusText }}
-             </div>
-           </div>
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="step > 0"
+          :key="step"
+          class="detail-content"
+        >
+          <!-- 左侧状态徽章 -->
+          <div
+            class="detail-left"
+            :style="{ borderColor: getStatusColor() }"
+          >
+            <div
+              class="status-badge"
+              :class="currentScenario.statusType"
+            >
+              {{ step === 1 ? '请求中' : currentScenario.status + ' ' + currentScenario.statusText }}
+            </div>
+          </div>
            
-           <div class="detail-divider"></div>
+          <div class="detail-divider" />
 
-           <!-- 右侧详情 -->
-           <div class="detail-right">
-             <div class="info-row">
-               <span class="tag life">快递员说</span>
-               <span class="text highlight">
-                 {{ step === 1 ? currentScenario.requestText : currentScenario.responseText }}
-               </span>
-             </div>
-             <div class="info-row">
-               <span class="tag tech">技术报文</span>
-               <span class="text code">
-                 {{ step === 1 ? `${currentScenario.method} ${currentScenario.path} HTTP/1.1` : `HTTP/1.1 ${currentScenario.status} ${currentScenario.statusText}` }}
-               </span>
-             </div>
-           </div>
+          <!-- 右侧详情 -->
+          <div class="detail-right">
+            <div class="info-row">
+              <span class="tag life">快递员说</span>
+              <span class="text highlight">
+                {{ step === 1 ? currentScenario.requestText : currentScenario.responseText }}
+              </span>
+            </div>
+            <div class="info-row">
+              <span class="tag tech">技术报文</span>
+              <span class="text code">
+                {{ step === 1 ? `${currentScenario.method} ${currentScenario.path} HTTP/1.1` : `HTTP/1.1 ${currentScenario.status} ${currentScenario.statusText}` }}
+              </span>
+            </div>
+          </div>
         </div>
         
-        <div v-else class="detail-placeholder">
+        <div
+          v-else
+          class="detail-placeholder"
+        >
           <span class="guide-bounce">📦</span>
           <span>选择一个场景，点击"演示"看看发生了什么</span>
         </div>

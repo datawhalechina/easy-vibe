@@ -598,21 +598,29 @@ onUnmounted(() => {
   <div class="demo-wrapper">
     <!-- External Controls -->
     <div class="demo-controls">
-      <h3 class="demo-title">虚拟 IDE 交互演示</h3>
+      <h3 class="demo-title">
+        虚拟 IDE 交互演示
+      </h3>
 
-      <div class="tour-controls" v-if="!isAutoPlaying">
+      <div
+        v-if="!isAutoPlaying"
+        class="tour-controls"
+      >
         <!-- Custom Select -->
         <div
+          v-click-outside="closeSelect"
           class="custom-select"
           :class="{ open: selectOpen }"
           @click="selectOpen = !selectOpen"
-          v-click-outside="closeSelect"
         >
           <div class="select-trigger">
             <span>{{ currentTourLabel }}</span>
             <span class="arrow">▼</span>
           </div>
-          <div class="select-options" v-if="selectOpen">
+          <div
+            v-if="selectOpen"
+            class="select-options"
+          >
             <div
               v-for="opt in tourOptions"
               :key="opt.value"
@@ -625,9 +633,20 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <button class="tour-btn" @click="startTour">▶ 开始自动导览</button>
+        <button
+          class="tour-btn"
+          @click="startTour"
+        >
+          ▶ 开始自动导览
+        </button>
       </div>
-      <button class="tour-btn stop" @click="stopTour" v-else>■ 停止演示</button>
+      <button
+        v-else
+        class="tour-btn stop"
+        @click="stopTour"
+      >
+        ■ 停止演示
+      </button>
     </div>
 
     <!-- Info Bar (Text Only) -->
@@ -638,11 +657,14 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="vscode-mock" ref="vscodeMockRef">
+    <div
+      ref="vscodeMockRef"
+      class="vscode-mock"
+    >
       <!-- Virtual Cursor -->
       <div
-        class="virtual-cursor"
         v-if="cursorVisible"
+        class="virtual-cursor"
         :style="{ transform: `translate(${cursorX}px, ${cursorY}px)` }"
       >
         <svg
@@ -662,10 +684,10 @@ onUnmounted(() => {
 
       <!-- Highlight Box for Auto Tour -->
       <div
-        class="highlight-box"
         v-if="highlightVisible"
+        class="highlight-box"
         :style="highlightStyle"
-      ></div>
+      />
 
       <!-- Combined Title Bar -->
       <div
@@ -686,8 +708,14 @@ onUnmounted(() => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M2 12L7 2L22 12L7 22L2 12Z" fill="#007ACC" />
-              <path d="M17 12L7 5V19L17 12Z" fill="white" />
+              <path
+                d="M2 12L7 2L22 12L7 22L2 12Z"
+                fill="#007ACC"
+              />
+              <path
+                d="M17 12L7 5V19L17 12Z"
+                fill="white"
+              />
             </svg>
           </div>
           <div
@@ -707,7 +735,10 @@ onUnmounted(() => {
               >
                 {{ name }}
               </span>
-              <div v-if="activeMenu === name" class="menu-dropdown">
+              <div
+                v-if="activeMenu === name"
+                class="menu-dropdown"
+              >
                 <div
                   v-for="item in items"
                   :key="item.label"
@@ -750,8 +781,8 @@ onUnmounted(() => {
           >
             <span
               class="layout-icon"
-              @click="toggleSidebarView(activeSidebarView)"
               title="Toggle Sidebar"
+              @click="toggleSidebarView(activeSidebarView)"
             >
               <svg
                 width="14"
@@ -763,7 +794,11 @@ onUnmounted(() => {
                 <path d="M3 3v10h3V3H3z" />
               </svg>
             </span>
-            <span class="layout-icon" @click="togglePanel" title="Toggle Panel">
+            <span
+              class="layout-icon"
+              title="Toggle Panel"
+              @click="togglePanel"
+            >
               <svg
                 width="14"
                 height="14"
@@ -1072,19 +1107,24 @@ onUnmounted(() => {
 
         <!-- Sidebar -->
         <div
-          class="sidebar"
           v-show="sidebarVisible"
+          class="sidebar"
           @mouseenter.stop="showInfo('侧边栏：详细内容')"
           @mouseleave="clearInfo"
         >
-          <div v-if="activeSidebarView === 'EXPLORER'" class="sidebar-content">
+          <div
+            v-if="activeSidebarView === 'EXPLORER'"
+            class="sidebar-content"
+          >
             <div class="sidebar-header">
               <span>EXPLORER</span>
               <span class="sidebar-dots">•••</span>
             </div>
 
             <div class="sidebar-section expanded">
-              <div class="section-header">▼ OPEN EDITORS</div>
+              <div class="section-header">
+                ▼ OPEN EDITORS
+              </div>
               <div class="file-list">
                 <div
                   v-if="activeFile.language !== 'welcome'"
@@ -1095,41 +1135,49 @@ onUnmounted(() => {
                   <span class="file-name">{{ activeFile.name }}</span>
                   <span class="unsaved-dot">●</span>
                 </div>
-                <div v-else class="empty-list-item">No open editors</div>
+                <div
+                  v-else
+                  class="empty-list-item"
+                >
+                  No open editors
+                </div>
               </div>
             </div>
 
             <div class="sidebar-section expanded">
-              <div class="section-header">▼ PYEVAL</div>
+              <div class="section-header">
+                ▼ PYEVAL
+              </div>
               <div class="file-list">
                 <div
                   v-for="(file, index) in files"
-                  :key="file.name"
                   v-show="!file.fixed"
+                  :key="file.name"
                   class="file-item"
                   :class="{ active: index === activeFileIndex }"
                   @click="selectFile(index)"
                 >
                   <span class="file-icon">
-                    <span v-if="file.language === 'html'" style="color: #e34c26"
-                      >📄</span
-                    >
+                    <span
+                      v-if="file.language === 'html'"
+                      style="color: #e34c26"
+                    >📄</span>
                     <span
                       v-else-if="file.language === 'css'"
                       style="color: #563d7c"
-                      >🎨</span
-                    >
+                    >🎨</span>
                     <span
                       v-else-if="file.language === 'python'"
                       style="color: #3776ab"
-                      >🐍</span
-                    >
+                    >🐍</span>
                     <span
                       v-else-if="file.language === 'markdown'"
                       style="color: #42a5f5"
-                      >📝</span
-                    >
-                    <span v-else style="color: #f1e05a">JS</span>
+                    >📝</span>
+                    <span
+                      v-else
+                      style="color: #f1e05a"
+                    >JS</span>
                   </span>
                   <span class="file-name">{{ file.name }}</span>
                 </div>
@@ -1151,25 +1199,30 @@ onUnmounted(() => {
                 placeholder="Search Extensions in Marketplace"
                 :value="searchQuery"
                 readonly
-              />
+              >
             </div>
             <div class="sidebar-section expanded">
-              <div class="section-header">▼ POPULAR</div>
+              <div class="section-header">
+                ▼ POPULAR
+              </div>
               <div class="extension-list">
                 <div
                   v-for="ext in filteredExtensions"
                   :key="ext.id"
                   class="extension-item"
                 >
-                  <div class="extension-icon"></div>
+                  <div class="extension-icon" />
                   <div class="extension-info">
                     <div class="extension-name">
                       {{ ext.name }}
-                      <span v-if="ext.installed" class="installed-badge"
-                        >✔</span
-                      >
+                      <span
+                        v-if="ext.installed"
+                        class="installed-badge"
+                      >✔</span>
                     </div>
-                    <div class="extension-desc">{{ ext.description }}</div>
+                    <div class="extension-desc">
+                      {{ ext.description }}
+                    </div>
                     <div class="extension-actions">
                       <button
                         class="install-btn"
@@ -1216,30 +1269,40 @@ onUnmounted(() => {
                   <span
                     v-else-if="file.language === 'python'"
                     style="color: #3776ab"
-                    >🐍</span
-                  >
+                  >🐍</span>
                   <span
                     v-else-if="file.language === 'markdown'"
                     style="color: #42a5f5"
-                    >📝</span
-                  >
+                  >📝</span>
                   <span v-else>📄</span>
                 </span>
                 <span class="tab-name">{{ file.name }}</span>
-                <span class="close-tab" @click.stop="closeTab(index)">×</span>
+                <span
+                  class="close-tab"
+                  @click.stop="closeTab(index)"
+                >×</span>
               </div>
             </div>
             <div class="tab-actions">
-              <span class="action-btn" title="Open Changes">🔃</span>
-              <span class="action-btn" title="Split Editor">◫</span>
-              <span class="action-btn" title="More Actions">•••</span>
+              <span
+                class="action-btn"
+                title="Open Changes"
+              >🔃</span>
+              <span
+                class="action-btn"
+                title="Split Editor"
+              >◫</span>
+              <span
+                class="action-btn"
+                title="More Actions"
+              >•••</span>
             </div>
           </div>
 
           <!-- Breadcrumbs (Hidden for Welcome) -->
           <div
-            class="breadcrumbs"
             v-if="activeFile.language !== 'welcome'"
+            class="breadcrumbs"
             @mouseenter.stop="showInfo('路径导航：文件路径')"
             @mouseleave="clearInfo"
           >
@@ -1257,13 +1320,15 @@ onUnmounted(() => {
           >
             <!-- Welcome Content -->
             <div
-              class="welcome-content"
               v-if="activeFile.language === 'welcome'"
+              class="welcome-content"
             >
               <div class="welcome-container">
                 <div class="welcome-header">
                   <h1>Visual Studio Code</h1>
-                  <p class="subtitle">Editing evolved</p>
+                  <p class="subtitle">
+                    Editing evolved
+                  </p>
                 </div>
                 <div class="welcome-grid">
                   <div class="welcome-column">
@@ -1284,11 +1349,11 @@ onUnmounted(() => {
                       <span class="action-icon">🌿</span>
                       <span class="action-text">Clone Git Repository...</span>
                     </div>
-                    <h3 class="mt-4">Recent</h3>
+                    <h3 class="mt-4">
+                      Recent
+                    </h3>
                     <div class="recent-item">
-                      <span class="recent-path"
-                        >pyeval/pyeval_expression.py</span
-                      >
+                      <span class="recent-path">pyeval/pyeval_expression.py</span>
                       <span class="recent-detail">~/projects/pyeval</span>
                     </div>
                     <div class="recent-item">
@@ -1299,7 +1364,9 @@ onUnmounted(() => {
                   <div class="welcome-column">
                     <h3>Walkthroughs</h3>
                     <div class="walkthrough-card">
-                      <div class="walkthrough-icon">⭐</div>
+                      <div class="walkthrough-icon">
+                        ⭐
+                      </div>
                       <div class="walkthrough-info">
                         <div class="walkthrough-title">
                           Get Started with VS Code
@@ -1311,7 +1378,9 @@ onUnmounted(() => {
                       </div>
                     </div>
                     <div class="walkthrough-card">
-                      <div class="walkthrough-icon">🐍</div>
+                      <div class="walkthrough-icon">
+                        🐍
+                      </div>
                       <div class="walkthrough-info">
                         <div class="walkthrough-title">
                           Get Started with Python
@@ -1327,9 +1396,17 @@ onUnmounted(() => {
             </div>
 
             <!-- Code Content -->
-            <div class="code-content" v-else>
+            <div
+              v-else
+              class="code-content"
+            >
               <div class="line-numbers">
-                <div v-for="n in 20" :key="n">{{ n }}</div>
+                <div
+                  v-for="n in 20"
+                  :key="n"
+                >
+                  {{ n }}
+                </div>
               </div>
               <div class="code-wrapper">
                 <pre><code>{{ activeFile.content }}</code></pre>
@@ -1340,7 +1417,7 @@ onUnmounted(() => {
                 @mouseenter.stop="showInfo('缩略图：快速跳转')"
                 @mouseleave="clearInfo"
               >
-                <div class="minimap-slider"></div>
+                <div class="minimap-slider" />
                 <div
                   v-for="n in 40"
                   :key="n"
@@ -1349,7 +1426,7 @@ onUnmounted(() => {
                     width: Math.random() * 80 + '%',
                     opacity: Math.random() * 0.5 + 0.3
                   }"
-                ></div>
+                />
               </div>
             </div>
           </div>
@@ -1358,8 +1435,8 @@ onUnmounted(() => {
 
       <!-- Bottom Panel -->
       <div
-        class="bottom-panel"
         v-if="panelVisible"
+        class="bottom-panel"
         @mouseenter.stop="showInfo('底部面板：集成工具')"
         @mouseleave="clearInfo"
       >
@@ -1371,32 +1448,28 @@ onUnmounted(() => {
               @click="activePanel = 'PROBLEMS'"
               @mouseenter.stop="showInfo('问题面板：错误警告')"
               @mouseleave="clearInfo"
-              >PROBLEMS <span class="badge">0</span></span
-            >
+            >PROBLEMS <span class="badge">0</span></span>
             <span
               class="panel-tab"
               :class="{ active: activePanel === 'OUTPUT' }"
               @click="activePanel = 'OUTPUT'"
               @mouseenter.stop="showInfo('输出面板：日志')"
               @mouseleave="clearInfo"
-              >OUTPUT</span
-            >
+            >OUTPUT</span>
             <span
               class="panel-tab"
               :class="{ active: activePanel === 'DEBUG CONSOLE' }"
               @click="activePanel = 'DEBUG CONSOLE'"
               @mouseenter.stop="showInfo('调试控制台')"
               @mouseleave="clearInfo"
-              >DEBUG CONSOLE</span
-            >
+            >DEBUG CONSOLE</span>
             <span
               class="panel-tab"
               :class="{ active: activePanel === 'TERMINAL' }"
               @click="activePanel = 'TERMINAL'"
               @mouseenter.stop="showInfo('终端：命令行')"
               @mouseleave="clearInfo"
-              >TERMINAL</span
-            >
+            >TERMINAL</span>
           </div>
           <div
             class="panel-actions"
@@ -1405,19 +1478,32 @@ onUnmounted(() => {
           >
             <span class="action-btn">➕</span>
             <span class="action-btn">🗑️</span>
-            <span class="action-btn" @click="panelVisible = false">×</span>
+            <span
+              class="action-btn"
+              @click="panelVisible = false"
+            >×</span>
           </div>
         </div>
         <div class="panel-body">
-          <div v-if="activePanel === 'TERMINAL'" class="terminal-content">
-            <div v-for="(line, i) in terminalLines" :key="i" :class="line.type">
+          <div
+            v-if="activePanel === 'TERMINAL'"
+            class="terminal-content"
+          >
+            <div
+              v-for="(line, i) in terminalLines"
+              :key="i"
+              :class="line.type"
+            >
               {{ line.text }}
             </div>
             <div class="cursor-line">
               ➜ pyeval git:(master) ✗ <span class="cursor">_</span>
             </div>
           </div>
-          <div v-else class="empty-panel">
+          <div
+            v-else
+            class="empty-panel"
+          >
             No content to display in {{ activePanel }}.
           </div>
         </div>
@@ -1431,9 +1517,7 @@ onUnmounted(() => {
       >
         <div class="status-left">
           <span class="status-item"><span class="icon">🔃</span> master*</span>
-          <span class="status-item"
-            ><span class="icon">ⓧ</span> 0 <span class="icon">⚠</span> 0</span
-          >
+          <span class="status-item"><span class="icon">ⓧ</span> 0 <span class="icon">⚠</span> 0</span>
         </div>
         <div class="status-right">
           <span class="status-item">Ln 119, Col 71</span>

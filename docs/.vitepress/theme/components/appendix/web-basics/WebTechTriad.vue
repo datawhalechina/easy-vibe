@@ -19,14 +19,29 @@
           </button>
         </div>
 
-        <div class="preview" :class="current">
-          <h1 class="hero" :class="{ selected: selectedPart === 'h1' }" @click="selectedPart = 'h1'">
+        <div
+          class="preview"
+          :class="current"
+        >
+          <h1
+            class="hero"
+            :class="{ selected: selectedPart === 'h1' }"
+            @click="selectedPart = 'h1'"
+          >
             <span class="badge">①</span>欢迎来到我的网站
           </h1>
-          <p class="desc" :class="{ selected: selectedPart === 'p' }" @click="selectedPart = 'p'">
+          <p
+            class="desc"
+            :class="{ selected: selectedPart === 'p' }"
+            @click="selectedPart = 'p'"
+          >
             <span class="badge">②</span>这是一段描述文字
           </p>
-          <button class="cta" :class="{ selected: selectedPart === 'btn' }" @click="handleBtnClick">
+          <button
+            class="cta"
+            :class="{ selected: selectedPart === 'btn' }"
+            @click="handleBtnClick"
+          >
             <span class="badge">③</span>点我试试 ({{ clicks }})
           </button>
         </div>
@@ -34,18 +49,31 @@
 
       <div class="right-panel">
         <div class="code-section">
-          <div class="code-label">{{ codeTitle }}</div>
+          <div class="code-label">
+            {{ codeTitle }}
+          </div>
           <div class="code-block">
-            <div v-for="(line, i) in codeLines" :key="i" :class="['line', { hl: line.key === selectedPart }]">
+            <div
+              v-for="(line, i) in codeLines"
+              :key="i"
+              :class="['line', { hl: line.key === selectedPart }]"
+            >
               {{ line.text }}
             </div>
           </div>
         </div>
 
         <div class="explain-section">
-          <div class="explain-label">执行过程</div>
+          <div class="explain-label">
+            执行过程
+          </div>
           <ol class="steps">
-            <li v-for="s in steps" :key="s">{{ s }}</li>
+            <li
+              v-for="s in steps"
+              :key="s"
+            >
+              {{ s }}
+            </li>
           </ol>
         </div>
       </div>

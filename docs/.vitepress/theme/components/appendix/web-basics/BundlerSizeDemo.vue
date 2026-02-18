@@ -5,35 +5,60 @@
 <template>
   <div class="bundler-demo">
     <div class="header">
-      <div class="title">工程化：打包体积与构建时间</div>
-      <div class="subtitle">勾选功能，观察体积变化</div>
+      <div class="title">
+        工程化：打包体积与构建时间
+      </div>
+      <div class="subtitle">
+        勾选功能，观察体积变化
+      </div>
     </div>
 
     <div class="options">
-      <label v-for="item in features" :key="item.key" class="option">
-        <input type="checkbox" v-model="item.enabled" />
+      <label
+        v-for="item in features"
+        :key="item.key"
+        class="option"
+      >
+        <input
+          v-model="item.enabled"
+          type="checkbox"
+        >
         {{ item.label }} (+{{ item.size }} KB)
       </label>
     </div>
 
     <label class="toggle">
-      <input type="checkbox" v-model="treeShaking" />
+      <input
+        v-model="treeShaking"
+        type="checkbox"
+      >
       开启 Tree Shaking (移除未使用代码)
     </label>
 
     <div class="stats">
       <div class="stat-card">
-        <div class="label">Bundle Size</div>
-        <div class="value">{{ bundleSize }} KB</div>
+        <div class="label">
+          Bundle Size
+        </div>
+        <div class="value">
+          {{ bundleSize }} KB
+        </div>
       </div>
       <div class="stat-card">
-        <div class="label">Build Time</div>
-        <div class="value">{{ buildTime }} s</div>
+        <div class="label">
+          Build Time
+        </div>
+        <div class="value">
+          {{ buildTime }} s
+        </div>
       </div>
     </div>
 
     <div class="bar">
-      <div class="progress" :style="{ width: barWidth + '%' }"></div>
+      <div
+        class="progress"
+        :style="{ width: barWidth + '%' }"
+      />
     </div>
   </div>
 </template>

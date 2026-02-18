@@ -2,7 +2,11 @@
   <div class="flow-matching-demo">
     <div class="demo-card">
       <div class="controls">
-        <button class="play-btn" @click="startRace" :disabled="isPlaying">
+        <button
+          class="play-btn"
+          :disabled="isPlaying"
+          @click="startRace"
+        >
           <span class="icon">{{ isPlaying ? 'Running...' : '🚀 开始比赛 (Start Race)' }}</span>
         </button>
       </div>
@@ -15,9 +19,17 @@
             <span class="step-count">{{ diffSteps }} Steps</span>
           </div>
           <div class="canvas-wrapper">
-            <canvas ref="diffCanvasRef" width="400" height="100"></canvas>
-            <div class="marker start">噪声</div>
-            <div class="marker end">图像</div>
+            <canvas
+              ref="diffCanvasRef"
+              width="400"
+              height="100"
+            />
+            <div class="marker start">
+              噪声
+            </div>
+            <div class="marker end">
+              图像
+            </div>
           </div>
         </div>
 
@@ -28,9 +40,17 @@
             <span class="step-count highlight">{{ flowSteps }} Steps</span>
           </div>
           <div class="canvas-wrapper">
-            <canvas ref="flowCanvasRef" width="400" height="100"></canvas>
-            <div class="marker start">噪声</div>
-            <div class="marker end">图像</div>
+            <canvas
+              ref="flowCanvasRef"
+              width="400"
+              height="100"
+            />
+            <div class="marker start">
+              噪声
+            </div>
+            <div class="marker end">
+              图像
+            </div>
           </div>
         </div>
       </div>

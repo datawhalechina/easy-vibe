@@ -8,21 +8,40 @@
         :class="{ active: selectedLayer === index }"
         @click="selectedLayer = index"
       >
-        <div class="layer-number">{{ index + 1 }}</div>
-        <div class="layer-content">
-          <div class="layer-name">{{ layer.name }}</div>
-          <div class="layer-english">{{ layer.english }}</div>
-          <div class="layer-protocols">{{ layer.protocols }}</div>
+        <div class="layer-number">
+          {{ index + 1 }}
         </div>
-        <div class="layer-icon">{{ layer.icon }}</div>
+        <div class="layer-content">
+          <div class="layer-name">
+            {{ layer.name }}
+          </div>
+          <div class="layer-english">
+            {{ layer.english }}
+          </div>
+          <div class="layer-protocols">
+            {{ layer.protocols }}
+          </div>
+        </div>
+        <div class="layer-icon">
+          {{ layer.icon }}
+        </div>
       </div>
     </div>
 
-    <div class="layer-detail" v-if="selectedLayer !== null">
-      <div class="detail-title">{{ layers[selectedLayer].name }}</div>
-      <div class="detail-desc">{{ layers[selectedLayer].description }}</div>
+    <div
+      v-if="selectedLayer !== null"
+      class="layer-detail"
+    >
+      <div class="detail-title">
+        {{ layers[selectedLayer].name }}
+      </div>
+      <div class="detail-desc">
+        {{ layers[selectedLayer].description }}
+      </div>
       <div class="detail-functions">
-        <div class="function-title">主要功能</div>
+        <div class="function-title">
+          主要功能
+        </div>
         <div class="function-list">
           <div
             v-for="(func, index) in layers[selectedLayer].functions"
@@ -34,7 +53,9 @@
         </div>
       </div>
       <div class="detail-examples">
-        <div class="example-title">常见设备</div>
+        <div class="example-title">
+          常见设备
+        </div>
         <div class="example-list">
           <div
             v-for="(device, index) in layers[selectedLayer].devices"
@@ -48,14 +69,27 @@
     </div>
 
     <div class="data-flow">
-      <div class="flow-title">数据封装过程（发送）</div>
+      <div class="flow-title">
+        数据封装过程（发送）
+      </div>
       <div class="flow-steps">
-        <div class="flow-step" v-for="(step, index) in 5" :key="index">
-          <div class="step-label">{{ layers[4 - index].name }}</div>
+        <div
+          v-for="(step, index) in 5"
+          :key="index"
+          class="flow-step"
+        >
+          <div class="step-label">
+            {{ layers[4 - index].name }}
+          </div>
           <div class="step-box">
             <span class="box-label">{{ layers[4 - index].dataUnit }}</span>
           </div>
-          <div class="step-arrow" v-if="index < 4">↓ 添加头部</div>
+          <div
+            v-if="index < 4"
+            class="step-arrow"
+          >
+            ↓ 添加头部
+          </div>
         </div>
       </div>
     </div>

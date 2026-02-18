@@ -2,7 +2,9 @@
   <div class="cloud-services-map-demo">
     <div class="demo-header">
       <h4>云计算服务版图全景图</h4>
-      <p class="demo-desc">点击各个板块查看 AWS 与阿里云的对应服务</p>
+      <p class="demo-desc">
+        点击各个板块查看 AWS 与阿里云的对应服务
+      </p>
     </div>
 
     <div class="map-container">
@@ -12,8 +14,12 @@
         :class="{ active: activeLayer === 'compute' }"
         @click="setActiveLayer('compute')"
       >
-        <div class="layer-icon">⚙️</div>
-        <div class="layer-title">计算服务</div>
+        <div class="layer-icon">
+          ⚙️
+        </div>
+        <div class="layer-title">
+          计算服务
+        </div>
         <div class="layer-services">
           <span class="service-tag">EC2/ECS</span>
           <span class="service-tag">Lambda/函数计算</span>
@@ -26,8 +32,12 @@
         :class="{ active: activeLayer === 'storage' }"
         @click="setActiveLayer('storage')"
       >
-        <div class="layer-icon">💾</div>
-        <div class="layer-title">存储服务</div>
+        <div class="layer-icon">
+          💾
+        </div>
+        <div class="layer-title">
+          存储服务
+        </div>
         <div class="layer-services">
           <span class="service-tag">S3/OSS</span>
           <span class="service-tag">EBS/云盘</span>
@@ -40,8 +50,12 @@
         :class="{ active: activeLayer === 'network' }"
         @click="setActiveLayer('network')"
       >
-        <div class="layer-icon">🌐</div>
-        <div class="layer-title">网络服务</div>
+        <div class="layer-icon">
+          🌐
+        </div>
+        <div class="layer-title">
+          网络服务
+        </div>
         <div class="layer-services">
           <span class="service-tag">VPC/专有网络</span>
           <span class="service-tag">ELB/SLB</span>
@@ -54,8 +68,12 @@
         :class="{ active: activeLayer === 'security' }"
         @click="setActiveLayer('security')"
       >
-        <div class="layer-icon">🔒</div>
-        <div class="layer-title">安全服务</div>
+        <div class="layer-icon">
+          🔒
+        </div>
+        <div class="layer-title">
+          安全服务
+        </div>
         <div class="layer-services">
           <span class="service-tag">IAM/RAM</span>
           <span class="service-tag">KMS/密钥管理</span>
@@ -68,8 +86,12 @@
         :class="{ active: activeLayer === 'database' }"
         @click="setActiveLayer('database')"
       >
-        <div class="layer-icon">🗄️</div>
-        <div class="layer-title">数据库服务</div>
+        <div class="layer-icon">
+          🗄️
+        </div>
+        <div class="layer-title">
+          数据库服务
+        </div>
         <div class="layer-services">
           <span class="service-tag">RDS/PolarDB</span>
           <span class="service-tag">DynamoDB/Tablestore</span>
@@ -82,8 +104,12 @@
         :class="{ active: activeLayer === 'middleware' }"
         @click="setActiveLayer('middleware')"
       >
-        <div class="layer-icon">🔧</div>
-        <div class="layer-title">中间件服务</div>
+        <div class="layer-icon">
+          🔧
+        </div>
+        <div class="layer-title">
+          中间件服务
+        </div>
         <div class="layer-services">
           <span class="service-tag">MQ/RocketMQ</span>
           <span class="service-tag">ElastiCache/Redis</span>
@@ -92,26 +118,46 @@
     </div>
 
     <!-- 详情面板 -->
-    <div v-if="activeLayer" class="detail-panel">
+    <div
+      v-if="activeLayer"
+      class="detail-panel"
+    >
       <div class="detail-header">
         <h5>{{ layerDetails[activeLayer].title }}</h5>
-        <button class="close-btn" @click="activeLayer = null">×</button>
+        <button
+          class="close-btn"
+          @click="activeLayer = null"
+        >
+          ×
+        </button>
       </div>
       <div class="detail-content">
         <div class="comparison-table">
           <div class="table-header">
-            <div class="col aws">AWS</div>
-            <div class="col aliyun">阿里云</div>
-            <div class="col desc">功能描述</div>
+            <div class="col aws">
+              AWS
+            </div>
+            <div class="col aliyun">
+              阿里云
+            </div>
+            <div class="col desc">
+              功能描述
+            </div>
           </div>
           <div
             v-for="(item, index) in layerDetails[activeLayer].services"
             :key="index"
             class="table-row"
           >
-            <div class="col aws">{{ item.aws }}</div>
-            <div class="col aliyun">{{ item.aliyun }}</div>
-            <div class="col desc">{{ item.desc }}</div>
+            <div class="col aws">
+              {{ item.aws }}
+            </div>
+            <div class="col aliyun">
+              {{ item.aliyun }}
+            </div>
+            <div class="col desc">
+              {{ item.desc }}
+            </div>
           </div>
         </div>
       </div>

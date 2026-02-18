@@ -20,82 +20,162 @@ const refReset = () => { refStep.value = 0; objData.value.age = 25 }
 
 <template>
   <div class="reference-demo">
-    <div class="demo-title">🔄 值 vs 引用</div>
+    <div class="demo-title">
+      🔄 值 vs 引用
+    </div>
     
     <div class="compare-grid">
       <!-- 左侧：基本类型 -->
       <div class="compare-box">
-        <div class="box-header blue">基本类型（复制值）</div>
+        <div class="box-header blue">
+          基本类型（复制值）
+        </div>
         
         <div class="memory-area">
           <div class="vars-row">
-            <div class="var-item" :class="{ active: basicStep >= 0 }">
+            <div
+              class="var-item"
+              :class="{ active: basicStep >= 0 }"
+            >
               <span class="var-label">a</span>
               <span class="var-val">{{ basicA }}</span>
             </div>
-            <div class="var-item" :class="{ active: basicStep >= 1, changed: basicStep >= 2 }">
+            <div
+              class="var-item"
+              :class="{ active: basicStep >= 1, changed: basicStep >= 2 }"
+            >
               <span class="var-label">b</span>
               <span class="var-val">{{ basicB ?? '?' }}</span>
             </div>
           </div>
-          <div class="copy-arrow" v-if="basicStep >= 1">↓ 复制值</div>
+          <div
+            v-if="basicStep >= 1"
+            class="copy-arrow"
+          >
+            ↓ 复制值
+          </div>
         </div>
         
-        <div class="result-text" :class="basicStep === 2 ? 'success' : 'info'">
+        <div
+          class="result-text"
+          :class="basicStep === 2 ? 'success' : 'info'"
+        >
           {{ basicStep === 0 ? '点击复制' : basicStep === 1 ? 'b 得到 10' : '✅ 修改 b 不影响 a' }}
         </div>
         
         <div class="btn-group">
-          <button @click="basicCopy" :disabled="basicStep >= 1">复制</button>
-          <button @click="basicModify" :disabled="basicStep !== 1">改 b</button>
-          <button @click="basicReset" class="reset">重置</button>
+          <button
+            :disabled="basicStep >= 1"
+            @click="basicCopy"
+          >
+            复制
+          </button>
+          <button
+            :disabled="basicStep !== 1"
+            @click="basicModify"
+          >
+            改 b
+          </button>
+          <button
+            class="reset"
+            @click="basicReset"
+          >
+            重置
+          </button>
         </div>
       </div>
       
       <!-- 右侧：引用类型 -->
       <div class="compare-box">
-        <div class="box-header orange">引用类型（复制地址）</div>
+        <div class="box-header orange">
+          引用类型（复制地址）
+        </div>
         
         <div class="memory-area">
           <div class="vars-row">
-            <div class="var-item" :class="{ active: refStep >= 0 }">
+            <div
+              class="var-item"
+              :class="{ active: refStep >= 0 }"
+            >
               <span class="var-label">obj1</span>
               <span class="var-addr">0x001</span>
             </div>
-            <div class="var-item" :class="{ active: refStep >= 1 }">
+            <div
+              class="var-item"
+              :class="{ active: refStep >= 1 }"
+            >
               <span class="var-label">obj2</span>
               <span class="var-addr">{{ refStep >= 1 ? '0x001' : '?' }}</span>
             </div>
           </div>
-          <div class="data-box" :class="{ changed: refStep === 2, copied: refStep === 3 }">
-            <div class="data-addr">0x001</div>
-            <div class="data-content">{ age: {{ objData.age }} }</div>
+          <div
+            class="data-box"
+            :class="{ changed: refStep === 2, copied: refStep === 3 }"
+          >
+            <div class="data-addr">
+              0x001
+            </div>
+            <div class="data-content">
+              { age: {{ objData.age }} }
+            </div>
           </div>
-          <div class="copy-arrow" v-if="refStep >= 1">指向同一地址</div>
+          <div
+            v-if="refStep >= 1"
+            class="copy-arrow"
+          >
+            指向同一地址
+          </div>
         </div>
         
-        <div class="result-text" :class="refStep === 2 ? 'warning' : refStep === 3 ? 'success' : 'info'">
+        <div
+          class="result-text"
+          :class="refStep === 2 ? 'warning' : refStep === 3 ? 'success' : 'info'"
+        >
           {{ refStep === 0 ? '点击复制' : refStep === 1 ? '共享地址' : refStep === 2 ? '⚠️ 一改全变' : '✅ 已分离' }}
         </div>
         
         <div class="btn-group">
-          <button @click="refCopy" :disabled="refStep >= 1">复制</button>
-          <button @click="refModify" :disabled="refStep !== 1">修改</button>
-          <button @click="refSpread" :disabled="refStep !== 2">展开</button>
-          <button @click="refReset" class="reset">重置</button>
+          <button
+            :disabled="refStep >= 1"
+            @click="refCopy"
+          >
+            复制
+          </button>
+          <button
+            :disabled="refStep !== 1"
+            @click="refModify"
+          >
+            修改
+          </button>
+          <button
+            :disabled="refStep !== 2"
+            @click="refSpread"
+          >
+            展开
+          </button>
+          <button
+            class="reset"
+            @click="refReset"
+          >
+            重置
+          </button>
         </div>
       </div>
     </div>
     
     <div class="code-compare">
       <div class="code-col">
-        <div class="code-title">基本类型</div>
+        <div class="code-title">
+          基本类型
+        </div>
         <pre><code>let a = 10
 let b = a  // b=10
 b = 20     // a还是10</code></pre>
       </div>
       <div class="code-col">
-        <div class="code-title">引用类型</div>
+        <div class="code-title">
+          引用类型
+        </div>
         <pre><code>let obj1 = {age:25}
 let obj2 = obj1
 obj2.age=30 // obj1也变了！

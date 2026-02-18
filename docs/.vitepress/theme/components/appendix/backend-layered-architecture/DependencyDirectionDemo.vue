@@ -2,7 +2,9 @@
   <div class="dependency-direction-demo">
     <div class="demo-header">
       <h4>🔄 依赖方向：分层架构的核心规则</h4>
-      <p class="subtitle">理解依赖方向，才能真正掌握分层架构</p>
+      <p class="subtitle">
+        理解依赖方向，才能真正掌握分层架构
+      </p>
     </div>
 
     <!-- 依赖方向可视化 -->
@@ -10,38 +12,52 @@
       <div class="arch-diagram">
         <!-- 外层 -->
         <div class="layer outer">
-          <div class="layer-label">外层（UI / 外部系统）</div>
-          <div class="layer-box">Controller</div>
+          <div class="layer-label">
+            外层（UI / 外部系统）
+          </div>
+          <div class="layer-box">
+            Controller
+          </div>
         </div>
 
         <!-- 依赖箭头 -->
         <div class="dependency-arrow down">
-          <span class="arrow-line"></span>
+          <span class="arrow-line" />
           <span class="arrow-head">▶️ 依赖</span>
         </div>
 
         <!-- 中层 -->
         <div class="layer middle">
-          <div class="layer-label">中层（应用层）</div>
-          <div class="layer-box">Service</div>
+          <div class="layer-label">
+            中层（应用层）
+          </div>
+          <div class="layer-box">
+            Service
+          </div>
         </div>
 
         <!-- 依赖箭头 -->
         <div class="dependency-arrow down">
-          <span class="arrow-line"></span>
+          <span class="arrow-line" />
           <span class="arrow-head">▶️ 依赖</span>
         </div>
 
         <!-- 内层 -->
         <div class="layer inner">
-          <div class="layer-label">内层（领域层）</div>
-          <div class="layer-box">Domain / Repository</div>
+          <div class="layer-label">
+            内层（领域层）
+          </div>
+          <div class="layer-box">
+            Domain / Repository
+          </div>
         </div>
       </div>
 
       <!-- 核心原则说明 -->
       <div class="principle-box">
-        <div class="principle-title">🎯 核心原则：依赖倒置（DIP）</div>
+        <div class="principle-title">
+          🎯 核心原则：依赖倒置（DIP）
+        </div>
         <div class="principle-content">
           <p><strong>上层模块不应该依赖下层模块的具体实现，而应该依赖于抽象。</strong></p>
           <div class="rule-list">
@@ -49,21 +65,27 @@
               <span class="rule-icon">✅</span>
               <div class="rule-text">
                 <strong>Controller → Service 接口</strong>
-                <div class="rule-desc">Controller 只依赖 Service 的接口，不依赖实现类</div>
+                <div class="rule-desc">
+                  Controller 只依赖 Service 的接口，不依赖实现类
+                </div>
               </div>
             </div>
             <div class="rule-item">
               <span class="rule-icon">✅</span>
               <div class="rule-text">
                 <strong>Service → Repository 接口</strong>
-                <div class="rule-desc">Service 只依赖 Repository 接口，不关心数据怎么存</div>
+                <div class="rule-desc">
+                  Service 只依赖 Repository 接口，不关心数据怎么存
+                </div>
               </div>
             </div>
             <div class="rule-item">
               <span class="rule-icon">✅</span>
               <div class="rule-text">
                 <strong>所有层依赖 Domain</strong>
-                <div class="rule-desc">Domain 是核心，被所有上层依赖，但 Domain 不依赖任何层</div>
+                <div class="rule-desc">
+                  Domain 是核心，被所有上层依赖，但 Domain 不依赖任何层
+                </div>
               </div>
             </div>
           </div>

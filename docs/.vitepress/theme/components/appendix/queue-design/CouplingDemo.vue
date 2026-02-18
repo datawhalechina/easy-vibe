@@ -29,13 +29,22 @@
 
     <div class="demo-content">
       <!-- 紧耦合模式 -->
-      <div v-if="!useAsync" class="synchronous-mode">
+      <div
+        v-if="!useAsync"
+        class="synchronous-mode"
+      >
         <div class="scenario">
-          <div class="scenario-title">❌ 紧耦合问题</div>
+          <div class="scenario-title">
+            ❌ 紧耦合问题
+          </div>
           <div class="flow-diagram">
             <div class="service-box order">
-              <div class="service-name">订单服务</div>
-              <div class="service-desc">创建订单</div>
+              <div class="service-name">
+                订单服务
+              </div>
+              <div class="service-desc">
+                创建订单
+              </div>
             </div>
 
             <div class="arrows">
@@ -45,9 +54,14 @@
                 class="sync-call"
                 :class="{ active: call.active }"
               >
-                <div class="call-line"></div>
-                <div class="call-label">{{ call.service }}</div>
-                <div v-if="call.active" class="call-status">
+                <div class="call-line" />
+                <div class="call-label">
+                  {{ call.service }}
+                </div>
+                <div
+                  v-if="call.active"
+                  class="call-status"
+                >
                   {{ call.status }}
                 </div>
               </div>
@@ -57,9 +71,18 @@
               class="service-box notification"
               :class="{ failed: notificationFailed }"
             >
-              <div class="service-name">通知服务</div>
-              <div class="service-desc">发送短信/邮件</div>
-              <div v-if="notificationFailed" class="error-msg">服务宕机 ❌</div>
+              <div class="service-name">
+                通知服务
+              </div>
+              <div class="service-desc">
+                发送短信/邮件
+              </div>
+              <div
+                v-if="notificationFailed"
+                class="error-msg"
+              >
+                服务宕机 ❌
+              </div>
             </div>
           </div>
 
@@ -70,10 +93,8 @@
             </div>
             <div class="problem-item">
               <span class="icon">⚠️</span>
-              <span
-                ><strong>响应慢：</strong>总耗时 = 300ms + 500ms + 400ms =
-                1200ms</span
-              >
+              <span><strong>响应慢：</strong>总耗时 = 300ms + 500ms + 400ms =
+                1200ms</span>
             </div>
             <div class="problem-item">
               <span class="icon">⚠️</span>
@@ -81,47 +102,81 @@
             </div>
           </div>
 
-          <button class="test-btn fail" @click="testSyncCall">
+          <button
+            class="test-btn fail"
+            @click="testSyncCall"
+          >
             模拟通知服务故障
           </button>
         </div>
       </div>
 
       <!-- 松耦合模式 -->
-      <div v-else class="asynchronous-mode">
+      <div
+        v-else
+        class="asynchronous-mode"
+      >
         <div class="scenario">
-          <div class="scenario-title">✅ 松耦合优势</div>
+          <div class="scenario-title">
+            ✅ 松耦合优势
+          </div>
           <div class="flow-diagram">
             <div class="service-box order">
-              <div class="service-name">订单服务</div>
-              <div class="service-desc">创建订单 + 发送消息</div>
+              <div class="service-name">
+                订单服务
+              </div>
+              <div class="service-desc">
+                创建订单 + 发送消息
+              </div>
             </div>
 
             <div class="mq-bridge">
               <div class="mq-box">
-                <div class="mq-icon">📨</div>
-                <div class="mq-label">消息队列</div>
-                <div v-if="messageInQueue" class="msg-indicator">
+                <div class="mq-icon">
+                  📨
+                </div>
+                <div class="mq-label">
+                  消息队列
+                </div>
+                <div
+                  v-if="messageInQueue"
+                  class="msg-indicator"
+                >
                   消息已发送
                 </div>
               </div>
-              <div class="flow-arrow">→</div>
+              <div class="flow-arrow">
+                →
+              </div>
             </div>
 
             <div class="consumers-group">
-              <div class="consumer-box" :class="{ failed: consumerFailed }">
-                <div class="consumer-name">短信服务</div>
+              <div
+                class="consumer-box"
+                :class="{ failed: consumerFailed }"
+              >
+                <div class="consumer-name">
+                  短信服务
+                </div>
                 <div class="consumer-status">
                   {{ consumerFailed ? '离线(不影响订单)' : '运行中' }}
                 </div>
               </div>
               <div class="consumer-box">
-                <div class="consumer-name">邮件服务</div>
-                <div class="consumer-status">运行中</div>
+                <div class="consumer-name">
+                  邮件服务
+                </div>
+                <div class="consumer-status">
+                  运行中
+                </div>
               </div>
               <div class="consumer-box">
-                <div class="consumer-name">积分服务</div>
-                <div class="consumer-status">运行中</div>
+                <div class="consumer-name">
+                  积分服务
+                </div>
+                <div class="consumer-status">
+                  运行中
+                </div>
               </div>
             </div>
           </div>
@@ -133,9 +188,7 @@
             </div>
             <div class="benefit-item">
               <span class="icon">✅</span>
-              <span
-                ><strong>响应快：</strong>订单服务只耗时 50ms(发送消息)</span
-              >
+              <span><strong>响应快：</strong>订单服务只耗时 50ms(发送消息)</span>
             </div>
             <div class="benefit-item">
               <span class="icon">✅</span>
@@ -143,7 +196,10 @@
             </div>
           </div>
 
-          <button class="test-btn success" @click="testAsyncCall">
+          <button
+            class="test-btn success"
+            @click="testAsyncCall"
+          >
             发送订单消息
           </button>
         </div>

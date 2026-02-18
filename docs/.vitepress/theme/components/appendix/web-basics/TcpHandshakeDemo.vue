@@ -6,10 +6,20 @@
         <span :class="connectionStatus.toLowerCase()">{{ statusText }}</span>
       </div>
       <div class="buttons">
-        <button v-if="step === 0" @click="startHandshake" class="action-btn">
+        <button
+          v-if="step === 0"
+          class="action-btn"
+          @click="startHandshake"
+        >
           {{ t.connect }}
         </button>
-        <button v-else @click="reset" class="reset-btn">{{ t.reset }}</button>
+        <button
+          v-else
+          class="reset-btn"
+          @click="reset"
+        >
+          {{ t.reset }}
+        </button>
       </div>
     </div>
 
@@ -20,9 +30,17 @@
           <span class="icon">💻</span>
           <span class="name">{{ t.client }}</span>
         </div>
-        <div class="line"></div>
-        <div class="state-marker" :class="{ active: step >= 1 }">SYN_SENT</div>
-        <div class="state-marker" :class="{ active: step >= 3 }">
+        <div class="line" />
+        <div
+          class="state-marker"
+          :class="{ active: step >= 1 }"
+        >
+          SYN_SENT
+        </div>
+        <div
+          class="state-marker"
+          :class="{ active: step >= 3 }"
+        >
           ESTABLISHED
         </div>
       </div>
@@ -32,9 +50,16 @@
         <!-- SYN Packet -->
         <div class="packet-track">
           <transition name="slide-right">
-            <div v-if="showSyn" class="packet syn">
-              <div class="packet-body">SYN</div>
-              <div class="packet-detail">SEQ=0</div>
+            <div
+              v-if="showSyn"
+              class="packet syn"
+            >
+              <div class="packet-body">
+                SYN
+              </div>
+              <div class="packet-detail">
+                SEQ=0
+              </div>
             </div>
           </transition>
         </div>
@@ -42,9 +67,16 @@
         <!-- SYN-ACK Packet -->
         <div class="packet-track reverse">
           <transition name="slide-left">
-            <div v-if="showSynAck" class="packet syn-ack">
-              <div class="packet-body">SYN-ACK</div>
-              <div class="packet-detail">SEQ=0, ACK=1</div>
+            <div
+              v-if="showSynAck"
+              class="packet syn-ack"
+            >
+              <div class="packet-body">
+                SYN-ACK
+              </div>
+              <div class="packet-detail">
+                SEQ=0, ACK=1
+              </div>
             </div>
           </transition>
         </div>
@@ -52,9 +84,16 @@
         <!-- ACK Packet -->
         <div class="packet-track">
           <transition name="slide-right">
-            <div v-if="showAck" class="packet ack">
-              <div class="packet-body">ACK</div>
-              <div class="packet-detail">SEQ=1, ACK=1</div>
+            <div
+              v-if="showAck"
+              class="packet ack"
+            >
+              <div class="packet-body">
+                ACK
+              </div>
+              <div class="packet-detail">
+                SEQ=1, ACK=1
+              </div>
             </div>
           </transition>
         </div>
@@ -66,9 +105,17 @@
           <span class="icon">🖥️</span>
           <span class="name">{{ t.server }}</span>
         </div>
-        <div class="line"></div>
-        <div class="state-marker" :class="{ active: step >= 2 }">SYN_RCVD</div>
-        <div class="state-marker" :class="{ active: step >= 3 }">
+        <div class="line" />
+        <div
+          class="state-marker"
+          :class="{ active: step >= 2 }"
+        >
+          SYN_RCVD
+        </div>
+        <div
+          class="state-marker"
+          :class="{ active: step >= 3 }"
+        >
           ESTABLISHED
         </div>
       </div>

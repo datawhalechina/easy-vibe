@@ -2,66 +2,120 @@
   <div class="k8s-services-demo">
     <div class="demo-header">
       <h4>Kubernetes 服务生态全景</h4>
-      <p class="demo-desc">探索 AWS 和阿里云上的 K8s 服务及配套生态</p>
+      <p class="demo-desc">
+        探索 AWS 和阿里云上的 K8s 服务及配套生态
+      </p>
     </div>
 
     <div class="k8s-architecture">
       <div class="arch-layer control-plane">
-        <div class="layer-title">控制平面</div>
+        <div class="layer-title">
+          控制平面
+        </div>
         <div class="layer-content">
           <div class="service-box">
-            <div class="service-name">EKS / ACK</div>
-            <div class="service-desc">托管 Kubernetes 控制平面</div>
+            <div class="service-name">
+              EKS / ACK
+            </div>
+            <div class="service-desc">
+              托管 Kubernetes 控制平面
+            </div>
           </div>
         </div>
       </div>
 
       <div class="arch-layer worker-nodes">
-        <div class="layer-title">工作节点</div>
+        <div class="layer-title">
+          工作节点
+        </div>
         <div class="layer-content">
           <div class="node-types">
             <div class="node-box">
-              <div class="node-icon">💻</div>
-              <div class="node-name">EC2/ECS</div>
-              <div class="node-desc">标准计算节点</div>
+              <div class="node-icon">
+                💻
+              </div>
+              <div class="node-name">
+                EC2/ECS
+              </div>
+              <div class="node-desc">
+                标准计算节点
+              </div>
             </div>
             <div class="node-box">
-              <div class="node-icon">⚡</div>
-              <div class="node-name">Fargate/ECI</div>
-              <div class="node-desc">Serverless 节点</div>
+              <div class="node-icon">
+                ⚡
+              </div>
+              <div class="node-name">
+                Fargate/ECI
+              </div>
+              <div class="node-desc">
+                Serverless 节点
+              </div>
             </div>
             <div class="node-box">
-              <div class="node-icon">🎯</div>
-              <div class="node-name">Spot/抢占式</div>
-              <div class="node-desc">低成本竞价节点</div>
+              <div class="node-icon">
+                🎯
+              </div>
+              <div class="node-name">
+                Spot/抢占式
+              </div>
+              <div class="node-desc">
+                低成本竞价节点
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="arch-layer addons">
-        <div class="layer-title">插件生态</div>
+        <div class="layer-title">
+          插件生态
+        </div>
         <div class="layer-content">
           <div class="addon-grid">
             <div class="addon-card">
-              <div class="addon-name">Ingress/Nginx</div>
-              <div class="addon-aws">AWS Load Balancer</div>
-              <div class="addon-aliyun">ALB Ingress</div>
+              <div class="addon-name">
+                Ingress/Nginx
+              </div>
+              <div class="addon-aws">
+                AWS Load Balancer
+              </div>
+              <div class="addon-aliyun">
+                ALB Ingress
+              </div>
             </div>
             <div class="addon-card">
-              <div class="addon-name">Storage</div>
-              <div class="addon-aws">EBS/EFS CSI</div>
-              <div class="addon-aliyun">云盘/NAS CSI</div>
+              <div class="addon-name">
+                Storage
+              </div>
+              <div class="addon-aws">
+                EBS/EFS CSI
+              </div>
+              <div class="addon-aliyun">
+                云盘/NAS CSI
+              </div>
             </div>
             <div class="addon-card">
-              <div class="addon-name">Monitoring</div>
-              <div class="addon-aws">CloudWatch/AMP</div>
-              <div class="addon-aliyun">ARMS/Prometheus</div>
+              <div class="addon-name">
+                Monitoring
+              </div>
+              <div class="addon-aws">
+                CloudWatch/AMP
+              </div>
+              <div class="addon-aliyun">
+                ARMS/Prometheus
+              </div>
             </div>
             <div class="addon-card">
-              <div class="addon-name">Service Mesh</div>
-              <div class="addon-aws">App Mesh</div>
-              <div class="addon-aliyun">Service Mesh ASM</div>
+              <div class="addon-name">
+                Service Mesh
+              </div>
+              <div class="addon-aws">
+                App Mesh
+              </div>
+              <div class="addon-aliyun">
+                Service Mesh ASM
+              </div>
             </div>
           </div>
         </div>

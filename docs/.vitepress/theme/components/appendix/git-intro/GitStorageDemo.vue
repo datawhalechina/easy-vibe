@@ -4,16 +4,16 @@
       <div class="comparison">
         <div class="mode-selector">
           <button
-            @click="mode = 'full'"
             :class="{ active: mode === 'full' }"
             class="mode-btn"
+            @click="mode = 'full'"
           >
             完整备份
           </button>
           <button
-            @click="mode = 'git'"
             :class="{ active: mode === 'git' }"
             class="mode-btn"
+            @click="mode = 'git'"
           >
             Git 增量
           </button>
@@ -21,10 +21,16 @@
 
         <div class="visualization">
           <div class="bar-container">
-            <div class="bar full" :style="{ height: fullSize + '%' }">
+            <div
+              class="bar full"
+              :style="{ height: fullSize + '%' }"
+            >
               <span class="label">完整备份: {{ fullSize }}MB</span>
             </div>
-            <div class="bar git" :style="{ height: gitSize + '%' }">
+            <div
+              class="bar git"
+              :style="{ height: gitSize + '%' }"
+            >
               <span class="label">Git 存储: {{ gitSize }}MB</span>
             </div>
           </div>

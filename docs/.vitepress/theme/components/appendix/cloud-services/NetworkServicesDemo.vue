@@ -2,12 +2,16 @@
   <div class="network-services-demo">
     <div class="demo-header">
       <h4>网络架构可视化配置</h4>
-      <p class="demo-desc">拖拽组件构建您的云上网络架构</p>
+      <p class="demo-desc">
+        拖拽组件构建您的云上网络架构
+      </p>
     </div>
 
     <div class="network-builder">
       <div class="components-panel">
-        <div class="panel-title">可用组件</div>
+        <div class="panel-title">
+          可用组件
+        </div>
         <div class="component-list">
           <div
             v-for="component in networkComponents"
@@ -28,10 +32,19 @@
           @drop="onDrop"
           @dragover.prevent
         >
-          <div v-if="canvasItems.length === 0" class="empty-state">
-            <div class="empty-icon">🏗️</div>
-            <div class="empty-text">拖拽左侧组件到此处</div>
-            <div class="empty-subtext">开始构建您的网络架构</div>
+          <div
+            v-if="canvasItems.length === 0"
+            class="empty-state"
+          >
+            <div class="empty-icon">
+              🏗️
+            </div>
+            <div class="empty-text">
+              拖拽左侧组件到此处
+            </div>
+            <div class="empty-subtext">
+              开始构建您的网络架构
+            </div>
           </div>
 
           <div
@@ -42,25 +55,46 @@
             :style="itemStyle(index)"
             @click="selectItem(item)"
           >
-            <div class="item-icon">{{ item.icon }}</div>
-            <div class="item-name">{{ item.name }}</div>
-            <button class="remove-btn" @click.stop="removeItem(index)">×</button>
+            <div class="item-icon">
+              {{ item.icon }}
+            </div>
+            <div class="item-name">
+              {{ item.name }}
+            </div>
+            <button
+              class="remove-btn"
+              @click.stop="removeItem(index)"
+            >
+              ×
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-if="selectedItem" class="config-panel">
+    <div
+      v-if="selectedItem"
+      class="config-panel"
+    >
       <div class="config-header">
         <span class="config-icon">{{ selectedItem.icon }}</span>
         <span class="config-title">{{ selectedItem.name }} 配置</span>
-        <button class="close-config" @click="selectedItem = null">×</button>
+        <button
+          class="close-config"
+          @click="selectedItem = null"
+        >
+          ×
+        </button>
       </div>
 
       <div class="config-content">
         <div class="config-section">
-          <div class="section-title">AWS 配置</div>
-          <div class="service-name">{{ selectedItem.awsService }}</div>
+          <div class="section-title">
+            AWS 配置
+          </div>
+          <div class="service-name">
+            {{ selectedItem.awsService }}
+          </div>
           <div class="config-options">
             <div
               v-for="(option, idx) in selectedItem.awsOptions"
@@ -73,11 +107,15 @@
           </div>
         </div>
 
-        <div class="config-divider"></div>
+        <div class="config-divider" />
 
         <div class="config-section">
-          <div class="section-title aliyun-title">阿里云配置</div>
-          <div class="service-name aliyun-service">{{ selectedItem.aliyunService }}</div>
+          <div class="section-title aliyun-title">
+            阿里云配置
+          </div>
+          <div class="service-name aliyun-service">
+            {{ selectedItem.aliyunService }}
+          </div>
           <div class="config-options">
             <div
               v-for="(option, idx) in selectedItem.aliyunOptions"

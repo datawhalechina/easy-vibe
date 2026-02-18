@@ -8,39 +8,91 @@
 
     <div class="demo-content">
       <div class="transmission-types">
-        <div class="type-card" :class="{ active: activeType === 'serial' }" @click="activeType = 'serial'">
-          <div class="card-icon">➡️</div>
-          <div class="card-title">串行传输</div>
-          <div class="card-desc">一位一位依次传输</div>
-          <div class="card-examples">USB、SATA、PCIe</div>
+        <div
+          class="type-card"
+          :class="{ active: activeType === 'serial' }"
+          @click="activeType = 'serial'"
+        >
+          <div class="card-icon">
+            ➡️
+          </div>
+          <div class="card-title">
+            串行传输
+          </div>
+          <div class="card-desc">
+            一位一位依次传输
+          </div>
+          <div class="card-examples">
+            USB、SATA、PCIe
+          </div>
         </div>
-        <div class="type-card" :class="{ active: activeType === 'parallel' }" @click="activeType = 'parallel'">
-          <div class="card-icon">⬇️⬇️⬇️⬇️</div>
-          <div class="card-title">并行传输</div>
-          <div class="card-desc">多位同时传输</div>
-          <div class="card-examples">旧式打印机接口、IDE</div>
+        <div
+          class="type-card"
+          :class="{ active: activeType === 'parallel' }"
+          @click="activeType = 'parallel'"
+        >
+          <div class="card-icon">
+            ⬇️⬇️⬇️⬇️
+          </div>
+          <div class="card-title">
+            并行传输
+          </div>
+          <div class="card-desc">
+            多位同时传输
+          </div>
+          <div class="card-examples">
+            旧式打印机接口、IDE
+          </div>
         </div>
       </div>
 
       <div class="transmission-visual">
-        <div class="visual-title">{{ activeType === 'serial' ? '串行传输示意' : '并行传输示意' }}</div>
+        <div class="visual-title">
+          {{ activeType === 'serial' ? '串行传输示意' : '并行传输示意' }}
+        </div>
         <div class="visual-area">
           <div class="sender">
-            <div class="device-label">发送端</div>
+            <div class="device-label">
+              发送端
+            </div>
             <div class="data-bits">
-              <span v-for="(bit, i) in dataBits" :key="i" class="bit" :class="{ sending: sendingBit === i && activeType === 'serial' }">{{ bit }}</span>
+              <span
+                v-for="(bit, i) in dataBits"
+                :key="i"
+                class="bit"
+                :class="{ sending: sendingBit === i && activeType === 'serial' }"
+              >{{ bit }}</span>
             </div>
           </div>
           <div class="channels">
-            <div v-if="activeType === 'serial'" class="channel serial">
-              <div class="channel-label">单通道</div>
+            <div
+              v-if="activeType === 'serial'"
+              class="channel serial"
+            >
+              <div class="channel-label">
+                单通道
+              </div>
               <div class="channel-flow">
-                <span v-for="i in 5" :key="i" class="flow-dot" :class="{ active: sendingBit !== null }">●</span>
+                <span
+                  v-for="i in 5"
+                  :key="i"
+                  class="flow-dot"
+                  :class="{ active: sendingBit !== null }"
+                >●</span>
               </div>
             </div>
-            <div v-else class="channel parallel">
-              <div v-for="i in 4" :key="i" class="channel-row">
-                <div class="channel-label">通道{{ i }}</div>
+            <div
+              v-else
+              class="channel parallel"
+            >
+              <div
+                v-for="i in 4"
+                :key="i"
+                class="channel-row"
+              >
+                <div class="channel-label">
+                  通道{{ i }}
+                </div>
                 <div class="channel-flow">
                   <span class="flow-dot active">●</span>
                 </div>
@@ -48,17 +100,30 @@
             </div>
           </div>
           <div class="receiver">
-            <div class="device-label">接收端</div>
+            <div class="device-label">
+              接收端
+            </div>
             <div class="data-bits received">
-              <span v-for="(bit, i) in receivedBits" :key="i" class="bit">{{ bit }}</span>
+              <span
+                v-for="(bit, i) in receivedBits"
+                :key="i"
+                class="bit"
+              >{{ bit }}</span>
             </div>
           </div>
         </div>
-        <button class="send-btn" @click="startTransmission">发送数据</button>
+        <button
+          class="send-btn"
+          @click="startTransmission"
+        >
+          发送数据
+        </button>
       </div>
 
       <div class="comparison-table">
-        <div class="table-title">串行 vs 并行对比</div>
+        <div class="table-title">
+          串行 vs 并行对比
+        </div>
         <table>
           <thead>
             <tr>

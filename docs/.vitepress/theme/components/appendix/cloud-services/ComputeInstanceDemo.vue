@@ -43,7 +43,9 @@
     </div>
     
     <div class="result-panel">
-      <div class="result-title">配置结果</div>
+      <div class="result-title">
+        配置结果
+      </div>
       <div class="result-grid">
         <div class="result-item">
           <span class="label">配置</span>

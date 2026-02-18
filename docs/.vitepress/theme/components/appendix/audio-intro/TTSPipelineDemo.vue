@@ -8,7 +8,9 @@
 <template>
   <div class="tts-pipeline-demo">
     <div class="header">
-      <div class="title">🔄 TTS 架构演进：从慢到快</div>
+      <div class="title">
+        🔄 TTS 架构演进：从慢到快
+      </div>
       <div class="subtitle">
         探索文本如何变成语音，以及不同架构的优劣对比
       </div>
@@ -18,13 +20,16 @@
       <button
         v-for="arch in architectures"
         :key="arch.id"
-        @click="selectArch(arch.id)"
         class="arch-btn"
         :class="{ active: selectedArch === arch.id }"
+        @click="selectArch(arch.id)"
       >
         <span class="arch-icon">{{ arch.icon }}</span>
         <span class="arch-name">{{ arch.name }}</span>
-        <span class="arch-tag" :class="arch.tagClass">{{ arch.tag }}</span>
+        <span
+          class="arch-tag"
+          :class="arch.tagClass"
+        >{{ arch.tag }}</span>
       </button>
     </div>
 
@@ -36,26 +41,50 @@
         :class="{ active: activeStage === index }"
         @click="activeStage = index"
       >
-        <div class="stage-num">{{ index + 1 }}</div>
-        <div class="stage-content">
-          <div class="stage-icon">{{ stage.icon }}</div>
-          <div class="stage-name">{{ stage.name }}</div>
-          <div class="stage-desc">{{ stage.shortDesc }}</div>
+        <div class="stage-num">
+          {{ index + 1 }}
         </div>
-        <div v-if="index < currentStages.length - 1" class="stage-arrow">→</div>
+        <div class="stage-content">
+          <div class="stage-icon">
+            {{ stage.icon }}
+          </div>
+          <div class="stage-name">
+            {{ stage.name }}
+          </div>
+          <div class="stage-desc">
+            {{ stage.shortDesc }}
+          </div>
+        </div>
+        <div
+          v-if="index < currentStages.length - 1"
+          class="stage-arrow"
+        >
+          →
+        </div>
       </div>
     </div>
 
-    <div class="stage-detail" v-if="currentStage">
+    <div
+      v-if="currentStage"
+      class="stage-detail"
+    >
       <div class="detail-header">
         <span class="detail-icon">{{ currentStage.icon }}</span>
         <div>
-          <div class="detail-name">{{ currentStage.name }}</div>
-          <div class="detail-desc">{{ currentStage.description }}</div>
+          <div class="detail-name">
+            {{ currentStage.name }}
+          </div>
+          <div class="detail-desc">
+            {{ currentStage.description }}
+          </div>
         </div>
       </div>
       <div class="detail-canvas">
-        <canvas ref="detailCanvas" width="500" height="150"></canvas>
+        <canvas
+          ref="detailCanvas"
+          width="500"
+          height="150"
+        />
       </div>
       <div class="detail-meta">
         <div class="meta-item">
@@ -74,29 +103,58 @@
     </div>
 
     <div class="comparison-table">
-      <div class="table-title">📊 架构对比</div>
+      <div class="table-title">
+        📊 架构对比
+      </div>
       <div class="table">
         <div class="table-header">
-          <div class="cell">特性</div>
-          <div class="cell">自回归</div>
-          <div class="cell">非自回归</div>
-          <div class="cell">流匹配</div>
+          <div class="cell">
+            特性
+          </div>
+          <div class="cell">
+            自回归
+          </div>
+          <div class="cell">
+            非自回归
+          </div>
+          <div class="cell">
+            流匹配
+          </div>
         </div>
         <div
           v-for="row in comparisonRows"
           :key="row.feature"
           class="table-row"
         >
-          <div class="cell feature">{{ row.feature }}</div>
-          <div class="cell" :class="{ highlight: selectedArch === 'ar' }">{{ row.ar }}</div>
-          <div class="cell" :class="{ highlight: selectedArch === 'nar' }">{{ row.nar }}</div>
-          <div class="cell" :class="{ highlight: selectedArch === 'flow' }">{{ row.flow }}</div>
+          <div class="cell feature">
+            {{ row.feature }}
+          </div>
+          <div
+            class="cell"
+            :class="{ highlight: selectedArch === 'ar' }"
+          >
+            {{ row.ar }}
+          </div>
+          <div
+            class="cell"
+            :class="{ highlight: selectedArch === 'nar' }"
+          >
+            {{ row.nar }}
+          </div>
+          <div
+            class="cell"
+            :class="{ highlight: selectedArch === 'flow' }"
+          >
+            {{ row.flow }}
+          </div>
         </div>
       </div>
     </div>
 
     <div class="models-section">
-      <div class="models-title">🏆 代表模型</div>
+      <div class="models-title">
+        🏆 代表模型
+      </div>
       <div class="models-grid">
         <div
           v-for="model in models"
@@ -104,9 +162,16 @@
           class="model-card"
           :class="{ active: model.arch === selectedArch }"
         >
-          <div class="model-name">{{ model.name }}</div>
-          <span class="model-tag" :class="model.tagClass">{{ model.type }}</span>
-          <div class="model-desc">{{ model.desc }}</div>
+          <div class="model-name">
+            {{ model.name }}
+          </div>
+          <span
+            class="model-tag"
+            :class="model.tagClass"
+          >{{ model.type }}</span>
+          <div class="model-desc">
+            {{ model.desc }}
+          </div>
         </div>
       </div>
     </div>

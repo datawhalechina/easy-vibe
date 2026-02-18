@@ -17,11 +17,15 @@
               class="bit-btn"
               :class="{ on: bit }"
               @click="toggleBit('A', i)"
-            >{{ bit }}</button>
+            >
+              {{ bit }}
+            </button>
           </div>
           <span class="decimal">= {{ decimalA }}</span>
         </div>
-        <div class="operator">+</div>
+        <div class="operator">
+          +
+        </div>
         <div class="input-group">
           <label>B:</label>
           <div class="bits">
@@ -31,19 +35,30 @@
               class="bit-btn"
               :class="{ on: bit }"
               @click="toggleBit('B', i)"
-            >{{ bit }}</button>
+            >
+              {{ bit }}
+            </button>
           </div>
           <span class="decimal">= {{ decimalB }}</span>
         </div>
       </div>
 
       <div class="adder-visual">
-        <div class="adder-stage" v-for="(s, i) in stages" :key="i">
-          <div class="stage-label">{{ s.label }}</div>
+        <div
+          v-for="(s, i) in stages"
+          :key="i"
+          class="adder-stage"
+        >
+          <div class="stage-label">
+            {{ s.label }}
+          </div>
           <div class="stage-bits">
             <span class="bit-label">A{{ 3-i }}: {{ bitsA[i] }}</span>
             <span class="bit-label">B{{ 3-i }}: {{ bitsB[i] }}</span>
-            <span class="bit-label" v-if="i > 0">C{{ i }}: {{ carries[i-1] }}</span>
+            <span
+              v-if="i > 0"
+              class="bit-label"
+            >C{{ i }}: {{ carries[i-1] }}</span>
           </div>
           <div class="stage-result">
             <span class="sum-bit">S{{ 3-i }}: {{ sumBits[i] }}</span>

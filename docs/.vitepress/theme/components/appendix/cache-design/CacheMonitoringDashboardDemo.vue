@@ -13,22 +13,36 @@
 
     <div class="metrics-grid">
       <div class="metric-card hit-rate">
-        <div class="metric-icon">🎯</div>
+        <div class="metric-icon">
+          🎯
+        </div>
         <div class="metric-content">
-          <div class="metric-label">命中率</div>
-          <div class="metric-value" :class="getHitRateClass">
+          <div class="metric-label">
+            命中率
+          </div>
+          <div
+            class="metric-value"
+            :class="getHitRateClass"
+          >
             {{ hitRate }}%
           </div>
-          <div class="metric-trend" :class="trendClass">
+          <div
+            class="metric-trend"
+            :class="trendClass"
+          >
             {{ trendIcon }} {{ trendValue }}%
           </div>
         </div>
       </div>
 
       <div class="metric-card response-time">
-        <div class="metric-icon">⚡</div>
+        <div class="metric-icon">
+          ⚡
+        </div>
         <div class="metric-content">
-          <div class="metric-label">平均响应时间</div>
+          <div class="metric-label">
+            平均响应时间
+          </div>
           <div class="metric-value">
             {{ avgResponseTime }}ms
           </div>
@@ -39,9 +53,13 @@
       </div>
 
       <div class="metric-card cache-size">
-        <div class="metric-icon">📦</div>
+        <div class="metric-icon">
+          📦
+        </div>
         <div class="metric-content">
-          <div class="metric-label">缓存使用量</div>
+          <div class="metric-label">
+            缓存使用量
+          </div>
           <div class="metric-value">
             {{ usedSize }}MB
           </div>
@@ -52,7 +70,7 @@
                 width: `${sizeUsagePercent}%`,
                 backgroundColor: getSizeBarColor
               }"
-            ></div>
+            />
           </div>
           <div class="metric-sub">
             {{ usedSize }}MB / {{ maxSize }}MB
@@ -61,9 +79,13 @@
       </div>
 
       <div class="metric-card requests">
-        <div class="metric-icon">📊</div>
+        <div class="metric-icon">
+          📊
+        </div>
         <div class="metric-content">
-          <div class="metric-label">总请求数</div>
+          <div class="metric-label">
+            总请求数
+          </div>
           <div class="metric-value">
             {{ totalRequests.toLocaleString() }}
           </div>
@@ -77,7 +99,12 @@
     <div class="request-log">
       <div class="log-header">
         <span>📋 请求日志</span>
-        <button class="clear-btn" @click="clearLog">清空</button>
+        <button
+          class="clear-btn"
+          @click="clearLog"
+        >
+          清空
+        </button>
       </div>
       <div class="log-list">
         <transition-group name="log-item">
@@ -94,20 +121,32 @@
             <span class="log-latency">{{ log.latency }}ms</span>
           </div>
         </transition-group>
-        <div v-if="requestLogs.length === 0" class="empty-log">
+        <div
+          v-if="requestLogs.length === 0"
+          class="empty-log"
+        >
           暂无请求记录，点击下方按钮发送请求
         </div>
       </div>
     </div>
 
     <div class="control-panel">
-      <button class="action-btn" @click="simulateRequest">
+      <button
+        class="action-btn"
+        @click="simulateRequest"
+      >
         🎲 模拟请求
       </button>
-      <button class="action-btn" @click="simulateBurst">
+      <button
+        class="action-btn"
+        @click="simulateBurst"
+      >
         🚀 连续请求 (10次)
       </button>
-      <button class="action-btn outline" @click="resetMetrics">
+      <button
+        class="action-btn outline"
+        @click="resetMetrics"
+      >
         ↺ 重置指标
       </button>
     </div>

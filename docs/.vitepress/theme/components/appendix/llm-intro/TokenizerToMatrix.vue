@@ -20,7 +20,7 @@
         placeholder="输入一段文本..."
         class="text-input"
         :disabled="currentStep > 0"
-      />
+      >
       <div class="step-controls">
         <button
           class="step-btn prev"
@@ -29,7 +29,9 @@
         >
           ← 上一步
         </button>
-        <div class="step-indicator">Step {{ currentStep + 1 }} / 4</div>
+        <div class="step-indicator">
+          Step {{ currentStep + 1 }} / 4
+        </div>
         <button
           class="step-btn next"
           :disabled="currentStep === 3"
@@ -42,8 +44,13 @@
 
     <div class="visualization-stage">
       <!-- Step 1: Tokenization -->
-      <div class="stage-content" v-if="currentStep === 0">
-        <h3 class="stage-title">Step 1: Tokenization (分词)</h3>
+      <div
+        v-if="currentStep === 0"
+        class="stage-content"
+      >
+        <h3 class="stage-title">
+          Step 1: Tokenization (分词)
+        </h3>
         <p class="stage-desc">
           计算机首先将文本切分为最小的语义单位（Token）。
           <span
@@ -71,24 +78,37 @@
       </div>
 
       <!-- Step 2: ID Mapping -->
-      <div class="stage-content" v-if="currentStep === 1">
-        <h3 class="stage-title">Step 2: ID Mapping (索引映射)</h3>
+      <div
+        v-if="currentStep === 1"
+        class="stage-content"
+      >
+        <h3 class="stage-title">
+          Step 2: ID Mapping (索引映射)
+        </h3>
         <p class="stage-desc">
           在词表（Vocabulary）中查找每个 Token 对应的唯一数字 ID。
         </p>
         <div class="mapping-container">
-          <div v-for="(token, idx) in tokens" :key="idx" class="mapping-row">
+          <div
+            v-for="(token, idx) in tokens"
+            :key="idx"
+            class="mapping-row"
+          >
             <div
               class="token-box sm"
               :style="{ borderColor: getTokenColor(idx) }"
             >
               {{ token.text }}
             </div>
-            <div class="arrow">→</div>
+            <div class="arrow">
+              →
+            </div>
             <div class="vocab-lookup">
               <span class="vocab-label">Vocab Lookup</span>
             </div>
-            <div class="arrow">→</div>
+            <div class="arrow">
+              →
+            </div>
             <div class="id-box">
               {{ token.id }}
             </div>
@@ -97,15 +117,28 @@
       </div>
 
       <!-- Step 3: Embedding Lookup -->
-      <div class="stage-content" v-if="currentStep === 2">
-        <h3 class="stage-title">Step 3: Embedding Lookup (向量查表)</h3>
+      <div
+        v-if="currentStep === 2"
+        class="stage-content"
+      >
+        <h3 class="stage-title">
+          Step 3: Embedding Lookup (向量查表)
+        </h3>
         <p class="stage-desc">
           每个 ID 对应一个预训练好的高维向量（这里简化为 4 维）。
         </p>
         <div class="lookup-container">
-          <div v-for="(token, idx) in tokens" :key="idx" class="lookup-row">
-            <div class="id-box">{{ token.id }}</div>
-            <div class="arrow">→</div>
+          <div
+            v-for="(token, idx) in tokens"
+            :key="idx"
+            class="lookup-row"
+          >
+            <div class="id-box">
+              {{ token.id }}
+            </div>
+            <div class="arrow">
+              →
+            </div>
             <div class="vector-row">
               <span class="bracket">[</span>
               <span
@@ -122,16 +155,25 @@
       </div>
 
       <!-- Step 4: Input Matrix -->
-      <div class="stage-content" v-if="currentStep === 3">
-        <h3 class="stage-title">Step 4: Matrix Construction (构建矩阵)</h3>
+      <div
+        v-if="currentStep === 3"
+        class="stage-content"
+      >
+        <h3 class="stage-title">
+          Step 4: Matrix Construction (构建矩阵)
+        </h3>
         <p class="stage-desc">
           所有向量堆叠在一起，形成了输入矩阵（Shape: [Batch, Seq_Len,
           Dim]）。这就是 LLM 真正“看见”的东西。
         </p>
         <div class="matrix-container">
-          <div class="matrix-bracket left"></div>
+          <div class="matrix-bracket left" />
           <div class="matrix-grid">
-            <div v-for="(token, rIdx) in tokens" :key="rIdx" class="matrix-row">
+            <div
+              v-for="(token, rIdx) in tokens"
+              :key="rIdx"
+              class="matrix-row"
+            >
               <div
                 v-for="(val, cIdx) in token.vector"
                 :key="cIdx"
@@ -143,8 +185,10 @@
               </div>
             </div>
           </div>
-          <div class="matrix-bracket right"></div>
-          <div class="matrix-label">Shape: ({{ tokens.length }}, 4)</div>
+          <div class="matrix-bracket right" />
+          <div class="matrix-label">
+            Shape: ({{ tokens.length }}, 4)
+          </div>
         </div>
       </div>
     </div>

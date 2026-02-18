@@ -9,12 +9,20 @@
     <div class="storage-architecture">
       <!-- 账户层 -->
       <div class="account-layer">
-        <div class="account-icon">👤</div>
-        <div class="account-name">云账户 (Account)</div>
-        <div class="account-desc">管理权限、计费、全局配置</div>
+        <div class="account-icon">
+          👤
+        </div>
+        <div class="account-name">
+          云账户 (Account)
+        </div>
+        <div class="account-desc">
+          管理权限、计费、全局配置
+        </div>
       </div>
 
-      <div class="connector">▼</div>
+      <div class="connector">
+        ▼
+      </div>
 
       <!-- 桶层 -->
       <div class="buckets-container">
@@ -32,15 +40,25 @@
             :class="{ active: selectedBucket === bucket.name }"
             @click="selectBucket(bucket.name)"
           >
-            <div class="bucket-icon">{{ bucket.icon }}</div>
-            <div class="bucket-name">{{ bucket.name }}</div>
-            <div class="bucket-meta">{{ bucket.objects }} 对象</div>
-            <div class="bucket-size">{{ bucket.size }}</div>
+            <div class="bucket-icon">
+              {{ bucket.icon }}
+            </div>
+            <div class="bucket-name">
+              {{ bucket.name }}
+            </div>
+            <div class="bucket-meta">
+              {{ bucket.objects }} 对象
+            </div>
+            <div class="bucket-size">
+              {{ bucket.size }}
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="connector">▼</div>
+      <div class="connector">
+        ▼
+      </div>
 
       <!-- 对象层 -->
       <div class="objects-container">
@@ -50,7 +68,10 @@
           <span class="section-desc">文件数据 + 元数据</span>
         </div>
 
-        <div v-if="selectedBucket" class="objects-list">
+        <div
+          v-if="selectedBucket"
+          class="objects-list"
+        >
           <div
             v-for="obj in currentObjects"
             :key="obj.key"
@@ -58,21 +79,34 @@
             :class="{ selected: selectedObject === obj.key }"
             @click="selectObject(obj)"
           >
-            <div class="object-icon">{{ getFileIcon(obj.type) }}</div>
-            <div class="object-info">
-              <div class="object-key">{{ obj.key }}</div>
-              <div class="object-meta">{{ obj.size }} · {{ obj.lastModified }}</div>
+            <div class="object-icon">
+              {{ getFileIcon(obj.type) }}
             </div>
-            <div class="object-arrow">▶</div>
+            <div class="object-info">
+              <div class="object-key">
+                {{ obj.key }}
+              </div>
+              <div class="object-meta">
+                {{ obj.size }} · {{ obj.lastModified }}
+              </div>
+            </div>
+            <div class="object-arrow">
+              ▶
+            </div>
           </div>
         </div>
 
-        <div v-else class="objects-placeholder">
+        <div
+          v-else
+          class="objects-placeholder"
+        >
           点击上方存储桶查看对象列表
         </div>
       </div>
 
-      <div class="connector">▼</div>
+      <div class="connector">
+        ▼
+      </div>
 
       <!-- 元数据层 -->
       <div class="metadata-container">
@@ -82,11 +116,20 @@
           <span class="section-desc">系统元数据 + 自定义元数据</span>
         </div>
 
-        <div v-if="selectedObject && currentMetadata" class="metadata-content">
+        <div
+          v-if="selectedObject && currentMetadata"
+          class="metadata-content"
+        >
           <div class="metadata-section">
-            <div class="metadata-section-title">系统元数据 (System)</div>
+            <div class="metadata-section-title">
+              系统元数据 (System)
+            </div>
             <div class="metadata-list">
-              <div v-for="(value, key) in currentMetadata.system" :key="key" class="metadata-item">
+              <div
+                v-for="(value, key) in currentMetadata.system"
+                :key="key"
+                class="metadata-item"
+              >
                 <span class="metadata-key">{{ key }}:</span>
                 <span class="metadata-value">{{ value }}</span>
               </div>
@@ -94,9 +137,15 @@
           </div>
 
           <div class="metadata-section">
-            <div class="metadata-section-title">自定义元数据 (Custom)</div>
+            <div class="metadata-section-title">
+              自定义元数据 (Custom)
+            </div>
             <div class="metadata-list">
-              <div v-for="(value, key) in currentMetadata.custom" :key="key" class="metadata-item">
+              <div
+                v-for="(value, key) in currentMetadata.custom"
+                :key="key"
+                class="metadata-item"
+              >
                 <span class="metadata-key">{{ key }}:</span>
                 <span class="metadata-value">{{ value }}</span>
               </div>
@@ -104,7 +153,10 @@
           </div>
         </div>
 
-        <div v-else class="metadata-placeholder">
+        <div
+          v-else
+          class="metadata-placeholder"
+        >
           点击左侧对象查看详细元数据
         </div>
       </div>

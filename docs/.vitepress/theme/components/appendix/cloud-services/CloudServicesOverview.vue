@@ -8,15 +8,28 @@
         :class="{ active: selectedService === service.id }"
         @click="selectService(service.id)"
       >
-        <div class="service-icon">{{ service.icon }}</div>
-        <div class="service-name">{{ service.name }}</div>
-        <div class="service-examples">{{ service.examples }}</div>
+        <div class="service-icon">
+          {{ service.icon }}
+        </div>
+        <div class="service-name">
+          {{ service.name }}
+        </div>
+        <div class="service-examples">
+          {{ service.examples }}
+        </div>
       </div>
     </div>
     
-    <div v-if="selectedServiceData" class="service-detail">
-      <div class="detail-title">{{ selectedServiceData.name }}</div>
-      <div class="detail-desc">{{ selectedServiceData.description }}</div>
+    <div
+      v-if="selectedServiceData"
+      class="service-detail"
+    >
+      <div class="detail-title">
+        {{ selectedServiceData.name }}
+      </div>
+      <div class="detail-desc">
+        {{ selectedServiceData.description }}
+      </div>
       <div class="detail-compare">
         <div class="compare-item">
           <span class="label">AWS:</span>

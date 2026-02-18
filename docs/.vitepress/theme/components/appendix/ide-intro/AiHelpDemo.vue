@@ -2,30 +2,47 @@
   <div class="ai-help-demo">
     <div class="desktop-container">
       <!-- 1. VS Code 窗口 (全功能模拟) -->
-      <div class="window vscode" :class="getWindowClass('vscode')">
+      <div
+        class="window vscode"
+        :class="getWindowClass('vscode')"
+      >
         <!-- 标题栏 -->
         <div class="title-bar">
           <div class="controls">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+            <span class="dot red" />
+            <span class="dot yellow" />
+            <span class="dot green" />
           </div>
-          <div class="title-text">App.vue - easy-vibe - Visual Studio Code</div>
+          <div class="title-text">
+            App.vue - easy-vibe - Visual Studio Code
+          </div>
         </div>
 
         <div class="main-layout">
           <!-- 侧边栏 (Activity Bar) -->
           <div class="activity-bar">
-            <div class="icon active">📁</div>
-            <div class="icon">🔍</div>
-            <div class="icon">🌿</div>
-            <div class="icon">🐛</div>
-            <div class="icon">🧩</div>
+            <div class="icon active">
+              📁
+            </div>
+            <div class="icon">
+              🔍
+            </div>
+            <div class="icon">
+              🌿
+            </div>
+            <div class="icon">
+              🐛
+            </div>
+            <div class="icon">
+              🧩
+            </div>
           </div>
 
           <!-- 资源管理器 (Sidebar) -->
           <div class="sidebar">
-            <div class="sidebar-title">EXPLORER</div>
+            <div class="sidebar-title">
+              EXPLORER
+            </div>
             <div class="file-tree">
               <div class="tree-item expanded">
                 <span class="arrow">▼</span> src
@@ -51,7 +68,12 @@
             </div>
             <div class="code-content">
               <div class="line-numbers">
-                <div v-for="n in 15" :key="n">{{ n }}</div>
+                <div
+                  v-for="n in 15"
+                  :key="n"
+                >
+                  {{ n }}
+                </div>
               </div>
               <div class="code-lines">
                 <div class="line">
@@ -61,7 +83,7 @@
                   <span class="var">nextTick</span> }
                   <span class="kwd">from</span> <span class="str">'vue'</span>
                 </div>
-                <div class="line"></div>
+                <div class="line" />
                 <div class="line">
                   <span class="kwd">const</span>
                   <span class="var">chartRef</span> =
@@ -71,7 +93,7 @@
                   <span class="kwd">const</span> <span class="var">data</span> =
                   <span class="func">ref</span>([])
                 </div>
-                <div class="line"></div>
+                <div class="line" />
                 <div class="line">
                   <span class="kwd">const</span>
                   <span class="func">initChart</span> =
@@ -84,50 +106,61 @@
                   &nbsp;&nbsp;<span class="kwd">await</span>
                   <span class="func">fetchData</span>()
                 </div>
-                <div class="line">&nbsp;&nbsp;</div>
-                <div class="line" ref="targetCode">
-                  &nbsp;&nbsp;<span class="comment"
-                    >// 👈 等待 DOM 更新后再渲染图表</span
-                  >
+                <div class="line">
+&nbsp;&nbsp;
                 </div>
-                <div class="line" ref="targetCode2">
+                <div
+                  ref="targetCode"
+                  class="line"
+                >
+                  &nbsp;&nbsp;<span class="comment">// 👈 等待 DOM 更新后再渲染图表</span>
+                </div>
+                <div
+                  ref="targetCode2"
+                  class="line"
+                >
                   &nbsp;&nbsp;<span class="kwd">await</span>
                   <span class="func">nextTick</span>()
                 </div>
-                <div class="line">&nbsp;&nbsp;</div>
+                <div class="line">
+&nbsp;&nbsp;
+                </div>
                 <div class="line">
                   &nbsp;&nbsp;<span class="kwd">const</span>
                   <span class="var">chart</span> =
-                  <span class="var">echarts</span>.<span class="func">init</span
-                  >(<span class="var">chartRef</span>.<span class="var"
-                    >value</span
-                  >)
+                  <span class="var">echarts</span>.<span class="func">init</span>(<span class="var">chartRef</span>.<span class="var">value</span>)
                 </div>
                 <div class="line">
-                  &nbsp;&nbsp;<span class="var">chart</span>.<span class="func"
-                    >setOption</span
-                  >({ ... })
+                  &nbsp;&nbsp;<span class="var">chart</span>.<span class="func">setOption</span>({ ... })
                 </div>
-                <div class="line">}</div>
+                <div class="line">
+                  }
+                </div>
               </div>
             </div>
           </div>
 
           <!-- 截图选框 (Overlay) - Moved to main-layout level -->
           <div
-            class="screenshot-overlay"
             v-if="step === 'selecting' || step === 'captured'"
+            class="screenshot-overlay"
           >
             <div
               class="selection-box"
               :class="{ flashed: step === 'captured' }"
             >
-              <div class="selection-handle top-left"></div>
-              <div class="selection-handle top-right"></div>
-              <div class="selection-handle bottom-left"></div>
-              <div class="selection-handle bottom-right"></div>
-              <div class="cursor-crosshair" v-if="step === 'selecting'"></div>
-              <div class="selection-size" v-if="step === 'selecting'">
+              <div class="selection-handle top-left" />
+              <div class="selection-handle top-right" />
+              <div class="selection-handle bottom-left" />
+              <div class="selection-handle bottom-right" />
+              <div
+                v-if="step === 'selecting'"
+                class="cursor-crosshair"
+              />
+              <div
+                v-if="step === 'selecting'"
+                class="selection-size"
+              >
                 220 × 350
               </div>
             </div>
@@ -135,54 +168,91 @@
         </div>
 
         <!-- 模拟操作引导 -->
-        <div class="guide-overlay" v-if="step === 'idle'">
-          <div class="start-btn" @click="startDemo">
+        <div
+          v-if="step === 'idle'"
+          class="guide-overlay"
+        >
+          <div
+            class="start-btn"
+            @click="startDemo"
+          >
             <span>📸 演示：遇到代码不懂怎么问 AI？</span>
           </div>
         </div>
       </div>
 
       <!-- 2. ChatGPT 窗口 -->
-      <div class="window chatgpt" :class="getWindowClass('chatgpt')">
+      <div
+        class="window chatgpt"
+        :class="getWindowClass('chatgpt')"
+      >
         <div class="chat-sidebar">
-          <div class="new-chat">+ New chat</div>
-          <div class="history-item">Previous 7 Days</div>
-          <div class="history-item active">Vue nextTick explanation</div>
-          <div class="history-item">CSS Grid layout</div>
+          <div class="new-chat">
+            + New chat
+          </div>
+          <div class="history-item">
+            Previous 7 Days
+          </div>
+          <div class="history-item active">
+            Vue nextTick explanation
+          </div>
+          <div class="history-item">
+            CSS Grid layout
+          </div>
         </div>
         <div class="chat-main">
           <div class="chat-model-selector">
             <span>GPT-4o</span> <span class="arrow">▼</span>
           </div>
 
-          <div class="messages-container" ref="messagesContainer">
-            <div class="msg-row user" v-if="stepInt >= 5">
-              <div class="avatar">U</div>
+          <div
+            ref="messagesContainer"
+            class="messages-container"
+          >
+            <div
+              v-if="stepInt >= 5"
+              class="msg-row user"
+            >
+              <div class="avatar">
+                U
+              </div>
               <div class="msg-bubble">
-                <div class="pasted-image" v-if="stepInt >= 5">
+                <div
+                  v-if="stepInt >= 5"
+                  class="pasted-image"
+                >
                   <div class="ui-snapshot">
-                    <div class="snapshot-rect menu-rect"></div>
-                    <div class="snapshot-text">Menu Bar.png</div>
+                    <div class="snapshot-rect menu-rect" />
+                    <div class="snapshot-text">
+                      Menu Bar.png
+                    </div>
                   </div>
                 </div>
-                <div class="msg-text">{{ typedText }}</div>
+                <div class="msg-text">
+                  {{ typedText }}
+                </div>
               </div>
             </div>
 
-            <div class="msg-row ai" v-if="stepInt >= 7">
+            <div
+              v-if="stepInt >= 7"
+              class="msg-row ai"
+            >
               <div class="avatar gpt">
-                <svg viewBox="0 0 41 41" class="gpt-logo">
+                <svg
+                  viewBox="0 0 41 41"
+                  class="gpt-logo"
+                >
                   <path
                     d="M37.532 16.87a9.963 9.963 0 00-.856-8.184c-3.15-5.49-10.25-7.38-15.738-4.23-.718.412-1.35.914-1.896 1.488a9.965 9.965 0 00-7.144-1.156 9.972 9.972 0 00-6.73 4.966c-3.15 5.49-1.26 12.59 4.23 15.738.412.237.854.43 1.306.586a9.963 9.963 0 00.856 8.184c3.15 5.49 10.25 7.38 15.738 4.23.718-.412 1.35-.914 1.896-1.488a9.965 9.965 0 007.144 1.156 9.972 9.972 0 006.73-4.966c3.15-5.49 1.26-12.59-4.23-15.738a9.953 9.953 0 00-1.306-.586zM20.5 29.5a9 9 0 110-18 9 9 0 010 18z"
                     fill="currentColor"
-                  ></path>
+                  />
                 </svg>
               </div>
               <div class="msg-bubble ai-bubble">
                 <p>
                   这是 VS Code 的
-                  <strong>顶部菜单栏 (Menu Bar)</strong
-                  >，包含了软件的所有功能入口。
+                  <strong>顶部菜单栏 (Menu Bar)</strong>，包含了软件的所有功能入口。
                 </p>
                 <p><strong>常用菜单解释：</strong></p>
                 <ul>
@@ -193,8 +263,7 @@
                     <strong>Edit (编辑)</strong>：复制粘贴、查找替换、撤销重做。
                   </li>
                   <li>
-                    <strong>View (视图)</strong
-                    >：控制界面显示，比如打开侧边栏、终端等。
+                    <strong>View (视图)</strong>：控制界面显示，比如打开侧边栏、终端等。
                   </li>
                   <li>
                     <strong>Terminal (终端)</strong>：打开内置命令行工具。
@@ -212,21 +281,26 @@
           <div class="chat-input-area">
             <div class="input-wrapper">
               <div
-                class="input-preview"
                 v-if="stepInt === 4 || (stepInt === 5 && isTyping)"
+                class="input-preview"
               >
                 <div class="mini-snapshot-ui">
-                  <div class="mini-menu-rect"></div>
+                  <div class="mini-menu-rect" />
                 </div>
               </div>
               <div class="fake-input">
-                <span v-if="stepInt < 5" class="placeholder"
-                  >Message ChatGPT...</span
-                >
-                <span v-else class="typing-text"
-                  >{{ typedText
-                  }}<span class="cursor" v-if="isTyping">|</span></span
-                >
+                <span
+                  v-if="stepInt < 5"
+                  class="placeholder"
+                >Message ChatGPT...</span>
+                <span
+                  v-else
+                  class="typing-text"
+                >{{ typedText
+                }}<span
+                  v-if="isTyping"
+                  class="cursor"
+                >|</span></span>
               </div>
               <button
                 class="send-btn"
@@ -240,7 +314,11 @@
       </div>
 
       <!-- 全局重置按钮 -->
-      <button class="reset-btn" v-if="step === 'finished'" @click="reset">
+      <button
+        v-if="step === 'finished'"
+        class="reset-btn"
+        @click="reset"
+      >
         🔄 重播
       </button>
     </div>

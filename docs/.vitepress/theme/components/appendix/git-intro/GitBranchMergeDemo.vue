@@ -2,26 +2,47 @@
   <div class="branch-demo">
     <div class="panel">
       <div class="controls">
-        <button @click="init" :disabled="inited || mergePending" class="btn">
+        <button
+          :disabled="inited || mergePending"
+          class="btn"
+          @click="init"
+        >
           初始化
         </button>
-        <button @click="commit" :disabled="!inited || mergePending" class="btn">
+        <button
+          :disabled="!inited || mergePending"
+          class="btn"
+          @click="commit"
+        >
           提交
         </button>
-        <button @click="branch" :disabled="!inited || hasBranch" class="btn">
+        <button
+          :disabled="!inited || hasBranch"
+          class="btn"
+          @click="branch"
+        >
           创建分支
         </button>
         <button
-          @click="prepareMerge"
           :disabled="!hasBranch || mergePending"
           class="btn"
+          @click="prepareMerge"
         >
           准备合并
         </button>
-        <button @click="finishMerge" :disabled="!mergePending" class="btn">
+        <button
+          :disabled="!mergePending"
+          class="btn"
+          @click="finishMerge"
+        >
           完成合并
         </button>
-        <button @click="reset" class="btn secondary">重置</button>
+        <button
+          class="btn secondary"
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
 
       <div class="graph">

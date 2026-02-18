@@ -3,36 +3,62 @@
     <div class="viz-card">
       <!-- Left: The Output (Pixel Space) -->
       <div class="preview-section">
-        <div class="emoji-display" :style="{ transform: `scale(${1 + zoomLevel})` }">
+        <div
+          class="emoji-display"
+          :style="{ transform: `scale(${1 + zoomLevel})` }"
+        >
           {{ currentEmoji }}
         </div>
-        <div class="label">像素空间 (Pixel Space)</div>
-        <div class="sub-label">最终看到的图像</div>
+        <div class="label">
+          像素空间 (Pixel Space)
+        </div>
+        <div class="sub-label">
+          最终看到的图像
+        </div>
       </div>
 
       <!-- Center: The Mechanism -->
       <div class="connection">
-        <div class="arrow">← 映射 →</div>
-        <div class="vae-tag">VAE Decoder</div>
+        <div class="arrow">
+          ← 映射 →
+        </div>
+        <div class="vae-tag">
+          VAE Decoder
+        </div>
       </div>
 
       <!-- Right: The Input (Latent Space) -->
       <div class="control-section">
-        <div class="latent-grid" ref="gridRef" @mousedown="startDrag" @touchstart="startDrag">
-          <div class="grid-lines"></div>
-          <div class="axis-label x-axis">开心值 (Happiness)</div>
-          <div class="axis-label y-axis">惊讶值 (Surprise)</div>
+        <div
+          ref="gridRef"
+          class="latent-grid"
+          @mousedown="startDrag"
+          @touchstart="startDrag"
+        >
+          <div class="grid-lines" />
+          <div class="axis-label x-axis">
+            开心值 (Happiness)
+          </div>
+          <div class="axis-label y-axis">
+            惊讶值 (Surprise)
+          </div>
           
           <!-- The Latent Point -->
           <div 
             class="latent-point"
             :style="{ left: `${point.x}%`, top: `${point.y}%` }"
           >
-            <div class="tooltip">Latent Vector: [{{ ((point.x-50)/50).toFixed(1) }}, {{ ((50-point.y)/50).toFixed(1) }}]</div>
+            <div class="tooltip">
+              Latent Vector: [{{ ((point.x-50)/50).toFixed(1) }}, {{ ((50-point.y)/50).toFixed(1) }}]
+            </div>
           </div>
         </div>
-        <div class="label">潜空间 (Latent Space)</div>
-        <div class="sub-label">拖动红点改变特征</div>
+        <div class="label">
+          潜空间 (Latent Space)
+        </div>
+        <div class="sub-label">
+          拖动红点改变特征
+        </div>
       </div>
     </div>
     

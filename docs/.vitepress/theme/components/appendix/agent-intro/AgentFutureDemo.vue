@@ -6,8 +6,12 @@
   <div class="future">
     <div class="header">
       <div>
-        <div class="title">Agent 的未来：更稳、更强、更协作</div>
-        <div class="subtitle">点一个趋势，看它意味着什么。</div>
+        <div class="title">
+          Agent 的未来：更稳、更强、更协作
+        </div>
+        <div class="subtitle">
+          点一个趋势，看它意味着什么。
+        </div>
       </div>
     </div>
 
@@ -23,16 +27,28 @@
     </div>
 
     <div class="panel">
-      <div class="p-title">{{ current.label }}</div>
-      <div class="p-body">{{ current.desc }}</div>
+      <div class="p-title">
+        {{ current.label }}
+      </div>
+      <div class="p-body">
+        {{ current.desc }}
+      </div>
       <div class="grid">
         <div class="card">
-          <div class="k">会带来什么？</div>
-          <div class="v">{{ current.impact }}</div>
+          <div class="k">
+            会带来什么？
+          </div>
+          <div class="v">
+            {{ current.impact }}
+          </div>
         </div>
         <div class="card">
-          <div class="k">你现在能做什么准备？</div>
-          <div class="v">{{ current.prepare }}</div>
+          <div class="k">
+            你现在能做什么准备？
+          </div>
+          <div class="v">
+            {{ current.prepare }}
+          </div>
         </div>
       </div>
     </div>

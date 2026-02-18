@@ -1,13 +1,19 @@
 <template>
   <div class="auto-scaling-demo">
     <div class="header">
-      <div class="title">自动扩缩容</div>
-      <div class="subtitle">基于CPU、内存、QPS的智能弹性伸缩</div>
+      <div class="title">
+        自动扩缩容
+      </div>
+      <div class="subtitle">
+        基于CPU、内存、QPS的智能弹性伸缩
+      </div>
     </div>
 
     <!-- 指标选择器 -->
     <div class="metric-selector">
-      <div class="selector-label">扩容指标：</div>
+      <div class="selector-label">
+        扩容指标：
+      </div>
       <div class="selector-buttons">
         <button
           v-for="metric in metrics"
@@ -27,14 +33,17 @@
       <div class="dashboard-header">
         <span class="dashboard-title">实时监控</span>
         <span class="refresh-indicator">
-          <span class="live-dot"></span>
+          <span class="live-dot" />
           实时
         </span>
       </div>
 
       <div class="metrics-grid">
         <!-- CPU使用率 -->
-        <div class="metric-card" :class="{ warning: cpuUsage > 70, danger: cpuUsage > 90 }">
+        <div
+          class="metric-card"
+          :class="{ warning: cpuUsage > 70, danger: cpuUsage > 90 }"
+        >
           <div class="metric-header">
             <span class="metric-icon">💻</span>
             <span class="metric-name">CPU使用率</span>
@@ -44,7 +53,10 @@
             <span class="value-unit">%</span>
           </div>
           <div class="metric-progress">
-            <div class="progress-bar" :style="{ width: cpuUsage + '%', background: getUsageColor(cpuUsage) }"></div>
+            <div
+              class="progress-bar"
+              :style="{ width: cpuUsage + '%', background: getUsageColor(cpuUsage) }"
+            />
           </div>
           <div class="metric-threshold">
             <span>扩容阈值: 70%</span>
@@ -53,7 +65,10 @@
         </div>
 
         <!-- 内存使用率 -->
-        <div class="metric-card" :class="{ warning: memoryUsage > 75, danger: memoryUsage > 90 }">
+        <div
+          class="metric-card"
+          :class="{ warning: memoryUsage > 75, danger: memoryUsage > 90 }"
+        >
           <div class="metric-header">
             <span class="metric-icon">🧠</span>
             <span class="metric-name">内存使用率</span>
@@ -63,7 +78,10 @@
             <span class="value-unit">%</span>
           </div>
           <div class="metric-progress">
-            <div class="progress-bar" :style="{ width: memoryUsage + '%', background: getUsageColor(memoryUsage) }"></div>
+            <div
+              class="progress-bar"
+              :style="{ width: memoryUsage + '%', background: getUsageColor(memoryUsage) }"
+            />
           </div>
           <div class="metric-threshold">
             <span>扩容阈值: 75%</span>
@@ -82,7 +100,10 @@
             <span class="value-unit">req/s</span>
           </div>
           <div class="metric-chart">
-            <svg viewBox="0 0 200 40" class="sparkline">
+            <svg
+              viewBox="0 0 200 40"
+              class="sparkline"
+            >
               <polyline
                 fill="none"
                 stroke="var(--vp-c-brand)"
@@ -123,7 +144,10 @@
               {{ i }}
             </div>
           </div>
-          <div v-if="scaleReason" class="scale-reason">
+          <div
+            v-if="scaleReason"
+            class="scale-reason"
+          >
             <span class="reason-icon">{{ scaleReason.includes('扩容') ? '📈' : '📉' }}</span>
             <span class="reason-text">{{ scaleReason }}</span>
           </div>
@@ -144,46 +168,70 @@
           class="history-item"
           :class="{ scaleOut: record.type === '缩容' }"
         >
-          <div class="item-icon">{{ record.type === '扩容' ? '📈' : '📉' }}</div>
+          <div class="item-icon">
+            {{ record.type === '扩容' ? '📈' : '📉' }}
+          </div>
           <div class="item-details">
             <div class="item-action">
               {{ record.type }}: {{ record.from }} → {{ record.to }} 实例
             </div>
-            <div class="item-reason">{{ record.reason }}</div>
+            <div class="item-reason">
+              {{ record.reason }}
+            </div>
           </div>
-          <div class="item-time">{{ record.time }}</div>
+          <div class="item-time">
+            {{ record.time }}
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 最佳实践 -->
     <div class="best-practices">
-      <div class="practices-title">自动扩缩容最佳实践</div>
+      <div class="practices-title">
+        自动扩缩容最佳实践
+      </div>
       <div class="practices-grid">
         <div class="practice-card">
-          <div class="practice-icon">⏱️</div>
-          <div class="practice-title">冷却时间</div>
+          <div class="practice-icon">
+            ⏱️
+          </div>
+          <div class="practice-title">
+            冷却时间
+          </div>
           <div class="practice-desc">
             设置适当的冷却时间（通常3-5分钟），避免扩缩容操作过于频繁导致的震荡
           </div>
         </div>
         <div class="practice-card">
-          <div class="practice-icon">📊</div>
-          <div class="practice-title">多指标综合</div>
+          <div class="practice-icon">
+            📊
+          </div>
+          <div class="practice-title">
+            多指标综合
+          </div>
           <div class="practice-desc">
             不要依赖单一指标，结合CPU、内存、QPS、连接数等多维度进行综合判断
           </div>
         </div>
         <div class="practice-card">
-          <div class="practice-icon">🎯</div>
-          <div class="practice-title">目标利用率</div>
+          <div class="practice-icon">
+            🎯
+          </div>
+          <div class="practice-title">
+            目标利用率
+          </div>
           <div class="practice-desc">
             设置合理的资源目标利用率（如70%），预留足够的缓冲应对突发流量
           </div>
         </div>
         <div class="practice-card">
-          <div class="practice-icon">⚡</div>
-          <div class="practice-title">快速扩容</div>
+          <div class="practice-icon">
+            ⚡
+          </div>
+          <div class="practice-title">
+            快速扩容
+          </div>
           <div class="practice-desc">
             扩容操作应该比缩容更激进，确保系统能快速应对流量增长
           </div>

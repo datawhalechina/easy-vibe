@@ -8,7 +8,9 @@
 <template>
   <div class="voice-clone-demo">
     <div class="header">
-      <div class="title">🎭 声音克隆：让 AI 模仿任何人</div>
+      <div class="title">
+        🎭 声音克隆：让 AI 模仿任何人
+      </div>
       <div class="subtitle">
         只需几秒钟的参考音频，AI 就能学会任何人的声音
       </div>
@@ -18,9 +20,9 @@
       <button
         v-for="mode in modes"
         :key="mode.id"
-        @click="selectMode(mode.id)"
         class="mode-btn"
         :class="{ active: selectedMode === mode.id }"
+        @click="selectMode(mode.id)"
       >
         <span class="mode-icon">{{ mode.icon }}</span>
         <span>{{ mode.name }}</span>
@@ -36,22 +38,36 @@
         </div>
         <div class="audio-grid">
           <div
-            v-for="ref in references"
-            :key="ref.id"
+            v-for="reference in references"
+            :key="reference.id"
             class="audio-card"
-            :class="{ selected: selectedRef === ref.id }"
-            @click="selectRef(ref.id)"
+            :class="{ selected: selectedRef === reference.id }"
+            @click="selectRef(reference.id)"
           >
-            <div class="audio-avatar">{{ ref.avatar }}</div>
-            <div class="audio-name">{{ ref.name }}</div>
-            <div class="audio-desc">{{ ref.desc }}</div>
-            <button class="play-btn" @click.stop="playRef(ref.id)">
+            <div class="audio-avatar">
+              {{ ref.avatar }}
+            </div>
+            <div class="audio-name">
+              {{ ref.name }}
+            </div>
+            <div class="audio-desc">
+              {{ ref.desc }}
+            </div>
+            <button
+              class="play-btn"
+              @click.stop="playRef(ref.id)"
+            >
               {{ playingRef === ref.id ? '⏸' : '▶' }}
             </button>
           </div>
         </div>
-        <div class="or-divider">或</div>
-        <button class="upload-btn" @click="uploadRef">
+        <div class="or-divider">
+          或
+        </div>
+        <button
+          class="upload-btn"
+          @click="uploadRef"
+        >
           📤 上传自己的音频
         </button>
       </div>
@@ -69,14 +85,32 @@
             class="process-step"
             :class="{ active: currentStep >= index }"
           >
-            <div class="step-icon">{{ step.icon }}</div>
-            <div class="step-name">{{ step.name }}</div>
-            <div v-if="index < processSteps.length - 1" class="step-arrow">→</div>
+            <div class="step-icon">
+              {{ step.icon }}
+            </div>
+            <div class="step-name">
+              {{ step.name }}
+            </div>
+            <div
+              v-if="index < processSteps.length - 1"
+              class="step-arrow"
+            >
+              →
+            </div>
           </div>
         </div>
-        <div class="feature-viz" v-if="currentStep >= 2">
-          <canvas ref="featureCanvas" width="400" height="100"></canvas>
-          <div class="viz-label">提取的声音特征向量</div>
+        <div
+          v-if="currentStep >= 2"
+          class="feature-viz"
+        >
+          <canvas
+            ref="featureCanvas"
+            width="400"
+            height="100"
+          />
+          <div class="viz-label">
+            提取的声音特征向量
+          </div>
         </div>
       </div>
 
@@ -91,31 +125,47 @@
             v-model="inputText"
             placeholder="输入要合成的文本..."
             rows="3"
-          ></textarea>
+          />
           <button
             class="generate-btn"
             :disabled="!canGenerate"
             @click="generate"
           >
-            <span v-if="isGenerating" class="spinner"></span>
+            <span
+              v-if="isGenerating"
+              class="spinner"
+            />
             <span v-else>🎙 生成语音</span>
           </button>
         </div>
 
-        <div v-if="generatedAudio" class="result-area">
+        <div
+          v-if="generatedAudio"
+          class="result-area"
+        >
           <div class="result-header">
             <span class="result-icon">🎵</span>
             <span>生成结果</span>
             <span class="similarity">相似度: {{ similarity }}%</span>
           </div>
           <div class="waveform-mini">
-            <canvas ref="resultCanvas" width="400" height="60"></canvas>
+            <canvas
+              ref="resultCanvas"
+              width="400"
+              height="60"
+            />
           </div>
           <div class="result-actions">
-            <button class="action-btn" @click="playResult">
+            <button
+              class="action-btn"
+              @click="playResult"
+            >
               {{ playingResult ? '⏸ 暂停' : '▶ 播放' }}
             </button>
-            <button class="action-btn secondary" @click="download">
+            <button
+              class="action-btn secondary"
+              @click="download"
+            >
               ⬇ 下载
             </button>
           </div>
@@ -124,24 +174,32 @@
     </div>
 
     <div class="tips-section">
-      <div class="tips-title">💡 声音克隆小贴士</div>
+      <div class="tips-title">
+        💡 声音克隆小贴士
+      </div>
       <div class="tips-grid">
         <div class="tip-card">
-          <div class="tip-icon">⏱️</div>
+          <div class="tip-icon">
+            ⏱️
+          </div>
           <div class="tip-text">
             <strong>参考音频时长</strong>
             <p>3-10 秒即可，质量比时长更重要</p>
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">🔇</div>
+          <div class="tip-icon">
+            🔇
+          </div>
           <div class="tip-text">
             <strong>环境要求</strong>
             <p>安静环境，避免背景噪音</p>
           </div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">🗣️</div>
+          <div class="tip-icon">
+            🗣️
+          </div>
           <div class="tip-text">
             <strong>内容选择</strong>
             <p>包含多种音调和语速效果更好</p>

@@ -23,30 +23,49 @@
             @input="testMatch"
           >
         </div>
-        <div class="hint-text">试试：user/123 或 products/electronics/456</div>
+        <div class="hint-text">
+          试试：user/123 或 products/electronics/456
+        </div>
       </div>
 
       <div class="result-section">
         <h5>🎯 匹配结果</h5>
-        <div v-if="matchResult && matchResult.matched" class="match-success">
-          <div class="success-icon">✅</div>
+        <div
+          v-if="matchResult && matchResult.matched"
+          class="match-success"
+        >
+          <div class="success-icon">
+            ✅
+          </div>
           <div class="result-details">
             <div class="result-row">
               <span class="label">匹配路由:</span>
               <code class="value">{{ matchResult.route.path }}</code>
             </div>
-            <div v-if="Object.keys(matchResult.params).length" class="params-box">
+            <div
+              v-if="Object.keys(matchResult.params).length"
+              class="params-box"
+            >
               <span class="label">提取参数:</span>
               <div class="params-list">
-                <span v-for="(value, key) in matchResult.params" :key="key" class="param-tag">
+                <span
+                  v-for="(value, key) in matchResult.params"
+                  :key="key"
+                  class="param-tag"
+                >
                   {{ key }} = {{ value }}
                 </span>
               </div>
             </div>
           </div>
         </div>
-        <div v-else class="match-fail">
-          <div class="fail-icon">❌</div>
+        <div
+          v-else
+          class="match-fail"
+        >
+          <div class="fail-icon">
+            ❌
+          </div>
           <div>未找到匹配的路由</div>
         </div>
       </div>

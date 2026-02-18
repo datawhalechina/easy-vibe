@@ -5,8 +5,12 @@
 <template>
   <div class="messaging-patterns-demo">
     <div class="header">
-      <div class="title">消息模式：点对点 vs 发布订阅</div>
-      <div class="subtitle">选择模式，观察消息如何分发</div>
+      <div class="title">
+        消息模式：点对点 vs 发布订阅
+      </div>
+      <div class="subtitle">
+        选择模式，观察消息如何分发
+      </div>
     </div>
 
     <div class="mode-selector">
@@ -27,24 +31,38 @@
     </div>
 
     <div class="description">
-      <div v-if="mode === 'p2p'" class="desc-text">
-        <strong>点对点模式：</strong
-        >一条消息只能被<strong>一个消费者</strong>消费。适合任务分配、负载均衡场景。
+      <div
+        v-if="mode === 'p2p'"
+        class="desc-text"
+      >
+        <strong>点对点模式：</strong>一条消息只能被<strong>一个消费者</strong>消费。适合任务分配、负载均衡场景。
       </div>
-      <div v-else class="desc-text">
-        <strong>发布订阅模式：</strong
-        >一条消息可以被<strong>多个消费者</strong>同时接收。适合事件通知、广播场景。
+      <div
+        v-else
+        class="desc-text"
+      >
+        <strong>发布订阅模式：</strong>一条消息可以被<strong>多个消费者</strong>同时接收。适合事件通知、广播场景。
       </div>
     </div>
 
     <div class="demo-area">
       <div class="producer-section">
-        <div class="section-title">生产者 Producer</div>
-        <div class="producer-box">
-          <div class="icon">📤</div>
-          <div class="label">订单服务</div>
+        <div class="section-title">
+          生产者 Producer
         </div>
-        <button class="send-btn" @click="sendMessage" :disabled="sending">
+        <div class="producer-box">
+          <div class="icon">
+            📤
+          </div>
+          <div class="label">
+            订单服务
+          </div>
+        </div>
+        <button
+          class="send-btn"
+          :disabled="sending"
+          @click="sendMessage"
+        >
           {{ sending ? '发送中...' : '发送消息' }}
         </button>
       </div>
@@ -54,11 +72,16 @@
           {{ mode === 'p2p' ? '队列 Queue' : '主题 Topic' }}
         </div>
         <div class="broker-box">
-          <div class="broker-icon">{{ mode === 'p2p' ? '📦' : '📡' }}</div>
+          <div class="broker-icon">
+            {{ mode === 'p2p' ? '📦' : '📡' }}
+          </div>
           <div class="broker-label">
             {{ mode === 'p2p' ? '消息队列' : '发布主题' }}
           </div>
-          <div class="message-indicator" v-if="lastMessage">
+          <div
+            v-if="lastMessage"
+            class="message-indicator"
+          >
             消息 #{{ lastMessage }}
           </div>
         </div>
@@ -68,7 +91,9 @@
       </div>
 
       <div class="consumer-section">
-        <div class="section-title">消费者 Consumers</div>
+        <div class="section-title">
+          消费者 Consumers
+        </div>
         <div class="consumers-grid">
           <div
             v-for="consumer in consumers"
@@ -79,8 +104,12 @@
             <div class="consumer-icon">
               {{ consumer.active ? '⚙️' : '💤' }}
             </div>
-            <div class="consumer-label">{{ consumer.name }}</div>
-            <div class="consumer-count">已处理: {{ consumer.count }}</div>
+            <div class="consumer-label">
+              {{ consumer.name }}
+            </div>
+            <div class="consumer-count">
+              已处理: {{ consumer.count }}
+            </div>
             <div class="consumer-status">
               {{ consumer.active ? '处理中' : '空闲' }}
             </div>
@@ -124,8 +153,13 @@
     </div>
 
     <div class="example-scenario">
-      <div class="scenario-title">📌 实际场景</div>
-      <div v-if="mode === 'p2p'" class="scenario-content">
+      <div class="scenario-title">
+        📌 实际场景
+      </div>
+      <div
+        v-if="mode === 'p2p'"
+        class="scenario-content"
+      >
         <div>
           <strong>任务分配：</strong>批量导入 10000 条用户数据，分发给 3
           个工作节点并行处理
@@ -135,7 +169,10 @@
           每个任务只被处理一次
         </div>
       </div>
-      <div v-else class="scenario-content">
+      <div
+        v-else
+        class="scenario-content"
+      >
         <div><strong>事件通知：</strong>用户下单成功后，同时通知多个系统</div>
         <div class="flow">
           发布事件 → [库存服务, 积分服务, 通知服务, 数据仓库] 各自独立处理

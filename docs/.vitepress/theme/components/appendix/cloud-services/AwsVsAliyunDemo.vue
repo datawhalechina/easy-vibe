@@ -2,7 +2,9 @@
   <div class="aws-vs-aliyun-demo">
     <div class="demo-header">
       <h4>AWS vs 阿里云 核心差异</h4>
-      <p class="demo-desc">点击切换查看不同维度的对比</p>
+      <p class="demo-desc">
+        点击切换查看不同维度的对比
+      </p>
     </div>
 
     <div class="comparison-tabs">
@@ -18,13 +20,23 @@
     </div>
 
     <div class="comparison-content">
-      <transition name="fade" mode="out-in">
-        <div :key="activeTab" class="tab-content">
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          :key="activeTab"
+          class="tab-content"
+        >
           <div class="vs-cards">
             <div class="vs-card aws-card">
               <div class="card-header">
-                <div class="logo">AWS</div>
-                <div class="subtitle">Amazon Web Services</div>
+                <div class="logo">
+                  AWS
+                </div>
+                <div class="subtitle">
+                  Amazon Web Services
+                </div>
               </div>
               <div class="card-body">
                 <div
@@ -39,13 +51,19 @@
             </div>
 
             <div class="vs-divider">
-              <div class="vs-text">VS</div>
+              <div class="vs-text">
+                VS
+              </div>
             </div>
 
             <div class="vs-card aliyun-card">
               <div class="card-header">
-                <div class="logo aliyun-logo">阿里云</div>
-                <div class="subtitle">Alibaba Cloud</div>
+                <div class="logo aliyun-logo">
+                  阿里云
+                </div>
+                <div class="subtitle">
+                  Alibaba Cloud
+                </div>
               </div>
               <div class="card-body">
                 <div
@@ -61,8 +79,12 @@
           </div>
 
           <div class="verdict-box">
-            <div class="verdict-title">💡 选型建议</div>
-            <div class="verdict-text">{{ currentComparison.verdict }}</div>
+            <div class="verdict-title">
+              💡 选型建议
+            </div>
+            <div class="verdict-text">
+              {{ currentComparison.verdict }}
+            </div>
           </div>
         </div>
       </transition>

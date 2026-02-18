@@ -24,9 +24,18 @@
         </button>
       </div>
 
-      <Transition name="fade" mode="out-in">
-        <div :key="activeTab" class="tab-content">
-          <div v-if="activeTab === 'zustand'" class="feature-showcase">
+      <Transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          :key="activeTab"
+          class="tab-content"
+        >
+          <div
+            v-if="activeTab === 'zustand'"
+            class="feature-showcase"
+          >
             <div class="feature-card">
               <span class="feature-icon">📦</span>
               <span class="feature-title">单一 Store</span>
@@ -44,7 +53,10 @@
             </div>
           </div>
 
-          <div v-if="activeTab === 'zustand'" class="code-example">
+          <div
+            v-if="activeTab === 'zustand'"
+            class="code-example"
+          >
             <pre class="code-block"><code>// Zustand Store
 import { create } from 'zustand'
 
@@ -62,7 +74,10 @@ function BearCounter() {
 }</code></pre>
           </div>
 
-          <div v-if="activeTab === 'jotai'" class="feature-showcase">
+          <div
+            v-if="activeTab === 'jotai'"
+            class="feature-showcase"
+          >
             <div class="feature-card">
               <span class="feature-icon">⚛️</span>
               <span class="feature-title">原子化</span>
@@ -80,7 +95,10 @@ function BearCounter() {
             </div>
           </div>
 
-          <div v-if="activeTab === 'jotai'" class="code-example">
+          <div
+            v-if="activeTab === 'jotai'"
+            class="code-example"
+          >
             <pre class="code-block"><code>// Jotai Atom
 import { atom } from 'jotai'
 

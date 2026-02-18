@@ -7,27 +7,35 @@
       >
         标准 Attention (网状连接)
       </button>
-      <button :class="{ active: mode === 'linear' }" @click="mode = 'linear'">
+      <button
+        :class="{ active: mode === 'linear' }"
+        @click="mode = 'linear'"
+      >
         线性 Attention (接力传递)
       </button>
     </div>
 
     <div class="visual-area">
       <div class="control-panel">
-        <div class="label">参与者数量 (N): {{ nValue }}</div>
+        <div class="label">
+          参与者数量 (N): {{ nValue }}
+        </div>
         <input
-          type="range"
           v-model="nValue"
+          type="range"
           min="3"
           max="12"
           step="1"
           class="slider"
-        />
+        >
       </div>
 
       <div class="viz-canvas-container">
         <!-- Canvas for dynamic drawing -->
-        <svg class="viz-svg" viewBox="0 0 400 300">
+        <svg
+          class="viz-svg"
+          viewBox="0 0 400 300"
+        >
           <!-- STANDARD MODE: Mesh / Web -->
           <g v-if="mode === 'standard'">
             <!-- Active Query Animation -->
@@ -129,7 +137,12 @@
             />
 
             <!-- Passing Message Animation -->
-            <circle cx="0" cy="0" r="8" class="message-token">
+            <circle
+              cx="0"
+              cy="0"
+              r="8"
+              class="message-token"
+            >
               <animateMotion
                 :path="relayPath"
                 dur="2s"
@@ -138,7 +151,10 @@
             </circle>
 
             <!-- Nodes -->
-            <g v-for="(node, idx) in linearNodes" :key="idx">
+            <g
+              v-for="(node, idx) in linearNodes"
+              :key="idx"
+            >
               <circle
                 :cx="node.x"
                 :cy="node.y"
@@ -179,7 +195,9 @@
 
       <div class="stats-panel">
         <div class="stat-item">
-          <div class="stat-label">连接/操作次数</div>
+          <div class="stat-label">
+            连接/操作次数
+          </div>
           <div
             class="stat-value"
             :class="mode === 'standard' ? 'text-red' : 'text-green'"
@@ -189,11 +207,11 @@
         </div>
         <div class="stat-desc">
           <span v-if="mode === 'standard'">
-            每个人都要找其他人。<br />N={{ nValue }} 时，连接数高达
+            每个人都要找其他人。<br>N={{ nValue }} 时，连接数高达
             {{ nValue * nValue }}！
           </span>
           <span v-else>
-            每个人只传给下一个人。<br />N={{ nValue }} 时，操作数仅为
+            每个人只传给下一个人。<br>N={{ nValue }} 时，操作数仅为
             {{ nValue }}。
           </span>
         </div>
@@ -201,16 +219,18 @@
     </div>
 
     <div class="analogy-box">
-      <div class="analogy-title">💡 核心区别：要不要回头看？</div>
+      <div class="analogy-title">
+        💡 核心区别：要不要回头看？
+      </div>
       <div v-if="mode === 'standard'">
         <b>回看模式 (Retrospective)</b>：
-        <br />想象你在考试。每做一道新题，你都要<b>把之前做过的所有题目再检查一遍</b>，确认有没有关联。
-        <br />题目越多，你需要检查的次数就越多，最后累死在检查上。
+        <br>想象你在考试。每做一道新题，你都要<b>把之前做过的所有题目再检查一遍</b>，确认有没有关联。
+        <br>题目越多，你需要检查的次数就越多，最后累死在检查上。
       </div>
       <div v-else>
-        <b>状态模式 (Recurrent)</b>： <br />想象你在跑步。你不需要记得前 100
+        <b>状态模式 (Recurrent)</b>： <br>想象你在跑步。你不需要记得前 100
         步每一步踩在哪，你只需要知道<b>现在的速度和位置</b>（State）。
-        <br />跑第 1000 步和跑第 1 步一样轻松，因为你不需要回头。
+        <br>跑第 1000 步和跑第 1 步一样轻松，因为你不需要回头。
       </div>
     </div>
   </div>

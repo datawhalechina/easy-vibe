@@ -5,8 +5,12 @@
 <template>
   <div class="data-pipeline-demo">
     <div class="header">
-      <div class="title">数据处理管道</div>
-      <div class="subtitle">从用户行为到数据洞察的完整链路</div>
+      <div class="title">
+        数据处理管道
+      </div>
+      <div class="subtitle">
+        从用户行为到数据洞察的完整链路
+      </div>
     </div>
 
     <div class="pipeline-container">
@@ -21,19 +25,32 @@
           }"
         >
           <div class="step-header">
-            <div class="step-number">{{ index + 1 }}</div>
+            <div class="step-number">
+              {{ index + 1 }}
+            </div>
             <div class="step-info">
-              <div class="step-name">{{ step.name }}</div>
-              <div class="step-icon">{{ step.icon }}</div>
+              <div class="step-name">
+                {{ step.name }}
+              </div>
+              <div class="step-icon">
+                {{ step.icon }}
+              </div>
             </div>
           </div>
 
           <div class="step-content">
-            <div class="step-description">{{ step.description }}</div>
+            <div class="step-description">
+              {{ step.description }}
+            </div>
 
             <div class="step-details">
-              <div v-if="step.technologies" class="technologies">
-                <div class="tech-label">技术栈：</div>
+              <div
+                v-if="step.technologies"
+                class="technologies"
+              >
+                <div class="tech-label">
+                  技术栈：
+                </div>
                 <div class="tech-list">
                   <span
                     v-for="(tech, i) in step.technologies"
@@ -45,44 +62,73 @@
                 </div>
               </div>
 
-              <div v-if="step.metrics" class="metrics">
+              <div
+                v-if="step.metrics"
+                class="metrics"
+              >
                 <div
-                  class="metric"
                   v-for="(metric, i) in step.metrics"
                   :key="i"
+                  class="metric"
                 >
-                  <div class="metric-value">{{ metric.value }}</div>
-                  <div class="metric-label">{{ metric.label }}</div>
+                  <div class="metric-value">
+                    {{ metric.value }}
+                  </div>
+                  <div class="metric-label">
+                    {{ metric.label }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div v-if="index < pipelineSteps.length - 1" class="step-connector">
-            <div class="connector-line"></div>
-            <div class="connector-arrow">↓</div>
+          <div
+            v-if="index < pipelineSteps.length - 1"
+            class="step-connector"
+          >
+            <div class="connector-line" />
+            <div class="connector-arrow">
+              ↓
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="play-controls">
-      <button class="control-btn" @click="startAnimation" :disabled="isPlaying">
+      <button
+        class="control-btn"
+        :disabled="isPlaying"
+        @click="startAnimation"
+      >
         <span v-if="!isPlaying">▶️ 演示数据流</span>
         <span v-else>⏸️ 演示中...</span>
       </button>
-      <button class="control-btn secondary" @click="resetAnimation">
+      <button
+        class="control-btn secondary"
+        @click="resetAnimation"
+      >
         🔄 重置
       </button>
     </div>
 
     <div class="data-flow-visualization">
-      <div class="flow-title">实时数据流</div>
+      <div class="flow-title">
+        实时数据流
+      </div>
       <div class="flow-cards">
-        <div class="flow-card" v-for="(item, index) in dataFlow" :key="index">
-          <div class="flow-icon">{{ item.icon }}</div>
+        <div
+          v-for="(item, index) in dataFlow"
+          :key="index"
+          class="flow-card"
+        >
+          <div class="flow-icon">
+            {{ item.icon }}
+          </div>
           <div class="flow-content">
-            <div class="flow-name">{{ item.name }}</div>
+            <div class="flow-name">
+              {{ item.name }}
+            </div>
             <div class="flow-count">
               {{ formatNumber(item.count) }} {{ item.unit }}
             </div>
@@ -92,12 +138,18 @@
     </div>
 
     <div class="best-practices">
-      <div class="practices-title">💡 数据管道最佳实践</div>
+      <div class="practices-title">
+        💡 数据管道最佳实践
+      </div>
       <div class="practices-grid">
         <div class="practice-card">
-          <div class="practice-icon">🔄</div>
+          <div class="practice-icon">
+            🔄
+          </div>
           <div class="practice-content">
-            <div class="practice-name">批量处理</div>
+            <div class="practice-name">
+              批量处理
+            </div>
             <div class="practice-desc">
               将小数据包合并成大数据块处理，减少 I/O 开销，提升吞吐量
             </div>
@@ -105,9 +157,13 @@
         </div>
 
         <div class="practice-card">
-          <div class="practice-icon">⚡</div>
+          <div class="practice-icon">
+            ⚡
+          </div>
           <div class="practice-content">
-            <div class="practice-name">异步非阻塞</div>
+            <div class="practice-name">
+              异步非阻塞
+            </div>
             <div class="practice-desc">
               使用消息队列和异步任务，避免阻塞主业务流程
             </div>
@@ -115,9 +171,13 @@
         </div>
 
         <div class="practice-card">
-          <div class="practice-icon">🛡️</div>
+          <div class="practice-icon">
+            🛡️
+          </div>
           <div class="practice-content">
-            <div class="practice-name">容错机制</div>
+            <div class="practice-name">
+              容错机制
+            </div>
             <div class="practice-desc">
               失败重试、死信队列、降级策略，确保数据不丢失
             </div>
@@ -125,9 +185,13 @@
         </div>
 
         <div class="practice-card">
-          <div class="practice-icon">📊</div>
+          <div class="practice-icon">
+            📊
+          </div>
           <div class="practice-content">
-            <div class="practice-name">监控告警</div>
+            <div class="practice-name">
+              监控告警
+            </div>
             <div class="practice-desc">
               实时监控数据量、延迟、错误率，异常及时告警
             </div>

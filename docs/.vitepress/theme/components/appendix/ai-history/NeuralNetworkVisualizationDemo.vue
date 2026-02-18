@@ -12,23 +12,41 @@
 
       <div class="controls mb-4 flex gap-2">
         <el-button-group>
-          <el-button type="primary" @click="start" :disabled="step !== 0">
-            开始
-          </el-button>
-          <el-button @click="prev" :disabled="step <= 1">上一步</el-button>
           <el-button
             type="primary"
-            @click="next"
+            :disabled="step !== 0"
+            @click="start"
+          >
+            开始
+          </el-button>
+          <el-button
+            :disabled="step <= 1"
+            @click="prev"
+          >
+            上一步
+          </el-button>
+          <el-button
+            type="primary"
             :disabled="step === 0 || step >= maxStep"
+            @click="next"
           >
             下一步
           </el-button>
-          <el-button @click="reset">重置</el-button>
+          <el-button @click="reset">
+            重置
+          </el-button>
         </el-button-group>
       </div>
 
-      <div v-if="step > 0" class="progress mb-4">
-        <el-steps :active="step" align-center finish-status="success">
+      <div
+        v-if="step > 0"
+        class="progress mb-4"
+      >
+        <el-steps
+          :active="step"
+          align-center
+          finish-status="success"
+        >
           <el-step title="输入层" />
           <el-step title="隐藏层" />
           <el-step title="输出层" />
@@ -39,14 +57,28 @@
       </div>
 
       <div class="grid-layout">
-        <el-card shadow="never" class="viz-card">
+        <el-card
+          shadow="never"
+          class="viz-card"
+        >
           <template #header>
-            <div class="card-title">网络结构</div>
+            <div class="card-title">
+              网络结构
+            </div>
           </template>
           <div class="network-container">
-            <svg class="network-svg" :viewBox="`0 0 ${svgWidth} ${svgHeight}`">
+            <svg
+              class="network-svg"
+              :viewBox="`0 0 ${svgWidth} ${svgHeight}`"
+            >
               <defs>
-                <linearGradient id="conn" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient
+                  id="conn"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
                   <stop
                     offset="0%"
                     :style="{
@@ -115,9 +147,14 @@
           />
         </el-card>
 
-        <el-card shadow="never" class="info-card">
+        <el-card
+          shadow="never"
+          class="info-card"
+        >
           <template #header>
-            <div class="card-title">每一层在做什么</div>
+            <div class="card-title">
+              每一层在做什么
+            </div>
           </template>
           <div class="layers-info">
             <el-collapse v-model="activeCollapse">

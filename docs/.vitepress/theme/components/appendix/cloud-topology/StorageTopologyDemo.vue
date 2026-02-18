@@ -2,30 +2,66 @@
   <div class="storage-topology-demo">
     <!-- 控制面板 -->
     <div class="control-panel">
-      <el-radio-group v-model="viewMode" size="small">
-        <el-radio-button label="overview">存储概览</el-radio-button>
-        <el-radio-button label="object">对象存储</el-radio-button>
-        <el-radio-button label="block">块存储</el-radio-button>
-        <el-radio-button label="file">文件存储</el-radio-button>
+      <el-radio-group
+        v-model="viewMode"
+        size="small"
+      >
+        <el-radio-button label="overview">
+          存储概览
+        </el-radio-button>
+        <el-radio-button label="object">
+          对象存储
+        </el-radio-button>
+        <el-radio-button label="block">
+          块存储
+        </el-radio-button>
+        <el-radio-button label="file">
+          文件存储
+        </el-radio-button>
       </el-radio-group>
 
-      <el-switch v-model="showDetails" active-text="显示详情" style="margin-left: 20px" />
+      <el-switch
+        v-model="showDetails"
+        active-text="显示详情"
+        style="margin-left: 20px"
+      />
     </div>
 
     <!-- 存储架构图 -->
     <div class="storage-architecture">
       <!-- 应用接入层 -->
       <div class="layer access-layer">
-        <div class="layer-title">🔌 应用接入层</div>
+        <div class="layer-title">
+          🔌 应用接入层
+        </div>
         <div class="access-methods">
-          <div class="method-card" v-for="method in accessMethods" :key="method.name"
-               @mouseenter="hoverMethod = method.name" @mouseleave="hoverMethod = null">
-            <div class="method-icon">{{ method.icon }}</div>
-            <div class="method-name">{{ method.name }}</div>
-            <div class="method-desc">{{ method.description }}</div>
+          <div
+            v-for="method in accessMethods"
+            :key="method.name"
+            class="method-card"
+            @mouseenter="hoverMethod = method.name"
+            @mouseleave="hoverMethod = null"
+          >
+            <div class="method-icon">
+              {{ method.icon }}
+            </div>
+            <div class="method-name">
+              {{ method.name }}
+            </div>
+            <div class="method-desc">
+              {{ method.description }}
+            </div>
 
-            <div class="method-tooltip" v-if="hoverMethod === method.name && showDetails">
-              <div v-for="detail in method.details" :key="detail">{{ detail }}</div>
+            <div
+              v-if="hoverMethod === method.name && showDetails"
+              class="method-tooltip"
+            >
+              <div
+                v-for="detail in method.details"
+                :key="detail"
+              >
+                {{ detail }}
+              </div>
             </div>
           </div>
         </div>
@@ -33,16 +69,25 @@
 
       <!-- 存储网关层 -->
       <div class="layer gateway-layer">
-        <div class="layer-title">🚪 存储网关层</div>
+        <div class="layer-title">
+          🚪 存储网关层
+        </div>
         <div class="gateways-grid">
-          <div class="gateway-card" v-for="gateway in storageGateways" :key="gateway.name"
-               :class="gateway.type">
+          <div
+            v-for="gateway in storageGateways"
+            :key="gateway.name"
+            class="gateway-card"
+            :class="gateway.type"
+          >
             <div class="gateway-header">
               <span class="gateway-icon">{{ gateway.icon }}</span>
               <span class="gateway-name">{{ gateway.name }}</span>
             </div>
 
-            <div class="gateway-metrics" v-if="showDetails">
+            <div
+              v-if="showDetails"
+              class="gateway-metrics"
+            >
               <div class="metric">
                 <span class="metric-label">TPS：</span>
                 <span class="metric-value">{{ gateway.tps }}</span>
@@ -58,17 +103,27 @@
 
       <!-- 存储服务层 -->
       <div class="layer storage-services-layer">
-        <div class="layer-title">💾 存储服务层</div>
+        <div class="layer-title">
+          💾 存储服务层
+        </div>
         <div class="storage-types-grid">
           <!-- 对象存储 -->
-          <div class="storage-type-card object-storage"
-               :class="{ active: viewMode === 'object' || viewMode === 'overview' }">
+          <div
+            class="storage-type-card object-storage"
+            :class="{ active: viewMode === 'object' || viewMode === 'overview' }"
+          >
             <div class="storage-header">
-              <div class="storage-icon">🪣</div>
-              <div class="storage-title">对象存储 OSS</div>
+              <div class="storage-icon">
+                🪣
+              </div>
+              <div class="storage-title">
+                对象存储 OSS
+              </div>
             </div>
 
-            <div class="storage-desc">适合存储图片、视频、日志等非结构化数据</div>
+            <div class="storage-desc">
+              适合存储图片、视频、日志等非结构化数据
+            </div>
 
             <div class="storage-features">
               <div class="feature">
@@ -85,27 +140,44 @@
               </div>
             </div>
 
-            <div class="storage-buckets" v-if="showDetails">
-              <div class="bucket" v-for="bucket in buckets" :key="bucket.name">
+            <div
+              v-if="showDetails"
+              class="storage-buckets"
+            >
+              <div
+                v-for="bucket in buckets"
+                :key="bucket.name"
+                class="bucket"
+              >
                 <div class="bucket-info">
                   <span class="bucket-name">{{ bucket.name }}</span>
                   <span class="bucket-objects">{{ bucket.objects }} 个对象</span>
                 </div>
 
-                <div class="bucket-size">{{ bucket.size }}</div>
+                <div class="bucket-size">
+                  {{ bucket.size }}
+                </div>
               </div>
             </div>
           </div>
 
           <!-- 块存储 -->
-          <div class="storage-type-card block-storage"
-               :class="{ active: viewMode === 'block' || viewMode === 'overview' }">
+          <div
+            class="storage-type-card block-storage"
+            :class="{ active: viewMode === 'block' || viewMode === 'overview' }"
+          >
             <div class="storage-header">
-              <div class="storage-icon">💽</div>
-              <div class="storage-title">块存储 EBS</div>
+              <div class="storage-icon">
+                💽
+              </div>
+              <div class="storage-title">
+                块存储 EBS
+              </div>
             </div>
 
-            <div class="storage-desc">为云服务器提供高性能、低延迟的数据块存储</div>
+            <div class="storage-desc">
+              为云服务器提供高性能、低延迟的数据块存储
+            </div>
 
             <div class="storage-features">
               <div class="feature">
@@ -122,12 +194,22 @@
               </div>
             </div>
 
-            <div class="volumes-list" v-if="showDetails">
-              <div class="volume" v-for="vol in volumes" :key="vol.id">
+            <div
+              v-if="showDetails"
+              class="volumes-list"
+            >
+              <div
+                v-for="vol in volumes"
+                :key="vol.id"
+                class="volume"
+              >
                 <div class="volume-info">
                   <div class="volume-header">
                     <span class="volume-name">{{ vol.name }}</span>
-                    <span class="volume-type" :class="vol.type">{{ vol.type }}</span>
+                    <span
+                      class="volume-type"
+                      :class="vol.type"
+                    >{{ vol.type }}</span>
                   </div>
 
                   <div class="volume-meta">
@@ -137,23 +219,38 @@
                   </div>
                 </div>
 
-                <div class="volume-iops" v-if="vol.iops">
-                  <div class="iops-label">IOPS</div>
-                  <div class="iops-value">{{ vol.iops }}</div>
+                <div
+                  v-if="vol.iops"
+                  class="volume-iops"
+                >
+                  <div class="iops-label">
+                    IOPS
+                  </div>
+                  <div class="iops-value">
+                    {{ vol.iops }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- 文件存储 -->
-          <div class="storage-type-card file-storage"
-               :class="{ active: viewMode === 'file' || viewMode === 'overview' }">
+          <div
+            class="storage-type-card file-storage"
+            :class="{ active: viewMode === 'file' || viewMode === 'overview' }"
+          >
             <div class="storage-header">
-              <div class="storage-icon">📁</div>
-              <div class="storage-title">文件存储 NAS</div>
+              <div class="storage-icon">
+                📁
+              </div>
+              <div class="storage-title">
+                文件存储 NAS
+              </div>
             </div>
 
-            <div class="storage-desc">为多个计算节点提供共享文件系统访问</div>
+            <div class="storage-desc">
+              为多个计算节点提供共享文件系统访问
+            </div>
 
             <div class="storage-features">
               <div class="feature">
@@ -170,12 +267,22 @@
               </div>
             </div>
 
-            <div class="filesystems-list" v-if="showDetails">
-              <div class="filesystem" v-for="fs in filesystems" :key="fs.name">
+            <div
+              v-if="showDetails"
+              class="filesystems-list"
+            >
+              <div
+                v-for="fs in filesystems"
+                :key="fs.name"
+                class="filesystem"
+              >
                 <div class="fs-header">
                   <div class="fs-info">
                     <span class="fs-name">{{ fs.name }}</span>
-                    <span class="fs-protocol" :class="fs.protocol">{{ fs.protocol }}</span>
+                    <span
+                      class="fs-protocol"
+                      :class="fs.protocol"
+                    >{{ fs.protocol }}</span>
                   </div>
 
                   <div class="fs-capacity">
@@ -185,14 +292,23 @@
                 </div>
 
                 <div class="fs-capacity-bar">
-                  <div class="capacity-progress" :style="{ width: fs.percentage + '%' }"
-                       :class="{ warning: fs.percentage > 80, danger: fs.percentage > 90 }"></div>
+                  <div
+                    class="capacity-progress"
+                    :style="{ width: fs.percentage + '%' }"
+                    :class="{ warning: fs.percentage > 80, danger: fs.percentage > 90 }"
+                  />
                 </div>
 
                 <div class="fs-mounts">
-                  <div class="mounts-label">挂载点：</div>
+                  <div class="mounts-label">
+                    挂载点：
+                  </div>
                   <div class="mounts-list">
-                    <span class="mount-point" v-for="mount in fs.mounts" :key="mount">{{ mount }}</span>
+                    <span
+                      v-for="mount in fs.mounts"
+                      :key="mount"
+                      class="mount-point"
+                    >{{ mount }}</span>
                   </div>
                 </div>
               </div>
@@ -204,21 +320,52 @@
 
     <!-- 存储选型对比 -->
     <div class="comparison-section">
-      <div class="comparison-title">📊 存储类型选型对比</div>
+      <div class="comparison-title">
+        📊 存储类型选型对比
+      </div>
 
       <div class="comparison-table">
         <div class="table-header">
-          <div class="header-cell">特性</div>
-          <div class="header-cell object">对象存储</div>
-          <div class="header-cell block">块存储</div>
-          <div class="header-cell file">文件存储</div>
+          <div class="header-cell">
+            特性
+          </div>
+          <div class="header-cell object">
+            对象存储
+          </div>
+          <div class="header-cell block">
+            块存储
+          </div>
+          <div class="header-cell file">
+            文件存储
+          </div>
         </div>
 
-        <div class="table-row" v-for="row in comparisonData" :key="row.feature">
-          <div class="cell feature">{{ row.feature }}</div>
-          <div class="cell" :class="{ highlight: row.object === '优秀' || row.object === '强' }">{{ row.object }}</div>
-          <div class="cell" :class="{ highlight: row.block === '优秀' || row.block === '强' }">{{ row.block }}</div>
-          <div class="cell" :class="{ highlight: row.file === '优秀' || row.file === '强' }">{{ row.file }}</div>
+        <div
+          v-for="row in comparisonData"
+          :key="row.feature"
+          class="table-row"
+        >
+          <div class="cell feature">
+            {{ row.feature }}
+          </div>
+          <div
+            class="cell"
+            :class="{ highlight: row.object === '优秀' || row.object === '强' }"
+          >
+            {{ row.object }}
+          </div>
+          <div
+            class="cell"
+            :class="{ highlight: row.block === '优秀' || row.block === '强' }"
+          >
+            {{ row.block }}
+          </div>
+          <div
+            class="cell"
+            :class="{ highlight: row.file === '优秀' || row.file === '强' }"
+          >
+            {{ row.file }}
+          </div>
         </div>
       </div>
     </div>

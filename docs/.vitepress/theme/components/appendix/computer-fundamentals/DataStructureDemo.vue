@@ -13,7 +13,9 @@
           :key="s.name"
           :class="['tab-btn', { active: activeStructure === s.name }]"
           @click="activeStructure = s.name"
-        >{{ s.name }}</button>
+        >
+          {{ s.name }}
+        </button>
       </div>
 
       <div class="structure-visual">
@@ -23,90 +25,185 @@
         </div>
 
         <div class="visual-content">
-          <div v-if="activeStructure === '数组'" class="array-visual">
+          <div
+            v-if="activeStructure === '数组'"
+            class="array-visual"
+          >
             <div class="array-container">
-              <div v-for="(item, i) in arrayData" :key="i" class="array-item">
+              <div
+                v-for="(item, i) in arrayData"
+                :key="i"
+                class="array-item"
+              >
                 <span class="index">{{ i }}</span>
                 <span class="value">{{ item }}</span>
               </div>
             </div>
-            <div class="operation-hint">访问 arr[2] = O(1)，插入/删除 = O(n)</div>
+            <div class="operation-hint">
+              访问 arr[2] = O(1)，插入/删除 = O(n)
+            </div>
           </div>
 
-          <div v-else-if="activeStructure === '链表'" class="linked-visual">
+          <div
+            v-else-if="activeStructure === '链表'"
+            class="linked-visual"
+          >
             <div class="linked-container">
-              <div v-for="(item, i) in linkedData" :key="i" class="linked-node">
+              <div
+                v-for="(item, i) in linkedData"
+                :key="i"
+                class="linked-node"
+              >
                 <span class="node-value">{{ item.value }}</span>
-                <span class="node-arrow" v-if="i < linkedData.length - 1">→</span>
+                <span
+                  v-if="i < linkedData.length - 1"
+                  class="node-arrow"
+                >→</span>
               </div>
             </div>
-            <div class="operation-hint">访问第 n 个 = O(n)，插入/删除 = O(1)</div>
+            <div class="operation-hint">
+              访问第 n 个 = O(n)，插入/删除 = O(1)
+            </div>
           </div>
 
-          <div v-else-if="activeStructure === '栈'" class="stack-visual">
+          <div
+            v-else-if="activeStructure === '栈'"
+            class="stack-visual"
+          >
             <div class="stack-container">
-              <div v-for="(item, i) in stackData" :key="i" class="stack-item">
+              <div
+                v-for="(item, i) in stackData"
+                :key="i"
+                class="stack-item"
+              >
                 {{ item }}
               </div>
-              <div class="stack-bottom">栈底</div>
+              <div class="stack-bottom">
+                栈底
+              </div>
             </div>
             <div class="stack-ops">
-              <button class="op-btn" @click="pushStack">入栈 Push</button>
-              <button class="op-btn" @click="popStack">出栈 Pop</button>
+              <button
+                class="op-btn"
+                @click="pushStack"
+              >
+                入栈 Push
+              </button>
+              <button
+                class="op-btn"
+                @click="popStack"
+              >
+                出栈 Pop
+              </button>
             </div>
-            <div class="operation-hint">后进先出 (LIFO)，操作都是 O(1)</div>
+            <div class="operation-hint">
+              后进先出 (LIFO)，操作都是 O(1)
+            </div>
           </div>
 
-          <div v-else-if="activeStructure === '队列'" class="queue-visual">
+          <div
+            v-else-if="activeStructure === '队列'"
+            class="queue-visual"
+          >
             <div class="queue-container">
               <span class="queue-label">出 ←</span>
-              <div v-for="(item, i) in queueData" :key="i" class="queue-item">
+              <div
+                v-for="(item, i) in queueData"
+                :key="i"
+                class="queue-item"
+              >
                 {{ item }}
               </div>
               <span class="queue-label">← 入</span>
             </div>
             <div class="queue-ops">
-              <button class="op-btn" @click="enqueue">入队</button>
-              <button class="op-btn" @click="dequeue">出队</button>
+              <button
+                class="op-btn"
+                @click="enqueue"
+              >
+                入队
+              </button>
+              <button
+                class="op-btn"
+                @click="dequeue"
+              >
+                出队
+              </button>
             </div>
-            <div class="operation-hint">先进先出 (FIFO)，操作都是 O(1)</div>
+            <div class="operation-hint">
+              先进先出 (FIFO)，操作都是 O(1)
+            </div>
           </div>
 
-          <div v-else-if="activeStructure === '哈希表'" class="hash-visual">
+          <div
+            v-else-if="activeStructure === '哈希表'"
+            class="hash-visual"
+          >
             <div class="hash-container">
-              <div v-for="(bucket, i) in hashData" :key="i" class="hash-bucket">
+              <div
+                v-for="(bucket, i) in hashData"
+                :key="i"
+                class="hash-bucket"
+              >
                 <span class="bucket-index">{{ i }}</span>
                 <div class="bucket-items">
-                  <span v-for="(item, j) in bucket" :key="j" class="bucket-item">{{ item }}</span>
+                  <span
+                    v-for="(item, j) in bucket"
+                    :key="j"
+                    class="bucket-item"
+                  >{{ item }}</span>
                 </div>
               </div>
             </div>
-            <div class="operation-hint">查找/插入/删除平均 O(1)，最坏 O(n)</div>
+            <div class="operation-hint">
+              查找/插入/删除平均 O(1)，最坏 O(n)
+            </div>
           </div>
 
-          <div v-else-if="activeStructure === '树'" class="tree-visual">
+          <div
+            v-else-if="activeStructure === '树'"
+            class="tree-visual"
+          >
             <div class="tree-container">
               <div class="tree-level">
-                <div class="tree-node root">{{ treeData.value }}</div>
+                <div class="tree-node root">
+                  {{ treeData.value }}
+                </div>
               </div>
               <div class="tree-level">
-                <div class="tree-node">{{ treeData.left?.value }}</div>
-                <div class="tree-node">{{ treeData.right?.value }}</div>
+                <div class="tree-node">
+                  {{ treeData.left?.value }}
+                </div>
+                <div class="tree-node">
+                  {{ treeData.right?.value }}
+                </div>
               </div>
               <div class="tree-level">
-                <div class="tree-node leaf">{{ treeData.left?.left?.value }}</div>
-                <div class="tree-node leaf">{{ treeData.left?.right?.value }}</div>
-                <div class="tree-node leaf">{{ treeData.right?.left?.value }}</div>
-                <div class="tree-node leaf">{{ treeData.right?.right?.value }}</div>
+                <div class="tree-node leaf">
+                  {{ treeData.left?.left?.value }}
+                </div>
+                <div class="tree-node leaf">
+                  {{ treeData.left?.right?.value }}
+                </div>
+                <div class="tree-node leaf">
+                  {{ treeData.right?.left?.value }}
+                </div>
+                <div class="tree-node leaf">
+                  {{ treeData.right?.right?.value }}
+                </div>
               </div>
             </div>
-            <div class="operation-hint">查找/插入/删除 O(log n)，遍历 O(n)</div>
+            <div class="operation-hint">
+              查找/插入/删除 O(log n)，遍历 O(n)
+            </div>
           </div>
         </div>
       </div>
 
       <div class="complexity-table">
-        <div class="table-title">时间复杂度对比</div>
+        <div class="table-title">
+          时间复杂度对比
+        </div>
         <table>
           <thead>
             <tr>
@@ -120,31 +217,63 @@
           <tbody>
             <tr>
               <td>访问</td>
-              <td class="good">O(1)</td>
-              <td class="bad">O(n)</td>
-              <td class="good">O(1)</td>
-              <td class="mid">O(log n)</td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="bad">
+                O(n)
+              </td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="mid">
+                O(log n)
+              </td>
             </tr>
             <tr>
               <td>查找</td>
-              <td class="bad">O(n)</td>
-              <td class="bad">O(n)</td>
-              <td class="good">O(1)</td>
-              <td class="mid">O(log n)</td>
+              <td class="bad">
+                O(n)
+              </td>
+              <td class="bad">
+                O(n)
+              </td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="mid">
+                O(log n)
+              </td>
             </tr>
             <tr>
               <td>插入</td>
-              <td class="bad">O(n)</td>
-              <td class="good">O(1)</td>
-              <td class="good">O(1)</td>
-              <td class="mid">O(log n)</td>
+              <td class="bad">
+                O(n)
+              </td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="mid">
+                O(log n)
+              </td>
             </tr>
             <tr>
               <td>删除</td>
-              <td class="bad">O(n)</td>
-              <td class="good">O(1)</td>
-              <td class="good">O(1)</td>
-              <td class="mid">O(log n)</td>
+              <td class="bad">
+                O(n)
+              </td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="good">
+                O(1)
+              </td>
+              <td class="mid">
+                O(log n)
+              </td>
             </tr>
           </tbody>
         </table>

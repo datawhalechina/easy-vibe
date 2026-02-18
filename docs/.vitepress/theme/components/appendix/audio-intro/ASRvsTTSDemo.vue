@@ -8,7 +8,9 @@
 <template>
   <div class="asr-tts-demo">
     <div class="header">
-      <div class="title">🔄 ASR ↔ TTS：语音的双向转换</div>
+      <div class="title">
+        🔄 ASR ↔ TTS：语音的双向转换
+      </div>
       <div class="subtitle">
         探索语音识别和语音合成的互逆过程
       </div>
@@ -20,8 +22,12 @@
         <div class="section-header">
           <span class="section-icon">🎙️</span>
           <div>
-            <div class="section-name">ASR 语音识别</div>
-            <div class="section-desc">音频 → 文本</div>
+            <div class="section-name">
+              ASR 语音识别
+            </div>
+            <div class="section-desc">
+              音频 → 文本
+            </div>
           </div>
         </div>
 
@@ -35,14 +41,26 @@
               <span class="record-icon">{{ isRecording ? '⏹' : '🎤' }}</span>
               <span>{{ isRecording ? '停止录音' : '开始录音' }}</span>
             </button>
-            <div class="or-text">或</div>
-            <button class="upload-audio-btn" @click="uploadAudio">
+            <div class="or-text">
+              或
+            </div>
+            <button
+              class="upload-audio-btn"
+              @click="uploadAudio"
+            >
               📁 上传音频
             </button>
           </div>
 
-          <div v-if="recordedAudio" class="audio-preview">
-            <canvas ref="inputWaveform" width="300" height="60"></canvas>
+          <div
+            v-if="recordedAudio"
+            class="audio-preview"
+          >
+            <canvas
+              ref="inputWaveform"
+              width="300"
+              height="60"
+            />
           </div>
 
           <button
@@ -50,13 +68,23 @@
             :disabled="!recordedAudio || isProcessingASR"
             @click="processASR"
           >
-            <span v-if="isProcessingASR" class="spinner"></span>
+            <span
+              v-if="isProcessingASR"
+              class="spinner"
+            />
             <span v-else>🔍 识别语音</span>
           </button>
 
-          <div v-if="asrResult" class="result-box">
-            <div class="result-label">识别结果</div>
-            <div class="result-text">{{ asrResult }}</div>
+          <div
+            v-if="asrResult"
+            class="result-box"
+          >
+            <div class="result-label">
+              识别结果
+            </div>
+            <div class="result-text">
+              {{ asrResult }}
+            </div>
             <div class="result-meta">
               <span>置信度: {{ asrConfidence }}%</span>
               <span>耗时: {{ asrTime }}ms</span>
@@ -67,7 +95,7 @@
 
       <!-- 中间转换 -->
       <div class="flow-arrow">
-        <div class="arrow-line"></div>
+        <div class="arrow-line" />
         <div class="arrow-btns">
           <button
             class="arrow-btn"
@@ -91,8 +119,12 @@
         <div class="section-header">
           <span class="section-icon">🔊</span>
           <div>
-            <div class="section-name">TTS 语音合成</div>
-            <div class="section-desc">文本 → 音频</div>
+            <div class="section-name">
+              TTS 语音合成
+            </div>
+            <div class="section-desc">
+              文本 → 音频
+            </div>
           </div>
         </div>
 
@@ -102,7 +134,7 @@
               v-model="ttsInput"
               placeholder="输入要合成的文本..."
               rows="3"
-            ></textarea>
+            />
           </div>
 
           <div class="voice-select">
@@ -125,19 +157,37 @@
             :disabled="!ttsInput.trim() || isProcessingTTS"
             @click="processTTS"
           >
-            <span v-if="isProcessingTTS" class="spinner"></span>
+            <span
+              v-if="isProcessingTTS"
+              class="spinner"
+            />
             <span v-else>🗣 合成语音</span>
           </button>
 
-          <div v-if="ttsResult" class="result-box audio-result">
-            <div class="result-label">合成结果</div>
-            <canvas ref="outputWaveform" width="300" height="60"></canvas>
+          <div
+            v-if="ttsResult"
+            class="result-box audio-result"
+          >
+            <div class="result-label">
+              合成结果
+            </div>
+            <canvas
+              ref="outputWaveform"
+              width="300"
+              height="60"
+            />
             <div class="audio-controls">
-              <button class="play-btn" @click="playResult">
+              <button
+                class="play-btn"
+                @click="playResult"
+              >
                 {{ playing ? '⏸' : '▶' }}
               </button>
               <div class="progress-bar">
-                <div class="progress" :style="{ width: playProgress + '%' }"></div>
+                <div
+                  class="progress"
+                  :style="{ width: playProgress + '%' }"
+                />
               </div>
             </div>
           </div>
@@ -146,11 +196,17 @@
     </div>
 
     <div class="comparison-section">
-      <div class="comp-title">📊 ASR vs TTS 对比</div>
+      <div class="comp-title">
+        📊 ASR vs TTS 对比
+      </div>
       <div class="comp-grid">
         <div class="comp-card">
-          <div class="comp-icon">🎙️</div>
-          <div class="comp-name">ASR</div>
+          <div class="comp-icon">
+            🎙️
+          </div>
+          <div class="comp-name">
+            ASR
+          </div>
           <div class="comp-items">
             <div class="comp-item">
               <span class="label">输入:</span>
@@ -168,8 +224,12 @@
         </div>
 
         <div class="comp-card">
-          <div class="comp-icon">🔊</div>
-          <div class="comp-name">TTS</div>
+          <div class="comp-icon">
+            🔊
+          </div>
+          <div class="comp-name">
+            TTS
+          </div>
           <div class="comp-items">
             <div class="comp-item">
               <span class="label">输入:</span>
@@ -189,35 +249,61 @@
     </div>
 
     <div class="pipeline-comparison">
-      <div class="pipe-title">🔀 架构对比</div>
+      <div class="pipe-title">
+        🔀 架构对比
+      </div>
       <div class="pipeline-diagram">
         <div class="pipeline asr-pipe">
-          <div class="pipe-label">ASR Pipeline</div>
+          <div class="pipe-label">
+            ASR Pipeline
+          </div>
           <div class="pipe-flow">
-            <div class="pipe-step">音频</div>
+            <div class="pipe-step">
+              音频
+            </div>
             <span>→</span>
-            <div class="pipe-step">特征</div>
+            <div class="pipe-step">
+              特征
+            </div>
             <span>→</span>
-            <div class="pipe-step">Encoder</div>
+            <div class="pipe-step">
+              Encoder
+            </div>
             <span>→</span>
-            <div class="pipe-step">Decoder</div>
+            <div class="pipe-step">
+              Decoder
+            </div>
             <span>→</span>
-            <div class="pipe-step output">文本</div>
+            <div class="pipe-step output">
+              文本
+            </div>
           </div>
         </div>
 
         <div class="pipeline tts-pipe">
-          <div class="pipe-label">TTS Pipeline</div>
+          <div class="pipe-label">
+            TTS Pipeline
+          </div>
           <div class="pipe-flow">
-            <div class="pipe-step">文本</div>
+            <div class="pipe-step">
+              文本
+            </div>
             <span>→</span>
-            <div class="pipe-step">Encoder</div>
+            <div class="pipe-step">
+              Encoder
+            </div>
             <span>→</span>
-            <div class="pipe-step">Decoder</div>
+            <div class="pipe-step">
+              Decoder
+            </div>
             <span>→</span>
-            <div class="pipe-step">声码器</div>
+            <div class="pipe-step">
+              声码器
+            </div>
             <span>→</span>
-            <div class="pipe-step output">音频</div>
+            <div class="pipe-step output">
+              音频
+            </div>
           </div>
         </div>
       </div>

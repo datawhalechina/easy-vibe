@@ -5,8 +5,12 @@
 <template>
   <div class="routing-demo">
     <div class="header">
-      <div class="title">路由方式：整页刷新 vs 局部切换</div>
-      <div class="subtitle">点击导航，感受体验差异</div>
+      <div class="title">
+        路由方式：整页刷新 vs 局部切换
+      </div>
+      <div class="subtitle">
+        点击导航，感受体验差异
+      </div>
     </div>
 
     <div class="mode-switch">
@@ -27,14 +31,26 @@
     </div>
 
     <div class="nav">
-      <button v-for="page in pages" :key="page" @click="navigate(page)">
+      <button
+        v-for="page in pages"
+        :key="page"
+        @click="navigate(page)"
+      >
         {{ page }}
       </button>
     </div>
 
     <div class="screen">
-      <div v-if="loading" class="loading">页面加载中...</div>
-      <div v-else class="content">
+      <div
+        v-if="loading"
+        class="loading"
+      >
+        页面加载中...
+      </div>
+      <div
+        v-else
+        class="content"
+      >
         当前页面：<strong>{{ currentPage }}</strong>
       </div>
     </div>

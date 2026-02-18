@@ -5,43 +5,68 @@
 <template>
   <div class="mq-components-demo">
     <div class="header">
-      <div class="title">消息队列的三要素</div>
-      <div class="subtitle">生产者、消息代理、消费者的关系</div>
+      <div class="title">
+        消息队列的三要素
+      </div>
+      <div class="subtitle">
+        生产者、消息代理、消费者的关系
+      </div>
     </div>
 
     <div class="components-flow">
       <div class="component producer">
         <div class="comp-header">
-          <div class="comp-icon">📤</div>
-          <div class="comp-name">生产者 Producer</div>
+          <div class="comp-icon">
+            📤
+          </div>
+          <div class="comp-name">
+            生产者 Producer
+          </div>
         </div>
         <div class="comp-content">
-          <div class="comp-desc">发送消息的一方</div>
-          <div class="comp-example">例子：订单服务</div>
+          <div class="comp-desc">
+            发送消息的一方
+          </div>
+          <div class="comp-example">
+            例子：订单服务
+          </div>
           <button
             class="action-btn"
-            @click="produceMessage"
             :disabled="producing"
+            @click="produceMessage"
           >
             {{ producing ? '发送中...' : '发送消息' }}
           </button>
         </div>
       </div>
 
-      <div class="arrow" :class="{ active: messageInTransit }">
+      <div
+        class="arrow"
+        :class="{ active: messageInTransit }"
+      >
         {{ messageInTransit ? '📨' : '→' }}
       </div>
 
       <div class="component broker">
         <div class="comp-header">
-          <div class="comp-icon">📦</div>
-          <div class="comp-name">消息代理 Broker</div>
+          <div class="comp-icon">
+            📦
+          </div>
+          <div class="comp-name">
+            消息代理 Broker
+          </div>
         </div>
         <div class="comp-content">
-          <div class="comp-desc">存储和转发消息</div>
-          <div class="comp-example">例子：RabbitMQ, Kafka</div>
+          <div class="comp-desc">
+            存储和转发消息
+          </div>
+          <div class="comp-example">
+            例子：RabbitMQ, Kafka
+          </div>
           <div class="broker-storage">
-            <div class="storage-label">消息存储</div>
+            <div class="storage-label">
+              消息存储
+            </div>
             <div class="storage-box">
               <transition-group name="message">
                 <div
@@ -52,7 +77,10 @@
                   消息 #{{ msg.id }}
                 </div>
               </transition-group>
-              <div v-if="brokerMessages.length === 0" class="empty">
+              <div
+                v-if="brokerMessages.length === 0"
+                class="empty"
+              >
                 暂无消息
               </div>
             </div>
@@ -60,26 +88,40 @@
         </div>
       </div>
 
-      <div class="arrow" :class="{ active: consuming }">
+      <div
+        class="arrow"
+        :class="{ active: consuming }"
+      >
         {{ consuming ? '📨' : '→' }}
       </div>
 
       <div class="component consumer">
         <div class="comp-header">
-          <div class="comp-icon">📥</div>
-          <div class="comp-name">消费者 Consumer</div>
+          <div class="comp-icon">
+            📥
+          </div>
+          <div class="comp-name">
+            消费者 Consumer
+          </div>
         </div>
         <div class="comp-content">
-          <div class="comp-desc">接收并处理消息</div>
-          <div class="comp-example">例子：库存服务</div>
+          <div class="comp-desc">
+            接收并处理消息
+          </div>
+          <div class="comp-example">
+            例子：库存服务
+          </div>
           <button
             class="action-btn consume"
-            @click="consumeMessage"
             :disabled="brokerMessages.length === 0 || consuming"
+            @click="consumeMessage"
           >
             {{ consuming ? '处理中...' : '消费消息' }}
           </button>
-          <div v-if="lastConsumed" class="last-consumed">
+          <div
+            v-if="lastConsumed"
+            class="last-consumed"
+          >
             已处理: #{{ lastConsumed }}
           </div>
         </div>
@@ -88,7 +130,9 @@
 
     <div class="component-details">
       <div class="detail-card producer">
-        <div class="detail-title">📤 生产者 (Producer)</div>
+        <div class="detail-title">
+          📤 生产者 (Producer)
+        </div>
         <div class="detail-content">
           <div class="detail-item">
             <strong>职责：</strong>创建并发送消息到 Broker
@@ -108,7 +152,9 @@
       </div>
 
       <div class="detail-card broker">
-        <div class="detail-title">📦 消息代理 (Broker)</div>
+        <div class="detail-title">
+          📦 消息代理 (Broker)
+        </div>
         <div class="detail-content">
           <div class="detail-item">
             <strong>职责：</strong>存储、转发、管理消息
@@ -129,7 +175,9 @@
       </div>
 
       <div class="detail-card consumer">
-        <div class="detail-title">📥 消费者 (Consumer)</div>
+        <div class="detail-title">
+          📥 消费者 (Consumer)
+        </div>
         <div class="detail-content">
           <div class="detail-item">
             <strong>职责：</strong>从 Broker 接收并处理消息
@@ -155,45 +203,85 @@
     </div>
 
     <div class="message-flow">
-      <div class="flow-title">🔄 完整的消息流程</div>
+      <div class="flow-title">
+        🔄 完整的消息流程
+      </div>
       <div class="flow-steps">
         <div class="flow-step">
-          <div class="step-num">1</div>
+          <div class="step-num">
+            1
+          </div>
           <div class="step-content">
-            <div class="step-title">生产者发送消息</div>
-            <div class="step-desc">订单服务创建订单后，发送"订单创建"消息</div>
+            <div class="step-title">
+              生产者发送消息
+            </div>
+            <div class="step-desc">
+              订单服务创建订单后，发送"订单创建"消息
+            </div>
           </div>
         </div>
-        <div class="flow-arrow">→</div>
+        <div class="flow-arrow">
+          →
+        </div>
         <div class="flow-step">
-          <div class="step-num">2</div>
+          <div class="step-num">
+            2
+          </div>
           <div class="step-content">
-            <div class="step-title">Broker 存储消息</div>
-            <div class="step-desc">消息队列接收并存储消息（持久化到磁盘）</div>
+            <div class="step-title">
+              Broker 存储消息
+            </div>
+            <div class="step-desc">
+              消息队列接收并存储消息（持久化到磁盘）
+            </div>
           </div>
         </div>
-        <div class="flow-arrow">→</div>
+        <div class="flow-arrow">
+          →
+        </div>
         <div class="flow-step">
-          <div class="step-num">3</div>
+          <div class="step-num">
+            3
+          </div>
           <div class="step-content">
-            <div class="step-title">消费者拉取消息</div>
-            <div class="step-desc">库存服务从队列中拉取消息</div>
+            <div class="step-title">
+              消费者拉取消息
+            </div>
+            <div class="step-desc">
+              库存服务从队列中拉取消息
+            </div>
           </div>
         </div>
-        <div class="flow-arrow">→</div>
+        <div class="flow-arrow">
+          →
+        </div>
         <div class="flow-step">
-          <div class="step-num">4</div>
+          <div class="step-num">
+            4
+          </div>
           <div class="step-content">
-            <div class="step-title">处理业务逻辑</div>
-            <div class="step-desc">扣减库存，创建出库记录</div>
+            <div class="step-title">
+              处理业务逻辑
+            </div>
+            <div class="step-desc">
+              扣减库存，创建出库记录
+            </div>
           </div>
         </div>
-        <div class="flow-arrow">→</div>
+        <div class="flow-arrow">
+          →
+        </div>
         <div class="flow-step">
-          <div class="step-num">5</div>
+          <div class="step-num">
+            5
+          </div>
           <div class="step-content">
-            <div class="step-title">发送 ACK</div>
-            <div class="step-desc">告诉 Broker 消息处理成功，可以删除</div>
+            <div class="step-title">
+              发送 ACK
+            </div>
+            <div class="step-desc">
+              告诉 Broker 消息处理成功，可以删除
+            </div>
           </div>
         </div>
       </div>

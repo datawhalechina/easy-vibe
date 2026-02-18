@@ -9,21 +9,34 @@
       <div class="left-panel">
         <div class="operations">
           <div class="op-group">
-            <div class="op-label">修改内容</div>
+            <div class="op-label">
+              修改内容
+            </div>
             <div class="op-row">
-              <input v-model="titleText" placeholder="输入标题" class="input" />
-              <button @click="updateTitle" class="btn">更新标题</button>
+              <input
+                v-model="titleText"
+                placeholder="输入标题"
+                class="input"
+              >
+              <button
+                class="btn"
+                @click="updateTitle"
+              >
+                更新标题
+              </button>
             </div>
           </div>
 
           <div class="op-group">
-            <div class="op-label">修改样式</div>
+            <div class="op-label">
+              修改样式
+            </div>
             <div class="op-row">
               <button 
                 v-for="s in styles" 
                 :key="s.id"
-                @click="currentStyle = s.id"
                 :class="['btn-sm', { active: currentStyle === s.id }]"
+                @click="currentStyle = s.id"
               >
                 {{ s.label }}
               </button>
@@ -31,59 +44,124 @@
           </div>
 
           <div class="op-group">
-            <div class="op-label">添加/删除元素</div>
+            <div class="op-label">
+              添加/删除元素
+            </div>
             <div class="op-row">
-              <button @click="addItem" class="btn">添加项目</button>
-              <button @click="removeLastItem" class="btn btn-danger">删除最后</button>
+              <button
+                class="btn"
+                @click="addItem"
+              >
+                添加项目
+              </button>
+              <button
+                class="btn btn-danger"
+                @click="removeLastItem"
+              >
+                删除最后
+              </button>
             </div>
           </div>
         </div>
 
-        <div class="preview-card" :class="currentStyle">
-          <h2 class="card-title">{{ titleText || '点击按钮更新标题' }}</h2>
-          <p class="card-desc">这是一个演示 DOM 操作的卡片区域。</p>
+        <div
+          class="preview-card"
+          :class="currentStyle"
+        >
+          <h2 class="card-title">
+            {{ titleText || '点击按钮更新标题' }}
+          </h2>
+          <p class="card-desc">
+            这是一个演示 DOM 操作的卡片区域。
+          </p>
           <ul class="card-list">
-            <li v-for="(item, i) in items" :key="i">{{ item }}</li>
-            <li v-if="items.length === 0" class="empty">（列表为空）</li>
+            <li
+              v-for="(item, i) in items"
+              :key="i"
+            >
+              {{ item }}
+            </li>
+            <li
+              v-if="items.length === 0"
+              class="empty"
+            >
+              （列表为空）
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="right-panel">
         <div class="code-block">
-          <div class="code-title">对应的 JavaScript 代码</div>
+          <div class="code-title">
+            对应的 JavaScript 代码
+          </div>
           <div class="code-content">
             <template v-if="lastOp === 'title'">
-              <div class="line comment">// 修改文本内容</div>
-              <div class="line">const el = document.querySelector('.card-title')</div>
-              <div class="line">el.textContent = '{{ titleText }}'</div>
+              <div class="line comment">
+                // 修改文本内容
+              </div>
+              <div class="line">
+                const el = document.querySelector('.card-title')
+              </div>
+              <div class="line">
+                el.textContent = '{{ titleText }}'
+              </div>
             </template>
             <template v-else-if="lastOp === 'style'">
-              <div class="line comment">// 切换 CSS 类</div>
-              <div class="line">const card = document.querySelector('.preview-card')</div>
-              <div class="line">card.className = 'preview-card {{ currentStyle }}'</div>
+              <div class="line comment">
+                // 切换 CSS 类
+              </div>
+              <div class="line">
+                const card = document.querySelector('.preview-card')
+              </div>
+              <div class="line">
+                card.className = 'preview-card {{ currentStyle }}'
+              </div>
             </template>
             <template v-else-if="lastOp === 'add'">
-              <div class="line comment">// 创建并添加新元素</div>
-              <div class="line">const list = document.querySelector('.card-list')</div>
-              <div class="line">const li = document.createElement('li')</div>
-              <div class="line">li.textContent = '新项目 {{ items.length }}'</div>
-              <div class="line">list.appendChild(li)</div>
+              <div class="line comment">
+                // 创建并添加新元素
+              </div>
+              <div class="line">
+                const list = document.querySelector('.card-list')
+              </div>
+              <div class="line">
+                const li = document.createElement('li')
+              </div>
+              <div class="line">
+                li.textContent = '新项目 {{ items.length }}'
+              </div>
+              <div class="line">
+                list.appendChild(li)
+              </div>
             </template>
             <template v-else-if="lastOp === 'remove'">
-              <div class="line comment">// 删除最后一个元素</div>
-              <div class="line">const list = document.querySelector('.card-list')</div>
-              <div class="line">const last = list.lastElementChild</div>
-              <div class="line">if (last) last.remove()</div>
+              <div class="line comment">
+                // 删除最后一个元素
+              </div>
+              <div class="line">
+                const list = document.querySelector('.card-list')
+              </div>
+              <div class="line">
+                const last = list.lastElementChild
+              </div>
+              <div class="line">
+                if (last) last.remove()
+              </div>
             </template>
             <template v-else>
-              <div class="line comment">// 点击左侧按钮查看对应代码</div>
+              <div class="line comment">
+                // 点击左侧按钮查看对应代码
+              </div>
             </template>
           </div>
         </div>
 
         <div class="methods-card">
-          <div class="methods-title">常用 DOM 方法</div>
+          <div class="methods-title">
+            常用 DOM 方法
+          </div>
           <div class="methods-list">
             <div class="method">
               <code>querySelector()</code>

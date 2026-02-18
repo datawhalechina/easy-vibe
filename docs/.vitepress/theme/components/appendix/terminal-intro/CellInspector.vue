@@ -13,7 +13,10 @@
 <template>
   <div class="cell-inspector">
     <div class="preview-area">
-      <div class="large-cell" :style="cellStyle">
+      <div
+        class="large-cell"
+        :style="cellStyle"
+      >
         {{ char }}
       </div>
     </div>
@@ -43,7 +46,7 @@
             :style="{ backgroundColor: color }"
             :class="{ active: fgColor === color }"
             @click="fgColor = color"
-          ></div>
+          />
         </div>
       </div>
 
@@ -63,7 +66,7 @@
               background-color: #111;
             "
             @click="bgColor = 'transparent'"
-          ></div>
+          />
           <div
             v-for="color in bgColors"
             :key="color"
@@ -71,7 +74,7 @@
             :style="{ backgroundColor: color }"
             :class="{ active: bgColor === color }"
             @click="bgColor = color"
-          ></div>
+          />
         </div>
       </div>
 
@@ -79,11 +82,17 @@
         <label>ATTRIBUTES</label>
         <div class="toggles">
           <label class="toggle">
-            <input type="checkbox" v-model="isBold" />
+            <input
+              v-model="isBold"
+              type="checkbox"
+            >
             <span>Bold</span>
           </label>
           <label class="toggle">
-            <input type="checkbox" v-model="isUnderline" />
+            <input
+              v-model="isUnderline"
+              type="checkbox"
+            >
             <span>Underline</span>
           </label>
         </div>

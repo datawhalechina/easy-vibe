@@ -18,8 +18,16 @@
       
       <div class="target-select">
         <span class="label">目标：</span>
-        <select v-model="selectedTargetIndex" :disabled="isSearching" @change="reset">
-          <option v-for="(t, i) in targets" :key="t.name" :value="i">
+        <select
+          v-model="selectedTargetIndex"
+          :disabled="isSearching"
+          @change="reset"
+        >
+          <option
+            v-for="(t, i) in targets"
+            :key="t.name"
+            :value="i"
+          >
             {{ t.name }} ({{ t.domain }})
           </option>
         </select>
@@ -27,23 +35,23 @@
 
       <div class="actions">
         <button 
-          class="action-btn primary" 
+          v-if="!isSearching && !isFinished" 
+          class="action-btn primary"
           @click="startAutoSearch"
-          v-if="!isSearching && !isFinished"
         >
           ▶ 开始寻址
         </button>
         <button 
-          class="action-btn secondary" 
+          v-if="isSearching && !autoPlay" 
+          class="action-btn secondary"
           @click="nextStep"
-          v-if="isSearching && !autoPlay"
         >
           ⏭ 下一步
         </button>
         <button 
-          class="action-btn outline" 
+          v-if="isFinished || isSearching" 
+          class="action-btn outline"
           @click="reset"
-          v-if="isFinished || isSearching"
         >
           ↺ 重置
         </button>
@@ -52,15 +60,24 @@
 
     <!-- 进度条/状态展示 -->
     <div class="status-bar">
-      <div v-if="!isSearching && !isFinished" class="status-text">
+      <div
+        v-if="!isSearching && !isFinished"
+        class="status-text"
+      >
         <span class="icon">👋</span>
         准备出发：去问问 <strong>{{ targets[selectedTargetIndex].domain }}</strong> 的 IP 是多少？
       </div>
-      <div v-else-if="isSearching" class="status-text running">
+      <div
+        v-else-if="isSearching"
+        class="status-text running"
+      >
         <span class="icon spin">⏳</span>
         正在询问：{{ queryLevels[currentStep]?.analogyName }}...
       </div>
-      <div v-else class="status-text success">
+      <div
+        v-else
+        class="status-text success"
+      >
         <span class="icon">✅</span>
         找到了！IP 地址是：<strong>{{ targets[selectedTargetIndex].ip }}</strong>
       </div>
@@ -79,13 +96,21 @@
         }"
         @click="jumpToStep(index)"
       >
-        <div class="step-icon-box" :style="{ '--step-color': level.color }">
+        <div
+          class="step-icon-box"
+          :style="{ '--step-color': level.color }"
+        >
           <span class="step-icon">{{ level.analogyIcon }}</span>
         </div>
-        <div class="step-label">{{ level.analogyName }}</div>
+        <div class="step-label">
+          {{ level.analogyName }}
+        </div>
         
         <!-- 连接线 -->
-        <div class="step-line" v-if="index < queryLevels.length - 1"></div>
+        <div
+          v-if="index < queryLevels.length - 1"
+          class="step-line"
+        />
       </div>
     </div>
 
@@ -93,20 +118,35 @@
     <div class="info-panels">
       <!-- 左侧：生活场景 -->
       <div class="detail-panel analogy-panel">
-        <transition name="fade" mode="out-in">
-          <div v-if="currentStep >= 0" class="panel-content" :key="currentStep">
-            <div class="panel-header" :style="{ color: currentLevel.color }">
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <div
+            v-if="currentStep >= 0"
+            :key="currentStep"
+            class="panel-content"
+          >
+            <div
+              class="panel-header"
+              :style="{ color: currentLevel.color }"
+            >
               <span class="header-icon">{{ currentLevel.analogyIcon }}</span>
               <span class="header-title">{{ currentLevel.analogyName }} ({{ currentLevel.techName }})</span>
             </div>
             <div class="panel-body">
-              <p class="analogy-text">{{ currentLevel.analogyAction }}</p>
+              <p class="analogy-text">
+                {{ currentLevel.analogyAction }}
+              </p>
               <div class="tech-hint-badge">
                 {{ currentLevel.techAction }}
               </div>
             </div>
           </div>
-          <div v-else class="panel-placeholder">
+          <div
+            v-else
+            class="panel-placeholder"
+          >
             <span>生活场景视角</span>
           </div>
         </transition>
@@ -116,12 +156,21 @@
       <div class="detail-panel terminal-panel">
         <div class="terminal-header">
           <div class="terminal-dots">
-            <span></span><span></span><span></span>
+            <span /><span /><span />
           </div>
-          <div class="terminal-title">Terminal</div>
+          <div class="terminal-title">
+            Terminal
+          </div>
         </div>
-        <transition name="fade" mode="out-in">
-          <div v-if="currentStep >= 0" class="terminal-body" :key="currentStep">
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <div
+            v-if="currentStep >= 0"
+            :key="currentStep"
+            class="terminal-body"
+          >
             <div class="cmd-line">
               <span class="prompt">$</span>
               <span class="cmd">{{ formatText(currentLevel.techCommand) }}</span>
@@ -130,13 +179,15 @@
               <pre>{{ formatText(currentLevel.techOutput) }}</pre>
             </div>
           </div>
-          <div v-else class="terminal-placeholder">
+          <div
+            v-else
+            class="terminal-placeholder"
+          >
             <span>Waiting for command...</span>
           </div>
         </transition>
       </div>
     </div>
-
   </div>
 </template>
 

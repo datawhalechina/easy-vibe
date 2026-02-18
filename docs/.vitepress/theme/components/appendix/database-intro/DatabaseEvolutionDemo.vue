@@ -18,20 +18,39 @@
         :class="{ active: activeStage === stage.id }"
         @click="activeStage = activeStage === stage.id ? null : stage.id"
       >
-        <div class="stage-icon">{{ stage.icon }}</div>
-        <div class="stage-name">{{ stage.name }}</div>
-        <div class="stage-simple">{{ stage.simple }}</div>
-        <div class="stage-capacity">{{ stage.capacity }}</div>
-        <div v-if="i < stages.length - 1" class="arrow">→</div>
+        <div class="stage-icon">
+          {{ stage.icon }}
+        </div>
+        <div class="stage-name">
+          {{ stage.name }}
+        </div>
+        <div class="stage-simple">
+          {{ stage.simple }}
+        </div>
+        <div class="stage-capacity">
+          {{ stage.capacity }}
+        </div>
+        <div
+          v-if="i < stages.length - 1"
+          class="arrow"
+        >
+          →
+        </div>
       </div>
     </div>
 
-    <div v-if="!activeStage" class="hint-text">
+    <div
+      v-if="!activeStage"
+      class="hint-text"
+    >
       👆 点击上方任意阶段，查看详细特点
     </div>
 
     <Transition name="fade">
-      <div v-if="activeStage" class="stage-detail">
+      <div
+        v-if="activeStage"
+        class="stage-detail"
+      >
         <div class="detail-header">
           <span class="detail-icon">{{ currentStage?.icon }}</span>
           <span class="detail-title">{{ currentStage?.name }}</span>
@@ -40,21 +59,42 @@
         <div class="detail-content">
           <div class="pros-cons">
             <div class="pros">
-              <div class="list-title">✅ 优点</div>
+              <div class="list-title">
+                ✅ 优点
+              </div>
               <ul>
-                <li v-for="pro in currentStage?.pros" :key="pro">{{ pro }}</li>
+                <li
+                  v-for="pro in currentStage?.pros"
+                  :key="pro"
+                >
+                  {{ pro }}
+                </li>
               </ul>
             </div>
             <div class="cons">
-              <div class="list-title">❌ 缺点</div>
+              <div class="list-title">
+                ❌ 缺点
+              </div>
               <ul>
-                <li v-for="con in currentStage?.cons" :key="con">{{ con }}</li>
+                <li
+                  v-for="con in currentStage?.cons"
+                  :key="con"
+                >
+                  {{ con }}
+                </li>
               </ul>
             </div>
           </div>
-          <div v-if="currentStage?.example" class="example-box">
-            <div class="example-label">🌰 举个例子：</div>
-            <div class="example-content">{{ currentStage?.example }}</div>
+          <div
+            v-if="currentStage?.example"
+            class="example-box"
+          >
+            <div class="example-label">
+              🌰 举个例子：
+            </div>
+            <div class="example-content">
+              {{ currentStage?.example }}
+            </div>
           </div>
         </div>
       </div>

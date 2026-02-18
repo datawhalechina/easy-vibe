@@ -16,9 +16,15 @@
         :key="model.name"
         class="model-card"
       >
-        <div class="model-icon">{{ model.icon }}</div>
-        <div class="model-name">{{ model.name }}</div>
-        <div class="model-desc">{{ model.description }}</div>
+        <div class="model-icon">
+          {{ model.icon }}
+        </div>
+        <div class="model-name">
+          {{ model.name }}
+        </div>
+        <div class="model-desc">
+          {{ model.description }}
+        </div>
         <div class="model-languages">
           <span
             v-for="lang in model.languages"

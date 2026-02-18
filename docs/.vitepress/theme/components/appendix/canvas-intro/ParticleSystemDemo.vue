@@ -31,39 +31,44 @@
         <div class="param-row">
           <label>Particle Count / 粒子数量: {{ maxParticles }}</label>
           <input
-            type="range"
             v-model.number="maxParticles"
+            type="range"
             min="50"
             max="500"
             step="50"
-          />
+          >
         </div>
 
         <div class="param-row">
           <label>Particle Size / 粒子大小: {{ particleSize }}</label>
-          <input type="range" v-model.number="particleSize" min="1" max="10" />
+          <input
+            v-model.number="particleSize"
+            type="range"
+            min="1"
+            max="10"
+          >
         </div>
 
         <div class="param-row">
           <label>Speed / 速度: {{ speed }}</label>
           <input
-            type="range"
             v-model.number="speed"
+            type="range"
             min="0.5"
             max="3"
             step="0.1"
-          />
+          >
         </div>
 
         <div class="param-row">
           <label>Gravity / 重力: {{ gravity }}</label>
           <input
-            type="range"
             v-model.number="gravity"
+            type="range"
             min="0"
             max="0.5"
             step="0.05"
-          />
+          >
         </div>
       </div>
 
@@ -78,7 +83,10 @@
         </div>
       </div>
 
-      <button class="clear-btn" @click="clearParticles">
+      <button
+        class="clear-btn"
+        @click="clearParticles"
+      >
         <span class="icon">🗑️</span>
         Clear Particles / 清除粒子
       </button>
@@ -91,7 +99,7 @@
         height="400"
         @mousemove="handleMouseMove"
         @click="handleClick"
-      ></canvas>
+      />
     </div>
 
     <div class="code-display">
@@ -162,18 +170,18 @@ class Particle {
   constructor(x, y) {
     this.x = x
     this.y = y
-    this.vx = (Math.random() - 0.5) * ${speed}
-    this.vy = (Math.random() - 0.5) * ${speed}
+    this.vx = (Math.random() - 0.5) * ${speed.value}
+    this.vy = (Math.random() - 0.5) * ${speed.value}
     this.life = 1.0
     this.decay = 0.01 + Math.random() * 0.02
-    this.size = ${particleSize}
+    this.size = ${particleSize.value}
     this.color = this.randomColor()
   }
 
   update() {
     this.x += this.vx
     this.y += this.vy
-    this.vy += ${gravity}  // 重力
+    this.vy += ${gravity.value}  // 重力
     this.life -= this.decay
   }
 

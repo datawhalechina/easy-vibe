@@ -20,7 +20,7 @@
       </div>
 
       <div class="arrow-section">
-        <div class="arrow-line"></div>
+        <div class="arrow-line" />
         <div class="arrow-text">
           Reshape for View: Grid ⇄ Sequence (重排显示：网格⇄序列)
         </div>
@@ -28,7 +28,9 @@
 
       <!-- 2. Feature Vector Sequence -->
       <div class="stage">
-        <div class="stage-label">2. Output Token Sequence (N×D) (输出序列)</div>
+        <div class="stage-label">
+          2. Output Token Sequence (N×D) (输出序列)
+        </div>
         <div class="vector-sequence">
           <div
             v-for="(item, index) in items"
@@ -42,25 +44,27 @@
               <div
                 class="v-cell"
                 :style="{ opacity: 0.9, background: item.color }"
-              ></div>
+              />
               <div
                 class="v-cell"
                 :style="{ opacity: 0.7, background: item.color }"
-              ></div>
+              />
               <div
                 class="v-cell"
                 :style="{ opacity: 0.5, background: item.color }"
-              ></div>
+              />
               <div
                 class="v-cell"
                 :style="{ opacity: 0.8, background: item.color }"
-              ></div>
+              />
               <div
                 class="v-cell"
                 :style="{ opacity: 0.6, background: item.color }"
-              ></div>
+              />
             </div>
-            <div class="vector-idx">{{ index + 1 }}</div>
+            <div class="vector-idx">
+              {{ index + 1 }}
+            </div>
           </div>
         </div>
       </div>
@@ -68,21 +72,28 @@
 
     <!-- 3. Semantic Panel -->
     <div class="semantic-panel">
-      <div v-if="activeIndex !== -1" class="semantic-content">
-        <div class="header" :style="{ borderColor: items[activeIndex].color }">
+      <div
+        v-if="activeIndex !== -1"
+        class="semantic-content"
+      >
+        <div
+          class="header"
+          :style="{ borderColor: items[activeIndex].color }"
+        >
           <span class="large-icon">{{ items[activeIndex].icon }}</span>
           <div class="title-group">
-            <span class="title"
-              >Token #{{ activeIndex + 1 }}:
-              {{ items[activeIndex].label }}</span
-            >
+            <span class="title">Token #{{ activeIndex + 1 }}:
+              {{ items[activeIndex].label }}</span>
             <span class="subtitle">Type: {{ items[activeIndex].type }}</span>
           </div>
         </div>
         <div class="desc">
           <div class="vector-repr">
             <span class="label">Vector Value:</span>
-            <span class="code" :style="{ color: items[activeIndex].color }">
+            <span
+              class="code"
+              :style="{ color: items[activeIndex].color }"
+            >
               [0.{{ (Math.random() * 99).toFixed(0) }}, -0.{{
                 (Math.random() * 99).toFixed(0)
               }}, 1.{{ (Math.random() * 99).toFixed(0) }}, ...]
@@ -94,11 +105,12 @@
           </div>
         </div>
       </div>
-      <div v-else class="placeholder">
+      <div
+        v-else
+        class="placeholder"
+      >
         <span class="hint-icon">👆</span>
-        <span class="hint-text"
-          >悬停在上方方块或向量上，查看 ViT 输出的“语义特征”</span
-        >
+        <span class="hint-text">悬停在上方方块或向量上，查看 ViT 输出的“语义特征”</span>
       </div>
     </div>
   </div>

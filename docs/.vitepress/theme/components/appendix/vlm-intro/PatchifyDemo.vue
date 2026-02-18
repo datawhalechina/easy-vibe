@@ -8,16 +8,16 @@
       <div class="controls">
         <button
           class="action-btn"
-          @click="prevStep"
           :disabled="currentStep === 0"
+          @click="prevStep"
         >
           ⬅ 上一步 (Prev)
         </button>
         <span class="step-indicator">Step {{ currentStep + 1 }} / 4</span>
         <button
           class="action-btn primary"
-          @click="nextStep"
           :disabled="currentStep === 3"
+          @click="nextStep"
         >
           {{ currentStep === 3 ? '完成 (Done)' : '下一步 (Next) ➡' }}
         </button>
@@ -41,21 +41,43 @@
           'is-patchified': currentStep >= 2
         }"
       >
-        <div class="grid-overlay" v-if="currentStep === 1"></div>
-        <div v-for="n in 196" :key="n" class="patch" :style="getPatchStyle(n)">
+        <div
+          v-if="currentStep === 1"
+          class="grid-overlay"
+        />
+        <div
+          v-for="n in 196"
+          :key="n"
+          class="patch"
+          :style="getPatchStyle(n)"
+        >
           <!-- Show number only in Pixelated stage to represent 'digitization' -->
-          <span class="pixel-val" v-if="currentStep === 1">{{
+          <span
+            v-if="currentStep === 1"
+            class="pixel-val"
+          >{{
             Math.floor(Math.random() * 9)
           }}</span>
           <!-- Show ID in Patchified stage -->
-          <span class="patch-id" v-if="currentStep >= 2">{{ n }}</span>
+          <span
+            v-if="currentStep >= 2"
+            class="patch-id"
+          >{{ n }}</span>
         </div>
       </div>
 
-      <div class="arrow-down" v-if="currentStep >= 3">⬇</div>
+      <div
+        v-if="currentStep >= 3"
+        class="arrow-down"
+      >
+        ⬇
+      </div>
 
       <!-- 线性序列视图 -->
-      <div class="sequence-container" v-if="currentStep >= 3">
+      <div
+        v-if="currentStep >= 3"
+        class="sequence-container"
+      >
         <div class="sequence-label">
           Token Sequence: 196×D (每个 Token 是 D 维向量)
         </div>
@@ -65,7 +87,7 @@
             :key="n"
             class="mini-patch"
             :style="getMiniPatchStyle(n)"
-          ></div>
+          />
         </div>
       </div>
     </div>

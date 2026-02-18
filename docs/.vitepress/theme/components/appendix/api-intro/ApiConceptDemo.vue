@@ -23,7 +23,7 @@
               type="text"
               class="endpoint-input"
               placeholder="/users"
-            />
+            >
           </div>
         </div>
       </div>
@@ -37,23 +37,44 @@
           <div class="params-box">
             <div class="params-row">
               <span class="param-label">页码：</span>
-              <input v-model.number="page" type="number" class="param-input" min="1" />
+              <input
+                v-model.number="page"
+                type="number"
+                class="param-input"
+                min="1"
+              >
             </div>
             <div class="params-row">
               <span class="param-label">每页数量：</span>
-              <input v-model.number="limit" type="number" class="param-input small" min="1" max="100" />
+              <input
+                v-model.number="limit"
+                type="number"
+                class="param-input small"
+                min="1"
+                max="100"
+              >
             </div>
           </div>
         </div>
       </div>
 
-      <button class="send-btn" @click="sendRequest" :disabled="loading">
+      <button
+        class="send-btn"
+        :disabled="loading"
+        @click="sendRequest"
+      >
         {{ loading ? '发送中...' : '🚀 发送请求' }}
       </button>
 
-      <div class="response" v-if="response">
+      <div
+        v-if="response"
+        class="response"
+      >
         <div class="response-header">
-          <span class="status-badge" :class="response.status >= 200 && response.status < 300 ? 'success' : 'error'">
+          <span
+            class="status-badge"
+            :class="response.status >= 200 && response.status < 300 ? 'success' : 'error'"
+          >
             {{ response.status }} {{ response.statusText }}
           </span>
           <span class="response-time">耗时: {{ response.time }}ms</span>

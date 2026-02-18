@@ -8,7 +8,9 @@
 
     <div class="editor-layout">
       <div class="editor-panel">
-        <div class="panel-title">策略编辑器</div>
+        <div class="panel-title">
+          策略编辑器
+        </div>
         <div class="action-list">
           <div 
             v-for="action in actions" 
@@ -17,8 +19,8 @@
           >
             <label class="checkbox">
               <input 
-                type="checkbox" 
-                v-model="selectedActions"
+                v-model="selectedActions" 
+                type="checkbox"
                 :value="action.id"
               >
               <span>{{ action.name }}</span>
@@ -29,13 +31,17 @@
       </div>
       
       <div class="preview-panel">
-        <div class="panel-title">生成的策略</div>
+        <div class="panel-title">
+          生成的策略
+        </div>
         <pre><code>{{ generatedPolicy }}</code></pre>
       </div>
     </div>
     
     <div class="effect-preview">
-      <div class="effect-title">权限效果预览</div>
+      <div class="effect-title">
+        权限效果预览
+      </div>
       <div class="effect-list">
         <div 
           v-for="effect in effectList" 

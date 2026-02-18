@@ -5,34 +5,56 @@
 <template>
   <div class="jwt-workflow-demo">
     <div class="header">
-      <div class="title">🎫 JWT：生成 → 发送 → 验证 → 解析</div>
+      <div class="title">
+        🎫 JWT：生成 → 发送 → 验证 → 解析
+      </div>
       <div class="subtitle">
         默认“手动推进”，不自动下一步；避免把演示误当成真实系统的安全边界。
       </div>
     </div>
 
     <div class="controls">
-      <button class="btn primary" @click="start" :disabled="step !== 0">
-        开始
-      </button>
-      <button class="btn" @click="prev" :disabled="step <= 1">上一步</button>
       <button
         class="btn primary"
-        @click="next"
+        :disabled="step !== 0"
+        @click="start"
+      >
+        开始
+      </button>
+      <button
+        class="btn"
+        :disabled="step <= 1"
+        @click="prev"
+      >
+        上一步
+      </button>
+      <button
+        class="btn primary"
         :disabled="step === 0 || step >= maxStep"
+        @click="next"
       >
         下一步
       </button>
-      <button class="btn" @click="reset">重置</button>
+      <button
+        class="btn"
+        @click="reset"
+      >
+        重置
+      </button>
     </div>
 
-    <div v-if="step > 0" class="progress">
+    <div
+      v-if="step > 0"
+      class="progress"
+    >
       Step {{ step }} / {{ maxStep }} · {{ steps[step - 1]?.title }}
     </div>
 
     <div class="grid">
       <div class="card">
-        <div class="card-title">用户声明（Payload 示例）</div>
+        <div class="card-title">
+          用户声明（Payload 示例）
+        </div>
         <pre class="code"><code>{{ payloadJson }}</code></pre>
         <div class="hint">
           注意：JWT 的 payload 只是 Base64Url
@@ -41,45 +63,90 @@
       </div>
 
       <div class="card">
-        <div class="card-title">JWT Token（示意）</div>
+        <div class="card-title">
+          JWT Token（示意）
+        </div>
         <div class="token">
-          <div class="part" :class="{ active: step >= 1 }">
-            <div class="part-label">Header</div>
+          <div
+            class="part"
+            :class="{ active: step >= 1 }"
+          >
+            <div class="part-label">
+              Header
+            </div>
             <code class="mono">{{ step >= 1 ? headerB64 : '...' }}</code>
           </div>
-          <div class="dot">.</div>
-          <div class="part" :class="{ active: step >= 2 }">
-            <div class="part-label">Payload</div>
+          <div class="dot">
+            .
+          </div>
+          <div
+            class="part"
+            :class="{ active: step >= 2 }"
+          >
+            <div class="part-label">
+              Payload
+            </div>
             <code class="mono">{{ step >= 2 ? payloadB64 : '...' }}</code>
           </div>
-          <div class="dot">.</div>
-          <div class="part" :class="{ active: step >= 3 }">
-            <div class="part-label">Signature</div>
+          <div class="dot">
+            .
+          </div>
+          <div
+            class="part"
+            :class="{ active: step >= 3 }"
+          >
+            <div class="part-label">
+              Signature
+            </div>
             <code class="mono">{{ step >= 3 ? signatureB64 : '...' }}</code>
           </div>
         </div>
 
-        <div class="mono-box" v-if="step >= 4">
-          <div class="mono-label">完整 Token</div>
+        <div
+          v-if="step >= 4"
+          class="mono-box"
+        >
+          <div class="mono-label">
+            完整 Token
+          </div>
           <code class="mono">{{ token }}</code>
-          <button class="copy" @click="copy(token)">
+          <button
+            class="copy"
+            @click="copy(token)"
+          >
             {{ copied ? '已复制' : '复制 Token' }}
           </button>
         </div>
 
-        <div class="mono-box" v-if="step >= 5">
-          <div class="mono-label">请求头示例</div>
+        <div
+          v-if="step >= 5"
+          class="mono-box"
+        >
+          <div class="mono-label">
+            请求头示例
+          </div>
           <code class="mono">Authorization: Bearer {{ token }}</code>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">{{ steps[step - 1]?.title || '流程说明' }}</div>
-      <div class="desc">{{ steps[step - 1]?.desc }}</div>
-      <div v-if="steps[step - 1]?.warn" class="warn">
-        <div class="warn-title">注意</div>
-        <div class="warn-text">{{ steps[step - 1]?.warn }}</div>
+      <div class="card-title">
+        {{ steps[step - 1]?.title || '流程说明' }}
+      </div>
+      <div class="desc">
+        {{ steps[step - 1]?.desc }}
+      </div>
+      <div
+        v-if="steps[step - 1]?.warn"
+        class="warn"
+      >
+        <div class="warn-title">
+          注意
+        </div>
+        <div class="warn-text">
+          {{ steps[step - 1]?.warn }}
+        </div>
       </div>
     </div>
   </div>

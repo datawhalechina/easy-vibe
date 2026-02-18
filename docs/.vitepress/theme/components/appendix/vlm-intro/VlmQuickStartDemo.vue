@@ -1,8 +1,12 @@
 <template>
   <div class="vlm-quick-start">
     <div class="header">
-      <div class="title">👁️ VLM 初体验：不只是看图说话</div>
-      <div class="subtitle">选择不同场景，体验多模态模型的多种能力。</div>
+      <div class="title">
+        👁️ VLM 初体验：不只是看图说话
+      </div>
+      <div class="subtitle">
+        选择不同场景，体验多模态模型的多种能力。
+      </div>
     </div>
 
     <div class="scenario-tabs">
@@ -24,22 +28,39 @@
           class="image-placeholder"
           :class="{ loaded: hasImage, 'receipt-bg': currentScenario === 'ocr' }"
         >
-          <div v-if="!hasImage" class="upload-prompt">
-            <div class="icon">🖼️</div>
-            <button class="upload-btn" @click="loadImage">
+          <div
+            v-if="!hasImage"
+            class="upload-prompt"
+          >
+            <div class="icon">
+              🖼️
+            </div>
+            <button
+              class="upload-btn"
+              @click="loadImage"
+            >
               上传图片 (模拟)
             </button>
           </div>
 
-          <div v-else class="image-content">
+          <div
+            v-else
+            class="image-content"
+          >
             <!-- Chat: Landscape -->
             <div
               v-if="currentScenario === 'chat'"
               class="real-image-container landscape"
             >
-              <div class="real-image">🏔️</div>
-              <div class="sun">☀️</div>
-              <div class="tree">🌲</div>
+              <div class="real-image">
+                🏔️
+              </div>
+              <div class="sun">
+                ☀️
+              </div>
+              <div class="tree">
+                🌲
+              </div>
             </div>
 
             <!-- Detection: Fruits -->
@@ -73,24 +94,42 @@
               v-else-if="currentScenario === 'analysis'"
               class="factory-image"
             >
-              <div class="safety-sign">⚠️ 安全生产</div>
+              <div class="safety-sign">
+                ⚠️ 安全生产
+              </div>
               <div class="worker-container">
                 <span class="worker">👷</span>
-                <span class="helmet" v-if="true">⛑️</span>
+                <span
+                  v-if="true"
+                  class="helmet"
+                >⛑️</span>
               </div>
-              <div class="machinery">⚙️</div>
+              <div class="machinery">
+                ⚙️
+              </div>
             </div>
 
             <!-- OCR: Receipt -->
-            <div v-else class="receipt-image">
-              <div class="receipt-header">🧾 RECEIPT</div>
+            <div
+              v-else
+              class="receipt-image"
+            >
+              <div class="receipt-header">
+                🧾 RECEIPT
+              </div>
               <div class="receipt-body">
-                <div class="line"><span>Coffee</span><span>$4.50</span></div>
-                <div class="line"><span>Bagel</span><span>$3.00</span></div>
+                <div class="line">
+                  <span>Coffee</span><span>$4.50</span>
+                </div>
+                <div class="line">
+                  <span>Bagel</span><span>$3.00</span>
+                </div>
                 <div class="line total">
                   <span>TOTAL</span><span>$7.50</span>
                 </div>
-                <div class="line date"><span>2023-10-24</span></div>
+                <div class="line date">
+                  <span>2023-10-24</span>
+                </div>
               </div>
             </div>
 
@@ -103,8 +142,14 @@
 
       <!-- Chat Area -->
       <div class="chat-area">
-        <div class="messages" ref="messagesRef">
-          <div v-if="messages.length === 0" class="empty-text">
+        <div
+          ref="messagesRef"
+          class="messages"
+        >
+          <div
+            v-if="messages.length === 0"
+            class="empty-text"
+          >
             {{ hasImage ? '图片已就绪，请选择指令' : '请先上传图片' }}
           </div>
           <div
@@ -114,38 +159,51 @@
             :class="msg.role"
           >
             <div class="content">
-              <div v-if="msg.isJson" class="json-content">
+              <div
+                v-if="msg.isJson"
+                class="json-content"
+              >
                 <pre>{{ msg.content }}</pre>
               </div>
               <span v-else>{{ msg.content }}</span>
               <span
                 v-if="
                   msg.role === 'assistant' &&
-                  isGenerating &&
-                  index === messages.length - 1
+                    isGenerating &&
+                    index === messages.length - 1
                 "
                 class="cursor"
-                >|</span
-              >
+              >|</span>
             </div>
           </div>
         </div>
 
         <div class="input-area">
-          <div class="quick-actions" v-if="hasImage && !isGenerating">
+          <div
+            v-if="hasImage && !isGenerating"
+            class="quick-actions"
+          >
             <button
               v-for="q in currentQuestions"
               :key="q"
-              @click="ask(q)"
               class="action-btn"
+              @click="ask(q)"
             >
               {{ q }}
             </button>
           </div>
-          <div class="status-text" v-else-if="isGenerating">
+          <div
+            v-else-if="isGenerating"
+            class="status-text"
+          >
             AI 正在观察图片并思考...
           </div>
-          <div class="status-text" v-else>等待图片上传...</div>
+          <div
+            v-else
+            class="status-text"
+          >
+            等待图片上传...
+          </div>
         </div>
       </div>
     </div>

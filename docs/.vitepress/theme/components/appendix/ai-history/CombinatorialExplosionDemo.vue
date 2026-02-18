@@ -4,7 +4,9 @@
       <template #header>
         <div class="card-header">
           <h4>🎯 组合爆炸模拟器</h4>
-          <p class="subtitle">亲手体验"规则指数增长"的恐怖</p>
+          <p class="subtitle">
+            亲手体验"规则指数增长"的恐怖
+          </p>
         </div>
       </template>
 
@@ -38,9 +40,7 @@
           <div class="control-item">
             <div class="label-row">
               <span class="label-icon">🔢</span>
-              <span class="label-text"
-                >每个特征的可能值: {{ valuesPerFeature }}</span
-              >
+              <span class="label-text">每个特征的可能值: {{ valuesPerFeature }}</span>
             </div>
             <el-slider
               v-model="valuesPerFeature"
@@ -62,12 +62,14 @@
               value-style="font-weight: bold; color: var(--el-color-primary)"
             >
               <template #suffix>
-                <span class="formula-suffix"
-                  >= {{ valuesPerFeature }}<sup>{{ featureCount }}</sup></span
-                >
+                <span class="formula-suffix">= {{ valuesPerFeature }}<sup>{{ featureCount }}</sup></span>
               </template>
             </el-statistic>
-            <el-tag :type="complexityInfo.type" effect="dark" class="mt-2">
+            <el-tag
+              :type="complexityInfo.type"
+              effect="dark"
+              class="mt-2"
+            >
               {{ complexityInfo.label }}
             </el-tag>
           </div>
@@ -75,30 +77,38 @@
           <div class="action-buttons mt-4">
             <el-button
               type="primary"
-              @click="addRule"
               :disabled="ruleCount >= maxRules"
+              @click="addRule"
             >
               ✨ 添加规则 ({{ ruleCount }}/{{ maxRules }})
             </el-button>
-            <el-button @click="resetRules">🔄 重置</el-button>
+            <el-button @click="resetRules">
+              🔄 重置
+            </el-button>
           </div>
 
           <div class="rules-container mt-4">
-            <transition-group name="el-zoom-in-center" tag="div" class="rules-grid">
+            <transition-group
+              name="el-zoom-in-center"
+              tag="div"
+              class="rules-grid"
+            >
               <div
                 v-for="(rule, index) in displayedRules"
                 :key="rule.id"
                 class="rule-card-mini"
                 :style="{ borderColor: rule.color }"
               >
-                <div class="rule-idx">#{{ index + 1 }}</div>
+                <div class="rule-idx">
+                  #{{ index + 1 }}
+                </div>
                 <div class="rule-dots">
                   <span
                     v-for="d in 3"
                     :key="d"
                     class="dot"
                     :style="{ backgroundColor: rule.color }"
-                  ></span>
+                  />
                 </div>
               </div>
             </transition-group>

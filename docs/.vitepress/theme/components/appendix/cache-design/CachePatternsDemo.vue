@@ -5,8 +5,12 @@
 <template>
   <div class="cache-patterns-demo">
     <div class="header">
-      <div class="title">缓存模式 (Caching Patterns)</div>
-      <div class="subtitle">理解不同缓存读写模式的工作原理</div>
+      <div class="title">
+        缓存模式 (Caching Patterns)
+      </div>
+      <div class="subtitle">
+        理解不同缓存读写模式的工作原理
+      </div>
     </div>
 
     <div class="pattern-selector">
@@ -23,10 +27,17 @@
 
     <div class="pattern-content">
       <!-- Cache-Aside -->
-      <div v-if="activePattern === 'cache-aside'" class="pattern-detail">
+      <div
+        v-if="activePattern === 'cache-aside'"
+        class="pattern-detail"
+      >
         <div class="description">
-          <div class="pattern-title">Cache-Aside (旁路缓存)</div>
-          <div class="pattern-subtitle">最常用的模式，由应用代码控制缓存</div>
+          <div class="pattern-title">
+            Cache-Aside (旁路缓存)
+          </div>
+          <div class="pattern-subtitle">
+            最常用的模式，由应用代码控制缓存
+          </div>
           <div class="pattern-points">
             <div class="point">
               <span class="icon">📖</span>
@@ -37,50 +48,93 @@
             <div class="point">
               <span class="icon">✏️</span>
               <div>
-                <strong>更新</strong
-                >：先更新数据库，然后<strong>删除</strong>缓存（不是更新！）
+                <strong>更新</strong>：先更新数据库，然后<strong>删除</strong>缓存（不是更新！）
               </div>
             </div>
           </div>
         </div>
 
         <div class="diagram">
-          <div class="diagram-title">读取流程</div>
+          <div class="diagram-title">
+            读取流程
+          </div>
           <div class="flow-chart">
-            <div class="flow-step" :class="{ active: flowStep >= 1 }">
-              <div class="step-number">1</div>
-              <div class="step-text">查询缓存</div>
+            <div
+              class="flow-step"
+              :class="{ active: flowStep >= 1 }"
+            >
+              <div class="step-number">
+                1
+              </div>
+              <div class="step-text">
+                查询缓存
+              </div>
             </div>
-            <div class="flow-arrow">↓</div>
+            <div class="flow-arrow">
+              ↓
+            </div>
             <div class="flow-decision">
-              <div class="decision-label">命中?</div>
+              <div class="decision-label">
+                命中?
+              </div>
               <div class="decision-branches">
                 <div
                   class="branch yes"
                   :class="{ active: flowStep >= 2 && cacheHit }"
                 >
-                  <div class="branch-label">是</div>
-                  <div class="branch-result">✅ 返回数据</div>
+                  <div class="branch-label">
+                    是
+                  </div>
+                  <div class="branch-result">
+                    ✅ 返回数据
+                  </div>
                 </div>
                 <div
                   class="branch no"
                   :class="{ active: flowStep >= 2 && !cacheHit }"
                 >
-                  <div class="branch-label">否</div>
+                  <div class="branch-label">
+                    否
+                  </div>
                   <div class="branch-steps">
-                    <div class="flow-step" :class="{ active: flowStep >= 3 }">
-                      <div class="step-number">2</div>
-                      <div class="step-text">查询数据库</div>
+                    <div
+                      class="flow-step"
+                      :class="{ active: flowStep >= 3 }"
+                    >
+                      <div class="step-number">
+                        2
+                      </div>
+                      <div class="step-text">
+                        查询数据库
+                      </div>
                     </div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-step" :class="{ active: flowStep >= 4 }">
-                      <div class="step-number">3</div>
-                      <div class="step-text">写入缓存</div>
+                    <div class="flow-arrow">
+                      ↓
                     </div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-step" :class="{ active: flowStep >= 5 }">
-                      <div class="step-number">4</div>
-                      <div class="step-text">返回数据</div>
+                    <div
+                      class="flow-step"
+                      :class="{ active: flowStep >= 4 }"
+                    >
+                      <div class="step-number">
+                        3
+                      </div>
+                      <div class="step-text">
+                        写入缓存
+                      </div>
+                    </div>
+                    <div class="flow-arrow">
+                      ↓
+                    </div>
+                    <div
+                      class="flow-step"
+                      :class="{ active: flowStep >= 5 }"
+                    >
+                      <div class="step-number">
+                        4
+                      </div>
+                      <div class="step-text">
+                        返回数据
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -91,20 +145,25 @@
           <div class="demo-controls">
             <button
               class="demo-btn"
-              @click="simulateCacheAside"
               :disabled="simulating"
+              @click="simulateCacheAside"
             >
               {{ simulating ? '模拟中...' : '模拟读取' }}
             </button>
             <label class="checkbox">
-              <input type="checkbox" v-model="cacheHit" />
+              <input
+                v-model="cacheHit"
+                type="checkbox"
+              >
               缓存命中
             </label>
           </div>
         </div>
 
         <div class="code-example">
-          <div class="code-title">代码示例</div>
+          <div class="code-title">
+            代码示例
+          </div>
           <pre class="code-block"><code>// Cache-Aside 模式
 def get_user(user_id):
     # 1. 查缓存
@@ -130,9 +189,14 @@ def update_user(user_id, data):
       </div>
 
       <!-- Read-Through -->
-      <div v-if="activePattern === 'read-through'" class="pattern-detail">
+      <div
+        v-if="activePattern === 'read-through'"
+        class="pattern-detail"
+      >
         <div class="description">
-          <div class="pattern-title">Read-Through / Write-Through</div>
+          <div class="pattern-title">
+            Read-Through / Write-Through
+          </div>
           <div class="pattern-subtitle">
             由缓存库负责与数据库交互，应用只和缓存打交道
           </div>
@@ -153,12 +217,18 @@ def update_user(user_id, data):
         </div>
 
         <div class="diagram">
-          <div class="diagram-title">架构对比</div>
+          <div class="diagram-title">
+            架构对比
+          </div>
           <div class="architecture-comparison">
             <div class="arch-block">
-              <div class="arch-title">Cache-Aside</div>
+              <div class="arch-title">
+                Cache-Aside
+              </div>
               <div class="arch-flow">
-                <div class="flow-box app">应用</div>
+                <div class="flow-box app">
+                  应用
+                </div>
                 <div class="flow-arrows">
                   <div>↔️ 缓存</div>
                   <div>↔️ 数据库</div>
@@ -166,20 +236,28 @@ def update_user(user_id, data):
               </div>
             </div>
             <div class="arch-block">
-              <div class="arch-title">Read-Through</div>
+              <div class="arch-title">
+                Read-Through
+              </div>
               <div class="arch-flow">
-                <div class="flow-box app">应用</div>
+                <div class="flow-box app">
+                  应用
+                </div>
                 <div class="flow-arrows">
                   <div>↔️ 缓存库</div>
                 </div>
-                <div class="flow-box cache">缓存库 ↔️ 数据库</div>
+                <div class="flow-box cache">
+                  缓存库 ↔️ 数据库
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="code-example">
-          <div class="code-title">代码示例</div>
+          <div class="code-title">
+            代码示例
+          </div>
           <pre class="code-block"><code>// Read-Through 模式（代码更简洁）
 def get_user(user_id):
     # 缓存库自动处理数据库查询
@@ -194,10 +272,17 @@ def update_user(user_id, data):
       </div>
 
       <!-- Write-Behind -->
-      <div v-if="activePattern === 'write-behind'" class="pattern-detail">
+      <div
+        v-if="activePattern === 'write-behind'"
+        class="pattern-detail"
+      >
         <div class="description">
-          <div class="pattern-title">Write-Behind (异步写回)</div>
-          <div class="pattern-subtitle">写入时只写缓存，异步批量写数据库</div>
+          <div class="pattern-title">
+            Write-Behind (异步写回)
+          </div>
+          <div class="pattern-subtitle">
+            写入时只写缓存，异步批量写数据库
+          </div>
           <div class="pattern-points">
             <div class="point">
               <span class="icon">⚡</span>
@@ -212,42 +297,71 @@ def update_user(user_id, data):
             <div class="point">
               <span class="icon">🎯</span>
               <div>
-                <strong>适用</strong
-                >：秒杀系统、点赞数、浏览量（可接受少量丢失）
+                <strong>适用</strong>：秒杀系统、点赞数、浏览量（可接受少量丢失）
               </div>
             </div>
           </div>
         </div>
 
         <div class="diagram">
-          <div class="diagram-title">写入流程</div>
+          <div class="diagram-title">
+            写入流程
+          </div>
           <div class="flow-chart">
             <div class="flow-step">
-              <div class="step-number">1</div>
-              <div class="step-text">写入缓存</div>
-              <div class="step-time">⚡ ~1ms</div>
+              <div class="step-number">
+                1
+              </div>
+              <div class="step-text">
+                写入缓存
+              </div>
+              <div class="step-time">
+                ⚡ ~1ms
+              </div>
             </div>
-            <div class="flow-arrow">↓</div>
+            <div class="flow-arrow">
+              ↓
+            </div>
             <div class="flow-step">
-              <div class="step-number">2</div>
-              <div class="step-text">立即返回</div>
+              <div class="step-number">
+                2
+              </div>
+              <div class="step-text">
+                立即返回
+              </div>
             </div>
-            <div class="flow-arrow">↓</div>
+            <div class="flow-arrow">
+              ↓
+            </div>
             <div class="flow-step pending">
-              <div class="step-number">3</div>
-              <div class="step-text">异步批量写数据库</div>
-              <div class="step-time">🕐 后台执行</div>
+              <div class="step-number">
+                3
+              </div>
+              <div class="step-text">
+                异步批量写数据库
+              </div>
+              <div class="step-time">
+                🕐 后台执行
+              </div>
             </div>
           </div>
 
           <div class="demo-controls">
-            <button class="demo-btn" @click="simulateWriteBehind">
+            <button
+              class="demo-btn"
+              @click="simulateWriteBehind"
+            >
               模拟批量写入
             </button>
           </div>
 
-          <div class="write-queue" v-if="writeQueue.length > 0">
-            <div class="queue-title">待写入队列</div>
+          <div
+            v-if="writeQueue.length > 0"
+            class="write-queue"
+          >
+            <div class="queue-title">
+              待写入队列
+            </div>
             <div class="queue-items">
               <div
                 v-for="(item, index) in writeQueue"
@@ -263,7 +377,9 @@ def update_user(user_id, data):
         </div>
 
         <div class="code-example">
-          <div class="code-title">代码示例</div>
+          <div class="code-title">
+            代码示例
+          </div>
           <pre class="code-block"><code>// Write-Behind 模式
 def update_counter(post_id):
     # 1. 立即更新缓存（极快）
@@ -283,7 +399,9 @@ def update_counter(post_id):
     </div>
 
     <div class="pattern-comparison">
-      <div class="comparison-title">模式对比</div>
+      <div class="comparison-title">
+        模式对比
+      </div>
       <table class="comparison-table">
         <thead>
           <tr>

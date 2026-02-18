@@ -52,8 +52,12 @@
                 class="step-item"
                 :class="{ active: index === currentStep }"
               >
-                <div class="step-number">{{ index + 1 }}</div>
-                <div class="step-text">{{ step }}</div>
+                <div class="step-number">
+                  {{ index + 1 }}
+                </div>
+                <div class="step-text">
+                  {{ step }}
+                </div>
               </div>
             </div>
           </div>
@@ -64,7 +68,10 @@
           <div class="ledger-header">
             <span class="ledger-icon">📒</span>
             <span class="ledger-title">今日账本</span>
-            <span class="ledger-status" :class="mode">{{ ledgerStatus }}</span>
+            <span
+              class="ledger-status"
+              :class="mode"
+            >{{ ledgerStatus }}</span>
           </div>
 
           <div class="ledger-content">
@@ -105,8 +112,8 @@
       <div class="action-buttons">
         <button
           class="btn btn-primary"
-          @click="processOrder"
           :disabled="isProcessing || allCompleted"
+          @click="processOrder"
         >
           {{ isProcessing ? '处理中...' : allCompleted ? '今日完成！' : '下一道菜' }}
         </button>

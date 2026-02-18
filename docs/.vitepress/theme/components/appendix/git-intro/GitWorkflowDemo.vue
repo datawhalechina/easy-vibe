@@ -40,9 +40,22 @@
       </div>
 
       <!-- 箭头 -->
-      <div class="arrow-group" v-if="!allCommitted">
-        <div class="arrow" :class="{ active: hasStaged }">↓</div>
-        <div class="arrow-label" v-if="hasStaged">git add</div>
+      <div
+        v-if="!allCommitted"
+        class="arrow-group"
+      >
+        <div
+          class="arrow"
+          :class="{ active: hasStaged }"
+        >
+          ↓
+        </div>
+        <div
+          v-if="hasStaged"
+          class="arrow-label"
+        >
+          git add
+        </div>
       </div>
 
       <!-- 暂存区 -->
@@ -62,16 +75,26 @@
             <span class="file-name">{{ file.name }}</span>
             <span class="file-status">待提交</span>
           </div>
-          <div v-if="stagedFiles.length === 0" class="empty-tip">
+          <div
+            v-if="stagedFiles.length === 0"
+            class="empty-tip"
+          >
             暂无文件
           </div>
         </div>
       </div>
 
       <!-- 箭头 -->
-      <div class="arrow-group" v-if="hasStaged">
-        <div class="arrow active">↓</div>
-        <div class="arrow-label">git commit</div>
+      <div
+        v-if="hasStaged"
+        class="arrow-group"
+      >
+        <div class="arrow active">
+          ↓
+        </div>
+        <div class="arrow-label">
+          git commit
+        </div>
       </div>
 
       <!-- 仓库区 -->
@@ -90,7 +113,10 @@
             <span class="commit-icon">✅</span>
             <span class="commit-msg">{{ commit.msg }}</span>
           </div>
-          <div v-if="commits.length === 0" class="empty-tip">
+          <div
+            v-if="commits.length === 0"
+            class="empty-tip"
+          >
             暂无提交
           </div>
         </div>
@@ -100,29 +126,29 @@
     <!-- 操作按钮 -->
     <div class="action-panel">
       <button
-        @click="modifyFile"
         class="action-btn"
         :disabled="allModified"
+        @click="modifyFile"
       >
         ✏️ 修改文件
       </button>
       <button
-        @click="stageFiles"
         class="action-btn"
         :disabled="!hasModified || allStaged"
+        @click="stageFiles"
       >
         📌 暂存修改
       </button>
       <button
-        @click="commitFiles"
         class="action-btn"
         :disabled="!hasStaged"
+        @click="commitFiles"
       >
         ✅ 提交版本
       </button>
       <button
-        @click="reset"
         class="action-btn secondary"
+        @click="reset"
       >
         🔄 重置
       </button>

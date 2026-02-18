@@ -5,8 +5,12 @@
 <template>
   <div class="image-optimization-demo">
     <div class="header">
-      <div class="title">图片格式对比：大小与质量的权衡</div>
-      <div class="subtitle">对比不同图片格式的大小和质量</div>
+      <div class="title">
+        图片格式对比：大小与质量的权衡
+      </div>
+      <div class="subtitle">
+        对比不同图片格式的大小和质量
+      </div>
     </div>
 
     <div class="format-grid">
@@ -18,16 +22,28 @@
         @click="selectFormat(format.name)"
       >
         <div class="format-header">
-          <div class="format-name">{{ format.name }}</div>
-          <div class="format-badge" :class="format.badgeClass">
+          <div class="format-name">
+            {{ format.name }}
+          </div>
+          <div
+            class="format-badge"
+            :class="format.badgeClass"
+          >
             {{ format.badge }}
           </div>
         </div>
 
-        <div class="format-preview" :style="{ background: format.gradient }">
+        <div
+          class="format-preview"
+          :style="{ background: format.gradient }"
+        >
           <div class="preview-content">
-            <div class="preview-image">🖼️</div>
-            <div class="preview-size">{{ format.size }}</div>
+            <div class="preview-image">
+              🖼️
+            </div>
+            <div class="preview-size">
+              {{ format.size }}
+            </div>
           </div>
         </div>
 
@@ -46,7 +62,7 @@
               <div
                 class="quality-fill"
                 :style="{ width: format.quality + '%' }"
-              ></div>
+              />
             </div>
           </div>
           <div class="metric">
@@ -56,8 +72,12 @@
         </div>
 
         <div class="format-use-case">
-          <div class="use-case-label">适用场景</div>
-          <div class="use-case-value">{{ format.useCase }}</div>
+          <div class="use-case-label">
+            适用场景
+          </div>
+          <div class="use-case-value">
+            {{ format.useCase }}
+          </div>
         </div>
       </div>
     </div>
@@ -76,7 +96,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="format in formats" :key="format.name">
+          <tr
+            v-for="format in formats"
+            :key="format.name"
+          >
             <td>
               <strong>{{ format.name }}</strong>
             </td>
@@ -99,7 +122,9 @@
 
     <div class="tips">
       <div class="tip-card">
-        <div class="tip-icon">💡</div>
+        <div class="tip-icon">
+          💡
+        </div>
         <div class="tip-content">
           <h4>优化建议</h4>
           <ul>
@@ -115,7 +140,9 @@
       </div>
 
       <div class="tip-card">
-        <div class="tip-icon">🔧</div>
+        <div class="tip-icon">
+          🔧
+        </div>
         <div class="tip-content">
           <h4>工具推荐</h4>
           <ul>

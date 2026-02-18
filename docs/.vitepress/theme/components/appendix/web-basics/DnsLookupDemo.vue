@@ -7,7 +7,7 @@
       <p class="why-desc-zh">
         你知道店铺名字叫 "Shop.com"，但快递员需要知道具体的经纬度坐标 (IP 地址)
         才能送达。
-        <br />
+        <br>
         DNS 就像是<strong>地图导航</strong>，输入店名，它告诉你具体的坐标。
       </p>
     </div>
@@ -15,22 +15,36 @@
     <div class="demo-stage">
       <div class="input-area">
         <span class="label">店铺名称 (域名)</span>
-        <div class="fake-input">shop.com</div>
+        <div class="fake-input">
+          shop.com
+        </div>
       </div>
 
       <div class="process-animation">
-        <div class="arrow-down">⬇️</div>
-        <div class="dns-box">
-          <div class="icon">🧭</div>
-          <div class="title">DNS (地图导航)</div>
-          <div class="desc">正在查找 shop.com 的位置...</div>
+        <div class="arrow-down">
+          ⬇️
         </div>
-        <div class="arrow-down">⬇️</div>
+        <div class="dns-box">
+          <div class="icon">
+            🧭
+          </div>
+          <div class="title">
+            DNS (地图导航)
+          </div>
+          <div class="desc">
+            正在查找 shop.com 的位置...
+          </div>
+        </div>
+        <div class="arrow-down">
+          ⬇️
+        </div>
       </div>
 
       <div class="output-area">
         <span class="label">GPS 坐标 (IP 地址)</span>
-        <div class="fake-output">93.184.216.34</div>
+        <div class="fake-output">
+          93.184.216.34
+        </div>
       </div>
     </div>
   </div>

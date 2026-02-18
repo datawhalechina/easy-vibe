@@ -6,8 +6,12 @@
   <div class="rendering-demo">
     <!-- 故事引入 -->
     <div class="story-box">
-      <div class="story-emoji">🍽️👨‍🍳⚡</div>
-      <h4 class="story-title">小美的餐厅</h4>
+      <div class="story-emoji">
+        🍽️👨‍🍳⚡
+      </div>
+      <h4 class="story-title">
+        小美的餐厅
+      </h4>
       <p class="story-text">
         小美开了家餐厅，有三种上菜方式：<br>
         <strong>CSR（客户端渲染）</strong>：给你半成品食材包，你自己做 <br>
@@ -35,56 +39,124 @@
     <div class="demo-container">
       <!-- 客户区 -->
       <div class="customer-area">
-        <div class="customer-icon">🧑‍🦰</div>
-        <div class="customer-label">用户（浏览器）</div>
+        <div class="customer-icon">
+          🧑‍🦰
+        </div>
+        <div class="customer-label">
+          用户（浏览器）
+        </div>
         <div class="table">
-          <div v-if="activeStrategy === 'csr'" class="table-content">
+          <div
+            v-if="activeStrategy === 'csr'"
+            class="table-content"
+          >
             <div class="ingredients-pack">
-              <div class="pack-label">📦 食材包</div>
-              <div class="pack-content">
-                <div class="ingredient">🥬 菜叶</div>
-                <div class="ingredient">🥩 肉片</div>
-                <div class="ingredient">🧂 调料</div>
+              <div class="pack-label">
+                📦 食材包
               </div>
-              <div class="instruction">↑ 请自己烹饪</div>
+              <div class="pack-content">
+                <div class="ingredient">
+                  🥬 菜叶
+                </div>
+                <div class="ingredient">
+                  🥩 肉片
+                </div>
+                <div class="ingredient">
+                  🧂 调料
+                </div>
+              </div>
+              <div class="instruction">
+                ↑ 请自己烹饪
+              </div>
             </div>
           </div>
-          <div v-else class="table-content ready">
-            <div class="dish">{{ currentStrategy.dish }}</div>
-            <div class="dish-status">{{ currentStrategy.readyStatus }}</div>
+          <div
+            v-else
+            class="table-content ready"
+          >
+            <div class="dish">
+              {{ currentStrategy.dish }}
+            </div>
+            <div class="dish-status">
+              {{ currentStrategy.readyStatus }}
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 传输区 -->
       <div class="transfer-area">
-        <div v-if="isAnimating" class="transfer-animation">
-          <div class="transfer-content">{{ currentStrategy.transferItem }}</div>
-          <div class="transfer-arrow">→</div>
+        <div
+          v-if="isAnimating"
+          class="transfer-animation"
+        >
+          <div class="transfer-content">
+            {{ currentStrategy.transferItem }}
+          </div>
+          <div class="transfer-arrow">
+            →
+          </div>
         </div>
-        <div v-else class="transfer-info">
-          <div class="info-label">{{ currentStrategy.transferLabel }}</div>
+        <div
+          v-else
+          class="transfer-info"
+        >
+          <div class="info-label">
+            {{ currentStrategy.transferLabel }}
+          </div>
         </div>
       </div>
 
       <!-- 厨房/服务器 -->
       <div class="kitchen-area">
-        <div class="kitchen-icon">👨‍🍳</div>
-        <div class="kitchen-label">{{ currentStrategy.serverLabel }}</div>
+        <div class="kitchen-icon">
+          👨‍🍳
+        </div>
+        <div class="kitchen-label">
+          {{ currentStrategy.serverLabel }}
+        </div>
         <div class="kitchen-content">
-          <div v-if="activeStrategy === 'csr'" class="server-station">
-            <div class="station-icon">📡</div>
-            <div class="station-label">配送站</div>
-            <div class="station-desc">只管配送，不做菜</div>
+          <div
+            v-if="activeStrategy === 'csr'"
+            class="server-station"
+          >
+            <div class="station-icon">
+              📡
+            </div>
+            <div class="station-label">
+              配送站
+            </div>
+            <div class="station-desc">
+              只管配送，不做菜
+            </div>
           </div>
-          <div v-else-if="activeStrategy === 'ssr'" class="server-kitchen">
-            <div class="chef-action">{{ chefAction }}</div>
-            <div class="cooking-pot" v-if="isCooking">🍳</div>
+          <div
+            v-else-if="activeStrategy === 'ssr'"
+            class="server-kitchen"
+          >
+            <div class="chef-action">
+              {{ chefAction }}
+            </div>
+            <div
+              v-if="isCooking"
+              class="cooking-pot"
+            >
+              🍳
+            </div>
           </div>
-          <div v-else class="server-cabinet">
-            <div class="cabinet-icon">🗄️</div>
-            <div class="cabinet-label">保温柜</div>
-            <div class="cabinet-desc">{{ currentStrategy.cabinetDesc }}</div>
+          <div
+            v-else
+            class="server-cabinet"
+          >
+            <div class="cabinet-icon">
+              🗄️
+            </div>
+            <div class="cabinet-label">
+              保温柜
+            </div>
+            <div class="cabinet-desc">
+              {{ currentStrategy.cabinetDesc }}
+            </div>
           </div>
         </div>
       </div>
@@ -93,96 +165,201 @@
     <!-- 性能指标 -->
     <div class="metrics-panel">
       <div class="metric-item">
-        <div class="metric-label">首屏速度</div>
-        <div class="metric-bar">
-          <div class="metric-fill" :style="{ width: currentStrategy.firstScreenScore + '%', background: currentStrategy.color }"></div>
+        <div class="metric-label">
+          首屏速度
         </div>
-        <div class="metric-value" :style="{ color: currentStrategy.color }">{{ currentStrategy.firstScreenText }}</div>
+        <div class="metric-bar">
+          <div
+            class="metric-fill"
+            :style="{ width: currentStrategy.firstScreenScore + '%', background: currentStrategy.color }"
+          />
+        </div>
+        <div
+          class="metric-value"
+          :style="{ color: currentStrategy.color }"
+        >
+          {{ currentStrategy.firstScreenText }}
+        </div>
       </div>
       <div class="metric-item">
-        <div class="metric-label">交互体验</div>
-        <div class="metric-bar">
-          <div class="metric-fill" :style="{ width: currentStrategy.interactionScore + '%', background: currentStrategy.color }"></div>
+        <div class="metric-label">
+          交互体验
         </div>
-        <div class="metric-value" :style="{ color: currentStrategy.color }">{{ currentStrategy.interactionText }}</div>
+        <div class="metric-bar">
+          <div
+            class="metric-fill"
+            :style="{ width: currentStrategy.interactionScore + '%', background: currentStrategy.color }"
+          />
+        </div>
+        <div
+          class="metric-value"
+          :style="{ color: currentStrategy.color }"
+        >
+          {{ currentStrategy.interactionText }}
+        </div>
       </div>
       <div class="metric-item">
-        <div class="metric-label">SEO 友好度</div>
-        <div class="metric-bar">
-          <div class="metric-fill" :style="{ width: currentStrategy.seoScore + '%', background: currentStrategy.color }"></div>
+        <div class="metric-label">
+          SEO 友好度
         </div>
-        <div class="metric-value" :style="{ color: currentStrategy.color }">{{ currentStrategy.seoText }}</div>
+        <div class="metric-bar">
+          <div
+            class="metric-fill"
+            :style="{ width: currentStrategy.seoScore + '%', background: currentStrategy.color }"
+          />
+        </div>
+        <div
+          class="metric-value"
+          :style="{ color: currentStrategy.color }"
+        >
+          {{ currentStrategy.seoText }}
+        </div>
       </div>
     </div>
 
     <!-- 操作按钮 -->
     <div class="controls">
-      <button class="btn btn-primary" @click="startDemo" :disabled="isAnimating">
+      <button
+        class="btn btn-primary"
+        :disabled="isAnimating"
+        @click="startDemo"
+      >
         {{ isAnimating ? '演示中...' : '开始演示' }}
       </button>
-      <button class="btn btn-secondary" @click="resetDemo">
+      <button
+        class="btn btn-secondary"
+        @click="resetDemo"
+      >
         重置
       </button>
     </div>
 
     <!-- 详细对比表 -->
     <div class="comparison-table">
-      <div class="table-title">📊 三种渲染方式详细对比</div>
+      <div class="table-title">
+        📊 三种渲染方式详细对比
+      </div>
       <div class="table-content">
         <div class="comparison-row header">
-          <div class="col-feature">特点</div>
-          <div class="col-csr">CSR</div>
-          <div class="col-ssr">SSR</div>
-          <div class="col-ssg">SSG</div>
+          <div class="col-feature">
+            特点
+          </div>
+          <div class="col-csr">
+            CSR
+          </div>
+          <div class="col-ssr">
+            SSR
+          </div>
+          <div class="col-ssg">
+            SSG
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">比喻</div>
-          <div class="col-csr">给半成品食材包，自己做</div>
-          <div class="col-ssr">厨房做好菜端给你</div>
-          <div class="col-ssg">提前做好放保温柜</div>
+          <div class="col-feature">
+            比喻
+          </div>
+          <div class="col-csr">
+            给半成品食材包，自己做
+          </div>
+          <div class="col-ssr">
+            厨房做好菜端给你
+          </div>
+          <div class="col-ssg">
+            提前做好放保温柜
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">首屏速度</div>
-          <div class="col-csr">慢（要等 JS）</div>
-          <div class="col-ssr">快（直接给 HTML）</div>
-          <div class="col-ssg">最快（直接给 HTML）</div>
+          <div class="col-feature">
+            首屏速度
+          </div>
+          <div class="col-csr">
+            慢（要等 JS）
+          </div>
+          <div class="col-ssr">
+            快（直接给 HTML）
+          </div>
+          <div class="col-ssg">
+            最快（直接给 HTML）
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">交互体验</div>
-          <div class="col-csr">流畅（已在浏览器）</div>
-          <div class="col-ssr">较流畅（交互仍需 JS）</div>
-          <div class="col-ssg">较流畅（交互仍需 JS）</div>
+          <div class="col-feature">
+            交互体验
+          </div>
+          <div class="col-csr">
+            流畅（已在浏览器）
+          </div>
+          <div class="col-ssr">
+            较流畅（交互仍需 JS）
+          </div>
+          <div class="col-ssg">
+            较流畅（交互仍需 JS）
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">SEO 友好度</div>
-          <div class="col-csr">差（搜不到内容）</div>
-          <div class="col-ssr">好（完整 HTML）</div>
-          <div class="col-ssg">好（完整 HTML）</div>
+          <div class="col-feature">
+            SEO 友好度
+          </div>
+          <div class="col-csr">
+            差（搜不到内容）
+          </div>
+          <div class="col-ssr">
+            好（完整 HTML）
+          </div>
+          <div class="col-ssg">
+            好（完整 HTML）
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">服务器压力</div>
-          <div class="col-csr">小（只传 JS）</div>
-          <div class="col-ssr">大（每次都渲染）</div>
-          <div class="col-ssg">最小（预渲染好）</div>
+          <div class="col-feature">
+            服务器压力
+          </div>
+          <div class="col-csr">
+            小（只传 JS）
+          </div>
+          <div class="col-ssr">
+            大（每次都渲染）
+          </div>
+          <div class="col-ssg">
+            最小（预渲染好）
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">适合场景</div>
-          <div class="col-csr">后台系统、工具应用</div>
-          <div class="col-ssr">新闻网站、电商首页</div>
-          <div class="col-ssg">博客、文档站</div>
+          <div class="col-feature">
+            适合场景
+          </div>
+          <div class="col-csr">
+            后台系统、工具应用
+          </div>
+          <div class="col-ssr">
+            新闻网站、电商首页
+          </div>
+          <div class="col-ssg">
+            博客、文档站
+          </div>
         </div>
         <div class="comparison-row">
-          <div class="col-feature">代表框架</div>
-          <div class="col-csr">React SPA、Vue SPA</div>
-          <div class="col-ssr">Next.js SSR、Nuxt SSR</div>
-          <div class="col-ssg">Next.js SSG、Nuxt SSG</div>
+          <div class="col-feature">
+            代表框架
+          </div>
+          <div class="col-csr">
+            React SPA、Vue SPA
+          </div>
+          <div class="col-ssr">
+            Next.js SSR、Nuxt SSR
+          </div>
+          <div class="col-ssg">
+            Next.js SSG、Nuxt SSG
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 核心要点 -->
     <div class="key-takeaway">
-      <div class="takeaway-icon">🎯</div>
+      <div class="takeaway-icon">
+        🎯
+      </div>
       <div class="takeaway-content">
         <strong>如何选择？</strong><br>
         <strong>CSR</strong>：适合需要复杂交互、不关心 SEO 的应用（如后台管理系统）<br>

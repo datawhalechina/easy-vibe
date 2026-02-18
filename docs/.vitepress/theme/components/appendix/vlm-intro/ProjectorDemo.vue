@@ -5,10 +5,16 @@
 <template>
   <div class="projector-demo">
     <div class="mode-switch">
-      <button :class="{ active: mode === 'linear' }" @click="mode = 'linear'">
+      <button
+        :class="{ active: mode === 'linear' }"
+        @click="mode = 'linear'"
+      >
         Linear (LLaVA)
       </button>
-      <button :class="{ active: mode === 'qformer' }" @click="mode = 'qformer'">
+      <button
+        :class="{ active: mode === 'qformer' }"
+        @click="mode = 'qformer'"
+      >
         Q-Former (BLIP-2)
       </button>
     </div>
@@ -16,9 +22,15 @@
     <div class="pipeline">
       <!-- Input: Visual Tokens -->
       <div class="stage">
-        <div class="label">Visual Tokens (ViT)</div>
+        <div class="label">
+          Visual Tokens (ViT)
+        </div>
         <div class="token-container input">
-          <div v-for="n in 16" :key="n" class="token visual"></div>
+          <div
+            v-for="n in 16"
+            :key="n"
+            class="token visual"
+          />
         </div>
         <div class="count">
           {{ mode === 'linear' ? '256 Tokens' : '256 Tokens' }}
@@ -27,32 +39,40 @@
 
       <!-- Process: The Projector -->
       <div class="stage connector">
-        <div class="arrow-line"></div>
-        <div class="projector-box" :class="mode">
+        <div class="arrow-line" />
+        <div
+          class="projector-box"
+          :class="mode"
+        >
           <div class="title">
             {{ mode === 'linear' ? 'Linear Layer' : 'Q-Former' }}
           </div>
           <div class="desc">
             {{ mode === 'linear' ? '直接映射 (1:1)' : '查询提取 (N:M)' }}
           </div>
-          <div class="animation-dots" v-if="mode === 'qformer'">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+          <div
+            v-if="mode === 'qformer'"
+            class="animation-dots"
+          >
+            <div class="dot" />
+            <div class="dot" />
+            <div class="dot" />
           </div>
         </div>
-        <div class="arrow-line"></div>
+        <div class="arrow-line" />
       </div>
 
       <!-- Output: LLM Tokens -->
       <div class="stage">
-        <div class="label">LLM Tokens</div>
+        <div class="label">
+          LLM Tokens
+        </div>
         <div class="token-container output">
           <div
             v-for="n in mode === 'linear' ? 16 : 4"
             :key="n"
             class="token llm"
-          ></div>
+          />
         </div>
         <div class="count">
           {{

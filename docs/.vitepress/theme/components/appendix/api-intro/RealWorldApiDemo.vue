@@ -4,8 +4,12 @@
 -->
 <template>
   <div class="demo">
-    <div class="title">🤖 真实场景：让 AI 帮你写产品文案</div>
-    <p class="subtitle">体验两种调用方式的区别</p>
+    <div class="title">
+      🤖 真实场景：让 AI 帮你写产品文案
+    </div>
+    <p class="subtitle">
+      体验两种调用方式的区别
+    </p>
 
     <div class="scenario">
       <div class="scenario-header">
@@ -35,53 +39,84 @@
 
       <div class="mode-content">
         <!-- HTTP 模式 -->
-        <div v-if="mode === 'http'" class="mode-details">
+        <div
+          v-if="mode === 'http'"
+          class="mode-details"
+        >
           <div class="steps">
-            <div class="step" :class="{ active: currentStep >= 1 }">
-              <div class="step-number">1</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 1 }"
+            >
+              <div class="step-number">
+                1
+              </div>
               <div class="step-content">
-                <div class="step-title">找到网址（打开外卖 APP）</div>
+                <div class="step-title">
+                  找到网址（打开外卖 APP）
+                </div>
                 <div class="step-code">
                   https://api.openai.com/v1/chat/completions
                 </div>
               </div>
             </div>
 
-            <div class="step" :class="{ active: currentStep >= 2 }">
-              <div class="step-number">2</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 2 }"
+            >
+              <div class="step-number">
+                2
+              </div>
               <div class="step-content">
-                <div class="step-title">准备订单（填写信息）</div>
+                <div class="step-title">
+                  准备订单（填写信息）
+                </div>
                 <div class="step-code">
-                  Authorization: Bearer 你的API密钥<br />
+                  Authorization: Bearer 你的API密钥<br>
                   Content-Type: application/json
                 </div>
               </div>
             </div>
 
-            <div class="step" :class="{ active: currentStep >= 3 }">
-              <div class="step-number">3</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 3 }"
+            >
+              <div class="step-number">
+                3
+              </div>
               <div class="step-content">
-                <div class="step-title">下单（发送请求）</div>
+                <div class="step-title">
+                  下单（发送请求）
+                </div>
                 <div class="step-code">
-                  {<br />
-                  &nbsp;&nbsp;"model": "gpt-4",<br />
-                  &nbsp;&nbsp;"messages": [<br />
+                  {<br>
+                  &nbsp;&nbsp;"model": "gpt-4",<br>
+                  &nbsp;&nbsp;"messages": [<br>
                   &nbsp;&nbsp;&nbsp;&nbsp;{ "role": "system", "content":
-                  "你是营销文案专家" },<br />
+                  "你是营销文案专家" },<br>
                   &nbsp;&nbsp;&nbsp;&nbsp;{ "role": "user", "content":
-                  "写智能手表文案" }<br />
-                  &nbsp;&nbsp;]<br />
+                  "写智能手表文案" }<br>
+                  &nbsp;&nbsp;]<br>
                   }
                 </div>
               </div>
             </div>
 
-            <div class="step" :class="{ active: currentStep >= 4 }">
-              <div class="step-number">4</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 4 }"
+            >
+              <div class="step-number">
+                4
+              </div>
               <div class="step-content">
-                <div class="step-title">等待配送（解析响应）</div>
+                <div class="step-title">
+                  等待配送（解析响应）
+                </div>
                 <div class="step-code">
-                  response.choices[0].message.content<br />
+                  response.choices[0].message.content<br>
                   <span class="step-hint">⚠️ 需要自己处理解析错误</span>
                 </div>
               </div>
@@ -99,52 +134,85 @@
         </div>
 
         <!-- SDK 模式 -->
-        <div v-else class="mode-details">
+        <div
+          v-else
+          class="mode-details"
+        >
           <div class="steps">
-            <div class="step" :class="{ active: currentStep >= 1 }">
-              <div class="step-number">1</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 1 }"
+            >
+              <div class="step-number">
+                1
+              </div>
               <div class="step-content">
-                <div class="step-title">走进餐厅（安装 SDK）</div>
-                <div class="step-code">import OpenAI from 'openai'</div>
+                <div class="step-title">
+                  走进餐厅（安装 SDK）
+                </div>
+                <div class="step-code">
+                  import OpenAI from 'openai'
+                </div>
               </div>
             </div>
 
-            <div class="step" :class="{ active: currentStep >= 2 }">
-              <div class="step-number">2</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 2 }"
+            >
+              <div class="step-number">
+                2
+              </div>
               <div class="step-content">
-                <div class="step-title">找服务员（初始化客户端）</div>
+                <div class="step-title">
+                  找服务员（初始化客户端）
+                </div>
                 <div class="step-code">
-                  const client = new OpenAI({<br />
-                  &nbsp;&nbsp;apiKey: '你的密钥'<br />
+                  const client = new OpenAI({<br>
+                  &nbsp;&nbsp;apiKey: '你的密钥'<br>
                   })
                 </div>
               </div>
             </div>
 
-            <div class="step" :class="{ active: currentStep >= 3 }">
-              <div class="step-number">3</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 3 }"
+            >
+              <div class="step-number">
+                3
+              </div>
               <div class="step-content">
-                <div class="step-title">直接点菜（调用函数）</div>
+                <div class="step-title">
+                  直接点菜（调用函数）
+                </div>
                 <div class="step-code">
-                  const response = await client.chat.completions.create({<br />
-                  &nbsp;&nbsp;model: 'gpt-4',<br />
-                  &nbsp;&nbsp;messages: [<br />
+                  const response = await client.chat.completions.create({<br>
+                  &nbsp;&nbsp;model: 'gpt-4',<br>
+                  &nbsp;&nbsp;messages: [<br>
                   &nbsp;&nbsp;&nbsp;&nbsp;{ role: 'system', content:
-                  '你是营销文案专家' },<br />
+                  '你是营销文案专家' },<br>
                   &nbsp;&nbsp;&nbsp;&nbsp;{ role: 'user', content:
-                  '写智能手表文案' }<br />
-                  &nbsp;&nbsp;]<br />
+                  '写智能手表文案' }<br>
+                  &nbsp;&nbsp;]<br>
                   })
                 </div>
               </div>
             </div>
 
-            <div class="step" :class="{ active: currentStep >= 4 }">
-              <div class="step-number">4</div>
+            <div
+              class="step"
+              :class="{ active: currentStep >= 4 }"
+            >
+              <div class="step-number">
+                4
+              </div>
               <div class="step-content">
-                <div class="step-title">享用美食（直接使用）</div>
+                <div class="step-title">
+                  享用美食（直接使用）
+                </div>
                 <div class="step-code">
-                  console.log(response.choices[0].message.content)<br />
+                  console.log(response.choices[0].message.content)<br>
                   <span class="step-hint">✅ SDK 帮你处理好了所有细节</span>
                 </div>
               </div>
@@ -163,11 +231,18 @@
       </div>
 
       <div class="action">
-        <button class="run-btn" :disabled="running" @click="runDemo">
+        <button
+          class="run-btn"
+          :disabled="running"
+          @click="runDemo"
+        >
           {{ running ? '调用中...' : '🚀 开始调用 AI' }}
         </button>
 
-        <div class="result" v-if="result">
+        <div
+          v-if="result"
+          class="result"
+        >
           <div class="result-header">
             {{ mode === 'http' ? '🌐 HTTP API 返回' : '📦 SDK 返回' }}
           </div>

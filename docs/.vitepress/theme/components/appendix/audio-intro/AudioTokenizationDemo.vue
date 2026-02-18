@@ -25,28 +25,51 @@
         <!-- 流程图 -->
         <div class="codec-flow">
           <div class="flow-section encode">
-            <div class="section-title">🔽 编码器 (Encoder)</div>
+            <div class="section-title">
+              🔽 编码器 (Encoder)
+            </div>
             <div class="flow-steps">
               <div class="codec-step">
                 <div class="step-visual">
-                  <canvas ref="originalWaveformCanvas" width="150" height="60" />
+                  <canvas
+                    ref="originalWaveformCanvas"
+                    width="150"
+                    height="60"
+                  />
                 </div>
-                <div class="step-label">原始波形</div>
-                <div class="step-meta">24kHz, 16-bit</div>
+                <div class="step-label">
+                  原始波形
+                </div>
+                <div class="step-meta">
+                  24kHz, 16-bit
+                </div>
               </div>
-              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <el-icon class="flow-arrow">
+                <ArrowRight />
+              </el-icon>
               <div class="codec-step">
                 <div class="step-visual">
                   <div class="cnn-layers">
-                    <div class="cnn-layer" v-for="i in 4" :key="i" :style="{ opacity: 0.3 + i * 0.2 }">
+                    <div
+                      v-for="i in 4"
+                      :key="i"
+                      class="cnn-layer"
+                      :style="{ opacity: 0.3 + i * 0.2 }"
+                    >
                       Conv {{ i }}
                     </div>
                   </div>
                 </div>
-                <div class="step-label">CNN 下采样</div>
-                <div class="step-meta">降维 320x</div>
+                <div class="step-label">
+                  CNN 下采样
+                </div>
+                <div class="step-meta">
+                  降维 320x
+                </div>
               </div>
-              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <el-icon class="flow-arrow">
+                <ArrowRight />
+              </el-icon>
               <div class="codec-step">
                 <div class="step-visual">
                   <div class="vq-codebook">
@@ -60,20 +83,28 @@
                     </div>
                   </div>
                 </div>
-                <div class="step-label">VQ 量化</div>
-                <div class="step-meta">离散 Token</div>
+                <div class="step-label">
+                  VQ 量化
+                </div>
+                <div class="step-meta">
+                  离散 Token
+                </div>
               </div>
             </div>
           </div>
 
           <div class="flow-divider">
-            <div class="divider-line"></div>
-            <div class="divider-label">压缩后: ~1.5 kbps</div>
-            <div class="divider-line"></div>
+            <div class="divider-line" />
+            <div class="divider-label">
+              压缩后: ~1.5 kbps
+            </div>
+            <div class="divider-line" />
           </div>
 
           <div class="flow-section decode">
-            <div class="section-title">🔼 解码器 (Decoder)</div>
+            <div class="section-title">
+              🔼 解码器 (Decoder)
+            </div>
             <div class="flow-steps reverse">
               <div class="codec-step">
                 <div class="step-visual">
@@ -88,28 +119,53 @@
                     </span>
                   </div>
                 </div>
-                <div class="step-label">离散 Token</div>
-                <div class="step-meta">Codebook 索引</div>
+                <div class="step-label">
+                  离散 Token
+                </div>
+                <div class="step-meta">
+                  Codebook 索引
+                </div>
               </div>
-              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <el-icon class="flow-arrow">
+                <ArrowRight />
+              </el-icon>
               <div class="codec-step">
                 <div class="step-visual">
                   <div class="cnn-layers">
-                    <div class="cnn-layer" v-for="i in 4" :key="i" :style="{ opacity: 1 - i * 0.15 }">
+                    <div
+                      v-for="i in 4"
+                      :key="i"
+                      class="cnn-layer"
+                      :style="{ opacity: 1 - i * 0.15 }"
+                    >
                       ConvT {{ 5 - i }}
                     </div>
                   </div>
                 </div>
-                <div class="step-label">转置卷积</div>
-                <div class="step-meta">上采样</div>
+                <div class="step-label">
+                  转置卷积
+                </div>
+                <div class="step-meta">
+                  上采样
+                </div>
               </div>
-              <el-icon class="flow-arrow"><ArrowRight /></el-icon>
+              <el-icon class="flow-arrow">
+                <ArrowRight />
+              </el-icon>
               <div class="codec-step">
                 <div class="step-visual">
-                  <canvas ref="reconstructedWaveformCanvas" width="150" height="60" />
+                  <canvas
+                    ref="reconstructedWaveformCanvas"
+                    width="150"
+                    height="60"
+                  />
                 </div>
-                <div class="step-label">重建波形</div>
-                <div class="step-meta">24kHz</div>
+                <div class="step-label">
+                  重建波形
+                </div>
+                <div class="step-meta">
+                  24kHz
+                </div>
               </div>
             </div>
           </div>
@@ -117,7 +173,9 @@
 
         <!-- 码率对比 -->
         <div class="bitrate-comparison">
-          <div class="comparison-title">📊 不同码率对比</div>
+          <div class="comparison-title">
+            📊 不同码率对比
+          </div>
           <div class="bitrate-cards">
             <div
               v-for="config in bitrateConfigs"
@@ -126,8 +184,12 @@
               :class="{ active: selectedBitrate === config.name }"
               @click="selectedBitrate = config.name"
             >
-              <div class="bitrate-value">{{ config.bitrate }}</div>
-              <div class="bitrate-name">{{ config.name }}</div>
+              <div class="bitrate-value">
+                {{ config.bitrate }}
+              </div>
+              <div class="bitrate-name">
+                {{ config.name }}
+              </div>
               <div class="bitrate-detail">
                 <div class="detail-item">
                   <span class="label">采样率:</span>
@@ -154,10 +216,16 @@
 
         <!-- Token 可视化 -->
         <div class="token-visualization">
-          <div class="viz-title">🔢 Token 序列可视化</div>
+          <div class="viz-title">
+            🔢 Token 序列可视化
+          </div>
           <div class="token-display">
             <div class="token-ruler">
-              <span v-for="i in 20" :key="i" class="ruler-mark">{{ i * 0.1 }}s</span>
+              <span
+                v-for="i in 20"
+                :key="i"
+                class="ruler-mark"
+              >{{ i * 0.1 }}s</span>
             </div>
             <div class="token-stream">
               <div
@@ -174,15 +242,24 @@
           </div>
           <div class="token-legend">
             <span class="legend-item">
-              <span class="legend-color" style="background: #409eff"></span>
+              <span
+                class="legend-color"
+                style="background: #409eff"
+              />
               低频成分
             </span>
             <span class="legend-item">
-              <span class="legend-color" style="background: #67c23a"></span>
+              <span
+                class="legend-color"
+                style="background: #67c23a"
+              />
               中频成分
             </span>
             <span class="legend-item">
-              <span class="legend-color" style="background: #e6a23c"></span>
+              <span
+                class="legend-color"
+                style="background: #e6a23c"
+              />
               高频成分
             </span>
           </div>
@@ -190,32 +267,50 @@
 
         <!-- 应用场景 -->
         <div class="applications">
-          <div class="apps-title">🎯 为什么需要音频 Tokenization？</div>
+          <div class="apps-title">
+            🎯 为什么需要音频 Tokenization？
+          </div>
           <div class="apps-grid">
             <div class="app-card">
-              <div class="app-icon">🚀</div>
-              <div class="app-title">高效传输</div>
+              <div class="app-icon">
+                🚀
+              </div>
+              <div class="app-title">
+                高效传输
+              </div>
               <div class="app-desc">
                 将音频压缩到 ~1.5 kbps，比原始音频小 256 倍，适合网络传输
               </div>
             </div>
             <div class="app-card">
-              <div class="app-icon">🧠</div>
-              <div class="app-title">语言模型友好</div>
+              <div class="app-icon">
+                🧠
+              </div>
+              <div class="app-title">
+                语言模型友好
+              </div>
               <div class="app-desc">
                 离散 Token 可以被 LLM 直接处理，实现文本到音频的统一建模
               </div>
             </div>
             <div class="app-card">
-              <div class="app-icon">🎵</div>
-              <div class="app-title">音乐生成</div>
+              <div class="app-icon">
+                🎵
+              </div>
+              <div class="app-title">
+                音乐生成
+              </div>
               <div class="app-desc">
                 MusicGen、AudioLDM 等模型使用音频 Token 生成音乐和音效
               </div>
             </div>
             <div class="app-card">
-              <div class="app-icon">🗣️</div>
-              <div class="app-title">语音合成</div>
+              <div class="app-icon">
+                🗣️
+              </div>
+              <div class="app-title">
+                语音合成
+              </div>
               <div class="app-desc">
                 VALL-E、SoundStorm 等 TTS 模型直接生成音频 Token
               </div>

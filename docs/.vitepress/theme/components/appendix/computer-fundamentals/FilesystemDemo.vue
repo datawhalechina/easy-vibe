@@ -33,7 +33,10 @@
           <span class="detail-name">{{ selectedItemInfo?.name }}</span>
         </div>
         
-        <div class="detail-info" v-if="selectedItemInfo">
+        <div
+          v-if="selectedItemInfo"
+          class="detail-info"
+        >
           <div class="info-row">
             <span class="info-label">类型</span>
             <span class="info-value">{{ selectedItemInfo.type }}</span>
@@ -42,7 +45,10 @@
             <span class="info-label">路径</span>
             <span class="info-value">{{ selectedItemInfo.path }}</span>
           </div>
-          <div class="info-row" v-if="selectedItemInfo.type === '文件'">
+          <div
+            v-if="selectedItemInfo.type === '文件'"
+            class="info-row"
+          >
             <span class="info-label">大小</span>
             <span class="info-value">{{ selectedItemInfo.size }}</span>
           </div>
@@ -52,8 +58,13 @@
           </div>
         </div>
 
-        <div class="inode-info" v-if="selectedItemInfo?.type === '文件'">
-          <div class="inode-title">inode 信息</div>
+        <div
+          v-if="selectedItemInfo?.type === '文件'"
+          class="inode-info"
+        >
+          <div class="inode-title">
+            inode 信息
+          </div>
           <div class="inode-visual">
             <div class="inode-block">
               <span class="inode-label">inode 编号</span>
@@ -62,7 +73,11 @@
             <div class="inode-block">
               <span class="inode-label">数据块</span>
               <div class="data-blocks">
-                <span v-for="b in selectedItemInfo.blocks" :key="b" class="block">{{ b }}</span>
+                <span
+                  v-for="b in selectedItemInfo.blocks"
+                  :key="b"
+                  class="block"
+                >{{ b }}</span>
               </div>
             </div>
           </div>

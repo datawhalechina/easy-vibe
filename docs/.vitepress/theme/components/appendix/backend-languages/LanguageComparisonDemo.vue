@@ -11,7 +11,9 @@
     </div>
 
     <div class="dimension-selector">
-      <div class="dimension-label">选择比较维度：</div>
+      <div class="dimension-label">
+        选择比较维度：
+      </div>
       <div class="dimension-buttons">
         <button
           v-for="dim in dimensions"
@@ -37,7 +39,9 @@
           :key="lang.name"
           class="bar-wrapper"
         >
-          <div class="bar-label">{{ lang.name }}</div>
+          <div class="bar-label">
+            {{ lang.name }}
+          </div>
           <div class="bar-track">
             <div
               class="bar-fill"

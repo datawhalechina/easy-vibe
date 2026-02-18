@@ -14,22 +14,42 @@
         <div class="controls">
           <div class="control-row">
             <label>width</label>
-            <input type="range" min="60" max="150" v-model.number="contentW" />
+            <input
+              v-model.number="contentW"
+              type="range"
+              min="60"
+              max="150"
+            >
             <span class="val">{{ contentW }}px</span>
           </div>
           <div class="control-row">
             <label>padding</label>
-            <input type="range" min="0" max="30" v-model.number="padding" />
+            <input
+              v-model.number="padding"
+              type="range"
+              min="0"
+              max="30"
+            >
             <span class="val">{{ padding }}px</span>
           </div>
           <div class="control-row">
             <label>border</label>
-            <input type="range" min="0" max="15" v-model.number="border" />
+            <input
+              v-model.number="border"
+              type="range"
+              min="0"
+              max="15"
+            >
             <span class="val">{{ border }}px</span>
           </div>
           <div class="control-row">
             <label>margin</label>
-            <input type="range" min="0" max="20" v-model.number="margin" />
+            <input
+              v-model.number="margin"
+              type="range"
+              min="0"
+              max="20"
+            >
             <span class="val">{{ margin }}px</span>
           </div>
         </div>
@@ -51,13 +71,34 @@
         </div>
 
         <div class="visual">
-          <div class="layer margin" :style="{ padding: margin + 'px' }">
-            <span class="layer-label" v-if="margin >= 8">margin</span>
-            <div class="layer border" :style="{ borderWidth: border + 'px' }">
-              <span class="layer-label" v-if="border >= 5">border</span>
-              <div class="layer padding" :style="{ padding: padding + 'px' }">
-                <span class="layer-label" v-if="padding >= 8">padding</span>
-                <div class="content" :style="{ width: contentW + 'px' }">
+          <div
+            class="layer margin"
+            :style="{ padding: margin + 'px' }"
+          >
+            <span
+              v-if="margin >= 8"
+              class="layer-label"
+            >margin</span>
+            <div
+              class="layer border"
+              :style="{ borderWidth: border + 'px' }"
+            >
+              <span
+                v-if="border >= 5"
+                class="layer-label"
+              >border</span>
+              <div
+                class="layer padding"
+                :style="{ padding: padding + 'px' }"
+              >
+                <span
+                  v-if="padding >= 8"
+                  class="layer-label"
+                >padding</span>
+                <div
+                  class="content"
+                  :style="{ width: contentW + 'px' }"
+                >
                   content<br>{{ contentW }}px
                 </div>
               </div>
@@ -80,7 +121,10 @@
               {{ contentW }}px（已包含 padding 和 border） + {{ margin }}×2 = {{ total }}px
             </template>
           </div>
-          <div class="result-hint" :class="{ warning: total * 3 > 900 }">
+          <div
+            class="result-hint"
+            :class="{ warning: total * 3 > 900 }"
+          >
             <template v-if="total * 3 > 900">
               三个卡片需要 {{ total * 3 }}px，超出容器 900px，第三个会掉下去
             </template>
@@ -91,15 +135,31 @@
         </div>
 
         <div class="code-block">
-          <div class="code-title">CSS</div>
+          <div class="code-title">
+            CSS
+          </div>
           <div class="code-content">
-            <div class="line">.box {</div>
-            <div class="line hl">  box-sizing: {{ boxSizing }};</div>
-            <div class="line">  width: {{ contentW }}px;</div>
-            <div class="line">  padding: {{ padding }}px;</div>
-            <div class="line">  border: {{ border }}px solid #ccc;</div>
-            <div class="line">  margin: {{ margin }}px;</div>
-            <div class="line">}</div>
+            <div class="line">
+              .box {
+            </div>
+            <div class="line hl">
+              box-sizing: {{ boxSizing }};
+            </div>
+            <div class="line">
+              width: {{ contentW }}px;
+            </div>
+            <div class="line">
+              padding: {{ padding }}px;
+            </div>
+            <div class="line">
+              border: {{ border }}px solid #ccc;
+            </div>
+            <div class="line">
+              margin: {{ margin }}px;
+            </div>
+            <div class="line">
+              }
+            </div>
           </div>
         </div>
       </div>

@@ -1,17 +1,30 @@
 <template>
   <div class="blue-green-deployment-demo">
     <div class="header">
-      <div class="title">蓝绿部署</div>
-      <div class="subtitle">零停机发布的经典策略，两套环境瞬间切换</div>
+      <div class="title">
+        蓝绿部署
+      </div>
+      <div class="subtitle">
+        零停机发布的经典策略，两套环境瞬间切换
+      </div>
     </div>
 
     <!-- 部署状态控制 -->
     <div class="deployment-control">
       <div class="status-display">
-        <div class="status-item" :class="{ active: currentEnv === 'blue' }">
-          <div class="status-icon">🔵</div>
-          <div class="status-label">蓝环境</div>
-          <div class="status-version">v{{ blueVersion }}</div>
+        <div
+          class="status-item"
+          :class="{ active: currentEnv === 'blue' }"
+        >
+          <div class="status-icon">
+            🔵
+          </div>
+          <div class="status-label">
+            蓝环境
+          </div>
+          <div class="status-version">
+            v{{ blueVersion }}
+          </div>
           <div class="status-traffic">
             {{ currentEnv === 'blue' ? '100%' : '0%' }} 流量
           </div>
@@ -20,28 +33,46 @@
         <div class="switch-control">
           <button
             class="switch-btn"
-            @click="toggleEnvironment"
             :disabled="isSwitching"
             :class="{ switching: isSwitching }"
+            @click="toggleEnvironment"
           >
             <span v-if="!isSwitching">
               {{ currentEnv === 'blue' ? '切换到绿环境 →' : '← 切换到蓝环境' }}
             </span>
-            <span v-else class="switching-text">
-              <span class="spinner"></span>
+            <span
+              v-else
+              class="switching-text"
+            >
+              <span class="spinner" />
               切换中...
             </span>
           </button>
 
-          <div class="progress-bar" v-if="isSwitching">
-            <div class="progress-fill" :style="{ width: switchProgress + '%' }"></div>
+          <div
+            v-if="isSwitching"
+            class="progress-bar"
+          >
+            <div
+              class="progress-fill"
+              :style="{ width: switchProgress + '%' }"
+            />
           </div>
         </div>
 
-        <div class="status-item" :class="{ active: currentEnv === 'green' }">
-          <div class="status-icon">🟢</div>
-          <div class="status-label">绿环境</div>
-          <div class="status-version">v{{ greenVersion }}</div>
+        <div
+          class="status-item"
+          :class="{ active: currentEnv === 'green' }"
+        >
+          <div class="status-icon">
+            🟢
+          </div>
+          <div class="status-label">
+            绿环境
+          </div>
+          <div class="status-version">
+            v{{ greenVersion }}
+          </div>
           <div class="status-traffic">
             {{ currentEnv === 'green' ? '100%' : '0%' }} 流量
           </div>
@@ -52,24 +83,40 @@
     <!-- 架构可视化 -->
     <div class="architecture-view">
       <div class="layer users">
-        <div class="layer-title">用户流量</div>
+        <div class="layer-title">
+          用户流量
+        </div>
         <div class="users-row">
-          <div v-for="i in 5" :key="i" class="user-avatar" :class="{ active: isUserActive(i) }">
+          <div
+            v-for="i in 5"
+            :key="i"
+            class="user-avatar"
+            :class="{ active: isUserActive(i) }"
+          >
             👤
           </div>
         </div>
       </div>
 
-      <div class="arrow-down">↓</div>
+      <div class="arrow-down">
+        ↓
+      </div>
 
       <div class="layer load-balancer">
         <div class="lb-box">
-          <div class="lb-icon">⚖️</div>
+          <div class="lb-icon">
+            ⚖️
+          </div>
           <div class="lb-info">
-            <div class="lb-title">负载均衡器</div>
+            <div class="lb-title">
+              负载均衡器
+            </div>
             <div class="lb-status">
               当前指向:
-              <span class="env-badge" :class="currentEnv">
+              <span
+                class="env-badge"
+                :class="currentEnv"
+              >
                 {{ currentEnv === 'blue' ? '🔵 蓝环境' : '🟢 绿环境' }}
               </span>
             </div>
@@ -77,12 +124,17 @@
         </div>
       </div>
 
-      <div class="arrow-down">↓</div>
+      <div class="arrow-down">
+        ↓
+      </div>
 
       <div class="layer environments">
         <div class="env-row">
           <!-- 蓝环境 -->
-          <div class="env-box" :class="{ active: currentEnv === 'blue', standby: currentEnv === 'green' }">
+          <div
+            class="env-box"
+            :class="{ active: currentEnv === 'blue', standby: currentEnv === 'green' }"
+          >
             <div class="env-header">
               <span class="env-icon">🔵</span>
               <span class="env-name">蓝环境</span>
@@ -90,10 +142,18 @@
             </div>
             <div class="env-content">
               <div class="server-list">
-                <div v-for="i in 3" :key="i" class="server-item" :class="{ busy: isServerBusy('blue', i) }">
+                <div
+                  v-for="i in 3"
+                  :key="i"
+                  class="server-item"
+                  :class="{ busy: isServerBusy('blue', i) }"
+                >
                   <span class="server-icon">🖥️</span>
                   <span class="server-name">B{{ i }}</span>
-                  <span class="server-status" :class="getServerStatus('blue', i)">
+                  <span
+                    class="server-status"
+                    :class="getServerStatus('blue', i)"
+                  >
                     {{ getServerStatus('blue', i) === 'healthy' ? '●' : '○' }}
                   </span>
                 </div>
@@ -102,18 +162,27 @@
             <div class="env-footer">
               <div class="traffic-indicator">
                 <span class="indicator-label">流量:</span>
-                <span class="indicator-value" :class="{ active: currentEnv === 'blue' }">
+                <span
+                  class="indicator-value"
+                  :class="{ active: currentEnv === 'blue' }"
+                >
                   {{ currentEnv === 'blue' ? '100%' : '0%' }}
                 </span>
               </div>
-              <div class="status-badge" :class="currentEnv === 'blue' ? 'active' : 'standby'">
+              <div
+                class="status-badge"
+                :class="currentEnv === 'blue' ? 'active' : 'standby'"
+              >
                 {{ currentEnv === 'blue' ? '生产环境' : '待命' }}
               </div>
             </div>
           </div>
 
           <!-- 绿环境 -->
-          <div class="env-box" :class="{ active: currentEnv === 'green', standby: currentEnv === 'blue' }">
+          <div
+            class="env-box"
+            :class="{ active: currentEnv === 'green', standby: currentEnv === 'blue' }"
+          >
             <div class="env-header">
               <span class="env-icon">🟢</span>
               <span class="env-name">绿环境</span>
@@ -121,10 +190,18 @@
             </div>
             <div class="env-content">
               <div class="server-list">
-                <div v-for="i in 3" :key="i" class="server-item" :class="{ busy: isServerBusy('green', i) }">
+                <div
+                  v-for="i in 3"
+                  :key="i"
+                  class="server-item"
+                  :class="{ busy: isServerBusy('green', i) }"
+                >
                   <span class="server-icon">🖥️</span>
                   <span class="server-name">G{{ i }}</span>
-                  <span class="server-status" :class="getServerStatus('green', i)">
+                  <span
+                    class="server-status"
+                    :class="getServerStatus('green', i)"
+                  >
                     {{ getServerStatus('green', i) === 'healthy' ? '●' : '○' }}
                   </span>
                 </div>
@@ -133,11 +210,17 @@
             <div class="env-footer">
               <div class="traffic-indicator">
                 <span class="indicator-label">流量:</span>
-                <span class="indicator-value" :class="{ active: currentEnv === 'green' }">
+                <span
+                  class="indicator-value"
+                  :class="{ active: currentEnv === 'green' }"
+                >
                   {{ currentEnv === 'green' ? '100%' : '0%' }}
                 </span>
               </div>
-              <div class="status-badge" :class="currentEnv === 'green' ? 'active' : 'standby'">
+              <div
+                class="status-badge"
+                :class="currentEnv === 'green' ? 'active' : 'standby'"
+              >
                 {{ currentEnv === 'green' ? '生产环境' : '待命' }}
               </div>
             </div>
@@ -148,37 +231,81 @@
 
     <!-- 部署流程说明 -->
     <div class="deployment-process">
-      <div class="process-title">蓝绿部署流程</div>
+      <div class="process-title">
+        蓝绿部署流程
+      </div>
       <div class="process-steps">
-        <div class="step" :class="{ active: deploymentStep >= 1 }">
-          <div class="step-number">1</div>
+        <div
+          class="step"
+          :class="{ active: deploymentStep >= 1 }"
+        >
+          <div class="step-number">
+            1
+          </div>
           <div class="step-content">
-            <div class="step-title">绿环境部署</div>
-            <div class="step-desc">在绿环境部署新版本，进行冒烟测试</div>
+            <div class="step-title">
+              绿环境部署
+            </div>
+            <div class="step-desc">
+              在绿环境部署新版本，进行冒烟测试
+            </div>
           </div>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="step" :class="{ active: deploymentStep >= 2 }">
-          <div class="step-number">2</div>
+        <div class="step-arrow">
+          →
+        </div>
+        <div
+          class="step"
+          :class="{ active: deploymentStep >= 2 }"
+        >
+          <div class="step-number">
+            2
+          </div>
           <div class="step-content">
-            <div class="step-title">切换流量</div>
-            <div class="step-desc">将负载均衡器指向绿环境，流量瞬间切换</div>
+            <div class="step-title">
+              切换流量
+            </div>
+            <div class="step-desc">
+              将负载均衡器指向绿环境，流量瞬间切换
+            </div>
           </div>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="step" :class="{ active: deploymentStep >= 3 }">
-          <div class="step-number">3</div>
+        <div class="step-arrow">
+          →
+        </div>
+        <div
+          class="step"
+          :class="{ active: deploymentStep >= 3 }"
+        >
+          <div class="step-number">
+            3
+          </div>
           <div class="step-content">
-            <div class="step-title">监控观察</div>
-            <div class="step-desc">观察绿环境运行状态，确认无异常</div>
+            <div class="step-title">
+              监控观察
+            </div>
+            <div class="step-desc">
+              观察绿环境运行状态，确认无异常
+            </div>
           </div>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="step" :class="{ active: deploymentStep >= 4 }">
-          <div class="step-number">4</div>
+        <div class="step-arrow">
+          →
+        </div>
+        <div
+          class="step"
+          :class="{ active: deploymentStep >= 4 }"
+        >
+          <div class="step-number">
+            4
+          </div>
           <div class="step-content">
-            <div class="step-title">蓝环境升级</div>
-            <div class="step-desc">在蓝环境部署新版本，为下次切换做准备</div>
+            <div class="step-title">
+              蓝环境升级
+            </div>
+            <div class="step-desc">
+              在蓝环境部署新版本，为下次切换做准备
+            </div>
           </div>
         </div>
       </div>
@@ -186,7 +313,9 @@
 
     <!-- 优缺点分析 -->
     <div class="pros-cons-analysis">
-      <div class="analysis-title">蓝绿部署优缺点</div>
+      <div class="analysis-title">
+        蓝绿部署优缺点
+      </div>
       <div class="analysis-grid">
         <div class="analysis-card pros">
           <div class="card-header">

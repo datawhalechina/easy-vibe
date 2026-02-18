@@ -4,38 +4,65 @@
 -->
 <template>
   <div class="demo">
-    <div class="title">🔄 一次 API 调用的流程</div>
-    <p class="subtitle">点一下按钮，看请求怎么飞过去再飞回来</p>
+    <div class="title">
+      🔄 一次 API 调用的流程
+    </div>
+    <p class="subtitle">
+      点一下按钮，看请求怎么飞过去再飞回来
+    </p>
 
     <div class="flow-container">
       <div class="side you">
         <div class="window">
-          <div class="window-header">👤 你这边</div>
+          <div class="window-header">
+            👤 你这边
+          </div>
           <div class="window-body">
-            <div class="message">我想调用 API</div>
+            <div class="message">
+              我想调用 API
+            </div>
           </div>
         </div>
       </div>
 
       <div class="middle">
-        <div class="arrow" :class="{ animating: isAnimating }">➔</div>
-        <button class="send-btn" :disabled="isAnimating" @click="send">
+        <div
+          class="arrow"
+          :class="{ animating: isAnimating }"
+        >
+          ➔
+        </div>
+        <button
+          class="send-btn"
+          :disabled="isAnimating"
+          @click="send"
+        >
           {{ isAnimating ? '发送中...' : '🚀 发送请求' }}
         </button>
       </div>
 
       <div class="side server">
         <div class="window">
-          <div class="window-header">🖥️ 对方服务器</div>
+          <div class="window-header">
+            🖥️ 对方服务器
+          </div>
           <div class="window-body">
-            <div class="message">{{ serverMessage }}</div>
+            <div class="message">
+              {{ serverMessage }}
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="result" v-if="result">
-      <div class="result-box" :class="result.type">
+    <div
+      v-if="result"
+      class="result"
+    >
+      <div
+        class="result-box"
+        :class="result.type"
+      >
         {{ result.text }}
       </div>
     </div>

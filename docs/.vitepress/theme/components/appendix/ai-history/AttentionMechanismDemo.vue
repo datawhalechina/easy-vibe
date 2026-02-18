@@ -4,7 +4,9 @@
       <template #header>
         <div class="card-header">
           <h4>👁️ 注意力机制演示</h4>
-          <p class="subtitle">点击词语，观察它如何"关注"句子中的其他词</p>
+          <p class="subtitle">
+            点击词语，观察它如何"关注"句子中的其他词
+          </p>
         </div>
       </template>
 
@@ -22,13 +24,18 @@
           </el-tag>
         </div>
 
-        <div class="attention-bars" v-if="activeIndex !== null">
+        <div
+          v-if="activeIndex !== null"
+          class="attention-bars"
+        >
           <div
             v-for="(attention, index) in attentionWeights"
             :key="index"
             class="attention-item"
           >
-            <div class="word-label">{{ attention.word }}</div>
+            <div class="word-label">
+              {{ attention.word }}
+            </div>
             <el-progress
               :percentage="Math.round(attention.weight * 100)"
               :status="attention.weight > 0.5 ? 'exception' : ''"
@@ -45,7 +52,10 @@
       </div>
 
       <el-collapse-transition>
-        <div v-if="activeIndex !== null" class="explanation-panel">
+        <div
+          v-if="activeIndex !== null"
+          class="explanation-panel"
+        >
           <el-alert
             type="success"
             :closable="false"

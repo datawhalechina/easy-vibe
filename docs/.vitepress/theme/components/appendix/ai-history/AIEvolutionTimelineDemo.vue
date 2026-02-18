@@ -1,15 +1,24 @@
 <template>
   <div class="ai-evolution-timeline-demo">
-    <el-card shadow="hover" class="main-card">
+    <el-card
+      shadow="hover"
+      class="main-card"
+    >
       <template #header>
         <div class="card-header">
           <h3>AI 进化时间轴</h3>
-          <p class="subtitle">点击不同时期，查看 AI 是如何一步步进化的</p>
+          <p class="subtitle">
+            点击不同时期，查看 AI 是如何一步步进化的
+          </p>
         </div>
       </template>
 
       <div class="demo-content">
-        <el-tabs v-model="activeEraName" type="border-card" class="timeline-tabs">
+        <el-tabs
+          v-model="activeEraName"
+          type="border-card"
+          class="timeline-tabs"
+        >
           <el-tab-pane
             v-for="(era, index) in eras"
             :key="index"
@@ -18,19 +27,32 @@
           >
             <div class="era-content">
               <div class="era-header">
-                <el-tag effect="dark" size="large" class="year-tag">{{ era.year }}</el-tag>
+                <el-tag
+                  effect="dark"
+                  size="large"
+                  class="year-tag"
+                >
+                  {{ era.year }}
+                </el-tag>
                 <span class="era-desc-short">{{ era.desc }}</span>
               </div>
               
               <div class="era-body">
-                <p class="full-desc">{{ era.fullDesc }}</p>
+                <p class="full-desc">
+                  {{ era.fullDesc }}
+                </p>
                 
                 <div class="info-grid">
                   <div class="info-column">
                     <span class="column-title">💡 核心特点</span>
                     <ul class="key-points-list">
-                      <li v-for="(point, i) in era.keyPoints" :key="i">
-                        <el-icon class="point-icon"><CaretRight /></el-icon>
+                      <li
+                        v-for="(point, i) in era.keyPoints"
+                        :key="i"
+                      >
+                        <el-icon class="point-icon">
+                          <CaretRight />
+                        </el-icon>
                         {{ point }}
                       </li>
                     </ul>

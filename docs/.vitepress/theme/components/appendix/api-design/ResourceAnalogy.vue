@@ -2,26 +2,34 @@
   <div class="demo-container">
     <div class="demo-header">
       <h4>RESTful 资源类比</h4>
-      <p class="hint">通过生活中的类比理解 RESTful 资源概念</p>
+      <p class="hint">
+        通过生活中的类比理解 RESTful 资源概念
+      </p>
     </div>
     <div class="demo-content">
       <div class="analogy-box">
         <div class="analogy-item">
-          <div class="icon">📚</div>
+          <div class="icon">
+            📚
+          </div>
           <div class="text">
             <strong>资源 = 图书</strong>
             <p>每本书有唯一的 ISBN（资源标识）</p>
           </div>
         </div>
         <div class="analogy-item">
-          <div class="icon">🏪</div>
+          <div class="icon">
+            🏪
+          </div>
           <div class="text">
             <strong>URL = 书架位置</strong>
             <p>/library/books/123 表示第 123 号书</p>
           </div>
         </div>
         <div class="analogy-item">
-          <div class="icon">📝</div>
+          <div class="icon">
+            📝
+          </div>
           <div class="text">
             <strong>HTTP 方法 = 操作</strong>
             <p>GET(查看)、POST(借书)、PUT(修改)、DELETE(还书)</p>

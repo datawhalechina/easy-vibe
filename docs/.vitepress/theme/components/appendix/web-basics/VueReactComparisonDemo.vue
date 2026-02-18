@@ -5,7 +5,9 @@
 <template>
   <div class="vr-demo">
     <div class="header">
-      <div class="title">Vue vs React：它们哪里像？哪里不一样？</div>
+      <div class="title">
+        Vue vs React：它们哪里像？哪里不一样？
+      </div>
       <div class="subtitle">
         选一个标签页，然后点“+1”，看看背后发生了什么（示意）。
       </div>
@@ -25,36 +27,56 @@
 
     <div class="grid">
       <div class="panel">
-        <div class="panel-title">Vue</div>
+        <div class="panel-title">
+          Vue
+        </div>
         <div class="preview">
           <div class="row">
             count: <strong>{{ count }}</strong>
           </div>
-          <button class="btn vue" @click="inc('vue')">+1</button>
+          <button
+            class="btn vue"
+            @click="inc('vue')"
+          >
+            +1
+          </button>
         </div>
         <div class="code">
-          <div class="code-title">典型写法（示意）</div>
+          <div class="code-title">
+            典型写法（示意）
+          </div>
           <pre><code class="language-vue">{{ vueCode }}</code></pre>
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-title">React</div>
+        <div class="panel-title">
+          React
+        </div>
         <div class="preview">
           <div class="row">
             count: <strong>{{ count }}</strong>
           </div>
-          <button class="btn react" @click="inc('react')">+1</button>
+          <button
+            class="btn react"
+            @click="inc('react')"
+          >
+            +1
+          </button>
         </div>
         <div class="code">
-          <div class="code-title">典型写法（示意）</div>
+          <div class="code-title">
+            典型写法（示意）
+          </div>
           <pre><code class="language-jsx">{{ reactCode }}</code></pre>
         </div>
       </div>
     </div>
 
     <div class="what">
-      <div class="what-title">点击 “+1” 时发生了什么？</div>
+      <div class="what-title">
+        点击 “+1” 时发生了什么？
+      </div>
       <div class="steps">
         <div
           v-for="(s, idx) in steps"

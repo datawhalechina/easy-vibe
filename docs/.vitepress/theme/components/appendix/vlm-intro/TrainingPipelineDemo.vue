@@ -1,10 +1,16 @@
 <template>
   <div class="pipeline-demo">
     <div class="stage-switch">
-      <button :class="{ active: stage === 1 }" @click="stage = 1">
+      <button
+        :class="{ active: stage === 1 }"
+        @click="stage = 1"
+      >
         阶段一：特征对齐
       </button>
-      <button :class="{ active: stage === 2 }" @click="stage = 2">
+      <button
+        :class="{ active: stage === 2 }"
+        @click="stage = 2"
+      >
         阶段二：指令微调
       </button>
     </div>
@@ -12,29 +18,57 @@
     <div class="pipeline-visual">
       <!-- Image Input -->
       <div class="component-box image-input">
-        <div class="icon">🖼️</div>
-        <div class="name">Image</div>
+        <div class="icon">
+          🖼️
+        </div>
+        <div class="name">
+          Image
+        </div>
       </div>
 
-      <div class="arrow">➜</div>
+      <div class="arrow">
+        ➜
+      </div>
 
       <!-- Vision Encoder -->
-      <div class="component-box encoder" :class="{ frozen: true }">
-        <div class="status-badge">❄️ Frozen</div>
-        <div class="name">ViT</div>
-        <div class="desc">Vision Encoder</div>
+      <div
+        class="component-box encoder"
+        :class="{ frozen: true }"
+      >
+        <div class="status-badge">
+          ❄️ Frozen
+        </div>
+        <div class="name">
+          ViT
+        </div>
+        <div class="desc">
+          Vision Encoder
+        </div>
       </div>
 
-      <div class="arrow">➜</div>
+      <div class="arrow">
+        ➜
+      </div>
 
       <!-- Projector -->
-      <div class="component-box projector" :class="{ training: true }">
-        <div class="status-badge fire">🔥 Train</div>
-        <div class="name">Projector</div>
-        <div class="desc">Adapter</div>
+      <div
+        class="component-box projector"
+        :class="{ training: true }"
+      >
+        <div class="status-badge fire">
+          🔥 Train
+        </div>
+        <div class="name">
+          Projector
+        </div>
+        <div class="desc">
+          Adapter
+        </div>
       </div>
 
-      <div class="arrow">➜</div>
+      <div class="arrow">
+        ➜
+      </div>
 
       <!-- LLM -->
       <div
@@ -44,32 +78,64 @@
         <div class="status-badge">
           {{ stage === 1 ? '❄️ Frozen' : '🔥 Train' }}
         </div>
-        <div class="name">LLM</div>
-        <div class="desc">Language Model</div>
+        <div class="name">
+          LLM
+        </div>
+        <div class="desc">
+          Language Model
+        </div>
       </div>
 
-      <div class="arrow">➜</div>
+      <div class="arrow">
+        ➜
+      </div>
 
       <!-- Output / Loss -->
       <div class="component-box output">
-        <div class="name" v-if="stage === 1">Loss Calculation</div>
-        <div class="name" v-else>Text Generation</div>
-        <div class="desc" v-if="stage === 1">Contrastive Loss</div>
-        <div class="desc" v-else>Next Token Prediction</div>
+        <div
+          v-if="stage === 1"
+          class="name"
+        >
+          Loss Calculation
+        </div>
+        <div
+          v-else
+          class="name"
+        >
+          Text Generation
+        </div>
+        <div
+          v-if="stage === 1"
+          class="desc"
+        >
+          Contrastive Loss
+        </div>
+        <div
+          v-else
+          class="desc"
+        >
+          Next Token Prediction
+        </div>
       </div>
     </div>
 
     <div class="data-example">
-      <div class="data-title">当前训练数据示例：</div>
-      <div class="data-content" v-if="stage === 1">
+      <div class="data-title">
+        当前训练数据示例：
+      </div>
+      <div
+        v-if="stage === 1"
+        class="data-content"
+      >
         <code>&lt;Image: 🐱&gt;, &lt;Text: "一只猫"&gt;</code>
         <p>任务：让图像向量与文本向量距离变近。</p>
       </div>
-      <div class="data-content" v-else>
-        <code
-          >User: &lt;Image: 🐱&gt; 这只猫在干嘛？<br />Assistant:
-          它在睡觉。</code
-        >
+      <div
+        v-else
+        class="data-content"
+      >
+        <code>User: &lt;Image: 🐱&gt; 这只猫在干嘛？<br>Assistant:
+          它在睡觉。</code>
         <p>任务：根据图像和问题生成回答。</p>
       </div>
     </div>

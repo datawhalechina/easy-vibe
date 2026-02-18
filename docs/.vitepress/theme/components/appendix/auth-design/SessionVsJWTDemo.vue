@@ -5,7 +5,9 @@
 <template>
   <div class="session-vs-jwt-demo">
     <div class="header">
-      <div class="title">🧩 Session vs JWT：怎么选？</div>
+      <div class="title">
+        🧩 Session vs JWT：怎么选？
+      </div>
       <div class="subtitle">
         选你的约束条件，得到推荐方案（并解释原因）。这比“背结论”更好用。
       </div>
@@ -13,7 +15,9 @@
 
     <div class="grid">
       <div class="card">
-        <div class="card-title">你的场景</div>
+        <div class="card-title">
+          你的场景
+        </div>
 
         <label class="label">主要客户端</label>
         <div class="row">
@@ -96,30 +100,52 @@
       </div>
 
       <div class="card">
-        <div class="card-title">推荐</div>
+        <div class="card-title">
+          推荐
+        </div>
         <div class="recommend">
-          <div class="pill primary">{{ recommendation.title }}</div>
-          <div class="desc">{{ recommendation.desc }}</div>
+          <div class="pill primary">
+            {{ recommendation.title }}
+          </div>
+          <div class="desc">
+            {{ recommendation.desc }}
+          </div>
         </div>
 
         <div class="box">
-          <div class="box-title">为什么</div>
+          <div class="box-title">
+            为什么
+          </div>
           <ul class="list">
-            <li v-for="(x, i) in recommendation.reasons" :key="i">{{ x }}</li>
+            <li
+              v-for="(x, i) in recommendation.reasons"
+              :key="i"
+            >
+              {{ x }}
+            </li>
           </ul>
         </div>
 
         <div class="box">
-          <div class="box-title">落地建议</div>
+          <div class="box-title">
+            落地建议
+          </div>
           <ul class="list">
-            <li v-for="(x, i) in recommendation.tips" :key="i">{{ x }}</li>
+            <li
+              v-for="(x, i) in recommendation.tips"
+              :key="i"
+            >
+              {{ x }}
+            </li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">常见误区</div>
+      <div class="card-title">
+        常见误区
+      </div>
       <ul class="list">
         <li>
           <strong>JWT ≠ 更安全：</strong>JWT

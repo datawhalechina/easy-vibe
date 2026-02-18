@@ -22,23 +22,41 @@
 
       <div class="cards">
         <div class="card">
-          <div class="label">运行环境</div>
-          <div class="value">{{ currentData.runtime }}</div>
+          <div class="label">
+            运行环境
+          </div>
+          <div class="value">
+            {{ currentData.runtime }}
+          </div>
         </div>
         <div class="card">
-          <div class="label">主要技术</div>
-          <div class="value">{{ currentData.stack }}</div>
+          <div class="label">
+            主要技术
+          </div>
+          <div class="value">
+            {{ currentData.stack }}
+          </div>
         </div>
         <div class="card">
-          <div class="label">发布方式</div>
-          <div class="value">{{ currentData.release }}</div>
+          <div class="label">
+            发布方式
+          </div>
+          <div class="value">
+            {{ currentData.release }}
+          </div>
         </div>
       </div>
 
       <div class="skills">
-        <div class="skills-title">哪些能力是"共通的"？</div>
+        <div class="skills-title">
+          哪些能力是"共通的"？
+        </div>
         <div class="tags">
-          <span v-for="t in commonSkills.slice(0, 6)" :key="t" class="tag">{{ t }}</span>
+          <span
+            v-for="t in commonSkills.slice(0, 6)"
+            :key="t"
+            class="tag"
+          >{{ t }}</span>
         </div>
       </div>
     </div>

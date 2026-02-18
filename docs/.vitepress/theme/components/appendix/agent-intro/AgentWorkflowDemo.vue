@@ -8,12 +8,24 @@
   <div class="workflow">
     <div class="header">
       <div>
-        <div class="title">先玩一下：Agent 不是“聊天”，是“循环行动”</div>
-        <div class="subtitle">它会反复：观察 → 计划 → 用工具 → 检查结果。</div>
+        <div class="title">
+          先玩一下：Agent 不是“聊天”，是“循环行动”
+        </div>
+        <div class="subtitle">
+          它会反复：观察 → 计划 → 用工具 → 检查结果。
+        </div>
       </div>
       <div class="actions">
-        <button class="btn" @click="reset">重置</button>
-        <button class="btn primary" @click="nextRound">
+        <button
+          class="btn"
+          @click="reset"
+        >
+          重置
+        </button>
+        <button
+          class="btn primary"
+          @click="nextRound"
+        >
           下一轮 ({{ round }}/3)
         </button>
       </div>
@@ -33,19 +45,27 @@
 
     <div class="panels">
       <div class="panel">
-        <div class="panel-title">任务</div>
+        <div class="panel-title">
+          任务
+        </div>
         <div class="panel-body">
           帮我找 3 篇 “Agent” 入门文章，并输出：标题 + 一句话总结。
         </div>
       </div>
       <div class="panel">
-        <div class="panel-title">这一轮发生了什么？</div>
-        <div class="panel-body">{{ detail }}</div>
+        <div class="panel-title">
+          这一轮发生了什么？
+        </div>
+        <div class="panel-body">
+          {{ detail }}
+        </div>
       </div>
     </div>
 
     <div class="log">
-      <div class="log-title">Agent 运行日志（示意）</div>
+      <div class="log-title">
+        Agent 运行日志（示意）
+      </div>
       <pre><code>{{ logText }}</code></pre>
     </div>
   </div>

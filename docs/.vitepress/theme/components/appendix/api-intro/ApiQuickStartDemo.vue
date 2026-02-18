@@ -11,24 +11,41 @@
 
     <div class="content">
       <div class="action-area">
-        <button class="call-btn" :disabled="calling" @click="callApi">
+        <button
+          class="call-btn"
+          :disabled="calling"
+          @click="callApi"
+        >
           <span v-if="!calling">📡 发起 API 请求</span>
           <span v-else>🔄 请求处理中...</span>
         </button>
       </div>
 
-      <div class="result-area" v-if="result || calling">
-        <div class="loading-dots" v-if="calling">
+      <div
+        v-if="result || calling"
+        class="result-area"
+      >
+        <div
+          v-if="calling"
+          class="loading-dots"
+        >
           <span>.</span><span>.</span><span>.</span>
         </div>
-        <div class="response-card" v-else-if="result">
+        <div
+          v-else-if="result"
+          class="response-card"
+        >
           <div class="response-header">
             <span class="status-badge success">200 OK</span>
             <span class="time">耗时: {{ result.time }}ms</span>
           </div>
           <div class="response-body">
-            <div class="time-display">{{ result.timeString }}</div>
-            <div class="timezone">{{ result.timezone }}</div>
+            <div class="time-display">
+              {{ result.timeString }}
+            </div>
+            <div class="timezone">
+              {{ result.timezone }}
+            </div>
           </div>
         </div>
       </div>

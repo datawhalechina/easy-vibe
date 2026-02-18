@@ -3,43 +3,81 @@
   “清晰 vs 模糊”对比：把一个提示词拆成四块（任务/上下文/要求/输出），并展示哪些块缺失会导致输出跑偏。
 -->
 <template>
-  <el-card class="cmp-card" shadow="hover">
+  <el-card
+    class="cmp-card"
+    shadow="hover"
+  >
     <template #header>
       <div class="card-header">
         <div>
-          <h3 class="title">清晰 vs 模糊：差的不是“废话”，而是“缺项”</h3>
-          <p class="subtitle">勾选你想补充的信息，看看输出会怎么变。</p>
+          <h3 class="title">
+            清晰 vs 模糊：差的不是“废话”，而是“缺项”
+          </h3>
+          <p class="subtitle">
+            勾选你想补充的信息，看看输出会怎么变。
+          </p>
         </div>
         <div class="task-select">
-          <el-select v-model="task" placeholder="选择任务" style="width: 200px">
-            <el-option label="写一段技术博客开头" value="blog" />
-            <el-option label="把内容输出成 JSON" value="json" />
+          <el-select
+            v-model="task"
+            placeholder="选择任务"
+            style="width: 200px"
+          >
+            <el-option
+              label="写一段技术博客开头"
+              value="blog"
+            />
+            <el-option
+              label="把内容输出成 JSON"
+              value="json"
+            />
           </el-select>
         </div>
       </div>
     </template>
 
     <div class="options-container">
-      <el-checkbox v-model="useRole" label="角色（你是谁）" border />
-      <el-checkbox v-model="useAudience" label="受众（写给谁）" border />
+      <el-checkbox
+        v-model="useRole"
+        label="角色（你是谁）"
+        border
+      />
+      <el-checkbox
+        v-model="useAudience"
+        label="受众（写给谁）"
+        border
+      />
       <el-checkbox
         v-model="useConstraints"
         label="约束（长度/要点数）"
         border
       />
-      <el-checkbox v-model="useFormat" label="输出格式（JSON/列表）" border />
+      <el-checkbox
+        v-model="useFormat"
+        label="输出格式（JSON/列表）"
+        border
+      />
     </div>
 
     <div class="grid-layout">
-      <el-card shadow="never" class="panel input-panel">
+      <el-card
+        shadow="never"
+        class="panel input-panel"
+      >
         <template #header>
-          <div class="panel-header">你给 AI 的提示词</div>
+          <div class="panel-header">
+            你给 AI 的提示词
+          </div>
         </template>
         <div class="code-block">
           <pre><code>{{ prompt }}</code></pre>
         </div>
         <div class="checklist">
-          <div class="check-item" v-for="i in checklist" :key="i.text">
+          <div
+            v-for="i in checklist"
+            :key="i.text"
+            class="check-item"
+          >
             <el-tag
               :type="i.ok ? 'success' : 'danger'"
               size="small"
@@ -53,13 +91,23 @@
         </div>
       </el-card>
 
-      <el-card shadow="never" class="panel output-panel">
+      <el-card
+        shadow="never"
+        class="panel output-panel"
+      >
         <template #header>
-          <div class="panel-header">AI 输出（示意）</div>
+          <div class="panel-header">
+            AI 输出（示意）
+          </div>
         </template>
-        <div class="output-content">{{ output }}</div>
+        <div class="output-content">
+          {{ output }}
+        </div>
 
-        <div v-if="warnings.length" class="warnings-section">
+        <div
+          v-if="warnings.length"
+          class="warnings-section"
+        >
           <el-alert
             v-for="w in warnings"
             :key="w"
@@ -70,7 +118,11 @@
             style="margin-top: 8px"
           />
         </div>
-        <el-empty v-else description="完美！没有明显问题。" :image-size="60" />
+        <el-empty
+          v-else
+          description="完美！没有明显问题。"
+          :image-size="60"
+        />
       </el-card>
     </div>
   </el-card>

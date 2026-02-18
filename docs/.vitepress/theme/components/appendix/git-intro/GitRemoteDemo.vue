@@ -3,52 +3,95 @@
     <div class="panel">
       <div class="repos">
         <div class="repo">
-          <div class="header">💻 本地</div>
+          <div class="header">
+            💻 本地
+          </div>
           <div class="meta">
             <span class="badge">main</span>
             <span class="hint"> Ahead {{ ahead }} / Behind {{ behind }} </span>
           </div>
           <div class="commits">
-            <div v-for="c in local" :key="c" class="commit-dot">
-              <span class="dot local"></span>
+            <div
+              v-for="c in local"
+              :key="c"
+              class="commit-dot"
+            >
+              <span class="dot local" />
               <span class="hash">{{ c.substring(0, 6) }}</span>
             </div>
-            <div v-if="local.length === 0" class="empty">无</div>
+            <div
+              v-if="local.length === 0"
+              class="empty"
+            >
+              无
+            </div>
           </div>
         </div>
 
-        <div class="sync">⇄</div>
+        <div class="sync">
+          ⇄
+        </div>
 
         <div class="repo">
-          <div class="header">☁️ 远程</div>
+          <div class="header">
+            ☁️ 远程
+          </div>
           <div class="meta">
             <span class="badge">origin/main</span>
             <span class="hint">模拟队友提交在这里发生</span>
           </div>
           <div class="commits">
-            <div v-for="c in remote" :key="c" class="commit-dot">
-              <span class="dot remote"></span>
+            <div
+              v-for="c in remote"
+              :key="c"
+              class="commit-dot"
+            >
+              <span class="dot remote" />
               <span class="hash">{{ c.substring(0, 6) }}</span>
             </div>
-            <div v-if="remote.length === 0" class="empty">无</div>
+            <div
+              v-if="remote.length === 0"
+              class="empty"
+            >
+              无
+            </div>
           </div>
         </div>
       </div>
 
       <div class="controls">
-        <button @click="localCommit" class="btn">本地提交</button>
-        <button @click="remoteCommit" class="btn">远程新增提交</button>
         <button
-          @click="push"
+          class="btn"
+          @click="localCommit"
+        >
+          本地提交
+        </button>
+        <button
+          class="btn"
+          @click="remoteCommit"
+        >
+          远程新增提交
+        </button>
+        <button
           :disabled="local.length <= remote.length"
           class="btn"
+          @click="push"
         >
           git push
         </button>
-        <button @click="pull" :disabled="behind === 0" class="btn">
+        <button
+          :disabled="behind === 0"
+          class="btn"
+          @click="pull"
+        >
           git pull
         </button>
-        <button @click="reset" class="btn secondary">重置</button>
+        <button
+          class="btn secondary"
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
     </div>
 

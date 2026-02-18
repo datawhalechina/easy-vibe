@@ -11,7 +11,11 @@
     </div>
 
     <div class="architecture-layers">
-      <div class="layer" v-for="(layer, index) in layers" :key="layer.name">
+      <div
+        v-for="(layer, index) in layers"
+        :key="layer.name"
+        class="layer"
+      >
         <div class="layer-header">
           <span class="layer-icon">{{ layer.icon }}</span>
           <span class="layer-name">{{ layer.name }}</span>
@@ -26,7 +30,12 @@
             {{ comp }}
           </div>
         </div>
-        <div v-if="index < layers.length - 1" class="layer-arrow">↓</div>
+        <div
+          v-if="index < layers.length - 1"
+          class="layer-arrow"
+        >
+          ↓
+        </div>
       </div>
     </div>
 

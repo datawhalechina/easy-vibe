@@ -13,13 +13,22 @@
 
     <div class="architecture-diagram">
       <div class="layer user-layer">
-        <div class="layer-icon">👤</div>
-        <div class="layer-label">用户请求</div>
+        <div class="layer-icon">
+          👤
+        </div>
+        <div class="layer-label">
+          用户请求
+        </div>
       </div>
 
-      <div class="arrow-down">⬇</div>
+      <div class="arrow-down">
+        ⬇
+      </div>
 
-      <div class="layer cdn-layer" :class="{ active: activeLayer === 'cdn' }">
+      <div
+        class="layer cdn-layer"
+        :class="{ active: activeLayer === 'cdn' }"
+      >
         <div class="layer-header">
           <span class="icon">🌐</span>
           <span class="layer-name">CDN 缓存</span>
@@ -40,9 +49,14 @@
         </div>
       </div>
 
-      <div class="arrow-down">⬇</div>
+      <div class="arrow-down">
+        ⬇
+      </div>
 
-      <div class="layer local-layer" :class="{ active: activeLayer === 'local' }">
+      <div
+        class="layer local-layer"
+        :class="{ active: activeLayer === 'local' }"
+      >
         <div class="layer-header">
           <span class="icon">💻</span>
           <span class="layer-name">本地缓存</span>
@@ -63,9 +77,14 @@
         </div>
       </div>
 
-      <div class="arrow-down">⬇</div>
+      <div class="arrow-down">
+        ⬇
+      </div>
 
-      <div class="layer distributed-layer" :class="{ active: activeLayer === 'distributed' }">
+      <div
+        class="layer distributed-layer"
+        :class="{ active: activeLayer === 'distributed' }"
+      >
         <div class="layer-header">
           <span class="icon">🗄️</span>
           <span class="layer-name">分布式缓存</span>
@@ -86,7 +105,9 @@
         </div>
       </div>
 
-      <div class="arrow-down">⬇</div>
+      <div class="arrow-down">
+        ⬇
+      </div>
 
       <div class="layer database-layer">
         <div class="layer-header">

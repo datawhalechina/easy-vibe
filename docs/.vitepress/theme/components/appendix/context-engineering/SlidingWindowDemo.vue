@@ -19,10 +19,17 @@
         <span class="value">最多 {{ windowSize }} 条</span>
       </div>
       <div class="actions">
-        <button class="action-btn" @click="autoPlay" :disabled="isAutoPlaying">
+        <button
+          class="action-btn"
+          :disabled="isAutoPlaying"
+          @click="autoPlay"
+        >
           ▶ 自动演示
         </button>
-        <button class="action-btn outline" @click="reset">
+        <button
+          class="action-btn outline"
+          @click="reset"
+        >
           ↺ 重新开始
         </button>
       </div>
@@ -42,14 +49,23 @@
               class="message-bubble history"
               :class="msg.role.toLowerCase()"
             >
-              <div class="avatar">{{ msg.role === 'User' ? '👤' : '🤖' }}</div>
+              <div class="avatar">
+                {{ msg.role === 'User' ? '👤' : '🤖' }}
+              </div>
               <div class="content">
-                <div class="role-name">{{ msg.role }}</div>
-                <div class="text">{{ msg.content }}</div>
+                <div class="role-name">
+                  {{ msg.role }}
+                </div>
+                <div class="text">
+                  {{ msg.content }}
+                </div>
               </div>
             </div>
           </transition-group>
-          <div v-if="historyMessages.length === 0" class="empty-placeholder">
+          <div
+            v-if="historyMessages.length === 0"
+            class="empty-placeholder"
+          >
             这里暂时还没有被“挤出去”的对话
           </div>
         </div>
@@ -57,7 +73,7 @@
         <!-- Divider -->
         <div class="window-divider">
           <span>⬆ 窗口外（模型已经看不到）</span>
-          <div class="divider-line"></div>
+          <div class="divider-line" />
           <span>⬇ 窗口内（模型还能看到）</span>
         </div>
 
@@ -73,14 +89,23 @@
               class="message-bubble active"
               :class="msg.role.toLowerCase()"
             >
-              <div class="avatar">{{ msg.role === 'User' ? '👤' : '🤖' }}</div>
+              <div class="avatar">
+                {{ msg.role === 'User' ? '👤' : '🤖' }}
+              </div>
               <div class="content">
-                <div class="role-name">{{ msg.role }}</div>
-                <div class="text">{{ msg.content }}</div>
+                <div class="role-name">
+                  {{ msg.role }}
+                </div>
+                <div class="text">
+                  {{ msg.content }}
+                </div>
               </div>
             </div>
           </transition-group>
-          <div v-if="activeMessages.length === 0" class="empty-placeholder">
+          <div
+            v-if="activeMessages.length === 0"
+            class="empty-placeholder"
+          >
             从这里开始聊天，看看旧对话是怎么被“挤出去”的
           </div>
         </div>
@@ -90,11 +115,15 @@
     <div class="input-section">
       <input
         v-model="newMessage"
-        @keyup.enter="sendMessage"
         placeholder="在这里输入一条消息，然后点发送"
         :disabled="isAutoPlaying"
-      />
-      <button class="send-btn" @click="sendMessage" :disabled="!newMessage.trim() || isAutoPlaying">
+        @keyup.enter="sendMessage"
+      >
+      <button
+        class="send-btn"
+        :disabled="!newMessage.trim() || isAutoPlaying"
+        @click="sendMessage"
+      >
         发送消息
       </button>
     </div>

@@ -5,46 +5,83 @@
 <template>
   <div class="pubsub-demo">
     <div class="header">
-      <div class="title">发布订阅模式：一条消息，多处消费</div>
-      <div class="subtitle">发布一次事件，多个订阅者独立处理</div>
+      <div class="title">
+        发布订阅模式：一条消息，多处消费
+      </div>
+      <div class="subtitle">
+        发布一次事件，多个订阅者独立处理
+      </div>
     </div>
 
     <div class="main-flow">
       <div class="publisher-section">
-        <div class="section-title">📤 发布者 Publisher</div>
+        <div class="section-title">
+          📤 发布者 Publisher
+        </div>
         <div class="event-selector">
           <label>选择事件：</label>
-          <select v-model="selectedEvent" @change="onEventChange">
-            <option value="order.created">订单创建成功</option>
-            <option value="user.registered">用户注册成功</option>
-            <option value="product.updated">商品信息更新</option>
+          <select
+            v-model="selectedEvent"
+            @change="onEventChange"
+          >
+            <option value="order.created">
+              订单创建成功
+            </option>
+            <option value="user.registered">
+              用户注册成功
+            </option>
+            <option value="product.updated">
+              商品信息更新
+            </option>
           </select>
         </div>
         <div class="event-details">
-          <div class="event-name">{{ eventDetails.name }}</div>
-          <div class="event-desc">{{ eventDetails.description }}</div>
+          <div class="event-name">
+            {{ eventDetails.name }}
+          </div>
+          <div class="event-desc">
+            {{ eventDetails.description }}
+          </div>
         </div>
         <button
           class="publish-btn"
-          @click="publishEvent"
           :disabled="publishing"
+          @click="publishEvent"
         >
           {{ publishing ? '发布中...' : '🚀 发布事件' }}
         </button>
       </div>
 
       <div class="topic-section">
-        <div class="section-title">📡 主题 Topic</div>
-        <div class="topic-box" :class="{ active: hasMessage }">
-          <div class="topic-icon">📨</div>
-          <div class="topic-name">{{ selectedEvent }}</div>
-          <div v-if="hasMessage" class="message-indicator">消息已发布</div>
+        <div class="section-title">
+          📡 主题 Topic
         </div>
-        <div class="topic-desc">所有订阅者都会收到这条消息</div>
+        <div
+          class="topic-box"
+          :class="{ active: hasMessage }"
+        >
+          <div class="topic-icon">
+            📨
+          </div>
+          <div class="topic-name">
+            {{ selectedEvent }}
+          </div>
+          <div
+            v-if="hasMessage"
+            class="message-indicator"
+          >
+            消息已发布
+          </div>
+        </div>
+        <div class="topic-desc">
+          所有订阅者都会收到这条消息
+        </div>
       </div>
 
       <div class="subscribers-section">
-        <div class="section-title">📥 订阅者 Subscribers</div>
+        <div class="section-title">
+          📥 订阅者 Subscribers
+        </div>
         <div class="subscribers-grid">
           <div
             v-for="sub in currentSubscribers"
@@ -52,15 +89,23 @@
             class="subscriber-card"
             :class="{ processing: sub.processing, completed: sub.completed }"
           >
-            <div class="sub-icon">{{ sub.icon }}</div>
-            <div class="sub-name">{{ sub.name }}</div>
-            <div class="sub-action">{{ sub.action }}</div>
+            <div class="sub-icon">
+              {{ sub.icon }}
+            </div>
+            <div class="sub-name">
+              {{ sub.name }}
+            </div>
+            <div class="sub-action">
+              {{ sub.action }}
+            </div>
             <div class="sub-status">
               <span v-if="sub.processing">⏳ 处理中...</span>
               <span v-else-if="sub.completed">✅ 已完成</span>
               <span v-else>💤 等待消息</span>
             </div>
-            <div class="sub-count">已处理: {{ sub.count }} 条</div>
+            <div class="sub-count">
+              已处理: {{ sub.count }} 条
+            </div>
           </div>
         </div>
       </div>
@@ -68,11 +113,23 @@
 
     <div class="real-time-log">
       <div class="log-header">
-        <div class="log-title">📋 实时日志</div>
-        <button class="clear-btn" @click="clearLog">清空</button>
+        <div class="log-title">
+          📋 实时日志
+        </div>
+        <button
+          class="clear-btn"
+          @click="clearLog"
+        >
+          清空
+        </button>
       </div>
       <div class="log-content">
-        <div v-if="logs.length === 0" class="log-empty">暂无日志</div>
+        <div
+          v-if="logs.length === 0"
+          class="log-empty"
+        >
+          暂无日志
+        </div>
         <div
           v-for="(log, index) in logs"
           :key="index"
@@ -86,25 +143,39 @@
     </div>
 
     <div class="use-cases">
-      <div class="case-title">💡 典型应用场景</div>
+      <div class="case-title">
+        💡 典型应用场景
+      </div>
       <div class="case-grid">
         <div class="case-card">
-          <div class="case-icon">🛒</div>
-          <div class="case-name">电商订单</div>
+          <div class="case-icon">
+            🛒
+          </div>
+          <div class="case-name">
+            电商订单
+          </div>
           <div class="case-desc">
             订单创建 → 库存服务、积分服务、通知服务、数据仓库同时处理
           </div>
         </div>
         <div class="case-card">
-          <div class="case-icon">👤</div>
-          <div class="case-name">用户注册</div>
+          <div class="case-icon">
+            👤
+          </div>
+          <div class="case-name">
+            用户注册
+          </div>
           <div class="case-desc">
             用户注册 → 欢迎邮件、短信验证、发放优惠券、创建用户画像
           </div>
         </div>
         <div class="case-card">
-          <div class="case-icon">📊</div>
-          <div class="case-name">数据分析</div>
+          <div class="case-icon">
+            📊
+          </div>
+          <div class="case-name">
+            数据分析
+          </div>
           <div class="case-desc">
             用户行为 → 推荐系统、实时统计、数据仓库、风控系统
           </div>

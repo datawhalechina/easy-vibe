@@ -4,38 +4,70 @@
       <div class="config-row">
         <span class="label">实例规格</span>
         <select v-model="config.spec">
-          <option value="small">1核2G (入门)</option>
-          <option value="medium">2核4G (标准)</option>
-          <option value="large">4核8G (高性能)</option>
+          <option value="small">
+            1核2G (入门)
+          </option>
+          <option value="medium">
+            2核4G (标准)
+          </option>
+          <option value="large">
+            4核8G (高性能)
+          </option>
         </select>
       </div>
       <div class="config-row">
         <span class="label">运行时长</span>
-        <input type="range" v-model.number="config.hours" min="1" max="24" />
+        <input
+          v-model.number="config.hours"
+          type="range"
+          min="1"
+          max="24"
+        >
         <span class="value">{{ config.hours }} 小时/天</span>
       </div>
       <div class="config-row">
         <span class="label">运行天数</span>
-        <input type="range" v-model.number="config.days" min="1" max="31" />
+        <input
+          v-model.number="config.days"
+          type="range"
+          min="1"
+          max="31"
+        >
         <span class="value">{{ config.days }} 天/月</span>
       </div>
     </div>
 
     <div class="result-section">
-      <div class="result-header">月度成本对比</div>
+      <div class="result-header">
+        月度成本对比
+      </div>
       <div class="result-cards">
         <div class="result-card">
-          <div class="model">按需付费</div>
-          <div class="price">${{ costs.ondemand }}/月</div>
+          <div class="model">
+            按需付费
+          </div>
+          <div class="price">
+            ${{ costs.ondemand }}/月
+          </div>
         </div>
         <div class="result-card recommended">
-          <div class="model">预留实例</div>
-          <div class="price">${{ costs.reserved }}/月</div>
-          <div class="saving">省 {{ savings }}%</div>
+          <div class="model">
+            预留实例
+          </div>
+          <div class="price">
+            ${{ costs.reserved }}/月
+          </div>
+          <div class="saving">
+            省 {{ savings }}%
+          </div>
         </div>
         <div class="result-card">
-          <div class="model">抢占式</div>
-          <div class="price">${{ costs.spot }}/月</div>
+          <div class="model">
+            抢占式
+          </div>
+          <div class="price">
+            ${{ costs.spot }}/月
+          </div>
         </div>
       </div>
     </div>

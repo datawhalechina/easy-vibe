@@ -4,11 +4,19 @@
       <!-- 客户端 -->
       <div class="client-layer">
         <div class="layer-box client">
-          <div class="layer-icon">🌐</div>
-          <div class="layer-title">客户端</div>
-          <div class="layer-desc">Web / App / 小程序</div>
+          <div class="layer-icon">
+            🌐
+          </div>
+          <div class="layer-title">
+            客户端
+          </div>
+          <div class="layer-desc">
+            Web / App / 小程序
+          </div>
         </div>
-        <div class="arrow-down">⬇️ HTTP/HTTPS</div>
+        <div class="arrow-down">
+          ⬇️ HTTP/HTTPS
+        </div>
       </div>
 
       <!-- 后端分层 -->
@@ -25,12 +33,18 @@
             <span class="layer-badge">入口</span>
           </div>
           <div class="layer-content">
-            <div class="duty">职责：接收请求、参数校验、调用 Service</div>
-            <div class="tech">技术：Spring MVC / Gin / Echo</div>
+            <div class="duty">
+              职责：接收请求、参数校验、调用 Service
+            </div>
+            <div class="tech">
+              技术：Spring MVC / Gin / Echo
+            </div>
           </div>
         </div>
 
-        <div class="arrow-down">⬇️ 调用</div>
+        <div class="arrow-down">
+          ⬇️ 调用
+        </div>
 
         <!-- Service 层 -->
         <div
@@ -44,12 +58,18 @@
             <span class="layer-badge">业务核心</span>
           </div>
           <div class="layer-content">
-            <div class="duty">职责：业务逻辑编排、事务管理、跨模块协调</div>
-            <div class="tech">技术：纯代码逻辑 / 无框架依赖</div>
+            <div class="duty">
+              职责：业务逻辑编排、事务管理、跨模块协调
+            </div>
+            <div class="tech">
+              技术：纯代码逻辑 / 无框架依赖
+            </div>
           </div>
         </div>
 
-        <div class="arrow-down">⬇️ 调用</div>
+        <div class="arrow-down">
+          ⬇️ 调用
+        </div>
 
         <!-- Repository 层 -->
         <div
@@ -63,12 +83,18 @@
             <span class="layer-badge">数据访问</span>
           </div>
           <div class="layer-content">
-            <div class="duty">职责：数据持久化、查询封装、ORM 映射</div>
-            <div class="tech">技术：MyBatis / GORM / Hibernate</div>
+            <div class="duty">
+              职责：数据持久化、查询封装、ORM 映射
+            </div>
+            <div class="tech">
+              技术：MyBatis / GORM / Hibernate
+            </div>
           </div>
         </div>
 
-        <div class="arrow-down">⬇️ SQL</div>
+        <div class="arrow-down">
+          ⬇️ SQL
+        </div>
 
         <!-- Domain 层 -->
         <div
@@ -82,23 +108,38 @@
             <span class="layer-badge">领域模型</span>
           </div>
           <div class="layer-content">
-            <div class="duty">职责：实体定义、业务规则、值对象</div>
-            <div class="tech">技术：POJO / Struct / Class</div>
+            <div class="duty">
+              职责：实体定义、业务规则、值对象
+            </div>
+            <div class="tech">
+              技术：POJO / Struct / Class
+            </div>
           </div>
         </div>
 
-        <div class="arrow-down">⬇️ 持久化</div>
+        <div class="arrow-down">
+          ⬇️ 持久化
+        </div>
 
         <!-- 数据库 -->
         <div class="layer-box database">
-          <div class="layer-icon">💾</div>
-          <div class="layer-title">数据库</div>
-          <div class="layer-desc">MySQL / PostgreSQL / MongoDB</div>
+          <div class="layer-icon">
+            💾
+          </div>
+          <div class="layer-title">
+            数据库
+          </div>
+          <div class="layer-desc">
+            MySQL / PostgreSQL / MongoDB
+          </div>
         </div>
       </div>
 
       <!-- 右侧说明面板 -->
-      <div class="info-panel" v-if="activeLayer">
+      <div
+        v-if="activeLayer"
+        class="info-panel"
+      >
         <h4>{{ layerInfo.title }}</h4>
         <p>{{ layerInfo.description }}</p>
         <div class="analogy">
@@ -107,7 +148,12 @@
         <div class="common-mistakes">
           <strong>⚠️ 常见错误：</strong>
           <ul>
-            <li v-for="mistake in layerInfo.mistakes" :key="mistake">{{ mistake }}</li>
+            <li
+              v-for="mistake in layerInfo.mistakes"
+              :key="mistake"
+            >
+              {{ mistake }}
+            </li>
           </ul>
         </div>
       </div>

@@ -5,69 +5,111 @@
 <template>
   <div class="ssl-termination-demo">
     <div class="header">
-      <div class="title">🔒 SSL 终结：HTTPS 流量的"解密官"</div>
-      <div class="subtitle">想象成公司的前台接待——对外使用正式头衔（HTTPS），对内用内部称呼（HTTP），负责"翻译"身份</div>
+      <div class="title">
+        🔒 SSL 终结：HTTPS 流量的"解密官"
+      </div>
+      <div class="subtitle">
+        想象成公司的前台接待——对外使用正式头衔（HTTPS），对内用内部称呼（HTTP），负责"翻译"身份
+      </div>
     </div>
 
     <div class="ssl-flow">
-      <div class="flow-title">🔐 HTTPS 流量解密流程</div>
+      <div class="flow-title">
+        🔐 HTTPS 流量解密流程
+      </div>
 
       <div class="flow-diagram">
         <!-- 客户端 -->
         <div class="flow-node client">
-          <div class="node-icon">👤</div>
-          <div class="node-label">客户端 (浏览器)</div>
-          <div class="node-detail">发起 HTTPS 请求</div>
+          <div class="node-icon">
+            👤
+          </div>
+          <div class="node-label">
+            客户端 (浏览器)
+          </div>
+          <div class="node-detail">
+            发起 HTTPS 请求
+          </div>
         </div>
 
         <div class="flow-arrow encrypted">
-          <div class="arrow-line"></div>
+          <div class="arrow-line" />
           <div class="arrow-label">
             <span class="lock-icon">🔒</span>
             <span>TLS 加密连接</span>
           </div>
           <div class="cert-info">
-            <div class="cert-item"><span class="cert-label">证书:</span> *.example.com</div>
-            <div class="cert-item"><span class="cert-label">算法:</span> TLS 1.3</div>
-            <div class="cert-item"><span class="cert-label">加密:</span> AES-256-GCM</div>
+            <div class="cert-item">
+              <span class="cert-label">证书:</span> *.example.com
+            </div>
+            <div class="cert-item">
+              <span class="cert-label">算法:</span> TLS 1.3
+            </div>
+            <div class="cert-item">
+              <span class="cert-label">加密:</span> AES-256-GCM
+            </div>
           </div>
         </div>
 
         <!-- Nginx -->
         <div class="flow-node nginx">
-          <div class="node-icon">🚪</div>
-          <div class="node-label">Nginx (SSL 终结)</div>
+          <div class="node-icon">
+            🚪
+          </div>
+          <div class="node-label">
+            Nginx (SSL 终结)
+          </div>
           <div class="node-actions">
-            <div class="action"><span class="action-icon">📜</span> 校验证书</div>
-            <div class="action"><span class="action-icon">🔓</span> 解密流量</div>
-            <div class="action"><span class="action-icon">📝</span> 添加 X-Forwarded-*</div>
+            <div class="action">
+              <span class="action-icon">📜</span> 校验证书
+            </div>
+            <div class="action">
+              <span class="action-icon">🔓</span> 解密流量
+            </div>
+            <div class="action">
+              <span class="action-icon">📝</span> 添加 X-Forwarded-*
+            </div>
           </div>
         </div>
 
         <div class="flow-arrow plain">
-          <div class="arrow-line"></div>
+          <div class="arrow-line" />
           <div class="arrow-label">
             <span class="unlock-icon">🔓</span>
             <span>HTTP 明文</span>
           </div>
           <div class="headers-info">
-            <div class="header-item">X-Forwarded-For: 203.0.113.42</div>
-            <div class="header-item">X-Forwarded-Proto: https</div>
-            <div class="header-item">X-Real-IP: 203.0.113.42</div>
+            <div class="header-item">
+              X-Forwarded-For: 203.0.113.42
+            </div>
+            <div class="header-item">
+              X-Forwarded-Proto: https
+            </div>
+            <div class="header-item">
+              X-Real-IP: 203.0.113.42
+            </div>
           </div>
         </div>
 
         <!-- 后端服务 -->
         <div class="flow-node backend">
-          <div class="node-icon">⚙️</div>
-          <div class="node-label">后端服务集群</div>
-          <div class="node-detail">专注于业务逻辑，无需处理 TLS</div>
+          <div class="node-icon">
+            ⚙️
+          </div>
+          <div class="node-label">
+            后端服务集群
+          </div>
+          <div class="node-detail">
+            专注于业务逻辑，无需处理 TLS
+          </div>
         </div>
       </div>
     </div>
 
     <div class="cert-management">
-      <div class="section-title">📜 SSL 证书管理</div>
+      <div class="section-title">
+        📜 SSL 证书管理
+      </div>
 
       <div class="cert-tabs">
         <button
@@ -82,14 +124,30 @@
 
       <div class="cert-content">
         <!-- 证书申请流程 -->
-        <div v-if="currentCertTab === 'apply'" class="apply-flow">
+        <div
+          v-if="currentCertTab === 'apply'"
+          class="apply-flow"
+        >
           <div class="flow-steps">
-            <div v-for="(step, index) in certSteps" :key="index" class="cert-step">
-              <div class="step-badge">{{ index + 1 }}</div>
+            <div
+              v-for="(step, index) in certSteps"
+              :key="index"
+              class="cert-step"
+            >
+              <div class="step-badge">
+                {{ index + 1 }}
+              </div>
               <div class="step-content">
-                <div class="step-title">{{ step.title }}</div>
-                <div class="step-desc">{{ step.desc }}</div>
-                <div class="step-command" v-if="step.command">
+                <div class="step-title">
+                  {{ step.title }}
+                </div>
+                <div class="step-desc">
+                  {{ step.desc }}
+                </div>
+                <div
+                  v-if="step.command"
+                  class="step-command"
+                >
                   <code>{{ step.command }}</code>
                 </div>
               </div>
@@ -98,7 +156,10 @@
         </div>
 
         <!-- Nginx 配置 -->
-        <div v-if="currentCertTab === 'config'" class="nginx-config">
+        <div
+          v-if="currentCertTab === 'config'"
+          class="nginx-config"
+        >
           <pre class="config-block"><code>server {
     listen 443 ssl http2;
     server_name api.example.com;
@@ -147,15 +208,27 @@ server {
         </div>
 
         <!-- 最佳实践 -->
-        <div v-if="currentCertTab === 'bestpractice'" class="best-practices">
+        <div
+          v-if="currentCertTab === 'bestpractice'"
+          class="best-practices"
+        >
           <div class="practices-grid">
-            <div v-for="practice in bestPractices" :key="practice.id" class="practice-card">
+            <div
+              v-for="practice in bestPractices"
+              :key="practice.id"
+              class="practice-card"
+            >
               <div class="practice-header">
                 <span class="practice-icon">{{ practice.icon }}</span>
                 <span class="practice-title">{{ practice.title }}</span>
               </div>
-              <div class="practice-content">{{ practice.content }}</div>
-              <div class="practice-code" v-if="practice.code">
+              <div class="practice-content">
+                {{ practice.content }}
+              </div>
+              <div
+                v-if="practice.code"
+                class="practice-code"
+              >
                 <code>{{ practice.code }}</code>
               </div>
             </div>
@@ -165,31 +238,57 @@ server {
     </div>
 
     <div class="benefits-section">
-      <div class="section-title">✨ SSL 终结的核心优势</div>
+      <div class="section-title">
+        ✨ SSL 终结的核心优势
+      </div>
 
       <div class="benefits-grid">
         <div class="benefit-card">
-          <div class="benefit-icon">🚀</div>
-          <div class="benefit-title">性能提升</div>
-          <div class="benefit-desc">TLS 握手和加密解密是 CPU 密集型操作，集中在 Nginx 处理，后端服务专注业务逻辑，整体吞吐量提升 2-5 倍</div>
+          <div class="benefit-icon">
+            🚀
+          </div>
+          <div class="benefit-title">
+            性能提升
+          </div>
+          <div class="benefit-desc">
+            TLS 握手和加密解密是 CPU 密集型操作，集中在 Nginx 处理，后端服务专注业务逻辑，整体吞吐量提升 2-5 倍
+          </div>
         </div>
 
         <div class="benefit-card">
-          <div class="benefit-icon">🔧</div>
-          <div class="benefit-title">简化运维</div>
-          <div class="benefit-desc">证书统一管理，只需在 Nginx 配置一次，无需在每个后端服务重复配置，证书续期、更换一键完成</div>
+          <div class="benefit-icon">
+            🔧
+          </div>
+          <div class="benefit-title">
+            简化运维
+          </div>
+          <div class="benefit-desc">
+            证书统一管理，只需在 Nginx 配置一次，无需在每个后端服务重复配置，证书续期、更换一键完成
+          </div>
         </div>
 
         <div class="benefit-card">
-          <div class="benefit-icon">🛡️</div>
-          <div class="benefit-title">集中安全</div>
-          <div class="benefit-desc">SSL/TLS 配置统一管控，强制使用最新协议版本和密码套件，统一添加安全响应头（HSTS、CSP 等）</div>
+          <div class="benefit-icon">
+            🛡️
+          </div>
+          <div class="benefit-title">
+            集中安全
+          </div>
+          <div class="benefit-desc">
+            SSL/TLS 配置统一管控，强制使用最新协议版本和密码套件，统一添加安全响应头（HSTS、CSP 等）
+          </div>
         </div>
 
         <div class="benefit-card">
-          <div class="benefit-icon">📊</div>
-          <div class="benefit-title">统一监控</div>
-          <div class="benefit-desc">所有 HTTPS 流量经过 Nginx，可以统一记录访问日志、分析 SSL 握手性能、监控证书有效期，便于审计和排障</div>
+          <div class="benefit-icon">
+            📊
+          </div>
+          <div class="benefit-title">
+            统一监控
+          </div>
+          <div class="benefit-desc">
+            所有 HTTPS 流量经过 Nginx，可以统一记录访问日志、分析 SSL 握手性能、监控证书有效期，便于审计和排障
+          </div>
         </div>
       </div>
     </div>

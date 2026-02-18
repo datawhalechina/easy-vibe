@@ -25,20 +25,32 @@
     <div class="mode-detail">
       <div class="mode-info">
         <h5>{{ getCurrentMode().name }}</h5>
-        <p class="mode-desc">{{ getCurrentMode().description }}</p>
+        <p class="mode-desc">
+          {{ getCurrentMode().description }}
+        </p>
       </div>
 
       <div class="mode-features">
         <div class="feature-section">
           <h6>✅ 优点</h6>
           <ul>
-            <li v-for="pro in getCurrentMode().pros" :key="pro">{{ pro }}</li>
+            <li
+              v-for="pro in getCurrentMode().pros"
+              :key="pro"
+            >
+              {{ pro }}
+            </li>
           </ul>
         </div>
         <div class="feature-section">
           <h6>❌ 缺点</h6>
           <ul>
-            <li v-for="con in getCurrentMode().cons" :key="con">{{ con }}</li>
+            <li
+              v-for="con in getCurrentMode().cons"
+              :key="con"
+            >
+              {{ con }}
+            </li>
           </ul>
         </div>
       </div>

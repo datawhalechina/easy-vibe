@@ -12,7 +12,11 @@
 
     <div class="demo-content">
       <div class="comparison-cards">
-        <div class="card vuex-card" :class="{ active: activeTab === 'vuex' }" @click="activeTab = 'vuex'">
+        <div
+          class="card vuex-card"
+          :class="{ active: activeTab === 'vuex' }"
+          @click="activeTab = 'vuex'"
+        >
           <div class="card-header">
             <span class="card-icon">🌿</span>
             <span class="card-title">Vuex</span>
@@ -20,15 +24,27 @@
           </div>
           <div class="card-body">
             <div class="feature-list">
-              <div class="feature-item">✅ 选项式 API</div>
-              <div class="feature-item">✅ State / Mutations / Actions 分离</div>
-              <div class="feature-item">❌ 样板代码较多</div>
-              <div class="feature-item">❌ TypeScript 支持较弱</div>
+              <div class="feature-item">
+                ✅ 选项式 API
+              </div>
+              <div class="feature-item">
+                ✅ State / Mutations / Actions 分离
+              </div>
+              <div class="feature-item">
+                ❌ 样板代码较多
+              </div>
+              <div class="feature-item">
+                ❌ TypeScript 支持较弱
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="card pinia-card" :class="{ active: activeTab === 'pinia' }" @click="activeTab = 'pinia'">
+        <div
+          class="card pinia-card"
+          :class="{ active: activeTab === 'pinia' }"
+          @click="activeTab = 'pinia'"
+        >
           <div class="card-header">
             <span class="card-icon">🍍</span>
             <span class="card-title">Pinia</span>
@@ -36,18 +52,35 @@
           </div>
           <div class="card-body">
             <div class="feature-list">
-              <div class="feature-item">✅ 组合式 API</div>
-              <div class="feature-item">✅ 去除 Mutations，简化代码</div>
-              <div class="feature-item">✅ 完美 TypeScript 支持</div>
-              <div class="feature-item">✅ 自动代码分割</div>
+              <div class="feature-item">
+                ✅ 组合式 API
+              </div>
+              <div class="feature-item">
+                ✅ 去除 Mutations，简化代码
+              </div>
+              <div class="feature-item">
+                ✅ 完美 TypeScript 支持
+              </div>
+              <div class="feature-item">
+                ✅ 自动代码分割
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <Transition name="fade" mode="out-in">
-        <div v-if="activeTab === 'vuex'" key="vuex" class="code-example">
-          <div class="code-title">Vuex 代码示例</div>
+      <Transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="activeTab === 'vuex'"
+          key="vuex"
+          class="code-example"
+        >
+          <div class="code-title">
+            Vuex 代码示例
+          </div>
           <pre class="code-block"><code>// store/index.js
 export default createStore({
   state: { count: 0 },
@@ -64,8 +97,14 @@ export default createStore({
 })</code></pre>
         </div>
 
-        <div v-else-if="activeTab === 'pinia'" key="pinia" class="code-example">
-          <div class="code-title">Pinia 代码示例</div>
+        <div
+          v-else-if="activeTab === 'pinia'"
+          key="pinia"
+          class="code-example"
+        >
+          <div class="code-title">
+            Pinia 代码示例
+          </div>
           <pre class="code-block"><code>// stores/counter.js
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)

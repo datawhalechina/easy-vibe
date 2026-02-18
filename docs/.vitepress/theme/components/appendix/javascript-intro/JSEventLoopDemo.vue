@@ -91,9 +91,18 @@ const stop = () => {
               'processed': currentStep > index
             }"
           >
-            <div class="item-index">{{ item.id }}</div>
-            <div class="item-code">{{ item.code }}</div>
-            <div v-if="currentStep === index" class="executing">执行中</div>
+            <div class="item-index">
+              {{ item.id }}
+            </div>
+            <div class="item-code">
+              {{ item.code }}
+            </div>
+            <div
+              v-if="currentStep === index"
+              class="executing"
+            >
+              执行中
+            </div>
           </div>
         </div>
       </div>
@@ -102,11 +111,16 @@ const stop = () => {
       <div class="worker-section">
         <h4>工位（单线程）</h4>
         <div class="worker">
-          <div class="worker-emoji">👨‍💻</div>
+          <div class="worker-emoji">
+            👨‍💻
+          </div>
           <div class="worker-status">
             {{ currentStep < steps.length ? '正在执行' : '执行完成' }}
           </div>
-          <div v-if="currentStep < steps.length" class="current-task">
+          <div
+            v-if="currentStep < steps.length"
+            class="current-task"
+          >
             {{ steps[currentStep]?.description }}
           </div>
         </div>
@@ -122,12 +136,17 @@ const stop = () => {
             class="task-item"
             :class="{ 'ready': task.status === 'ready' }"
           >
-            <div class="task-code">{{ task.code }}</div>
+            <div class="task-code">
+              {{ task.code }}
+            </div>
             <div class="task-status">
               {{ task.status === 'ready' ? '✅ 就绪' : '⏳ 等待中...' }}
             </div>
           </div>
-          <div v-if="taskQueue.length === 0" class="empty-queue">
+          <div
+            v-if="taskQueue.length === 0"
+            class="empty-queue"
+          >
             暂无待办任务
           </div>
         </div>
@@ -138,7 +157,12 @@ const stop = () => {
     <div class="output-section">
       <h4>输出日志</h4>
       <div class="output-log">
-        <div v-if="outputLog.length === 0" class="empty-log">等待输出...</div>
+        <div
+          v-if="outputLog.length === 0"
+          class="empty-log"
+        >
+          等待输出...
+        </div>
         <div
           v-for="(log, index) in outputLog"
           :key="index"
@@ -152,16 +176,31 @@ const stop = () => {
 
     <!-- 控制按钮 -->
     <div class="controls">
-      <button @click="play" :disabled="isPlaying || currentStep >= steps.length" class="btn-play">
+      <button
+        :disabled="isPlaying || currentStep >= steps.length"
+        class="btn-play"
+        @click="play"
+      >
         {{ isPlaying ? '执行中...' : '▶ 自动播放' }}
       </button>
-      <button @click="nextStep" :disabled="isPlaying || currentStep >= steps.length" class="btn-step">
+      <button
+        :disabled="isPlaying || currentStep >= steps.length"
+        class="btn-step"
+        @click="nextStep"
+      >
         ⏭ 单步执行
       </button>
-      <button @click="stop" :disabled="!isPlaying" class="btn-stop">
+      <button
+        :disabled="!isPlaying"
+        class="btn-stop"
+        @click="stop"
+      >
         ⏸ 停止
       </button>
-      <button @click="reset" class="btn-reset">
+      <button
+        class="btn-reset"
+        @click="reset"
+      >
         🔄 重置
       </button>
     </div>
@@ -170,7 +209,9 @@ const stop = () => {
     <div class="explanation">
       <p><strong>执行顺序：</strong>{{ outputLog.map(l => l.output).join(', ') || '还未开始' }}</p>
       <p><strong>代码书写顺序：</strong>1, 2, 3, 4, 5</p>
-      <p class="highlight">代码从上到下写的，但执行顺序不一定从上到下——因为异步操作会被"推迟"到当前代码执行完之后。</p>
+      <p class="highlight">
+        代码从上到下写的，但执行顺序不一定从上到下——因为异步操作会被"推迟"到当前代码执行完之后。
+      </p>
     </div>
   </div>
 </template>

@@ -57,10 +57,10 @@ const processCustomer = async (customer, realTime) => {
       <button
         v-for="m in modes"
         :key="m.value"
-        @click="mode = m.value"
         :class="{ 'active': mode === m.value }"
         class="mode-btn"
         :disabled="isRunning"
+        @click="mode = m.value"
       >
         {{ m.label }}
       </button>
@@ -75,33 +75,84 @@ const processCustomer = async (customer, realTime) => {
             class="stove"
             :class="{ 'cooking': customerA.status === 'cooking', 'done': customerA.status === 'done' }"
           >
-            <div class="stove-label">灶位 1</div>
+            <div class="stove-label">
+              灶位 1
+            </div>
             <div class="stove-content">
-              <div v-if="customerA.status === 'cooking'" class="cooking-text">煮面 {{ customerA.time }}s</div>
-              <div v-if="customerA.status === 'done'" class="done-text">✅ 完成</div>
-              <div v-if="customerA.status === 'waiting'" class="waiting-text">空闲</div>
+              <div
+                v-if="customerA.status === 'cooking'"
+                class="cooking-text"
+              >
+                煮面 {{ customerA.time }}s
+              </div>
+              <div
+                v-if="customerA.status === 'done'"
+                class="done-text"
+              >
+                ✅ 完成
+              </div>
+              <div
+                v-if="customerA.status === 'waiting'"
+                class="waiting-text"
+              >
+                空闲
+              </div>
             </div>
           </div>
           <div
             class="stove"
             :class="{ 'cooking': customerB.status === 'cooking', 'done': customerB.status === 'done' }"
           >
-            <div class="stove-label">灶位 2</div>
+            <div class="stove-label">
+              灶位 2
+            </div>
             <div class="stove-content">
-              <div v-if="customerB.status === 'cooking'" class="cooking-text">炒饭 {{ customerB.time }}s</div>
-              <div v-if="customerB.status === 'done'" class="done-text">✅ 完成</div>
-              <div v-if="customerB.status === 'waiting'" class="waiting-text">空闲</div>
+              <div
+                v-if="customerB.status === 'cooking'"
+                class="cooking-text"
+              >
+                炒饭 {{ customerB.time }}s
+              </div>
+              <div
+                v-if="customerB.status === 'done'"
+                class="done-text"
+              >
+                ✅ 完成
+              </div>
+              <div
+                v-if="customerB.status === 'waiting'"
+                class="waiting-text"
+              >
+                空闲
+              </div>
             </div>
           </div>
           <div
             class="stove"
             :class="{ 'cooking': customerC.status === 'cooking', 'done': customerC.status === 'done' }"
           >
-            <div class="stove-label">灶位 3</div>
+            <div class="stove-label">
+              灶位 3
+            </div>
             <div class="stove-content">
-              <div v-if="customerC.status === 'cooking'" class="cooking-text">烤鱼 {{ customerC.time }}s</div>
-              <div v-if="customerC.status === 'done'" class="done-text">✅ 完成</div>
-              <div v-if="customerC.status === 'waiting'" class="waiting-text">空闲</div>
+              <div
+                v-if="customerC.status === 'cooking'"
+                class="cooking-text"
+              >
+                烤鱼 {{ customerC.time }}s
+              </div>
+              <div
+                v-if="customerC.status === 'done'"
+                class="done-text"
+              >
+                ✅ 完成
+              </div>
+              <div
+                v-if="customerC.status === 'waiting'"
+                class="waiting-text"
+              >
+                空闲
+              </div>
             </div>
           </div>
         </div>
@@ -111,51 +162,106 @@ const processCustomer = async (customer, realTime) => {
       <div class="customers">
         <h4>顾客</h4>
         <div class="customer-list">
-          <div class="customer" :class="{ 'served': customerA.status === 'done' }">
-            <div class="customer-avatar">👤</div>
-            <div class="customer-info">
-              <div class="customer-name">顾客 A</div>
-              <div class="customer-order">煮面 ({{ customerA.time }}秒)</div>
+          <div
+            class="customer"
+            :class="{ 'served': customerA.status === 'done' }"
+          >
+            <div class="customer-avatar">
+              👤
             </div>
-            <div v-if="customerA.status === 'done'" class="check-mark">✅</div>
+            <div class="customer-info">
+              <div class="customer-name">
+                顾客 A
+              </div>
+              <div class="customer-order">
+                煮面 ({{ customerA.time }}秒)
+              </div>
+            </div>
+            <div
+              v-if="customerA.status === 'done'"
+              class="check-mark"
+            >
+              ✅
+            </div>
           </div>
-          <div class="customer" :class="{ 'served': customerB.status === 'done' }">
-            <div class="customer-avatar">👤</div>
-            <div class="customer-info">
-              <div class="customer-name">顾客 B</div>
-              <div class="customer-order">炒饭 ({{ customerB.time }}秒)</div>
+          <div
+            class="customer"
+            :class="{ 'served': customerB.status === 'done' }"
+          >
+            <div class="customer-avatar">
+              👤
             </div>
-            <div v-if="customerB.status === 'done'" class="check-mark">✅</div>
+            <div class="customer-info">
+              <div class="customer-name">
+                顾客 B
+              </div>
+              <div class="customer-order">
+                炒饭 ({{ customerB.time }}秒)
+              </div>
+            </div>
+            <div
+              v-if="customerB.status === 'done'"
+              class="check-mark"
+            >
+              ✅
+            </div>
           </div>
-          <div class="customer" :class="{ 'served': customerC.status === 'done' }">
-            <div class="customer-avatar">👤</div>
-            <div class="customer-info">
-              <div class="customer-name">顾客 C</div>
-              <div class="customer-order">烤鱼 ({{ customerC.time }}秒)</div>
+          <div
+            class="customer"
+            :class="{ 'served': customerC.status === 'done' }"
+          >
+            <div class="customer-avatar">
+              👤
             </div>
-            <div v-if="customerC.status === 'done'" class="check-mark">✅</div>
+            <div class="customer-info">
+              <div class="customer-name">
+                顾客 C
+              </div>
+              <div class="customer-order">
+                烤鱼 ({{ customerC.time }}秒)
+              </div>
+            </div>
+            <div
+              v-if="customerC.status === 'done'"
+              class="check-mark"
+            >
+              ✅
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="controls">
-      <button @click="start" :disabled="isRunning" class="btn-start">
+      <button
+        :disabled="isRunning"
+        class="btn-start"
+        @click="start"
+      >
         {{ isRunning ? '执行中...' : '开始' }}
       </button>
-      <button @click="reset" :disabled="isRunning" class="btn-reset">
+      <button
+        :disabled="isRunning"
+        class="btn-reset"
+        @click="reset"
+      >
         重置
       </button>
     </div>
 
-    <div class="comparison" v-if="!isRunning && (customerA.status === 'done' || customerB.status === 'done')">
+    <div
+      v-if="!isRunning && (customerA.status === 'done' || customerB.status === 'done')"
+      class="comparison"
+    >
       <div class="comparison-item">
         <strong>同步模式：</strong> 10 秒（依次执行）
       </div>
       <div class="comparison-item">
         <strong>异步模式：</strong> 约 5 秒（同时执行）
       </div>
-      <div class="tip">JavaScript 用的就是异步模式——遇到耗时操作（如网络请求），不会傻等，而是先去做别的事。</div>
+      <div class="tip">
+        JavaScript 用的就是异步模式——遇到耗时操作（如网络请求），不会傻等，而是先去做别的事。
+      </div>
     </div>
 
     <div class="code-display">

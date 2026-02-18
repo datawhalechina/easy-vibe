@@ -20,7 +20,7 @@
         <div
           class="line-fill"
           :style="{ width: (currentStage / (stages.length - 1)) * 100 + '%' }"
-        ></div>
+        />
       </div>
     </div>
 
@@ -31,13 +31,27 @@
       </div>
 
       <div class="component-wrapper">
-        <transition name="fade" mode="out-in">
-          <component :is="stages[currentStage].component" :key="currentStage" />
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <component
+            :is="stages[currentStage].component"
+            :key="currentStage"
+          />
         </transition>
       </div>
 
-      <div class="action-footer" v-if="currentStage < stages.length - 1">
-        <button class="next-btn" @click="nextStage">下一步 →</button>
+      <div
+        v-if="currentStage < stages.length - 1"
+        class="action-footer"
+      >
+        <button
+          class="next-btn"
+          @click="nextStage"
+        >
+          下一步 →
+        </button>
       </div>
     </div>
   </div>

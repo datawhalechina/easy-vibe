@@ -25,11 +25,20 @@
       <div class="row">
         <span class="label">常见位置</span><span>{{ current.scene }}</span>
       </div>
-      <div class="row code-title">示例</div>
+      <div class="row code-title">
+        示例
+      </div>
       <pre><code>{{ current.example }}</code></pre>
-      <div class="row code-title">渲染效果</div>
-      <div class="preview-box" v-html="current.example"></div>
-      <div class="row tip">小贴士：{{ current.tip }}</div>
+      <div class="row code-title">
+        渲染效果
+      </div>
+      <div
+        class="preview-box"
+        v-html="current.example"
+      />
+      <div class="row tip">
+        小贴士：{{ current.tip }}
+      </div>
     </div>
   </div>
 </template>

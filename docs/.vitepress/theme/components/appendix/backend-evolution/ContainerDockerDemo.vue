@@ -7,44 +7,91 @@
     </div>
 
     <div class="docker-visualization">
-      <div class="layer traditional" :class="{ active: showTraditional }" @click="showTraditional = true; showDocker = false">
+      <div
+        class="layer traditional"
+        :class="{ active: showTraditional }"
+        @click="showTraditional = true; showDocker = false"
+      >
         <h5>传统部署</h5>
         <div class="server-stack">
-          <div class="layer-item app">应用 A</div>
-          <div class="layer-item conflict" v-if="showConflict">依赖冲突!</div>
-          <div class="layer-item deps">依赖库 v1.0</div>
-          <div class="layer-item os">操作系统</div>
-          <div class="layer-item hardware">物理服务器</div>
+          <div class="layer-item app">
+            应用 A
+          </div>
+          <div
+            v-if="showConflict"
+            class="layer-item conflict"
+          >
+            依赖冲突!
+          </div>
+          <div class="layer-item deps">
+            依赖库 v1.0
+          </div>
+          <div class="layer-item os">
+            操作系统
+          </div>
+          <div class="layer-item hardware">
+            物理服务器
+          </div>
         </div>
       </div>
 
-      <div class="vs-divider">VS</div>
+      <div class="vs-divider">
+        VS
+      </div>
 
-      <div class="layer docker" :class="{ active: showDocker }" @click="showDocker = true; showTraditional = false">
+      <div
+        class="layer docker"
+        :class="{ active: showDocker }"
+        @click="showDocker = true; showTraditional = false"
+      >
         <h5>Docker 容器</h5>
         <div class="docker-stack">
           <div class="containers">
             <div class="container-box">
-              <div class="container-app">应用 A</div>
-              <div class="container-deps">依赖 v1.0</div>
+              <div class="container-app">
+                应用 A
+              </div>
+              <div class="container-deps">
+                依赖 v1.0
+              </div>
             </div>
             <div class="container-box">
-              <div class="container-app">应用 B</div>
-              <div class="container-deps">依赖 v2.0</div>
+              <div class="container-app">
+                应用 B
+              </div>
+              <div class="container-deps">
+                依赖 v2.0
+              </div>
             </div>
           </div>
-          <div class="docker-engine">Docker Engine</div>
-          <div class="host-os">宿主机操作系统</div>
-          <div class="hardware">物理服务器</div>
+          <div class="docker-engine">
+            Docker Engine
+          </div>
+          <div class="host-os">
+            宿主机操作系统
+          </div>
+          <div class="hardware">
+            物理服务器
+          </div>
         </div>
       </div>
     </div>
 
     <div class="benefits-grid">
-      <div class="benefit-card" v-for="benefit in benefits" :key="benefit.title">
-        <div class="benefit-icon">{{ benefit.icon }}</div>
-        <div class="benefit-title">{{ benefit.title }}</div>
-        <div class="benefit-desc">{{ benefit.desc }}</div>
+      <div
+        v-for="benefit in benefits"
+        :key="benefit.title"
+        class="benefit-card"
+      >
+        <div class="benefit-icon">
+          {{ benefit.icon }}
+        </div>
+        <div class="benefit-title">
+          {{ benefit.title }}
+        </div>
+        <div class="benefit-desc">
+          {{ benefit.desc }}
+        </div>
       </div>
     </div>
 

@@ -13,18 +13,30 @@
         :class="{ active: currentStep === idx }"
         @click="currentStep = idx"
       >
-        <div class="step-connector" v-if="idx > 0">
-          <div class="connector-line"></div>
+        <div
+          v-if="idx > 0"
+          class="step-connector"
+        >
+          <div class="connector-line" />
         </div>
         <div class="step-content">
-          <div class="step-icon">{{ step.icon }}</div>
-          <div class="step-era">{{ step.era }}</div>
-          <div class="step-title">{{ step.title }}</div>
+          <div class="step-icon">
+            {{ step.icon }}
+          </div>
+          <div class="step-era">
+            {{ step.era }}
+          </div>
+          <div class="step-title">
+            {{ step.title }}
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="step-detail" v-if="currentStep !== null">
+    <div
+      v-if="currentStep !== null"
+      class="step-detail"
+    >
       <h5>{{ steps[currentStep].title }}</h5>
       <div class="detail-grid">
         <div class="detail-item">
@@ -42,7 +54,11 @@
       </div>
       <div class="tools-list">
         <span class="tools-label">代表工具:</span>
-        <span v-for="tool in steps[currentStep].tools" :key="tool" class="tool-tag">{{ tool }}</span>
+        <span
+          v-for="tool in steps[currentStep].tools"
+          :key="tool"
+          class="tool-tag"
+        >{{ tool }}</span>
       </div>
     </div>
   </div>

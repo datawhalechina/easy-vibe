@@ -6,7 +6,10 @@
       <span class="subtitle">理解 CDN 的 HTTPS 协议和证书管理</span>
     </div>
     <div class="demo-content">
-      <el-alert type="info" :closable="false">
+      <el-alert
+        type="info"
+        :closable="false"
+      >
         HTTPS 优化演示组件占位符 - 待实现具体交互
       </el-alert>
     </div>

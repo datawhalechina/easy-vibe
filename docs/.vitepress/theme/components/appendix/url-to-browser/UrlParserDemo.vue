@@ -11,7 +11,10 @@
   <div class="url-parser-order">
     <!-- 顶部：输入区 -->
     <div class="input-section">
-      <div class="url-input-box" :class="{ 'has-error': error }">
+      <div
+        class="url-input-box"
+        :class="{ 'has-error': error }"
+      >
         <span class="input-label">URL</span>
         <input
           v-model="urlInput"
@@ -19,17 +22,23 @@
           placeholder="https://www.example.com/path?query=1"
           class="real-input"
           @input="parseUrl"
-        />
-        <button v-if="urlInput" class="clear-btn" @click="clear">✕</button>
+        >
+        <button
+          v-if="urlInput"
+          class="clear-btn"
+          @click="clear"
+        >
+          ✕
+        </button>
       </div>
       <div class="quick-actions">
         <span class="action-label">试一试：</span>
         <button 
           v-for="ex in examples" 
           :key="ex.name"
-          @click="useExample(ex)"
           class="action-chip"
           :class="{ active: currentExample === ex.name }"
+          @click="useExample(ex)"
         >
           {{ ex.name }}
         </button>
@@ -48,8 +57,8 @@
           <div class="code-blocks">
             <div 
               v-for="(field, key) in formFields" 
-              :key="key"
               v-show="shouldShowField(key)"
+              :key="key"
               class="code-block"
               :class="[key, { active: hovered === key }]"
               :style="{ '--color': field.color }"
@@ -75,19 +84,24 @@
             <span class="title">购物订单</span>
           </div>
           <div class="order-ticket">
-            <div class="ticket-hole"></div>
+            <div class="ticket-hole" />
             
             <div 
               v-for="(field, key) in formFields"
-              :key="key"
               v-show="shouldShowField(key)"
+              :key="key"
               class="ticket-row"
               :class="{ active: hovered === key }"
               :style="{ '--color': field.color }"
               @mouseenter="hovered = key"
               @mouseleave="hovered = null"
             >
-              <div class="ticket-icon" :style="{ backgroundColor: field.color }">{{ field.icon }}</div>
+              <div
+                class="ticket-icon"
+                :style="{ backgroundColor: field.color }"
+              >
+                {{ field.icon }}
+              </div>
               <div class="ticket-content">
                 <span class="ticket-label">{{ field.analogyLabel }}</span>
                 <span class="ticket-desc">{{ field.analogyDesc }}</span>
@@ -99,24 +113,45 @@
 
       <!-- 技术答疑面板 -->
       <transition name="fade">
-        <div class="qa-panel" v-if="activeQa">
-          <div class="qa-header">{{ activeQa.title }}</div>
+        <div
+          v-if="activeQa"
+          class="qa-panel"
+        >
+          <div class="qa-header">
+            {{ activeQa.title }}
+          </div>
           <div class="qa-content">
-            <div v-for="(item, idx) in activeQa.content" :key="idx" class="qa-item">
-              <div class="qa-q">Q: {{ item.q }}</div>
-              <div class="qa-a">A: {{ item.a }}</div>
+            <div
+              v-for="(item, idx) in activeQa.content"
+              :key="idx"
+              class="qa-item"
+            >
+              <div class="qa-q">
+                Q: {{ item.q }}
+              </div>
+              <div class="qa-a">
+                A: {{ item.a }}
+              </div>
             </div>
           </div>
         </div>
-        <div class="qa-placeholder" v-else>
+        <div
+          v-else
+          class="qa-placeholder"
+        >
           👆 鼠标悬停在上方色块，查看详细技术解释
         </div>
       </transition>
     </template>
 
     <!-- 空状态引导 -->
-    <div class="empty-state" v-else>
-      <div class="empty-icon">🛒</div>
+    <div
+      v-else
+      class="empty-state"
+    >
+      <div class="empty-icon">
+        🛒
+      </div>
       <div class="empty-text">
         <p>输入网址，生成你的"数字购物单"</p>
         <span class="sub-text">看看浏览器如何理解这一长串字符</span>

@@ -2,7 +2,9 @@
   <div class="compute-services-demo">
     <div class="demo-header">
       <h4>计算服务选型指南</h4>
-      <p class="demo-desc">拖动滑块调整场景参数，获取最佳计算方案</p>
+      <p class="demo-desc">
+        拖动滑块调整场景参数，获取最佳计算方案
+      </p>
     </div>
 
     <div class="scenario-sliders">
@@ -13,7 +15,7 @@
           type="range"
           min="0"
           max="100"
-        />
+        >
         <div class="slider-labels">
           <span>波动大</span>
           <span>非常稳定</span>
@@ -27,7 +29,7 @@
           type="range"
           min="0"
           max="100"
-        />
+        >
         <div class="slider-labels">
           <span>很低</span>
           <span>接近100%</span>
@@ -41,7 +43,7 @@
           type="range"
           min="0"
           max="100"
-        />
+        >
         <div class="slider-labels">
           <span>几分钟</span>
           <span>持续运行</span>
@@ -55,7 +57,7 @@
           type="range"
           min="0"
           max="100"
-        />
+        >
         <div class="slider-labels">
           <span>平稳</span>
           <span>大起大落</span>
@@ -76,18 +78,28 @@
           class="solution-card"
           :class="{ 'top-pick': index === 0 }"
         >
-          <div class="solution-rank" :class="{ 'rank-1': index === 0 }">
+          <div
+            class="solution-rank"
+            :class="{ 'rank-1': index === 0 }"
+          >
             {{ index === 0 ? '👑' : index + 1 }}
           </div>
           <div class="solution-content">
-            <div class="solution-name">{{ solution.name }}</div>
+            <div class="solution-name">
+              {{ solution.name }}
+            </div>
             <div class="solution-services">
               <span class="service-tag aws">{{ solution.aws }}</span>
               <span class="vs-mini">vs</span>
               <span class="service-tag aliyun">{{ solution.aliyun }}</span>
             </div>
-            <div class="solution-reason">{{ solution.reason }}</div>
-            <div class="solution-savings" v-if="solution.savings">
+            <div class="solution-reason">
+              {{ solution.reason }}
+            </div>
+            <div
+              v-if="solution.savings"
+              class="solution-savings"
+            >
               💰 预计节省: {{ solution.savings }}
             </div>
           </div>

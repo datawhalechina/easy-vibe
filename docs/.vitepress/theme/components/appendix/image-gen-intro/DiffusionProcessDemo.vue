@@ -3,23 +3,42 @@
     <div class="magic-frame">
       <!-- The Canvas -->
       <div class="canvas-wrapper">
-        <canvas ref="canvasRef" width="300" height="300"></canvas>
+        <canvas
+          ref="canvasRef"
+          width="300"
+          height="300"
+        />
         
         <!-- Overlay Status -->
-        <div class="status-overlay" :class="{ visible: isProcessing }">
-          <div class="step-counter">Step {{ currentStep }} / {{ totalSteps }}</div>
-          <div class="step-desc">{{ stepDescription }}</div>
+        <div
+          class="status-overlay"
+          :class="{ visible: isProcessing }"
+        >
+          <div class="step-counter">
+            Step {{ currentStep }} / {{ totalSteps }}
+          </div>
+          <div class="step-desc">
+            {{ stepDescription }}
+          </div>
         </div>
       </div>
 
       <!-- Controls -->
       <div class="controls">
-        <button class="magic-btn" @click="startDenoise" :disabled="isProcessing">
+        <button
+          class="magic-btn"
+          :disabled="isProcessing"
+          @click="startDenoise"
+        >
           <span class="icon">✨</span>
           {{ isProcessing ? '去噪中...' : '开始去噪 (Denoise)' }}
         </button>
         
-        <button class="reset-btn" @click="reset" :disabled="isProcessing">
+        <button
+          class="reset-btn"
+          :disabled="isProcessing"
+          @click="reset"
+        >
           <span class="icon">🔄</span> 重置
         </button>
       </div>

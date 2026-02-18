@@ -115,10 +115,22 @@ const stop = () => {
           }"
         >
           <span class="item-number">{{ item.id }}</span>
-          <span class="item-code" :class="`type-${item.type}`">{{ item.code }}</span>
-          <span v-if="item.type === 'sync'" class="item-tag">同步</span>
-          <span v-else-if="item.type === 'micro'" class="item-tag micro">微任务</span>
-          <span v-else-if="item.type === 'macro'" class="item-tag macro">宏任务</span>
+          <span
+            class="item-code"
+            :class="`type-${item.type}`"
+          >{{ item.code }}</span>
+          <span
+            v-if="item.type === 'sync'"
+            class="item-tag"
+          >同步</span>
+          <span
+            v-else-if="item.type === 'micro'"
+            class="item-tag micro"
+          >微任务</span>
+          <span
+            v-else-if="item.type === 'macro'"
+            class="item-tag macro"
+          >宏任务</span>
         </div>
       </div>
     </div>
@@ -129,10 +141,16 @@ const stop = () => {
       <div class="stack-panel">
         <h4>调用栈 (正在执行)</h4>
         <div class="stack-content">
-          <div v-if="currentStep < executionSteps.length" class="current-action">
+          <div
+            v-if="currentStep < executionSteps.length"
+            class="current-action"
+          >
             {{ executionSteps[currentStep]?.description }}
           </div>
-          <div v-else class="current-action done">
+          <div
+            v-else
+            class="current-action done"
+          >
             执行完成
           </div>
         </div>
@@ -152,12 +170,27 @@ const stop = () => {
               class="task-item micro"
               :class="{ 'ready': task.status === 'ready' }"
             >
-              <div class="task-code">{{ task.code }}</div>
-              <div v-if="task.status === 'ready'" class="task-status">✅ 就绪</div>
-              <div v-else class="task-status">⏳ 等待</div>
+              <div class="task-code">
+                {{ task.code }}
+              </div>
+              <div
+                v-if="task.status === 'ready'"
+                class="task-status"
+              >
+                ✅ 就绪
+              </div>
+              <div
+                v-else
+                class="task-status"
+              >
+                ⏳ 等待
+              </div>
             </div>
           </transition-group>
-          <div v-if="microTaskQueue.length === 0" class="empty-queue">
+          <div
+            v-if="microTaskQueue.length === 0"
+            class="empty-queue"
+          >
             队列为空
           </div>
         </div>
@@ -177,12 +210,27 @@ const stop = () => {
               class="task-item macro"
               :class="{ 'ready': task.status === 'ready' }"
             >
-              <div class="task-code">{{ task.code }}</div>
-              <div v-if="task.status === 'ready'" class="task-status">✅ 就绪</div>
-              <div v-else class="task-status">⏳ 等待</div>
+              <div class="task-code">
+                {{ task.code }}
+              </div>
+              <div
+                v-if="task.status === 'ready'"
+                class="task-status"
+              >
+                ✅ 就绪
+              </div>
+              <div
+                v-else
+                class="task-status"
+              >
+                ⏳ 等待
+              </div>
             </div>
           </transition-group>
-          <div v-if="macroTaskQueue.length === 0" class="empty-queue">
+          <div
+            v-if="macroTaskQueue.length === 0"
+            class="empty-queue"
+          >
             队列为空
           </div>
         </div>
@@ -193,7 +241,10 @@ const stop = () => {
     <div class="output-section">
       <h4>输出日志 (执行顺序)</h4>
       <div class="output-log">
-        <div v-if="outputLog.length === 0" class="empty-log">
+        <div
+          v-if="outputLog.length === 0"
+          class="empty-log"
+        >
           等待输出...
         </div>
         <transition-group name="output">
@@ -211,16 +262,32 @@ const stop = () => {
 
     <!-- 控制按钮 -->
     <div class="controls">
-      <button @click="play" :disabled="isAnimating" class="btn-play">
+      <button
+        :disabled="isAnimating"
+        class="btn-play"
+        @click="play"
+      >
         {{ isAnimating ? '执行中...' : '▶ 自动演示' }}
       </button>
-      <button @click="nextStep" :disabled="isAnimating || currentStep >= executionSteps.length" class="btn-step">
+      <button
+        :disabled="isAnimating || currentStep >= executionSteps.length"
+        class="btn-step"
+        @click="nextStep"
+      >
         ⏭ 单步执行
       </button>
-      <button @click="stop" :disabled="!isAnimating" class="btn-stop">
+      <button
+        :disabled="!isAnimating"
+        class="btn-stop"
+        @click="stop"
+      >
         ⏸ 停止
       </button>
-      <button @click="reset" :disabled="isAnimating" class="btn-reset">
+      <button
+        :disabled="isAnimating"
+        class="btn-reset"
+        @click="reset"
+      >
         🔄 重置
       </button>
     </div>

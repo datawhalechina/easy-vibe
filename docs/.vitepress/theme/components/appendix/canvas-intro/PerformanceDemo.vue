@@ -32,31 +32,49 @@
         <div class="param-row">
           <label>Object Count / 对象数量: {{ objectCount }}</label>
           <input
-            type="range"
             v-model.number="objectCount"
+            type="range"
             min="100"
             max="5000"
             step="100"
             @input="resetTest"
-          />
+          >
         </div>
       </div>
 
       <div class="optimization-toggles">
         <label>Optimizations / 优化技术</label>
         <div class="toggle-grid">
-          <label class="toggle-option" v-if="currentTest === 'redraw'">
-            <input type="checkbox" v-model="useDirtyRect" />
+          <label
+            v-if="currentTest === 'redraw'"
+            class="toggle-option"
+          >
+            <input
+              v-model="useDirtyRect"
+              type="checkbox"
+            >
             <span>Dirty Rect / 脏矩形</span>
           </label>
 
-          <label class="toggle-option" v-if="currentTest === 'layer'">
-            <input type="checkbox" v-model="useOffscreenCanvas" />
+          <label
+            v-if="currentTest === 'layer'"
+            class="toggle-option"
+          >
+            <input
+              v-model="useOffscreenCanvas"
+              type="checkbox"
+            >
             <span>Offscreen Canvas / 离屏画布</span>
           </label>
 
-          <label class="toggle-option" v-if="currentTest === 'batch'">
-            <input type="checkbox" v-model="useBatching" />
+          <label
+            v-if="currentTest === 'batch'"
+            class="toggle-option"
+          >
+            <input
+              v-model="useBatching"
+              type="checkbox"
+            >
             <span>Batch Rendering / 批量渲染</span>
           </label>
         </div>
@@ -86,24 +104,34 @@
         </div>
       </div>
 
-      <button class="reset-btn" @click="resetTest">
+      <button
+        class="reset-btn"
+        @click="resetTest"
+      >
         <span class="icon">🔄</span>
         Restart Test / 重新测试
       </button>
     </div>
 
     <div class="canvas-container">
-      <canvas ref="canvasRef" width="600" height="400"></canvas>
+      <canvas
+        ref="canvasRef"
+        width="600"
+        height="400"
+      />
       <canvas
         v-if="useOffscreenCanvas"
         ref="offscreenCanvasRef"
         width="600"
         height="400"
         style="display: none"
-      ></canvas>
+      />
     </div>
 
-    <div class="comparison" v-if="showComparison">
+    <div
+      v-if="showComparison"
+      class="comparison"
+    >
       <h4>Performance Comparison / 性能对比</h4>
       <div class="comparison-table">
         <table>

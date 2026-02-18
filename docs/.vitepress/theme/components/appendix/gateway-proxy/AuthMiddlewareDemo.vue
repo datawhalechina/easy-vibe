@@ -5,8 +5,12 @@
 <template>
   <div class="auth-middleware-demo">
     <div class="header">
-      <div class="title">🔐 认证中间件：谁可以进大门？</div>
-      <div class="subtitle">想象成写字楼门禁——检查工牌、验证身份，没权限的人进不来</div>
+      <div class="title">
+        🔐 认证中间件：谁可以进大门？
+      </div>
+      <div class="subtitle">
+        想象成写字楼门禁——检查工牌、验证身份，没权限的人进不来
+      </div>
     </div>
 
     <div class="auth-tabs">
@@ -22,45 +26,91 @@
     </div>
 
     <div class="auth-flow">
-      <div class="flow-title">{{ currentAuthData.title }}</div>
+      <div class="flow-title">
+        {{ currentAuthData.title }}
+      </div>
 
       <div class="flow-diagram">
-        <div class="flow-step" v-for="(step, index) in currentAuthData.steps" :key="index">
-          <div class="step-number">{{ index + 1 }}</div>
+        <div
+          v-for="(step, index) in currentAuthData.steps"
+          :key="index"
+          class="flow-step"
+        >
+          <div class="step-number">
+            {{ index + 1 }}
+          </div>
           <div class="step-content">
-            <div class="step-actor">{{ step.actor }}</div>
-            <div class="step-action">{{ step.action }}</div>
-            <div class="step-arrow" v-if="index < currentAuthData.steps.length - 1">↓</div>
+            <div class="step-actor">
+              {{ step.actor }}
+            </div>
+            <div class="step-action">
+              {{ step.action }}
+            </div>
+            <div
+              v-if="index < currentAuthData.steps.length - 1"
+              class="step-arrow"
+            >
+              ↓
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="token-display" v-if="currentAuth === 'jwt'">
-        <div class="token-header">🔑 JWT Token 结构（Base64编码）</div>
+      <div
+        v-if="currentAuth === 'jwt'"
+        class="token-display"
+      >
+        <div class="token-header">
+          🔑 JWT Token 结构（Base64编码）
+        </div>
         <div class="token-parts">
           <div class="token-part header">
-            <div class="part-label">HEADER</div>
-            <div class="part-content">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</div>
-            <div class="part-decoded">{ "alg": "HS256", "typ": "JWT" }</div>
+            <div class="part-label">
+              HEADER
+            </div>
+            <div class="part-content">
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+            </div>
+            <div class="part-decoded">
+              { "alg": "HS256", "typ": "JWT" }
+            </div>
           </div>
-          <div class="token-separator">.</div>
+          <div class="token-separator">
+            .
+          </div>
           <div class="token-part payload">
-            <div class="part-label">PAYLOAD</div>
-            <div class="part-content">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</div>
-            <div class="part-decoded">{ "sub": "1234567890", "name": "John Doe", "iat": 1516239022 }</div>
+            <div class="part-label">
+              PAYLOAD
+            </div>
+            <div class="part-content">
+              eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
+            </div>
+            <div class="part-decoded">
+              { "sub": "1234567890", "name": "John Doe", "iat": 1516239022 }
+            </div>
           </div>
-          <div class="token-separator">.</div>
+          <div class="token-separator">
+            .
+          </div>
           <div class="token-part signature">
-            <div class="part-label">SIGNATURE</div>
-            <div class="part-content">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</div>
-            <div class="part-decoded">HMACSHA256(base64Url(header) + "." + base64Url(payload), secret)</div>
+            <div class="part-label">
+              SIGNATURE
+            </div>
+            <div class="part-content">
+              SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            </div>
+            <div class="part-decoded">
+              HMACSHA256(base64Url(header) + "." + base64Url(payload), secret)
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="implementation-comparison">
-      <div class="section-title">🛠️ 三种方案实现对比</div>
+      <div class="section-title">
+        🛠️ 三种方案实现对比
+      </div>
 
       <table class="comparison-table">
         <thead>
@@ -73,31 +123,41 @@
         </thead>
         <tbody>
           <tr>
-            <td class="dim">存储位置</td>
+            <td class="dim">
+              存储位置
+            </td>
             <td>服务端存储 Session，客户端存 Cookie</td>
             <td>客户端存储 Token，服务端无状态</td>
             <td>授权服务器存储，客户端存 Access Token</td>
           </tr>
           <tr>
-            <td class="dim">扩展性</td>
+            <td class="dim">
+              扩展性
+            </td>
             <td>❌ 需要共享 Session，扩展复杂</td>
             <td>✅ 无状态，易于水平扩展</td>
             <td>✅ 分布式架构，支持大规模系统</td>
           </tr>
           <tr>
-            <td class="dim">安全性</td>
+            <td class="dim">
+              安全性
+            </td>
             <td>⚠️ Cookie 可能被窃取，需要 CSRF 防护</td>
             <td>⚠️ Token 泄露风险，需 HTTPS + 短期有效</td>
             <td>✅ 行业最佳实践，支持多种安全机制</td>
           </tr>
           <tr>
-            <td class="dim">实现复杂度</td>
+            <td class="dim">
+              实现复杂度
+            </td>
             <td>🟢 简单，开箱即用</td>
             <td>🟡 中等，需要 Token 管理</td>
             <td>🔴 复杂，需要授权服务器</td>
           </tr>
           <tr>
-            <td class="dim">适用场景</td>
+            <td class="dim">
+              适用场景
+            </td>
             <td>传统 Web 应用、后台管理系统</td>
             <td>SPA、移动端 API、微服务</td>
             <td>第三方登录、开放平台、SSO</td>
@@ -107,34 +167,60 @@
     </div>
 
     <div class="security-tips">
-      <div class="tips-title">🔒 网关层认证最佳实践</div>
+      <div class="tips-title">
+        🔒 网关层认证最佳实践
+      </div>
       <div class="tips-list">
         <div class="tip-item">
-          <div class="tip-icon">1</div>
+          <div class="tip-icon">
+            1
+          </div>
           <div class="tip-content">
-            <div class="tip-heading">统一在网关层验证</div>
-            <div class="tip-desc">不要在每个微服务里重复写认证逻辑，统一在网关层校验 JWT 或 Session</div>
+            <div class="tip-heading">
+              统一在网关层验证
+            </div>
+            <div class="tip-desc">
+              不要在每个微服务里重复写认证逻辑，统一在网关层校验 JWT 或 Session
+            </div>
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-icon">2</div>
+          <div class="tip-icon">
+            2
+          </div>
           <div class="tip-content">
-            <div class="tip-heading">HTTPS 强制</div>
-            <div class="tip-desc">网关层强制 HTTPS，防止 Token 在传输过程中被窃取（中间人攻击）</div>
+            <div class="tip-heading">
+              HTTPS 强制
+            </div>
+            <div class="tip-desc">
+              网关层强制 HTTPS，防止 Token 在传输过程中被窃取（中间人攻击）
+            </div>
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-icon">3</div>
+          <div class="tip-icon">
+            3
+          </div>
           <div class="tip-content">
-            <div class="tip-heading">Token 过期策略</div>
-            <div class="tip-desc">Access Token 短期有效（15分钟），配合 Refresh Token 实现无感知续期</div>
+            <div class="tip-heading">
+              Token 过期策略
+            </div>
+            <div class="tip-desc">
+              Access Token 短期有效（15分钟），配合 Refresh Token 实现无感知续期
+            </div>
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-icon">4</div>
+          <div class="tip-icon">
+            4
+          </div>
           <div class="tip-content">
-            <div class="tip-heading">黑名单机制</div>
-            <div class="tip-desc">用户登出或 Token 泄露时，将 Token 加入黑名单（Redis 存储）</div>
+            <div class="tip-heading">
+              黑名单机制
+            </div>
+            <div class="tip-desc">
+              用户登出或 Token 泄露时，将 Token 加入黑名单（Redis 存储）
+            </div>
           </div>
         </div>
       </div>

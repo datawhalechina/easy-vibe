@@ -7,8 +7,13 @@
     </div>
 
     <div class="monolith-diagram">
-      <div class="monolith-box" :class="{ crashed: hasCrashed }">
-        <div class="monolith-header">单体应用进程</div>
+      <div
+        class="monolith-box"
+        :class="{ crashed: hasCrashed }"
+      >
+        <div class="monolith-header">
+          单体应用进程
+        </div>
         <div class="modules-container">
           <div
             v-for="module in modules"
@@ -17,14 +22,27 @@
             :class="{ active: activeModule === module.name, crashed: crashedModule === module.name }"
             @click="triggerModule(module.name)"
           >
-            <div class="module-icon">{{ module.icon }}</div>
-            <div class="module-name">{{ module.name }}</div>
-            <div class="module-status" :class="module.status">{{ module.statusText }}</div>
+            <div class="module-icon">
+              {{ module.icon }}
+            </div>
+            <div class="module-name">
+              {{ module.name }}
+            </div>
+            <div
+              class="module-status"
+              :class="module.status"
+            >
+              {{ module.statusText }}
+            </div>
           </div>
         </div>
         <div class="shared-db">
-          <div class="db-icon">🗄️</div>
-          <div class="db-label">共享数据库</div>
+          <div class="db-icon">
+            🗄️
+          </div>
+          <div class="db-label">
+            共享数据库
+          </div>
         </div>
       </div>
 
@@ -43,9 +61,24 @@
     </div>
 
     <div class="controls">
-      <button class="control-btn" @click="simulateNormalRequest">正常请求</button>
-      <button class="control-btn danger" @click="simulateCrash">模拟模块故障</button>
-      <button class="control-btn" @click="reset">重置</button>
+      <button
+        class="control-btn"
+        @click="simulateNormalRequest"
+      >
+        正常请求
+      </button>
+      <button
+        class="control-btn danger"
+        @click="simulateCrash"
+      >
+        模拟模块故障
+      </button>
+      <button
+        class="control-btn"
+        @click="reset"
+      >
+        重置
+      </button>
     </div>
 
     <div class="info-box">

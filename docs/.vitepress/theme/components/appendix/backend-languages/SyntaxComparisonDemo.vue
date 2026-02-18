@@ -23,16 +23,24 @@
       </button>
     </div>
 
-    <Transition name="fade" mode="out-in">
-      <div :key="selectedLang" class="code-display">
+    <Transition
+      name="fade"
+      mode="out-in"
+    >
+      <div
+        :key="selectedLang"
+        class="code-display"
+      >
         <div class="code-window">
           <div class="window-header">
             <div class="window-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
+              <span class="control red" />
+              <span class="control yellow" />
+              <span class="control green" />
             </div>
-            <div class="file-name">{{ getCode(selectedLang).filename }}</div>
+            <div class="file-name">
+              {{ getCode(selectedLang).filename }}
+            </div>
           </div>
           <pre class="code-content">{{ getCode(selectedLang).code }}</pre>
         </div>

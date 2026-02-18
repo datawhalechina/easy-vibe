@@ -44,36 +44,85 @@ const reset = () => {
     </div>
 
     <div class="boxes-row">
-      <div class="var-box" :class="{ error: messageType === 'error' }">
-        <div class="box-tag const">const</div>
-        <div class="box-name">name</div>
-        <div class="box-value">{{ name }}</div>
-        <div class="box-lock">🔒</div>
+      <div
+        class="var-box"
+        :class="{ error: messageType === 'error' }"
+      >
+        <div class="box-tag const">
+          const
+        </div>
+        <div class="box-name">
+          name
+        </div>
+        <div class="box-value">
+          {{ name }}
+        </div>
+        <div class="box-lock">
+          🔒
+        </div>
       </div>
 
-      <div class="var-box" :class="{ success: messageType === 'success' }">
-        <div class="box-tag let">let</div>
-        <div class="box-name">age</div>
-        <div class="box-value">{{ age }}</div>
-        <div class="box-lock">🔓</div>
+      <div
+        class="var-box"
+        :class="{ success: messageType === 'success' }"
+      >
+        <div class="box-tag let">
+          let
+        </div>
+        <div class="box-name">
+          age
+        </div>
+        <div class="box-value">
+          {{ age }}
+        </div>
+        <div class="box-lock">
+          🔓
+        </div>
       </div>
 
       <div class="var-box">
-        <div class="box-tag const">const</div>
-        <div class="box-name">isStudent</div>
-        <div class="box-value">{{ isStudent }}</div>
-        <div class="box-lock">🔒</div>
+        <div class="box-tag const">
+          const
+        </div>
+        <div class="box-name">
+          isStudent
+        </div>
+        <div class="box-value">
+          {{ isStudent }}
+        </div>
+        <div class="box-lock">
+          🔒
+        </div>
       </div>
     </div>
 
-    <div class="message" v-if="showMessage" :class="messageType">
+    <div
+      v-if="showMessage"
+      class="message"
+      :class="messageType"
+    >
       {{ showMessage }}
     </div>
 
     <div class="controls">
-      <button @click="modifyAge" class="btn btn-primary">修改 age</button>
-      <button @click="modifyName" class="btn btn-danger">修改 name</button>
-      <button @click="reset" class="btn btn-secondary">重置</button>
+      <button
+        class="btn btn-primary"
+        @click="modifyAge"
+      >
+        修改 age
+      </button>
+      <button
+        class="btn btn-danger"
+        @click="modifyName"
+      >
+        修改 name
+      </button>
+      <button
+        class="btn btn-secondary"
+        @click="reset"
+      >
+        重置
+      </button>
     </div>
 
     <div class="code-snippet">

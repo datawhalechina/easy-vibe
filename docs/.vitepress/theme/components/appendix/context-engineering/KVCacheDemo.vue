@@ -3,8 +3,12 @@
     <div class="control-panel">
       <div class="control-group">
         <label class="toggle-switch">
-          <input type="checkbox" v-model="isCacheEnabled" :disabled="isProcessing">
-          <span class="slider"></span>
+          <input
+            v-model="isCacheEnabled"
+            type="checkbox"
+            :disabled="isProcessing"
+          >
+          <span class="slider" />
         </label>
         <span class="label">开启“背课文加速”（前缀复用 / KV Cache）</span>
       </div>
@@ -27,12 +31,18 @@
           <div class="block-header">
             <span class="icon">⚙️</span>
             <span>固定开场白（System Prompt）</span>
-            <span class="badge" v-if="isCacheEnabled && hasCache">已背过</span>
+            <span
+              v-if="isCacheEnabled && hasCache"
+              class="badge"
+            >已背过</span>
           </div>
           <div class="block-content">
             你是一个乐于助人的 AI 助手... （大约 500 个 token）
           </div>
-          <div class="process-indicator" v-if="processingStep === 'system'">
+          <div
+            v-if="processingStep === 'system'"
+            class="process-indicator"
+          >
             计算中...
           </div>
         </div>
@@ -49,7 +59,10 @@
           <div class="block-content">
             用户：你好... （大约 200 个 token）
           </div>
-          <div class="process-indicator" v-if="processingStep === 'history'">
+          <div
+            v-if="processingStep === 'history'"
+            class="process-indicator"
+          >
             计算中...
           </div>
         </div>
@@ -66,7 +79,10 @@
           <div class="block-content">
             {{ currentQuery }} （大约 50 个 token）
           </div>
-          <div class="process-indicator" v-if="processingStep === 'query'">
+          <div
+            v-if="processingStep === 'query'"
+            class="process-indicator"
+          >
             计算中...
           </div>
         </div>
@@ -75,19 +91,35 @@
 
     <div class="metrics-panel">
       <div class="metric-card">
-        <div class="metric-value">{{ metrics.ttft }}ms</div>
-        <div class="metric-label">开口速度（首字延迟 TTFT）</div>
-        <div class="metric-diff" :class="{ 'good': metrics.savedTime > 0 }" v-if="metrics.savedTime > 0">
+        <div class="metric-value">
+          {{ metrics.ttft }}ms
+        </div>
+        <div class="metric-label">
+          开口速度（首字延迟 TTFT）
+        </div>
+        <div
+          v-if="metrics.savedTime > 0"
+          class="metric-diff"
+          :class="{ 'good': metrics.savedTime > 0 }"
+        >
           节省 {{ metrics.savedTime }}ms
         </div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">{{ metrics.processedTokens }}</div>
-        <div class="metric-label">这次一共算了多少个 token</div>
+        <div class="metric-value">
+          {{ metrics.processedTokens }}
+        </div>
+        <div class="metric-label">
+          这次一共算了多少个 token
+        </div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">{{ metrics.cost }}</div>
-        <div class="metric-label">大致算力消耗（越少越省钱）</div>
+        <div class="metric-value">
+          {{ metrics.cost }}
+        </div>
+        <div class="metric-label">
+          大致算力消耗（越少越省钱）
+        </div>
       </div>
     </div>
 

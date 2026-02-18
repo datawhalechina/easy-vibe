@@ -12,10 +12,19 @@
 
       <el-row :gutter="20">
         <!-- Rule Based -->
-        <el-col :xs="24" :md="12" class="mb-4-xs">
-          <el-card shadow="never" class="panel-card">
+        <el-col
+          :xs="24"
+          :md="12"
+          class="mb-4-xs"
+        >
+          <el-card
+            shadow="never"
+            class="panel-card"
+          >
             <template #header>
-              <div class="panel-title">规则系统（手写 If/Else）</div>
+              <div class="panel-title">
+                规则系统（手写 If/Else）
+              </div>
             </template>
             <div class="panel-content">
               <div class="control-row">
@@ -48,8 +57,12 @@
                   bad: ruleResult.label === '🍒'
                 }"
               >
-                <div class="result-title">输出</div>
-                <div class="result-value">{{ ruleResult.text }}</div>
+                <div class="result-title">
+                  输出
+                </div>
+                <div class="result-value">
+                  {{ ruleResult.text }}
+                </div>
                 <div class="result-code">
                   if (size &gt; {{ ruleThreshold }}) return 🍎 else return 🍒
                 </div>
@@ -66,10 +79,18 @@
         </el-col>
 
         <!-- Machine Learning -->
-        <el-col :xs="24" :md="12">
-          <el-card shadow="never" class="panel-card">
+        <el-col
+          :xs="24"
+          :md="12"
+        >
+          <el-card
+            shadow="never"
+            class="panel-card"
+          >
             <template #header>
-              <div class="panel-title">机器学习（从样本推断边界）</div>
+              <div class="panel-title">
+                机器学习（从样本推断边界）
+              </div>
             </template>
             <div class="panel-content">
               <div class="control-row">
@@ -86,12 +107,22 @@
                   placeholder="Label"
                   style="width: 120px"
                 >
-                  <el-option label="🍒 樱桃" value="🍒" />
-                  <el-option label="🍎 苹果" value="🍎" />
+                  <el-option
+                    label="🍒 樱桃"
+                    value="🍒"
+                  />
+                  <el-option
+                    label="🍎 苹果"
+                    value="🍎"
+                  />
                 </el-select>
-                <el-button type="primary" size="small" @click="addSample"
-                  >添加样本</el-button
+                <el-button
+                  type="primary"
+                  size="small"
+                  @click="addSample"
                 >
+                  添加样本
+                </el-button>
               </div>
 
               <div class="samples-area mt-4">
@@ -100,14 +131,17 @@
                   description="还没有样本：先添加 2-4 个样本再训练"
                   :image-size="40"
                 />
-                <div v-else class="sample-chips">
+                <div
+                  v-else
+                  class="sample-chips"
+                >
                   <el-tag
                     v-for="(p, i) in trainingData"
                     :key="p.id"
                     closable
-                    @close="removeSample(i)"
                     :type="p.label === '🍎' ? 'danger' : 'info'"
                     effect="plain"
+                    @close="removeSample(i)"
                   >
                     {{ p.size }} → {{ p.label }}
                   </el-tag>
@@ -117,15 +151,20 @@
               <div class="actions mt-4 flex gap-2">
                 <el-button
                   type="success"
-                  @click="train"
                   :disabled="trainingData.length < 2"
+                  @click="train"
                 >
                   训练（推断阈值）
                 </el-button>
-                <el-button @click="resetLearning">重置</el-button>
+                <el-button @click="resetLearning">
+                  重置
+                </el-button>
               </div>
 
-              <div v-if="learnedThreshold !== null" class="learned-result mt-4">
+              <div
+                v-if="learnedThreshold !== null"
+                class="learned-result mt-4"
+              >
                 <el-alert
                   type="success"
                   :closable="false"

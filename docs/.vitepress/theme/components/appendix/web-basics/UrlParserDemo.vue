@@ -9,53 +9,50 @@
       <div class="omnibox">
         <span class="lock-icon">🔒</span>
         <!-- Segmented URL Display -->
-        <div class="segmented-url" v-if="parsedUrl">
+        <div
+          v-if="parsedUrl"
+          class="segmented-url"
+        >
           <span
             class="url-part protocol"
             :class="{ active: highlightedPart === 'protocol' }"
             @mouseover="highlightedPart = 'protocol'"
             @mouseleave="highlightedPart = null"
-            >{{ parts.protocol }}:</span
-          >
+          >{{ parts.protocol }}:</span>
           <span class="divider">//</span>
           <span
             class="url-part host"
             :class="{ active: highlightedPart === 'host' }"
             @mouseover="highlightedPart = 'host'"
             @mouseleave="highlightedPart = null"
-            >{{ parts.host }}</span
-          >
+          >{{ parts.host }}</span>
           <span
             v-if="parts.port"
             class="url-part port"
             :class="{ active: highlightedPart === 'port' }"
             @mouseover="highlightedPart = 'port'"
             @mouseleave="highlightedPart = null"
-            >:{{ parts.port }}</span
-          >
+          >:{{ parts.port }}</span>
           <span
             class="url-part pathname"
             :class="{ active: highlightedPart === 'pathname' }"
             @mouseover="highlightedPart = 'pathname'"
             @mouseleave="highlightedPart = null"
-            >{{ parts.pathname }}</span
-          >
+          >{{ parts.pathname }}</span>
           <span
             v-if="parts.search"
             class="url-part search"
             :class="{ active: highlightedPart === 'search' }"
             @mouseover="highlightedPart = 'search'"
             @mouseleave="highlightedPart = null"
-            >{{ parts.search }}</span
-          >
+          >{{ parts.search }}</span>
           <span
             v-if="parts.hash"
             class="url-part hash"
             :class="{ active: highlightedPart === 'hash' }"
             @mouseover="highlightedPart = 'hash'"
             @mouseleave="highlightedPart = null"
-            >{{ parts.hash }}</span
-          >
+          >{{ parts.hash }}</span>
         </div>
         <input
           v-else
@@ -63,12 +60,15 @@
           type="text"
           class="url-input"
           placeholder="https://example.com"
-        />
+        >
       </div>
     </div>
 
     <div class="visualization-area">
-      <div v-if="parsedUrl" class="url-breakdown">
+      <div
+        v-if="parsedUrl"
+        class="url-breakdown"
+      >
         <div
           v-for="(part, key) in parts"
           :key="key"
@@ -81,11 +81,20 @@
             <span class="segment-icon">{{ icons[key] }}</span>
             <span class="segment-label">{{ labels[key] }}</span>
           </div>
-          <div class="segment-value">{{ part || '-' }}</div>
-          <div class="segment-desc">{{ descriptions[key] }}</div>
+          <div class="segment-value">
+            {{ part || '-' }}
+          </div>
+          <div class="segment-desc">
+            {{ descriptions[key] }}
+          </div>
         </div>
       </div>
-      <div v-else class="error-state">Invalid URL format / 无效的 URL 格式</div>
+      <div
+        v-else
+        class="error-state"
+      >
+        Invalid URL format / 无效的 URL 格式
+      </div>
     </div>
   </div>
 </template>

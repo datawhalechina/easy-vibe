@@ -21,8 +21,13 @@
           @click="activeEra = activeEra === era.id ? null : era.id"
         >
           <div class="era-marker">
-            <div class="era-dot">{{ era.emoji }}</div>
-            <div v-if="index < eras.length - 1" class="era-line"></div>
+            <div class="era-dot">
+              {{ era.emoji }}
+            </div>
+            <div
+              v-if="index < eras.length - 1"
+              class="era-line"
+            />
           </div>
 
           <div class="era-content">
@@ -31,12 +36,19 @@
               <span class="era-name">{{ era.name }}</span>
             </div>
 
-            <div class="era-brief">{{ era.brief }}</div>
+            <div class="era-brief">
+              {{ era.brief }}
+            </div>
 
             <Transition name="expand">
-              <div v-if="activeEra === era.id" class="era-detail">
+              <div
+                v-if="activeEra === era.id"
+                class="era-detail"
+              >
                 <div class="detail-section">
-                  <div class="section-title">🔑 关键技术</div>
+                  <div class="section-title">
+                    🔑 关键技术
+                  </div>
                   <div class="tech-tags">
                     <span
                       v-for="tech in era.technologies.slice(0, 5)"
@@ -46,9 +58,16 @@
                   </div>
                 </div>
 
-                <div class="detail-section" v-if="era.metaphor">
-                  <div class="section-title">💡 生活比喻</div>
-                  <div class="metaphor-box">{{ era.metaphor }}</div>
+                <div
+                  v-if="era.metaphor"
+                  class="detail-section"
+                >
+                  <div class="section-title">
+                    💡 生活比喻
+                  </div>
+                  <div class="metaphor-box">
+                    {{ era.metaphor }}
+                  </div>
                 </div>
               </div>
             </Transition>

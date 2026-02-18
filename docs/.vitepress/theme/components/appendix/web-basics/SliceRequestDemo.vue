@@ -5,34 +5,58 @@
 <template>
   <div class="slice-demo">
     <div class="header">
-      <div class="title">切图时代：请求数越多越慢</div>
-      <div class="subtitle">调整切图数量，观察加载时间变化</div>
+      <div class="title">
+        切图时代：请求数越多越慢
+      </div>
+      <div class="subtitle">
+        调整切图数量，观察加载时间变化
+      </div>
     </div>
 
     <div class="controls">
       <label>
         切图数量：<strong>{{ slices }}</strong> 张
       </label>
-      <input v-model="slices" type="range" min="1" max="30" step="1" />
+      <input
+        v-model="slices"
+        type="range"
+        min="1"
+        max="30"
+        step="1"
+      >
       <label class="toggle">
-        <input v-model="useSprite" type="checkbox" />
+        <input
+          v-model="useSprite"
+          type="checkbox"
+        >
         合并雪碧图 (Sprite)
       </label>
     </div>
 
     <div class="metrics">
       <div class="metric">
-        <div class="label">总请求数</div>
-        <div class="value">{{ totalRequests }}</div>
+        <div class="label">
+          总请求数
+        </div>
+        <div class="value">
+          {{ totalRequests }}
+        </div>
       </div>
       <div class="metric">
-        <div class="label">预计加载时间</div>
-        <div class="value">{{ loadTime }} ms</div>
+        <div class="label">
+          预计加载时间
+        </div>
+        <div class="value">
+          {{ loadTime }} ms
+        </div>
       </div>
     </div>
 
     <div class="bar">
-      <div class="progress" :style="{ width: barWidth + '%' }"></div>
+      <div
+        class="progress"
+        :style="{ width: barWidth + '%' }"
+      />
     </div>
   </div>
 </template>

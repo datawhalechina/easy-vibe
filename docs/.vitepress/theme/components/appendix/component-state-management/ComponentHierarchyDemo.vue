@@ -12,66 +12,126 @@
 
     <div class="demo-content">
       <div class="tree-container">
-        <div class="tree-node root-node" :class="{ active: selectedNode === 'app' }" @click="selectNode('app')">
-          <div class="node-icon">👑</div>
+        <div
+          class="tree-node root-node"
+          :class="{ active: selectedNode === 'app' }"
+          @click="selectNode('app')"
+        >
+          <div class="node-icon">
+            👑
+          </div>
           <div class="node-info">
-            <div class="node-label">App (根组件)</div>
-            <div class="node-desc">CEO - 管理全局</div>
+            <div class="node-label">
+              App (根组件)
+            </div>
+            <div class="node-desc">
+              CEO - 管理全局
+            </div>
           </div>
         </div>
 
         <div class="tree-children">
           <div class="tree-branch">
-            <div class="connector"></div>
-            <div class="tree-node" :class="{ active: selectedNode === 'header' }" @click="selectNode('header')">
-              <div class="node-icon">📌</div>
+            <div class="connector" />
+            <div
+              class="tree-node"
+              :class="{ active: selectedNode === 'header' }"
+              @click="selectNode('header')"
+            >
+              <div class="node-icon">
+                📌
+              </div>
               <div class="node-info">
-                <div class="node-label">Header</div>
-                <div class="node-desc">导航栏部门</div>
+                <div class="node-label">
+                  Header
+                </div>
+                <div class="node-desc">
+                  导航栏部门
+                </div>
               </div>
             </div>
           </div>
 
           <div class="tree-branch">
-            <div class="connector"></div>
-            <div class="tree-node" :class="{ active: selectedNode === 'main' }" @click="selectNode('main')">
-              <div class="node-icon">📄</div>
+            <div class="connector" />
+            <div
+              class="tree-node"
+              :class="{ active: selectedNode === 'main' }"
+              @click="selectNode('main')"
+            >
+              <div class="node-icon">
+                📄
+              </div>
               <div class="node-info">
-                <div class="node-label">Main Content</div>
-                <div class="node-desc">主内容部门</div>
+                <div class="node-label">
+                  Main Content
+                </div>
+                <div class="node-desc">
+                  主内容部门
+                </div>
               </div>
             </div>
 
             <div class="tree-children">
               <div class="tree-branch">
-                <div class="connector"></div>
-                <div class="tree-node" :class="{ active: selectedNode === 'sidebar' }" @click="selectNode('sidebar')">
-                  <div class="node-icon">📑</div>
+                <div class="connector" />
+                <div
+                  class="tree-node"
+                  :class="{ active: selectedNode === 'sidebar' }"
+                  @click="selectNode('sidebar')"
+                >
+                  <div class="node-icon">
+                    📑
+                  </div>
                   <div class="node-info">
-                    <div class="node-label">Sidebar</div>
-                    <div class="node-desc">侧边栏小组</div>
+                    <div class="node-label">
+                      Sidebar
+                    </div>
+                    <div class="node-desc">
+                      侧边栏小组
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div class="tree-branch">
-                <div class="connector"></div>
-                <div class="tree-node" :class="{ active: selectedNode === 'productlist' }" @click="selectNode('productlist')">
-                  <div class="node-icon">🛍️</div>
+                <div class="connector" />
+                <div
+                  class="tree-node"
+                  :class="{ active: selectedNode === 'productlist' }"
+                  @click="selectNode('productlist')"
+                >
+                  <div class="node-icon">
+                    🛍️
+                  </div>
                   <div class="node-info">
-                    <div class="node-label">ProductList</div>
-                    <div class="node-desc">商品列表组</div>
+                    <div class="node-label">
+                      ProductList
+                    </div>
+                    <div class="node-desc">
+                      商品列表组
+                    </div>
                   </div>
                 </div>
 
                 <div class="tree-children">
                   <div class="tree-branch">
-                    <div class="connector"></div>
-                    <div class="tree-node leaf" :class="{ active: selectedNode === 'productcard' }" @click="selectNode('productcard')">
-                      <div class="node-icon">🏷️</div>
+                    <div class="connector" />
+                    <div
+                      class="tree-node leaf"
+                      :class="{ active: selectedNode === 'productcard' }"
+                      @click="selectNode('productcard')"
+                    >
+                      <div class="node-icon">
+                        🏷️
+                      </div>
                       <div class="node-info">
-                        <div class="node-label">ProductCard</div>
-                        <div class="node-desc">商品卡片员工</div>
+                        <div class="node-label">
+                          ProductCard
+                        </div>
+                        <div class="node-desc">
+                          商品卡片员工
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -81,12 +141,22 @@
           </div>
 
           <div class="tree-branch">
-            <div class="connector"></div>
-            <div class="tree-node" :class="{ active: selectedNode === 'footer' }" @click="selectNode('footer')">
-              <div class="node-icon">🔻</div>
+            <div class="connector" />
+            <div
+              class="tree-node"
+              :class="{ active: selectedNode === 'footer' }"
+              @click="selectNode('footer')"
+            >
+              <div class="node-icon">
+                🔻
+              </div>
               <div class="node-info">
-                <div class="node-label">Footer</div>
-                <div class="node-desc">页脚部门</div>
+                <div class="node-label">
+                  Footer
+                </div>
+                <div class="node-desc">
+                  页脚部门
+                </div>
               </div>
             </div>
           </div>
@@ -94,18 +164,32 @@
       </div>
 
       <Transition name="fade">
-        <div v-if="selectedNodeInfo" class="node-details">
+        <div
+          v-if="selectedNodeInfo"
+          class="node-details"
+        >
           <div class="detail-header">
             <span class="detail-icon">{{ selectedNodeInfo.icon }}</span>
             <span class="detail-title">{{ selectedNodeInfo.title }}</span>
           </div>
-          <p class="detail-desc">{{ selectedNodeInfo.description }}</p>
-          <div v-if="selectedNodeInfo.props || selectedNodeInfo.events" class="detail-info">
-            <div v-if="selectedNodeInfo.props" class="info-section">
+          <p class="detail-desc">
+            {{ selectedNodeInfo.description }}
+          </p>
+          <div
+            v-if="selectedNodeInfo.props || selectedNodeInfo.events"
+            class="detail-info"
+          >
+            <div
+              v-if="selectedNodeInfo.props"
+              class="info-section"
+            >
               <strong>📥 接收:</strong>
               <span class="prop-tags">{{ selectedNodeInfo.props.join(', ') }}</span>
             </div>
-            <div v-if="selectedNodeInfo.events" class="info-section">
+            <div
+              v-if="selectedNodeInfo.events"
+              class="info-section"
+            >
               <strong>📤 触发:</strong>
               <span class="prop-tags">{{ selectedNodeInfo.events.join(', ') }}</span>
             </div>
@@ -113,7 +197,10 @@
         </div>
       </Transition>
 
-      <div v-if="!selectedNode" class="hint-text">
+      <div
+        v-if="!selectedNode"
+        class="hint-text"
+      >
         👆 点击上方任意节点，查看职责说明
       </div>
     </div>

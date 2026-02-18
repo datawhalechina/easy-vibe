@@ -114,7 +114,7 @@ const methods = [
             { product_id: 'P001', quantity: 2 },
             { product_id: 'P002', quantity: 1 }
           ],
-          shipping_address: {...}
+          shipping_address: { /* ... */ }
         }
       }
     ]

@@ -14,46 +14,86 @@
       <!-- 防线1: 生产者确认 -->
       <div class="defense-line">
         <div class="defense-header">
-          <div class="defense-badge line1">防线 1</div>
-          <div class="defense-title">生产者确认 (Producer ACK)</div>
+          <div class="defense-badge line1">
+            防线 1
+          </div>
+          <div class="defense-title">
+            生产者确认 (Producer ACK)
+          </div>
         </div>
         <div class="defense-content">
           <div class="flow-diagram">
             <div class="component producer">
-              <div class="comp-icon">📤</div>
-              <div class="comp-label">生产者</div>
-              <div class="comp-desc">发送消息</div>
+              <div class="comp-icon">
+                📤
+              </div>
+              <div class="comp-label">
+                生产者
+              </div>
+              <div class="comp-desc">
+                发送消息
+              </div>
             </div>
 
             <div class="message-flow">
-              <div class="msg-item" :class="{ active: step === 1 }">
-                <div class="msg-icon">📨</div>
-                <div class="msg-label">消息</div>
-                <div v-if="step === 1" class="msg-status">
+              <div
+                class="msg-item"
+                :class="{ active: step === 1 }"
+              >
+                <div class="msg-icon">
+                  📨
+                </div>
+                <div class="msg-label">
+                  消息
+                </div>
+                <div
+                  v-if="step === 1"
+                  class="msg-status"
+                >
                   {{ ackStatus }}
                 </div>
               </div>
 
-              <div class="ack-item" :class="{ active: step === 2 }">
-                <div class="ack-icon">✓</div>
-                <div class="ack-label">ACK确认</div>
-                <div v-if="step === 2" class="ack-status">
+              <div
+                class="ack-item"
+                :class="{ active: step === 2 }"
+              >
+                <div class="ack-icon">
+                  ✓
+                </div>
+                <div class="ack-label">
+                  ACK确认
+                </div>
+                <div
+                  v-if="step === 2"
+                  class="ack-status"
+                >
                   {{ ackMessage }}
                 </div>
               </div>
             </div>
 
             <div class="component broker">
-              <div class="comp-icon">📦</div>
-              <div class="comp-label">Broker</div>
-              <div class="comp-desc">接收并存储</div>
+              <div class="comp-icon">
+                📦
+              </div>
+              <div class="comp-label">
+                Broker
+              </div>
+              <div class="comp-desc">
+                接收并存储
+              </div>
             </div>
           </div>
 
           <div class="control-panel">
             <div class="control-item">
               <label>发送消息</label>
-              <button class="action-btn" @click="sendWithAck" :disabled="step > 0">
+              <button
+                class="action-btn"
+                :disabled="step > 0"
+                @click="sendWithAck"
+              >
                 发送并等待确认
               </button>
             </div>
@@ -68,26 +108,54 @@
       <!-- 防线2: Broker持久化 -->
       <div class="defense-line">
         <div class="defense-header">
-          <div class="defense-badge line2">防线 2</div>
-          <div class="defense-title">Broker持久化</div>
+          <div class="defense-badge line2">
+            防线 2
+          </div>
+          <div class="defense-title">
+            Broker持久化
+          </div>
         </div>
         <div class="defense-content">
           <div class="storage-diagram">
             <div class="storage-container">
-              <div class="storage-option" :class="{ active: storageType === 'memory' }">
-                <div class="option-icon">⚡</div>
-                <div class="option-label">内存存储</div>
-                <div class="option-desc">速度快,但重启丢失</div>
-                <div class="option-risk">❌ 高风险</div>
+              <div
+                class="storage-option"
+                :class="{ active: storageType === 'memory' }"
+              >
+                <div class="option-icon">
+                  ⚡
+                </div>
+                <div class="option-label">
+                  内存存储
+                </div>
+                <div class="option-desc">
+                  速度快,但重启丢失
+                </div>
+                <div class="option-risk">
+                  ❌ 高风险
+                </div>
               </div>
 
-              <div class="vs-divider">vs</div>
+              <div class="vs-divider">
+                vs
+              </div>
 
-              <div class="storage-option recommended" :class="{ active: storageType === 'disk' }">
-                <div class="option-icon">💾</div>
-                <div class="option-label">磁盘存储</div>
-                <div class="option-desc">落盘保证不丢失</div>
-                <div class="option-risk">✅ 推荐</div>
+              <div
+                class="storage-option recommended"
+                :class="{ active: storageType === 'disk' }"
+              >
+                <div class="option-icon">
+                  💾
+                </div>
+                <div class="option-label">
+                  磁盘存储
+                </div>
+                <div class="option-desc">
+                  落盘保证不丢失
+                </div>
+                <div class="option-risk">
+                  ✅ 推荐
+                </div>
               </div>
             </div>
 
@@ -122,7 +190,10 @@
                 </button>
               </div>
             </div>
-            <div class="info-text" :class="{ warning: storageType === 'memory' }">
+            <div
+              class="info-text"
+              :class="{ warning: storageType === 'memory' }"
+            >
               <span class="info-icon">{{ storageType === 'disk' ? '✅' : '⚠️' }}</span>
               {{ storageType === 'disk' ? '消息已落盘,安全可靠' : '消息仅在内存,重启丢失' }}
             </div>
@@ -133,58 +204,115 @@
       <!-- 防线3: 消费者确认 -->
       <div class="defense-line">
         <div class="defense-header">
-          <div class="defense-badge line3">防线 3</div>
-          <div class="defense-title">消费者确认 (Consumer ACK)</div>
+          <div class="defense-badge line3">
+            防线 3
+          </div>
+          <div class="defense-title">
+            消费者确认 (Consumer ACK)
+          </div>
         </div>
         <div class="defense-content">
           <div class="consumer-flow">
-            <div class="flow-step" :class="{ active: consumerStep >= 1 }">
-              <div class="step-num">1</div>
+            <div
+              class="flow-step"
+              :class="{ active: consumerStep >= 1 }"
+            >
+              <div class="step-num">
+                1
+              </div>
               <div class="step-content">
-                <div class="step-title">拉取消息</div>
-                <div class="step-desc">从Broker获取消息</div>
+                <div class="step-title">
+                  拉取消息
+                </div>
+                <div class="step-desc">
+                  从Broker获取消息
+                </div>
               </div>
             </div>
 
-            <div class="flow-arrow" :class="{ active: consumerStep >= 1 }">→</div>
+            <div
+              class="flow-arrow"
+              :class="{ active: consumerStep >= 1 }"
+            >
+              →
+            </div>
 
-            <div class="flow-step" :class="{ active: consumerStep >= 2 }">
-              <div class="step-num">2</div>
+            <div
+              class="flow-step"
+              :class="{ active: consumerStep >= 2 }"
+            >
+              <div class="step-num">
+                2
+              </div>
               <div class="step-content">
-                <div class="step-title">处理消息</div>
-                <div class="step-desc">执行业务逻辑</div>
+                <div class="step-title">
+                  处理消息
+                </div>
+                <div class="step-desc">
+                  执行业务逻辑
+                </div>
               </div>
             </div>
 
-            <div class="flow-arrow" :class="{ active: consumerStep >= 2 }">→</div>
+            <div
+              class="flow-arrow"
+              :class="{ active: consumerStep >= 2 }"
+            >
+              →
+            </div>
 
-            <div class="flow-step" :class="{ active: consumerStep >= 3 }">
-              <div class="step-num">3</div>
+            <div
+              class="flow-step"
+              :class="{ active: consumerStep >= 3 }"
+            >
+              <div class="step-num">
+                3
+              </div>
               <div class="step-content">
-                <div class="step-title">手动ACK</div>
-                <div class="step-desc">确认处理完成</div>
+                <div class="step-title">
+                  手动ACK
+                </div>
+                <div class="step-desc">
+                  确认处理完成
+                </div>
               </div>
             </div>
           </div>
 
           <div class="ack-comparison">
             <div class="ack-option">
-              <div class="ack-type">自动 ACK</div>
-              <div class="ack-desc">高效但可能丢消息</div>
-              <div class="ack-risk">⚠️ 不推荐</div>
+              <div class="ack-type">
+                自动 ACK
+              </div>
+              <div class="ack-desc">
+                高效但可能丢消息
+              </div>
+              <div class="ack-risk">
+                ⚠️ 不推荐
+              </div>
             </div>
 
             <div class="ack-option recommended">
-              <div class="ack-type">手动 ACK</div>
-              <div class="ack-desc">可靠,处理完才确认</div>
-              <div class="ack-risk">✅ 推荐</div>
+              <div class="ack-type">
+                手动 ACK
+              </div>
+              <div class="ack-desc">
+                可靠,处理完才确认
+              </div>
+              <div class="ack-risk">
+                ✅ 推荐
+              </div>
             </div>
           </div>
 
           <div class="control-panel">
             <div class="control-item">
               <label>模拟消费</label>
-              <button class="action-btn" @click="simulateConsume" :disabled="consumerStep > 0">
+              <button
+                class="action-btn"
+                :disabled="consumerStep > 0"
+                @click="simulateConsume"
+              >
                 开始消费流程
               </button>
             </div>
@@ -198,7 +326,9 @@
     </div>
 
     <div class="summary-box">
-      <div class="summary-icon">🎯</div>
+      <div class="summary-icon">
+        🎯
+      </div>
       <div class="summary-content">
         <strong>三道防线,缺一不可：</strong>生产者确认 → Broker持久化 → 消费者确认
       </div>

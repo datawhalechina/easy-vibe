@@ -597,19 +597,21 @@ onUnmounted(() => {
 
 <template>
   <div
+    ref="demoRef"
     class="browser-devtools-demo"
     :class="{ 'dark-mode': isDark }"
-    ref="demoRef"
   >
     <!-- Top Controls (Custom for Demo) -->
     <div class="demo-controls">
-      <div class="control-label">Chrome DevTools 模拟器</div>
+      <div class="control-label">
+        Chrome DevTools 模拟器
+      </div>
       <div class="control-actions">
         <select
           v-model="selectedTour"
-          @change="handleTourSelect"
           class="tour-select"
           :disabled="isAutoPlaying"
+          @change="handleTourSelect"
         >
           <option
             v-for="opt in tourOptions"
@@ -620,7 +622,11 @@ onUnmounted(() => {
             {{ opt.label }}
           </option>
         </select>
-        <button v-if="isAutoPlaying" class="stop-btn" @click="stopTour">
+        <button
+          v-if="isAutoPlaying"
+          class="stop-btn"
+          @click="stopTour"
+        >
           停止演示
         </button>
       </div>
@@ -628,8 +634,8 @@ onUnmounted(() => {
 
     <!-- Virtual Cursor & Highlight -->
     <div
-      class="virtual-cursor"
       v-if="cursorVisible"
+      class="virtual-cursor"
       :style="{ transform: `translate(${cursorX}px, ${cursorY}px)` }"
     >
       <svg
@@ -648,10 +654,10 @@ onUnmounted(() => {
       </svg>
     </div>
     <div
-      class="highlight-box"
       v-if="highlightVisible"
+      class="highlight-box"
       :style="highlightStyle"
-    ></div>
+    />
 
     <!-- Main UI Container -->
     <div class="devtools-container">
@@ -662,20 +668,33 @@ onUnmounted(() => {
             class="icon-btn element-picker"
             title="选择页面中的元素以进行检查"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#6e6e6e">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="#6e6e6e"
+            >
               <path
                 d="M4 4h9v2H4V4zm0 4h5v2H4V8zm0 4h5v2H4v-2zm12-5l-4 4h3v4h2v-4h3l-4-4z"
               />
             </svg>
           </div>
-          <div class="icon-btn device-toggle" title="切换设备工具栏">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#6e6e6e">
+          <div
+            class="icon-btn device-toggle"
+            title="切换设备工具栏"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="#6e6e6e"
+            >
               <path
                 d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"
               />
             </svg>
           </div>
-          <div class="separator"></div>
+          <div class="separator" />
           <div class="tabs">
             <div
               v-for="tab in tabs"
@@ -692,24 +711,54 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="header-right">
-          <div class="icon-btn settings" title="设置">⚙️</div>
-          <div class="icon-btn close" title="关闭">×</div>
+          <div
+            class="icon-btn settings"
+            title="设置"
+          >
+            ⚙️
+          </div>
+          <div
+            class="icon-btn close"
+            title="关闭"
+          >
+            ×
+          </div>
         </div>
       </div>
 
       <!-- Body Area -->
       <div class="devtools-body">
         <!-- 1. Console Panel -->
-        <div v-if="activeTab === 'console'" class="panel console-panel-layout">
-          <div class="console-toolbar" @mouseenter="showInfo('控制台工具栏')">
-            <div class="icon-btn clear" title="清除控制台">🚫</div>
-            <div class="separator"></div>
-            <div class="dropdown-trigger">top ▼</div>
-            <div class="icon-btn eye" title="创建实时表达式">👁️</div>
-            <div class="filter-box">
-              <span class="filter-icon">🔍</span><input placeholder="过滤" />
+        <div
+          v-if="activeTab === 'console'"
+          class="panel console-panel-layout"
+        >
+          <div
+            class="console-toolbar"
+            @mouseenter="showInfo('控制台工具栏')"
+          >
+            <div
+              class="icon-btn clear"
+              title="清除控制台"
+            >
+              🚫
             </div>
-            <div class="dropdown-trigger">默认级别 ▼</div>
+            <div class="separator" />
+            <div class="dropdown-trigger">
+              top ▼
+            </div>
+            <div
+              class="icon-btn eye"
+              title="创建实时表达式"
+            >
+              👁️
+            </div>
+            <div class="filter-box">
+              <span class="filter-icon">🔍</span><input placeholder="过滤">
+            </div>
+            <div class="dropdown-trigger">
+              默认级别 ▼
+            </div>
           </div>
           <div class="console-main-area">
             <div class="console-sidebar">
@@ -744,16 +793,22 @@ onUnmounted(() => {
                   :class="log.type"
                 >
                   <div class="log-gutter">
-                    <span class="icon error" v-if="log.type === 'error'"
-                      >❌</span
-                    >
-                    <span class="icon warn" v-else-if="log.type === 'warn'"
-                      >⚠️</span
-                    >
-                    <span class="icon" v-else-if="log.type === 'command'"
-                      >&gt;</span
-                    >
-                    <span class="icon" v-else>&lt;</span>
+                    <span
+                      v-if="log.type === 'error'"
+                      class="icon error"
+                    >❌</span>
+                    <span
+                      v-else-if="log.type === 'warn'"
+                      class="icon warn"
+                    >⚠️</span>
+                    <span
+                      v-else-if="log.type === 'command'"
+                      class="icon"
+                    >&gt;</span>
+                    <span
+                      v-else
+                      class="icon"
+                    >&lt;</span>
                   </div>
                   <div class="log-content">
                     <pre>{{ log.msg }}</pre>
@@ -767,10 +822,10 @@ onUnmounted(() => {
                   <span class="prompt">&gt;</span>
                   <input
                     v-model="consoleInput"
-                    @keyup.enter="runConsoleCommand"
                     class="input-field"
                     placeholder=""
-                  />
+                    @keyup.enter="runConsoleCommand"
+                  >
                 </div>
               </div>
             </div>
@@ -784,10 +839,18 @@ onUnmounted(() => {
               >
                 ⋮
               </div>
-              <div class="drawer-tab">控制台</div>
-              <div class="drawer-tab">AI 辅助</div>
-              <div class="drawer-tab">新变化</div>
-              <div class="drawer-tab">问题</div>
+              <div class="drawer-tab">
+                控制台
+              </div>
+              <div class="drawer-tab">
+                AI 辅助
+              </div>
+              <div class="drawer-tab">
+                新变化
+              </div>
+              <div class="drawer-tab">
+                问题
+              </div>
               <div class="drawer-tab active">
                 搜索 <span class="close-icon">×</span>
               </div>
@@ -799,12 +862,16 @@ onUnmounted(() => {
                   <input
                     placeholder="A terminal is just a grid of same-sized cells..."
                     class="search-input"
-                  />
-                  <div class="search-actions">Aa ab .*</div>
+                  >
+                  <div class="search-actions">
+                    Aa ab .*
+                  </div>
                 </div>
                 <div class="search-results">
                   <div class="no-results">
-                    <div class="no-results-title">未找到匹配项</div>
+                    <div class="no-results-title">
+                      未找到匹配项
+                    </div>
                     <div class="no-results-desc">
                       没有与您的搜索查询相符的结果
                     </div>
@@ -816,84 +883,80 @@ onUnmounted(() => {
         </div>
 
         <!-- 2. Elements Panel -->
-        <div v-else-if="activeTab === 'elements'" class="panel elements-panel">
+        <div
+          v-else-if="activeTab === 'elements'"
+          class="panel elements-panel"
+        >
           <div class="dom-tree-panel">
             <div class="dom-tree-content">
-              <div class="dom-node" data-tag="html">
+              <div
+                class="dom-node"
+                data-tag="html"
+              >
                 <div class="line-content">
                   <span class="arrow expanded">▼</span>
                   <span class="tag-name">html</span>
-                  <span class="attr-name">class</span>=<span class="attr-val"
-                    >"mac"</span
-                  >
-                  <span class="attr-name">lang</span>=<span class="attr-val"
-                    >"zh-CN"</span
-                  >
-                  <span class="attr-name">dir</span>=<span class="attr-val"
-                    >"ltr"</span
-                  >
-                  <span class="attr-name">style</span>=<span class="attr-val"
-                    >"--ev-doc-font-size: 14px..."</span
-                  >
+                  <span class="attr-name">class</span>=<span class="attr-val">"mac"</span>
+                  <span class="attr-name">lang</span>=<span class="attr-val">"zh-CN"</span>
+                  <span class="attr-name">dir</span>=<span class="attr-val">"ltr"</span>
+                  <span class="attr-name">style</span>=<span class="attr-val">"--ev-doc-font-size: 14px..."</span>
                 </div>
                 <div class="children">
-                  <div class="dom-node" data-tag="head">
+                  <div
+                    class="dom-node"
+                    data-tag="head"
+                  >
                     <div class="line-content">
                       <span class="arrow">▶</span>
                       <span class="tag-name">head</span>
                       <span class="dots">...</span>
                     </div>
                   </div>
-                  <div class="dom-node" data-tag="body">
+                  <div
+                    class="dom-node"
+                    data-tag="body"
+                  >
                     <div class="line-content">
                       <span class="arrow expanded">▼</span>
                       <span class="tag-name">body</span>
                       <span class="node-trail">== $0</span>
                     </div>
                     <div class="children">
-                      <div class="dom-node selected" data-tag="div">
+                      <div
+                        class="dom-node selected"
+                        data-tag="div"
+                      >
                         <div class="line-content">
                           <span class="arrow expanded">▼</span>
                           <span class="tag-name">div</span>
                           <span class="attr-name">id</span>=<span
                             class="attr-val"
-                            >"app"</span
-                          >
+                          >"app"</span>
                           <span class="attr-name">data-v-app</span>
                         </div>
                         <div class="children">
                           <div class="dom-node">
                             <div class="line-content">
-                              <span class="indent"></span
-                              ><span class="tag-name">div</span
-                              ><span class="dots">...</span
-                              ><span class="tag-name">/div</span>
+                              <span class="indent" /><span class="tag-name">div</span><span class="dots">...</span><span class="tag-name">/div</span>
                             </div>
                           </div>
                           <div class="dom-node">
                             <div class="line-content">
-                              <span class="indent"></span
-                              ><span class="tag-name">script</span>
+                              <span class="indent" /><span class="tag-name">script</span>
                               <span class="attr-name">type</span>=<span
                                 class="attr-val"
-                                >"module"</span
-                              >
+                              >"module"</span>
                               <span class="attr-name">src</span>=<span
                                 class="attr-val"
-                                >"/easy-vibe/..."</span
-                              ><span class="tag-name">/script</span>
+                              >"/easy-vibe/..."</span><span class="tag-name">/script</span>
                             </div>
                           </div>
                           <div class="dom-node">
                             <div class="line-content">
-                              <span class="indent"></span
-                              ><span class="tag-name">div</span>
+                              <span class="indent" /><span class="tag-name">div</span>
                               <span class="attr-name">id</span>=<span
                                 class="attr-val"
-                                >"el-popper-container-3083"</span
-                              ><span class="tag-name">&gt;</span
-                              ><span class="dots">...</span
-                              ><span class="tag-name">/div</span>
+                              >"el-popper-container-3083"</span><span class="tag-name">&gt;</span><span class="dots">...</span><span class="tag-name">/div</span>
                             </div>
                           </div>
                         </div>
@@ -907,10 +970,7 @@ onUnmounted(() => {
                           <span class="tag-name">div</span>
                           <span class="attr-name">style</span>=<span
                             class="attr-val"
-                            >"all: initial;"</span
-                          ><span class="tag-name">&gt;</span
-                          ><span class="dots">...</span
-                          ><span class="tag-name">/div</span>
+                          >"all: initial;"</span><span class="tag-name">&gt;</span><span class="dots">...</span><span class="tag-name">/div</span>
                         </div>
                       </div>
                       <div class="dom-node">
@@ -919,14 +979,10 @@ onUnmounted(() => {
                           <span class="tag-name">div</span>
                           <span class="attr-name">id</span>=<span
                             class="attr-val"
-                            >"immersive-translate-browser-popup"</span
-                          >
+                          >"immersive-translate-browser-popup"</span>
                           <span class="attr-name">style</span>=<span
                             class="attr-val"
-                            >"all: initial;"</span
-                          ><span class="tag-name">&gt;</span
-                          ><span class="dots">...</span
-                          ><span class="tag-name">/div</span>
+                          >"all: initial;"</span><span class="tag-name">&gt;</span><span class="dots">...</span><span class="tag-name">/div</span>
                         </div>
                       </div>
                     </div>
@@ -940,9 +996,14 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-            <div class="breadcrumbs">html.mac > body > div#app</div>
+            <div class="breadcrumbs">
+              html.mac > body > div#app
+            </div>
             <!-- Bottom Drawer (Shared) -->
-            <div class="bottom-drawer" style="border-top: 1px solid #ccc">
+            <div
+              class="bottom-drawer"
+              style="border-top: 1px solid #ccc"
+            >
               <div class="bottom-drawer-header">
                 <div
                   class="icon-btn more"
@@ -950,10 +1011,18 @@ onUnmounted(() => {
                 >
                   ⋮
                 </div>
-                <div class="drawer-tab">控制台</div>
-                <div class="drawer-tab">AI 辅助</div>
-                <div class="drawer-tab">新变化</div>
-                <div class="drawer-tab">问题</div>
+                <div class="drawer-tab">
+                  控制台
+                </div>
+                <div class="drawer-tab">
+                  AI 辅助
+                </div>
+                <div class="drawer-tab">
+                  新变化
+                </div>
+                <div class="drawer-tab">
+                  问题
+                </div>
                 <div class="drawer-tab active">
                   搜索 <span class="close-icon">×</span>
                 </div>
@@ -965,12 +1034,16 @@ onUnmounted(() => {
                     <input
                       placeholder="A terminal is just a grid of same-sized cells..."
                       class="search-input"
-                    />
-                    <div class="search-actions">Aa ab .*</div>
+                    >
+                    <div class="search-actions">
+                      Aa ab .*
+                    </div>
                   </div>
                   <div class="search-results">
                     <div class="no-results">
-                      <div class="no-results-title">未找到匹配项</div>
+                      <div class="no-results-title">
+                        未找到匹配项
+                      </div>
                       <div class="no-results-desc">
                         没有与您的搜索查询相符的结果
                       </div>
@@ -982,35 +1055,77 @@ onUnmounted(() => {
           </div>
           <div class="styles-panel">
             <div class="styles-tabs">
-              <div class="style-tab active">样式</div>
-              <div class="style-tab">计算样式</div>
-              <div class="style-tab">布局</div>
-              <div class="style-tab">事件监听器</div>
-              <div class="style-tab">»</div>
+              <div class="style-tab active">
+                样式
+              </div>
+              <div class="style-tab">
+                计算样式
+              </div>
+              <div class="style-tab">
+                布局
+              </div>
+              <div class="style-tab">
+                事件监听器
+              </div>
+              <div class="style-tab">
+                »
+              </div>
             </div>
             <div class="styles-content">
               <!-- Box Model Mock -->
               <div class="box-model-container">
                 <div class="box-margin">
-                  <div class="label">margin</div>
-                  <div class="val-top">-</div>
-                  <div class="val-left">-</div>
-                  <div class="val-right">-</div>
-                  <div class="val-bottom">-</div>
+                  <div class="label">
+                    margin
+                  </div>
+                  <div class="val-top">
+                    -
+                  </div>
+                  <div class="val-left">
+                    -
+                  </div>
+                  <div class="val-right">
+                    -
+                  </div>
+                  <div class="val-bottom">
+                    -
+                  </div>
                   <div class="box-border">
-                    <div class="label">border</div>
-                    <div class="val-top">-</div>
-                    <div class="val-left">-</div>
-                    <div class="val-right">-</div>
-                    <div class="val-bottom">-</div>
+                    <div class="label">
+                      border
+                    </div>
+                    <div class="val-top">
+                      -
+                    </div>
+                    <div class="val-left">
+                      -
+                    </div>
+                    <div class="val-right">
+                      -
+                    </div>
+                    <div class="val-bottom">
+                      -
+                    </div>
                     <div class="box-padding">
-                      <div class="label">padding</div>
-                      <div class="val-top">-</div>
-                      <div class="val-left">-</div>
-                      <div class="val-right">-</div>
-                      <div class="val-bottom">-</div>
+                      <div class="label">
+                        padding
+                      </div>
+                      <div class="val-top">
+                        -
+                      </div>
+                      <div class="val-left">
+                        -
+                      </div>
+                      <div class="val-right">
+                        -
+                      </div>
+                      <div class="val-bottom">
+                        -
+                      </div>
                       <div class="box-content">
-                        <div class="val-content">1600 x 3461</div>
+                        <div class="val-content">
+                          1600 x 3461
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1018,35 +1133,40 @@ onUnmounted(() => {
               </div>
 
               <div class="filter-bar">
-                <input placeholder="过滤" />
+                <input placeholder="过滤">
                 <span class="filter-opt">:hov</span>
                 <span class="filter-opt">.cls</span>
                 <span class="filter-opt">+</span>
               </div>
 
               <div
-                class="style-rule"
                 v-for="(rule, idx) in cssRules"
                 :key="idx"
+                class="style-rule"
               >
-                <div class="selector">{{ rule.selector }} {</div>
+                <div class="selector">
+                  {{ rule.selector }} {
+                </div>
                 <div
-                  class="property"
                   v-for="(val, key) in rule.styles"
                   :key="key"
+                  class="property"
                 >
-                  <span class="prop-name">{{ key }}</span
-                  >: <span class="prop-val">{{ val }}</span
-                  >;
+                  <span class="prop-name">{{ key }}</span>: <span class="prop-val">{{ val }}</span>;
                 </div>
-                <div class="selector">}</div>
+                <div class="selector">
+                  }
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 3. Sources Panel -->
-        <div v-else-if="activeTab === 'sources'" class="panel sources-panel">
+        <div
+          v-else-if="activeTab === 'sources'"
+          class="panel sources-panel"
+        >
           <div class="file-navigator">
             <div class="nav-header">
               <span class="nav-tab active">Page</span>
@@ -1079,7 +1199,7 @@ onUnmounted(() => {
             </div>
             <div class="editor-content">
               <div class="line-numbers">
-                1<br />2<br />3<br />4<br />5<br />6
+                1<br>2<br>3<br>4<br>5<br>6
               </div>
               <div class="code-text">
                 <pre>{{ fileContent }}</pre>
@@ -1091,14 +1211,19 @@ onUnmounted(() => {
               <div class="section-title">
                 <span class="arrow">▼</span> Watch
               </div>
-              <div class="section-content empty">No watch expressions</div>
+              <div class="section-content empty">
+                No watch expressions
+              </div>
             </div>
             <div class="debug-section">
               <div class="section-title">
                 <span class="arrow">▼</span> Breakpoints
               </div>
               <div class="section-content">
-                <label><input type="checkbox" checked /> main.js:12</label>
+                <label><input
+                  type="checkbox"
+                  checked
+                > main.js:12</label>
               </div>
             </div>
             <div class="debug-section">
@@ -1110,10 +1235,15 @@ onUnmounted(() => {
         </div>
 
         <!-- 4. Network Panel -->
-        <div v-else-if="activeTab === 'network'" class="panel network-panel">
+        <div
+          v-else-if="activeTab === 'network'"
+          class="panel network-panel"
+        >
           <div class="network-toolbar">
-            <div class="record-icon">🔴</div>
-            <div class="separator"></div>
+            <div class="record-icon">
+              🔴
+            </div>
+            <div class="separator" />
             <span class="filter-btn active">All</span>
             <span class="filter-btn">Fetch/XHR</span>
             <span class="filter-btn">JS</span>
@@ -1123,28 +1253,50 @@ onUnmounted(() => {
           <div class="network-split-view">
             <div class="network-grid">
               <div class="network-grid-header">
-                <div class="col name">Name</div>
-                <div class="col status">Status</div>
-                <div class="col type">Type</div>
-                <div class="col size">Size</div>
-                <div class="col time">Time</div>
-                <div class="col waterfall">Waterfall</div>
+                <div class="col name">
+                  Name
+                </div>
+                <div class="col status">
+                  Status
+                </div>
+                <div class="col type">
+                  Type
+                </div>
+                <div class="col size">
+                  Size
+                </div>
+                <div class="col time">
+                  Time
+                </div>
+                <div class="col waterfall">
+                  Waterfall
+                </div>
               </div>
               <div class="network-rows">
                 <div
-                  class="network-row"
                   v-for="(req, idx) in networkRequests"
                   :key="idx"
+                  class="network-row"
                   :class="{
                     selected: selectedRequest && selectedRequest.id === req.id
                   }"
                   @click="selectRequest(req)"
                 >
-                  <div class="col name">{{ req.name }}</div>
-                  <div class="col status">{{ req.status }}</div>
-                  <div class="col type">{{ req.type }}</div>
-                  <div class="col size">{{ req.size }}</div>
-                  <div class="col time">{{ req.time }}</div>
+                  <div class="col name">
+                    {{ req.name }}
+                  </div>
+                  <div class="col status">
+                    {{ req.status }}
+                  </div>
+                  <div class="col type">
+                    {{ req.type }}
+                  </div>
+                  <div class="col size">
+                    {{ req.size }}
+                  </div>
+                  <div class="col time">
+                    {{ req.time }}
+                  </div>
                   <div class="col waterfall">
                     <div
                       class="waterfall-bar"
@@ -1152,45 +1304,46 @@ onUnmounted(() => {
                         width: req.waterfall + 'px',
                         left: idx * 10 + 'px'
                       }"
-                    ></div>
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <!-- Network Detail Panel (Right Side) -->
-            <div class="network-detail" v-if="selectedRequest">
+            <div
+              v-if="selectedRequest"
+              class="network-detail"
+            >
               <div class="detail-header">
                 <span
                   class="detail-title"
                   :class="{ active: activeDetailTab === 'headers' }"
                   @click="activeDetailTab = 'headers'"
-                  >Headers</span
-                >
+                >Headers</span>
                 <span
                   class="detail-title"
                   :class="{ active: activeDetailTab === 'preview' }"
                   @click="activeDetailTab = 'preview'"
-                  >Preview</span
-                >
+                >Preview</span>
                 <span
                   class="detail-title"
                   :class="{ active: activeDetailTab === 'response' }"
                   @click="activeDetailTab = 'response'"
-                  >Response</span
-                >
-                <span class="close-detail" @click="selectedRequest = null"
-                  >×</span
-                >
+                >Response</span>
+                <span
+                  class="close-detail"
+                  @click="selectedRequest = null"
+                >×</span>
               </div>
               <div class="detail-content">
                 <div v-if="activeDetailTab === 'headers'">
                   <div class="detail-section">
-                    <div class="section-label">General</div>
+                    <div class="section-label">
+                      General
+                    </div>
                     <div class="detail-row">
                       <span class="key">Request URL:</span>
-                      <span class="val"
-                        >http://localhost:3000/{{ selectedRequest.name }}</span
-                      >
+                      <span class="val">http://localhost:3000/{{ selectedRequest.name }}</span>
                     </div>
                     <div class="detail-row">
                       <span class="key">Request Method:</span>
@@ -1198,31 +1351,33 @@ onUnmounted(() => {
                     </div>
                     <div class="detail-row">
                       <span class="key">Status Code:</span>
-                      <span class="val status-code"
-                        >{{ selectedRequest.status }} OK</span
-                      >
+                      <span class="val status-code">{{ selectedRequest.status }} OK</span>
                     </div>
                   </div>
                   <div class="detail-section">
-                    <div class="section-label">Response Headers</div>
+                    <div class="section-label">
+                      Response Headers
+                    </div>
                     <div
-                      class="detail-row"
                       v-for="(val, key) in selectedRequest.headers"
                       :key="key"
+                      class="detail-row"
                     >
                       <span class="key">{{ key }}:</span>
                       <span class="val">{{ val }}</span>
                     </div>
                   </div>
                   <div
-                    class="detail-section"
                     v-if="selectedRequest.requestHeaders"
+                    class="detail-section"
                   >
-                    <div class="section-label">Request Headers</div>
+                    <div class="section-label">
+                      Request Headers
+                    </div>
                     <div
-                      class="detail-row"
                       v-for="(val, key) in selectedRequest.requestHeaders"
                       :key="key"
+                      class="detail-row"
                     >
                       <span class="key">{{ key }}:</span>
                       <span class="val">{{ val }}</span>
@@ -1232,7 +1387,9 @@ onUnmounted(() => {
 
                 <div v-if="activeDetailTab === 'preview'">
                   <div class="detail-section">
-                    <div class="section-label">Preview</div>
+                    <div class="section-label">
+                      Preview
+                    </div>
                     <div class="preview-content">
                       {{ selectedRequest.preview }}
                     </div>
@@ -1241,7 +1398,9 @@ onUnmounted(() => {
 
                 <div v-if="activeDetailTab === 'response'">
                   <div class="detail-section">
-                    <div class="section-label">Response</div>
+                    <div class="section-label">
+                      Response
+                    </div>
                     <div class="preview-content">
                       {{ selectedRequest.preview }}
                     </div>
@@ -1259,16 +1418,26 @@ onUnmounted(() => {
         >
           <div class="storage-sidebar">
             <div class="sidebar-section">
-              <div class="section-title">Application</div>
-              <div class="section-item">Manifest</div>
-              <div class="section-item">Service Workers</div>
+              <div class="section-title">
+                Application
+              </div>
+              <div class="section-item">
+                Manifest
+              </div>
+              <div class="section-item">
+                Service Workers
+              </div>
             </div>
             <div class="sidebar-section">
-              <div class="section-title">Storage</div>
+              <div class="section-title">
+                Storage
+              </div>
               <div class="section-item active">
                 <span class="arrow">▼</span> Local Storage
               </div>
-              <div class="section-item indent">http://localhost</div>
+              <div class="section-item indent">
+                http://localhost
+              </div>
               <div class="section-item">
                 <span class="arrow">▶</span> Session Storage
               </div>
@@ -1280,16 +1449,24 @@ onUnmounted(() => {
           <div class="storage-content">
             <div class="storage-table">
               <div class="table-header">
-                <div class="col key">Key</div>
-                <div class="col value">Value</div>
+                <div class="col key">
+                  Key
+                </div>
+                <div class="col value">
+                  Value
+                </div>
               </div>
               <div
-                class="table-row"
                 v-for="(item, idx) in localStorageData"
                 :key="idx"
+                class="table-row"
               >
-                <div class="col key">{{ item.key }}</div>
-                <div class="col value">{{ item.value }}</div>
+                <div class="col key">
+                  {{ item.key }}
+                </div>
+                <div class="col value">
+                  {{ item.value }}
+                </div>
               </div>
             </div>
           </div>
@@ -1297,7 +1474,10 @@ onUnmounted(() => {
       </div>
 
       <!-- Info Bar Overlay -->
-      <div class="info-bar" v-if="hoverInfo">
+      <div
+        v-if="hoverInfo"
+        class="info-bar"
+      >
         <span class="info-icon">💡</span> {{ hoverInfo }}
       </div>
     </div>

@@ -53,7 +53,9 @@
                 <span class="view-icon">📦</span>
                 <span class="view-name">{{ route.name }}</span>
               </div>
-              <div class="view-path">{{ route.path || '/' }}</div>
+              <div class="view-path">
+                {{ route.path || '/' }}
+              </div>
             </div>
           </div>
         </div>
@@ -66,7 +68,10 @@
             @click="navigateTo(crumb.path)"
           >
             {{ crumb.name }}
-            <span v-if="index < breadcrumbs.length - 1" class="separator">/</span>
+            <span
+              v-if="index < breadcrumbs.length - 1"
+              class="separator"
+            >/</span>
           </span>
         </div>
       </div>

@@ -8,135 +8,173 @@
 
     <div class="demo-content">
       <div class="scene">
-      <!-- 1. Working Directory (Desk) -->
-      <div class="zone working">
-        <div class="zone-header">
-          <span class="zone-icon">💻</span>
-          <div class="zone-info">
-            <span class="zone-title">工作区 (Desk)</span>
-            <span class="zone-desc">你的书桌，随便乱放</span>
+        <!-- 1. Working Directory (Desk) -->
+        <div class="zone working">
+          <div class="zone-header">
+            <span class="zone-icon">💻</span>
+            <div class="zone-info">
+              <span class="zone-title">工作区 (Desk)</span>
+              <span class="zone-desc">你的书桌，随便乱放</span>
+            </div>
+          </div>
+          <div class="desk-surface">
+            <transition-group name="file-pop">
+              <div
+                v-for="file in workingFiles"
+                :key="file.id"
+                class="file-card"
+                @click="addToStaging(file)"
+              >
+                <div class="file-icon">
+                  {{ file.icon }}
+                </div>
+                <div class="file-name">
+                  {{ file.name }}
+                </div>
+                <div class="action-hint">
+                  Add +
+                </div>
+              </div>
+            </transition-group>
+            <div
+              v-if="workingFiles.length === 0"
+              class="empty-state"
+            >
+              桌上很干净 ✨
+              <button
+                class="create-btn"
+                @click="createNewFile"
+              >
+                新建文件 📝
+              </button>
+            </div>
           </div>
         </div>
-        <div class="desk-surface">
-          <transition-group name="file-pop">
-            <div
-              v-for="file in workingFiles"
-              :key="file.id"
-              class="file-card"
-              @click="addToStaging(file)"
-            >
-              <div class="file-icon">{{ file.icon }}</div>
-              <div class="file-name">{{ file.name }}</div>
-              <div class="action-hint">Add +</div>
+
+        <!-- Arrow -->
+        <div class="flow-arrow">
+          <div class="arrow-line" />
+          <div class="arrow-label">
+            git add
+          </div>
+          <div class="arrow-head">
+            ▶
+          </div>
+        </div>
+
+        <!-- 2. Staging Area (Box) -->
+        <div class="zone staging">
+          <div class="zone-header">
+            <span class="zone-icon">📦</span>
+            <div class="zone-info">
+              <span class="zone-title">暂存区 (Box)</span>
+              <span class="zone-desc">快递盒，准备打包</span>
             </div>
-          </transition-group>
-          <div v-if="workingFiles.length === 0" class="empty-state">
-            桌上很干净 ✨
-            <button class="create-btn" @click="createNewFile">
-              新建文件 📝
+          </div>
+          <div class="box-container">
+            <div class="box-body">
+              <transition-group name="file-drop">
+                <div
+                  v-for="file in stagedFiles"
+                  :key="file.id"
+                  class="file-card mini"
+                  @click="unstageFile(file)"
+                >
+                  <div class="file-icon">
+                    {{ file.icon }}
+                  </div>
+                  <div class="file-name">
+                    {{ file.name }}
+                  </div>
+                  <div class="action-hint">
+                    Remove -
+                  </div>
+                </div>
+              </transition-group>
+              <div
+                v-if="stagedFiles.length === 0"
+                class="empty-state box-empty"
+              >
+                盒子是空的 🕸️
+              </div>
+            </div>
+            <div class="box-flap left" />
+            <div class="box-flap right" />
+          </div>
+          <div class="staging-actions">
+            <button
+              class="commit-btn"
+              :disabled="stagedFiles.length === 0"
+              @click="commitFiles"
+            >
+              封箱寄出 (git commit) 🚚
             </button>
           </div>
         </div>
-      </div>
 
-      <!-- Arrow -->
-      <div class="flow-arrow">
-        <div class="arrow-line"></div>
-        <div class="arrow-label">git add</div>
-        <div class="arrow-head">▶</div>
-      </div>
-
-      <!-- 2. Staging Area (Box) -->
-      <div class="zone staging">
-        <div class="zone-header">
-          <span class="zone-icon">📦</span>
-          <div class="zone-info">
-            <span class="zone-title">暂存区 (Box)</span>
-            <span class="zone-desc">快递盒，准备打包</span>
+        <!-- Arrow -->
+        <div class="flow-arrow">
+          <div class="arrow-line" />
+          <div class="arrow-label">
+            git commit
+          </div>
+          <div class="arrow-head">
+            ▶
           </div>
         </div>
-        <div class="box-container">
-          <div class="box-body">
-            <transition-group name="file-drop">
+
+        <!-- 3. Repository (Cabinet) -->
+        <div class="zone repo">
+          <div class="zone-header">
+            <span class="zone-icon">🗄️</span>
+            <div class="zone-info">
+              <span class="zone-title">仓库 (Cabinet)</span>
+              <span class="zone-desc">档案柜，永久保存</span>
+            </div>
+          </div>
+          <div class="cabinet-body">
+            <transition-group name="drawer-slide">
               <div
-                v-for="file in stagedFiles"
-                :key="file.id"
-                class="file-card mini"
-                @click="unstageFile(file)"
+                v-for="commit in commits.slice().reverse()"
+                :key="commit.hash"
+                class="drawer-item"
               >
-                <div class="file-icon">{{ file.icon }}</div>
-                <div class="file-name">{{ file.name }}</div>
-                <div class="action-hint">Remove -</div>
+                <div class="drawer-handle" />
+                <div class="commit-info">
+                  <span class="commit-hash">#{{ commit.hash }}</span>
+                  <span class="commit-msg">{{ commit.message }}</span>
+                </div>
+                <div class="commit-files">
+                  <span
+                    v-for="f in commit.files"
+                    :key="f"
+                    class="tiny-file"
+                  >📄</span>
+                </div>
               </div>
             </transition-group>
-            <div v-if="stagedFiles.length === 0" class="empty-state box-empty">
-              盒子是空的 🕸️
-            </div>
-          </div>
-          <div class="box-flap left"></div>
-          <div class="box-flap right"></div>
-        </div>
-        <div class="staging-actions">
-          <button
-            class="commit-btn"
-            :disabled="stagedFiles.length === 0"
-            @click="commitFiles"
-          >
-            封箱寄出 (git commit) 🚚
-          </button>
-        </div>
-      </div>
-
-      <!-- Arrow -->
-      <div class="flow-arrow">
-        <div class="arrow-line"></div>
-        <div class="arrow-label">git commit</div>
-        <div class="arrow-head">▶</div>
-      </div>
-
-      <!-- 3. Repository (Cabinet) -->
-      <div class="zone repo">
-        <div class="zone-header">
-          <span class="zone-icon">🗄️</span>
-          <div class="zone-info">
-            <span class="zone-title">仓库 (Cabinet)</span>
-            <span class="zone-desc">档案柜，永久保存</span>
-          </div>
-        </div>
-        <div class="cabinet-body">
-          <transition-group name="drawer-slide">
             <div
-              v-for="commit in commits.slice().reverse()"
-              :key="commit.hash"
-              class="drawer-item"
+              v-if="commits.length === 0"
+              class="empty-state"
             >
-              <div class="drawer-handle"></div>
-              <div class="commit-info">
-                <span class="commit-hash">#{{ commit.hash }}</span>
-                <span class="commit-msg">{{ commit.message }}</span>
-              </div>
-              <div class="commit-files">
-                <span v-for="f in commit.files" :key="f" class="tiny-file"
-                  >📄</span
-                >
-              </div>
+              柜子是空的 💨
             </div>
-          </transition-group>
-          <div v-if="commits.length === 0" class="empty-state">
-            柜子是空的 💨
           </div>
         </div>
       </div>
-    </div>
     </div>
 
     <div class="bottom">
       <div class="block">
-        <div class="block-title">当前等价命令</div>
+        <div class="block-title">
+          当前等价命令
+        </div>
         <pre class="mono"><code>{{ historyText }}</code></pre>
       </div>
       <div class="block">
-        <div class="block-title">git status（模拟）</div>
+        <div class="block-title">
+          git status（模拟）
+        </div>
         <pre class="mono"><code>{{ statusText }}</code></pre>
       </div>
     </div>

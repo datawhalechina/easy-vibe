@@ -3,27 +3,50 @@
     <h4>进程 / 线程 / 协程 对比演示</h4>
 
     <div class="controls">
-      <el-radio-group v-model="model" size="small">
-        <el-radio-button label="process">多进程</el-radio-button>
-        <el-radio-button label="thread">多线程</el-radio-button>
-        <el-radio-button label="coroutine">协程</el-radio-button>
+      <el-radio-group
+        v-model="model"
+        size="small"
+      >
+        <el-radio-button label="process">
+          多进程
+        </el-radio-button>
+        <el-radio-button label="thread">
+          多线程
+        </el-radio-button>
+        <el-radio-button label="coroutine">
+          协程
+        </el-radio-button>
       </el-radio-group>
 
       <el-button
         type="primary"
         size="small"
-        @click="startSimulation"
         :disabled="isRunning"
+        @click="startSimulation"
       >
         {{ isRunning ? '运行中...' : '开始模拟' }}
       </el-button>
     </div>
 
     <div class="stats-bar">
-      <el-statistic title="内存占用" :value="memoryUsage" suffix="MB" />
-      <el-statistic title="上下文切换" :value="contextSwitches" />
-      <el-statistic title="完成任务" :value="completedTasks" />
-      <el-statistic title="耗时" :value="elapsedTime" suffix="ms" />
+      <el-statistic
+        title="内存占用"
+        :value="memoryUsage"
+        suffix="MB"
+      />
+      <el-statistic
+        title="上下文切换"
+        :value="contextSwitches"
+      />
+      <el-statistic
+        title="完成任务"
+        :value="completedTasks"
+      />
+      <el-statistic
+        title="耗时"
+        :value="elapsedTime"
+        suffix="ms"
+      />
     </div>
 
     <div class="visualization">
@@ -35,7 +58,10 @@
           :class="{ active: core.active, type: core.type }"
         >
           <span class="core-label">CPU {{ idx + 1 }}</span>
-          <div class="task-indicator" v-if="core.task">
+          <div
+            v-if="core.task"
+            class="task-indicator"
+          >
             {{ core.task }}
           </div>
         </div>

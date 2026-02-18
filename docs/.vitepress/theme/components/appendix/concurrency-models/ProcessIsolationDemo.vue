@@ -3,22 +3,40 @@
     <h4>进程内存隔离演示</h4>
 
     <div class="controls">
-      <el-button type="primary" size="small" @click="addProcess" :disabled="processes.length >= 4">
+      <el-button
+        type="primary"
+        size="small"
+        :disabled="processes.length >= 4"
+        @click="addProcess"
+      >
         创建进程
       </el-button>
-      <el-button type="danger" size="small" @click="killProcess" :disabled="processes.length === 0">
+      <el-button
+        type="danger"
+        size="small"
+        :disabled="processes.length === 0"
+        @click="killProcess"
+      >
         结束进程
       </el-button>
-      <el-button size="small" @click="simulateCrash">
+      <el-button
+        size="small"
+        @click="simulateCrash"
+      >
         模拟进程崩溃
       </el-button>
-      <el-button size="small" @click="reset">
+      <el-button
+        size="small"
+        @click="reset"
+      >
         重置
       </el-button>
     </div>
 
     <div class="memory-view">
-      <div class="memory-label">系统内存</div>
+      <div class="memory-label">
+        系统内存
+      </div>
       <div class="memory-blocks">
         <div
           v-for="process in processes"
@@ -49,18 +67,33 @@
               <span class="section-size">{{ process.stackSize }}MB</span>
             </div>
           </div>
-          <div v-if="process.crashed" class="crash-overlay">
+          <div
+            v-if="process.crashed"
+            class="crash-overlay"
+          >
             <span class="crash-text">💥 已崩溃</span>
             <span class="crash-info">不影响其他进程</span>
           </div>
         </div>
       </div>
 
-      <div class="shared-memory" v-if="showSharedMemory">
-        <div class="shared-label">共享内存区域 (IPC)</div>
+      <div
+        v-if="showSharedMemory"
+        class="shared-memory"
+      >
+        <div class="shared-label">
+          共享内存区域 (IPC)
+        </div>
         <div class="shared-content">
-          <div v-for="process in processes" :key="process.id" class="shared-access">
-            <span class="access-indicator" :style="{ backgroundColor: process.color }"></span>
+          <div
+            v-for="process in processes"
+            :key="process.id"
+            class="shared-access"
+          >
+            <span
+              class="access-indicator"
+              :style="{ backgroundColor: process.color }"
+            />
             <span>进程 {{ process.id }} 可以访问</span>
           </div>
         </div>

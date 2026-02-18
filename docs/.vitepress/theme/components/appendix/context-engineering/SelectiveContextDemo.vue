@@ -19,7 +19,9 @@
           <span class="value">{{ totalMessages }}</span>
           <span class="label">现在一共记了几条</span>
         </div>
-        <div class="stat-divider">/</div>
+        <div class="stat-divider">
+          /
+        </div>
         <div class="stat-item">
           <span class="value">{{ maxSlots }}</span>
           <span class="label">黑板最多能记几条</span>
@@ -30,7 +32,7 @@
           class="usage-fill" 
           :style="{ width: `${(totalMessages / maxSlots) * 100}%` }"
           :class="{ full: totalMessages >= maxSlots }"
-        ></div>
+        />
       </div>
     </div>
 
@@ -54,15 +56,17 @@
                 <span class="role-badge">{{ msg.role }}</span>
                 <button 
                   class="pin-btn active" 
-                  @click="togglePin(msg)"
                   :disabled="msg.role === 'System'"
                   title="取消钉住"
+                  @click="togglePin(msg)"
                 >
                   <span v-if="msg.role === 'System'">🔒 系统信息固定在这</span>
                   <span v-else>📌 取消钉住</span>
                 </button>
               </div>
-              <div class="card-content">{{ msg.content }}</div>
+              <div class="card-content">
+                {{ msg.content }}
+              </div>
             </div>
           </transition-group>
         </div>
@@ -85,14 +89,23 @@
             >
               <div class="card-header">
                 <span class="role-badge">{{ msg.role }}</span>
-                <button class="pin-btn" @click="togglePin(msg)" title="把这条钉在黑板上">
+                <button
+                  class="pin-btn"
+                  title="把这条钉在黑板上"
+                  @click="togglePin(msg)"
+                >
                   📌 钉住这条
                 </button>
               </div>
-              <div class="card-content">{{ msg.content }}</div>
+              <div class="card-content">
+                {{ msg.content }}
+              </div>
             </div>
           </transition-group>
-          <div v-if="scrollingMessages.length === 0" class="empty-state">
+          <div
+            v-if="scrollingMessages.length === 0"
+            class="empty-state"
+          >
             这里是“普通对话区”，暂时还空着
           </div>
         </div>
@@ -103,16 +116,30 @@
       <div class="input-group">
         <input
           v-model="newMessage"
-          @keyup.enter="sendMessage"
           placeholder="在这里输入一条新的信息，比如“我叫小明”"
-        />
-        <button class="send-btn" @click="sendMessage" :disabled="!newMessage.trim()">
+          @keyup.enter="sendMessage"
+        >
+        <button
+          class="send-btn"
+          :disabled="!newMessage.trim()"
+          @click="sendMessage"
+        >
           添加到黑板
         </button>
       </div>
       <div class="presets">
-        <button class="preset-btn" @click="addPreset('我的名字叫 Alice。')">用户：我的名字叫 Alice</button>
-        <button class="preset-btn" @click="addPreset('系统密码是 1234。')">用户：系统密码是 1234</button>
+        <button
+          class="preset-btn"
+          @click="addPreset('我的名字叫 Alice。')"
+        >
+          用户：我的名字叫 Alice
+        </button>
+        <button
+          class="preset-btn"
+          @click="addPreset('系统密码是 1234。')"
+        >
+          用户：系统密码是 1234
+        </button>
       </div>
     </div>
 

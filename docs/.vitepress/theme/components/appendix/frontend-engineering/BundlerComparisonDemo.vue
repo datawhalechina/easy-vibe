@@ -32,9 +32,15 @@
     </div>
 
     <!-- 雷达图对比视图 -->
-    <div v-if="currentView === 'radar'" class="radar-view">
+    <div
+      v-if="currentView === 'radar'"
+      class="radar-view"
+    >
       <div class="radar-container">
-        <svg viewBox="0 0 400 400" class="radar-chart">
+        <svg
+          viewBox="0 0 400 400"
+          class="radar-chart"
+        >
           <!-- 背景网格 -->
           <g class="grid">
             <polygon
@@ -104,7 +110,10 @@
           @mouseenter="highlightedTool = tool.id"
           @mouseleave="highlightedTool = null"
         >
-          <span class="legend-color" :style="{ background: tool.borderColor }"></span>
+          <span
+            class="legend-color"
+            :style="{ background: tool.borderColor }"
+          />
           <span class="legend-name">{{ tool.name }}</span>
           <span class="legend-desc">{{ tool.shortDesc }}</span>
         </div>
@@ -112,21 +121,33 @@
     </div>
 
     <!-- 表格对比视图 -->
-    <div v-else-if="currentView === 'table'" class="table-view">
+    <div
+      v-else-if="currentView === 'table'"
+      class="table-view"
+    >
       <table class="comparison-table">
         <thead>
           <tr>
             <th>对比维度</th>
-            <th v-for="tool in bundlers" :key="tool.id">
+            <th
+              v-for="tool in bundlers"
+              :key="tool.id"
+            >
               <span class="tool-header">
-                <span class="tool-icon" :style="{ background: tool.borderColor }">{{ tool.icon }}</span>
+                <span
+                  class="tool-icon"
+                  :style="{ background: tool.borderColor }"
+                >{{ tool.icon }}</span>
                 {{ tool.name }}
               </span>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(dim, dimIndex) in dimensions" :key="dim.key">
+          <tr
+            v-for="(dim, dimIndex) in dimensions"
+            :key="dim.key"
+          >
             <td class="dim-name">
               <span class="dim-icon">{{ dim.icon }}</span>
               {{ dim.name }}
@@ -143,7 +164,7 @@
                     width: `${tool.scores[dimIndex] * 10}%`,
                     background: tool.borderColor
                   }"
-                ></div>
+                />
                 <span class="score-value">{{ tool.scores[dimIndex] }}/10</span>
               </div>
             </td>
@@ -153,7 +174,10 @@
     </div>
 
     <!-- 场景推荐视图 -->
-    <div v-else-if="currentView === 'recommend'" class="recommend-view">
+    <div
+      v-else-if="currentView === 'recommend'"
+      class="recommend-view"
+    >
       <div class="scenario-list">
         <div
           v-for="scenario in scenarios"
@@ -173,7 +197,10 @@
             <span class="expand-icon">{{ expandedScenario === scenario.id ? '▼' : '▶' }}</span>
           </div>
 
-          <div v-if="expandedScenario === scenario.id" class="scenario-content">
+          <div
+            v-if="expandedScenario === scenario.id"
+            class="scenario-content"
+          >
             <div class="recommendation">
               <div class="best-choice">
                 <span class="choice-label">🏆 首选推荐</span>
@@ -184,11 +211,16 @@
                   >
                     {{ getTool(scenario.bestChoice).icon }} {{ getTool(scenario.bestChoice).name }}
                   </span>
-                  <p class="choice-reason">{{ scenario.bestReason }}</p>
+                  <p class="choice-reason">
+                    {{ scenario.bestReason }}
+                  </p>
                 </div>
               </div>
 
-              <div v-if="scenario.alternative" class="alternative">
+              <div
+                v-if="scenario.alternative"
+                class="alternative"
+              >
                 <span class="choice-label">🥈 备选方案</span>
                 <div class="choice-content">
                   <span
@@ -197,7 +229,9 @@
                   >
                     {{ getTool(scenario.alternative).icon }} {{ getTool(scenario.alternative).name }}
                   </span>
-                  <p class="choice-reason">{{ scenario.altReason }}</p>
+                  <p class="choice-reason">
+                    {{ scenario.altReason }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -211,8 +245,8 @@
         <span class="icon">💡</span>
         <strong>选择建议：</strong>
         {{ currentView === 'radar' ? '雷达图展示了各工具在多个维度的能力分布，面积越大代表综合能力越强。' :
-           currentView === 'table' ? '表格详细对比了各工具在每个维度的具体得分，方便精确对比。' :
-           '根据你的项目类型和团队情况，选择最适合的工具往往比选择"最好"的工具更重要。' }}
+          currentView === 'table' ? '表格详细对比了各工具在每个维度的具体得分，方便精确对比。' :
+          '根据你的项目类型和团队情况，选择最适合的工具往往比选择"最好"的工具更重要。' }}
       </p>
     </div>
   </div>

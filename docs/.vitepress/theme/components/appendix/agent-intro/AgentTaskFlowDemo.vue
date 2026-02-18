@@ -6,21 +6,25 @@
   <div class="flow">
     <div class="header">
       <div>
-        <div class="title">任务回放：Agent 怎么一步步做完？</div>
-        <div class="subtitle">点步骤，看“工具调用”和“中间结果”。</div>
+        <div class="title">
+          任务回放：Agent 怎么一步步做完？
+        </div>
+        <div class="subtitle">
+          点步骤，看“工具调用”和“中间结果”。
+        </div>
       </div>
       <div class="actions">
         <button
           class="btn"
-          @click="step = Math.max(0, step - 1)"
           :disabled="step === 0"
+          @click="step = Math.max(0, step - 1)"
         >
           上一步
         </button>
         <button
           class="btn primary"
-          @click="step = Math.min(steps.length - 1, step + 1)"
           :disabled="step === steps.length - 1"
+          @click="step = Math.min(steps.length - 1, step + 1)"
         >
           下一步
         </button>
@@ -41,15 +45,23 @@
 
     <div class="grid">
       <div class="panel">
-        <div class="panel-title">当前步骤</div>
-        <div class="panel-body">{{ steps[step].desc }}</div>
+        <div class="panel-title">
+          当前步骤
+        </div>
+        <div class="panel-body">
+          {{ steps[step].desc }}
+        </div>
       </div>
       <div class="panel">
-        <div class="panel-title">工具调用（示意）</div>
+        <div class="panel-title">
+          工具调用（示意）
+        </div>
         <pre><code>{{ steps[step].tool }}</code></pre>
       </div>
       <div class="panel">
-        <div class="panel-title">结果（示意）</div>
+        <div class="panel-title">
+          结果（示意）
+        </div>
         <pre><code>{{ steps[step].result }}</code></pre>
       </div>
     </div>

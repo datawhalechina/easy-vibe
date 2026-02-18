@@ -8,35 +8,61 @@
         :class="{ active: currentStep === index, completed: currentStep > index }"
         @click="currentStep = index"
       >
-        <div class="step-number">{{ index + 1 }}</div>
+        <div class="step-number">
+          {{ index + 1 }}
+        </div>
         <div class="step-info">
-          <div class="step-name">{{ step.name }}</div>
-          <div class="step-time">{{ step.time }}</div>
+          <div class="step-name">
+            {{ step.name }}
+          </div>
+          <div class="step-time">
+            {{ step.time }}
+          </div>
         </div>
       </div>
     </div>
 
-    <div v-if="currentStepData" class="step-detail">
+    <div
+      v-if="currentStepData"
+      class="step-detail"
+    >
       <div class="detail-header">
         <span class="detail-step">步骤 {{ currentStep + 1 }}</span>
         <span class="detail-name">{{ currentStepData.name }}</span>
       </div>
       <div class="detail-content">
-        <div class="detail-desc">{{ currentStepData.description }}</div>
+        <div class="detail-desc">
+          {{ currentStepData.description }}
+        </div>
         <div class="detail-tasks">
-          <div class="tasks-title">具体操作：</div>
+          <div class="tasks-title">
+            具体操作：
+          </div>
           <ul>
-            <li v-for="(task, i) in currentStepData.tasks" :key="i">{{ task }}</li>
+            <li
+              v-for="(task, i) in currentStepData.tasks"
+              :key="i"
+            >
+              {{ task }}
+            </li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="workflow-actions">
-      <button class="action-btn" @click="prevStep" :disabled="currentStep === 0">
+      <button
+        class="action-btn"
+        :disabled="currentStep === 0"
+        @click="prevStep"
+      >
         上一步
       </button>
-      <button class="action-btn primary" @click="nextStep" :disabled="currentStep >= steps.length - 1">
+      <button
+        class="action-btn primary"
+        :disabled="currentStep >= steps.length - 1"
+        @click="nextStep"
+      >
         {{ currentStep >= steps.length - 1 ? '完成' : '下一步' }}
       </button>
     </div>

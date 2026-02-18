@@ -13,7 +13,9 @@
     <div class="demo-content">
       <div class="trees-container">
         <div class="tree-section">
-          <div class="tree-title">DOM树</div>
+          <div class="tree-title">
+            DOM树
+          </div>
           <div class="tree dom-tree">
             <div class="tree-node">
               <span class="node-tag">&lt;html&gt;</span>
@@ -47,10 +49,14 @@
           </div>
         </div>
 
-        <div class="plus-sign">+</div>
+        <div class="plus-sign">
+          +
+        </div>
 
         <div class="tree-section">
-          <div class="tree-title">CSSOM树</div>
+          <div class="tree-title">
+            CSSOM树
+          </div>
           <div class="tree cssom-tree">
             <div class="tree-node">
               <span class="node-tag">body</span>
@@ -84,10 +90,14 @@
           </div>
         </div>
 
-        <div class="equal-sign">=</div>
+        <div class="equal-sign">
+          =
+        </div>
 
         <div class="tree-section">
-          <div class="tree-title">渲染树</div>
+          <div class="tree-title">
+            渲染树
+          </div>
           <div class="tree render-tree">
             <div class="tree-node">
               <span class="node-tag render-node">div</span>
@@ -103,11 +113,11 @@
 
       <div class="legend">
         <div class="legend-item">
-          <span class="legend-dot highlight-node"></span>
+          <span class="legend-dot highlight-node" />
           <span class="legend-text">可见节点</span>
         </div>
         <div class="legend-item">
-          <span class="legend-dot hidden-node"></span>
+          <span class="legend-dot hidden-node" />
           <span class="legend-text">不可见节点（不包含在渲染树中）</span>
         </div>
       </div>

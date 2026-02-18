@@ -76,7 +76,9 @@ const setScenario = (key) => {
 <template>
   <div class="arch-demo">
     <div class="demo-header">
-      <div class="title">🛠️ IDE 核心机制模拟器</div>
+      <div class="title">
+        🛠️ IDE 核心机制模拟器
+      </div>
       <div class="subtitle">
         点击下方标签，体验不同配置下的运行结果，理解为什么缺一不可。
       </div>
@@ -102,26 +104,35 @@ const setScenario = (key) => {
 
     <div class="diagram-container">
       <!-- Layer 1: VS Code -->
-      <div class="component vscode" :class="{ dim: activeStep === 'env' }">
-        <div class="comp-label">1. 外壳 (VS Code)</div>
+      <div
+        class="component vscode"
+        :class="{ dim: activeStep === 'env' }"
+      >
+        <div class="comp-label">
+          1. 外壳 (VS Code)
+        </div>
         <div class="editor-window">
-          <div class="file-tab">main.py</div>
+          <div class="file-tab">
+            main.py
+          </div>
           <div class="code-area">
             <span style="color: #c586c0">print</span>(<span
               style="color: #ce9178"
-              >"Hello"</span
-            >)
+            >"Hello"</span>)
           </div>
           <button
             class="run-btn-small"
-            @click="run"
             :disabled="isRunning"
             title="点击运行"
+            @click="run"
           >
             {{ isRunning ? '...' : '▶ 运行' }}
           </button>
         </div>
-        <div class="status-badge error" v-if="activeStep === 'error-editor'">
+        <div
+          v-if="activeStep === 'error-editor'"
+          class="status-badge error"
+        >
           🚫 不懂怎么运行
         </div>
       </div>
@@ -135,7 +146,7 @@ const setScenario = (key) => {
               activeStep
             )
           }"
-        ></div>
+        />
         <div
           class="arrow-tip"
           :class="{
@@ -156,21 +167,33 @@ const setScenario = (key) => {
           active: activeStep === 'extension'
         }"
       >
-        <div class="comp-label">2. 中介 (插件)</div>
+        <div class="comp-label">
+          2. 中介 (插件)
+        </div>
         <div class="comp-box">
-          <div v-if="currentScenario === 'editor'" class="missing-content">
+          <div
+            v-if="currentScenario === 'editor'"
+            class="missing-content"
+          >
             <span class="icon">❌</span> 未安装插件
           </div>
-          <div v-else class="active-content">
-            <div class="icon">🧩</div>
-            <div class="text">Python 插件</div>
+          <div
+            v-else
+            class="active-content"
+          >
+            <div class="icon">
+              🧩
+            </div>
+            <div class="text">
+              Python 插件
+            </div>
             <div
-              class="action"
               v-if="
                 activeStep === 'extension' ||
-                activeStep === 'env' ||
-                activeStep === 'error-env'
+                  activeStep === 'env' ||
+                  activeStep === 'error-env'
               "
+              class="action"
             >
               生成指令: <code>python main.py</code>
             </div>
@@ -183,7 +206,7 @@ const setScenario = (key) => {
         <div
           class="line"
           :class="{ active: ['env', 'result'].includes(activeStep) }"
-        ></div>
+        />
         <div
           class="arrow-tip"
           :class="{ active: ['env', 'result'].includes(activeStep) }"
@@ -200,23 +223,44 @@ const setScenario = (key) => {
           active: activeStep === 'env'
         }"
       >
-        <div class="comp-label">3. 引擎 (环境)</div>
+        <div class="comp-label">
+          3. 引擎 (环境)
+        </div>
         <div class="comp-box">
-          <div v-if="currentScenario !== 'full'" class="missing-content">
+          <div
+            v-if="currentScenario !== 'full'"
+            class="missing-content"
+          >
             <span class="icon">❌</span> 未安装环境
           </div>
-          <div v-else class="active-content">
-            <div class="icon">⚙️</div>
-            <div class="text">Python 解释器</div>
-            <div class="action" v-if="activeStep === 'env'">
+          <div
+            v-else
+            class="active-content"
+          >
+            <div class="icon">
+              ⚙️
+            </div>
+            <div class="text">
+              Python 解释器
+            </div>
+            <div
+              v-if="activeStep === 'env'"
+              class="action"
+            >
               <span class="spin">⚙️</span> 正在计算...
             </div>
-            <div class="action success" v-if="activeStep === 'result'">
+            <div
+              v-if="activeStep === 'result'"
+              class="action success"
+            >
               ✅ 计算完成
             </div>
           </div>
         </div>
-        <div class="status-badge error" v-if="activeStep === 'error-env'">
+        <div
+          v-if="activeStep === 'error-env'"
+          class="status-badge error"
+        >
           🚫 找不到程序
         </div>
       </div>
@@ -236,19 +280,22 @@ const setScenario = (key) => {
         >
           {{ l }}
         </div>
-        <div v-if="logs.length === 0" class="placeholder">
+        <div
+          v-if="logs.length === 0"
+          class="placeholder"
+        >
           点击上方“运行”按钮开始...
         </div>
       </div>
     </div>
 
     <div
+      v-if="!isRunning && logs.length > 0"
       class="result-bar"
       :class="{
         success: scenarios[currentScenario].result.includes('成功'),
         error: !scenarios[currentScenario].result.includes('成功')
       }"
-      v-if="!isRunning && logs.length > 0"
     >
       {{ scenarios[currentScenario].result }}
     </div>

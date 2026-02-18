@@ -1,7 +1,9 @@
 <template>
   <div class="network-troubleshooting">
     <div class="problem-selector">
-      <div class="selector-title">选择问题类型</div>
+      <div class="selector-title">
+        选择问题类型
+      </div>
       <div class="problem-list">
         <button
           v-for="(problem, index) in problems"
@@ -16,16 +18,23 @@
       </div>
     </div>
 
-    <div class="solution-panel" v-if="selectedProblem !== null">
+    <div
+      v-if="selectedProblem !== null"
+      class="solution-panel"
+    >
       <div class="solution-header">
-        <div class="solution-title">{{ problems[selectedProblem].name }}</div>
+        <div class="solution-title">
+          {{ problems[selectedProblem].name }}
+        </div>
         <div class="solution-desc">
           {{ problems[selectedProblem].description }}
         </div>
       </div>
 
       <div class="solution-steps">
-        <div class="steps-title">🔧 解决步骤</div>
+        <div class="steps-title">
+          🔧 解决步骤
+        </div>
         <div class="steps-list">
           <div
             v-for="(step, index) in problems[selectedProblem].steps"
@@ -34,13 +43,22 @@
             :class="{ completed: completedSteps.has(index) }"
             @click="toggleStep(index)"
           >
-            <div class="step-number">{{ index + 1 }}</div>
+            <div class="step-number">
+              {{ index + 1 }}
+            </div>
             <div class="step-content">
-              <div class="step-action">{{ step.action }}</div>
-              <div class="step-command" v-if="step.command">
+              <div class="step-action">
+                {{ step.action }}
+              </div>
+              <div
+                v-if="step.command"
+                class="step-command"
+              >
                 <code>{{ step.command }}</code>
               </div>
-              <div class="step-explanation">{{ step.explanation }}</div>
+              <div class="step-explanation">
+                {{ step.explanation }}
+              </div>
             </div>
             <div class="step-check">
               {{ completedSteps.has(index) ? '✓' : '○' }}
@@ -50,61 +68,89 @@
       </div>
 
       <div class="related-tools">
-        <div class="tools-title">🛠️ 相关工具</div>
+        <div class="tools-title">
+          🛠️ 相关工具
+        </div>
         <div class="tools-list">
           <div
             v-for="(tool, index) in problems[selectedProblem].tools"
             :key="index"
             class="tool-item"
           >
-            <div class="tool-name">{{ tool.name }}</div>
-            <div class="tool-usage">{{ tool.usage }}</div>
+            <div class="tool-name">
+              {{ tool.name }}
+            </div>
+            <div class="tool-usage">
+              {{ tool.usage }}
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="common-commands">
-      <div class="commands-title">📋 常用诊断命令</div>
+      <div class="commands-title">
+        📋 常用诊断命令
+      </div>
       <div class="commands-grid">
-        <div class="command-card" v-for="(cmd, index) in commands" :key="index">
-          <div class="command-name">{{ cmd.name }}</div>
-          <div class="command-syntax">{{ cmd.syntax }}</div>
-          <div class="command-desc">{{ cmd.description }}</div>
+        <div
+          v-for="(cmd, index) in commands"
+          :key="index"
+          class="command-card"
+        >
+          <div class="command-name">
+            {{ cmd.name }}
+          </div>
+          <div class="command-syntax">
+            {{ cmd.syntax }}
+          </div>
+          <div class="command-desc">
+            {{ cmd.description }}
+          </div>
         </div>
       </div>
     </div>
 
     <div class="troubleshooting-tips">
-      <div class="tips-title">💡 故障排查技巧</div>
+      <div class="tips-title">
+        💡 故障排查技巧
+      </div>
       <div class="tips-list">
         <div class="tip-item">
-          <div class="tip-number">1</div>
+          <div class="tip-number">
+            1
+          </div>
           <div class="tip-content">
             <strong>从底层到顶层</strong>
-            <br />物理层 → 链路层 → 网络层 → 传输层 → 应用层
+            <br>物理层 → 链路层 → 网络层 → 传输层 → 应用层
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-number">2</div>
+          <div class="tip-number">
+            2
+          </div>
           <div class="tip-content">
             <strong>分层排查</strong>
-            <br />先确定问题发生在哪一层，再针对性解决
+            <br>先确定问题发生在哪一层，再针对性解决
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-number">3</div>
+          <div class="tip-number">
+            3
+          </div>
           <div class="tip-content">
             <strong>二分法定位</strong>
-            <br />
+            <br>
             ping 本机 → ping 网关 → ping 外网 → ping 域名
           </div>
         </div>
         <div class="tip-item">
-          <div class="tip-number">4</div>
+          <div class="tip-number">
+            4
+          </div>
           <div class="tip-content">
             <strong>查看日志</strong>
-            <br />系统日志、应用日志、防火墙日志记录关键信息
+            <br>系统日志、应用日志、防火墙日志记录关键信息
           </div>
         </div>
       </div>

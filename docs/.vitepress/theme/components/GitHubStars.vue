@@ -70,7 +70,10 @@ onMounted(async () => {
           />
         </svg>
       </span>
-      <span v-if="formattedStars" class="stars-count">{{
+      <span
+        v-if="formattedStars"
+        class="stars-count"
+      >{{
         formattedStars
       }}</span>
     </a>

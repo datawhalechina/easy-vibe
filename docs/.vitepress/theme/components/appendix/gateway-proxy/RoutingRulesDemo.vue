@@ -5,56 +5,86 @@
 <template>
   <div class="routing-rules-demo">
     <div class="header">
-      <div class="title">🧭 路由规则：如何把请求送到正确的服务？</div>
-      <div class="subtitle">想象成快递分拣中心——根据地址把包裹分配到不同的配送站</div>
+      <div class="title">
+        🧭 路由规则：如何把请求送到正确的服务？
+      </div>
+      <div class="subtitle">
+        想象成快递分拣中心——根据地址把包裹分配到不同的配送站
+      </div>
     </div>
 
     <div class="playground">
       <div class="playground-header">
-        <div class="playground-title">🎮 路由规则实验室</div>
-        <div class="playground-subtitle">输入一个 URL，看看它会被路由到哪个服务</div>
+        <div class="playground-title">
+          🎮 路由规则实验室
+        </div>
+        <div class="playground-subtitle">
+          输入一个 URL，看看它会被路由到哪个服务
+        </div>
       </div>
 
       <div class="input-section">
         <div class="input-group">
           <label>HTTP 方法</label>
           <select v-model="request.method">
-            <option value="GET">GET</option>
-            <option value="POST">POST</option>
-            <option value="PUT">PUT</option>
-            <option value="DELETE">DELETE</option>
+            <option value="GET">
+              GET
+            </option>
+            <option value="POST">
+              POST
+            </option>
+            <option value="PUT">
+              PUT
+            </option>
+            <option value="DELETE">
+              DELETE
+            </option>
           </select>
         </div>
         <div class="input-group flex-2">
           <label>URL 路径</label>
           <input
-            type="text"
             v-model="request.path"
+            type="text"
             placeholder="/api/users/123"
             @keyup.enter="matchRoute"
-          />
+          >
         </div>
         <div class="input-group">
           <label>Header (可选)</label>
           <input
-            type="text"
             v-model="request.header"
+            type="text"
             placeholder="X-Version: v2"
-          />
+          >
         </div>
       </div>
 
-      <button class="match-btn" @click="matchRoute" :disabled="isMatching">
+      <button
+        class="match-btn"
+        :disabled="isMatching"
+        @click="matchRoute"
+      >
         {{ isMatching ? '匹配中...' : '🔍 开始匹配' }}
       </button>
 
-      <div class="result-section" v-if="matchResult">
+      <div
+        v-if="matchResult"
+        class="result-section"
+      >
         <div :class="['result-card', matchResult.found ? 'success' : 'fail']">
           <div class="result-header">
-            <div class="result-icon">{{ matchResult.found ? '✅' : '❌' }}</div>
-            <div class="result-title">{{ matchResult.found ? '匹配成功' : '未找到匹配规则' }}</div>
+            <div class="result-icon">
+              {{ matchResult.found ? '✅' : '❌' }}
+            </div>
+            <div class="result-title">
+              {{ matchResult.found ? '匹配成功' : '未找到匹配规则' }}
+            </div>
           </div>
-          <div class="result-detail" v-if="matchResult.found">
+          <div
+            v-if="matchResult.found"
+            class="result-detail"
+          >
             <div class="detail-row">
               <span class="label">目标服务：</span>
               <span class="value service">{{ matchResult.service }}</span>
@@ -72,7 +102,10 @@
               <span class="value url">{{ matchResult.targetUrl }}</span>
             </div>
           </div>
-          <div class="result-suggestion" v-else>
+          <div
+            v-else
+            class="result-suggestion"
+          >
             <p>💡 建议检查：</p>
             <ul>
               <li>路径是否以 /api 开头？</li>
@@ -85,7 +118,9 @@
     </div>
 
     <div class="rules-table">
-      <div class="table-title">📋 当前路由规则表</div>
+      <div class="table-title">
+        📋 当前路由规则表
+      </div>
       <table>
         <thead>
           <tr>
@@ -96,19 +131,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(rule, index) in routingRules" :key="index"
-              :class="{ active: matchResult && matchResult.ruleIndex === index }">
+          <tr
+            v-for="(rule, index) in routingRules"
+            :key="index"
+            :class="{ active: matchResult && matchResult.ruleIndex === index }"
+          >
             <td>{{ index + 1 }}</td>
             <td><code>{{ rule.match }}</code></td>
             <td><span class="service-tag">{{ rule.service }}</span></td>
-            <td><code v-if="rule.rewrite">{{ rule.rewrite }}</code><span v-else class="no-rewrite">无</span></td>
+            <td>
+              <code v-if="rule.rewrite">{{ rule.rewrite }}</code><span
+                v-else
+                class="no-rewrite"
+              >无</span>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="quick-presets">
-      <div class="presets-title">🚀 快速测试示例</div>
+      <div class="presets-title">
+        🚀 快速测试示例
+      </div>
       <div class="preset-buttons">
         <button
           v-for="preset in presets"

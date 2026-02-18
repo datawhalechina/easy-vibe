@@ -2,31 +2,52 @@
   <div class="provider-comparison">
     <div class="compare-table">
       <div class="table-header">
-        <div class="col feature">对比项</div>
-        <div class="col provider">AWS</div>
-        <div class="col provider">阿里云</div>
-        <div class="col provider">腾讯云</div>
+        <div class="col feature">
+          对比项
+        </div>
+        <div class="col provider">
+          AWS
+        </div>
+        <div class="col provider">
+          阿里云
+        </div>
+        <div class="col provider">
+          腾讯云
+        </div>
       </div>
       <div 
         v-for="row in compareData" 
         :key="row.feature"
         class="table-row"
       >
-        <div class="col feature">{{ row.feature }}</div>
-        <div class="col provider" :class="{ highlight: row.awsHighlight }">
+        <div class="col feature">
+          {{ row.feature }}
+        </div>
+        <div
+          class="col provider"
+          :class="{ highlight: row.awsHighlight }"
+        >
           {{ row.aws }}
         </div>
-        <div class="col provider" :class="{ highlight: row.aliyunHighlight }">
+        <div
+          class="col provider"
+          :class="{ highlight: row.aliyunHighlight }"
+        >
           {{ row.aliyun }}
         </div>
-        <div class="col provider" :class="{ highlight: row.tencentHighlight }">
+        <div
+          class="col provider"
+          :class="{ highlight: row.tencentHighlight }"
+        >
           {{ row.tencent }}
         </div>
       </div>
     </div>
     
     <div class="selection-guide">
-      <div class="guide-title">💡 选择建议</div>
+      <div class="guide-title">
+        💡 选择建议
+      </div>
       <div class="guide-items">
         <div class="guide-item">
           <span class="scenario">出海业务</span>

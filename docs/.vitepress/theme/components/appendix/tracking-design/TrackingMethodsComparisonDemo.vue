@@ -5,8 +5,12 @@
 <template>
   <div class="tracking-methods-comparison-demo">
     <div class="header">
-      <div class="title">埋点方法对比</div>
-      <div class="subtitle">三种主流埋点实现方式的深度对比</div>
+      <div class="title">
+        埋点方法对比
+      </div>
+      <div class="subtitle">
+        三种主流埋点实现方式的深度对比
+      </div>
     </div>
 
     <div class="methods-grid">
@@ -18,33 +22,54 @@
         @click="selectMethod(method.id)"
       >
         <div class="method-header">
-          <div class="method-icon">{{ method.icon }}</div>
-          <div class="method-info">
-            <div class="method-name">{{ method.name }}</div>
-            <div class="method-english">{{ method.english }}</div>
+          <div class="method-icon">
+            {{ method.icon }}
           </div>
-          <div v-if="selectedMethod === method.id" class="selected-badge">
+          <div class="method-info">
+            <div class="method-name">
+              {{ method.name }}
+            </div>
+            <div class="method-english">
+              {{ method.english }}
+            </div>
+          </div>
+          <div
+            v-if="selectedMethod === method.id"
+            class="selected-badge"
+          >
             已选择
           </div>
         </div>
 
         <div class="method-body">
-          <div class="method-description">{{ method.description }}</div>
+          <div class="method-description">
+            {{ method.description }}
+          </div>
 
           <div class="method-features">
             <div class="feature-category">
-              <div class="category-title">✅ 优点</div>
+              <div class="category-title">
+                ✅ 优点
+              </div>
               <ul class="feature-list pros">
-                <li v-for="(pro, index) in method.pros" :key="index">
+                <li
+                  v-for="(pro, index) in method.pros"
+                  :key="index"
+                >
                   {{ pro }}
                 </li>
               </ul>
             </div>
 
             <div class="feature-category">
-              <div class="category-title">❌ 缺点</div>
+              <div class="category-title">
+                ❌ 缺点
+              </div>
               <ul class="feature-list cons">
-                <li v-for="(con, index) in method.cons" :key="index">
+                <li
+                  v-for="(con, index) in method.cons"
+                  :key="index"
+                >
                   {{ con }}
                 </li>
               </ul>
@@ -52,7 +77,9 @@
           </div>
 
           <div class="method-code">
-            <div class="code-title">代码示例</div>
+            <div class="code-title">
+              代码示例
+            </div>
             <pre class="code-block"><code>{{ method.code }}</code></pre>
           </div>
         </div>
@@ -60,19 +87,29 @@
     </div>
 
     <div class="comparison-matrix">
-      <div class="matrix-title">综合对比矩阵</div>
+      <div class="matrix-title">
+        综合对比矩阵
+      </div>
       <table class="matrix">
         <thead>
           <tr>
             <th>评估维度</th>
-            <th v-for="method in methods" :key="method.id">
+            <th
+              v-for="method in methods"
+              :key="method.id"
+            >
               {{ method.name }}
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(row, index) in matrixData" :key="index">
-            <td class="dimension">{{ row.dimension }}</td>
+          <tr
+            v-for="(row, index) in matrixData"
+            :key="index"
+          >
+            <td class="dimension">
+              {{ row.dimension }}
+            </td>
             <td
               v-for="method in methods"
               :key="method.id"
@@ -83,9 +120,11 @@
                 <div
                   class="score-fill"
                   :style="{ width: row.scores[method.id] + '%' }"
-                ></div>
+                />
               </div>
-              <div class="score-value">{{ row.scores[method.id] }}%</div>
+              <div class="score-value">
+                {{ row.scores[method.id] }}%
+              </div>
             </td>
           </tr>
         </tbody>
@@ -93,35 +132,53 @@
     </div>
 
     <div class="recommendation">
-      <div class="recommendation-title">💡 选型建议</div>
+      <div class="recommendation-title">
+        💡 选型建议
+      </div>
       <div class="recommendation-content">
         <div class="recommendation-item">
-          <div class="rec-scenario">核心业务指标</div>
-          <div class="rec-method">推荐：代码埋点</div>
+          <div class="rec-scenario">
+            核心业务指标
+          </div>
+          <div class="rec-method">
+            推荐：代码埋点
+          </div>
           <div class="rec-reason">
             原因：数据准确性最高，可自定义属性，适合支付、注册等关键业务
           </div>
         </div>
 
         <div class="recommendation-item">
-          <div class="rec-scenario">运营活动埋点</div>
-          <div class="rec-method">推荐：可视化埋点</div>
+          <div class="rec-scenario">
+            运营活动埋点
+          </div>
+          <div class="rec-method">
+            推荐：可视化埋点
+          </div>
           <div class="rec-reason">
             原因：快速部署，产品经理可操作，适合快速验证活动效果
           </div>
         </div>
 
         <div class="recommendation-item">
-          <div class="rec-scenario">页面浏览数据</div>
-          <div class="rec-method">推荐：全埋点</div>
+          <div class="rec-scenario">
+            页面浏览数据
+          </div>
+          <div class="rec-method">
+            推荐：全埋点
+          </div>
           <div class="rec-reason">
             原因：零开发成本，一次性采集，适合 PV/UV 等基础指标
           </div>
         </div>
 
         <div class="recommendation-item">
-          <div class="rec-scenario">大型企业级应用</div>
-          <div class="rec-method">推荐：混合方案</div>
+          <div class="rec-scenario">
+            大型企业级应用
+          </div>
+          <div class="rec-method">
+            推荐：混合方案
+          </div>
           <div class="rec-reason">
             原因：核心业务用代码埋点，运营活动用可视化埋点，基础数据用全埋点
           </div>

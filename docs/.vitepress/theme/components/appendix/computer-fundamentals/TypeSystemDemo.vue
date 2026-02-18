@@ -8,27 +8,53 @@
 
     <div class="demo-content">
       <div class="type-quadrant">
-        <div class="quadrant-title">类型系统四象限</div>
+        <div class="quadrant-title">
+          类型系统四象限
+        </div>
         <div class="quadrant-grid">
           <div class="quadrant-cell strong-static">
-            <div class="cell-label">强类型 + 静态</div>
-            <div class="cell-langs">Java, Rust, Haskell</div>
-            <div class="cell-desc">最安全，编译期检查</div>
+            <div class="cell-label">
+              强类型 + 静态
+            </div>
+            <div class="cell-langs">
+              Java, Rust, Haskell
+            </div>
+            <div class="cell-desc">
+              最安全，编译期检查
+            </div>
           </div>
           <div class="quadrant-cell weak-static">
-            <div class="cell-label">弱类型 + 静态</div>
-            <div class="cell-langs">C, C++</div>
-            <div class="cell-desc">高效，但需小心</div>
+            <div class="cell-label">
+              弱类型 + 静态
+            </div>
+            <div class="cell-langs">
+              C, C++
+            </div>
+            <div class="cell-desc">
+              高效，但需小心
+            </div>
           </div>
           <div class="quadrant-cell strong-dynamic">
-            <div class="cell-label">强类型 + 动态</div>
-            <div class="cell-langs">Python, Ruby</div>
-            <div class="cell-desc">灵活，运行时检查</div>
+            <div class="cell-label">
+              强类型 + 动态
+            </div>
+            <div class="cell-langs">
+              Python, Ruby
+            </div>
+            <div class="cell-desc">
+              灵活，运行时检查
+            </div>
           </div>
           <div class="quadrant-cell weak-dynamic">
-            <div class="cell-label">弱类型 + 动态</div>
-            <div class="cell-langs">JavaScript, PHP</div>
-            <div class="cell-desc">最灵活，但易出错</div>
+            <div class="cell-label">
+              弱类型 + 动态
+            </div>
+            <div class="cell-langs">
+              JavaScript, PHP
+            </div>
+            <div class="cell-desc">
+              最灵活，但易出错
+            </div>
           </div>
         </div>
         <div class="axis-labels">
@@ -38,64 +64,104 @@
       </div>
 
       <div class="type-demo">
-        <div class="demo-title">类型检查演示</div>
+        <div class="demo-title">
+          类型检查演示
+        </div>
         <div class="code-comparison">
           <div class="code-block">
-            <div class="code-label">静态类型 (Java)</div>
+            <div class="code-label">
+              静态类型 (Java)
+            </div>
             <pre><code>String name = "Alice";
 name = 123; // ❌ 编译错误
 
 int x = 10;
 String s = x; // ❌ 编译错误</code></pre>
-            <div class="code-result error">编译期发现错误</div>
+            <div class="code-result error">
+              编译期发现错误
+            </div>
           </div>
           <div class="code-block">
-            <div class="code-label">动态类型 (Python)</div>
+            <div class="code-label">
+              动态类型 (Python)
+            </div>
             <pre><code>name = "Alice"
 name = 123  # ✅ 运行正常
 
 x = 10
 s = str(x)  # 需要显式转换</code></pre>
-            <div class="code-result success">运行时类型可变</div>
+            <div class="code-result success">
+              运行时类型可变
+            </div>
           </div>
         </div>
       </div>
 
       <div class="conversion-demo">
-        <div class="demo-title">类型转换演示</div>
+        <div class="demo-title">
+          类型转换演示
+        </div>
         <div class="conversion-tabs">
           <button 
             v-for="lang in languages" 
             :key="lang.name"
             :class="['tab-btn', { active: activeLang === lang.name }]"
             @click="activeLang = lang.name"
-          >{{ lang.name }}</button>
+          >
+            {{ lang.name }}
+          </button>
         </div>
-        <div class="conversion-content" v-if="currentLang">
-          <div class="conversion-item" v-for="(item, i) in currentLang.conversions" :key="i">
+        <div
+          v-if="currentLang"
+          class="conversion-content"
+        >
+          <div
+            v-for="(item, i) in currentLang.conversions"
+            :key="i"
+            class="conversion-item"
+          >
             <code class="code-expr">{{ item.expr }}</code>
             <span class="arrow">→</span>
-            <code class="code-result" :class="{ error: item.error }">{{ item.result }}</code>
+            <code
+              class="code-result"
+              :class="{ error: item.error }"
+            >{{ item.result }}</code>
             <span class="explanation">{{ item.explain }}</span>
           </div>
         </div>
       </div>
 
       <div class="type-inference">
-        <div class="demo-title">类型推断</div>
+        <div class="demo-title">
+          类型推断
+        </div>
         <div class="inference-examples">
-          <div class="inference-item" v-for="(example, i) in inferenceExamples" :key="i">
-            <div class="inference-lang">{{ example.lang }}</div>
+          <div
+            v-for="(example, i) in inferenceExamples"
+            :key="i"
+            class="inference-item"
+          >
+            <div class="inference-lang">
+              {{ example.lang }}
+            </div>
             <code class="inference-code">{{ example.code }}</code>
-            <div class="inference-result">推断为: <span class="type">{{ example.type }}</span></div>
+            <div class="inference-result">
+              推断为: <span class="type">{{ example.type }}</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="type-benefits">
-        <div class="benefits-title">类型系统的好处</div>
+        <div class="benefits-title">
+          类型系统的好处
+        </div>
         <div class="benefits-grid">
-          <div class="benefit-item" v-for="(b, i) in benefits" :key="i">
+          <div
+            v-for="(b, i) in benefits"
+            :key="i"
+            class="benefit-item"
+          >
             <span class="benefit-icon">{{ b.icon }}</span>
             <span class="benefit-name">{{ b.name }}</span>
             <span class="benefit-desc">{{ b.desc }}</span>

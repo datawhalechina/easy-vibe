@@ -5,38 +5,69 @@
 <template>
   <div class="product-cache-demo">
     <div class="header">
-      <div class="title">商品详情页缓存系统实战</div>
-      <div class="subtitle">完整的三级缓存架构 + 监控面板</div>
+      <div class="title">
+        商品详情页缓存系统实战
+      </div>
+      <div class="subtitle">
+        完整的三级缓存架构 + 监控面板
+      </div>
     </div>
 
     <div class="architecture-overview">
-      <div class="overview-title">系统架构</div>
+      <div class="overview-title">
+        系统架构
+      </div>
       <div class="architecture-diagram">
         <div class="layer client">
-          <div class="layer-label">客户端</div>
-          <div class="layer-icon">📱</div>
+          <div class="layer-label">
+            客户端
+          </div>
+          <div class="layer-icon">
+            📱
+          </div>
         </div>
-        <div class="arrow">↓</div>
-        <div class="layer local-cache" :class="{ hit: currentLevel === 1 }">
-          <div class="layer-label">L1: 本地缓存 (Caffeine)</div>
+        <div class="arrow">
+          ↓
+        </div>
+        <div
+          class="layer local-cache"
+          :class="{ hit: currentLevel === 1 }"
+        >
+          <div class="layer-label">
+            L1: 本地缓存 (Caffeine)
+          </div>
           <div class="layer-stats">
             <div>容量: 1000</div>
             <div>TTL: 30s</div>
             <div>命中: {{ localHits }}</div>
           </div>
         </div>
-        <div class="arrow">↓</div>
-        <div class="layer redis-cache" :class="{ hit: currentLevel === 2 }">
-          <div class="layer-label">L2: Redis 集群</div>
+        <div class="arrow">
+          ↓
+        </div>
+        <div
+          class="layer redis-cache"
+          :class="{ hit: currentLevel === 2 }"
+        >
+          <div class="layer-label">
+            L2: Redis 集群
+          </div>
           <div class="layer-stats">
             <div>容量: 100万</div>
             <div>TTL: 5min</div>
             <div>命中: {{ redisHits }}</div>
           </div>
         </div>
-        <div class="arrow">↓</div>
-        <div class="layer database" :class="{ hit: currentLevel === 3 }">
-          <div class="layer-label">L3: MySQL 数据库</div>
+        <div class="arrow">
+          ↓
+        </div>
+        <div
+          class="layer database"
+          :class="{ hit: currentLevel === 3 }"
+        >
+          <div class="layer-label">
+            L3: MySQL 数据库
+          </div>
           <div class="layer-stats">
             <div>持久化存储</div>
             <div>查询: {{ dbQueries }}</div>
@@ -47,21 +78,35 @@
 
     <div class="demo-sections">
       <div class="section query-demo">
-        <div class="section-title">查询商品</div>
+        <div class="section-title">
+          查询商品
+        </div>
         <div class="query-controls">
           <input
             v-model="productId"
             type="text"
             placeholder="输入商品ID (如: P001)"
             class="product-input"
-          />
-          <button class="query-btn" @click="queryProduct" :disabled="querying">
+          >
+          <button
+            class="query-btn"
+            :disabled="querying"
+            @click="queryProduct"
+          >
             {{ querying ? '查询中...' : '查询' }}
           </button>
-          <button class="reset-btn" @click="resetDemo">重置</button>
+          <button
+            class="reset-btn"
+            @click="resetDemo"
+          >
+            重置
+          </button>
         </div>
 
-        <div class="query-result" v-if="queryResult">
+        <div
+          v-if="queryResult"
+          class="query-result"
+        >
           <div class="result-header">
             <span class="result-icon">{{ queryResult.icon }}</span>
             <span class="result-title">{{ queryResult.title }}</span>
@@ -95,8 +140,13 @@
           </div>
         </div>
 
-        <div class="query-flow" v-if="queryFlow.length > 0">
-          <div class="flow-title">查询流程</div>
+        <div
+          v-if="queryFlow.length > 0"
+          class="query-flow"
+        >
+          <div class="flow-title">
+            查询流程
+          </div>
           <div class="flow-steps">
             <div
               v-for="(step, index) in queryFlow"
@@ -104,50 +154,82 @@
               class="flow-step"
               :class="step.type"
             >
-              <div class="step-level">{{ step.level }}</div>
-              <div class="step-result">{{ step.result }}</div>
-              <div class="step-time">{{ step.time }}ms</div>
+              <div class="step-level">
+                {{ step.level }}
+              </div>
+              <div class="step-result">
+                {{ step.result }}
+              </div>
+              <div class="step-time">
+                {{ step.time }}ms
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="section cache-monitor">
-        <div class="section-title">缓存监控</div>
+        <div class="section-title">
+          缓存监控
+        </div>
 
         <div class="metrics-grid">
           <div class="metric-card">
-            <div class="metric-label">总请求数</div>
-            <div class="metric-value">{{ metrics.totalRequests }}</div>
+            <div class="metric-label">
+              总请求数
+            </div>
+            <div class="metric-value">
+              {{ metrics.totalRequests }}
+            </div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">本地缓存命中</div>
-            <div class="metric-value local">{{ localHits }}</div>
+            <div class="metric-label">
+              本地缓存命中
+            </div>
+            <div class="metric-value local">
+              {{ localHits }}
+            </div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">Redis命中</div>
-            <div class="metric-value redis">{{ redisHits }}</div>
+            <div class="metric-label">
+              Redis命中
+            </div>
+            <div class="metric-value redis">
+              {{ redisHits }}
+            </div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">数据库查询</div>
-            <div class="metric-value db">{{ dbQueries }}</div>
+            <div class="metric-label">
+              数据库查询
+            </div>
+            <div class="metric-value db">
+              {{ dbQueries }}
+            </div>
           </div>
         </div>
 
         <div class="hit-rate-display">
-          <div class="rate-label">整体命中率</div>
-          <div class="rate-value">{{ overallHitRate }}%</div>
+          <div class="rate-label">
+            整体命中率
+          </div>
+          <div class="rate-value">
+            {{ overallHitRate }}%
+          </div>
           <div class="rate-bar">
             <div
               class="rate-fill"
               :style="{ width: overallHitRate + '%' }"
-            ></div>
+            />
           </div>
-          <div class="rate-target">目标: > 90%</div>
+          <div class="rate-target">
+            目标: > 90%
+          </div>
         </div>
 
         <div class="cache-stats-detail">
-          <div class="stats-title">详细统计</div>
+          <div class="stats-title">
+            详细统计
+          </div>
           <div class="stats-list">
             <div class="stat-item">
               <span class="stat-label">本地缓存命中率:</span>
@@ -171,35 +253,61 @@
     </div>
 
     <div class="features">
-      <div class="feature-title">核心特性</div>
+      <div class="feature-title">
+        核心特性
+      </div>
       <div class="feature-grid">
         <div class="feature-item">
-          <div class="feature-icon">🛡️</div>
-          <div class="feature-name">多级缓存</div>
+          <div class="feature-icon">
+            🛡️
+          </div>
+          <div class="feature-name">
+            多级缓存
+          </div>
           <div class="feature-desc">
             本地缓存 + Redis 双层防护，减少 99% 数据库查询
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🔒</div>
-          <div class="feature-name">防击穿</div>
-          <div class="feature-desc">互斥锁保护热点数据，避免并发查询数据库</div>
+          <div class="feature-icon">
+            🔒
+          </div>
+          <div class="feature-name">
+            防击穿
+          </div>
+          <div class="feature-desc">
+            互斥锁保护热点数据，避免并发查询数据库
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🎯</div>
-          <div class="feature-name">防穿透</div>
-          <div class="feature-desc">缓存空对象，防止查询不存在的商品</div>
+          <div class="feature-icon">
+            🎯
+          </div>
+          <div class="feature-name">
+            防穿透
+          </div>
+          <div class="feature-desc">
+            缓存空对象，防止查询不存在的商品
+          </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">⏰</div>
-          <div class="feature-name">随机 TTL</div>
-          <div class="feature-desc">避免缓存雪崩，过期时间加随机值</div>
+          <div class="feature-icon">
+            ⏰
+          </div>
+          <div class="feature-name">
+            随机 TTL
+          </div>
+          <div class="feature-desc">
+            避免缓存雪崩，过期时间加随机值
+          </div>
         </div>
       </div>
     </div>
 
     <div class="code-preview">
-      <div class="code-title">核心代码片段</div>
+      <div class="code-title">
+        核心代码片段
+      </div>
       <pre class="code-block"><code>// 三级缓存查询
 public Product getProduct(String productId) {
     // L1: 本地缓存

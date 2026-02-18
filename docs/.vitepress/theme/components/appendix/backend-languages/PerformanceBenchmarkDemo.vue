@@ -13,13 +13,24 @@
     <div class="control-panel">
       <div class="scenario-selector">
         <label>选择赛道：</label>
-        <select v-model="selectedScenario" @change="runBenchmark">
-          <option v-for="scenario in scenarios" :key="scenario.id" :value="scenario.id">
+        <select
+          v-model="selectedScenario"
+          @change="runBenchmark"
+        >
+          <option
+            v-for="scenario in scenarios"
+            :key="scenario.id"
+            :value="scenario.id"
+          >
             {{ scenario.label }}
           </option>
         </select>
       </div>
-      <button class="run-btn" @click="runBenchmark" :disabled="isRunning">
+      <button
+        class="run-btn"
+        :disabled="isRunning"
+        @click="runBenchmark"
+      >
         {{ isRunning ? '测试中...' : '▶ 开始测试' }}
       </button>
     </div>
@@ -34,7 +45,9 @@
           :key="result.language"
           class="bar-wrapper"
         >
-          <div class="bar-label">{{ result.language }}</div>
+          <div class="bar-label">
+            {{ result.language }}
+          </div>
           <div class="bar-track">
             <div
               class="bar-fill"

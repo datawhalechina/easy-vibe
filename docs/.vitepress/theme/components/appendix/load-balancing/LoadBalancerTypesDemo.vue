@@ -1,8 +1,12 @@
 <template>
   <div class="load-balancer-types-demo">
     <div class="header">
-      <div class="title">负载均衡器类型</div>
-      <div class="subtitle">从四层到七层，从硬件到软件的演进</div>
+      <div class="title">
+        负载均衡器类型
+      </div>
+      <div class="subtitle">
+        从四层到七层，从硬件到软件的演进
+      </div>
     </div>
 
     <!-- 层级选择器 -->
@@ -29,17 +33,28 @@
         </div>
         <div class="panel-content">
           <div class="single-server">
-            <div class="server-icon">🖥️</div>
-            <div class="server-label">Web Server</div>
-            <div class="server-load">
-              <div class="load-bar" :style="{ width: '95%' }"></div>
+            <div class="server-icon">
+              🖥️
             </div>
-            <div class="load-text">负载: 95% 🔥</div>
+            <div class="server-label">
+              Web Server
+            </div>
+            <div class="server-load">
+              <div
+                class="load-bar"
+                :style="{ width: '95%' }"
+              />
+            </div>
+            <div class="load-text">
+              负载: 95% 🔥
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="comparison-arrow">→</div>
+      <div class="comparison-arrow">
+        →
+      </div>
 
       <div class="comparison-panel highlighted">
         <div class="panel-header">
@@ -60,10 +75,17 @@
               class="server-node"
               :class="{ active: activeServer === index }"
             >
-              <div class="server-icon-small">🖥️</div>
-              <div class="server-id">S{{ index + 1 }}</div>
+              <div class="server-icon-small">
+                🖥️
+              </div>
+              <div class="server-id">
+                S{{ index + 1 }}
+              </div>
               <div class="server-load-mini">
-                <div class="load-bar-mini" :style="{ width: server.load + '%' }"></div>
+                <div
+                  class="load-bar-mini"
+                  :style="{ width: server.load + '%' }"
+                />
               </div>
             </div>
           </div>
@@ -79,21 +101,38 @@
       </div>
       <div class="detail-content">
         <div class="detail-section">
-          <div class="section-title">工作原理</div>
-          <p class="section-desc">{{ currentLayerData.principle }}</p>
+          <div class="section-title">
+            工作原理
+          </div>
+          <p class="section-desc">
+            {{ currentLayerData.principle }}
+          </p>
         </div>
         <div class="detail-section">
-          <div class="section-title">典型产品</div>
+          <div class="section-title">
+            典型产品
+          </div>
           <div class="product-tags">
-            <span v-for="product in currentLayerData.products" :key="product" class="product-tag">
+            <span
+              v-for="product in currentLayerData.products"
+              :key="product"
+              class="product-tag"
+            >
               {{ product }}
             </span>
           </div>
         </div>
         <div class="detail-section">
-          <div class="section-title">适用场景</div>
+          <div class="section-title">
+            适用场景
+          </div>
           <ul class="scenario-list">
-            <li v-for="scenario in currentLayerData.scenarios" :key="scenario">{{ scenario }}</li>
+            <li
+              v-for="scenario in currentLayerData.scenarios"
+              :key="scenario"
+            >
+              {{ scenario }}
+            </li>
           </ul>
         </div>
       </div>
@@ -101,14 +140,26 @@
 
     <!-- 性能对比 -->
     <div class="performance-comparison">
-      <div class="comparison-title">性能对比一览</div>
+      <div class="comparison-title">
+        性能对比一览
+      </div>
       <div class="comparison-table">
         <div class="table-header">
-          <div class="th">类型</div>
-          <div class="th">处理层</div>
-          <div class="th">性能</div>
-          <div class="th">灵活性</div>
-          <div class="th">成本</div>
+          <div class="th">
+            类型
+          </div>
+          <div class="th">
+            处理层
+          </div>
+          <div class="th">
+            性能
+          </div>
+          <div class="th">
+            灵活性
+          </div>
+          <div class="th">
+            成本
+          </div>
         </div>
         <div
           v-for="row in comparisonData"
@@ -116,19 +167,31 @@
           class="table-row"
           :class="{ active: currentLayer === row.key }"
         >
-          <div class="td type">{{ row.type }}</div>
-          <div class="td">{{ row.layer }}</div>
+          <div class="td type">
+            {{ row.type }}
+          </div>
+          <div class="td">
+            {{ row.layer }}
+          </div>
           <div class="td">
             <div class="rating-bar">
-              <div class="rating-fill" :style="{ width: row.performance + '%' }"></div>
+              <div
+                class="rating-fill"
+                :style="{ width: row.performance + '%' }"
+              />
             </div>
           </div>
           <div class="td">
             <div class="rating-bar">
-              <div class="rating-fill" :style="{ width: row.flexibility + '%' }"></div>
+              <div
+                class="rating-fill"
+                :style="{ width: row.flexibility + '%' }"
+              />
             </div>
           </div>
-          <div class="td cost">{{ row.cost }}</div>
+          <div class="td cost">
+            {{ row.cost }}
+          </div>
         </div>
       </div>
     </div>

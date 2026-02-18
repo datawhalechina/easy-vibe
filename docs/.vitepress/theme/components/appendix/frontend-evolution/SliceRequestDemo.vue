@@ -29,23 +29,41 @@
           :class="{ active: mode === 'separate' }"
           @click="mode = 'separate'"
         >
-          <div class="mode-icon">🛵</div>
-          <div class="mode-name">切图模式</div>
-          <div class="mode-desc">通俗说法: 一箱一趟</div>
-          <div class="mode-detail">需要 6 趟运输</div>
+          <div class="mode-icon">
+            🛵
+          </div>
+          <div class="mode-name">
+            切图模式
+          </div>
+          <div class="mode-desc">
+            通俗说法: 一箱一趟
+          </div>
+          <div class="mode-detail">
+            需要 6 趟运输
+          </div>
         </div>
 
-        <div class="vs-divider">VS</div>
+        <div class="vs-divider">
+          VS
+        </div>
 
         <div
           class="mode-card"
           :class="{ active: mode === 'packed' }"
           @click="mode = 'packed'"
         >
-          <div class="mode-icon">🚚</div>
-          <div class="mode-name">雪碧图模式</div>
-          <div class="mode-desc">通俗说法: 打包一车拉</div>
-          <div class="mode-detail">只需 1 趟运输</div>
+          <div class="mode-icon">
+            🚚
+          </div>
+          <div class="mode-name">
+            雪碧图模式
+          </div>
+          <div class="mode-desc">
+            通俗说法: 打包一车拉
+          </div>
+          <div class="mode-detail">
+            只需 1 趟运输
+          </div>
         </div>
       </div>
 
@@ -53,8 +71,12 @@
       <div class="animation-area">
         <!-- 起点 -->
         <div class="location start">
-          <div class="location-icon">🏠</div>
-          <div class="location-label">旧家</div>
+          <div class="location-icon">
+            🏠
+          </div>
+          <div class="location-label">
+            旧家
+          </div>
           <div class="boxes-remaining">
             剩余箱子: <span class="count">{{ remainingBoxes }}</span>
           </div>
@@ -62,7 +84,7 @@
 
         <!-- 道路 -->
         <div class="road">
-          <div class="road-line"></div>
+          <div class="road-line" />
 
           <!-- 运输车辆 -->
           <div
@@ -75,7 +97,10 @@
             <div class="vehicle-body">
               {{ mode === 'separate' ? '🛵' : '🚚' }}
             </div>
-            <div class="vehicle-cargo" v-if="vehicle.cargo > 0">
+            <div
+              v-if="vehicle.cargo > 0"
+              class="vehicle-cargo"
+            >
               {{ mode === 'separate' ? '📦' : '📦×' + vehicle.cargo }}
             </div>
           </div>
@@ -83,8 +108,12 @@
 
         <!-- 终点 -->
         <div class="location end">
-          <div class="location-icon">🏡</div>
-          <div class="location-label">新家</div>
+          <div class="location-icon">
+            🏡
+          </div>
+          <div class="location-label">
+            新家
+          </div>
           <div class="boxes-delivered">
             已送达: <span class="count">{{ deliveredBoxes }}</span>/6
           </div>
@@ -94,18 +123,32 @@
       <!-- 统计面板 -->
       <div class="stats-panel">
         <div class="stat-item">
-          <div class="stat-label">运输趟数</div>
-          <div class="stat-value" :class="{ 'good': trips <= 2, 'bad': trips > 2 }">
+          <div class="stat-label">
+            运输趟数
+          </div>
+          <div
+            class="stat-value"
+            :class="{ 'good': trips <= 2, 'bad': trips > 2 }"
+          >
             {{ trips }} 趟
           </div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">总耗时</div>
-          <div class="stat-value">{{ totalTime.toFixed(1) }} 秒</div>
+          <div class="stat-label">
+            总耗时
+          </div>
+          <div class="stat-value">
+            {{ totalTime.toFixed(1) }} 秒
+          </div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">效率评分</div>
-          <div class="stat-value" :class="efficiencyClass">
+          <div class="stat-label">
+            效率评分
+          </div>
+          <div
+            class="stat-value"
+            :class="efficiencyClass"
+          >
             {{ efficiency }}
           </div>
         </div>
@@ -115,8 +158,8 @@
       <div class="controls">
         <button
           class="btn btn-primary"
-          @click="startSimulation"
           :disabled="isRunning"
+          @click="startSimulation"
         >
           {{ isRunning ? '运输中...' : '开始搬家' }}
         </button>

@@ -85,10 +85,16 @@ const reset = () => {
       <div class="user-display">
         <div class="user-card">
           <div class="card-header">
-            <div class="avatar">👤</div>
+            <div class="avatar">
+              👤
+            </div>
             <div class="user-info">
-              <div class="user-name">{{ user.name }}</div>
-              <div class="user-email">{{ user.email }}</div>
+              <div class="user-name">
+                {{ user.name }}
+              </div>
+              <div class="user-email">
+                {{ user.email }}
+              </div>
             </div>
           </div>
           <div class="user-details">
@@ -116,22 +122,38 @@ const reset = () => {
 
       <!-- 操作按钮 -->
       <div class="controls">
-        <button @click="modifyAge" class="btn-primary">
+        <button
+          class="btn-primary"
+          @click="modifyAge"
+        >
           增加年龄
         </button>
-        <button @click="addErrorProperty" class="btn-danger">
+        <button
+          class="btn-danger"
+          @click="addErrorProperty"
+        >
           尝试赋值错误类型
         </button>
-        <button @click="addNewUser" class="btn-secondary">
+        <button
+          class="btn-secondary"
+          @click="addNewUser"
+        >
           创建新用户
         </button>
-        <button @click="reset" class="btn-ghost">重置</button>
+        <button
+          class="btn-ghost"
+          @click="reset"
+        >
+          重置
+        </button>
       </div>
 
       <!-- 代码示例 -->
       <div class="code-examples">
         <div class="example-item">
-          <div class="example-header">✅ 正确使用</div>
+          <div class="example-header">
+            ✅ 正确使用
+          </div>
           <pre><code class="typescript">const user: User = {
   id: 1,
   name: "张三",
@@ -141,7 +163,9 @@ const reset = () => {
         </div>
 
         <div class="example-item error">
-          <div class="example-header">❌ 错误使用</div>
+          <div class="example-header">
+            ❌ 错误使用
+          </div>
           <pre><code class="typescript">const user: User = {
   id: 1,
   name: "张三",

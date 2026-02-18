@@ -1,15 +1,27 @@
 <template>
   <div class="component-reusability-demo">
     <div class="toolbox">
-      <div class="tool-title">Component Library</div>
-      <button class="spawn-btn" @click="spawn('counter')">
+      <div class="tool-title">
+        Component Library
+      </div>
+      <button
+        class="spawn-btn"
+        @click="spawn('counter')"
+      >
         ➕ New Counter
       </button>
-      <button class="spawn-btn" @click="spawn('card')">➕ New Card</button>
+      <button
+        class="spawn-btn"
+        @click="spawn('card')"
+      >
+        ➕ New Card
+      </button>
     </div>
 
     <div class="workspace">
-      <div class="workspace-label">App Workspace</div>
+      <div class="workspace-label">
+        App Workspace
+      </div>
       <div class="instances-container">
         <transition-group name="list">
           <div
@@ -18,26 +30,47 @@
             class="instance-wrapper"
           >
             <!-- Counter Component -->
-            <div v-if="item.type === 'counter'" class="comp-instance counter">
+            <div
+              v-if="item.type === 'counter'"
+              class="comp-instance counter"
+            >
               <div class="comp-header">
                 <span>Counter #{{ item.id }}</span>
-                <button class="close-btn" @click="remove(item.id)">×</button>
+                <button
+                  class="close-btn"
+                  @click="remove(item.id)"
+                >
+                  ×
+                </button>
               </div>
               <div class="comp-body">
                 <span class="count-val">{{ item.data.count }}</span>
-                <button class="mini-btn" @click="item.data.count++">+</button>
+                <button
+                  class="mini-btn"
+                  @click="item.data.count++"
+                >
+                  +
+                </button>
               </div>
             </div>
 
             <!-- Card Component -->
-            <div v-if="item.type === 'card'" class="comp-instance card">
+            <div
+              v-if="item.type === 'card'"
+              class="comp-instance card"
+            >
               <div class="comp-header">
                 <span>Card #{{ item.id }}</span>
-                <button class="close-btn" @click="remove(item.id)">×</button>
+                <button
+                  class="close-btn"
+                  @click="remove(item.id)"
+                >
+                  ×
+                </button>
               </div>
               <div class="comp-body">
-                <div class="skeleton-img"></div>
-                <div class="skeleton-text"></div>
+                <div class="skeleton-img" />
+                <div class="skeleton-text" />
                 <button
                   class="like-btn"
                   :class="{ liked: item.data.liked }"
@@ -49,9 +82,12 @@
             </div>
           </div>
         </transition-group>
-        <div v-if="instances.length === 0" class="empty-hint">
+        <div
+          v-if="instances.length === 0"
+          class="empty-hint"
+        >
           Click buttons above to add components.
-          <br />
+          <br>
           Notice how each one works independently!
         </div>
       </div>

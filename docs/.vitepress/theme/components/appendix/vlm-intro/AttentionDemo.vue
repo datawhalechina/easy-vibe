@@ -1,13 +1,20 @@
 <template>
   <div class="attn-demo">
     <div class="header">
-      <div class="title">Self-Attention Mechanism</div>
-      <div class="subtitle">自注意力机制：全局信息交互</div>
+      <div class="title">
+        Self-Attention Mechanism
+      </div>
+      <div class="subtitle">
+        自注意力机制：全局信息交互
+      </div>
     </div>
 
     <div class="visual-stage">
       <!-- Grid Layout -->
-      <div class="grid-container" @mouseleave="hoverIndex = -1">
+      <div
+        class="grid-container"
+        @mouseleave="hoverIndex = -1"
+      >
         <!-- SVG Layer for Connection Lines -->
         <svg class="connections-layer">
           <defs>
@@ -30,8 +37,8 @@
           <g v-if="hoverIndex !== -1">
             <line
               v-for="(target, tIndex) in items"
-              :key="tIndex"
               v-show="tIndex !== hoverIndex"
+              :key="tIndex"
               :x1="getCenter(hoverIndex).x"
               :y1="getCenter(hoverIndex).y"
               :x2="getCenter(tIndex).x"
@@ -55,11 +62,11 @@
             'is-strong-attn':
               hoverIndex !== -1 && getAttentionScore(hoverIndex, index) > 0.5
           }"
-          @mouseenter="hoverIndex = index"
           :style="{
             left: getCenter(index).x - 30 + 'px',
             top: getCenter(index).y - 30 + 'px'
           }"
+          @mouseenter="hoverIndex = index"
         >
           <div class="cell-content">
             <span class="cell-icon">{{ item.icon }}</span>
@@ -67,8 +74,8 @@
           </div>
           <!-- Attention Score Badge -->
           <div
-            class="attn-badge"
             v-if="hoverIndex !== -1 && hoverIndex !== index"
+            class="attn-badge"
             :style="{
               opacity: Math.max(0.3, getAttentionScore(hoverIndex, index))
             }"
@@ -80,11 +87,17 @@
 
       <!-- Info Panel -->
       <div class="info-panel">
-        <div v-if="hoverIndex === -1" class="placeholder-text">
+        <div
+          v-if="hoverIndex === -1"
+          class="placeholder-text"
+        >
           <span class="cursor-icon">👆</span>
-          把鼠标悬停在任意方块上，<br />观察它在"关注"谁
+          把鼠标悬停在任意方块上，<br>观察它在"关注"谁
         </div>
-        <div v-else class="active-info">
+        <div
+          v-else
+          class="active-info"
+        >
           <div class="source-info">
             <span class="label">当前 Patch:</span>
             <div class="patch-tag">
@@ -93,11 +106,13 @@
           </div>
 
           <div class="attn-list">
-            <div class="list-header">Attention Weights (注意力权重)</div>
+            <div class="list-header">
+              Attention Weights (注意力权重)
+            </div>
             <div
-              class="attn-item"
               v-for="(score, idx) in getTopAttentions(hoverIndex)"
               :key="idx"
+              class="attn-item"
             >
               <div class="item-left">
                 <span class="item-icon">{{ items[idx].icon }}</span>
@@ -108,7 +123,7 @@
                   <div
                     class="progress-fill"
                     :style="{ width: score * 100 + '%' }"
-                  ></div>
+                  />
                 </div>
                 <span class="score-text">{{ (score * 100).toFixed(0) }}%</span>
               </div>

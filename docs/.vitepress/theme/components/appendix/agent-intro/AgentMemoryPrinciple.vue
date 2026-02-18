@@ -1,52 +1,121 @@
 <template>
   <div class="memory-principle">
     <div class="header">
-      <div class="title">🧠 Agent 记忆系统原理：如何让 AI "记得"你</div>
-      <div class="subtitle">理解短期记忆、工作记忆、长期记忆的协同工作机制</div>
+      <div class="title">
+        🧠 Agent 记忆系统原理：如何让 AI "记得"你
+      </div>
+      <div class="subtitle">
+        理解短期记忆、工作记忆、长期记忆的协同工作机制
+      </div>
     </div>
 
     <!-- 记忆类型概览 -->
     <div class="memory-overview">
-      <div class="overview-title">📊 三层记忆架构</div>
+      <div class="overview-title">
+        📊 三层记忆架构
+      </div>
       <div class="memory-cards">
-        <div class="memory-card short-term" :class="{ active: activeTab === 'short' }" @click="activeTab = 'short'">
-          <div class="card-icon">⏱️</div>
-          <div class="card-name">短期记忆</div>
-          <div class="card-desc">当前对话上下文</div>
-          <div class="card-lifetime">⚡ 会话级</div>
+        <div
+          class="memory-card short-term"
+          :class="{ active: activeTab === 'short' }"
+          @click="activeTab = 'short'"
+        >
+          <div class="card-icon">
+            ⏱️
+          </div>
+          <div class="card-name">
+            短期记忆
+          </div>
+          <div class="card-desc">
+            当前对话上下文
+          </div>
+          <div class="card-lifetime">
+            ⚡ 会话级
+          </div>
         </div>
-        <div class="memory-card working" :class="{ active: activeTab === 'working' }" @click="activeTab = 'working'">
-          <div class="card-icon">📝</div>
-          <div class="card-name">工作记忆</div>
-          <div class="card-desc">任务相关变量</div>
-          <div class="card-lifetime">🔄 任务级</div>
+        <div
+          class="memory-card working"
+          :class="{ active: activeTab === 'working' }"
+          @click="activeTab = 'working'"
+        >
+          <div class="card-icon">
+            📝
+          </div>
+          <div class="card-name">
+            工作记忆
+          </div>
+          <div class="card-desc">
+            任务相关变量
+          </div>
+          <div class="card-lifetime">
+            🔄 任务级
+          </div>
         </div>
-        <div class="memory-card long-term" :class="{ active: activeTab === 'long' }" @click="activeTab = 'long'">
-          <div class="card-icon">💾</div>
-          <div class="card-name">长期记忆</div>
-          <div class="card-desc">用户偏好与知识</div>
-          <div class="card-lifetime">♾️ 持久化</div>
+        <div
+          class="memory-card long-term"
+          :class="{ active: activeTab === 'long' }"
+          @click="activeTab = 'long'"
+        >
+          <div class="card-icon">
+            💾
+          </div>
+          <div class="card-name">
+            长期记忆
+          </div>
+          <div class="card-desc">
+            用户偏好与知识
+          </div>
+          <div class="card-lifetime">
+            ♾️ 持久化
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 交互演示区 -->
     <div class="demo-section">
-      <div class="demo-title">🎮 交互演示：观察记忆如何工作</div>
+      <div class="demo-title">
+        🎮 交互演示：观察记忆如何工作
+      </div>
       
       <!-- 对话区 -->
       <div class="chat-area">
         <div class="chat-header">
           <span>💬 对话窗口</span>
-          <button class="reset-btn" @click="resetDemo">🔄 重置</button>
+          <button
+            class="reset-btn"
+            @click="resetDemo"
+          >
+            🔄 重置
+          </button>
         </div>
-        <div class="messages" ref="messageContainer">
-          <div v-for="(msg, idx) in messages" :key="idx" class="message" :class="msg.role">
-            <div class="avatar">{{ msg.role === 'user' ? '👤' : '🤖' }}</div>
+        <div
+          ref="messageContainer"
+          class="messages"
+        >
+          <div
+            v-for="(msg, idx) in messages"
+            :key="idx"
+            class="message"
+            :class="msg.role"
+          >
+            <div class="avatar">
+              {{ msg.role === 'user' ? '👤' : '🤖' }}
+            </div>
             <div class="bubble">
-              <div class="msg-text">{{ msg.text }}</div>
-              <div v-if="msg.memoryOps && msg.memoryOps.length" class="memory-ops">
-                <div v-for="(op, i) in msg.memoryOps" :key="i" class="memory-op" :class="op.type">
+              <div class="msg-text">
+                {{ msg.text }}
+              </div>
+              <div
+                v-if="msg.memoryOps && msg.memoryOps.length"
+                class="memory-ops"
+              >
+                <div
+                  v-for="(op, i) in msg.memoryOps"
+                  :key="i"
+                  class="memory-op"
+                  :class="op.type"
+                >
                   <span class="op-icon">{{ op.icon }}</span>
                   <span class="op-text">{{ op.text }}</span>
                 </div>
@@ -71,115 +140,214 @@
 
       <!-- 记忆状态面板 -->
       <div class="memory-panels">
-        <div class="panel-title">📂 记忆状态实时监控</div>
+        <div class="panel-title">
+          📂 记忆状态实时监控
+        </div>
         
         <!-- 短期记忆 -->
-        <div class="memory-panel" :class="{ highlight: activeTab === 'short' }" @click="activeTab = 'short'">
+        <div
+          class="memory-panel"
+          :class="{ highlight: activeTab === 'short' }"
+          @click="activeTab = 'short'"
+        >
           <div class="panel-header">
             <span class="panel-icon">⏱️</span>
             <span class="panel-name">短期记忆</span>
             <span class="panel-count">{{ shortTermMemory.length }} 条</span>
           </div>
           <div class="panel-content">
-            <div v-if="shortTermMemory.length === 0" class="empty">暂无对话记录</div>
-            <div v-for="(item, idx) in shortTermMemory.slice(-5)" :key="idx" class="memory-item">
-              <span class="item-role" :class="item.role">{{ item.role === 'user' ? 'U' : 'A' }}</span>
+            <div
+              v-if="shortTermMemory.length === 0"
+              class="empty"
+            >
+              暂无对话记录
+            </div>
+            <div
+              v-for="(item, idx) in shortTermMemory.slice(-5)"
+              :key="idx"
+              class="memory-item"
+            >
+              <span
+                class="item-role"
+                :class="item.role"
+              >{{ item.role === 'user' ? 'U' : 'A' }}</span>
               <span class="item-text">{{ truncate(item.content, 25) }}</span>
             </div>
           </div>
-          <div class="panel-footer">💡 保存最近的对话轮次，超出上下文窗口会被遗忘</div>
+          <div class="panel-footer">
+            💡 保存最近的对话轮次，超出上下文窗口会被遗忘
+          </div>
         </div>
 
         <!-- 工作记忆 -->
-        <div class="memory-panel" :class="{ highlight: activeTab === 'working' }" @click="activeTab = 'working'">
+        <div
+          class="memory-panel"
+          :class="{ highlight: activeTab === 'working' }"
+          @click="activeTab = 'working'"
+        >
           <div class="panel-header">
             <span class="panel-icon">📝</span>
             <span class="panel-name">工作记忆</span>
             <span class="panel-count">{{ Object.keys(workingMemory).length }} 个变量</span>
           </div>
           <div class="panel-content">
-            <div v-if="Object.keys(workingMemory).length === 0" class="empty">暂无任务变量</div>
-            <div v-for="(value, key) in workingMemory" :key="key" class="memory-item working-item">
+            <div
+              v-if="Object.keys(workingMemory).length === 0"
+              class="empty"
+            >
+              暂无任务变量
+            </div>
+            <div
+              v-for="(value, key) in workingMemory"
+              :key="key"
+              class="memory-item working-item"
+            >
               <span class="item-key">{{ key }}:</span>
               <span class="item-value">{{ value }}</span>
             </div>
           </div>
-          <div class="panel-footer">💡 临时存储任务相关变量，任务结束后清除</div>
+          <div class="panel-footer">
+            💡 临时存储任务相关变量，任务结束后清除
+          </div>
         </div>
 
         <!-- 长期记忆 -->
-        <div class="memory-panel" :class="{ highlight: activeTab === 'long' }" @click="activeTab = 'long'">
+        <div
+          class="memory-panel"
+          :class="{ highlight: activeTab === 'long' }"
+          @click="activeTab = 'long'"
+        >
           <div class="panel-header">
             <span class="panel-icon">💾</span>
             <span class="panel-name">长期记忆</span>
             <span class="panel-count">{{ longTermMemory.length }} 条知识</span>
           </div>
           <div class="panel-content">
-            <div v-if="longTermMemory.length === 0" class="empty">暂无持久化知识</div>
-            <div v-for="(item, idx) in longTermMemory" :key="idx" class="memory-item long-item">
-              <span class="item-type" :class="item.type">{{ item.type }}</span>
+            <div
+              v-if="longTermMemory.length === 0"
+              class="empty"
+            >
+              暂无持久化知识
+            </div>
+            <div
+              v-for="(item, idx) in longTermMemory"
+              :key="idx"
+              class="memory-item long-item"
+            >
+              <span
+                class="item-type"
+                :class="item.type"
+              >{{ item.type }}</span>
               <span class="item-content">{{ item.key }} = {{ truncate(item.value, 20) }}</span>
             </div>
           </div>
-          <div class="panel-footer">💡 跨会话持久保存，需要显式写入</div>
+          <div class="panel-footer">
+            💡 跨会话持久保存，需要显式写入
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 记忆流转示意 -->
     <div class="memory-flow">
-      <div class="flow-title">🔄 记忆流转机制</div>
+      <div class="flow-title">
+        🔄 记忆流转机制
+      </div>
       <div class="flow-diagram">
         <div class="flow-step">
           <div class="step-box user-input">
-            <div class="step-icon">👤</div>
-            <div class="step-text">用户输入</div>
+            <div class="step-icon">
+              👤
+            </div>
+            <div class="step-text">
+              用户输入
+            </div>
           </div>
-          <div class="step-arrow">➡️</div>
+          <div class="step-arrow">
+            ➡️
+          </div>
         </div>
         
         <div class="flow-step">
           <div class="step-box">
-            <div class="step-icon">⏱️</div>
-            <div class="step-text">短期记忆</div>
-            <div class="step-desc">自动记录对话</div>
+            <div class="step-icon">
+              ⏱️
+            </div>
+            <div class="step-text">
+              短期记忆
+            </div>
+            <div class="step-desc">
+              自动记录对话
+            </div>
           </div>
-          <div class="step-arrow">➡️</div>
+          <div class="step-arrow">
+            ➡️
+          </div>
         </div>
         
         <div class="flow-step">
           <div class="step-box">
-            <div class="step-icon">🧠</div>
-            <div class="step-text">LLM 处理</div>
-            <div class="step-desc">理解+决策</div>
+            <div class="step-icon">
+              🧠
+            </div>
+            <div class="step-text">
+              LLM 处理
+            </div>
+            <div class="step-desc">
+              理解+决策
+            </div>
           </div>
-          <div class="step-arrow">➡️</div>
+          <div class="step-arrow">
+            ➡️
+          </div>
         </div>
         
         <div class="flow-branch">
           <div class="branch-option">
-            <div class="branch-arrow">⬇️</div>
+            <div class="branch-arrow">
+              ⬇️
+            </div>
             <div class="step-box small">
-              <div class="step-icon">📝</div>
-              <div class="step-text">工作记忆</div>
-              <div class="step-desc">临时变量</div>
+              <div class="step-icon">
+                📝
+              </div>
+              <div class="step-text">
+                工作记忆
+              </div>
+              <div class="step-desc">
+                临时变量
+              </div>
             </div>
           </div>
           <div class="branch-option">
-            <div class="branch-arrow">⬇️</div>
+            <div class="branch-arrow">
+              ⬇️
+            </div>
             <div class="step-box small">
-              <div class="step-icon">💾</div>
-              <div class="step-text">长期记忆</div>
-              <div class="step-desc">持久化存储</div>
+              <div class="step-icon">
+                💾
+              </div>
+              <div class="step-text">
+                长期记忆
+              </div>
+              <div class="step-desc">
+                持久化存储
+              </div>
             </div>
           </div>
         </div>
         
         <div class="flow-step">
-          <div class="step-arrow">➡️</div>
+          <div class="step-arrow">
+            ➡️
+          </div>
           <div class="step-box agent-output">
-            <div class="step-icon">🤖</div>
-            <div class="step-text">Agent 回复</div>
+            <div class="step-icon">
+              🤖
+            </div>
+            <div class="step-text">
+              Agent 回复
+            </div>
           </div>
         </div>
       </div>
@@ -187,9 +355,15 @@
 
     <!-- 核心机制解释 -->
     <div class="mechanism-section">
-      <div class="mechanism-title">⚙️ 核心机制详解</div>
+      <div class="mechanism-title">
+        ⚙️ 核心机制详解
+      </div>
       <div class="mechanism-grid">
-        <div class="mechanism-card" :class="{ active: activeTab === 'short' }" @click="activeTab = 'short'">
+        <div
+          class="mechanism-card"
+          :class="{ active: activeTab === 'short' }"
+          @click="activeTab = 'short'"
+        >
           <div class="card-header">
             <span class="card-icon">⏱️</span>
             <span class="card-title">短期记忆 (Short-term)</span>
@@ -217,7 +391,11 @@
           </div>
         </div>
 
-        <div class="mechanism-card" :class="{ active: activeTab === 'working' }" @click="activeTab = 'working'">
+        <div
+          class="mechanism-card"
+          :class="{ active: activeTab === 'working' }"
+          @click="activeTab = 'working'"
+        >
           <div class="card-header">
             <span class="card-icon">📝</span>
             <span class="card-title">工作记忆 (Working)</span>
@@ -245,7 +423,11 @@
           </div>
         </div>
 
-        <div class="mechanism-card" :class="{ active: activeTab === 'long' }" @click="activeTab = 'long'">
+        <div
+          class="mechanism-card"
+          :class="{ active: activeTab === 'long' }"
+          @click="activeTab = 'long'"
+        >
           <div class="card-header">
             <span class="card-icon">💾</span>
             <span class="card-title">长期记忆 (Long-term)</span>
@@ -277,34 +459,60 @@
 
     <!-- 最佳实践 -->
     <div class="best-practices">
-      <div class="practices-title">💡 记忆系统最佳实践</div>
+      <div class="practices-title">
+        💡 记忆系统最佳实践
+      </div>
       <div class="practices-list">
         <div class="practice-item">
-          <div class="practice-icon">1️⃣</div>
+          <div class="practice-icon">
+            1️⃣
+          </div>
           <div class="practice-content">
-            <div class="practice-title">短期记忆优化</div>
-            <div class="practice-desc">定期清理无关历史，保留关键上下文；超长对话使用摘要技术压缩</div>
+            <div class="practice-title">
+              短期记忆优化
+            </div>
+            <div class="practice-desc">
+              定期清理无关历史，保留关键上下文；超长对话使用摘要技术压缩
+            </div>
           </div>
         </div>
         <div class="practice-item">
-          <div class="practice-icon">2️⃣</div>
+          <div class="practice-icon">
+            2️⃣
+          </div>
           <div class="practice-content">
-            <div class="practice-title">工作记忆管理</div>
-            <div class="practice-desc">任务开始时初始化，结束时清理；避免存储大量中间结果</div>
+            <div class="practice-title">
+              工作记忆管理
+            </div>
+            <div class="practice-desc">
+              任务开始时初始化，结束时清理；避免存储大量中间结果
+            </div>
           </div>
         </div>
         <div class="practice-item">
-          <div class="practice-icon">3️⃣</div>
+          <div class="practice-icon">
+            3️⃣
+          </div>
           <div class="practice-content">
-            <div class="practice-title">长期记忆构建</div>
-            <div class="practice-desc">定期总结对话提炼知识；使用向量检索实现语义搜索；区分事实和偏好</div>
+            <div class="practice-title">
+              长期记忆构建
+            </div>
+            <div class="practice-desc">
+              定期总结对话提炼知识；使用向量检索实现语义搜索；区分事实和偏好
+            </div>
           </div>
         </div>
         <div class="practice-item">
-          <div class="practice-icon">4️⃣</div>
+          <div class="practice-icon">
+            4️⃣
+          </div>
           <div class="practice-content">
-            <div class="practice-title">记忆一致性</div>
-            <div class="practice-desc">长期记忆更新前验证；处理矛盾信息；支持用户显式修改记忆</div>
+            <div class="practice-title">
+              记忆一致性
+            </div>
+            <div class="practice-desc">
+              长期记忆更新前验证；处理矛盾信息；支持用户显式修改记忆
+            </div>
           </div>
         </div>
       </div>

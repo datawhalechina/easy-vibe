@@ -2,7 +2,9 @@
   <div class="repository-layer-demo">
     <div class="demo-header">
       <h4>🗄️ Repository 层：数据的"仓库管理员"</h4>
-      <p class="subtitle">Repository 封装数据访问逻辑，让上层无需关心数据库细节</p>
+      <p class="subtitle">
+        Repository 封装数据访问逻辑，让上层无需关心数据库细节
+      </p>
     </div>
 
     <!-- 对比演示 -->
@@ -26,7 +28,10 @@
 
       <div class="comparison-content">
         <!-- 糟糕的做法 -->
-        <div v-if="viewMode === 'bad'" class="code-panel bad">
+        <div
+          v-if="viewMode === 'bad'"
+          class="code-panel bad"
+        >
           <div class="panel-header">
             <span class="panel-title">😫 在 Service 里直接写 SQL</span>
             <span class="panel-badge">耦合严重</span>
@@ -75,7 +80,10 @@ public class OrderService {
         </div>
 
         <!-- 优雅的做法 -->
-        <div v-else class="code-panel good">
+        <div
+          v-else
+          class="code-panel good"
+        >
           <div class="panel-header">
             <span class="panel-title">😊 使用 Repository 封装数据访问</span>
             <span class="panel-badge">清晰解耦</span>
@@ -191,16 +199,26 @@ public class OrderService {
 
       <div class="comparison-table">
         <div class="table-header">
-          <div class="col-method">实现方式</div>
-          <div class="col-pros">优点</div>
-          <div class="col-cons">缺点</div>
-          <div class="col-scene">适用场景</div>
+          <div class="col-method">
+            实现方式
+          </div>
+          <div class="col-pros">
+            优点
+          </div>
+          <div class="col-cons">
+            缺点
+          </div>
+          <div class="col-scene">
+            适用场景
+          </div>
         </div>
 
         <div class="table-row">
           <div class="col-method">
             <strong>Spring Data JPA</strong>
-            <div class="method-tag">主流方案</div>
+            <div class="method-tag">
+              主流方案
+            </div>
           </div>
           <div class="col-pros">
             <ul>
@@ -215,13 +233,17 @@ public class OrderService {
               <li>学习曲线较陡</li>
             </ul>
           </div>
-          <div class="col-scene">快速开发、标准 CRUD 业务</div>
+          <div class="col-scene">
+            快速开发、标准 CRUD 业务
+          </div>
         </div>
 
         <div class="table-row">
           <div class="col-method">
             <strong>MyBatis / MyBatis-Plus</strong>
-            <div class="method-tag tag-blue">国内主流</div>
+            <div class="method-tag tag-blue">
+              国内主流
+            </div>
           </div>
           <div class="col-pros">
             <ul>
@@ -236,13 +258,17 @@ public class OrderService {
               <li>样板代码较多</li>
             </ul>
           </div>
-          <div class="col-scene">复杂查询、性能敏感业务</div>
+          <div class="col-scene">
+            复杂查询、性能敏感业务
+          </div>
         </div>
 
         <div class="table-row">
           <div class="col-method">
             <strong>Spring Data JDBC</strong>
-            <div class="method-tag tag-green">轻量</div>
+            <div class="method-tag tag-green">
+              轻量
+            </div>
           </div>
           <div class="col-pros">
             <ul>
@@ -257,7 +283,9 @@ public class OrderService {
               <li>功能较简单</li>
             </ul>
           </div>
-          <div class="col-scene">微服务、简单聚合根场景</div>
+          <div class="col-scene">
+            微服务、简单聚合根场景
+          </div>
         </div>
       </div>
     </div>

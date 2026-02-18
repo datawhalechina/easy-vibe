@@ -1,8 +1,12 @@
 <template>
   <div class="multi-tool-principle">
     <div class="header">
-      <div class="title">🔧 多工具调用原理：Agent 如何"串联"工具完成任务</div>
-      <div class="subtitle">理解 Agent 的链式思考(Chain-of-Thought)和工具编排机制</div>
+      <div class="title">
+        🔧 多工具调用原理：Agent 如何"串联"工具完成任务
+      </div>
+      <div class="subtitle">
+        理解 Agent 的链式思考(Chain-of-Thought)和工具编排机制
+      </div>
     </div>
 
     <!-- 场景选择 -->
@@ -20,24 +24,40 @@
 
     <!-- 用户意图 -->
     <div class="intent-box">
-      <div class="intent-label">👤 用户意图</div>
-      <div class="intent-text">{{ currentData.intent }}</div>
+      <div class="intent-label">
+        👤 用户意图
+      </div>
+      <div class="intent-text">
+        {{ currentData.intent }}
+      </div>
     </div>
 
     <!-- 执行流程可视化 -->
     <div class="execution-flow">
-      <div class="flow-title">🔄 工具调用执行流程</div>
+      <div class="flow-title">
+        🔄 工具调用执行流程
+      </div>
       
       <!-- 思考阶段 -->
-      <div class="phase thinking-phase" :class="{ active: currentPhase >= 0 }">
+      <div
+        class="phase thinking-phase"
+        :class="{ active: currentPhase >= 0 }"
+      >
         <div class="phase-header">
           <span class="phase-icon">🧠</span>
           <span class="phase-name">思考规划</span>
           <span class="phase-status">{{ currentPhase > 0 ? '✅ 完成' : currentPhase === 0 ? '🔄 进行中' : '⏳ 等待' }}</span>
         </div>
-        <div v-if="currentPhase >= 0" class="phase-content">
+        <div
+          v-if="currentPhase >= 0"
+          class="phase-content"
+        >
           <div class="thought-steps">
-            <div v-for="(step, idx) in currentData.planningSteps" :key="idx" class="thought-step">
+            <div
+              v-for="(step, idx) in currentData.planningSteps"
+              :key="idx"
+              class="thought-step"
+            >
               <span class="step-num">{{ idx + 1 }}</span>
               <span class="step-text">{{ step }}</span>
             </div>
@@ -46,13 +66,19 @@
       </div>
 
       <!-- 工具执行阶段 -->
-      <div class="phase tools-phase" :class="{ active: currentPhase >= 1 }">
+      <div
+        class="phase tools-phase"
+        :class="{ active: currentPhase >= 1 }"
+      >
         <div class="phase-header">
           <span class="phase-icon">🔧</span>
           <span class="phase-name">工具执行</span>
           <span class="phase-status">{{ currentPhase > 1 ? '✅ 完成' : currentPhase === 1 ? '🔄 进行中' : '⏳ 等待' }}</span>
         </div>
-        <div v-if="currentPhase >= 1" class="phase-content">
+        <div
+          v-if="currentPhase >= 1"
+          class="phase-content"
+        >
           <div class="tools-chain">
             <div 
               v-for="(tool, idx) in currentData.tools" 
@@ -64,28 +90,53 @@
                 pending: currentTool < idx 
               }"
             >
-              <div class="node-connector" v-if="idx > 0">
-                <div class="connector-line" :class="{ active: currentTool >= idx }"></div>
+              <div
+                v-if="idx > 0"
+                class="node-connector"
+              >
+                <div
+                  class="connector-line"
+                  :class="{ active: currentTool >= idx }"
+                />
               </div>
               <div class="node-content">
-                <div class="node-icon">{{ tool.icon }}</div>
-                <div class="node-name">{{ tool.name }}</div>
+                <div class="node-icon">
+                  {{ tool.icon }}
+                </div>
+                <div class="node-name">
+                  {{ tool.name }}
+                </div>
                 <div class="node-status">
-                  <span v-if="currentTool > idx" class="status-done">✓</span>
-                  <span v-else-if="currentTool === idx" class="status-running">
-                    <span class="pulse"></span>
+                  <span
+                    v-if="currentTool > idx"
+                    class="status-done"
+                  >✓</span>
+                  <span
+                    v-else-if="currentTool === idx"
+                    class="status-running"
+                  >
+                    <span class="pulse" />
                   </span>
-                  <span v-else class="status-wait">○</span>
+                  <span
+                    v-else
+                    class="status-wait"
+                  >○</span>
                 </div>
               </div>
               
               <!-- 工具详情 -->
-              <div v-if="currentTool >= idx" class="tool-detail-popup">
+              <div
+                v-if="currentTool >= idx"
+                class="tool-detail-popup"
+              >
                 <div class="detail-row">
                   <span class="detail-label">输入:</span>
                   <code class="detail-code">{{ tool.input }}</code>
                 </div>
-                <div v-if="currentTool > idx" class="detail-row">
+                <div
+                  v-if="currentTool > idx"
+                  class="detail-row"
+                >
                   <span class="detail-label">输出:</span>
                   <span class="detail-output">{{ truncate(tool.output, 50) }}</span>
                 </div>
@@ -94,34 +145,57 @@
           </div>
           
           <!-- 数据流转示意 -->
-          <div v-if="currentPhase === 1" class="data-flow-hint">
-            <div class="flow-arrow">⬇️ 数据在工具间流转，上一步的输出成为下一步的输入</div>
+          <div
+            v-if="currentPhase === 1"
+            class="data-flow-hint"
+          >
+            <div class="flow-arrow">
+              ⬇️ 数据在工具间流转，上一步的输出成为下一步的输入
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 结果整合阶段 -->
-      <div class="phase result-phase" :class="{ active: currentPhase >= 2 }">
+      <div
+        class="phase result-phase"
+        :class="{ active: currentPhase >= 2 }"
+      >
         <div class="phase-header">
           <span class="phase-icon">📝</span>
           <span class="phase-name">结果整合</span>
           <span class="phase-status">{{ currentPhase > 2 ? '✅ 完成' : currentPhase === 2 ? '🔄 进行中' : '⏳ 等待' }}</span>
         </div>
-        <div v-if="currentPhase >= 2" class="phase-content">
+        <div
+          v-if="currentPhase >= 2"
+          class="phase-content"
+        >
           <div class="integration-steps">
-            <div class="integration-step" :class="{ done: integrationStep >= 0 }">
+            <div
+              class="integration-step"
+              :class="{ done: integrationStep >= 0 }"
+            >
               <span class="check">{{ integrationStep >= 0 ? '✓' : '○' }}</span>
               <span>收集所有工具输出</span>
             </div>
-            <div class="integration-step" :class="{ done: integrationStep >= 1 }">
+            <div
+              class="integration-step"
+              :class="{ done: integrationStep >= 1 }"
+            >
               <span class="check">{{ integrationStep >= 1 ? '✓' : '○' }}</span>
               <span>去重与验证</span>
             </div>
-            <div class="integration-step" :class="{ done: integrationStep >= 2 }">
+            <div
+              class="integration-step"
+              :class="{ done: integrationStep >= 2 }"
+            >
               <span class="check">{{ integrationStep >= 2 ? '✓' : '○' }}</span>
               <span>结构化整理</span>
             </div>
-            <div class="integration-step" :class="{ done: integrationStep >= 3 }">
+            <div
+              class="integration-step"
+              :class="{ done: integrationStep >= 3 }"
+            >
               <span class="check">{{ integrationStep >= 3 ? '✓' : '○' }}</span>
               <span>生成自然语言回复</span>
             </div>
@@ -130,15 +204,23 @@
       </div>
 
       <!-- 最终输出 -->
-      <div class="phase output-phase" :class="{ active: currentPhase >= 3 }">
+      <div
+        class="phase output-phase"
+        :class="{ active: currentPhase >= 3 }"
+      >
         <div class="phase-header">
           <span class="phase-icon">💬</span>
           <span class="phase-name">最终输出</span>
           <span class="phase-status">{{ currentPhase >= 3 ? '✅ 完成' : '⏳ 等待' }}</span>
         </div>
-        <div v-if="currentPhase >= 3" class="phase-content">
+        <div
+          v-if="currentPhase >= 3"
+          class="phase-content"
+        >
           <div class="final-output">
-            <div class="output-bubble">{{ currentData.finalOutput }}</div>
+            <div class="output-bubble">
+              {{ currentData.finalOutput }}
+            </div>
           </div>
         </div>
       </div>
@@ -146,57 +228,113 @@
 
     <!-- 控制按钮 -->
     <div class="controls">
-      <button v-if="!isRunning && currentPhase === -1" class="control-btn primary" @click="startDemo">
+      <button
+        v-if="!isRunning && currentPhase === -1"
+        class="control-btn primary"
+        @click="startDemo"
+      >
         ▶ 开始演示
       </button>
-      <button v-else-if="isRunning" class="control-btn" disabled>
+      <button
+        v-else-if="isRunning"
+        class="control-btn"
+        disabled
+      >
         ⏳ 执行中...
       </button>
-      <button v-else class="control-btn secondary" @click="reset">
+      <button
+        v-else
+        class="control-btn secondary"
+        @click="reset"
+      >
         🔄 重新演示
       </button>
     </div>
 
     <!-- 原理说明 -->
     <div class="principle-explanation">
-      <div class="explanation-title">📚 核心原理</div>
+      <div class="explanation-title">
+        📚 核心原理
+      </div>
       <div class="explanation-grid">
         <div class="explanation-card">
-          <div class="card-icon">🧩</div>
-          <div class="card-title">任务分解</div>
-          <div class="card-desc">Agent 将复杂任务拆解为多个子任务，每个子任务对应一个工具调用</div>
+          <div class="card-icon">
+            🧩
+          </div>
+          <div class="card-title">
+            任务分解
+          </div>
+          <div class="card-desc">
+            Agent 将复杂任务拆解为多个子任务，每个子任务对应一个工具调用
+          </div>
         </div>
         <div class="explanation-card">
-          <div class="card-icon">🔗</div>
-          <div class="card-title">链式调用</div>
-          <div class="card-desc">工具按依赖关系串联执行，前一个工具的输出成为后一个工具的输入</div>
+          <div class="card-icon">
+            🔗
+          </div>
+          <div class="card-title">
+            链式调用
+          </div>
+          <div class="card-desc">
+            工具按依赖关系串联执行，前一个工具的输出成为后一个工具的输入
+          </div>
         </div>
         <div class="explanation-card">
-          <div class="card-icon">🔄</div>
-          <div class="card-title">动态调整</div>
-          <div class="card-desc">根据中间结果，Agent 可以动态决定下一步调用哪个工具</div>
+          <div class="card-icon">
+            🔄
+          </div>
+          <div class="card-title">
+            动态调整
+          </div>
+          <div class="card-desc">
+            根据中间结果，Agent 可以动态决定下一步调用哪个工具
+          </div>
         </div>
         <div class="explanation-card">
-          <div class="card-icon">🎯</div>
-          <div class="card-title">结果整合</div>
-          <div class="card-desc">将所有工具输出整合为连贯、有用的最终回复</div>
+          <div class="card-icon">
+            🎯
+          </div>
+          <div class="card-title">
+            结果整合
+          </div>
+          <div class="card-desc">
+            将所有工具输出整合为连贯、有用的最终回复
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 与 LLM 对比 -->
     <div class="comparison-section">
-      <div class="comparison-title">⚖️ 为什么需要多工具调用？</div>
+      <div class="comparison-title">
+        ⚖️ 为什么需要多工具调用？
+      </div>
       <div class="comparison-table">
         <div class="comparison-row header">
-          <div class="col scenario">场景</div>
-          <div class="col llm">普通 LLM</div>
-          <div class="col agent">Agent + 多工具</div>
+          <div class="col scenario">
+            场景
+          </div>
+          <div class="col llm">
+            普通 LLM
+          </div>
+          <div class="col agent">
+            Agent + 多工具
+          </div>
         </div>
-        <div v-for="(item, idx) in comparisons" :key="idx" class="comparison-row">
-          <div class="col scenario">{{ item.scenario }}</div>
-          <div class="col llm">{{ item.llm }}</div>
-          <div class="col agent">{{ item.agent }}</div>
+        <div
+          v-for="(item, idx) in comparisons"
+          :key="idx"
+          class="comparison-row"
+        >
+          <div class="col scenario">
+            {{ item.scenario }}
+          </div>
+          <div class="col llm">
+            {{ item.llm }}
+          </div>
+          <div class="col agent">
+            {{ item.agent }}
+          </div>
         </div>
       </div>
     </div>

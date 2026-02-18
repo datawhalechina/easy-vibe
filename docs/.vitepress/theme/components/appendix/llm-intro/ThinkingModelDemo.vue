@@ -1,10 +1,16 @@
 <template>
   <div class="thinking-demo">
     <div class="mode-switch">
-      <button :class="{ active: mode === 'fast' }" @click="switchMode('fast')">
+      <button
+        :class="{ active: mode === 'fast' }"
+        @click="switchMode('fast')"
+      >
         ⚡️ 传统快思考 (System 1)
       </button>
-      <button :class="{ active: mode === 'slow' }" @click="switchMode('slow')">
+      <button
+        :class="{ active: mode === 'slow' }"
+        @click="switchMode('slow')"
+      >
         🧠 深度慢思考 (System 2)
       </button>
     </div>
@@ -17,11 +23,21 @@
 
       <div class="process-area">
         <!-- Fast Mode Visualization -->
-        <div v-if="mode === 'fast'" class="fast-track">
-          <div class="model-node">LLM</div>
-          <div class="arrow">➜</div>
+        <div
+          v-if="mode === 'fast'"
+          class="fast-track"
+        >
+          <div class="model-node">
+            LLM
+          </div>
+          <div class="arrow">
+            ➜
+          </div>
           <div class="output-box">
-            <div class="typing-effect" v-if="generating">
+            <div
+              v-if="generating"
+              class="typing-effect"
+            >
               {{ displayedOutput }}
             </div>
             <div v-else>
@@ -31,18 +47,37 @@
         </div>
 
         <!-- Slow Mode Visualization -->
-        <div v-else class="slow-track">
-          <div class="model-node">Thinking LLM</div>
-          <div class="arrow">➜</div>
+        <div
+          v-else
+          class="slow-track"
+        >
+          <div class="model-node">
+            Thinking LLM
+          </div>
+          <div class="arrow">
+            ➜
+          </div>
           <div class="output-container">
             <!-- Thinking Process -->
-            <div class="thought-bubble" :class="{ visible: showThoughts }">
-              <div class="bubble-header" @click="toggleThoughts">
+            <div
+              class="thought-bubble"
+              :class="{ visible: showThoughts }"
+            >
+              <div
+                class="bubble-header"
+                @click="toggleThoughts"
+              >
                 💭 思考过程 (Chain of Thought)
                 <span class="toggle-icon">{{ thoughtsOpen ? '▼' : '▶' }}</span>
               </div>
-              <div class="bubble-content" v-show="thoughtsOpen">
-                <div class="typing-effect-thought" v-if="generatingThoughts">
+              <div
+                v-show="thoughtsOpen"
+                class="bubble-content"
+              >
+                <div
+                  v-if="generatingThoughts"
+                  class="typing-effect-thought"
+                >
                   {{ displayedThoughts }}
                 </div>
                 <div v-else>
@@ -52,8 +87,14 @@
             </div>
 
             <!-- Final Answer -->
-            <div class="output-box final-answer" v-if="showFinalAnswer">
-              <div class="typing-effect" v-if="generatingFinal">
+            <div
+              v-if="showFinalAnswer"
+              class="output-box final-answer"
+            >
+              <div
+                v-if="generatingFinal"
+                class="typing-effect"
+              >
                 {{ displayedOutput }}
               </div>
               <div v-else>
@@ -66,12 +107,19 @@
     </div>
 
     <div class="controls">
-      <button class="run-btn" @click="runSimulation" :disabled="isRunning">
+      <button
+        class="run-btn"
+        :disabled="isRunning"
+        @click="runSimulation"
+      >
         {{ isRunning ? '生成中...' : '开始生成' }}
       </button>
     </div>
 
-    <div class="metrics" v-if="completed">
+    <div
+      v-if="completed"
+      class="metrics"
+    >
       <div class="metric-item">
         <span class="label">Token 消耗:</span>
         <span class="value">{{ mode === 'fast' ? '5' : '150' }} tokens</span>
@@ -82,7 +130,10 @@
       </div>
       <div class="metric-item">
         <span class="label">准确率:</span>
-        <span class="value" :class="mode === 'fast' ? 'bad' : 'good'">
+        <span
+          class="value"
+          :class="mode === 'fast' ? 'bad' : 'good'"
+        >
           {{ mode === 'fast' ? '❌ 错误' : '✅ 正确' }}
         </span>
       </div>

@@ -5,8 +5,12 @@
 <template>
   <div class="responsive-demo">
     <div class="header">
-      <div class="title">响应式布局：一套代码，多种屏幕</div>
-      <div class="subtitle">拖动宽度，观察列数变化</div>
+      <div class="title">
+        响应式布局：一套代码，多种屏幕
+      </div>
+      <div class="subtitle">
+        拖动宽度，观察列数变化
+      </div>
     </div>
 
     <div class="controls">
@@ -19,12 +23,24 @@
         min="320"
         max="1200"
         step="10"
-      />
+      >
     </div>
 
-    <div class="preview" :style="{ width: viewportWidth + 'px' }">
-      <div class="grid" :style="gridStyle">
-        <div v-for="n in 6" :key="n" class="card">Card {{ n }}</div>
+    <div
+      class="preview"
+      :style="{ width: viewportWidth + 'px' }"
+    >
+      <div
+        class="grid"
+        :style="gridStyle"
+      >
+        <div
+          v-for="n in 6"
+          :key="n"
+          class="card"
+        >
+          Card {{ n }}
+        </div>
       </div>
     </div>
 

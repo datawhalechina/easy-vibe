@@ -18,7 +18,10 @@
       <template #header>
         <div class="header-controls">
           <span class="title">🔍 VAE 编解码器</span>
-          <el-radio-group v-model="mode" size="small">
+          <el-radio-group
+            v-model="mode"
+            size="small"
+          >
             <el-radio-button label="encode">
               <el-icon><ArrowRight /></el-icon> 编码 (Encode)
             </el-radio-button>
@@ -32,7 +35,9 @@
       <div class="vae-flow">
         <!-- 输入侧 -->
         <div class="stage">
-          <div class="stage-label">{{ mode === 'encode' ? '原始图像' : '潜空间表示' }}</div>
+          <div class="stage-label">
+            {{ mode === 'encode' ? '原始图像' : '潜空间表示' }}
+          </div>
           <div class="stage-visual">
             <canvas
               ref="inputCanvas"
@@ -42,7 +47,10 @@
             />
           </div>
           <div class="stage-info">
-            <el-tag size="small" type="info">
+            <el-tag
+              size="small"
+              type="info"
+            >
               {{ mode === 'encode' ? '512 × 512 × 3 = 786,432 数值' : '64 × 64 × 4 = 16,384 数值' }}
             </el-tag>
           </div>
@@ -50,17 +58,27 @@
 
         <!-- 箭头 -->
         <div class="arrow-stage">
-          <el-icon class="flow-arrow" :size="32">
+          <el-icon
+            class="flow-arrow"
+            :size="32"
+          >
             <component :is="mode === 'encode' ? ArrowRight : ArrowLeft" />
           </el-icon>
           <div class="compression-ratio">
-            <el-tag type="success" effect="dark">压缩率: 48×</el-tag>
+            <el-tag
+              type="success"
+              effect="dark"
+            >
+              压缩率: 48×
+            </el-tag>
           </div>
         </div>
 
         <!-- 输出侧 -->
         <div class="stage">
-          <div class="stage-label">{{ mode === 'encode' ? '潜空间表示' : '重建图像' }}</div>
+          <div class="stage-label">
+            {{ mode === 'encode' ? '潜空间表示' : '重建图像' }}
+          </div>
           <div class="stage-visual">
             <canvas
               ref="outputCanvas"
@@ -70,7 +88,10 @@
             />
           </div>
           <div class="stage-info">
-            <el-tag size="small" type="info">
+            <el-tag
+              size="small"
+              type="info"
+            >
               {{ mode === 'encode' ? '64 × 64 × 4 = 16,384 数值' : '512 × 512 × 3 = 786,432 数值' }}
             </el-tag>
           </div>
@@ -78,8 +99,13 @@
       </div>
 
       <!-- 潜空间可视化 -->
-      <div class="latent-viz" v-if="mode === 'encode'">
-        <div class="latent-title">潜空间特征图 (4 个通道)</div>
+      <div
+        v-if="mode === 'encode'"
+        class="latent-viz"
+      >
+        <div class="latent-title">
+          潜空间特征图 (4 个通道)
+        </div>
         <div class="latent-channels">
           <div
             v-for="i in 4"

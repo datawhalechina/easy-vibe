@@ -5,19 +5,27 @@
 <template>
   <div class="tool-selection-demo">
     <div class="header">
-      <div class="title">埋点工具选型</div>
-      <div class="subtitle">根据团队规模和需求选择合适的方案</div>
+      <div class="title">
+        埋点工具选型
+      </div>
+      <div class="subtitle">
+        根据团队规模和需求选择合适的方案
+      </div>
     </div>
 
     <div class="selection-criteria">
-      <div class="criteria-title">请选择您的场景</div>
+      <div class="criteria-title">
+        请选择您的场景
+      </div>
       <div class="criteria-options">
         <div
           v-for="(option, key) in criteria"
           :key="key"
           class="criteria-option"
         >
-          <div class="option-label">{{ option.label }}</div>
+          <div class="option-label">
+            {{ option.label }}
+          </div>
           <div class="option-buttons">
             <button
               v-for="(value, index) in option.values"
@@ -32,20 +40,34 @@
         </div>
       </div>
 
-      <button class="recommend-btn" @click="getRecommendation">
+      <button
+        class="recommend-btn"
+        @click="getRecommendation"
+      >
         获取推荐方案
       </button>
     </div>
 
-    <div v-if="recommendation" class="recommendation-result">
+    <div
+      v-if="recommendation"
+      class="recommendation-result"
+    >
       <div class="result-header">
-        <div class="result-icon">🎯</div>
-        <div class="result-title">推荐方案</div>
+        <div class="result-icon">
+          🎯
+        </div>
+        <div class="result-title">
+          推荐方案
+        </div>
       </div>
 
       <div class="result-card">
-        <div class="result-name">{{ recommendation.name }}</div>
-        <div class="result-desc">{{ recommendation.desc }}</div>
+        <div class="result-name">
+          {{ recommendation.name }}
+        </div>
+        <div class="result-desc">
+          {{ recommendation.desc }}
+        </div>
 
         <div class="result-details">
           <div class="detail-item">
@@ -63,23 +85,39 @@
         </div>
 
         <div class="result-pros">
-          <div class="pros-title">✅ 优势</div>
+          <div class="pros-title">
+            ✅ 优势
+          </div>
           <ul class="pros-list">
-            <li v-for="(pro, i) in recommendation.pros" :key="i">{{ pro }}</li>
+            <li
+              v-for="(pro, i) in recommendation.pros"
+              :key="i"
+            >
+              {{ pro }}
+            </li>
           </ul>
         </div>
 
         <div class="result-cons">
-          <div class="cons-title">⚠️ 注意事项</div>
+          <div class="cons-title">
+            ⚠️ 注意事项
+          </div>
           <ul class="cons-list">
-            <li v-for="(con, i) in recommendation.cons" :key="i">{{ con }}</li>
+            <li
+              v-for="(con, i) in recommendation.cons"
+              :key="i"
+            >
+              {{ con }}
+            </li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="tools-comparison">
-      <div class="comparison-title">工具对比表</div>
+      <div class="comparison-title">
+        工具对比表
+      </div>
       <table class="comparison-table">
         <thead>
           <tr>
@@ -91,8 +129,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(tool, index) in tools" :key="index">
-            <td class="tool-name">{{ tool.name }}</td>
+          <tr
+            v-for="(tool, index) in tools"
+            :key="index"
+          >
+            <td class="tool-name">
+              {{ tool.name }}
+            </td>
             <td>{{ tool.type }}</td>
             <td>{{ tool.price }}</td>
             <td>{{ tool.scenario }}</td>

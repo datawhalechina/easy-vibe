@@ -2,24 +2,35 @@
   <div class="git-scenarios-demo">
     <div class="header">
       <div class="title">
-        <div class="h">常见场景：直接照抄的 Git 命令</div>
+        <div class="h">
+          常见场景：直接照抄的 Git 命令
+        </div>
         <div class="sub">
           选一个场景，按步骤执行；每一步都解释“为什么这么做”。
         </div>
       </div>
 
       <div class="actions">
-        <button class="btn" @click="prevStep" :disabled="activeStepIndex === 0">
+        <button
+          class="btn"
+          :disabled="activeStepIndex === 0"
+          @click="prevStep"
+        >
           上一步
         </button>
         <button
           class="btn primary"
-          @click="nextStep"
           :disabled="activeStepIndex >= activeScenario.steps.length - 1"
+          @click="nextStep"
         >
           下一步
         </button>
-        <button class="btn" @click="resetSteps">重置</button>
+        <button
+          class="btn"
+          @click="resetSteps"
+        >
+          重置
+        </button>
       </div>
     </div>
 
@@ -38,8 +49,13 @@
 
     <div class="content">
       <div class="scenario-meta">
-        <div class="scenario-desc">{{ activeScenario.desc }}</div>
-        <div class="scenario-note" v-if="activeScenario.note">
+        <div class="scenario-desc">
+          {{ activeScenario.desc }}
+        </div>
+        <div
+          v-if="activeScenario.note"
+          class="scenario-note"
+        >
           {{ activeScenario.note }}
         </div>
       </div>
@@ -50,7 +66,10 @@
             Step {{ activeStepIndex + 1 }} / {{ activeScenario.steps.length }}
             <span class="step-name">{{ activeStep.title }}</span>
           </div>
-          <button class="copy-btn" @click="copy(activeStep.cmd)">
+          <button
+            class="copy-btn"
+            @click="copy(activeStep.cmd)"
+          >
             {{ copied ? '已复制' : '复制命令' }}
           </button>
         </div>
@@ -59,24 +78,42 @@
           <code>{{ activeStep.cmd }}</code>
         </div>
 
-        <div v-if="activeStep.output" class="output">
-          <div class="label">你通常会看到：</div>
+        <div
+          v-if="activeStep.output"
+          class="output"
+        >
+          <div class="label">
+            你通常会看到：
+          </div>
           <pre><code>{{ activeStep.output }}</code></pre>
         </div>
 
         <div class="why">
-          <div class="label">为什么：</div>
-          <div class="text">{{ activeStep.why }}</div>
+          <div class="label">
+            为什么：
+          </div>
+          <div class="text">
+            {{ activeStep.why }}
+          </div>
         </div>
 
-        <div v-if="activeStep.warn" class="warn">
-          <div class="label">注意：</div>
-          <div class="text">{{ activeStep.warn }}</div>
+        <div
+          v-if="activeStep.warn"
+          class="warn"
+        >
+          <div class="label">
+            注意：
+          </div>
+          <div class="text">
+            {{ activeStep.warn }}
+          </div>
         </div>
       </div>
 
       <div class="tips">
-        <div class="tips-title">最容易踩坑的 3 件事</div>
+        <div class="tips-title">
+          最容易踩坑的 3 件事
+        </div>
         <ul>
           <li>
             <strong>先看状态再动手：</strong>每次操作前先跑一次

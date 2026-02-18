@@ -14,19 +14,28 @@
       <div class="event-loop-flow">
         <div class="flow-container">
           <div class="flow-section main-thread">
-            <div class="section-title">主线程（执行栈）</div>
+            <div class="section-title">
+              主线程（执行栈）
+            </div>
             <div class="execution-box">
-              <div class="exec-item" :class="{ active: currentStep === 'script' }">
+              <div
+                class="exec-item"
+                :class="{ active: currentStep === 'script' }"
+              >
                 <span class="exec-label">同步代码</span>
               </div>
             </div>
           </div>
 
           <div class="flow-section task-queues">
-            <div class="section-title">任务队列</div>
+            <div class="section-title">
+              任务队列
+            </div>
             <div class="queues-container">
               <div class="queue-box micro">
-                <div class="queue-title">微任务队列（优先级高）</div>
+                <div class="queue-title">
+                  微任务队列（优先级高）
+                </div>
                 <div class="queue-items">
                   <div
                     v-for="task in microTasks"
@@ -40,7 +49,9 @@
               </div>
 
               <div class="queue-box macro">
-                <div class="queue-title">宏任务队列（优先级低）</div>
+                <div class="queue-title">
+                  宏任务队列（优先级低）
+                </div>
                 <div class="queue-items">
                   <div
                     v-for="task in macroTasks"
@@ -58,7 +69,9 @@
       </div>
 
       <div class="code-example">
-        <div class="example-title">代码示例</div>
+        <div class="example-title">
+          代码示例
+        </div>
         <pre class="code-block"><code>console.log('1')
 
 setTimeout(() => console.log('2'), 0)  // 宏任务
@@ -71,7 +84,10 @@ console.log('4')
       </div>
 
       <div class="control-panel">
-        <button class="run-btn" @click="runDemo">
+        <button
+          class="run-btn"
+          @click="runDemo"
+        >
           {{ isRunning ? '🔄 运行中...' : '▶️ 运行演示' }}
         </button>
       </div>

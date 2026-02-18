@@ -2,7 +2,9 @@
   <div class="pricing-model-demo">
     <div class="demo-header">
       <h4>云服务器计费模式计算器</h4>
-      <p class="demo-desc">输入您的使用场景，对比不同计费模式的成本</p>
+      <p class="demo-desc">
+        输入您的使用场景，对比不同计费模式的成本
+      </p>
     </div>
 
     <div class="calculator-inputs">
@@ -12,14 +14,23 @@
           <div class="input-group">
             <label>实例规格</label>
             <select v-model="config.instanceType">
-              <option v-for="type in instanceTypes" :key="type.value" :value="type.value">
+              <option
+                v-for="type in instanceTypes"
+                :key="type.value"
+                :value="type.value"
+              >
                 {{ type.label }}
               </option>
             </select>
           </div>
           <div class="input-group">
             <label>数量 (台)</label>
-            <input v-model.number="config.quantity" type="number" min="1" max="100" />
+            <input
+              v-model.number="config.quantity"
+              type="number"
+              min="1"
+              max="100"
+            >
           </div>
         </div>
       </div>
@@ -29,12 +40,22 @@
         <div class="input-grid">
           <div class="input-group">
             <label>每日运行时长 (小时)</label>
-            <input v-model.number="config.dailyHours" type="range" min="1" max="24" />
+            <input
+              v-model.number="config.dailyHours"
+              type="range"
+              min="1"
+              max="24"
+            >
             <span class="range-value">{{ config.dailyHours }} 小时</span>
           </div>
           <div class="input-group">
             <label>每月运行天数</label>
-            <input v-model.number="config.monthlyDays" type="range" min="1" max="31" />
+            <input
+              v-model.number="config.monthlyDays"
+              type="range"
+              min="1"
+              max="31"
+            >
             <span class="range-value">{{ config.monthlyDays }} 天</span>
           </div>
         </div>
@@ -43,9 +64,17 @@
       <div class="input-section">
         <h5>计费偏好</h5>
         <div class="billing-options">
-          <label v-for="option in billingOptions" :key="option.value" class="option-card"
-            :class="{ active: config.billingType === option.value }">
-            <input type="radio" v-model="config.billingType" :value="option.value" />
+          <label
+            v-for="option in billingOptions"
+            :key="option.value"
+            class="option-card"
+            :class="{ active: config.billingType === option.value }"
+          >
+            <input
+              v-model="config.billingType"
+              type="radio"
+              :value="option.value"
+            >
             <span class="option-icon">{{ option.icon }}</span>
             <span class="option-name">{{ option.label }}</span>
             <span class="option-desc">{{ option.desc }}</span>
@@ -57,18 +86,35 @@
     <div class="cost-comparison">
       <h5>成本对比分析</h5>
       <div class="comparison-chart">
-        <div v-for="model in costComparison" :key="model.type" class="chart-bar"
-          :class="{ recommended: model.recommended }">
-          <div class="bar-label">{{ model.label }}</div>
+        <div
+          v-for="model in costComparison"
+          :key="model.type"
+          class="chart-bar"
+          :class="{ recommended: model.recommended }"
+        >
+          <div class="bar-label">
+            {{ model.label }}
+          </div>
           <div class="bar-visual">
-            <div class="bar-fill" :style="{ height: model.percentage + '%' }"
-              :class="model.type"></div>
+            <div
+              class="bar-fill"
+              :style="{ height: model.percentage + '%' }"
+              :class="model.type"
+            />
           </div>
           <div class="bar-value">
             <span class="amount">{{ model.cost }}</span>
-            <span v-if="model.savings" class="savings">省 {{ model.savings }}</span>
+            <span
+              v-if="model.savings"
+              class="savings"
+            >省 {{ model.savings }}</span>
           </div>
-          <div v-if="model.recommended" class="recommend-badge">推荐</div>
+          <div
+            v-if="model.recommended"
+            class="recommend-badge"
+          >
+            推荐
+          </div>
         </div>
       </div>
     </div>
@@ -79,7 +125,11 @@
         <span class="rec-title">优化建议</span>
       </div>
       <div class="rec-content">
-        <div v-for="(tip, index) in optimizationTips" :key="index" class="tip-item">
+        <div
+          v-for="(tip, index) in optimizationTips"
+          :key="index"
+          class="tip-item"
+        >
           <span class="tip-num">{{ index + 1 }}</span>
           <span class="tip-text">{{ tip }}</span>
         </div>

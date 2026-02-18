@@ -12,8 +12,12 @@
 
     <div class="demo-content">
       <div class="bus-center">
-        <div class="bus-icon">📻</div>
-        <div class="bus-label">广播站 (Event Bus)</div>
+        <div class="bus-icon">
+          📻
+        </div>
+        <div class="bus-label">
+          广播站 (Event Bus)
+        </div>
       </div>
 
       <div class="components-grid">
@@ -24,19 +28,36 @@
           :class="{ active: comp.isActive }"
           @click="sendEvent(comp)"
         >
-          <div class="comp-icon">{{ comp.icon }}</div>
-          <div class="comp-name">{{ comp.name }}</div>
-          <div class="comp-status" :class="{ listening: comp.isListening }">
+          <div class="comp-icon">
+            {{ comp.icon }}
+          </div>
+          <div class="comp-name">
+            {{ comp.name }}
+          </div>
+          <div
+            class="comp-status"
+            :class="{ listening: comp.isListening }"
+          >
             {{ comp.isListening ? '📻 收音中' : '🔇 未开机' }}
           </div>
         </div>
       </div>
 
       <Transition name="fade">
-        <div v-if="logs.length > 0" class="event-log">
-          <div class="log-title">📨 消息记录</div>
+        <div
+          v-if="logs.length > 0"
+          class="event-log"
+        >
+          <div class="log-title">
+            📨 消息记录
+          </div>
           <div class="log-list">
-            <div v-for="(log, index) in logs.slice(0, 5)" :key="index" class="log-item" :class="log.type">
+            <div
+              v-for="(log, index) in logs.slice(0, 5)"
+              :key="index"
+              class="log-item"
+              :class="log.type"
+            >
               <span class="log-type">{{ log.type === 'emit' ? '🎤 广播' : '📻 收听' }}</span>
               <span class="log-text">{{ log.text }}</span>
             </div>

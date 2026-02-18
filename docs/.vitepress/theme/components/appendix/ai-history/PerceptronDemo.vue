@@ -4,7 +4,9 @@
       <template #header>
         <div class="card-header">
           <h4>感知机 (Perceptron) 演示</h4>
-          <p class="subtitle">最简单的神经元：输入 x 权重 + 偏置 = 输出</p>
+          <p class="subtitle">
+            最简单的神经元：输入 x 权重 + 偏置 = 输出
+          </p>
         </div>
       </template>
 
@@ -12,12 +14,24 @@
         <!-- Inputs -->
         <div class="col inputs-col">
           <div class="node-wrapper">
-            <el-tag effect="dark">输入 A</el-tag>
-            <el-input-number v-model="x1" size="small" :step="1" />
+            <el-tag effect="dark">
+              输入 A
+            </el-tag>
+            <el-input-number
+              v-model="x1"
+              size="small"
+              :step="1"
+            />
           </div>
           <div class="node-wrapper">
-            <el-tag effect="dark">输入 B</el-tag>
-            <el-input-number v-model="x2" size="small" :step="1" />
+            <el-tag effect="dark">
+              输入 B
+            </el-tag>
+            <el-input-number
+              v-model="x2"
+              size="small"
+              :step="1"
+            />
           </div>
         </div>
 
@@ -30,7 +44,7 @@
                 height: Math.abs(w1) * 2 + 2 + 'px',
                 opacity: Math.abs(w1) / 5 + 0.2
               }"
-            ></div>
+            />
             <div class="weight-control">
               <span class="label">权重 A: {{ w1 }}</span>
               <el-slider
@@ -50,7 +64,7 @@
                 height: Math.abs(w2) * 2 + 2 + 'px',
                 opacity: Math.abs(w2) / 5 + 0.2
               }"
-            ></div>
+            />
             <div class="weight-control">
               <span class="label">权重 B: {{ w2 }}</span>
               <el-slider
@@ -67,23 +81,39 @@
         <!-- Neuron Body -->
         <div class="col neuron-col">
           <div class="neuron-circle">
-            <div class="sum-symbol">总分</div>
-            <div class="sum-value">{{ weightedSum.toFixed(1) }}</div>
+            <div class="sum-symbol">
+              总分
+            </div>
+            <div class="sum-value">
+              {{ weightedSum.toFixed(1) }}
+            </div>
           </div>
           <div class="bias-control mt-2">
             <span class="label">基础分 (Bias):</span>
-            <el-input-number v-model="bias" size="small" :step="1" />
+            <el-input-number
+              v-model="bias"
+              size="small"
+              :step="1"
+            />
           </div>
         </div>
 
         <!-- Output -->
         <div class="col output-col">
-          <el-icon class="arrow-icon"><Right /></el-icon>
+          <el-icon class="arrow-icon">
+            <Right />
+          </el-icon>
           <div class="node-wrapper">
-            <el-tag :type="output > 0 ? 'success' : 'info'" effect="dark"
-              >结果 (Output)</el-tag
+            <el-tag
+              :type="output > 0 ? 'success' : 'info'"
+              effect="dark"
             >
-            <div class="output-value" :class="{ active: output > 0 }">
+              结果 (Output)
+            </el-tag>
+            <div
+              class="output-value"
+              :class="{ active: output > 0 }"
+            >
               {{ output }}
             </div>
           </div>
@@ -93,7 +123,10 @@
       <el-divider />
 
       <div class="formula-bar">
-        <el-alert type="info" :closable="false">
+        <el-alert
+          type="info"
+          :closable="false"
+        >
           <template #title>
             <div class="formula-content">
               <div>
@@ -106,8 +139,8 @@
               <div class="mt-1">
                 <strong>判断结果: </strong>
                 <span class="calc-step"> 
-                   {{ weightedSum.toFixed(1) }} {{ weightedSum > 0 ? '>' : '≤' }} 0 
-                   → 输出 {{ output }} ({{ output > 0 ? '激活' : '静默' }})
+                  {{ weightedSum.toFixed(1) }} {{ weightedSum > 0 ? '>' : '≤' }} 0 
+                  → 输出 {{ output }} ({{ output > 0 ? '激活' : '静默' }})
                 </span>
               </div>
             </div>

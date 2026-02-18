@@ -5,8 +5,12 @@
 <template>
   <div class="render-demo">
     <div class="header">
-      <div class="title">渲染策略：CSR / SSR / SSG</div>
-      <div class="subtitle">选择策略，观察首屏表现</div>
+      <div class="title">
+        渲染策略：CSR / SSR / SSG
+      </div>
+      <div class="subtitle">
+        选择策略，观察首屏表现
+      </div>
     </div>
 
     <div class="options">
@@ -23,20 +27,34 @@
 
     <div class="cards">
       <div class="card">
-        <div class="label">TTFB</div>
-        <div class="value">{{ metrics.ttfb }} ms</div>
+        <div class="label">
+          TTFB
+        </div>
+        <div class="value">
+          {{ metrics.ttfb }} ms
+        </div>
       </div>
       <div class="card">
-        <div class="label">可交互时间</div>
-        <div class="value">{{ metrics.tti }} ms</div>
+        <div class="label">
+          可交互时间
+        </div>
+        <div class="value">
+          {{ metrics.tti }} ms
+        </div>
       </div>
       <div class="card">
-        <div class="label">SEO 友好</div>
-        <div class="value">{{ metrics.seo }}</div>
+        <div class="label">
+          SEO 友好
+        </div>
+        <div class="value">
+          {{ metrics.seo }}
+        </div>
       </div>
     </div>
 
-    <div class="hint">{{ metrics.note }}</div>
+    <div class="hint">
+      {{ metrics.note }}
+    </div>
   </div>
 </template>
 

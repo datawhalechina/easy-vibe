@@ -1,8 +1,12 @@
 <template>
   <div class="multi-region-demo">
     <div class="header">
-      <div class="title">多区域部署</div>
-      <div class="subtitle">异地多活架构，就近服务与容灾备份</div>
+      <div class="title">
+        多区域部署
+      </div>
+      <div class="subtitle">
+        异地多活架构，就近服务与容灾备份
+      </div>
     </div>
 
     <!-- 全球地图 -->
@@ -11,11 +15,11 @@
         <span class="map-title">全球部署视图</span>
         <span class="map-legend">
           <span class="legend-item">
-            <span class="legend-dot active"></span>
+            <span class="legend-dot active" />
             主节点
           </span>
           <span class="legend-item">
-            <span class="legend-dot standby"></span>
+            <span class="legend-dot standby" />
             备节点
           </span>
         </span>
@@ -38,9 +42,15 @@
               :style="{ top: region.y + '%', left: region.x + '%' }"
               @click="selectedRegion = region.id"
             >
-              <div class="node-icon">{{ region.isPrimary ? '📡' : '📶' }}</div>
-              <div class="node-label">{{ region.name }}</div>
-              <div class="node-delay">{{ region.delay }}ms</div>
+              <div class="node-icon">
+                {{ region.isPrimary ? '📡' : '📶' }}
+              </div>
+              <div class="node-label">
+                {{ region.name }}
+              </div>
+              <div class="node-delay">
+                {{ region.delay }}ms
+              </div>
             </div>
           </div>
 
@@ -58,9 +68,15 @@
               :style="{ top: region.y + '%', left: region.x + '%' }"
               @click="selectedRegion = region.id"
             >
-              <div class="node-icon">{{ region.isPrimary ? '📡' : '📶' }}</div>
-              <div class="node-label">{{ region.name }}</div>
-              <div class="node-delay">{{ region.delay }}ms</div>
+              <div class="node-icon">
+                {{ region.isPrimary ? '📡' : '📶' }}
+              </div>
+              <div class="node-label">
+                {{ region.name }}
+              </div>
+              <div class="node-delay">
+                {{ region.delay }}ms
+              </div>
             </div>
           </div>
 
@@ -78,18 +94,38 @@
               :style="{ top: region.y + '%', left: region.x + '%' }"
               @click="selectedRegion = region.id"
             >
-              <div class="node-icon">{{ region.isPrimary ? '📡' : '📶' }}</div>
-              <div class="node-label">{{ region.name }}</div>
-              <div class="node-delay">{{ region.delay }}ms</div>
+              <div class="node-icon">
+                {{ region.isPrimary ? '📡' : '📶' }}
+              </div>
+              <div class="node-label">
+                {{ region.name }}
+              </div>
+              <div class="node-delay">
+                {{ region.delay }}ms
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 连接线路 -->
-        <svg class="connection-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg
+          class="connection-lines"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
           <defs>
-            <marker id="arrowhead" markerWidth="3" markerHeight="3" refX="2" refY="1.5" orient="auto">
-              <polygon points="0 0, 3 1.5, 0 3" fill="var(--vp-c-brand)" />
+            <marker
+              id="arrowhead"
+              markerWidth="3"
+              markerHeight="3"
+              refX="2"
+              refY="1.5"
+              orient="auto"
+            >
+              <polygon
+                points="0 0, 3 1.5, 0 3"
+                fill="var(--vp-c-brand)"
+              />
             </marker>
           </defs>
           <line
@@ -109,42 +145,75 @@
     </div>
 
     <!-- 区域详情 -->
-    <div class="region-details" v-if="selectedRegionData">
+    <div
+      v-if="selectedRegionData"
+      class="region-details"
+    >
       <div class="details-header">
         <div class="region-title">
           <span class="region-icon">{{ selectedRegionData.isPrimary ? '📡' : '📶' }}</span>
           <span class="region-name">{{ selectedRegionData.name }}</span>
-          <span class="region-badge" :class="{ primary: selectedRegionData.isPrimary, standby: !selectedRegionData.isPrimary }">
+          <span
+            class="region-badge"
+            :class="{ primary: selectedRegionData.isPrimary, standby: !selectedRegionData.isPrimary }"
+          >
             {{ selectedRegionData.isPrimary ? '主节点' : '备节点' }}
           </span>
         </div>
-        <button class="close-btn" @click="selectedRegion = null">×</button>
+        <button
+          class="close-btn"
+          @click="selectedRegion = null"
+        >
+          ×
+        </button>
       </div>
 
       <div class="details-grid">
         <div class="detail-item">
-          <div class="detail-label">延迟</div>
-          <div class="detail-value">{{ selectedRegionData.delay }}ms</div>
+          <div class="detail-label">
+            延迟
+          </div>
+          <div class="detail-value">
+            {{ selectedRegionData.delay }}ms
+          </div>
         </div>
         <div class="detail-item">
-          <div class="detail-label">在线实例</div>
-          <div class="detail-value">{{ selectedRegionData.instances }}个</div>
+          <div class="detail-label">
+            在线实例
+          </div>
+          <div class="detail-value">
+            {{ selectedRegionData.instances }}个
+          </div>
         </div>
         <div class="detail-item">
-          <div class="detail-label">当前QPS</div>
-          <div class="detail-value">{{ selectedRegionData.qps }}/s</div>
+          <div class="detail-label">
+            当前QPS
+          </div>
+          <div class="detail-value">
+            {{ selectedRegionData.qps }}/s
+          </div>
         </div>
         <div class="detail-item">
-          <div class="detail-label">数据同步延迟</div>
-          <div class="detail-value">{{ selectedRegionData.syncDelay }}ms</div>
+          <div class="detail-label">
+            数据同步延迟
+          </div>
+          <div class="detail-value">
+            {{ selectedRegionData.syncDelay }}ms
+          </div>
         </div>
       </div>
 
       <div class="details-actions">
-        <button class="action-btn primary" v-if="!selectedRegionData.isPrimary">
+        <button
+          v-if="!selectedRegionData.isPrimary"
+          class="action-btn primary"
+        >
           提升为主节点
         </button>
-        <button class="action-btn danger" v-if="selectedRegionData.isPrimary">
+        <button
+          v-if="selectedRegionData.isPrimary"
+          class="action-btn danger"
+        >
           切换流量
         </button>
         <button class="action-btn">
@@ -155,27 +224,53 @@
 
     <!-- 架构优势 -->
     <div class="architecture-benefits">
-      <div class="benefits-title">多区域部署优势</div>
+      <div class="benefits-title">
+        多区域部署优势
+      </div>
       <div class="benefits-grid">
         <div class="benefit-card">
-          <div class="benefit-icon">⚡</div>
-          <div class="benefit-title">就近服务</div>
-          <div class="benefit-desc">用户请求自动路由到最近的区域，降低网络延迟，提升访问速度</div>
+          <div class="benefit-icon">
+            ⚡
+          </div>
+          <div class="benefit-title">
+            就近服务
+          </div>
+          <div class="benefit-desc">
+            用户请求自动路由到最近的区域，降低网络延迟，提升访问速度
+          </div>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">🛡️</div>
-          <div class="benefit-title">容灾备份</div>
-          <div class="benefit-desc">单区域故障时自动切换流量，确保服务高可用，数据多副本保存</div>
+          <div class="benefit-icon">
+            🛡️
+          </div>
+          <div class="benefit-title">
+            容灾备份
+          </div>
+          <div class="benefit-desc">
+            单区域故障时自动切换流量，确保服务高可用，数据多副本保存
+          </div>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">🌍</div>
-          <div class="benefit-title">全球覆盖</div>
-          <div class="benefit-desc">支持跨区域部署，满足不同地区的合规要求和数据主权法规</div>
+          <div class="benefit-icon">
+            🌍
+          </div>
+          <div class="benefit-title">
+            全球覆盖
+          </div>
+          <div class="benefit-desc">
+            支持跨区域部署，满足不同地区的合规要求和数据主权法规
+          </div>
         </div>
         <div class="benefit-card">
-          <div class="benefit-icon">📈</div>
-          <div class="benefit-title">负载均衡</div>
-          <div class="benefit-desc">跨区域流量调度，避免单点过载，实现全局资源优化配置</div>
+          <div class="benefit-icon">
+            📈
+          </div>
+          <div class="benefit-title">
+            负载均衡
+          </div>
+          <div class="benefit-desc">
+            跨区域流量调度，避免单点过载，实现全局资源优化配置
+          </div>
         </div>
       </div>
     </div>

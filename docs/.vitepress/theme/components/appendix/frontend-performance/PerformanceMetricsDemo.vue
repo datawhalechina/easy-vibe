@@ -20,66 +20,130 @@
         min="0.5"
         max="5"
         step="0.1"
-      />
+      >
     </div>
 
     <div class="metrics-grid">
-      <div class="metric-card" :class="fcpStatus.class">
+      <div
+        class="metric-card"
+        :class="fcpStatus.class"
+      >
         <div class="metric-header">
-          <div class="metric-name">FCP</div>
-          <div class="metric-full">First Contentful Paint</div>
+          <div class="metric-name">
+            FCP
+          </div>
+          <div class="metric-full">
+            First Contentful Paint
+          </div>
         </div>
-        <div class="metric-value">{{ fcp }} s</div>
-        <div class="metric-desc">首次内容绘制</div>
-        <div class="metric-status">{{ fcpStatus.text }}</div>
-        <div class="indicator" :class="fcpStatus.class"></div>
+        <div class="metric-value">
+          {{ fcp }} s
+        </div>
+        <div class="metric-desc">
+          首次内容绘制
+        </div>
+        <div class="metric-status">
+          {{ fcpStatus.text }}
+        </div>
+        <div
+          class="indicator"
+          :class="fcpStatus.class"
+        />
       </div>
 
-      <div class="metric-card" :class="lcpStatus.class">
+      <div
+        class="metric-card"
+        :class="lcpStatus.class"
+      >
         <div class="metric-header">
-          <div class="metric-name">LCP</div>
-          <div class="metric-full">Largest Contentful Paint</div>
+          <div class="metric-name">
+            LCP
+          </div>
+          <div class="metric-full">
+            Largest Contentful Paint
+          </div>
         </div>
-        <div class="metric-value">{{ lcp }} s</div>
-        <div class="metric-desc">最大内容绘制</div>
-        <div class="metric-status">{{ lcpStatus.text }}</div>
-        <div class="indicator" :class="lcpStatus.class"></div>
+        <div class="metric-value">
+          {{ lcp }} s
+        </div>
+        <div class="metric-desc">
+          最大内容绘制
+        </div>
+        <div class="metric-status">
+          {{ lcpStatus.text }}
+        </div>
+        <div
+          class="indicator"
+          :class="lcpStatus.class"
+        />
       </div>
 
-      <div class="metric-card" :class="fidStatus.class">
+      <div
+        class="metric-card"
+        :class="fidStatus.class"
+      >
         <div class="metric-header">
-          <div class="metric-name">FID</div>
-          <div class="metric-full">First Input Delay</div>
+          <div class="metric-name">
+            FID
+          </div>
+          <div class="metric-full">
+            First Input Delay
+          </div>
         </div>
-        <div class="metric-value">{{ fid }} ms</div>
-        <div class="metric-desc">首次输入延迟</div>
-        <div class="metric-status">{{ fidStatus.text }}</div>
-        <div class="indicator" :class="fidStatus.class"></div>
+        <div class="metric-value">
+          {{ fid }} ms
+        </div>
+        <div class="metric-desc">
+          首次输入延迟
+        </div>
+        <div class="metric-status">
+          {{ fidStatus.text }}
+        </div>
+        <div
+          class="indicator"
+          :class="fidStatus.class"
+        />
       </div>
 
-      <div class="metric-card" :class="clsStatus.class">
+      <div
+        class="metric-card"
+        :class="clsStatus.class"
+      >
         <div class="metric-header">
-          <div class="metric-name">CLS</div>
-          <div class="metric-full">Cumulative Layout Shift</div>
+          <div class="metric-name">
+            CLS
+          </div>
+          <div class="metric-full">
+            Cumulative Layout Shift
+          </div>
         </div>
-        <div class="metric-value">{{ cls }}</div>
-        <div class="metric-desc">累积布局偏移</div>
-        <div class="metric-status">{{ clsStatus.text }}</div>
-        <div class="indicator" :class="clsStatus.class"></div>
+        <div class="metric-value">
+          {{ cls }}
+        </div>
+        <div class="metric-desc">
+          累积布局偏移
+        </div>
+        <div class="metric-status">
+          {{ clsStatus.text }}
+        </div>
+        <div
+          class="indicator"
+          :class="clsStatus.class"
+        />
       </div>
     </div>
 
     <div class="standards">
       <div class="standard-item">
-        <span class="color-box good"></span>
+        <span class="color-box good" />
         <span>良好</span>
       </div>
       <div class="standard-item">
-        <span class="color-box needs-improvement"></span>
+        <span class="color-box needs-improvement" />
         <span>需改进</span>
       </div>
       <div class="standard-item">
-        <span class="color-box poor"></span>
+        <span class="color-box poor" />
         <span>差</span>
       </div>
     </div>

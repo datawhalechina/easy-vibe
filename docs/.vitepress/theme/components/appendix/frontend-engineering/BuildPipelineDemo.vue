@@ -18,30 +18,53 @@
         :class="{ active: activeStage === stage.id }"
         @click="activeStage = activeStage === stage.id ? null : stage.id"
       >
-        <div class="stage-icon">{{ stage.icon }}</div>
-        <div class="stage-name">{{ stage.name }}</div>
-        <div class="stage-simple">{{ stage.simple }}</div>
-        <div v-if="i < stages.length - 1" class="arrow">→</div>
+        <div class="stage-icon">
+          {{ stage.icon }}
+        </div>
+        <div class="stage-name">
+          {{ stage.name }}
+        </div>
+        <div class="stage-simple">
+          {{ stage.simple }}
+        </div>
+        <div
+          v-if="i < stages.length - 1"
+          class="arrow"
+        >
+          →
+        </div>
       </div>
     </div>
 
     <Transition name="fade">
-      <div v-if="activeStage" class="stage-detail">
+      <div
+        v-if="activeStage"
+        class="stage-detail"
+      >
         <div class="detail-header">
           <span class="detail-icon">{{ currentStage?.icon }}</span>
           <span class="detail-title">{{ currentStage?.name }}</span>
         </div>
         <div class="detail-content">
-          <p class="detail-desc">{{ currentStage?.detailDesc }}</p>
+          <p class="detail-desc">
+            {{ currentStage?.detailDesc }}
+          </p>
           <div class="detail-example">
-            <div class="example-label">🌰 举个例子：</div>
-            <div class="example-content">{{ currentStage?.example }}</div>
+            <div class="example-label">
+              🌰 举个例子：
+            </div>
+            <div class="example-content">
+              {{ currentStage?.example }}
+            </div>
           </div>
         </div>
       </div>
     </Transition>
 
-    <div v-if="!activeStage" class="hint-text">
+    <div
+      v-if="!activeStage"
+      class="hint-text"
+    >
       👆 点击上方任意阶段，查看详细解释
     </div>
 

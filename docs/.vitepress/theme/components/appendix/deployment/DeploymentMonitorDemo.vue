@@ -26,7 +26,9 @@
     </div>
 
     <div class="backup">
-      <div class="label">上次备份：</div>
+      <div class="label">
+        上次备份：
+      </div>
       <span class="value">{{ lastBackup }}</span>
     </div>
   </div>

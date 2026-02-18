@@ -5,8 +5,12 @@
 <template>
   <div class="delayed-message-demo">
     <div class="header">
-      <div class="title">延迟消息：让消息"定时送达"</div>
-      <div class="subtitle">实现订单超时取消、定时提醒等功能</div>
+      <div class="title">
+        延迟消息：让消息"定时送达"
+      </div>
+      <div class="subtitle">
+        实现订单超时取消、定时提醒等功能
+      </div>
     </div>
 
     <div class="scenarios">
@@ -23,10 +27,16 @@
 
     <div class="demo-area">
       <div class="sender-section">
-        <div class="section-title">📤 发送延迟消息</div>
+        <div class="section-title">
+          📤 发送延迟消息
+        </div>
         <div class="scenario-info">
-          <div class="scenario-name">{{ currentScenario.name }}</div>
-          <div class="scenario-desc">{{ currentScenario.description }}</div>
+          <div class="scenario-name">
+            {{ currentScenario.name }}
+          </div>
+          <div class="scenario-desc">
+            {{ currentScenario.description }}
+          </div>
         </div>
 
         <div class="delay-setting">
@@ -43,25 +53,34 @@
             </button>
           </div>
           <div class="delay-custom">
-            <input v-model="customDelay" type="number" min="1" max="3600" />
+            <input
+              v-model="customDelay"
+              type="number"
+              min="1"
+              max="3600"
+            >
             <span>秒</span>
           </div>
         </div>
 
         <button
           class="send-btn"
-          @click="sendDelayedMessage"
           :disabled="sending"
+          @click="sendDelayedMessage"
         >
           {{ sending ? '发送中...' : '📨 发送延迟消息' }}
         </button>
       </div>
 
       <div class="timeline-section">
-        <div class="section-title">⏰ 延迟队列时间轴</div>
+        <div class="section-title">
+          ⏰ 延迟队列时间轴
+        </div>
         <div class="timeline">
           <div class="timeline-now">
-            <div class="now-marker">现在</div>
+            <div class="now-marker">
+              现在
+            </div>
           </div>
 
           <div class="delayed-messages">
@@ -72,29 +91,44 @@
               :style="{ left: msg.position + '%' }"
             >
               <div class="msg-bubble">
-                <div class="msg-id">#{{ msg.id }}</div>
-                <div class="msg-time">{{ msg.remaining }}s 后</div>
+                <div class="msg-id">
+                  #{{ msg.id }}
+                </div>
+                <div class="msg-time">
+                  {{ msg.remaining }}s 后
+                </div>
               </div>
               <div
                 class="msg-timer"
                 :style="{ height: msg.timerHeight + '%' }"
-              ></div>
+              />
             </div>
           </div>
 
           <div class="timeline-scale">
-            <div v-for="tick in timelineTicks" :key="tick" class="tick">
-              <div class="tick-line"></div>
-              <div class="tick-label">{{ tick }}s</div>
+            <div
+              v-for="tick in timelineTicks"
+              :key="tick"
+              class="tick"
+            >
+              <div class="tick-line" />
+              <div class="tick-label">
+                {{ tick }}s
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="result-section">
-        <div class="section-title">📥 到期消息</div>
+        <div class="section-title">
+          📥 到期消息
+        </div>
         <div class="result-box">
-          <div v-if="deliveredMessages.length === 0" class="empty">
+          <div
+            v-if="deliveredMessages.length === 0"
+            class="empty"
+          >
             等待消息到期...
           </div>
           <div
@@ -106,40 +140,70 @@
               <span class="msg-id">#{{ msg.id }}</span>
               <span class="msg-time">{{ msg.deliveredAt }}</span>
             </div>
-            <div class="msg-content">{{ msg.content }}</div>
+            <div class="msg-content">
+              {{ msg.content }}
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="use-cases">
-      <div class="cases-title">💡 典型应用场景</div>
+      <div class="cases-title">
+        💡 典型应用场景
+      </div>
       <div class="cases-grid">
         <div class="case-card">
-          <div class="case-icon">🛒</div>
-          <div class="case-name">订单超时取消</div>
-          <div class="case-desc">下单后 30 分钟未支付，自动取消订单</div>
+          <div class="case-icon">
+            🛒
+          </div>
+          <div class="case-name">
+            订单超时取消
+          </div>
+          <div class="case-desc">
+            下单后 30 分钟未支付，自动取消订单
+          </div>
         </div>
         <div class="case-card">
-          <div class="case-icon">🔔</div>
-          <div class="case-name">定时提醒</div>
-          <div class="case-desc">会议开始前 15 分钟，发送提醒通知</div>
+          <div class="case-icon">
+            🔔
+          </div>
+          <div class="case-name">
+            定时提醒
+          </div>
+          <div class="case-desc">
+            会议开始前 15 分钟，发送提醒通知
+          </div>
         </div>
         <div class="case-card">
-          <div class="case-icon">🎁</div>
-          <div class="case-name">会员过期提醒</div>
-          <div class="case-desc">会员到期前 3 天，发送续费提醒</div>
+          <div class="case-icon">
+            🎁
+          </div>
+          <div class="case-name">
+            会员过期提醒
+          </div>
+          <div class="case-desc">
+            会员到期前 3 天，发送续费提醒
+          </div>
         </div>
         <div class="case-card">
-          <div class="case-icon">📊</div>
-          <div class="case-name">数据统计</div>
-          <div class="case-desc">每天凌晨 2 点，统计前一天的日报数据</div>
+          <div class="case-icon">
+            📊
+          </div>
+          <div class="case-name">
+            数据统计
+          </div>
+          <div class="case-desc">
+            每天凌晨 2 点，统计前一天的日报数据
+          </div>
         </div>
       </div>
     </div>
 
     <div class="implementation">
-      <div class="impl-title">🔧 实现方式对比</div>
+      <div class="impl-title">
+        🔧 实现方式对比
+      </div>
       <div class="impl-table">
         <table>
           <thead>

@@ -16,11 +16,11 @@
       </div>
       
       <div class="actions">
-         <button 
-          class="action-btn primary" 
-          @click="nextStep"
+        <button 
+          v-if="currentStep < 3" 
+          class="action-btn primary"
           :disabled="currentStep >= 3"
-          v-if="currentStep < 3"
+          @click="nextStep"
         >
           {{ currentStep === 0 ? '▶ 开始拨号' : '下一步 ➔' }}
         </button>
@@ -42,7 +42,10 @@
           <span class="avatar-label">客户端 (你)</span>
         </div>
         <transition name="pop">
-          <div class="bubble client" v-if="currentStep >= 1">
+          <div
+            v-if="currentStep >= 1"
+            class="bubble client"
+          >
             {{ getBubbleText(1) }}
           </div>
         </transition>
@@ -50,11 +53,20 @@
 
       <!-- 中间：连接状态线 -->
       <div class="connection-line">
-        <div class="line-bg"></div>
-        <div class="signal-packet" :class="getSignalClass()">
-          <span class="packet-icon" v-if="currentStep > 0">{{ getSignalIcon() }}</span>
+        <div class="line-bg" />
+        <div
+          class="signal-packet"
+          :class="getSignalClass()"
+        >
+          <span
+            v-if="currentStep > 0"
+            class="packet-icon"
+          >{{ getSignalIcon() }}</span>
         </div>
-        <div class="status-badge" :class="{ connected: currentStep === 3 }">
+        <div
+          class="status-badge"
+          :class="{ connected: currentStep === 3 }"
+        >
           {{ currentStep === 3 ? '✅ 连接建立' : '⏳ 连接中...' }}
         </div>
       </div>
@@ -66,7 +78,10 @@
           <span class="avatar-label">服务器</span>
         </div>
         <transition name="pop">
-          <div class="bubble server" v-if="currentStep >= 2">
+          <div
+            v-if="currentStep >= 2"
+            class="bubble server"
+          >
             {{ getBubbleText(2) }}
           </div>
         </transition>
@@ -80,83 +95,125 @@
         :key="index"
         class="step-dot"
         :class="{ active: currentStep === index + 1, passed: currentStep > index + 1 }"
-        @click="goToStep(index + 1)"
         :title="step.techTitle"
+        @click="goToStep(index + 1)"
       >
         <span class="dot-num">{{ index + 1 }}</span>
-        <span class="dot-line" v-if="index < steps.length - 1"></span>
+        <span
+          v-if="index < steps.length - 1"
+          class="dot-line"
+        />
       </div>
     </div>
 
     <!-- 底部详情面板 (固定高度) -->
     <div class="detail-panel">
-      <transition name="fade" mode="out-in">
-        <div v-if="currentStep > 0" class="detail-content" :key="currentStep">
-           <div class="detail-left" :style="{ borderColor: getCurrentStepColor() }">
-             <div class="step-badge" :style="{ background: getCurrentStepColor() }">
-               步骤 {{ currentStep }}
-             </div>
-           </div>
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="currentStep > 0"
+          :key="currentStep"
+          class="detail-content"
+        >
+          <div
+            class="detail-left"
+            :style="{ borderColor: getCurrentStepColor() }"
+          >
+            <div
+              class="step-badge"
+              :style="{ background: getCurrentStepColor() }"
+            >
+              步骤 {{ currentStep }}
+            </div>
+          </div>
            
-           <div class="detail-divider"></div>
+          <div class="detail-divider" />
 
-           <div class="detail-right">
-             <div class="info-row">
-               <span class="tag life">生活对话</span>
-               <span class="text highlight">{{ steps[currentStep-1].simpleTitle }}</span>
-             </div>
-             <div class="info-row">
-               <span class="tag tech">技术原理</span>
-               <div class="tech-content">
-                 <div class="tech-desc">{{ steps[currentStep-1].techDesc }}</div>
-                 <!-- 动态名词解码卡片 -->
-                 <div class="term-glossary">
-                   <div v-for="term in steps[currentStep-1].terms" :key="term.key" class="term-item">
-                     <span class="term-key">{{ term.key }}</span>
-                     <span class="term-val">{{ term.val }}</span>
-                   </div>
-                 </div>
+          <div class="detail-right">
+            <div class="info-row">
+              <span class="tag life">生活对话</span>
+              <span class="text highlight">{{ steps[currentStep-1].simpleTitle }}</span>
+            </div>
+            <div class="info-row">
+              <span class="tag tech">技术原理</span>
+              <div class="tech-content">
+                <div class="tech-desc">
+                  {{ steps[currentStep-1].techDesc }}
+                </div>
+                <!-- 动态名词解码卡片 -->
+                <div class="term-glossary">
+                  <div
+                    v-for="term in steps[currentStep-1].terms"
+                    :key="term.key"
+                    class="term-item"
+                  >
+                    <span class="term-key">{{ term.key }}</span>
+                    <span class="term-val">{{ term.val }}</span>
+                  </div>
+                </div>
 
-                 <!-- 代码实现细节 (折叠) -->
-                 <details class="code-details" v-if="steps[currentStep-1].codeImpl">
-                   <summary class="code-summary">
-                     <span class="summary-icon">🛠️</span>
-                     <span class="summary-text">技术深究：底层代码如何实现？</span>
-                   </summary>
-                   <div class="code-block-wrapper">
-                     <div class="code-title">{{ steps[currentStep-1].codeImpl.title }}</div>
-                    <pre class="code-block"><code v-html="steps[currentStep-1].codeImpl.code"></code></pre>
+                <!-- 代码实现细节 (折叠) -->
+                <details
+                  v-if="steps[currentStep-1].codeImpl"
+                  class="code-details"
+                >
+                  <summary class="code-summary">
+                    <span class="summary-icon">🛠️</span>
+                    <span class="summary-text">技术深究：底层代码如何实现？</span>
+                  </summary>
+                  <div class="code-block-wrapper">
+                    <div class="code-title">
+                      {{ steps[currentStep-1].codeImpl.title }}
+                    </div>
+                    <pre class="code-block"><code v-html="steps[currentStep-1].codeImpl.code" /></pre>
                   </div>
                 </details>
 
                 <!-- 技术问答 (折叠) - 仅在有问答时显示 -->
-                <details class="code-details qa-details" v-if="steps[currentStep-1].qa">
+                <details
+                  v-if="steps[currentStep-1].qa"
+                  class="code-details qa-details"
+                >
                   <summary class="code-summary qa-summary">
                     <span class="summary-icon">🎓</span>
                     <span class="summary-text">{{ steps[currentStep-1].qa.title }}</span>
                   </summary>
                   <div class="code-block-wrapper qa-content">
-                    <div v-for="(item, idx) in steps[currentStep-1].qa.content" :key="idx" class="qa-item">
-                      <div class="qa-q">Q: {{ item.q }}</div>
-                      <div class="qa-a" v-html="item.a"></div>
+                    <div
+                      v-for="(item, idx) in steps[currentStep-1].qa.content"
+                      :key="idx"
+                      class="qa-item"
+                    >
+                      <div class="qa-q">
+                        Q: {{ item.q }}
+                      </div>
+                      <div
+                        class="qa-a"
+                        v-html="item.a"
+                      />
                     </div>
                   </div>
                 </details>
-               </div>
-             </div>
-           </div>
+              </div>
+            </div>
+          </div>
 
-           <!-- 下一步按钮 -->
-           <button 
-             class="next-btn" 
-             v-if="currentStep < 3"
-             @click="nextStep"
-           >
-             下一步 ➔
-           </button>
+          <!-- 下一步按钮 -->
+          <button 
+            v-if="currentStep < 3" 
+            class="next-btn"
+            @click="nextStep"
+          >
+            下一步 ➔
+          </button>
         </div>
         
-        <div v-else class="detail-placeholder">
+        <div
+          v-else
+          class="detail-placeholder"
+        >
           <span class="guide-bounce">📞</span>
           <span>点击"开始拨号"或步骤圆点，开始拨打电话</span>
         </div>

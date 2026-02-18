@@ -5,67 +5,119 @@
 <template>
   <div class="nginx-architecture-demo">
     <div class="header">
-      <div class="title">⚡ Nginx 架构揭秘：为什么它能扛住百万并发？</div>
-      <div class="subtitle">Master-Worker 进程模型 + 事件驱动 = 高性能的秘诀</div>
+      <div class="title">
+        ⚡ Nginx 架构揭秘：为什么它能扛住百万并发？
+      </div>
+      <div class="subtitle">
+        Master-Worker 进程模型 + 事件驱动 = 高性能的秘诀
+      </div>
     </div>
 
     <div class="architecture-diagram">
-      <div class="diagram-title">Nginx 进程架构图</div>
+      <div class="diagram-title">
+        Nginx 进程架构图
+      </div>
 
       <div class="process-layer master-layer">
         <div class="process master">
-          <div class="process-icon">👑</div>
+          <div class="process-icon">
+            👑
+          </div>
           <div class="process-info">
-            <div class="process-name">Master 进程</div>
-            <div class="process-desc">管理所有 Worker，负责配置加载、平滑升级</div>
+            <div class="process-name">
+              Master 进程
+            </div>
+            <div class="process-desc">
+              管理所有 Worker，负责配置加载、平滑升级
+            </div>
           </div>
         </div>
       </div>
 
       <div class="connections">
-        <div class="connection-line" v-for="n in workerCount" :key="n"></div>
+        <div
+          v-for="n in workerCount"
+          :key="n"
+          class="connection-line"
+        />
       </div>
 
       <div class="process-layer worker-layer">
         <div class="worker-controls">
-          <button class="control-btn" @click="decreaseWorker" :disabled="workerCount <= 1">-</button>
+          <button
+            class="control-btn"
+            :disabled="workerCount <= 1"
+            @click="decreaseWorker"
+          >
+            -
+          </button>
           <span class="worker-count">{{ workerCount }} 个 Worker</span>
-          <button class="control-btn" @click="increaseWorker" :disabled="workerCount >= 8">+</button>
+          <button
+            class="control-btn"
+            :disabled="workerCount >= 8"
+            @click="increaseWorker"
+          >
+            +
+          </button>
         </div>
 
         <div class="workers">
           <div
-            class="process worker"
             v-for="n in workerCount"
             :key="n"
+            class="process worker"
             :class="{ active: activeWorker === n, processing: processingWorkers.includes(n) }"
             @click="activateWorker(n)"
           >
-            <div class="process-icon">⚙️</div>
-            <div class="process-info">
-              <div class="process-name">Worker {{ n }}</div>
-              <div class="process-desc">处理 {{ requestCounts[n] || 0 }} 请求</div>
+            <div class="process-icon">
+              ⚙️
             </div>
-            <div class="status-indicator"></div>
+            <div class="process-info">
+              <div class="process-name">
+                Worker {{ n }}
+              </div>
+              <div class="process-desc">
+                处理 {{ requestCounts[n] || 0 }} 请求
+              </div>
+            </div>
+            <div class="status-indicator" />
           </div>
         </div>
       </div>
 
       <div class="epoll-layer">
         <div class="epoll-box">
-          <div class="epoll-title">📡 epoll (Linux) / kqueue (macOS)</div>
-          <div class="epoll-desc">事件驱动：一个 Worker 同时处理数万个连接</div>
+          <div class="epoll-title">
+            📡 epoll (Linux) / kqueue (macOS)
+          </div>
+          <div class="epoll-desc">
+            事件驱动：一个 Worker 同时处理数万个连接
+          </div>
           <div class="epoll-comparison">
             <div class="compare-item old">
-              <div class="compare-title">传统 Apache</div>
-              <div class="compare-detail">一个连接 = 一个进程/线程</div>
-              <div class="compare-result">❌ C10K 问题</div>
+              <div class="compare-title">
+                传统 Apache
+              </div>
+              <div class="compare-detail">
+                一个连接 = 一个进程/线程
+              </div>
+              <div class="compare-result">
+                ❌ C10K 问题
+              </div>
             </div>
-            <div class="vs">VS</div>
+            <div class="vs">
+              VS
+            </div>
             <div class="compare-item new">
-              <div class="compare-title">Nginx</div>
-              <div class="compare-detail">事件驱动 + 异步非阻塞</div>
-              <div class="compare-result">✅ 百万并发</div>
+              <div class="compare-title">
+                Nginx
+              </div>
+              <div class="compare-detail">
+                事件驱动 + 异步非阻塞
+              </div>
+              <div class="compare-result">
+                ✅ 百万并发
+              </div>
             </div>
           </div>
         </div>
@@ -73,31 +125,59 @@
     </div>
 
     <div class="simulation-panel">
-      <div class="panel-title">🎮 模拟请求处理</div>
+      <div class="panel-title">
+        🎮 模拟请求处理
+      </div>
       <div class="sim-controls">
-        <button class="sim-btn" @click="simulateRequests" :disabled="isSimulating">
+        <button
+          class="sim-btn"
+          :disabled="isSimulating"
+          @click="simulateRequests"
+        >
           {{ isSimulating ? '处理中...' : '发送 20 个并发请求' }}
         </button>
-        <button class="sim-btn secondary" @click="resetSimulation">重置</button>
+        <button
+          class="sim-btn secondary"
+          @click="resetSimulation"
+        >
+          重置
+        </button>
       </div>
-      <div class="sim-stats" v-if="totalRequests > 0">
+      <div
+        v-if="totalRequests > 0"
+        class="sim-stats"
+      >
         <div class="stat-item">
-          <div class="stat-value">{{ totalRequests }}</div>
-          <div class="stat-label">总请求数</div>
+          <div class="stat-value">
+            {{ totalRequests }}
+          </div>
+          <div class="stat-label">
+            总请求数
+          </div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">{{ mostActiveWorker }}</div>
-          <div class="stat-label">最忙 Worker</div>
+          <div class="stat-value">
+            {{ mostActiveWorker }}
+          </div>
+          <div class="stat-label">
+            最忙 Worker
+          </div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">{{ avgRequests.toFixed(1) }}</div>
-          <div class="stat-label">平均/Worker</div>
+          <div class="stat-value">
+            {{ avgRequests.toFixed(1) }}
+          </div>
+          <div class="stat-label">
+            平均/Worker
+          </div>
         </div>
       </div>
     </div>
 
     <div class="config-tip">
-      <div class="tip-title">💡 生产环境建议</div>
+      <div class="tip-title">
+        💡 生产环境建议
+      </div>
       <div class="tip-content">
         <strong>Worker 数量 = CPU 核心数</strong>（通常设置为 auto，让 Nginx 自动检测）
         <br>

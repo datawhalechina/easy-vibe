@@ -1,7 +1,9 @@
 <template>
   <div class="restful-design-demo">
     <div class="header">
-      <div class="title">RESTful API 设计核心原则</div>
+      <div class="title">
+        RESTful API 设计核心原则
+      </div>
       <div class="subtitle">
         REST（Representational State Transfer）是一种架构风格，让接口设计像自然资源一样直观
       </div>
@@ -15,9 +17,15 @@
         :class="{ active: selectedPrinciple === principle.id }"
         @click="selectedPrinciple = principle.id"
       >
-        <div class="principle-icon">{{ principle.icon }}</div>
-        <div class="principle-name">{{ principle.name }}</div>
-        <div class="principle-brief">{{ principle.brief }}</div>
+        <div class="principle-icon">
+          {{ principle.icon }}
+        </div>
+        <div class="principle-name">
+          {{ principle.name }}
+        </div>
+        <div class="principle-brief">
+          {{ principle.brief }}
+        </div>
       </div>
     </div>
 
@@ -37,11 +45,15 @@
           <h4>对比示例</h4>
           <div class="code-comparison">
             <div class="code-block bad">
-              <div class="code-label">传统方式（不推荐）</div>
+              <div class="code-label">
+                传统方式（不推荐）
+              </div>
               <pre><code>{{ activePrinciple.badExample }}</code></pre>
             </div>
             <div class="code-block good">
-              <div class="code-label">RESTful 方式（推荐）</div>
+              <div class="code-label">
+                RESTful 方式（推荐）
+              </div>
               <pre><code>{{ activePrinciple.goodExample }}</code></pre>
             </div>
           </div>
@@ -50,7 +62,12 @@
         <div class="tips">
           <h4>设计要点</h4>
           <ul>
-            <li v-for="(tip, index) in activePrinciple.tips" :key="index">{{ tip }}</li>
+            <li
+              v-for="(tip, index) in activePrinciple.tips"
+              :key="index"
+            >
+              {{ tip }}
+            </li>
           </ul>
         </div>
       </div>

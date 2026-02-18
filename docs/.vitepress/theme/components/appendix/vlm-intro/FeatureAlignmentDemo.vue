@@ -6,7 +6,7 @@
       </div>
       <div class="desc">
         目标：让 Projector 学会“翻译”图像语言。
-        <br />做法：冻结 ViT 和 LLM，只训练 Projector。
+        <br>做法：冻结 ViT 和 LLM，只训练 Projector。
       </div>
     </div>
 
@@ -14,77 +14,131 @@
       <!-- Data Input -->
       <div class="data-column">
         <div class="data-item image-data">
-          <div class="data-icon">🖼️</div>
-          <div class="data-label">图片<br />(猫)</div>
+          <div class="data-icon">
+            🖼️
+          </div>
+          <div class="data-label">
+            图片<br>(猫)
+          </div>
         </div>
         <div class="data-item text-data">
-          <div class="data-icon">📝</div>
-          <div class="data-label">标题<br />("一只猫")</div>
+          <div class="data-icon">
+            📝
+          </div>
+          <div class="data-label">
+            标题<br>("一只猫")
+          </div>
         </div>
       </div>
 
       <!-- Arrow Column -->
       <div class="arrow-column">
-        <div class="arrow">➜</div>
-        <div class="arrow">➜</div>
+        <div class="arrow">
+          ➜
+        </div>
+        <div class="arrow">
+          ➜
+        </div>
       </div>
 
       <!-- Model Column -->
       <div class="model-column">
         <!-- Vision Branch -->
         <div class="model-block frozen">
-          <div class="status-badge">❄️ 冻结</div>
-          <div class="block-icon">👁️</div>
-          <div class="block-name">ViT</div>
+          <div class="status-badge">
+            ❄️ 冻结
+          </div>
+          <div class="block-icon">
+            👁️
+          </div>
+          <div class="block-name">
+            ViT
+          </div>
         </div>
 
-        <div class="arrow-small">➜</div>
+        <div class="arrow-small">
+          ➜
+        </div>
 
         <div class="model-block training">
-          <div class="status-badge fire">🔥 训练</div>
-          <div class="block-icon">🔌</div>
-          <div class="block-name">Projector</div>
+          <div class="status-badge fire">
+            🔥 训练
+          </div>
+          <div class="block-icon">
+            🔌
+          </div>
+          <div class="block-name">
+            Projector
+          </div>
         </div>
 
         <!-- Text Branch -->
         <div class="model-block frozen text-model">
-          <div class="status-badge">❄️ 冻结</div>
-          <div class="block-icon">🧠</div>
-          <div class="block-name">LLM</div>
+          <div class="status-badge">
+            ❄️ 冻结
+          </div>
+          <div class="block-icon">
+            🧠
+          </div>
+          <div class="block-name">
+            LLM
+          </div>
         </div>
       </div>
 
       <!-- Arrow Column -->
       <div class="arrow-column">
-        <div class="arrow">➜</div>
-        <div class="arrow">➜</div>
+        <div class="arrow">
+          ➜
+        </div>
+        <div class="arrow">
+          ➜
+        </div>
       </div>
 
       <!-- Vector Output -->
       <div class="vector-column">
         <div class="vector-item v-vector">
-          <div class="vector-icon">🟢</div>
-          <div class="vector-label">向量 V</div>
+          <div class="vector-icon">
+            🟢
+          </div>
+          <div class="vector-label">
+            向量 V
+          </div>
         </div>
 
         <div class="loss-connection">
-          <div class="loss-line"></div>
-          <div class="loss-box" :class="{ active: isCalculatingLoss }">
-            <div class="loss-label">Loss</div>
-            <div class="loss-desc">V ≈ T</div>
+          <div class="loss-line" />
+          <div
+            class="loss-box"
+            :class="{ active: isCalculatingLoss }"
+          >
+            <div class="loss-label">
+              Loss
+            </div>
+            <div class="loss-desc">
+              V ≈ T
+            </div>
           </div>
-          <div class="loss-line"></div>
+          <div class="loss-line" />
         </div>
 
         <div class="vector-item t-vector">
-          <div class="vector-icon">🔵</div>
-          <div class="vector-label">向量 T</div>
+          <div class="vector-icon">
+            🔵
+          </div>
+          <div class="vector-label">
+            向量 T
+          </div>
         </div>
       </div>
     </div>
 
     <div class="controls">
-      <button class="play-btn" @click="nextStep">
+      <button
+        class="play-btn"
+        @click="nextStep"
+      >
         {{ buttonText }}
       </button>
       <div class="step-desc">

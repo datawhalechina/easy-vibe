@@ -63,7 +63,10 @@
         </div>
       </div>
 
-      <button class="clear-btn" @click="clearAll">
+      <button
+        class="clear-btn"
+        @click="clearAll"
+      >
         <span class="icon">🗑️</span>
         Clear All / 清除全部
       </button>
@@ -74,14 +77,14 @@
         ref="canvasRef"
         width="600"
         height="400"
+        tabindex="0"
         @click="handleClick"
         @mousemove="handleMouseMove"
         @mousedown="handleMouseDown"
         @mouseup="handleMouseUp"
         @mouseleave="handleMouseLeave"
-        tabindex="0"
         @keydown="handleKeyDown"
-      ></canvas>
+      />
     </div>
 
     <div class="code-display">

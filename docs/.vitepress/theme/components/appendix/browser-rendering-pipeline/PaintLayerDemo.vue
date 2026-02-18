@@ -19,21 +19,39 @@
             <div class="layer-header">
               <span class="layer-icon">{{ layer.icon }}</span>
               <span class="layer-name">{{ layer.name }}</span>
-              <span v-if="layer.isPromoted" class="promoted-badge">GPU层</span>
+              <span
+                v-if="layer.isPromoted"
+                class="promoted-badge"
+              >GPU层</span>
             </div>
             <div class="layer-content">
-              <div v-if="layer.id === 'background'" class="background-box"></div>
-              <div v-if="layer.id === 'card'" class="card-box">
-                <div class="card-title">卡片</div>
+              <div
+                v-if="layer.id === 'background'"
+                class="background-box"
+              />
+              <div
+                v-if="layer.id === 'card'"
+                class="card-box"
+              >
+                <div class="card-title">
+                  卡片
+                </div>
               </div>
-              <div v-if="layer.id === 'button'" class="button-box">按钮</div>
+              <div
+                v-if="layer.id === 'button'"
+                class="button-box"
+              >
+                按钮
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="properties-panel">
-        <div class="panel-title">触发新层的 CSS 属性：</div>
+        <div class="panel-title">
+          触发新层的 CSS 属性：
+        </div>
         <div class="property-list">
           <div
             v-for="prop in promotedProperties"

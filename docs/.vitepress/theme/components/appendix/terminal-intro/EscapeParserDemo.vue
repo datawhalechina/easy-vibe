@@ -1,10 +1,20 @@
 <template>
   <div class="parser-demo">
     <div class="demo-header">
-      <div class="title">转义序列解析原理 (Parser Mechanism)</div>
+      <div class="title">
+        转义序列解析原理 (Parser Mechanism)
+      </div>
       <div class="controls">
-        <button @click="reset" :disabled="isPlaying">Reset</button>
-        <button @click="togglePlay" class="play-btn">
+        <button
+          :disabled="isPlaying"
+          @click="reset"
+        >
+          Reset
+        </button>
+        <button
+          class="play-btn"
+          @click="togglePlay"
+        >
           {{
             isPlaying ? '⏸ Pause' : isFinished ? '↺ Replay' : '▶ Play Animation'
           }}
@@ -14,7 +24,9 @@
 
     <!-- 1. 字节流传送带 -->
     <div class="stream-container">
-      <div class="label">Input Byte Stream / 输入字节流</div>
+      <div class="label">
+        Input Byte Stream / 输入字节流
+      </div>
       <div class="stream-track">
         <div class="stream-window-mask">
           <div
@@ -39,29 +51,49 @@
         </div>
         <!-- 指针 -->
         <div class="pointer">
-          <div class="arrow">⬆</div>
-          <div class="pointer-label">Current Byte</div>
+          <div class="arrow">
+            ⬆
+          </div>
+          <div class="pointer-label">
+            Current Byte
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 2. 解析器状态机 -->
     <div class="parser-state-machine">
-      <div class="state-box" :class="{ active: parserState === 'NORMAL' }">
-        <div class="state-name">NORMAL</div>
-        <div class="state-desc">Print Characters</div>
+      <div
+        class="state-box"
+        :class="{ active: parserState === 'NORMAL' }"
+      >
+        <div class="state-name">
+          NORMAL
+        </div>
+        <div class="state-desc">
+          Print Characters
+        </div>
       </div>
-      <div class="arrow-right">→</div>
+      <div class="arrow-right">
+        →
+      </div>
       <div
         class="state-box warning"
         :class="{ active: parserState === 'ESCAPE' }"
       >
-        <div class="state-name">ESCAPE MODE</div>
-        <div class="state-desc">Buffer Command...</div>
+        <div class="state-name">
+          ESCAPE MODE
+        </div>
+        <div class="state-desc">
+          Buffer Command...
+        </div>
       </div>
 
       <!-- 指令说明框 -->
-      <div class="action-log" v-if="lastAction">
+      <div
+        v-if="lastAction"
+        class="action-log"
+      >
         <span class="action-icon">⚡</span>
         {{ lastAction }}
       </div>
@@ -69,14 +101,15 @@
 
     <!-- 3. 终端屏幕 -->
     <div class="terminal-screen">
-      <div class="label">Terminal Screen / 屏幕显示</div>
+      <div class="label">
+        Terminal Screen / 屏幕显示
+      </div>
       <div class="screen-content">
         <span
           v-for="(char, index) in outputBuffer"
           :key="index"
           :style="char.style"
-          >{{ char.val }}</span
-        ><span class="cursor">_</span>
+        >{{ char.val }}</span><span class="cursor">_</span>
       </div>
     </div>
 

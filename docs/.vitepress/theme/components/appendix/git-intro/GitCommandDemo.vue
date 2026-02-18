@@ -3,11 +3,21 @@
     <div class="panel">
       <div class="terminal">
         <div class="output">
-          <div v-for="(line, i) in output" :key="i" :class="line.type">
-            <span v-if="line.type === 'command'" class="prompt">$</span>
-            <span v-html="line.text"></span>
+          <div
+            v-for="(line, i) in output"
+            :key="i"
+            :class="line.type"
+          >
+            <span
+              v-if="line.type === 'command'"
+              class="prompt"
+            >$</span>
+            <span v-html="line.text" />
           </div>
-          <div v-if="output.length === 0" class="welcome">
+          <div
+            v-if="output.length === 0"
+            class="welcome"
+          >
             输入命令开始学习 Git（建议先点“制造改动”，再跑 git status）
           </div>
         </div>
@@ -15,39 +25,74 @@
           <span class="prompt">$</span>
           <input
             v-model="cmd"
-            @keyup.enter="execute({ fromQuick: false })"
             placeholder="（默认安全模式）请用下方按钮执行命令"
             class="cmd-input"
             :disabled="!freeMode"
-          />
+            @keyup.enter="execute({ fromQuick: false })"
+          >
           <button
-            @click="execute({ fromQuick: false })"
             class="run-btn"
             :disabled="!freeMode"
+            @click="execute({ fromQuick: false })"
           >
             运行
           </button>
-          <button @click="clearOutput" class="run-btn secondary">清空</button>
-          <button @click="toggleFreeMode" class="run-btn secondary">
+          <button
+            class="run-btn secondary"
+            @click="clearOutput"
+          >
+            清空
+          </button>
+          <button
+            class="run-btn secondary"
+            @click="toggleFreeMode"
+          >
             {{ freeMode ? '切回安全模式' : '开启自由模式' }}
           </button>
         </div>
       </div>
 
       <div class="quick-cmds">
-        <button @click="makeChanges" class="cmd-btn">制造改动</button>
-        <button @click="runCmd('git init')" class="cmd-btn">git init</button>
-        <button @click="runCmd('git status')" class="cmd-btn">
+        <button
+          class="cmd-btn"
+          @click="makeChanges"
+        >
+          制造改动
+        </button>
+        <button
+          class="cmd-btn"
+          @click="runCmd('git init')"
+        >
+          git init
+        </button>
+        <button
+          class="cmd-btn"
+          @click="runCmd('git status')"
+        >
           git status
         </button>
-        <button @click="runCmd('git add .')" class="cmd-btn">git add .</button>
-        <button @click="runCmd(`git commit -m 'msg'`)" class="cmd-btn">
+        <button
+          class="cmd-btn"
+          @click="runCmd('git add .')"
+        >
+          git add .
+        </button>
+        <button
+          class="cmd-btn"
+          @click="runCmd(`git commit -m 'msg'`)"
+        >
           git commit
         </button>
-        <button @click="runCmd('git log --oneline')" class="cmd-btn">
+        <button
+          class="cmd-btn"
+          @click="runCmd('git log --oneline')"
+        >
           git log
         </button>
-        <button @click="runCmd('git switch -c feat/demo')" class="cmd-btn">
+        <button
+          class="cmd-btn"
+          @click="runCmd('git switch -c feat/demo')"
+        >
           新分支
         </button>
       </div>

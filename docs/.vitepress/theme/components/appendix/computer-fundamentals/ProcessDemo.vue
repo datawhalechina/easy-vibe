@@ -27,7 +27,10 @@
           </span>
           <span class="col-pid">{{ p.pid }}</span>
           <span class="col-state">
-            <span class="state-badge" :class="p.state === '运行中' ? 'running' : 'waiting'">
+            <span
+              class="state-badge"
+              :class="p.state === '运行中' ? 'running' : 'waiting'"
+            >
               {{ p.state }}
             </span>
           </span>
@@ -35,8 +38,13 @@
         </div>
       </div>
 
-      <div class="process-detail" v-if="selectedProcess">
-        <div class="detail-title">进程详情：{{ selectedProcess.name }}</div>
+      <div
+        v-if="selectedProcess"
+        class="process-detail"
+      >
+        <div class="detail-title">
+          进程详情：{{ selectedProcess.name }}
+        </div>
         <div class="detail-grid">
           <div class="detail-item">
             <span class="label">进程ID (PID)</span>
@@ -56,9 +64,16 @@
           </div>
         </div>
         <div class="memory-layout">
-          <div class="layout-title">进程内存布局</div>
+          <div class="layout-title">
+            进程内存布局
+          </div>
           <div class="layout-visual">
-            <div class="segment" v-for="seg in memorySegments" :key="seg.name" :style="{ height: seg.height }">
+            <div
+              v-for="seg in memorySegments"
+              :key="seg.name"
+              class="segment"
+              :style="{ height: seg.height }"
+            >
               <span class="seg-name">{{ seg.name }}</span>
             </div>
           </div>

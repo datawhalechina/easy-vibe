@@ -57,7 +57,9 @@ const compress = async (mode) => {
   <div class="context-compression-demo">
     <!-- 1. Strategy Selection -->
     <div class="section control-panel">
-      <div class="section-label">1. 选择压缩策略</div>
+      <div class="section-label">
+        1. 选择压缩策略
+      </div>
       <div class="strategy-group">
         <button
           v-for="s in strategies"
@@ -66,8 +68,12 @@ const compress = async (mode) => {
           :class="{ active: currentMode === s.id }"
           @click="compress(s.id)"
         >
-          <div class="btn-label">{{ s.label }}</div>
-          <div class="btn-desc">{{ s.desc }}</div>
+          <div class="btn-label">
+            {{ s.label }}
+          </div>
+          <div class="btn-desc">
+            {{ s.desc }}
+          </div>
         </button>
       </div>
     </div>
@@ -82,49 +88,72 @@ const compress = async (mode) => {
         v-model="originalText" 
         class="text-content original-input"
         placeholder="在此输入长文本..."
-      ></textarea>
+      />
     </div>
 
     <!-- Connector / Process -->
     <div class="flow-connector">
-      <div class="line"></div>
-      <div class="process-icon" :class="{ spinning: isCompressing }">
+      <div class="line" />
+      <div
+        class="process-icon"
+        :class="{ spinning: isCompressing }"
+      >
         {{ isCompressing ? '⚙️' : '⬇️' }}
       </div>
-      <div class="badge-container" v-if="compressedText && !isCompressing">
+      <div
+        v-if="compressedText && !isCompressing"
+        class="badge-container"
+      >
         <span class="ratio-badge">-{{ compressionRatio }}%</span>
       </div>
     </div>
 
     <!-- 3. Output Area -->
-    <div class="section output-area" :class="{ 'has-result': compressedText }">
+    <div
+      class="section output-area"
+      :class="{ 'has-result': compressedText }"
+    >
       <div class="section-header">
         <span class="label">压缩后 (Compressed)</span>
-        <span class="token-count" v-if="compressedText">{{ compressedTokens }} tokens</span>
+        <span
+          v-if="compressedText"
+          class="token-count"
+        >{{ compressedTokens }} tokens</span>
       </div>
       
       <div class="text-content result-box">
-        <div v-if="isCompressing" class="loading-state">
-          <span class="spinner"></span> 正在压缩...
+        <div
+          v-if="isCompressing"
+          class="loading-state"
+        >
+          <span class="spinner" /> 正在压缩...
         </div>
         <pre v-else-if="compressedText">{{ compressedText }}</pre>
-        <div v-else class="placeholder">
+        <div
+          v-else
+          class="placeholder"
+        >
           请点击上方按钮开始压缩
         </div>
       </div>
 
       <!-- Mini Metrics (Inside Output Area) -->
-      <div class="mini-metrics" v-if="compressedText && !isCompressing">
+      <div
+        v-if="compressedText && !isCompressing"
+        class="mini-metrics"
+      >
         <div class="metric-item">
           <span class="metric-label">节省空间</span>
           <span class="metric-val highlight">{{ compressionRatio }}%</span>
         </div>
         <div class="metric-bar">
-          <div class="bar-fill" :style="{ width: (100 - compressionRatio) + '%' }"></div>
+          <div
+            class="bar-fill"
+            :style="{ width: (100 - compressionRatio) + '%' }"
+          />
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

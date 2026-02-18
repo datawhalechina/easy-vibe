@@ -13,13 +13,19 @@
 <template>
   <div class="auth-interactive-login">
     <div class="header">
-      <div class="title">🔐 认证流程演示</div>
-      <div class="subtitle">模拟登录过程，理解认证与授权的区别</div>
+      <div class="title">
+        🔐 认证流程演示
+      </div>
+      <div class="subtitle">
+        模拟登录过程，理解认证与授权的区别
+      </div>
     </div>
 
     <!-- 模式切换 -->
     <div class="mode-selector">
-      <div class="mode-label">选择鉴权方式：</div>
+      <div class="mode-label">
+        选择鉴权方式：
+      </div>
       <div class="mode-buttons">
         <button
           class="mode-btn"
@@ -42,110 +48,140 @@
       <!-- 登录表单 -->
       <div class="login-section">
         <div class="form-container">
-          <div class="form-title">登录表单</div>
+          <div class="form-title">
+            登录表单
+          </div>
           <div class="form-fields">
             <div class="field-group">
               <label>用户名</label>
               <input
-                type="text"
                 v-model="username"
+                type="text"
                 placeholder="输入用户名"
                 :disabled="locked"
-              />
+              >
             </div>
             <div class="field-group">
               <label>密码</label>
               <input
-                type="password"
                 v-model="password"
+                type="password"
                 placeholder="输入密码"
                 :disabled="locked"
                 @keyup.enter="startDemo"
-              />
+              >
             </div>
             <button
               class="login-btn"
-              @click="startDemo"
               :disabled="!username || !password || locked"
+              @click="startDemo"
             >
               开始演示
             </button>
           </div>
 
           <div class="hints">
-            <div class="hint-title">💡 提示</div>
+            <div class="hint-title">
+              💡 提示
+            </div>
             <div class="hint-text">
               试试用户名 <code>admin</code>，密码 <code>123456</code>
             </div>
           </div>
 
-          <div class="stepper" v-if="flowStep > 0">
+          <div
+            v-if="flowStep > 0"
+            class="stepper"
+          >
             <div class="stepper-title">
               当前步骤：{{ flowStep }} / {{ maxStep }}
-              <span class="stepper-hint"
-                >（手动推进，避免“自动下一步”误解）</span
-              >
+              <span class="stepper-hint">（手动推进，避免“自动下一步”误解）</span>
             </div>
             <div class="stepper-actions">
               <button
                 class="step-btn"
-                @click="prevStep"
                 :disabled="flowStep <= 1"
+                @click="prevStep"
               >
                 上一步
               </button>
               <button
                 class="step-btn primary"
-                @click="nextStep"
                 :disabled="flowStep >= maxStep"
+                @click="nextStep"
               >
                 下一步
               </button>
-              <button class="step-btn" @click="resetDemo">重置</button>
+              <button
+                class="step-btn"
+                @click="resetDemo"
+              >
+                重置
+              </button>
             </div>
           </div>
         </div>
 
         <!-- 实时数据流 -->
         <div class="data-flow">
-          <div class="flow-title">📊 数据流可视化</div>
+          <div class="flow-title">
+            📊 数据流可视化
+          </div>
 
           <!-- 请求阶段 -->
-          <div class="flow-stage request-stage" v-if="currentStage >= 1">
+          <div
+            v-if="currentStage >= 1"
+            class="flow-stage request-stage"
+          >
             <div class="stage-header">
               <span class="stage-badge">{{
                 currentStage === 1 ? '📤' : '✅'
               }}</span>
               <span class="stage-name">1. 客户端发送登录请求</span>
             </div>
-            <div class="request-content" v-if="currentStage >= 1">
+            <div
+              v-if="currentStage >= 1"
+              class="request-content"
+            >
               <div class="request-line">
                 <span class="method">POST</span>
                 <span class="path">/api/login</span>
               </div>
               <div class="request-body">
-                <div class="body-title">Body:</div>
+                <div class="body-title">
+                  Body:
+                </div>
                 <pre>
 {
   "username": "{{ username }}",
   "password": "******"
-}</pre
-                >
+}</pre>
               </div>
             </div>
           </div>
 
-          <div class="flow-arrow" v-if="currentStage >= 1">⬇️</div>
+          <div
+            v-if="currentStage >= 1"
+            class="flow-arrow"
+          >
+            ⬇️
+          </div>
 
           <!-- 服务器验证阶段 -->
-          <div class="flow-stage server-stage" v-if="currentStage >= 2">
+          <div
+            v-if="currentStage >= 2"
+            class="flow-stage server-stage"
+          >
             <div class="stage-header">
               <span class="stage-badge">{{
                 currentStage === 2 ? '⚙️' : '✅'
               }}</span>
               <span class="stage-name">2. 服务器验证身份</span>
             </div>
-            <div class="server-content" v-if="currentStage >= 2">
+            <div
+              v-if="currentStage >= 2"
+              class="server-content"
+            >
               <div class="verification-steps">
                 <div
                   class="verify-step"
@@ -172,30 +208,43 @@
                   <span class="step-icon">{{
                     verificationStep >= 3 ? '✅' : '⏳'
                   }}</span>
-                  <span class="step-text"
-                    >生成{{
-                      mode === 'session' ? 'Session' : 'JWT Token'
-                    }}</span
-                  >
+                  <span class="step-text">生成{{
+                    mode === 'session' ? 'Session' : 'JWT Token'
+                  }}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="flow-arrow" v-if="currentStage >= 2">⬇️</div>
+          <div
+            v-if="currentStage >= 2"
+            class="flow-arrow"
+          >
+            ⬇️
+          </div>
 
           <!-- 响应阶段 -->
-          <div class="flow-stage response-stage" v-if="currentStage >= 3">
+          <div
+            v-if="currentStage >= 3"
+            class="flow-stage response-stage"
+          >
             <div class="stage-header">
               <span class="stage-badge">{{
                 currentStage === 3 ? '📥' : '✅'
               }}</span>
               <span class="stage-name">3. 服务器返回认证结果</span>
             </div>
-            <div class="response-content" v-if="authResult">
-              <div class="response-status success">✅ 登录成功</div>
+            <div
+              v-if="authResult"
+              class="response-content"
+            >
+              <div class="response-status success">
+                ✅ 登录成功
+              </div>
               <div class="response-body">
-                <div class="body-title">Response:</div>
+                <div class="body-title">
+                  Response:
+                </div>
                 <pre v-if="mode === 'session'">
 {
   "status": "success",
@@ -203,8 +252,7 @@
     "id": 123,
     "username": "{{ username }}"
   }
-}</pre
-                >
+}</pre>
                 <pre v-else>
 {
   "status": "success",
@@ -213,26 +261,24 @@
     "id": 123,
     "username": "{{ username }}"
   }
-}</pre
-                >
+}</pre>
               </div>
-              <div class="auth-mechanism" v-if="currentStage >= 4">
+              <div
+                v-if="currentStage >= 4"
+                class="auth-mechanism"
+              >
                 <div class="mechanism-title">
                   {{ mode === 'session' ? '🍪 Cookie 设置' : '🎫 Token 存储' }}
                 </div>
                 <div class="mechanism-content">
                   <div v-if="mode === 'session'">
-                    <code
-                      >Set-Cookie: session_id={{ authResult?.sessionId }};
-                      HttpOnly; Secure</code
-                    >
+                    <code>Set-Cookie: session_id={{ authResult?.sessionId }};
+                      HttpOnly; Secure</code>
                   </div>
                   <div v-else>
-                    <code
-                      >localStorage.setItem("token", "{{
-                        authResult?.token
-                      }}")</code
-                    >
+                    <code>localStorage.setItem("token", "{{
+                      authResult?.token
+                    }}")</code>
                   </div>
                 </div>
               </div>
@@ -240,7 +286,10 @@
           </div>
 
           <!-- 后续请求 -->
-          <div class="flow-stage request-stage" v-if="currentStage >= 5">
+          <div
+            v-if="currentStage >= 5"
+            class="flow-stage request-stage"
+          >
             <div class="stage-header">
               <span class="stage-badge">🔄</span>
               <span class="stage-name">4. 后续请求自动携带认证信息</span>
@@ -251,7 +300,9 @@
                 <span class="path">/api/user/profile</span>
               </div>
               <div class="auth-header">
-                <div class="header-title">Header:</div>
+                <div class="header-title">
+                  Header:
+                </div>
                 <div v-if="mode === 'session'">
                   <code>Cookie: session_id={{ authResult?.sessionId }}</code>
                 </div>
@@ -266,7 +317,10 @@
     </div>
 
     <!-- 状态说明 -->
-    <div class="state-description" v-if="currentStage >= 4">
+    <div
+      v-if="currentStage >= 4"
+      class="state-description"
+    >
       <div class="description-title">
         📖 {{ mode === 'session' ? 'Session' : 'JWT' }} 工作原理
       </div>
@@ -287,8 +341,16 @@
     </div>
 
     <!-- 重置按钮 -->
-    <div class="reset-section" v-if="currentStage >= 5">
-      <button class="reset-btn" @click="resetDemo">🔄 重新演示</button>
+    <div
+      v-if="currentStage >= 5"
+      class="reset-section"
+    >
+      <button
+        class="reset-btn"
+        @click="resetDemo"
+      >
+        🔄 重新演示
+      </button>
     </div>
   </div>
 </template>

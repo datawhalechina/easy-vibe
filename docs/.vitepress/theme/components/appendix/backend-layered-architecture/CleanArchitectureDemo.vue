@@ -2,7 +2,9 @@
   <div class="clean-architecture-demo">
     <div class="demo-header">
       <h4>🏗️ 整洁架构（Clean Architecture）与分层架构</h4>
-      <p class="subtitle">分层架构是整洁架构的基础，理解两者的关系有助于构建更灵活的系统</p>
+      <p class="subtitle">
+        分层架构是整洁架构的基础，理解两者的关系有助于构建更灵活的系统
+      </p>
     </div>
 
     <!-- 架构对比 -->
@@ -20,26 +22,51 @@
 
       <div class="comparison-content">
         <!-- 传统分层架构 -->
-        <div v-if="currentTab === 'layered'" class="tab-panel">
+        <div
+          v-if="currentTab === 'layered'"
+          class="tab-panel"
+        >
           <div class="arch-diagram layered">
             <div class="layer-box controller">
-              <div class="layer-title">Controller 层</div>
-              <div class="layer-desc">接收请求、参数校验</div>
+              <div class="layer-title">
+                Controller 层
+              </div>
+              <div class="layer-desc">
+                接收请求、参数校验
+              </div>
             </div>
-            <div class="arrow down">⬇️ 依赖</div>
+            <div class="arrow down">
+              ⬇️ 依赖
+            </div>
             <div class="layer-box service">
-              <div class="layer-title">Service 层</div>
-              <div class="layer-desc">业务逻辑、事务管理</div>
+              <div class="layer-title">
+                Service 层
+              </div>
+              <div class="layer-desc">
+                业务逻辑、事务管理
+              </div>
             </div>
-            <div class="arrow down">⬇️ 依赖</div>
+            <div class="arrow down">
+              ⬇️ 依赖
+            </div>
             <div class="layer-box repository">
-              <div class="layer-title">Repository 层</div>
-              <div class="layer-desc">数据访问、ORM 映射</div>
+              <div class="layer-title">
+                Repository 层
+              </div>
+              <div class="layer-desc">
+                数据访问、ORM 映射
+              </div>
             </div>
-            <div class="arrow down">⬇️ 依赖</div>
+            <div class="arrow down">
+              ⬇️ 依赖
+            </div>
             <div class="layer-box domain">
-              <div class="layer-title">Domain 层</div>
-              <div class="layer-desc">实体定义、业务规则</div>
+              <div class="layer-title">
+                Domain 层
+              </div>
+              <div class="layer-desc">
+                实体定义、业务规则
+              </div>
             </div>
           </div>
 
@@ -55,30 +82,49 @@
         </div>
 
         <!-- 整洁架构 -->
-        <div v-else-if="currentTab === 'clean'" class="tab-panel">
+        <div
+          v-else-if="currentTab === 'clean'"
+          class="tab-panel"
+        >
           <div class="arch-diagram clean">
             <div class="clean-layers">
               <div class="clean-layer framework">
-                <div class="layer-name">框架与驱动层</div>
-                <div class="layer-items">Web / DB / UI / 外部接口</div>
+                <div class="layer-name">
+                  框架与驱动层
+                </div>
+                <div class="layer-items">
+                  Web / DB / UI / 外部接口
+                </div>
               </div>
               <div class="clean-layer interface">
-                <div class="layer-name">接口适配层</div>
-                <div class="layer-items">Controller / Gateway / Presenter</div>
+                <div class="layer-name">
+                  接口适配层
+                </div>
+                <div class="layer-items">
+                  Controller / Gateway / Presenter
+                </div>
               </div>
               <div class="clean-layer application">
-                <div class="layer-name">应用层</div>
-                <div class="layer-items">Service / UseCase / DTO</div>
+                <div class="layer-name">
+                  应用层
+                </div>
+                <div class="layer-items">
+                  Service / UseCase / DTO
+                </div>
               </div>
               <div class="clean-layer domain">
-                <div class="layer-name">领域层（核心）</div>
-                <div class="layer-items">Entity / ValueObject / DomainService</div>
+                <div class="layer-name">
+                  领域层（核心）
+                </div>
+                <div class="layer-items">
+                  Entity / ValueObject / DomainService
+                </div>
               </div>
             </div>
 
             <div class="dependency-rule">
               <div class="rule-arrow">
-                <span class="arrow-line"></span>
+                <span class="arrow-line" />
                 <span class="arrow-head">◀ 依赖方向</span>
               </div>
               <div class="rule-text">
@@ -99,7 +145,10 @@
         </div>
 
         <!-- 对比总结 -->
-        <div v-else class="tab-panel">
+        <div
+          v-else
+          class="tab-panel"
+        >
           <div class="comparison-table">
             <table>
               <thead>
@@ -148,7 +197,9 @@
             <h5>💡 选型建议</h5>
             <div class="rec-grid">
               <div class="rec-card">
-                <div class="rec-title">选择传统分层架构当...</div>
+                <div class="rec-title">
+                  选择传统分层架构当...
+                </div>
                 <ul>
                   <li>项目规模较小，业务相对简单</li>
                   <li>团队对 DDD 不熟悉</li>
@@ -157,14 +208,18 @@
                 </ul>
               </div>
               <div class="rec-card recommended">
-                <div class="rec-title">选择整洁架构当...</div>
+                <div class="rec-title">
+                  选择整洁架构当...
+                </div>
                 <ul>
                   <li>业务复杂，领域模型丰富</li>
                   <li>需要长期维护和演进</li>
                   <li>需要频繁切换技术栈</li>
                   <li>团队有较强的设计能力</li>
                 </ul>
-                <div class="rec-badge">推荐</div>
+                <div class="rec-badge">
+                  推荐
+                </div>
               </div>
             </div>
           </div>

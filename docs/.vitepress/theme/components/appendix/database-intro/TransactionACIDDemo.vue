@@ -18,15 +18,26 @@
         :class="{ active: activeItem === item.key }"
         @click="activeItem = activeItem === item.key ? null : item.key"
       >
-        <div class="card-icon">{{ item.icon }}</div>
-        <div class="card-letter">{{ item.letter }}</div>
-        <div class="card-name">{{ item.name }}</div>
-        <div class="card-meaning">{{ item.meaning }}</div>
+        <div class="card-icon">
+          {{ item.icon }}
+        </div>
+        <div class="card-letter">
+          {{ item.letter }}
+        </div>
+        <div class="card-name">
+          {{ item.name }}
+        </div>
+        <div class="card-meaning">
+          {{ item.meaning }}
+        </div>
       </div>
     </div>
 
     <Transition name="fade">
-      <div v-if="activeItem" class="detail-panel">
+      <div
+        v-if="activeItem"
+        class="detail-panel"
+      >
         <div class="detail-header">
           <span class="detail-icon">{{ currentItem?.icon }}</span>
           <span class="detail-title">{{ currentItem?.name }} ({{ currentItem?.letter }})</span>
@@ -36,19 +47,28 @@
             <strong>含义：</strong>{{ currentItem?.explanation }}
           </div>
           <div class="example">
-            <div class="example-label">🌰 银行转账例子：</div>
-            <div class="example-text">{{ currentItem?.example }}</div>
+            <div class="example-label">
+              🌰 银行转账例子：
+            </div>
+            <div class="example-text">
+              {{ currentItem?.example }}
+            </div>
           </div>
         </div>
       </div>
     </Transition>
 
-    <div v-if="!activeItem" class="hint-text">
+    <div
+      v-if="!activeItem"
+      class="hint-text"
+    >
       👆 点击上方任意特性，查看详细解释
     </div>
 
     <div class="scenario-box">
-      <div class="scenario-title">🎯 12306 抢票场景</div>
+      <div class="scenario-title">
+        🎯 12306 抢票场景
+      </div>
       <div class="scenario-content">
         <p><strong>场景：</strong>用户 A 和 B 同时看到还剩 1 张票，同时点击购买。</p>
         <p><strong>没有事务：</strong>A 扣库存，B 也扣库存，同一张票卖给了两个人！</p>

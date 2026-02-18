@@ -13,9 +13,15 @@
     <div class="task-selector">
       <label>选择任务：</label>
       <select v-model="selectedTask">
-        <option value="rest">REST API</option>
-        <option value="web">Web 应用</option>
-        <option value="script">数据处理脚本</option>
+        <option value="rest">
+          REST API
+        </option>
+        <option value="web">
+          Web 应用
+        </option>
+        <option value="script">
+          数据处理脚本
+        </option>
       </select>
     </div>
 
@@ -29,7 +35,9 @@
           :key="lang.name"
           class="bar-wrapper"
         >
-          <div class="bar-label">{{ lang.name }}</div>
+          <div class="bar-label">
+            {{ lang.name }}
+          </div>
           <div class="bar-track">
             <div
               class="bar-fill"

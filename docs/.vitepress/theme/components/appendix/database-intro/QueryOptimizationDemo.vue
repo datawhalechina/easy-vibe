@@ -17,24 +17,44 @@
         class="pitfall-card"
         :class="{ expanded: expandedIndex === index }"
       >
-        <div class="pitfall-header" @click="expandedIndex = expandedIndex === index ? null : index">
-          <div class="pitfall-number">{{ index + 1 }}</div>
-          <div class="pitfall-title">{{ pitfall.title }}</div>
-          <div class="expand-icon">{{ expandedIndex === index ? '▼' : '▶' }}</div>
+        <div
+          class="pitfall-header"
+          @click="expandedIndex = expandedIndex === index ? null : index"
+        >
+          <div class="pitfall-number">
+            {{ index + 1 }}
+          </div>
+          <div class="pitfall-title">
+            {{ pitfall.title }}
+          </div>
+          <div class="expand-icon">
+            {{ expandedIndex === index ? '▼' : '▶' }}
+          </div>
         </div>
 
         <Transition name="expand">
-          <div v-if="expandedIndex === index" class="pitfall-content">
+          <div
+            v-if="expandedIndex === index"
+            class="pitfall-content"
+          >
             <div class="code-comparison">
               <div class="code-section wrong">
-                <div class="section-label">❌ 错误写法</div>
+                <div class="section-label">
+                  ❌ 错误写法
+                </div>
                 <pre><code>{{ pitfall.wrong }}</code></pre>
-                <div class="impact">⚠️ {{ pitfall.impact }}</div>
+                <div class="impact">
+                  ⚠️ {{ pitfall.impact }}
+                </div>
               </div>
               <div class="code-section correct">
-                <div class="section-label">✅ 正确写法</div>
+                <div class="section-label">
+                  ✅ 正确写法
+                </div>
                 <pre><code>{{ pitfall.correct }}</code></pre>
-                <div class="benefit">💡 {{ pitfall.benefit }}</div>
+                <div class="benefit">
+                  💡 {{ pitfall.benefit }}
+                </div>
               </div>
             </div>
             <div class="explanation">
@@ -46,9 +66,15 @@
     </div>
 
     <div class="tips-box">
-      <div class="tips-title">📝 优化建议清单</div>
+      <div class="tips-title">
+        📝 优化建议清单
+      </div>
       <div class="tips-list">
-        <div v-for="(tip, i) in tips" :key="i" class="tip-item">
+        <div
+          v-for="(tip, i) in tips"
+          :key="i"
+          class="tip-item"
+        >
           <span class="tip-icon">✓</span>
           <span class="tip-text">{{ tip }}</span>
         </div>
