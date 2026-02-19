@@ -75,6 +75,7 @@
           />
           <circle
             v-for="(c, i) in main"
+            :key="i"
             :cx="60 + i * 50"
             cy="40"
             r="8"
@@ -82,6 +83,7 @@
           />
           <circle
             v-for="(c, i) in feat"
+            :key="i"
             :cx="180 + i * 50"
             cy="80"
             r="8"

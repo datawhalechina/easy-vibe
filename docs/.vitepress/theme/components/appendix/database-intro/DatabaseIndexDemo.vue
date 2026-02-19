@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 const searchQuery = ref(55)
 const isSearching = ref(false)

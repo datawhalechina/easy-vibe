@@ -176,7 +176,6 @@ const startTime = ref(null)
 
 let animationId = null
 let currentThreadIndex = 0
-let timeQuantum = 50 // 时间片长度
 
 const colors = ['#409eff', '#67c23a', '#e6a23c', '#f56c6c', '#909399', '#b3d8ff']
 

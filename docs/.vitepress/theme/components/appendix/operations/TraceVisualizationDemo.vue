@@ -63,7 +63,7 @@
 
       <div class="spans">
         <div
-          v-for="(span, index) in spans"
+          v-for="span in spans"
           :key="span.id"
           class="span-row"
         >

@@ -164,7 +164,6 @@ async function startSimulation() {
   isRunning.value = true
 
   const startTime = Date.now()
-  const taskCount = pendingTasks.value.length
   const baseSwitchCost = model.value === 'process' ? 10 : model.value === 'thread' ? 2 : 1
 
   // 模拟任务处理

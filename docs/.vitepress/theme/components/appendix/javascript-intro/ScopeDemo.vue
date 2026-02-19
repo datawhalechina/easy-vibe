@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const activeScope = ref('global')
 const explanation = ref('')
@@ -65,7 +65,7 @@ updateExplanation()
       <!-- 作用域层级图 -->
       <div class="scope-levels">
         <div
-          v-for="(scope, index) in scopes"
+          v-for="scope in scopes"
           :key="scope.id"
           class="level"
           :class="{ active: activeScope === scope.id, dimmed: activeScope !== scope.id }"

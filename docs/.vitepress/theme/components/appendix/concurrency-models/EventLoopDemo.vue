@@ -219,7 +219,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 const isRunning = ref(false)
 const simulationSpeed = ref(2)
