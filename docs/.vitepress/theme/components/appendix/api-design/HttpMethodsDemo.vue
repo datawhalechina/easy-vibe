@@ -24,7 +24,7 @@
       </div>
 
       <!-- 当前方法详情 -->
-      <div class="method-detail" v-if="currentMethod">
+      <div v-if="currentMethod" class="method-detail">
         <div class="detail-header">
           <span class="http-badge" :class="currentMethod.name">{{ currentMethod.name }}</span>
           <span class="method-desc">{{ currentMethod.description }}</span>
@@ -51,13 +51,13 @@
         <div class="example-section">
           <div class="example-title">📝 使用示例</div>
           <div class="example-content">
-            <div class="example-item" v-for="(example, idx) in currentMethod.examples" :key="idx">
+            <div v-for="(example, idx) in currentMethod.examples" :key="idx" class="example-item">
               <div class="example-scenario">{{ example.scenario }}</div>
               <div class="example-request">
                 <span class="http-method" :class="currentMethod.name">{{ currentMethod.name }}</span>
                 <span class="request-url">{{ example.url }}</span>
               </div>
-              <div class="example-body" v-if="example.body">
+              <div v-if="example.body" class="example-body">
                 <pre><code>{{ JSON.stringify(example.body, null, 2) }}</code></pre>
               </div>
             </div>
