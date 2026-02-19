@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "verify": "bash scripts/verify.sh",
     "lint": "eslint docs/.vitepress/theme",
-    "lint:fix": "eslint docs/.vitepress/theme --fix"
+    "lint:fix": "eslint docs/.vitepress/theme --fix",
+    "prepare": "husky"
   },
   "keywords": [
     "easy-vibe",
@@ -26,9 +27,10 @@
     "@eslint/js": "^9.0.0",
     "eslint": "^9.0.0",
     "eslint-plugin-vue": "^9.30.0",
-    "vue-eslint-parser": "^9.4.3",
+    "husky": "^9.1.7",
     "markdown-it-katex": "^2.0.3",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "vue-eslint-parser": "^9.4.3"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
