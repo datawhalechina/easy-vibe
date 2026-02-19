@@ -67,7 +67,7 @@
           <!-- 数据区域 -->
           <g class="data-areas">
             <polygon
-              v-for="(tool, toolIndex) in bundlers"
+              v-for="tool in bundlers"
               :key="tool.id"
               :points="getDataPoints(tool.scores)"
               :fill="tool.color"

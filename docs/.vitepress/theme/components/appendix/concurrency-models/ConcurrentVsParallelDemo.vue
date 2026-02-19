@@ -91,7 +91,7 @@
 
         <div class="task-timeline">
           <div
-            v-for="(task, idx) in demoTasks"
+            v-for="task in demoTasks"
             :key="task.id"
             class="task-row"
           >
@@ -184,7 +184,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 const demoMode = ref('concurrent')
 const isRunning = ref(false)

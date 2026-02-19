@@ -253,27 +253,6 @@ const resetDemo = () => {
 const uploadProgress = computed(() => {
   return Math.round((stats.value.uploadedChunks / stats.value.totalChunks) * 100)
 })
-
-// 方法
-const selectMethod = (id) => {
-  selectedMethod.value = id
-  resetDemo()
-}
-
-const simulateCacheHit = () => {
-  resetDemo()
-  currentStep.value = 4
-}
-
-const simulateCacheMiss = () => {
-  resetDemo()
-  currentStep.value = 4
-}
-
-const resetDemo = () => {
-  currentStep.value = 0
-  parallelActive.value = 0
-}
 </script>
 
 <style scoped>

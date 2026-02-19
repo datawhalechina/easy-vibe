@@ -69,7 +69,7 @@
             :key="device.name"
             class="device"
             :class="device.type"
-            003e
+          >
             <div
             class="device-icon"
             @mouseenter="hoverDevice = device.name"
@@ -214,11 +214,10 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const viewMode = ref('full')
 const showDetails = ref(false)

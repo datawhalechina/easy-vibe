@@ -145,26 +145,6 @@ const currentInfo = computed(() => {
   }
 })
 
-function createProcess() {
-  if (processes.value.length >= 4) return
-
-  const id = processes.value.length + 1
-  const size = 20 + Math.random() * 10
-
-  processes.value.push({
-    id,
-    pid: pidCounter++,
-    size,
-    color: colors[id - 1],
-    codeSize: Math.floor(size * 0.15),
-    dataSize: Math.floor(size * 0.1),
-    heapSize: Math.floor(size * 0.6),
-    stackSize: Math.floor(size * 0.15),
-    crashed: false,
-    active: true
-  })
-}
-
 function killProcess() {
   if (processes.value.length === 0) return
   processes.value.pop()

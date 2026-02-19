@@ -233,7 +233,7 @@
       </div>
       <div class="timeline-bar">
         <div
-          v-for="(step, index) in timelineSteps"
+          v-for="step in timelineSteps"
           :key="step.name"
           class="timeline-segment"
           :class="{ active: currentStep === step.name }"
