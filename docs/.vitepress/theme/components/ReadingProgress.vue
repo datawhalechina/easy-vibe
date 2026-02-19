@@ -41,7 +41,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const progress = ref(0)
 const showProgress = ref(false)
 const showArrow = ref(false)
-const circumference = 2 * Math.PI * 24 // 2πr，r=24
+// 圆周长 = 2 * PI * r, r=24
+const circumference = 2 * Math.PI * 24
 let scrollTimer: number | null = null
 
 // 拖拽相关状态

@@ -69,12 +69,7 @@
                 <button
                   v-else-if="currentTask.expectedCmd"
                   class="copy-btn"
-                  @click="
-                    copyCommand(
-                      currentTask.expectedCmd[currentOS] ||
-                        currentTask.expectedCmd.common
-                    )
-                  "
+                  @click="copyCurrentTaskCommand"
                 >
                   复制命令
                 </button>
@@ -439,6 +434,11 @@ const toggleAi = () => {
 const copyCommand = (cmd) => {
   inputCmd.value = cmd
   focusInput()
+}
+
+const copyCurrentTaskCommand = () => {
+  const cmd = currentTask.value.expectedCmd[currentOS.value] || currentTask.value.expectedCmd.common
+  copyCommand(cmd)
 }
 
 const focusInput = () => {
