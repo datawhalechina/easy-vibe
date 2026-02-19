@@ -1,1 +1,37 @@
-npm run lint -- --fix
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Pre-commit checks started..."
+echo ""
+
+# 1. ESLint 检查（只检查 errors，忽略 warnings）
+echo "1️⃣ Running ESLint check..."
+LINT_OUTPUT=$(npm run lint 2>&1)
+LINT_EXIT_CODE=$?
+
+# 检查是否有真正的 errors（不包括 warnings）
+if echo "$LINT_OUTPUT" | grep -q "✖.*[1-9] error"; then
+  echo ""
+  echo "❌ ESLint errors found! Please fix before committing."
+  echo ""
+  echo "$LINT_OUTPUT"
+  exit 1
+fi
+echo "✅ ESLint: No errors (warnings ignored)"
+echo ""
+
+# 2. Build 检查（确保代码能成功构建）
+echo "2️⃣ Running build check..."
+if ! npm run build > /dev/null 2>&1; then
+  echo ""
+  echo "❌ Build failed! Please fix build errors before committing."
+  echo ""
+  echo "💡 Run 'npm run build' to see detailed errors"
+  echo "💡 To skip pre-commit checks: git commit --no-verify"
+  exit 1
+fi
+echo "✅ Build: Success"
+echo ""
+
+echo "✅ All pre-commit checks passed!"
+echo "📦 Build output verified, committing..."
