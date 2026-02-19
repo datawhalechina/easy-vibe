@@ -276,46 +276,8 @@ const insightDescription = computed(() => {
 })
 
 // 方法
-function addThread() {
-  // 模拟添加线程
-}
-
-function killThread() {
-  // 模拟结束线程
-}
-
-function simulateCrash() {
-  // 模拟崩溃
-}
-
 function reset() {
   coroutineCount.value = 1000
-}
-
-function startSimulation() {
-  // 开始模拟
-}
-
-function toggleSimulation() {
-  // 切换模拟状态
-}
-
-function pauseSimulation() {
-  // 暂停模拟
-}
-
-function runSimulation() {
-  // 运行模拟
-}
-
-function stateText(state) {
-  const texts = {
-    ready: '就绪',
-    running: '运行中',
-    blocked: '阻塞',
-    completed: '已完成'
-  }
-  return texts[state] || state
 }
 </script>
 

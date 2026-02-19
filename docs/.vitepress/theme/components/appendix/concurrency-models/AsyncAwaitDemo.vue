@@ -83,7 +83,7 @@
             </div>
 
             <div
-              v-for="(task, idx) in tasks"
+              v-for="task in tasks"
               :key="task.id"
               class="thread-row"
             >
@@ -165,7 +165,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 
-const comparisonMode = ref('memory')
 const coroutineCount = ref(1000)
 const isRunning = ref(false)
 const showDetails = ref(false)

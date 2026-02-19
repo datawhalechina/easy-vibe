@@ -135,7 +135,6 @@ const getPatchStyle = (n) => {
   const isPatchified = currentStep.value >= 2
 
   return {
-    backgroundImage: complexBg,
     backgroundPosition: `${posX}px ${posY}px`,
     backgroundSize: '280px 280px',
     // In Step 0, patches are hidden to show pure container background

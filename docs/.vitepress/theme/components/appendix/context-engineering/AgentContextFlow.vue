@@ -27,11 +27,9 @@ const currentCost = computed(() => (totalTokens.value / 1000 * costPer1kTokens).
 const systemHeight = computed(() => (systemPromptTokens / windowLimit) * 100)
 const inputHeight = computed(() => (currentInputTokens / windowLimit) * 100)
 // History 高度展示逻辑：
-// 我们希望展示“总高度”，即使超过 100%。
+// 我们希望展示"总高度"，即使超过 100%。
 // 父容器会限制显示区域，溢出部分通过视觉暗示。
 const historyHeight = computed(() => (historyTokens.value / windowLimit) * 100)
-
-const totalHeight = computed(() => systemHeight.value + historyHeight.value + inputHeight.value)
 </script>
 
 <template>

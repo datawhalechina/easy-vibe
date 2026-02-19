@@ -9,7 +9,7 @@
 -->
 
 <script setup>
-import { ref, computed, nextTick } from 'vue'
+import { ref, computed } from 'vue'
 
 const scenarios = {
   coding: {
@@ -141,16 +141,6 @@ const prevStep = () => {
   if (currentStepIndex.value > 0) {
     currentStepIndex.value--
   }
-}
-
-// Visual helpers
-const getLayerStyle = (layerId) => {
-  const isActive = (layer) => {
-    // Logic to highlight active layer based on step action could go here
-    // For now, simple static colors
-    return true
-  }
-  return {}
 }
 </script>
 

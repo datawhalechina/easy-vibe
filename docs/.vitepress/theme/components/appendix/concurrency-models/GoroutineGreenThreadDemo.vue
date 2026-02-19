@@ -167,7 +167,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 const gmpDescription = 'G (Goroutine): 待执行的任务。M (Machine): 操作系统线程，执行 G 的载体。P (Processor): 逻辑处理器，提供执行上下文。G 先放入 P 的本地队列，P 与 M 绑定后，M 从 P 获取 G 执行。当本地队列空时，会从全局队列或其他 P 偷任务。'
 

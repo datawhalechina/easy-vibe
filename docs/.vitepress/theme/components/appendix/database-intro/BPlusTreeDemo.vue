@@ -190,7 +190,6 @@ const startIndex = () => {
   indexStep.value = 0
   indexSteps.value = ['根节点', '中间节点', '叶子节点']
 
-  const steps = ['根节点 (1-100)', '中间节点 (1-10)', '叶子节点 (找到 7)']
   let currentStep = 0
 
   const interval = setInterval(() => {
