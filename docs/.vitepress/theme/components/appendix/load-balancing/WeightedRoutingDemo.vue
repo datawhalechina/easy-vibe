@@ -179,7 +179,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 
 const currentStrategy = ref('performance')
 const totalTraffic = ref(1000)

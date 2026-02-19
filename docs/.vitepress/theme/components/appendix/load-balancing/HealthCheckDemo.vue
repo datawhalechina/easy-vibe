@@ -59,7 +59,7 @@
           <div class="health-indicator">
             <span v-if="server.status === 'healthy'">✅</span>
             <span v-else-if="server.status === 'unhealthy'">❌</span>
-            <span v-else">🔄</span>
+            <span v-else>🔄</span>
           </div>
         </div>
       </div>

@@ -440,7 +440,7 @@ server {
   }
 ]
 
-const currentNginxConfig = computed(() => nginxConfigs.find(c => c.id === currentConfig.value))
+const currentNginxConfig = computed(() => nginxConfigs.find(c => c.id === currentAuth.value))
 </script>
 
 <style scoped>
