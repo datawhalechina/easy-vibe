@@ -12,12 +12,12 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-0/0.1-learning-map/"
+    href="/zh-cn/stage-0/0.1-learning-map/"
     title="1. 学习地图"
     description="了解整个学习路径，明确每个阶段的目标和收获。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-0/0.2-ai-capabilities-through-games/"
+    href="/zh-cn/stage-0/0.2-ai-capabilities-through-games/"
     title="2. AI 时代，会说话就会编程"
     description="通过贪吃蛇等小游戏，体验 AI 编程的魅力，打破对编程的恐惧。"
   />
@@ -29,27 +29,27 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
+    href="/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
     title="1. 学会 AI 编程工具"
     description="了解当前主流的 AI 编程工具，选择最适合你的开发搭档。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.0-finding-great-idea/"
+    href="/zh-cn/stage-1/1.0-finding-great-idea/"
     title="2. 找到好点子"
     description="学会寻找和验证产品想法，找到值得做的项目。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.2-building-prototype/"
+    href="/zh-cn/stage-1/1.2-building-prototype/"
     title="3. 搭建产品原型"
     description="学习如何快速将产品想法转化为可视化的原型，进行低成本试错。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.3-integrating-ai-capabilities/"
+    href="/zh-cn/stage-1/1.3-integrating-ai-capabilities/"
     title="4. 接入 AI 能力"
     description="通过集成简单的 AI API，让你的原型具备智能交互能力。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/1.4-complete-project-practice/"
+    href="/zh-cn/stage-1/1.4-complete-project-practice/"
     title="5. 完整项目实战"
     description="综合运用所学知识，从 0 到 1 完成一个完整的产品原型开发。"
   />
@@ -66,17 +66,17 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/appendix-a-product-thinking/"
+    href="/zh-cn/stage-1/appendix-a-product-thinking/"
     title="产品思维与方案设计"
     description="补充产品经理必备的思维模型，提升需求分析与产品设计能力。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/appendix-industry-scenarios/"
+    href="/zh-cn/stage-1/appendix-industry-scenarios/"
     title="AI 行业应用场景参考 (B端)"
     description="了解 AI 在不同产业的应用场景，寻找产品灵感与方向。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/appendix-c-consumer-scenarios/"
+    href="/zh-cn/stage-1/appendix-c-consumer-scenarios/"
     title="AI 消费场景灵感参考 (C端)"
     description="探索 AI 在消费级产品中的应用场景，激发创意灵感。"
   />
@@ -93,17 +93,17 @@
 
 <NavGrid>
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/appendix-b-common-errors/"
+    href="/zh-cn/stage-1/appendix-b-common-errors/"
     title="写代码时遇到错误怎么办"
     description="汇总开发过程中常见的报错信息及解决方法，助你快速排查问题。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial"
+    href="/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial"
     title="七款 AI 编程工具对比"
     description="对比测试主流 AI 编程平台，帮你选择最适合的工具。"
   />
   <NavCard
-    href="/easy-vibe/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents"
+    href="/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents"
     title="用设计和编程 Agent 设计网站"
     description="学习如何使用 AI 智能体协同工作，提升开发效率。"
   />
