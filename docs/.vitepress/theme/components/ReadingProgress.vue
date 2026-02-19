@@ -4,10 +4,10 @@
       v-if="showProgress" 
       class="reading-progress"
       :class="{ 'is-dragging': isDragging }"
+      :title="isDragging ? '拖动调整位置' : '阅读进度 ' + progress + '%'"
       @mousedown="startDrag"
       @touchstart="startDrag"
       @click="handleClick"
-      :title="isDragging ? '拖动调整位置' : '阅读进度 ' + progress + '%'"
     >
       <svg class="progress-ring" viewBox="0 0 56 56">
         <circle
