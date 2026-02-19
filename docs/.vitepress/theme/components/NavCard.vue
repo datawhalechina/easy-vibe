@@ -1,4 +1,6 @@
 <script setup>
+import { withBase } from 'vitepress'
+
 defineProps({
   href: {
     type: String,
@@ -21,7 +23,7 @@ defineProps({
 
 <template>
   <a
-    :href="href"
+    :href="withBase(href)"
     class="nav-card-link"
   >
     <div class="nav-card">
