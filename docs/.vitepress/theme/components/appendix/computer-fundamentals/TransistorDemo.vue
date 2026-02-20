@@ -1,7 +1,6 @@
 <template>
   <div class="transistor-demo">
     <div class="demo-header">
-      <span class="icon">⚡</span>
       <span class="title">晶体管：数字世界的开关</span>
       <span class="subtitle">一个开关如何变成计算能力</span>
     </div>
@@ -122,7 +121,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>晶体管就是一个用电控制的开关。给它高电压(1)，它就导通；给低电压(0)，它就断开。这是所有数字计算的基础。
     </div>
   </div>
@@ -154,7 +152,6 @@ const toggleSwitch = () => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -262,5 +259,4 @@ tr.highlight {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

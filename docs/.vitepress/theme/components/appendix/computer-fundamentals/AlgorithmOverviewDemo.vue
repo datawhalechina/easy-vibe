@@ -1,7 +1,6 @@
 <template>
   <div class="algorithm-overview-demo">
     <div class="demo-header">
-      <span class="icon">🧮</span>
       <span class="title">算法思维入门</span>
       <span class="subtitle">解决问题的一套步骤和方法</span>
     </div>
@@ -119,7 +118,6 @@
           <div class="tip-desc">不同场景反复应用同一算法</div>
         </div>
         <div class="tip-card">
-          <div class="tip-icon">⚡</div>
           <div class="tip-title">分析优化</div>
           <div class="tip-desc">思考时间和空间复杂度，寻找优化方案</div>
         </div>
@@ -232,7 +230,6 @@ const currentCategory = computed(() => categories.find(c => c.id === activeCateg
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

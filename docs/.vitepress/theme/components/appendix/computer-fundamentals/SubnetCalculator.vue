@@ -1,7 +1,6 @@
 <template>
   <div class="subnet-calculator">
     <div class="demo-header">
-      <span class="icon">🔢</span>
       <span class="title">子网计算器</span>
       <span class="subtitle">理解 IP 地址和子网掩码</span>
     </div>
@@ -127,7 +126,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>子网掩码决定了 IP 地址的哪部分是"网络号"(小区)，哪部分是"主机号"(房间)。/24 表示前 24 位是网络位，后 8 位是主机位。
     </div>
   </div>
@@ -263,7 +261,6 @@ onMounted(() => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -462,5 +459,4 @@ onMounted(() => {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

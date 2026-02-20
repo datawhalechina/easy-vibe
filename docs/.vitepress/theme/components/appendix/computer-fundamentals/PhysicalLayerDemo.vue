@@ -1,7 +1,6 @@
 <template>
   <div class="physical-layer-demo">
     <div class="demo-header">
-      <span class="icon">⚡</span>
       <span class="title">物理层：电信号的传递</span>
       <span class="subtitle">比特如何通过物理介质传输</span>
     </div>
@@ -199,7 +198,6 @@ const currentMedia = computed(() => mediaData[activeMedia.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

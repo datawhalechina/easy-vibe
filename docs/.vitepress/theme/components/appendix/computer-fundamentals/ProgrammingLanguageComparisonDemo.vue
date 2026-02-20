@@ -1,7 +1,6 @@
 <template>
   <div class="programming-language-comparison-demo">
     <div class="demo-header">
-      <span class="icon">⚖️</span>
       <span class="title">编程语言对比</span>
       <span class="subtitle">不同语言的特点和适用场景</span>
     </div>
@@ -217,7 +216,6 @@ const currentLang = computed(() => languages.find(l => l.name === activeLang.val
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

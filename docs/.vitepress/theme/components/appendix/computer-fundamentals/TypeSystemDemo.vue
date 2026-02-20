@@ -1,7 +1,6 @@
 <template>
   <div class="type-system-demo">
     <div class="demo-header">
-      <span class="icon">🏷️</span>
       <span class="title">类型系统：数据的分类规则</span>
       <span class="subtitle">静态 vs 动态，强类型 vs 弱类型</span>
     </div>
@@ -171,7 +170,6 @@ s = str(x)  # 需要显式转换</code></pre>
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>类型系统是编程语言的"交通规则"，帮助我们在编译期或运行时发现错误。静态类型在编译期检查，动态类型在运行时检查；强类型不允许隐式转换，弱类型允许。
     </div>
   </div>
@@ -262,7 +260,6 @@ const benefits = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -536,8 +533,6 @@ code {
   display: flex;
   gap: 0.25rem;
 }
-
-.info-box .icon { flex-shrink: 0; }
 
 @media (max-width: 640px) {
   .code-comparison {

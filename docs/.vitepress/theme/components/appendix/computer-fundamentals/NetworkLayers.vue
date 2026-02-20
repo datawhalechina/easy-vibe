@@ -1,7 +1,6 @@
 <template>
   <div class="network-layers-demo">
     <div class="demo-header">
-      <span class="icon">🌐</span>
       <span class="title">网络五层模型</span>
       <span class="subtitle">从应用到物理的数据封装过程</span>
     </div>
@@ -93,7 +92,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>分层设计让网络协议模块化，每层只关心自己的职责。数据从应用层向下传递时，每层都会添加自己的"信封"(头部)，接收时再逐层拆开。
     </div>
   </div>
@@ -179,7 +177,6 @@ const encapsulation = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -386,8 +383,6 @@ const encapsulation = [
   display: flex;
   gap: 0.25rem;
 }
-
-.info-box .icon { flex-shrink: 0; }
 
 @media (max-width: 640px) {
   .demo-content {

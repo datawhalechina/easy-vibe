@@ -1,7 +1,6 @@
 <template>
   <div class="compiler-demo">
     <div class="demo-header">
-      <span class="icon">⚙️</span>
       <span class="title">编译器工作流程</span>
       <span class="subtitle">从源代码到机器码的旅程</span>
     </div>
@@ -174,7 +173,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>编译器将人类可读的源代码转换为机器可执行的指令。主要阶段包括词法分析、语法分析、语义分析、中间代码生成、优化和目标代码生成。
     </div>
   </div>
@@ -363,7 +361,6 @@ const executionModels = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -670,5 +667,4 @@ code {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

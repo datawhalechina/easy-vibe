@@ -1,7 +1,6 @@
 <template>
   <div class="transmission-demo">
     <div class="demo-header">
-      <span class="icon">📡</span>
       <span class="title">数据传输：从串行到并行</span>
       <span class="subtitle">数据如何在不同设备间移动</span>
     </div>
@@ -159,7 +158,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>现代高速传输多采用串行方式。虽然并行"看起来"更快（一次传多位），但串行可以跑更高频率，抗干扰更强，实际速度反而更快。
     </div>
   </div>
@@ -209,7 +207,6 @@ const startTransmission = () => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -406,5 +403,4 @@ th {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>
