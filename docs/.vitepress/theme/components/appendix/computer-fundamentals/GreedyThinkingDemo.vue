@@ -1,14 +1,12 @@
 <template>
   <div class="greedy-thinking-demo">
     <div class="demo-header">
-      <span class="icon">🎯</span>
       <span class="title">贪心算法：每步都选当前最优</span>
       <span class="subtitle">局部最优 → 全局最优?</span>
     </div>
 
     <div class="core-idea">
       <div class="idea-box">
-        <div class="idea-icon">💡</div>
         <div class="idea-text">
           贪心算法在每一步选择中都采取当前状态下<strong>最优</strong>的选择<br>
           希望通过一系列局部最优选择达到<strong>全局最优</strong>
@@ -214,7 +212,6 @@ const selectedCount = computed(() => activities.filter(a => a.selected).length)
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

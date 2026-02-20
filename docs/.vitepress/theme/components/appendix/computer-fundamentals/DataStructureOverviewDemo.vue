@@ -1,7 +1,6 @@
 <template>
   <div class="ds-overview-demo">
     <div class="demo-header">
-      <span class="icon">🏗️</span>
       <span class="title">数据结构全景图</span>
       <span class="subtitle">不同场景选择不同的数据组织方式</span>
     </div>
@@ -279,7 +278,6 @@ const currentCategory = computed(() => categories.find(c => c.id === activeCateg
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

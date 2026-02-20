@@ -1,7 +1,6 @@
 <template>
   <div class="network-principle-demo">
     <div class="demo-header">
-      <span class="icon">🌐</span>
       <span class="title">网络基本原理</span>
       <span class="subtitle">数据如何在网络中传输</span>
     </div>
@@ -107,7 +106,6 @@ const principles = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

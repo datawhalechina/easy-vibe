@@ -1,7 +1,6 @@
 <template>
   <div class="language-scenario-demo">
     <div class="demo-header">
-      <span class="icon">🎬</span>
       <span class="title">为什么需要编程语言？</span>
       <span class="subtitle">从场景看编程语言的价值</span>
     </div>
@@ -231,7 +230,6 @@ const currentScenario = computed(() => scenarios.find(s => s.id === activeScenar
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

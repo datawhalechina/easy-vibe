@@ -1,7 +1,6 @@
 <template>
   <div class="est-demo">
     <div class="demo-header">
-      <span class="icon">🔗</span>
       <span class="title">编码、存储与传输的协作</span>
       <span class="subtitle">三大系统如何协同处理数据</span>
     </div>
@@ -348,7 +347,6 @@ const currentScenario = computed(() => scenarioData[activeScenario.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

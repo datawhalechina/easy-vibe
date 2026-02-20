@@ -1,7 +1,6 @@
 <template>
   <div class="ds-selector-demo">
     <div class="demo-header">
-      <span class="icon">🎯</span>
       <span class="title">如何选择合适的数据结构？</span>
       <span class="subtitle">根据场景需求做出最佳选择</span>
     </div>
@@ -25,7 +24,6 @@
     <!-- 推荐结果 -->
     <div v-if="activeScenario" class="recommendation">
       <div class="rec-header">
-        <span class="rec-icon">💡</span>
         <span class="rec-title">推荐使用：{{ currentScenario.recommendation }}</span>
       </div>
 
@@ -233,7 +231,6 @@ const currentScenario = computed(() => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

@@ -40,7 +40,6 @@
         </div>
         <div class="card-body">
           <div class="feature">
-            <span class="feature-icon">⚡</span>
             <span>速度极快</span>
           </div>
           <div class="feature">

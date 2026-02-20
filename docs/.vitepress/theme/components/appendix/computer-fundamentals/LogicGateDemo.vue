@@ -1,7 +1,6 @@
 <template>
   <div class="logic-gate-demo">
     <div class="demo-header">
-      <span class="icon">🔌</span>
       <span class="title">逻辑门：用开关做运算</span>
       <span class="subtitle">晶体管组合成基本运算单元</span>
     </div>
@@ -213,7 +212,7 @@
               <tr
                 v-for="row in currentTruthTable"
                 :key="row.a + '-' + row.b" 
-                :class="{ highlight: row.a === inputA && row.b === inputB && (activeGate !== 'NOT') }"
+                :class="{ highlight: row.a === (inputA ? 1 : 0) && (activeGate === 'NOT' || row.b === (inputB ? 1 : 0)) }"
               >
                 <td>{{ row.a }}</td>
                 <td>{{ row.b }}</td>
@@ -235,7 +234,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>逻辑门用晶体管的"开关"组合实现基本运算。AND门像"串联开关"(两个都开才通)，OR门像"并联开关"(任一个开就通)。
     </div>
   </div>
@@ -324,7 +322,6 @@ const currentTruthTable = computed(() => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -500,5 +497,4 @@ tr.highlight {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

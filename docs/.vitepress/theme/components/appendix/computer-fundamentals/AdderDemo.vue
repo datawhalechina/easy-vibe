@@ -1,7 +1,6 @@
 <template>
   <div class="adder-demo">
     <div class="demo-header">
-      <span class="icon">➕</span>
       <span class="title">加法器：用逻辑门做加法</span>
       <span class="subtitle">从逻辑门到算术运算</span>
     </div>
@@ -80,7 +79,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>加法器用全加器级联实现。每个全加器处理一位，产生"和"与"进位"。进位传递给下一位，就像我们手算加法一样。
     </div>
   </div>
@@ -159,7 +157,6 @@ const stages = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -311,5 +308,4 @@ const stages = [
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div class="programming-paradigm-demo">
     <div class="demo-header">
-      <span class="icon">🎨</span>
       <span class="title">编程范式</span>
       <span class="subtitle">不同的编程思维方式</span>
     </div>
@@ -193,7 +192,6 @@ const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadi
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

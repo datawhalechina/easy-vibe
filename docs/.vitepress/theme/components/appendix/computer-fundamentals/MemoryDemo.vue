@@ -1,7 +1,6 @@
 <template>
   <div class="memory-demo">
     <div class="demo-header">
-      <span class="icon">🧠</span>
       <span class="title">内存管理：程序的"工作台"</span>
       <span class="subtitle">操作系统如何分配和管理内存</span>
     </div>
@@ -75,7 +74,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>虚拟内存让每个进程都以为自己独占整个内存空间，实际由操作系统统一管理和映射，实现隔离和保护。
     </div>
   </div>
@@ -136,7 +134,6 @@ const usedMemory = computed(() => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -296,5 +293,4 @@ const usedMemory = computed(() => {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

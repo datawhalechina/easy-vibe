@@ -1,7 +1,6 @@
 <template>
   <div class="language-map-demo">
     <div class="demo-header">
-      <span class="icon">🗺️</span>
       <span class="title">编程语言图谱：语言的演化</span>
       <span class="subtitle">从机器语言到现代语言</span>
     </div>
@@ -125,7 +124,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>编程语言是人类与计算机沟通的桥梁。不同的语言有不同的设计哲学，适合解决不同类型的问题。选择语言时，要考虑问题领域、团队熟悉度、生态系统等因素。
     </div>
   </div>
@@ -229,7 +227,6 @@ const languageComparison = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -444,5 +441,4 @@ th {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

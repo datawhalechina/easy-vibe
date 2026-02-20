@@ -1,7 +1,6 @@
 <template>
   <div class="cpu-arch-demo">
     <div class="demo-header">
-      <span class="icon">🖥️</span>
       <span class="title">CPU 架构全貌</span>
       <span class="subtitle">从门电路到处理器</span>
     </div>
@@ -56,7 +55,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>CPU是层次化构建的：晶体管→逻辑门→功能单元→处理器。每一层都是下一层的"积木"，最终形成能执行程序的"大脑"。
     </div>
   </div>
@@ -122,7 +120,6 @@ const components = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -252,5 +249,4 @@ const components = [
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

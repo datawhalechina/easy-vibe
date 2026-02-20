@@ -1,7 +1,6 @@
 <template>
   <div class="transport-layer-demo">
     <div class="demo-header">
-      <span class="icon">🚚</span>
       <span class="title">传输层：端到端的可靠传输</span>
       <span class="subtitle">TCP 和 UDP 如何传输数据</span>
     </div>
@@ -223,7 +222,6 @@ const currentProtocol = computed(() => protocolData[activeProtocol.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 
