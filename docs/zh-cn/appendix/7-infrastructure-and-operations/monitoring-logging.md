@@ -632,8 +632,8 @@ resource "aws_security_group" "web" {
 
 ## 12. 延伸阅读
 
-- **[系统缓存设计](/zh-cn/appendix/cache-design)** - 缓存原理、模式与最佳实践
-- **[消息队列设计](/zh-cn/appendix/queue-design)** - 削峰填谷、异步解耦
-- **[鉴权原理与实战](/zh-cn/appendix/auth-design)** - 认证授权、安全加固
-- **[后端进化史](/zh-cn/appendix/backend-evolution)** - 从单体到微服务到 Serverless
-- **[部署与上线](/zh-cn/appendix/deployment)** - 从开发到生产的最后一公里
+- **[系统缓存设计](/zh-cn/appendix/4-server-and-backend/caching)** - 缓存原理、模式与最佳实践
+- **[消息队列设计](/zh-cn/appendix/4-server-and-backend/message-queues)** - 削峰填谷、异步解耦
+- **[鉴权原理与实战](/zh-cn/appendix/4-server-and-backend/auth-authorization)** - 认证授权、安全加固
+- **[后端进化史](/zh-cn/appendix/4-server-and-backend/backend-layered-architecture)** - 从单体到微服务到 Serverless
+- **[部署与上线](/zh-cn/appendix/7-infrastructure-and-operations/ci-cd)** - 从开发到生产的最后一公里
