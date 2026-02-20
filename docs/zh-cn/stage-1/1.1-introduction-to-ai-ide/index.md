@@ -64,7 +64,7 @@ const duration = '约 <strong>1 天</strong>，可分多次完成'
 ## 2. 什么是 IDE，为什么需要 IDE
 
 ::: info 预习提示
-如果你还不熟悉 IDE 是什么、各个界面元素有什么作用，建议先阅读 [IDE 简介](../../appendix/ide-intro/) 进行预习，了解 IDE 的基本概念和常见功能。
+如果你还不熟悉 IDE 是什么、各个界面元素有什么作用，建议先阅读 [IDE 简介](/zh-cn/appendix/2-development-tools/ide-basics) 进行预习，了解 IDE 的基本概念和常见功能。
 :::
 
 在早期编程时代，我们只需要简单文本编辑器和语言处理器即可。但随着项目复杂度增加，开发者迫切需要一种能高效管理文件、支持语法高亮和调试的工具，于是集成开发环境（IDE）应运而生。
@@ -99,7 +99,7 @@ VS Code 的核心理念是“一切皆插件”。它通过插件机制支持各
 
 总之，IDE 是一套帮助开发者高效写代码和运行程序的工具集。
 
-更具体的详细内容解释，请查看[附录中的 虚拟 IDE 可视化 IDE 原理部分](/zh-cn/appendix/ide-intro/)。
+更具体的详细内容解释，请查看[附录中的 虚拟 IDE 可视化 IDE 原理部分](/zh-cn/appendix/2-development-tools/ide-basics)。
 
 ## 3. AI IDE 和普通 IDE 有什么不同
 
@@ -487,7 +487,7 @@ AI 会根据你的描述，直接修改 React 组件和样式。保存后刷新�
 - **Panel（底部面板）**：包含终端和输出窗口。
 - **Status Bar（状态栏）**：显示当前环境状态。
 
-更具体的详细内容解释，请查看[附录中的 虚拟 IDE 可视化 IDE 原理部分](/zh-cn/appendix/ide-intro/)。
+更具体的详细内容解释，请查看[附录中的 虚拟 IDE 可视化 IDE 原理部分](/zh-cn/appendix/2-development-tools/ide-basics)。
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -745,7 +745,7 @@ AI 很认真地给了你一段代码，你也老老实实地复制进去了，�
       <span style="font-size: 12px; color: #909399">看到不懂的计算机名词时，来这里快速查含义，推荐通读一遍。</span>
     </el-col>
     <el-col :span="12">
-      <a href="../../appendix/ide-intro/" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
+      <a href="/zh-cn/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>附录二：Visual Studio Code 菜单栏解析</b></a><br/>
       <span style="font-size: 12px; color: #909399">不知道 AI IDE 的界面有什么用的时候，拿以下内容和 AI 对话进行查阅，或者直接查看。</span>
     </el-col>
   </el-row>
