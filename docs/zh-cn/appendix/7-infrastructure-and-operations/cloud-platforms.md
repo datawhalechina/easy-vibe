@@ -3,8 +3,8 @@
 
 在开始之前，建议你先了解：
 
-- **基础网络概念**：如果你还不熟悉 IP 地址、端口、域名等概念，建议先阅读 [网络基础知识](/zh-cn/appendix/computer-networks)
-- **API 是什么**：如果你对 API 还不了解，可以先看 [API 入门](/zh-cn/appendix/api-intro)
+- **基础网络概念**：如果你还不熟悉 IP 地址、端口、域名等概念，建议先阅读 [网络基础知识](/zh-cn/appendix/1-computer-fundamentals/computer-networks)
+- **API 是什么**：如果你对 API 还不了解，可以先看 [API 入门](/zh-cn/appendix/4-server-and-backend/api-intro)
 
 ---
 

@@ -18,7 +18,7 @@
 
 ### 总附录
 
-[AI 能力词典：常见 AI 核心概念与名词、场景解释](/zh-cn/appendix/ai-capability-dictionary)
+[AI 能力词典：常见 AI 核心概念与名词、场景解释](/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
 ### 零、幼儿园
 

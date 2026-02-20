@@ -155,62 +155,62 @@ const i18n = {
         {
           title: 'AI 进化史',
           desc: '回顾人工智能发展历程中的关键里程碑。',
-          link: '/zh-cn/appendix/ai-evolution'
+          link: '/zh-cn/appendix/8-artificial-intelligence/ai-history'
         },
         {
           title: '提示词工程',
           desc: '掌握与 AI 高效对话的技巧，解锁潜力。',
-          link: '/zh-cn/appendix/prompt-engineering'
+          link: '/zh-cn/appendix/8-artificial-intelligence/prompt-engineering'
         },
         {
           title: '大语言模型',
           desc: '深入浅出解析 LLM 的工作原理与应用。',
-          link: '/zh-cn/appendix/llm-intro'
+          link: '/zh-cn/appendix/8-artificial-intelligence/llm-principles'
         },
         {
           title: 'Agent 智能体',
           desc: '探索具备自主决策与执行能力的 AI 架构。',
-          link: '/zh-cn/appendix/agent-intro'
+          link: '/zh-cn/appendix/8-artificial-intelligence/ai-agents'
         },
         {
           title: '前端基础',
           desc: 'HTML/CSS/JS 三大基石，入门必修课。',
-          link: '/zh-cn/appendix/web-basics'
+          link: '/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive'
         },
         {
           title: '前端进化史',
           desc: '了解前端技术栈演变，把握发展趋势。',
-          link: '/zh-cn/appendix/frontend-evolution'
+          link: '/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks'
         },
         {
           title: '后端架构',
           desc: '从单体到微服务，探索架构演进之路。',
-          link: '/zh-cn/appendix/backend-evolution'
+          link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
         },
         {
           title: '后端语言',
           desc: '对比主流后端语言特性，选择最佳技术栈。',
-          link: '/zh-cn/appendix/backend-languages'
+          link: '/zh-cn/appendix/4-server-and-backend/backend-languages'
         },
         {
           title: '数据库原理',
           desc: '理解数据库核心原理，掌握数据存储艺术。',
-          link: '/zh-cn/appendix/database-intro'
+          link: '/zh-cn/appendix/5-data/database-fundamentals'
         },
         {
           title: 'API 设计',
           desc: 'API 接口设计与开发的基础知识。',
-          link: '/zh-cn/appendix/api-intro'
+          link: '/zh-cn/appendix/4-server-and-backend/api-intro'
         },
         {
           title: 'Git 版本控制',
           desc: '深入理解 Git 原理与高级用法。',
-          link: '/zh-cn/appendix/git-intro'
+          link: '/zh-cn/appendix/2-development-tools/git-version-control'
         },
         {
           title: '计算机网络',
           desc: '网络协议与通信原理的基础知识。',
-          link: '/zh-cn/appendix/computer-networks'
+          link: '/zh-cn/appendix/1-computer-fundamentals/computer-networks'
         }
       ]
     },
@@ -1552,73 +1552,73 @@ const appendixCards = [
     title: '人工智能',
     desc: 'LLM、Agent、RAG，深入 AI 底层原理。',
     tag: 'AI',
-    link: '/zh-cn/appendix/ai-evolution'
+    link: '/zh-cn/appendix/8-artificial-intelligence/ai-history'
   },
   {
     title: '提示词工程',
     desc: '掌握与 AI 高效对话的技巧，解锁潜力。',
     tag: 'AI',
-    link: '/zh-cn/appendix/prompt-engineering'
+    link: '/zh-cn/appendix/8-artificial-intelligence/prompt-engineering'
   },
   {
     title: '大语言模型',
     desc: '深入浅出解析 LLM 的工作原理与应用。',
     tag: 'AI',
-    link: '/zh-cn/appendix/llm-intro'
+    link: '/zh-cn/appendix/8-artificial-intelligence/llm-principles'
   },
   {
     title: 'Agent 智能体',
     desc: '探索具备自主决策与执行能力的 AI 架构。',
     tag: 'AI',
-    link: '/zh-cn/appendix/agent-intro'
+    link: '/zh-cn/appendix/8-artificial-intelligence/ai-agents'
   },
   {
     title: '前端基础',
     desc: 'HTML/CSS/JS 三大基石，入门必修课。',
     tag: 'Frontend',
-    link: '/zh-cn/appendix/web-basics'
+    link: '/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive'
   },
   {
     title: '前端进化史',
     desc: '了解前端技术栈演变，把握发展趋势。',
     tag: 'Frontend',
-    link: '/zh-cn/appendix/frontend-evolution'
+    link: '/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks'
   },
   {
     title: '后端架构',
     desc: '从单体到微服务，探索架构演进之路。',
     tag: 'Backend',
-    link: '/zh-cn/appendix/backend-evolution'
+    link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
   },
   {
     title: '后端语言',
     desc: '对比主流后端语言特性，选择最佳技术栈。',
     tag: 'Backend',
-    link: '/zh-cn/appendix/backend-languages'
+    link: '/zh-cn/appendix/4-server-and-backend/backend-languages'
   },
   {
     title: '数据库原理',
     desc: '理解数据库核心原理，掌握数据存储艺术。',
     tag: 'Database',
-    link: '/zh-cn/appendix/database-intro'
+    link: '/zh-cn/appendix/5-data/database-fundamentals'
   },
   {
     title: 'API 设计',
     desc: 'API 接口设计与开发的基础知识。',
     tag: 'API',
-    link: '/zh-cn/appendix/api-intro'
+    link: '/zh-cn/appendix/4-server-and-backend/api-intro'
   },
   {
     title: 'Git 版本控制',
     desc: '深入理解 Git 原理与高级用法。',
     tag: 'General',
-    link: '/zh-cn/appendix/git-intro'
+    link: '/zh-cn/appendix/2-development-tools/git-version-control'
   },
   {
     title: '计算机网络',
     desc: '网络协议与通信原理的基础知识。',
     tag: 'General',
-    link: '/zh-cn/appendix/computer-networks'
+    link: '/zh-cn/appendix/1-computer-fundamentals/computer-networks'
   }
 ]
 </script>

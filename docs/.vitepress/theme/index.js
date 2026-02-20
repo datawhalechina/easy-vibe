@@ -127,6 +127,39 @@ import CFNetworkLayers from './components/appendix/computer-fundamentals/Network
 import CFSubnetCalculator from './components/appendix/computer-fundamentals/SubnetCalculator.vue'
 import CFTcpUdpComparison from './components/appendix/computer-fundamentals/TcpUdpComparison.vue'
 
+// Computer Fundamentals Additional Components
+import OSSystemOverviewDemo from './components/appendix/computer-fundamentals/OSSystemOverviewDemo.vue'
+import ProcessMemoryFilesystemDemo from './components/appendix/computer-fundamentals/ProcessMemoryFilesystemDemo.vue'
+import DataLifecycleDemo from './components/appendix/computer-fundamentals/DataLifecycleDemo.vue'
+import EncodingStorageTransmissionDemo from './components/appendix/computer-fundamentals/EncodingStorageTransmissionDemo.vue'
+import NetworkOverviewDemo from './components/appendix/computer-fundamentals/NetworkOverviewDemo.vue'
+import PhysicalLayerDemo from './components/appendix/computer-fundamentals/PhysicalLayerDemo.vue'
+import DataLinkLayerDemo from './components/appendix/computer-fundamentals/DataLinkLayerDemo.vue'
+import TransportLayerDemo from './components/appendix/computer-fundamentals/TransportLayerDemo.vue'
+import ApplicationLayerDemo from './components/appendix/computer-fundamentals/ApplicationLayerDemo.vue'
+import DataStructureOverviewDemo from './components/appendix/computer-fundamentals/DataStructureOverviewDemo.vue'
+import LinearStructuresDemo from './components/appendix/computer-fundamentals/LinearStructuresDemo.vue'
+import HashTableDemo from './components/appendix/computer-fundamentals/HashTableDemo.vue'
+import TreeStructureDemo from './components/appendix/computer-fundamentals/TreeStructureDemo.vue'
+import DataStructureSelectorDemo from './components/appendix/computer-fundamentals/DataStructureSelectorDemo.vue'
+import AlgorithmOverviewDemo from './components/appendix/computer-fundamentals/AlgorithmOverviewDemo.vue'
+import RecursiveThinkingDemo from './components/appendix/computer-fundamentals/RecursiveThinkingDemo.vue'
+import GreedyThinkingDemo from './components/appendix/computer-fundamentals/GreedyThinkingDemo.vue'
+import AlgorithmParadigmDemo from './components/appendix/computer-fundamentals/AlgorithmParadigmDemo.vue'
+import LanguageEvolutionDemo from './components/appendix/computer-fundamentals/LanguageEvolutionDemo.vue'
+import ProgrammingParadigmDemo from './components/appendix/computer-fundamentals/ProgrammingParadigmDemo.vue'
+import LanguageScenarioDemo from './components/appendix/computer-fundamentals/LanguageScenarioDemo.vue'
+import ProgrammingLanguageComparisonDemo from './components/appendix/computer-fundamentals/ProgrammingLanguageComparisonDemo.vue'
+import CompilerAnalogyDemo from './components/appendix/computer-fundamentals/CompilerAnalogyDemo.vue'
+import SearchAlgorithmDemo from './components/appendix/computer-fundamentals/SearchAlgorithmDemo.vue'
+import SortingAlgorithmDemo from './components/appendix/computer-fundamentals/SortingAlgorithmDemo.vue'
+import NetworkPrincipleDemo from './components/appendix/computer-fundamentals/NetworkPrincipleDemo.vue'
+import DataEncodingBasicsDemo from './components/appendix/computer-fundamentals/DataEncodingBasicsDemo.vue'
+import StorageHierarchyDemo from './components/appendix/computer-fundamentals/StorageHierarchyDemo.vue'
+import GraphStructureDemo from './components/appendix/computer-fundamentals/GraphStructureDemo.vue'
+import LanguageTypeModelDemo from './components/appendix/computer-fundamentals/LanguageTypeModelDemo.vue'
+import CompilationPracticeDemo from './components/appendix/computer-fundamentals/CompilationPracticeDemo.vue'
+
 // Deployment appendix components
 import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
 import DeploymentBuildDemo from './components/appendix/deployment/DeploymentBuildDemo.vue'
@@ -652,6 +685,39 @@ export default {
     app.component('CFSubnetCalculator', CFSubnetCalculator)
     app.component('CFTcpUdpComparison', CFTcpUdpComparison)
 
+    // Computer Fundamentals Additional Components Registration
+    app.component('OSSystemOverviewDemo', OSSystemOverviewDemo)
+    app.component('ProcessMemoryFilesystemDemo', ProcessMemoryFilesystemDemo)
+    app.component('DataLifecycleDemo', DataLifecycleDemo)
+    app.component('EncodingStorageTransmissionDemo', EncodingStorageTransmissionDemo)
+    app.component('NetworkOverviewDemo', NetworkOverviewDemo)
+    app.component('PhysicalLayerDemo', PhysicalLayerDemo)
+    app.component('DataLinkLayerDemo', DataLinkLayerDemo)
+    app.component('TransportLayerDemo', TransportLayerDemo)
+    app.component('ApplicationLayerDemo', ApplicationLayerDemo)
+    app.component('DataStructureOverviewDemo', DataStructureOverviewDemo)
+    app.component('LinearStructuresDemo', LinearStructuresDemo)
+    app.component('HashTableDemo', HashTableDemo)
+    app.component('TreeStructureDemo', TreeStructureDemo)
+    app.component('DataStructureSelectorDemo', DataStructureSelectorDemo)
+    app.component('AlgorithmOverviewDemo', AlgorithmOverviewDemo)
+    app.component('RecursiveThinkingDemo', RecursiveThinkingDemo)
+    app.component('GreedyThinkingDemo', GreedyThinkingDemo)
+    app.component('AlgorithmParadigmDemo', AlgorithmParadigmDemo)
+    app.component('LanguageEvolutionDemo', LanguageEvolutionDemo)
+    app.component('ProgrammingParadigmDemo', ProgrammingParadigmDemo)
+    app.component('LanguageScenarioDemo', LanguageScenarioDemo)
+    app.component('ProgrammingLanguageComparisonDemo', ProgrammingLanguageComparisonDemo)
+    app.component('CompilerAnalogyDemo', CompilerAnalogyDemo)
+    app.component('SearchAlgorithmDemo', SearchAlgorithmDemo)
+    app.component('SortingAlgorithmDemo', SortingAlgorithmDemo)
+    app.component('NetworkPrincipleDemo', NetworkPrincipleDemo)
+    app.component('DataEncodingBasicsDemo', DataEncodingBasicsDemo)
+    app.component('StorageHierarchyDemo', StorageHierarchyDemo)
+    app.component('GraphStructureDemo', GraphStructureDemo)
+    app.component('LanguageTypeModelDemo', LanguageTypeModelDemo)
+    app.component('CompilationPracticeDemo', CompilationPracticeDemo)
+
     // Deployment appendix
     app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
     app.component('DeploymentBuildDemo', DeploymentBuildDemo)
@@ -877,7 +943,7 @@ export default {
 
     // Backend Languages Components Registration
     app.component('BackendLanguagesDemo', BackendLanguagesDemo)
-    app.component('LanguageComparisonDemo', LanguageComparisonDemo)
+    app.component('ProgrammingLanguageComparisonDemo', ProgrammingLanguageComparisonDemo)
     app.component('PerformanceBenchmarkDemo', PerformanceBenchmarkDemo)
     app.component('SyntaxComparisonDemo', SyntaxComparisonDemo)
     app.component('ConcurrencyModelDemo', ConcurrencyModelDemo)
