@@ -1,7 +1,6 @@
 <template>
   <div class="storage-demo">
     <div class="demo-header">
-      <span class="icon">💾</span>
       <span class="title">存储层次：从寄存器到云存储</span>
       <span class="subtitle">速度与容量的权衡</span>
     </div>
@@ -60,7 +59,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>存储遵循"金字塔"原则：越快的存储越贵、容量越小。CPU 需要的数据放在最快的存储（寄存器、缓存），暂时不用的放在慢速大容量存储（磁盘、云端）。
     </div>
   </div>
@@ -147,7 +145,6 @@ const currentLevel = computed(() => storageLevels[activeLevel.value])
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -255,5 +252,4 @@ const currentLevel = computed(() => storageLevels[activeLevel.value])
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

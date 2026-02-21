@@ -1,7 +1,6 @@
 <template>
   <div class="data-encoding-basics-demo">
     <div class="demo-header">
-      <span class="icon">🔤</span>
       <span class="title">数据编码基础</span>
       <span class="subtitle">信息如何被表示和存储</span>
     </div>
@@ -125,7 +124,6 @@
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

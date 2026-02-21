@@ -1,7 +1,6 @@
 <template>
   <div class="network-overview-demo">
     <div class="demo-header">
-      <span class="icon">🌐</span>
       <span class="title">网络是怎么连接的</span>
       <span class="subtitle">从发送到接收的完整过程</span>
     </div>
@@ -202,7 +201,6 @@ const protocolLayers = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

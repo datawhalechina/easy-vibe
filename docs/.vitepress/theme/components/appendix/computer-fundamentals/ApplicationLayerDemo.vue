@@ -1,7 +1,6 @@
 <template>
   <div class="application-layer-demo">
     <div class="demo-header">
-      <span class="icon">🌍</span>
       <span class="title">应用层：为你服务的各种协议</span>
       <span class="subtitle">HTTP、DNS、DHCP 等协议如何工作</span>
     </div>
@@ -269,7 +268,6 @@ const currentProtocol = computed(() => protocolDetails[activeProtocol.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

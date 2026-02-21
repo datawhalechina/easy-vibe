@@ -1,7 +1,6 @@
 <template>
   <div class="encoding-demo">
     <div class="demo-header">
-      <span class="icon">🔢</span>
       <span class="title">数字编码：用 0 和 1 表示一切</span>
       <span class="subtitle">字符、数字、图像如何变成二进制</span>
     </div>
@@ -67,7 +66,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>所有数据最终都要变成 0 和 1。不同类型的数据用不同的编码规则：字符用 ASCII/Unicode，数字用二进制，图像用像素值。
     </div>
   </div>
@@ -139,7 +137,6 @@ const byteCount = computed(() => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -273,5 +270,4 @@ const byteCount = computed(() => {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

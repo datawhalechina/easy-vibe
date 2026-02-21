@@ -1,7 +1,6 @@
 <template>
   <div class="filesystem-demo">
     <div class="demo-header">
-      <span class="icon">📁</span>
       <span class="title">文件系统：数据的"档案柜"</span>
       <span class="subtitle">操作系统如何组织和管理文件</span>
     </div>
@@ -86,7 +85,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>文件系统用"目录树"组织文件，用"inode"记录文件元数据。文件名只是给人看的，系统通过 inode 编号找到真正的数据。
     </div>
   </div>
@@ -137,7 +135,6 @@ const selectItem = (item) => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -303,5 +300,4 @@ const selectItem = (item) => {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

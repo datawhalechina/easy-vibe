@@ -92,15 +92,11 @@ import EmotionControlDemo from './components/appendix/audio-intro/EmotionControl
 import WebTechTriad from './components/appendix/web-basics/WebTechTriad.vue'
 import UrlToBrowserDemo from './components/appendix/web-basics/UrlToBrowserDemo.vue'
 // Git Intro Components
-import GitWorkflowDemo from './components/appendix/git-intro/GitWorkflowDemo.vue'
-import GitThreeAreasDemo from './components/appendix/git-intro/GitThreeAreasDemo.vue'
-import GitStorageDemo from './components/appendix/git-intro/GitStorageDemo.vue'
-import GitCommandDemo from './components/appendix/git-intro/GitCommandDemo.vue'
-import GitBranchMergeDemo from './components/appendix/git-intro/GitBranchMergeDemo.vue'
-import GitConflictDemo from './components/appendix/git-intro/GitConflictDemo.vue'
-import GitStashDemo from './components/appendix/git-intro/GitStashDemo.vue'
-import GitRemoteDemo from './components/appendix/git-intro/GitRemoteDemo.vue'
-import GitScenariosDemo from './components/appendix/git-intro/GitScenariosDemo.vue'
+import GitCommitFlow from './components/appendix/git-intro/GitCommitFlow.vue'
+import GitBranchVisual from './components/appendix/git-intro/GitBranchVisual.vue'
+import GitSyncDemo from './components/appendix/git-intro/GitSyncDemo.vue'
+import GitCommandCheatsheet from './components/appendix/git-intro/GitCommandCheatsheet.vue'
+
 // （保留网络相关，未修改）
 import NetworkLayers from './components/appendix/web-basics/NetworkLayers.vue'
 import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.vue'
@@ -112,6 +108,8 @@ import TransistorDemo from './components/appendix/computer-fundamentals/Transist
 import LogicGateDemo from './components/appendix/computer-fundamentals/LogicGateDemo.vue'
 import AdderDemo from './components/appendix/computer-fundamentals/AdderDemo.vue'
 import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
+import RegisterDemo from './components/appendix/computer-fundamentals/RegisterDemo.vue'
+import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
 import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
 import MemoryDemo from './components/appendix/computer-fundamentals/MemoryDemo.vue'
 import FilesystemDemo from './components/appendix/computer-fundamentals/FilesystemDemo.vue'
@@ -159,6 +157,15 @@ import StorageHierarchyDemo from './components/appendix/computer-fundamentals/St
 import GraphStructureDemo from './components/appendix/computer-fundamentals/GraphStructureDemo.vue'
 import LanguageTypeModelDemo from './components/appendix/computer-fundamentals/LanguageTypeModelDemo.vue'
 import CompilationPracticeDemo from './components/appendix/computer-fundamentals/CompilationPracticeDemo.vue'
+
+// Data Encoding Components
+import GarbledTextDemo from './components/appendix/data-encoding/GarbledTextDemo.vue'
+import CharacterEncodingExplorer from './components/appendix/data-encoding/CharacterEncodingExplorer.vue'
+import StoragePyramidDemo from './components/appendix/data-encoding/StoragePyramidDemo.vue'
+import DataTransmissionDemo from './components/appendix/data-encoding/DataTransmissionDemo.vue'
+import PhotoUploadJourneyDemo from './components/appendix/data-encoding/PhotoUploadJourneyDemo.vue'
+import ImageEncodingDemo from './components/appendix/data-encoding/ImageEncodingDemo.vue'
+import AudioEncodingDemo from './components/appendix/data-encoding/AudioEncodingDemo.vue'
 
 // Deployment appendix components
 import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
@@ -216,6 +223,17 @@ import EvolutionJQueryVsStateDemo from './components/appendix/frontend-evolution
 import EvolutionRoutingModeDemo from './components/appendix/frontend-evolution/RoutingModeDemo.vue'
 import EvolutionRenderingStrategyDemo from './components/appendix/frontend-evolution/RenderingStrategyDemo.vue'
 import EvolutionImperativeVsDeclarativeDemo from './components/appendix/frontend-evolution/ImperativeVsDeclarativeDemo.vue'
+import FrameworkMotivationDemo from './components/appendix/framework-nature/FrameworkMotivationDemo.vue'
+import ReactivityMechanismDemo from './components/appendix/framework-nature/ReactivityMechanismDemo.vue'
+import ManualVsAutoSyncDemo from './components/appendix/framework-nature/ManualVsAutoSyncDemo.vue'
+import VirtualDomDiffDemo from './components/appendix/framework-nature/VirtualDomDiffDemo.vue'
+import FrameworkSpectrumDemo from './components/appendix/framework-nature/FrameworkSpectrumDemo.vue'
+import DataUIGapDemo from './components/appendix/framework-nature/DataUIGapDemo.vue'
+import DeclarativeFormulaDemo from './components/appendix/framework-nature/DeclarativeFormulaDemo.vue'
+import DomOperationCostDemo from './components/appendix/framework-nature/DomOperationCostDemo.vue'
+import ComponentTreeDemo from './components/appendix/framework-nature/ComponentTreeDemo.vue'
+import WhatIsDomDemo from './components/appendix/framework-nature/WhatIsDomDemo.vue'
+import WhyNoAutoSyncDemo from './components/appendix/framework-nature/WhyNoAutoSyncDemo.vue'
 
 import BackendEvolutionDemo from './components/appendix/backend-evolution/BackendEvolutionDemo.vue'
 import BackendQuickStartDemo from './components/appendix/backend-evolution/BackendQuickStartDemo.vue'
@@ -554,6 +572,28 @@ import TaskQueueDemo from './components/appendix/js-runtime/TaskQueueDemo.vue'
 import MemoryLeakDemo from './components/appendix/js-runtime/MemoryLeakDemo.vue'
 import GarbageCollectionDemo from './components/appendix/js-runtime/GarbageCollectionDemo.vue'
 
+// Development Tools Components
+import EnvVarOverviewDemo from './components/appendix/development-tools/EnvVarOverviewDemo.vue'
+import PathSearchDemo from './components/appendix/development-tools/PathSearchDemo.vue'
+import EnvScopeDemo from './components/appendix/development-tools/EnvScopeDemo.vue'
+import EnvExportDemo from './components/appendix/development-tools/EnvExportDemo.vue'
+import ApiKeyDangerDemo from './components/appendix/development-tools/ApiKeyDangerDemo.vue'
+import DotEnvDemo from './components/appendix/development-tools/DotEnvDemo.vue'
+import ServerSecretDemo from './components/appendix/development-tools/ServerSecretDemo.vue'
+
+// Ports & Localhost Components
+import PortAnalogyDemo from './components/appendix/ports-localhost/PortAnalogyDemo.vue'
+import LocalhostLoopbackDemo from './components/appendix/ports-localhost/LocalhostLoopbackDemo.vue'
+import PortConflictDemo from './components/appendix/ports-localhost/PortConflictDemo.vue'
+import CommonPortsDemo from './components/appendix/ports-localhost/CommonPortsDemo.vue'
+import DevServerFlowDemo from './components/appendix/ports-localhost/DevServerFlowDemo.vue'
+import PortTroubleshootDemo from './components/appendix/ports-localhost/PortTroubleshootDemo.vue'
+import PackageManagerOverviewDemo from './components/appendix/development-tools/PackageManagerOverviewDemo.vue'
+import PackageInstallDemo from './components/appendix/development-tools/PackageInstallDemo.vue'
+import DependencyTreeDemo from './components/appendix/development-tools/DependencyTreeDemo.vue'
+import SSHAuthDemo from './components/appendix/development-tools/SSHAuthDemo.vue'
+import RegexDemo from './components/appendix/development-tools/RegexDemo.vue'
+
 // TypeScript Intro Components
 import TypeAnnotationDemo from './components/appendix/typescript-intro/TypeAnnotationDemo.vue'
 import InterfaceDemo from './components/appendix/typescript-intro/InterfaceDemo.vue'
@@ -651,15 +691,12 @@ export default {
     app.component('WebTechTriad', WebTechTriad)
     app.component('UrlToBrowserDemo', UrlToBrowserDemo)
     app.component('UrlToBrowserQuickStart', UrlToBrowserQuickStart)
-    app.component('GitWorkflowDemo', GitWorkflowDemo)
-    app.component('GitThreeAreasDemo', GitThreeAreasDemo)
-    app.component('GitStorageDemo', GitStorageDemo)
-    app.component('GitCommandDemo', GitCommandDemo)
-    app.component('GitBranchMergeDemo', GitBranchMergeDemo)
-    app.component('GitConflictDemo', GitConflictDemo)
-    app.component('GitStashDemo', GitStashDemo)
-    app.component('GitRemoteDemo', GitRemoteDemo)
-    app.component('GitScenariosDemo', GitScenariosDemo)
+
+    app.component('GitCommitFlow', GitCommitFlow)
+    app.component('GitBranchVisual', GitBranchVisual)
+    app.component('GitSyncDemo', GitSyncDemo)
+    app.component('GitCommandCheatsheet', GitCommandCheatsheet)
+
     app.component('NetworkLayers', NetworkLayers)
     app.component('TcpUdpComparison', TcpUdpComparison)
     app.component('SubnetCalculator', SubnetCalculator)
@@ -670,6 +707,8 @@ export default {
     app.component('LogicGateDemo', LogicGateDemo)
     app.component('AdderDemo', AdderDemo)
     app.component('CpuArchitectureDemo', CpuArchitectureDemo)
+    app.component('RegisterDemo', RegisterDemo)
+    app.component('EvolutionFlowDemo', EvolutionFlowDemo)
     app.component('ProcessDemo', ProcessDemo)
     app.component('MemoryDemo', MemoryDemo)
     app.component('FilesystemDemo', FilesystemDemo)
@@ -689,7 +728,10 @@ export default {
     app.component('OSSystemOverviewDemo', OSSystemOverviewDemo)
     app.component('ProcessMemoryFilesystemDemo', ProcessMemoryFilesystemDemo)
     app.component('DataLifecycleDemo', DataLifecycleDemo)
-    app.component('EncodingStorageTransmissionDemo', EncodingStorageTransmissionDemo)
+    app.component(
+      'EncodingStorageTransmissionDemo',
+      EncodingStorageTransmissionDemo
+    )
     app.component('NetworkOverviewDemo', NetworkOverviewDemo)
     app.component('PhysicalLayerDemo', PhysicalLayerDemo)
     app.component('DataLinkLayerDemo', DataLinkLayerDemo)
@@ -707,7 +749,10 @@ export default {
     app.component('LanguageEvolutionDemo', LanguageEvolutionDemo)
     app.component('ProgrammingParadigmDemo', ProgrammingParadigmDemo)
     app.component('LanguageScenarioDemo', LanguageScenarioDemo)
-    app.component('ProgrammingLanguageComparisonDemo', ProgrammingLanguageComparisonDemo)
+    app.component(
+      'ProgrammingLanguageComparisonDemo',
+      ProgrammingLanguageComparisonDemo
+    )
     app.component('CompilerAnalogyDemo', CompilerAnalogyDemo)
     app.component('SearchAlgorithmDemo', SearchAlgorithmDemo)
     app.component('SortingAlgorithmDemo', SortingAlgorithmDemo)
@@ -717,6 +762,15 @@ export default {
     app.component('GraphStructureDemo', GraphStructureDemo)
     app.component('LanguageTypeModelDemo', LanguageTypeModelDemo)
     app.component('CompilationPracticeDemo', CompilationPracticeDemo)
+
+    // Data Encoding Components Registration
+    app.component('GarbledTextDemo', GarbledTextDemo)
+    app.component('CharacterEncodingExplorer', CharacterEncodingExplorer)
+    app.component('StoragePyramidDemo', StoragePyramidDemo)
+    app.component('DataTransmissionDemo', DataTransmissionDemo)
+    app.component('PhotoUploadJourneyDemo', PhotoUploadJourneyDemo)
+    app.component('ImageEncodingDemo', ImageEncodingDemo)
+    app.component('AudioEncodingDemo', AudioEncodingDemo)
 
     // Deployment appendix
     app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
@@ -768,6 +822,17 @@ export default {
 
     app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)
+    app.component('FrameworkMotivationDemo', FrameworkMotivationDemo)
+    app.component('ManualVsAutoSyncDemo', ManualVsAutoSyncDemo)
+    app.component('ReactivityMechanismDemo', ReactivityMechanismDemo)
+    app.component('VirtualDomDiffDemo', VirtualDomDiffDemo)
+    app.component('FrameworkSpectrumDemo', FrameworkSpectrumDemo)
+    app.component('DataUIGapDemo', DataUIGapDemo)
+    app.component('DeclarativeFormulaDemo', DeclarativeFormulaDemo)
+    app.component('DomOperationCostDemo', DomOperationCostDemo)
+    app.component('ComponentTreeDemo', ComponentTreeDemo)
+    app.component('WhatIsDomDemo', WhatIsDomDemo)
+    app.component('WhyNoAutoSyncDemo', WhyNoAutoSyncDemo)
 
     app.component('BackendEvolutionDemo', BackendEvolutionDemo)
     app.component('BackendQuickStartDemo', BackendQuickStartDemo)
@@ -943,7 +1008,10 @@ export default {
 
     // Backend Languages Components Registration
     app.component('BackendLanguagesDemo', BackendLanguagesDemo)
-    app.component('ProgrammingLanguageComparisonDemo', ProgrammingLanguageComparisonDemo)
+    app.component(
+      'ProgrammingLanguageComparisonDemo',
+      ProgrammingLanguageComparisonDemo
+    )
     app.component('PerformanceBenchmarkDemo', PerformanceBenchmarkDemo)
     app.component('SyntaxComparisonDemo', SyntaxComparisonDemo)
     app.component('ConcurrencyModelDemo', ConcurrencyModelDemo)
@@ -966,7 +1034,10 @@ export default {
     app.component('ComponentHierarchyDemo', ComponentHierarchyDemo)
     app.component('PropsFlowDemo', PropsFlowDemo)
     app.component('EventBusDemo', EventBusDemo)
-    app.component('StateManagementComparisonDemo', StateManagementComparisonDemo)
+    app.component(
+      'StateManagementComparisonDemo',
+      StateManagementComparisonDemo
+    )
     app.component('ReduxFlowDemo', ReduxFlowDemo)
     app.component('VuexPiniaDemo', VuexPiniaDemo)
     app.component('MobxReactivityDemo', MobxReactivityDemo)
@@ -1061,7 +1132,10 @@ export default {
     app.component('CacheArchitectureOverview', CacheArchitectureOverview)
     app.component('CacheHierarchyDemo', CacheHierarchyDemo)
     app.component('CachePatternComparisonDemo', CachePatternComparisonDemo)
-    app.component('EcommerceCacheArchitectureDemo', EcommerceCacheArchitectureDemo)
+    app.component(
+      'EcommerceCacheArchitectureDemo',
+      EcommerceCacheArchitectureDemo
+    )
     app.component('CacheMonitoringDashboardDemo', CacheMonitoringDashboardDemo)
 
     // Cloud Storage CDN Extra Components Registration
@@ -1114,6 +1188,28 @@ export default {
     app.component('TaskQueueDemo', TaskQueueDemo)
     app.component('MemoryLeakDemo', MemoryLeakDemo)
     app.component('GarbageCollectionDemo', GarbageCollectionDemo)
+
+    // Development Tools Components Registration
+    app.component('EnvVarOverviewDemo', EnvVarOverviewDemo)
+    app.component('PathSearchDemo', PathSearchDemo)
+    app.component('EnvScopeDemo', EnvScopeDemo)
+    app.component('EnvExportDemo', EnvExportDemo)
+    app.component('ApiKeyDangerDemo', ApiKeyDangerDemo)
+    app.component('DotEnvDemo', DotEnvDemo)
+    app.component('ServerSecretDemo', ServerSecretDemo)
+
+    // Ports & Localhost Components Registration
+    app.component('PortAnalogyDemo', PortAnalogyDemo)
+    app.component('LocalhostLoopbackDemo', LocalhostLoopbackDemo)
+    app.component('PortConflictDemo', PortConflictDemo)
+    app.component('CommonPortsDemo', CommonPortsDemo)
+    app.component('DevServerFlowDemo', DevServerFlowDemo)
+    app.component('PortTroubleshootDemo', PortTroubleshootDemo)
+    app.component('PackageManagerOverviewDemo', PackageManagerOverviewDemo)
+    app.component('PackageInstallDemo', PackageInstallDemo)
+    app.component('DependencyTreeDemo', DependencyTreeDemo)
+    app.component('SSHAuthDemo', SSHAuthDemo)
+    app.component('RegexDemo', RegexDemo)
 
     // TypeScript Intro Components Registration
     app.component('TypeAnnotationDemo', TypeAnnotationDemo)

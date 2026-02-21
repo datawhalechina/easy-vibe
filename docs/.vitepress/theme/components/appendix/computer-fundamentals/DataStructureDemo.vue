@@ -1,7 +1,6 @@
 <template>
   <div class="data-structure-demo">
     <div class="demo-header">
-      <span class="icon">📦</span>
       <span class="title">数据结构：数据的"容器"</span>
       <span class="subtitle">不同场景选择不同的存储方式</span>
     </div>
@@ -281,7 +280,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>数据结构是数据的"容器"，不同的容器有不同的特点。选择合适的数据结构，能让程序效率提升几个数量级。
     </div>
   </div>
@@ -384,7 +382,6 @@ const treeData = ref({
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -654,5 +651,4 @@ th {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

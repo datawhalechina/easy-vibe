@@ -1,7 +1,6 @@
 <template>
   <div class="language-type-model-demo">
     <div class="demo-header">
-      <span class="icon">🏗️</span>
       <span class="title">编程语言的类型模型</span>
       <span class="subtitle">不同语言的类型系统差异</span>
     </div>
@@ -112,7 +111,6 @@ const dimensions = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

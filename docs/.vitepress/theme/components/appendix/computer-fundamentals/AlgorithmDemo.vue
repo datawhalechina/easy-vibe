@@ -1,7 +1,6 @@
 <template>
   <div class="algorithm-demo">
     <div class="demo-header">
-      <span class="icon">🎯</span>
       <span class="title">算法思维：解决问题的方法</span>
       <span class="subtitle">不同策略解决不同类型的问题</span>
     </div>
@@ -226,7 +225,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>算法是解决问题的方法。好的算法能让程序效率提升几个数量级。理解算法思维，比记住具体算法更重要。
     </div>
   </div>
@@ -377,7 +375,6 @@ const complexities = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -636,5 +633,4 @@ const complexities = [
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div class="sorting-algorithm-demo">
     <div class="demo-header">
-      <span class="icon">📊</span>
       <span class="title">排序算法</span>
       <span class="subtitle">把数据按顺序排列</span>
     </div>
@@ -197,7 +196,6 @@ const partition = async (arr, low, high) => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 
