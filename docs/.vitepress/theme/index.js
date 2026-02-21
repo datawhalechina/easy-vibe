@@ -92,15 +92,11 @@ import EmotionControlDemo from './components/appendix/audio-intro/EmotionControl
 import WebTechTriad from './components/appendix/web-basics/WebTechTriad.vue'
 import UrlToBrowserDemo from './components/appendix/web-basics/UrlToBrowserDemo.vue'
 // Git Intro Components
-import GitWorkflowDemo from './components/appendix/git-intro/GitWorkflowDemo.vue'
-import GitThreeAreasDemo from './components/appendix/git-intro/GitThreeAreasDemo.vue'
-import GitStorageDemo from './components/appendix/git-intro/GitStorageDemo.vue'
-import GitCommandDemo from './components/appendix/git-intro/GitCommandDemo.vue'
-import GitBranchMergeDemo from './components/appendix/git-intro/GitBranchMergeDemo.vue'
-import GitConflictDemo from './components/appendix/git-intro/GitConflictDemo.vue'
-import GitStashDemo from './components/appendix/git-intro/GitStashDemo.vue'
-import GitRemoteDemo from './components/appendix/git-intro/GitRemoteDemo.vue'
-import GitScenariosDemo from './components/appendix/git-intro/GitScenariosDemo.vue'
+import GitCommitFlow from './components/appendix/git-intro/GitCommitFlow.vue'
+import GitBranchVisual from './components/appendix/git-intro/GitBranchVisual.vue'
+import GitSyncDemo from './components/appendix/git-intro/GitSyncDemo.vue'
+import GitCommandCheatsheet from './components/appendix/git-intro/GitCommandCheatsheet.vue'
+
 // （保留网络相关，未修改）
 import NetworkLayers from './components/appendix/web-basics/NetworkLayers.vue'
 import TcpUdpComparison from './components/appendix/web-basics/TcpUdpComparison.vue'
@@ -161,6 +157,15 @@ import StorageHierarchyDemo from './components/appendix/computer-fundamentals/St
 import GraphStructureDemo from './components/appendix/computer-fundamentals/GraphStructureDemo.vue'
 import LanguageTypeModelDemo from './components/appendix/computer-fundamentals/LanguageTypeModelDemo.vue'
 import CompilationPracticeDemo from './components/appendix/computer-fundamentals/CompilationPracticeDemo.vue'
+
+// Data Encoding Components
+import GarbledTextDemo from './components/appendix/data-encoding/GarbledTextDemo.vue'
+import CharacterEncodingExplorer from './components/appendix/data-encoding/CharacterEncodingExplorer.vue'
+import StoragePyramidDemo from './components/appendix/data-encoding/StoragePyramidDemo.vue'
+import DataTransmissionDemo from './components/appendix/data-encoding/DataTransmissionDemo.vue'
+import PhotoUploadJourneyDemo from './components/appendix/data-encoding/PhotoUploadJourneyDemo.vue'
+import ImageEncodingDemo from './components/appendix/data-encoding/ImageEncodingDemo.vue'
+import AudioEncodingDemo from './components/appendix/data-encoding/AudioEncodingDemo.vue'
 
 // Deployment appendix components
 import DeploymentOverviewDemo from './components/appendix/deployment/DeploymentOverviewDemo.vue'
@@ -686,15 +691,12 @@ export default {
     app.component('WebTechTriad', WebTechTriad)
     app.component('UrlToBrowserDemo', UrlToBrowserDemo)
     app.component('UrlToBrowserQuickStart', UrlToBrowserQuickStart)
-    app.component('GitWorkflowDemo', GitWorkflowDemo)
-    app.component('GitThreeAreasDemo', GitThreeAreasDemo)
-    app.component('GitStorageDemo', GitStorageDemo)
-    app.component('GitCommandDemo', GitCommandDemo)
-    app.component('GitBranchMergeDemo', GitBranchMergeDemo)
-    app.component('GitConflictDemo', GitConflictDemo)
-    app.component('GitStashDemo', GitStashDemo)
-    app.component('GitRemoteDemo', GitRemoteDemo)
-    app.component('GitScenariosDemo', GitScenariosDemo)
+
+    app.component('GitCommitFlow', GitCommitFlow)
+    app.component('GitBranchVisual', GitBranchVisual)
+    app.component('GitSyncDemo', GitSyncDemo)
+    app.component('GitCommandCheatsheet', GitCommandCheatsheet)
+
     app.component('NetworkLayers', NetworkLayers)
     app.component('TcpUdpComparison', TcpUdpComparison)
     app.component('SubnetCalculator', SubnetCalculator)
@@ -760,6 +762,15 @@ export default {
     app.component('GraphStructureDemo', GraphStructureDemo)
     app.component('LanguageTypeModelDemo', LanguageTypeModelDemo)
     app.component('CompilationPracticeDemo', CompilationPracticeDemo)
+
+    // Data Encoding Components Registration
+    app.component('GarbledTextDemo', GarbledTextDemo)
+    app.component('CharacterEncodingExplorer', CharacterEncodingExplorer)
+    app.component('StoragePyramidDemo', StoragePyramidDemo)
+    app.component('DataTransmissionDemo', DataTransmissionDemo)
+    app.component('PhotoUploadJourneyDemo', PhotoUploadJourneyDemo)
+    app.component('ImageEncodingDemo', ImageEncodingDemo)
+    app.component('AudioEncodingDemo', AudioEncodingDemo)
 
     // Deployment appendix
     app.component('DeploymentOverviewDemo', DeploymentOverviewDemo)
