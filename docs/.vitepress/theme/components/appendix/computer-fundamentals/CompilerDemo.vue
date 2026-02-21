@@ -1,348 +1,254 @@
 <template>
   <div class="compiler-demo">
     <div class="demo-header">
-      <span class="icon">⚙️</span>
-      <span class="title">编译器工作流程</span>
-      <span class="subtitle">从源代码到机器码的旅程</span>
+      <span class="title">编译器的工作流程</span>
+      <span class="subtitle">从源代码到机器码的六步旅程</span>
     </div>
 
-    <div class="demo-content">
-      <div class="pipeline-visual">
-        <div class="pipeline-title">
-          编译流程
-        </div>
-        <div class="pipeline-stages">
-          <div 
-            v-for="(stage, i) in stages" 
-            :key="i"
-            :class="['stage', { active: activeStage === i }]"
-            @click="activeStage = i"
-          >
-            <div class="stage-num">
-              {{ i + 1 }}
-            </div>
-            <div class="stage-name">
-              {{ stage.name }}
-            </div>
-            <div class="stage-output">
-              {{ stage.output }}
-            </div>
+    <div class="control-panel">
+      <label>输入代码：</label>
+      <input
+        v-model="sourceCode"
+        type="text"
+        class="code-input"
+        placeholder="试试输入 int x = 10 + 5;"
+      />
+    </div>
+
+    <div class="visualization-area">
+      <!-- Pipeline -->
+      <div class="pipeline">
+        <div
+          v-for="(stage, i) in stages"
+          :key="i"
+          :class="['pipeline-stage', { active: activeStage === i }]"
+          @click="activeStage = i"
+        >
+          <div class="stage-indicator">
+            <span class="stage-num">{{ i + 1 }}</span>
           </div>
-          <div
-            v-for="i in stages.length - 1"
-            :key="'arrow-' + i"
-            class="stage-arrow"
-          >
-            →
+          <div class="stage-info">
+            <span class="stage-name">{{ stage.name }}</span>
+            <span class="stage-output">→ {{ stage.output }}</span>
           </div>
         </div>
       </div>
 
-      <div
-        v-if="currentStage"
-        class="stage-detail"
-      >
+      <!-- Active Stage Detail -->
+      <div class="stage-detail">
         <div class="detail-header">
+          <span class="detail-num">{{ activeStage + 1 }}</span>
           <span class="detail-name">{{ currentStage.name }}</span>
+          <span class="detail-badge">输出：{{ currentStage.output }}</span>
         </div>
-        <div class="detail-desc">
-          {{ currentStage.desc }}
-        </div>
+        <div class="detail-desc">{{ currentStage.desc }}</div>
+
         <div class="detail-tasks">
-          <div class="task-title">
-            主要任务
-          </div>
-          <ul>
-            <li
-              v-for="(task, j) in currentStage.tasks"
-              :key="j"
-            >
-              {{ task }}
-            </li>
-          </ul>
+          <span
+            v-for="(task, j) in currentStage.tasks"
+            :key="j"
+            class="task-chip"
+            >{{ task }}</span
+          >
         </div>
+
         <div class="detail-example">
-          <div class="example-title">
-            示例
-          </div>
           <pre><code>{{ currentStage.example }}</code></pre>
         </div>
       </div>
 
-      <div class="interactive-demo">
-        <div class="demo-title">
-          词法分析演示
-        </div>
-        <div class="lexer-input">
-          <label>输入代码：</label>
-          <input
-            v-model="sourceCode"
-            type="text"
-            placeholder="例如: int x = 10 + 5;"
-          >
-        </div>
-        <div class="lexer-output">
-          <div class="output-title">
-            词法单元 (Tokens)
-          </div>
-          <div class="tokens">
-            <div 
-              v-for="(token, i) in tokens" 
-              :key="i"
-              :class="['token', token.type]"
-            >
-              <span class="token-value">{{ token.value }}</span>
-              <span class="token-type">{{ token.type }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ast-demo">
-        <div class="demo-title">
-          语法树 (AST) 可视化
-        </div>
-        <div class="ast-input">
-          <label>表达式：</label>
-          <input
-            v-model="expression"
-            type="text"
-            placeholder="例如: 1 + 2 * 3"
-          >
-        </div>
-        <div class="ast-visual">
+      <!-- Interactive Lexer -->
+      <div class="lexer-section">
+        <div class="section-title">实时词法分析</div>
+        <div class="tokens-flow">
           <div
-            v-if="ast"
-            class="ast-node root"
-          >
-            <div class="node-value">
-              {{ ast.value }}
-            </div>
-            <div
-              v-if="ast.left || ast.right"
-              class="node-children"
-            >
-              <div
-                v-if="ast.left"
-                class="ast-node left"
-              >
-                <div class="node-value">
-                  {{ ast.left.value }}
-                </div>
-              </div>
-              <div
-                v-if="ast.right"
-                class="ast-node right"
-              >
-                <div class="node-value">
-                  {{ ast.right.value }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="comparison-section">
-        <div class="section-title">
-          编译型 vs 解释型 vs JIT
-        </div>
-        <div class="comparison-grid">
-          <div
-            v-for="(item, i) in executionModels"
+            v-for="(token, i) in tokens"
             :key="i"
-            class="comparison-item"
+            :class="['token-chip', token.type]"
           >
-            <div class="item-name">
-              {{ item.name }}
+            <span class="token-value">{{ token.value }}</span>
+            <span class="token-type">{{ token.type }}</span>
+          </div>
+          <div v-if="!tokens.length" class="tokens-empty">
+            输入代码后自动分析
+          </div>
+        </div>
+      </div>
+
+      <!-- Execution Models -->
+      <div class="exec-section">
+        <div class="section-title">三种执行方式对比</div>
+        <div class="exec-grid">
+          <div
+            v-for="model in executionModels"
+            :key="model.name"
+            class="exec-card"
+          >
+            <div class="exec-name">{{ model.name }}</div>
+            <div class="exec-flow">
+              <span v-for="(step, i) in model.steps" :key="i" class="flow-tag">
+                {{ step }}
+                <span v-if="i < model.steps.length - 1" class="flow-arrow"
+                  >→</span
+                >
+              </span>
             </div>
-            <div class="item-flow">
-              {{ item.flow }}
+            <div class="exec-traits">
+              <span class="trait pro">{{ model.pro }}</span>
+              <span class="trait con">{{ model.con }}</span>
             </div>
-            <div class="item-pros">
-              {{ item.pros }}
-            </div>
-            <div class="item-cons">
-              {{ item.cons }}
-            </div>
-            <div class="item-langs">
-              {{ item.langs }}
-            </div>
+            <div class="exec-langs">{{ model.langs }}</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
-      <strong>核心思想：</strong>编译器将人类可读的源代码转换为机器可执行的指令。主要阶段包括词法分析、语法分析、语义分析、中间代码生成、优化和目标代码生成。
+      <strong>核心思想：</strong
+      >编译器像翻译官，把人类能读懂的代码逐步翻译成机器能执行的指令。六个阶段各司其职：识别单词
+      → 理解语法 → 检查语义 → 生成中间码 → 优化 → 生成机器码。
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 
 const activeStage = ref(0)
+const sourceCode = ref('int x = 10 + 5;')
 
 const stages = [
   {
     name: '词法分析',
     output: 'Token 流',
-    desc: '将源代码分解为一个个词法单元（Token）',
-    tasks: ['识别关键字、标识符、字面量、运算符', '过滤空白和注释', '记录位置信息'],
-    example: `源代码: int x = 10;
-Tokens: [int][x][=][10][;]`
+    desc: '把源代码拆成一个个"单词"（Token），就像读句子时先认出每个词',
+    tasks: ['识别关键字', '识别标识符', '识别数字', '识别运算符', '过滤空白'],
+    example: `int x = 10 + 5;
+→ [int] [x] [=] [10] [+] [5] [;]
+    关键字 标识符 运算符 数字 运算符 数字 分隔符`
   },
   {
     name: '语法分析',
-    output: 'AST',
-    desc: '根据语法规则，将 Token 流组织成语法树',
-    tasks: ['构建抽象语法树 (AST)', '检查语法错误', '确定运算优先级'],
-    example: `表达式: 1 + 2 * 3
-
-    AST:
+    output: 'AST 语法树',
+    desc: '根据语法规则把 Token 组织成树形结构（AST），确定运算优先级',
+    tasks: ['构建语法树', '确定优先级', '检查语法错误'],
+    example: `1 + 2 * 3  →  语法树:
        +
       / \\
-     1   *
+     1   *       ← * 优先级高，先结合
         / \\
        2   3`
   },
   {
     name: '语义分析',
     output: '带类型的 AST',
-    desc: '检查语义正确性，进行类型检查',
-    tasks: ['类型检查', '作用域分析', '符号表构建', '类型推断'],
-    example: `int x = "hello"; // 类型错误!
-int y = 10 + 5;  // 正确`
+    desc: '检查代码的"意思"是否正确——类型对不对、变量有没有声明',
+    tasks: ['类型检查', '作用域分析', '构建符号表', '类型推断'],
+    example: `int x = "hello";  // ❌ 类型错误：int ≠ string
+int y = 10 + 5;   // ✅ 类型正确：int + int = int`
   },
   {
-    name: '中间代码',
-    output: 'IR',
-    desc: '生成平台无关的中间表示',
-    tasks: ['生成三地址码或 SSA', '便于优化', '支持多目标平台'],
-    example: `x = 10 + 5
-// 三地址码:
-t1 = 10 + 5
-x = t1`
+    name: '中间代码生成',
+    output: 'IR（中间表示）',
+    desc: '生成平台无关的"中间语言"，方便后续优化和跨平台编译',
+    tasks: ['生成三地址码', '平台无关', '便于优化'],
+    example: `源码: int x = (a + b) * c;
+中间码:
+  t1 = a + b
+  t2 = t1 * c
+  x = t2`
   },
   {
-    name: '优化',
+    name: '代码优化',
     output: '优化后的 IR',
-    desc: '对中间代码进行各种优化',
-    tasks: ['常量折叠', '死代码消除', '循环优化', '内联展开'],
-    example: `// 优化前
-x = 10 + 5
-y = x * 2
-
-// 优化后(常量折叠)
-x = 15
-y = 30`
+    desc: '让代码跑得更快——去掉多余计算、提前算好常量',
+    tasks: ['常量折叠', '死代码消除', '内联展开', '循环优化'],
+    example: `优化前:                优化后:
+int x = 10 + 5;   →  int x = 15;   (常量折叠)
+int y = x * 2;    →  int y = 30;   (常量传播)
+if (false) {...}   →  (删除)        (死代码消除)`
   },
   {
-    name: '代码生成',
+    name: '目标代码生成',
     output: '机器码',
-    desc: '生成目标机器的机器码',
-    tasks: ['指令选择', '寄存器分配', '指令调度', '生成可执行文件'],
-    example: `// x = 15 的汇编
-mov eax, 15
-mov [x], eax`
+    desc: '最终翻译成 CPU 能直接执行的机器指令',
+    tasks: ['指令选择', '寄存器分配', '指令调度'],
+    example: `; int x = 15;
+mov  eax, 15          ; 把 15 放入 eax 寄存器
+mov  dword ptr [x], eax ; 存到变量 x 的内存地址`
   }
 ]
 
 const currentStage = computed(() => stages[activeStage.value])
 
-const sourceCode = ref('int x = 10 + 5;')
-
-const keywords = ['int', 'float', 'if', 'else', 'while', 'for', 'return', 'void', 'class', 'public', 'private']
-const operators = ['+', '-', '*', '/', '=', '==', '!=', '<', '>', '<=', '>=']
+const keywords = [
+  'int',
+  'float',
+  'double',
+  'char',
+  'void',
+  'if',
+  'else',
+  'while',
+  'for',
+  'return',
+  'class',
+  'public',
+  'private',
+  'string',
+  'bool'
+]
 
 const tokens = computed(() => {
   const code = sourceCode.value
   if (!code.trim()) return []
-  
+
   const result = []
-  const words = code.split(/(\s+|[;,\(\)\{\}\[\]])/)
-  
-  for (const word of words) {
-    if (!word.trim()) continue
-    
+  const regex =
+    /([a-zA-Z_]\w*|\d+(?:\.\d+)?|[+\-*/=<>!]=?|[;,\(\)\{\}\[\]]|"[^"]*"|'[^']*')/g
+  let match
+
+  while ((match = regex.exec(code)) !== null) {
+    const word = match[1]
     if (keywords.includes(word)) {
       result.push({ value: word, type: 'keyword' })
-    } else if (operators.includes(word)) {
-      result.push({ value: word, type: 'operator' })
-    } else if (/^\d+$/.test(word)) {
+    } else if (/^\d/.test(word)) {
       result.push({ value: word, type: 'number' })
-    } else if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(word)) {
-      result.push({ value: word, type: 'identifier' })
-    } else if (word === ';') {
+    } else if (/^[+\-*/=<>!]/.test(word)) {
+      result.push({ value: word, type: 'operator' })
+    } else if (/^[;,\(\)\{\}\[\]]$/.test(word)) {
       result.push({ value: word, type: 'punctuation' })
+    } else if (/^["']/.test(word)) {
+      result.push({ value: word, type: 'string' })
     } else {
-      result.push({ value: word, type: 'unknown' })
+      result.push({ value: word, type: 'identifier' })
     }
   }
-  
+
   return result
-})
-
-const expression = ref('1 + 2 * 3')
-
-const ast = computed(() => {
-  const expr = expression.value.trim()
-  if (!expr) return null
-  
-  const parseExpression = (str) => {
-    str = str.trim()
-    
-    const addSubMatch = str.match(/^(.+?)\s*([+-])\s*(.+)$/)
-    if (addSubMatch) {
-      return {
-        value: addSubMatch[2],
-        left: parseExpression(addSubMatch[1]),
-        right: parseExpression(addSubMatch[3])
-      }
-    }
-    
-    const mulDivMatch = str.match(/^(.+?)\s*([*/])\s*(.+)$/)
-    if (mulDivMatch) {
-      return {
-        value: mulDivMatch[2],
-        left: parseExpression(mulDivMatch[1]),
-        right: parseExpression(mulDivMatch[3])
-      }
-    }
-    
-    if (/^\d+$/.test(str)) {
-      return { value: str }
-    }
-    
-    return { value: str }
-  }
-  
-  return parseExpression(expr)
 })
 
 const executionModels = [
   {
     name: '编译型',
-    flow: '源码 → 编译 → 机器码 → 执行',
-    pros: '执行快，编译期检查',
-    cons: '编译慢，跨平台难',
+    steps: ['源码', '编译器', '机器码', 'CPU 执行'],
+    pro: '执行速度快',
+    con: '需要编译等待',
     langs: 'C, C++, Rust, Go'
   },
   {
     name: '解释型',
-    flow: '源码 → 解释器 → 逐行执行',
-    pros: '跨平台，开发快',
-    cons: '执行慢，运行时检查',
+    steps: ['源码', '解释器', '逐行执行'],
+    pro: '即写即运行',
+    con: '执行速度慢',
     langs: 'Python, Ruby, PHP'
   },
   {
-    name: 'JIT',
-    flow: '源码 → 字节码 → JIT编译 → 执行',
-    pros: '兼顾性能和跨平台',
-    cons: '启动慢，内存占用大',
-    langs: 'Java, JavaScript(V8)'
+    name: 'JIT 即时编译',
+    steps: ['源码', '字节码', 'JIT 热点编译', '执行'],
+    pro: '兼顾性能和灵活',
+    con: '启动较慢',
+    langs: 'Java, JavaScript (V8)'
   }
 ]
 </script>
@@ -350,315 +256,334 @@ const executionModels = [
 <style scoped>
 .compiler-demo {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }
 
 .demo-header {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: baseline;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
-
-.pipeline-visual {
-  background: var(--vp-c-bg);
-  padding: 0.75rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-
-.pipeline-title {
+.demo-header .title {
   font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.82rem;
 }
 
-.pipeline-stages {
+.control-panel {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  flex-wrap: wrap;
-  position: relative;
+  gap: 0.5rem;
+  background: var(--vp-c-bg);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  margin-bottom: 0.75rem;
 }
 
-.stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.4rem;
+.control-panel label {
+  font-size: 0.82rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.code-input {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
   background: var(--vp-c-bg-alt);
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.85rem;
+}
+
+/* Pipeline */
+.pipeline {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pipeline-stage {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  background: var(--vp-c-bg);
   border-radius: 6px;
   cursor: pointer;
-  min-width: 80px;
   border: 2px solid transparent;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 100px;
 }
 
-.stage:hover {
-  background: var(--vp-c-bg-soft);
-}
-
-.stage.active {
+.pipeline-stage.active {
   border-color: var(--vp-c-brand);
   background: var(--vp-c-brand-soft);
 }
 
+.stage-indicator {
+  flex-shrink: 0;
+}
+
 .stage-num {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--vp-c-brand);
   color: white;
   border-radius: 50%;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: bold;
-  margin-bottom: 0.25rem;
 }
 
 .stage-name {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: bold;
+  display: block;
 }
 
 .stage-output {
   font-size: 0.65rem;
-  color: var(--vp-c-text-2);
-}
-
-.stage-arrow {
   color: var(--vp-c-text-3);
-  font-size: 0.8rem;
 }
 
+/* Stage Detail */
 .stage-detail {
   background: var(--vp-c-bg);
   padding: 0.75rem;
   border-radius: 6px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .detail-header {
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.detail-num {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--vp-c-brand);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 .detail-name {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+.detail-badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.4rem;
+  background: var(--vp-c-brand-soft);
+  border-radius: 3px;
   color: var(--vp-c-brand);
 }
 
 .detail-desc {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .detail-tasks {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
   margin-bottom: 0.5rem;
 }
 
-.task-title, .example-title {
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-}
-
-.detail-tasks ul {
-  margin: 0;
-  padding-left: 1rem;
-  font-size: 0.8rem;
+.task-chip {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--vp-c-bg-alt);
+  border-radius: 3px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .detail-example {
   background: var(--vp-c-bg-alt);
-  padding: 0.5rem;
   border-radius: 4px;
+  overflow: hidden;
 }
 
-pre {
+.detail-example pre {
   margin: 0;
+  padding: 0.5rem;
   font-size: 0.75rem;
+  font-family: var(--vp-font-family-mono);
   white-space: pre-wrap;
+  line-height: 1.5;
 }
 
-code {
-  font-family: monospace;
-}
-
-.interactive-demo, .ast-demo {
+/* Lexer */
+.lexer-section {
   background: var(--vp-c-bg);
   padding: 0.75rem;
   border-radius: 6px;
-  margin-bottom: 1rem;
-}
-
-.demo-title {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.lexer-input, .ast-input {
-  margin-bottom: 0.5rem;
-}
-
-.lexer-input label, .ast-input label {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.25rem;
-}
-
-.lexer-input input, .ast-input input {
-  width: 100%;
-  padding: 0.4rem;
+  margin-bottom: 0.75rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  background: var(--vp-c-bg-alt);
-  font-family: monospace;
-  font-size: 0.85rem;
 }
 
-.output-title {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.25rem;
+.section-title {
+  font-weight: bold;
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
 }
 
-.tokens {
+.tokens-flow {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.35rem;
   flex-wrap: wrap;
 }
 
-.token {
+.token-chip {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.25rem 0.4rem;
   border-radius: 4px;
-  font-size: 0.75rem;
+  min-width: 35px;
 }
 
-.token.keyword { background: #d4edda; }
-.token.operator { background: #fff3cd; }
-.token.number { background: #cce5ff; }
-.token.identifier { background: #e2e3e5; }
-.token.punctuation { background: #f8d7da; }
+.token-chip.keyword {
+  background: rgba(16, 185, 129, 0.15);
+}
+.token-chip.identifier {
+  background: rgba(59, 130, 246, 0.15);
+}
+.token-chip.number {
+  background: rgba(245, 158, 11, 0.15);
+}
+.token-chip.operator {
+  background: rgba(139, 92, 246, 0.15);
+}
+.token-chip.punctuation {
+  background: rgba(239, 68, 68, 0.15);
+}
+.token-chip.string {
+  background: rgba(236, 72, 153, 0.15);
+}
 
 .token-value {
-  font-family: monospace;
+  font-family: var(--vp-font-family-mono);
   font-weight: bold;
+  font-size: 0.82rem;
 }
 
 .token-type {
-  font-size: 0.65rem;
-  color: var(--vp-c-text-2);
+  font-size: 0.62rem;
+  color: var(--vp-c-text-3);
 }
 
-.ast-visual {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
+.tokens-empty {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3);
+  padding: 0.5rem;
 }
 
-.ast-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Exec Section */
+.exec-section {
+  margin-bottom: 0;
 }
 
-.node-value {
-  padding: 0.4rem 0.6rem;
-  background: var(--vp-c-brand);
-  color: white;
-  border-radius: 4px;
-  font-weight: bold;
-  font-family: monospace;
-}
-
-.node-children {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  position: relative;
-}
-
-.node-children::before {
-  content: '';
-  position: absolute;
-  top: -0.5rem;
-  left: 50%;
-  width: 1px;
-  height: 0.5rem;
-  background: var(--vp-c-divider);
-}
-
-.ast-node.left .node-value,
-.ast-node.right .node-value {
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand);
-}
-
-.comparison-section {
-  background: var(--vp-c-bg);
-  padding: 0.75rem;
-  border-radius: 6px;
-}
-
-.section-title {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.comparison-grid {
+.exec-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.5rem;
 }
 
-.comparison-item {
-  padding: 0.5rem;
-  background: var(--vp-c-bg-alt);
+.exec-card {
+  background: var(--vp-c-bg);
+  padding: 0.5rem 0.75rem;
   border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
 }
 
-.item-name {
+.exec-name {
   font-weight: bold;
-  font-size: 0.85rem;
-  margin-bottom: 0.25rem;
+  font-size: 0.88rem;
   color: var(--vp-c-brand);
-}
-
-.item-flow {
-  font-size: 0.75rem;
-  font-family: monospace;
   margin-bottom: 0.25rem;
 }
 
-.item-pros, .item-cons {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
+.exec-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  margin-bottom: 0.25rem;
 }
 
-.item-pros::before { content: '✅ '; }
-.item-cons::before { content: '❌ '; }
+.flow-tag {
+  font-size: 0.72rem;
+  font-family: var(--vp-font-family-mono);
+}
 
-.item-langs {
-  font-size: 0.7rem;
+.flow-arrow {
   color: var(--vp-c-text-3);
-  margin-top: 0.25rem;
+  margin: 0 0.1rem;
 }
 
+.exec-traits {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+
+.trait {
+  font-size: 0.72rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+.trait.pro {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--vp-c-green-1);
+}
+
+.trait.pro::before {
+  content: '✅ ';
+}
+
+.trait.con {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--vp-c-danger-1);
+}
+
+.trait.con::before {
+  content: '❌ ';
+}
+
+.exec-langs {
+  font-size: 0.72rem;
+  color: var(--vp-c-text-3);
+}
+
+/* Info Box */
 .info-box {
   background: var(--vp-c-bg-alt);
   padding: 0.75rem;
@@ -670,5 +595,22 @@ code {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
+.info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .pipeline {
+    flex-direction: column;
+  }
+
+  .pipeline-stage {
+    min-width: auto;
+  }
+
+  .exec-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

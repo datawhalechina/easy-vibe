@@ -1,7 +1,6 @@
 <template>
   <div class="tcp-udp-demo">
     <div class="demo-header">
-      <span class="icon">📦</span>
       <span class="title">TCP vs UDP：可靠 vs 快速</span>
       <span class="subtitle">两种不同的传输策略</span>
     </div>
@@ -184,7 +183,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>TCP 像挂号信，确保送达但较慢；UDP 像平信，快速但不保证送达。选择哪种协议取决于应用场景：需要可靠性选 TCP，需要实时性选 UDP。
     </div>
   </div>
@@ -327,7 +325,6 @@ const runDemo = async () => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -639,5 +636,4 @@ th {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

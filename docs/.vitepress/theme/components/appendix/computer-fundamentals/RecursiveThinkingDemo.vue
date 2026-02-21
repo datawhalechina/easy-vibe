@@ -1,7 +1,6 @@
 <template>
   <div class="recursive-thinking-demo">
     <div class="demo-header">
-      <span class="icon">🔄</span>
       <span class="title">递归思维：自己调用自己</span>
       <span class="subtitle">把大问题分解成相同的小问题</span>
     </div>
@@ -190,7 +189,6 @@ const examples = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

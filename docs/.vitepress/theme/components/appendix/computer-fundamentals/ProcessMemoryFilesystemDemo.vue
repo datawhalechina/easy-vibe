@@ -1,7 +1,6 @@
 <template>
   <div class="pmf-collab-demo">
     <div class="demo-header">
-      <span class="icon">🤝</span>
       <span class="title">进程、内存、文件系统的协作</span>
       <span class="subtitle">三大管理模块如何协同工作</span>
     </div>
@@ -242,7 +241,6 @@ const getIcon = (type) => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

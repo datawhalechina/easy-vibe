@@ -1,7 +1,6 @@
 <template>
   <div class="process-demo">
     <div class="demo-header">
-      <span class="icon">🔄</span>
       <span class="title">进程：程序的"分身术"</span>
       <span class="subtitle">一个程序如何同时运行多个实例</span>
     </div>
@@ -82,7 +81,6 @@
     </div>
 
     <div class="info-box">
-      <span class="icon">💡</span>
       <strong>核心思想：</strong>进程是程序的"运行实例"。同一个程序可以启动多个进程，每个进程有独立的内存空间，互不干扰。
     </div>
   </div>
@@ -129,7 +127,6 @@ const memorySegments = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
 .demo-header .title { font-weight: bold; font-size: 1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
 
@@ -272,5 +269,4 @@ const memorySegments = [
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
 </style>

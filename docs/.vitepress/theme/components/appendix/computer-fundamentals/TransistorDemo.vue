@@ -1,129 +1,89 @@
 <template>
   <div class="transistor-demo">
     <div class="demo-header">
-      <span class="icon">⚡</span>
       <span class="title">晶体管：数字世界的开关</span>
-      <span class="subtitle">一个开关如何变成计算能力</span>
+      <span class="subtitle">Gate 电压决定电流能否通过</span>
+    </div>
+
+    <div class="control-panel">
+      <div class="control-left">
+        <span class="control-label">栅极输入（Gate）</span>
+        <button class="gate-toggle" :class="{ on: isOn }" @click="toggleSwitch">
+          {{ isOn ? '1（高电压）' : '0（低电压）' }}
+        </button>
+      </div>
+      <div class="control-right">
+        <span class="chip">通道：{{ isOn ? '导通' : '断开' }}</span>
+        <span class="chip">输出：{{ isOn ? '1' : '0' }}</span>
+      </div>
     </div>
 
     <div class="demo-content">
-      <div class="switch-container">
-        <div
-          class="switch-area"
-          @click="toggleSwitch"
-        >
-          <div class="transistor-symbol">
-            <svg
-              viewBox="0 0 100 80"
-              class="transistor-svg"
-            >
-              <line
-                x1="10"
-                y1="40"
-                x2="35"
-                y2="40"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="2"
-              />
-              <line
-                x1="65"
-                y1="40"
-                x2="90"
-                y2="40"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="2"
-              />
-              <line
-                x1="50"
-                y1="20"
-                x2="50"
-                y2="35"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="2"
-              />
-              <line
-                x1="50"
-                y1="45"
-                x2="50"
-                y2="60"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="2"
-              />
-              <line
-                x1="35"
-                y1="30"
-                x2="35"
-                y2="50"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="3"
-              />
-              <line
-                x1="65"
-                y1="30"
-                x2="65"
-                y2="50"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="3"
-              />
-              <line
-                x1="35"
-                y1="40"
-                x2="65"
-                y2="40"
-                stroke="var(--vp-c-text-1)"
-                stroke-width="2"
-              />
-              <circle
-                cx="50"
-                cy="60"
-                r="4"
-                fill="var(--vp-c-text-1)"
-              />
-            </svg>
+      <div class="transistor-diagram">
+        <div class="gate-column">
+          <div class="gate-title">控制端 Gate</div>
+          <div class="gate-value" :class="{ on: isOn }">
+            {{ isOn ? '1' : '0' }}
           </div>
-          <div class="switch-label">
-            <span class="state-label">{{ isOn ? 'ON (1)' : 'OFF (0)' }}</span>
-            <div
-              class="current-flow"
-              :class="{ active: isOn }"
-            >
-              <span class="flow-indicator">电流</span>
-            </div>
+          <div class="gate-arrow">↓ 控制</div>
+        </div>
+
+        <div class="main-channel">
+          <div class="terminal-box">源极 Source</div>
+          <div class="channel-track" :class="{ on: isOn }">
+            <span v-if="!isOn" class="block-icon">✕</span>
+            <template v-else>
+              <span class="flow-dot d1" />
+              <span class="flow-dot d2" />
+              <span class="flow-dot d3" />
+            </template>
           </div>
+          <div class="terminal-box">漏极 Drain</div>
+        </div>
+
+        <div class="result-line" :class="{ on: isOn }">
+          {{ isOn ? '电流通过：Source → Drain' : '电流被阻断：无法通过通道' }}
         </div>
       </div>
 
       <div class="truth-table">
-        <div class="table-title">
-          晶体管状态表
-        </div>
+        <div class="table-title">晶体管状态表</div>
         <table>
           <thead>
             <tr>
-              <th>栅极(控制端)</th>
-              <th>源极→漏极</th>
+              <th>Gate 输入</th>
+              <th>通道状态</th>
               <th>输出</th>
             </tr>
           </thead>
           <tbody>
             <tr :class="{ highlight: !isOn }">
-              <td>低电压 (0)</td>
+              <td>0（低电压）</td>
               <td>断开</td>
               <td>0</td>
             </tr>
             <tr :class="{ highlight: isOn }">
-              <td>高电压 (1)</td>
+              <td>1（高电压）</td>
               <td>导通</td>
               <td>1</td>
             </tr>
           </tbody>
         </table>
+        <div class="table-hint">
+          点上方按钮切换 Gate，观察“通道状态”和“电流流动”如何同步变化。
+        </div>
       </div>
     </div>
 
+    <div class="step-guide">
+      <div class="step-item">① 改变 Gate 电压（0/1）</div>
+      <div class="step-item">② 通道变为断开/导通</div>
+      <div class="step-item">③ 输出随之变成 0/1</div>
+    </div>
+
     <div class="info-box">
-      <span class="icon">💡</span>
-      <strong>核心思想：</strong>晶体管就是一个用电控制的开关。给它高电压(1)，它就导通；给低电压(0)，它就断开。这是所有数字计算的基础。
+      <strong>核心思想：</strong>晶体管本质是“电控开关”：Gate=1 时导通，Gate=0
+      时断开。所有数字计算都建立在这种 0/1 开关之上。
     </div>
   </div>
 </template>
@@ -151,95 +111,236 @@ const toggleSwitch = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.8rem;
 }
 
-.demo-header .icon { font-size: 1.25rem; }
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
 
-.demo-content {
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.control-panel {
   display: flex;
-  gap: 1.5rem;
   align-items: center;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  margin-bottom: 0.8rem;
   flex-wrap: wrap;
 }
 
-.switch-container {
-  flex: 1;
-  min-width: 200px;
-}
-
-.switch-area {
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-align: center;
-}
-
-.switch-area:hover {
-  border-color: var(--vp-c-brand);
-}
-
-.transistor-symbol {
-  width: 120px;
-  height: 80px;
-  margin: 0 auto 0.5rem;
-}
-
-.transistor-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.switch-label {
+.control-left {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
   align-items: center;
+  gap: 0.55rem;
 }
 
-.state-label {
+.control-label {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+}
+
+.gate-toggle {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
   font-weight: bold;
-  font-size: 1.1rem;
-  color: var(--vp-c-brand);
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.current-flow {
+.gate-toggle.on {
+  background: var(--vp-c-success-soft);
+  color: var(--vp-c-success-1);
+  border-color: var(--vp-c-success);
+  color: var(--vp-c-success-1);
+  background: var(--vp-c-success-soft);
+}
+
+.control-right {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.chip {
+  font-size: 0.78rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+}
+.chip.active {
+  border-color: var(--vp-c-success);
+}
+
+.legend-chip {
+  font-size: 0.72rem;
+  padding: 0.16rem 0.42rem;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+}
+
+.demo-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0.9rem;
+}
+
+.transistor-diagram {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  padding: 0.8rem;
+}
+
+.gate-column {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.gate-title {
   font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  opacity: 0.5;
-  transition: all 0.3s;
+  color: var(--vp-c-text-2);
 }
 
-.current-flow.active {
-  opacity: 1;
-  color: var(--vp-c-success);
+.gate-value {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--vp-c-divider);
+  font-weight: bold;
+}
+
+.gate-value.on {
+  border-color: var(--vp-c-success);
+  color: var(--vp-c-success-1);
+  background: var(--vp-c-success-soft);
+}
+
+.gate-arrow {
+  font-size: 0.78rem;
+  color: var(--vp-c-text-2);
+}
+
+.main-channel {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.terminal-box {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg-alt);
+  padding: 0.45rem;
+  text-align: center;
+  font-size: 0.78rem;
+}
+
+.channel-track {
+  height: 2.4rem;
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: #e5e7eb;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.channel-track.on {
+  background: var(--vp-c-success-soft);
+  border-color: var(--vp-c-success);
+}
+
+.block-icon {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--vp-c-text-3);
+}
+
+.flow-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--vp-c-success);
+  position: absolute;
+  left: -8%;
+  animation: flow 1.5s linear infinite;
+}
+
+.flow-dot.d2 {
+  animation-delay: 0.45s;
+}
+
+.flow-dot.d3 {
+  animation-delay: 0.9s;
+}
+
+@keyframes flow {
+  from {
+    left: -8%;
+  }
+  to {
+    left: 105%;
+  }
+}
+
+.result-line {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+  padding: 0.45rem 0.55rem;
+  background: var(--vp-c-bg-alt);
+  border-radius: 6px;
+}
+
+.result-line.on {
+  color: var(--vp-c-success-1);
 }
 
 .truth-table {
-  flex: 1;
-  min-width: 250px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  padding: 0.8rem;
 }
 
 .table-title {
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
   font-size: 0.9rem;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
 }
 
-th, td {
+th,
+td {
   border: 1px solid var(--vp-c-divider);
-  padding: 0.5rem;
+  padding: 0.45rem;
   text-align: center;
 }
 
@@ -249,6 +350,27 @@ th {
 
 tr.highlight {
   background: var(--vp-c-brand-soft);
+}
+
+.table-hint {
+  margin-top: 0.55rem;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+.step-guide {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+}
+
+.step-item {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.78rem;
 }
 
 .info-box {
@@ -262,5 +384,18 @@ tr.highlight {
   gap: 0.25rem;
 }
 
-.info-box .icon { flex-shrink: 0; }
+.info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .demo-content {
+    grid-template-columns: 1fr;
+  }
+
+  .step-guide {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

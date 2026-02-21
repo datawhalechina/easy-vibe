@@ -1,7 +1,6 @@
 <template>
   <div class="data-link-demo">
     <div class="demo-header">
-      <span class="icon">🔗</span>
       <span class="title">数据链路层：帧的传递</span>
       <span class="subtitle">MAC 地址如何定位设备</span>
     </div>
@@ -195,7 +194,6 @@ const transferSteps = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

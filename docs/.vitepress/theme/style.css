@@ -405,3 +405,15 @@
   position: absolute;
   will-change: top;
 }
+
+/* Unified demo info-box label alignment */
+.vp-doc .info-box {
+  display: flex;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+.vp-doc .info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}

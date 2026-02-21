@@ -1,7 +1,6 @@
 <template>
   <div class="tree-structure-demo">
     <div class="demo-header">
-      <span class="icon">🌳</span>
       <span class="title">树形结构：层级关系的表示</span>
       <span class="subtitle">像家谱一样的组织方式</span>
     </div>
@@ -236,7 +235,6 @@ const binaryTreeLines = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

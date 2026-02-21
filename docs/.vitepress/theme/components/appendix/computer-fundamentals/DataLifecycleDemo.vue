@@ -1,7 +1,6 @@
 <template>
   <div class="data-lifecycle-demo">
     <div class="demo-header">
-      <span class="icon">🔄</span>
       <span class="title">数据的生命周期</span>
       <span class="subtitle">从输入到存储到传输到输出的全过程</span>
     </div>
@@ -185,7 +184,6 @@ const keyPoints = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

@@ -1,7 +1,6 @@
 <template>
   <div class="os-overview-demo">
     <div class="demo-header">
-      <span class="icon">🎛️</span>
       <span class="title">操作系统：计算机的"大管家"</span>
       <span class="subtitle">让多个程序和谐共处的艺术</span>
     </div>
@@ -162,7 +161,6 @@ const getActiveAppDesc = () => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

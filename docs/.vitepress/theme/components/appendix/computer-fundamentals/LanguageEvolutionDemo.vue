@@ -1,7 +1,6 @@
 <template>
   <div class="language-evolution-demo">
     <div class="demo-header">
-      <span class="icon">📜</span>
       <span class="title">编程语言的演化</span>
       <span class="subtitle">从机器语言到高级语言</span>
     </div>
@@ -90,7 +89,6 @@
           <div class="trend-desc">类型系统、内存管理等安全机制</div>
         </div>
         <div class="trend-card">
-          <div class="trend-icon">⚡</div>
           <div class="trend-title">越来越高效</div>
           <div class="trend-desc">编译器优化、JIT 技术提升性能</div>
         </div>
@@ -234,7 +232,6 @@ const currentEra = computed(() => eras[activeEra.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 

@@ -1,7 +1,6 @@
 <template>
   <div class="compilation-practice-demo">
     <div class="demo-header">
-      <span class="icon">⚙️</span>
       <span class="title">编译过程实践</span>
       <span class="subtitle">从代码到可执行文件</span>
     </div>
@@ -148,7 +147,6 @@ const outputFiles = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .icon { font-size: 1.5rem; }
 .demo-header .title { font-weight: 700; font-size: 1.1rem; }
 .demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
 
