@@ -65,11 +65,6 @@
     description="终端操作、Shell 命令、脚本自动化"
   />
 <NavCard
-    href="/zh-cn/appendix/2-development-tools/editors-and-ai"
-    title="编辑器与 AI 编程助手"
-    description="AI 时代的编辑器使用方式与效率提升技巧"
-  />
-<NavCard
     href="/zh-cn/appendix/2-development-tools/git-version-control"
     title="Git：代码的时光机"
     description="版本控制、分支管理、团队协作"

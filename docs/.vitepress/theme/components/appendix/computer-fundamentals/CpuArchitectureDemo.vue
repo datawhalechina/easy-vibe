@@ -2,105 +2,85 @@
   <div class="cpu-arch-demo">
     <div class="demo-header">
       <span class="title">CPU 架构全貌</span>
-      <span class="subtitle">从门电路到处理器</span>
+      <span class="subtitle">从功能单元到完整核心</span>
     </div>
 
-    <div class="demo-content">
-      <div class="architecture-layers">
-        <div 
-          v-for="(layer, i) in layers" 
-          :key="layer.name"
-          class="layer"
-          :class="{ active: activeLayer === i }"
-          @click="activeLayer = activeLayer === i ? null : i"
-        >
-          <div class="layer-header">
-            <span class="layer-icon">{{ layer.icon }}</span>
-            <span class="layer-name">{{ layer.name }}</span>
-            <span class="layer-count">{{ layer.count }}</span>
-          </div>
-          <Transition name="fade">
-            <div
-              v-if="activeLayer === i"
-              class="layer-detail"
-            >
-              <p class="detail-desc">
-                {{ layer.desc }}
-              </p>
-              <div class="detail-example">
-                <span class="example-label">🌰 例子：</span>
-                <span class="example-content">{{ layer.example }}</span>
-              </div>
-            </div>
-          </Transition>
-        </div>
-      </div>
-
-      <div class="cpu-components">
-        <div class="comp-title">
-          CPU 核心组件
-        </div>
-        <div class="comp-grid">
-          <div
-            v-for="comp in components"
-            :key="comp.name"
-            class="comp-item"
-          >
+    <div class="architecture-overview">
+      <div class="overview-title">核心组件一览（静态展示）</div>
+      <div class="overview-grid">
+        <div v-for="comp in components" :key="comp.name" class="overview-card">
+          <div class="card-top">
             <span class="comp-icon">{{ comp.icon }}</span>
             <span class="comp-name">{{ comp.name }}</span>
-            <span class="comp-desc">{{ comp.desc }}</span>
           </div>
+          <div class="comp-desc">{{ comp.desc }}</div>
+          <div class="comp-role">{{ comp.role }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="instruction-flow">
+      <div class="flow-title">一条指令在 CPU 内部的流动</div>
+      <div class="flow-steps">
+        <div
+          v-for="(step, index) in instructionFlow"
+          :key="step.name"
+          class="flow-step"
+        >
+          <span class="step-index">{{ index + 1 }}</span>
+          <span class="step-name">{{ step.name }}</span>
+          <span class="step-desc">{{ step.desc }}</span>
+          <span
+            v-if="index < instructionFlow.length - 1"
+            class="step-arrow"
+            aria-hidden="true"
+          >
+            →
+          </span>
         </div>
       </div>
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>CPU是层次化构建的：晶体管→逻辑门→功能单元→处理器。每一层都是下一层的"积木"，最终形成能执行程序的"大脑"。
+      <strong>核心思想：</strong
+      >CPU 不是单一部件，而是多个功能单元的有序协作：控制器负责调度，ALU 负责计算，寄存器负责高速暂存，总线负责连接与传输。
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const activeLayer = ref(null)
-
-const layers = [
+const components = [
   {
-    name: '晶体管',
-    icon: '⚡',
-    count: '数十亿个',
-    desc: '最基本的开关单元，用半导体材料制成。现代CPU包含数十亿个晶体管。',
-    example: 'Apple M2 芯片有约 200 亿个晶体管'
+    icon: '🎮',
+    name: '控制器（CU）',
+    desc: '负责取指、解码和发出控制信号',
+    role: '像指挥员，安排每个模块何时工作'
   },
   {
-    name: '逻辑门',
-    icon: '🔌',
-    count: '数亿个',
-    desc: '由多个晶体管组成，实现基本逻辑运算（AND、OR、NOT等）。',
-    example: '一个 AND 门需要 2-6 个晶体管'
+    icon: '📊',
+    name: 'ALU',
+    desc: '执行加减与、或、比较等运算',
+    role: '像计算器，完成核心算术与逻辑处理'
   },
   {
-    name: '功能单元',
-    icon: '🔧',
-    count: '数百个',
-    desc: '由逻辑门组成，实现特定功能：加法器、多路选择器、寄存器等。',
-    example: '一个 64 位加法器需要约 1000 个逻辑门'
+    icon: '📁',
+    name: '寄存器组',
+    desc: '保存当前最常用的数据和中间结果',
+    role: '像桌面便签，读写速度远高于内存'
   },
   {
-    name: 'CPU 核心',
-    icon: '🧠',
-    count: '1-128个',
-    desc: '包含完整的运算和控制能力，能独立执行指令流。',
-    example: 'Intel i9-13900K 有 24 核心'
+    icon: '🚌',
+    name: '内部总线',
+    desc: '在模块间传输数据、地址和控制信息',
+    role: '像高速通道，把各组件连接成整体'
   }
 ]
 
-const components = [
-  { icon: '📊', name: 'ALU', desc: '算术逻辑单元，做加减乘除和逻辑运算' },
-  { icon: '📁', name: '寄存器', desc: '超高速存储，存放正在处理的数据' },
-  { icon: '🎮', name: '控制器', desc: '指挥官，解码指令并协调各部件' },
-  { icon: '🚌', name: '总线', desc: '数据高速公路，连接各部件' }
+const instructionFlow = [
+  { name: '取指', desc: '控制器从缓存/内存取来指令' },
+  { name: '解码', desc: '识别指令类型与需要的操作数' },
+  { name: '执行', desc: 'ALU 或其他单元完成具体运算' },
+  { name: '写回', desc: '结果写入寄存器，供后续指令使用' }
 ]
 </script>
 
@@ -109,115 +89,59 @@ const components = [
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
-
-.architecture-layers {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
-.layer {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.layer:hover {
-  border-color: var(--vp-c-brand);
-}
-
-.layer.active {
-  border-color: var(--vp-c-brand);
-  background: var(--vp-c-brand-soft);
-}
-
-.layer-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.layer-icon {
+.demo-header .title {
+  font-weight: bold;
   font-size: 1rem;
 }
 
-.layer-name {
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.layer-count {
-  margin-left: auto;
-  font-size: 0.8rem;
+.demo-header .subtitle {
   color: var(--vp-c-text-2);
-}
-
-.layer-detail {
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--vp-c-divider);
-}
-
-.detail-desc {
   font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.overview-title,
+.flow-title {
+  font-weight: bold;
+  font-size: 0.92rem;
   margin-bottom: 0.5rem;
 }
 
-.detail-example {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-}
-
-.example-label {
-  font-weight: bold;
-}
-
-.cpu-components {
-  background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-}
-
-.comp-title {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.comp-grid {
+.overview-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
-.comp-item {
+.overview-card {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
-  background: var(--vp-c-bg);
-  border-radius: 4px;
+  gap: 0.35rem;
+  padding: 0.7rem;
+  background: var(--vp-c-bg-alt);
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .comp-icon {
   font-size: 1rem;
-  margin-bottom: 0.25rem;
 }
 
 .comp-name {
@@ -226,27 +150,90 @@ const components = [
 }
 
 .comp-desc {
+  font-size: 0.78rem;
+  color: var(--vp-c-text-2);
+}
+
+.comp-role {
+  font-size: 0.78rem;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  border-radius: 4px;
+  padding: 0.25rem 0.4rem;
+}
+
+.instruction-flow {
+  margin-top: 1rem;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.flow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.flow-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  padding: 0.35rem 0.55rem;
+}
+
+.step-index {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: bold;
+}
+
+.step-name {
+  font-size: 0.78rem;
+  font-weight: bold;
+}
+
+.step-desc {
   font-size: 0.75rem;
   color: var(--vp-c-text-2);
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
+.step-arrow {
+  margin-left: 0.1rem;
+  color: var(--vp-c-text-3);
 }
 
 .info-box {
   background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
+  padding: 0.85rem;
   border-radius: 6px;
   font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   display: flex;
   gap: 0.25rem;
 }
 
+.info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 680px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
