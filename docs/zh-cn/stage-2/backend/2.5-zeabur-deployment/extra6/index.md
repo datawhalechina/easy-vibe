@@ -41,6 +41,7 @@
 |------|------|----------|----------|
 | **腾讯云 CloudBase** | 国内访问速度快，与微信生态深度整合 | 国内用户为主、需要微信小程序支持的项目 | 有免费额度 |
 | **Vercel** | 前端框架支持好，与 GitHub 集成紧密 | React/Vue/Next.js 等现代前端项目 | 有免费额度 |
+| **Netlify** | 功能全面，支持表单处理和身份验证，与 Git 集成好 | 需要表单处理、身份验证等高级功能的静态网站 | 有免费额度 |
 | **Zeabur** | 支持多种语言和服务模板，配置灵活 | 需要部署多种服务（如 Dify、n8n）的复杂项目 | 每月约 5 美元免费额度 |
 
 ---
@@ -162,7 +163,126 @@ Vercel 会自动识别项目类型并配置构建命令：
 
 ---
 
-# 3. Zeabur
+# 3. Netlify
+
+Netlify 是另一个非常流行的前端部署平台，与 Vercel 类似，特别适合部署静态网站和单页应用（SPA）。它的特点包括：
+
+- **功能全面**：除了静态网站托管，还支持表单处理、身份验证、边缘函数等高级功能
+- **与 Git 深度集成**：支持 GitHub、GitLab、Bitbucket，推送代码自动部署
+- **分支预览**：每个分支都会自动生成独立的预览链接
+- **全球 CDN**：网站自动分发到全球节点，访问速度快
+- **表单处理**：无需后端代码即可处理网站表单提交
+- **身份验证**：内置用户身份验证功能，可快速实现登录/注册
+
+> ⚠️ **注意**：Netlify 的国内访问速度可能不如 CloudBase，建议主要面向海外用户的项目使用。
+
+## 使用 Netlify 部署 Web 应用
+
+### 步骤 1：注册账号
+
+访问 [Netlify 官网](https://www.netlify.com)，点击 "Sign up" 注册。你可以使用 GitHub、GitLab、Bitbucket 或邮箱注册。
+
+### 步骤 2：导入项目
+
+1. 登录后点击 "Add new site" → "Import an existing project"
+2. 选择你的代码托管平台（如 GitHub）
+3. 授权 Netlify 访问你的仓库
+4. 从列表中选择你要部署的仓库
+
+### 步骤 3：配置构建设置
+
+Netlify 会自动识别常见的前端框架并配置构建设置：
+
+| 框架 | 构建命令 | 发布目录 |
+|------|----------|----------|
+| React | `npm run build` | `build` |
+| Vue | `npm run build` | `dist` |
+| Angular | `ng build` | `dist/<project-name>` |
+| Next.js | `next build` | `out` |
+| 纯 HTML | - | `.`（项目根目录） |
+
+如果自动识别不正确，可以手动配置：
+- **Build command**: 构建命令，如 `npm run build`
+- **Publish directory**: 构建输出目录，如 `dist` 或 `build`
+
+### 步骤 4：部署
+
+点击 "Deploy site" 按钮，等待构建完成。构建成功后，你会获得一个 `xxx.netlify.app` 的域名，任何人都可以通过这个地址访问你的网站。
+
+### 步骤 5：配置自定义域名（可选）
+
+1. 进入站点设置，点击 "Domain management"
+2. 点击 "Add custom domain"
+3. 输入你的域名并按照提示配置 DNS 记录
+4. Netlify 会自动申请并配置 HTTPS 证书
+
+### 特色功能
+
+#### 1. 表单处理
+
+Netlify 提供了一个非常方便的功能：无需后端代码即可处理表单提交。
+
+只需在 HTML 表单中添加 `netlify` 属性：
+
+```html
+<form name="contact" netlify>
+  <p>
+    <label>姓名: <input type="text" name="name" /></label>
+  </p>
+  <p>
+    <label>邮箱: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>留言: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">发送</button>
+  </p>
+</form>
+```
+
+部署后，表单提交的数据会自动发送到 Netlify 后台，你可以在 "Forms" 页面查看所有提交记录，也可以设置邮件通知或将数据转发到其他服务。
+
+#### 2. Netlify Functions（边缘函数）
+
+Netlify 支持部署无服务器函数（Serverless Functions），让你可以在不搭建完整后端服务器的情况下，实现简单的 API 接口。你可以使用 JavaScript 或 TypeScript 编写函数，部署后会自动获得一个可访问的 URL。
+
+例如，创建一个 `hello.js` 文件：
+
+```javascript
+exports.handler = async (event, context) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Hello from Netlify!" })
+  };
+};
+```
+
+部署后，你可以通过 `https://你的域名/.netlify/functions/hello` 访问这个函数。
+
+#### 3. 本地开发支持
+
+Netlify 提供了 CLI 工具，方便你在本地开发和测试：
+
+```bash
+# 安装 Netlify CLI
+npm install -g netlify-cli
+
+# 登录账号
+netlify login
+
+# 本地启动开发服务器
+netlify dev
+
+# 本地测试函数
+netlify functions:serve
+```
+
+使用 CLI 工具可以在本地模拟 Netlify 环境，包括表单提交、函数调用等功能，方便在部署前进行测试。
+
+---
+
+# 4. Zeabur
 
 Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的复杂项目。它的优势在于：
 
@@ -354,15 +474,17 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 # 总结
 
-在本教程中，我们介绍了三个常用的 Web 应用部署平台：
+在本教程中，我们介绍了四个常用的 Web 应用部署平台：
 
 1. **腾讯云 CloudBase**：适合国内用户，访问速度快，与微信生态整合好
 2. **Vercel**：适合现代前端框架项目，与 GitHub 集成紧密，全球 CDN 加速
-3. **Zeabur**：适合复杂项目，服务模板丰富，支持多种部署方式
+3. **Netlify**：功能全面，支持表单处理和身份验证，适合需要高级功能的静态网站
+4. **Zeabur**：适合复杂项目，服务模板丰富，支持多种部署方式
 
 选择哪个平台取决于你的具体需求：
 - 如果主要面向国内用户，推荐 **CloudBase**
-- 如果使用 React/Next.js 等框架，推荐 **Vercel**
+- 如果使用 React/Next.js 等框架，推荐 **Vercel** 或 **Netlify**
+- 如果需要表单处理、身份验证等高级功能，推荐 **Netlify**
 - 如果需要部署 Dify、n8n 等服务，推荐 **Zeabur**
 
 无论选择哪个平台，部署的核心流程都是相似的：准备代码 → 选择平台 → 配置构建设置 → 部署上线。掌握这些技能后，你就可以将自己开发的应用分享给全世界了！
