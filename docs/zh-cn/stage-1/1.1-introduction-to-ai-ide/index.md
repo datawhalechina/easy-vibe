@@ -138,6 +138,13 @@ VS Code 的核心理念是“一切皆插件”。它通过插件机制支持各
 > - 自动生成测试：IDE 可以自动生成针对不同函数和模块的测试代码，方便你进行有针对性的测试。
 > - Agent 式任务执行：智能 Agent 可以自动生成、打包、安装、运行和修改代码，在很多任务上可以部分替代初级软件工程师的工作。
 
+::: details Antigravity
+
+### [Antigravity](https://antigravity.google/)
+
+Antigravity 是 Google 在 2025 年 11 月与 Gemini 3 一同发布的全新 AI IDE，采用"Agent-First"（智能体优先）开发模式。与传统 AI 辅助编码不同，Antigravity 让 AI 代理成为"主动执行者"，可直接操作编辑器、终端、浏览器等工具，承担更多"执行""策划""验证"的工作。开发者只需提出高层意图，代理便会自动拆分任务、制定计划、执行代码、运行测试、生成成果。它支持多模型切换，包括 Gemini 3 Pro、Claude Sonnet 4.5 等，目前以公开预览形式提供，支持 Windows、macOS、Linux 全平台。
+:::
+
 ::: details Trae
 
 ### [Trae](https://www.trae.ai/)

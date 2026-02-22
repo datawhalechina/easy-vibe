@@ -1,638 +1,424 @@
-<!--
-  StatusCodeDemo.vue - HTTP 状态码演示组件
-  展示常见 HTTP 状态码的含义和使用场景
--->
 <template>
-  <div class="demo">
-    <div class="header">
-      <span class="icon">📡</span>
-      <span class="title">HTTP 状态码：服务器的"情绪表达"</span>
+  <div class="sc-root">
+    <div class="sc-terminal">
+      <div class="term-bar">
+        <span class="dot r" /><span class="dot y" /><span class="dot g" />
+        <span class="term-title">HTTP 状态码演示</span>
+      </div>
+      <div ref="termEl" class="term-body">
+        <div v-for="(l, i) in lines" :key="i" class="t-line">
+          <span v-if="l.kind === 'cmd'" class="t-ps">&gt; </span>
+          <span :class="'t-' + l.kind">{{ l.text }}</span>
+        </div>
+        <div class="t-line">
+          <span class="t-ps">&gt; </span>
+          <span class="t-typing">{{ typing }}<span class="t-cur">▋</span></span>
+        </div>
+      </div>
     </div>
 
-    <div class="content">
-      <div class="category-tabs">
-        <button
-          v-for="category in categories"
-          :key="category.code"
-          class="category-btn"
-          :class="[category.class, { active: selectedCategory === category.code }]"
-          @click="selectedCategory = category.code"
-        >
-          <span class="category-code">{{ category.code }}xx</span>
-          <span class="category-name">{{ category.name }}</span>
-        </button>
+    <div class="sc-btns">
+      <button
+        v-for="op in ops"
+        :key="op.id"
+        :disabled="running || !op.ok()"
+        :class="['sc-btn', { 'sc-btn--on': active === op.id, 'sc-btn--dim': !op.ok() }]"
+        @click="run(op)"
+      >
+        <code>{{ op.cmd }}</code>
+      </button>
+      <button class="sc-btn sc-btn--reset" :disabled="running" @click="reset">重置</button>
+    </div>
+
+    <div class="sc-codes">
+      <div class="code-section">
+        <div class="section-header success">
+          <span class="section-icon">✅</span>
+          <span class="section-title">2xx 成功</span>
+        </div>
+        <div class="section-body">
+          <div v-for="c in successCodes" :key="c.code" class="code-item" :class="{ active: activeCode === c.code }">
+            <span class="code-num">{{ c.code }}</span>
+            <span class="code-name">{{ c.name }}</span>
+            <span class="code-desc">{{ c.desc }}</span>
+          </div>
+        </div>
       </div>
 
-      <div
-        v-if="filteredCodes.length > 0"
-        class="status-codes"
-      >
-        <div
-          v-for="code in filteredCodes"
-          :key="code.number"
-          class="status-card"
-          :class="{ expanded: expandedCode === code.number }"
-          @click="toggleExpand(code.number)"
-        >
-          <div class="status-header">
-            <span
-              class="status-number"
-              :class="getCategoryClass(code.number)"
-            >{{ code.number }}</span>
-            <span class="status-name">{{ code.name }}</span>
-            <span class="expand-icon">{{ expandedCode === code.number ? '▼' : '▶' }}</span>
+      <div class="code-section">
+        <div class="section-header client">
+          <span class="section-icon">⚠️</span>
+          <span class="section-title">4xx 客户端错误</span>
+        </div>
+        <div class="section-body">
+          <div v-for="c in clientCodes" :key="c.code" class="code-item" :class="{ active: activeCode === c.code }">
+            <span class="code-num">{{ c.code }}</span>
+            <span class="code-name">{{ c.name }}</span>
+            <span class="code-desc">{{ c.desc }}</span>
           </div>
+        </div>
+      </div>
 
-          <div
-            v-show="expandedCode === code.number"
-            class="status-detail"
-          >
-            <div class="detail-section">
-              <h4>💡 含义解释</h4>
-              <p>{{ code.description }}</p>
-            </div>
-
-            <div class="detail-section">
-              <h4>📝 使用场景</h4>
-              <ul>
-                <li
-                  v-for="(scenario, idx) in code.scenarios"
-                  :key="idx"
-                >
-                  {{ scenario }}
-                </li>
-              </ul>
-            </div>
-
-            <div
-              v-if="code.example"
-              class="detail-section"
-            >
-              <h4>💻 示例代码</h4>
-              <div class="code-example">
-                <div class="code-request">
-                  <span
-                    class="method-badge"
-                    :class="getCategoryClass(code.number)"
-                  >{{ code.example.method }}</span>
-                  <code>{{ code.example.path }}</code>
-                </div>
-                <div class="code-response">
-                  <pre><code>{{ JSON.stringify(code.example.response, null, 2) }}</code></pre>
-                </div>
-              </div>
-            </div>
+      <div class="code-section">
+        <div class="section-header server">
+          <span class="section-icon">🔴</span>
+          <span class="section-title">5xx 服务端错误</span>
+        </div>
+        <div class="section-body">
+          <div v-for="c in serverCodes" :key="c.code" class="code-item" :class="{ active: activeCode === c.code }">
+            <span class="code-num">{{ c.code }}</span>
+            <span class="code-name">{{ c.name }}</span>
+            <span class="code-desc">{{ c.desc }}</span>
           </div>
         </div>
       </div>
     </div>
+
+    <div v-if="hint" class="sc-hint">💡 {{ hint }}</div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, nextTick } from 'vue'
 
-const categories = [
-  { code: '2', name: '成功', class: 'success' },
-  { code: '3', name: '重定向', class: 'redirect' },
-  { code: '4', name: '客户端错误', class: 'client-error' },
-  { code: '5', name: '服务器错误', class: 'server-error' }
+const termEl = ref(null)
+const lines = ref([{ kind: 'dim', text: '// 点击按钮查看不同状态码的含义' }])
+const typing = ref('')
+const running = ref(false)
+const active = ref(null)
+const activeCode = ref(null)
+const hint = ref('点击命令按钮，了解常见的 HTTP 状态码。')
+
+const successCodes = ref([
+  { code: 200, name: 'OK', desc: '请求成功' },
+  { code: 201, name: 'Created', desc: '创建成功' },
+  { code: 204, name: 'No Content', desc: '成功但无返回内容' },
+])
+
+const clientCodes = ref([
+  { code: 400, name: 'Bad Request', desc: '请求格式错误' },
+  { code: 401, name: 'Unauthorized', desc: '未认证' },
+  { code: 403, name: 'Forbidden', desc: '无权限' },
+  { code: 404, name: 'Not Found', desc: '资源不存在' },
+  { code: 422, name: 'Unprocessable', desc: '语义错误' },
+  { code: 429, name: 'Too Many', desc: '请求过多' },
+])
+
+const serverCodes = ref([
+  { code: 500, name: 'Server Error', desc: '服务器内部错误' },
+  { code: 502, name: 'Bad Gateway', desc: '网关错误' },
+  { code: 503, name: 'Unavailable', desc: '服务不可用' },
+])
+
+const sleep = ms => new Promise(r => setTimeout(r, ms))
+
+const ops = [
+  {
+    id: '200',
+    cmd: '200 OK',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 最常用的成功状态码' },
+      { kind: 'grn', text: 'HTTP/1.1 200 OK' },
+      { kind: 'dim', text: 'Content-Type: application/json' },
+      { kind: 'dim', text: '' },
+      { kind: 'grn', text: '{ "code": 0, "data": { ... } }' },
+    ],
+    hint: '200 表示请求成功处理。GET 查询、PUT/PATCH 更新成功时常用。',
+    do: () => { activeCode.value = 200 }
+  },
+  {
+    id: '201',
+    cmd: '201 Created',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 创建资源成功' },
+      { kind: 'grn', text: 'HTTP/1.1 201 Created' },
+      { kind: 'dim', text: 'Location: /api/users/123' },
+      { kind: 'dim', text: '' },
+      { kind: 'grn', text: '{ "code": 0, "data": { "id": 123 } }' },
+    ],
+    hint: '201 表示资源创建成功。响应头 Location 指向新资源的地址。',
+    do: () => { activeCode.value = 201 }
+  },
+  {
+    id: '400',
+    cmd: '400 Bad Request',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 客户端请求有问题' },
+      { kind: 'red', text: 'HTTP/1.1 400 Bad Request' },
+      { kind: 'dim', text: '' },
+      { kind: 'red', text: '{ "code": 10001, "message": "参数格式错误" }' },
+    ],
+    hint: '400 表示请求语法错误。比如 JSON 格式不对、缺少必填参数。',
+    do: () => { activeCode.value = 400 }
+  },
+  {
+    id: '401',
+    cmd: '401 Unauthorized',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 需要登录认证' },
+      { kind: 'red', text: 'HTTP/1.1 401 Unauthorized' },
+      { kind: 'dim', text: 'WWW-Authenticate: Bearer' },
+      { kind: 'dim', text: '' },
+      { kind: 'red', text: '{ "code": 10018, "message": "请先登录" }' },
+    ],
+    hint: '401 表示未认证。Token 过期、未登录时返回，客户端应引导用户登录。',
+    do: () => { activeCode.value = 401 }
+  },
+  {
+    id: '403',
+    cmd: '403 Forbidden',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 已登录但无权限' },
+      { kind: 'red', text: 'HTTP/1.1 403 Forbidden' },
+      { kind: 'dim', text: '' },
+      { kind: 'red', text: '{ "code": 10021, "message": "需要管理员权限" }' },
+    ],
+    hint: '403 表示已认证但无权限。普通用户访问管理员接口时返回。',
+    do: () => { activeCode.value = 403 }
+  },
+  {
+    id: '404',
+    cmd: '404 Not Found',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 资源不存在' },
+      { kind: 'red', text: 'HTTP/1.1 404 Not Found' },
+      { kind: 'dim', text: '' },
+      { kind: 'red', text: '{ "code": 10002, "message": "用户不存在" }' },
+    ],
+    hint: '404 表示请求的资源不存在。URL 错误或资源已被删除。',
+    do: () => { activeCode.value = 404 }
+  },
+  {
+    id: '500',
+    cmd: '500 Server Error',
+    ok: () => true,
+    output: [
+      { kind: 'dim', text: '// 服务器内部错误' },
+      { kind: 'red', text: 'HTTP/1.1 500 Internal Server Error' },
+      { kind: 'dim', text: '' },
+      { kind: 'red', text: '{ "code": 10000, "message": "服务器错误，请联系管理员" }' },
+    ],
+    hint: '500 表示服务器内部错误。代码 bug、数据库连接失败等，不要暴露堆栈信息！',
+    do: () => { activeCode.value = 500 }
+  },
 ]
 
-const statusCodes = [
-  {
-    number: 200,
-    name: 'OK',
-    description: '请求已成功处理。这是最常用的成功状态码。',
-    scenarios: [
-      'GET 请求成功返回数据',
-      'POST 请求成功处理但未创建新资源',
-      'PUT/PATCH 更新成功'
-    ],
-    example: {
-      method: 'GET',
-      path: '/api/v1/users/123',
-      response: {
-        code: 0,
-        data: {
-          id: 123,
-          name: '张三',
-          email: 'zhangsan@example.com'
-        }
-      }
-    }
-  },
-  {
-    number: 201,
-    name: 'Created',
-    description: '请求成功处理并创建了新的资源。通常用于 POST 请求。',
-    scenarios: [
-      '成功创建用户账号',
-      '成功创建订单',
-      '成功上传文件'
-    ],
-    example: {
-      method: 'POST',
-      path: '/api/v1/users',
-      response: {
-        code: 0,
-        data: {
-          id: 124,
-          name: '李四',
-          created_at: '2024-01-15T10:30:00Z'
-        }
-      }
-    }
-  },
-  {
-    number: 204,
-    name: 'No Content',
-    description: '请求成功处理，但响应中没有返回内容。',
-    scenarios: [
-      'DELETE 删除成功',
-      'PUT/PATCH 更新成功但无需返回数据',
-      '预检请求（OPTIONS）响应'
-    ],
-    example: {
-      method: 'DELETE',
-      path: '/api/v1/users/123',
-      response: null
-    }
-  },
-  {
-    number: 301,
-    name: 'Moved Permanently',
-    description: '请求的资源已永久移动到新的 URL。',
-    scenarios: [
-      'API 版本升级，旧版本废弃',
-      '网站重构，URL 结构变更',
-      '资源合并或重命名'
-    ]
-  },
-  {
-    number: 304,
-    name: 'Not Modified',
-    description: '资源自上次请求以来未被修改，客户端可使用缓存版本。',
-    scenarios: [
-      '客户端带有 If-None-Match 或 If-Modified-Since 头部',
-      '静态资源缓存优化',
-      '减少不必要的数据传输'
-    ]
-  },
-  {
-    number: 400,
-    name: 'Bad Request',
-    description: '请求语法错误或参数无效，服务器无法理解请求。',
-    scenarios: [
-      '请求体格式不正确（如 JSON 语法错误）',
-      '缺少必填参数',
-      '参数类型不匹配（字符串传数字）'
-    ],
-    example: {
-      method: 'POST',
-      path: '/api/v1/users',
-      response: {
-        code: 10001,
-        message: '参数校验失败',
-        errors: [
-          { field: 'email', message: '邮箱格式不正确' }
-        ]
-      }
-    }
-  },
-  {
-    number: 401,
-    name: 'Unauthorized',
-    description: '请求需要用户身份验证，但未提供或凭证无效。',
-    scenarios: [
-      '未登录就访问受保护资源',
-      'Token 过期或无效',
-      '缺少 Authorization 头部'
-    ],
-    example: {
-      method: 'GET',
-      path: '/api/v1/user/profile',
-      response: {
-        code: 10018,
-        message: '认证令牌已过期，请重新登录'
-      }
-    }
-  },
-  {
-    number: 403,
-    name: 'Forbidden',
-    description: '服务器理解请求，但拒绝执行（权限不足）。',
-    scenarios: [
-      '已登录但访问了没有权限的资源',
-      '普通用户尝试访问管理员功能',
-      '账号被禁用或权限被撤销'
-    ],
-    example: {
-      method: 'DELETE',
-      path: '/api/v1/users/456',
-      response: {
-        code: 10021,
-        message: '权限不足，需要管理员权限才能删除用户'
-      }
-    }
-  },
-  {
-    number: 404,
-    name: 'Not Found',
-    description: '服务器找不到请求的资源。',
-    scenarios: [
-      'URL 拼写错误',
-      '资源已被删除或不存在',
-      'API 版本已废弃'
-    ],
-    example: {
-      method: 'GET',
-      path: '/api/v1/users/99999',
-      response: {
-        code: 10002,
-        message: '用户不存在'
-      }
-    }
-  },
-  {
-    number: 409,
-    name: 'Conflict',
-    description: '请求与服务器当前状态冲突（如资源重复）。',
-    scenarios: [
-      '尝试创建已存在的用户（唯一约束冲突）',
-      '乐观锁版本号不匹配',
-      '并发修改导致的状态冲突'
-    ],
-    example: {
-      method: 'POST',
-      path: '/api/v1/users',
-      response: {
-        code: 10011,
-        message: '邮箱已被注册'
-      }
-    }
-  },
-  {
-    number: 422,
-    name: 'Unprocessable Entity',
-    description: '请求格式正确，但语义上有错误（验证失败）。',
-    scenarios: [
-      '请求体 JSON 格式正确，但字段值不符合业务规则',
-      '密码强度不足',
-      '余额不足无法完成支付'
-    ],
-    example: {
-      method: 'POST',
-      path: '/api/v1/orders',
-      response: {
-        code: 10014,
-        message: '订单金额不能为负数'
-      }
-    }
-  },
-  {
-    number: 429,
-    name: 'Too Many Requests',
-    description: '客户端发送请求过多，触发了限流。',
-    scenarios: [
-      '短时间内大量请求',
-      '超出 API 配额限制',
-      '触发防刷机制'
-    ],
-    example: {
-      method: 'GET',
-      path: '/api/v1/data',
-      response: {
-        code: 10005,
-        message: '请求过于频繁，请 60 秒后重试'
-      }
-    }
-  },
-  {
-    number: 500,
-    name: 'Internal Server Error',
-    description: '服务器内部错误，无法完成请求。',
-    scenarios: [
-      '代码抛出未捕获的异常',
-      '数据库连接失败',
-      '依赖服务不可用'
-    ],
-    example: {
-      method: 'GET',
-      path: '/api/v1/users',
-      response: {
-        code: 10000,
-        message: '服务器内部错误，请联系管理员'
-      }
-    }
-  },
-  {
-    number: 502,
-    name: 'Bad Gateway',
-    description: '网关或代理从上游服务器收到无效响应。',
-    scenarios: [
-      '反向代理（Nginx）无法连接到后端服务',
-      '后端服务崩溃或重启中',
-      '网关配置错误'
-    ]
-  },
-  {
-    number: 503,
-    name: 'Service Unavailable',
-    description: '服务器暂时无法处理请求（维护或过载）。',
-    scenarios: [
-      '服务器正在进行维护',
-      '服务器过载，触发熔断',
-      '依赖服务大面积故障'
-    ],
-    example: {
-      method: 'GET',
-      path: '/api/v1/status',
-      response: {
-        code: 10007,
-        message: '服务维护中，预计 10 分钟后恢复'
-      }
-    }
-  },
-  {
-    number: 504,
-    name: 'Gateway Timeout',
-    description: '网关或代理等待上游服务器响应超时。',
-    scenarios: [
-      '后端处理时间过长',
-      '网络延迟或丢包',
-      '数据库查询超时'
-    ]
+async function run(op) {
+  if (running.value) return
+  running.value = true
+  active.value = op.id
+  activeCode.value = null
+  hint.value = ''
+  typing.value = ''
+
+  for (const ch of op.cmd) {
+    typing.value += ch
+    await sleep(18)
   }
-]
+  await sleep(80)
+  lines.value.push({ kind: 'cmd', text: op.cmd })
+  typing.value = ''
+  await nextTick()
+  scroll()
+  await sleep(150)
 
-const selectedCategory = ref('2')
-const expandedCode = ref(null)
-
-const filteredCodes = computed(() => {
-  const prefix = selectedCategory.value
-  return statusCodes.filter(code => {
-    const codePrefix = Math.floor(code.number / 100).toString()
-    return codePrefix === prefix
-  })
-})
-
-function getCategoryClass(number) {
-  const prefix = Math.floor(number / 100)
-  switch (prefix) {
-    case 2: return 'success'
-    case 3: return 'redirect'
-    case 4: return 'client-error'
-    case 5: return 'server-error'
-    default: return ''
+  for (const l of op.output) {
+    lines.value.push(l)
+    await nextTick()
+    scroll()
+    await sleep(50)
   }
+
+  op.do()
+  await sleep(120)
+  hint.value = op.hint
+  running.value = false
 }
 
-function toggleExpand(number) {
-  expandedCode.value = expandedCode.value === number ? null : number
+function scroll() {
+  if (termEl.value) termEl.value.scrollTop = termEl.value.scrollHeight
+}
+
+function reset() {
+  lines.value = [{ kind: 'dim', text: '// 点击按钮查看不同状态码的含义' }]
+  active.value = null
+  activeCode.value = null
+  hint.value = '点击命令按钮，了解常见的 HTTP 状态码。'
+  typing.value = ''
+  running.value = false
 }
 </script>
 
 <style scoped>
-.demo {
+.sc-root {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  margin: 24px 0;
+  border-radius: 10px;
   overflow: hidden;
+  background: var(--vp-c-bg-soft);
+  margin: 1rem 0;
+  font-size: 0.85rem;
 }
 
-.header {
-  padding: 16px 20px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-  color: white;
+.sc-terminal { background: #141420; }
+.term-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
+  padding: 7px 12px;
+  background: #1e1e2e;
 }
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.r { background: #ff5f57; }
+.dot.y { background: #febc2e; }
+.dot.g { background: #28c840; }
+.term-title { margin-left: 8px; font-size: 0.72rem; color: #666; font-family: monospace; }
 
-.icon {
-  font-size: 24px;
+.term-body {
+  min-height: 90px;
+  max-height: 140px;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 0.7rem 1rem;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: #cdd6f4;
 }
+.t-line { display: flex; min-width: min-content; }
+.t-ps { color: #89b4fa; flex-shrink: 0; }
+.t-cmd { color: #cdd6f4; }
+.t-dim { color: #585b70; }
+.t-grn { color: #a6e3a1; }
+.t-red { color: #f38ba8; }
+.t-typing { color: #cdd6f4; }
+.t-cur { animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-.title {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.content {
-  padding: 24px;
-}
-
-.category-tabs {
+.sc-btns {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #0d0d1a;
+  border-top: 1px solid #2a2a3e;
 }
-
-.category-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px 20px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
+.sc-btn {
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-radius: 5px;
+  padding: 4px 9px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 100px;
+  transition: border-color 0.2s;
 }
-
-.category-btn:hover {
-  transform: translateY(-2px);
+.sc-btn code { font-size: 0.68rem; color: #7f849c; font-family: monospace; white-space: nowrap; }
+.sc-btn:hover:not(:disabled) { border-color: var(--vp-c-brand); }
+.sc-btn--on { border-color: var(--vp-c-brand) !important; }
+.sc-btn--on code { color: var(--vp-c-brand); }
+.sc-btn--dim { opacity: 0.3; cursor: not-allowed; }
+.sc-btn--reset {
+  background: transparent;
+  border-color: #313244;
+  margin-left: auto;
 }
+.sc-btn--reset code { display: none; }
+.sc-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
 
-.category-btn.active {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* 分类颜色 */
-.category-btn.success, .status-number.success { border-color: #22c55e; color: #16a34a; }
-.category-btn.success.active { background: #22c55e; color: white; }
-
-.category-btn.redirect, .status-number.redirect { border-color: #3b82f6; color: #2563eb; }
-.category-btn.redirect.active { background: #3b82f6; color: white; }
-
-.category-btn.client-error, .status-number.client-error { border-color: #f59e0b; color: #d97706; }
-.category-btn.client-error.active { background: #f59e0b; color: white; }
-
-.category-btn.server-error, .status-number.server-error { border-color: #ef4444; color: #dc2626; }
-.category-btn.server-error.active { background: #ef4444; color: white; }
-
-.category-code {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.category-name {
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.status-codes {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.status-card {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.status-card:hover {
-  border-color: rgba(var(--vp-c-brand-rgb), 0.5);
-}
-
-.status-card.expanded {
-  border-color: rgba(var(--vp-c-brand-rgb), 0.8);
-  box-shadow: 0 0 0 3px rgba(var(--vp-c-brand-rgb), 0.1);
-}
-
-.status-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-}
-
-.status-number {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 14px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid;
-}
-
-.status-name {
-  flex: 1;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--vp-c-text-1);
-}
-
-.expand-icon {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-}
-
-.status-detail {
-  padding: 16px;
+.sc-codes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
   border-top: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
 }
 
-.detail-section {
-  margin-bottom: 16px;
+.code-section {
+  border-right: 1px solid var(--vp-c-divider);
+}
+.code-section:last-child {
+  border-right: none;
 }
 
-.detail-section:last-child {
-  margin-bottom: 0;
-}
-
-.detail-section h4 {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 8px 0;
-}
-
-.detail-section p {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.detail-section ul {
-  margin: 0;
-  padding-left: 16px;
-}
-
-.detail-section li {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-  margin: 4px 0;
-}
-
-.code-example {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.code-request {
+.section-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  background: var(--vp-c-bg-soft);
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.method-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
+  gap: 6px;
+  padding: 8px 10px;
   font-weight: 700;
-  font-size: 11px;
-  background: var(--vp-c-bg);
-  border: 1px solid;
+  font-size: 0.8rem;
+}
+.section-header.success { background: color-mix(in srgb, #22c55e 8%, var(--vp-c-bg-alt)); color: #22c55e; }
+.section-header.client { background: color-mix(in srgb, #f59e0b 8%, var(--vp-c-bg-alt)); color: #d97706; }
+.section-header.server { background: color-mix(in srgb, #ef4444 8%, var(--vp-c-bg-alt)); color: #ef4444; }
+
+.section-icon { font-size: 0.9rem; }
+.section-title { font-size: 0.75rem; }
+
+.section-body {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.code-request code {
+.code-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: var(--vp-c-bg);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.code-item.active {
+  border-color: var(--vp-c-brand);
+  background: color-mix(in srgb, var(--vp-c-brand) 8%, var(--vp-c-bg));
+}
+
+.code-num {
   font-family: monospace;
-  font-size: 13px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  min-width: 28px;
+}
+.code-item.active .code-num { color: var(--vp-c-brand); }
+
+.code-name {
+  font-size: 0.72rem;
   color: var(--vp-c-text-1);
+  font-weight: 600;
 }
 
-.code-response {
-  padding: 12px;
-  background: var(--vp-c-bg);
+.code-desc {
+  font-size: 0.68rem;
+  color: var(--vp-c-text-3);
+  margin-left: auto;
 }
 
-.code-response pre {
-  margin: 0;
-  font-size: 12px;
+.sc-hint {
+  padding: 10px 12px;
+  background: var(--vp-c-bg-alt);
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
   line-height: 1.5;
-  overflow-x: auto;
 }
 
-.code-response code {
-  font-family: monospace;
-  color: var(--vp-c-text-1);
-}
-
-@media (max-width: 640px) {
-  .category-tabs {
-    flex-direction: column;
+@media (max-width: 768px) {
+  .sc-codes {
+    grid-template-columns: 1fr;
   }
-
-  .category-btn {
-    flex-direction: row;
-    justify-content: space-between;
+  .code-section {
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider);
   }
-
-  .status-header {
-    flex-wrap: wrap;
-  }
-
-  .code-request {
-    flex-direction: column;
-    align-items: flex-start;
+  .code-section:last-child {
+    border-bottom: none;
   }
 }
 </style>

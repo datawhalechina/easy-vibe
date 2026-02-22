@@ -107,9 +107,9 @@ import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTrou
 import TransistorDemo from './components/appendix/computer-fundamentals/TransistorDemo.vue'
 import LogicGateDemo from './components/appendix/computer-fundamentals/LogicGateDemo.vue'
 import AdderDemo from './components/appendix/computer-fundamentals/AdderDemo.vue'
-import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
+// import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
 import RegisterDemo from './components/appendix/computer-fundamentals/RegisterDemo.vue'
-import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
+// import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
 import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
 import MemoryDemo from './components/appendix/computer-fundamentals/MemoryDemo.vue'
 import FilesystemDemo from './components/appendix/computer-fundamentals/FilesystemDemo.vue'
@@ -212,6 +212,8 @@ import AttentionMechanismDemo from './components/appendix/ai-history/AttentionMe
 import DiscriminativeVsGenerativeDemo from './components/appendix/ai-history/DiscriminativeVsGenerativeDemo.vue'
 import GPTEvolutionDemo from './components/appendix/ai-history/GPTEvolutionDemo.vue'
 import FoundationDemo from './components/appendix/ai-history/FoundationDemo.vue'
+import ExpertSystemWaveDemo from './components/appendix/ai-history/ExpertSystemWaveDemo.vue'
+import AIErasComparisonDemo from './components/appendix/ai-history/AIErasComparisonDemo.vue'
 
 // AI Protocols Components
 import McpVisualDemo from './components/appendix/ai-protocols/McpVisualDemo.vue'
@@ -551,8 +553,12 @@ import TrafficSchedulingDemo from './components/appendix/cloud-storage-cdn/Traff
 import HttpsOptimizationDemo from './components/appendix/cloud-storage-cdn/HttpsOptimizationDemo.vue'
 import AccessAnalyticsDemo from './components/appendix/cloud-storage-cdn/AccessAnalyticsDemo.vue'
 
-// API Design Extra Components
-import RestfulApiFlow from './components/appendix/api-design/RestfulApiFlow.vue'
+// API Design Components
+import ApiRequestDemo from './components/appendix/api-design/ApiRequestDemo.vue'
+import RestfulUrlDemo from './components/appendix/api-design/RestfulUrlDemo.vue'
+import StatusCodeDemo from './components/appendix/api-design/StatusCodeDemo.vue'
+import ErrorHandlingDemo from './components/appendix/api-design/ErrorHandlingDemo.vue'
+import ApiVersioningDemo from './components/appendix/api-design/ApiVersioningDemo.vue'
 
 // JavaScript Intro Components
 import VariableBoxDemo from './components/appendix/javascript-intro/VariableBoxDemo.vue'
@@ -642,7 +648,6 @@ export default {
     app.component('ApiDocumentDemo', ApiDocumentDemo)
     app.component('ApiPlayground', ApiPlayground)
     app.component('RealWorldApiDemo', RealWorldApiDemo)
-    app.component('RestfulApiFlow', RestfulApiFlow)
 
     // LLM Intro Components Registration
     app.component('EmbeddingDemo', EmbeddingDemo)
@@ -711,9 +716,9 @@ export default {
     app.component('TransistorDemo', TransistorDemo)
     app.component('LogicGateDemo', LogicGateDemo)
     app.component('AdderDemo', AdderDemo)
-    app.component('CpuArchitectureDemo', CpuArchitectureDemo)
+    // app.component('CpuArchitectureDemo', CpuArchitectureDemo)
     app.component('RegisterDemo', RegisterDemo)
-    app.component('EvolutionFlowDemo', EvolutionFlowDemo)
+    // app.component('EvolutionFlowDemo', EvolutionFlowDemo)
     app.component('ProcessDemo', ProcessDemo)
     app.component('MemoryDemo', MemoryDemo)
     app.component('FilesystemDemo', FilesystemDemo)
@@ -810,6 +815,8 @@ export default {
     app.component('BigFrontendScopeDemo', BigFrontendScopeDemo)
     app.component('AiEvolutionDemo', AiEvolutionDemo)
     app.component('FoundationDemo', FoundationDemo)
+    app.component('ExpertSystemWaveDemo', ExpertSystemWaveDemo)
+    app.component('AIErasComparisonDemo', AIErasComparisonDemo)
     app.component('RuleBasedVsLearningDemo', RuleBasedVsLearningDemo)
     app.component('PerceptronDemo', PerceptronDemo)
     app.component('AIEvolutionTimelineDemo', AIEvolutionTimelineDemo)
@@ -1159,13 +1166,12 @@ export default {
     app.component('HttpsOptimizationDemo', HttpsOptimizationDemo)
     app.component('AccessAnalyticsDemo', AccessAnalyticsDemo)
 
-    // API Design Extra Components Registration
+    // API Design Components Registration
+    app.component('ApiRequestDemo', ApiRequestDemo)
+    app.component('RestfulUrlDemo', RestfulUrlDemo)
+    app.component('StatusCodeDemo', StatusCodeDemo)
     app.component('ErrorHandlingDemo', ErrorHandlingDemo)
-    app.component('VersioningStrategyDemo', VersioningStrategyDemo)
-    app.component('DocumentationDemo', DocumentationDemo)
-    app.component('ResourceAnalogy', ResourceAnalogy)
-    app.component('RequestStructureDemo', RequestStructureDemo)
-    app.component('ResponseStructureDemo', ResponseStructureDemo)
+    app.component('ApiVersioningDemo', ApiVersioningDemo)
 
     // Database Intro Extra Components Registration
     app.component('DatabaseEvolutionDemo', DatabaseEvolutionDemo)
