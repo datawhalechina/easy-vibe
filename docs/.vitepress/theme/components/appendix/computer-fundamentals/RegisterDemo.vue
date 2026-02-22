@@ -10,29 +10,45 @@
           class="toggle-btn"
           :class="{ on: inputData === 1 }"
           @click="inputData = inputData === 1 ? 0 : 1"
-        >{{ inputData }}</button>
+        >
+          {{ inputData }}
+        </button>
       </div>
 
       <!-- Write -->
-      <button class="write-btn" :class="{ flash: isWriting }" @click="writeOnce">
+      <button
+        class="write-btn"
+        :class="{ flash: isWriting }"
+        @click="writeOnce"
+      >
         写入 →
       </button>
 
       <!-- Stored -->
       <div class="reg-block">
         <span class="reg-title">存储</span>
-        <span class="val-box" :class="{ on: storedData === 1, flash: isWriting }">{{ storedData }}</span>
+        <span
+          class="val-box"
+          :class="{ on: storedData === 1, flash: isWriting }"
+          >{{ storedData }}</span
+        >
       </div>
 
       <!-- Output -->
       <div class="reg-block">
         <span class="reg-title">输出</span>
-        <span class="val-box out" :class="{ on: storedData === 1 }">{{ storedData }}</span>
+        <span class="val-box out" :class="{ on: storedData === 1 }">{{
+          storedData
+        }}</span>
       </div>
     </div>
 
     <div class="status-line">
-      {{ inputData !== storedData ? '⚡ 输入≠存储 → 点"写入"即可更新' : '✓ 输入与存储一致' }}
+      {{
+        inputData !== storedData
+          ? '⚡ 输入≠存储 → 点"写入"即可更新'
+          : '✓ 输入与存储一致'
+      }}
     </div>
   </div>
 </template>
@@ -47,7 +63,9 @@ const isWriting = ref(false)
 const writeOnce = () => {
   isWriting.value = true
   storedData.value = inputData.value
-  setTimeout(() => { isWriting.value = false }, 400)
+  setTimeout(() => {
+    isWriting.value = false
+  }, 400)
 }
 </script>
 

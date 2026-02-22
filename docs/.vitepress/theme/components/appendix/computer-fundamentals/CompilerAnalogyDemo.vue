@@ -28,7 +28,9 @@
             <div class="step-desc">{{ step.desc }}</div>
             <div class="step-example">{{ step.example }}</div>
           </div>
-          <div v-if="index < translationSteps.length - 1" class="step-arrow">→</div>
+          <div v-if="index < translationSteps.length - 1" class="step-arrow">
+            →
+          </div>
         </div>
       </div>
     </div>
@@ -42,11 +44,7 @@
         </div>
         <div class="token-arrow">↓</div>
         <div class="tokens-list">
-          <div
-            v-for="(token, index) in tokens"
-            :key="index"
-            class="token-item"
-          >
+          <div v-for="(token, index) in tokens" :key="index" class="token-item">
             <span class="token-type">{{ token.type }}</span>
             <span class="token-value">{{ token.value }}</span>
           </div>
@@ -127,9 +125,7 @@
             <div class="opt-code">x = 10</div>
           </div>
         </div>
-        <div class="opt-note">
-          编译器会自动优化代码，提高运行效率
-        </div>
+        <div class="opt-note">编译器会自动优化代码，提高运行效率</div>
       </div>
     </div>
   </div>
@@ -196,8 +192,14 @@ const tokens = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .analogy-intro {
   margin-bottom: 2rem;

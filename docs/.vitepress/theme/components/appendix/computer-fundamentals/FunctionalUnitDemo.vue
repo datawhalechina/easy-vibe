@@ -20,7 +20,8 @@
       <!-- MUX Demo -->
       <div v-if="currentTab === 'mux'" class="demo-panel">
         <div class="panel-desc">
-          <strong>多路选择器 (MUX)</strong>：像铁路道岔一样，根据"选择信号"决定让哪一路数据通过。
+          <strong>多路选择器 (MUX)</strong
+          >：像铁路道岔一样，根据"选择信号"决定让哪一路数据通过。
         </div>
         <div class="mux-container">
           <div class="inputs">
@@ -80,7 +81,8 @@
       <!-- Decoder Demo -->
       <div v-if="currentTab === 'decoder'" class="demo-panel">
         <div class="panel-desc">
-          <strong>译码器 (Decoder)</strong>：将二进制输入转换为特定输出线的激活信号（例如 2位输入可以激活
+          <strong>译码器 (Decoder)</strong
+          >：将二进制输入转换为特定输出线的激活信号（例如 2位输入可以激活
           4根输出线中的一根）。
         </div>
         <div class="decoder-container">

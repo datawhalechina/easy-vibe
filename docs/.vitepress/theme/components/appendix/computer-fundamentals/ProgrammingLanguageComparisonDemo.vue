@@ -65,13 +65,17 @@
           <div class="pros">
             <div class="list-title">✓ 优点</div>
             <ul>
-              <li v-for="(pro, index) in currentLang.pros" :key="index">{{ pro }}</li>
+              <li v-for="(pro, index) in currentLang.pros" :key="index">
+                {{ pro }}
+              </li>
             </ul>
           </div>
           <div class="cons">
             <div class="list-title">✗ 缺点</div>
             <ul>
-              <li v-for="(con, index) in currentLang.cons" :key="index">{{ con }}</li>
+              <li v-for="(con, index) in currentLang.cons" :key="index">
+                {{ con }}
+              </li>
             </ul>
           </div>
         </div>
@@ -92,7 +96,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(lang, index) in languages" :key="index" :class="{ highlighted: lang.name === activeLang }">
+          <tr
+            v-for="(lang, index) in languages"
+            :key="index"
+            :class="{ highlighted: lang.name === activeLang }"
+          >
             <td>{{ lang.icon }} {{ lang.name }}</td>
             <td>{{ lang.difficulty }}</td>
             <td>{{ lang.efficiency }}</td>
@@ -197,7 +205,9 @@ const languages = [
   }
 ]
 
-const currentLang = computed(() => languages.find(l => l.name === activeLang.value))
+const currentLang = computed(() =>
+  languages.find((l) => l.name === activeLang.value)
+)
 </script>
 
 <style scoped>
@@ -216,8 +226,14 @@ const currentLang = computed(() => languages.find(l => l.name === activeLang.val
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .comparison-grid {
   display: grid;

@@ -19,7 +19,8 @@
     <div class="content">
       <div v-if="active === 'validate'" class="section">
         <h4>参数校验错误</h4>
-        <pre class="code-block">{
+        <pre class="code-block">
+{
   "code": 10001,
   "message": "参数校验失败",
   "data": {
@@ -36,7 +37,8 @@
       }
     ]
   }
-}</pre>
+}</pre
+        >
         <div class="field-tips">
           <div class="tip-row">
             <code>field</code>
@@ -55,7 +57,8 @@
 
       <div v-if="active === 'business'" class="section">
         <h4>业务错误</h4>
-        <pre class="code-block">{
+        <pre class="code-block">
+{
   "code": 20001,
   "message": "余额不足",
   "data": {
@@ -64,7 +67,8 @@
     "shortfall": 49.00,
     "suggestion": "请充值后重试"
   }
-}</pre>
+}</pre
+        >
         <div class="business-tips">
           <div class="b-tip">✓ 返回当前状态数据，便于前端展示</div>
           <div class="b-tip">✓ 提供 suggestion 给出解决建议</div>
@@ -75,11 +79,7 @@
       <div v-if="active === 'layers'" class="section">
         <h4>错误码分层设计</h4>
         <div class="layer-list">
-          <div
-            v-for="layer in layers"
-            :key="layer.range"
-            class="layer-item"
-          >
+          <div v-for="layer in layers" :key="layer.range" class="layer-item">
             <div class="layer-range">{{ layer.range }}</div>
             <div class="layer-info">
               <div class="layer-name">{{ layer.name }}</div>
@@ -88,7 +88,9 @@
             <div class="layer-desc">{{ layer.desc }}</div>
           </div>
         </div>
-        <div class="layer-note">错误码从外到内：系统 → 服务 → 业务 → 认证 → 参数</div>
+        <div class="layer-note">
+          错误码从外到内：系统 → 服务 → 业务 → 认证 → 参数
+        </div>
       </div>
 
       <div v-if="active === 'http'" class="section">
@@ -164,7 +166,9 @@
 
     <div class="tips">
       <span class="tips-icon">💡</span>
-      <span class="tips-text">错误信息要"机器可读 + 人类友好"，便于前端统一处理</span>
+      <span class="tips-text"
+        >错误信息要"机器可读 + 人类友好"，便于前端统一处理</span
+      >
     </div>
   </div>
 </template>
@@ -184,11 +188,36 @@ const tabs = [
 ]
 
 const layers = [
-  { range: '50001-59999', name: '系统层', example: '50001 数据库异常', desc: '基础设施问题' },
-  { range: '40001-49999', name: '服务层', example: '40001 第三方服务超时', desc: '外部依赖问题' },
-  { range: '30001-39999', name: '认证层', example: '30001 未登录', desc: '身份权限问题' },
-  { range: '20001-29999', name: '业务层', example: '20001 余额不足', desc: '业务规则校验' },
-  { range: '10001-19999', name: '参数层', example: '10001 参数缺失', desc: '客户端输入问题' }
+  {
+    range: '50001-59999',
+    name: '系统层',
+    example: '50001 数据库异常',
+    desc: '基础设施问题'
+  },
+  {
+    range: '40001-49999',
+    name: '服务层',
+    example: '40001 第三方服务超时',
+    desc: '外部依赖问题'
+  },
+  {
+    range: '30001-39999',
+    name: '认证层',
+    example: '30001 未登录',
+    desc: '身份权限问题'
+  },
+  {
+    range: '20001-29999',
+    name: '业务层',
+    example: '20001 余额不足',
+    desc: '业务规则校验'
+  },
+  {
+    range: '10001-19999',
+    name: '参数层',
+    example: '10001 参数缺失',
+    desc: '客户端输入问题'
+  }
 ]
 
 const examples = [
@@ -234,7 +263,7 @@ const examples = [
 ]
 
 const currentExample = computed(() => {
-  return examples.find(e => e.id === exId.value) || examples[0]
+  return examples.find((e) => e.id === exId.value) || examples[0]
 })
 </script>
 
@@ -434,7 +463,7 @@ const currentExample = computed(() => {
   .http-compare {
     flex-direction: column;
   }
-  
+
   .http-arrow {
     display: none;
   }

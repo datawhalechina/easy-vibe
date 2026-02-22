@@ -7,14 +7,14 @@
 
     <div class="demo-content">
       <div class="comparison-tabs">
-        <button 
+        <button
           :class="['tab-btn', { active: activeTab === 'tcp' }]"
           @click="activeTab = 'tcp'"
         >
           <span class="tab-icon">📨</span>
           <span>TCP (可靠)</span>
         </button>
-        <button 
+        <button
           :class="['tab-btn', { active: activeTab === 'udp' }]"
           @click="activeTab = 'udp'"
         >
@@ -23,15 +23,12 @@
         </button>
       </div>
 
-      <div
-        v-if="currentProtocol"
-        class="protocol-detail"
-      >
+      <div v-if="currentProtocol" class="protocol-detail">
         <div class="detail-header">
           <span class="detail-name">{{ currentProtocol.name }}</span>
           <span class="detail-full">{{ currentProtocol.fullName }}</span>
         </div>
-        
+
         <div class="feature-grid">
           <div
             v-for="(feature, i) in currentProtocol.features"
@@ -45,9 +42,7 @@
         </div>
 
         <div class="mechanism-section">
-          <div class="mechanism-title">
-            核心机制
-          </div>
+          <div class="mechanism-title">核心机制</div>
           <div class="mechanism-list">
             <div
               v-for="(m, i) in currentProtocol.mechanisms"
@@ -61,70 +56,53 @@
         </div>
 
         <div class="use-cases">
-          <div class="use-title">
-            适用场景
-          </div>
+          <div class="use-title">适用场景</div>
           <div class="use-tags">
             <span
               v-for="(use, i) in currentProtocol.useCases"
               :key="i"
               class="use-tag"
-            >{{ use }}</span>
+              >{{ use }}</span
+            >
           </div>
         </div>
       </div>
 
       <div class="visual-demo">
-        <div class="visual-title">
-          传输过程演示
-        </div>
+        <div class="visual-title">传输过程演示</div>
         <div class="transmission-demo">
           <div class="sender">
-            <div class="node-label">
-              发送方
-            </div>
+            <div class="node-label">发送方</div>
             <div class="packets">
-              <div 
-                v-for="(packet, i) in packets" 
+              <div
+                v-for="(packet, i) in packets"
                 :key="i"
-                :class="['packet', { sent: packet.sent, acked: packet.acked, lost: packet.lost }]"
+                :class="[
+                  'packet',
+                  { sent: packet.sent, acked: packet.acked, lost: packet.lost }
+                ]"
               >
                 {{ packet.seq }}
               </div>
             </div>
           </div>
-          
+
           <div class="network-channel">
-            <div class="channel-label">
-              网络通道
-            </div>
-            <div
-              class="channel-status"
-              :class="{ congested: isCongested }"
-            >
+            <div class="channel-label">网络通道</div>
+            <div class="channel-status" :class="{ congested: isCongested }">
               {{ isCongested ? '拥堵' : '正常' }}
             </div>
-            <button
-              class="demo-btn"
-              @click="runDemo"
-            >
-              开始演示
-            </button>
-            <button
-              class="demo-btn"
-              @click="toggleCongestion"
-            >
+            <button class="demo-btn" @click="runDemo">开始演示</button>
+            <button class="demo-btn" @click="toggleCongestion">
               {{ isCongested ? '恢复网络' : '模拟丢包' }}
             </button>
           </div>
-          
+
           <div class="receiver">
-            <div class="node-label">
-              接收方
-            </div>
+            <div class="node-label">接收方</div>
             <div class="received-packets">
-              <div 
-                v-for="(packet, i) in receivedPackets" 
+              <div
+                v-for="(packet, i) in receivedPackets"
                 :key="i"
                 class="received-packet"
               >
@@ -133,17 +111,11 @@
             </div>
           </div>
         </div>
-        
+
         <div class="demo-log">
-          <div class="log-title">
-            传输日志
-          </div>
+          <div class="log-title">传输日志</div>
           <div class="log-content">
-            <div
-              v-for="(log, i) in logs"
-              :key="i"
-              class="log-item"
-            >
+            <div v-for="(log, i) in logs" :key="i" class="log-item">
               {{ log }}
             </div>
           </div>
@@ -151,9 +123,7 @@
       </div>
 
       <div class="comparison-table">
-        <div class="table-title">
-          特性对比
-        </div>
+        <div class="table-title">特性对比</div>
         <table>
           <thead>
             <tr>
@@ -163,10 +133,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(row, i) in comparisonData"
-              :key="i"
-            >
+            <tr v-for="(row, i) in comparisonData" :key="i">
               <td class="feature-col">
                 {{ row.feature }}
               </td>
@@ -183,7 +150,9 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>TCP 像挂号信，确保送达但较慢；UDP 像平信，快速但不保证送达。选择哪种协议取决于应用场景：需要可靠性选 TCP，需要实时性选 UDP。
+      <strong>核心思想：</strong>TCP 像挂号信，确保送达但较慢；UDP
+      像平信，快速但不保证送达。选择哪种协议取决于应用场景：需要可靠性选
+      TCP，需要实时性选 UDP。
     </div>
   </div>
 </template>
@@ -267,25 +236,25 @@ const toggleCongestion = () => {
 const runDemo = async () => {
   receivedPackets.value = []
   logs.value = ['开始传输演示...']
-  
+
   for (let i = 0; i < packets.value.length; i++) {
     packets.value[i].sent = false
     packets.value[i].acked = false
     packets.value[i].lost = false
   }
-  
+
   const isTcp = activeTab.value === 'tcp'
-  
+
   for (let i = 0; i < packets.value.length; i++) {
     const packet = packets.value[i]
     packet.sent = true
-    
+
     if (isCongested.value && Math.random() > 0.5) {
       packet.lost = true
       logs.value.push(`包 ${packet.seq} 丢失!`)
-      
+
       if (isTcp) {
-        await new Promise(r => setTimeout(r, 500))
+        await new Promise((r) => setTimeout(r, 500))
         logs.value.push(`TCP 重传包 ${packet.seq}...`)
         packet.lost = false
         receivedPackets.value.push(packet.seq)
@@ -297,12 +266,14 @@ const runDemo = async () => {
       packet.acked = true
       logs.value.push(`包 ${packet.seq} 送达`)
     }
-    
-    await new Promise(r => setTimeout(r, 300))
+
+    await new Promise((r) => setTimeout(r, 300))
   }
-  
+
   if (isTcp) {
-    logs.value.push(`TCP 完成: 收到 ${receivedPackets.value.length} 个包，顺序: ${receivedPackets.value.join(', ')}`)
+    logs.value.push(
+      `TCP 完成: 收到 ${receivedPackets.value.length} 个包，顺序: ${receivedPackets.value.join(', ')}`
+    )
   } else {
     logs.value.push(`UDP 完成: 收到 ${receivedPackets.value.length} 个包`)
   }
@@ -325,8 +296,15 @@ const runDemo = async () => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
 
 .comparison-tabs {
   display: flex;
@@ -353,7 +331,9 @@ const runDemo = async () => {
   background: var(--vp-c-brand-soft);
 }
 
-.tab-icon { font-size: 1.1rem; }
+.tab-icon {
+  font-size: 1.1rem;
+}
 
 .protocol-detail {
   background: var(--vp-c-bg);
@@ -395,15 +375,24 @@ const runDemo = async () => {
   border-radius: 4px;
 }
 
-.feature-icon { font-size: 1rem; }
-.feature-name { font-size: 0.75rem; color: var(--vp-c-text-2); }
-.feature-value { font-size: 0.8rem; font-weight: bold; }
+.feature-icon {
+  font-size: 1rem;
+}
+.feature-name {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+}
+.feature-value {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
 
 .mechanism-section {
   margin-bottom: 0.75rem;
 }
 
-.mechanism-title, .use-title {
+.mechanism-title,
+.use-title {
   font-weight: bold;
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
@@ -465,7 +454,8 @@ const runDemo = async () => {
   margin-bottom: 0.75rem;
 }
 
-.sender, .receiver {
+.sender,
+.receiver {
   flex: 1;
   padding: 0.5rem;
   background: var(--vp-c-bg-alt);
@@ -478,7 +468,8 @@ const runDemo = async () => {
   margin-bottom: 0.25rem;
 }
 
-.packets, .received-packets {
+.packets,
+.received-packets {
   display: flex;
   gap: 0.25rem;
   flex-wrap: wrap;
@@ -604,7 +595,8 @@ table {
   font-size: 0.8rem;
 }
 
-th, td {
+th,
+td {
   border: 1px solid var(--vp-c-divider);
   padding: 0.4rem;
   text-align: center;
@@ -635,5 +627,4 @@ th {
   display: flex;
   gap: 0.25rem;
 }
-
 </style>

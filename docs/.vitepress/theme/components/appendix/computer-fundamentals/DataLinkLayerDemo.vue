@@ -11,13 +11,22 @@
         <div
           v-for="device in devices"
           :key="device.id"
-          :class="['lan-device', { active: activeDevice === device.id, sender: device.role === 'sender', receiver: device.role === 'receiver' }]"
+          :class="[
+            'lan-device',
+            {
+              active: activeDevice === device.id,
+              sender: device.role === 'sender',
+              receiver: device.role === 'receiver'
+            }
+          ]"
           @click="activeDevice = device.id"
         >
           <div class="device-icon">{{ device.icon }}</div>
           <div class="device-name">{{ device.name }}</div>
           <div class="device-mac">{{ device.mac }}</div>
-          <div v-if="device.role" class="device-role">{{ device.roleText }}</div>
+          <div v-if="device.role" class="device-role">
+            {{ device.roleText }}
+          </div>
         </div>
       </div>
 
@@ -77,7 +86,9 @@
         <div class="arp-arrow">↓ 广播到局域网</div>
         <div class="arp-answer">
           <span class="answer-icon">✅</span>
-          <span class="answer-text">我是！我的 MAC 地址是 00:11:22:33:44:66</span>
+          <span class="answer-text"
+            >我是！我的 MAC 地址是 00:11:22:33:44:66</span
+          >
         </div>
       </div>
     </div>
@@ -194,8 +205,14 @@ const transferSteps = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .lan-scene {
   background: var(--vp-c-bg);

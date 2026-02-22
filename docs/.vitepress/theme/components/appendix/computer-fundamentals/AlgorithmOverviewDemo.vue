@@ -9,9 +9,9 @@
       <div class="analogy-content">
         <div class="analogy-icon">📖</div>
         <div class="analogy-text">
-          <strong>算法就像菜谱：</strong><br>
-          食材 = 数据<br>
-          烹饪步骤 = 算法<br>
+          <strong>算法就像菜谱：</strong><br />
+          食材 = 数据<br />
+          烹饪步骤 = 算法<br />
           美味菜肴 = 结果
         </div>
       </div>
@@ -49,8 +49,12 @@
         <div class="detail-section">
           <div class="section-title">生活类比</div>
           <div class="analogy-card">
-            <div class="analogy-scenario">{{ currentCategory.analogy.scenario }}</div>
-            <div class="analogy-explanation">{{ currentCategory.analogy.explanation }}</div>
+            <div class="analogy-scenario">
+              {{ currentCategory.analogy.scenario }}
+            </div>
+            <div class="analogy-explanation">
+              {{ currentCategory.analogy.explanation }}
+            </div>
           </div>
         </div>
 
@@ -58,7 +62,9 @@
           <div class="section-title">时间复杂度</div>
           <div class="complexity-display">
             <div class="complexity-bigO">{{ currentCategory.complexity }}</div>
-            <div class="complexity-desc">{{ currentCategory.complexityDesc }}</div>
+            <div class="complexity-desc">
+              {{ currentCategory.complexityDesc }}
+            </div>
           </div>
         </div>
 
@@ -140,7 +146,8 @@ const categories = [
     idea: '从数据集合中找到特定元素的过程',
     analogy: {
       scenario: '在字典里查单词',
-      explanation: '顺序查找 = 从第一页翻到最后一页；二分查找 = 直接翻到中间，判断在前半还是后半'
+      explanation:
+        '顺序查找 = 从第一页翻到最后一页；二分查找 = 直接翻到中间，判断在前半还是后半'
     },
     complexity: 'O(log n)',
     complexityDesc: '二分查找非常快，每次排除一半数据',
@@ -154,7 +161,8 @@ const categories = [
     idea: '将无序数据重新排列成有序序列',
     analogy: {
       scenario: '整理扑克牌',
-      explanation: '插入排序 = 每次拿一张牌插到正确的位置；快速排序 = 把牌分成大小两堆，递归整理'
+      explanation:
+        '插入排序 = 每次拿一张牌插到正确的位置；快速排序 = 把牌分成大小两堆，递归整理'
     },
     complexity: 'O(n log n)',
     complexityDesc: '快速排序、归并排序是最高效的通用排序算法',
@@ -168,7 +176,8 @@ const categories = [
     idea: '将大问题分解为相同类型的小问题',
     analogy: {
       scenario: '俄罗斯套娃',
-      explanation: '打开一个大娃娃，里面有个小一点的娃娃，再打开还有更小的...直到最小的一个'
+      explanation:
+        '打开一个大娃娃，里面有个小一点的娃娃，再打开还有更小的...直到最小的一个'
     },
     complexity: 'O(log n) 到 O(2ⁿ)',
     complexityDesc: '取决于问题类型，二分查找递归很快，斐波那契递归较慢',
@@ -182,7 +191,8 @@ const categories = [
     idea: '在每一步选择中都采取当前状态下最优的选择',
     analogy: {
       scenario: '找零钱',
-      explanation: '找 37 元零钱：先拿一张 20（最大可能），再拿 10、5、1、1，每次都选最大的面值'
+      explanation:
+        '找 37 元零钱：先拿一张 20（最大可能），再拿 10、5、1、1，每次都选最大的面值'
     },
     complexity: 'O(n) 或 O(n log n)',
     complexityDesc: '通常很快，但可能得不到全局最优解',
@@ -196,7 +206,8 @@ const categories = [
     idea: '将复杂问题分解为子问题，保存子问题的解',
     analogy: {
       scenario: '爬楼梯',
-      explanation: '要爬到第 n 级，可以从 n-1 级跨 1 步，或从 n-2 级跨 2 步，记住之前的结果避免重复计算'
+      explanation:
+        '要爬到第 n 级，可以从 n-1 级跨 1 步，或从 n-2 级跨 2 步，记住之前的结果避免重复计算'
     },
     complexity: 'O(n²) 或 O(n³)',
     complexityDesc: '用空间换时间，比递归快很多',
@@ -206,12 +217,19 @@ const categories = [
 
 const complexityChart = [
   { name: '二分查找', complexity: 'O(log n)', width: '10%', color: '#10b981' },
-  { name: '快速排序', complexity: 'O(n log n)', width: '25%', color: '#3b82f6' },
+  {
+    name: '快速排序',
+    complexity: 'O(n log n)',
+    width: '25%',
+    color: '#3b82f6'
+  },
   { name: '插入排序', complexity: 'O(n²)', width: '50%', color: '#f59e0b' },
   { name: '暴力递归', complexity: 'O(2ⁿ)', width: '100%', color: '#ef4444' }
 ]
 
-const currentCategory = computed(() => categories.find(c => c.id === activeCategory.value))
+const currentCategory = computed(() =>
+  categories.find((c) => c.id === activeCategory.value)
+)
 </script>
 
 <style scoped>
@@ -230,8 +248,14 @@ const currentCategory = computed(() => categories.find(c => c.id === activeCateg
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .analogy-box {
   background: var(--vp-c-bg);
@@ -344,7 +368,8 @@ const currentCategory = computed(() => categories.find(c => c.id === activeCateg
   gap: 1.5rem;
 }
 
-.detail-section {}
+.detail-section {
+}
 
 .section-title {
   font-weight: 600;

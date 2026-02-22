@@ -1,269 +1,241 @@
 <!--
-  ApiDocumentDemo.vue - 翻译版
-  目标：一键把"黑话"翻译成"人话"
+  ApiDocumentDemo.vue - 紧凑版
+  目标：演示如何阅读 API 文档
 -->
 <template>
-  <div class="demo">
-    <div class="header">
-      <div class="title-area">
-        <span class="icon">📖</span>
-        <span class="title">API 文档翻译机</span>
-      </div>
-      <button
-        class="translate-btn"
-        @click="isHuman = !isHuman"
-      >
-        {{ isHuman ? '🔄 还原回黑话' : '✨ 翻译成人话' }}
-      </button>
+  <div class="demo-root">
+    <div class="demo-header">
+      <span class="icon">📖</span>
+      <span class="title">API 文档翻译机</span>
     </div>
 
-    <div class="doc-container">
-      <!-- 模拟 API 文档 -->
-      <div class="api-doc">
-        <div class="doc-row method-row">
-          <span class="label">Method:</span>
-          <span
-            class="value method"
-            :class="{ human: isHuman }"
-          >
-            {{ isHuman ? '我要下单 (POST)' : 'POST' }}
-          </span>
+    <div class="demo-layout">
+      <div class="left-panel">
+        <div class="doc-section">
+          <div class="doc-title">Base URL</div>
+          <code class="doc-code">https://api.deepseek.com</code>
         </div>
 
-        <div class="doc-row url-row">
-          <span class="label">Endpoint:</span>
-          <span
-            class="value url"
-            :class="{ human: isHuman }"
-          >
-            {{ isHuman ? '去哪里找厨师' : 'https://api.deepseek.com/chat' }}
-          </span>
+        <div class="doc-section">
+          <div class="doc-title">Endpoint</div>
+          <code class="doc-code">POST /v1/chat/completions</code>
         </div>
 
-        <div class="doc-row headers-row">
-          <span class="label">Headers:</span>
-          <div
-            class="code-block"
-            :class="{ human: isHuman }"
+        <div class="doc-section">
+          <div class="doc-title">Headers</div>
+          <pre class="doc-pre">
+Authorization: Bearer sk-xxx
+Content-Type: application/json</pre
           >
-            <div class="line">
-              <span class="key">{{
-                isHuman ? '我是谁:' : 'Authorization:'
-              }}</span>
-              <span class="val">{{
-                isHuman ? ' 这是我的会员卡号' : ' Bearer sk-8f9s...'
-              }}</span>
-            </div>
-            <div class="line">
-              <span class="key">{{
-                isHuman ? '用什么语言:' : 'Content-Type:'
-              }}</span>
-              <span class="val">{{
-                isHuman ? ' 标准格式(JSON)' : ' application/json'
-              }}</span>
-            </div>
-          </div>
         </div>
 
-        <div class="doc-row body-row">
-          <span class="label">Body:</span>
-          <div
-            class="code-block"
-            :class="{ human: isHuman }"
-          >
-            <div class="line">
-              {
+        <div class="doc-section">
+          <div class="doc-title">Body 参数</div>
+          <div class="params-list">
+            <div class="param-item">
+              <span class="p-name">model</span>
+              <span class="p-req">必填</span>
+              <span class="p-desc">模型名称</span>
             </div>
-            <div class="line indent">
-              <span class="key">"model":</span>
-              <span class="val">"deepseek-chat",</span>
-              <span
-                v-if="isHuman"
-                class="comment"
-              > // 选个聪明的厨师</span>
+            <div class="param-item">
+              <span class="p-name">messages</span>
+              <span class="p-req">必填</span>
+              <span class="p-desc">对话消息</span>
             </div>
-            <div class="line indent">
-              <span class="key">"messages":</span>
-              <span class="val">[...]</span>
-              <span
-                v-if="isHuman"
-                class="comment"
-              > // 我要说的话</span>
-            </div>
-            <div class="line">
-              }
-            </div>
-          </div>
-        </div>
-
-        <div class="doc-row response-row">
-          <span class="label">Response:</span>
-          <div
-            class="code-block"
-            :class="{ human: isHuman }"
-          >
-            <div class="line">
-              <span class="key">{{ isHuman ? '状态:' : 'Status:' }}</span>
-              <span class="status-ok">{{
-                isHuman ? '搞定了 (200)' : '200 OK'
-              }}</span>
+            <div class="param-item">
+              <span class="p-name">temperature</span>
+              <span class="p-opt">可选</span>
+              <span class="p-desc">0-2，默认1</span>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="right-panel">
+        <div class="result-title">翻译成代码</div>
+        <pre class="result-code"><code>from openai import OpenAI
+
+client = OpenAI(
+    api_key="sk-xxx",
+    base_url="https://api.deepseek.com"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[{"role": "user", "content": "你好"}]
+)</code></pre>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>核心思想：</strong>
+      <span
+        >看文档找三样：地址（Base
+        URL）、鉴权（Authorization）、参数（Parameters）。</span
+      >
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-
-const isHuman = ref(false)
-</script>
+<script setup></script>
 
 <style scoped>
-.demo {
+.demo-root {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  margin: 24px 0;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  background: var(--vp-c-bg-soft);
+  margin: 1rem 0;
+  font-size: 0.85rem;
 }
 
-.header {
-  padding: 16px 20px;
+.demo-header {
+  padding: 10px 16px;
   background: var(--vp-c-bg);
   border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.title-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .icon {
-  font-size: 24px;
+  font-size: 18px;
 }
-
 .title {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 0.9rem;
 }
 
-.translate-btn {
-  background: var(--vp-c-brand-1);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.translate-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.doc-container {
-  padding: 20px;
-}
-
-.api-doc {
-  background: #1e293b;
-  border-radius: 6px;
-  padding: 20px;
-  color: #e2e8f0;
-  font-family: monospace;
-  font-size: 14px;
-}
-
-.doc-row {
+.demo-layout {
   display: flex;
-  margin-bottom: 16px;
-  align-items: flex-start;
 }
 
-.doc-row:last-child {
-  margin-bottom: 0;
-}
-
-.label {
-  width: 80px;
-  color: #94a3b8;
-  font-weight: bold;
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-
-.value {
-  color: #38bdf8;
-  transition: all 0.3s;
-}
-
-.method {
-  font-weight: bold;
-  color: #eab308;
-}
-
-.method.human {
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.url.human {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.code-block {
+.left-panel {
   flex: 1;
-  background: #0f172a;
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid var(--vp-c-divider);
+}
+
+.right-panel {
+  width: 280px;
+  padding: 12px;
+  background: var(--vp-c-bg);
+}
+
+@media (max-width: 640px) {
+  .demo-layout {
+    flex-direction: column;
+  }
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
+  .right-panel {
+    width: 100%;
+  }
+}
+
+.doc-section {
+  background: var(--vp-c-bg);
   border-radius: 6px;
-  border: 1px solid #334155;
-  transition: all 0.3s;
+  overflow: hidden;
 }
 
-.code-block.human {
+.doc-title {
+  padding: 6px 10px;
+  background: var(--vp-c-bg-alt);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.doc-code {
+  display: block;
+  padding: 8px 10px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--vp-c-brand);
+}
+
+.doc-pre {
+  margin: 0;
+  padding: 8px 10px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-1);
+}
+
+.params-list {
+  padding: 6px 10px;
+}
+
+.param-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 0.75rem;
+}
+
+.p-name {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.p-req {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.65rem;
+}
+
+.p-opt {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.65rem;
+}
+
+.p-desc {
+  color: var(--vp-c-text-3);
+}
+
+.result-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.result-code {
+  margin: 0;
+  padding: 10px;
   background: #1e293b;
-  border-color: #64748b;
+  border-radius: 6px;
+  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+  overflow-x: auto;
 }
 
-.line {
-  line-height: 1.6;
+.info-box {
+  display: flex;
+  gap: 0.25rem;
+  padding: 10px 14px;
+  background: var(--vp-c-bg-alt);
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
 }
 
-.indent {
-  padding-left: 20px;
-}
-
-.key {
-  color: #94a3b8;
-}
-
-.val {
-  color: #a5f3fc;
-}
-
-.comment {
-  color: #22c55e;
-  font-style: italic;
-}
-
-.status-ok {
-  color: #22c55e;
-  font-weight: bold;
+.info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 </style>

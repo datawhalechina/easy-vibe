@@ -4,7 +4,8 @@
 
     <div class="layers">
       <div
-        v-for="(layer, i) in layers" :key="i"
+        v-for="(layer, i) in layers"
+        :key="i"
         class="layer-row"
         :class="{ active: activeLayer === i }"
         @mouseenter="activeLayer = i"
@@ -23,7 +24,9 @@
       </div>
     </div>
 
-    <div class="demo-caption">层层抽象封装，最底层的物理材料最终变成通用计算平台</div>
+    <div class="demo-caption">
+      层层抽象封装，最底层的物理材料最终变成通用计算平台
+    </div>
   </div>
 </template>
 
@@ -33,13 +36,55 @@ import { ref } from 'vue'
 const activeLayer = ref(null)
 
 const layers = [
-  { icon: '🏖️', name: '沙子（硅）',     desc: '地球上最丰富的元素之一，提炼出高纯度硅',         scale: '原材料',      arrow: '提纯 → 切割' },
-  { icon: '💿', name: '硅晶圆',         desc: '直径约 30cm 的单晶硅片，表面极其光滑',           scale: '基底',        arrow: '光刻 → 蚀刻 → 掺杂' },
-  { icon: '🔌', name: '晶体管（开关）',  desc: 'Gate=1 导通，Gate=0 断开，用电压控制电流',       scale: '数百亿 / 芯片', arrow: '组合成逻辑电路' },
-  { icon: '🔲', name: '逻辑门',         desc: 'AND / OR / NOT / XOR，实现基本布尔运算',          scale: '数十亿',      arrow: '组合成功能模块' },
-  { icon: '⚙️', name: '功能单元',       desc: '加法器、寄存器、多路选择器……各司其职',            scale: '数百个',      arrow: '集成为处理器' },
-  { icon: '🧠', name: 'CPU 核心',       desc: 'ALU + 控制器 + 寄存器组，取指→解码→执行→写回',   scale: '1–128 核',    arrow: '软件编程' },
-  { icon: '🚀', name: '软件应用',       desc: '操作系统 / AI / 游戏 / 网页……一切皆指令',         scale: '无限可能',    arrow: '' },
+  {
+    icon: '🏖️',
+    name: '沙子（硅）',
+    desc: '地球上最丰富的元素之一，提炼出高纯度硅',
+    scale: '原材料',
+    arrow: '提纯 → 切割'
+  },
+  {
+    icon: '💿',
+    name: '硅晶圆',
+    desc: '直径约 30cm 的单晶硅片，表面极其光滑',
+    scale: '基底',
+    arrow: '光刻 → 蚀刻 → 掺杂'
+  },
+  {
+    icon: '🔌',
+    name: '晶体管（开关）',
+    desc: 'Gate=1 导通，Gate=0 断开，用电压控制电流',
+    scale: '数百亿 / 芯片',
+    arrow: '组合成逻辑电路'
+  },
+  {
+    icon: '🔲',
+    name: '逻辑门',
+    desc: 'AND / OR / NOT / XOR，实现基本布尔运算',
+    scale: '数十亿',
+    arrow: '组合成功能模块'
+  },
+  {
+    icon: '⚙️',
+    name: '功能单元',
+    desc: '加法器、寄存器、多路选择器……各司其职',
+    scale: '数百个',
+    arrow: '集成为处理器'
+  },
+  {
+    icon: '🧠',
+    name: 'CPU 核心',
+    desc: 'ALU + 控制器 + 寄存器组，取指→解码→执行→写回',
+    scale: '1–128 核',
+    arrow: '软件编程'
+  },
+  {
+    icon: '🚀',
+    name: '软件应用',
+    desc: '操作系统 / AI / 游戏 / 网页……一切皆指令',
+    scale: '无限可能',
+    arrow: ''
+  }
 ]
 </script>
 

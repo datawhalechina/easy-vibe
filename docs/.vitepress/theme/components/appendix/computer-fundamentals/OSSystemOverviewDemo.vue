@@ -8,9 +8,7 @@
     <div class="demo-content">
       <div class="os-layers">
         <div class="layer user-apps">
-          <div class="layer-title">
-            应用程序层
-          </div>
+          <div class="layer-title">应用程序层</div>
           <div class="layer-content">
             <div
               v-for="app in applications"
@@ -29,9 +27,7 @@
         </div>
 
         <div class="layer kernel">
-          <div class="layer-title">
-            操作系统内核
-          </div>
+          <div class="layer-title">操作系统内核</div>
           <div class="layer-content">
             <div class="kernel-components">
               <div
@@ -45,15 +41,11 @@
               </div>
             </div>
           </div>
-          <div class="layer-desc">
-            进程管理、内存管理、文件系统、设备管理
-          </div>
+          <div class="layer-desc">进程管理、内存管理、文件系统、设备管理</div>
         </div>
 
         <div class="layer hardware">
-          <div class="layer-title">
-            硬件层
-          </div>
+          <div class="layer-title">硬件层</div>
           <div class="layer-content">
             <div class="hardware-icons">
               <span>💻 CPU</span>
@@ -70,27 +62,18 @@
         <div class="flow-content">
           <div class="flow-item" :class="{ active: showFlow }">
             <div class="flow-arrow">↓</div>
-            <div class="flow-desc">
-              应用程序请求资源（内存、CPU、文件）
-            </div>
+            <div class="flow-desc">应用程序请求资源（内存、CPU、文件）</div>
           </div>
           <div class="flow-item" :class="{ active: showFlow }">
             <div class="flow-arrow">↓</div>
-            <div class="flow-desc">
-              操作系统内核统一分配和调度
-            </div>
+            <div class="flow-desc">操作系统内核统一分配和调度</div>
           </div>
           <div class="flow-item" :class="{ active: showFlow }">
             <div class="flow-arrow">↓</div>
-            <div class="flow-desc">
-              硬件执行实际操作
-            </div>
+            <div class="flow-desc">硬件执行实际操作</div>
           </div>
         </div>
-        <button
-          class="flow-btn"
-          @click="showFlow = !showFlow"
-        >
+        <button class="flow-btn" @click="showFlow = !showFlow">
           {{ showFlow ? '隐藏' : '显示' }}资源流
         </button>
       </div>
@@ -132,13 +115,13 @@ const kernelComponents = [
 ]
 
 const activeAppName = computed(() => {
-  const app = applications.find(a => a.id === activeApp.value)
+  const app = applications.find((a) => a.id === activeApp.value)
   return app?.name || ''
 })
 
 const getActiveAppDesc = () => {
-  const component = kernelComponents.find(c => c.id === activeComponent.value)
-  const app = applications.find(a => a.id === activeApp.value)
+  const component = kernelComponents.find((c) => c.id === activeComponent.value)
+  const app = applications.find((a) => a.id === activeApp.value)
 
   if (!app || !component) return '请选择应用程序和内核组件'
   return `${app.name} 需要使用 ${component.name} 的功能`
@@ -161,8 +144,14 @@ const getActiveAppDesc = () => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .os-layers {
   display: flex;
@@ -213,7 +202,8 @@ const getActiveAppDesc = () => {
   transition: all 0.3s;
 }
 
-.app-icon:hover, .app-icon.active {
+.app-icon:hover,
+.app-icon.active {
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.2);
 }
@@ -227,7 +217,8 @@ const getActiveAppDesc = () => {
   transition: all 0.3s;
 }
 
-.kernel-component:hover, .kernel-component.active {
+.kernel-component:hover,
+.kernel-component.active {
   background: rgba(255, 255, 255, 0.3);
   font-weight: 600;
 }

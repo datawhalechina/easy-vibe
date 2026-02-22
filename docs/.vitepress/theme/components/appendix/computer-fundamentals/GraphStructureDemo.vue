@@ -69,7 +69,11 @@
             :cx="node.x"
             :cy="node.y"
             r="20"
-            :fill="selectedNode === index ? 'var(--vp-c-brand)' : 'var(--vp-c-brand-soft)'"
+            :fill="
+              selectedNode === index
+                ? 'var(--vp-c-brand)'
+                : 'var(--vp-c-brand-soft)'
+            "
             stroke="var(--vp-c-brand)"
             stroke-width="2"
           />
@@ -154,7 +158,7 @@ const edges = ref([
 ])
 
 const averageDegree = computed(() => {
-  return (edges.value.length * 2 / nodes.length).toFixed(1)
+  return ((edges.value.length * 2) / nodes.length).toFixed(1)
 })
 </script>
 
@@ -174,8 +178,14 @@ const averageDegree = computed(() => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .graph-types {
   margin-bottom: 2rem;

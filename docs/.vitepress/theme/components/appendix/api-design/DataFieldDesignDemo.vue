@@ -22,17 +22,20 @@
         <div class="compare-row">
           <div class="compare-col">
             <div class="compare-title">单对象</div>
-            <pre class="code-sm">{
+            <pre class="code-sm">
+{
   "code": 0,
   "data": {
     "id": 123,
     "name": "张三"
   }
-}</pre>
+}</pre
+            >
           </div>
           <div class="compare-col">
             <div class="compare-title">列表</div>
-            <pre class="code-sm">{
+            <pre class="code-sm">
+{
   "code": 0,
   "data": {
     "items": [...],
@@ -41,34 +44,27 @@
       "total": 100
     }
   }
-}</pre>
+}</pre
+            >
           </div>
         </div>
-        <div class="note">列表数据包裹在 items 数组中，分页信息放在 pagination 对象</div>
+        <div class="note">
+          列表数据包裹在 items 数组中，分页信息放在 pagination 对象
+        </div>
       </div>
 
       <div v-if="active === 'naming'" class="section">
         <h4>字段命名规范</h4>
         <div class="rule-list">
-          <div
-            v-for="rule in namingRules"
-            :key="rule.name"
-            class="rule-item"
-          >
+          <div v-for="rule in namingRules" :key="rule.name" class="rule-item">
             <div class="rule-header">
               <span class="rule-icon">{{ rule.icon }}</span>
               <span class="rule-name">{{ rule.name }}</span>
             </div>
             <div class="rule-examples">
               <code class="good">{{ rule.good }}</code>
-              <span
-                v-if="rule.bad"
-                class="vs"
-              >vs</span>
-              <code
-                v-if="rule.bad"
-                class="bad"
-              >{{ rule.bad }}</code>
+              <span v-if="rule.bad" class="vs">vs</span>
+              <code v-if="rule.bad" class="bad">{{ rule.bad }}</code>
             </div>
             <div class="rule-desc">{{ rule.desc }}</div>
           </div>
@@ -78,11 +74,13 @@
       <div v-if="active === 'datetime'" class="section">
         <h4>时间格式设计</h4>
         <div class="time-example">
-          <pre class="code-block">{
+          <pre class="code-block">
+{
   "created_at": "2024-01-15T09:30:00.000Z",
   "updated_at": "2024-01-15T10:00:00.000Z",
   "expired_at": "2025-01-15T00:00:00.000Z"
-}</pre>
+}</pre
+          >
         </div>
         <div class="time-rules">
           <div class="time-rule">
@@ -99,7 +97,9 @@
           </div>
           <div class="time-rule">
             <span class="rule-label">命名</span>
-            <span class="rule-value">xxx_at 表示时间点，xxx_duration 表示时长</span>
+            <span class="rule-value"
+              >xxx_at 表示时间点，xxx_duration 表示时长</span
+            >
           </div>
         </div>
       </div>
@@ -109,18 +109,22 @@
         <div class="compare-row">
           <div class="compare-col good-col">
             <div class="compare-title">✅ 推荐</div>
-            <pre class="code-sm">{
+            <pre class="code-sm">
+{
   "name": "张三",
   "nickname": null,
   "avatar": null
-}</pre>
+}</pre
+            >
             <div class="compare-desc">字段存在但无值时返回 null</div>
           </div>
           <div class="compare-col bad-col">
             <div class="compare-title">❌ 不推荐</div>
-            <pre class="code-sm">{
+            <pre class="code-sm">
+{
   "name": "张三"
-}</pre>
+}</pre
+            >
             <div class="compare-desc">省略字段，前端需判断是否存在</div>
           </div>
         </div>
@@ -152,7 +156,9 @@
 
     <div class="tips">
       <span class="tips-icon">💡</span>
-      <span class="tips-text">参考 ISO 8601 时间标准，字段命名保持 snake_case 风格</span>
+      <span class="tips-text"
+        >参考 ISO 8601 时间标准，字段命名保持 snake_case 风格</span
+      >
     </div>
   </div>
 </template>
@@ -172,11 +178,41 @@ const tabs = [
 ]
 
 const namingRules = [
-  { icon: '🔡', name: '使用 snake_case', good: 'created_at', bad: 'createdAt', desc: 'JSON 字段名统一用下划线' },
-  { icon: '📖', name: '避免缩写', good: 'user_id', bad: 'uid', desc: '保持可读性' },
-  { icon: '✅', name: '布尔值加前缀', good: 'is_active, has_permission', bad: 'active, permission', desc: '一眼识别布尔类型' },
-  { icon: '📅', name: '时间带后缀', good: 'created_at, expired_at', bad: 'created, expired', desc: '明确是时间字段' },
-  { icon: '🔢', name: '数量带后缀', good: 'total_count, page_size', bad: 'total, size', desc: '明确是数值类型' }
+  {
+    icon: '🔡',
+    name: '使用 snake_case',
+    good: 'created_at',
+    bad: 'createdAt',
+    desc: 'JSON 字段名统一用下划线'
+  },
+  {
+    icon: '📖',
+    name: '避免缩写',
+    good: 'user_id',
+    bad: 'uid',
+    desc: '保持可读性'
+  },
+  {
+    icon: '✅',
+    name: '布尔值加前缀',
+    good: 'is_active, has_permission',
+    bad: 'active, permission',
+    desc: '一眼识别布尔类型'
+  },
+  {
+    icon: '📅',
+    name: '时间带后缀',
+    good: 'created_at, expired_at',
+    bad: 'created, expired',
+    desc: '明确是时间字段'
+  },
+  {
+    icon: '🔢',
+    name: '数量带后缀',
+    good: 'total_count, page_size',
+    bad: 'total, size',
+    desc: '明确是数值类型'
+  }
 ]
 
 const relations = [
@@ -220,7 +256,7 @@ const relations = [
 ]
 
 const currentRelation = computed(() => {
-  return relations.find(r => r.id === rId.value) || relations[0]
+  return relations.find((r) => r.id === rId.value) || relations[0]
 })
 </script>
 

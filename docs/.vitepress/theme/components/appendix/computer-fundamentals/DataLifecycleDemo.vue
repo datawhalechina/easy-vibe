@@ -22,7 +22,11 @@
               <div class="stage-example">
                 <div class="example-label">示例：{{ stage.example.label }}</div>
                 <div class="example-content">
-                  <div v-for="(item, i) in stage.example.items" :key="i" class="example-item">
+                  <div
+                    v-for="(item, i) in stage.example.items"
+                    :key="i"
+                    class="example-item"
+                  >
                     <span class="item-label">{{ item.label }}:</span>
                     <span class="item-value">{{ item.value }}</span>
                   </div>
@@ -44,7 +48,11 @@
     <div class="lifecycle-summary">
       <div class="summary-title">数据转换的关键点</div>
       <div class="summary-grid">
-        <div v-for="(point, index) in keyPoints" :key="index" class="summary-card">
+        <div
+          v-for="(point, index) in keyPoints"
+          :key="index"
+          class="summary-card"
+        >
           <div class="card-icon">{{ point.icon }}</div>
           <div class="card-text">
             <div class="card-title">{{ point.title }}</div>
@@ -67,7 +75,8 @@ const stages = [
     name: '数据输入',
     icon: '⌨️',
     title: '阶段 1：数据输入',
-    description: '用户通过各种输入设备（键盘、鼠标、触摸屏、麦克风等）将信息输入到计算机系统中。',
+    description:
+      '用户通过各种输入设备（键盘、鼠标、触摸屏、麦克风等）将信息输入到计算机系统中。',
     example: {
       label: '用户输入文字',
       items: [
@@ -83,7 +92,8 @@ const stages = [
     name: '数据处理',
     icon: '🔄',
     title: '阶段 2：数据处理',
-    description: 'CPU 对输入的数据进行计算、转换、格式化等操作，应用程序根据业务逻辑处理数据。',
+    description:
+      'CPU 对输入的数据进行计算、转换、格式化等操作，应用程序根据业务逻辑处理数据。',
     example: {
       label: '文本编辑器处理',
       items: [
@@ -99,7 +109,8 @@ const stages = [
     name: '数据存储',
     icon: '💾',
     title: '阶段 3：数据存储',
-    description: '处理后的数据被保存到存储设备中（内存、硬盘、SSD、云存储等），以便后续使用。',
+    description:
+      '处理后的数据被保存到存储设备中（内存、硬盘、SSD、云存储等），以便后续使用。',
     example: {
       label: '保存文档',
       items: [
@@ -115,7 +126,8 @@ const stages = [
     name: '数据传输',
     icon: '📡',
     title: '阶段 4：数据传输',
-    description: '数据通过网络（局域网、互联网）或内部总线从一个位置传输到另一个位置。',
+    description:
+      '数据通过网络（局域网、互联网）或内部总线从一个位置传输到另一个位置。',
     example: {
       label: '上传文件',
       items: [
@@ -131,7 +143,8 @@ const stages = [
     name: '数据输出',
     icon: '🖥️',
     title: '阶段 5：数据输出',
-    description: '数据通过输出设备（显示器、打印机、扬声器等）呈现给用户，或传输给其他系统。',
+    description:
+      '数据通过输出设备（显示器、打印机、扬声器等）呈现给用户，或传输给其他系统。',
     example: {
       label: '显示网页',
       items: [
@@ -184,8 +197,14 @@ const keyPoints = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .lifecycle-flow {
   display: flex;

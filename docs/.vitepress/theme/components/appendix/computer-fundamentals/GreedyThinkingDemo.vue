@@ -8,7 +8,7 @@
     <div class="core-idea">
       <div class="idea-box">
         <div class="idea-text">
-          贪心算法在每一步选择中都采取当前状态下<strong>最优</strong>的选择<br>
+          贪心算法在每一步选择中都采取当前状态下<strong>最优</strong>的选择<br />
           希望通过一系列局部最优选择达到<strong>全局最优</strong>
         </div>
       </div>
@@ -36,7 +36,11 @@
           需要找零：<span class="amount">{{ changeAmount }}</span> 元
         </div>
         <div class="change-process">
-          <div class="process-step" v-for="(step, index) in changeSteps" :key="index">
+          <div
+            class="process-step"
+            v-for="(step, index) in changeSteps"
+            :key="index"
+          >
             <div class="step-coin">{{ step.coin }}</div>
             <div class="step-text">× {{ step.count }} = {{ step.value }}元</div>
           </div>
@@ -46,7 +50,7 @@
         </div>
       </div>
       <div class="scenario-note">
-        ✓ 贪心策略：每次选择面值最大的硬币<br>
+        ✓ 贪心策略：每次选择面值最大的硬币<br />
         ✓ 适用于人民币、美元等货币系统
       </div>
     </div>
@@ -59,9 +63,14 @@
           <div
             v-for="(activity, index) in activities"
             :key="index"
-            :class="['activity-item', { selected: activity.selected, conflicting: activity.conflicting }]"
+            :class="[
+              'activity-item',
+              { selected: activity.selected, conflicting: activity.conflicting }
+            ]"
           >
-            <div class="activity-time">{{ activity.start }} - {{ activity.end }}</div>
+            <div class="activity-time">
+              {{ activity.start }} - {{ activity.end }}
+            </div>
             <div class="activity-name">{{ activity.name }}</div>
           </div>
         </div>
@@ -183,17 +192,51 @@ const changeSteps = [
   { coin: '1元', count: 2, value: 2 }
 ]
 
-const totalCoins = computed(() => changeSteps.reduce((sum, step) => sum + step.count, 0))
+const totalCoins = computed(() =>
+  changeSteps.reduce((sum, step) => sum + step.count, 0)
+)
 
 const activities = [
-  { start: '9:00', end: '10:00', name: '活动1', selected: true, conflicting: false },
-  { start: '9:30', end: '11:30', name: '活动2', selected: false, conflicting: true },
-  { start: '10:00', end: '11:00', name: '活动3', selected: true, conflicting: false },
-  { start: '10:30', end: '12:00', name: '活动4', selected: false, conflicting: true },
-  { start: '11:00', end: '12:00', name: '活动5', selected: true, conflicting: false }
+  {
+    start: '9:00',
+    end: '10:00',
+    name: '活动1',
+    selected: true,
+    conflicting: false
+  },
+  {
+    start: '9:30',
+    end: '11:30',
+    name: '活动2',
+    selected: false,
+    conflicting: true
+  },
+  {
+    start: '10:00',
+    end: '11:00',
+    name: '活动3',
+    selected: true,
+    conflicting: false
+  },
+  {
+    start: '10:30',
+    end: '12:00',
+    name: '活动4',
+    selected: false,
+    conflicting: true
+  },
+  {
+    start: '11:00',
+    end: '12:00',
+    name: '活动5',
+    selected: true,
+    conflicting: false
+  }
 ]
 
-const selectedCount = computed(() => activities.filter(a => a.selected).length)
+const selectedCount = computed(
+  () => activities.filter((a) => a.selected).length
+)
 </script>
 
 <style scoped>
@@ -212,8 +255,14 @@ const selectedCount = computed(() => activities.filter(a => a.selected).length)
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .core-idea {
   margin-bottom: 2rem;

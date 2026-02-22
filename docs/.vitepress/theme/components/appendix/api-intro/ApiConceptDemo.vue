@@ -1,86 +1,89 @@
 <!--
-  ApiConceptDemo.vue
+  ApiConceptDemo.vue - 紧凑版
   目标：直观演示 API 的基本要素：地址 + 参数
 -->
 <template>
-  <div class="demo">
-    <div class="header">
+  <div class="demo-root">
+    <div class="demo-header">
       <span class="icon">🔧</span>
-      <span class="title">互动演示：调用 API 需要什么？</span>
+      <span class="title">调用 API 需要什么？</span>
     </div>
 
-    <div class="content">
-      <div class="step">
-        <div class="step-header">
-          <span class="step-num">1</span>
-          <span class="step-title">地址 (Endpoint) - 告诉服务器你要找谁</span>
-        </div>
-        <div class="step-body">
+    <div class="demo-layout">
+      <div class="left-panel">
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">1</span>
+            <span class="step-title">地址 (Endpoint)</span>
+          </div>
           <div class="url-bar">
-            <span class="url">https://api.example.com</span>
+            <span class="url-base">https://api.example.com</span>
             <input
               v-model="endpoint"
               type="text"
               class="endpoint-input"
               placeholder="/users"
-            >
+            />
           </div>
         </div>
-      </div>
 
-      <div class="step">
-        <div class="step-header">
-          <span class="step-num">2</span>
-          <span class="step-title">参数 (Params) - 告诉服务器你要什么</span>
-        </div>
-        <div class="step-body">
-          <div class="params-box">
-            <div class="params-row">
-              <span class="param-label">页码：</span>
-              <input
-                v-model.number="page"
-                type="number"
-                class="param-input"
-                min="1"
-              >
-            </div>
-            <div class="params-row">
-              <span class="param-label">每页数量：</span>
-              <input
-                v-model.number="limit"
-                type="number"
-                class="param-input small"
-                min="1"
-                max="100"
-              >
-            </div>
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">2</span>
+            <span class="step-title">参数 (Params)</span>
+          </div>
+          <div class="params-row">
+            <label>页码:</label>
+            <input
+              v-model.number="page"
+              type="number"
+              class="param-input"
+              min="1"
+            />
+            <label>每页:</label>
+            <input
+              v-model.number="limit"
+              type="number"
+              class="param-input"
+              min="1"
+              max="100"
+            />
           </div>
         </div>
+
+        <button class="send-btn" :disabled="loading" @click="sendRequest">
+          {{ loading ? '发送中...' : '🚀 发送请求' }}
+        </button>
       </div>
 
-      <button
-        class="send-btn"
-        :disabled="loading"
-        @click="sendRequest"
-      >
-        {{ loading ? '发送中...' : '🚀 发送请求' }}
-      </button>
-
-      <div
-        v-if="response"
-        class="response"
-      >
+      <div class="right-panel">
         <div class="response-header">
           <span
+            v-if="response"
             class="status-badge"
-            :class="response.status >= 200 && response.status < 300 ? 'success' : 'error'"
+            :class="
+              response.status >= 200 && response.status < 300
+                ? 'success'
+                : 'error'
+            "
           >
             {{ response.status }} {{ response.statusText }}
           </span>
-          <span class="response-time">耗时: {{ response.time }}ms</span>
+          <span v-else class="status-badge pending">等待请求</span>
         </div>
-        <pre class="response-body">{{ JSON.stringify(response.data, null, 2) }}</pre>
+        <div v-if="response" class="response-body">
+          <pre>{{ JSON.stringify(response.data, null, 2) }}</pre>
+        </div>
+        <div v-else class="response-empty">点击发送按钮查看结果</div>
       </div>
+    </div>
+
+    <div class="info-box">
+      <strong>核心思想：</strong>
+      <span
+        >无论哪种 API，结构都一样：地址（找谁）+ 参数（要什么）=
+        响应（得到什么）。</span
+      >
     </div>
   </div>
 </template>
@@ -99,130 +102,140 @@ function sendRequest() {
   response.value = null
 
   setTimeout(() => {
-    const startTime = Date.now()
-
     if (endpoint.value === '/users') {
-      // 限制最多返回3条，避免结果太长
       const actualLimit = Math.min(limit.value, 3)
       const users = []
       for (let i = 1; i <= actualLimit; i++) {
         users.push({
           id: i,
-          name: `用户${(page.value - 1) * limit.value + i}`,
-          age: 20 + i
+          name: `用户${(page.value - 1) * limit.value + i}`
         })
       }
-
       response.value = {
         status: 200,
         statusText: 'OK',
-        time: Date.now() - startTime,
-        data: { 
-          users, 
-          total: 100, 
-          page: page.value, 
-          limit: limit.value,
-          note: limit.value > 3 ? `仅显示前3条，共${limit.value}条` : null
-        }
+        data: { users, total: 100, page: page.value }
       }
     } else {
       response.value = {
         status: 404,
         statusText: 'Not Found',
-        time: Date.now() - startTime,
         data: { error: '找不到这个接口' }
       }
     }
-
     loading.value = false
-  }, 300 + Math.random() * 200)
+  }, 300)
 }
 </script>
 
 <style scoped>
-.demo {
+.demo-root {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  margin: 24px 0;
+  border-radius: 10px;
   overflow: hidden;
+  background: var(--vp-c-bg-soft);
+  margin: 1rem 0;
+  font-size: 0.85rem;
 }
 
-.header {
-  padding: 14px 20px;
+.demo-header {
+  padding: 10px 16px;
   background: var(--vp-c-bg);
   border-bottom: 1px solid var(--vp-c-divider);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 18px;
 }
-
 .title {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 0.9rem;
 }
 
-.content {
-  padding: 20px;
+.demo-layout {
+  display: flex;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  border-right: 1px solid var(--vp-c-divider);
+}
+
+.right-panel {
+  width: 220px;
+  padding: 12px;
+  background: var(--vp-c-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .demo-layout {
+    flex-direction: column;
+  }
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
+  .right-panel {
+    width: 100%;
+  }
 }
 
 .step {
   background: var(--vp-c-bg);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .step-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--vp-c-bg-soft);
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--vp-c-bg-alt);
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .step-num {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: var(--vp-c-brand);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.7rem;
   font-weight: bold;
 }
 
 .step-title {
-  font-size: 13px;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
-}
-
-.step-body {
-  padding: 14px;
 }
 
 .url-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   background: #1e293b;
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 8px 10px;
+  border-radius: 0 0 6px 6px;
 }
 
-.url {
+.url-base {
   color: #94a3b8;
-  font-size: 13px;
+  font-size: 0.7rem;
+  white-space: nowrap;
 }
 
 .endpoint-input {
@@ -231,73 +244,58 @@ function sendRequest() {
   border: none;
   color: #60a5fa;
   font-family: monospace;
-  font-size: 14px;
+  font-size: 0.8rem;
   outline: none;
-}
-
-.params-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .params-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 0 0 6px 6px;
 }
 
-.param-label {
-  font-size: 13px;
+.params-row label {
+  font-size: 0.75rem;
   color: var(--vp-c-text-2);
-  min-width: 70px;
 }
 
 .param-input {
-  padding: 6px 10px;
+  width: 50px;
+  padding: 4px 6px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  font-size: 13px;
-}
-
-.param-input.small {
-  width: 60px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  background: var(--vp-c-bg);
 }
 
 .send-btn {
-  padding: 12px;
+  padding: 10px;
   background: var(--vp-c-brand);
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: opacity 0.2s;
 }
 
 .send-btn:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
-}
-
-.response {
-  margin-top: 8px;
-  animation: fadeIn 0.3s ease;
 }
 
 .response-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+  justify-content: center;
 }
 
 .status-badge {
   padding: 4px 10px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: bold;
 }
 
@@ -311,32 +309,50 @@ function sendRequest() {
   color: #991b1b;
 }
 
-.response-time {
-  font-size: 12px;
+.status-badge.pending {
+  background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-3);
 }
 
 .response-body {
+  flex: 1;
   background: #1e293b;
-  color: #e2e8f0;
-  padding: 12px;
   border-radius: 6px;
-  font-family: monospace;
-  font-size: 12px;
-  overflow-x: auto;
-  
-  max-height: 200px;
-  margin: 0;
+  padding: 8px;
+  overflow: auto;
+  max-height: 120px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.response-body pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+}
+
+.response-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vp-c-text-3);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.info-box {
+  display: flex;
+  gap: 0.25rem;
+  padding: 10px 14px;
+  background: var(--vp-c-bg-alt);
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 </style>

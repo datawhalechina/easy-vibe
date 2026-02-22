@@ -11,8 +11,8 @@
         <div class="analogy-content">
           <div class="analogy-title">俄罗斯套娃</div>
           <div class="analogy-desc">
-            打开一个大娃娃，里面有个小一点的娃娃<br>
-            再打开还有更小的...直到最小的一个<br>
+            打开一个大娃娃，里面有个小一点的娃娃<br />
+            再打开还有更小的...直到最小的一个<br />
             <strong>这就是递归！</strong>
           </div>
         </div>
@@ -101,7 +101,8 @@
         </div>
         <div class="dir-pseudocode">
           <div class="pseudo-title">伪代码</div>
-          <pre>function traverse(folder) {
+          <pre>
+function traverse(folder) {
   for each item in folder {
     if item is file {
       print(item)
@@ -109,7 +110,8 @@
       traverse(item)  // 递归调用！
     }
   }
-}</pre>
+}</pre
+          >
         </div>
       </div>
     </div>
@@ -127,7 +129,9 @@
         <div class="element-card">
           <div class="element-number">2</div>
           <div class="element-title">递归调用</div>
-          <div class="element-desc">如何让问题规模变小？调用自己处理更小的规模</div>
+          <div class="element-desc">
+            如何让问题规模变小？调用自己处理更小的规模
+          </div>
           <div class="element-example">例：n! 转换成 (n-1)!</div>
         </div>
         <div class="element-card">
@@ -189,8 +193,14 @@ const examples = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .analogy-section {
   margin-bottom: 2rem;

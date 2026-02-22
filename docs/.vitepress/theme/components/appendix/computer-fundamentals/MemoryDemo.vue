@@ -1,33 +1,51 @@
 <template>
   <div class="memory-demo">
     <div class="demo-controls">
-      <button class="allocate-btn wechat" @click="allocate('wechat')" :disabled="!hasFreeSpace">
+      <button
+        class="allocate-btn wechat"
+        @click="allocate('wechat')"
+        :disabled="!hasFreeSpace"
+      >
         + 给微信分配数据
       </button>
-      <button class="allocate-btn game" @click="allocate('game')" :disabled="!hasFreeSpace">
+      <button
+        class="allocate-btn game"
+        @click="allocate('game')"
+        :disabled="!hasFreeSpace"
+      >
         + 给游戏分配数据
       </button>
-      <button class="reset-btn" @click="reset">
-        ↺ 重置
-      </button>
+      <button class="reset-btn" @click="reset">↺ 重置</button>
     </div>
 
     <div class="system-view">
       <!-- 虚拟内存试图 -->
       <div class="virtual-cluster">
         <div class="process-vm wechat">
-          <div class="title">💬 微信的虚拟内存<br/>(它认为自己独占了空间)</div>
+          <div class="title">💬 微信的虚拟内存<br />(它认为自己独占了空间)</div>
           <div class="vm-blocks">
-            <div v-for="i in 4" :key="'w'+i" class="block" :class="{ filled: wechatBlocks >= i }">
+            <div
+              v-for="i in 4"
+              :key="'w' + i"
+              class="block"
+              :class="{ filled: wechatBlocks >= i }"
+            >
               {{ wechatBlocks >= i ? '数据 ' + i : '虚拟空闲' }}
             </div>
           </div>
         </div>
 
         <div class="process-vm game">
-          <div class="title">🎮 游戏的虚拟内存<br/>(它也认为自己独占了空间)</div>
+          <div class="title">
+            🎮 游戏的虚拟内存<br />(它也认为自己独占了空间)
+          </div>
           <div class="vm-blocks">
-            <div v-for="i in 4" :key="'g'+i" class="block" :class="{ filled: gameBlocks >= i }">
+            <div
+              v-for="i in 4"
+              :key="'g' + i"
+              class="block"
+              :class="{ filled: gameBlocks >= i }"
+            >
               {{ gameBlocks >= i ? '数据 ' + i : '虚拟空闲' }}
             </div>
           </div>
@@ -38,17 +56,17 @@
       <div class="os-page-table">
         <div class="title">保安大叔 (OS 页表)</div>
         <div class="table-info">
-          当程序存数据时，<br/>由我暗中转移到真正的物理缝隙里。
+          当程序存数据时，<br />由我暗中转移到真正的物理缝隙里。
         </div>
       </div>
 
       <!-- 物理内存 -->
       <div class="physical-memory">
-        <div class="title">🗄️ 真实的物理内存条<br/>(其实像个大杂烩一样乱)</div>
+        <div class="title">🗄️ 真实的物理内存条<br />(其实像个大杂烩一样乱)</div>
         <div class="pm-blocks">
-          <div 
-            v-for="(block, idx) in physicalBlocks" 
-            :key="'p'+idx" 
+          <div
+            v-for="(block, idx) in physicalBlocks"
+            :key="'p' + idx"
             class="block"
             :class="[block.type, { occupied: block.type !== 'empty' }]"
           >
@@ -57,9 +75,10 @@
         </div>
       </div>
     </div>
-    
+
     <div class="explanation-box" v-if="wechatBlocks > 0 || gameBlocks > 0">
-      💡 发现了没？尽管右侧真正的物理内存已经被塞得像个狗皮膏药，但在左侧的微信和游戏眼里，自己的内存条永远是连续且干净的。更重要的是，微信绝对访问不到橘色的物理块，保证了安全！
+      💡
+      发现了没？尽管右侧真正的物理内存已经被塞得像个狗皮膏药，但在左侧的微信和游戏眼里，自己的内存条永远是连续且干净的。更重要的是，微信绝对访问不到橘色的物理块，保证了安全！
     </div>
   </div>
 </template>
@@ -80,20 +99,20 @@ const initialPhysicalBlocks = [
   { type: 'empty', label: '空闲' },
   { type: 'empty', label: '空闲' },
   { type: 'os', label: '系统驱动' },
-  { type: 'empty', label: '空闲' },
+  { type: 'empty', label: '空闲' }
 ]
 
 const physicalBlocks = ref(JSON.parse(JSON.stringify(initialPhysicalBlocks)))
 
 const freeSpaceCount = computed(() => {
-  return physicalBlocks.value.filter(b => b.type === 'empty').length
+  return physicalBlocks.value.filter((b) => b.type === 'empty').length
 })
 
 const hasFreeSpace = computed(() => freeSpaceCount.value > 0)
 
 const allocate = (process) => {
   if (!hasFreeSpace.value) return
-  
+
   // Find a process block logic
   if (process === 'wechat' && wechatBlocks.value < 4) {
     wechatBlocks.value++
@@ -109,9 +128,10 @@ const fillRandomEmptyBlock = (type, label) => {
   physicalBlocks.value.forEach((b, i) => {
     if (b.type === 'empty') emptyIndices.push(i)
   })
-  
+
   if (emptyIndices.length > 0) {
-    const randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)]
+    const randomIndex =
+      emptyIndices[Math.floor(Math.random() * emptyIndices.length)]
     physicalBlocks.value[randomIndex] = { type, label }
   }
 }
@@ -263,7 +283,7 @@ const reset = () => {
   padding: 1rem;
   position: relative;
   border: 2px solid var(--vp-c-brand-1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .os-page-table .table-info {
@@ -317,9 +337,17 @@ const reset = () => {
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.9); opacity: 0; }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .explanation-box {
@@ -333,7 +361,13 @@ const reset = () => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

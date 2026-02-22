@@ -22,12 +22,17 @@
         v-for="op in ops"
         :key="op.id"
         :disabled="running || !op.ok()"
-        :class="['av-btn', { 'av-btn--on': active === op.id, 'av-btn--dim': !op.ok() }]"
+        :class="[
+          'av-btn',
+          { 'av-btn--on': active === op.id, 'av-btn--dim': !op.ok() }
+        ]"
         @click="run(op)"
       >
         <code>{{ op.cmd }}</code>
       </button>
-      <button class="av-btn av-btn--reset" :disabled="running" @click="reset">重置</button>
+      <button class="av-btn av-btn--reset" :disabled="running" @click="reset">
+        重置
+      </button>
     </div>
 
     <div class="av-versions">
@@ -90,7 +95,7 @@ const active = ref(null)
 const activeVersion = ref('')
 const hint = ref('点击按钮，了解 API 版本控制的策略和最佳实践。')
 
-const sleep = ms => new Promise(r => setTimeout(r, ms))
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const ops = [
   {
@@ -108,10 +113,12 @@ const ops = [
       { kind: 'dim', text: '' },
       { kind: 'grn', text: '✅ 正确做法：' },
       { kind: 'grn', text: '   /v1/orders - 旧接口，继续服务旧 App' },
-      { kind: 'grn', text: '   /v2/orders - 新接口，新功能在这里' },
+      { kind: 'grn', text: '   /v2/orders - 新接口，新功能在这里' }
     ],
     hint: '版本控制让新旧客户端都能正常工作。旧 App 用户可以慢慢升级，不会突然崩溃。',
-    do: () => { activeVersion.value = '' }
+    do: () => {
+      activeVersion.value = ''
+    }
   },
   {
     id: 'url',
@@ -125,10 +132,12 @@ const ops = [
       { kind: 'grn', text: 'GET /v3/users' },
       { kind: 'dim', text: '' },
       { kind: 'dim', text: '优点：直观、易缓存、浏览器友好' },
-      { kind: 'dim', text: '缺点：URL 变长' },
+      { kind: 'dim', text: '缺点：URL 变长' }
     ],
     hint: 'URL 路径版本是最常用的方式。GitHub、Twitter、Stripe 都用这种方式。',
-    do: () => { activeVersion.value = 'v1' }
+    do: () => {
+      activeVersion.value = 'v1'
+    }
   },
   {
     id: 'header',
@@ -145,10 +154,12 @@ const ops = [
       { kind: 'grn', text: 'X-API-Version: 2' },
       { kind: 'dim', text: '' },
       { kind: 'dim', text: '优点：URL 干净' },
-      { kind: 'dim', text: '缺点：不便调试、缓存复杂' },
+      { kind: 'dim', text: '缺点：不便调试、缓存复杂' }
     ],
     hint: 'Header 版本让 URL 更干净，但调试时需要额外设置 Header，不如 URL 版本直观。',
-    do: () => { activeVersion.value = 'v2' }
+    do: () => {
+      activeVersion.value = 'v2'
+    }
   },
   {
     id: 'query',
@@ -161,10 +172,12 @@ const ops = [
       { kind: 'grn', text: 'GET /users?version=2' },
       { kind: 'dim', text: '' },
       { kind: 'dim', text: '优点：简单、向后兼容' },
-      { kind: 'dim', text: '缺点：容易被忽略、不是 RESTful 标准' },
+      { kind: 'dim', text: '缺点：容易被忽略、不是 RESTful 标准' }
     ],
     hint: '查询参数版本简单但不够"正规"。适合内部 API 或快速迭代的项目。',
-    do: () => { activeVersion.value = '' }
+    do: () => {
+      activeVersion.value = ''
+    }
   },
   {
     id: 'best',
@@ -177,11 +190,13 @@ const ops = [
       { kind: 'grn', text: '2. 新功能放新版本，旧版本保持稳定' },
       { kind: 'grn', text: '3. 设置废弃时间线（如 v1 将在 2025-06 废弃）' },
       { kind: 'grn', text: '4. 响应头标注当前版本和废弃信息' },
-      { kind: 'grn', text: '5. 文档明确标注每个版本的变更' },
+      { kind: 'grn', text: '5. 文档明确标注每个版本的变更' }
     ],
     hint: '版本控制不是"以后再说"的事，从第一天就应该规划好。废弃旧版本要给用户足够的迁移时间。',
-    do: () => { activeVersion.value = 'v2' }
-  },
+    do: () => {
+      activeVersion.value = 'v2'
+    }
+  }
 ]
 
 async function run(op) {
@@ -239,7 +254,9 @@ function reset() {
   font-size: 0.85rem;
 }
 
-.av-terminal { background: #141420; }
+.av-terminal {
+  background: #141420;
+}
 .term-bar {
   display: flex;
   align-items: center;
@@ -247,11 +264,26 @@ function reset() {
   padding: 7px 12px;
   background: #1e1e2e;
 }
-.dot { width: 11px; height: 11px; border-radius: 50%; }
-.dot.r { background: #ff5f57; }
-.dot.y { background: #febc2e; }
-.dot.g { background: #28c840; }
-.term-title { margin-left: 8px; font-size: 0.72rem; color: #666; font-family: monospace; }
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.dot.r {
+  background: #ff5f57;
+}
+.dot.y {
+  background: #febc2e;
+}
+.dot.g {
+  background: #28c840;
+}
+.term-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: #666;
+  font-family: monospace;
+}
 
 .term-body {
   min-height: 100px;
@@ -264,16 +296,44 @@ function reset() {
   line-height: 1.6;
   color: #cdd6f4;
 }
-.t-line { display: flex; min-width: min-content; }
-.t-ps { color: #a6e3a1; flex-shrink: 0; }
-.t-cmd { color: #cdd6f4; }
-.t-dim { color: #585b70; }
-.t-grn { color: #a6e3a1; }
-.t-red { color: #f38ba8; }
-.t-yel { color: #f9e2af; }
-.t-typing { color: #cdd6f4; }
-.t-cur { animation: blink 1s step-end infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.t-line {
+  display: flex;
+  min-width: min-content;
+}
+.t-ps {
+  color: #a6e3a1;
+  flex-shrink: 0;
+}
+.t-cmd {
+  color: #cdd6f4;
+}
+.t-dim {
+  color: #585b70;
+}
+.t-grn {
+  color: #a6e3a1;
+}
+.t-red {
+  color: #f38ba8;
+}
+.t-yel {
+  color: #f9e2af;
+}
+.t-typing {
+  color: #cdd6f4;
+}
+.t-cur {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
 .av-btns {
   display: flex;
@@ -291,18 +351,38 @@ function reset() {
   cursor: pointer;
   transition: border-color 0.2s;
 }
-.av-btn code { font-size: 0.68rem; color: #7f849c; font-family: monospace; white-space: nowrap; }
-.av-btn:hover:not(:disabled) { border-color: var(--vp-c-brand); }
-.av-btn--on { border-color: var(--vp-c-brand) !important; }
-.av-btn--on code { color: var(--vp-c-brand); }
-.av-btn--dim { opacity: 0.3; cursor: not-allowed; }
+.av-btn code {
+  font-size: 0.68rem;
+  color: #7f849c;
+  font-family: monospace;
+  white-space: nowrap;
+}
+.av-btn:hover:not(:disabled) {
+  border-color: var(--vp-c-brand);
+}
+.av-btn--on {
+  border-color: var(--vp-c-brand) !important;
+}
+.av-btn--on code {
+  color: var(--vp-c-brand);
+}
+.av-btn--dim {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .av-btn--reset {
   background: transparent;
   border-color: #313244;
   margin-left: auto;
 }
-.av-btn--reset code { display: none; }
-.av-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
+.av-btn--reset code {
+  display: none;
+}
+.av-btn--reset::after {
+  content: '重置';
+  font-size: 0.7rem;
+  color: #585b70;
+}
 
 .av-versions {
   display: flex;

@@ -1,13 +1,21 @@
 <template>
   <div class="process-demo">
     <div class="controls-section">
-      <button class="action-btn" :class="{ active: isRunning }" @click="toggleSimulation">
+      <button
+        class="action-btn"
+        :class="{ active: isRunning }"
+        @click="toggleSimulation"
+      >
         {{ isRunning ? '⏸ 暂停时间片轮转' : '▶️ 启动 CPU' }}
       </button>
       <div class="speed-control">
         <label>时间流速:</label>
-        <button :class="{ active: speed === 'slow' }" @click="setSpeed('slow')">极慢动作</button>
-        <button :class="{ active: speed === 'fast' }" @click="setSpeed('fast')">真实速度</button>
+        <button :class="{ active: speed === 'slow' }" @click="setSpeed('slow')">
+          极慢动作
+        </button>
+        <button :class="{ active: speed === 'fast' }" @click="setSpeed('fast')">
+          真实速度
+        </button>
       </div>
     </div>
 
@@ -18,23 +26,21 @@
           <span v-if="activeProcess" class="task-badge">
             正在处理: {{ activeProcess.icon }} {{ activeProcess.name }}
           </span>
-          <span v-else class="task-badge idle">
-            空闲中...
-          </span>
+          <span v-else class="task-badge idle"> 空闲中... </span>
         </div>
       </div>
       <!-- 连接线动画 -->
       <div class="connector">
-        <div 
-          class="data-flow" 
-          :class="[ `flow-${activeProcessId}`, { running: isRunning }]">
-        </div>
+        <div
+          class="data-flow"
+          :class="[`flow-${activeProcessId}`, { running: isRunning }]"
+        ></div>
       </div>
     </div>
 
     <div class="processes-grid">
-      <div 
-        v-for="p in processes" 
+      <div
+        v-for="p in processes"
         :key="p.id"
         class="process-card"
         :class="{ active: p.id === activeProcessId }"
@@ -44,21 +50,32 @@
             <span class="icon">{{ p.icon }}</span>
             <span class="name">{{ p.name }}</span>
           </div>
-          <span class="status-badge" :class="p.id === activeProcessId ? 'running' : 'waiting'">
+          <span
+            class="status-badge"
+            :class="p.id === activeProcessId ? 'running' : 'waiting'"
+          >
             {{ p.id === activeProcessId ? '独占 CPU' : '排队等待' }}
           </span>
         </div>
         <div class="p-progress">
           <div class="progress-track">
-            <div class="progress-fill" :style="{ width: p.progress + '%' }"></div>
+            <div
+              class="progress-fill"
+              :style="{ width: p.progress + '%' }"
+            ></div>
           </div>
           <div class="progress-text">{{ Math.floor(p.progress) }}% 完成</div>
         </div>
       </div>
     </div>
 
-    <div class="explanation-box" :class="{ show: isRunning && speed === 'fast' }">
-      💡 **关键启示**：当切换速度足够快时，肉眼已经无法分辨谁在“等待”。这也就是为什么只有一个 CPU 核心的电脑，依然能让你一边听歌一边打字！
+    <div
+      class="explanation-box"
+      :class="{ show: isRunning && speed === 'fast' }"
+    >
+      💡
+      **关键启示**：当切换速度足够快时，肉眼已经无法分辨谁在“等待”。这也就是为什么只有一个
+      CPU 核心的电脑，依然能让你一边听歌一边打字！
     </div>
   </div>
 </template>
@@ -77,7 +94,9 @@ const processes = ref([
   { id: 3, name: '游戏渲染', icon: '🎮', progress: 0 }
 ])
 
-const activeProcess = computed(() => processes.value.find(p => p.id === activeProcessId.value))
+const activeProcess = computed(() =>
+  processes.value.find((p) => p.id === activeProcessId.value)
+)
 
 const setSpeed = (s) => {
   speed.value = s
@@ -88,17 +107,17 @@ const setSpeed = (s) => {
 }
 
 const startLoop = () => {
-  const switchTime = speed.value === 'slow' ? 1200 : 80; // 慢动作 1.2s，快动作极快
-  
+  const switchTime = speed.value === 'slow' ? 1200 : 80 // 慢动作 1.2s，快动作极快
+
   if (!activeProcessId.value) {
     activeProcessId.value = 1
   }
 
   interval = setInterval(() => {
     // 增加当前进度
-    const curr = processes.value.find(p => p.id === activeProcessId.value)
+    const curr = processes.value.find((p) => p.id === activeProcessId.value)
     if (curr) {
-      curr.progress += (speed.value === 'slow' ? 15 : 4)
+      curr.progress += speed.value === 'slow' ? 15 : 4
       if (curr.progress >= 100) curr.progress = 0
     }
 
@@ -106,7 +125,6 @@ const startLoop = () => {
     let nextId = activeProcessId.value + 1
     if (nextId > 3) nextId = 1
     activeProcessId.value = nextId
-
   }, switchTime)
 }
 
@@ -203,7 +221,7 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.3s;
   position: relative;
 }
@@ -276,7 +294,9 @@ onUnmounted(() => {
 .process-card.active::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 4px;
   background: var(--vp-c-brand-1);
 }

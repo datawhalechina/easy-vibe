@@ -152,11 +152,7 @@ const categories = [
     icon: '🗂️',
     desc: '通过关键词快速查找',
     examples: ['哈希表', '字典', '集合'],
-    features: [
-      '通过键值对存储数据',
-      '查找速度极快',
-      '数据之间没有顺序关系'
-    ],
+    features: ['通过键值对存储数据', '查找速度极快', '数据之间没有顺序关系'],
     scenarios: [
       {
         icon: '📖',
@@ -189,11 +185,7 @@ const categories = [
     icon: '🌳',
     desc: '层级关系，像家谱',
     examples: ['二叉树', 'B 树', '堆'],
-    features: [
-      '一对多的层级关系',
-      '有明确的根节点',
-      '适合表示分类和层级'
-    ],
+    features: ['一对多的层级关系', '有明确的根节点', '适合表示分类和层级'],
     scenarios: [
       {
         icon: '📁',
@@ -226,11 +218,7 @@ const categories = [
     icon: '🕸️',
     desc: '复杂关系网络',
     examples: ['有向图', '无向图', '网络图'],
-    features: [
-      '多对多的复杂关系',
-      '节点之间可以任意连接',
-      '可以表示复杂网络'
-    ],
+    features: ['多对多的复杂关系', '节点之间可以任意连接', '可以表示复杂网络'],
     scenarios: [
       {
         icon: '🗺️',
@@ -259,7 +247,9 @@ const categories = [
   }
 ]
 
-const currentCategory = computed(() => categories.find(c => c.id === activeCategory.value))
+const currentCategory = computed(() =>
+  categories.find((c) => c.id === activeCategory.value)
+)
 </script>
 
 <style scoped>
@@ -278,8 +268,14 @@ const currentCategory = computed(() => categories.find(c => c.id === activeCateg
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .structure-map {
   margin-bottom: 2rem;
@@ -383,7 +379,8 @@ const currentCategory = computed(() => categories.find(c => c.id === activeCateg
   gap: 1.5rem;
 }
 
-.detail-section {}
+.detail-section {
+}
 
 .section-title {
   font-weight: 600;

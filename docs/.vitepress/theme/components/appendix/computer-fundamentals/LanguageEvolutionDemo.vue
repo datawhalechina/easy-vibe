@@ -55,13 +55,17 @@
             <div class="pros">
               <div class="list-title">✓ 优点</div>
               <ul>
-                <li v-for="(pro, index) in currentEra.pros" :key="index">{{ pro }}</li>
+                <li v-for="(pro, index) in currentEra.pros" :key="index">
+                  {{ pro }}
+                </li>
               </ul>
             </div>
             <div class="cons">
               <div class="list-title">✗ 缺点</div>
               <ul>
-                <li v-for="(con, index) in currentEra.cons" :key="index">{{ con }}</li>
+                <li v-for="(con, index) in currentEra.cons" :key="index">
+                  {{ con }}
+                </li>
               </ul>
             </div>
           </div>
@@ -99,11 +103,7 @@
     <div class="modern-languages">
       <div class="modern-title">现代编程语言生态</div>
       <div class="language-grid">
-        <div
-          v-for="lang in modernLanguages"
-          :key="lang.name"
-          class="lang-card"
-        >
+        <div v-for="lang in modernLanguages" :key="lang.name" class="lang-card">
           <div class="lang-name">{{ lang.name }}</div>
           <div class="lang-year">{{ lang.year }}</div>
           <div class="lang-uses">
@@ -134,11 +134,7 @@ const eras = [
     icon: '0️⃣',
     position: '5%',
     example: '10110000 11000000\n(add two numbers)',
-    features: [
-      '直接用二进制代码',
-      '机器可以直接执行',
-      '完全依赖硬件'
-    ],
+    features: ['直接用二进制代码', '机器可以直接执行', '完全依赖硬件'],
     pros: ['执行速度最快', '直接控制硬件'],
     cons: ['极难编写', '容易出错', '不可移植']
   },
@@ -149,11 +145,7 @@ const eras = [
     icon: '🔧',
     position: '25%',
     example: 'MOV AX, 5\nADD AX, 3\n(add 5 and 3)',
-    features: [
-      '用助记符代替二进制',
-      '需要汇编器翻译',
-      '仍然依赖硬件'
-    ],
+    features: ['用助记符代替二进制', '需要汇编器翻译', '仍然依赖硬件'],
     pros: ['比机器语言好懂', '效率仍然很高'],
     cons: ['代码冗长', '不可移植', '需要了解硬件']
   },
@@ -164,11 +156,7 @@ const eras = [
     icon: '📋',
     position: '50%',
     example: 'int add(int a, int b) {\n  return a + b;\n}',
-    features: [
-      '函数、变量等抽象',
-      '结构化编程',
-      '可移植性好'
-    ],
+    features: ['函数、变量等抽象', '结构化编程', '可移植性好'],
     pros: ['易读易写', '可移植', '效率较高'],
     cons: ['大型项目难以维护', '代码重用性差']
   },
@@ -179,11 +167,7 @@ const eras = [
     icon: '🎯',
     position: '75%',
     example: 'class Calculator {\n  add(a, b) { return a + b; }\n}',
-    features: [
-      '类、对象、封装、继承',
-      '模块化设计',
-      '代码复用性强'
-    ],
+    features: ['类、对象、封装、继承', '模块化设计', '代码复用性强'],
     pros: ['适合大型项目', '易维护', '可扩展'],
     cons: ['学习曲线陡', '代码量较大']
   },
@@ -194,11 +178,7 @@ const eras = [
     icon: '🚀',
     position: '95%',
     example: 'const add = (a, b) => a + b;\n(add arrow function)',
-    features: [
-      '简洁优雅的语法',
-      '多范式支持',
-      '强大的标准库'
-    ],
+    features: ['简洁优雅的语法', '多范式支持', '强大的标准库'],
     pros: ['开发效率高', '生态丰富', '社区活跃'],
     cons: ['抽象层多', '性能可能不如底层语言']
   }
@@ -232,8 +212,14 @@ const currentEra = computed(() => eras[activeEra.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .evolution-timeline {
   background: var(--vp-c-bg);
@@ -321,7 +307,8 @@ const currentEra = computed(() => eras[activeEra.value])
   gap: 1.5rem;
 }
 
-.content-section {}
+.content-section {
+}
 
 .section-title {
   font-weight: 600;

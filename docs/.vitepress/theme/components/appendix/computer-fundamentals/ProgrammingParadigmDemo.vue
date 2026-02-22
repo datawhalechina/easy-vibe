@@ -147,7 +147,8 @@ const paradigms = [
     icon: '📋',
     desc: '告诉计算机怎么做',
     idea: '通过一系列命令（语句）来改变程序状态，关注"怎么做"',
-    example: '// 计算1-10的和\nlet sum = 0;\nfor (let i = 1; i <= 10; i++) {\n  sum += i;\n}',
+    example:
+      '// 计算1-10的和\nlet sum = 0;\nfor (let i = 1; i <= 10; i++) {\n  sum += i;\n}',
     features: ['变量', '循环', '条件判断', '语句'],
     languages: ['C', 'Python', 'JavaScript']
   },
@@ -157,7 +158,8 @@ const paradigms = [
     icon: '🎯',
     desc: '用对象来组织代码',
     idea: '将数据和操作数据的方法封装成对象，通过对象间交互来完成任务',
-    example: 'class Calculator {\n  add(a, b) { return a + b; }\n}\nconst calc = new Calculator();',
+    example:
+      'class Calculator {\n  add(a, b) { return a + b; }\n}\nconst calc = new Calculator();',
     features: ['封装', '继承', '多态', '类'],
     languages: ['Java', 'C++', 'Python', 'Ruby']
   },
@@ -167,13 +169,16 @@ const paradigms = [
     icon: 'λ',
     desc: '函数是核心',
     idea: '强调纯函数、不可变数据，避免副作用，关注"做什么"',
-    example: '// 计算1-10的和\nconst sum = Array.from(\n  {length: 10}, (_, i) => i + 1\n).reduce((a, b) => a + b, 0);',
+    example:
+      '// 计算1-10的和\nconst sum = Array.from(\n  {length: 10}, (_, i) => i + 1\n).reduce((a, b) => a + b, 0);',
     features: ['纯函数', '不可变性', '高阶函数', '无副作用'],
     languages: ['Haskell', 'F#', 'Erlang', 'Clojure']
   }
 ]
 
-const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadigm.value))
+const currentParadigm = computed(() =>
+  paradigms.find((p) => p.id === activeParadigm.value)
+)
 </script>
 
 <style scoped>
@@ -192,8 +197,14 @@ const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadi
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .paradigm-intro {
   padding: 1rem;
@@ -281,7 +292,8 @@ const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadi
   gap: 1.5rem;
 }
 
-.detail-section {}
+.detail-section {
+}
 
 .section-title {
   font-weight: 600;

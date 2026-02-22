@@ -1,34 +1,32 @@
 <template>
   <div class="filesystem-demo">
     <div class="demo-wrapper">
-      
       <!-- 文件树：逻辑视角 -->
       <div class="logical-view">
         <div class="view-title">
           <span>📁 你的视角 (文件系统)</span>
           <span class="subtitle">漂亮、整洁的目录树</span>
         </div>
-        
+
         <div class="file-tree">
           <div class="tree-node folder expanded">
             <span class="icon">💾</span> D盘 (根目录)
           </div>
           <div class="tree-children">
-            
             <div class="tree-node folder expanded">
               <span class="icon">📂</span> 照片
             </div>
             <div class="tree-children">
-              <div 
-                class="tree-node file" 
+              <div
+                class="tree-node file"
                 :class="{ active: activeFile === 'pet' }"
                 @click="selectFile('pet')"
               >
                 <span class="icon">🖼️</span> 宠物.jpg
                 <span class="size-badge">3 块</span>
               </div>
-              <div 
-                class="tree-node file" 
+              <div
+                class="tree-node file"
                 :class="{ active: activeFile === 'vacation' }"
                 @click="selectFile('vacation')"
               >
@@ -41,8 +39,8 @@
               <span class="icon">📂</span> 工作
             </div>
             <div class="tree-children">
-              <div 
-                class="tree-node file" 
+              <div
+                class="tree-node file"
                 :class="{ active: activeFile === 'doc' }"
                 @click="selectFile('doc')"
               >
@@ -50,7 +48,6 @@
                 <span class="size-badge">4 块</span>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -58,7 +55,7 @@
       <!-- 翻译官动画 -->
       <div class="translator">
         <div class="arrow"></div>
-        <div class="badge">文件系统账本<br/>(inode表)</div>
+        <div class="badge">文件系统账本<br />(inode表)</div>
         <div class="arrow"></div>
       </div>
 
@@ -68,39 +65,36 @@
           <span>🖨️ 硬盘的视角 (物理存储)</span>
           <span class="subtitle">无序、零散的数据块</span>
         </div>
-        
+
         <div class="disk-grid">
-          <div 
-            v-for="block in 24" 
+          <div
+            v-for="block in 24"
             :key="block"
             class="disk-block"
-            :class="[
-              getBlockOwner(block),
-              { active: isBlockActive(block) }
-            ]"
+            :class="[getBlockOwner(block), { active: isBlockActive(block) }]"
           >
             {{ block }}
           </div>
         </div>
       </div>
-
     </div>
-    
+
     <div class="explanation-box" v-if="activeFile">
       <span v-if="activeFile === 'pet'">
-        💡 宠物.jpg 其实被切碎分别放在了第 3、8、14 块。文件系统帮你做好了翻译，你只需双击它！
+        💡 宠物.jpg 其实被切碎分别放在了第 3、8、14
+        块。文件系统帮你做好了翻译，你只需双击它！
       </span>
       <span v-if="activeFile === 'vacation'">
         💡 旅游.png 放在了第 5、6 块。
       </span>
       <span v-if="activeFile === 'doc'">
-        💡 总结.docx 被分散存放在 10、11、18、22 块，如果没有文件系统，你得自己背下这些数字才能打开文件。
+        💡 总结.docx 被分散存放在 10、11、18、22
+        块，如果没有文件系统，你得自己背下这些数字才能打开文件。
       </span>
     </div>
     <div class="explanation-box default" v-else>
       ☝️ 试着点击左侧的文件，看看它们在硬盘里到底长什么样。
     </div>
-
   </div>
 </template>
 
@@ -160,7 +154,8 @@ const isBlockActive = (block) => {
   }
 }
 
-.logical-view, .physical-view {
+.logical-view,
+.physical-view {
   flex: 1;
   background: var(--vp-c-bg-alt);
   border-radius: 10px;
@@ -278,20 +273,38 @@ const isBlockActive = (block) => {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.disk-block.owner-pet { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); }
-.disk-block.owner-vacation { background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); }
-.disk-block.owner-doc { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); }
+.disk-block.owner-pet {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.disk-block.owner-vacation {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.disk-block.owner-doc {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+}
 
 .disk-block.active {
   transform: scale(1.1);
   color: white;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
-.disk-block.owner-pet.active { background: var(--vp-c-success-1); border-color: var(--vp-c-success-1); }
-.disk-block.owner-vacation.active { background: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); }
-.disk-block.owner-doc.active { background: var(--vp-c-warning-1); border-color: var(--vp-c-warning-1); }
+.disk-block.owner-pet.active {
+  background: var(--vp-c-success-1);
+  border-color: var(--vp-c-success-1);
+}
+.disk-block.owner-vacation.active {
+  background: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+}
+.disk-block.owner-doc.active {
+  background: var(--vp-c-warning-1);
+  border-color: var(--vp-c-warning-1);
+}
 
 .explanation-box {
   padding: 1rem;
@@ -308,7 +321,13 @@ const isBlockActive = (block) => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateX(-10px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>

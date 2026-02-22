@@ -35,7 +35,9 @@
             <div class="arrow">↓</div>
             <div class="output-box">
               <div class="box-label">编码后</div>
-              <div class="box-value code">{{ currentScenario.encoding.output }}</div>
+              <div class="box-value code">
+                {{ currentScenario.encoding.output }}
+              </div>
             </div>
           </div>
         </div>
@@ -62,11 +64,15 @@
             <div class="storage-info">
               <div class="info-item">
                 <span class="info-label">位置:</span>
-                <span class="info-value">{{ currentScenario.storage.location }}</span>
+                <span class="info-value">{{
+                  currentScenario.storage.location
+                }}</span>
               </div>
               <div class="info-item">
                 <span class="info-label">大小:</span>
-                <span class="info-value">{{ currentScenario.storage.size }}</span>
+                <span class="info-value">{{
+                  currentScenario.storage.size
+                }}</span>
               </div>
             </div>
           </div>
@@ -83,7 +89,12 @@
               <div class="transmission-packet">
                 <div class="packet-header">数据包</div>
                 <div class="packet-body">
-                  <div class="packet-layer" v-for="(layer, index) in currentScenario.transmission.layers" :key="index">
+                  <div
+                    class="packet-layer"
+                    v-for="(layer, index) in currentScenario.transmission
+                      .layers"
+                    :key="index"
+                  >
                     <span class="layer-name">{{ layer.name }}:</span>
                     <span class="layer-value">{{ layer.value }}</span>
                   </div>
@@ -93,11 +104,15 @@
             <div class="transmission-info">
               <div class="info-item">
                 <span class="info-label">协议:</span>
-                <span class="info-value">{{ currentScenario.transmission.protocol }}</span>
+                <span class="info-value">{{
+                  currentScenario.transmission.protocol
+                }}</span>
               </div>
               <div class="info-item">
                 <span class="info-label">路径:</span>
-                <span class="info-value">{{ currentScenario.transmission.path }}</span>
+                <span class="info-value">{{
+                  currentScenario.transmission.path
+                }}</span>
               </div>
             </div>
           </div>
@@ -107,11 +122,15 @@
       <!-- 协作关系 -->
       <div class="collab-relationships">
         <div class="relationship-arrow encoding-to-storage">
-          <span class="arrow-text">{{ currentScenario.relationships.encodingToStorage }}</span>
+          <span class="arrow-text">{{
+            currentScenario.relationships.encodingToStorage
+          }}</span>
           <span class="arrow-icon">→</span>
         </div>
         <div class="relationship-arrow storage-to-transmission">
-          <span class="arrow-text">{{ currentScenario.relationships.storageToTransmission }}</span>
+          <span class="arrow-text">{{
+            currentScenario.relationships.storageToTransmission
+          }}</span>
           <span class="arrow-icon">→</span>
         </div>
       </div>
@@ -121,7 +140,11 @@
     <div class="key-points">
       <div class="points-title">协作要点</div>
       <div class="points-grid">
-        <div v-for="(point, index) in currentScenario.points" :key="index" class="point-card">
+        <div
+          v-for="(point, index) in currentScenario.points"
+          :key="index"
+          class="point-card"
+        >
           <div class="point-icon">{{ point.icon }}</div>
           <div class="point-content">
             <div class="point-title">{{ point.title }}</div>
@@ -347,8 +370,14 @@ const currentScenario = computed(() => scenarioData[activeScenario.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .scenario-selector {
   margin-bottom: 2rem;
@@ -420,8 +449,13 @@ const currentScenario = computed(() => scenarioData[activeScenario.value])
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.stage-icon { font-size: 1.3rem; }
-.stage-title { font-weight: 600; font-size: 0.95rem; }
+.stage-icon {
+  font-size: 1.3rem;
+}
+.stage-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
 
 .stage-content {
   display: flex;

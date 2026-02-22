@@ -5,7 +5,7 @@
     <div class="schematic" @click="gateOn = !gateOn">
       <!-- Source terminal -->
       <div class="terminal-box source">
-        <span class="pin-label">源极<br><span class="en">Source</span></span>
+        <span class="pin-label">源极<br /><span class="en">Source</span></span>
         <div class="pin-wire" :class="{ active: gateOn }"></div>
       </div>
 
@@ -23,13 +23,15 @@
           </template>
           <span v-else class="block-mark">✕</span>
         </div>
-        <div class="channel-status">{{ gateOn ? '导通 → 输出 1' : '断开 → 输出 0' }}</div>
+        <div class="channel-status">
+          {{ gateOn ? '导通 → 输出 1' : '断开 → 输出 0' }}
+        </div>
       </div>
 
       <!-- Drain terminal -->
       <div class="terminal-box drain">
         <div class="pin-wire" :class="{ active: gateOn }"></div>
-        <span class="pin-label">漏极<br><span class="en">Drain</span></span>
+        <span class="pin-label">漏极<br /><span class="en">Drain</span></span>
       </div>
     </div>
 
@@ -179,14 +181,28 @@ const gateOn = ref(false)
   animation: flow 1.2s linear infinite;
 }
 
-.electron.e2 { animation-delay: 0.4s; }
-.electron.e3 { animation-delay: 0.8s; }
+.electron.e2 {
+  animation-delay: 0.4s;
+}
+.electron.e3 {
+  animation-delay: 0.8s;
+}
 
 @keyframes flow {
-  0%   { left: -8%; opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { left: 108%; opacity: 0; }
+  0% {
+    left: -8%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 108%;
+    opacity: 0;
+  }
 }
 
 .channel-status {
@@ -208,7 +224,11 @@ const gateOn = ref(false)
 }
 
 @media (max-width: 480px) {
-  .pin-wire { width: 1.5rem; }
-  .channel-area { min-width: 5rem; }
+  .pin-wire {
+    width: 1.5rem;
+  }
+  .channel-area {
+    min-width: 5rem;
+  }
 }
 </style>

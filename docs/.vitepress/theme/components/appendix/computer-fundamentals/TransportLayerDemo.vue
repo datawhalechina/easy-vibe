@@ -107,7 +107,8 @@
       <div class="port-title">端口号：应用程序的标识</div>
       <div class="port-examples">
         <div class="port-intro">
-          端口号就像公寓房间号，IP 地址是公寓楼地址，合起来才能找到具体的应用程序
+          端口号就像公寓房间号，IP
+          地址是公寓楼地址，合起来才能找到具体的应用程序
         </div>
         <div class="port-list">
           <div
@@ -222,8 +223,14 @@ const currentProtocol = computed(() => protocolData[activeProtocol.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .protocol-tabs {
   display: flex;
@@ -422,9 +429,17 @@ const currentProtocol = computed(() => protocolData[activeProtocol.value])
 }
 
 @keyframes slideRight {
-  0% { transform: translateX(-100%); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateX(100%); opacity: 0; }
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 .side-desc {

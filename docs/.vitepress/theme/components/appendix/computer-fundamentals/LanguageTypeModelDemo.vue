@@ -6,18 +6,10 @@
     </div>
 
     <div class="dimension-grid">
-      <div
-        v-for="dim in dimensions"
-        :key="dim.id"
-        class="dimension-card"
-      >
+      <div v-for="dim in dimensions" :key="dim.id" class="dimension-card">
         <div class="card-title">{{ dim.title }}</div>
         <div class="card-options">
-          <div
-            v-for="opt in dim.options"
-            :key="opt.name"
-            class="option-item"
-          >
+          <div v-for="opt in dim.options" :key="opt.name" class="option-item">
             <div class="option-name">{{ opt.name }}</div>
             <div class="option-langs">{{ opt.langs }}</div>
           </div>
@@ -111,8 +103,14 @@ const dimensions = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .dimension-grid {
   display: grid;

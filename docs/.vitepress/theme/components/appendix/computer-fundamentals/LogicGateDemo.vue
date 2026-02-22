@@ -18,7 +18,12 @@
             <tr v-for="(row, i) in gate.rows" :key="i">
               <td>{{ row[0] }}</td>
               <td v-if="gate.name !== 'NOT'">{{ row[1] }}</td>
-              <td class="result-cell" :class="{ one: row[row.length - 1] === 1 }">{{ row[row.length - 1] }}</td>
+              <td
+                class="result-cell"
+                :class="{ one: row[row.length - 1] === 1 }"
+              >
+                {{ row[row.length - 1] }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -34,22 +39,40 @@ const gates = [
   {
     name: 'AND',
     rule: '都为 1 才得 1',
-    rows: [[0,0,0],[0,1,0],[1,0,0],[1,1,1]]
+    rows: [
+      [0, 0, 0],
+      [0, 1, 0],
+      [1, 0, 0],
+      [1, 1, 1]
+    ]
   },
   {
     name: 'OR',
     rule: '有一个 1 就得 1',
-    rows: [[0,0,0],[0,1,1],[1,0,1],[1,1,1]]
+    rows: [
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 1]
+    ]
   },
   {
     name: 'NOT',
     rule: '取反',
-    rows: [[0,1],[1,0]]
+    rows: [
+      [0, 1],
+      [1, 0]
+    ]
   },
   {
     name: 'XOR',
     rule: '不同才得 1',
-    rows: [[0,0,0],[0,1,1],[1,0,1],[1,1,0]]
+    rows: [
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 0]
+    ]
   }
 ]
 </script>

@@ -1,422 +1,242 @@
 <!--
-  ApiMethodDemo.vue
-  目标：清晰展示各种 HTTP 方法的含义和使用场景
+  ApiMethodDemo.vue - 紧凑版
+  目标：展示 HTTP 方法的语义
 -->
 <template>
-  <div class="demo">
-    <div class="title">
-      🔍 HTTP 方法：GET、POST、PUT、DELETE 是什么？
+  <div class="demo-root">
+    <div class="demo-header">
+      <span class="icon">📋</span>
+      <span class="title">HTTP 方法：告诉服务器你想做什么</span>
     </div>
-    <p class="subtitle">
-      把它们想象成对数据的"操作方式"
-    </p>
 
-    <div class="methods-grid">
-      <div class="method-card get">
-        <div class="method-badge">
-          GET
-        </div>
-        <div class="method-title">
-          📖 获取（查询）
-        </div>
-        <div class="method-desc">
-          <p><strong>只看不改</strong> - 从服务器获取数据</p>
-          <div class="method-examples">
-            <div class="example-item">
-              • 查询用户信息
-            </div>
-            <div class="example-item">
-              • 搜索商品
-            </div>
-            <div class="example-item">
-              • 获取文章列表
-            </div>
+    <div class="demo-layout">
+      <div class="methods-grid">
+        <div
+          v-for="m in methods"
+          :key="m.name"
+          class="method-card"
+          :class="{ active: selected === m.name }"
+          @click="selected = m.name"
+        >
+          <div class="m-badge" :class="m.color">
+            {{ m.name }}
           </div>
-        </div>
-        <div class="method-tip">
-          💡 可以安全重试，不会改变服务器数据
+          <div class="m-desc">
+            {{ m.desc }}
+          </div>
+          <div class="m-example">
+            {{ m.example }}
+          </div>
         </div>
       </div>
 
-      <div class="method-card post">
-        <div class="method-badge">
-          POST
+      <div class="right-panel">
+        <div class="compare-header">对比：幂等性</div>
+        <div class="compare-row">
+          <span class="c-label">GET</span>
+          <span class="c-val">查询10次 = 查询1次 ✓</span>
         </div>
-        <div class="method-title">
-          ➕ 创建（新增）
+        <div class="compare-row">
+          <span class="c-label">DELETE</span>
+          <span class="c-val">删除10次 = 删除1次 ✓</span>
         </div>
-        <div class="method-desc">
-          <p><strong>新建数据</strong> - 在服务器创建新资源</p>
-          <div class="method-examples">
-            <div class="example-item">
-              • 创建新用户
-            </div>
-            <div class="example-item">
-              • 提交订单
-            </div>
-            <div class="example-item">
-              • 发表评论
-            </div>
-          </div>
-        </div>
-        <div class="method-tip">
-          ⚠️ 不能随意重试，可能会重复创建
-        </div>
-      </div>
-
-      <div class="method-card put">
-        <div class="method-badge">
-          PUT
-        </div>
-        <div class="method-title">
-          ✏️ 更新（替换）
-        </div>
-        <div class="method-desc">
-          <p><strong>整体替换</strong> - 用新数据完全替换旧数据</p>
-          <div class="method-examples">
-            <div class="example-item">
-              • 修改用户全部信息
-            </div>
-            <div class="example-item">
-              • 更换文章全部内容
-            </div>
-          </div>
-        </div>
-        <div class="method-tip">
-          ⚠️ 会覆盖整个资源，需要提供完整数据
-        </div>
-      </div>
-
-      <div class="method-card patch">
-        <div class="method-badge">
-          PATCH
-        </div>
-        <div class="method-title">
-          🔧 修改（部分）
-        </div>
-        <div class="method-desc">
-          <p><strong>局部更新</strong> - 只修改资源的部分字段</p>
-          <div class="method-examples">
-            <div class="example-item">
-              • 只修改用户昵称
-            </div>
-            <div class="example-item">
-              • 更新文章标题
-            </div>
-          </div>
-        </div>
-        <div class="method-tip">
-          💡 只传需要修改的字段，更灵活
-        </div>
-      </div>
-
-      <div class="method-card delete">
-        <div class="method-badge">
-          DELETE
-        </div>
-        <div class="method-title">
-          🗑️ 删除
-        </div>
-        <div class="method-desc">
-          <p><strong>移除数据</strong> - 从服务器删除资源</p>
-          <div class="method-examples">
-            <div class="example-item">
-              • 删除用户
-            </div>
-            <div class="example-item">
-              • 取消订单
-            </div>
-            <div class="example-item">
-              • 删除评论
-            </div>
-          </div>
-        </div>
-        <div class="method-tip">
-          ⚠️ 操作不可逆，删除后无法恢复
+        <div class="compare-row warn">
+          <span class="c-label">POST</span>
+          <span class="c-val">下单10次 = 10个订单 ✗</span>
         </div>
       </div>
     </div>
 
-    <div class="comparison-table">
-      <div class="table-title">
-        📊 快速对比
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>方法</th>
-            <th>操作</th>
-            <th>是否会改数据</th>
-            <th>能否重试</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="badge get">GET</span></td>
-            <td>查询</td>
-            <td>❌ 否</td>
-            <td>✅ 可以</td>
-          </tr>
-          <tr>
-            <td><span class="badge post">POST</span></td>
-            <td>创建</td>
-            <td>✅ 是</td>
-            <td>⚠️ 不建议</td>
-          </tr>
-          <tr>
-            <td><span class="badge put">PUT</span></td>
-            <td>替换</td>
-            <td>✅ 是</td>
-            <td>⚠️ 不建议</td>
-          </tr>
-          <tr>
-            <td><span class="badge patch">PATCH</span></td>
-            <td>修改</td>
-            <td>✅ 是</td>
-            <td>⚠️ 不建议</td>
-          </tr>
-          <tr>
-            <td><span class="badge delete">DELETE</span></td>
-            <td>删除</td>
-            <td>✅ 是</td>
-            <td>⚠️ 不建议</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="tips">
-      <p><strong>💡 新手建议：</strong></p>
-      <ul>
-        <li>
-          先学会 <strong>GET</strong>（查询）和
-          <strong>POST</strong>（创建）就够用了
-        </li>
-        <li>PUT/PATCH/DELETE 可以慢慢学，理解原理更重要</li>
-        <li>实际开发中，GET 和 POST 占了 80% 的使用场景</li>
-      </ul>
+    <div class="info-box">
+      <strong>核心思想：</strong>
+      <span
+        >HTTP 方法就是动词——GET 是"问"，POST 是"做"，PUT/PATCH 是"改"，DELETE
+        是"删"。</span
+      >
     </div>
   </div>
 </template>
 
 <script setup>
-// 无需脚本逻辑
+import { ref } from 'vue'
+
+const selected = ref('GET')
+
+const methods = [
+  { name: 'GET', desc: '获取数据', example: 'GET /users', color: 'green' },
+  { name: 'POST', desc: '创建数据', example: 'POST /users', color: 'blue' },
+  { name: 'PUT', desc: '替换数据', example: 'PUT /users/1', color: 'orange' },
+  {
+    name: 'PATCH',
+    desc: '部分修改',
+    example: 'PATCH /users/1',
+    color: 'yellow'
+  },
+  { name: 'DELETE', desc: '删除数据', example: 'DELETE /users/1', color: 'red' }
+]
 </script>
 
 <style scoped>
-.demo {
+.demo-root {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
   background: var(--vp-c-bg-soft);
-  margin: 16px 0;
+  margin: 1rem 0;
+  font-size: 0.85rem;
 }
 
-.title {
+.demo-header {
+  padding: 10px 16px;
+  background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--vp-c-divider);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
   font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--vp-c-text-1);
+}
+.title {
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-.subtitle {
-  color: var(--vp-c-text-2);
-  margin-bottom: 24px;
+.demo-layout {
+  display: flex;
 }
 
 .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+.right-panel {
+  width: 200px;
+  padding: 12px;
+  background: var(--vp-c-bg);
+  border-left: 1px solid var(--vp-c-divider);
+}
+
+@media (max-width: 640px) {
+  .demo-layout {
+    flex-direction: column;
+  }
+  .methods-grid {
+    flex-wrap: wrap;
+  }
+  .right-panel {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--vp-c-divider);
+  }
 }
 
 .method-card {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px;
   background: var(--vp-c-bg);
   border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 16px;
-  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.method-card.get {
-  border-color: #3b82f6;
-}
-.method-card.post {
-  border-color: #22c55e;
-}
-.method-card.put {
-  border-color: #f59e0b;
-}
-.method-card.patch {
-  border-color: #8b5cf6;
-}
-.method-card.delete {
-  border-color: #ef4444;
-}
-
-.method-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 12px;
-  color: white;
-}
-
-.method-card.get .method-badge {
-  background: #3b82f6;
-}
-.method-card.post .method-badge {
-  background: #22c55e;
-}
-.method-card.put .method-badge {
-  background: #f59e0b;
-}
-.method-card.patch .method-badge {
-  background: #8b5cf6;
-}
-.method-card.delete .method-badge {
-  background: #ef4444;
-}
-
-.method-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 12px;
-  padding-right: 60px;
-  color: var(--vp-c-text-1);
-}
-
-.method-desc p {
-  margin: 0 0 12px 0;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.method-examples {
+.method-card.active {
+  border-color: var(--vp-c-brand);
   background: var(--vp-c-bg-soft);
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 12px;
 }
 
-.example-item {
-  font-size: 13px;
-  padding: 4px 0;
-  color: var(--vp-c-text-1);
+.m-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 
-.method-tip {
-  padding: 10px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  line-height: 1.5;
+.m-badge.green {
+  background: #dcfce7;
+  color: #166534;
 }
-
-.method-card.get .method-tip {
-  background: #eff6ff;
+.m-badge.blue {
+  background: #dbeafe;
   color: #1e40af;
 }
-
-.method-card.post .method-tip,
-.method-card.put .method-tip,
-.method-card.patch .method-tip,
-.method-card.delete .method-tip {
-  background: #fef2f2;
+.m-badge.orange {
+  background: #ffedd5;
+  color: #9a3412;
+}
+.m-badge.yellow {
+  background: #fef9c3;
+  color: #854d0e;
+}
+.m-badge.red {
+  background: #fee2e2;
   color: #991b1b;
 }
 
-.comparison-table {
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
+.m-desc {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
-.table-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  color: var(--vp-c-text-1);
+.m-example {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead {
-  background: var(--vp-c-bg-soft);
-}
-
-th {
-  padding: 12px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-  border-bottom: 2px solid var(--vp-c-divider);
-}
-
-td {
-  padding: 12px;
-  font-size: 13px;
-  border-bottom: 1px solid var(--vp-c-divider);
-  color: var(--vp-c-text-1);
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 12px;
-  color: white;
-}
-
-.badge.get {
-  background: #3b82f6;
-}
-.badge.post {
-  background: #22c55e;
-}
-.badge.put {
-  background: #f59e0b;
-}
-.badge.patch {
-  background: #8b5cf6;
-}
-.badge.delete {
-  background: #ef4444;
-}
-
-.tips {
-  background: var(--vp-c-bg);
-  padding: 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1.8;
+.compare-header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
   color: var(--vp-c-text-2);
 }
 
-.tips p {
-  margin-bottom: 8px;
+.compare-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
 }
 
-.tips ul {
-  margin: 0;
-  padding-left: 20px;
+.compare-row.warn {
+  background: #fef2f2;
 }
 
-.tips li {
-  margin: 4px 0;
+.c-label {
+  font-weight: bold;
+  min-width: 50px;
+}
+
+.c-val {
+  color: var(--vp-c-text-2);
+}
+
+.info-box {
+  display: flex;
+  gap: 0.25rem;
+  padding: 10px 14px;
+  background: var(--vp-c-bg-alt);
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+.info-box strong {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 </style>
