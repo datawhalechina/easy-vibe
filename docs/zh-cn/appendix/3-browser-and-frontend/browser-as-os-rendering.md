@@ -755,7 +755,7 @@ console.log('4. End')
 `setTimeout(0)`不保证立即执行，它至少会被延迟到当前调用栈清空、微任务队列清空之后。
 :::
 
-<EventLoopDemo />
+<JSEventLoopDemo />
 
 <MacroMicroTaskDemo />
 

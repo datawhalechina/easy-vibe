@@ -35,8 +35,10 @@ const scopes = [
 const updateExplanation = () => {
   const texts = {
     global: '在全局作用域，只能使用全局变量 appName',
-    function: '在函数作用域，可以使用自己的 message 和全局的 appName（作用域链查找）',
-    block: '在块级作用域，可以使用自己的 greeting，以及外层的 message 和 appName'
+    function:
+      '在函数作用域，可以使用自己的 message 和全局的 appName（作用域链查找）',
+    block:
+      '在块级作用域，可以使用自己的 greeting，以及外层的 message 和 appName'
   }
   explanation.value = texts[activeScope.value]
 }
@@ -68,13 +70,13 @@ updateExplanation()
           v-for="scope in scopes"
           :key="scope.id"
           class="level"
-          :class="{ active: activeScope === scope.id, dimmed: activeScope !== scope.id }"
+          :class="{
+            active: activeScope === scope.id,
+            dimmed: activeScope !== scope.id
+          }"
           :style="{ borderLeftColor: scope.color }"
         >
-          <div
-            class="level-header"
-            :style="{ color: scope.color }"
-          >
+          <div class="level-header" :style="{ color: scope.color }">
             {{ scope.name }}
           </div>
           <div class="level-vars">
@@ -86,10 +88,7 @@ updateExplanation()
             >
               <span class="var-name">{{ v.name }}</span>
               <span class="var-value">= {{ v.value }}</span>
-              <span
-                v-if="!v.own"
-                class="var-from"
-              >← {{ v.from }}</span>
+              <span v-if="!v.own" class="var-from">← {{ v.from }}</span>
             </div>
           </div>
         </div>
@@ -97,9 +96,7 @@ updateExplanation()
 
       <!-- 说明 -->
       <div class="explanation-box">
-        <div class="explanation-title">
-          💡 当前位置可见的变量
-        </div>
+        <div class="explanation-title">💡 当前位置可见的变量</div>
         <div class="explanation-text">
           {{ explanation }}
         </div>

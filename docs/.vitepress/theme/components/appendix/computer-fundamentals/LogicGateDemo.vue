@@ -1,56 +1,56 @@
 <template>
   <div class="logic-gate-demo">
-    <div class="demo-header">
-      <span class="title">逻辑门：用开关做运算</span>
+    <div class="demo-label">四种基本逻辑门 ── 真值表一览</div>
+
+    <div class="gates-grid">
+      <div v-for="gate in gates" :key="gate.name" class="gate-card">
+        <div class="gate-name">{{ gate.name }}</div>
+        <div class="gate-rule">{{ gate.rule }}</div>
+        <table class="mini-truth">
+          <thead>
+            <tr>
+              <th>A</th>
+              <th v-if="gate.name !== 'NOT'">B</th>
+              <th>结果</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(row, i) in gate.rows" :key="i">
+              <td>{{ row[0] }}</td>
+              <td v-if="gate.name !== 'NOT'">{{ row[1] }}</td>
+              <td class="result-cell" :class="{ one: row[row.length - 1] === 1 }">{{ row[row.length - 1] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <p class="intro">
-      输入 A、B 只能是 0 或 1；四种门按不同规则输出一个 0 或 1。下面表格列出所有 4 种输入组合的结果。
-    </p>
-
-    <div class="truth-section">
-      <table>
-        <thead>
-          <tr>
-            <th>A</th>
-            <th>B</th>
-            <th>AND</th>
-            <th>OR</th>
-            <th>NOT(A)</th>
-            <th>XOR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="row in truthRows" :key="`${row.a}-${row.b}`">
-            <td>{{ row.a }}</td>
-            <td>{{ row.b }}</td>
-            <td>{{ row.and }}</td>
-            <td>{{ row.or }}</td>
-            <td>{{ row.not }}</td>
-            <td>{{ row.xor }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <ul class="col-meaning">
-        <li><strong>AND</strong>：两个都是 1 才输出 1（像串联：都通才通）</li>
-        <li><strong>OR</strong>：有一个 1 就输出 1（像并联：一通就通）</li>
-        <li><strong>NOT(A)</strong>：对 A 取反，0→1、1→0</li>
-        <li><strong>XOR</strong>：两个不同输出 1，相同输出 0</li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <strong>核心思想：</strong>逻辑门用晶体管的“开关”组合实现这四种运算，复杂计算都由它们组合而成。
-    </div>
+    <div class="demo-caption">所有数字计算都由这四种门的组合实现</div>
   </div>
 </template>
 
 <script setup>
-const truthRows = [
-  { a: 0, b: 0, and: 0, or: 0, not: 1, xor: 0 },
-  { a: 0, b: 1, and: 0, or: 1, not: 1, xor: 1 },
-  { a: 1, b: 0, and: 0, or: 1, not: 0, xor: 1 },
-  { a: 1, b: 1, and: 1, or: 1, not: 0, xor: 0 }
+const gates = [
+  {
+    name: 'AND',
+    rule: '都为 1 才得 1',
+    rows: [[0,0,0],[0,1,0],[1,0,0],[1,1,1]]
+  },
+  {
+    name: 'OR',
+    rule: '有一个 1 就得 1',
+    rows: [[0,0,0],[0,1,1],[1,0,1],[1,1,1]]
+  },
+  {
+    name: 'NOT',
+    rule: '取反',
+    rows: [[0,1],[1,0]]
+  },
+  {
+    name: 'XOR',
+    rule: '不同才得 1',
+    rows: [[0,0,0],[0,1,1],[1,0,1],[1,1,0]]
+  }
 ]
 </script>
 
@@ -59,82 +59,81 @@ const truthRows = [
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 1rem 1.2rem;
   margin: 1rem 0;
 }
 
-.demo-header {
+.demo-label {
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.2px;
+}
+
+.gates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.gate-card {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.gate-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 0.15rem;
+}
+
+.gate-rule {
+  font-size: 0.72rem;
+  color: var(--vp-c-text-3);
   margin-bottom: 0.5rem;
 }
 
-.demo-header .title {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.intro {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-  margin: 0 0 0.75rem;
-  line-height: 1.5;
-}
-
-.truth-section {
-  margin-bottom: 0;
-}
-
-table {
+.mini-truth {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
-  font-size: 0.88rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
 }
 
-th,
-td {
+.mini-truth th,
+.mini-truth td {
   border: 1px solid var(--vp-c-divider);
-  padding: 0.4rem 0.5rem;
-  vertical-align: middle;
+  padding: 0.2rem 0.3rem;
   text-align: center;
-  font-variant-numeric: tabular-nums;
 }
 
-th {
+.mini-truth th {
   background: var(--vp-c-bg-alt);
+  font-size: 0.72rem;
   font-weight: 600;
-}
-
-.col-meaning {
-  margin: 0;
-  padding-left: 1.25rem;
-  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  line-height: 1.6;
 }
 
-.col-meaning li {
-  margin-bottom: 0.25rem;
+.result-cell.one {
+  color: var(--vp-c-brand-1);
+  font-weight: bold;
 }
 
-.col-meaning strong {
-  color: var(--vp-c-text-1);
-  font-variant-numeric: tabular-nums;
+.demo-caption {
+  font-size: 0.72rem;
+  color: var(--vp-c-text-3);
+  margin-top: 0.6rem;
+  text-align: center;
 }
 
-.info-box {
-  display: flex;
-  gap: 0.25rem;
-  background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  margin-top: 0.75rem;
-}
-
-.info-box strong {
-  white-space: nowrap;
-  flex-shrink: 0;
+@media (max-width: 600px) {
+  .gates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

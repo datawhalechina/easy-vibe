@@ -1,80 +1,65 @@
 <template>
   <div class="memory-demo">
-    <div class="demo-header">
-      <span class="title">内存管理：程序的"工作台"</span>
-      <span class="subtitle">操作系统如何分配和管理内存</span>
+    <div class="demo-controls">
+      <button class="allocate-btn wechat" @click="allocate('wechat')" :disabled="!hasFreeSpace">
+        + 给微信分配数据
+      </button>
+      <button class="allocate-btn game" @click="allocate('game')" :disabled="!hasFreeSpace">
+        + 给游戏分配数据
+      </button>
+      <button class="reset-btn" @click="reset">
+        ↺ 重置
+      </button>
     </div>
 
-    <div class="demo-content">
-      <div class="memory-visual">
-        <div class="mem-header">
-          <span>虚拟内存空间 (4GB)</span>
-          <span class="used-info">已用: {{ usedMemory }}MB / 4096MB</span>
-        </div>
-        <div class="mem-blocks">
-          <div 
-            v-for="(block, i) in memoryBlocks" 
-            :key="i"
-            class="mem-block"
-            :class="{ allocated: block.allocated, selected: selectedBlock === i }"
-            :style="{ height: block.size + '%' }"
-            @click="selectedBlock = i"
-          >
-            <span
-              v-if="block.size > 5"
-              class="block-label"
-            >{{ block.name }}</span>
-            <span
-              v-if="block.size > 8"
-              class="block-size"
-            >{{ block.sizeMB }}MB</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="memory-info">
-        <div class="info-section">
-          <div class="section-title">
-            内存分配策略
-          </div>
-          <div class="strategy-tabs">
-            <button 
-              v-for="s in strategies" 
-              :key="s.name"
-              :class="['strat-btn', { active: activeStrategy === s.name }]"
-              @click="activeStrategy = s.name"
-            >
-              {{ s.name }}
-            </button>
-          </div>
-          <div class="strategy-desc">
-            {{ currentStrategy.desc }}
+    <div class="system-view">
+      <!-- 虚拟内存试图 -->
+      <div class="virtual-cluster">
+        <div class="process-vm wechat">
+          <div class="title">💬 微信的虚拟内存<br/>(它认为自己独占了空间)</div>
+          <div class="vm-blocks">
+            <div v-for="i in 4" :key="'w'+i" class="block" :class="{ filled: wechatBlocks >= i }">
+              {{ wechatBlocks >= i ? '数据 ' + i : '虚拟空闲' }}
+            </div>
           </div>
         </div>
 
-        <div class="info-section">
-          <div class="section-title">
-            虚拟内存的作用
-          </div>
-          <div class="vm-benefits">
-            <div
-              v-for="b in benefits"
-              :key="b.title"
-              class="benefit-item"
-            >
-              <span class="benefit-icon">{{ b.icon }}</span>
-              <div class="benefit-content">
-                <span class="benefit-title">{{ b.title }}</span>
-                <span class="benefit-desc">{{ b.desc }}</span>
-              </div>
+        <div class="process-vm game">
+          <div class="title">🎮 游戏的虚拟内存<br/>(它也认为自己独占了空间)</div>
+          <div class="vm-blocks">
+            <div v-for="i in 4" :key="'g'+i" class="block" :class="{ filled: gameBlocks >= i }">
+              {{ gameBlocks >= i ? '数据 ' + i : '虚拟空闲' }}
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="info-box">
-      <strong>核心思想：</strong>虚拟内存让每个进程都以为自己独占整个内存空间，实际由操作系统统一管理和映射，实现隔离和保护。
+      <!-- OS 页表 (映射表) -->
+      <div class="os-page-table">
+        <div class="title">保安大叔 (OS 页表)</div>
+        <div class="table-info">
+          当程序存数据时，<br/>由我暗中转移到真正的物理缝隙里。
+        </div>
+      </div>
+
+      <!-- 物理内存 -->
+      <div class="physical-memory">
+        <div class="title">🗄️ 真实的物理内存条<br/>(其实像个大杂烩一样乱)</div>
+        <div class="pm-blocks">
+          <div 
+            v-for="(block, idx) in physicalBlocks" 
+            :key="'p'+idx" 
+            class="block"
+            :class="[block.type, { occupied: block.type !== 'empty' }]"
+          >
+            {{ block.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="explanation-box" v-if="wechatBlocks > 0 || gameBlocks > 0">
+      💡 发现了没？尽管右侧真正的物理内存已经被塞得像个狗皮膏药，但在左侧的微信和游戏眼里，自己的内存条永远是连续且干净的。更重要的是，微信绝对访问不到橘色的物理块，保证了安全！
     </div>
   </div>
 </template>
@@ -82,215 +67,273 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const selectedBlock = ref(0)
-const activeStrategy = ref('首次适应')
+const wechatBlocks = ref(0)
+const gameBlocks = ref(0)
 
-const memoryBlocks = ref([
-  { name: '内核空间', size: 25, allocated: true, sizeMB: 1024 },
-  { name: '进程A', size: 15, allocated: true, sizeMB: 600 },
-  { name: '空闲', size: 5, allocated: false, sizeMB: 200 },
-  { name: '进程B', size: 20, allocated: true, sizeMB: 800 },
-  { name: '空闲', size: 10, allocated: false, sizeMB: 400 },
-  { name: '进程C', size: 10, allocated: true, sizeMB: 400 },
-  { name: '空闲', size: 15, allocated: false, sizeMB: 600 }
-])
-
-const strategies = [
-  { name: '首次适应', desc: '从内存开始找，找到第一个足够大的空闲块就分配。速度快，但可能产生小碎片。' },
-  { name: '最佳适应', desc: '找最小的能满足需求的空闲块。内存利用率高，但可能产生很多小碎片。' },
-  { name: '最坏适应', desc: '找最大的空闲块分配。减少小碎片，但大块内存很快用完。' }
+// 初始物理内存状态，模拟碎片化
+// empty = 空, os = 系统占用
+const initialPhysicalBlocks = [
+  { type: 'os', label: '系统核心占用' },
+  { type: 'empty', label: '空闲' },
+  { type: 'os', label: '系统保留' },
+  { type: 'empty', label: '空闲' },
+  { type: 'empty', label: '空闲' },
+  { type: 'empty', label: '空闲' },
+  { type: 'os', label: '系统驱动' },
+  { type: 'empty', label: '空闲' },
 ]
 
-const benefits = [
-  { icon: '🔒', title: '内存隔离', desc: '进程间互不干扰，一个崩溃不影响其他' },
-  { icon: '📦', title: '内存保护', desc: '防止进程访问不该访问的内存区域' },
-  { icon: '💾', title: '内存扩展', desc: '用磁盘当内存用，突破物理内存限制' }
-]
+const physicalBlocks = ref(JSON.parse(JSON.stringify(initialPhysicalBlocks)))
 
-const currentStrategy = computed(() => {
-  return strategies.find(s => s.name === activeStrategy.value)
+const freeSpaceCount = computed(() => {
+  return physicalBlocks.value.filter(b => b.type === 'empty').length
 })
 
-const usedMemory = computed(() => {
-  return memoryBlocks.value
-    .filter(b => b.allocated)
-    .reduce((sum, b) => sum + b.sizeMB, 0)
-})
+const hasFreeSpace = computed(() => freeSpaceCount.value > 0)
+
+const allocate = (process) => {
+  if (!hasFreeSpace.value) return
+  
+  // Find a process block logic
+  if (process === 'wechat' && wechatBlocks.value < 4) {
+    wechatBlocks.value++
+    fillRandomEmptyBlock('wechat', `微信数据 ${wechatBlocks.value}`)
+  } else if (process === 'game' && gameBlocks.value < 4) {
+    gameBlocks.value++
+    fillRandomEmptyBlock('game', `游戏数据 ${gameBlocks.value}`)
+  }
+}
+
+const fillRandomEmptyBlock = (type, label) => {
+  const emptyIndices = []
+  physicalBlocks.value.forEach((b, i) => {
+    if (b.type === 'empty') emptyIndices.push(i)
+  })
+  
+  if (emptyIndices.length > 0) {
+    const randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)]
+    physicalBlocks.value[randomIndex] = { type, label }
+  }
+}
+
+const reset = () => {
+  wechatBlocks.value = 0
+  gameBlocks.value = 0
+  physicalBlocks.value = JSON.parse(JSON.stringify(initialPhysicalBlocks))
+}
 </script>
 
 <style scoped>
 .memory-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-family: var(--vp-font-family-base);
 }
 
-.demo-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
-
-.demo-content {
+.demo-controls {
   display: flex;
   gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.memory-visual {
-  flex: 1;
-  min-width: 200px;
+.allocate-btn {
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.allocate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+.allocate-btn.wechat {
+  background: var(--vp-c-success-1);
+}
+.allocate-btn.wechat:not(:disabled):hover {
+  filter: brightness(1.1);
+}
+.allocate-btn.game {
+  background: var(--vp-c-warning-1);
+}
+.allocate-btn.game:not(:disabled):hover {
+  filter: brightness(1.1);
 }
 
-.mem-header {
+.reset-btn {
+  background: transparent;
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reset-btn:hover {
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
+}
+
+.system-view {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--vp-c-bg-alt);
-  border-radius: 4px;
+  align-items: stretch;
+  gap: 1.5rem;
 }
 
-.used-info {
-  color: var(--vp-c-brand);
+@media (max-width: 768px) {
+  .system-view {
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-size: 0.85rem;
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--vp-c-text-1);
+  min-height: 2.5rem;
 }
 
-.mem-blocks {
+.virtual-cluster {
+  display: flex;
+  gap: 1rem;
+  flex: 2;
+}
+
+.process-vm {
+  flex: 1;
+  background: var(--vp-c-bg-alt);
+  border: 2px dashed var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.vm-blocks {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  height: 250px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  overflow: hidden;
+  gap: 0.5rem;
 }
 
-.mem-block {
+.block {
+  padding: 0.6rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.process-vm .block {
+  background: var(--vp-c-bg-mute);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-3);
+  opacity: 0.5;
+}
+.process-vm.wechat .block.filled {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--vp-c-success-1);
+  color: var(--vp-c-success-1);
+  opacity: 1;
+}
+.process-vm.game .block.filled {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid var(--vp-c-warning-1);
+  color: var(--vp-c-warning-1);
+  opacity: 1;
+}
+
+.os-page-table {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
+  background: var(--vp-c-bg-alt);
+  border-radius: 10px;
+  padding: 1rem;
+  position: relative;
+  border: 2px solid var(--vp-c-brand-1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.mem-block.allocated {
-  background: var(--vp-c-brand-soft);
-}
-
-.mem-block:not(.allocated) {
-  background: var(--vp-c-bg);
-  border: 1px dashed var(--vp-c-divider);
-}
-
-.mem-block.selected {
-  outline: 2px solid var(--vp-c-brand);
-}
-
-.block-label {
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.block-size {
-  font-size: 0.65rem;
-  color: var(--vp-c-text-2);
-}
-
-.memory-info {
-  flex: 1;
-  min-width: 280px;
-}
-
-.info-section {
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.strategy-tabs {
-  display: flex;
-  gap: 0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.strat-btn {
-  padding: 0.25rem 0.5rem;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  border-radius: 4px;
-  font-size: 0.75rem;
-  cursor: pointer;
-}
-
-.strat-btn.active {
-  background: var(--vp-c-brand);
-  color: white;
-  border-color: var(--vp-c-brand);
-}
-
-.strategy-desc {
+.os-page-table .table-info {
   font-size: 0.8rem;
   color: var(--vp-c-text-2);
+  text-align: center;
   background: var(--vp-c-bg);
-  padding: 0.5rem;
-  border-radius: 4px;
+  padding: 0.8rem;
+  border-radius: 8px;
 }
 
-.vm-benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.benefit-item {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  background: var(--vp-c-bg);
-  border-radius: 4px;
-}
-
-.benefit-icon {
-  font-size: 1.2rem;
-}
-
-.benefit-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.benefit-title {
-  font-weight: bold;
-  font-size: 0.85rem;
-}
-
-.benefit-desc {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-}
-
-.info-box {
+.physical-memory {
+  flex: 1;
   background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 0.25rem;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 2px solid var(--vp-c-text-3);
 }
 
+.pm-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pm-blocks .block {
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-3);
+  font-size: 0.75rem;
+}
+
+.pm-blocks .block.os {
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-2);
+  border-style: dashed;
+}
+.pm-blocks .block.wechat {
+  background: var(--vp-c-success-1);
+  color: white;
+  border-color: var(--vp-c-success-1);
+  animation: popIn 0.3s ease-out;
+}
+.pm-blocks .block.game {
+  background: var(--vp-c-warning-1);
+  color: white;
+  border-color: var(--vp-c-warning-1);
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.explanation-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 4px solid var(--vp-c-success-1);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
