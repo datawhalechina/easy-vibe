@@ -1,361 +1,49 @@
 <template>
-  <div class="rule-learning-demo">
-    <el-card shadow="hover">
-      <template #header>
-        <div class="card-header">
-          <h4>规则 vs 学习</h4>
-          <p class="subtitle">
-            对比：你写阈值 (规则) vs 让模型从数据里"推断"阈值 (学习)
-          </p>
+  <div class="demo-card">
+    <div class="demo-header">
+      <span class="title">关键发展路径总结</span>
+    </div>
+    <div class="path-flow">
+      <div class="path-item" v-for="(item, i) in path" :key="i">
+        <div class="path-card" :style="{ borderLeftColor: item.color }">
+          <div class="path-top">
+            <span class="path-icon" :style="{ background: item.color }">{{ i + 1 }}</span>
+            <div>
+              <div class="path-name">{{ item.name }}</div>
+              <div class="path-years">{{ item.years }}</div>
+            </div>
+          </div>
+          <div class="path-desc">{{ item.desc }}</div>
         </div>
-      </template>
-
-      <el-row :gutter="20">
-        <!-- Rule Based -->
-        <el-col
-          :xs="24"
-          :md="12"
-          class="mb-4-xs"
-        >
-          <el-card
-            shadow="never"
-            class="panel-card"
-          >
-            <template #header>
-              <div class="panel-title">
-                规则系统（手写 If/Else）
-              </div>
-            </template>
-            <div class="panel-content">
-              <div class="control-row">
-                <span class="label">阈值 size &gt;</span>
-                <el-input-number
-                  v-model="ruleThreshold"
-                  :min="1"
-                  :max="10"
-                  size="small"
-                />
-                <span class="text-xs text-gray">（必须明确写出）</span>
-              </div>
-
-              <div class="control-row mt-4">
-                <span class="label">测试输入 size</span>
-                <el-slider
-                  v-model="testInput"
-                  :min="1"
-                  :max="10"
-                  show-input
-                  input-size="small"
-                  class="flex-1"
-                />
-              </div>
-
-              <div
-                class="result-box mt-4"
-                :class="{
-                  good: ruleResult.label === '🍎',
-                  bad: ruleResult.label === '🍒'
-                }"
-              >
-                <div class="result-title">
-                  输出
-                </div>
-                <div class="result-value">
-                  {{ ruleResult.text }}
-                </div>
-                <div class="result-code">
-                  if (size &gt; {{ ruleThreshold }}) return 🍎 else return 🍒
-                </div>
-              </div>
-
-              <el-alert
-                title="当环境变化（比如'苹果平均变小了'），你需要手动改规则；规则越多，维护成本越高。"
-                type="warning"
-                :closable="false"
-                class="mt-4"
-              />
-            </div>
-          </el-card>
-        </el-col>
-
-        <!-- Machine Learning -->
-        <el-col
-          :xs="24"
-          :md="12"
-        >
-          <el-card
-            shadow="never"
-            class="panel-card"
-          >
-            <template #header>
-              <div class="panel-title">
-                机器学习（从样本推断边界）
-              </div>
-            </template>
-            <div class="panel-content">
-              <div class="control-row">
-                <el-input-number
-                  v-model="newSize"
-                  :min="1"
-                  :max="10"
-                  size="small"
-                  placeholder="Size"
-                />
-                <el-select
-                  v-model="newLabel"
-                  size="small"
-                  placeholder="Label"
-                  style="width: 120px"
-                >
-                  <el-option
-                    label="🍒 樱桃"
-                    value="🍒"
-                  />
-                  <el-option
-                    label="🍎 苹果"
-                    value="🍎"
-                  />
-                </el-select>
-                <el-button
-                  type="primary"
-                  size="small"
-                  @click="addSample"
-                >
-                  添加样本
-                </el-button>
-              </div>
-
-              <div class="samples-area mt-4">
-                <el-empty
-                  v-if="trainingData.length === 0"
-                  description="还没有样本：先添加 2-4 个样本再训练"
-                  :image-size="40"
-                />
-                <div
-                  v-else
-                  class="sample-chips"
-                >
-                  <el-tag
-                    v-for="(p, i) in trainingData"
-                    :key="p.id"
-                    closable
-                    :type="p.label === '🍎' ? 'danger' : 'info'"
-                    effect="plain"
-                    @close="removeSample(i)"
-                  >
-                    {{ p.size }} → {{ p.label }}
-                  </el-tag>
-                </div>
-              </div>
-
-              <div class="actions mt-4 flex gap-2">
-                <el-button
-                  type="success"
-                  :disabled="trainingData.length < 2"
-                  @click="train"
-                >
-                  训练（推断阈值）
-                </el-button>
-                <el-button @click="resetLearning">
-                  重置
-                </el-button>
-              </div>
-
-              <div
-                v-if="learnedThreshold !== null"
-                class="learned-result mt-4"
-              >
-                <el-alert
-                  type="success"
-                  :closable="false"
-                  show-icon
-                  title="学习完成！"
-                >
-                  <p>
-                    模型推断出阈值应为: <strong>{{ learnedThreshold }}</strong>
-                  </p>
-                  <p class="text-xs">
-                    (大于 {{ learnedThreshold }} 是苹果，否则是樱桃)
-                  </p>
-                </el-alert>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </el-card>
+        <div v-if="i < path.length - 1" class="path-connector">
+          <svg width="20" height="24" viewBox="0 0 20 24"><path d="M10 0 L10 18 L5 13 M10 18 L15 13" fill="none" stroke="var(--vp-c-text-3)" stroke-width="1.5" stroke-linecap="round" /></svg>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-
-// Rule Based Logic
-const ruleThreshold = ref(5)
-const testInput = ref(6)
-
-const ruleResult = computed(() => {
-  if (testInput.value > ruleThreshold.value) {
-    return { label: '🍎', text: '🍎 苹果' }
-  } else {
-    return { label: '🍒', text: '🍒 樱桃' }
-  }
-})
-
-// ML Logic
-const newSize = ref(5)
-const newLabel = ref('🍎')
-const trainingData = ref([
-  { id: 1, size: 2, label: '🍒' },
-  { id: 2, size: 8, label: '🍎' }
-])
-const learnedThreshold = ref(null)
-
-const addSample = () => {
-  trainingData.value.push({
-    id: Date.now(),
-    size: newSize.value,
-    label: newLabel.value
-  })
-}
-
-const removeSample = (index) => {
-  trainingData.value.splice(index, 1)
-}
-
-const resetLearning = () => {
-  trainingData.value = []
-  learnedThreshold.value = null
-}
-
-const train = () => {
-  // Simple "training": find the boundary between cherry and apple
-  // Sort data by size
-  const sorted = [...trainingData.value].sort((a, b) => a.size - b.size)
-
-  // Find the first Apple
-  const firstAppleIndex = sorted.findIndex((item) => item.label === '🍎')
-
-  if (firstAppleIndex === -1) {
-    // All cherries
-    learnedThreshold.value = 10
-  } else if (firstAppleIndex === 0) {
-    // All apples
-    learnedThreshold.value = 0
-  } else {
-    // Boundary is between last cherry and first apple
-    const lastCherry = sorted[firstAppleIndex - 1]
-    const firstApple = sorted[firstAppleIndex]
-    learnedThreshold.value = (lastCherry.size + firstApple.size) / 2
-  }
-}
+const path = [
+  { name: '理论奠基', years: '1940s-1950s', desc: '图灵测试、达特茅斯会议，符号主义诞生', color: '#3b82f6' },
+  { name: '符号主义主导', years: '1960s-1980s', desc: '专家系统兴起与两次 AI 寒冬', color: '#059669' },
+  { name: '机器学习转型', years: '1990s-2000s', desc: '统计方法取代规则，连接主义复苏', color: '#d97706' },
+  { name: '深度学习革命', years: '2010s', desc: 'AlexNet、AlphaGo、Transformer 架构，连接主义成为主流', color: '#dc2626' },
+  { name: '大模型时代', years: '2018 至今', desc: 'GPT 系列、多模态融合，通用智能曙光初现', color: '#7c3aed' },
+]
 </script>
 
 <style scoped>
-.rule-learning-demo {
-  margin: 20px 0;
-}
-
-.card-header h4 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.subtitle {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  margin: 4px 0 0;
-}
-
-.panel-title {
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.control-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.label {
-  font-size: 14px;
-}
-
-.text-xs {
-  font-size: 12px;
-}
-
-.text-gray {
-  color: var(--vp-c-text-2);
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.mt-4 {
-  margin-top: 16px;
-}
-
-.mb-4-xs {
-  margin-bottom: 20px;
-}
-
-@media (min-width: 992px) {
-  .mb-4-xs {
-    margin-bottom: 0;
-  }
-}
-
-.result-box {
-  background-color: var(--vp-c-bg-alt);
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-  text-align: center;
-}
-
-.result-box.good {
-  border-color: var(--el-color-danger);
-  background-color: var(--el-color-danger-light-9);
-}
-
-.result-box.bad {
-  border-color: var(--el-color-primary);
-  background-color: var(--el-color-primary-light-9);
-}
-
-.result-title {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  text-transform: uppercase;
-}
-
-.result-value {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 8px 0;
-}
-
-.result-code {
-  font-family: monospace;
-  font-size: 12px;
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 4px;
-  border-radius: 4px;
-}
-
-.sample-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  min-height: 40px;
-}
-
-.gap-2 {
-  gap: 8px;
-}
+.demo-card { border: 1px solid var(--vp-c-divider); border-radius: 8px; background: var(--vp-c-bg-soft); padding: 1.25rem; margin: 1rem 0; }
+.demo-header { margin-bottom: 1rem; }
+.demo-header .title { font-weight: bold; font-size: 1rem; }
+.path-flow { display: flex; flex-direction: column; align-items: stretch; }
+.path-item { display: flex; flex-direction: column; align-items: center; }
+.path-card { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-left: 4px solid; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; width: 100%; }
+.path-top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.35rem; }
+.path-icon { width: 24px; height: 24px; border-radius: 50%; color: white; font-size: 0.72rem; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.path-name { font-weight: bold; font-size: 0.9rem; color: var(--vp-c-text-1); }
+.path-years { font-size: 0.72rem; color: var(--vp-c-text-3); font-weight: bold; }
+.path-desc { font-size: 0.8rem; color: var(--vp-c-text-2); line-height: 1.4; padding-left: 2.2rem; }
+.path-connector { display: flex; justify-content: center; padding: 0.15rem 0; }
 </style>

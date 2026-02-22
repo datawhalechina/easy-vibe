@@ -2,69 +2,75 @@
   <div class="adder-demo">
     <div class="demo-header">
       <span class="title">加法器：用逻辑门做二进制加法</span>
-      <span class="subtitle">点击蓝色位按钮切换 0/1，观察进位如何逐位传递</span>
+      <span class="subtitle">就像手算竖式：从个位往高位算，逢二进一，进位往左传</span>
     </div>
 
-    <!-- 名词解释 -->
-    <div class="legend">
-      <span class="legend-item"><span class="dot a" />A = 被加数</span>
-      <span class="legend-item"><span class="dot b" />B = 加数</span>
-      <span class="legend-item"><span class="dot s" />S = 和（Sum，本位结果）</span>
-      <span class="legend-item"><span class="dot c" />C = 进位（Carry，传给下一位）</span>
-    </div>
-
-    <!-- 输入控制 -->
     <div class="control-panel">
-      <div class="input-group">
-        <span class="group-label">A（被加数）</span>
-        <div class="bits">
-          <button
-            v-for="(bit, i) in bitsA"
-            :key="'a' + i"
-            class="bit-btn"
-            :class="{ on: bit }"
-            @click="toggleBit('A', i)"
-          >
-            {{ bit }}
-          </button>
-        </div>
-        <span class="decimal">= {{ decimalA }}</span>
+      <label>
+        <span class="control-label">A（被加数）</span>
+        <input v-model.number="inputA" type="number" min="0" max="15" class="num-input" />
+      </label>
+      <span class="op">+</span>
+      <label>
+        <span class="control-label">B（加数）</span>
+        <input v-model.number="inputB" type="number" min="0" max="15" class="num-input" />
+      </label>
+      <span class="eq">=</span>
+      <span class="result-dec">{{ resultDec }}</span>
+    </div>
+
+    <div class="why-what-box">
+      <p class="why-p">
+        <strong>为啥要看这些？</strong>CPU 只会处理 0 和 1，所以加法要「一位一位」算；每一列（第 0 位、第 1 位…）都需要一个小电路来算「这一位写几、要不要往左进位」。
+      </p>
+      <p class="what-p">
+        <strong>这些词是啥？</strong>
+        <span class="term">半加器</span>：只算这一位的 A+B（最右边没有进位进来）。  
+        <span class="term">全加器</span>：算 A+B+上一位的进位。  
+        <span class="term">S</span>：这一位写下的数字（0 或 1）。  
+        <span class="term">Cout</span>：要不要往左边一位进 1（进就是 1，不进就是 0）。
+      </p>
+    </div>
+
+    <div class="example-block">
+      <div class="example-row">
+        <span class="example-label">A（被加数）</span>
+        <span class="example-bits">
+          <span v-for="(b, i) in bitsA" :key="'a'+i" class="bit" :class="{ active: highlightedBit === (3 - i) }">{{ b }}</span>
+        </span>
+        <span class="example-dec">= {{ inputA }}</span>
       </div>
-      <div class="op-sign">+</div>
-      <div class="input-group">
-        <span class="group-label">B（加数）</span>
-        <div class="bits">
-          <button
-            v-for="(bit, i) in bitsB"
-            :key="'b' + i"
-            class="bit-btn"
-            :class="{ on: bit }"
-            @click="toggleBit('B', i)"
-          >
-            {{ bit }}
-          </button>
-        </div>
-        <span class="decimal">= {{ decimalB }}</span>
+      <div class="example-row">
+        <span class="example-label">B（加数）</span>
+        <span class="example-bits">
+          <span v-for="(b, i) in bitsB" :key="'b'+i" class="bit" :class="{ active: highlightedBit === (3 - i) }">{{ b }}</span>
+        </span>
+        <span class="example-dec">= {{ inputB }}</span>
       </div>
-      <div class="op-sign">=</div>
-      <div class="result-inline">
-        <span class="result-bin">{{ resultBinary }}</span>
-        <span class="result-dec">（十进制 {{ resultDecimal }}）</span>
+      <div class="example-row result-row">
+        <span class="example-label">结果</span>
+        <span class="example-bits">
+          <span v-for="(b, i) in bitsSum" :key="'s'+i" class="bit" :class="{ active: highlightedBit === (3 - i) }">{{ b }}</span>
+        </span>
+        <span class="example-dec">= {{ resultDec }}</span>
+      </div>
+      <div class="bit-legend">
+        <span v-for="i in 4" :key="i" class="bit-legend-item">第{{ 4 - i }}位</span>
       </div>
     </div>
 
-    <!-- 每位加法器展示 -->
-    <div class="stages-label">逐位计算过程（从最低位开始）</div>
+    <div class="stages-label">逐位计算（从右往左：第 0 位 → 第 3 位，对应上面每一列）</div>
     <div class="adder-stages">
       <div
-        v-for="(stage, idx) in stageData"
+        v-for="(stage, idx) in stages"
         :key="idx"
         class="stage"
+        :class="{ 'stage-highlight': highlightedBit === stage.bitPos }"
+        @mouseenter="highlightedBit = stage.bitPos"
+        @mouseleave="highlightedBit = null"
       >
         <div class="stage-title">第 {{ stage.bitPos }} 位（{{ stage.posName }}）</div>
-
         <div class="stage-content">
-          <!-- 输入列 -->
           <div class="io-col inputs-col">
             <div class="io-row">
               <span class="io-badge a-badge">A</span>
@@ -74,55 +80,34 @@
               <span class="io-badge b-badge">B</span>
               <span class="io-val">{{ stage.b }}</span>
             </div>
-            <div v-if="stage.carryIn !== null" class="io-row carry-in-row">
+            <div v-if="stage.carryIn !== null" class="io-row">
               <span class="io-badge cin-badge">Cin</span>
               <span class="io-val">{{ stage.carryIn }}</span>
             </div>
           </div>
-
-          <!-- 全加器框 -->
           <div class="fa-box">
             <div class="fa-label">{{ stage.carryIn !== null ? '全加器' : '半加器' }}</div>
-            <div class="fa-hint">{{ stage.carryIn !== null ? 'Full Adder' : 'Half Adder' }}</div>
+            <div class="fa-hint">{{ stage.carryIn !== null ? 'A+B+进位' : '只算 A+B' }}</div>
           </div>
-
-          <!-- 输出列 -->
           <div class="io-col outputs-col">
             <div class="io-row">
-              <span class="io-badge s-badge">S</span>
+              <span class="io-badge s-badge" :title="'S = 这一位写下的数'">S</span>
               <span class="io-val sum-val">{{ stage.sum }}</span>
             </div>
             <div class="io-row">
-              <span class="io-badge cout-badge">Cout</span>
+              <span class="io-badge cout-badge" :title="'Cout = 往左进 0 还是 1'">Cout</span>
               <span class="io-val carry-val">{{ stage.carryOut }}</span>
             </div>
           </div>
         </div>
-
-        <!-- 进位传递提示 -->
-        <div v-if="idx < stageData.length - 1 && stage.carryOut" class="carry-hint">
-          进位 {{ stage.carryOut }} 传给第 {{ stage.bitPos + 1 }} 位 →
+        <div v-if="idx < stages.length - 1" class="carry-hint" :class="{ 'no-carry': !stage.carryOut }">
+          {{ stage.carryOut ? `进位 ${stage.carryOut} 传给第 ${stage.bitPos + 1} 位 →` : '无进位' }}
         </div>
-        <div v-else-if="idx < stageData.length - 1" class="carry-hint no-carry">
-          无进位
-        </div>
-      </div>
-    </div>
-
-    <!-- 结果 -->
-    <div class="result-bar">
-      <div class="result-row">
-        <span class="result-label">二进制结果</span>
-        <span class="result-bits">{{ resultBinary }}</span>
-      </div>
-      <div class="result-row">
-        <span class="result-label">十进制验证</span>
-        <span class="result-eq">{{ decimalA }} + {{ decimalB }} = {{ resultDecimal }}</span>
       </div>
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>每位全加器接收 A、B 和上一位的进位（Cin），输出本位的和（S）与向上传递的进位（Cout）——和我们手算竖式加法"逢二进一"完全一致。
+      <strong>核心思想：</strong>每位全加器接收 A、B 和上一位的进位（Cin），输出本位的和（S）与传给下一位的进位（Cout），和手算竖式「逢二进一」一致。
     </div>
   </div>
 </template>
@@ -130,57 +115,66 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const bitsA = ref([0, 0, 1, 1])
-const bitsB = ref([0, 0, 1, 0])
+const POS_NAMES = ['最低位', '次低位', '次高位', '最高位']
 
-const toggleBit = (arr, i) => {
-  if (arr === 'A') {
-    bitsA.value[i] = bitsA.value[i] ? 0 : 1
-  } else {
-    bitsB.value[i] = bitsB.value[i] ? 0 : 1
-  }
+function clamp(n) {
+  const v = Number(n)
+  if (Number.isNaN(v)) return 0
+  return Math.max(0, Math.min(15, Math.floor(v)))
 }
 
-const decimalA = computed(() =>
-  bitsA.value.reduce((acc, bit, i) => acc + bit * Math.pow(2, 3 - i), 0)
-)
+const inputA = ref(3)
+const inputB = ref(2)
+const highlightedBit = ref(null)
 
-const decimalB = computed(() =>
-  bitsB.value.reduce((acc, bit, i) => acc + bit * Math.pow(2, 3 - i), 0)
-)
+const clampedA = computed(() => clamp(inputA.value))
+const clampedB = computed(() => clamp(inputB.value))
 
-const stageData = computed(() => {
-  const stages = []
-  let carry = 0
-  const posNames = ['最低位', '次低位', '次高位', '最高位']
-  for (let i = 3; i >= 0; i--) {
-    const a = bitsA.value[i]
-    const b = bitsB.value[i]
-    const total = a + b + carry
-    const sum = total % 2
-    const carryOut = total >= 2 ? 1 : 0
-    stages.push({
-      bitPos: 3 - i,
-      posName: posNames[3 - i],
+const bitsA = computed(() => (clampedA.value >>> 0).toString(2).padStart(4, '0').split(''))
+const bitsB = computed(() => (clampedB.value >>> 0).toString(2).padStart(4, '0').split(''))
+
+const stages = computed(() => {
+  const A = clampedA.value
+  const B = clampedB.value
+  const result = []
+  let carryIn = null
+  for (let i = 0; i < 4; i++) {
+    const a = (A >> i) & 1
+    const b = (B >> i) & 1
+    let sum, carryOut
+    if (carryIn === null) {
+      sum = a ^ b
+      carryOut = a & b
+    } else {
+      sum = (a ^ b) ^ carryIn
+      carryOut = (a & b) | (carryIn & (a ^ b))
+    }
+    result.push({
+      bitPos: i,
+      posName: POS_NAMES[i],
       a,
       b,
-      carryIn: stages.length > 0 ? carry : null,
+      carryIn: carryIn === null ? null : carryIn,
       sum,
       carryOut
     })
-    carry = carryOut
+    carryIn = carryOut
   }
-  return stages
+  return result
 })
 
-const sumBits = computed(() => stageData.value.map((s) => s.sum).reverse())
-
-const resultBinary = computed(() => {
-  const lastCarry = stageData.value[stageData.value.length - 1]?.carryOut || 0
-  return (lastCarry ? lastCarry.toString() : '') + sumBits.value.join('')
+const bitsSum = computed(() => {
+  const S = stages.value.reduce((acc, s, i) => acc + (s.sum << i), 0)
+  return (S >>> 0).toString(2).padStart(4, '0').split('')
 })
 
-const resultDecimal = computed(() => decimalA.value + decimalB.value)
+const fourBitResult = computed(() =>
+  stages.value.reduce((acc, s, i) => acc + (s.sum << i), 0)
+)
+const overflow = computed(() => clampedA.value + clampedB.value > 15)
+const resultDec = computed(() =>
+  overflow.value ? `${fourBitResult.value}（4 位溢出）` : String(fourBitResult.value)
+)
 </script>
 
 <style scoped>
@@ -193,147 +187,167 @@ const resultDecimal = computed(() => decimalA.value + decimalB.value)
 }
 
 .demo-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.65rem;
-  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
 }
 
 .demo-header .title {
+  display: block;
   font-weight: bold;
   font-size: 1rem;
 }
 
 .demo-header .subtitle {
-  color: var(--vp-c-text-2);
+  display: block;
   font-size: 0.82rem;
-  margin-left: 0.5rem;
-}
-
-/* 名词解释 */
-.legend {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.7rem;
-  font-size: 0.78rem;
   color: var(--vp-c-text-2);
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  padding: 0.5rem 0.7rem;
+  font-weight: normal;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.dot.a { background: var(--vp-c-brand); }
-.dot.b { background: #8b5cf6; }
-.dot.s { background: var(--vp-c-success, #16a34a); }
-.dot.c { background: #d97706; }
-
-/* 控制面板 */
 .control-panel {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-  margin-bottom: 0.75rem;
   flex-wrap: wrap;
-}
-
-.input-group {
-  display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
 }
 
-.group-label {
-  font-size: 0.8rem;
+.control-panel label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.control-label {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+.num-input {
+  width: 3rem;
+  padding: 0.25rem 0.35rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: var(--vp-c-bg);
+}
+
+.control-panel .op,
+.control-panel .eq {
   font-weight: bold;
   color: var(--vp-c-text-2);
-  white-space: nowrap;
 }
 
-.bits {
-  display: flex;
-  gap: 0.2rem;
-}
-
-.bit-btn {
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-alt);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85rem;
+.control-panel .result-dec {
   font-weight: bold;
-  transition: all 0.2s;
+  color: var(--vp-c-brand-1);
 }
 
-.bit-btn.on {
-  background: var(--vp-c-brand);
-  color: white;
-  border-color: var(--vp-c-brand);
+.why-what-box {
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.55;
 }
 
-.decimal {
-  font-size: 0.82rem;
+.why-what-box .why-p {
+  margin: 0 0 0.4rem;
+}
+
+.why-what-box .what-p {
+  margin: 0;
+}
+
+.why-what-box .term {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.example-block {
+  margin-bottom: 0.25rem;
+}
+
+.bit-legend {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: 6rem;
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+}
+
+.bit-legend-item {
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.example-row .example-bits {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.bit {
+  display: inline-block;
+  min-width: 1.2em;
+  text-align: center;
+  padding: 0.1rem 0;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+
+.bit.active {
+  background: var(--vp-c-brand-2);
+  color: var(--vp-c-bg);
+}
+
+.stage.stage-highlight {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 1px;
+}
+
+.example-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.example-label {
+  color: var(--vp-c-text-2);
+  min-width: 6rem;
+}
+
+.example-bits {
+  font-family: monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.example-dec {
   color: var(--vp-c-text-2);
   font-variant-numeric: tabular-nums;
 }
 
-.op-sign {
-  font-size: 1.1rem;
+.result-row .example-bits {
   font-weight: bold;
-  color: var(--vp-c-brand);
-  flex-shrink: 0;
+  color: var(--vp-c-brand-1);
 }
 
-.result-inline {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.result-bin {
-  font-family: monospace;
-  font-weight: bold;
-  color: var(--vp-c-brand);
-}
-
-.result-dec {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-}
-
-/* 阶段 */
 .stages-label {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: bold;
-  margin-bottom: 0.4rem;
+  margin: 0.75rem 0 0.4rem;
   color: var(--vp-c-text-2);
 }
 
 .adder-stages {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.45rem;
+  gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
@@ -344,7 +358,7 @@ const resultDecimal = computed(() => decimalA.value + decimalB.value)
   padding: 0.55rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .stage-title {
@@ -401,16 +415,11 @@ const resultDecimal = computed(() => decimalA.value + decimalB.value)
 .sum-val { color: var(--vp-c-success, #16a34a); }
 .carry-val { color: #d97706; }
 
-/* 全加器盒子 */
 .fa-box {
   background: var(--vp-c-bg-alt);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
   padding: 0.3rem 0.35rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
   flex-shrink: 0;
 }
 
@@ -422,9 +431,9 @@ const resultDecimal = computed(() => decimalA.value + decimalB.value)
 .fa-hint {
   font-size: 0.6rem;
   color: var(--vp-c-text-3);
+  margin-top: 0.1rem;
 }
 
-/* 进位提示 */
 .carry-hint {
   font-size: 0.65rem;
   color: #d97706;
@@ -436,48 +445,14 @@ const resultDecimal = computed(() => decimalA.value + decimalB.value)
   color: var(--vp-c-text-3);
 }
 
-/* 结果栏 */
-.result-bar {
-  background: var(--vp-c-bg-alt);
-  border-radius: 6px;
-  padding: 0.55rem 0.75rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.75rem;
-}
-
-.result-row {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-}
-
-.result-label {
-  font-size: 0.82rem;
-  color: var(--vp-c-text-2);
-}
-
-.result-bits {
-  font-family: monospace;
-  font-weight: bold;
-  color: var(--vp-c-brand);
-}
-
-.result-eq {
-  font-weight: bold;
-  color: var(--vp-c-success, #16a34a);
-}
-
-/* info box */
 .info-box {
+  display: flex;
+  gap: 0.25rem;
   background: var(--vp-c-bg-alt);
   padding: 0.75rem;
   border-radius: 6px;
   font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  display: flex;
-  gap: 0.25rem;
 }
 
 .info-box strong {

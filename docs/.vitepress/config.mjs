@@ -702,7 +702,7 @@ export default defineConfig({
                 { text: 'Embedding 与向量检索', link: '/zh-cn/appendix/8-artificial-intelligence/embedding-vector-retrieval' },
                 { text: 'RAG 架构', link: '/zh-cn/appendix/8-artificial-intelligence/rag' },
                 { text: 'AI Agent 与工具调用', link: '/zh-cn/appendix/8-artificial-intelligence/ai-agents' },
-                { text: 'AI 协议（MCP 等）', link: '/zh-cn/appendix/8-artificial-intelligence/ai-protocols' },
+                { text: 'AI 协议（MCP & A2A）', link: '/zh-cn/appendix/8-artificial-intelligence/ai-protocols' },
                 { text: '模型微调与部署', link: '/zh-cn/appendix/8-artificial-intelligence/model-finetuning-deployment' },
                 { text: 'AI 原生应用设计', link: '/zh-cn/appendix/8-artificial-intelligence/ai-native-app-design' },
                 { text: 'AI 能力词典', link: '/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary' }

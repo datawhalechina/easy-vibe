@@ -211,6 +211,15 @@ import BackpropagationDemo from './components/appendix/ai-history/Backpropagatio
 import AttentionMechanismDemo from './components/appendix/ai-history/AttentionMechanismDemo.vue'
 import DiscriminativeVsGenerativeDemo from './components/appendix/ai-history/DiscriminativeVsGenerativeDemo.vue'
 import GPTEvolutionDemo from './components/appendix/ai-history/GPTEvolutionDemo.vue'
+import FoundationDemo from './components/appendix/ai-history/FoundationDemo.vue'
+
+// AI Protocols Components
+import McpVisualDemo from './components/appendix/ai-protocols/McpVisualDemo.vue'
+import A2AVisualDemo from './components/appendix/ai-protocols/A2AVisualDemo.vue'
+import McpDetailedDemo from './components/appendix/ai-protocols/McpDetailedDemo.vue'
+import A2ADetailedDemo from './components/appendix/ai-protocols/A2ADetailedDemo.vue'
+import ProtocolComparisonDemo from './components/appendix/ai-protocols/ProtocolComparisonDemo.vue'
+import ProtocolWorkflowDemo from './components/appendix/ai-protocols/ProtocolWorkflowDemo.vue'
 
 import ImperativeVsDeclarativeDemo from './components/appendix/web-basics/ImperativeVsDeclarativeDemo.vue'
 import ComponentReusabilityDemo from './components/appendix/web-basics/ComponentReusabilityDemo.vue'
@@ -543,12 +552,7 @@ import HttpsOptimizationDemo from './components/appendix/cloud-storage-cdn/Https
 import AccessAnalyticsDemo from './components/appendix/cloud-storage-cdn/AccessAnalyticsDemo.vue'
 
 // API Design Extra Components
-import ErrorHandlingDemo from './components/appendix/api-design/ErrorHandlingDemo.vue'
-import VersioningStrategyDemo from './components/appendix/api-design/VersioningStrategyDemo.vue'
-import DocumentationDemo from './components/appendix/api-design/DocumentationDemo.vue'
-import ResourceAnalogy from './components/appendix/api-design/ResourceAnalogy.vue'
-import RequestStructureDemo from './components/appendix/api-design/RequestStructureDemo.vue'
-import ResponseStructureDemo from './components/appendix/api-design/ResponseStructureDemo.vue'
+import RestfulApiFlow from './components/appendix/api-design/RestfulApiFlow.vue'
 
 // JavaScript Intro Components
 import VariableBoxDemo from './components/appendix/javascript-intro/VariableBoxDemo.vue'
@@ -638,6 +642,7 @@ export default {
     app.component('ApiDocumentDemo', ApiDocumentDemo)
     app.component('ApiPlayground', ApiPlayground)
     app.component('RealWorldApiDemo', RealWorldApiDemo)
+    app.component('RestfulApiFlow', RestfulApiFlow)
 
     // LLM Intro Components Registration
     app.component('EmbeddingDemo', EmbeddingDemo)
@@ -804,6 +809,7 @@ export default {
     app.component('RenderingStrategyDemo', RenderingStrategyDemo)
     app.component('BigFrontendScopeDemo', BigFrontendScopeDemo)
     app.component('AiEvolutionDemo', AiEvolutionDemo)
+    app.component('FoundationDemo', FoundationDemo)
     app.component('RuleBasedVsLearningDemo', RuleBasedVsLearningDemo)
     app.component('PerceptronDemo', PerceptronDemo)
     app.component('AIEvolutionTimelineDemo', AIEvolutionTimelineDemo)
@@ -819,6 +825,14 @@ export default {
       DiscriminativeVsGenerativeDemo
     )
     app.component('GPTEvolutionDemo', GPTEvolutionDemo)
+
+    // AI Protocols Components Registration
+    app.component('McpVisualDemo', McpVisualDemo)
+    app.component('A2AVisualDemo', A2AVisualDemo)
+    app.component('McpDetailedDemo', McpDetailedDemo)
+    app.component('A2ADetailedDemo', A2ADetailedDemo)
+    app.component('ProtocolComparisonDemo', ProtocolComparisonDemo)
+    app.component('ProtocolWorkflowDemo', ProtocolWorkflowDemo)
 
     app.component('ImperativeVsDeclarativeDemo', ImperativeVsDeclarativeDemo)
     app.component('ComponentReusabilityDemo', ComponentReusabilityDemo)

@@ -1,424 +1,58 @@
 <template>
-  <div class="nn-viz-demo">
-    <el-card shadow="hover">
-      <template #header>
-        <div class="card-header">
-          <h4>神经网络：手动前向传播（可控演示）</h4>
-          <p class="subtitle">
-            用"开始 / 上一步 / 下一步"逐层推进，避免误把动画当成真实训练过程。
-          </p>
-        </div>
-      </template>
-
-      <div class="controls mb-4 flex gap-2">
-        <el-button-group>
-          <el-button
-            type="primary"
-            :disabled="step !== 0"
-            @click="start"
-          >
-            开始
-          </el-button>
-          <el-button
-            :disabled="step <= 1"
-            @click="prev"
-          >
-            上一步
-          </el-button>
-          <el-button
-            type="primary"
-            :disabled="step === 0 || step >= maxStep"
-            @click="next"
-          >
-            下一步
-          </el-button>
-          <el-button @click="reset">
-            重置
-          </el-button>
-        </el-button-group>
+  <div class="demo-card">
+    <div class="net-layout">
+      <div class="svg-wrap">
+        <svg viewBox="0 0 380 200" class="net-svg">
+          <line v-for="c in connections" :key="c.id" :x1="c.x1" :y1="c.y1" :x2="c.x2" :y2="c.y2" stroke="#94a3b8" stroke-width="1.2" opacity="0.35" />
+          <g v-for="layer in layers" :key="layer.idx">
+            <circle v-for="n in layer.nodes" :key="n.id" :cx="n.x" :cy="n.y" r="15" :fill="layer.fill" :stroke="layer.stroke" stroke-width="2" />
+          </g>
+          <text v-for="layer in layers" :key="'l-'+layer.idx" :x="layer.x" y="194" text-anchor="middle" :fill="layer.stroke" class="lbl">{{ layer.name }}</text>
+        </svg>
       </div>
-
-      <div
-        v-if="step > 0"
-        class="progress mb-4"
-      >
-        <el-steps
-          :active="step"
-          align-center
-          finish-status="success"
-        >
-          <el-step title="输入层" />
-          <el-step title="隐藏层" />
-          <el-step title="输出层" />
-        </el-steps>
-        <div class="step-info text-center mt-2 text-sm text-gray-500">
-          Step {{ step }} / {{ maxStep }} · {{ stepTitle }}
+      <div class="layer-cards">
+        <div class="layer-card" v-for="info in layerInfo" :key="info.name" :style="{ borderLeftColor: info.color }">
+          <div class="lc-title" :style="{ color: info.color }">{{ info.name }}</div>
+          <div class="lc-desc">{{ info.desc }}</div>
         </div>
       </div>
-
-      <div class="grid-layout">
-        <el-card
-          shadow="never"
-          class="viz-card"
-        >
-          <template #header>
-            <div class="card-title">
-              网络结构
-            </div>
-          </template>
-          <div class="network-container">
-            <svg
-              class="network-svg"
-              :viewBox="`0 0 ${svgWidth} ${svgHeight}`"
-            >
-              <defs>
-                <linearGradient
-                  id="conn"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%"
-                >
-                  <stop
-                    offset="0%"
-                    :style="{
-                      stopColor: 'var(--el-color-primary)',
-                      stopOpacity: 0.18
-                    }"
-                  />
-                  <stop
-                    offset="100%"
-                    :style="{
-                      stopColor: 'var(--el-color-primary)',
-                      stopOpacity: 0.45
-                    }"
-                  />
-                </linearGradient>
-              </defs>
-
-              <g class="connections">
-                <line
-                  v-for="c in connections"
-                  :key="c.id"
-                  :x1="c.x1"
-                  :y1="c.y1"
-                  :x2="c.x2"
-                  :y2="c.y2"
-                  :class="{
-                    active: isConnectionActive(c),
-                    focus: isConnectionFocus(c)
-                  }"
-                  class="connection-line"
-                />
-              </g>
-
-              <g class="neurons">
-                <g
-                  v-for="n in neurons"
-                  :key="n.id"
-                  :transform="`translate(${n.x}, ${n.y})`"
-                  :class="{
-                    neuron: true,
-                    active: isNeuronActive(n),
-                    focus: focusLayer === n.layer
-                  }"
-                  @click="focusLayer = n.layer"
-                >
-                  <circle :r="n.r" />
-                  <text
-                    v-if="n.label"
-                    y="32"
-                    text-anchor="middle"
-                    class="neuron-label"
-                  >
-                    {{ n.label }}
-                  </text>
-                </g>
-              </g>
-            </svg>
-          </div>
-
-          <el-alert
-            title="提示：点击某一层的神经元可以“聚焦”该层（仅用于查看，不会触发自动流程）。"
-            type="info"
-            show-icon
-            :closable="false"
-            class="mt-2"
-          />
-        </el-card>
-
-        <el-card
-          shadow="never"
-          class="info-card"
-        >
-          <template #header>
-            <div class="card-title">
-              每一层在做什么
-            </div>
-          </template>
-          <div class="layers-info">
-            <el-collapse v-model="activeCollapse">
-              <el-collapse-item
-                v-for="(l, idx) in layerConfigs"
-                :key="l.name"
-                :title="l.name"
-                :name="idx"
-              >
-                <div class="layer-detail">
-                  <p>{{ l.desc }}</p>
-                  <div class="math-box">
-                    <code>{{ l.math }}</code>
-                  </div>
-                </div>
-              </el-collapse-item>
-            </el-collapse>
-          </div>
-        </el-card>
-      </div>
-    </el-card>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-
-const svgWidth = 600
-const svgHeight = 300
-const step = ref(0)
-const maxStep = 3
-const focusLayer = ref(null)
-const activeCollapse = ref([0])
-
-// Mock logic for demo
-const layerConfigs = [
-  {
-    name: '输入层 (Input)',
-    desc: '接收原始数据（如图片的像素值）。',
-    math: 'x = [x1, x2, x3]'
-  },
-  {
-    name: '隐藏层 (Hidden)',
-    desc: '提取特征（如边缘、形状）。每个神经元计算加权和并激活。',
-    math: 'h = ReLU(W1·x + b1)'
-  },
-  {
-    name: '输出层 (Output)',
-    desc: '给出最终结果（如分类概率）。',
-    math: 'y = Softmax(W2·h + b2)'
-  }
+const W = 380, H = 185
+const layerDef = [
+  { name: '输入层', count: 3, xFrac: 0.13, color: '#3b82f6', fill: '#dbeafe' },
+  { name: '隐藏层', count: 4, xFrac: 0.5,  color: '#7c3aed', fill: '#ede9fe' },
+  { name: '输出层', count: 2, xFrac: 0.87, color: '#059669', fill: '#d1fae5' },
 ]
-
-const neurons = ref([])
-const connections = ref([])
-
-const stepTitle = computed(() => {
-  if (step.value === 0) return '准备就绪'
-  if (step.value === 1) return '输入数据进入网络'
-  if (step.value === 2) return '隐藏层提取特征'
-  if (step.value === 3) return '输出层得出结果'
-  return ''
+const layers = layerDef.map((l, idx) => {
+  const x = l.xFrac * W
+  const gap = Math.min(46, (H - 36) / (l.count - 1 || 1))
+  const startY = (H - gap * (l.count - 1)) / 2
+  return { idx, x, name: l.name, fill: l.fill, stroke: l.color, nodes: Array.from({ length: l.count }, (_, i) => ({ id: `${idx}-${i}`, x, y: startY + i * gap })) }
 })
-
-const initNetwork = () => {
-  // Simple layout logic
-  const layers = [3, 4, 2] // Neuron counts per layer
-  const layerX = [100, 300, 500]
-  const ns = []
-  const cs = []
-
-  layers.forEach((count, layerIdx) => {
-    const startY = (svgHeight - (count - 1) * 60) / 2
-    for (let i = 0; i < count; i++) {
-      ns.push({
-        id: `n-${layerIdx}-${i}`,
-        layer: layerIdx,
-        x: layerX[layerIdx],
-        y: startY + i * 60,
-        r: 20,
-        label: layerIdx === 0 ? `x${i + 1}` : layerIdx === 2 ? `y${i + 1}` : ''
-      })
-    }
-  })
-
-  // Create connections
-  ns.forEach((src) => {
-    ns.forEach((tgt) => {
-      if (tgt.layer === src.layer + 1) {
-        cs.push({
-          id: `c-${src.id}-${tgt.id}`,
-          srcId: src.id,
-          tgtId: tgt.id,
-          srcLayer: src.layer,
-          x1: src.x,
-          y1: src.y,
-          x2: tgt.x,
-          y2: tgt.y
-        })
-      }
-    })
-  })
-
-  neurons.value = ns
-  connections.value = cs
+const connections = []
+for (let li = 0; li < layers.length - 1; li++) {
+  layers[li].nodes.forEach(a => { layers[li + 1].nodes.forEach(b => { connections.push({ id: `${a.id}-${b.id}`, x1: a.x, y1: a.y, x2: b.x, y2: b.y }) }) })
 }
-
-onMounted(() => {
-  initNetwork()
-})
-
-const start = () => {
-  step.value = 1
-  focusLayer.value = 0
-  activeCollapse.value = [0]
-}
-
-const next = () => {
-  if (step.value < maxStep) {
-    step.value++
-    focusLayer.value = step.value - 1
-    activeCollapse.value = [step.value - 1]
-  }
-}
-
-const prev = () => {
-  if (step.value > 1) {
-    step.value--
-    focusLayer.value = step.value - 1
-    activeCollapse.value = [step.value - 1]
-  }
-}
-
-const reset = () => {
-  step.value = 0
-  focusLayer.value = null
-  activeCollapse.value = [0]
-}
-
-const isNeuronActive = (n) => {
-  if (step.value === 0) return false
-  return n.layer < step.value
-}
-
-const isConnectionActive = (c) => {
-  if (step.value === 0) return false
-  return c.srcLayer < step.value - 1
-}
-
-const isConnectionFocus = (c) => {
-  // Optional: highlight connections related to focused layer
-  return false
-}
+const layerInfo = [
+  { name: '输入层', desc: '原始像素 / 数值信号', color: '#3b82f6' },
+  { name: '隐藏层（可叠加多层）', desc: '底层识别边缘 → 中层识别形状 → 高层识别语义概念', color: '#7c3aed' },
+  { name: '输出层', desc: '最终分类或预测结果', color: '#059669' },
+]
 </script>
 
 <style scoped>
-.nn-viz-demo {
-  margin: 20px 0;
-}
-
-.card-header h4 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.subtitle {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  margin: 4px 0 0;
-}
-
-.mb-4 {
-  margin-bottom: 16px;
-}
-
-.mt-2 {
-  margin-top: 8px;
-}
-
-.flex {
-  display: flex;
-}
-
-.gap-2 {
-  gap: 8px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-sm {
-  font-size: 12px;
-}
-
-.text-gray-500 {
-  color: var(--vp-c-text-2);
-}
-
-.grid-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .grid-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-.network-container {
-  display: flex;
-  justify-content: center;
-  background-color: var(--vp-c-bg-alt);
-  border-radius: 6px;
-  padding: 10px;
-}
-
-.network-svg {
-  width: 100%;
-  height: auto;
-}
-
-.connection-line {
-  stroke: var(--vp-c-divider);
-  stroke-width: 2;
-  transition: all 0.5s;
-}
-
-.connection-line.active {
-  stroke: var(--el-color-primary);
-  opacity: 0.5;
-}
-
-.neuron circle {
-  fill: var(--vp-c-bg);
-  stroke: var(--vp-c-text-2);
-  stroke-width: 2;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
-.neuron.active circle {
-  fill: var(--el-color-primary-light-9);
-  stroke: var(--el-color-primary);
-}
-
-.neuron.focus circle {
-  stroke-width: 4;
-}
-
-.neuron-label {
-  font-size: 12px;
-  fill: var(--vp-c-text-1);
-}
-
-.math-box {
-  background-color: var(--vp-c-bg-alt);
-  padding: 8px;
-  border-radius: 4px;
-  margin-top: 8px;
-  font-family: monospace;
-  font-size: 12px;
-}
+.demo-card { border: 1px solid var(--vp-c-divider); border-radius: 8px; background: var(--vp-c-bg-soft); padding: 1.25rem; margin: 1rem 0; }
+.net-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-radius: 6px; padding: 0.9rem; }
+@media (max-width: 600px) { .net-layout { grid-template-columns: 1fr; } }
+.svg-wrap { display: flex; align-items: center; justify-content: center; background: var(--vp-c-bg-alt); border-radius: 6px; }
+.net-svg { width: 100%; height: auto; }
+.lbl { font-size: 9px; font-weight: bold; }
+.layer-cards { display: flex; flex-direction: column; gap: 0.4rem; justify-content: center; }
+.layer-card { border-left: 3px solid; padding: 0.5rem 0.7rem; background: var(--vp-c-bg-alt); border-radius: 0 5px 5px 0; }
+.lc-title { font-weight: bold; font-size: 0.78rem; margin-bottom: 0.15rem; }
+.lc-desc { font-size: 0.73rem; color: var(--vp-c-text-2); line-height: 1.4; }
 </style>
