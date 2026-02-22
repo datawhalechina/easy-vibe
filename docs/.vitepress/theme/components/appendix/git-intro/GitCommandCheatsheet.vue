@@ -127,6 +127,8 @@ const yLabels = computed(() => {
   background: var(--vp-c-bg-soft);
   padding: 8px 10px;
   margin-bottom: 1rem;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .chart-header {

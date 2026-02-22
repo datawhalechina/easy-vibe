@@ -1,327 +1,36 @@
 <template>
-  <div class="discriminative-vs-generative-demo">
-    <el-card shadow="hover">
-      <template #header>
-        <div class="card-header">
-          <h4>🎯 判别式 vs 生成式 AI</h4>
-          <p class="subtitle">
-            理解两种不同的 AI 范式
-          </p>
+  <div class="demo-card">
+    <div class="schools-grid">
+      <div class="school-card" v-for="s in schools" :key="s.name" :style="{ borderTopColor: s.color }">
+        <div class="card-head">
+          <span class="school-icon">{{ s.icon }}</span>
+          <span class="school-name" :style="{ color: s.color }">{{ s.name }}</span>
         </div>
-      </template>
-
-      <div class="comparison-container">
-        <el-row :gutter="20">
-          <!-- Discriminative AI -->
-          <el-col
-            :xs="24"
-            :sm="12"
-          >
-            <el-card
-              shadow="always"
-              class="ai-panel discriminative"
-              :class="{ active: mode === 'discriminative' }"
-              @click="mode = 'discriminative'"
-            >
-              <div class="panel-header">
-                <div class="icon">
-                  🔍
-                </div>
-                <h5>判别式 AI</h5>
-                <el-tag
-                  size="small"
-                  type="success"
-                >
-                  分类/识别
-                </el-tag>
-              </div>
-
-              <div class="panel-content">
-                <div class="input-output">
-                  <div class="io-box input">
-                    <div class="io-label">
-                      输入
-                    </div>
-                    <div class="io-content">
-                      <div class="svg-placeholder green">
-                        <span class="svg-text">猫图</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="arrow">
-                    <el-icon><Bottom /></el-icon>
-                  </div>
-
-                  <div class="io-box output">
-                    <div class="io-label">
-                      输出
-                    </div>
-                    <div class="io-content">
-                      <el-tag
-                        effect="dark"
-                        type="success"
-                      >
-                        这是猫
-                      </el-tag>
-                      <div class="probability">
-                        置信度: 98%
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="examples">
-                  <h6>典型应用:</h6>
-                  <div class="example-tags">
-                    <el-tag
-                      v-for="tag in [
-                        '图像分类',
-                        '垃圾邮件过滤',
-                        '疾病诊断',
-                        '人脸识别'
-                      ]"
-                      :key="tag"
-                      size="small"
-                      effect="plain"
-                    >
-                      {{ tag }}
-                    </el-tag>
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-
-          <!-- Generative AI -->
-          <el-col
-            :xs="24"
-            :sm="12"
-          >
-            <el-card
-              shadow="always"
-              class="ai-panel generative"
-              :class="{ active: mode === 'generative' }"
-              @click="mode = 'generative'"
-            >
-              <div class="panel-header">
-                <div class="icon">
-                  ✨
-                </div>
-                <h5>生成式 AI</h5>
-                <el-tag
-                  size="small"
-                  type="primary"
-                >
-                  创造/生成
-                </el-tag>
-              </div>
-
-              <div class="panel-content">
-                <div class="input-output">
-                  <div class="io-box input">
-                    <div class="io-label">
-                      输入
-                    </div>
-                    <div class="io-content">
-                      <div class="prompt-text">
-                        "一只戴墨镜的猫"
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="arrow">
-                    <el-icon><Bottom /></el-icon>
-                  </div>
-
-                  <div class="io-box output">
-                    <div class="io-label">
-                      输出
-                    </div>
-                    <div class="io-content">
-                      <div class="svg-placeholder blue">
-                        <span class="svg-text">生成图像 ✓</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="examples">
-                  <h6>典型应用:</h6>
-                  <div class="example-tags">
-                    <el-tag
-                      v-for="tag in [
-                        'ChatGPT',
-                        'Midjourney',
-                        '代码生成',
-                        '音乐创作'
-                      ]"
-                      :key="tag"
-                      size="small"
-                      effect="plain"
-                      type="primary"
-                    >
-                      {{ tag }}
-                    </el-tag>
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
+        <div class="school-idea">{{ s.idea }}</div>
+        <div class="school-rep">代表：{{ s.rep }}</div>
+        <div class="school-status">{{ s.status }}</div>
       </div>
-    </el-card>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Bottom } from '@element-plus/icons-vue'
-
-const mode = ref('discriminative')
+const schools = [
+  { name: '符号主义', icon: '📜', color: '#059669', idea: '智能 = 符号推理 / If-Then 规则', rep: '专家系统、深蓝', status: '→ 与连接主义融合（神经符号 AI）' },
+  { name: '连接主义', icon: '🧠', color: '#7c3aed', idea: '智能 = 神经元网络 + 海量数据', rep: 'AlphaGo、GPT 系列', status: '→ 主导大模型时代，当前主流' },
+  { name: '行为主义', icon: '🎮', color: '#d97706', idea: '智能 = 与环境互动 / 强化学习', rep: 'AlphaGo（RL 部分）', status: '→ 与连接主义融合（深度强化学习）' },
+]
 </script>
 
 <style scoped>
-.discriminative-vs-generative-demo {
-  margin: 20px 0;
-}
-
-.card-header h4 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.subtitle {
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-  margin: 4px 0 0;
-}
-
-.comparison-container {
-  padding: 10px;
-}
-
-.ai-panel {
-  cursor: pointer;
-  transition: all 0.3s;
-  border: 2px solid transparent;
-  height: 100%;
-}
-
-.ai-panel:hover {
-  transform: translateY(-2px);
-}
-
-.ai-panel.active {
-  border-color: var(--el-color-primary);
-  background-color: var(--el-color-primary-light-9);
-}
-
-.panel-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.icon {
-  font-size: 24px;
-}
-
-.panel-header h5 {
-  margin: 0;
-  flex: 1;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.panel-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.input-output {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  background-color: var(--vp-c-bg);
-  padding: 16px;
-  border-radius: 6px;
-}
-
-.io-box {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.io-label {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-  text-transform: uppercase;
-}
-
-.io-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.svg-placeholder {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-}
-
-.svg-placeholder.green {
-  background-color: #48bb78;
-}
-
-.svg-placeholder.blue {
-  background-color: #667eea;
-}
-
-.svg-text {
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.prompt-text {
-  background-color: var(--vp-c-bg-alt);
-  padding: 8px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 12px;
-}
-
-.arrow {
-  color: var(--vp-c-text-2);
-}
-
-.probability {
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-}
-
-.examples h6 {
-  margin: 0 0 8px 0;
-  font-size: 13px;
-  color: var(--vp-c-text-2);
-}
-
-.example-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+.demo-card { border: 1px solid var(--vp-c-divider); border-radius: 8px; background: var(--vp-c-bg-soft); padding: 1.25rem; margin: 1rem 0; }
+.schools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+@media (max-width: 640px) { .schools-grid { grid-template-columns: 1fr; } }
+.school-card { background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider); border-top: 3px solid; border-radius: 6px; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.card-head { display: flex; align-items: center; gap: 0.5rem; }
+.school-icon { font-size: 1.3rem; }
+.school-name { font-weight: bold; font-size: 0.9rem; }
+.school-idea { font-size: 0.78rem; color: var(--vp-c-text-1); background: var(--vp-c-bg-alt); padding: 0.35rem 0.5rem; border-radius: 4px; }
+.school-rep { font-size: 0.72rem; color: var(--vp-c-text-3); }
+.school-status { font-size: 0.72rem; color: var(--vp-c-text-2); border-top: 1px dashed var(--vp-c-divider); padding-top: 0.35rem; }
 </style>

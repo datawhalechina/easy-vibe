@@ -281,10 +281,12 @@ function reset() {
 
 /* Repos */
 .gs-repos {
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  gap: 8px; padding: 10px 12px;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 12px; padding: 16px 14px;
   background: var(--vp-c-bg); border-top: 1px solid var(--vp-c-divider);
   align-items: start;
+  min-height: 200px;
+  overflow-x: auto;
 }
 @media (max-width: 600px) {
   .gs-repos { grid-template-columns: 1fr; }
@@ -293,7 +295,9 @@ function reset() {
 
 .repo-card {
   border: 1.5px solid var(--vp-c-divider); border-radius: 8px;
-  padding: 8px 10px; background: var(--vp-c-bg-soft);
+  padding: 12px 14px; background: var(--vp-c-bg-soft);
+  min-height: 180px; min-width: 0;
+  display: flex; flex-direction: column;
   transition: border-color .3s, box-shadow .3s;
 }
 .repo-remote { border-color: #60a5fa44; background: color-mix(in srgb, #60a5fa 4%, var(--vp-c-bg-soft)); }
@@ -301,26 +305,41 @@ function reset() {
 .repo-pulse-remote { border-color: #60a5fa !important; box-shadow: 0 0 0 3px #60a5fa22; }
 
 .repo-header {
-  display: flex; align-items: center; gap: 5px; margin-bottom: 6px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+  min-width: 0;
 }
-.repo-icon { font-size: 1rem; }
-.repo-name { font-weight: 700; font-size: 0.8rem; }
-.repo-path { font-family: monospace; font-size: 0.62rem; color: var(--vp-c-text-3); margin-left: auto; }
+.repo-icon { font-size: 1.1rem; flex-shrink: 0; }
+.repo-name { font-weight: 700; font-size: 0.88rem; flex-shrink: 0; }
+.repo-path {
+  font-family: monospace; font-size: 0.7rem; color: var(--vp-c-text-3);
+  margin-left: auto; min-width: 0; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
 
-.commit-col { min-height: 48px; display: flex; flex-direction: column; gap: 4px; }
-.no-commits { color: var(--vp-c-text-3); font-size: 0.72rem; }
+.commit-col {
+  min-height: 80px; min-width: 0;
+  display: flex; flex-direction: column; gap: 6px; flex: 1;
+}
+.no-commits { color: var(--vp-c-text-3); font-size: 0.8rem; padding: 6px 0; }
 .cmt-row {
-  display: flex; align-items: center; gap: 5px; font-size: 0.72rem;
-  padding: 2px 4px; border-radius: 3px; transition: background .3s;
+  display: flex; align-items: center; gap: 8px; font-size: 0.8rem;
+  padding: 8px 10px; border-radius: 6px; min-height: 36px;
+  min-width: 0; transition: background .3s;
 }
 .cmt-new { background: color-mix(in srgb, var(--vp-c-brand) 10%, transparent); }
-.cmt-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.cmt-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .local-dot { background: var(--vp-c-brand); }
 .remote-dot { background: #60a5fa; }
-.cmt-hash { color: var(--vp-c-brand); font-size: 0.68rem; }
-.cmt-msg { color: var(--vp-c-text-2); }
+.cmt-hash { color: var(--vp-c-brand); font-size: 0.76rem; flex-shrink: 0; }
+.cmt-msg {
+  color: var(--vp-c-text-2);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-.repo-footer { margin-top: 5px; font-size: 0.7rem; min-height: 16px; }
+.repo-footer { margin-top: 10px; font-size: 0.76rem; min-height: 20px; }
 .badge-ahead { color: var(--vp-c-brand); font-weight: 600; }
 .badge-sync { color: #a6e3a1; }
 .badge-online { color: #60a5fa; }
@@ -342,8 +361,8 @@ function reset() {
 .arrow-pull .arrow-label { color: #60a5fa; }
 
 .gs-hint {
-  padding: 8px 12px; background: var(--vp-c-bg-alt);
+  padding: 10px 14px; background: var(--vp-c-bg-alt);
   border-top: 1px solid var(--vp-c-divider);
-  font-size: 0.8rem; color: var(--vp-c-text-2);
+  font-size: 0.82rem; color: var(--vp-c-text-2); line-height: 1.5;
 }
 </style>

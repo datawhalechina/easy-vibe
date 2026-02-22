@@ -1,39 +1,41 @@
 <template>
   <div class="gc-root">
-    <!-- Terminal -->
-    <div class="gc-terminal">
-      <div class="term-bar">
-        <span class="dot r" /><span class="dot y" /><span class="dot g" />
-        <span class="term-title">~/project (main)</span>
-      </div>
-      <div ref="termEl" class="term-body">
-        <div v-for="(l, i) in lines" :key="i" class="t-line">
-          <span v-if="l.kind === 'cmd'" class="t-ps">$ </span>
-          <span :class="'t-' + l.kind">{{ l.text }}</span>
+    <div class="gc-layout">
+      <!-- 左侧：终端 + 按钮 -->
+      <div class="gc-left">
+        <div class="gc-terminal">
+          <div class="term-bar">
+            <span class="dot r" /><span class="dot y" /><span class="dot g" />
+            <span class="term-title">~/project (main)</span>
+          </div>
+          <div ref="termEl" class="term-body">
+            <div v-for="(l, i) in lines" :key="i" class="t-line">
+              <span v-if="l.kind === 'cmd'" class="t-ps">$ </span>
+              <span :class="'t-' + l.kind">{{ l.text }}</span>
+            </div>
+            <div class="t-line">
+              <span class="t-ps">$ </span>
+              <span class="t-typing">{{ typing }}<span class="t-cur">▋</span></span>
+            </div>
+          </div>
         </div>
-        <div class="t-line">
-          <span class="t-ps">$ </span>
-          <span class="t-typing">{{ typing }}<span class="t-cur">▋</span></span>
+        <div class="gc-btns">
+          <button
+            v-for="op in ops"
+            :key="op.id"
+            :disabled="running || !op.ok()"
+            :class="['gc-btn', { 'gc-btn--on': active === op.id, 'gc-btn--dim': !op.ok() }]"
+            @click="run(op)"
+          >
+            <code>{{ op.cmd }}</code>
+          </button>
+          <button class="gc-btn gc-btn--reset" :disabled="running" @click="reset">重置</button>
         </div>
       </div>
-    </div>
 
-    <!-- Buttons -->
-    <div class="gc-btns">
-      <button
-        v-for="op in ops"
-        :key="op.id"
-        :disabled="running || !op.ok()"
-        :class="['gc-btn', { 'gc-btn--on': active === op.id, 'gc-btn--dim': !op.ok() }]"
-        @click="run(op)"
-      >
-        <code>{{ op.cmd }}</code>
-      </button>
-      <button class="gc-btn gc-btn--reset" :disabled="running" @click="reset">重置</button>
-    </div>
-
-    <!-- 三区可视化 -->
-    <div class="gc-three-areas">
+      <!-- 右侧：三区缩小展示 -->
+      <div class="gc-right">
+        <div class="gc-three-areas">
       <div class="area-col area-work" :class="{ 'area-highlight': pulseArea === 'work' }">
         <div class="area-header">
           <span class="area-icon">📝</span>
@@ -55,7 +57,8 @@
 
       <div class="area-arrow" :class="{ 'arrow-lit': addDone }">
         <code class="arrow-cmd">git add</code>
-        <span class="arrow-symbol">→</span>
+        <span class="arrow-symbol arrow-symbol--h" aria-hidden="true">→</span>
+        <span class="arrow-symbol arrow-symbol--v" aria-hidden="true">↓</span>
       </div>
 
       <div class="area-col area-stage" :class="{ 'area-highlight': pulseArea === 'stage' }">
@@ -79,7 +82,8 @@
 
       <div class="area-arrow" :class="{ 'arrow-lit': commitDone }">
         <code class="arrow-cmd">git commit</code>
-        <span class="arrow-symbol">→</span>
+        <span class="arrow-symbol arrow-symbol--h" aria-hidden="true">→</span>
+        <span class="arrow-symbol arrow-symbol--v" aria-hidden="true">↓</span>
       </div>
 
       <div class="area-col area-repo" :class="{ 'area-highlight': pulseArea === 'repo' }">
@@ -102,6 +106,8 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
 
     <!-- Hint -->
     <div v-if="hint" class="gc-hint">💡 {{ hint }}</div>
@@ -116,7 +122,7 @@ const lines = ref([{ kind: 'dim', text: '# 你刚改了 3 个文件，现在演�
 const typing = ref('')
 const running = ref(false)
 const active = ref(null)
-const hint = ref('点击下方命令按钮，按顺序执行。观察上方三区里文件如何随命令移动。')
+const hint = ref('点击下方命令按钮，按顺序执行。观察右侧三区里文件如何随命令移动。')
 const pulseArea = ref(null)
 
 const files = ref([
@@ -275,7 +281,7 @@ function reset() {
   commitDone = false
   active.value = null
   pulseArea.value = null
-  hint.value = '点击下方命令按钮，按顺序执行。观察上方三区里文件如何随命令移动。'
+  hint.value = '点击下方命令按钮，按顺序执行。观察右侧三区里文件如何随命令移动。'
   typing.value = ''
   running.value = false
 }
@@ -289,6 +295,29 @@ function reset() {
   background: var(--vp-c-bg-soft);
   margin: 1rem 0;
   font-size: 0.85rem;
+}
+
+/* 左右分栏：左终端+按钮，右三区缩小 */
+.gc-layout {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.gc-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.gc-right {
+  width: 260px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+@media (max-width: 640px) {
+  .gc-layout { flex-direction: column; }
+  .gc-right { width: 100%; border-left: none; border-top: 1px solid var(--vp-c-divider); }
 }
 
 /* Terminal */
@@ -310,13 +339,14 @@ function reset() {
   min-height: 140px;
   max-height: 200px;
   overflow-y: auto;
+  overflow-x: auto;
   padding: 0.8rem 1rem;
   font-family: 'Menlo', 'Monaco', monospace;
   font-size: 0.76rem;
   line-height: 1.65;
   color: #cdd6f4;
 }
-.t-line { display: flex; }
+.t-line { display: flex; min-width: min-content; }
 .t-ps { color: #a6e3a1; flex-shrink: 0; }
 .t-cmd { color: #cdd6f4; }
 .t-dim { color: #585b70; }
@@ -357,32 +387,27 @@ function reset() {
 .gc-btn--reset code { display: none; }
 .gc-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
 
-/* 三区布局 */
+/* 三区布局：右侧缩小、垂直堆叠 */
 .gc-three-areas {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 0;
-  align-items: stretch;
-  padding: 12px 14px;
+  padding: 10px 12px;
   background: var(--vp-c-bg);
-  border-top: 1px solid var(--vp-c-divider);
-  min-height: 180px;
-}
-@media (max-width: 720px) {
-  .gc-three-areas {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto;
-  }
-  .area-arrow { transform: rotate(90deg); justify-self: center; }
+  font-size: 0.75rem;
 }
 
 .area-col {
   border: 1.5px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 0;
   transition: border-color 0.25s, box-shadow 0.25s;
+}
+.gc-right .area-col {
+  min-height: 72px;
 }
 .area-col.area-highlight {
   border-color: var(--vp-c-brand);
@@ -393,50 +418,71 @@ function reset() {
 .area-repo { border-left: 4px solid #5b9cf6; }
 
 .area-header {
-  padding: 6px 10px;
+  padding: 6px 8px;
   background: var(--vp-c-bg-alt);
   border-bottom: 1px solid var(--vp-c-divider);
+  min-width: 0;
+  overflow-wrap: break-word;
 }
-.area-icon { font-size: 1rem; margin-right: 4px; }
+.gc-right .area-header { padding: 5px 8px; }
+.area-icon { font-size: 0.95rem; margin-right: 4px; flex-shrink: 0; }
+.gc-right .area-icon { font-size: 0.85rem; }
 .area-title {
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--vp-c-text-1);
 }
+.gc-right .area-title { font-size: 0.8rem; }
 .area-desc {
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: var(--vp-c-text-3);
-  margin-top: 2px;
-  line-height: 1.3;
+  margin-top: 4px;
+  line-height: 1.35;
 }
+.gc-right .area-desc { font-size: 0.62rem; margin-top: 2px; }
 
 .area-body {
   padding: 8px 10px;
   flex: 1;
-  min-height: 72px;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
 }
+.gc-right .area-body { padding: 6px 8px; min-height: 40px; }
 .area-label {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: var(--vp-c-text-3);
   margin-bottom: 6px;
   font-family: monospace;
 }
+.gc-right .area-label { font-size: 0.62rem; margin-bottom: 4px; }
 .area-empty {
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   color: var(--vp-c-text-3);
   font-style: italic;
+  padding: 6px 0;
 }
+.gc-right .area-empty { font-size: 0.7rem; padding: 4px 0; }
 
 .file-row,
 .commit-row {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 6px;
+  padding: 6px 8px;
   border-radius: 4px;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   margin-bottom: 4px;
+  min-height: 28px;
+}
+.gc-right .file-row,
+.gc-right .commit-row {
+  gap: 4px;
+  padding: 4px 6px;
+  font-size: 0.7rem;
+  margin-bottom: 3px;
+  min-height: 24px;
 }
 .file-row:last-child,
 .commit-row:last-child { margin-bottom: 0; }
@@ -450,73 +496,91 @@ function reset() {
 }
 .file-badge {
   font-weight: 700;
-  font-size: 0.72rem;
-  width: 14px;
+  font-size: 0.78rem;
+  width: 16px;
   flex-shrink: 0;
   text-align: center;
 }
+.gc-right .file-badge { font-size: 0.68rem; width: 14px; }
 .file-mod .file-badge { color: #f38ba8; }
 .file-staged .file-badge { color: #a6e3a1; }
-.file-name { font-family: monospace; color: var(--vp-c-text-1); }
+.file-name {
+  font-family: monospace;
+  color: var(--vp-c-text-1);
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+}
+.gc-right .file-name { font-size: 0.68rem; }
 .file-state {
   margin-left: auto;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   color: var(--vp-c-text-3);
+  flex-shrink: 0;
 }
+.gc-right .file-state { font-size: 0.62rem; }
 
 .commit-row {
   background: #5b9cf618;
   border-left: 3px solid #5b9cf6;
 }
-.commit-badge { color: #5b9cf6; font-weight: 700; flex-shrink: 0; }
+.commit-badge { color: #5b9cf6; font-weight: 700; flex-shrink: 0; font-size: 0.9rem; }
+.gc-right .commit-badge { font-size: 0.75rem; }
 .commit-hash {
   font-family: monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: #5b9cf6;
   flex-shrink: 0;
 }
+.gc-right .commit-hash { font-size: 0.66rem; }
 .commit-msg {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--vp-c-text-2);
   flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  min-width: 3em;
+  word-wrap: break-word;
 }
+.gc-right .commit-msg { font-size: 0.66rem; min-width: 2em; }
 .commit-head {
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-family: monospace;
   font-weight: 700;
   background: #5b9cf6;
   color: #fff;
-  padding: 1px 4px;
-  border-radius: 3px;
+  padding: 2px 6px;
+  border-radius: 4px;
   flex-shrink: 0;
 }
+.gc-right .commit-head { font-size: 0.6rem; padding: 1px 4px; }
 
+/* 箭头：↓ + 命令 */
 .area-arrow {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 0 8px;
+  gap: 6px;
+  padding: 6px 0;
   opacity: 0.3;
   transition: opacity 0.3s;
 }
+.gc-right .area-arrow { padding: 4px 0; }
+.area-arrow .arrow-symbol--h { display: none; }
+.area-arrow .arrow-symbol--v {
+  display: inline;
+  font-size: 1rem;
+  color: var(--vp-c-brand);
+  line-height: 1;
+}
+.gc-right .area-arrow .arrow-symbol--v { font-size: 0.9rem; }
 .area-arrow.arrow-lit { opacity: 1; }
 .arrow-cmd {
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-family: monospace;
   color: var(--vp-c-brand);
   white-space: nowrap;
 }
-.arrow-symbol {
-  font-size: 1.2rem;
-  color: var(--vp-c-brand);
-  line-height: 1;
-}
+.gc-right .arrow-cmd { font-size: 0.62rem; }
 
 .gc-hint {
   padding: 10px 12px;
