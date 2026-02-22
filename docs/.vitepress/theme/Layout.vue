@@ -429,19 +429,24 @@ watch(sidebarCollapsed, (collapsed) => {
     </template>
   </DefaultTheme.Layout>
   <ClientOnly>
-    <button
+    <div
       v-if="!isHomePage"
-      class="ev-sidebar-toggle-btn"
+      class="ev-sidebar-hover-area"
       :class="{ collapsed: sidebarCollapsed }"
-      type="button"
-      :aria-label="sidebarCollapsed ? '展开目录' : '收起目录'"
-      @click="toggleSidebar"
     >
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-        <path v-if="!sidebarCollapsed" d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-        <path v-else d="M4 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
+      <button
+        class="ev-sidebar-toggle-btn"
+        :class="{ collapsed: sidebarCollapsed }"
+        type="button"
+        :aria-label="sidebarCollapsed ? '展开目录' : '收起目录'"
+        @click="toggleSidebar"
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+          <path v-if="!sidebarCollapsed" d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <path v-else d="M4 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
   </ClientOnly>
   <ClientOnly>
     <ReadingProgress />
@@ -598,32 +603,55 @@ watch(sidebarCollapsed, (collapsed) => {
   background: var(--vp-c-bg-soft);
 }
 
-/* 分界线上的收起按钮 */
-.ev-sidebar-toggle-btn {
+/* 左侧边缘悬停区域 */
+.ev-sidebar-hover-area {
   display: none;
   position: fixed;
+  top: 0;
+  left: calc(var(--vp-sidebar-width, 272px) - 16px);
+  width: 24px;
+  height: 100vh;
+  z-index: 30;
+}
+.ev-sidebar-hover-area.collapsed {
+  left: 0;
+}
+
+/* 分界线上的收起按钮 */
+.ev-sidebar-toggle-btn {
+  display: flex;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: calc(var(--vp-sidebar-width, 272px) - 12px);
-  z-index: 30;
-  width: 24px;
-  height: 48px;
+  left: 6px;
+  width: 18px;
+  height: 36px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 0 6px 6px 0;
-  background: var(--vp-c-bg);
+  border-radius: 0 4px 4px 0;
+  background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-3);
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  transition: left 0.3s ease, opacity 0.2s;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  animation: ev-sidebar-btn-flash 2.5s ease-out 0.5s;
+}
+@keyframes ev-sidebar-btn-flash {
+  0% { opacity: 0; }
+  20% { opacity: 0.7; }
+  60% { opacity: 0.7; }
+  100% { opacity: 0; }
 }
 .ev-sidebar-toggle-btn:hover {
   color: var(--vp-c-text-1);
-  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg);
+  opacity: 1;
+  animation: none;
 }
-.ev-sidebar-toggle-btn.collapsed {
-  left: 0;
-  border-radius: 0 6px 6px 0;
+.ev-sidebar-hover-area:hover .ev-sidebar-toggle-btn {
+  opacity: 0.7;
+  animation: none;
 }
 
 /* 桌面端才显示按钮 */
@@ -631,15 +659,15 @@ watch(sidebarCollapsed, (collapsed) => {
   .ev-sidebar-nav-btn {
     display: inline-flex;
   }
-  .ev-sidebar-toggle-btn {
-    display: inline-flex;
+  .ev-sidebar-hover-area {
+    display: block;
   }
 }
 
 /* @1440px 时分界线按钮跟随侧边栏实际宽度 */
 @media (min-width: 1440px) {
-  .ev-sidebar-toggle-btn:not(.collapsed) {
-    left: calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2 + var(--vp-sidebar-width, 272px) - 32px - 12px);
+  .ev-sidebar-hover-area:not(.collapsed) {
+    left: calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2 + var(--vp-sidebar-width, 272px) - 32px - 16px);
   }
 }
 
