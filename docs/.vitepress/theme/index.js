@@ -559,6 +559,10 @@ import RestfulUrlDemo from './components/appendix/api-design/RestfulUrlDemo.vue'
 import StatusCodeDemo from './components/appendix/api-design/StatusCodeDemo.vue'
 import ErrorHandlingDemo from './components/appendix/api-design/ErrorHandlingDemo.vue'
 import ApiVersioningDemo from './components/appendix/api-design/ApiVersioningDemo.vue'
+import ApiStyleCompare from './components/appendix/api-design/ApiStyleCompare.vue'
+import ResponseStructureDemo from './components/appendix/api-design/ResponseStructureDemo.vue'
+import DataFieldDesignDemo from './components/appendix/api-design/DataFieldDesignDemo.vue'
+import ErrorResponseDesignDemo from './components/appendix/api-design/ErrorResponseDesignDemo.vue'
 
 // JavaScript Intro Components
 import VariableBoxDemo from './components/appendix/javascript-intro/VariableBoxDemo.vue'
@@ -1172,6 +1176,10 @@ export default {
     app.component('StatusCodeDemo', StatusCodeDemo)
     app.component('ErrorHandlingDemo', ErrorHandlingDemo)
     app.component('ApiVersioningDemo', ApiVersioningDemo)
+    app.component('ApiStyleCompare', ApiStyleCompare)
+    app.component('ResponseStructureDemo', ResponseStructureDemo)
+    app.component('DataFieldDesignDemo', DataFieldDesignDemo)
+    app.component('ErrorResponseDesignDemo', ErrorResponseDesignDemo)
 
     // Database Intro Extra Components Registration
     app.component('DatabaseEvolutionDemo', DatabaseEvolutionDemo)

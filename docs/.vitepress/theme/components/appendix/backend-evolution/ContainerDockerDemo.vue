@@ -14,30 +14,15 @@
       >
         <h5>传统部署</h5>
         <div class="server-stack">
-          <div class="layer-item app">
-            应用 A
-          </div>
-          <div
-            v-if="showConflict"
-            class="layer-item conflict"
-          >
-            依赖冲突!
-          </div>
-          <div class="layer-item deps">
-            依赖库 v1.0
-          </div>
-          <div class="layer-item os">
-            操作系统
-          </div>
-          <div class="layer-item hardware">
-            物理服务器
-          </div>
+          <div class="layer-item app">应用 A</div>
+          <div v-if="showConflict" class="layer-item conflict">依赖冲突!</div>
+          <div class="layer-item deps">依赖库 v1.0</div>
+          <div class="layer-item os">操作系统</div>
+          <div class="layer-item hardware">物理服务器</div>
         </div>
       </div>
 
-      <div class="vs-divider">
-        VS
-      </div>
+      <div class="vs-divider">VS</div>
 
       <div
         class="layer docker"
@@ -48,31 +33,17 @@
         <div class="docker-stack">
           <div class="containers">
             <div class="container-box">
-              <div class="container-app">
-                应用 A
-              </div>
-              <div class="container-deps">
-                依赖 v1.0
-              </div>
+              <div class="container-app">应用 A</div>
+              <div class="container-deps">依赖 v1.0</div>
             </div>
             <div class="container-box">
-              <div class="container-app">
-                应用 B
-              </div>
-              <div class="container-deps">
-                依赖 v2.0
-              </div>
+              <div class="container-app">应用 B</div>
+              <div class="container-deps">依赖 v2.0</div>
             </div>
           </div>
-          <div class="docker-engine">
-            Docker Engine
-          </div>
-          <div class="host-os">
-            宿主机操作系统
-          </div>
-          <div class="hardware">
-            物理服务器
-          </div>
+          <div class="docker-engine">Docker Engine</div>
+          <div class="host-os">宿主机操作系统</div>
+          <div class="hardware">物理服务器</div>
         </div>
       </div>
     </div>
@@ -110,9 +81,17 @@ const showDocker = ref(false)
 const showConflict = ref(false)
 
 const benefits = [
-  { icon: '📦', title: '环境一致性', desc: '开发、测试、生产环境完全一致，告别"在我机器上能跑"' },
+  {
+    icon: '📦',
+    title: '环境一致性',
+    desc: '开发、测试、生产环境完全一致，告别"在我机器上能跑"'
+  },
   { icon: '🚀', title: '快速部署', desc: '秒级启动，镜像分发，滚动更新无停机' },
-  { icon: '📊', title: '资源隔离', desc: 'CPU/内存限制，互不干扰，一台机器跑多个应用' },
+  {
+    icon: '📊',
+    title: '资源隔离',
+    desc: 'CPU/内存限制，互不干扰，一台机器跑多个应用'
+  },
   { icon: '🔄', title: '版本管理', desc: '镜像版本化，随时回滚，灰度发布' }
 ]
 </script>
@@ -219,8 +198,13 @@ const benefits = [
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .containers {

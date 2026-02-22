@@ -1,47 +1,45 @@
 <template>
   <div class="transistor-demo">
-    <div class="demo-header">
-      <span class="title">晶体管：数字世界的开关</span>
-      <span class="subtitle">Gate 电压决定电流能否通过</span>
-    </div>
+    <div class="demo-label">MOSFET 晶体管示意 ── 点击切换 Gate 电压</div>
 
-    <div class="states">
-      <div class="state-card">
-        <div class="state-label">Gate = 0（低电压）</div>
-        <div class="channel-row">
-          <span class="terminal">源极</span>
-          <div class="channel-track off">
-            <span class="block-icon">✕ 断开</span>
-          </div>
-          <span class="terminal">漏极</span>
-        </div>
-        <div class="output-line">输出：<strong>0</strong></div>
+    <div class="schematic" @click="gateOn = !gateOn">
+      <!-- Source terminal -->
+      <div class="terminal-box source">
+        <span class="pin-label">源极<br><span class="en">Source</span></span>
+        <div class="pin-wire" :class="{ active: gateOn }"></div>
       </div>
 
-      <div class="state-card">
-        <div class="state-label">Gate = 1（高电压）</div>
-        <div class="channel-row">
-          <span class="terminal">源极</span>
-          <div class="channel-track on">
-            <span class="flow-dot d1" />
-            <span class="flow-dot d2" />
-            <span class="flow-dot d3" />
-            <span class="flow-label">导通</span>
-          </div>
-          <span class="terminal">漏极</span>
+      <!-- Channel -->
+      <div class="channel-area">
+        <div class="gate-indicator" :class="{ on: gateOn }">
+          <span class="gate-label">Gate</span>
+          <span class="gate-val">{{ gateOn ? '1' : '0' }}</span>
         </div>
-        <div class="output-line">输出：<strong>1</strong></div>
+        <div class="channel-bar" :class="{ conducting: gateOn }">
+          <template v-if="gateOn">
+            <span class="electron e1"></span>
+            <span class="electron e2"></span>
+            <span class="electron e3"></span>
+          </template>
+          <span v-else class="block-mark">✕</span>
+        </div>
+        <div class="channel-status">{{ gateOn ? '导通 → 输出 1' : '断开 → 输出 0' }}</div>
+      </div>
+
+      <!-- Drain terminal -->
+      <div class="terminal-box drain">
+        <div class="pin-wire" :class="{ active: gateOn }"></div>
+        <span class="pin-label">漏极<br><span class="en">Drain</span></span>
       </div>
     </div>
 
-    <div class="info-box">
-      <strong>核心思想：</strong>晶体管是“电控开关”：Gate=1 导通、Gate=0 断开，所有数字计算都建立在这种 0/1 开关之上。
-    </div>
+    <div class="tap-hint">👆 点击切换 Gate 电压</div>
   </div>
 </template>
 
 <script setup>
-// 纯静态展示，无需交互
+import { ref } from 'vue'
+const gateOn = ref(false)
 </script>
 
 <style scoped>
@@ -49,149 +47,168 @@
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
+  padding: 1rem 1.2rem;
   margin: 1rem 0;
+  cursor: pointer;
+  user-select: none;
 }
 
-.demo-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.demo-header .title {
+.demo-label {
+  font-size: 0.78rem;
   font-weight: bold;
-  font-size: 1rem;
-}
-
-.demo-header .subtitle {
   color: var(--vp-c-text-2);
-  font-size: 0.85rem;
-  margin-left: 0.5rem;
-}
-
-.states {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
   margin-bottom: 0.75rem;
+  letter-spacing: 0.2px;
 }
 
-.state-card {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
-  padding: 0.75rem;
-}
-
-.state-label {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
-}
-
-.channel-row {
+/* ── layout ── */
+.schematic {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0;
 }
 
-.terminal {
-  font-size: 0.82rem;
+/* ── terminals ── */
+.terminal-box {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.pin-label {
+  font-size: 0.78rem;
+  font-weight: 600;
   color: var(--vp-c-text-2);
-  flex-shrink: 0;
+  line-height: 1.3;
+  text-align: center;
 }
 
-.channel-track {
-  flex: 1;
-  min-height: 2.5rem;
+.pin-label .en {
+  font-size: 0.65rem;
+  color: var(--vp-c-text-3);
+  font-weight: normal;
+}
+
+.pin-wire {
+  width: 2.5rem;
+  height: 3px;
+  background: var(--vp-c-divider);
+  transition: background 0.3s;
+}
+
+.pin-wire.active {
+  background: var(--vp-c-brand-1);
+  box-shadow: 0 0 6px var(--vp-c-brand-soft);
+}
+
+/* ── channel ── */
+.channel-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 7rem;
+}
+
+.gate-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  border: 2px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  transition: all 0.3s;
+}
+
+.gate-indicator.on {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.gate-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+}
+
+.gate-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--vp-c-text-1);
+  transition: color 0.3s;
+}
+
+.gate-indicator.on .gate-val {
+  color: var(--vp-c-brand-1);
+}
+
+.channel-bar {
+  width: 100%;
+  height: 2rem;
   border: 2px solid var(--vp-c-divider);
   border-radius: 6px;
+  background: var(--vp-c-bg-alt);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s;
 }
 
-.channel-track.off {
-  background: var(--vp-c-bg-alt);
+.channel-bar.conducting {
+  background: var(--vp-c-success-soft, rgba(22, 163, 74, 0.12));
+  border-color: var(--vp-c-success, #16a34a);
 }
 
-.channel-track.on {
-  background: var(--vp-c-success-soft);
-  border-color: var(--vp-c-success);
-}
-
-.block-icon {
+.block-mark {
   font-size: 0.9rem;
   font-weight: bold;
   color: var(--vp-c-text-3);
 }
 
-.flow-dot {
-  width: 0.4rem;
-  height: 0.4rem;
+.electron {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--vp-c-success);
+  background: var(--vp-c-success, #16a34a);
   position: absolute;
-  left: -10%;
-  animation: flow 1.5s linear infinite;
+  animation: flow 1.2s linear infinite;
 }
 
-.flow-dot.d2 {
-  animation-delay: 0.45s;
-}
-
-.flow-dot.d3 {
-  animation-delay: 0.9s;
-}
-
-.flow-label {
-  margin-left: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--vp-c-success-1);
-  font-weight: 600;
-}
+.electron.e2 { animation-delay: 0.4s; }
+.electron.e3 { animation-delay: 0.8s; }
 
 @keyframes flow {
-  from {
-    left: -10%;
-  }
-  to {
-    left: 105%;
-  }
+  0%   { left: -8%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 108%; opacity: 0; }
 }
 
-.output-line {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--vp-c-text-1);
-}
-
-.output-line strong {
-  color: var(--vp-c-brand-1);
-}
-
-.info-box {
-  display: flex;
-  gap: 0.25rem;
-  background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
+.channel-status {
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--vp-c-text-2);
+  transition: color 0.3s;
 }
 
-.info-box strong {
-  white-space: nowrap;
-  flex-shrink: 0;
+.channel-bar.conducting + .channel-status {
+  color: var(--vp-c-success, #16a34a);
 }
 
-@media (max-width: 640px) {
-  .states {
-    grid-template-columns: 1fr;
-  }
+.tap-hint {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--vp-c-text-3);
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 480px) {
+  .pin-wire { width: 1.5rem; }
+  .channel-area { min-width: 5rem; }
 }
 </style>

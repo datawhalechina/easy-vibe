@@ -1,272 +1,356 @@
 <template>
   <div class="process-demo">
-    <div class="demo-header">
-      <span class="title">进程：程序的"分身术"</span>
-      <span class="subtitle">一个程序如何同时运行多个实例</span>
+    <div class="controls-section">
+      <button class="action-btn" :class="{ active: isRunning }" @click="toggleSimulation">
+        {{ isRunning ? '⏸ 暂停时间片轮转' : '▶️ 启动 CPU' }}
+      </button>
+      <div class="speed-control">
+        <label>时间流速:</label>
+        <button :class="{ active: speed === 'slow' }" @click="setSpeed('slow')">极慢动作</button>
+        <button :class="{ active: speed === 'fast' }" @click="setSpeed('fast')">真实速度</button>
+      </div>
     </div>
 
-    <div class="demo-content">
-      <div class="process-list">
-        <div class="process-header">
-          <span class="col-name">进程名</span>
-          <span class="col-pid">PID</span>
-          <span class="col-state">状态</span>
-          <span class="col-mem">内存</span>
+    <div class="cpu-container">
+      <div class="cpu-core" :class="{ active: isRunning }">
+        <div class="cpu-title">单核 CPU</div>
+        <div class="current-task">
+          <span v-if="activeProcess" class="task-badge">
+            正在处理: {{ activeProcess.icon }} {{ activeProcess.name }}
+          </span>
+          <span v-else class="task-badge idle">
+            空闲中...
+          </span>
         </div>
+      </div>
+      <!-- 连接线动画 -->
+      <div class="connector">
         <div 
-          v-for="p in processes" 
-          :key="p.pid"
-          class="process-item"
-          :class="{ running: p.state === '运行中', selected: selectedPid === p.pid }"
-          @click="selectedPid = p.pid"
-        >
-          <span class="col-name">
-            <span class="process-icon">{{ p.icon }}</span>
-            {{ p.name }}
-          </span>
-          <span class="col-pid">{{ p.pid }}</span>
-          <span class="col-state">
-            <span
-              class="state-badge"
-              :class="p.state === '运行中' ? 'running' : 'waiting'"
-            >
-              {{ p.state }}
-            </span>
-          </span>
-          <span class="col-mem">{{ p.memory }}</span>
-        </div>
-      </div>
-
-      <div
-        v-if="selectedProcess"
-        class="process-detail"
-      >
-        <div class="detail-title">
-          进程详情：{{ selectedProcess.name }}
-        </div>
-        <div class="detail-grid">
-          <div class="detail-item">
-            <span class="label">进程ID (PID)</span>
-            <span class="value">{{ selectedProcess.pid }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">父进程ID</span>
-            <span class="value">{{ selectedProcess.ppid }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">内存占用</span>
-            <span class="value">{{ selectedProcess.memory }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">CPU 占用</span>
-            <span class="value">{{ selectedProcess.cpu }}%</span>
-          </div>
-        </div>
-        <div class="memory-layout">
-          <div class="layout-title">
-            进程内存布局
-          </div>
-          <div class="layout-visual">
-            <div
-              v-for="seg in memorySegments"
-              :key="seg.name"
-              class="segment"
-              :style="{ height: seg.height }"
-            >
-              <span class="seg-name">{{ seg.name }}</span>
-            </div>
-          </div>
+          class="data-flow" 
+          :class="[ `flow-${activeProcessId}`, { running: isRunning }]">
         </div>
       </div>
     </div>
 
-    <div class="info-box">
-      <strong>核心思想：</strong>进程是程序的"运行实例"。同一个程序可以启动多个进程，每个进程有独立的内存空间，互不干扰。
+    <div class="processes-grid">
+      <div 
+        v-for="p in processes" 
+        :key="p.id"
+        class="process-card"
+        :class="{ active: p.id === activeProcessId }"
+      >
+        <div class="p-header">
+          <div class="p-title">
+            <span class="icon">{{ p.icon }}</span>
+            <span class="name">{{ p.name }}</span>
+          </div>
+          <span class="status-badge" :class="p.id === activeProcessId ? 'running' : 'waiting'">
+            {{ p.id === activeProcessId ? '独占 CPU' : '排队等待' }}
+          </span>
+        </div>
+        <div class="p-progress">
+          <div class="progress-track">
+            <div class="progress-fill" :style="{ width: p.progress + '%' }"></div>
+          </div>
+          <div class="progress-text">{{ Math.floor(p.progress) }}% 完成</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explanation-box" :class="{ show: isRunning && speed === 'fast' }">
+      💡 **关键启示**：当切换速度足够快时，肉眼已经无法分辨谁在“等待”。这也就是为什么只有一个 CPU 核心的电脑，依然能让你一边听歌一边打字！
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onUnmounted } from 'vue'
 
-const selectedPid = ref(1001)
+const isRunning = ref(false)
+const activeProcessId = ref(null)
+const speed = ref('slow')
+let interval = null
 
 const processes = ref([
-  { pid: 1001, name: 'Chrome', icon: '🌐', state: '运行中', memory: '512MB', cpu: 15, ppid: 1 },
-  { pid: 1002, name: 'VS Code', icon: '📝', state: '运行中', memory: '384MB', cpu: 8, ppid: 1 },
-  { pid: 1003, name: '微信', icon: '💬', state: '等待中', memory: '256MB', cpu: 2, ppid: 1 },
-  { pid: 1004, name: '终端', icon: '⬛', state: '等待中', memory: '32MB', cpu: 0, ppid: 1002 },
-  { pid: 1005, name: '音乐', icon: '🎵', state: '运行中', memory: '128MB', cpu: 3, ppid: 1 }
+  { id: 1, name: '微信接收', icon: '💬', progress: 0 },
+  { id: 2, name: '音乐播放', icon: '🎵', progress: 0 },
+  { id: 3, name: '游戏渲染', icon: '🎮', progress: 0 }
 ])
 
-const selectedProcess = computed(() => {
-  return processes.value.find(p => p.pid === selectedPid.value)
-})
+const activeProcess = computed(() => processes.value.find(p => p.id === activeProcessId.value))
 
-const memorySegments = [
-  { name: '栈区 (Stack)', height: '20%' },
-  { name: '堆区 (Heap)', height: '35%' },
-  { name: '数据段 (Data)', height: '15%' },
-  { name: '代码段 (Text)', height: '30%' }
-]
+const setSpeed = (s) => {
+  speed.value = s
+  if (isRunning.value) {
+    clearInterval(interval)
+    startLoop()
+  }
+}
+
+const startLoop = () => {
+  const switchTime = speed.value === 'slow' ? 1200 : 80; // 慢动作 1.2s，快动作极快
+  
+  if (!activeProcessId.value) {
+    activeProcessId.value = 1
+  }
+
+  interval = setInterval(() => {
+    // 增加当前进度
+    const curr = processes.value.find(p => p.id === activeProcessId.value)
+    if (curr) {
+      curr.progress += (speed.value === 'slow' ? 15 : 4)
+      if (curr.progress >= 100) curr.progress = 0
+    }
+
+    // 切换下一个
+    let nextId = activeProcessId.value + 1
+    if (nextId > 3) nextId = 1
+    activeProcessId.value = nextId
+
+  }, switchTime)
+}
+
+const toggleSimulation = () => {
+  if (isRunning.value) {
+    clearInterval(interval)
+    isRunning.value = false
+    activeProcessId.value = null
+  } else {
+    isRunning.value = true
+    startLoop()
+  }
+}
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval)
+})
 </script>
 
 <style scoped>
 .process-demo {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 1rem;
-  margin: 1rem 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-family: var(--vp-font-family-base);
 }
 
-.demo-header {
+.controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.action-btn {
+  background: var(--vp-c-brand-1);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+.action-btn.active {
+  background: var(--vp-c-danger-1);
+}
+.action-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.speed-control {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
 }
-
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
-
-.demo-content {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.process-list {
-  flex: 1;
-  min-width: 280px;
-  font-size: 0.85rem;
-}
-
-.process-header {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  background: var(--vp-c-bg-alt);
-  border-radius: 4px;
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-}
-
-.process-item {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 4px;
+.speed-control button {
+  background: transparent;
+  border: 1px solid var(--vp-c-divider);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }
-
-.process-item:hover {
-  background: var(--vp-c-bg);
-}
-
-.process-item.selected {
+.speed-control button.active {
   background: var(--vp-c-brand-soft);
-}
-
-.process-icon {
-  margin-right: 0.25rem;
-}
-
-.state-badge {
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  font-size: 0.75rem;
-}
-
-.state-badge.running {
-  background: var(--vp-c-success);
-  color: white;
-}
-
-.state-badge.waiting {
-  background: var(--vp-c-divider);
-  color: var(--vp-c-text-2);
-}
-
-.process-detail {
-  flex: 1;
-  min-width: 250px;
-}
-
-.detail-title {
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
   font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
 }
 
-.detail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.detail-item {
-  background: var(--vp-c-bg);
-  padding: 0.5rem;
-  border-radius: 4px;
-}
-
-.detail-item .label {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--vp-c-text-2);
-}
-
-.detail-item .value {
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.memory-layout {
-  background: var(--vp-c-bg-alt);
-  padding: 0.5rem;
-  border-radius: 4px;
-}
-
-.layout-title {
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.layout-visual {
+.cpu-container {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  height: 120px;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.segment {
+.cpu-core {
+  width: 240px;
+  height: 90px;
+  background: var(--vp-c-bg-alt);
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+  position: relative;
+}
+.cpu-core.active {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 20px var(--vp-c-brand-soft);
+}
+.cpu-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.current-task {
+  height: 28px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--vp-c-brand-soft);
-  border-radius: 2px;
+}
+.task-badge {
+  background: var(--vp-c-brand-1);
+  color: white;
+  padding: 0.2rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.task-badge.idle {
+  background: var(--vp-c-text-3);
 }
 
-.seg-name {
-  font-size: 0.7rem;
+/* 连接线动画占位，简化效果，用发亮的虚线替代 */
+.connector {
+  width: 2px;
+  height: 30px;
+  background: var(--vp-c-divider);
+  margin-top: 5px;
+  position: relative;
+}
+
+.processes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .processes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-card {
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-card.active {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--vp-c-brand-soft);
+}
+
+.process-card.active::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--vp-c-brand-1);
+}
+
+.p-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.p-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
   font-weight: bold;
 }
-
-.info-box {
-  background: var(--vp-c-bg-alt);
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
+.status-badge.waiting {
+  background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-2);
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 0.25rem;
+}
+.status-badge.running {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--vp-c-success-1);
 }
 
+.p-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--vp-c-brand-1);
+  transition: width 0.1s linear;
+}
+.process-card.active .progress-fill {
+  background: var(--vp-c-success-1);
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.explanation-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 4px solid var(--vp-c-success-1);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+}
+.explanation-box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
