@@ -98,9 +98,17 @@ HTTP/1.1 200 OK
 
 ### 2.2 URL 设计规则
 
-👇 **动手试试看**：点击下方按钮，查看 RESTful URL 的正确与错误写法对比：
+| 规则 | 错误示例 | 正确示例 | 说明 |
+| :--- | :--- | :--- | :--- |
+| **用名词不用动词** | `GET /getUsers`<br>`POST /createOrder` | `GET /users`<br>`POST /orders` | URL 是资源地址，HTTP 方法已表达操作 |
+| **用复数形式** | `GET /user`<br>`GET /order` | `GET /users`<br>`GET /users/123` | 统一用复数，避免 `/user` 和 `/users` 混用 |
+| **小写+连字符** | `GET /UserProfiles`<br>`GET /user_profiles` | `GET /user-profiles`<br>`GET /order-items` | URL 大小写敏感，统一小写最安全 |
+| **避免层级过深** | `GET /users/123/orders/456/items/789` | `GET /users/123/orders`<br>`GET /order-items/789` | 超过 3 层考虑重构，用扁平化路径 |
+| **过滤用查询参数** | `GET /products/category/phone/price/5000` | `GET /products?category=phone&price_max=5000` | 过滤、排序、分页都用查询参数 |
 
-<RestfulUrlDemo />
+::: tip 💡 URL 大小写敏感
+统一用小写 + 连字符（-）是最安全的做法，避免大小写混乱和下划线风格不一致的问题。
+:::
 
 ### 2.3 HTTP 方法选择
 
