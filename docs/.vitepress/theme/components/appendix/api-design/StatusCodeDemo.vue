@@ -22,12 +22,17 @@
         v-for="op in ops"
         :key="op.id"
         :disabled="running || !op.ok()"
-        :class="['sc-btn', { 'sc-btn--on': active === op.id, 'sc-btn--dim': !op.ok() }]"
+        :class="[
+          'sc-btn',
+          { 'sc-btn--on': active === op.id, 'sc-btn--dim': !op.ok() }
+        ]"
         @click="run(op)"
       >
         <code>{{ op.cmd }}</code>
       </button>
-      <button class="sc-btn sc-btn--reset" :disabled="running" @click="reset">重置</button>
+      <button class="sc-btn sc-btn--reset" :disabled="running" @click="reset">
+        重置
+      </button>
     </div>
 
     <div class="sc-codes">
@@ -37,7 +42,12 @@
           <span class="section-title">2xx 成功</span>
         </div>
         <div class="section-body">
-          <div v-for="c in successCodes" :key="c.code" class="code-item" :class="{ active: activeCode === c.code }">
+          <div
+            v-for="c in successCodes"
+            :key="c.code"
+            class="code-item"
+            :class="{ active: activeCode === c.code }"
+          >
             <span class="code-num">{{ c.code }}</span>
             <span class="code-name">{{ c.name }}</span>
             <span class="code-desc">{{ c.desc }}</span>
@@ -51,7 +61,12 @@
           <span class="section-title">4xx 客户端错误</span>
         </div>
         <div class="section-body">
-          <div v-for="c in clientCodes" :key="c.code" class="code-item" :class="{ active: activeCode === c.code }">
+          <div
+            v-for="c in clientCodes"
+            :key="c.code"
+            class="code-item"
+            :class="{ active: activeCode === c.code }"
+          >
             <span class="code-num">{{ c.code }}</span>
             <span class="code-name">{{ c.name }}</span>
             <span class="code-desc">{{ c.desc }}</span>
@@ -65,7 +80,12 @@
           <span class="section-title">5xx 服务端错误</span>
         </div>
         <div class="section-body">
-          <div v-for="c in serverCodes" :key="c.code" class="code-item" :class="{ active: activeCode === c.code }">
+          <div
+            v-for="c in serverCodes"
+            :key="c.code"
+            class="code-item"
+            :class="{ active: activeCode === c.code }"
+          >
             <span class="code-num">{{ c.code }}</span>
             <span class="code-name">{{ c.name }}</span>
             <span class="code-desc">{{ c.desc }}</span>
@@ -92,7 +112,7 @@ const hint = ref('点击命令按钮，了解常见的 HTTP 状态码。')
 const successCodes = ref([
   { code: 200, name: 'OK', desc: '请求成功' },
   { code: 201, name: 'Created', desc: '创建成功' },
-  { code: 204, name: 'No Content', desc: '成功但无返回内容' },
+  { code: 204, name: 'No Content', desc: '成功但无返回内容' }
 ])
 
 const clientCodes = ref([
@@ -101,16 +121,16 @@ const clientCodes = ref([
   { code: 403, name: 'Forbidden', desc: '无权限' },
   { code: 404, name: 'Not Found', desc: '资源不存在' },
   { code: 422, name: 'Unprocessable', desc: '语义错误' },
-  { code: 429, name: 'Too Many', desc: '请求过多' },
+  { code: 429, name: 'Too Many', desc: '请求过多' }
 ])
 
 const serverCodes = ref([
   { code: 500, name: 'Server Error', desc: '服务器内部错误' },
   { code: 502, name: 'Bad Gateway', desc: '网关错误' },
-  { code: 503, name: 'Unavailable', desc: '服务不可用' },
+  { code: 503, name: 'Unavailable', desc: '服务不可用' }
 ])
 
-const sleep = ms => new Promise(r => setTimeout(r, ms))
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const ops = [
   {
@@ -122,10 +142,12 @@ const ops = [
       { kind: 'grn', text: 'HTTP/1.1 200 OK' },
       { kind: 'dim', text: 'Content-Type: application/json' },
       { kind: 'dim', text: '' },
-      { kind: 'grn', text: '{ "code": 0, "data": { ... } }' },
+      { kind: 'grn', text: '{ "code": 0, "data": { ... } }' }
     ],
     hint: '200 表示请求成功处理。GET 查询、PUT/PATCH 更新成功时常用。',
-    do: () => { activeCode.value = 200 }
+    do: () => {
+      activeCode.value = 200
+    }
   },
   {
     id: '201',
@@ -136,10 +158,12 @@ const ops = [
       { kind: 'grn', text: 'HTTP/1.1 201 Created' },
       { kind: 'dim', text: 'Location: /api/users/123' },
       { kind: 'dim', text: '' },
-      { kind: 'grn', text: '{ "code": 0, "data": { "id": 123 } }' },
+      { kind: 'grn', text: '{ "code": 0, "data": { "id": 123 } }' }
     ],
     hint: '201 表示资源创建成功。响应头 Location 指向新资源的地址。',
-    do: () => { activeCode.value = 201 }
+    do: () => {
+      activeCode.value = 201
+    }
   },
   {
     id: '400',
@@ -149,10 +173,12 @@ const ops = [
       { kind: 'dim', text: '// 客户端请求有问题' },
       { kind: 'red', text: 'HTTP/1.1 400 Bad Request' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10001, "message": "参数格式错误" }' },
+      { kind: 'red', text: '{ "code": 10001, "message": "参数格式错误" }' }
     ],
     hint: '400 表示请求语法错误。比如 JSON 格式不对、缺少必填参数。',
-    do: () => { activeCode.value = 400 }
+    do: () => {
+      activeCode.value = 400
+    }
   },
   {
     id: '401',
@@ -163,10 +189,12 @@ const ops = [
       { kind: 'red', text: 'HTTP/1.1 401 Unauthorized' },
       { kind: 'dim', text: 'WWW-Authenticate: Bearer' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10018, "message": "请先登录" }' },
+      { kind: 'red', text: '{ "code": 10018, "message": "请先登录" }' }
     ],
     hint: '401 表示未认证。Token 过期、未登录时返回，客户端应引导用户登录。',
-    do: () => { activeCode.value = 401 }
+    do: () => {
+      activeCode.value = 401
+    }
   },
   {
     id: '403',
@@ -176,10 +204,12 @@ const ops = [
       { kind: 'dim', text: '// 已登录但无权限' },
       { kind: 'red', text: 'HTTP/1.1 403 Forbidden' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10021, "message": "需要管理员权限" }' },
+      { kind: 'red', text: '{ "code": 10021, "message": "需要管理员权限" }' }
     ],
     hint: '403 表示已认证但无权限。普通用户访问管理员接口时返回。',
-    do: () => { activeCode.value = 403 }
+    do: () => {
+      activeCode.value = 403
+    }
   },
   {
     id: '404',
@@ -189,10 +219,12 @@ const ops = [
       { kind: 'dim', text: '// 资源不存在' },
       { kind: 'red', text: 'HTTP/1.1 404 Not Found' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10002, "message": "用户不存在" }' },
+      { kind: 'red', text: '{ "code": 10002, "message": "用户不存在" }' }
     ],
     hint: '404 表示请求的资源不存在。URL 错误或资源已被删除。',
-    do: () => { activeCode.value = 404 }
+    do: () => {
+      activeCode.value = 404
+    }
   },
   {
     id: '500',
@@ -202,11 +234,16 @@ const ops = [
       { kind: 'dim', text: '// 服务器内部错误' },
       { kind: 'red', text: 'HTTP/1.1 500 Internal Server Error' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10000, "message": "服务器错误，请联系管理员" }' },
+      {
+        kind: 'red',
+        text: '{ "code": 10000, "message": "服务器错误，请联系管理员" }'
+      }
     ],
     hint: '500 表示服务器内部错误。代码 bug、数据库连接失败等，不要暴露堆栈信息！',
-    do: () => { activeCode.value = 500 }
-  },
+    do: () => {
+      activeCode.value = 500
+    }
+  }
 ]
 
 async function run(op) {
@@ -265,7 +302,9 @@ function reset() {
   font-size: 0.85rem;
 }
 
-.sc-terminal { background: #141420; }
+.sc-terminal {
+  background: #141420;
+}
 .term-bar {
   display: flex;
   align-items: center;
@@ -273,11 +312,26 @@ function reset() {
   padding: 7px 12px;
   background: #1e1e2e;
 }
-.dot { width: 11px; height: 11px; border-radius: 50%; }
-.dot.r { background: #ff5f57; }
-.dot.y { background: #febc2e; }
-.dot.g { background: #28c840; }
-.term-title { margin-left: 8px; font-size: 0.72rem; color: #666; font-family: monospace; }
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.dot.r {
+  background: #ff5f57;
+}
+.dot.y {
+  background: #febc2e;
+}
+.dot.g {
+  background: #28c840;
+}
+.term-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: #666;
+  font-family: monospace;
+}
 
 .term-body {
   min-height: 90px;
@@ -290,15 +344,41 @@ function reset() {
   line-height: 1.6;
   color: #cdd6f4;
 }
-.t-line { display: flex; min-width: min-content; }
-.t-ps { color: #89b4fa; flex-shrink: 0; }
-.t-cmd { color: #cdd6f4; }
-.t-dim { color: #585b70; }
-.t-grn { color: #a6e3a1; }
-.t-red { color: #f38ba8; }
-.t-typing { color: #cdd6f4; }
-.t-cur { animation: blink 1s step-end infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.t-line {
+  display: flex;
+  min-width: min-content;
+}
+.t-ps {
+  color: #89b4fa;
+  flex-shrink: 0;
+}
+.t-cmd {
+  color: #cdd6f4;
+}
+.t-dim {
+  color: #585b70;
+}
+.t-grn {
+  color: #a6e3a1;
+}
+.t-red {
+  color: #f38ba8;
+}
+.t-typing {
+  color: #cdd6f4;
+}
+.t-cur {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
 .sc-btns {
   display: flex;
@@ -316,18 +396,38 @@ function reset() {
   cursor: pointer;
   transition: border-color 0.2s;
 }
-.sc-btn code { font-size: 0.68rem; color: #7f849c; font-family: monospace; white-space: nowrap; }
-.sc-btn:hover:not(:disabled) { border-color: var(--vp-c-brand); }
-.sc-btn--on { border-color: var(--vp-c-brand) !important; }
-.sc-btn--on code { color: var(--vp-c-brand); }
-.sc-btn--dim { opacity: 0.3; cursor: not-allowed; }
+.sc-btn code {
+  font-size: 0.68rem;
+  color: #7f849c;
+  font-family: monospace;
+  white-space: nowrap;
+}
+.sc-btn:hover:not(:disabled) {
+  border-color: var(--vp-c-brand);
+}
+.sc-btn--on {
+  border-color: var(--vp-c-brand) !important;
+}
+.sc-btn--on code {
+  color: var(--vp-c-brand);
+}
+.sc-btn--dim {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .sc-btn--reset {
   background: transparent;
   border-color: #313244;
   margin-left: auto;
 }
-.sc-btn--reset code { display: none; }
-.sc-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
+.sc-btn--reset code {
+  display: none;
+}
+.sc-btn--reset::after {
+  content: '重置';
+  font-size: 0.7rem;
+  color: #585b70;
+}
 
 .sc-codes {
   display: grid;
@@ -351,12 +451,25 @@ function reset() {
   font-weight: 700;
   font-size: 0.8rem;
 }
-.section-header.success { background: color-mix(in srgb, #22c55e 8%, var(--vp-c-bg-alt)); color: #22c55e; }
-.section-header.client { background: color-mix(in srgb, #f59e0b 8%, var(--vp-c-bg-alt)); color: #d97706; }
-.section-header.server { background: color-mix(in srgb, #ef4444 8%, var(--vp-c-bg-alt)); color: #ef4444; }
+.section-header.success {
+  background: color-mix(in srgb, #22c55e 8%, var(--vp-c-bg-alt));
+  color: #22c55e;
+}
+.section-header.client {
+  background: color-mix(in srgb, #f59e0b 8%, var(--vp-c-bg-alt));
+  color: #d97706;
+}
+.section-header.server {
+  background: color-mix(in srgb, #ef4444 8%, var(--vp-c-bg-alt));
+  color: #ef4444;
+}
 
-.section-icon { font-size: 0.9rem; }
-.section-title { font-size: 0.75rem; }
+.section-icon {
+  font-size: 0.9rem;
+}
+.section-title {
+  font-size: 0.75rem;
+}
 
 .section-body {
   padding: 8px;
@@ -386,7 +499,9 @@ function reset() {
   font-size: 0.75rem;
   min-width: 28px;
 }
-.code-item.active .code-num { color: var(--vp-c-brand); }
+.code-item.active .code-num {
+  color: var(--vp-c-brand);
+}
 
 .code-name {
   font-size: 0.72rem;

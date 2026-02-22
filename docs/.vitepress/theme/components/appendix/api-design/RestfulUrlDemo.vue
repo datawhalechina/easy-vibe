@@ -22,12 +22,17 @@
         v-for="op in ops"
         :key="op.id"
         :disabled="running || !op.ok()"
-        :class="['ru-btn', { 'ru-btn--on': active === op.id, 'ru-btn--dim': !op.ok() }]"
+        :class="[
+          'ru-btn',
+          { 'ru-btn--on': active === op.id, 'ru-btn--dim': !op.ok() }
+        ]"
         @click="run(op)"
       >
         <code>{{ op.cmd }}</code>
       </button>
-      <button class="ru-btn ru-btn--reset" :disabled="running" @click="reset">重置</button>
+      <button class="ru-btn ru-btn--reset" :disabled="running" @click="reset">
+        重置
+      </button>
     </div>
 
     <div class="ru-compare">
@@ -37,7 +42,12 @@
           <span class="compare-title">错误示例</span>
         </div>
         <div class="compare-body">
-          <div v-for="(item, i) in badExamples" :key="i" class="url-row" :class="{ highlight: item.active }">
+          <div
+            v-for="(item, i) in badExamples"
+            :key="i"
+            class="url-row"
+            :class="{ highlight: item.active }"
+          >
             <code class="url-text">{{ item.url }}</code>
             <span class="url-reason">{{ item.reason }}</span>
           </div>
@@ -50,7 +60,12 @@
           <span class="compare-title">正确示例</span>
         </div>
         <div class="compare-body">
-          <div v-for="(item, i) in goodExamples" :key="i" class="url-row" :class="{ highlight: item.active }">
+          <div
+            v-for="(item, i) in goodExamples"
+            :key="i"
+            class="url-row"
+            :class="{ highlight: item.active }"
+          >
             <code class="url-text">{{ item.url }}</code>
             <span class="url-reason">{{ item.reason }}</span>
           </div>
@@ -66,7 +81,9 @@
 import { ref, nextTick } from 'vue'
 
 const termEl = ref(null)
-const lines = ref([{ kind: 'dim', text: '# 对比 RESTful URL 的正确与错误写法' }])
+const lines = ref([
+  { kind: 'dim', text: '# 对比 RESTful URL 的正确与错误写法' }
+])
 const typing = ref('')
 const running = ref(false)
 const active = ref(null)
@@ -77,8 +94,16 @@ const badExamples = ref([
   { url: 'GET /user', reason: '单数形式', active: false },
   { url: 'GET /UserProfiles', reason: '大写字母', active: false },
   { url: 'GET /user_profiles', reason: '下划线连接', active: false },
-  { url: 'GET /users/123/orders/456/items/789', reason: '层级过深', active: false },
-  { url: 'GET /products/category/phone/price/5000', reason: '过滤条件放路径', active: false },
+  {
+    url: 'GET /users/123/orders/456/items/789',
+    reason: '层级过深',
+    active: false
+  },
+  {
+    url: 'GET /products/category/phone/price/5000',
+    reason: '过滤条件放路径',
+    active: false
+  }
 ])
 
 const goodExamples = ref([
@@ -87,10 +112,14 @@ const goodExamples = ref([
   { url: 'GET /user-profiles', reason: '小写 + 连字符', active: false },
   { url: 'GET /user-profiles', reason: '连字符连接', active: false },
   { url: 'GET /users/123/orders', reason: '最多 3 层', active: false },
-  { url: 'GET /products?category=phone&price_max=5000', reason: '过滤用查询参数', active: false },
+  {
+    url: 'GET /products?category=phone&price_max=5000',
+    reason: '过滤用查询参数',
+    active: false
+  }
 ])
 
-const sleep = ms => new Promise(r => setTimeout(r, ms))
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const ops = [
   {
@@ -104,7 +133,7 @@ const ops = [
       { kind: 'red', text: '❌ POST /createOrder' },
       { kind: 'grn', text: '✅ GET /users' },
       { kind: 'grn', text: '✅ GET /users/123' },
-      { kind: 'grn', text: '✅ POST /orders' },
+      { kind: 'grn', text: '✅ POST /orders' }
     ],
     hint: 'URL 是资源的"地址"，HTTP 方法已经表达了"操作"。不要在 URL 里重复说"做什么"。',
     do: () => {
@@ -122,7 +151,7 @@ const ops = [
       { kind: 'red', text: '❌ GET /order' },
       { kind: 'grn', text: '✅ GET /users' },
       { kind: 'grn', text: '✅ GET /orders' },
-      { kind: 'grn', text: '✅ GET /users/123  (获取单个)' },
+      { kind: 'grn', text: '✅ GET /users/123  (获取单个)' }
     ],
     hint: '统一用复数，避免 /user 和 /users 混用。获取单个资源时用 /users/123。',
     do: () => {
@@ -139,7 +168,7 @@ const ops = [
       { kind: 'red', text: '❌ GET /UserProfiles' },
       { kind: 'red', text: '❌ GET /user_profiles' },
       { kind: 'grn', text: '✅ GET /user-profiles' },
-      { kind: 'grn', text: '✅ GET /order-items' },
+      { kind: 'grn', text: '✅ GET /order-items' }
     ],
     hint: 'URL 大小写敏感，统一用小写 + 连字符（-）是最安全的做法。',
     do: () => {
@@ -158,7 +187,7 @@ const ops = [
       { kind: 'red', text: '❌ /users/123/orders/456/items/789/status' },
       { kind: 'grn', text: '✅ /users/123/orders  (用户订单)' },
       { kind: 'grn', text: '✅ /orders/456/items  (订单商品)' },
-      { kind: 'grn', text: '✅ /order-items/789  (直接访问)' },
+      { kind: 'grn', text: '✅ /order-items/789  (直接访问)' }
     ],
     hint: '超过 3 层考虑重构。可以用扁平化路径或查询参数替代深层嵌套。',
     do: () => {
@@ -175,14 +204,14 @@ const ops = [
       { kind: 'red', text: '❌ /products/category/phone/price/5000' },
       { kind: 'grn', text: '✅ /products?category=phone&price_max=5000' },
       { kind: 'grn', text: '✅ /products?status=active&sort=created_desc' },
-      { kind: 'grn', text: '✅ /products?category=phone,electronics' },
+      { kind: 'grn', text: '✅ /products?category=phone,electronics' }
     ],
     hint: '查询参数可以灵活组合，路径则固定不变。过滤、排序、分页都用查询参数。',
     do: () => {
       badExamples.value[5].active = true
       goodExamples.value[5].active = true
     }
-  },
+  }
 ]
 
 async function run(op) {
@@ -192,8 +221,8 @@ async function run(op) {
   hint.value = ''
   typing.value = ''
 
-  badExamples.value.forEach(e => e.active = false)
-  goodExamples.value.forEach(e => e.active = false)
+  badExamples.value.forEach((e) => (e.active = false))
+  goodExamples.value.forEach((e) => (e.active = false))
 
   for (const ch of op.cmd) {
     typing.value += ch
@@ -225,8 +254,8 @@ function scroll() {
 
 function reset() {
   lines.value = [{ kind: 'dim', text: '# 对比 RESTful URL 的正确与错误写法' }]
-  badExamples.value.forEach(e => e.active = false)
-  goodExamples.value.forEach(e => e.active = false)
+  badExamples.value.forEach((e) => (e.active = false))
+  goodExamples.value.forEach((e) => (e.active = false))
   active.value = null
   hint.value = '点击命令按钮，查看不同场景下的 URL 设计对比。'
   typing.value = ''
@@ -244,7 +273,9 @@ function reset() {
   font-size: 0.85rem;
 }
 
-.ru-terminal { background: #141420; }
+.ru-terminal {
+  background: #141420;
+}
 .term-bar {
   display: flex;
   align-items: center;
@@ -252,11 +283,26 @@ function reset() {
   padding: 7px 12px;
   background: #1e1e2e;
 }
-.dot { width: 11px; height: 11px; border-radius: 50%; }
-.dot.r { background: #ff5f57; }
-.dot.y { background: #febc2e; }
-.dot.g { background: #28c840; }
-.term-title { margin-left: 8px; font-size: 0.72rem; color: #666; font-family: monospace; }
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.dot.r {
+  background: #ff5f57;
+}
+.dot.y {
+  background: #febc2e;
+}
+.dot.g {
+  background: #28c840;
+}
+.term-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: #666;
+  font-family: monospace;
+}
 
 .term-body {
   min-height: 100px;
@@ -269,15 +315,41 @@ function reset() {
   line-height: 1.6;
   color: #cdd6f4;
 }
-.t-line { display: flex; min-width: min-content; }
-.t-ps { color: #a6e3a1; flex-shrink: 0; }
-.t-cmd { color: #cdd6f4; }
-.t-dim { color: #585b70; }
-.t-grn { color: #a6e3a1; }
-.t-red { color: #f38ba8; }
-.t-typing { color: #cdd6f4; }
-.t-cur { animation: blink 1s step-end infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.t-line {
+  display: flex;
+  min-width: min-content;
+}
+.t-ps {
+  color: #a6e3a1;
+  flex-shrink: 0;
+}
+.t-cmd {
+  color: #cdd6f4;
+}
+.t-dim {
+  color: #585b70;
+}
+.t-grn {
+  color: #a6e3a1;
+}
+.t-red {
+  color: #f38ba8;
+}
+.t-typing {
+  color: #cdd6f4;
+}
+.t-cur {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
 .ru-btns {
   display: flex;
@@ -295,18 +367,38 @@ function reset() {
   cursor: pointer;
   transition: border-color 0.2s;
 }
-.ru-btn code { font-size: 0.68rem; color: #7f849c; font-family: monospace; white-space: nowrap; }
-.ru-btn:hover:not(:disabled) { border-color: var(--vp-c-brand); }
-.ru-btn--on { border-color: var(--vp-c-brand) !important; }
-.ru-btn--on code { color: var(--vp-c-brand); }
-.ru-btn--dim { opacity: 0.3; cursor: not-allowed; }
+.ru-btn code {
+  font-size: 0.68rem;
+  color: #7f849c;
+  font-family: monospace;
+  white-space: nowrap;
+}
+.ru-btn:hover:not(:disabled) {
+  border-color: var(--vp-c-brand);
+}
+.ru-btn--on {
+  border-color: var(--vp-c-brand) !important;
+}
+.ru-btn--on code {
+  color: var(--vp-c-brand);
+}
+.ru-btn--dim {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .ru-btn--reset {
   background: transparent;
   border-color: #313244;
   margin-left: auto;
 }
-.ru-btn--reset code { display: none; }
-.ru-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
+.ru-btn--reset code {
+  display: none;
+}
+.ru-btn--reset::after {
+  content: '重置';
+  font-size: 0.7rem;
+  color: #585b70;
+}
 
 .ru-compare {
   display: grid;
@@ -332,8 +424,14 @@ function reset() {
   gap: 6px;
   margin-bottom: 10px;
 }
-.compare-icon { font-size: 1rem; }
-.compare-title { font-weight: 700; font-size: 0.85rem; color: var(--vp-c-text-1); }
+.compare-icon {
+  font-size: 1rem;
+}
+.compare-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-1);
+}
 
 .compare-body {
   display: flex;
@@ -346,7 +444,9 @@ function reset() {
   border-radius: 4px;
   background: var(--vp-c-bg);
   border: 1px solid transparent;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
 .url-row.highlight {
   border-color: var(--vp-c-brand);

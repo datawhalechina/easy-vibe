@@ -1,16 +1,30 @@
 <template>
   <div class="adder-demo">
-    <div class="demo-label">二进制加法器 ── 输入 0–15 的两个数，观察逐位计算过程</div>
+    <div class="demo-label">
+      二进制加法器 ── 输入 0–15 的两个数，观察逐位计算过程
+    </div>
 
     <div class="control-row">
       <label class="input-group">
         <span class="input-label">A</span>
-        <input v-model.number="inputA" type="number" min="0" max="15" class="num-input" />
+        <input
+          v-model.number="inputA"
+          type="number"
+          min="0"
+          max="15"
+          class="num-input"
+        />
       </label>
       <span class="op-sign">+</span>
       <label class="input-group">
         <span class="input-label">B</span>
-        <input v-model.number="inputB" type="number" min="0" max="15" class="num-input" />
+        <input
+          v-model.number="inputB"
+          type="number"
+          min="0"
+          max="15"
+          class="num-input"
+        />
       </label>
       <span class="op-sign">=</span>
       <span class="result-num">{{ resultDec }}</span>
@@ -20,21 +34,39 @@
       <div class="binary-row">
         <span class="binary-label">A</span>
         <span class="binary-bits">
-          <span v-for="(b, i) in bitsA" :key="'a'+i" class="bit" :class="{ hl: activeBit === (3 - i) }">{{ b }}</span>
+          <span
+            v-for="(b, i) in bitsA"
+            :key="'a' + i"
+            class="bit"
+            :class="{ hl: activeBit === 3 - i }"
+            >{{ b }}</span
+          >
         </span>
         <span class="binary-dec">= {{ clampedA }}</span>
       </div>
       <div class="binary-row">
         <span class="binary-label">B</span>
         <span class="binary-bits">
-          <span v-for="(b, i) in bitsB" :key="'b'+i" class="bit" :class="{ hl: activeBit === (3 - i) }">{{ b }}</span>
+          <span
+            v-for="(b, i) in bitsB"
+            :key="'b' + i"
+            class="bit"
+            :class="{ hl: activeBit === 3 - i }"
+            >{{ b }}</span
+          >
         </span>
         <span class="binary-dec">= {{ clampedB }}</span>
       </div>
       <div class="binary-row sum-row">
         <span class="binary-label">结果</span>
         <span class="binary-bits">
-          <span v-for="(b, i) in bitsSum" :key="'s'+i" class="bit" :class="{ hl: activeBit === (3 - i) }">{{ b }}</span>
+          <span
+            v-for="(b, i) in bitsSum"
+            :key="'s' + i"
+            class="bit"
+            :class="{ hl: activeBit === 3 - i }"
+            >{{ b }}</span
+          >
         </span>
         <span class="binary-dec">= {{ fourBitResult }}</span>
       </div>
@@ -45,7 +77,8 @@
 
     <div class="stages-row">
       <div
-        v-for="(stage, idx) in stages" :key="idx"
+        v-for="(stage, idx) in stages"
+        :key="idx"
         class="stage-card"
         :class="{ active: activeBit === stage.bitPos }"
         @mouseenter="activeBit = stage.bitPos"
@@ -53,24 +86,40 @@
       >
         <div class="stage-head">
           <span class="stage-pos">第{{ stage.bitPos }}位</span>
-          <span class="stage-type" :class="stage.carryIn !== null ? 'full' : 'half'">
+          <span
+            class="stage-type"
+            :class="stage.carryIn !== null ? 'full' : 'half'"
+          >
             {{ stage.carryIn !== null ? '全加器' : '半加器' }}
           </span>
         </div>
         <div class="stage-io">
-          <span class="io-item"><span class="io-tag a">A</span>{{ stage.a }}</span>
-          <span class="io-item"><span class="io-tag b">B</span>{{ stage.b }}</span>
-          <span v-if="stage.carryIn !== null" class="io-item"><span class="io-tag cin">Cin</span>{{ stage.carryIn }}</span>
+          <span class="io-item"
+            ><span class="io-tag a">A</span>{{ stage.a }}</span
+          >
+          <span class="io-item"
+            ><span class="io-tag b">B</span>{{ stage.b }}</span
+          >
+          <span v-if="stage.carryIn !== null" class="io-item"
+            ><span class="io-tag cin">Cin</span>{{ stage.carryIn }}</span
+          >
         </div>
         <div class="stage-divider"></div>
         <div class="stage-io">
-          <span class="io-item"><span class="io-tag s">S</span><strong>{{ stage.sum }}</strong></span>
-          <span class="io-item"><span class="io-tag cout">C</span>{{ stage.carryOut }}</span>
+          <span class="io-item"
+            ><span class="io-tag s">S</span
+            ><strong>{{ stage.sum }}</strong></span
+          >
+          <span class="io-item"
+            ><span class="io-tag cout">C</span>{{ stage.carryOut }}</span
+          >
         </div>
       </div>
     </div>
 
-    <div class="demo-caption">鼠标悬停某一位，查看该位加法器的输入 / 输出 · 就像手算竖式"逢二进一"</div>
+    <div class="demo-caption">
+      鼠标悬停某一位，查看该位加法器的输入 / 输出 · 就像手算竖式"逢二进一"
+    </div>
   </div>
 </template>
 
@@ -90,8 +139,12 @@ function clamp(n) {
 const clampedA = computed(() => clamp(inputA.value))
 const clampedB = computed(() => clamp(inputB.value))
 
-const bitsA = computed(() => (clampedA.value >>> 0).toString(2).padStart(4, '0').split(''))
-const bitsB = computed(() => (clampedB.value >>> 0).toString(2).padStart(4, '0').split(''))
+const bitsA = computed(() =>
+  (clampedA.value >>> 0).toString(2).padStart(4, '0').split('')
+)
+const bitsB = computed(() =>
+  (clampedB.value >>> 0).toString(2).padStart(4, '0').split('')
+)
 
 const stages = computed(() => {
   const A = clampedA.value
@@ -106,10 +159,17 @@ const stages = computed(() => {
       sum = a ^ b
       carryOut = a & b
     } else {
-      sum = (a ^ b) ^ carryIn
+      sum = a ^ b ^ carryIn
       carryOut = (a & b) | (carryIn & (a ^ b))
     }
-    result.push({ bitPos: i, a, b, carryIn: carryIn === null ? null : carryIn, sum, carryOut })
+    result.push({
+      bitPos: i,
+      a,
+      b,
+      carryIn: carryIn === null ? null : carryIn,
+      sum,
+      carryOut
+    })
     carryIn = carryOut
   }
   return result
@@ -126,7 +186,9 @@ const fourBitResult = computed(() =>
 
 const overflow = computed(() => clampedA.value + clampedB.value > 15)
 const resultDec = computed(() =>
-  overflow.value ? `${fourBitResult.value}（溢出）` : String(fourBitResult.value)
+  overflow.value
+    ? `${fourBitResult.value}（溢出）`
+    : String(fourBitResult.value)
 )
 </script>
 
@@ -334,11 +396,21 @@ const resultDec = computed(() =>
   font-family: system-ui;
 }
 
-.io-tag.a { background: var(--vp-c-brand-1); }
-.io-tag.b { background: #8b5cf6; }
-.io-tag.cin { background: #d97706; }
-.io-tag.s { background: var(--vp-c-green-1, #16a34a); }
-.io-tag.cout { background: #d97706; }
+.io-tag.a {
+  background: var(--vp-c-brand-1);
+}
+.io-tag.b {
+  background: #8b5cf6;
+}
+.io-tag.cin {
+  background: #d97706;
+}
+.io-tag.s {
+  background: var(--vp-c-green-1, #16a34a);
+}
+.io-tag.cout {
+  background: #d97706;
+}
 
 .stage-divider {
   height: 1px;

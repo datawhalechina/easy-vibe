@@ -7,8 +7,8 @@
 
     <div class="demo-content">
       <div class="storage-pyramid">
-        <div 
-          v-for="(level, i) in storageLevels" 
+        <div
+          v-for="(level, i) in storageLevels"
           :key="level.name"
           class="level"
           :class="{ active: activeLevel === i }"
@@ -27,13 +27,8 @@
         </div>
       </div>
 
-      <div
-        v-if="currentLevel"
-        class="level-detail"
-      >
-        <div class="detail-title">
-          {{ currentLevel.name }} 详情
-        </div>
+      <div v-if="currentLevel" class="level-detail">
+        <div class="detail-title">{{ currentLevel.name }} 详情</div>
         <div class="detail-grid">
           <div class="detail-item">
             <span class="label">访问速度</span>
@@ -59,7 +54,9 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>存储遵循"金字塔"原则：越快的存储越贵、容量越小。CPU 需要的数据放在最快的存储（寄存器、缓存），暂时不用的放在慢速大容量存储（磁盘、云端）。
+      <strong>核心思想：</strong
+      >存储遵循"金字塔"原则：越快的存储越贵、容量越小。CPU
+      需要的数据放在最快的存储（寄存器、缓存），暂时不用的放在慢速大容量存储（磁盘、云端）。
     </div>
   </div>
 </template>
@@ -70,55 +67,55 @@ import { ref, computed } from 'vue'
 const activeLevel = ref(0)
 
 const storageLevels = [
-  { 
-    name: '寄存器', 
-    speed: '~1 纳秒', 
-    size: '几百字节', 
+  {
+    name: '寄存器',
+    speed: '~1 纳秒',
+    size: '几百字节',
     width: '30%',
     cost: '极高',
     volatile: '是',
     desc: 'CPU 内部最快的存储，直接参与运算。数量有限，由编译器自动管理。'
   },
-  { 
-    name: 'L1 缓存', 
-    speed: '~2 纳秒', 
-    size: '32-64 KB', 
+  {
+    name: 'L1 缓存',
+    speed: '~2 纳秒',
+    size: '32-64 KB',
     width: '45%',
     cost: '很高',
     volatile: '是',
     desc: 'CPU 内置的高速缓存，存储最常用的数据。每个核心独立拥有。'
   },
-  { 
-    name: 'L2/L3 缓存', 
-    speed: '~10 纳秒', 
-    size: '几 MB', 
+  {
+    name: 'L2/L3 缓存',
+    speed: '~10 纳秒',
+    size: '几 MB',
     width: '60%',
     cost: '高',
     volatile: '是',
     desc: '更大但稍慢的缓存，L3 通常多核心共享。'
   },
-  { 
-    name: '内存 (RAM)', 
-    speed: '~100 纳秒', 
-    size: '8-128 GB', 
+  {
+    name: '内存 (RAM)',
+    speed: '~100 纳秒',
+    size: '8-128 GB',
     width: '75%',
     cost: '中等',
     volatile: '是',
     desc: '程序运行时的主要工作区。断电后数据丢失。'
   },
-  { 
-    name: 'SSD 固态硬盘', 
-    speed: '~100 微秒', 
-    size: '256 GB - 4 TB', 
+  {
+    name: 'SSD 固态硬盘',
+    speed: '~100 微秒',
+    size: '256 GB - 4 TB',
     width: '90%',
     cost: '较低',
     volatile: '否',
     desc: '比机械硬盘快很多，无机械部件。断电数据保留。'
   },
-  { 
-    name: 'HDD 机械硬盘', 
-    speed: '~10 毫秒', 
-    size: '1-20 TB', 
+  {
+    name: 'HDD 机械硬盘',
+    speed: '~10 毫秒',
+    size: '1-20 TB',
     width: '100%',
     cost: '低',
     volatile: '否',
@@ -145,8 +142,15 @@ const currentLevel = computed(() => storageLevels[activeLevel.value])
   margin-bottom: 0.75rem;
 }
 
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
 
 .demo-content {
   display: flex;
@@ -251,5 +255,4 @@ const currentLevel = computed(() => storageLevels[activeLevel.value])
   display: flex;
   gap: 0.25rem;
 }
-
 </style>

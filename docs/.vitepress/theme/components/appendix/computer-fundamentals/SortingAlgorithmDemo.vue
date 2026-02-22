@@ -10,7 +10,7 @@
         v-for="(item, index) in array"
         :key="index"
         class="array-bar"
-        :class="{ 
+        :class="{
           comparing: comparingIndices.includes(index),
           swapping: swappingIndices.includes(index),
           sorted: index < sortedCount
@@ -92,27 +92,30 @@ const currentAlgoDesc = ref('选择一个排序算法开始演示')
 const complexity = ref('')
 
 const generateArray = () => {
-  array.value = Array.from({ length: 10 }, () => Math.floor(Math.random() * 90) + 10)
+  array.value = Array.from(
+    { length: 10 },
+    () => Math.floor(Math.random() * 90) + 10
+  )
   sortedCount.value = 0
   comparingIndices.value = []
   swappingIndices.value = []
 }
 
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const startBubbleSort = async () => {
   currentAlgo.value = '冒泡排序'
   currentAlgoDesc.value = '重复遍历数组，比较相邻元素并交换'
   complexity.value = 'O(n²)'
-  
+
   sortedCount.value = 0
   const arr = [...array.value]
-  
+
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
       comparingIndices.value = [j, j + 1]
       await sleep(300)
-      
+
       if (arr[j] > arr[j + 1]) {
         swappingIndices.value = [j, j + 1]
         await sleep(300)
@@ -124,7 +127,7 @@ const startBubbleSort = async () => {
     }
     sortedCount.value++
   }
-  
+
   comparingIndices.value = []
   sortedCount.value = arr.length
 }
@@ -133,10 +136,10 @@ const startQuickSort = async () => {
   currentAlgo.value = '快速排序'
   currentAlgoDesc.value = '选择基准，将数组分成小于和大于基准的两部分'
   complexity.value = 'O(n log n)'
-  
+
   sortedCount.value = 0
   const arr = [...array.value]
-  
+
   await quickSort(arr, 0, arr.length - 1)
   array.value = arr
   sortedCount.value = arr.length
@@ -154,11 +157,11 @@ const quickSort = async (arr, low, high) => {
 const partition = async (arr, low, high) => {
   const pivot = arr[high]
   let i = low - 1
-  
+
   for (let j = low; j < high; j++) {
     comparingIndices.value = [j, high]
     await sleep(300)
-    
+
     if (arr[j] < pivot) {
       i++
       swappingIndices.value = [i, j]
@@ -168,14 +171,14 @@ const partition = async (arr, low, high) => {
       await sleep(300)
     }
   }
-  
+
   swappingIndices.value = [i + 1, high]
   await sleep(300)
   ;[arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]
   array.value = [...arr]
   await sleep(300)
   swappingIndices.value = []
-  
+
   return i + 1
 }
 </script>
@@ -196,8 +199,14 @@ const partition = async (arr, low, high) => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .visual-array {
   display: flex;

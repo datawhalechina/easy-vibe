@@ -22,18 +22,25 @@
         v-for="op in ops"
         :key="op.id"
         :disabled="running || !op.ok()"
-        :class="['eh-btn', { 'eh-btn--on': active === op.id, 'eh-btn--dim': !op.ok() }]"
+        :class="[
+          'eh-btn',
+          { 'eh-btn--on': active === op.id, 'eh-btn--dim': !op.ok() }
+        ]"
         @click="run(op)"
       >
         <code>{{ op.cmd }}</code>
       </button>
-      <button class="eh-btn eh-btn--reset" :disabled="running" @click="reset">重置</button>
+      <button class="eh-btn eh-btn--reset" :disabled="running" @click="reset">
+        重置
+      </button>
     </div>
 
     <div class="eh-response">
       <div class="res-header">
         <span class="res-label">响应结构</span>
-        <span class="res-status" :class="responseStatus">{{ responseStatus }}</span>
+        <span class="res-status" :class="responseStatus">{{
+          responseStatus
+        }}</span>
       </div>
       <div class="res-body">
         <pre v-if="responseData">{{ responseData }}</pre>
@@ -57,7 +64,7 @@ const hint = ref('点击按钮，对比"好的"和"差的"错误响应设计。'
 const responseData = ref('')
 const responseStatus = ref('')
 
-const sleep = ms => new Promise(r => setTimeout(r, ms))
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const ops = [
   {
@@ -68,7 +75,7 @@ const ops = [
       { kind: 'dim', text: '// HTTP 200 但业务失败' },
       { kind: 'yel', text: 'HTTP/1.1 200 OK' },
       { kind: 'dim', text: '' },
-      { kind: 'yel', text: '{ "error": "出错了" }' },
+      { kind: 'yel', text: '{ "error": "出错了" }' }
     ],
     hint: '问题：HTTP 状态码说"成功"，但业务说"出错"。缓存层会缓存这个"成功"响应，监控系统也发现不了问题。',
     do: () => {
@@ -86,7 +93,7 @@ const ops = [
       { kind: 'dim', text: '// 错误信息没有帮助' },
       { kind: 'red', text: 'HTTP/1.1 400 Bad Request' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "message": "参数错误" }' },
+      { kind: 'red', text: '{ "message": "参数错误" }' }
     ],
     hint: '问题：客户端不知道哪个参数错了、为什么错。用户只能看到"参数错误"，无法修正。',
     do: () => {
@@ -104,9 +111,12 @@ const ops = [
       { kind: 'dim', text: '// 500 错误暴露堆栈' },
       { kind: 'red', text: 'HTTP/1.1 500 Internal Server Error' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "error": "TypeError: Cannot read property..." }' },
+      {
+        kind: 'red',
+        text: '{ "error": "TypeError: Cannot read property..." }'
+      },
       { kind: 'red', text: '{ "stack": "at UserService.login..." }' },
-      { kind: 'red', text: '{ "sql": "SELECT * FROM users WHERE..." }' },
+      { kind: 'red', text: '{ "sql": "SELECT * FROM users WHERE..." }' }
     ],
     hint: '危险！暴露了代码结构、数据库查询。攻击者可以利用这些信息进行攻击。',
     do: () => {
@@ -126,7 +136,7 @@ const ops = [
       { kind: 'dim', text: '// HTTP 状态码准确表达错误类型' },
       { kind: 'grn', text: 'HTTP/1.1 404 Not Found' },
       { kind: 'dim', text: '' },
-      { kind: 'grn', text: '{ "code": 10002, "message": "用户不存在" }' },
+      { kind: 'grn', text: '{ "code": 10002, "message": "用户不存在" }' }
     ],
     hint: '正确！404 表示资源不存在，客户端一看就知道问题所在。',
     do: () => {
@@ -147,7 +157,7 @@ const ops = [
       { kind: 'grn', text: 'HTTP/1.1 422 Unprocessable Entity' },
       { kind: 'dim', text: '' },
       { kind: 'grn', text: '{ "code": 20003, "message": "密码强度不足" }' },
-      { kind: 'grn', text: '{ "errors": [{ "field": "password", ... }] }' },
+      { kind: 'grn', text: '{ "errors": [{ "field": "password", ... }] }' }
     ],
     hint: '正确！提供了错误码、字段级别的错误详情，前端可以精确提示用户。',
     do: () => {
@@ -175,7 +185,7 @@ const ops = [
       { kind: 'grn', text: 'HTTP/1.1 500 Internal Server Error' },
       { kind: 'dim', text: '' },
       { kind: 'grn', text: '{ "code": 10000, "message": "服务器错误" }' },
-      { kind: 'grn', text: '{ "error_id": "err-a1b2c3d4" }' },
+      { kind: 'grn', text: '{ "error_id": "err-a1b2c3d4" }' }
     ],
     hint: '正确！只返回错误 ID，详细日志记录在服务器。用户反馈错误 ID，技术人员可以快速定位。',
     do: () => {
@@ -188,7 +198,7 @@ const ops = [
   "help_url": "https://docs.example.com/errors/10000"
 }`
     }
-  },
+  }
 ]
 
 async function run(op) {
@@ -249,7 +259,9 @@ function reset() {
   font-size: 0.85rem;
 }
 
-.eh-terminal { background: #141420; }
+.eh-terminal {
+  background: #141420;
+}
 .term-bar {
   display: flex;
   align-items: center;
@@ -257,11 +269,26 @@ function reset() {
   padding: 7px 12px;
   background: #1e1e2e;
 }
-.dot { width: 11px; height: 11px; border-radius: 50%; }
-.dot.r { background: #ff5f57; }
-.dot.y { background: #febc2e; }
-.dot.g { background: #28c840; }
-.term-title { margin-left: 8px; font-size: 0.72rem; color: #666; font-family: monospace; }
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.dot.r {
+  background: #ff5f57;
+}
+.dot.y {
+  background: #febc2e;
+}
+.dot.g {
+  background: #28c840;
+}
+.term-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: #666;
+  font-family: monospace;
+}
 
 .term-body {
   min-height: 100px;
@@ -274,16 +301,44 @@ function reset() {
   line-height: 1.6;
   color: #cdd6f4;
 }
-.t-line { display: flex; min-width: min-content; }
-.t-ps { color: #89b4fa; flex-shrink: 0; }
-.t-cmd { color: #cdd6f4; }
-.t-dim { color: #585b70; }
-.t-grn { color: #a6e3a1; }
-.t-red { color: #f38ba8; }
-.t-yel { color: #f9e2af; }
-.t-typing { color: #cdd6f4; }
-.t-cur { animation: blink 1s step-end infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.t-line {
+  display: flex;
+  min-width: min-content;
+}
+.t-ps {
+  color: #89b4fa;
+  flex-shrink: 0;
+}
+.t-cmd {
+  color: #cdd6f4;
+}
+.t-dim {
+  color: #585b70;
+}
+.t-grn {
+  color: #a6e3a1;
+}
+.t-red {
+  color: #f38ba8;
+}
+.t-yel {
+  color: #f9e2af;
+}
+.t-typing {
+  color: #cdd6f4;
+}
+.t-cur {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
 .eh-btns {
   display: flex;
@@ -301,18 +356,38 @@ function reset() {
   cursor: pointer;
   transition: border-color 0.2s;
 }
-.eh-btn code { font-size: 0.68rem; color: #7f849c; font-family: monospace; white-space: nowrap; }
-.eh-btn:hover:not(:disabled) { border-color: var(--vp-c-brand); }
-.eh-btn--on { border-color: var(--vp-c-brand) !important; }
-.eh-btn--on code { color: var(--vp-c-brand); }
-.eh-btn--dim { opacity: 0.3; cursor: not-allowed; }
+.eh-btn code {
+  font-size: 0.68rem;
+  color: #7f849c;
+  font-family: monospace;
+  white-space: nowrap;
+}
+.eh-btn:hover:not(:disabled) {
+  border-color: var(--vp-c-brand);
+}
+.eh-btn--on {
+  border-color: var(--vp-c-brand) !important;
+}
+.eh-btn--on code {
+  color: var(--vp-c-brand);
+}
+.eh-btn--dim {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .eh-btn--reset {
   background: transparent;
   border-color: #313244;
   margin-left: auto;
 }
-.eh-btn--reset code { display: none; }
-.eh-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
+.eh-btn--reset code {
+  display: none;
+}
+.eh-btn--reset::after {
+  content: '重置';
+  font-size: 0.7rem;
+  color: #585b70;
+}
 
 .eh-response {
   border-top: 1px solid var(--vp-c-divider);
@@ -326,7 +401,11 @@ function reset() {
   border-bottom: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-alt);
 }
-.res-label { font-weight: 700; font-size: 0.8rem; color: var(--vp-c-text-1); }
+.res-label {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-1);
+}
 .res-status {
   font-family: monospace;
   font-size: 0.72rem;
@@ -334,11 +413,26 @@ function reset() {
   padding: 2px 8px;
   border-radius: 4px;
 }
-.res-status\.200\ \(错误\) { background: #f9e2af22; color: #d97706; }
-.res-status\.400 { background: #f59e0b22; color: #d97706; }
-.res-status\.404 { background: #3b82f622; color: #3b82f6; }
-.res-status\.422 { background: #8b5cf622; color: #8b5cf6; }
-.res-status\.500 { background: #ef444422; color: #ef4444; }
+.res-status\.200\ \(错误\) {
+  background: #f9e2af22;
+  color: #d97706;
+}
+.res-status\.400 {
+  background: #f59e0b22;
+  color: #d97706;
+}
+.res-status\.404 {
+  background: #3b82f622;
+  color: #3b82f6;
+}
+.res-status\.422 {
+  background: #8b5cf622;
+  color: #8b5cf6;
+}
+.res-status\.500 {
+  background: #ef444422;
+  color: #ef4444;
+}
 
 .res-body {
   padding: 12px;

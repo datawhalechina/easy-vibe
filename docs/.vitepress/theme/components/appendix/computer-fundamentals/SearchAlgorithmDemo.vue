@@ -28,17 +28,29 @@
           <div
             v-for="(num, index) in numbers"
             :key="index"
-            :class="['array-cell', { found: index === foundIndex, searching: index <= searchStep && searching }]"
+            :class="[
+              'array-cell',
+              {
+                found: index === foundIndex,
+                searching: index <= searchStep && searching
+              }
+            ]"
           >
             {{ num }}
           </div>
         </div>
         <div class="search-controls">
-          <button @click="startLinearSearch" class="search-btn">开始查找</button>
+          <button @click="startLinearSearch" class="search-btn">
+            开始查找
+          </button>
           <button @click="reset" class="reset-btn">重置</button>
         </div>
         <div class="search-info">
-          目标数字：<input v-model="targetNumber" type="number" class="target-input" />
+          目标数字：<input
+            v-model="targetNumber"
+            type="number"
+            class="target-input"
+          />
         </div>
       </div>
       <div class="algo-stats">
@@ -55,19 +67,26 @@
           <div
             v-for="(num, index) in sortedNumbers"
             :key="index"
-            :class="['array-cell', {
-              found: index === binaryFoundIndex,
-              left: index >= binaryLeft && index <= binaryRight,
-              eliminated: index < binaryLeft || index > binaryRight
-            }]"
+            :class="[
+              'array-cell',
+              {
+                found: index === binaryFoundIndex,
+                left: index >= binaryLeft && index <= binaryRight,
+                eliminated: index < binaryLeft || index > binaryRight
+              }
+            ]"
           >
             {{ num }}
           </div>
         </div>
         <div class="binary-info">
-          <div class="info-step">查找范围：[{{ binaryLeft }}, {{ binaryRight }}]</div>
+          <div class="info-step">
+            查找范围：[{{ binaryLeft }}, {{ binaryRight }}]
+          </div>
           <div class="info-mid">中间位置：{{ binaryMid }}</div>
-          <div class="info-comparison">{{ sortedNumbers[binaryMid] }} vs {{ binaryTarget }}</div>
+          <div class="info-comparison">
+            {{ sortedNumbers[binaryMid] }} vs {{ binaryTarget }}
+          </div>
         </div>
         <div class="search-controls">
           <button @click="binaryStep" class="search-btn">下一步</button>
@@ -125,7 +144,7 @@ const startLinearSearch = () => {
   searching.value = true
   searchStep.value = -1
   foundIndex.value = -1
-  
+
   let step = 0
   const interval = setInterval(() => {
     if (step < numbers.value.length) {
@@ -151,7 +170,7 @@ const reset = () => {
 
 const binaryStep = () => {
   binaryMid.value = Math.floor((binaryLeft.value + binaryRight.value) / 2)
-  
+
   if (sortedNumbers.value[binaryMid.value] === binaryTarget.value) {
     binaryFoundIndex.value = binaryMid.value
   } else if (sortedNumbers.value[binaryMid.value] < binaryTarget.value) {
@@ -185,8 +204,14 @@ const resetBinary = () => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .algorithm-selector {
   display: flex;

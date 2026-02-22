@@ -24,20 +24,43 @@
       <div class="tree-canvas">
         <svg viewBox="0 0 600 350" class="tree-svg">
           <!-- 连接线 -->
-          <line v-for="line in binaryTreeLines" :key="line.id"
-            :x1="line.x1" :y1="line.y1"
-            :x2="line.x2" :y2="line.y2"
+          <line
+            v-for="line in binaryTreeLines"
+            :key="line.id"
+            :x1="line.x1"
+            :y1="line.y1"
+            :x2="line.x2"
+            :y2="line.y2"
             stroke="var(--vp-c-divider)"
             stroke-width="2"
           />
 
           <!-- 节点 -->
-          <g v-for="node in binaryTreeNodes" :key="node.id"
-             :class="['tree-node', { root: node.isRoot, leaf: node.isLeaf }]"
-             :style="{ transform: `translate(${node.x}px, ${node.y}px)` }"
+          <g
+            v-for="node in binaryTreeNodes"
+            :key="node.id"
+            :class="['tree-node', { root: node.isRoot, leaf: node.isLeaf }]"
+            :style="{ transform: `translate(${node.x}px, ${node.y}px)` }"
           >
-            <circle cx="0" cy="0" r="25" fill="var(--vp-c-brand-soft)" stroke="var(--vp-c-brand)" stroke-width="2" />
-            <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="var(--vp-c-brand)" font-size="14" font-weight="600">{{ node.value }}</text>
+            <circle
+              cx="0"
+              cy="0"
+              r="25"
+              fill="var(--vp-c-brand-soft)"
+              stroke="var(--vp-c-brand)"
+              stroke-width="2"
+            />
+            <text
+              x="0"
+              y="0"
+              text-anchor="middle"
+              dominant-baseline="middle"
+              fill="var(--vp-c-brand)"
+              font-size="14"
+              font-weight="600"
+            >
+              {{ node.value }}
+            </text>
           </g>
         </svg>
       </div>
@@ -83,14 +106,9 @@
       <div class="dom-preview">
         <div class="preview-title">HTML 结构</div>
         <div class="preview-html">
-&lt;html&gt;
-  &lt;body&gt;
-    &lt;div class="container"&gt;
-      &lt;h1&gt;标题&lt;/h1&gt;
-      &lt;p&gt;段落&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+          &lt;html&gt; &lt;body&gt; &lt;div class="container"&gt;
+          &lt;h1&gt;标题&lt;/h1&gt; &lt;p&gt;段落&lt;/p&gt; &lt;/div&gt;
+          &lt;/body&gt; &lt;/html&gt;
         </div>
       </div>
       <div class="dom-structure">
@@ -235,8 +253,14 @@ const binaryTreeLines = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .tree-selector {
   margin-bottom: 2rem;

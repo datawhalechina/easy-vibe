@@ -7,8 +7,8 @@
 
     <div class="code-input">
       <div class="input-title">输入代码</div>
-      <textarea 
-        v-model="sourceCode" 
+      <textarea
+        v-model="sourceCode"
         class="code-textarea"
         placeholder="输入 C 语言代码..."
       ></textarea>
@@ -17,11 +17,7 @@
     <div class="compilation-steps">
       <div class="steps-title">编译步骤</div>
       <div class="steps-flow">
-        <div
-          v-for="(step, index) in steps"
-          :key="index"
-          class="step-item"
-        >
+        <div v-for="(step, index) in steps" :key="index" class="step-item">
           <div class="step-number">{{ index + 1 }}</div>
           <div class="step-content">
             <div class="step-name">{{ step.name }}</div>
@@ -35,11 +31,7 @@
     <div class="file-outputs">
       <div class="outputs-title">生成的文件</div>
       <div class="file-list">
-        <div
-          v-for="file in outputFiles"
-          :key="file.name"
-          class="file-item"
-        >
+        <div v-for="file in outputFiles" :key="file.name" class="file-item">
           <div class="file-icon">{{ file.icon }}</div>
           <div class="file-info">
             <div class="file-name">{{ file.name }}</div>
@@ -147,8 +139,14 @@ const outputFiles = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .code-input {
   margin-bottom: 2rem;

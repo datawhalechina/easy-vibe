@@ -16,7 +16,7 @@
               min="0"
               max="255"
               @input="calculate"
-            >
+            />
             <span>.</span>
             <input
               v-model="ip[1]"
@@ -24,7 +24,7 @@
               min="0"
               max="255"
               @input="calculate"
-            >
+            />
             <span>.</span>
             <input
               v-model="ip[2]"
@@ -32,7 +32,7 @@
               min="0"
               max="255"
               @input="calculate"
-            >
+            />
             <span>.</span>
             <input
               v-model="ip[3]"
@@ -40,7 +40,7 @@
               min="0"
               max="255"
               @input="calculate"
-            >
+            />
           </div>
         </div>
         <div class="input-group">
@@ -53,7 +53,7 @@
               min="8"
               max="30"
               @input="calculate"
-            >
+            />
           </div>
         </div>
       </div>
@@ -82,9 +82,7 @@
       </div>
 
       <div class="binary-section">
-        <div class="binary-title">
-          二进制表示
-        </div>
+        <div class="binary-title">二进制表示</div>
         <div class="binary-row">
           <span class="binary-label">IP 地址:</span>
           <span class="binary-value">{{ ipBinary }}</span>
@@ -104,13 +102,11 @@
       </div>
 
       <div class="visual-section">
-        <div class="visual-title">
-          地址结构可视化
-        </div>
+        <div class="visual-title">地址结构可视化</div>
         <div class="address-visual">
           <div class="bit-blocks">
-            <div 
-              v-for="(bit, i) in bits" 
+            <div
+              v-for="(bit, i) in bits"
               :key="i"
               :class="['bit', { network: i < cidr, host: i >= cidr }]"
             >
@@ -118,15 +114,21 @@
             </div>
           </div>
           <div class="legend">
-            <span class="legend-item"><span class="network-box" /> 网络位 ({{ cidr }}位)</span>
-            <span class="legend-item"><span class="host-box" /> 主机位 ({{ 32 - cidr }}位)</span>
+            <span class="legend-item"
+              ><span class="network-box" /> 网络位 ({{ cidr }}位)</span
+            >
+            <span class="legend-item"
+              ><span class="host-box" /> 主机位 ({{ 32 - cidr }}位)</span
+            >
           </div>
         </div>
       </div>
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>子网掩码决定了 IP 地址的哪部分是"网络号"(小区)，哪部分是"主机号"(房间)。/24 表示前 24 位是网络位，后 8 位是主机位。
+      <strong>核心思想：</strong>子网掩码决定了 IP
+      地址的哪部分是"网络号"(小区)，哪部分是"主机号"(房间)。/24 表示前 24
+      位是网络位，后 8 位是主机位。
     </div>
   </div>
 </template>
@@ -138,7 +140,7 @@ const ip = ref([192, 168, 1, 100])
 const cidr = ref(24)
 
 const mask = computed(() => {
-  const maskValue = 0xFFFFFFFF << (32 - cidr.value)
+  const maskValue = 0xffffffff << (32 - cidr.value)
   return [
     (maskValue >>> 24) & 255,
     (maskValue >>> 16) & 255,
@@ -148,14 +150,16 @@ const mask = computed(() => {
 })
 
 const ipValue = computed(() => {
-  return (parseInt(ip.value[0]) << 24) + 
-         (parseInt(ip.value[1]) << 16) + 
-         (parseInt(ip.value[2]) << 8) + 
-         parseInt(ip.value[3])
+  return (
+    (parseInt(ip.value[0]) << 24) +
+    (parseInt(ip.value[1]) << 16) +
+    (parseInt(ip.value[2]) << 8) +
+    parseInt(ip.value[3])
+  )
 })
 
 const maskValue = computed(() => {
-  return 0xFFFFFFFF << (32 - cidr.value)
+  return 0xffffffff << (32 - cidr.value)
 })
 
 const networkAddress = computed(() => {
@@ -187,21 +191,21 @@ const hostRange = computed(() => {
   const network = ipValue.value & maskValue.value
   const first = network + 1
   const last = (network | (~maskValue.value >>> 0)) - 1
-  
+
   const firstIP = [
     (first >>> 24) & 255,
     (first >>> 16) & 255,
     (first >>> 8) & 255,
     first & 255
   ].join('.')
-  
+
   const lastIP = [
     (last >>> 24) & 255,
     (last >>> 16) & 255,
     (last >>> 8) & 255,
     last & 255
   ].join('.')
-  
+
   return `${firstIP} - ${lastIP}`
 })
 
@@ -224,7 +228,10 @@ const maskBinary = computed(() => {
 })
 
 const bits = computed(() => {
-  return ip.value.map(octet => toBinary(parseInt(octet))).join('').split('')
+  return ip.value
+    .map((octet) => toBinary(parseInt(octet)))
+    .join('')
+    .split('')
 })
 
 const networkBinary = computed(() => {
@@ -236,7 +243,7 @@ const hostBinary = computed(() => {
 })
 
 const calculate = () => {
-  ip.value = ip.value.map(v => Math.min(255, Math.max(0, parseInt(v) || 0)))
+  ip.value = ip.value.map((v) => Math.min(255, Math.max(0, parseInt(v) || 0)))
   cidr.value = Math.min(30, Math.max(8, cidr.value || 24))
 }
 
@@ -261,8 +268,15 @@ onMounted(() => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
 
 .input-section {
   display: flex;
@@ -434,7 +448,8 @@ onMounted(() => {
   gap: 0.25rem;
 }
 
-.network-box, .host-box {
+.network-box,
+.host-box {
   width: 12px;
   height: 12px;
   border-radius: 2px;
@@ -458,5 +473,4 @@ onMounted(() => {
   display: flex;
   gap: 0.25rem;
 }
-
 </style>

@@ -30,32 +30,55 @@
         <div class="signal-wave">
           <svg viewBox="0 0 800 150" class="wave-svg">
             <!-- 坐标轴 -->
-            <line x1="50" y1="75" x2="750" y2="75" stroke="var(--vp-c-divider)" stroke-width="2" />
+            <line
+              x1="50"
+              y1="75"
+              x2="750"
+              y2="75"
+              stroke="var(--vp-c-divider)"
+              stroke-width="2"
+            />
 
             <!-- 信号波形 -->
             <path
               :d="currentMedia.wavePath"
               fill="none"
-              :stroke="activeMedia === 'fiber' ? '#ff6b6b' : 'var(--vp-c-brand)'"
+              :stroke="
+                activeMedia === 'fiber' ? '#ff6b6b' : 'var(--vp-c-brand)'
+              "
               stroke-width="3"
               class="signal-path"
             />
 
             <!-- 数据标记 -->
             <g v-if="activeMedia === 'copper'">
-              <text x="100" y="40" fill="var(--vp-c-text-2)" font-size="12">1</text>
-              <text x="180" y="110" fill="var(--vp-c-text-2)" font-size="12">0</text>
-              <text x="260" y="40" fill="var(--vp-c-text-2)" font-size="12">1</text>
-              <text x="340" y="40" fill="var(--vp-c-text-2)" font-size="12">1</text>
-              <text x="420" y="110" fill="var(--vp-c-text-2)" font-size="12">0</text>
+              <text x="100" y="40" fill="var(--vp-c-text-2)" font-size="12">
+                1
+              </text>
+              <text x="180" y="110" fill="var(--vp-c-text-2)" font-size="12">
+                0
+              </text>
+              <text x="260" y="40" fill="var(--vp-c-text-2)" font-size="12">
+                1
+              </text>
+              <text x="340" y="40" fill="var(--vp-c-text-2)" font-size="12">
+                1
+              </text>
+              <text x="420" y="110" fill="var(--vp-c-text-2)" font-size="12">
+                0
+              </text>
             </g>
 
             <g v-if="activeMedia === 'fiber'">
               <text x="100" y="40" fill="#ff6b6b" font-size="12">开</text>
-              <text x="180" y="110" fill="var(--vp-c-text-2)" font-size="12">关</text>
+              <text x="180" y="110" fill="var(--vp-c-text-2)" font-size="12">
+                关
+              </text>
               <text x="260" y="40" fill="#ff6b6b" font-size="12">开</text>
               <text x="340" y="40" fill="#ff6b6b" font-size="12">开</text>
-              <text x="420" y="110" fill="var(--vp-c-text-2)" font-size="12">关</text>
+              <text x="420" y="110" fill="var(--vp-c-text-2)" font-size="12">
+                关
+              </text>
             </g>
           </svg>
         </div>
@@ -114,7 +137,11 @@
     <div class="applications">
       <div class="app-title">典型应用场景</div>
       <div class="app-list">
-        <div v-for="(app, index) in currentMedia.applications" :key="index" class="app-item">
+        <div
+          v-for="(app, index) in currentMedia.applications"
+          :key="index"
+          class="app-item"
+        >
           <span class="app-icon">{{ app.icon }}</span>
           <span class="app-text">{{ app.text }}</span>
         </div>
@@ -138,7 +165,8 @@ const mediaData = {
   copper: {
     signalName: '电信号（电压高低）',
     signalDesc: '用高低电压表示 0 和 1',
-    wavePath: 'M 50 75 L 100 75 L 100 25 L 150 25 L 150 125 L 200 125 L 200 25 L 250 25 L 250 25 L 300 25 L 300 125 L 350 125 L 350 25 L 400 25',
+    wavePath:
+      'M 50 75 L 100 75 L 100 25 L 150 25 L 150 125 L 200 125 L 200 25 L 250 25 L 250 25 L 300 25 L 300 125 L 350 125 L 350 25 L 400 25',
     speed: '最高 10 Gbps',
     distance: '100 米',
     immunity: '较差（易受电磁干扰）',
@@ -152,7 +180,8 @@ const mediaData = {
   fiber: {
     signalName: '光信号（光的开关）',
     signalDesc: '用光脉冲表示 0 和 1',
-    wavePath: 'M 50 75 L 100 75 L 100 25 L 150 25 L 150 125 L 200 125 L 200 25 L 250 25 L 250 25 L 300 25 L 300 125 L 350 125 L 350 25 L 400 25',
+    wavePath:
+      'M 50 75 L 100 75 L 100 25 L 150 25 L 150 125 L 200 125 L 200 25 L 250 25 L 250 25 L 300 25 L 300 125 L 350 125 L 350 25 L 400 25',
     speed: '最高 100+ Tbps',
     distance: '几十公里',
     immunity: '极强（不受电磁干扰）',
@@ -198,8 +227,14 @@ const currentMedia = computed(() => mediaData[activeMedia.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .media-selector {
   margin-bottom: 2rem;
@@ -283,8 +318,12 @@ const currentMedia = computed(() => mediaData[activeMedia.value])
 }
 
 @keyframes drawSignal {
-  0% { stroke-dashoffset: 1000; }
-  100% { stroke-dashoffset: 0; }
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 .signal-legend {

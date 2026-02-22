@@ -7,11 +7,11 @@
           <span class="raf-icon">💻</span>
           <span class="raf-title">Client (Browser/App)</span>
         </div>
-        
+
         <div class="raf-controls">
           <div class="raf-scenarios">
-            <button 
-              v-for="s in scenarios" 
+            <button
+              v-for="s in scenarios"
               :key="s.id"
               :class="['raf-chip', { active: currentScenario.id === s.id }]"
               @click="selectScenario(s)"
@@ -24,15 +24,17 @@
 
         <div class="raf-request-box">
           <div class="raf-http-line">
-            <span :class="['raf-method', currentScenario.method]">{{ currentScenario.method }}</span>
+            <span :class="['raf-method', currentScenario.method]">{{
+              currentScenario.method
+            }}</span>
             <span class="raf-url">{{ currentScenario.url }}</span>
           </div>
           <div v-if="currentScenario.body" class="raf-code-block">
             {{ JSON.stringify(currentScenario.body, null, 2) }}
           </div>
-          <button 
-            class="raf-send-btn" 
-            @click="sendRequest" 
+          <button
+            class="raf-send-btn"
+            @click="sendRequest"
             :disabled="processing"
           >
             {{ processing ? 'Sending...' : 'Send Request' }}
@@ -42,7 +44,9 @@
         <div class="raf-response-box" v-if="response">
           <div class="raf-status-line">
             <span class="raf-label">Response Status:</span>
-            <span :class="['raf-status-badge', getStatusColor(response.status)]">
+            <span
+              :class="['raf-status-badge', getStatusColor(response.status)]"
+            >
               {{ response.status }} {{ response.statusText }}
             </span>
           </div>
@@ -100,16 +104,46 @@ const logs = ref([])
 const logsRef = ref(null)
 
 const db = ref([
-  { id: 1, name: "Alice", role: "admin" },
-  { id: 2, name: "Bob", role: "user" }
+  { id: 1, name: 'Alice', role: 'admin' },
+  { id: 2, name: 'Bob', role: 'user' }
 ])
 
 const scenarios = [
-  { id: 'get-all', label: 'GET /users', method: 'GET', url: '/api/users', body: null },
-  { id: 'get-one', label: 'GET /users/1', method: 'GET', url: '/api/users/1', body: null },
-  { id: 'create', label: 'POST /users', method: 'POST', url: '/api/users', body: { name: "Charlie", role: "user" } },
-  { id: 'not-found', label: 'GET /users/99', method: 'GET', url: '/api/users/99', body: null },
-  { id: 'delete', label: 'DELETE /users/1', method: 'DELETE', url: '/api/users/1', body: null },
+  {
+    id: 'get-all',
+    label: 'GET /users',
+    method: 'GET',
+    url: '/api/users',
+    body: null
+  },
+  {
+    id: 'get-one',
+    label: 'GET /users/1',
+    method: 'GET',
+    url: '/api/users/1',
+    body: null
+  },
+  {
+    id: 'create',
+    label: 'POST /users',
+    method: 'POST',
+    url: '/api/users',
+    body: { name: 'Charlie', role: 'user' }
+  },
+  {
+    id: 'not-found',
+    label: 'GET /users/99',
+    method: 'GET',
+    url: '/api/users/99',
+    body: null
+  },
+  {
+    id: 'delete',
+    label: 'DELETE /users/1',
+    method: 'DELETE',
+    url: '/api/users/1',
+    body: null
+  }
 ]
 
 const currentScenario = ref(scenarios[0])
@@ -137,43 +171,54 @@ function getStatusColor(status) {
 async function sendRequest() {
   processing.value = true
   response.value = null
-  addLog(`Received ${currentScenario.value.method} ${currentScenario.value.url}`, 'info')
-  
-  await new Promise(r => setTimeout(r, 600)) // Simulate network latency
+  addLog(
+    `Received ${currentScenario.value.method} ${currentScenario.value.url}`,
+    'info'
+  )
+
+  await new Promise((r) => setTimeout(r, 600)) // Simulate network latency
 
   const { method, url, body } = currentScenario.value
-  
+
   // Router Logic Simulation
   if (method === 'GET' && url === '/api/users') {
     response.value = { status: 200, statusText: 'OK', body: db.value }
     addLog('Matched route: GET /users -> listUsers()', 'success')
-  } 
-  else if (method === 'GET' && url.match(/\/api\/users\/\d+/)) {
+  } else if (method === 'GET' && url.match(/\/api\/users\/\d+/)) {
     const id = parseInt(url.split('/').pop())
-    const user = db.value.find(u => u.id === id)
+    const user = db.value.find((u) => u.id === id)
     if (user) {
       response.value = { status: 200, statusText: 'OK', body: user }
       addLog(`Found user ${id}`, 'success')
     } else {
-      response.value = { status: 404, statusText: 'Not Found', body: { error: "User not found" } }
+      response.value = {
+        status: 404,
+        statusText: 'Not Found',
+        body: { error: 'User not found' }
+      }
       addLog(`User ${id} not found in DB`, 'error')
     }
-  }
-  else if (method === 'POST' && url === '/api/users') {
-    const newUser = { id: Math.max(0, ...db.value.map(u => u.id)) + 1, ...body }
+  } else if (method === 'POST' && url === '/api/users') {
+    const newUser = {
+      id: Math.max(0, ...db.value.map((u) => u.id)) + 1,
+      ...body
+    }
     db.value.push(newUser)
     response.value = { status: 201, statusText: 'Created', body: newUser }
     addLog(`Created user ${newUser.id}`, 'success')
-  }
-  else if (method === 'DELETE' && url.match(/\/api\/users\/\d+/)) {
+  } else if (method === 'DELETE' && url.match(/\/api\/users\/\d+/)) {
     const id = parseInt(url.split('/').pop())
-    const idx = db.value.findIndex(u => u.id === id)
+    const idx = db.value.findIndex((u) => u.id === id)
     if (idx !== -1) {
       db.value.splice(idx, 1)
       response.value = { status: 204, statusText: 'No Content', body: null }
       addLog(`Deleted user ${id}`, 'success')
     } else {
-      response.value = { status: 404, statusText: 'Not Found', body: { error: "User not found" } }
+      response.value = {
+        status: 404,
+        statusText: 'Not Found',
+        body: { error: 'User not found' }
+      }
       addLog(`User ${id} not found for deletion`, 'error')
     }
   }
@@ -198,7 +243,8 @@ async function sendRequest() {
   min-height: 400px;
 }
 
-.raf-left, .raf-right {
+.raf-left,
+.raf-right {
   flex: 1;
   padding: 1.2rem;
   display: flex;
@@ -259,7 +305,7 @@ async function sendRequest() {
   padding: 1rem;
   background: var(--vp-c-bg-soft);
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .raf-http-line {
@@ -274,9 +320,15 @@ async function sendRequest() {
 .raf-method {
   font-weight: bold;
 }
-.raf-method.GET { color: #61affe; }
-.raf-method.POST { color: #49cc90; }
-.raf-method.DELETE { color: #f93e3e; }
+.raf-method.GET {
+  color: #61affe;
+}
+.raf-method.POST {
+  color: #49cc90;
+}
+.raf-method.DELETE {
+  color: #f93e3e;
+}
 
 .raf-code-block {
   background: var(--vp-c-bg);
@@ -317,8 +369,14 @@ async function sendRequest() {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .raf-status-line {
@@ -334,9 +392,18 @@ async function sendRequest() {
   font-weight: bold;
   margin-left: 8px;
 }
-.status-success { background: #d1fae5; color: #065f46; }
-.status-error { background: #fee2e2; color: #991b1b; }
-.status-neutral { background: #f3f4f6; color: #374151; }
+.status-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+.status-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.status-neutral {
+  background: #f3f4f6;
+  color: #374151;
+}
 
 .raf-db-view {
   display: flex;
@@ -355,9 +422,17 @@ async function sendRequest() {
   align-items: center;
 }
 
-.raf-db-id { color: var(--vp-c-text-3); font-family: monospace; }
-.raf-db-name { font-weight: bold; }
-.raf-db-role { color: var(--vp-c-brand); font-size: 0.9em; }
+.raf-db-id {
+  color: var(--vp-c-text-3);
+  font-family: monospace;
+}
+.raf-db-name {
+  font-weight: bold;
+}
+.raf-db-role {
+  color: var(--vp-c-brand);
+  font-size: 0.9em;
+}
 
 .raf-logs {
   height: 180px;
@@ -377,10 +452,19 @@ async function sendRequest() {
   margin-bottom: 4px;
 }
 
-.raf-log-time { color: #6b7280; flex-shrink: 0; }
-.info { color: #93c5fd; }
-.success { color: #86efac; }
-.error { color: #fca5a5; }
+.raf-log-time {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+.info {
+  color: #93c5fd;
+}
+.success {
+  color: #86efac;
+}
+.error {
+  color: #fca5a5;
+}
 
 .raf-section-title {
   font-size: 12px;
@@ -391,7 +475,9 @@ async function sendRequest() {
   color: var(--vp-c-text-3);
   margin-top: 1.5rem;
 }
-.raf-section:first-child .raf-section-title { margin-top: 0; }
+.raf-section:first-child .raf-section-title {
+  margin-top: 0;
+}
 
 .raf-empty {
   color: var(--vp-c-text-3);
@@ -411,7 +497,12 @@ async function sendRequest() {
 }
 
 @media (max-width: 768px) {
-  .raf-layout { flex-direction: column; }
-  .raf-left { border-right: none; border-bottom: 1px solid var(--vp-c-divider); }
+  .raf-layout {
+    flex-direction: column;
+  }
+  .raf-left {
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
 }
 </style>

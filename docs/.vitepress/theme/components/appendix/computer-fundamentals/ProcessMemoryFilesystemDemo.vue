@@ -7,9 +7,7 @@
 
     <div class="demo-content">
       <div class="collab-scene">
-        <div class="scene-title">
-          场景选择：
-        </div>
+        <div class="scene-title">场景选择：</div>
         <div class="scene-buttons">
           <button
             v-for="scene in scenes"
@@ -88,7 +86,9 @@
                 >
                   <span class="file-icon">{{ getIcon(file.type) }}</span>
                   <span class="file-name">{{ file.name }}</span>
-                  <span v-if="file.size" class="file-size">{{ file.size }}</span>
+                  <span v-if="file.size" class="file-size">{{
+                    file.size
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -207,19 +207,21 @@ const sceneData = {
   }
 }
 
-const currentSceneData = computed(() => sceneData[activeScene.value] || sceneData.launch)
+const currentSceneData = computed(
+  () => sceneData[activeScene.value] || sceneData.launch
+)
 
 const getProcessName = (id) => {
-  const proc = processes.value.find(p => p.id === id)
+  const proc = processes.value.find((p) => p.id === id)
   return proc?.name || '系统'
 }
 
 const getIcon = (type) => {
   const icons = {
-    'json': '📋',
-    'db': '🗄️',
-    'folder': '📁',
-    'audio': '🎵'
+    json: '📋',
+    db: '🗄️',
+    folder: '📁',
+    audio: '🎵'
   }
   return icons[type] || '📄'
 }
@@ -241,8 +243,14 @@ const getIcon = (type) => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .scene-buttons {
   display: flex;
@@ -300,8 +308,12 @@ const getIcon = (type) => {
   font-size: 0.9rem;
 }
 
-.zone-icon { font-size: 1.2rem; }
-.zone-name { font-size: 0.85rem; }
+.zone-icon {
+  font-size: 1.2rem;
+}
+.zone-name {
+  font-size: 0.85rem;
+}
 
 .process-list {
   display: flex;
@@ -324,7 +336,9 @@ const getIcon = (type) => {
   background: var(--vp-c-brand-soft);
 }
 
-.proc-name, .proc-pid, .proc-state {
+.proc-name,
+.proc-pid,
+.proc-state {
   flex: 1;
 }
 
@@ -389,8 +403,13 @@ const getIcon = (type) => {
   background: var(--vp-c-brand-soft);
 }
 
-.file-name { flex: 1; }
-.file-size { color: var(--vp-c-text-2); font-size: 0.7rem; }
+.file-name {
+  flex: 1;
+}
+.file-size {
+  color: var(--vp-c-text-2);
+  font-size: 0.7rem;
+}
 
 .explanation {
   background: var(--vp-c-bg);

@@ -14,7 +14,9 @@
             </div>
             <div class="t-line">
               <span class="t-ps">&gt; </span>
-              <span class="t-typing">{{ typing }}<span class="t-cur">▋</span></span>
+              <span class="t-typing"
+                >{{ typing }}<span class="t-cur">▋</span></span
+              >
             </div>
           </div>
         </div>
@@ -23,18 +25,30 @@
             v-for="op in ops"
             :key="op.id"
             :disabled="running || !op.ok()"
-            :class="['ar-btn', { 'ar-btn--on': active === op.id, 'ar-btn--dim': !op.ok() }]"
+            :class="[
+              'ar-btn',
+              { 'ar-btn--on': active === op.id, 'ar-btn--dim': !op.ok() }
+            ]"
             @click="run(op)"
           >
             <code>{{ op.cmd }}</code>
           </button>
-          <button class="ar-btn ar-btn--reset" :disabled="running" @click="reset">重置</button>
+          <button
+            class="ar-btn ar-btn--reset"
+            :disabled="running"
+            @click="reset"
+          >
+            重置
+          </button>
         </div>
       </div>
 
       <div class="ar-right">
         <div class="ar-flow">
-          <div class="flow-col flow-client" :class="{ 'flow-highlight': pulseArea === 'client' }">
+          <div
+            class="flow-col flow-client"
+            :class="{ 'flow-highlight': pulseArea === 'client' }"
+          >
             <div class="flow-header">
               <span class="flow-icon">💻</span>
               <span class="flow-title">客户端</span>
@@ -43,7 +57,9 @@
             <div class="flow-body">
               <div v-if="requestData" class="req-preview">
                 <div class="req-line">
-                  <span class="req-method" :class="requestData.method">{{ requestData.method }}</span>
+                  <span class="req-method" :class="requestData.method">{{
+                    requestData.method
+                  }}</span>
                   <span class="req-url">{{ requestData.url }}</span>
                 </div>
                 <div v-if="requestData.body" class="req-body">
@@ -54,12 +70,18 @@
             </div>
           </div>
 
-          <div class="flow-arrow" :class="{ 'arrow-lit': pulseArea === 'request' }">
+          <div
+            class="flow-arrow"
+            :class="{ 'arrow-lit': pulseArea === 'request' }"
+          >
             <code class="arrow-label">HTTP Request</code>
             <span class="arrow-symbol">→</span>
           </div>
 
-          <div class="flow-col flow-server" :class="{ 'flow-highlight': pulseArea === 'server' }">
+          <div
+            class="flow-col flow-server"
+            :class="{ 'flow-highlight': pulseArea === 'server' }"
+          >
             <div class="flow-header">
               <span class="flow-icon">🖥️</span>
               <span class="flow-title">服务器</span>
@@ -74,12 +96,18 @@
             </div>
           </div>
 
-          <div class="flow-arrow" :class="{ 'arrow-lit': pulseArea === 'response' }">
+          <div
+            class="flow-arrow"
+            :class="{ 'arrow-lit': pulseArea === 'response' }"
+          >
             <code class="arrow-label">HTTP Response</code>
             <span class="arrow-symbol">←</span>
           </div>
 
-          <div class="flow-col flow-response" :class="{ 'flow-highlight': pulseArea === 'response' }">
+          <div
+            class="flow-col flow-response"
+            :class="{ 'flow-highlight': pulseArea === 'response' }"
+          >
             <div class="flow-header">
               <span class="flow-icon">📦</span>
               <span class="flow-title">响应</span>
@@ -109,7 +137,9 @@
 import { ref, nextTick } from 'vue'
 
 const termEl = ref(null)
-const lines = ref([{ kind: 'dim', text: '// 点击下方按钮，模拟不同的 API 请求' }])
+const lines = ref([
+  { kind: 'dim', text: '// 点击下方按钮，模拟不同的 API 请求' }
+])
 const typing = ref('')
 const running = ref(false)
 const active = ref(null)
@@ -120,7 +150,7 @@ const requestData = ref(null)
 const serverStatus = ref(null)
 const responseData = ref(null)
 
-const sleep = ms => new Promise(r => setTimeout(r, ms))
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const ops = [
   {
@@ -132,7 +162,7 @@ const ops = [
       { kind: 'grn', text: 'HTTP/1.1 200 OK' },
       { kind: 'dim', text: 'Content-Type: application/json' },
       { kind: 'dim', text: '' },
-      { kind: 'grn', text: '{ "code": 0, "data": { "items": [...] } }' },
+      { kind: 'grn', text: '{ "code": 0, "data": { "items": [...] } }' }
     ],
     hint: 'GET 请求成功！状态码 200 表示请求正常。服务器返回了用户列表数据。',
     do: async () => {
@@ -163,7 +193,10 @@ const ops = [
       { kind: 'grn', text: 'HTTP/1.1 201 Created' },
       { kind: 'dim', text: 'Location: /api/users/3' },
       { kind: 'dim', text: '' },
-      { kind: 'grn', text: '{ "code": 0, "data": { "id": 3, "name": "王五" } }' },
+      {
+        kind: 'grn',
+        text: '{ "code": 0, "data": { "id": 3, "name": "王五" } }'
+      }
     ],
     hint: 'POST 创建成功！状态码 201 表示资源已创建，响应头 Location 指向新资源地址。',
     do: async () => {
@@ -199,7 +232,7 @@ const ops = [
       { kind: 'dim', text: '// 获取不存在的用户' },
       { kind: 'red', text: 'HTTP/1.1 404 Not Found' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10002, "message": "用户不存在" }' },
+      { kind: 'red', text: '{ "code": 10002, "message": "用户不存在" }' }
     ],
     hint: '404 错误！请求的资源不存在。客户端应该检查请求的 ID 是否正确。',
     do: async () => {
@@ -230,7 +263,7 @@ const ops = [
       { kind: 'red', text: 'HTTP/1.1 401 Unauthorized' },
       { kind: 'dim', text: 'WWW-Authenticate: Bearer' },
       { kind: 'dim', text: '' },
-      { kind: 'red', text: '{ "code": 10018, "message": "请先登录" }' },
+      { kind: 'red', text: '{ "code": 10018, "message": "请先登录" }' }
     ],
     hint: '401 错误！需要身份认证。客户端应该引导用户登录后再重试。',
     do: async () => {
@@ -255,7 +288,7 @@ const ops = [
         body: '{\n  "code": 10018,\n  "message": "请先登录"\n}'
       }
     }
-  },
+  }
 ]
 
 async function run(op) {
@@ -291,7 +324,9 @@ async function run(op) {
   await sleep(120)
   hint.value = op.hint
   running.value = false
-  setTimeout(() => { pulseArea.value = null }, 1500)
+  setTimeout(() => {
+    pulseArea.value = null
+  }, 1500)
 }
 
 function scroll() {
@@ -342,11 +377,19 @@ function reset() {
 }
 
 @media (max-width: 768px) {
-  .ar-layout { flex-direction: column; }
-  .ar-right { width: 100%; border-left: none; border-top: 1px solid var(--vp-c-divider); }
+  .ar-layout {
+    flex-direction: column;
+  }
+  .ar-right {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--vp-c-divider);
+  }
 }
 
-.ar-terminal { background: #141420; }
+.ar-terminal {
+  background: #141420;
+}
 .term-bar {
   display: flex;
   align-items: center;
@@ -354,11 +397,26 @@ function reset() {
   padding: 7px 12px;
   background: #1e1e2e;
 }
-.dot { width: 11px; height: 11px; border-radius: 50%; }
-.dot.r { background: #ff5f57; }
-.dot.y { background: #febc2e; }
-.dot.g { background: #28c840; }
-.term-title { margin-left: 8px; font-size: 0.72rem; color: #666; font-family: monospace; }
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.dot.r {
+  background: #ff5f57;
+}
+.dot.y {
+  background: #febc2e;
+}
+.dot.g {
+  background: #28c840;
+}
+.term-title {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: #666;
+  font-family: monospace;
+}
 
 .term-body {
   min-height: 120px;
@@ -371,15 +429,41 @@ function reset() {
   line-height: 1.65;
   color: #cdd6f4;
 }
-.t-line { display: flex; min-width: min-content; }
-.t-ps { color: #89b4fa; flex-shrink: 0; }
-.t-cmd { color: #cdd6f4; }
-.t-dim { color: #585b70; }
-.t-grn { color: #a6e3a1; }
-.t-red { color: #f38ba8; }
-.t-typing { color: #cdd6f4; }
-.t-cur { animation: blink 1s step-end infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.t-line {
+  display: flex;
+  min-width: min-content;
+}
+.t-ps {
+  color: #89b4fa;
+  flex-shrink: 0;
+}
+.t-cmd {
+  color: #cdd6f4;
+}
+.t-dim {
+  color: #585b70;
+}
+.t-grn {
+  color: #a6e3a1;
+}
+.t-red {
+  color: #f38ba8;
+}
+.t-typing {
+  color: #cdd6f4;
+}
+.t-cur {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
 .ar-btns {
   display: flex;
@@ -397,18 +481,38 @@ function reset() {
   cursor: pointer;
   transition: border-color 0.2s;
 }
-.ar-btn code { font-size: 0.7rem; color: #7f849c; font-family: monospace; white-space: nowrap; }
-.ar-btn:hover:not(:disabled) { border-color: var(--vp-c-brand); }
-.ar-btn--on { border-color: var(--vp-c-brand) !important; }
-.ar-btn--on code { color: var(--vp-c-brand); }
-.ar-btn--dim { opacity: 0.3; cursor: not-allowed; }
+.ar-btn code {
+  font-size: 0.7rem;
+  color: #7f849c;
+  font-family: monospace;
+  white-space: nowrap;
+}
+.ar-btn:hover:not(:disabled) {
+  border-color: var(--vp-c-brand);
+}
+.ar-btn--on {
+  border-color: var(--vp-c-brand) !important;
+}
+.ar-btn--on code {
+  color: var(--vp-c-brand);
+}
+.ar-btn--dim {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .ar-btn--reset {
   background: transparent;
   border-color: #313244;
   margin-left: auto;
 }
-.ar-btn--reset code { display: none; }
-.ar-btn--reset::after { content: '重置'; font-size: 0.7rem; color: #585b70; }
+.ar-btn--reset code {
+  display: none;
+}
+.ar-btn--reset::after {
+  content: '重置';
+  font-size: 0.7rem;
+  color: #585b70;
+}
 
 .ar-flow {
   display: flex;
@@ -426,15 +530,23 @@ function reset() {
   display: flex;
   flex-direction: column;
   min-height: 60px;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
 }
 .flow-col.flow-highlight {
   border-color: var(--vp-c-brand);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--vp-c-brand) 14%, transparent);
 }
-.flow-client { border-left: 4px solid #89b4fa; }
-.flow-server { border-left: 4px solid #f9e2af; }
-.flow-response { border-left: 4px solid #a6e3a1; }
+.flow-client {
+  border-left: 4px solid #89b4fa;
+}
+.flow-server {
+  border-left: 4px solid #f9e2af;
+}
+.flow-response {
+  border-left: 4px solid #a6e3a1;
+}
 
 .flow-header {
   padding: 6px 8px;
@@ -444,9 +556,19 @@ function reset() {
   align-items: center;
   gap: 6px;
 }
-.flow-icon { font-size: 0.9rem; }
-.flow-title { font-weight: 700; font-size: 0.8rem; color: var(--vp-c-text-1); }
-.flow-desc { font-size: 0.7rem; color: var(--vp-c-text-3); margin-left: auto; }
+.flow-icon {
+  font-size: 0.9rem;
+}
+.flow-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-1);
+}
+.flow-desc {
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  margin-left: auto;
+}
 
 .flow-body {
   padding: 8px 10px;
@@ -459,18 +581,36 @@ function reset() {
   font-style: italic;
 }
 
-.req-preview, .res-preview { font-size: 0.72rem; }
-.req-line { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.req-preview,
+.res-preview {
+  font-size: 0.72rem;
+}
+.req-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
 .req-method {
   padding: 2px 6px;
   border-radius: 3px;
   font-weight: 700;
   font-size: 0.68rem;
 }
-.req-method.GET { background: #22c55e22; color: #22c55e; }
-.req-method.POST { background: #3b82f622; color: #3b82f6; }
-.req-url { font-family: monospace; color: var(--vp-c-text-1); }
-.req-body pre, .res-body pre {
+.req-method.GET {
+  background: #22c55e22;
+  color: #22c55e;
+}
+.req-method.POST {
+  background: #3b82f622;
+  color: #3b82f6;
+}
+.req-url {
+  font-family: monospace;
+  color: var(--vp-c-text-1);
+}
+.req-body pre,
+.res-body pre {
   margin: 0;
   padding: 6px;
   background: var(--vp-c-bg-soft);
@@ -486,8 +626,12 @@ function reset() {
   gap: 8px;
   font-size: 0.8rem;
 }
-.status-icon { font-size: 1rem; }
-.status-text { color: var(--vp-c-text-2); }
+.status-icon {
+  font-size: 1rem;
+}
+.status-text {
+  color: var(--vp-c-text-2);
+}
 
 .res-status {
   display: inline-block;
@@ -497,8 +641,14 @@ function reset() {
   font-size: 0.7rem;
   margin-bottom: 6px;
 }
-.res-status.success { background: #22c55e22; color: #22c55e; }
-.res-status.error { background: #ef444422; color: #ef4444; }
+.res-status.success {
+  background: #22c55e22;
+  color: #22c55e;
+}
+.res-status.error {
+  background: #ef444422;
+  color: #ef4444;
+}
 
 .flow-arrow {
   display: flex;
@@ -509,7 +659,9 @@ function reset() {
   opacity: 0.3;
   transition: opacity 0.3s;
 }
-.flow-arrow.arrow-lit { opacity: 1; }
+.flow-arrow.arrow-lit {
+  opacity: 1;
+}
 .arrow-label {
   font-size: 0.65rem;
   font-family: monospace;

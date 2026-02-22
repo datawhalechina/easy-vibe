@@ -7,8 +7,8 @@
 
     <div class="demo-content">
       <div class="layers-container">
-        <div 
-          v-for="(layer, i) in layers" 
+        <div
+          v-for="(layer, i) in layers"
           :key="i"
           :class="['layer', { active: activeLayer === i }]"
           @click="activeLayer = i"
@@ -24,19 +24,13 @@
               {{ layer.protocols }}
             </div>
           </div>
-          <div
-            v-if="layer.device"
-            class="layer-device"
-          >
+          <div v-if="layer.device" class="layer-device">
             {{ layer.device }}
           </div>
         </div>
       </div>
 
-      <div
-        v-if="currentLayer"
-        class="layer-detail"
-      >
+      <div v-if="currentLayer" class="layer-detail">
         <div class="detail-header">
           <span class="detail-name">{{ currentLayer.name }}</span>
           <span class="detail-analogy">{{ currentLayer.analogy }}</span>
@@ -45,14 +39,9 @@
           {{ currentLayer.desc }}
         </div>
         <div class="detail-tasks">
-          <div class="task-title">
-            核心任务
-          </div>
+          <div class="task-title">核心任务</div>
           <ul>
-            <li
-              v-for="(task, j) in currentLayer.tasks"
-              :key="j"
-            >
+            <li v-for="(task, j) in currentLayer.tasks" :key="j">
               {{ task }}
             </li>
           </ul>
@@ -64,35 +53,25 @@
       </div>
 
       <div class="encapsulation-demo">
-        <div class="encap-title">
-          数据封装过程
-        </div>
+        <div class="encap-title">数据封装过程</div>
         <div class="encap-flow">
-          <div
-            v-for="(step, i) in encapsulation"
-            :key="i"
-            class="encap-step"
-          >
+          <div v-for="(step, i) in encapsulation" :key="i" class="encap-step">
             <div class="step-layer">
               {{ step.layer }}
             </div>
             <div class="step-data">
-              <span
-                v-if="step.header"
-                class="header"
-              >{{ step.header }}</span>
+              <span v-if="step.header" class="header">{{ step.header }}</span>
               <span class="payload">{{ step.payload }}</span>
             </div>
           </div>
-          <div class="arrow">
-            ↓ 发送
-          </div>
+          <div class="arrow">↓ 发送</div>
         </div>
       </div>
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>分层设计让网络协议模块化，每层只关心自己的职责。数据从应用层向下传递时，每层都会添加自己的"信封"(头部)，接收时再逐层拆开。
+      <strong>核心思想：</strong
+      >分层设计让网络协议模块化，每层只关心自己的职责。数据从应用层向下传递时，每层都会添加自己的"信封"(头部)，接收时再逐层拆开。
     </div>
   </div>
 </template>
@@ -118,7 +97,12 @@ const layers = [
     device: '',
     analogy: '包裹分拣组',
     desc: '负责端到端的数据传输，确保数据的可靠性或实时性。',
-    tasks: ['建立和管理端到端连接', '分段和重组数据', '流量控制和拥塞控制', '端口寻址'],
+    tasks: [
+      '建立和管理端到端连接',
+      '分段和重组数据',
+      '流量控制和拥塞控制',
+      '端口寻址'
+    ],
     unit: '段(Segment)'
   },
   {
@@ -177,8 +161,15 @@ const encapsulation = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
 
 .demo-content {
   display: grid;

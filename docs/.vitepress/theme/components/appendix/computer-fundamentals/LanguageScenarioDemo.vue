@@ -120,9 +120,7 @@
           <div class="evo-name">现代语言</div>
           <div class="evo-arrow">→</div>
         </div>
-        <div class="evo-result">
-          越来越接近<br>人类思维
-        </div>
+        <div class="evo-result">越来越接近<br />人类思维</div>
       </div>
     </div>
   </div>
@@ -139,7 +137,8 @@ const scenarios = [
     icon: '🌐',
     title: '开发网站',
     desc: '创建交互式网页',
-    fullDesc: '你需要创建一个在线购物网站，用户可以浏览商品、加入购物车、下单支付',
+    fullDesc:
+      '你需要创建一个在线购物网站，用户可以浏览商品、加入购物车、下单支付',
     reasons: [
       'HTML 定义网页结构',
       'CSS 实现美观样式',
@@ -211,7 +210,9 @@ const scenarios = [
   }
 ]
 
-const currentScenario = computed(() => scenarios.find(s => s.id === activeScenario.value))
+const currentScenario = computed(() =>
+  scenarios.find((s) => s.id === activeScenario.value)
+)
 </script>
 
 <style scoped>
@@ -230,8 +231,14 @@ const currentScenario = computed(() => scenarios.find(s => s.id === activeScenar
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .scenario-intro {
   padding: 1rem;
@@ -319,7 +326,8 @@ const currentScenario = computed(() => scenarios.find(s => s.id === activeScenar
   gap: 1.5rem;
 }
 
-.detail-section {}
+.detail-section {
+}
 
 .section-title {
   font-weight: 600;

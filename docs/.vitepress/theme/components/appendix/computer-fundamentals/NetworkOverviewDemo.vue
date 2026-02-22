@@ -201,8 +201,14 @@ const protocolLayers = [
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .network-scene {
   margin-bottom: 2rem;
@@ -253,8 +259,14 @@ const protocolLayers = [
   border-radius: 6px;
 }
 
-.app-icon { font-size: 1.5rem; }
-.app-name { font-size: 0.8rem; font-weight: 600; color: var(--vp-c-brand); }
+.app-icon {
+  font-size: 1.5rem;
+}
+.app-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--vp-c-brand);
+}
 
 .network-path {
   flex: 1;
@@ -316,8 +328,15 @@ const protocolLayers = [
 }
 
 @keyframes flowMove {
-  0%, 100% { transform: translateX(-20px); opacity: 0; }
-  50% { transform: translateX(20px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(20px);
+    opacity: 1;
+  }
 }
 
 .flow-packet {

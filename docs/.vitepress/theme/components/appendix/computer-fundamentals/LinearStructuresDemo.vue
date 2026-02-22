@@ -76,12 +76,8 @@
           <div class="stack-bottom">栈底</div>
         </div>
         <div class="stack-operations">
-          <button class="op-btn" @click="pushStack">
-            入栈 (PUSH)
-          </button>
-          <button class="op-btn" @click="popStack">
-            出栈 (POP)
-          </button>
+          <button class="op-btn" @click="pushStack">入栈 (PUSH)</button>
+          <button class="op-btn" @click="popStack">出栈 (POP)</button>
         </div>
         <div class="visual-note">
           后进先出 (LIFO) | 应用：撤销操作、函数调用
@@ -104,12 +100,8 @@
           <div class="queue-rear">→ 队尾</div>
         </div>
         <div class="queue-operations">
-          <button class="op-btn" @click="enqueue">
-            入队 (ENQUEUE)
-          </button>
-          <button class="op-btn" @click="dequeue">
-            出队 (DEQUEUE)
-          </button>
+          <button class="op-btn" @click="enqueue">入队 (ENQUEUE)</button>
+          <button class="op-btn" @click="dequeue">出队 (DEQUEUE)</button>
         </div>
         <div class="visual-note">
           先进先出 (FIFO) | 应用：任务队列、打印队列
@@ -239,7 +231,9 @@ const linkedListData = ref(['A', 'B', 'C', 'D', 'E'])
 const stackData = ref(['书5', '书4', '书3', '书2', '书1'])
 const queueData = ref(['人1', '人2', '人3', '人4'])
 
-const currentStructure = computed(() => structures.find(s => s.id === activeStructure.value))
+const currentStructure = computed(() =>
+  structures.find((s) => s.id === activeStructure.value)
+)
 
 const pushStack = () => {
   const newItem = `书${stackData.value.length + 1}`
@@ -280,8 +274,14 @@ const dequeue = () => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .structure-tabs {
   display: flex;

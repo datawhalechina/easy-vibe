@@ -28,9 +28,7 @@
             placeholder="值 (如: 苹果)"
             class="hash-input"
           />
-          <button @click="addData" class="add-btn">
-            添加
-          </button>
+          <button @click="addData" class="add-btn">添加</button>
         </div>
       </div>
 
@@ -60,7 +58,10 @@
           <div
             v-for="(slot, index) in hashTable"
             :key="index"
-            :class="['table-slot', { occupied: slot !== null, highlighted: index === exampleIndex }]"
+            :class="[
+              'table-slot',
+              { occupied: slot !== null, highlighted: index === exampleIndex }
+            ]"
           >
             <div class="slot-index">{{ index }}</div>
             <div class="slot-value">{{ slot || '空' }}</div>
@@ -121,7 +122,18 @@ const newKey = ref('')
 const newValue = ref('')
 const exampleKey = ref('apple')
 
-const hashTable = ref([null, null, null, null, null, null, null, null, null, null])
+const hashTable = ref([
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null
+])
 
 // 初始化一些数据
 const initData = () => {
@@ -130,7 +142,7 @@ const initData = () => {
     { key: 'banana', value: '香蕉' },
     { key: 'orange', value: '橙子' }
   ]
-  data.forEach(item => {
+  data.forEach((item) => {
     const index = simpleHash(item.key)
     hashTable.value[index] = `${item.key}: ${item.value}`
   })
@@ -174,8 +186,14 @@ initData()
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .analogy-box {
   display: flex;

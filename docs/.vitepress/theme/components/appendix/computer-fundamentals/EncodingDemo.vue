@@ -7,8 +7,8 @@
 
     <div class="demo-content">
       <div class="encoding-tabs">
-        <button 
-          v-for="tab in tabs" 
+        <button
+          v-for="tab in tabs"
           :key="tab.name"
           :class="['tab-btn', { active: activeTab === tab.name }]"
           @click="activeTab = tab.name"
@@ -20,24 +20,19 @@
       <div class="encoding-area">
         <div class="input-section">
           <label>输入内容：</label>
-          <input 
-            v-model="inputValue" 
+          <input
+            v-model="inputValue"
             class="input-field"
             :placeholder="currentTab.placeholder"
-          >
+          />
         </div>
 
         <div class="output-section">
-          <div class="output-label">
-            编码结果：
-          </div>
+          <div class="output-label">编码结果：</div>
           <div class="output-box">
             <code>{{ encodedResult }}</code>
           </div>
-          <div
-            v-if="currentTab.name === 'text'"
-            class="output-info"
-          >
+          <div v-if="currentTab.name === 'text'" class="output-info">
             <span>字符数: {{ inputValue.length }}</span>
             <span>字节数: {{ byteCount }}</span>
           </div>
@@ -47,18 +42,22 @@
           v-if="currentTab.name === 'text' && inputValue"
           class="encoding-table"
         >
-          <div class="table-title">
-            字符编码详情
-          </div>
+          <div class="table-title">字符编码详情</div>
           <div class="char-list">
-            <div 
-              v-for="(char, i) in inputValue.slice(0, 10)" 
+            <div
+              v-for="(char, i) in inputValue.slice(0, 10)"
               :key="i"
               class="char-item"
             >
               <span class="char-display">{{ char }}</span>
-              <span class="char-unicode">U+{{ char.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0') }}</span>
-              <span class="char-binary">{{ char.charCodeAt(0).toString(2).padStart(8, '0') }}</span>
+              <span class="char-unicode"
+                >U+{{
+                  char.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0')
+                }}</span
+              >
+              <span class="char-binary">{{
+                char.charCodeAt(0).toString(2).padStart(8, '0')
+              }}</span>
             </div>
           </div>
         </div>
@@ -66,7 +65,9 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>所有数据最终都要变成 0 和 1。不同类型的数据用不同的编码规则：字符用 ASCII/Unicode，数字用二进制，图像用像素值。
+      <strong>核心思想：</strong>所有数据最终都要变成 0 和
+      1。不同类型的数据用不同的编码规则：字符用
+      ASCII/Unicode，数字用二进制，图像用像素值。
     </div>
   </div>
 </template>
@@ -84,21 +85,25 @@ const tabs = [
 ]
 
 const currentTab = computed(() => {
-  const tab = tabs.find(t => t.name === activeTab.value)
+  const tab = tabs.find((t) => t.name === activeTab.value)
   return {
     ...tab,
-    placeholder: tab.name === 'text' ? '输入文字...' : 
-                 tab.name === 'number' ? '输入数字...' : '输入颜色值(如 #FF5733)'
+    placeholder:
+      tab.name === 'text'
+        ? '输入文字...'
+        : tab.name === 'number'
+          ? '输入数字...'
+          : '输入颜色值(如 #FF5733)'
   }
 })
 
 const encodedResult = computed(() => {
   if (!inputValue.value) return ''
-  
+
   switch (activeTab.value) {
     case 'text':
       return Array.from(inputValue.value)
-        .map(c => c.charCodeAt(0).toString(2).padStart(8, '0'))
+        .map((c) => c.charCodeAt(0).toString(2).padStart(8, '0'))
         .join(' ')
     case 'number':
       const num = parseInt(inputValue.value)
@@ -137,8 +142,15 @@ const byteCount = computed(() => {
   margin-bottom: 0.75rem;
 }
 
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
 
 .encoding-tabs {
   display: flex;
@@ -269,5 +281,4 @@ const byteCount = computed(() => {
   display: flex;
   gap: 0.25rem;
 }
-
 </style>

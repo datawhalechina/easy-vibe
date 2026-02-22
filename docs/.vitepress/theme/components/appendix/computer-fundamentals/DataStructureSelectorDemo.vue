@@ -24,7 +24,9 @@
     <!-- 推荐结果 -->
     <div v-if="activeScenario" class="recommendation">
       <div class="rec-header">
-        <span class="rec-title">推荐使用：{{ currentScenario.recommendation }}</span>
+        <span class="rec-title"
+          >推荐使用：{{ currentScenario.recommendation }}</span
+        >
       </div>
 
       <div class="rec-reason">
@@ -153,11 +155,7 @@ const scenarios = [
     name: '后进先出',
     desc: '最后进入的最先处理',
     recommendation: '栈',
-    reasons: [
-      '只能在栈顶操作',
-      '入栈出栈都是 O(1)',
-      '适合回溯和撤销操作'
-    ],
+    reasons: ['只能在栈顶操作', '入栈出栈都是 O(1)', '适合回溯和撤销操作'],
     example: '浏览器后退、编辑器撤销、函数调用栈'
   },
   {
@@ -166,11 +164,7 @@ const scenarios = [
     name: '先进先出',
     desc: '先来的先处理',
     recommendation: '队列',
-    reasons: [
-      '一端入队，另一端出队',
-      '入队出队都是 O(1)',
-      '公平的调度方式'
-    ],
+    reasons: ['一端入队，另一端出队', '入队出队都是 O(1)', '公平的调度方式'],
     example: '打印队列、任务调度、消息队列'
   },
   {
@@ -179,11 +173,7 @@ const scenarios = [
     name: '层级关系',
     desc: '数据之间有父子层级关系',
     recommendation: '树',
-    reasons: [
-      '清晰表达层级结构',
-      '查找效率 O(log n)',
-      '支持多种遍历方式'
-    ],
+    reasons: ['清晰表达层级结构', '查找效率 O(log n)', '支持多种遍历方式'],
     example: '文件系统、组织架构、HTML DOM'
   },
   {
@@ -192,11 +182,7 @@ const scenarios = [
     name: '复杂关系',
     desc: '数据之间有多对多的复杂连接',
     recommendation: '图',
-    reasons: [
-      '可以表示任意关系',
-      '支持路径搜索算法',
-      '适合网络和社交关系'
-    ],
+    reasons: ['可以表示任意关系', '支持路径搜索算法', '适合网络和社交关系'],
     example: '社交网络、地图导航、网页链接'
   }
 ]
@@ -211,7 +197,7 @@ const referenceTable = [
 ]
 
 const currentScenario = computed(() => {
-  return scenarios.find(s => s.id === activeScenario.value)
+  return scenarios.find((s) => s.id === activeScenario.value)
 })
 </script>
 
@@ -231,8 +217,14 @@ const currentScenario = computed(() => {
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .scenario-selector {
   margin-bottom: 2rem;
@@ -298,8 +290,14 @@ const currentScenario = computed(() => {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .rec-header {

@@ -34,7 +34,11 @@
         <div class="detail-section">
           <div class="section-title">工作原理</div>
           <div class="section-steps">
-            <div v-for="(step, index) in currentProtocol.steps" :key="index" class="step-item">
+            <div
+              v-for="(step, index) in currentProtocol.steps"
+              :key="index"
+              class="step-item"
+            >
               <span class="step-num">{{ index + 1 }}</span>
               <span class="step-text">{{ step }}</span>
             </div>
@@ -44,7 +48,11 @@
         <div class="detail-section">
           <div class="section-title">日常应用</div>
           <div class="app-list">
-            <div v-for="(app, index) in currentProtocol.apps" :key="index" class="app-tag">
+            <div
+              v-for="(app, index) in currentProtocol.apps"
+              :key="index"
+              class="app-tag"
+            >
               {{ app.icon }} {{ app.name }}
             </div>
           </div>
@@ -268,8 +276,14 @@ const currentProtocol = computed(() => protocolDetails[activeProtocol.value])
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .protocol-gallery {
   display: grid;

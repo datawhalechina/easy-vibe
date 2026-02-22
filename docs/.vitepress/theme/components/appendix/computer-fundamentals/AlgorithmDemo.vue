@@ -7,8 +7,8 @@
 
     <div class="demo-content">
       <div class="algorithm-tabs">
-        <button 
-          v-for="algo in algorithms" 
+        <button
+          v-for="algo in algorithms"
           :key="algo.name"
           :class="['tab-btn', { active: activeAlgo === algo.name }]"
           @click="activeAlgo = algo.name"
@@ -24,10 +24,7 @@
         </div>
 
         <div class="visual-content">
-          <div
-            v-if="activeAlgo === '二分查找'"
-            class="binary-search"
-          >
+          <div v-if="activeAlgo === '二分查找'" class="binary-search">
             <div class="search-input">
               <span>在有序数组中查找：</span>
               <input
@@ -35,20 +32,15 @@
                 type="number"
                 class="num-input"
                 placeholder="输入数字"
-              >
-              <button
-                class="search-btn"
-                @click="runBinarySearch"
-              >
-                查找
-              </button>
+              />
+              <button class="search-btn" @click="runBinarySearch">查找</button>
             </div>
             <div class="array-display">
-              <div 
-                v-for="(num, i) in sortedArray" 
+              <div
+                v-for="(num, i) in sortedArray"
                 :key="i"
                 class="array-cell"
-                :class="{ 
+                :class="{
                   highlight: i >= searchRange.left && i <= searchRange.right,
                   found: i === foundIndex,
                   mid: i === midIndex
@@ -57,44 +49,27 @@
                 {{ num }}
               </div>
             </div>
-            <div
-              v-if="searchSteps.length"
-              class="search-info"
-            >
-              <div
-                v-for="(step, i) in searchSteps"
-                :key="i"
-                class="step"
-              >
+            <div v-if="searchSteps.length" class="search-info">
+              <div v-for="(step, i) in searchSteps" :key="i" class="step">
                 {{ step }}
               </div>
             </div>
           </div>
 
-          <div
-            v-else-if="activeAlgo === '排序'"
-            class="sorting"
-          >
+          <div v-else-if="activeAlgo === '排序'" class="sorting">
             <div class="sort-controls">
-              <button
-                class="sort-btn"
-                @click="resetArray"
-              >
-                重置数组
-              </button>
-              <button
-                class="sort-btn"
-                @click="runSort"
-              >
-                开始排序
-              </button>
+              <button class="sort-btn" @click="resetArray">重置数组</button>
+              <button class="sort-btn" @click="runSort">开始排序</button>
             </div>
             <div class="array-display">
-              <div 
-                v-for="(num, i) in sortArray" 
+              <div
+                v-for="(num, i) in sortArray"
                 :key="i"
                 class="array-cell"
-                :class="{ comparing: comparingIndices.includes(i), sorted: sortedIndices.includes(i) }"
+                :class="{
+                  comparing: comparingIndices.includes(i),
+                  sorted: sortedIndices.includes(i)
+                }"
               >
                 {{ num }}
               </div>
@@ -104,10 +79,7 @@
             </div>
           </div>
 
-          <div
-            v-else-if="activeAlgo === '递归'"
-            class="recursion"
-          >
+          <div v-else-if="activeAlgo === '递归'" class="recursion">
             <div class="recursion-input">
               <span>计算斐波那契数列第</span>
               <input
@@ -116,28 +88,15 @@
                 min="1"
                 max="15"
                 class="num-input"
-              >
+              />
               <span>项</span>
-              <button
-                class="calc-btn"
-                @click="calcFib"
-              >
-                计算
-              </button>
+              <button class="calc-btn" @click="calcFib">计算</button>
             </div>
-            <div
-              v-if="fibResult !== null"
-              class="fib-result"
-            >
+            <div v-if="fibResult !== null" class="fib-result">
               <span class="result-value">F({{ fibN }}) = {{ fibResult }}</span>
             </div>
-            <div
-              v-if="fibSteps.length"
-              class="recursion-tree"
-            >
-              <div class="tree-title">
-                递归调用过程
-              </div>
+            <div v-if="fibSteps.length" class="recursion-tree">
+              <div class="tree-title">递归调用过程</div>
               <div class="tree-content">
                 <div
                   v-for="(step, i) in fibSteps.slice(0, 8)"
@@ -146,20 +105,14 @@
                 >
                   {{ step }}
                 </div>
-                <div
-                  v-if="fibSteps.length > 8"
-                  class="tree-more"
-                >
+                <div v-if="fibSteps.length > 8" class="tree-more">
                   ... 共 {{ fibSteps.length }} 次调用
                 </div>
               </div>
             </div>
           </div>
 
-          <div
-            v-else-if="activeAlgo === '贪心'"
-            class="greedy"
-          >
+          <div v-else-if="activeAlgo === '贪心'" class="greedy">
             <div class="greedy-desc">
               硬币找零问题：用最少的硬币凑出指定金额
             </div>
@@ -170,30 +123,18 @@
                 type="number"
                 min="1"
                 class="num-input"
-              >
-              <button
-                class="calc-btn"
-                @click="calcCoins"
-              >
-                计算
-              </button>
+              />
+              <button class="calc-btn" @click="calcCoins">计算</button>
             </div>
             <div class="coins-available">
               可用硬币：{{ coins.join(', ') }} 元
             </div>
-            <div
-              v-if="coinResult.length"
-              class="coin-result"
-            >
-              <div class="result-title">
-                找零方案：
-              </div>
+            <div v-if="coinResult.length" class="coin-result">
+              <div class="result-title">找零方案：</div>
               <div class="coin-list">
-                <span
-                  v-for="(c, i) in coinResult"
-                  :key="i"
-                  class="coin"
-                >{{ c }}元</span>
+                <span v-for="(c, i) in coinResult" :key="i" class="coin"
+                  >{{ c }}元</span
+                >
               </div>
               <div class="result-summary">
                 共 {{ coinResult.length }} 枚硬币
@@ -204,20 +145,11 @@
       </div>
 
       <div class="complexity-info">
-        <div class="info-title">
-          时间复杂度速查
-        </div>
+        <div class="info-title">时间复杂度速查</div>
         <div class="complexity-list">
-          <div
-            v-for="c in complexities"
-            :key="c.name"
-            class="complexity-item"
-          >
+          <div v-for="c in complexities" :key="c.name" class="complexity-item">
             <span class="c-name">{{ c.name }}</span>
-            <span
-              class="c-value"
-              :class="c.class"
-            >{{ c.value }}</span>
+            <span class="c-value" :class="c.class">{{ c.value }}</span>
             <span class="c-desc">{{ c.desc }}</span>
           </div>
         </div>
@@ -225,7 +157,8 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong>算法是解决问题的方法。好的算法能让程序效率提升几个数量级。理解算法思维，比记住具体算法更重要。
+      <strong>核心思想：</strong
+      >算法是解决问题的方法。好的算法能让程序效率提升几个数量级。理解算法思维，比记住具体算法更重要。
     </div>
   </div>
 </template>
@@ -243,7 +176,7 @@ const algorithms = [
 ]
 
 const currentAlgo = computed(() => {
-  return algorithms.find(a => a.name === activeAlgo.value)
+  return algorithms.find((a) => a.name === activeAlgo.value)
 })
 
 const sortedArray = ref([1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25])
@@ -259,25 +192,31 @@ const runBinarySearch = () => {
   midIndex.value = -1
   let left = 0
   let right = sortedArray.value.length - 1
-  
+
   while (left <= right) {
     const mid = Math.floor((left + right) / 2)
     midIndex.value = mid
     searchRange.left = left
     searchRange.right = right
-    
-    searchSteps.value.push(`查找范围 [${left}, ${right}]，中间位置 ${mid}，值 ${sortedArray.value[mid]}`)
-    
+
+    searchSteps.value.push(
+      `查找范围 [${left}, ${right}]，中间位置 ${mid}，值 ${sortedArray.value[mid]}`
+    )
+
     if (sortedArray.value[mid] === searchTarget.value) {
       foundIndex.value = mid
       searchSteps.value.push(`找到目标 ${searchTarget.value} 在位置 ${mid}`)
       return
     } else if (sortedArray.value[mid] < searchTarget.value) {
       left = mid + 1
-      searchSteps.value.push(`${sortedArray.value[mid]} < ${searchTarget.value}，在右半部分继续查找`)
+      searchSteps.value.push(
+        `${sortedArray.value[mid]} < ${searchTarget.value}，在右半部分继续查找`
+      )
     } else {
       right = mid - 1
-      searchSteps.value.push(`${sortedArray.value[mid]} > ${searchTarget.value}，在左半部分继续查找`)
+      searchSteps.value.push(
+        `${sortedArray.value[mid]} > ${searchTarget.value}，在左半部分继续查找`
+      )
     }
   }
   searchSteps.value.push(`未找到目标 ${searchTarget.value}`)
@@ -299,18 +238,18 @@ const runSort = async () => {
   sortedIndices.value = []
   const arr = [...sortArray.value]
   const n = arr.length
-  
+
   for (let i = 0; i < n - 1; i++) {
     for (let j = 0; j < n - i - 1; j++) {
       comparingIndices.value = [j, j + 1]
       sortStatus.value = `比较 ${arr[j]} 和 ${arr[j + 1]}`
-      await new Promise(r => setTimeout(r, 300))
-      
+      await new Promise((r) => setTimeout(r, 300))
+
       if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+        ;[arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
         sortArray.value = [...arr]
         sortStatus.value = `交换 ${arr[j + 1]} 和 ${arr[j]}`
-        await new Promise(r => setTimeout(r, 200))
+        await new Promise((r) => setTimeout(r, 200))
       }
     }
     sortedIndices.value.push(n - i - 1)
@@ -353,7 +292,12 @@ const complexities = [
   { name: 'O(1)', value: '常数', desc: '最优，如数组访问', class: 'good' },
   { name: 'O(log n)', value: '对数', desc: '很好，如二分查找', class: 'good' },
   { name: 'O(n)', value: '线性', desc: '一般，如遍历', class: 'mid' },
-  { name: 'O(n log n)', value: '线性对数', desc: '可接受，如快速排序', class: 'mid' },
+  {
+    name: 'O(n log n)',
+    value: '线性对数',
+    desc: '可接受，如快速排序',
+    class: 'mid'
+  },
   { name: 'O(n²)', value: '平方', desc: '较慢，如冒泡排序', class: 'bad' },
   { name: 'O(2ⁿ)', value: '指数', desc: '很慢，如暴力递归', class: 'bad' }
 ]
@@ -375,8 +319,15 @@ const complexities = [
   margin-bottom: 0.75rem;
 }
 
-.demo-header .title { font-weight: bold; font-size: 1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.85rem; margin-left: 0.5rem; }
+.demo-header .title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
 
 .algorithm-tabs {
   display: flex;
@@ -422,7 +373,9 @@ const complexities = [
   margin-left: 0.5rem;
 }
 
-.search-input, .greedy-input, .recursion-input {
+.search-input,
+.greedy-input,
+.recursion-input {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -438,7 +391,9 @@ const complexities = [
   background: var(--vp-c-bg-alt);
 }
 
-.search-btn, .sort-btn, .calc-btn {
+.search-btn,
+.sort-btn,
+.calc-btn {
   padding: 0.25rem 0.75rem;
   background: var(--vp-c-brand);
   color: white;
@@ -487,7 +442,8 @@ const complexities = [
   background: var(--vp-c-success-soft);
 }
 
-.search-info, .sort-info {
+.search-info,
+.sort-info {
   font-size: 0.8rem;
   color: var(--vp-c-text-2);
 }
@@ -614,9 +570,15 @@ const complexities = [
   min-width: 50px;
 }
 
-.c-value.good { color: var(--vp-c-success); }
-.c-value.mid { color: var(--vp-c-warning); }
-.c-value.bad { color: var(--vp-c-danger); }
+.c-value.good {
+  color: var(--vp-c-success);
+}
+.c-value.mid {
+  color: var(--vp-c-warning);
+}
+.c-value.bad {
+  color: var(--vp-c-danger);
+}
 
 .c-desc {
   color: var(--vp-c-text-2);
@@ -632,5 +594,4 @@ const complexities = [
   display: flex;
   gap: 0.25rem;
 }
-
 </style>

@@ -29,7 +29,8 @@
 { "result": { "user": {...} } }
 
 // 接口 C
-{ "user": {...} }</pre>
+{ "user": {...} }</pre
+          >
           <div class="problem-desc">
             前端需要针对每个接口单独处理，代码冗余，容易出错
           </div>
@@ -42,7 +43,8 @@
   "message": "success",
   "data": { ... },
   "request_id": "req-xxx"
-}</pre>
+}</pre
+          >
         </div>
       </div>
 
@@ -139,7 +141,8 @@
   "total": 156,
   "total_pages": 8,
   "has_next": true
-}</pre>
+}</pre
+            >
           </div>
         </div>
       </div>
@@ -147,7 +150,9 @@
 
     <div class="tips">
       <span class="tips-icon">💡</span>
-      <span class="tips-text">request_id 用于问题追踪，建议使用 UUID v4 或雪花算法生成</span>
+      <span class="tips-text"
+        >request_id 用于问题追踪，建议使用 UUID v4 或雪花算法生成</span
+      >
     </div>
   </div>
 </template>

@@ -66,7 +66,9 @@
           <div class="section-title">时间复杂度</div>
           <div class="complexity-box">
             <div class="complexity-value">{{ currentParadigm.complexity }}</div>
-            <div class="complexity-note">{{ currentParadigm.complexityNote }}</div>
+            <div class="complexity-note">
+              {{ currentParadigm.complexityNote }}
+            </div>
           </div>
         </div>
       </div>
@@ -216,7 +218,9 @@ const comparisonData = [
   }
 ]
 
-const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadigm.value))
+const currentParadigm = computed(() =>
+  paradigms.find((p) => p.id === activeParadigm.value)
+)
 </script>
 
 <style scoped>
@@ -235,8 +239,14 @@ const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadi
   margin-bottom: 1.5rem;
 }
 
-.demo-header .title { font-weight: 700; font-size: 1.1rem; }
-.demo-header .subtitle { color: var(--vp-c-text-2); font-size: 0.9rem; }
+.demo-header .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.demo-header .subtitle {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+}
 
 .intro-text {
   padding: 1rem;
@@ -324,7 +334,8 @@ const currentParadigm = computed(() => paradigms.find(p => p.id === activeParadi
   gap: 1.5rem;
 }
 
-.detail-section {}
+.detail-section {
+}
 
 .section-title {
   font-weight: 600;
