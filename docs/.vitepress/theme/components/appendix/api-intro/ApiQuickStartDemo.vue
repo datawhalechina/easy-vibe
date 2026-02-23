@@ -89,10 +89,8 @@
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span
-        >点击按钮 → 发送请求 → 服务器处理 → 返回数据。这就是 API
-        调用的完整流程。</span
-      >
+      <span>点击按钮 → 发送请求 → 服务器处理 → 返回数据。这就是 API
+        调用的完整流程。</span>
     </div>
   </div>
 </template>

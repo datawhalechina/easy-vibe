@@ -42,6 +42,10 @@ import ApiMethodDemo from './components/appendix/api-intro/ApiMethodDemo.vue'
 import ApiDocumentDemo from './components/appendix/api-intro/ApiDocumentDemo.vue'
 import ApiPlayground from './components/appendix/api-intro/ApiPlayground.vue'
 import RealWorldApiDemo from './components/appendix/api-intro/RealWorldApiDemo.vue'
+import FunctionApiDemo from './components/appendix/api-intro/FunctionApiDemo.vue'
+import ApiTypesComparison from './components/appendix/api-intro/ApiTypesComparison.vue'
+import HttpMethodsDemo from './components/appendix/api-intro/HttpMethodsDemo.vue'
+import StatusCodeCategories from './components/appendix/api-intro/StatusCodeCategories.vue'
 
 // LLM Intro Components
 import EmbeddingDemo from './components/appendix/llm-intro/EmbeddingDemo.vue'
@@ -106,8 +110,13 @@ import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTrou
 // Computer Fundamentals Components
 import TransistorDemo from './components/appendix/computer-fundamentals/TransistorDemo.vue'
 import LogicGateDemo from './components/appendix/computer-fundamentals/LogicGateDemo.vue'
+import HalfAdderDemo from './components/appendix/computer-fundamentals/HalfAdderDemo.vue'
+import FullAdderDemo from './components/appendix/computer-fundamentals/FullAdderDemo.vue'
 import AdderDemo from './components/appendix/computer-fundamentals/AdderDemo.vue'
-// import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
+import AdderChainDemo from './components/appendix/computer-fundamentals/AdderChainDemo.vue'
+import CompleteAdderDemo from './components/appendix/computer-fundamentals/CompleteAdderDemo.vue'
+import FunctionalUnitDemo from './components/appendix/computer-fundamentals/FunctionalUnitDemo.vue'
+import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
 import RegisterDemo from './components/appendix/computer-fundamentals/RegisterDemo.vue'
 // import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
 import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
@@ -614,6 +623,16 @@ import InterfaceDemo from './components/appendix/typescript-intro/InterfaceDemo.
 import GenericDemo from './components/appendix/typescript-intro/GenericDemo.vue'
 import TypeInferenceDemo from './components/appendix/typescript-intro/TypeInferenceDemo.vue'
 
+// Server & Backend Components
+import SerializationDemo from './components/appendix/server-backend/SerializationDemo.vue'
+import HttpProtocolDemo from './components/appendix/server-backend/HttpProtocolDemo.vue'
+
+// Data Components
+import SqlDemo from './components/appendix/data/SqlDemo.vue'
+import DataModelsDemo from './components/appendix/data/DataModelsDemo.vue'
+import ABTestingDemo from './components/appendix/data/ABTestingDemo.vue'
+import DataAnalysisDemo from './components/appendix/data/DataAnalysisDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -652,6 +671,10 @@ export default {
     app.component('ApiDocumentDemo', ApiDocumentDemo)
     app.component('ApiPlayground', ApiPlayground)
     app.component('RealWorldApiDemo', RealWorldApiDemo)
+    app.component('FunctionApiDemo', FunctionApiDemo)
+    app.component('ApiTypesComparison', ApiTypesComparison)
+    app.component('HttpMethodsDemo', HttpMethodsDemo)
+    app.component('StatusCodeCategories', StatusCodeCategories)
 
     // LLM Intro Components Registration
     app.component('EmbeddingDemo', EmbeddingDemo)
@@ -719,8 +742,13 @@ export default {
     // Computer Fundamentals Components Registration
     app.component('TransistorDemo', TransistorDemo)
     app.component('LogicGateDemo', LogicGateDemo)
+    app.component('HalfAdderDemo', HalfAdderDemo)
+    app.component('FullAdderDemo', FullAdderDemo)
     app.component('AdderDemo', AdderDemo)
-    // app.component('CpuArchitectureDemo', CpuArchitectureDemo)
+    app.component('AdderChainDemo', AdderChainDemo)
+    app.component('CompleteAdderDemo', CompleteAdderDemo)
+    app.component('FunctionalUnitDemo', FunctionalUnitDemo)
+    app.component('CpuArchitectureDemo', CpuArchitectureDemo)
     app.component('RegisterDemo', RegisterDemo)
     // app.component('EvolutionFlowDemo', EvolutionFlowDemo)
     app.component('ProcessDemo', ProcessDemo)
@@ -1244,6 +1272,16 @@ export default {
     app.component('InterfaceDemo', InterfaceDemo)
     app.component('GenericDemo', GenericDemo)
     app.component('TypeInferenceDemo', TypeInferenceDemo)
+
+    // Server & Backend Components Registration
+    app.component('SerializationDemo', SerializationDemo)
+    app.component('HttpProtocolDemo', HttpProtocolDemo)
+
+    // Data Components Registration
+    app.component('SqlDemo', SqlDemo)
+    app.component('DataModelsDemo', DataModelsDemo)
+    app.component('ABTestingDemo', ABTestingDemo)
+    app.component('DataAnalysisDemo', DataAnalysisDemo)
   },
   setup() {
     const route = useRoute()
