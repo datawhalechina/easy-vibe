@@ -5,7 +5,7 @@
         🌟 AI 发展阶段与核心范式全景对比
       </div>
       <div class="era-grid">
-        <div class="era-item" v-for="era in eras" :key="era.name" :style="{ borderTopColor: era.color }">
+        <div v-for="era in eras" :key="era.name" class="era-item" :style="{ borderTopColor: era.color }">
           <div class="e-icon" :style="{ background: era.color }">{{ era.icon }}</div>
           <div class="e-name" :style="{ color: era.color }">{{ era.name }}</div>
           <div class="e-time">{{ era.time }}</div>
@@ -25,7 +25,7 @@
           <div class="e-section">
             <div class="e-label">典型代表</div>
             <div class="e-tags">
-              <span class="e-tag" v-for="tag in era.examples" :key="tag">{{ tag }}</span>
+              <span v-for="tag in era.examples" :key="tag" class="e-tag">{{ tag }}</span>
             </div>
           </div>
         </div>

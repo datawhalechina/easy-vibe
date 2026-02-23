@@ -132,9 +132,7 @@
             <div v-if="coinResult.length" class="coin-result">
               <div class="result-title">找零方案：</div>
               <div class="coin-list">
-                <span v-for="(c, i) in coinResult" :key="i" class="coin"
-                  >{{ c }}元</span
-                >
+                <span v-for="(c, i) in coinResult" :key="i" class="coin">{{ c }}元</span>
               </div>
               <div class="result-summary">
                 共 {{ coinResult.length }} 枚硬币
@@ -157,8 +155,7 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong
-      >算法是解决问题的方法。好的算法能让程序效率提升几个数量级。理解算法思维，比记住具体算法更重要。
+      <strong>核心思想：</strong>算法是解决问题的方法。好的算法能让程序效率提升几个数量级。理解算法思维，比记住具体算法更重要。
     </div>
   </div>
 </template>

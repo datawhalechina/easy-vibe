@@ -48,8 +48,7 @@
             v-for="(task, j) in currentStage.tasks"
             :key="j"
             class="task-chip"
-            >{{ task }}</span
-          >
+            >{{ task }}</span>
         </div>
 
         <div class="detail-example">
@@ -88,9 +87,7 @@
             <div class="exec-flow">
               <span v-for="(step, i) in model.steps" :key="i" class="flow-tag">
                 {{ step }}
-                <span v-if="i < model.steps.length - 1" class="flow-arrow"
-                  >→</span
-                >
+                <span v-if="i < model.steps.length - 1" class="flow-arrow">→</span>
               </span>
             </div>
             <div class="exec-traits">
@@ -104,8 +101,7 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong
-      >编译器像翻译官，把人类能读懂的代码逐步翻译成机器能执行的指令。六个阶段各司其职：识别单词
+      <strong>核心思想：</strong>编译器像翻译官，把人类能读懂的代码逐步翻译成机器能执行的指令。六个阶段各司其职：识别单词
       → 理解语法 → 检查语义 → 生成中间码 → 优化 → 生成机器码。
     </div>
   </div>

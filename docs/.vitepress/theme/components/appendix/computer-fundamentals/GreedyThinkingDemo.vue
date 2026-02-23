@@ -37,9 +37,9 @@
         </div>
         <div class="change-process">
           <div
-            class="process-step"
             v-for="(step, index) in changeSteps"
             :key="index"
+            class="process-step"
           >
             <div class="step-coin">{{ step.coin }}</div>
             <div class="step-text">× {{ step.count }} = {{ step.value }}元</div>

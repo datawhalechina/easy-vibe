@@ -5,10 +5,10 @@
         <strong>为什么需要 DNS？(查导航)</strong>
       </p>
       <p class="why-desc-zh">
-        你知道店铺名字叫 "Shop.com"，但快递员需要知道具体的经纬度坐标 (IP 地址)
+        你知道店铺名字叫 "bilibili.com"，但快递员需要知道具体的经纬度坐标 (IP 地址)
         才能送达。
         <br>
-        DNS 就像是<strong>地图导航</strong>，输入店名，它告诉你具体的坐标。
+        DNS 就像是<strong>地图导航</strong>，输入店名，它通过“114查号台”帮你找到坐标。
       </p>
     </div>
 
@@ -16,7 +16,7 @@
       <div class="input-area">
         <span class="label">店铺名称 (域名)</span>
         <div class="fake-input">
-          shop.com
+          bilibili.com
         </div>
       </div>
 
@@ -29,10 +29,10 @@
             🧭
           </div>
           <div class="title">
-            DNS (地图导航)
+            DNS (查号台)
           </div>
           <div class="desc">
-            正在查找 shop.com 的位置...
+            正在查询 bilibili.com 的 IP...
           </div>
         </div>
         <div class="arrow-down">
@@ -41,9 +41,9 @@
       </div>
 
       <div class="output-area">
-        <span class="label">GPS 坐标 (IP 地址)</span>
+        <span class="label">精准坐标 (IP 地址)</span>
         <div class="fake-output">
-          93.184.216.34
+          110.43.12.55
         </div>
       </div>
     </div>

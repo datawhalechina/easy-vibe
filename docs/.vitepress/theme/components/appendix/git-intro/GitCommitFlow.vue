@@ -40,7 +40,7 @@
         <div class="area-header">
           <span class="area-icon">📝</span>
           <span class="area-title">工作区</span>
-          <span class="area-desc">Working Directory<br/>你正在改的文件</span>
+          <span class="area-desc">Working Directory<br />你正在改的文件</span>
         </div>
         <div class="area-body">
           <div class="area-label">Changes not staged for commit:</div>
@@ -65,7 +65,7 @@
         <div class="area-header">
           <span class="area-icon">📦</span>
           <span class="area-title">暂存区</span>
-          <span class="area-desc">Staging Area<br/>准备这次提交的文件</span>
+          <span class="area-desc">Staging Area<br />准备这次提交的文件</span>
         </div>
         <div class="area-body">
           <div class="area-label">Changes to be committed:</div>
@@ -90,7 +90,7 @@
         <div class="area-header">
           <span class="area-icon">🗄️</span>
           <span class="area-title">仓库</span>
-          <span class="area-desc">Repository (.git)<br/>永久保存的版本</span>
+          <span class="area-desc">Repository (.git)<br />永久保存的版本</span>
         </div>
         <div class="area-body">
           <div class="area-label">已提交记录 (git log):</div>

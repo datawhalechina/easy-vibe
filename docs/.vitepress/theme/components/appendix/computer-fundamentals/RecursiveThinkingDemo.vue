@@ -110,8 +110,7 @@ function traverse(folder) {
       traverse(item)  // 递归调用！
     }
   }
-}</pre
-          >
+}</pre>
         </div>
       </div>
     </div>

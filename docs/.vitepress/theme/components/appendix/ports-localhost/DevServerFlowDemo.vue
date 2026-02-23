@@ -105,7 +105,8 @@ function reset() {
 
         <div :class="['panel browser-panel', {
           highlight: steps[currentStep].highlight === 'browser' || steps[currentStep].highlight === 'page' || steps[currentStep].highlight === 'hmr'
-        }]">
+        }]"
+>
           <div class="panel-header">
             <span class="dot red" /><span class="dot yellow" /><span class="dot green" />
             <span class="panel-title">浏览器</span>

@@ -38,7 +38,7 @@
             @mouseenter="highlightedTag = node.tag"
             @mouseleave="highlightedTag = ''"
           >
-            <span class="connector" v-if="node.depth > 0">└─</span>
+            <span v-if="node.depth > 0" class="connector">└─</span>
             <span class="node-tag">{{ node.label }}</span>
             <span v-if="node.text" class="node-text">"{{ node.text }}"</span>
           </div>

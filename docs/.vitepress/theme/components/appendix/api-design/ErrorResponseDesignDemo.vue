@@ -37,8 +37,7 @@
       }
     ]
   }
-}</pre
-        >
+}</pre>
         <div class="field-tips">
           <div class="tip-row">
             <code>field</code>
@@ -67,8 +66,7 @@
     "shortfall": 49.00,
     "suggestion": "请充值后重试"
   }
-}</pre
-        >
+}</pre>
         <div class="business-tips">
           <div class="b-tip">✓ 返回当前状态数据，便于前端展示</div>
           <div class="b-tip">✓ 提供 suggestion 给出解决建议</div>
@@ -166,9 +164,7 @@
 
     <div class="tips">
       <span class="tips-icon">💡</span>
-      <span class="tips-text"
-        >错误信息要"机器可读 + 人类友好"，便于前端统一处理</span
-      >
+      <span class="tips-text">错误信息要"机器可读 + 人类友好"，便于前端统一处理</span>
     </div>
   </div>
 </template>

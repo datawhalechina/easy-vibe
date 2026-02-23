@@ -48,7 +48,7 @@
             </span>
           </div>
           <div class="step-list">
-            <div class="step-item" v-for="i in Math.min(selectedCount, 4)" :key="i">
+            <div v-for="i in Math.min(selectedCount, 4)" :key="i" class="step-item">
               <span class="step-num">{{ i }}</span>
               <span class="step-text">修改 → 布局 → 绘制</span>
             </div>

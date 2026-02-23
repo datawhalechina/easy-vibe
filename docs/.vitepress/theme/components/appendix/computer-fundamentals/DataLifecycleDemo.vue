@@ -6,7 +6,7 @@
     </div>
 
     <div class="lifecycle-flow">
-      <div class="flow-stage" v-for="(stage, index) in stages" :key="stage.id">
+      <div v-for="(stage, index) in stages" :key="stage.id" class="flow-stage">
         <div class="stage-header" @click="activeStage = index">
           <span class="stage-number">{{ index + 1 }}</span>
           <span class="stage-name">{{ stage.name }}</span>

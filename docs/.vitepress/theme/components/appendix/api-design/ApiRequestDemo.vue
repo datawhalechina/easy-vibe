@@ -14,9 +14,7 @@
             </div>
             <div class="t-line">
               <span class="t-ps">&gt; </span>
-              <span class="t-typing"
-                >{{ typing }}<span class="t-cur">▋</span></span
-              >
+              <span class="t-typing">{{ typing }}<span class="t-cur">▋</span></span>
             </div>
           </div>
         </div>

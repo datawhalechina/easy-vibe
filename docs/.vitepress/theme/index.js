@@ -44,6 +44,8 @@ import ApiPlayground from './components/appendix/api-intro/ApiPlayground.vue'
 import RealWorldApiDemo from './components/appendix/api-intro/RealWorldApiDemo.vue'
 import FunctionApiDemo from './components/appendix/api-intro/FunctionApiDemo.vue'
 import ApiTypesComparison from './components/appendix/api-intro/ApiTypesComparison.vue'
+import ApiFunctionVsHttp from './components/appendix/api-intro/ApiFunctionVsHttp.vue'
+import DocumentTypesComparison from './components/appendix/api-intro/DocumentTypesComparison.vue'
 import HttpMethodsDemo from './components/appendix/api-intro/HttpMethodsDemo.vue'
 import StatusCodeCategories from './components/appendix/api-intro/StatusCodeCategories.vue'
 
@@ -110,6 +112,7 @@ import NetworkTroubleshooting from './components/appendix/web-basics/NetworkTrou
 // Computer Fundamentals Components
 import TransistorDemo from './components/appendix/computer-fundamentals/TransistorDemo.vue'
 import LogicGateDemo from './components/appendix/computer-fundamentals/LogicGateDemo.vue'
+import BinaryAdditionRulesDemo from './components/appendix/computer-fundamentals/BinaryAdditionRulesDemo.vue'
 import HalfAdderDemo from './components/appendix/computer-fundamentals/HalfAdderDemo.vue'
 import FullAdderDemo from './components/appendix/computer-fundamentals/FullAdderDemo.vue'
 import AdderDemo from './components/appendix/computer-fundamentals/AdderDemo.vue'
@@ -118,6 +121,7 @@ import CompleteAdderDemo from './components/appendix/computer-fundamentals/Compl
 import FunctionalUnitDemo from './components/appendix/computer-fundamentals/FunctionalUnitDemo.vue'
 import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
 import RegisterDemo from './components/appendix/computer-fundamentals/RegisterDemo.vue'
+import FlipFlopDemo from './components/appendix/computer-fundamentals/FlipFlopDemo.vue'
 // import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
 import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
 import MemoryDemo from './components/appendix/computer-fundamentals/MemoryDemo.vue'
@@ -135,8 +139,8 @@ import CFSubnetCalculator from './components/appendix/computer-fundamentals/Subn
 import CFTcpUdpComparison from './components/appendix/computer-fundamentals/TcpUdpComparison.vue'
 
 // Computer Fundamentals Additional Components
-import OSSystemOverviewDemo from './components/appendix/computer-fundamentals/OSSystemOverviewDemo.vue'
-import ProcessMemoryFilesystemDemo from './components/appendix/computer-fundamentals/ProcessMemoryFilesystemDemo.vue'
+import OSArchitectureDemo from './components/appendix/computer-fundamentals/OSArchitectureDemo.vue'
+import ProgramLaunchDemo from './components/appendix/computer-fundamentals/ProgramLaunchDemo.vue'
 import DataLifecycleDemo from './components/appendix/computer-fundamentals/DataLifecycleDemo.vue'
 import EncodingStorageTransmissionDemo from './components/appendix/computer-fundamentals/EncodingStorageTransmissionDemo.vue'
 import NetworkOverviewDemo from './components/appendix/computer-fundamentals/NetworkOverviewDemo.vue'
@@ -673,6 +677,8 @@ export default {
     app.component('RealWorldApiDemo', RealWorldApiDemo)
     app.component('FunctionApiDemo', FunctionApiDemo)
     app.component('ApiTypesComparison', ApiTypesComparison)
+    app.component('ApiFunctionVsHttp', ApiFunctionVsHttp)
+    app.component('DocumentTypesComparison', DocumentTypesComparison)
     app.component('HttpMethodsDemo', HttpMethodsDemo)
     app.component('StatusCodeCategories', StatusCodeCategories)
 
@@ -742,6 +748,7 @@ export default {
     // Computer Fundamentals Components Registration
     app.component('TransistorDemo', TransistorDemo)
     app.component('LogicGateDemo', LogicGateDemo)
+    app.component('BinaryAdditionRulesDemo', BinaryAdditionRulesDemo)
     app.component('HalfAdderDemo', HalfAdderDemo)
     app.component('FullAdderDemo', FullAdderDemo)
     app.component('AdderDemo', AdderDemo)
@@ -750,6 +757,7 @@ export default {
     app.component('FunctionalUnitDemo', FunctionalUnitDemo)
     app.component('CpuArchitectureDemo', CpuArchitectureDemo)
     app.component('RegisterDemo', RegisterDemo)
+    app.component('FlipFlopDemo', FlipFlopDemo)
     // app.component('EvolutionFlowDemo', EvolutionFlowDemo)
     app.component('ProcessDemo', ProcessDemo)
     app.component('MemoryDemo', MemoryDemo)
@@ -767,8 +775,8 @@ export default {
     app.component('CFTcpUdpComparison', CFTcpUdpComparison)
 
     // Computer Fundamentals Additional Components Registration
-    app.component('OSSystemOverviewDemo', OSSystemOverviewDemo)
-    app.component('ProcessMemoryFilesystemDemo', ProcessMemoryFilesystemDemo)
+    app.component('OSArchitectureDemo', OSArchitectureDemo)
+    app.component('ProgramLaunchDemo', ProgramLaunchDemo)
     app.component('DataLifecycleDemo', DataLifecycleDemo)
     app.component(
       'EncodingStorageTransmissionDemo',

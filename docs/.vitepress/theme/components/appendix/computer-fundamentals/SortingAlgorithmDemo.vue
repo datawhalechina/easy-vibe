@@ -22,9 +22,9 @@
     </div>
 
     <div class="controls">
-      <button @click="generateArray" class="control-btn">生成新数组</button>
-      <button @click="startBubbleSort" class="control-btn">冒泡排序</button>
-      <button @click="startQuickSort" class="control-btn">快速排序</button>
+      <button class="control-btn" @click="generateArray">生成新数组</button>
+      <button class="control-btn" @click="startBubbleSort">冒泡排序</button>
+      <button class="control-btn" @click="startQuickSort">快速排序</button>
     </div>
 
     <div class="algorithm-info">

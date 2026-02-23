@@ -1,7 +1,7 @@
 <template>
   <div class="demo-card">
     <div class="schools-grid">
-      <div class="school-card" v-for="s in schools" :key="s.name" :style="{ borderTopColor: s.color }">
+      <div v-for="s in schools" :key="s.name" class="school-card" :style="{ borderTopColor: s.color }">
         <div class="card-head">
           <span class="school-icon">{{ s.icon }}</span>
           <span class="school-name" :style="{ color: s.color }">{{ s.name }}</span>

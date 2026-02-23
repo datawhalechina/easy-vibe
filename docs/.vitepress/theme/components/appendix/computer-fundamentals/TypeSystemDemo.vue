@@ -52,8 +52,7 @@
               v-for="t in selectedQuadrant.traits"
               :key="t"
               class="trait-tag"
-              >{{ t }}</span
-            >
+              >{{ t }}</span>
           </div>
         </div>
       </div>
@@ -111,18 +110,10 @@
           </div>
         </div>
         <div class="convert-summary">
-          <span v-if="activeLang === 'JavaScript'" class="summary-tag weak"
-            >弱类型：隐式转换，结果常出人意料</span
-          >
-          <span v-else-if="activeLang === 'Python'" class="summary-tag strong"
-            >强类型：拒绝隐式转换，必须显式指定</span
-          >
-          <span v-else-if="activeLang === 'Java'" class="summary-tag strong"
-            >强类型：字符串拼接是特例，其余严格</span
-          >
-          <span v-else class="summary-tag strong"
-            >强类型：类型不匹配就报错，零容忍</span
-          >
+          <span v-if="activeLang === 'JavaScript'" class="summary-tag weak">弱类型：隐式转换，结果常出人意料</span>
+          <span v-else-if="activeLang === 'Python'" class="summary-tag strong">强类型：拒绝隐式转换，必须显式指定</span>
+          <span v-else-if="activeLang === 'Java'" class="summary-tag strong">强类型：字符串拼接是特例，其余严格</span>
+          <span v-else class="summary-tag strong">强类型：类型不匹配就报错，零容忍</span>
         </div>
       </div>
 
@@ -146,7 +137,7 @@
           </div>
         </div>
         <div class="infer-benefit">
-          <span class="benefit-item" v-for="b in inferBenefits" :key="b">{{
+          <span v-for="b in inferBenefits" :key="b" class="benefit-item">{{
             b
           }}</span>
         </div>
@@ -155,19 +146,11 @@
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span v-if="activeTab === 'quadrant'"
-        >类型系统在两个维度上做选择——何时检查（静态/动态）和是否允许隐式转换（强/弱）。没有最好的组合，只有最适合的场景。</span
-      >
-      <span v-else-if="activeTab === 'check'"
-        >静态类型在编译时就能发现错误，动态类型要到运行时才知道——越早发现
-        bug，修复成本越低。</span
-      >
-      <span v-else-if="activeTab === 'convert'"
-        >弱类型语言会"猜"你的意思做隐式转换（常出错），强类型语言要求你明确表达意图（更安全）。</span
-      >
-      <span v-else
-        >类型推断让你两全其美：代码像动态语言一样简洁，编译器像静态语言一样严格检查。</span
-      >
+      <span v-if="activeTab === 'quadrant'">类型系统在两个维度上做选择——何时检查（静态/动态）和是否允许隐式转换（强/弱）。没有最好的组合，只有最适合的场景。</span>
+      <span v-else-if="activeTab === 'check'">静态类型在编译时就能发现错误，动态类型要到运行时才知道——越早发现
+        bug，修复成本越低。</span>
+      <span v-else-if="activeTab === 'convert'">弱类型语言会"猜"你的意思做隐式转换（常出错），强类型语言要求你明确表达意图（更安全）。</span>
+      <span v-else>类型推断让你两全其美：代码像动态语言一样简洁，编译器像静态语言一样严格检查。</span>
     </div>
   </div>
 </template>

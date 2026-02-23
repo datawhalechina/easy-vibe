@@ -39,8 +39,7 @@
             :key="'a' + i"
             class="bit"
             :class="{ hl: activeBit === 3 - i }"
-            >{{ b }}</span
-          >
+            >{{ b }}</span>
         </span>
         <span class="binary-dec">= {{ clampedA }}</span>
       </div>
@@ -52,8 +51,7 @@
             :key="'b' + i"
             class="bit"
             :class="{ hl: activeBit === 3 - i }"
-            >{{ b }}</span
-          >
+            >{{ b }}</span>
         </span>
         <span class="binary-dec">= {{ clampedB }}</span>
       </div>
@@ -65,8 +63,7 @@
             :key="'s' + i"
             class="bit"
             :class="{ hl: activeBit === 3 - i }"
-            >{{ b }}</span
-          >
+            >{{ b }}</span>
         </span>
         <span class="binary-dec">= {{ fourBitResult }}</span>
       </div>
@@ -94,25 +91,14 @@
           </span>
         </div>
         <div class="stage-io">
-          <span class="io-item"
-            ><span class="io-tag a">A</span>{{ stage.a }}</span
-          >
-          <span class="io-item"
-            ><span class="io-tag b">B</span>{{ stage.b }}</span
-          >
-          <span v-if="stage.carryIn !== null" class="io-item"
-            ><span class="io-tag cin">Cin</span>{{ stage.carryIn }}</span
-          >
+          <span class="io-item"><span class="io-tag a">A</span>{{ stage.a }}</span>
+          <span class="io-item"><span class="io-tag b">B</span>{{ stage.b }}</span>
+          <span v-if="stage.carryIn !== null" class="io-item"><span class="io-tag cin">Cin</span>{{ stage.carryIn }}</span>
         </div>
         <div class="stage-divider"></div>
         <div class="stage-io">
-          <span class="io-item"
-            ><span class="io-tag s">S</span
-            ><strong>{{ stage.sum }}</strong></span
-          >
-          <span class="io-item"
-            ><span class="io-tag cout">C</span>{{ stage.carryOut }}</span
-          >
+          <span class="io-item"><span class="io-tag s">S</span><strong>{{ stage.sum }}</strong></span>
+          <span class="io-item"><span class="io-tag cout">C</span>{{ stage.carryOut }}</span>
         </div>
       </div>
     </div>

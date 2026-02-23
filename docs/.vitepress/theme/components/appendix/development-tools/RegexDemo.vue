@@ -175,19 +175,11 @@
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span v-if="activeMode === 'playground'"
-        >正则表达式是一种用特殊符号描述文本模式的语言，在搜索、替换、数据验证中无处不在。</span
-      >
-      <span v-else-if="activeMode === 'cheatsheet'"
-        >记住几个核心符号（. * + ? \d \w [] ()）就能覆盖 80%
-        的使用场景。点击任意符号可直接试验。</span
-      >
-      <span v-else-if="activeMode === 'patterns'"
-        >不需要自己从零写正则——常见场景（邮箱、手机号、URL）都有成熟的模式可以直接复用。</span
-      >
-      <span v-else
-        >正则引擎从左到右逐字符匹配，遇到量词会"贪婪"地尽量多匹配，失败时"回溯"尝试其他路径。</span
-      >
+      <span v-if="activeMode === 'playground'">正则表达式是一种用特殊符号描述文本模式的语言，在搜索、替换、数据验证中无处不在。</span>
+      <span v-else-if="activeMode === 'cheatsheet'">记住几个核心符号（. * + ? \d \w [] ()）就能覆盖 80%
+        的使用场景。点击任意符号可直接试验。</span>
+      <span v-else-if="activeMode === 'patterns'">不需要自己从零写正则——常见场景（邮箱、手机号、URL）都有成熟的模式可以直接复用。</span>
+      <span v-else>正则引擎从左到右逐字符匹配，遇到量词会"贪婪"地尽量多匹配，失败时"回溯"尝试其他路径。</span>
     </div>
   </div>
 </template>

@@ -24,9 +24,7 @@
     <!-- 推荐结果 -->
     <div v-if="activeScenario" class="recommendation">
       <div class="rec-header">
-        <span class="rec-title"
-          >推荐使用：{{ currentScenario.recommendation }}</span
-        >
+        <span class="rec-title">推荐使用：{{ currentScenario.recommendation }}</span>
       </div>
 
       <div class="rec-reason">

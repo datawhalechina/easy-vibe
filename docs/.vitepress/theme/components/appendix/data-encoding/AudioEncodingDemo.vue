@@ -9,8 +9,8 @@
       <div class="slider-group">
         <label>采样频率：{{ sampleRate }} 次/秒</label>
         <input 
-          type="range" 
           v-model="sliderValue" 
+          type="range" 
           min="1" 
           max="50" 
           step="1"

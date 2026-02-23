@@ -797,7 +797,6 @@ export default defineConfig({
               text: '五、数据',
               collapsed: false,
               items: [
-                { text: 'SQL', link: '/zh-cn/appendix/5-data/sql' },
                 {
                   text: '数据库原理（索引 / 事务 / 查询优化）',
                   link: '/zh-cn/appendix/5-data/database-fundamentals'

@@ -146,7 +146,7 @@
               <span class="gate-name">XOR</span>
               <span class="gate-cn">异或门</span>
             </div>
-            <div class="gate-formula">A ⊕ B</div>
+            <div class="gate-formula">A XOR B</div>
             <div class="gate-desc">不同为 1 → 本位</div>
           </div>
           <div class="gate-box" :class="{ active: haCarry }">
@@ -154,7 +154,7 @@
               <span class="gate-name">AND</span>
               <span class="gate-cn">与门</span>
             </div>
-            <div class="gate-formula">A ∧ B</div>
+            <div class="gate-formula">A AND B</div>
             <div class="gate-desc">全 1 为 1 → 进位</div>
           </div>
         </div>
@@ -203,13 +203,13 @@
           </div>
           <div class="calc-row">
             <span class="calc-label">本位：</span>
-            <span class="calc-formula">A ⊕ B = {{ haA ? '1' : '0' }} ⊕ {{ haB ? '1' : '0' }} =
+            <span class="calc-formula">A XOR B = {{ haA ? '1' : '0' }} XOR {{ haB ? '1' : '0' }} =
               <strong>{{ haSum ? '1' : '0' }}</strong></span>
             <span class="calc-reason">（{{ haA !== haB ? '不同' : '相同' }}）</span>
           </div>
           <div class="calc-row">
             <span class="calc-label">进位：</span>
-            <span class="calc-formula">A ∧ B = {{ haA ? '1' : '0' }} ∧ {{ haB ? '1' : '0' }} =
+            <span class="calc-formula">A AND B = {{ haA ? '1' : '0' }} AND {{ haB ? '1' : '0' }} =
               <strong>{{ haCarry ? '1' : '0' }}</strong></span>
             <span class="calc-reason">（{{ haA && haB ? '全为 1' : '不全为 1' }}）</span>
           </div>
@@ -384,15 +384,15 @@
           </div>
           <div class="calc-row">
             <span class="calc-label">中间：</span>
-            <span class="calc-formula">xor1 = A ⊕ B = <strong>{{ faXor1 ? '1' : '0' }}</strong></span>
+            <span class="calc-formula">中间值 = A XOR B = <strong>{{ faXor1 ? '1' : '0' }}</strong></span>
           </div>
           <div class="calc-row">
             <span class="calc-label">本位：</span>
-            <span class="calc-formula">Sum = xor1 ⊕ Cin = <strong>{{ faSum ? '1' : '0' }}</strong></span>
+            <span class="calc-formula">本位 = 中间值 XOR Cin = <strong>{{ faSum ? '1' : '0' }}</strong></span>
           </div>
           <div class="calc-row">
             <span class="calc-label">进位：</span>
-            <span class="calc-formula">Cout = (A∧B) ∨ (xor1∧Cin) =
+            <span class="calc-formula">进位 = (A AND B) OR (中间值 AND Cin) =
               <strong>{{ faCarryOut ? '1' : '0' }}</strong></span>
           </div>
         </div>
@@ -544,21 +544,21 @@ const gates = [
     name: 'AND',
     cn: '与门',
     symbol: '&',
-    formula: 'A ∧ B',
+    formula: 'A AND B',
     truth: [0, 0, 0, 1]
   },
   {
     name: 'OR',
     cn: '或门',
     symbol: '≥1',
-    formula: 'A ∨ B',
+    formula: 'A OR B',
     truth: [0, 1, 1, 1]
   },
   {
     name: 'XOR',
     cn: '异或门',
     symbol: '=1',
-    formula: 'A ⊕ B',
+    formula: 'A XOR B',
     truth: [0, 1, 1, 0]
   },
   { name: 'NOT', cn: '非门', symbol: '1', formula: '¬A', truth: [1, 0] }

@@ -31,7 +31,7 @@
           </span>
         </div>
         
-        <div class="inspection-box" v-if="hoveredPixel">
+        <div v-if="hoveredPixel" class="inspection-box">
           <div class="preview-color" :style="{ backgroundColor: hoveredPixel.color }"></div>
           <div class="preview-info">
             <div class="info-row">
@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="inspection-box empty" v-else>
+        <div v-else class="inspection-box empty">
           将鼠标悬停在左侧画布的方块上
         </div>
       </div>

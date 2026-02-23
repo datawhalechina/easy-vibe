@@ -66,6 +66,18 @@ result = response.choices[0].message.content
 
 <ApiTypesComparison />
 
+### 1.3 函数 API vs HTTP API 的区别
+
+很多初学者会困惑：函数 API 和 HTTP API 到底有什么区别？看文档时该如何区分？
+
+<ApiFunctionVsHttp />
+
+### 1.4 不同类型的 API 文档怎么看
+
+面对不同类型的 API 文档，关注重点各不相同：
+
+<DocumentTypesComparison />
+
 ---
 
 ## 2. 一次完整的 API 调用

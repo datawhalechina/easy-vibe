@@ -2,9 +2,7 @@
   <div class="ssh-auth-demo">
     <div class="demo-header">
       <span class="title">SSH 密钥认证：你的数字身份证</span>
-      <span class="subtitle"
-        >对称加密 vs 非对称加密 · 密钥对生成 · 认证流程</span
-      >
+      <span class="subtitle">对称加密 vs 非对称加密 · 密钥对生成 · 认证流程</span>
     </div>
 
     <div class="control-panel">
@@ -28,7 +26,7 @@
             <div class="card-icon">🔑</div>
             <div class="card-title">密码登录</div>
             <div class="card-flow">
-              <div class="flow-step" v-for="(step, i) in passwordFlow" :key="i">
+              <div v-for="(step, i) in passwordFlow" :key="i" class="flow-step">
                 <span class="step-num">{{ i + 1 }}</span>
                 <span class="step-text">{{ step }}</span>
               </div>
@@ -43,7 +41,7 @@
             <div class="card-icon">🔐</div>
             <div class="card-title">密钥登录</div>
             <div class="card-flow">
-              <div class="flow-step" v-for="(step, i) in keyFlow" :key="i">
+              <div v-for="(step, i) in keyFlow" :key="i" class="flow-step">
                 <span class="step-num">{{ i + 1 }}</span>
                 <span class="step-text">{{ step }}</span>
               </div>
@@ -144,18 +142,14 @@
               </div>
               <div :class="['msg', { active: authStep >= 2 }]" class="msg-left">
                 <span class="msg-label">② 发送随机挑战</span>
-                <span class="msg-detail"
-                  >"请证明你有私钥：用它签名这段随机数据"</span
-                >
+                <span class="msg-detail">"请证明你有私钥：用它签名这段随机数据"</span>
               </div>
               <div
                 :class="['msg', { active: authStep >= 3 }]"
                 class="msg-right"
               >
                 <span class="msg-label">③ 返回签名</span>
-                <span class="msg-detail"
-                  >"用私钥签名后的结果（私钥本身不发送）"</span
-                >
+                <span class="msg-detail">"用私钥签名后的结果（私钥本身不发送）"</span>
               </div>
               <div :class="['msg', { active: authStep >= 4 }]" class="msg-left">
                 <span class="msg-label">④ 用公钥验证</span>
@@ -163,9 +157,7 @@
               </div>
               <div :class="['msg', 'msg-result', { active: authStep >= 5 }]">
                 <span class="msg-label">⑤ 认证成功</span>
-                <span class="msg-detail"
-                  >"欢迎登录！从始至终，私钥没离开过你的电脑"</span
-                >
+                <span class="msg-detail">"欢迎登录！从始至终，私钥没离开过你的电脑"</span>
               </div>
             </div>
 
@@ -211,21 +203,13 @@ Host github.com
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span v-if="activeScenario === 'compare'"
-        >SSH
-        密钥登录比密码更安全，因为私钥从不在网络上传输，无法被中间人窃取。</span
-      >
-      <span v-else-if="activeScenario === 'keygen'"
-        >一次 ssh-keygen
-        生成一对密钥：私钥自己保管，公钥放到目标服务器或平台。</span
-      >
-      <span v-else-if="activeScenario === 'auth'"
-        >认证过程基于"挑战-响应"机制：服务器出题，你的私钥签名作答，公钥验证答案。全程私钥不离开本机。</span
-      >
-      <span v-else
-        >SSH 密钥不仅用于服务器登录，也是 Git (GitHub/GitLab)
-        等开发工具的标准身份认证方式。</span
-      >
+      <span v-if="activeScenario === 'compare'">SSH
+        密钥登录比密码更安全，因为私钥从不在网络上传输，无法被中间人窃取。</span>
+      <span v-else-if="activeScenario === 'keygen'">一次 ssh-keygen
+        生成一对密钥：私钥自己保管，公钥放到目标服务器或平台。</span>
+      <span v-else-if="activeScenario === 'auth'">认证过程基于"挑战-响应"机制：服务器出题，你的私钥签名作答，公钥验证答案。全程私钥不离开本机。</span>
+      <span v-else>SSH 密钥不仅用于服务器登录，也是 Git (GitHub/GitLab)
+        等开发工具的标准身份认证方式。</span>
     </div>
   </div>
 </template>

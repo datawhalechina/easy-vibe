@@ -1,7 +1,7 @@
 <template>
   <div class="demo-card">
     <div class="timeline-visual">
-      <div class="era" v-for="era in eras" :key="era.label" :style="{ flex: era.flex, background: era.bg }">
+      <div v-for="era in eras" :key="era.label" class="era" :style="{ flex: era.flex, background: era.bg }">
         <div class="era-label">{{ era.label }}</div>
         <div class="era-years">{{ era.years }}</div>
       </div>

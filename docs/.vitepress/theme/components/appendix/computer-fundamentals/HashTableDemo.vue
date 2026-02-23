@@ -28,7 +28,7 @@
             placeholder="值 (如: 苹果)"
             class="hash-input"
           />
-          <button @click="addData" class="add-btn">添加</button>
+          <button class="add-btn" @click="addData">添加</button>
         </div>
       </div>
 

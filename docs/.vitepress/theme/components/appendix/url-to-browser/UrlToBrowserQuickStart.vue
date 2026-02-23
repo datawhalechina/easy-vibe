@@ -172,7 +172,7 @@ const url = ref('')
 const isActive = ref(false)
 const currentStep = ref(0)
 
-const quickUrls = ['baidu.com', 'bilibili.com', 'github.com']
+const quickUrls = ['baidu.com', 'google.com', 'github.com']
 
 const steps = [
   {

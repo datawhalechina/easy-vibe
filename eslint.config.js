@@ -4,7 +4,11 @@ import vueParser from 'vue-eslint-parser'
 
 export default [
   {
-    ignores: ['node_modules/**', 'docs/.vitepress/dist/**', 'docs/.vitepress/cache/**']
+    ignores: [
+      'node_modules/**',
+      'docs/.vitepress/dist/**',
+      'docs/.vitepress/cache/**'
+    ]
   },
   js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],

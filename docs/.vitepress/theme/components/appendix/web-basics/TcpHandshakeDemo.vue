@@ -139,21 +139,21 @@ const props = defineProps({
 
 // Bilingual text directly
 const t = {
-  statusLabel: '通话状态',
-  connect: '拨打电话',
-  reset: '挂断重拨',
-  client: '我 (顾客)',
-  server: '玩具店',
+  statusLabel: '连接状态',
+  connect: '建立连接',
+  reset: '断开重连',
+  client: '我 (浏览器)',
+  server: '对面 (B站服务器)',
   status: {
-    closed: '未通话',
-    handshaking: '正在拨号...',
-    established: '通话中 (连接已建立)'
+    closed: '未连接',
+    handshaking: '正在打招呼确认通道...',
+    established: 'TCP 通道已建立 (ESTABLISHED)'
   },
   steps: {
-    0: '点击 "拨打电话" 开始确认店铺是否营业。',
-    1: '步骤 1: 我问 "喂？有人在吗？" (SYN)',
-    2: '步骤 2: 店员答 "在的！请问有什么事？" (SYN-ACK)',
-    3: '步骤 3: 我说 "太好了，我想买东西！" (ACK)'
+    0: '点击 "建立连接" 开始三次握手（电话试音）。',
+    1: '第一次握手: "喂，服务器老哥在吗？我能发信息，你能收到吗？" (SYN)',
+    2: '第二次握手: "喂喂在的！我收到了！那你现在能听到我说话吗？" (SYN-ACK)',
+    3: '第三次握手: "妥了，我也能听到！通道没问题，准备看视频！" (ACK)'
   }
 }
 

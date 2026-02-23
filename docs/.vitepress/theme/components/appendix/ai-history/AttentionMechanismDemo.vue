@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="bars-col">
-        <div class="attention-item" v-for="(item, i) in weights" :key="i">
+        <div v-for="(item, i) in weights" :key="i" class="attention-item">
           <span class="bar-word" :class="{ focus: i === focusIdx }">{{ item.word }}</span>
           <div class="bar-bg">
             <div class="bar-fill" :style="{ width: item.w * 100 + '%', background: barColor(item.w) }"></div>

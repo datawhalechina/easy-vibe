@@ -40,10 +40,10 @@
           </div>
         </div>
         <div class="search-controls">
-          <button @click="startLinearSearch" class="search-btn">
+          <button class="search-btn" @click="startLinearSearch">
             开始查找
           </button>
-          <button @click="reset" class="reset-btn">重置</button>
+          <button class="reset-btn" @click="reset">重置</button>
         </div>
         <div class="search-info">
           目标数字：<input
@@ -89,8 +89,8 @@
           </div>
         </div>
         <div class="search-controls">
-          <button @click="binaryStep" class="search-btn">下一步</button>
-          <button @click="resetBinary" class="reset-btn">重置</button>
+          <button class="search-btn" @click="binaryStep">下一步</button>
+          <button class="reset-btn" @click="resetBinary">重置</button>
         </div>
       </div>
       <div class="algo-stats">

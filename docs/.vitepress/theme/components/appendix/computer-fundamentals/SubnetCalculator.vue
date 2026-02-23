@@ -114,12 +114,8 @@
             </div>
           </div>
           <div class="legend">
-            <span class="legend-item"
-              ><span class="network-box" /> 网络位 ({{ cidr }}位)</span
-            >
-            <span class="legend-item"
-              ><span class="host-box" /> 主机位 ({{ 32 - cidr }}位)</span
-            >
+            <span class="legend-item"><span class="network-box" /> 网络位 ({{ cidr }}位)</span>
+            <span class="legend-item"><span class="host-box" /> 主机位 ({{ 32 - cidr }}位)</span>
           </div>
         </div>
       </div>

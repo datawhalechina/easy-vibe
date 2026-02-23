@@ -90,10 +90,10 @@
                 <div class="packet-header">数据包</div>
                 <div class="packet-body">
                   <div
-                    class="packet-layer"
                     v-for="(layer, index) in currentScenario.transmission
                       .layers"
                     :key="index"
+                    class="packet-layer"
                   >
                     <span class="layer-name">{{ layer.name }}:</span>
                     <span class="layer-value">{{ layer.value }}</span>

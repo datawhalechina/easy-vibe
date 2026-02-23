@@ -1,7 +1,7 @@
 <template>
   <div class="demo-card">
     <div class="bp-flow">
-      <div class="step-block" v-for="(step, i) in steps" :key="i" :style="{ borderTopColor: step.color }">
+      <div v-for="(step, i) in steps" :key="i" class="step-block" :style="{ borderTopColor: step.color }">
         <div class="step-num" :style="{ background: step.color }">{{ i + 1 }}</div>
         <div class="step-icon">{{ step.icon }}</div>
         <div class="step-name">{{ step.name }}</div>

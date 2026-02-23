@@ -29,8 +29,7 @@
     "id": 123,
     "name": "张三"
   }
-}</pre
-            >
+}</pre>
           </div>
           <div class="compare-col">
             <div class="compare-title">列表</div>
@@ -44,8 +43,7 @@
       "total": 100
     }
   }
-}</pre
-            >
+}</pre>
           </div>
         </div>
         <div class="note">
@@ -79,8 +77,7 @@
   "created_at": "2024-01-15T09:30:00.000Z",
   "updated_at": "2024-01-15T10:00:00.000Z",
   "expired_at": "2025-01-15T00:00:00.000Z"
-}</pre
-          >
+}</pre>
         </div>
         <div class="time-rules">
           <div class="time-rule">
@@ -97,9 +94,7 @@
           </div>
           <div class="time-rule">
             <span class="rule-label">命名</span>
-            <span class="rule-value"
-              >xxx_at 表示时间点，xxx_duration 表示时长</span
-            >
+            <span class="rule-value">xxx_at 表示时间点，xxx_duration 表示时长</span>
           </div>
         </div>
       </div>
@@ -114,8 +109,7 @@
   "name": "张三",
   "nickname": null,
   "avatar": null
-}</pre
-            >
+}</pre>
             <div class="compare-desc">字段存在但无值时返回 null</div>
           </div>
           <div class="compare-col bad-col">
@@ -123,8 +117,7 @@
             <pre class="code-sm">
 {
   "name": "张三"
-}</pre
-            >
+}</pre>
             <div class="compare-desc">省略字段，前端需判断是否存在</div>
           </div>
         </div>
@@ -156,9 +149,7 @@
 
     <div class="tips">
       <span class="tips-icon">💡</span>
-      <span class="tips-text"
-        >参考 ISO 8601 时间标准，字段命名保持 snake_case 风格</span
-      >
+      <span class="tips-text">参考 ISO 8601 时间标准，字段命名保持 snake_case 风格</span>
     </div>
   </div>
 </template>

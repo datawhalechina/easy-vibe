@@ -169,20 +169,20 @@ const props = defineProps({
 
 const t = {
   send: '提交订单 (发送请求)',
-  noRequests: '购物车是空的 (无请求)',
-  placeholder: '点击 "提交订单" 向店员购买玩具',
-  general: '订单详情 (General)',
-  requestUrl: '商品地址 (URL)',
+  noRequests: '还没发请求 (网络空闲)',
+  placeholder: '点击 "提交订单" 向服务器索要页面',
+  general: '请求概要 (General)',
+  requestUrl: '目标地址 (URL)',
   requestMethod: '操作类型 (Method)',
-  statusCode: '店员回复 (Status)',
-  responseHeaders: '包裹标签 (Headers)',
+  statusCode: '服务器回复状态 (Status)',
+  responseHeaders: '包裹标签 / 补充说明 (Headers)',
   tabs: {
-    headers: '订单信息',
-    response: '包裹内容',
-    preview: '玩具预览'
+    headers: '头部信息(Headers)',
+    response: '代码内容(Response)',
+    preview: '大致预览(Preview)'
   },
   cols: {
-    name: '商品',
+    name: '请求体',
     status: '状态',
     type: '类型',
     time: '耗时'
@@ -190,7 +190,7 @@ const t = {
 }
 
 const method = ref('GET')
-const path = ref('/toys/lego-castle')
+const path = ref('/video/BV1xx411c7mD')
 const loading = ref(false)
 const requestSent = ref(false)
 const activeTab = ref('headers')
@@ -210,20 +210,33 @@ const sendRequest = async () => {
   loading.value = false
 
   if (method.value === 'GET') {
-    responseStatus.value = '200 OK (有货)'
+    responseStatus.value = '200 OK (交易成功)'
     responseHeaders.value = {
-      'Content-Type': 'application/json (积木)',
-      Date: new Date().toLocaleString(),
-      Store: '乐高官方店'
+      'Content-Type': 'text/html; charset=utf-8',
+      'Server': 'BWS/1.1 (Bilibili Web Server)',
+      'Date': new Date().toUTCString()
     }
-    responseBody.value = `{\n  "id": 101,\n  "name": "Lego Castle",\n  "pieces": 500,\n  "price": "$99"\n}`
+    responseBody.value = `<!DOCTYPE html>
+<html>
+<head>
+  <title>【B站】超级搞笑的猫咪合集</title>
+</head>
+<body>
+  <h1>超级搞笑的猫咪合集</h1>
+  <div class="player">
+    <img src="cat_cover.jpg" alt="封面" />
+    <button>▶️ 播放</button>
+  </div>
+</body>
+</html>`
   } else {
-    responseStatus.value = '201 Created (下单成功)'
+    responseStatus.value = '201 Created (操作成功)'
     responseHeaders.value = {
       'Content-Type': 'application/json',
-      Date: new Date().toLocaleString()
+      'Server': 'BWS/1.1',
+      'Date': new Date().toUTCString()
     }
-    responseBody.value = `{\n  "success": true,\n  "message": "Order placed"\n}`
+    responseBody.value = `{\n  "success": true,\n  "message": "点赞成功!"\n}`
   }
 }
 

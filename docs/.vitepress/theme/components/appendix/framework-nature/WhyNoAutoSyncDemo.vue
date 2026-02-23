@@ -143,11 +143,11 @@
       <button class="action-btn outline" @click="reset">重置</button>
     </div>
 
-    <div class="info-box" v-if="mode === 'native'">
+    <div v-if="mode === 'native'" class="info-box">
       <strong>为什么不自动？</strong>
       <span>JavaScript 的变量是"无感知"的。你执行 <code>count = 4</code> 时，JavaScript 引擎只是把内存中 count 的值从 3 改成 4，仅此而已。它不会通知任何人，不会触发任何回调，不会去检查页面上哪里显示了 count。所以界面不会有任何变化——除非你自己写代码去更新 DOM。</span>
     </div>
-    <div class="info-box" v-else>
+    <div v-else class="info-box">
       <strong>框架怎么做到的？</strong>
       <span>框架把你的数据用特殊机制包裹起来。以 Vue 为例，它用 JavaScript 的 Proxy（代理）功能拦截你对变量的赋值操作。当你写 <code>count = 4</code> 时，Proxy 会在赋值的同时自动执行一段"通知"代码，告诉框架"count 变了"，框架再去找到所有用到 count 的 DOM 节点并更新它们。整个过程你不需要写任何额外代码。</span>
     </div>

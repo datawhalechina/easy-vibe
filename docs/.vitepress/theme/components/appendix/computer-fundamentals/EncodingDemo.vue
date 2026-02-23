@@ -50,11 +50,9 @@
               class="char-item"
             >
               <span class="char-display">{{ char }}</span>
-              <span class="char-unicode"
-                >U+{{
+              <span class="char-unicode">U+{{
                   char.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0')
-                }}</span
-              >
+                }}</span>
               <span class="char-binary">{{
                 char.charCodeAt(0).toString(2).padStart(8, '0')
               }}</span>

@@ -4,7 +4,7 @@
       <span class="title">关键发展路径总结</span>
     </div>
     <div class="path-flow">
-      <div class="path-item" v-for="(item, i) in path" :key="i">
+      <div v-for="(item, i) in path" :key="i" class="path-item">
         <div class="path-card" :style="{ borderLeftColor: item.color }">
           <div class="path-top">
             <span class="path-icon" :style="{ background: item.color }">{{ i + 1 }}</span>

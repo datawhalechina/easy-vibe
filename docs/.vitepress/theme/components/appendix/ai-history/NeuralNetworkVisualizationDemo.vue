@@ -11,7 +11,7 @@
         </svg>
       </div>
       <div class="layer-cards">
-        <div class="layer-card" v-for="info in layerInfo" :key="info.name" :style="{ borderLeftColor: info.color }">
+        <div v-for="info in layerInfo" :key="info.name" class="layer-card" :style="{ borderLeftColor: info.color }">
           <div class="lc-title" :style="{ color: info.color }">{{ info.name }}</div>
           <div class="lc-desc">{{ info.desc }}</div>
         </div>

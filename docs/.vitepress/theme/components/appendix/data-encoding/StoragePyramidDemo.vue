@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="detail-panel" v-if="currentLayer">
+    <div v-if="currentLayer" class="detail-panel">
       <div class="detail-header">
         <span class="detail-icon">{{ currentLayer.icon }}</span>
         <span class="detail-name">{{ currentLayer.name }}</span>

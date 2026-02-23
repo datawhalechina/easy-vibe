@@ -44,8 +44,7 @@
                 :class="{
                   sending: sendingBit === i && activeType === 'serial'
                 }"
-                >{{ bit }}</span
-              >
+                >{{ bit }}</span>
             </div>
           </div>
           <div class="channels">
@@ -57,8 +56,7 @@
                   :key="i"
                   class="flow-dot"
                   :class="{ active: sendingBit !== null }"
-                  >●</span
-                >
+                  >●</span>
               </div>
             </div>
             <div v-else class="channel parallel">
@@ -119,8 +117,7 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong
-      >现代高速传输多采用串行方式。虽然并行"看起来"更快（一次传多位），但串行可以跑更高频率，抗干扰更强，实际速度反而更快。
+      <strong>核心思想：</strong>现代高速传输多采用串行方式。虽然并行"看起来"更快（一次传多位），但串行可以跑更高频率，抗干扰更强，实际速度反而更快。
     </div>
   </div>
 </template>

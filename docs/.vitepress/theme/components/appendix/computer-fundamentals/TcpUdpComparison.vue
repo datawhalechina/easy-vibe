@@ -62,8 +62,7 @@
               v-for="(use, i) in currentProtocol.useCases"
               :key="i"
               class="use-tag"
-              >{{ use }}</span
-            >
+              >{{ use }}</span>
           </div>
         </div>
       </div>

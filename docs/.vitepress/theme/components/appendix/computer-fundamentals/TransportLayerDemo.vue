@@ -64,7 +64,7 @@
             <div class="comparison-side tcp-side">
               <div class="side-header">TCP</div>
               <div class="side-animation">
-                <div class="packet" v-for="i in 3" :key="'tcp-' + i">
+                <div v-for="i in 3" :key="'tcp-' + i" class="packet">
                   📦 {{ i }}
                 </div>
               </div>
@@ -76,7 +76,7 @@
             <div class="comparison-side udp-side">
               <div class="side-header">UDP</div>
               <div class="side-animation">
-                <div class="packet fast" v-for="i in 5" :key="'udp-' + i">
+                <div v-for="i in 5" :key="'udp-' + i" class="packet fast">
                   ⚡ {{ i }}
                 </div>
               </div>

@@ -14,8 +14,8 @@
               v-for="s in scenarios"
               :key="s.id"
               :class="['raf-chip', { active: currentScenario.id === s.id }]"
-              @click="selectScenario(s)"
               :disabled="processing"
+              @click="selectScenario(s)"
             >
               {{ s.label }}
             </button>
@@ -34,14 +34,14 @@
           </div>
           <button
             class="raf-send-btn"
-            @click="sendRequest"
             :disabled="processing"
+            @click="sendRequest"
           >
             {{ processing ? 'Sending...' : 'Send Request' }}
           </button>
         </div>
 
-        <div class="raf-response-box" v-if="response">
+        <div v-if="response" class="raf-response-box">
           <div class="raf-status-line">
             <span class="raf-label">Response Status:</span>
             <span
@@ -82,7 +82,7 @@
           <!-- Logs -->
           <div class="raf-section">
             <div class="raf-section-title">📜 Server Logs</div>
-            <div class="raf-logs" ref="logsRef">
+            <div ref="logsRef" class="raf-logs">
               <div v-for="(log, i) in logs" :key="i" class="raf-log-line">
                 <span class="raf-log-time">[{{ log.time }}]</span>
                 <span :class="log.type">{{ log.msg }}</span>

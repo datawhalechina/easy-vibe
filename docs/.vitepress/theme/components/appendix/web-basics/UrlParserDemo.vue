@@ -109,14 +109,14 @@ const props = defineProps({
   }
 })
 
-const inputUrl = ref('https://shop.com/toys/lego-castle?color=red#summary')
+const inputUrl = ref('https://www.bilibili.com/video/BV1xx411c7mD?t=60#comments')
 const highlightedPart = ref(null)
 
 const icons = {
   protocol: '🚛',
   host: '🏢',
   port: '🚪',
-  pathname: '🧸',
+  pathname: '📺',
   search: '📝',
   hash: '📍'
 }
@@ -125,18 +125,18 @@ const labels = {
   protocol: '交通方式 (Protocol)',
   host: '店铺地址 (Host)',
   port: '大门号 (Port)',
-  pathname: '商品位置 (Path)',
-  search: '备注要求 (Query)',
-  hash: '快速定位 (Hash)'
+  pathname: '具体货架 (Path)',
+  search: '特殊要求 (Search/Query)',
+  hash: '直接跳转 (Hash)'
 }
 
 const descriptions = {
-  protocol: '怎么去？(例如 https = 坐装甲车去，很安全)',
-  host: '去哪家店？(域名，例如 shop.com)',
-  port: '从哪个门进？(默认 443 号门)',
-  pathname: '商品在哪个货架？(路径)',
-  search: '给店员的备注 (例如 ?color=red)',
-  hash: '直接翻到说明书第几页 (锚点)'
+  protocol: '怎么去？(https = 坐押运车去，比 http 安全)',
+  host: '去哪家店？(域名：例如 www.bilibili.com)',
+  port: '走哪个门？(默认隐藏了 443 端口号)',
+  pathname: '拿什么货？(去 /video 区拿编号为 BV... 的视频)',
+  search: '给店员的备注说明 (例如 ?t=60 表示要求从 60 秒开始看)',
+  hash: '拿到货后自己做的事 (例如滚动到评论区 #comments)'
 }
 
 const parsedUrl = computed(() => {

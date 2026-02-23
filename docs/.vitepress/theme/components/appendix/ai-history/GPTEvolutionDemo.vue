@@ -1,7 +1,7 @@
 <template>
   <div class="demo-card">
     <div class="gpt-grid">
-      <div class="gpt-card" v-for="m in models" :key="m.name" :style="{ borderTopColor: m.color }">
+      <div v-for="m in models" :key="m.name" class="gpt-card" :style="{ borderTopColor: m.color }">
         <div class="card-top">
           <span class="gpt-name" :style="{ color: m.color }">{{ m.name }}</span>
           <span class="gpt-year">{{ m.year }}</span>

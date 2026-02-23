@@ -38,13 +38,13 @@
       </div>
 
       <div class="traffic-controls">
-        <button @click="allocateUser" class="btn-primary">
+        <button class="btn-primary" @click="allocateUser">
           👤 分配1个用户
         </button>
-        <button @click="allocateBatch" class="btn-secondary">
+        <button class="btn-secondary" @click="allocateBatch">
           👥 分配100个用户
         </button>
-        <button @click="resetTraffic" class="btn-tertiary">🔄 重置</button>
+        <button class="btn-tertiary" @click="resetTraffic">🔄 重置</button>
       </div>
 
       <div class="traffic-stats">
@@ -64,9 +64,7 @@
 
       <div class="tips">
         <span class="tips-icon">💡</span>
-        <span class="tips-text"
-          >50/50分配能最快检测出差异，确保两组样本量足够大以获得统计显著性</span
-        >
+        <span class="tips-text">50/50分配能最快检测出差异，确保两组样本量足够大以获得统计显著性</span>
       </div>
     </div>
 
@@ -260,7 +258,7 @@
         </div>
       </div>
 
-      <button @click="calculateSampleSize" class="btn-primary btn-calc">
+      <button class="btn-primary btn-calc" @click="calculateSampleSize">
         🧮 计算所需样本量
       </button>
 
@@ -296,9 +294,7 @@
 
       <div class="tips">
         <span class="tips-icon">💡</span>
-        <span class="tips-text"
-          >提升目标越小，所需样本量越大。5%的提升比20%的提升需要更多样本</span
-        >
+        <span class="tips-text">提升目标越小，所需样本量越大。5%的提升比20%的提升需要更多样本</span>
       </div>
     </div>
 

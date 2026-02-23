@@ -110,13 +110,13 @@ const i18n = {
           title: '真实项目',
           headline: '拒绝玩具代码。',
           desc: '深入理解用户鉴权、数据存储、文件上传等核心业务逻辑。',
-          link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase'
+          link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
         },
         {
           title: '部署上线',
           headline: '让世界看到你的作品。',
           desc: '学习服务器配置、域名解析和自动化部署，打通产品落地的最后一公里。',
-          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications'
+          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
         }
       ]
     },
@@ -133,7 +133,7 @@ const i18n = {
         {
           title: 'AI 智能体',
           desc: '构建具备记忆与规划能力的 Agent，实现自主任务执行。',
-          link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future'
+          link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
         },
         {
           title: '长效稳定',
@@ -1502,7 +1502,7 @@ const stage2Cards = [
     desc: '深入理解用户鉴权、数据存储、文件上传等核心业务逻辑。',
     imageColor: '#8EC5FC',
     visualType: 'server',
-    link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase'
+    link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
   },
   {
     title: '部署上线',
@@ -1510,7 +1510,7 @@ const stage2Cards = [
     desc: '学习服务器配置、域名解析和自动化部署，打通产品落地的最后一公里。',
     imageColor: '#96E6A1',
     visualType: 'cloud',
-    link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications'
+    link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
   }
 ]
 
@@ -1528,7 +1528,7 @@ const stage3Cards = [
     desc: 'RAG、Agent，探索 LLM 的无限可能。',
     tag: 'Advanced',
     visualType: 'ai',
-    link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future'
+    link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
   },
   {
     title: '复杂业务架构',

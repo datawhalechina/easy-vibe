@@ -86,9 +86,7 @@
         <div class="arp-arrow">↓ 广播到局域网</div>
         <div class="arp-answer">
           <span class="answer-icon">✅</span>
-          <span class="answer-text"
-            >我是！我的 MAC 地址是 00:11:22:33:44:66</span
-          >
+          <span class="answer-text">我是！我的 MAC 地址是 00:11:22:33:44:66</span>
         </div>
       </div>
     </div>

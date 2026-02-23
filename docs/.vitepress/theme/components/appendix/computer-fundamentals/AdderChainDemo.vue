@@ -166,9 +166,9 @@
         <div class="calc-row">
           <span class="calc-label">本位：</span>
           <span class="calc-formula">
-            {{ stages[activeBit]?.a }} ⊕ {{ stages[activeBit]?.b }}
+            {{ stages[activeBit]?.a }} XOR {{ stages[activeBit]?.b }}
             <span v-if="stages[activeBit]?.cin !== null">
-              ⊕ {{ stages[activeBit]?.cin }}</span>
+              XOR {{ stages[activeBit]?.cin }}</span>
             = <strong>{{ stages[activeBit]?.sum }}</strong>
           </span>
           <span class="calc-reason">（{{ getSumReason(stages[activeBit]) }}）</span>

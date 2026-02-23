@@ -35,8 +35,7 @@
                 v-for="lang in era.languages"
                 :key="lang"
                 class="lang-dot"
-                >{{ lang }}</span
-              >
+                >{{ lang }}</span>
             </div>
           </div>
         </div>
@@ -91,8 +90,7 @@
               v-for="lang in selectedParadigm.languages"
               :key="lang"
               class="lang-tag"
-              >{{ lang }}</span
-            >
+              >{{ lang }}</span>
           </div>
           <div class="paradigm-detail-example">
             <pre><code>{{ selectedParadigm.example }}</code></pre>
@@ -102,8 +100,7 @@
               v-for="t in selectedParadigm.traits"
               :key="t"
               class="trait-chip"
-              >{{ t }}</span
-            >
+              >{{ t }}</span>
           </div>
         </div>
       </div>
@@ -161,8 +158,7 @@
                 v-for="lang in rec.langs"
                 :key="lang"
                 class="choose-lang-tag"
-                >{{ lang }}</span
-              >
+                >{{ lang }}</span>
             </div>
             <div class="choose-reason">{{ rec.reason }}</div>
           </div>
@@ -185,19 +181,11 @@
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span v-if="activeTab === 'timeline'"
-        >编程语言从机器语言到现代高级语言，一直在朝着"更接近人类思维"的方向演化。</span
-      >
-      <span v-else-if="activeTab === 'paradigms'"
-        >编程范式是思考问题的方式——命令式关注"怎么做"，声明式关注"做什么"，选择范式比选语言更重要。</span
-      >
-      <span v-else-if="activeTab === 'compare'"
-        >没有最好的语言，只有最适合场景的语言。类型系统、运行方式、生态都是选择时的关键考量。</span
-      >
-      <span v-else
-        >初学者先学 Python（简单通用），再学 JavaScript（Web
-        必备），最后选一门静态语言（TypeScript/Go/Rust）深入。</span
-      >
+      <span v-if="activeTab === 'timeline'">编程语言从机器语言到现代高级语言，一直在朝着"更接近人类思维"的方向演化。</span>
+      <span v-else-if="activeTab === 'paradigms'">编程范式是思考问题的方式——命令式关注"怎么做"，声明式关注"做什么"，选择范式比选语言更重要。</span>
+      <span v-else-if="activeTab === 'compare'">没有最好的语言，只有最适合场景的语言。类型系统、运行方式、生态都是选择时的关键考量。</span>
+      <span v-else>初学者先学 Python（简单通用），再学 JavaScript（Web
+        必备），最后选一门静态语言（TypeScript/Go/Rust）深入。</span>
     </div>
   </div>
 </template>

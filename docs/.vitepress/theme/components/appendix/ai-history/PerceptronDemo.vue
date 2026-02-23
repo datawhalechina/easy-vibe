@@ -2,13 +2,13 @@
   <div class="demo-card">
     <div class="perceptron-layout">
       <div class="inputs-col">
-        <div class="input-node" v-for="inp in inputs" :key="inp.label">
+        <div v-for="inp in inputs" :key="inp.label" class="input-node">
           <span class="node-circle">{{ inp.val }}</span>
           <span class="node-label">{{ inp.label }}</span>
         </div>
       </div>
       <div class="weights-col">
-        <div class="weight-arrow" v-for="inp in inputs" :key="inp.label">
+        <div v-for="inp in inputs" :key="inp.label" class="weight-arrow">
           <span class="arrow">→</span>
           <span class="w-tag">×{{ inp.weight }}</span>
         </div>

@@ -40,9 +40,7 @@
             <div class="linked-container">
               <div v-for="(item, i) in linkedData" :key="i" class="linked-node">
                 <span class="node-value">{{ item.value }}</span>
-                <span v-if="i < linkedData.length - 1" class="node-arrow"
-                  >→</span
-                >
+                <span v-if="i < linkedData.length - 1" class="node-arrow">→</span>
               </div>
             </div>
             <div class="operation-hint">
@@ -88,8 +86,7 @@
                     v-for="(item, j) in bucket"
                     :key="j"
                     class="bucket-item"
-                    >{{ item }}</span
-                  >
+                    >{{ item }}</span>
                 </div>
               </div>
             </div>
@@ -178,8 +175,7 @@
     </div>
 
     <div class="info-box">
-      <strong>核心思想：</strong
-      >数据结构是数据的"容器"，不同的容器有不同的特点。选择合适的数据结构，能让程序效率提升几个数量级。
+      <strong>核心思想：</strong>数据结构是数据的"容器"，不同的容器有不同的特点。选择合适的数据结构，能让程序效率提升几个数量级。
     </div>
   </div>
 </template>

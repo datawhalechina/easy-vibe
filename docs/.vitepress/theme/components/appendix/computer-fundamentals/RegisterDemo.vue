@@ -30,8 +30,7 @@
         <span
           class="val-box"
           :class="{ on: storedData === 1, flash: isWriting }"
-          >{{ storedData }}</span
-        >
+          >{{ storedData }}</span>
       </div>
 
       <!-- Output -->
