@@ -197,9 +197,7 @@
 
       <div class="tips">
         <span class="tips-icon">💡</span>
-        <span class="tips-text"
-          >P值 < 0.05 表示结果统计显著，说明差异不太可能是随机产生的</span
-        >
+        <span class="tips-text">P值 &lt; 0.05 表示结果统计显著，说明差异不太可能是随机产生的</span>
       </div>
     </div>
 
@@ -464,7 +462,7 @@ const targetRate = computed(
 )
 
 const absoluteDifference = computed(
-  => (targetRate.value - baselineRate.value).toFixed(2)
+  () => (targetRate.value - baselineRate.value).toFixed(2)
 )
 
 const estimatedDays = computed(() => {
@@ -477,8 +475,8 @@ const estimatedDays = computed(() => {
 function calculateSampleSize() {
   const p1 = baselineRate.value / 100
   const p2 = targetRate.value / 100
-  constZa = 1.96 // alpha = 0.05对应的z值
-  constZb = 0.84 // power = 0.8对应的z值
+  const constZa = 1.96 // alpha = 0.05对应的z值
+  const constZb = 0.84 // power = 0.8对应的z值
 
   // 合并标准差
   const pBar = (p1 + p2) / 2

@@ -1,5 +1,15 @@
 {
   "semi": false,
   "singleQuote": true,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "*.vue",
+      "options": {
+        "parser": "vue",
+        "htmlWhitespaceSensitivity": "ignore",
+        "vueIndentScriptAndStyle": false
+      }
+    }
+  ]
 }
