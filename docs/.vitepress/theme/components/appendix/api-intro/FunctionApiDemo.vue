@@ -53,10 +53,8 @@ result = <span class="func">greet</span>(<span class="str">"张三"</span>)</cod
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span
-        >你不需要知道函数内部怎么实现，只需要知道怎么调用它。这就是 API
-        的本质。</span
-      >
+      <span>你不需要知道函数内部怎么实现，只需要知道怎么调用它。这就是 API
+        的本质。</span>
     </div>
   </div>
 </template>

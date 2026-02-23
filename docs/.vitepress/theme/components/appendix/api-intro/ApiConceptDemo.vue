@@ -80,10 +80,8 @@
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span
-        >无论哪种 API，结构都一样：地址（找谁）+ 参数（要什么）=
-        响应（得到什么）。</span
-      >
+      <span>无论哪种 API，结构都一样：地址（找谁）+ 参数（要什么）=
+        响应（得到什么）。</span>
     </div>
   </div>
 </template>

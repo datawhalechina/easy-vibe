@@ -19,7 +19,7 @@
             type="text"
             placeholder="/users"
             class="input"
-          >
+          />
         </div>
         <div class="input-row">
           <label>方法</label>
@@ -41,42 +41,24 @@
             type="password"
             placeholder="sk-..."
             class="input"
-          >
+          />
         </div>
-        <button
-          class="send-btn"
-          :disabled="loading"
-          @click="sendRequest"
-        >
+        <button class="send-btn" :disabled="loading" @click="sendRequest">
           {{ loading ? '发送中...' : '🚀 发送' }}
         </button>
       </div>
 
       <div class="right-panel">
-        <div
-          v-if="!response"
-          class="empty"
-        >
-          点击发送查看结果
-        </div>
-        <div
-          v-else
-          class="response"
-        >
-          <div
-            class="status-bar"
-            :class="getStatusClass(response.status)"
-          >
+        <div v-if="!response" class="empty">点击发送查看结果</div>
+        <div v-else class="response">
+          <div class="status-bar" :class="getStatusClass(response.status)">
             <span class="code">{{ response.status }}</span>
             <span class="text">{{ response.statusText }}</span>
           </div>
           <div class="body">
             <pre>{{ JSON.stringify(response.data, null, 2) }}</pre>
           </div>
-          <div
-            v-if="response.explanation"
-            class="explanation"
-          >
+          <div v-if="response.explanation" class="explanation">
             💡 {{ response.explanation }}
           </div>
         </div>
@@ -85,18 +67,10 @@
 
     <div class="quick-actions">
       <span class="label">快速尝试：</span>
-      <button @click="tryEndpoint('/users')">
-        ✅ GET /users
-      </button>
-      <button @click="tryError401">
-        ❌ 401
-      </button>
-      <button @click="tryError404">
-        ❌ 404
-      </button>
-      <button @click="tryError429">
-        ❌ 429
-      </button>
+      <button @click="tryEndpoint('/users')">✅ GET /users</button>
+      <button @click="tryError401">❌ 401</button>
+      <button @click="tryError404">❌ 404</button>
+      <button @click="tryError429">❌ 429</button>
     </div>
   </div>
 </template>
@@ -205,9 +179,18 @@ function tryError429() {
   gap: 8px;
 }
 
-.icon { font-size: 18px; }
-.title { font-weight: 600; font-size: 0.9rem; }
-.subtitle { font-size: 0.75rem; color: var(--vp-c-text-3); margin-left: auto; }
+.icon {
+  font-size: 18px;
+}
+.title {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.subtitle {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  margin-left: auto;
+}
 
 .demo-layout {
   display: flex;
@@ -230,8 +213,14 @@ function tryError429() {
 }
 
 @media (max-width: 640px) {
-  .demo-layout { flex-direction: column; }
-  .left-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--vp-c-divider); }
+  .demo-layout {
+    flex-direction: column;
+  }
+  .left-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
 }
 
 .input-row {
@@ -314,15 +303,31 @@ function tryError429() {
   font-size: 0.8rem;
 }
 
-.status-bar.success { background: #dcfce7; }
-.status-bar.success .code { color: #166534; }
-.status-bar.client-error { background: #fee2e2; }
-.status-bar.client-error .code { color: #991b1b; }
-.status-bar.server-error { background: #fef3c7; }
-.status-bar.server-error .code { color: #92400e; }
+.status-bar.success {
+  background: #dcfce7;
+}
+.status-bar.success .code {
+  color: #166534;
+}
+.status-bar.client-error {
+  background: #fee2e2;
+}
+.status-bar.client-error .code {
+  color: #991b1b;
+}
+.status-bar.server-error {
+  background: #fef3c7;
+}
+.status-bar.server-error .code {
+  color: #92400e;
+}
 
-.code { font-weight: bold; }
-.text { color: var(--vp-c-text-2); }
+.code {
+  font-weight: bold;
+}
+.text {
+  color: var(--vp-c-text-2);
+}
 
 .body {
   flex: 1;

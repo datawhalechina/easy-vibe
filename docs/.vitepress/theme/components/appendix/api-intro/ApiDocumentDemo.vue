@@ -25,8 +25,7 @@
           <div class="doc-title">Headers</div>
           <pre class="doc-pre">
 Authorization: Bearer sk-xxx
-Content-Type: application/json</pre
-          >
+Content-Type: application/json</pre>
         </div>
 
         <div class="doc-section">
@@ -69,10 +68,8 @@ response = client.chat.completions.create(
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span
-        >看文档找三样：地址（Base
-        URL）、鉴权（Authorization）、参数（Parameters）。</span
-      >
+      <span>看文档找三样：地址（Base
+        URL）、鉴权（Authorization）、参数（Parameters）。</span>
     </div>
   </div>
 </template>

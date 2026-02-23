@@ -49,10 +49,8 @@
 
     <div class="info-box">
       <strong>核心思想：</strong>
-      <span
-        >HTTP 方法就是动词——GET 是"问"，POST 是"做"，PUT/PATCH 是"改"，DELETE
-        是"删"。</span
-      >
+      <span>HTTP 方法就是动词——GET 是"问"，POST 是"做"，PUT/PATCH 是"改"，DELETE
+        是"删"。</span>
     </div>
   </div>
 </template>
