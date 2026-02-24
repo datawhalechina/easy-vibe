@@ -1,18 +1,15 @@
 <template>
   <div class="career-path-demo">
     <div class="demo-header">
-      <span class="icon">🚀</span>
       <span class="title">工程师成长路径</span>
       <span class="subtitle">从入门到精通的技能演进</span>
     </div>
 
     <div class="path-container">
       <div
-        v-for="(stage, index) in stages"
+        v-for="stage in stages"
         :key="stage.name"
         class="stage-card"
-        :class="{ active: activeStage === index }"
-        @click="activeStage = index"
       >
         <div class="stage-header">
           <span class="stage-icon">{{ stage.icon }}</span>
@@ -34,31 +31,17 @@
             <span class="output-text">{{ stage.output }}</span>
           </div>
         </div>
-        <div v-if="index < stages.length - 1" class="stage-arrow">→</div>
       </div>
     </div>
 
-    <div class="path-insight">
-      <div class="insight-icon">💡</div>
-      <div class="insight-content">
-        <div class="insight-title">成长关键点</div>
-        <ul class="insight-list">
-          <li>前 1-2 年：打基础，建立"能独立完成任务"的能力</li>
-          <li>2-3 年：选方向，在某个领域建立深度</li>
-          <li>3-5 年：横向扩展，培养架构思维和团队协作能力</li>
-          <li>5 年+：技术决策、团队带领、技术影响力</li>
-        </ul>
-      </div>
+    <div class="info-box">
+      <strong>成长关键点：</strong>前 1-2 年打基础，建立独立完成任务的能力；2-3 年选方向，建立深度；3-5 年横向扩展，培养架构思维；5 年+ 技术决策与团队影响力。
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const activeStage = ref(0)
-
-const stages = ref([
+const stages = [
   {
     name: '入门期',
     icon: '🌱',
@@ -99,188 +82,135 @@ const stages = ref([
     skills: ['技术战略', '团队建设', '行业洞察', '创新引领'],
     output: '技术方向决策，培养技术团队'
   }
-])
+]
 </script>
 
 <style scoped>
 .career-path-demo {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 20px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.icon {
-  font-size: 28px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
 }
 
 .subtitle {
-  font-size: 14px;
-  color: #64748b;
-  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--vp-c-text-3);
 }
 
 .path-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.5rem;
 }
 
 .stage-card {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-}
-
-.stage-card:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.stage-card.active {
-  border-color: #3b82f6;
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .stage-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .stage-icon {
-  font-size: 24px;
+  font-size: 1.1rem;
 }
 
 .stage-name {
-  font-size: 18px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--vp-c-text-1);
 }
 
 .stage-time {
-  font-size: 12px;
-  color: #64748b;
-  background: #f1f5f9;
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  background: var(--vp-c-bg-soft);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
   margin-left: auto;
 }
 
 .stage-content {
-  padding-left: 36px;
+  padding-left: 1.6rem;
 }
 
 .stage-desc {
-  font-size: 14px;
-  color: #475569;
-  margin-bottom: 12px;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.5rem;
 }
 
 .stage-skills {
-  margin-bottom: 8px;
+  margin-bottom: 0.35rem;
 }
 
 .skill-label,
 .output-label {
-  font-size: 12px;
-  color: #64748b;
-  margin-right: 8px;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  margin-right: 0.35rem;
 }
 
 .skill-tags {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .skill-tag {
-  font-size: 12px;
-  background: #e0f2fe;
-  color: #0369a1;
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-size: 0.68rem;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
 }
 
 .stage-output {
-  font-size: 13px;
-  color: #475569;
+  font-size: 0.72rem;
+  color: var(--vp-c-text-2);
 }
 
 .output-text {
-  color: #1e293b;
+  color: var(--vp-c-text-1);
 }
 
-.stage-arrow {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: #cbd5e1;
-}
-
-.path-insight {
-  margin-top: 24px;
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  gap: 16px;
-  border-left: 4px solid #f59e0b;
-}
-
-.insight-icon {
-  font-size: 24px;
-}
-
-.insight-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 8px;
-}
-
-.insight-list {
-  margin: 0;
-  padding-left: 20px;
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.8;
-}
-
-.insight-list li {
-  margin-bottom: 4px;
+.info-box {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+  border-left: 3px solid var(--vp-c-brand-1);
 }
 
 @media (max-width: 640px) {
   .stage-content {
     padding-left: 0;
-  }
-
-  .stage-arrow {
-    display: none;
   }
 }
 </style>

@@ -1,120 +1,96 @@
 <template>
-  <div class="full-process-demo">
-    <div class="demo-label">完整流程概览 ── 点击逐步演示</div>
-
-    <div class="process-flow">
-      <div
-        v-for="(phase, index) in phases"
-        :key="phase.name"
-        class="phase"
-        :class="{ active: currentPhase >= index }"
-        @click="currentPhase = index"
-      >
-        <div class="phase-icon">{{ phase.icon }}</div>
-        <div class="phase-name">{{ phase.name }}</div>
-        <div class="phase-steps">
-          <span v-for="step in phase.steps" :key="step" class="step-tag">{{ step }}</span>
+  <div class="full-demo">
+    <div class="demo-title">从按下电源到看到网页 ── 完整链路</div>
+    <div class="chain">
+      <div v-for="(phase, i) in phases" :key="phase.name" class="chain-item">
+        <div class="phase-card" :style="{ borderLeftColor: phase.color }">
+          <div class="phase-head">
+            <span class="phase-icon">{{ phase.icon }}</span>
+            <span class="phase-name">{{ phase.name }}</span>
+          </div>
+          <div class="phase-steps">
+            {{ phase.steps }}
+          </div>
+        </div>
+        <div v-if="i < phases.length - 1" class="chain-arrow">
+          <svg width="20" height="14" viewBox="0 0 20 14">
+            <path d="M0 7h14M10 2l6 5-6 5" fill="none" stroke="var(--vp-c-text-3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </div>
     </div>
-
-    <div class="tap-hint">👆 点击查看各阶段</div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const currentPhase = ref(0)
 const phases = [
-  { icon: '🔌', name: '硬件启动', steps: ['电源', '主板', 'CPU', 'BIOS'] },
-  { icon: '💻', name: '系统启动', steps: ['引导程序', '内核', '服务', '桌面'] },
-  { icon: '🌐', name: '浏览器', steps: ['双击图标', '加载程序', '显示窗口'] },
-  { icon: '📡', name: '网络请求', steps: ['URL解析', 'DNS', 'TCP', 'HTTP'] },
-  { icon: '🎨', name: '页面渲染', steps: ['HTML解析', 'CSS', '布局', '绘制'] }
+  { icon: '🔌', name: '硬件启动', color: '#f59e0b', steps: '电源 → 主板 → CPU → BIOS' },
+  { icon: '🔍', name: '固件自检', color: '#ef4444', steps: 'POST → 初始化 → 找启动盘' },
+  { icon: '💻', name: '系统启动', color: '#8b5cf6', steps: '引导 → 内核 → 服务 → 桌面' },
+  { icon: '🌐', name: '浏览器启动', color: '#3b82f6', steps: '创建进程 → 加载代码 → 就绪' },
+  { icon: '📡', name: '网络请求与渲染', color: '#10b981', steps: 'DNS → TCP → HTTP → 渲染' }
 ]
 </script>
 
 <style scoped>
-.full-process-demo {
+.full-demo {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  cursor: pointer;
-  user-select: none;
 }
-
-.demo-label {
-  font-size: 0.78rem;
-  font-weight: bold;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.2px;
-}
-
-.process-flow {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.phase {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.6rem 0.4rem;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  opacity: 0.4;
-  transition: all 0.3s;
-}
-
-.phase.active {
-  opacity: 1;
-  border-color: var(--vp-c-brand);
-  background: var(--vp-c-bg-soft);
-}
-
-.phase-icon {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
-}
-
-.phase-name {
-  font-size: 0.7rem;
+.demo-title {
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.8rem;
 }
-
-.phase-steps {
+.chain {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  width: 100%;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
-.step-tag {
-  font-size: 0.58rem;
-  text-align: center;
-  padding: 0.15rem 0;
-  background: var(--vp-c-bg-soft);
-  border-radius: 3px;
-  color: var(--vp-c-text-3);
+.chain-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
-
-.phase.active .step-tag {
+.phase-card {
   background: var(--vp-c-bg);
-  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid;
+  border-radius: 6px;
+  padding: 0.5rem 0.6rem;
+  min-width: 6rem;
 }
-
-.tap-hint {
-  text-align: center;
-  font-size: 0.72rem;
+.phase-head {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.25rem;
+}
+.phase-icon { font-size: 0.9rem; }
+.phase-name {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+.phase-steps {
+  font-size: 0.58rem;
   color: var(--vp-c-text-3);
-  margin-top: 0.75rem;
+  line-height: 1.4;
+}
+.chain-arrow {
+  padding: 0 0.2rem;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .chain { flex-direction: column; gap: 0.15rem; }
+  .chain-item { flex-direction: column; }
+  .chain-arrow { transform: rotate(90deg); padding: 0.1rem 0; }
 }
 </style>

@@ -122,6 +122,14 @@ import FunctionalUnitDemo from './components/appendix/computer-fundamentals/Func
 import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
 import MinCpuDemo from './components/appendix/computer-fundamentals/MinCpuDemo.vue'
 import RegisterDemo from './components/appendix/computer-fundamentals/RegisterDemo.vue'
+import PipelineDemo from './components/appendix/computer-fundamentals/PipelineDemo.vue'
+import ControllerDemo from './components/appendix/computer-fundamentals/ControllerDemo.vue'
+import BusSystemDemo from './components/appendix/computer-fundamentals/BusSystemDemo.vue'
+import InstructionFormatDemo from './components/appendix/computer-fundamentals/InstructionFormatDemo.vue'
+import AddressingModeDemo from './components/appendix/computer-fundamentals/AddressingModeDemo.vue'
+import CacheDemo from './components/appendix/computer-fundamentals/CacheDemo.vue'
+import IOMethodDemo from './components/appendix/computer-fundamentals/IOMethodDemo.vue'
+import PSWFlagDemo from './components/appendix/computer-fundamentals/PSWFlagDemo.vue'
 import FlipFlopDemo from './components/appendix/computer-fundamentals/FlipFlopDemo.vue'
 // import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
 import ProcessDemo from './components/appendix/computer-fundamentals/ProcessDemo.vue'
@@ -135,6 +143,17 @@ import AlgorithmDemo from './components/appendix/computer-fundamentals/Algorithm
 import LanguageMapDemo from './components/appendix/computer-fundamentals/LanguageMapDemo.vue'
 import TypeSystemDemo from './components/appendix/computer-fundamentals/TypeSystemDemo.vue'
 import CompilerDemo from './components/appendix/computer-fundamentals/CompilerDemo.vue'
+import StaticVsDynamicDemo from './components/appendix/computer-fundamentals/StaticVsDynamicDemo.vue'
+import StrongVsWeakDemo from './components/appendix/computer-fundamentals/StrongVsWeakDemo.vue'
+import TypeInferenceFlowDemo from './components/appendix/computer-fundamentals/TypeInferenceFlowDemo.vue'
+import LexerTokenDemo from './components/appendix/computer-fundamentals/LexerTokenDemo.vue'
+import CompileVsInterpretDemo from './components/appendix/computer-fundamentals/CompileVsInterpretDemo.vue'
+import CodeToInstructionDemo from './components/appendix/computer-fundamentals/CodeToInstructionDemo.vue'
+import CISCvsRISCDemo from './components/appendix/computer-fundamentals/CISCvsRISCDemo.vue'
+import TypeSafetyPracticeDemo from './components/appendix/computer-fundamentals/TypeSafetyPracticeDemo.vue'
+import GenericTypeDemo from './components/appendix/computer-fundamentals/GenericTypeDemo.vue'
+import ASTVisualizerDemo from './components/appendix/computer-fundamentals/ASTVisualizerDemo.vue'
+import CodeOptimizationDemo from './components/appendix/computer-fundamentals/CodeOptimizationDemo.vue'
 import CFNetworkLayers from './components/appendix/computer-fundamentals/NetworkLayers.vue'
 import CFSubnetCalculator from './components/appendix/computer-fundamentals/SubnetCalculator.vue'
 import CFTcpUdpComparison from './components/appendix/computer-fundamentals/TcpUdpComparison.vue'
@@ -184,6 +203,7 @@ import FullstackSkillDemo from './components/appendix/computer-fundamentals/Full
 import AIvsTraditionalDemo from './components/appendix/computer-fundamentals/AIvsTraditionalDemo.vue'
 import CareerPathDemo from './components/appendix/computer-fundamentals/CareerPathDemo.vue'
 import LearningStrategyDemo from './components/appendix/computer-fundamentals/LearningStrategyDemo.vue'
+import VibeCodingFlowDemo from './components/appendix/computer-fundamentals/VibeCodingFlowDemo.vue'
 import PowerOnDemo from './components/appendix/computer-fundamentals/PowerOnDemo.vue'
 import BootProcessDemo from './components/appendix/computer-fundamentals/BootProcessDemo.vue'
 import DesktopDemo from './components/appendix/computer-fundamentals/DesktopDemo.vue'
@@ -859,6 +879,14 @@ export default {
     app.component('CpuArchitectureDemo', CpuArchitectureDemo)
     app.component('MinCpuDemo', MinCpuDemo)
     app.component('RegisterDemo', RegisterDemo)
+    app.component('PipelineDemo', PipelineDemo)
+    app.component('ControllerDemo', ControllerDemo)
+    app.component('BusSystemDemo', BusSystemDemo)
+    app.component('InstructionFormatDemo', InstructionFormatDemo)
+    app.component('AddressingModeDemo', AddressingModeDemo)
+    app.component('CacheDemo', CacheDemo)
+    app.component('IOMethodDemo', IOMethodDemo)
+    app.component('PSWFlagDemo', PSWFlagDemo)
     app.component('FlipFlopDemo', FlipFlopDemo)
     // app.component('EvolutionFlowDemo', EvolutionFlowDemo)
     app.component('ProcessDemo', ProcessDemo)
@@ -872,6 +900,17 @@ export default {
     app.component('LanguageMapDemo', LanguageMapDemo)
     app.component('TypeSystemDemo', TypeSystemDemo)
     app.component('CompilerDemo', CompilerDemo)
+    app.component('StaticVsDynamicDemo', StaticVsDynamicDemo)
+    app.component('StrongVsWeakDemo', StrongVsWeakDemo)
+    app.component('TypeInferenceFlowDemo', TypeInferenceFlowDemo)
+    app.component('LexerTokenDemo', LexerTokenDemo)
+    app.component('CompileVsInterpretDemo', CompileVsInterpretDemo)
+    app.component('CodeToInstructionDemo', CodeToInstructionDemo)
+    app.component('CISCvsRISCDemo', CISCvsRISCDemo)
+    app.component('TypeSafetyPracticeDemo', TypeSafetyPracticeDemo)
+    app.component('GenericTypeDemo', GenericTypeDemo)
+    app.component('ASTVisualizerDemo', ASTVisualizerDemo)
+    app.component('CodeOptimizationDemo', CodeOptimizationDemo)
     app.component('CFNetworkLayers', CFNetworkLayers)
     app.component('CFSubnetCalculator', CFSubnetCalculator)
     app.component('CFTcpUdpComparison', CFTcpUdpComparison)
@@ -927,6 +966,7 @@ export default {
     app.component('AIvsTraditionalDemo', AIvsTraditionalDemo)
     app.component('CareerPathDemo', CareerPathDemo)
     app.component('LearningStrategyDemo', LearningStrategyDemo)
+    app.component('VibeCodingFlowDemo', VibeCodingFlowDemo)
     app.component('PowerOnDemo', PowerOnDemo)
     app.component('BootProcessDemo', BootProcessDemo)
     app.component('DesktopDemo', DesktopDemo)

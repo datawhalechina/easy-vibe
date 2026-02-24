@@ -37,13 +37,13 @@ const eras = ref([
   {
     name: '原生时代',
     time: '1990s',
-    desc: '直接操作 DOM，一切从零开始',
+    desc: '直接用代码操控页面元素，一切从零开始',
     techs: ['HTML', 'CSS', 'JavaScript']
   },
   {
     name: 'jQuery 时代',
     time: '2006-2015',
-    desc: '简化 DOM 操作，跨浏览器兼容',
+    desc: '简化页面操控，跨浏览器兼容',
     techs: ['jQuery', 'Bootstrap']
   },
   {
@@ -55,7 +55,7 @@ const eras = ref([
   {
     name: '组件化时代',
     time: '2013-至今',
-    desc: '声明式、组件化、虚拟 DOM',
+    desc: '声明式、组件化，框架自动更新页面',
     techs: ['React', 'Vue', 'Angular']
   },
   {

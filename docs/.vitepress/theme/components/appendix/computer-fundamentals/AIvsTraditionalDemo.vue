@@ -1,17 +1,13 @@
 <template>
   <div class="ai-vs-traditional-demo">
     <div class="demo-header">
-      <span class="icon">🤖</span>
       <span class="title">AI 工程师 vs 传统工程师</span>
       <span class="subtitle">工作方式的差异</span>
     </div>
 
     <div class="comparison-container">
       <div class="comparison-column traditional">
-        <div class="column-header">
-          <span class="col-icon">👨‍💻</span>
-          <span class="col-title">传统工程师</span>
-        </div>
+        <div class="column-header">传统工程师</div>
         <div class="work-flow">
           <div v-for="(step, index) in traditionalSteps" :key="index" class="flow-step">
             <span class="step-num">{{ index + 1 }}</span>
@@ -35,10 +31,7 @@
       </div>
 
       <div class="comparison-column ai">
-        <div class="column-header">
-          <span class="col-icon">🤖</span>
-          <span class="col-title">AI 工程师</span>
-        </div>
+        <div class="column-header">AI 工程师</div>
         <div class="work-flow">
           <div v-for="(step, index) in aiSteps" :key="index" class="flow-step">
             <span class="step-num">{{ index + 1 }}</span>
@@ -59,7 +52,7 @@
     </div>
 
     <div class="skill-shift">
-      <div class="shift-title">📊 能力重心转移</div>
+      <div class="shift-title">能力重心转移</div>
       <div class="shift-grid">
         <div v-for="item in skillShift" :key="item.from" class="shift-item">
           <div class="shift-from">
@@ -76,159 +69,142 @@
       </div>
     </div>
 
-    <div class="ai-insight">
-      <div class="insight-icon">💡</div>
-      <div class="insight-text">
-        <strong>AI 时代的核心竞争力：</strong>不是"会写代码"，而是"会描述需求、会判断对错、会设计方案"。AI 是你的编程助手，但<strong>决策者永远是你</strong>。
-      </div>
+    <div class="info-box">
+      <strong>AI 时代的核心竞争力：</strong>不是"会写代码"，而是"会描述需求、会判断对错、会设计方案"。AI 是你的编程助手，但决策者永远是你。
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const traditionalSteps = ref([
+const traditionalSteps = [
   '理解需求',
   '查阅文档学习语法',
   '手写代码实现',
   '调试修复 Bug',
   '优化代码性能',
   '编写测试用例'
-])
+]
 
-const aiSteps = ref([
+const aiSteps = [
   '理解需求',
   '用自然语言描述给 AI',
   '审核 AI 生成的代码',
   '判断是否符合预期',
   '调整需求重新生成',
   '整合到项目中'
-])
+]
 
-const skillShift = ref([
+const skillShift = [
   { from: '语法记忆', to: '需求描述能力' },
   { from: '手写代码速度', to: '代码审核能力' },
   { from: '查文档能力', to: '架构设计能力' },
   { from: '调试技巧', to: '问题定位能力' }
-])
+]
 </script>
 
 <style scoped>
 .ai-vs-traditional-demo {
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-  border-radius: 16px;
-  padding: 24px;
-  margin: 20px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
 }
 
 .demo-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #fed7aa;
-}
-
-.icon {
-  font-size: 28px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1e293b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
 }
 
 .subtitle {
-  font-size: 14px;
-  color: #64748b;
-  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--vp-c-text-3);
 }
 
 .comparison-container {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .comparison-column {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .column-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.col-icon {
-  font-size: 24px;
-}
-
-.col-title {
-  font-size: 16px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--vp-c-divider);
 }
 
 .work-flow {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
 }
 
 .flow-step {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
-  background: #f8fafc;
-  border-radius: 6px;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
 }
 
 .step-num {
-  width: 20px;
-  height: 20px;
-  background: #e2e8f0;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.68rem;
   font-weight: 600;
-  color: #64748b;
+  background: var(--vp-c-divider);
+  color: var(--vp-c-text-3);
+  flex-shrink: 0;
 }
 
 .traditional .step-num {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--vp-c-indigo-soft);
+  color: var(--vp-c-indigo-1);
 }
 
 .ai .step-num {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--vp-c-green-soft);
+  color: var(--vp-c-green-1);
 }
 
 .step-text {
-  font-size: 13px;
-  color: #475569;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
 }
 
 .column-stats {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-top: 12px;
-  border-top: 1px solid #e2e8f0;
+  gap: 0.35rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .stat-item {
@@ -238,14 +214,14 @@ const skillShift = ref([
 }
 
 .stat-label {
-  font-size: 12px;
-  color: #64748b;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
 }
 
 .stat-value {
-  font-size: 14px;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--vp-c-text-1);
 }
 
 .vs-divider {
@@ -255,115 +231,102 @@ const skillShift = ref([
 }
 
 .vs-text {
-  font-size: 18px;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: #f97316;
-  background: white;
-  padding: 8px 12px;
-  border-radius: 8px;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
 }
 
 .skill-shift {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 24px;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .shift-title {
-  font-size: 16px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 16px;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.75rem;
 }
 
 .shift-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 0.5rem;
 }
 
 .shift-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px;
-  background: #f8fafc;
-  border-radius: 8px;
+  gap: 0.35rem;
+  padding: 0.5rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
 }
 
 .shift-from,
 .shift-to {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.35rem;
 }
 
 .arrow {
-  font-size: 14px;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
 .shift-from .arrow {
-  color: #ef4444;
+  color: var(--vp-c-danger-1);
 }
 
 .shift-to .arrow {
-  color: #22c55e;
+  color: var(--vp-c-green-1);
 }
 
 .text {
-  font-size: 13px;
-  color: #475569;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
 }
 
 .trend {
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 0.62rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
   margin-left: auto;
 }
 
 .trend.down {
-  background: #fee2e2;
-  color: #dc2626;
+  background: var(--vp-c-danger-soft);
+  color: var(--vp-c-danger-1);
 }
 
 .trend.up {
-  background: #dcfce7;
-  color: #16a34a;
+  background: var(--vp-c-green-soft);
+  color: var(--vp-c-green-1);
 }
 
-.ai-insight {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  gap: 12px;
-  border-left: 4px solid #f97316;
+.info-box {
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+  border-left: 3px solid var(--vp-c-brand-1);
 }
 
-.insight-icon {
-  font-size: 20px;
-}
-
-.insight-text {
-  font-size: 14px;
-  color: #475569;
-  line-height: 1.6;
-}
-
-.insight-text strong {
-  color: #1e293b;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .comparison-container {
     grid-template-columns: 1fr;
   }
 
   .vs-divider {
-    padding: 8px 0;
+    padding: 0.35rem 0;
   }
 
   .shift-grid {

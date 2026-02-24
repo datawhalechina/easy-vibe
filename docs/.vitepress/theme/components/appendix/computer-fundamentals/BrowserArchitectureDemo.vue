@@ -1,44 +1,41 @@
 <template>
   <div class="browser-demo">
-    <div class="demo-label">浏览器架构 ── 点击查看各模块</div>
-
-    <div class="browser-schema">
-      <div class="browser-layers">
-        <div
-          v-for="layer in layers"
-          :key="layer.name"
-          class="layer"
-          :class="{ active: activeLayer === layer.name }"
-          @click="activeLayer = activeLayer === layer.name ? '' : layer.name"
-        >
-          <div class="layer-header">
-            <span class="layer-name">{{ layer.name }}</span>
-            <span class="layer-icon">{{ layer.icon }}</span>
-          </div>
-          <div v-if="activeLayer === layer.name" class="layer-detail">
-            <div class="detail-text">{{ layer.desc }}</div>
-            <div class="detail-examples">
-              <span v-for="ex in layer.examples" :key="ex" class="example-tag">{{ ex }}</span>
+    <div class="demo-title">浏览器架构 ── 点击模块查看详情</div>
+    <div class="arch">
+      <div
+        v-for="mod in modules"
+        :key="mod.name"
+        class="mod-card"
+        :class="{ active: active === mod.name }"
+        @click="active = active === mod.name ? '' : mod.name"
+      >
+        <div class="mod-header">
+          <span class="mod-icon">{{ mod.icon }}</span>
+          <span class="mod-name">{{ mod.name }}</span>
+        </div>
+        <transition name="expand">
+          <div v-if="active === mod.name" class="mod-detail">
+            <div class="mod-desc">{{ mod.desc }}</div>
+            <div class="mod-tags">
+              <span v-for="tag in mod.tags" :key="tag" class="tag">{{ tag }}</span>
             </div>
           </div>
-        </div>
+        </transition>
       </div>
     </div>
-
-    <div class="tap-hint">👆 点击查看各模块详情</div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-const activeLayer = ref('')
-const layers = [
-  { name: '用户界面', icon: '🎨', desc: '你看到的地址栏、标签页、书签等', examples: ['地址栏', '标签页', '书签栏', '工具栏'] },
-  { name: '浏览器引擎', icon: '⚙️', desc: '协调 UI 和渲染引擎的桥梁', examples: ['Chrome: Blink', 'Firefox: Gecko', 'Safari: WebKit'] },
-  { name: '渲染引擎', icon: '📄', desc: '解析 HTML/CSS，把网页显示出来', examples: ['Blink', 'Gecko', 'WebKit'] },
-  { name: 'JavaScript 引擎', icon: '⚡', desc: '执行页面中的 JavaScript 代码', examples: ['V8', 'SpiderMonkey', 'JavaScriptCore'] },
-  { name: '网络模块', icon: '🌐', desc: '发送 HTTP/HTTPS 请求', examples: ['HTTP', 'HTTP/2', 'HTTP/3', 'WebSocket'] },
-  { name: '数据存储', icon: '💾', desc: '保存 Cookie、缓存等数据', examples: ['Cookie', 'LocalStorage', 'Cache'] }
+const active = ref('')
+const modules = [
+  { icon: '🎨', name: '用户界面', desc: '你直接看到和操作的部分：地址栏、标签页、书签、前进/后退按钮', tags: ['地址栏', '标签页', '书签栏'] },
+  { icon: '🔗', name: '浏览器引擎', desc: '连接用户界面和渲染引擎的桥梁，负责协调两者之间的通信', tags: ['Blink', 'Gecko', 'WebKit'] },
+  { icon: '📄', name: '渲染引擎', desc: '解析 HTML 和 CSS，将代码转换成你看到的网页画面', tags: ['HTML 解析', 'CSS 计算', '布局绘制'] },
+  { icon: '⚡', name: 'JavaScript 引擎', desc: '执行网页中的 JavaScript 代码，实现页面的动态交互效果', tags: ['V8', 'SpiderMonkey', 'JavaScriptCore'] },
+  { icon: '🌐', name: '网络模块', desc: '负责发送 HTTP 请求、接收服务器响应，是浏览器与外界通信的通道', tags: ['HTTP/2', 'HTTP/3', 'WebSocket'] },
+  { icon: '💾', name: '数据存储', desc: '在本地保存网站数据，让你下次访问更快、不用重复登录', tags: ['Cookie', 'LocalStorage', 'Cache'] }
 ]
 </script>
 
@@ -49,82 +46,45 @@ const layers = [
   background: var(--vp-c-bg-soft);
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  cursor: pointer;
-  user-select: none;
 }
-
-.demo-label {
-  font-size: 0.78rem;
-  font-weight: bold;
+.demo-title {
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.2px;
+  margin-bottom: 0.8rem;
 }
-
-.browser-layers {
-  display: flex;
-  flex-direction: column;
+.arch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.4rem;
 }
-
-.layer {
+.mod-card {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  padding: 0.5rem 0.7rem;
-  transition: all 0.3s;
+  padding: 0.5rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  user-select: none;
 }
-
-.layer.active {
-  border-color: var(--vp-c-brand);
-}
-
-.layer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.layer-name {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-}
-
-.layer-icon {
-  font-size: 0.9rem;
-}
-
-.layer-detail {
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--vp-c-divider);
-}
-
-.detail-text {
-  font-size: 0.72rem;
-  color: var(--vp-c-text-3);
-  margin-bottom: 0.4rem;
-}
-
-.detail-examples {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.example-tag {
-  font-size: 0.65rem;
-  padding: 0.15rem 0.4rem;
+.mod-card.active { border-color: var(--vp-c-brand); }
+.mod-header { display: flex; align-items: center; gap: 0.4rem; }
+.mod-icon { font-size: 1rem; }
+.mod-name { font-size: 0.72rem; font-weight: 600; color: var(--vp-c-text-1); }
+.mod-detail { margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--vp-c-divider); }
+.mod-desc { font-size: 0.65rem; color: var(--vp-c-text-3); line-height: 1.5; }
+.mod-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.35rem; }
+.tag {
+  font-size: 0.6rem;
+  padding: 0.1rem 0.35rem;
   background: var(--vp-c-bg-soft);
   border-radius: 3px;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-brand);
 }
-
-.tap-hint {
-  text-align: center;
-  font-size: 0.72rem;
-  color: var(--vp-c-text-3);
-  margin-top: 0.75rem;
+.expand-enter-active, .expand-leave-active { transition: all 0.2s ease; }
+.expand-enter-from, .expand-leave-to { opacity: 0; max-height: 0; }
+.expand-enter-to, .expand-leave-from { opacity: 1; max-height: 8rem; }
+@media (max-width: 480px) {
+  .arch { grid-template-columns: 1fr; }
 }
 </style>

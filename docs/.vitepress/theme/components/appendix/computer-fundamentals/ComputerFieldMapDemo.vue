@@ -10,8 +10,6 @@
         v-for="field in fields"
         :key="field.name"
         class="field-card"
-        :class="{ active: activeField === field.name }"
-        @click="activeField = field.name"
       >
         <div class="field-name">{{ field.name }}</div>
         <div class="field-desc">{{ field.desc }}</div>
@@ -28,11 +26,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const activeField = ref('前端')
-
-const fields = ref([
+const fields = [
   {
     name: '前端',
     desc: '用户能看到、能交互的一切',
@@ -63,7 +57,7 @@ const fields = ref([
     desc: '数据采集、存储、分析',
     techs: ['SQL', 'Spark', '数据仓库']
   }
-])
+]
 </script>
 
 <style scoped>
@@ -106,17 +100,6 @@ const fields = ref([
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.field-card:hover {
-  border-color: var(--vp-c-brand-1);
-}
-
-.field-card.active {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg-soft);
 }
 
 .field-name {

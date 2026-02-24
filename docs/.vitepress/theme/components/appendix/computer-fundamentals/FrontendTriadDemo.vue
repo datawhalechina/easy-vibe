@@ -10,8 +10,6 @@
         v-for="tech in triad"
         :key="tech.name"
         class="tech-card"
-        :class="{ active: activeTech === tech.name }"
-        @click="activeTech = tech.name"
       >
         <div class="tech-name">{{ tech.name }}</div>
         <div class="tech-role">{{ tech.role }}</div>
@@ -29,11 +27,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const activeTech = ref('HTML')
-
-const triad = ref([
+const triad = [
   {
     name: 'HTML',
     role: '结构层',
@@ -52,7 +46,7 @@ const triad = ref([
     analogy: '房子的智能：开关灯、开门',
     examples: ['事件', 'DOM操作', '网络请求']
   }
-])
+]
 </script>
 
 <style scoped>
@@ -95,16 +89,6 @@ const triad = ref([
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.tech-card:hover {
-  border-color: var(--vp-c-brand-1);
-}
-
-.tech-card.active {
-  border-color: var(--vp-c-brand-1);
 }
 
 .tech-name {

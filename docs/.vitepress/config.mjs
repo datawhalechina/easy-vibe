@@ -586,6 +586,10 @@ export default defineConfig({
                   link: '/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu'
                 },
                 {
+                  text: '计算机组成原理',
+                  link: '/zh-cn/appendix/1-computer-fundamentals/computer-organization'
+                },
+                {
                   text: '操作系统（进程 / 内存 / 文件系统）',
                   link: '/zh-cn/appendix/1-computer-fundamentals/operating-systems'
                 },
@@ -610,8 +614,12 @@ export default defineConfig({
                   link: '/zh-cn/appendix/1-computer-fundamentals/programming-languages'
                 },
                 {
-                  text: '类型系统与编译原理入门',
-                  link: '/zh-cn/appendix/1-computer-fundamentals/type-systems-compilers'
+                  text: '类型系统入门',
+                  link: '/zh-cn/appendix/1-computer-fundamentals/type-systems'
+                },
+                {
+                  text: '编译原理入门',
+                  link: '/zh-cn/appendix/1-computer-fundamentals/compilers'
                 }
               ]
             },
@@ -798,6 +806,10 @@ export default defineConfig({
                 {
                   text: '后端分层架构',
                   link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
+                },
+                {
+                  text: '领域特定语言（DSL）',
+                  link: '/zh-cn/appendix/4-server-and-backend/domain-specific-languages'
                 }
               ]
             },
