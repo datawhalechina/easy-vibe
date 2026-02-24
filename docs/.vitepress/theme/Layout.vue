@@ -678,6 +678,11 @@ watch(sidebarCollapsed, (collapsed) => {
   display: none !important;
 }
 
+/* 修复侧边栏收起后导航栏标题 border-bottom 重叠问题 */
+.ev-sidebar-collapsed .VPNavBar.has-sidebar .VPNavBarTitle .title {
+  border-bottom-color: transparent !important;
+}
+
 /* 内容区域填满页面 */
 @media (min-width: 960px) {
   .ev-sidebar-collapsed .VPContent.has-sidebar {
