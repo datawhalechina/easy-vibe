@@ -87,32 +87,9 @@
       />
     </div>
 
-    <div class="code-display">
-      <h4>Event Handling Code / 事件处理代码</h4>
-      <pre><code>{{ currentCode }}</code></pre>
-    </div>
+    
 
-    <div class="explanation">
-      <h4>Event Handling Tips / 事件处理要点</h4>
-      <ul>
-        <li>
-          <strong>坐标转换：</strong>
-          使用 getBoundingClientRect() 获取 Canvas 在页面中的位置，计算相对坐标
-        </li>
-        <li>
-          <strong>碰撞检测：</strong>
-          对于圆形，计算鼠标位置到圆心的距离；对于矩形，判断点是否在范围内
-        </li>
-        <li>
-          <strong>事件委托：</strong>
-          Canvas 只有一个元素，需要手动判断事件发生在哪个对象上
-        </li>
-        <li>
-          <strong>性能优化：</strong>
-          使用 requestAnimationFrame 优化重绘，避免频繁操作
-        </li>
-      </ul>
-    </div>
+    
   </div>
 </template>
 
@@ -647,11 +624,12 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   border: 2px solid var(--vp-c-divider);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
 }
 
 canvas {
@@ -661,63 +639,11 @@ canvas {
   outline: none;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 canvas:focus {
   border-color: var(--vp-c-brand);
 }
 
-.code-display {
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: #1e293b;
-  border-radius: 12px;
-  overflow-x: auto;
-  border: 2px solid #334155;
-}
-
-.code-display h4 {
-  color: #f8fafc;
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.code-display pre {
-  margin: 0;
-}
-
-.code-display code {
-  color: #e2e8f0;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-}
-
-.explanation {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  background: var(--vp-c-bg);
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.explanation h4 {
-  margin: 0 0 0.75rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.explanation ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.explanation li {
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
 </style>

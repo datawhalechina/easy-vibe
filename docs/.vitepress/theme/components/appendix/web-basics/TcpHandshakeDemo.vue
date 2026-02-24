@@ -1,128 +1,74 @@
 <template>
-  <div class="tcp-handshake-demo">
-    <div class="controls">
-      <div class="status-indicator">
-        {{ t.statusLabel }}:
-        <span :class="connectionStatus.toLowerCase()">{{ statusText }}</span>
+  <div class="tcp-handshake-demo custom-demo-base">
+    <div class="demo-label">TCP 三次握手 ── 建立可靠通话渠道</div>
+    <div class="demo-panel">
+      
+      <!-- Sequence Diagram area -->
+      <div class="sequence-container">
+        
+        <!-- Computer Left -->
+        <div class="endpoint client">
+          <div class="icon">💻</div>
+          <div class="name">浏览器 (你)</div>
+          <div class="state" :class="{ established: step >= 3 }">
+            {{ step >= 3 ? '连接成功' : '等待连接' }}
+          </div>
+        </div>
+
+        <!-- Middle Area -->
+        <div class="interaction-area">
+          <div class="timeline-line client-line"></div>
+          <div class="timeline-line server-line"></div>
+
+          <!-- Step 1: SYN -->
+          <transition name="msg-right">
+            <div v-if="step >= 1" class="message msg-syn">
+              <div class="msg-box">
+                <div class="msg-title">第1次握手: SYN</div>
+                <div class="msg-desc">"喂，服务器老哥在吗？我能发信息，你能收到吗？"</div>
+              </div>
+            </div>
+          </transition>
+
+          <!-- Step 2: SYN-ACK -->
+          <transition name="msg-left">
+            <div v-if="step >= 2" class="message msg-syn-ack">
+              <div class="msg-box">
+                <div class="msg-title">第2次握手: SYN-ACK</div>
+                <div class="msg-desc">"在！我收到了！那你现在能听到我说话吗？"</div>
+              </div>
+            </div>
+          </transition>
+
+          <!-- Step 3: ACK -->
+          <transition name="msg-right">
+            <div v-if="step >= 3" class="message msg-ack">
+              <div class="msg-box">
+                <div class="msg-title">第3次握手: ACK</div>
+                <div class="msg-desc">"我就知道你听到了，证实通道没问题，准备聊正事！"</div>
+              </div>
+            </div>
+          </transition>
+        </div>
+
+        <!-- Server Right -->
+        <div class="endpoint server">
+          <div class="icon">🖥️</div>
+          <div class="name">Google 服务器</div>
+          <div class="state" :class="{ established: step >= 3 }">
+            {{ step >= 3 ? '连接成功' : '等待连接' }}
+          </div>
+        </div>
       </div>
-      <div class="buttons">
-        <button
-          v-if="step === 0"
-          class="action-btn"
-          @click="startHandshake"
-        >
-          {{ t.connect }}
-        </button>
-        <button
-          v-else
-          class="reset-btn"
-          @click="reset"
-        >
-          {{ t.reset }}
-        </button>
+
+      <div class="action-bar">
+        <button v-if="step === 0" class="action-btn" @click="startHandshake">发起连接</button>
+        <button v-if="step >= 3" class="action-btn outline" @click="reset">断开重连</button>
       </div>
+
     </div>
-
-    <div class="sequence-diagram">
-      <!-- Client Timeline -->
-      <div class="timeline client">
-        <div class="actor">
-          <span class="icon">💻</span>
-          <span class="name">{{ t.client }}</span>
-        </div>
-        <div class="line" />
-        <div
-          class="state-marker"
-          :class="{ active: step >= 1 }"
-        >
-          SYN_SENT
-        </div>
-        <div
-          class="state-marker"
-          :class="{ active: step >= 3 }"
-        >
-          ESTABLISHED
-        </div>
-      </div>
-
-      <!-- Interaction Area -->
-      <div class="interaction-space">
-        <!-- SYN Packet -->
-        <div class="packet-track">
-          <transition name="slide-right">
-            <div
-              v-if="showSyn"
-              class="packet syn"
-            >
-              <div class="packet-body">
-                SYN
-              </div>
-              <div class="packet-detail">
-                SEQ=0
-              </div>
-            </div>
-          </transition>
-        </div>
-
-        <!-- SYN-ACK Packet -->
-        <div class="packet-track reverse">
-          <transition name="slide-left">
-            <div
-              v-if="showSynAck"
-              class="packet syn-ack"
-            >
-              <div class="packet-body">
-                SYN-ACK
-              </div>
-              <div class="packet-detail">
-                SEQ=0, ACK=1
-              </div>
-            </div>
-          </transition>
-        </div>
-
-        <!-- ACK Packet -->
-        <div class="packet-track">
-          <transition name="slide-right">
-            <div
-              v-if="showAck"
-              class="packet ack"
-            >
-              <div class="packet-body">
-                ACK
-              </div>
-              <div class="packet-detail">
-                SEQ=1, ACK=1
-              </div>
-            </div>
-          </transition>
-        </div>
-      </div>
-
-      <!-- Server Timeline -->
-      <div class="timeline server">
-        <div class="actor">
-          <span class="icon">🖥️</span>
-          <span class="name">{{ t.server }}</span>
-        </div>
-        <div class="line" />
-        <div
-          class="state-marker"
-          :class="{ active: step >= 2 }"
-        >
-          SYN_RCVD
-        </div>
-        <div
-          class="state-marker"
-          :class="{ active: step >= 3 }"
-        >
-          ESTABLISHED
-        </div>
-      </div>
-    </div>
-
-    <div class="description-box">
-      <p>{{ currentDescription }}</p>
+    <div class="demo-status">
+      {{ statusText }}
     </div>
   </div>
 </template>
@@ -130,316 +76,226 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const props = defineProps({
-  lang: {
-    type: String,
-    default: 'zh'
-  }
-})
-
-// Bilingual text directly
-const t = {
-  statusLabel: '连接状态',
-  connect: '建立连接',
-  reset: '断开重连',
-  client: '我 (浏览器)',
-  server: '对面 (B站服务器)',
-  status: {
-    closed: '未连接',
-    handshaking: '正在打招呼确认通道...',
-    established: 'TCP 通道已建立 (ESTABLISHED)'
-  },
-  steps: {
-    0: '点击 "建立连接" 开始三次握手（电话试音）。',
-    1: '第一次握手: "喂，服务器老哥在吗？我能发信息，你能收到吗？" (SYN)',
-    2: '第二次握手: "喂喂在的！我收到了！那你现在能听到我说话吗？" (SYN-ACK)',
-    3: '第三次握手: "妥了，我也能听到！通道没问题，准备看视频！" (ACK)'
-  }
-}
-
 const step = ref(0)
-const showSyn = ref(false)
-const showSynAck = ref(false)
-const showAck = ref(false)
+const statusList = [
+  '点击【发起连接】模拟 TCP 三次握手过程',
+  '发送 SYN 包: 浏览器试探服务器接收能力...',
+  '回复 SYN-ACK 包: 服务器确认接收并试探浏览器...',
+  '回复 ACK 包: 浏览器再次确认。双方通道建立完毕，可以正式发请求！'
+]
 
-const connectionStatus = computed(() => {
-  if (step.value === 0) return 'closed'
-  if (step.value < 3) return 'handshaking'
-  return 'established'
-})
-
-const statusText = computed(() => {
-  const s = connectionStatus.value
-  return t.status[s] || s.toUpperCase()
-})
-
-const currentDescription = computed(() => {
-  return t.steps[step.value] || ''
-})
+const statusText = computed(() => statusList[step.value])
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const startHandshake = async () => {
   if (step.value > 0) return
-
-  // Step 1: SYN
+  
   step.value = 1
-  showSyn.value = true
-  await wait(1500)
-
-  // Step 2: SYN-ACK
+  await wait(1800)
+  
   step.value = 2
-  showSynAck.value = true
-  await wait(1500)
-
-  // Step 3: ACK
+  await wait(1800)
+  
   step.value = 3
-  showAck.value = true
 }
 
 const reset = () => {
   step.value = 0
-  showSyn.value = false
-  showSynAck.value = false
-  showAck.value = false
 }
 </script>
 
 <style scoped>
-.tcp-handshake-demo {
+.custom-demo-base {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
-  padding: 1.5rem;
-  margin: 0.5rem 0;
-  font-family: var(--vp-font-family-mono);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
 }
 
-.controls {
+.demo-label {
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.2px;
+}
+
+.demo-panel {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
 }
 
-.status-indicator {
+.demo-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
+  text-align: center;
   font-weight: bold;
 }
-.status-indicator span.closed {
-  color: var(--vp-c-text-3);
-}
-.status-indicator span.handshaking {
-  color: #f59e0b;
-}
-.status-indicator span.established {
-  color: #10b981;
-}
 
-.action-btn {
-  background: #3b82f6;
-  color: white;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.reset-btn {
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.sequence-diagram {
+.sequence-container {
   display: flex;
   justify-content: space-between;
-  height: 300px;
   position: relative;
+  min-height: 280px;
+  margin-bottom: 1rem;
 }
 
-.timeline {
+.endpoint {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100px;
-  position: relative;
-}
-
-.actor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
   z-index: 2;
-  background: var(--vp-c-bg);
 }
 
-.timeline .line {
-  width: 2px;
-  background: var(--vp-c-divider);
-  flex: 1;
-}
-
-.state-marker {
-  margin-top: 2rem;
-  padding: 0.3rem 0.6rem;
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
+.endpoint .icon { font-size: 3rem; margin-bottom: 0.5rem; }
+.endpoint .name { font-weight: bold; font-size: 0.85rem; text-align: center; color: var(--vp-c-text-1); }
+.endpoint .state {
+  margin-top: 0.5rem;
   font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-3);
+  border: 1px solid var(--vp-c-divider);
   transition: all 0.3s;
 }
 
-.state-marker.active {
-  background: #10b981;
-  color: white;
-  border-color: #10b981;
+.endpoint .state.established {
+  background: var(--vp-c-success-soft, #ecfdf5);
+  color: var(--vp-c-success-1, #10b981);
+  border-color: var(--vp-c-success-1, #10b981);
 }
 
-.interaction-space {
+.interaction-area {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 2rem 0;
-}
-
-.packet-track {
-  height: 40px;
   position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.packet-track.reverse {
-  justify-content: flex-end;
-}
-
-.packet {
-  background: #3b82f6;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  margin: 0 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 120px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  padding-top: 3rem;
+  gap: 1.5rem;
 }
 
-.packet.syn-ack {
-  background: #f59e0b;
-}
-.packet.ack {
-  background: #10b981;
+.timeline-line {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  width: 2px;
+  background: var(--vp-c-divider);
+  z-index: 1;
 }
 
-.packet-body {
+.client-line { left: 0; }
+.server-line { right: 0; }
+
+.message {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.msg-box {
+  background: var(--vp-c-brand-soft, #eff6ff);
+  border: 2px solid var(--vp-c-brand-1, #3b82f6);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.msg-box::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; 
+  height: 0; 
+  border-style: solid;
+}
+
+.msg-syn .msg-box::after, .msg-ack .msg-box::after {
+  content: '→';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vp-c-brand-1, #3b82f6);
+  font-size: 1.5rem;
+}
+
+.msg-syn-ack .msg-box {
+  background: var(--vp-c-warning-soft, #fffbeb);
+  border-color: var(--vp-c-warning-1, #f59e0b);
+}
+
+.msg-syn-ack .msg-box::before {
+  content: '←';
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vp-c-warning-1, #f59e0b);
+  border: none;
+  font-size: 1.5rem;
+}
+
+.msg-title {
   font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: var(--vp-c-text-1);
 }
-.packet-detail {
-  font-size: 0.7rem;
-  opacity: 0.9;
+
+.msg-desc {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
 }
+
+.action-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.action-btn {
+  background: var(--vp-c-brand-1, #3b82f6);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.action-btn:hover { background: var(--vp-c-brand-2, #2563eb); }
+.action-btn.outline { background: transparent; color: var(--vp-c-text-1); border: 1px solid var(--vp-c-divider); }
+.action-btn.outline:hover { background: var(--vp-c-bg-alt); }
 
 /* Animations */
-.slide-right-enter-active {
-  animation: slide-right 1.5s linear;
+.msg-right-enter-active, .msg-left-enter-active {
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.slide-left-enter-active {
-  animation: slide-left 1.5s linear;
-}
+.msg-right-enter-from { opacity: 0; transform: translateX(-50px); }
+.msg-left-enter-from { opacity: 0; transform: translateX(50px); }
 
-@keyframes slide-right {
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 1;
-  } /* Not quite right, need to stick */
-}
-
-/* 
-Vue transitions are tricky for "moving across". 
-Let's use a simpler approach: CSS transitions on left/right property or keyframes.
-Actually, for a "send" animation, we want it to move from A to B and then stay or disappear.
-Here I want it to appear and move.
-*/
-
-.slide-right-enter-active,
-.slide-left-enter-active {
-  transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.slide-right-enter-from {
-  transform: translateX(-150px);
-  opacity: 0;
-}
-.slide-right-enter-to {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* This is getting complicated with Vue transitions for simple movement.
-   Let's just use CSS keyframes on the element itself when it renders.
-*/
-
-.packet {
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-
-.packet-track .packet {
-  animation-name: moveRight;
-}
-.packet-track.reverse .packet {
-  animation-name: moveLeft;
-}
-
-@keyframes moveRight {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes moveLeft {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.description-box {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: var(--vp-c-bg-soft);
-  border-radius: 6px;
-  text-align: center;
-  min-height: 3rem;
-  color: var(--vp-c-text-2);
+@media (max-width: 640px) {
+  .msg-box { width: 95%; }
+  .msg-syn .msg-box::after, .msg-ack .msg-box::after, .msg-syn-ack .msg-box::before { display: none; }
+  .interaction-area { margin: 0; padding-top: 1rem; }
+  .endpoint { width: 70px; }
+  .timeline-line { top: 0;}
 }
 </style>

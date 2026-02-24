@@ -1,18 +1,17 @@
 <template>
   <div class="demo ab-testing-demo">
     <div class="header">
-      <span class="icon">🧪</span>
-      <span class="title">A/B 测试交互演示</span>
+      <span class="title">A/B 测试演示</span>
     </div>
 
-    <div class="tabs">
+    <div v-if="!props.tab" class="tabs">
       <button
-        v-for="tab in tabs"
-        :key="tab.id"
-        :class="['tab', { active: activeTab === tab.id }]"
-        @click="activeTab = tab.id"
+        v-for="t in tabs"
+        :key="t.id"
+        :class="['tab', { active: activeTab === t.id }]"
+        @click="activeTab = t.id"
       >
-        {{ tab.icon }} {{ tab.name }}
+        {{ t.name }}
       </button>
     </div>
 
@@ -37,15 +36,7 @@
         </div>
       </div>
 
-      <div class="traffic-controls">
-        <button class="btn-primary" @click="allocateUser">
-          👤 分配1个用户
-        </button>
-        <button class="btn-secondary" @click="allocateBatch">
-          👥 分配100个用户
-        </button>
-        <button class="btn-tertiary" @click="resetTraffic">🔄 重置</button>
-      </div>
+
 
       <div class="traffic-stats">
         <div class="stat-item">
@@ -63,7 +54,6 @@
       </div>
 
       <div class="tips">
-        <span class="tips-icon">💡</span>
         <span class="tips-text">50/50分配能最快检测出差异，确保两组样本量足够大以获得统计显著性</span>
       </div>
     </div>
@@ -178,7 +168,7 @@
               'not-significant': !isSignificant
             }"
           >
-            {{ isSignificant ? '显著 ✅' : '不显著 ❌' }}
+            {{ isSignificant ? '显著' : '不显著' }}
           </span>
         </div>
       </div>
@@ -194,7 +184,6 @@
       </div>
 
       <div class="tips">
-        <span class="tips-icon">💡</span>
         <span class="tips-text">P值 &lt; 0.05 表示结果统计显著，说明差异不太可能是随机产生的</span>
       </div>
     </div>
@@ -259,7 +248,7 @@
       </div>
 
       <button class="btn-primary btn-calc" @click="calculateSampleSize">
-        🧮 计算所需样本量
+        计算所需样本量
       </button>
 
       <div v-if="calculatedSampleSize > 0" class="calc-results">
@@ -293,7 +282,6 @@
       </div>
 
       <div class="tips">
-        <span class="tips-icon">💡</span>
         <span class="tips-text">提升目标越小，所需样本量越大。5%的提升比20%的提升需要更多样本</span>
       </div>
     </div>
@@ -305,7 +293,6 @@
       <div class="pitfall-list">
         <div v-for="pitfall in pitfalls" :key="pitfall.id" class="pitfall-card">
           <div class="pitfall-header">
-            <span class="pitfall-icon">{{ pitfall.icon }}</span>
             <span class="pitfall-title">{{ pitfall.title }}</span>
           </div>
           <div class="pitfall-desc">{{ pitfall.description }}</div>
@@ -313,7 +300,7 @@
             <strong>示例：</strong>{{ pitfall.example }}
           </div>
           <div class="pitfall-solution">
-            <strong>✅ 解决方案：</strong>{{ pitfall.solution }}
+            <strong>解决方案：</strong>{{ pitfall.solution }}
           </div>
         </div>
       </div>
@@ -324,13 +311,20 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const activeTab = ref('traffic')
+const props = defineProps({
+  tab: {
+    type: String,
+    default: null
+  }
+})
+
+const activeTab = ref(props.tab || 'traffic')
 
 const tabs = [
-  { id: 'traffic', icon: '🚦', name: '流量分配' },
-  { id: 'results', icon: '📊', name: '结果对比' },
-  { id: 'calculator', icon: '🧮', name: '样本量计算' },
-  { id: 'pitfalls', icon: '⚠️', name: '常见误区' }
+  { id: 'traffic', name: '流量分配' },
+  { id: 'results', name: '结果对比' },
+  { id: 'calculator', name: '样本量计算' },
+  { id: 'pitfalls', name: '常见误区' }
 ]
 
 // 流量分配相关
@@ -490,7 +484,6 @@ function calculateSampleSize() {
 const pitfalls = [
   {
     id: 'early-stop',
-    icon: '🛑',
     title: '过早停止实验',
     description:
       '看到结果"显著"就立即停止实验，实际上只是随机波动',
@@ -500,7 +493,6 @@ const pitfalls = [
   },
   {
     id: 'peeking',
-    icon: '👁️',
     title: '频繁窥探结果',
     description: '每天查看数据，一旦"显著"就停止，这会大幅增加假阳性率',
     example:
@@ -509,7 +501,6 @@ const pitfalls = [
   },
   {
     id: 'simpson',
-    icon: '🔄',
     title: '辛普森悖论',
     description: '分组看B组更差，但合并后B组反而更好（或相反）',
     example:
@@ -518,7 +509,6 @@ const pitfalls = [
   },
   {
     id: 'p-hacking',
-    icon: '🔬',
     title: 'P值操纵（P-hacking）',
     description: '通过尝试不同指标、不同子群体，直到找到"显著"结果',
     example:
@@ -527,7 +517,6 @@ const pitfalls = [
   },
   {
     id: 'novelty',
-    icon: '✨',
     title: '新奇效应',
     description: '用户因好奇点击新功能，导致短期数据虚高',
     example:
@@ -536,7 +525,6 @@ const pitfalls = [
   },
   {
     id: 'underpowered',
-    icon: '🔋',
     title: '样本量不足',
     description: '样本量太小，即使有真实差异也检测不出来',
     example:

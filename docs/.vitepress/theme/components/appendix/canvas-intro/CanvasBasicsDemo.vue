@@ -127,16 +127,10 @@
         />
       </div>
 
-      <div class="code-display">
-        <h4>Code / 代码</h4>
-        <pre><code>{{ currentCode }}</code></pre>
-      </div>
+      
     </div>
 
-    <div class="info-box">
-      <span class="icon">💡</span>
-      <strong>核心思想：</strong>Canvas 是一个位图画布，所有绘制都是像素操作。绘制后无法修改已有内容，只能覆盖或清除重绘。
-    </div>
+    
   </div>
 </template>
 
@@ -433,75 +427,20 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   border: 2px solid var(--vp-c-divider);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
 }
 
 canvas {
   border: 3px solid var(--vp-c-divider);
   border-radius: 6px;
   background: #ffffff;
-  max-width: 100%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.code-display {
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: #1e293b;
-  border-radius: 12px;
-  overflow-x: auto;
-  border: 2px solid #334155;
-}
-
-.code-display h4 {
-  color: #f8fafc;
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.code-display pre {
-  margin: 0;
-}
-
-.code-display code {
-  color: #e2e8f0;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-}
-
-.info-box {
-  margin-top: 1.5rem;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  padding: 1rem 1.25rem;
-  border-radius: 12px;
-  font-size: 0.875rem;
-  color: #92400e;
-  border-left: 4px solid #f59e0b;
-  display: flex;
-  gap: 0.5rem;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-}
-
-.info-box p {
-  margin: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
-  line-height: 1.6;
-}
-
-.info-box .icon {
-  font-size: 1.125rem;
   flex-shrink: 0;
 }
 
-.info-box strong {
-  color: #78350f;
-}
 </style>

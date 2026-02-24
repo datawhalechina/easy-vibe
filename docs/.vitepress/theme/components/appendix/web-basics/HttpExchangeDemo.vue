@@ -1,158 +1,53 @@
 <template>
-  <div class="http-exchange-demo">
-    <div class="browser-frame">
-      <!-- Address Bar (Simplified) -->
-      <div class="address-bar">
-        <select
-          v-model="method"
-          class="method-select"
-          :disabled="loading"
-        >
-          <option>GET</option>
-          <option>POST</option>
-          <option>PUT</option>
-          <option>DELETE</option>
-        </select>
-        <input
-          v-model="path"
-          class="url-input"
-          :disabled="loading"
-        >
-        <button
-          :disabled="loading"
-          class="send-btn"
-          @click="sendRequest"
-        >
-          {{ loading ? '...' : t.send }}
-        </button>
-      </div>
+  <div class="http-exchange-demo custom-demo-base">
+    <div class="demo-label">HTTP 请求与响应 ── 寄纸条买包裹</div>
+    <div class="demo-panel">
 
-      <div class="split-view">
-        <!-- Network Log (Left) -->
-        <div class="network-log">
-          <div class="log-header">
-            <span>{{ t.cols.name }}</span>
-            <span>{{ t.cols.status }}</span>
-            <span>{{ t.cols.type }}</span>
-            <span>{{ t.cols.time }}</span>
-          </div>
-          <div
-            v-if="requestSent"
-            class="log-row"
-            :class="{ active: requestSent, selected: true }"
-          >
-            <span class="col-name">{{ path.split('/').pop() || 'index' }}</span>
-            <span
-              class="col-status"
-              :class="statusClass"
-            >{{
-              responseStatus
-            }}</span>
-            <span class="col-type">document</span>
-            <span class="col-time">{{ loading ? 'Pending' : '45ms' }}</span>
-          </div>
-          <div
-            v-else
-            class="empty-state"
-          >
-            {{ t.noRequests }}
+      <div class="exchange-container">
+        <!-- Request Side -->
+        <div class="card request-card" :class="{ active: state !== 'idle' }">
+          <div class="card-header">📤 【买方发纸条】 HTTP Request</div>
+          <div class="card-body">
+            <div class="line"><span class="hl-blue">GET</span> /search <span class="hl-gray">HTTP/1.1</span></div>
+            <div class="line"><span class="hl-gray">Host:</span> www.google.com</div>
+            <div class="line"><span class="hl-gray">User-Agent:</span> Mac Chrome 浏览器</div>
+            <div class="line"><span class="hl-gray">Accept-Language:</span> zh-CN (我要中文货) </div>
           </div>
         </div>
 
-        <!-- Details Panel (Right) -->
-        <div
-          v-if="requestSent"
-          class="details-panel"
-        >
-          <div class="tabs">
-            <button
-              v-for="tabKey in ['headers', 'response', 'preview']"
-              :key="tabKey"
-              :class="{ active: activeTab === tabKey }"
-              @click="activeTab = tabKey"
-            >
-              {{ t.tabs[tabKey] }}
-            </button>
+        <!-- Action Center -->
+        <div class="action-center">
+          <button v-if="state === 'idle'" class="action-btn" @click="sendRequest">塞入通道发送 →</button>
+          <div v-if="state === 'loading'" class="loading-state">
+             <div class="spinner"></div>
+             <div>等包裹寄回...</div>
           </div>
-
-          <div class="tab-content">
-            <!-- Headers Tab -->
-            <div
-              v-if="activeTab === 'headers'"
-              class="headers-view"
-            >
-              <div class="section">
-                <div class="section-title">
-                  {{ t.general }}
-                </div>
-                <div class="kv-row">
-                  <span class="key">{{ t.requestUrl }}:</span>
-                  <span class="value">https://api.example.com{{ path }}</span>
-                </div>
-                <div class="kv-row">
-                  <span class="key">{{ t.requestMethod }}:</span>
-                  <span class="value">{{ method }}</span>
-                </div>
-                <div class="kv-row">
-                  <span class="key">{{ t.statusCode }}:</span>
-                  <span class="value">
-                    <span
-                      class="status-dot"
-                      :class="statusClass"
-                    />
-                    {{ responseStatus || '...' }}
-                  </span>
-                </div>
-              </div>
-              <div class="section">
-                <div class="section-title">
-                  {{ t.responseHeaders }}
-                </div>
-                <div
-                  v-for="(val, key) in responseHeaders"
-                  :key="key"
-                  class="kv-row"
-                >
-                  <span class="key">{{ key }}:</span>
-                  <span class="value">{{ val }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Response Tab -->
-            <div
-              v-if="activeTab === 'response'"
-              class="code-view"
-            >
-              <pre>{{ responseBody }}</pre>
-            </div>
-
-            <!-- Preview Tab -->
-            <div
-              v-if="activeTab === 'preview'"
-              class="preview-view"
-            >
-              <div
-                v-if="method === 'GET'"
-                class="html-preview"
-                v-html="responseBody"
-              />
-              <div
-                v-else
-                class="json-preview"
-              >
-                JSON Data: {{ responseBody }}
-              </div>
-            </div>
-          </div>
+          <button v-if="state === 'done'" class="action-btn outline" @click="reset">再试一次 ↻</button>
         </div>
-        <div
-          v-else
-          class="details-placeholder"
-        >
-          {{ t.placeholder }}
+
+        <!-- Response Side -->
+        <div class="card response-card" :class="{ active: state === 'done' }">
+          <div class="card-header">📥 【卖方回包裹】 HTTP Response</div>
+          <div class="card-body" v-if="state === 'done'">
+            <div class="line"><span class="hl-gray">HTTP/1.1</span> <span class="hl-green">200 OK</span> (交易成功)</div>
+            <div class="line"><span class="hl-gray">Content-Type:</span> text/html; charset=UTF-8</div>
+            <div class="divider">空行 (分隔快递单和物品正文)</div>
+            <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;这里是Google搜索页面的代码&lt;/body&gt;
+&lt;/html&gt;
+            </div>
+          </div>
+          <div class="card-body empty" v-else>
+            这里将显示服务器返回的包裹...
+          </div>
         </div>
       </div>
+
+    </div>
+    <div class="demo-status">
+      {{ statusText }}
     </div>
   </div>
 </template>
@@ -160,290 +55,179 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const props = defineProps({
-  lang: {
-    type: String,
-    default: 'zh'
-  }
-})
-
-const t = {
-  send: '提交订单 (发送请求)',
-  noRequests: '还没发请求 (网络空闲)',
-  placeholder: '点击 "提交订单" 向服务器索要页面',
-  general: '请求概要 (General)',
-  requestUrl: '目标地址 (URL)',
-  requestMethod: '操作类型 (Method)',
-  statusCode: '服务器回复状态 (Status)',
-  responseHeaders: '包裹标签 / 补充说明 (Headers)',
-  tabs: {
-    headers: '头部信息(Headers)',
-    response: '代码内容(Response)',
-    preview: '大致预览(Preview)'
-  },
-  cols: {
-    name: '请求体',
-    status: '状态',
-    type: '类型',
-    time: '耗时'
-  }
+const state = ref('idle') // idle, loading, done
+const statusList = {
+  idle: '组装好 HTTP 请求单，包含请求路径和各项补充情报。',
+  loading: '请求正在通过刚才建立好的 TCP 通道飞速传输给对方...',
+  done: '服务器找到货物 (HTML代码)，贴上 200 OK 标签原路返回送达！'
 }
 
-const method = ref('GET')
-const path = ref('/video/BV1xx411c7mD')
-const loading = ref(false)
-const requestSent = ref(false)
-const activeTab = ref('headers')
+const statusText = computed(() => statusList[state.value])
 
-const responseStatus = ref('')
-const responseBody = ref('')
-const responseHeaders = ref({})
-
-const sendRequest = async () => {
-  if (loading.value) return
-  loading.value = true
-  requestSent.value = true
-  responseStatus.value = '处理中...'
-
-  await new Promise((r) => setTimeout(r, 800))
-
-  loading.value = false
-
-  if (method.value === 'GET') {
-    responseStatus.value = '200 OK (交易成功)'
-    responseHeaders.value = {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Server': 'BWS/1.1 (Bilibili Web Server)',
-      'Date': new Date().toUTCString()
-    }
-    responseBody.value = `<!DOCTYPE html>
-<html>
-<head>
-  <title>【B站】超级搞笑的猫咪合集</title>
-</head>
-<body>
-  <h1>超级搞笑的猫咪合集</h1>
-  <div class="player">
-    <img src="cat_cover.jpg" alt="封面" />
-    <button>▶️ 播放</button>
-  </div>
-</body>
-</html>`
-  } else {
-    responseStatus.value = '201 Created (操作成功)'
-    responseHeaders.value = {
-      'Content-Type': 'application/json',
-      'Server': 'BWS/1.1',
-      'Date': new Date().toUTCString()
-    }
-    responseBody.value = `{\n  "success": true,\n  "message": "点赞成功!"\n}`
-  }
+const sendRequest = () => {
+  state.value = 'loading'
+  setTimeout(() => {
+    state.value = 'done'
+  }, 1500)
 }
 
-const statusClass = computed(() => {
-  if (loading.value) return 'pending'
-  if (responseStatus.value.startsWith('2')) return 'success'
-  return 'error'
-})
+const reset = () => {
+  state.value = 'idle'
+}
 </script>
 
 <style scoped>
-.http-exchange-demo {
+.custom-demo-base {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
-  margin: 0.5rem 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-  overflow: hidden;
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
 }
 
-.browser-frame {
+.demo-label {
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: var(--vp-c-text-2);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.2px;
+}
+
+.demo-panel {
   display: flex;
   flex-direction: column;
-  height: 400px;
-}
-
-.address-bar {
-  padding: 0.5rem;
-  background: var(--vp-c-bg-soft);
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  gap: 0.5rem;
-}
-
-.method-select {
-  padding: 0.3rem;
-  border-radius: 4px;
+  padding: 1.5rem;
   border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.demo-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
+  text-align: center;
   font-weight: bold;
 }
 
-.url-input {
-  flex: 1;
-  padding: 0.3rem 0.5rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
+.exchange-container {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+  justify-content: space-between;
 }
 
-.send-btn {
-  background: var(--vp-c-brand);
+.card {
+  flex: 1;
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-alt);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.card.request-card.active { border-color: var(--vp-c-brand-1, #3b82f6); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15); }
+.card.response-card.active { border-color: var(--vp-c-success-1, #10b981); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); }
+
+.card-header {
+  padding: 0.8rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: var(--vp-c-bg-soft);
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.card-body {
+  padding: 1rem;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body.empty {
+  color: var(--vp-c-text-3);
+  font-style: italic;
+  justify-content: center;
+  align-items: center;
+}
+
+.line { margin-bottom: 0.3rem; word-break: break-all; }
+.hl-blue { color: var(--vp-c-brand-1, #3b82f6); font-weight: bold; }
+.hl-gray { color: var(--vp-c-text-2); }
+.hl-green { color: var(--vp-c-success-1, #10b981); font-weight: bold; }
+
+.divider {
+  border-top: 1px dashed var(--vp-c-divider);
+  margin: 1rem 0;
+  padding-top: 0.5rem;
+  color: var(--vp-c-text-3);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.code-block {
+  background: var(--vp-code-bg);
+  padding: 0.8rem;
+  border-radius: 4px;
+  color: var(--vp-code-color);
+  font-size: 0.75rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.action-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+}
+
+.action-btn {
+  background: var(--vp-c-brand-1, #3b82f6);
   color: white;
   border: none;
-  padding: 0 1rem;
-  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
-}
-
-.split-view {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-}
-
-.network-log {
-  width: 40%;
-  border-right: 1px solid var(--vp-c-divider);
-  display: flex;
-  flex-direction: column;
-  font-size: 0.8rem;
-}
-
-.log-header {
-  display: flex;
-  padding: 0.5rem;
-  background: var(--vp-c-bg-soft);
-  border-bottom: 1px solid var(--vp-c-divider);
   font-weight: bold;
-  color: var(--vp-c-text-2);
-}
-
-.log-header span {
-  flex: 1;
-}
-
-.log-row {
-  display: flex;
-  padding: 0.5rem;
-  cursor: pointer;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.log-row.selected {
-  background: #e0f2fe; /* Light blue */
-}
-
-html.dark .log-row.selected {
-  background: #1e3a8a;
-}
-
-.log-row span {
-  flex: 1;
+  transition: all 0.2s;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.col-status.success {
-  color: #10b981;
-}
-.col-status.pending {
-  color: #9ca3af;
-}
+.action-btn:hover { background: var(--vp-c-brand-2, #2563eb); }
+.action-btn.outline { background: transparent; color: var(--vp-c-text-1); border: 1px solid var(--vp-c-divider); }
+.action-btn.outline:hover { background: var(--vp-c-bg-alt); }
 
-.empty-state {
-  padding: 2rem;
-  text-align: center;
-  color: var(--vp-c-text-3);
-}
-
-.details-panel {
-  flex: 1;
+.loading-state {
   display: flex;
   flex-direction: column;
-  font-size: 0.85rem;
-}
-
-.details-placeholder {
-  flex: 1;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--vp-c-text-3);
-}
-
-.tabs {
-  display: flex;
-  border-bottom: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-}
-
-.tabs button {
-  padding: 0.5rem 1rem;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
+  gap: 0.5rem;
   color: var(--vp-c-text-2);
+  font-size: 0.8rem;
+  text-align: center;
 }
 
-.tabs button.active {
-  border-bottom-color: var(--vp-c-brand);
-  color: var(--vp-c-text-1);
-}
-
-.tab-content {
-  flex: 1;
-  
-  padding: 0.75rem;
-}
-
-.section {
-  margin-bottom: 1.5rem;
-}
-
-.section-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-1);
-}
-
-.kv-row {
-  display: flex;
-  margin-bottom: 0.3rem;
-  font-family: monospace;
-}
-
-.kv-row .key {
-  width: 120px;
-  color: var(--vp-c-text-2);
-  flex-shrink: 0;
-}
-
-.kv-row .value {
-  color: var(--vp-c-text-1);
-  word-break: break-all;
-}
-
-.code-view pre {
-  margin: 0;
-  white-space: pre-wrap;
-  font-family: monospace;
-}
-
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--vp-c-divider);
+  border-top-color: var(--vp-c-brand-1, #3b82f6);
   border-radius: 50%;
-  margin-right: 4px;
+  animation: spin 1s linear infinite;
 }
-.status-dot.success {
-  background: #10b981;
-}
-.status-dot.pending {
-  background: #9ca3af;
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 800px) {
+  .exchange-container { flex-direction: column; }
+  .action-center { width: 100%; height: 60px; }
 }
 </style>

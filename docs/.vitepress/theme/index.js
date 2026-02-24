@@ -202,6 +202,10 @@ import UrlParserDemo from './components/appendix/web-basics/UrlParserDemo.vue'
 import HttpExchangeDemo from './components/appendix/web-basics/HttpExchangeDemo.vue'
 import BrowserRenderingDemo from './components/appendix/web-basics/BrowserRenderingDemo.vue'
 
+// Browser & Frontend Components (a11y & i18n)
+import AccessibilityDemo from './components/appendix/browser-frontend/AccessibilityDemo.vue'
+import InternationalizationDemo from './components/appendix/browser-frontend/InternationalizationDemo.vue'
+
 // URL to Browser Components
 import UrlToBrowserQuickStart from './components/appendix/url-to-browser/UrlToBrowserQuickStart.vue'
 import FrontendEvolutionDemo from './components/appendix/web-basics/FrontendEvolutionDemo.vue'
@@ -227,6 +231,16 @@ import GPTEvolutionDemo from './components/appendix/ai-history/GPTEvolutionDemo.
 import FoundationDemo from './components/appendix/ai-history/FoundationDemo.vue'
 import ExpertSystemWaveDemo from './components/appendix/ai-history/ExpertSystemWaveDemo.vue'
 import AIErasComparisonDemo from './components/appendix/ai-history/AIErasComparisonDemo.vue'
+
+// Transformer & Attention Components
+import TransformerQuickStartDemo from './components/appendix/transformer-attention/TransformerQuickStartDemo.vue'
+import RnnVsTransformerDemo from './components/appendix/transformer-attention/RnnVsTransformerDemo.vue'
+import SelfAttentionDemo from './components/appendix/transformer-attention/SelfAttentionDemo.vue'
+import QKVMechanismDemo from './components/appendix/transformer-attention/QKVMechanismDemo.vue'
+import MultiHeadAttentionDemo from './components/appendix/transformer-attention/MultiHeadAttentionDemo.vue'
+import TransformerArchitectureDemo from './components/appendix/transformer-attention/TransformerArchitectureDemo.vue'
+import PositionalEncodingDemo from './components/appendix/transformer-attention/PositionalEncodingDemo.vue'
+import AttentionDecompositionDemo from './components/appendix/transformer-attention/AttentionDecompositionDemo.vue'
 
 // AI Protocols Components
 import McpVisualDemo from './components/appendix/ai-protocols/McpVisualDemo.vue'
@@ -636,6 +650,7 @@ import SqlDemo from './components/appendix/data/SqlDemo.vue'
 import DataModelsDemo from './components/appendix/data/DataModelsDemo.vue'
 import ABTestingDemo from './components/appendix/data/ABTestingDemo.vue'
 import DataAnalysisDemo from './components/appendix/data/DataAnalysisDemo.vue'
+import DataTrackingDemo from './components/appendix/data/DataTrackingDemo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -843,6 +858,11 @@ export default {
     app.component('UrlParserDemo', UrlParserDemo)
     app.component('HttpExchangeDemo', HttpExchangeDemo)
     app.component('BrowserRenderingDemo', BrowserRenderingDemo)
+
+    // Browser & Frontend Components Registration (a11y & i18n)
+    app.component('AccessibilityDemo', AccessibilityDemo)
+    app.component('InternationalizationDemo', InternationalizationDemo)
+
     app.component('FrontendEvolutionDemo', FrontendEvolutionDemo)
     app.component('SliceRequestDemo', SliceRequestDemo)
     app.component('ResponsiveGridDemo', ResponsiveGridDemo)
@@ -872,6 +892,16 @@ export default {
       DiscriminativeVsGenerativeDemo
     )
     app.component('GPTEvolutionDemo', GPTEvolutionDemo)
+
+    // Transformer & Attention Components Registration
+    app.component('TransformerQuickStartDemo', TransformerQuickStartDemo)
+    app.component('RnnVsTransformerDemo', RnnVsTransformerDemo)
+    app.component('SelfAttentionDemo', SelfAttentionDemo)
+    app.component('QKVMechanismDemo', QKVMechanismDemo)
+    app.component('MultiHeadAttentionDemo', MultiHeadAttentionDemo)
+    app.component('TransformerArchitectureDemo', TransformerArchitectureDemo)
+    app.component('PositionalEncodingDemo', PositionalEncodingDemo)
+    app.component('AttentionDecompositionDemo', AttentionDecompositionDemo)
 
     // AI Protocols Components Registration
     app.component('McpVisualDemo', McpVisualDemo)
@@ -1290,6 +1320,7 @@ export default {
     app.component('DataModelsDemo', DataModelsDemo)
     app.component('ABTestingDemo', ABTestingDemo)
     app.component('DataAnalysisDemo', DataAnalysisDemo)
+    app.component('DataTrackingDemo', DataTrackingDemo)
   },
   setup() {
     const route = useRoute()

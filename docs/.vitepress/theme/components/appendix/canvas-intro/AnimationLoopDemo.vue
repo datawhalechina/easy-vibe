@@ -90,41 +90,11 @@
       />
     </div>
 
-    <div class="code-display">
-      <h4>Animation Loop Code / 动画循环代码</h4>
-      <pre><code>{{ animationCode }}</code></pre>
-    </div>
+    
 
-    <div class="explanation">
-      <h4>Animation Principles / 动画原理</h4>
-      <ul>
-        <li>
-          <strong>requestAnimationFrame：</strong>
-          浏览器提供的动画 API，在每次重绘前调用回调函数，通常为 60FPS
-        </li>
-        <li>
-          <strong>Clear & Redraw：</strong>
-          每帧先清除画布，再重新绘制所有内容
-        </li>
-        <li>
-          <strong>State Update：</strong>
-          更新对象位置、角度等状态
-        </li>
-        <li>
-          <strong>Performance：</strong>
-          使用时间差计算位置，确保不同刷新率下动画速度一致
-        </li>
-      </ul>
-    </div>
+    
 
-    <div class="info-box">
-      <p>
-        <span class="icon">💡</span>
-        <strong>提示：</strong>
-        动画的本质是快速连续绘制静态画面。Canvas 每秒可以绘制 60
-        帧（60FPS），形成流畅的动画效果。
-      </p>
-    </div>
+    
   </div>
 </template>
 
@@ -565,11 +535,12 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   border: 2px solid var(--vp-c-divider);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
 }
 
 canvas {
@@ -577,83 +548,7 @@ canvas {
   border-radius: 6px;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.code-display {
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: #1e293b;
-  border-radius: 12px;
-  overflow-x: auto;
-  border: 2px solid #334155;
-}
-
-.code-display h4 {
-  color: #f8fafc;
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.code-display pre {
-  margin: 0;
-}
-
-.code-display code {
-  color: #e2e8f0;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-}
-
-.explanation {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  background: var(--vp-c-bg);
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.explanation h4 {
-  margin: 0 0 0.75rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.explanation ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.explanation li {
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.info-box {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border-radius: 12px;
-  border-left: 4px solid #f59e0b;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-}
-
-.info-box p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: #92400e;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  line-height: 1.6;
-}
-
-.info-box .icon {
-  font-size: 1.125rem;
   flex-shrink: 0;
 }
+
 </style>

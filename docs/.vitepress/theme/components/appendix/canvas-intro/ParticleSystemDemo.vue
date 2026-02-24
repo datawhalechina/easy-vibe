@@ -102,40 +102,11 @@
       />
     </div>
 
-    <div class="code-display">
-      <h4>Particle System Code / 粒子系统代码</h4>
-      <pre><code>{{ particleCode }}</code></pre>
-    </div>
+    
 
-    <div class="explanation">
-      <h4>Particle System Tips / 粒子系统要点</h4>
-      <ul>
-        <li>
-          <strong>粒子类：</strong>
-          每个粒子是一个对象，包含位置、速度、加速度、生命周期等属性
-        </li>
-        <li>
-          <strong>更新循环：</strong>
-          每帧更新所有粒子的位置和状态，移除死亡的粒子
-        </li>
-        <li>
-          <strong>性能优化：</strong>
-          限制粒子数量，使用对象池复用粒子对象
-        </li>
-        <li>
-          <strong>视觉效果：</strong>
-          使用透明度、混合模式、渐变等增强视觉效果
-        </li>
-      </ul>
-    </div>
+    
 
-    <div class="info-box">
-      <p>
-        <span class="icon">💡</span>
-        <strong>提示：</strong>
-        移动鼠标或点击画布来产生粒子！不同的效果有不同的交互方式。
-      </p>
-    </div>
+    
   </div>
 </template>
 
@@ -513,11 +484,12 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   border: 2px solid var(--vp-c-divider);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
 }
 
 canvas {
@@ -526,83 +498,7 @@ canvas {
   cursor: crosshair;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.code-display {
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: #1e293b;
-  border-radius: 12px;
-  overflow-x: auto;
-  border: 2px solid #334155;
-}
-
-.code-display h4 {
-  color: #f8fafc;
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.code-display pre {
-  margin: 0;
-}
-
-.code-display code {
-  color: #e2e8f0;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-}
-
-.explanation {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  background: var(--vp-c-bg);
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.explanation h4 {
-  margin: 0 0 0.75rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.explanation ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.explanation li {
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.info-box {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border-radius: 12px;
-  border-left: 4px solid #f59e0b;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-}
-
-.info-box p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: #92400e;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  line-height: 1.6;
-}
-
-.info-box .icon {
-  font-size: 1.125rem;
   flex-shrink: 0;
 }
+
 </style>

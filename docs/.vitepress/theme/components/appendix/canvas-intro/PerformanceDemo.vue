@@ -174,36 +174,9 @@
       </div>
     </div>
 
-    <div class="code-display">
-      <h4>Optimization Code / 优化代码</h4>
-      <pre><code>{{ optimizationCode }}</code></pre>
-    </div>
+    
 
-    <div class="explanation">
-      <h4>Performance Tips / 性能优化要点</h4>
-      <ul>
-        <li>
-          <strong>减少重绘：</strong>
-          只重绘变化的部分（脏矩形技术），避免不必要的 clearRect
-        </li>
-        <li>
-          <strong>离屏 Canvas：</strong>
-          预渲染静态内容到离屏 Canvas，减少每帧的绘制操作
-        </li>
-        <li>
-          <strong>批量渲染：</strong>
-          减少状态切换（fillStyle、strokeStyle 等），批量处理相同类型的绘制
-        </li>
-        <li>
-          <strong>对象池：</strong>
-          复用对象，减少垃圾回收压力
-        </li>
-        <li>
-          <strong>requestAnimationFrame：</strong>
-          使用浏览器提供的动画 API，优化渲染时机
-        </li>
-      </ul>
-    </div>
+    
   </div>
 </template>
 
@@ -755,11 +728,12 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   border: 2px solid var(--vp-c-divider);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
 }
 
 canvas {
@@ -767,6 +741,7 @@ canvas {
   border-radius: 6px;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .comparison {
@@ -812,57 +787,4 @@ canvas {
   color: var(--vp-c-text-2);
 }
 
-.code-display {
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: #1e293b;
-  border-radius: 12px;
-  overflow-x: auto;
-  border: 2px solid #334155;
-}
-
-.code-display h4 {
-  color: #f8fafc;
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.code-display pre {
-  margin: 0;
-}
-
-.code-display code {
-  color: #e2e8f0;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-}
-
-.explanation {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  background: var(--vp-c-bg);
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.explanation h4 {
-  margin: 0 0 0.75rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.explanation ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.explanation li {
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
 </style>

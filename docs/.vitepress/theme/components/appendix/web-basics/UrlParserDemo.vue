@@ -1,375 +1,180 @@
 <template>
-  <div class="url-parser-demo">
-    <div class="browser-bar">
-      <div class="nav-buttons">
-        <span class="nav-btn">←</span>
-        <span class="nav-btn">→</span>
-        <span class="nav-btn">↻</span>
-      </div>
-      <div class="omnibox">
-        <span class="lock-icon">🔒</span>
-        <!-- Segmented URL Display -->
-        <div
-          v-if="parsedUrl"
-          class="segmented-url"
-        >
-          <span
-            class="url-part protocol"
-            :class="{ active: highlightedPart === 'protocol' }"
-            @mouseover="highlightedPart = 'protocol'"
-            @mouseleave="highlightedPart = null"
-          >{{ parts.protocol }}:</span>
-          <span class="divider">//</span>
-          <span
-            class="url-part host"
-            :class="{ active: highlightedPart === 'host' }"
-            @mouseover="highlightedPart = 'host'"
-            @mouseleave="highlightedPart = null"
-          >{{ parts.host }}</span>
-          <span
-            v-if="parts.port"
-            class="url-part port"
-            :class="{ active: highlightedPart === 'port' }"
-            @mouseover="highlightedPart = 'port'"
-            @mouseleave="highlightedPart = null"
-          >:{{ parts.port }}</span>
-          <span
-            class="url-part pathname"
-            :class="{ active: highlightedPart === 'pathname' }"
-            @mouseover="highlightedPart = 'pathname'"
-            @mouseleave="highlightedPart = null"
-          >{{ parts.pathname }}</span>
-          <span
-            v-if="parts.search"
-            class="url-part search"
-            :class="{ active: highlightedPart === 'search' }"
-            @mouseover="highlightedPart = 'search'"
-            @mouseleave="highlightedPart = null"
-          >{{ parts.search }}</span>
-          <span
-            v-if="parts.hash"
-            class="url-part hash"
-            :class="{ active: highlightedPart === 'hash' }"
-            @mouseover="highlightedPart = 'hash'"
-            @mouseleave="highlightedPart = null"
-          >{{ parts.hash }}</span>
-        </div>
-        <input
-          v-else
-          v-model="inputUrl"
-          type="text"
-          class="url-input"
-          placeholder="https://example.com"
-        >
-      </div>
-    </div>
+  <div class="url-parser-demo custom-demo-base">
+    <div class="demo-label">URL 解析 ── 把人类文字翻译成结构化信息</div>
 
-    <div class="visualization-area">
-      <div
-        v-if="parsedUrl"
-        class="url-breakdown"
-      >
-        <div
-          v-for="(part, key) in parts"
-          :key="key"
-          class="url-segment"
-          :class="[key, { active: highlightedPart === key }]"
-          @mouseover="highlightedPart = key"
-          @mouseleave="highlightedPart = null"
+    <div class="demo-panel url-panel">
+      <!-- url block -->
+      <div class="url-layout">
+        <span 
+          class="url-part protocol" 
+          :class="{ active: activePart === 'protocol' }"
+          @mouseenter="activePart = 'protocol'"
+          @mouseleave="activePart = null"
+        >https://</span>
+        <span 
+          class="url-part host"
+          :class="{ active: activePart === 'host' }"
+          @mouseenter="activePart = 'host'"
+          @mouseleave="activePart = null"
+        >www.google.com</span>
+        <span 
+          class="url-part path"
+          :class="{ active: activePart === 'path' }"
+          @mouseenter="activePart = 'path'"
+          @mouseleave="activePart = null"
+        >/search</span>
+      </div>
+
+      <div class="info-blocks">
+        <div 
+          class="info-card protocol-card"
+          :class="{ active: activePart === 'protocol' }"
+          @mouseenter="activePart = 'protocol'"
+          @mouseleave="activePart = null"
         >
-          <div class="segment-header">
-            <span class="segment-icon">{{ icons[key] }}</span>
-            <span class="segment-label">{{ labels[key] }}</span>
-          </div>
-          <div class="segment-value">
-            {{ part || '-' }}
-          </div>
-          <div class="segment-desc">
-            {{ descriptions[key] }}
-          </div>
+          <div class="card-title">🚛 交通方式 (协议 Protocol)</div>
+          <div class="card-desc">代表你要求坐安全级别最高的"运钞车"（加密通信HTTPS）。如果是 HTTP，就是老式敞篷车，沿途都会被看见。</div>
+        </div>
+
+        <div 
+          class="info-card host-card"
+          :class="{ active: activePart === 'host' }"
+          @mouseenter="activePart = 'host'"
+          @mouseleave="activePart = null"
+        >
+          <div class="card-title">🏢 店铺名 (主机名 Host)</div>
+          <div class="card-desc">这就是你要去哪家店，也是服务器的域名，后续浏览器需要把它翻译成网络世界认的数字 IP。</div>
+        </div>
+
+        <div 
+          class="info-card path-card"
+          :class="{ active: activePart === 'path' }"
+          @mouseenter="activePart = 'path'"
+          @mouseleave="activePart = null"
+        >
+          <div class="card-title">📍 具体货架 (路径 Path)</div>
+          <div class="card-desc">进了店门之后，你要去哪个房间拿具体的哪件商品或执行具体的某个动作。</div>
         </div>
       </div>
-      <div
-        v-else
-        class="error-state"
-      >
-        Invalid URL format / 无效的 URL 格式
-      </div>
     </div>
+    <div class="demo-status">悬停查看每个部分的职责</div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
-const props = defineProps({
-  lang: {
-    type: String,
-    default: 'zh'
-  }
-})
-
-const inputUrl = ref('https://www.bilibili.com/video/BV1xx411c7mD?t=60#comments')
-const highlightedPart = ref(null)
-
-const icons = {
-  protocol: '🚛',
-  host: '🏢',
-  port: '🚪',
-  pathname: '📺',
-  search: '📝',
-  hash: '📍'
-}
-
-const labels = {
-  protocol: '交通方式 (Protocol)',
-  host: '店铺地址 (Host)',
-  port: '大门号 (Port)',
-  pathname: '具体货架 (Path)',
-  search: '特殊要求 (Search/Query)',
-  hash: '直接跳转 (Hash)'
-}
-
-const descriptions = {
-  protocol: '怎么去？(https = 坐押运车去，比 http 安全)',
-  host: '去哪家店？(域名：例如 www.bilibili.com)',
-  port: '走哪个门？(默认隐藏了 443 端口号)',
-  pathname: '拿什么货？(去 /video 区拿编号为 BV... 的视频)',
-  search: '给店员的备注说明 (例如 ?t=60 表示要求从 60 秒开始看)',
-  hash: '拿到货后自己做的事 (例如滚动到评论区 #comments)'
-}
-
-const parsedUrl = computed(() => {
-  try {
-    return new URL(inputUrl.value)
-  } catch (e) {
-    return null
-  }
-})
-
-const parts = computed(() => {
-  if (!parsedUrl.value) return {}
-  return {
-    protocol: parsedUrl.value.protocol.replace(':', ''),
-    host: parsedUrl.value.hostname,
-    port:
-      parsedUrl.value.port ||
-      (parsedUrl.value.protocol === 'https:' ? '443' : '80'),
-    pathname: parsedUrl.value.pathname,
-    search: parsedUrl.value.search,
-    hash: parsedUrl.value.hash
-  }
-})
+const activePart = ref(null)
 </script>
 
 <style scoped>
-.url-parser-demo {
+.custom-demo-base {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background-color: var(--vp-c-bg);
-  overflow: hidden;
-  margin: 0.5rem 0;
-  font-family: var(--vp-font-family-mono);
-}
-
-.browser-bar {
+  border-radius: 8px;
   background: var(--vp-c-bg-soft);
-  padding: 0.8rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
 }
 
-.nav-buttons {
-  display: flex;
-  gap: 0.5rem;
+.demo-label {
+  font-size: 0.78rem;
+  font-weight: bold;
   color: var(--vp-c-text-2);
-  font-size: 1.2rem;
-  user-select: none;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.2px;
 }
 
-.omnibox {
-  flex: 1;
-  background: var(--vp-c-bg);
+.demo-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  font-size: 0.9rem;
-  overflow: hidden;
+  border-radius: 8px;
+  background: var(--vp-c-bg);
 }
 
-.lock-icon {
-  font-size: 0.8rem;
+.demo-status {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--vp-c-text-3);
+  text-align: center;
 }
 
-/* Segmented URL Styles */
-.segmented-url {
+.url-layout {
+  font-size: 1.8rem;
+  font-weight: bold;
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 0.2rem;
   flex-wrap: wrap;
+  font-family: var(--vp-font-family-mono);
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--vp-c-bg-alt);
 }
 
 .url-part {
-  padding: 2px 4px;
-  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
-  font-weight: bold;
+  border: 2px solid transparent;
 }
 
-.url-part:hover,
-.url-part.active {
-  transform: scale(1.1);
-}
+.url-part.protocol { color: var(--vp-c-danger-1, #ef4444); }
+.url-part.protocol.active { background: var(--vp-c-danger-soft, #fef2f2); border-color: var(--vp-c-danger-1, #ef4444); transform: scale(1.05); }
 
-.url-part.protocol {
-  color: #ef4444;
-}
-.url-part.host {
-  color: #3b82f6;
-}
-.url-part.port {
-  color: #f59e0b;
-}
-.url-part.pathname {
-  color: #10b981;
-}
-.url-part.search {
-  color: #8b5cf6;
-}
-.url-part.hash {
-  color: #ec4899;
-}
+.url-part.host { color: var(--vp-c-brand-1, #3b82f6); }
+.url-part.host.active { background: var(--vp-c-brand-soft, #eff6ff); border-color: var(--vp-c-brand-1, #3b82f6); transform: scale(1.05); }
 
-.url-part.active.protocol {
-  background: #fef2f2;
-}
-.url-part.active.host {
-  background: #eff6ff;
-}
-.url-part.active.port {
-  background: #fffbeb;
-}
-.url-part.active.pathname {
-  background: #ecfdf5;
-}
-.url-part.active.search {
-  background: #f5f3ff;
-}
-.url-part.active.hash {
-  background: #fdf2f8;
-}
+.url-part.path { color: var(--vp-c-success-1, #10b981); }
+.url-part.path.active { background: var(--vp-c-success-soft, #ecfdf5); border-color: var(--vp-c-success-1, #10b981); transform: scale(1.05); }
 
-.divider {
-  color: var(--vp-c-text-3);
-  margin: 0 1px;
-}
-
-.visualization-area {
-  padding: 1.5rem;
-}
-
-.url-breakdown {
+.info-blocks {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
 
-.url-segment {
-  padding: 0.75rem;
-  border-radius: 6px;
-  border: 2px solid transparent; /* Prepare for border color */
+.info-card {
+  padding: 1.2rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
   background: var(--vp-c-bg-alt);
   transition: all 0.2s;
-  cursor: default;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  cursor: pointer;
 }
 
-.url-segment.active {
+.info-card:hover, .info-card.active {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Color Coding for Cards */
-.url-segment.protocol {
-  border-color: #ef4444;
-}
-.url-segment.host {
-  border-color: #3b82f6;
-}
-.url-segment.port {
-  border-color: #f59e0b;
-}
-.url-segment.pathname {
-  border-color: #10b981;
-}
-.url-segment.search {
-  border-color: #8b5cf6;
-}
-.url-segment.hash {
-  border-color: #ec4899;
-}
+.protocol-card.active { border-color: var(--vp-c-danger-1, #ef4444); background: var(--vp-c-danger-soft, #fef2f2); }
+.host-card.active { border-color: var(--vp-c-brand-1, #3b82f6); background: var(--vp-c-brand-soft, #eff6ff); }
+.path-card.active { border-color: var(--vp-c-success-1, #10b981); background: var(--vp-c-success-soft, #ecfdf5); }
 
-.url-segment.active.protocol {
-  background: #fef2f2;
-}
-.url-segment.active.host {
-  background: #eff6ff;
-}
-.url-segment.active.port {
-  background: #fffbeb;
-}
-.url-segment.active.pathname {
-  background: #ecfdf5;
-}
-.url-segment.active.search {
-  background: #f5f3ff;
-}
-.url-segment.active.hash {
-  background: #fdf2f8;
-}
-
-.segment-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding-bottom: 0.5rem;
-}
-
-.segment-icon {
-  font-size: 1.2rem;
-}
-
-.segment-label {
-  font-size: 0.8rem;
+.card-title {
+  font-size: 0.95rem;
   font-weight: bold;
+  margin-bottom: 0.6rem;
   color: var(--vp-c-text-1);
 }
 
-.segment-value {
-  font-size: 1.1rem;
-  font-weight: bold;
-  word-break: break-all;
-  font-family: monospace;
-}
+.protocol-card.active .card-title { color: var(--vp-c-danger-1, #ef4444); }
+.host-card.active .card-title { color: var(--vp-c-brand-1, #3b82f6); }
+.path-card.active .card-title { color: var(--vp-c-success-1, #10b981); }
 
-.segment-desc {
-  font-size: 0.8rem;
+.card-desc {
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
-.error-state {
-  text-align: center;
-  color: #ef4444;
-  padding: 2rem;
+@media (max-width: 640px) {
+  .url-layout { font-size: 1.2rem; }
+  .info-blocks { grid-template-columns: 1fr; }
 }
 </style>

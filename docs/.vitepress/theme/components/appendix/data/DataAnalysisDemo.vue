@@ -1,18 +1,17 @@
 <template>
   <div class="data-analysis-root">
     <div class="data-analysis-header">
-      <span class="data-analysis-icon">📊</span>
       <span class="data-analysis-title">数据分析演示</span>
     </div>
 
-    <div class="data-analysis-tabs">
+    <div v-if="!props.tab" class="data-analysis-tabs">
       <button
-        v-for="tab in tabs"
-        :key="tab.id"
-        :class="['data-analysis-tab', { active: activeTab === tab.id }]"
-        @click="activeTab = tab.id"
+        v-for="t in tabs"
+        :key="t.id"
+        :class="['data-analysis-tab', { active: activeTab === t.id }]"
+        @click="activeTab = t.id"
       >
-        {{ tab.icon }} {{ tab.name }}
+        {{ t.name }}
       </button>
     </div>
 
@@ -32,7 +31,7 @@
                 @input="calculateStats"
               />
               <button class="stats-btn" @click="generateRandomData">
-                🎲 随机生成
+                随机生成
               </button>
             </div>
           </div>
@@ -114,7 +113,7 @@
               :class="['agg-op-btn', { active: activeAggOp === op.id }]"
               @click="activeAggOp = op.id"
             >
-              {{ op.icon }} {{ op.name }}
+              {{ op.name }}
             </button>
           </div>
 
@@ -187,7 +186,6 @@
             <div class="funnel-insights-title">洞察与建议</div>
             <div class="funnel-insights-list">
               <div class="funnel-insight">
-                <span class="funnel-insight-icon">💡</span>
                 <span class="funnel-insight-text">
                   最低转化步骤：<strong>{{ worstStep.name }}</strong> ({{
                     worstStep.rate
@@ -195,13 +193,11 @@
                 </span>
               </div>
               <div class="funnel-insight">
-                <span class="funnel-insight-icon">📈</span>
                 <span class="funnel-insight-text">
                   整体转化率：<strong>{{ overallConversion }}</strong>
                 </span>
               </div>
               <div class="funnel-insight">
-                <span class="funnel-insight-icon">🎯</span>
                 <span class="funnel-insight-text">
                   建议：优化
                   <strong>{{ worstStep.name }}</strong>
@@ -383,14 +379,21 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const activeTab = ref('stats')
+const props = defineProps({
+  tab: {
+    type: String,
+    default: null
+  }
+})
+
+const activeTab = ref(props.tab || 'stats')
 const activeAggOp = ref('groupBy')
 
 const tabs = [
-  { id: 'stats', name: '描述性统计', icon: '📈' },
-  { id: 'aggregation', name: '数据聚合', icon: '🔗' },
-  { id: 'funnel', name: '漏斗分析', icon: '🔽' },
-  { id: 'retention', name: '留存分析', icon: '📊' }
+  { id: 'stats', name: '描述性统计' },
+  { id: 'aggregation', name: '数据聚合' },
+  { id: 'funnel', name: '漏斗分析' },
+  { id: 'retention', name: '留存分析' }
 ]
 
 // 描述性统计

@@ -74,56 +74,11 @@
       />
     </div>
 
-    <div class="explanation">
-      <h4>Canvas Coordinate System / Canvas 坐标系统</h4>
-      <ul>
-        <li><strong>Origin / 原点：</strong>在左上角，坐标为 (0, 0)</li>
-        <li>
-          <strong>X Axis / X 轴：</strong>向右为正方向，从 0 到 canvas.width
-        </li>
-        <li>
-          <strong>Y Axis / Y 轴：</strong>向下为正方向，从 0 到 canvas.height
-        </li>
-        <li><strong>Unit / 单位：</strong>像素 (px)，与 CSS 像素 1:1 对应</li>
-      </ul>
-    </div>
+    
 
-    <div class="code-display">
-      <h4>Example Code / 示例代码</h4>
-      <pre><code>// 绘制坐标轴
-const canvas = document.getElementById('myCanvas')
-const ctx = canvas.getContext('2d')
+    
 
-// X 轴（红色）
-ctx.strokeStyle = '#e74c3c'
-ctx.lineWidth = 2
-ctx.beginPath()
-ctx.moveTo(0, 0)
-ctx.lineTo(canvas.width, 0)
-ctx.stroke()
-
-// Y 轴（蓝色）
-ctx.strokeStyle = '#3498db'
-ctx.beginPath()
-ctx.moveTo(0, 0)
-ctx.lineTo(0, canvas.height)
-ctx.stroke()
-
-// 绘制点
-ctx.fillStyle = '#2ecc71'
-ctx.beginPath()
-ctx.arc({{ Math.round(selectedPoint?.x || 100) }}, {{ Math.round(selectedPoint?.y || 100) }}, 5, 0, Math.PI * 2)
-ctx.fill()</code></pre>
-    </div>
-
-    <div class="info-box">
-      <p>
-        <span class="icon">💡</span>
-        <strong>提示：</strong>
-        Canvas 的 Y
-        轴方向与传统数学坐标系相反，向下为正。这在处理图形定位时需要特别注意。
-      </p>
-    </div>
+    
   </div>
 </template>
 
@@ -360,11 +315,12 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   margin: 1.5rem 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--vp-c-bg);
   border-radius: 12px;
   border: 2px solid var(--vp-c-divider);
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
 }
 
 canvas {
@@ -373,83 +329,7 @@ canvas {
   cursor: crosshair;
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.explanation {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  background: var(--vp-c-bg);
-  border-radius: 6px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.explanation h4 {
-  margin: 0 0 0.75rem 0;
-  color: var(--vp-c-text-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.explanation ul {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.explanation li {
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.code-display {
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: #1e293b;
-  border-radius: 12px;
-  overflow-x: auto;
-  border: 2px solid #334155;
-}
-
-.code-display h4 {
-  color: #f8fafc;
-  margin: 0 0 0.75rem 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.code-display pre {
-  margin: 0;
-}
-
-.code-display code {
-  color: #e2e8f0;
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
-}
-
-.info-box {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border-radius: 12px;
-  border-left: 4px solid #f59e0b;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-}
-
-.info-box p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: #92400e;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  line-height: 1.6;
-}
-
-.info-box .icon {
-  font-size: 1.125rem;
   flex-shrink: 0;
 }
+
 </style>
