@@ -9,6 +9,11 @@
 从晶体管到操作系统，深入了解计算机如何工作：
 <NavGrid>
 <NavCard
+    href="/zh-cn/appendix/1-computer-fundamentals/vibe-coding-fullstack"
+    title="Vibe Coding 时代下的全栈开发"
+    description="AI 辅助时代，前端、后端、编程语言、全栈工程师的成长路径全景图"
+  />
+<NavCard
     href="/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu"
     title="从晶体管到 CPU"
     description="理解计算机最底层的硬件逻辑，从晶体管开关到 CPU 指令执行"

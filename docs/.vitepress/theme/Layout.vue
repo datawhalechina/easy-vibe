@@ -466,7 +466,7 @@ watch(sidebarCollapsed, (collapsed) => {
   font-size: 18px;
   font-weight: 500;
   white-space: pre-wrap;
-  color: #000000;
+  color: var(--vp-c-text-2);
   min-height: 28px;
   display: flex;
   /* 居中对齐 */
@@ -488,7 +488,7 @@ watch(sidebarCollapsed, (collapsed) => {
   margin-right: auto;
 }
 .VPHomeHero .text {
-  color: #000000 !important;
+  color: var(--vp-c-text-1) !important;
 }
 .VPHomeHero .actions {
   justify-content: center;
