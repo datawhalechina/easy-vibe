@@ -1970,7 +1970,7 @@ a {
 .nav-title {
   font-weight: 600;
   font-size: 19px;
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
   flex-shrink: 0;
   letter-spacing: -0.01em;
 }
@@ -1987,7 +1987,7 @@ a {
   background: none;
   border: none;
   font-size: 12px;
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
   cursor: pointer;
   transition: opacity 0.2s;
   padding: 0;
@@ -2000,7 +2000,7 @@ a {
 .nav-links button:hover,
 .nav-links button.active,
 .nav-link-item:hover {
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
   opacity: 1;
 }
 
@@ -2021,7 +2021,7 @@ a {
   background: none;
   border: none;
   padding: 0;
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2038,7 +2038,7 @@ a {
   background: none;
   border: none;
   padding: 0;
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2060,13 +2060,13 @@ a {
 .button .option-icon {
   width: 20px;
   height: 20px;
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
 }
 
 .button .text-icon {
   width: 14px;
   height: 14px;
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
 }
 
 /* GitHub Stars Styles */
@@ -2076,7 +2076,7 @@ a {
 }
 
 :deep(.nav-github-stars .github-stars-link) {
-  color: #000 !important;
+  color: var(--vp-c-text-1) !important;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -2134,8 +2134,8 @@ a {
 }
 
 .buy-btn {
-  background: #000;
-  color: #fff !important;
+  background: var(--vp-c-text-1);
+  color: var(--vp-c-bg) !important;
   padding: 4px 12px;
   border-radius: 980px;
   font-size: 12px;

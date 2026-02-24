@@ -574,6 +574,14 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
+                  text: 'Vibe Coding 时代下的全栈开发',
+                  link: '/zh-cn/appendix/1-computer-fundamentals/vibe-coding-fullstack'
+                },
+                {
+                  text: '从按下电源到访问网站发生了什么',
+                  link: '/zh-cn/appendix/1-computer-fundamentals/power-on-to-web'
+                },
+                {
                   text: '从晶体管到 CPU',
                   link: '/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu'
                 },

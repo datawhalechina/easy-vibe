@@ -120,6 +120,7 @@ import AdderChainDemo from './components/appendix/computer-fundamentals/AdderCha
 import CompleteAdderDemo from './components/appendix/computer-fundamentals/CompleteAdderDemo.vue'
 import FunctionalUnitDemo from './components/appendix/computer-fundamentals/FunctionalUnitDemo.vue'
 import CpuArchitectureDemo from './components/appendix/computer-fundamentals/CpuArchitectureDemo.vue'
+import MinCpuDemo from './components/appendix/computer-fundamentals/MinCpuDemo.vue'
 import RegisterDemo from './components/appendix/computer-fundamentals/RegisterDemo.vue'
 import FlipFlopDemo from './components/appendix/computer-fundamentals/FlipFlopDemo.vue'
 // import EvolutionFlowDemo from './components/appendix/computer-fundamentals/EvolutionFlowDemo.vue'
@@ -170,6 +171,26 @@ import StorageHierarchyDemo from './components/appendix/computer-fundamentals/St
 import GraphStructureDemo from './components/appendix/computer-fundamentals/GraphStructureDemo.vue'
 import LanguageTypeModelDemo from './components/appendix/computer-fundamentals/LanguageTypeModelDemo.vue'
 import CompilationPracticeDemo from './components/appendix/computer-fundamentals/CompilationPracticeDemo.vue'
+
+// Vibe Coding Fullstack Components
+import DeveloperSkillShiftDemo from './components/appendix/computer-fundamentals/DeveloperSkillShiftDemo.vue'
+import ComputerFieldMapDemo from './components/appendix/computer-fundamentals/ComputerFieldMapDemo.vue'
+import FrontendTriadDemo from './components/appendix/computer-fundamentals/FrontendTriadDemo.vue'
+import FrontendFrameworkDemo from './components/appendix/computer-fundamentals/FrontendFrameworkDemo.vue'
+import BackendCoreDemo from './components/appendix/computer-fundamentals/BackendCoreDemo.vue'
+import ProgrammingLanguageMapDemo from './components/appendix/computer-fundamentals/ProgrammingLanguageMapDemo.vue'
+import LanguageSelectionDemo from './components/appendix/computer-fundamentals/LanguageSelectionDemo.vue'
+import FullstackSkillDemo from './components/appendix/computer-fundamentals/FullstackSkillDemo.vue'
+import AIvsTraditionalDemo from './components/appendix/computer-fundamentals/AIvsTraditionalDemo.vue'
+import CareerPathDemo from './components/appendix/computer-fundamentals/CareerPathDemo.vue'
+import LearningStrategyDemo from './components/appendix/computer-fundamentals/LearningStrategyDemo.vue'
+import PowerOnDemo from './components/appendix/computer-fundamentals/PowerOnDemo.vue'
+import BootProcessDemo from './components/appendix/computer-fundamentals/BootProcessDemo.vue'
+import DesktopDemo from './components/appendix/computer-fundamentals/DesktopDemo.vue'
+import BrowserArchitectureDemo from './components/appendix/computer-fundamentals/BrowserArchitectureDemo.vue'
+import URLRequestDemo from './components/appendix/computer-fundamentals/URLRequestDemo.vue'
+import RenderingDemo from './components/appendix/computer-fundamentals/RenderingDemo.vue'
+import FullProcessDemo from './components/appendix/computer-fundamentals/FullProcessDemo.vue'
 
 // Data Encoding Components
 import GarbledTextDemo from './components/appendix/data-encoding/GarbledTextDemo.vue'
@@ -668,6 +689,55 @@ import ABTestingDemo from './components/appendix/data/ABTestingDemo.vue'
 import DataAnalysisDemo from './components/appendix/data/DataAnalysisDemo.vue'
 import DataTrackingDemo from './components/appendix/data/DataTrackingDemo.vue'
 
+// RAG Components
+import RAGPipelineDemo from './components/appendix/rag/RAGPipelineDemo.vue'
+import ChunkingStrategyDemo from './components/appendix/rag/ChunkingStrategyDemo.vue'
+import RetrievalDemo from './components/appendix/rag/RetrievalDemo.vue'
+import RAGArchitectureDemo from './components/appendix/rag/RAGArchitectureDemo.vue'
+import RAGvsFineTuningDemo from './components/appendix/rag/RAGvsFineTuningDemo.vue'
+
+// Embedding & Vector Components
+import EmbeddingConceptDemo from './components/appendix/embedding-vector/EmbeddingConceptDemo.vue'
+import VectorSimilarityDemo from './components/appendix/embedding-vector/VectorSimilarityDemo.vue'
+import VectorIndexDemo from './components/appendix/embedding-vector/VectorIndexDemo.vue'
+import VectorDatabaseDemo from './components/appendix/embedding-vector/VectorDatabaseDemo.vue'
+import EmbeddingPipelineDemo from './components/appendix/embedding-vector/EmbeddingPipelineDemo.vue'
+
+// AI Native App Components
+import AINativeArchDemo from './components/appendix/ai-native-app/AINativeArchDemo.vue'
+import AIDesignPrincipleDemo from './components/appendix/ai-native-app/AIDesignPrincipleDemo.vue'
+import PromptDesignDemo from './components/appendix/ai-native-app/PromptDesignDemo.vue'
+import AIUXPatternDemo from './components/appendix/ai-native-app/AIUXPatternDemo.vue'
+import AIAppFlowDemo from './components/appendix/ai-native-app/AIAppFlowDemo.vue'
+
+// Infrastructure as Code Components
+import IaCConceptDemo from './components/appendix/infrastructure-as-code/IaCConceptDemo.vue'
+import TerraformWorkflowDemo from './components/appendix/infrastructure-as-code/TerraformWorkflowDemo.vue'
+import IaCToolComparisonDemo from './components/appendix/infrastructure-as-code/IaCToolComparisonDemo.vue'
+import ConfigDriftDemo from './components/appendix/infrastructure-as-code/ConfigDriftDemo.vue'
+import IaCBestPracticeDemo from './components/appendix/infrastructure-as-code/IaCBestPracticeDemo.vue'
+
+// DNS & HTTPS Components
+import DnsResolutionDemo from './components/appendix/dns-https/DnsResolutionDemo.vue'
+import DnsRecordTypeDemo from './components/appendix/dns-https/DnsRecordTypeDemo.vue'
+import HttpsHandshakeDemo from './components/appendix/dns-https/HttpsHandshakeDemo.vue'
+import CertificateChainDemo from './components/appendix/dns-https/CertificateChainDemo.vue'
+import DnsHttpsComparisonDemo from './components/appendix/dns-https/DnsHttpsComparisonDemo.vue'
+
+// Model Finetuning Components
+import FinetuningPipelineDemo from './components/appendix/model-finetuning/FinetuningPipelineDemo.vue'
+import TrainingDataDemo from './components/appendix/model-finetuning/TrainingDataDemo.vue'
+import LoRADemo from './components/appendix/model-finetuning/LoRADemo.vue'
+import ModelQuantizationDemo from './components/appendix/model-finetuning/ModelQuantizationDemo.vue'
+import ModelServingDemo from './components/appendix/model-finetuning/ModelServingDemo.vue'
+
+// Incident Response Components
+import SeverityLevelDemo from './components/appendix/incident-response/SeverityLevelDemo.vue'
+import IncidentTimelineDemo from './components/appendix/incident-response/IncidentTimelineDemo.vue'
+import IncidentCommandDemo from './components/appendix/incident-response/IncidentCommandDemo.vue'
+import AlertEscalationDemo from './components/appendix/incident-response/AlertEscalationDemo.vue'
+import PostmortemDemo from './components/appendix/incident-response/PostmortemDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -787,6 +857,7 @@ export default {
     app.component('CompleteAdderDemo', CompleteAdderDemo)
     app.component('FunctionalUnitDemo', FunctionalUnitDemo)
     app.component('CpuArchitectureDemo', CpuArchitectureDemo)
+    app.component('MinCpuDemo', MinCpuDemo)
     app.component('RegisterDemo', RegisterDemo)
     app.component('FlipFlopDemo', FlipFlopDemo)
     // app.component('EvolutionFlowDemo', EvolutionFlowDemo)
@@ -843,6 +914,26 @@ export default {
     app.component('GraphStructureDemo', GraphStructureDemo)
     app.component('LanguageTypeModelDemo', LanguageTypeModelDemo)
     app.component('CompilationPracticeDemo', CompilationPracticeDemo)
+
+    // Vibe Coding Fullstack Components Registration
+    app.component('DeveloperSkillShiftDemo', DeveloperSkillShiftDemo)
+    app.component('ComputerFieldMapDemo', ComputerFieldMapDemo)
+    app.component('FrontendTriadDemo', FrontendTriadDemo)
+    app.component('FrontendFrameworkDemo', FrontendFrameworkDemo)
+    app.component('BackendCoreDemo', BackendCoreDemo)
+    app.component('ProgrammingLanguageMapDemo', ProgrammingLanguageMapDemo)
+    app.component('LanguageSelectionDemo', LanguageSelectionDemo)
+    app.component('FullstackSkillDemo', FullstackSkillDemo)
+    app.component('AIvsTraditionalDemo', AIvsTraditionalDemo)
+    app.component('CareerPathDemo', CareerPathDemo)
+    app.component('LearningStrategyDemo', LearningStrategyDemo)
+    app.component('PowerOnDemo', PowerOnDemo)
+    app.component('BootProcessDemo', BootProcessDemo)
+    app.component('DesktopDemo', DesktopDemo)
+    app.component('BrowserArchitectureDemo', BrowserArchitectureDemo)
+    app.component('URLRequestDemo', URLRequestDemo)
+    app.component('RenderingDemo', RenderingDemo)
+    app.component('FullProcessDemo', FullProcessDemo)
 
     // Data Encoding Components Registration
     app.component('GarbledTextDemo', GarbledTextDemo)
@@ -1353,6 +1444,55 @@ export default {
     app.component('LicenseComparisonDemo', LicenseComparisonDemo)
     app.component('TechRadarDemo', TechRadarDemo)
     app.component('DecisionMatrixDemo', DecisionMatrixDemo)
+
+    // RAG Components Registration
+    app.component('RAGPipelineDemo', RAGPipelineDemo)
+    app.component('ChunkingStrategyDemo', ChunkingStrategyDemo)
+    app.component('RetrievalDemo', RetrievalDemo)
+    app.component('RAGArchitectureDemo', RAGArchitectureDemo)
+    app.component('RAGvsFineTuningDemo', RAGvsFineTuningDemo)
+
+    // Embedding & Vector Components Registration
+    app.component('EmbeddingConceptDemo', EmbeddingConceptDemo)
+    app.component('VectorSimilarityDemo', VectorSimilarityDemo)
+    app.component('VectorIndexDemo', VectorIndexDemo)
+    app.component('VectorDatabaseDemo', VectorDatabaseDemo)
+    app.component('EmbeddingPipelineDemo', EmbeddingPipelineDemo)
+
+    // AI Native App Components Registration
+    app.component('AINativeArchDemo', AINativeArchDemo)
+    app.component('AIDesignPrincipleDemo', AIDesignPrincipleDemo)
+    app.component('PromptDesignDemo', PromptDesignDemo)
+    app.component('AIUXPatternDemo', AIUXPatternDemo)
+    app.component('AIAppFlowDemo', AIAppFlowDemo)
+
+    // Infrastructure as Code Components Registration
+    app.component('IaCConceptDemo', IaCConceptDemo)
+    app.component('TerraformWorkflowDemo', TerraformWorkflowDemo)
+    app.component('IaCToolComparisonDemo', IaCToolComparisonDemo)
+    app.component('ConfigDriftDemo', ConfigDriftDemo)
+    app.component('IaCBestPracticeDemo', IaCBestPracticeDemo)
+
+    // DNS & HTTPS Components Registration
+    app.component('DnsResolutionDemo', DnsResolutionDemo)
+    app.component('DnsRecordTypeDemo', DnsRecordTypeDemo)
+    app.component('HttpsHandshakeDemo', HttpsHandshakeDemo)
+    app.component('CertificateChainDemo', CertificateChainDemo)
+    app.component('DnsHttpsComparisonDemo', DnsHttpsComparisonDemo)
+
+    // Model Finetuning Components Registration
+    app.component('FinetuningPipelineDemo', FinetuningPipelineDemo)
+    app.component('TrainingDataDemo', TrainingDataDemo)
+    app.component('LoRADemo', LoRADemo)
+    app.component('ModelQuantizationDemo', ModelQuantizationDemo)
+    app.component('ModelServingDemo', ModelServingDemo)
+
+    // Incident Response Components Registration
+    app.component('SeverityLevelDemo', SeverityLevelDemo)
+    app.component('IncidentTimelineDemo', IncidentTimelineDemo)
+    app.component('IncidentCommandDemo', IncidentCommandDemo)
+    app.component('AlertEscalationDemo', AlertEscalationDemo)
+    app.component('PostmortemDemo', PostmortemDemo)
   },
   setup() {
     const route = useRoute()
