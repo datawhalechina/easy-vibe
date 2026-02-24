@@ -673,9 +673,11 @@ watch(sidebarCollapsed, (collapsed) => {
 
 /* ---- 收起状态下的 CSS 覆盖 ---- */
 
-/* 隐藏侧边栏 */
-.ev-sidebar-collapsed .VPSidebar {
-  display: none !important;
+/* 隐藏侧边栏 — 仅桌面端，避免覆盖移动端的汉堡菜单 */
+@media (min-width: 960px) {
+  .ev-sidebar-collapsed .VPSidebar {
+    display: none !important;
+  }
 }
 
 /* 内容区域填满页面 */
