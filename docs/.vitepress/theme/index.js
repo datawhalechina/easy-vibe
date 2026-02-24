@@ -645,6 +645,22 @@ import TypeInferenceDemo from './components/appendix/typescript-intro/TypeInfere
 import SerializationDemo from './components/appendix/server-backend/SerializationDemo.vue'
 import HttpProtocolDemo from './components/appendix/server-backend/HttpProtocolDemo.vue'
 
+// Engineering Excellence Components
+import CodeSmellDemo from './components/appendix/engineering-excellence/CodeSmellDemo.vue'
+import RefactoringDemo from './components/appendix/engineering-excellence/RefactoringDemo.vue'
+import TestPyramidDemo from './components/appendix/engineering-excellence/TestPyramidDemo.vue'
+import TDDCycleDemo from './components/appendix/engineering-excellence/TDDCycleDemo.vue'
+import DesignPatternCatalogDemo from './components/appendix/engineering-excellence/DesignPatternCatalogDemo.vue'
+import PatternPlaygroundDemo from './components/appendix/engineering-excellence/PatternPlaygroundDemo.vue'
+import WebSecurityDemo from './components/appendix/engineering-excellence/WebSecurityDemo.vue'
+import SecurityChecklistDemo from './components/appendix/engineering-excellence/SecurityChecklistDemo.vue'
+import DocStructureDemo from './components/appendix/engineering-excellence/DocStructureDemo.vue'
+import TechWritingPracticeDemo from './components/appendix/engineering-excellence/TechWritingPracticeDemo.vue'
+import OpenSourceWorkflowDemo from './components/appendix/engineering-excellence/OpenSourceWorkflowDemo.vue'
+import LicenseComparisonDemo from './components/appendix/engineering-excellence/LicenseComparisonDemo.vue'
+import TechRadarDemo from './components/appendix/engineering-excellence/TechRadarDemo.vue'
+import DecisionMatrixDemo from './components/appendix/engineering-excellence/DecisionMatrixDemo.vue'
+
 // Data Components
 import SqlDemo from './components/appendix/data/SqlDemo.vue'
 import DataModelsDemo from './components/appendix/data/DataModelsDemo.vue'
@@ -1321,6 +1337,22 @@ export default {
     app.component('ABTestingDemo', ABTestingDemo)
     app.component('DataAnalysisDemo', DataAnalysisDemo)
     app.component('DataTrackingDemo', DataTrackingDemo)
+
+    // Engineering Excellence Components Registration
+    app.component('CodeSmellDemo', CodeSmellDemo)
+    app.component('RefactoringDemo', RefactoringDemo)
+    app.component('TestPyramidDemo', TestPyramidDemo)
+    app.component('TDDCycleDemo', TDDCycleDemo)
+    app.component('DesignPatternCatalogDemo', DesignPatternCatalogDemo)
+    app.component('PatternPlaygroundDemo', PatternPlaygroundDemo)
+    app.component('WebSecurityDemo', WebSecurityDemo)
+    app.component('SecurityChecklistDemo', SecurityChecklistDemo)
+    app.component('DocStructureDemo', DocStructureDemo)
+    app.component('TechWritingPracticeDemo', TechWritingPracticeDemo)
+    app.component('OpenSourceWorkflowDemo', OpenSourceWorkflowDemo)
+    app.component('LicenseComparisonDemo', LicenseComparisonDemo)
+    app.component('TechRadarDemo', TechRadarDemo)
+    app.component('DecisionMatrixDemo', DecisionMatrixDemo)
   },
   setup() {
     const route = useRoute()

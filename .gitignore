@@ -16,3 +16,5 @@ REFACTORING_PLAN.md
 .gitignore
 .gitignore
 REFACTORING_REPORT.md
+docs/.vitepress/.temp/*
+.temp/*
