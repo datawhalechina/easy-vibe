@@ -6,9 +6,9 @@ Allow: /
 Disallow: /zh-cn/extra/
 Disallow: /zh-cn/examples/
 Disallow: /zh-cn/project/
-Disallow: /en-us/extra/
-Disallow: /en-us/examples/
-Disallow: /en-us/project/
+Disallow: /en/extra/
+Disallow: /en/examples/
+Disallow: /en/project/
 
 # 禁止抓取 VitePress 缓存和构建文件
 Disallow: /.vitepress/
