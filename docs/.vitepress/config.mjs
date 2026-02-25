@@ -251,11 +251,11 @@ const productManagerSidebarEn = [
       },
       {
         text: 'AI Industry Application Scenarios (B-end)',
-        link: '/zh-cn/stage-1/appendix-industry-scenarios/'
+        link: '/en/stage-1/appendix-industry-scenarios/'
       },
       {
         text: 'AI Consumer Scenarios Inspiration (C-end)',
-        link: '/zh-cn/stage-1/appendix-c-consumer-scenarios/'
+        link: '/en/stage-1/appendix-c-consumer-scenarios/'
       }
     ]
   },
