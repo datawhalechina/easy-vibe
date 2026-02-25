@@ -49,9 +49,14 @@
     description="从汇编到高级语言，理解编程语言的演进与分类"
   />
 <NavCard
-    href="/zh-cn/appendix/1-computer-fundamentals/type-systems-compilers"
-    title="类型系统与编译原理入门"
-    description="静态类型 vs 动态类型，编译器如何理解你的代码"
+    href="/zh-cn/appendix/1-computer-fundamentals/compilers"
+    title="编译原理入门"
+    description="词法分析、语法分析、AST——编译器如何理解你的代码"
+  />
+<NavCard
+    href="/zh-cn/appendix/1-computer-fundamentals/type-systems"
+    title="类型系统入门"
+    description="静态类型 vs 动态类型，类型安全与类型推断"
   />
 </NavGrid>
 

@@ -1,6 +1,5 @@
 <!-- trigger vercel build -->
 <div align="center">
-  <img src="assets/header.png" width="100%" />
 
 <pre style="font-family: 'Courier New', monospace; font-size: 16px; color: #000000; margin: 0; padding: 0; line-height: 1.2; transform: skew(-1deg, 0deg); display: block;">
 ███████╗ █████╗ ███████╗██╗   ██╗    ██╗   ██╗██╗██████╗ ███████╗
@@ -115,9 +114,11 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 | **第一阶段** | AI 编程入门、产品思维、原型设计  | 互动小游戏、Web 应用原型（新手入门 & PM） |
 | **第二阶段** | 全栈开发、AI 集成、数据库        | 完整的全栈 AI 应用                        |
 | **第三阶段** | claude code 进阶、小程序安卓开发 | 生产级多平台应用                          |
+| **附录**     | 帮你理解计算机、人工智能基础概念 | 9 大知识领域、80+ 交互式专题              |
 
 ## 🔥 News
 
+- **[2026-02-25]** 更新[附录知识库](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)，涵盖 9 大知识领域、80+ 交互式专题。
 - **[2026-01-27]** 新增 Android 和 iOS 平台应用开发教程。
 - **[2026-01-19]** 发布 Prompt Engineering、AI 演进史、鉴权设计、Git 原理等一系列交互式演示组件，大幅提升可视化学习体验。
 
@@ -136,11 +137,101 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
   <img src="assets/readme-image1.png" alt="Learning Map" width="70%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
 </div>
 
-### 总附录
+### 📚 附录知识库
 
-[AI 能力词典：常见 AI 核心概念与名词、场景解释](docs/zh-cn/appendix/ai-capability-dictionary.md)
+> 涵盖 **9 大知识领域**、**80+ 交互式专题**，以动画和可视化组件帮助你直观理解从计算机底层到 AI 前沿的核心概念。
+>
+> 👉 [查看完整附录](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [AI 能力词典](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
-### 一、新手入门 & PM - 从游戏到 Web 应用原型
+<table>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>💻 计算机基础</strong><br><br>
+      • <a href="docs/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu.md">从晶体管到 CPU</a><br>
+      • <a href="docs/zh-cn/appendix/1-computer-fundamentals/operating-systems.md">操作系统</a><br>
+      • <a href="docs/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage.md">数据的编码、存储与传输</a><br>
+      • <a href="docs/zh-cn/appendix/1-computer-fundamentals/computer-networks.md">网络：两台电脑如何对话</a><br>
+      • <a href="docs/zh-cn/appendix/1-computer-fundamentals/data-structures.md">数据结构</a><br>
+      • <a href="docs/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking.md">算法思维入门</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🔧 开发工具</strong><br><br>
+      • <a href="docs/zh-cn/appendix/2-development-tools/git-version-control.md">Git：代码的时光机</a><br>
+      • <a href="docs/zh-cn/appendix/2-development-tools/command-line-shell.md">命令行与 Shell 脚本</a><br>
+      • <a href="docs/zh-cn/appendix/2-development-tools/package-managers.md">包管理器</a><br>
+      • <a href="docs/zh-cn/appendix/2-development-tools/debugging-art/">调试的艺术</a><br>
+      • <a href="docs/zh-cn/appendix/2-development-tools/regex.md">正则表达式</a><br>
+      • <a href="docs/zh-cn/appendix/2-development-tools/environment-path.md">环境变量与 PATH</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🌐 浏览器与前端</strong><br><br>
+      • <a href="docs/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive.md">JavaScript 语言深入</a><br>
+      • <a href="docs/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering.md">浏览器渲染管道</a><br>
+      • <a href="docs/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks.md">前端框架对比</a><br>
+      • <a href="docs/zh-cn/appendix/3-browser-and-frontend/graphics-animation.md">图形与动画</a><br>
+      • <a href="docs/zh-cn/appendix/3-browser-and-frontend/web-performance.md">网页性能的度量与优化</a><br>
+      • <a href="docs/zh-cn/appendix/3-browser-and-frontend/frontend-engineering.md">前端工程化全貌</a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>🖥️ 服务器与后端</strong><br><br>
+      • <a href="docs/zh-cn/appendix/4-server-and-backend/http-protocol.md">HTTP 协议</a><br>
+      • <a href="docs/zh-cn/appendix/4-server-and-backend/api-design.md">API 设计哲学</a><br>
+      • <a href="docs/zh-cn/appendix/4-server-and-backend/auth-authorization.md">认证与授权体系</a><br>
+      • <a href="docs/zh-cn/appendix/4-server-and-backend/concurrency-async.md">并发、异步与多线程</a><br>
+      • <a href="docs/zh-cn/appendix/4-server-and-backend/message-queues.md">消息队列与事件驱动</a><br>
+      • <a href="docs/zh-cn/appendix/4-server-and-backend/backend-layered-architecture.md">后端分层架构</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>📊 数据</strong><br><br>
+      • <a href="docs/zh-cn/appendix/5-data/sql.md">SQL</a><br>
+      • <a href="docs/zh-cn/appendix/5-data/database-fundamentals.md">数据库原理</a><br>
+      • <a href="docs/zh-cn/appendix/5-data/data-tracking.md">数据埋点与用户行为采集</a><br>
+      • <a href="docs/zh-cn/appendix/5-data/data-analysis.md">数据分析基础</a><br>
+      • <a href="docs/zh-cn/appendix/5-data/ab-testing.md">A/B 测试与实验驱动</a><br>
+      • <a href="docs/zh-cn/appendix/5-data/data-visualization.md">数据可视化与仪表盘</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🏗️ 架构与系统设计</strong><br><br>
+      • <a href="docs/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices.md">从单体到微服务的演进</a><br>
+      • <a href="docs/zh-cn/appendix/6-architecture-and-system-design/distributed-systems.md">分布式系统的挑战</a><br>
+      • <a href="docs/zh-cn/appendix/6-architecture-and-system-design/high-availability.md">高可用与容灾</a><br>
+      • <a href="docs/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology.md">系统设计方法论</a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>☁️ 基础设施与运维</strong><br><br>
+      • <a href="docs/zh-cn/appendix/7-infrastructure-and-operations/docker-containers.md">Docker 容器化</a><br>
+      • <a href="docs/zh-cn/appendix/7-infrastructure-and-operations/kubernetes.md">Kubernetes 编排</a><br>
+      • <a href="docs/zh-cn/appendix/7-infrastructure-and-operations/ci-cd.md">CI / CD 自动化</a><br>
+      • <a href="docs/zh-cn/appendix/7-infrastructure-and-operations/dns-https.md">域名、DNS 与 HTTPS</a><br>
+      • <a href="docs/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging.md">监控、日志与告警</a><br>
+      • <a href="docs/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code.md">基础设施即代码</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🤖 人工智能</strong><br><br>
+      • <a href="docs/zh-cn/appendix/8-artificial-intelligence/llm-principles.md">大语言模型的工作原理</a><br>
+      • <a href="docs/zh-cn/appendix/8-artificial-intelligence/transformer-attention.md">Transformer 与注意力机制</a><br>
+      • <a href="docs/zh-cn/appendix/8-artificial-intelligence/rag.md">RAG 架构</a><br>
+      • <a href="docs/zh-cn/appendix/8-artificial-intelligence/ai-agents.md">AI Agent 与工具调用</a><br>
+      • <a href="docs/zh-cn/appendix/8-artificial-intelligence/prompt-engineering.md">提示词工程</a><br>
+      • <a href="docs/zh-cn/appendix/8-artificial-intelligence/image-generation.md">图像生成原理</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🎯 工程素养</strong><br><br>
+      • <a href="docs/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring.md">代码质量与重构</a><br>
+      • <a href="docs/zh-cn/appendix/9-engineering-excellence/testing-strategies.md">测试策略</a><br>
+      • <a href="docs/zh-cn/appendix/9-engineering-excellence/design-patterns.md">设计模式</a><br>
+      • <a href="docs/zh-cn/appendix/9-engineering-excellence/security-thinking.md">安全思维与攻防基础</a><br>
+      • <a href="docs/zh-cn/appendix/9-engineering-excellence/technical-writing.md">技术文档写作</a><br>
+      • <a href="docs/zh-cn/appendix/9-engineering-excellence/open-source-collaboration.md">开源协作</a>
+    </td>
+  </tr>
+</table>
+
+### 一、零基础入门
 
 | 章节                                                                                             | 关键内容                                          | 状态 |
 | :----------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |

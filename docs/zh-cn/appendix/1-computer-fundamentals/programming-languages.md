@@ -99,7 +99,7 @@ SELECT name FROM users WHERE active = true
 - **JavaScript（弱类型）**：`"11"` — 悄悄帮你转了
 - **Python（强类型）**：`TypeError` — 让你自己想清楚
 
-想深入了解类型系统？→ [类型系统与编译原理入门](./type-systems-compilers)
+想深入了解类型系统？→ [类型系统入门](./type-systems) | [编译原理入门](./compilers)
 
 ---
 
@@ -147,6 +147,7 @@ SELECT name FROM users WHERE active = true
 :::
 
 **下一步学习**：
-- [类型系统与编译原理入门](./type-systems-compilers) - 深入理解类型系统和编译过程
+- [编译原理入门](./compilers) - 深入理解编译过程和代码优化
+- [类型系统入门](./type-systems) - 深入理解类型系统和类型安全
 - [数据结构](./data-structures) - 理解数据的组织方式
 - [算法思维入门](./algorithm-thinking) - 学习解决问题的方法

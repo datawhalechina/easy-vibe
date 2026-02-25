@@ -614,12 +614,12 @@ export default defineConfig({
                   link: '/zh-cn/appendix/1-computer-fundamentals/programming-languages'
                 },
                 {
-                  text: '类型系统入门',
-                  link: '/zh-cn/appendix/1-computer-fundamentals/type-systems'
-                },
-                {
                   text: '编译原理入门',
                   link: '/zh-cn/appendix/1-computer-fundamentals/compilers'
+                },
+                {
+                  text: '类型系统入门',
+                  link: '/zh-cn/appendix/1-computer-fundamentals/type-systems'
                 }
               ]
             },
@@ -726,6 +726,10 @@ export default defineConfig({
                   link: '/zh-cn/appendix/3-browser-and-frontend/frontend-engineering'
                 },
                 {
+                  text: '前端项目架构设计',
+                  link: '/zh-cn/appendix/3-browser-and-frontend/frontend-project-architecture'
+                },
+                {
                   text: '无障碍与国际化',
                   link: '/zh-cn/appendix/3-browser-and-frontend/a11n-i18n'
                 }
@@ -806,6 +810,10 @@ export default defineConfig({
                 {
                   text: '后端分层架构',
                   link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
+                },
+                {
+                  text: '后端项目架构设计',
+                  link: '/zh-cn/appendix/4-server-and-backend/backend-project-architecture'
                 },
                 {
                   text: '领域特定语言（DSL）',

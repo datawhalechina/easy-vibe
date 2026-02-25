@@ -206,7 +206,11 @@ import LearningStrategyDemo from './components/appendix/computer-fundamentals/Le
 import VibeCodingFlowDemo from './components/appendix/computer-fundamentals/VibeCodingFlowDemo.vue'
 import PowerOnDemo from './components/appendix/computer-fundamentals/PowerOnDemo.vue'
 import BootProcessDemo from './components/appendix/computer-fundamentals/BootProcessDemo.vue'
+import BiosUefiDemo from './components/appendix/computer-fundamentals/BiosUefiDemo.vue'
+import BiosUefiInteractiveDemo from './components/appendix/computer-fundamentals/BiosUefiInteractiveDemo.vue'
+import AppLaunchDemo from './components/appendix/computer-fundamentals/AppLaunchDemo.vue'
 import DesktopDemo from './components/appendix/computer-fundamentals/DesktopDemo.vue'
+import OSBootInteractiveDemo from './components/appendix/computer-fundamentals/OSBootInteractiveDemo.vue'
 import BrowserArchitectureDemo from './components/appendix/computer-fundamentals/BrowserArchitectureDemo.vue'
 import URLRequestDemo from './components/appendix/computer-fundamentals/URLRequestDemo.vue'
 import RenderingDemo from './components/appendix/computer-fundamentals/RenderingDemo.vue'
@@ -758,6 +762,28 @@ import IncidentCommandDemo from './components/appendix/incident-response/Inciden
 import AlertEscalationDemo from './components/appendix/incident-response/AlertEscalationDemo.vue'
 import PostmortemDemo from './components/appendix/incident-response/PostmortemDemo.vue'
 
+// Async Task Queues Components
+import AsyncTaskFlowDemo from './components/appendix/async-task-queues/AsyncTaskFlowDemo.vue'
+import TaskWorkerDemo from './components/appendix/async-task-queues/TaskWorkerDemo.vue'
+import TaskRetryDemo from './components/appendix/async-task-queues/TaskRetryDemo.vue'
+import AsyncComparisonDemo from './components/appendix/async-task-queues/AsyncComparisonDemo.vue'
+
+// File Storage Components
+import FileStorageTypeDemo from './components/appendix/file-storage/FileStorageTypeDemo.vue'
+import FileUploadFlowDemo from './components/appendix/file-storage/FileUploadFlowDemo.vue'
+import CDNAccelerationDemo from './components/appendix/file-storage/CDNAccelerationDemo.vue'
+
+// Rate Limiting Components
+import RateLimitAlgorithmDemo from './components/appendix/rate-limiting/RateLimitAlgorithmDemo.vue'
+import BackpressureDemo from './components/appendix/rate-limiting/BackpressureDemo.vue'
+
+// Search Engines Components Registration
+import InvertedIndexDemo from './components/appendix/search-engines/InvertedIndexDemo.vue'
+import SearchRelevanceDemo from './components/appendix/search-engines/SearchRelevanceDemo.vue'
+
+// Project Architecture Components
+import ArchitectureComparisonDemo from './components/appendix/project-architecture/ArchitectureComparisonDemo.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -969,7 +995,11 @@ export default {
     app.component('VibeCodingFlowDemo', VibeCodingFlowDemo)
     app.component('PowerOnDemo', PowerOnDemo)
     app.component('BootProcessDemo', BootProcessDemo)
+    app.component('BiosUefiDemo', BiosUefiDemo)
+    app.component('BiosUefiInteractiveDemo', BiosUefiInteractiveDemo)
+    app.component('AppLaunchDemo', AppLaunchDemo)
     app.component('DesktopDemo', DesktopDemo)
+    app.component('OSBootInteractiveDemo', OSBootInteractiveDemo)
     app.component('BrowserArchitectureDemo', BrowserArchitectureDemo)
     app.component('URLRequestDemo', URLRequestDemo)
     app.component('RenderingDemo', RenderingDemo)
@@ -1533,6 +1563,28 @@ export default {
     app.component('IncidentCommandDemo', IncidentCommandDemo)
     app.component('AlertEscalationDemo', AlertEscalationDemo)
     app.component('PostmortemDemo', PostmortemDemo)
+
+    // Async Task Queues Components Registration
+    app.component('AsyncTaskFlowDemo', AsyncTaskFlowDemo)
+    app.component('TaskWorkerDemo', TaskWorkerDemo)
+    app.component('TaskRetryDemo', TaskRetryDemo)
+    app.component('AsyncComparisonDemo', AsyncComparisonDemo)
+
+    // File Storage Components Registration
+    app.component('FileStorageTypeDemo', FileStorageTypeDemo)
+    app.component('FileUploadFlowDemo', FileUploadFlowDemo)
+    app.component('CDNAccelerationDemo', CDNAccelerationDemo)
+
+    // Rate Limiting Components Registration
+    app.component('RateLimitAlgorithmDemo', RateLimitAlgorithmDemo)
+    app.component('BackpressureDemo', BackpressureDemo)
+
+    // Search Engines Components Registration
+    app.component('InvertedIndexDemo', InvertedIndexDemo)
+    app.component('SearchRelevanceDemo', SearchRelevanceDemo)
+
+    // Project Architecture Components Registration
+    app.component('ArchitectureComparisonDemo', ArchitectureComparisonDemo)
   },
   setup() {
     const route = useRoute()
