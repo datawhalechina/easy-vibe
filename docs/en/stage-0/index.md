@@ -29,27 +29,27 @@ Master the Vibe Coding workflow, learn to deconstruct requirements, and independ
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
+    href="/en/stage-1/1.1-introduction-to-ai-ide/"
     title="1. Master AI Programming Tools"
     description="Learn about current mainstream AI programming tools and choose the most suitable development partner for you."
   />
   <NavCard
-    href="/zh-cn/stage-1/1.0-finding-great-idea/"
+    href="/en/stage-1/1.0-finding-great-idea/"
     title="2. Find Great Ideas"
     description="Learn to find and validate product ideas and find projects worth doing."
   />
   <NavCard
-    href="/zh-cn/stage-1/1.2-building-prototype/"
+    href="/en/stage-1/1.2-building-prototype/"
     title="3. Build Product Prototypes"
     description="Learn how to quickly transform product ideas into visual prototypes for low-cost trial and error."
   />
   <NavCard
-    href="/zh-cn/stage-1/1.3-integrating-ai-capabilities/"
+    href="/en/stage-1/1.3-integrating-ai-capabilities/"
     title="4. Integrate AI Capabilities"
     description="Let your prototype have intelligent interaction capabilities by integrating simple AI APIs."
   />
   <NavCard
-    href="/zh-cn/stage-1/1.4-complete-project-practice/"
+    href="/en/stage-1/1.4-complete-project-practice/"
     title="5. Complete Project Practice"
     description="Comprehensively use what you have learned to complete a complete product prototype development from 0 to 1."
   />

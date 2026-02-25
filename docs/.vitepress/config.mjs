@@ -251,11 +251,11 @@ const productManagerSidebarEn = [
       },
       {
         text: 'AI Industry Application Scenarios (B-end)',
-        link: '/en/stage-1/appendix-industry-scenarios/'
+        link: '/zh-cn/stage-1/appendix-industry-scenarios/'
       },
       {
         text: 'AI Consumer Scenarios Inspiration (C-end)',
-        link: '/en/stage-1/appendix-c-consumer-scenarios/'
+        link: '/zh-cn/stage-1/appendix-c-consumer-scenarios/'
       }
     ]
   },
@@ -269,11 +269,11 @@ const productManagerSidebarEn = [
       },
       {
         text: 'Comparison of Seven AI Programming Tools',
-        link: '/en/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
+        link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
       },
       {
         text: 'Design Websites with Agents',
-        link: '/en/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
+        link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
       }
     ]
   }
@@ -1023,6 +1023,21 @@ export default defineConfig({
 
   // 多语言配置 - 使用 cn/en-us/ja 结构
   locales: {
+    // 根路径 — 仅用于 404 页面兜底，实际首页由 docs/index.md 自动重定向
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      link: '/zh-cn/',
+      themeConfig: {
+        ...commonThemeConfig,
+        notFound: {
+          title: '页面未找到',
+          quote: '你访问的页面不存在，可能已被移动或删除。',
+          linkText: '返回首页',
+          linkUrl: '/zh-cn/'
+        }
+      }
+    },
     // 中文
     'zh-cn': {
       label: '简体中文',
@@ -1038,6 +1053,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: '页面未找到',
+          quote: '你访问的页面不存在，可能已被移动或删除。',
+          linkText: '返回首页',
+          linkUrl: '/zh-cn/'
+        },
         outline: {
           level: [1, 6],
           label: '页面导航'
@@ -1771,6 +1792,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'Page Not Found',
+          quote: 'The page you are looking for does not exist or has been moved.',
+          linkText: 'Take me home',
+          linkUrl: '/en/'
+        },
         outline: {
           level: [1, 6],
           label: 'On this page'
@@ -1816,6 +1843,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'ページが見つかりません',
+          quote: 'お探しのページは存在しないか、移動された可能性があります。',
+          linkText: 'ホームに戻る',
+          linkUrl: '/ja-jp/'
+        },
         outline: {
           level: [1, 6],
           label: 'このページの目次'
@@ -1854,6 +1887,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: '頁面未找到',
+          quote: '你訪問的頁面不存在，可能已被移動或刪除。',
+          linkText: '返回首頁',
+          linkUrl: '/zh-tw/'
+        },
         outline: {
           level: [1, 6],
           label: '頁面導航'
@@ -1891,6 +1930,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: '페이지를 찾을 수 없습니다',
+          quote: '찾고 있는 페이지가 존재하지 않거나 이동되었을 수 있습니다.',
+          linkText: '홈으로 돌아가기',
+          linkUrl: '/ko-kr/'
+        },
         outline: {
           level: [1, 6],
           label: '페이지 탐색'
@@ -1925,6 +1970,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'Página no encontrada',
+          quote: 'La página que buscas no existe o ha sido movida.',
+          linkText: 'Volver al inicio',
+          linkUrl: '/es-es/'
+        },
         outline: {
           level: [1, 6],
           label: 'Navegación de página'
@@ -1962,6 +2013,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'Page non trouvée',
+          quote: 'La page que vous recherchez n\'existe pas ou a été déplacée.',
+          linkText: 'Retour à l\'accueil',
+          linkUrl: '/fr-fr/'
+        },
         outline: {
           level: [1, 6],
           label: 'Navigation de page'
@@ -1996,6 +2053,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'Seite nicht gefunden',
+          quote: 'Die gesuchte Seite existiert nicht oder wurde verschoben.',
+          linkText: 'Zurück zur Startseite',
+          linkUrl: '/de-de/'
+        },
         outline: {
           level: [1, 6],
           label: 'Seitennavigation'
@@ -2030,6 +2093,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'الصفحة غير موجودة',
+          quote: 'الصفحة التي تبحث عنها غير موجودة أو تم نقلها.',
+          linkText: 'العودة إلى الرئيسية',
+          linkUrl: '/ar-sa/'
+        },
         outline: {
           level: [1, 6],
           label: 'تنقل الصفحة'
@@ -2067,6 +2136,12 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        notFound: {
+          title: 'Không tìm thấy trang',
+          quote: 'Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.',
+          linkText: 'Về trang chủ',
+          linkUrl: '/vi-vn/'
+        },
         outline: {
           level: [1, 6],
           label: 'Điều hướng trang'

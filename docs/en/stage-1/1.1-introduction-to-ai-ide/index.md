@@ -244,8 +244,8 @@ China version download: https://www.trae.cn/
 
 ##### Trae Pricing and Usage Options
 
-::: info 💡 Version Selection Tips
-- If you're primarily using it in China, we recommend choosing the China version for more stable network access and support for domestic large models
+::: info 💡 Version Selection Tips (CN Version Recommended for Beginners)
+- **For beginners, we strongly recommend downloading the China version (CN version, trae.cn)** — it currently provides a better overall experience and is free to use, with no overseas network required
 - If you need to use overseas models like GPT-5 and your network conditions allow it, you can choose the international version
 - If you already have a third-party model API Key, connecting third-party models gives you flexible cost control
 :::
@@ -256,11 +256,11 @@ China version download: https://www.trae.cn/
 
 Regarding Trae's costs and usage options, here are several choices:
 
-- **China Version (Recommended)**: Basic usage is free, but due to high user volume, you may need to wait in a queue.
+- **China Version CN (Strongly Recommended)**: Basic usage is free, and it currently provides a better overall experience than the international version — ideal for beginners. Due to high user volume, you may occasionally need to wait in a queue.
 - **International Version**: Subscription costs about $3 per month, giving access to overseas models like GPT-5, but requires overseas network access.
 - **Third-party Model Integration**: If you already have a Token API from a domestic large model provider (such as DeepSeek, Tongyi Qianwen, Kimi, etc.), you can connect these APIs through Trae's third-party model configuration. Major cloud service providers (such as Alibaba Cloud, Tencent Cloud, Baidu Cloud, etc.) typically offer Coding Plan subscriptions that let you use their large model APIs at more favorable prices. This way you can freely choose your preferred model while controlling costs.
 
-We recommend beginners start with the free China version. If you encounter queuing issues or need more stable service, consider connecting a third-party model and purchasing the corresponding cloud provider's Coding Plan.
+We recommend beginners start with the free China CN version (download: https://www.trae.cn/), which currently offers a better experience and is completely free. If you encounter queuing issues or need more stable service, consider connecting a third-party model and purchasing the corresponding cloud provider's Coding Plan.
 
 #### 4.1.3 Trae Interface Overview
 
