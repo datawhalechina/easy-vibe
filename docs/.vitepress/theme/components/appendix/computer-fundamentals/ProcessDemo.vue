@@ -99,8 +99,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  clearInterval(timer)
-  clearTimeout(switchTimer)
+  if (timer) clearInterval(timer)
+  if (switchTimer) clearTimeout(switchTimer)
 })
 
 const currentTask = computed(() => processes.value[currentIdx.value])

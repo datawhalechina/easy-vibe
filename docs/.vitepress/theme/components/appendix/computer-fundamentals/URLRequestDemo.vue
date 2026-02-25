@@ -61,6 +61,7 @@ const steps = [
 ]
 
 const autoPlay = () => {
+  if (timer) clearInterval(timer)
   current.value = -1
   playing.value = true
   let i = 0
@@ -68,7 +69,7 @@ const autoPlay = () => {
     current.value = i
     i++
     if (i >= steps.length) {
-      clearInterval(timer)
+      if (timer) clearInterval(timer)
       playing.value = false
     }
   }, 800)

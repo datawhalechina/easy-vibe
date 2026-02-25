@@ -4,22 +4,20 @@
 <pre style="font-family: 'Courier New', monospace; font-size: 16px; color: #000000; margin: 0; padding: 0; line-height: 1.2; transform: skew(-1deg, 0deg); display: block;">
 ███████╗ █████╗ ███████╗██╗   ██╗    ██╗   ██╗██╗██████╗ ███████╗
 ██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝    ██║   ██║██║██╔══██╗██╔════╝
-█████╗  ███████║███████╗ ╚████╔╝     ██║   ██║██║██████╔╝█████╗
-██╔══╝  ██╔══██║╚════██║  ╚██╔╝      ╚██╗ ██╔╝██║██╔══██╗██╔══╝
+█████╗  ███████║███████╗ ╚████╔╝     ██║   ██║██║██████╔╝█████╗  
+██╔══╝  ██╔══██║╚════██║  ╚██╔╝      ╚██╗ ██╔╝██║██╔══██╗██╔══╝  
 ███████╗██║  ██║███████║   ██║        ╚████╔╝ ██║██████╔╝███████╗
 ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝         ╚═══╝  ╚═╝╚═════╝ ╚══════╝</pre>
 
-# Easy-Vibe: Learn Vibe Coding from 0 to 1
-
-### _Desde cero, aprendizaje basado en proyectos, construyendo tu primer producto de IA_
+# Easy-Vibe : Aprende Vibe Coding de 0 a 1
 
 <p align="center">
-  📌 <a href="https://datawhalechina.github.io/easy-vibe/">Comenzar a leer en línea (Start Reading Online)</a>
+  📌 <a href="https://datawhalechina.github.io/easy-vibe/">Leer en línea (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/prompt-engineering/">Tutorial interactivo</a>
 </p>
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/">Leer en línea</a> ·
-  <a href="#-navegación-de-contenido">Mapa de aprendizaje</a> ·
+  <a href="#-navegación">Mapa de aprendizaje</a> ·
   <a href="#contact">Comunidad</a>
 </p>
 
@@ -37,163 +35,323 @@
   <a href="../zh-TW/README.md"><img alt="繁體中文" src="https://img.shields.io/badge/繁體中文-d9d9d9"></a>
   <a href="../en-US/README.md"><img alt="English" src="https://img.shields.io/badge/English-d9d9d9"></a>
   <a href="../ja-JP/README.md"><img alt="日本語" src="https://img.shields.io/badge/日本語-d9d9d9"></a>
-  <a href="./README.md"><img alt="Español" src="https://img.shields.io/badge/Español-d9d9d9"></a>
+  <a href="../es-ES/README.md"><img alt="Español" src="https://img.shields.io/badge/Español-d9d9d9"></a>
   <a href="../fr-FR/README.md"><img alt="Français" src="https://img.shields.io/badge/Français-d9d9d9"></a>
+  <a href="../tlh/README.md"><img alt="Klingon" src="https://img.shields.io/badge/Klingon-d9d9d9"></a>
   <a href="../ko-KR/README.md"><img alt="한국어" src="https://img.shields.io/badge/한국어-d9d9d9"></a>
   <a href="../ar-SA/README.md"><img alt="العربية" src="https://img.shields.io/badge/العربية-d9d9d9"></a>
+  <a href="../tr-TR/README.md"><img alt="Türkçe" src="https://img.shields.io/badge/Türkçe-d9d9d9"></a>
   <a href="../vi-VN/README.md"><img alt="Tiếng_Việt" src="https://img.shields.io/badge/Tiếng_Việt-d9d9d9"></a>
   <a href="../de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
+  <a href="../bn-BD/README.md"><img alt="বাংলা" src="https://img.shields.io/badge/বাংলা-d9d9d9"></a>
 </p>
 
 </div>
-
-## 🚀 Introducción al Proyecto
-
-Cuando intentas escribir código con IA, encuentras errores constantes, a menudo quieres rendirte y no está claro cómo llevar realmente tus programas en línea 😢.
-
-Este tutorial está específicamente diseñado para llevarte de 0 a 1, dominando progresivamente las técnicas de Vibe Coding:
-
-- **Etapa 1**: **De mini juegos a prototipos web**, dominar los conceptos básicos de programación de IA y pensamiento de producto
-- **Etapa 2**: Aprender **desarrollo frontend/backend y capacidades de IA** relacionadas con técnicas de Vibe Coding, completando una aplicación completa
-- **Etapa 3**: Dominar la construcción de **aplicaciones complejas multiplataforma**, avanzando hacia aplicaciones de nivel de producción
-
-Creemos que al dominar Vibe Coding y combinarlo con entrenamiento sistemático, una sola persona puede convertirse en un desarrollador que combine desarrollo frontend, desarrollo backend, integración de capacidades de IA y diseño de productos.
-
-> **Este proyecto está dirigido principalmente a tres tipos de estudiantes:**
->
-> - **Principiantes (personas comunes / producto y operaciones)**: Ayudar a estudiantes no técnicos a entender conceptos clave y completar su primer prototipo de producto
-> - **Desarrollores de nivel principiante-intermedio (estudiantes y desarrolladores con cierta base)**: Dominar el conocimiento de Vibe Coding frontend/backend y capacidades de IA
-> - **Desarrollores avanzados (empresas y startups, código abierto e desarrollores independientes)**: Técnicas avanzadas de desarrollo, desarrollo multiplataforma
-
-### 📖 Navegación de Contenido
-
+<table align="center">
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-header.png" width="100%">
+      <br>
+      <strong>Mapa de aprendizaje exclusivo para principiantes</strong>
+      <br>
+      <sub>Guía desde cero, planificación de ruta clara, adiós al "aprender y olvidar"</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-tutorial.png" width="100%">
+      <br>
+      <strong>Tutorial gráfico paso a paso</strong>
+      <br>
+      <sub>Explicaciones detalladas, como tener un tutor privado a tu lado, solo sigue los pasos</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-ide.gif" width="100%">
+      <br>
+      <strong>Programación simulada inmersiva</strong>
+      <br>
+      <sub>Navegación automática con mouse virtual, aprendiendo rápidamente los usos principales del IDE</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-diffusion.gif" width="100%">
+      <br>
+      <strong>Principios de IA visibles</strong>
+      <br>
+      <sub>Principios de algoritmos animados, entiende de un vistazo cómo la IA "dibuja" imágenes</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-rag.gif" width="100%">
+      <br>
+      <strong>Aprende RAG como si fuera un juego</strong>
+      <br>
+      <sub>Componentes interactivos exclusivos, haz clic para ver claramente el flujo de datos RAG</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/git-terminal.gif" width="100%">
+      <br>
+      <strong>Principios de terminal visualizados</strong>
+      <br>
+      <sub>Operaciones de línea de comandos visualizadas, mostrando intuitivamente la lógica de fondo</sub>
+    </td>
+  </tr>
+</table>
 <div align="center">
-  <img src="../assets/readme-image1.png" alt="Learning Map" width="100%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
+  <h3>⭐ Te invitamos a dar <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">Star aquí</a> para acelerar las actualizaciones ❤️</h3>
 </div>
 
-### Apéndice General
+En la era de la IA, las personas que convierten ideas en productos a menudo no son las que tienen los conocimientos técnicos más sólidos, sino las que dan el primer paso.
 
-[Diccionario de capacidades de IA: conceptos centrales comunes de IA, términos y explicaciones de escenarios](docs/zh-cn/appendix/ai-capability-dictionary.md)
+Muchas personas, incluso con asistentes de IA, se desaniman por "no entender el código" o "no saber cómo configurar el entorno". **Easy-Vibe nació para esto.** Asumiendo que todos parten de cero, te llevamos de la mano desde escribir tu primera línea de código hasta entender la lógica del front-end y back-end, y finalmente lanzar tu producto.
 
-### 1. Entrada de Novatos y Prototipo de Producto
+- **Público objetivo**: Principiantes, Product Managers, Desarrolladores Front-end / Back-end / Full-stack
+- **Temas**: Programación con IA, Desarrollo de aplicaciones Web Full-stack, AI Agent, Workflows y sistemas RAG
 
-| Capítulo                                                                                                                            | Contenido clave                                                                                                          | Estado |
-| :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :----- |
-| [Prólogo: Mapa de aprendizaje](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                                        | Guía general de la ruta de aprendizaje                                                                                   | ✅     |
-| [Principiante 1: La era de la IA, si puedes hablar puedes programar](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experimentar por primera vez las capacidades de programación con IA a través de casos como Snake                         | ✅     |
-| [Principiante 2: Conociendo herramientas de IDE de IA](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)                      | Aprender a usar el IDE, crear mini juegos localmente                                                                     | ✅     |
-| [Principiante 3: Haz un prototipo tú mismo](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                                     | Análisis de requisitos, generación de una sola página con IA, hasta generar prototipos de productos de múltiples páginas | ✅     |
-| [Principiante 4: Añade capacidades de IA al prototipo](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)                 | Aprender a conectar capacidades comunes de IA (texto, imagen, video)                                                     | ✅     |
-| [Principiante 5: Proyecto completo práctico](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                             | Simular escenarios reales, aceptar feedback de usuarios para iterar, completar el proyecto                               | ✅     |
-| [Proyecto final: Haz un prototipo completo de aplicación web y preséntalo](docs/zh-cn/stage-1/1.5-final-project/index.md)           | Implementar completamente la aplicación, mostrar los efectos de la aplicación                                            | ✅     |
+---
 
-#### Apéndices: Pensamiento de Negocio
+Easy-Vibe te lleva de 0 a 1 a través de las siguientes etapas:
 
-| Capítulo                                                                                                                                  | Contenido clave                                                       | Estado |
-| :---------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- | :----- |
-| [Apéndice A: Pensamiento de Producto y Diseño de Solución](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)                       | Marcos de pensamiento necesarios para crear un producto de cero a uno | ✅     |
-| [Apéndice B: Referencia de Escenarios de Aplicación de AI en la Industria (B2B)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | Comprender las aplicaciones de AI en diferentes industrias            | ✅     |
-| [Apéndice C: Referencia de Inspiración de Escenarios de Consumo de AI (B2C)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md)   | Explorar las aplicaciones de AI en productos de consumo               | ✅     |
+| Etapa | Habilidades clave | Resultado |
+| ------------ | -------------------------------- | ----------------------------------------- |
+| **Etapa 1** | Introducción a la programación con IA, Pensamiento de producto, Diseño de prototipos | Minijuegos interactivos, Prototipos de aplicaciones Web (Principiantes & PM) |
+| **Etapa 2** | Desarrollo Full-stack, Integración de IA, Bases de datos | Aplicación de IA Full-stack completa |
+| **Etapa 3** | Claude Code avanzado, Desarrollo de Miniprogramas y Android | Aplicaciones multiplataforma de nivel de producción |
+| **Apéndice** | Ayuda para entender conceptos básicos de Computación e IA | 9 dominios de conocimiento, más de 80 temas interactivos |
 
-#### Apéndices: Soluciones Técnicas
+## 🔥 Noticias
 
-| Capítulo                                                                                                                                                                                   | Contenido clave                                                   | Estado |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------- | :----- |
-| [Apéndice D: Qué Hacer Cuando se Encuentran Errores al Escribir Código](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                              | Errores comunes en Vibe Coding y métodos de solución de problemas | ✅     |
-| [Apéndice E: Comparación de 7 Herramientas de Programación AI](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                   | Comparar y probar las principales plataformas de programación AI  | ✅     |
-| [Apéndice F: Diseñar Sitios Web con Agentes de Diseño y Programación](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Aprender a usar agentes AI de forma colaborativa                  | ✅     |
+- **[2026-02-25]** Actualizada la [Base de conocimientos del apéndice](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), que cubre 9 dominios de conocimiento y más de 80 temas interactivos.
+- **[2026-01-27]** Se agregaron tutoriales de desarrollo de aplicaciones para las plataformas Android e iOS.
+- **[2026-01-19]** Lanzamiento de una serie de componentes de demostración interactiva para Prompt Engineering, evolución de la IA, diseño de autenticación, principios de Git, etc.
 
-### 2. Ingeniero de Desarrollo de Nivel Principiante-Intermedio
+<details>
+<summary>Past News</summary>
 
-#### Parte Frontend
+- **[2026-01-16]** Reestructuración del proyecto, estableciendo formalmente el capítulo de "Introducción para principiantes".
+- **[2026-01-14]** Completada una actualización masiva de la documentación de la Etapa 1 "Construcción de prototipos de productos".
+- **[2026-01-13]** Reconstrucción de la arquitectura de documentos, soporte total para multi-idioma (i18n).
+- **[2026-01-01]** Lanzamiento del Mapa de Aprendizaje principal del proyecto.
+</details>
 
-| Capítulo                                                                                                                                            | Contenido clave                                                                                                                                    | Estado |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
-| [Frontend 0: Usar lovart para generar activos](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/)                                                      | Usar lovart para generar por lotes activos visuales como personajes y escenas, proporcionando base de activos para diseño UI y desarrollo frontend | 🚧     |
-| [Frontend 1: Introducción a Figma y MasterGo](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/)                                                      | Usar herramientas de diseño para organizar arquitectura de información y estructura de páginas, preparando la base para implementación frontend    | 🚧     |
-| [Frontend 2: Construir la primera aplicación moderna - Diseño UI](docs/zh-cn/stage-2/frontend/2.2-ui-design/)                                       | Completar interfaz basada en componentes basada en diseños,实现 la primera ruta de diseño a código                                                 | 🚧     |
-| [Frontend 3: Referencia de especificaciones de diseño UI y diseño UI de múltiples productos](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/)     | Expandir interfaces de múltiples productos en torno a un visual principal unificado, practicar capacidades de diseño sistemático                   | 🚧     |
-| [Frontend 4: Hagamos los retratos de Hogwarts juntos](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | Crear una aplicación frontend con capacidades de IA integradas de 0 a 1, conectando diseño y desarrollo                                            | ✅     |
+### 📖 Navegación
 
-#### Parte Backend y Full Stack
+<div align="center">
+  <img src="../../assets/readme-image1.png" alt="Mapa de Aprendizaje" width="70%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
+</div>
 
-| Capítulo                                                                                                                                                                           | Contenido clave                                                                                                                       | Estado |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ | :----- |
-| [Backend 1: Qué es una API](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md)                                                                               | Entender interfaces HTTP y modelos de solicitud-respuesta, preparándose para integración backend y coordinación                       | ✅     |
-| [Backend 2: De bases de datos a Supabase](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md)                                         | Implementar bases de datos y APIs en Supabase, conectando modelos de datos con páginas frontend                                       | ✅     |
-| [Backend 3: LLM asistiendo en la escritura de código de interfaz y documentación](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/)                                               | Usar LLM para ayudar a generar documentación y código para interfaces y bases de datos,实现 un backend legible y testeable            | 🚧     |
-| [Backend 4: Flujo de trabajo Git](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md)                                                     | Gestionar código en flujo de trabajo Git, realizar control de versiones y colaboración                                                | ✅     |
-| [Backend 5: Despliegue Zeabur](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)                             | Desplegar la aplicación en Zeabur para ponerla en línea                                                                               | ✅     |
-| [Backend 6: Herramientas de desarrollo CLI modernas](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | Usar herramientas de programación IA tipo CLI para acelerar desarrollo y depuración, formando flujo de ingeniería personal            | ✅     |
-| [Backend 7: Cómo integrar sistemas de pago como Stripe](docs/zh-cn/stage-2/backend/2.7-stripe-payment/)                                                                            | Conectar sistemas de pago, completar flujo de pago y proceso básico de liquidación                                                    | 🚧     |
-| [Proyecto final 1: Construir la primera aplicación moderna - Aplicación full stack](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/)                                             | Integrar frontend, backend y módulos de pago, completar aplicación web full stack lista para producción                               | 🚧     |
-| [Proyecto final 2: Biblioteca de componentes frontend moderna + Trae práctico](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/)                                           | Usar biblioteca de componentes frontend moderna y Trae, completar independientemente un producto con registro/login y soporte de pago | 🚧     |
+### 📚 Base de conocimientos del apéndice
 
-#### Apéndice de Capacidades de IA
+> Cubre **9 dominios de conocimiento** y más de **80 temas interactivos**, utilizando animaciones y componentes visuales para ayudarte a comprender intuitivamente los conceptos centrales desde los fundamentos de la computación hasta la frontera de la IA.
+>
+> 👉 [Ver apéndice completo](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [Diccionario de capacidades de IA](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
-| Capítulo                                                                                                                                                                                                         | Contenido clave                                                                                                                          | Estado |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :----- |
-| [IA 1: Introducción a Dify e integración de base de conocimientos](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | Usar Dify Workflow y RAG básico para construir productos tipo herramientas, creando ejemplo para actualizaciones futuras de aplicaciones | ✅     |
-| [IA 2: Aprender a consultar diccionario de IA e integrar APIs multimodales](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md)                               | Aprender a buscar modelos y APIs apropiados, integrar capacidades multimodales como texto e imagen en productos                          | 🚧     |
+<table>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>💻 Fundamentos de Computación</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu.md">Del transistor a la CPU</a><br>
+      • <a href="../../docs/zh-cn/appendix/1-computer-fundamentals/operating-systems.md">Sistemas operativos</a><br>
+      • <a href="../../docs/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage.md">Codificación, almacenamiento y transmisión de datos</a><br>
+      • <a href="../../docs/zh-cn/appendix/1-computer-fundamentals/computer-networks.md">Redes: Cómo hablan dos ordenadores</a><br>
+      • <a href="../../docs/zh-cn/appendix/1-computer-fundamentals/data-structures.md">Estructuras de datos</a><br>
+      • <a href="../../docs/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking.md">Introducción al pensamiento algorítmico</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🔧 Herramientas de desarrollo</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/2-development-tools/git-version-control.md">Git: La máquina del tiempo del código</a><br>
+      • <a href="../../docs/zh-cn/appendix/2-development-tools/command-line-shell.md">Línea de comandos y scripts de Shell</a><br>
+      • <a href="../../docs/zh-cn/appendix/2-development-tools/package-managers.md">Gestores de paquetes</a><br>
+      • <a href="../../docs/zh-cn/appendix/2-development-tools/debugging-art/">El arte de la depuración</a><br>
+      • <a href="../../docs/zh-cn/appendix/2-development-tools/regex.md">Expresiones regulares</a><br>
+      • <a href="../../docs/zh-cn/appendix/2-development-tools/environment-path.md">Variables de entorno y PATH</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🌐 Navegador y Front-end</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive.md">Inmersión profunda en JavaScript</a><br>
+      • <a href="../../docs/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering.md">Tubería de renderizado del navegador</a><br>
+      • <a href="../../docs/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks.md">Comparación de frameworks front-end</a><br>
+      • <a href="../../docs/zh-cn/appendix/3-browser-and-frontend/graphics-animation.md">Gráficos y animación</a><br>
+      • <a href="../../docs/zh-cn/appendix/3-browser-and-frontend/web-performance.md">Medición y optimización del rendimiento web</a><br>
+      • <a href="../../docs/zh-cn/appendix/3-browser-and-frontend/frontend-engineering.md">Panorama de la ingeniería front-end</a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>🖥️ Servidor y Back-end</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/4-server-and-backend/http-protocol.md">Protocolo HTTP</a><br>
+      • <a href="../../docs/zh-cn/appendix/4-server-and-backend/api-design.md">Filosofía de diseño de APIs</a><br>
+      • <a href="../../docs/zh-cn/appendix/4-server-and-backend/auth-authorization.md">Autenticación y autorización</a><br>
+      • <a href="../../docs/zh-cn/appendix/4-server-and-backend/concurrency-async.md">Concurrencia, asincronía e hilos</a><br>
+      • <a href="../../docs/zh-cn/appendix/4-server-and-backend/message-queues.md">Colas de mensajes y eventos</a><br>
+      • <a href="../../docs/zh-cn/appendix/4-server-and-backend/backend-layered-architecture.md">Arquitectura back-end en capas</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>📊 Datos</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/5-data/sql.md">SQL</a><br>
+      • <a href="../../docs/zh-cn/appendix/5-data/database-fundamentals.md">Principios de bases de datos</a><br>
+      • <a href="../../docs/zh-cn/appendix/5-data/data-tracking.md">Recopilación de comportamiento del usuario</a><br>
+      • <a href="../../docs/zh-cn/appendix/5-data/data-analysis.md">Fundamentos de análisis de datos</a><br>
+      • <a href="../../docs/zh-cn/appendix/5-data/ab-testing.md">Pruebas A/B y experimentación</a><br>
+      • <a href="../../docs/zh-cn/appendix/5-data/data-visualization.md">Visualización de datos y dashboards</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🏗️ Arquitectura y Diseño de Sistemas</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices.md">Del monolito a los microservicios</a><br>
+      • <a href="../../docs/zh-cn/appendix/6-architecture-and-system-design/distributed-systems.md">Desafíos de sistemas distribuidos</a><br>
+      • <a href="../../docs/zh-cn/appendix/6-architecture-and-system-design/high-availability.md">Alta disponibilidad y recuperación</a><br>
+      • <a href="../../docs/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology.md">Metodología de diseño de sistemas</a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>☁️ Infraestructura y Operaciones</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/7-infrastructure-and-operations/docker-containers.md">Containerización con Docker</a><br>
+      • <a href="../../docs/zh-cn/appendix/7-infrastructure-and-operations/kubernetes.md">Orquestación con Kubernetes</a><br>
+      • <a href="../../docs/zh-cn/appendix/7-infrastructure-and-operations/ci-cd.md">Automatización CI / CD</a><br>
+      • <a href="../../docs/zh-cn/appendix/7-infrastructure-and-operations/dns-https.md">Dominios, DNS y HTTPS</a><br>
+      • <a href="../../docs/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging.md">Monitoreo, registros y alertas</a><br>
+      • <a href="../../docs/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code.md">Infraestructura como código</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🤖 Inteligencia Artificial</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/8-artificial-intelligence/llm-principles.md">Cómo funcionan los LLMs</a><br>
+      • <a href="../../docs/zh-cn/appendix/8-artificial-intelligence/transformer-attention.md">Transformer y mecanismos de atención</a><br>
+      • <a href="../../docs/zh-cn/appendix/8-artificial-intelligence/rag.md">Arquitectura RAG</a><br>
+      • <a href="../../docs/zh-cn/appendix/8-artificial-intelligence/ai-agents.md">AI Agents y llamadas a herramientas</a><br>
+      • <a href="../../docs/zh-cn/appendix/8-artificial-intelligence/prompt-engineering.md">Ingeniería de prompts</a><br>
+      • <a href="../../docs/zh-cn/appendix/8-artificial-intelligence/image-generation.md">Principios de generación de imágenes</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🎯 Excelencia en Ingeniería</strong><br><br>
+      • <a href="../../docs/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring.md">Calidad de código y refactorización</a><br>
+      • <a href="../../docs/zh-cn/appendix/9-engineering-excellence/testing-strategies.md">Estrategias de prueba</a><br>
+      • <a href="../../docs/zh-cn/appendix/9-engineering-excellence/design-patterns.md">Patrones de diseño</a><br>
+      • <a href="../../docs/zh-cn/appendix/9-engineering-excellence/security-thinking.md">Pensamiento de seguridad y defensa</a><br>
+      • <a href="../../docs/zh-cn/appendix/9-engineering-excellence/technical-writing.md">Redacción técnica</a><br>
+      • <a href="../../docs/zh-cn/appendix/9-engineering-excellence/open-source-collaboration.md">Colaboración de código abierto</a>
+    </td>
+  </tr>
+</table>
 
-### 3. Ingeniero de Desarrollo Avanzado
+### I. Introducción desde cero
 
-| Capítulo                                                                                                                                                                  | Contenido clave                                                                                                                              | Estado |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
-| [Avanzado 1: MCP y Claude Code Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/)                                                                          | Extender capacidades del IDE a través de MCP y Skills, conectar servicios externos como herramientas                                         | 🚧     |
-| [Avanzado 2: Cómo hacer que Coding Tools funcione durante mucho tiempo](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/)                                           | Diseñar y configurar tareas de ejecución prolongada, hacer Coding Tools más estable y confiable                                              | 🚧     |
-| [Avanzado 3: Desarrollo multiplataforma: Cómo construir mini programas de WeChat](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/)                              | Entender el ecosistema de mini programas de WeChat, completar un mini programa frontend desde plantilla oficial hasta lanzamiento            | ✅     |
-| [Avanzado 4: Desarrollo multiplataforma: Cómo construir mini programas de WeChat - Incluyendo backend](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Integrar base de datos y lógica backend en mini programas,实现 ciclo completo de negocio                                                     | 🚧     |
-| [Avanzado 5: Desarrollo multiplataforma: Cómo construir aplicaciones Android](docs/zh-cn/stage-3/cross-platform/3.5-android-app/)                                         | Usar herramientas como Expo, completar desarrollo de aplicaciones Android integrando Web/nativo                                              | 🚧     |
-| [Avanzado 6: Desarrollo multiplataforma: Cómo construir aplicaciones iOS](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/)                                                 | Usar herramientas como Expo, completar desarrollo de aplicaciones iOS integrando Web/nativo                                                  | 🚧     |
-| [Avanzado 7: Cómo construir tu propio sitio web personal y blog académico](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/)                                  | Desde selección, construcción hasta despliegue, construir homepage en línea a largo plazo mostrando proyectos personales y logros académicos | 🚧     |
+| Capítulo | Contenido clave | Estado |
+| :----------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
+| [Prólogo: Mapa de aprendizaje](../../docs/zh-cn/stage-0/0.1-learning-map/index.md) | Navegación por la ruta de aprendizaje completa | ✅ |
+| [Nivel 1: Era de la IA, hablar es programar](../../docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | Experimenta la programación con IA mediante casos | ✅ |
+| [Nivel 2: Buscando buenas ideas](../../docs/zh-cn/stage-1/1.0-finding-great-idea/index.md) | Aprende a validar ideas de productos | ✅ |
+| [Nivel 3: Introducción a las herramientas AI IDE](../../docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md) | Aprende a usar el IDE y crea juegos locales | ✅ |
+| [Nivel 4: Construyendo prototipos a mano](../../docs/zh-cn/stage-1/1.2-building-prototype/index.md) | Desde el análisis hasta prototipos de varias páginas | ✅ |
+| [Nivel 5: Añadiendo IA a los prototipos](../../docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md) | Aprende a integrar IA (texto, imagen, video) | ✅ |
+| [Nivel 6: Práctica de proyecto completo](../../docs/zh-cn/stage-1/1.4-complete-project-practice/index.md) | Escenarios reales e iteración con feedback | ✅ |
 
-#### Apéndice de Capacidades de IA
+#### Apéndice: Pensamiento de negocio
 
-| Capítulo                                                                                                                                                         | Contenido clave                                                                                                                                    | Estado |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
-| [IA Avanzada 1: Qué es RAG y cómo funciona](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md)          | Entender sistemáticamente principios de RAG y arquitecturas comunes, proporcionar base de recuperación de conocimiento para aplicaciones complejas | ✅     |
-| [IA Avanzada 2: RAG intermedio-avanzado y orquestación de flujos de trabajo: Ejemplo con LangGraph](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | Usar herramientas como LangGraph para diseñar flujos de trabajo multipaso y sistemas RAG intermedio-avanzados                                      | 🚧     |
+| Capítulo | Contenido clave | Estado |
+| :----------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
+| [Apéndice A: Pensamiento de producto](../../docs/zh-cn/stage-1/appendix-a-product-thinking/index.md) | Marcos de pensamiento para crear productos | ✅ |
+| [Apéndice B: Escenarios industriales de IA (B2B)](../../docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | Aplicaciones de IA en diferentes industrias | ✅ |
+| [Apéndice C: Inspiración para escenarios B2C](../../docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | Exploración de IA en productos de consumo | ✅ |
 
-## 🛠️ Cómo Aprender
+#### Apéndice: Soluciones técnicas
 
-- Según tus habilidades personales, lee y practica selectivamente capítulos relevantes, si tienes preguntas hazlas en Issues.
+| Capítulo | Contenido clave | Estado |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
+| [Apéndice D: Qué hacer ante errores](../../docs/zh-cn/stage-1/appendix-b-common-errors/index.md) | Errores comunes en vibe coding y soluciones | ✅ |
+| [Apéndice E: Comparación de herramientas AI](../../docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md) | Comparativa de plataformas principales | ✅ |
+| [Apéndice F: Diseñando sitios con Agentes](../../docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | Uso de agentes de IA para diseño web | ✅ |
 
-## 💻 Iniciar Este Curso Localmente
+<details>
+<summary><strong>II. Desarrollador intermedio</strong></summary>
 
-### Método Moderno
+#### Front-end
 
-En el cuadro de diálogo del IDE de IA (vscode, cursor, trae, etc.), ingresa el siguiente prompt para iniciar este curso:
+| Capítulo | Contenido clave | Estado |
+| :------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :--- |
+| [Front-end 0: Activos con Lovart](../../docs/zh-cn/stage-2/frontend/2.0-lovart-assets/) | Generación masiva de activos visuales | 🚧 |
+| [Front-end 1: Intro a Figma & MasterGo](../../docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/) | Organización de arquitectura de la información | 🚧 |
+| [Front-end 2: Construyendo la primera App - UI](../../docs/zh-cn/stage-2/frontend/2.2-ui-design/) | Interfaz basada en componentes desde el diseño | 🚧 |
+| [Front-end 3: Especificaciones de diseño UI](../../docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/) | Diseño sistemático a través de productos | 🚧 |
+| [Front-end 4: Retratos de Hogwarts juntos](../../docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | App front-end con IA desde cero hasta producción | ✅ |
+
+#### Back-end y Full-stack
+
+| Capítulo | Contenido clave | Estado |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------ | :--- |
+| [Back-end 1: Qué es una API](../../docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md) | Interfaces HTTP y modelos petición-respuesta | ✅ |
+| [Back-end 2: De DB a Supabase](../../docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md) | Implementación de bases de datos y APIs | ✅ |
+| [Back-end 3: Código de interfaz asistido por IA](../../docs/zh-cn/stage-2/backend/2.3-ai-interface-code/) | Uso de LLM para generación de código y docs | 🚧 |
+| [Back-end 4: Flujo de trabajo Git](../../docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md) | Control de versiones y colaboración | ✅ |
+| [Back-end 5: Despliegue en Zeabur](../../docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md) | Despliegue de aplicaciones para producción | ✅ |
+| [Back-end 6: Herramientas CLI modernas](../../docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | Aceleración del desarrollo con herramientas AI | ✅ |
+| [Back-end 7: Integración de pagos con Stripe](../../docs/zh-cn/stage-2/backend/2.7-stripe-payment/) | Procesos de cobro y liquidación básicos | 🚧 |
+| [Proyecto 1: Aplicación Full-stack completa](../../docs/zh-cn/stage-2/assignments/2.1-fullstack-app/) | Web App completa lista para producción | 🚧 |
+| [Proyecto 2: UI Library + Trae](../../docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/) | Producto independiente con auth y pagos | 🚧 |
+
+</details>
+
+<details>
+<summary><strong>III. Desarrollador avanzado</strong></summary>
+
+| Capítulo | Contenido clave | Estado |
+| :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
+| [Avanzado 1: MCP & Claude Code Skills](../../docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/) | Extensión de capacidades del IDE | 🚧 |
+| [Avanzado 2: Tareas de larga duración](../../docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) | Configuración de tareas de codificación estables | 🚧 |
+| [Avanzado 3: WeChat Mini Program](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | Ecosistema y lanzamiento de mini programas | ✅ |
+| [Avanzado 4: Mini Program con Back-end](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Lógica de negocio completa en mini programas | 🚧 |
+| [Avanzado 5: Android App Development](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Desarrollo unificado con Expo | ✅ |
+| [Avanzado 6: iOS App Development](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Desarrollo unificado con Expo | ✅ |
+| [Avanzado 7: Web personal y blog académico](../../docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) | Construcción de marca personal en línea | 🚧 |
+
+</details>
+
+## 🛠️ Cómo aprender
+
+- Según tu nivel, elige los capítulos relevantes para leer y practicar.
+
+## 💻 Configuración local
+
+### Método moderno
+
+En tu AI IDE (VS Code, Cursor, Trae), usa el siguiente prompt:
 
 ```
-Por favor ayúdame a ejecutar el servicio local de este proyecto
+Por favor, ayúdame a ejecutar el servicio local de este proyecto.
 ```
 
-### Método Antiguo
+### Método tradicional
 
 1. npm install
 2. npm run dev
-3. Abre tu navegador y visita `http://localhost:3000` para ver.
+3. Abre `http://localhost:3000` en tu navegador.
 
 ## 🤝 Contribuir
 
-- Si descubres algún problema, o crees que hay algo que se pueda mejorar en este proyecto, puedes enviar un Issue para dar feedback. Si después de enviar nadie responde, puedes contactar al [equipo de cuidadores](https://github.com/datawhalechina/DOPMC/blob/main/OP.md) para feedback y seguimiento~
-- Si quieres contribuir a este proyecto, puedes enviar un Pull Request, si después de enviar nadie responde, puedes contactar al [equipo de cuidadores](https://github.com/datawhalechina/DOPMC/blob/main/OP.md) para feedback y seguimiento~
-- Si estás muy interesado en Datawhale y quieres iniciar un nuevo proyecto, por favor sigue la [guía de proyectos de código abierto de Datawhale](https://github.com/datawhalechina/DOPMC/blob/main/GUIDE.md)~
+- Si encuentras problemas, por favor abre un Issue.
+- Si quieres contribuir, envía un Pull Request.
 
-## 🙏 Gracias a Cada Contribuyente
+## 🙏 Agradecimientos
 
-- [散步-Líder del proyecto](https://github.com/sanbuphy) (Miembro de Datawhale)
-- Fang Ke-Profesor guía (Miembro de Datawhale, Universidad de Tsinghua)
-- [Yerim Kang](https://github.com/yerim25)（Parte de proyectos prácticos-Universidad de Tsinghua）
-- Zhao Zhilin（Parte de proyectos prácticos-Universidad de Tsinghua）
-- [Li Yixuan](https://yixuan20.github.io/)（Diseño artístico de página-Universidad de Tsinghua）
-- Todos los compañeros del grupo beta de AI Vibe Coding 101 que proporcionaron sugerencias y experiencia
+- [Sanbu - Líder del proyecto](https://github.com/sanbuphy) (Miembro de Datawhale)
+- Fang Ke - Asesor (Miembro de Datawhale, Univ. de Tsinghua)
+- Todo el equipo de diseño y pruebas por su apoyo ❤️
 
-### Agradecimientos Especiales
+<div align="center"> 
 
-- Gracias a [@Sm1les](https://github.com/Sm1les) por su ayuda y apoyo a este proyecto
-- Gracias a todos los desarrolladores que han contribuido a este proyecto ❤️
+ <p> 
+   <a href="https://github.com/datawhalechina/easy-vibe/stargazers"><img src="https://reporoster.com/stars/datawhalechina/easy-vibe" alt="Stargazers"/></a> 
+   &nbsp;&nbsp; 
+   <a href="https://github.com/datawhalechina/easy-vibe/network/members"><img src="https://reporoster.com/forks/datawhalechina/easy-vibe" alt="Forkers"/></a> 
+ </p> 
+ 
+ <a href="https://www.star-history.com/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
+   <picture> 
+     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
+     <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&legend=top-left" /> 
+   </picture> 
+ </a>
+</div>
 
 <div align=center style="margin-top: 30px;">
   <a href="https://github.com/datawhalechina/easy-vibe/graphs/contributors">
@@ -201,13 +359,13 @@ Por favor ayúdame a ejecutar el servicio local de este proyecto
   </a>
 </div>
 
-## <span id="contact">📧 Contáctanos</span>
+## <span id="contact">📧 Contacto</span>
 
 <div align=center>
-<p>Si tienes preguntas, sugerencias, quejas, o quieres comunicarte, por favor escanea el código QR a continuación</p>
-<img src="../assets/wechat.png" width="280">
+<p>Si tienes sugerencias o quieres colaborar, escanea el código QR:</p>
+<img src="../../assets/wechat.png" width="280">
 
-<p>Escanea el código QR a continuación para seguir la cuenta oficial: Datawhale</p>
+<p>Sigue a Datawhale en WeChat:</p>
 <img src="https://raw.githubusercontent.com/datawhalechina/pumpkin-book/master/res/qrcode.jpeg" width="180" height="180">
 </div>
 
@@ -216,16 +374,16 @@ Por favor ayúdame a ejecutar el servicio local de este proyecto
 <div align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
   <img
-    alt="Licencia Creative Commons"
+    alt="Licencia CC"
     style="border-width:0"
     src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey"
   />
 </a>
 <br />
-Este trabajo está licenciado bajo una
+Este trabajo está bajo una
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
   Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
-</a>
+</a>.
 </div>
 
 ## Star History

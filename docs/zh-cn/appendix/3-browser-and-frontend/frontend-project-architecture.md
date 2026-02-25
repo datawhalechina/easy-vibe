@@ -1,641 +1,546 @@
 # 前端项目架构设计
 
 ::: tip 🎯 核心问题
-**文件越放越乱，代码越写越难找，如何设计一个清晰、可维护的前端项目结构？** 这就像问：你是把所有衣服都扔进一个箱子，还是按季节、类型、颜色分类整理？好的项目架构能让团队协作更高效，让代码维护更轻松。
+**从简单的 HTML 页面到复杂的企业级应用，如何为不同规模的项目选择合适的架构？** 这就像问：从单身公寓到大型商场，如何根据需求设计不同的空间布局？好的架构应该随项目成长而演进，而不是一开始就过度设计。
 :::
 
 ---
 
-## 1. 为什么要关注项目架构？
+## 1. 架构演进：从简单到复杂
 
-### 1.1 从小项目到大项目的演变
+### 1.1 三个复杂度级别概览
 
-很多初学者刚开始写前端时，项目结构非常简单：
+前端项目的架构应该与项目复杂度相匹配。我们按**技术复杂度**和**用户规模**两个维度，将项目分为三个级别：
 
-```
-my-project/
-├── index.html
-├── style.css
-└── app.js
-```
+| 级别 | 技术栈 | 用户规模 | 典型场景 | 核心关注点 |
+|------|--------|----------|----------|------------|
+| **入门级** | HTML/CSS/JS | 个人/小团队 | 个人博客、宣传页、简单工具 | 快速上线、简单维护 |
+| **进阶级** | Vue/React + 构建工具 | 中小型企业 | 管理系统、电商前台、SaaS | 组件复用、状态管理 |
+| **企业级** | 框架 + 微前端/SSR | 大型应用 | 大型平台、复杂业务系统 | 性能优化、团队协作、可扩展性 |
 
-三个文件搞定一切，简单直接。但随着项目增长，问题开始出现：
+::: tip 💡 如何选择？
+**不要过度设计！** 很多项目从简单的 HTML 开始，随着需求增长逐步引入框架和工具。
 
-- **页面多了**：`page1.html`, `page2.html`... 文件散落在根目录
-- **组件多了**：按钮、弹窗、表单各自为政，复用困难
-- **工具函数多了**：到处复制粘贴，改一个地方要改十处
-- **样式冲突了**：全局 CSS 互相覆盖，调试困难
-
-**问题的本质**：没有"章法"，文件随意存放，就像把春夏秋冬的衣服都扔进一个箱子。
-
-### 1.2 好的架构像整理好的衣柜
-
-想象一个整理好的衣柜：
-
-| 区域 | 存放物品 | 特点 |
-|------|----------|------|
-| **挂衣区** | 外套、衬衫 | 常穿，方便取用 |
-| **抽屉区** | 内衣、袜子 | 分类摆放，整齐 |
-| **隔板区** | 毛衣、裤子 | 叠放，节省空间 |
-| **顶层区** | 换季衣物 | 不常用，收纳起来 |
-
-**好的项目架构**就是把代码也这样组织：每一类文件有自己的"位置"，团队成员都知道该去哪找、该往哪放。
-
-::: tip 💡 通俗比喻：餐厅后厨的组织
-把前端项目想象成一家餐厅的后厨：
-
-- **`src/pages/`（页面区）** = 出餐口：每个订单对应一个成品菜
-- **`src/components/`（组件区）** = 备料台：切好的蔬菜、调好的酱料，随时可用
-- **`src/utils/`（工具区）** = 工具柜：刀、勺、温度计等通用工具
-- **`src/assets/`（食材区）** = 冷藏库：图片、字体、样式等原材料
-- **`src/services/`（服务层）** = 传菜窗口：与外部（服务员/后端）交互
-
-**关键点**：每个区域职责明确，不会混乱。你不会在冷藏库里切菜，也不会把刀具扔进汤锅。
+- 个人项目 → 入门级
+- 创业公司 MVP → 入门级或进阶级
+- 企业管理系统 → 进阶级
+- 大型互联网平台 → 企业级
 :::
 
 ---
 
-## 2. 经典目录结构解析
+## 2. 入门级：HTML/CSS/JS 项目
 
-### 2.1 标准目录结构（以 Vue/React 为例）
+### 2.1 适用场景
 
-一个中大型前端项目的典型结构如下：
+- 个人博客、简历页面
+- 产品宣传页（Landing Page）
+- 简单的工具页面（计算器、转换器等）
+- 原型验证、快速 Demo
+
+### 2.2 推荐目录结构
 
 ```
-my-frontend-project/
-├── public/                     # 静态资源（不经过构建）
-│   ├── favicon.ico
+my-simple-project/
+├── index.html              # 首页
+├── about.html              # 关于页面（如有）
+├── css/
+│   ├── reset.css           # 重置样式
+│   ├── variables.css       # CSS 变量（颜色、字体等）
+│   ├── components.css      # 组件样式（按钮、卡片等）
+│   └── main.css            # 主样式文件
+├── js/
+│   ├── utils.js            # 工具函数
+│   ├── api.js              # 简单的 API 调用
+│   └── main.js             # 主逻辑
+├── assets/
+│   ├── images/             # 图片资源
+│   └── fonts/              # 字体文件
+└── README.md               # 项目说明
+```
+
+### 2.3 代码组织原则
+
+**HTML**：语义化标签，清晰的结构
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人博客</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="main-nav">
+      <a href="index.html">首页</a>
+      <a href="about.html">关于</a>
+    </nav>
+  </header>
+  
+  <main class="content">
+    <article class="blog-post">
+      <h1>文章标题</h1>
+      <p>文章内容...</p>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <p>&copy; 2024 我的博客</p>
+  </footer>
+  
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+```
+
+**CSS**：使用 CSS 变量管理主题
+
+```css
+/* variables.css */
+:root {
+  --primary-color: #3498db;
+  --text-color: #333;
+  --bg-color: #fff;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* components.css - 可复用的组件样式 */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+.card {
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+```
+
+**JavaScript**：模块化组织（使用 ES6 模块或简单拆分）
+
+```javascript
+// utils.js
+const utils = {
+  // DOM 操作简化
+  $(selector) {
+    return document.querySelector(selector);
+  },
+  
+  // 简单的防抖
+  debounce(fn, delay) {
+    let timer;
+    return function(...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), delay);
+    };
+  },
+  
+  // 本地存储封装
+  storage: {
+    get(key) {
+      return JSON.parse(localStorage.getItem(key) || 'null');
+    },
+    set(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+  }
+};
+
+// main.js
+document.addEventListener('DOMContentLoaded', () => {
+  // 页面初始化逻辑
+  initNavigation();
+  loadBlogPosts();
+});
+```
+
+### 2.4 最佳实践
+
+✅ **应该做的**：
+- 使用语义化 HTML 标签
+- CSS 变量管理颜色和间距
+- 图片压缩和懒加载
+- 添加基础的 SEO meta 标签
+
+❌ **避免的**：
+- 内联样式（`style="..."`）
+- 全局变量污染
+- 重复代码（复制粘贴）
+
+---
+
+## 3. 进阶级：Vue/React 框架项目
+
+### 3.1 适用场景
+
+- 企业管理系统（ERP、CRM、OA）
+- 电商前台/后台
+- SaaS 应用
+- 需要复杂交互的 Web 应用
+
+### 3.2 Vue 项目推荐结构
+
+```
+my-vue-project/
+├── public/                     # 静态资源
 │   ├── index.html
-│   └── robots.txt
+│   └── favicon.ico
 ├── src/
-│   ├── assets/                 # 项目资源（会被构建工具处理）
-│   │   ├── images/
-│   │   ├── fonts/
-│   │   └── styles/
-│   │       ├── variables.scss  # 变量定义
-│   │       ├── mixins.scss     # 混入样式
-│   │       └── global.css      # 全局样式
+│   ├── assets/                 # 样式、图片、字体
+│   │   ├── styles/
+│   │   │   ├── variables.scss
+│   │   │   ├── mixins.scss
+│   │   │   └── global.scss
+│   │   └── images/
 │   ├── components/             # 通用组件
-│   │   ├── common/             # 全局通用组件
+│   │   ├── common/             # 全局通用（Button、Modal 等）
 │   │   │   ├── Button/
 │   │   │   │   ├── index.vue
-│   │   │   │   ├── Button.scss
-│   │   │   │   └── Button.test.js
-│   │   │   ├── Modal/
-│   │   │   └── Loading/
-│   │   └── business/           # 业务组件
-│   │       ├── UserCard/
-│   │       └── ProductList/
-│   ├── views/ 或 pages/        # 页面组件
+│   │   │   │   └── Button.scss
+│   │   │   └── Modal/
+│   │   └── business/           # 业务组件（UserCard 等）
+│   ├── views/                  # 页面组件
 │   │   ├── Home/
-│   │   ├── About/
-│   │   └── User/
-│   │       ├── Profile/
-│   │       └── Settings/
-│   ├── router/ 或 navigation/  # 路由配置
+│   │   ├── User/
+│   │   │   ├── List.vue
+│   │   │   └── Detail.vue
+│   │   └── Product/
+│   ├── router/                 # 路由配置
 │   │   └── index.js
-│   ├── stores/ 或 state/       # 状态管理
+│   ├── stores/                 # Pinia/Vuex 状态管理
 │   │   ├── user.js
 │   │   └── app.js
-│   ├── services/ 或 api/       # API 服务
+│   ├── services/               # API 服务
+│   │   ├── request.js          # axios 封装
 │   │   ├── user.js
 │   │   └── product.js
-│   ├── utils/ 或 helpers/      # 工具函数
-│   │   ├── request.js          # 请求封装
-│   │   ├── storage.js          # 本地存储
-│   │   └── format.js           # 格式化工具
-│   ├── hooks/ 或 composables/  # 组合式函数
+│   ├── utils/                  # 工具函数
+│   │   ├── format.js
+│   │   ├── validate.js
+│   │   └── storage.js
+│   ├── composables/            # 组合式函数
 │   │   ├── useAuth.js
 │   │   └── useLoading.js
-│   ├── directives/             # 自定义指令
-│   ├── plugins/                # 插件配置
 │   ├── constants/              # 常量定义
-│   ├── types/ 或 @types/       # TypeScript 类型
-│   └── App.vue 或 App.jsx      # 根组件
-│   └── main.js 或 main.ts      # 入口文件
+│   │   └── index.js
+│   ├── App.vue
+│   └── main.js
 ├── tests/                      # 测试文件
-│   ├── unit/
-│   └── e2e/
 ├── .env                        # 环境变量
-├── .env.development
-├── .env.production
-├── vite.config.js              # 构建配置
+├── vite.config.js
 ├── package.json
 └── README.md
 ```
 
-::: tip 📊 从图解中你能看到什么？
-**分层逻辑**：
-
-- **`public/` vs `src/assets/`**：前者直接复制到输出目录，后者会被构建工具处理（压缩、转译、添加哈希值）
-- **`components/` vs `views/`**：组件是"零件"，页面是"成品"。一个页面由多个组件组装而成
-- **`services/` 独立出来**：把 API 调用集中管理，方便统一处理错误、加载状态、请求拦截
-
-**依赖方向**：
+### 3.3 React 项目推荐结构
 
 ```
-views/pages → components → utils/hooks
-     ↓
-services → stores
+my-react-project/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── common/             # 通用组件
+│   │   │   ├── Button/
+│   │   │   │   ├── index.jsx
+│   │   │   │   └── Button.module.css
+│   │   │   └── Modal/
+│   │   └── business/           # 业务组件
+│   ├── pages/                  # 页面组件
+│   │   ├── Home/
+│   │   ├── User/
+│   │   └── Product/
+│   ├── hooks/                  # 自定义 Hooks
+│   │   ├── useAuth.js
+│   │   └── useFetch.js
+│   ├── services/               # API 服务
+│   │   ├── api.js
+│   │   └── userService.js
+│   ├── store/                  # Redux/Zustand 状态管理
+│   │   ├── slices/
+│   │   └── index.js
+│   ├── utils/
+│   ├── constants/
+│   ├── App.jsx
+│   └── main.jsx
+├── tests/
+└── package.json
 ```
 
-上层可以调用下层，但下层不应该依赖上层。
-:::
+### 3.4 关键概念详解
 
-### 2.2 按功能组织 vs 按类型组织
+#### 组件设计原则
 
-项目结构有两种主流的组织方式：
+**单一职责**：一个组件只做一件事
 
-#### 方式一：按类型组织（Type-based）
+```vue
+<!-- ❌ 不好的例子：组件做了太多事 -->
+<template>
+  <div>
+    <form @submit="handleSubmit">
+      <!-- 表单内容 -->
+    </form>
+    <table>
+      <!-- 数据表格 -->
+    </table>
+    <div class="charts">
+      <!-- 统计图表 -->
+    </div>
+  </div>
+</template>
+
+<!-- ✅ 好的例子：拆分成独立组件 -->
+<template>
+  <div>
+    <UserForm @submit="fetchData" />
+    <UserTable :data="users" />
+    <UserStats :data="users" />
+  </div>
+</template>
+```
+
+#### 状态管理策略
+
+| 状态类型 | 存储位置 | 示例 |
+|----------|----------|------|
+| **全局状态** | Pinia/Redux | 用户信息、登录状态、主题设置 |
+| **页面状态** | 页面组件 | 列表查询条件、分页信息 |
+| **组件状态** | 组件内部 | 表单输入、弹窗显示/隐藏 |
+| **服务端状态** | TanStack Query/SWR | 服务器数据、缓存 |
+
+#### 目录组织方式选择
+
+**方式一：按类型组织（适合小型项目）**
 
 ```
 src/
-├── components/
-│   ├── Button.vue
-│   ├── Modal.vue
-│   └── Card.vue
-├── views/
-│   ├── Home.vue
-│   ├── User.vue
-│   └── Product.vue
-├── stores/
-│   ├── user.js
-│   └── product.js
-└── services/
-    ├── user.js
-    └── product.js
+├── components/     # 所有组件
+├── views/          # 所有页面
+├── stores/         # 所有状态
+└── services/       # 所有服务
 ```
 
-**优点**：
-- 结构清晰，同类文件在一起
-- 适合小型项目，一目了然
-
-**缺点**：
-- 修改一个功能要跨多个目录
-- 大型项目中文件过多，难以定位
-
-#### 方式二：按功能组织（Feature-based）
+**方式二：按功能组织（适合中大型项目）**
 
 ```
 src/
 ├── features/
-│   ├── auth/
-│   │   ├── components/
-│   │   │   ├── LoginForm.vue
-│   │   │   └── RegisterForm.vue
-│   │   ├── stores/
-│   │   │   └── authStore.js
-│   │   ├── services/
-│   │   │   └── authApi.js
-│   │   ├── hooks/
-│   │   │   └── useAuth.js
-│   │   └── index.js            # 统一导出
-│   ├── user/
-│   │   ├── components/
-│   │   ├── stores/
-│   │   └── services/
-│   └── product/
-│       ├── components/
-│       ├── stores/
-│       └── services/
-├── shared/                     # 共享资源
-│   ├── components/
-│   ├── utils/
-│   └── styles/
+│   ├── auth/       # 认证功能的所有代码
+│   ├── user/       # 用户功能的所有代码
+│   └── product/    # 商品功能的所有代码
+├── shared/         # 共享资源
 └── App.vue
 ```
 
-**优点**：
-- 高内聚，修改一个功能在一个目录完成
-- 便于团队协作，不同人负责不同 feature
-- 易于删除或重构，不会散落各处
-
-**缺点**：
-- 初期设计需要考虑 feature 划分
-- 共享组件需要额外考虑
-
 ::: tip 💡 如何选择？
-| 项目规模 | 推荐方式 | 原因 |
-|----------|----------|------|
-| 小型项目（< 10 个页面） | 按类型组织 | 简单直接，快速上手 |
-| 中大型项目（> 20 个页面） | 按功能组织 | 便于维护，团队协作 |
-| 微前端/大型应用 | 按功能 + 模块拆分 | 独立部署，团队自治 |
-
-**实际建议**：很多项目采用"混合模式"——整体按功能组织，内部按类型细分。
+- 项目页面 < 10 个 → 按类型组织
+- 项目页面 > 20 个 → 按功能组织
+- 团队 > 5 人 → 按功能组织，便于并行开发
 :::
 
 ---
 
-## 3. 各目录的职责与最佳实践
+## 4. 企业级：大型应用架构
 
-### 3.1 `components/` 组件目录
+### 4.1 适用场景
 
-组件是前端项目的核心，良好的组件设计能大幅提升开发效率。
+- 大型互联网平台（电商、社交、内容平台）
+- 复杂的企业级应用
+- 需要支持多团队协作的项目
+- 对性能和可维护性要求极高的项目
 
-#### 组件分类
+### 4.2 微前端架构
 
-```
-components/
-├── common/                 # 通用组件（跨项目可复用）
-│   ├── Button/
-│   ├── Input/
-│   ├── Modal/
-│   └── Loading/
-├── business/               # 业务组件（项目特定）
-│   ├── UserCard/
-│   ├── ProductItem/
-│   └── OrderTable/
-└── layout/                 # 布局组件
-    ├── Header/
-    ├── Sidebar/
-    └── Footer/
-```
-
-#### 单文件组件结构
-
-每个组件建议包含以下文件：
+当项目规模大到一定程度，单个代码库难以维护时，可以考虑**微前端**架构。
 
 ```
-Button/
-├── index.vue               # 主组件（或 .tsx/.jsx）
-├── Button.scss             # 样式（可选 CSS Modules）
-├── Button.test.js          # 单元测试
-├── Button.stories.js       # Storybook 文档（可选）
-├── types.ts                # 类型定义（TS 项目）
-└── index.ts                # 统一导出
+大型电商平台/
+├── 基座应用（主框架）
+│   ├── 顶部导航
+│   ├── 侧边菜单
+│   ├── 用户中心入口
+│   └── 子应用容器
+├── 商品子应用（独立部署）
+│   ├── 商品列表
+│   ├── 商品详情
+│   └── 商品管理
+├── 订单子应用（独立部署）
+│   ├── 购物车
+│   ├── 订单列表
+│   └── 支付流程
+├── 用户子应用（独立部署）
+│   ├── 个人中心
+│   ├── 收货地址
+│   └── 优惠券
+└── 营销子应用（独立部署）
+    ├── 活动页面
+    ├── 优惠券发放
+    └── 积分商城
 ```
 
-::: details 📝 组件代码示例
-```vue
-<!-- Button/index.vue -->
-<template>
-  <button
-    :class="['btn', `btn--${type}`, { 'btn--disabled': disabled }]"
-    :disabled="disabled"
-    @click="handleClick"
-  >
-    <Loading v-if="loading" size="small" />
-    <slot />
-  </button>
-</template>
+**微前端的优势**：
+- 团队自治：每个子应用独立开发、部署
+- 技术栈无关：不同团队可以用不同框架
+- 渐进式升级：可以逐步重构老系统
 
-<script setup>
-import { Loading } from '../Loading'
-
-defineProps({
-  type: { type: String, default: 'primary' },
-  disabled: Boolean,
-  loading: Boolean
-})
-
-const emit = defineEmits(['click'])
-const handleClick = () => emit('click')
-</script>
-
-<style scoped lang="scss">
-.btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  
-  &--primary {
-    background: var(--primary-color);
-    color: white;
-  }
-  
-  &--disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-</style>
-```
-:::
-
-### 3.2 `views/` 或 `pages/` 页面目录
-
-页面是用户看到的"成品"，通常对应路由。
+### 4.3 企业级目录结构
 
 ```
-views/
-├── Home/                   # 首页
-│   ├── index.vue
-│   ├── components/         # 页面私有组件
-│   │   ├── HeroSection.vue
-│   │   └── FeatureList.vue
-│   └── hooks/              # 页面私有 hooks
-│       └── useHomeData.js
-├── User/
-│   ├── Profile/
-│   ├── Settings/
-│   └── OrderHistory/
-└── Product/
-    ├── List/
-    └── Detail/
+enterprise-project/
+├── apps/                       # 微前端子应用
+│   ├── main/                   # 基座应用
+│   ├── product/
+│   ├── order/
+│   └── user/
+├── packages/                   # 共享包（Monorepo）
+│   ├── ui-components/          # 通用组件库
+│   ├── utils/                  # 工具函数
+│   ├── constants/              # 常量定义
+│   └── types/                  # TypeScript 类型
+├── shared/                     # 共享配置
+│   ├── eslint-config/
+│   ├── ts-config/
+│   └── vite-config/
+├── docs/                       # 项目文档
+├── scripts/                    # 构建脚本
+└── package.json
 ```
 
-**最佳实践**：
-- 页面组件保持"薄"，逻辑下沉到 hooks 或 services
-- 页面私有组件放在页面目录下，避免污染全局
-- 复杂页面可以进一步拆分子目录
+### 4.4 性能优化架构
 
-### 3.3 `services/` 或 `api/` 服务层
-
-集中管理所有 API 调用，统一处理请求/响应拦截。
+大型应用需要关注性能优化：
 
 ```
-services/
-├── request.js              # 请求实例配置（axios/fetch 封装）
-├── user.js                 # 用户相关 API
-├── product.js              # 商品相关 API
-├── order.js                # 订单相关 API
-└── index.js                # 统一导出
+性能优化策略/
+├── 构建时优化
+│   ├── 代码分割（Code Splitting）
+│   ├── 路由懒加载
+│   ├── Tree Shaking
+│   └── 资源压缩
+├── 运行时优化
+│   ├── 虚拟滚动（长列表）
+│   ├── 图片懒加载
+│   ├── 组件按需渲染
+│   └── 缓存策略
+└── 网络优化
+    ├── CDN 加速
+    ├── HTTP 缓存
+    ├── 资源预加载
+    └── Service Worker
 ```
 
-::: details 📝 服务层代码示例
-```javascript
-// services/request.js
-import axios from 'axios'
-import { useAuthStore } from '@/stores/auth'
+### 4.5 SSR/SSG 架构
 
-const request = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 10000
-})
+对于需要 SEO 或首屏性能的场景：
 
-// 请求拦截器
-request.interceptors.request.use(
-  (config) => {
-    const authStore = useAuthStore()
-    if (authStore.token) {
-      config.headers.Authorization = `Bearer ${authStore.token}`
-    }
-    return config
-  }
-)
-
-// 响应拦截器
-request.interceptors.response.use(
-  (response) => response.data,
-  (error) => {
-    if (error.response?.status === 401) {
-      // 统一处理登录过期
-      window.location.href = '/login'
-    }
-    return Promise.reject(error)
-  }
-)
-
-export default request
-```
-
-```javascript
-// services/user.js
-import request from './request'
-
-export const userApi = {
-  login: (data) => request.post('/auth/login', data),
-  register: (data) => request.post('/auth/register', data),
-  getProfile: () => request.get('/user/profile'),
-  updateProfile: (data) => request.put('/user/profile', data)
-}
-```
-:::
-
-### 3.4 `stores/` 状态管理
-
-```
-stores/
-├── index.js                # store 入口
-├── auth.js                 # 认证状态
-├── user.js                 # 用户信息
-├── app.js                  # 应用级状态（主题、语言等）
-└── cart.js                 # 购物车状态
-```
-
-**建议**：
-- 按功能拆分 store，避免单个文件过大
-- 区分全局状态和局部状态，不要什么都放全局
-- 使用组合式 API（Pinia/Vuex 4+）更灵活
-
-### 3.5 `utils/` 工具函数
-
-```
-utils/
-├── format.js               # 格式化（日期、金额等）
-├── storage.js              # 本地存储封装
-├── validate.js             # 表单验证
-├── dom.js                  # DOM 操作
-├── date.js                 # 日期处理
-└── index.js                # 统一导出
-```
-
-**原则**：
-- 纯函数优先，便于测试
-- 单一职责，一个函数只做一件事
-- 添加 JSDoc 注释，说明参数和返回值
-
-::: details 📝 工具函数示例
-```javascript
-// utils/storage.js
-const STORAGE_PREFIX = 'myapp_'
-
-export const storage = {
-  get(key) {
-    const value = localStorage.getItem(STORAGE_PREFIX + key)
-    try {
-      return JSON.parse(value)
-    } catch {
-      return value
-    }
-  },
-  
-  set(key, value) {
-    localStorage.setItem(
-      STORAGE_PREFIX + key,
-      typeof value === 'string' ? value : JSON.stringify(value)
-    )
-  },
-  
-  remove(key) {
-    localStorage.removeItem(STORAGE_PREFIX + key)
-  }
-}
-```
-:::
-
-### 3.6 `hooks/` 或 `composables/` 组合式函数
-
-```
-hooks/
-├── useAuth.js              # 认证逻辑
-├── useLoading.js           # 加载状态
-├── usePagination.js        # 分页逻辑
-├── useForm.js              # 表单处理
-└── useWebsocket.js         # WebSocket
-```
-
-::: details 📝 Hook 示例
-```javascript
-// hooks/useLoading.js
-import { ref } from 'vue'
-
-export function useLoading() {
-  const loading = ref(false)
-  
-  const withLoading = async (fn) => {
-    loading.value = true
-    try {
-      return await fn()
-    } finally {
-      loading.value = false
-    }
-  }
-  
-  return { loading, withLoading }
-}
-
-// 使用
-const { loading, withLoading } = useLoading()
-const fetchData = () => withLoading(async () => {
-  const data = await api.getData()
-  list.value = data
-})
-```
-:::
+| 方案 | 适用场景 | 代表框架 |
+|------|----------|----------|
+| **SSR** | 需要 SEO、首屏渲染快 | Next.js、Nuxt.js |
+| **SSG** | 内容静态、更新不频繁 | Astro、VitePress |
+| **混合** | 部分静态、部分动态 | Next.js (ISR) |
 
 ---
 
-## 4. 知名开源项目的架构参考
+## 5. 按用户量级别的架构选择
 
-### 4.1 Vue 3 官方仓库
+### 5.1 个人/小团队（日活 < 1000）
 
-```
-vue/
-├── packages/
-│   ├── vue/                # 核心包
-│   ├── reactivity/         # 响应式系统
-│   ├── runtime-core/       # 运行时核心
-│   ├── runtime-dom/        # DOM 运行时
-│   ├── compiler-sfc/       # 单文件组件编译器
-│   └── shared/             # 共享工具
-├── scripts/                # 构建脚本
-└── tsconfig.json
-```
+**特点**：快速迭代、资源有限、需求变化快
 
-**特点**：
-- Monorepo 结构，多个包统一管理
-- 按功能拆分 package，职责清晰
-- 共享工具提取到 shared 包
+**推荐架构**：
+- 技术栈：Vue 3 + Vite 或 React + Vite
+- 状态管理：Pinia 或 Zustand（轻量级）
+- UI 库：Element Plus / Ant Design
+- 部署：Vercel / Netlify / 云服务器
 
-### 4.2 React 官方仓库
+**目录结构**：简单按类型组织即可
 
-```
-react/
-├── packages/
-│   ├── react/              # React 核心
-│   ├── react-dom/          # DOM 渲染器
-│   ├── react-reconciler/   # 协调器
-│   ├── scheduler/          # 调度器
-│   └── shared/             # 共享代码
-├── fixtures/               # 测试用例
-└── scripts/
-```
+### 5.2 中型企业（日活 1k-100k）
 
-**特点**：
-- 核心与渲染器分离（react vs react-dom）
-- reconciler 独立，支持多平台
-- scheduler 单独抽离，可独立使用
+**特点**：业务复杂、团队协作、需要稳定性
 
-### 4.3 Ant Design Vue
+**推荐架构**：
+- 技术栈：Vue 3 + TypeScript 或 React + TypeScript
+- 状态管理：Pinia + 组合式函数 或 Redux Toolkit
+- UI 库：自建组件库 + 业务组件库
+- 测试：单元测试 + E2E 测试
+- 部署：CI/CD 流水线 + Docker
 
-```
-ant-design-vue/
-├── components/             # 组件目录
-│   ├── button/
-│   ├── modal/
-│   └── ...
-├── docs/                   # 文档
-├── site/                   # 官网
-├── tests/                  # 测试
-└── typings/                # 类型定义
-```
+**目录结构**：按功能组织，建立规范
 
-**特点**：
-- 组件与文档分离
-- 每个组件独立目录，包含 demo、test、style
-- 统一的类型定义
+### 5.3 大型平台（日活 > 100k）
 
-### 4.4 Next.js（全栈框架）
+**特点**：高并发、多团队协作、长期维护
 
-```
-my-nextjs-app/
-├── app/                    # App Router（新版）
-│   ├── page.js             # 页面
-│   ├── layout.js           # 布局
-│   ├── loading.js          # 加载状态
-│   └── api/                # API 路由
-├── components/             # 组件
-├── lib/                    # 工具函数
-├── public/                 # 静态资源
-└── styles/                 # 全局样式
-```
+**推荐架构**：
+- 技术栈：React/Vue + TypeScript（严格模式）
+- 架构：微前端 + Monorepo
+- 状态管理：细粒度状态管理 + 服务端状态缓存
+- 性能：SSR/SSG + CDN + 边缘计算
+- 监控：前端监控 + 错误追踪 + 性能分析
 
-**特点**：
-- 约定式路由，文件即路由
-- 内置 loading、error、layout 等约定文件
-- API 路由与页面共存
+**目录结构**：Monorepo + 微前端
 
 ---
 
-## 5. 架构设计原则与检查清单
+## 6. 架构演进路线图
 
-### 5.1 核心原则
+### 6.1 演进示例：从博客到平台
 
-| 原则 | 说明 | 实践建议 |
-|------|------|----------|
-| **单一职责** | 一个模块只做一件事 | 组件、函数保持简洁 |
-| **高内聚低耦合** | 相关代码放在一起，减少依赖 | 按功能组织目录 |
-| **可预测性** | 代码行为符合直觉 | 命名清晰，结构一致 |
-| **可测试性** | 便于编写单元测试 | 纯函数、依赖注入 |
-| **可扩展性** | 新功能容易添加 | 预留扩展点，避免硬编码 |
+```
+阶段 1：个人博客（HTML/CSS/JS）
+    ↓ 需求：需要后台管理
+阶段 2：增加管理后台（Vue/React + 简单结构）
+    ↓ 需求：用户系统、评论功能
+阶段 3：功能模块化（按功能组织）
+    ↓ 需求：多团队协作、独立部署
+阶段 4：微前端架构（Monorepo）
+```
 
-### 5.2 检查清单
+### 6.2 何时该升级架构？
 
-**目录结构**：
-- [ ] 是否有清晰的目录划分？
-- [ ] 新成员能否快速找到文件位置？
-- [ ] 是否避免了过深的嵌套（建议不超过 4 层）？
-
-**组件设计**：
-- [ ] 组件是否单一职责？
-- [ ] Props 是否清晰、可预测？
-- [ ] 是否提取了可复用的逻辑到 hooks？
-
-**代码组织**：
-- [ ] 是否避免了循环依赖？
-- [ ] 工具函数是否纯函数优先？
-- [ ] 常量、配置是否集中管理？
-
-**团队协作**：
-- [ ] 是否有编码规范文档？
-- [ ] 是否有文件命名约定？
-- [ ] 代码审查是否关注架构问题？
+| 信号 | 说明 | 建议 |
+|------|------|------|
+| 构建时间 > 5 分钟 | 项目过大 | 代码分割、微前端 |
+| 多人频繁冲突 | 协作困难 | 按功能组织、模块拆分 |
+| 改一处崩多处 | 耦合严重 | 重构、加强测试 |
+| 首屏加载 > 3 秒 | 性能问题 | 懒加载、SSR、优化 |
+| 新成员上手慢 | 结构混乱 | 文档、规范、重构 |
 
 ---
 
-## 6. 总结
+## 7. 总结
 
 ::: tip 💡 核心思想
-好的前端项目架构不是一成不变的，而是随着项目发展不断演进的。关键是建立清晰的**组织原则**和**命名约定**，让团队成员达成共识。
+**架构没有银弹，适合的才是最好的。**
+
+- **小项目**不要过度设计，HTML/CSS/JS 足够
+- **中项目**建立规范，组件化、模块化
+- **大项目**考虑微前端、性能优化、团队协作
 
 **记住这几点**：
-1. **先简单后复杂**：小项目不要过度设计
-2. **按功能组织**：中大型项目推荐 Feature-based
-3. **统一约定**：命名、结构、代码风格保持一致
-4. **持续重构**：定期审视架构，及时调整
+1. **渐进式演进**：从简单开始，随需求增长
+2. **统一约定**：命名、结构、代码风格保持一致
+3. **文档先行**：架构决策要记录，便于传承
+4. **定期重构**：技术债务要及时偿还
 
-**最终目标**：让代码像整理好的衣柜一样，想找什么立刻能找到，新成员也能快速上手。
+**最终目标**：让代码像整理好的空间一样，无论大小，都能高效运转。
 :::
 
 ---
@@ -646,3 +551,4 @@ my-nextjs-app/
 - [React 项目结构建议](https://react.dev/learn/thinking-in-react)
 - [Bulletproof React - 架构指南](https://github.com/alan2207/bulletproof-react)
 - [Feature Sliced Design](https://feature-sliced.design/)
+- [微前端架构](https://micro-frontends.org/)

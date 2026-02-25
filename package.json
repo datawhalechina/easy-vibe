@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "npm run lint && vitepress build docs --force",
+    "build": "vitepress build docs",
+    "build:force": "vitepress build docs --force",
     "preview": "vitepress preview docs",
     "format": "prettier --write .",
     "verify": "bash scripts/verify.sh",
@@ -38,7 +39,7 @@
     "element-plus": "^2.13.1",
     "typeit": "^8.8.7",
     "viewerjs": "^1.11.7",
-    "vitepress": "2.0.0-alpha.15",
+    "vitepress": "^2.0.0-alpha.16",
     "vue": "^3.5.0"
   }
 }

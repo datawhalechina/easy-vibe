@@ -20,7 +20,7 @@ const localeMap = {
     lang: 'zh-CN',
     hreflang: 'zh-CN'
   },
-  'en-us': {
+  'en': {
     ogLocale: 'en_US',
     twitterSite: '@datawhale',
     lang: 'en-US',
@@ -203,6 +203,709 @@ const commonThemeConfig = {
   }
 }
 
+const productManagerSidebarEn = [
+  {
+    text: 'Getting Started',
+    collapsed: false,
+    items: [
+      { text: 'Learning Map', link: '/en/stage-0/0.1-learning-map/' },
+      {
+        text: 'AI Era: If You Can Speak, You Can Code',
+        link: '/en/stage-0/0.2-ai-capabilities-through-games/'
+      }
+    ]
+  },
+  {
+    text: 'Product Prototype Skills',
+    collapsed: false,
+    items: [
+      {
+        text: 'Master AI Programming Tools',
+        link: '/en/stage-1/1.1-introduction-to-ai-ide/'
+      },
+      {
+        text: 'Find Great Ideas',
+        link: '/en/stage-1/1.0-finding-great-idea/'
+      },
+      {
+        text: 'Build Product Prototypes',
+        link: '/en/stage-1/1.2-building-prototype/'
+      },
+      {
+        text: 'Integrate AI Capabilities',
+        link: '/en/stage-1/1.3-integrating-ai-capabilities/'
+      },
+      {
+        text: 'Complete Project Practice',
+        link: '/en/stage-1/1.4-complete-project-practice/'
+      }
+    ]
+  },
+  {
+    text: 'Appendix: Business Thinking',
+    collapsed: false,
+    items: [
+      {
+        text: 'Product Thinking and Solution Design',
+        link: '/en/stage-1/appendix-a-product-thinking/'
+      },
+      {
+        text: 'AI Industry Application Scenarios (B-end)',
+        link: '/en/stage-1/appendix-industry-scenarios/'
+      },
+      {
+        text: 'AI Consumer Scenarios Inspiration (C-end)',
+        link: '/en/stage-1/appendix-c-consumer-scenarios/'
+      }
+    ]
+  },
+  {
+    text: 'Appendix: Technical Solutions',
+    collapsed: false,
+    items: [
+      {
+        text: 'What to do if you encounter errors',
+        link: '/en/stage-1/appendix-b-common-errors/'
+      },
+      {
+        text: 'Comparison of Seven AI Programming Tools',
+        link: '/en/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
+      },
+      {
+        text: 'Design Websites with Agents',
+        link: '/en/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
+      }
+    ]
+  }
+]
+
+const stage2SidebarEn = [
+  {
+    text: 'Frontend Development',
+    collapsed: false,
+    items: [
+      {
+        text: 'Frontend 0: Lovart Assets',
+        link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+      },
+      {
+        text: 'Frontend 1: Figma & MasterGo',
+        link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
+      },
+      {
+        text: 'Frontend 2: UI Design',
+        link: '/zh-cn/stage-2/frontend/2.2-ui-design/'
+      },
+      {
+        text: 'Frontend 3: UI Design Specs',
+        link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
+      },
+      {
+        text: 'Frontend 4: Hogwarts Portraits',
+        link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
+      }
+    ]
+  },
+  {
+    text: 'Backend & Full-Stack',
+    collapsed: false,
+    items: [
+      {
+        text: 'Backend 1: What is API',
+        link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/'
+      },
+      {
+        text: 'Backend 2: Database & Supabase',
+        link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+      },
+      {
+        text: 'Backend 3: AI-Assisted API Code',
+        link: '/zh-cn/stage-2/backend/2.3-ai-interface-code/'
+      },
+      {
+        text: 'Backend 4: Git Workflow',
+        link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/'
+      },
+      {
+        text: 'Backend 5: Deployment',
+        link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+      },
+      {
+        text: 'Backend 6: Modern CLI Tools',
+        link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/'
+      },
+      {
+        text: 'Backend 7: Stripe Payment',
+        link: '/zh-cn/stage-2/backend/2.7-stripe-payment/'
+      }
+    ]
+  },
+  {
+    text: 'Assignments',
+    collapsed: false,
+    items: [
+      {
+        text: 'Assignment 1: Full-Stack App',
+        link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+      },
+      {
+        text: 'Assignment 2: UI Library & Trae',
+        link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
+      }
+    ]
+  },
+  {
+    text: 'AI Capabilities Appendix',
+    collapsed: false,
+    items: [
+      {
+        text: 'AI 1: Dify & Knowledge Base',
+        link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/'
+      },
+      {
+        text: 'AI 2: AI Dictionary & Multimodal API',
+        link: '/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/'
+      }
+    ]
+  }
+]
+
+const stage3SidebarEn = [
+  {
+    text: 'Core Skills',
+    collapsed: false,
+    items: [
+      {
+        text: 'Advanced 1: MCP & Claude Code Skills',
+        link: '/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/'
+      },
+      {
+        text: 'Advanced 2: Long Running Tasks',
+        link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
+      }
+    ]
+  },
+  {
+    text: 'Multi-Platform',
+    collapsed: false,
+    items: [
+      {
+        text: 'Advanced 3: WeChat Mini Program',
+        link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
+      },
+      {
+        text: 'Advanced 4: WeChat Mini Program (Backend)',
+        link: '/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
+      },
+      {
+        text: 'Advanced 5: Android App - Compose',
+        link: '/zh-cn/stage-3/cross-platform/3.5-android-app/'
+      },
+      {
+        text: 'Advanced 6: iOS App - SwiftUI',
+        link: '/zh-cn/stage-3/cross-platform/3.6-ios-app/'
+      }
+    ]
+  },
+  {
+    text: 'Personal Brand',
+    collapsed: false,
+    items: [
+      {
+        text: 'Advanced 7: Personal Website & Blog',
+        link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+      }
+    ]
+  },
+  {
+    text: 'AI Advanced Appendix',
+    collapsed: false,
+    items: [
+      {
+        text: 'AI Advanced 1: RAG Introduction',
+        link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+      },
+      {
+        text: 'AI Advanced 2: LangGraph & Advanced RAG',
+        link: '/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/'
+      }
+    ]
+  }
+]
+
+const appendixSidebarEn = [
+  {
+    text: 'I. Computer Fundamentals',
+    collapsed: false,
+    items: [
+      {
+        text: 'Full-Stack in Vibe Coding Era',
+        link: '/zh-cn/appendix/1-computer-fundamentals/vibe-coding-fullstack'
+      },
+      {
+        text: 'Power On to Web Visit',
+        link: '/zh-cn/appendix/1-computer-fundamentals/power-on-to-web'
+      },
+      {
+        text: 'Transistor to CPU',
+        link: '/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu'
+      },
+      {
+        text: 'Computer Organization',
+        link: '/zh-cn/appendix/1-computer-fundamentals/computer-organization'
+      },
+      {
+        text: 'Operating Systems',
+        link: '/zh-cn/appendix/1-computer-fundamentals/operating-systems'
+      },
+      {
+        text: 'Data Encoding & Storage',
+        link: '/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage'
+      },
+      {
+        text: 'Computer Networks',
+        link: '/zh-cn/appendix/1-computer-fundamentals/computer-networks'
+      },
+      {
+        text: 'Data Structures',
+        link: '/zh-cn/appendix/1-computer-fundamentals/data-structures'
+      },
+      {
+        text: 'Algorithm Thinking',
+        link: '/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking'
+      },
+      {
+        text: 'Programming Languages',
+        link: '/zh-cn/appendix/1-computer-fundamentals/programming-languages'
+      },
+      {
+        text: 'Compilers Intro',
+        link: '/zh-cn/appendix/1-computer-fundamentals/compilers'
+      },
+      {
+        text: 'Type Systems Intro',
+        link: '/zh-cn/appendix/1-computer-fundamentals/type-systems'
+      }
+    ]
+  },
+  {
+    text: 'II. Tools & Environment',
+    collapsed: false,
+    items: [
+      {
+        text: 'IDE Basics',
+        link: '/zh-cn/appendix/2-development-tools/ide-basics'
+      },
+      {
+        text: 'Command Line & Shell',
+        link: '/zh-cn/appendix/2-development-tools/command-line-shell'
+      },
+      {
+        text: 'Git: Code Time Machine',
+        link: '/zh-cn/appendix/2-development-tools/git-version-control'
+      },
+      {
+        text: 'Env Vars & PATH',
+        link: '/zh-cn/appendix/2-development-tools/environment-path'
+      },
+      {
+        text: 'Ports & Localhost',
+        link: '/zh-cn/appendix/2-development-tools/ports-localhost'
+      },
+      {
+        text: 'SSH & Key Auth',
+        link: '/zh-cn/appendix/2-development-tools/ssh-authentication'
+      },
+      {
+        text: 'Package Managers',
+        link: '/zh-cn/appendix/2-development-tools/package-managers'
+      },
+      {
+        text: 'Art of Debugging',
+        link: '/zh-cn/appendix/2-development-tools/debugging-art/'
+      },
+      {
+        text: 'Regex',
+        link: '/zh-cn/appendix/2-development-tools/regex'
+      }
+    ]
+  },
+  {
+    text: 'III. Browser & Frontend',
+    collapsed: false,
+    items: [
+      {
+        text: 'JavaScript Deep Dive',
+        link: '/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive'
+      },
+      {
+        text: 'TypeScript Intro',
+        link: '/zh-cn/appendix/3-browser-and-frontend/typescript'
+      },
+      {
+        text: 'Frontend Frameworks',
+        link: '/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks'
+      },
+      {
+        text: 'Browser as OS',
+        link: '/zh-cn/appendix/3-browser-and-frontend/browser-as-os'
+      },
+      {
+        text: 'Rendering Pipeline',
+        link: '/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering'
+      },
+      {
+        text: 'HTML / CSS Layout',
+        link: '/zh-cn/appendix/3-browser-and-frontend/html-css-layout'
+      },
+      {
+        text: 'JS Runtime',
+        link: '/zh-cn/appendix/3-browser-and-frontend/javascript-runtime'
+      },
+      {
+        text: 'Nature of Frameworks',
+        link: '/zh-cn/appendix/3-browser-and-frontend/frontend-framework-nature'
+      },
+      {
+        text: 'State Management',
+        link: '/zh-cn/appendix/3-browser-and-frontend/state-management'
+      },
+      {
+        text: 'Routing & Navigation',
+        link: '/zh-cn/appendix/3-browser-and-frontend/routing-navigation'
+      },
+      {
+        text: 'Graphics & Animation',
+        link: '/zh-cn/appendix/3-browser-and-frontend/graphics-animation'
+      },
+      {
+        text: 'Real-time Comm',
+        link: '/zh-cn/appendix/3-browser-and-frontend/realtime-communication'
+      },
+      {
+        text: 'Web Performance',
+        link: '/zh-cn/appendix/3-browser-and-frontend/web-performance'
+      },
+      {
+        text: 'Frontend Engineering',
+        link: '/zh-cn/appendix/3-browser-and-frontend/frontend-engineering'
+      },
+      {
+        text: 'Project Architecture',
+        link: '/zh-cn/appendix/3-browser-and-frontend/frontend-project-architecture'
+      },
+      {
+        text: 'A11y & i18n',
+        link: '/zh-cn/appendix/3-browser-and-frontend/a11n-i18n'
+      }
+    ]
+  },
+  {
+    text: 'IV. Server & Backend',
+    collapsed: false,
+    items: [
+      {
+        text: 'Backend Languages',
+        link: '/zh-cn/appendix/4-server-and-backend/backend-languages'
+      },
+      {
+        text: 'Client Languages',
+        link: '/zh-cn/appendix/4-server-and-backend/client-languages'
+      },
+      {
+        text: 'Cross-platform Solutions',
+        link: '/zh-cn/appendix/4-server-and-backend/cross-platform'
+      },
+      {
+        text: 'HTTP Protocol',
+        link: '/zh-cn/appendix/4-server-and-backend/http-protocol'
+      },
+      {
+        text: 'Request Journey',
+        link: '/zh-cn/appendix/4-server-and-backend/request-journey'
+      },
+      {
+        text: 'Web Frameworks',
+        link: '/zh-cn/appendix/4-server-and-backend/web-frameworks'
+      },
+      {
+        text: 'API Intro',
+        link: '/zh-cn/appendix/4-server-and-backend/api-intro'
+      },
+      {
+        text: 'API Design Philosophy',
+        link: '/zh-cn/appendix/4-server-and-backend/api-design'
+      },
+      {
+        text: 'Serialization',
+        link: '/zh-cn/appendix/4-server-and-backend/serialization'
+      },
+      {
+        text: 'Auth & Authorization',
+        link: '/zh-cn/appendix/4-server-and-backend/auth-authorization'
+      },
+      {
+        text: 'Concurrency & Async',
+        link: '/zh-cn/appendix/4-server-and-backend/concurrency-async'
+      },
+      {
+        text: 'Caching Strategies',
+        link: '/zh-cn/appendix/4-server-and-backend/caching'
+      },
+      {
+        text: 'Message Queues',
+        link: '/zh-cn/appendix/4-server-and-backend/message-queues'
+      },
+      {
+        text: 'Async Task Queues',
+        link: '/zh-cn/appendix/4-server-and-backend/async-task-queues'
+      },
+      {
+        text: 'Rate Limiting',
+        link: '/zh-cn/appendix/4-server-and-backend/rate-limiting-backpressure'
+      },
+      {
+        text: 'Search Engine Principles',
+        link: '/zh-cn/appendix/4-server-and-backend/search-engines'
+      },
+      {
+        text: 'File Storage',
+        link: '/zh-cn/appendix/4-server-and-backend/file-storage'
+      },
+      {
+        text: 'Backend Architecture',
+        link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
+      },
+      {
+        text: 'Project Architecture',
+        link: '/zh-cn/appendix/4-server-and-backend/backend-project-architecture'
+      },
+      {
+        text: 'DSL Intro',
+        link: '/zh-cn/appendix/4-server-and-backend/domain-specific-languages'
+      }
+    ]
+  },
+  {
+    text: 'V. Data',
+    collapsed: false,
+    items: [
+      {
+        text: 'Database Fundamentals',
+        link: '/zh-cn/appendix/5-data/database-fundamentals'
+      },
+      {
+        text: 'Data Models Panorama',
+        link: '/zh-cn/appendix/5-data/data-models'
+      },
+      {
+        text: 'Data Tracking',
+        link: '/zh-cn/appendix/5-data/data-tracking'
+      },
+      {
+        text: 'Data Analysis',
+        link: '/zh-cn/appendix/5-data/data-analysis'
+      },
+      {
+        text: 'A/B Testing',
+        link: '/zh-cn/appendix/5-data/ab-testing'
+      },
+      {
+        text: 'Data Visualization',
+        link: '/zh-cn/appendix/5-data/data-visualization'
+      },
+      {
+        text: 'Data Governance',
+        link: '/zh-cn/appendix/5-data/data-governance'
+      }
+    ]
+  },
+  {
+    text: 'VI. Architecture',
+    collapsed: false,
+    items: [
+      {
+        text: 'Monolith to Microservices',
+        link: '/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices'
+      },
+      {
+        text: 'Distributed Systems',
+        link: '/zh-cn/appendix/6-architecture-and-system-design/distributed-systems'
+      },
+      {
+        text: 'HA & Disaster Recovery',
+        link: '/zh-cn/appendix/6-architecture-and-system-design/high-availability'
+      },
+      {
+        text: 'System Design',
+        link: '/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology'
+      }
+    ]
+  },
+  {
+    text: 'VII. Infrastructure',
+    collapsed: false,
+    items: [
+      {
+        text: 'Linux Basics',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/linux-basics'
+      },
+      {
+        text: 'Docker Containers',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/docker-containers'
+      },
+      {
+        text: 'Kubernetes',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/kubernetes'
+      },
+      {
+        text: 'CI / CD',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/ci-cd'
+      },
+      {
+        text: 'Domain, DNS & HTTPS',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/dns-https'
+      },
+      {
+        text: 'Load Balancing',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/load-balancing-gateway'
+      },
+      {
+        text: 'Gateway & Reverse Proxy',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/gateway-proxy'
+      },
+      {
+        text: 'Cloud Platforms',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/cloud-platforms'
+      },
+      {
+        text: 'IAM',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/cloud-iam'
+      },
+      {
+        text: 'Storage & CDN',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/cloud-storage-cdn'
+      },
+      {
+        text: 'IaC',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code'
+      },
+      {
+        text: 'Monitoring & Logging',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging'
+      },
+      {
+        text: 'Incident Response',
+        link: '/zh-cn/appendix/7-infrastructure-and-operations/incident-response'
+      }
+    ]
+  },
+  {
+    text: 'VIII. Artificial Intelligence',
+    collapsed: false,
+    items: [
+      {
+        text: 'AI History & Concepts',
+        link: '/zh-cn/appendix/8-artificial-intelligence/ai-history'
+      },
+      {
+        text: 'Neural Networks',
+        link: '/zh-cn/appendix/8-artificial-intelligence/neural-networks'
+      },
+      {
+        text: 'Transformer & Attention',
+        link: '/zh-cn/appendix/8-artificial-intelligence/transformer-attention'
+      },
+      {
+        text: 'LLM Principles',
+        link: '/zh-cn/appendix/8-artificial-intelligence/llm-principles'
+      },
+      {
+        text: 'Prompt Engineering',
+        link: '/zh-cn/appendix/8-artificial-intelligence/prompt-engineering'
+      },
+      {
+        text: 'Context Engineering',
+        link: '/zh-cn/appendix/8-artificial-intelligence/context-engineering'
+      },
+      {
+        text: 'Multimodal Models',
+        link: '/zh-cn/appendix/8-artificial-intelligence/multimodal-models'
+      },
+      {
+        text: 'Image Generation',
+        link: '/zh-cn/appendix/8-artificial-intelligence/image-generation'
+      },
+      {
+        text: 'Speech Synthesis',
+        link: '/zh-cn/appendix/8-artificial-intelligence/speech-synthesis-recognition'
+      },
+      {
+        text: 'Embedding & Vector Search',
+        link: '/zh-cn/appendix/8-artificial-intelligence/embedding-vector-retrieval'
+      },
+      {
+        text: 'RAG Architecture',
+        link: '/zh-cn/appendix/8-artificial-intelligence/rag'
+      },
+      {
+        text: 'AI Agent & Tools',
+        link: '/zh-cn/appendix/8-artificial-intelligence/ai-agents'
+      },
+      {
+        text: 'AI Protocols (MCP)',
+        link: '/zh-cn/appendix/8-artificial-intelligence/ai-protocols'
+      },
+      {
+        text: 'Fine-tuning & Deployment',
+        link: '/zh-cn/appendix/8-artificial-intelligence/model-finetuning-deployment'
+      },
+      {
+        text: 'AI Native Design',
+        link: '/zh-cn/appendix/8-artificial-intelligence/ai-native-app-design'
+      },
+      {
+        text: 'AI Dictionary',
+        link: '/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary'
+      }
+    ]
+  },
+  {
+    text: 'IX. Engineering Excellence',
+    collapsed: false,
+    items: [
+      {
+        text: 'Code Quality',
+        link: '/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring'
+      },
+      {
+        text: 'Testing Strategies',
+        link: '/zh-cn/appendix/9-engineering-excellence/testing-strategies'
+      },
+      {
+        text: 'Design Patterns',
+        link: '/zh-cn/appendix/9-engineering-excellence/design-patterns'
+      },
+      {
+        text: 'Security Thinking',
+        link: '/zh-cn/appendix/9-engineering-excellence/security-thinking'
+      },
+      {
+        text: 'Technical Writing',
+        link: '/zh-cn/appendix/9-engineering-excellence/technical-writing'
+      },
+      {
+        text: 'Open Source',
+        link: '/zh-cn/appendix/9-engineering-excellence/open-source-collaboration'
+      },
+      {
+        text: 'Tech Selection',
+        link: '/zh-cn/appendix/9-engineering-excellence/technology-selection'
+      }
+    ]
+  }
+]
+
 const productManagerSidebar = [
   {
     text: '新手入门',
@@ -287,6 +990,15 @@ export default defineConfig({
   },
   base: base,
   ignoreDeadLinks: true,
+
+  // Vite 配置
+  vite: {
+    server: {
+      watch: {
+        ignored: ['**/docs/.vitepress/dist/**']
+      }
+    }
+  },
 
   // Sitemap 配置
   sitemap: {
@@ -726,7 +1438,7 @@ export default defineConfig({
                   link: '/zh-cn/appendix/3-browser-and-frontend/frontend-engineering'
                 },
                 {
-                  text: '前端项目架构设计',
+                  text: '前端项目文件目录设计',
                   link: '/zh-cn/appendix/3-browser-and-frontend/frontend-project-architecture'
                 },
                 {
@@ -812,7 +1524,7 @@ export default defineConfig({
                   link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
                 },
                 {
-                  text: '后端项目架构设计',
+                  text: '后端项目文件目录设计',
                   link: '/zh-cn/appendix/4-server-and-backend/backend-project-architecture'
                 },
                 {
@@ -1045,15 +1757,15 @@ export default defineConfig({
     },
 
     // 英文
-    'en-us': {
-      label: 'English (US)',
+    'en': {
+      label: 'English',
       lang: 'en-US',
-      link: '/en-us/',
+      link: '/en/',
       title: 'Easy-Vibe Tutorial',
       description:
         'Learn Vibe Coding from Zero to Advanced - Master AI programming with Claude Code, Cursor, and other AI IDE tools',
       head: getSeoHead(
-        'en-us',
+        'en',
         'Easy-Vibe Tutorial',
         'Learn Vibe Coding from Zero to Advanced - Master AI programming with Claude Code, Cursor, and other AI IDE tools'
       ),
@@ -1064,23 +1776,28 @@ export default defineConfig({
           label: 'On this page'
         },
         nav: [
-          { text: 'Home', link: '/en-us/' },
+          { text: 'Home', link: '/en/' },
           {
             text: 'Novice & PM',
-            link: '/en-us/stage-0/'
+            link: '/en/stage-0/'
           },
           {
             text: 'Full-Stack Development',
-            link: '/en-us/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: 'Advanced Development',
-            link: '/en-us/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: 'Appendix', link: '/en-us/appendix/' }
+          { text: 'Appendix', link: '/zh-cn/appendix/index' }
         ],
-        // TODO: Add English sidebar when content is ready
-        sidebar: {}
+        sidebar: {
+          '/en/stage-0/': productManagerSidebarEn,
+          '/en/stage-1/': productManagerSidebarEn,
+          '/en/stage-2/': stage2SidebarEn,
+          '/en/stage-3/': stage3SidebarEn,
+          '/en/appendix/': appendixSidebarEn
+        }
       }
     },
 
@@ -1107,17 +1824,17 @@ export default defineConfig({
           { text: 'ホーム', link: '/ja-jp/' },
           {
             text: '初心者とPM',
-            link: '/ja-jp/stage-0/'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: 'フルスタック開発',
-            link: '/ja-jp/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: '上級開発',
-            link: '/ja-jp/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: '付録', link: '/ja-jp/appendix/' }
+          { text: '付録', link: '/zh-cn/appendix/' }
         ],
         // TODO: Add Japanese sidebar when content is ready
         sidebar: {}
@@ -1145,17 +1862,17 @@ export default defineConfig({
           { text: '首頁', link: '/zh-tw/' },
           {
             text: '新手與產品原型',
-            link: '/zh-tw/stage-0/'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: '初中級開發',
-            link: '/zh-tw/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: '高級開發',
-            link: '/zh-tw/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: '附錄', link: '/zh-tw/appendix/' }
+          { text: '附錄', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -1180,16 +1897,16 @@ export default defineConfig({
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: '초보자 & PM', link: '/ko-kr/stage-0/' },
+          { text: '초보자 & PM', link: '/zh-cn/stage-0/' },
           {
             text: '풀스택 개발',
-            link: '/ko-kr/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: '고급 개발',
-            link: '/ko-kr/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: '부록', link: '/ko-kr/appendix/' }
+          { text: '부록', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -1216,17 +1933,17 @@ export default defineConfig({
           { text: 'Inicio', link: '/es-es/' },
           {
             text: 'Principiante y PM',
-            link: '/es-es/stage-0/'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: 'Desarrollo Full Stack',
-            link: '/es-es/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: 'Desarrollo Avanzado',
-            link: '/es-es/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: 'Apéndice', link: '/es-es/appendix/' }
+          { text: 'Apéndice', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -1251,16 +1968,16 @@ export default defineConfig({
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'Débutant & PM', link: '/fr-fr/stage-0/' },
+          { text: 'Débutant & PM', link: '/zh-cn/stage-0/' },
           {
             text: 'Développement Full Stack',
-            link: '/fr-fr/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: 'Développement Avancé',
-            link: '/fr-fr/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: 'Annexe', link: '/fr-fr/appendix/' }
+          { text: 'Annexe', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -1285,16 +2002,16 @@ export default defineConfig({
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'Anfänger & PM', link: '/de-de/stage-0/' },
+          { text: 'Anfänger & PM', link: '/zh-cn/stage-0/' },
           {
             text: 'Full Stack Entwicklung',
-            link: '/de-de/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: 'Fortgeschrittene Entwicklung',
-            link: '/de-de/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: 'Anhang', link: '/de-de/appendix/' }
+          { text: 'Anhang', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -1321,17 +2038,17 @@ export default defineConfig({
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
             text: 'مبتدأ & PM',
-            link: '/ar-sa/stage-0/'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: 'تطوير Full Stack',
-            link: '/ar-sa/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: 'تطوير متقدم',
-            link: '/ar-sa/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: 'ملحق', link: '/ar-sa/appendix/' }
+          { text: 'ملحق', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -1358,17 +2075,17 @@ export default defineConfig({
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
             text: 'Người mới & PM',
-            link: '/vi-vn/stage-0/'
+            link: '/zh-cn/stage-0/'
           },
           {
             text: 'Phát triển Full Stack',
-            link: '/vi-vn/stage-2/'
+            link: '/zh-cn/stage-2/'
           },
           {
             text: 'Phát triển Nâng cao',
-            link: '/vi-vn/stage-3/'
+            link: '/zh-cn/stage-3/'
           },
-          { text: 'Phụ lục', link: '/vi-vn/appendix/' }
+          { text: 'Phụ lục', link: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }

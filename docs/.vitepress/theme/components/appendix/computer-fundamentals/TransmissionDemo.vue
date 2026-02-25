@@ -123,24 +123,30 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, onUnmounted } from 'vue'
 
 const activeType = ref('serial')
-const dataBits = ref(['1', '0', '1', '1', '0', '0', '1', '0'])
+const dataBits = ref([1, 0, 1, 1, 0, 0, 1, 0])
 const receivedBits = ref(['-', '-', '-', '-', '-', '-', '-', '-'])
 const sendingBit = ref(null)
+const timer = ref(null)
+
+onUnmounted(() => {
+  if (timer.value) clearInterval(timer.value)
+})
 
 const startTransmission = () => {
+  if (timer.value) clearInterval(timer.value)
   if (activeType.value === 'serial') {
     receivedBits.value = ['-', '-', '-', '-', '-', '-', '-', '-']
     let i = 0
-    const interval = setInterval(() => {
+    timer.value = setInterval(() => {
       if (i < dataBits.value.length) {
         sendingBit.value = i
         receivedBits.value[i] = dataBits.value[i]
         i++
       } else {
-        clearInterval(interval)
+        if (timer.value) clearInterval(timer.value)
         sendingBit.value = null
       }
     }, 300)

@@ -61,12 +61,17 @@ const updateClock = () => {
 }
 
 const runSequence = () => {
+  if (phaseTimer) clearTimeout(phaseTimer)
   phase.value = 0
   const delays = [1500, 1500, 1800]
   let i = 0
   const next = () => {
     if (i < delays.length) {
-      phaseTimer = setTimeout(() => { phase.value = i + 1; i++; next() }, delays[i])
+      phaseTimer = setTimeout(() => {
+        phase.value = i + 1
+        i++
+        next()
+      }, delays[i])
     }
   }
   next()
@@ -77,6 +82,7 @@ onMounted(() => {
   timer = setInterval(updateClock, 30000)
   runSequence()
 })
+
 onUnmounted(() => {
   if (timer) clearInterval(timer)
   if (phaseTimer) clearTimeout(phaseTimer)

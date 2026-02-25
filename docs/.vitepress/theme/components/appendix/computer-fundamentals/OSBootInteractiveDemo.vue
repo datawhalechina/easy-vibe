@@ -418,23 +418,31 @@ onMounted(() => {
   }, 1000)
 })
 
+const blTimer = ref(null)
+const kernelTimer = ref(null)
+const svcTimer = ref(null)
+
 onUnmounted(() => {
   if (timeInterval) clearInterval(timeInterval)
+  if (blTimer.value) clearInterval(blTimer.value)
+  if (kernelTimer.value) clearInterval(kernelTimer.value)
+  if (svcTimer.value) clearInterval(svcTimer.value)
 })
 
 // 引导程序动画
 watch(() => stage.value, (newStage) => {
+  if (blTimer.value) clearInterval(blTimer.value)
   if (newStage === 1) {
     blStep.value = -1
     blCodeLine.value = -1
     let step = 0
-    const interval = setInterval(() => {
+    blTimer.value = setInterval(() => {
       if (step < blSteps.length) {
         blStep.value = step
         blCodeLine.value = step + 1
         step++
       } else {
-        clearInterval(interval)
+        if (blTimer.value) clearInterval(blTimer.value)
       }
     }, 600)
   }
@@ -442,14 +450,15 @@ watch(() => stage.value, (newStage) => {
 
 // 内核加载动画
 watch(() => stage.value, (newStage) => {
+  if (kernelTimer.value) clearInterval(kernelTimer.value)
   if (newStage === 2) {
     kernelProgress.value = 0
     kernelName.value = Math.random() > 0.5 ? 'ntoskrnl.exe' : 'vmlinuz'
-    const interval = setInterval(() => {
+    kernelTimer.value = setInterval(() => {
       if (kernelProgress.value < 100) {
         kernelProgress.value += 4
       } else {
-        clearInterval(interval)
+        if (kernelTimer.value) clearInterval(kernelTimer.value)
       }
     }, 80)
   }
@@ -457,13 +466,14 @@ watch(() => stage.value, (newStage) => {
 
 // 服务启动动画
 watch(() => stage.value, (newStage) => {
+  if (svcTimer.value) clearInterval(svcTimer.value)
   if (newStage === 3) {
     svcProgress.value = 0
-    const interval = setInterval(() => {
+    svcTimer.value = setInterval(() => {
       if (svcProgress.value < 100) {
         svcProgress.value += 3
       } else {
-        clearInterval(interval)
+        if (svcTimer.value) clearInterval(svcTimer.value)
       }
     }, 100)
   }

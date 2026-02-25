@@ -220,7 +220,7 @@ const i18n = {
       btn: '>_ Start'
     }
   },
-  'en-us': {
+  'en': {
     nav: {
       title: 'Easy-Vibe Tutorial',
       home: 'Home',
@@ -231,27 +231,27 @@ const i18n = {
       start: 'Start Learning'
     },
     stage1: {
-      cat: 'Stage 1 · Novice & PM',
+      cat: 'Stage 1 · Getting Started',
       title: 'Zero to Hero, <br><span class="highlight">Be Your Own PM.</span>',
-      sub: 'No CS background needed. Just speak your idea, and AI will turn it into high-fidelity web prototypes.',
+      sub: 'No CS background needed. Just speak your ideas—AI will turn them into high-fidelity web prototypes.',
       cards: [
         {
-          title: 'AI Product Manager',
-          desc: 'From idea to prototype, just by speaking.',
-          sub: 'Non-tech friendly',
-          link: '/en-us/stage-0/'
+          title: 'Learning Map',
+          desc: 'Understand the complete learning path from zero to full-stack development.',
+          sub: 'All Ages Friendly',
+          link: '/en/stage-0/0.1-learning-map/'
         },
         {
           title: 'Gamified Intro',
-          desc: 'Build Snake, Tetris, and break the fear of code.',
-          sub: 'Learn by playing',
-          link: '/en-us/stage-0/'
+          desc: 'Experience the magic of AI programming by building games like Snake.',
+          sub: 'Learn by Playing',
+          link: '/en/stage-0/0.2-ai-capabilities-through-games/'
         },
         {
           title: 'Vibe Coding',
-          desc: 'Master the core of AI coding: Prompt Engineering & Context.',
+          desc: 'Master the core of AI coding: From product ideas to interactive prototypes.',
           sub: 'Core Mindset',
-          link: '/en-us/stage-0/'
+          link: '/en/stage-0/'
         }
       ]
     },
@@ -259,25 +259,25 @@ const i18n = {
       cat: 'Stage 2 · Junior/Mid Dev',
       title:
         'Go Full Stack, <br><span class="highlight">Build Real Apps.</span>',
-      sub: 'Master frontend-backend separation. Build commercial-grade projects with DB, API, and complex interactions.',
+      sub: 'Master frontend-backend separation and build commercial-grade projects with DB and API.',
       cards: [
         {
           title: 'Full Stack',
           headline: 'Frontend & Backend.',
           desc: 'From DB design to API and components, build a modern web app completely.',
-          link: '/en-us/stage-2/'
+          link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
         },
         {
           title: 'Real Projects',
           headline: 'No Toy Code.',
           desc: 'Deep dive into Auth, Storage, File Uploads and core business logic.',
-          link: '/en-us/stage-2/'
+          link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
         },
         {
           title: 'Deployment',
           headline: 'Show the World.',
           desc: 'Server config, DNS, CI/CD. The last mile of product delivery.',
-          link: '/en-us/stage-2/'
+          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
         }
       ]
     },
@@ -290,22 +290,22 @@ const i18n = {
         {
           title: 'WeChat Mini-app',
           desc: 'Cross-platform dev, reaching millions of users.',
-          link: '/en-us/stage-3/'
+          link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
         },
         {
           title: 'AI Native Apps',
           desc: 'RAG, Agent. Explore the limits of LLMs.',
-          link: '/en-us/stage-3/'
+          link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
         },
         {
           title: 'Complex Arch',
-          desc: 'High concurrency, High availability architecture design.',
-          link: '/en-us/stage-3/'
+          desc: 'Architecture design for high concurrency and stable AI tasks.',
+          link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
         },
         {
           title: 'Personal Brand',
           desc: 'Build your own website and academic blog.',
-          link: '/en-us/stage-3/'
+          link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
         }
       ]
     },
@@ -318,62 +318,62 @@ const i18n = {
         {
           title: 'AI History',
           desc: 'Milestones in AI evolution.',
-          link: '/en-us/appendix/ai-evolution'
+          link: '/zh-cn/appendix/8-artificial-intelligence/ai-history'
         },
         {
           title: 'Prompt Eng',
           desc: 'Master AI communication skills.',
-          link: '/en-us/appendix/prompt-engineering'
+          link: '/zh-cn/appendix/8-artificial-intelligence/prompt-engineering'
         },
         {
           title: 'LLM Intro',
           desc: 'Understanding Large Language Models.',
-          link: '/en-us/appendix/llm-intro'
+          link: '/zh-cn/appendix/8-artificial-intelligence/llm-principles'
         },
         {
           title: 'AI Agents',
           desc: 'Autonomous decision-making AI.',
-          link: '/en-us/appendix/agent-intro'
+          link: '/zh-cn/appendix/8-artificial-intelligence/ai-agents'
         },
         {
           title: 'Web Basics',
           desc: 'HTML/CSS/JS fundamentals.',
-          link: '/en-us/appendix/web-basics'
+          link: '/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive'
         },
         {
           title: 'Frontend Evo',
           desc: 'Evolution of frontend tech stack.',
-          link: '/en-us/appendix/frontend-evolution'
+          link: '/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks'
         },
         {
           title: 'Backend Arch',
           desc: 'From monolith to microservices.',
-          link: '/en-us/appendix/backend-evolution'
+          link: '/zh-cn/appendix/4-server-and-backend/backend-layered-architecture'
         },
         {
           title: 'Backend Lang',
           desc: 'Choosing the right tech stack.',
-          link: '/en-us/appendix/backend-languages'
+          link: '/zh-cn/appendix/4-server-and-backend/backend-languages'
         },
         {
           title: 'Database',
           desc: 'Core principles of data storage.',
-          link: '/en-us/appendix/database-intro'
+          link: '/zh-cn/appendix/5-data/database-fundamentals'
         },
         {
           title: 'API Design',
           desc: 'Designing robust interfaces.',
-          link: '/en-us/appendix/api-intro'
+          link: '/zh-cn/appendix/4-server-and-backend/api-intro'
         },
         {
           title: 'Git',
           desc: 'Version control mastery.',
-          link: '/en-us/appendix/git-intro'
+          link: '/zh-cn/appendix/2-development-tools/git-version-control'
         },
         {
           title: 'Networks',
           desc: 'Protocols and communication.',
-          link: '/en-us/appendix/computer-networks'
+          link: '/zh-cn/appendix/1-computer-fundamentals/computer-networks'
         }
       ]
     },
@@ -1374,12 +1374,12 @@ const i18n = {
 import { computed } from 'vue'
 const t = computed(() => {
   const code = lang.value ? lang.value.toLowerCase() : 'zh-cn'
-  return i18n[code] || i18n['en-us']
+  return i18n[code] || i18n['en']
 })
 
 const locales = [
   { code: 'zh-cn', text: '简体中文' },
-  { code: 'en-us', text: 'English' },
+  { code: 'en', text: 'English' },
   { code: 'ja-jp', text: '日本語' },
   { code: 'zh-tw', text: '繁體中文' },
   { code: 'ko-kr', text: '한국어' },
@@ -1699,7 +1699,7 @@ const appendixCards = [
           </div>
           <a
             class="buy-btn"
-            :href="withBase('/zh-cn/stage-0/0.1-learning-map/')"
+            :href="withBase(t.stage1.cards[0].link)"
           >{{ t.footer.btn }}</a>
         </div>
       </div>

@@ -17,10 +17,10 @@ hero:
   actions:
     - theme: brand
       text: Start Learning
-      link: /en-us/stage-0/
+      link: /en/stage-0/
     - theme: alt
       text: Course Outline
-      link: /en-us/stage-0/
+      link: /en/stage-0/
 ---
 
 <HomeFeatures />

@@ -47,11 +47,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 
 const selected = ref(0)
 const visibleSteps = ref(0)
 let timer = null
+
+onUnmounted(() => {
+  if (timer) clearInterval(timer)
+})
 
 function selectMode(i) {
   selected.value = i

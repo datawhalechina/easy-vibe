@@ -1,0 +1,19 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🚀 Pre-push checks started..."
+echo ""
+
+echo "1️⃣ Running forced build..."
+if ! npm run build:force > /dev/null 2>&1; then
+  echo ""
+  echo "❌ Forced build failed! Please fix build errors before pushing."
+  echo ""
+  echo "💡 Run 'npm run build:force' to see detailed errors"
+  echo "💡 To skip pre-push checks: git push --no-verify"
+  exit 1
+fi
+echo "✅ Forced build: Success"
+echo ""
+
+echo "✅ Pre-push checks passed!"

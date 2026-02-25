@@ -451,7 +451,10 @@ function toggleAuto() {
   } else {
     autoRunning.value = true
     autoTimer = setInterval(() => {
-      if (done.value) { stopAuto(); return }
+      if (done.value) {
+        stopAuto()
+        return
+      }
       advance()
     }, 900)
   }
@@ -459,7 +462,10 @@ function toggleAuto() {
 
 function stopAuto() {
   autoRunning.value = false
-  if (autoTimer) { clearInterval(autoTimer); autoTimer = null }
+  if (autoTimer) {
+    clearInterval(autoTimer)
+    autoTimer = null
+  }
 }
 
 function reset() {
@@ -476,7 +482,9 @@ function reset() {
   currentPhase.value = -1
 }
 
-onUnmounted(stopAuto)
+onUnmounted(() => {
+  stopAuto()
+})
 </script>
 
 <style scoped>

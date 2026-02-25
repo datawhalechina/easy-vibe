@@ -123,13 +123,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 
 const activeAlgo = ref('linear')
 const targetNumber = ref(7)
 const foundIndex = ref(-1)
 const searchStep = ref(-1)
 const searching = ref(false)
+const searchTimer = ref(null)
 
 const numbers = ref([3, 7, 2, 9, 5, 1, 8, 4, 6, 10])
 
@@ -140,24 +141,29 @@ const binaryRight = ref(9)
 const binaryMid = ref(4)
 const binaryFoundIndex = ref(-1)
 
+onUnmounted(() => {
+  if (searchTimer.value) clearInterval(searchTimer.value)
+})
+
 const startLinearSearch = () => {
+  if (searchTimer.value) clearInterval(searchTimer.value)
   searching.value = true
   searchStep.value = -1
   foundIndex.value = -1
 
   let step = 0
-  const interval = setInterval(() => {
+  searchTimer.value = setInterval(() => {
     if (step < numbers.value.length) {
       searchStep.value = step
       if (numbers.value[step] === targetNumber.value) {
         foundIndex.value = step
         searching.value = false
-        clearInterval(interval)
+        if (searchTimer.value) clearInterval(searchTimer.value)
       }
       step++
     } else {
       searching.value = false
-      clearInterval(interval)
+      if (searchTimer.value) clearInterval(searchTimer.value)
     }
   }, 500)
 }

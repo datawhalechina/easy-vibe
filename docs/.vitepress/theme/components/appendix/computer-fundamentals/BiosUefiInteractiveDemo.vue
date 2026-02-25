@@ -155,7 +155,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 
 const stage = ref(0)
 const expandedOp = ref(-1)
@@ -313,15 +313,26 @@ function getDeviceStatus(i) {
   return '等待'
 }
 
+const postTimer = ref(null)
+const hwTimer = ref(null)
+const bootTimer = ref(null)
+
+onUnmounted(() => {
+  if (postTimer.value) clearInterval(postTimer.value)
+  if (hwTimer.value) clearInterval(hwTimer.value)
+  if (bootTimer.value) clearInterval(bootTimer.value)
+})
+
 // POST 自检动画
 watch(() => stage.value, (newStage) => {
+  if (postTimer.value) clearInterval(postTimer.value)
   if (newStage === 1) {
     currentCheck.value = 0
-    const interval = setInterval(() => {
+    postTimer.value = setInterval(() => {
       if (currentCheck.value < postItems.length) {
         currentCheck.value++
       } else {
-        clearInterval(interval)
+        if (postTimer.value) clearInterval(postTimer.value)
       }
     }, 600)
   }
@@ -329,15 +340,16 @@ watch(() => stage.value, (newStage) => {
 
 // 硬件初始化动画
 watch(() => stage.value, (newStage) => {
+  if (hwTimer.value) clearInterval(hwTimer.value)
   if (newStage === 2) {
     activeHw.value = 0
     hwProgress.value = 0
-    const interval = setInterval(() => {
+    hwTimer.value = setInterval(() => {
       if (hwProgress.value < 100) {
         hwProgress.value += 5
         activeHw.value = Math.floor(hwProgress.value / 20) % hardwareItems.length
       } else {
-        clearInterval(interval)
+        if (hwTimer.value) clearInterval(hwTimer.value)
       }
     }, 100)
   }
@@ -345,11 +357,12 @@ watch(() => stage.value, (newStage) => {
 
 // 启动设备搜索动画
 watch(() => stage.value, (newStage) => {
+  if (bootTimer.value) clearInterval(bootTimer.value)
   if (newStage === 3) {
     currentDevice.value = 0
     foundDevice.value = -1
     let device = 0
-    const interval = setInterval(() => {
+    bootTimer.value = setInterval(() => {
       if (device < bootDevices.length) {
         currentDevice.value = device
         // 假设第一个设备（硬盘）可启动
@@ -357,11 +370,11 @@ watch(() => stage.value, (newStage) => {
           setTimeout(() => {
             foundDevice.value = device
           }, 400)
-          clearInterval(interval)
+          if (bootTimer.value) clearInterval(bootTimer.value)
         }
         device++
       } else {
-        clearInterval(interval)
+        if (bootTimer.value) clearInterval(bootTimer.value)
       }
     }, 800)
   }
@@ -387,6 +400,9 @@ function reset() {
   hwProgress.value = 0
   currentDevice.value = 0
   foundDevice.value = -1
+  if (postTimer.value) clearInterval(postTimer.value)
+  if (hwTimer.value) clearInterval(hwTimer.value)
+  if (bootTimer.value) clearInterval(bootTimer.value)
 }
 </script>
 
