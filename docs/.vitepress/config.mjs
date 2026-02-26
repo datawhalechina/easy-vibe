@@ -192,14 +192,18 @@ const commonThemeConfig = {
   // socialLinks: [
   //   { icon: 'github', link: 'https://github.com/datawhalechina/easy-vibe' }
   // ],
+  editLink: {
+    pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+    text: '在 GitHub 上编辑此页'
+  },
   outline: {
     level: [1, 6]
   },
   footer: {
     message:
-      '<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备2026002630号-1</a> | <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11010602202215" rel="noreferrer" target="_blank">京公网安备11010602202215号</a>',
+      '<a href=\"https://beian.miit.gov.cn/\" target=\"_blank\">京ICP备2026002630号-1</a> | <a href=\"https://beian.mps.gov.cn/#/query/webSearch?code=11010602202215\" rel=\"noreferrer\" target=\"_blank\">京公网安备11010602202215号</a>',
     copyright:
-      '本作品采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
+      '本作品采用 <a href=\"http://creativecommons.org/licenses/by-nc-sa/4.0/\" target=\"_blank\">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</a> 进行许可'
   }
 }
 
@@ -326,6 +330,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: '在 GitHub 上编辑此页'
+        },
         outline: {
           level: [1, 6],
           label: '页面导航'
@@ -1059,6 +1067,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'Edit this page on GitHub'
+        },
         outline: {
           level: [1, 6],
           label: 'On this page'
@@ -1099,6 +1111,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'GitHub でこのページを編集'
+        },
         outline: {
           level: [1, 6],
           label: 'このページの目次'
@@ -1137,6 +1153,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: '在 GitHub 上編輯此頁'
+        },
         outline: {
           level: [1, 6],
           label: '頁面導航'
@@ -1174,6 +1194,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'GitHub에서 이 페이지 편집'
+        },
         outline: {
           level: [1, 6],
           label: '페이지 탐색'
@@ -1208,6 +1232,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'Editar esta página en GitHub'
+        },
         outline: {
           level: [1, 6],
           label: 'Navegación de página'
@@ -1245,6 +1273,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'Modifier cette page sur GitHub'
+        },
         outline: {
           level: [1, 6],
           label: 'Navigation de page'
@@ -1279,6 +1311,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'Diese Seite auf GitHub bearbeiten'
+        },
         outline: {
           level: [1, 6],
           label: 'Seitennavigation'
@@ -1313,6 +1349,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'عدل هذه الصفحة على GitHub'
+        },
         outline: {
           level: [1, 6],
           label: 'تنقل الصفحة'
@@ -1350,6 +1390,10 @@ export default defineConfig({
       ),
       themeConfig: {
         ...commonThemeConfig,
+        editLink: {
+          pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+          text: 'Chỉnh sửa trang này trên GitHub'
+        },
         outline: {
           level: [1, 6],
           label: 'Điều hướng trang'
