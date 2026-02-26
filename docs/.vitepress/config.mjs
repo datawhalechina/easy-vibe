@@ -20,7 +20,7 @@ const localeMap = {
     lang: 'zh-CN',
     hreflang: 'zh-CN'
   },
-  'en': {
+  en: {
     ogLocale: 'en_US',
     twitterSite: '@datawhale',
     lang: 'en-US',
@@ -1025,7 +1025,7 @@ export default defineConfig({
   locales: {
     // 根路径 — 仅用于 404 页面兜底，实际首页由 docs/index.md 自动重定向
     root: {
-      label: '简体中文',
+      label: '',
       lang: 'zh-CN',
       link: '/zh-cn/',
       themeConfig: {
@@ -1778,7 +1778,7 @@ export default defineConfig({
     },
 
     // 英文
-    'en': {
+    en: {
       label: 'English',
       lang: 'en-US',
       link: '/en/',
@@ -1794,7 +1794,8 @@ export default defineConfig({
         ...commonThemeConfig,
         notFound: {
           title: 'Page Not Found',
-          quote: 'The page you are looking for does not exist or has been moved.',
+          quote:
+            'The page you are looking for does not exist or has been moved.',
           linkText: 'Take me home',
           linkUrl: '/en/'
         },
@@ -2015,8 +2016,8 @@ export default defineConfig({
         ...commonThemeConfig,
         notFound: {
           title: 'Page non trouvée',
-          quote: 'La page que vous recherchez n\'existe pas ou a été déplacée.',
-          linkText: 'Retour à l\'accueil',
+          quote: "La page que vous recherchez n'existe pas ou a été déplacée.",
+          linkText: "Retour à l'accueil",
           linkUrl: '/fr-fr/'
         },
         outline: {
@@ -2138,7 +2139,8 @@ export default defineConfig({
         ...commonThemeConfig,
         notFound: {
           title: 'Không tìm thấy trang',
-          quote: 'Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.',
+          quote:
+            'Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.',
           linkText: 'Về trang chủ',
           linkUrl: '/vi-vn/'
         },

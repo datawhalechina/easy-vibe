@@ -1,124 +1,95 @@
 <template>
   <div class="demo data-tracking-demo">
-    <div class="header">
-      <span class="title">数据埋点与采集演示</span>
-    </div>
 
-    <!-- Overview Diagram -->
-    <div v-if="activeTab === 'overview'" class="content">
-      <div class="overview-container">
-        <div class="app-screen">
-          <div class="app-header">电商 App</div>
-          <div class="app-body">
-            <div class="product-card">
-              <div class="product-img"></div>
-              <div class="product-info">新款手机</div>
-              <div class="product-btn">点击购买</div>
-            </div>
-            <!-- Animated click cursor and ripple -->
-            <div class="animation-cursor"></div>
-            <div class="animation-ripple"></div>
-          </div>
-        </div>
-
-        <div class="data-flow">
-          <div class="flow-line"></div>
-          <div class="data-packet">
-            <span class="bracket">{</span>
-            <div class="packet-lines">
-              <div class="pline">e: "click_buy"</div>
-              <div class="pline">u: "user123"</div>
-            </div>
-            <span class="bracket">}</span>
-          </div>
-        </div>
-
-        <div class="server-db">
-          <div class="server-header">后端分析系统</div>
-          <div class="server-body">
-            <div class="db-row">user123 | click_buy | 10:05</div>
-            <div class="db-row skeleton"></div>
-            <div class="db-row skeleton"></div>
-          </div>
-        </div>
-      </div>
-      <p class="desc">用户每一次关键操作都在底层触发了一个埋点事件，飞掠网络被永远记录在案。</p>
-    </div>
-
-    <!-- Methods Compare -->
+    <!-- Methods: 同一场景，三种方式各自捕获到什么 -->
     <div v-if="activeTab === 'methods'" class="content">
-      <div class="methods-compare">
-        <div class="method-card">
-          <div class="method-title">代码埋点 (Code)</div>
-          <div class="method-body">
-            <div class="code-block">tracker.track('buy', { price: 299 })</div>
-            <div class="method-pro">极度精准、深入业务字段</div>
-            <div class="method-con">需要开发排期，成本高</div>
-          </div>
-        </div>
-        <div class="method-card">
-          <div class="method-title">可视化埋点 (Visual)</div>
-          <div class="method-body">
-            <div class="visual-tool">
-              <div class="v-box selected"></div>
-              <div class="v-box"></div>
-            </div>
-            <div class="method-pro">产品经理可自行圈选</div>
-            <div class="method-con">只能抓取表层点击，无法获取深层属性</div>
-          </div>
-        </div>
-        <div class="method-card">
-          <div class="method-title">全埋点 (Auto)</div>
-          <div class="method-body">
-            <div class="auto-tool">
-              <div class="noise-line"></div>
-              <div class="noise-line"></div>
-              <div class="noise-line"></div>
-            </div>
-            <div class="method-pro">无死角全量捕捉</div>
-            <div class="method-con">数据如同雪花般庞大，无用噪音极多</div>
-          </div>
-        </div>
+      <div class="scenario-bar">场景：用户在电商 App 点击了「加入购物车」按钮</div>
+      <table class="capture-table">
+        <thead>
+          <tr>
+            <th class="col-dim">捕获到的信息</th>
+            <th>代码埋点</th>
+            <th>可视化埋点</th>
+            <th>全埋点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="row in captureRows" :key="row.label">
+            <td class="col-dim">{{ row.label }}</td>
+            <td><span :class="row.code ? 'yes' : 'no'">{{ row.code ? '✔' : '✘' }}</span></td>
+            <td><span :class="row.visual ? 'yes' : 'no'">{{ row.visual ? '✔' : '✘' }}</span></td>
+            <td><span :class="row.auto ? 'yes' : 'no'">{{ row.auto ? '✔' : '✘' }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="capture-footer">
+        <span class="cf-item"><span class="yes">✔</span> 能捕获</span>
+        <span class="cf-item"><span class="no">✘</span> 无法捕获</span>
       </div>
     </div>
 
-    <!-- Event Model -->
+    <!-- Model: 点击模拟，看 JSON 逐行组装 -->
     <div v-if="activeTab === 'model'" class="content">
-      <div class="model-container">
-        <div class="json-code">
-{
-  <span class="key">"event_name"</span>: <span class="string">"add_to_cart"</span>, <span class="comment">// 发生了什么 (What)</span>
-  <span class="key">"timestamp"</span>: <span class="number">1723456789000</span>, <span class="comment">// 什么时候 (When)</span>
-  <span class="key">"user_id"</span>: <span class="string">"u_98765"</span>, <span class="comment">// 是谁 (Who)</span>
-  
-  <span class="key">"common_props"</span>: { <span class="comment">// 在哪里/环境 (Where & How)</span>
-    <span class="key">"device"</span>: <span class="string">"iPhone 15Pro"</span>,
-    <span class="key">"network"</span>: <span class="string">"5G"</span>,
-    <span class="key">"os"</span>: <span class="string">"iOS 17"</span>
-  },
-  
-  <span class="key">"custom_props"</span>: { <span class="comment">// 业务详情 (Details)</span>
-    <span class="key">"product_id"</span>: <span class="string">"p_001"</span>,
-    <span class="key">"price"</span>: <span class="number">7999.00</span>
-  }
-}
+      <div class="sim-header">
+        <button class="sim-btn" @click="runSimulation" :disabled="simRunning">
+          {{ simRunning ? '记录生成中...' : '模拟：用户点击「加入购物车」' }}
+        </button>
+      </div>
+      <div class="json-build">
+        <div class="json-line" v-for="(line, i) in jsonLines" :key="i"
+             :class="{ visible: simStep > i, highlight: simStep === i + 1 }">
+          <span class="line-tag" :style="{ background: line.color }">{{ line.tag }}</span>
+          <code>{{ line.code }}</code>
         </div>
       </div>
-      <p class="desc">每一个标准事件都必须回答 4W1H：Who, What, When, Where, How。</p>
+      <div class="sim-hint" v-if="simStep === 0">点击上方按钮，观察一条埋点记录是如何被组装出来的</div>
     </div>
 
-    <!-- Data Pipeline -->
+    <!-- Pipeline: 动画数据流 -->
     <div v-if="activeTab === 'pipeline'" class="content">
-       <div class="pipeline-flow">
-          <div class="pipe-node">App 客户端</div>
-          <div class="pipe-arrow">本地缓存<br>批量上报</div>
-          <div class="pipe-node server">接入网关</div>
-          <div class="pipe-arrow">消息队列</div>
-          <div class="pipe-node etl">清洗 (ETL)</div>
-          <div class="pipe-arrow">入库</div>
-          <div class="pipe-node db">数据仓库</div>
-       </div>
-       <p class="desc">数据并非立刻入库，为了抵御高并发和弱网环境，它必须经历缓存、打包、列队和清洗的漫长流水线。</p>
+      <div class="pipe-visual">
+        <div class="pipe-stage" v-for="(s, i) in pipeStages" :key="i">
+          <div class="stage-icon" :style="{ background: s.bg }">{{ s.icon }}</div>
+          <div class="stage-name">{{ s.name }}</div>
+        </div>
+        <div class="pipe-track">
+          <div class="packet" :class="{ flying: pipeFlying }"
+               v-for="n in 3" :key="n"
+               :style="{ animationDelay: (n - 1) * 0.6 + 's' }">
+          </div>
+        </div>
+      </div>
+      <button class="sim-btn pipe-btn" @click="startPipeAnim">
+        {{ pipeFlying ? '传输中...' : '模拟：发送一批数据' }}
+      </button>
+      <div class="pipe-legend">
+        <span v-for="(s, i) in pipeStages" :key="i" class="legend-item">
+          <span class="legend-dot" :style="{ background: s.bg }"></span>{{ s.label }}
+        </span>
+      </div>
+    </div>
+
+    <!-- ETL: before / after 数据对比 -->
+    <div v-if="activeTab === 'overview'" class="content">
+      <div class="etl-compare">
+        <div class="etl-side etl-before">
+          <div class="etl-side-title">原始数据（服务器收到的）</div>
+          <div class="etl-row-data" v-for="(r, i) in rawData" :key="i" :class="r.issue">
+            <code>{{ r.text }}</code>
+            <span class="issue-tag" v-if="r.tag">{{ r.tag }}</span>
+          </div>
+        </div>
+        <div class="etl-arrow-col">
+          <div class="etl-arrow-label">ETL 清洗</div>
+          <div class="etl-arrow-icon">→</div>
+        </div>
+        <div class="etl-side etl-after">
+          <div class="etl-side-title">清洗后（写入数据仓库的）</div>
+          <div class="etl-row-data clean" v-for="(r, i) in cleanData" :key="i">
+            <code>{{ r }}</code>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -128,13 +99,77 @@
 import { ref } from 'vue'
 
 const props = defineProps({
-  tab: {
-    type: String,
-    default: 'overview'
-  }
+  tab: { type: String, default: 'overview' }
 })
-
 const activeTab = ref(props.tab)
+
+// === Methods tab: 同一场景，三种方式各自能捕获什么 ===
+const captureRows = [
+  { label: '点击了哪个按钮', code: true, visual: true, auto: true },
+  { label: '点击发生的时间', code: true, visual: true, auto: true },
+  { label: '用户停留了多久', code: false, visual: false, auto: true },
+  { label: '商品名称 / 价格', code: true, visual: false, auto: false },
+  { label: '用了哪张优惠券', code: true, visual: false, auto: false },
+  { label: '账户余额', code: true, visual: false, auto: false },
+  { label: '页面滑动轨迹', code: false, visual: false, auto: true }
+]
+
+// === Model tab: 模拟 JSON 逐行组装 ===
+const simStep = ref(0)
+const simRunning = ref(false)
+const jsonLines = [
+  { tag: 'What', color: '#10b981', code: '"event": "add_to_cart"' },
+  { tag: 'Who', color: '#3b82f6', code: '"user_id": "u_98765"' },
+  { tag: 'When', color: '#8b5cf6', code: '"time": "2025-08-12T10:33:09Z"' },
+  { tag: 'Where', color: '#f59e0b', code: '"device": "iPhone 15", "network": "5G"' },
+  { tag: 'What', color: '#10b981', code: '"product": "新款手机", "price": 2999' }
+]
+
+function runSimulation() {
+  if (simRunning.value) return
+  simRunning.value = true
+  simStep.value = 0
+  let i = 0
+  const timer = setInterval(() => {
+    i++
+    simStep.value = i
+    if (i >= jsonLines.length) {
+      clearInterval(timer)
+      simRunning.value = false
+    }
+  }, 600)
+}
+
+// === Pipeline tab: 动画数据流 ===
+const pipeFlying = ref(false)
+const pipeStages = [
+  { icon: '📱', name: '手机', label: '产生数据', bg: '#e0f2fe' },
+  { icon: '📦', name: '打包', label: '攒一批', bg: '#fef08a' },
+  { icon: '🌐', name: '发送', label: '网络传输', bg: '#fed7aa' },
+  { icon: '🚦', name: '排队', label: '消息队列', bg: '#fecaca' },
+  { icon: '🗄️', name: '入库', label: '数据仓库', bg: '#bbf7d0' }
+]
+
+function startPipeAnim() {
+  if (pipeFlying.value) return
+  pipeFlying.value = true
+  setTimeout(() => { pipeFlying.value = false }, 3000)
+}
+
+// === ETL tab: before / after 对比 ===
+const rawData = [
+  { text: 'id-001  userId: "zhang"  add_to_cart  ¥2999', issue: '', tag: '' },
+  { text: 'id-001  userId: "zhang"  add_to_cart  ¥2999', issue: 'dup', tag: '重复' },
+  { text: 'id-002  user_id: "li"    click_buy    ¥0', issue: '', tag: '' },
+  { text: 'id-003  userId: "wang"   pay  1970-01-01', issue: 'bad', tag: '时间异常' },
+  { text: 'id-004  user_id: "zhao"  click_buy    ¥599', issue: '', tag: '' }
+]
+
+const cleanData = [
+  'id-001  user_id: "zhang"  add_to_cart  ¥2999',
+  'id-002  user_id: "li"     click_buy    ¥0',
+  'id-004  user_id: "zhao"   click_buy    ¥599'
+]
 </script>
 
 <style scoped>
@@ -144,20 +179,6 @@ const activeTab = ref(props.tab)
   background: var(--vp-c-bg-soft);
   margin: 24px 0;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.header {
-  padding: 14px 20px;
-  background: var(--vp-c-bg);
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  align-items: center;
-}
-
-.title {
-  font-weight: 600;
-  font-size: 15px;
 }
 
 .content {
@@ -165,326 +186,348 @@ const activeTab = ref(props.tab)
   background: #f8fafc;
 }
 
-.desc {
-  margin-top: 16px;
-  font-size: 13px;
-  color: #64748b;
-  text-align: center;
+.dark .content {
+  background: var(--vp-c-bg-soft);
 }
 
-/* Overview Styles & Animations */
-.overview-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.app-screen {
-  width: 140px;
-  height: 220px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border: 4px solid #333;
-  position: relative;
-  overflow: hidden;
-}
-
-.app-header {
+.sim-btn {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 24px;
   background: #3b82f6;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sim-btn:hover:not(:disabled) { background: #2563eb; }
+.sim-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* === Methods: Capture Table === */
+.scenario-bar {
   text-align: center;
-  font-size: 10px;
-  padding: 8px 0;
-}
-
-.app-body {
-  padding: 10px;
-}
-
-.product-card {
-  border: 1px solid #eee;
-  border-radius: 6px;
-  padding: 8px;
-  text-align: center;
-}
-
-.product-img {
-  height: 60px;
-  background: #e2e8f0;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-
-.product-info {
-  font-size: 10px;
-  margin-bottom: 8px;
-}
-
-.product-btn {
-  background: #ef4444;
-  color: white;
-  font-size: 10px;
-  padding: 4px;
-  border-radius: 4px;
-}
-
-@keyframes cursor-move {
-  0% { transform: translate(60px, 180px); opacity: 0; }
-  20% { opacity: 1; }
-  40% { transform: translate(60px, 120px); }
-  50% { transform: translate(60px, 120px) scale(0.9); }
-  60% { transform: translate(60px, 120px); }
-  80% { opacity: 1; }
-  100% { transform: translate(60px, 180px); opacity: 0; }
-}
-
-@keyframes ripple-effect {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(2); opacity: 0; }
-}
-
-@keyframes packet-fly {
-  0% { left: 0; opacity: 0; }
-  10% { opacity: 1; left: 0;}
-  90% { left: 100%; opacity: 1; }
-  100% { left: 100%; opacity: 0; }
-}
-
-.animation-cursor {
-  position: absolute;
-  top: 0; left: 0;
-  width: 12px; height: 12px;
-  background: #1e293b;
-  border-radius: 50%;
-  animation: cursor-move 3s infinite;
-}
-
-.animation-ripple {
-  position: absolute;
-  top: 120px; left: 60px;
-  width: 20px; height: 20px;
-  border: 2px solid #ef4444;
-  border-radius: 50%;
-  opacity: 0;
-  animation: ripple-effect 3s infinite;
-  animation-delay: 1.5s;
-}
-
-.data-flow {
-  flex: 1;
-  height: 60px;
-  position: relative;
-  margin: 0 20px;
-}
-
-.flow-line {
-  position: absolute;
-  top: 50%;
-  left: 0; right: 0;
-  height: 2px;
-  background: dashed 2px #cbd5e1;
-}
-
-.data-packet {
-  position: absolute;
-  top: 0;
-  transform: translateY(-5px);
-  display: flex;
-  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
   background: #e0f2fe;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-family: monospace;
-  font-size: 10px;
-  color: #0369a1;
-  animation: packet-fly 3s infinite;
-  animation-delay: 1.5s;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }
 
-.server-db {
-  width: 160px;
-  background: #1e293b;
+.capture-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.server-header {
-  background: #334155;
-  color: white;
-  text-align: center;
-  font-size: 12px;
-  padding: 8px 0;
-}
-
-.server-body {
-  padding: 12px;
-}
-
-.db-row {
-  background: #475569;
-  color: #94a3b8;
-  padding: 4px;
-  margin-bottom: 6px;
-  font-size: 8px;
-  border-radius: 4px;
-  font-family: monospace;
-}
-
-.db-row.skeleton {
-  height: 14px;
-  background: #334155;
-}
-
-/* Methods Compare */
-.methods-compare {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.method-card {
-  background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 16px;
+  font-size: 13px;
 }
 
-.method-title {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #1e293b;
+.capture-table th,
+.capture-table td {
+  padding: 10px 14px;
   text-align: center;
   border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 8px;
 }
 
-.code-block {
-  background: #1e293b;
-  color: #cbd5e1;
-  padding: 8px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 10px;
-  margin-bottom: 12px;
+.capture-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #475569;
+  font-size: 13px;
 }
 
-.visual-tool {
-  background: #f1f5f9;
-  height: 40px;
-  border-radius: 4px;
-  margin-bottom: 12px;
+.col-dim {
+  text-align: left !important;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.yes { color: #16a34a; font-weight: 700; }
+.no { color: #dc2626; opacity: 0.4; }
+
+.capture-footer {
   display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 8px;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #64748b;
 }
 
-.v-box {
-  width: 20px; height: 20px;
-  background: #cbd5e1;
-  border-radius: 2px;
+.cf-item { display: flex; align-items: center; gap: 4px; }
+
+/* === Model: JSON 逐行组装 === */
+.sim-header {
+  text-align: center;
 }
 
-.v-box.selected {
-  border: 2px dashed #ef4444;
-  background: #fee2e2;
-}
-
-.auto-tool {
-  background: #f1f5f9;
-  height: 40px;
-  border-radius: 4px;
-  margin-bottom: 12px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.noise-line {
-  height: 4px;
-  background: #cbd5e1;
-  width: 100%;
-}
-
-.method-pro, .method-con {
-  font-size: 11px;
-  margin-bottom: 4px;
-}
-
-.method-pro {
-  color: #16a34a;
-}
-.method-pro::before { content: "优势："; font-weight: bold; }
-.method-con {
-  color: #dc2626;
-}
-.method-con::before { content: "劣势："; font-weight: bold; }
-
-/* JSON Model */
-.model-container {
+.json-build {
   background: #1e293b;
   border-radius: 8px;
-  padding: 24px;
-  overflow-x: auto;
+  padding: 20px 24px;
+  min-height: 180px;
 }
 
-.json-code {
+.json-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.4s ease;
+}
+
+.json-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.json-line.highlight {
+  background: rgba(56, 189, 248, 0.08);
+  border-radius: 4px;
+  margin: 0 -8px;
+  padding: 6px 8px;
+}
+
+.line-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  min-width: 44px;
+  text-align: center;
+}
+
+.json-line code {
   font-family: 'Monaco', 'Menlo', monospace;
   font-size: 13px;
   color: #cbd5e1;
-  line-height: 1.6;
-  white-space: pre;
 }
 
-.key { color: #38bdf8; }
-.string { color: #a3e635; }
-.number { color: #f472b6; }
-.comment { color: #64748b; font-style: italic; }
+.sim-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 12px;
+}
 
-/* Pipeline */
-.pipeline-flow {
+/* === Pipeline: 动画数据流 === */
+.pipe-visual {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
+}
+
+.pipe-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+}
+
+.stage-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: white;
-  padding: 24px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  overflow-x: auto;
+  justify-content: center;
+  font-size: 20px;
 }
 
-.pipe-node {
-  padding: 12px 16px;
-  background: #e0f2fe;
-  color: #0369a1;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid #bae6fd;
-  text-align: center;
+.stage-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
 }
 
-.pipe-node.server { background: #fef08a; color: #854d0e; border-color: #fde047; }
-.pipe-node.etl { background: #fed7aa; color: #9a3412; border-color: #fdba74; }
-.pipe-node.db { background: #bbf7d0; color: #166534; border-color: #86efac; }
+.pipe-track {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  right: 60px;
+  height: 3px;
+  background: #e2e8f0;
+  transform: translateY(-8px);
+}
 
-.pipe-arrow {
-  position: relative;
-  font-size: 10px;
+.packet {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #3b82f6;
+  border-radius: 50%;
+  top: -3.5px;
+  left: 0;
+  opacity: 0;
+}
+
+.packet.flying {
+  animation: fly-across 2.4s ease-in-out forwards;
+}
+
+@keyframes fly-across {
+  0% { left: 0; opacity: 0; }
+  5% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.pipe-btn {
+  margin-bottom: 12px;
+}
+
+.pipe-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 12px;
   color: #64748b;
-  text-align: center;
 }
 
-.pipe-arrow::after {
-  content: "→";
-  display: block;
-  font-size: 16px;
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* === ETL: Before / After 对比 === */
+.etl-compare {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+.etl-side {
+  flex: 1;
+  padding: 16px;
+}
+
+.etl-before {
+  background: #fefce8;
+}
+
+.etl-after {
+  background: #f0fdf4;
+}
+
+.etl-side-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.etl-before .etl-side-title { color: #854d0e; }
+.etl-after .etl-side-title { color: #166534; }
+
+.etl-arrow-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  gap: 4px;
+  flex-shrink: 0;
+  background: #f1f5f9;
+}
+
+.etl-arrow-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.etl-arrow-icon {
+  font-size: 22px;
   color: #94a3b8;
+}
+
+.etl-row-data {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+}
+
+.etl-row-data:last-child { margin-bottom: 0; }
+
+.etl-row-data.dup {
+  background: #fef2f2;
+  text-decoration: line-through;
+  color: #991b1b;
+  opacity: 0.7;
+}
+
+.etl-row-data.bad {
+  background: #fff7ed;
+  color: #9a3412;
+  opacity: 0.7;
+}
+
+.etl-row-data.clean {
+  color: #166534;
+}
+
+.issue-tag {
+  font-family: sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  background: #fecaca;
+  color: #991b1b;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .capture-table { font-size: 12px; }
+  .capture-table th,
+  .capture-table td { padding: 8px 8px; }
+
+  .etl-compare { flex-direction: column; }
+
+  .etl-arrow-col {
+    flex-direction: row;
+    padding: 8px;
+  }
+
+  .pipe-visual { padding: 20px 12px; }
+  .stage-name { font-size: 10px; }
 }
 </style>

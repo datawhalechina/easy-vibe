@@ -66,17 +66,17 @@ Master the Vibe Coding workflow, learn to deconstruct requirements, and independ
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-1/appendix-a-product-thinking/"
+    href="/en/stage-1/appendix-a-product-thinking/"
     title="Product Thinking and Solution Design"
     description="Supplement necessary thinking models for product managers to improve demand analysis and product design capabilities."
   />
   <NavCard
-    href="/zh-cn/stage-1/appendix-industry-scenarios/"
+    href="/en/stage-1/appendix-industry-scenarios/"
     title="AI Industry Application Scenarios (B-end)"
     description="Understand AI application scenarios in different industries to find product inspiration and direction."
   />
   <NavCard
-    href="/zh-cn/stage-1/appendix-c-consumer-scenarios/"
+    href="/en/stage-1/appendix-c-consumer-scenarios/"
     title="AI Consumer Scenarios Inspiration (C-end)"
     description="Explore AI application scenarios in consumer-grade products and inspire creative ideas."
   />
@@ -93,17 +93,17 @@ Master the Vibe Coding workflow, learn to deconstruct requirements, and independ
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-1/appendix-b-common-errors/"
+    href="/en/stage-1/appendix-b-common-errors/"
     title="What to do if you encounter errors when coding"
     description="Summarize common error messages and solutions during development to help you troubleshoot problems quickly."
   />
   <NavCard
-    href="/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial"
+    href="/en/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial"
     title="Comparison of Seven AI Programming Tools"
     description="Compare and test mainstream AI programming platforms to help you choose the most suitable tool."
   />
   <NavCard
-    href="/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents"
+    href="/en/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents"
     title="Design Websites using Design and Programming Agents"
     description="Learn how to use AI agents to work together and improve development efficiency."
   />

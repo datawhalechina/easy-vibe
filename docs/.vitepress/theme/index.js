@@ -710,7 +710,10 @@ import DecisionMatrixDemo from './components/appendix/engineering-excellence/Dec
 import SqlDemo from './components/appendix/data/SqlDemo.vue'
 import DataModelsDemo from './components/appendix/data/DataModelsDemo.vue'
 import ABTestingDemo from './components/appendix/data/ABTestingDemo.vue'
-import DataAnalysisDemo from './components/appendix/data/DataAnalysisDemo.vue'
+import DescriptiveStatsDemo from './components/appendix/data/DescriptiveStatsDemo.vue'
+import DataAggregationDemo from './components/appendix/data/DataAggregationDemo.vue'
+import FunnelAnalysisDemo from './components/appendix/data/FunnelAnalysisDemo.vue'
+import RetentionAnalysisDemo from './components/appendix/data/RetentionAnalysisDemo.vue'
 import DataTrackingDemo from './components/appendix/data/DataTrackingDemo.vue'
 
 // RAG Components
@@ -1542,7 +1545,10 @@ export default {
     app.component('SqlDemo', SqlDemo)
     app.component('DataModelsDemo', DataModelsDemo)
     app.component('ABTestingDemo', ABTestingDemo)
-    app.component('DataAnalysisDemo', DataAnalysisDemo)
+    app.component('DescriptiveStatsDemo', DescriptiveStatsDemo)
+    app.component('DataAggregationDemo', DataAggregationDemo)
+    app.component('FunnelAnalysisDemo', FunnelAnalysisDemo)
+    app.component('RetentionAnalysisDemo', RetentionAnalysisDemo)
     app.component('DataTrackingDemo', DataTrackingDemo)
 
     // Engineering Excellence Components Registration
@@ -1673,7 +1679,10 @@ export default {
     app.component('NetworkArchitectureDemo', NetworkArchitectureDemo)
 
     // Project Architecture Components Registration
-    app.component('ProjectArchitectureComparisonDemo', ProjectArchitectureComparisonDemo)
+    app.component(
+      'ProjectArchitectureComparisonDemo',
+      ProjectArchitectureComparisonDemo
+    )
 
     // Appendix Navigation Component Registration
     app.component('AppendixFlowMap', AppendixFlowMap)

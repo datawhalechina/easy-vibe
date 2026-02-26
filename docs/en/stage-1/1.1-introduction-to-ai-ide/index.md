@@ -359,3 +359,1011 @@ Through the interface below, you can successfully add a model (note: after selec
 
 ![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-02-12-14-15-29.png)
 :::
+
+### 4.3 Step 2: Chat in the Sidebar and Have AI Design a Snake Game with React
+
+Next, open the AI chat sidebar: usually by pressing `Ctrl+L` or clicking the chat icon on the right. Then enter a clear prompt:
+
+> Please implement a Snake game using React architecture, including keyboard controls, growing and scoring when eating food, and displaying "Game Over" with restart support when hitting walls or itself. After implementation, help me start this project. If any program environment is not installed, automatically install the missing environment.
+
+During this process, you need to realize that AI is not just a chat model—it can help you operate your local environment: creating files, installing dependencies, executing startup commands, etc. You can directly describe your goals in natural language, and let AI decide which specific commands to execute and how to organize the code.
+
+If problems occur during execution, AI will display errors and solutions in the conversation. You can continue to have it adjust through dialogue without having to remember all command details yourself.
+
+::: warning ⚠️ Important Note
+As shown in the figure below, **sometimes the AI Agent will pause during execution because it needs to wait for you to input some information for interaction**, such as entering a created name, or pressing Enter to confirm command execution, or clicking a command to execute. Usually we just press Enter directly. If you're unsure what this step requires, you can take a screenshot of the current interface and ask the large model what operation should be performed.
+:::
+
+As shown, here we need to click Run to confirm:
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-52-55.png)
+
+As shown, here we just need to input y to confirm:
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-53-24.png)
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-26-33.png)
+
+As shown, here we are creating a template but don't know how to operate. We can take a screenshot of this part and ask the large model:
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-29-12.png)
+
+Another reason the AI Agent pauses during execution is because it has started a "service." Our Snake game itself is a type of "service." If you see a URL with the following command, it means the Agent has executed a local computer service for us. We can visit the corresponding URL to access our Snake game. Since the service needs to run continuously, it will pause here. We just need to click the `Skip` button.
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-30-51.png)
+
+During this process, if you encounter some terms and content you don't understand, don't worry. You can refer to the "Computer Terminology Explanation" section in the appendix, or directly consult AI, or ask questions in time!
+
+If you encounter unexpected phenomena during the process, such as the snake not ending the game when hitting a wall, or the snake not moving after clicking start, you just need to describe the phenomenon to the sidebar Agent. If you encounter error problems, remember to take a screenshot or copy the error to the sidebar Agent. If it still can't be solved after multiple attempts, please try changing the model.
+
+After a short while, we can get results similar to z.ai:
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-33-37.png)
+
+We can click the checkmark in the bottom right corner to confirm code changes, or click the `Cancel` button to cancel changes. Or click on the "2 files need review" area to expand and view the modified code.
+
+It's also worth noting that since code modifications may not always be correct, we need to know that all IDE Agents support code rollback. For example, if I accidentally made a wrong modification operation here, or if the result of this operation is unsatisfactory, after the modification is complete, we can return to the input box area and click the Revert button to roll back the operation to the state before modification. You can modify the input text for another operation:
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-42-53.png)
+
+### 4.4 Step 3 (Optional): Ask AI About Code Implementation Details
+
+When the Snake game is running normally, if you're not yet familiar with frontend or React, you can continue in the same chat window and ask AI to guide you through the code in as colloquial a way as possible. You don't need to switch tools or deliberately look through documentation—just keep asking questions about the current project.
+
+A practical approach is to have AI first give an overall explanation of "how the game moves," then break it down into specific details. For example, you can directly ask:
+
+> "Please explain from top to bottom how this Snake game moves step by step? Try to use as few technical terms as possible."
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-44-36.png)
+
+Then follow up on key points based on its answer, such as:
+
+> "What data structure is used to record each segment of the snake's body on the screen? Can you give an analogy?"
+> "How do you control 'moving once every while'? Which section of code is this in?"
+> "When the snake eats food, what steps do you take? Where is the logic that determines it ate something?"
+> "Where in the code are hitting walls and hitting itself judged respectively?"
+
+If you see a certain file (like `SnakeGame.tsx`) but have no idea what it's doing, you can also directly ask AI to explain it in sections:
+
+> "Please explain `SnakeGame.tsx` in several functional blocks: what is each block roughly responsible for, using simpler language."
+
+In this round of dialogue, you can treat any word you don't understand as an entry point for follow-up questions, such as:
+
+> "What exactly does 'state' mean in what you just said? Can you explain it with a real-life example?"
+> "What does 'timer' mainly do here? What would happen if it were removed?"
+
+Through this method, your goal is not to memorize all concepts at once, but to first understand three things: what core data exists in this game (snake, food, score, game state, etc.), when this data changes (moving, eating food, game over, etc.), and which small section of code corresponds to each change. Once these three points are clear, you can basically understand the main logic of this code.
+
+### 4.5 Step 4: Have AI Make the Interface Look Better
+
+First, a reminder for beginners: don't just tell AI "I want to make this interface look better." This statement is too vague even for human designers, let alone models—what style does "good-looking" mean, which parts need adjustment, is it a layout problem or a color problem? AI can't read all this from your one sentence. To make AI truly produce results close to what you have in mind, you need to learn to break down the vague goal of "I want it to look good" into a series of specific, executable small requirements.
+
+For example, many people initially say something like this:
+
+> "I want to make this interface look a bit better."
+
+Instead, you can first give a set of overall requirements:
+
+> "Please help me beautify the game interface overall:
+>
+> - Center the game area, don't stick it to the top-left corner;
+> - Change to a lighter background color to make the snake and food more prominent;
+> - Enlarge the score and place it in a prominent position;
+> - Use blue as the main color scheme to beautify the overall color scheme and buttons."
+
+If you want clearer feedback when the game ends, you can further supplement:
+
+> "When the game ends, please display 'Game Over' in the center of the screen, with a 'Restart' button below it that can reset the game."
+
+AI will directly modify React components and styles based on your description. After saving, refresh the browser to see the new interface. If the effect still differs from what you imagined, you can continue making small adjustments, such as:
+
+> "Make the score a bit larger and the color more prominent."
+> "Make the game area more compact with some margin around it."
+> "Change the restart button to a blue rounded style, centered below the prompt."
+
+At this stage, if a modification causes an error, you don't need to troubleshoot it yourself. Just copy the error message to the chat window, or provide a brief description like "This is the error that appeared after I beautified the interface," and let AI locate and fix it within the current project context. This way you can gradually polish a running demo into a small finished product with a clear interface and smooth interactions through the cycle of "continuous dialogue, continuous refreshing."
+
+### 4.6 (Optional) Reference z.ai Architecture to Modify Snake Results
+
+For vibe coding beginners, the hardest thing is not knowing what counts as "best practices" or what architecture is most suitable; because you don't know computer basics, you can't guide AI well. The solution to this problem is "direct reference." Remember when we said you can view code in z.ai? In fact, the corresponding README (the part used in projects to introduce functionality and technical architecture) already gives a best architecture reference:
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-49-33.png)
+
+If we want the local result to match the z.ai result as closely as possible, we can copy all the content of this README and paste it into Trae's sidebar, asking it to modify the local code according to the README architecture.
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-10-50-31.png)
+
+Finally, we can get page design styles highly similar to z.ai:
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/index-2026-01-09-11-00-57.png)
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="2" :items="[
+      { title: 'Understanding the Environment', description: 'IDE vs AI IDE' },
+      { title: 'Hands-on Practice', description: 'Build Snake with Trae' },
+      { title: 'Tool Deep Dive', description: 'Explore the IDE Interface' },
+      { title: 'Communication Skills', description: 'Talk to AI Effectively' }
+    ]" />
+  </ClientOnly>
+</div>
+
+## 5. What Each Button on the Interface Does
+
+In the above operations, we've quickly run through the minimum program generation loop, but we're still not familiar with the IDE. To thoroughly familiarize ourselves with this tool that we'll be working with long-term, we'll provide in-depth explanations of every detail of the IDE in this section. Starting with the interface, different AI IDEs have slightly different interfaces, but most follow the [VS Code layout](https://code.visualstudio.com/docs/getstarted/getting-started).
+
+![](../../../zh-cn/stage-1/1.1-introduction-to-ai-ide/images/image32.webp)
+
+The specific function of each part is:
+
+- **Title Bar**: Displays file name and window control buttons.
+- **Activity Bar**: Switches between functional views like files and search.
+- **Side Bar**: Displays specific content like file lists.
+- **Editor Groups**: The core area for writing code.
+- **Breadcrumbs**: Shows file path and supports navigation.
+- **Minimap**: Quick preview and positioning of code.
+- **Panel**: Contains terminal and output windows.
+- **Status Bar**: Displays current environment status.
+
+For more detailed explanations, please refer to the [Virtual IDE Visualization section in the Appendix](/zh-cn/appendix/2-development-tools/ide-basics).
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="3" :items="[
+      { title: 'Understanding the Environment', description: 'IDE vs AI IDE' },
+      { title: 'Hands-on Practice', description: 'Build Snake with Trae' },
+      { title: 'Tool Deep Dive', description: 'Explore the IDE Interface' },
+      { title: 'Communication Skills', description: 'Talk to AI Effectively' }
+    ]" />
+  </ClientOnly>
+</div>
+
+## 6. How to Talk to AI Effectively
+
+As AI capabilities become stronger and stronger, we can delegate much of the "programmer writes code" work to AI. However, in actual use, you'll find that using the same AI, some people can get a working small project in a few sentences, while others chat for a long time but get results completely different from what they wanted. The difference often lies not in "who is smarter," but in—whether the way you talk to AI is specific enough and step-by-step enough. This section introduces some questioning methods suitable for complete beginners from several common scenarios, helping you more stably get usable results from AI.
+
+### 6.1 Clarify Your Requirements: From "Vague Idea" to "Specific Description"
+
+Many people, when first using AI, are accustomed to saying only one very general sentence, such as:
+
+> "Help me make a webpage."
+> "Help me write a small program."
+
+In this case, AI can only "imagine" what you want, so it will casually give you something that looks quite complete, but often differs greatly from what you really want to do. To make AI understand you better, you need to break down the "idea in your head" and explain it step by step.
+
+You can supplement from these aspects:
+
+1. **Tell it what you're using this thing for**
+   For example, don't just say "personal website," but say:
+   - "I want to make a personal profile webpage with only one page of content, to send to recruiters."
+
+2. **Tell it roughly what blocks of content you need**
+   No need to use professional terms, just describe what you hope appears on the page, such as:
+   - "The page should have three sections: at the top is my name and a self-introduction sentence, the middle lists several work experiences, and the bottom puts email and WeChat ID."
+
+3. **Tell it your level and limitations**
+   Let AI do it in a way that beginners can accept, such as:
+   - "I can't write code at all, please use the simplest method so I can directly copy it into one file and open it in the browser."
+
+4. **Tell it how you hope to get the results**
+   For example:
+   - "Please give me complete code that can be directly saved as `index.html` and opened in the browser."
+
+Putting it together, you can say this to AI:
+
+> "I can't write code at all and want to make a personal profile webpage with only one page of content, to send to recruiters.
+> The page needs three sections: the top line is my name and a self-introduction sentence, the middle is several work experiences, and the bottom is email and WeChat ID.
+
+When you clarify this information, AI can get closer to your real needs, rather than casually giving you something "that looks impressive but is useless."
+
+### 6.2 Use the Right Rhythm: "Get It Running" First, Then Gradually Make It Complex
+
+For complete beginners, the most common pitfall is: wanting to make something "very complete" and "with many features" right from the start.
+For example:
+
+> "Help me make a website like Taobao."
+> "Help me make a system with registration, login, and ordering."
+
+The result is often: AI gives you a large chunk of code, which either won't open or has errors everywhere after you copy it; you also can't understand where the problem is, and finally have to give up.
+
+A better approach is to **actively control the rhythm**, letting AI follow you step by step, rather than throwing everything at you at once. You can request in this order:
+
+1. **First step: Ask for a "minimal example"**
+   Only check one thing: can you see something in the browser?
+   For example:
+
+   > "Please first give me the simplest example, as long as I can see a line saying 'This is my homepage' in the browser.
+   > Then tell me step by step: what should the file name be, how should I save it, and how to open it."
+
+2. **Second step: Slowly add complete content on this basis**
+   After you confirm "I can indeed see that line of text," then say:
+
+   > "On the basis of what we just had, help me add a 'Work Experience' area and send me the complete code again. Don't just send the changed parts."
+
+3. **Third step: After the structure is almost done, then consider whether it looks good**
+   For example:
+   > "Now the page can display content normally. Next, please help me beautify it a bit: center it overall, make the title larger, and use a more comfortable font. Please give me the updated complete code."
+
+With each addition, you run it once first to confirm there really is a change before letting AI continue. This way, even if something goes wrong at any step, you can quickly return to the "previous version that was working" state without having to start completely from scratch.
+
+### 6.3 Make Good Use of Screenshots and Copying: If You Can't Say It, "Throw the Screen at AI"
+
+Many difficulties complete beginners encounter don't lie in "not knowing how to modify code," but in **not knowing how to describe the problem**.
+For example:
+
+- A bunch of English errors suddenly pop up in the browser, which you completely don't understand.
+- The webpage layout is different from what you wanted, but you don't know what words to use to describe it.
+
+In these cases, you don't need to force out professional terms. The simplest way is to **throw what you see directly at AI**.
+
+You can do this:
+
+1. **Copy error text**
+   When you see a string of red error messages, you can directly copy them out and say:
+
+   > "This is the complete error message that appeared after I ran it. I don't understand this English, please first explain in words that ordinary people can understand what this roughly means.
+   > Then tell me what is the simplest way I should modify it now."
+
+2. **Show AI a screenshot**
+   If you feel "this page just looks wrong" but can't describe it, you can:
+   - Take a screenshot of the current page;
+   - Copy the entire section of code you're using to AI;
+   - Then explain:
+     > "This is what the page looks like now, this is my current complete code.
+     > I originally wanted it to be a three-column layout, but now it's become one column. Please help me find the reason and give me a corrected complete code."
+
+   ::: tip 💡 Supplementary Note on Screenshot Functionality
+
+   It's important to note that **not all AI models support "looking at pictures."** This involves two different concepts:
+
+   - **Pure text large models (LLM)**: Can only process text input and cannot recognize image content. If you send it a screenshot, it will either refuse to process it or cannot correctly understand the information in the image.
+
+   - **Multimodal models**: Can process multiple types of input such as text and images simultaneously, can "understand" the screenshots you send, and give suggestions based on the image content.
+
+   **Common model capability reference** (taking models available in Trae as an example):
+
+   | Model | Supports Image Input |
+   |------|-----------------|
+   | Doubao-Seed Series | ✅ Supported |
+   | GLM-4.7 / 4.6 | ❌ Not Supported |
+   | MiniMax-M2.1 / M2 | ❌ Not Supported |
+   | DeepSeek-V3.1 | ❌ Not Supported |
+   | Kimi-K2.5 | ✅ Supported |
+   | Kimi-K2-0905 | ❌ Not Supported |
+   | Qwen-3-Coder | ❌ Not Supported |
+   | Gemini Series | ✅ Supported |
+   | GPT Series | ✅ Supported |
+
+   **Usage suggestion**: If you want AI to help you troubleshoot interface problems through screenshots, please first confirm that the model you are using supports image input. If not supported, you can use text to describe the problem, or copy and paste error messages to AI.
+
+   :::
+
+3. **Encounter a webpage you like and want to make something similar**
+   No need to say "what is this layout called," just:
+   - Take a screenshot or copy the page's main title and paragraphs;
+   - Then say:
+     > "I want to make a page with a similar structure to this, doesn't need to be exactly the same.
+     > Please help me build a similar framework with simpler code, then I'll replace the text with my own."
+
+Simply put: you're responsible for "moving what you see to AI," then using the simplest words to say "I hope it becomes like this"; the rest of "translating into code, explaining terms, finding problems" is left to AI.
+
+### 6.4 When AI-Generated Code Doesn't Work: A Universal Response Method
+
+In actual practice, you will definitely encounter this situation:
+AI seriously gave you a piece of code, and you honestly copied it in, but the result is either a blank browser page or completely different from what it said.
+This doesn't mean you "can't learn," nor does it mean AI is completely wrong, but rather that you and AI are still missing a few rounds of "back-and-forth confirmation."
+
+When code "doesn't work," you can follow this fixed process to talk to AI:
+
+1. **First clearly state "what you did + what it looks like now"**
+   Avoid just saying "won't open" or "not working." You can describe it like this:
+
+   > After opening, the page is completely blank, not showing the welcome text you mentioned.
+   > I opened the xxxx page, and the part I just mentioned isn't there, this doesn't work.
+
+2. **Send AI your current complete code**
+   Many times the problem is: you copied one line less, or mixed content from the previous and current times together.
+   You can say:
+
+   > "Below is all the code currently in my file.
+   > Please compare to see if anything is missing, written wrong, or in the wrong order.
+   > Please directly give me a corrected complete code, don't just send a small section."
+
+3. **If there are error prompts, provide them together**
+   For example, errors that pop up in the top-right corner of the browser, or some red text at the bottom. You can:
+   - Copy out the error text;
+   - Or take a screenshot;
+   - Then say:
+     > "This is the error prompt I see. I completely don't understand it, please first explain in simple terms what this problem roughly is, then tell me which lines need to be modified most urgently now."
+
+4. **Ask the other party to use "beginner mode" to explain step by step**
+   You can directly state your situation and ask it not to skip intermediate steps:
+
+   > "I can't write code at all, please tell me step by step:
+   > Step 1: which line to modify,
+   > Step 2: how to save,
+   > Step 3: how to reopen or refresh the page.
+   > Please write out each step in complete sentences."
+
+5. **Finally, ask it to help you do a "what you should see" comparison**
+   For example:
+   > Please first say, according to your corrected code, what content should I normally see when I open the webpage.
+
+As long as you follow this process to interact with AI, most "code not working" situations can be resolved in a few rounds of back-and-forth.
+At the same time, you will gradually become familiar with common problem types, and next time you encounter similar situations, you can solve them directly.
+
+## 7. Summary and Next Steps
+
+In this chapter, you completed an upgrade from "playing an AI-generated Snake in a webpage" to "building a small game yourself with an AI IDE locally." You roughly figured out three things: why writing code can't be separated from an IDE like VS Code; on this basis, adding AI (Trae, Cursor, etc.) makes the IDE no longer just a toolbox, but adds an "intern engineer" who can understand natural language, help you create files, install environments, and modify code; and what each area of the IDE interface (left files, bottom terminal, middle editing area, right AI panel) is responsible for, so you're no longer confused when using it.
+
+More importantly, you've actually run through a complete process once: create an empty folder locally → open with AI IDE → describe requirements in sidebar dialogue → let AI generate project and start development server → when problems occur, throw "phenomenon + complete code + error screenshot" to AI together, asking it to fix step by step in "beginner mode." In this process, you also practiced how to write more effective prompts: clarify goals, content structure, and your level, control the rhythm well, from "get it running first" to "then make it look good, make it fun."
+
+In the next chapter, we'll shift focus from "knowing how to use tools" to "making a prototype that people actually want to use": starting from the user perspective, designing rules, interactions, and feedback, then letting AI help you turn these ideas into a product prototype.
+
+## 8. 📚 Assignment: Make a More Complex Game with Local AI IDE
+
+<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="font-weight: bold; font-size: 16px;">🚀 Challenge Task: Build Your Own Game</div>
+  </template>
+
+  <p>
+    You've already made a Snake game with a local AI IDE. Now please challenge yourself with a slightly more complex small game, walking through the complete process of "describe requirements → generate project → run locally → debug and iterate."
+  </p>
+
+  <ol>
+    <li>
+      <strong>Choose a game more complex than Snake</strong>
+      <ul>
+        <li>Could be Tetris, Whack-a-Mole, Minesweeper, 2048, Aircraft Battle, etc.</li>
+        <li>Or a simple original game you imagine yourself</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Must use local AI IDE to complete the entire process</strong>
+      <ul>
+        <li>Create a new empty folder and open it with AI IDE</li>
+        <li>Describe your game requirements clearly in the sidebar chat</li>
+        <li>Let AI be responsible for creating files, building project structure, and implementing main logic</li>
+        <li>Start the development server locally to ensure the game can run normally</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Have basic "playability" and feedback</strong>
+      <ul>
+        <li>At least include three states: start, in-progress, and end</li>
+        <li>Players have clear operation methods (keyboard or mouse)</li>
+        <li>Clear score or progress feedback on the screen</li>
+      </ul>
+    </li>
+    <li>
+      <strong>At least 2+ rounds of iteration</strong>
+      <ul>
+        <li>First round: let AI make a "playable" version</li>
+        <li>Second round and beyond: gradually propose specific improvements (style, difficulty, interaction optimization, etc.)</li>
+      </ul>
+    </li>
+  </ol>
+</el-card>
+
+# Appendix
+
+<el-card id="appendix-nav" shadow="hover" style="margin-top: 40px; margin-bottom: 24px; border-left: 5px solid #E6A23C;">
+  <div style="font-weight: bold; margin-bottom: 8px;">Appendix Navigation</div>
+  <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+    Here are "look up when needed" supplementary materials: come back when you encounter terms you don't understand or can't find interface entries.
+  </div>
+  <el-row :gutter="16">
+    <el-col :span="12">
+      <a href="#appendix-1-map" style="text-decoration: none; color: inherit;"><b>Appendix 1: Common Computer Terminology Quick Reference</b></a><br/>
+      <span style="font-size: 12px; color: #909399">When you see computer terms you don't understand, quickly look up their meanings here. Recommended to read through once.</span>
+    </el-col>
+    <el-col :span="12">
+      <a href="/en/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Appendix 2: Visual Studio Code Menu Bar Analysis</b></a><br/>
+      <span style="font-size: 12px; color: #909399">When you don't know what the AI IDE interface is for, use the following content to consult with AI, or view directly.</span>
+    </el-col>
+  </el-row>
+  <div style="margin-top: 12px; font-size: 12px; color: #909399;">
+    Support: Press Ctrl/⌘+F to search for keywords; when encountering new words, you can copy errors and let AI explain in "beginner mode."
+  </div>
+</el-card>
+
+# Appendix 1: Common Computer Terminology Quick Reference
+
+<el-card id="appendix-1-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #409EFF;">
+  <div style="font-weight: bold; margin-bottom: 10px;">🗺️ Terminology Map: What You'll Encounter Here...</div>
+  <el-row :gutter="20">
+    <el-col :span="6">
+      <a href="#term-tool-ui" style="text-decoration: none; color: inherit;">🖥️ <b>Tool Interface</b></a><br/>
+      <span style="font-size: 12px; color: #909399">IDE / Terminal / Panel</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-network" style="text-decoration: none; color: inherit;">🌐 <b>Network Services</b></a><br/>
+      <span style="font-size: 12px; color: #909399">URL / Port / Local</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-frontend-backend" style="text-decoration: none; color: inherit;">⚙️ <b>Frontend & Backend</b></a><br/>
+      <span style="font-size: 12px; color: #909399">API / JSON / Interface</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-code-basic" style="text-decoration: none; color: inherit;">📝 <b>Code Basics</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Variable / Function / Component</span>
+    </el-col>
+  </el-row>
+  <el-row :gutter="20" style="margin-top: 10px;">
+    <el-col :span="6">
+      <a href="#term-debug" style="text-decoration: none; color: inherit;">🐞 <b>Debugging</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Bug / Breakpoint / Log</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-project" style="text-decoration: none; color: inherit;">📂 <b>Project Management</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Git / Repository / Commit</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-ai-tool" style="text-decoration: none; color: inherit;">🤖 <b>AI Tools</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Agent / Model / Key</span>
+    </el-col>
+    <el-col :span="6">
+      <a href="#term-browser" style="text-decoration: none; color: inherit;">🛠️ <b>Browser</b></a><br/>
+      <span style="font-size: 12px; color: #909399">DevTools / Console</span>
+    </el-col>
+  </el-row>
+</el-card>
+
+You don't need to deliberately memorize this section. What's more important is to first establish an impression in your mind.
+
+## <span id="term-tool-ui">[1. Words Related to "Tool Interface"](#appendix-1-map)</span>
+
+### 1. IDE, Editor, Terminal
+
+**IDE (Integrated Development Environment)**
+You can think of an IDE as a "programmer's workbench":
+
+- One side is a writing desk (editor),
+- One side has power outlets and buttons (run, debug),
+- Drawers contain various small tools (search, version management).
+  VS Code, Trae, Cursor all belong to IDEs or tools based on IDEs.
+
+**Code Editor (Editor)**
+More like an "advanced notepad," only responsible for:
+
+- Letting you type code;
+- Using colors to distinguish different content (syntax highlighting);
+- Giving you auto-completion.
+  The area in the IDE where you write code is the code editor.
+
+**Terminal / Command Line (Terminal / Command Line Window)**
+A window with black background and white text, where you **input commands** for the computer to work:
+
+- For example: `npm run dev` means "help me start the development server";
+- `python main.py` means "run this Python file."
+  You can think of it as: "You send the computer text message commands one by one, and it replies with execution results in text."
+
+### 2. Several Common Areas in the IDE
+
+**Activity Bar**
+The row of small vertical icons on the far left, like "function tabs":
+
+- Click file icon → file list displays on the left;
+- Click magnifying glass icon → left becomes search;
+- Click Git icon → left displays version management.
+
+**Side Bar**
+The large area to the right of the Activity Bar, specifically displaying content for the current mode:
+
+- File mode: shows files and folders in the project;
+- Search mode: shows search results list;
+- Source control mode: shows which files have been modified.
+
+**Editor Area**
+The largest area in the middle, where you actually see and modify content after opening a file;
+The tabs above are "which files are currently open."
+
+**Panel**
+Generally at the bottom, common types include:
+
+- Terminal: input commands to run projects;
+- Problems: lists error files and line numbers;
+- Output: some tool-printed runtime information;
+- Debug Console: output during debugging.
+
+**Status Bar**
+The thin bar at the very bottom:
+
+- Displays what language the current file is (JS, HTML, Python, etc.);
+- Displays whether indentation is "2 spaces" or "4 spaces";
+- Displays whether there are errors, what the current Git branch is.
+  You can think of it as "a small health check of the current editing environment."
+
+## <span id="term-network">[2. Words Related to "Webpage / Network / Service"](#appendix-1-map)</span>
+
+### 1. URL, HTTP, Port, Local Service
+
+**URL (Web Address)**
+That string of things in the browser address bar, such as:
+
+- `https://www.trae.cn/`
+- `http://localhost:3000/`
+  It's like "the complete address of a room in the internet world."
+
+**HTTP / HTTPS**
+The `http://` or `https://` you see at the beginning of a URL:
+
+- HTTP: ordinary transmission method;
+- HTTPS: adds a layer of encryption, more secure.
+  You can first remember: "When writing webpage addresses, usually start with `http` or `https`."
+
+**Port (Port)**
+You can imagine a computer as a building, and ports are **room numbers for each room**:
+
+- `:3000` means room 3000;
+- The same computer can run multiple services simultaneously, each occupying a port.
+  `http://localhost:3000` means "access the service running in room 3000 on my own computer."
+
+**Local (Local / localhost)**
+Refers to your own computer.
+
+- `localhost` can be understood as "this machine itself."
+  When you access `http://localhost:3000`, you're actually interacting with a program running on your own computer, not accessing someone else's server online.
+
+**Service (Service / Server)**
+A "service" is a **program that keeps running in the background, always listening for your commands**:
+
+- Web service: when a browser accesses an address, it returns webpage content;
+- Game service: responsible for managing matches, saves, leaderboards, etc.
+  Executing `npm run dev` in the terminal to start a project is essentially "opening a web service locally."
+
+## <span id="term-frontend-backend">[3. Words Related to "Frontend / Backend / Data"](#appendix-1-map)</span>
+
+### 1. Frontend, Backend
+
+**Frontend**
+The part that users **can see and click**:
+
+- Buttons, text, images, animations on webpages;
+- Pages written in React / Vue.
+  Responsible for displaying interfaces and responding to user operations (clicks, inputs, drags, etc.).
+
+**Backend**
+The part that users **cannot see**, running on the server:
+
+- Storing and reading data (user information, orders, scores, etc.);
+- Executing business rules (login verification, permission judgment).
+  You can think of frontend as "storefront and clerk," and backend as "warehouse and ledger system."
+
+### 2. Interface, Request, Response, JSON
+
+**Interface / API**
+A set of "question + answer" rules agreed upon in advance between frontend and backend.
+
+- Frontend says: "I'll ask you using this address, this format";
+- Backend says: "I'll return results to you in this format."
+
+**Request (Request)**
+A "question" sent from frontend to backend:
+
+- Where is the request going (URL);
+- What method is used (GET, POST, etc.);
+- What parameters are brought (such as user ID).
+
+**Response (Response)**
+The "answer" given by backend to frontend:
+
+- Status code (200 success, 404 not found, 500 server error);
+- Actual data (mostly JSON).
+
+**JSON**
+A format for representing data using **syntax very similar to JavaScript code**, such as:
+
+```json
+{
+  "name": "Alice",
+  "score": 120
+}
+```
+
+Can be understood as "a machine version of key-value notepad," often used by frontend and backend to exchange data.
+
+## <span id="term-code-basic">[4. Words Related to "Writing Code Itself"](#appendix-1-map)</span>
+
+### 1. Variable, Identifier, State
+
+**Variable (Variable)**
+"A label attached to a piece of data."
+
+- For example, recording the score as `score`;
+- Later using the name `score`, you can read and write this data:
+
+```js
+let score = 0
+score = score + 10
+```
+
+**Identifier (Identifier)**
+A general term for "various names you give yourself":
+
+- Variable name: `score`
+- Function name: `moveSnake`
+- Component name: `SnakeGame`
+  Like naming folders "Photos," "Work," "Bills" for easy distinction between different "things" in code.
+
+**State (State)**
+The "key situation record" of the program's current state:
+
+- Whether the game has ended;
+- Which grid the snake is currently on;
+- What the current score is.
+  In React, it's generally understood this way: **when state changes, the interface must follow and update**.
+
+### 2. Function, Component, Module
+
+**Function (Function)**
+Package something that "can be done repeatedly" and give it a name:
+
+```js
+function sayHello(name) {
+  console.log('Hello, ' + name)
+}
+```
+
+Later, just writing `sayHello('Bob')` equals executing those lines again.
+
+**Component (Component)**
+In frontend, "a small interface + small logic that can be reused":
+
+- A button can be a component;
+- A top navigation can be a component;
+- The entire game area can also be a component.
+  Components can be assembled together, like building with LEGO.
+
+**Module (Module)**
+"A file composed of a group of related codes":
+
+- `snakeLogic.ts` specifically stores code related to "how the snake moves";
+- `score.ts` specifically stores code for calculating scores.
+  Modules can "import / export" between each other, like tools in different drawers.
+
+### 3. Syntax, Programming Language, Framework
+
+**Syntax (Syntax)**
+The "grammar rules" and "punctuation habits" of a programming language:
+
+- Strings need quotes;
+- Whether to write a semicolon at the end of each statement;
+- Code blocks need to be wrapped in `{}`.
+  Writing syntax errors, compilers / interpreters will directly report "syntax errors."
+
+**Programming Language (Programming Language)**
+A complete set of rules and vocabulary for communicating with computers, such as:
+
+- JavaScript, Python, Java, C++, Go...
+  Different languages are suitable for different things, have different writing styles and tool ecosystems.
+
+**Framework (Framework)**
+A large set of code and patterns that others have "pre-built the skeleton" for you:
+
+- Frontend: React, Vue (helping you handle interface updates, state management, etc.);
+- Backend: Django, Spring Boot, etc.
+  You're essentially "filling in content on a ready-made skeleton," much easier than building from scratch.
+
+## <span id="term-debug">[5. Words Related to "Debugging / Troubleshooting"](#appendix-1-map)</span>
+
+### 1. Bug, Error, Log / console.log
+
+**Bug**
+When program behavior differs from what you expect, that's a bug:
+
+- Buttons that should appear don't appear;
+- Should add 10 points but added a bunch more;
+- Page shows white screen as soon as it opens.
+
+**Error Message (Error Message)**
+That "scary-looking" English that appears on the screen / in the terminal after a program crashes.
+Although ugly, it usually tells you:
+
+- Roughly where the error is;
+- Which file, near which line needs checking.
+  You can directly copy it and throw it to AI for translation and analysis.
+
+**Log (Log)**
+What the program "says" during operation.
+Most common in frontend is:
+
+```js
+console.log('Current score', score)
+```
+
+You can think of it as: **actively reporting numbers at key steps to confirm whether the program is running as you expect**.
+
+> **What is console.log?**
+>
+> - `console` can be understood as "a small blackboard for debugging";
+> - `.log` is "writing a line on the small blackboard";
+> - Press F12 in the browser to open the Console panel in developer tools to see these outputs.
+
+### 2. Debug, Breakpoint, Step-by-Step Execution, Snapshot
+
+**Debug (Debug / Debugging)**
+When a program has problems, instead of randomly modifying:
+
+- Let the program pause at a certain line (breakpoint);
+- Look at the value of each variable at the moment;
+- Walk through step by step, observing "where it starts to go wrong."
+
+**Breakpoint (Breakpoint)**
+You can think of a breakpoint as "a pause button inserted at this line":
+
+- Programs normally run all the way through;
+- When running to the line where you inserted the breakpoint, it will temporarily stop and wait for your inspection.
+
+**Step-by-Step Execution (Step)**
+After stopping from a breakpoint, you can choose:
+
+- Execute line by line (step over);
+- Go inside a certain function to see details (step into).
+  Like watching a dance broken down into moves, rather than watching a fast-forward video directly.
+
+**Snapshot (Snapshot) — Simplified Understanding**
+Here "snapshot" can be understood as:
+
+> **Taking a photo of the "current state" at a certain point in time for future comparison.**
+> In actual tools, "snapshot" may refer to:
+
+- The complete state of the project at the moment of a commit;
+- The overall situation of memory / variables at a certain point during debugging.
+  Just remember this analogy for now: **snapshot ≈ a photo of state at a certain moment**.
+
+## <span id="term-project">[6. Words Related to "Project Management"](#appendix-1-map)</span>
+
+### 1. Project, Workspace, Folder
+
+**Project (Project)**
+For implementing an application, placed in the same folder:
+
+- Source code files
+- Configuration files
+- Assets (images, audio, etc.)
+
+**Workspace (Workspace)**
+A concept used by VS Code / Trae to describe "what group of things is currently open this time":
+
+- Opening a folder → a simple workspace;
+- Sometimes multiple folders are combined into a multi-project workspace.
+
+### 2. Git, Repository, Commit
+
+**Git (Version Control Tool)**
+Can be understood as a "time machine" for projects:
+
+- After each batch of modifications, you can "take a version photo";
+- When needed in the future, you can return to a certain historical state.
+
+**Repository (Repository / Repo)**
+After enabling Git, that project folder with "version records" is called a "repository."
+
+**Commit (Commit)**
+Every time you feel "this wave of modifications counts as a阶段性成果," you can:
+
+- Write a description (such as: `Add score panel`);
+- Package all current modifications into a version;
+- Git will save the state at this moment.
+  This action is called "making a commit."
+
+## <span id="term-ai-tool">[7. Words Related to "AI Development Tools"](#appendix-1-map)</span>
+
+### 1. AI IDE, Agent, SOLO Mode
+
+**AI IDE**
+On the basis of ordinary IDEs, adds a layer of AI that "can understand human language and take action itself":
+
+- You say "make a Snake game," it can help you set up the project, write code;
+- You give it a screenshot of an error, it can first explain then try to fix;
+- It can modify across multiple files together, not just complete line by line.
+
+**Agent (Agent)**
+You can think of an Agent as an **AI junior engineer on long-term standby**:
+
+- Will read your project structure;
+- Will break down tasks (install dependencies first, then generate code, then run project);
+- After errors occur, will adjust plans based on error information.
+
+**SOLO Mode (taking Trae as an example)**
+Means:
+
+> You only need to clearly state the "destination,"
+> It plans the "route" itself,
+> Executes step by step locally,
+> Only asks whether to continue at key nodes midway.
+
+### 2. Model, Key (API Key)
+
+**Model (Model, here specifically referring to large language models)**
+This word can be simply understood as "that big AI brain behind it":
+
+- Such as GPT, Claude, Kimi, GLM, etc.;
+- Different models have different levels in "understanding Chinese," "writing code," "reasoning";
+- AI IDEs usually allow switching between different models in dropdown menus.
+
+**Key / API Key**
+You can understand an API Key as **a very long "advanced password + ID number,"**
+Its only function is:
+
+> Tell someone else's server: "I'm which user, please allow me to use your AI service, and help me keep accounts."
+
+Key points:
+
+- This thing is usually a long string of random letters and numbers;
+- Can't be sent to public places (repositories, screenshots, group chats), others can impersonate your account if they get it;
+- Filling in the API Key in the tool is like "inserting the key into the lock," after which the tool can help you call the corresponding AI service.
+
+## <span id="term-browser">[8. Words Related to "Browser / Developer Tools"](#appendix-1-map)</span>
+
+**Chrome (Google Browser)**
+One of the most commonly used browsers for frontend development now:
+
+- Opens webpages fast;
+- Comes with relatively strong "developer tools" for easy problem checking.
+
+**Refresh (Refresh / Reload)**
+Reload the current webpage:
+
+- After modifying frontend code, if there are no automatic refresh tools, you need to manually refresh to see the effect.
+
+**Developer Tools (DevTools)**
+A set of tool panels in the browser specifically for developers:
+
+- View webpage structure (Elements);
+- View styles (Styles);
+- Check errors and logs (Console);
+- Check network requests (Network).
+  In Chrome, usually opened by pressing `F12` or `Ctrl+Shift+I`.
+
+**Console (Console)**
+A tab in developer tools, specifically displaying:
+
+- The output of your `console.log(...)`;
+- Errors that occurred during operation (red text).
+  You can think of it as "the program's chat box":
+- When the program has something to say, it writes here;
+- This is what you most often look at when debugging.
+
+If you encounter new words in the learning process later, you can also have AI assist you in supplementing all content in this style:
+
+- First write a sentence about "what it does";
+- Then write a sentence about "what you can imagine it as";
+- Finally give a particularly simple small example.
+  This way your "personal glossary" will grow longer and more practical, gradually enabling better communication with computers.
+
+---
+
+# Appendix 2: Visual Studio Code Menu Bar Analysis
+
+To help everyone understand the meaning of each option, here we provide an in-depth analysis of the menu bar:
+
+![](../../../en/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.png)
+
+![](../../../en/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-36-23.png)
+
+<details class="custom-block details" id="vscode-file-menu">
+  <summary>File: Project and File Open/Save/Workspace Management</summary>
+
+This menu is mainly responsible for: **Creating/Opening Files**, **Opening Project Folders**, **Managing Workspaces**, **Saving and Closing**.
+
+> The most commonly used are: Open Folder to open a project; Open… to open a single file; then use Save / Save All to save changes, and finally use Close Editor / Close Folder to end the current work. Workspace-related content can be slowly learned as you get more projects, no need to understand everything at once.
+
+- **New Text File**: Create a new unnamed text buffer for temporary notes or quick pasting.
+- **New File…**: Create a new file in the project (usually asks you to choose path/name).
+- **New Window**: Open a new VS Code window instance.
+- **New Window with Profile**: Open a new window with a specified Profile (extension/settings combination), suitable for isolating environments for different courses/projects.
+- **Open…**: Open a single file for editing.
+- **Open Folder…**: Open a folder as the project root directory (the most commonly used "open project" method).
+- **Open Workspace from File…**: Open a `.code-workspace` file to load a workspace with multiple folders/specific settings.
+- **Open Recent**: Quickly access recently opened files/folders/workspaces.
+- **Add Folder to Workspace…**: Add another folder to the current workspace (forming a multi-root workspace).
+- **Save Workspace As…**: Save the current workspace structure as a `.code-workspace` file for easy sharing/reuse.
+- **Duplicate Workspace**: Duplicate the current workspace configuration (commonly used to create similar project environments).
+- **Save**: Save changes to the current file.
+- **Save As…**: Save the current file with a new name/path.
+- **Save All**: Save all opened files that have modifications.
+- **Share**: Entry related to sharing/collaboration (specific content depends on version and extensions).
+- **Auto Save**: Toggle auto-save strategy (e.g., delayed save/focus change save).
+- **Revert File**: Discard unsaved changes to the current file and revert to the disk version.
+- **Close Editor**: Close the current tab.
+- **Close Folder**: Close the current project folder (workspace becomes empty).
+- **Close Window**: Close the current VS Code window.
+
+</details>
+
+<details class="custom-block details" id="vscode-edit-menu">
+  <summary>Edit: Basic Editing, Find/Replace, Comments and Quick Edit Actions</summary>
+
+This menu is mainly responsible for: **Undo/Redo**, **Cut/Copy/Paste**, **Find/Replace**, **Comments and Editor Actions** (improving editing efficiency).
+
+- **Undo / Redo**: The most basic operations for when you write code wrong.
+- **Cut / Copy / Paste**: Text transportation.
+- **Find / Replace**: Search or batch modify in the current file.
+- **Find in Files / Replace in Files**: Global (whole project) search and replace, very powerful but use with caution.
+- **Toggle Line Comment**: `Ctrl + /`, quickly comment/uncomment the current line.
+- **Toggle Block Comment**: `Shift + Alt + A`, quickly comment/uncomment the selected area.
+- **Emmet: Expand Abbreviation**: A powerful tool for HTML/CSS development, type shorthand and press Tab to expand code.
+
+</details>
+
+<details class="custom-block details" id="vscode-selection-menu">
+  <summary>Selection: Multi-cursor and Smart Selection</summary>
+
+This menu is mainly responsible for: **Cursor Control**, **Multi-line Editing**, **Expand/Shrink Selection**. This is VS Code's killer feature for improving efficiency.
+
+- **Select All**: Select all content in the current file.
+- **Expand Selection / Shrink Selection**: Intelligently perceive syntax structure, gradually expand or shrink the selection range (e.g., word -> string -> inside parentheses -> whole line -> function body).
+- **Copy Line Up / Down**: Quickly clone the current line.
+- **Move Line Up / Down**: `Alt + ↑ / ↓`, adjust code line order directly without cut and paste.
+- **Add Cursor Above / Below**: `Ctrl + Alt + ↑ / ↓`, enable multi-cursor mode to edit multiple lines simultaneously.
+- **Add Cursor to Line Ends**: After selecting multiple lines of text, add a cursor at the end of each line.
+
+</details>
+
+<details class="custom-block details" id="vscode-view-menu">
+  <summary>View: Interface Layout and Panel Control</summary>
+
+This menu is mainly responsible for: **Toggle Sidebar/Panel**, **Adjust Layout**, **Command Palette**, **Output and Debug Console**.
+
+- **Command Palette…**: `Ctrl + Shift + P` / `F1`, VS Code's central command center, can search and execute all commands.
+- **Open View…**: Quickly open specific sidebar views (such as Explorer, Source Control).
+- **Appearance**: Control fullscreen, menu bar visibility, sidebar position, zoom level (Zoom In/Out).
+- **Editor Layout**: Split editor (Split Up/Down/Left/Right) for side-by-side code comparison.
+- **Explorer / Search / Source Control / Run / Extensions**: Directly switch views in the Activity Bar.
+- **Problems / Output / Debug Console / Terminal**: Directly control the display content of the bottom panel.
+- **Word Wrap**: `Alt + Z`, control whether long lines of code automatically wrap (does not affect actual file content).
+
+</details>
+
+<details class="custom-block details" id="vscode-go-menu">
+  <summary>Go: Code Navigation and Jumping</summary>
+
+This menu is mainly responsible for: **Jumping Between Files**, **Jumping Between Symbols (Functions/Variables)**.
+
+- **Back / Forward**: Like a browser, jump between your cursor history positions.
+- **Switch Editor…**: Quickly switch between opened tabs.
+- **Go to File…**: `Ctrl + P`, type filename to quickly open files.
+- **Go to Symbol in Editor…**: `Ctrl + Shift + O`, list functions/classes/variables in the current file for quick jumping.
+- **Go to Definition**: `F12`, jump to the definition of the variable or function at the cursor.
+- **Go to References**: `Shift + F12`, see where this variable or function is used.
+- **Go to Line/Column…**: `Ctrl + G`, jump to a specified line number.
+
+</details>
+
+<details class="custom-block details" id="vscode-run-menu">
+  <summary>Run: Debugging and Execution</summary>
+
+This menu is mainly responsible for: **Start Debugging**, **Breakpoint Management**.
+
+- **Start Debugging**: `F5`, run the program in debug mode (supports breakpoints, variable watching).
+- **Run Without Debugging**: `Ctrl + F5`, run the program directly without attaching a debugger (slightly faster).
+- **Stop Debugging**: Forcefully end the current debugging session.
+- **Restart Debugging**: Run again.
+- **Toggle Breakpoint**: `F9`, add or remove a red dot (breakpoint) on the current line.
+- **New Breakpoint**: Supports conditional breakpoints, log breakpoints, and other advanced features.
+
+</details>
+
+<details class="custom-block details" id="vscode-terminal-menu">
+  <summary>Terminal: Integrated Command Line</summary>
+
+This menu is mainly responsible for: **New Terminal**, **Manage Terminal Windows**.
+
+- **New Terminal**: Open a new Shell (PowerShell/Bash/Zsh) in the bottom panel.
+- **Split Terminal**: Split left/right/up/down in the same terminal panel to run multiple commands simultaneously.
+- **Run Task…**: Run build/test tasks defined in `tasks.json`.
+
+</details>
+
+<details class="custom-block details" id="vscode-help-menu">
+  <summary>Help: Documentation and Feedback</summary>
+
+- **Welcome**: Open the welcome page (contains getting started guide, recent projects).
+- **Show All Commands**: Same as Command Palette.
+- **Documentation**: Jump to official documentation.
+- **Editor Playground**: Interactive tutorial for learning editing techniques.
+- **Check for Updates…**: Manually check for updates.
+- **About**: View version number, build time, Electron/Node version information.
+
+</details>
