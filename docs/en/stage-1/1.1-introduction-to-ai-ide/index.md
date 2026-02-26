@@ -757,7 +757,7 @@ In the next chapter, we'll shift focus from "knowing how to use tools" to "makin
       <span style="font-size: 12px; color: #909399">When you see computer terms you don't understand, quickly look up their meanings here. Recommended to read through once.</span>
     </el-col>
     <el-col :span="12">
-      <a href="/en/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Appendix 2: Visual Studio Code Menu Bar Analysis</b></a><br/>
+      <a href="/zh-cn/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Appendix 2: Visual Studio Code Menu Bar Analysis</b></a><br/>
       <span style="font-size: 12px; color: #909399">When you don't know what the AI IDE interface is for, use the following content to consult with AI, or view directly.</span>
     </el-col>
   </el-row>
@@ -1238,9 +1238,9 @@ If you encounter new words in the learning process later, you can also have AI a
 
 To help everyone understand the meaning of each option, here we provide an in-depth analysis of the menu bar:
 
-![](../../../en/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.png)
+![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.png)
 
-![](../../../en/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-36-23.png)
+![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-36-23.png)
 
 <details class="custom-block details" id="vscode-file-menu">
   <summary>File: Project and File Open/Save/Workspace Management</summary>

@@ -1,5 +1,9 @@
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from '../composables/useI18n.js'
+import chapterIntroductionLocale from '../locales/chapter-introduction/index.js'
+
+const { t } = useI18n(chapterIntroductionLocale)
 
 const props = defineProps({
   duration: {
@@ -40,7 +44,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
     <div class="objective-section">
       <div class="objective-label">
         <span class="icon">🎯</span>
-        <span class="title">本章学习目标</span>
+        <span class="title">{{ t('title') }}</span>
       </div>
       <div class="content">
         <!-- If tags are provided, show tags list -->
@@ -82,7 +86,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
         </div>
         <div class="card-content">
           <div class="card-label">
-            预计耗时
+            {{ t('duration') }}
           </div>
           <div
             class="card-value"
@@ -101,7 +105,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
         </div>
         <div class="card-content">
           <div class="card-label">
-            预期产出
+            {{ t('output') }}
           </div>
           <div class="output-container">
             <div
@@ -129,7 +133,7 @@ const hasTags = computed(() => props.tags && props.tags.length > 0)
         </div>
         <div class="card-content">
           <div class="card-label">
-            课后任务
+            {{ t('assignment') }}
           </div>
           <div
             class="card-value"
