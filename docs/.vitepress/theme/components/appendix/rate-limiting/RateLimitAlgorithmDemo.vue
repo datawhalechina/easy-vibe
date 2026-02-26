@@ -68,7 +68,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onUnmounted } from 'vue'
 
 const algo = ref('token')
 const passed = ref(0)
@@ -172,7 +172,10 @@ function burstRequests() {
   }
 }
 
-reset()
+onUnmounted(() => {
+  if (tokenTimer) clearInterval(tokenTimer)
+  if (leakyTimer) clearInterval(leakyTimer)
+})
 </script>
 
 <style scoped>

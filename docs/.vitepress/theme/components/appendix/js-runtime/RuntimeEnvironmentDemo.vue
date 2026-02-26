@@ -30,21 +30,55 @@ const browserResult = ref('')
 const nodeResult = ref('')
 
 const runInBrowser = () => {
-  try {
-    browserResult.value = eval(tryCode.value)
-  } catch (e) {
-    browserResult.value = e.message
+  const code = tryCode.value.trim()
+  const presets = {
+    'window.location.href': 'undefined (在示例中不可用)',
+    'window': 'undefined',
+    'document.querySelector': 'function querySelector() { [native code] }',
+    'document': 'undefined',
+    'localStorage': 'undefined',
+    'localStorage.setItem': 'function setItem() { [native code] }',
+    'fetch': 'function fetch() { [native code] }',
+    'setTimeout': 'function setTimeout() { [native code] }',
+    'console.log(typeof window)': 'undefined',
+    'console.log(1+1)': '2',
+    'typeof fetch': 'function',
+    'typeof localStorage': 'object'
+  }
+  
+  if (presets[code]) {
+    browserResult.value = presets[code]
+  } else if (code.startsWith('console.log')) {
+    browserResult.value = '已执行 (控制台输出)'
+  } else {
+    browserResult.value = `结果: ${code}`
   }
   nodeResult.value = '在 Node.js 中运行...'
 }
 
 const runInNode = () => {
-  nodeResult.value = '在浏览器中无法直接运行 Node.js 代码'
-  try {
-    browserResult.value = eval(tryCode.value)
-  } catch (e) {
-    browserResult.value = e.message
+  const code = tryCode.value.trim()
+  const presets = {
+    'global': 'undefined (在现代 Node 中使用 globalThis)',
+    'globalThis': '{}',
+    'process.env.NODE_ENV': '"development"',
+    'process': '{...}',
+    'fs': '{ readFile: [Function], writeFile: [Function] }',
+    'http': '{ createServer: [Function] }',
+    'path': '{ join: [Function], resolve: [Function] }',
+    'typeof process': 'object',
+    'typeof fs': 'object',
+    'console.log(1+1)': '2'
   }
+  
+  if (presets[code]) {
+    nodeResult.value = presets[code]
+  } else if (code.startsWith('console.log')) {
+    nodeResult.value = '已执行 (控制台输出)'
+  } else {
+    nodeResult.value = `结果: ${code}`
+  }
+  browserResult.value = '在浏览器中无法直接运行 Node.js 代码'
 }
 
 const reset = () => {

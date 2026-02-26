@@ -997,6 +997,9 @@ export default defineConfig({
       watch: {
         ignored: ['**/docs/.vitepress/dist/**']
       }
+    },
+    build: {
+      chunkSizeWarningLimit: 2000
     }
   },
 
