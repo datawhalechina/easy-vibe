@@ -806,7 +806,7 @@ const appendixSidebarEn = [
     items: [
       {
         text: 'AI History & Concepts',
-        link: '/zh-cn/appendix/8-artificial-intelligence/ai-history'
+        link: '/en/appendix/8-artificial-intelligence/ai-history'
       },
       {
         text: 'Neural Networks',

@@ -2,7 +2,7 @@
   <div class="demo-card">
     <div class="attention-layout">
       <div class="sentence-col">
-        <div class="col-label">处理「<strong>他</strong>」时的注意力分配：</div>
+        <div class="col-label" v-html="colLabel"></div>
         <div class="sentence-box">
           <span v-for="(word, i) in sentence" :key="i" class="word-token" :class="{ focus: i === focusIdx }">{{ word }}</span>
         </div>
@@ -18,16 +18,26 @@
       </div>
     </div>
     <div class="caption">
-      「他」虽在句中间，模型却把 65% 注意力精准投向句首的「小明」，跨越距离识别代词指代
+{{ t('attention.caption') }}
     </div>
   </div>
 </template>
 
 <script setup>
-const sentence = ['小明', '把', '苹果', '给了', '他', '的', '母亲']
-const focusIdx = 4
-const attn = [0.65, 0.05, 0.10, 0.10, 0.05, 0.03, 0.02]
-const weights = sentence.map((word, i) => ({ word, w: attn[i] }))
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+
+const attnData = computed(() => messages.value.attention ?? {})
+const sentence = computed(() => attnData.value.sentence ?? [])
+const focusIdx = computed(() => attnData.value.focusIdx ?? 4)
+const rawWeights = computed(() => attnData.value.weights ?? [])
+const weights = computed(() => sentence.value.map((word, i) => ({ word, w: rawWeights.value[i] ?? 0 })))
+const focusWord = computed(() => sentence.value[focusIdx.value] ?? '')
+const colLabel = computed(() => (attnData.value.colLabel ?? '').replace('{word}', focusWord.value))
+
 const barColor = (v) => v > 0.5 ? '#dc2626' : v > 0.15 ? '#d97706' : v > 0.06 ? '#059669' : 'var(--vp-c-divider)'
 </script>
 

@@ -2,13 +2,13 @@
   <div class="demo-card">
     <div class="perceptron-layout">
       <div class="inputs-col">
-        <div v-for="inp in inputs" :key="inp.label" class="input-node">
+        <div v-for="(inp, i) in inputs" :key="i" class="input-node">
           <span class="node-circle">{{ inp.val }}</span>
-          <span class="node-label">{{ inp.label }}</span>
+          <span class="node-label">{{ featureLabels[i] }}</span>
         </div>
       </div>
       <div class="weights-col">
-        <div v-for="inp in inputs" :key="inp.label" class="weight-arrow">
+        <div v-for="(inp, i) in inputs" :key="i" class="weight-arrow">
           <span class="arrow">→</span>
           <span class="w-tag">×{{ inp.weight }}</span>
         </div>
@@ -18,7 +18,7 @@
           <div class="n-sym">Σ</div>
           <div class="n-val">{{ sum }}</div>
         </div>
-        <span class="bias-tag">偏置 {{ bias }}</span>
+        <span class="bias-tag">{{ t('perceptron.biasLabel') }} {{ bias }}</span>
       </div>
       <div class="act-col">
         <span class="arrow big">→</span>
@@ -28,19 +28,23 @@
       <div class="output-col">
         <div class="output-node" :class="{ on: output === 1 }">
           <span class="out-val">{{ output }}</span>
-          <span class="out-lbl">{{ output ? '激活' : '静默' }}</span>
+          <span class="out-lbl">{{ output ? t('perceptron.activated') : t('perceptron.silent') }}</span>
         </div>
       </div>
     </div>
-    <div class="caption">
-      ① 输入特征&emsp;② 乘以权重（重要性）&emsp;③ 求和 + 偏置&emsp;④ 超过阈值就激活输出 1，否则输出 0
-    </div>
+    <div class="caption">{{ t('perceptron.caption') }}</div>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-const inputs = [{ label: '特征 x₁', val: 1, weight: 0.6 }, { label: '特征 x₂', val: 0, weight: 0.4 }]
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+const featureLabels = computed(() => messages.value.perceptron?.features ?? [])
+
+const inputs = [{ val: 1, weight: 0.6 }, { val: 0, weight: 0.4 }]
 const bias = -0.3
 const sum = computed(() => Number((inputs.reduce((s, i) => s + i.val * i.weight, 0) + bias).toFixed(2)))
 const output = computed(() => sum.value > 0 ? 1 : 0)

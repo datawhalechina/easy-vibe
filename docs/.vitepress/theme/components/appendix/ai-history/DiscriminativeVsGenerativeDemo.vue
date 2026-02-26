@@ -1,24 +1,31 @@
 <template>
   <div class="demo-card">
     <div class="schools-grid">
-      <div v-for="s in schools" :key="s.name" class="school-card" :style="{ borderTopColor: s.color }">
+      <div v-for="(s, i) in schoolStyles" :key="i" class="school-card" :style="{ borderTopColor: s.color }">
         <div class="card-head">
           <span class="school-icon">{{ s.icon }}</span>
-          <span class="school-name" :style="{ color: s.color }">{{ s.name }}</span>
+          <span class="school-name" :style="{ color: s.color }">{{ localeItems[i]?.name }}</span>
         </div>
-        <div class="school-idea">{{ s.idea }}</div>
-        <div class="school-rep">代表：{{ s.rep }}</div>
-        <div class="school-status">{{ s.status }}</div>
+        <div class="school-idea">{{ localeItems[i]?.idea }}</div>
+        <div class="school-rep">{{ t('schools.repLabel') }}：{{ localeItems[i]?.rep }}</div>
+        <div class="school-status">{{ localeItems[i]?.status }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const schools = [
-  { name: '符号主义', icon: '📜', color: '#059669', idea: '智能 = 符号推理 / If-Then 规则', rep: '专家系统、深蓝', status: '→ 与连接主义融合（神经符号 AI）' },
-  { name: '连接主义', icon: '🧠', color: '#7c3aed', idea: '智能 = 神经元网络 + 海量数据', rep: 'AlphaGo、GPT 系列', status: '→ 主导大模型时代，当前主流' },
-  { name: '行为主义', icon: '🎮', color: '#d97706', idea: '智能 = 与环境互动 / 强化学习', rep: 'AlphaGo（RL 部分）', status: '→ 与连接主义融合（深度强化学习）' },
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+const localeItems = computed(() => messages.value.schools?.items ?? [])
+
+const schoolStyles = [
+  { icon: '📜', color: '#059669' },
+  { icon: '🧠', color: '#7c3aed' },
+  { icon: '🎮', color: '#d97706' },
 ]
 </script>
 

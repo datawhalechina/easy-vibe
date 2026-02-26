@@ -1,15 +1,15 @@
 <template>
   <div class="demo-card">
     <div class="bp-flow">
-      <div v-for="(step, i) in steps" :key="i" class="step-block" :style="{ borderTopColor: step.color }">
-        <div class="step-num" :style="{ background: step.color }">{{ i + 1 }}</div>
+      <div v-for="(step, i) in localSteps" :key="i" class="step-block" :style="{ borderTopColor: stepColors[i] }">
+        <div class="step-num" :style="{ background: stepColors[i] }">{{ i + 1 }}</div>
         <div class="step-icon">{{ step.icon }}</div>
         <div class="step-name">{{ step.name }}</div>
         <div class="step-desc">{{ step.desc }}</div>
       </div>
     </div>
     <div class="loss-visual">
-      <div class="loss-label">Loss（误差）随训练轮次下降：</div>
+      <div class="loss-label">{{ t('backprop.lossLabel') }}</div>
       <svg viewBox="0 0 320 130" class="loss-svg">
         <!-- Axes -->
         <line x1="40" y1="110" x2="300" y2="110" stroke="var(--vp-c-text-3)" stroke-width="1.5" />
@@ -21,12 +21,12 @@
         <polygon points="37,15 40,10 43,15" fill="var(--vp-c-text-3)" />
 
         <!-- Y Label -->
-        <text x="30" y="25" text-anchor="end" class="ax-text">高</text>
-        <text x="30" y="105" text-anchor="end" class="ax-text">低</text>
+        <text x="30" y="25" text-anchor="end" class="ax-text">{{ t('backprop.axisHigh') }}</text>
+        <text x="30" y="105" text-anchor="end" class="ax-text">{{ t('backprop.axisLow') }}</text>
         <text x="20" y="65" text-anchor="middle" transform="rotate(-90 20 65)" class="ax-title">Loss</text>
         
         <!-- X Label -->
-        <text x="300" y="125" text-anchor="end" class="ax-title">训练轮次 (Epochs)</text>
+        <text x="300" y="125" text-anchor="end" class="ax-title">{{ t('backprop.axisEpochs') }}</text>
 
         <!-- Loss 曲线 -->
         <polyline :points="lossPoints" fill="none" stroke="var(--vp-c-brand)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -36,12 +36,14 @@
 </template>
 
 <script setup>
-const steps = [
-  { icon: '➡️', name: '前向传播', desc: '数据流过网络，得出预测', color: '#3b82f6' },
-  { icon: '📐', name: '计算误差', desc: '预测值 vs 正确答案，算 Loss', color: '#d97706' },
-  { icon: '⬅️', name: '反向传播', desc: '逐层追溯每个权重的"责任"', color: '#dc2626' },
-  { icon: '⚙️', name: '更新权重', desc: '按责任微调，减少下次误差', color: '#059669' },
-]
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+const localSteps = computed(() => messages.value.backprop?.steps ?? [])
+
+const stepColors = ['#3b82f6', '#d97706', '#dc2626', '#059669']
 const lossPoints = (() => {
   const pts = []
   for (let i = 0; i <= 50; i++) {

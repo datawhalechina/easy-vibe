@@ -1,18 +1,27 @@
 <template>
   <div class="demo-card">
-    <div class="demo-label">符号主义的核心思路 ── 把知识写成规则</div>
+    <div class="demo-label">{{ t('foundation.label') }}</div>
     <div class="code-block">
-      <div class="code-line"><span class="kw">IF</span>  体温 &gt; 38.5°C  <span class="kw">AND</span>  白细胞计数 &gt; 11000</div>
-      <div class="code-line indent"><span class="kw">THEN</span>  诊断 = <span class="str">"细菌感染"</span></div>
-      <div class="code-line"><span class="kw">IF</span>  诊断 = <span class="str">"细菌感染"</span>  <span class="kw">AND</span>  对青霉素不过敏</div>
-      <div class="code-line indent"><span class="kw">THEN</span>  治疗方案 = <span class="str">"青霉素 400mg / 每日两次"</span></div>
-      <div class="code-line comment">// 早期医疗专家系统（MYCIN，1977）就是由 450+ 条这样的规则组成的</div>
+      <div v-for="(line, i) in foundationLines" :key="i" class="code-line" :class="{ indent: line.indent }">
+        <template v-for="(p, j) in line.parts" :key="j">
+          <span v-if="p.kw" class="kw">{{ p.kw }}</span>
+          <span v-else-if="p.str" class="str">{{ p.str }}</span>
+          <template v-else>{{ p.text }}</template>
+        </template>
+      </div>
+      <div class="code-line comment">{{ t('foundation.comment') }}</div>
     </div>
-    <div class="demo-caption">人类专家把经验翻译成一条条 IF-THEN 规则，机器逐条匹配执行</div>
+    <div class="demo-caption">{{ t('foundation.caption') }}</div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+const foundationLines = computed(() => messages.value.foundation?.lines ?? [])
 </script>
 
 <style scoped>

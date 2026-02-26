@@ -1,14 +1,14 @@
 <template>
   <div class="demo-card">
     <div class="gpt-grid">
-      <div v-for="m in models" :key="m.name" class="gpt-card" :style="{ borderTopColor: m.color }">
+      <div v-for="(m, i) in models" :key="i" class="gpt-card" :style="{ borderTopColor: modelColors[i] }">
         <div class="card-top">
-          <span class="gpt-name" :style="{ color: m.color }">{{ m.name }}</span>
+          <span class="gpt-name" :style="{ color: modelColors[i] }">{{ m.name }}</span>
           <span class="gpt-year">{{ m.year }}</span>
         </div>
         <div class="param-val">{{ m.params }}</div>
         <div class="param-bar-bg">
-          <div class="param-bar" :style="{ width: m.barWidth, background: m.color }"></div>
+          <div class="param-bar" :style="{ width: m.barWidth, background: modelColors[i] }"></div>
         </div>
         <div class="gpt-key">{{ m.key }}</div>
       </div>
@@ -17,12 +17,14 @@
 </template>
 
 <script setup>
-const models = [
-  { name: 'GPT-1', year: '2018', params: '1.17 亿', barWidth: '2%', color: '#94a3b8', key: '预训练+微调范式确立' },
-  { name: 'GPT-2', year: '2019', params: '15 亿', barWidth: '6%', color: '#3b82f6', key: 'Zero-shot 零样本泛化' },
-  { name: 'GPT-3', year: '2020', params: '1750 亿', barWidth: '45%', color: '#7c3aed', key: '⚡ 涌现！上下文学习' },
-  { name: 'GPT-4', year: '2023', params: '~1.8 万亿', barWidth: '100%', color: '#dc2626', key: '多模态 + 复杂推理' },
-]
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { messages } = useI18n(aiHistoryLocale)
+const models = computed(() => messages.value.gptEvolution ?? [])
+
+const modelColors = ['#94a3b8', '#3b82f6', '#7c3aed', '#dc2626']
 </script>
 
 <style scoped>

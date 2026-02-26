@@ -2,28 +2,28 @@
   <div class="demo-card">
     <div class="era-container">
       <div class="era-header">
-        🌟 AI 发展阶段与核心范式全景对比
+        {{ t('erasComparison.header') }}
       </div>
       <div class="era-grid">
-        <div v-for="era in eras" :key="era.name" class="era-item" :style="{ borderTopColor: era.color }">
-          <div class="e-icon" :style="{ background: era.color }">{{ era.icon }}</div>
-          <div class="e-name" :style="{ color: era.color }">{{ era.name }}</div>
+        <div v-for="(era, i) in localEras" :key="i" class="era-item" :style="{ borderTopColor: eraStyles[i]?.color }">
+          <div class="e-icon" :style="{ background: eraStyles[i]?.color }">{{ eraStyles[i]?.icon }}</div>
+          <div class="e-name" :style="{ color: eraStyles[i]?.color }">{{ era.name }}</div>
           <div class="e-time">{{ era.time }}</div>
-          
+
           <div class="e-section">
-            <div class="e-label">驱动方式</div>
+            <div class="e-label">{{ t('erasComparison.driverLabel') }}</div>
             <div class="e-value">{{ era.driver }}</div>
           </div>
-          
+
           <div class="e-section">
-            <div class="e-label">核心机制</div>
+            <div class="e-label">{{ t('erasComparison.mechanismLabel') }}</div>
             <div class="e-value">
               <span class="highlight">{{ era.mechanism }}</span>
             </div>
           </div>
-          
+
           <div class="e-section">
-            <div class="e-label">典型代表</div>
+            <div class="e-label">{{ t('erasComparison.examplesLabel') }}</div>
             <div class="e-tags">
               <span v-for="tag in era.examples" :key="tag" class="e-tag">{{ tag }}</span>
             </div>
@@ -35,52 +35,19 @@
 </template>
 
 <script setup>
-const eras = [
-  {
-    name: '规则系统时代',
-    time: '1960s - 1980s',
-    icon: '📜',
-    color: '#059669', // emerald
-    driver: '人类硬编码知识',
-    mechanism: 'If-Then 逻辑推演',
-    examples: ['Dendral', '深蓝 (Deep Blue)']
-  },
-  {
-    name: '传统机器学习',
-    time: '1990s - 2000s',
-    icon: '📊',
-    color: '#d97706', // amber
-    driver: '人工特征工程 + 统计学',
-    mechanism: '寻找数学决策边界',
-    examples: ['支持向量机 (SVM)', '随机森林']
-  },
-  {
-    name: '深度学习革命',
-    time: '2010s',
-    icon: '🧠',
-    color: '#dc2626', // red
-    driver: '大数据 + 算力爬升',
-    mechanism: '神经网络自动提取特征',
-    examples: ['AlexNet (CNN)', 'AlphaGo (RL)']
-  },
-  {
-    name: '大语言模型 (LLM)',
-    time: '2018 - 至今',
-    icon: '💬',
-    color: '#7c3aed', // violet
-    driver: '海量无标注数据 + 暴力计算',
-    mechanism: '预测下一个词 + 涌现常识',
-    examples: ['GPT-4', 'Claude 3']
-  },
-  {
-    name: '智能体 (Agentic AI)',
-    time: '现在 - 未来',
-    icon: '🤖',
-    color: '#0284c7', // light blue
-    driver: '大模型大脑 + 环境感知',
-    mechanism: '自主规划 + 工具调用',
-    examples: ['AI 程序员', '具身智能']
-  }
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+const localEras = computed(() => messages.value.erasComparison?.eras ?? [])
+
+const eraStyles = [
+  { icon: '📜', color: '#059669' },
+  { icon: '📊', color: '#d97706' },
+  { icon: '🧠', color: '#dc2626' },
+  { icon: '💬', color: '#7c3aed' },
+  { icon: '🤖', color: '#0284c7' },
 ]
 </script>
 

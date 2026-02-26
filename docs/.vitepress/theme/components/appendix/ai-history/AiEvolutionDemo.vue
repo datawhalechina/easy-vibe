@@ -1,29 +1,36 @@
 <template>
   <div class="demo-card">
     <div class="timeline-visual">
-      <div v-for="era in eras" :key="era.label" class="era" :style="{ flex: era.flex, background: era.bg }">
-        <div class="era-label">{{ era.label }}</div>
-        <div class="era-years">{{ era.years }}</div>
+      <div v-for="(era, i) in eras" :key="i" class="era" :style="{ flex: era.flex, background: era.bg }">
+        <div class="era-label">{{ localeEras[i]?.label ?? era.label }}</div>
+        <div class="era-years">{{ localeEras[i]?.years ?? era.years }}</div>
       </div>
     </div>
     <div class="legend">
-      <span class="legend-item"><span class="dot" style="background:#059669"></span>技术浪潮</span>
-      <span class="legend-item"><span class="dot" style="background:#94a3b8"></span>❄️ AI 寒冬</span>
-      <span class="legend-item"><span class="dot" style="background:#7c3aed"></span>大模型时代</span>
+      <span class="legend-item"><span class="dot" style="background:#059669"></span>{{ t('aiEvolution.legend.wave') }}</span>
+      <span class="legend-item"><span class="dot" style="background:#94a3b8"></span>{{ t('aiEvolution.legend.winter') }}</span>
+      <span class="legend-item"><span class="dot" style="background:#7c3aed"></span>{{ t('aiEvolution.legend.llm') }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from '../../../composables/useI18n.js'
+import { aiHistoryLocale } from '../../../locales/ai-history/index.js'
+
+const { t, messages } = useI18n(aiHistoryLocale)
+const localeEras = computed(() => messages.value.aiEvolution?.eras ?? [])
+
 const eras = [
-  { label: '理论奠基', years: '1940s-50s', flex: 1.5, bg: 'linear-gradient(135deg, #dbeafe, #bfdbfe)' },
-  { label: '第一次浪潮', years: '1960s-70s', flex: 1.5, bg: 'linear-gradient(135deg, #d1fae5, #a7f3d0)' },
-  { label: '❄️ 寒冬 I', years: '1974-80', flex: 0.7, bg: 'linear-gradient(135deg, #e2e8f0, #cbd5e1)' },
-  { label: '第二次浪潮', years: '1980s', flex: 1, bg: 'linear-gradient(135deg, #d1fae5, #a7f3d0)' },
-  { label: '❄️ 寒冬 II', years: '1987-93', flex: 0.7, bg: 'linear-gradient(135deg, #e2e8f0, #cbd5e1)' },
-  { label: 'ML 崛起', years: '1990s-2000s', flex: 1.5, bg: 'linear-gradient(135deg, #d1fae5, #6ee7b7)' },
-  { label: '深度学习', years: '2010s', flex: 1.2, bg: 'linear-gradient(135deg, #a7f3d0, #34d399)' },
-  { label: '大模型时代', years: '2018+', flex: 1.2, bg: 'linear-gradient(135deg, #c4b5fd, #a78bfa)' },
+  { flex: 1.5, bg: 'linear-gradient(135deg, #dbeafe, #bfdbfe)' },
+  { flex: 1.5, bg: 'linear-gradient(135deg, #d1fae5, #a7f3d0)' },
+  { flex: 0.7, bg: 'linear-gradient(135deg, #e2e8f0, #cbd5e1)' },
+  { flex: 1, bg: 'linear-gradient(135deg, #d1fae5, #a7f3d0)' },
+  { flex: 0.7, bg: 'linear-gradient(135deg, #e2e8f0, #cbd5e1)' },
+  { flex: 1.5, bg: 'linear-gradient(135deg, #d1fae5, #6ee7b7)' },
+  { flex: 1.2, bg: 'linear-gradient(135deg, #a7f3d0, #34d399)' },
+  { flex: 1.2, bg: 'linear-gradient(135deg, #c4b5fd, #a78bfa)' },
 ]
 </script>
 
