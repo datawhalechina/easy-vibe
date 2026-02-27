@@ -37,12 +37,12 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-2/backend/2.4-git-workflow/extra1/"
+    href="/zh-cn/stage-2/backend/2.4-git-workflow/"
     title="后端一：学会使用 Git 与 Github"
     description="掌握 Git 版本控制系统的核心操作与协作流程"
   />
   <NavCard
-    href="/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/"
+    href="/zh-cn/stage-2/backend/2.2-database-supabase/"
     title="后端二：从数据库到 Supabase"
     description="掌握关系型数据库基础，并学习使用 Supabase 这一现代 BaaS 平台"
   />
@@ -52,12 +52,12 @@
     description="利用 AI 辅助生成后端接口代码及标准的接口文档，提升开发效率"
   />
   <NavCard
-    href="/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/"
+    href="/zh-cn/stage-2/backend/2.5-zeabur-deployment/"
     title="后端四：发布你的产品原型"
     description="学习使用 Zeabur 快速部署你的全栈应用到云端"
   />
   <NavCard
-    href="/zh-cn/stage-2/backend/2.6-modern-cli/extra7/"
+    href="/zh-cn/stage-2/backend/2.6-modern-cli/"
     title="后端五：从 IDE 到 CLI AI 编程工具"
     description="探索现代 CLI 工具，提升命令行环境下的开发体验"
   />
@@ -89,12 +89,12 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/"
+    href="/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/"
     title="AI 一：Dify 入门与知识库集成"
     description="学习使用 Dify 构建 AI 应用，并集成私有知识库"
   />
   <NavCard
-    href="/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/"
+    href="/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/"
     title="AI 二：学会查询 AI 词典与集成多模态 API"
     description="探索更多 AI 能力，集成视觉、语音等多模态 API"
   />

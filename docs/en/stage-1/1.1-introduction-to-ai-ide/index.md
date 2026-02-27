@@ -16,7 +16,7 @@ We'll first clarify **what the difference is between an IDE and an AI IDE**, and
 After completing this chapter, you'll have **mastered a development workflow similar to that of professional programmers**.
 
 ::: tip 💡 Advanced Tip
-If you have some programming experience and want to use more powerful tools early on, you can refer to [Modern CLI Coding Tools](../../stage-2/backend/2.6-modern-cli/extra7/) to develop using the command line.
+If you have some programming experience and want to use more powerful tools early on, you can refer to [Modern CLI Coding Tools](../../stage-2/backend/2.6-modern-cli/) to develop using the command line.
 :::
 
 </ChapterIntroduction>

@@ -253,7 +253,7 @@ This is what we need to figure out before writing code. Code is just a tool; **u
 ## 2. Generate Prototype in 10 Minutes: Let AI IDE Implement "Core Gameplay"
 
 ::: info Programming Plan Suggestion
-If you feel the current IDE isn't smart enough, or you run out of quota quickly, you can buy a **programming Plan**. Preview in advance by referring to [this article](../../stage-2/backend/2.6-modern-cli/extra7/) for programming with Claude.
+If you feel the current IDE isn't smart enough, or you run out of quota quickly, you can buy a **programming Plan**. Preview in advance by referring to [this article](../../stage-2/backend/2.6-modern-cli/) for programming with Claude.
 :::
 
 Thinking is good, but don't overthink. Let's control excessive reflection and try making a prototype starting from a single page.

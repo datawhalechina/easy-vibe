@@ -368,7 +368,7 @@ const stage2SidebarEn = [
 
 const stage3SidebarEn = [
   {
-    text: 'Core Skills',
+    text: 'Claude Code In-Depth',
     collapsed: false,
     items: [
       {
@@ -400,13 +400,7 @@ const stage3SidebarEn = [
       {
         text: 'Advanced 6: iOS App - SwiftUI',
         link: '/zh-cn/stage-3/cross-platform/3.6-ios-app/'
-      }
-    ]
-  },
-  {
-    text: 'Personal Brand',
-    collapsed: false,
-    items: [
+      },
       {
         text: 'Advanced 7: Personal Website & Blog',
         link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
@@ -414,7 +408,7 @@ const stage3SidebarEn = [
     ]
   },
   {
-    text: 'AI Advanced Appendix',
+    text: 'AI Advanced',
     collapsed: false,
     items: [
       {
@@ -1173,7 +1167,7 @@ export default defineConfig({
           ],
           '/zh-cn/stage-3/': [
             {
-              text: '核心技能',
+              text: 'claudecode 深入浅出',
               collapsed: false,
               items: [
                 {
@@ -1229,13 +1223,7 @@ export default defineConfig({
                 {
                   text: '如何开发工业级 Qt 桌面应用',
                   link: '/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/'
-                }
-              ]
-            },
-            {
-              text: '个人品牌',
-              collapsed: false,
-              items: [
+                },
                 {
                   text: '如何构建属于自己的个人网页与学术博客',
                   link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
@@ -1243,7 +1231,7 @@ export default defineConfig({
               ]
             },
             {
-              text: 'AI 能力附录',
+              text: 'AI 能力强化',
               collapsed: false,
               items: [
                 {
