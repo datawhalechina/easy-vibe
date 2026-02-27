@@ -20,11 +20,6 @@
     description="掌握专业 UI 设计工具的基础操作，从设计稿到代码的协作流程"
   />
   <NavCard
-    href="/zh-cn/stage-2/frontend/2.2-ui-design/"
-    title="前端二：构建第一个现代应用程序 - UI 设计"
-    description="从零开始设计一个现代 Web 应用的界面，实践 UI 设计原则"
-  />
-  <NavCard
     href="/zh-cn/stage-2/frontend/2.3-multi-product-ui/"
     title="前端三：参考 UI 设计规范与多产品 UI 设计"
     description="学习主流 UI 设计规范，提升产品设计的一致性与美感"
@@ -42,9 +37,9 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-2/backend/2.1-what-is-api/extra2/"
-    title="后端一：什么是 API"
-    description="理解 API 的核心概念，它是前后端交互的桥梁"
+    href="/zh-cn/stage-2/backend/2.4-git-workflow/extra1/"
+    title="后端一：学会使用 Git 与 Github"
+    description="掌握 Git 版本控制系统的核心操作与协作流程"
   />
   <NavCard
     href="/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/"
@@ -53,27 +48,22 @@
   />
   <NavCard
     href="/zh-cn/stage-2/backend/2.3-ai-interface-code/"
-    title="后端三：大模型辅助编写接口代码与接口文档"
+    title="后端三：应用后端接口设计与开发"
     description="利用 AI 辅助生成后端接口代码及标准的接口文档，提升开发效率"
   />
   <NavCard
-    href="/zh-cn/stage-2/backend/2.4-git-workflow/extra1/"
-    title="后端四：Git 工作流"
-    description="掌握 Git 版本控制系统的核心操作与协作流程"
-  />
-  <NavCard
     href="/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/"
-    title="后端五：如何部署 Web 应用"
+    title="后端四：发布你的产品原型"
     description="学习使用 Zeabur 快速部署你的全栈应用到云端"
   />
   <NavCard
     href="/zh-cn/stage-2/backend/2.6-modern-cli/extra7/"
-    title="后端六：现代 CLI 开发工具"
+    title="后端五：从 IDE 到 CLI AI 编程工具"
     description="探索现代 CLI 工具，提升命令行环境下的开发体验"
   />
   <NavCard
     href="/zh-cn/stage-2/backend/2.7-stripe-payment/"
-    title="后端七：如何集成 Stripe 等收费系统"
+    title="后端六：如何集成 Stripe 等收费系统"
     description="实战：为你的应用集成 Stripe 支付功能，实现商业化变现"
   />
 </NavGrid>
