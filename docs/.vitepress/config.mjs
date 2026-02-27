@@ -285,24 +285,20 @@ const stage2SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Frontend 0: Lovart Assets',
+        text: 'Using Lovart for Assets',
         link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
       },
       {
-        text: 'Frontend 1: Figma & MasterGo',
+        text: 'Figma & MasterGo Basics',
         link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
       },
       {
-        text: 'Frontend 2: UI Design',
+        text: 'UI Design for Modern Apps',
         link: '/zh-cn/stage-2/frontend/2.2-ui-design/'
       },
       {
-        text: 'Frontend 3: UI Design Specs',
+        text: 'UI Design Specs & Multi-Product',
         link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
-      },
-      {
-        text: 'Frontend 4: Hogwarts Portraits',
-        link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
       }
     ]
   },
@@ -312,11 +308,11 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'Backend 1: What is API',
-        link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/'
+        link: '/zh-cn/stage-2/backend/2.1-what-is-api/'
       },
       {
         text: 'Backend 2: Database & Supabase',
-        link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+        link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
       },
       {
         text: 'Backend 3: AI-Assisted API Code',
@@ -324,33 +320,19 @@ const stage2SidebarEn = [
       },
       {
         text: 'Backend 4: Git Workflow',
-        link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/'
+        link: '/zh-cn/stage-2/backend/2.4-git-workflow/'
       },
       {
         text: 'Backend 5: Deployment',
-        link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+        link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
       },
       {
         text: 'Backend 6: Modern CLI Tools',
-        link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/'
+        link: '/zh-cn/stage-2/backend/2.6-modern-cli/'
       },
       {
         text: 'Backend 7: Stripe Payment',
         link: '/zh-cn/stage-2/backend/2.7-stripe-payment/'
-      }
-    ]
-  },
-  {
-    text: 'Assignments',
-    collapsed: false,
-    items: [
-      {
-        text: 'Assignment 1: Full-Stack App',
-        link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
-      },
-      {
-        text: 'Assignment 2: UI Library & Trae',
-        link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
       }
     ]
   },
@@ -360,11 +342,25 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'AI 1: Dify & Knowledge Base',
-        link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/'
+        link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+      }
+    ]
+  },
+  {
+    text: 'Comprehensive Projects',
+    collapsed: false,
+    items: [
+      {
+        text: 'Hogwarts Portraits Project',
+        link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
       },
       {
-        text: 'AI 2: AI Dictionary & Multimodal API',
-        link: '/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/'
+        text: 'Assignment 1: Full-Stack App',
+        link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+      },
+      {
+        text: 'Assignment 2: UI Library & Trae',
+        link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
       }
     ]
   }
@@ -1091,24 +1087,24 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '前端零：使用 Lovart 生产素材',
+                  text: '使用 Lovart 生产素材',
                   link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
                 },
                 {
-                  text: '前端一：Figma 与 MasterGo 入门',
+                  text: 'Figma 与 MasterGo 入门',
                   link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
                 },
                 {
-                  text: '前端二：构建第一个现代应用程序 - UI 设计',
-                  link: '/zh-cn/stage-2/frontend/2.2-ui-design/'
-                },
-                {
-                  text: '前端三：参考 UI 设计规范与多产品 UI 设计',
+                  text: '参考 UI 设计规范与多产品 UI 设计',
                   link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
                 },
                 {
-                  text: '前端四：一起做霍格沃茨画像',
-                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
+                  text: '从设计原型到项目代码',
+                  link: '/zh-cn/stage-2/frontend/2.5-design-to-code/'
+                },
+                {
+                  text: '使用现代组件库更新你的界面',
+                  link: '/zh-cn/stage-2/frontend/2.6-modern-component-library/'
                 }
               ]
             },
@@ -1117,46 +1113,32 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '后端一：什么是 API',
-                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/'
+                  text: '什么是 API',
+                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/'
                 },
                 {
-                  text: '后端二：从数据库到 Supabase',
-                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+                  text: '从数据库到 Supabase',
+                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
                 },
                 {
-                  text: '后端三：大模型辅助编写接口代码与接口文档',
+                  text: '大模型辅助编写接口代码与接口文档',
                   link: '/zh-cn/stage-2/backend/2.3-ai-interface-code/'
                 },
                 {
-                  text: '后端四：Git 工作流',
-                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/'
+                  text: 'Git 工作流',
+                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/'
                 },
                 {
-                  text: '后端五：如何部署 Web 应用',
-                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+                  text: '如何部署 Web 应用',
+                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
                 },
                 {
-                  text: '后端六：现代 CLI 开发工具',
-                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/'
+                  text: '现代 CLI 开发工具',
+                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/'
                 },
                 {
-                  text: '后端七：如何集成 Stripe 等收费系统',
+                  text: '如何集成 Stripe 等收费系统',
                   link: '/zh-cn/stage-2/backend/2.7-stripe-payment/'
-                }
-              ]
-            },
-            {
-              text: '大作业',
-              collapsed: false,
-              items: [
-                {
-                  text: '大作业 1：构建第一个现代应用程序 - 全栈应用',
-                  link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
-                },
-                {
-                  text: '大作业 2：现代前端组件库 + Trae 实战',
-                  link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
                 }
               ]
             },
@@ -1165,12 +1147,26 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: 'AI 一：Dify 入门与知识库集成',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/'
+                  text: 'Dify 入门与知识库集成',
+                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+                }
+              ]
+            },
+            {
+              text: '综合项目',
+              collapsed: false,
+              items: [
+                {
+                  text: '一起做霍格沃茨画像',
+                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
                 },
                 {
-                  text: 'AI 二：学会查询 AI 词典与集成多模态 API',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/'
+                  text: '构建第一个现代应用程序 - 全栈应用',
+                  link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+                },
+                {
+                  text: '现代前端组件库 + Trae 实战',
+                  link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
                 }
               ]
             }
@@ -1181,11 +1177,11 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '高级一：MCP 与 Claude Code Skills',
+                  text: 'MCP 与 Claude Code Skills',
                   link: '/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/'
                 },
                 {
-                  text: '高级二：如何让 Coding Tools 长时间工作',
+                  text: '如何让 Coding Tools 长时间工作',
                   link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
                 }
               ]
@@ -1195,20 +1191,44 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '高级三：如何构建微信小程序',
+                  text: '如何构建微信小程序',
                   link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
                 },
                 {
-                  text: '高级四：如何构建微信小程序（包含后端）',
+                  text: '如何构建微信小程序（包含后端）',
                   link: '/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
                 },
                 {
-                  text: '高级五：如何构建安卓程序-compose 原生开发',
+                  text: '如何构建安卓程序-compose 原生开发',
                   link: '/zh-cn/stage-3/cross-platform/3.5-android-app/'
                 },
                 {
-                  text: '高级六：如何构建 iOS 程序-swiftUI原生开发',
+                  text: '如何构建 iOS 程序-swiftUI原生开发',
                   link: '/zh-cn/stage-3/cross-platform/3.6-ios-app/'
+                },
+                {
+                  text: '如何开发 PWA 本地应用',
+                  link: '/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/'
+                },
+                {
+                  text: '如何开发浏览器 AI 助手插件',
+                  link: '/zh-cn/stage-3/cross-platform/3.9-browser-ai-extension/'
+                },
+                {
+                  text: '如何开发跨平台 Electron 桌面程序',
+                  link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
+                },
+                {
+                  text: '如何快速开发并铸造 NFT',
+                  link: '/zh-cn/stage-3/cross-platform/3.11-nft-minting/'
+                },
+                {
+                  text: '如何开发 VS Code 插件',
+                  link: '/zh-cn/stage-3/cross-platform/3.12-vscode-extension/'
+                },
+                {
+                  text: '如何开发工业级 Qt 桌面应用',
+                  link: '/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/'
                 }
               ]
             },
@@ -1217,7 +1237,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '高级七：如何构建属于自己的个人网页与学术博客',
+                  text: '如何构建属于自己的个人网页与学术博客',
                   link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
                 }
               ]
@@ -1227,11 +1247,11 @@ export default defineConfig({
               collapsed: false,
               items: [
                 {
-                  text: '高级 AI 一：什么是 RAG 以及它如何工作',
+                  text: '什么是 RAG 以及它如何工作',
                   link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
                 },
                 {
-                  text: '高级 AI 二：中高级 RAG 与工作流编排 - 以 LangGraph 为例',
+                  text: '中高级 RAG 与工作流编排 - 以 LangGraph 为例',
                   link: '/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/'
                 }
               ]
@@ -1249,11 +1269,11 @@ export default defineConfig({
               items: [
                 {
                   text: 'Extra 1: Git & GitHub',
-                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/extra1/'
+                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/'
                 },
                 {
                   text: 'Extra 2: What is API',
-                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/extra2/'
+                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/'
                 },
                 {
                   text: 'Extra 5: What is RAG',
@@ -1261,11 +1281,11 @@ export default defineConfig({
                 },
                 {
                   text: 'Extra 6: Zeabur Deployment',
-                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
                 },
                 {
                   text: 'Extra 7: CLI AI Tools & TDD',
-                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/extra7/'
+                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/'
                 }
               ]
             }
@@ -1290,16 +1310,16 @@ export default defineConfig({
               text: 'Project 文档（旧版，已迁移到 Stage 2）',
               items: [
                 {
-                  text: '前端四：霍格沃茨画像',
+                  text: '一起做霍格沃茨画像',
                   link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
                 },
                 {
-                  text: '后端二：Supabase 数据库',
-                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+                  text: 'Supabase 数据库',
+                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
                 },
                 {
-                  text: 'AI 一：Dify & Knowledge Base',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/'
+                  text: 'Dify & Knowledge Base',
+                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
                 }
               ]
             }
