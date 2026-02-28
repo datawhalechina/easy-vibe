@@ -1,3 +1,0 @@
-# 高级一：MCP 与 Claude Code Skills
-
-> 本章节正在编写中，敬请期待...
