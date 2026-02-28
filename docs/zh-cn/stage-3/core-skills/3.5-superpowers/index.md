@@ -540,7 +540,17 @@ Superpowers 的技能是通过关键词触发的，了解常用触发词：
 
 ## 常见问题
 
-### Q1：Superpowers 会让开发变慢吗？
+### Q1：用 Superpowers 必须指定 "TDD" 吗？
+
+**不是必须的**。
+
+Superpowers 是技能集合，每个技能有自己的触发条件：
+- 说 "用 TDD 方式" → 触发 `test-driven-development`
+- 不说 TDD → Claude 可能写测试，也可能不写（取决于模型本身）
+
+Superpowers 的作用是**强化流程纪律**，而不是凭空创造能力。
+
+### Q2：Superpowers 会让开发变慢吗？
 
 初期可能会感觉慢，因为：
 - 需要时间澄清需求
@@ -549,14 +559,14 @@ Superpowers 的技能是通过关键词触发的，了解常用触发词：
 
 但长期来看，由于减少了返工和 bug，整体效率更高。
 
-### Q2：小项目也需要 Superpowers 吗？
+### Q3：小项目也需要 Superpowers 吗？
 
 对于原型验证或非常简单的任务，可以直接使用 Claude Code。Superpowers 更适合：
 - 生产级项目
 - 多人协作项目
 - 需要长期维护的项目
 
-### Q3：Superpowers 和 Skills 有什么区别？
+### Q4：Superpowers 和 Skills 有什么区别？
 
 | 维度 | Superpowers | Skills |
 |------|-------------|--------|
@@ -564,7 +574,7 @@ Superpowers 的技能是通过关键词触发的，了解常用触发词：
 | **范围** | 覆盖整个开发流程 | 聚焦特定功能 |
 | **关系** | Superpowers 内部使用 Skills | Superpowers 是 Skills 的集合 |
 
-### Q4：可以自定义 Superpowers 技能吗？
+### Q5：可以自定义 Superpowers 技能吗？
 
 可以！Superpowers 是开源的，你可以：
 1. Fork 仓库
