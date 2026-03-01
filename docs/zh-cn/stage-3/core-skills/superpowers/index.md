@@ -1,4 +1,4 @@
-# 高级五：Claude Code Superpowers 工程级开发
+# Claude Code Superpowers 工程级开发
 
 ## Superpowers 简介
 
