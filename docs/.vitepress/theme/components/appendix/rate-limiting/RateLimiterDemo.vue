@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const algo = ref('token')
 const totalSent = ref(0)
@@ -105,8 +105,18 @@ function reset() {
   recentRequests.value = []
   windowRequests.value = []
   if (tokenInterval) clearInterval(tokenInterval)
-  startTokenRefill()
+  // 只在令牌桶模式下启动补充
+  if (algo.value === 'token') startTokenRefill()
 }
+
+onMounted(() => {
+  // 组件挂载后启动令牌补充，避免模块加载时启动定时器导致 build 卡住
+  startTokenRefill()
+})
+
+onUnmounted(() => {
+  if (tokenInterval) clearInterval(tokenInterval)
+})
 
 function checkLimit() {
   if (algo.value === 'token') {
@@ -156,8 +166,6 @@ async function sendBurst() {
     await new Promise(r => setTimeout(r, 100))
   }
 }
-
-startTokenRefill()
 </script>
 
 <style scoped>

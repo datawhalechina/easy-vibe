@@ -5,7 +5,7 @@ export default {
     output: '预期产出',
     assignment: '课后任务'
   },
-  'en': {
+  en: {
     title: 'Learning Objectives',
     duration: 'Estimated Time',
     output: 'Expected Output',

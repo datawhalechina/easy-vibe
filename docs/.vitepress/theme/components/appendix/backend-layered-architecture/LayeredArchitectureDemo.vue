@@ -1,167 +1,43 @@
 <template>
-  <div class="layered-architecture-demo">
-    <div class="architecture-container">
-      <!-- 客户端 -->
-      <div class="client-layer">
-        <div class="layer-box client">
-          <div class="layer-icon">
-            🌐
+  <div class="layered-arch-demo">
+    <div class="header">
+      <div class="title">后端四层架构总览</div>
+      <div class="subtitle">点击各层查看详细说明</div>
+    </div>
+
+    <div class="main">
+      <div class="layers">
+        <div class="client-box">客户端 (Web / App)</div>
+        <div class="arrow">↓ HTTP</div>
+
+        <div
+          v-for="layer in layers"
+          :key="layer.id"
+          :class="['layer-box', layer.id, { active: active === layer.id }]"
+          @click="active = active === layer.id ? '' : layer.id"
+        >
+          <div class="layer-header">
+            <span class="layer-name">{{ layer.name }}</span>
+            <span class="layer-badge">{{ layer.badge }}</span>
           </div>
-          <div class="layer-title">
-            客户端
-          </div>
-          <div class="layer-desc">
-            Web / App / 小程序
-          </div>
+          <div class="layer-duty">{{ layer.duty }}</div>
         </div>
-        <div class="arrow-down">
-          ⬇️ HTTP/HTTPS
-        </div>
+
+        <div class="arrow">↓ SQL</div>
+        <div class="client-box db">数据库 (MySQL / PostgreSQL)</div>
       </div>
 
-      <!-- 后端分层 -->
-      <div class="backend-layers">
-        <!-- Controller 层 -->
-        <div
-          class="layer-box controller"
-          :class="{ active: activeLayer === 'controller' }"
-          @click="setActiveLayer('controller')"
-        >
-          <div class="layer-header">
-            <span class="layer-icon">🎮</span>
-            <span class="layer-name">Controller</span>
-            <span class="layer-badge">入口</span>
-          </div>
-          <div class="layer-content">
-            <div class="duty">
-              职责：接收请求、参数校验、调用 Service
-            </div>
-            <div class="tech">
-              技术：Spring MVC / Gin / Echo
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow-down">
-          ⬇️ 调用
-        </div>
-
-        <!-- Service 层 -->
-        <div
-          class="layer-box service"
-          :class="{ active: activeLayer === 'service' }"
-          @click="setActiveLayer('service')"
-        >
-          <div class="layer-header">
-            <span class="layer-icon">⚙️</span>
-            <span class="layer-name">Service</span>
-            <span class="layer-badge">业务核心</span>
-          </div>
-          <div class="layer-content">
-            <div class="duty">
-              职责：业务逻辑编排、事务管理、跨模块协调
-            </div>
-            <div class="tech">
-              技术：纯代码逻辑 / 无框架依赖
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow-down">
-          ⬇️ 调用
-        </div>
-
-        <!-- Repository 层 -->
-        <div
-          class="layer-box repository"
-          :class="{ active: activeLayer === 'repository' }"
-          @click="setActiveLayer('repository')"
-        >
-          <div class="layer-header">
-            <span class="layer-icon">🗄️</span>
-            <span class="layer-name">Repository</span>
-            <span class="layer-badge">数据访问</span>
-          </div>
-          <div class="layer-content">
-            <div class="duty">
-              职责：数据持久化、查询封装、ORM 映射
-            </div>
-            <div class="tech">
-              技术：MyBatis / GORM / Hibernate
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow-down">
-          ⬇️ SQL
-        </div>
-
-        <!-- Domain 层 -->
-        <div
-          class="layer-box domain"
-          :class="{ active: activeLayer === 'domain' }"
-          @click="setActiveLayer('domain')"
-        >
-          <div class="layer-header">
-            <span class="layer-icon">📦</span>
-            <span class="layer-name">Domain / Model</span>
-            <span class="layer-badge">领域模型</span>
-          </div>
-          <div class="layer-content">
-            <div class="duty">
-              职责：实体定义、业务规则、值对象
-            </div>
-            <div class="tech">
-              技术：POJO / Struct / Class
-            </div>
-          </div>
-        </div>
-
-        <div class="arrow-down">
-          ⬇️ 持久化
-        </div>
-
-        <!-- 数据库 -->
-        <div class="layer-box database">
-          <div class="layer-icon">
-            💾
-          </div>
-          <div class="layer-title">
-            数据库
-          </div>
-          <div class="layer-desc">
-            MySQL / PostgreSQL / MongoDB
-          </div>
-        </div>
-      </div>
-
-      <!-- 右侧说明面板 -->
-      <div
-        v-if="activeLayer"
-        class="info-panel"
-      >
-        <h4>{{ layerInfo.title }}</h4>
-        <p>{{ layerInfo.description }}</p>
-        <div class="analogy">
-          <strong>💡 类比：</strong>{{ layerInfo.analogy }}
-        </div>
-        <div class="common-mistakes">
-          <strong>⚠️ 常见错误：</strong>
+      <div v-if="active" class="info-panel">
+        <div class="info-title">{{ activeInfo.title }}</div>
+        <p>{{ activeInfo.desc }}</p>
+        <div class="info-analogy">{{ activeInfo.analogy }}</div>
+        <div class="info-mistakes">
+          <strong>常见错误：</strong>
           <ul>
-            <li
-              v-for="mistake in layerInfo.mistakes"
-              :key="mistake"
-            >
-              {{ mistake }}
-            </li>
+            <li v-for="m in activeInfo.mistakes" :key="m">{{ m }}</li>
           </ul>
         </div>
       </div>
-    </div>
-
-    <!-- 底部交互提示 -->
-    <div class="interaction-hint">
-      💡 点击各层查看详细说明 | 实际调用流向：从上到下，依赖从下到上
     </div>
   </div>
 </template>
@@ -169,230 +45,110 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const activeLayer = ref('')
+const active = ref('')
 
-const setActiveLayer = (layer) => {
-  activeLayer.value = activeLayer.value === layer ? '' : layer
+const layers = [
+  { id: 'controller', name: 'Controller', badge: '入口', duty: '接收请求、参数校验、调用 Service' },
+  { id: 'service', name: 'Service', badge: '业务核心', duty: '业务逻辑编排、事务管理、跨模块协调' },
+  { id: 'repository', name: 'Repository', badge: '数据访问', duty: '数据持久化、查询封装、ORM 映射' },
+  { id: 'domain', name: 'Domain', badge: '领域模型', duty: '实体定义、业务规则、值对象' }
+]
+
+const infoMap = {
+  controller: {
+    title: 'Controller 层 — 请求的"门童"',
+    desc: '负责接收 HTTP 请求、解析参数、进行基础校验，然后调用 Service 层处理业务。',
+    analogy: '就像餐厅的门童，负责迎接客人、检查预约、引导入座，但不负责做菜。',
+    mistakes: ['在 Controller 里写业务逻辑', '直接操作数据库', '不做参数校验']
+  },
+  service: {
+    title: 'Service 层 — 业务逻辑的"厨师"',
+    desc: '编排业务逻辑、管理事务、协调多个 Repository。包含所有的业务规则和流程。',
+    analogy: '就像餐厅的厨师，按照菜谱做菜，协调各种食材，把控菜品质量。',
+    mistakes: ['Service 之间循环依赖', '直接写 SQL', '单个方法过长包含多个业务场景']
+  },
+  repository: {
+    title: 'Repository 层 — 数据的"仓管"',
+    desc: '封装所有数据访问逻辑，上层不需要关心具体的数据库类型和 SQL 语句。',
+    analogy: '就像仓管员，负责从仓库取食材、存放剩余食材，厨师只需说要什么。',
+    mistakes: ['在 Repository 里写业务逻辑', '直接返回实体给前端', '一个 Repository 操作多个表']
+  },
+  domain: {
+    title: 'Domain 层 — 业务概念的"蓝图"',
+    desc: '定义实体、值对象、业务规则。是所有层的依赖基础，但不依赖任何其他层。',
+    analogy: '就像菜单和菜品标准，定义了什么是"宫保鸡丁"、用什么食材、什么口味。',
+    mistakes: ['Domain 包含持久化注解', '在 Domain 里写数据库操作', 'Domain 对象之间循环依赖']
+  }
 }
 
-const layerInfo = computed(() => {
-  const infoMap = {
-    controller: {
-      title: 'Controller 层 - 请求的"门童"',
-      description: 'Controller 是系统的入口，负责接收 HTTP 请求、解析参数、进行基础校验，然后调用 Service 层处理业务。',
-      analogy: '就像餐厅的门童，负责迎接客人（接收请求）、检查预约（参数校验）、引导入座（路由到对应服务），但不负责做菜。',
-      mistakes: [
-        '在 Controller 里写业务逻辑（应该放在 Service）',
-        '直接操作数据库（应该调用 Repository）',
-        '不做参数校验，导致脏数据流入系统'
-      ]
-    },
-    service: {
-      title: 'Service 层 - 业务逻辑的"厨师"',
-      description: 'Service 是系统的核心，负责编排业务逻辑、管理事务、协调多个 Repository。这一层应该包含所有的业务规则和流程。',
-      analogy: '就像餐厅的厨师，负责按照菜谱（业务规则）做菜，需要协调各种食材（数据），把控菜品质量（业务正确性）。',
-      mistakes: [
-        'Service 之间互相调用，形成循环依赖',
-        '在 Service 里直接写 SQL（应该放在 Repository）',
-        '一个 Service 方法过长，包含多个业务场景（应该拆分成多个方法）'
-      ]
-    },
-    repository: {
-      title: 'Repository 层 - 数据的"仓管"',
-      description: 'Repository 负责与数据库交互，封装所有的 CRUD 操作。上层不需要关心具体的数据库类型和 SQL 语句。',
-      analogy: '就像餐厅的仓管员，负责从仓库（数据库）取食材、存放剩余食材，厨师（Service）只需要告诉他要什么，不需要知道仓库在哪。',
-      mistakes: [
-        '在 Repository 里写业务逻辑（应该只负责数据访问）',
-        '直接返回数据库实体给前端（应该转换为 DTO）',
-        '一个 Repository 操作多个表（应该拆分到不同 Repository）'
-      ]
-    },
-    domain: {
-      title: 'Domain 层 - 业务概念的"蓝图"',
-      description: 'Domain 定义了系统中的实体、值对象、业务规则。它是所有层的依赖基础，但不依赖任何其他层。',
-      analogy: '就像餐厅的菜单和菜品标准，定义了什么是"宫保鸡丁"、用什么食材、什么口味。所有厨师都要按照这个标准来做。',
-      mistakes: [
-        'Domain 对象里包含持久化注解（应该保持纯净）',
-        '在 Domain 里写业务逻辑（业务逻辑应该在 Service）',
-        'Domain 对象之间循环依赖'
-      ]
-    }
-  }
-  return infoMap[activeLayer.value] || {}
-})
+const activeInfo = computed(() => infoMap[active.value] || {})
 </script>
 
 <style scoped>
-.layered-architecture-demo {
+.layered-arch-demo {
   padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  background: var(--vp-c-bg-soft);
   border-radius: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+.header { text-align: center; margin-bottom: 20px; }
+.title { font-size: 16px; font-weight: 600; color: var(--vp-c-text-1); }
+.subtitle { font-size: 13px; color: var(--vp-c-text-3); margin-top: 4px; }
 
-.architecture-container {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
+.main { display: flex; gap: 20px; align-items: flex-start; }
+.layers { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 
-.client-layer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.client-box {
+  padding: 12px; text-align: center; border-radius: 8px;
+  background: var(--vp-c-bg); color: var(--vp-c-text-2);
+  font-size: 13px; border: 1px solid var(--vp-c-divider);
 }
-
-.backend-layers {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+.client-box.db { border-left: 3px solid #8b5cf6; }
+.arrow { text-align: center; color: var(--vp-c-text-3); font-size: 12px; padding: 2px; }
 
 .layer-box {
-  padding: 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 14px; border-radius: 8px; cursor: pointer;
+  background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--vp-c-divider);
+  transition: all .2s;
 }
+.layer-box:hover { box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.layer-box.active { border-color: var(--vp-c-brand-1); box-shadow: 0 0 0 2px var(--vp-c-brand-soft); }
+.layer-box.controller { border-left-color: #10b981; }
+.layer-box.service { border-left-color: #f59e0b; }
+.layer-box.repository { border-left-color: #3b82f6; }
+.layer-box.domain { border-left-color: #6b7280; }
 
-.layer-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.layer-box.active {
-  border-color: #409eff;
-  box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.2);
-}
-
-/* 各层颜色主题 */
-.controller { border-left: 4px solid #67c23a; }
-.service { border-left: 4px solid #e6a23c; }
-.repository { border-left: 4px solid #409eff; }
-.domain { border-left: 4px solid #909399; }
-.client { border-left: 4px solid #f56c6c; }
-.database { border-left: 4px solid #8e44ad; }
-
-.layer-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.layer-icon {
-  font-size: 20px;
-}
-
-.layer-name {
-  font-weight: 600;
-  font-size: 15px;
-  color: #303133;
-}
-
+.layer-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.layer-name { font-weight: 600; font-size: 14px; color: var(--vp-c-text-1); }
 .layer-badge {
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 11px;
-  background: #f0f2f5;
-  color: #606266;
+  padding: 1px 8px; border-radius: 10px; font-size: 11px;
+  background: var(--vp-c-bg-soft); color: var(--vp-c-text-3);
 }
-
-.layer-content {
-  padding-left: 30px;
-  font-size: 13px;
-  color: #606266;
-  line-height: 1.6;
-}
-
-.duty, .tech {
-  margin: 4px 0;
-}
-
-.arrow-down {
-  text-align: center;
-  padding: 6px;
-  font-size: 12px;
-  color: #909399;
-}
+.layer-duty { font-size: 12px; color: var(--vp-c-text-2); }
 
 .info-panel {
-  width: 320px;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 20px;
+  width: 300px; padding: 18px; border-radius: 10px;
+  background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider);
+  position: sticky; top: 20px;
 }
-
-.info-panel h4 {
-  margin: 0 0 12px 0;
-  color: #303133;
-  font-size: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #409eff;
+.info-title { font-weight: 600; font-size: 14px; color: var(--vp-c-text-1); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--vp-c-brand-1); }
+.info-panel p { font-size: 13px; color: var(--vp-c-text-2); line-height: 1.6; margin: 0 0 12px; }
+.info-analogy {
+  padding: 10px; border-radius: 6px; font-size: 12px; line-height: 1.5;
+  background: var(--vp-c-brand-soft); color: var(--vp-c-text-1);
+  border-left: 3px solid var(--vp-c-brand-1); margin-bottom: 12px;
 }
-
-.info-panel p {
-  margin: 0 0 16px 0;
-  color: #606266;
-  font-size: 13px;
-  line-height: 1.7;
+.info-mistakes {
+  padding: 10px; border-radius: 6px; font-size: 12px; line-height: 1.5;
+  background: var(--vp-c-danger-soft); color: var(--vp-c-text-1);
+  border-left: 3px solid var(--vp-c-danger-1);
 }
+.info-mistakes strong { font-size: 12px; }
+.info-mistakes ul { margin: 6px 0 0; padding-left: 16px; }
+.info-mistakes li { margin: 3px 0; }
 
-.analogy, .common-mistakes {
-  margin: 12px 0;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.analogy {
-  background: #f0f9ff;
-  border-left: 3px solid #409eff;
-  color: #1d4ed8;
-}
-
-.common-mistakes {
-  background: #fff2f0;
-  border-left: 3px solid #ff4d4f;
-  color: #cf1322;
-}
-
-.common-mistakes ul {
-  margin: 6px 0 0 0;
-  padding-left: 16px;
-}
-
-.common-mistakes li {
-  margin: 4px 0;
-}
-
-.interaction-hint {
-  text-align: center;
-  padding: 16px;
-  margin-top: 16px;
-  background: #f6ffed;
-  border: 1px solid #b7eb8f;
-  border-radius: 6px;
-  color: #389e0d;
-  font-size: 13px;
-}
-
-@media (max-width: 1024px) {
-  .architecture-container {
-    flex-direction: column;
-  }
-
-  .info-panel {
-    width: 100%;
-    position: static;
-  }
+@media (max-width: 768px) {
+  .main { flex-direction: column; }
+  .info-panel { width: 100%; position: static; }
 }
 </style>

@@ -372,12 +372,32 @@ const stage3SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Advanced 1: MCP & Claude Code Skills',
-        link: '/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/'
+        text: 'Claude Code 快速上手核心指南',
+        link: '/zh-cn/stage-3/core-skills/basics/'
       },
       {
-        text: 'Advanced 2: Long Running Tasks',
-        link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
+        text: 'Claude Code MCP 完全指南',
+        link: '/zh-cn/stage-3/core-skills/mcp/'
+      },
+      {
+        text: 'Claude Code Skills 完全指南',
+        link: '/zh-cn/stage-3/core-skills/skills/'
+      },
+      {
+        text: 'Long Running Tasks',
+        link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
+      },
+      {
+        text: 'Claude Agent Teams 完全指南',
+        link: '/zh-cn/stage-3/core-skills/agent-teams/'
+      },
+      {
+        text: 'Claude Code Superpowers 工程级开发',
+        link: '/zh-cn/stage-3/core-skills/superpowers/'
+      },
+      {
+        text: 'Claude Code 工作流最佳实践',
+        link: '/zh-cn/stage-3/core-skills/workflow/'
       }
     ]
   },
@@ -475,6 +495,30 @@ const appendixSidebarEn = [
       {
         text: 'Type Systems Intro',
         link: '/zh-cn/appendix/1-computer-fundamentals/type-systems'
+      },
+      {
+        text: 'Linking & Loading',
+        link: '/zh-cn/appendix/1-computer-fundamentals/linking-loading'
+      },
+      {
+        text: 'Assembly Basics',
+        link: '/zh-cn/appendix/1-computer-fundamentals/assembly-basics'
+      },
+      {
+        text: 'Memory Hierarchy',
+        link: '/zh-cn/appendix/1-computer-fundamentals/memory-hierarchy'
+      },
+      {
+        text: 'Processor Architecture',
+        link: '/zh-cn/appendix/1-computer-fundamentals/processor-architecture'
+      },
+      {
+        text: 'System I/O',
+        link: '/zh-cn/appendix/1-computer-fundamentals/system-io'
+      },
+      {
+        text: 'Socket Programming',
+        link: '/zh-cn/appendix/1-computer-fundamentals/socket-programming'
       }
     ]
   },
@@ -1093,23 +1137,27 @@ export default defineConfig({
                   link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
                 },
                 {
+                  text: '用 LLM 和 Skills 让界面变好看',
+                  link: '/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/'
+                },
+                {
+                  text: '霍格沃茨的画像们：SVG 交互动画',
+                  link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
+                },
+                {
                   text: '从设计原型到项目代码',
-                  link: '/zh-cn/stage-2/frontend/2.5-design-to-code/'
+                  link: '/zh-cn/stage-2/frontend/2.6-design-to-code/'
                 },
                 {
                   text: '使用现代组件库更新你的界面',
-                  link: '/zh-cn/stage-2/frontend/2.6-modern-component-library/'
+                  link: '/zh-cn/stage-2/frontend/2.7-modern-component-library/'
                 }
               ]
             },
             {
-              text: '后端与全栈',
+              text: '后端开发',
               collapsed: false,
               items: [
-                {
-                  text: '什么是 API',
-                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/'
-                },
                 {
                   text: '从数据库到 Supabase',
                   link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
@@ -1167,16 +1215,36 @@ export default defineConfig({
           ],
           '/zh-cn/stage-3/': [
             {
-              text: 'claudecode 深入浅出',
+              text: 'Claude Code 深入浅出',
               collapsed: false,
               items: [
                 {
-                  text: 'MCP 与 Claude Code Skills',
-                  link: '/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/'
+                  text: 'Claude Code 快速上手核心指南',
+                  link: '/zh-cn/stage-3/core-skills/basics/'
+                },
+                {
+                  text: 'Claude Code MCP 完全指南',
+                  link: '/zh-cn/stage-3/core-skills/mcp/'
+                },
+                {
+                  text: 'Claude Code Skills 完全指南',
+                  link: '/zh-cn/stage-3/core-skills/skills/'
                 },
                 {
                   text: '如何让 Coding Tools 长时间工作',
-                  link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
+                  link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
+                },
+                {
+                  text: 'Claude Agent Teams 完全指南',
+                  link: '/zh-cn/stage-3/core-skills/agent-teams/'
+                },
+                {
+                  text: 'Claude Code Superpowers 工程级开发',
+                  link: '/zh-cn/stage-3/core-skills/superpowers/'
+                },
+                {
+                  text: 'Claude Code 工作流最佳实践',
+                  link: '/zh-cn/stage-3/core-skills/workflow/'
                 }
               ]
             },

@@ -47,11 +47,16 @@
 </template>
 
 <script setup>
-import { ref, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const selected = ref(0)
 const visibleSteps = ref(0)
 let timer = null
+
+onMounted(() => {
+  // 组件挂载后开始动画，避免模块加载时启动定时器导致 build 卡住
+  selectMode(0)
+})
 
 onUnmounted(() => {
   if (timer) clearInterval(timer)
@@ -117,8 +122,6 @@ const modes = [
     langs: ['JavaScript (V8)', 'Java (JVM)', 'C# (.NET)']
   }
 ]
-
-selectMode(0)
 </script>
 
 <style scoped>

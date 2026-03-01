@@ -21,3 +21,4 @@ docs/.vitepress/.temp/*
 .vitepress/cache/*
 .vitepress/cache/*
 docs/archived-components.md
+.claude/skills/*

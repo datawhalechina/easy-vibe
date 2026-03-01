@@ -517,6 +517,7 @@ import GoroutineGreenThreadDemo from './components/appendix/concurrency-models/G
 import DeveloperEfficiencyDemo from './components/appendix/backend-languages/DeveloperEfficiencyDemo.vue'
 import LanguageEcosystemDemo from './components/appendix/backend-languages/LanguageEcosystemDemo.vue'
 import MemoryManagementDemo from './components/appendix/backend-languages/MemoryManagementDemo.vue'
+import LanguageScopeDemo from './components/appendix/backend-languages/LanguageScopeDemo.vue'
 
 // Component State Management Components
 import ComponentHierarchyDemo from './components/appendix/component-state-management/ComponentHierarchyDemo.vue'
@@ -602,6 +603,8 @@ import ServiceLayerDemo from './components/appendix/backend-layered-architecture
 import RepositoryLayerDemo from './components/appendix/backend-layered-architecture/RepositoryLayerDemo.vue'
 import DomainModelDemo from './components/appendix/backend-layered-architecture/DomainModelDemo.vue'
 import DtoFlowDemo from './components/appendix/backend-layered-architecture/DtoFlowDemo.vue'
+import DependencyDirectionDemo from './components/appendix/backend-layered-architecture/DependencyDirectionDemo.vue'
+import CleanArchitectureDemo from './components/appendix/backend-layered-architecture/CleanArchitectureDemo.vue'
 
 // Browser Rendering Pipeline Components
 import DomToRenderTreeDemo from './components/appendix/browser-rendering-pipeline/DomToRenderTreeDemo.vue'
@@ -1339,6 +1342,7 @@ export default {
     app.component('DeveloperEfficiencyDemo', DeveloperEfficiencyDemo)
     app.component('LanguageEcosystemDemo', LanguageEcosystemDemo)
     app.component('MemoryManagementDemo', MemoryManagementDemo)
+    app.component('LanguageScopeDemo', LanguageScopeDemo)
 
     // Concurrency Models Components Registration
     app.component('ProcessThreadCoroutineDemo', ProcessThreadCoroutineDemo)
@@ -1437,6 +1441,8 @@ export default {
     app.component('RepositoryLayerDemo', RepositoryLayerDemo)
     app.component('DomainModelDemo', DomainModelDemo)
     app.component('DtoFlowDemo', DtoFlowDemo)
+    app.component('DependencyDirectionDemo', DependencyDirectionDemo)
+    app.component('CleanArchitectureDemo', CleanArchitectureDemo)
 
     // Browser Rendering Pipeline Components Registration
     app.component('DomToRenderTreeDemo', DomToRenderTreeDemo)
