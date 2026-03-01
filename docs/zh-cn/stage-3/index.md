@@ -10,14 +10,39 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/"
-    title="高级一：MCP 与 Claude Code Skills"
+    href="/zh-cn/stage-3/core-skills/basics/"
+    title="高级零：Claude Code 快速上手核心指南"
+    description="快速掌握 Claude Code 的核心用法，包括安装配置、基础操作和实用技巧"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/core-skills/mcp/"
+    title="高级一：MCP 与 Claude Code 完全指南"
     description="掌握 Model Context Protocol (MCP)，扩展 AI 编程工具的能力边界"
   />
   <NavCard
-    href="/zh-cn/stage-3/core-skills/3.2-long-running-tasks/"
+    href="/zh-cn/stage-3/core-skills/skills/"
+    title="高级一（续）：Claude Code Skills 完全指南"
+    description="将专业知识、工作流程和最佳实践打包成可复用技能包"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/core-skills/long-running-tasks/"
     title="高级二：如何让 Coding Tools 长时间工作"
     description="学习如何让 AI 编码工具处理长时间运行的复杂任务"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/core-skills/agent-teams/"
+    title="高级二（续）：Claude Agent Teams 完全指南"
+    description="让多个 AI 实例像真正的开发团队一样协同工作"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/core-skills/superpowers/"
+    title="高级二（续）：Claude Code Superpowers 工程级开发"
+    description="使用 Superpowers 框架让 AI 写出工程级代码"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/core-skills/workflow/"
+    title="高级二（续）：Claude Code 工作流最佳实践"
+    description="掌握 Claude Code 在不同场景下的最佳实践"
   />
 </NavGrid>
 
@@ -45,6 +70,36 @@
     href="/zh-cn/stage-3/cross-platform/3.6-ios-app/"
     title="高级六：如何构建 iOS 程序"
     description="开发并发布 iOS 应用，掌握 iOS 生态的开发规范"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/"
+    title="高级八：如何开发 PWA 本地应用"
+    description="让网页变成真正的 App，支持离线使用和桌面安装"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.9-browser-ai-extension/"
+    title="高级九：如何开发浏览器 AI 助手插件"
+    description="一键总结任意网页，打造你的浏览器 AI 助手"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/"
+    title="高级十：如何开发跨平台 Electron 桌面程序"
+    description="构建语音转文字的桌面应用，支持 Windows、macOS、Linux"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.11-nft-minting/"
+    title="高级十一：如何快速开发并铸造 NFT"
+    description="10 分钟上手版，从零开始编写 NFT 智能合约并铸造"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.12-vscode-extension/"
+    title="高级十二：如何开发 VS Code 插件"
+    description="打造你的 AI 项目助手，支持多文件问答和自定义快捷键"
+  />
+  <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/"
+    title="高级十三：如何开发工业级 Qt 桌面应用"
+    description="构建水泵监控 HMI 系统，掌握工业级桌面应用开发"
   />
 </NavGrid>
 

@@ -12,7 +12,7 @@
 # Easy-Vibe : Lerne Vibe Coding von 0 auf 1
 
 <p align="center">
-  📌 <a href="https://datawhalechina.github.io/easy-vibe/">Online lesen (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/prompt-engineering/">Interaktives Tutorial</a>
+  📌 <a href="https://datawhalechina.github.io/easy-vibe/">Online lesen (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Interaktives Tutorial</a>
 </p>
 
 <p align="center">

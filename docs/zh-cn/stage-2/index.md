@@ -20,14 +20,34 @@
     description="掌握专业 UI 设计工具的基础操作，从设计稿到代码的协作流程"
   />
   <NavCard
+    href="/zh-cn/stage-2/frontend/2.2-ui-design/"
+    title="前端二：构建第一个现代应用程序 - UI 设计"
+    description="学习现代应用程序的 UI 设计基础"
+  />
+  <NavCard
     href="/zh-cn/stage-2/frontend/2.3-multi-product-ui/"
     title="前端三：参考 UI 设计规范与多产品 UI 设计"
     description="学习主流 UI 设计规范，提升产品设计的一致性与美感"
   />
   <NavCard
-    href="/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/"
-    title="前端四：一起做霍格沃茨画像"
+    href="/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/"
+    title="前端四：用 LLM 和 Skills 让界面变好看"
+    description="使用提示词与插件实战，让 AI 生成美观独特的界面"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/"
+    title="前端五：一起做霍格沃茨画像"
     description="实战项目：结合 AI 生成的图像，构建一个交互式的霍格沃茨画像应用"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/frontend/2.6-design-to-code/"
+    title="前端六：从设计原型到项目代码"
+    description="学习如何将设计工具中的原型转化为真正能在浏览器里运行的前端代码"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/frontend/2.7-modern-component-library/"
+    title="前端七：使用现代组件库更新你的界面"
+    description="学习使用组件库快速构建专业级界面"
   />
 </NavGrid>
 
