@@ -116,7 +116,7 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 | ------------ | -------------------------------- | ----------------------------------------- |
 | **第一阶段** | AI 编程入门、产品思维、原型设计  | 互动小游戏、Web 应用原型（新手入门 & PM） |
 | **第二阶段** | 全栈开发、AI 集成、数据库        | 完整的全栈 AI 应用                        |
-| **第三阶段** | claude code 进阶、小程序安卓开发 | 生产级多平台应用                          |
+| **第三阶段** | Claude Code 进阶、多平台开发     | 生产级多平台应用                          |
 | **附录**     | 帮你理解计算机、人工智能基础概念 | 9 大知识领域、80+ 交互式专题              |
 
 ## 🔥 News
@@ -236,87 +236,106 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 
 ### 一、零基础入门
 
-| 章节                                                                                             | 关键内容                                          | 状态 |
-| :----------------------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
-| [前言：学习地图](docs/zh-cn/stage-0/0.1-learning-map/index.md)                                   | 整体学习路径导览                                  | ✅   |
-| [初级一：AI 时代，会说话就会编程](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 通过贪吃蛇等案例初步感受 AI 编程的能力            | ✅   |
-| [初级二：寻找好想法](docs/zh-cn/stage-1/1.0-finding-great-idea/index.md)                         | 学会寻找和验证产品想法，找到值得做的项目          | ✅   |
-| [初级三：认识 AI IDE 工具](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)               | 学会使用 IDE，在本地制作小游戏                    | ✅   |
-| [初级四：动手做出原型](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                       | 从需求分析、AI 生成单页面，再到生成多页面产品原型 | ✅   |
-| [初级五：给原型加上 AI 能力](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)        | 学会接入常见 AI 能力（文本、图片、视频）          | ✅   |
-| [初级六：完整项目实战](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)                | 模拟真实场景、接受用户反馈迭代，完整化项目        | ✅   |
+| 章节                                                                                 | 关键内容                                          | 状态 |
+| :----------------------------------------------------------------------------------- | :------------------------------------------------ | :--- |
+| [学习地图](docs/zh-cn/stage-0/0.1-learning-map/index.md)                             | 整体学习路径导览                                  | ✅   |
+| [AI 时代，会说话就会编程](docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md) | 通过贪吃蛇等案例初步感受 AI 编程的能力            | ✅   |
+| [寻找好想法](docs/zh-cn/stage-1/1.0-finding-great-idea/index.md)                     | 学会寻找和验证产品想法，找到值得做的项目          | ✅   |
+| [认识 AI IDE 工具](docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md)           | 学会使用 IDE，在本地制作小游戏                    | ✅   |
+| [动手做出原型](docs/zh-cn/stage-1/1.2-building-prototype/index.md)                   | 从需求分析、AI 生成单页面，再到生成多页面产品原型 | ✅   |
+| [给原型加上 AI 能力](docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md)    | 学会接入常见 AI 能力（文本、图片、视频）          | ✅   |
+| [完整项目实战](docs/zh-cn/stage-1/1.4-complete-project-practice/index.md)            | 模拟真实场景、接受用户反馈迭代，完整化项目        | ✅   |
 
 #### 附录：业务思维
 
-| 章节                                                                                       | 关键内容                                   | 状态 |
-| :----------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
-| [附录A：产品思维与方案设计](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)       | 从零到一做产品需要考虑的思维框架           | ✅   |
-| [附录B：AI 行业应用场景参考 (B端)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | 了解 AI 在不同产业的应用场景               | ✅   |
-| [附录C：AI 消费场景灵感参考 (C端)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 探索 AI 在消费级产品中的应用场景           | ✅   |
+| 章节                                                                                 | 关键内容                                   | 状态 |
+| :----------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
+| [产品思维与方案设计](docs/zh-cn/stage-1/appendix-a-product-thinking/index.md)        | 从零到一做产品需要考虑的思维框架           | ✅   |
+| [AI 行业应用场景参考 (B端)](docs/zh-cn/stage-1/appendix-industry-scenarios/index.md) | 了解 AI 在不同产业的应用场景               | ✅   |
+| [AI 消费场景灵感参考 (C端)](docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md) | 探索 AI 在消费级产品中的应用场景           | ✅   |
 
 #### 附录：技术方案
 
-| 章节                                                                                                                                                      | 关键内容                                   | 状态 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
-| [附录D：写代码时遇到错误怎么办](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                                                     | vibe coding 中的常见错误及排查方法         | ✅   |
-| [附录E：七款 AI 编程工具对比](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)                                   | 对比测试主流 AI 编程平台                   | ✅   |
-| [附录F：用设计和编程 Agent 设计网站](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | 学习如何使用 AI 智能体协同工作             | ✅   |
+| 章节                                                                                                                    | 关键内容                                   | 状态 |
+| :---------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- | :--- |
+| [写代码时遇到错误怎么办](docs/zh-cn/stage-1/appendix-b-common-errors/index.md)                                         | vibe coding 中的常见错误及排查方法         | ✅   |
+| [七款 AI 编程工具对比](docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md)       | 对比测试主流 AI 编程平台                   | ✅   |
+| [用设计和编程 Agent 设计网站](docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md) | 学习如何使用 AI 智能体协同工作             | ✅   |
 
 <details>
 <summary><strong>二、初中级开发工程师</strong></summary>
 
 #### 前端部分
 
-| 章节                                                                                                                       | 关键内容                                                                     | 状态 |
-| :------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :--- |
-| [前端零：使用 lovart 生产素材](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/)                                             | 学会用 lovart 批量生成人物、场景等视觉素材，为 UI 设计和前端开发提供素材基础 | 🚧   |
-| [前端一：Figma 与 MasterGo 入门](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/)                                          | 用设计工具梳理信息架构和页面结构，为前端实现打基础                           | 🚧   |
-| [前端二：构建第一个现代应用程序-UI 设计](docs/zh-cn/stage-2/frontend/2.2-ui-design/)                                       | 基于设计稿完成组件化界面，实现从设计到代码的第一条链路                       | 🚧   |
-| [前端三：参考 UI 设计规范与多产品 UI 设计](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/)                              | 围绕统一主视觉扩展多产品界面，练习系统化设计能力                             | 🚧   |
-| [前端四：一起做霍格沃茨画像](docs/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/chapter4-lets-build-hogwarts-portraits.md) | 从 0 到 1 做出接入 AI 能力的前端应用，串联设计与开发                         | ✅   |
+| 章节                                                                                                       | 关键内容                                                                     | 状态 |
+| :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :--- |
+| [使用 Lovart 生产素材](docs/zh-cn/stage-2/frontend/2.0-lovart-assets/index.md)                             | 学会用 lovart 批量生成人物、场景等视觉素材，为 UI 设计和前端开发提供素材基础 | 🚧   |
+| [Figma 与 MasterGo 入门](docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/index.md)                          | 用设计工具梳理信息架构和页面结构，为前端实现打基础                           | ✅   |
+| [构建第一个现代应用程序-UI 设计](docs/zh-cn/stage-2/frontend/2.2-ui-design/index.md)                       | 基于设计稿完成组件化界面，实现从设计到代码的第一条链路                       | 🚧   |
+| [参考 UI 设计规范与多产品 UI 设计](docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/index.md)              | 围绕统一主视觉扩展多产品界面，练习系统化设计能力                             | 🚧   |
+| [用 LLM 和 Skills 让界面变好看](docs/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/index.md)             | 用提示词和 Skills 插件让 AI 生成美观独特的界面                               | ✅   |
+| [一起做霍格沃茨画像](docs/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/index.md)                          | 从 0 到 1 做出接入 AI 能力的前端应用，串联设计与开发                         | ✅   |
+| [从设计原型到项目代码](docs/zh-cn/stage-2/frontend/2.6-design-to-code/index.md)                            | 三种路径将设计工具中的原型转化为前端代码                                     | ✅   |
+| [使用现代组件库更新你的界面](docs/zh-cn/stage-2/frontend/2.7-modern-component-library/index.md)            | 用组件库快速构建专业级界面，统一风格、提升开发效率                           | ✅   |
 
 #### 后端开发部分
 
-| 章节                                                                                                                                                      | 关键内容                                                      | 状态 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------ | :--- |
-| [后端一：什么是 API](docs/zh-cn/stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md)                                                             | 理解 HTTP 接口与请求响应模型，为后端集成与联调做准备          | ✅   |
-| [后端二：从数据库到 Supabase](docs/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/chapter5-from-database-to-supabase.md)                            | 在 Supabase 上落地数据库和 API，打通数据模型与前端页面        | ✅   |
-| [后端三：大模型辅助编写接口代码与接口文档](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/)                                                             | 用大模型协助生成接口与数据库文档及代码，实现可读可测的后端    | 🚧   |
-| [后端四：Git 工作流](docs/zh-cn/stage-2/backend/2.4-git-workflow/extra1/extra1-what-is-git-and-what-is-github.md)                                         | 在 Git 工作流中管理代码，进行版本控制和协作                   | ✅   |
-| [后端五：Zeabur 部署](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/extra6-zeabur-what-is-it-and-how-to-deploy-web-applications.md)             | 将应用部署到 Zeabur 上线                                      | ✅   |
-| [后端六：现代 CLI 开发工具](docs/zh-cn/stage-2/backend/2.6-modern-cli/extra7/extra7-cli-ai-coding-tools-and-the-principles-of-test-driven-development.md) | 使用 CLI 类 AI 编程工具加速开发与调试，形成个人工程化工作流   | ✅   |
-| [后端七：如何集成 Stripe 等收费系统](docs/zh-cn/stage-2/backend/2.7-stripe-payment/)                                                                      | 接入支付系统，完成收费链路与基础结算流程                      | 🚧   |
-| [大作业 1：构建第一个现代应用程序-全栈应用](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/)                                                            | 综合前端、后端与支付模块，完成可上线的全栈 Web 应用           | 🚧   |
-| [大作业 2：现代前端组件库 + Trae 实战](docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/)                                                          | 使用现代前端组件库与 Trae，独立完成可登录注册并支持收费的产品 | 🚧   |
+| 章节                                                                                               | 关键内容                                                    | 状态 |
+| :------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :--- |
+| [从数据库到 Supabase](docs/zh-cn/stage-2/backend/2.2-database-supabase/index.md)                   | 在 Supabase 上落地数据库和 API，打通数据模型与前端页面      | ✅   |
+| [大模型辅助编写接口代码与接口文档](docs/zh-cn/stage-2/backend/2.3-ai-interface-code/index.md)       | 用大模型协助生成接口与数据库文档及代码，实现可读可测的后端  | 🚧   |
+| [Git 和 GitHub 工作流](docs/zh-cn/stage-2/backend/2.4-git-workflow/index.md)                        | 在 Git 工作流中管理代码，进行版本控制和协作                 | ✅   |
+| [如何部署 Web 应用](docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/index.md)                     | 使用 CloudBase、Vercel、Zeabur 等平台部署应用上线           | ✅   |
+| [CLI AI 编程工具](docs/zh-cn/stage-2/backend/2.6-modern-cli/index.md)                              | 使用 CLI 类 AI 编程工具加速开发与调试，形成个人工程化工作流 | ✅   |
+| [如何集成 Stripe 等收费系统](docs/zh-cn/stage-2/backend/2.7-stripe-payment/index.md)               | 接入支付系统，完成收费链路与基础结算流程                    | 🚧   |
+| [大作业：构建第一个现代应用程序-全栈应用](docs/zh-cn/stage-2/assignments/2.1-fullstack-app/index.md) | 综合前端、后端与支付模块，完成可上线的全栈 Web 应用         | 🚧   |
 
 #### AI 能力附录
 
-| 章节                                                                                                                                                                         | 关键内容                                                       | 状态 |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :--- |
-| [AI 一：Dify 入门与知识库集成](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/chapter3/chapter3-getting-started-with-dify-and-its-knowledge-base-integration.md) | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 | ✅   |
-| [AI 二：学会查询 AI 词典与集成多模态 API](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/extra3-ai-capability-starter-handbook.md)                             | 学会查找合适的模型与 API，并把文本、图像等多模态能力接入产品   | 🚧   |
+| 章节                                                                                                     | 关键内容                                                       | 状态 |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :--- |
+| [Dify 入门与知识库集成](docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/index.md)             | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 | ✅   |
+| [学会查询 AI 词典与集成多模态 API](docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/index.md) | 学会查找合适的模型与 API，并把文本、图像等多模态能力接入产品   | 🚧   |
 
 </details>
 
 <details>
 <summary><strong>三、高级开发工程师</strong></summary>
 
-| 章节                                                                                                                 | 关键内容                                                     | 状态 |
-| :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
-| [高级一：MCP 与 Claude Code Skills](docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/)                      | 通过 MCP 与 Skills 扩展 IDE 能力，把外部服务接成工具         | 🚧   |
-| [高级二：如何让 Coding Tools 长时间工作](docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/)                     | 设计和配置长时间运行的任务，让 Coding Tools 更稳定可靠       | 🚧   |
-| [高级三：多平台开发：如何构建微信小程序](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/)                  | 了解微信小程序生态，从官方模板到上线完成一个前端小程序       | ✅   |
-| [高级四：多平台开发：如何构建微信小程序-包含后端](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | 在小程序中接入数据库与后端逻辑，打通完整业务闭环             | 🚧   |
-| [高级五：多平台开发：如何构建安卓程序](docs/zh-cn/stage-3/cross-platform/3.5-android-app/)                           | 使用 Expo 等工具，完成 Web/原生一体化的安卓应用开发          | ✅   |
-| [高级六：多平台开发：如何构建 iOS 程序](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/)                              | 使用 Expo 等工具，完成 Web/原生一体化的 iOS 应用开发         | ✅   |
-| [高级七：如何构建属于自己的个人网页与学术博客](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/)         | 从选型、搭建到部署，构建展示个人项目与学术成果的长久在线主页 | 🚧   |
+#### Claude Code 核心技能
+
+| 章节                                                                                                    | 关键内容                                                     | 状态 |
+| :------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------- | :--- |
+| [Claude Code 快速上手](docs/zh-cn/stage-3/core-skills/basics/index.md)                                  | 安装配置、基础操作、实用技巧和常用指令                       | ✅   |
+| [Claude Code MCP 完全指南](docs/zh-cn/stage-3/core-skills/mcp/index.md)                                 | 通过 MCP 让 Claude Code 连接 GitHub、数据库、API 等外部服务  | ✅   |
+| [Claude Code Skills 完全指南](docs/zh-cn/stage-3/core-skills/skills/index.md)                           | 将专业知识打包成可复用技能包，一次配置反复使用               | ✅   |
+| [Claude Code 工作流最佳实践](docs/zh-cn/stage-3/core-skills/workflow/index.md)                          | 日常开发、代码重构、Code Review 等场景的最佳实践             | ✅   |
+| [Claude Agent Teams 完全指南](docs/zh-cn/stage-3/core-skills/agent-teams/index.md)                      | 多 AI 实例协同工作，像真正的开发团队一样并行协作             | ✅   |
+| [Claude Code Superpowers 工程级开发](docs/zh-cn/stage-3/core-skills/superpowers/index.md)               | 让 AI 写出工程级代码，遵循 TDD 和最佳实践                    | ✅   |
+| [如何让 Claude Code 长时间工作](docs/zh-cn/stage-3/core-skills/long-running-tasks/index.md)             | 设计长时间运行的任务，让 Coding Tools 持续工作直到完成        | ✅   |
+
+#### 多平台开发
+
+| 章节                                                                                                           | 关键内容                                                     | 状态 |
+| :------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
+| [如何构建微信小程序](docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/index.md)                       | 了解微信小程序生态，从官方模板到上线完成一个前端小程序       | ✅   |
+| [如何构建微信小程序-包含后端](docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/index.md)      | 在小程序中接入数据库与后端逻辑，打通完整业务闭环             | 🚧   |
+| [如何构建安卓程序](docs/zh-cn/stage-3/cross-platform/3.5-android-app/index.md)                                | 使用 Expo 等工具，完成 Web/原生一体化的安卓应用开发          | ✅   |
+| [如何构建 iOS 程序](docs/zh-cn/stage-3/cross-platform/3.6-ios-app/index.md)                                   | 使用 Expo 等工具，完成 Web/原生一体化的 iOS 应用开发         | ✅   |
+| [如何构建个人网页与学术博客](docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/index.md)            | 从选型、搭建到部署，构建展示个人项目与学术成果的在线主页     | 🚧   |
+| [如何开发 PWA 本地应用](docs/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/index.md)                         | 让网页变成"真正的 App"，支持离线、推送、桌面安装            | ✅   |
+| [如何开发浏览器 AI 助手插件](docs/zh-cn/stage-3/cross-platform/3.9-browser-ai-extension/index.md)             | 开发 Chrome 插件，一键总结任意网页，支持云端 API 和内置 AI   | ✅   |
+| [如何开发 Electron 桌面程序](docs/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/index.md)          | 用 Electron 构建语音转文字桌面应用，支持三平台安装运行       | ✅   |
+| [如何快速开发并铸造 NFT](docs/zh-cn/stage-3/cross-platform/3.11-nft-minting/index.md)                         | 从零编写智能合约，部署到以太坊测试网，铸造自己的 NFT         | ✅   |
+| [如何开发 VS Code 插件](docs/zh-cn/stage-3/cross-platform/3.12-vscode-extension/index.md)                     | 开发 AI 项目助手插件，支持模板生成、代码对话、多文件问答     | ✅   |
+| [如何开发工业级 Qt 桌面应用](docs/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/index.md)               | 用 Qt 构建工业级水泵监控 HMI 系统，实时数据、趋势图、报警    | ✅   |
 
 #### AI 能力附录
 
-| 章节                                                                                                                                                | 关键内容                                                | 状态 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
-| [高级 AI 一：什么是 RAG 以及它如何工作](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 | ✅   |
-| [高级 AI 二：中高级 RAG 与工作流编排：以 LangGraph 为例](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/)                               | 使用 LangGraph 等工具设计多步工作流与中高级 RAG 系统    | 🚧   |
+| 章节                                                                                                                                      | 关键内容                                                | 状态 |
+| :---------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
+| [什么是 RAG 以及它如何工作](docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/index.md)                                                | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 | ✅   |
+| [中高级 RAG 与工作流编排：以 LangGraph 为例](docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/index.md)                        | 使用 LangGraph 等工具设计多步工作流与中高级 RAG 系统    | 🚧   |
 
 </details>
 
