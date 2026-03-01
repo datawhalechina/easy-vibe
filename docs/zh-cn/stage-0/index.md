@@ -13,12 +13,12 @@
 <NavGrid>
   <NavCard
     href="/zh-cn/stage-0/0.1-learning-map/"
-    title="1. 学习地图"
+    title="学习地图"
     description="了解整个学习路径，明确每个阶段的目标和收获。"
   />
   <NavCard
     href="/zh-cn/stage-0/0.2-ai-capabilities-through-games/"
-    title="2. AI 时代，会说话就会编程"
+    title="AI 时代，会说话就会编程"
     description="通过贪吃蛇等小游戏，体验 AI 编程的魅力，打破对编程的恐惧。"
   />
 </NavGrid>
@@ -30,27 +30,27 @@
 <NavGrid>
   <NavCard
     href="/zh-cn/stage-1/1.1-introduction-to-ai-ide/"
-    title="1. 学会 AI 编程工具"
+    title="学会 AI 编程工具"
     description="了解当前主流的 AI 编程工具，选择最适合你的开发搭档。"
   />
   <NavCard
     href="/zh-cn/stage-1/1.0-finding-great-idea/"
-    title="2. 找到好点子"
+    title="找到好点子"
     description="学会寻找和验证产品想法，找到值得做的项目。"
   />
   <NavCard
     href="/zh-cn/stage-1/1.2-building-prototype/"
-    title="3. 搭建产品原型"
+    title="搭建产品原型"
     description="学习如何快速将产品想法转化为可视化的原型，进行低成本试错。"
   />
   <NavCard
     href="/zh-cn/stage-1/1.3-integrating-ai-capabilities/"
-    title="4. 接入 AI 能力"
+    title="接入 AI 能力"
     description="通过集成简单的 AI API，让你的原型具备智能交互能力。"
   />
   <NavCard
     href="/zh-cn/stage-1/1.4-complete-project-practice/"
-    title="5. 完整项目实战"
+    title="完整项目实战"
     description="综合运用所学知识，从 0 到 1 完成一个完整的产品原型开发。"
   />
 </NavGrid>
