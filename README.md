@@ -122,6 +122,7 @@ Easy-Vibe 通过以下几个阶段，带你从 0 到 1：
 ## 🔥 News
 
 - **[2026-02-25]** 更新[附录知识库](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)，涵盖 9 大知识领域、80+ 交互式专题。
+- **[2026-03-01]** 第三阶段全面升级：新增 Claude Code 七大深度指南（MCP、Skills、Agent Teams 等）及八大跨平台开发实战（PWA、Electron、NFT、VS Code 插件、Qt 工业应用等）。
 - **[2026-01-27]** 新增 Android 和 iOS 平台应用开发教程。
 - **[2026-01-19]** 发布 Prompt Engineering、AI 演进史、鉴权设计、Git 原理等一系列交互式演示组件，大幅提升可视化学习体验。
 
