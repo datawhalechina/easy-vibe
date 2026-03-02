@@ -12,6 +12,22 @@ const isEdgeOne = !!process.env.EDGEONE || process.env.EDGEONE === '1'
 // 3. 否则（如 GitHub Pages），使用 '/easy-vibe/'
 const base = process.env.BASE || (isVercel || isEdgeOne ? '/' : '/easy-vibe/')
 
+// 站点 URL 配置 - 根据部署环境动态确定
+const getSiteUrl = () => {
+  if (isVercel && process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`
+  }
+  if (isEdgeOne && process.env.EDGEONE_URL) {
+    return `https://${process.env.EDGEONE_URL}`
+  }
+  if (process.env.SITE_URL) {
+    return process.env.SITE_URL
+  }
+  return 'https://datawhalechina.github.io/easy-vibe'
+}
+
+const siteUrl = getSiteUrl()
+
 // 语言映射配置
 const localeMap = {
   'zh-cn': {
@@ -79,9 +95,6 @@ const localeMap = {
 // SEO 相关配置
 const getSeoHead = (locale, title, description, path = '') => {
   const seoConfig = localeMap[locale] || localeMap['zh-cn']
-  const siteUrl = isVercel
-    ? 'https://your-project.vercel.app'
-    : 'https://datawhalechina.github.io/easy-vibe'
   const canonicalUrl = path ? `${siteUrl}${path}` : `${siteUrl}/${locale}/`
   const ogImageUrl = `${siteUrl}${base}logo.png`
 
@@ -172,9 +185,40 @@ const getSeoHead = (locale, title, description, path = '') => {
         '@type': 'ImageObject',
         url: ogImageUrl
       }
+    },
+    mainEntity: {
+      '@type': 'Course',
+      name: title,
+      description: description,
+      provider: {
+        '@type': 'Organization',
+        name: 'Datawhale',
+        sameAs: 'https://github.com/datawhalechina/easy-vibe'
+      }
     }
   }
   head.push(['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd)])
+
+  // 添加 BreadcrumbList 结构化数据
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: '首页',
+        item: siteUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: locale === 'zh-cn' ? '教程' : 'Tutorial',
+        item: `${siteUrl}/${locale}/`
+      }
+    ]
+  }
+  head.push(['script', { type: 'application/ld+json', class: 'breadcrumb-jsonld' }, JSON.stringify(breadcrumbJsonLd)])
 
   return head
 }
@@ -1053,12 +1097,20 @@ export default defineConfig({
 
   // Sitemap 配置
   sitemap: {
-    hostname: 'https://datawhalechina.github.io/easy-vibe',
+    hostname: siteUrl,
+    changefreq: 'weekly',
+    priority: {
+      '/': 1.0,
+      '/zh-cn/': 0.9,
+      '/zh-cn/stage-0/': 0.9,
+      '/zh-cn/stage-1/': 0.8,
+      '/zh-cn/stage-2/': 0.8,
+      '/zh-cn/stage-3/': 0.8,
+      '/zh-cn/appendix/': 0.7
+    },
     transformItems(items) {
-      // 过滤掉旧版内容和未完成的语言版本
       return items.filter((item) => {
         const url = item.url
-        // 排除旧版内容目录
         if (
           url.includes('/extra/') ||
           url.includes('/examples/') ||
@@ -1066,10 +1118,41 @@ export default defineConfig({
         ) {
           return false
         }
-        // 包含所有语言版本
         return true
       })
     }
+  },
+
+  // 构建结束时动态生成 robots.txt
+  async buildEnd(siteConfig) {
+    const fs = await import('fs')
+    const path = await import('path')
+    
+    const robotsTxt = `# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# 禁止搜索引擎抓取旧版内容（已迁移到新目录结构）
+Disallow: /zh-cn/extra/
+Disallow: /zh-cn/examples/
+Disallow: /zh-cn/project/
+Disallow: /en/extra/
+Disallow: /en/examples/
+Disallow: /en/project/
+
+# 禁止抓取 VitePress 缓存和构建文件
+Disallow: /.vitepress/
+Disallow: /@fs/
+
+# Sitemap 位置
+Sitemap: ${siteUrl}/sitemap.xml
+`
+    
+    const outDir = siteConfig.outDir || path.resolve(__dirname, '.vitepress/dist')
+    const robotsPath = path.join(outDir, 'robots.txt')
+    
+    fs.writeFileSync(robotsPath, robotsTxt, 'utf-8')
+    console.log('✓ Generated robots.txt with sitemap URL:', `${siteUrl}/sitemap.xml`)
   },
 
   // 多语言配置 - 使用 cn/en-us/ja 结构
