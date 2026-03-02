@@ -226,23 +226,120 @@ Agent 通常采用三种记忆类型协同工作：
 
 ## 7. 主流框架对比
 
-目前主流的 Agent 开发框架：
+目前主流的 Agent 开发框架有很多，包括 LangChain、LlamaIndex、CrewAI、AutoGen，以及 Anthropic 官方推出的 Claude Agent SDK。它们各有特色，适用于不同的场景。
 
 <FrameworkComparisonDemo />
 
-### 7.1 框架选择指南
+### 7.1 核心差异：官方原生 vs 第三方封装
 
-<FrameworkSelectionDemo />
+| 对比项 | Claude Agent SDK | LangChain / LlamaIndex / CrewAI 等 |
+|--------|------------------|-----------------------------------|
+| **开发方** | Anthropic 官方 | 第三方开源社区 |
+| **模型优化** | 为 Claude 深度优化 | 多模型通用，需要自行调优 |
+| **内置工具** | 读写文件、Bash、搜索等开箱即用 | 需要自行集成或配置 |
+| **Agent Loop** | 内置，无需实现 | 需要自己组装或依赖框架抽象 |
+| **代码生成质量** | 针对代码场景专项优化 | 通用设计，代码能力依赖模型本身 |
+| **学习曲线** | 低，API 简洁 | 中高，概念多、抽象层复杂 |
 
-### 7.2 框架对比表
+### 7.2 Claude Agent SDK vs LangChain
 
-| 特性 | LangChain | AutoGen | CrewAI |
-|:-----|:----------|:--------|:-------|
-| **核心定位** | 通用 LLM 应用框架 | 多 Agent 协作 | 角色驱动团队 |
-| **学习曲线** | 中等 | 较陡 | 平缓 |
-| **多 Agent** | 通过 LangGraph 支持 | ✅ 原生支持 | ✅ 原生支持 |
-| **代码执行** | 需额外配置 | ✅ 内置支持 | 需额外配置 |
-| **适用场景** | 企业级定制 | 编程/数据分析 | 内容创作/研究 |
+**LangChain** 是最流行的 Agent 框架之一，提供了丰富的组件和链式调用能力：
+
+```python
+# LangChain：需要组装多个组件
+from langchain.agents import AgentExecutor, create_react_agent
+from langchain.tools import tool
+from langchain import hub
+
+@tool
+def read_file(path: str) -> str:
+    """读取文件内容"""
+    with open(path) as f:
+        return f.read()
+
+# 需要自己定义 prompt、组装 agent、处理工具循环
+prompt = hub.pull("hwchase17/react")
+agent = create_react_agent(llm, [read_file], prompt)
+agent_executor = AgentExecutor(agent=agent, tools=[read_file])
+result = agent_executor.invoke({"input": "修复 auth.py 的 bug"})
+```
+
+```python
+# Claude Agent SDK：一行搞定，工具内置
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+async for message in query(
+    prompt="修复 auth.py 的 bug",
+    options=ClaudeAgentOptions(allowed_tools=["Read", "Edit", "Bash"]),
+):
+    print(message)
+```
+
+**关键区别**：
+- LangChain 是**工具箱**，你需要自己挑选组件、组装流程
+- Agent SDK 是**成品**，针对代码场景已经调优好，拿来即用
+
+### 7.3 Claude Agent SDK vs CrewAI
+
+**CrewAI** 专注于多 Agent 协作，强调角色扮演和任务分配：
+
+```python
+# CrewAI：定义多个角色协作
+from crewai import Agent, Task, Crew
+
+coder = Agent(role="程序员", goal="编写代码", backstory="...")
+reviewer = Agent(role="审查员", goal="审查代码", backstory="...")
+
+task = Task(description="开发功能", agent=coder)
+crew = Crew(agents=[coder, reviewer], tasks=[task])
+result = crew.kickoff()
+```
+
+**关键区别**：
+- CrewAI 擅长**角色扮演**和**协作流程**设计，适合模拟团队工作流
+- Agent SDK 专注于**代码执行**和**工具调用**，适合实际开发任务
+
+### 7.4 Claude Agent SDK vs LlamaIndex
+
+**LlamaIndex** 核心是 RAG（检索增强生成），专注于连接 LLM 与外部数据：
+
+```python
+# LlamaIndex：构建知识库查询
+from llama_index import VectorStoreIndex, SimpleDirectoryReader
+
+documents = SimpleDirectoryReader("data").load_data()
+index = VectorStoreIndex.from_documents(documents)
+query_engine = index.as_query_engine()
+response = query_engine.query("总结这份文档")
+```
+
+**关键区别**：
+- LlamaIndex 是**数据连接器**，解决"如何让 LLM 访问我的数据"
+- Agent SDK 是**任务执行器**，解决"如何让 LLM 完成复杂开发任务"
+
+### 7.5 综合对比表
+
+| 特性 | Claude Agent SDK | LangChain | CrewAI | LlamaIndex | AutoGen |
+|:-----|:-----------------|:----------|:-------|:-----------|:--------|
+| **开发方** | Anthropic 官方 | 第三方 | 第三方 | 第三方 | 微软 |
+| **核心定位** | 代码开发 Agent | 通用 LLM 框架 | 角色驱动团队 | 数据检索增强 | 多 Agent 协作 |
+| **学习曲线** | 平缓 | 中等 | 平缓 | 中等 | 较陡 |
+| **内置工具** | ✅ 丰富（文件、Bash、搜索） | 需配置 | 需配置 | 需配置 | ✅ 代码执行 |
+| **多 Agent** | ✅ 支持 | 通过 LangGraph | ✅ 原生 | ❌ | ✅ 原生 |
+| **代码场景** | ✅ 深度优化 | 一般 | 一般 | 不适用 | ✅ 编程支持 |
+| **模型绑定** | Claude 专用 | 多模型 | 多模型 | 多模型 | 多模型 |
+| **适用场景** | 自动化开发、CI/CD | 企业级定制 | 内容创作/研究 | 知识库问答 | 编程/数据分析 |
+
+### 7.6 框架选择建议
+
+| 如果你的需求是... | 推荐框架 |
+|:-----------------|:---------|
+| **代码开发、自动化修复、CI/CD 集成** | Claude Agent SDK |
+| **高度自定义流程、多模型支持** | LangChain |
+| **多 Agent 角色扮演、模拟团队协作** | CrewAI |
+| **构建企业知识库、文档问答** | LlamaIndex |
+| **编程任务、数据分析、多 Agent 协作** | AutoGen |
+| **研究性项目、探索完全自主 AI** | AutoGPT |
 
 ---
 

@@ -54,6 +54,23 @@ async for message in query(
 
 ---
 
+## 它和其他 Agent 框架有什么区别？
+
+市面上有很多 Agent 框架——LangChain、LlamaIndex、CrewAI、AutoGPT……Claude Agent SDK 和它们相比有什么独特之处？
+
+> 📚 **详细对比请参考附录**：[主流 Agent 框架对比](/zh-cn/appendix/8-artificial-intelligence/ai-agents.html#_7-主流框架对比)
+
+简单来说：
+
+| 框架 | 最适合的场景 |
+|------|-------------|
+| **Claude Agent SDK** | 让 Claude 自主完成代码开发、文件操作、命令执行 |
+| **LangChain** | 构建复杂的通用 AI 应用，需要高度自定义流程 |
+| **CrewAI** | 模拟多角色协作场景（如虚拟团队、角色扮演） |
+| **LlamaIndex** | 构建知识库问答系统，连接企业数据与 LLM |
+
+---
+
 ## 安装和配置
 
 ### 安装
