@@ -442,3 +442,24 @@ Vibe Coding 的工作流总结：
 | [Headless UI](https://headlessui.com) | ~27k | Tailwind Labs 官方出品的无样式组件库，同时支持 React 和 Vue | 搭配 Tailwind CSS 使用 |
 | [HeroUI](https://heroui.com) | ~24k | 基于 Tailwind CSS + React Aria，默认样式精美，动画流畅 | 追求视觉品质的项目 |
 | [Radix UI](https://www.radix-ui.com) | ~17k | 无样式底层组件原语库，专注无障碍和组件行为，是 shadcn/ui 的底层基础 | 构建自定义设计系统 |
+
+#### shadcn/ui 扩展生态
+
+除了上述通用组件库，shadcn/ui 生态中还涌现了大量基于其理念的扩展库，为特定场景提供差异化选择。这些扩展库同样采用"复制代码到项目"的模式，让开发者拥有完全的源码控制权。
+
+| 组件库 | 简介 | 适用场景 |
+| :--- | :--- | :--- |
+| [Aceternity UI](https://ui.aceternity.com) | 200+ 生产级组件，主打发光卡片、文字渐变、3D 地球等特色视觉组件 | 高质感落地页、SaaS 产品 |
+| [Tailark UI](https://tailark.com) | 营销网站组件块集合，产品展示、客户证言、CTA 按钮等营销高频模块 | 营销落地页、产品官网 |
+| [UI Tripled](https://ui.tripled.work) | 基于 Framer Motion 的动态交互组件，弹窗、导航、卡片动画 | 创意工具、个人作品集 |
+| [Neobrutalism UI](https://neobrutalism.dev) | 新粗野主义风格，粗线条、高对比度、鲜明色彩 | 个性化品牌官网、创意项目 |
+| [REUI](https://reui.io) | 967+ 真实业务场景的组件组合模式 | 企业级后台、复杂表单 |
+| [Cult UI](https://cult-ui.com) | 更细的交互/视觉打磨，数据表格、筛选面板等复合组件 | 高质感商业项目 |
+| [Kibo UI](https://kibo-ui.com) | 高级业务组件，颜色选择器、富文本编辑器、文件上传等 | 管理后台、工具类产品 |
+| [Kokonut UI](https://kokonutui.com) | 100+ 组件 + 7+ 完整模板，清新简约风格 | SaaS 官网、博客、电商 |
+| [Commerce UI](https://ui.stackzero.co) | 电商场景专用，商品卡片、购物车、结算表单 | 电商平台 |
+| [shadcnblocks](https://shadcnblocks.com) | 1373 个 UI 块 + 13 套完整模板，资源最全面 | 所有场景 |
+| [Shoogle](https://shoogle.dev) | shadcn/ui 生态聚合检索平台 | 快速查找资源 |
+| [Discover All Shadcn](https://allshadcn.com) | 聚合型资源导航 | 快速查找资源 |
+
+> **为什么选择 shadcn/ui 扩展？** 这些扩展继承了 shadcn/ui"代码所有权"的理念，同时为特定场景做了深度定制。Vibe Coding 时代，它们让你能快速找到符合设计需求的组件，跳出主流 UI 库的同质化，做出更具差异化的产品。

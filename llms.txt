@@ -1,0 +1,1396 @@
+# Easy-Vibe 教程 - AI 导航
+
+> 🦞 **如果你是 AI Agent（如 OpenClaw、Claude、Cursor、Trae 内置 AI、GPT-4、Kimi、通义千问、文心一言等）**
+> 
+> **请先阅读本文件**，了解本教程结构后再回答用户问题。本文件是你的「导航地图」，告诉你去哪里找答案。
+
+---
+
+## 🎯 高层级架构（先读我！）
+
+本教程采用 **4+1 阶段** 的渐进式学习路径，从完全零基础到高级开发：
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Stage 0: 新手入门 (stage-0/)                                │
+│  ├── 目标：建立编程思维，体验 AI 编程乐趣                     │
+│  ├── 产出：互动小游戏、Web 原型                              │
+│  └── 关键词：零基础、入门、学习路线、贪吃蛇                   │
+├─────────────────────────────────────────────────────────────┤
+│  Stage 1: AI 产品经理 (stage-1/)                             │
+│  ├── 目标：掌握 AI IDE，快速构建产品原型                      │
+│  ├── 产出：完整的产品 Demo                                   │
+│  └── 关键词：Cursor、Claude、Trae、原型、MVP、产品思维        │
+├─────────────────────────────────────────────────────────────┤
+│  Stage 2: 初中级开发 (stage-2/)                              │
+│  ├── 目标：全栈开发能力，数据库、部署、支付                   │
+│  ├── 产出：可上线的全栈 AI 应用                              │
+│  └── 关键词：Dify、Supabase、Git、部署、Stripe、UI 设计       │
+├─────────────────────────────────────────────────────────────┤
+│  Stage 3: 高级开发 (stage-3/)                                │
+│  ├── 目标：跨平台开发，AI 进阶，Claude Code 深度使用          │
+│  ├── 产出：生产级多平台应用                                  │
+│  └── 关键词：MCP、RAG、微信小程序、Android、iOS、Electron     │
+├─────────────────────────────────────────────────────────────┤
+│  附录：知识体系 (appendix/)                                  │
+│  ├── 目标：计算机基础到工程素养的完整知识库                   │
+│  ├── 内容：9 大领域，80+ 交互式专题                          │
+│  └── 关键词：计算机基础、前端、后端、AI 原理、架构、运维       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 快速决策树
+
+当用户提问时，按以下优先级定位：
+
+1. **问"怎么开始/零基础"** → Stage 0
+2. **问"AI IDE/Cursor/Claude/Trae"** → Stage 1
+3. **问"数据库/部署/全栈"** → Stage 2
+4. **问"MCP/小程序/跨平台"** → Stage 3
+5. **问"计算机基础/原理"** → 附录
+
+---
+
+## 📂 目录结构速查
+
+```
+docs/zh-cn/
+├── stage-0/                    # 新手入门
+│   ├── 0.1-learning-map/       # 学习路线图
+│   └── 0.2-ai-capabilities-through-games/  # 贪吃蛇游戏
+├── stage-1/                    # AI 产品经理
+│   ├── 1.0-finding-great-idea/ # 找到好创意
+│   ├── 1.1-introduction-to-ai-ide/         # AI IDE 入门
+│   ├── 1.2-building-prototype/ # 原型开发
+│   ├── 1.3-integrating-ai-capabilities/    # 接入 AI 能力
+│   ├── 1.4-complete-project-practice/      # 完整项目实战
+│   └── appendix-*/             # 产品思维、常见错误、场景附录
+├── stage-2/                    # 初中级开发
+│   ├── ai-capabilities/        # AI 能力 (Dify、多模态)
+│   ├── backend/                # 后端 (数据库、Git、部署、支付)
+│   ├── frontend/               # 前端 (Figma、UI、组件库)
+│   └── assignments/            # 作业
+├── stage-3/                    # 高级开发
+│   ├── core-skills/            # 核心技能 (Claude、MCP、Agent)
+│   ├── ai-advanced/            # AI 进阶 (RAG、LangGraph)
+│   ├── cross-platform/         # 跨平台 (小程序、App、桌面)
+│   └── personal-brand/         # 个人品牌
+└── appendix/                   # 附录知识体系
+    ├── 1-computer-fundamentals/    # 计算机基础
+    ├── 2-development-tools/        # 开发工具
+    ├── 3-browser-and-frontend/     # 浏览器与前端
+    ├── 4-server-and-backend/       # 服务器与后端
+    ├── 5-data/                     # 数据
+    ├── 6-architecture-and-system-design/  # 架构设计
+    ├── 7-infrastructure-and-operations/   # 运维
+    ├── 8-artificial-intelligence/  # 人工智能
+    └── 9-engineering-excellence/   # 工程卓越
+```
+
+---
+
+## 🔍 详细文章索引
+
+### Stage 0: 新手入门（零基础）
+
+#### 0.1 学习路线图
+**文件**: `docs/zh-cn/stage-0/0.1-learning-map/index.md`
+
+**关键词**: 入门、零基础、怎么开始、学习路线、学习路径、成长路径、职业规划、阶段划分、新手引导、教程介绍、课程概览、适合谁学、前置要求、学习顺序、从哪开始、第一步
+
+**内容概要**: 完整学习路线图，介绍 4 个阶段的学习目标和适合人群
+
+---
+
+#### 0.2 AI 能力体验 - 贪吃蛇游戏
+**文件**: `docs/zh-cn/stage-0/0.2-ai-capabilities-through-games/index.md`
+
+**关键词**: 贪吃蛇、游戏、第一个项目、零基础项目、入门实战、AI 编程初体验、小游戏开发、网页游戏、Canvas、JavaScript 游戏、游戏逻辑、键盘控制、碰撞检测、得分系统、游戏循环、requestAnimationFrame
+
+**内容概要**: 用 AI 辅助开发第一个贪吃蛇游戏，理解 AI 编程的基本流程
+
+---
+
+### Stage 1: AI 产品经理（原型开发）
+
+#### 1.0 找到好创意
+**文件**: `docs/zh-cn/stage-1/1.0-finding-great-idea/index.md`
+
+**关键词**: 创意、想法、Idea、产品创意、需求挖掘、用户痛点、市场调研、竞品分析、创新思维、 brainstorming、头脑风暴、产品定位、目标用户、价值主张、MVP 定义、最小可行产品
+
+**内容概要**: 如何找到有价值的产品创意，定义 MVP 范围
+
+---
+
+#### 1.1 AI IDE 入门
+**文件**: `docs/zh-cn/stage-1/1.1-introduction-to-ai-ide/index.md`
+
+**关键词**: Cursor、Claude、Trae、AI IDE、安装、配置、环境搭建、本地开发、IDE 选择、代码编辑器、AI 辅助编程、智能补全、代码生成、自然语言编程、Vibe Coding、提示词技巧、AI 对话、代码解释、代码重构
+
+**内容概要**: 主流 AI IDE 工具的安装配置和使用方法
+
+---
+
+#### 1.2 原型开发
+**文件**: `docs/zh-cn/stage-1/1.2-building-prototype/index.md`
+
+**关键词**: 原型、Demo、快速搭建、MVP、最小可行产品、产品原型、快速验证、低保真、高保真、原型工具、交互设计、用户流程、页面跳转、组件复用、响应式布局、移动端适配
+
+**内容概要**: 快速搭建产品原型，验证产品概念
+
+---
+
+#### 1.3 接入 AI 能力
+**文件**: `docs/zh-cn/stage-1/1.3-integrating-ai-capabilities/index.md`
+
+**关键词**: 接入 AI、API、大模型、AI 能力、LLM、OpenAI、Claude API、GPT、文本生成、聊天机器人、API Key、接口调用、HTTP 请求、JSON、异步处理、错误处理、流式输出、SSE、Token 限制、成本控制
+
+**内容概要**: 如何在项目中接入大模型 API，实现 AI 功能
+
+---
+
+#### 1.4 完整项目实战
+**文件**: `docs/zh-cn/stage-1/1.4-complete-project-practice/index.md`
+
+**关键词**: 完整项目、实战、练手、综合案例、项目实战、端到端、从零开始、项目结构、代码组织、最佳实践、常见问题、调试技巧、测试验证、项目复盘
+
+**内容概要**: 一个完整的项目实战，串联前面所学知识
+
+---
+
+#### 附录 A: 产品思维
+**文件**: `docs/zh-cn/stage-1/appendix-a-product-thinking/index.md`
+
+**关键词**: 产品思维、需求分析、用户研究、产品设计、用户体验、UX、功能优先级、产品文档、PRD、用户故事、敏捷开发、迭代思维、数据驱动、A/B 测试、产品方法论
+
+**内容概要**: 产品经理必备的思维模式和方法论
+
+---
+
+#### 附录 B: 常见错误
+**文件**: `docs/zh-cn/stage-1/appendix-b-common-errors/index.md`
+
+**关键词**: 常见错误、错误排查、问题解决、Bug、调试、报错信息、环境错误、依赖问题、网络问题、权限问题、配置错误、语法错误、运行时错误、逻辑错误、调试技巧
+
+**内容概要**: 初学者常犯的错误及解决方法
+
+---
+
+#### 附录: 行业场景
+**文件**: `docs/zh-cn/stage-1/appendix-industry-scenarios/index.md`
+
+**关键词**: 行业场景、行业应用、垂直领域、教育行业、医疗行业、金融行业、电商行业、餐饮行业、旅游行业、SaaS、B2B、B2C、行业解决方案
+
+**内容概要**: AI 编程在不同行业的应用场景
+
+---
+
+#### 附录: 消费场景
+**文件**: `docs/zh-cn/stage-1/appendix-c-consumer-scenarios/index.md`
+
+**关键词**: 消费场景、C 端产品、社交应用、内容创作、娱乐应用、工具应用、生活方式、个人效率、健康管理、学习成长
+
+**内容概要**: 面向消费者的 AI 应用场景
+
+---
+
+#### 附录文章 0-1: 贪吃蛇游戏教程
+**文件**: `docs/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial.md`
+
+**关键词**: 贪吃蛇教程、游戏开发、Canvas API、键盘事件、游戏循环、碰撞检测、得分系统、游戏状态、开始界面、结束界面、代码详解
+
+**内容概要**: 详细的贪吃蛇游戏开发教程
+
+---
+
+#### 附录文章 0-2: AI 编程与设计代理
+**文件**: `docs/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents.md`
+
+**关键词**: AI 设计、设计代理、网站生成、AI 辅助设计、视觉设计、UI 生成、设计系统、设计稿转代码、Design-to-Code
+
+**内容概要**: 使用 AI 设计代理和编程代理协作完成网站
+
+---
+
+### Stage 2: 初中级开发（全栈技能）
+
+#### 2.1 Dify 知识库
+**文件**: `docs/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/index.md`
+
+**关键词**: Dify、知识库、RAG、智能客服、文档问答、知识管理、向量数据库、Embedding、文本向量化、语义搜索、知识检索、问答系统、Bot、AI 应用平台、工作流、Prompt 工程、知识库搭建
+
+**内容概要**: 使用 Dify 搭建基于知识库的 AI 应用
+
+---
+
+#### 2.2 多模态 API
+**文件**: `docs/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/index.md`
+
+**关键词**: 多模态、图片识别、语音、图像理解、视觉模型、VLM、语音识别、语音合成、TTS、ASR、OCR、图像生成、文生图、图生图、GPT-4V、Claude Vision、文件上传、Base64、图像处理
+
+**内容概要**: 多模态 AI 能力的接入和使用
+
+---
+
+#### 2.2 Supabase 数据库
+**文件**: `docs/zh-cn/stage-2/backend/2.2-database-supabase/index.md`
+
+**关键词**: 数据库、Supabase、PostgreSQL、后端、数据存储、表设计、CRUD、增删改查、SQL、NoSQL、数据库连接、ORM、Prisma、数据模型、关系型数据库、主键外键、索引、查询优化、实时数据库、Row Level Security、RLS
+
+**内容概要**: 使用 Supabase 作为后端数据库，实现数据持久化
+
+---
+
+#### 2.3 AI 接口开发
+**文件**: `docs/zh-cn/stage-2/backend/2.3-ai-interface-code/index.md`
+
+**关键词**: AI 接口、后端开发、API 设计、RESTful、接口开发、路由、控制器、服务端、Node.js、Express、Koa、Fastify、中间件、请求处理、响应格式、状态码、错误处理、接口文档、Swagger、OpenAPI
+
+**内容概要**: 开发 AI 相关的后端接口
+
+---
+
+#### 2.4 Git 工作流
+**文件**: `docs/zh-cn/stage-2/backend/2.4-git-workflow/index.md`
+
+**关键词**: Git、版本控制、协作、代码管理、分支、Branch、Merge、Pull Request、PR、Commit、仓库、Repository、GitHub、GitLab、代码冲突、代码回滚、Cherry Pick、Rebase、Git Flow、团队协作
+
+**内容概要**: Git 版本控制和团队协作流程
+
+---
+
+#### 2.5 Zeabur 部署
+**文件**: `docs/zh-cn/stage-2/backend/2.5-zeabur-deployment/index.md`
+
+**关键词**: 部署、上线、Vercel、Zeabur、云部署、CI/CD、持续集成、持续部署、域名、DNS、HTTPS、SSL、服务器、容器、Docker、环境变量、生产环境、Staging、Preview、自动化部署
+
+**内容概要**: 将应用部署到云端，实现线上访问
+
+---
+
+#### 2.6 现代 CLI 工具
+**文件**: `docs/zh-cn/stage-2/backend/2.6-modern-cli/index.md`
+
+**关键词**: CLI、命令行、终端、Shell、Bash、Zsh、命令行工具、npm、yarn、pnpm、包管理、脚本、自动化、终端美化、Oh My Zsh、Homebrew、包管理器、环境配置
+
+**内容概要**: 现代命令行开发工具的使用
+
+---
+
+#### 2.7 Stripe 支付
+**文件**: `docs/zh-cn/stage-2/backend/2.7-stripe-payment/index.md`
+
+**关键词**: 支付、Stripe、收款、付款、支付网关、支付集成、订阅、Subscription、Checkout、支付表单、Webhook、支付回调、订单、发票、支付安全、PCI、货币、汇率
+
+**内容概要**: 集成 Stripe 支付功能
+
+---
+
+#### 2.0 Lovart 资源
+**文件**: `docs/zh-cn/stage-2/frontend/2.0-lovart-assets/index.md`
+
+**关键词**: Lovart、资源、素材、图片、图标、设计资源、UI 资源、插画、矢量图、免费素材、商用素材、Unsplash、Iconfont、设计系统
+
+**内容概要**: 设计资源和素材的获取与使用
+
+---
+
+#### 2.1 Figma MasterGo
+**文件**: `docs/zh-cn/stage-2/frontend/2.1-figma-mastergo/index.md`
+
+**关键词**: Figma、MasterGo、设计稿、转代码、Design-to-Code、设计工具、UI 设计、原型设计、设计规范、组件库、设计系统、切图、标注、设计交付、设计协作
+
+**内容概要**: 从设计稿到代码的转换
+
+---
+
+#### 2.2 UI 设计
+**文件**: `docs/zh-cn/stage-2/frontend/2.2-ui-design/index.md`
+
+**关键词**: UI 设计、界面、美观、视觉设计、排版、配色、字体、间距、布局、设计原则、设计模式、用户体验、交互设计、动效、微交互、设计趋势
+
+**内容概要**: UI 设计基础和最佳实践
+
+---
+
+#### 2.3 多端产品 UI
+**文件**: `docs/zh-cn/stage-2/frontend/2.3-multi-product-ui/index.md`
+
+**关键词**: 多端、响应式、移动端、PC 端、平板、适配、断点、Media Query、Flexbox、Grid、Viewport、移动端优先、桌面端、跨设备
+
+**内容概要**: 多端产品的 UI 适配
+
+---
+
+#### 2.4 LLM 技能美化
+**文件**: `docs/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/index.md`
+
+**关键词**: LLM 技能、美化、提示词优化、Prompt 美化、输出格式化、Markdown、代码高亮、流式输出、打字机效果、UI 美化、聊天界面
+
+**内容概要**: 优化 LLM 输出的展示效果
+
+---
+
+#### 2.5 哈利波特画像
+**文件**: `docs/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/index.md`
+
+**关键词**: 哈利波特、画像、AI 绘画、图像生成、文生图、Stable Diffusion、Midjourney、DALL-E、图像处理、Canvas、特效、动画
+
+**内容概要**: AI 图像生成和前端展示
+
+---
+
+#### 2.6 设计转代码
+**文件**: `docs/zh-cn/stage-2/frontend/2.6-design-to-code/index.md`
+
+**关键词**: 设计转代码、Design-to-Code、自动代码生成、Figma 插件、代码导出、像素完美、设计还原、CSS、Tailwind、样式提取
+
+**内容概要**: 自动化设计稿转代码的工具和方法
+
+---
+
+#### 2.7 现代组件库
+**文件**: `docs/zh-cn/stage-2/frontend/2.7-modern-component-library/index.md`
+
+**关键词**: 组件库、Element Plus、Ant Design、Material UI、Chakra UI、组件封装、复用、Props、Event、Slot、表单组件、数据展示、导航组件、反馈组件
+
+**内容概要**: 使用现代组件库加速开发
+
+---
+
+#### 作业 2.1: 全栈应用
+**文件**: `docs/zh-cn/stage-2/assignments/2.1-fullstack-app/index.md`
+
+**关键词**: 作业、全栈应用、综合练习、项目作业、实战练习、考核、项目要求、评分标准
+
+**内容概要**: Stage 2 的综合作业要求
+
+---
+
+#### 作业 2.2: 现代前端 Trae
+**文件**: `docs/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/index.md`
+
+**关键词**: 作业、Trae、现代前端、项目作业、实战练习、考核
+
+**内容概要**: 使用 Trae 完成现代前端开发作业
+
+---
+
+### Stage 3: 高级开发（跨平台 & AI 进阶）
+
+#### 3.0 基础技能
+**文件**: `docs/zh-cn/stage-3/core-skills/basics/index.md`
+
+**关键词**: 高级基础、核心技能、进阶知识、高级工程师、技术深度、编程范式、设计模式、代码质量、重构、性能优化、Claude、Claude Code、Anthropic
+
+**内容概要**: 高级开发必备的基础技能
+
+---
+
+#### 3.0 工作流
+**文件**: `docs/zh-cn/stage-3/core-skills/workflow/index.md`
+
+**关键词**: 工作流、开发流程、工程化、自动化、DevOps、开发规范、代码审查、Code Review、团队协作、项目管理、Claude、Claude Code
+
+**内容概要**: 高级开发的工程化工作流
+
+---
+
+#### 3.0 技能清单
+**文件**: `docs/zh-cn/stage-3/core-skills/skills/index.md`
+
+**关键词**: 技能清单、技能树、能力模型、技术栈、技术选型、技能评估、学习路径、进阶路线、Claude、Claude Code
+
+**内容概要**: 高级开发技能清单和学习路线
+
+---
+
+#### 3.0 超能力
+**文件**: `docs/zh-cn/stage-3/core-skills/superpowers/index.md`
+
+**关键词**: 超能力、高级技巧、黑科技、效率工具、开发神器、生产力、快捷键、插件、工具链、Claude、Claude Code
+
+**内容概要**: 提升开发效率的高级技巧和工具
+
+---
+
+#### 3.0 移动开发
+**文件**: `docs/zh-cn/stage-3/core-skills/mobile-development/index.md`
+
+**关键词**: 移动开发、移动端、React Native、Flutter、混合开发、H5、WebView、原生开发、App 开发、移动端优化、Claude、Claude Code
+
+**内容概要**: 移动应用开发技术概览
+
+---
+
+#### 3.0 规范编程
+**文件**: `docs/zh-cn/stage-3/core-skills/spec-coding/index.md`
+
+**关键词**: 规范编程、代码规范、ESLint、Prettier、TypeScript、类型安全、代码风格、命名规范、注释规范、文档规范、Claude、Claude Code
+
+**内容概要**: 规范化编程实践
+
+---
+
+#### 3.0 Claude Agent SDK
+**文件**: `docs/zh-cn/stage-3/core-skills/claude-agent-sdk/index.md`
+
+**关键词**: Claude、Claude Code、Claude Agent、SDK、Anthropic、Agent 开发、AI Agent、工具调用、Function Calling、Computer Use、核心技能、core-skills
+
+**内容概要**: Claude Agent SDK 的使用
+
+---
+
+#### 3.0 MCP 工具
+**文件**: `docs/zh-cn/stage-3/core-skills/mcp/index.md`
+
+**关键词**: MCP、Model Context Protocol、工具调用、Claude、Claude Code、外部工具、工具定义、Tool Definition、Function Calling、工具生态、MCP Server、MCP Client、上下文协议、AI 工具链、核心技能、core-skills
+
+**内容概要**: MCP 协议的完整使用指南
+
+---
+
+#### 3.0 Agent 团队
+**文件**: `docs/zh-cn/stage-3/core-skills/agent-teams/index.md`
+
+**关键词**: Agent 团队、多 Agent 协作、Multi-Agent、Agent 编排、角色分工、协作模式、工作流编排、LangChain、AutoGen、CrewAI、Claude、Claude Code、核心技能、core-skills
+
+**内容概要**: 多 Agent 协作系统的设计与实现
+
+---
+
+#### 3.0 长任务处理
+**文件**: `docs/zh-cn/stage-3/core-skills/long-running-tasks/index.md`
+
+**关键词**: 长任务、异步、后台任务、任务队列、Job Queue、Celery、Bull、Redis、消息队列、任务调度、定时任务、Cron、重试机制、任务状态、进度追踪、Claude、Claude Code、核心技能、core-skills
+
+**内容概要**: 长时间运行任务的处理方案
+
+---
+
+#### 3.A1 RAG 入门
+**文件**: `docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/index.md`
+
+**关键词**: RAG、检索增强生成、向量检索、Embedding、向量数据库、Pinecone、Weaviate、Milvus、Chroma、文档切分、Chunking、相似度搜索、语义检索、知识增强
+
+**内容概要**: RAG 技术的基础概念和实现
+
+---
+
+#### 3.A2 LangGraph 高级 RAG
+**文件**: `docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/index.md`
+
+**关键词**: LangGraph、高级 RAG、知识图谱、GraphRAG、Agentic RAG、多跳推理、查询重写、重排序、ReRank、混合检索、Self-RAG、Corrective RAG、自适应 RAG
+
+**内容概要**: 使用 LangGraph 实现高级 RAG 系统
+
+---
+
+#### 3.3 微信小程序
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/index.md`
+
+**关键词**: 微信小程序、小程序开发、微信开发、WXML、WXSS、小程序框架、云开发、小程序组件、小程序 API、微信支付、小程序发布、审核
+
+**内容概要**: 微信小程序开发完整指南
+
+---
+
+#### 3.4 小程序后端
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/index.md`
+
+**关键词**: 小程序后端、云开发、微信云开发、云函数、云数据库、云存储、Serverless、小程序登录、OpenID、UnionID、鉴权
+
+**内容概要**: 微信小程序后端开发
+
+---
+
+#### 3.5 Android App
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.5-android-app/index.md`
+
+**关键词**: Android、安卓 App、Kotlin、Java、Android Studio、移动端开发、原生应用、APK、Google Play、Android SDK、Jetpack Compose
+
+**内容概要**: Android 应用开发
+
+---
+
+#### 3.6 iOS App
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.6-ios-app/index.md`
+
+**关键词**: iOS、苹果 App、Swift、SwiftUI、Xcode、移动端开发、原生应用、App Store、iOS SDK、UIKit、TestFlight
+
+**内容概要**: iOS 应用开发
+
+---
+
+#### 3.7 个人网站博客
+**文件**: `docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/index.md`
+
+**关键词**: 个人网站、博客、Portfolio、个人品牌、个人主页、简历网站、作品集、静态网站、SSG、Next.js、Nuxt、Hexo、Hugo、VitePress、域名、托管
+
+**内容概要**: 搭建个人网站和博客
+
+---
+
+#### 3.8 PWA 本地应用
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/index.md`
+
+**关键词**: PWA、Progressive Web App、离线应用、Service Worker、Web App Manifest、本地存储、IndexedDB、Cache、添加到桌面、离线访问
+
+**内容概要**: 构建渐进式 Web 应用
+
+---
+
+#### 3.9 浏览器 AI 插件
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.9-browser-ai-extension/index.md`
+
+**关键词**: 浏览器插件、Extension、Chrome Extension、Firefox Addon、插件开发、Content Script、Background Script、Popup、Manifest V3、浏览器扩展、AI 插件
+
+**内容概要**: 开发浏览器 AI 插件
+
+---
+
+#### 3.10 Electron 语音转文字
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/index.md`
+
+**关键词**: Electron、桌面应用、跨平台桌面、语音转文字、ASR、语音识别、Whisper、桌面端、窗口应用、主进程、渲染进程、IPC
+
+**内容概要**: 使用 Electron 开发语音转文字桌面应用
+
+---
+
+#### 3.11 NFT 铸造
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.11-nft-minting/index.md`
+
+**关键词**: NFT、铸造、区块链、Web3、智能合约、Solidity、以太坊、钱包、MetaMask、IPFS、数字藏品、Gas Fee、合约部署
+
+**内容概要**: NFT 铸造和 Web3 开发
+
+---
+
+#### 3.12 VS Code 插件
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.12-vscode-extension/index.md`
+
+**关键词**: VS Code 插件、Extension、编辑器插件、VS Code API、Command、Tree View、Webview、Language Server、代码补全、语法高亮
+
+**内容概要**: 开发 VS Code 插件
+
+---
+
+#### 3.13 Qt 工业 HMI
+**文件**: `docs/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/index.md`
+
+**关键词**: Qt、工业 HMI、人机界面、工控、SCADA、C++、QML、工业自动化、实时监控、数据采集、PLC、Modbus、OPC UA
+
+**内容概要**: 使用 Qt 开发工业人机界面
+
+---
+
+## 附录：知识体系
+
+### 一、计算机基础
+
+#### 1. Vibe Coding 时代全栈开发
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/vibe-coding-fullstack.md`
+
+**关键词**: Vibe Coding、全栈开发、AI 编程、前端、后端、编程语言、工程师成长、技术栈、职业发展
+
+---
+
+#### 2. 从晶体管到 CPU
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu.md`
+
+**关键词**: 晶体管、CPU、计算机组成、硬件、逻辑门、运算器、控制器、寄存器、指令集、汇编、机器码、冯诺依曼
+
+---
+
+#### 3. 操作系统
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/operating-systems.md`
+
+**关键词**: 操作系统、OS、进程、线程、内存管理、文件系统、调度、并发、同步、死锁、虚拟内存、内核、用户态
+
+---
+
+#### 4. 数据编码与存储
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage.md`
+
+**关键词**: 数据编码、二进制、字符编码、UTF-8、ASCII、Unicode、数据压缩、存储、文件格式、序列化、JSON、XML、Protobuf
+
+---
+
+#### 5. 计算机网络
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/computer-networks.md`
+
+**关键词**: 计算机网络、网络协议、TCP/IP、HTTP、HTTPS、DNS、IP、MAC、路由、交换、网络分层、OSI、Socket、WebSocket
+
+---
+
+#### 6. 数据结构
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/data-structures.md`
+
+**关键词**: 数据结构、数组、链表、栈、队列、树、二叉树、堆、图、哈希表、集合、字典、时间复杂度、空间复杂度
+
+---
+
+#### 7. 算法思维
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking.md`
+
+**关键词**: 算法、排序、搜索、递归、动态规划、贪心、分治、回溯、算法复杂度、大 O 表示法、LeetCode
+
+---
+
+#### 8. 编程语言图谱
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/programming-languages.md`
+
+**关键词**: 编程语言、语言分类、静态类型、动态类型、编译型、解释型、面向对象、函数式、脚本语言、系统语言
+
+---
+
+#### 9. 编译原理
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/compilers.md`
+
+**关键词**: 编译原理、词法分析、语法分析、AST、抽象语法树、语义分析、代码生成、优化、解释器、编译器
+
+---
+
+#### 10. 类型系统
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/type-systems.md`
+
+**关键词**: 类型系统、静态类型、动态类型、强类型、弱类型、类型推断、泛型、类型安全、TypeScript、类型检查
+
+---
+
+#### 11. 计算机组成原理
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/computer-organization.md`
+
+**关键词**: 计算机组成、体系结构、存储器、缓存、Cache、总线、I/O、中断、DMA、流水线、并行计算
+
+---
+
+#### 12. 从开机到上网
+**文件**: `docs/zh-cn/appendix/1-computer-fundamentals/power-on-to-web.md`
+
+**关键词**: 开机启动、引导、BIOS、UEFI、Bootloader、操作系统启动、内核加载、用户登录、浏览器、网络连接
+
+---
+
+### 二、开发环境与工具
+
+#### 1. IDE 基础
+**文件**: `docs/zh-cn/appendix/2-development-tools/ide-basics.md`
+
+**关键词**: IDE、VS Code、Cursor、Trae、编辑器、开发环境、插件、扩展、快捷键、调试、代码补全
+
+---
+
+#### 2. 命令行与 Shell
+**文件**: `docs/zh-cn/appendix/2-development-tools/command-line-shell.md`
+
+**关键词**: 命令行、Shell、Bash、Zsh、Terminal、终端、命令、脚本、管道、重定向、环境变量、权限
+
+---
+
+#### 3. Git 版本控制
+**文件**: `docs/zh-cn/appendix/2-development-tools/git-version-control.md`
+
+**关键词**: Git、版本控制、分支、合并、提交、仓库、GitHub、GitLab、冲突解决、Rebase、Cherry Pick
+
+---
+
+#### 4. 环境变量与 PATH
+**文件**: `docs/zh-cn/appendix/2-development-tools/environment-path.md`
+
+**关键词**: 环境变量、PATH、系统变量、用户变量、配置、.env、dotenv、环境配置
+
+---
+
+#### 5. 端口与 localhost
+**文件**: `docs/zh-cn/appendix/2-development-tools/ports-localhost.md`
+
+**关键词**: 端口、Port、localhost、127.0.0.1、本地开发、端口冲突、端口占用、网络地址
+
+---
+
+#### 6. 包管理器
+**文件**: `docs/zh-cn/appendix/2-development-tools/package-managers.md`
+
+**关键词**: 包管理器、npm、yarn、pnpm、pip、conda、gem、依赖管理、package.json、requirements.txt
+
+---
+
+#### 7. SSH 与认证
+**文件**: `docs/zh-cn/appendix/2-development-tools/ssh-authentication.md`
+
+**关键词**: SSH、密钥、公钥、私钥、认证、免密登录、SSH Key、GitHub SSH、安全连接
+
+---
+
+#### 8. 调试艺术
+**文件**: `docs/zh-cn/appendix/2-development-tools/debugging-art.md`
+
+**关键词**: 调试、Debug、断点、单步执行、Console、Log、Debugger、Chrome DevTools、性能分析
+
+---
+
+#### 9. 正则表达式
+**文件**: `docs/zh-cn/appendix/2-development-tools/regex.md`
+
+**关键词**: 正则表达式、Regex、Pattern、匹配、替换、验证、RegExp、字符串处理
+
+---
+
+### 三、浏览器与前端
+
+#### 1. HTML CSS 布局
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/html-css-layout.md`
+
+**关键词**: HTML、CSS、布局、Flexbox、Grid、响应式、盒模型、选择器、样式、动画、Transition、Animation
+
+---
+
+#### 2. JavaScript 深入
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive.md`
+
+**关键词**: JavaScript、JS、ES6、闭包、原型链、作用域、异步、Promise、Async/Await、Event Loop、this、原型、继承
+
+---
+
+#### 3. TypeScript
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/typescript.md`
+
+**关键词**: TypeScript、TS、类型、接口、泛型、装饰器、类型推断、编译、配置、tsconfig
+
+---
+
+#### 4. 前端框架
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks.md`
+
+**关键词**: 前端框架、React、Vue、Angular、Svelte、组件、状态管理、生命周期、Hooks、Composition API
+
+---
+
+#### 5. 前端工程化
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/frontend-engineering.md`
+
+**关键词**: 前端工程化、构建工具、Webpack、Vite、Rollup、Parcel、Babel、ESLint、Prettier、代码规范
+
+---
+
+#### 6. 浏览器渲染
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering.md`
+
+**关键词**: 浏览器、渲染引擎、DOM、CSSOM、渲染树、重绘、重排、合成层、GPU 加速、性能优化
+
+---
+
+#### 7. 路由与导航
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/routing-navigation.md`
+
+**关键词**: 路由、Router、前端路由、Vue Router、React Router、History API、Hash、SPA、单页应用
+
+---
+
+#### 8. 状态管理
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/state-management.md`
+
+**关键词**: 状态管理、Vuex、Pinia、Redux、MobX、Zustand、Jotai、全局状态、状态机、Context
+
+---
+
+#### 9. 前端项目架构
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/frontend-project-architecture.md`
+
+**关键词**: 前端架构、项目结构、目录组织、模块化、组件化、分层架构、微前端、Monorepo
+
+---
+
+#### 10. 实时通信
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/realtime-communication.md`
+
+**关键词**: 实时通信、WebSocket、Socket.io、SSE、Server-Sent Events、长轮询、WebRTC、实时数据
+
+---
+
+#### 11. 图形与动画
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/graphics-animation.md`
+
+**关键词**: 图形、动画、Canvas、SVG、WebGL、Three.js、CSS 动画、帧动画、粒子效果
+
+---
+
+#### 12. Web 性能
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/web-performance.md`
+
+**关键词**: Web 性能、性能优化、加载优化、运行时优化、Lighthouse、Core Web Vitals、懒加载、代码分割、缓存
+
+---
+
+#### 13. 无障碍与国际化
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/a11n-i18n.md`
+
+**关键词**: 无障碍、A11y、ARIA、国际化、i18n、本地化、l10n、多语言、屏幕阅读器
+
+---
+
+#### 14. JavaScript 运行时
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/javascript-runtime.md`
+
+**关键词**: JavaScript 运行时、Node.js、Deno、Bun、运行时环境、事件循环、模块系统
+
+---
+
+#### 15. 前端框架本质
+**文件**: `docs/zh-cn/appendix/3-browser-and-frontend/frontend-framework-nature.md`
+
+**关键词**: 前端框架本质、Virtual DOM、Diff 算法、响应式原理、依赖追踪、编译优化
+
+---
+
+### 四、服务器与后端
+
+#### 1. 后端语言
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/backend-languages.md`
+
+**关键词**: 后端语言、Node.js、Python、Java、Go、Rust、PHP、Ruby、语言选择、技术栈
+
+---
+
+#### 2. 后端分层架构
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/backend-layered-architecture.md`
+
+**关键词**: 后端架构、分层、MVC、三层架构、领域驱动、DDD、Clean Architecture、依赖注入
+
+---
+
+#### 3. 请求旅程
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/request-journey.md`
+
+**关键词**: 请求旅程、HTTP 请求、生命周期、中间件、路由、控制器、服务层、数据层、响应
+
+---
+
+#### 4. API 入门
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/api-intro.md`
+
+**关键词**: API、接口、REST、RESTful、HTTP 方法、状态码、请求头、响应头、Content-Type、认证
+
+---
+
+#### 5. API 设计
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/api-design.md`
+
+**关键词**: API 设计、接口设计、版本控制、URL 设计、资源命名、错误处理、分页、过滤、排序
+
+---
+
+#### 6. Web 框架
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/web-frameworks.md`
+
+**关键词**: Web 框架、Express、Koa、Fastify、NestJS、Django、Flask、Spring Boot、Gin、路由、中间件
+
+---
+
+#### 7. HTTP 协议
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/http-protocol.md`
+
+**关键词**: HTTP、协议、请求、响应、Header、Body、Method、Status Code、Cookie、Session、Keep-Alive、HTTP/2、HTTP/3
+
+---
+
+#### 8. 认证与授权
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/auth-authorization.md`
+
+**关键词**: 认证、授权、Auth、JWT、OAuth、SSO、Session、Cookie、Token、权限、RBAC、鉴权
+
+---
+
+#### 9. 序列化
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/serialization.md`
+
+**关键词**: 序列化、反序列化、JSON、XML、Protobuf、MessagePack、Avro、Thrift、数据格式
+
+---
+
+#### 10. 并发与异步
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/concurrency-async.md`
+
+**关键词**: 并发、异步、多线程、多进程、协程、Promise、Async/Await、事件驱动、回调、非阻塞 IO
+
+---
+
+#### 11. 缓存
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/caching.md`
+
+**关键词**: 缓存、Cache、Redis、Memcached、本地缓存、分布式缓存、缓存策略、缓存穿透、缓存雪崩、缓存更新
+
+---
+
+#### 12. 消息队列
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/message-queues.md`
+
+**关键词**: 消息队列、MQ、RabbitMQ、Kafka、RocketMQ、消息模型、发布订阅、点对点、消息可靠性
+
+---
+
+#### 13. 异步任务队列
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/async-task-queues.md`
+
+**关键词**: 任务队列、Celery、Bull、RQ、Sidekiq、后台任务、定时任务、任务调度、重试机制
+
+---
+
+#### 14. 限流与背压
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/rate-limiting-backpressure.md`
+
+**关键词**: 限流、Rate Limiting、背压、Backpressure、流量控制、熔断、降级、负载保护、令牌桶、漏桶
+
+---
+
+#### 15. 搜索引擎
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/search-engines.md`
+
+**关键词**: 搜索引擎、Elasticsearch、Solr、全文搜索、倒排索引、分词、相关性排序、搜索优化
+
+---
+
+#### 16. 文件存储
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/file-storage.md`
+
+**关键词**: 文件存储、OSS、S3、MinIO、云存储、对象存储、CDN、文件上传、断点续传、分片上传
+
+---
+
+#### 17. 后端项目架构
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/backend-project-architecture.md`
+
+**关键词**: 后端项目架构、项目结构、目录组织、模块化、服务划分、代码组织、最佳实践
+
+---
+
+#### 18. 客户端语言
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/client-languages.md`
+
+**关键词**: 客户端语言、移动端、桌面端、小程序、跨平台、React Native、Flutter、Electron、Tauri
+
+---
+
+#### 19. 领域特定语言
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/domain-specific-languages.md`
+
+**关键词**: DSL、领域特定语言、SQL、正则、GraphQL、配置语言、模板语言、内部 DSL、外部 DSL
+
+---
+
+#### 20. 跨平台
+**文件**: `docs/zh-cn/appendix/4-server-and-backend/cross-platform.md`
+
+**关键词**: 跨平台、多端、统一开发、Write Once Run Anywhere、跨平台框架、适配策略
+
+---
+
+### 五、数据
+
+#### 1. 数据库基础
+**文件**: `docs/zh-cn/appendix/5-data/database-fundamentals.md`
+
+**关键词**: 数据库基础、关系型数据库、SQL、MySQL、PostgreSQL、表、字段、索引、事务、ACID、SQL 语句
+
+---
+
+#### 2. 数据模型
+**文件**: `docs/zh-cn/appendix/5-data/data-models.md`
+
+**关键词**: 数据模型、ER 模型、关系模型、文档模型、图模型、键值模型、数据建模、范式、反范式
+
+---
+
+#### 3. 数据分析
+**文件**: `docs/zh-cn/appendix/5-data/data-analysis.md`
+
+**关键词**: 数据分析、Python、Pandas、NumPy、数据清洗、数据可视化、统计分析、BI、数据挖掘
+
+---
+
+#### 4. 数据可视化
+**文件**: `docs/zh-cn/appendix/5-data/data-visualization.md`
+
+**关键词**: 数据可视化、图表、ECharts、D3.js、AntV、Tableau、可视化设计、交互可视化
+
+---
+
+#### 5. A/B 测试
+**文件**: `docs/zh-cn/appendix/5-data/ab-testing.md`
+
+**关键词**: A/B 测试、实验、对照组、实验组、显著性、假设检验、转化率、实验设计
+
+---
+
+#### 6. 数据埋点
+**文件**: `docs/zh-cn/appendix/5-data/data-tracking.md`
+
+**关键词**: 数据埋点、事件追踪、用户行为、数据分析、漏斗分析、留存分析、归因分析
+
+---
+
+#### 7. 数据治理
+**文件**: `docs/zh-cn/appendix/5-data/data-governance.md`
+
+**关键词**: 数据治理、数据质量、数据安全、数据标准、元数据、数据血缘、合规、隐私
+
+---
+
+### 六、架构与系统设计
+
+#### 1. 系统设计方法论
+**文件**: `docs/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology.md`
+
+**关键词**: 系统设计、架构设计、设计原则、SOLID、设计模式、系统思维、权衡、扩展性、可用性
+
+---
+
+#### 2. 分布式系统
+**文件**: `docs/zh-cn/appendix/6-architecture-and-system-design/distributed-systems.md`
+
+**关键词**: 分布式系统、CAP 定理、一致性、可用性、分区容错、分布式事务、共识算法、Raft、Paxos
+
+---
+
+#### 3. 高可用
+**文件**: `docs/zh-cn/appendix/6-architecture-and-system-design/high-availability.md`
+
+**关键词**: 高可用、HA、容灾、故障转移、主从、集群、多活、SLA、SLO、SLI、可靠性工程
+
+---
+
+#### 4. 单体到微服务
+**文件**: `docs/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices.md`
+
+**关键词**: 微服务、单体、服务拆分、服务治理、服务发现、配置中心、链路追踪、分布式追踪
+
+---
+
+### 七、基础设施与运维
+
+#### 1. Linux 基础
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/linux-basics.md`
+
+**关键词**: Linux、操作系统、命令行、Shell、文件系统、权限、进程管理、网络配置、系统管理
+
+---
+
+#### 2. Docker 容器
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/docker-containers.md`
+
+**关键词**: Docker、容器、镜像、Container、Dockerfile、Compose、容器化、微服务部署
+
+---
+
+#### 3. Kubernetes
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/kubernetes.md`
+
+**关键词**: Kubernetes、K8s、容器编排、Pod、Service、Deployment、Ingress、Helm、集群管理
+
+---
+
+#### 4. CI/CD
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/ci-cd.md`
+
+**关键词**: CI/CD、持续集成、持续部署、Jenkins、GitLab CI、GitHub Actions、自动化构建、自动化测试
+
+---
+
+#### 5. 云平台
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/cloud-platforms.md`
+
+**关键词**: 云平台、AWS、Azure、GCP、阿里云、腾讯云、华为云、云服务、IaaS、PaaS、SaaS
+
+---
+
+#### 6. 云 IAM
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/cloud-iam.md`
+
+**关键词**: IAM、身份管理、访问控制、权限管理、角色、策略、RBAC、云安全
+
+---
+
+#### 7. 云存储与 CDN
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/cloud-storage-cdn.md`
+
+**关键词**: 云存储、CDN、对象存储、内容分发、边缘计算、加速、缓存策略
+
+---
+
+#### 8. DNS 与 HTTPS
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/dns-https.md`
+
+**关键词**: DNS、域名解析、HTTPS、SSL、TLS、证书、CA、加密、安全传输
+
+---
+
+#### 9. 负载均衡与网关
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/load-balancing-gateway.md`
+
+**关键词**: 负载均衡、Gateway、Nginx、API Gateway、反向代理、流量分发、健康检查
+
+---
+
+#### 10. 网关代理
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/gateway-proxy.md`
+
+**关键词**: 网关、代理、Nginx、Traefik、Envoy、服务网格、Istio、流量管理
+
+---
+
+#### 11. 基础设施即代码
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code.md`
+
+**关键词**: IaC、基础设施即代码、Terraform、Ansible、Pulumi、CloudFormation、自动化运维
+
+---
+
+#### 12. 监控与日志
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging.md`
+
+**关键词**: 监控、日志、Prometheus、Grafana、ELK、Loki、告警、可观测性、Observability
+
+---
+
+#### 13. 事故响应
+**文件**: `docs/zh-cn/appendix/7-infrastructure-and-operations/incident-response.md`
+
+**关键词**: 事故响应、故障处理、应急响应、SRE、事后复盘、故障演练、混沌工程
+
+---
+
+### 八、人工智能
+
+#### 1. AI 历史
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/ai-history.md`
+
+**关键词**: AI 历史、人工智能发展、机器学习历史、深度学习、神经网络历史、AI 里程碑
+
+---
+
+#### 2. 神经网络
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/neural-networks.md`
+
+**关键词**: 神经网络、深度学习、CNN、RNN、LSTM、GRU、激活函数、反向传播、梯度下降
+
+---
+
+#### 3. Transformer 与注意力机制
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/transformer-attention.md`
+
+**关键词**: Transformer、注意力机制、Attention、Self-Attention、Multi-Head Attention、BERT、GPT、位置编码
+
+---
+
+#### 4. LLM 原理
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/llm-principles.md`
+
+**关键词**: LLM、大语言模型、预训练、微调、Fine-tuning、RLHF、对齐、涌现能力、Scaling Law
+
+---
+
+#### 5. Prompt 工程
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/prompt-engineering.md`
+
+**关键词**: Prompt 工程、提示词、Prompt Design、Few-shot、Chain-of-Thought、ReAct、提示词优化
+
+---
+
+#### 6. RAG
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/rag.md`
+
+**关键词**: RAG、检索增强生成、向量检索、Embedding、知识库、文档问答、语义搜索
+
+---
+
+#### 7. Embedding 与向量检索
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/embedding-vector-retrieval.md`
+
+**关键词**: Embedding、向量、向量检索、向量数据库、相似度、余弦相似度、向量空间
+
+---
+
+#### 8. AI Agent
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/ai-agents.md`
+
+**关键词**: AI Agent、智能体、Agent 架构、ReAct、Plan-and-Execute、Tool Use、Multi-Agent
+
+---
+
+#### 9. 多模态模型
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/multimodal-models.md`
+
+**关键词**: 多模态、视觉语言模型、VLM、CLIP、GPT-4V、图像理解、跨模态、图文生成
+
+---
+
+#### 10. 图像生成
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/image-generation.md`
+
+**关键词**: 图像生成、文生图、Stable Diffusion、Midjourney、DALL-E、GAN、Diffusion、ControlNet
+
+---
+
+#### 11. 语音合成与识别
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/speech-synthesis-recognition.md`
+
+**关键词**: 语音合成、语音识别、TTS、ASR、Whisper、语音克隆、声纹识别
+
+---
+
+#### 12. 模型微调与部署
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/model-finetuning-deployment.md`
+
+**关键词**: 模型微调、Fine-tuning、LoRA、QLoRA、模型部署、模型量化、推理优化、ONNX、TensorRT
+
+---
+
+#### 13. AI 协议
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/ai-protocols.md`
+
+**关键词**: AI 协议、MCP、Function Calling、Tool Use、API 标准、OpenAI API、Anthropic API
+
+---
+
+#### 14. AI 原生应用设计
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/ai-native-app-design.md`
+
+**关键词**: AI 原生应用、AI-First、产品设计、用户体验、人机交互、Copilot、Agent 界面
+
+---
+
+#### 15. 上下文工程
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/context-engineering.md`
+
+**关键词**: 上下文工程、Context Engineering、上下文管理、长上下文、RAG、记忆、会话管理
+
+---
+
+#### 16. AI 能力词典
+**文件**: `docs/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary.md`
+
+**关键词**: AI 能力、AI 功能、能力清单、应用场景、技术选型、AI 解决方案
+
+---
+
+### 九、工程卓越
+
+#### 1. 代码质量与重构
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring.md`
+
+**关键词**: 代码质量、重构、Clean Code、代码审查、技术债务、代码异味、重构模式
+
+---
+
+#### 2. 测试策略
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/testing-strategies.md`
+
+**关键词**: 测试、单元测试、集成测试、E2E 测试、TDD、BDD、测试覆盖率、Mock、自动化测试
+
+---
+
+#### 3. 设计模式
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/design-patterns.md`
+
+**关键词**: 设计模式、单例、工厂、观察者、策略、装饰器、适配器、MVC、MVVM、架构模式
+
+---
+
+#### 4. 技术选型
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/technology-selection.md`
+
+**关键词**: 技术选型、技术决策、技术栈、框架选择、评估标准、技术雷达、技术债
+
+---
+
+#### 5. 开源协作
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/open-source-collaboration.md`
+
+**关键词**: 开源、开源协作、GitHub、贡献指南、Code Review、社区、开源协议、LICENSE
+
+---
+
+#### 6. 安全思维
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/security-thinking.md`
+
+**关键词**: 安全、安全思维、OWASP、漏洞、注入、XSS、CSRF、安全编码、加密、认证
+
+---
+
+#### 7. 技术写作
+**文件**: `docs/zh-cn/appendix/9-engineering-excellence/technical-writing.md`
+
+**关键词**: 技术写作、文档、README、API 文档、技术博客、知识分享、文档规范
+
+---
+
+## ✅ 回答规则（必读）
+
+1. **先读高层架构**：先阅读上面的"高层级架构"和"快速决策树"，确定用户问题属于哪个阶段
+2. **再查详细索引**：根据阶段定位到详细文章索引，找到具体文件
+3. **引用来源**：回答时注明信息来自哪个文件，例如："根据 `stage-1/1.1-introduction-to-ai-ide` 的内容..."
+4. **代码优先**：优先使用教程中提供的代码示例
+5. **阶段匹配**：根据用户水平推荐合适的内容，不要给新手推荐 Stage 3 的高级内容
+6. **关键词匹配**：根据用户问题中的关键词，快速定位到对应文件
+7. **不确定时**：明确告诉用户"让我先查看相关教程内容"，然后读取文件
+8. **附录参考**：当用户问基础概念时，优先引用附录中的知识文章
+
+---
+
+## 📚 教程概览
+
+**Easy-Vibe** 是一个从零开始的 AI 编程教程，核心理念是 **Vibe Coding**（用自然语言编程）。
+
+### 学习路径
+
+```
+Stage 0 (新手入门)
+    ↓
+Stage 1 (AI 产品经理) - 用 AI IDE 做原型
+    ↓
+Stage 2 (初中级开发) - 全栈开发 + 部署
+    ↓
+Stage 3 (高级开发) - 跨平台 + AI 进阶
+    ↓
+附录 (知识体系) - 计算机基础到工程素养
+```
+
+### 目标读者
+- **零基础用户**：从 Stage 0 开始，先体验 AI 编程的乐趣
+- **产品经理/设计师**：重点学习 Stage 1，快速做 Demo
+- **初级开发者**：Stage 2 帮你补齐全栈技能
+- **高级开发者**：Stage 3 的 MCP、RAG、跨平台开发
+- **全栈工程师**：附录提供完整的计算机知识体系
+
+### 技术栈
+- **AI IDE**: Cursor, Claude Code, Trae
+- **前端**: Vue 3, React, Element Plus
+- **后端**: Node.js, Supabase, Dify
+- **部署**: Vercel, Zeabur
+- **跨平台**: 微信小程序, Android, iOS, Electron
+- **AI 技术**: LLM, RAG, MCP, Agent, 多模态
+
+---
+
+## 🔗 相关文件
+
+- **本文件**: `llms.txt` - AI 导航入口（必读）
+- **Claude Code 专用**: `CLAUDE.md` - 针对 Claude Code 的详细指南
+- **项目说明**: `README.md` - 人类用户入口
+- **配置文件**: `docs/.vitepress/config.mjs` - 网站导航配置
+
+---
+
+## 📝 版本信息
+
+- **版本**: 2.1.0
+- **更新日期**: 2026-03-02
+- **文章总数**: 100+ 篇
+- **语言支持**: 中文(zh-cn), 英文(en), 日文(ja-jp), 韩文(ko-kr), 繁体中文(zh-tw), 西班牙文(es-es), 法文(fr-fr), 德文(de-de), 阿拉伯文(ar-sa), 越南文(vi-vn)
+- **默认语言**: 中文 (`docs/zh-cn/`)
+
+---
+
+> 💡 **提示**: 如果你是多语言 AI，请根据用户使用的语言选择对应的 `docs/{语言}/` 目录下的文件。
