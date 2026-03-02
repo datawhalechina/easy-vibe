@@ -398,6 +398,20 @@ const stage3SidebarEn = [
       {
         text: 'Claude Code 工作流最佳实践',
         link: '/zh-cn/stage-3/core-skills/workflow/'
+      },
+      {
+        text: 'Claude Code 手机远程开发',
+        link: '/zh-cn/stage-3/core-skills/mobile-development/'
+      },
+      {
+        text: 'Claude Agent SDK 完全指南',
+        link: '/zh-cn/stage-3/core-skills/claude-agent-sdk/',
+        items: [
+          {
+            text: 'Spec Coding：规范驱动开发',
+            link: '/zh-cn/stage-3/core-skills/claude-agent-sdk/spec-coding'
+          }
+        ]
       }
     ]
   },
@@ -1245,6 +1259,18 @@ export default defineConfig({
                 {
                   text: 'Claude Code 工作流最佳实践',
                   link: '/zh-cn/stage-3/core-skills/workflow/'
+                },
+                {
+                  text: 'Claude Code 手机远程开发',
+                  link: '/zh-cn/stage-3/core-skills/mobile-development/'
+                },
+                {
+                  text: 'Claude Agent SDK 完全指南',
+                  link: '/zh-cn/stage-3/core-skills/claude-agent-sdk/'
+                },
+                {
+                  text: '从 Vibe Coding 到 Spec Coding',
+                  link: '/zh-cn/stage-3/core-skills/spec-coding/'
                 }
               ]
             },
