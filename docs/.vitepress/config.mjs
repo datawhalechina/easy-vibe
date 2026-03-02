@@ -1214,7 +1214,7 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '附录', link: '/zh-cn/appendix/index', activeMatch: '/zh-cn/appendix/' }
+          { text: '附录知识库', link: '/zh-cn/appendix/index', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {
           '/zh-cn/stage-0/': productManagerSidebar,

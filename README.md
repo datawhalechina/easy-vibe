@@ -144,100 +144,6 @@
   <img src="assets/readme-image1.png" alt="Learning Map" width="70%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
 </div>
 
-### 📚 附录知识库
-
-> 涵盖 **9 大知识领域**、**80+ 交互式专题**，以动画和可视化组件帮助你直观理解从计算机底层到 AI 前沿的核心概念。
->
-> 👉 [查看完整附录](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu.html) · [AI 能力词典](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
-
-<table>
-  <tr>
-    <td valign="top" width="33%">
-      <strong>💻 计算机基础</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu.html">从晶体管到 CPU</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/operating-systems.html">操作系统</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage.html">数据的编码、存储与传输</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/computer-networks.html">网络：两台电脑如何对话</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/data-structures.html">数据结构</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking.html">算法思维入门</a>
-    </td>
-    <td valign="top" width="33%">
-      <strong>🔧 开发工具</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/git-version-control.html">Git：代码的时光机</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/command-line-shell.html">命令行与 Shell 脚本</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/package-managers.html">包管理器</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/debugging-art/">调试的艺术</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/regex.html">正则表达式</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/environment-path.html">环境变量与 PATH</a>
-    </td>
-    <td valign="top" width="33%">
-      <strong>🌐 浏览器与前端</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive.html">JavaScript 语言深入</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering.html">浏览器渲染管道</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks.html">前端框架对比</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/graphics-animation.html">图形与动画</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/web-performance.html">网页性能的度量与优化</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/frontend-engineering.html">前端工程化全貌</a>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top" width="33%">
-      <strong>🖥️ 服务器与后端</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/http-protocol.html">HTTP 协议</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/api-design.html">API 设计哲学</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/auth-authorization.html">认证与授权体系</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/concurrency-async.html">并发、异步与多线程</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/message-queues.html">消息队列与事件驱动</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/backend-layered-architecture.html">后端分层架构</a>
-    </td>
-    <td valign="top" width="33%">
-      <strong>📊 数据</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/sql.html">SQL</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/database-fundamentals.html">数据库原理</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-tracking.html">数据埋点与用户行为采集</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-analysis.html">数据分析基础</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/ab-testing.html">A/B 测试与实验驱动</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-visualization.html">数据可视化与仪表盘</a>
-    </td>
-    <td valign="top" width="33%">
-      <strong>🏗️ 架构与系统设计</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices.html">从单体到微服务的演进</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/distributed-systems.html">分布式系统的挑战</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/high-availability.html">高可用与容灾</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology.html">系统设计方法论</a>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top" width="33%">
-      <strong>☁️ 基础设施与运维</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/docker-containers.html">Docker 容器化</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/kubernetes.html">Kubernetes 编排</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/ci-cd.html">CI / CD 自动化</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/dns-https.html">域名、DNS 与 HTTPS</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging.html">监控、日志与告警</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code.html">基础设施即代码</a>
-    </td>
-    <td valign="top" width="33%">
-      <strong>🤖 人工智能</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/llm-principles.html">大语言模型的工作原理</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/transformer-attention.html">Transformer 与注意力机制</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/rag.html">RAG 架构</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-agents.html">AI Agent 与工具调用</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/prompt-engineering.html">提示词工程</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/image-generation.html">图像生成原理</a>
-    </td>
-    <td valign="top" width="33%">
-      <strong>🎯 工程素养</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring.html">代码质量与重构</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/testing-strategies.html">测试策略</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/design-patterns.html">设计模式</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/security-thinking.html">安全思维与攻防基础</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/technical-writing.html">技术文档写作</a><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/open-source-collaboration.html">开源协作</a>
-    </td>
-  </tr>
-</table>
-
 ### 一、零基础入门
 
 | 章节                                                                                 | 关键内容                                          |
@@ -336,6 +242,100 @@
 | :---------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
 | [什么是 RAG 以及它如何工作](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/)                | 系统理解 RAG 原理与常见架构，为复杂应用提供知识检索基础 |
 | [中高级 RAG 与工作流编排：以 LangGraph 为例](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | 使用 LangGraph 等工具设计多步工作流与中高级 RAG 系统    |
+
+### 📚 附录知识库
+
+> 涵盖 **9 大知识领域**、**80+ 交互式专题**，以动画和可视化组件帮助你直观理解从计算机底层到 AI 前沿的核心概念。
+>
+> 👉 [查看完整附录](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [AI 能力词典](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
+
+<table>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>💻 计算机基础</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/transistor-to-cpu.html">从晶体管到 CPU</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/operating-systems.html">操作系统</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/data-encoding-storage.html">数据的编码、存储与传输</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/computer-networks.html">网络：两台电脑如何对话</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/data-structures.html">数据结构</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/1-computer-fundamentals/algorithm-thinking.html">算法思维入门</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🔧 开发工具</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/git-version-control.html">Git：代码的时光机</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/command-line-shell.html">命令行与 Shell 脚本</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/package-managers.html">包管理器</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/debugging-art/">调试的艺术</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/regex.html">正则表达式</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/2-development-tools/environment-path.html">环境变量与 PATH</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🌐 浏览器与前端</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/javascript-deep-dive.html">JavaScript 语言深入</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering.html">浏览器渲染管道</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/frontend-frameworks.html">前端框架对比</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/graphics-animation.html">图形与动画</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/web-performance.html">网页性能的度量与优化</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/3-browser-and-frontend/frontend-engineering.html">前端工程化全貌</a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>🖥️ 服务器与后端</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/http-protocol.html">HTTP 协议</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/api-design.html">API 设计哲学</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/auth-authorization.html">认证与授权体系</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/concurrency-async.html">并发、异步与多线程</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/message-queues.html">消息队列与事件驱动</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/4-server-and-backend/backend-layered-architecture.html">后端分层架构</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>📊 数据</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/sql.html">SQL</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/database-fundamentals.html">数据库原理</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-tracking.html">数据埋点与用户行为采集</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-analysis.html">数据分析基础</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/ab-testing.html">A/B 测试与实验驱动</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-visualization.html">数据可视化与仪表盘</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🏗️ 架构与系统设计</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/monolith-to-microservices.html">从单体到微服务的演进</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/distributed-systems.html">分布式系统的挑战</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/high-availability.html">高可用与容灾</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/6-architecture-and-system-design/system-design-methodology.html">系统设计方法论</a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="33%">
+      <strong>☁️ 基础设施与运维</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/docker-containers.html">Docker 容器化</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/kubernetes.html">Kubernetes 编排</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/ci-cd.html">CI / CD 自动化</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/dns-https.html">域名、DNS 与 HTTPS</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/monitoring-logging.html">监控、日志与告警</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/7-infrastructure-and-operations/infrastructure-as-code.html">基础设施即代码</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🤖 人工智能</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/llm-principles.html">大语言模型的工作原理</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/transformer-attention.html">Transformer 与注意力机制</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/rag.html">RAG 架构</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-agents.html">AI Agent 与工具调用</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/prompt-engineering.html">提示词工程</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/image-generation.html">图像生成原理</a>
+    </td>
+    <td valign="top" width="33%">
+      <strong>🎯 工程素养</strong><br><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/code-quality-refactoring.html">代码质量与重构</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/testing-strategies.html">测试策略</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/design-patterns.html">设计模式</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/security-thinking.html">安全思维与攻防基础</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/technical-writing.html">技术文档写作</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/9-engineering-excellence/open-source-collaboration.html">开源协作</a>
+    </td>
+  </tr>
+</table>
 
 ## 🛠️ 如何学习
 
