@@ -46,7 +46,7 @@ Skills 解决了这些问题，让 Claude 变成一个"有经验的团队成员"
 **安装 find-skills**：
 
 ```bash
-npx skills add vercel-labs/agent-skills@find-skills -g -y
+npx skills add vercel-labs/skills@find-skills -g -y
 ```
 
 安装完成后，你就可以直接告诉 Claude 你的需求，它会通过 find-skills 自动搜索相关技能。
