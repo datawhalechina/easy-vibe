@@ -1201,17 +1201,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '首页', link: '/zh-cn/' },
           {
             text: '零基础入门',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-[01]/'
           },
           {
             text: '初中级开发',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '高级开发',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '附录', link: '/zh-cn/appendix/index' }
+          { text: '附录', link: '/zh-cn/appendix/index', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {
           '/zh-cn/stage-0/': productManagerSidebar,
@@ -1236,10 +1239,6 @@ Sitemap: ${siteUrl}/sitemap.xml
                 {
                   text: '用 LLM 和 Skills 让界面变好看',
                   link: '/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/'
-                },
-                {
-                  text: '霍格沃茨的画像们：SVG 交互动画',
-                  link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
                 },
                 {
                   text: '从设计原型到项目代码',
@@ -1297,7 +1296,7 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '一起做霍格沃茨画像',
-                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
+                  link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
                 },
                 {
                   text: '构建第一个现代应用程序 - 全栈应用',
@@ -1476,7 +1475,7 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '一起做霍格沃茨画像',
-                  link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
+                  link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
                 },
                 {
                   text: 'Supabase 数据库',
@@ -1995,17 +1994,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Home', link: '/en/' },
           {
             text: 'Novice & PM',
-            link: '/en/stage-0/'
+            link: '/en/stage-0/',
+            activeMatch: '/en/stage-[01]/'
           },
           {
             text: 'Full-Stack Development',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/en/stage-2/'
           },
           {
             text: 'Advanced Development',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/en/stage-3/'
           },
-          { text: 'Appendix', link: '/zh-cn/appendix/index' }
+          { text: 'Appendix', link: '/zh-cn/appendix/index', activeMatch: '/en/appendix/' }
         ],
         sidebar: {
           '/en/stage-0/': productManagerSidebarEn,
@@ -2046,17 +2048,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'ホーム', link: '/ja-jp/' },
           {
             text: '初心者とPM',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
           },
           {
             text: 'フルスタック開発',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '上級開発',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '付録', link: '/zh-cn/appendix/' }
+          { text: '付録', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         // TODO: Add Japanese sidebar when content is ready
         sidebar: {}
@@ -2090,17 +2095,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '首頁', link: '/zh-tw/' },
           {
             text: '新手與產品原型',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
           },
           {
             text: '初中級開發',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '高級開發',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '附錄', link: '/zh-cn/appendix/' }
+          { text: '附錄', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -2131,16 +2139,18 @@ Sitemap: ${siteUrl}/sitemap.xml
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: '초보자 & PM', link: '/zh-cn/stage-0/' },
+          { text: '초보자 & PM', link: '/zh-cn/stage-0/', activeMatch: '/zh-cn/stage-0/' },
           {
             text: '풀스택 개발',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '고급 개발',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '부록', link: '/zh-cn/appendix/' }
+          { text: '부록', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -2173,17 +2183,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Inicio', link: '/es-es/' },
           {
             text: 'Principiante y PM',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
           },
           {
             text: 'Desarrollo Full Stack',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Desarrollo Avanzado',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Apéndice', link: '/zh-cn/appendix/' }
+          { text: 'Apéndice', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -2214,16 +2227,18 @@ Sitemap: ${siteUrl}/sitemap.xml
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'Débutant & PM', link: '/zh-cn/stage-0/' },
+          { text: 'Débutant & PM', link: '/zh-cn/stage-0/', activeMatch: '/zh-cn/stage-0/' },
           {
             text: 'Développement Full Stack',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Développement Avancé',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Annexe', link: '/zh-cn/appendix/' }
+          { text: 'Annexe', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -2254,16 +2269,18 @@ Sitemap: ${siteUrl}/sitemap.xml
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'Anfänger & PM', link: '/zh-cn/stage-0/' },
+          { text: 'Anfänger & PM', link: '/zh-cn/stage-0/', activeMatch: '/zh-cn/stage-0/' },
           {
             text: 'Full Stack Entwicklung',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Fortgeschrittene Entwicklung',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Anhang', link: '/zh-cn/appendix/' }
+          { text: 'Anhang', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -2296,17 +2313,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
             text: 'مبتدأ & PM',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
           },
           {
             text: 'تطوير Full Stack',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'تطوير متقدم',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'ملحق', link: '/zh-cn/appendix/' }
+          { text: 'ملحق', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
@@ -2340,17 +2360,20 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
             text: 'Người mới & PM',
-            link: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
           },
           {
             text: 'Phát triển Full Stack',
-            link: '/zh-cn/stage-2/'
+            link: '/zh-cn/stage-2/',
+            activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Phát triển Nâng cao',
-            link: '/zh-cn/stage-3/'
+            link: '/zh-cn/stage-3/',
+            activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Phụ lục', link: '/zh-cn/appendix/' }
+          { text: 'Phụ lục', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
         ],
         sidebar: {}
       }
