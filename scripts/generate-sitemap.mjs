@@ -7,6 +7,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { execSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -72,10 +73,38 @@ function mdPathToUrl(mdPath, locale) {
   return `${siteUrl}/${locale}/${urlPath}${urlPath ? '/' : ''}`
 }
 
-// 生成 sitemap XML
-function generateSitemap(urls) {
-  const now = new Date().toISOString()
+function getGitLastModified(filePath) {
+  try {
+    const result = execSync(`git log -1 --format="%aI" -- "${filePath}"`, {
+      cwd: path.resolve(__dirname, '..'),
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'pipe']
+    }).trim()
+    if (result) {
+      return result
+    }
+  } catch {
+    // 文件可能是新文件或不在 git 中
+  }
+  const stats = fs.statSync(filePath)
+  return stats.mtime.toISOString()
+}
 
+function getLatestModTime(files) {
+  let latest = '1970-01-01T00:00:00.000Z'
+  for (const file of files) {
+    const fullPath = path.join(docsDir, file.locale, file.relativePath)
+    if (fs.existsSync(fullPath)) {
+      const modTime = getGitLastModified(fullPath)
+      if (modTime > latest) {
+        latest = modTime
+      }
+    }
+  }
+  return latest
+}
+
+function generateSitemap(urls) {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
   xml += '         xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
@@ -83,11 +112,10 @@ function generateSitemap(urls) {
   for (const urlInfo of urls) {
     xml += '  <url>\n'
     xml += `    <loc>${escapeXml(urlInfo.loc)}</loc>\n`
-    xml += `    <lastmod>${now}</lastmod>\n`
+    xml += `    <lastmod>${urlInfo.lastmod}</lastmod>\n`
     xml += `    <changefreq>weekly</changefreq>\n`
     xml += `    <priority>${urlInfo.priority.toFixed(1)}</priority>\n`
 
-    // 添加 hreflang alternates
     for (const alternate of urlInfo.alternates) {
       xml += `    <xhtml:link rel="alternate" hreflang="${alternate.hreflang}" href="${escapeXml(alternate.href)}"/>\n`
     }
@@ -136,7 +164,8 @@ function main() {
     const urlInfo = {
       loc: '',
       priority: getPriority(baseFile),
-      alternates: []
+      alternates: [],
+      sourceFiles: []
     }
 
     // 为每个语言版本生成 alternate
@@ -151,6 +180,7 @@ function main() {
           hreflang: getHreflangCode(locale),
           href: url
         })
+        urlInfo.sourceFiles.push({ locale, relativePath: baseFile })
 
         // 设置主要语言版本为 zh-cn
         if (locale === 'zh-cn') {
@@ -165,31 +195,51 @@ function main() {
       if (!urlInfo.loc) {
         urlInfo.loc = urlInfo.alternates[0].href
       }
+      urlInfo.lastmod = getLatestModTime(urlInfo.sourceFiles)
       allUrls.push(urlInfo)
     }
   }
 
   // 添加首页
   const homeAlternates = []
+  const homeSourceFiles = []
   for (const locale of locales) {
     homeAlternates.push({
       hreflang: getHreflangCode(locale),
       href: `${siteUrl}/${locale}/`
     })
+    const indexPath = path.join(docsDir, locale, 'index.md')
+    if (fs.existsSync(indexPath)) {
+      homeSourceFiles.push({ locale, relativePath: 'index.md' })
+    }
   }
   allUrls.unshift({
     loc: `${siteUrl}/zh-cn/`,
     priority: 1.0,
-    alternates: homeAlternates
+    alternates: homeAlternates,
+    sourceFiles: homeSourceFiles,
+    lastmod: getLatestModTime(homeSourceFiles)
   })
 
   console.log(`🌐 Generating sitemap with ${allUrls.length} URLs...`)
 
   const sitemapXml = generateSitemap(allUrls)
   const outputPath = path.join(publicDir, 'sitemap.xml')
-  fs.writeFileSync(outputPath, sitemapXml, 'utf-8')
 
-  console.log(`✅ Sitemap generated at ${outputPath}`)
+  let shouldWrite = true
+  if (fs.existsSync(outputPath)) {
+    const existingXml = fs.readFileSync(outputPath, 'utf-8')
+    if (existingXml === sitemapXml) {
+      shouldWrite = false
+      console.log(`⏭️  Sitemap unchanged, skipping write`)
+    }
+  }
+
+  if (shouldWrite) {
+    fs.writeFileSync(outputPath, sitemapXml, 'utf-8')
+    console.log(`✅ Sitemap generated at ${outputPath}`)
+  }
+
   console.log(`📊 Statistics:`)
   console.log(`   - Total URLs: ${allUrls.length}`)
   console.log(`   - Locales: ${locales.length}`)
