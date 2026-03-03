@@ -202,9 +202,7 @@ const getSeoHead = (locale, title, description, path = '') => {
         '@type': 'ImageObject',
         url: ogImageUrl
       },
-      sameAs: [
-        'https://github.com/datawhalechina/easy-vibe'
-      ]
+      sameAs: ['https://github.com/datawhalechina/easy-vibe']
     },
     mainEntity: {
       '@type': 'Course',
@@ -244,25 +242,25 @@ const getSeoHead = (locale, title, description, path = '') => {
           'stage-1': 'AI产品经理',
           'stage-2': '初中级开发工程师',
           'stage-3': '高级开发工程师',
-          'appendix': '附录',
-          'guide': '指南',
-          'frontend': '前端',
-          'backend': '后端',
+          appendix: '附录',
+          guide: '指南',
+          frontend: '前端',
+          backend: '后端',
           'ai-capabilities': 'AI能力',
           'core-skills': '核心技能',
           'cross-platform': '跨平台开发',
           'personal-brand': '个人品牌',
           'ai-advanced': 'AI进阶'
         },
-        'en': {
+        en: {
           'stage-0': 'Kindergarten',
           'stage-1': 'AI Product Manager',
           'stage-2': 'Junior Developer',
           'stage-3': 'Senior Developer',
-          'appendix': 'Appendix',
-          'guide': 'Guide',
-          'frontend': 'Frontend',
-          'backend': 'Backend',
+          appendix: 'Appendix',
+          guide: 'Guide',
+          frontend: 'Frontend',
+          backend: 'Backend',
           'ai-capabilities': 'AI Capabilities',
           'core-skills': 'Core Skills',
           'cross-platform': 'Cross-platform',
@@ -293,7 +291,11 @@ const getSeoHead = (locale, title, description, path = '') => {
   }
 
   const breadcrumbJsonLd = generateBreadcrumbList()
-  head.push(['script', { type: 'application/ld+json', class: 'breadcrumb-jsonld' }, JSON.stringify(breadcrumbJsonLd)])
+  head.push([
+    'script',
+    { type: 'application/ld+json', class: 'breadcrumb-jsonld' },
+    JSON.stringify(breadcrumbJsonLd)
+  ])
 
   return head
 }
@@ -311,6 +313,10 @@ const commonThemeConfig = {
   // socialLinks: [
   //   { icon: 'github', link: 'https://github.com/datawhalechina/easy-vibe' }
   // ],
+  editLink: {
+    pattern: 'https://github.com/datawhalechina/easy-vibe/edit/main/docs/:path',
+    text: 'Edit this page on GitHub'
+  },
   outline: {
     level: [1, 6]
   },
@@ -1202,7 +1208,7 @@ export default defineConfig({
   async buildEnd(siteConfig) {
     const fs = await import('fs')
     const path = await import('path')
-    
+
     const robotsTxt = `# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
@@ -1222,12 +1228,16 @@ Disallow: /@fs/
 # Sitemap 位置
 Sitemap: ${siteUrl}/sitemap.xml
 `
-    
-    const outDir = siteConfig.outDir || path.resolve(__dirname, '.vitepress/dist')
+
+    const outDir =
+      siteConfig.outDir || path.resolve(__dirname, '.vitepress/dist')
     const robotsPath = path.join(outDir, 'robots.txt')
-    
+
     fs.writeFileSync(robotsPath, robotsTxt, 'utf-8')
-    console.log('✓ Generated robots.txt with sitemap URL:', `${siteUrl}/sitemap.xml`)
+    console.log(
+      '✓ Generated robots.txt with sitemap URL:',
+      `${siteUrl}/sitemap.xml`
+    )
   },
 
   // 多语言配置 - 使用 cn/en-us/ja 结构
@@ -1289,7 +1299,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '附录知识库', link: '/zh-cn/appendix/index', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: '附录知识库',
+            link: '/zh-cn/appendix/index',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {
           '/zh-cn/stage-0/': productManagerSidebar,
@@ -2082,7 +2096,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/en/stage-3/'
           },
-          { text: 'Appendix', link: '/zh-cn/appendix/index', activeMatch: '/en/appendix/' }
+          {
+            text: 'Appendix',
+            link: '/zh-cn/appendix/index',
+            activeMatch: '/en/appendix/'
+          }
         ],
         sidebar: {
           '/en/stage-0/': productManagerSidebarEn,
@@ -2136,7 +2154,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '付録', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: '付録',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         // TODO: Add Japanese sidebar when content is ready
         sidebar: {}
@@ -2183,7 +2205,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '附錄', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: '附錄',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
@@ -2214,7 +2240,11 @@ Sitemap: ${siteUrl}/sitemap.xml
         },
         nav: [
           { text: '홈', link: '/ko-kr/' },
-          { text: '초보자 & PM', link: '/zh-cn/stage-0/', activeMatch: '/zh-cn/stage-0/' },
+          {
+            text: '초보자 & PM',
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
+          },
           {
             text: '풀스택 개발',
             link: '/zh-cn/stage-2/',
@@ -2225,7 +2255,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: '부록', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: '부록',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
@@ -2271,7 +2305,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Apéndice', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: 'Apéndice',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
@@ -2302,7 +2340,11 @@ Sitemap: ${siteUrl}/sitemap.xml
         },
         nav: [
           { text: 'Accueil', link: '/fr-fr/' },
-          { text: 'Débutant & PM', link: '/zh-cn/stage-0/', activeMatch: '/zh-cn/stage-0/' },
+          {
+            text: 'Débutant & PM',
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
+          },
           {
             text: 'Développement Full Stack',
             link: '/zh-cn/stage-2/',
@@ -2313,7 +2355,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Annexe', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: 'Annexe',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
@@ -2344,7 +2390,11 @@ Sitemap: ${siteUrl}/sitemap.xml
         },
         nav: [
           { text: 'Start', link: '/de-de/' },
-          { text: 'Anfänger & PM', link: '/zh-cn/stage-0/', activeMatch: '/zh-cn/stage-0/' },
+          {
+            text: 'Anfänger & PM',
+            link: '/zh-cn/stage-0/',
+            activeMatch: '/zh-cn/stage-0/'
+          },
           {
             text: 'Full Stack Entwicklung',
             link: '/zh-cn/stage-2/',
@@ -2355,7 +2405,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Anhang', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: 'Anhang',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
@@ -2401,7 +2455,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'ملحق', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: 'ملحق',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
@@ -2448,7 +2506,11 @@ Sitemap: ${siteUrl}/sitemap.xml
             link: '/zh-cn/stage-3/',
             activeMatch: '/zh-cn/stage-3/'
           },
-          { text: 'Phụ lục', link: '/zh-cn/appendix/', activeMatch: '/zh-cn/appendix/' }
+          {
+            text: 'Phụ lục',
+            link: '/zh-cn/appendix/',
+            activeMatch: '/zh-cn/appendix/'
+          }
         ],
         sidebar: {}
       }
