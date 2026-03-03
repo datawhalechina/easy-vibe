@@ -122,10 +122,10 @@
 
 | 阶段 | 适用人群 | 核心技能 | 产出 |
 | :--- | :--- | :--- | :--- |
-| **第一阶段：零基础入门** | 零基础/产品经理 | 学习地图、AI 编程入门、AI IDE、产品思维、原型设计、AI 能力集成 | 互动小游戏、完整的产品原型 |
-| **第二阶段：全栈开发** | 开发者 | 全栈开发、数据库、AI 集成、部署运维 | 可上线的全栈 AI 应用 |
-| **第三阶段：高级开发** | 进阶开发者 | Claude Code 进阶、多平台开发 | 生产级多平台应用 |
-| **附录：基础知识** | 全员 | 计算机基础、AI 入门、9 大知识领域 | 80+ 交互式专题 |
+| [**第一阶段：零基础入门**](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/) | 零基础/产品经理 | 学习地图、AI 编程入门、AI IDE、产品思维、原型设计、AI 能力集成 | 互动小游戏、完整的产品原型 |
+| [**第二阶段：全栈开发**](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) | 开发者 | 全栈开发、数据库、AI 集成、部署运维 | 可上线的全栈 AI 应用 |
+| [**第三阶段：高级开发**](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) | 进阶开发者 | Claude Code 进阶、多平台开发 | 生产级多平台应用 |
+| [**附录：基础知识**](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) | 全员 | 计算机基础、AI 入门、9 大知识领域 | 80+ 交互式专题 |
 
 ## 🔥 News
 
