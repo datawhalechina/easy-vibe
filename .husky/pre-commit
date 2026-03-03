@@ -4,6 +4,15 @@
 echo "🔍 Pre-commit checks started..."
 echo ""
 
+# 0. 检查是否有 Vue 文件变动，没有则跳过检查直接提交
+VUE_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep '\.vue$' || true)
+if [ -z "$VUE_FILES" ]; then
+  echo "✅ No Vue files in this commit, skipping checks."
+  exit 0
+fi
+echo "🔍 Vue files detected, running checks..."
+echo ""
+
 # 1. ESLint 检查（只检查 errors，忽略 warnings）
 echo "1️⃣ Running ESLint check..."
 LINT_OUTPUT=$(npm run lint 2>&1)
