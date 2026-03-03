@@ -112,15 +112,22 @@ Muchas personas, incluso con asistentes de IA, se desaniman por "no entender el 
 
 Easy-Vibe te lleva de 0 a 1 a través de las siguientes etapas:
 
+> Elige tu punto de partida según tu nivel:
+> - **Sin conocimientos / Product Manager**: Comienza desde Stage 1 para desarrollar pensamiento de programación y dominar AI IDE para prototipado rápido
+> - **Desarrollador**: Comienza desde Stage 2 para profundizar en desarrollo full-stack e integración de IA
+> - **Desarrollador avanzado**: Salta directamente a Stage 3 para explorar Claude Code y desarrollo multiplataforma
+
 | Etapa | Habilidades clave | Resultado |
-| ------------ | -------------------------------- | ----------------------------------------- |
-| **Etapa 1** | Introducción a la programación con IA, Pensamiento de producto, Diseño de prototipos | Minijuegos interactivos, Prototipos de aplicaciones Web (Principiantes & PM) |
-| **Etapa 2** | Desarrollo Full-stack, Integración de IA, Bases de datos | Aplicación de IA Full-stack completa |
-| **Etapa 3** | Claude Code avanzado, Desarrollo de Miniprogramas y Android | Aplicaciones multiplataforma de nivel de producción |
-| **Apéndice** | Ayuda para entender conceptos básicos de Computación e IA | 9 dominios de conocimiento, más de 80 temas interactivos |
+| :--- | :--- | :--- |
+| **Stage 1** | Mapa de aprendizaje, Introducción a programación IA, AI IDE, Pensamiento de producto, Diseño de prototipos, Integración de capacidades IA | Minijuegos interactivos, Prototipos de producto completos |
+| **Stage 2** | Desarrollo Full-stack, Bases de datos, Integración de IA, Despliegue y operaciones | Aplicaciones IA Full-stack listas para producción |
+| **Stage 3** | Claude Code avanzado, Desarrollo multiplataforma | Aplicaciones multiplataforma de nivel de producción |
+| **Apéndice** | Fundamentos de computación, Introducción a IA, 9 dominios de conocimiento | Más de 80 temas interactivos |
 
 ## 🔥 Noticias
 
+- **[2026-03-02]** 🦞 **Soporte para OpenClaw y AI Agents**: Se agregó el archivo de navegación AI `llms.txt`, permitiendo que OpenClaw, Claude, Cursor, Trae y otros AI Agents comprendan rápidamente la estructura del repositorio y localicen con precisión el contenido del tutorial. ¡Esperamos que cada 🦞 disfrute aprendiendo!
+- **[2026-03-01]** [Sección de desarrollo avanzado](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) actualizada integralmente: Se agregaron siete guías detalladas de Claude Code (MCP, Skills, Agent Teams, etc.) y ocho tutoriales de desarrollo multiplataforma (PWA, Electron, NFT, extensiones VS Code, aplicaciones industriales Qt, etc.).
 - **[2026-02-25]** Actualizada la [Base de conocimientos del apéndice](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), que cubre 9 dominios de conocimiento y más de 80 temas interactivos.
 - **[2026-01-27]** Se agregaron tutoriales de desarrollo de aplicaciones para las plataformas Android e iOS.
 - **[2026-01-19]** Lanzamiento de una serie de componentes de demostración interactiva para Prompt Engineering, evolución de la IA, diseño de autenticación, principios de Git, etc.
@@ -294,15 +301,30 @@ Easy-Vibe te lleva de 0 a 1 a través de las siguientes etapas:
 <details>
 <summary><strong>III. Desarrollador avanzado</strong></summary>
 
+#### Habilidades básicas de Claude Code
+
 | Capítulo | Contenido clave | Estado |
-| :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
-| [Avanzado 1: MCP & Claude Code Skills](../../docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/) | Extensión de capacidades del IDE | 🚧 |
-| [Avanzado 2: Tareas de larga duración](../../docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) | Configuración de tareas de codificación estables | 🚧 |
-| [Avanzado 3: WeChat Mini Program](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | Ecosistema y lanzamiento de mini programas | ✅ |
-| [Avanzado 4: Mini Program con Back-end](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Lógica de negocio completa en mini programas | 🚧 |
-| [Avanzado 5: Android App Development](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Desarrollo unificado con Expo | ✅ |
-| [Avanzado 6: iOS App Development](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Desarrollo unificado con Expo | ✅ |
-| [Avanzado 7: Web personal y blog académico](../../docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) | Construcción de marca personal en línea | 🚧 |
+| :--- | :--- | :--- |
+| [Inicio rápido con Claude Code](../../docs/zh-cn/stage-3/core-skills/basics/) | Instalación, operaciones básicas, consejos prácticos y comandos comunes | ✅ |
+| [Guía completa de Claude Code MCP](../../docs/zh-cn/stage-3/core-skills/mcp/) | Conectar Claude Code a GitHub, bases de datos, APIs vía MCP | ✅ |
+| [Guía completa de Claude Code Skills](../../docs/zh-cn/stage-3/core-skills/skills/) | Empaquetar conocimiento profesional en paquetes de habilidades reutilizables | ✅ |
+| [Mejores prácticas de flujo de trabajo Claude Code](../../docs/zh-cn/stage-3/core-skills/workflow/) | Mejores prácticas para desarrollo diario, refactorización, revisión de código | ✅ |
+| [Guía completa de Claude Agent Teams](../../docs/zh-cn/stage-3/core-skills/agent-teams/) | Colaboración de múltiples instancias de IA como un verdadero equipo de desarrollo | ✅ |
+| [Claude Code Superpowers Desarrollo de ingeniería](../../docs/zh-cn/stage-3/core-skills/superpowers/) | Escribir código de nivel de ingeniería siguiendo TDD y mejores prácticas | ✅ |
+| [Cómo hacer que Claude Code trabaje por largos períodos](../../docs/zh-cn/stage-3/core-skills/long-running-tasks/) | Diseñar tareas de larga duración para trabajo continuo | ✅ |
+
+#### Desarrollo multiplataforma
+
+| Capítulo | Contenido clave | Estado |
+| :--- | :--- | :--- |
+| [Cómo construir WeChat Mini Program](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | Ecosistema de mini programas, desde plantillas hasta lanzamiento | ✅ |
+| [Cómo construir WeChat Mini Program con back-end](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Integrar base de datos y lógica back-end en mini programas | ✅ |
+| [Desarrollo de aplicaciones Android](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Desarrollo unificado Web/Nativo con Expo | ✅ |
+| [Desarrollo de aplicaciones iOS](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Desarrollo unificado Web/Nativo con Expo | ✅ |
+| [Desarrollo PWA](../../docs/zh-cn/stage-3/cross-platform/3.7-pwa/) | Construir Progressive Web Apps con soporte offline | 🚧 |
+| [Desarrollo de aplicaciones de escritorio Electron](../../docs/zh-cn/stage-3/cross-platform/3.8-electron/) | Construir aplicaciones de escritorio multiplataforma | 🚧 |
+| [Desarrollo de extensiones VS Code](../../docs/zh-cn/stage-3/cross-platform/3.9-vscode-extension/) | Desarrollar extensiones y plugins para VS Code | 🚧 |
+| [Desarrollo de aplicaciones industriales Qt](../../docs/zh-cn/stage-3/cross-platform/3.10-qt-industrial/) | Construir aplicaciones de escritorio de nivel industrial con Qt | 🚧 |
 
 </details>
 

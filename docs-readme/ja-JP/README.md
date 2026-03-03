@@ -112,15 +112,22 @@ AIアシスタントがいても、「コードが読めない」「環境構築
 
 Easy-Vibeは以下の段階を経て、あなたを0から1へと導きます：
 
+> あなたのレベルに応じて、異なるステージから始めることをお勧めします：
+> - **ゼロベース / プロダクトマネージャー**：Stage 1 から始めて、プログラミング思考を身につけ、AI IDE でプロトタイプを素早く構築
+> - **開発者**：Stage 2 から始めて、フルスタック開発と AI 統合を深く学ぶ
+> - **上級開発者**：Stage 3 に直接入り、Claude Code とマルチプラットフォーム開発を探求
+
 | ステージ | コアスキル | 成果物 |
-| ------------ | -------------------------------- | ----------------------------------------- |
-| **第一段階** | AIプログラミング入門、プロダクト思考、プロトタイプ設計 | インタラクティブゲーム、Webアプリのプロトタイプ (初心者 & PM) |
-| **第二段階** | フルスタック開発、AI統合、データベース | 完全なフルスタックAIアプリケーション |
-| **第三段階** | Claude Code活用、ミニプログラム・Android開発 | 本番級のマルチプラットフォームアプリケーション |
-| **付録** | コンピュータとAIの基礎概念の理解を支援 | 9大知識領域、80以上のインタラクティブ特集 |
+| :--- | :--- | :--- |
+| **Stage 1** | 学習マップ、AIプログラミング入門、AI IDE、プロダクト思考、プロトタイプ設計、AI能力統合 | インタラクティブゲーム、完全な製品プロトタイプ |
+| **Stage 2** | フルスタック開発、データベース、AI統合、デプロイ・運用 | 本番投入可能なフルスタックAIアプリケーション |
+| **Stage 3** | Claude Code 上級、マルチプラットフォーム開発 | 本番級マルチプラットフォームアプリケーション |
+| **付録** | コンピュータ基礎、AI入門、9大知識領域 | 80以上のインタラクティブ特集 |
 
 ## 🔥 News
 
+- **[2026-03-02]** 🦞 **OpenClaw & AI Agent 対応強化**: `llms.txt` AI ナビゲーションファイルを追加。OpenClaw、Claude、Cursor、Trae などの AI Agent がリポジトリ構造を素早く理解し、チュートリアルコンテンツを正確に特定できるように。すべての🦞が楽しく学べることを願っています！
+- **[2026-03-01]** [上級開発セクション](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)を全面的にアップグレード：Claude Code の7つの詳細ガイド（MCP、Skills、Agent Teams など）と8つのクロスプラットフォーム開発実践（PWA、Electron、NFT、VS Code 拡張機能、Qt 産業アプリなど）を追加。
 - **[2026-02-25]** [付録知識ベース](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)を更新。9大知識領域、80以上のインタラクティブ特集を網羅。
 - **[2026-01-27]** AndroidおよびiOSプラットフォームのアプリ開発チュートリアルを追加。
 - **[2026-01-19]** Prompt Engineering、AIの進化史、認証設計、Gitの原理などの一連のインタラクティブ・デモ・コンポーネントをリリース。
@@ -301,22 +308,30 @@ Easy-Vibeは以下の段階を経て、あなたを0から1へと導きます：
 <details>
 <summary><strong>三、上級エンジニア</strong></summary>
 
-| 章 | 主要な内容 | 状態 |
-| :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
-| [上級一：MCPとClaude Code Skills](../../docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/) | MCPとSkillsによるIDE能力の拡張 | 🚧 |
-| [上級二：Coding Toolsを長時間稼働させる方法](../../docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) | 長時間実行されるタスクの設計と構成 | 🚧 |
-| [上級三：マルチプラットフォーム開発：WeChatミニプログラムの構築](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | WeChatミニプログラムのエコシステムと開発フロー | ✅ |
-| [上級四：マルチプラットフォーム開発：バックエンドを含むWeChatミニプログラム](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | ミニプログラムへのデータベースとバックエンドロジックの導入 | 🚧 |
-| [上級五：マルチプラットフォーム開発：Androidアプリの構築](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Expoなどのツールを使用したAndroidアプリ開発 | ✅ |
-| [上級六：マルチプラットフォーム開発：iOSアプリの構築](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Expoなどのツールを使用したiOSアプリ開発 | ✅ |
-| [上級七：自分だけの個人ページと学術ブログの構築](../../docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) | 技術選定から構築、デプロイまでを網羅 | 🚧 |
-
-#### AI能力付録
+#### Claude Code コアスキル
 
 | 章 | 主要な内容 | 状態 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
-| [上級AI一：RAGとは何か、どのように動作するか](../../docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | RAGの原理と一般的なアーキテクチャの体系的な理解 | ✅ |
-| [上級AI二：中・上級RAGとワークフローオーケストレーション：LangGraphを例に](../../docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | LangGraphを使用した複雑なワークフローと高度なRAGの設計 | 🚧 |
+| :--- | :--- | :--- |
+| [Claude Code クイックスタート](../../docs/zh-cn/stage-3/core-skills/basics/) | インストール、基本操作、実践的なヒントとよく使うコマンド | ✅ |
+| [Claude Code MCP 完全ガイド](../../docs/zh-cn/stage-3/core-skills/mcp/) | MCPでClaude CodeをGitHub、データベース、APIなどの外部サービスに接続 | ✅ |
+| [Claude Code Skills 完全ガイド](../../docs/zh-cn/stage-3/core-skills/skills/) | 専門知識を再利用可能なスキルパックにパッケージ化 | ✅ |
+| [Claude Code ワークフローベストプラクティス](../../docs/zh-cn/stage-3/core-skills/workflow/) | 日常開発、リファクタリング、コードレビューなどのベストプラクティス | ✅ |
+| [Claude Agent Teams 完全ガイド](../../docs/zh-cn/stage-3/core-skills/agent-teams/) | 複数AIインスタンスの協調作業、本物の開発チームのように並行作業 | ✅ |
+| [Claude Code Superpowers エンジニアリング開発](../../docs/zh-cn/stage-3/core-skills/superpowers/) | TDDとベストプラクティスに従ったエンジニアリンググレードのコードを書く | ✅ |
+| [Claude Code を長時間稼働させる方法](../../docs/zh-cn/stage-3/core-skills/long-running-tasks/) | 長時間実行タスクを設計し、完了まで継続的に動作させる | ✅ |
+
+#### マルチプラットフォーム開発
+
+| 章 | 主要な内容 | 状態 |
+| :--- | :--- | :--- |
+| [WeChatミニプログラムの構築方法](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | WeChatミニプログラムのエコシステム、公式テンプレートからリリースまで | ✅ |
+| [バックエンドを含むWeChatミニプログラムの構築方法](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | ミニプログラムへのデータベースとバックエンドロジックの導入 | ✅ |
+| [Androidアプリ開発](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Expoなどのツールを使用したAndroidアプリ開発 | ✅ |
+| [iOSアプリ開発](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Expoなどのツールを使用したiOSアプリ開発 | ✅ |
+| [PWA開発](../../docs/zh-cn/stage-3/cross-platform/3.7-pwa/) | オフライン対応のプログレッシブWebアプリを構築 | 🚧 |
+| [Electronデスクトップアプリ開発](../../docs/zh-cn/stage-3/cross-platform/3.8-electron/) | クロスプラットフォームデスクトップアプリケーションを構築 | 🚧 |
+| [VS Code拡張機能開発](../../docs/zh-cn/stage-3/cross-platform/3.9-vscode-extension/) | VS Code拡張機能とプラグインを開発 | 🚧 |
+| [Qt産業アプリケーション開発](../../docs/zh-cn/stage-3/cross-platform/3.10-qt-industrial/) | Qtを使用した産業グレードのデスクトップアプリケーションを構築 | 🚧 |
 
 </details>
 

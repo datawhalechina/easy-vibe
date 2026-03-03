@@ -112,15 +112,22 @@
 
 Easy-Vibe 通過以下幾個階段，帶你從 0 到 1：
 
-| 階段         | 核心技能                         | 產出                                      |
-| ------------ | -------------------------------- | ----------------------------------------- |
-| **第一階段** | AI 編程入門、產品思維、原型設計  | 互動小遊戲、Web 應用原型（新手入門 & PM） |
-| **第二階段** | 全棧開發、AI 集成、數據庫        | 完整的全棧 AI 應用                        |
-| **第三階段** | claude code 進階、小程序安卓開發 | 生產級多平台應用                          |
-| **附錄**     | 幫你理解計算機、人工智能基礎概念 | 9 大知識領域、80+ 交互式專題              |
+> 根據你的基礎水平，推薦從不同階段開始：
+> - **零基礎/產品經理**：從 Stage 1 開始，建立編程思維，掌握 AI IDE 快速構建產品原型
+> - **開發者**：從 Stage 2 開始，深入全棧開發和 AI 集成
+> - **進階開發者**：直接進入 Stage 3，探索 Claude Code 和多平台開發
+
+| 階段 | 核心技能 | 產出 |
+| :--- | :--- | :--- |
+| **Stage 1** | 學習地圖、AI 編程入門、AI IDE、產品思維、原型設計、AI 能力集成 | 互動小遊戲、完整的產品原型 |
+| **Stage 2** | 全棧開發、數據庫、AI 集成、部署運維 | 可上線的全棧 AI 應用 |
+| **Stage 3** | Claude Code 進階、多平台開發 | 生產級多平台應用 |
+| **附錄** | 計算機基礎、AI 入門、9 大知識領域 | 80+ 交互式專題 |
 
 ## 🔥 News
 
+- **[2026-03-02]** 🦞 **OpenClaw & AI Agent 友好支持**：新增 `llms.txt` AI 導航文件，讓 OpenClaw、Claude、Cursor、Trae 等 AI Agent 能夠快速理解本倉庫結構，精準定位教程內容。希望每個🦞都學得愉快！
+- **[2026-03-01]** [高級開發部分](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)全面升級：新增 Claude Code 七大深度指南（MCP、Skills、Agent Teams 等）及八大跨平台開發實戰（PWA、Electron、NFT、VS Code 插件、Qt 工業應用等）。
 - **[2026-02-25]** 更新[附錄知識庫](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)，涵蓋 9 大知識領域、80+ 交互式專題。
 - **[2026-01-27]** 新增 Android 和 iOS 平台應用開發教程。
 - **[2026-01-19]** 發佈 Prompt Engineering、AI 演進史、鑑權設計、Git 原理等一系列交互式演示組件，大幅提升可視化學習體驗。
@@ -301,22 +308,30 @@ Easy-Vibe 通過以下幾個階段，帶你從 0 到 1：
 <details>
 <summary><strong>三、高級開發工程師</strong></summary>
 
-| 章節                                                                                                                 | 關鍵內容                                                     | 狀態 |
-| :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
-| [高級一：MCP 與 Claude Code Skills](../../docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/)                      | 通過 MCP 與 Skills 擴展 IDE 能力，把外部服務接成工具         | 🚧   |
-| [高級二：如何讓 Coding Tools 長時間工作](../../docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/)                     | 設計和配置長時間運行的任務，讓 Coding Tools 更穩定可靠       | 🚧   |
-| [高級三：多平台開發：如何構建微信小程序](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/)                  | 了解微信小程序生態，從官方模板到上線完成一個前端小程序       | ✅   |
-| [高級四：多平台開發：如何構建微信小程序-包含後端](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | 在小程序中接入數據庫與後端邏輯，打通完整業務閉環             | 🚧   |
-| [高級五：多平台開發：如何構建安卓程序](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/)                           | 使用 Expo 等工具，完成 Web/原生一體化的安卓應用開發          | ✅   |
-| [高級六：多平台開發：如何構建 iOS 程序](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/)                              | 使用 Expo 等工具，完成 Web/原生一體化的 iOS 應用開發         | ✅   |
-| [高級七：如何構建屬於自己的個人網頁與學術博客](../../docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/)         | 從選型、搭建到部署，構建展示個人項目與學術成果的長久在線主頁 | 🚧   |
+#### Claude Code 核心技能
 
-#### AI 能力附錄
+| 章節 | 關鍵內容 | 狀態 |
+| :--- | :--- | :--- |
+| [Claude Code 快速上手](../../docs/zh-cn/stage-3/core-skills/basics/) | 安裝配置、基礎操作、實用技巧和常用指令 | ✅ |
+| [Claude Code MCP 完全指南](../../docs/zh-cn/stage-3/core-skills/mcp/) | 通過 MCP 讓 Claude Code 連接 GitHub、數據庫、API 等外部服務 | ✅ |
+| [Claude Code Skills 完全指南](../../docs/zh-cn/stage-3/core-skills/skills/) | 將專業知識打包成可復用技能包，一次配置反覆使用 | ✅ |
+| [Claude Code 工作流最佳實踐](../../docs/zh-cn/stage-3/core-skills/workflow/) | 日常開發、代碼重構、Code Review 等場景的最佳實踐 | ✅ |
+| [Claude Agent Teams 完全指南](../../docs/zh-cn/stage-3/core-skills/agent-teams/) | 多 AI 實例協同工作，像真正的開發團隊一樣並行協作 | ✅ |
+| [Claude Code Superpowers 工程級開發](../../docs/zh-cn/stage-3/core-skills/superpowers/) | 讓 AI 寫出工程級代碼，遵循 TDD 和最佳實踐 | ✅ |
+| [如何讓 Claude Code 長時間工作](../../docs/zh-cn/stage-3/core-skills/long-running-tasks/) | 設計長時間運行的任務，讓 Coding Tools 持續工作直到完成 | ✅ |
 
-| 章節                                                                                                                                                | 關鍵內容                                                | 狀態 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
-| [高級 AI 一：什麼是 RAG 以及它如何工作](../../docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | 系統理解 RAG 原理與常見架構，為複雜應用提供知識檢索基礎 | ✅   |
-| [高級 AI 二：中高級 RAG 與工作流編排：以 LangGraph 為例](../../docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/)                               | 使用 LangGraph 等工具設計多步工作流與中高級 RAG 系統    | 🚧   |
+#### 多平台開發
+
+| 章節 | 關鍵內容 | 狀態 |
+| :--- | :--- | :--- |
+| [如何構建微信小程序](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | 了解微信小程序生態，從官方模板到上線完成一個前端小程序 | ✅ |
+| [如何構建微信小程序-包含後端](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | 在小程序中接入數據庫與後端邏輯，打通完整業務閉環 | ✅ |
+| [Android 應用開發](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | 使用 Expo 等工具，完成 Web/原生一體化的安卓應用開發 | ✅ |
+| [iOS 應用開發](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | 使用 Expo 等工具，完成 Web/原生一體化的 iOS 應用開發 | ✅ |
+| [PWA 開發](../../docs/zh-cn/stage-3/cross-platform/3.7-pwa/) | 構建漸進式 Web 應用，支持離線訪問 | 🚧 |
+| [Electron 桌面應用開發](../../docs/zh-cn/stage-3/cross-platform/3.8-electron/) | 構建跨平台桌面應用程序 | 🚧 |
+| [VS Code 插件開發](../../docs/zh-cn/stage-3/cross-platform/3.9-vscode-extension/) | 開發 VS Code 擴展和插件 | 🚧 |
+| [Qt 工業應用開發](../../docs/zh-cn/stage-3/cross-platform/3.10-qt-industrial/) | 使用 Qt 構建工業級桌面應用程序 | 🚧 |
 
 </details>
 

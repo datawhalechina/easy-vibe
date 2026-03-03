@@ -112,15 +112,22 @@ Many people, even with AI assistants, are still discouraged by "not understandin
 
 Easy-Vibe takes you from 0 to 1 through the following stages:
 
+> Choose your starting point based on your background:
+> - **Zero Foundation / Product Manager**: Start from Stage 1 to build programming mindset and master AI IDE for rapid prototyping
+> - **Developer**: Start from Stage 2 to dive into full-stack development and AI integration
+> - **Advanced Developer**: Jump to Stage 3 to explore Claude Code and multi-platform development
+
 | Stage | Core Skills | Output |
-| ------------ | -------------------------------- | ----------------------------------------- |
-| **Stage 1** | Intro to AI Programming, Product Thinking, Prototyping | Interactive Mini-games, Web App Prototypes (Beginner & PM) |
-| **Stage 2** | Full-stack Development, AI Integration, Databases | Complete Full-stack AI Application |
-| **Stage 3** | Advanced Claude Code, Mini-programs & Android Development | Production-grade Multi-platform Applications |
-| **Appendix** | Helping you understand Computer & AI basic concepts | 9 Knowledge Domains, 80+ Interactive Topics |
+| :--- | :--- | :--- |
+| **Stage 1** | Learning Map, AI Programming Intro, AI IDE, Product Thinking, Prototype Design, AI Capability Integration | Interactive Mini-games, Complete Product Prototypes |
+| **Stage 2** | Full-stack Development, Databases, AI Integration, Deployment & Operations | Production-ready Full-stack AI Applications |
+| **Stage 3** | Advanced Claude Code, Multi-platform Development | Production-grade Multi-platform Applications |
+| **Appendix** | Computer Fundamentals, AI Intro, 9 Knowledge Domains | 80+ Interactive Topics |
 
 ## 🔥 News
 
+- **[2026-03-02]** 🦞 **OpenClaw & AI Agent Friendly Support**: Added `llms.txt` AI navigation file, enabling OpenClaw, Claude, Cursor, Trae and other AI Agents to quickly understand the repository structure and accurately locate tutorial content. Hope every 🦞 enjoys learning!
+- **[2026-03-01]** [Advanced Development Section](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) comprehensively upgraded: Added seven deep guides for Claude Code (MCP, Skills, Agent Teams, etc.) and eight cross-platform development tutorials (PWA, Electron, NFT, VS Code Extensions, Qt Industrial Applications, etc.).
 - **[2026-02-25]** Updated [Appendix Knowledge Base](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), covering 9 knowledge domains and 80+ interactive topics.
 - **[2026-01-27]** Added Android and iOS platform application development tutorials.
 - **[2026-01-19]** Released interactive demonstration components for Prompt Engineering, AI Evolution, Authentication Design, Git Principles, etc., significantly enhancing the visual learning experience.
@@ -301,22 +308,30 @@ Easy-Vibe takes you from 0 to 1 through the following stages:
 <details>
 <summary><strong>III. Advanced Developer</strong></summary>
 
+#### Claude Code Core Skills
+
 | Chapter | Key Content | Status |
 | :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
-| [Advanced 1: MCP & Claude Code Skills](../../docs/zh-cn/stage-3/core-skills/3.1-mcp-claude-code-skills/) | Extend IDE power with external services as tools | 🚧 |
-| [Advanced 2: Long-running Coding Tasks](../../docs/zh-cn/stage-3/core-skills/3.2-long-running-tasks/) | Design and configure stable, long-running tasks | 🚧 |
-| [Advanced 3: WeChat Mini Program Dev](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | Build and launch a front-end mini program | ✅ |
-| [Advanced 4: WeChat Mini Program with Back-end](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Integrate DB and back-end logic in mini programs | 🚧 |
-| [Advanced 5: Android App Development](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Web/Native unified Android dev with Expo | ✅ |
-| [Advanced 6: iOS App Development](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Web/Native unified iOS dev with Expo | ✅ |
-| [Advanced 7: Personal Website & Academic Blog](../../docs/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/) | Build and deploy a permanent online homepage | 🚧 |
+| [Claude Code Quick Start](../../docs/zh-cn/stage-3/core-skills/basics/) | Installation, basic operations, practical tips and common commands | ✅ |
+| [Claude Code MCP Complete Guide](../../docs/zh-cn/stage-3/core-skills/mcp/) | Connect Claude Code to GitHub, databases, APIs via MCP | ✅ |
+| [Claude Code Skills Complete Guide](../../docs/zh-cn/stage-3/core-skills/skills/) | Package professional knowledge into reusable skill packs | ✅ |
+| [Claude Code Workflow Best Practices](../../docs/zh-cn/stage-3/core-skills/workflow/) | Best practices for daily development, refactoring, code review | ✅ |
+| [Claude Agent Teams Complete Guide](../../docs/zh-cn/stage-3/core-skills/agent-teams/) | Multi-AI instance collaboration like a real dev team | ✅ |
+| [Claude Code Superpowers Engineering Development](../../docs/zh-cn/stage-3/core-skills/superpowers/) | Write engineering-grade code following TDD and best practices | ✅ |
+| [How to Make Claude Code Work for Long Periods](../../docs/zh-cn/stage-3/core-skills/long-running-tasks/) | Design long-running tasks for continuous work | ✅ |
 
-#### AI Capability Appendix
+#### Multi-platform Development
 
 | Chapter | Key Content | Status |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ | :--- |
-| [Advanced AI 1: What is RAG & How It Works](../../docs/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/extra5-what-is-rag-and-how-does-it-work-and-future.md) | Systematic understanding of RAG architectures | ✅ |
-| [Advanced AI 2: Advanced RAG with LangGraph](../../docs/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/) | Multi-step workflows and advanced RAG systems | 🚧 |
+| :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :--- |
+| [How to Build WeChat Mini Program](../../docs/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/) | WeChat mini program ecosystem, from template to launch | ✅ |
+| [How to Build WeChat Mini Program with Back-end](../../docs/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/) | Integrate database and back-end logic in mini programs | ✅ |
+| [Android App Development](../../docs/zh-cn/stage-3/cross-platform/3.5-android-app/) | Web/Native unified Android dev with Expo | ✅ |
+| [iOS App Development](../../docs/zh-cn/stage-3/cross-platform/3.6-ios-app/) | Web/Native unified iOS dev with Expo | ✅ |
+| [PWA Development](../../docs/zh-cn/stage-3/cross-platform/3.7-pwa/) | Build Progressive Web Apps with offline support | 🚧 |
+| [Electron Desktop App Development](../../docs/zh-cn/stage-3/cross-platform/3.8-electron/) | Build cross-platform desktop applications | 🚧 |
+| [VS Code Extension Development](../../docs/zh-cn/stage-3/cross-platform/3.9-vscode-extension/) | Develop VS Code extensions and plugins | 🚧 |
+| [Qt Industrial Application Development](../../docs/zh-cn/stage-3/cross-platform/3.10-qt-industrial/) | Build industrial-grade desktop applications with Qt | 🚧 |
 
 </details>
 
