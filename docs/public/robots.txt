@@ -1,0 +1,11 @@
+# robots.txt for Easy-Vibe
+# https://datawhalechina.github.io/easy-vibe
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://datawhalechina.github.io/easy-vibe/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

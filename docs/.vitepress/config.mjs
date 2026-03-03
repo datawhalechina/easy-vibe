@@ -98,6 +98,18 @@ const getSeoHead = (locale, title, description, path = '') => {
   const canonicalUrl = path ? `${siteUrl}${path}` : `${siteUrl}/${locale}/`
   const ogImageUrl = `${siteUrl}${base}logo.png`
 
+  // 从路径中提取页面相对路径（去掉语言前缀）
+  const getRelativePath = (fullPath, currentLocale) => {
+    if (!fullPath) return ''
+    const prefix = `/${currentLocale}/`
+    if (fullPath.startsWith(prefix)) {
+      return fullPath.slice(prefix.length)
+    }
+    return fullPath.replace(/^\//, '')
+  }
+
+  const relativePath = getRelativePath(path, locale)
+
   const head = [
     ['link', { rel: 'icon', href: `${base}logo.png`.replace('//', '/') }],
     [
@@ -143,19 +155,24 @@ const getSeoHead = (locale, title, description, path = '') => {
     ['meta', { name: 'robots', content: 'index,follow' }],
     ['meta', { name: 'googlebot', content: 'index,follow' }],
     ['meta', { name: 'baiduspider', content: 'index,follow' }],
+    ['meta', { name: 'bingbot', content: 'index,follow' }],
     ['meta', { name: 'distribution', content: 'global' }],
     ['meta', { name: 'rating', content: 'general' }],
     ['meta', { name: 'revisit-after', content: '7 days' }]
   ]
 
-  // 添加 hreflang 标签
+  // 添加 hreflang 标签 - 指向相同页面的不同语言版本
   Object.keys(localeMap).forEach((lang) => {
+    let alternateUrl = `${siteUrl}/${lang}/`
+    if (relativePath) {
+      alternateUrl = `${siteUrl}/${lang}/${relativePath}`
+    }
     head.push([
       'link',
       {
         rel: 'alternate',
         hreflang: localeMap[lang].hreflang,
-        href: `${siteUrl}/${lang}/`
+        href: alternateUrl
       }
     ])
   })
@@ -184,7 +201,10 @@ const getSeoHead = (locale, title, description, path = '') => {
       logo: {
         '@type': 'ImageObject',
         url: ogImageUrl
-      }
+      },
+      sameAs: [
+        'https://github.com/datawhalechina/easy-vibe'
+      ]
     },
     mainEntity: {
       '@type': 'Course',
@@ -194,30 +214,85 @@ const getSeoHead = (locale, title, description, path = '') => {
         '@type': 'Organization',
         name: 'Datawhale',
         sameAs: 'https://github.com/datawhalechina/easy-vibe'
-      }
+      },
+      educationalLevel: 'Beginner to Advanced',
+      learningResourceType: 'Course'
     }
   }
   head.push(['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd)])
 
-  // 添加 BreadcrumbList 结构化数据
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
+  // 生成动态 BreadcrumbList 结构化数据
+  const generateBreadcrumbList = () => {
+    const items = [
       {
         '@type': 'ListItem',
         position: 1,
-        name: '首页',
-        item: siteUrl
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: locale === 'zh-cn' ? '教程' : 'Tutorial',
+        name: locale === 'zh-cn' ? '首页' : 'Home',
         item: `${siteUrl}/${locale}/`
       }
     ]
+
+    if (relativePath) {
+      // 解析路径生成面包屑
+      const pathParts = relativePath.split('/').filter(Boolean)
+      let currentPath = ''
+
+      // 路径分段名称映射
+      const segmentNames = {
+        'zh-cn': {
+          'stage-0': '幼儿园',
+          'stage-1': 'AI产品经理',
+          'stage-2': '初中级开发工程师',
+          'stage-3': '高级开发工程师',
+          'appendix': '附录',
+          'guide': '指南',
+          'frontend': '前端',
+          'backend': '后端',
+          'ai-capabilities': 'AI能力',
+          'core-skills': '核心技能',
+          'cross-platform': '跨平台开发',
+          'personal-brand': '个人品牌',
+          'ai-advanced': 'AI进阶'
+        },
+        'en': {
+          'stage-0': 'Kindergarten',
+          'stage-1': 'AI Product Manager',
+          'stage-2': 'Junior Developer',
+          'stage-3': 'Senior Developer',
+          'appendix': 'Appendix',
+          'guide': 'Guide',
+          'frontend': 'Frontend',
+          'backend': 'Backend',
+          'ai-capabilities': 'AI Capabilities',
+          'core-skills': 'Core Skills',
+          'cross-platform': 'Cross-platform',
+          'personal-brand': 'Personal Brand',
+          'ai-advanced': 'AI Advanced'
+        }
+      }
+
+      const names = segmentNames[locale] || segmentNames['zh-cn']
+
+      pathParts.forEach((part, index) => {
+        currentPath += `/${part}`
+        const name = names[part] || part.replace(/-/g, ' ')
+        items.push({
+          '@type': 'ListItem',
+          position: index + 2,
+          name: name,
+          item: `${siteUrl}/${locale}${currentPath}/`
+        })
+      })
+    }
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items
+    }
   }
+
+  const breadcrumbJsonLd = generateBreadcrumbList()
   head.push(['script', { type: 'application/ld+json', class: 'breadcrumb-jsonld' }, JSON.stringify(breadcrumbJsonLd)])
 
   return head

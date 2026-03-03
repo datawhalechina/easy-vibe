@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "build:force": "vitepress build docs --force",
+    "build": "npm run sitemap && vitepress build docs",
+    "build:force": "npm run sitemap && vitepress build docs --force",
     "preview": "vitepress preview docs",
     "format": "prettier --write .",
     "verify": "bash scripts/verify.sh",
     "lint": "eslint docs/.vitepress/theme",
     "lint:fix": "eslint docs/.vitepress/theme --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "sitemap": "node scripts/generate-sitemap.mjs"
   },
   "keywords": [
     "easy-vibe",

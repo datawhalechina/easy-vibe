@@ -1,0 +1,53 @@
+# Easy-Vibe - AI Vibe Coding Curriculum
+# https://datawhalechina.github.io/easy-vibe
+#
+# This file helps AI models and agents understand our project structure
+# Created for: OpenClaw, Claude, Cursor, Trae, and other AI coding assistants
+
+== Project Overview ==
+
+Easy-Vibe is an educational curriculum for learning AI Vibe Coding from zero to advanced levels.
+It's built with VitePress and provides interactive tutorials in multiple languages.
+
+== Learning Path ==
+
+Stage 0 (Kindergarten): Learn AI programming through games
+- Learning map visualization
+- AI capabilities through interactive games
+
+Stage 1 (AI Product Manager): Build AI-powered web application prototypes
+- Finding great ideas
+- AI IDE introduction (Cursor, Claude Code)
+- Building prototypes
+- Integrating AI capabilities
+
+Stage 2 (Junior/Mid-level Developer): Full-stack development
+- Frontend development
+- Backend development with databases
+- Deployment and DevOps
+
+Stage 3 (Senior Developer): Cross-platform development
+- WeChat mini-programs
+- Android and iOS apps
+- MCP (Model Context Protocol)
+- RAG and LangGraph
+
+== Content Structure ==
+
+/docs/
+  - zh-cn/ (Simplified Chinese - primary, complete)
+  - en/ (English - complete)
+  - zh-tw/, ja-jp/, ko-kr/, etc. (partial translations)
+  - stage-0/, stage-1/, stage-2/, stage-3/ (curriculum stages)
+  - appendix/ (reference materials with interactive components)
+
+== Key Files ==
+
+- CLAUDE.md: Project-specific instructions for AI assistants
+- package.json: Dependencies and scripts
+- docs/.vitepress/config.mjs: Site configuration
+
+== Contact ==
+
+- GitHub: https://github.com/datawhalechina/easy-vibe
+- Organization: Datawhale China
