@@ -157,10 +157,10 @@ git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 
 ### 基本使用
 
-基本使用方式是通过 `/ralph-loop` 命令：
+基本使用方式是通过 `/ralph-wiggum:ralph-loop` 命令：
 
 ```bash
-/ralph-loop "构建一个待办事项 API，包含 CRUD 操作、输入验证、测试。
+/ralph-wiggum:ralph-loop "构建一个待办事项 API，包含 CRUD 操作、输入验证、测试。
              全部完成后输出 <promise>COMPLETE</promise>" \
   --max-iterations 50 \
   --completion-promise "COMPLETE"
@@ -197,7 +197,7 @@ git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 **模板 1：测试迁移（Jest → Vitest）**
 
 ```
-/ralph-loop "
+/ralph-wiggum:ralph-loop "
 将项目中所有测试从 Jest 迁移到 Vitest：
 - 保持所有测试逻辑不变
 - 更新配置文件（vite.config.js、vitest.config.js）
@@ -217,7 +217,7 @@ git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 **模板 2：UI/UX 优化（移动端优先）**
 
 ```
-/ralph-loop "
+/ralph-wiggum:ralph-loop "
 把这个项目的 UI/UX 做得更像一款精致的、移动端优先的语言学习 App：
 - 统一间距与留白（使用 4px 基础单位）
 - 建立清晰的字体层级（标题/正文/辅助信息）
@@ -237,7 +237,7 @@ git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 **模板 3：批量添加 TypeScript 类型**
 
 ```
-/ralph-loop "
+/ralph-wiggum:ralph-loop "
 给项目中所有函数添加 TypeScript 类型注解：
 - 优先处理 src/ 目录
 - 为函数参数和返回值添加类型
@@ -256,7 +256,7 @@ git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 **模板 4：TDD 驱动功能开发**
 
 ```
-/ralph-loop "
+/ralph-wiggum:ralph-loop "
 使用 TDD 方式实现用户结账功能：
 1. 先写测试（checkout.test.ts）
 2. 运行测试（会失败）
@@ -282,7 +282,7 @@ git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 **模板 5：代码风格统一**
 
 ```
-/ralph-loop "
+/ralph-wiggum:ralph-loop "
 统一项目代码风格：
 - 使用 Prettier 格式化所有文件
 - 统一命名规范（变量 camelCase，组件 PascalCase）
@@ -573,7 +573,7 @@ claude /plugins:add ralph-wiggum
 现在启动 Ralph Loop，让它完成整个项目：
 
 ```bash
-/ralph-loop "
+/ralph-wiggum:ralph-loop "
 请从零开始构建一个完整的 BBS 论坛系统，使用 TDD 方式开发。
 
 项目结构要求：
