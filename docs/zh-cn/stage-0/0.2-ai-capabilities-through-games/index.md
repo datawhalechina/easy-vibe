@@ -38,9 +38,9 @@ const duration = '约 <strong>4 小时</strong>，可分多次完成'
 
 ## 1. 普通人的困境与机会
 
-很多人脑子里有一堆产品点子：一款帮自己记账的小工具、一个记录孩子成长的网页、甚至一款小游戏。但一想到要写代码、要找程序员,就直接劝退。
+很多人脑子里有一堆产品点子：一款帮自己记账的小工具、一个记录孩子成长的网页、甚至一款小游戏。但一想到要写代码、要找程序员，就直接劝退。
 
-AI 出现之后,第一次给了普通人一个全新的可能：你不需要会写代码,只需要学会对 AI 说清楚你想要什么。来自 GitHub Copilot 的[数据显示](https://www.wearetenet.com/blog/github-copilot-usage-data-statistics),超过1500万开发者正在用AI辅助编程,平均46%的代码都是AI生成的! 在Java项目中这个比例能达到61%。
+AI 出现之后，第一次给了普通人一个全新的可能：你不需要会写代码，只需要学会对 AI 说清楚你想要什么。来自 GitHub Copilot 的[数据显示](https://www.wearetenet.com/blog/github-copilot-usage-data-statistics)，超过1500万开发者正在用AI辅助编程，平均46%的代码都是AI生成的! 在Java项目中这个比例能达到61%。
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
