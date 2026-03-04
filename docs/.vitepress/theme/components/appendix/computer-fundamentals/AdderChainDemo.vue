@@ -69,7 +69,7 @@
             v-for="(b, i) in bitsA"
             :key="'a' + i"
             class="bit"
-            :class="{ hl: activeBit === i }"
+            :class="{ hl: activeBit === (bitCount - 1 - i) }"
             >{{ b }}</span>
         </span>
         <span class="binary-dec">({{ clampedA }})</span>
@@ -81,7 +81,7 @@
             v-for="(b, i) in bitsB"
             :key="'b' + i"
             class="bit"
-            :class="{ hl: activeBit === i }"
+            :class="{ hl: activeBit === (bitCount - 1 - i) }"
             >{{ b }}</span>
         </span>
         <span class="binary-dec">({{ clampedB }})</span>
@@ -93,7 +93,7 @@
             v-for="(b, i) in bitsSum"
             :key="'s' + i"
             class="bit result-bit"
-            :class="{ hl: activeBit === i }"
+            :class="{ hl: activeBit === (bitCount - 1 - i) }"
             >{{ b }}</span>
         </span>
         <span class="binary-dec">({{ resultDec }}{{ overflow ? ' 溢出' : '' }})</span>

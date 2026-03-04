@@ -456,15 +456,15 @@
 
       <div class="multi-chain">
         <div
-          v-for="(s, i) in multiStages"
-          :key="i"
+          v-for="(s, i) in multiStages.slice().reverse()"
+          :key="3 - i"
           class="multi-stage"
-          :class="{ highlight: multiHover === i }"
-          @mouseenter="multiHover = i"
+          :class="{ highlight: multiHover === (3 - i) }"
+          @mouseenter="multiHover = 3 - i"
           @mouseleave="multiHover = null"
         >
-          <span class="multi-stage-bit">位{{ i }}</span>
-          <span class="multi-stage-io">{{ s.a }}+{{ s.b }}<span v-if="i > 0">+{{ s.cin }}</span></span>
+          <span class="multi-stage-bit">位{{ 3 - i }}</span>
+          <span class="multi-stage-io">{{ s.a }}+{{ s.b }}<span v-if="3 - i > 0">+{{ s.cin }}</span></span>
           <span class="multi-stage-out">={{ s.sum }}<span v-if="s.cout">C</span></span>
         </div>
       </div>

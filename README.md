@@ -11,6 +11,8 @@
 
 # Easy-Vibe : Learn vibe coding from 0 to 1
 
+<p align="center"><em>A comprehensive, interactive guide to mastering AI-assisted coding from absolute beginner to confident practitioner.</em></p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读 (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程 (Interactive Tutorial)</a>
 </p>
