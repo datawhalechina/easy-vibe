@@ -11,8 +11,8 @@
 <NavGrid>
   <NavCard
     href="/zh-cn/stage-2/frontend/2.0-lovart-assets/"
-    title="使用 Lovart 生产素材"
-    description="学习如何使用 Lovart 等 AI 工具快速生成高质量的游戏素材与 UI 资源"
+    title="快速上手利用大模型生成设计"
+    description="从零开始，学习如何利用大型语言模型生成高质量的设计素材"
   />
   <NavCard
     href="/zh-cn/stage-2/frontend/2.1-figma-mastergo/"
