@@ -1300,7 +1300,7 @@ Sitemap: ${siteUrl}/sitemap.xml
               collapsed: false,
               items: [
                 {
-                  text: '使用 Lovart 生产素材',
+                  text: '使用 NanoBanana 生产素材',
                   link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
                 },
                 {
