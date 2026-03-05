@@ -12,7 +12,7 @@
   <NavCard
     href="/zh-cn/stage-2/frontend/2.0-lovart-assets/"
     title="从Lovart出发，搭建自己的素材生产Agent"
-    description="从零开始，利用大模型和Lovart批量生成高质量的设计素材，并动手构建一个能意图识别的绘图Agent"
+    description="从零开始，利用Nanobanana和Lovart批量生成高质量的设计素材，并动手构建一个能意图识别的绘图Agent"
   />
   <NavCard
     href="/zh-cn/stage-2/frontend/2.1-figma-mastergo/"
