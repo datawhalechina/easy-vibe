@@ -186,7 +186,7 @@
 
 | 章节                                                                                                       | 关键内容                                                                     |
 | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- |
-| [快速上手利用大模型生成设计](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.0-lovart-assets/)                             | 从零开始，利用大模型和Lovart批量生成高质量的设计素材，并动手构建一个能意图识别的绘图Agent |
+| [从Lovart出发，搭建自己的素材生产Agent](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.0-lovart-assets/)                             | 从零开始，利用大模型和Lovart批量生成高质量的设计素材，并动手构建一个能意图识别的绘图Agent |
 | [Figma 与 MasterGo 入门](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.1-figma-mastergo/)                          | 用设计工具梳理信息架构和页面结构，为前端实现打基础                           |
 | [构建第一个现代应用程序-UI 设计](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.2-ui-design/)                       | 基于设计稿完成组件化界面，实现从设计到代码的第一条链路                       |
 | [参考 UI 设计规范与多产品 UI 设计](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.3-multi-product-ui/)              | 围绕统一主视觉扩展多产品界面，练习系统化设计能力                             |
