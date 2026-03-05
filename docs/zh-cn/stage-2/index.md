@@ -12,7 +12,7 @@
   <NavCard
     href="/zh-cn/stage-2/frontend/2.0-lovart-assets/"
     title="快速上手利用大模型生成设计"
-    description="学习如何从零开始，利用大模型批量生成高质量的设计素材，并动手构建一个能理解长文本、自动生成配图的 AI 绘图助手。"
+    description="从零开始，利用大模型和Lovart批量生成高质量的设计素材，并动手构建一个能意图识别的绘图Agent"
   />
   <NavCard
     href="/zh-cn/stage-2/frontend/2.1-figma-mastergo/"
