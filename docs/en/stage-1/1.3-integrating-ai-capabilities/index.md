@@ -285,3 +285,320 @@ caption = caption_image(image_path)
 ```
 
 :::
+
+For image-generation integration, failures can be noisy and hard to debug. Ask AI IDE to display full error details every time (instead of only "generation failed"), for example:
+
+```text
+Don't only show "image generation failed." Please always display the full failure reason, such as model mismatch, request errors, or timeout details.
+```
+
+If changes are not reflected in the page after multiple attempts, ask AI IDE to restart the project.
+
+In ecommerce scenarios, you may want uploaded clothes to be automatically "worn" by virtual models, or automatically generate attractive product posters and promotional visuals. Here is an example prompt for generating an ecommerce poster:
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-14-10.png)
+
+You can combine text-to-image and image-to-image APIs based on your own business scenario ideas.
+
+## 4. More Image Service Options
+
+Below are additional choices. It's recommended to first run through a working Qwen image generation result, then replace with another service based on quality and cost.
+
+### 4.1 Recraft Integration
+
+If your prototype is more design-production oriented (for example brand-style illustrations, marketing posters, vector-style assets), Recraft is often a better fit. The integration method is exactly the same: **get a Key + find official examples + let AI IDE wire them into your page/button**.
+
+::: details Learn More: What is Recraft?
+
+> Recraft is an AI tool for designers, illustrators, and marketers, founded in 2022 (US) with headquarters in London. It supports generating and iterating visual content (images, vector art, and 3D graphics), with strengths in output quality, element-level control, and brand-consistent design.
+>
+> ![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-23-34.png)
+> ![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-23-42.png)
+
+First, go to the [API entry](https://www.recraft.ai/profile/api) to obtain an API Key.
+
+Recraft currently does not provide a free quota in this workflow, so you'll need to top up credits yourself.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/image40.png)
+
+Then follow the same process and use official documentation examples:
+
+- <https://www.recraft.ai/docs/api-reference/getting-started>
+- <https://www.recraft.ai/docs/api-reference/usage>
+- <https://www.recraft.ai/docs/api-reference/guides>
+
+:::
+
+### 4.2 Qwen Image / Qwen Image Edit Integration
+
+If you want a relatively simple way to integrate image generation, Qwen Image is also a good choice. The approach is unchanged: treat it as an image API and connect it to your prototype button.
+
+::: details Learn More: What are Qwen Image and Qwen Image Edit?
+
+**Qwen Image** is Alibaba Tongyi's image generation model family, mainly including two model types:
+
+**1. Qwen Image: Text-to-Image**
+
+Generate a brand-new image from text prompts. You provide a description, the model interprets it and generates matching visuals.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-14-43-30.png)
+
+Main capabilities:
+
+- **Text-to-image**: Supports multiple styles (realistic, cartoon, ink, cyberpunk, etc.)
+- **Style transfer**: Convert an image into a target artistic style
+- **Image variation**: Generate new images with similar style from references
+- **Resolution enhancement**: Improve clarity and details
+
+**2. Qwen Image Edit: Image-to-Image**
+
+Edit existing images through natural language instructions.
+
+Main capabilities:
+
+- **Local replacement**: Replace specific objects/characters (e.g. "change the background to a beach")
+- **Element removal**: Remove unwanted elements
+- **Style conversion**: Apply filters or artistic effects
+- **Image expansion**: Extend the image boundary and generate new content
+- **Smart retouching**: Auto-enhance quality, lighting, and defects
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-14-46-17.png)
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-14-46-29.png)
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-14-46-33.png)
+
+Why choose the Qwen Image series:
+
+- Better Chinese prompt understanding
+- Lower cost compared with many global alternatives
+- Fast generation speed
+- Stable output quality in ecommerce and content scenarios
+- Rich style diversity
+
+Typical use cases:
+
+- Ecommerce: main images, detail-page images, promo posters
+- Social media: avatars, stickers, visual assets
+- Design: quick concept assets, background assets
+- Marketing: ad visuals, event banners, holiday posters
+:::
+
+Open [SiliconFlow](https://siliconflow.cn/) and use the Playground (without calling APIs) to test model effects. Use the top "Filters" option to narrow to image-generation models and choose `Qwen/Qwen-Image`.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-15-52-56.png)
+
+After confirming the model, check the official API reference and open the [image generation API section](https://docs.siliconflow.cn/cn/api-reference/images/images-generations). Then send the example request plus your API key to AI IDE.
+
+```bash
+curl --request POST \
+  --url https://api.siliconflow.cn/v1/images/generations \
+  --header 'Authorization: Bearer <token>' \
+  --header 'Content-Type: application/json' \
+  --data '
+{
+  "model": "Qwen/Qwen-Image-Edit-2509",
+  "prompt": "an island near sea, with seagulls, moon shining over the sea, light house, boats in the background, fish flying over the sea"
+}
+'
+```
+
+You can use either `Qwen/Qwen-Image` or `Qwen/Qwen-Image-Edit-2509`.
+
+::: details Image Edit Reference Code
+
+Copy the code below plus your key into AI IDE:
+
+```python
+import requests
+import os
+from typing import Dict, Any, Optional
+
+SILICONFLOW_API_KEY: str = ""
+SILICONFLOW_BASE_URL: str = "https://api.siliconflow.cn/v1/images/generations"
+QWEN_IMAGE_EDIT_MODEL: str = "Qwen/Qwen-Image-Edit-2509"
+
+def generate_image_edit(
+    prompt: str,
+    image: Optional[str] = None,
+    image2: Optional[str] = None,
+    image3: Optional[str] = None,
+    negative_prompt: Optional[str] = None,
+    cfg: Optional[float] = 4.0,
+    seed: Optional[int] = None
+) -> Optional[Dict[str, Any]]:
+    payload: Dict[str, Any] = {
+        "model": QWEN_IMAGE_EDIT_MODEL,
+        "prompt": prompt,
+    }
+    if image:
+        payload["image"] = image
+    if image2:
+        payload["image2"] = image2
+    if image3:
+        payload["image3"] = image3
+    if negative_prompt:
+        payload["negative_prompt"] = negative_prompt
+    if cfg is not None:
+        payload["cfg"] = cfg
+    if seed is not None:
+        payload["seed"] = seed
+
+    headers: Dict[str, str] = {
+        "Authorization": f"Bearer {SILICONFLOW_API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    try:
+        response = requests.post(SILICONFLOW_BASE_URL, json=payload, headers=headers)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error generating image: {e}")
+        return None
+
+def save_image_from_url(image_url: str, output_path: str = "image.png") -> bool:
+    try:
+        response = requests.get(image_url)
+        response.raise_for_status()
+        os.makedirs(os.path.dirname(output_path) if os.path.dirname(output_path) else ".", exist_ok=True)
+        with open(output_path, "wb") as f:
+            f.write(response.content)
+        print(f"Image saved successfully to: {output_path}")
+        return True
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading image: {e}")
+        return False
+    except Exception as e:
+        print(f"Error saving image: {e}")
+        return False
+
+prompt: str = "Change the sky to dusk, add moon and stars, dreamy style"
+negative_prompt: str = "blur, low quality, distortion"
+image_url: str = "https://inews.gtimg.com/om_bt/Os3eJ8u3SgB3Kd-zrRRhgfR5hUvdwcVPKUTNO6O7sZfUwAA/641"
+image2_url: Optional[str] = None
+image3_url: Optional[str] = None
+
+cfg: float = 4.0
+seed: int = 12345
+output_path: str = "edited_image.png"
+
+print(f"Generating edited image with prompt: {prompt}")
+print(f"Input image: {image_url}")
+print(f"CFG: {cfg}, Seed: {seed}")
+print("-" * 50)
+
+result = generate_image_edit(
+    prompt=prompt,
+    image=image_url,
+    image2=image2_url,
+    image3=image3_url,
+    negative_prompt=negative_prompt,
+    cfg=cfg,
+    seed=seed
+)
+
+if result and "images" in result:
+    images = result["images"]
+    if images and len(images) > 0:
+        image_url_result = images[0]["url"]
+        print(f"Image edit generated successfully. URL: {image_url_result}")
+        success = save_image_from_url(image_url_result, output_path)
+        if success:
+            print(f"Image saved to: {output_path}")
+        else:
+            print("Failed to save image to local file")
+    else:
+        print("No images found in response")
+else:
+    print("Image generation failed")
+    if result:
+        print(f"Response: {result}")
+```
+
+:::
+
+# Appendix: How to Find Stronger AI Models Today
+
+Text model development moves quickly, so you should regularly verify whether your chosen model is still competitive. The two websites below are useful for tracking model quality, popularity, and cost-performance.
+
+You can think of them as model arenas: they compare outputs from different models and let people vote or inspect benchmark dimensions.
+
+## LMArena
+
+Website: <https://lmarena.ai/>
+
+LMArena is useful for seeing which model responses users generally prefer. More votes and higher scores usually suggest more stable quality in real usage.
+
+A practical workflow:
+
+1. Check the leaderboard
+2. Filter by your target task (general chat / coding / vision)
+3. Pick one model from the top candidates that meets your access, latency, and budget constraints
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/image.png)
+
+## Artificial Analysis
+
+Website: <https://artificialanalysis.ai/>
+
+Artificial Analysis is useful when you want to compare quality, price, and speed on one dashboard.
+
+Common workflow:
+
+1. Choose the model category you care about (text / image generation / etc.)
+2. Compare Quality + Price + Latency/Throughput
+3. Select the model with the best overall fit for your product constraints
+
+::: tip ✅ Recommendation
+Do not argue model quality by feeling. A more reliable method is to test the same input set against 2-3 models, then decide with ranking and pricing data.
+:::
+
+## Summary
+
+When integrating AI services, you don't need to overcomplicate API concepts. Most scenarios can be solved if you lock onto these essentials:
+
+- **API is a communication bridge**: you send requests, receive model responses
+- **SDK is an API wrapper**: it handles boilerplate (auth, request signing, error handling) and usually saves time
+- **When reading docs, focus on three things**: endpoint, API key, and required parameters
+
+Once these are clear, modern IDEs and tooling can handle most implementation details while you focus on business logic.
+
+# 5. 📚 Assignment: Integrate Your First AI Capability
+
+<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="font-weight: bold; font-size: 16px;">🚀 Challenge: Integrate AI Capability into Your Workbench</div>
+  </template>
+
+  <p>
+    Follow this chapter's prompts and complete one full loop:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Full Loop Practice</strong>
+      <ul>
+        <li>Choose and integrate one AI service (LLM / text-to-image / image-to-image) → complete frontend/backend interaction → integrate into your prototype</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Share Results</strong>
+      <ul>
+        <li>Take a screenshot of your feature page and share it</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Thinking Exercise</strong>
+      <ul>
+        <li>For the next "Complete Project Practice" chapter, think ahead: how will you combine these AI capabilities into one practical and interesting workflow?</li>
+      </ul>
+    </li>
+  </ul>
+</el-card>
+
+## Next Step
+
+In the next chapter, we will connect these separate AI capabilities into one complete product based on a real business scenario:
+
+- Connect content planning, product listing, and data analysis into one end-to-end workflow
+- Embed this chapter's AI capabilities (LLM copywriting, text-to-image, image editing) into concrete business nodes
+- Build a truly usable "Ecommerce AI Workbench" instead of isolated demos

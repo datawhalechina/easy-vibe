@@ -36,7 +36,7 @@ This chapter may contain some business terminology. If you don't understand some
   <ClientOnly>
     <StepBar :active="0" :items="[
       { title: 'Requirements Analysis', description: 'From vague to specific' },
-      { title: 'Single Page Validation', description: 'Core functionality落地' },
+      { title: 'Single Page Validation', description: 'Core functionality implementation' },
       { title: 'Multi-page Expansion', description: 'Complete application structure' },
       { title: 'Beautification', description: 'Improve user experience' }
     ]" />
@@ -74,7 +74,7 @@ At this point you might think: "Boss, you're dreaming again!" However, such vagu
 Since we've learned AI IDE, you think about it and this requirement is actually quite simple — just let AI give a prompt based on this, throw it to the Agent and we're done, right?
 
 ```
-Please refer to my requirements xxxx,
+Please refer to my requirements below,
 Help me design an e-commerce material workbench,
 Including generation and management functions for product descriptions, images, videos, and other materials.
 ```
@@ -243,7 +243,7 @@ This is what we need to figure out before writing code. Code is just a tool; **u
   <ClientOnly>
     <StepBar :active="1" :items="[
       { title: 'Requirements Analysis', description: 'From vague to specific' },
-      { title: 'Single Page Validation', description: 'Core functionality落地' },
+      { title: 'Single Page Validation', description: 'Core functionality implementation' },
       { title: 'Multi-page Expansion', description: 'Complete application structure' },
       { title: 'Beautification', description: 'Improve user experience' }
     ]" />
@@ -300,7 +300,7 @@ Help me implement a single-page application based on business logic, for validat
 Business logic reference:
 1. Help operations batch generate first version of image and text drafts:
 - **Input (supports direct upload and batch import of materials):**
-  - Product basic info: name, category, brand, material, size, color, applicable人群, etc.;
+  - Product basic info: name, category, brand, material, size, color, target audience, etc.;
   - Product images: white background / simple scene images;
   - Each generation supports uploading additional historical bestseller screenshots or reference links, allowing for reference materials;
   - Supports batch import via Excel, or online entry/upload on the page.
@@ -387,7 +387,7 @@ Now you can see the running effect in the browser. Next, we'll expand based on t
   <ClientOnly>
     <StepBar :active="2" :items="[
       { title: 'Requirements Analysis', description: 'From vague to specific' },
-      { title: 'Single Page Validation', description: 'Core functionality落地' },
+      { title: 'Single Page Validation', description: 'Core functionality implementation' },
       { title: 'Multi-page Expansion', description: 'Complete application structure' },
       { title: 'Beautification', description: 'Improve user experience' }
     ]" />
@@ -439,7 +439,7 @@ AI IDE will help you complete these expansions. You just need to confirm and adj
   <ClientOnly>
     <StepBar :active="3" :items="[
       { title: 'Requirements Analysis', description: 'From vague to specific' },
-      { title: 'Single Page Validation', description: 'Core functionality落地' },
+      { title: 'Single Page Validation', description: 'Core functionality implementation' },
       { title: 'Multi-page Expansion', description: 'Complete application structure' },
       { title: 'Beautification', description: 'Improve user experience' }
     ]" />
@@ -503,3 +503,44 @@ In this chapter, we learned:
 - Iterate based on feedback — keep improving
 
 In the next chapter, we'll learn how to integrate real AI capabilities into our prototype.
+
+## 5. 📚 Assignment: Recreate Your Own Douyin Ecommerce Workbench
+
+<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="font-weight: bold; font-size: 16px;">🚀 Challenge: Recreate the Ecommerce Asset Workbench</div>
+  </template>
+
+  <p>
+    Use this chapter's prompts and workflow to complete a full end-to-end loop:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Full Loop Practice</strong>
+      <ul>
+        <li>Business requirement prompt generation → single-page prototype generation → multi-page prototype generation</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Share Results</strong>
+      <ul>
+        <li>Take a screenshot of your app and share it with the community</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Thinking Exercise</strong>
+      <ul>
+        <li>Reserve room for next chapter ("Integrating LLM and text-to-image capabilities"), and think ahead: how will you embed AI copywriting, image generation, and script generation in your workbench?</li>
+      </ul>
+    </li>
+  </ul>
+</el-card>
+
+## Next Step
+
+In the next chapter, we will integrate concrete AI capabilities into this content production workbench (text-to-text, image-to-text, and text-to-image), for example:
+
+- Automatically generate first-draft copy and multiple title options for a content task
+- Auto-generate visual drafts from task descriptions (text-to-image)
+- Auto-classify and summarize historical content tasks to help plan your next campaign

@@ -2,7 +2,7 @@
 
 ## Chapter Introduction
 
-With so many AI programming tools available, which one is right for you? This chapter provides an in-depth横向 evaluation of 7 major Web Vibe Coding platforms including Lovable, Replit, and Z.ai through a unified hands-on task—developing a "Snake + AI Poem Writing" game. We'll compare them from multiple dimensions including beginner-friendliness, code controllability, and deployment convenience, helping you quickly choose the best development assistant tool.
+With so many AI programming tools available, which one is right for you? This chapter provides an in-depth comparative evaluation of 7 major Web Vibe Coding platforms, including Lovable, Replit, and Z.ai, through a unified hands-on task: developing a "Snake + AI Poem Writing" game. We'll compare them across multiple dimensions, including beginner-friendliness, code controllability, and deployment convenience, helping you quickly choose the best development assistant tool.
 
 ---
 

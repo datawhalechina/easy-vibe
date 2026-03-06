@@ -48,7 +48,7 @@ All methods in this chapter are based on actual experience with AI IDEs like Cur
 
 Many beginners' first reaction when encountering errors is:
 - Panic and start randomly modifying code
-- Spend half an hour searching "how to solve xxx error"
+- Spend half an hour searching "how to solve this specific error"
 - Try to understand what the error means yourself
 - Debug alone until late at night
 

@@ -657,7 +657,7 @@ When code "doesn't work," you can follow this fixed process to talk to AI:
    Avoid just saying "won't open" or "not working." You can describe it like this:
 
    > After opening, the page is completely blank, not showing the welcome text you mentioned.
-   > I opened the xxxx page, and the part I just mentioned isn't there, this doesn't work.
+   > I opened the relevant page, and the part I just mentioned is not there, so this still doesn't work.
 
 2. **Send AI your current complete code**
    Many times the problem is: you copied one line less, or mixed content from the previous and current times together.
@@ -1140,7 +1140,7 @@ Can be understood as a "time machine" for projects:
 After enabling Git, that project folder with "version records" is called a "repository."
 
 **Commit (Commit)**
-Every time you feel "this wave of modifications counts as a阶段性成果," you can:
+Every time you feel "this round of modifications counts as a meaningful milestone," you can:
 
 - Write a description (such as: `Add score panel`);
 - Package all current modifications into a version;

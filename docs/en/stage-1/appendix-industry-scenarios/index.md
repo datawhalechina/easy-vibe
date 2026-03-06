@@ -1,6 +1,6 @@
 ---
-title: 'B-End Industry Application Scenario Reference'
-description: 'This document summarizes the落地 applications of LLM large models in B-End enterprise scenarios, including specific application directions in industries such as manufacturing, intelligent customer service, education, intelligent programming, healthcare, network security, financial management, and enterprise services, providing reference for AI application developers targeting enterprise customers.'
+title: 'B2B Industry Application Scenario Reference'
+description: 'This document summarizes practical LLM applications in B2B enterprise scenarios, including specific directions in industries such as manufacturing, intelligent customer service, education, intelligent programming, healthcare, cybersecurity, financial services, and enterprise operations. It provides practical references for developers building AI applications for enterprise customers.'
 ---
 
 <script setup>
@@ -129,7 +129,7 @@ const topicPool = {
     { title: 'Video Background Noise AI Intelligent Separation & Voice Enhancement Assistant', desc: 'Audio separation model, remove background noise' },
     { title: 'Old Image 4K Super-Resolution Repair & AI Intelligent Colorization Workstation', desc: 'Video super-resolution model, AI auto-colorization' },
     { title: 'Text to Realistic TTS Voice & Emotion Control System', desc: 'Multi-voice TTS model, emotion control' },
-    { title: 'Meeting Recording AI Intelligent Transcription & Core TODO Extraction Assistant', desc: 'Multi-person meeting voice separation transcription' }
+    { title: 'Meeting Recording AI Intelligent Transcription & Action Item Extraction Assistant', desc: 'Multi-person meeting voice separation transcription' }
   ],
   'ai-marketing': [
     { title: 'Xiaohongshu Hit Copy AIGC Auto-Writing Engine', desc: 'Generate planting copy, emoji optimization' },
@@ -368,6 +368,35 @@ This document summarizes **LLM large model applications in B-End enterprise scen
     </el-button>
   </div>
 </el-card>
+
+---
+
+## Industry Quick Overview
+
+### Mainstream Technology Choices
+
+In AI application development, common technical directions include:
+
+1. **LLM (Large Language Models)**: Strong in natural language tasks such as dialogue, text generation, summarization, and translation. Suitable for intelligent customer service, content creation, and knowledge Q&A applications.
+2. **VLM (Vision-Language Models)**: Combines visual understanding and language reasoning to support image description, visual Q&A, and multimodal generation. Useful for medical imaging analysis, industrial inspection, and creative design scenarios.
+3. **GenAI (Generative AI)**: Covers text generation, image generation (for example Stable Diffusion, DALL-E), video generation, and more. It rapidly produces creative outputs for design support, marketing asset creation, and training content.
+
+### Selection Strategy
+
+Learners can choose directions based on these dimensions:
+
+1. **Interest-first**: Start from industries or technologies you are personally interested in to keep momentum.
+   - Interested in creative design: Try content production or industrial design applications
+   - Interested in technical challenge: Try cybersecurity or healthcare applications
+   - Interested in social value: Try smart government or education applications
+2. **Industry fit**: Match your background and resource advantages.
+   - Manufacturing practitioners: Prioritize manufacturing and enterprise-service applications
+   - Educators: Prioritize education and content production applications
+   - Healthcare practitioners: Explore healthcare and health management applications
+3. **Technical difficulty**: Pick complexity based on your current foundation.
+   - Beginner: Intelligent customer service, content creation, basic Q&A systems
+   - Intermediate: Industrial quality inspection, medical image analysis, coding assistants
+   - Advanced: Financial risk control, cybersecurity, complex multimodal systems
 
 ---
 

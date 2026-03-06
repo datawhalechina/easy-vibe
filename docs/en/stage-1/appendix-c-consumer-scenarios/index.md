@@ -568,3 +568,55 @@ This document summarizes **LLM large model creative applications in C-End consum
 | 3 | Style Journey | Personal brand discovery |
 | 4 | Old Favorites Refresh | New life for old pieces |
 | 5 | Occasion Stylist | Perfect looks for events |
+
+---
+
+## Core Principles for Designing Consumer (C-End) Products
+
+### 1. Shift from "Features" to "Feelings"
+
+B-end products focus on "what problem this function solves." C-end products focus on "what feeling this function creates."
+
+| B-End Thinking | C-End Thinking |
+|---------|---------|
+| Improve efficiency | Free up time for things users love |
+| Reduce cost | Make every dollar feel worthwhile |
+| Solve pain points | Create delightful experiences |
+| Functional completeness | Emotional resonance |
+
+### 2. Three Layers of Atmosphere Design
+
+**Sensory Layer**: Design for sight, sound, and interaction feel
+- Warm color palettes
+- Calming sound cues
+- Smooth and natural transitions
+
+**Emotional Layer**: Emotional resonance and guidance
+- Understand the user's mood
+- Offer emotional support
+- Create positive emotional feedback
+
+**Meaning Layer**: Identity and belonging
+- Make users feel understood
+- Build a sense of belonging
+- Give actions personal meaning
+
+### 3. The Power of Psychological Cues
+
+Copy and design in C-end products always carry psychological cues:
+
+- **Positive cues**: "You're already doing great", "Take your time, it's okay"
+- **Belonging cues**: "Many people feel the same way", "You're not alone"
+- **Growth cues**: "Every attempt is progress", "You're getting better"
+
+### 4. Help Users Become a Better Version of Themselves
+
+The best C-end products do not force users to change; they help users become who they want to be.
+
+- Not "You should...", but "You can..."
+- Not "You must...", but "If you want to..."
+- Not "You're still not enough...", but "You're already on your way..."
+
+---
+
+> 🌟 **Remember**: C-end users don't buy functions, they buy feelings; not tools, but companionship; not service, but understanding.
