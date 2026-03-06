@@ -1,20 +1,20 @@
 <!-- trigger vercel build -->
 <div align="center">
 
-<pre style="font-family: 'Courier New', monospace; font-size: 16px; color: #000000; margin: 0; padding: 0; line-height: 1.2; transform: skew(-1deg, 0deg); display: block;">
-███████╗ █████╗ ███████╗██╗   ██╗    ██╗   ██╗██╗██████╗ ███████╗
-██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝    ██║   ██║██║██╔══██╗██╔════╝
-█████╗  ███████║███████╗ ╚████╔╝     ██║   ██║██║██████╔╝█████╗  
-██╔══╝  ██╔══██║╚════██║  ╚██╔╝      ╚██╗ ██╔╝██║██╔══██╗██╔══╝  
-███████╗██║  ██║███████║   ██║        ╚████╔╝ ██║██████╔╝███████╗
-╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝         ╚═══╝  ╚═╝╚═════╝ ╚══════╝</pre>
+<img src="assets/logo.png" alt="Easy-Vibe Logo" width="200" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 
-# Easy-Vibe : Learn vibe coding from 0 to 1
+# Easy-Vibe
 
-<p align="center"><em>A comprehensive, interactive guide to mastering AI-assisted coding from absolute beginner to confident practitioner.</em></p>
+<p align="center" style="font-size: 1.2em; color: #666; margin: 20px 0;">
+  <strong>把想法变成现实，就是这么简单</strong>
+</p>
+
+<p align="center" style="font-size: 1.1em; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+  不需要学编程，只要会说话，就能做出你的第一个 AI 应用
+</p>
 
 <p align="center">
-  📌 <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读 (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程 (Interactive Tutorial)</a>
+  � <a href="https://datawhalechina.github.io/easy-vibe/">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a>
 </p>
 
 <p align="center">
@@ -103,31 +103,60 @@
   <h3>⭐ 欢迎 <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">点击此处Star</a> 加速更新 ❤️</h3>
 </div>
 
-## 项目简介
+## 为什么需要 Easy-Vibe
 
-本项目是一个面向 AI 时代新范式的编程教程，旨在帮助产品经理、创业者和编程小白掌握从想法到产品上线的完整能力——不仅仅是 vibe coding，更是理解 AI 辅助开发的核心方法论。
+想象一下：
+- 你想做个记账小程序，不用学代码，只要说"我想做个能记录收支的小程序"
+- 你想给店铺做个预约系统，只要说"我需要一个支持微信登录的预约平台"
+- 你想做个个人博客，只要说"我想有个能写文章、带评论功能的博客"
 
-本项目的主要内容包括：
+这些以前需要花几个月学编程才能实现的想法，现在只要几分钟就能完成。
 
-1. 零基础入门：学习地图、AI 编程入门、AI IDE 工具、产品思维与原型设计；
-2. 全栈开发：前端开发、后端开发、数据库、部署运维；
-3. 高级开发：Claude Code 进阶、多平台开发（小程序、移动端、桌面端）；
-4. 基础知识：计算机基础、AI 入门、80+ 交互式专题。
+这不是科幻，这就是 AI 时代的编程方式——Easy-Vibe。
 
-欢迎提出 Issue 或提交 PR，共同构建维护这个项目。
+## 适合谁
 
-**谁在学**：从大一学生到零基础转行者，再到四十多岁的普通人，每一个人都能通过本教程成功上手。无论你是什么背景，只要愿意迈出第一步，就能学会。
+- **零基础爱好者**：不会编程也能做出产品
+- **产品经理**：快速验证你的产品想法
+- **创业者**：低成本打造 MVP
+- **学生**：快速掌握 AI 时代的新技能
+- **开发者**：提升效率，从重复劳动中解放出来
 
-**学习建议**：零基础/产品经理从第一阶段开始；开发者从第二阶段开始；进阶开发者可直接进入第三阶段。
+## 你的学习路径
 
-## 学习路径
+### 🎮 我想先试试（5分钟体验）
+**适合人群**：所有人
+**学习内容**：AI 编程初体验、贪吃蛇小游戏
+**产出**：5 分钟做出你的第一个 AI 应用
 
-| 阶段 | 适用人群 | 核心技能 | 产出 |
-| :--- | :--- | :--- | :--- |
-| [**第一阶段：零基础入门**](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/) | 零基础/产品经理 | 学习地图、AI 编程入门、AI IDE、产品思维、原型设计、AI 能力集成 | 互动小游戏、完整的产品原型 |
-| [**第二阶段：全栈开发**](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) | 开发者 | 全栈开发、数据库、AI 集成、部署运维 | 可上线的全栈 AI 应用 |
-| [**第三阶段：高级开发**](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) | 进阶开发者 | Claude Code 进阶、多平台开发 | 生产级多平台应用 |
-| [**附录：基础知识**](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) | 全员 | 计算机基础、AI 入门、9 大知识领域 | 80+ 交互式专题 |
+[开始体验](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/)
+
+### 💡 我有个想法要实现
+**适合人群**：零基础/产品经理/创业者
+**学习内容**：AI IDE 工具、需求拆解、产品原型设计
+**产出**：完整的可演示产品原型
+
+[开始学习](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/)
+
+### 🚀 我想系统学习
+**适合人群**：开发者/进阶学习者
+**学习内容**：全栈开发、数据库、AI 集成、部署运维
+**产出**：可上线的全栈 AI 应用
+
+[开始学习](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/)
+
+### 📚 我想查资料
+**适合人群**：所有人
+**学习内容**：计算机基础、AI 原理、9 大知识领域
+**产出**：80+ 交互式专题
+
+[查看知识库](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)
+
+## 学习建议
+
+- 零基础/产品经理从 [第一阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/) 开始
+- 开发者从 [第二阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) 开始
+- 进阶开发者可直接进入 [第三阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)
 
 ## 🔥 News
 

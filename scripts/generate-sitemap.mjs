@@ -33,6 +33,7 @@ const getBaseUrl = () => {
 }
 
 const siteUrl = getBaseUrl()
+const skipSitemapWrite = process.env.SITEMAP_NO_WRITE === '1'
 
 // 扫描目录中的所有 markdown 文件
 function scanMarkdownFiles(dir, basePath = '') {
@@ -233,6 +234,11 @@ function main() {
       shouldWrite = false
       console.log(`⏭️  Sitemap unchanged, skipping write`)
     }
+  }
+
+  if (skipSitemapWrite) {
+    shouldWrite = false
+    console.log('⏭️  SITEMAP_NO_WRITE=1, skipping sitemap write')
   }
 
   if (shouldWrite) {

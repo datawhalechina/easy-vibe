@@ -5,7 +5,7 @@ echo "🚀 Pre-push checks started..."
 echo ""
 
 echo "1️⃣ Running forced build..."
-if ! npm run build:force > /dev/null 2>&1; then
+if ! SITEMAP_NO_WRITE=1 npm run build:force > /dev/null 2>&1; then
   echo ""
   echo "❌ Forced build failed! Please fix build errors before pushing."
   echo ""
