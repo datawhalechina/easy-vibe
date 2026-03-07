@@ -1436,6 +1436,10 @@ Sitemap: ${siteUrl}/sitemap.xml
               collapsed: false,
               items: [
                 {
+                  text: '如何选择你的应用该开发的平台',
+                  link: '/zh-cn/stage-3/cross-platform/3.1-choose-platform/'
+                },
+                {
                   text: '如何构建微信小程序',
                   link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
                 },

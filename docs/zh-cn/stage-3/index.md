@@ -52,6 +52,11 @@
 
 <NavGrid>
   <NavCard
+    href="/zh-cn/stage-3/cross-platform/3.1-choose-platform/"
+    title="如何选择你的应用该开发的平台"
+    description="根据用户场景和需求，找到最适合的开发平台"
+  />
+  <NavCard
     href="/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/"
     title="如何构建微信小程序"
     description="从零开始开发微信小程序，掌握小程序开发的核心流程"
