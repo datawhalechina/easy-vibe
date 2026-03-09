@@ -6,21 +6,29 @@
 # Easy-Vibe
 
 <p align="center" style="font-size: 1.2em; color: #666; margin: 20px 0;">
-  <strong>把想法变成现实，就是这么简单</strong>
+  <strong>把想法变成现实，就是这么简单</strong><br>
+  <span style="font-size: 0.9em; color: #888;">Turn ideas into reality. It's that simple.</span>
 </p>
 
 <p align="center" style="font-size: 1.1em; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-  不需要学编程，只要会说话，就能做出你的第一个 AI 应用
+  不需要学编程，只要会说话，就能做出你的第一个 AI 应用<br>
+  <span style="font-size: 0.9em; color: #888;">No coding required. Just speak, and build your first AI app.</span>
 </p>
 
 <p align="center">
-  � <a href="https://datawhalechina.github.io/easy-vibe/">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a>
+  🚀 <a href="https://datawhalechina.github.io/easy-vibe/">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a><br>
+  <span style="font-size: 0.85em; color: #888;"><a href="https://datawhalechina.github.io/easy-vibe/">Start Experience</a> · <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a></span>
 </p>
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读</a> ·
   <a href="#-内容导航">学习地图</a> ·
-  <a href="#contact">社区交流</a>
+  <a href="#contact">社区交流</a><br>
+  <span style="font-size: 0.85em; color: #888;">
+    <a href="https://datawhalechina.github.io/easy-vibe/">Read Online</a> ·
+    <a href="#-content-navigation">Learning Map</a> ·
+    <a href="#contact">Community</a>
+  </span>
 </p>
 
 <p align="center">
