@@ -16,8 +16,8 @@
 </p>
 
 <p align="center">
-  🚀 <a href="https://datawhalechina.github.io/easy-vibe/">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a><br>
-  <span style="font-size: 0.85em; color: #888;"><a href="https://datawhalechina.github.io/easy-vibe/">Start Experience</a> · <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a></span>
+  🚀 <a href="https://datawhalechina.github.io/easy-vibe/">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">还想学 OpenClaw</a><br>
+  <span style="font-size: 0.85em; color: #888;"><a href="https://datawhalechina.github.io/easy-vibe/">Start Experience</a> · <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a> · <a href="https://github.com/datawhalechina/hello-claw">Learn OpenClaw</a></span>
 </p>
 
 <p align="center">
@@ -153,6 +153,13 @@
 
 [开始学习](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/)
 
+### 🦞 我想构建 AI Agent
+**适合人群**：对 AI Agent 感兴趣的开发者
+**学习内容**：从零构建 OpenClaw AI 助理、Skills 系统、自动化工作流
+**产出**：属于你的智能命令行 AI 助理
+
+[开始学习](https://github.com/datawhalechina/hello-claw)
+
 ### 📚 我想查资料
 **适合人群**：所有人
 **学习内容**：计算机基础、AI 原理、9 大知识领域
@@ -165,6 +172,7 @@
 - 零基础/产品经理从 [第一阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/) 开始
 - 开发者从 [第二阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) 开始
 - 进阶开发者可直接进入 [第三阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)
+- 对 AI Agent 感兴趣？学习 [Hello Claw](https://github.com/datawhalechina/hello-claw) 构建你的 AI 龙虾助理 🦞
 
 ## 🔥 News
 
