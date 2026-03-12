@@ -161,6 +161,57 @@ curl  \
 
 如果发现每次不一样并且合乎逻辑，你可以放心认为此时已经正常调用 API 生成。你也可以在 [API 使用管理平台](https://platform.deepseek.com/usage)查看是否成功调用（虽然可能需要等几分钟才能看到）。
 
+## 更多文本生成模型选型
+
+除了 DeepSeek 之外，你也可以尝试其他大语言模型。由于大多数模型都提供了 **OpenAI 兼容接口**，切换起来非常简单——只需要更换 API Key、基础 URL 和模型名称即可。
+
+### MiniMax 集成
+
+::: details 了解更多：MiniMax 是什么？
+
+**MiniMax** 是一家中国人工智能公司，致力于通用人工智能技术的研发。MiniMax 推出了自研的 MiniMax-M2.5 大语言模型系列，在多项基准测试中表现优异，具有极高的性价比。
+
+**MiniMax-M2.5 系列的主要特点：**
+
+- **超长上下文**：支持 204,800 tokens 的上下文窗口，适合处理长文档、多轮对话
+- **高性价比**：输入 $0.3/M tokens，输出 $1.2/M tokens，价格极具竞争力
+- **OpenAI 兼容接口**：可以直接使用 OpenAI SDK 调用，无需额外学习新的 API 格式
+- **两个可用模型**：
+  - `MiniMax-M2.5`：旗舰模型，适合复杂任务
+  - `MiniMax-M2.5-highspeed`：高速版本，保持同样的性能但更快
+:::
+
+接入方式与 DeepSeek 一致，只需要三步：
+
+1. 前往 [MiniMax 开放平台](https://platform.minimax.io/) 注册账号并创建 API Key
+2. 在 MiniMax 文档中找到调用示例
+3. 把 API Key + 示例粘贴到 AI IDE 中
+
+由于 MiniMax 提供了 OpenAI 兼容接口，你可以直接复制下面的 curl 示例和你的 API Key，发给 AI IDE 进行集成：
+
+```bash
+curl https://api.minimax.io/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
+  -d '{
+        "model": "MiniMax-M2.5",
+        "messages": [
+          {"role": "system", "content": "You are a helpful assistant."},
+          {"role": "user", "content": "Hello!"}
+        ],
+        "stream": false
+      }'
+```
+
+::: tip ✅ 提示
+MiniMax 的 API 格式与 DeepSeek 几乎完全一致（都是 OpenAI 兼容格式），所以如果你已经成功接入了 DeepSeek，切换到 MiniMax 只需要修改三个地方：
+1. **基础 URL**：改为 `https://api.minimax.io/v1`
+2. **API Key**：使用 MiniMax 的 API Key
+3. **模型名称**：改为 `MiniMax-M2.5` 或 `MiniMax-M2.5-highspeed`
+
+更多信息请参考 [MiniMax OpenAI 兼容接口文档](https://platform.minimax.io/docs/api-reference/text-openai-api)。
+:::
+
 # 3. 接入图像转文字 API：Qwen3 VL
 
 ::: info ℹ️ 原理延伸

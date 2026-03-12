@@ -161,6 +161,57 @@ Of course, you might be wondering: how do I know it's actually calling the large
 
 If you find that the results are different each time and logically coherent, you can be confident that the API is being called correctly. You can also check the [API usage management platform](https://platform.deepseek.com/usage) to see if the calls were successful (though it may take a few minutes to show up).
 
+## More Text Generation Model Options
+
+In addition to DeepSeek, you can also try other large language models. Since most models provide an **OpenAI-compatible API**, switching is very simple — you only need to change the API Key, base URL, and model name.
+
+### MiniMax Integration
+
+::: details Learn More: What is MiniMax?
+
+**MiniMax** is a Chinese AI company dedicated to general artificial intelligence research. MiniMax has developed its own MiniMax-M2.5 series of large language models, which perform well in multiple benchmarks with excellent cost-effectiveness.
+
+**Key Features of MiniMax-M2.5 Series:**
+
+- **Ultra-long context**: Supports a 204,800-token context window, suitable for processing long documents and multi-turn conversations
+- **Cost-effective**: Input $0.3/M tokens, Output $1.2/M tokens, extremely competitive pricing
+- **OpenAI-compatible API**: Can be called directly using the OpenAI SDK, no need to learn a new API format
+- **Two available models**:
+  - `MiniMax-M2.5`: Flagship model for complex tasks
+  - `MiniMax-M2.5-highspeed`: High-speed version with same performance but faster response
+:::
+
+The integration process is the same as DeepSeek, just three steps:
+
+1. Go to [MiniMax Platform](https://platform.minimax.io/) to register and create an API Key
+2. Find the API call examples in MiniMax documentation
+3. Paste the API Key + example into your AI IDE
+
+Since MiniMax provides an OpenAI-compatible API, you can copy the following curl example along with your API Key and send it to your AI IDE for integration:
+
+```bash
+curl https://api.minimax.io/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
+  -d '{
+        "model": "MiniMax-M2.5",
+        "messages": [
+          {"role": "system", "content": "You are a helpful assistant."},
+          {"role": "user", "content": "Hello!"}
+        ],
+        "stream": false
+      }'
+```
+
+::: tip ✅ Tip
+MiniMax's API format is almost identical to DeepSeek (both are OpenAI-compatible), so if you've already successfully integrated DeepSeek, switching to MiniMax only requires changing three things:
+1. **Base URL**: Change to `https://api.minimax.io/v1`
+2. **API Key**: Use your MiniMax API Key
+3. **Model name**: Change to `MiniMax-M2.5` or `MiniMax-M2.5-highspeed`
+
+For more details, refer to the [MiniMax OpenAI Compatible API Documentation](https://platform.minimax.io/docs/api-reference/text-openai-api).
+:::
+
 # 3. Integrating the Image-to-Text API: Qwen3 VL
 
 ::: info ℹ️ Further Reading on Principles
