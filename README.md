@@ -47,13 +47,10 @@
   <a href="docs-readme/ja-JP/README.md"><img alt="日本語" src="https://img.shields.io/badge/日本語-d9d9d9"></a>
   <a href="docs-readme/es-ES/README.md"><img alt="Español" src="https://img.shields.io/badge/Español-d9d9d9"></a>
   <a href="docs-readme/fr-FR/README.md"><img alt="Français" src="https://img.shields.io/badge/Français-d9d9d9"></a>
-  <a href="docs-readme/tlh/README.md"><img alt="Klingon" src="https://img.shields.io/badge/Klingon-d9d9d9"></a>
   <a href="docs-readme/ko-KR/README.md"><img alt="한국어" src="https://img.shields.io/badge/한국어-d9d9d9"></a>
   <a href="docs-readme/ar-SA/README.md"><img alt="العربية" src="https://img.shields.io/badge/العربية-d9d9d9"></a>
-  <a href="docs-readme/tr-TR/README.md"><img alt="Türkçe" src="https://img.shields.io/badge/Türkçe-d9d9d9"></a>
   <a href="docs-readme/vi-VN/README.md"><img alt="Tiếng_Việt" src="https://img.shields.io/badge/Tiếng_Việt-d9d9d9"></a>
   <a href="docs-readme/de-DE/README.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
-  <a href="docs-readme/bn-BD/README.md"><img alt="বাংলা" src="https://img.shields.io/badge/বাংলা-d9d9d9"></a>
 </p>
 
 </div>
@@ -256,8 +253,7 @@
 
 | 章节                                                                                                     | 关键内容                                                       |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- |
-| [Dify 入门与知识库集成](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/)             | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 |
-| [学会查询 AI 词典与集成多模态 API](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/extra3/) | 学会查找合适的模型与 API，并把文本、图像等多模态能力接入产品   |
+| [Dify 入门与知识库集成](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/) | 用 Dify Workflow 与基础 RAG 搭建工具类产品，为后续应用升级打样 |
 
 ### 三、高级开发工程师
 
@@ -344,7 +340,7 @@
     </td>
     <td valign="top" width="33%">
       <strong>📊 数据</strong><br><br>
-      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/sql.html">SQL</a><br>
+      • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/database-fundamentals.html">数据库原理与 SQL</a><br>
       • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/database-fundamentals.html">数据库原理</a><br>
       • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-tracking.html">数据埋点与用户行为采集</a><br>
       • <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/5-data/data-analysis.html">数据分析基础</a><br>
