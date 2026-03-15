@@ -338,15 +338,21 @@
 
 .VPHomeHero .action .VPButton.alt {
   border-radius: 999px;
-  border-color: #d2d2d7;
+  border: 1px solid #0071e3;
   background-color: #fff;
-  color: #1d1d1f;
-  transition: transform 0.2s;
+  color: #0071e3;
+  font-weight: 500;
+  box-shadow: none;
+  transition:
+    transform 0.2s,
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .VPHomeHero .action .VPButton.alt:hover {
   transform: scale(1.02);
-  background-color: #f5f5f7;
+  background-color: rgba(0, 113, 227, 0.08);
+  color: #0066cc;
 }
 
 /* HomeFeatures Sections Scroll Offset */
