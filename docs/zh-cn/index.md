@@ -19,7 +19,7 @@ hero:
       text: 开始学习
       link: /zh-cn/stage-0/0.1-learning-map/
     - theme: alt
-      text: ⭐️ GitHub 加速更新
+      text: GitHub 加速更新
       link: https://github.com/datawhalechina/easy-vibe
 ---
 
