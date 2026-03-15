@@ -19,8 +19,8 @@ hero:
       text: Start Learning
       link: /en/stage-0/
     - theme: alt
-      text: Course Outline
-      link: /en/stage-0/
+      text: GitHub
+      link: https://github.com/datawhalechina/easy-vibe
 ---
 
 <HomeFeatures />

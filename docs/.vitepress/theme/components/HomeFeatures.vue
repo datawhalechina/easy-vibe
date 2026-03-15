@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRouter, withBase, useData } from 'vitepress'
 import GitHubStars from './GitHubStars.vue'
 
@@ -1370,12 +1370,166 @@ const i18n = {
   }
 }
 
-// Fallback to English for other languages
-import { computed } from 'vue'
 const t = computed(() => {
   const code = lang.value ? lang.value.toLowerCase() : 'zh-cn'
   return i18n[code] || i18n['en']
 })
+
+const isCjkLocale = computed(() => {
+  const code = lang.value ? lang.value.toLowerCase() : ''
+  if (['zh-cn', 'zh-tw', 'ja-jp', 'ko-kr'].includes(code)) {
+    return true
+  }
+  const path = router.route.path.toLowerCase()
+  return /^\/(zh-cn|zh-tw|ja-jp|ko-kr)\//.test(path)
+})
+
+const topPromo = computed(() => {
+  const code = lang.value ? lang.value.toLowerCase() : 'en'
+  if (code === 'zh-cn' || code === 'zh-tw') {
+    return {
+      text: '用 Easy-Vibe 构建你的第一个 AI 应用，最快当天可上线原型。',
+      cta: '开始学习 ›',
+      link: '/zh-cn/stage-0/0.1-learning-map/'
+    }
+  }
+  return {
+    text: 'Build your first AI app with Easy-Vibe and ship a working prototype fast.',
+    cta: 'Start learning ›',
+    link: '/en/stage-0/0.1-learning-map/'
+  }
+})
+
+const appleFooterInfo = computed(() => {
+  const locale = lang.value ? lang.value.toLowerCase() : 'zh-cn'
+  const content = {
+    'zh-cn': {
+      notes: [
+        '1. 学习路径与章节内容会持续更新，显示内容以当前页面为准。',
+        '2. 示例项目与截图用于教学演示，可能与后续版本界面存在差异。',
+        '3. 部分章节链接会随着课程迭代调整，建议优先从首页导航进入最新路径。'
+      ],
+      breadcrumbPrefix: 'Easy-Vibe',
+      breadcrumbCurrent: '学习导航',
+      columns: [
+        {
+          title: '学习与导航',
+          links: ['零基础入门', '初中级开发', '高级开发', '附录', '学习地图', '课程总览']
+        },
+        {
+          title: '学习支持',
+          links: ['常见问题', '学习建议', '章节勘误', '版本更新']
+        },
+        {
+          title: '项目资源',
+          links: ['GitHub 仓库', '开源协议', '提交 Issue', '贡献指南']
+        },
+        {
+          title: '社区',
+          links: ['学习社群', '讨论区', '课程反馈']
+        },
+        {
+          title: '关于 Easy-Vibe',
+          links: ['项目介绍', '更新日志', '联系我们']
+        }
+      ],
+      more: '更多学习方式：访问',
+      moreLink: 'GitHub 仓库',
+      moreTail: '，获取更新与交流信息。',
+      copyright: 'Copyright © 2026 Easy-Vibe. 保留所有权利。',
+      policies: ['隐私政策', '使用条款', '网站地图']
+    },
+    en: {
+      notes: [
+        '1. Learning paths and chapters are continuously updated.',
+        '2. Screenshots and demo projects are for educational illustration.',
+        '3. Some chapter links may change as the course evolves.',
+        '4. The page is optimized for modern desktop browsers and responsive layouts.'
+      ],
+      breadcrumbPrefix: 'Easy-Vibe',
+      breadcrumbCurrent: 'Learning Navigation',
+      columns: [
+        {
+          title: 'Explore',
+          links: ['Foundations', 'Junior/Mid Dev', 'Senior Dev', 'Appendix', 'Learning Map', 'Course Outline']
+        },
+        {
+          title: 'Support',
+          links: ['FAQ', 'Learning Tips', 'Errata', 'Release Notes']
+        },
+        {
+          title: 'Resources',
+          links: ['GitHub Repository', 'License', 'Report Issue', 'Contribution Guide']
+        },
+        {
+          title: 'Community',
+          links: ['Community', 'Discussions', 'Feedback']
+        },
+        {
+          title: 'About Easy-Vibe',
+          links: ['Overview', 'Changelog', 'Contact']
+        }
+      ],
+      more: 'More ways to learn: visit',
+      moreLink: 'GitHub Repository',
+      moreTail: ' for updates and community discussions.',
+      copyright: 'Copyright © 2026 Easy-Vibe. All rights reserved.',
+      policies: ['Privacy Policy', 'Terms of Use', 'Sitemap']
+    }
+  }
+  return content[locale] || content.en
+})
+
+const footerRepositoryLink = computed(() => {
+  const locale = lang.value ? lang.value.toLowerCase() : 'zh-cn'
+  if (locale === 'zh-cn') {
+    return 'https://github.com/datawhalechina/easy-vibe'
+  }
+  return 'https://github.com/datawhalechina/easy-vibe'
+})
+
+const footerPolicyLinkMap = {
+  '隐私政策': '#',
+  '使用条款': '#',
+  '网站地图': '#',
+  'Privacy Policy': '#',
+  'Terms of Use': '#',
+  'Sitemap': '#'
+}
+
+const footerColumnLinkMap = {
+  '零基础入门': '/zh-cn/stage-0/',
+  '初中级开发': '/zh-cn/stage-2/',
+  '高级开发': '/zh-cn/stage-3/',
+  '附录': '/zh-cn/appendix/',
+  '学习地图': '/zh-cn/stage-0/0.1-learning-map/',
+  '课程总览': '/zh-cn/stage-0/',
+  'GitHub 仓库': 'https://github.com/datawhalechina/easy-vibe',
+  'Foundations': '/en/stage-0/',
+  'Junior/Mid Dev': '/en/stage-2/',
+  'Senior Dev': '/en/stage-3/',
+  'Appendix': '/en/appendix/',
+  'Learning Map': '/en/stage-0/0.1-learning-map/',
+  'Course Outline': '/en/stage-0/',
+  'GitHub Repository': 'https://github.com/datawhalechina/easy-vibe',
+  'Overview': '/en/guide/introduction',
+  'Changelog': 'https://github.com/datawhalechina/easy-vibe/releases'
+}
+
+const getFooterLink = (label) => {
+  return footerColumnLinkMap[label] || '#'
+}
+
+const getPolicyLink = (label) => {
+  return footerPolicyLinkMap[label] || '#'
+}
+
+const resolveFooterHref = (link) => {
+  if (link.startsWith('http://') || link.startsWith('https://')) {
+    return link
+  }
+  return withBase(link)
+}
 
 const locales = [
   { code: 'zh-cn', text: '简体中文' },
@@ -1628,80 +1782,87 @@ const appendixCards = [
     <!-- Sticky Navigation -->
     <nav class="sticky-nav glass">
       <div class="nav-content">
-        <span class="nav-title">{{ t.nav.title }}</span>
-        <div class="nav-links">
-          <button
-            :class="{ active: activeTab === 'home' }"
-            @click="scrollTo('home')"
-          >
-            {{ t.nav.home }}
-          </button>
-          <button
-            :class="{ active: activeTab === 'pm' }"
-            @click="scrollTo('pm')"
-          >
-            {{ t.nav.pm }}
-          </button>
-          <button
-            :class="{ active: activeTab === 'junior' }"
-            @click="scrollTo('junior')"
-          >
-            {{ t.nav.junior }}
-          </button>
-          <button
-            :class="{ active: activeTab === 'senior' }"
-            @click="scrollTo('senior')"
-          >
-            {{ t.nav.senior }}
-          </button>
-          <button
-            :class="{ active: activeTab === 'appendix' }"
-            @click="scrollTo('appendix')"
-          >
-            {{ t.nav.appendix }}
-          </button>
-        </div>
-        <div class="nav-action">
-          <div class="nav-icons">
-            <!-- Language Switcher -->
-            <div class="lang-switch-wrapper">
-              <button
-                type="button"
-                class="button"
-                aria-haspopup="true"
-                :aria-expanded="showLangMenu"
-                aria-label="Change language"
-                @click.stop="toggleLangMenu"
-              >
-                <span class="text">
-                  <span class="vpi-languages option-icon" />
-                  <span class="vpi-chevron-down text-icon" />
-                </span>
-              </button>
-              <!-- Dropdown Menu -->
-              <div
-                v-if="showLangMenu"
-                class="lang-dropdown glass"
-              >
-                <button
-                  v-for="locale in locales"
-                  :key="locale.code"
-                  class="lang-item"
-                  @click="changeLang(locale.code)"
-                >
-                  {{ locale.text }}
-                </button>
-              </div>
-            </div>
-
-            <!-- GitHub Link -->
-            <GitHubStars class="nav-github-stars" />
+        <div class="nav-cluster">
+          <span class="nav-title">{{ t.nav.title }}</span>
+          <div class="nav-links">
+            <button
+              :class="{ active: activeTab === 'home' }"
+              class="nav-link-item"
+              @click="scrollTo('home')"
+            >
+              {{ t.nav.home }}
+            </button>
+            <button
+              :class="{ active: activeTab === 'pm' }"
+              class="nav-link-item"
+              @click="scrollTo('pm')"
+            >
+              {{ t.nav.pm }}
+            </button>
+            <button
+              :class="{ active: activeTab === 'junior' }"
+              class="nav-link-item"
+              @click="scrollTo('junior')"
+            >
+              {{ t.nav.junior }}
+            </button>
+            <button
+              :class="{ active: activeTab === 'senior' }"
+              class="nav-link-item"
+              @click="scrollTo('senior')"
+            >
+              {{ t.nav.senior }}
+            </button>
+            <button
+              :class="{ active: activeTab === 'appendix' }"
+              class="nav-link-item"
+              @click="scrollTo('appendix')"
+            >
+              {{ t.nav.appendix }}
+            </button>
           </div>
-          <a
-            class="buy-btn"
-            :href="withBase(t.stage1.cards[0].link)"
-          >{{ t.footer.btn }}</a>
+          <div class="nav-action">
+            <div class="nav-icons">
+              <div class="lang-switch-wrapper">
+                <button
+                  type="button"
+                  class="button"
+                  aria-haspopup="true"
+                  :aria-expanded="showLangMenu"
+                  aria-label="Change language"
+                  @click.stop="toggleLangMenu"
+                >
+                  <span class="text">
+                    <span class="vpi-languages option-icon" />
+                    <span class="vpi-chevron-down text-icon" />
+                  </span>
+                </button>
+                <div
+                  v-if="showLangMenu"
+                  class="lang-dropdown glass"
+                >
+                  <button
+                    v-for="locale in locales"
+                    :key="locale.code"
+                    class="lang-item"
+                    @click="changeLang(locale.code)"
+                  >
+                    {{ locale.text }}
+                  </button>
+                </div>
+              </div>
+              <GitHubStars class="nav-github-stars" />
+            </div>
+            <a
+              class="buy-btn"
+              :href="withBase(t.stage1.cards[0].link)"
+            >{{ t.footer.btn }}</a>
+          </div>
         </div>
+      </div>
+      <div class="nav-promo">
+        <span>{{ topPromo.text }}</span>
+        <a :href="resolveFooterHref(topPromo.link)">{{ topPromo.cta }}</a>
       </div>
     </nav>
 
@@ -1714,7 +1875,7 @@ const appendixCards = [
     <!-- Stage 1: Product Manager -->
     <section
       id="pm"
-      class="section-container"
+      class="section-container section-pm"
     >
       <div class="section-header">
         <h2 class="section-category">
@@ -1753,7 +1914,7 @@ const appendixCards = [
     <!-- Stage 2: Junior/Mid Dev -->
     <section
       id="junior"
-      class="section-container"
+      class="section-container section-junior"
     >
       <div class="section-header">
         <h2 class="section-category">
@@ -1784,7 +1945,7 @@ const appendixCards = [
           <div class="comm-text">
             <h4 class="comm-title">{{ t.stage2.cards[index].title }}</h4>
             <p class="comm-desc">{{ t.stage2.cards[index].desc }}</p>
-            <span class="comm-note">点击查看详情</span>
+            <span class="comm-note">进一步了解 ›</span>
           </div>
         </a>
       </div>
@@ -1793,7 +1954,7 @@ const appendixCards = [
     <!-- Stage 3: Senior Dev -->
     <section
       id="senior"
-      class="section-container"
+      class="section-container section-senior"
     >
       <div class="section-header">
         <h2 class="section-category">
@@ -1828,7 +1989,7 @@ const appendixCards = [
     <!-- Appendix -->
     <section
       id="appendix"
-      class="section-container"
+      class="section-container section-appendix"
     >
       <div class="section-header">
         <h2 class="section-category">
@@ -1916,6 +2077,66 @@ const appendixCards = [
         :href="withBase('/zh-cn/stage-0/0.1-learning-map/')"
       >{{ t.footer.btn }}</a>
     </div>
+
+    <div
+      class="apple-site-footer"
+      :class="{ 'is-cjk-locale': isCjkLocale }"
+    >
+      <div class="apple-site-footer-inner">
+        <div class="apple-footer-breadcrumb">
+          <span>⌘</span>
+          <span>›</span>
+          <span>{{ appleFooterInfo.breadcrumbPrefix }}</span>
+          <span>›</span>
+          <span>{{ appleFooterInfo.breadcrumbCurrent }}</span>
+        </div>
+
+        <div class="apple-footer-notes">
+          <p
+            v-for="(item, idx) in appleFooterInfo.notes"
+            :key="idx"
+          >
+            {{ item }}
+          </p>
+        </div>
+
+        <div class="apple-footer-grid">
+          <div
+            v-for="(column, index) in appleFooterInfo.columns"
+            :key="index"
+            class="apple-footer-column"
+          >
+            <h4>{{ column.title }}</h4>
+            <a
+              v-for="(link, linkIndex) in column.links"
+              :key="linkIndex"
+              :href="resolveFooterHref(getFooterLink(link))"
+            >
+              {{ link }}
+            </a>
+          </div>
+        </div>
+
+        <div class="apple-footer-more">
+          {{ appleFooterInfo.more }}
+          <a :href="footerRepositoryLink">{{ appleFooterInfo.moreLink }}</a>
+          {{ appleFooterInfo.moreTail }}
+        </div>
+
+        <div class="apple-footer-bottom">
+          <p>{{ appleFooterInfo.copyright }}</p>
+          <div class="apple-footer-policy">
+            <a
+              v-for="(policy, policyIndex) in appleFooterInfo.policies"
+              :key="policyIndex"
+              :href="resolveFooterHref(getPolicyLink(policy))"
+            >
+              {{ policy }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1923,10 +2144,10 @@ const appendixCards = [
 /* Reset & Base */
 .apple-container {
   font-family:
-    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue',
-    sans-serif;
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC',
+    'Helvetica Neue', sans-serif;
   color: var(--vp-c-text-1);
-  /* overflow: hidden; Removed to fix scrolling issue */
+  background: transparent;
 }
 
 a {
@@ -1945,41 +2166,51 @@ a {
   left: 0;
   right: 0;
   z-index: 100;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid #d2d2d7;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(245, 245, 247, 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
 /* Dark mode adjustment for glass effect */
 :root.dark .sticky-nav {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(18, 18, 20, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .nav-content {
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
-  height: 48px;
+  padding: 0 28px;
+  height: 44px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-cluster {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
 }
 
 .nav-title {
-  font-weight: 600;
-  font-size: 19px;
+  font-weight: 500;
+  font-size: 12px;
   color: var(--vp-c-text-1) !important;
   flex-shrink: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.008em;
 }
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 20px;
   align-items: center;
-  margin: 0 24px;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .nav-links button,
@@ -1994,7 +2225,8 @@ a {
   margin: 0;
   line-height: 1;
   font-weight: 400;
-  opacity: 0.8;
+  opacity: 0.76;
+  text-decoration: none;
 }
 
 .nav-links button:hover,
@@ -2007,31 +2239,52 @@ a {
 .nav-action {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
 .nav-icons {
   display: flex;
-  gap: 24px;
+  gap: 10px;
   align-items: center;
 }
 
-.icon-btn {
-  background: none;
-  border: none;
-  padding: 0;
+:deep(.nav-github-stars) {
+  display: flex;
+  align-items: center;
+}
+
+:deep(.nav-github-stars .github-stars-link) {
   color: var(--vp-c-text-1) !important;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+:deep(.nav-github-stars .github-stars-link:hover) {
+  opacity: 0.7;
+}
+
+:deep(.nav-github-stars .github-stars-wrapper) {
+  padding-left: 0 !important;
+}
+
+.nav-promo {
+  height: 30px;
+  border-top: 1px solid #e5e5ea;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
-  transition: opacity 0.2s;
+  gap: 6px;
+  font-size: 13px;
+  color: #1d1d1f;
+  padding: 0 16px;
 }
 
-.icon-btn:hover {
-  opacity: 0.7;
+.nav-promo a {
+  color: #0066cc;
+  text-decoration: none;
 }
 
 .button {
@@ -2069,28 +2322,6 @@ a {
   color: var(--vp-c-text-1) !important;
 }
 
-/* GitHub Stars Styles */
-:deep(.nav-github-stars) {
-  display: flex;
-  align-items: center;
-}
-
-:deep(.nav-github-stars .github-stars-link) {
-  color: var(--vp-c-text-1) !important;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-}
-
-:deep(.nav-github-stars .github-stars-link:hover) {
-  opacity: 0.7;
-}
-
-:deep(.nav-github-stars .github-stars-wrapper) {
-  padding-left: 0 !important;
-}
-
 /* Lang Switcher */
 .lang-switch-wrapper {
   position: relative;
@@ -2105,10 +2336,10 @@ a {
   margin-top: 12px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 6px;
   min-width: 140px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -2134,23 +2365,24 @@ a {
 }
 
 .buy-btn {
-  background: var(--vp-c-text-1);
-  color: var(--vp-c-bg) !important;
-  padding: 4px 12px;
+  background: #0071e3;
+  color: #fff !important;
+  padding: 7px 16px;
   border-radius: 980px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  transition: all 0.2s;
+  line-height: 1;
+  transition: all 0.2s ease;
 }
 
 .buy-btn:hover {
-  background: #333;
+  background: #0077ed;
   transform: scale(1.02);
 }
 
 .buy-btn.large {
-  padding: 12px 28px;
-  font-size: 17px;
+  padding: 12px 24px;
+  font-size: 15px;
   margin-top: 20px;
   display: inline-block;
 }
@@ -2158,37 +2390,62 @@ a {
 /* Sections General */
 .section-container {
   max-width: 1280px;
-  margin: 0 auto 120px;
+  margin: 0 auto 96px;
   padding: 0 40px;
 }
 
+.section-junior,
+.section-appendix {
+  background: #f5f5f7;
+  border-radius: 40px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.dark .section-junior,
+.dark .section-appendix {
+  background: rgba(255, 255, 255, 0.03);
+}
+
 .section-header {
-  margin-bottom: 60px;
+  margin-bottom: 44px;
 }
 
 .section-category {
-  font-size: 21px;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 14px;
   border: none;
   padding: 0;
+  color: #1d1d1f;
+  letter-spacing: -0.024em;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+    sans-serif;
 }
 
 .section-headline {
-  font-size: 48px;
-  line-height: 1.08349;
-  font-weight: 600;
-  letter-spacing: -0.003em;
-  margin-bottom: 20px;
+  font-size: 64px;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.034em;
+  margin-bottom: 12px;
+  color: #1d1d1f;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+    sans-serif;
 }
 
 .section-sub {
   font-size: 21px;
-  line-height: 1.381;
+  line-height: 1.4;
   font-weight: 400;
-  letter-spacing: 0.011em;
-  color: var(--vp-c-text-2);
-  max-width: 70%;
+  letter-spacing: -0.01em;
+  color: #6e6e73;
+  max-width: 760px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC',
+    sans-serif;
 }
 
 /* Bento Grid */
@@ -2259,19 +2516,21 @@ a {
 }
 
 .comm-card {
-  border-radius: 24px;
+  border-radius: 32px;
   overflow: hidden;
-  background: var(--vp-c-bg-soft);
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   transition: transform 0.3s;
   display: block;
 }
 
 .comm-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 .comm-visual {
-  height: 200px;
+  height: 220px;
   width: 100%;
   position: relative;
 }
@@ -2289,26 +2548,31 @@ a {
 }
 
 .comm-text {
-  padding: 30px;
+  padding: 26px 26px 30px;
 }
 
 .comm-title {
-  font-size: 19px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
   margin-bottom: 8px;
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+    sans-serif;
 }
 
 .comm-desc {
-  font-size: 14px;
-  color: var(--vp-c-text-2);
+  font-size: 16px;
+  color: #6e6e73;
   margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .comm-note {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 17px;
+  color: #0066cc;
+  letter-spacing: -0.01em;
 }
 
 /* Productivity Scroll (Now used for Stage 3) */
@@ -2330,8 +2594,8 @@ a {
 .prod-card {
   width: 300px;
   height: 400px;
-  border-radius: 24px;
-  background: var(--vp-c-bg-soft);
+  border-radius: 32px;
+  background: #fff;
   padding: 30px;
   scroll-snap-align: center;
   text-decoration: none !important;
@@ -2339,37 +2603,45 @@ a {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .prod-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-6px);
 }
 
 .prod-tag {
   font-size: 12px;
   font-weight: 600;
-  color: #0071e3;
+  color: #6e6e73;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .prod-card h4 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
   margin-bottom: 10px;
+  color: #1d1d1f;
+  letter-spacing: -0.025em;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+    sans-serif;
 }
 
 .prod-card p {
-  color: var(--vp-c-text-2);
-  font-size: 15px;
+  color: #6e6e73;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .prod-visual {
   margin-top: auto;
   height: 150px;
-  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-  border-radius: 12px;
-  opacity: 0.5;
+  background: linear-gradient(135deg, #dbeafe 0%, #e5e7eb 100%);
+  border-radius: 20px;
+  opacity: 1;
 }
 
 /* Appendix Horizontal Scroll */
@@ -2402,11 +2674,14 @@ a {
   align-items: flex-start;
   text-decoration: none !important;
   color: inherit !important;
-  background: transparent;
-  padding: 0;
-  border: none;
+  background: #fff;
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   scroll-snap-align: start;
   width: 100%;
+  transition: transform 0.25s ease;
 }
 
 /* Slider Controls */
@@ -2422,7 +2697,7 @@ a {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--vp-c-bg-soft);
+  background: #fff;
   border: none;
   display: flex;
   align-items: center;
@@ -2433,7 +2708,7 @@ a {
 }
 
 .control-btn:hover {
-  background: var(--vp-c-bg-mute);
+  background: #f0f0f2;
   transform: scale(1.05);
 }
 
@@ -2441,7 +2716,7 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--vp-c-bg-soft);
+  background: #fff;
   padding: 6px 12px;
   border-radius: 20px;
   height: 44px;
@@ -2451,7 +2726,7 @@ a {
   width: 8px;
   height: 8px;
   border-radius: 4px;
-  background: var(--vp-c-text-3);
+  background: #b8b8bd;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   opacity: 0.5;
@@ -2459,7 +2734,7 @@ a {
 
 .indicator-dot.active {
   width: 32px;
-  background: var(--vp-c-text-1);
+  background: #1d1d1f;
   opacity: 1;
 }
 
@@ -2469,9 +2744,7 @@ a {
 
 /* Remove hover effects */
 .appendix-card:hover {
-  background: transparent;
-  box-shadow: none;
-  border: none;
+  transform: translateY(-4px);
 }
 
 .appendix-icon-wrapper {
@@ -2538,17 +2811,17 @@ a {
 }
 
 .appendix-text {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
-  color: var(--vp-c-text-2);
+  color: #6e6e73;
   margin: 0;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .appendix-title {
-  font-weight: 700;
-  color: var(--vp-c-text-1);
+  font-weight: 600;
+  color: #1d1d1f;
   margin-right: 6px;
   font-size: 13px;
 }
@@ -2556,21 +2829,246 @@ a {
 /* Footer */
 .footer-callout {
   text-align: center;
-  padding: 100px 20px;
-  background: var(--vp-c-bg-soft);
+  padding: 92px 20px;
+  background: #fff;
+  margin: 0 40px 64px;
+  border-radius: 40px;
 }
 
 .footer-callout h2 {
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 62px;
+  font-weight: 700;
   margin-bottom: 20px;
-  line-height: 1.2;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #1d1d1f;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+    sans-serif;
+}
+
+.footer-callout p {
+  color: #6e6e73;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.apple-site-footer {
+  max-width: 1060px;
+  margin: 0 auto 56px;
+  padding: 0 40px;
+}
+
+.apple-site-footer-inner {
+  border-top: 1px solid #d2d2d7;
+  color: #6e6e73;
+  font-size: 12px;
+}
+
+.apple-footer-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6e6e73;
+  font-size: 12px;
+  padding-top: 12px;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-breadcrumb {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.apple-footer-notes {
+  padding-top: 18px;
+}
+
+.apple-footer-notes p {
+  margin: 0 0 8px;
+  line-height: 1.45;
+  color: #86868b;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-notes p {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.88;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  color: #7d7d83;
+}
+
+.apple-footer-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.apple-footer-column h4 {
+  margin: 0 0 10px;
+  color: #1d1d1f;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-column h4 {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0.025em;
+}
+
+.apple-footer-column a {
+  display: block;
+  color: #424245;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-column a {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.72;
+  letter-spacing: 0.02em;
+  margin-bottom: 9px;
+}
+
+.apple-footer-column a:hover {
+  color: #0066cc;
+}
+
+.apple-footer-more {
+  margin-top: 18px;
+  border-top: 1px solid #d2d2d7;
+  padding-top: 14px;
+  color: #6e6e73;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-more {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.72;
+  letter-spacing: 0.02em;
+}
+
+.apple-footer-more a {
+  color: #0066cc;
+}
+
+.apple-footer-bottom {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #d2d2d7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.apple-footer-bottom p {
+  margin: 0;
+  color: #86868b;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-bottom p {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+}
+
+.apple-footer-policy {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.apple-footer-policy a {
+  color: #424245;
+}
+
+.apple-footer-policy a:hover {
+  color: #0066cc;
+}
+
+.apple-site-footer.is-cjk-locale .apple-footer-policy a {
+  font-family:
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 1024px) {
+  .apple-site-footer {
+    max-width: 996px;
+    padding: 0 24px;
+  }
+
+  .apple-site-footer-inner {
+    font-size: 11px;
+  }
+
+  .apple-footer-notes p {
+    font-size: 11px;
+    line-height: 1.38;
+    margin-bottom: 6px;
+  }
+
+  .apple-footer-grid {
+    grid-template-columns: 1.2fr repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .apple-footer-column h4 {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .apple-footer-column a {
+    font-size: 11px;
+    margin-bottom: 7px;
+  }
+
+  .apple-site-footer.is-cjk-locale .apple-site-footer-inner {
+    font-size: 13px;
+  }
+
+  .apple-site-footer.is-cjk-locale .apple-footer-notes p {
+    font-size: 13px;
+    margin-bottom: 7px;
+  }
+
+  .apple-site-footer.is-cjk-locale .apple-footer-column h4 {
+    font-size: 13px;
+  }
+
+  .apple-site-footer.is-cjk-locale .apple-footer-column a {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .section-headline {
-    font-size: 32px;
+    font-size: 42px;
   }
 
   .bento-grid {
@@ -2583,7 +3081,49 @@ a {
   }
 
   .nav-links {
-    display: none; /* Simplify for mobile for now, or use overflow scroll */
+    display: none;
+  }
+
+  .nav-promo {
+    font-size: 12px;
+    height: 28px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .section-junior,
+  .section-appendix {
+    border-radius: 28px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+
+  .footer-callout {
+    margin: 0 16px 40px;
+    border-radius: 28px;
+  }
+
+  .footer-callout h2 {
+    font-size: 38px;
+  }
+
+  .footer-callout p {
+    font-size: 17px;
+  }
+
+  .apple-site-footer {
+    padding: 0 16px;
+  }
+
+  .apple-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 14px;
+  }
+
+  .apple-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 </style>
@@ -2591,7 +3131,7 @@ a {
 <style>
 /* Global layout fix for fixed nav */
 .VPHome {
-  padding-top: 52px !important;
+  padding-top: 84px !important;
 }
 </style>
 
@@ -2604,40 +3144,40 @@ a {
 }
 
 .feature-card {
-  background: var(--vp-c-bg-soft);
-  border-radius: 18px;
+  background: #fff;
+  border-radius: 32px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   height: 100%;
   position: relative;
   overflow: hidden;
   text-decoration: none !important;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .dark .feature-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   background: var(--vp-c-bg-mute);
 }
 
 .feature-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
 .feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 30px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
 }
 
 .feature-content {
@@ -2646,16 +3186,20 @@ a {
 }
 
 .feature-content h4 {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
   margin-bottom: 10px;
-  color: var(--vp-c-text-1);
+  color: #1d1d1f;
   line-height: 1.3;
+  letter-spacing: -0.024em;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC',
+    sans-serif;
 }
 
 .feature-content p {
-  font-size: 15px;
-  color: var(--vp-c-text-2);
+  font-size: 17px;
+  color: #6e6e73;
   line-height: 1.6;
   margin-top: 4px;
   margin-bottom: 0;
