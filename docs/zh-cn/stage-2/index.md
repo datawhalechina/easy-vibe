@@ -113,11 +113,6 @@
     title="Dify 入门与知识库集成"
     description="学习使用 Dify 构建 AI 应用，并集成私有知识库"
   />
-  <NavCard
-    href="/zh-cn/stage-2/ai-capabilities/2.2-multimodal-api/"
-    title="学会查询 AI 词典与集成多模态 API"
-    description="探索更多 AI 能力，集成视觉、语音等多模态 API"
-  />
 </NavGrid>
 
 ## 适合人群

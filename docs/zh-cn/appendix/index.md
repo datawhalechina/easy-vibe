@@ -139,11 +139,6 @@
     description="React / Vue / Svelte / Angular——选择适合你的框架"
   />
 <NavCard
-    href="/zh-cn/appendix/3-browser-and-frontend/browser-as-os"
-    title="浏览器是一个操作系统"
-    description="进程模型、资源管理、安全沙箱"
-  />
-<NavCard
     href="/zh-cn/appendix/3-browser-and-frontend/browser-as-os-rendering"
     title="浏览器渲染管道"
     description="DOM、CSSOM、布局、绘制——页面是如何渲染的"
@@ -301,9 +296,9 @@
 从 SQL 到数据治理，全面掌握数据处理和分析技能：
 <NavGrid>
 <NavCard
-    href="/zh-cn/appendix/5-data/sql"
-    title="SQL"
-    description="查询、连接、聚合——数据库查询语言基础"
+    href="/zh-cn/appendix/5-data/database-fundamentals"
+    title="数据库原理与 SQL"
+    description="索引、事务、查询优化，以及数据库查询语言基础"
   />
 <NavCard
     href="/zh-cn/appendix/5-data/database-fundamentals"
