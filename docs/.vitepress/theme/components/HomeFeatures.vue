@@ -7,9 +7,11 @@ const router = useRouter()
 const { site, page, lang } = useData()
 const activeTab = ref('home')
 const showLangMenu = ref(false)
+const topPromoProgress = ref(1)
 
 // Appendix Scroll Logic
 const appendixWrapper = ref(null)
+const pmSection = ref(null)
 const totalPages = ref(1)
 const currentPage = ref(0)
 
@@ -1595,6 +1597,38 @@ const closeLangMenu = (e) => {
   }
 }
 
+const updateTopPromoVisibility = () => {
+  if (!pmSection.value) {
+    topPromoProgress.value = 1
+    return
+  }
+  const navHeight = 44
+  const sectionTop = pmSection.value.getBoundingClientRect().top + window.pageYOffset
+  const endY = sectionTop - navHeight
+  const startY = endY - 96
+  const scrollY = window.pageYOffset
+  if (scrollY <= startY) {
+    topPromoProgress.value = 1
+    return
+  }
+  if (scrollY >= endY) {
+    topPromoProgress.value = 0
+    return
+  }
+  topPromoProgress.value = (endY - scrollY) / (endY - startY)
+}
+
+const topPromoStyle = computed(() => {
+  const progress = topPromoProgress.value
+  return {
+    opacity: progress,
+    transform: `translateY(${-100 * (1 - progress)}%)`,
+    maxHeight: `${30 * progress}px`,
+    borderTopColor: `rgba(229, 229, 234, ${progress})`,
+    pointerEvents: progress < 0.02 ? 'none' : 'auto'
+  }
+})
+
 onMounted(() => {
   document.addEventListener('click', closeLangMenu)
   if (appendixWrapper.value) {
@@ -1602,6 +1636,9 @@ onMounted(() => {
     updatePagination()
     window.addEventListener('resize', updatePagination)
   }
+  updateTopPromoVisibility()
+  window.addEventListener('scroll', updateTopPromoVisibility, { passive: true })
+  window.addEventListener('resize', updateTopPromoVisibility)
 })
 
 onUnmounted(() => {
@@ -1610,6 +1647,8 @@ onUnmounted(() => {
     appendixWrapper.value.removeEventListener('scroll', onAppendixScroll)
   }
   window.removeEventListener('resize', updatePagination)
+  window.removeEventListener('scroll', updateTopPromoVisibility)
+  window.removeEventListener('resize', updateTopPromoVisibility)
 })
 
 // Stage 1: 产品经理 (Web 原型)
@@ -1860,7 +1899,10 @@ const appendixCards = [
           </div>
         </div>
       </div>
-      <div class="nav-promo">
+      <div
+        class="nav-promo"
+        :style="topPromoStyle"
+      >
         <span>{{ topPromo.text }}</span>
         <a :href="resolveFooterHref(topPromo.link)">{{ topPromo.cta }}</a>
       </div>
@@ -1875,6 +1917,7 @@ const appendixCards = [
     <!-- Stage 1: Product Manager -->
     <section
       id="pm"
+      ref="pmSection"
       class="section-container section-pm"
     >
       <div class="section-header">
@@ -2188,6 +2231,7 @@ a {
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 2;
 }
 
 .nav-cluster {
@@ -2271,7 +2315,7 @@ a {
 }
 
 .nav-promo {
-  height: 30px;
+  max-height: 30px;
   border-top: 1px solid #e5e5ea;
   display: flex;
   align-items: center;
@@ -2280,6 +2324,16 @@ a {
   font-size: 13px;
   color: #1d1d1f;
   padding: 0 16px;
+  overflow: hidden;
+  transform-origin: top center;
+  position: relative;
+  z-index: 1;
+  will-change: transform, opacity, max-height, border-color;
+  transition:
+    transform 0.16s ease-out,
+    opacity 0.16s ease-out,
+    max-height 0.16s ease-out,
+    border-color 0.16s ease-out;
 }
 
 .nav-promo a {
@@ -2345,6 +2399,7 @@ a {
   gap: 2px;
   max-height: 300px;
   overflow-y: auto;
+  z-index: 20;
 }
 
 .lang-item {

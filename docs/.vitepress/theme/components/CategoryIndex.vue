@@ -42,29 +42,46 @@ defineProps({
 
 <style scoped>
 .category-index {
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .category-section {
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
 .category-title {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   border-bottom: none;
+  letter-spacing: -0.02em;
 }
 
 .category-desc {
   font-size: 1rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  line-height: 1.68;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .category-section {
+    margin-bottom: 38px;
+  }
+
+  .category-title {
+    font-size: 1.4rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 }
 </style>

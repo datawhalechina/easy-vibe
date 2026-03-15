@@ -22,9 +22,18 @@ defineProps({
 <style scoped>
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
   margin-top: 24px;
   margin-bottom: 48px;
+}
+
+@media (max-width: 768px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 18px;
+    margin-bottom: 28px;
+  }
 }
 </style>
