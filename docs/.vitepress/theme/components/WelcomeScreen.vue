@@ -25,7 +25,7 @@ const runLoop = () => {
     timers.push(
       setTimeout(() => {
         phase.value = 'fade'
-      }, 6200)
+      }, 5800)
     )
     timers.push(
       setTimeout(() => {

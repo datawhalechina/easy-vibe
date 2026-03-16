@@ -6,6 +6,8 @@ layout: home
 import { onMounted } from 'vue'
 import { withBase } from 'vitepress'
 
+const WELCOME_SEEN_KEY = 'easy-vibe-welcome-seen'
+
 onMounted(() => {
   // 语言映射：浏览器语言代码 -> 网站路径
   const langMap = {
@@ -44,8 +46,23 @@ onMounted(() => {
     targetLang = '/zh-cn/'
   }
 
+  const targetPath = withBase(targetLang)
+  let hasSeenWelcome = false
+  try {
+    hasSeenWelcome = window.localStorage.getItem(WELCOME_SEEN_KEY) === '1'
+  } catch {
+    hasSeenWelcome = false
+  }
+
+  if (!hasSeenWelcome) {
+    window.location.replace(
+      withBase(`/welcome/?next=${encodeURIComponent(targetPath)}`)
+    )
+    return
+  }
+
   // 立即跳转，不显示任何内容
   // 使用 withBase 自动处理 base 路径（根据 config.mjs 中的配置）
-  window.location.replace(withBase(targetLang))
+  window.location.replace(targetPath)
 })
 </script>
