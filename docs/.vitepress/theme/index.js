@@ -9,6 +9,7 @@ import { useRoute, useData } from 'vitepress'
 import './style.css'
 import Layout from './Layout.vue'
 import HomeFeatures from './components/HomeFeatures.vue'
+import WelcomeScreen from './components/WelcomeScreen.vue'
 import NavGrid from './components/NavGrid.vue'
 import NavCard from './components/NavCard.vue'
 import CategoryIndex from './components/CategoryIndex.vue'
@@ -846,6 +847,7 @@ export default {
   enhanceApp({ app }) {
     app.use(ElementPlus)
     app.component('HomeFeatures', HomeFeatures)
+    app.component('WelcomeScreen', WelcomeScreen)
     app.component('NavGrid', NavGrid)
     app.component('NavCard', NavCard)
     app.component('CategoryIndex', CategoryIndex)

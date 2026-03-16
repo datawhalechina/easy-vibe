@@ -8,6 +8,7 @@ const { site, page, lang } = useData()
 const activeTab = ref('home')
 const showLangMenu = ref(false)
 const topPromoProgress = ref(1)
+const WELCOME_SEEN_KEY = 'easy-vibe-welcome-seen'
 
 // Appendix Scroll Logic
 const appendixWrapper = ref(null)
@@ -1629,7 +1630,45 @@ const topPromoStyle = computed(() => {
   }
 })
 
+const replayIntro = () => {
+  const currentPath = window.location.pathname
+  router.go(withBase(`/welcome/?next=${encodeURIComponent(currentPath)}`))
+}
+
 onMounted(() => {
+  const currentPath = window.location.pathname
+  const basePath = site.value.base || '/'
+  const normalizedBase = basePath.endsWith('/') ? basePath : `${basePath}/`
+  const normalizedPath = currentPath.endsWith('/')
+    ? currentPath
+    : `${currentPath}/`
+  const localeHomeSuffixes = [
+    '/zh-cn/',
+    '/en/',
+    '/zh-tw/',
+    '/ja-jp/',
+    '/ko-kr/',
+    '/es-es/',
+    '/fr-fr/',
+    '/de-de/',
+    '/ar-sa/',
+    '/vi-vn/'
+  ]
+  const isLocaleHome = localeHomeSuffixes.some(
+    (suffix) =>
+      currentPath.endsWith(suffix) ||
+      currentPath.endsWith(`${suffix}index.html`)
+  )
+  const isRootHome =
+    normalizedPath === normalizedBase ||
+    currentPath === `${normalizedBase}index.html`
+  if (isRootHome && !isLocaleHome) {
+    const hasSeenWelcome = window.localStorage.getItem(WELCOME_SEEN_KEY) === '1'
+    if (!hasSeenWelcome) {
+      router.go(withBase(`/welcome/?next=${encodeURIComponent(currentPath)}`))
+      return
+    }
+  }
   document.addEventListener('click', closeLangMenu)
   if (appendixWrapper.value) {
     appendixWrapper.value.addEventListener('scroll', onAppendixScroll)
@@ -1822,7 +1861,13 @@ const appendixCards = [
     <nav class="sticky-nav glass">
       <div class="nav-content">
         <div class="nav-cluster">
-          <span class="nav-title">{{ t.nav.title }}</span>
+          <button
+            class="nav-title"
+            type="button"
+            @click="replayIntro"
+          >
+            {{ t.nav.title }}
+          </button>
           <div class="nav-links">
             <button
               :class="{ active: activeTab === 'home' }"
@@ -2247,6 +2292,11 @@ a {
   color: var(--vp-c-text-1) !important;
   flex-shrink: 0;
   letter-spacing: -0.008em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .nav-links {

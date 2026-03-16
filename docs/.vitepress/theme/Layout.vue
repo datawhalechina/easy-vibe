@@ -1,6 +1,6 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
-import { useData } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import TextType from './components/TextType.vue'
 import GitHubStars from './components/GitHubStars.vue'
 import { onMounted, ref, watch, computed } from 'vue'
@@ -8,6 +8,7 @@ import ReadingProgress from './components/ReadingProgress.vue'
 import { Setting } from '@element-plus/icons-vue'
 
 const { frontmatter } = useData()
+const route = useRoute()
 
 const homeTaglineTyping = {
   typingSpeed: 45,
@@ -86,6 +87,11 @@ const toggleSidebar = () => {
 }
 
 const isHomePage = computed(() => frontmatter.value.layout === 'home')
+const isWelcomePage = computed(() =>
+  route.path === '/welcome/' ||
+  route.path.endsWith('/welcome/') ||
+  route.path.endsWith('/welcome.html')
+)
 
 onMounted(() => {
   const saved = clampFontSize(localStorage.getItem(FONT_SIZE_STORAGE_KEY))
@@ -292,7 +298,7 @@ watch(sidebarCollapsed, (collapsed) => {
 
 <template>
   <DefaultTheme.Layout>
-    <template v-if="!isHomePage" #nav-bar-title-before>
+    <template v-if="!isHomePage && !isWelcomePage" #nav-bar-title-before>
       <button
         class="ev-sidebar-nav-btn"
         type="button"
@@ -430,7 +436,7 @@ watch(sidebarCollapsed, (collapsed) => {
   </DefaultTheme.Layout>
   <ClientOnly>
     <div
-      v-if="!isHomePage"
+      v-if="!isHomePage && !isWelcomePage"
       class="ev-sidebar-hover-area"
       :class="{ collapsed: sidebarCollapsed }"
     >
