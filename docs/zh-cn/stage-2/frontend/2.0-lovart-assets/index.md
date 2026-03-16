@@ -1,3 +1,9 @@
+<script setup>
+import { relatedArticlesMap } from '@theme/data/relatedArticles'
+
+const relatedArticles = relatedArticlesMap['zh-cn/stage-2/frontend/2.0-lovart-assets'] ?? []
+</script>
+
 # 从 NanoBanana 出发，搭建自己的素材生产Agent
 
 ## 第 1 章：1 分钟生成第一份图片素材
@@ -935,3 +941,9 @@ Markdown 格式
 回头看，这条路其实并不复杂。想清楚你要解决的问题，把长文本交给语言模型去拆解，再把整理好的视觉意图交给绘图模型去呈现，最后把这一整套流程封装成一个属于你自己的小助手。到这里，你已经不只是“在用模型”，而是在搭建一套可以长期陪你工作的系统，而这，才是这套教程最想带给你的东西。
 
 但是你已经做的很棒啦！相信学到这里的你对Vibe Coding已经有初步的掌握了，给自己放个小假休息一下吧！
+
+<RelatedArticlesSection
+  title="相关文章"
+  description="如果你想把“素材生成”真正接入产品流程，可以继续学习这些章节。"
+  :items="relatedArticles"
+/>

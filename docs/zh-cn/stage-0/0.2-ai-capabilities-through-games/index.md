@@ -10,7 +10,11 @@
 </div>
 
 <script setup>
+import { relatedArticlesMap } from '@theme/data/relatedArticles'
+
 const duration = '约 <strong>4 小时</strong>，可分多次完成'
+const relatedArticles =
+  relatedArticlesMap['zh-cn/stage-0/0.2-ai-capabilities-through-games'] ?? []
 </script>
 
 ## 本章导读
@@ -752,3 +756,9 @@ z.ai 的回复将会是这样的：
 - 便于系统集成：当模型输出符合预期格式时，更容易与后端程序、工作流或其他工具自动对接
 
 因此，在选择和评估一个大语言模型时，除了关注它是否聪明、知识覆盖是否广之外，还需要特别关注它的指令遵循能力。对于工业级应用来说，能否稳定而准确地执行指令，往往比偶尔给出一次惊艳回答更重要。
+
+<RelatedArticlesSection
+  title="继续学习"
+  description="从“游戏化体验”出发，推荐你继续进入本地开发与产品实践。"
+  :items="relatedArticles"
+/>

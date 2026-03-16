@@ -3,6 +3,12 @@ title: '从创意到 AI 产品 - Easy-Vibe 学习路线图'
 description: '学习 AI 编程完整路线图：从零基础到全栈开发。掌握 Vibe Coding、Claude Code、Cursor 等 AI IDE 工具，学会产品思维、全栈开发和 AI 能力集成。'
 ---
 
+<script setup>
+import { relatedArticlesMap } from '@theme/data/relatedArticles'
+
+const relatedArticles = relatedArticlesMap['zh-cn/stage-0/0.1-learning-map'] ?? []
+</script>
+
 # 从创意到 AI 产品
 
 以前做软件，门槛很高：你要懂编程、懂算法，还得有几年的项目经验。
@@ -257,3 +263,9 @@ AI 时代，执行力和想法永远比技术更重要。
 # Reference
 
 - [南京大学 计算机科学与技术系 计算机系统基础 课程实验](https://nju-projectn.github.io/ics-pa-gitbook/ics2025/)
+
+<RelatedArticlesSection
+  title="接下来可以学什么"
+  description="按“从会用 AI 到会做产品”的路线，继续向前推进。"
+  :items="relatedArticles"
+/>

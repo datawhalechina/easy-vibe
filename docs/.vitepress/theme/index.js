@@ -13,6 +13,7 @@ import NavGrid from './components/NavGrid.vue'
 import NavCard from './components/NavCard.vue'
 import CategoryIndex from './components/CategoryIndex.vue'
 import ArticleGrid from './components/ArticleGrid.vue'
+import RelatedArticlesSection from './components/RelatedArticlesSection.vue'
 import StepBar from './components/StepBar.vue'
 import ChapterIntroduction from './components/ChapterIntroduction.vue'
 import ReadingProgress from './components/ReadingProgress.vue'
@@ -849,6 +850,7 @@ export default {
     app.component('NavCard', NavCard)
     app.component('CategoryIndex', CategoryIndex)
     app.component('ArticleGrid', ArticleGrid)
+    app.component('RelatedArticlesSection', RelatedArticlesSection)
     app.component('StepBar', StepBar)
     app.component('ChapterIntroduction', ChapterIntroduction)
     app.component('ReadingProgress', ReadingProgress)

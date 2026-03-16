@@ -4,7 +4,11 @@ description: '走出 Demo 阶段，学习如何完善产品链路、构建逼真
 ---
 
 <script setup>
+import { relatedArticlesMap } from '@theme/data/relatedArticles'
+
 const duration = '约 <strong>3 天</strong>'
+const relatedArticles =
+  relatedArticlesMap['zh-cn/stage-1/1.4-complete-project-practice'] ?? []
 </script>
 
 # 初级五：完整项目实战
@@ -289,3 +293,9 @@ export const mockProductTasks = [
 在接下来的 Stage 2 中，我们将深入更复杂的全栈开发，学习如何把这个原型变成一个真正能上线、有数据库、有用户系统的商业级应用。
 
 让我们在下一阶段见！
+
+<RelatedArticlesSection
+  title="继续进阶"
+  description="恭喜完成 Stage 1，下面这些章节可以帮助你进入工程化开发。"
+  :items="relatedArticles"
+/>

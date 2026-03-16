@@ -103,22 +103,22 @@ const i18n = {
       sub: '从前端到后端，从数据库到上线。',
       cards: [
         {
-          title: '全栈开发',
-          headline: '独立完成前后端。',
-          desc: '从数据库设计到 API 开发，再到前端组件化，完整构建一个现代化 Web 应用。',
-          link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+          title: '全栈路径总览',
+          headline: '先看清全局再动手。',
+          desc: '一页看懂 Stage 2：前端、后端、数据库与部署如何串成完整链路。',
+          link: '/zh-cn/stage-2/'
         },
         {
-          title: '真实项目',
-          headline: '拒绝玩具代码。',
-          desc: '深入理解用户鉴权、数据存储、文件上传等核心业务逻辑。',
-          link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+          title: '真实数据项目',
+          headline: '连上真正的数据库。',
+          desc: '在 Supabase 上设计数据表和权限，用真实读写操作支撑你的产品数据层。',
+          link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
         },
         {
           title: '部署上线',
           headline: '让世界看到你的作品。',
-          desc: '学习服务器配置、域名解析和自动化部署，打通产品落地的最后一公里。',
-          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+          desc: '使用 CloudBase、Vercel、Zeabur 等平台，一口气打通从代码到公网访问的完整流程。',
+          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
         }
       ]
     },
@@ -128,23 +128,23 @@ const i18n = {
       sub: '突破时间与设备限制，让 AI 产品随处可见。',
       cards: [
         {
-          title: '多端发布',
-          desc: '一套代码，覆盖 Web、小程序与 App，触达所有用户。',
-          link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
+          title: '跨平台桌面应用',
+          desc: '用 Electron 做语音转文字桌面程序，一次开发同时跑在 Windows、macOS、Linux。',
+          link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
         },
         {
-          title: 'AI 智能体',
-          desc: '构建具备记忆与规划能力的 Agent，实现自主任务执行。',
-          link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+          title: 'AI 智能体团队',
+          desc: '用 Claude Agent Teams 组建 AI 开发小队，多代理协作完成大型任务。',
+          link: '/zh-cn/stage-3/core-skills/agent-teams/'
         },
         {
-          title: '长效稳定',
-          desc: '掌握异步任务与队列技术，确保 AI 复杂任务稳定完成。',
-          link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
+          title: '长效稳定执行',
+          desc: '用循环脚本和 Ralph 插件管理长时间任务，让 Claude Code 过夜稳定跑完工作。',
+          link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
         },
         {
-          title: '商业闭环',
-          desc: '集成支付与会员系统，将你的 AI 创意转化为商业产品。',
+          title: '个人品牌与输出',
+          desc: '搭建个人网站与技术博客，让你的项目和经验长期沉淀并被更多人看到。',
           link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
         }
       ]
@@ -261,25 +261,25 @@ const i18n = {
       cat: 'Stage 2 · Junior/Mid Dev',
       title:
         'Go Full Stack, <br><span class="highlight">Build Real Apps.</span>',
-      sub: 'Master frontend-backend separation and build commercial-grade projects with DB and API.',
+      sub: 'Understand the full journey from frontend to backend, database and deployment.',
       cards: [
         {
-          title: 'Full Stack',
-          headline: 'Frontend & Backend.',
-          desc: 'From DB design to API and components, build a modern web app completely.',
-          link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+          title: 'Stage Overview',
+          headline: 'See the whole map first.',
+          desc: 'Start from the Stage 2 overview and understand how frontend, backend and infra fit together.',
+          link: '/zh-cn/stage-2/'
         },
         {
-          title: 'Real Projects',
-          headline: 'No Toy Code.',
-          desc: 'Deep dive into Auth, Storage, File Uploads and core business logic.',
-          link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+          title: 'Real Data Project',
+          headline: 'Backed by a real DB.',
+          desc: 'Design tables and permissions on Supabase and wire them into real read/write flows.',
+          link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
         },
         {
           title: 'Deployment',
-          headline: 'Show the World.',
-          desc: 'Server config, DNS, CI/CD. The last mile of product delivery.',
-          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+          headline: 'Ship it to the world.',
+          desc: 'Use CloudBase, Vercel and Zeabur to turn local projects into publicly reachable sites.',
+          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
         }
       ]
     },
@@ -287,26 +287,26 @@ const i18n = {
       cat: 'Stage 3 · Senior Dev',
       title:
         'Advanced Practice, <br><span class="highlight">Infinite Possibilities.</span>',
-      sub: 'Mobile Mini-programs & AI Native Apps. Explore the era of LLMs.',
+      sub: 'Cross-platform apps and AI-native workflows, powered by Claude Code.',
       cards: [
         {
-          title: 'WeChat Mini-app',
-          desc: 'Cross-platform dev, reaching millions of users.',
-          link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
+          title: 'Electron Desktop App',
+          desc: 'Build a speech-to-text desktop app that runs on Windows, macOS and Linux from one codebase.',
+          link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
         },
         {
-          title: 'AI Native Apps',
-          desc: 'RAG, Agent. Explore the limits of LLMs.',
-          link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+          title: 'Agent Teams',
+          desc: 'Use Claude Agent Teams to orchestrate multiple agents like a real dev team.',
+          link: '/zh-cn/stage-3/core-skills/agent-teams/'
         },
         {
-          title: 'Complex Arch',
-          desc: 'Architecture design for high concurrency and stable AI tasks.',
-          link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
+          title: 'Long-running Tasks',
+          desc: 'Design loops and task queues so Claude Code can safely run overnight until work is truly done.',
+          link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
         },
         {
           title: 'Personal Brand',
-          desc: 'Build your own website and academic blog.',
+          desc: 'Build your own website and tech blog to showcase projects and writing.',
           link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
         }
       ]
@@ -791,25 +791,25 @@ const i18n = {
     stage2: {
       cat: 'Stage 2 · Desarrollador Junior/Mid',
       title: 'Full Stack,<br><span class="highlight">Crea Apps Reales.</span>',
-      sub: 'Domina la separación frontend-backend. Crea proyectos de nivel comercial con DB, API e interacciones complejas.',
+      sub: 'De la base de datos al despliegue: conecta frontend, backend y operaciones en un solo recorrido.',
       cards: [
         {
-          title: 'Full Stack',
-          headline: 'Frontend y Backend.',
-          desc: 'Desde el diseño de DB hasta API y componentes, construye una web app moderna completamente.',
-          link: '/es-es/stage-2/'
+          title: 'Mapa de la Etapa',
+          headline: 'Primero entiende el recorrido completo.',
+          desc: 'Revisa la vista general de Stage 2 para ver cómo encajan frontend, backend, DB y despliegue.',
+          link: '/zh-cn/stage-2/'
         },
         {
-          title: 'Proyectos Reales',
-          headline: 'Sin código de juguete.',
-          desc: 'Profundiza en Auth, Almacenamiento, Subida de Archivos y lógica de negocio.',
-          link: '/es-es/stage-2/'
+          title: 'Proyecto con DB real',
+          headline: 'Supabase como base de datos de verdad.',
+          desc: 'Diseña tablas y permisos en Supabase y conéctalos a flujos reales de lectura/escritura.',
+          link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
         },
         {
-          title: 'Despliegue',
-          headline: 'Muestra al mundo.',
-          desc: 'Configuración de servidor, DNS, CI/CD. La última milla de la entrega del producto.',
-          link: '/es-es/stage-2/'
+          title: 'Despliegue en producción',
+          headline: 'Lleva tu app al mundo real.',
+          desc: 'Usa CloudBase, Vercel y Zeabur para convertir tu código local en un sitio público.',
+          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
         }
       ]
     },
@@ -817,27 +817,27 @@ const i18n = {
       cat: 'Stage 3 · Desarrollador Senior',
       title:
         'Práctica Avanzada,<br><span class="highlight">Posibilidades Infinitas.</span>',
-      sub: 'Mini-programas móviles y Apps Nativas de IA. Explora la era de los LLMs.',
+      sub: 'Apps multiplataforma y flujos de trabajo AI-native impulsados por Claude Code.',
       cards: [
         {
-          title: 'WeChat Mini-app',
-          desc: 'Desarrollo multiplataforma, llegando a millones de usuarios.',
-          link: '/es-es/stage-3/'
+          title: 'App de escritorio multiplataforma',
+          desc: 'Crea con Electron una app de voz a texto que funciona en Windows, macOS y Linux con una sola base de código.',
+          link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
         },
         {
-          title: 'Apps Nativas IA',
-          desc: 'RAG, Agent. Explora los límites de los LLMs.',
-          link: '/es-es/stage-3/'
+          title: 'Equipos de agentes IA',
+          desc: 'Usa Claude Agent Teams para orquestar varios agentes como si fueran un equipo de desarrollo real.',
+          link: '/zh-cn/stage-3/core-skills/agent-teams/'
         },
         {
-          title: 'Arq. Compleja',
-          desc: 'Diseño de arquitectura de alta concurrencia y alta disponibilidad.',
-          link: '/es-es/stage-3/'
+          title: 'Tareas de larga duración',
+          desc: 'Diseña bucles y colas de tareas para que Claude Code pueda trabajar durante horas de forma estable.',
+          link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
         },
         {
-          title: 'Marca Personal',
-          desc: 'Construye tu propio sitio web y blog académico.',
-          link: '/es-es/stage-3/'
+          title: 'Marca personal',
+          desc: 'Construye tu sitio web y blog técnico para dar visibilidad a tus proyectos.',
+          link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
         }
       ]
     },
@@ -1682,57 +1682,57 @@ const stage1Cards = [
 // Stage 2: 初中级开发 (全栈)
 const stage2Cards = [
   {
-    title: '全栈开发',
-    headline: '独立完成前后端。',
-    desc: '从数据库设计到 API 开发，再到前端组件化，完整构建一个现代化 Web 应用。',
+    title: '全栈路径总览',
+    headline: '先看清全局再动手。',
+    desc: '一页看懂 Stage 2：前端、后端、数据库与部署如何串成完整链路。',
     imageColor: '#E0C3FC',
     visualType: 'code',
-    link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+    link: '/zh-cn/stage-2/'
   },
   {
-    title: '真实项目',
-    headline: '拒绝玩具代码。',
-    desc: '深入理解用户鉴权、数据存储、文件上传等核心业务逻辑。',
+    title: '真实数据项目',
+    headline: '连上真正的数据库。',
+    desc: '在 Supabase 上设计数据表和权限，用真实读写操作支撑你的产品数据层。',
     imageColor: '#8EC5FC',
     visualType: 'server',
-    link: '/zh-cn/stage-2/backend/2.2-database-supabase/chapter5/'
+    link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
   },
   {
     title: '部署上线',
     headline: '让世界看到你的作品。',
-    desc: '学习服务器配置、域名解析和自动化部署，打通产品落地的最后一公里。',
+    desc: '使用 CloudBase、Vercel、Zeabur 等平台，一口气打通从代码到公网访问的完整流程。',
     imageColor: '#96E6A1',
     visualType: 'cloud',
-    link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/extra6/'
+    link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
   }
 ]
 
 // Stage 3: 高级开发 (小程序 & AI)
 const stage3Cards = [
   {
-    title: '微信小程序',
-    desc: '跨平台开发，触达亿级用户。',
+    title: '跨平台桌面应用',
+    desc: '用 Electron 做语音转文字桌面程序，一次开发同时跑在 Windows、macOS、Linux。',
     tag: 'Stage 3',
     visualType: 'phone',
-    link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
+    link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
   },
   {
-    title: 'AI 原生应用',
-    desc: 'RAG、Agent，探索 LLM 的无限可能。',
+    title: 'AI 智能体团队',
+    desc: '用 Claude Agent Teams 组建 AI 开发小队，多代理协作完成大型任务。',
     tag: 'Advanced',
     visualType: 'ai',
-    link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+    link: '/zh-cn/stage-3/core-skills/agent-teams/'
   },
   {
-    title: '复杂业务架构',
-    desc: '应对高并发、高可用场景的架构设计。',
+    title: '长效稳定执行',
+    desc: '用循环脚本和 Ralph 插件管理长时间任务，让 Claude Code 过夜稳定跑完工作。',
     tag: 'Architecture',
     visualType: 'arch',
-    link: '/zh-cn/stage-3/core-skills/3.2-long-running-tasks/'
+    link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
   },
   {
-    title: '个人品牌',
-    desc: '构建属于自己的个人网页与学术博客。',
+    title: '个人品牌与输出',
+    desc: '搭建个人网站与技术博客，让你的项目和经验长期沉淀并被更多人看到。',
     tag: 'Brand',
     visualType: 'brand',
     link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'

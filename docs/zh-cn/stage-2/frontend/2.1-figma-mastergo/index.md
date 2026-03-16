@@ -1,5 +1,11 @@
 # Figma 与 MasterGo 入门
 
+<script setup>
+import { relatedArticlesMap } from '@theme/data/relatedArticles'
+
+const relatedArticles = relatedArticlesMap['zh-cn/stage-2/frontend/2.1-figma-mastergo'] ?? []
+</script>
+
 ::: tip 🎯 核心问题
 **如何从零开始使用现代设计工具创建网页原型？**
 :::
@@ -289,3 +295,9 @@
 
 如果你在完成 [一起做霍格沃茨画像](../2.4-hogwarts-portraits/) 项目，可以先设计界面原型，再导出代码与 AI 对话功能结合。
 :::
+
+<RelatedArticlesSection
+  title="相关文章"
+  description="建议继续学习 UI 设计深化与设计转代码实战。"
+  :items="relatedArticles"
+/>
