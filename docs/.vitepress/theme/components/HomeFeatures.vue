@@ -1920,7 +1920,7 @@ const appendixCards = [
             :aria-label="t.nav.title"
           >
             <img
-              class="nav-title-logo"
+              class="nav-title-logo no-viewer"
               :src="withBase('/assets/easy-vibe-logo-hd.svg')"
               :alt="t.nav.title"
               width="64"

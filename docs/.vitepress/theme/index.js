@@ -1747,7 +1747,10 @@ export default {
           url: 'src', // 图片源
           // 过滤掉不想查看的图片（比如表情包等小图标，如果需要的话）
           filter(image) {
-            return !image.classList.contains('no-viewer')
+            return (
+              !image.classList.contains('no-viewer') &&
+              !image.classList.contains('nav-title-logo')
+            )
           }
         })
       }
