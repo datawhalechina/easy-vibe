@@ -9,7 +9,12 @@
 ███████╗██║  ██║███████║   ██║        ╚████╔╝ ██║██████╔╝███████╗
 ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝         ╚═══╝  ╚═╝╚═════╝ ╚══════╝</pre>
 
-# Easy-Vibe : Learn vibe coding from 0 to 1
+# Easy-Vibe: Learn vibe coding from 0 to 1
+
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  直接上手，一起 vibe ！会说话就会做应用<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
 
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Interactive Tutorial</a>
