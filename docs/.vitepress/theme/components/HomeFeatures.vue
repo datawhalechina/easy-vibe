@@ -1650,11 +1650,6 @@ const topPromoStyle = computed(() => {
   }
 })
 
-const replayIntro = () => {
-  const currentPath = window.location.pathname
-  router.go(withBase(`/welcome/?next=${encodeURIComponent(currentPath)}`))
-}
-
 onMounted(() => {
   const introDuration = 1800
   const colorDelay = 500
@@ -1920,13 +1915,19 @@ const appendixCards = [
     <nav class="sticky-nav glass">
       <div class="nav-content">
         <div class="nav-cluster">
-          <button
+          <div
             class="nav-title"
-            type="button"
-            @click="replayIntro"
+            :aria-label="t.nav.title"
           >
-            {{ t.nav.title }}
-          </button>
+            <img
+              class="nav-title-logo"
+              :src="withBase('/assets/easy-vibe-logo-hd.svg')"
+              :alt="t.nav.title"
+              width="64"
+              height="30"
+              draggable="false"
+            >
+          </div>
           <div class="nav-links">
             <button
               :class="{ active: activeTab === 'home' }"
@@ -2346,16 +2347,27 @@ a {
 }
 
 .nav-title {
-  font-weight: 500;
-  font-size: 12px;
-  color: var(--vp-c-text-1) !important;
   flex-shrink: 0;
-  letter-spacing: -0.008em;
   background: none;
   border: none;
   padding: 0;
   margin: 0;
-  cursor: pointer;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-title-logo {
+  display: block;
+  max-width: 64px !important;
+  max-height: 30px !important;
+  height: 30px !important;
+  width: 64px !important;
+  min-width: 64px;
+  min-height: 30px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: grayscale(1) brightness(0.28) contrast(1.05);
 }
 
 .nav-links {

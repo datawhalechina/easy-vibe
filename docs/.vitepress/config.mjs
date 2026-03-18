@@ -306,7 +306,8 @@ const commonHead = [
 ]
 
 const commonThemeConfig = {
-  logo: `${base}logo.png`.replace('//', '/'),
+  logo: '/assets/easy-vibe-logo-hd.svg',
+  siteTitle: false,
   search: {
     provider: 'local'
   },

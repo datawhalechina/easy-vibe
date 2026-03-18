@@ -1,6 +1,6 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
-import { useData, useRoute } from 'vitepress'
+import { useData, useRoute, withBase } from 'vitepress'
 import TextType from './components/TextType.vue'
 import GitHubStars from './components/GitHubStars.vue'
 import { onMounted, ref, watch, computed } from 'vue'
@@ -10,6 +10,13 @@ import easyVibePaths from './data/easyVibePaths.json'
 
 const { frontmatter } = useData()
 const route = useRoute()
+
+const openWelcomeFromWordmark = () => {
+  const currentPath = window.location.pathname
+  window.location.href = withBase(
+    `/welcome/?next=${encodeURIComponent(currentPath)}`
+  )
+}
 
 const homeTaglineTyping = {
   typingSpeed: 45,
@@ -418,9 +425,12 @@ watch(sidebarCollapsed, (collapsed) => {
       </ClientOnly>
     </template>
     <template #home-hero-info-before>
-      <div
+      <button
         v-if="frontmatter.layout === 'home'"
         class="vp-home-wordmark"
+        type="button"
+        aria-label="打开欢迎页"
+        @click="openWelcomeFromWordmark"
       >
         <svg
           viewBox="0 0 460 220"
@@ -447,7 +457,7 @@ watch(sidebarCollapsed, (collapsed) => {
             class="vp-home-wordmark-path"
           />
         </svg>
-      </div>
+      </button>
     </template>
     <template #home-hero-info-after>
       <div
@@ -493,6 +503,16 @@ watch(sidebarCollapsed, (collapsed) => {
 </template>
 
 <style>
+.VPNavBarTitle .VPImage.logo,
+.VPNavBarTitle .logo {
+  width: 84px !important;
+  height: 40px !important;
+  max-width: 84px !important;
+  max-height: 40px !important;
+  object-fit: contain;
+  display: block;
+}
+
 /* 隐藏默认的 tagline，因为我们用打字机效果替代了它 */
 .VPHomeHero .tagline {
   display: none !important;
@@ -542,6 +562,11 @@ watch(sidebarCollapsed, (collapsed) => {
   justify-content: center;
   margin-top: -12px;
   margin-bottom: 18px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 .vp-home-wordmark-svg {
   width: min(380px, 52vw);

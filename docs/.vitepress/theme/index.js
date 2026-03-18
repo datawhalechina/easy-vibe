@@ -1787,6 +1787,7 @@ export default {
     }
 
     const applyImageStyle = (img) => {
+      if (img.classList.contains('nav-title-logo')) return
       const { naturalWidth, naturalHeight } = img
       if (!naturalWidth || !naturalHeight) return
 
