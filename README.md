@@ -1,18 +1,11 @@
 <!-- trigger vercel build -->
 <div align="center">
 
-<img src="assets/logo.png" alt="Easy-Vibe Logo" width="200" style="border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-
-# Easy-Vibe
+<img src="assets/easy-vibe-logo-hd.svg" alt="Easy-Vibe Logo" width="300">
 
 <p align="center" style="font-size: 1.2em; color: #666; margin: 20px 0;">
-  <strong>把想法变成现实，就是这么简单</strong><br>
-  <span style="font-size: 0.9em; color: #888;">Turn ideas into reality. It's that simple.</span>
-</p>
-
-<p align="center" style="font-size: 1.1em; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-  不需要学编程，只要会说话，就能做出你的第一个 AI 应用<br>
-  <span style="font-size: 0.9em; color: #888;">No coding required. Just speak, and build your first AI app.</span>
+  直接上手，一起 vibe ！会说话就会做应用<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
 </p>
 
 <p align="center">
