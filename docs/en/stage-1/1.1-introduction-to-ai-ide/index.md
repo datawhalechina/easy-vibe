@@ -624,7 +624,7 @@ You can do this:
    |------|-----------------|
    | Doubao-Seed Series | ✅ Supported |
    | GLM-4.7 / 4.6 | ❌ Not Supported |
-   | MiniMax-M2.1 / M2 | ❌ Not Supported |
+   | MiniMax-M2.7 / M2.5 | ❌ Not Supported |
    | DeepSeek-V3.1 | ❌ Not Supported |
    | Kimi-K2.5 | ✅ Supported |
    | Kimi-K2-0905 | ❌ Not Supported |

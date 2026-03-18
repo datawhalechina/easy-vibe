@@ -169,16 +169,16 @@ In addition to DeepSeek, you can also try other large language models. Since mos
 
 ::: details Learn More: What is MiniMax?
 
-**MiniMax** is a Chinese AI company dedicated to general artificial intelligence research. MiniMax has developed its own MiniMax-M2.5 series of large language models, which perform well in multiple benchmarks with excellent cost-effectiveness.
+**MiniMax** is a Chinese AI company dedicated to general artificial intelligence research. MiniMax has developed its own MiniMax-M2.7 series of large language models, which perform well in multiple benchmarks with excellent cost-effectiveness.
 
-**Key Features of MiniMax-M2.5 Series:**
+**Key Features of MiniMax-M2.7 Series:**
 
 - **Ultra-long context**: Supports a 204,800-token context window, suitable for processing long documents and multi-turn conversations
-- **Cost-effective**: Input $0.3/M tokens, Output $1.2/M tokens, extremely competitive pricing
+- **Cost-effective**: Extremely competitive pricing
 - **OpenAI-compatible API**: Can be called directly using the OpenAI SDK, no need to learn a new API format
 - **Two available models**:
-  - `MiniMax-M2.5`: Flagship model for complex tasks
-  - `MiniMax-M2.5-highspeed`: High-speed version with same performance but faster response
+  - `MiniMax-M2.7`: Flagship model for complex tasks
+  - `MiniMax-M2.7-highspeed`: High-speed version with same performance but faster response
 :::
 
 The integration process is the same as DeepSeek, just three steps:
@@ -194,7 +194,7 @@ curl https://api.minimax.io/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
   -d '{
-        "model": "MiniMax-M2.5",
+        "model": "MiniMax-M2.7",
         "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -207,7 +207,7 @@ curl https://api.minimax.io/v1/chat/completions \
 MiniMax's API format is almost identical to DeepSeek (both are OpenAI-compatible), so if you've already successfully integrated DeepSeek, switching to MiniMax only requires changing three things:
 1. **Base URL**: Change to `https://api.minimax.io/v1`
 2. **API Key**: Use your MiniMax API Key
-3. **Model name**: Change to `MiniMax-M2.5` or `MiniMax-M2.5-highspeed`
+3. **Model name**: Change to `MiniMax-M2.7` or `MiniMax-M2.7-highspeed`
 
 For more details, refer to the [MiniMax OpenAI Compatible API Documentation](https://platform.minimax.io/docs/api-reference/text-openai-api).
 :::
