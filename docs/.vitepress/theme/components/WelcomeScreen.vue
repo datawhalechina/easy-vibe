@@ -258,23 +258,26 @@ onUnmounted(() => {
 }
 
 .welcome-tip {
-  margin: 24px 0 0;
+  margin: 44px 0 0;
   font-size: 11px;
-  letter-spacing: 0.08em;
-  color: rgba(34, 34, 34, 0.38);
+  letter-spacing: 0.2em;
+  color: rgba(34, 34, 34, 0.32);
   text-transform: uppercase;
-  animation: welcome-tip-breathe 7s ease-in-out infinite;
+  animation: welcome-tip-breathe 5s ease-in-out infinite;
 }
 
 @keyframes welcome-tip-breathe {
   0% {
-    opacity: 0.24;
+    opacity: 0;
   }
-  50% {
-    opacity: 0.72;
+  40% {
+    opacity: 0.55;
+  }
+  80% {
+    opacity: 0;
   }
   100% {
-    opacity: 0.24;
+    opacity: 0;
   }
 }
 

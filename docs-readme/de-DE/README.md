@@ -12,11 +12,11 @@
 # Easy-Vibe : Lerne Vibe Coding von 0 auf 1
 
 <p align="center">
-  📌 <a href="https://datawhalechina.github.io/easy-vibe/">Online lesen (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Interaktives Tutorial</a>
+  📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Online lesen (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Interaktives Tutorial</a>
 </p>
 
 <p align="center">
-  <a href="https://datawhalechina.github.io/easy-vibe/">Online lesen</a> ·
+  <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Online lesen</a> ·
   <a href="#-navigation">Lernkarte</a> ·
   <a href="#contact">Community</a>
 </p>

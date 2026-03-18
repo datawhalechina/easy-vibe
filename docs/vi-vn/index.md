@@ -16,7 +16,7 @@ hero:
     - Lập trình nên như thế này.
   actions:
     - theme: brand
-      text: Bắt đầu học
+      text: Bắt đầu vibe cùng nhau!
       link: /vi-vn/stage-0/
     - theme: alt
       text: Đề cương khóa học

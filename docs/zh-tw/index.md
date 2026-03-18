@@ -16,7 +16,7 @@ hero:
     - 這就是編程該有的樣子。
   actions:
     - theme: brand
-      text: 開始學習
+      text: 開始一起 vibe！
       link: /zh-tw/stage-0/
     - theme: alt
       text: 課程大綱

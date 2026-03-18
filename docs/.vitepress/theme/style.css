@@ -305,15 +305,43 @@
 }
 
 /* Hero Section Refinements */
-.VPHomeHero .name {
-  background: -webkit-linear-gradient(315deg, #0071e3 10%, #5ac8fa 90%);
+.VPHomeHero .name,
+.VPHomeHero .name.clip {
+  position: relative;
+  top: -8px;
+  background-image: linear-gradient(
+    100deg,
+    #06b6d4 0%,
+    #0ea5e9 18%,
+    #3b82f6 36%,
+    #9d4edd 56%,
+    #ff3c81 74%,
+    #f97316 88%,
+    #06b6d4 100%
+  );
+  background-size: 220% 220%;
+  background-position: 0% 50%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 24px rgba(0, 113, 227, 0.28));
+  filter: drop-shadow(0 0 22px rgba(59, 130, 246, 0.26));
+  animation: ev-hero-name-flow 8s ease-in-out infinite alternate;
+}
+
+@keyframes ev-hero-name-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 35% 50%;
+  }
 }
 
 .VPHomeHero .text {
+  display: none !important;
   font-weight: 600;
   color: #1d1d1f;
   letter-spacing: -0.02em;

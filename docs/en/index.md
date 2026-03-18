@@ -16,7 +16,7 @@ hero:
     - This is how coding should feel.
   actions:
     - theme: brand
-      text: Start Learning
+      text: Start Vibe Together!
       link: /en/stage-0/
     - theme: alt
       text: GitHub

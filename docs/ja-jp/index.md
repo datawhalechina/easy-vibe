@@ -16,7 +16,7 @@ hero:
     - プログラミングは、こうあるべき。
   actions:
     - theme: brand
-      text: 学習を開始
+      text: 一緒にvibeを始めよう！
       link: /ja-jp/stage-0/
     - theme: alt
       text: コース概要

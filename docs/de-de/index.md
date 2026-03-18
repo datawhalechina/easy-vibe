@@ -16,7 +16,7 @@ hero:
     - So sollte Programmieren sich anfühlen.
   actions:
     - theme: brand
-      text: Starten
+      text: Zusammen vibe starten!
       link: /de-de/stage-0/
     - theme: alt
       text: Kursübersicht

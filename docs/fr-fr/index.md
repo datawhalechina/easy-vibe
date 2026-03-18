@@ -16,7 +16,7 @@ hero:
     - C'est ainsi que le coding devrait être.
   actions:
     - theme: brand
-      text: Commencer
+      text: Commencer à vibe ensemble !
       link: /fr-fr/stage-0/
     - theme: alt
       text: Plan du Cours

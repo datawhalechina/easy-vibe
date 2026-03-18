@@ -16,7 +16,7 @@ hero:
     - هكذا يجب أن تكون البرمجة.
   actions:
     - theme: brand
-      text: ابدأ التعلم
+      text: ابدأ vibe معًا!
       link: /ar-sa/stage-0/
     - theme: alt
       text: مخطط الدورة

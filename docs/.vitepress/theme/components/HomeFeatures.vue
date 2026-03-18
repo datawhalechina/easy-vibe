@@ -8,6 +8,11 @@ const { site, page, lang } = useData()
 const activeTab = ref('home')
 const showLangMenu = ref(false)
 const topPromoProgress = ref(1)
+const topPromoIntroProgress = ref(0)
+const topPromoColorProgress = ref(0)
+let topPromoIntroRaf = 0
+let topPromoColorRaf = 0
+let topPromoColorTimer = 0
 const WELCOME_SEEN_KEY = 'easy-vibe-welcome-seen'
 
 // Appendix Scroll Logic
@@ -1620,12 +1625,27 @@ const updateTopPromoVisibility = () => {
 }
 
 const topPromoStyle = computed(() => {
-  const progress = topPromoProgress.value
+  const scrollProgress = topPromoProgress.value
+  const introProgress = topPromoIntroProgress.value
+  const colorProgress = topPromoColorProgress.value
+  const progress = scrollProgress * introProgress
+  const scrollOffset = -100 * (1 - scrollProgress)
+  const startTextColor = { r: 255, g: 255, b: 255 }
+  const endTextColor = { r: 29, g: 29, b: 31 }
+  const startBgColor = { r: 0, g: 113, b: 227 }
+  const endBgColor = { r: 245, g: 245, b: 247 }
+  const startLinkColor = { r: 255, g: 255, b: 255 }
+  const endLinkColor = { r: 0, g: 102, b: 204 }
+  const textColor = `rgb(${Math.round(startTextColor.r + (endTextColor.r - startTextColor.r) * colorProgress)}, ${Math.round(startTextColor.g + (endTextColor.g - startTextColor.g) * colorProgress)}, ${Math.round(startTextColor.b + (endTextColor.b - startTextColor.b) * colorProgress)})`
+  const bgColor = `rgb(${Math.round(startBgColor.r + (endBgColor.r - startBgColor.r) * colorProgress)}, ${Math.round(startBgColor.g + (endBgColor.g - startBgColor.g) * colorProgress)}, ${Math.round(startBgColor.b + (endBgColor.b - startBgColor.b) * colorProgress)})`
+  const linkColor = `rgb(${Math.round(startLinkColor.r + (endLinkColor.r - startLinkColor.r) * colorProgress)}, ${Math.round(startLinkColor.g + (endLinkColor.g - startLinkColor.g) * colorProgress)}, ${Math.round(startLinkColor.b + (endLinkColor.b - startLinkColor.b) * colorProgress)})`
   return {
     opacity: progress,
-    transform: `translateY(${-100 * (1 - progress)}%)`,
+    transform: `translateY(${scrollOffset}%)`,
     maxHeight: `${30 * progress}px`,
-    borderTopColor: `rgba(229, 229, 234, ${progress})`,
+    backgroundColor: bgColor,
+    color: textColor,
+    '--top-promo-link-color': linkColor,
     pointerEvents: progress < 0.02 ? 'none' : 'auto'
   }
 })
@@ -1636,6 +1656,33 @@ const replayIntro = () => {
 }
 
 onMounted(() => {
+  const introDuration = 1800
+  const colorDelay = 500
+  const colorDuration = 1800
+  const introStart = performance.now()
+  const stepTopPromoIntro = (now) => {
+    const raw = Math.min(1, (now - introStart) / introDuration)
+    const eased = 1 - Math.pow(1 - raw, 3)
+    topPromoIntroProgress.value = eased
+    if (raw < 1) {
+      topPromoIntroRaf = window.requestAnimationFrame(stepTopPromoIntro)
+      return
+    }
+    topPromoColorTimer = window.setTimeout(() => {
+      const colorStart = performance.now()
+      const stepTopPromoColor = (time) => {
+        const colorRaw = Math.min(1, (time - colorStart) / colorDuration)
+        const colorEased = 1 - Math.pow(1 - colorRaw, 3)
+        topPromoColorProgress.value = colorEased
+        if (colorRaw < 1) {
+          topPromoColorRaf = window.requestAnimationFrame(stepTopPromoColor)
+        }
+      }
+      topPromoColorRaf = window.requestAnimationFrame(stepTopPromoColor)
+    }, colorDelay)
+  }
+  topPromoIntroRaf = window.requestAnimationFrame(stepTopPromoIntro)
+
   const currentPath = window.location.pathname
   const basePath = site.value.base || '/'
   const normalizedBase = basePath.endsWith('/') ? basePath : `${basePath}/`
@@ -1681,6 +1728,18 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  if (topPromoIntroRaf) {
+    window.cancelAnimationFrame(topPromoIntroRaf)
+    topPromoIntroRaf = 0
+  }
+  if (topPromoColorRaf) {
+    window.cancelAnimationFrame(topPromoColorRaf)
+    topPromoColorRaf = 0
+  }
+  if (topPromoColorTimer) {
+    window.clearTimeout(topPromoColorTimer)
+    topPromoColorTimer = 0
+  }
   document.removeEventListener('click', closeLangMenu)
   if (appendixWrapper.value) {
     appendixWrapper.value.removeEventListener('scroll', onAppendixScroll)
@@ -2365,8 +2424,8 @@ a {
 }
 
 .nav-promo {
+  height: 30px;
   max-height: 30px;
-  border-top: 1px solid #e5e5ea;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2378,17 +2437,19 @@ a {
   transform-origin: top center;
   position: relative;
   z-index: 1;
-  will-change: transform, opacity, max-height, border-color;
+  will-change: transform, opacity, max-height, background-color, color;
   transition:
     transform 0.16s ease-out,
     opacity 0.16s ease-out,
     max-height 0.16s ease-out,
-    border-color 0.16s ease-out;
+    background-color 0.22s ease-out,
+    color 0.22s ease-out;
 }
 
 .nav-promo a {
-  color: #0066cc;
+  color: var(--top-promo-link-color, #0066cc);
   text-decoration: none;
+  transition: color 0.25s ease-out;
 }
 
 .button {
@@ -2786,6 +2847,7 @@ a {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   scroll-snap-align: start;
   width: 100%;
+  min-height: 360px;
   transition: transform 0.25s ease;
 }
 
@@ -2853,14 +2915,14 @@ a {
 }
 
 .appendix-icon-wrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 17.5px; /* Apple continuous curve approximation */
+  width: 100%;
+  height: 190px;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  margin-bottom: 16px;
+  font-size: 88px;
+  margin-bottom: 14px;
   /* Glassmorphism / VisionOS Style */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -2916,7 +2978,7 @@ a {
 }
 
 .appendix-text {
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.5;
   color: #6e6e73;
   margin: 0;
@@ -2928,7 +2990,7 @@ a {
   font-weight: 600;
   color: #1d1d1f;
   margin-right: 6px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 /* Footer */

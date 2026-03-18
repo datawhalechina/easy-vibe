@@ -16,16 +16,16 @@
 </p>
 
 <p align="center">
-  🚀 <a href="https://datawhalechina.github.io/easy-vibe/">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">还想学 OpenClaw</a><br>
-  <span style="font-size: 0.85em; color: #888;"><a href="https://datawhalechina.github.io/easy-vibe/">Start Experience</a> · <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a> · <a href="https://github.com/datawhalechina/hello-claw">Learn OpenClaw</a></span>
+  🚀 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">还想学 OpenClaw</a><br>
+  <span style="font-size: 0.85em; color: #888;"><a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Start Experience</a> · <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a> · <a href="https://github.com/datawhalechina/hello-claw">Learn OpenClaw</a></span>
 </p>
 
 <p align="center">
-  <a href="https://datawhalechina.github.io/easy-vibe/">在线阅读</a> ·
+  <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">在线阅读</a> ·
   <a href="#-内容导航">学习地图</a> ·
   <a href="#contact">社区交流</a><br>
   <span style="font-size: 0.85em; color: #888;">
-    <a href="https://datawhalechina.github.io/easy-vibe/">Read Online</a> ·
+    <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> ·
     <a href="#-content-navigation">Learning Map</a> ·
     <a href="#contact">Community</a>
   </span>

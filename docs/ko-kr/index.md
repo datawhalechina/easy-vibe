@@ -16,7 +16,7 @@ hero:
     - 프로그래밍은, 이래야 합니다.
   actions:
     - theme: brand
-      text: 학습 시작
+      text: 함께 vibe 시작!
       link: /ko-kr/stage-0/
     - theme: alt
       text: 과정 개요
