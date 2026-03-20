@@ -320,6 +320,9 @@ watch(sidebarCollapsed, (collapsed) => {
         </svg>
       </button>
     </template>
+    <template #doc-before>
+      <CopyOrDownloadAsMarkdownButtons />
+    </template>
     <template #nav-bar-content-after>
       <GitHubStars />
       <ClientOnly>

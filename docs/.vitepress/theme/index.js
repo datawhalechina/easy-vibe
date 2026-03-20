@@ -841,11 +841,17 @@ import ProjectArchitectureComparisonDemo from './components/appendix/project-arc
 // Appendix Navigation Component
 import AppendixFlowMap from './components/AppendixFlowMap.vue'
 
+import CopyOrDownloadAsMarkdownButtons from './components/CopyOrDownloadAsMarkdownButtons/index.vue'
+
 export default {
   extends: DefaultTheme,
   Layout,
   enhanceApp({ app }) {
     app.use(ElementPlus)
+    app.component(
+      'CopyOrDownloadAsMarkdownButtons',
+      CopyOrDownloadAsMarkdownButtons
+    )
     app.component('HomeFeatures', HomeFeatures)
     app.component('WelcomeScreen', WelcomeScreen)
     app.component('NavGrid', NavGrid)
