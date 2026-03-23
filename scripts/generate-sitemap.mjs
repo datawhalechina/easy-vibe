@@ -16,7 +16,18 @@ const docsDir = path.resolve(__dirname, '../docs')
 const publicDir = path.resolve(__dirname, '../docs/public')
 
 // 支持的语言
-const locales = ['zh-cn', 'en', 'zh-tw', 'ja-jp', 'ko-kr', 'es-es', 'fr-fr', 'de-de', 'ar-sa', 'vi-vn']
+const locales = [
+  'zh-cn',
+  'en',
+  'zh-tw',
+  'ja-jp',
+  'ko-kr',
+  'es-es',
+  'fr-fr',
+  'de-de',
+  'ar-sa',
+  'vi-vn'
+]
 
 // 基础 URL (根据部署环境动态确定)
 const getBaseUrl = () => {
@@ -46,7 +57,12 @@ function scanMarkdownFiles(dir, basePath = '') {
 
     if (entry.isDirectory()) {
       // 跳过特殊目录
-      if (entry.name === '.vitepress' || entry.name === 'node_modules' || entry.name === 'dist' || entry.name === 'public') {
+      if (
+        entry.name === '.vitepress' ||
+        entry.name === 'node_modules' ||
+        entry.name === 'dist' ||
+        entry.name === 'public'
+      ) {
         continue
       }
       files.push(...scanMarkdownFiles(fullPath, relativePath))
@@ -152,7 +168,7 @@ function main() {
     baseFiles = scanMarkdownFiles(zhCnDir)
   } else {
     // 如果没有 zh-cn 目录，扫描 docs 根目录
-    baseFiles = scanMarkdownFiles(docsDir).filter(f => !f.includes('/'))
+    baseFiles = scanMarkdownFiles(docsDir).filter((f) => !f.includes('/'))
   }
 
   console.log(`📄 Found ${baseFiles} base pages`)
@@ -263,7 +279,7 @@ function getPriority(filePath) {
 function getHreflangCode(locale) {
   const map = {
     'zh-cn': 'zh-CN',
-    'en': 'en',
+    en: 'en',
     'zh-tw': 'zh-TW',
     'ja-jp': 'ja',
     'ko-kr': 'ko',

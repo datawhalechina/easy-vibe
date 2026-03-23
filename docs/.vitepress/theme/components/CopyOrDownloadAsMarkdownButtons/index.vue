@@ -50,7 +50,8 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, computed } from 'vue'
+import { useData } from 'vitepress'
 
 import iconChatGPT from './icons/chatgpt.svg?raw'
 import iconCheck from './icons/check.svg?raw'
@@ -61,7 +62,16 @@ import iconDownload from './icons/download.svg?raw'
 import iconExternal from './icons/external.svg?raw'
 import iconMarkdown from './icons/markdown.svg?raw'
 
-import { downloadFile, resolveMarkdownPageURL } from './utils'
+import { downloadFile } from './utils'
+
+const { page, site } = useData()
+
+const getMarkdownUrl = () => {
+	const origin = window.location.origin
+	let base = site.value.base || '/'
+	if (!base.endsWith('/')) base += '/'
+	return `${origin}${base}${page.value.filePath}`
+}
 
 const aiProviders = [
 	{ name: 'ChatGPT', icon: iconChatGPT, url: 'https://chatgpt.com/?hints=search&prompt=' },
@@ -98,10 +108,8 @@ function toggleDropdown() {
 	}
 }
 
-const currentURL = window.location.origin + window.location.pathname
-
 function copyAsMarkdown() {
-	fetch(resolveMarkdownPageURL(currentURL))
+	fetch(getMarkdownUrl())
 		.then((r) => r.text())
 		.then((text) => navigator.clipboard.writeText(text))
 		.then(() => {
@@ -116,22 +124,22 @@ function copyAsMarkdown() {
 }
 
 function viewAsMarkdown() {
-	window.open(resolveMarkdownPageURL(currentURL), '_blank')
+	window.open(getMarkdownUrl(), '_blank')
 	isOpen.value = false
 }
 
 function openInAI(provider) {
-	const markdownUrl = resolveMarkdownPageURL(currentURL)
+	const markdownUrl = getMarkdownUrl()
 	const prompt = `Read from ${markdownUrl} so I can ask questions about it.`
 	window.open(provider.url + encodeURIComponent(prompt), '_blank')
 	isOpen.value = false
 }
 
 function downloadMarkdown() {
-	fetch(resolveMarkdownPageURL(currentURL))
+	fetch(getMarkdownUrl())
 		.then((r) => r.text())
 		.then((text) => {
-			const filename = resolveMarkdownPageURL(currentURL).split('/').pop() || 'page.md'
+			const filename = page.value.filePath.split('/').pop() || 'page.md'
 			downloadFile(filename, text, 'text/markdown')
 			downloaded.value = true
 			setTimeout(() => {
