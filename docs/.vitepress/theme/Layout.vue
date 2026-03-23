@@ -3,7 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import { useData, useRoute, withBase } from 'vitepress'
 import TextType from './components/TextType.vue'
 import GitHubStars from './components/GitHubStars.vue'
-import { onMounted, ref, watch, computed } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watch, computed } from 'vue'
 import ReadingProgress from './components/ReadingProgress.vue'
 import { Setting } from '@element-plus/icons-vue'
 import easyVibePaths from './data/easyVibePaths.json'
@@ -88,10 +88,97 @@ const resetLineHeight = () => {
 // 目录栏（左侧 VPSidebar）收起/展开功能
 // ============================================
 const SIDEBAR_COLLAPSED_KEY = 'ev-sidebar-collapsed'
+const SIDEBAR_WIDTH_KEY = 'ev-sidebar-width'
+const DEFAULT_SIDEBAR_WIDTH = 272
+const MIN_SIDEBAR_WIDTH = 160
+const MAX_SIDEBAR_WIDTH = 560
 const sidebarCollapsed = ref(false)
+const sidebarWidth = ref(DEFAULT_SIDEBAR_WIDTH)
+const sidebarResizing = ref(false)
+let sidebarResizeLeft = 0
 
 const toggleSidebar = () => {
   sidebarCollapsed.value = !sidebarCollapsed.value
+}
+
+const getSidebarWidthBounds = () => {
+  if (typeof window === 'undefined') {
+    return {
+      min: MIN_SIDEBAR_WIDTH,
+      max: MAX_SIDEBAR_WIDTH
+    }
+  }
+  const viewportMax = window.innerWidth - 240
+  return {
+    min: MIN_SIDEBAR_WIDTH,
+    max: Math.min(MAX_SIDEBAR_WIDTH, Math.max(MIN_SIDEBAR_WIDTH, viewportMax))
+  }
+}
+
+const clampSidebarWidth = (value) => {
+  const numeric = Number(value)
+  if (!Number.isFinite(numeric)) return DEFAULT_SIDEBAR_WIDTH
+  const bounds = getSidebarWidthBounds()
+  return Math.min(bounds.max, Math.max(bounds.min, numeric))
+}
+
+const applySidebarWidth = (width) => {
+  if (typeof document === 'undefined') return
+  document.documentElement.style.setProperty('--vp-sidebar-width', `${width}px`)
+}
+
+const setSidebarWidth = (value, shouldPersist = true) => {
+  const normalized = clampSidebarWidth(value)
+  sidebarWidth.value = normalized
+  applySidebarWidth(normalized)
+  if (shouldPersist) {
+    localStorage.setItem(SIDEBAR_WIDTH_KEY, String(normalized))
+  }
+}
+
+const getSidebarLeftBoundary = () => {
+  const sidebar = document.querySelector('.VPSidebar')
+  if (sidebar) {
+    return sidebar.getBoundingClientRect().left
+  }
+  return 0
+}
+
+const updateSidebarWidthFromPointer = (clientX) => {
+  const nextWidth = clientX - sidebarResizeLeft
+  setSidebarWidth(nextWidth, false)
+}
+
+const handleSidebarResizeMove = (event) => {
+  if (!sidebarResizing.value) return
+  updateSidebarWidthFromPointer(event.clientX)
+}
+
+const stopSidebarResize = () => {
+  if (!sidebarResizing.value) return
+  sidebarResizing.value = false
+  document.body.classList.remove('ev-sidebar-resizing')
+  localStorage.setItem(SIDEBAR_WIDTH_KEY, String(sidebarWidth.value))
+  window.removeEventListener('pointermove', handleSidebarResizeMove)
+  window.removeEventListener('pointerup', stopSidebarResize)
+  window.removeEventListener('pointercancel', stopSidebarResize)
+}
+
+const startSidebarResize = (event) => {
+  if (typeof window === 'undefined') return
+  if (window.innerWidth < 960 || sidebarCollapsed.value) return
+  event.preventDefault()
+  sidebarResizeLeft = getSidebarLeftBoundary()
+  sidebarResizing.value = true
+  document.body.classList.add('ev-sidebar-resizing')
+  updateSidebarWidthFromPointer(event.clientX)
+  window.addEventListener('pointermove', handleSidebarResizeMove)
+  window.addEventListener('pointerup', stopSidebarResize)
+  window.addEventListener('pointercancel', stopSidebarResize)
+}
+
+const handleViewportResize = () => {
+  setSidebarWidth(sidebarWidth.value, false)
 }
 
 const isHomePage = computed(() => frontmatter.value.layout === 'home')
@@ -119,7 +206,21 @@ onMounted(() => {
     document.body.classList.add('ev-sidebar-collapsed')
   }
 
+  const savedSidebarWidth = localStorage.getItem(SIDEBAR_WIDTH_KEY)
+  if (savedSidebarWidth) {
+    setSidebarWidth(savedSidebarWidth, false)
+  } else {
+    setSidebarWidth(DEFAULT_SIDEBAR_WIDTH, false)
+  }
+
+  window.addEventListener('resize', handleViewportResize)
+
   initOutlineAutoScroll()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleViewportResize)
+  stopSidebarResize()
 })
 
 // ============================================
@@ -484,8 +585,15 @@ watch(sidebarCollapsed, (collapsed) => {
     <div
       v-if="!isHomePage && !isWelcomePage"
       class="ev-sidebar-hover-area"
-      :class="{ collapsed: sidebarCollapsed }"
+      :class="{ collapsed: sidebarCollapsed, resizing: sidebarResizing }"
     >
+      <div
+        v-if="!sidebarCollapsed"
+        class="ev-sidebar-resizer"
+        role="separator"
+        aria-orientation="vertical"
+        @pointerdown="startSidebarResize"
+      />
       <button
         class="ev-sidebar-toggle-btn"
         :class="{ collapsed: sidebarCollapsed }"
@@ -695,13 +803,30 @@ watch(sidebarCollapsed, (collapsed) => {
   display: none;
   position: fixed;
   top: 0;
-  left: calc(var(--vp-sidebar-width, 272px) - 16px);
+  --ev-sidebar-divider-offset: 16px;
+  left: calc(var(--vp-sidebar-width, 272px) - var(--ev-sidebar-divider-offset));
   width: 24px;
   height: 100vh;
   z-index: 30;
 }
 .ev-sidebar-hover-area.collapsed {
   left: 0;
+}
+.ev-sidebar-resizer {
+  position: absolute;
+  left: var(--ev-sidebar-divider-offset);
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--vp-c-divider);
+  opacity: 0;
+  cursor: col-resize;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+.ev-sidebar-hover-area:hover .ev-sidebar-resizer,
+.ev-sidebar-hover-area.resizing .ev-sidebar-resizer {
+  opacity: 1;
+  background: var(--vp-c-brand-1);
 }
 
 /* 分界线上的收起按钮 */
@@ -710,7 +835,7 @@ watch(sidebarCollapsed, (collapsed) => {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 6px;
+  left: calc(var(--ev-sidebar-divider-offset) - 4px);
   width: 18px;
   height: 36px;
   border: 1px solid var(--vp-c-divider);
@@ -740,6 +865,9 @@ watch(sidebarCollapsed, (collapsed) => {
   opacity: 0.7;
   animation: none;
 }
+.ev-sidebar-hover-area.resizing .ev-sidebar-toggle-btn {
+  opacity: 1;
+}
 
 /* 桌面端才显示按钮 */
 @media (min-width: 960px) {
@@ -754,7 +882,7 @@ watch(sidebarCollapsed, (collapsed) => {
 /* @1440px 时分界线按钮跟随侧边栏实际宽度 */
 @media (min-width: 1440px) {
   .ev-sidebar-hover-area:not(.collapsed) {
-    left: calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2 + var(--vp-sidebar-width, 272px) - 32px - 16px);
+    left: calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2 + var(--vp-sidebar-width, 272px) - var(--ev-sidebar-divider-offset));
   }
 }
 
@@ -803,5 +931,18 @@ watch(sidebarCollapsed, (collapsed) => {
 .VPNavBar.has-sidebar .content,
 .VPNavBar.has-sidebar .divider {
   transition: padding-left 0.3s ease, transform 0.3s ease;
+}
+
+.ev-sidebar-resizing,
+.ev-sidebar-resizing * {
+  cursor: col-resize !important;
+  user-select: none;
+}
+
+.ev-sidebar-resizing .VPSidebar,
+.ev-sidebar-resizing .VPContent.has-sidebar,
+.ev-sidebar-resizing .VPNavBar.has-sidebar .content,
+.ev-sidebar-resizing .VPNavBar.has-sidebar .divider {
+  transition: none !important;
 }
 </style>

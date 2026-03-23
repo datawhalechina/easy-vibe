@@ -49,7 +49,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 
 import iconChatGPT from './icons/chatgpt.svg?raw'
@@ -71,9 +71,9 @@ const aiProviders = [
 const isOpen = ref(false)
 const copied = ref(false)
 const downloaded = ref(false)
-const dropdownContainer = ref<HTMLElement | null>(null)
+const dropdownContainer = ref(null)
 const isRendered = ref(false)
-const dropdownMenu = ref<HTMLElement | null>(null)
+const dropdownMenu = ref(null)
 
 function toggleDropdown() {
 	if (isOpen.value) {
@@ -120,7 +120,7 @@ function viewAsMarkdown() {
 	isOpen.value = false
 }
 
-function openInAI(provider: (typeof aiProviders)[0]) {
+function openInAI(provider) {
 	const markdownUrl = resolveMarkdownPageURL(currentURL)
 	const prompt = `Read from ${markdownUrl} so I can ask questions about it.`
 	window.open(provider.url + encodeURIComponent(prompt), '_blank')
@@ -141,8 +141,8 @@ function downloadMarkdown() {
 		.catch((e) => console.error('❌ Error:', e))
 }
 
-function handleClickOutside(event: MouseEvent) {
-	if (dropdownContainer.value && !dropdownContainer.value.contains(event.target as Node)) {
+function handleClickOutside(event) {
+	if (dropdownContainer.value && !dropdownContainer.value.contains(event.target)) {
 		isOpen.value = false
 	}
 }

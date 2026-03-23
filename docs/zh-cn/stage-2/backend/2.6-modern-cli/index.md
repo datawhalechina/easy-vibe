@@ -366,7 +366,7 @@ https://docs.claude.com/en/docs/claude-code/slash-commands
 | claude -c         | 继续最近的一次会话                        | `claude -c`                              |
 | claude -r         | 恢复上一段会话                            | `claude -r`                              |
 | /resume           | 在当前聊天中切换回上一段会话              | `claude -c`、`/resume`                   |
-| claude commit     | 协助创建 Git 提交信息并提交代码           | `claude commit`                          |
+| /plugin           | 管理插件，可安装提交与审查类扩展能力     | `/plugin`                                |
 | /init             | 用 CLAUDE.md 初始化项目说明               | `/init`                                  |
 | /clear            | 清空当前会话上下文，防止信息过载          | `/clear`                                 |
 | /compact          | 压缩会话历史，减少上下文 token 占用       | `/compact`                               |
