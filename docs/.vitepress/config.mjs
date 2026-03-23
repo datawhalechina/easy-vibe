@@ -1239,6 +1239,34 @@ Sitemap: ${siteUrl}/sitemap.xml
       '✓ Generated robots.txt with sitemap URL:',
       `${siteUrl}/sitemap.xml`
     )
+
+    // Copy all .md files to dist for download/copy features
+    const srcDir = siteConfig.srcDir || path.resolve(outDir, '../../')
+    function copyMdFiles(src, dest) {
+      if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true })
+      }
+      const entries = fs.readdirSync(src, { withFileTypes: true })
+      for (const entry of entries) {
+        const srcPath = path.join(src, entry.name)
+        const destPath = path.join(dest, entry.name)
+        if (entry.isDirectory()) {
+          if (
+            entry.name === '.vitepress' ||
+            entry.name === 'public' ||
+            entry.name === 'node_modules'
+          )
+            continue
+          copyMdFiles(srcPath, destPath)
+        } else if (entry.isFile() && entry.name.endsWith('.md')) {
+          fs.copyFileSync(srcPath, destPath)
+        }
+      }
+    }
+    console.log(
+      '✓ Copying markdown files to output directory for download feature...'
+    )
+    copyMdFiles(srcDir, outDir)
   },
 
   // 多语言配置 - 使用 cn/en-us/ja 结构
