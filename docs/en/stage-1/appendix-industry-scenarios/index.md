@@ -316,7 +316,7 @@ This document summarizes **LLM large model applications in B-End enterprise scen
 <el-card shadow="hover" style="margin-top: 16px; margin-bottom: 24px; border-left: 5px solid #409EFF;">
   <div style="font-weight: 600; margin-bottom: 8px;">Find the application scenario suitable for you</div>
   <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-    Select your interest direction and purpose, the system will recommend related industry directions. Click on tags to jump to corresponding chapters.
+    Select your interest direction and target purpose. The system recommends related industry scenarios. Click a row to jump to the corresponding chapter.
   </div>
   <el-row :gutter="16">
     <el-col :span="12">
@@ -348,24 +348,43 @@ This document summarizes **LLM large model applications in B-End enterprise scen
   </el-row>
   
   <div v-if="recommendationTopics.length > 0" style="margin-top: 16px;">
-    <div style="font-weight: 600; margin-bottom: 12px; color: #409EFF;">
-      Recommended {{ currentSelection.interest }} × {{ currentSelection.purpose }} industries:
+    <div style="font-weight: 600; margin-bottom: 10px; color: #409EFF;">
+      {{ recommendationTopics.length }} recommended scenarios for you
+      <span style="font-weight: normal; color: #909399; font-size: 13px; margin-left: 8px;">
+        ({{ currentSelection.interest }} + {{ currentSelection.purpose }})
+      </span>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-      <el-tag
-        v-for="topic in recommendationTopics"
-        :key="topic.title"
-        type="primary"
-        effect="light"
-        style="cursor: pointer; margin-bottom: 4px;"
-        @click="scrollToAnchor(topic.industryAnchor)"
-      >
-        {{ topic.title }}
-      </el-tag>
+    <el-table
+      :data="recommendationTopics"
+      style="width: 100%; cursor: pointer;"
+      @row-click="(row) => scrollToAnchor(row.industryAnchor)"
+      highlight-current-row
+    >
+      <el-table-column prop="title" label="Application Scenario" min-width="300">
+        <template #default="scope">
+          <div style="font-weight: 500; color: #303133;">{{ scope.row.title }}</div>
+          <div style="font-size: 12px; color: #909399; margin-top: 4px;">{{ scope.row.desc }}</div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="industryName" label="Industry" width="180" align="center">
+        <template #default="scope">
+          <el-tag type="info" effect="light" size="small">{{ scope.row.industryName }}</el-tag>
+        </template>
+      </el-table-column>
+    </el-table>
+    <div style="margin-top: 10px; font-size: 12px; color: #909399;">
+      💡 Click any row in the table to jump to the corresponding industry section
     </div>
-    <el-button type="text" size="small" @click="resetSelection" style="margin-top: 8px;">
-      Reset Selection
-    </el-button>
+  </div>
+
+  <div v-else-if="!interestPoint || !purpose" style="margin-top: 14px; color: #909399; font-size: 13px;">
+    <span v-if="!interestPoint && !purpose">💡 Please select both interest direction and purpose</span>
+    <span v-else-if="!interestPoint">💡 Please select an interest direction</span>
+    <span v-else>💡 Please select a purpose</span>
+  </div>
+
+  <div v-if="interestPoint || purpose" style="margin-top: 12px;">
+    <el-button size="small" @click="resetSelection">Reset Selection</el-button>
   </div>
 </el-card>
 
@@ -411,6 +430,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Technical Documentation Auto-Generation System | LLM auto-generates product specifications, operation manuals; supports multi-format export |
 | 4 | Production Equipment Inspection Report Auto-Generation | Voice input describes equipment status; structured inspection report auto-generated |
 | 5 | Industrial Equipment Fault Diagnosis Q&A | Builds vector knowledge base from historical fault cases; provides intelligent diagnosis suggestions |
+| 6 | LLM Information-Retrieval Data Warehouse | Uses Text-to-SQL to convert natural-language queries into database queries; Superset visualizes results; Doris or ClickHouse as OLAP engine |
+| 7 | Industrial Equipment Fault-Diagnosis Knowledge Q&A Assistant | Builds a vector knowledge base from historical fault cases; LLM provides diagnosis suggestions and solution plans based on fault descriptions |
+| 8 | Production Quality Inspection Report Generation and Defect Classification | OCR identifies defects in inspection photos; LLM generates structured quality reports and classifies defect type and severity |
+| 9 | Inventory Counting Assistant and Inventory Report Generation | Inputs stocktaking data; LLM compares with system inventory and generates discrepancy reports with abnormal-inventory alerts |
+| 10 | Process Optimization Suggestion Intelligent Q&A System | Builds a RAG knowledge base from process documents; LLM provides optimization suggestions based on production issues |
 
 ---
 
@@ -425,6 +449,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Enterprise Internal Knowledge Intelligent Q&A | Builds vector knowledge base from internal documents; provides precise Q&A service for employees |
 | 4 | Customer Service Conversation Smart Summary | Automatically generates conversation summaries; extracts key information and creates follow-up tickets |
 | 5 | Golden Script Recommendation Knowledge Base | Analyzes excellent service cases; extracts golden scripts for team sharing and training |
+| 6 | Customer Service Script Compliance Auto-Check Assistant | Customer-service staff input reply drafts; LLM checks script compliance and sensitive words in real time and provides revision suggestions |
+| 7 | Customer Service Ticket Auto-Summary and Classification Tool | LLM summarizes long conversations and auto-classifies tags; Elasticsearch supports full-text ticket search |
+| 8 | Customer Emotion Monitoring and Abnormality Alert Tool | Real-time analysis of voice tone and text sentiment; LLM identifies abnormal emotions and triggers alerts with WebSocket push |
+| 9 | Golden Script Recommendation Knowledge-Base System for Customer Service | LLM analyzes excellent customer-service conversations, refines high-performing templates, and recommends scripts based on context |
+| 10 | Intelligent Outbound-Call Conversation Analysis and QA Assistant | After outbound-call recording transcription, LLM extracts key information; automatically generates QA reports and improvement suggestions |
 
 ---
 
@@ -439,6 +468,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Homework Auto-Grading & Learning Diagnosis | OCR recognizes handwritten answers; AI provides grading and improvement suggestions |
 | 4 | Job Competency Model & Learning Map | Analyzes job requirements; generates competency models and corresponding learning paths |
 | 5 | Foreign Language Oral Practice with AI | LLM plays role-play partners; simulates various real-life scenarios for speaking practice |
+| 6 | School-Based Curriculum Construction and Courseware Production Tool | LLM analyzes school characteristics and student needs to generate curriculum frameworks; integrates PPT generation APIs for automatic courseware creation |
+| 7 | College-Application Recommendation and Career Planning Platform | LLM analyzes candidate scores, ranking, interests, and other factors, then combines admissions data to recommend schools and majors |
+| 8 | Youth Programming Code Assistant | LLM explains code logic and provides coding guidance; supports switching between block languages and Python |
+| 9 | Knowledge-Point Mind Map Auto-Generation and Learning-Path Recommendation Tool | Input course topics; LLM automatically generates knowledge maps and recommends next-step learning content based on progress |
+| 10 | Chinese/English Essay Auto-Scoring and Correction Engine | LLM scores from dimensions such as idea, structure, language, and diversity, and generates annotations with high-quality sample comparison |
 
 ---
 
@@ -453,6 +487,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Unit Test Auto-Generation | Analyzes source code structure; generates boundary condition test cases automatically |
 | 4 | Code Quality Analysis Tool | Analyzes code complexity, security vulnerabilities; provides optimization recommendations |
 | 5 | UI Code Auto-Generation from Design | Uploads design draft images; AI generates responsive HTML/CSS code |
+| 6 | Natural Language to SQL Auto-Generation Tool | LLM converts natural-language data requests to SQL and supports complex multi-table joins and aggregation queries |
+| 7 | API Automated Testing and Documentation Generation Platform | LLM analyzes code comments and API definitions, auto-generates test cases and API docs, and integrates Postman for test execution |
+| 8 | System Log Analysis and Fault Localization | ELK Stack collects log data; LLM extracts key anomaly information and locates root causes, then recommends fixes |
+| 9 | Frontend UI Code Auto-Generation Tool | OCR recognizes layout structures from design images; LLM generates responsive CSS and component code with TailwindCSS integration |
+| 10 | Intelligent Database Schema Design and Modeling Assistant | Input business requirement docs to LLM to auto-generate ER diagrams and schema definitions; supports exporting MySQL/PostgreSQL DDL scripts |
 
 ---
 
@@ -467,6 +506,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Clinical Research Data Analysis Platform | Integrates EMR data; assists in generating statistical analysis code for research |
 | 4 | Medical Imaging Report Auto-Generation | Describes imaging features; generates structured medical imaging reports |
 | 5 | Chronic Disease Medication Reminder | Generates personalized medication plans; supports drug interaction and contraindication checks |
+| 6 | Drug Package-Insert Intelligent Q&A Assistant | Upload package-insert images or input drug names; LLM answers dosage, side effects, and precautions |
+| 7 | Disease Knowledge Popular-Science Article Generator | Input disease name and audience type; LLM generates easy-to-understand educational content and supports multiple versions |
+| 8 | Medical Imaging Report Auto-Generation Tool | Radiologists describe imaging features; LLM auto-generates structured report content and supports common exam templates |
+| 9 | Surgical Record Intelligent Generation and Archiving Assistant | Voice input records key surgical steps; LLM generates structured surgical records and auto-links surgery codes |
+| 10 | Chronic Disease Medication Reminder Intelligent Assistant | Patients input medication lists; LLM generates personalized reminders and supports contraindication checking and interactive Q&A |
 
 ---
 
@@ -481,6 +525,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Security Operations Daily Report | Aggregates security logs; automatically extracts and generates daily reports |
 | 4 | Penetration Test Report Generation | Inputs vulnerability descriptions; AI generates complete penetration test reports |
 | 5 | Threat Intelligence Analysis Assistant | Connects to threat intelligence sources; interprets and analyzes potential threats |
+| 6 | Malicious Code Protection and Privacy Compliance Monitoring | Sandboxes suspicious-file behavior; LLM identifies malicious features and generates signatures; scans sensitive data exposure |
+| 7 | Security Configuration Compliance Checklist Generation Tool | Input target system type; LLM generates configuration checklists supporting standards such as MLPS 2.0 and CIS |
+| 8 | Threat Intelligence Intelligent Query and Analysis Assistant | Connects multi-source threat intelligence (open-source/commercial); LLM interprets intelligence and links it with enterprise assets |
+| 9 | Security Incident Postmortem Report Generation Assistant | After incidents, LLM auto-generates timeline-based postmortem reports with root-cause analysis and remediation suggestions |
+| 10 | Global Threat Intelligence Monitoring and Alert Center | Crawlers collect global security news and vulnerability disclosures; LLM extracts key information, assesses impact, and sends alerts |
 
 ---
 
@@ -495,6 +544,11 @@ Learners can choose directions based on these dimensions:
 | 3 | IPO Prospectus Generation & Compliance Check | Uses modular templates; auto-fills business descriptions with compliance verification |
 | 4 | Financial Report & Anomaly Warning | Auto-generates financial analysis reports; monitors business anomalies in real-time |
 | 5 | Insurance Agent Practice Coach | Simulates customer scenarios; evaluates script compliance and persuasion skills |
+| 6 | Compliance Case Intelligent Retrieval and Q&A Assistant | Builds knowledge bases from regulatory penalty cases; LLM answers compliance questions and provides relevant case references |
+| 7 | Insurance Agent Intelligent Script Practice | LLM plays different customer personas for simulation and evaluates script compliance and persuasion with transcription analysis |
+| 8 | Insurance Product Clause Analysis and Competitor Comparison Platform | Parses clauses structurally; LLM generates feature summaries and key cautions |
+| 9 | Customer Script Emotion Recognition Service | Combines voice-emotion recognition with script-compliance checks and gives real-time coaching suggestions |
+| 10 | Insurance Claim Progress Intelligent Query and Dialogue Assistant | Users input policy or case numbers; LLM queries claim status and answers claim-related questions |
 
 ---
 
@@ -509,6 +563,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Marketing Content Auto-Generation | Generates marketing copy, social media posts, and advertising scripts |
 | 4 | Competitor Ad Analysis Platform | Collects and analyzes competitor advertising strategies |
 | 5 | Hot Topic Analysis & Content Recommendation | Analyzes trending topics; recommends content creation angles |
+| 6 | Resume Intelligent Parsing and Job Matching System | Parses resume PDFs to extract key information; LLM matches suitable roles and generates interview suggestions; integrates with ATS systems |
+| 7 | Employee Onboarding Guidance and Q&A Assistant | Uses RAG retrieval over onboarding docs; LLM answers common new-hire questions |
+| 8 | Employee Performance Feedback and OKR Management Platform | Collects OKR data; LLM analyzes goal completion and generates feedback suggestions with 360-feedback integration |
+| 9 | Intelligent Meeting Minutes and To-Do Management | Transcribes meeting recordings; LLM extracts key points and action items; auto-creates tasks in task systems |
+| 10 | Invoice Recognition and Expense Reimbursement Auto-Processing | OCR recognizes invoice fields and automatically checks authenticity and reimbursement compliance; integrates with finance systems |
 
 ---
 
@@ -523,6 +582,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Digital Human Live Streaming System | Creates digital human anchors; generates real-time dialogue for live streaming |
 | 4 | Short Video Script & Editing | Generates short video scripts; provides intelligent editing suggestions |
 | 5 | Marketing Content Design System | Generates advertising copy and designs marketing materials |
+| 6 | Intelligent Marketing Content Generation and Design System | Input product information; LLM generates marketing copy and selling-point extraction; integrates with template-design tools |
+| 7 | Multi-Platform Ad ROI Real-Time Monitoring and Strategy Optimization System | Connect ad-platform APIs for data collection; LLM analyzes performance and generates optimization suggestions with anomaly alerts |
+| 8 | Search-Engine Keyword and Traffic Analysis | Collect keyword-tool data; LLM analyzes trend and competition and recommends topic direction |
+| 9 | Competitor Ad Placement Analysis Platform | Uses third-party data APIs to collect competitor ads; LLM analyzes placement strategy and creative patterns |
+| 10 | Full-Network Hot Topic Analysis and Content Recommendation System | Collects trending data; LLM analyzes trend shifts and recommends content angles with calendar scheduling |
 
 ---
 
@@ -537,6 +601,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Enterprise Policy Matching Platform | Analyzes enterprise profiles; intelligently matches applicable support policies |
 | 4 | Approval Materials Pre-Review | OCR recognizes application materials; automatically checks completeness |
 | 5 | City Grid Event Management | Identifies event types from reports; intelligently dispatches to responsible departments |
+| 6 | Social Sentiment Big-Data Analysis and Risk Early Warning System | Fuses multiple sources such as hotlines, online sentiment, and field visits; LLM identifies risk hotspots |
+| 7 | Government Archive Digitization Recognition and Intelligent Filing Platform | OCR recognizes archive text; LLM extracts key information and auto-classifies; supports full-text retrieval |
+| 8 | Emergency Command and Rescue Resource Intelligent Dispatch Platform | Collects emergency-event data; LLM generates emergency response plans with resource-dispatch optimization |
+| 9 | Grid-Based Atmospheric Pollution Monitoring and Precision Traceability System | Collects air-quality sensor data; CV identifies pollution sources; LLM analyzes trends and traces causes |
+| 10 | Public-Safety Incident Intelligent Risk Warning Assistant | Integrates historical events and real-time reports; LLM estimates risk levels and outputs warning recommendations |
 
 ---
 
@@ -551,6 +620,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Legal Regulation Change Monitoring | Monitors regulatory updates; analyzes impact on business operations |
 | 4 | Legal Letter Auto-Drafting | Inputs case facts; AI generates standard legal letters |
 | 5 | Legal Terms Plain Language Explanation | Translates complex legal terms into easy-to-understand language |
+| 6 | Courtroom Recording Real-Time Transcription and Dispute-Focus Extraction Recorder | ASR transcribes hearing audio; LLM extracts dispute focuses and key arguments with timestamps |
+| 7 | Full-Network IP Infringement Clue Monitoring and Blockchain Evidence Preservation System | Monitors e-commerce and social media infringement; automatically collects and preserves evidence |
+| 8 | LLM-Based IPO Prospectus Key-Data Consistency Check and Risk Alert Agent | Compares data across prospectus sections; LLM identifies inconsistencies and abnormal values with risk tags |
+| 9 | Complex Legal Clause "Translation" Plugin in Plain Language | Users select legal clauses and LLM outputs understandable explanations |
+| 10 | Case Evidence-Chain Intelligent Structuring and Visualization System | Upload evidence materials; LLM analyzes evidence relationships and timelines |
 
 ---
 
@@ -565,6 +639,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Visa Materials Pre-Review | OCR recognizes visa materials; automatically checks for completeness |
 | 4 | Real-Time Translation for Travel | Offline voice translation; recognizes and translates menu images abroad |
 | 5 | Travel Notes Auto-Generation | Extracts information from travel photos; generates shareable travel journals |
+| 6 | Data-Driven Hotel "Pitfall Avoidance" Analyzer Based on Real Reviews | Collects hotel review data; LLM extracts positive and negative keyword patterns |
+| 7 | Immersive Destination VR Preview and Virtual Room Selection Platform | Collects 360-degree panoramas; VR enables immersive previews and virtual room tours |
+| 8 | Travel Footprint Auto-Generated Travel Notes and Social Copy Assistant | Extracts time/location metadata from photos; LLM generates travel notes with template-based layout |
+| 9 | Enterprise Travel Invoice Aggregation and Compliance Reimbursement Management Platform | Connects travel-platform APIs for automatic invoice collection and compliance checks |
+| 10 | Scenic-Area Crowd Congestion Prediction and Off-Peak Route Navigation | Collects scenic-area crowd data; ML predicts congestion windows and recommends off-peak routes |
 
 ---
 
@@ -579,6 +658,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Cognitive Training for Elderly | Provides cognitive games; uses old photos to trigger memory for dementia patients |
 | 4 | Social Anxiety Practice Coach | Creates virtual social scenarios; helps practice social interactions |
 | 5 | Mood Monitoring & Incentive Assistant | Analyzes mood patterns; generates positive encouragement content |
+| 6 | Generative AI Customized Bedtime Story Machine for Children | Parents input themes/preferences; LLM generates customized stories with background music support |
+| 7 | Deceased Digital-Life Reconstruction and LLM Cross-Time Dialogue System | Trains personalized models from pre-death voice/text data and generates memory-based conversations |
+| 8 | MBTI-Based AI Personality Mirror and Empathetic Chatbot | Inputs MBTI results; LLM outputs personality analysis and empathetic responses with match suggestions |
+| 9 | Privacy-Protected AI Confession Tree-Hole for Teenagers | Anonymous channel for emotional expression; LLM provides listening/suggestions with sensitive-word alerts |
+| 10 | Self-Evolving AI Virtual Pet Growth System | Trains pet personality models and supports interaction-driven growth and virtual customization |
 
 ---
 
@@ -593,6 +677,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Interactive Novel Story Generator | Reader choices affect story development |
 | 4 | Esports Game Analysis & Commentary | Real-time game analysis with AI-powered commentary |
 | 5 | Audiobook Auto-Generation | Converts text to audio with character-specific voices |
+| 6 | Personalized Humor Content Recommendation Algorithm Engine | Builds user-interest profiles and recommends matching humor content |
+| 7 | AI Smart Vocal Tuning and KTV Voice Enhancement Software | Performs denoising and vocal enhancement with AI tuning algorithms |
+| 8 | Film/TV Character-Centric Plot Extraction and Editing Tool | Analyzes video content, extracts character-related clips, and auto-generates edited cuts |
+| 9 | Multi-Role TTS Audiobook Auto-Generation System | Assigns text roles and generates personalized voices with background music/effects |
+| 10 | Board-Game Reinforcement-Learning Review Coach | Analyzes game records, simulates AI opponents, and generates review suggestions |
 
 ---
 
@@ -607,6 +696,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Multi-Language Translation | Localizes product descriptions for international markets |
 | 4 | Digital Human Live Streaming | AI-powered virtual streamers for 24/7 live commerce |
 | 5 | Trend Analysis & Product Selection | Analyzes market trends; suggests trending products to sell |
+| 6 | Full-Network Same-Product AI Price Comparison and Trend Prediction Plugin | Crawls e-commerce prices, displays comparison charts, and predicts price trends |
+| 7 | Buyer-Show Image AI Selection and Short-Video Synthesis Platform | Scores buyer-show images, auto-recommends high-quality content, and synthesizes short videos from templates |
+| 8 | LLM-Based Real-Time Sales Dialogue Voice Analysis and Golden-Script Recommendation | ASR transcribes calls and performs real-time script compliance checks with recommendation output |
+| 9 | Market Trend AI Insight and Best-Seller Prediction Engine | Collects and analyzes social media and e-commerce data; LLM identifies trend hotspots and recommends product choices |
+| 10 | Private-Domain User Profiling AI Clustering and Precision Operations System | Clusters user behavior data, generates profile tags, and triggers automated marketing flows |
 
 ---
 
@@ -621,6 +715,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Electricity Price Prediction | ML predicts spot prices; generates trading strategies |
 | 4 | Carbon Emission Calculation | Auto-calculates enterprise carbon footprint; generates ESG reports |
 | 5 | Grid Load Prediction | Predicts grid load under extreme weather; generates dispatch plans |
+| 6 | Gas-Station Violation AI Video Recognition and Alert Guard | Analyzes surveillance video and detects violations (calling/smoking, etc.) with alert pushes |
+| 7 | Long-Distance Oil/Gas Pipeline Leak Acoustic AI Monitoring and Precision Positioning System | Collects acoustic-sensor data for leak detection and localization algorithms |
+| 8 | Virtual Power Plant Resource Aggregation and AI Power-Trading Decision System | Connects distributed resources for aggregated optimization dispatch and strategy execution |
+| 9 | Mine Personnel AI Position Tracking and Dangerous-Area Intrusion Alarm | Uses UWB/Bluetooth positioning for trajectory tracking and geofenced danger-zone alerts |
+| 10 | Energy-Storage Battery Health AI Assessment and Thermal-Runaway Warning | Monitors battery runtime data, evaluates health status, and triggers thermal-risk alerts |
 
 ---
 
@@ -635,6 +734,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Video Restoration & Colorization | 4K super-resolution; AI adds color to black and white footage |
 | 4 | Text-to-Speech with Emotion | Generates natural-sounding speech with emotional expression |
 | 5 | Meeting Transcription | Multi-speaker voice separation; generates meeting transcripts with action items |
+| 6 | Video Object Removal AI Engine | Uses object tracking and inpainting to remove unwanted objects with frame-level consistency |
+| 7 | Copyright-Safe Background Music AIGC Auto-Composer | Uses music-generation models with controllable emotional style and copyright checks |
+| 8 | Specific-Person Voice Clone and Voice Conversion Software | Trains timbre models from small voice samples and supports voice conversion |
+| 9 | One-Click Script-to-Storyboard and AI Dynamic Preview Video Platform | Parses scripts into storyboards and auto-generates previsualization videos |
+| 10 | Meeting Recording AI Smart Transcription and Core To-Do Extraction Assistant | Performs multi-speaker transcription and LLM-based to-do extraction with timestamps |
 
 ---
 
@@ -649,6 +753,11 @@ Learners can choose directions based on these dimensions:
 | 3 | Logo & Brand Design | Generates brand logos; creates complete VI systems |
 | 4 | Trend Analysis & Content Ideas | Tracks trending topics; suggests marketing angles |
 | 5 | Video Script Generator | Generates short video scripts with shooting suggestions |
+| 6 | Competitor Marketing Strategy Deep Analysis and AI Weekly Report Generator | Collects/analyzes competitor content, extracts strategy insights, and auto-generates weekly reports |
+| 7 | Search-Engine Keyword AI Layout and Traffic Article Batch Writing | Analyzes keywords, generates articles at scale, and gives SEO optimization recommendations |
+| 8 | Personalized Marketing Email AI Writing Expert | Uses user-profile data for personalized content generation with A/B testing |
+| 9 | Brand Reputation Full-Network Monitoring and Crisis AI Alert Radar | Collects network sentiment data, runs sentiment analysis, and pushes crisis alerts |
+| 10 | Short-Video Script Creative AIGC Generation and Storyboard Guidance Assistant | Inputs themes and outputs scripts, storyboards, and practical shooting guidance |
 
 ---
 
@@ -663,3 +772,8 @@ Learners can choose directions based on these dimensions:
 | 3 | Data Quality Monitoring | Detects data anomalies; suggests fixes |
 | 4 | Report Generator | Creates reports and dashboards through conversation |
 | 5 | Metric Q&A Assistant | Answers questions about data metric definitions and calculations |
+| 6 | Intelligent Data-Report Interpretation and Trend Analysis Assistant | Upload report images or input data; VLM interprets chart content and analyzes trends |
+| 7 | Intelligent DB-Schema Interpretation and Query-Example Generation Assistant | Input table names or field descriptions; LLM generates schema explanations and sample SQL |
+| 8 | Enterprise Master-Data Intelligent Alignment and AI Dedup Governance | Matches master data across sources, identifies duplicates, and supports merge-rule configuration |
+| 9 | Data Requirement Doc to Test-Case Intelligent Conversion Tool | Input data requirement descriptions; LLM generates test scenarios and validation test cases |
+| 10 | Data Metric-Definition Intelligent Q&A Assistant | Builds a knowledge base from metric-definition docs; LLM answers definition and calculation logic questions |

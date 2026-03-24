@@ -411,20 +411,36 @@ const stage2SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Using Lovart for Assets',
-        link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+        text: 'Build Your Own Asset-Production Agent with Lovart',
+        link: '/en/stage-2/frontend/2.0-lovart-assets/'
       },
       {
         text: 'Figma & MasterGo Basics',
-        link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
+        link: '/en/stage-2/frontend/2.1-figma-mastergo/'
       },
       {
-        text: 'UI Design for Modern Apps',
-        link: '/zh-cn/stage-2/frontend/2.2-ui-design/'
+        text: 'Build Your First Modern App - UI Design',
+        link: '/en/stage-2/frontend/2.2-ui-design/'
       },
       {
-        text: 'UI Design Specs & Multi-Product',
-        link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
+        text: 'UI Design Guidelines and Multi-Product UI',
+        link: '/en/stage-2/frontend/2.3-multi-product-ui/'
+      },
+      {
+        text: 'Make Interfaces Beautiful with LLMs and Skills',
+        link: '/en/stage-2/frontend/2.4-llm-skills-beautiful/'
+      },
+      {
+        text: "Let's Build Hogwarts Portraits",
+        link: '/en/stage-2/frontend/2.5-hogwarts-portraits/'
+      },
+      {
+        text: 'From Design Prototype to Project Code',
+        link: '/en/stage-2/frontend/2.6-design-to-code/'
+      },
+      {
+        text: 'Upgrade Your UI with Modern Component Libraries',
+        link: '/en/stage-2/frontend/2.7-modern-component-library/'
       }
     ]
   },
@@ -433,32 +449,28 @@ const stage2SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Backend 1: What is API',
-        link: '/zh-cn/stage-2/backend/2.1-what-is-api/'
+        text: 'Learn Git and GitHub',
+        link: '/en/stage-2/backend/2.4-git-workflow/'
       },
       {
-        text: 'Backend 2: Database & Supabase',
-        link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+        text: 'From Database to Supabase',
+        link: '/en/stage-2/backend/2.2-database-supabase/'
       },
       {
-        text: 'Backend 3: AI-Assisted API Code',
-        link: '/zh-cn/stage-2/backend/2.3-ai-interface-code/'
+        text: 'Backend API Design and Development',
+        link: '/en/stage-2/backend/2.3-ai-interface-code/'
       },
       {
-        text: 'Backend 4: Git Workflow',
-        link: '/zh-cn/stage-2/backend/2.4-git-workflow/'
+        text: 'Ship Your Product Prototype',
+        link: '/en/stage-2/backend/2.5-zeabur-deployment/'
       },
       {
-        text: 'Backend 5: Deployment',
-        link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+        text: 'From IDEs to CLI AI Coding Tools',
+        link: '/en/stage-2/backend/2.6-modern-cli/'
       },
       {
-        text: 'Backend 6: Modern CLI Tools',
-        link: '/zh-cn/stage-2/backend/2.6-modern-cli/'
-      },
-      {
-        text: 'Backend 7: Stripe Payment',
-        link: '/zh-cn/stage-2/backend/2.7-stripe-payment/'
+        text: 'Integrate Stripe and Other Billing Systems',
+        link: '/en/stage-2/backend/2.7-stripe-payment/'
       }
     ]
   },
@@ -468,7 +480,7 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'AI 1: Dify & Knowledge Base',
-        link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+        link: '/en/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
       }
     ]
   },
@@ -478,15 +490,15 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'Hogwarts Portraits Project',
-        link: '/zh-cn/stage-2/frontend/2.4-hogwarts-portraits/'
+        link: '/en/stage-2/frontend/2.5-hogwarts-portraits/'
       },
       {
         text: 'Assignment 1: Full-Stack App',
-        link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+        link: '/en/stage-2/assignments/2.1-fullstack-app/'
       },
       {
         text: 'Assignment 2: UI Library & Trae',
-        link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
+        link: '/en/stage-2/assignments/2.2-modern-frontend-trae/'
       }
     ]
   }
@@ -494,76 +506,102 @@ const stage2SidebarEn = [
 
 const stage3SidebarEn = [
   {
-    text: 'Claude Code In-Depth',
+    text: 'Core Skills',
     collapsed: false,
     items: [
       {
-        text: 'Claude Code 快速上手核心指南',
-        link: '/zh-cn/stage-3/core-skills/basics/'
+        text: 'Claude Code Quickstart Core Guide',
+        link: '/en/stage-3/core-skills/basics/'
       },
       {
-        text: 'Claude Code MCP 完全指南',
-        link: '/zh-cn/stage-3/core-skills/mcp/'
+        text: 'MCP and Claude Code Complete Guide',
+        link: '/en/stage-3/core-skills/mcp/'
       },
       {
-        text: 'Claude Code Skills 完全指南',
-        link: '/zh-cn/stage-3/core-skills/skills/'
+        text: 'Claude Code Skills Complete Guide',
+        link: '/en/stage-3/core-skills/skills/'
       },
       {
-        text: 'Long Running Tasks',
-        link: '/zh-cn/stage-3/core-skills/long-running-tasks/'
+        text: 'Making Claude Code Work on Long-Running Tasks',
+        link: '/en/stage-3/core-skills/long-running-tasks/'
       },
       {
-        text: 'Claude Agent Teams 完全指南',
-        link: '/zh-cn/stage-3/core-skills/agent-teams/'
+        text: 'Claude Agent Teams Complete Guide',
+        link: '/en/stage-3/core-skills/agent-teams/'
       },
       {
-        text: 'Claude Code Superpowers 工程级开发',
-        link: '/zh-cn/stage-3/core-skills/superpowers/'
+        text: 'Claude Code Superpowers for Production-Grade Development',
+        link: '/en/stage-3/core-skills/superpowers/'
       },
       {
-        text: 'Claude Code 工作流最佳实践',
-        link: '/zh-cn/stage-3/core-skills/workflow/'
+        text: 'AI-Assisted Development Workflow',
+        link: '/en/stage-3/core-skills/workflow/'
       },
       {
-        text: 'Claude Code 手机远程开发',
-        link: '/zh-cn/stage-3/core-skills/mobile-development/'
+        text: 'Claude Code Remote Development on Mobile',
+        link: '/en/stage-3/core-skills/mobile-development/'
       },
       {
-        text: 'Claude Agent SDK 完全指南',
-        link: '/zh-cn/stage-3/core-skills/claude-agent-sdk/',
-        items: [
-          {
-            text: 'Spec Coding：规范驱动开发',
-            link: '/zh-cn/stage-3/core-skills/claude-agent-sdk/spec-coding'
-          }
-        ]
+        text: 'Claude Agent SDK Complete Guide',
+        link: '/en/stage-3/core-skills/claude-agent-sdk/'
+      },
+      {
+        text: 'From Vibe Coding to Spec Coding',
+        link: '/en/stage-3/core-skills/spec-coding/'
       }
     ]
   },
   {
-    text: 'Multi-Platform',
+    text: 'Cross-Platform Development',
     collapsed: false,
     items: [
       {
-        text: 'Advanced 3: WeChat Mini Program',
-        link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
+        text: 'How to Choose the Right Platform for Your App',
+        link: '/en/stage-3/cross-platform/3.1-choose-platform/'
       },
       {
-        text: 'Advanced 4: WeChat Mini Program (Backend)',
-        link: '/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
+        text: 'How to Build a Simple WeChat Mini Program',
+        link: '/en/stage-3/cross-platform/3.3-wechat-miniprogram/'
       },
       {
-        text: 'Advanced 5: Android App - Compose',
-        link: '/zh-cn/stage-3/cross-platform/3.5-android-app/'
+        text: 'How to Build a WeChat Mini Program with a Backend',
+        link: '/en/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
       },
       {
-        text: 'Advanced 6: iOS App - SwiftUI',
-        link: '/zh-cn/stage-3/cross-platform/3.6-ios-app/'
+        text: 'How to Build an Android App with Jetpack Compose',
+        link: '/en/stage-3/cross-platform/3.5-android-app/'
       },
       {
-        text: 'Advanced 7: Personal Website & Blog',
-        link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+        text: 'How to Build an iOS App with SwiftUI',
+        link: '/en/stage-3/cross-platform/3.6-ios-app/'
+      },
+      {
+        text: 'How to Build a PWA Local App',
+        link: '/en/stage-3/cross-platform/3.8-pwa-local-app/'
+      },
+      {
+        text: 'How to Build a Browser AI Assistant Extension',
+        link: '/en/stage-3/cross-platform/3.9-browser-ai-extension/'
+      },
+      {
+        text: 'How to Build a Cross-Platform Electron Desktop App',
+        link: '/en/stage-3/cross-platform/3.10-electron-voice-to-text/'
+      },
+      {
+        text: 'How to Quickly Build and Mint an NFT',
+        link: '/en/stage-3/cross-platform/3.11-nft-minting/'
+      },
+      {
+        text: 'How to Build a VS Code Extension',
+        link: '/en/stage-3/cross-platform/3.12-vscode-extension/'
+      },
+      {
+        text: 'How to Build an Industrial Qt Desktop App',
+        link: '/en/stage-3/cross-platform/3.13-qt-industrial-hmi/'
+      },
+      {
+        text: 'How to Build Your Personal Website and Academic Blog',
+        link: '/en/stage-3/personal-brand/3.7-personal-website-blog/'
       }
     ]
   },
@@ -572,12 +610,12 @@ const stage3SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'AI Advanced 1: RAG Introduction',
-        link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+        text: 'What Is RAG and How It Works',
+        link: '/en/stage-3/ai-advanced/3.a1-rag-introduction/'
       },
       {
-        text: 'AI Advanced 2: LangGraph & Advanced RAG',
-        link: '/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/'
+        text: 'Advanced RAG and Workflow Orchestration with LangGraph',
+        link: '/en/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/'
       }
     ]
   }
@@ -2121,12 +2159,12 @@ Sitemap: ${siteUrl}/sitemap.xml
           },
           {
             text: 'Full-Stack Development',
-            link: '/zh-cn/stage-2/',
+            link: '/en/stage-2/',
             activeMatch: '/en/stage-2/'
           },
           {
             text: 'Advanced Development',
-            link: '/zh-cn/stage-3/',
+            link: '/en/stage-3/',
             activeMatch: '/en/stage-3/'
           },
           {

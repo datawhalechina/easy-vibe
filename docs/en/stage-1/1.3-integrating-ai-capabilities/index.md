@@ -4,7 +4,11 @@ description: 'Integrate real AI capabilities into your existing web prototype: u
 ---
 
 <script setup>
+import { relatedArticlesMap } from '@theme/data/relatedArticles'
+
 const duration = 'About <strong>1 day</strong>'
+const relatedArticles =
+  relatedArticlesMap['en/stage-1/1.3-integrating-ai-capabilities'] ?? []
 </script>
 
 # Beginner Level 4: Injecting AI Capabilities into Your Prototype
@@ -54,7 +58,7 @@ Specifically, you need to master the following core elements:
 6. **Error Handling**: Knowing how to troubleshoot when problems occur (such as incorrect API Key, too many requests, etc.)
 
 ::: info ℹ️ What is an API
-For a more in-depth explanation of APIs, see the appendix: [Introduction to APIs](/zh-cn/appendix/4-server-and-backend/api-intro).
+For a more in-depth explanation of APIs, see the appendix: [Introduction to APIs](/en/appendix/4-server-and-backend/api-intro).
 
 ::: warning 🔐 **API Security Notes**
 The API Key is your "pass" for requesting AI services — it's a secret string used for authentication and billing.
@@ -89,7 +93,7 @@ Once you've grasped these concepts, you'll find that whether you're integrating 
 In `1.2 Building Your Prototype`, you already created an interactive prototype. What we need to do next is turn the "AI-like features" in the prototype into real, working capabilities: **when the user clicks a button, the prototype sends a request to an external AI service and displays the returned text.**
 
 ::: info ℹ️ Further Reading on Principles
-If you want to learn more about the underlying principles, check out the appendix: [Introduction to Large Language Models (LLM)](/zh-cn/appendix/8-artificial-intelligence/llm-principles).
+If you want to learn more about the underlying principles, check out the appendix: [Introduction to Large Language Models (LLM)](/en/appendix/8-artificial-intelligence/llm-principles).
 ::: details Learn More: What is DeepSeek?
 
 **Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., Ltd.**, operating under the brand name DeepSeek, is a **Chinese artificial intelligence (AI) company that develops large language models (LLMs)**. DeepSeek is headquartered in Hangzhou, Zhejiang, and is owned and funded by the Chinese hedge fund High-Flyer. DeepSeek was founded in July 2023 by Liang Wenfeng, co-founder of High-Flyer, who also serves as CEO of both companies. The company launched its eponymous chatbot and its DeepSeek-R1 model in January 2025.
@@ -215,7 +219,7 @@ For more details, refer to the [MiniMax OpenAI Compatible API Documentation](htt
 # 3. Integrating the Image-to-Text API: Qwen3 VL
 
 ::: info ℹ️ Further Reading on Principles
-If you want to learn more about the underlying principles, check out the appendix: [Introduction to Vision Language Models (VLM)](/zh-cn/appendix/8-artificial-intelligence/multimodal-models).
+If you want to learn more about the underlying principles, check out the appendix: [Introduction to Vision Language Models (VLM)](/en/appendix/8-artificial-intelligence/multimodal-models).
 
 ::: details Learn More: What is Qwen3 VL?
 
@@ -337,25 +341,158 @@ caption = caption_image(image_path)
 
 :::
 
-For image-generation integration, failures can be noisy and hard to debug. Ask AI IDE to display full error details every time (instead of only "generation failed"), for example:
+In this scenario, we directly try asking the AI IDE to implement a feature that automatically generates ecommerce selling-point text and keywords from uploaded images, as shown below:
+
+```text
+Based on the image-to-text API below, help us implement a feature that automatically generates ecommerce selling points and keywords from uploaded images.
+
+<code omitted here; you need to paste your key and the reference code yourself>
+```
+
+Final generated result:
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-15-34-36.png)
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-15-35-41.png)
+
+<div style="margin: 50px 0;">
+  <ClientOnly>
+    <StepBar :active="2" :items="[
+      { title: 'API Basics', description: 'Understand core concepts and security practices' },
+      { title: 'Text Integration', description: 'DeepSeek text generation hands-on' },
+      { title: 'Image Integration', description: 'VLM image understanding and generation' }
+    ]" />
+  </ClientOnly>
+</div>
+
+# 4. Integrating the Image Generation API: Seedream
+
+In the previous section, we mainly handled text-related tasks. Next, we will try integrating image generation capabilities to support generating images from text descriptions, or editing images.
+
+::: info ℹ️ Further Reading on Principles
+If you want to learn more about the underlying principles, check out the appendix: [Introduction to Image Generation](/en/appendix/8-artificial-intelligence/image-generation).
+
+::: details Learn More: What is [Seedream](https://seed.bytedance.com/en/seedream4_5)?
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-15-17.png)
+
+> You may already know Nano Banana (developed by Google), but you should not miss Seedream. Seedream 4.5 is a next-generation image creation model built by ByteDance. It integrates image generation and image editing capabilities into one unified architecture. This enables it to handle complex multimodal tasks such as knowledge-based generation, complex reasoning, and reference consistency. In addition, its inference speed is much faster than the previous generation and it can generate stunning high-definition images up to 4K resolution.
+>
+> ![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-15-38.png)
+> ![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-15-50.png)
+
+**Main capabilities:**
+
+- **Text-to-image**: Generate images from text prompts, supporting many styles (realistic, cartoon, ink, cyberpunk, etc.)
+- **Style transfer**: Convert an image into a specified artistic style
+- **Image variants**: Generate new images in similar styles from reference images
+- **Resolution enhancement**: Improve image clarity and detail
+- **Image editing**: Edit existing images through natural-language instructions
+
+**Why choose Seedream?**
+
+- **Stable domestic network access**: Fast access and low latency in China
+- **Excellent output quality**: Reliable performance in ecommerce and asset-generation scenarios
+- **Chinese-optimized understanding**: Better understanding of Chinese prompts for domestic users
+- **Fast speed**: High generation efficiency and short response times
+- **Stable quality**: Can generate high-definition images up to 4K
+
+**Typical use cases:**
+
+- Ecommerce: Generate main images, detail-page assets, and promotional posters
+- Social media: Generate avatars, stickers, and supporting visuals
+- Design: Quickly produce concept images, assets, and backgrounds
+- Marketing: Create ad images, campaign banners, and holiday posters
+
+**How it works with Qwen3 VL:**
+
+These two APIs can be chained together: first use Qwen3 VL to analyze a reference image and understand scene content, then use Seedream to generate new images based on prompts derived from that analysis.
+:::
+
+Many "AI posters / AI product main images / AI character images" you see on Douyin, Bilibili, or YouTube are fundamentally built with this kind of technology. What you need to do is simple: organize user input into one sentence, request the image API, and display the returned image. The model used here is an image generation / image editing model.
+
+We will demonstrate step by step how to integrate the Seedream API into your project (with AI IDE assistance).
+
+After visiting the [homepage](https://www.volcengine.com/experience/ark?launch=seedream), click login.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-12-07.png)
+
+After logging in, find the top-right recharge option.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-12-22.png)
+
+Real-name verification is required before recharge.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-12-30.png)
+
+After verification succeeds, you can [recharge 1 RMB for testing](https://console.volcengine.com/finance/fund/recharge).
+
+Return to the [initial page](https://www.volcengine.com/experience/ark?launch=seedream) and click API Access.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-12-43.png)
+
+First, create an API key, then click the model selection option.
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-13-01.png)
+
+This takes you to step 2. Here, confirm the service model is Seedream 4.5 and copy the provided call example. (The screenshot was taken earlier, so the model version shown there is still 4.0.)
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-13-11.png)
+
+Once the API Key and call example are ready, you can paste them directly into the AI IDE and ask it to generate a frontend interactive demo or integrate the capability into your current prototype. Notice that in the screenshot you can choose text-to-image or multi-image-to-single-image mode. Select the reference code according to your specific requirement.
+
+::: warning ⚠️ Important note
+The default example here is relatively complex. Remember to disable **"Add watermark"** and **"Streaming response"** to ensure no watermark is generated and requests do not fail.
+:::
+
+Since we later use reference-image generation mode, we first use the multi-image-to-single-image feature. The reference code is copied as follows:
+
+```text
+curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer xxxxxxx" \
+  -d '{
+    "model": "doubao-seedream-4-5-251128",
+    "prompt": "将图1的服装换为图2的服装",
+    "image": ["https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream4_imagesToimage_1.png", "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream4_imagesToimage_2.png"],
+    "sequential_image_generation": "disabled",
+    "response_format": "url",
+    "size": "2K",
+    "stream": false,
+    "watermark": true
+}'
+```
+
+With the image reference code prepared, we ask the AI IDE to support common image-task features in ecommerce:
+
+```text
+Please help me implement common ecommerce features in this project based on the API below (for example, poster generation, Douyin ecommerce hero-image generation, etc.)
+
+<paste the API KEY and the image-editing code here>
+```
+
+Implementation result:
+
+![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-21-13.png)
+
+It is worth noting that image generation often encounters odd failures. It is recommended that AI IDE always shows full error details so you can copy and debug effectively. For example, you can say:
 
 ```text
 Don't only show "image generation failed." Please always display the full failure reason, such as model mismatch, request errors, or timeout details.
 ```
 
-If changes are not reflected in the page after multiple attempts, ask AI IDE to restart the project.
+Sometimes updates after edits may still not be reflected on the page. If you keep seeing errors after multiple rounds, you can also try telling the AI IDE directly: please restart this project.
 
-In ecommerce scenarios, you may want uploaded clothes to be automatically "worn" by virtual models, or automatically generate attractive product posters and promotional visuals. Here is an example prompt for generating an ecommerce poster:
+In ecommerce scenarios, we may want clothes uploaded by users to be automatically worn by a model, or automatically generate attractive product sales images and posters. Here we try a prompt that asks for an ecommerce poster:
 
 ![](../../../zh-cn/stage-1/1.3-integrating-ai-capabilities/images/index-2026-01-20-23-14-10.png)
 
 You can combine text-to-image and image-to-image APIs based on your own business scenario ideas.
 
-## 4. More Image Service Options
+## More Different Image Service Options
 
 Below are additional choices. It's recommended to first run through a working Qwen image generation result, then replace with another service based on quality and cost.
 
-### 4.1 Recraft Integration
+### Recraft Integration
 
 If your prototype is more design-production oriented (for example brand-style illustrations, marketing posters, vector-style assets), Recraft is often a better fit. The integration method is exactly the same: **get a Key + find official examples + let AI IDE wire them into your page/button**.
 
@@ -380,7 +517,7 @@ Then follow the same process and use official documentation examples:
 
 :::
 
-### 4.2 Qwen Image / Qwen Image Edit Integration
+### Qwen Image / Qwen Image Edit Integration
 
 If you want a relatively simple way to integrate image generation, Qwen Image is also a good choice. The approach is unchanged: treat it as an image API and connect it to your prototype button.
 
@@ -653,3 +790,9 @@ In the next chapter, we will connect these separate AI capabilities into one com
 - Connect content planning, product listing, and data analysis into one end-to-end workflow
 - Embed this chapter's AI capabilities (LLM copywriting, text-to-image, image editing) into concrete business nodes
 - Build a truly usable "Ecommerce AI Workbench" instead of isolated demos
+
+<RelatedArticlesSection
+  title="Related Articles"
+  description="A recommended learning path from single-point AI capabilities to complete product workflows."
+  :items="relatedArticles"
+/>

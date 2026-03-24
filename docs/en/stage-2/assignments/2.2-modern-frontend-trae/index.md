@@ -1,0 +1,3 @@
+# Assignment 2: Modern Frontend Component Library + Trae Practice
+
+> This chapter is currently being written. Stay tuned...
