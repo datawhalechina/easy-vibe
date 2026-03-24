@@ -11,6 +11,11 @@
 
 # Easy-Vibe : Aprende Vibe Coding de 0 a 1
 
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  Entra directo y vibea con nosotros: si puedes hablar, puedes crear apps<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Leer en línea (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Tutorial interactivo</a>
 </p>
@@ -126,6 +131,7 @@ Easy-Vibe te lleva de 0 a 1 a través de las siguientes etapas:
 
 ## 🔥 Noticias
 
+- **[2026-03-25]** 📚 **README alineado con la última versión en chino**: La entrada en español ya está sincronizada con la introducción, la navegación y la estructura de contenidos más recientes.
 - **[2026-03-02]** 🦞 **Soporte para OpenClaw y AI Agents**: Se agregó el archivo de navegación AI `llms.txt`, permitiendo que OpenClaw, Claude, Cursor, Trae y otros AI Agents comprendan rápidamente la estructura del repositorio y localicen con precisión el contenido del tutorial. ¡Esperamos que cada 🦞 disfrute aprendiendo!
 - **[2026-03-01]** [Sección de desarrollo avanzado](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) actualizada integralmente: Se agregaron siete guías detalladas de Claude Code (MCP, Skills, Agent Teams, etc.) y ocho tutoriales de desarrollo multiplataforma (PWA, Electron, NFT, extensiones VS Code, aplicaciones industriales Qt, etc.).
 - **[2026-02-25]** Actualizada la [Base de conocimientos del apéndice](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), que cubre 9 dominios de conocimiento y más de 80 temas interactivos.

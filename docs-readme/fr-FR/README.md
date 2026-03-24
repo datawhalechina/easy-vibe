@@ -11,6 +11,11 @@
 
 # Easy-Vibe : Apprendre le Vibe Coding de 0 à 1
 
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  Lancez-vous tout de suite et vibez avec nous : si vous pouvez parler, vous pouvez créer des apps<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Lire en ligne (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Tutoriel interactif</a>
 </p>
@@ -64,7 +69,42 @@
       <sub>Explications détaillées, comme un tuteur privé à vos côtés</sub>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-ide.gif" width="100%">
+      <br>
+      <strong>Programmation immersive simulée</strong>
+      <br>
+      <sub>Une souris virtuelle vous guide automatiquement pour maîtriser rapidement les usages essentiels de l'IDE</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-diffusion.gif" width="100%">
+      <br>
+      <strong>Principes d'IA visibles</strong>
+      <br>
+      <sub>Les principes algorithmiques animés permettent de comprendre en un coup d'oeil comment l'IA génère des images</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-rag.gif" width="100%">
+      <br>
+      <strong>Apprendre le RAG comme un jeu</strong>
+      <br>
+      <sub>Des composants interactifs exclusifs rendent le flux de donnees RAG clair en quelques clics</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/git-terminal.gif" width="100%">
+      <br>
+      <strong>Principes du terminal visualises</strong>
+      <br>
+      <sub>Les operations en ligne de commande sont visualisees pour rendre la logique sous-jacente plus intuitive</sub>
+    </td>
+  </tr>
 </table>
+<div align="center">
+  <h3>⭐ Cliquez <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">ici pour mettre une etoile</a> et accelerer les mises a jour ❤️</h3>
+</div>
 
 À l'ère de l'IA, les personnes qui transforment les idées en produits sont souvent celles qui font le premier pas. **Easy-Vibe est né pour cela.**
 
@@ -84,9 +124,12 @@ Easy-Vibe vous guide de 0 à 1 à travers les étapes suivantes :
 
 ## 🔥 Nouvelles
 
+- **[2026-03-25]** 📚 **README aligne sur la derniere version chinoise** : L'entree en francais a ete synchronisee avec l'introduction, la navigation d'apprentissage et la structure de contenu les plus recentes.
 - **[2026-03-02]** 🦞 **Support OpenClaw & AI Agents** : Ajout du fichier de navigation AI `llms.txt`, permettant à OpenClaw, Claude, Cursor, Trae et autres AI Agents de comprendre rapidement la structure du dépôt et de localiser précisément le contenu du tutoriel. Nous espérons que chaque 🦞 appréciera l'apprentissage !
 - **[2026-03-01]** [Section développement avancé](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) mise à niveau complète : Ajout de sept guides détaillés Claude Code (MCP, Skills, Agent Teams, etc.) et huit tutoriels de développement multiplateforme (PWA, Electron, NFT, extensions VS Code, applications industrielles Qt, etc.).
 - **[2026-02-25]** Mise à jour de la [Base de connaissances de l'annexe](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), couvrant 9 domaines de connaissance et plus de 80 sujets interactifs.
+- **[2026-01-27]** Ajout de tutoriels de developpement d'applications pour Android et iOS.
+- **[2026-01-19]** Publication d'une serie de composants de demonstration interactifs sur le Prompt Engineering, l'evolution de l'IA, la conception d'authentification et les principes de Git.
 
 <details>
 <summary>Past News</summary>
@@ -105,7 +148,9 @@ Easy-Vibe vous guide de 0 à 1 à travers les étapes suivantes :
 
 ### 📚 Base de connaissances de l'annexe
 
-> Covers **9 knowledge domains** and **80+ interactive topics** with animations and visual components to help you intuitively understand core concepts from computer fundamentals to AI frontiers.
+> Couvre **9 domaines de connaissance** et **80+ sujets interactifs** avec des animations et des composants visuels pour vous aider a comprendre intuitivement les concepts essentiels, des fondements informatiques jusqu'aux frontieres de l'IA.
+>
+> 👉 [Voir l'annexe complete](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [Dictionnaire des capacites IA](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
 <table>
   <tr>

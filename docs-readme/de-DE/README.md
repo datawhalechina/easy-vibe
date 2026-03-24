@@ -11,6 +11,11 @@
 
 # Easy-Vibe : Lerne Vibe Coding von 0 auf 1
 
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  Direkt loslegen und gemeinsam viben - wenn du sprechen kannst, kannst du Apps bauen<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Online lesen (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Interaktives Tutorial</a>
 </p>
@@ -64,7 +69,42 @@
       <sub>Detaillierte Erklärungen, als hätte man einen Privatlehrer an der Seite</sub>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-ide.gif" width="100%">
+      <br>
+      <strong>Immersive Programmier-Simulation</strong>
+      <br>
+      <sub>Virtuelle Mausführung hilft dir, die wichtigsten IDE-Abläufe schnell zu beherrschen</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-diffusion.gif" width="100%">
+      <br>
+      <strong>Sichtbare KI-Prinzipien</strong>
+      <br>
+      <sub>Animierte Algorithmen zeigen auf einen Blick, wie KI Bilder erzeugt</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-rag.gif" width="100%">
+      <br>
+      <strong>RAG wie ein Spiel lernen</strong>
+      <br>
+      <sub>Exklusive interaktive Komponenten machen den Datenfluss in RAG sofort verständlich</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/git-terminal.gif" width="100%">
+      <br>
+      <strong>Visualisierte Terminal-Prinzipien</strong>
+      <br>
+      <sub>Kommandozeilenlogik wird sichtbar und zeigt die Abläufe im Hintergrund intuitiv</sub>
+    </td>
+  </tr>
 </table>
+<div align="center">
+  <h3>⭐ Klicke <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">hier für ein Star</a> und beschleunige Updates ❤️</h3>
+</div>
 
 Im Zeitalter der KI sind diejenigen, die Ideen in Produkte verwandeln, oft nicht die technisch stärksten, sondern diejenigen, die den ersten Schritt tun. **Easy-Vibe wurde dafür geschaffen.** Wir nehmen dich an die Hand, vom Schreiben deiner ersten Zeile Code bis zum Verständnis der Front-End- und Back-End-Logik und schließlich zum Start deines Produkts.
 
@@ -89,12 +129,15 @@ Easy-Vibe führt dich durch folgende Phasen von 0 auf 1:
 
 ## 🔥 Neuigkeiten
 
+- **[2026-03-25]** 📚 **README mit der neuesten chinesischen Version abgeglichen**: Der deutsche Einstieg wurde auf die aktuelle Einleitung, Lernnavigation und Inhaltsstruktur aktualisiert.
 - **[2026-03-02]** 🦞 **OpenClaw & AI Agent Unterstützung**: `llms.txt` KI-Navigationsdatei hinzugefügt, die OpenClaw, Claude, Cursor, Trae und anderen AI Agents ermöglicht, die Repository-Struktur schnell zu verstehen und Tutorial-Inhalte präzise zu lokalisieren. Wir wünschen jedem 🦞 viel Lernspaß!
 - **[2026-03-01]** [Abschnitt Fortgeschrittene Entwicklung](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) umfassend aktualisiert: Sieben detaillierte Claude Code Guides (MCP, Skills, Agent Teams, etc.) und acht Multi-Plattform-Entwicklungstutorials (PWA, Electron, NFT, VS Code Erweiterungen, Qt Industrieanwendungen, etc.) hinzugefügt.
 - **[2026-02-25]** [Anhang Wissensdatenbank](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) aktualisiert, umfasst 9 Wissensbereiche und 80+ interaktive Themen.
+- **[2026-01-27]** Tutorials zur Entwicklung von Android- und iOS-Apps hinzugefügt.
+- **[2026-01-19]** Interaktive Demo-Komponenten zu Prompt Engineering, KI-Entwicklungsgeschichte, Authentifizierungsdesign und Git-Grundlagen veröffentlicht.
 
 <details>
-<summary>Frühere Neuigkeiten</details>
+<summary>Frühere Neuigkeiten</summary>
 
 - **[2026-01-16]** Projekt-Restrukturierung, formelle Einrichtung des Kapitels "Einführung für Anfänger", Barrieren reduziert.
 - **[2026-01-14]** Vollständiges Update der Stage 1 Dokumentation "Produktprototypen erstellen".
@@ -109,6 +152,10 @@ Easy-Vibe führt dich durch folgende Phasen von 0 auf 1:
 </div>
 
 ### 📚 Anhang Wissensdatenbank
+
+> Umfasst **9 Wissensbereiche** und **80+ interaktive Themen**. Animationen und visuelle Komponenten helfen dir, Kernkonzepte von Computergrundlagen bis zur KI-Front intuitiv zu verstehen.
+>
+> 👉 [Vollständigen Anhang ansehen](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [KI-Fähigkeiten-Wörterbuch](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
 <table>
   <tr>

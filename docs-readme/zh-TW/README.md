@@ -11,6 +11,11 @@
 
 # Easy-Vibe : 從 0 到 1 學習 Vibe Coding
 
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  直接上手，一起 vibe ！會說話就會做應用<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">在線閱讀 (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程 (Interactive Tutorial)</a>
 </p>
@@ -126,6 +131,7 @@ Easy-Vibe 通過以下幾個階段，帶你從 0 到 1：
 
 ## 🔥 News
 
+- **[2026-03-25]** 📚 **README 已與最新中文內容對齊**：繁體中文入口已同步最新的開場介紹、學習導航與內容結構。
 - **[2026-03-02]** 🦞 **OpenClaw & AI Agent 友好支持**：新增 `llms.txt` AI 導航文件，讓 OpenClaw、Claude、Cursor、Trae 等 AI Agent 能夠快速理解本倉庫結構，精準定位教程內容。希望每個🦞都學得愉快！
 - **[2026-03-01]** [高級開發部分](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)全面升級：新增 Claude Code 七大深度指南（MCP、Skills、Agent Teams 等）及八大跨平台開發實戰（PWA、Electron、NFT、VS Code 插件、Qt 工業應用等）。
 - **[2026-02-25]** 更新[附錄知識庫](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)，涵蓋 9 大知識領域、80+ 交互式專題。

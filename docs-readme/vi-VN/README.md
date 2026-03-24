@@ -11,6 +11,11 @@
 
 # Easy-Vibe : Học Vibe Coding từ 0 đến 1
 
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  Vào là làm ngay, cùng vibe nào! Chỉ cần biết nói là bạn đã có thể làm ứng dụng<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Đọc trực tuyến (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">Hướng dẫn tương tác</a>
 </p>
@@ -64,7 +69,42 @@
       <sub>Giải thích chi tiết bằng hình ảnh, như có gia sư riêng bên cạnh</sub>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-ide.gif" width="100%">
+      <br>
+      <strong>Lập trình mô phỏng nhập vai</strong>
+      <br>
+      <sub>Chuột ảo tự động dẫn đường giúp bạn nắm nhanh các thao tác IDE cốt lõi</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-diffusion.gif" width="100%">
+      <br>
+      <strong>Nguyên lý AI có thể nhìn thấy</strong>
+      <br>
+      <sub>Nguyên lý thuật toán được hoạt hình hóa để bạn hiểu ngay AI tạo hình ảnh như thế nào</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-rag.gif" width="100%">
+      <br>
+      <strong>Học RAG như chơi game</strong>
+      <br>
+      <sub>Thành phần tương tác độc quyền giúp bạn nhìn rõ luồng dữ liệu RAG chỉ với vài cú nhấp</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/git-terminal.gif" width="100%">
+      <br>
+      <strong>Nguyên lý terminal trực quan</strong>
+      <br>
+      <sub>Các thao tác dòng lệnh được trực quan hóa để logic phía sau trở nên dễ hiểu hơn</sub>
+    </td>
+  </tr>
 </table>
+<div align="center">
+  <h3>⭐ Hãy <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">bấm Star tại đây</a> để giúp dự án cập nhật nhanh hơn ❤️</h3>
+</div>
 
 Trong thời đại AI, những người biến ý tưởng thành sản phẩm thường không phải là những người có kỹ thuật mạnh nhất, mà là những người có hành động đầu tiên. **Easy-Vibe ra đời vì điều này.** Chúng tôi sẽ cầm tay chỉ việc cho bạn, từ việc viết dòng code đầu tiên đến việc hiểu logic front-end và back-end, và cuối cùng là đưa sản phẩm của bạn lên mạng.
 
@@ -89,9 +129,12 @@ Easy-Vibe dẫn dắt bạn từ 0 đến 1 qua các giai đoạn sau:
 
 ## 🔥 Tin tức
 
+- **[2026-03-25]** 📚 **README đã được đồng bộ với bản tiếng Trung mới nhất**: Trang giới thiệu tiếng Việt hiện đã cập nhật phần mở đầu, điều hướng học tập và cấu trúc nội dung mới nhất.
 - **[2026-03-02]** 🦞 **Hỗ trợ OpenClaw & AI Agents**: Đã thêm file điều hướng AI `llms.txt`, cho phép OpenClaw, Claude, Cursor, Trae và các AI Agents khác nhanh chóng hiểu cấu trúc repository và định vị chính xác nội dung hướng dẫn. Chúc mỗi 🦞 có trải nghiệm học tập thú vị!
 - **[2026-03-01]** [Phần phát triển nâng cao](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) đã được nâng cấp toàn diện: Thêm bảy hướng dẫn chi tiết về Claude Code (MCP, Skills, Agent Teams, v.v.) và tám bài học phát triển đa nền tảng (PWA, Electron, NFT, tiện ích VS Code, ứng dụng công nghiệp Qt, v.v.).
 - **[2026-02-25]** Đã cập nhật [Cơ sở kiến thức phụ lục](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), bao gồm 9 lĩnh vực kiến thức và hơn 80 chuyên đề tương tác.
+- **[2026-01-27]** Đã bổ sung hướng dẫn phát triển ứng dụng cho Android và iOS.
+- **[2026-01-19]** Đã phát hành loạt thành phần minh họa tương tác về Prompt Engineering, lịch sử phát triển AI, thiết kế xác thực và nguyên lý Git.
 
 <details>
 <summary>Tin tức trước đó</summary>
@@ -109,6 +152,10 @@ Easy-Vibe dẫn dắt bạn từ 0 đến 1 qua các giai đoạn sau:
 </div>
 
 ### 📚 Cơ sở kiến thức phụ lục
+
+> Bao phủ **9 lĩnh vực kiến thức** và **80+ chuyên đề tương tác**, sử dụng hoạt ảnh và thành phần trực quan để giúp bạn hiểu trực giác các khái niệm cốt lõi từ nền tảng máy tính đến biên giới AI.
+>
+> 👉 [Xem toàn bộ phụ lục](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [Từ điển năng lực AI](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
 <table>
   <tr>

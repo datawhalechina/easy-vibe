@@ -11,6 +11,11 @@
 
 # Easy-Vibe : تعلم Vibe Coding من 0 إلى 1
 
+<p align="center" style="font-size: 1.05em; color: #666; margin: 16px 0 8px;">
+  ابدأ مباشرة ولنخض الـ vibe معًا! إذا كنت تستطيع التحدث، فأنت تستطيع بناء التطبيقات<br>
+  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+</p>
+
 <p align="center">
   📌 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">القراءة عبر الإنترنت (Read Online)</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">دليل تفاعلي</a>
 </p>
@@ -64,7 +69,42 @@
       <sub>شرح مفصل بالصور، كأن لديك معلمًا خاصًا بجانبك</sub>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-ide.gif" width="100%">
+      <br>
+      <strong>برمجة محاكاة غامرة</strong>
+      <br>
+      <sub>مرشد افتراضي بالفأرة يساعدك على إتقان استخدامات IDE الأساسية بسرعة</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-diffusion.gif" width="100%">
+      <br>
+      <strong>مبادئ الذكاء الاصطناعي المرئية</strong>
+      <br>
+      <sub>تحويل المبادئ الخوارزمية إلى رسوم متحركة لفهم كيف "يرسم" الذكاء الاصطناعي الصور</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/gif-rag.gif" width="100%">
+      <br>
+      <strong>تعلم RAG كما لو كنت تلعب</strong>
+      <br>
+      <sub>مكونات تفاعلية حصرية توضح تدفق بيانات RAG بوضوح من خلال النقر</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="../../assets/git-terminal.gif" width="100%">
+      <br>
+      <strong>مبادئ الطرفية المرئية</strong>
+      <br>
+      <sub>تصوير عمليات سطر الأوامر بصريًا لشرح المنطق الخلفي والمبادئ بشكل بديهي</sub>
+    </td>
+  </tr>
 </table>
+<div align="center">
+  <h3>⭐ اضغط <a href="https://github.com/datawhalechina/easy-vibe" style="color: #d0cd16ff;">هنا لإضافة Star</a> لتسريع التحديثات ❤️</h3>
+</div>
 
 في عصر الذكاء الاصطناعي، الأشخاص الذين يحولون الأفكار إلى منتجات هم غالبًا ليسوا الأقوى تقنيًا، بل هم الذين يتخذون الخطوة الأولى. **ولد Easy-Vibe لهذا الغرض.**
 
@@ -84,9 +124,12 @@ Easy-Vibe يرشدك من 0 إلى 1 عبر المراحل التالية:
 
 ## 🔥 أخبار
 
+- **[2026-03-25]** 📚 **تمت مزامنة README مع أحدث نسخة صينية**: تم تحديث المدخل العربي ليتوافق مع أحدث المقدمة وخريطة التعلم وبنية المحتوى.
 - **[2026-03-02]** 🦞 **دعم OpenClaw و AI Agents**: تمت إضافة ملف التنقل AI `llms.txt`، مما يتيح لـ OpenClaw و Claude و Cursor و Trae وغيرها من AI Agents فهم هيكل المستودع بسرعة وتحديد محتوى الدورة بدقة. نتمنى لكل 🦞 تجربة تعلم ممتعة!
 - **[2026-03-01]** [قسم التطوير المتقدم](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) تم تحديثه بالكامل: تمت إضافة سبعة أدلة تفصيلية لـ Claude Code (MCP، Skills، Agent Teams، إلخ) وثمانية دروس للتطوير متعدد المنصات (PWA، Electron، NFT، إضافات VS Code، تطبيقات Qt الصناعية، إلخ).
 - **[2026-02-25]** تم تحديث [قاعدة معرفة الملحق](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)، تغطي 9 مجالات معرفية وأكثر من 80 موضوع تفاعلي.
+- **[2026-01-27]** تمت إضافة دروس لتطوير تطبيقات Android و iOS.
+- **[2026-01-19]** تم إصدار مجموعة من المكونات التفاعلية حول Prompt Engineering وتطور الذكاء الاصطناعي وتصميم المصادقة ومبادئ Git.
 
 <details>
 <summary>أخبار سابقة</summary>
@@ -104,6 +147,10 @@ Easy-Vibe يرشدك من 0 إلى 1 عبر المراحل التالية:
 </div>
 
 ### 📚 قاعدة معرفة الملحق
+
+> تغطي **9 مجالات معرفية** و**80+ موضوعًا تفاعليًا** باستخدام الرسوم المتحركة والمكونات المرئية لمساعدتك على فهم المفاهيم الأساسية من أساسيات الحاسوب حتى حدود الذكاء الاصطناعي.
+>
+> 👉 [عرض الملحق الكامل](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/) · [قاموس قدرات الذكاء الاصطناعي](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
 <table>
   <tr>
