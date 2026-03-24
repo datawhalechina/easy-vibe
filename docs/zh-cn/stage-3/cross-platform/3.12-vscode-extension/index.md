@@ -26,6 +26,7 @@ VS Code 插件可以做的事情远比你想象的多：
 * **接入 AI 能力**：通过 Chat Participant API 创建 AI 对话助手，通过 Language Model API 调用大模型
 
 <!-- ![placeholder: VS Code 插件生态示意图，展示插件可以扩展的各个区域：侧边栏、编辑器、状态栏、命令面板、Chat 面板](images/image1.png) -->
+![VS Code 插件生态示意图，展示插件可以扩展的各个区域：侧边栏、编辑器、状态栏、命令面板、Chat 面板](images/image1.png)
 
 ## 1.2 VS Code 插件的核心架构
 
@@ -53,6 +54,7 @@ VS Code 编辑器
 ```
 
 <!-- ![placeholder: VS Code 插件架构图，展示 Extension Host 进程与编辑器主进程的关系](images/image2.png) -->
+![VS Code 插件架构图，展示 Extension Host 进程与编辑器主进程的关系](images/image2.png)
 
 ## 1.3 我们要做什么插件？
 
@@ -67,6 +69,7 @@ VS Code 编辑器
 | 快捷键 | 自定义快捷键快速触发常用操作 |
 
 <!-- ![placeholder: AI Project Bot 插件效果预览图，展示侧边栏模板列表、Chat 面板中的 @project-bot 对话、右键菜单](images/image3.png) -->
+![AI Project Bot 插件效果预览图，展示侧边栏模板列表、Chat 面板中的 @project-bot 对话、右键菜单](images/image3.png)
 
 ## 1.4 本教程的路线图
 
@@ -145,6 +148,7 @@ ai-project-bot/
 | `contributes` | 插件贡献的所有功能（命令、菜单、快捷键、视图等） |
 
 <!-- ![placeholder: package.json 文件在编辑器中的截图，高亮 contributes 字段](images/image4.png) -->
+![package.json 文件在编辑器中的截图，高亮 contributes 字段](images/image4.png)
 
 ## 2.3 理解 extension.ts——插件的"大脑"
 
@@ -185,6 +189,7 @@ export function deactivate() {}
 在新窗口中按 **Ctrl+Shift+P**，输入 "Hello World"，你会看到右下角弹出一条消息。这说明你的插件已经在运行了。
 
 <!-- ![placeholder: VS Code 调试插件的截图，展示 Extension Development Host 窗口和 Hello World 消息](images/image5.png) -->
+![VS Code 调试插件的截图，展示 Extension Development Host 窗口和 Hello World 消息](images/image5.png)
 
 > **调试技巧**：修改代码后，在 Extension Development Host 窗口中按 **Ctrl+Shift+P** → **"Developer: Reload Window"** 即可重新加载插件，不需要重启调试。
 
@@ -268,6 +273,7 @@ export function deactivate() {}
 3. 在视图标题栏添加了一个 "+" 按钮用于创建项目
 
 <!-- ![placeholder: VS Code 侧边栏中显示 AI Project Bot 图标和项目模板列表的截图](images/image6.png) -->
+![VS Code 侧边栏中显示 AI Project Bot 图标和项目模板列表的截图](images/image6.png)
 
 ## 3.3 实现 TreeDataProvider
 
@@ -394,6 +400,7 @@ export function activate(context: vscode.ExtensionContext) {
 现在按 F5 调试，你会在左侧活动栏看到 AI Project Bot 图标，点击后展开模板列表，点击任意模板即可创建项目。
 
 <!-- ![placeholder: 点击模板后弹出项目名称输入框和文件夹选择对话框的截图](images/image7.png) -->
+![点击模板后弹出项目名称输入框和文件夹选择对话框的截图](images/image7.png)
 
 # 第 4 章：实现 AI Chat 参与者（5 分钟）
 
@@ -531,6 +538,7 @@ export function activate(context: vscode.ExtensionContext) {
 现在在 Chat 面板中输入 `@project-bot /explain 这段代码是做什么的？`，你的插件就会调用大模型生成解释。
 
 <!-- ![placeholder: VS Code Chat 面板中 @project-bot 对话的截图，展示 /explain 命令的使用和流式回复](images/image8.png) -->
+![VS Code Chat 面板中 @project-bot 对话的截图，展示 /explain 命令的使用和流式回复](images/image8.png)
 
 # 第 5 章：文件/段落 Chat 与多文件问答（5 分钟）
 
@@ -632,6 +640,7 @@ export function registerSelectionCommands(context: vscode.ExtensionContext) {
 ```
 
 <!-- ![placeholder: 编辑器中右键选中代码后显示 AI 菜单项的截图](images/image9.png) -->
+![VS Code Chat 面板中 @project-bot 对话的截图，展示 /explain 命令的使用和流式回复](images/image9.png)
 
 ## 5.3 多文件问答：批量分析文件关系
 
@@ -731,6 +740,7 @@ export function registerMultiFileCommands(context: vscode.ExtensionContext) {
 使用方式：在资源管理器中按住 Ctrl（Mac 上是 Cmd）多选文件，右键选择 "AI: 分析选中文件的关系"，AI 就会读取所有文件内容并给出分析报告。
 
 <!-- ![placeholder: 资源管理器中多选文件后右键菜单显示 AI 分析选项的截图](images/image10.png) -->
+![资源管理器中多选文件后右键菜单显示 AI 分析选项的截图](images/image10.png)
 
 # 第 6 章：快捷键与 UX 优化（3 分钟）
 
@@ -801,6 +811,7 @@ export function createStatusBarItem(context: vscode.ExtensionContext) {
 `$(hubot)` 是 VS Code 内置的图标语法，你可以在 [Codicon 图标库](https://microsoft.github.io/vscode-codicons/dist/codicon.html) 中找到所有可用图标。
 
 <!-- ![placeholder: VS Code 状态栏中显示 AI Bot 图标的截图](images/image11.png) -->
+![VS Code 状态栏中显示 AI Bot 图标的截图](images/image11.png)
 
 # 第 7 章：发布到插件市场（可选）
 
