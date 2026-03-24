@@ -26,6 +26,7 @@ VS Code extensions can do much more than many people expect:
 * **Add AI capabilities**: create AI assistants with Chat Participant API, call models with Language Model API
 
 <!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image1.png) -->
+![VS Code extension ecosystem diagram showing the areas extensions can extend: sidebar, editor, status bar, command palette, and Chat panel](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image1.png)
 
 ## 1.2 Core Architecture of a VS Code Extension
 
@@ -53,6 +54,7 @@ VS Code editor
 ```
 
 <!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image2.png) -->
+![VS Code extension architecture diagram showing the Extension Host process and the editor main process](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image2.png)
 
 ## 1.3 What Extension Are We Building?
 
@@ -67,6 +69,7 @@ We will build a VS Code extension named **"AI Project Bot"**, an AI project assi
 | Shortcuts | Custom keybindings to trigger common actions quickly |
 
 <!-- ![placeholder: AI Project Bot preview showing sidebar templates, @project-bot chat panel, and right-click menu](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image3.png) -->
+![Preview of the AI Project Bot extension showing the sidebar template list, the @project-bot chat panel, and the right-click menu](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image3.png)
 
 ## 1.4 Tutorial Roadmap
 
@@ -145,6 +148,7 @@ ai-project-bot/
 | `contributes` | All contributed features (commands, menus, keybindings, views, etc.) |
 
 <!-- ![placeholder: package.json screenshot with contributes field highlighted](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image4.png) -->
+![Screenshot of the package.json file in the editor with the contributes field highlighted](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image4.png)
 
 ## 2.3 Understand extension.ts: The Extension "Brain"
 
@@ -185,6 +189,7 @@ Press **F5**, and VS Code opens a new **Extension Development Host** window. Thi
 In the new window, press **Ctrl+Shift+P**, type "Hello World," and you will see a message popup. This means your extension is running.
 
 <!-- ![placeholder: VS Code extension debugging screenshot showing Extension Development Host and Hello World message](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image5.png) -->
+![Screenshot of debugging a VS Code extension, showing the Extension Development Host window and the Hello World message](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image5.png)
 
 > **Debug tip**: after code changes, in Extension Development Host press **Ctrl+Shift+P** -> **Developer: Reload Window** to reload extension quickly.
 
@@ -268,6 +273,7 @@ This config does three things:
 3. Adds a "+" button in the view title bar for project creation
 
 <!-- ![placeholder: Screenshot showing AI Project Bot icon and project template list in VS Code sidebar](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image6.png) -->
+![Screenshot showing the AI Project Bot icon and the project template list in the VS Code sidebar](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image6.png)
 
 ## 3.3 Implement TreeDataProvider
 
@@ -394,6 +400,7 @@ export function activate(context: vscode.ExtensionContext) {
 Now press F5 for debugging. You will see AI Project Bot in activity bar. Expand template list and click any template to create a project.
 
 <!-- ![placeholder: Screenshot showing project name input and folder picker dialog after clicking a template](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image7.png) -->
+![Screenshot showing the project name input box and folder picker dialog after clicking a template](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image7.png)
 
 # Chapter 4: Implement AI Chat Participant (5 Minutes)
 
@@ -531,6 +538,7 @@ export function activate(context: vscode.ExtensionContext) {
 Now input `@project-bot /explain what does this code do?` in Chat panel, and your extension will call model and generate explanation.
 
 <!-- ![placeholder: VS Code Chat screenshot showing @project-bot, /explain command, and streaming response](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image8.png) -->
+![Screenshot of the VS Code Chat panel showing @project-bot, the /explain command, and a streaming response](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image8.png)
 
 # Chapter 5: File/Snippet Chat and Multi-file Q&A (5 Minutes)
 
@@ -632,6 +640,7 @@ export function registerSelectionCommands(context: vscode.ExtensionContext) {
 ```
 
 <!-- ![placeholder: Screenshot of editor context menu showing AI items after selecting code](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image9.png) -->
+![Screenshot of the editor context menu showing AI items after selecting code](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image9.png)
 
 ## 5.3 Multi-file Q&A: Batch Analyze File Relationships
 
@@ -729,6 +738,7 @@ export function registerMultiFileCommands(context: vscode.ExtensionContext) {
 Usage: in explorer, hold `Ctrl` (`Cmd` on Mac) to multi-select files, right-click and choose "AI: Analyze Relationships of Selected Files." AI reads all selected files and returns analysis.
 
 <!-- ![placeholder: Screenshot of explorer with multi-selected files and AI analysis context menu item](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image10.png) -->
+![Screenshot of the explorer with multiple selected files and an AI analysis item in the context menu](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image10.png)
 
 # Chapter 6: Shortcuts and UX Optimization (3 Minutes)
 
@@ -799,6 +809,7 @@ export function createStatusBarItem(context: vscode.ExtensionContext) {
 `$(hubot)` is VS Code built-in icon syntax. You can find all icons in [Codicon library](https://microsoft.github.io/vscode-codicons/dist/codicon.html).
 
 <!-- ![placeholder: Screenshot of AI Bot icon displayed in VS Code status bar](../../../../zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image11.png) -->
+![Screenshot of the AI Bot icon displayed in the VS Code status bar](/zh-cn/stage-3/cross-platform/3.12-vscode-extension/images/image11.png)
 
 # Chapter 7: Publish to Marketplace (Optional)
 

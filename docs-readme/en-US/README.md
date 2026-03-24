@@ -131,6 +131,7 @@ Easy-Vibe takes you from 0 to 1 through the following stages:
 
 ## 🔥 News
 
+- **[2026-03-25]** 📚 **English Documentation Fully Updated**: Complete English translations now available for Stage 2 (Full-stack Development) and Stage 3 (Advanced Development) sections.
 - **[2026-03-02]** 🦞 **OpenClaw & AI Agent Friendly Support**: Added `llms.txt` AI navigation file, enabling OpenClaw, Claude, Cursor, Trae and other AI Agents to quickly understand the repository structure and accurately locate tutorial content. Hope every 🦞 enjoys learning!
 - **[2026-03-01]** [Advanced Development Section](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/) comprehensively upgraded: Added seven deep guides for Claude Code (MCP, Skills, Agent Teams, etc.) and eight cross-platform development tutorials (PWA, Electron, NFT, VS Code Extensions, Qt Industrial Applications, etc.).
 - **[2026-02-25]** Updated [Appendix Knowledge Base](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/), covering 9 knowledge domains and 80+ interactive topics.
