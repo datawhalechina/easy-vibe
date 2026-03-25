@@ -1,5 +1,5 @@
 ---
-title: 'Where to Find Ideas: 3 Beginner-Friendly Sources'
+title: 'Where to Find Ideas: 3 Reference Sources That Work Best for Beginners'
 description: 'A beginner-friendly guide to product idea discovery. This appendix focuses on websites for browsing idea lists, trend sources, real business signals, and VC requests so you can find a more concrete direction faster.'
 ---
 
@@ -7,7 +7,7 @@ description: 'A beginner-friendly guide to product idea discovery. This appendix
 const duration = 'About <strong>1.5 hours</strong>'
 </script>
 
-# Where to Find Ideas: 3 Beginner-Friendly Sources
+# Where to Find Ideas: 3 Reference Sources That Work Best for Beginners
 
 <a id="top-idea-sources"></a>
 

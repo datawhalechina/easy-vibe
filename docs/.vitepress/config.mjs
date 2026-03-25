@@ -390,20 +390,20 @@ const productManagerSidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Where to Find Ideas: 3 Beginner-Friendly Sources',
+        text: 'Where to Find Ideas: 3 Reference Sources That Work Best for Beginners',
         link: '/en/stage-1/appendix-idea-sources/'
       },
       {
-        text: 'Jobs to Be Done',
+        text: 'Double Diamond: First Do the Right Thing, Then Do It Right',
+        link: '/en/stage-1/appendix-double-diamond/'
+      },
+      {
+        text: 'Use Jobs to Be Done to Find What Users Really Want to Get Done',
         link: '/en/stage-1/appendix-jobs-to-be-done/'
       },
       {
-        text: 'The Mom Test',
+        text: 'The Mom Test: A User Interview Method for Validating Demand',
         link: '/en/stage-1/appendix-mom-test/'
-      },
-      {
-        text: 'Double Diamond',
-        link: '/en/stage-1/appendix-double-diamond/'
       }
     ]
   },
@@ -2197,7 +2197,7 @@ Sitemap: ${siteUrl}/sitemap.xml
         nav: [
           { text: 'Home', link: '/en/' },
           {
-            text: 'Novice & PM',
+            text: 'Getting Started',
             link: '/en/stage-0/',
             activeMatch: '/en/stage-[01]/'
           },

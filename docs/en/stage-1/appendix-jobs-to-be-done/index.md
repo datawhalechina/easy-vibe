@@ -1,5 +1,5 @@
 ---
-title: 'Jobs to Be Done: Find What Users Are Really Trying to Get Done'
+title: 'Use Jobs to Be Done to Find What Users Really Want to Get Done'
 description: 'A beginner-friendly introduction to Jobs to Be Done. Learn how to turn a vague idea into a clearer user scenario, a sharper need, and a more grounded MVP direction.'
 ---
 
@@ -7,7 +7,7 @@ description: 'A beginner-friendly introduction to Jobs to Be Done. Learn how to 
 const duration = 'About <strong>1.5 hours</strong>'
 </script>
 
-# Jobs to Be Done: Find What Users Are Really Trying to Get Done
+# Use Jobs to Be Done to Find What Users Really Want to Get Done
 
 <a id="top-jtbd"></a>
 

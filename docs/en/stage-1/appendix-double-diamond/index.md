@@ -1,5 +1,5 @@
 ---
-title: 'Double Diamond: First Choose the Right Problem, Then Build the Right Solution'
+title: 'Double Diamond: First Do the Right Thing, Then Do It Right'
 description: 'A beginner-friendly introduction to the Double Diamond. Understand Discover, Define, Develop, and Deliver so you do not rush into prototypes before the real problem is clear.'
 ---
 
@@ -7,7 +7,7 @@ description: 'A beginner-friendly introduction to the Double Diamond. Understand
 const duration = 'About <strong>1.5 hours</strong>'
 </script>
 
-# Double Diamond: First Choose the Right Problem, Then Build the Right Solution
+# Double Diamond: First Do the Right Thing, Then Do It Right
 
 <a id="top-dd"></a>
 

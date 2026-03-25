@@ -1,5 +1,5 @@
 ---
-title: 'The Mom Test: How to Validate Demand Through User Interviews'
+title: 'The Mom Test: A User Interview Method for Validating Demand'
 description: 'A beginner-friendly introduction to The Mom Test. Learn how to avoid polite feedback, ask about real behavior and real costs, and turn “sounds good” into more reliable demand evidence.'
 ---
 
@@ -7,7 +7,7 @@ description: 'A beginner-friendly introduction to The Mom Test. Learn how to avo
 const duration = 'About <strong>1.5 hours</strong>'
 </script>
 
-# The Mom Test: How to Validate Demand Through User Interviews
+# The Mom Test: A User Interview Method for Validating Demand
 
 <a id="top-mom"></a>
 

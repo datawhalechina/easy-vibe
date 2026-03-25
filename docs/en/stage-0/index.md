@@ -98,19 +98,19 @@ Master the Vibe Coding workflow, learn to deconstruct requirements, and independ
     description="Use reference apps, trend sources, business signals, and VC lists to narrow down better product directions."
   />
   <NavCard
+    href="/en/stage-1/appendix-double-diamond/"
+    title="Double Diamond"
+    description="Learn when to explore the problem first and when to start comparing solutions and prototypes."
+  />
+  <NavCard
     href="/en/stage-1/appendix-jobs-to-be-done/"
     title="Jobs to Be Done"
-    description="Turn vague product ideas into clearer user scenarios, real needs, and better MVP directions."
+    description="Use JTBD to understand what users really want to get done and judge product direction more clearly."
   />
   <NavCard
     href="/en/stage-1/appendix-mom-test/"
     title="The Mom Test"
-    description="Learn how to ask better interview questions and collect evidence instead of just encouragement."
-  />
-  <NavCard
-    href="/en/stage-1/appendix-double-diamond/"
-    title="Double Diamond"
-    description="Learn when to explore the problem first and when to start comparing solutions and prototypes."
+    description="Learn how to talk to users properly and avoid false-positive feedback like “that sounds good.”"
   />
 </NavGrid>
 
