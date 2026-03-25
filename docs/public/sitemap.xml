@@ -765,7 +765,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/guide/introduction/</loc>
-    <lastmod>2026-03-02T02:20:17+08:00</lastmod>
+    <lastmod>2026-03-25T15:06:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/guide/introduction/"/>
@@ -788,7 +788,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/</loc>
-    <lastmod>2026-03-02T02:20:17+08:00</lastmod>
+    <lastmod>2026-03-25T15:06:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/"/>
@@ -809,13 +809,6 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/1.0-finding-great-idea/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-1/1.0-finding-great-idea/"/>
-  </url>
-  <url>
-    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/1.0-finding-great-idea/index.temp-0114254/</loc>
-    <lastmod>2026-03-25T01:55:32.527Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/1.0-finding-great-idea/index.temp-0114254/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/1.1-introduction-to-ai-ide/</loc>
@@ -899,7 +892,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-double-diamond/</loc>
-    <lastmod>2026-03-25T06:31:44.977Z</lastmod>
+    <lastmod>2026-03-25T15:06:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-double-diamond/"/>
@@ -907,10 +900,11 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-idea-sources/</loc>
-    <lastmod>2026-03-25T06:47:22.347Z</lastmod>
+    <lastmod>2026-03-25T17:13:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-idea-sources/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-idea-sources/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-industry-scenarios/</loc>
@@ -922,7 +916,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-jobs-to-be-done/</loc>
-    <lastmod>2026-03-25T06:31:44.976Z</lastmod>
+    <lastmod>2026-03-25T15:06:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-jobs-to-be-done/"/>
@@ -930,7 +924,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-mom-test/</loc>
-    <lastmod>2026-03-25T06:31:44.976Z</lastmod>
+    <lastmod>2026-03-25T15:06:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-mom-test/"/>

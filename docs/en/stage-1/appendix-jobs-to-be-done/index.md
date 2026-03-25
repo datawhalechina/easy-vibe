@@ -48,7 +48,7 @@ This article explains JTBD in plain language and turns it into something you can
 4. How JTBD connects to AI product thinking, interviews, and prompt-based analysis
 
 <a id="jtbd-what"></a>
-## 1. What Jobs to Be Done Means [↩ Back to top](#top-jtbd)
+## [1. What Jobs to Be Done Means](#top-jtbd)
 
 Jobs to Be Done, often shortened to **JTBD**, is built around a simple idea: users “hire” a product to get something done.
 
@@ -99,7 +99,7 @@ On the surface, they are buying breakfast. In JTBD terms, they may really be try
 - avoid being hungry before arriving at work
 - keep their morning routine moving without disruption
 
-The product they “hire” is not really a sandwich. It is a reliable way to keep the morning moving.
+The thing they "hire" is not really one specific sandwich brand. It is a reliable way to keep the morning moving.
 
 The same logic applies to AI products. If you want to build an AI meeting summary tool, JTBD helps you step back from feature brainstorming and ask:
 
@@ -178,7 +178,7 @@ What would make the user say this was truly helpful?
 If you cannot say what “useful enough” means, the direction is probably still not focused enough.
 
 <a id="jtbd-formula"></a>
-## 5. A One-Sentence Formula You Can Reuse [↩ Back to top](#top-jtbd)
+## [5. A One-Sentence Formula You Can Reuse](#top-jtbd)
 
 Use this sentence pattern:
 
@@ -337,7 +337,7 @@ your idea usually becomes much sharper.
 It also helps you avoid one of the biggest mistakes in AI products: falling in love with capability demos instead of user progress.
 
 <a id="jtbd-ai"></a>
-## 12. How AI Can Help You Practice JTBD [↩ Back to top](#top-jtbd)
+## [12. How AI Can Help You Practice JTBD](#top-jtbd)
 
 JTBD is not an AI invention, but AI can be a very helpful research assistant, organizer, and challenger. The key is this:
 

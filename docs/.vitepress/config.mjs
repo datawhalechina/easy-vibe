@@ -390,6 +390,10 @@ const productManagerSidebarEn = [
     collapsed: false,
     items: [
       {
+        text: 'Where to Find Ideas: 3 Beginner-Friendly Sources',
+        link: '/en/stage-1/appendix-idea-sources/'
+      },
+      {
         text: 'Jobs to Be Done',
         link: '/en/stage-1/appendix-jobs-to-be-done/'
       },
