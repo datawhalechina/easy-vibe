@@ -14,7 +14,7 @@ Understand the core concepts, development history, and cutting-edge technical pr
     description="Master the art of efficient dialogue with AI to unlock the potential of large models"
   />
   <NavCard
-    href="/zh-cn/appendix/ai-evolution"
+    href="/en/appendix/8-artificial-intelligence/ai-history"
     title="AI Evolution History"
     description="Review key milestones in AI development and understand the trajectory of technological evolution"
   />
@@ -150,7 +150,7 @@ Basic knowledge of software development:
     description="Basic knowledge of API interface design and development"
   />
   <NavCard
-    href="/zh-cn/appendix/ide-intro/"
+    href="/en/appendix/2-development-tools/ide-basics"
     title="IDE Principles"
     description="Understand the internal working mechanism of Integrated Development Environments (IDEs)"
   />

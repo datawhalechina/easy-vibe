@@ -395,11 +395,11 @@ const productManagerSidebarEn = [
       },
       {
         text: 'Comparison of Seven AI Programming Tools',
-        link: '/zh-cn/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
+        link: '/en/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial'
       },
       {
         text: 'Design Websites with Agents',
-        link: '/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
+        link: '/en/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents'
       }
     ]
   }
@@ -706,7 +706,7 @@ const appendixSidebarEn = [
     items: [
       {
         text: 'IDE Basics',
-        link: '/zh-cn/appendix/2-development-tools/ide-basics'
+        link: '/en/appendix/2-development-tools/ide-basics'
       },
       {
         text: 'Command Line & Shell',
@@ -2169,7 +2169,7 @@ Sitemap: ${siteUrl}/sitemap.xml
           },
           {
             text: 'Appendix',
-            link: '/zh-cn/appendix/index',
+            link: '/en/appendix/index',
             activeMatch: '/en/appendix/'
           }
         ],

@@ -23,7 +23,12 @@
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Leer en línea</a> ·
   <a href="#-navegación">Mapa de aprendizaje</a> ·
-  <a href="#contact">Comunidad</a>
+  <a href="#contact">Comunidad</a><br>
+  <span style="font-size: 0.85em; color: #888;">
+    <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> ·
+    <a href="#-navigation">Learning Map</a> ·
+    <a href="#contact">Community</a>
+  </span>
 </p>
 
 <p align="center">

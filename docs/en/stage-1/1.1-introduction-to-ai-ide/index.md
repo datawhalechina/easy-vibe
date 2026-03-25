@@ -64,7 +64,7 @@ That's why you need an IDE (Integrated Development Environment). It displays cod
 ## 2. What Is an IDE, and Why Do You Need One
 
 ::: info Pre-reading Tip
-If you're not yet familiar with what an IDE is or what each interface element does, we recommend reading [IDE Basics](/zh-cn/appendix/2-development-tools/ide-basics) first to learn the basic concepts and common features.
+If you're not yet familiar with what an IDE is or what each interface element does, we recommend reading [IDE Basics](/en/appendix/2-development-tools/ide-basics) first to learn the basic concepts and common features.
 :::
 
 In the early days of programming, all we needed was a simple text editor and a language processor. But as projects grew more complex, developers urgently needed a tool that could efficiently manage files, support syntax highlighting, and enable debugging — and thus the Integrated Development Environment (IDE) was born.
@@ -99,7 +99,7 @@ You can even use it to edit Markdown documents.
 
 In short, an IDE is a set of tools that helps developers write code and run programs efficiently.
 
-For more detailed explanations, check out the [Virtual IDE Visualization section in the Appendix](/zh-cn/appendix/2-development-tools/ide-basics).
+For more detailed explanations, check out the [Virtual IDE Visualization section in the Appendix](/en/appendix/2-development-tools/ide-basics).
 
 ## 3. How Is an AI IDE Different from a Regular IDE
 
@@ -503,7 +503,7 @@ The specific function of each part is:
 - **Panel**: Contains terminal and output windows.
 - **Status Bar**: Displays current environment status.
 
-For more detailed explanations, please refer to the [Virtual IDE Visualization section in the Appendix](/zh-cn/appendix/2-development-tools/ide-basics).
+For more detailed explanations, please refer to the [Virtual IDE Visualization section in the Appendix](/en/appendix/2-development-tools/ide-basics).
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -757,7 +757,7 @@ In the next chapter, we'll shift focus from "knowing how to use tools" to "makin
       <span style="font-size: 12px; color: #909399">When you see computer terms you don't understand, quickly look up their meanings here. Recommended to read through once.</span>
     </el-col>
     <el-col :span="12">
-      <a href="/zh-cn/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Appendix 2: Visual Studio Code Menu Bar Analysis</b></a><br/>
+      <a href="/en/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Appendix 2: Visual Studio Code Menu Bar Analysis</b></a><br/>
       <span style="font-size: 12px; color: #909399">When you don't know what the AI IDE interface is for, use the following content to consult with AI, or view directly.</span>
     </el-col>
   </el-row>
