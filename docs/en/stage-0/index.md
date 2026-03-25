@@ -93,6 +93,11 @@ Master the Vibe Coding workflow, learn to deconstruct requirements, and independ
 
 <NavGrid>
   <NavCard
+    href="/en/stage-1/appendix-idea-sources/"
+    title="Where to Find Ideas"
+    description="Use reference apps, trend sources, business signals, and VC lists to narrow down better product directions."
+  />
+  <NavCard
     href="/en/stage-1/appendix-jobs-to-be-done/"
     title="Jobs to Be Done"
     description="Turn vague product ideas into clearer user scenarios, real needs, and better MVP directions."

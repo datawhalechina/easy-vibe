@@ -1,6 +1,6 @@
 ---
 title: 'The Mom Test: How to Validate Demand Through User Interviews'
-description: 'A beginner-friendly introduction to The Mom Test. Learn how to stop collecting polite praise and start getting evidence from real behavior, real costs, and real user situations.'
+description: 'A beginner-friendly introduction to The Mom Test. Learn how to avoid polite feedback, ask about real behavior and real costs, and turn “sounds good” into more reliable demand evidence.'
 ---
 
 <script setup>
@@ -15,248 +15,293 @@ const duration = 'About <strong>1.5 hours</strong>'
 
 <ChapterIntroduction
   :duration="duration"
-  :tags="['User Interviews', 'Validation', 'Research', 'Product Discovery']"
+  :tags="['User Interviews', 'Demand Validation', 'User Research', 'Product Discovery']"
   coreOutput="1 set of interview questions more likely to reveal real user information"
   expectedOutput="Stop treating polite encouragement as validation and start judging direction through real behavior"
 >
 
-When beginners start product research, they often ask questions like:
+When many beginners do product research for the first time, they assume the important thing is simply to "talk to some people." So they ask friends, classmates, coworkers, or family:
 
 - What do you think of this idea?
 - Would you use this if I built it?
 - Does this feature sound useful?
 
-The answers usually sound encouraging. The problem is that they are often not useful. They are often just politeness, support, or a natural instinct to avoid discouraging you face-to-face.
+The replies usually sound encouraging:
 
-That is exactly what **The Mom Test** is about: not how to get nicer conversations, but how to ask questions that reveal real evidence instead of polite support.
+- Sounds good
+- That seems useful
+- I think you should try it
+
+The problem is that these answers usually do not help you decide anything. They are often just politeness, support, or a natural instinct not to discourage you in the moment. You think you collected "market validation," but what you really collected was a pile of comforting feedback that is hard to use.
+
+That is exactly what **The Mom Test** is for. Its central reminder is:
+
+**users are usually not trying to lie to you. The real problem is that your question format often pushes them toward nice but useless answers.**
 
 </ChapterIntroduction>
 
 ::: info Minimal SOP
-**Goal**: After this, you should be better at talking to users in a way that gives you useful evidence, not just nice-sounding feedback.
+**Goal**: After this, you should be much clearer on how to talk to users without getting stuck with “sounds good,” and instead get information that actually helps you judge direction.
 
-**Action**: Rewrite 5 interview questions so they focus on real past behavior instead of opinions about your idea.
+**Action**: Rewrite 5 questions you would normally ask so they focus on “when did this last happen?” and “how did you handle it?”
 
-**Result**: You will leave with a clearer sense of what counts as evidence and what is just encouragement.
+**Result**: You will get better at separating opinions from evidence, and encouragement from demand.
 
-**Quick links**: [What The Mom Test is](#mom-what) · [Core principles](#mom-principles) · [How AI can help](#mom-ai)
+**Quick links**: [What The Mom Test is](#mom-what) · [Three core principles](#mom-principles) · [How AI can help](#mom-ai)
 :::
 
 ## What You Will Learn
 
-1. What problem The Mom Test is really solving
-2. Why many “user interviews” fail to produce useful truth
-3. How to rewrite weak, leading questions into stronger ones
-4. How The Mom Test connects with JTBD, validation, and MVP decisions
+1. What problem The Mom Test is actually solving, and why many "user interviews" fail to uncover useful truth
+2. The core principles of the method: ask less about opinions and future hypotheticals, and more about real behavior and real facts
+3. How to rewrite low-value questions into stronger interview questions
+4. How The Mom Test works together with JTBD, validation, and MVP decisions
 
 <a id="mom-what"></a>
-## 1. What The Mom Test Is [↩ Back to top](#top-mom)
+## [1. What The Mom Test Really Is](#top-mom)
 
 The Mom Test comes from Rob Fitzpatrick's book of the same name. The title sounds playful, but the point is sharp:
 
-Even your mom will struggle to tell you your idea is bad if you ask the wrong question.
+**even your mom will struggle to tell you your idea is bad if you ask the wrong way.**
 
-The problem is not that users are trying to lie. The problem is that your question format often invites nice but weak answers.
+The reason is not that she is dishonest. It is that:
 
-It is not really “don't ask your mom.” It is:
+- she does not want to hurt you
+- she naturally wants to encourage you
+- she will often answer in the direction your question already suggests
 
-**don't ask in a way that makes almost anyone give you a flattering answer.**
+And this is not only about your mom. Friends, coworkers, former classmates, and even strangers often do the same thing when they react to a product idea. A positive answer does not necessarily mean the demand is real. It may simply mean you asked in a way that made a flattering answer easy.
+
+So the point of The Mom Test is not really "do not ask your mom." It is:
+
+**do not ask in a way that makes almost anyone answer by encouraging you.**
+
+What this method really teaches is how to use conversation to get closer to real demand instead of collecting feel-good commentary.
 
 ## 2. The Core Problem It Solves
 
-The Mom Test helps you avoid a very common mistake:
+The Mom Test mainly helps you avoid one very common cognitive mistake:
 
 **mistaking polite positive feedback for real demand.**
 
-Questions like these are dangerous:
+For example, people often ask:
 
-- What do you think of my app idea?
-- Would you use this if it existed?
-- Would you pay for this?
+- What do you think of this app idea?
+- If I built an AI tool that rewrites resumes, would you use it?
+- Does this feature sound valuable?
 
-They ask for opinion, prediction, or encouragement. Those are much less reliable than actual behavior.
+These questions have three things in common:
 
-People also tend to overestimate their future selves. They imagine they will be more disciplined, more experimental, or more willing to pay than they really are.
+- they ask for opinions
+- they contain some amount of suggestion or framing
+- they talk about a future that has not happened yet
 
-That is why “I would probably use that” is usually much weaker than “last week I spent three hours doing this manually.”
+People are usually unreliable when answering about opinion and imagined future behavior. They tend to overestimate their own interest, their own follow-through, and their own willingness to pay.
+
+That is why The Mom Test keeps reminding you:
+
+- do not trust praise for your idea too quickly
+- do not trust predictions about future behavior too quickly
+- bring the conversation back to what the user has already done in real life
+
+Compared with "Would you use this?", a question like "How did you handle this last time?" is usually much closer to truth.
 
 <a id="mom-principles"></a>
-## 3. Three Core Principles [↩ Back to top](#top-mom)
+## [3. Three Core Principles](#top-mom)
 
-### 3.1 Talk about their life, not your idea
+If you want to remember only the most important part first, remember these three principles.
 
-Many weak interviews begin with too much explanation of your product. Once you explain too much, the other person often shifts into “supportive mode.”
+### 3.1 Talk less about your idea and more about the user's real past experience
 
-Instead, ask about their actual experience:
+Many weak interviews start with too much explanation: your solution, your excitement, your product concept, your feature plan. Once you do that, the other person often shifts into "supportive mode."
+
+A better direction is to center the conversation on their real experience:
 
 - When was the last time this happened?
-- What were you doing?
+- What were you doing at the time?
 - How did you handle it?
-- Which part felt annoying or difficult?
+- Which step felt the most annoying?
 
-### 3.2 Ask about facts, not opinions
+Questions like these pull the conversation back into reality instead of keeping it in imagined preference.
 
-“Sounds useful” is weak.  
-“I spent 3 hours doing this last week” is much stronger.
+### 3.2 Ask less about abstract opinions and more about concrete facts
 
-Useful information usually looks like this:
+"That sounds useful," "Seems nice," and "I think I would like that" are all too abstract to guide product decisions.
 
-- I spent two hours on this last week
-- I am currently holding it together with Excel and chat
-- I already paid for something related to this
-- My real fear is making mistakes, not moving slowly
+Higher-value information usually looks more like this:
 
-### 3.3 Look for the problem, not their proposed solution
+- I spent two hours dealing with this last week
+- Right now I am holding it together with Excel and chat
+- I already paid for something related to this last month
+- My biggest fear is not slowness, it is making a mistake
 
-Users are usually better at describing pain than designing the right product.
+That kind of information helps you judge the intensity of the problem, how often it happens, and whether anyone might pay to solve it.
+
+### 3.3 Ask less about the user's preferred solution and pay more attention to how they solve the problem today
+
+Users are often good at describing pain, but not always good at designing the best product.
 
 If you ask:
 
-- Would you like an AI to do this automatically?
+- Would you want an AI to do this automatically?
 - Would a smart feature help?
 
-you often get a vague opinion about your idea rather than evidence about the problem.
+you usually get a vague opinion about a proposed solution, not evidence about the underlying need.
 
 Better questions are:
 
-- What do you do now?
+- What do you do today?
 - Why do you do it that way?
-- What is frustrating about that method?
+- What is bad about that method?
 
-## 4. Why People Give Nice but Unhelpful Answers
+Seeing the current workaround clearly is often more valuable than asking "What do you want us to build?"
 
-If you understand this, you make fewer mistakes during interviews.
+## 4. Why People Keep Giving Nice but Unhelpful Answers
 
-### 4.1 People want to be polite
+If you understand this part, you will make fewer mistakes during interviews.
 
-Especially when the person knows you, they often do not want to say:
+### 4.1 People naturally try to be polite
 
-- this does not sound very strong
+Especially when the person knows you, it is hard for them to say:
+
+- this direction does not sound very strong
 - I would never use this
-- this is not a real problem for me
+- this is not important enough for me
 
-So they soften the truth.
+They are much more likely to say something like "sounds interesting" or "could be useful."
 
 ### 4.2 People overestimate their future selves
 
-They sincerely believe they will:
+Many people honestly believe their future self will:
 
 - be more disciplined
-- be more willing to try something new
+- be more willing to learn
 - be more willing to pay
-- be more proactive next time
+- be more willing to try new tools
 
-That makes future-intention answers especially risky.
+So the sentence "I would probably use that" often does not mean they really will.
 
-### 4.3 Your question can secretly lead the answer
+### 4.3 Your question format is already shaping the answer
 
 When you ask:
 
-- Does this sound useful?
-- This feature would help, right?
+- My idea sounds pretty good, right?
+- This feature would help you, right?
 
-you are already hinting at the “good” answer.
+you are already hiding the "good answer" inside the question.
 
-That is one reason The Mom Test warns you not to turn interviews into a search for reassurance.
+That is one reason The Mom Test strongly warns you:
+
+**do not turn the interview into a search for reassurance.**
 
 ## 5. Weak Questions vs Better Questions
+
+These comparisons are useful because almost every beginner asks some version of them.
 
 | Weak question | Better question |
 | --- | --- |
 | What do you think of this idea? | When was the last time this happened to you? |
-| Would you use this? | How do you handle this now? |
-| Would you pay for this? | Have you already spent time or money on this problem? |
-| Does this feature matter? | What part of the process feels slow, frustrating, or risky? |
-| Would you want an AI to do this? | Why have you not found a better workaround yet? |
+| Would you use this if it existed? | How do you handle this now? |
+| Would you pay for this? | Have you already spent time or money on this problem? What did you spend it on? |
+| Is this feature important? | Which step in the process feels slowest, most frustrating, or least trustworthy? |
+| Would you want an AI to do this automatically? | Why have you not found a better workaround yet? |
 
-The key shift is:
+The most important thing in the table is not the wording itself, but the direction of the shift:
 
 - from opinion to fact
 - from future to past
-- from your solution to their problem
+- from your solution to the user's problem
 
 ## 6. A Simple Interview Flow You Can Use Right Away
+
+If you want to talk to someone now, you can use this order directly.
 
 ### 6.1 Open as a learner, not a seller
 
 For example:
 
-> I'm trying to understand how people deal with this in real life. I'm not selling anything right now.
+> I am trying to understand how people actually deal with this in real life. I am not selling anything right now.
 
-That lowers the pressure to encourage you.
+That makes it easier for the other person to drop the instinct to encourage you.
 
 ### 6.2 Start from the last real incident
 
-Good starting questions:
+Good opening questions are:
 
 - When was the last time this happened?
 - What happened?
 - What did you do first?
 
-Once the conversation enters a real event, information quality usually improves.
+Once the conversation enters one specific real event, the quality of the information usually improves a lot.
 
-### 6.3 Then ask about behavior, costs, and alternatives
+### 6.3 Then ask about behavior, cost, and alternatives
 
-- What do you do now?
-- What is annoying about that method?
+Continue with questions like:
+
+- What do you do today?
+- What feels worst about that method?
 - How much time, money, or energy does it cost?
-- What else have you tried?
+- Have you tried anything else? Why did you stop?
 
 ### 6.4 Only then judge pain and priority
 
-You do not need to ask “how painful is this?” directly. Look for clues:
+You do not have to ask directly, "How painful is this?" You can often judge it from the details:
 
-- does it happen often?
+- does this happen often?
 - are they already actively patching the problem?
-- have they already paid some cost?
-- do they speak about it with emotion?
+- have they already paid some real cost?
+- do they talk about it with visible frustration or emotion?
+
+Those clues are much more useful than asking, "Is this a pain point for you?"
 
 ## 7. A More Complete Example
 
-Suppose you want to build an AI resume-improvement product for students.
+Suppose you want to build an AI product that helps college students improve resumes.
 
 ### Weak questions
 
-> What do you think of an AI resume optimizer?  
-> If it automatically rewrote your resume for job descriptions, would you use it?
+You ask a classmate:
 
-Likely answers:
+> I want to build an AI resume optimizer. What do you think?  
+> If it could automatically rewrite your resume for a job description, would you use it?
+
+They will probably say:
 
 - sounds good
-- probably useful
-- I would try it if it was free
+- I think that could be useful
+- I would try it if it were free
 
-Those answers do not tell you much.
+Those answers give you almost no reliable signal about the actual strength of the demand.
 
 ### Better questions
 
-Try this instead:
+You can change the conversation to this:
 
 > When was the last time you edited your resume?  
-> Why did you need to edit it?  
+> Why did you need to change it?  
 > How did you do it?  
 > Which step felt hardest?  
-> Did you ask anyone for help?  
+> Did you ask anyone else to review it?  
 > Have you ever spent money or a lot of time on this?
 
-What you may learn:
+From these questions, you may learn things like:
 
-- many people do not mainly struggle with writing, but with tailoring
-- the biggest pain is often not formatting, but not knowing what belongs
-- delay is often not laziness, but exhaustion from repeated revision
-- current workarounds include seniors, templates, AI tools, and friends
+- many people are not bad at writing, but bad at tailoring the resume for different roles
+- the biggest pain is often not formatting, but not knowing which experience belongs
+- they delay not because they are lazy, but because every revision round drains them
+- current workarounds already include seniors, templates, AI tools, and friends
 
-That is much closer to truth.
+That gets you much closer to the real problem.
 
 ## 8. How The Mom Test Works with JTBD
 
-If JTBD helps you see what progress users are trying to make, The Mom Test helps you:
+If JTBD helps you see what kind of progress the user is trying to make, The Mom Test teaches you:
 
-**check whether that job is actually real.**
+**how to verify through interviews whether that job is actually real.**
 
-You can combine them like this:
+You can combine the two like this:
 
-1. use JTBD to draft a job hypothesis
+1. use JTBD to draft one job hypothesis
 2. use The Mom Test style questions to ask about the last real situation
 3. judge whether that job is frequent, painful, and worth prioritizing
 
@@ -273,14 +318,14 @@ Now validate it with questions like:
 
 That is how the two methods connect:
 
-- JTBD helps define the hypothesis
+- JTBD helps define the need hypothesis
 - The Mom Test helps validate it through conversation
 
 ## 9. Common Beginner Mistakes in Interviews
 
 ### 9.1 Turning the interview into a product presentation
 
-If you explain too much, the other person starts helping you instead of telling you the truth.
+If you explain too much about your idea, the other person starts helping you instead of telling you the truth.
 
 ### 9.2 Interviewing only friends
 
@@ -288,21 +333,21 @@ Friends are not useless, but they are more likely to encourage you. You need at 
 
 ### 9.3 Asking about features too early
 
-If the problem is still unclear, detailed feature questions usually mean you are jumping into solutions too soon.
+If the problem is still unclear, detailed feature questions usually mean you are moving into solution mode too early.
 
-### 9.4 Treating “I would use it” as validation
+### 9.4 Treating "I would use it" as validation
 
-Interviews help you judge direction, but they are not the whole validation step. Real validation still depends on real cost: time, switching effort, trial behavior, or payment.
+Interviews can help you judge direction, but interviews are not the whole validation step. Real validation still depends on real cost: time, switching effort, trial behavior, or payment.
 
 ### 9.5 Not organizing what you learned
 
-If you do not整理 the conversation, it quickly becomes a blurry memory. Try to capture:
+If you do not organize the conversation afterward, it quickly becomes a blurry impression. Try to capture:
 
 - repeated problems
-- emotional words
+- emotional words in the user's own phrasing
 - current workarounds
-- already-paid costs
-- your new judgment
+- costs already paid
+- your updated judgment
 
 ## 10. A Reusable Question Checklist
 
@@ -332,44 +377,48 @@ If you want to start quickly, this set is broad enough for many interviews.
 
 - If this problem came up again, what would an ideal solution feel like?
 
-This is okay to ask near the end, but not at the start. First you need facts, not wishes.
+This is fine near the end, but it should not come first. Earlier in the conversation, you want facts more than wishes.
 
 ## 11. Summary
 
-The Mom Test is not mainly about charm or conversation skills. It is about building better judgment.
+The most important contribution of The Mom Test is not a set of "better conversation tricks." It is a more sober way to judge what you hear:
 
-Do not over-trust:
+- do not trust praise for your idea too quickly
+- do not treat "I would use that" as real demand
+- do not turn interviews into a search for approval
 
-- compliments
-- future promises
-- “I would probably use that”
+The most useful conversations usually keep coming back to:
 
-Trust more in:
+- the user's most recent real experience
+- how they handle the problem today
+- what cost they have already paid
+- where they feel obvious discomfort
 
-- recent real behavior
-- current workarounds
-- real costs already paid
-- repeated pain patterns
+When you start asking in this way, the answers may sound less flattering, but they are usually much more useful.
 
-Useful truth may sound less flattering, but it is far more valuable than encouraging noise.
+**In product work, useful truth is always better than encouraging noise.**
 
 <a id="mom-ai"></a>
-## 12. How AI Can Help with Interviews [↩ Back to top](#top-mom)
+## [12. How AI Can Help with Interviews](#top-mom)
 
-AI cannot replace real user interviews, but it can be a strong helper before, during, and after them.
+The Mom Test is still a method for talking to real people, so AI cannot replace real interviews. But AI is extremely useful before, during, and after interviews, especially for beginners who need structure.
 
 ### 12.1 Rewrite weak questions
 
-```text
-I plan to ask users:
-1. What do you think of my AI resume tool?
-2. Would you use it?
-3. Would you pay for it?
+Many people know they should not ask, "What do you think of my idea?", but they still drift back to that kind of wording. You can ask AI to rewrite your draft questions first:
 
-Please rewrite these using The Mom Test style.
+```text
+Below are the questions I plan to ask in user interviews:
+[paste your questions]
+
+Please rewrite them using The Mom Test principles:
+1. remove opinion-based questions
+2. remove future hypothetical questions
+3. turn them into questions about real past behavior, current alternatives, and real costs
+4. organize the result into 8-10 interview questions I can actually use
 ```
 
-A very beginner-style input is perfectly fine:
+A very beginner-style input also works:
 
 ```text
 I want to ask users:
@@ -383,29 +432,30 @@ Please turn these into better interview questions.
 Possible AI output:
 
 ```text
-Try asking:
+Rewritten questions:
+
 1. When was the last time you edited your resume?
 2. Why did you need to edit it?
 3. How did you do it?
-4. What part took the most effort?
-5. Did you ask anyone for help?
+4. Which part took the most time?
+5. Did you ask anyone else to review it?
 6. Have you ever spent money or a lot of time solving this?
 ```
 
-This is useful because it turns opinion-seeking questions into behavior-seeking questions.
+That output is useful because it turns opinion-seeking questions into behavior-seeking questions.
 
 ### 12.2 Create different interview guides for different user types
 
-The same problem feels different to students, hiring managers, and senior peers. AI can help generate separate interview guides for each group.
+The same problem feels different to different user groups. Students, HR people, and senior peers often care about different parts of the workflow. AI can generate separate interview guides for each group.
 
-Example input:
+For example:
 
 ```text
-I want to interview two groups:
-1. students applying for internships for the first time
-2. seniors who often review resumes
+I want to talk to two groups:
+1. college students applying for internships for the first time
+2. seniors who have reviewed many resumes
 
-Please create 6 interview questions for each group.
+Please create a 6-question interview guide for each group.
 ```
 
 Possible AI output:
@@ -424,10 +474,28 @@ For seniors:
 ...
 ```
 
+That makes interview prep much easier because you do not need to invent every question from scratch.
+
 ### 12.3 Sort interview notes into facts vs opinions
 
+After interviews, the problem is often not "too little information," but "too much scattered information." AI is good at turning messy notes into structured evidence:
+
 ```text
-Here are notes from one interview:
+Below are notes from 3 user interviews.
+Please organize them using The Mom Test:
+1. which parts are facts and which are opinions
+2. what the user's last real behavior was
+3. what the current workaround is
+4. what time, money, or effort cost they have already paid
+5. which problems show up repeatedly
+6. which statements sound positive but have weak evidence
+```
+
+Simple beginner input:
+
+```text
+Here are my notes from one interview:
+
 - she said she would probably try such a tool
 - last week she spent one full evening editing her resume
 - she currently asks friends for feedback
@@ -445,26 +513,26 @@ Opinion:
 Facts:
 - she spent one full evening editing her resume
 - she currently depends on friends for feedback
-- she struggles to tell when a resume is good enough
+- she is not sure when the resume is good enough
 
-Useful demand evidence:
+Useful evidence:
 - the problem happened recently
-- she has already paid a meaningful time cost
-- her workaround depends on other people and is unstable
+- she already paid a meaningful time cost
+- the current workaround depends on other people
 ```
 
-That makes it much easier for beginners to see which notes support a decision and which ones are just conversational noise.
+This is especially useful because it helps beginners separate "sounds nice" from "supports a real decision."
 
 ### 12.4 Do a light web search before interviews
 
-Before you even begin interviews, AI can help with a light external scan:
+Before interviews even begin, AI can help with a light external scan:
 
 - how people complain about the problem in public communities
-- what tools get criticized most often
-- whether users already spend money on related solutions
+- which tools get criticized most often
+- whether people already spend money on related solutions
 - what alternatives already exist
 
-Example input:
+Example prompt:
 
 ```text
 Please look up:
@@ -477,13 +545,13 @@ Possible AI output:
 ```text
 Common complaints:
 1. I don't know what belongs on the resume
-2. I have to rewrite it for every role and it's exhausting
-3. I keep editing but still don't know if it's good enough
-4. I don't have reliable feedback
+2. I have to rewrite it for every role and it is exhausting
+3. I keep editing but still do not know if it is good enough
+4. I do not have reliable feedback
 5. I keep delaying because I never feel ready
 ```
 
-This does not replace real interviews, but it helps you enter interviews with a better starting map.
+This does not replace real interviews, but it helps you enter them with a better starting map.
 
 ### 12.5 Ask AI to review your interview technique
 
@@ -493,12 +561,14 @@ You can also paste one interview transcript and ask AI to critique your question
 Here is a transcript from one user interview.
 Please review it using The Mom Test:
 1. Which questions sound like I was seeking reassurance?
-2. Which ones were leading?
+2. Which questions were leading?
 3. Where should I have asked more about facts?
 4. How could I ask this better next time?
 ```
 
-That is especially helpful for beginners because it trains the instinct to ask, “Am I collecting evidence or just collecting encouragement?”
+That is especially helpful for beginners because it trains the instinct to ask:
+
+**am I collecting evidence, or am I just collecting encouragement?**
 
 ## Assignments
 
