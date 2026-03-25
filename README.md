@@ -166,6 +166,7 @@
 
 ## 🔥 News
 
+- **[2026-03-25]** 📚 **新增附录「用户研究与需求验证」**：包含 4 篇文章——从哪里找点子、双钻模型、Jobs to Be Done、The Mom Test 用户访谈法，帮助新手学会发现和验证产品想法。
 - **[2026-03-25]** 📚 **英文文档全面更新**：第二阶段（全栈开发）和第三阶段（高级开发）现已提供完整英文翻译。
 - **[2026-03-02]** 🦞 **OpenClaw & AI Agent 友好支持**：新增 `llms.txt` AI 导航文件，让 OpenClaw、Claude、Cursor、Trae 等 AI Agent 能够快速理解本仓库结构，精准定位教程内容。希望每个🦞都学得愉快！
 - **[2026-03-01]** [高级开发部分](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)全面升级：新增 Claude Code 七大深度指南（MCP、Skills、Agent Teams 等）及八大跨平台开发实战（PWA、Electron、NFT、VS Code 插件、Qt 工业应用等）。
