@@ -42,6 +42,10 @@
 | :-------------------------------------------------------------------- | :---------------------------------------- | :--- |
 | [附录A：产品思维补充](/zh-cn/stage-1/appendix-a-product-thinking/)    | 从想法评估到需求拆解与 MVP 的产品思维框架 | ✅   |
 | [附录B：常见报错及解决方案](/zh-cn/stage-1/appendix-b-common-errors/) | vibe coding 中的常见错误及排查方法        | ✅   |
+| [附录：从哪里找点子](/zh-cn/stage-1/appendix-idea-sources/)          | 从参考应用、趋势和 VC 清单里收出细分方向  | ✅   |
+| [附录：双钻模型](/zh-cn/stage-1/appendix-double-diamond/)           | 理解先定义问题，再展开方案设计的完整节奏  | ✅   |
+| [附录：Jobs to Be Done](/zh-cn/stage-1/appendix-jobs-to-be-done/)  | 用 JTBD 方法看清用户真正想完成的事        | ✅   |
+| [附录：The Mom Test 用户访谈法](/zh-cn/stage-1/appendix-mom-test/) | 通过用户访谈验证需求的调研方法            | ✅   |
 
 ### 二、初中级开发工程师
 

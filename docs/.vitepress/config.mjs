@@ -386,6 +386,24 @@ const productManagerSidebarEn = [
     ]
   },
   {
+    text: 'Appendix: User Research and Validation',
+    collapsed: false,
+    items: [
+      {
+        text: 'Jobs to Be Done',
+        link: '/en/stage-1/appendix-jobs-to-be-done/'
+      },
+      {
+        text: 'The Mom Test',
+        link: '/en/stage-1/appendix-mom-test/'
+      },
+      {
+        text: 'Double Diamond',
+        link: '/en/stage-1/appendix-double-diamond/'
+      }
+    ]
+  },
+  {
     text: 'Appendix: Technical Solutions',
     collapsed: false,
     items: [
@@ -1171,6 +1189,28 @@ const productManagerSidebar = [
       {
         text: 'AI 消费场景灵感参考 (C端)',
         link: '/zh-cn/stage-1/appendix-c-consumer-scenarios/'
+      }
+    ]
+  },
+  {
+    text: '附录：用户研究与需求验证',
+    collapsed: false,
+    items: [
+      {
+        text: '从哪里找点子：3 种最适合新手的参考来源',
+        link: '/zh-cn/stage-1/appendix-idea-sources/'
+      },
+      {
+        text: '双钻模型：先做对的事，再把事做对',
+        link: '/zh-cn/stage-1/appendix-double-diamond/'
+      },
+      {
+        text: '用 Jobs to Be Done 找到用户真正想完成的事',
+        link: '/zh-cn/stage-1/appendix-jobs-to-be-done/'
+      },
+      {
+        text: 'The Mom Test 用户访谈法',
+        link: '/zh-cn/stage-1/appendix-mom-test/'
       }
     ]
   },

@@ -82,6 +82,38 @@
   />
 </NavGrid>
 
+### 附录：用户研究与需求验证
+
+**为什么需要**：当你已经有了产品点子，但还不确定它是不是真需求、该如何和用户聊、该优先验证什么时，这组内容能帮你把模糊感觉变成可验证的判断。
+
+**什么时候看**：
+- 当你说不清用户到底在“雇用”你的产品完成什么事时
+- 当你准备做用户访谈，却担心只得到礼貌性反馈时
+- 当你想把“感觉不错”的点子，变成更扎实的需求假设时
+
+<NavGrid>
+  <NavCard
+    href="/zh-cn/stage-1/appendix-idea-sources/"
+    title="从哪里找点子"
+    description="学会从参考应用、行业趋势和 VC 清单里，收出一个更具体的产品方向。"
+  />
+  <NavCard
+    href="/zh-cn/stage-1/appendix-double-diamond/"
+    title="双钻模型入门"
+    description="理解 Discover、Define、Develop、Deliver 四步，避免还没想清楚问题就急着做原型。"
+  />
+  <NavCard
+    href="/zh-cn/stage-1/appendix-jobs-to-be-done/"
+    title="Jobs to Be Done 入门"
+    description="用 JTBD 方法看清用户真正想完成的事，判断需求和产品方向。"
+  />
+  <NavCard
+    href="/zh-cn/stage-1/appendix-mom-test/"
+    title="The Mom Test 用户访谈法"
+    description="学会正确和用户聊天，避免只听到“听起来不错”的假阳性反馈。"
+  />
+</NavGrid>
+
 ### 附录：技术方案
 
 **为什么需要**：在开发过程中遇到技术问题或想了解更优工具时，这些技术附录能提供即查即用的解决方案。
