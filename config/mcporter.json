@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "autoglm-browser-agent": {
+      "command": "/Users/sanbu/.agents/skills/autoglm-browser-agent/dist/mcp_server --start_url https://www.bing.com --window_width 1456 --window_height 819 --resize_width 1456 --resize_height 819 --max_steps 100 --log_dir /Users/sanbu/.agents/skills/autoglm-browser-agent/mcp_output --if_subagent"
+    }
+  },
+  "imports": []
+}

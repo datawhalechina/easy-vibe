@@ -26,8 +26,8 @@
   />
   <NavCard
     href="/zh-cn/stage-2/frontend/2.3-multi-product-ui/"
-    title="参考 UI 设计规范与多产品 UI 设计"
-    description="学习主流 UI 设计规范，提升产品设计的一致性与美感"
+    title="参考 UI 设计规范设计页面和按钮"
+    description="学习主流 UI 设计规范，设计更清晰的页面层级与按钮层级"
   />
   <NavCard
     href="/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/"

@@ -788,7 +788,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/</loc>
-    <lastmod>2026-03-25T17:40:30+08:00</lastmod>
+    <lastmod>2026-03-25T23:02:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-0/"/>
@@ -892,7 +892,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-double-diamond/</loc>
-    <lastmod>2026-03-25T17:40:30+08:00</lastmod>
+    <lastmod>2026-03-25T23:02:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-double-diamond/"/>
@@ -900,7 +900,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-idea-sources/</loc>
-    <lastmod>2026-03-25T17:40:30+08:00</lastmod>
+    <lastmod>2026-03-25T23:02:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-idea-sources/"/>
@@ -916,7 +916,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-jobs-to-be-done/</loc>
-    <lastmod>2026-03-25T17:40:30+08:00</lastmod>
+    <lastmod>2026-03-25T23:02:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-jobs-to-be-done/"/>
@@ -924,7 +924,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-mom-test/</loc>
-    <lastmod>2026-03-25T17:40:30+08:00</lastmod>
+    <lastmod>2026-03-25T23:02:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/appendix-mom-test/"/>
@@ -947,12 +947,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/"/>
   </url>
   <url>
-    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/在线考试与管理系统/</loc>
+    <lastmod>2026-03-26T02:36:21.127Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.2-modern-frontend-trae/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/在线考试与管理系统/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/2.2-database-supabase/</loc>
@@ -1252,7 +1251,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-25T20:01:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/"/>

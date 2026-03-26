@@ -1433,7 +1433,7 @@ Sitemap: ${siteUrl}/sitemap.xml
                   link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
                 },
                 {
-                  text: '参考 UI 设计规范与多产品 UI 设计',
+                  text: '参考 UI 设计规范设计页面和按钮',
                   link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
                 },
                 {

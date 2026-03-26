@@ -38,6 +38,7 @@
     "@element-plus/icons-vue": "^2.3.2",
     "claude": "^0.1.1",
     "element-plus": "^2.13.1",
+    "mermaid": "^11.13.0",
     "typeit": "^8.8.7",
     "viewerjs": "^1.11.7",
     "vitepress": "^2.0.0-alpha.16",

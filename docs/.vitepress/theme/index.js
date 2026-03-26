@@ -4,7 +4,7 @@ import 'element-plus/dist/index.css'
 import Viewer from 'viewerjs'
 import 'viewerjs/dist/viewer.css'
 import TypeIt from 'typeit'
-import { onMounted, watch, nextTick } from 'vue'
+import { onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { useRoute, useData } from 'vitepress'
 import './style.css'
 import Layout from './Layout.vue'
@@ -1712,10 +1712,257 @@ export default {
     const route = useRoute()
     const { frontmatter } = useData()
     let viewer = null
+    let mermaidViewer = null
+    let mermaidViewerWrapper = null
+    let mermaidViewerObjectUrl = null
+    let mermaidApi = null
+    let themeObserver = null
+    let currentMermaidTheme = null
+    const COLLAPSIBLE_CODE_MIN_LINES = 14
 
     // Skip browser-only initialization during SSR
     if (import.meta.env.SSR) {
       return
+    }
+
+    const getMermaidTheme = () =>
+      document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+
+    const loadMermaid = async () => {
+      if (mermaidApi) return mermaidApi
+      const mermaidModule = await import('mermaid')
+      mermaidApi = mermaidModule.default ?? mermaidModule
+      return mermaidApi
+    }
+
+    const renderMermaidDiagrams = async (force = false) => {
+      const mermaidBlocks = document.querySelectorAll(
+        '.vp-doc div.language-mermaid, .vp-doc .mermaid-diagram[data-source]'
+      )
+
+      if (!mermaidBlocks.length) return
+
+      const mermaid = await loadMermaid()
+      const nextTheme = getMermaidTheme()
+
+      if (force || currentMermaidTheme !== nextTheme) {
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: 'loose',
+          theme: nextTheme
+        })
+        currentMermaidTheme = nextTheme
+      }
+
+      let index = 0
+      for (const block of mermaidBlocks) {
+        let source = ''
+        let container = block
+
+        if (block.classList.contains('language-mermaid')) {
+          source = block.querySelector('code')?.textContent?.trim() ?? ''
+          if (!source) continue
+
+          container = document.createElement('div')
+          container.className = 'mermaid-diagram'
+          container.dataset.source = source
+          block.replaceWith(container)
+        } else {
+          source = block.dataset.source ?? ''
+          if (!source) continue
+        }
+
+        try {
+          const diagramId = `mermaid-${route.path.replace(/\W+/g, '-')}-${Date.now()}-${index}`
+          const { svg, bindFunctions } = await mermaid.render(diagramId, source)
+          container.innerHTML = svg
+          container.classList.remove('mermaid-diagram-error')
+          container.setAttribute('role', 'button')
+          container.setAttribute('tabindex', '0')
+          container.setAttribute('aria-label', 'Open Mermaid diagram in fullscreen viewer')
+          container.onclick = (event) => {
+            if (event.target.closest?.('a')) return
+            openMermaidViewer(container)
+          }
+          container.onkeydown = (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              openMermaidViewer(container)
+            }
+          }
+          bindFunctions?.(container)
+        } catch (error) {
+          console.error('Mermaid render failed:', error)
+          container.innerHTML = ''
+          container.classList.add('mermaid-diagram-error')
+        }
+
+        index += 1
+      }
+    }
+
+    const cleanupMermaidViewer = () => {
+      if (mermaidViewer) {
+        mermaidViewer.destroy()
+        mermaidViewer = null
+      }
+
+      if (mermaidViewerWrapper) {
+        mermaidViewerWrapper.remove()
+        mermaidViewerWrapper = null
+      }
+
+      if (mermaidViewerObjectUrl) {
+        URL.revokeObjectURL(mermaidViewerObjectUrl)
+        mermaidViewerObjectUrl = null
+      }
+
+      document.body.classList.remove('mermaid-viewer-open')
+      document.body.classList.remove('viewer-ready')
+    }
+
+    const openMermaidViewer = (container) => {
+      const svg = container.querySelector('svg')
+      if (!svg) return
+
+      cleanupMermaidViewer()
+
+      const serializer = new XMLSerializer()
+      let svgMarkup = serializer.serializeToString(svg)
+
+      if (!svgMarkup.includes('xmlns="http://www.w3.org/2000/svg"')) {
+        svgMarkup = svgMarkup.replace(
+          '<svg',
+          '<svg xmlns="http://www.w3.org/2000/svg"'
+        )
+      }
+
+      const blob = new Blob([svgMarkup], {
+        type: 'image/svg+xml;charset=utf-8'
+      })
+      mermaidViewerObjectUrl = URL.createObjectURL(blob)
+
+      mermaidViewerWrapper = document.createElement('div')
+      mermaidViewerWrapper.className = 'mermaid-viewer-source'
+
+      const previewImage = document.createElement('img')
+      previewImage.src = mermaidViewerObjectUrl
+      previewImage.alt = 'Mermaid diagram preview'
+      mermaidViewerWrapper.append(previewImage)
+      document.body.append(mermaidViewerWrapper)
+
+      mermaidViewer = new Viewer(mermaidViewerWrapper, {
+        button: true,
+        navbar: false,
+        title: false,
+        toolbar: true,
+        tooltip: true,
+        movable: true,
+        zoomable: true,
+        rotatable: false,
+        scalable: false,
+        transition: false,
+        fullscreen: true,
+        keyboard: true,
+        url: 'src',
+        shown() {
+          document.body.classList.add('mermaid-viewer-open')
+          document.body.classList.add('viewer-ready')
+        },
+        viewed() {
+          requestAnimationFrame(() => {
+            const imageData = mermaidViewer?.imageData
+            const viewerData = mermaidViewer?.viewerData
+            if (!imageData || !viewerData) return
+
+            const widthScale = (viewerData.width * 0.94) / imageData.width
+            const heightScale = (viewerData.height * 0.94) / imageData.height
+            const targetScale = Math.min(widthScale, heightScale)
+
+            if (targetScale > 1.02) {
+              mermaidViewer.zoomTo(imageData.ratio * targetScale, false)
+            }
+          })
+        },
+        hidden() {
+          cleanupMermaidViewer()
+        }
+      })
+
+      mermaidViewer.view(0)
+    }
+
+    const initRenderedMermaidFeatures = async (force = false) => {
+      await renderMermaidDiagrams(force)
+    }
+
+    const getCodeToggleLabels = () => {
+      const isChineseRoute =
+        route.path.startsWith('/zh-cn/') || route.path.startsWith('/zh-tw/')
+
+      return isChineseRoute
+        ? {
+            expand: '展开代码',
+            collapse: '收起代码'
+          }
+        : {
+            expand: 'Expand code',
+            collapse: 'Collapse code'
+          }
+    }
+
+    const getCodeLineCount = (source) => {
+      const normalized = source.replace(/\s+$/, '')
+      if (!normalized) return 0
+      return normalized.split('\n').length
+    }
+
+    const updateCodeToggleButton = (block, button, lineCount) => {
+      const labels = getCodeToggleLabels()
+      const isCollapsed = block.classList.contains('is-code-collapsed')
+      const nextLabel = isCollapsed ? labels.expand : labels.collapse
+
+      button.textContent = `${nextLabel} (${lineCount} 行)`
+      button.setAttribute('aria-expanded', String(!isCollapsed))
+      button.setAttribute('title', nextLabel)
+    }
+
+    const initCollapsibleCodeBlocks = () => {
+      const codeBlocks = document.querySelectorAll(
+        '.vp-doc div[class*="language-"]:not(.language-mermaid)'
+      )
+
+      codeBlocks.forEach((block) => {
+        const pre = block.querySelector('pre')
+        const code = pre?.querySelector('code')
+        if (!pre || !code) return
+
+        const lineCount = getCodeLineCount(code.textContent ?? '')
+        const existingToggle = block.querySelector('.code-collapse-toggle')
+
+        if (lineCount < COLLAPSIBLE_CODE_MIN_LINES) {
+          block.classList.remove('is-collapsible-code', 'is-code-collapsed')
+          existingToggle?.remove()
+          return
+        }
+
+        block.classList.add('is-collapsible-code')
+
+        let toggle = existingToggle
+        if (!toggle) {
+          toggle = document.createElement('button')
+          toggle.type = 'button'
+          toggle.className = 'code-collapse-toggle'
+          toggle.addEventListener('click', () => {
+            block.classList.toggle('is-code-collapsed')
+            updateCodeToggleButton(block, toggle, lineCount)
+          })
+          block.append(toggle)
+        }
+
+        block.classList.add('is-code-collapsed')
+        updateCodeToggleButton(block, toggle, lineCount)
+      })
     }
 
     const initViewer = () => {
@@ -1827,20 +2074,46 @@ export default {
       }
     }
 
-    onMounted(() => {
+    onMounted(async () => {
       initViewer()
       initTypewriter()
       optimizeImages()
+      await initRenderedMermaidFeatures(true)
+      initCollapsibleCodeBlocks()
+
+      themeObserver = new MutationObserver(() => {
+        const nextTheme = getMermaidTheme()
+        if (nextTheme === currentMermaidTheme) return
+        nextTick(async () => {
+          await initRenderedMermaidFeatures(true)
+        })
+      })
+
+      themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      })
     })
 
     watch(
       () => route.path,
       () =>
-        nextTick(() => {
+        nextTick(async () => {
+          cleanupMermaidViewer()
           initViewer()
           initTypewriter()
           optimizeImages()
+          await initRenderedMermaidFeatures(true)
+          initCollapsibleCodeBlocks()
         })
     )
+
+    onBeforeUnmount(() => {
+      cleanupMermaidViewer()
+      if (themeObserver) {
+        themeObserver.disconnect()
+        themeObserver = null
+      }
+    })
   }
 }
