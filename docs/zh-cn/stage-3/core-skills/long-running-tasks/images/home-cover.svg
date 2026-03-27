@@ -1,0 +1,29 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="url(#bg)"/>
+  <rect x="72" y="82" width="1056" height="556" rx="32" fill="white" fill-opacity="0.82"/>
+  <rect x="124" y="132" width="420" height="214" rx="28" fill="#111827"/>
+  <text x="164" y="202" fill="#F9FAFB" font-family="Arial, sans-serif" font-size="34" font-weight="700">while true</text>
+  <text x="164" y="254" fill="#93C5FD" font-family="Arial, sans-serif" font-size="30">claude --continue</text>
+  <text x="164" y="306" fill="#A7F3D0" font-family="Arial, sans-serif" font-size="30">check completion</text>
+  <circle cx="760" cy="240" r="128" fill="#DBEAFE"/>
+  <circle cx="760" cy="240" r="92" fill="#2563EB"/>
+  <path d="M760 184V240L802 270" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="124" y="410" width="280" height="138" rx="24" fill="#0EA5E9"/>
+  <text x="158" y="468" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="700">Stop Hook</text>
+  <text x="158" y="510" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="22">拦截提前退出</text>
+  <rect x="462" y="410" width="280" height="138" rx="24" fill="#10B981"/>
+  <text x="496" y="468" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="700">Ralph</text>
+  <text x="496" y="510" fill="#D1FAE5" font-family="Arial, sans-serif" font-size="22">自动重试推进</text>
+  <rect x="800" y="410" width="280" height="138" rx="24" fill="#F59E0B"/>
+  <text x="834" y="468" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="700">Overnight</text>
+  <text x="834" y="510" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="22">长任务稳定执行</text>
+  <text x="124" y="608" fill="#111827" font-family="Arial, sans-serif" font-size="58" font-weight="700">Claude Code 长时间工作</text>
+  <text x="124" y="656" fill="#4B5563" font-family="Arial, sans-serif" font-size="28">循环、检查与重试，让任务持续跑到真正完成</text>
+  <defs>
+    <linearGradient id="bg" x1="72" y1="32" x2="1114" y2="696" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0F2FE"/>
+      <stop offset="0.5" stop-color="#ECFCCB"/>
+      <stop offset="1" stop-color="#FEF3C7"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,33 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="url(#bg)"/>
+  <rect x="72" y="84" width="1056" height="552" rx="32" fill="white" fill-opacity="0.78"/>
+  <rect x="120" y="138" width="250" height="180" rx="24" fill="#0F172A"/>
+  <text x="152" y="204" fill="white" font-family="Arial, sans-serif" font-size="38" font-weight="700">Team Lead</text>
+  <text x="152" y="252" fill="#BFDBFE" font-family="Arial, sans-serif" font-size="24">拆解任务</text>
+  <text x="152" y="288" fill="#BFDBFE" font-family="Arial, sans-serif" font-size="24">协调成员</text>
+  <rect x="470" y="138" width="250" height="180" rx="24" fill="#1D4ED8"/>
+  <text x="505" y="204" fill="white" font-family="Arial, sans-serif" font-size="38" font-weight="700">Agent A</text>
+  <text x="505" y="252" fill="#DBEAFE" font-family="Arial, sans-serif" font-size="24">Frontend</text>
+  <rect x="810" y="138" width="250" height="180" rx="24" fill="#7C3AED"/>
+  <text x="844" y="204" fill="white" font-family="Arial, sans-serif" font-size="38" font-weight="700">Agent B</text>
+  <text x="844" y="252" fill="#EDE9FE" font-family="Arial, sans-serif" font-size="24">Backend</text>
+  <rect x="292" y="398" width="250" height="150" rx="24" fill="#059669"/>
+  <text x="328" y="460" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="700">Agent C</text>
+  <text x="328" y="502" fill="#D1FAE5" font-family="Arial, sans-serif" font-size="22">Testing</text>
+  <rect x="658" y="398" width="250" height="150" rx="24" fill="#EA580C"/>
+  <text x="694" y="460" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="700">Task List</text>
+  <text x="694" y="502" fill="#FFEDD5" font-family="Arial, sans-serif" font-size="22">共享任务板</text>
+  <path d="M370 228H470" stroke="#2563EB" stroke-width="12" stroke-linecap="round"/>
+  <path d="M720 228H810" stroke="#6366F1" stroke-width="12" stroke-linecap="round"/>
+  <path d="M600 318V398" stroke="#0F172A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M542 472H658" stroke="#475569" stroke-width="12" stroke-linecap="round"/>
+  <text x="120" y="604" fill="#0F172A" font-family="Arial, sans-serif" font-size="58" font-weight="700">Claude Agent Teams</text>
+  <text x="120" y="652" fill="#475569" font-family="Arial, sans-serif" font-size="28">多代理并行协作，像真正开发团队一样分工与联动</text>
+  <defs>
+    <linearGradient id="bg" x1="69" y1="38" x2="1102" y2="701" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="0.48" stop-color="#EDE9FE"/>
+      <stop offset="1" stop-color="#FEF3C7"/>
+    </linearGradient>
+  </defs>
+</svg>

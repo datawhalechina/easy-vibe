@@ -609,7 +609,7 @@ watch(sidebarCollapsed, (collapsed) => {
     </div>
   </ClientOnly>
   <ClientOnly>
-    <ReadingProgress />
+    <ReadingProgress v-if="!isHomePage && !isWelcomePage" />
   </ClientOnly>  
 </template>
 

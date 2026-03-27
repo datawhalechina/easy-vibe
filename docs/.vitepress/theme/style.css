@@ -299,6 +299,14 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.VPHome .reading-progress {
+  display: none !important;
+}
+
+body:has(.VPHome) .reading-progress {
+  display: none !important;
+}
+
 .dark .glass {
   background: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
