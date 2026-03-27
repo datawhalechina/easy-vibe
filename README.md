@@ -10,13 +10,18 @@
 
 <p align="center">
   🚀 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Start Exploring</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">Learn OpenClaw</a><br>
-  <span style="font-size: 0.85em; color: #888;"><a href="docs-readme/zh-CN/README.md">Read in Simplified Chinese</a></span>
+  <span style="font-size: 0.85em; color: #888;">🚀 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">学习 OpenClaw</a></span>
 </p>
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> ·
   <a href="#-content-navigation">Learning Map</a> ·
-  <a href="#contact">Community</a>
+  <a href="#contact">Community</a><br>
+  <span style="font-size: 0.85em; color: #888;">
+    <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始阅读</a> ·
+    <a href="#-content-navigation">学习地图</a> ·
+    <a href="#contact">社区</a>
+  </span>
 </p>
 
 <p align="center">

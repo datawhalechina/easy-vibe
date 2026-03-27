@@ -4,23 +4,23 @@
 <img src="../../assets/easy-vibe-logo-hd.svg" alt="Easy-Vibe Logo" width="300">
 
 <p align="center" style="font-size: 1.2em; color: #666; margin: 20px 0;">
-  直接上手，一起 vibe ！会说话就会做应用<br>
-  <span style="font-size: 0.9em; color: #888;">Jump right in and vibe together — if you can talk, you can build apps.</span>
+  Bat dau ngay va cung vibe nao. Chi can ban noi duoc, ban da co the lam app.<br>
+  <span style="font-size: 0.9em; color: #888;">直接上手，一起 vibe！会说话就会做应用。</span>
 </p>
 
 <p align="center">
-  🚀 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">还想学 OpenClaw</a><br>
-  <span style="font-size: 0.85em; color: #888;"><a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Start Experience</a> · <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Interactive Tutorial</a> · <a href="https://github.com/datawhalechina/hello-claw">Learn OpenClaw</a></span>
+  🚀 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Bat dau ngay</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/en/appendix/">Huong dan tuong tac</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">Hoc OpenClaw</a><br>
+  <span style="font-size: 0.85em; color: #888;">🚀 <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始体验</a> · ✨ <a href="https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/">交互式教程</a> · 🦞 <a href="https://github.com/datawhalechina/hello-claw">学习 OpenClaw</a></span>
 </p>
 
 <p align="center">
-  <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">在线阅读</a> ·
-  <a href="#-内容导航">学习地图</a> ·
-  <a href="#contact">社区交流</a><br>
+  <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Bat dau doc</a> ·
+  <a href="#-content-navigation">Lo trinh hoc</a> ·
+  <a href="#contact">Cong dong</a><br>
   <span style="font-size: 0.85em; color: #888;">
-    <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> ·
-    <a href="#-content-navigation">Learning Map</a> ·
-    <a href="#contact">Community</a>
+    <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始阅读</a> ·
+    <a href="#-内容导航">学习地图</a> ·
+    <a href="#contact">社区</a>
   </span>
 </p>
 
