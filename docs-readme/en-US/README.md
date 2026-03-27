@@ -98,11 +98,15 @@
 
 ## Why Easy-Vibe
 
-In the past, building a mini app, booking system, or personal blog usually meant studying for a long time before you could make anything useful. Now, you can describe the idea first and build it together with AI.
+Want an expense tracker? Say it.
 
-For complete beginners, that means you can create your first real project before mastering an entire programming curriculum. For junior and mid-level developers, it means closing the loop from requirements to frontend, backend, and deployment much faster. For senior developers, it means learning a new way of working: treating AI as a development partner for prototyping, refactoring, integration, and complex delivery.
+Need a booking system with WeChat login? Say it.
 
-Easy-Vibe is not just about generating code with AI. It is about helping you truly learn how development works in the AI era.
+Want a blog with comments? Say it.
+
+In the AI era, programming starts by describing what you want.
+
+Easy-Vibe teaches you how to turn that into a real product.
 
 ## Who This Is For
 

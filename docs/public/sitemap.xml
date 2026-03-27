@@ -765,7 +765,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/guide/introduction/</loc>
-    <lastmod>2026-03-25T15:06:25+08:00</lastmod>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/guide/introduction/"/>
@@ -939,19 +939,60 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-2/ai-capabilities/2.1-dify-knowledge-base/"/>
   </url>
   <url>
-    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/2.1-fullstack-app/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/copywriting-platform-supabase/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/2.1-fullstack-app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/copywriting-platform-supabase/"/>
   </url>
   <url>
-    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/在线考试与管理系统/</loc>
-    <lastmod>2026-03-26T02:36:21.127Z</lastmod>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/custom-dify-agent-platform/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/在线考试与管理系统/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/custom-dify-agent-platform/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/exam-management-express/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/exam-management-express/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/modern-landing-page/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/modern-landing-page/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/movie-recommendation-springboot/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/movie-recommendation-springboot/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/simple-grocery-microservices/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/simple-grocery-microservices/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/traffic-data-visualization-go/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/traffic-data-visualization-go/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/travel-planning-agent-platform/</loc>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/travel-planning-agent-platform/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/2.2-database-supabase/</loc>
@@ -995,7 +1036,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/2.7-stripe-payment/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/2.7-stripe-payment/"/>
@@ -1027,7 +1068,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.3-multi-product-ui/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/frontend/2.3-multi-product-ui/"/>
@@ -1067,7 +1108,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-27T14:29:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/"/>
@@ -1091,11 +1132,18 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-27T14:36:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advanced/3.a3-llamaindex-enterprise-knowledge-base/</loc>
+    <lastmod>2026-03-27T14:36:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/ai-advanced/3.a3-llamaindex-enterprise-knowledge-base/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/core-skills/agent-teams/</loc>
@@ -1179,7 +1227,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.1-choose-platform/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-26T15:56:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.1-choose-platform/"/>
@@ -1187,7 +1235,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-26T23:07:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/"/>
@@ -1227,7 +1275,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-26T11:20:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/"/>

@@ -98,15 +98,15 @@
 
 ## Why Easy-Vibe
 
-Imagine this:
+Want an expense tracker? Say it.
 
-- You want to build a personal expense tracker. Instead of learning programming first, you just say, "I want a mini app that records income and expenses."
-- You want an appointment system for a shop. You just say, "I need a booking platform with WeChat login."
-- You want a personal blog. You just say, "I want a blog where I can publish articles and let readers leave comments."
+Need a booking system with WeChat login? Say it.
 
-Ideas that used to take months of coding practice before you could even attempt them can now be turned into working prototypes in minutes.
+Want a blog with comments? Say it.
 
-That is not science fiction. That is what programming looks like in the AI era, and Easy-Vibe is here to help you learn that workflow for real.
+In the AI era, programming starts by describing what you want.
+
+Easy-Vibe teaches you how to turn that into a real product.
 
 ## Who This Is For
 

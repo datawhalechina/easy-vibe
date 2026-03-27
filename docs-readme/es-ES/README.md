@@ -103,11 +103,15 @@
 
 ## 为什么需要 Easy-Vibe
 
-以前，做一个小程序、预约系统或个人博客，往往要先学很久；现在，你可以先把想法说出来，再和 AI 一起把它做出来。
+Quieres una app para controlar ingresos y gastos? Solo dilo.
 
-对零基础用户，这意味着你不用先啃完整套编程体系，也能做出第一个作品；对初中级开发者，这意味着你可以更快补齐从需求、前端、后端到部署的完整链路；对中高级开发者，这意味着你需要掌握一种新的工作方式: 把 AI 变成你的开发搭档，用它加速原型、重构、联调和复杂项目落地。
+Necesitas un sistema de reservas con inicio de sesion por WeChat? Solo dilo.
 
-Easy-Vibe 想做的，不只是教你“怎么用 AI 生成代码”，而是帮你真正学会 AI 时代的开发方法。
+Quieres un blog con comentarios? Solo dilo.
+
+En la era de la IA, programar empieza por describir lo que quieres.
+
+Easy-Vibe te enseña a convertir eso en un producto real.
 
 ## 适合谁
 
