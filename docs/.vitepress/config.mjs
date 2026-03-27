@@ -1499,12 +1499,12 @@ Sitemap: ${siteUrl}/sitemap.xml
                   link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
                 },
                 {
-                  text: '构建第一个现代应用程序 - 全栈应用',
-                  link: '/zh-cn/stage-2/assignments/2.1-fullstack-app/'
+                  text: '大作业 1：第一个 SaaS 全栈应用——文案生成网站',
+                  link: '/zh-cn/stage-2/assignments/copywriting-platform-supabase/'
                 },
                 {
-                  text: '现代前端组件库 + Trae 实战',
-                  link: '/zh-cn/stage-2/assignments/2.2-modern-frontend-trae/'
+                  text: '大作业 2：在线考试与管理系统',
+                  link: '/zh-cn/stage-2/assignments/exam-management-express/'
                 }
               ]
             }
