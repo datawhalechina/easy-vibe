@@ -1414,9 +1414,34 @@ Sitemap: ${siteUrl}/sitemap.xml
             text: '附录知识库',
             link: '/zh-cn/appendix/index',
             activeMatch: '/zh-cn/appendix/'
+          },
+          {
+            text: 'Vibe 故事',
+            link: '/zh-cn/vibe-stories/story-1',
+            activeMatch: '/zh-cn/vibe-stories/'
           }
         ],
         sidebar: {
+          '/zh-cn/vibe-stories/': [
+            {
+              text: 'Vibe 故事',
+              collapsed: false,
+              items: [
+                {
+                  text: '我的第一个全栈项目',
+                  link: '/zh-cn/vibe-stories/story-1'
+                },
+                {
+                  text: '从产品经理到独立开发者',
+                  link: '/zh-cn/vibe-stories/story-2'
+                },
+                {
+                  text: '用 AI 提效 10 倍',
+                  link: '/zh-cn/vibe-stories/story-3'
+                }
+              ]
+            }
+          ],
           '/zh-cn/stage-0/': productManagerSidebar,
           '/zh-cn/stage-1/': productManagerSidebar,
           '/zh-cn/stage-2/': [

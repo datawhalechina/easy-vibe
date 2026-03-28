@@ -1147,7 +1147,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/core-skills/agent-teams/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-27T18:17:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/core-skills/agent-teams/"/>
@@ -1171,7 +1171,7 @@
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/core-skills/long-running-tasks/</loc>
-    <lastmod>2026-03-25T00:28:36+08:00</lastmod>
+    <lastmod>2026-03-27T18:17:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/core-skills/long-running-tasks/"/>
@@ -1336,5 +1336,26 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/stage-3/personal-brand/3.7-personal-website-blog/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1/</loc>
+    <lastmod>2026-03-28T13:05:08.945Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-2/</loc>
+    <lastmod>2026-03-28T12:27:36.079Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-2/"/>
+  </url>
+  <url>
+    <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-3/</loc>
+    <lastmod>2026-03-28T13:05:08.945Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-3/"/>
   </url>
 </urlset>
