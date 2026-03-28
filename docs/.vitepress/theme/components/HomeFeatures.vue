@@ -2850,7 +2850,7 @@ a {
   overflow-x: auto;
   width: calc(100% + 40px);
   margin: 0 -20px;
-  padding: 0 20px 16px;
+  padding: 12px 20px 16px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
@@ -2870,6 +2870,7 @@ a {
   box-shadow: none;
   border: 1px solid rgba(0, 0, 0, 0.025);
   transition: transform 0.3s;
+  transform-origin: center top;
   display: block;
   scroll-snap-align: start;
 }
@@ -2926,7 +2927,7 @@ a {
   overflow-x: auto;
   padding-bottom: 40px;
   margin: 0 -20px;
-  padding: 0 20px 40px;
+  padding: 12px 20px 40px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
@@ -2956,6 +2957,7 @@ a {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s;
+  transform-origin: center top;
   border: 1px solid rgba(0, 0, 0, 0.025);
   box-shadow: none;
 }
