@@ -2,6 +2,8 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRouter, withBase, useData } from 'vitepress'
 import GitHubStars from './GitHubStars.vue'
+import VibeStories from './VibeStories.vue'
+import { provide } from 'vue'
 import stage2LovartCover from '../../../zh-cn/stage-2/frontend/2.0-lovart-assets/images/image1.png'
 import stage2FigmaCover from '../../../zh-cn/stage-2/frontend/2.1-figma-mastergo/images/image8.png'
 import stage2DesignToCodeCover from '../../../zh-cn/stage-2/frontend/2.6-design-to-code/images/image42.png'
@@ -18,6 +20,7 @@ const { site, page, lang } = useData()
 const activeTab = ref('home')
 const showLangMenu = ref(false)
 const topPromoProgress = ref(1)
+const topPromoDismissed = ref(false)
 const topPromoIntroProgress = ref(0)
 const topPromoColorProgress = ref(0)
 let topPromoIntroRaf = 0
@@ -27,7 +30,7 @@ const WELCOME_SEEN_KEY = 'easy-vibe-welcome-seen'
 
 // Appendix Scroll Logic
 const appendixWrapper = ref(null)
-const pmSection = ref(null)
+const vibeStoriesSection = ref(null)
 const totalPages = ref(1)
 const currentPage = ref(0)
 
@@ -89,11 +92,20 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 教程',
       home: '首页',
+      stories: 'Vibe 故事',
       pm: '零基础入门',
       junior: '初中级开发',
       senior: '高级开发',
       appendix: '附录',
       start: '开始学习'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: '看见每一个<br><span class="highlight">闪光的你。</span>',
+      sub: '在这里，发现大家如何使用 AI 创造属于自己的作品。',
+      s1: { title: '我的第一个全栈项目', author: 'Sanbu' },
+      s2: { title: '从产品经理到独立开发者', author: 'Alice' },
+      s3: { title: '用 AI 提效 10 倍', author: 'Bob' }
     },
     stage1: {
       cat: 'Stage 1 · 零基础入门',
@@ -268,11 +280,20 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe Tutorial',
       home: 'Home',
+      stories: 'Vibe Stories',
       pm: 'Product Manager',
       junior: 'Junior Dev',
       senior: 'Senior Dev',
       appendix: 'Appendix',
       start: 'Start Learning'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: 'See every <br><span class="highlight">shining you.</span>',
+      sub: 'Discover how everyone uses AI to create their own projects here.',
+      s1: { title: 'My First Full-Stack Project', author: 'Sanbu' },
+      s2: { title: 'From PM to Indie Hacker', author: 'Alice' },
+      s3: { title: '10x Productivity with AI', author: 'Bob' }
     },
     stage1: {
       cat: 'Stage 1 · Getting Started',
@@ -449,11 +470,20 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe チュートリアル',
       home: 'ホーム',
+      stories: 'Vibe Stories',
       pm: 'プロダクトマネージャー',
       junior: '初中級開発者',
       senior: '上級開発者',
       appendix: '付録',
       start: '学習を開始'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: '輝くあなたを<br><span class="highlight">見つけよう。</span>',
+      sub: 'みんながAIを使ってどのように自分の作品を作っているか発見しましょう。',
+      s1: { title: '初めてのフルスタックプロジェクト', author: 'Sanbu' },
+      s2: { title: 'PMから独立系開発者へ', author: 'Alice' },
+      s3: { title: 'AIで生産性を10倍に', author: 'Bob' }
     },
     stage1: {
       cat: 'Stage 1 · 初心者とPM',
@@ -572,11 +602,17 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 教學',
       home: '首頁',
+      stories: 'Vibe 故事',
       pm: '產品經理',
       junior: '初中級開發',
       senior: '高級開發',
       appendix: '附錄',
       start: '開始學習'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: '看見每一個<br><span class="highlight">閃光的你。</span>',
+      sub: '在這裡，發現大家如何使用 AI 創造屬於自己的作品。'
     },
     stage1: {
       cat: 'Stage 1 · 新手與產品原型',
@@ -693,11 +729,17 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 튜토리얼',
       home: '홈',
+      stories: 'Vibe Stories',
       pm: '제품 관리자',
       junior: '초/중급 개발자',
       senior: '고급 개발자',
       appendix: '부록',
       start: '학습 시작'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: '빛나는 당신을 <br><span class="highlight">발견하세요.</span>',
+      sub: '모두가 AI를 사용하여 어떻게 자신만의 작품을 만드는지 여기서 확인하세요.'
     },
     stage1: {
       cat: 'Stage 1 · 초보자 & PM',
@@ -816,11 +858,17 @@ const i18n = {
     nav: {
       title: 'Tutorial Easy-Vibe',
       home: 'Inicio',
+      stories: 'Vibe Stories',
       pm: 'Gerente de Producto',
       junior: 'Desarrollador Junior',
       senior: 'Desarrollador Senior',
       appendix: 'Apéndice',
       start: 'Empezar'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: 'Mira a cada <br><span class="highlight">tú brillante.</span>',
+      sub: 'Descubre cómo todos usan la IA para crear sus propios proyectos aquí.'
     },
     stage1: {
       cat: 'Stage 1 · Principiante y PM',
@@ -939,11 +987,17 @@ const i18n = {
     nav: {
       title: 'Tutoriel Easy-Vibe',
       home: 'Accueil',
+      stories: 'Vibe Stories',
       pm: 'Chef de Produit',
       junior: 'Dév Junior',
       senior: 'Dév Senior',
       appendix: 'Annexe',
       start: 'Commencer'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: 'Voyez chaque <br><span class="highlight">vous brillant.</span>',
+      sub: 'Découvrez comment chacun utilise l\'IA pour créer ses propres projets ici.'
     },
     stage1: {
       cat: 'Stage 1 · Débutant & PM',
@@ -1063,11 +1117,17 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe Tutorial',
       home: 'Startseite',
+      stories: 'Vibe Stories',
       pm: 'Produktmanager',
       junior: 'Junior Dev',
       senior: 'Senior Dev',
       appendix: 'Anhang',
       start: 'Starten'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: 'Sehen Sie jeden <br><span class="highlight">strahlenden Sie.</span>',
+      sub: 'Entdecken Sie hier, wie jeder KI nutzt, um eigene Projekte zu erstellen.'
     },
     stage1: {
       cat: 'Stage 1 · Anfänger & PM',
@@ -1184,13 +1244,19 @@ const i18n = {
   },
   'ar-sa': {
     nav: {
-      title: 'Easy-Vibe درس تعليمي',
+      title: 'دليل Easy-Vibe',
       home: 'الرئيسية',
+      stories: 'Vibe Stories',
       pm: 'مدير المنتج',
       junior: 'مطور مبتدئ',
       senior: 'مطور خبير',
       appendix: 'ملحق',
       start: 'ابدأ التعلم'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: 'شاهد كل <br><span class="highlight">أنت متألق.</span>',
+      sub: 'اكتشف كيف يستخدم الجميع الذكاء الاصطناعي لإنشاء مشاريعهم الخاصة هنا.'
     },
     stage1: {
       cat: 'Stage 1 · مدير المنتج',
@@ -1310,11 +1376,17 @@ const i18n = {
     nav: {
       title: 'Hướng dẫn Easy-Vibe',
       home: 'Trang chủ',
+      stories: 'Vibe Stories',
       pm: 'Quản lý sản phẩm',
       junior: 'Dev Sơ/Trung cấp',
       senior: 'Dev Cao cấp',
       appendix: 'Phụ lục',
       start: 'Bắt đầu học'
+    },
+    stories: {
+      cat: 'Vibe Stories',
+      title: 'Thấy mọi <br><span class="highlight">bạn tỏa sáng.</span>',
+      sub: 'Khám phá cách mọi người sử dụng AI để tạo các dự án riêng của họ tại đây.'
     },
     stage1: {
       cat: 'Stage 1 · Người mới & PM',
@@ -1436,6 +1508,8 @@ const t = computed(() => {
   const code = lang.value ? lang.value.toLowerCase() : 'zh-cn'
   return i18n[code] || i18n['en']
 })
+
+provide('t', t)
 
 const isCjkLocale = computed(() => {
   const code = lang.value ? lang.value.toLowerCase() : ''
@@ -1610,6 +1684,27 @@ const toggleLangMenu = () => {
   showLangMenu.value = !showLangMenu.value
 }
 
+const updateHash = (id) => {
+  const targetHash = id === 'home' ? '#home' : `#${id}`
+  const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`
+  const nextUrl = `${window.location.pathname}${window.location.search}${targetHash}`
+  if (currentUrl !== nextUrl) {
+    window.history.replaceState(null, '', nextUrl)
+  }
+}
+
+const syncTopPromoWithHash = () => {
+  const rawHash = window.location.hash.replace(/^#/, '')
+  const targetId = rawHash || 'home'
+  if (targetId === 'home') {
+    topPromoDismissed.value = false
+    topPromoProgress.value = 1
+    return
+  }
+  topPromoDismissed.value = true
+  topPromoProgress.value = 0
+}
+
 const changeLang = (targetLocale) => {
   const currentPath = router.route.path
   // Find current locale based on path prefix
@@ -1628,7 +1723,8 @@ const changeLang = (targetLocale) => {
     newPath = `/${targetLocale}/`
   }
 
-  router.go(withBase(newPath))
+  const hash = window.location.hash || ''
+  router.go(withBase(`${newPath}${hash}`))
   showLangMenu.value = false
 }
 
@@ -1636,17 +1732,43 @@ const scrollTo = (id) => {
   if (id === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     activeTab.value = 'home'
+    updateHash('home')
+    syncTopPromoWithHash()
+    updateTopPromoVisibility()
     return
   }
   const el = document.getElementById(id)
   if (el) {
-    const navHeight = 48 // Approximate nav height
-    // Use getBoundingClientRect for better accuracy
+    const navHeight = 48
     const elementPosition = el.getBoundingClientRect().top + window.pageYOffset
-    // Increase buffer to ensure section header is clearly visible below nav
-    const offset = elementPosition - navHeight - 64
+    const extraOffset = id === 'vibe-stories' ? 20 : 40
+    const offset = elementPosition - navHeight - extraOffset
     window.scrollTo({ top: offset, behavior: 'smooth' })
     activeTab.value = id
+    updateHash(id)
+    syncTopPromoWithHash()
+  }
+}
+
+const scrollToHashTarget = (behavior = 'auto') => {
+  const rawHash = window.location.hash.replace(/^#/, '')
+  const targetId = rawHash || 'home'
+  if (targetId === 'home') {
+    window.scrollTo({ top: 0, behavior })
+    activeTab.value = 'home'
+    syncTopPromoWithHash()
+    updateTopPromoVisibility()
+    return
+  }
+  const el = document.getElementById(targetId)
+  if (el) {
+    const navHeight = 48
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset
+    const extraOffset = targetId === 'vibe-stories' ? 20 : 40
+    const offset = elementPosition - navHeight - extraOffset
+    window.scrollTo({ top: offset, behavior })
+    activeTab.value = targetId
+    syncTopPromoWithHash()
   }
 }
 
@@ -1658,12 +1780,17 @@ const closeLangMenu = (e) => {
 }
 
 const updateTopPromoVisibility = () => {
-  if (!pmSection.value) {
+  if (topPromoDismissed.value) {
+    topPromoProgress.value = 0
+    return
+  }
+  if (!vibeStoriesSection.value) {
     topPromoProgress.value = 1
     return
   }
   const navHeight = 44
-  const sectionTop = pmSection.value.getBoundingClientRect().top + window.pageYOffset
+  const sectionTop =
+    vibeStoriesSection.value.getBoundingClientRect().top + window.pageYOffset
   const endY = sectionTop - navHeight
   const startY = endY - 96
   const scrollY = window.pageYOffset
@@ -1673,6 +1800,7 @@ const updateTopPromoVisibility = () => {
   }
   if (scrollY >= endY) {
     topPromoProgress.value = 0
+    topPromoDismissed.value = true
     return
   }
   topPromoProgress.value = (endY - scrollY) / (endY - startY)
@@ -1765,15 +1893,21 @@ onMounted(() => {
       return
     }
   }
+
   document.addEventListener('click', closeLangMenu)
   if (appendixWrapper.value) {
     appendixWrapper.value.addEventListener('scroll', onAppendixScroll)
     updatePagination()
     window.addEventListener('resize', updatePagination)
   }
+  syncTopPromoWithHash()
+  window.setTimeout(() => {
+    scrollToHashTarget('auto')
+  }, 0)
   updateTopPromoVisibility()
   window.addEventListener('scroll', updateTopPromoVisibility, { passive: true })
   window.addEventListener('resize', updateTopPromoVisibility)
+  window.addEventListener('hashchange', scrollToHashTarget)
 })
 
 onUnmounted(() => {
@@ -1796,6 +1930,7 @@ onUnmounted(() => {
   window.removeEventListener('resize', updatePagination)
   window.removeEventListener('scroll', updateTopPromoVisibility)
   window.removeEventListener('resize', updateTopPromoVisibility)
+  window.removeEventListener('hashchange', scrollToHashTarget)
 })
 
 // Stage 1: 产品经理 (Web 原型)
@@ -2022,6 +2157,13 @@ const appendixCards = [
               {{ t.nav.home }}
             </button>
             <button
+              :class="{ active: activeTab === 'vibe-stories' }"
+              class="nav-link-item"
+              @click="scrollTo('vibe-stories')"
+            >
+              {{ t.nav.stories || 'Vibe 故事' }}
+            </button>
+            <button
               :class="{ active: activeTab === 'pm' }"
               class="nav-link-item"
               @click="scrollTo('pm')"
@@ -2104,13 +2246,18 @@ const appendixCards = [
       style="height: 0"
     />
 
+    <!-- Vibe Stories -->
+    <section
+      id="vibe-stories"
+      ref="vibeStoriesSection"
+      class="section-container"
+    >
+      <VibeStories />
+    </section>
+
     <div class="section-band section-band-learning">
       <!-- Stage 1: Product Manager -->
-      <section
-        id="pm"
-        ref="pmSection"
-        class="section-container section-pm"
-      >
+      <section id="pm" class="section-container section-pm">
         <div class="section-header">
           <h2 class="section-category">
             {{ t.stage1.cat }}

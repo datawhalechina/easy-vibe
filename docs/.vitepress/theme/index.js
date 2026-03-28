@@ -1779,7 +1779,10 @@ export default {
           container.classList.remove('mermaid-diagram-error')
           container.setAttribute('role', 'button')
           container.setAttribute('tabindex', '0')
-          container.setAttribute('aria-label', 'Open Mermaid diagram in fullscreen viewer')
+          container.setAttribute(
+            'aria-label',
+            'Open Mermaid diagram in fullscreen viewer'
+          )
           container.onclick = (event) => {
             if (event.target.closest?.('a')) return
             openMermaidViewer(container)
