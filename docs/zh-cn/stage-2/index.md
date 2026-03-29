@@ -90,7 +90,34 @@
 
 ### 大作业
 
-通过实战项目巩固你的全栈开发技能：
+前面的章节是在学“零件”，大作业才是在学“怎么把零件装成一个能跑、能演示、能上线的产品”。
+
+建议你按 **大作业 1 -> 大作业 2** 的顺序来做：
+
+- **大作业 1** 先带你跑通现代 SaaS 最常见的主链路：登录、生成、数据库、支付、管理后台。
+- **大作业 2** 再带你进入更像业务系统的场景：角色权限、题库、考试、提交记录、管理台。
+
+```mermaid
+flowchart LR
+  A["前端页面与组件"] --> B["数据库与接口"]
+  B --> C["大作业 1<br/>文案生成 SaaS"]
+  C --> D["支付 / 部署 / 后台管理"]
+  D --> E["大作业 2<br/>在线考试系统"]
+  E --> F["完整全栈作品集"]
+```
+
+如果你不知道先做哪个，可以直接参考下面这张对比表：
+
+| 项目 | 你会重点练到什么 | 最适合谁 | 最终交付物 |
+|------|------|------|------|
+| 大作业 1：文案生成网站 | SaaS 页面结构、用户登录、AI 生成、Stripe 支付、后台管理 | 第一次做完整商业化网站的人 | 一个可注册、可生成、可付费、可管理的 SaaS 雏形 |
+| 大作业 2：在线考试与管理系统 | 角色权限、题库建模、考试流程、提交记录、批改与统计 | 想把“业务系统”真正做完整的人 | 一个有学生端和管理端的考试平台 |
+
+无论做哪一个，大作业都建议至少准备这 3 个交付物：
+
+- 一个可运行的项目仓库
+- 一个可访问的演示链接
+- 一份 README 和一段演示视频
 
 <NavGrid>
   <NavCard
@@ -102,6 +129,41 @@
     href="/zh-cn/stage-2/assignments/exam-management-express/"
     title="大作业 2：在线考试与管理系统"
     description="构建在线考试系统，支持自动出题、答题、后台管理"
+  />
+</NavGrid>
+
+如果你已经完成了上面两个主线项目，或者想按自己的技术方向做作品集，可以继续从下面这些扩展选题里选一题深入：
+
+<NavGrid>
+  <NavCard
+    href="/zh-cn/stage-2/assignments/modern-landing-page/"
+    title="扩展作业：现代网页落地页"
+    description="练习价值表达、转化路径、CTA 设计与基础埋点，做一个真正能承接流量的页面"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/assignments/custom-dify-agent-platform/"
+    title="扩展作业：自制 Dify 智能体平台"
+    description="实现智能体管理、对话、日志与权限控制，做一个最小可用的 AI 平台"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/assignments/travel-planning-agent-platform/"
+    title="扩展作业：智能旅游规划 Agent 平台"
+    description="围绕结构化输入、Agent 编排和历史计划管理，做一个可执行的 AI 旅行规划产品"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/assignments/movie-recommendation-springboot/"
+    title="扩展作业：电影推荐网（Spring Boot）"
+    description="结合 Spring Boot、评分收藏与可解释推荐，完成一个完整推荐系统原型"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/assignments/simple-grocery-microservices/"
+    title="扩展作业：简单买菜微服务网站"
+    description="练习服务拆分、网关转发、库存与订单协作，体验从单体到微服务的工程思路"
+  />
+  <NavCard
+    href="/zh-cn/stage-2/assignments/traffic-data-visualization-go/"
+    title="扩展作业：交通大数据可视化分析（Go）"
+    description="从数据接入、窗口聚合到趋势看板与告警，做一个完整的数据产品原型"
   />
 </NavGrid>
 
