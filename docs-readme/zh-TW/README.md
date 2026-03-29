@@ -103,7 +103,7 @@
 
 <div align="center" style="margin: 30px 0;">
   <a href="https://github.com/datawhalechina/easy-vibe/issues/new?template=story_submission.md">
-    <img src="../../assets/stories_image.png" alt="分享你的 Vibe 故事" width="80%" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <img src="https://raw.githubusercontent.com/datawhalechina/easy-vibe/main/assets/stories_image.png" alt="分享你的 Vibe 故事" width="80%" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
   </a>
   <p style="margin-top: 15px; font-size: 1.1em; color: #666;">
     📝 <strong>有自己的 vibe coding 故事？</strong>
