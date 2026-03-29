@@ -131,6 +131,28 @@ Easy-Vibe teaches you how to turn that into a real product.
 - **Junior developers**: Learn the full path from idea to launch
 - **Mid-level and senior developers**: Upgrade your AI collaboration workflow for complex projects
 
+
+## 🔥 News
+
+- **[2026-03-29]** ✨ **Vibe Stories launched and upgraded with real user journeys**: Added a new homepage Vibe Stories section with an interactive carousel and dedicated story pages, then replaced placeholder content with four real user stories featuring a rural primary school teacher, a college student, a high school IT teacher, and a truck driver who built real products with AI. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
+- **[2026-03-26]** 🚀 **Major Stage 2 practice update**: Completed the SaaS capstone project "[Your First SaaS Full-Stack App: Copywriting Generator Website](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" and substantially expanded the "[How to integrate Stripe and payment systems](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)" section, plus key content around multi-product UI and WeChat Mini Program backend workflows.
+- **[2026-03-25]** 📚 **New appendix: User Research and Requirement Validation**: Added four new articles covering idea sourcing, the Double Diamond model, Jobs to Be Done, and The Mom Test to help beginners discover and validate product ideas. [👉 Read the appendix](https://datawhalechina.github.io/easy-vibe/en/appendix/)
+- **[2026-03-25]** 📚 **English documentation fully updated**: Stage 2 (Full-stack Development) and Stage 3 (Advanced Development) are now fully available in English. [👉 Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
+- **[2026-03-02]** 🦞 **OpenClaw and AI Agent friendly support**: Added `llms.txt` so OpenClaw, Claude, Cursor, Trae, and other AI agents can quickly understand the repository structure and find the right tutorial content.
+- **[2026-03-01]** The [Advanced Development section](https://datawhalechina.github.io/easy-vibe/en/stage-3/) has been comprehensively upgraded with deep guides for Claude Code, including MCP, Skills, Agent Teams, and more, along with eight cross-platform project tutorials.
+- **[2026-02-25]** Updated the [Appendix Knowledge Base](https://datawhalechina.github.io/easy-vibe/en/appendix/), now covering 9 knowledge areas and 80+ interactive topics.
+- **[2026-01-27]** Added Android and iOS app development tutorials.
+- **[2026-01-19]** Released interactive demos for Prompt Engineering, AI history, authentication design, Git principles, and more.
+
+<details>
+<summary>Past News</summary>
+
+- **[2026-01-16]** Reorganized the project structure and formally established a beginner entry path.
+- **[2026-01-14]** Completed a large update to the Stage 1 product prototyping docs.
+- **[2026-01-13]** Refactored the documentation architecture and fully enabled multi-language support.
+- **[2026-01-01]** Released the core learning map for the project.
+</details>
+
 ## Your Learning Paths
 
 ### 🎮 I want to try it first (5-minute experience)
@@ -175,26 +197,7 @@ Easy-Vibe teaches you how to turn that into a real product.
 - If you want to jump directly into complex projects, go to [Stage 3](https://datawhalechina.github.io/easy-vibe/en/stage-3/)
 - If you want to learn AI agents, check out [Hello Claw](https://github.com/datawhalechina/hello-claw)
 
-## 🔥 News
 
-- **[2026-03-29]** ✨ **Vibe Stories launched and upgraded with real user journeys**: Added a new homepage Vibe Stories section with an interactive carousel and dedicated story pages, then replaced placeholder content with four real user stories featuring a rural primary school teacher, a college student, a high school IT teacher, and a truck driver who built real products with AI. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
-- **[2026-03-26]** 🚀 **Major Stage 2 practice update**: Completed the SaaS capstone project "[Your First SaaS Full-Stack App: Copywriting Generator Website](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" and substantially expanded the "[How to integrate Stripe and payment systems](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)" section, plus key content around multi-product UI and WeChat Mini Program backend workflows.
-- **[2026-03-25]** 📚 **New appendix: User Research and Requirement Validation**: Added four new articles covering idea sourcing, the Double Diamond model, Jobs to Be Done, and The Mom Test to help beginners discover and validate product ideas. [👉 Read the appendix](https://datawhalechina.github.io/easy-vibe/en/appendix/)
-- **[2026-03-25]** 📚 **English documentation fully updated**: Stage 2 (Full-stack Development) and Stage 3 (Advanced Development) are now fully available in English. [👉 Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
-- **[2026-03-02]** 🦞 **OpenClaw and AI Agent friendly support**: Added `llms.txt` so OpenClaw, Claude, Cursor, Trae, and other AI agents can quickly understand the repository structure and find the right tutorial content.
-- **[2026-03-01]** The [Advanced Development section](https://datawhalechina.github.io/easy-vibe/en/stage-3/) has been comprehensively upgraded with deep guides for Claude Code, including MCP, Skills, Agent Teams, and more, along with eight cross-platform project tutorials.
-- **[2026-02-25]** Updated the [Appendix Knowledge Base](https://datawhalechina.github.io/easy-vibe/en/appendix/), now covering 9 knowledge areas and 80+ interactive topics.
-- **[2026-01-27]** Added Android and iOS app development tutorials.
-- **[2026-01-19]** Released interactive demos for Prompt Engineering, AI history, authentication design, Git principles, and more.
-
-<details>
-<summary>Past News</summary>
-
-- **[2026-01-16]** Reorganized the project structure and formally established a beginner entry path.
-- **[2026-01-14]** Completed a large update to the Stage 1 product prototyping docs.
-- **[2026-01-13]** Refactored the documentation architecture and fully enabled multi-language support.
-- **[2026-01-01]** Released the core learning map for the project.
-</details>
 
 ### 📖 Content Navigation
 
