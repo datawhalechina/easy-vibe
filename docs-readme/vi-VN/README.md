@@ -123,6 +123,27 @@ Trong thời đại AI, lập trình bắt đầu từ việc mô tả điều b
 
 Easy-Vibe giúp bạn biến điều đó thành một sản phẩm thật.
 
+## 🔥 News
+
+- **[2026-03-29]** ✨ **Ra mắt mục câu chuyện ngưởi dùng và cập nhật bằng 4 trường hợp có thật**: Chúng tôi thêm carousel tương tác và các trang câu chuyện riêng trên trang chủ, rồi thay nội dung tạm bằng bốn câu chuyện thật từ một giáo viên tiểu học vùng quê, một sinh viên đại học, một giáo viên CNTT trung học và một tài xế xe tải đã dùng AI để làm ra sản phẩm thật. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
+- **[2026-03-26]** 🚀 **Cập nhật thực hành Giai đoạn 2 lớn**: Dự án tốt nghiệp SaaS "[Ứng dụng full-stack SaaS đầu tiên: Trang web tạo nội dung](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" đã hoàn thành và phần "[Cách tích hợp Stripe và hệ thống thanh toán](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)" được mở rộng đáng kể.
+- **[2026-03-25]** 📚 **Phụ lục mới: Nghiên cứu ngưởi dùng và xác thực yêu cầu**: Thêm bốn bài viết mới về tìm kiếm ý tưởng, mô hình Double Diamond, Jobs to Be Done và The Mom Test để giúp ngưởi mới bắt đầu khám phá và xác thực ý tưởng sản phẩm. [👉 Đọc phụ lục](https://datawhalechina.github.io/easy-vibe/en/appendix/)
+- **[2026-03-25]** 📚 **Tài liệu tiếng Anh được cập nhật đầy đủ**: Giai đoạn 2 (Phát triển full-stack) và Giai đoạn 3 (Phát triển nâng cao) hiện đã có đầy đủ bằng tiếng Anh. [👉 Bắt đầu học](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
+- **[2026-03-02]** 🦞 **Hỗ trợ thân thiện cho OpenClaw và AI Agent**: Thêm `llms.txt` để OpenClaw, Claude, Cursor, Trae và các AI Agent khác có thể nhanh chóng hiểu cấu trúc kho lưu trữ và tìm đúng nội dung hướng dẫn.
+- **[2026-03-01]** Phần [Phát triển Nâng cao](https://datawhalechina.github.io/easy-vibe/en/stage-3/) đã được nâng cấp toàn diện với hướng dẫn sâu về Claude Code, bao gồm MCP, Skills, Agent Teams và hơn thế nữa, cùng với tám hướng dẫn dự án đa nền tảng.
+- **[2026-02-25]** Cập nhật [Cơ sở kiến thức Phụ lục](https://datawhalechina.github.io/easy-vibe/en/appendix/), hiện bao gồm 9 lĩnh vực kiến thức và hơn 80 chủ đề tương tác.
+- **[2026-01-27]** Thêm hướng dẫn phát triển ứng dụng cho Android và iOS.
+- **[2026-01-19]** Phát hành các bản demo tương tác cho Prompt Engineering, lịch sử AI, thiết kế xác thực, nguyên lý Git và hơn thế nữa.
+
+<details>
+<summary>Tin tức Trước đây</summary>
+
+- **[2026-01-16]** Tái cấu trúc cấu trúc dự án và thiết lập chính thức chương nhập môn cho ngưởi mới bắt đầu.
+- **[2026-01-14]** Hoàn thành cập nhật lớn cho tài liệu xây dựng nguyên mẫu sản phẩm Giai đoạn 1.
+- **[2026-01-13]** Tái cấu trúc kiến trúc tài liệu và kích hoạt đầy đủ hỗ trợ đa ngôn ngữ (i18n).
+- **[2026-01-01]** Phát hành bản đồ học tập cốt lõi của dự án.
+</details>
+
 ## 适合谁
 
 - **零基础爱好者**：先做出第一个作品，再理解怎么做
@@ -174,27 +195,6 @@ Easy-Vibe giúp bạn biến điều đó thành một sản phẩm thật.
 - 有开发经验：从 [第二阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) 开始
 - 想直接做复杂项目：进入 [第三阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)
 - 想学 AI Agent：看 [Hello Claw](https://github.com/datawhalechina/hello-claw)
-
-## 🔥 News
-
-- **[2026-03-29]** ✨ **Ra mắt mục câu chuyện ngưởi dùng và cập nhật bằng 4 trường hợp có thật**: Chúng tôi thêm carousel tương tác và các trang câu chuyện riêng trên trang chủ, rồi thay nội dung tạm bằng bốn câu chuyện thật từ một giáo viên tiểu học vùng quê, một sinh viên đại học, một giáo viên CNTT trung học và một tài xế xe tải đã dùng AI để làm ra sản phẩm thật. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
-- **[2026-03-26]** 🚀 **Cập nhật thực hành Giai đoạn 2 lớn**: Dự án tốt nghiệp SaaS "[Ứng dụng full-stack SaaS đầu tiên: Trang web tạo nội dung](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" đã hoàn thành và phần "[Cách tích hợp Stripe và hệ thống thanh toán](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)" được mở rộng đáng kể.
-- **[2026-03-25]** 📚 **Phụ lục mới: Nghiên cứu ngưởi dùng và xác thực yêu cầu**: Thêm bốn bài viết mới về tìm kiếm ý tưởng, mô hình Double Diamond, Jobs to Be Done và The Mom Test để giúp ngưởi mới bắt đầu khám phá và xác thực ý tưởng sản phẩm. [👉 Đọc phụ lục](https://datawhalechina.github.io/easy-vibe/en/appendix/)
-- **[2026-03-25]** 📚 **Tài liệu tiếng Anh được cập nhật đầy đủ**: Giai đoạn 2 (Phát triển full-stack) và Giai đoạn 3 (Phát triển nâng cao) hiện đã có đầy đủ bằng tiếng Anh. [👉 Bắt đầu học](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
-- **[2026-03-02]** 🦞 **Hỗ trợ thân thiện cho OpenClaw và AI Agent**: Thêm `llms.txt` để OpenClaw, Claude, Cursor, Trae và các AI Agent khác có thể nhanh chóng hiểu cấu trúc kho lưu trữ và tìm đúng nội dung hướng dẫn.
-- **[2026-03-01]** Phần [Phát triển Nâng cao](https://datawhalechina.github.io/easy-vibe/en/stage-3/) đã được nâng cấp toàn diện với hướng dẫn sâu về Claude Code, bao gồm MCP, Skills, Agent Teams và hơn thế nữa, cùng với tám hướng dẫn dự án đa nền tảng.
-- **[2026-02-25]** Cập nhật [Cơ sở kiến thức Phụ lục](https://datawhalechina.github.io/easy-vibe/en/appendix/), hiện bao gồm 9 lĩnh vực kiến thức và hơn 80 chủ đề tương tác.
-- **[2026-01-27]** Thêm hướng dẫn phát triển ứng dụng cho Android và iOS.
-- **[2026-01-19]** Phát hành các bản demo tương tác cho Prompt Engineering, lịch sử AI, thiết kế xác thực, nguyên lý Git và hơn thế nữa.
-
-<details>
-<summary>Tin tức Trước đây</summary>
-
-- **[2026-01-16]** Tái cấu trúc cấu trúc dự án và thiết lập chính thức chương nhập môn cho ngưởi mới bắt đầu.
-- **[2026-01-14]** Hoàn thành cập nhật lớn cho tài liệu xây dựng nguyên mẫu sản phẩm Giai đoạn 1.
-- **[2026-01-13]** Tái cấu trúc kiến trúc tài liệu và kích hoạt đầy đủ hỗ trợ đa ngôn ngữ (i18n).
-- **[2026-01-01]** Phát hành bản đồ học tập cốt lõi của dự án.
-</details>
 
 ### 📖 内容导航
 

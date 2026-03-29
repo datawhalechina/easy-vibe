@@ -123,6 +123,27 @@ En la era de la IA, programar empieza por describir lo que quieres.
 
 Easy-Vibe te enseña a convertir eso en un producto real.
 
+## 🔥 News
+
+- **[2026-03-29]** ✨ **Lanzamos la sección de historias de usuarios y la actualizamos con casos reales**: Añadimos un carrusel interactivo y páginas dedicadas en la portada, y sustituimos el contenido provisional por cuatro historias reales de una maestra rural, una estudiante universitaria, un profesor de informática de secundaria y un camionero que construyeron productos reales con IA. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
+- **[2026-03-26]** 🚀 **Actualización masiva de contenido práctico de la Etapa 2**: Se completó el proyecto final SaaS "[Tu primera aplicación full-stack SaaS: Generador de copywriting](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" y se amplió sustancialmente la sección "[Cómo integrar Stripe y sistemas de pago](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)".
+- **[2026-03-25]** 📚 **Nuevo apéndice: Investigación de usuarios y validación de requisitos**: Se agregaron cuatro nuevos artículos que cubren la búsqueda de ideas, el modelo Double Diamond, Jobs to Be Done y The Mom Test para ayudar a los principiantes a descubrir y validar ideas de productos. [👉 Leer el apéndice](https://datawhalechina.github.io/easy-vibe/en/appendix/)
+- **[2026-03-25]** 📚 **Documentación en inglés completamente actualizada**: La Etapa 2 (Desarrollo full-stack) y la Etapa 3 (Desarrollo avanzado) ya están disponibles completamente en inglés. [👉 Empezar a aprender](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
+- **[2026-03-02]** 🦞 **Soporte amigable para OpenClaw y AI Agent**: Se agregó `llms.txt` para que OpenClaw, Claude, Cursor, Trae y otros agentes de IA puedan comprender rápidamente la estructura del repositorio y encontrar el contenido tutorial adecuado.
+- **[2026-03-01]** La sección de [Desarrollo Avanzado](https://datawhalechina.github.io/easy-vibe/en/stage-3/) ha sido actualizada con guías detalladas para Claude Code, incluyendo MCP, Skills, Agent Teams y más, junto con ocho tutoriales de proyectos multiplataforma.
+- **[2026-02-25]** Actualizada la [Base de Conocimientos del Apéndice](https://datawhalechina.github.io/easy-vibe/en/appendix/), ahora cubre 9 áreas de conocimiento y más de 80 temas interactivos.
+- **[2026-01-27]** Agregados tutoriales de desarrollo de aplicaciones para Android e iOS.
+- **[2026-01-19]** Lanzadas demos interactivas para Prompt Engineering, historia de la IA, diseño de autenticación, principios de Git y más.
+
+<details>
+<summary>Noticias Pasadas</summary>
+
+- **[2026-01-16]** Reorganizada la estructura del proyecto y establecido formalmente el capítulo de entrada para principiantes.
+- **[2026-01-14]** Completada una gran actualización de los documentos de prototipado de productos de la Etapa 1.
+- **[2026-01-13]** Refactorizada la arquitectura de documentación y habilitado completamente el soporte multilenguaje (i18n).
+- **[2026-01-01]** Lanzado el mapa de aprendizaje principal del proyecto.
+</details>
+
 ## 适合谁
 
 - **零基础爱好者**：先做出第一个作品，再理解怎么做
@@ -174,27 +195,6 @@ Easy-Vibe te enseña a convertir eso en un producto real.
 - 有开发经验：从 [第二阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) 开始
 - 想直接做复杂项目：进入 [第三阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)
 - 想学 AI Agent：看 [Hello Claw](https://github.com/datawhalechina/hello-claw)
-
-## 🔥 News
-
-- **[2026-03-29]** ✨ **Lanzamos la sección de historias de usuarios y la actualizamos con casos reales**: Añadimos un carrusel interactivo y páginas dedicadas en la portada, y sustituimos el contenido provisional por cuatro historias reales de una maestra rural, una estudiante universitaria, un profesor de informática de secundaria y un camionero que construyeron productos reales con IA. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
-- **[2026-03-26]** 🚀 **Actualización masiva de contenido práctico de la Etapa 2**: Se completó el proyecto final SaaS "[Tu primera aplicación full-stack SaaS: Generador de copywriting](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" y se amplió sustancialmente la sección "[Cómo integrar Stripe y sistemas de pago](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)".
-- **[2026-03-25]** 📚 **Nuevo apéndice: Investigación de usuarios y validación de requisitos**: Se agregaron cuatro nuevos artículos que cubren la búsqueda de ideas, el modelo Double Diamond, Jobs to Be Done y The Mom Test para ayudar a los principiantes a descubrir y validar ideas de productos. [👉 Leer el apéndice](https://datawhalechina.github.io/easy-vibe/en/appendix/)
-- **[2026-03-25]** 📚 **Documentación en inglés completamente actualizada**: La Etapa 2 (Desarrollo full-stack) y la Etapa 3 (Desarrollo avanzado) ya están disponibles completamente en inglés. [👉 Empezar a aprender](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
-- **[2026-03-02]** 🦞 **Soporte amigable para OpenClaw y AI Agent**: Se agregó `llms.txt` para que OpenClaw, Claude, Cursor, Trae y otros agentes de IA puedan comprender rápidamente la estructura del repositorio y encontrar el contenido tutorial adecuado.
-- **[2026-03-01]** La sección de [Desarrollo Avanzado](https://datawhalechina.github.io/easy-vibe/en/stage-3/) ha sido actualizada con guías detalladas para Claude Code, incluyendo MCP, Skills, Agent Teams y más, junto con ocho tutoriales de proyectos multiplataforma.
-- **[2026-02-25]** Actualizada la [Base de Conocimientos del Apéndice](https://datawhalechina.github.io/easy-vibe/en/appendix/), ahora cubre 9 áreas de conocimiento y más de 80 temas interactivos.
-- **[2026-01-27]** Agregados tutoriales de desarrollo de aplicaciones para Android e iOS.
-- **[2026-01-19]** Lanzadas demos interactivas para Prompt Engineering, historia de la IA, diseño de autenticación, principios de Git y más.
-
-<details>
-<summary>Noticias Pasadas</summary>
-
-- **[2026-01-16]** Reorganizada la estructura del proyecto y establecido formalmente el capítulo de entrada para principiantes.
-- **[2026-01-14]** Completada una gran actualización de los documentos de prototipado de productos de la Etapa 1.
-- **[2026-01-13]** Refactorizada la arquitectura de documentación y habilitado completamente el soporte multilenguaje (i18n).
-- **[2026-01-01]** Lanzado el mapa de aprendizaje principal del proyecto.
-</details>
 
 ### 📖 内容导航
 
