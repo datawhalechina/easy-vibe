@@ -1428,16 +1428,20 @@ Sitemap: ${siteUrl}/sitemap.xml
               collapsed: false,
               items: [
                 {
-                  text: '我的第一个全栈项目',
+                  text: '放弃月入过万，他在农村小学带孩子们“用AI赶苍蝇”',
                   link: '/zh-cn/vibe-stories/story-1'
                 },
                 {
-                  text: '从产品经理到独立开发者',
+                  text: '期末考试周，我偷偷用AI造了个“校园闲鱼”',
                   link: '/zh-cn/vibe-stories/story-2'
                 },
                 {
-                  text: '用 AI 提效 10 倍',
+                  text: '我给每个学生，做了一个不会累的“学霸同桌”',
                   link: '/zh-cn/vibe-stories/story-3'
+                },
+                {
+                  text: '48岁货车司机，熬了几个通宵，硬是用AI磕出一个出海工具站',
+                  link: '/zh-cn/vibe-stories/story-4'
                 }
               ]
             }

@@ -2,6 +2,10 @@
 import { inject, onMounted, onUnmounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 import macbookImage from '../../../../assets/macbook.png'
+import story1Cover from '../../../zh-cn/vibe-stories/images/story-1/image5.png'
+import story2Cover from '../../../zh-cn/vibe-stories/images/story-2/image4.png'
+import story3Cover from '../../../zh-cn/vibe-stories/images/story-3/image3.png'
+import story4Cover from '../../../zh-cn/vibe-stories/images/story-4/image7.png'
 
 // Try to inject translation context from parent or provide a default fallback
 const t = inject('t', {
@@ -17,27 +21,35 @@ const t = inject('t', {
 const tStories = [
   {
     id: 1,
-    title: t.value?.stories?.s1?.title || '我的第一个全栈项目',
-    author: t.value?.stories?.s1?.author || 'Sanbu',
-    avatar: '👨‍💻',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
+    title: t.value?.stories?.s1?.title || '放弃月入过万，他在农村小学带孩子们“用AI赶苍蝇”',
+    author: t.value?.stories?.s1?.author || '小学老师小浩',
+    avatar: '👨‍🏫',
+    image: story1Cover,
     link: '/zh-cn/vibe-stories/story-1'
   },
   {
     id: 2,
-    title: t.value?.stories?.s2?.title || '从产品经理到独立开发者',
-    author: t.value?.stories?.s2?.author || 'Alice',
-    avatar: '👩‍🎨',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2564&auto=format&fit=crop',
+    title: t.value?.stories?.s2?.title || '期末考试周，我偷偷用AI造了个“校园闲鱼”',
+    author: t.value?.stories?.s2?.author || '一位大二学生',
+    avatar: '🎓',
+    image: story2Cover,
     link: '/zh-cn/vibe-stories/story-2'
   },
   {
     id: 3,
-    title: t.value?.stories?.s3?.title || '用 AI 提效 10 倍',
-    author: t.value?.stories?.s3?.author || 'Bob',
-    avatar: '🚀',
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2564&auto=format&fit=crop',
+    title: t.value?.stories?.s3?.title || '我给每个学生，做了一个不会累的“学霸同桌”',
+    author: t.value?.stories?.s3?.author || '高中信息技术老师',
+    avatar: '🧑‍🏫',
+    image: story3Cover,
     link: '/zh-cn/vibe-stories/story-3'
+  },
+  {
+    id: 4,
+    title: t.value?.stories?.s4?.title || '48岁货车司机，熬了几个通宵，硬是用AI磕出一个出海工具站',
+    author: t.value?.stories?.s4?.author || '货车司机老黄',
+    avatar: '🚚',
+    image: story4Cover,
+    link: '/zh-cn/vibe-stories/story-4'
   }
 ]
 
@@ -135,7 +147,6 @@ onUnmounted(() => {
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
         </button>
 
-        <!-- Screen Content -->
         <div class="screen-content">
           <a :href="withBase(tStories[currentIndex].link)" class="screen-link">
             <transition :name="transitionName">
@@ -149,7 +160,6 @@ onUnmounted(() => {
             </transition>
           </a>
         </div>
-
         <!-- Laptop Frame -->
         <img :src="macbookImage" class="laptop-frame" alt="MacBook Frame" />
       </div>
@@ -246,13 +256,17 @@ onUnmounted(() => {
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
+  /* Keep the MacBook frame height stable before the PNG finishes loading. */
+  aspect-ratio: 4608 / 2675;
 }
 
 .laptop-frame {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 10;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   pointer-events: none;
   filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
 }
@@ -264,16 +278,17 @@ onUnmounted(() => {
 .screen-content {
   position: absolute;
   z-index: 1;
-  background: transparent;
   top: 0;
   left: 10%;
   width: 80%;
   height: 92%;
+  background: #0b0b0f;
+  overflow: hidden;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  overflow: hidden;
+  clip-path: inset(0 round 12px 12px 0 0);
+  contain: paint;
   perspective: 1000px;
-  /* Force hardware acceleration and fix Safari overflow clipping bug */
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   -webkit-mask-image: -webkit-radial-gradient(white, black);
@@ -282,26 +297,31 @@ onUnmounted(() => {
 }
 
 .screen-link {
+  position: absolute;
+  inset: 0;
   display: block;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  position: relative;
   overflow: hidden;
-  border-radius: inherit;
-  /* Fix boundary bleeding in Safari */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  clip-path: inset(0 round 12px 12px 0 0);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   mask-image: radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
+.screen-link:focus,
+.screen-link:focus-visible {
+  outline: none;
+}
+
 .screen-image-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  clip-path: inset(0 round 12px 12px 0 0);
 }
 
 .screen-image {
@@ -310,6 +330,9 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  backface-visibility: hidden;
 }
 
 /* Transitions */
