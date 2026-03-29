@@ -1,207 +1,419 @@
-# Build Your First Modern App: Full-Stack Application
+# Major Project 1: Your First SaaS Full-Stack App - AI Copywriting Website
+
+The hardest part of a first full-stack project usually is not the code itself. It is **not knowing what to build**.
+
+The topic is too broad, the features are too scattered, and halfway through you realize the project is getting out of control.
+
+So this time, let's change the approach. Instead of giving an open-ended prompt, we will give you a concrete direction: build one product that is complete, useful, and still manageable.
 
 ::: tip Goal
-Turn a prototype idea into a small but complete web application with a real frontend, backend logic, persistent data, and a public deployment link.
+Build an **AI marketing copy workspace**. After logging in, users fill in product information, generate marketing copy with one click, and automatically save the history. Need more generations? Upgrade the plan. Admins can view users, generation records, and payment status from the backend dashboard.
 :::
 
-At this point, the goal is no longer just “make a page look right.” The goal is to make the core product loop actually work: a user opens the app, does something meaningful, triggers backend logic, stores or reads data, and gets a result that still exists the next time they come back.
+<div style="margin: 32px 0;">
+  <ClientOnly>
+    <StepBar :active="0" :items="[
+      { title: 'Define', description: 'Lock down the pages and product scope first' },
+      { title: 'Frontend', description: 'Build the homepage, auth pages, and dashboard' },
+      { title: 'Backend', description: 'Connect the database, generation flow, and billing' },
+      { title: 'Admin & Delivery', description: 'Finish the admin panel, deployment, and demo assets' }
+    ]" />
+  </ClientOnly>
+</div>
 
-You do not need to build a huge platform. A small product with a clear scope and a fully working flow is a much better submission than a large project full of unfinished features.
+## Why This Project?
 
-This assignment is meant to connect the Stage 2 path:
+Because it hits the sweet spot: **it contains all the essential parts of a modern web product without becoming too complex to finish**.
 
-- [UI Design](../../frontend/2.2-ui-design/)
-- [From Design Prototype to Project Code](../../frontend/2.6-design-to-code/)
-- [Modern Component Libraries](../../frontend/2.7-modern-component-library/)
-- [From Database to Supabase](../../backend/2.2-database-supabase/)
-- [Using LLMs to Write API Code](../../backend/2.3-ai-interface-code/)
-- [Git and GitHub Workflow](../../backend/2.4-git-workflow/)
-- [How to Deploy Web Applications](../../backend/2.5-zeabur-deployment/)
+- **The public-facing app has a real use case**: users come here to solve an actual problem
+- **The user system includes login and permissions**: guests and registered users are different
+- **The core feature is generation**: the app calls AI to produce dynamic output rather than showing static pages
+- **The data is persistent**: generated results are saved and can be reviewed later
+- **It includes billing**: it feels like a real SaaS product instead of a toy project
+- **It includes an admin panel**: you get to experience the product from an operator's perspective
 
-## 1. Assignment Goal
+The difficulty is moderate. It is not so simple that it becomes just a single form, and not so complex that you spend a week without a working result.
 
-Build a **working, demoable, publicly accessible** full-stack web app.
+## 1. Define the Project First
 
-Your project should have:
+Project name: **LaunchKit**
 
-1. **A clear user and use case**
-   - You should be able to explain who the product is for and what problem it solves.
-2. **A complete product loop**
-   - The key action must go beyond frontend mock data and trigger real backend or database behavior.
-3. **A real engineering handoff**
-   - The code should live in a repo, secrets should be handled correctly, and someone else should be able to understand how the project works.
+Positioning: an AI marketing copy workspace
 
-Good project directions include:
+Target users: indie developers, small business owners, content operators, and anyone who wants to quickly create landing-page-ready copy.
 
-- upgrading a Stage 1 prototype into a real application
-- extending [Hogwarts Portraits](../../frontend/2.5-hogwarts-portraits/) into a more complete product
-- building a small AI utility such as a writing tool, summarizer, or research workspace
-- building a lightweight vertical tool such as a CRM, scheduling tool, or learning assistant
+They are not here to casually chat. They are here because they want **usable marketing copy fast**.
 
-## 2. Minimum Requirements
+### Core Feature
 
-| Area | Minimum Requirement | Notes |
-| --- | --- | --- |
-| Product scope | One clear core workflow | Example: create and save content, upload and process input, create a character and chat |
-| Frontend | At least 2 pages, or 1 complex main page plus 1 supporting page | Desktop-ready is required |
-| States | Handle loading, empty, and error states | Do not build happy-path only |
-| Data | At least 1 core table, ideally 2 related entities | Example: `users` + `projects`, `characters` + `messages` |
-| Backend | At least 3 real API endpoints or equivalent server-side capabilities | Express, Next.js route handlers, or edge functions are all acceptable |
-| Persistence | Core user actions must be saved and retrievable | Not just mock data |
-| Delivery | A GitHub repo and a public online link | Vercel or Zeabur are recommended |
-| Documentation | A readable `README.md` | Include purpose, stack, setup, and env vars |
+Keep the core simple. There is really just one central job:
 
-## 3. Recommended Stack
+**User input**: product name, one-sentence description, target audience, three selling points, and publishing channel
 
-You can use any reasonable stack, but if you want the safest path, this combination works well:
+**System output**: headline, subheadline, CTA copy, three short-copy variants, and one long-copy version
 
-| Layer | Recommended Option |
-| --- | --- |
-| Frontend | React / Next.js or Vue |
-| Component library | shadcn/ui, Ant Design, HeroUI, or Element Plus |
-| Data and auth | Supabase |
-| Backend | Next.js route handlers, Express, or Supabase Edge Functions |
-| Deployment | Vercel or Zeabur |
+The generated result is automatically saved to the user's account so it can be reviewed after the next login.
 
-For a first full-stack project, “frontend + Supabase + a small amount of server logic” is usually the fastest way to a successful submission.
+### Page Plan
 
-## 4. Suggested Workflow
+Build these 6 pages:
 
-### 4.1 Write the core task in one sentence
+| Page | Route | Description |
+|------|------|------|
+| Home | `/` | Clearly communicate the product value and include sign-up / login entry points |
+| Login | `/login` | A simple login form |
+| Register | `/register` | A simple sign-up form |
+| Dashboard | `/dashboard` | Fill in product info, generate copy, and review results |
+| Billing | `/billing` | Show Free and Pro plans and link to Stripe checkout |
+| Admin | `/admin` | Let admins view users, generation records, and payment status |
 
-Before coding, answer:
+### Data Model
 
-> What is the single most important thing a user should be able to do in this app?
+Three core tables are enough:
 
-Examples:
+```sql
+profiles (
+  id uuid primary key,
+  email text,
+  role text,         -- user / admin
+  plan text,         -- free / pro
+  created_at timestamptz
+)
 
-- upload text, generate a summary, and save it to history
-- create a character profile and continue chatting with it
-- add a customer lead and review its status later
+generations (
+  id uuid primary key,
+  user_id uuid,
+  product_name text,
+  target_channel text,
+  input_payload jsonb,
+  result_payload jsonb,
+  created_at timestamptz
+)
 
-If that sentence is still vague, the scope is probably too wide.
-
-### 4.2 Plan the structure first
-
-Sketch:
-
-- what pages you need
-- the most important module on each page
-- which actions read data
-- which actions write data
-
-This will make AI-assisted implementation much more stable.
-
-### 4.3 Start with mock data
-
-A practical order is:
-
-1. build the frontend structure with mock data
-2. connect real backend logic
-3. replace mock data with real persistence
-
-This keeps the debugging surface much smaller.
-
-### 4.4 Starter prompt for AI IDEs
-
-```text
-Help me build a deployable full-stack web app for [your use case].
-
-Do not generate everything at once. First break the project into:
-1. page structure and routes
-2. data model design
-3. API or server-side capability design
-4. frontend component breakdown
-5. environment variable and deployment setup
-
-Requirements:
-- Use [React/Next.js/Vue + your component library + Supabase/Express]
-- Prioritize a working MVP over over-engineering
-- Tell me which files to create
-- Include loading, empty, error, and validation states
+subscriptions (
+  id uuid primary key,
+  user_id uuid,
+  stripe_customer_id text,
+  stripe_subscription_id text,
+  plan text,
+  status text,
+  created_at timestamptz
+)
 ```
 
-## 5. Deliverables
+At this point, the structure of the whole product is already clear.
 
-Please submit:
+<div style="margin: 32px 0;">
+  <ClientOnly>
+    <StepBar :active="1" :items="[
+      { title: 'Define', description: 'Lock down the pages and product scope first' },
+      { title: 'Frontend', description: 'Build the homepage, auth pages, and dashboard' },
+      { title: 'Backend', description: 'Connect the database, generation flow, and billing' },
+      { title: 'Admin & Delivery', description: 'Finish the admin panel, deployment, and demo assets' }
+    ]" />
+  </ClientOnly>
+</div>
 
-1. **A GitHub repository link**
-2. **A public online link**
-3. **A `README.md`**
-   - project name and one-line description
-   - target users and use case
-   - tech stack
-   - main features
-   - local setup steps
-   - environment variable notes
-4. **A short demo asset**
-   - ideally a 60 to 90 second video, or a few key screenshots/GIFs
+## 2. Build the Frontend First
 
-Useful optional additions:
+At this stage, do not touch the database yet and do not rush into payments. **Build the frontend skeleton first.**
 
-- database schema or ER diagram
-- API notes or endpoint list
-- design/architecture explanation
-- a short iteration log
+### Suggested Tech Stack
 
-## 6. Evaluation Checklist
+- **Next.js App Router** for a modern React foundation
+- **TypeScript** for type safety
+- **Tailwind CSS** for utility-first styling
+- **shadcn/ui** for polished UI components
+- **Supabase** for backend services
+- **Stripe** for payment handling
 
-Your project is in good shape if:
+This combination works especially well with AI coding tools and fits the look and feel of a modern SaaS product.
 
-- a user can complete a real end-to-end flow
-- key actions create visible changes in the system
-- data still exists after refresh
-- backend failures do not crash the UI
-- you can explain the product clearly in about one minute
+### Step 1: Scaffold the Project
 
-## 7. Bonus Ideas
+Paste this prompt into Trae, Cursor, or Claude Code:
 
-You can go further with:
+```text
+Help me create a modern SaaS website called LaunchKit.
 
-- authentication and multi-user support
-- real AI capabilities with streaming or retries
-- better UI quality with a modern component library
-- monitoring, logging, or analytics
-- basic tests
-- payment or subscription flows
-- mobile adaptation
+Tech stack:
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
-## 8. Common Mistakes
+Pages:
+1. Home page /
+2. Login page /login
+3. Register page /register
+4. User dashboard /dashboard
+5. Billing page /billing
+6. Admin panel /admin
 
-### 8.1 The scope is too large
+For now, only build the frontend structure. Do not connect the database yet.
 
-If your first version requires auth, admin tools, payments, workflow builders, knowledge bases, and multi-user collaboration all at once, the project is probably too big.
+Requirements:
+- The homepage should feel like a modern AI SaaS landing page
+- Login and register pages should stay simple
+- The dashboard should have a form on the left and results on the right
+- The billing page should show free and pro plans
+- The admin page should first include a basic admin layout: sidebar, top bar, and table area
+- Use shadcn/ui components
+- The pages should feel like a real product, not a classroom demo
+```
 
-### 8.2 The frontend looks good, but nothing is real
+### Step 2: Refine the Dashboard
 
-That may still be a useful frontend exercise, but not a strong full-stack assignment. This project should include real persistence and server-side behavior.
+After the first version is ready, keep going:
 
-### 8.3 Secrets are committed into the repo
+```text
+Please continue improving the /dashboard page.
 
-API keys and database secrets belong in environment variables, not in frontend source code.
+This is an AI marketing copy workspace.
 
-### 8.4 Only testing the happy path
+Left-side form fields:
+- product name
+- one-sentence description
+- target audience
+- 3 selling points
+- publishing channel (website, WeChat Moments, Xiaohongshu, Douyin, email)
 
-Manually test:
+Reserve the right-side result area for:
+- headline
+- subheadline
+- CTA
+- 3 short-copy versions
+- 1 long-copy version
 
-- empty input
-- duplicate actions
-- network failure
-- missing data
-- permission errors
+Use mock data first to make the interaction work.
 
-That is where the most useful product fixes usually appear.
+Requirements:
+- show a loading state after clicking "Generate Copy"
+- design an empty state for the result area
+- use a responsive layout that works on both wide and narrow screens
+```
 
-## 9. Final Advice
+### Need Help?
 
-Treat this assignment as your first real product delivery exercise, not as a feature-count competition.
+Review these chapters:
 
-What matters most is not how many tools you used, but whether you can:
+- [Build Your First Modern App - UI Design](../../frontend/2.2-ui-design/)
+- [UI Guidelines and Multi-Product Design](../../frontend/2.3-multi-product-ui/)
+- [Make Interfaces Beautiful with LLMs and Skills](../../frontend/2.4-llm-skills-beautiful/)
+- [From Design Prototype to Project Code](../../frontend/2.6-design-to-code/)
+- [Upgrade Your UI with Modern Component Libraries](../../frontend/2.7-modern-component-library/)
 
-- define a clear product goal
-- use AI tools to move from idea to implementation
-- deliver something another person can understand, try, and reproduce
+<div style="margin: 32px 0;">
+  <ClientOnly>
+    <StepBar :active="2" :items="[
+      { title: 'Define', description: 'Lock down the pages and product scope first' },
+      { title: 'Frontend', description: 'Build the homepage, auth pages, and dashboard' },
+      { title: 'Backend', description: 'Connect the database, generation flow, and billing' },
+      { title: 'Admin & Delivery', description: 'Finish the admin panel, deployment, and demo assets' }
+    ]" />
+  </ClientOnly>
+</div>
+
+## 3. Connect the Backend
+
+This is where the project truly becomes "full-stack."
+
+### Step 3: Add Supabase Authentication
+
+```text
+Please treat me like a complete beginner and walk me through Supabase authentication step by step.
+
+I need help with:
+1. connecting Supabase to the project
+2. implementing sign up, sign in, and sign out
+3. redirecting to /dashboard after a successful login
+4. automatically redirecting unauthenticated users from /dashboard, /billing, and /admin to /login
+5. creating the profiles table
+6. automatically creating a profiles record after user registration
+7. including email, role, and plan fields in the profiles table
+
+Implementation requirements:
+- explain which files are being changed at each step
+- do not hardcode secrets
+- clearly mark anything that must be configured manually in the Supabase dashboard
+- explain how to verify registration and login after implementation
+```
+
+### Step 4: Add Generation API and Database Writes
+
+```text
+Please treat me like a complete beginner and help me build the core feature of the website: generating and saving marketing copy.
+
+Target result:
+1. the user fills in the form on /dashboard and clicks "Generate Copy"
+2. the backend receives product name, description, target audience, selling points, and publishing channel
+3. the backend calls a model to generate results
+4. the page displays the generated result
+5. both input and output are saved to the database
+6. the user can view generation history the next time they visit
+
+Please help me:
+- create the /api/generate endpoint
+- create the generations table
+- design the input and output fields
+- load the current user's history on the dashboard page
+
+User experience:
+- loading state on the button
+- error message if generation fails
+- empty state when there is no history
+
+After completion, please explain:
+- where the frontend page files are
+- where the backend API files are
+- where the database write logic lives
+- how to test the full generation flow
+```
+
+### Step 5: Add Stripe Billing
+
+```text
+Please treat me like a complete beginner and help me add the simplest usable Stripe billing flow to LaunchKit.
+
+I do not need a complicated system yet. I just want the main payment flow working first.
+
+Please help me:
+1. show free and pro plans on /billing
+2. redirect users to Stripe Checkout after clicking upgrade
+3. return to the website after successful payment
+4. save the payment result into the subscriptions table
+5. sync the profile.plan field
+6. limit free users to 3 generations per day while pro users have no limit
+
+Implementation principles:
+- get the main flow working first, without worrying about every edge case yet
+- clearly explain anything that must be configured in the Stripe dashboard
+- explain how to test the full payment flow after implementation
+```
+
+### Step 6: Build the Admin Dashboard
+
+```text
+Please treat me like a complete beginner and help me build a simple but usable admin dashboard.
+
+Only admins should be allowed to access it.
+
+Please help me:
+1. allow only users with role = admin to access /admin
+2. include 3 tabs in the admin dashboard:
+   - users
+   - generation records
+   - subscription status
+3. show email, plan, and creation time in the user list
+4. show user, product name, channel, and creation time in generation records
+5. show user, plan, and payment status in subscription status
+
+Requirements:
+- keep the UI simple and clear
+- use the existing component library's table, tabs, and badge components
+- explain how to make an account admin after implementation
+```
+
+### Need Help?
+
+Review these chapters:
+
+- [From Database to Supabase](../../backend/2.2-database-supabase/)
+- [Backend API Design and Development](../../backend/2.3-ai-interface-code/)
+- [Integrate Stripe and Other Billing Systems](../../backend/2.7-stripe-payment/)
+
+<div style="margin: 32px 0;">
+  <ClientOnly>
+    <StepBar :active="3" :items="[
+      { title: 'Define', description: 'Lock down the pages and product scope first' },
+      { title: 'Frontend', description: 'Build the homepage, auth pages, and dashboard' },
+      { title: 'Backend', description: 'Connect the database, generation flow, and billing' },
+      { title: 'Admin & Delivery', description: 'Finish the admin panel, deployment, and demo assets' }
+    ]" />
+  </ClientOnly>
+</div>
+
+## 4. Admin, Delivery, and Launch
+
+The product is mostly shaped now. The final stage is about three things:
+
+### 4.1 Deploy It
+
+Push the code to GitHub and deploy it publicly.
+
+References:
+
+- [Git and GitHub Workflow](../../backend/2.4-git-workflow/)
+- [Ship Your Product Prototype](../../backend/2.5-zeabur-deployment/)
+
+### Step 7: Pre-Deployment Check
+
+```text
+Please treat me like a complete beginner and help me check whether this project is ready to deploy.
+
+Focus on:
+- whether environment variables are complete
+- whether authentication callback URLs are correct
+- whether Stripe callback URLs are correct
+- whether any pages are missing loading states, empty states, or error messages
+- whether the README includes setup and deployment instructions
+
+Please:
+1. list the items that still need fixing, ordered by priority
+2. mark which ones must be fixed first
+3. explain the deployment steps after the fixes
+```
+
+### 4.2 README
+
+At minimum, include:
+
+- project overview
+- explanation of core pages
+- tech stack
+- local startup steps
+- environment variable list
+
+### 4.3 Demo Materials
+
+Prepare at least:
+
+- a homepage screenshot
+- a dashboard generation screenshot
+- a billing page screenshot
+- an admin dashboard screenshot
+- a demo video of around 60 seconds
+
+## 5. Final Outcome
+
+If you follow this guide, what you get is not just a "practice page." It is a **small but complete SaaS product**:
+
+- a frontend built with a modern component library
+- Supabase database and authentication
+- real AI generation
+- Stripe billing
+- an admin dashboard
+- public deployment
+
+That is absolutely strong enough to count as your **first real full-stack portfolio project**.
+
+## 6. Final Check Before Submission
+
+<el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
+  <template #header>
+    <div style="font-weight: bold; font-size: 16px;">One Last Check Before You Submit</div>
+  </template>
+
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li><label><input type="checkbox" disabled /> Home, Login, Dashboard, Billing, and Admin pages are all finished</label></li>
+    <li><label><input type="checkbox" disabled /> Users can register, log in, and log out</label></li>
+    <li><label><input type="checkbox" disabled /> Generation results are actually written into the database</label></li>
+    <li><label><input type="checkbox" disabled /> The main payment flow works end to end</label></li>
+    <li><label><input type="checkbox" disabled /> Admins can view users, generation records, and payment status</label></li>
+    <li><label><input type="checkbox" disabled /> The project has been deployed publicly</label></li>
+  </ul>
+</el-card>
 
 ::: tip Next
-After this assignment, continue with [Assignment 2: Modern Frontend Component Library + Trae](../2.2-modern-frontend-trae/) to push the interface quality even further.
+After finishing this project, continue with [Major Project 2: Online Exam and Management System](../2.2-modern-frontend-trae/) for the next full-stack challenge.
 :::

@@ -88,19 +88,19 @@ Learn API design, database management, and application deployment strategies:
 </NavGrid>
 
 
-### Assignments
+### Major Projects
 
-Consolidate your full-stack development skills through practical projects:
+Consolidate your full-stack development skills through hands-on projects:
 <NavGrid>
   <NavCard
     href="/en/stage-2/assignments/2.1-fullstack-app/"
-    title="Assignment 1: Build Your First Modern App - Full Stack"
-    description="Comprehensively apply what you've learned to independently complete a fully functional full-stack application"
+    title="Major Project 1: Your First SaaS Full-Stack App - AI Copywriting Website"
+    description="Build an AI marketing copy workspace from scratch, including login, generation, billing, and an admin dashboard"
   />
   <NavCard
     href="/en/stage-2/assignments/2.2-modern-frontend-trae/"
-    title="Assignment 2: Modern Frontend Component Library + Trae"
-    description="Use modern component libraries with Trae IDE to efficiently build complex frontend interfaces"
+    title="Major Project 2: Online Exam and Management System"
+    description="Build an online exam system with automatic question generation, test-taking flows, and admin management"
   />
 </NavGrid>
 

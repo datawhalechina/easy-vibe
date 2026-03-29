@@ -2244,9 +2244,38 @@ Sitemap: ${siteUrl}/sitemap.xml
             text: 'Appendix',
             link: '/en/appendix/index',
             activeMatch: '/en/appendix/'
+          },
+          {
+            text: 'Vibe Stories',
+            link: '/en/vibe-stories/story-1',
+            activeMatch: '/en/vibe-stories/'
           }
         ],
         sidebar: {
+          '/en/vibe-stories/': [
+            {
+              text: 'Vibe Stories',
+              collapsed: false,
+              items: [
+                {
+                  text: 'He Left a Five-Figure Monthly Salary to Help Rural School Kids "Use AI to Block Flies"',
+                  link: '/en/vibe-stories/story-1'
+                },
+                {
+                  text: 'During Finals Week, I Secretly Built a "Campus Xianyu" with AI',
+                  link: '/en/vibe-stories/story-2'
+                },
+                {
+                  text: 'I Built Each Student a Tireless "Straight-A Study Buddy"',
+                  link: '/en/vibe-stories/story-3'
+                },
+                {
+                  text: 'At 48, a Truck Driver Pulled Several All-Nighters and Used AI to Build an Overseas Tool Site',
+                  link: '/en/vibe-stories/story-4'
+                }
+              ]
+            }
+          ],
           '/en/stage-0/': productManagerSidebarEn,
           '/en/stage-1/': productManagerSidebarEn,
           '/en/stage-2/': stage2SidebarEn,

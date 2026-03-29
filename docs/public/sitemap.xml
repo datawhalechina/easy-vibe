@@ -1343,6 +1343,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/vibe-stories/story-1/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-2/</loc>
@@ -1350,6 +1351,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-2/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/vibe-stories/story-2/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-3/</loc>
@@ -1357,6 +1359,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-3/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/vibe-stories/story-3/"/>
   </url>
   <url>
     <loc>https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-4/</loc>
@@ -1364,5 +1367,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-4/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://datawhalechina.github.io/easy-vibe/en/vibe-stories/story-4/"/>
   </url>
 </urlset>
