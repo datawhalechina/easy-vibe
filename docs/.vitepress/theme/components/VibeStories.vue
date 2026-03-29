@@ -12,8 +12,8 @@ const t = inject('t', {
   value: {
     stories: {
       cat: 'Vibe Stories',
-      title: '看见每一个<br><span class="highlight">闪光的你。</span>',
-      sub: '在这里，发现大家如何使用 AI 创造属于自己的作品。'
+      title: '看见每一个<br><span class="highlight">闪亮的你</span>',
+      sub: '加入他们，分享你的 vibe coding 故事'
     }
   }
 })
@@ -152,8 +152,8 @@ onUnmounted(() => {
 <template>
   <div ref="containerRef" class="vibe-stories-container">
     <div class="section-header">
-      <h3 class="section-headline" v-html="t.stories?.title || '看见每一个<br><span class=\'highlight\'>闪光的你。</span>'"></h3>
-      <p class="section-sub">{{ t.stories?.sub || '在这里，发现大家如何使用 AI 创造属于自己的作品。' }}</p>
+      <h3 class="section-headline" v-html="t.stories?.title || '看见每一个<br><span class=\'highlight\'>闪亮的你</span>'"></h3>
+      <p class="section-sub">{{ t.stories?.sub || '加入他们，分享你的 vibe coding 故事' }}</p>
     </div>
 
     <div class="laptop-wrapper" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
