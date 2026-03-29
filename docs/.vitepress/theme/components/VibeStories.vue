@@ -1,5 +1,5 @@
 <script setup>
-import { inject, onMounted, onUnmounted, ref } from 'vue'
+import { computed, inject, onMounted, onUnmounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 import macbookImage from '../../../../assets/macbook.png'
 import story1Cover from '../../../zh-cn/vibe-stories/images/story-1/image5.png'
@@ -58,6 +58,25 @@ let autoplayTimer = null
 const isPaginating = ref(false)
 const containerRef = ref(null)
 let wheelHandler = null
+
+const screenRegion = ref({
+  centerX: 50,
+  centerY: 45.75,
+  width: 80,
+  height: 90,
+  radius: 4
+})
+
+const formatPercent = (value) => `${value}%`
+const formatPixels = (value) => `${value}px`
+
+const screenContentStyle = computed(() => ({
+  top: formatPercent(screenRegion.value.centerY - screenRegion.value.height / 2),
+  left: formatPercent(screenRegion.value.centerX - screenRegion.value.width / 2),
+  width: formatPercent(screenRegion.value.width),
+  height: formatPercent(screenRegion.value.height),
+  borderRadius: formatPixels(screenRegion.value.radius)
+}))
 
 const transitionName = ref('slide-left')
 
@@ -147,7 +166,7 @@ onUnmounted(() => {
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
         </button>
 
-        <div class="screen-content">
+        <div class="screen-content" :style="screenContentStyle">
           <a :href="withBase(tStories[currentIndex].link)" class="screen-link">
             <transition :name="transitionName">
               <div :key="currentIndex" class="screen-image-wrapper">
@@ -256,17 +275,13 @@ onUnmounted(() => {
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
-  /* Keep the MacBook frame height stable before the PNG finishes loading. */
-  aspect-ratio: 4608 / 2675;
 }
 
 .laptop-frame {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: 10;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   pointer-events: none;
   filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
 }
@@ -278,16 +293,8 @@ onUnmounted(() => {
 .screen-content {
   position: absolute;
   z-index: 1;
-  top: 0;
-  left: 10%;
-  width: 80%;
-  height: 92%;
   background: #0b0b0f;
   overflow: hidden;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  clip-path: inset(0 round 12px 12px 0 0);
-  contain: paint;
   perspective: 1000px;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -300,14 +307,9 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   display: block;
+  background: transparent;
   overflow: hidden;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  clip-path: inset(0 round 12px 12px 0 0);
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  mask-image: radial-gradient(white, black);
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  border-radius: inherit;
 }
 
 .screen-link:focus,
@@ -319,9 +321,7 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  clip-path: inset(0 round 12px 12px 0 0);
+  border-radius: inherit;
 }
 
 .screen-image {
@@ -330,9 +330,6 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  backface-visibility: hidden;
 }
 
 /* Transitions */
@@ -509,4 +506,5 @@ onUnmounted(() => {
 .dark .indicator-dot.active {
   background: #f5f5f7;
 }
+
 </style>
