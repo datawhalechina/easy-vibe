@@ -167,6 +167,7 @@ Easy-Vibe teaches you how to turn that into a real product.
 
 ## 🔥 News
 
+- **[2026-03-29]** ✨ **Vibe Stories launched and upgraded with real user journeys**: Added a new homepage Vibe Stories section with an interactive carousel and dedicated story pages, then replaced placeholder content with four real user stories featuring a rural primary school teacher, a college student, a high school IT teacher, and a truck driver who built real products with AI.
 - **[2026-03-26]** 🚀 **Major Stage 2 practice update**: Completed the SaaS capstone project "Your First SaaS Full-Stack App: Copywriting Generator Website" and substantially expanded the "How to integrate Stripe and payment systems" section, plus key content around multi-product UI and WeChat Mini Program backend workflows.
 - **[2026-03-25]** 📚 **New appendix: User Research and Requirement Validation**: Added four new articles covering idea sourcing, the Double Diamond model, Jobs to Be Done, and The Mom Test to help beginners discover and validate product ideas.
 - **[2026-03-25]** 📚 **English documentation fully updated**: Stage 2 (Full-stack Development) and Stage 3 (Advanced Development) are now fully available in English.

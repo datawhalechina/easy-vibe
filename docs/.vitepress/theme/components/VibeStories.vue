@@ -11,20 +11,30 @@ import story4Cover from '../../../zh-cn/vibe-stories/images/story-4/image7.png'
 const t = inject('t', {
   value: {
     stories: {
-      cat: 'Vibe Stories',
+      cat: '用户故事',
       title: '看见每一个<br><span class="highlight">闪亮的你</span>',
-      sub: '加入他们，分享你的 vibe coding 故事'
+      sub: '加入他们，分享你的 vibe coding 故事',
+      authorPrefix: '讲述者：',
+      ui: {
+        prevLabel: '上一则故事',
+        nextLabel: '下一则故事',
+        selectLabel: '查看这个故事',
+        imageAlt: '用户故事封面'
+      }
     }
   }
 })
 
-const tStories = [
+const tStories = computed(() => [
   {
     id: 1,
     title: t.value?.stories?.s1?.title || '放弃月入过万，他在农村小学带孩子们“用AI赶苍蝇”',
     author: t.value?.stories?.s1?.author || '小学老师小浩',
     avatar: '👨‍🏫',
     image: story1Cover,
+    imageStyle: {
+      objectPosition: 'center center'
+    },
     link: '/zh-cn/vibe-stories/story-1'
   },
   {
@@ -33,6 +43,9 @@ const tStories = [
     author: t.value?.stories?.s2?.author || '一位大二学生',
     avatar: '🎓',
     image: story2Cover,
+    imageStyle: {
+      objectPosition: 'center center'
+    },
     link: '/zh-cn/vibe-stories/story-2'
   },
   {
@@ -41,6 +54,9 @@ const tStories = [
     author: t.value?.stories?.s3?.author || '高中信息技术老师',
     avatar: '🧑‍🏫',
     image: story3Cover,
+    imageStyle: {
+      objectPosition: '34% center'
+    },
     link: '/zh-cn/vibe-stories/story-3'
   },
   {
@@ -49,9 +65,12 @@ const tStories = [
     author: t.value?.stories?.s4?.author || '货车司机老黄',
     avatar: '🚚',
     image: story4Cover,
+    imageStyle: {
+      objectPosition: 'center center'
+    },
     link: '/zh-cn/vibe-stories/story-4'
   }
-]
+])
 
 const currentIndex = ref(0)
 let autoplayTimer = null
@@ -78,13 +97,22 @@ const screenContentStyle = computed(() => ({
   borderRadius: formatPixels(screenRegion.value.radius)
 }))
 
+const currentStory = computed(() => tStories.value[currentIndex.value] ?? tStories.value[0])
+
+// Keep crop settings explicit in source so they survive reload/HMR.
+const currentImageStyle = computed(() => ({
+  objectFit: 'cover',
+  objectPosition: 'center center',
+  ...(currentStory.value?.imageStyle || {})
+}))
+
 const transitionName = ref('slide-left')
 
 const next = () => {
   if (isPaginating.value) return
   isPaginating.value = true
   transitionName.value = 'slide-left'
-  currentIndex.value = (currentIndex.value + 1) % tStories.length
+  currentIndex.value = (currentIndex.value + 1) % tStories.value.length
   setTimeout(() => {
     isPaginating.value = false
   }, 800)
@@ -94,7 +122,7 @@ const prev = () => {
   if (isPaginating.value) return
   isPaginating.value = true
   transitionName.value = 'slide-right'
-  currentIndex.value = (currentIndex.value - 1 + tStories.length) % tStories.length
+  currentIndex.value = (currentIndex.value - 1 + tStories.value.length) % tStories.value.length
   setTimeout(() => {
     isPaginating.value = false
   }, 800)
@@ -110,7 +138,7 @@ const startAutoplay = () => {
   autoplayTimer = setInterval(() => {
     if (!isPaginating.value) {
       transitionName.value = 'slide-left'
-      currentIndex.value = (currentIndex.value + 1) % tStories.length
+      currentIndex.value = (currentIndex.value + 1) % tStories.value.length
     }
   }, 4000)
 }
@@ -159,21 +187,22 @@ onUnmounted(() => {
     <div class="laptop-wrapper" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
       <div class="laptop-container">
         <!-- Navigation Controls -->
-        <button class="nav-btn prev" aria-label="Previous story" @click="prev">
+        <button class="nav-btn prev" :aria-label="t.stories?.ui?.prevLabel || 'Previous story'" @click="prev">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" /></svg>
         </button>
-        <button class="nav-btn next" aria-label="Next story" @click="next">
+        <button class="nav-btn next" :aria-label="t.stories?.ui?.nextLabel || 'Next story'" @click="next">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
         </button>
 
         <div class="screen-content" :style="screenContentStyle">
-          <a :href="withBase(tStories[currentIndex].link)" class="screen-link">
+          <a :href="withBase(currentStory.link)" class="screen-link">
             <transition :name="transitionName">
-              <div :key="currentIndex" class="screen-image-wrapper">
-                <img 
-                  :src="tStories[currentIndex].image" 
+              <div :key="currentStory.id" class="screen-image-wrapper">
+                <img
+                  :src="currentStory.image"
                   class="screen-image" 
-                  alt="Story screenshot"
+                  :style="currentImageStyle"
+                  :alt="t.stories?.ui?.imageAlt || 'Story screenshot'"
                 />
               </div>
             </transition>
@@ -185,12 +214,12 @@ onUnmounted(() => {
 
       <!-- Story Info & Avatar -->
       <div class="story-info">
-        <div class="story-avatar">{{ tStories[currentIndex].avatar }}</div>
+        <div class="story-avatar">{{ currentStory.avatar }}</div>
         <div class="story-text">
-          <a :href="withBase(tStories[currentIndex].link)" class="story-title">
-            {{ tStories[currentIndex].title }}
+          <a :href="withBase(currentStory.link)" class="story-title">
+            {{ currentStory.title }}
           </a>
-          <div class="story-author">by {{ tStories[currentIndex].author }}</div>
+          <div class="story-author">{{ t.stories?.authorPrefix || 'by' }} {{ currentStory.author }}</div>
         </div>
       </div>
       
@@ -201,7 +230,7 @@ onUnmounted(() => {
           :key="index"
           class="indicator-dot"
           :class="{ active: index === currentIndex }"
-          aria-label="Select story"
+          :aria-label="t.stories?.ui?.selectLabel || 'Select story'"
           @click="setIndex(index)"
         ></button>
       </div>
@@ -325,9 +354,15 @@ onUnmounted(() => {
 }
 
 .screen-image {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
   object-fit: cover;
   object-position: center;
 }

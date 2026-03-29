@@ -92,7 +92,7 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 教程',
       home: '首页',
-      stories: 'Vibe 故事',
+      stories: '用户故事',
       pm: '零基础入门',
       junior: '初中级开发',
       senior: '高级开发',
@@ -100,13 +100,20 @@ const i18n = {
       start: '开始学习'
     },
     stories: {
-      cat: 'Vibe Stories',
+      cat: '用户故事',
       title: '看见每一个<br><span class="highlight">闪亮的你</span>',
       sub: '加入他们，分享你的 vibe coding 故事',
       s1: { title: '放弃月入过万，他在农村小学带孩子们“用AI赶苍蝇”', author: '小学老师小浩' },
       s2: { title: '期末考试周，我偷偷用AI造了个“校园闲鱼”', author: '一位大二学生' },
       s3: { title: '我给每个学生，做了一个不会累的“学霸同桌”', author: '高中信息技术老师' },
-      s4: { title: '48岁货车司机，熬了几个通宵，硬是用AI磕出一个出海工具站', author: '货车司机老黄' }
+      s4: { title: '48岁货车司机，熬了几个通宵，硬是用AI磕出一个出海工具站', author: '货车司机老黄' },
+      authorPrefix: '讲述者：',
+      ui: {
+        prevLabel: '上一则故事',
+        nextLabel: '下一则故事',
+        selectLabel: '查看这个故事',
+        imageAlt: '用户故事封面'
+      }
     },
     stage1: {
       cat: 'Stage 1 · 零基础入门',
@@ -290,11 +297,19 @@ const i18n = {
     },
     stories: {
       cat: 'Vibe Stories',
-      title: 'See every <br><span class="highlight">shining you.</span>',
-      sub: 'Discover how everyone uses AI to create their own projects here.',
-      s1: { title: 'My First Full-Stack Project', author: 'Sanbu' },
-      s2: { title: 'From PM to Indie Hacker', author: 'Alice' },
-      s3: { title: '10x Productivity with AI', author: 'Bob' }
+      title: 'Meet every <br><span class="highlight">shining builder.</span>',
+      sub: 'See how people from different backgrounds use AI to solve real problems.',
+      s1: { title: 'He gave up a high salary to help rural kids "fight flies" with AI', author: 'Xiaohao, primary school teacher' },
+      s2: { title: 'During finals week, I secretly built a campus marketplace with AI', author: 'A sophomore student' },
+      s3: { title: 'I built every student a tireless AI study buddy', author: 'A high school IT teacher' },
+      s4: { title: 'A 48-year-old truck driver stayed up for nights to build an overseas AI tool site', author: 'Lao Huang, truck driver' },
+      authorPrefix: 'By',
+      ui: {
+        prevLabel: 'Previous story',
+        nextLabel: 'Next story',
+        selectLabel: 'View this story',
+        imageAlt: 'Vibe story cover'
+      }
     },
     stage1: {
       cat: 'Stage 1 · Getting Started',
@@ -471,7 +486,7 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe チュートリアル',
       home: 'ホーム',
-      stories: 'Vibe Stories',
+      stories: 'ユーザーストーリー',
       pm: 'プロダクトマネージャー',
       junior: '初中級開発者',
       senior: '上級開発者',
@@ -479,12 +494,20 @@ const i18n = {
       start: '学習を開始'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: '輝くあなたを<br><span class="highlight">見つけよう。</span>',
-      sub: 'みんながAIを使ってどのように自分の作品を作っているか発見しましょう。',
-      s1: { title: '初めてのフルスタックプロジェクト', author: 'Sanbu' },
-      s2: { title: 'PMから独立系開発者へ', author: 'Alice' },
-      s3: { title: 'AIで生産性を10倍に', author: 'Bob' }
+      cat: 'ユーザーストーリー',
+      title: 'それぞれの<br><span class="highlight">輝く物語を見よう。</span>',
+      sub: 'さまざまな背景の人たちが、AIで現実の課題をどう解決したかを紹介します。',
+      s1: { title: '高収入の仕事を辞め、農村の子どもたちとAIで「ハエ対策」アプリを作った先生', author: '小学校教師 小浩' },
+      s2: { title: '期末試験の週に、AIでこっそり「学内版フリマ」を作った', author: '大学2年生' },
+      s3: { title: '生徒一人ひとりに、疲れない「AI優等生の隣の席」を作った', author: '高校の情報技術教師' },
+      s4: { title: '48歳のトラック運転手が、徹夜で海外向けAIツールサイトを作り上げた', author: 'トラック運転手 老黄' },
+      authorPrefix: '語り手：',
+      ui: {
+        prevLabel: '前のストーリー',
+        nextLabel: '次のストーリー',
+        selectLabel: 'このストーリーを見る',
+        imageAlt: 'ユーザーストーリーのカバー'
+      }
     },
     stage1: {
       cat: 'Stage 1 · 初心者とPM',
@@ -603,7 +626,7 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 教學',
       home: '首頁',
-      stories: 'Vibe 故事',
+      stories: '使用者故事',
       pm: '產品經理',
       junior: '初中級開發',
       senior: '高級開發',
@@ -611,9 +634,20 @@ const i18n = {
       start: '開始學習'
     },
     stories: {
-      cat: 'Vibe Stories',
+      cat: '使用者故事',
       title: '看見每一個<br><span class="highlight">閃光的你。</span>',
-      sub: '在這裡，發現大家如何使用 AI 創造屬於自己的作品。'
+      sub: '看看不同背景的人，如何用 AI 解決真實問題、做出真實產品。',
+      s1: { title: '放棄月入過萬，他在鄉村小學帶孩子們「用 AI 趕蒼蠅」', author: '小學老師小浩' },
+      s2: { title: '期末考週，我偷偷用 AI 做了個「校園閒魚」', author: '一位大二學生' },
+      s3: { title: '我給每個學生，做了一個不會累的「學霸同桌」', author: '高中資訊科技老師' },
+      s4: { title: '48 歲貨車司機熬了幾個通宵，硬是用 AI 做出一個出海工具站', author: '貨車司機老黃' },
+      authorPrefix: '講述者：',
+      ui: {
+        prevLabel: '上一則故事',
+        nextLabel: '下一則故事',
+        selectLabel: '查看這個故事',
+        imageAlt: '使用者故事封面'
+      }
     },
     stage1: {
       cat: 'Stage 1 · 新手與產品原型',
@@ -730,7 +764,7 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe 튜토리얼',
       home: '홈',
-      stories: 'Vibe Stories',
+      stories: '사용자 이야기',
       pm: '제품 관리자',
       junior: '초/중급 개발자',
       senior: '고급 개발자',
@@ -738,9 +772,20 @@ const i18n = {
       start: '학습 시작'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: '빛나는 당신을 <br><span class="highlight">발견하세요.</span>',
-      sub: '모두가 AI를 사용하여 어떻게 자신만의 작품을 만드는지 여기서 확인하세요.'
+      cat: '사용자 이야기',
+      title: '빛나는 모두의<br><span class="highlight">이야기를 만나보세요.</span>',
+      sub: '서로 다른 배경의 사람들이 AI로 현실의 문제를 어떻게 해결했는지 살펴보세요.',
+      s1: { title: '높은 월급을 포기하고 시골 초등학교 아이들과 AI로 "파리 막기"를 만든 선생님', author: '초등학교 교사 샤오하오' },
+      s2: { title: '기말고사 주간에 몰래 AI로 "캠퍼스 중고장터"를 만든 이야기', author: '대학교 2학년 학생' },
+      s3: { title: '모든 학생에게 지치지 않는 "AI 우등생 짝꿍"을 만들어 준 선생님', author: '고등학교 정보기술 교사' },
+      s4: { title: '48세 트럭 운전사가 며칠 밤을 새워 해외용 AI 툴 사이트를 만든 이야기', author: '트럭 운전사 라오황' },
+      authorPrefix: '화자:',
+      ui: {
+        prevLabel: '이전 이야기',
+        nextLabel: '다음 이야기',
+        selectLabel: '이 이야기 보기',
+        imageAlt: '사용자 이야기 표지'
+      }
     },
     stage1: {
       cat: 'Stage 1 · 초보자 & PM',
@@ -859,7 +904,7 @@ const i18n = {
     nav: {
       title: 'Tutorial Easy-Vibe',
       home: 'Inicio',
-      stories: 'Vibe Stories',
+      stories: 'Historias de usuarios',
       pm: 'Gerente de Producto',
       junior: 'Desarrollador Junior',
       senior: 'Desarrollador Senior',
@@ -867,9 +912,20 @@ const i18n = {
       start: 'Empezar'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: 'Mira a cada <br><span class="highlight">tú brillante.</span>',
-      sub: 'Descubre cómo todos usan la IA para crear sus propios proyectos aquí.'
+      cat: 'Historias de usuarios',
+      title: 'Conoce cada <br><span class="highlight">historia que brilla.</span>',
+      sub: 'Descubre cómo personas de distintos contextos usan la IA para resolver problemas reales.',
+      s1: { title: 'Dejó un salario de cinco cifras para ayudar a niños rurales a "ahuyentar moscas" con IA', author: 'Xiaohao, maestro de primaria rural' },
+      s2: { title: 'Durante la semana de finales, construí en secreto un mercado universitario con IA', author: 'Una estudiante de segundo año' },
+      s3: { title: 'Le construí a cada alumno un compañero de estudio con IA que nunca se cansa', author: 'Un profesor de informática de secundaria' },
+      s4: { title: 'Un camionero de 48 años pasó varias noches despierto para crear una web de herramientas de IA para el extranjero', author: 'Lao Huang, camionero' },
+      authorPrefix: 'Por',
+      ui: {
+        prevLabel: 'Historia anterior',
+        nextLabel: 'Siguiente historia',
+        selectLabel: 'Ver esta historia',
+        imageAlt: 'Portada de la historia'
+      }
     },
     stage1: {
       cat: 'Stage 1 · Principiante y PM',
@@ -988,7 +1044,7 @@ const i18n = {
     nav: {
       title: 'Tutoriel Easy-Vibe',
       home: 'Accueil',
-      stories: 'Vibe Stories',
+      stories: 'Histoires d’utilisateurs',
       pm: 'Chef de Produit',
       junior: 'Dév Junior',
       senior: 'Dév Senior',
@@ -996,9 +1052,20 @@ const i18n = {
       start: 'Commencer'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: 'Voyez chaque <br><span class="highlight">vous brillant.</span>',
-      sub: 'Découvrez comment chacun utilise l\'IA pour créer ses propres projets ici.'
+      cat: 'Histoires d’utilisateurs',
+      title: 'Découvrez chaque <br><span class="highlight">parcours inspirant.</span>',
+      sub: 'Voyez comment des personnes de tous horizons utilisent l’IA pour résoudre de vrais problèmes.',
+      s1: { title: 'Il a quitté un salaire confortable pour aider des enfants d’une école rurale à "chasser les mouches" avec l’IA', author: 'Xiaohao, instituteur' },
+      s2: { title: 'Pendant la semaine des examens, j’ai secrètement créé une marketplace de campus avec l’IA', author: 'Une étudiante de deuxième année' },
+      s3: { title: 'J’ai créé pour chaque élève un binôme d’étude IA qui ne se fatigue jamais', author: 'Un professeur d’informatique au lycée' },
+      s4: { title: 'Un chauffeur routier de 48 ans a veillé plusieurs nuits pour lancer un site d’outils IA à l’international', author: 'Lao Huang, chauffeur routier' },
+      authorPrefix: 'Par',
+      ui: {
+        prevLabel: 'Histoire précédente',
+        nextLabel: 'Histoire suivante',
+        selectLabel: 'Voir cette histoire',
+        imageAlt: 'Couverture de l’histoire'
+      }
     },
     stage1: {
       cat: 'Stage 1 · Débutant & PM',
@@ -1118,7 +1185,7 @@ const i18n = {
     nav: {
       title: 'Easy-Vibe Tutorial',
       home: 'Startseite',
-      stories: 'Vibe Stories',
+      stories: 'Nutzergeschichten',
       pm: 'Produktmanager',
       junior: 'Junior Dev',
       senior: 'Senior Dev',
@@ -1126,9 +1193,20 @@ const i18n = {
       start: 'Starten'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: 'Sehen Sie jeden <br><span class="highlight">strahlenden Sie.</span>',
-      sub: 'Entdecken Sie hier, wie jeder KI nutzt, um eigene Projekte zu erstellen.'
+      cat: 'Nutzergeschichten',
+      title: 'Entdecke jede <br><span class="highlight">inspirierende Geschichte.</span>',
+      sub: 'Sieh, wie Menschen mit ganz unterschiedlichen Hintergründen mit KI echte Probleme lösen.',
+      s1: { title: 'Er gab ein hohes Gehalt auf, um Kindern auf dem Land mit KI beim "Fliegenvertreiben" zu helfen', author: 'Xiaohao, Grundschullehrer' },
+      s2: { title: 'In der Prüfungswoche habe ich heimlich mit KI einen Campus-Marktplatz gebaut', author: 'Eine Studentin im zweiten Jahr' },
+      s3: { title: 'Ich habe jedem Schüler einen unermüdlichen KI-Lernpartner gebaut', author: 'Ein Informatiklehrer an einer Oberschule' },
+      s4: { title: 'Ein 48-jähriger Lkw-Fahrer blieb mehrere Nächte wach, um eine internationale KI-Toolseite zu bauen', author: 'Lao Huang, Lkw-Fahrer' },
+      authorPrefix: 'Von',
+      ui: {
+        prevLabel: 'Vorherige Geschichte',
+        nextLabel: 'Nächste Geschichte',
+        selectLabel: 'Diese Geschichte ansehen',
+        imageAlt: 'Titelbild der Geschichte'
+      }
     },
     stage1: {
       cat: 'Stage 1 · Anfänger & PM',
@@ -1247,7 +1325,7 @@ const i18n = {
     nav: {
       title: 'دليل Easy-Vibe',
       home: 'الرئيسية',
-      stories: 'Vibe Stories',
+      stories: 'قصص المستخدمين',
       pm: 'مدير المنتج',
       junior: 'مطور مبتدئ',
       senior: 'مطور خبير',
@@ -1255,9 +1333,20 @@ const i18n = {
       start: 'ابدأ التعلم'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: 'شاهد كل <br><span class="highlight">أنت متألق.</span>',
-      sub: 'اكتشف كيف يستخدم الجميع الذكاء الاصطناعي لإنشاء مشاريعهم الخاصة هنا.'
+      cat: 'قصص المستخدمين',
+      title: 'تعرّف على كل <br><span class="highlight">قصة ملهمة.</span>',
+      sub: 'اكتشف كيف يستخدم أشخاص من خلفيات مختلفة الذكاء الاصطناعي لحل مشكلات حقيقية.',
+      s1: { title: 'تخلّى عن راتب مرتفع ليساعد أطفال مدرسة ريفية على "طرد الذباب" باستخدام الذكاء الاصطناعي', author: 'شياوهاو، معلم مدرسة ابتدائية' },
+      s2: { title: 'خلال أسبوع الامتحانات النهائية، بنيت سرًا سوقًا جامعيًا باستخدام الذكاء الاصطناعي', author: 'طالبة في السنة الثانية' },
+      s3: { title: 'صنعت لكل طالب زميل دراسة بالذكاء الاصطناعي لا يتعب أبدًا', author: 'معلم تقنية معلومات في الثانوية' },
+      s4: { title: 'سائق شاحنة يبلغ 48 عامًا سهر عدة ليالٍ ليبني موقع أدوات ذكاء اصطناعي للأسواق الخارجية', author: 'لاو هوانغ، سائق شاحنة' },
+      authorPrefix: 'الراوي:',
+      ui: {
+        prevLabel: 'القصة السابقة',
+        nextLabel: 'القصة التالية',
+        selectLabel: 'عرض هذه القصة',
+        imageAlt: 'غلاف القصة'
+      }
     },
     stage1: {
       cat: 'Stage 1 · مدير المنتج',
@@ -1377,7 +1466,7 @@ const i18n = {
     nav: {
       title: 'Hướng dẫn Easy-Vibe',
       home: 'Trang chủ',
-      stories: 'Vibe Stories',
+      stories: 'Câu chuyện người dùng',
       pm: 'Quản lý sản phẩm',
       junior: 'Dev Sơ/Trung cấp',
       senior: 'Dev Cao cấp',
@@ -1385,9 +1474,20 @@ const i18n = {
       start: 'Bắt đầu học'
     },
     stories: {
-      cat: 'Vibe Stories',
-      title: 'Thấy mọi <br><span class="highlight">bạn tỏa sáng.</span>',
-      sub: 'Khám phá cách mọi người sử dụng AI để tạo các dự án riêng của họ tại đây.'
+      cat: 'Câu chuyện người dùng',
+      title: 'Gặp gỡ từng <br><span class="highlight">câu chuyện tỏa sáng.</span>',
+      sub: 'Khám phá cách những người từ nhiều xuất phát điểm khác nhau dùng AI để giải quyết vấn đề thật.',
+      s1: { title: 'Anh bỏ mức lương cao để giúp trẻ em vùng quê "đuổi ruồi" bằng AI', author: 'Xiaohao, giáo viên tiểu học' },
+      s2: { title: 'Trong tuần thi cuối kỳ, tôi lặng lẽ làm một chợ đồ cũ trong trường bằng AI', author: 'Một sinh viên năm hai' },
+      s3: { title: 'Tôi tạo cho mỗi học sinh một bạn học giỏi AI không biết mệt', author: 'Một giáo viên CNTT trung học' },
+      s4: { title: 'Một tài xế xe tải 48 tuổi thức trắng nhiều đêm để làm một website công cụ AI cho thị trường quốc tế', author: 'Lao Huang, tài xế xe tải' },
+      authorPrefix: 'Người kể:',
+      ui: {
+        prevLabel: 'Câu chuyện trước',
+        nextLabel: 'Câu chuyện tiếp theo',
+        selectLabel: 'Xem câu chuyện này',
+        imageAlt: 'Ảnh bìa câu chuyện'
+      }
     },
     stage1: {
       cat: 'Stage 1 · Người mới & PM',

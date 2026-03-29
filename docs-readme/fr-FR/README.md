@@ -167,6 +167,7 @@ Easy-Vibe vous apprend a transformer cela en un vrai produit.
 
 ## 🔥 News
 
+- **[2026-03-29]** ✨ **La section Histoires d’utilisateurs est en ligne avec 4 cas réels** : Nous avons ajouté un carrousel interactif et des pages dédiées sur la page d’accueil, puis remplacé le contenu provisoire par quatre récits réels mettant en scène un instituteur rural, une étudiante, un professeur d’informatique au lycée et un chauffeur routier ayant créé de vrais produits avec l’IA.
 - **[2026-03-26]** 🚀 **阶段二实战内容集中更新**：补充完整 SaaS 全栈大作业《第一个 SaaS 全栈应用——文案生成网站》；同时大幅补全《如何集成 Stripe 等收费系统》，完善多产品 UI、微信小程序后端等关键章节。
 - **[2026-03-25]** 📚 **新增附录「用户研究与需求验证」**：包含 4 篇文章——从哪里找点子、双钻模型、Jobs to Be Done、The Mom Test 用户访谈法，帮助新手学会发现和验证产品想法。
 - **[2026-03-25]** 📚 **英文文档全面更新**：第二阶段（全栈开发）和第三阶段（高级开发）现已提供完整英文翻译。
