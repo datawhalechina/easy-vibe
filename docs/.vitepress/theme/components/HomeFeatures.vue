@@ -101,8 +101,8 @@ const i18n = {
     },
     stories: {
       cat: 'Vibe Stories',
-      title: '手比脑子快的人，<br><span class="highlight">都在这了。</span>',
-      sub: '未完待续的故事，等你带作品来续写。加入他们。',
+      title: '看见每一个<br><span class="highlight">闪亮的你</span>',
+      sub: '加入他们，分享你的 vibe coding 故事',
       s1: { title: '放弃月入过万，他在农村小学带孩子们“用AI赶苍蝇”', author: '小学老师小浩' },
       s2: { title: '期末考试周，我偷偷用AI造了个“校园闲鱼”', author: '一位大二学生' },
       s3: { title: '我给每个学生，做了一个不会累的“学霸同桌”', author: '高中信息技术老师' },
