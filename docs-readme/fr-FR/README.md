@@ -124,15 +124,6 @@ A l'ere de l'IA, programmer commence par decrire ce que vous voulez.
 Easy-Vibe vous apprend a transformer cela en un vrai produit.
 
 
-## 适合谁
-
-- **零基础爱好者**：先做出第一个作品，再理解怎么做
-- **产品经理 / 创业者**：快速验证想法，低成本做 MVP
-- **学生**：建立 AI 时代的实战技能
-- **初级开发者**：补齐从想法到上线的完整开发链路
-- **中高级开发者**：掌握 AI 协作开发、复杂项目实战与效率升级
-
-
 ## 🔥 News
 
 - **[2026-03-29]** ✨ **La section Histoires d’utilisateurs est en ligne avec 4 cas réels** : Nous avons ajouté un carrousel interactif et des pages dédiées sur la page d’accueil, puis remplacé le contenu provisoire par quatre récits réels mettant en scène un instituteur rural, une étudiante, un professeur d’informatique au lycée et un chauffeur routier ayant créé de vrais produits avec l’IA. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
@@ -153,6 +144,16 @@ Easy-Vibe vous apprend a transformer cela en un vrai produit.
 - **[2026-01-13]** Refonte de l'architecture documentaire et activation complète du support multilingue (i18n).
 - **[2026-01-01]** Lancement de la carte d'apprentissage principale du projet.
 </details>
+
+## 适合谁
+
+- **零基础爱好者**：先做出第一个作品，再理解怎么做
+- **产品经理 / 创业者**：快速验证想法，低成本做 MVP
+- **学生**：建立 AI 时代的实战技能
+- **初级开发者**：补齐从想法到上线的完整开发链路
+- **中高级开发者**：掌握 AI 协作开发、复杂项目实战与效率升级
+
+
 
 ## 你的学习路径
 

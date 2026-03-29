@@ -124,15 +124,6 @@ In the AI era, programming starts by describing what you want.
 Easy-Vibe teaches you how to turn that into a real product.
 
 
-## Who This Is For
-
-- **Complete beginners**: Build your first project first, then understand how it works
-- **Product managers / founders**: Validate ideas fast and build MVPs at low cost
-- **Students**: Develop practical skills for the AI era
-- **Junior developers**: Learn the full path from idea to launch
-- **Mid-level and senior developers**: Upgrade your AI collaboration workflow for complex projects
-
-
 ## 🔥 News
 
 - **[2026-03-29]** ✨ **Vibe Stories launched and upgraded with real user journeys**: Added a new homepage Vibe Stories section with an interactive carousel and dedicated story pages, then replaced placeholder content with four real user stories featuring a rural primary school teacher, a college student, a high school IT teacher, and a truck driver who built real products with AI. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
@@ -152,6 +143,15 @@ Easy-Vibe teaches you how to turn that into a real product.
 - **[2026-01-13]** Refactored the documentation architecture and fully enabled multi-language support.
 - **[2026-01-01]** Released the core learning map for the project.
 </details>
+
+## Who This Is For
+
+- **Complete beginners**: Build your first project first, then understand how it works
+- **Product managers / founders**: Validate ideas fast and build MVPs at low cost
+- **Students**: Develop practical skills for the AI era
+- **Junior developers**: Learn the full path from idea to launch
+- **Mid-level and senior developers**: Upgrade your AI collaboration workflow for complex projects
+
 
 
 ## Your Learning Paths

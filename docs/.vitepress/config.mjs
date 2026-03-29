@@ -1534,6 +1534,30 @@ Sitemap: ${siteUrl}/sitemap.xml
                 {
                   text: '大作业 2：在线考试与管理系统',
                   link: '/zh-cn/stage-2/assignments/exam-management-express/'
+                },
+                {
+                  text: '扩展作业：现代网页落地页',
+                  link: '/zh-cn/stage-2/assignments/modern-landing-page/'
+                },
+                {
+                  text: '扩展作业：自制 Dify 智能体平台',
+                  link: '/zh-cn/stage-2/assignments/custom-dify-agent-platform/'
+                },
+                {
+                  text: '扩展作业：智能旅游规划 Agent 平台',
+                  link: '/zh-cn/stage-2/assignments/travel-planning-agent-platform/'
+                },
+                {
+                  text: '扩展作业：电影推荐网（Spring Boot）',
+                  link: '/zh-cn/stage-2/assignments/movie-recommendation-springboot/'
+                },
+                {
+                  text: '扩展作业：简单买菜微服务网站',
+                  link: '/zh-cn/stage-2/assignments/simple-grocery-microservices/'
+                },
+                {
+                  text: '扩展作业：交通大数据可视化分析（Go）',
+                  link: '/zh-cn/stage-2/assignments/traffic-data-visualization-go/'
                 }
               ]
             }
