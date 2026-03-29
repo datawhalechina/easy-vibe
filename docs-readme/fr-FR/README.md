@@ -178,22 +178,22 @@ Easy-Vibe vous apprend a transformer cela en un vrai produit.
 ## 🔥 News
 
 - **[2026-03-29]** ✨ **La section Histoires d’utilisateurs est en ligne avec 4 cas réels** : Nous avons ajouté un carrousel interactif et des pages dédiées sur la page d’accueil, puis remplacé le contenu provisoire par quatre récits réels mettant en scène un instituteur rural, une étudiante, un professeur d’informatique au lycée et un chauffeur routier ayant créé de vrais produits avec l’IA. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
-- **[2026-03-26]** 🚀 **阶段二实战内容集中更新**：补充完整 SaaS 全栈大作业[《第一个 SaaS 全栈应用——文案生成网站》](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/2.1-fullstack-app/)；同时大幅补全[《如何集成 Stripe 等收费系统》](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/2.7-stripe-payment/)，完善多产品 UI、微信小程序后端等关键章节。
-- **[2026-03-25]** 📚 **新增附录「用户研究与需求验证」**：包含 4 篇文章——从哪里找点子、双钻模型、Jobs to Be Done、The Mom Test 用户访谈法，帮助新手学会发现和验证产品想法。[👉 Read the appendix](https://datawhalechina.github.io/easy-vibe/en/appendix/)
-- **[2026-03-25]** 📚 **英文文档全面更新**：第二阶段（全栈开发）和第三阶段（高级开发）现已提供完整英文翻译。[👉 Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
-- **[2026-03-02]** 🦞 **OpenClaw & AI Agent 友好支持**：新增 `llms.txt` AI 导航文件，让 OpenClaw、Claude、Cursor、Trae 等 AI Agent 能够快速理解本仓库结构，精准定位教程内容。希望每个🦞都学得愉快！
-- **[2026-03-01]** [高级开发部分](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)全面升级：新增 Claude Code 七大深度指南（MCP、Skills、Agent Teams 等）及八大跨平台开发实战（PWA、Electron、NFT、VS Code 插件、Qt 工业应用等）。
-- **[2026-02-25]** 更新[附录知识库](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)，涵盖 9 大知识领域、80+ 交互式专题。
-- **[2026-01-27]** 新增 Android 和 iOS 平台应用开发教程。
-- **[2026-01-19]** 发布 Prompt Engineering、AI 演进史、鉴权设计、Git 原理等一系列交互式演示组件，大幅提升可视化学习体验。
+- **[2026-03-26]** 🚀 **Mise à jour majeure de la pratique de l'Étape 2**: Projet final SaaS "[Votre première application full-stack SaaS : Générateur de copywriting](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" complété et section "[Comment intégrer Stripe et les systèmes de paiement](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)" substantiellement élargie.
+- **[2026-03-25]** 📚 **Nouvel appendice : Recherche utilisateur et validation des besoins**: Ajout de quatre nouveaux articles couvrant la recherche d'idées, le modèle Double Diamond, Jobs to Be Done et The Mom Test pour aider les débutants à découvrir et valider des idées de produits. [👉 Lire l'appendice](https://datawhalechina.github.io/easy-vibe/en/appendix/)
+- **[2026-03-25]** 📚 **Documentation anglaise entièrement mise à jour**: L'Étape 2 (Développement full-stack) et l'Étape 3 (Développement avancé) sont maintenant entièrement disponibles en anglais. [👉 Commencer à apprendre](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
+- **[2026-03-02]** 🦞 **Support amical pour OpenClaw et AI Agent**: Ajout de `llms.txt` pour qu'OpenClaw, Claude, Cursor, Trae et autres agents IA puissent rapidement comprendre la structure du dépôt et trouver le bon contenu tutoriel.
+- **[2026-03-01]** La section [Développement Avancé](https://datawhalechina.github.io/easy-vibe/en/stage-3/) a été complètement mise à niveau avec des guides approfondis pour Claude Code, incluant MCP, Skills, Agent Teams et plus, ainsi que huit tutoriels de projets multiplateformes.
+- **[2026-02-25]** Mise à jour de la [Base de Connaissances de l'Appendice](https://datawhalechina.github.io/easy-vibe/en/appendix/), couvrant maintenant 9 domaines de connaissances et plus de 80 sujets interactifs.
+- **[2026-01-27]** Ajout de tutoriels de développement d'applications pour Android et iOS.
+- **[2026-01-19]** Lancement de démos interactives pour Prompt Engineering, histoire de l'IA, conception d'authentification, principes Git et plus.
 
 <details>
-<summary>Past News</summary>
+<summary>Actualités Passées</summary>
 
-- **[2026-01-16]** 重构项目结构，正式确立“新手入门”章节，降低上手门槛。
-- **[2026-01-14]** 完成第一阶段“产品原型构建”文档的大规模更新。
-- **[2026-01-13]** 完成文档架构重构，全面支持多语言 (i18n)。
-- **[2026-01-01]** 发布项目核心学习地图 (Learning Map)，明确学习路径。
+- **[2026-01-16]** Restructuration du projet et établissement formel du chapitre d'entrée pour débutants.
+- **[2026-01-14]** Mise à jour majeure des documents de prototypage de produits de l'Étape 1.
+- **[2026-01-13]** Refonte de l'architecture documentaire et activation complète du support multilingue (i18n).
+- **[2026-01-01]** Lancement de la carte d'apprentissage principale du projet.
 </details>
 
 ### 📖 内容导航

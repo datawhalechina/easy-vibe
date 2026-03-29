@@ -178,22 +178,22 @@ Easy-Vibe는 그것을 실제 제품으로 만드는 방법을 가르칩니다.
 ## 🔥 News
 
 - **[2026-03-29]** ✨ **사용자 이야기 섹션 공개 및 실제 사례 4편으로 업데이트**: 홈페이지에 인터랙티브 스토리 캐러셀과 전용 스토리 페이지를 추가하고, 기존 플레이스홀더를 시골 초등학교 교사, 대학생, 고등학교 정보기술 교사, 트럭 운전사의 실제 이야기 4편으로 교체했습니다. [👉 View the stories](https://datawhalechina.github.io/easy-vibe/zh-cn/vibe-stories/story-1.html)
-- **[2026-03-26]** 🚀 **阶段二实战内容集中更新**：补充完整 SaaS 全栈大作业[《第一个 SaaS 全栈应用——文案生成网站》](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/2.1-fullstack-app/)；同时大幅补全[《如何集成 Stripe 等收费系统》](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/2.7-stripe-payment/)，完善多产品 UI、微信小程序后端等关键章节。
-- **[2026-03-25]** 📚 **新增附录「用户研究与需求验证」**：包含 4 篇文章——从哪里找点子、双钻模型、Jobs to Be Done、The Mom Test 用户访谈法，帮助新手学会发现和验证产品想法。[👉 Read the appendix](https://datawhalechina.github.io/easy-vibe/en/appendix/)
-- **[2026-03-25]** 📚 **英文文档全面更新**：第二阶段（全栈开发）和第三阶段（高级开发）现已提供完整英文翻译。[👉 Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
-- **[2026-03-02]** 🦞 **OpenClaw & AI Agent 友好支持**：新增 `llms.txt` AI 导航文件，让 OpenClaw、Claude、Cursor、Trae 等 AI Agent 能够快速理解本仓库结构，精准定位教程内容。希望每个🦞都学得愉快！
-- **[2026-03-01]** [高级开发部分](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)全面升级：新增 Claude Code 七大深度指南（MCP、Skills、Agent Teams 等）及八大跨平台开发实战（PWA、Electron、NFT、VS Code 插件、Qt 工业应用等）。
-- **[2026-02-25]** 更新[附录知识库](https://datawhalechina.github.io/easy-vibe/zh-cn/appendix/)，涵盖 9 大知识领域、80+ 交互式专题。
-- **[2026-01-27]** 新增 Android 和 iOS 平台应用开发教程。
-- **[2026-01-19]** 发布 Prompt Engineering、AI 演进史、鉴权设计、Git 原理等一系列交互式演示组件，大幅提升可视化学习体验。
+- **[2026-03-26]** 🚀 **단계 2 실습 콘텐츠 대규모 업데이트**: SaaS 캡스톤 프로젝트 "[첫 번째 SaaS 풀스택 앱: 카피라이팅 생성기 웹사이트](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/2.1-fullstack-app/)" 완료 및 "[Stripe 및 결제 시스템 통합 방법](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/2.7-stripe-payment/)" 섹션 대폭 확장.
+- **[2026-03-25]** 📚 **새로운 부록: 사용자 연구 및 요구사항 검증**: 아이디어 소싱, 더블 다이아몬드 모델, Jobs to Be Done, The Mom Test를 다루는 4개의 새로운 기사를 추가하여 초보자가 제품 아이디어를 발견하고 검증하는 데 도움을 줍니다. [👉 부록 읽기](https://datawhalechina.github.io/easy-vibe/en/appendix/)
+- **[2026-03-25]** 📚 **영문 문서 전면 업데이트**: 단계 2(풀스택 개발)와 단계 3(고급 개발)이 이제 완전히 영어로 제공됩니다. [👉 학습 시작하기](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
+- **[2026-03-02]** 🦞 **OpenClaw 및 AI Agent 친화적 지원**: `llms.txt`를 추가하여 OpenClaw, Claude, Cursor, Trae 및 기타 AI Agent가 저장소 구조를 빠르게 이해하고 올바른 튜토리얼 콘텐츠를 찾을 수 있도록 합니다.
+- **[2026-03-01]** [고급 개발 섹션](https://datawhalechina.github.io/easy-vibe/en/stage-3/)이 Claude Code에 대한 심층 가이드(MCP, Skills, Agent Teams 등)와 8개의 크로스 플랫폼 프로젝트 튜토리얼과 함께 포괄적으로 업그레이드되었습니다.
+- **[2026-02-25]** [부록 지식 베이스](https://datawhalechina.github.io/easy-vibe/en/appendix/)가 업데이트되어 이제 9개의 지식 영역과 80개 이상의 인터랙티브 주제를 다룹니다.
+- **[2026-01-27]** Android 및 iOS 앱 개발 튜토리얼이 추가되었습니다.
+- **[2026-01-19]** Prompt Engineering, AI 역사, 인증 설계, Git 원리 등을 위한 인터랙티브 데모가 출시되었습니다.
 
 <details>
-<summary>Past News</summary>
+<summary>과거 소식</summary>
 
-- **[2026-01-16]** 重构项目结构，正式确立“新手入门”章节，降低上手门槛。
-- **[2026-01-14]** 完成第一阶段“产品原型构建”文档的大规模更新。
-- **[2026-01-13]** 完成文档架构重构，全面支持多语言 (i18n)。
-- **[2026-01-01]** 发布项目核心学习地图 (Learning Map)，明确学习路径。
+- **[2026-01-16]** 프로젝트 구조를 재구성하고 초보자 입문 장을 공식적으로 확립했습니다.
+- **[2026-01-14]** 단계 1 제품 프로토타입 문서의 대규모 업데이트를 완료했습니다.
+- **[2026-01-13]** 문서 아키텍처를 리팩토링하고 다국어 지원(i18n)을 완전히 활성화했습니다.
+- **[2026-01-01]** 프로젝트의 핵심 학습 맵을 출시했습니다.
 </details>
 
 ### 📖 内容导航
