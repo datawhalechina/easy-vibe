@@ -9,7 +9,7 @@
 - 最后应该交付出什么样的效果
 
 ::: tip PRD 入口
-本项目的需求文档在同级页面： [查看 PRD](./PRD.md)
+本项目的需求文档在 GitHub： [查看 PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/zh-cn/stage-2/assignments/modern-landing-page/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
