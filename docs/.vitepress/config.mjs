@@ -1528,35 +1528,35 @@ Sitemap: ${siteUrl}/sitemap.xml
                   link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
                 },
                 {
-                  text: '大作业 1：第一个 SaaS 全栈应用——文案生成网站',
+                  text: '大作业 1：AI 营销文案 SaaS 开发实战',
                   link: '/zh-cn/stage-2/assignments/copywriting-platform-supabase/'
                 },
                 {
-                  text: '大作业 2：在线考试与管理系统',
+                  text: '大作业 2：在线考试与管理系统开发实战',
                   link: '/zh-cn/stage-2/assignments/exam-management-express/'
                 },
                 {
-                  text: '扩展作业：现代网页落地页',
+                  text: '扩展作业：现代 AI 生图 SaaS 开发实战',
                   link: '/zh-cn/stage-2/assignments/modern-landing-page/'
                 },
                 {
-                  text: '扩展作业：自制 Dify 智能体平台',
+                  text: '扩展作业：类 Dify 智能体平台开发实战',
                   link: '/zh-cn/stage-2/assignments/custom-dify-agent-platform/'
                 },
                 {
-                  text: '扩展作业：智能旅游规划 Agent 平台',
+                  text: '扩展作业：智能旅游规划 Agent 平台开发实战',
                   link: '/zh-cn/stage-2/assignments/travel-planning-agent-platform/'
                 },
                 {
-                  text: '扩展作业：电影推荐网（Spring Boot）',
+                  text: '扩展作业：Spring Boot 电影推荐系统开发实战',
                   link: '/zh-cn/stage-2/assignments/movie-recommendation-springboot/'
                 },
                 {
-                  text: '扩展作业：简单买菜微服务网站',
+                  text: '扩展作业：生鲜电商微服务系统开发实战',
                   link: '/zh-cn/stage-2/assignments/simple-grocery-microservices/'
                 },
                 {
-                  text: '扩展作业：交通大数据可视化分析（Go）',
+                  text: '扩展作业：Go 交通数据分析平台开发实战',
                   link: '/zh-cn/stage-2/assignments/traffic-data-visualization-go/'
                 }
               ]

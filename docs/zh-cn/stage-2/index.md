@@ -137,32 +137,32 @@ flowchart LR
 <NavGrid>
   <NavCard
     href="/zh-cn/stage-2/assignments/modern-landing-page/"
-    title="扩展作业：现代网页落地页"
+    title="扩展作业：现代 Web 落地页工程"
     description="练习价值表达、转化路径、CTA 设计与基础埋点，做一个真正能承接流量的页面"
   />
   <NavCard
     href="/zh-cn/stage-2/assignments/custom-dify-agent-platform/"
-    title="扩展作业：自制 Dify 智能体平台"
+    title="扩展作业：类 Dify 智能体编排平台"
     description="实现智能体管理、对话、日志与权限控制，做一个最小可用的 AI 平台"
   />
   <NavCard
     href="/zh-cn/stage-2/assignments/travel-planning-agent-platform/"
-    title="扩展作业：智能旅游规划 Agent 平台"
+    title="扩展作业：智能旅游规划 Agent 编排平台"
     description="围绕结构化输入、Agent 编排和历史计划管理，做一个可执行的 AI 旅行规划产品"
   />
   <NavCard
     href="/zh-cn/stage-2/assignments/movie-recommendation-springboot/"
-    title="扩展作业：电影推荐网（Spring Boot）"
+    title="扩展作业：Spring Boot 电影推荐系统"
     description="结合 Spring Boot、评分收藏与可解释推荐，完成一个完整推荐系统原型"
   />
   <NavCard
     href="/zh-cn/stage-2/assignments/simple-grocery-microservices/"
-    title="扩展作业：简单买菜微服务网站"
+    title="扩展作业：生鲜电商微服务系统"
     description="练习服务拆分、网关转发、库存与订单协作，体验从单体到微服务的工程思路"
   />
   <NavCard
     href="/zh-cn/stage-2/assignments/traffic-data-visualization-go/"
-    title="扩展作业：交通大数据可视化分析（Go）"
+    title="扩展作业：Go 交通数据分析与可视化平台"
     description="从数据接入、窗口聚合到趋势看板与告警，做一个完整的数据产品原型"
   />
 </NavGrid>

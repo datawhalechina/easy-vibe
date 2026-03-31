@@ -1,222 +1,161 @@
-# 大作业 2：在线考试与管理系统
+# 在线考试与管理系统开发实战
 
-做完第一个 SaaS 项目后，下一步不只是“再做一个网站”，而是要进入更接近真实业务系统的场景。
+这个项目不是单纯的答题页面，而是围绕一份真实 PRD，把一个多角色业务系统从想法推进到可上线产品。
 
-在线考试系统就是一个很典型的练手题：
+你会同时看到三件事：
 
-- 前台不再只有一个工作台，而是有 **学生端完整考试流程**
-- 后台不再只是看数据，而是要有 **题库管理、考试管理、成绩管理**
-- 权限不再只是“登录/未登录”，而是要处理 **学生 / 管理员** 两种角色
-- 数据也不再是一张结果表，而是会涉及 **考试、题目、答卷、成绩、用户** 多种实体
+- 项目要做成什么
+- 如何基于 PRD 拆解并推进开发
+- 最后应该交付出什么样的效果
 
-::: tip 🎯 这次做什么？
-打造一个 **在线考试与管理系统**。学生登录后可查看考试列表、开始答题、提交试卷、查看历史成绩；管理员可以创建考试、维护题库、查看提交记录，并根据题目规则完成自动判分或人工复核。
+::: tip PRD 入口
+本项目的需求文档在同级页面： [查看 PRD](./PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: '定角色与范围', description: '先把参与者、页面和数据模型定下来' },
-      { title: '搭前台', description: '学生端和管理端页面骨架先跑起来' },
-      { title: '写接口', description: '用 Express 接通登录、考试、提交、批改' },
-      { title: '上线交付', description: '部署、README、演示材料全部补齐' }
+      { title: '看 PRD', description: '先明确角色、页面、考试链路、题库和成绩范围' },
+      { title: '生成骨架', description: '让 AI 先产出官网、学生端、管理后台三套界面骨架' },
+      { title: '监工迭代', description: '逐页验收、补接口、修权限、打通考试与成绩链路' },
+      { title: '交付上线', description: '完成可演示、可运行、可继续开发的系统原型' }
     ]" />
   </ClientOnly>
 </div>
 
-## 为什么这个题目值得做？
+## 这个项目到底在做什么？
 
-因为它特别适合练“业务系统思维”。
+这是一个典型的在线考试与管理系统：
 
-你会发现，考试系统不是把几个页面摆在一起就结束了，它必须处理很多真实约束：
+- 官网前台：负责平台介绍和登录入口
+- 学生端：负责考试列表、答题、提交和成绩查看
+- 管理后台：负责题库、考试、提交记录和成绩统计
 
-- 学生只能看到自己该看的考试和成绩
-- 管理员要能发布考试、维护题目、查看提交情况
-- 一场考试通常会有开始时间、结束时间、作答时长、是否允许重复提交等规则
-- 题目可能有单选、多选、判断、简答，不同题型的判分方式也不一样
+后端需要接住这些关键能力：
 
-这些问题会逼着你第一次认真面对：
+- 登录鉴权
+- 角色权限
+- 考试和题库管理
+- 提交流程与自动判分
+- 成绩和统计管理
 
-- **角色权限**
-- **数据建模**
-- **接口设计**
-- **提交流程与状态流转**
+## 开发过程怎么走？
 
-这正是从“会写页面”到“会做系统”的关键一步。
+### 1. 先看 PRD，不要上来就写代码
 
-## 先看全景：这个系统到底由哪些部分组成？
+先确认：
+
+- 角色是不是只收敛到 `student / admin`
+- 页面清单是否完整
+- 题型、提交流程和批改范围是否拍板
+- 接口与数据表是否合理
+
+如果 PRD 没拍板，就先不要写代码。
+
+### 2. 先让 AI 生成“骨架版”
+
+第一轮先生成：
+
+- 登录页
+- 学生考试列表
+- 学生答题页
+- 学生成绩页
+- 后台首页
+- 题库管理页
+- 考试管理页
+- 提交记录页
+- 成绩统计页
+
+先把页面结构、导航和信息架构搭出来。
+
+### 3. 再进入“监工模式”
+
+你要重点盯这几件事：
+
+- 学生和管理员入口有没有分清
+- 登录后权限是不是隔离
+- 开始考试、作答、提交链路是不是闭环
+- 自动判分和人工复核边界是不是清楚
+- 管理端能不能看到真实提交记录和成绩统计
+
+### 4. 最后做联调和上线
 
 ```mermaid
 flowchart TD
-  student["学生"] --> studentPages["学生端页面"]
-  admin["管理员"] --> adminPages["管理端页面"]
-  studentPages --> auth["登录鉴权"]
-  adminPages --> auth
-  studentPages --> api["Express API"]
-  adminPages --> api
-  api --> exam["exams / questions"]
-  api --> submission["submissions / answers"]
-  api --> profile["users / profiles"]
-  api --> grading["自动判分 / 结果计算"]
-  grading --> score["scores / 统计"]
-  score --> studentPages
-  score --> adminPages
+  prd["PRD"] --> web["官网前台"]
+  prd --> student["学生端"]
+  prd --> admin["管理后台"]
+  student --> auth["鉴权"]
+  student --> exam["考试与作答"]
+  exam --> db["数据库"]
+  admin --> question["题库管理"]
+  admin --> submission["提交记录与成绩统计"]
+  question --> db
+  submission --> db
 ```
 
-你最终要交付的，不是一套静态页面，而是一套能让两类角色都跑通核心业务的系统。
+只要这条链路能跑通，这个项目就不是课堂作业，而是一套完整的业务系统原型。
 
-## 1. 定角色与范围：先把“做什么”说清楚
+## 怎么让 AI 帮你生成？
 
-### 角色设计
-
-这次只保留两种角色，先把范围收住：
-
-| 角色 | 核心动作 |
-|------|------|
-| 学生 | 登录、查看考试列表、开始答题、提交试卷、查看历史成绩 |
-| 管理员 | 登录、创建考试、维护题库、查看提交记录、查看成绩统计 |
-
-### 核心页面规划
-
-按下面这些页面来做，已经足够覆盖主要能力：
-
-| 页面 | 路径 | 说明 |
-|------|------|------|
-| 首页 | `/` | 说明平台用途，提供登录入口 |
-| 登录页 | `/login` | 学生和管理员共用登录入口 |
-| 学生考试列表 | `/student/exams` | 展示可参加的考试和状态 |
-| 学生答题页 | `/student/exams/:id` | 显示题目、倒计时、提交按钮 |
-| 学生成绩页 | `/student/history` | 查看历史考试记录和分数 |
-| 管理后台首页 | `/admin` | 后台概览与导航 |
-| 考试管理 | `/admin/exams` | 创建、发布、下线考试 |
-| 题库管理 | `/admin/questions` | 新增和编辑题目 |
-| 提交记录 | `/admin/submissions` | 查看学生提交和判分结果 |
-
-### 建议先做的业务边界
-
-为了确保你能完成，第一版建议只做这些：
-
-- 题型先支持 **单选、判断、简答** 三种
-- 自动判分先覆盖 **单选、判断**
-- 简答题先做 **人工复核**，或者展示“待批改”
-- 每场考试先只允许 **提交一次**
-- 不做复杂防作弊，不做随机组卷，不做监考录像
-
-### 数据模型
-
-推荐至少有下面这几张表：
-
-```sql
-profiles (
-  id uuid primary key,
-  email text,
-  role text,              -- student / admin
-  created_at timestamptz
-)
-
-exams (
-  id uuid primary key,
-  title text,
-  description text,
-  duration_minutes int,
-  status text,            -- draft / published / closed
-  created_by uuid,
-  created_at timestamptz
-)
-
-questions (
-  id uuid primary key,
-  type text,              -- single / judge / short
-  stem text,
-  options jsonb,
-  correct_answer text,
-  score int,
-  created_at timestamptz
-)
-
-exam_questions (
-  id uuid primary key,
-  exam_id uuid,
-  question_id uuid,
-  sort_order int
-)
-
-submissions (
-  id uuid primary key,
-  exam_id uuid,
-  student_id uuid,
-  status text,            -- in_progress / submitted / reviewed
-  total_score numeric,
-  submitted_at timestamptz
-)
-
-submission_answers (
-  id uuid primary key,
-  submission_id uuid,
-  question_id uuid,
-  answer_text text,
-  is_correct boolean,
-  score numeric
-)
-```
-
-### 关键时序图
-
-学生参加考试时，系统的主链路大致长这样：
-
-```mermaid
-sequenceDiagram
-  autonumber
-  actor Student as 学生
-  participant Frontend as 学生端页面
-  participant API as Express API
-  participant DB as 数据库
-
-  Student->>Frontend: 进入考试列表页
-  Frontend->>API: GET /api/exams
-  API->>DB: 查询已发布考试
-  DB-->>API: 返回考试列表
-  API-->>Frontend: 返回可参加考试
-  Student->>Frontend: 点击开始考试
-  Frontend->>API: POST /api/submissions/start
-  API->>DB: 创建 submission
-  API-->>Frontend: 返回试卷与 submissionId
-  Student->>Frontend: 作答并提交
-  Frontend->>API: POST /api/submissions/:id/submit
-  API->>API: 自动判分客观题
-  API->>DB: 保存答案与总分
-  API-->>Frontend: 返回提交结果
-```
-
-到这一步，你应该已经能看清这个作业的真正重点了：不是“页面多”，而是“状态和数据流更多”。
-
-<div style="margin: 32px 0;">
-  <ClientOnly>
-    <StepBar :active="1" :items="[
-      { title: '定角色与范围', description: '先把参与者、页面和数据模型定下来' },
-      { title: '搭前台', description: '学生端和管理端页面骨架先跑起来' },
-      { title: '写接口', description: '用 Express 接通登录、考试、提交、批改' },
-      { title: '上线交付', description: '部署、README、演示材料全部补齐' }
-    ]" />
-  </ClientOnly>
-</div>
-
-## 2. 搭前台：先让学生端和管理端“看得见、点得动”
-
-这一步先不要急着把所有后端写完，先把页面骨架搭出来。
-
-### 推荐技术栈
-
-- **Next.js / React**：负责前端页面
-- **TypeScript**：保证类型清晰
-- **Tailwind CSS + shadcn/ui**：快速搭建专业界面
-- **Express**：编写 REST API
-- **PostgreSQL / Supabase Postgres**：存业务数据
-
-### 第一步：让 AI IDE 先帮你起出页面骨架
+推荐按模块逐步下指令，而不是一句“帮我做完”。
 
 ```text
-请帮我创建一个在线考试与管理系统的前端页面骨架。
+请基于当前 PRD，帮我生成一个在线考试与管理系统的前端骨架。
+
+要求：
+1. 分成三个入口：www、app、admin
+2. 官网包括：首页、登录入口
+3. 学生端包括：登录、考试列表、答题页、历史成绩
+4. 后台包括：后台首页、题库管理、考试管理、提交记录、成绩统计
+5. 先只生成页面结构和假数据，不接真实接口
+6. 风格要像真实业务系统，不像课堂 demo
+```
+
+然后再一块一块补：
+
+- 登录鉴权
+- 考试接口
+- 提交与判分
+- 题库管理
+- 成绩统计
+
+## 怎么“监工”才有效？
+
+每做完一个模块，至少检查这 5 件事：
+
+| 检查项 | 要看什么 |
+|------|------|
+| 页面是否对 | 页面数量、入口、功能是否符合 PRD |
+| 接口是否对 | 请求参数、返回结构、状态处理是否合理 |
+| 权限是否对 | 学生和管理员权限是否隔离 |
+| 数据是否对 | 题目、提交、成绩、统计是否一致 |
+| 演示是否对 | 是否真的能演示完整考试闭环 |
+
+## 最后的预期效果
+
+做完后，你应该拿到这些交付物：
+
+- 一套可运行的在线考试系统项目
+- 一份同级 PRD 文档
+- 三套入口：`www / app / admin`
+- 登录、题库、考试、提交、成绩、后台管理
+- 一份 README
+- 一个可以演示的线上版本或本地完整运行方案
+
+## 验收标准
+
+| 维度 | 最低达标 |
+|------|------|
+| PRD 对齐 | 页面、功能、数据结构基本符合 PRD |
+| 产品闭环 | 登录、考试、提交、成绩查看可以跑通 |
+| 后台能力 | 题库、考试、提交、成绩统计可以查看 |
+| 工程完整度 | 前端、后端、数据库、判分链路已接通 |
+| 展示能力 | 可以清楚演示“从 PRD 到成品”的过程 |
+
+::: tip 🚀 完成后你会得到什么？
+你得到的不只是几个业务页面，而是一套完整的多角色系统开发样例。后面做教培、后台管理、内容平台项目时，都可以继续复用这套方法。
+:::
 
 技术栈要求：
 - Next.js App Router
