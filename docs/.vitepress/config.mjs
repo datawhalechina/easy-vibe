@@ -1528,35 +1528,35 @@ Sitemap: ${siteUrl}/sitemap.xml
                   link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
                 },
                 {
-                  text: 'AI 营销文案 SaaS 开发实战',
+                  text: 'AI 营销文案 SaaS',
                   link: '/zh-cn/stage-2/assignments/copywriting-platform-supabase/'
                 },
                 {
-                  text: '在线考试与管理系统开发实战',
+                  text: '在线考试与管理系统',
                   link: '/zh-cn/stage-2/assignments/exam-management-express/'
                 },
                 {
-                  text: '现代 AI 生图 SaaS 开发实战',
+                  text: '现代 AI 生图 SaaS',
                   link: '/zh-cn/stage-2/assignments/modern-landing-page/'
                 },
                 {
-                  text: '类 Dify 智能体平台开发实战',
+                  text: '类 Dify 智能体平台',
                   link: '/zh-cn/stage-2/assignments/custom-dify-agent-platform/'
                 },
                 {
-                  text: '智能旅游规划 Agent 平台开发实战',
+                  text: '智能旅游规划 Agent 平台',
                   link: '/zh-cn/stage-2/assignments/travel-planning-agent-platform/'
                 },
                 {
-                  text: 'Spring Boot 电影推荐系统开发实战',
+                  text: 'Spring Boot 电影推荐系统',
                   link: '/zh-cn/stage-2/assignments/movie-recommendation-springboot/'
                 },
                 {
-                  text: '生鲜电商微服务系统开发实战',
+                  text: '生鲜电商微服务系统',
                   link: '/zh-cn/stage-2/assignments/simple-grocery-microservices/'
                 },
                 {
-                  text: 'Go 交通数据分析平台开发实战',
+                  text: 'Go 交通数据分析平台',
                   link: '/zh-cn/stage-2/assignments/traffic-data-visualization-go/'
                 }
               ]
