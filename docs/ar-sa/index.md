@@ -17,10 +17,10 @@ hero:
   actions:
     - theme: brand
       text: ابدأ vibe معًا!
-      link: /ar-sa/stage-0/
+      link: /ar-sa/stage-1/
     - theme: alt
       text: مخطط الدورة
-      link: /ar-sa/stage-0/
+      link: /ar-sa/stage-1/
 ---
 
 <HomeFeatures />

@@ -17,10 +17,10 @@ hero:
   actions:
     - theme: brand
       text: 開始一起 vibe！
-      link: /zh-tw/stage-0/
+      link: /zh-tw/stage-1/
     - theme: alt
       text: 課程大綱
-      link: /zh-tw/stage-0/
+      link: /zh-tw/stage-1/
 ---
 
 <HomeFeatures />

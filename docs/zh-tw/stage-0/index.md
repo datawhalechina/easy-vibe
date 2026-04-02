@@ -11,12 +11,12 @@
 適合產品、運營及非技術背景。通過做遊戲理解 AI 編程邏輯，建立信心：
 <NavGrid>
   <NavCard
-    href="/zh-tw/stage-0/0.1-learning-map/"
+    href="/zh-tw/stage-1/learning-map/"
     title="學習地圖"
     description="了解整個學習路徑，明確每個階段的目標和收穫"
   />
   <NavCard
-    href="/zh-tw/stage-0/0.2-ai-capabilities-through-games/"
+    href="/zh-tw/stage-1/ai-capabilities-through-games/"
     title="AI 時代，會說話就會編程"
     description="通過貪吃蛇等小遊戲，體驗 AI 編程的魅力，打破對編程的恐懼"
   />
@@ -28,22 +28,22 @@
 掌握 Vibe Coding 工作流。學會拆解需求，獨立完成高保真 Web 應用原型：
 <NavGrid>
   <NavCard
-    href="/zh-tw/stage-1/1.1-introduction-to-ai-ide/"
+    href="/zh-tw/stage-1/introduction-to-ai-ide/"
     title="認識 AI IDE 工具"
     description="了解當前主流的 AI 編程工具，選擇最適合你的開發搭檔"
   />
   <NavCard
-    href="/zh-tw/stage-1/1.2-building-prototype/"
+    href="/zh-tw/stage-1/building-prototype/"
     title="動手做出原型"
     description="學習如何快速將產品想法轉化為可視化的原型，進行低成本試錯"
   />
   <NavCard
-    href="/zh-tw/stage-1/1.3-integrating-ai-capabilities/"
+    href="/zh-tw/stage-1/integrating-ai-capabilities/"
     title="給原型加上 AI 能力"
     description="通過集成簡單的 AI API，讓你的原型具備智能交互能力"
   />
   <NavCard
-    href="/zh-tw/stage-1/1.4-complete-project-practice/"
+    href="/zh-tw/stage-1/complete-project-practice/"
     title="完整項目實戰"
     description="綜合運用所學知識，從 0 到 1 完成一個完整的產品原型開發"
   />

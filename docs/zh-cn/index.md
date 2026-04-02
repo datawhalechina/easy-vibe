@@ -17,7 +17,7 @@ hero:
   actions:
     - theme: brand
       text: 开始一起 vibe！
-      link: /zh-cn/stage-0/0.1-learning-map/
+      link: /zh-cn/stage-1/learning-map/
     - theme: alt
       text: GitHub 加速更新
       link: https://github.com/datawhalechina/easy-vibe

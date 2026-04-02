@@ -269,7 +269,7 @@ function main() {
 }
 
 function getPriority(filePath) {
-  if (filePath.includes('stage-0') || filePath.includes('stage-1')) return 0.9
+  if (filePath.includes('stage-1')) return 0.9
   if (filePath.includes('stage-2')) return 0.8
   if (filePath.includes('stage-3')) return 0.8
   if (filePath.includes('appendix')) return 0.7

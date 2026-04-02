@@ -9,42 +9,42 @@ Welcome to the **Junior Developer** stage! Here, you will go deeper into full-st
 Master modern frontend development and learn how to use design tools, component libraries, and AI-native UI workflows:
 <NavGrid>
   <NavCard
-    href="/en/stage-2/frontend/2.0-lovart-assets/"
+    href="/en/stage-2/frontend/lovart-assets/"
     title="Frontend 0: Build Your Own Asset-Production Agent with Lovart"
     description="Use Nanobanana and Lovart to batch-generate high-quality visual assets, then build a drawing agent with intent recognition"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.1-figma-mastergo/"
+    href="/en/stage-2/frontend/figma-mastergo/"
     title="Frontend 1: Figma & MasterGo Basics"
     description="Master the basic operations of professional UI design tools and the workflow from design to code"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.2-ui-design/"
+    href="/en/stage-2/frontend/ui-design/"
     title="Frontend 2: Build Your First Modern App - UI Design"
     description="Learn the UI design foundations for modern applications"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.3-multi-product-ui/"
+    href="/en/stage-2/frontend/multi-product-ui/"
     title="Frontend 3: UI Guidelines and Multi-Product Design"
     description="Learn mainstream UI design guidelines to improve product design consistency and aesthetics"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.4-llm-skills-beautiful/"
+    href="/en/stage-2/frontend/llm-skills-beautiful/"
     title="Frontend 4: Make Interfaces Beautiful with LLMs and Skills"
     description="Use prompts and plugins in real projects to make AI generate more polished, distinctive interfaces"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.5-hogwarts-portraits/"
+    href="/en/stage-2/frontend/hogwarts-portraits/"
     title="Frontend 4: Let's Build Hogwarts Portraits"
     description="Practical project: Build an interactive Hogwarts portrait application using AI-generated images"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.6-design-to-code/"
+    href="/en/stage-2/frontend/design-to-code/"
     title="Frontend 6: From Design Prototype to Project Code"
     description="Learn how to turn design prototypes into frontend code that really runs in the browser"
   />
   <NavCard
-    href="/en/stage-2/frontend/2.7-modern-component-library/"
+    href="/en/stage-2/frontend/modern-component-library/"
     title="Frontend 7: Upgrade Your UI with Modern Component Libraries"
     description="Use component libraries to build professional interfaces faster"
   />
@@ -56,32 +56,32 @@ Master modern frontend development and learn how to use design tools, component 
 Learn API design, database management, and application deployment strategies:
 <NavGrid>
   <NavCard
-    href="/en/stage-2/backend/2.4-git-workflow/"
+    href="/en/stage-2/backend/git-workflow/"
     title="Backend 1: Learn Git and GitHub"
     description="Master core version control operations and collaboration workflows with Git"
   />
   <NavCard
-    href="/en/stage-2/backend/2.2-database-supabase/"
+    href="/en/stage-2/backend/database-supabase/"
     title="Backend 2: From Database to Supabase"
     description="Master relational database basics and learn to use Supabase, a modern BaaS platform"
   />
   <NavCard
-    href="/en/stage-2/backend/2.3-ai-interface-code/"
+    href="/en/stage-2/backend/ai-interface-code/"
     title="Backend 3: Backend API Design and Development"
     description="Use AI to assist in generating backend interface code and standard API documentation"
   />
   <NavCard
-    href="/en/stage-2/backend/2.5-zeabur-deployment/"
+    href="/en/stage-2/backend/zeabur-deployment/"
     title="Backend 4: Ship Your Product Prototype"
     description="Learn to quickly deploy your full-stack applications to the cloud using Zeabur"
   />
   <NavCard
-    href="/en/stage-2/backend/2.6-modern-cli/"
+    href="/en/stage-2/backend/modern-cli/"
     title="Backend 5: From IDEs to CLI AI Coding Tools"
     description="Explore modern CLI tools to enhance command-line development experience"
   />
   <NavCard
-    href="/en/stage-2/backend/2.7-stripe-payment/"
+    href="/en/stage-2/backend/stripe-payment/"
     title="Backend 6: Integrate Stripe and Other Billing Systems"
     description="Practical: Integrate Stripe payment functionality into your application for monetization"
   />
@@ -93,12 +93,12 @@ Learn API design, database management, and application deployment strategies:
 Consolidate your full-stack development skills through hands-on projects:
 <NavGrid>
   <NavCard
-    href="/en/stage-2/assignments/2.1-fullstack-app/"
+    href="/en/stage-2/assignments/fullstack-app/"
     title="Major Project 1: Your First SaaS Full-Stack App - AI Copywriting Website"
     description="Build an AI marketing copy workspace from scratch, including login, generation, billing, and an admin dashboard"
   />
   <NavCard
-    href="/en/stage-2/assignments/2.2-modern-frontend-trae/"
+    href="/en/stage-2/assignments/modern-frontend-trae/"
     title="Major Project 2: Online Exam and Management System"
     description="Build an online exam system with automatic question generation, test-taking flows, and admin management"
   />
@@ -108,7 +108,7 @@ Consolidate your full-stack development skills through hands-on projects:
 ### AI Capabilities Extension
 <NavGrid>
   <NavCard
-    href="/en/stage-2/ai-capabilities/2.1-dify-knowledge-base/"
+    href="/en/stage-2/ai-capabilities/dify-knowledge-base/"
     title="AI 1: Dify Basics & Knowledge Base Integration"
     description="Learn to build AI applications using Dify and integrate private knowledge bases"
   />

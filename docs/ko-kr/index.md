@@ -17,10 +17,10 @@ hero:
   actions:
     - theme: brand
       text: 함께 vibe 시작!
-      link: /ko-kr/stage-0/
+      link: /ko-kr/stage-1/
     - theme: alt
       text: 과정 개요
-      link: /ko-kr/stage-0/
+      link: /ko-kr/stage-1/
 ---
 
 <HomeFeatures />

@@ -88,7 +88,7 @@ claude
 
 **推荐做法**：直接让 AI Agent 帮你完成配置。只需提供厂商给的配置信息（如 API 地址、密钥等），AI 会自动设置正确的环境变量。
 
-**更详细的配置指南请参考：** [如何安装 claudecode 以及如何配置环境变量](/zh-cn/stage-2/backend/2.6-modern-cli/)
+**更详细的配置指南请参考：** [如何安装 claudecode 以及如何配置环境变量](/zh-cn/stage-2/backend/modern-cli/)
 
 :::
 

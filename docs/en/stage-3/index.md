@@ -52,57 +52,57 @@ Build WeChat Mini Programs, Android and iOS applications, and achieve cross-plat
 
 <NavGrid>
   <NavCard
-    href="/en/stage-3/cross-platform/3.1-choose-platform/"
+    href="/en/stage-3/cross-platform/choose-platform/"
     title="How to Choose the Right Platform for Your App"
     description="Find the most suitable development platform based on user scenarios and needs"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.3-wechat-miniprogram/"
+    href="/en/stage-3/cross-platform/wechat-miniprogram/"
     title="How to Build a WeChat Mini Program"
     description="Develop a WeChat Mini Program from scratch and master the core development workflow"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.4-wechat-miniprogram-backend/"
+    href="/en/stage-3/cross-platform/wechat-miniprogram-backend/"
     title="How to Build a WeChat Mini Program (with Backend)"
     description="Build a complete WeChat Mini Program application with backend support"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.5-android-app/"
+    href="/en/stage-3/cross-platform/android-app/"
     title="How to Build an Android App"
     description="Use modern cross-platform frameworks to build Android native applications"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.6-ios-app/"
+    href="/en/stage-3/cross-platform/ios-app/"
     title="How to Build an iOS App"
     description="Develop and publish iOS applications while mastering iOS ecosystem development standards"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.8-pwa-local-app/"
+    href="/en/stage-3/cross-platform/pwa-local-app/"
     title="How to Build a PWA Local App"
     description="Turn a web page into a real app with offline use and desktop installation support"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.9-browser-ai-extension/"
+    href="/en/stage-3/cross-platform/browser-ai-extension/"
     title="How to Build a Browser AI Assistant Extension"
     description="Summarize any web page with one click and build your browser AI assistant"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.10-electron-voice-to-text/"
+    href="/en/stage-3/cross-platform/electron-voice-to-text/"
     title="How to Build a Cross-Platform Electron Desktop App"
     description="Build a speech-to-text desktop application for Windows, macOS, and Linux"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.11-nft-minting/"
+    href="/en/stage-3/cross-platform/nft-minting/"
     title="How to Quickly Build and Mint an NFT"
     description="A 10-minute starter version to write an NFT smart contract and mint from scratch"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.12-vscode-extension/"
+    href="/en/stage-3/cross-platform/vscode-extension/"
     title="How to Build a VS Code Extension"
     description="Build your AI project assistant with multi-file Q&A and custom shortcuts"
   />
   <NavCard
-    href="/en/stage-3/cross-platform/3.13-qt-industrial-hmi/"
+    href="/en/stage-3/cross-platform/qt-industrial-hmi/"
     title="How to Build an Industrial-Grade Qt Desktop App"
     description="Build a water-pump monitoring HMI system and master industrial desktop application development"
   />
@@ -114,7 +114,7 @@ Build your own personal website and technical blog to establish personal influen
 
 <NavGrid>
   <NavCard
-    href="/en/stage-3/personal-brand/3.7-personal-website-blog/"
+    href="/en/stage-3/personal-brand/personal-website-blog/"
     title="How to Build Your Own Personal Website and Academic Blog"
     description="Use a modern tech stack to build a high-performance, visually polished personal blog"
   />
@@ -126,12 +126,12 @@ Explore advanced AI technologies such as RAG and LangGraph to build complex AI a
 
 <NavGrid>
   <NavCard
-    href="/en/stage-3/ai-advanced/3.a1-rag-introduction/"
+    href="/en/stage-3/ai-advanced/rag-introduction/"
     title="What Is RAG and How It Works"
     description="Deeply understand the principles of Retrieval-Augmented Generation (RAG) and its value in AI applications"
   />
   <NavCard
-    href="/en/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/"
+    href="/en/stage-3/ai-advanced/langgraph-advanced-rag/"
     title="Intermediate and Advanced RAG with Workflow Orchestration - Using LangGraph as an Example"
     description="Learn to use LangGraph to orchestrate complex AI workflows and build advanced RAG systems"
   />

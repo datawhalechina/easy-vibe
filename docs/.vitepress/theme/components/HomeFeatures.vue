@@ -4,16 +4,16 @@ import { useRouter, withBase, useData } from 'vitepress'
 import GitHubStars from './GitHubStars.vue'
 import VibeStories from './VibeStories.vue'
 import { provide } from 'vue'
-import stage2LovartCover from '../../../zh-cn/stage-2/frontend/2.0-lovart-assets/images/image1.png'
-import stage2FigmaCover from '../../../zh-cn/stage-2/frontend/2.1-figma-mastergo/images/image8.png'
-import stage2DesignToCodeCover from '../../../zh-cn/stage-2/frontend/2.6-design-to-code/images/image42.png'
-import stage2SupabaseCover from '../../../zh-cn/stage-2/backend/2.2-database-supabase/images/image1.png'
-import stage2ZeaburCover from '../../../zh-cn/stage-2/backend/2.5-zeabur-deployment/images/image1.png'
-import stage2DifyCover from '../../../zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/images/image1.png'
-import stage3ElectronCover from '../../../zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/images/image3.png'
+import stage2LovartCover from '../../../zh-cn/stage-2/frontend/lovart-assets/images/image1.png'
+import stage2FigmaCover from '../../../zh-cn/stage-2/frontend/figma-mastergo/images/image8.png'
+import stage2DesignToCodeCover from '../../../zh-cn/stage-2/frontend/design-to-code/images/image42.png'
+import stage2SupabaseCover from '../../../zh-cn/stage-2/backend/database-supabase/images/image1.png'
+import stage2ZeaburCover from '../../../zh-cn/stage-2/backend/zeabur-deployment/images/image1.png'
+import stage2DifyCover from '../../../zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png'
+import stage3ElectronCover from '../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png'
 import stage3AgentTeamsCover from '../../../zh-cn/stage-3/core-skills/agent-teams/images/home-cover.svg'
 import stage3LongRunningCover from '../../../zh-cn/stage-3/core-skills/long-running-tasks/images/home-cover.svg'
-import stage3PersonalBrandCover from '../../../zh-cn/stage-3/personal-brand/3.7-personal-website-blog/images/image1.png'
+import stage3PersonalBrandCover from '../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png'
 
 const router = useRouter()
 const { site, page, lang } = useData()
@@ -125,19 +125,19 @@ const i18n = {
           title: '学习地图',
           desc: '了解从零基础到全栈开发的完整学习路径，明确每个阶段的目标和收获。',
           sub: '全年龄友好',
-          link: '/zh-cn/stage-0/0.1-learning-map/'
+          link: '/zh-cn/stage-1/learning-map/'
         },
         {
           title: '游戏化入门',
           desc: '通过制作贪吃蛇等 AI 原生小游戏，体验 AI 编程的魅力，打破对代码的恐惧。',
           sub: '边玩边学',
-          link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
+          link: '/zh-cn/stage-1/ai-capabilities-through-games/'
         },
         {
           title: '产品原型实战',
           desc: '掌握 Vibe Coding 工作流，从想法到可交互原型，独立完成高保真 Web 应用。',
           sub: '核心心法',
-          link: '/zh-cn/stage-1/1.0-finding-great-idea/'
+          link: '/zh-cn/stage-1/finding-great-idea/'
         }
       ]
     },
@@ -150,37 +150,37 @@ const i18n = {
           title: '素材生成 Agent',
           headline: '先把素材生产提速。',
           desc: '从 Lovart 和 Nanobanana 出发，搭建自己的素材生产工作流和绘图 Agent。',
-          link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+          link: '/zh-cn/stage-2/frontend/lovart-assets/'
         },
         {
           title: 'Figma 与 MasterGo',
           headline: '先把设计工具用顺。',
           desc: '掌握专业 UI 设计工具的基础操作，理解从设计稿到开发协作的关键链路。',
-          link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
+          link: '/zh-cn/stage-2/frontend/figma-mastergo/'
         },
         {
           title: '设计稿转代码',
           headline: '把原型真正变成页面。',
           desc: '学习如何将设计原型转成可以在浏览器里运行的前端代码，减少手工重搭。',
-          link: '/zh-cn/stage-2/frontend/2.6-design-to-code/'
+          link: '/zh-cn/stage-2/frontend/design-to-code/'
         },
         {
           title: '真实数据项目',
           headline: '连上真正的数据库。',
           desc: '在 Supabase 上设计数据表和权限，用真实读写操作支撑你的产品数据层。',
-          link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+          link: '/zh-cn/stage-2/backend/database-supabase/'
         },
         {
           title: '部署上线',
           headline: '让世界看到你的作品。',
           desc: '使用 CloudBase、Vercel、Zeabur 等平台，一口气打通从代码到公网访问的完整流程。',
-          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+          link: '/zh-cn/stage-2/backend/zeabur-deployment/'
         },
         {
           title: 'AI 知识库集成',
           headline: '让应用接上智能问答。',
           desc: '学习用 Dify 构建 AI 应用和知识库，把检索增强能力接进你的真实产品。',
-          link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+          link: '/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/'
         }
       ]
     },
@@ -192,7 +192,7 @@ const i18n = {
         {
           title: '跨平台桌面应用',
           desc: '用 Electron 做语音转文字桌面程序，一次开发同时跑在 Windows、macOS、Linux。',
-          link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
+          link: '/zh-cn/stage-3/cross-platform/electron-voice-to-text/'
         },
         {
           title: 'AI 智能体团队',
@@ -207,7 +207,7 @@ const i18n = {
         {
           title: '个人品牌与输出',
           desc: '搭建个人网站与技术博客，让你的项目和经验长期沉淀并被更多人看到。',
-          link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+          link: '/zh-cn/stage-3/personal-brand/personal-website-blog/'
         }
       ]
     },
@@ -320,19 +320,19 @@ const i18n = {
           title: 'Learning Map',
           desc: 'Understand the complete learning path from zero to full-stack development.',
           sub: 'All Ages Friendly',
-          link: '/en/stage-0/0.1-learning-map/'
+          link: '/en/stage-1/learning-map/'
         },
         {
           title: 'Gamified Intro',
           desc: 'Experience the magic of AI programming by building games like Snake.',
           sub: 'Learn by Playing',
-          link: '/en/stage-0/0.2-ai-capabilities-through-games/'
+          link: '/en/stage-1/ai-capabilities-through-games/'
         },
         {
           title: 'Vibe Coding',
           desc: 'Master the core of AI coding: From product ideas to interactive prototypes.',
           sub: 'Core Mindset',
-          link: '/en/stage-0/'
+          link: '/en/stage-1/'
         }
       ]
     },
@@ -346,37 +346,37 @@ const i18n = {
           title: 'Asset Agent',
           headline: 'Speed up content production.',
           desc: 'Build your own design-asset workflow and drawing agent with Lovart and Nanobanana.',
-          link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+          link: '/zh-cn/stage-2/frontend/lovart-assets/'
         },
         {
           title: 'Figma & MasterGo',
           headline: 'Get fluent with design tools.',
           desc: 'Learn the basics of modern UI design tools and how design files flow into development.',
-          link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
+          link: '/zh-cn/stage-2/frontend/figma-mastergo/'
         },
         {
           title: 'Design to Code',
           headline: 'Turn mockups into pages.',
           desc: 'Convert prototypes into real frontend code that runs in the browser instead of staying as static designs.',
-          link: '/zh-cn/stage-2/frontend/2.6-design-to-code/'
+          link: '/zh-cn/stage-2/frontend/design-to-code/'
         },
         {
           title: 'Real Data Project',
           headline: 'Backed by a real DB.',
           desc: 'Design tables and permissions on Supabase and wire them into real read/write flows.',
-          link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+          link: '/zh-cn/stage-2/backend/database-supabase/'
         },
         {
           title: 'Deployment',
           headline: 'Ship it to the world.',
           desc: 'Use CloudBase, Vercel and Zeabur to turn local projects into publicly reachable sites.',
-          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+          link: '/zh-cn/stage-2/backend/zeabur-deployment/'
         },
         {
           title: 'AI Knowledge Base',
           headline: 'Plug AI into the app.',
           desc: 'Use Dify to build AI workflows and knowledge-base powered product experiences.',
-          link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+          link: '/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/'
         }
       ]
     },
@@ -389,7 +389,7 @@ const i18n = {
         {
           title: 'Electron Desktop App',
           desc: 'Build a speech-to-text desktop app that runs on Windows, macOS and Linux from one codebase.',
-          link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
+          link: '/zh-cn/stage-3/cross-platform/electron-voice-to-text/'
         },
         {
           title: 'Agent Teams',
@@ -404,7 +404,7 @@ const i18n = {
         {
           title: 'Personal Brand',
           desc: 'Build your own website and tech blog to showcase projects and writing.',
-          link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+          link: '/zh-cn/stage-3/personal-brand/personal-website-blog/'
         }
       ]
     },
@@ -519,19 +519,19 @@ const i18n = {
           title: 'AI PM',
           desc: 'アイデアからプロトタイプまで、話すだけ。',
           sub: '非技術者向け',
-          link: '/ja-jp/stage-0/'
+          link: '/ja-jp/stage-1/'
         },
         {
           title: 'ゲーム化入門',
           desc: 'スネークゲームやテトリスを作って、コードへの恐怖を克服。',
           sub: '遊びながら学ぶ',
-          link: '/ja-jp/stage-0/'
+          link: '/ja-jp/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'AI時代のコーディングの核心：プロンプトエンジニアリングとコンテキスト管理。',
           sub: '核心的な考え方',
-          link: '/ja-jp/stage-0/'
+          link: '/ja-jp/stage-1/'
         }
       ]
     },
@@ -659,19 +659,19 @@ const i18n = {
           title: 'AI 產品經理',
           desc: '從想法到高保真原型，你只需要會說話。',
           sub: '適合非技術背景',
-          link: '/zh-tw/stage-0/'
+          link: '/zh-tw/stage-1/'
         },
         {
           title: '遊戲化入門',
           desc: '通過製作貪吃蛇、俄羅斯方塊，打破對代碼的恐懼。',
           sub: '邊玩邊學',
-          link: '/zh-tw/stage-0/'
+          link: '/zh-tw/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: '掌握 AI 時代的編程核心：提示詞工程與上下文管理。',
           sub: '核心心法',
-          link: '/zh-tw/stage-0/'
+          link: '/zh-tw/stage-1/'
         }
       ]
     },
@@ -797,19 +797,19 @@ const i18n = {
           title: 'AI 제품 관리자',
           desc: '아이디어에서 프로토타입까지, 말 한마디로.',
           sub: '비전공자 추천',
-          link: '/ko-kr/stage-0/'
+          link: '/ko-kr/stage-1/'
         },
         {
           title: '게임으로 입문',
           desc: '스네이크 게임, 테트리스를 만들며 코딩 공포증 극복.',
           sub: '놀면서 배우기',
-          link: '/ko-kr/stage-0/'
+          link: '/ko-kr/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'AI 시대 코딩의 핵심: 프롬프트 엔지니어링과 컨텍스트 관리.',
           sub: '핵심 마인드셋',
-          link: '/ko-kr/stage-0/'
+          link: '/ko-kr/stage-1/'
         }
       ]
     },
@@ -937,19 +937,19 @@ const i18n = {
           title: 'PM de IA',
           desc: 'De la idea al prototipo, solo hablando.',
           sub: 'Amigable para no técnicos',
-          link: '/es-es/stage-0/'
+          link: '/es-es/stage-1/'
         },
         {
           title: 'Intro Gamificada',
           desc: 'Crea Snake, Tetris y rompe el miedo al código.',
           sub: 'Aprende jugando',
-          link: '/es-es/stage-0/'
+          link: '/es-es/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'Domina el núcleo de la programación con IA: Ingeniería de Prompts y Contexto.',
           sub: 'Mentalidad Clave',
-          link: '/es-es/stage-0/'
+          link: '/es-es/stage-1/'
         }
       ]
     },
@@ -968,13 +968,13 @@ const i18n = {
           title: 'Proyecto con DB real',
           headline: 'Supabase como base de datos de verdad.',
           desc: 'Diseña tablas y permisos en Supabase y conéctalos a flujos reales de lectura/escritura.',
-          link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+          link: '/zh-cn/stage-2/backend/database-supabase/'
         },
         {
           title: 'Despliegue en producción',
           headline: 'Lleva tu app al mundo real.',
           desc: 'Usa CloudBase, Vercel y Zeabur para convertir tu código local en un sitio público.',
-          link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+          link: '/zh-cn/stage-2/backend/zeabur-deployment/'
         }
       ]
     },
@@ -987,7 +987,7 @@ const i18n = {
         {
           title: 'App de escritorio multiplataforma',
           desc: 'Crea con Electron una app de voz a texto que funciona en Windows, macOS y Linux con una sola base de código.',
-          link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
+          link: '/zh-cn/stage-3/cross-platform/electron-voice-to-text/'
         },
         {
           title: 'Equipos de agentes IA',
@@ -1002,7 +1002,7 @@ const i18n = {
         {
           title: 'Marca personal',
           desc: 'Construye tu sitio web y blog técnico para dar visibilidad a tus proyectos.',
-          link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+          link: '/zh-cn/stage-3/personal-brand/personal-website-blog/'
         }
       ]
     },
@@ -1077,19 +1077,19 @@ const i18n = {
           title: 'PM IA',
           desc: "De l'idée au prototype, juste en parlant.",
           sub: 'Accessible aux non-tech',
-          link: '/fr-fr/stage-0/'
+          link: '/fr-fr/stage-1/'
         },
         {
           title: 'Intro Gamifiée',
           desc: 'Créez Snake, Tetris et brisez la peur du code.',
           sub: 'Apprendre en jouant',
-          link: '/fr-fr/stage-0/'
+          link: '/fr-fr/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'Maîtrisez le cœur du codage IA : Prompt Engineering & Contexte.',
           sub: 'Esprit Clé',
-          link: '/fr-fr/stage-0/'
+          link: '/fr-fr/stage-1/'
         }
       ]
     },
@@ -1218,19 +1218,19 @@ const i18n = {
           title: 'KI PM',
           desc: 'Von der Idee zum Prototyp, einfach durch Sprechen.',
           sub: 'Nicht-Tech-freundlich',
-          link: '/de-de/stage-0/'
+          link: '/de-de/stage-1/'
         },
         {
           title: 'Gamifizierte Intro',
           desc: 'Baue Snake, Tetris und überwinde die Angst vor Code.',
           sub: 'Spielend lernen',
-          link: '/de-de/stage-0/'
+          link: '/de-de/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'Meistere den Kern des KI-Codings: Prompt Engineering & Kontext.',
           sub: 'Kern-Mindset',
-          link: '/de-de/stage-0/'
+          link: '/de-de/stage-1/'
         }
       ]
     },
@@ -1358,19 +1358,19 @@ const i18n = {
           title: 'مدير منتج AI',
           desc: 'من الفكرة إلى النموذج الأولي، بمجرد التحدث.',
           sub: 'صديق لغير التقنيين',
-          link: '/ar-sa/stage-0/'
+          link: '/ar-sa/stage-1/'
         },
         {
           title: 'مقدمة بالألعاب',
           desc: 'ابنِ Snake و Tetris واكسر حاجز الخوف من الكود.',
           sub: 'تعلم باللعب',
-          link: '/ar-sa/stage-0/'
+          link: '/ar-sa/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'أتقن جوهر برمجة الذكاء الاصطناعي: هندسة الأوامر والسياق.',
           sub: 'العقلية الأساسية',
-          link: '/ar-sa/stage-0/'
+          link: '/ar-sa/stage-1/'
         }
       ]
     },
@@ -1499,19 +1499,19 @@ const i18n = {
           title: 'AI PM',
           desc: 'Từ ý tưởng đến nguyên mẫu, chỉ bằng lời nói.',
           sub: 'Thân thiện với non-tech',
-          link: '/vi-vn/stage-0/'
+          link: '/vi-vn/stage-1/'
         },
         {
           title: 'Nhập môn qua Game',
           desc: 'Xây dựng Snake, Tetris và phá bỏ nỗi sợ code.',
           sub: 'Học mà chơi',
-          link: '/vi-vn/stage-0/'
+          link: '/vi-vn/stage-1/'
         },
         {
           title: 'Vibe Coding',
           desc: 'Nắm vững cốt lõi lập trình AI: Prompt Engineering & Context.',
           sub: 'Tư duy cốt lõi',
-          link: '/vi-vn/stage-0/'
+          link: '/vi-vn/stage-1/'
         }
       ]
     },
@@ -1627,13 +1627,13 @@ const topPromo = computed(() => {
     return {
       text: '用 Easy-Vibe 构建你的第一个 AI 应用，最快当天可上线原型。',
       cta: '开始学习 ›',
-      link: '/zh-cn/stage-0/0.1-learning-map/'
+      link: '/zh-cn/stage-1/learning-map/'
     }
   }
   return {
     text: 'Build your first AI app with Easy-Vibe and ship a working prototype fast.',
     cta: 'Start learning ›',
-    link: '/en/stage-0/0.1-learning-map/'
+    link: '/en/stage-1/learning-map/'
   }
 })
 
@@ -1735,19 +1735,19 @@ const footerPolicyLinkMap = {
 }
 
 const footerColumnLinkMap = {
-  '零基础入门': '/zh-cn/stage-0/',
+  '零基础入门': '/zh-cn/stage-1/',
   '初中级开发': '/zh-cn/stage-2/',
   '高级开发': '/zh-cn/stage-3/',
   '附录': '/zh-cn/appendix/',
-  '学习地图': '/zh-cn/stage-0/0.1-learning-map/',
-  '课程总览': '/zh-cn/stage-0/',
+  '学习地图': '/zh-cn/stage-1/learning-map/',
+  '课程总览': '/zh-cn/stage-1/',
   'GitHub 仓库': 'https://github.com/datawhalechina/easy-vibe',
-  'Foundations': '/en/stage-0/',
+  'Foundations': '/en/stage-1/',
   'Junior/Mid Dev': '/en/stage-2/',
   'Senior Dev': '/en/stage-3/',
   'Appendix': '/en/appendix/',
-  'Learning Map': '/en/stage-0/0.1-learning-map/',
-  'Course Outline': '/en/stage-0/',
+  'Learning Map': '/en/stage-1/learning-map/',
+  'Course Outline': '/en/stage-1/',
   'GitHub Repository': 'https://github.com/datawhalechina/easy-vibe',
   'Overview': '/en/guide/introduction',
   'Changelog': 'https://github.com/datawhalechina/easy-vibe/releases'
@@ -2042,7 +2042,7 @@ const stage1Cards = [
     sub: '适合非技术背景',
     color: 'linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%)',
     icon: '🎨',
-    link: '/zh-cn/stage-0/0.1-learning-map/'
+    link: '/zh-cn/stage-1/learning-map/'
   },
   {
     title: '游戏化入门',
@@ -2050,7 +2050,7 @@ const stage1Cards = [
     sub: '边玩边学',
     color: 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)',
     icon: '🎮',
-    link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
+    link: '/zh-cn/stage-1/ai-capabilities-through-games/'
   },
   {
     title: 'Vibe Coding',
@@ -2058,7 +2058,7 @@ const stage1Cards = [
     sub: '核心心法',
     color: 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)',
     icon: '💡',
-    link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
+    link: '/zh-cn/stage-1/introduction-to-ai-ide/'
   }
 ]
 
@@ -2068,37 +2068,37 @@ const stage2Cards = [
     imageColor: '#E0C3FC',
     image: stage2LovartCover,
     imageAlt: 'Lovart 素材生产 Agent 界面截图',
-    link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+    link: '/zh-cn/stage-2/frontend/lovart-assets/'
   },
   {
     imageColor: '#D8C4F8',
     image: stage2FigmaCover,
     imageAlt: 'Figma 与 MasterGo 设计工具截图',
-    link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
+    link: '/zh-cn/stage-2/frontend/figma-mastergo/'
   },
   {
     imageColor: '#C7DDFB',
     image: stage2DesignToCodeCover,
     imageAlt: '设计稿转代码示意截图',
-    link: '/zh-cn/stage-2/frontend/2.6-design-to-code/'
+    link: '/zh-cn/stage-2/frontend/design-to-code/'
   },
   {
     imageColor: '#8EC5FC',
     image: stage2SupabaseCover,
     imageAlt: 'Supabase 数据库控制台截图',
-    link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+    link: '/zh-cn/stage-2/backend/database-supabase/'
   },
   {
     imageColor: '#96E6A1',
     image: stage2ZeaburCover,
     imageAlt: 'Zeabur 部署流程截图',
-    link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+    link: '/zh-cn/stage-2/backend/zeabur-deployment/'
   },
   {
     imageColor: '#A7F3D0',
     image: stage2DifyCover,
     imageAlt: 'Dify 知识库工作台截图',
-    link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+    link: '/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/'
   }
 ]
 
@@ -2121,7 +2121,7 @@ const stage3Cards = [
     visualType: 'phone',
     image: stage3ElectronCover,
     imageAlt: 'Electron 语音转文字桌面应用预览图',
-    link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
+    link: '/zh-cn/stage-3/cross-platform/electron-voice-to-text/'
   },
   {
     title: 'AI 智能体团队',
@@ -2149,7 +2149,7 @@ const stage3Cards = [
     image: stage3PersonalBrandCover,
     imageAlt: '个人网站与学术博客示例截图',
     imageClass: 'prod-image--personal-brand',
-    link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+    link: '/zh-cn/stage-3/personal-brand/personal-website-blog/'
   }
 ]
 
@@ -2585,7 +2585,7 @@ const appendixCards = [
       <p>{{ t.footer.desc }}</p>
       <a
         class="buy-btn large"
-        :href="withBase('/zh-cn/stage-0/0.1-learning-map/')"
+        :href="withBase('/zh-cn/stage-1/learning-map/')"
       >{{ t.footer.btn }}</a>
     </div>
 

@@ -17,10 +17,10 @@ hero:
   actions:
     - theme: brand
       text: 一緒にvibeを始めよう！
-      link: /ja-jp/stage-0/
+      link: /ja-jp/stage-1/
     - theme: alt
       text: コース概要
-      link: /ja-jp/stage-0/
+      link: /ja-jp/stage-1/
 ---
 
 <HomeFeatures />

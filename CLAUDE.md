@@ -62,7 +62,6 @@ easy-vibe/
 │   ├── index.md                # Homepage
 │   ├── public/                 # Static assets (logo.png, etc.)
 │   ├── assets/                 # Symlink to ../assets
-│   ├── stage-0/                # Stage 0 content (幼儿园)
 │   ├── stage-1/                # Stage 1 content (AI 产品经理)
 │   ├── stage-2/                # Stage 2 content (初中级开发工程师)
 │   ├── stage-3/                # Stage 3 content (高级开发工程师)
@@ -89,8 +88,8 @@ stage-{N}/
 
 Examples:
 
-- `stage-1/1.1-introduction-to-ai-ide/index.md`
-- `stage-2/backend/2.1-what-is-api/extra2/extra2-what-is-api.md`
+- `stage-1/introduction-to-ai-ide/index.md`
+- `stage-2/backend/what-is-api/extra2/extra2-what-is-api.md`
 
 **Note**: Content files may use either `index.md` or direct `.md` files depending on the chapter structure.
 
@@ -100,7 +99,7 @@ The project uses **VitePress 2.0.0-alpha.15** with these key features:
 
 **Configuration** (`docs/.vitepress/config.mjs`):
 
-- **Single Sidebar**: Route-based sidebars configured per path prefix (`/stage-0/`, `/stage-1/`, etc.)
+- **Single Sidebar**: Route-based sidebars configured per path prefix (`/stage-1/`, etc.)
 - **Navigation**: Top nav with links to each stage and appendix
 - **Search**: Local search via `minisearch` (no external API required)
 - **Dark Mode**: Built-in VitePress theme with toggle
@@ -125,7 +124,7 @@ The project uses **VitePress 2.0.0-alpha.15** with these key features:
 
 The sidebar is defined in `docs/.vitepress/config.mjs`. When adding new chapters:
 
-1. Locate the appropriate route prefix section (`/stage-0/`, `/stage-1/`, etc.)
+1. Locate the appropriate route prefix section (`/stage-1/`, etc.)
 2. Add a new object with `text` (display name) and `link` (relative path)
 3. For nested items, use `items` array with `collapsed: true|false`
 4. **Links should not include `.md` extension** - VitePress handles this

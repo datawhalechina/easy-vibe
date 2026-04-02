@@ -15,8 +15,8 @@
 > 
 > 在学习本节之前，建议你先了解以下内容：
 > - [AI IDE 基础](../../stage-1/ai-ide/) - 掌握 AI IDE 的基本使用
-> - [Git 和 GitHub 工作流](../../stage-2/backend/2.4-git-workflow/) - 了解代码版本管理
-> - [大模型辅助编写接口代码](../../stage-2/backend/2.3-ai-interface-code/) - 了解 AI 辅助开发的基本概念
+> - [Git 和 GitHub 工作流](../../stage-2/backend/git-workflow/) - 了解代码版本管理
+> - [大模型辅助编写接口代码](../../stage-2/backend/ai-interface-code/) - 了解 AI 辅助开发的基本概念
 
 ::: info 📚 你将学到
 

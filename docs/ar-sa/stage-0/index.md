@@ -11,12 +11,12 @@
 مناسب للمنتجات والعمليات والخلفيات غير التقنية. فهم منطق برمجة الذكاء الاصطناعي من خلال الألعاب وبناء الثقة:
 <NavGrid>
   <NavCard
-    href="/ar-sa/stage-0/0.1-learning-map/"
+    href="/ar-sa/stage-1/learning-map/"
     title="خريطة التعلم"
     description="فهم مسار التعلم بالكامل وتوضيح أهداف ونتائج كل مرحلة"
   />
   <NavCard
-    href="/ar-sa/stage-0/0.2-ai-capabilities-through-games/"
+    href="/ar-sa/stage-1/ai-capabilities-through-games/"
     title="عصر الذكاء الاصطناعي: إذا كنت تستطيع التحدث، يمكنك البرمجة"
     description="تجربة سحر برمجة الذكاء الاصطناعي من خلال ألعاب مثل Snake، والتغلب على الخوف من البرمجة"
   />
@@ -28,22 +28,22 @@
 إتقان سير عمل Vibe Coding. تعلم كيفية تفكيك المتطلبات وإكمال نماذج تطبيقات الويب عالية الدقة بشكل مستقل:
 <NavGrid>
   <NavCard
-    href="/ar-sa/stage-1/1.1-introduction-to-ai-ide/"
+    href="/ar-sa/stage-1/introduction-to-ai-ide/"
     title="مقدمة في أدوات IDE للذكاء الاصطناعي"
     description="تعرف على أدوات برمجة الذكاء الاصطناعي الحالية واختر أفضل شريك تطوير لك"
   />
   <NavCard
-    href="/ar-sa/stage-1/1.2-building-prototype/"
+    href="/ar-sa/stage-1/building-prototype/"
     title="إنشاء النماذج الأولية"
     description="تعلم كيفية تحويل أفكار المنتجات بسرعة إلى نماذج أولية مرئية للتجربة والخطأ بتكلفة منخفضة"
   />
   <NavCard
-    href="/ar-sa/stage-1/1.3-integrating-ai-capabilities/"
+    href="/ar-sa/stage-1/integrating-ai-capabilities/"
     title="دمج قدرات الذكاء الاصطناعي"
     description="دمج واجهات برمجة تطبيقات الذكاء الاصطناعي البسيطة لإضفاء الذكاء على نموذجك الأولي"
   />
   <NavCard
-    href="/ar-sa/stage-1/1.4-complete-project-practice/"
+    href="/ar-sa/stage-1/complete-project-practice/"
     title="ممارسة المشاريع الكاملة"
     description="تطبيق ما تعلمته بشكل شامل لإكمال تطوير نموذج منتج كامل من 0 إلى 1"
   />

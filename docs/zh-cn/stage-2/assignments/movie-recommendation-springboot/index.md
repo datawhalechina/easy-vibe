@@ -10,10 +10,10 @@
 
 在开始本项目之前，你应该已经掌握以下内容：
 
-- 前端页面设计与组件库使用（[UI 设计](../../frontend/2.2-ui-design/)、[现代组件库](../../frontend/2.7-modern-component-library/)）
-- 后端接口设计与开发（[接口代码编写](../../backend/2.3-ai-interface-code/)）
-- 数据库基础与 Supabase（[从数据库到 Supabase](../../backend/2.2-database-supabase/)）
-- Git 工作流与部署（[Git 和 GitHub](../../backend/2.4-git-workflow/)、[部署 Web 应用](../../backend/2.5-zeabur-deployment/)）
+- 前端页面设计与组件库使用（[UI 设计](../../frontend/ui-design/)、[现代组件库](../../frontend/modern-component-library/)）
+- 后端接口设计与开发（[接口代码编写](../../backend/ai-interface-code/)）
+- 数据库基础与 Supabase（[从数据库到 Supabase](../../backend/database-supabase/)）
+- Git 工作流与部署（[Git 和 GitHub](../../backend/git-workflow/)、[部署 Web 应用](../../backend/zeabur-deployment/)）
 
 ## 学习目标
 
@@ -154,9 +154,9 @@ flowchart TD
 
 ## 参考资料
 
-- [UI 设计](../../frontend/2.2-ui-design/)
-- [使用现代组件库更新你的界面](../../frontend/2.7-modern-component-library/)
-- [从数据库到 Supabase](../../backend/2.2-database-supabase/)
-- [大模型辅助编写接口代码与接口文档](../../backend/2.3-ai-interface-code/)
-- [Git 和 GitHub 工作流](../../backend/2.4-git-workflow/)
-- [如何部署 Web 应用](../../backend/2.5-zeabur-deployment/)
+- [UI 设计](../../frontend/ui-design/)
+- [使用现代组件库更新你的界面](../../frontend/modern-component-library/)
+- [从数据库到 Supabase](../../backend/database-supabase/)
+- [大模型辅助编写接口代码与接口文档](../../backend/ai-interface-code/)
+- [Git 和 GitHub 工作流](../../backend/git-workflow/)
+- [如何部署 Web 应用](../../backend/zeabur-deployment/)

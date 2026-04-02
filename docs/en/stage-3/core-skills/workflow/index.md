@@ -15,8 +15,8 @@ In this lesson, we will learn how to build a systematic AI-assisted development 
 >
 > Before studying this section, it is recommended that you first understand:
 > - [AI IDE Basics](../../stage-1/ai-ide/) - master the basic use of AI IDEs
-> - [Git and GitHub Workflow](../../stage-2/backend/2.4-git-workflow/) - understand code version management
-> - [Using Large Models to Help Write API Code](../../stage-2/backend/2.3-ai-interface-code/) - understand the basic concept of AI-assisted development
+> - [Git and GitHub Workflow](../../stage-2/backend/git-workflow/) - understand code version management
+> - [Using Large Models to Help Write API Code](../../stage-2/backend/ai-interface-code/) - understand the basic concept of AI-assisted development
 
 ::: info 📚 What you will learn
 

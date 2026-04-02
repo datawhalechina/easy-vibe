@@ -52,57 +52,57 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.1-choose-platform/"
+    href="/zh-cn/stage-3/cross-platform/choose-platform/"
     title="如何选择你的应用该开发的平台"
     description="根据用户场景和需求，找到最适合的开发平台"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/"
+    href="/zh-cn/stage-3/cross-platform/wechat-miniprogram/"
     title="如何构建微信小程序"
     description="从零开始开发微信小程序，掌握小程序开发的核心流程"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/"
+    href="/zh-cn/stage-3/cross-platform/wechat-miniprogram-backend/"
     title="如何构建微信小程序（包含后端）"
     description="构建带有后端支持的完整微信小程序应用"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.5-android-app/"
+    href="/zh-cn/stage-3/cross-platform/android-app/"
     title="如何构建安卓程序"
     description="使用现代跨平台框架构建 Android 原生应用"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.6-ios-app/"
+    href="/zh-cn/stage-3/cross-platform/ios-app/"
     title="如何构建 iOS 程序"
     description="开发并发布 iOS 应用，掌握 iOS 生态的开发规范"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/"
+    href="/zh-cn/stage-3/cross-platform/pwa-local-app/"
     title="如何开发 PWA 本地应用"
     description="让网页变成真正的 App，支持离线使用和桌面安装"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.9-browser-ai-extension/"
+    href="/zh-cn/stage-3/cross-platform/browser-ai-extension/"
     title="如何开发浏览器 AI 助手插件"
     description="一键总结任意网页，打造你的浏览器 AI 助手"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/"
+    href="/zh-cn/stage-3/cross-platform/electron-voice-to-text/"
     title="如何开发跨平台 Electron 桌面程序"
     description="构建语音转文字的桌面应用，支持 Windows、macOS、Linux"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.11-nft-minting/"
+    href="/zh-cn/stage-3/cross-platform/nft-minting/"
     title="如何快速开发并铸造 NFT"
     description="10 分钟上手版，从零开始编写 NFT 智能合约并铸造"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.12-vscode-extension/"
+    href="/zh-cn/stage-3/cross-platform/vscode-extension/"
     title="如何开发 VS Code 插件"
     description="打造你的 AI 项目助手，支持多文件问答和自定义快捷键"
   />
   <NavCard
-    href="/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/"
+    href="/zh-cn/stage-3/cross-platform/qt-industrial-hmi/"
     title="如何开发工业级 Qt 桌面应用"
     description="构建水泵监控 HMI 系统，掌握工业级桌面应用开发"
   />
@@ -114,7 +114,7 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/"
+    href="/zh-cn/stage-3/personal-brand/personal-website-blog/"
     title="如何构建属于自己的个人网页与学术博客"
     description="使用现代化技术栈搭建高性能、高颜值的个人博客"
   />
@@ -126,12 +126,12 @@
 
 <NavGrid>
   <NavCard
-    href="/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/"
+    href="/zh-cn/stage-3/ai-advanced/rag-introduction/"
     title="什么是 RAG 以及它如何工作"
     description="深入理解检索增强生成 (RAG) 的原理及其在 AI 应用中的价值"
   />
   <NavCard
-    href="/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/"
+    href="/zh-cn/stage-3/ai-advanced/langgraph-advanced-rag/"
     title="中高级 RAG 与工作流编排 - 以 LangGraph 为例"
     description="学习使用 LangGraph 编排复杂的 AI 工作流，构建高级 RAG 系统"
   />

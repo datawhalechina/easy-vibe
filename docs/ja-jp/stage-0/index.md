@@ -11,12 +11,12 @@
 プロダクト、オペレーション、非技術職の方に最適。ゲームを通じてAIプログラミングのロジックを理解し、自信を築きます：
 <NavGrid>
   <NavCard
-    href="/ja-jp/stage-0/0.1-learning-map/"
+    href="/ja-jp/stage-1/learning-map/"
     title="学習マップ"
     description="全体の学習パスを理解し、各ステージの目標と成果を明確にする"
   />
   <NavCard
-    href="/ja-jp/stage-0/0.2-ai-capabilities-through-games/"
+    href="/ja-jp/stage-1/ai-capabilities-through-games/"
     title="AI時代：話せればプログラミングできる"
     description="スネークゲームなどを通じてAIプログラミングの魅力を体験し、コーディングへの恐怖を打破する"
   />
@@ -28,22 +28,22 @@
 Vibe Codingワークフローをマスター。要件を分解し、高忠実度のWebアプリケーションプロトタイプを独立して完成させる：
 <NavGrid>
   <NavCard
-    href="/ja-jp/stage-1/1.1-introduction-to-ai-ide/"
+    href="/ja-jp/stage-1/introduction-to-ai-ide/"
     title="AI IDEツール入門"
     description="現在の主流AIプログラミングツールを学び、最適な開発パートナーを選ぶ"
   />
   <NavCard
-    href="/ja-jp/stage-1/1.2-building-prototype/"
+    href="/ja-jp/stage-1/building-prototype/"
     title="プロトタイプ作成"
     description="プロダクトアイデアを迅速にビジュアルプロトタイプに変換し、低コストで試行錯誤する方法を学ぶ"
   />
   <NavCard
-    href="/ja-jp/stage-1/1.3-integrating-ai-capabilities/"
+    href="/ja-jp/stage-1/integrating-ai-capabilities/"
     title="AI機能の統合"
     description="シンプルなAI APIを統合して、プロトタイプにインテリジェンスを持たせる"
   />
   <NavCard
-    href="/ja-jp/stage-1/1.4-complete-project-practice/"
+    href="/ja-jp/stage-1/complete-project-practice/"
     title="完全プロジェクト実践"
     description="学んだことを総合的に応用し、0から1までの完全なプロダクトプロトタイプ開発を完成させる"
   />

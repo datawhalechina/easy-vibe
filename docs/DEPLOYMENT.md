@@ -16,10 +16,10 @@ const base = isVercel ? '/' : '/easy-vibe/'
 
 | 平台             | Base 路径     | 示例 URL                                                    |
 | ---------------- | ------------- | ----------------------------------------------------------- |
-| **Vercel**       | `/`           | `https://your-project.vercel.app/cn/stage-0/...`            |
-| **GitHub Pages** | `/easy-vibe/` | `https://datawhalechina.github.io/easy-vibe/cn/stage-0/...` |
-| **本地开发**     | `/easy-vibe/` | `http://localhost:5173/easy-vibe/cn/stage-0/...`            |
-| **本地预览**     | `/easy-vibe/` | `http://localhost:4173/easy-vibe/cn/stage-0/...`            |
+| **Vercel**       | `/`           | `https://your-project.vercel.app/cn/stage-1/...`            |
+| **GitHub Pages** | `/easy-vibe/` | `https://datawhalechina.github.io/easy-vibe/cn/stage-1/...` |
+| **本地开发**     | `/easy-vibe/` | `http://localhost:5173/easy-vibe/cn/stage-1/...`            |
+| **本地预览**     | `/easy-vibe/` | `http://localhost:4173/easy-vibe/cn/stage-1/...`            |
 
 ### 首页动态链接
 
@@ -34,7 +34,7 @@ const base = site.value.base
 </script>
 
 <template>
-  <a :href="base + 'cn/stage-0/0.1-learning-map/'">
+  <a :href="base + 'cn/stage-1/learning-map/'">
     <!-- 链接会自动适配部署环境 -->
   </a>
 </template>

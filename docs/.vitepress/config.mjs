@@ -238,7 +238,6 @@ const getSeoHead = (locale, title, description, path = '') => {
       // 路径分段名称映射
       const segmentNames = {
         'zh-cn': {
-          'stage-0': '幼儿园',
           'stage-1': 'AI产品经理',
           'stage-2': '初中级开发工程师',
           'stage-3': '高级开发工程师',
@@ -253,7 +252,6 @@ const getSeoHead = (locale, title, description, path = '') => {
           'ai-advanced': 'AI进阶'
         },
         en: {
-          'stage-0': 'Kindergarten',
           'stage-1': 'AI Product Manager',
           'stage-2': 'Junior Developer',
           'stage-3': 'Senior Developer',
@@ -334,10 +332,10 @@ const productManagerSidebarEn = [
     text: 'Getting Started',
     collapsed: false,
     items: [
-      { text: 'Learning Map', link: '/en/stage-0/0.1-learning-map/' },
+      { text: 'Learning Map', link: '/en/stage-1/learning-map/' },
       {
         text: 'AI Era: If You Can Speak, You Can Code',
-        link: '/en/stage-0/0.2-ai-capabilities-through-games/'
+        link: '/en/stage-1/ai-capabilities-through-games/'
       }
     ]
   },
@@ -347,23 +345,23 @@ const productManagerSidebarEn = [
     items: [
       {
         text: 'Master AI Programming Tools',
-        link: '/en/stage-1/1.1-introduction-to-ai-ide/'
+        link: '/en/stage-1/introduction-to-ai-ide/'
       },
       {
         text: 'Find Great Ideas',
-        link: '/en/stage-1/1.0-finding-great-idea/'
+        link: '/en/stage-1/finding-great-idea/'
       },
       {
         text: 'Build Product Prototypes',
-        link: '/en/stage-1/1.2-building-prototype/'
+        link: '/en/stage-1/building-prototype/'
       },
       {
         text: 'Integrate AI Capabilities',
-        link: '/en/stage-1/1.3-integrating-ai-capabilities/'
+        link: '/en/stage-1/integrating-ai-capabilities/'
       },
       {
         text: 'Complete Project Practice',
-        link: '/en/stage-1/1.4-complete-project-practice/'
+        link: '/en/stage-1/complete-project-practice/'
       }
     ]
   },
@@ -434,35 +432,35 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'Build Your Own Asset-Production Agent with Lovart',
-        link: '/en/stage-2/frontend/2.0-lovart-assets/'
+        link: '/en/stage-2/frontend/lovart-assets/'
       },
       {
         text: 'Figma & MasterGo Basics',
-        link: '/en/stage-2/frontend/2.1-figma-mastergo/'
+        link: '/en/stage-2/frontend/figma-mastergo/'
       },
       {
         text: 'Build Your First Modern App - UI Design',
-        link: '/en/stage-2/frontend/2.2-ui-design/'
+        link: '/en/stage-2/frontend/ui-design/'
       },
       {
         text: 'UI Design Guidelines and Multi-Product UI',
-        link: '/en/stage-2/frontend/2.3-multi-product-ui/'
+        link: '/en/stage-2/frontend/multi-product-ui/'
       },
       {
         text: 'Make Interfaces Beautiful with LLMs and Skills',
-        link: '/en/stage-2/frontend/2.4-llm-skills-beautiful/'
+        link: '/en/stage-2/frontend/llm-skills-beautiful/'
       },
       {
         text: "Let's Build Hogwarts Portraits",
-        link: '/en/stage-2/frontend/2.5-hogwarts-portraits/'
+        link: '/en/stage-2/frontend/hogwarts-portraits/'
       },
       {
         text: 'From Design Prototype to Project Code',
-        link: '/en/stage-2/frontend/2.6-design-to-code/'
+        link: '/en/stage-2/frontend/design-to-code/'
       },
       {
         text: 'Upgrade Your UI with Modern Component Libraries',
-        link: '/en/stage-2/frontend/2.7-modern-component-library/'
+        link: '/en/stage-2/frontend/modern-component-library/'
       }
     ]
   },
@@ -472,27 +470,27 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'Learn Git and GitHub',
-        link: '/en/stage-2/backend/2.4-git-workflow/'
+        link: '/en/stage-2/backend/git-workflow/'
       },
       {
         text: 'From Database to Supabase',
-        link: '/en/stage-2/backend/2.2-database-supabase/'
+        link: '/en/stage-2/backend/database-supabase/'
       },
       {
         text: 'Backend API Design and Development',
-        link: '/en/stage-2/backend/2.3-ai-interface-code/'
+        link: '/en/stage-2/backend/ai-interface-code/'
       },
       {
         text: 'Ship Your Product Prototype',
-        link: '/en/stage-2/backend/2.5-zeabur-deployment/'
+        link: '/en/stage-2/backend/zeabur-deployment/'
       },
       {
         text: 'From IDEs to CLI AI Coding Tools',
-        link: '/en/stage-2/backend/2.6-modern-cli/'
+        link: '/en/stage-2/backend/modern-cli/'
       },
       {
         text: 'Integrate Stripe and Other Billing Systems',
-        link: '/en/stage-2/backend/2.7-stripe-payment/'
+        link: '/en/stage-2/backend/stripe-payment/'
       }
     ]
   },
@@ -502,7 +500,7 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'AI 1: Dify & Knowledge Base',
-        link: '/en/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+        link: '/en/stage-2/ai-capabilities/dify-knowledge-base/'
       }
     ]
   },
@@ -512,15 +510,15 @@ const stage2SidebarEn = [
     items: [
       {
         text: 'Hogwarts Portraits Project',
-        link: '/en/stage-2/frontend/2.5-hogwarts-portraits/'
+        link: '/en/stage-2/frontend/hogwarts-portraits/'
       },
       {
         text: 'Assignment 1: Full-Stack App',
-        link: '/en/stage-2/assignments/2.1-fullstack-app/'
+        link: '/en/stage-2/assignments/fullstack-app/'
       },
       {
         text: 'Assignment 2: UI Library & Trae',
-        link: '/en/stage-2/assignments/2.2-modern-frontend-trae/'
+        link: '/en/stage-2/assignments/modern-frontend-trae/'
       }
     ]
   }
@@ -579,51 +577,51 @@ const stage3SidebarEn = [
     items: [
       {
         text: 'How to Choose the Right Platform for Your App',
-        link: '/en/stage-3/cross-platform/3.1-choose-platform/'
+        link: '/en/stage-3/cross-platform/choose-platform/'
       },
       {
         text: 'How to Build a Simple WeChat Mini Program',
-        link: '/en/stage-3/cross-platform/3.3-wechat-miniprogram/'
+        link: '/en/stage-3/cross-platform/wechat-miniprogram/'
       },
       {
         text: 'How to Build a WeChat Mini Program with a Backend',
-        link: '/en/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
+        link: '/en/stage-3/cross-platform/wechat-miniprogram-backend/'
       },
       {
         text: 'How to Build an Android App with Jetpack Compose',
-        link: '/en/stage-3/cross-platform/3.5-android-app/'
+        link: '/en/stage-3/cross-platform/android-app/'
       },
       {
         text: 'How to Build an iOS App with SwiftUI',
-        link: '/en/stage-3/cross-platform/3.6-ios-app/'
+        link: '/en/stage-3/cross-platform/ios-app/'
       },
       {
         text: 'How to Build a PWA Local App',
-        link: '/en/stage-3/cross-platform/3.8-pwa-local-app/'
+        link: '/en/stage-3/cross-platform/pwa-local-app/'
       },
       {
         text: 'How to Build a Browser AI Assistant Extension',
-        link: '/en/stage-3/cross-platform/3.9-browser-ai-extension/'
+        link: '/en/stage-3/cross-platform/browser-ai-extension/'
       },
       {
         text: 'How to Build a Cross-Platform Electron Desktop App',
-        link: '/en/stage-3/cross-platform/3.10-electron-voice-to-text/'
+        link: '/en/stage-3/cross-platform/electron-voice-to-text/'
       },
       {
         text: 'How to Quickly Build and Mint an NFT',
-        link: '/en/stage-3/cross-platform/3.11-nft-minting/'
+        link: '/en/stage-3/cross-platform/nft-minting/'
       },
       {
         text: 'How to Build a VS Code Extension',
-        link: '/en/stage-3/cross-platform/3.12-vscode-extension/'
+        link: '/en/stage-3/cross-platform/vscode-extension/'
       },
       {
         text: 'How to Build an Industrial Qt Desktop App',
-        link: '/en/stage-3/cross-platform/3.13-qt-industrial-hmi/'
+        link: '/en/stage-3/cross-platform/qt-industrial-hmi/'
       },
       {
         text: 'How to Build Your Personal Website and Academic Blog',
-        link: '/en/stage-3/personal-brand/3.7-personal-website-blog/'
+        link: '/en/stage-3/personal-brand/personal-website-blog/'
       }
     ]
   },
@@ -633,11 +631,11 @@ const stage3SidebarEn = [
     items: [
       {
         text: 'What Is RAG and How It Works',
-        link: '/en/stage-3/ai-advanced/3.a1-rag-introduction/'
+        link: '/en/stage-3/ai-advanced/rag-introduction/'
       },
       {
         text: 'Advanced RAG and Workflow Orchestration with LangGraph',
-        link: '/en/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/'
+        link: '/en/stage-3/ai-advanced/langgraph-advanced-rag/'
       }
     ]
   }
@@ -1145,10 +1143,10 @@ const productManagerSidebar = [
     text: '新手入门',
     collapsed: false,
     items: [
-      { text: '学习地图', link: '/zh-cn/stage-0/0.1-learning-map/' },
+      { text: '学习地图', link: '/zh-cn/stage-1/learning-map/' },
       {
         text: 'AI 时代，会说话就会编程',
-        link: '/zh-cn/stage-0/0.2-ai-capabilities-through-games/'
+        link: '/zh-cn/stage-1/ai-capabilities-through-games/'
       }
     ]
   },
@@ -1158,23 +1156,23 @@ const productManagerSidebar = [
     items: [
       {
         text: '学会 AI 编程工具',
-        link: '/zh-cn/stage-1/1.1-introduction-to-ai-ide/'
+        link: '/zh-cn/stage-1/introduction-to-ai-ide/'
       },
       {
         text: '找到好点子',
-        link: '/zh-cn/stage-1/1.0-finding-great-idea/'
+        link: '/zh-cn/stage-1/finding-great-idea/'
       },
       {
         text: '搭建产品原型',
-        link: '/zh-cn/stage-1/1.2-building-prototype/'
+        link: '/zh-cn/stage-1/building-prototype/'
       },
       {
         text: '接入 AI 能力',
-        link: '/zh-cn/stage-1/1.3-integrating-ai-capabilities/'
+        link: '/zh-cn/stage-1/integrating-ai-capabilities/'
       },
       {
         text: '完整项目实战',
-        link: '/zh-cn/stage-1/1.4-complete-project-practice/'
+        link: '/zh-cn/stage-1/complete-project-practice/'
       }
     ]
   },
@@ -1266,7 +1264,6 @@ export default defineConfig({
     priority: {
       '/': 1.0,
       '/zh-cn/': 0.9,
-      '/zh-cn/stage-0/': 0.9,
       '/zh-cn/stage-1/': 0.8,
       '/zh-cn/stage-2/': 0.8,
       '/zh-cn/stage-3/': 0.8,
@@ -1397,8 +1394,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '首页', link: '/zh-cn/' },
           {
             text: '零基础入门',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-[01]/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: '初中级开发',
@@ -1446,7 +1443,6 @@ Sitemap: ${siteUrl}/sitemap.xml
               ]
             }
           ],
-          '/zh-cn/stage-0/': productManagerSidebar,
           '/zh-cn/stage-1/': productManagerSidebar,
           '/zh-cn/stage-2/': [
             {
@@ -1455,27 +1451,27 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '使用 NanoBanana 生产素材',
-                  link: '/zh-cn/stage-2/frontend/2.0-lovart-assets/'
+                  link: '/zh-cn/stage-2/frontend/lovart-assets/'
                 },
                 {
                   text: 'Figma 与 MasterGo 入门',
-                  link: '/zh-cn/stage-2/frontend/2.1-figma-mastergo/'
+                  link: '/zh-cn/stage-2/frontend/figma-mastergo/'
                 },
                 {
                   text: '参考 UI 设计规范设计页面和按钮',
-                  link: '/zh-cn/stage-2/frontend/2.3-multi-product-ui/'
+                  link: '/zh-cn/stage-2/frontend/multi-product-ui/'
                 },
                 {
                   text: '用 LLM 和 Skills 让界面变好看',
-                  link: '/zh-cn/stage-2/frontend/2.4-llm-skills-beautiful/'
+                  link: '/zh-cn/stage-2/frontend/llm-skills-beautiful/'
                 },
                 {
                   text: '从设计原型到项目代码',
-                  link: '/zh-cn/stage-2/frontend/2.6-design-to-code/'
+                  link: '/zh-cn/stage-2/frontend/design-to-code/'
                 },
                 {
                   text: '使用现代组件库更新你的界面',
-                  link: '/zh-cn/stage-2/frontend/2.7-modern-component-library/'
+                  link: '/zh-cn/stage-2/frontend/modern-component-library/'
                 }
               ]
             },
@@ -1485,27 +1481,27 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '从数据库到 Supabase',
-                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+                  link: '/zh-cn/stage-2/backend/database-supabase/'
                 },
                 {
                   text: '大模型辅助编写接口代码与接口文档',
-                  link: '/zh-cn/stage-2/backend/2.3-ai-interface-code/'
+                  link: '/zh-cn/stage-2/backend/ai-interface-code/'
                 },
                 {
                   text: 'Git 工作流',
-                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/'
+                  link: '/zh-cn/stage-2/backend/git-workflow/'
                 },
                 {
                   text: '如何部署 Web 应用',
-                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+                  link: '/zh-cn/stage-2/backend/zeabur-deployment/'
                 },
                 {
                   text: '现代 CLI 开发工具',
-                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/'
+                  link: '/zh-cn/stage-2/backend/modern-cli/'
                 },
                 {
                   text: '如何集成 Stripe 等收费系统',
-                  link: '/zh-cn/stage-2/backend/2.7-stripe-payment/'
+                  link: '/zh-cn/stage-2/backend/stripe-payment/'
                 }
               ]
             },
@@ -1515,7 +1511,7 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: 'Dify 入门与知识库集成',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+                  link: '/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/'
                 }
               ]
             },
@@ -1525,7 +1521,7 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '一起做霍格沃茨画像',
-                  link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
+                  link: '/zh-cn/stage-2/frontend/hogwarts-portraits/'
                 },
                 {
                   text: 'AI 营销文案 SaaS',
@@ -1615,51 +1611,51 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '如何选择你的应用该开发的平台',
-                  link: '/zh-cn/stage-3/cross-platform/3.1-choose-platform/'
+                  link: '/zh-cn/stage-3/cross-platform/choose-platform/'
                 },
                 {
                   text: '如何构建微信小程序',
-                  link: '/zh-cn/stage-3/cross-platform/3.3-wechat-miniprogram/'
+                  link: '/zh-cn/stage-3/cross-platform/wechat-miniprogram/'
                 },
                 {
                   text: '如何构建微信小程序（包含后端）',
-                  link: '/zh-cn/stage-3/cross-platform/3.4-wechat-miniprogram-backend/'
+                  link: '/zh-cn/stage-3/cross-platform/wechat-miniprogram-backend/'
                 },
                 {
                   text: '如何构建安卓程序-compose 原生开发',
-                  link: '/zh-cn/stage-3/cross-platform/3.5-android-app/'
+                  link: '/zh-cn/stage-3/cross-platform/android-app/'
                 },
                 {
                   text: '如何构建 iOS 程序-swiftUI原生开发',
-                  link: '/zh-cn/stage-3/cross-platform/3.6-ios-app/'
+                  link: '/zh-cn/stage-3/cross-platform/ios-app/'
                 },
                 {
                   text: '如何开发 PWA 本地应用',
-                  link: '/zh-cn/stage-3/cross-platform/3.8-pwa-local-app/'
+                  link: '/zh-cn/stage-3/cross-platform/pwa-local-app/'
                 },
                 {
                   text: '如何开发浏览器 AI 助手插件',
-                  link: '/zh-cn/stage-3/cross-platform/3.9-browser-ai-extension/'
+                  link: '/zh-cn/stage-3/cross-platform/browser-ai-extension/'
                 },
                 {
                   text: '如何开发跨平台 Electron 桌面程序',
-                  link: '/zh-cn/stage-3/cross-platform/3.10-electron-voice-to-text/'
+                  link: '/zh-cn/stage-3/cross-platform/electron-voice-to-text/'
                 },
                 {
                   text: '如何快速开发并铸造 NFT',
-                  link: '/zh-cn/stage-3/cross-platform/3.11-nft-minting/'
+                  link: '/zh-cn/stage-3/cross-platform/nft-minting/'
                 },
                 {
                   text: '如何开发 VS Code 插件',
-                  link: '/zh-cn/stage-3/cross-platform/3.12-vscode-extension/'
+                  link: '/zh-cn/stage-3/cross-platform/vscode-extension/'
                 },
                 {
                   text: '如何开发工业级 Qt 桌面应用',
-                  link: '/zh-cn/stage-3/cross-platform/3.13-qt-industrial-hmi/'
+                  link: '/zh-cn/stage-3/cross-platform/qt-industrial-hmi/'
                 },
                 {
                   text: '如何构建属于自己的个人网页与学术博客',
-                  link: '/zh-cn/stage-3/personal-brand/3.7-personal-website-blog/'
+                  link: '/zh-cn/stage-3/personal-brand/personal-website-blog/'
                 }
               ]
             },
@@ -1669,11 +1665,11 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '什么是 RAG 以及它如何工作',
-                  link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+                  link: '/zh-cn/stage-3/ai-advanced/rag-introduction/'
                 },
                 {
                   text: '中高级 RAG 与工作流编排 - 以 LangGraph 为例',
-                  link: '/zh-cn/stage-3/ai-advanced/3.a2-langgraph-advanced-rag/'
+                  link: '/zh-cn/stage-3/ai-advanced/langgraph-advanced-rag/'
                 }
               ]
             }
@@ -1690,23 +1686,23 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: 'Extra 1: Git & GitHub',
-                  link: '/zh-cn/stage-2/backend/2.4-git-workflow/'
+                  link: '/zh-cn/stage-2/backend/git-workflow/'
                 },
                 {
                   text: 'Extra 2: What is API',
-                  link: '/zh-cn/stage-2/backend/2.1-what-is-api/'
+                  link: '/zh-cn/stage-2/backend/what-is-api/'
                 },
                 {
                   text: 'Extra 5: What is RAG',
-                  link: '/zh-cn/stage-3/ai-advanced/3.a1-rag-introduction/'
+                  link: '/zh-cn/stage-3/ai-advanced/rag-introduction/'
                 },
                 {
                   text: 'Extra 6: Zeabur Deployment',
-                  link: '/zh-cn/stage-2/backend/2.5-zeabur-deployment/'
+                  link: '/zh-cn/stage-2/backend/zeabur-deployment/'
                 },
                 {
                   text: 'Extra 7: CLI AI Tools & TDD',
-                  link: '/zh-cn/stage-2/backend/2.6-modern-cli/'
+                  link: '/zh-cn/stage-2/backend/modern-cli/'
                 }
               ]
             }
@@ -1732,15 +1728,15 @@ Sitemap: ${siteUrl}/sitemap.xml
               items: [
                 {
                   text: '一起做霍格沃茨画像',
-                  link: '/zh-cn/stage-2/frontend/2.5-hogwarts-portraits/'
+                  link: '/zh-cn/stage-2/frontend/hogwarts-portraits/'
                 },
                 {
                   text: 'Supabase 数据库',
-                  link: '/zh-cn/stage-2/backend/2.2-database-supabase/'
+                  link: '/zh-cn/stage-2/backend/database-supabase/'
                 },
                 {
                   text: 'Dify & Knowledge Base',
-                  link: '/zh-cn/stage-2/ai-capabilities/2.1-dify-knowledge-base/'
+                  link: '/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/'
                 }
               ]
             }
@@ -2251,8 +2247,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Home', link: '/en/' },
           {
             text: 'Getting Started',
-            link: '/en/stage-0/',
-            activeMatch: '/en/stage-[01]/'
+            link: '/en/stage-1/',
+            activeMatch: '/en/stage-1/'
           },
           {
             text: 'Full-Stack Development',
@@ -2300,7 +2296,6 @@ Sitemap: ${siteUrl}/sitemap.xml
               ]
             }
           ],
-          '/en/stage-0/': productManagerSidebarEn,
           '/en/stage-1/': productManagerSidebarEn,
           '/en/stage-2/': stage2SidebarEn,
           '/en/stage-3/': stage3SidebarEn,
@@ -2338,8 +2333,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'ホーム', link: '/ja-jp/' },
           {
             text: '初心者とPM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'フルスタック開発',
@@ -2389,8 +2384,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '首頁', link: '/zh-tw/' },
           {
             text: '新手與產品原型',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: '初中級開發',
@@ -2439,8 +2434,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '홈', link: '/ko-kr/' },
           {
             text: '초보자 & PM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: '풀스택 개발',
@@ -2489,8 +2484,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Inicio', link: '/es-es/' },
           {
             text: 'Principiante y PM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Desarrollo Full Stack',
@@ -2539,8 +2534,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Accueil', link: '/fr-fr/' },
           {
             text: 'Débutant & PM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Développement Full Stack',
@@ -2589,8 +2584,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Start', link: '/de-de/' },
           {
             text: 'Anfänger & PM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Full Stack Entwicklung',
@@ -2639,8 +2634,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
             text: 'مبتدأ & PM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'تطوير Full Stack',
@@ -2690,8 +2685,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
             text: 'Người mới & PM',
-            link: '/zh-cn/stage-0/',
-            activeMatch: '/zh-cn/stage-0/'
+            link: '/zh-cn/stage-1/',
+            activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Phát triển Full Stack',

@@ -11,12 +11,12 @@ In dieser Phase startest du von Null und beherrschst den Vibe Coding-Workflow, u
 Geeignet für Produkt, Betrieb und nicht-technische Hintergründe. Verstehe die KI-Programmierlogik durch Spiele und baue Vertrauen auf:
 <NavGrid>
   <NavCard
-    href="/de-de/stage-0/0.1-learning-map/"
+    href="/de-de/stage-1/learning-map/"
     title="Lernkarte"
     description="Verstehe den gesamten Lernpfad und kläre die Ziele und Ergebnisse jeder Phase"
   />
   <NavCard
-    href="/de-de/stage-0/0.2-ai-capabilities-through-games/"
+    href="/de-de/stage-1/ai-capabilities-through-games/"
     title="KI-Ära: Wenn du sprechen kannst, kannst du programmieren"
     description="Erlebe den Charme der KI-Programmierung durch Spiele wie Snake und überwinde die Angst vor dem Codieren"
   />
@@ -28,22 +28,22 @@ Geeignet für Produkt, Betrieb und nicht-technische Hintergründe. Verstehe die 
 Beherrsche den Vibe Coding-Workflow. Lerne, Anforderungen zu zerlegen und unabhängig hochfidele Webanwendungsprototypen zu vervollständigen:
 <NavGrid>
   <NavCard
-    href="/de-de/stage-1/1.1-introduction-to-ai-ide/"
+    href="/de-de/stage-1/introduction-to-ai-ide/"
     title="Einführung in KI-IDE-Tools"
     description="Lerne die aktuellen KI-Programmierungstools kennen und wähle den besten Entwicklungspartner für dich"
   />
   <NavCard
-    href="/de-de/stage-1/1.2-building-prototype/"
+    href="/de-de/stage-1/building-prototype/"
     title="Prototypenerstellung"
     description="Lerne, wie du Produktideen schnell in visuelle Prototypen umwandeln kannst, um kostengünstig zu testen"
   />
   <NavCard
-    href="/de-de/stage-1/1.3-integrating-ai-capabilities/"
+    href="/de-de/stage-1/integrating-ai-capabilities/"
     title="Integration von KI-Fähigkeiten"
     description="Integriere einfache KI-APIs, um deinem Prototyp Intelligenz zu verleihen"
   />
   <NavCard
-    href="/de-de/stage-1/1.4-complete-project-practice/"
+    href="/de-de/stage-1/complete-project-practice/"
     title="Vollständige Projektpraxis"
     description="Wende das Gelernte umfassend an, um die Entwicklung eines vollständigen Produktprototyps von 0 bis 1 abzuschließen"
   />

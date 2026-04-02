@@ -85,7 +85,7 @@ Due to network reasons, users in mainland China may not be able to directly acce
 
 **Recommended approach**: let an AI Agent help you configure. You only need to provide provider config information (API endpoint, key, etc.), and AI can set environment variables correctly.
 
-**See detailed setup guide:** [How to install claudecode and configure environment variables](/en/stage-2/backend/2.6-modern-cli/)
+**See detailed setup guide:** [How to install claudecode and configure environment variables](/en/stage-2/backend/modern-cli/)
 
 :::
 
