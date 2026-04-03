@@ -431,7 +431,7 @@ const stage2SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Build Your Own Asset-Production Agent with Lovart',
+        text: 'Asset Production & Agent Building',
         link: '/en/stage-2/frontend/lovart-assets/'
       },
       {
@@ -439,27 +439,23 @@ const stage2SidebarEn = [
         link: '/en/stage-2/frontend/figma-mastergo/'
       },
       {
-        text: 'Build Your First Modern App - UI Design',
+        text: 'UI Design Specs & Multi-Product Interface',
         link: '/en/stage-2/frontend/ui-design/'
       },
       {
-        text: 'UI Design Guidelines and Multi-Product UI',
+        text: 'Multi-Product UI Design',
         link: '/en/stage-2/frontend/multi-product-ui/'
       },
       {
-        text: 'Make Interfaces Beautiful with LLMs and Skills',
+        text: 'LLM & Skills Interface Beautification',
         link: '/en/stage-2/frontend/llm-skills-beautiful/'
       },
       {
-        text: "Let's Build Hogwarts Portraits",
-        link: '/en/stage-2/frontend/hogwarts-portraits/'
-      },
-      {
-        text: 'From Design Prototype to Project Code',
+        text: 'Design Prototype to Project Code',
         link: '/en/stage-2/frontend/design-to-code/'
       },
       {
-        text: 'Upgrade Your UI with Modern Component Libraries',
+        text: 'Modern Component Libraries',
         link: '/en/stage-2/frontend/modern-component-library/'
       }
     ]
@@ -469,27 +465,27 @@ const stage2SidebarEn = [
     collapsed: false,
     items: [
       {
-        text: 'Learn Git and GitHub',
+        text: 'Git & GitHub Workflow',
         link: '/en/stage-2/backend/git-workflow/'
       },
       {
-        text: 'From Database to Supabase',
+        text: 'Database & Supabase',
         link: '/en/stage-2/backend/database-supabase/'
       },
       {
-        text: 'Backend API Design and Development',
+        text: 'Backend API Design & Development',
         link: '/en/stage-2/backend/ai-interface-code/'
       },
       {
-        text: 'Ship Your Product Prototype',
+        text: 'Web App Deployment',
         link: '/en/stage-2/backend/zeabur-deployment/'
       },
       {
-        text: 'From IDEs to CLI AI Coding Tools',
+        text: 'Modern CLI Dev Tools',
         link: '/en/stage-2/backend/modern-cli/'
       },
       {
-        text: 'Integrate Stripe and Other Billing Systems',
+        text: 'Stripe Payment Integration',
         link: '/en/stage-2/backend/stripe-payment/'
       }
     ]
@@ -1450,7 +1446,7 @@ Sitemap: ${siteUrl}/sitemap.xml
               collapsed: false,
               items: [
                 {
-                  text: '使用 NanoBanana 生产素材',
+                  text: 'NanoBanana 素材生产',
                   link: '/zh-cn/stage-2/frontend/lovart-assets/'
                 },
                 {
@@ -1458,19 +1454,19 @@ Sitemap: ${siteUrl}/sitemap.xml
                   link: '/zh-cn/stage-2/frontend/figma-mastergo/'
                 },
                 {
-                  text: '参考 UI 设计规范设计页面和按钮',
+                  text: 'UI 设计规范与多产品界面',
                   link: '/zh-cn/stage-2/frontend/multi-product-ui/'
                 },
                 {
-                  text: '用 LLM 和 Skills 让界面变好看',
+                  text: '结合 Agent Skills 美化界面',
                   link: '/zh-cn/stage-2/frontend/llm-skills-beautiful/'
                 },
                 {
-                  text: '从设计原型到项目代码',
+                  text: '设计原型到项目代码',
                   link: '/zh-cn/stage-2/frontend/design-to-code/'
                 },
                 {
-                  text: '使用现代组件库更新你的界面',
+                  text: '现代组件库与界面升级',
                   link: '/zh-cn/stage-2/frontend/modern-component-library/'
                 }
               ]
@@ -1480,27 +1476,27 @@ Sitemap: ${siteUrl}/sitemap.xml
               collapsed: false,
               items: [
                 {
-                  text: '从数据库到 Supabase',
+                  text: '数据库与 Supabase 入门',
                   link: '/zh-cn/stage-2/backend/database-supabase/'
                 },
                 {
-                  text: '大模型辅助编写接口代码与接口文档',
+                  text: '大模型辅助接口开发',
                   link: '/zh-cn/stage-2/backend/ai-interface-code/'
                 },
                 {
-                  text: 'Git 工作流',
+                  text: 'Git 与 GitHub 入门指南',
                   link: '/zh-cn/stage-2/backend/git-workflow/'
                 },
                 {
-                  text: '如何部署 Web 应用',
+                  text: '网页应用部署全面指南',
                   link: '/zh-cn/stage-2/backend/zeabur-deployment/'
                 },
                 {
-                  text: '现代 CLI 开发工具',
+                  text: 'CLI Coding Agent 编程助手',
                   link: '/zh-cn/stage-2/backend/modern-cli/'
                 },
                 {
-                  text: '如何集成 Stripe 等收费系统',
+                  text: 'Stripe 支付集成',
                   link: '/zh-cn/stage-2/backend/stripe-payment/'
                 }
               ]
