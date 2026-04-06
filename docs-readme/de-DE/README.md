@@ -162,14 +162,14 @@ Easy-Vibe zeigt dir, wie daraus ein echtes Produkt wird.
 **学什么**：AI 编程初体验、贪吃蛇小游戏
 **你会得到**：5 分钟做出第一个 AI 应用
 
-[开始体验](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/)
+[开始体验](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/learning-map/)
 
 ### 💡 我有个想法要实现
 **适合人群**：零基础/产品经理/创业者
 **学什么**：AI IDE 工具、需求拆解、页面设计、功能规划、提示词写法、原型迭代
 **你会得到**：一个可演示的产品原型
 
-[开始学习](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/)
+[开始学习](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/learning-map/)
 
 ### 🚀 我想系统学习
 **适合人群**：开发者/进阶学习者
@@ -194,7 +194,7 @@ Easy-Vibe zeigt dir, wie daraus ein echtes Produkt wird.
 
 ## 学习建议
 
-- 零基础、产品经理、创业者：从 [第一阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/) 开始
+- 零基础、产品经理、创业者：从 [第一阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-1/learning-map/) 开始
 - 有开发经验：从 [第二阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/) 开始
 - 想直接做复杂项目：进入 [第三阶段](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/)
 - 想学 AI Agent：看 [Hello Claw](https://github.com/datawhalechina/hello-claw)
@@ -258,7 +258,7 @@ Easy-Vibe zeigt dir, wie daraus ein echtes Produkt wird.
 | [如何部署 Web 应用](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/zeabur-deployment/)                     | 使用 CloudBase、Vercel、Zeabur 等平台部署应用上线           |
 | [CLI AI 编程工具](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/modern-cli/)                              | 使用 CLI 类 AI 编程工具加速开发与调试，形成个人工程化工作流 |
 | [如何集成 Stripe 等收费系统](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/backend/stripe-payment/)               | 接入支付系统，完成收费链路与基础结算流程                    |
-| [大作业：构建第一个现代应用程序-全栈应用](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/fullstack-app/) | 综合前端、后端与支付模块，完成可上线的全栈 Web 应用         |
+| [大作业：构建第一个现代应用程序-全栈应用](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-2/assignments/copywriting-platform-supabase/) | 综合前端、后端与支付模块，完成可上线的全栈 Web 应用         |
 
 #### AI 能力附录
 
@@ -288,7 +288,6 @@ Easy-Vibe zeigt dir, wie daraus ein echtes Produkt wird.
 | [如何构建微信小程序-包含后端](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/wechat-miniprogram-backend/)      | 在小程序中接入数据库与后端逻辑，打通完整业务闭环             |
 | [如何构建安卓程序](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/android-app/)                                | 使用 Expo 等工具，完成 Web/原生一体化的安卓应用开发          |
 | [如何构建 iOS 程序](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/ios-app/)                                   | 使用 Expo 等工具，完成 Web/原生一体化的 iOS 应用开发         |
-| [如何构建个人网页与学术博客](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/personal-brand/personal-website-blog/)            | 从选型、搭建到部署，构建展示个人项目与学术成果的在线主页     |
 | [如何开发 PWA 本地应用](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/pwa-local-app/)                         | 让网页变成"真正的 App"，支持离线、推送、桌面安装            |
 | [如何开发浏览器 AI 助手插件](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/browser-ai-extension/)             | 开发 Chrome 插件，一键总结任意网页，支持云端 API 和内置 AI   |
 | [如何开发 Electron 桌面程序](https://datawhalechina.github.io/easy-vibe/zh-cn/stage-3/cross-platform/electron-voice-to-text/)          | 用 Electron 构建语音转文字桌面应用，支持三平台安装运行       |

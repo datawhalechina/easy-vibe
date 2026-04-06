@@ -161,14 +161,14 @@ Easy-Vibe teaches you how to turn that into a real product.
 **What you will learn**: Your first AI coding experience with a Snake mini-game
 **What you will get**: Your first AI-built app in 5 minutes
 
-[Start here](https://datawhalechina.github.io/easy-vibe/en/stage-1/)
+[Start here](https://datawhalechina.github.io/easy-vibe/en/stage-1/learning-map/)
 
 ### 💡 I have an idea I want to build
 **Best for**: Beginners / product managers / founders
 **What you will learn**: AI IDE tools, requirement breakdown, page design, feature planning, prompting, prototype iteration
 **What you will get**: A demoable product prototype
 
-[Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-1/)
+[Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-1/learning-map/)
 
 ### 🚀 I want a structured learning path
 **Best for**: Developers / advanced learners
@@ -193,7 +193,7 @@ Easy-Vibe teaches you how to turn that into a real product.
 
 ## Study Suggestions
 
-- If you are a beginner, product manager, or founder, start with [Stage 0 / Stage 1](https://datawhalechina.github.io/easy-vibe/en/stage-1/)
+- If you are a beginner, product manager, or founder, start with [Stage 0 / Stage 1](https://datawhalechina.github.io/easy-vibe/en/stage-1/learning-map/)
 - If you already have development experience, start with [Stage 2](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
 - If you want to jump directly into complex projects, go to [Stage 3](https://datawhalechina.github.io/easy-vibe/en/stage-3/)
 - If you want to learn AI agents, check out [Hello Claw](https://github.com/datawhalechina/hello-claw)
@@ -289,7 +289,6 @@ Easy-Vibe teaches you how to turn that into a real product.
 | [Build a WeChat Mini Program with backend](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/wechat-miniprogram-backend/) | Add backend logic and databases to complete the full business loop |
 | [Build an Android app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/android-app/) | Use Expo and related tools to build Android apps across web and native |
 | [Build an iOS app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/ios-app/) | Use Expo and related tools to build iOS apps across web and native |
-| [Build a personal website and academic blog](https://datawhalechina.github.io/easy-vibe/en/stage-3/personal-brand/personal-website-blog/) | Create an online home for projects, personal branding, and academic work |
 | [Build a local PWA app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/pwa-local-app/) | Turn a website into a real app with offline support, push, and installation |
 | [Build a browser AI assistant extension](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/browser-ai-extension/) | Create a Chrome extension that summarizes any page with either cloud APIs or built-in AI |
 | [Build an Electron desktop app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/electron-voice-to-text/) | Build a voice-to-text desktop app with Electron for three platforms |

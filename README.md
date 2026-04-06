@@ -156,47 +156,47 @@ Easy-Vibe teaches you how to turn that into a real product.
 
 ## Your Learning Paths
 
-### 🎮 I want to try it first (5-minute experience)
+### 🎮 I want a fast first win
 **Best for**: Everyone
-**What you will learn**: Your first AI coding experience with a Snake mini-game
-**What you will get**: Your first AI-built app in 5 minutes
+**What you will learn**: What AI coding actually feels like through a simple, concrete hands-on example
+**What you will get**: A clear first impression of vibe coding and how to work with AI by conversation
 
-[Start here](https://datawhalechina.github.io/easy-vibe/en/stage-1/)
+[Start here](https://datawhalechina.github.io/easy-vibe/en/stage-1/ai-capabilities-through-games/)
 
-### 💡 I have an idea I want to build
+### 💡 I want to turn an idea into a product prototype
 **Best for**: Beginners / product managers / founders
-**What you will learn**: AI IDE tools, requirement breakdown, page design, feature planning, prompting, prototype iteration
-**What you will get**: A demoable product prototype
+**What you will learn**: Learning roadmap, AI IDE tools, idea validation, prototyping, AI capability integration, and full demo iteration
+**What you will get**: A demoable AI product prototype you can actually show to users or teammates
 
-[Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-1/)
+[Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-1/learning-map/)
 
-### 🚀 I want a structured learning path
-**Best for**: Developers / advanced learners
-**What you will learn**: Frontend, backend, databases, AI integration, deployment, Claude Code workflow
-**What you will get**: The ability to ship a full-stack AI app independently
+### 🚀 I want to build full-stack products end to end
+**Best for**: Junior developers / indie hackers / advanced learners
+**What you will learn**: Frontend workflows, design-to-code, databases, backend APIs, deployment, billing, and major projects
+**What you will get**: The ability to independently ship modern AI-enabled web applications
 
 [Start learning](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
 
-### 🦞 I want to build an AI Agent
-**Best for**: Developers interested in AI agents
-**What you will learn**: OpenClaw assistant workflows, the Skills system, and automation
-**What you will get**: Your own command-line AI assistant
+### AI-Native: I want advanced Claude Code and agent workflows
+**Best for**: Developers interested in AI-native engineering
+**What you will learn**: Claude Code, MCP, Skills, Agent Teams, long-running tasks, Spec Coding, and cross-platform app delivery
+**What you will get**: A stronger workflow for complex AI-assisted development and automation
 
-[Learn OpenClaw](https://github.com/datawhalechina/hello-claw)
+[Go to advanced development](https://datawhalechina.github.io/easy-vibe/en/stage-3/)
 
-### 📚 I want to browse reference material
+### 📚 I want reference material and fundamentals
 **Best for**: Everyone
-**What you will learn**: Computer fundamentals, AI principles, and 9 major knowledge areas
-**What you will get**: 80+ interactive reference topics
+**What you will learn**: Computer fundamentals, frontend/backend basics, infrastructure, AI principles, and engineering practices
+**What you will get**: A long-term reference knowledge base covering 9 major knowledge areas
 
 [Browse the knowledge base](https://datawhalechina.github.io/easy-vibe/en/appendix/)
 
 ## Study Suggestions
 
-- If you are a beginner, product manager, or founder, start with [Stage 0 / Stage 1](https://datawhalechina.github.io/easy-vibe/en/stage-1/)
-- If you already have development experience, start with [Stage 2](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
-- If you want to jump directly into complex projects, go to [Stage 3](https://datawhalechina.github.io/easy-vibe/en/stage-3/)
-- If you want to learn AI agents, check out [Hello Claw](https://github.com/datawhalechina/hello-claw)
+- If you are a beginner, product manager, or founder, start with [Stage 1](https://datawhalechina.github.io/easy-vibe/en/stage-1/learning-map/)
+- If you want to move from prototypes to full-stack delivery, start with [Stage 2](https://datawhalechina.github.io/easy-vibe/en/stage-2/)
+- If you want advanced Claude Code workflows or cross-platform projects, go to [Stage 3](https://datawhalechina.github.io/easy-vibe/en/stage-3/)
+- If you get blocked by concepts or missing background knowledge, use the [Appendix Knowledge Base](https://datawhalechina.github.io/easy-vibe/en/appendix/)
 
 ### 📖 Content Navigation
 
@@ -209,28 +209,37 @@ Easy-Vibe teaches you how to turn that into a real product.
 | Section | Key Content |
 | :------ | :---------- |
 | [Learning Map](https://datawhalechina.github.io/easy-vibe/en/stage-1/learning-map/) | A guided overview of the full learning journey |
-| [In the AI era, if you can talk, you can code](https://datawhalechina.github.io/easy-vibe/en/stage-1/ai-capabilities-through-games/) | Get your first feel for AI coding through examples like Snake |
-| [Finding great ideas](https://datawhalechina.github.io/easy-vibe/en/stage-1/finding-great-idea/) | Learn how to discover and validate product ideas worth building |
-| [Introduction to AI IDE tools](https://datawhalechina.github.io/easy-vibe/en/stage-1/introduction-to-ai-ide/) | Learn to use an IDE and build simple local projects |
-| [Build your prototype](https://datawhalechina.github.io/easy-vibe/en/stage-1/building-prototype/) | Move from requirements to single-page and multi-page product prototypes |
-| [Add AI capabilities to your prototype](https://datawhalechina.github.io/easy-vibe/en/stage-1/integrating-ai-capabilities/) | Integrate text, image, and video AI features |
+| [AI Era: If You Can Speak, You Can Code](https://datawhalechina.github.io/easy-vibe/en/stage-1/ai-capabilities-through-games/) | Get your first feel for AI coding through examples like Snake |
+| [Master AI Programming Tools](https://datawhalechina.github.io/easy-vibe/en/stage-1/introduction-to-ai-ide/) | Learn how AI IDE tools work and build simple local projects with them |
+| [Find Great Ideas](https://datawhalechina.github.io/easy-vibe/en/stage-1/finding-great-idea/) | Learn how to discover and validate product ideas worth building |
+| [Build Product Prototypes](https://datawhalechina.github.io/easy-vibe/en/stage-1/building-prototype/) | Move from requirements to single-page and multi-page product prototypes |
+| [Integrate AI Capabilities](https://datawhalechina.github.io/easy-vibe/en/stage-1/integrating-ai-capabilities/) | Integrate text, image, and video AI features |
 | [Complete project practice](https://datawhalechina.github.io/easy-vibe/en/stage-1/complete-project-practice/) | Simulate real scenarios, collect user feedback, and iterate on a full project |
 
 #### Appendix: Product and Business Thinking
 
 | Section | Key Content |
 | :------ | :---------- |
-| [Product thinking and solution design](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-a-product-thinking/) | Core frameworks for going from zero to one with a product |
-| [AI industry application scenarios (B2B)](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-industry-scenarios/) | Understand how AI is applied across industries |
-| [AI consumer product inspiration (B2C)](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-c-consumer-scenarios/) | Explore product opportunities in consumer AI |
+| [Product Thinking and Solution Design](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-a-product-thinking/) | Core frameworks for going from zero to one with a product |
+| [AI Industry Application Scenarios (B-end)](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-industry-scenarios/) | Understand how AI is applied across industries |
+| [AI Consumer Scenarios Inspiration (C-end)](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-c-consumer-scenarios/) | Explore product opportunities in consumer AI |
+
+#### Appendix: User Research and Requirement Validation
+
+| Section | Key Content |
+| :------ | :---------- |
+| [Where to find ideas: 3 reference sources that work best for beginners](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-idea-sources/) | Build a reliable pipeline for finding concrete product opportunities |
+| [Double Diamond: first do the right thing, then do it right](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-double-diamond/) | Use a structured process to move from scattered inspiration to a workable direction |
+| [Use Jobs to Be Done to find what users really want done](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-jobs-to-be-done/) | Analyze user goals through real tasks instead of surface-level feature requests |
+| [The Mom Test: a user interview method for validating demand](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-mom-test/) | Learn how to ask better questions and avoid false-positive feedback |
 
 #### Appendix: Technical Solutions
 
 | Section | Key Content |
 | :------ | :---------- |
-| [What to do when coding errors happen](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-b-common-errors/) | Common vibe coding issues and how to troubleshoot them |
-| [Comparison of seven AI coding tools](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial) | Compare major AI coding platforms through hands-on testing |
-| [Design a website with design and coding agents](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) | Learn multi-agent collaboration in practice |
+| [What to do if you encounter errors](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-b-common-errors/) | Common vibe coding issues and how to troubleshoot them |
+| [Comparison of Seven AI Programming Tools](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-articles/example0-1/vibe-coding-tools-snake-game-tutorial) | Compare major AI coding platforms through hands-on testing |
+| [Design Websites with Agents](https://datawhalechina.github.io/easy-vibe/en/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) | Learn multi-agent collaboration in practice |
 
 ### II. Junior and Mid-Level Developers
 
@@ -238,32 +247,38 @@ Easy-Vibe teaches you how to turn that into a real product.
 
 | Section | Key Content |
 | :------ | :---------- |
-| [Build your own asset-generation agent starting from Lovart](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/lovart-assets/) | Use Nanobanana and Lovart to generate high-quality visual assets and build a drawing agent that understands intent |
-| [Getting started with Figma and MasterGo](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/figma-mastergo/) | Organize information architecture and page structure with design tools |
-| [Build your first modern application: UI design](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/ui-design/) | Turn design drafts into component-based interfaces |
-| [UI guidelines and multi-product UI design](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/multi-product-ui/) | Extend a unified visual system across multiple products |
-| [Make interfaces beautiful with LLMs and Skills](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/llm-skills-beautiful/) | Use prompting and Skills plugins to generate distinctive, polished interfaces |
-| [Build Hogwarts portraits together](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/hogwarts-portraits/) | Create a frontend app from scratch that integrates AI capabilities |
-| [From design prototype to project code](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/design-to-code/) | Three practical paths to convert design prototypes into frontend code |
-| [Refresh your UI with modern component libraries](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/modern-component-library/) | Build more professional interfaces faster with modern component systems |
+| [Frontend 0: Build Your Own Asset-Production Agent with Lovart](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/lovart-assets/) | Use Nanobanana and Lovart to batch-generate visual assets and build a drawing agent with intent recognition |
+| [Frontend 1: Figma & MasterGo Basics](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/figma-mastergo/) | Learn the workflow from design drafts to implementation-ready UI thinking |
+| [Frontend 2: Build Your First Modern App - UI Design](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/ui-design/) | Learn the UI design foundations behind modern application interfaces |
+| [Frontend 3: UI Guidelines and Multi-Product Design](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/multi-product-ui/) | Improve consistency and aesthetics across multiple products with shared UI rules |
+| [Frontend 4: Make Interfaces Beautiful with LLMs and Skills](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/llm-skills-beautiful/) | Use prompts and plugins to make AI generate more polished, distinctive interfaces |
+| [Frontend 4: Let's Build Hogwarts Portraits](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/hogwarts-portraits/) | Build an interactive AI-image frontend project from scratch |
+| [Frontend 6: From Design Prototype to Project Code](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/design-to-code/) | Turn design prototypes into frontend code that can really run in the browser |
+| [Frontend 7: Upgrade Your UI with Modern Component Libraries](https://datawhalechina.github.io/easy-vibe/en/stage-2/frontend/modern-component-library/) | Use component libraries to build professional interfaces faster |
 
 #### Backend
 
 | Section | Key Content |
 | :------ | :---------- |
-| [From databases to Supabase](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/database-supabase/) | Implement databases and APIs with Supabase and connect them to your frontend |
-| [Use LLMs to write API code and API docs](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/ai-interface-code/) | Generate backend code and documentation that is easier to read and test |
-| [Git and GitHub workflow](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/git-workflow/) | Manage versions and collaborate effectively with Git workflows |
-| [How to deploy web applications](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/zeabur-deployment/) | Deploy apps with platforms like CloudBase, Vercel, and Zeabur |
-| [CLI AI coding tools](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/modern-cli/) | Build a personal engineering workflow with terminal-based AI tools |
-| [How to integrate Stripe and payment systems](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/stripe-payment/) | Add payment flows and basic billing capabilities |
-| [Capstone: build your first modern full-stack application](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/fullstack-app/) | Combine frontend, backend, and payments into a launch-ready web product |
+| [Backend 1: Learn Git and GitHub](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/git-workflow/) | Master core version control operations and collaboration workflows with Git |
+| [Backend 2: From Database to Supabase](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/database-supabase/) | Learn relational database basics and use Supabase as a modern BaaS platform |
+| [Backend 3: Backend API Design and Development](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/ai-interface-code/) | Use AI to assist API design, backend code generation, and API documentation |
+| [Backend 4: Ship Your Product Prototype](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/zeabur-deployment/) | Quickly deploy full-stack applications to the cloud with Zeabur |
+| [Backend 5: From IDEs to CLI AI Coding Tools](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/modern-cli/) | Explore terminal-first AI coding workflows for modern development |
+| [Backend 6: Integrate Stripe and Other Billing Systems](https://datawhalechina.github.io/easy-vibe/en/stage-2/backend/stripe-payment/) | Add monetization with payment and billing capabilities |
+
+#### Major Projects
+
+| Section | Key Content |
+| :------ | :---------- |
+| [Major Project 1: Your First SaaS Full-Stack App - AI Copywriting Website](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/fullstack-app/) | Build an AI marketing copy workspace with login, generation, billing, and admin management |
+| [Major Project 2: Online Exam and Management System](https://datawhalechina.github.io/easy-vibe/en/stage-2/assignments/modern-frontend-trae/) | Build an online exam system with question generation, test-taking flows, and admin tools |
 
 #### AI Capabilities Appendix
 
 | Section | Key Content |
 | :------ | :---------- |
-| [Getting started with Dify and knowledge base integration](https://datawhalechina.github.io/easy-vibe/en/stage-2/ai-capabilities/dify-knowledge-base/) | Build utility products with Dify workflows and basic RAG |
+| [AI 1: Dify Basics & Knowledge Base Integration](https://datawhalechina.github.io/easy-vibe/en/stage-2/ai-capabilities/dify-knowledge-base/) | Learn to build AI applications with Dify and integrate private knowledge bases |
 
 ### III. Advanced Developers
 
@@ -274,20 +289,23 @@ Easy-Vibe teaches you how to turn that into a real product.
 | [Getting started with Claude Code](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/basics/) | Installation, setup, fundamentals, and useful commands |
 | [Claude Code MCP guide](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/mcp/) | Connect Claude Code to GitHub, databases, APIs, and other services through MCP |
 | [Claude Code Skills guide](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/skills/) | Package expertise into reusable skills you can use again and again |
-| [Claude Code workflow best practices](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/workflow/) | Best practices for refactoring, code review, and daily development |
+| [How to keep Claude Code working for long-running tasks](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/long-running-tasks/) | Design long-running tasks so coding tools can keep working until the job is done |
 | [Claude Agent Teams guide](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/agent-teams/) | Coordinate multiple AI instances like a real development team |
 | [Claude Code Superpowers for engineering-grade development](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/superpowers/) | Help AI produce engineering-grade code with TDD and best practices |
-| [How to keep Claude Code working for long-running tasks](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/long-running-tasks/) | Design long-running tasks so coding tools can keep working until the job is done |
+| [Claude Code workflow best practices](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/workflow/) | Best practices for refactoring, code review, and daily development |
+| [Claude Code remote development on mobile](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/mobile-development/) | Use Claude Code beyond the desktop and build a productive remote workflow on mobile devices |
+| [Claude Agent SDK complete guide](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/claude-agent-sdk/) | Build custom agent workflows and integrate Claude into your own tools with the SDK |
+| [From vibe coding to spec coding](https://datawhalechina.github.io/easy-vibe/en/stage-3/core-skills/spec-coding/) | Move from ad-hoc prompting to a more structured, specification-driven AI development workflow |
 
 #### Cross-Platform Development
 
 | Section | Key Content |
 | :------ | :---------- |
+| [How to choose the right platform for your app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/choose-platform/) | Compare app forms and choose the right platform based on users, scenarios, and delivery goals |
 | [Build a WeChat Mini Program](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/wechat-miniprogram/) | Understand the ecosystem and ship a frontend mini program from template to launch |
 | [Build a WeChat Mini Program with backend](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/wechat-miniprogram-backend/) | Add backend logic and databases to complete the full business loop |
-| [Build an Android app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/android-app/) | Use Expo and related tools to build Android apps across web and native |
-| [Build an iOS app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/ios-app/) | Use Expo and related tools to build iOS apps across web and native |
-| [Build a personal website and academic blog](https://datawhalechina.github.io/easy-vibe/en/stage-3/personal-brand/personal-website-blog/) | Create an online home for projects, personal branding, and academic work |
+| [Build an Android app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/android-app/) | Learn Android app development with a modern native workflow |
+| [Build an iOS app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/ios-app/) | Learn iOS app development and the conventions of the Apple ecosystem |
 | [Build a local PWA app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/pwa-local-app/) | Turn a website into a real app with offline support, push, and installation |
 | [Build a browser AI assistant extension](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/browser-ai-extension/) | Create a Chrome extension that summarizes any page with either cloud APIs or built-in AI |
 | [Build an Electron desktop app](https://datawhalechina.github.io/easy-vibe/en/stage-3/cross-platform/electron-voice-to-text/) | Build a voice-to-text desktop app with Electron for three platforms |
