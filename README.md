@@ -17,12 +17,10 @@
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> ·
-  <a href="#-content-navigation">Learning Map</a> ·
-  <a href="#contact">Community</a><br>
+  <a href="#-content-navigation">Learning Map</a><br>
   <span style="font-size: 0.85em; color: #888;">
     <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始阅读</a> ·
-    <a href="#-content-navigation">学习地图</a> ·
-    <a href="#contact">社区</a>
+    <a href="#-content-navigation">学习地图</a>
   </span>
 </p>
 
@@ -353,13 +351,6 @@ Please help me run this project locally.
 - Thanks to every contributor and everyone who supported the project with feedback and stars ❤️
 
 <div align="center"> 
- 
- <p> 
-   <a href="https://github.com/datawhalechina/easy-vibe/stargazers"><img src="https://reporoster.com/stars/datawhalechina/easy-vibe" alt="Stargazers"/></a> 
-   &nbsp;&nbsp; 
-   <a href="https://github.com/datawhalechina/easy-vibe/network/members"><img src="https://reporoster.com/forks/datawhalechina/easy-vibe" alt="Forkers"/></a> 
- </p> 
- 
  <a href="https://www.star-history.com/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
    <picture> 
      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
@@ -372,16 +363,6 @@ Please help me run this project locally.
   <a href="https://github.com/datawhalechina/easy-vibe/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=datawhalechina/easy-vibe" />
   </a>
-</div>
-
-## <span id="contact">📧 Contact</span>
-
-<div align=center>
-<p>If you have feedback, questions, or want to connect with the community, scan the QR code below.</p>
-<img src="assets/wechat.png" width="280">
-
-<p>Scan the QR code below to follow the Datawhale public account.</p>
-<img src="https://raw.githubusercontent.com/datawhalechina/pumpkin-book/master/res/qrcode.jpeg" width="180" height="180">
 </div>
 
 ## 📄 LICENSE

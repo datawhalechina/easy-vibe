@@ -17,12 +17,10 @@
 
 <p align="center">
   <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">开始阅读</a> ·
-  <a href="#-内容导航">学习地图</a> ·
-  <a href="#contact">社区</a><br>
+  <a href="#-内容导航">学习地图</a><br>
   <span style="font-size: 0.85em; color: #888;">
     <a href="https://datawhalechina.github.io/easy-vibe/welcome.html">Read Online</a> ·
-    <a href="#-content-navigation">Learning Map</a> ·
-    <a href="#contact">Community</a>
+    <a href="#-content-navigation">Learning Map</a>
   </span>
 </p>
 
@@ -444,11 +442,6 @@ Easy-Vibe 教你的，就是怎样把它一步步做成真正的产品。
 
 <div align="center"> 
  
- <p> 
-   <a href="https://github.com/datawhalechina/easy-vibe/stargazers"><img src="https://reporoster.com/stars/datawhalechina/easy-vibe" alt="Stargazers"/></a> 
-   &nbsp;&nbsp; 
-   <a href="https://github.com/datawhalechina/easy-vibe/network/members"><img src="https://reporoster.com/forks/datawhalechina/easy-vibe" alt="Forkers"/></a> 
- </p> 
  
  <a href="https://www.star-history.com/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
    <picture> 
@@ -462,16 +455,6 @@ Easy-Vibe 教你的，就是怎样把它一步步做成真正的产品。
   <a href="https://github.com/datawhalechina/easy-vibe/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=datawhalechina/easy-vibe" />
   </a>
-</div>
-
-## <span id="contact">📧 联系我们</span>
-
-<div align=center>
-<p>如果有问题提建议吐槽，或者想要一起交流，请扫描下方二维码</p>
-<img src="../../assets/wechat.png" width="280">
-
-<p>扫描下方二维码关注公众号：Datawhale</p>
-<img src="https://raw.githubusercontent.com/datawhalechina/pumpkin-book/master/res/qrcode.jpeg" width="180" height="180">
 </div>
 
 ## 📄 LICENSE
