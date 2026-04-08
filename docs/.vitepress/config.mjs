@@ -1390,17 +1390,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '首页', link: '/zh-cn/' },
           {
             text: '零基础入门',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: '初中级开发',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '高级开发',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2243,17 +2243,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Home', link: '/en/' },
           {
             text: 'Getting Started',
-            link: '/en/stage-1/',
+            link: '/en/stage-1/learning-map/',
             activeMatch: '/en/stage-1/'
           },
           {
             text: 'Full-Stack Development',
-            link: '/en/stage-2/',
+            link: '/en/stage-2/frontend/lovart-assets/',
             activeMatch: '/en/stage-2/'
           },
           {
             text: 'Advanced Development',
-            link: '/en/stage-3/',
+            link: '/en/stage-3/core-skills/basics/',
             activeMatch: '/en/stage-3/'
           },
           {
@@ -2329,17 +2329,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'ホーム', link: '/ja-jp/' },
           {
             text: '初心者とPM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'フルスタック開発',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '上級開発',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2380,17 +2380,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '首頁', link: '/zh-tw/' },
           {
             text: '新手與產品原型',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: '初中級開發',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '高級開發',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2430,17 +2430,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: '홈', link: '/ko-kr/' },
           {
             text: '초보자 & PM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: '풀스택 개발',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: '고급 개발',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2480,17 +2480,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Inicio', link: '/es-es/' },
           {
             text: 'Principiante y PM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Desarrollo Full Stack',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Desarrollo Avanzado',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2530,17 +2530,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Accueil', link: '/fr-fr/' },
           {
             text: 'Débutant & PM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Développement Full Stack',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Développement Avancé',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2580,17 +2580,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Start', link: '/de-de/' },
           {
             text: 'Anfänger & PM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Full Stack Entwicklung',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Fortgeschrittene Entwicklung',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2630,17 +2630,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'الرئيسية', link: '/ar-sa/' },
           {
             text: 'مبتدأ & PM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'تطوير Full Stack',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'تطوير متقدم',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
@@ -2681,17 +2681,17 @@ Sitemap: ${siteUrl}/sitemap.xml
           { text: 'Trang chủ', link: '/vi-vn/' },
           {
             text: 'Người mới & PM',
-            link: '/zh-cn/stage-1/',
+            link: '/zh-cn/stage-1/learning-map/',
             activeMatch: '/zh-cn/stage-1/'
           },
           {
             text: 'Phát triển Full Stack',
-            link: '/zh-cn/stage-2/',
+            link: '/zh-cn/stage-2/frontend/lovart-assets/',
             activeMatch: '/zh-cn/stage-2/'
           },
           {
             text: 'Phát triển Nâng cao',
-            link: '/zh-cn/stage-3/',
+            link: '/zh-cn/stage-3/core-skills/basics/',
             activeMatch: '/zh-cn/stage-3/'
           },
           {
