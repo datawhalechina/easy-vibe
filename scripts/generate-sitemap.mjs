@@ -171,7 +171,7 @@ function main() {
     baseFiles = scanMarkdownFiles(docsDir).filter((f) => !f.includes('/'))
   }
 
-  console.log(`📄 Found ${baseFiles} base pages`)
+  console.log(`📄 Found ${baseFiles.length} base pages`)
 
   // 为每个文件生成 URL 信息
   for (const baseFile of baseFiles) {

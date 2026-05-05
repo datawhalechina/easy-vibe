@@ -7,10 +7,21 @@
  * 同时保留真实的退出码供 CI 使用。
  */
 import { spawn } from 'node:child_process'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const child = spawn('npx', ['vitepress', 'build', 'docs', '--force'], {
-  stdio: 'inherit',
-  shell: true
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const rootDir = path.resolve(__dirname, '..')
+const vitepressBin = path.join(
+  rootDir,
+  'node_modules',
+  '.bin',
+  process.platform === 'win32' ? 'vitepress.cmd' : 'vitepress'
+)
+const vitepressArgs = ['build', 'docs', ...process.argv.slice(2)]
+
+const child = spawn(vitepressBin, vitepressArgs, {
+  stdio: 'inherit'
 })
 
 child.on('close', (code) => {

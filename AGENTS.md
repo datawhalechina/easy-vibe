@@ -17,6 +17,7 @@ npm install
 npm run dev      # start local docs server (hot reload)
 npm run build    # production build (use as CI-style check)
 npm run preview  # preview the built site locally
+npm run verify   # lint and production build without rewriting tracked sitemap
 npm run format   # run Prettier on the whole repo
 ```
 
@@ -39,3 +40,12 @@ There is no dedicated test framework in this repo. Use `npm run build` as the pr
 ## Configuration & Deployment Notes
 
 - `vercel.json` is present; keep builds reproducible and avoid relying on local-only assets.
+- GitHub Pages deploys from `.github/workflows/deploy.yml`. Upstream `datawhalechina/easy-vibe` deploys by default; forks must opt in with repo variable `ENABLE_PAGES_DEPLOY=true`.
+- Fork Pages builds should use `BASE=/<repo-name>/` and `SITE_URL=https://<owner>.github.io/<repo-name>` unless `PAGES_BASE` or `PAGES_SITE_URL` repo variables override them.
+
+## Ship-It Workflow
+
+- When the user says `ship it`, preserve unrelated dirty files and only stage the intended changes.
+- Run `npm run verify` before release. For UI/docs rendering changes, also run a local preview and verify the relevant flow in the official Codex in-app browser.
+- Release path is direct to the fork `main`: commit, push `origin main`, wait for `Deploy VitePress site to Pages`, then verify the live fork Pages URL `https://longbiaochen.github.io/easy-vibe/`.
+- After the fork Pages preview is verified, summarize the diff against `upstream/main` and ask explicitly before creating a PR to `datawhalechina/easy-vibe`. Do not open the upstream PR without that approval.

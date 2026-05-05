@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "npm run sitemap && vitepress build docs",
-    "build:force": "npm run sitemap && vitepress build docs --force",
+    "build": "npm run sitemap && node scripts/build.mjs",
+    "build:force": "npm run sitemap && node scripts/build.mjs --force",
     "preview": "vitepress preview docs",
     "format": "prettier --write .",
     "verify": "bash scripts/verify.sh",
