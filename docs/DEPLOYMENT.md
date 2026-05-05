@@ -45,7 +45,12 @@ SITE_URL="https://<owner>.github.io/<repo-name>"
 
 3. 如果改动影响页面渲染或交互，启动本地预览并用官方 Codex in-app browser 验证相关页面。
 4. 提交目标变更并推送到 fork `main`。
-5. 等待 `Deploy VitePress site to Pages` workflow 完成。
+5. 等待 `Deploy VitePress site to Pages` workflow 完成。如果 push 后 60 秒内没有出现 run，用下面的 fallback 触发同一个 workflow：
+
+   ```bash
+   gh workflow run deploy.yml --repo longbiaochen/easy-vibe --ref main
+   ```
+
 6. 在官方 Codex in-app browser 打开 fork Pages：
 
    ```text
