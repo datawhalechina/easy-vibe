@@ -6,11 +6,21 @@ const isVercel = process.env.VERCEL === '1' || !!process.env.VERCEL_URL
 // 检查是否为 EdgeOne 部署 (通过环境变量 EDGEONE 判断)
 const isEdgeOne = !!process.env.EDGEONE || process.env.EDGEONE === '1'
 
+const normalizeBase = (value) => {
+  if (!value || value === '/') return '/'
+  const withLeadingSlash = value.startsWith('/') ? value : `/${value}`
+  return withLeadingSlash.endsWith('/')
+    ? withLeadingSlash
+    : `${withLeadingSlash}/`
+}
+
 // 确定 Base 路径：
 // 1. 如果设置了 BASE 环境变量，优先使用
 // 2. 如果是 Vercel 或 EdgeOne，默认使用根路径 '/'
 // 3. 否则（如 GitHub Pages），使用 '/easy-vibe/'
-const base = process.env.BASE || (isVercel || isEdgeOne ? '/' : '/easy-vibe/')
+const base = normalizeBase(
+  process.env.BASE || (isVercel || isEdgeOne ? '/' : '/easy-vibe/')
+)
 
 // 站点 URL 配置 - 根据部署环境动态确定
 const getSiteUrl = () => {
@@ -26,7 +36,26 @@ const getSiteUrl = () => {
   return 'https://datawhalechina.github.io/easy-vibe'
 }
 
-const siteUrl = getSiteUrl()
+const siteUrl = getSiteUrl().replace(/\/+$/, '')
+
+const siteAssetUrl = (assetPath) => {
+  return `${siteUrl}/${assetPath.replace(/^\/+/, '')}`
+}
+
+const withBasePath = (urlPath) => {
+  if (/^https?:\/\//.test(urlPath)) return urlPath
+  if (urlPath === '') return base
+
+  const pathWithLeadingSlash = urlPath.startsWith('/') ? urlPath : `/${urlPath}`
+  if (base === '/' || pathWithLeadingSlash.startsWith(base)) {
+    return pathWithLeadingSlash
+  }
+  if (pathWithLeadingSlash === base.slice(0, -1)) {
+    return base
+  }
+
+  return `${base}${pathWithLeadingSlash.slice(1)}`
+}
 
 // 语言映射配置
 const localeMap = {
@@ -96,7 +125,7 @@ const localeMap = {
 const getSeoHead = (locale, title, description, path = '') => {
   const seoConfig = localeMap[locale] || localeMap['zh-cn']
   const canonicalUrl = path ? `${siteUrl}${path}` : `${siteUrl}/${locale}/`
-  const ogImageUrl = `${siteUrl}${base}logo.png`
+  const ogImageUrl = siteAssetUrl('logo.png')
 
   // 从路径中提取页面相对路径（去掉语言前缀）
   const getRelativePath = (fullPath, currentLocale) => {
@@ -1266,17 +1295,26 @@ export default defineConfig({
       '/zh-cn/appendix/': 0.7
     },
     transformItems(items) {
-      return items.filter((item) => {
-        const url = item.url
-        if (
-          url.includes('/extra/') ||
-          url.includes('/examples/') ||
-          url.includes('/project/')
-        ) {
-          return false
-        }
-        return true
-      })
+      return items
+        .filter((item) => {
+          const url = item.url
+          if (
+            url.includes('/extra/') ||
+            url.includes('/examples/') ||
+            url.includes('/project/')
+          ) {
+            return false
+          }
+          return true
+        })
+        .map((item) => ({
+          ...item,
+          url: withBasePath(item.url),
+          links: item.links?.map((link) => ({
+            ...link,
+            url: withBasePath(link.url)
+          }))
+        }))
     }
   },
 
