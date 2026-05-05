@@ -16,6 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   PAGES_BASE: ${{ vars.PAGES_BASE || format('/{0}/', github.event.repository.name) }}
   PAGES_SITE_URL: ${{ vars.PAGES_SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
 
