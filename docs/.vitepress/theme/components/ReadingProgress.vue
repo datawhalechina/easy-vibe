@@ -4,7 +4,7 @@
       v-if="showProgress" 
       class="reading-progress"
       :class="{ 'is-dragging': isDragging }"
-      :title="isDragging ? '拖动调整位置' : '阅读进度 ' + progress + '%'"
+      :title="progressTitle"
       @mousedown="startDrag"
       @touchstart="startDrag"
       @click="handleClick"
@@ -28,6 +28,10 @@
         <div v-if="showArrow && !isDragging" key="arrow" class="progress-arrow">↑</div>
         <div v-else key="percent" class="progress-text">{{ progress }}%</div>
       </Transition>
+
+      <div v-if="!isDragging && bookmarkLabel" class="bookmark-label">
+        {{ bookmarkLabel }}
+      </div>
       
       <!-- 拖拽时的提示 -->
       <div v-if="isDragging" class="drag-hint">拖动调整</div>
@@ -36,31 +40,125 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { computed, nextTick, ref, onMounted, onUnmounted, watch } from 'vue'
+import { useRoute } from 'vitepress'
+import {
+  createReadingBookmark,
+  readReadingBookmark,
+  writeReadingBookmark
+} from '../utils/readingBookmark.js'
 
+const route = useRoute()
 const progress = ref(0)
 const showProgress = ref(false)
 const showArrow = ref(false)
+const articleTitle = ref('')
+const activeSection = ref('')
+const restoredBookmark = ref(null)
 // Circle circumference = 2 * PI * r, where r=24
 const circumference = 2 * Math.PI * 24
 let scrollTimer = null
+let saveTimer = null
+let restoreTimer = null
+let clickSaveTimer = null
 
 // 拖拽相关状态
 const isDragging = ref(false)
 const startY = ref(0)
 const startProgress = ref(0)
+const movedDuringDrag = ref(false)
 let dragRafId = null
+let skipNextClick = false
+
+const currentPath = () =>
+  `${window.location.pathname}${window.location.search || ''}`
+
+const getClientStorage = () => {
+  try {
+    return window.localStorage
+  } catch {
+    return null
+  }
+}
+
+const getMaxScrollY = () =>
+  Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
+
+const getArticleTitle = () => {
+  const heading = document.querySelector('.vp-doc h1')
+  return (heading?.textContent || document.title || '').trim()
+}
+
+const updateActiveSection = () => {
+  const headings = Array.from(
+    document.querySelectorAll('.vp-doc h2, .vp-doc h3')
+  )
+  let current = ''
+
+  for (const heading of headings) {
+    if (heading.getBoundingClientRect().top <= 96) {
+      current = heading.textContent?.trim() || ''
+    } else {
+      break
+    }
+  }
+
+  activeSection.value = current
+}
+
+const bookmarkLabel = computed(() => {
+  const title = articleTitle.value || restoredBookmark.value?.title || ''
+  const section = activeSection.value || restoredBookmark.value?.section || ''
+  return section || title
+})
+
+const bookmarkTitle = computed(() => {
+  const title =
+    articleTitle.value || restoredBookmark.value?.title || '当前文章'
+  const section = activeSection.value || restoredBookmark.value?.section || ''
+  return section ? `${title} - ${section}` : title
+})
+
+const progressTitle = computed(() =>
+  isDragging.value
+    ? '拖动调整位置'
+    : `${bookmarkTitle.value} · 阅读进度 ${progress.value}%`
+)
+
+const saveBookmark = () => {
+  writeReadingBookmark(
+    getClientStorage(),
+    createReadingBookmark({
+      path: currentPath(),
+      title: articleTitle.value,
+      section: activeSection.value,
+      scrollY: window.scrollY,
+      progress: progress.value
+    })
+  )
+}
+
+const scheduleBookmarkSave = () => {
+  if (saveTimer) {
+    window.clearTimeout(saveTimer)
+  }
+  saveTimer = window.setTimeout(saveBookmark, 180)
+}
 
 const updateProgress = () => {
   // 拖拽时不更新进度，避免冲突
   if (isDragging.value) return
+
+  articleTitle.value = getArticleTitle()
+  updateActiveSection()
   
   const scrollTop = window.scrollY
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  const docHeight = getMaxScrollY()
   const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
   
   progress.value = Math.min(Math.round(scrollPercent), 100)
   showProgress.value = scrollTop > 0 // 开始滚动就显示
+  restoredBookmark.value = null
   
   // 滚动时显示百分比
   showArrow.value = false
@@ -76,6 +174,55 @@ const updateProgress = () => {
       showArrow.value = true
     }
   }, 1500)
+
+  scheduleBookmarkSave()
+}
+
+const restoreBookmark = async () => {
+  await nextTick()
+
+  if (restoreTimer) {
+    window.clearTimeout(restoreTimer)
+  }
+
+  restoreTimer = window.setTimeout(() => {
+    articleTitle.value = getArticleTitle()
+    updateActiveSection()
+
+    const saved = readReadingBookmark(
+      getClientStorage(),
+      currentPath(),
+      getMaxScrollY()
+    )
+
+    if (!saved || saved.scrollY <= 0) {
+      updateProgress()
+      return
+    }
+
+    restoredBookmark.value = saved
+    articleTitle.value = saved.title || articleTitle.value
+    activeSection.value = saved.section || activeSection.value
+    progress.value = saved.progress
+    showProgress.value = true
+    showArrow.value = true
+
+    window.scrollTo({
+      top: saved.scrollY,
+      behavior: 'auto'
+    })
+
+    window.setTimeout(updateProgress, 0)
+  }, 80)
+}
+
+const resetRouteState = () => {
+  progress.value = 0
+  showProgress.value = false
+  showArrow.value = false
+  restoredBookmark.value = null
+  articleTitle.value = ''
+  activeSection.value = ''
 }
 
 // 开始拖拽
@@ -85,6 +232,7 @@ const startDrag = (e) => {
   isDragging.value = true
   startY.value = 'touches' in e ? e.touches[0].clientY : e.clientY
   startProgress.value = progress.value
+  movedDuringDrag.value = false
   
   // 添加全局事件监听
   document.addEventListener('mousemove', onDrag, { passive: false })
@@ -100,6 +248,9 @@ const onDrag = (e) => {
   
   const currentY = 'touches' in e ? e.touches[0].clientY : e.clientY
   const deltaY = startY.value - currentY // 向上拖动为正值
+  if (Math.abs(deltaY) > 4) {
+    movedDuringDrag.value = true
+  }
   
   // 每拖动 3 像素调整 1% 进度
   const sensitivity = 3
@@ -130,6 +281,7 @@ const onDrag = (e) => {
 
 // 结束拖拽
 const endDrag = () => {
+  const shouldSkipClick = movedDuringDrag.value
   isDragging.value = false
   
   // 清除事件监听
@@ -147,28 +299,59 @@ const endDrag = () => {
   if (window.scrollY > 0) {
     showArrow.value = true
   }
+
+  articleTitle.value = getArticleTitle()
+  updateActiveSection()
+  saveBookmark()
+
+  if (shouldSkipClick) {
+    skipNextClick = true
+    window.setTimeout(() => {
+      skipNextClick = false
+    }, 0)
+  }
 }
 
 // 点击回到顶部
-const handleClick = (e) => {
+const handleClick = () => {
   // 如果是拖拽结束后的点击，不触发回到顶部
-  if (isDragging.value) return
+  if (isDragging.value || skipNextClick) {
+    skipNextClick = false
+    return
+  }
   
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   })
+
+  if (clickSaveTimer) {
+    window.clearTimeout(clickSaveTimer)
+  }
+  clickSaveTimer = window.setTimeout(() => {
+    updateProgress()
+    saveBookmark()
+  }, 400)
 }
 
 onMounted(() => {
   window.addEventListener('scroll', updateProgress, { passive: true })
-  updateProgress()
+  restoreBookmark()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', updateProgress)
   if (scrollTimer) {
     clearTimeout(scrollTimer)
+  }
+  if (saveTimer) {
+    clearTimeout(saveTimer)
+  }
+  if (restoreTimer) {
+    clearTimeout(restoreTimer)
+  }
+  if (clickSaveTimer) {
+    clearTimeout(clickSaveTimer)
   }
   // 清理拖拽事件
   document.removeEventListener('mousemove', onDrag)
@@ -179,6 +362,14 @@ onUnmounted(() => {
     cancelAnimationFrame(dragRafId)
   }
 })
+
+watch(
+  () => route.path,
+  () => {
+    resetRouteState()
+    restoreBookmark()
+  }
+)
 </script>
 
 <style scoped>
@@ -276,6 +467,35 @@ onUnmounted(() => {
   pointer-events: none;
   user-select: none;
   animation: bounce 1s ease-in-out infinite;
+}
+
+.bookmark-label {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  width: max-content;
+  max-width: min(260px, calc(100vw - 48px));
+  margin-bottom: 8px;
+  padding: 5px 9px;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  font-size: 12px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  transform: translateY(4px);
+}
+
+.reading-progress:hover .bookmark-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes bounce {
