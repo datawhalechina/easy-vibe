@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import { useData, useRoute, withBase } from 'vitepress'
 import TextType from './components/TextType.vue'
 import GitHubStars from './components/GitHubStars.vue'
+import PageSlidesButton from './components/PageSlidesButton.vue'
 import { onMounted, onBeforeUnmount, ref, watch, computed } from 'vue'
 import ReadingProgress from './components/ReadingProgress.vue'
 import { Setting } from '@element-plus/icons-vue'
@@ -426,6 +427,9 @@ watch(sidebarCollapsed, (collapsed) => {
     </template>
     <template #nav-bar-content-after>
       <GitHubStars />
+      <ClientOnly>
+        <PageSlidesButton />
+      </ClientOnly>
       <ClientOnly>
         <el-popover
           placement="bottom-end"
