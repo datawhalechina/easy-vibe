@@ -4,12 +4,12 @@
 
 ## 部署目标
 
-| 目标                 | URL                                           | 触发方式                  |
-| -------------------- | --------------------------------------------- | ------------------------- |
-| 上游 GitHub Pages    | `https://datawhalechina.github.io/easy-vibe/` | 上游 `main` push 自动部署 |
-| 当前 fork Pages      | `https://longbiaochen.github.io/easy-vibe/`   | fork `main` push 自动部署 |
-| Vercel               | 由 Vercel 项目域名决定                        | Vercel 自动构建           |
-| 本地预览             | `http://localhost:4173/easy-vibe/`            | `npm run preview`         |
+| 目标              | URL                                           | 触发方式                  |
+| ----------------- | --------------------------------------------- | ------------------------- |
+| 上游 GitHub Pages | `https://datawhalechina.github.io/easy-vibe/` | 上游 `main` push 自动部署 |
+| fork Pages        | `https://<owner>.github.io/<repo-name>/`      | fork `main` push 自动部署 |
+| Vercel            | 由 Vercel 项目域名决定                        | Vercel 自动构建           |
+| 本地预览          | `http://localhost:4173/easy-vibe/`            | `npm run preview`         |
 
 fork 默认不会部署 Pages。需要在 fork 仓库中启用 GitHub Pages 的 GitHub Actions 发布源，并设置仓库变量 `ENABLE_PAGES_DEPLOY=true`。
 
@@ -48,13 +48,13 @@ SITE_URL="https://<owner>.github.io/<repo-name>"
 5. 等待 `Deploy VitePress site to Pages` workflow 完成。如果 push 后 60 秒内没有出现 run，用下面的 fallback 触发同一个 workflow：
 
    ```bash
-   gh workflow run deploy.yml --repo longbiaochen/easy-vibe --ref main
+   gh workflow run deploy.yml --repo <owner>/<repo-name> --ref main
    ```
 
 6. 在官方 Codex in-app browser 打开 fork Pages：
 
    ```text
-   https://longbiaochen.github.io/easy-vibe/
+   https://<owner>.github.io/<repo-name>/
    ```
 
 7. 验证首页、`/welcome.html`、相关变更页面、导航、资源加载和 canonical/sitemap/robots URL。
@@ -66,9 +66,9 @@ SITE_URL="https://<owner>.github.io/<repo-name>"
 
 ```bash
 git remote add upstream git@github.com:datawhalechina/easy-vibe.git
-gh variable set ENABLE_PAGES_DEPLOY --repo longbiaochen/easy-vibe --body true
-gh api repos/longbiaochen/easy-vibe/pages -X POST -f build_type=workflow
-gh repo edit longbiaochen/easy-vibe --homepage https://longbiaochen.github.io/easy-vibe/
+gh variable set ENABLE_PAGES_DEPLOY --repo <owner>/<repo-name> --body true
+gh api repos/<owner>/<repo-name>/pages -X POST -f build_type=workflow
+gh repo edit <owner>/<repo-name> --homepage https://<owner>.github.io/<repo-name>/
 ```
 
 如果 `upstream` 已存在，用下面命令确认它指向上游：
@@ -95,14 +95,14 @@ git remote set-url upstream git@github.com:datawhalechina/easy-vibe.git
 检查 fork 仓库变量：
 
 ```bash
-gh variable list --repo longbiaochen/easy-vibe
+gh variable list --repo <owner>/<repo-name>
 ```
 
 必须有 `ENABLE_PAGES_DEPLOY=true`。如果 Pages 仍未启用，确认 GitHub Pages source 是 GitHub Actions。
 
 ### 页面资源 404
 
-通常是 `BASE` 不正确。GitHub Pages 项目站点应使用 `/<repo-name>/`，当前 fork 是 `/easy-vibe/`。
+通常是 `BASE` 不正确。GitHub Pages 项目站点应使用 `/<repo-name>/`。
 
 ### sitemap 或 robots 指向上游
 

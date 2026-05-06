@@ -47,5 +47,5 @@ There is no dedicated test framework in this repo. Use `npm run build` as the pr
 
 - When the user says `ship it`, preserve unrelated dirty files and only stage the intended changes.
 - Run `npm run verify` before release. For UI/docs rendering changes, also run a local preview and verify the relevant flow in the official Codex in-app browser.
-- Release path is direct to the fork `main`: commit, push `origin main`, wait for `Deploy VitePress site to Pages`, then verify the live fork Pages URL `https://longbiaochen.github.io/easy-vibe/`. If no Pages run appears within 60 seconds after push, trigger the same workflow manually with `gh workflow run deploy.yml --repo longbiaochen/easy-vibe --ref main`.
+- Release path is direct to the fork `main`: commit, push `origin main`, wait for `Deploy VitePress site to Pages`, then verify the fork Pages URL `https://<owner>.github.io/<repo-name>/`. If no Pages run appears within 60 seconds after push, trigger the same workflow manually with `gh workflow run deploy.yml --repo <owner>/<repo-name> --ref main`.
 - After the fork Pages preview is verified, summarize the diff against `upstream/main` and ask explicitly before creating a PR to `datawhalechina/easy-vibe`. Do not open the upstream PR without that approval.
