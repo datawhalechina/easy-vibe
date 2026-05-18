@@ -2386,6 +2386,10 @@ Sitemap: ${siteUrl}/sitemap.xml
                 {
                   text: 'At 48, a Truck Driver Pulled Several All-Nighters and Used AI to Build an Overseas Tool Site',
                   link: '/en/vibe-stories/story-4'
+                },
+                {
+                  text: 'BrokeAI — "Find and Compare Free AI Tools, All in One Place"',
+                  link: '/en/vibe-stories/story-brokeai'
                 }
               ]
             }
@@ -2545,10 +2549,27 @@ Sitemap: ${siteUrl}/sitemap.xml
             text: '부록',
             link: '/ko-kr/appendix/',
             activeMatch: '/ko-kr/appendix/'
+          },
+          {
+            text: 'Vibe 스토리',
+            link: '/ko-kr/vibe-stories/story-brokeai',
+            activeMatch: '/ko-kr/vibe-stories/'
           }
         ],
         sidebar: {
-          '/ko-kr/stage-1/': productManagerSidebarKo
+          '/ko-kr/stage-1/': productManagerSidebarKo,
+          '/ko-kr/vibe-stories/': [
+            {
+              text: 'Vibe 스토리',
+              collapsed: false,
+              items: [
+                {
+                  text: '거지AI — "무료 AI 서비스, 한 곳에서 찾고 비교하자"',
+                  link: '/ko-kr/vibe-stories/story-brokeai'
+                }
+              ]
+            }
+          ]
         }
       }
     },
