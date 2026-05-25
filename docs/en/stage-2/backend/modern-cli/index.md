@@ -611,6 +611,122 @@ Prometheus (claude-opus-4-7 / kimi-k2.6 / glm-5.1) is your strategic planner. Th
 
 After this, you can use OpenCode with the Oh-My-OpenAgent plugin to complete coding tasks.
 
+#### Advanced Model and API Configuration
+
+The `/connect` command offers a quick way to bring in a model through the chat UI. For finer control — assigning different models to different task types or keeping multiple API providers as backups — you can edit OpenCode's configuration file `opencode.json` directly.
+
+This file lives at `~/.config/opencode/opencode.json` (Windows: `C:\Users\YourUserName\.config\opencode\opencode.json`) and is generated automatically the first time you launch OpenCode.
+
+Here is a sample configuration for connecting Alibaba Cloud's Qwen model via the Bailian platform:
+
+```json
+{
+  "model": "bailian-coding-plan/qwen3.5-plus",
+  "small_model": "bailian-coding-plan/qwen3.5-plus",
+  "provider": {
+    "bailian-coding-plan": {
+      "options": {
+        "apiKey": "sk-your-api-key"
+      }
+    }
+  }
+}
+```
+
+> 💡 The `model` field uses a `provider/model-name` format. Replace the `apiKey` value with your own key after registering on the corresponding platform.
+
+To route different task types to different models:
+
+```json
+{
+  "model": "bailian-coding-plan/qwen3.5-plus",
+  "categories": {
+    "visual-engineering": {
+      "model": "bailian-coding-plan/qwen3.5-plus",
+      "description": "Frontend, UI/UX, design, styling"
+    },
+    "ultrabrain": {
+      "model": "bailian-coding-plan/qwen3-coder-next",
+      "description": "Complex logic, algorithms, architecture"
+    },
+    "quick": {
+      "model": "opencode-go/minimax-m2.5",
+      "description": "Simple edits, typo fixes"
+    }
+  }
+}
+```
+
+Now OpenCode automatically picks the best model for each task — fast models for simple changes to save cost, stronger models for complex architecture decisions.
+
+#### Extending OpenCode with MCP Servers
+
+MCP (Model Context Protocol) is an open standard that lets AI coding tools call external services — browsers, web search, image analysis, and more. OpenCode supports MCP natively, with configuration similar to Claude Code.
+
+Add server entries to the `mcp` field in `opencode.json`:
+
+```json
+{
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+    },
+    "zai-mcp-server": {
+      "type": "local",
+      "command": ["npx", "-y", "@z_ai/mcp-server"]
+    }
+  }
+}
+```
+
+After restarting OpenCode, the AI can call these tools automatically during conversation — opening a browser to take screenshots, analyzing UI mockups, searching the web, and more.
+
+> 🎯 **Practical example**: With the chrome-devtools MCP configured, you can simply say "Open this page and check why the button is misaligned" — the AI will open the browser, take a screenshot, analyze the layout, and suggest a fix.
+
+#### Tips and Troubleshooting
+
+**Guiding AI behavior with AGENTS.md**
+
+Create an `AGENTS.md` file in your project root to tell OpenCode about your project's conventions and preferences. The AI reads this file automatically on each launch:
+
+```markdown
+## Project Conventions
+- Use TypeScript strict mode
+- All API responses must conform to JSON Schema
+- Use custom Error subclasses for error handling
+
+## Development Workflow
+1. Understand existing code before making changes
+2. Commit in small, logical units
+3. Run npm test to verify after each change
+
+## Prohibited
+- Do not use the `any` type
+- Do not delete test files
+```
+
+**Exploring codebases in parallel**
+
+When you're unfamiliar with a project, ask OpenCode to search multiple aspects at once:
+
+> Please do the following in parallel:
+> 1. Find all places handling HTTP requests
+> 2. Locate database-related code
+> 3. Map out the project directory structure and module responsibilities
+
+OpenCode executes these explorations simultaneously, giving you a complete codebase map in one go.
+
+**Common Issues**
+
+| Problem | Solution |
+|---------|----------|
+| `opencode` command not found | npm global directory not in PATH. Run: `[Environment]::SetEnvironmentVariable("Path", "$env:Path;$env:USERPROFILE\AppData\Roaming\npm", "User")` and restart terminal |
+| AI response is slow | Use the `quick` category for simple tasks (routes to fast models); start a fresh session if conversation history is too long |
+| API call fails | Check that your API Key is correct, the model name uses the right format (provider/model-name), and your account has sufficient balance |
+| Skills not working | Verify that the SKILL.md file has valid YAML frontmatter and that the description accurately describes the trigger condition |
+| Context too long | Open a new session, or define key conventions in AGENTS.md so new sessions inherit them |
+
 ## More Use Cases for CLI AI Coding Tools
 
 ### Use AI to Write Requirement Documents: Learn to "Concretize Requirements"
