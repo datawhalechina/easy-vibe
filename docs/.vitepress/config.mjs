@@ -523,6 +523,121 @@ const productManagerSidebarKo = [
   }
 ]
 
+const stage2SidebarKo = [
+  {
+    text: '프론트엔드 개발',
+    collapsed: false,
+    items: [
+      {
+        text: 'NanoBanana 에셋 제작',
+        link: '/ko-kr/stage-2/frontend/lovart-assets/'
+      },
+      {
+        text: 'Figma와 MasterGo 입문',
+        link: '/ko-kr/stage-2/frontend/figma-mastergo/'
+      },
+      {
+        text: 'UI 디자인 가이드라인과 멀티 제품 UI',
+        link: '/ko-kr/stage-2/frontend/multi-product-ui/'
+      },
+      {
+        text: 'Agent Skills로 인터페이스 꾸미기',
+        link: '/ko-kr/stage-2/frontend/llm-skills-beautiful/'
+      },
+      {
+        text: '디자인 프로토타입에서 프로젝트 코드로',
+        link: '/ko-kr/stage-2/frontend/design-to-code/'
+      },
+      {
+        text: '현대적 컴포넌트 라이브러리와 인터페이스 업그레이드',
+        link: '/ko-kr/stage-2/frontend/modern-component-library/'
+      }
+    ]
+  },
+  {
+    text: '백엔드 개발',
+    collapsed: false,
+    items: [
+      {
+        text: '데이터베이스와 Supabase 입문',
+        link: '/ko-kr/stage-2/backend/database-supabase/'
+      },
+      {
+        text: 'LLM 지원 인터페이스 개발',
+        link: '/ko-kr/stage-2/backend/ai-interface-code/'
+      },
+      {
+        text: 'Git과 GitHub 입문 가이드',
+        link: '/ko-kr/stage-2/backend/git-workflow/'
+      },
+      {
+        text: '웹 애플리케이션 배포 완벽 가이드',
+        link: '/ko-kr/stage-2/backend/zeabur-deployment/'
+      },
+      {
+        text: 'CLI 코딩 Agent 프로그래밍 도구',
+        link: '/ko-kr/stage-2/backend/modern-cli/'
+      },
+      {
+        text: 'Stripe 결제 통합',
+        link: '/ko-kr/stage-2/backend/stripe-payment/'
+      }
+    ]
+  },
+  {
+    text: 'AI 역량 부록',
+    collapsed: false,
+    items: [
+      {
+        text: 'Dify 입문과 지식 베이스 통합',
+        link: '/ko-kr/stage-2/ai-capabilities/dify-knowledge-base/'
+      }
+    ]
+  },
+  {
+    text: '종합 프로젝트',
+    collapsed: false,
+    items: [
+      {
+        text: '함께 만드는 호그와트 초상화',
+        link: '/ko-kr/stage-2/frontend/hogwarts-portraits/'
+      },
+      {
+        text: 'AI 마케팅 카피 SaaS',
+        link: '/ko-kr/stage-2/assignments/copywriting-platform-supabase/'
+      },
+      {
+        text: '온라인 시험 및 관리 시스템',
+        link: '/ko-kr/stage-2/assignments/exam-management-express/'
+      },
+      {
+        text: '현대적 AI 이미지 생성 SaaS',
+        link: '/ko-kr/stage-2/assignments/modern-landing-page/'
+      },
+      {
+        text: 'Dify 유사 에이전트 플랫폼',
+        link: '/ko-kr/stage-2/assignments/custom-dify-agent-platform/'
+      },
+      {
+        text: '스마트 여행 계획 Agent 플랫폼',
+        link: '/ko-kr/stage-2/assignments/travel-planning-agent-platform/'
+      },
+      {
+        text: 'Spring Boot 영화 추천 시스템',
+        link: '/ko-kr/stage-2/assignments/movie-recommendation-springboot/'
+      },
+      {
+        text: '신선식품 이커머스 마이크로서비스 시스템',
+        link: '/ko-kr/stage-2/assignments/simple-grocery-microservices/'
+      },
+      {
+        text: 'Go 교통 데이터 분석 플랫폼',
+        link: '/ko-kr/stage-2/assignments/traffic-data-visualization-go/'
+      }
+    ]
+  }
+]
+
 const stage2SidebarEn = [
   {
     text: 'Frontend Development',
@@ -2548,7 +2663,8 @@ Sitemap: ${siteUrl}/sitemap.xml
           }
         ],
         sidebar: {
-          '/ko-kr/stage-1/': productManagerSidebarKo
+          '/ko-kr/stage-1/': productManagerSidebarKo,
+          '/ko-kr/stage-2/': stage2SidebarKo
         }
       }
     },
