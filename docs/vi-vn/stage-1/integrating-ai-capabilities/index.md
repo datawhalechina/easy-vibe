@@ -173,15 +173,16 @@ Ngoài DeepSeek, bạn cũng có thể thử các mô hình ngôn ngữ lớn kh
 
 ::: details Tìm hiểu thêm: MiniMax là gì?
 
-**MiniMax** là một công ty trí tuệ nhân tạo Trung Quốc, tập trung vào nghiên cứu và phát triển công nghệ trí tuệ nhân tạo tổng quát. MiniMax đã ra mắt dòng mô hình ngôn ngữ lớn tự phát triển MiniMax-M2.7, thể hiện tốt trên nhiều benchmark và có tỷ lệ hiệu năng/chi phí rất cao.
+**MiniMax** là một công ty trí tuệ nhân tạo Trung Quốc, tập trung vào nghiên cứu và phát triển công nghệ trí tuệ nhân tạo tổng quát. MiniMax đã lần lượt ra mắt các dòng mô hình ngôn ngữ lớn MiniMax-M3 và MiniMax-M2.7, thể hiện tốt trên nhiều benchmark và có tỷ lệ hiệu năng/chi phí rất cao.
 
-**Đặc điểm chính của dòng MiniMax-M2.7:**
+**Đặc điểm chính của dòng MiniMax:**
 
-- **Ngữ cảnh siêu dài**: hỗ trợ cửa sổ ngữ cảnh 204,800 tokens, phù hợp xử lý tài liệu dài và hội thoại nhiều lượt
+- **Ngữ cảnh siêu dài**: M3 hỗ trợ cửa sổ ngữ cảnh lên tới 512K tokens (M2.7 là 204,800 tokens), phù hợp xử lý tài liệu dài và hội thoại nhiều lượt
 - **Hiệu năng/chi phí cao**: giá rất cạnh tranh
 - **Giao diện tương thích OpenAI**: có thể gọi trực tiếp bằng OpenAI SDK, không cần học thêm định dạng API mới
-- **Hai mô hình khả dụng**:
-  - `MiniMax-M2.7`: mô hình flagship, phù hợp nhiệm vụ phức tạp
+- **Các mô hình khả dụng**:
+  - `MiniMax-M3`: mô hình flagship mới nhất, ngữ cảnh 512K, đầu ra tối đa 128K và hỗ trợ đầu vào hình ảnh
+  - `MiniMax-M2.7`: mô hình flagship thế hệ trước, vẫn khả dụng
   - `MiniMax-M2.7-highspeed`: phiên bản tốc độ cao, giữ cùng hiệu năng nhưng nhanh hơn
 :::
 
@@ -198,7 +199,7 @@ curl https://api.minimax.io/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
   -d '{
-        "model": "MiniMax-M2.7",
+        "model": "MiniMax-M3",
         "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -211,7 +212,7 @@ curl https://api.minimax.io/v1/chat/completions \
 Định dạng API của MiniMax gần như giống hệt DeepSeek, đều là định dạng tương thích OpenAI. Vì vậy nếu bạn đã kết nối DeepSeek thành công, chuyển sang MiniMax chỉ cần sửa ba chỗ:
 1. **URL cơ sở**: đổi thành `https://api.minimax.io/v1`
 2. **API Key**: dùng API Key của MiniMax
-3. **Tên mô hình**: đổi thành `MiniMax-M2.7` hoặc `MiniMax-M2.7-highspeed`
+3. **Tên mô hình**: đổi thành `MiniMax-M3` (flagship mới), `MiniMax-M2.7` hoặc `MiniMax-M2.7-highspeed`
 
 Thông tin thêm xem [tài liệu giao diện tương thích OpenAI của MiniMax](https://platform.minimax.io/docs/api-reference/text-openai-api).
 :::

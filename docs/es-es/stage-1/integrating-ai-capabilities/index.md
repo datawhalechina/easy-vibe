@@ -173,15 +173,16 @@ Ademas de DeepSeek, tambien puedes probar otros modelos de lenguaje grandes. Com
 
 ::: details Saber mas: que es MiniMax
 
-**MiniMax** es una empresa china de inteligencia artificial dedicada a la investigacion y desarrollo de tecnologias de inteligencia artificial general. MiniMax lanzo su propia serie de modelos de lenguaje grandes MiniMax-M2.7, que ha mostrado buen rendimiento en varios benchmarks y ofrece una relacion coste-rendimiento muy alta.
+**MiniMax** es una empresa china de inteligencia artificial dedicada a la investigacion y desarrollo de tecnologias de inteligencia artificial general. MiniMax ha lanzado de manera sucesiva las series de modelos de lenguaje grandes MiniMax-M3 y MiniMax-M2.7, que han mostrado buen rendimiento en varios benchmarks y ofrecen una relacion coste-rendimiento muy alta.
 
-**Principales caracteristicas de la serie MiniMax-M2.7:**
+**Principales caracteristicas de la serie MiniMax:**
 
-- **Contexto ultralargo**: soporta una ventana de contexto de 204,800 tokens, adecuada para documentos largos y conversaciones de multiples turnos.
+- **Contexto ultralargo**: M3 admite una ventana de contexto de hasta 512K tokens (M2.7 admite 204,800 tokens), adecuada para documentos largos y conversaciones de multiples turnos.
 - **Alta relacion coste-rendimiento**: precio muy competitivo.
 - **Interfaz compatible con OpenAI**: se puede llamar directamente con el OpenAI SDK sin aprender un nuevo formato de API.
-- **Dos modelos disponibles**:
-  - `MiniMax-M2.7`: modelo insignia, adecuado para tareas complejas.
+- **Modelos disponibles**:
+  - `MiniMax-M3`: nuevo modelo insignia, contexto de 512K, salida maxima de 128K y soporte para entrada de imagenes.
+  - `MiniMax-M2.7`: modelo insignia anterior, sigue disponible.
   - `MiniMax-M2.7-highspeed`: version de alta velocidad, con rendimiento similar pero mas rapida.
 :::
 
@@ -198,7 +199,7 @@ curl https://api.minimax.io/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
   -d '{
-        "model": "MiniMax-M2.7",
+        "model": "MiniMax-M3",
         "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -211,7 +212,7 @@ curl https://api.minimax.io/v1/chat/completions \
 El formato de API de MiniMax es casi identico al de DeepSeek, ya que ambos son compatibles con OpenAI. Si ya integraste DeepSeek correctamente, cambiar a MiniMax solo requiere modificar tres lugares:
 1. **URL base**: cambiarla a `https://api.minimax.io/v1`
 2. **API Key**: usar la API Key de MiniMax
-3. **Nombre del modelo**: cambiarlo a `MiniMax-M2.7` o `MiniMax-M2.7-highspeed`
+3. **Nombre del modelo**: cambiarlo a `MiniMax-M3` (nueva insignia), `MiniMax-M2.7` o `MiniMax-M2.7-highspeed`
 
 Para mas informacion, consulta la [documentacion de la interfaz compatible con OpenAI de MiniMax](https://platform.minimax.io/docs/api-reference/text-openai-api).
 :::
