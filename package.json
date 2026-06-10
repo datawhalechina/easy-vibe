@@ -1,7 +1,7 @@
 {
   "name": "easy-vibe",
   "version": "1.0.0",
-  "description": "Easy-Vibe 中文实战课 - 零基础学会用 AI 编程",
+  "description": "Easy-Vibe \u4e2d\u6587\u5b9e\u6218\u8bfe - \u96f6\u57fa\u7840\u5b66\u4f1a\u7528 AI \u7f16\u7a0b",
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
@@ -49,5 +49,10 @@
     "viewerjs": "^1.11.7",
     "vitepress": "^2.0.0-alpha.16",
     "vue": "^3.5.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okwn/easy-vibe"
+  },
+  "homepage": "https://github.com/okwn/easy-vibe"
 }
