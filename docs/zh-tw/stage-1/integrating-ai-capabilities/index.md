@@ -173,15 +173,16 @@ curl  \
 
 ::: details 瞭解更多：MiniMax 是什麼？
 
-**MiniMax** 是一家中國人工智慧公司，致力於通用人工智慧技術的研發。MiniMax 推出了自研的 MiniMax-M2.7 大語言模型系列，在多項基準測試中表現優異，具有極高的價效比。
+**MiniMax** 是一家中國人工智慧公司，致力於通用人工智慧技術的研發。MiniMax 已陸續推出 MiniMax-M3 與 MiniMax-M2.7 大語言模型系列，在多項基準測試中表現優異，具有極高的價效比。
 
-**MiniMax-M2.7 系列的主要特點：**
+**MiniMax 系列的主要特點：**
 
-- **超長上下文**：支援 204,800 tokens 的上下文視窗，適合處理長文件、多輪對話
+- **超長上下文**：M3 支援高達 512K tokens 的上下文視窗（M2.7 為 204,800 tokens），適合處理長文件、多輪對話
 - **高價效比**：價格極具競爭力
 - **OpenAI 相容介面**：可以直接使用 OpenAI SDK 呼叫，無需額外學習新的 API 格式
-- **兩個可用模型**：
-  - `MiniMax-M2.7`：旗艦模型，適合複雜任務
+- **可用模型**：
+  - `MiniMax-M3`：最新旗艦模型，512K 上下文、128K 最大輸出，並支援影象輸入
+  - `MiniMax-M2.7`：上一代旗艦模型，仍然可用
   - `MiniMax-M2.7-highspeed`：高速版本，保持同樣的效能但更快
 :::
 
@@ -198,7 +199,7 @@ curl https://api.minimax.io/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
   -d '{
-        "model": "MiniMax-M2.7",
+        "model": "MiniMax-M3",
         "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -211,7 +212,7 @@ curl https://api.minimax.io/v1/chat/completions \
 MiniMax 的 API 格式與 DeepSeek 幾乎完全一致（都是 OpenAI 相容格式），所以如果你已經成功接入了 DeepSeek，切換到 MiniMax 只需要修改三個地方：
 1. **基礎 URL**：改為 `https://api.minimax.io/v1`
 2. **API Key**：使用 MiniMax 的 API Key
-3. **模型名稱**：改為 `MiniMax-M2.7` 或 `MiniMax-M2.7-highspeed`
+3. **模型名稱**：改為 `MiniMax-M3`（新旗艦）、`MiniMax-M2.7` 或 `MiniMax-M2.7-highspeed`
 
 更多資訊請參考 [MiniMax OpenAI 相容介面文件](https://platform.minimax.io/docs/api-reference/text-openai-api)。
 :::

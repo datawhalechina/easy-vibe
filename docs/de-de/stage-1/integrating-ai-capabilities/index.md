@@ -174,15 +174,16 @@ Neben DeepSeek können Sie auch andere große Sprachmodelle ausprobieren. Da die
 
 ::: details Mehr erfahren: Was ist MiniMax?
 
-**MiniMax** ist ein chinesisches AI-Unternehmen, das an der Entwicklung allgemeiner KI-Technologie forscht. MiniMax hat die selbstentwickelte MiniMax-M2.7 LLM-Serie auf den Markt gebracht, die in mehreren Benchmarks hervorragende Ergebnisse erzielt und ein exzellentes Preis-Leistungs-Verhältnis bietet.
+**MiniMax** ist ein chinesisches AI-Unternehmen, das an der Entwicklung allgemeiner KI-Technologie forscht. MiniMax hat nacheinander die LLM-Serien MiniMax-M3 und MiniMax-M2.7 veröffentlicht, die in mehreren Benchmarks hervorragende Ergebnisse erzielen und ein exzellentes Preis-Leistungs-Verhältnis bieten.
 
-**Hauptmerkmale der MiniMax-M2.7-Serie:**
+**Hauptmerkmale der MiniMax-Serie:**
 
-- **Ultra-langer Kontext**: Unterstützt ein Kontextfenster von 204.800 Tokens, ideal für lange Dokumente und Multi-Runden-Dialoge
+- **Ultra-langer Kontext**: M3 unterstützt ein Kontextfenster von bis zu 512K Tokens (M2.7 unterstützt 204.800 Tokens), ideal für lange Dokumente und Multi-Runden-Dialoge
 - **Hervorragendes Preis-Leistungs-Verhältnis**: Sehr wettbewerbsfähige Preise
 - **OpenAI-kompatible Schnittstelle**: Direkt mit OpenAI SDK aufrufbar, ohne neues API-Format lernen zu müssen
-- **Zwei verfügbare Modelle**:
-  - `MiniMax-M2.7`: Flaggschiff-Modell für komplexe Aufgaben
+- **Verfügbare Modelle**:
+  - `MiniMax-M3`: Neuestes Flaggschiff-Modell mit 512K Kontext, bis zu 128K Ausgabe und Bild-Input
+  - `MiniMax-M2.7`: Vorheriges Flaggschiff-Modell, weiterhin verfügbar
   - `MiniMax-M2.7-highspeed`: Hochgeschwindigkeitsversion mit gleicher Leistung aber schneller
 :::
 
@@ -199,7 +200,7 @@ curl https://api.minimax.io/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${MINIMAX_API_KEY}" \
   -d '{
-        "model": "MiniMax-M2.7",
+        "model": "MiniMax-M3",
         "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -212,7 +213,7 @@ curl https://api.minimax.io/v1/chat/completions \
 MiniMax API-Format ist nahezu identisch mit DeepSeek (beide verwenden das OpenAI-kompatible Format). Wenn Sie DeepSeek bereits erfolgreich integriert haben, müssen Sie nur drei Dinge ändern:
 1. **Basis-URL**: Ändern zu `https://api.minimax.io/v1`
 2. **API Key**: MiniMax API Key verwenden
-3. **Modellname**: Ändern zu `MiniMax-M2.7` oder `MiniMax-M2.7-highspeed`
+3. **Modellname**: Ändern zu `MiniMax-M3` (neues Flaggschiff), `MiniMax-M2.7` oder `MiniMax-M2.7-highspeed`
 
 Weitere Informationen finden Sie in der [MiniMax OpenAI-kompatiblen Schnittstellendokumentation](https://platform.minimax.io/docs/api-reference/text-openai-api).
 :::
