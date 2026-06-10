@@ -102,13 +102,10 @@ const handleLocaleMenuClick = (event) => {
   if (!parsed) return
 
   const cleanPath = normalizeLocaleRelativePath(parsed.relativePath)
-  if (!cleanPath || hasBuiltLocalePath(parsed.locale, cleanPath)) return
-
   const safePath = resolveSafeLocalePath(parsed.locale, cleanPath)
-  const safeHref = withBase(safePath)
 
   event.preventDefault()
-  window.location.href = safeHref
+  window.location.assign(withBase(safePath))
 }
 
 const homeTaglineTyping = {
