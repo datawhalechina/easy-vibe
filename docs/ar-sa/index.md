@@ -1,6 +1,5 @@
 ---
 layout: home
-navbar: false
 hero:
   name: 'Easy-Vibe'
   text: 'دليل برمجة الذكاء الاصطناعي من الصفر'

@@ -1,6 +1,5 @@
 ---
 layout: home
-navbar: false
 hero:
   name: 'Easy-Vibe'
   text: 'Guía de Programación con IA desde Cero'

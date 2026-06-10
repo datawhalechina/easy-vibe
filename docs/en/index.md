@@ -1,6 +1,5 @@
 ---
 layout: home
-navbar: false
 hero:
   name: 'Easy-Vibe'
   text: 'AI Coding Guide from Scratch'

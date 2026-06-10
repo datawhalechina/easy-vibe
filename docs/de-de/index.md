@@ -1,6 +1,5 @@
 ---
 layout: home
-navbar: false
 hero:
   name: 'Easy-Vibe'
   text: 'KI-Coding-Guide von Grund auf'

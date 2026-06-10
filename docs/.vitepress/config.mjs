@@ -1473,13 +1473,25 @@ const productManagerSidebar = [
   }
 ]
 
+const LOCALIZED_PATH_PREFIX_RE =
+  /^\/(?:zh-cn|en|zh-tw|ja-jp|ko-kr|es-es|fr-fr|de-de|ar-sa|vi-vn)\//
+
+const localizeSidebarItemLinks = (items, locale) =>
+  items.map((item) => ({
+    ...item,
+    link: item.link
+      ? item.link.replace(LOCALIZED_PATH_PREFIX_RE, `/${locale}/`)
+      : item.link,
+    items: item.items ? localizeSidebarItemLinks(item.items, locale) : item.items
+  }))
+
 const localizeSidebarLinks = (sidebar, locale) =>
   sidebar.map((group) => ({
     ...group,
-    items: group.items.map((item) => ({
-      ...item,
-      link: item.link.replace(/^\/(?:zh-cn|en|ko-kr)\//, `/${locale}/`)
-    }))
+    link: group.link
+      ? group.link.replace(LOCALIZED_PATH_PREFIX_RE, `/${locale}/`)
+      : group.link,
+    items: group.items ? localizeSidebarItemLinks(group.items, locale) : group.items
   }))
 
 const stage1SidebarLabels = {
@@ -3477,7 +3489,7 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/en/stage-1/': productManagerSidebarEn,
           '/en/stage-2/': stage2SidebarEn,
           '/en/stage-3/': stage3SidebarEn,
-          '/en/appendix/': appendixSidebarEn
+          '/en/appendix/': localizeSidebarLinks(appendixSidebarEn, 'en')
         }
       }
     },
@@ -3534,7 +3546,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/ja-jp/stage-1/': getStage1Sidebar('ja-jp'),
           '/ja-jp/stage-2/': getStage2Sidebar('ja-jp'),
-          '/ja-jp/stage-3/': getStage3Sidebar('ja-jp')
+          '/ja-jp/stage-3/': getStage3Sidebar('ja-jp'),
+          '/ja-jp/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ja-jp')
         }
       }
     },
@@ -3589,7 +3602,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/zh-tw/stage-1/': getStage1Sidebar('zh-tw'),
           '/zh-tw/stage-2/': getStage2Sidebar('zh-tw'),
-          '/zh-tw/stage-3/': getStage3Sidebar('zh-tw')
+          '/zh-tw/stage-3/': getStage3Sidebar('zh-tw'),
+          '/zh-tw/appendix/': localizeSidebarLinks(appendixSidebarEn, 'zh-tw')
         }
       }
     },
@@ -3644,7 +3658,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/ko-kr/stage-1/': productManagerSidebarKo,
           '/ko-kr/stage-2/': getStage2Sidebar('ko-kr'),
-          '/ko-kr/stage-3/': getStage3Sidebar('ko-kr')
+          '/ko-kr/stage-3/': getStage3Sidebar('ko-kr'),
+          '/ko-kr/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ko-kr')
         }
       }
     },
@@ -3699,7 +3714,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/es-es/stage-1/': getStage1Sidebar('es-es'),
           '/es-es/stage-2/': getStage2Sidebar('es-es'),
-          '/es-es/stage-3/': getStage3Sidebar('es-es')
+          '/es-es/stage-3/': getStage3Sidebar('es-es'),
+          '/es-es/appendix/': localizeSidebarLinks(appendixSidebarEn, 'es-es')
         }
       }
     },
@@ -3754,7 +3770,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/fr-fr/stage-1/': getStage1Sidebar('fr-fr'),
           '/fr-fr/stage-2/': getStage2Sidebar('fr-fr'),
-          '/fr-fr/stage-3/': getStage3Sidebar('fr-fr')
+          '/fr-fr/stage-3/': getStage3Sidebar('fr-fr'),
+          '/fr-fr/appendix/': localizeSidebarLinks(appendixSidebarEn, 'fr-fr')
         }
       }
     },
@@ -3809,7 +3826,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/de-de/stage-1/': getStage1Sidebar('de-de'),
           '/de-de/stage-2/': getStage2Sidebar('de-de'),
-          '/de-de/stage-3/': getStage3Sidebar('de-de')
+          '/de-de/stage-3/': getStage3Sidebar('de-de'),
+          '/de-de/appendix/': localizeSidebarLinks(appendixSidebarEn, 'de-de')
         }
       }
     },
@@ -3864,7 +3882,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/ar-sa/stage-1/': getStage1Sidebar('ar-sa'),
           '/ar-sa/stage-2/': getStage2Sidebar('ar-sa'),
-          '/ar-sa/stage-3/': getStage3Sidebar('ar-sa')
+          '/ar-sa/stage-3/': getStage3Sidebar('ar-sa'),
+          '/ar-sa/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ar-sa')
         }
       }
     },
@@ -3920,7 +3939,8 @@ Sitemap: ${siteUrl}/sitemap.xml
         sidebar: {
           '/vi-vn/stage-1/': getStage1Sidebar('vi-vn'),
           '/vi-vn/stage-2/': getStage2Sidebar('vi-vn'),
-          '/vi-vn/stage-3/': getStage3Sidebar('vi-vn')
+          '/vi-vn/stage-3/': getStage3Sidebar('vi-vn'),
+          '/vi-vn/appendix/': localizeSidebarLinks(appendixSidebarEn, 'vi-vn')
         }
       }
     }

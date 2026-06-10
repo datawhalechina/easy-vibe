@@ -1,6 +1,5 @@
 ---
 layout: home
-navbar: false
 hero:
   name: 'Easy-Vibe'
   text: '從零開始的 AI 編程指南'
