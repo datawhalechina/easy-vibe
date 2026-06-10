@@ -419,7 +419,7 @@ Used for E2E testing.
 
 ## Common MCP servers
 
-> 💡 For the complete MCP server list, please refer to the appendix: [MCP Server Directory](/zh-cn/appendix/mcp-servers/)
+> 💡 For the complete MCP server list, please refer to the appendix: [MCP Server Directory](/zh-cn/appendix/8-artificial-intelligence/ai-protocols)
 
 ### GitHub server
 

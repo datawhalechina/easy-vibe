@@ -419,7 +419,7 @@ Kết nối đến ./data/app.db để truy vấn và sửa đổi dữ liệu.
 
 ## Các máy chủ MCP phổ biến
 
-> 💡 Để xem danh sách máy chủ MCP đầy đủ, vui lòng tham khảo phụ lục: [Thư mục Máy chủ MCP](/zh-cn/appendix/mcp-servers/)
+> 💡 Để xem danh sách máy chủ MCP đầy đủ, vui lòng tham khảo phụ lục: [Thư mục Máy chủ MCP](/vi-vn/appendix/8-artificial-intelligence/ai-protocols)
 
 ### Máy chủ GitHub
 

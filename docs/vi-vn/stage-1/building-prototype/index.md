@@ -291,7 +291,7 @@ Yêu cầu:
 
 ### 2.4 Để AI IDE sinh code
 
-Nếu chưa quen AI IDE như Cursor, Trae hoặc Windsurf, hãy xem trước [IDE cơ bản](/zh-cn/appendix/2-development-tools/ide-basics/): cách tạo dự án, nói chuyện với Agent và đọc quá trình sinh code.
+Nếu chưa quen AI IDE như Cursor, Trae hoặc Windsurf, hãy xem trước [IDE cơ bản](/vi-vn/appendix/2-development-tools/ide-basics): cách tạo dự án, nói chuyện với Agent và đọc quá trình sinh code.
 
 Tạo một thư mục mới rồi mở trong AI IDE:
 

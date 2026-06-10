@@ -25,6 +25,9 @@ const t = inject('t', {
   }
 })
 
+const storyLocale = computed(() => (t.value?._locale === 'en' ? 'en' : 'zh-cn'))
+const storyLink = (id) => `/${storyLocale.value}/vibe-stories/story-${id}`
+
 const tStories = computed(() => [
   {
     id: 1,
@@ -35,7 +38,7 @@ const tStories = computed(() => [
     imageStyle: {
       objectPosition: 'center center'
     },
-    link: '/zh-cn/vibe-stories/story-1'
+    link: storyLink(1)
   },
   {
     id: 2,
@@ -46,7 +49,7 @@ const tStories = computed(() => [
     imageStyle: {
       objectPosition: 'center center'
     },
-    link: '/zh-cn/vibe-stories/story-2'
+    link: storyLink(2)
   },
   {
     id: 3,
@@ -57,7 +60,7 @@ const tStories = computed(() => [
     imageStyle: {
       objectPosition: '34% center'
     },
-    link: '/zh-cn/vibe-stories/story-3'
+    link: storyLink(3)
   },
   {
     id: 4,
@@ -68,7 +71,7 @@ const tStories = computed(() => [
     imageStyle: {
       objectPosition: 'center center'
     },
-    link: '/zh-cn/vibe-stories/story-4'
+    link: storyLink(4)
   }
 ])
 

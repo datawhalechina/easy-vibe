@@ -9,14 +9,106 @@ import ReadingProgress from './components/ReadingProgress.vue'
 import { Setting } from '@element-plus/icons-vue'
 import easyVibePaths from './data/easyVibePaths.json'
 
-const { frontmatter } = useData()
+const { frontmatter, site } = useData()
 const route = useRoute()
+const localeDirs = [
+  'zh-cn',
+  'en',
+  'ja-jp',
+  'zh-tw',
+  'ko-kr',
+  'es-es',
+  'fr-fr',
+  'de-de',
+  'ar-sa',
+  'vi-vn'
+]
 
 const openWelcomeFromWordmark = () => {
   const currentPath = window.location.pathname
   window.location.href = withBase(
     `/welcome/?next=${encodeURIComponent(currentPath)}`
   )
+}
+
+const normalizeLocaleRelativePath = (value = '') =>
+  value
+    .replace(/^\//, '')
+    .replace(/\.html$/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/$/, '')
+
+const hasBuiltLocalePath = (locale, relativePath = '') => {
+  const cleanPath = normalizeLocaleRelativePath(relativePath)
+  if (!cleanPath) return true
+  if (typeof window === 'undefined') return true
+  const hashMap = window.__VP_HASH_MAP__ || {}
+  const mdPath = `${locale}/${cleanPath}.md`.replace(/\//g, '_')
+  const indexMdPath = `${locale}/${cleanPath}/index.md`.replace(/\//g, '_')
+  return Boolean(hashMap[mdPath] || hashMap[indexMdPath])
+}
+
+const resolveSafeLocalePath = (locale, relativePath = '') => {
+  const cleanPath = normalizeLocaleRelativePath(relativePath)
+  if (!cleanPath || hasBuiltLocalePath(locale, cleanPath)) {
+    return `/${locale}/${cleanPath ? `${cleanPath}.html` : ''}`
+  }
+
+  return `/${locale}/`
+}
+
+const parseLocalePath = (rawHref) => {
+  if (!rawHref) return null
+  const url = new URL(rawHref, window.location.origin)
+  const basePath = site.value.base || '/'
+  const normalizedBase = basePath.endsWith('/') ? basePath : `${basePath}/`
+  let pathname = url.pathname
+
+  if (normalizedBase !== '/' && pathname.startsWith(normalizedBase)) {
+    pathname = `/${pathname.slice(normalizedBase.length)}`
+  }
+
+  const locale = localeDirs.find(
+    (item) => pathname === `/${item}/` || pathname.startsWith(`/${item}/`)
+  )
+  if (!locale) return null
+
+  return {
+    locale,
+    relativePath: normalizeLocaleRelativePath(pathname.slice(locale.length + 2))
+  }
+}
+
+const fixLocaleMenuLinks = () => {
+  if (typeof window === 'undefined') return
+  const links = document.querySelectorAll('.VPMenu .VPMenuLink a.VPLink.link[href]')
+  links.forEach((link) => {
+    const parsed = parseLocalePath(link.getAttribute('href'))
+    if (!parsed) return
+
+    const cleanPath = normalizeLocaleRelativePath(parsed.relativePath)
+    if (!cleanPath || hasBuiltLocalePath(parsed.locale, cleanPath)) return
+
+    const safePath = resolveSafeLocalePath(parsed.locale, cleanPath)
+    link.setAttribute('href', withBase(safePath))
+  })
+}
+
+const handleLocaleMenuClick = (event) => {
+  const link = event.target.closest?.('a.VPLink.link[href]')
+  if (!link || !link.closest('.VPMenu .VPMenuLink')) return
+
+  const parsed = parseLocalePath(link.getAttribute('href'))
+  if (!parsed) return
+
+  const cleanPath = normalizeLocaleRelativePath(parsed.relativePath)
+  if (!cleanPath || hasBuiltLocalePath(parsed.locale, cleanPath)) return
+
+  const safePath = resolveSafeLocalePath(parsed.locale, cleanPath)
+  const safeHref = withBase(safePath)
+
+  event.preventDefault()
+  window.location.href = safeHref
 }
 
 const homeTaglineTyping = {
@@ -97,6 +189,7 @@ const sidebarCollapsed = ref(false)
 const sidebarWidth = ref(DEFAULT_SIDEBAR_WIDTH)
 const sidebarResizing = ref(false)
 let sidebarResizeLeft = 0
+let localeMenuObserver = null
 
 const toggleSidebar = () => {
   sidebarCollapsed.value = !sidebarCollapsed.value
@@ -215,12 +308,23 @@ onMounted(() => {
   }
 
   window.addEventListener('resize', handleViewportResize)
+  document.addEventListener('click', handleLocaleMenuClick, true)
+  fixLocaleMenuLinks()
+  localeMenuObserver = new MutationObserver(() => {
+    fixLocaleMenuLinks()
+  })
+  localeMenuObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+  })
 
   initOutlineAutoScroll()
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleViewportResize)
+  document.removeEventListener('click', handleLocaleMenuClick, true)
+  localeMenuObserver?.disconnect()
   stopSidebarResize()
 })
 

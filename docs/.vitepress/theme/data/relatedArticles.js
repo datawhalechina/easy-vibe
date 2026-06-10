@@ -119,7 +119,7 @@ const rawRelatedArticlesMap = {
       icon: '🎯'
     },
     {
-      href: '/zh-cn/stage-2/assignments/fullstack-app/',
+      href: '/zh-cn/stage-2/assignments/copywriting-platform-supabase/',
       title: 'Stage 2 大作业：全栈应用实战',
       description: '把原型能力升级为前后端一体化的可上线应用。',
       icon: '💻'

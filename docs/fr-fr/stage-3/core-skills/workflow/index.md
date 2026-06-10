@@ -14,7 +14,7 @@ Dans cette lecon, nous apprendrons a construire un flux de travail de developpem
 > **Prerequis**
 >
 > Avant d'etudier cette section, il est recommande de connaitre au prealable :
-> - [Bases des IDE IA](/fr-fr/stage-1/ai-ide/) - maitriser l'utilisation de base des IDE IA
+> - [Bases des IDE IA](/fr-fr/stage-1/introduction-to-ai-ide/) - maitriser l'utilisation de base des IDE IA
 > - [Flux de travail Git et GitHub](/fr-fr/stage-2/backend/git-workflow/) - comprendre la gestion des versions du code
 > - [Utiliser les grands modeles pour ecrire du code API](/fr-fr/stage-2/backend/ai-interface-code/) - comprendre le concept de base du developpement assiste par l'IA
 

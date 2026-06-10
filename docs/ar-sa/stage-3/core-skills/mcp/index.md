@@ -419,7 +419,7 @@ Node.js: v20.0.0 ✓
 
 ## خوادم MCP الشائعة
 
-> 💡 لقائمة خوادم MCP الكاملة، يرجى الرجوع للملحق: [دليل خوادم MCP](/zh-cn/appendix/mcp-servers/)
+> 💡 لقائمة خوادم MCP الكاملة، يرجى الرجوع للملحق: [دليل خوادم MCP](/ar-sa/appendix/8-artificial-intelligence/ai-protocols)
 
 ### خادم GitHub
 

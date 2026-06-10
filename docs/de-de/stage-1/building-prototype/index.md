@@ -360,7 +360,7 @@ Sie können diesen Prompt nach kleinen Anpassungen an AI IDE senden, um Code zu 
 
 #### 2.2.1 Vorbereitung: Grundlegende Bedienung von AI IDE verstheen
 
-Wenn Sie mit AI IDE (wie Cursor, Trae, Windsurf etc.) noch nicht vertraut sind, empfehlen wir, zunächst das [IDE-Grundlagen-Tutorial](/zh-cn/appendix/2-development-tools/ide-basics/) im Anhang zu lesen, um zu erfahren:
+Wenn Sie mit AI IDE (wie Cursor, Trae, Windsurf etc.) noch nicht vertraut sind, empfehlen wir, zunächst das [IDE-Grundlagen-Tutorial](/de-de/appendix/2-development-tools/ide-basics) im Anhang zu lesen, um zu erfahren:
 - Wie man ein neues Projekt erstellt
 - Wie man mit dem AI Agent kommuniziert
 - Wie man den Code-Generierungsprozess der AI versthet

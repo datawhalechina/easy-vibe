@@ -344,7 +344,7 @@ Vous pouvez modifier légèrement ce prompt avant de l'envoyer à l'IDE AI pour 
 
 #### 2.2.1 Préparation : comprendre les opérations de base de l'IDE AI
 
-Si vous n'êtes pas encore familier avec l'utilisation basique de l'IDE AI (comme Cursor, Trae, Windsurf, etc.), il est recommandé de consulter d'abord le [tutoriel de base sur l'IDE](/zh-cn/appendix/2-development-tools/ide-basics/) en annexe, pour apprendre comment :
+Si vous n'êtes pas encore familier avec l'utilisation basique de l'IDE AI (comme Cursor, Trae, Windsurf, etc.), il est recommandé de consulter d'abord le [tutoriel de base sur l'IDE](/fr-fr/appendix/2-development-tools/ide-basics) en annexe, pour apprendre comment :
 - Créer un nouveau projet
 - Dialoguer avec l'AI Agent
 - Comprendre le processus de génération de code de l'IA

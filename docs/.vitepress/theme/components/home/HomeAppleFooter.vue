@@ -105,19 +105,19 @@ const footerPolicyLinkMap = {
 }
 
 const footerColumnLinkMap = {
-  '零基础入门': '/stage-1/',
+  '零基础入门': '/stage-1/learning-map/',
   '初中级开发': '/stage-2/',
   '高级开发': '/stage-3/',
   '附录': '/appendix/',
   '学习地图': '/stage-1/learning-map/',
-  '课程总览': '/stage-1/',
-  'Foundations': '/stage-1/',
+  '课程总览': '/stage-1/learning-map/',
+  'Foundations': '/stage-1/learning-map/',
   'Junior/Mid Dev': '/stage-2/',
   'Senior Dev': '/stage-3/',
   'Appendix': '/appendix/',
   'Learning Map': '/stage-1/learning-map/',
-  'Course Outline': '/stage-1/',
-  'Overview': '/guide/introduction',
+  'Course Outline': '/stage-1/learning-map/',
+  'Overview': '/stage-1/learning-map/'
 }
 
 const footerExternalLinks = {
@@ -132,6 +132,9 @@ const getFooterLink = (label) => {
   const basePath = footerColumnLinkMap[label]
   if (!basePath) return '#'
   const locale = t.value._locale || 'zh-cn'
+  if (basePath.startsWith('/guide/') && locale !== 'zh-cn' && locale !== 'en') {
+    return `/${locale}/stage-1/learning-map/`
+  }
   return `/${locale}${basePath}`
 }
 

@@ -349,7 +349,7 @@ You can then make small edits and pass it into your AI IDE.
 
 #### 2.2.1 Preparation: understand basic AI IDE operations
 
-If you are not yet familiar with AI IDEs (Cursor, Trae, Windsurf, etc.), read the appendix first: [IDE Basics](/en/appendix/2-development-tools/ide-basics/). Learn:
+If you are not yet familiar with AI IDEs (Cursor, Trae, Windsurf, etc.), read the appendix first: [IDE Basics](/en/appendix/2-development-tools/ide-basics). Learn:
 
 - how to create a new project
 - how to chat with an AI agent

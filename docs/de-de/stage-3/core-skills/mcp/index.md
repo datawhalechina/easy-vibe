@@ -419,7 +419,7 @@ Für E2E-Tests.
 
 ## Häufige MCP-Server
 
-> Hinweis: Die vollständige MCP-Server-Liste finden Sie im Anhang: [MCP-Server-Verzeichnis](/zh-cn/appendix/mcp-servers/)
+> Hinweis: Die vollständige MCP-Server-Liste finden Sie im Anhang: [MCP-Server-Verzeichnis](/de-de/appendix/8-artificial-intelligence/ai-protocols)
 
 ### GitHub-Server
 

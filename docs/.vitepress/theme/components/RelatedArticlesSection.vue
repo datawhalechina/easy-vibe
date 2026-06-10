@@ -1,7 +1,8 @@
 <script setup>
+import { computed } from 'vue'
 import NavCard from './NavCard.vue'
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     default: '继续阅读'
@@ -12,8 +13,20 @@ defineProps({
   },
   items: {
     type: Array,
-    required: true
+    default: () => []
+  },
+  articles: {
+    type: Array,
+    default: () => []
   }
+})
+
+const displayItems = computed(() => {
+  const source = props.items.length ? props.items : props.articles
+  return source.map((item) => ({
+    ...item,
+    href: item.href || item.link
+  }))
 })
 </script>
 
@@ -32,7 +45,7 @@ defineProps({
     </div>
     <div class="related-grid">
       <NavCard
-        v-for="(item, index) in items"
+        v-for="(item, index) in displayItems"
         :key="item.href || index"
         :href="item.href"
         :title="item.title"

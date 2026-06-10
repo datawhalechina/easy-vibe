@@ -343,7 +343,7 @@ const relatedArticles =
 
 #### 2.2.1 التحضير: فهم العمليات الأساسية لـ AI IDE
 
-إذا لم تكن معتادًا بعد على الاستخدام الأساسي لـ AI IDE (مثل Cursor و Trae و Windsurf)، نوصي بأولًا قراءة [البرنامج التعليمي الأساسي لـ IDE](/zh-cn/appendix/2-development-tools/ide-basics/) في الملحق، لمعرفة كيفية:
+إذا لم تكن معتادًا بعد على الاستخدام الأساسي لـ AI IDE (مثل Cursor و Trae و Windsurf)، نوصي بأولًا قراءة [البرنامج التعليمي الأساسي لـ IDE](/ar-sa/appendix/2-development-tools/ide-basics) في الملحق، لمعرفة كيفية:
 - إنشاء مشروع جديد
 - التحدث مع AI Agent
 - فهم عملية توليد الكود من قبل AI

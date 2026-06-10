@@ -346,7 +346,7 @@ AI는 구조화된 요구사항과 대응되는 프롬프트를 반환할 것입
 
 #### 2.2.1 준비 작업: AI IDE의 기본 조작 이해하기
 
-AI IDE(Cursor, Trae, Windsurf 등)의 기본 사용 방식이 아직 익숙하지 않다면, 부록의 [IDE 기초 튜토리얼](/zh-cn/appendix/2-development-tools/ide-basics/)을 먼저 보고 다음을 이해하는 것이 좋습니다.
+AI IDE(Cursor, Trae, Windsurf 등)의 기본 사용 방식이 아직 익숙하지 않다면, 부록의 [IDE 기초 튜토리얼](/ko-kr/appendix/2-development-tools/ide-basics)을 먼저 보고 다음을 이해하는 것이 좋습니다.
 - 새 프로젝트 만들기
 - AI Agent와 대화하기
 - AI의 코드 생성 과정 이해하기

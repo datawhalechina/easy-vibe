@@ -68,7 +68,7 @@ Por eso necesitas un IDE (Integrated Development Environment, entorno de desarro
 ## 2. Que es un IDE y por que lo necesitas
 
 ::: info Lectura previa
-Si todavia no sabes que es un IDE o para que sirve cada elemento de su interfaz, te recomendamos leer primero [Introduccion a IDE](/zh-cn/appendix/2-development-tools/ide-basics) para conocer los conceptos basicos y funciones habituales.
+Si todavia no sabes que es un IDE o para que sirve cada elemento de su interfaz, te recomendamos leer primero [Introduccion a IDE](/es-es/appendix/2-development-tools/ide-basics) para conocer los conceptos basicos y funciones habituales.
 :::
 
 En los primeros tiempos de la programacion, bastaban un editor de texto simple y un procesador del lenguaje. Pero al aumentar la complejidad de los proyectos, los desarrolladores necesitaron con urgencia una herramienta que gestionara archivos de forma eficiente, soportara resaltado de sintaxis y permitiera depurar. Asi nacio el entorno de desarrollo integrado, o IDE.
@@ -103,7 +103,7 @@ Incluso puede usarse para editar documentos Markdown.
 
 En resumen, un IDE es un conjunto de herramientas que ayuda a los desarrolladores a escribir codigo y ejecutar programas con eficiencia.
 
-Para una explicacion mas detallada, consulta [la seccion del apendice sobre el principio visual de un IDE](/zh-cn/appendix/2-development-tools/ide-basics).
+Para una explicacion mas detallada, consulta [la seccion del apendice sobre el principio visual de un IDE](/es-es/appendix/2-development-tools/ide-basics).
 
 ## 3. En que se diferencia un AI IDE de un IDE normal
 
@@ -507,7 +507,7 @@ La funcion concreta de cada parte es:
 - **Panel (panel inferior)**: contiene terminal y ventanas de salida.
 - **Status Bar (barra de estado)**: muestra el estado del entorno actual.
 
-Para una explicacion mas detallada, consulta [la seccion del apendice sobre el principio visual de un IDE](/zh-cn/appendix/2-development-tools/ide-basics).
+Para una explicacion mas detallada, consulta [la seccion del apendice sobre el principio visual de un IDE](/es-es/appendix/2-development-tools/ide-basics).
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -772,7 +772,7 @@ En el proximo capitulo cambiaremos el foco de "saber usar herramientas" a "hacer
       <span style="font-size: 12px; color: #909399">Cuando veas un termino informatico que no entiendes, consultalo aqui. Conviene leerlo una vez completo.</span>
     </el-col>
     <el-col :span="12">
-      <a href="/zh-cn/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Apendice 2: explicacion de la barra de menus de Visual Studio Code</b></a><br/>
+      <a href="/es-es/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Apendice 2: explicacion de la barra de menus de Visual Studio Code</b></a><br/>
       <span style="font-size: 12px; color: #909399">Si no sabes para que sirve una parte del AI IDE, usa este contenido para preguntar a la IA o consultalo directamente.</span>
     </el-col>
   </el-row>

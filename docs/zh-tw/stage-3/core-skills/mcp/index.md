@@ -419,7 +419,7 @@ Suggestions:
 
 ## 常見 MCP 伺服器
 
-> 💡 完整的 MCP 伺服器列表，請參考附錄：[MCP 伺服器目錄](/zh-cn/appendix/mcp-servers/)
+> 💡 完整的 MCP 伺服器列表，請參考附錄：[MCP 伺服器目錄](/zh-tw/appendix/8-artificial-intelligence/ai-protocols)
 
 ### GitHub 伺服器
 

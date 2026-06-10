@@ -19,6 +19,8 @@ import StepBar from './components/StepBar.vue'
 import ChapterIntroduction from './components/ChapterIntroduction.vue'
 import ReadingProgress from './components/ReadingProgress.vue'
 import SummaryCard from './components/SummaryCard.vue'
+import Tabs from './components/Tabs.vue'
+import TabItem from './components/TabItem.vue'
 
 // API Intro Components
 
@@ -679,11 +681,16 @@ const appendixComponentModules = {
   './components/appendix/cache-design/CachePatternComparisonDemo.vue': () => import('./components/appendix/cache-design/CachePatternComparisonDemo.vue'),
   './components/appendix/cache-design/EcommerceCacheArchitectureDemo.vue': () => import('./components/appendix/cache-design/EcommerceCacheArchitectureDemo.vue'),
   './components/appendix/cache-design/CacheMonitoringDashboardDemo.vue': () => import('./components/appendix/cache-design/CacheMonitoringDashboardDemo.vue'),
+  './components/appendix/cache-design/CachePerformanceComparisonDemo.vue': () => import('./components/appendix/cache-design/CachePerformanceComparisonDemo.vue'),
+  './components/appendix/cache-design/CacheConsistencyDemo.vue': () => import('./components/appendix/cache-design/CacheConsistencyDemo.vue'),
   './components/appendix/cloud-storage-cdn/EdgeNodeDistributionDemo.vue': () => import('./components/appendix/cloud-storage-cdn/EdgeNodeDistributionDemo.vue'),
   './components/appendix/cloud-storage-cdn/CachePolicyDemo.vue': () => import('./components/appendix/cloud-storage-cdn/CachePolicyDemo.vue'),
   './components/appendix/cloud-storage-cdn/TrafficSchedulingDemo.vue': () => import('./components/appendix/cloud-storage-cdn/TrafficSchedulingDemo.vue'),
   './components/appendix/cloud-storage-cdn/HttpsOptimizationDemo.vue': () => import('./components/appendix/cloud-storage-cdn/HttpsOptimizationDemo.vue'),
   './components/appendix/cloud-storage-cdn/AccessAnalyticsDemo.vue': () => import('./components/appendix/cloud-storage-cdn/AccessAnalyticsDemo.vue'),
+  './components/appendix/cloud-storage-cdn/ObjectStorageDemo.vue': () => import('./components/appendix/cloud-storage-cdn/ObjectStorageDemo.vue'),
+  './components/appendix/cloud-storage-cdn/CdnAccelerationDemo.vue': () => import('./components/appendix/cloud-storage-cdn/CdnAccelerationDemo.vue'),
+  './components/appendix/cloud-storage-cdn/UploadProcessDemo.vue': () => import('./components/appendix/cloud-storage-cdn/UploadProcessDemo.vue'),
   './components/appendix/api-design/ApiRequestDemo.vue': () => import('./components/appendix/api-design/ApiRequestDemo.vue'),
   './components/appendix/api-design/RestfulUrlDemo.vue': () => import('./components/appendix/api-design/RestfulUrlDemo.vue'),
   './components/appendix/api-design/StatusCodeDemo.vue': () => import('./components/appendix/api-design/StatusCodeDemo.vue'),
@@ -1332,11 +1339,16 @@ const appendixComponentRegistrations = [
   ['CachePatternComparisonDemo', './components/appendix/cache-design/CachePatternComparisonDemo.vue'],
   ['EcommerceCacheArchitectureDemo', './components/appendix/cache-design/EcommerceCacheArchitectureDemo.vue'],
   ['CacheMonitoringDashboardDemo', './components/appendix/cache-design/CacheMonitoringDashboardDemo.vue'],
+  ['CachePerformanceComparisonDemo', './components/appendix/cache-design/CachePerformanceComparisonDemo.vue'],
+  ['CacheConsistencyDemo', './components/appendix/cache-design/CacheConsistencyDemo.vue'],
   ['EdgeNodeDistributionDemo', './components/appendix/cloud-storage-cdn/EdgeNodeDistributionDemo.vue'],
   ['CachePolicyDemo', './components/appendix/cloud-storage-cdn/CachePolicyDemo.vue'],
   ['TrafficSchedulingDemo', './components/appendix/cloud-storage-cdn/TrafficSchedulingDemo.vue'],
   ['HttpsOptimizationDemo', './components/appendix/cloud-storage-cdn/HttpsOptimizationDemo.vue'],
   ['AccessAnalyticsDemo', './components/appendix/cloud-storage-cdn/AccessAnalyticsDemo.vue'],
+  ['ObjectStorageDemo', './components/appendix/cloud-storage-cdn/ObjectStorageDemo.vue'],
+  ['CdnAccelerationDemo', './components/appendix/cloud-storage-cdn/CdnAccelerationDemo.vue'],
+  ['UploadProcessDemo', './components/appendix/cloud-storage-cdn/UploadProcessDemo.vue'],
   ['ApiRequestDemo', './components/appendix/api-design/ApiRequestDemo.vue'],
   ['RestfulUrlDemo', './components/appendix/api-design/RestfulUrlDemo.vue'],
   ['StatusCodeDemo', './components/appendix/api-design/StatusCodeDemo.vue'],
@@ -1398,6 +1410,15 @@ const appendixComponentRegistrations = [
   ['TypeInferenceDemo', './components/appendix/typescript-intro/TypeInferenceDemo.vue'],
   ['SerializationDemo', './components/appendix/server-backend/SerializationDemo.vue'],
   ['HttpProtocolDemo', './components/appendix/server-backend/HttpProtocolDemo.vue'],
+  ['RequestJourneyFlow', './components/appendix/server-backend/RequestJourneyFlow.vue'],
+  ['RequestTimeline', './components/appendix/server-backend/RequestTimeline.vue'],
+  ['OAuth2ModesDemo', './components/appendix/auth-design/OAuth2FlowDemo.vue'],
+  ['AuthDatabaseDemo', './components/appendix/auth-design/AuthEvolutionDemo.vue'],
+  ['CompleteAuthSystemDemo', './components/appendix/auth-design/JWTWorkflowDemo.vue'],
+  ['XSSDefenseDemo', './components/appendix/auth-design/CSRFDefenseDemo.vue'],
+  ['PollingDemo', './components/appendix/browser-frontend/PollingDemo.vue'],
+  ['SSEDemo', './components/appendix/browser-frontend/SSEDemo.vue'],
+  ['WebSocketDemo', './components/appendix/browser-frontend/WebSocketDemo.vue'],
   ['SqlDemo', './components/appendix/data/SqlDemo.vue'],
   ['DataModelsDemo', './components/appendix/data/DataModelsDemo.vue'],
   ['ABTestingDemo', './components/appendix/data/ABTestingDemo.vue'],
@@ -1527,10 +1548,13 @@ export default {
     app.component('CategoryIndex', CategoryIndex)
     app.component('ArticleGrid', ArticleGrid)
     app.component('RelatedArticlesSection', RelatedArticlesSection)
+    app.component('RelatedArticles', RelatedArticlesSection)
     app.component('StepBar', StepBar)
     app.component('ChapterIntroduction', ChapterIntroduction)
     app.component('ReadingProgress', ReadingProgress)
     app.component('SummaryCard', SummaryCard)
+    app.component('Tabs', Tabs)
+    app.component('TabItem', TabItem)
     registerAppendixComponents(app)
 
 

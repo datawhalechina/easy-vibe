@@ -68,7 +68,7 @@ C'est pourquoi vous avez besoin d'un IDE (Environnement de Développement Intég
 ## 2. Qu'est-ce qu'un IDE, pourquoi en a-t-on besoin
 
 ::: info Conseil de préparation
-Si vous n'êtes pas encore familier avec ce qu'est un IDE et à quoi servent les différents éléments de l'interface, il est recommandé de lire d'abord [Introduction à l'IDE](/zh-cn/appendix/2-development-tools/ide-basics) pour comprendre les concepts de base et les fonctionnalités courantes des IDE.
+Si vous n'êtes pas encore familier avec ce qu'est un IDE et à quoi servent les différents éléments de l'interface, il est recommandé de lire d'abord [Introduction à l'IDE](/fr-fr/appendix/2-development-tools/ide-basics) pour comprendre les concepts de base et les fonctionnalités courantes des IDE.
 :::
 
 À l'époque des premiers pas de la programmation, nous n'avions besoin que de simples éditeurs de texte et de processeurs de langage. Mais avec l'augmentation de la complexité des projets, les développeurs avaient un besoin urgent d'un outil capable de gérer efficacement les fichiers, de supporter la coloration syntaxique et le débogage. C'est ainsi que l'IDE (Environnement de Développement Intégré) est né.
@@ -103,7 +103,7 @@ On peut même l'utiliser pour éditer des documents Markdown.
 
 En résumé, un IDE est un ensemble d'outils qui aide les développeurs à écrire du code et à exécuter des programmes plus efficacement.
 
-Pour plus de détails, consultez [l'annexe sur les principes de l'IDE virtuel](/zh-cn/appendix/2-development-tools/ide-basics).
+Pour plus de détails, consultez [l'annexe sur les principes de l'IDE virtuel](/fr-fr/appendix/2-development-tools/ide-basics).
 
 ## 3. Quelle est la différence entre un AI IDE et un IDE classique
 
@@ -506,7 +506,7 @@ Voici le rôle de chaque section :
 - **Panel (Panneau inférieur)** : contient le terminal et la fenêtre de sortie.
 - **Status Bar (Barre d'état)** : affiche l'état actuel de l'environnement.
 
-Pour plus de détails, consultez [l'annexe sur les principes de l'IDE virtuel](/zh-cn/appendix/2-development-tools/ide-basics).
+Pour plus de détails, consultez [l'annexe sur les principes de l'IDE virtuel](/fr-fr/appendix/2-development-tools/ide-basics).
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -767,7 +767,7 @@ Le chapitre suivant va déplacer le focus de « savoir utiliser les outils » ve
       <span style="font-size: 12px; color: #909399">Quand vous rencontrez un terme informatique que vous ne comprenez pas, venez ici pour trouver rapidement sa signification. Il est recommandé de le lire une fois en entier.</span>
     </el-col>
     <el-col :span="12">
-      <a href="/zh-cn/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Annexe 2 : Explication de la barre de menus de Visual Studio Code</b></a><br/>
+      <a href="/fr-fr/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Annexe 2 : Explication de la barre de menus de Visual Studio Code</b></a><br/>
       <span style="font-size: 12px; color: #909399">Quand vous ne savez pas à quoi sert un élément de l'interface de l'AI IDE, utilisez le contenu ci-dessous pour dialoguer avec l'IA, ou consultez-le directement.</span>
     </el-col>
   </el-row>

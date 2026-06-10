@@ -419,7 +419,7 @@ E2Eテストに使用。
 
 ## 一般的なMCPサーバー
 
-> :bulb: 完全なMCPサーバーリストについては、付録を参照：[MCPサーバーディレクトリ](/zh-cn/appendix/mcp-servers/)
+> :bulb: 完全なMCPサーバーリストについては、付録を参照：[MCPサーバーディレクトリ](/ja-jp/appendix/8-artificial-intelligence/ai-protocols)
 
 ### GitHubサーバー
 

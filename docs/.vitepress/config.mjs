@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import { defineConfig } from 'vitepress'
 import markdownItKatex from 'markdown-it-katex'
 
@@ -130,6 +131,95 @@ for (const locale of activeBuildLocales) {
   }
 }
 
+const getMarkdownFileUrl = (locale, relativePath) => {
+  if (!relativePath) {
+    return new URL(`../${locale}/index.md`, import.meta.url)
+  }
+  const cleanPath = relativePath.replace(/\/$/, '')
+  return new URL(`../${locale}/${cleanPath}.md`, import.meta.url)
+}
+
+const hasLocalizedPage = (locale, relativePath) => {
+  if (!relativePath) return true
+  const cleanPath = relativePath.replace(/\/$/, '')
+  const candidates = [
+    getMarkdownFileUrl(locale, cleanPath),
+    new URL(`../${locale}/${cleanPath}/index.md`, import.meta.url)
+  ]
+  return candidates.some((fileUrl) => fs.existsSync(fileUrl))
+}
+
+const getLocalizedFallbackPath = (locale, requestedPath = '') => {
+  const cleanPath = requestedPath
+    .replace(/^\//, '')
+    .replace(/\.html$/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/$/, '')
+
+  if (!cleanPath || hasLocalizedPage(locale, cleanPath)) {
+    return cleanPath
+  }
+
+  return ''
+}
+
+const parseLocaleHref = (href) => {
+  if (!href) return null
+  const decodedHref = href.replace(/&amp;/g, '&')
+  let pathname
+
+  if (decodedHref.startsWith(siteUrl)) {
+    pathname = decodedHref.slice(siteUrl.length)
+  } else if (decodedHref.startsWith(base)) {
+    pathname = decodedHref.slice(base.length - 1)
+  } else if (decodedHref.startsWith('/')) {
+    pathname = decodedHref
+  } else {
+    return null
+  }
+
+  const [pathWithoutQuery] = pathname.split(/[?#]/)
+  const locale = supportedLocaleDirs.find(
+    (item) =>
+      pathWithoutQuery === `/${item}/` || pathWithoutQuery.startsWith(`/${item}/`)
+  )
+
+  if (!locale) return null
+
+  return {
+    locale,
+    relativePath: pathWithoutQuery
+      .slice(locale.length + 2)
+      .replace(/\.html$/, '')
+      .replace(/\/index$/, '')
+      .replace(/\/$/, '')
+  }
+}
+
+const toLocaleHtmlHref = (locale, relativePath) => {
+  const cleanPath = relativePath.replace(/\/$/, '')
+  if (!cleanPath) return `${base}${locale}/`.replace(/\/{2,}/g, '/')
+  const suffix = cleanPath.endsWith('.html') ? cleanPath : `${cleanPath}.html`
+  return `${base}${locale}/${suffix}`.replace(/\/{2,}/g, '/')
+}
+
+const rewriteMissingLocaleMenuLinks = (html) =>
+  html.replace(
+    /(<a\b(?=[^>]*\bclass="[^"]*\bVPLink\b[^"]*\blink\b[^"]*")[^>]*\bhref=")([^"]+)("[^>]*>)/g,
+    (match, before, href, after) => {
+      const parsed = parseLocaleHref(href)
+      if (!parsed) return match
+
+      const fallbackPath = getLocalizedFallbackPath(
+        parsed.locale,
+        parsed.relativePath
+      )
+      if (fallbackPath === parsed.relativePath) return match
+
+      return `${before}${toLocaleHtmlHref(parsed.locale, fallbackPath)}${after}`
+    }
+  )
+
 // SEO 相关配置
 const getSeoHead = (locale, title, description, path = '') => {
   const seoConfig = localeMap[locale] || localeMap['zh-cn']
@@ -201,6 +291,7 @@ const getSeoHead = (locale, title, description, path = '') => {
 
   // 添加 hreflang 标签 - 指向相同页面的不同语言版本
   Object.keys(localeMap).forEach((lang) => {
+    if (!hasLocalizedPage(lang, relativePath)) return
     let alternateUrl = `${siteUrl}/${lang}/`
     if (relativePath) {
       alternateUrl = `${siteUrl}/${lang}/${relativePath}`
@@ -1476,13 +1567,145 @@ const productManagerSidebar = [
 const LOCALIZED_PATH_PREFIX_RE =
   /^\/(?:zh-cn|en|zh-tw|ja-jp|ko-kr|es-es|fr-fr|de-de|ar-sa|vi-vn)\//
 
+const appendixGroupLabels = {
+  en: [
+    'I. Computer Fundamentals',
+    'II. Tools & Environment',
+    'III. Browser & Frontend',
+    'IV. Server & Backend',
+    'V. Data',
+    'VI. Architecture',
+    'VII. Infrastructure',
+    'VIII. Artificial Intelligence',
+    'IX. Engineering Excellence'
+  ],
+  'ja-jp': [
+    'I. コンピュータ基礎',
+    'II. ツールと環境',
+    'III. ブラウザとフロントエンド',
+    'IV. サーバーとバックエンド',
+    'V. データ',
+    'VI. アーキテクチャ',
+    'VII. インフラ',
+    'VIII. 人工知能',
+    'IX. エンジニアリング品質'
+  ],
+  'zh-tw': [
+    'I. 計算機基礎',
+    'II. 工具與環境',
+    'III. 瀏覽器與前端',
+    'IV. 伺服器與後端',
+    'V. 資料',
+    'VI. 架構',
+    'VII. 基礎設施',
+    'VIII. 人工智慧',
+    'IX. 工程品質'
+  ],
+  'ko-kr': [
+    'I. 컴퓨터 기초',
+    'II. 도구와 환경',
+    'III. 브라우저와 프론트엔드',
+    'IV. 서버와 백엔드',
+    'V. 데이터',
+    'VI. 아키텍처',
+    'VII. 인프라',
+    'VIII. 인공지능',
+    'IX. 엔지니어링 품질'
+  ],
+  'es-es': [
+    'I. Fundamentos de Computación',
+    'II. Herramientas y Entorno',
+    'III. Navegador y Frontend',
+    'IV. Servidor y Backend',
+    'V. Datos',
+    'VI. Arquitectura',
+    'VII. Infraestructura',
+    'VIII. Inteligencia Artificial',
+    'IX. Excelencia de Ingeniería'
+  ],
+  'fr-fr': [
+    'I. Fondamentaux Informatique',
+    'II. Outils et Environnement',
+    'III. Navigateur et Frontend',
+    'IV. Serveur et Backend',
+    'V. Données',
+    'VI. Architecture',
+    'VII. Infrastructure',
+    'VIII. Intelligence Artificielle',
+    "IX. Excellence d'Ingénierie"
+  ],
+  'de-de': [
+    'I. Computergrundlagen',
+    'II. Werkzeuge und Umgebung',
+    'III. Browser und Frontend',
+    'IV. Server und Backend',
+    'V. Daten',
+    'VI. Architektur',
+    'VII. Infrastruktur',
+    'VIII. Künstliche Intelligenz',
+    'IX. Engineering-Qualität'
+  ],
+  'ar-sa': [
+    'I. أساسيات الحاسوب',
+    'II. الأدوات والبيئة',
+    'III. المتصفح والواجهة الأمامية',
+    'IV. الخادم والواجهة الخلفية',
+    'V. البيانات',
+    'VI. المعمارية',
+    'VII. البنية التحتية',
+    'VIII. الذكاء الاصطناعي',
+    'IX. جودة الهندسة'
+  ],
+  'vi-vn': [
+    'I. Nền tảng Máy tính',
+    'II. Công cụ và Môi trường',
+    'III. Trinh duyet va Frontend',
+    'IV. Máy chủ và Backend',
+    'V. Dữ liệu',
+    'VI. Kiến trúc',
+    'VII. Hạ tầng',
+    'VIII. Trí tuệ Nhân tạo',
+    'IX. Chất lượng Kỹ thuật'
+  ]
+}
+
+const markdownTitleCache = new Map()
+
+const getMarkdownTitleForLink = (link) => {
+  const cleanLink = link.split(/[?#]/)[0].replace(/\/$/, '')
+  if (!cleanLink) return null
+  if (markdownTitleCache.has(cleanLink))
+    return markdownTitleCache.get(cleanLink)
+
+  const relativePath = cleanLink.replace(/^\//, '')
+  const candidates = [
+    new URL(`../${relativePath}.md`, import.meta.url),
+    new URL(`../${relativePath}/index.md`, import.meta.url)
+  ]
+
+  for (const fileUrl of candidates) {
+    if (!fs.existsSync(fileUrl)) continue
+    const match = fs.readFileSync(fileUrl, 'utf8').match(/^#\s+(.+?)\s*$/m)
+    if (match) {
+      const title = match[1].trim()
+      markdownTitleCache.set(cleanLink, title)
+      return title
+    }
+  }
+
+  markdownTitleCache.set(cleanLink, null)
+  return null
+}
+
 const localizeSidebarItemLinks = (items, locale) =>
   items.map((item) => ({
     ...item,
     link: item.link
       ? item.link.replace(LOCALIZED_PATH_PREFIX_RE, `/${locale}/`)
       : item.link,
-    items: item.items ? localizeSidebarItemLinks(item.items, locale) : item.items
+    items: item.items
+      ? localizeSidebarItemLinks(item.items, locale)
+      : item.items
   }))
 
 const localizeSidebarLinks = (sidebar, locale) =>
@@ -1491,7 +1714,36 @@ const localizeSidebarLinks = (sidebar, locale) =>
     link: group.link
       ? group.link.replace(LOCALIZED_PATH_PREFIX_RE, `/${locale}/`)
       : group.link,
-    items: group.items ? localizeSidebarItemLinks(group.items, locale) : group.items
+    items: group.items
+      ? localizeSidebarItemLinks(group.items, locale)
+      : group.items
+  }))
+
+const localizeAppendixSidebarItem = (item, locale) => {
+  const link = item.link
+    ? item.link.replace(LOCALIZED_PATH_PREFIX_RE, `/${locale}/`)
+    : item.link
+
+  return {
+    ...item,
+    link,
+    text: link ? getMarkdownTitleForLink(link) || item.text : item.text,
+    items: item.items
+      ? item.items.map((child) => localizeAppendixSidebarItem(child, locale))
+      : item.items
+  }
+}
+
+const localizeAppendixSidebar = (sidebar, locale) =>
+  sidebar.map((group, index) => ({
+    ...group,
+    text: appendixGroupLabels[locale]?.[index] || group.text,
+    link: group.link
+      ? group.link.replace(LOCALIZED_PATH_PREFIX_RE, `/${locale}/`)
+      : group.link,
+    items: group.items
+      ? group.items.map((item) => localizeAppendixSidebarItem(item, locale))
+      : group.items
   }))
 
 const stage1SidebarLabels = {
@@ -2485,7 +2737,7 @@ const stage3SidebarLabels = {
     {
       text: 'IA Avancée',
       items: [
-        'Qu\'est-ce que le RAG et comment ça fonctionne',
+        "Qu'est-ce que le RAG et comment ça fonctionne",
         'RAG avancé et orchestration de workflows avec LangGraph'
       ]
     }
@@ -2688,6 +2940,10 @@ export default defineConfig({
         return true
       })
     }
+  },
+
+  transformHtml(code) {
+    return rewriteMissingLocaleMenuLinks(code)
   },
 
   // 构建结束时动态生成 robots.txt
@@ -3489,7 +3745,7 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/en/stage-1/': productManagerSidebarEn,
           '/en/stage-2/': stage2SidebarEn,
           '/en/stage-3/': stage3SidebarEn,
-          '/en/appendix/': localizeSidebarLinks(appendixSidebarEn, 'en')
+          '/en/appendix/': localizeAppendixSidebar(appendixSidebarEn, 'en')
         }
       }
     },
@@ -3547,7 +3803,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/ja-jp/stage-1/': getStage1Sidebar('ja-jp'),
           '/ja-jp/stage-2/': getStage2Sidebar('ja-jp'),
           '/ja-jp/stage-3/': getStage3Sidebar('ja-jp'),
-          '/ja-jp/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ja-jp')
+          '/ja-jp/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'ja-jp'
+          )
         }
       }
     },
@@ -3603,7 +3862,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/zh-tw/stage-1/': getStage1Sidebar('zh-tw'),
           '/zh-tw/stage-2/': getStage2Sidebar('zh-tw'),
           '/zh-tw/stage-3/': getStage3Sidebar('zh-tw'),
-          '/zh-tw/appendix/': localizeSidebarLinks(appendixSidebarEn, 'zh-tw')
+          '/zh-tw/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'zh-tw'
+          )
         }
       }
     },
@@ -3659,7 +3921,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/ko-kr/stage-1/': productManagerSidebarKo,
           '/ko-kr/stage-2/': getStage2Sidebar('ko-kr'),
           '/ko-kr/stage-3/': getStage3Sidebar('ko-kr'),
-          '/ko-kr/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ko-kr')
+          '/ko-kr/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'ko-kr'
+          )
         }
       }
     },
@@ -3715,7 +3980,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/es-es/stage-1/': getStage1Sidebar('es-es'),
           '/es-es/stage-2/': getStage2Sidebar('es-es'),
           '/es-es/stage-3/': getStage3Sidebar('es-es'),
-          '/es-es/appendix/': localizeSidebarLinks(appendixSidebarEn, 'es-es')
+          '/es-es/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'es-es'
+          )
         }
       }
     },
@@ -3771,7 +4039,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/fr-fr/stage-1/': getStage1Sidebar('fr-fr'),
           '/fr-fr/stage-2/': getStage2Sidebar('fr-fr'),
           '/fr-fr/stage-3/': getStage3Sidebar('fr-fr'),
-          '/fr-fr/appendix/': localizeSidebarLinks(appendixSidebarEn, 'fr-fr')
+          '/fr-fr/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'fr-fr'
+          )
         }
       }
     },
@@ -3827,7 +4098,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/de-de/stage-1/': getStage1Sidebar('de-de'),
           '/de-de/stage-2/': getStage2Sidebar('de-de'),
           '/de-de/stage-3/': getStage3Sidebar('de-de'),
-          '/de-de/appendix/': localizeSidebarLinks(appendixSidebarEn, 'de-de')
+          '/de-de/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'de-de'
+          )
         }
       }
     },
@@ -3883,7 +4157,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/ar-sa/stage-1/': getStage1Sidebar('ar-sa'),
           '/ar-sa/stage-2/': getStage2Sidebar('ar-sa'),
           '/ar-sa/stage-3/': getStage3Sidebar('ar-sa'),
-          '/ar-sa/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ar-sa')
+          '/ar-sa/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'ar-sa'
+          )
         }
       }
     },
@@ -3940,7 +4217,10 @@ Sitemap: ${siteUrl}/sitemap.xml
           '/vi-vn/stage-1/': getStage1Sidebar('vi-vn'),
           '/vi-vn/stage-2/': getStage2Sidebar('vi-vn'),
           '/vi-vn/stage-3/': getStage3Sidebar('vi-vn'),
-          '/vi-vn/appendix/': localizeSidebarLinks(appendixSidebarEn, 'vi-vn')
+          '/vi-vn/appendix/': localizeAppendixSidebar(
+            appendixSidebarEn,
+            'vi-vn'
+          )
         }
       }
     }

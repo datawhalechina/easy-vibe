@@ -13,7 +13,7 @@ import HomeAppendix from './home/HomeAppendix.vue'
 import HomeAppleFooter from './home/HomeAppleFooter.vue'
 
 const router = useRouter()
-const { site, page, lang } = useData()
+const { site, lang } = useData()
 const activeTab = ref('home')
 const showLangMenu = ref(false)
 const topPromoProgress = ref(1)
@@ -27,8 +27,45 @@ const WELCOME_SEEN_KEY = 'easy-vibe-welcome-seen'
 
 const vibeStoriesSection = ref(null)
 
+const normalizeLocaleCode = (value) => {
+  const code = value ? value.toLowerCase() : 'zh-cn'
+  const locale = locales.find(
+    (item) =>
+      item.code === code || item.code.replace('-', '') === code.replace('-', '')
+  )
+  if (locale) return locale.code
+  if (code === 'en-us') return 'en'
+  return 'zh-cn'
+}
+
+const normalizeLocaleRelativePath = (value = '') =>
+  value
+    .replace(/^\//, '')
+    .replace(/\.html$/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/$/, '')
+
+const hasBuiltLocalePath = (locale, relativePath = '') => {
+  const cleanPath = normalizeLocaleRelativePath(relativePath)
+  if (!cleanPath) return true
+  if (typeof window === 'undefined') return true
+  const hashMap = window.__VP_HASH_MAP__ || {}
+  const mdPath = `${locale}/${cleanPath}.md`.replace(/\//g, '_')
+  const indexMdPath = `${locale}/${cleanPath}/index.md`.replace(/\//g, '_')
+  return Boolean(hashMap[mdPath] || hashMap[indexMdPath])
+}
+
+const resolveSafeLocalePath = (locale, relativePath = '') => {
+  const cleanPath = normalizeLocaleRelativePath(relativePath)
+  if (!cleanPath || hasBuiltLocalePath(locale, cleanPath)) {
+    return `/${locale}/${cleanPath ? `${cleanPath}.html` : ''}`
+  }
+
+  return `/${locale}/`
+}
+
 const t = computed(() => {
-  const code = lang.value ? lang.value.toLowerCase() : 'zh-cn'
+  const code = normalizeLocaleCode(lang.value)
   const result = i18n[code] || i18n['en']
   result._locale = code
   return result
@@ -37,7 +74,7 @@ const t = computed(() => {
 provide('t', t)
 
 const isCjkLocale = computed(() => {
-  const code = lang.value ? lang.value.toLowerCase() : ''
+  const code = normalizeLocaleCode(lang.value)
   if (['zh-cn', 'zh-tw', 'ja-jp', 'ko-kr'].includes(code)) {
     return true
   }
@@ -46,7 +83,7 @@ const isCjkLocale = computed(() => {
 })
 
 const topPromo = computed(() => {
-  const code = lang.value ? lang.value.toLowerCase() : 'en'
+  const code = normalizeLocaleCode(lang.value)
   const isChinese = code === 'zh-cn' || code === 'zh-tw'
   return {
     text: isChinese
@@ -88,18 +125,16 @@ const changeLang = (targetLocale) => {
     currentPath.startsWith(`/${l.code}/`)
   )
 
-  let newPath
+  let newPath = `/${targetLocale}/`
   if (currentLocale) {
-    newPath = currentPath.replace(
-      `/${currentLocale.code}/`,
-      `/${targetLocale}/`
+    const relativePath = normalizeLocaleRelativePath(
+      currentPath.slice(currentLocale.code.length + 2)
     )
-  } else {
-    newPath = `/${targetLocale}/`
+    newPath = resolveSafeLocalePath(targetLocale, relativePath)
   }
 
   const hash = window.location.hash || ''
-  router.go(withBase(`${newPath}${hash}`))
+  window.location.assign(withBase(`${newPath}${hash}`))
   showLangMenu.value = false
 }
 
@@ -270,7 +305,9 @@ onMounted(() => {
   if (isRootHome && !isLocaleHome) {
     const hasSeenWelcome = window.localStorage.getItem(WELCOME_SEEN_KEY) === '1'
     if (!hasSeenWelcome) {
-      router.go(withBase(`/welcome/?next=${encodeURIComponent(currentPath)}`))
+      window.location.assign(
+        withBase(`/welcome/?next=${encodeURIComponent(currentPath)}`)
+      )
       return
     }
   }

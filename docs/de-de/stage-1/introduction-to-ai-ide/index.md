@@ -66,7 +66,7 @@ Eine IDE, also eine integrierte Entwicklungsumgebung, loest diese Probleme. Sie 
 ## 2. Was ist eine IDE?
 
 ::: info Vorbereitung
-Wenn Ihnen IDEs noch neu sind, lesen Sie spaeter auch [IDE Grundlagen](/zh-cn/appendix/2-development-tools/ide-basics). Dort werden typische Bereiche wie Editor, Terminal, Seitenleiste und Debugger noch einmal in Ruhe erklaert.
+Wenn Ihnen IDEs noch neu sind, lesen Sie spaeter auch [IDE Grundlagen](/de-de/appendix/2-development-tools/ide-basics). Dort werden typische Bereiche wie Editor, Terminal, Seitenleiste und Debugger noch einmal in Ruhe erklaert.
 :::
 
 Fruehe Entwickler arbeiteten mit einfachen Editoren und Kommandozeilentools. Als Projekte groesser wurden, brauchte man Werkzeuge, die Dateien, Ausfuehrung und Debugging in einer Oberflaeche vereinen. Daraus entstand die IDE.

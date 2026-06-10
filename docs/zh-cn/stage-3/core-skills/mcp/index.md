@@ -416,7 +416,7 @@ MCP 服务器状态：
 
 ## 常用 MCP 服务器
 
-> 💡 完整的 MCP 服务器列表请参考附录 [MCP 服务器大全](/zh-cn/appendix/mcp-servers/)
+> 💡 完整的 MCP 服务器列表请参考附录 [MCP 服务器大全](/zh-cn/appendix/8-artificial-intelligence/ai-protocols)
 
 ### GitHub 服务器
 
