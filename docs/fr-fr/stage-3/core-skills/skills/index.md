@@ -537,7 +537,7 @@ Travaillant ensemble : les Skills disent a Claude « comment faire la revue », 
 
 | Depot | Description |
 |------|------|
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Maintenu par Boris Cherny, responsable de Claude Code, incluant Skills, Agents, Hooks et plus |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Bonnes pratiques Claude Code maintenues par la communauté, incluant Skills, Agents, Hooks et plus |
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | Boite a outils complete incluant des Skills preconfigures |
 | [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | Liste curated de ressources Skills |
 | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66 skills professionnels et 300+ documents de reference |
@@ -994,7 +994,7 @@ description: Review Pull Request code. Trigger when the user mentions PR, review
 ### Projets communautaires GitHub
 
 - [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) - Collection officielle d'Agent Skills de Vercel Labs, incluant find-skills
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - Meilleures pratiques officielles maintenues par Boris Cherny
+- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - bonnes pratiques Claude Code maintenues par la communauté
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - Boite a outils complete incluant des Skills preconfigures
 - [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - Liste curated de ressources Skills selectionnees
 - [superpowers](https://github.com/obra/superpowers) - Collection de Skills pour les flux de travail d'automatisation du developpement logiciel
