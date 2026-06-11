@@ -597,7 +597,7 @@ Có. Siêu năng lực là mã nguồn mở và bạn có thể:
 | Kho | Mô tả |
 |------|------|
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | bộ công cụ toàn diện bao gồm quy trình TDD |
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | thực hành tốt nhất chính thức |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | tài liệu thực hành cộng đồng |
 
 ### Bài viết Liên quan
 

@@ -537,7 +537,7 @@ Làm việc cùng nhau: Skills cho Claude biết "cách đánh giá", và MCP ch
 
 | Kho lưu trữ | Mô tả |
 |-------------|--------|
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Được duy trì bởi Boris Cherny, trưởng nhóm Claude Code, bao gồm Skills, Agents, Hooks và hơn thế nữa |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Tài liệu thực hành Claude Code do cộng đồng duy trì, bao gồm Skills, Agents, Hooks và hơn thế nữa |
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | Bộ công cụ toàn diện bao gồm Skills được cấu hình sẵn |
 | [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | Danh sách tài nguyên Skills được tuyển chọn |
 | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66 kỹ năng chuyên nghiệp và 300+ tài liệu tham khảo |
@@ -994,7 +994,7 @@ description: Đánh giá mã Pull Request. Kích hoạt khi người dùng đề
 ### Dự án cộng đồng trên GitHub
 
 - [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) - Bộ sưu tập Agent Skills chính thức của Vercel Labs, bao gồm find-skills
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - Các phương pháp hay nhất chính thức được duy trì bởi Boris Cherny
+- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - tài liệu thực hành Claude Code do cộng đồng duy trì
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - Bộ công cụ toàn diện bao gồm Skills được cấu hình sẵn
 - [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - Danh sách tài nguyên Skills được chọn lọc
 - [superpowers](https://github.com/obra/superpowers) - Bộ sưu tập Skills cho các quy trình làm việc tự động hóa phát triển phần mềm
