@@ -145,7 +145,7 @@
           <div class="vec-nums">[0.82, 0.15, 0.91, ...]</div>
         </div>
         <div class="vec-results">
-          <div class="vec-result" v-for="r in vecResults" :key="r.text">
+          <div v-for="r in vecResults" :key="r.text" class="vec-result">
             <span class="vec-score" :style="{ opacity: r.score }">{{ (r.score * 100).toFixed(0) }}%</span>
             <span class="vec-text">{{ r.text }}</span>
           </div>

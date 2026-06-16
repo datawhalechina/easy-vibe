@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="option-detail" v-if="currentOption">
+    <div v-if="currentOption" class="option-detail">
       <div class="detail-header">
         <span class="detail-icon">{{ currentOption.icon }}</span>
         <span class="detail-name">{{ currentOption.name }}</span>

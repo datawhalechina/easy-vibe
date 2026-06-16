@@ -66,7 +66,7 @@
 
       <div class="rank-control">
         <label>LoRA 秩 (Rank): <strong>{{ loraRank }}</strong></label>
-        <input type="range" min="1" max="64" v-model.number="loraRank" />
+        <input v-model.number="loraRank" type="range" min="1" max="64" />
         <div class="rank-hints">
           <span>秩越小 = 参数越少、训练越快</span>
           <span>秩越大 = 表达力越强、效果越好</span>

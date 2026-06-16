@@ -4,7 +4,7 @@
       <div class="demo-title">自注意力示例：「他」关注「小明」</div>
       <div class="sentence">小明 把 苹果 给了 <span class="focus">他</span> 的 母亲</div>
       <div class="attention-bar">
-        <div class="bar-item" v-for="item in weights" :key="item.word">
+        <div v-for="item in weights" :key="item.word" class="bar-item">
           <span class="word">{{ item.word }}</span>
           <div class="bar" :style="{ width: item.w * 100 + '%', background: getColor(item.w) }"></div>
           <span class="pct">{{ Math.round(item.w * 100) }}%</span>

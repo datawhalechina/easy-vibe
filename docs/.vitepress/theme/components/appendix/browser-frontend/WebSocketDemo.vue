@@ -18,7 +18,7 @@
 
       
       <div class="channel">
-        <div class="ws-pipe" v-show="isConnected">
+        <div v-show="isConnected" class="ws-pipe">
           <div class="line top-line"></div>
           <div class="line bottom-line"></div>
         </div>

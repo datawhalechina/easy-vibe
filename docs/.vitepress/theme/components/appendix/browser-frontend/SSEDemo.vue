@@ -11,7 +11,7 @@
 
       
       <div class="channel">
-        <div class="pipe" v-show="isConnected">
+        <div v-show="isConnected" class="pipe">
           <div class="pipe-flow"></div>
         </div>
         <div 

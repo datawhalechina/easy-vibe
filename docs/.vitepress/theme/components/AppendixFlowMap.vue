@@ -218,9 +218,9 @@ const hoveredArticleData = computed(() => {
 
       <!-- 右侧：详情面板 -->
       <div
+        :key="activeCategoryData.id"
         class="detail-panel"
         :style="{ '--panel-color': activeCategoryData.color }"
-        :key="activeCategoryData.id"
       >
         <div class="panel-header">
           <div class="panel-title-row">

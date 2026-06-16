@@ -60,10 +60,10 @@
       </div>
     </Transition>
 
-    <div class="detail-hint" v-if="selectedTools.length >= 2 && !detailName">
+    <div v-if="selectedTools.length >= 2 && !detailName" class="detail-hint">
       点击下方工具名称查看详细介绍和代码示例
     </div>
-    <div class="tool-detail-btns" v-if="selectedTools.length >= 2">
+    <div v-if="selectedTools.length >= 2" class="tool-detail-btns">
       <button
         v-for="name in selectedTools"
         :key="name"

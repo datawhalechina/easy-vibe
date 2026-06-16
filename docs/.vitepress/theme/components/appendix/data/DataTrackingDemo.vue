@@ -31,31 +31,33 @@
     <!-- Model: 点击模拟，看 JSON 逐行组装 -->
     <div v-if="activeTab === 'model'" class="content">
       <div class="sim-header">
-        <button class="sim-btn" @click="runSimulation" :disabled="simRunning">
+        <button class="sim-btn" :disabled="simRunning" @click="runSimulation">
           {{ simRunning ? '记录生成中...' : '模拟：用户点击「加入购物车」' }}
         </button>
       </div>
       <div class="json-build">
-        <div class="json-line" v-for="(line, i) in jsonLines" :key="i"
-             :class="{ visible: simStep > i, highlight: simStep === i + 1 }">
+        <div v-for="(line, i) in jsonLines" :key="i" class="json-line"
+             :class="{ visible: simStep > i, highlight: simStep === i + 1 }"
+>
           <span class="line-tag" :style="{ background: line.color }">{{ line.tag }}</span>
           <code>{{ line.code }}</code>
         </div>
       </div>
-      <div class="sim-hint" v-if="simStep === 0">点击上方按钮，观察一条埋点记录是如何被组装出来的</div>
+      <div v-if="simStep === 0" class="sim-hint">点击上方按钮，观察一条埋点记录是如何被组装出来的</div>
     </div>
 
     <!-- Pipeline: 动画数据流 -->
     <div v-if="activeTab === 'pipeline'" class="content">
       <div class="pipe-visual">
-        <div class="pipe-stage" v-for="(s, i) in pipeStages" :key="i">
+        <div v-for="(s, i) in pipeStages" :key="i" class="pipe-stage">
           <div class="stage-icon" :style="{ background: s.bg }">{{ s.icon }}</div>
           <div class="stage-name">{{ s.name }}</div>
         </div>
         <div class="pipe-track">
-          <div class="packet" :class="{ flying: pipeFlying }"
-               v-for="n in 3" :key="n"
-               :style="{ animationDelay: (n - 1) * 0.6 + 's' }">
+          <div v-for="n in 3" :key="n"
+               class="packet" :class="{ flying: pipeFlying }"
+               :style="{ animationDelay: (n - 1) * 0.6 + 's' }"
+>
           </div>
         </div>
       </div>
@@ -74,9 +76,9 @@
       <div class="etl-compare">
         <div class="etl-side etl-before">
           <div class="etl-side-title">原始数据（服务器收到的）</div>
-          <div class="etl-row-data" v-for="(r, i) in rawData" :key="i" :class="r.issue">
+          <div v-for="(r, i) in rawData" :key="i" class="etl-row-data" :class="r.issue">
             <code>{{ r.text }}</code>
-            <span class="issue-tag" v-if="r.tag">{{ r.tag }}</span>
+            <span v-if="r.tag" class="issue-tag">{{ r.tag }}</span>
           </div>
         </div>
         <div class="etl-arrow-col">
@@ -85,7 +87,7 @@
         </div>
         <div class="etl-side etl-after">
           <div class="etl-side-title">清洗后（写入数据仓库的）</div>
-          <div class="etl-row-data clean" v-for="(r, i) in cleanData" :key="i">
+          <div v-for="(r, i) in cleanData" :key="i" class="etl-row-data clean">
             <code>{{ r }}</code>
           </div>
         </div>

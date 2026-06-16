@@ -17,13 +17,13 @@
         <div class="step-label">{{ step.label }}</div>
         <div v-if="index < steps.length - 1" class="step-arrow">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
       </div>
     </div>
 
-    <div class="step-detail" v-if="activeStep >= 0">
+    <div v-if="activeStep >= 0" class="step-detail">
       <div class="detail-title">
         {{ steps[activeStep].icon }} {{ steps[activeStep].label }}
       </div>
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="detail-example" v-if="steps[activeStep].example">
+      <div v-if="steps[activeStep].example" class="detail-example">
         <div class="example-label">示例</div>
         <code>{{ steps[activeStep].example }}</code>
       </div>

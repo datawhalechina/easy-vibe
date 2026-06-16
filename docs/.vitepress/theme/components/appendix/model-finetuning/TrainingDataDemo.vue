@@ -23,7 +23,7 @@
         <div class="info-title">{{ currentFormat.label }}</div>
         <p class="info-desc">{{ currentFormat.description }}</p>
         <div class="info-tags">
-          <span class="tag" v-for="tag in currentFormat.tags" :key="tag">{{ tag }}</span>
+          <span v-for="tag in currentFormat.tags" :key="tag" class="tag">{{ tag }}</span>
         </div>
       </div>
 
@@ -36,8 +36,8 @@
         </div>
         <div class="json-block">
           <div v-for="(line, i) in currentExample" :key="i" class="json-line">
-            <span class="json-key" v-if="line.key">{{ line.key }}</span>
-            <span class="json-colon" v-if="line.key">: </span>
+            <span v-if="line.key" class="json-key">{{ line.key }}</span>
+            <span v-if="line.key" class="json-colon">: </span>
             <span :class="'json-value ' + (line.type || '')">{{ line.value }}</span>
           </div>
         </div>

@@ -56,8 +56,8 @@
 
       
       <div class="lab-section rtl-ignore-section">
-        <h3 class=”lab-title” dir=”ltr”>{{ t('internationalization.lab2Title') }}</h3>
-        <p class=”lab-desc” dir=”ltr”>
+        <h3 class="”lab-title”" dir="”ltr”">{{ t('internationalization.lab2Title') }}</h3>
+        <p class="”lab-desc”" dir="”ltr”">
           {{ t('internationalization.lab2Desc') }}
         </p>
 

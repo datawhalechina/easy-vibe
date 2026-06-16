@@ -23,7 +23,7 @@
       <div class="node server">
         <div class="node-icon">🖧</div>
         <div class="node-label">{{ t('polling.server') }}</div>
-        <button class="action-btn" @click="triggerNewMessage" :disabled="hasNewMessage">
+        <button class="action-btn" :disabled="hasNewMessage" @click="triggerNewMessage">
           {{ t('polling.createMessage') }}
         </button>
       </div>

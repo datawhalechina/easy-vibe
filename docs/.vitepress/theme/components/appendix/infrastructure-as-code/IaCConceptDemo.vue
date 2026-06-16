@@ -29,7 +29,7 @@
               <div class="step-risk">{{ step.risk }}</div>
             </div>
           </div>
-          <button class="action-btn manual-btn" @click="advanceManual" :disabled="manualProgress >= manualSteps.length">
+          <button class="action-btn manual-btn" :disabled="manualProgress >= manualSteps.length" @click="advanceManual">
             {{ manualProgress >= manualSteps.length ? '全部完成（耗时约 2 小时）' : '点击控制台按钮...' }}
           </button>
           <div v-if="manualProgress >= manualSteps.length" class="result-box warning">
@@ -49,12 +49,12 @@
               :key="i"
               :class="['iac-step', { done: iacProgress > i, current: iacProgress === i }]"
             >
-              <span class="iac-arrow" v-if="i > 0">→</span>
+              <span v-if="i > 0" class="iac-arrow">→</span>
               <span class="iac-badge">{{ step.icon }}</span>
               <span class="iac-label">{{ step.text }}</span>
             </div>
           </div>
-          <button class="action-btn iac-btn" @click="advanceIac" :disabled="iacProgress >= iacSteps.length">
+          <button class="action-btn iac-btn" :disabled="iacProgress >= iacSteps.length" @click="advanceIac">
             {{ iacProgress >= iacSteps.length ? '全部完成（耗时约 30 秒）' : '执行下一步' }}
           </button>
           <div v-if="iacProgress >= iacSteps.length" class="result-box success">

@@ -1,12 +1,12 @@
 <template>
 	<div class="markdown-copy-buttons">
 		<div class="markdown-copy-buttons-inner">
-			<div class="dropdown-container" ref="dropdownContainer">
+			<div ref="dropdownContainer" class="dropdown-container">
 				<!-- Main button -->
 				<div class="dropdown-trigger">
 					<!-- Copy area -->
 					<button class="copy-page" @click="copyAsMarkdown">
-						<span v-html="copied ? iconCheck : iconCopy" class="icon"></span>
+						<span class="icon" v-html="copied ? iconCheck : iconCopy"></span>
 						<span class="label">
 							{{ copied ? 'Copied' : 'Copy page' }}
 						</span>
@@ -16,16 +16,16 @@
 
 					<!-- Chevron area -->
 					<button class="chevron-wrapper" @click.stop="toggleDropdown">
-						<span v-html="iconChevron" class="icon chevron" :class="{ open: isOpen }"></span>
+						<span class="icon chevron" :class="{ open: isOpen }" v-html="iconChevron"></span>
 					</button>
 				</div>
 
 				<!-- Dropdown -->
 				<div v-if="isRendered" ref="dropdownMenu" class="dropdown-menu" :class="{ open: isOpen }">
 					<button class="dropdown-item" @click="viewAsMarkdown">
-						<span v-html="iconMarkdown" class="icon"></span>
+						<span class="icon" v-html="iconMarkdown"></span>
 						View as Markdown
-						<span v-html="iconExternal" class="icon external"></span>
+						<span class="icon external" v-html="iconExternal"></span>
 					</button>
 
 					<button
@@ -34,16 +34,16 @@
 						class="dropdown-item"
 						@click="openInAI(provider)"
 					>
-						<span v-html="provider.icon" class="icon"></span>
+						<span class="icon" v-html="provider.icon"></span>
 						Open in {{ provider.name }}
-						<span v-html="iconExternal" class="icon external"></span>
+						<span class="icon external" v-html="iconExternal"></span>
 					</button>
 				</div>
 			</div>
 
 			<!-- Download button -->
 			<button class="download-btn" @click="downloadMarkdown">
-				<span v-html="downloaded ? iconCheck : iconDownload" class="icon"></span>
+				<span class="icon" v-html="downloaded ? iconCheck : iconDownload"></span>
 			</button>
 		</div>
 	</div>

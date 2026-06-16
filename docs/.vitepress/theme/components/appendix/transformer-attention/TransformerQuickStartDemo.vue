@@ -1,7 +1,7 @@
 <template>
   <div class="demo-card">
     <div class="quick-start-grid">
-      <div class="qs-item" v-for="item in items" :key="item.icon">
+      <div v-for="item in items" :key="item.icon" class="qs-item">
         <div class="qs-icon">{{ item.icon }}</div>
         <div class="qs-title">{{ item.title }}</div>
         <div class="qs-desc">{{ item.desc }}</div>

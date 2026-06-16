@@ -44,7 +44,7 @@ const steps = computed(() => [
     desc: t('devServerFlow.step5Desc'),
     highlight: 'hmr'
   }
-]
+])
 
 async function playAll() {
   if (isPlaying.value) return

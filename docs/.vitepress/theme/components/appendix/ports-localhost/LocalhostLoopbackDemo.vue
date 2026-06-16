@@ -33,7 +33,7 @@ async function simulateRequest() {
   requestStep.value = 0
   responseText.value = ''
 
-  for (let i = 0; i < steps.length; i++) {
+  for (let i = 0; i < steps.value.length; i++) {
     requestStep.value = i + 1
     await new Promise(r => setTimeout(r, 700))
   }
