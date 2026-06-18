@@ -537,7 +537,7 @@ Skills 和 MCP 不是競爭關係。它們是互補的：
 
 | 倉庫 | 說明 |
 |------|------|
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 由 Claude Code 負責人 Boris Cherny 維護，包含 Skills、Agents、Hooks 等 |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 社群整理的 Claude Code 實踐資料，包含 Skills、Agents、Hooks 等 |
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 綜合工具包，包含預配置的 Skills |
 | [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | 精選 Skills 資源清單 |
 | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66 個專業技能和 300+ 參考文件 |
@@ -994,7 +994,7 @@ description: Review Pull Request code. Trigger when the user mentions PR, review
 ### GitHub 社群專案
 
 - [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) - Vercel Labs 官方 Agent Skills 集合，包含 find-skills
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - 由 Boris Cherny 維護的官方最佳實踐
+- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - 社群整理的 Claude Code 實踐資料
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - 包含預配置 Skills 的綜合工具包
 - [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - 精選 Skills 資源列表
 - [superpowers](https://github.com/obra/superpowers) - 軟體開發自動化工作流程的 Skills 集合

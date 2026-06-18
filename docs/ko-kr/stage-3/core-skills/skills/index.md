@@ -537,7 +537,7 @@ Skills와 MCP는 경쟁 관계가 아닙니다. 상호 보완적입니다:
 
 | 저장소 | 설명 |
 |------|------|
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Claude Code 총괄 Boris Cherny가 유지 관리하며, Skills, Agents, Hooks 등을 포함 |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 커뮤니티가 정리한 Claude Code 실천 자료로, Skills, Agents, Hooks 등을 포함 |
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 사전 구성된 Skills를 포함한 종합 툴킷 |
 | [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | 엄선된 Skills 리소스 목록 |
 | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66개의 전문 스킬과 300개 이상의 참조 문서 |
@@ -994,7 +994,7 @@ description: Review Pull Request code. Trigger when the user mentions PR, review
 ### GitHub 커뮤니티 프로젝트
 
 - [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) - Vercel Labs 공식 Agent Skills 컬렉션, find-skills 포함
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - Boris Cherny가 유지 관리하는 공식 모범 사례
+- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - 커뮤니티가 정리한 Claude Code 실천 자료
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - 사전 구성된 Skills를 포함한 종합 툴킷
 - [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - 엄선된 Skills 리소스 목록
 - [superpowers](https://github.com/obra/superpowers) - 소프트웨어 개발 자동화 워크플로우를 위한 Skills 컬렉션

@@ -597,7 +597,7 @@ Superpowers 的作用是**强化流程纪律**，而不是凭空创造能力。
 | 仓库 | 说明 |
 |------|------|
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 综合工具包，包含 TDD 工作流 |
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 官方最佳实践 |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 社区实践资料 |
 
 ### 相关文章
 

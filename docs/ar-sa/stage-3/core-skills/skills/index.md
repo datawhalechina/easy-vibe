@@ -537,7 +537,7 @@ tags:                         # الوسوم
 
 | المستودع | الوصف |
 |------|------|
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | يديره Boris Cherny رئيس Claude Code، يشمل المهارات والوكلاء والخطافات والمزيد |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | ممارسات Claude Code جمعها المجتمع، وتشمل المهارات والوكلاء والخطافات والمزيد |
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | مجموعة أدوات شاملة تتضمن مهارات مُهيأة مسبقًا |
 | [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | قائمة موارد مهارات مختارة |
 | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66 مهارة احترافية و 300+ وثيقة مرجعية |
@@ -994,7 +994,7 @@ description: Review Pull Request code. Trigger when the user mentions PR, review
 ### مشاريع مجتمع GitHub
 
 - [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) - مجموعة Agent Skills الرسمية من Vercel Labs، تتضمن find-skills
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - أفضل الممارسات الرسمية التي يديرها Boris Cherny
+- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - ممارسات Claude Code جمعها المجتمع
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - مجموعة أدوات شاملة تتضمن مهارات مُهيأة مسبقًا
 - [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - قائمة مختارة بموارد المهارات
 - [superpowers](https://github.com/obra/superpowers) - مجموعة مهارات لسير عمل أتمتة تطوير البرمجيات

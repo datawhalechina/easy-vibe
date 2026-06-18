@@ -597,7 +597,7 @@ Superpowers는 무에서 능력을 만드는 것이 아니라 **프로세스 훈
 | 저장소 | 설명 |
 |------|------|
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | TDD 워크플로를 포함한 종합 툴킷 |
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 공식 모범 사례 |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | 커뮤니티 실천 자료 |
 
 ### 관련 문서
 

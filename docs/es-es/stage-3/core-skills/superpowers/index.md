@@ -597,7 +597,7 @@ Sí. Superpowers es de código abierto, y puedes:
 | Repositorio | Descripción |
 |------|------|
 | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | toolkit completo incluyendo flujos de trabajo TDD |
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | mejores prácticas oficiales |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | prácticas comunitarias |
 
 ### Artículos Relacionados
 
