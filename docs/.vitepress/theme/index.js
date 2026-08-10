@@ -2438,7 +2438,16 @@ export default {
     }
 
     const applyImageStyle = (img) => {
-      if (img.classList.contains('nav-title-logo')) return
+      // Homepage components own their image geometry (cover/contain/aspect ratio).
+      // Applying article-image limits here overrides those component styles and
+      // can shrink frames or break responsive crops.
+      if (
+        img.closest('.VPHome') ||
+        img.classList.contains('nav-title-logo') ||
+        img.classList.contains('no-viewer')
+      ) {
+        return
+      }
       const { naturalWidth, naturalHeight } = img
       if (!naturalWidth || !naturalHeight) return
 

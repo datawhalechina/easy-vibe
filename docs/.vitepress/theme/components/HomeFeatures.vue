@@ -479,6 +479,7 @@ onUnmounted(() => {
 
 <style scoped>
 .apple-container {
+  width: 100%;
   font-family:
     -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC',
     'Helvetica Neue', sans-serif;
@@ -771,27 +772,29 @@ a {
 }
 
 .section-container {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto 96px;
   padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .section-band-learning {
   width: 100%;
   max-width: none;
-  margin: 0 -40px 96px;
+  margin: 0 0 96px;
   background: #f5f5f7;
   border-radius: 0;
   padding-top: 64px;
   padding-bottom: 64px;
-  padding-left: 40px;
-  padding-right: 40px;
 }
 
 .section-band-learning .section-container {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .section-band-learning .section-junior {
@@ -853,6 +856,12 @@ a {
 }
 
 @media (max-width: 768px) {
+  .section-container,
+  .section-band-learning .section-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .section-headline {
     font-size: 42px;
   }
@@ -873,8 +882,6 @@ a {
     margin-bottom: 96px;
     padding-top: 42px;
     padding-bottom: 42px;
-    padding-left: 24px;
-    padding-right: 24px;
   }
 
   .section-band-learning .section-junior {
@@ -884,6 +891,13 @@ a {
 </style>
 
 <style>
+.VPHome > .vp-doc.container {
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .VPHome {
   padding-top: 76px !important;
 }
