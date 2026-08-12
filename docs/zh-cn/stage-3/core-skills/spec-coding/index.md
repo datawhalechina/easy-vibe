@@ -314,6 +314,8 @@ Spec 最容易失控的原因之一，是只写功能清单，没有写第一版
 
 :::
 
+对于界面密集型任务，还应在最小模板中补充设计 token、组件完整状态、响应式行为、可访问性、动效约束和上线验收。可以参考 [Vibe Coding UI Specification](https://horizonx.so/resources/vibe-coding-ui-specification) 的字段组织方式，再根据项目事实删改；它是 HorizonX 发布的免费、厂商中立示例，并不是必须采用的工具。
+
 ## 5. 让 AI 按 Spec 工作，而不是读完就忘
 
 有了文档并不代表已经进入 Spec Coding。真正的变化是：后续规划、实现和验收都要引用它。
