@@ -204,6 +204,8 @@ Version requirements, test framework, and documentation standards:
 - All API endpoints require JSDoc comments
 ```
 
+For interface-heavy features, the functional layer also needs constraints that make visual intent testable: design tokens, complete component states, responsive behavior, accessibility, motion, and production-readiness gates. The free, vendor-neutral [Vibe Coding UI Specification](https://horizonx.so/resources/vibe-coding-ui-specification), published by HorizonX, is one concrete field model; adapt it to the project rather than treating it as a required tool.
+
 ---
 
 ## 3. Practicing Spec Coding in Claude Code
