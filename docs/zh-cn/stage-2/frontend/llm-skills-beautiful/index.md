@@ -104,6 +104,7 @@ AI 训练数据中有海量的前端代码，而大部分代码都使用一些"�
 | **antigravity-awesome-skills** | 避免通用 AI 审美套路 | - | [GitHub](https://github.com/sickn33/antigravity-awesome-skills) |
 | **superdesigndev/superdesign** | AI 原生 UI 开发工具 | 4.7k | [GitHub](https://github.com/superdesigndev/superdesign) |
 | **anthropics/skills/frontend-design** | Anthropic 官方前端设计 Skill | - | [GitHub](https://github.com/anthropics/skills) |
+| **uizze/anti-ui-slop** | MIT 工作流：用设计契约、必需状态和硬性完成门禁，避免生成千篇一律的界面 | - | [GitHub](https://github.com/uizze/uizze/tree/main/skills/anti-ui-slop) |
 
 > 💡 更多风格提示词请参考[附录：设计风格提示词速查](#style-prompts)
 
@@ -209,6 +210,7 @@ AI 训练数据中有海量的前端代码，而大部分代码都使用一些"�
 | :--- | :--- | :--- |
 | **UI/UX Pro Max** | 67 种风格、96 种配色、57 种字体组合 | `npm install -g uipro-cli && uipro init --ai claude` |
 | **frontend-design** | Anthropic 官方，避免 AI 审美套路 | `npx skills add anthropics/skills/frontend-design` |
+| **anti-ui-slop** | 用设计契约、必需状态和硬性完成门禁避免通用 UI；完整 UIZZE 可在 800,000+ 个真实 Web 和 iOS 界面中进行实时搜索 | `npx skills add https://uizze.com --skill anti-ui-slop` |
 | **SuperDesign** | IDE 插件，生成多个设计变体 | VSCode 扩展市场搜索 "SuperDesign" |
 
 ### 3.2 安装 UI/UX Pro Max（最推荐）

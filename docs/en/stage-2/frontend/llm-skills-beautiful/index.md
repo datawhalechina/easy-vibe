@@ -105,6 +105,7 @@ You do not need to invent every style prompt from scratch. Here are some useful 
 | **antigravity-awesome-skills** | Helps avoid generic AI visual patterns | - | [GitHub](https://github.com/sickn33/antigravity-awesome-skills) |
 | **superdesigndev/superdesign** | AI-native UI development tooling | 4.7k | [GitHub](https://github.com/superdesigndev/superdesign) |
 | **anthropics/skills/frontend-design** | Anthropic's official frontend design Skill | - | [GitHub](https://github.com/anthropics/skills) |
+| **uizze/anti-ui-slop** | Free MIT workflow for preventing generic UI with a design contract, required states, and a hard finish gate | - | [GitHub](https://github.com/uizze/uizze/tree/main/skills/anti-ui-slop) |
 
 > 💡 For more style prompts, see the [Appendix: Style Prompt Cheatsheet](#style-prompts).
 
@@ -210,6 +211,7 @@ Writing style prompts by hand every time is tiring. **Skills** are reusable desi
 | :--- | :--- | :--- |
 | **UI/UX Pro Max** | 67 styles, 96 color systems, 57 font combinations | `npm install -g uipro-cli && uipro init --ai claude` |
 | **frontend-design** | Anthropic official Skill focused on avoiding generic AI aesthetics | `npx skills add anthropics/skills/frontend-design` |
+| **anti-ui-slop** | Prevent generic UI with a design contract, required states, and a hard finish gate; full UIZZE adds live search across 800,000+ real web and iOS screens | `npx skills add https://uizze.com --skill anti-ui-slop` |
 | **SuperDesign** | IDE plugin that generates multiple design variants | Search for `SuperDesign` in the VS Code extension marketplace |
 
 ### 3.2 Install UI/UX Pro Max
