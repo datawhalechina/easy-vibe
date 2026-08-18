@@ -413,10 +413,10 @@ Our team has also created other courses! Check them out:
 - Thanks to every contributor and everyone who supported the project with feedback and stars ❤️
 
 <div align="center"> 
- <a href="https://www.star-history.com/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
+ <a href="https://star-history.dera.page/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
    <picture> 
-     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
-     <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&legend=top-left" /> 
+     <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
+     <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=datawhalechina/easy-vibe&type=timeline&legend=top-left" /> 
    </picture> 
  </a>
 </div>
@@ -446,4 +446,4 @@ This work is licensed under the
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=date&legend=top-left)](https://www.star-history.com/#datawhalechina/easy-vibe&type=date&legend=top-left)
+[![Star History Chart](https://star-history.dera.page/svg?repos=datawhalechina/easy-vibe&type=date&legend=top-left)](https://star-history.dera.page/#datawhalechina/easy-vibe&type=date&legend=top-left)

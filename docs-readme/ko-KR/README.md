@@ -412,10 +412,10 @@ VS Code, Cursor, Trae 등 AI IDE 채팅 창에서 다음과 같이 입력하세�
 - 피드백과 스타로 프로젝트를 지지해 주신 모든 기여자분들께 감사드립니다 ❤️
 
 <div align="center"> 
- <a href="https://www.star-history.com/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
+ <a href="https://star-history.dera.page/#datawhalechina/easy-vibe&type=timeline&legend=top-left"> 
    <picture> 
-     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
-     <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=timeline&legend=top-left" /> 
+     <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=datawhalechina/easy-vibe&type=timeline&theme=dark&legend=top-left" /> 
+     <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=datawhalechina/easy-vibe&type=timeline&legend=top-left" /> 
    </picture> 
  </a>
 </div>
@@ -445,4 +445,4 @@ VS Code, Cursor, Trae 등 AI IDE 채팅 창에서 다음과 같이 입력하세�
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=datawhalechina/easy-vibe&type=date&legend=top-left)](https://www.star-history.com/#datawhalechina/easy-vibe&type=date&legend=top-left)
+[![Star History Chart](https://star-history.dera.page/svg?repos=datawhalechina/easy-vibe&type=date&legend=top-left)](https://star-history.dera.page/#datawhalechina/easy-vibe&type=date&legend=top-left)
