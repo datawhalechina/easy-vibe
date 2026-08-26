@@ -46,7 +46,7 @@ Claude Code 的 MCP 配置文件位于：
 | 级别 | 配置文件路径 | 作用范围 |
 |-----|-------------|----------|
 | **用户级** | `~/.claude.json` | 所有项目 |
-| **项目级** | `.claude/mcp.json` | 当前项目 |
+| **项目级** | `.mcp.json` | 当前项目 |
 
 推荐优先使用**项目级配置**，让不同项目使用不同的 MCP 服务。
 
@@ -59,7 +59,7 @@ Claude Code 的 MCP 配置文件位于：
 
 Claude：我来帮你配置 GitHub MCP 服务器...
 
-[自动更新 .claude/mcp.json]
+[自动更新 .mcp.json]
 ```
 
 ```
@@ -69,7 +69,7 @@ Claude：好的，我来配置 SQLite MCP 服务器...
 ```
 
 ```
-你：添加一个 HTTP 类型的 MCP 服务器，地址是 https://api.example.com/mcp
+你：添加名为 xquik 的 HTTP MCP 服务器，地址是 https://xquik.com/mcp?codemode=false
 
 Claude：我来添加这个远程 MCP 服务器...
 ```
@@ -158,7 +158,7 @@ Claude：[会自动运行诊断，分析配置文件，检查服务器状态]
 
 ### 项目级配置（推荐）
 
-编辑项目根目录的 `.claude/mcp.json`：
+编辑项目根目录的 `.mcp.json`：
 
 ```json
 {
@@ -198,16 +198,15 @@ Claude Code 支持三种传输方式：
 ```json
 {
   "mcpServers": {
-    "remote-api": {
-      "url": "https://api.example.com/mcp",
-      "transport": "http",
-      "headers": {
-        "Authorization": "Bearer your-token"
-      }
+    "xquik": {
+      "type": "http",
+      "url": "https://xquik.com/mcp?codemode=false"
     }
   }
 }
 ```
+
+Claude Code 收到 `401` 后会启动 OAuth。不要把 API 密钥写入配置文件。
 
 #### SSE（服务器推送）
 
@@ -216,7 +215,7 @@ Claude Code 支持三种传输方式：
   "mcpServers": {
     "streaming": {
       "url": "https://api.example.com/sse",
-      "transport": "sse"
+      "type": "sse"
     }
   }
 }
@@ -224,10 +223,41 @@ Claude Code 支持三种传输方式：
 
 ## 实战示例
 
-### 示例 1：GitHub 工作流自动化
+### 示例 1：用 Xquik 做公开 X 调研
 
+仓库中的 `config/mcporter.json` 提供可共享的 OAuth 配置。它只允许文档、帖子搜索、帖子详情、帖子串和用户资料读取工具。
+
+Claude Code 用户可以添加同一个远程服务：
+
+```bash
+claude mcp add --transport http --scope project xquik https://xquik.com/mcp?codemode=false
+claude mcp login xquik
 ```
-你：帮我把当前的修改推送到 GitHub，然后创建一个 PR，标题是"添加新功能"
+
+运行 `/mcp`，检查服务器地址，再完成浏览器授权。项目级服务器首次使用时仍需人工批准。
+
+MCPorter 用户可直接验证仓库配置。MCPorter 0.13.7 需要 Node.js 24 或更高版本：
+
+```bash
+npx mcporter@0.13.7 --config config/mcporter.json config get xquik
+npx mcporter@0.13.7 --config config/mcporter.json auth xquik
+```
+
+授权后，执行一个有边界的产品调研任务：
+
+```text
+只使用读取工具。搜索过去 7 天关于“AI 编程课程”的公开 X 帖子，最多返回 20 条。
+按用户问题聚类，并为每一类保留帖子 URL。不要发布、点赞、关注或创建监控。
+```
+
+先检查来源链接，再把结论写入需求文档。任何写入或持续监控操作都需要单独确认。
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
+
+### 示例 2：GitHub 工作流自动化
+
+```text
+你：帮我把当前的修改推送到 GitHub，然后创建一个标题为“添加新功能”的 PR
 
 Claude：
 1. 检查当前 git 状态...
@@ -238,7 +268,7 @@ Claude：
 6. PR 已创建：https://github.com/owner/repo/pull/123
 ```
 
-### 示例 2：数据库查询
+### 示例 3：数据库查询
 
 ```
 你：查询数据库中最近注册的 10 个用户
@@ -252,7 +282,7 @@ Claude：
    ...
 ```
 
-### 示例 3：网页截图分析
+### 示例 4：网页截图分析
 
 ```
 你：打开 https://example.com 并截图，分析一下页面设计
@@ -269,7 +299,7 @@ Claude：
    ...
 ```
 
-### 示例 4：与 Notion 集成
+### 示例 5：与 Notion 集成
 
 ```
 你：把我刚才的笔记保存到 Notion
@@ -330,7 +360,7 @@ MCP 服务器状态：
 
 建议：
 1. 检查 sqlite 数据库路径是否正确
-2. 确保 .claude/mcp.json 格式正确
+2. 确保 .mcp.json 格式正确
 ```
 
 ## 最佳实践
@@ -344,8 +374,8 @@ MCP 服务器状态：
 更重要的是，项目级配置可以提交到 Git 仓库，团队成员克隆项目后就能直接使用相同的 MCP 服务，无需重复配置。
 
 ```
-项目 A（前端项目）→ .claude/mcp.json 包含浏览器测试 MCP
-项目 B（后端项目）→ .claude/mcp.json 包含数据库 MCP
+项目 A（前端项目）→ .mcp.json 包含浏览器测试 MCP
+项目 B（后端项目）→ .mcp.json 包含数据库 MCP
 ```
 
 ### 2. 敏感信息环境变量化
@@ -407,7 +437,7 @@ MCP 服务器状态：
 
 | 特性 | Claude Code | Claude Desktop |
 |-----|-------------|----------------|
-| **配置文件** | `~/.claude.json` 或 `.claude/mcp.json` | `claude_desktop_config.json` |
+| **配置文件** | `~/.claude.json` 或 `.mcp.json` | `claude_desktop_config.json` |
 | **项目级配置** | ✓ 支持 | ✗ 不支持 |
 | **自然语言管理** | ✓ 支持 | ✗ 需手动编辑 |
 | **诊断工具** | ✓ `/doctor` | ✗ 无 |
@@ -509,6 +539,7 @@ MCP 服务器状态：
 - [MCP 官方网站](https://modelcontextprotocol.io/)
 - [MCP 规范文档](https://modelcontextprotocol.io/specification/)
 - [MCP GitHub 仓库](https://github.com/modelcontextprotocol)
+- [Xquik MCP 官方指南](https://docs.xquik.com/mcp/overview)
 
 ### 官方服务器
 
