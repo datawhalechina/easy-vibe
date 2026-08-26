@@ -46,7 +46,7 @@ Claude Code's MCP configuration files are located at:
 | Level | Config file path | Scope |
 |-----|-------------|----------|
 | **User level** | `~/.claude.json` | All projects |
-| **Project level** | `.claude/mcp.json` | Current project |
+| **Project level** | `.mcp.json` | Current project |
 
 It is recommended to use **project-level config** first, so different projects can use different MCP services.
 
@@ -59,7 +59,7 @@ You: Help me add a GitHub MCP server. My token is ghp_xxx
 
 Claude: I'll help you configure the GitHub MCP server...
 
-[Automatically updates .claude/mcp.json]
+[Automatically updates .mcp.json]
 ```
 
 ```text
@@ -69,7 +69,7 @@ Claude: Okay, I'll configure the SQLite MCP server...
 ```
 
 ```text
-You: Add an HTTP-type MCP server with the address https://api.example.com/mcp
+You: Add an HTTP MCP server named xquik at https://xquik.com/mcp?codemode=false
 
 Claude: I'll add that remote MCP server...
 ```
@@ -158,7 +158,7 @@ Edit `~/.claude.json`:
 
 ### Project-level config, recommended
 
-Edit `.claude/mcp.json` in the project root:
+Edit `.mcp.json` in the project root:
 
 ```json
 {
@@ -199,16 +199,15 @@ Claude Code supports three transport modes:
 ```json
 {
   "mcpServers": {
-    "remote-api": {
-      "url": "https://api.example.com/mcp",
-      "transport": "http",
-      "headers": {
-        "Authorization": "Bearer your-token"
-      }
+    "xquik": {
+      "type": "http",
+      "url": "https://xquik.com/mcp?codemode=false"
     }
   }
 }
 ```
+
+Claude Code starts OAuth after the server returns `401`. Never commit an API key.
 
 #### SSE, server-sent events
 
@@ -217,7 +216,7 @@ Claude Code supports three transport modes:
   "mcpServers": {
     "streaming": {
       "url": "https://api.example.com/sse",
-      "transport": "sse"
+      "type": "sse"
     }
   }
 }
@@ -225,10 +224,42 @@ Claude Code supports three transport modes:
 
 ## Practical examples
 
-### Example 1: GitHub workflow automation
+### Example 1: Research public X posts with Xquik
+
+The repository's `config/mcporter.json` provides a shareable OAuth configuration. It allows only documentation, post search, post lookup, thread, and profile read tools.
+
+Claude Code users can add the same remote server:
+
+```bash
+claude mcp add --transport http --scope project xquik https://xquik.com/mcp?codemode=false
+claude mcp login xquik
+```
+
+Run `/mcp`, review the server address, then complete browser authorization. Claude Code still asks you to approve a project server before first use.
+
+MCPorter users can validate the repository config directly. MCPorter 0.13.7 requires Node.js 24 or newer:
+
+```bash
+npx mcporter@0.13.7 --config config/mcporter.json config get xquik
+npx mcporter@0.13.7 --config config/mcporter.json auth xquik
+```
+
+After authorization, run a bounded product-research task:
 
 ```text
-You: Help me push the current changes to GitHub, then create a PR titled "Add new feature"
+Use read tools only. Search public X posts from the last 7 days about "AI coding courses".
+Return at most 20 posts. Group them by user problem and preserve each source URL.
+Do not publish, like, follow, or create a monitor.
+```
+
+Check the source links before adding conclusions to product requirements. Require separate confirmation for every write or continuous monitor.
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
+
+### Example 2: GitHub workflow automation
+
+```text
+You: Push the current changes to GitHub, then create a PR titled "Add new feature"
 
 Claude:
 1. Check current git status...
@@ -239,7 +270,7 @@ Claude:
 6. PR created: https://github.com/owner/repo/pull/123
 ```
 
-### Example 2: Database query
+### Example 3: Database query
 
 ```text
 You: Query the 10 most recently registered users in the database
@@ -253,7 +284,7 @@ Claude:
    ...
 ```
 
-### Example 3: Webpage screenshot analysis
+### Example 4: Webpage screenshot analysis
 
 ```text
 You: Open https://example.com, take a screenshot, and analyze the page design
@@ -270,7 +301,7 @@ Claude:
    ...
 ```
 
-### Example 4: Integration with Notion
+### Example 5: Integration with Notion
 
 ```text
 You: Save the notes I just wrote to Notion
@@ -333,7 +364,7 @@ MCP server status:
 
 Suggestions:
 1. Check whether the sqlite database path is correct
-2. Make sure the .claude/mcp.json format is correct
+2. Make sure the .mcp.json format is correct
 ```
 
 ## Best practices
@@ -347,8 +378,8 @@ Different projects often need different MCP services. For example, a frontend pr
 More importantly, project-level config can be committed to Git. After team members clone the project, they can directly use the same MCP services without reconfiguring everything.
 
 ```text
-Project A, frontend project -> .claude/mcp.json contains browser testing MCP
-Project B, backend project -> .claude/mcp.json contains database MCP
+Project A, frontend project -> .mcp.json contains browser testing MCP
+Project B, backend project -> .mcp.json contains database MCP
 ```
 
 ### 2. Store sensitive information in environment variables
@@ -410,7 +441,7 @@ Used for E2E testing.
 
 | Feature | Claude Code | Claude Desktop |
 |-----|-------------|----------------|
-| **Config file** | `~/.claude.json` or `.claude/mcp.json` | `claude_desktop_config.json` |
+| **Config file** | `~/.claude.json` or `.mcp.json` | `claude_desktop_config.json` |
 | **Project-level config** | ✓ Supported | ✗ Not supported |
 | **Natural-language management** | ✓ Supported | ✗ Manual editing required |
 | **Diagnostics** | ✓ `/doctor` | ✗ None |
@@ -512,6 +543,7 @@ Used for E2E testing.
 - [MCP official website](https://modelcontextprotocol.io/)
 - [MCP specification documentation](https://modelcontextprotocol.io/specification/)
 - [MCP GitHub repository](https://github.com/modelcontextprotocol)
+- [Official Xquik MCP guide](https://docs.xquik.com/mcp/overview)
 
 ### Official servers
 
