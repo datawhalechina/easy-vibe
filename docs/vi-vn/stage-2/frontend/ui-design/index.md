@@ -1,7 +1,7 @@
 <script setup>
 import { relatedArticlesMap } from '@theme/data/relatedArticles'
 
-const relatedArticles = relatedArticlesMap['zh-cn/stage-2/frontend/ui-design'] ?? []
+const relatedArticles = relatedArticlesMap['vi-vn/stage-2/frontend/ui-design'] ?? []
 </script>
 
 # Xây dựng ứng dụng hiện đại đầu tiên - Thiết kế UI
