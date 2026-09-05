@@ -46,7 +46,7 @@ Claude Code's MCP configuration files are located at:
 | Level | Config file path | Scope |
 |-----|-------------|----------|
 | **User level** | `~/.claude.json` | All projects |
-| **Project level** | `.claude/mcp.json` | Current project |
+| **Project level** | `.mcp.json` | Current project |
 
 It is recommended to use **project-level config** first, so different projects can use different MCP services.
 
@@ -59,7 +59,7 @@ You: Help me add a GitHub MCP server. My token is ghp_xxx
 
 Claude: I'll help you configure the GitHub MCP server...
 
-[Automatically updates .claude/mcp.json]
+[Automatically updates .mcp.json]
 ```
 
 ```text
@@ -158,7 +158,7 @@ Edit `~/.claude.json`:
 
 ### Project-level config, recommended
 
-Edit `.claude/mcp.json` in the project root:
+Edit `.mcp.json` in the project root:
 
 ```json
 {
@@ -196,19 +196,44 @@ Claude Code supports three transport modes:
 
 #### HTTP, remote service
 
+Try a remote connection with [Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp). It provides `web_search` for public web search and `web_fetch` for page content extraction over Streamable HTTP, without a Parallel account or API key. Free access is rate limited; Claude Code still needs its own sign-in or API setup.
+
+Run this in the project where you want to use it:
+
+```bash
+claude mcp add --transport http --scope project parallel-search https://search.parallel.ai/mcp
+```
+
+The command writes the following entry to `.mcp.json` at the project root. Keep any existing servers rather than replacing the whole file with this example:
+
 ```json
 {
   "mcpServers": {
-    "remote-api": {
-      "url": "https://api.example.com/mcp",
-      "transport": "http",
-      "headers": {
-        "Authorization": "Bearer your-token"
-      }
+    "parallel-search": {
+      "type": "http",
+      "url": "https://search.parallel.ai/mcp"
     }
   }
 }
 ```
+
+Start or restart `claude` in the same directory, review and approve the project server when prompted, then use `/mcp` to check the connection and the `web_search` and `web_fetch` tools. You can also run `claude mcp get parallel-search` in your terminal. If it shows `Pending approval`, return to the interactive session to approve it first.
+
+Once connected, try:
+
+```text
+Use parallel-search's web_search to find the official VitePress getting started guide, then use web_fetch to read its installation prerequisites. Include source links.
+```
+
+This service is optional. Once enabled, Claude Code may call it based on the task and your tool permissions. Queries, requested URLs, and any objective or context supplied with the call go to Parallel. Keep secrets and private project content out of queries.
+
+To remove it, run this in the same project directory, then restart the session:
+
+```bash
+claude mcp remove parallel-search --scope project
+```
+
+See the [official Claude Code MCP documentation](https://code.claude.com/docs/en/mcp#project-scope) for project configuration and approval details.
 
 #### SSE, server-sent events
 
@@ -333,7 +358,7 @@ MCP server status:
 
 Suggestions:
 1. Check whether the sqlite database path is correct
-2. Make sure the .claude/mcp.json format is correct
+2. Make sure the .mcp.json format is correct
 ```
 
 ## Best practices
@@ -347,8 +372,8 @@ Different projects often need different MCP services. For example, a frontend pr
 More importantly, project-level config can be committed to Git. After team members clone the project, they can directly use the same MCP services without reconfiguring everything.
 
 ```text
-Project A, frontend project -> .claude/mcp.json contains browser testing MCP
-Project B, backend project -> .claude/mcp.json contains database MCP
+Project A, frontend project -> .mcp.json contains browser testing MCP
+Project B, backend project -> .mcp.json contains database MCP
 ```
 
 ### 2. Store sensitive information in environment variables
@@ -410,7 +435,7 @@ Used for E2E testing.
 
 | Feature | Claude Code | Claude Desktop |
 |-----|-------------|----------------|
-| **Config file** | `~/.claude.json` or `.claude/mcp.json` | `claude_desktop_config.json` |
+| **Config file** | `~/.claude.json` or `.mcp.json` | `claude_desktop_config.json` |
 | **Project-level config** | ✓ Supported | ✗ Not supported |
 | **Natural-language management** | ✓ Supported | ✗ Manual editing required |
 | **Diagnostics** | ✓ `/doctor` | ✗ None |

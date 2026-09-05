@@ -46,7 +46,7 @@ Claude Code 的 MCP 配置文件位于：
 | 级别 | 配置文件路径 | 作用范围 |
 |-----|-------------|----------|
 | **用户级** | `~/.claude.json` | 所有项目 |
-| **项目级** | `.claude/mcp.json` | 当前项目 |
+| **项目级** | `.mcp.json` | 当前项目 |
 
 推荐优先使用**项目级配置**，让不同项目使用不同的 MCP 服务。
 
@@ -59,7 +59,7 @@ Claude Code 的 MCP 配置文件位于：
 
 Claude：我来帮你配置 GitHub MCP 服务器...
 
-[自动更新 .claude/mcp.json]
+[自动更新 .mcp.json]
 ```
 
 ```
@@ -158,7 +158,7 @@ Claude：[会自动运行诊断，分析配置文件，检查服务器状态]
 
 ### 项目级配置（推荐）
 
-编辑项目根目录的 `.claude/mcp.json`：
+编辑项目根目录的 `.mcp.json`：
 
 ```json
 {
@@ -195,19 +195,44 @@ Claude Code 支持三种传输方式：
 
 #### HTTP（远程服务）
 
+可以用 [Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp) 试一次远程连接：它提供网页搜索 `web_search` 和网页内容提取 `web_fetch`，使用 Streamable HTTP，无需 Parallel 账号或 API Key。免费访问有速率限制；Claude Code 本身仍需完成登录或 API 配置。
+
+在要使用它的项目根目录运行：
+
+```bash
+claude mcp add --transport http --scope project parallel-search https://search.parallel.ai/mcp
+```
+
+命令会把下面的条目写入项目根目录的 `.mcp.json`。如果已有其他服务器，请保留它们，不要用示例覆盖整个文件：
+
 ```json
 {
   "mcpServers": {
-    "remote-api": {
-      "url": "https://api.example.com/mcp",
-      "transport": "http",
-      "headers": {
-        "Authorization": "Bearer your-token"
-      }
+    "parallel-search": {
+      "type": "http",
+      "url": "https://search.parallel.ai/mcp"
     }
   }
 }
 ```
+
+在同一目录启动或重启 `claude`，按提示审核并批准这个项目级服务器，再用 `/mcp` 查看连接状态及 `web_search`、`web_fetch` 工具。也可以在终端运行 `claude mcp get parallel-search`；如果显示 `Pending approval`，需要先回到交互会话完成批准。
+
+连接后可以试试：
+
+```text
+用 parallel-search 的 web_search 查找 VitePress 官方入门文档，再用 web_fetch 读取安装要求，并附上来源链接。
+```
+
+这是可选服务。启用后，Claude Code 可能根据任务和你的工具权限调用它；查询、请求的 URL 以及随调用提供的目标或上下文会发送给 Parallel。不要在查询中包含密钥或私有项目内容。
+
+不再需要时，在同一项目目录运行下面的命令，然后重启会话：
+
+```bash
+claude mcp remove parallel-search --scope project
+```
+
+项目级配置与批准流程见 [Claude Code MCP 官方文档](https://code.claude.com/docs/en/mcp#project-scope)。
 
 #### SSE（服务器推送）
 
@@ -330,7 +355,7 @@ MCP 服务器状态：
 
 建议：
 1. 检查 sqlite 数据库路径是否正确
-2. 确保 .claude/mcp.json 格式正确
+2. 确保 .mcp.json 格式正确
 ```
 
 ## 最佳实践
@@ -344,8 +369,8 @@ MCP 服务器状态：
 更重要的是，项目级配置可以提交到 Git 仓库，团队成员克隆项目后就能直接使用相同的 MCP 服务，无需重复配置。
 
 ```
-项目 A（前端项目）→ .claude/mcp.json 包含浏览器测试 MCP
-项目 B（后端项目）→ .claude/mcp.json 包含数据库 MCP
+项目 A（前端项目）→ .mcp.json 包含浏览器测试 MCP
+项目 B（后端项目）→ .mcp.json 包含数据库 MCP
 ```
 
 ### 2. 敏感信息环境变量化
@@ -407,7 +432,7 @@ MCP 服务器状态：
 
 | 特性 | Claude Code | Claude Desktop |
 |-----|-------------|----------------|
-| **配置文件** | `~/.claude.json` 或 `.claude/mcp.json` | `claude_desktop_config.json` |
+| **配置文件** | `~/.claude.json` 或 `.mcp.json` | `claude_desktop_config.json` |
 | **项目级配置** | ✓ 支持 | ✗ 不支持 |
 | **自然语言管理** | ✓ 支持 | ✗ 需手动编辑 |
 | **诊断工具** | ✓ `/doctor` | ✗ 无 |
