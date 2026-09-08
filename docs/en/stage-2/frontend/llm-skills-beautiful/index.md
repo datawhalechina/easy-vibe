@@ -105,7 +105,7 @@ You do not need to invent every style prompt from scratch. Here are some useful 
 | **antigravity-awesome-skills** | Helps avoid generic AI visual patterns | - | [GitHub](https://github.com/sickn33/antigravity-awesome-skills) |
 | **superdesigndev/superdesign** | AI-native UI development tooling | 4.7k | [GitHub](https://github.com/superdesigndev/superdesign) |
 | **anthropics/skills/frontend-design** | Anthropic's official frontend design Skill | - | [GitHub](https://github.com/anthropics/skills) |
-| **uizze/anti-ui-slop** | Free MIT workflow for preventing generic UI with a design contract, required states, and a hard finish gate | - | [GitHub](https://github.com/uizze/uizze/tree/main/skills/anti-ui-slop) |
+| **uizze/anti-ui-slop** | Free workflow for preventing generic UI with a design contract, required states, and a hard finish gate | - | [GitHub](https://github.com/uizze/uizze/tree/main/skills/anti-ui-slop) |
 
 > 💡 For more style prompts, see the [Appendix: Style Prompt Cheatsheet](#style-prompts).
 

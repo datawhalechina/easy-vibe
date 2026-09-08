@@ -104,7 +104,7 @@ AI 训练数据中有海量的前端代码，而大部分代码都使用一些"�
 | **antigravity-awesome-skills** | 避免通用 AI 审美套路 | - | [GitHub](https://github.com/sickn33/antigravity-awesome-skills) |
 | **superdesigndev/superdesign** | AI 原生 UI 开发工具 | 4.7k | [GitHub](https://github.com/superdesigndev/superdesign) |
 | **anthropics/skills/frontend-design** | Anthropic 官方前端设计 Skill | - | [GitHub](https://github.com/anthropics/skills) |
-| **uizze/anti-ui-slop** | MIT 工作流：用设计契约、必需状态和硬性完成门禁，避免生成千篇一律的界面 | - | [GitHub](https://github.com/uizze/uizze/tree/main/skills/anti-ui-slop) |
+| **uizze/anti-ui-slop** | 免费工作流：用设计契约、必需状态和硬性完成门禁，避免生成千篇一律的界面 | - | [GitHub](https://github.com/uizze/uizze/tree/main/skills/anti-ui-slop) |
 
 > 💡 更多风格提示词请参考[附录：设计风格提示词速查](#style-prompts)
 
