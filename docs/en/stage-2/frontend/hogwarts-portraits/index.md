@@ -17,7 +17,7 @@ If any of these still feel unclear, go back to the previous lesson or ask in the
 
 This chapter's project is **Hogwarts Portraits**. As the name suggests, it is inspired by the magical portraits in Hogwarts that seem to come alive. Our goal is to use AI to create an interactive magical portrait experience. Talking to the portrait should feel like talking to the character directly: it should preserve conversational memory and also know the character's background and history. Through this project, you will integrate the AI agent and workflow concepts you learned earlier into a real product interface.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.webp)
 
 To really build Hogwarts Portraits, we need to create a frontend interface that matches the feeling of a magical portrait. That means touching modern frontend design tools, learning how to combine design and code, and turning a sketch on a canvas into a real webpage.
 
@@ -42,7 +42,7 @@ What kind of "magical portrait" are we actually trying to build?
 
 Put simply, we want to recreate the feeling of the living portraits in the Harry Potter world. The portrait should no longer be a static image hanging on a wall. Instead, it should be a person-like character you can talk to, and it should change expression or "mood" depending on the conversation.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.webp)
 
 To make the portrait feel less like a generic chatbot and more like a "real person," we need to solve two things.
 
@@ -52,7 +52,7 @@ The second is **speech style**. Knowledge alone is not enough. We also want the 
 
 On top of the dialogue itself, we also want the character's emotions to be visible. To do that, we can create an emotion score. Dify can be configured to output not only a textual answer, but also a "mood score" or emotion label. Once the frontend receives that signal, it can render different portrait images based on the score. A high score might map to a happy portrait, while a low score might map to a sad or angry one. In that way, the portrait becomes something that visually changes with the conversation instead of remaining a static image.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.webp)
 
 The character can be a real-world celebrity, a historical person, an anime or game character, or even an original character you create from scratch. The page itself does not need to be very complicated, but a few key elements are essential:
 
@@ -90,7 +90,7 @@ For the portrait visuals, directly using public images of a real person may not 
 
 This tutorial uses [Lovart](https://www.lovart.ai/home), an AI design agent that supports end-to-end workflows from concept to asset delivery. With Lovart, you can generate a whole set of emotional portrait variations and save them for later use.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.webp)
 
 Once all of that is ready, you can start designing the overall page. Ideally, the visual style should feel strongly tied to the character.
 
@@ -104,7 +104,7 @@ At the prototype level, you can start with something simple. As described above,
 
 In this example, the right side is designed like an X-style social panel instead of a traditional biography area, but you can replace that region with any feature that better fits the character.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.webp)
 
 At the most basic level, you can even sketch the first page prototype in PowerPoint. In the example, a magical frame image was used, and the page is arranged horizontally:
 
@@ -112,11 +112,11 @@ At the most basic level, you can even sketch the first page prototype in PowerPo
 - center: portrait area
 - far right: X-style panel
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.webp)
 
 Once that rough prototype exists, you can ask an LLM to turn it into a real frontend design and then into actual code.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.webp)
 
 Of course, in real frontend work we usually do not use PowerPoint for interface design. We use better prototyping tools and proper frontend design tools instead.
 
@@ -203,7 +203,7 @@ That is often enough to get a first testable version running, although you shoul
 
 One important point: all secret keys should be stored in environment variables instead of being hardcoded. That includes your Dify API credentials. Later, when you deploy the project publicly, you can define those environment variables directly on the deployment platform. Another option is to let the model build a settings panel in the app itself so the variables are saved only in the current page context and are not exposed publicly.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.webp)
 
 ## 3.2 Design the Dify workflow and connect the API
 
@@ -375,7 +375,7 @@ If building the entire Hogwarts Portraits project from scratch feels too difficu
 
 https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.webp)
 
 # 4. Try different design styles
 
@@ -394,7 +394,7 @@ For example:
 
 The example below shows a Chinese classical poet reinterpretation of the same interface. The portrait image was left unchanged, while the surrounding visual system was redesigned.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.webp)
 
 Do not feel constrained by the exact layout used earlier in the chapter. You can reshape the portrait page to better match the habits and personality of the role you are portraying. That is what makes the final application more interesting.
 

@@ -90,9 +90,9 @@ Trong thanh công cụ phía trên giao diện chỉnh sửa MasterGo, bạn có
 
 2. **Xem kết quả tạo**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **Lấy code**
    - Nhấp nút xanh "Chèn vào canvas", có thể trực tiếp chỉnh sửa trang web sau khi tạo
@@ -128,19 +128,19 @@ Sử dụng đầy đủ chức năng Figma Make cần quyền người dùng Pr
    - Tải bản thiết kế bạn muốn khôi phục vào hộp thoại
    - Thêm prompt mô tả yêu cầu
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **Xem kết quả tạo**
    - Đợi một lúc sẽ thấy kết quả render
    - Nhấp nút play ở góc trên bên phải để xem trước toàn màn hình
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **Điều chỉnh chi tiết**
    - Nhấp icon editor ở góc trên bên phải (icon chuột và thước)
    - Quay lại giao diện Figma Editor quen thuộc để điều chỉnh chi tiết
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **Xuất code**
    - Sau khi điều chỉnh hài lòng, chọn xuất code

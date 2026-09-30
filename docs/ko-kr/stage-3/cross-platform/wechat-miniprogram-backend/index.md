@@ -7,7 +7,7 @@ description: '동작하는 미니프로그램에 신뢰할 수 있는 사용자 
 
 이전 장은 사용자 휴대폰에서 실행되는 화면을 만들었습니다. 이번에는 회사 서비스에 필요한 사용자 식별, 공유 데이터, 권한, 파일, 로그를 추가합니다.
 
-![Uber WeChat 미니프로그램](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Uber WeChat 미니프로그램](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. 프런트는 입구, 백엔드는 판단자다
 

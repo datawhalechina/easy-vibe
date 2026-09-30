@@ -26,7 +26,7 @@ Nach Abschluss dieses Tutorials werden Sie ein systematisches Grundlagenverstän
 
 Retrieval-Augmented Generation (RAG) ist einer der wichtigsten technischen Ansätze in der generativen KI heute. Die Grundidee ist einfach: Bevor ein großes Modell aufgefordert wird, eine Antwort zu generieren, ruft das System zunächst Informationen ab, die mit der Frage des Benutzers zusammenhängen, aus einer externen Wissensbasis und übergibt dann sowohl die abgerufenen Informationen als auch die ursprüngliche Frage an das Modell, damit es auf der Grundlage realer Materialien antworten kann. Diese externe Wissensbasis kann interne Unternehmensrichtlinien, Prozessdokumente und Produktwissen sein oder eine Branchendatenbank, einen regulatorischen Korpus, eine Normenbibliothek usw.
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 An diesem Punkt stellt sich eine natürliche Frage: Wenn große Modelle bereits „Fragen direkt beantworten" können, warum eine zusätzliche Ebene namens Retrieval-Augmented Generation hinzufügen? Besonders da Kontextfenster immer größer werden, kann es so wirken, als ob die einfache Übergabe aller relevanten Materialien an das Modell die meisten Anforderungen lösen sollte.
 
@@ -36,7 +36,7 @@ Der eigentliche Unterschied besteht darin, dass „eine Antwort produzieren kön
    Auch wenn Kontextfenster immer weiter wachsen, ist die Idee, alle Dokumente auf einmal in den Kontext zu laden, in realen Systemen weiterhin unpraktisch. Der zentrale Widerspruch zeigt sich an zwei Stellen:
 2. Inferenzkosten korrelieren stark positiv mit der Kontextlänge. Je länger der Kontext, desto stärker steigen die Inferenzkosten, nahezu linear und manchmal sogar superlinear. Für einen einzelnen Aufruf liegen 8K Tokens und 200K Tokens in völlig unterschiedlichen Preis- und Latenzbereichen, und lange Kontexte haben eine deutlich höhere Kostenschwelle.
 
-   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > Im inhaltlichen Sinn ist der Kontext die Hintergrundinformation und Gesprächshistorie, auf die sich das Modell beim Beantworten einer Frage „bezieht". Technisch gesehen ist es die gesamte Token-Sequenz, die dem Modell für eine Inferenz übergeben wird, wie System- und Benutzeranweisungen, Nachrichtenhistorie und abgerufene Passagen.
    >
@@ -418,7 +418,7 @@ MTEB bietet ein einheitliches und objektives Bewertungsframework für viele Embe
 
 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 Obwohl es viele Modelle auf dem Leaderboard gibt, müssen Sie nicht alle beherrschen. In der Praxis ist die Wahl des Embedding-Modells, das von einem großen Modellanbieter bereitgestellt wird, oder die Nutzung eines Cloud-Served-Modells, das bereits von vielen Menschen validiert wurde, normalerweise eine sichere Wahl. Sie können das Leaderboard auch nach Kategorie oder Sprache in der Seitenleiste filtern:
 
@@ -651,7 +651,7 @@ Für die meisten Unternehmen, da Geschäftsszenarien einzigartig sind, besteht d
 
 Wenn die Ressourcen begrenzt sind und Sie eine schnelle Baseline benötigen, sind öffentliche Benchmarks dennoch ein nützlicher Ausgangspunkt. Stand 2025 existieren viele öffentliche Benchmarks für sowohl allgemeine als auch vertikale Szenarien:
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 Wählen Sie unter ihnen, indem Sie zunächst das Ziel klären. Möchten Sie eine Baseline erstellen oder das System vor dem Launch validieren? Prüfen Sie dann, ob der Benchmark die Szenarien und das Schwierigkeitsprofil abdeckt, das Sie interessiert. Für zeitempfindliche Domänen wie Nachrichten oder Finanzen stellen Sie sicher, dass der Benchmark zeitempfindliche Tests enthält.
 
@@ -788,7 +788,7 @@ Verwandte Forschung:
 
 - https://arxiv.org/pdf/2502.08826
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 Echte Daten sind nie nur Text. Ingenieure, die Serverausfälle diagnostizieren, müssen Temperaturkurven, Geräte-Screenshots und Protokolle zusammen betrachten. Ärzte bei Diagnosen benötigen CT- oder MRT-Bilder, Testberichte und elektronische Krankenakten gleichzeitig. Traditioneller Text-RAG kann höchstens Phrasen wie „Temperaturanomalie" oder „Verdacht auf Lungenknoten" abrufen, aber er tut sich schwer, diese Beschreibungen mit dem tatsächlichen Diagrammtrend oder der Bildläsionsform zu verbinden, und kann keine Dokumente oder Wissen aus Bildern, Audio oder Video rückwärts suchen.
 

@@ -30,7 +30,7 @@ Choose native SwiftUI or Jetpack Compose when the product depends heavily on the
 
 My BMW brings vehicle status, charging, service, and remote controls into one mobile product. The interface places the car and its current state before secondary actions.
 
-![My BMW shows vehicle status and service entry points beside the car](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.png)
+![My BMW shows vehicle status and service entry points beside the car](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.webp)
 
 For our ledger, borrow the same information order: today's amount first, the latest records second, and the add action always easy to reach.
 
@@ -40,7 +40,7 @@ Reference: [Flutter customer story for BMW](https://flutter.dev/showcase/bmw).
 
 Payment products must make it obvious whether an action succeeded. Google Pay uses clear state changes and feedback rather than leaving the user to guess.
 
-![Google Pay reward feedback and payment state](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.png)
+![Google Pay reward feedback and payment state](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.webp)
 
 Our ledger will do the same after saving: update the total, add the row, clear the form, and show a success message.
 

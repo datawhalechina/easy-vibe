@@ -45,7 +45,7 @@ AI를 단순한 대화 상대에서 디지털 직원으로 업그레이드하려
 
 이것이 바로 AI 에이전트(AI Agent)의 초기 형태입니다. 목표, 지식, 도구, 실행 경로를 갖춘 자동화 단위입니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > 참고: 현재 업계에서 말하는 간단한 버전의 "에이전트"는 대부분 LLM + 도구 + 지식 베이스의 조합으로 구성된 향상형 애플리케이션을 의미하며, 자율적으로 계획을 수립할 수 있는 에이전트를 말하는 것은 아닙니다. 간단한 에이전트는 진정한 추론과 장기 계획 능력은 갖추지 못했지만, 이미 많은 기업급 자동화 시나리오를 지원하기에 충분합니다. 자율 계획 및 행동 능력을 갖춘 진정한 에이전트에 대해서는 이후 장에서 자세히 다루겠습니다.
 
@@ -61,7 +61,7 @@ AI를 단순한 대화 상대에서 디지털 직원으로 업그레이드하려
 
 RAG의 기본 아이디어는 사용자가 질문할 때, 시스템이 먼저 기업 지식 베이스에서 질문의 의미와 가장 관련성이 높은 여러 텍스트 조각(예: 제품 매뉴얼의 특정 단락, HR 규정의 특정 조항)을 검색한 후, 이러한 조각을 컨텍스트로서 대형 모델의 입력에 "주입"하여, 실제 자료를 바탕으로 답변을 생성하도록 유도하는 것입니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 이미지 출처: [https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@ RAG 기술이 정적이고 분산된 문서 자료를 어떻게 정확한 지능
 
 이것이 더 높은 수준의 AI 애플리케이션 패러다임인 AI 워크플로우(AI Workflow)로 이어집니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 워크플로우란 복잡한 작업을 여러 개의 순서가 있고, 구성 가능하며, 자동 실행 가능한 하위 단계로 분해하고, 조건 판단, 루프 또는 병렬 실행과 같은 논리적 관계를 시각적 또는 코드 방식으로 편성하는 것을 말합니다. AI 능력의 SOP화(즉, 표준화된 작업 프로세스)란 AI로 특정 작업을 완료하는 방법의 경험을 재사용 가능한 템플릿으로 고정하는 것을 의미합니다.
 
@@ -143,7 +143,7 @@ Dify는 LLM 애플리케이션 개발 및 운영 플랫폼으로, AI 애플리�
 
 기능적으로 Dify는 시각적 워크플로우 편성, 에이전트 구축, 지식 베이스 관리, 다중 모델 지원 등을 포함합니다. 플랫폼은 드래그 앤 드롭 노드를 통해 복잡한 작업 흐름을 설계할 수 있게 하며, 의도 기반 Agent 생성도 지원합니다. 지식 베이스 기능이 뛰어나, 다양한 형식의 문서를 처리하고 효율적인 벡터 검색을 수행할 수 있습니다. 동시에 Dify는 GPT, Claude 및 수많은 오픈소스 모델을 포함한 다양한 LLM과 호환되며, 구축된 애플리케이션은 원클릭으로 표준 API로 게시하여 통합하기 쉽습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 기술 아키텍처 측면에서, Dify는 오픈소스와 사설 배포 가능을 특징으로 하며, 유연성, 확장성 및 기업급 규정 준수를 강조합니다. 대상 사용자는 개발자 팀과 업무 혁신가이며, 전형적인 적용 시나리오는 기업 지식 베이스 및 스마트 고객 서비스, 콘텐츠 제작 자동화, 특정 분야 AI 어시스턴트, 기업 AI 허브 등입니다.
 
@@ -185,7 +185,7 @@ n8n은 범용 프로그래밍 가능 워크플로우 자동화 플랫폼으로, 
 
 Dify는 LLM 애플리케이션 개발을 위한 오픈소스 플랫폼입니다. 직관적인 인터페이스를 제공하여, Agent 워크플로우, RAG 파이프라인, 도구 능력, 모델 관리, 관측 가능성 등의 기능을 결합하여, 프로토타입에서 프로덕션 환경까지 빠르게 전환할 수 있도록 돕습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 Dify에서 대형 언어 모델과 다양한 기능의 도구를 사용하여 "워크플로우"를 구축할 수 있습니다. 워크플로우란 원래 수동으로 단계별로 완료해야 했던 조작(예: 데이터 검색, 대형 모델 호출, 웹 검색, 결과 필터링, 형식 정리 등)을 업무 논리에 따라 연결하여 자동화되고 재사용 가능한 프로세스로 만드는 것입니다. 워크플로우가 없다면, 매번 같은 내용을 대형 모델에 복사해서 붙여넣어야 하므로, 매우 비효율적이고 오류가 발생하기 쉬우며, 실제 업무에서 재사용하기 어렵습니다.
 
@@ -200,7 +200,7 @@ Dify에서 대형 언어 모델과 다양한 기능의 도구를 사용하여 "�
 5. 조건 노드: 대형 모델이 생성한 답변에 명확한 보증 기간(예: "1년", "3년")이 포함되어 있는지 확인합니다. 포함되어 있으면 다음 단계로 진행하고, 포함되어 있지 않으면 "제품 모델명을 알려주세요"라고 응답합니다.
 6. 출력 노드(ANSWER와 유사): 최종 답변을 사용자에게 반환하고, 이번 문의 기록을 자동으로 스프레드시트에 저장합니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 전체 과정에서 지식 베이스를 수동으로 찾거나, 모델의 답변을 반복 조정하거나, 데이터를 별도로 기록할 필요가 없습니다 — 워크플로우가 이러한 단계들을 "연결하여 자동으로 실행"합니다. 또한 매우 유연합니다: 예를 들어, 나중에 "사용자가 보증 범위를 물어볼 때, 다른 지식 베이스를 호출한다"는 새로운 규칙을 추가하고 싶다면, 워크플로우에 조건 노드를 하나 더 추가하기만 하면 되며, 전체 시스템을 재구축할 필요가 없습니다.
 
@@ -228,7 +228,7 @@ Dify 홈페이지 [https://cloud.dify.ai/apps](https://cloud.dify.ai/apps)에 �
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 APP Type에서 Chatbot을 찾습니다(처음에 보이지 않으면 "더 많은 유형 보기" 버튼을 클릭한 후 전체 목록에서 찾을 수 있습니다). Chatbot을 선택한 후, 아래에 애플리케이션 이름과 설명을 입력하고, 마지막으로 만들기를 클릭합니다.
 
@@ -246,7 +246,7 @@ APP Type에서 Chatbot을 찾습니다(처음에 보이지 않으면 "더 많은
 
 INSTRUCTIONS 영역에 자유롭게 역할 프롬프트를 입력하고 대화 효과를 관찰할 수 있습니다. Generate를 클릭하여 대형 모델이 자동으로 프롬프트를 생성하도록 할 수도 있습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 오른쪽 상단에 다양한 모델 옵션이 표시되는데, 이는 다른 대화 모델로 전환할 수 있음을 의미합니다. 어조, 논리적 추론, 긴 텍스트 처리 등의 측면에서 차이를 비교하여, 자신의 요구에 가장 적합한 모델을 찾을 수 있습니다.
 
@@ -325,7 +325,7 @@ Next를 클릭하면, Knowledge Base Settings(지식 베이스 설정) 페이지
 
 Embedding 모델의 선택은 최종 검색 효과(예: 매칭 정확도, 응답 속도 등)에 큰 영향을 미칩니다. 여기서는 Qwen 0.6B Embedding 모델을 우선 사용하는 것을 추천하며, 4B 또는 8B 버전으로 전환하여 다양한 매개변수 규모에서 검색 효과의 차이를 직관적으로 비교해 볼 수도 있습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 여기서 **Rerank model**이라는 또 다른 모델 설정도 볼 수 있으며, 기본값은 **Jina-rerank-m0**입니다. (교내 학생이 아닌 경우, 이때 Rerank 모델 누락 오류가 표시될 수 있습니다. 모델 설정에서 rerank 모델을 구성해야 이곳에서 활성화하여 사용할 수 있습니다.)
 
@@ -335,7 +335,7 @@ Rerank 모델의 주요 역할은 "초기 선별된 후보 결과"에 대해 두
 
 추천 시스템도 마찬가지입니다: 먼저 500개의 "귀하에게 적합할 수 있는" 상품을 찾은 후, Rerank 모델로 정렬하여 귀하가 가장 구매할 가능성이 높은 상품을 목록 상단에 배치합니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 모든 설정이 완료되면, **Save & Process**를 클릭하면 시스템이 지식 베이스 벡터화 단계로 들어갑니다. 이 단계에서 Embedding 모델이 분할된 텍스트를 벡터 표현으로 변환합니다.
 
@@ -351,11 +351,11 @@ Rerank 모델의 주요 역할은 "초기 선별된 후보 결과"에 대해 두
 
 여기에서 원하지 않는 텍스트 조각에 대해 정확한 편집 또는 삭제 작업을 수행할 수 있습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 왼쪽 사이드바에서 **Retrieval Testing**을 선택하면 지식 베이스에 대한 리콜 테스트를 수행하여 검색이 정상적으로 작동하는지 확인할 수 있습니다. 각 테스트에서는 유사도가 가장 높은 몇 개의 조각이 반환됩니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 더 많은 조각 결과를 보고 싶다면 `VECTOR SEARCH` 설정을 클릭해야 합니다:
 
@@ -375,7 +375,7 @@ Score Threshold는 "점수 임계값"입니다: 유사도 점수가 해당 임�
 
 이때 각 대화 라운드에서 답변에命中된 지식 베이스 출처를 확인할 수 있습니다. 해당 항목을 클릭하면 검색된 구체적인 텍스트 조각을 볼 수 있습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -399,7 +399,7 @@ DSL 파일을 사용하면 다른 Dify 인스턴스 간에 복잡한 워크플�
 
 직접 구축한 워크플로우나 에이전트가 너무 간단하다고 느껴진다면, Dify 플랫폼은 풍부한 예시 프로젝트를 제공하여 복잡한 애플리케이션을 구축하는 방법을 빠르게 이해할 수 있도록 도와줍니다. 이러한 예시 프로젝트는 다양한 비즈니스 시나리오를 다루고 있습니다. Explore를 클릭하여 다른 사람들이 구축한 워크플로우를 살펴보고 학습할 수 있습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 첫 번째 Dify Workflow 애플리케이션 만들기
 
@@ -409,7 +409,7 @@ Dify 대화형 에이전트 구축 입문을 완료한 후, 더 복잡한 Dify �
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 여기서 Chatflow와 Workflow라는 두 가지 선택지를 볼 수 있습니다. 이 둘 중 어떤 것을 선택해야 할까요? 핵심은 구축하려는 것의 본질이 지속적인 대화인지, 아니면 작업 프로세스인지 이해하는 것입니다.
 
@@ -579,7 +579,7 @@ Dify에서 대부분의 도구는 캔버스에 직접 노드로 배치할 수 �
 buy_food / complain / chitchat / other 중에서 가장 적합한 레이블을 하나 선택하세요. 사용자가 불만을 토로하면서 동시에 주문도 한 경우, 핵심 감정을 우선적으로 판단하세요. 불만 표현이 주된 목적이라면 complain으로 분류해야 합니다. 가벼운 불평이지만 주된 의도가 주문이라면 buy_food로 분류하세요. 정말 판단하기 어려운 경우 other를 기본값으로 사용하세요.
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 설정이 완료되면, 오른쪽 상단의 재생 버튼을 클릭하여 해당 노드가 정상적으로 실행되는지 개별적으로 테스트할 수 있습니다:
 
@@ -611,11 +611,11 @@ OUTPUT 결과를 보면 분류가 정확한 것을 확인할 수 있습니다. �
 
 마찬가지로, 모든 것이 순조로운지 확인하기 위해 해당 노드의 오른쪽 상단 재생 버튼을 클릭하여 구체적인 대화 테스트로 효과를 검증할 수 있습니다. 예를 들어 "탕후루 마시고 싶어요" 등의 대화로 응답이 예상에 부합하는지 확인합니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 다음으로 병렬 LLM의 출력 값을 처리합니다. `Variable Aggregator` 노드의 구성 패널에서 `ASSIGN VARIABLES`(변수 할당) 영역을 찾아 클릭한 후, 이전의 대형 모델 응답을 순서대로 추가하면 됩니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 다음으로 모든 출력을 집계하여 최종적으로 원하는 결과(사용자 입력, 분류 및 응답 포함)를 얻어야 합니다. 우리가 사용하는 것은 Chatflow가 아닌 Workflow이므로, Answer 노드를 선택하여 결과를 집계할 수 없습니다. 다른 노드를 선택하여 간접적으로 결과의 집계와 출력을 구현할 수 있습니다. 이때 Template 노드를 선택하고, 변수 부분에 사용자 의도 분류 결과, 사용자 입력 값, 변수 집계의 최종 응답을 지정하며, CODE에 최종 응답의 json 형식 템플릿을 작성합니다. 다음과 같이 얻을 수 있습니다:
 
@@ -658,7 +658,7 @@ OUTPUT 결과를 보면 분류가 정확한 것을 확인할 수 있습니다. �
 
 Test Run에서 실행한 후 워크플로우의 실행 과정을 볼 수 있습니다. 분류에 따라 올바른 프로세스로 진행되었으며, 마지막 output 결과를 얻었습니다. 이로써 전체 프로세스가 완료되었습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 첫 번째 템플릿 Workflow 애플리케이션 실행하기
 
@@ -670,9 +670,9 @@ Test Run에서 실행한 후 워크플로우의 실행 과정을 볼 수 있습�
 
 처음 들어가면 매우 복잡해 보이지만, 걱정하지 마세요. 오른쪽 상단의 Preview를 클릭하여 워크플로우를 실행하고, 오류가 발생할 때까지 진행합니다:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 오류가 발생한 노드에 따라 문제를 해결해야 합니다. 열어보면 Tavily의 API Token이 구성되지 않았다는 것을 알 수 있습니다. Tavily의 검색 API는 AI를 위해 설계된 검색 엔진으로, 실시간, 정확하고 사실적인 결과를 제공합니다. 안내에 따라 조작합니다:
 
@@ -680,7 +680,7 @@ Test Run에서 실행한 후 워크플로우의 실행 과정을 볼 수 있습�
 
 처리 후 검색 엔진이 정상적으로 작동합니다:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 모델 호출로 인한 문제를 계속 수정한 후, 다음과 같은 결과를 얻을 수 있어야 합니다. 대형 모델의 이해를 결합한 상세한 검색 결과:
 
@@ -734,9 +734,9 @@ Dify의 API를 사용하여 프론트엔드 채팅 애플리케이션을 구축�
 
 아까 만든 Agent를 기억하시죠? 먼저 우측 상단의 "Publish"를 클릭한 다음 "Publish Update"를 클릭하고, 마지막으로 "Access API Reference"를 클릭하여 API 문서에 진입합니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 API 문서에 진입한 후, "Send Chat Message" 부분을 찾아 클릭하여 들어간 다음, 우측에서 "Request"와 "Response" 예시를 찾아 복사합니다.
 
@@ -744,7 +744,7 @@ API 문서에 진입한 후, "Send Chat Message" 부분을 찾아 클릭하여 �
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 대화에 필요한 Request와 Response 예시를 찾은 후, API Key도 하나 가져와야 합니다. 문서 우측 상단에서 "API key" 관련 옵션을 볼 수 있습니다.
 
@@ -828,7 +828,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 이때 여러분의 작업 방식은 이미 실제 개발 과정에 매우 가까워졌습니다. 일상적인 개발에서 대형 모델과 협업할 때 다양한 문제에 직면하는 경우가 많으며, 이를 더 잘 해결하기 위해 더 많은 컨텍스트 정보를 제공해야 합니다. 오류 정보를 제공하는 것 외에도 더 완전한 문서 내용을 복사할 수 있습니다(예: 문서 좌측의 "Send message" 부분에서 더 많은 설명 복사). 이를 모델에 함께 전달하면 더 많은 세부 사항을 바탕으로 더 완전한 해결 방안을 제시할 수 있습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 이때 브라우저는 Trae 내부에 내장되어 있습니다. 상단의 나침반 아이콘을 클릭하면 웹페이지를 외부 브라우저에서 전체 화면으로 열 수 있습니다.
 
@@ -836,11 +836,11 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 운이 좋다면 첫 번째 시도에서 정상적으로 상호작용할 수 있는 프론트엔드 페이지를 얻을 수 있을 것입니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 하지만 대형 모델 자체에 어느 정도 무작위성이 있기 때문에, 단일 턴 대화에서는 모든 것이 순조로울 수 있지만 여러 턴 대화에서는 예외가 발생할 수 있습니다. 따라서 여러 턴 대화 테스트를 수행하여 프로그램이 다중 턴 상호작용 시나리오에서도 안정적으로 실행되는지 확인하는 것이 좋습니다.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 여기까지 왔다면, 간단한 Dify 지식 베이스 Agent를 구축하고 Trae를 사용하여 [z.ai](http://z.ai)를 대체해 상호작용 프론트엔드를 구축하는 방법을 배웠습니다. 이제부터 Trae는 다양한 프로토타입을 구축할 때 주요 개발 도구가 되어 점진적으로 [z.ai](http://z.ai)를 대체할 것입니다. Trae를 사용하여 이전에 만든 뱀 게임을 다시 구현해 보고 어떤 다른 경험을 할 수 있는지 시도해 보세요. 화이팅!
 
@@ -940,7 +940,7 @@ Dify의 일반적인 기본 사용 도구를 마스터했는지 테스트하기 
 
 참고 입력 및 출력:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Love loop workflow 워크플로우 암호 해독 도전
 
@@ -974,7 +974,7 @@ Github, 위챗 공식 계정, Reddit, 트위터 등 모든 곳에서 시도해 �
 
 때로는 Dify를 자체 서버에 배포할 수 있지만, 서버의 외부 주소는 일반적으로 https가 아닌 http입니다. 그러나 HTTP만 지원하는 서비스를 요청할 때 다음과 같은 메시지가 나타날 수 있습니다(F12 브라우저 디버깅 정보 모드를 활성화하고 문제가 있는 부분을 확인):
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 이 문제가 발생하는 이유는 Dify를 기본적으로 HTTPS가 아닌 HTTP만 지원하는 서버에 배포했기 때문입니다. HTTPS(HyperText Transfer Protocol Secure)는 HTTP(하이퍼텍스트 전송 프로토콜)의 기반 위에 SSL/TLS 암호화 계층을 추가한 것으로, 간단히 "더 안전한 버전의 HTTP"라고 이해할 수 있습니다.
 

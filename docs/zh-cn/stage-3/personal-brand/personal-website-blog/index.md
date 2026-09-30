@@ -18,7 +18,7 @@
 
 与微信朋友圈、知乎或 LinkedIn 不同，它不依赖于任何社交平台的算法推荐，也不会因为平台倒闭而消失。它是一个长期稳定、可被 Google/Google Scholar 索引的 **个人展示空间** 。它通常包含你的简介 (Bio)、发表的论文 (Publications)、参与的项目 (Projects) 以及技术博客 (Blog)。
 
-![](images/image1.png)
+![](images/image1.webp)
 
 ## 1.2 为什么要构建自己的网页
 
@@ -222,7 +222,7 @@ Mac 系统的配置相对更具有“极客范”，通常需要敲黑客一样�
 1. **访问官网** ：打开 [https://github.com/](https://github.com/)。
 2. **点击注册** ：点击右上角的  **"Sign up"** 。
 
-![](images/image12.png)
+![](images/image12.webp)
 
 3. **填写信息** ：
 4. **Email** ：输入你的真实邮箱。
@@ -380,7 +380,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 将我提供给你的图片素材（`University_of_Pennsylvania.jpg`、`Queen_University.jpg`）放入项目文件夹的对应位置（通常是 `/assets/images/badges/`）。
 
-![](images/image21.png)![](images/image22.png)
+![](images/image21.webp)![](images/image22.webp)
 
 **第二步：下达****指令**
 
@@ -436,7 +436,7 @@ Jekyll 网站需要依赖很多插件（Gems）才能运行。这步操作就像
 
 将我提供给你的封面图片（ 分别为 `Hyperloop_Alpha_sketch.jpg` 、`SpaceX_Starship.jpg`、`Neuralink_sewing_machine_robot.jpg`）下载下来，放入 `/assets/images/covers/` 文件夹中（并将文件夹中原有的示例图片删除）。
 
-![img](images/image26.png)![img](images/image27.png)![](images/image28.png)
+![img](images/image26.png)![img](images/image27.webp)![](images/image28.webp)
 
 **第二步：下达****指令**
 
@@ -900,7 +900,7 @@ Trae 通常会帮你执行以下“标准三连招”（你可能只需要点击
 
 个人主页不需要第一次就做得很满。先让名字、简介、代表作品和联系方式保持最新，以后每完成一个项目再补一条。这样维护几个月以后，它才会慢慢变成一份比模板更像你的长期记录。
 
-![](images/image57.png)
+![](images/image57.webp)
 
 现在打开线上地址，从首页到项目和文章页重新点一遍。确认手机上也能阅读、链接没有失效，就可以把这个网址放进简历、邮件签名或个人资料里了。
 

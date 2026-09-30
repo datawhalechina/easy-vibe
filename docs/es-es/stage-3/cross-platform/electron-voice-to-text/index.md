@@ -20,7 +20,7 @@ Electron es un framework de código abierto que te permite usar **HTML + CSS + J
 
 **Comprensión en una oración**: Electron = un "navegador Chrome invisible" + capacidades de sistema Node.js.
 
-<!-- ![placeholder: Un diagrama mostrando la arquitectura de Electron: Chromium (para renderizado de UI) + Node.js (para acceso al sistema) = aplicación de escritorio](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: Un diagrama mostrando la arquitectura de Electron: Chromium (para renderizado de UI) + Node.js (para acceso al sistema) = aplicación de escritorio](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 Arquitectura Central de Electron
 
@@ -47,7 +47,7 @@ Una aplicación Electron consta de dos tipos de procesos. Entenderlos es la clav
 
 Se comunican a través de **IPC (Comunicación entre Procesos)**, como hacer una llamada telefónica: el renderizado dice "quiero empezar a grabar", y el proceso principal recibe esa solicitud y llama al micrófono del sistema.
 
-<!-- ![placeholder: Un diagrama de arquitectura de procesos de Electron mostrando Proceso Principal, Proceso de Renderizado y Script de Precarga, más comunicación IPC entre ellos](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: Un diagrama de arquitectura de procesos de Electron mostrando Proceso Principal, Proceso de Renderizado y Script de Precarga, más comunicación IPC entre ellos](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 ¿Qué Vamos a Construir?
 
@@ -69,7 +69,7 @@ En este tutorial, construiremos una aplicación de escritorio de **Voz a Texto**
 | Tamaño del Modelo | No requiere descarga | modelo tiny 75MB, modelo large 3GB |
 | Mejor Para | Incorporación rápida, uso ligero | Enfoque en privacidad, uso sin conexión, uso frecuente a largo plazo |
 
-<!-- ![placeholder: Una vista previa de la app mostrando la UI de voz a texto: botón de grabación y animación de onda en la parte superior, texto reconocido debajo y un interruptor de modo en la esquina superior derecha](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: Una vista previa de la app mostrando la UI de voz a texto: botón de grabación y animación de onda en la parte superior, texto reconocido debajo y un interruptor de modo en la esquina superior derecha](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 Nota Importante: Web Speech API No Está Disponible en Electron
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: Diagrama de flujo IPC mostrando transferencia de mensajes desde Renderizado -> Precarga -> Principal](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: Diagrama de flujo IPC mostrando transferencia de mensajes desde Renderizado -> Precarga -> Principal](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # Capítulo 3: Implementar la Grabación
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: Captura de pantalla de la UI de grabación con botón rojo de estado de grabación y animación de pulso, más área de resultado de texto debajo](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: Captura de pantalla de la UI de grabación con botón rojo de estado de grabación y animación de pulso, más área de resultado de texto debajo](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 Manejar Permisos del Micrófono
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: Captura de pantalla de la app ejecutándose mostrando voz en chino reconocida devuelta por Whisper API](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: Captura de pantalla de la app ejecutándose mostrando voz en chino reconocida devuelta por Whisper API](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 Añadir una UI de Configuración
 

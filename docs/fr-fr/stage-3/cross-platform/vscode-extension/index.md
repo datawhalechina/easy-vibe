@@ -25,8 +25,8 @@ Les extensions VS Code peuvent faire bien plus que ce que beaucoup de gens imagi
 * **Étendre les capacités de l'éditeur** : support de langages personnalisés, complétion de code, diagnostics
 * **Ajouter des capacités IA** : créer des assistants IA avec l'API Chat Participant, appeler des modèles avec l'API Language Model
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![Diagramme de l'écosystème des extensions VS Code montrant les zones extensibles : barre latérale, éditeur, barre d'état, palette de commandes et panneau Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![Diagramme de l'écosystème des extensions VS Code montrant les zones extensibles : barre latérale, éditeur, barre d'état, palette de commandes et panneau Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 Architecture de base d'une extension VS Code
 
@@ -53,8 +53,8 @@ Une extension typique comporte ces éléments fondamentaux :
     └── Processus principal de l'éditeur (rendu UI)
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![Diagramme d'architecture d'une extension VS Code montrant le processus Extension Host et le processus principal de l'éditeur](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![Diagramme d'architecture d'une extension VS Code montrant le processus Extension Host et le processus principal de l'éditeur](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 Quelle extension allons-nous construire ?
 

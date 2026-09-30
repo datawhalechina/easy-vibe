@@ -18,7 +18,7 @@
 
 WeChat Moments、知乎、LinkedIn とは異なり、どのプラットフォームのレコメンドアルゴリズムにも依存せず、プラットフォームが閉鎖されても消えることはありません。Google や Google Scholar にインデックスされる、長期的で安定した**個人ショーケーススペース**です。通常、略歴、出版物、プロジェクト、技術ブログが含まれます。
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 なぜ自分のウェブサイトを作るべきなのか？
 
@@ -232,7 +232,7 @@ Git が配達員だとすれば、**GitHub はクラウド倉庫兼ショール�
 1. **公式サイトにアクセス**：[https://github.com/](https://github.com/) を開きます。
 2. **Sign up をクリック**：右上の **"Sign up"** をクリックします。
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **情報を入力**
 4. **メールアドレス**：実際のメールアドレスを入力します。
@@ -404,8 +404,8 @@ Your modifications must follow these principles:
 
 提供した画像アセット `University_of_Pennsylvania.jpg` と `Queen_University.jpg` を対応するプロジェクトフォルダー（通常は `/assets/images/badges/`）に配置してください。
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **ステップ2：指示を送信**
 
@@ -462,8 +462,8 @@ Trae の右側のチャットボックスに、以下のプロンプトを入力
 提供した表紙画像 `Hyperloop_Alpha_sketch.jpg`、`SpaceX_Starship.jpg`、`Neuralink_sewing_machine_robot.jpg` をダウンロードし、`/assets/images/covers/` に配置して、そのフォルダーに元々あったサンプル画像を削除してください。
 
 ![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **ステップ2：指示を送信**
 
@@ -972,7 +972,7 @@ WeChat Moments で埋もれてしまう思考も、ここに永遠に残せま�
 実験に行きましょう。壊してみましょう。作り直しましょう。
 一番好きな形になるまで、それを続けてください。
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***さあ進もう、そして世界に自分を見せてください。***
 

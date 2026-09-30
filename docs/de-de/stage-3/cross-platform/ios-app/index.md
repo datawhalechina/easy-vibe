@@ -14,7 +14,7 @@ Tiimo zeigt, wie eine zugängliche Tagesplanung auf iPhone und Apple Watch ausse
 
 Die App nimmt Zutaten entgegen, zeigt ein Rezept und speichert den Verlauf. Sie wird zuerst mit Beispieldaten gebaut und danach an ein echtes Backend angeschlossen.
 
-![Fertige Fridge-Chef-App](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![Fertige Fridge-Chef-App](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.webp)
 
 ## 1. Xcode vorbereiten
 
@@ -30,7 +30,7 @@ Wähle **Create a new Xcode project → iOS App**, setze SwiftUI und Swift und v
 
 Wähle einen Simulator und drücke Run. Erst wenn die leere App startet, wird sie geändert.
 
-![Leere SwiftUI-App im Simulator](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![Leere SwiftUI-App im Simulator](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.webp)
 
 ## 3. Erste Oberfläche
 
@@ -50,11 +50,11 @@ Servergeheimnisse bleiben im Backend. Lokale Daten brauchen stabile IDs und eine
 
 Lege alle geforderten Größen in Assets ab und prüfe, dass kein transparenter Rand oder Platzhalter bleibt.
 
-![App-Symbol in Xcode Assets](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![App-Symbol in Xcode Assets](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.webp)
 
 Teste im Simulator leere Eingabe, Erfolg, Fehler, Verlauf, Dark Mode und verschiedene Größen. Danach installiere dieselbe Version auf einem echten iPhone und prüfe Tastatur, Netzwerk, Hintergrund und Neustart.
 
-![Fridge Chef auf einem echten iPhone](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![Fridge Chef auf einem echten iPhone](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.webp)
 
 ## 6. Veröffentlichung
 

@@ -12,13 +12,13 @@ Trong hướng dẫn này, chúng ta sẽ hoàn thành một vòng lặp khép k
 4. Trae đã được cài đặt và mở
 5. Một Apple ID có thể sử dụng được
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.webp)
 
 ### 1.1 Ứng Dụng iOS
 
 Ứng dụng iOS là một ứng dụng native chạy trên hệ điều hành iPhone. Nó khởi động nhanh, hoạt động mượt mà và có thể sử dụng sâu các tính năng hệ thống như thông báo, camera và lưu trữ cục bộ.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.webp)
 
 ### 1.2 Phát Triển Ứng Dụng iOS
 
@@ -51,7 +51,7 @@ Dựa trên các cách tiếp cận trên, hướng dẫn này chọn: **phát t
 
 Người dùng nhập các nguyên liệu hiện có trong tủ lạnh và ứng dụng sử dụng API AI thực để tạo một công thức khả thi, sau đó lưu kết quả cục bộ để xem lại sau. Ví dụ này bao gồm đầy đủ các phần cốt lõi của một ứng dụng iOS thực tế, bao gồm đầu vào và hiển thị UI, yêu cầu mạng, phân tích dữ liệu, lưu trữ cục bộ và cài đặt chạy cuối cùng trên thiết bị thực.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.webp)
 
 - Ý tưởng tổng thể từ nguyên mẫu đến ứng dụng native
 
@@ -109,7 +109,7 @@ Các bước:
 4. Bật nó lên, sau đó khởi động lại thiết bị  theo nhắc nhở
 5. Sau khi khởi động lại, mở khóa thiết bị và xác nhận bật chế độ nhà phát triển
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.webp)
 
 Nếu iPhone của bạn chưa từng được kết nối với Xcode hoặc các công cụ phát triển khác trước đây, bạn có thể thấy rằng **Chế độ Nhà phát triển** không xuất hiện trong **Quyền riêng tư & Bảo mật**. Đây không phải là vấn đề hệ thống - nó chỉ đơn giản là chế độ nhà phát triển chưa được kích hoạt.
 
@@ -122,7 +122,7 @@ Trong trường hợp đó, bạn có thể làm cho nó xuất hiện bằng c�
 
 Sau khi hoàn thành các bước trên, chế độ nhà phát triển chỉ cần được bật một lần. Các lần gỡ lỗi thiết bị thực sau này với Xcode sẽ không cần lặp lại cấu hình này.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.webp)
 
 ### 2.2 Phần Mềm Cần Thiết
 
@@ -195,17 +195,17 @@ Trên màn hình thông tin dự án, chỉ cần điền các cài đặt cơ b
 6. Lưu trữ: chọn Core Data (để lưu lịch sử công thức sau này)
 7. Để các tùy chọn khác ở mặc định
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.webp)
 
 Nhấp vào **Next** và chọn vị trí lưu trữ dự án.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.webp)
 
 ### 3.4 Nhận Biết Cấu Trúc Dự Án Sau Khi Tạo
 
 Sau khi dự án được tạo, Xcode sẽ tự động mở không gian làm việc. Lúc này, bạn không cần hiểu mọi file. Bạn chỉ cần nhận biết một số phần chính.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.webp)
 
 Trong dự án mặc định, bạn sẽ thấy:
 
@@ -227,7 +227,7 @@ Trong thanh công cụ phía trên của Xcode, giữ trình mô phỏng iPhone 
 
 Nếu mọi thứ bình thường, trình mô phỏng sẽ hiển thị một ứng dụng trống có thể khởi động thành công. Lần biên dịch đầu tiên có thể mất thời gian tương đối dài. Trong các chương sau, chúng ta giảm thời gian chờ bằng cách sử dụng nguyên mẫu HTML trước.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.webp)
 
 Để dừng ứng dụng, nhấp **Stop** bên cạnh nút Run.
 
@@ -247,7 +247,7 @@ Bắt đầu từ phần tiếp theo, công việc phát triển chính sẽ d�
 
 Những gì bạn cần làm rất đơn giản: **mở thư mục dự án iOS bạn vừa tạo trong Trae.**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.webp)
 
 ## Chương 4: Thực Hành Phát Triển Có Hỗ Trợ AI - Xây Dựng FridgeChef Từ Đầu
 
@@ -289,7 +289,7 @@ Vui lòng giúp tôi tổ chức điều này thành một tài liệu REQUIREME
 
 Sau khi tạo, đọc nhanh qua tài liệu và xác nhận liệu các điểm chức năng có khớp với kỳ vọng của bạn.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.webp)
 
 ### 4.2 Giai Đoạn Hai: Nguyên Mẫu Hình Ảnh
 
@@ -320,7 +320,7 @@ Vui lòng tạo một file index.html đơn và mô phỏng tỷ lệ màn hình
 
 Sau khi tạo, tìm `index.html` trong danh sách file và mở trực tiếp trong trình duyệt.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.webp)
 
 Ở giai đoạn này, điểm quan trọng không phải là liệu mọi chi tiết đều hoàn hảo. Điểm quan trọng là liệu **cấu trúc trang có hợp lý không, các yếu tố chính có đầy đủ không và hướng tổng thể có đúng không.**
 
@@ -358,15 +358,15 @@ Sau khi hoàn thành, mở Xcode và chạy trình mô phỏng. Bạn sẽ thấ
 Khi giao diện hoàn thành, ứng dụng vẫn chỉ là lớp hiển thị. Tiếp theo chúng ta cần kết nối khả năng AI thực. Trong hướng dẫn này chúng ta sử dụng dịch vụ mô hình lớn được cung cấp bởi **SiliconFlow**:
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.webp)
 
 SiliconFlow cung cấp API tương thích với đặc tả API OpenAI, vì vậy rất thuận tiện để gọi từ dự án iOS sử dụng yêu cầu mạng tiêu chuẩn.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.webp)
 
 Trước khi bắt đầu, bạn cần đăng ký tài khoản trên trang web và tạo API Key.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.webp)
 
 Key này sẽ được sử dụng cho các lần gọi mô hình sau.
 
@@ -401,7 +401,7 @@ Sau khi mã được tạo, điền Key của riêng bạn vào `APIService.swif
 1. Mở `FridgeChef.xcdatamodeld`
 2. Tạo một Entity mới tên `RecipeEntity`
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.webp)
 
 3. Thêm các thuộc tính sau:
    1. `id`: **UUID**
@@ -412,7 +412,7 @@ Sau khi mã được tạo, điền Key của riêng bạn vào `APIService.swif
    6. `timestamp`: **Date**
    7. `colorIndex`: **Integer 16**
 
-      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
+      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.webp)
 
 **Bước 2: để AI viết mã logic**
 
@@ -434,7 +434,7 @@ Vui lòng hoàn thành các nhiệm vụ sau:
 
 Bước cuối cùng là chuẩn bị một biểu tượng phù hợp cho ứng dụng. Ở đây chúng ta sử dụng **Lovart** để tạo biểu tượng: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.webp)
 
 📋 **Prompt để sao chép vào Lovart:**
 
@@ -448,15 +448,15 @@ Negative Prompt: Văn bản, chi tiết chân thực, render 3D, nền phức t�
 
 Sau khi tạo, cắt hình ảnh thành 1024x1024 và kéo vào `Assets.xcassets` -> `AppIcon` trong Xcode.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.webp)
 
 Chạy ứng dụng lại và bạn sẽ thấy một ứng dụng iOS hoàn chỉnh, dễ nhận biết và thực sự.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.webp)
 
 ### 4.7 Giai Đoạn Bảy: Nâng Cấp Trải Nghiệm Nâng Cao
 
@@ -541,13 +541,13 @@ Kết nối iPhone với Mac bằng cáp.
 
 Khi kết nối lần đầu, điện thoại sẽ hiển thị **Tin tưởng Máy tính Này?** Nhấn tin tưởng và nhập mã mở khóa.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.webp)
 
 Trong danh sách thiết bị của Xcode, chọn iPhone của bạn, sau đó nhấp **Run** lại.
 
 Lúc này, bạn sẽ có thể thấy biểu tượng **FridgeChef** trên màn hình chính của điện thoại và mở và sử dụng nó bình thường.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.webp)
 
 Bước này đánh dấu hoàn thành một vòng lặp phát triển iOS đầy đủ.
 
@@ -566,7 +566,7 @@ Các vấn đề phổ biến thường đến từ các danh mục sau:
 4. **Lỗi logic**
    Ứng dụng không bị treo nhưng hành vi sai - ví dụ, nút không phản hồi hoặc dữ liệu không làm mới.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.webp)
 
 Khi bất kỳ lỗi nào xuất hiện, bạn chỉ cần **sao chép toàn bộ thông báo lỗi chính xác như nó là vào hộp chat của Trae.** Với nhận thức về ngữ cảnh dự án, Trae có thể giúp bạn gỡ lỗi.
 
@@ -725,7 +725,7 @@ Nội dung sau tham khảo tài liệu chính thức của Apple và chia sẻ k
 
 ## Chương 7: Tóm Tắt
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.webp)
 
 Chúc mừng! Đến lúc này, bạn đã tự mình đi qua quy trình phát triển ứng dụng iOS hoàn chỉnh từ 0 đến 1. Từ thiết lập môi trường, chạy dự án và sau đó dần dần triển khai giao diện, chức năng, dữ liệu và kiểm tra trên thiết bị thực, tất cả các giai đoạn chính đã được hoàn thành trơn tru. Quan trọng hơn, bạn đã đạt được điều này không phải bằng cách ghi nhớ cú pháp Swift - bạn đã giao phần lớn triển khai cho AI. Dù nền tảng của bạn là gì, mỗi nỗ lực như thế này khiến bạn trôi chảy hơn và bạn sẽ nhận ra rằng phát triển iOS không khó như từng tưởng. Ngay cả khi bạn không thể viết một dòng mã nào trước đây, bạn vẫn có thể xây dựng ứng dụng của riêng mình.
 

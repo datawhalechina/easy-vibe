@@ -45,7 +45,7 @@
 
 這就是 AI 智能體（AI Agent）的雛形：一個具備目標、知識、工具和執行路徑的自動化單元。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > 注意：當前業界所說的簡單版本的“智能體”，大多指基於 LLM + 工具 + 知識庫組合而成的增強型應用，並非所謂能夠自主規劃的智能體。簡單的智能體雖不具備真正的推理與長期規劃能力，但已足以支撐大量企業級自動化場景。我們將會在之後的章節詳細介紹真正的具備自主規劃和行動能力的智能體。
 
@@ -61,7 +61,7 @@
 
 RAG 的基本思路是：在用戶提問時，系統首先從企業知識庫中檢索出與問題語義最相關的若干文本片段（例如產品手冊中的某一段、HR制度中的某一條款），然後將這些片段作為上下文“注入”到大模型的輸入中，引導它基於真實資料生成回答。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 圖片來源：[https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@ RAG 的基本思路是：在用戶提問時，系統首先從企業知識庫中�
 
 這就引出了更高階的 AI 應用範式：AI 工作流（AI Workflow）。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 工作流是指將一個複雜任務拆解為多個有序、可配置、可自動執行的子步驟，並通過可視化或程式碼方式編排它們之間的邏輯關係，如條件判斷、循環或並行執行。將 AI 能力 SOP 化（即標準化操作流程），意味著把如何用 AI 完成某項任務的經驗固化為可重複使用的模板。
 
@@ -143,7 +143,7 @@ Dify 定位是LLM應用開發與運營平臺，致力於提供AI應用從構思�
 
 在功能上，Dify覆蓋了可視化工作流編排、智能體構建、知識庫管理、多模型支持等功能。平臺允許通過拖拽節點設計複雜任務流程，並支持創建基於意圖的Agent。其知識庫功能突出，能處理多種格式文檔並進行高效的向量檢索。同時，Dify兼容支持包括GPT、Claude及眾多開源模型在內的多種LLM，構建的應用可一鍵發佈為標準API便於集成。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 技術架構方面，Dify以開源和可私有化部署為特色，強調靈活性、擴展性及企業級合規。目標用戶包括開發者團隊和業務創新者，典型應用場景涵蓋企業知識庫與智能客服、內容創作自動化、垂直領域AI助手以及企業AI中臺。
 
@@ -185,7 +185,7 @@ n8n是一個通用的可程式設計工作流自動化平臺，其核心定位�
 
 Dify 是一個用於開發 LLM 應用的開源平臺。它提供了直觀的界面，將 Agent 工作流、RAG 流水線、工具能力、模型管理、可觀測性等功能結合在一起，幫助你快速地從原型走向生產環境。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 你可以在 Dify 中使用大語言模型和各種功能不同的工具來搭建“工作流”。所謂工作流，就是把原本需要你手動一步步完成的操作——例如資料檢索、大模型調用、網頁搜索、結果過濾、格式整理等——按照業務邏輯串聯起來，變成一個自動化、可複用的流程。如果沒有工作流，每次你都需要把同樣的內容複製粘貼給大模型，非常低效、容易出錯，也難以在真實業務中複用。
 
@@ -200,7 +200,7 @@ Dify 是一個用於開發 LLM 應用的開源平臺。它提供了直觀的界�
 5. 條件節點：檢查大模型生成的回答中是否包含清晰的質保時間（例如“1 年”、“3 年”），如果有則繼續下一步，如果沒有則讓它回覆“請提供產品型號”。
 6. 輸出節點（類似 ANSWER）：將最終答案返回給用戶，並自動把本次諮詢記錄到表格中。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 在整個過程中，你不需要手動去翻知識庫、反覆調整模型的回答、或單獨記錄資料——工作流會把這些步驟“連起來自動跑”。並且它非常靈活：例如，如果你之後想加一個新規則“當用戶問質保範圍時，調用另一個知識庫”，只需要在工作流中多加一個條件節點，而無需重構整個系統。
 
@@ -228,7 +228,7 @@ Dify 是一個用於開發 LLM 應用的開源平臺。它提供了直觀的界�
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 在 APP Type 中找到 Chatbot（如果一開始沒看到，可以點擊“查看更多類型”的按鈕，然後在完整列表中找到）。選擇 Chatbot 之後，在下方輸入應用的名稱和描述，最後點擊創建。
 
@@ -246,7 +246,7 @@ Dify 是一個用於開發 LLM 應用的開源平臺。它提供了直觀的界�
 
 你可以在 INSTRUCTIONS 區域自由輸入角色提示詞，觀察對話效果；也可以點擊 Generate，讓大模型自動幫你生成提示詞。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 注意右上角會出現許多不同模型的選項，這意味著你可以點擊切換不同的對話模型，從而比較它們在語氣、邏輯推理、長文本處理等方面的差異，尋找最適合你需求的模型。
 
@@ -325,7 +325,7 @@ Dify 能夠靈活接入來自 OpenAI、Azure、Anthropic 等主流服務商的�
 
 Embedding 模型的選擇會顯著影響最終的檢索效果（例如匹配準確度、響應速度等）。在這裡，我們推薦優先使用 Qwen 0.6B 的 Embedding 模型，你也可以切換到 4B 或 8B 版本，直觀對比不同參數規模下檢索效果的差異。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 在此處，你還會看到另一個模型設置叫做 **Rerank model** ，默認值是 **Jina-rerank-m0** 。（如果你非校園內的學生，此時你可能會看到 Rerank 模型缺失的報錯，你需要在模型處配置 rerank 模型才能在此處啟用使用）
 
@@ -335,7 +335,7 @@ Rerank 模型的主要作用，是對“初步篩選出的候選結果”進行�
 
 推薦系統同理：它可能首先找出 500 個“可能適合你”的商品，再通過 Rerank 模型排序，讓你最可能購買的商品排在列表頂部。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 當所有設置完成後，點擊 **Save & Process** ，系統就會進入知識庫向量化階段。在這一階段，Embedding 模型會把切分後的文本轉換為向量表示。
 
@@ -351,11 +351,11 @@ Rerank 模型的主要作用，是對“初步篩選出的候選結果”進行�
 
 在這裡，你可以對任意不合適的文本片段進行精確的編輯或刪除操作。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 在左側邊欄中，選擇 **Retrieval Testing** 可以對知識庫進行召回測試，檢查檢索是否正常工作。每次測試會返回若干相似度最高的切片。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 如果你希望看到更多的切片結果，需要點擊 `VECTOR SEARCH` 設置：
 
@@ -375,7 +375,7 @@ Score Threshold 則是一個“得分閾值”：只有相似度得分大於或�
 
 此時，在每一輪對話中，你都可以在回答中看到被命中的知識庫來源。點擊對應條目即可查看檢索到的具體文本片段。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -399,7 +399,7 @@ Score Threshold 則是一個“得分閾值”：只有相似度得分大於或�
 
 如果你覺得自己搭建的工作流或者智能體過於簡單，Dify平臺提供了豐富的示例項目，幫助你快速瞭解如何構建複雜應用。這些示例項目涵蓋了多種業務場景。你可以點擊 Explora 查看別人構建的工作流進行學習。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 創建第一個 Dify Workflow 應用
 
@@ -409,7 +409,7 @@ Score Threshold 則是一個“得分閾值”：只有相似度得分大於或�
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 在這裡我們會看見兩個選擇，分別是 Chatflow 與 Workflow，這兩者該如何選擇呢？關鍵是你需要理解你所要構建的，其核心是持續對話，還是任務流程。
 
@@ -579,7 +579,7 @@ Dify 中提供了多種節點，你可以先了解每個節點的基本功能。
 從 buy_food / complain / chitchat / other 中選擇一個最合適的標籤。如果用戶在抱怨的同時也點了餐，請優先判斷其核心情緒，若重點在於表達不滿，應歸為 complain。如果只是輕微吐槽但主要意圖是下單，則歸為 buy_food。若實在難以判斷，使用 other 作為兜底
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 設定完成後，你可以在右上角的播放鍵單獨測試該節點是否能夠正常運行：
 
@@ -611,11 +611,11 @@ Dify 中提供了多種節點，你可以先了解每個節點的基本功能。
 
 同樣的，為了確保一切順利，你可以點擊該節點右上角的播放箭進行具體的對話測試驗證效果，比如對話說“我想要喝珍珠奶茶”等，查看回復是否符合預期。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 接下來我們處理並行 LLM 的輸出值，我們在 `Variable Aggregator` 節點的配置面板中，找到 `ASSIGN VARIABLES`（分配變量）區域，點擊後依次將之前的大模型回覆加入即可。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 接下來我們需要對所有的輸出進行聚合，最後得到我們想要的結果，包含用戶的輸入、分類、以及回覆。由於我們使用的是 Workflow 而不是 Chatflow，故沒有 Answer 節點選擇進行結果的聚合，我們能夠選擇其他節點變相實現結果的聚合與輸出，此時選擇 Template 節點，在變量部分指定用戶意圖分類結果、用戶的輸入值、變量聚合的最終回覆，並且在 CODE 中寫入最後回覆的 json 格式模板，我們可以得到：
 
@@ -658,7 +658,7 @@ Dify 中提供了多種節點，你可以先了解每個節點的基本功能。
 
 在 Test Run 中運行後，我們能夠看到工作流的執行過程，此時根據分類走了正確的流程，並得到了最後的 output 結果。至此，全流程完成。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 運行第一個模板 Workflow 應用
 
@@ -670,9 +670,9 @@ Dify 中提供了多種節點，你可以先了解每個節點的基本功能。
 
 剛進入感覺十分複雜，沒關係，我們點擊右上角的 Preview 運行工作流，直到報錯出現：
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 我們需要根據報錯的節點解決問題，打開後發現是沒有配置 Tavily 的 API Token，Tavily 的搜索API 是一個專為 AI 設計的搜索引擎，提供實時、準確和事實性的結果。此時根據提示操作：
 
@@ -680,7 +680,7 @@ Dify 中提供了多種節點，你可以先了解每個節點的基本功能。
 
 經過處理後，搜索引擎能夠正常工作：
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 繼續修正模型調用導致的問題後，你應該能夠得到如下結果，結合大模型理解下的詳細搜索：
 
@@ -734,9 +734,9 @@ Builder with MCP 模式則為 Agent 提供了更多工具（例如讓大模型�
 
 還記得剛才創建的那個 Agent 嗎？ 先點擊右上角的 “Publish”，然後點擊 “Publish Update”，最後點擊 “Access API Reference” 進入 API 文檔。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 進入 API 文檔後，找到 “Send Chat Message” 這一部分，點擊進入，然後在右側找到 “Request” 和 “Response” 示例並複製出來。
 
@@ -744,7 +744,7 @@ Builder with MCP 模式則為 Agent 提供了更多工具（例如讓大模型�
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 在找到會話所需的 Request 和 Response 示例之後，我們還需要獲取一個 API Key。在文檔右上角，你會看到 “API key” 相關選項。
 
@@ -828,7 +828,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 此時你的工作方式已經非常接近真實開發過程了。在日常開發中，我們經常會在與大模型協作時遇到各種問題，為了更好地解決這些問題，我們需要提供更多上下文資訊。除了提供錯誤資訊，你還可以複製更完整的文檔內容（例如在文檔左側 “Send message” 部分中複製更多說明），一併交給模型，讓它在更多細節的基礎上給出更完整的解決方案。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 此時瀏覽器是嵌在 Trae 內部的。你可以點擊頂部的指南針圖標，把網頁在外部瀏覽器中全屏打開。
 
@@ -836,11 +836,11 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 如果運氣不錯，你可能在第一次嘗試時就能獲得一個可以正常交互的前端頁面。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 不過，由於大模型本身具有一定隨機性，有時你可能在單輪對話中一切順利，但在多輪對話時出現異常。因此，建議你進行多輪對話測試，確保程序在多輪交互場景下也能穩定運行。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 到這裡，你已經學會了如何構建一個簡單的 Dify 知識庫 Agent，並使用 Trae 替代 [z.ai](http://z.ai) 來搭建一個交互式前端。從現在開始，Trae 將成為我們構建各種原型時的主要開發工具，逐步取代 [z.ai](http://z.ai)。你可以嘗試用 Trae 重新實現之前的貪吃蛇遊戲，看看會有什麼不同的體驗。加油！
 
@@ -940,7 +940,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 參考輸入輸出：
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Love loop workflow 工作流解密挑戰
 
@@ -974,7 +974,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 有時候可能你會把 Dify 部署在自己的服務器，但是服務器的對外地址通常都是 http 而不是 https 的，但當我們請求一個只支持 HTTP 的服務時，你可能會看到類似這樣的提示（啟用 F12 瀏覽器調試資訊模式，查看有問題的點）：
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 出現這個問題的原因，是因為我們默認把 Dify 部署在一臺只支持 HTTP 而不支持 HTTPS 的服務器上。 HTTPS（HyperText Transfer Protocol Secure）是在 HTTP（超文本傳輸協議）的基礎上增加了 SSL/TLS 加密層，可以簡單理解為“更安全版的 HTTP”。
 

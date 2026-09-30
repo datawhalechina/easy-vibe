@@ -78,7 +78,7 @@
 
 1. 브라우저에서 https://mp.weixin.qq.com을 입력하고, 위챗 공식 플랫폼을 열고 위챗으로 QR 코드를 스캔하여 로그인합니다.
 
-![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. 홈페이지에서 "미니 프로그램"을 선택하고 이메일, 전화번호, 실체 유형(개인 또는 기업)을 포함한 등록 안내를 완료합니다.
    ![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)

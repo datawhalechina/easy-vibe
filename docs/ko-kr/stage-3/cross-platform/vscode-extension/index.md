@@ -25,8 +25,8 @@ VS Code 확장 프로그램은 많은 사람들이 생각하는 것보다 훨씬
 * **편집기 기능 확장**: 커스텀 언어 지원, 코드 완성, 진단
 * **AI 기능 추가**: Chat Participant API로 AI 어시스턴트 만들기, Language Model API로 모델 호출
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![VS Code 확장 프로그램 생태계 다이어그램 - 확장 프로그램이 확장할 수 있는 영역: 사이드바, 편집기, 상태 표시줄, 명령 팔레트, 채팅 패널](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![VS Code 확장 프로그램 생태계 다이어그램 - 확장 프로그램이 확장할 수 있는 영역: 사이드바, 편집기, 상태 표시줄, 명령 팔레트, 채팅 패널](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 VS Code 확장 프로그램의 핵심 아키텍처
 
@@ -53,8 +53,8 @@ VS Code 편집기
     └── 편집기 메인 프로세스 (UI 렌더링)
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![VS Code 확장 프로그램 아키텍처 다이어그램 - Extension Host 프로세스와 편집기 메인 프로세스](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![VS Code 확장 프로그램 아키텍처 다이어그램 - Extension Host 프로세스와 편집기 메인 프로세스](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 어떤 확장 프로그램을 만들 건가요?
 

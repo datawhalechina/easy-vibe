@@ -18,7 +18,7 @@ Una **página personal académica** es tu propio territorio privado en internet.
 
 A diferencia de los Moments de WeChat, Zhihu o LinkedIn, no depende del algoritmo de recomendaciones de ninguna plataforma, y no desaparecerá si una plataforma cierra. Es un espacio de **escaparate personal** a largo plazo y estable que puede ser indexado por Google y Google Scholar. Generalmente contiene tu biografía, publicaciones, proyectos y blog técnico.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 ¿Por qué construir tu propio sitio web?
 
@@ -232,7 +232,7 @@ Si Git es el mensajero, entonces **GitHub es el almacén en la nube y el showroo
 1. **Visita el sitio oficial**: abre [https://github.com/](https://github.com/).
 2. **Haz clic en Sign up**: haz clic en **"Sign up"** en la esquina superior derecha.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **Completa tu información**
 4. **Correo electrónico**: introduce una dirección de correo electrónico real.
@@ -404,8 +404,8 @@ Lo primero que necesitamos resolver es "¿Quién soy?" La plantilla está llena 
 
 Coloca los activos de imagen que te proporciono, `University_of_Pennsylvania.jpg` y `Queen_University.jpg`, en la carpeta correspondiente del proyecto, usualmente `/assets/images/badges/`.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **Paso 2: Enviar la Instrucción**
 
@@ -462,8 +462,8 @@ Dentro del contexto de una página académica, podemos redefinir el significado 
 Descarga las imágenes de portada que te proporciono, namely `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg` y `Neuralink_sewing_machine_robot.jpg`, colócalas bajo `/assets/images/covers/`, y elimina las imágenes de ejemplo que originalmente estaban en esa carpeta.
 
 ![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **Paso 2: Enviar la Instrucción**
 
@@ -972,7 +972,7 @@ No dejes este terreno vacío.
 Ve a experimentar. Ve a romperlo. Ve a reconstruirlo.
 Sigue haciendo eso hasta que crezca hasta la forma que más te gusta.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***Adelante, y deja que el mundo te vea.***
 

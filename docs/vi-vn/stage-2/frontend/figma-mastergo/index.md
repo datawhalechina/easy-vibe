@@ -22,7 +22,7 @@ Nếu bắt đầu viết code trực tiếp hoặc dùng AI tạo trang fronten
 
 Ngoài ra, từ góc độ hợp tác nhóm, công cụ thiết kế frontend còn giảm chi phí hợp tác giữa nhiều bên: nhà thiết kế, sản phẩm, phát triển không còn mỗi người tưởng tượng hoặc mô tả code trừu tượng, mà hỗ trợ nhiều người cộng tác, mọi người có thể thảo luận quản lý phiên bản, thay đổi yêu cầu, phản hồi xung quanh một canvas có thể nhìn thấy, có thể chú thích, có thể lặp lại. Hơn thế nữa, công cụ thiết kế frontend hiện đại không chỉ là phần mềm vẽ, một click tạo code một phần, quản lý hệ thống thiết kế và thư viện component, công cụ thiết kế thời đại mới đã có thể tự động hóa hoặc hàng loạt hóa nhiều công việc lặp đi lặp lại (căn chỉnh, chú thích, xuất, thay đổi style), thúc đẩy đáng kể hiệu quả phát triển thiết kế trang.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.webp)
 
 ### 1.1 Sự tiến hóa của công cụ thiết kế frontend
 
@@ -32,41 +32,41 @@ Trong phần này, chúng ta sẽ chọn hai công cụ thiết kế frontend hi
 
 ## 1.2 Hành trình ra đời
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.webp)
 
 Trong thời kỳ chưa có công cụ thiết kế frontend chuyên dụng, toàn bộ công việc thiết kế thị giác của ngành thiết kế giao diện trong thời gian dài đều do phần mềm thiết kế "đa năng" như Photoshop đảm nhận. Nhà thiết kế sẽ tạo lớp layer lớp layer tại địa phương, hoàn thành thiết kế hiệu quả thị giác tổng thể trang một cách tỉ mỉ, cuối cùng bàn giao file nguồn .psd khá lớn cho kỹ sư frontend - mà frontend muốn khôi phục chính xác thiết kế, còn phải hoàn thành thủ công ba công việc phức tạp và quan trọng:
 
 Thứ nhất là "cắt ảnh": cần từ cấu trúc nhiều layer của file .psd, tách riêng từng phần tử thị giác độc lập như nút bấm, icon, Logo, module nền, rồi xuất sang định dạng hình ảnh mà web có thể tải trực tiếp như PNG, JPG (vì web không thể nhận diện thông tin layer PSD, chỉ dựa vào các hình ảnh đã tách để thể hiện chi tiết);
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.webp)
 
 Thứ hai là "đo kích thước": phải dùng công cụ đo tích hợp, xác nhận từng kích thước chiều rộng chiều cao, khoảng cách giữa các module khác nhau (margin/padding) và các dữ liệu khác, đảm bảo tất cả kích thước chính xác đến pixel;
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.webp)
 
 Thứ ba là "trích chú thích": cần trích xuất từ thiết kế các tham số "không nhìn thấy nhưng bắt buộc phải có" - như kích thước chữ, font-weight, line-height, giá trị màu RGB hoặc HEX của mỗi khối màu, tương đương với việc "thông số kỹ thuật thiết kế" mà nhà thiết kế không viết trên giấy phải được "trích" thủ công.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.webp)
 
 Sau đó, giai đoạn hiện thực frontend mới thực sự bắt đầu. Dù sử dụng HTML/CSS/JS gốc hay dựa trên framework Vue, React, quá trình bản chất là giống nhau. Frontend sẽ lấy "container làm载体 cốt lõi", tái xây dựng cấu trúc trang theo phân cấp và ngữ nghĩa của các module trong thiết kế. Container ở đây là đơn vị có ranh giới layout rõ ràng, chuyên chứa và tổ chức các phần tử con, nó không trực tiếp thể hiện nội dung cụ thể, mà thông qua các quy tắc như Flex, Grid, vạch phạm vi sắp xếp cho các phần tử bên trong. "Khối cấu trúc" (như thanh điều hướng trên cùng, sidebar, khu vực danh sách bài viết, chân trang dưới cùng v.v.) dựa vào container tồn tại; bên trong mỗi khối cấu trúc, lại lồng các container nhỏ hơn để tổ chức phần tử, ví dụ một mục danh sách bài viết sẽ được "container mục danh sách" điều khiển padding và layout tổng thể, rồi bọc các phần tử chi tiết như tiêu đề, tóm tắt, thời gian, icon bìa.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.webp)
 
 Trong framework frontend hiện đại, các "khối cấu trúc (và container & phần tử liên quan)" này thường được hiện thực thành "component". Component có thể hiểu đơn giản là đơn vị giao diện tái sử dụng có ranh giới rõ ràng, tích hợp layout container và logic, nó vừa chứa container điều khiển ngoại hình và sắp xếp (ví dụ "component nút bấm" dùng container định nghĩa chiều rộng, chiều cao, bo góc, "component thẻ bài viết" dùng container tổ chức vị trí tiêu đề, bìa), vừa đóng gói logic tương tác. Những phần lặp lại xuất hiện, hình thái nhất quán trong thiết kế (như nút bấm phong cách thống nhất, thẻ bài viết sử dụng nhiều lần) sẽ được trừu tượng thành component trong code: vừa tái sử dụng được trong các trang/kịch bản khác nhau, giảm phát triển lặp, vừa thông qua quy tắc thống nhất của container trong component, đảm bảo layout và phong cách nhất quán ở mọi nơi tái sử dụng.
 
 Tiếp đó, frontend sử dụng hệ thống style khôi phục thị giác và layout. Các tài nguyên PNG/JPG xuất trong giai đoạn cắt ảnh, sẽ được sử dụng làm `<img>` hoặc ảnh nền bên trong component hoặc khối cấu trúc; các giá trị cụ thể về chiều rộng, chiều cao, khoảng cách, chiều cao dòng thu được trong giai đoạn đo kích thước, sẽ được chuyển thành các thuộc tính style như `width`, `height`, `margin`, `padding`, `line-height`, áp dụng cho component hoặc khối cấu trúc tương ứng; màu sắc, font chữ, đổ bóng, bo góc và các trạng thái hover/active được sắp xếp trong giai đoạn trích chú thích, sẽ được thể hiện vào `color`, `font-family`, `font-size`, `box-shadow`, `border-radius` và pseudo-class hoặc class trạng thái trong các giải pháp cụ thể như CSS, CSS Modules, CSS-in-JS, Tailwind. Lúc này, cắt ảnh, kích thước và chú thích cung cấp một bộ tham số thị giác chính xác, component và khối cấu trúc cung cấp đơn vị tổ chức code mang các tham số này, kết hợp cả hai tạo thành hiện thực giao diện có thể bảo trì, tái sử dụng.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.webp)
 
 Tuy nhiên, mô hình lấy file cục bộ làm trung tâm tự nhiên có hiệu suất thấp. Phiên bản truyền qua email và đám mây, bản nháp mới cũ dễ nhầm lẫn, thiết kế và phát triển phụ thuộc nhiều vào các phương thức tương tác phức tạp nói trên, chi phí cộng tác và xác suất lỗi đều không thấp.
 
 Sau khi internet di động phát triển, độ phức tạp giao diện và nhu cầu tốc độ lặp lại nhanh chóng tăng lên, "lớn và toàn diện" của Photoshop dần trở nên cồng kềnh. Giai đoạn này, Sketch xuất hiện. Sketch tập trung vào bản thân thiết kế UI, tách bỏ hầu hết gánh nặng liên quan đến xử lý hậu kỳ thị giác; dùng Symbols biến các phần tử tái sử dụng cao như nút bấm, thanh điều hướng, ô nhập thành component hóa, sửa một chỗ có thể đồng bộ toàn cục; kết hợp với công cụ như Zeplin, tự động tạo chú thích và đoạn style. Sketch đưa "tư duy component" vào workflow thiết kế. Nhưng nó vẫn là ứng dụng desktop dựa trên file cục bộ, cộng tác thời gian thực phải dựa vào cloud drive, plugin bên thứ ba hoặc công cụ phiên bản, chưa giải quyết vấn đề "nhiều người cùng sửa một bản nháp" từ gốc.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.webp)
 
 Thực sự thay đổi luật chơi là Figma. Từ năm 2016, nó tích hợp thiết kế UI, tạo nguyên mẫu, bình luận cộng tác vào trình duyệt, hỗ trợ nhiều chức năng hiện đại: con trỏ thời gian thực nhiều người, bình luận trực tuyến, dòng thời gian phiên bản, liên kết chia sẻ, v.v., ngày nay nhìn thấy rất đơn giản nhưng lúc đó là thách thức trực tiếp với mô hình Photoshop/Sketch.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.webp)
 
 Đến đây, thiết kế giao diện không còn là các file rải rác trên máy tính mỗi người, mà tập trung trên một canvas trực tuyến, cập nhật thời gian thực trên đám mây. Xoay quanh canvas này, chúng ta có thể tưởng tượng xa hơn nữa, dùng tự động hóa hoặc AI làm mờ ranh giới giữa thiết kế và code frontend.
 
@@ -82,7 +82,7 @@ Tiếp theo chúng ta đi từ phần khái niệm trừu tượng đến khâu 
 
 Hoặc tham khảo hướng dẫn dưới đây, xây dựng nhanh một trang web portfolio cá nhân đơn giản: https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collectio
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.webp)
 
 Bên trái là nơi tạo mới và quản lý tài nguyên dự án, vài nút bấm ở góc trên bên phải là các chức năng phổ biến của Figma. Trong đó, Make dùng để AI giúp bạn tạo trước một giao diện hoặc bản nháp cấu trúc với một câu mô tả, Design là không gian làm việc chính để vẽ giao diện web/App, tạo component và làm nguyên mẫu, FigJam giống như bảng trắng nhóm, dùng để dán note, vẽ quy trình và thảo luận sơ bộ, Buzz là công cụ sản xuất hàng loạt tài sản thương hiệu, dùng để tạo hàng loạt nội dung duy trì nhất quán thương hiệu, Site là tổng hợp các thiết kế này thành trang web hoặc trang tài liệu thực sự có thể truy cập để trưng bày bên ngoài.
 
@@ -163,7 +163,7 @@ Như vậy, nút bấm này từ một nhóm layer bình thường, trở thành
 
 Lúc này tất cả nút bấm được sử dụng đều là bản sao đồng bộ của bản gốc này. Khi bạn sửa màu sắc, bo góc hoặc khoảng cách của bản gốc, tất cả instance sẽ tự động giữ đồng bộ cập nhật.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.webp)
 
 Đến đây, bạn đã nắm初步 cách sử dụng đơn giản của Figma. Bạn không cần hiểu tất cả chức năng ngay từ đầu, chỉ cần làm theo một trang đơn giản đầu tiên, quen với vài thao tác cốt lõi, rồi dần khám phá thêm năng lực trong hướng dẫn chính thức, cùng với số lần sử dụng tăng lên chắc chắn sẽ thành thạo.
 
@@ -178,7 +178,7 @@ Sau khi hiểu workflow cơ bản của Figma, chúng ta nhìn sang MasterGo, b�
 1. **Vào backend MasterGo**
    1. Mở trang chủ MasterGo và đăng nhập tài khoản.
    2. Sau khi vào, bạn sẽ thấy khu vực trang chủ "Danh sách file/Danh sách dự án" tương tự, dùng để quản lý file thiết kế của bạn.
-      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.png)
+      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.webp)
 
 2. **Tạo file mới**
    1. Thấy nút + File thiết kế ở góc trên bên phải để click, hoặc chọn nhập file Figma, v.v.
@@ -236,21 +236,21 @@ Trong MasterGo, một chức năng thú vị đáng chú ý là AI tạo trang. 
 
 ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.webp)
 
 Sau khi tạo tài liệu thiết kế xong, nhấp bắt đầu tạo, đợi một lúc là có thể nhận được hiệu quả trang web thực tế tương ứng:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.webp)
 
 Lúc này bạn có hai lựa chọn thao tác: một là nhấp nút xanh để chèn kết quả tạo trực tiếp vào canvas, hai là nhấp chức năng xem trước code, trực tiếp nhận code trang hoàn chỉnh hiện tại, giao diện thao tác cụ thể như sau:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.webp)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.webp)
 
 Sau khi chèn kết quả vào canvas, bạn còn có thể điều chỉnh tinh chỉnh hơn layout tổng thể trang web, chi tiết phần tử (như font chữ, màu sắc, khoảng cách, v.v.), cho đến khi hiệu quả cuối cùng hoàn toàn đáp ứng kỳ vọng của bạn.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.webp)
 
 ---
 

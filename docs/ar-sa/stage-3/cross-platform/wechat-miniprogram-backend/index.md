@@ -7,7 +7,7 @@ description: 'أضف هوية موثوقة ووظائف سحابية وتذاك�
 
 أنشأ الفصل السابق الواجهة التي تعمل على الهاتف. نضيف الآن الهوية والبيانات المشتركة والصلاحيات والملفات والسجلات لخدمة شركة.
 
-![برنامج Uber المصغر](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![برنامج Uber المصغر](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. الواجهة مدخل والخلفية تقرر
 

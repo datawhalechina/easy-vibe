@@ -89,7 +89,7 @@ GitHub 是一个基于 Git 的代码托管平台。它不仅为 Git 仓库提供
 
 GitHub 不仅是世界上最大的代码托管平台，也是全球最活跃、最具影响力的开源社区。这里"开源"的核心思想是任何人都可以下载并运行软件的源代码。这种模式允许世界各地的人们检查彼此的代码并进行修改，或基于此创建新项目。例如，你可以在 GitHub 上找到各种学习教程以及用于训练 GPT 模型的框架（如 PyTorch）的完整源代码。每天，无数人在全球范围内协作审查和改进代码。
 
-![](images/image9.png)
+![](images/image9.webp)
 
 许多大公司在 GitHub 上开源他们的程序或教程，以获得行业竞争优势——这也可以看作是一种广告形式。在 GitHub 社区中，项目获得的"星标 (stars)"数量是衡量其价值的主要指标；项目或组织拥有的星标越多，其可信度和影响力就越大。
 
@@ -100,7 +100,7 @@ GitHub 不仅是世界上最大的代码托管平台，也是全球最活跃、�
 ## 注册 GitHub 账号
 
 1. 访问 [GitHub 官网](https://github.com/) 并点击右上角的"Sign up"。
-   ![](images/image11.png)
+   ![](images/image11.webp)
 2. 输入你的电子邮件地址（建议使用常用邮箱，因为验证和通知将发送到那里），设置密码（必须包含字母、数字和特殊字符）。
 3. 完成人工验证，按照提示验证邮箱，你的账号就创建好了。
 
@@ -174,13 +174,13 @@ SSH 认证依赖于密钥对（公钥 + 私钥），它们是匹配的加密文�
    1. 使用 Trae 获取公钥（推荐）
       提示词：`Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](images/image18.png)
+   ![](images/image18.webp)
 
    输入提示词后，你还需要在左侧终端按 Enter 键，否则命令会一直等待而不执行。由于 Trae 无法帮你执行任何条件判断，我们只需要一直按 Enter 即可。
 
    最后，你会看到右侧的 Trae 返回了它读取的公钥。你只需复制它并准备在下一步中粘贴。
 
-   ![](images/image19.png) 2. 手动获取公钥
+   ![](images/image19.webp) 2. 手动获取公钥
    打开你的本地终端（在 Windows 上使用 Git Bash 或 PowerShell；在 macOS/Linux 上使用终端），输入以下命令（将 your_email@example.com 替换为你注册 GitHub 账号时使用的邮箱）：
 
    ```bash
@@ -235,7 +235,7 @@ ssh -T git@github.com
 
 你可以直接告诉它你想克隆的仓库地址
 
-![](images/image24.png)
+![](images/image24.webp)
 
 ## Git pull : 从远程仓库获取更新
 
@@ -251,7 +251,7 @@ prompt:`Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](images/image25.png)
+![](images/image25.webp)
 
 推送成功。现在你可以在 GitHub 上看到更新的内容了。
 

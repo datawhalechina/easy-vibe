@@ -20,7 +20,7 @@ Electron은 **HTML + CSS + JavaScript**(웹 페이지에 사용되는 동일한 
 
 **한 문장 이해**: Electron = "보이지 않는 Chrome 브라우저" + Node.js 시스템 기능.
 
-<!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 Electron 핵심 아키텍처
 
@@ -47,7 +47,7 @@ Electron 앱은 두 가지 프로세스 유형으로 구성됩니다. 이해하�
 
 이들은 **IPC(프로세스 간 통신)**를 통해 소통하며, 전화를 거는 것과 같습니다: 렌더러가 "녹음 시작하고 싶어"라고 말하면, 메인 프로세스가 그 요청을 받아 시스템 마이크를 호출합니다.
 
-<!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 무엇을 만들 것인가?
 
@@ -69,7 +69,7 @@ Electron 앱은 두 가지 프로세스 유형으로 구성됩니다. 이해하�
 | 모델 크기 | 다운로드 불필요 | tiny 모델 75MB, large 모델 3GB |
 | 적합한 경우 | 빠른 온보딩, 가벼운 사용 | 프라이버시 중시, 오프라인 사용, 장기 고빈도 사용 |
 
-<!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 중요 참고: Web Speech API는 Electron에서 사용할 수 없음
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # 3장: 녹음 구현
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 마이크 권한 처리
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 설정 UI 추가
 

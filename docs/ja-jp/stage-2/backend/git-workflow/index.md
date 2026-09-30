@@ -89,7 +89,7 @@ GitHubはGitベースのコードホスティングプラットフォームで�
 
 GitHubは世界最大のコードホスティングプラットフォームであるだけでなく、世界で最も活発で影響力のあるオープンソースコミュニティです。ここでの「オープンソース」の核心的な考え方は、誰でもソフトウェアのソースコードをダウンロードして実行できるということです。このモデルにより、世界中の人々が互いのコードを検査して修正したり、それに基づいて新しいプロジェクトを作成したりできます。例えば、GitHubで各種学習チュートリアルや、GPTモデルのトレーニングに使用されるフレームワーク（PyTorchなど）の完全なソースコードを見つけることができます。毎日、世界中で無数の人がコードをレビューし改善するために協業しています。
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 多くの大企業がGitHubでプログラムやチュートリアルをオープンソース化し、業界での競争優位性を得ています——これは一種の広告形態とも言えます。GitHubコミュニティでは、プロジェクトが獲得した「スター（stars）」の数がその価値を測る主な指標であり、プロジェクトや組織が持つスターが多いほど、その信頼性と影響力が大きくなります。
 
@@ -100,7 +100,7 @@ GitHubは世界最大のコードホスティングプラットフォームで�
 ## GitHubアカウントの登録
 
 1. [GitHub公式サイト](https://github.com/)にアクセスし、右上の「Sign up」をクリック。
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. メールアドレスを入力（検証や通知がそこに送信されるため、常用メールの使用を推奨）、パスワードを設定（文字、数字、特殊文字を含める必要があります）。
 3. 人工検証を完了し、指示に従ってメールを検証すれば、アカウントの作成完了です。
 
@@ -174,13 +174,13 @@ SSHでGitHubリポジトリを操作する際（例：git push git@github.com:xx
    1. Traeを使って公開鍵を取得（推奨）
       プロンプト：`Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    プロンプトを入力した後、左側のターミナルでEnterキーを押す必要があります。そうしないとコマンドが待機状態のままになります。Traeは条件判断を実行できないため、ひたすらEnterを押し続けるだけで問題ありません。
 
    最終的に、右側のTraeが読み取った公開鍵が返されます。それをコピーし、次のステップで貼り付ける準備をしてください。
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. 手動で公開鍵を取得
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. 手動で公開鍵を取得
    ローカルのターミナルを開き（WindowsではGit BashまたはPowerShell、macOS/Linuxではターミナル）、以下のコマンドを入力（your_email@example.comをGitHubアカウント登録時に使用したメールアドレスに置き換えてください）：
 
    ```bash
@@ -235,7 +235,7 @@ Gitとは何か、GitHubとは何か、SSHとは何か、そしてその設定�
 
 クローンしたいリポジトリのアドレスを直接伝えることができます
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull：リモートリポジトリから更新を取得
 
@@ -251,7 +251,7 @@ prompt:`Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 プッシュ成功。これでGitHubで更新された内容を確認できます。
 

@@ -16,9 +16,9 @@
 
 تخيل هذا: تفتح مقالاً تقنيًا من 5000 كلمة، تنقر على زر الإضافة مرة واحدة، وبعد بضع ثوانٍ يظهر ملخص موجز بالعربية في اللوحة الجانبية. هذا بالضبط ما سنقوم ببنائه.
 
-![placeholder: صورة معاينة تعرض صفحة مقال طويلة على اليسار وملخص مولد بالذكاء الاصطناعي معروض في اللوحة الجانبية لـ Chrome على اليمين](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: صورة معاينة تعرض صفحة مقال طويلة على اليسار وملخص مولد بالذكاء الاصطناعي معروض في اللوحة الجانبية لـ Chrome على اليمين](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: صورة معاينة تعرض صفحة مقال طويلة على اليسار وملخص مولد بالذكاء الاصطناعي معروض في اللوحة الجانبية لـ Chrome على اليمين](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: صورة معاينة تعرض صفحة مقال طويلة على اليسار وملخص مولد بالذكاء الاصطناعي معروض في اللوحة الجانبية لـ Chrome على اليمين](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 البنية الأساسية لإضافة Chrome
 
@@ -44,8 +44,8 @@
     -> Service Worker يرسل الملخص للوحة الجانبية للعرض
 ```
 
-![placeholder: مخطط تدفق البنية يعرض كيف يتبادل Content Script و Service Worker و Side Panel الرسائل بينهم](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: مخطط تدفق البنية يعرض كيف يتبادل Content Script و Service Worker و Side Panel الرسائل بينهم](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: مخطط تدفق البنية يعرض كيف يتبادل Content Script و Service Worker و Side Panel الرسائل بينهم](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: مخطط تدفق البنية يعرض كيف يتبادل Content Script و Service Worker و Side Panel الرسائل بينهم](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 خياران للذكاء الاصطناعي: API السحابي مقابل الذكاء الاصطناعي المدمج في المتصفح
 
@@ -425,8 +425,8 @@ Please help me modify options.html and options.js:
 3. حدد اسم إضافتك
 4. عندها يمكنك رؤية مخرجات `console` من Content Script
 
-![placeholder: لقطة شاشة لـ Chrome DevTools تعرض كيفية اختيار سياقات تنفيذ مختلفة لتصحيح مكونات إضافة مختلفة](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: لقطة شاشة لـ Chrome DevTools تعرض كيفية اختيار سياقات تنفيذ مختلفة لتصحيح مكونات إضافة مختلفة](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: لقطة شاشة لـ Chrome DevTools تعرض كيفية اختيار سياقات تنفيذ مختلفة لتصحيح مكونات إضافة مختلفة](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: لقطة شاشة لـ Chrome DevTools تعرض كيفية اختيار سياقات تنفيذ مختلفة لتصحيح مكونات إضافة مختلفة](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 استكشاف الأخطاء الشائعة وإصلاحها
 

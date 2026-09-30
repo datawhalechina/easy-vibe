@@ -16,9 +16,9 @@
 
 상상해 보세요: 5,000단어짜리 기술 블로그 게시물을 열고, 확장 프로그램 버튼을 한 번 클릭하면, 몇 초 후 사이드 패널에 간결한 요약이 나타납니다. 바로 그것을 만들 것입니다.
 
-![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 Chrome 확장 프로그램의 기본 아키텍처
 
@@ -44,8 +44,8 @@ Chrome 확장 프로그램(Manifest V3 기반)은 여러 핵심 부분으로 구
     -> Service Worker가 요약을 사이드 패널로 전송하여 표시
 ```
 
-![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 두 가지 AI 옵션: 클라우드 API vs 브라우저 내장 AI
 
@@ -425,8 +425,8 @@ Chrome 확장 프로그램 디버깅은 일반 웹페이지 디버깅과 약간 
 3. 확장 프로그램 이름 선택
 4. Content Script의 `console` 출력을 볼 수 있음
 
-![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 일반적인 문제 해결
 

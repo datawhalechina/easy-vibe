@@ -89,7 +89,7 @@ GitHub ist eine Git-basierte Code-Hosting-Plattform. Sie bietet nicht nur Remote
 
 GitHub ist nicht nur die groesste Code-Hosting-Plattform der Welt, sondern auch die aktivste und einflussreichste Open-Source-Community weltweit. Die Kernidee von "Open Source" besagt, dass jeder den Quellcode der Software herunterladen und ausfuehren kann. Dieses Modell ermoeglicht es Menschen weltweit, den Code anderer zu pruefen, zu aendern oder darauf basierend neue Projekte zu erstellen. Du kannst beispielsweise auf GitHub verschiedene Lerntutorials sowie den vollstaendigen Quellcode von Frameworks zum Training von GPT-Modellen (wie PyTorch) finden. Taeglich arbeiten unzaehlige Menschen weltweit zusammen, um Code zu reviewen und zu verbessern.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 Viele grosse Unternehmen veroeffentlichen ihre Programme oder Tutorials als Open Source auf GitHub, um Wettbewerbsvorteile in der Branche zu erlangen -- was man auch als eine Form der Werbung betrachten kann. In der GitHub-Community ist die Anzahl der "Sterne" (Stars), die ein Projekt erhaelt, das wichtigste Mass fuer seinen Wert; je mehr Stars ein Projekt oder eine Organisation hat, desto groesser ist seine Glaubwuerdigkeit und sein Einfluss.
 
@@ -100,7 +100,7 @@ In unserem Kurs werden auch Unterstuetzungsressourcen und Aufgaben in einem dedi
 ## GitHub-Konto registrieren
 
 1. Besuche die [offizielle GitHub-Website](https://github.com/) und klicke oben rechts auf "Sign up".
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. Gib deine E-Mail-Adresse ein (verwende bevorzugt deine haeufig genutzte Adresse, da Verifizierungen und Benachrichtigungen dorthin gesendet werden), setze ein Passwort (muss Buchstaben, Zahlen und Sonderzeichen enthalten).
 3. Schliesse die menschliche Verifizierung ab, bestaetige deine E-Mail gemaess den Anweisungen, und dein Konto ist erstellt.
 
@@ -174,13 +174,13 @@ Sobald du das Prinzip verstanden hast, ist die praktische Umsetzung einfach -- d
    1. Trae verwenden, um den oeffentlichen Schluessel zu erhalten (empfohlen)
       Prompt: `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    Nach Eingabe des Prompts musst du auch im linken Terminal die Enter-Taste druecken, da der Befehl sonst wartet und nicht ausgefuehrt wird. Da Trae keine Bedingungspruefungen fuer dich durchfuehren kann, druecke einfach wiederholt Enter.
 
    Am Ende siehst du auf der rechten Seite, dass Trae den gelesenen oeffentlichen Schluessel zurueckgegeben hat. Kopiere ihn einfach und bereite dich darauf vor, ihn im naechsten Schritt einzufuegen.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. Oeffentlichen Schluessel manuell erhalten
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. Oeffentlichen Schluessel manuell erhalten
    Oeffne dein lokales Terminal (Windows: Git Bash oder PowerShell; macOS/Linux: Terminal) und gib den folgenden Befehl ein (ersetze your_email@example.com durch die E-Mail-Adresse, die du bei der Registrierung deines GitHub-Kontos verwendet hast):
 
    ```bash
@@ -235,7 +235,7 @@ Wir haben erklaert, was Git, GitHub und SSH sind und wie man sie konfiguriert. J
 
 Du kannst Trae einfach die Adresse des Repositories mitteilen, das du klonen moechtest.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull: Updates aus dem Remote-Repository abrufen
 
@@ -251,7 +251,7 @@ Wenn alles bereit ist, kannst du damit beginnen, lokale Dateien zu aendern, Elem
 
 Prompt: `I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 Push erfolgreich. Jetzt kannst du die aktualisierten Inhalte auf GitHub sehen.
 

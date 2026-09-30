@@ -25,8 +25,8 @@ VS Code extensions can do much more than many people expect:
 * **Extend editor capabilities**: custom language support, code completion, diagnostics
 * **Add AI capabilities**: create AI assistants with Chat Participant API, call models with Language Model API
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![VS Code extension ecosystem diagram showing the areas extensions can extend: sidebar, editor, status bar, command palette, and Chat panel](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![VS Code extension ecosystem diagram showing the areas extensions can extend: sidebar, editor, status bar, command palette, and Chat panel](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 Core Architecture of a VS Code Extension
 
@@ -53,8 +53,8 @@ VS Code editor
     └── Editor main process (UI rendering)
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![VS Code extension architecture diagram showing the Extension Host process and the editor main process](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![VS Code extension architecture diagram showing the Extension Host process and the editor main process](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 What Extension Are We Building?
 

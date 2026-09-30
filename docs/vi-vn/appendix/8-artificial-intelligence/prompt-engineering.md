@@ -355,7 +355,7 @@ Học trên giấy rồi cũng thấy nông cạn. Cách nhanh nhất để thà
 
 Chúng tôi khuyến nghị sử dụng [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat) (hoặc bất kỳ nền tảng LLM nào bạn quen), làm theo **3 thử thách** dưới đây để kiểm chứng những kỹ thuật bạn đã học.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 Mẹo thao tác**: Nhấp "Add Model for Comparison" ở thanh bên phải, có thể so sánh song song hai mô hình (ví dụ Qwen-Max vs Llama-3) với cùng một Prompt.
 

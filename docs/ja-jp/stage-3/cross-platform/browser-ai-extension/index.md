@@ -16,9 +16,9 @@
 
 想像してみてください：5000語の技術ブログ記事を開き、拡張機能ボタンを1回クリックすると、数秒後にサイドパネルに簡潔な要約が表示されます。これこそが私たちが構築するものです。
 
-![placeholder: 左に長い記事のWebページ、右にChromeサイドパネルにAI生成された要約が表示されるプレビュー画像](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: 左に長い記事のWebページ、右にChromeサイドパネルにAI生成された要約が表示されるプレビュー画像](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: 左に長い記事のWebページ、右にChromeサイドパネルにAI生成された要約が表示されるプレビュー画像](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: 左に長い記事のWebページ、右にChromeサイドパネルにAI生成された要約が表示されるプレビュー画像](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 Chrome拡張機能の基本アーキテクチャ
 
@@ -44,8 +44,8 @@ Chrome拡張機能（Manifest V3ベース）は、それぞれ役割を持つい
     -> Service Workerが要約をサイドパネルに送信して表示
 ```
 
-![placeholder: Content Script、Service Worker、Side Panelが互いにメッセージを渡すアーキテクチャフロー図](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: Content Script、Service Worker、Side Panelが互いにメッセージを渡すアーキテクチャフロー図](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: Content Script、Service Worker、Side Panelが互いにメッセージを渡すアーキテクチャフロー図](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: Content Script、Service Worker、Side Panelが互いにメッセージを渡すアーキテクチャフロー図](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 2つのAIオプション：クラウドAPI vs ブラウザ内蔵AI
 
@@ -425,8 +425,8 @@ Chrome拡張機能のデバッグは通常のWebページのデバッグとは�
 3. 拡張機能名を選択
 4. Content Scriptからの`console`出力を確認可能
 
-![placeholder: 異なる実行コンテキストを選択して異なる拡張機能コンポーネントをデバッグする方法を示すChrome DevToolsのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: 異なる実行コンテキストを選択して異なる拡張機能コンポーネントをデバッグする方法を示すChrome DevToolsのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: 異なる実行コンテキストを選択して異なる拡張機能コンポーネントをデバッグする方法を示すChrome DevToolsのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: 異なる実行コンテキストを選択して異なる拡張機能コンポーネントをデバッグする方法を示すChrome DevToolsのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 一般的なトラブルシューティング
 

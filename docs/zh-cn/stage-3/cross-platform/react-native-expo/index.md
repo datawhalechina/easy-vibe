@@ -49,7 +49,7 @@ Discord 原来分别维护 Android 和 iPhone 应用，新功能经常不能同�
 
 纽约大都会运输署 MTA 用 Expo 开发 TrainTime 等出行应用。乘客可能在赶车时查下一班列车，在站台上买票，上车后再向工作人员出示车票。这些操作都发生在时间紧、网络环境不断变化的通勤途中。
 
-![Expo 官方案例展示的 MTA TrainTime 应用](images/expo-mta-case.png)
+![Expo 官方案例展示的 MTA TrainTime 应用](images/expo-mta-case.webp)
 
 图片来源：[Expo 官方 MTA 案例](https://expo.dev/customers/mta)。
 

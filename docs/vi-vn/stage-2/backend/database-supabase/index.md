@@ -91,7 +91,7 @@ Xa hơn nữa, nếu chúng ta xem xét dữ liệu được mã hóa thành vec
 
 Nhìn chung, trong thế giới thực có rất nhiều dữ liệu với nhiều hình thái và mục đích sử dụng khác nhau đáng để chúng ta phân tích chi tiết, mỗi loại dữ liệu có thể都需要 cơ sở dữ liệu chuyên dụng để lưu trữ, cụ thể có thể tham khảo sơ đồ dưới đây — có phải cảm thấy rất nhiều không?
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 Tại sao chúng ta cần cơ sở dữ liệu
 
@@ -895,7 +895,7 @@ Tất nhiên, bạn cũng có thể trực tiếp để AI tham khảo triển k
 
 Dựa trên SOP đã đề cập ở trên, chúng ta hãy thực hành thông qua một tình huống cụ thể `Project5-Supabase-Demos/apps_snakegame`: thêm bảng xếp hạng điểm số cho một dự án trò chơi "rắn ăn mảnh" hiện có, bao gồm chức năng đăng nhập người dùng và các chức năng cơ sở dữ liệu cơ bản.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 Phân tích dự án, xác định nhu cầu dữ liệu
 

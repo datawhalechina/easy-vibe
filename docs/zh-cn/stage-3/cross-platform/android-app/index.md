@@ -46,9 +46,9 @@ Compose 不是只给教学项目使用。Android Developers 的[团队采用页�
 
 从 [Android Studio 官网](https://developer.android.com/studio) 下载当前稳定版。第一次启动时，让安装向导配置 Android SDK、Platform Tools 和模拟器。
 
-![Android Studio 安装向导](images/image1.png)
+![Android Studio 安装向导](images/image1.webp)
 
-![选择 Android SDK 组件](images/image4.png)
+![选择 Android SDK 组件](images/image4.webp)
 
 安装完成后，在欢迎页选择 **New Project**，使用一个带 Jetpack Compose 的空白 Activity 模板。
 
@@ -74,9 +74,9 @@ Compose 不是只给教学项目使用。Android Developers 的[团队采用页�
 
 启动模拟器，再点击工具栏运行按钮。
 
-![Android 模拟器启动完成](images/image21.png)
+![Android 模拟器启动完成](images/image21.webp)
 
-![空白 Android 应用运行成功](images/image22.png)
+![空白 Android 应用运行成功](images/image22.webp)
 
 看到空白应用，说明 SDK、Gradle、模拟器和项目已经连通。不要在空白项目都无法运行时让 AI 同时增加业务功能。
 
@@ -156,7 +156,7 @@ Android Studio 顶部设备列表出现手机后，选择它并运行。
 
 ![Android Studio 识别到真机](images/image47.png)
 
-![应用成功安装到 Android 手机](images/image49-sidebar-cropped.png)
+![应用成功安装到 Android 手机](images/image49-sidebar-cropped.webp)
 
 真机至少测试：
 

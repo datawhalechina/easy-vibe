@@ -88,9 +88,9 @@ En la barra de herramientas superior de la interfaz de edición de MasterGo, pue
 
 2. **Ver el resultado generado**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **Obtener el código**
    - Hacer clic en el botón azul "Insertar en lienzo" para editar la página generada directamente
@@ -126,19 +126,19 @@ Usar la funcionalidad completa de Figma Make requiere permisos de usuario Pro. L
    - Subir la imagen de diseño que quieres reproducir al chat
    - Agregar un prompt describiendo los requerimientos
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **Ver el resultado generado**
    - Esperar un momento para ver el resultado renderizado
    - Hacer clic en el botón de reproducción de la esquina superior derecha para vista previa completa
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **Ajustes de detalle**
    - Hacer clic en el icono del editor de la esquina superior derecha
    - Volver a la interfaz familiar del Editor de Figma para ajustes detallados
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **Exportar código**
    - Una vez satisfecho con los ajustes, seleccionar exportar código

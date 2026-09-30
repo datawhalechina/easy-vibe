@@ -17,7 +17,7 @@
 
 이번 수업의 프로젝트 주제는 **Hogwarts Portraits**입니다. 이름에서 알 수 있듯이, 호그와트 마법학교에 있는 "살아 움직이는" 초상화에서 영감을 받았습니다. 우리는 AI를 사용하여 "상호작용이 가능한" 마법 초상화 체험을 만들고자 합니다. 초상화와 대화하는 것은 "본인"과 대화하는 것과 같아야 하며, 대화의 기억을 유지하면서도 캐릭터의 배경과 역사를 갖추고 있어야 합니다. 이 프로젝트를 통해, 이전에 배운 지능체와 워크플로우를 구체적인 제품 인터페이스에 진정으로 통합하게 됩니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.webp)
 
 Hogwarts Portraits를 진정으로 구축하기 위해, 우리는 마법 초상화에 맞는 프론트엔드 인터페이스를 직접 만들어야 합니다. 이를 위해 여러분은 모던 프론트엔드 디자인 도구를 접하게 되고, 인터페이스 디자인과 코드를 결합하는 방법을 배우며, 종이나 캔버스에 있는 인터페이스 스케치를 실제로 조작할 수 있는 웹페이지로 변환하는 방법을 배우게 됩니다.
 
@@ -39,7 +39,7 @@ Hogwarts Portraits를 진정으로 구축하기 위해, 우리는 마법 초상�
 
 우리는 과연 어떤 "마법 초상화"를 만들고 싶은 걸까요? 간단히 말해, 《해리 포터》의 장면을 최대한 재현하고 싶습니다. 초상화는 더 이상 벽에 걸린 정적인 이미지가 아니라, 여러분과 대화할 수 있고, 대화 내용에 따라 표정과 "기분"이 변하는 의인화된 캐릭터가 되어야 합니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.webp)
 
 이 초상화가 채팅 AI 로봇이 아니라 "실존하는 사람"에 더 가깝게 보이게 하려면, 두 가지 문제를 해결해야 합니다. 첫째는 기억과 지식입니다: 초상화는 캐릭터와 관련된 대량의 배경 자료(인물 설정, 경험 이야기, 관련 기사 등)를 파악해야 합니다. 이 부분은 지식 베이스를 통해 실현할 수 있으며, 캐릭터를 위해 준비한 텍스트 자료를 지식 베이스가 포함된 Dify에 연결하면, 초상화가 일정 수준의 배경 지식 설명 능력을 갖게 됩니다.
 
@@ -47,7 +47,7 @@ Hogwarts Portraits를 진정으로 구축하기 위해, 우리는 마법 초상�
 
 대화 기능 외에도, 감정이 실제로 보일 수 있기를 바랍니다. 이를 위해 감정 수치 지표를 구축할 수 있습니다. Dify의 출력 내용을 설정하여, 모델이 답변 텍스트를 생성함과 동시에 "기분 수치"나 감정 태그를 추가로 출력하도록 할 수 있습니다. 프론트엔드가 감정 지표를 받으면, 기분 수치나 태그에 따라 해당하는 초상화 이미지를 렌더링할 수 있습니다. 기분 수치가 높으면 초상화가 행복해 보이고, 기분 수치가 낮거나 화가 나면 초상화가 슬프거나 분노해 보입니다. 이 방식을 통해, 사용자가 보는 것은 영원히 변하지 않는 이미지가 아니라, 내용의 기복에 따라 끊임없이 "표정이 변하는" 진정한 "마법 초상화"가 됩니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.webp)
 
 또한, 이 초상화의 내용은 현실의 유명인이나 역사적 인물일 수도 있고, 애니메이션 IP일 수도 있으며, 여러분이 제로부터 구축한 오리지널 캐릭터일 수도 있습니다. 페이지 자체는 복잡할 필요가 없지만, 몇 가지 핵심 요소는 필수적입니다: 명확한 캐릭터 이름, 고도로 응축된 인물 소개, 캐릭터를 대표할 수 있는 핵심 초상화나 포스터, 그리고 "TA와 대화하기" 상호작용 영역. Dify / Trae에서 구성한 AI Agent나 워크플로우를 이 대화 모듈에 연결하여 초상화의 역할극 기능을 실현할 수 있습니다.
 
@@ -76,7 +76,7 @@ It's just a model, which is a big file of numbers. When the numbers are right an
 
 본 튜토리얼에서는 [Lovart](https://www.lovart.ai/home)를 사용합니다. Lovart는 AI 디자인 지능체로, 자연어 명령을 통해 컨셉에서 납품까지의 엔드투엔드 디자인 워크플로우를 자동으로 계획하고 실행하며, 포스터, 브랜드 로고, 비디오, 음악 등의 콘텐츠를 생성하고, 레이어 편집을 지원합니다 (실제로 내부 기능 원리는 해당 Seedream 또는 google nanobanana 모델을 호출하는 것으로, 이전 수업에서 이미 언급했습니다). Lovart를 통해 일련의 표정 소재를 얻을 수 있으며, 좋아하는 캐릭터의 이미지 정보를 미리 얻어 저장한 후 나중에 사용할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.webp)
 
 모든 준비가 완료되면, 전체 페이지의 디자인에 착수할 수 있습니다. 우리는 이 페이지의 스타일이 해당 인물과 밀접하게 연관되기를 바랍니다.
 
@@ -84,15 +84,15 @@ It's just a model, which is a big file of numbers. When the numbers are right an
 
 페이지의 프로토타입을 먼저 구상해 볼 수 있습니다. 앞서 말한 대로, 우리는 대화 페이지와 초상화, 그리고 흥미로운 개인 소개가 있기를 바랍니다. 이 예시에서는 X의 대화 인터페이스와 유사한 것으로 개인 소개를 대체했지만, "해당 인물의 특징"에 맞는 다른 방식을 생각해 내어, 새로운 요소로 개인 소개 섹션을 교체할 수도 있습니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.webp)
 
 가장 간단하게는, PowerPoint로 초기 웹페이지 표시 프로토타입을 디자인할 수 있습니다. 인터넷에서 마법 초상화 이미지를 찾아, 화면을 가로 배열로 설정하고, 가장 왼쪽을 채팅 영역, 중간을 초상화 영역, 가장 오른쪽을 X 영역으로 설정합니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.webp)
 
 이러한 간단한 프로토타입을 기반으로, 대형 모델이 실제 프론트엔드 페이지 디자인과 해당 코드 결과를 생성할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.webp)
 
 하지만 일반적으로 실제로는 PowerPoint로 프론트엔드 페이지를 디자인하지 않습니다. 더 나은 프로토타입 도구, 즉 프론트엔드 디자인 도구를 사용하여 이 작업을 수행합니다.
 
@@ -175,7 +175,7 @@ Lovart나 다른 AI 이미지 생성 도구를 사용하여, 같은 캐릭터를
 
 주의할 점은, 키를 코드에 직접 작성하는 것이 아니라 환경 변수에 넣어야 한다는 것입니다. 이후 Dify API와 관련된 모든 내용을 환경 변수에 넣어야 한다는 점을 특히 강조합니다. 나중에 공개 네트워크 배포 단계에서 배포 도구 웹사이트에서 해당 개인 환경 변수를 명시적으로 지정할 수 있습니다. 또는 대형 모델이 웹페이지에 설정 버튼을 만들도록 하여, 설정 버튼에서 해당 개인 환경 변수를 전달할 수 있습니다. 현재 변수는 현재 페이지에서만 저장되며, 다른 사람은 접근할 수 없습니다.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.webp)
 
 ## 3.2 Dify 워크플로우 설계 및 API 연동
 
@@ -320,13 +320,13 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
 
 Hogwarts Portraits 프로젝트를 직접 개발하는 것이 어렵다고 느끼신다면, 먼저 다른 프로젝트를 참고하여 수정하는 것부터 시작할 수 있습니다. 이번 수업의 공식 코드 주소: https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.webp)
 
 # 4. 다양한 디자인 스타일 시도
 
 첫 번째 버전 디자인을 완성한 후, 여기에 국한될 필요가 없습니다. 더 다양한 시각적 스타일을 빠르게 탐색하는 것을 권장합니다. 프로토타입 부분에서 대담하게 수정하거나, 최종 프로젝트를 기반으로 완전히 새로운 프롬프트를 수정하여, 스타일 차이가 뚜렷한 여러 벌의 페이지를 생성할 수 있습니다. 예를 들어 레트로 텍스처가 있고 "고서적 / 아카데믹" 느낌의 다크 페이지, 색상이 밝고 "동화 / 카툰" 느낌이 가득한 라이트 페이지, 또는 요소가 심플하고 시각적으로 깔끔한 모던 플랫 디자인 등이 있습니다. 예를 들어 아래 이미지는 중국 고전 시인 디자인 스타일로 변환한 사례로, 초상화 이미지는 교체하지 않고 다른 부분만 수정했습니다:
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.webp)
 
 앞서 언급한 패턴에 얽매이지 마세요. 마법 초상화나 개인 프로필 페이지를 "마법 초상화" 자체의 습관에 맞게 더 특징적으로 수정하면, 애플리케이션이 더 흥미로워질 것입니다. 여러분의 마법 초상화 결과물을 기대합니다!
 

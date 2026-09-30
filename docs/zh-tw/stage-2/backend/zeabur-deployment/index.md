@@ -23,7 +23,7 @@
 
 像 CloudBase、Vercel、Zeabur 這樣的「低程式碼部署平臺」，就是為了解決上述複雜問題而誕生的。它們會幫你自動完成「買伺服器、設定環境、上傳程式碼、啟動服務、監控執行」等步驟。你只需要把自己的程式碼倉庫（比如 GitHub 或 GitLab）連接到平臺，或者直接上傳程式碼，它就會自動拉取程式碼、識別應用類型、設定對應的執行環境，最後給你一個可以被任何人訪問的公網位址。它甚至可以一鍵綁定你自己的網域。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 接下來，我們會分別介紹這三個平臺的特點和使用方法，幫助你選擇最適合自己的部署方案。
 
@@ -289,7 +289,7 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 在之前的課程中，我們已經簡單接觸過 Dify。現在，我們可以通過 [Zeabur](https://zeabur.com/projects) 非常輕鬆地啟動自己的 Dify 服務。首先打開 [控制檯頁面](https://zeabur.com/projects)，我們先看一下上面的各個區域。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 在這個頁面上，你首先能看到許多方塊，這些就是已經啟動的服務。在頂部菜單中，你會看到 Agent、Servers、Docs、Templates 等幾個選項，它們分別代表：
 
@@ -357,7 +357,7 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 如果你有興趣，還可以順便啟動一個 n8n 服務。n8n 也是海外非常流行的一款 AI 工作流平臺。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## 使用 Zeabur 與 Trae 部署貪吃蛇遊戲
 
@@ -367,7 +367,7 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 ### 使用 HTML 框架實現
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 對於 Trae 來說，生成一個基於 HTML 的貪吃蛇網頁遊戲非常簡單。遊戲生成完成後，你只需要按照前面介紹的 Zeabur 本地部署方式，把包含所有文件的文件夾上傳上去即可。
 
@@ -375,7 +375,7 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 完成後，你就會進入該服務的詳情界面：
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 點擊左側的 "Network" 選項，在頁面中找到 "Public Address" 區域。點擊 "Generate Domain"，即可生成一個對外訪問地址，你可以輸入任意喜歡的名稱。
 
@@ -391,13 +391,13 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 前面我們學習瞭如何部署基於 HTML 的 Web 應用。接下來，我們再嘗試部署一個目前更常用的前端框架：React 應用。相比純 HTML，React 被認為是一種更加成熟、現代的前端開發框架。它通過組件化的方式組織頁面結構，能夠顯著加快複雜頁面的開發，是企業級項目中非常主流的選擇。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### 重構為 React 架構
 
 在 Trae 中，你只需要向 Agent 說明："幫我把這份程式碼重構成 React 架構"，就可以比較輕鬆地把原本基於 HTML 的結構重構成 React 項目。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 不過，相比簡單的 HTML 文件，React 應用依賴更復雜的構建工具和項目結構，因此部署過程也會稍微麻煩一些。一個典型的問題體現在端口設置上：默認情況下，React 應用一般會監聽 3000 端口（你也可以在配置文件或啟動日誌中看到這一點）。
 
@@ -434,13 +434,13 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 要把 React 默認監聽端口（3000）改成 Zeabur 所要求的 8080，有很多做法。最簡單的方式，就是直接在 Trae 裡對 Agent 下指令："請幫我把這個 React 項目的默認端口改為 8080。"Trae 就會幫你修改項目中對應的配置文件。修改完成後，你只需重新打包並按前面的方式上傳到 Zeabur 即可。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 在網路設置中指定一個訪問 URL，方式和部署 HTML 項目時基本相同，就可以啟動 React 版本的服務。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Zeabur 是一個新興的部署平臺，特別適合需要部署多種服務的�
 
 如果要找到項目的管理入口，首先點擊項目中的 "Settings" 選項。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 進入設置頁面後，將頁面拉到最下方，你會看到類似下面的界面：
 

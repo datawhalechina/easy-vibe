@@ -20,7 +20,7 @@ Electron là một framework mã nguồn mở cho phép bạn sử dụng **HTML
 
 **Hiểu trong một câu**: Electron = "trình duyệt Chrome vô hình" + khả năng hệ thống Node.js.
 
-<!-- ![placeholder: Sơ đồ hiển thị kiến trúc Electron: Chromium (cho kết xuất UI) + Node.js (cho truy cập hệ thống) = ứng dụng desktop](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: Sơ đồ hiển thị kiến trúc Electron: Chromium (cho kết xuất UI) + Node.js (cho truy cập hệ thống) = ứng dụng desktop](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 Kiến trúc Cốt lõi của Electron
 
@@ -47,7 +47,7 @@ Một ứng dụng Electron bao gồm hai loại tiến trình. Hiểu chúng l�
 
 Chúng giao tiếp thông qua **IPC (Inter-Process Communication)**, giống như gọi điện thoại: renderer nói "tôi muốn bắt đầu ghi âm," và main process nhận yêu cầu đó và gọi micro hệ thống.
 
-<!-- ![placeholder: Sơ đồ kiến trúc tiến trình Electron hiển thị Main Process, Renderer Process và Preload Script, cộng với giao tiếp IPC giữa chúng](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: Sơ đồ kiến trúc tiến trình Electron hiển thị Main Process, Renderer Process và Preload Script, cộng với giao tiếp IPC giữa chúng](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 Chúng ta đang Xây dựng Gì?
 
@@ -69,7 +69,7 @@ Trong hướng dẫn này, chúng ta sẽ xây dựng một ứng dụng desktop
 | Kích thước Mô hình | Không cần tải | mô hình tiny 75MB, mô hình large 3GB |
 | Phù hợp nhất | Bắt đầu nhanh, sử dụng nhẹ | Qu trọng quyền riêng tư, sử dụng ngoại tuyến, sử dụng tần suất cao dài hạn |
 
-<!-- ![placeholder: Ảnh xem trước ứng dụng hiển thị UI chuyển giọng nói thành văn bản: nút ghi âm và hoạt ảnh sóng phía trên, văn bản đã nhận diện phía dưới và công tắc chế độ ở góc trên bên phải](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: Ảnh xem trước ứng dụng hiển thị UI chuyển giọng nói thành văn bản: nút ghi âm và hoạt ảnh sóng phía trên, văn bản đã nhận diện phía dưới và công tắc chế độ ở góc trên bên phải](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 Lưu ý Quan trọng: Web Speech API Không Khả dụng trong Electron
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: Sơ đồ luồng IPC hiển thị truyền tin nhắn từ Renderer -> Preload -> Main](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: Sơ đồ luồng IPC hiển thị truyền tin nhắn từ Renderer -> Preload -> Main](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # Chương 3: Triển khai Ghi âm
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: Ảnh chụp màn hình UI ghi âm với nút trạng thái ghi màu đỏ và hoạt ảnh nhịp, cộng vùng kết quả văn bản phía dưới](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: Ảnh chụp màn hình UI ghi âm với nút trạng thái ghi màu đỏ và hoạt ảnh nhịp, cộng vùng kết quả văn bản phía dưới](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 Xử lý Quyền Micro
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: Ảnh chụp màn hình ứng dụng đang chạy hiển thị giọng nói tiếng Trung đã nhận diện được trả về bởi Whisper API](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: Ảnh chụp màn hình ứng dụng đang chạy hiển thị giọng nói tiếng Trung đã nhận diện được trả về bởi Whisper API](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 Thêm UI Cài đặt
 

@@ -91,7 +91,7 @@ Darueber hinaus koennen Daten auch als Vektoren (Vectors) codiert werden. Vektor
 
 Insgesamt gibt es in der realen Welt viele verschiedene Datenformen und Verwendungszwecke, die eine detaillierte Analyse erfordern. Jede Datenart benoetigt moeglicherweise eine spezielle Datenbank zur Speicherung.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 Warum wir Datenbanken brauchen
 
@@ -562,7 +562,7 @@ Nach dem systematischen Lernen hast du die Kernfaehigkeiten von Supabase gemeist
 
 Wir praktizieren den Standardprozess an einem konkreten Beispiel: Einem Schlangenspiel, dem wir einen Online-Bestenliste und Benutzeranmeldung hinzufuegen.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 Projekt analysieren und Datenanforderungen identifizieren
 

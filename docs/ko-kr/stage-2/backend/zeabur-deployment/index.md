@@ -23,7 +23,7 @@
 
 CloudBase, Vercel, Zeabur 같은 "로우코드 배포 플랫폼"은 바로 이러한 복잡한 문제를 해결하기 위해 탄생했습니다. "서버 구매, 환경 설정, 코드 업로드, 서비스 시작, 실행 모니터링" 등의 단계를 자동으로 처리해 줍니다. 코드 저장소(예: GitHub나 GitLab)를 플랫폼에 연결하거나 코드를 직접 업로드하기만 하면, 자동으로 코드를 가져와 애플리케이션 유형을 인식하고, 해당 실행 환경을 설정한 후 누구나 접속할 수 있는 공용 주소를 제공합니다. 심지어 원클릭으로 자신의 도메인을 연결할 수도 있습니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 앞으로 이 세 가지 플랫폼의 특징과 사용 방법을 각각 소개하여, 가장 적합한 배포 방안을 선택할 수 있도록 도와드리겠습니다.
 
@@ -289,7 +289,7 @@ Zeabur은 새롭게 떠오르는 배포 플랫폼으로, 특히 다양한 서비
 
 이전 강의에서 Dify를 간단히 다룬 적이 있습니다. 이제 [Zeabur](https://zeabur.com/projects)을 통해 자신만의 Dify 서비스를 매우 쉽게 시작할 수 있습니다. 먼저 [콘솔 페이지](https://zeabur.com/projects)를 열고 각 영역을 살펴보겠습니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 이 페이지에서 먼저 볼 수 있는 것은 여러 개의 사각형으로, 이것들이 이미 시작된 서비스들입니다. 상단 메뉴에는 Agent, Servers, Docs, Templates 등의 옵션이 있으며, 각각 다음을 나타냅니다.
 
@@ -357,7 +357,7 @@ Zeabur은 새롭게 떠오르는 배포 플랫폼으로, 특히 다양한 서비
 
 관심이 있다면 n8n 서비스도 함께 시작해 볼 수 있습니다. n8n 역시 해외에서 매우 인기 있는 AI 워크플로우 플랫폼입니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## Zeabur과 Trae를 사용하여 스네이크 게임 배포하기
 
@@ -367,7 +367,7 @@ Zeabur은 새롭게 떠오르는 배포 플랫폼으로, 특히 다양한 서비
 
 ### HTML 프레임워크로 구현
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Trae에게 HTML 기반의 스네이크 웹 게임을 생성하는 것은 매우 간단합니다. 게임 생성이 완료되면 앞서 소개한 Zeabur 로컬 배포 방식에 따라 모든 파일이 포함된 폴더를 업로드하기만 하면 됩니다.
 
@@ -375,7 +375,7 @@ Trae에게 HTML 기반의 스네이크 웹 게임을 생성하는 것은 매우 
 
 완료되면 해당 서비스의 세부 정보 화면으로 이동합니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 좌측의 "Network" 옵션을 클릭하고 페이지에서 "Public Address" 영역을 찾습니다. "Generate Domain"을 클릭하면 외부 접속 주소를 생성할 수 있으며, 원하는 이름을 입력할 수 있습니다.
 
@@ -391,13 +391,13 @@ Trae에게 HTML 기반의 스네이크 웹 게임을 생성하는 것은 매우 
 
 앞서 HTML 기반 웹 애플리케이션을 배포하는 방법을 배웠습니다. 이제 현재 더 널리 사용되는 프론트엔드 프레임워크인 React 애플리케이션을 배포해 보겠습니다. 순수 HTML에 비해 React는 더 성숙하고 현대적인 프론트엔드 개발 프레임워크로 간주됩니다. 컴포넌트 기반 방식으로 페이지 구조를 구성하여 복잡한 페이지 개발을 크게 가속화할 수 있으며, 기업급 프로젝트에서 매우 주류적인 선택입니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### React 아키텍처로 리팩토링
 
 Trae에서 Agent에게 "이 코드를 React 아키텍처로 리팩토링해 주세요"라고 말하면, 원래 HTML 기반 구조를 React 프로젝트로 비교적 쉽게 리팩토링할 수 있습니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 하지만 단순한 HTML 파일에 비해 React 애플리케이션은 더 복잡한 빌드 도구와 프로젝트 구조에 의존하므로 배포 과정도 조금 더 복잡합니다. 전형적인 문제는 포트 설정에 있습니다: 기본적으로 React 애플리케이션은 일반적으로 3000번 포트를 사용합니다(설정 파일이나 시작 로그에서도 확인할 수 있습니다).
 
@@ -434,13 +434,13 @@ Trae에서 Agent에게 "이 코드를 React 아키텍처로 리팩토링해 주�
 
 React의 기본 수신 포트(3000)를 Zeabur이 요구하는 8080으로 변경하는 방법에는 여러 가지가 있습니다. 가장 간단한 방법은 Trae에서 Agent에게 "이 React 프로젝트의 기본 포트를 8080으로 변경해 주세요"라고 지시하는 것입니다. 그러면 Trae가 프로젝트의 해당 설정 파일을 수정해 줍니다. 수정이 완료되면 다시 빌드한 후 앞의 방식대로 Zeabur에 업로드하면 됩니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 네트워크 설정에서 접속 URL을 지정하는 방식은 HTML 프로젝트를 배포할 때와 거의 동일하며, 이렇게 하면 React 버전의 서비스를 시작할 수 있습니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Trae가 다양한 유형의 애플리케이션을 구성하도록 하여 Zeabur�
 
 프로젝트의 관리 입구를 찾으려면 먼저 프로젝트의 "Settings" 옵션을 클릭합니다.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 설정 페이지에 들어간 후 페이지를 가장 아래로 스크롤하면 다음과 같은 인터페이스가 보입니다.
 

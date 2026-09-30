@@ -23,7 +23,7 @@ At first, it did not go smoothly. He wanted students to bring phones to school s
 
 So Xiao Hao paid out of pocket, bought a few secondhand phones, and logged his own Doubao account into them for students to use. That was how the children first got their hands on "high tech." Very quickly, they learned to use AI to search for information, learn dances, and even play with text-to-image generation. For the first time, AI opened a new window onto the world for these children.
 
-![Children trying AI in the computer room](../../zh-cn/vibe-stories/images/story-1/image3.png)
+![Children trying AI in the computer room](../../zh-cn/vibe-stories/images/story-1/image3.webp)
 
 ## 02 A Rural Classroom Specialty: Flies and False Touches
 
@@ -31,7 +31,7 @@ Rural classrooms now have multimedia smart boards too, which has improved teachi
 
 Electronic boards generate heat and light, and flies love landing on them. The screen cannot tell whether a touch is intentional or accidental, so slides jump around, videos pause, and sometimes the system even shuts down mid-class. In a 40-minute lesson, teachers can end up spending 20 minutes swatting flies at the podium. The class becomes fragmented, and both Xiao Hao and his students suffer through it.
 
-![The classroom smart board disturbed by accidental touches](../../zh-cn/vibe-stories/images/story-1/image4.png)
+![The classroom smart board disturbed by accidental touches](../../zh-cn/vibe-stories/images/story-1/image4.webp)
 
 Then one day, a student raised a hand and said, "Teacher, could we make a program together that keeps the flies out?"
 
@@ -46,7 +46,7 @@ Xiao Hao happened to discover a public-interest Vibe Coding course, so he starte
 
 Those questions led somewhere real. AI told them they needed to distinguish `RawInput` and identify `ExtraInfo`. The children did not understand the technical jargon, but by comparing data and discussing it together, they found that different input methods really did produce different `ExtraInfo` values.
 
-![The input recognition interface of "Xiao Hao Touch Lock"](../../zh-cn/vibe-stories/images/story-1/image5.png)
+![The input recognition interface of "Xiao Hao Touch Lock"](../../zh-cn/vibe-stories/images/story-1/image5.webp)
 
 Step by step, one sentence at a time, Xiao Hao and the children "talked" their way with AI into building what became **Xiao Hao Touch Lock**. Its principle is simple: it recognizes the characteristics of incoming signals and precisely blocks touchscreen input while keeping mouse input intact. That way, no matter how wild the flies get on the display, the lesson stays perfectly stable.
 
@@ -76,14 +76,14 @@ Xiao Hao also admitted that using phones and AI with the children brought him no
 
 Xiao Hao sincerely hopes more people will pay attention to practical, grounded AI-powered digital classrooms in public education. The small worlds of rural children need AI even more. AI is not just a tool. It is also a window that helps them connect with the vast world beyond their village.
 
-![The children's handwritten blessings for their teacher](../../zh-cn/vibe-stories/images/story-1/image7.png)
+![The children's handwritten blessings for their teacher](../../zh-cn/vibe-stories/images/story-1/image7.webp)
 
-![Teacher, thank you for everything](../../zh-cn/vibe-stories/images/story-1/image8.png)
+![Teacher, thank you for everything](../../zh-cn/vibe-stories/images/story-1/image8.webp)
 
-![A handwritten note from the children](../../zh-cn/vibe-stories/images/story-1/image9.png)
+![A handwritten note from the children](../../zh-cn/vibe-stories/images/story-1/image9.webp)
 
-![The children in everyday life](../../zh-cn/vibe-stories/images/story-1/image10.png)
+![The children in everyday life](../../zh-cn/vibe-stories/images/story-1/image10.webp)
 
-![The children in the classroom](../../zh-cn/vibe-stories/images/story-1/image11.png)
+![The children in the classroom](../../zh-cn/vibe-stories/images/story-1/image11.webp)
 
-![A selfie of Xiao Hao](../../zh-cn/vibe-stories/images/story-1/image12.png)
+![A selfie of Xiao Hao](../../zh-cn/vibe-stories/images/story-1/image12.webp)

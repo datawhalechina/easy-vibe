@@ -90,9 +90,9 @@ MasterGo 편집 인터페이스 상단 도구 모음에서 AI 도구 버튼을 �
 
 2. **생성 결과 확인**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **코드 획득**
    - 파란색 "캔버스에 삽입" 버튼을 클릭하면 생성된 웹페이지를 직접 편집 가능
@@ -128,19 +128,19 @@ Figma Make의 전체 기능을 사용하려면 Pro 사용자 권한이 필요합
    - 복원하고자 하는 디자인 이미지를 대화창에 업로드
    - 요구사항을 설명하는 프롬프트 추가
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **생성 결과 확인**
    - 잠시 기다리면 렌더링 결과를 볼 수 있음
    - 우측 상단의 재생 버튼을 클릭하면 전체 화면 미리보기 가능
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **세부 조정**
    - 우측 상단의 편집기 아이콘(마우스와 자 아이콘) 클릭
    - 익숙한 Figma Editor 인터페이스로 돌아가서 상세 조정
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **코드 내보내기**
    - 조정이 만족스러우면 코드 내보내기 선택

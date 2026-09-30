@@ -23,7 +23,7 @@ Nếu triển khai thủ công, một dự án thường cần nhiều bước, 
 
 Các nền tảng "triển khai mã thấp" như CloudBase, Vercel, Zeabur ra đời chính là để giải quyết các vấn đề phức tạp nói trên. Chúng sẽ giúp bạn tự động hoàn thành các bước "mua máy chủ, cấu hình môi trường, tải mã lên, khởi động dịch vụ, giám sát vận hành". Bạn chỉ cần kết nối kho mã (ví dụ GitHub hoặc GitLab) của mình với nền tảng, hoặc tải mã trực tiếp lên, nó sẽ tự động lấy mã, nhận dạng loại ứng dụng, cấu hình môi trường runtime tương ứng, và cuối cùng cung cấp cho bạn một địa chỉ mạng công cộng mà bất kỳ ai cũng có thể truy cập. Nó thậm chí có thể liên kết tên miền riêng của bạn chỉ bằng một cú nhấp.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 Tiếp theo, chúng tôi sẽ giới thiệu lần lượt đặc điểm và cách sử dụng của ba nền tảng này, giúp bạn chọn phương án triển khai phù hợp nhất với mình.
 
@@ -289,7 +289,7 @@ Zeabur là một nền tảng triển khai mới nổi, đặc biệt phù hợp
 
 Trong các khóa học trước, chúng ta đã tiếp xúc đơn giản với Dify. Bây giờ, chúng ta có thể khởi động dịch vụ Dify riêng rất dễ dàng thông qua [Zeabur](https://zeabur.com/projects). Đầu tiên, mở [trang bảng điều khiển](https://zeabur.com/projects), hãy xem các khu vực trên trang.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 Trên trang này, điều đầu tiên bạn thấy là nhiều ô vuông, đây là các dịch vụ đã được khởi động. Trong menu phía trên, bạn sẽ thấy các tùy chọn Agent, Servers, Docs, Templates, chúng lần lượt đại diện cho:
 
@@ -357,7 +357,7 @@ Sau khi đợi một lát, bạn sẽ thấy giao diện đăng nhập Dify. Nh�
 
 Nếu bạn quan tâm, bạn cũng có thể khởi động dịch vụ n8n. n8n cũng là một nền tảng quy trình làm việc AI rất phổ biến ở nước ngoài.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## Sử dụng Zeabur và Trae để triển khai trò chơi rắn ăn mồi
 
@@ -367,7 +367,7 @@ Bước đầu tiên là tạo một dự án rắn ăn mồi bằng Trae tại 
 
 ### Sử dụng framework HTML
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Đối với Trae, việc tạo một trò chơi web rắn ăn mồi dựa trên HTML rất đơn giản. Sau khi trò chơi được tạo, bạn chỉ cần tải thư mục chứa tất cả các tệp lên theo cách triển khai cục bộ Zeabur đã giới thiệu trước đó.
 
@@ -375,7 +375,7 @@ Bước đầu tiên là tạo một dự án rắn ăn mồi bằng Trae tại 
 
 Sau khi hoàn tất, bạn sẽ vào giao diện chi tiết của dịch vụ:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 Nhấp vào tùy chọn "Network" bên trái, tìm khu vực "Public Address" trong trang. Nhấp vào "Generate Domain", có thể tạo một địa chỉ truy cập đối ngoại, bạn có thể nhập bất kỳ tên nào bạn thích.
 
@@ -391,13 +391,13 @@ Sau khi tạo xong, chỉ cần mở địa chỉ này trong trình duyệt, b�
 
 Trước đó chúng ta đã học cách triển khai ứng dụng Web dựa trên HTML. Tiếp theo, chúng ta sẽ thử triển khai một framework frontend phổ biến hơn hiện nay: ứng dụng React. So với HTML thuần, React được coi là một framework phát triển frontend trưởng thành và hiện đại hơn. Nó tổ chức cấu trúc trang theo cách component hóa, có thể tăng tốc độ phát triển trang phức tạp đáng kể, là lựa chọn rất phổ biến trong các dự án cấp doanh nghiệp.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### Tái cấu trúc thành kiến trúc React
 
 Trong Trae, bạn chỉ cần nói với Agent: "Hãy giúp tôi tái cấu trúc mã này thành kiến trúc React", là có thể khá dễ dàng chuyển đổi cấu trúc dựa HTML thành dự án React.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 Tuy nhiên, so với tệp HTML đơn giản, ứng dụng React phụ thuộc vào công cụ xây dựng và cấu trúc dự án phức tạp hơn, nên quá trình triển khai cũng sẽ hơi phức tạp hơn một chút. Một vấn đề điển hình thể hiện ở cài đặt cổng: theo mặc định, ứng dụng React thường lắng nghe cổng 3000 (bạn cũng có thể thấy điều này trong tệp cấu hình hoặc nhật ký khởi động).
 
@@ -434,13 +434,13 @@ Thiết kế nền tảng Zeabur quyết định nó chỉ sẽ "nhận dạng" 
 
 Để thay đổi cổng lắng nghe mặc định của React (3000) thành 8080 như Zeabur yêu cầu, có nhiều cách. Cách đơn giản nhất là trực tiếp ra lệnh cho Agent trong Trae: "Hãy giúp tôi thay đổi cổng mặc định của dự án React này thành 8080." Trae sẽ giúp bạn sửa tệp cấu hình tương ứng trong dự án. Sau khi sửa xong, bạn chỉ cần đóng gói lại và tải lên Zeabur theo cách trước đó.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 Trong cài đặt mạng, chỉ định một URL truy cập, cách làm về cơ bản giống với khi triển khai dự án HTML, là có thể khởi động dịch vụ phiên bản React.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Vì việc kích hoạt tài nguyên liên quan đến máy chủ sẽ phát sin
 
 Nếu muốn tìm cổng quản lý dự án, đầu tiên nhấp vào "Settings" trong dự án.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 Sau khi vào trang cài đặt, kéo trang xuống dưới cùng, bạn sẽ thấy giao diện tương tự:
 

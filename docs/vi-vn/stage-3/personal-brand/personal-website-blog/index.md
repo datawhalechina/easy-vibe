@@ -18,7 +18,7 @@ Trong hướng dẫn này, chúng ta sẽ trải qua một vòng lặp hoàn ch�
 
 Không giống như WeChat Moments, Zhihu hay LinkedIn, nó không phụ thuộc vào thuật toán đề xuất của bất kỳ nền tảng nào, và sẽ không biến mất nếu một nền tảng đóng cửa. Đây là một **không gian trưng bày cá nhân** lâu dài, ổn định có thể được Google và Google Scholar lập chỉ mục. Nó thường chứa tiểu sử, ấn phẩm, dự án và blog kỹ thuật của bạn.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 Tại sao nên xây dựng trang web riêng?
 
@@ -232,7 +232,7 @@ Nếu Git là người đưa thư, thì **GitHub là kho lưu trữ đám mây v
 1. **Truy cập trang chính thức**: mở [https://github.com/](https://github.com/).
 2. **Nhấp Sign up**: nhấp **"Sign up"** ở góc trên bên phải.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **Điền thông tin của bạn**
 4. **Email**: nhập địa chỉ email thật.
@@ -404,8 +404,8 @@ Your modifications must follow these principles:
 
 Đặt các tài sản hình ảnh tôi cung cấp cho bạn, `University_of_Pennsylvania.jpg` và `Queen_University.jpg`, vào thư mục dự án tương ứng, thường là `/assets/images/badges/`.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **Bước 2: Gửi hướng dẫn**
 
@@ -462,8 +462,8 @@ Trong bối cảnh của trang chủ học thuật, chúng ta có thể định 
 Tải xuống các hình ảnh bìa tôi cung cấp, namely `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg`, và `Neuralink_sewing_machine_robot.jpg`, đặt chúng dưới `/assets/images/covers/`, và xóa các hình ảnh mẫu ban đầu có trong thư mục đó.
 
 ![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **Bước 2: Gửi hướng dẫn**
 
@@ -972,7 +972,7 @@ Niềm đam mê không vừa trong CV có thể lan tỏa tự do ở đây.
 Hãy đi thử nghiệm. Hãy phá vỡ nó. Hãy xây dựng lại.
 Tiếp tục làm điều đó cho đến khi nó phát triển thành hình dáng bạn thích nhất.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***Hãy tiến lên, và để thế giới nhìn thấy bạn.***
 

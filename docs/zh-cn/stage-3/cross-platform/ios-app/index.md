@@ -46,13 +46,13 @@ Apple 的[企业开发入口](https://developer.apple.com/business/get-started/)
 
 用户输入现有食材，应用生成一份菜谱，并把确认过的结果保存在本机。教程从 Xcode 空项目开始，依次完成模拟器运行、AI 修改、后端接口、本地存储、真机测试和 App Store 发布准备。
 
-![冰箱大厨 iOS 应用成品](images/image47.png)
+![冰箱大厨 iOS 应用成品](images/image47.webp)
 
 ## 1. 准备设备和工具
 
 iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPhone 和 Apple ID；只有模拟器测试时，可以暂时不接手机。
 
-![Mac 与 iPhone 开发环境](images/image1.png)
+![Mac 与 iPhone 开发环境](images/image1.webp)
 
 从 Mac App Store 安装 Xcode，第一次启动时等待开发组件安装完成。
 
@@ -60,7 +60,7 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 如果后面要连接 iPhone，在手机“隐私与安全”里开启开发者模式。菜单位置可能随 iOS 版本变化，以手机当前提示为准。
 
-![在 iPhone 开启开发者模式](images/image9.png)
+![在 iPhone 开启开发者模式](images/image9.webp)
 
 ## 2. 创建并运行空白项目
 
@@ -74,17 +74,17 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 项目名填写 `FridgeChef`，Organization Identifier 使用自己的反向域名。需要本地历史记录时，可以选择 SwiftData；如果模板提供的选项不同，也可以稍后再增加。
 
-![填写项目名称、团队和 Bundle Identifier](images/image16-private-redacted.png)
+![填写项目名称、团队和 Bundle Identifier](images/image16-private-redacted.webp)
 
 选择保存位置并创建项目。
 
-![选择 Xcode 项目保存位置](images/image17-cropped.png)
+![选择 Xcode 项目保存位置](images/image17-cropped.webp)
 
 先不要改代码。顶部选择一台 iPhone 模拟器，点击 Run。
 
 ![在 Xcode 选择模拟器并运行](images/image19.png)
 
-![空白 SwiftUI 应用在模拟器中运行](images/image21.png)
+![空白 SwiftUI 应用在模拟器中运行](images/image21.webp)
 
 空白应用能启动，才说明 Xcode、SDK、签名和模拟器已经连通。
 
@@ -96,7 +96,7 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 > 请把当前 SwiftUI 首页改成冰箱大厨。首页显示食材输入框、生成菜谱按钮和历史记录空状态，先使用演示数据。
 
-![AI 读取 iOS 项目并开始修改](images/image23-terminal-cropped.png)
+![AI 读取 iOS 项目并开始修改](images/image23-terminal-cropped.webp)
 
 回到 Xcode 重新运行。第一轮只看输入框、按钮和空状态，不接网络。
 
@@ -136,7 +136,7 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 在 Xcode 中创建 SwiftData 模型或当前项目使用的本地数据模型。
 
-![在 Xcode 配置本地菜谱数据](images/image29.png)
+![在 Xcode 配置本地菜谱数据](images/image29.webp)
 
 > 请把用户确认的菜谱保存到本机，并在首页按时间倒序显示。删除前需要确认，空数据库显示空状态。
 
@@ -154,11 +154,11 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 ![准备冰箱大厨图标](images/image31.png)
 
-![把图标放入 Xcode Assets](images/image34.png)
+![把图标放入 Xcode Assets](images/image34.webp)
 
 重新运行，确认模拟器桌面和应用切换器里都显示新图标。
 
-![带正式图标的冰箱大厨](images/image36.png)
+![带正式图标的冰箱大厨](images/image36.webp)
 
 ## 8. 做一次完整模拟器验收
 
@@ -176,7 +176,7 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 > 我执行【操作】后出现【现象】。Xcode 错误是【内容】。请只修复这一项，并告诉我怎样复测。
 
-![在 Xcode 查看编译和运行错误](images/image42.png)
+![在 Xcode 查看编译和运行错误](images/image42.webp)
 
 日志里不要写完整菜谱输入、用户 Token、联系方式或服务器密钥。
 
@@ -186,11 +186,11 @@ iOS 应用需要一台能运行当前 Xcode 的 Mac。真机测试还需要 iPho
 
 ![将 iPhone 连接到 Mac](images/image39.png)
 
-![在 iPhone 上信任这台电脑](images/image40-device-redacted.png)
+![在 iPhone 上信任这台电脑](images/image40-device-redacted.webp)
 
 回到 Xcode，在顶部设备列表选择自己的 iPhone，确认 Signing & Capabilities 中选择了正确团队，再点击 Run。
 
-![冰箱大厨安装到真实 iPhone](images/image41.png)
+![冰箱大厨安装到真实 iPhone](images/image41.webp)
 
 个人 Apple ID 可以用于开发调试，但签名有效期和能力有限。系统要求信任开发者时，根据手机当前提示操作。
 

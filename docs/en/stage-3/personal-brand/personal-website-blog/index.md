@@ -18,7 +18,7 @@ An **academic personal homepage** is your own private territory on the internet.
 
 Unlike WeChat Moments, Zhihu, or LinkedIn, it does not depend on any platform's recommendation algorithm, and it will not disappear if a platform shuts down. It is a long-term, stable **personal showcase space** that can be indexed by Google and Google Scholar. It usually contains your bio, publications, projects, and technical blog.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 Why build your own website?
 
@@ -232,7 +232,7 @@ If Git is the courier, then **GitHub is the cloud warehouse and showroom**. It n
 1. **Visit the official site**: open [https://github.com/](https://github.com/).
 2. **Click Sign up**: click **"Sign up"** in the upper right corner.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **Fill in your information**
 4. **Email**: enter a real email address.
@@ -404,8 +404,8 @@ The first thing we need to solve is "Who am I?" The template is filled with the 
 
 Put the image assets I provide to you, `University_of_Pennsylvania.jpg` and `Queen_University.jpg`, into the corresponding project folder, usually `/assets/images/badges/`.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **Step 2: Send the instruction**
 
@@ -462,8 +462,8 @@ Within the context of an academic homepage, we can redefine the meaning of "Publ
 Download the cover images I provide, namely `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg`, and `Neuralink_sewing_machine_robot.jpg`, place them under `/assets/images/covers/`, and remove the example images originally in that folder.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **Step 2: Send the instruction**
 
@@ -972,7 +972,7 @@ Do not leave this plot empty.
 Go experiment. Go break it. Go rebuild it.
 Keep doing that until it grows into the shape you like most.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***Go ahead, and let the world see you.***
 

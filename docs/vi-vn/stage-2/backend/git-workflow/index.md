@@ -89,7 +89,7 @@ GitHub là một nền tảng lưu trữ code dựa trên Git. Nó không chỉ 
 
 GitHub không chỉ là nền tảng lưu trữ code lớn nhất thế giới mà còn là cộng đồng mã nguồn mở năng động và có sức ảnh hưởng nhất toàn cầu. Ý tưởng cốt lõi của "mã nguồn mở" ở đây là bất kỳ ai cũng có thể tải xuống và chạy mã nguồn của phần mềm. Mô hình này cho phép mọi người trên thế giới kiểm tra code của nhau và thực hiện sửa đổi, hoặc tạo dự án mới dựa trên đó. Ví dụ: bạn có thể tìm thấy nhiều hướng dẫn học tập cũng như mã nguồn hoàn chỉnh của framework huấn luyện mô hình GPT (như PyTorch) trên GitHub. Mỗi ngày, vô số người trên toàn thế giới cộng tác kiểm tra và cải thiện code.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 Nhiều công ty lớn mở mã nguồn chương trình hoặc hướng dẫn của họ trên GitHub để đạt lợi thế cạnh tranh trong ngành — điều này cũng có thể xem là một hình thức quảng cáo. Trong cộng đồng GitHub, số "ngôi sao (stars)" mà dự án nhận được là thước đo chính về giá trị của dự án; dự án hoặc tổ chức càng có nhiều sao thì uy tín và sức ảnh hưởng càng lớn.
 
@@ -100,7 +100,7 @@ Trong khóa học của chúng ta, tài nguyên hỗ trợ và bài tập cũng 
 ## Đăng ký tài khoản GitHub
 
 1. Truy cập [Trang chủ GitHub](https://github.com/) và nhấp "Sign up" ở góc trên bên phải.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. Nhập địa chỉ email của bạn (khuyến nghị sử dụng email thường xuyên sử dụng, vì xác minh và thông báo sẽ được gửi đến đó), đặt mật khẩu (phải bao gồm chữ cái, số và ký tự đặc biệt).
 3. Hoàn thành xác minh con người, xác minh email theo hướng dẫn, tài khoản của bạn đã được tạo.
 
@@ -174,13 +174,13 @@ Khi bạn đã hiểu nguyên lý, thao tác thực tế rất đơn giản — 
    1. Sử dụng Trae để lấy public key (khuyến nghị)
       Prompt: `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    Sau khi nhập prompt, bạn cũng cần nhấn Enter trong terminal bên trái, nếu không lệnh sẽ tiếp tục chờ mà không thực thi. Vì Trae không thể giúp bạn thực hiện bất kỳ điều kiện phán đoán nào, chúng ta chỉ cần nhấn Enter liên tục.
 
    Cuối cùng, bạn sẽ thấy Trae ở bên phải trả về public key mà nó đã đọc. Bạn chỉ cần sao chép nó và chuẩn bị dán trong bước tiếp theo.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. Lấy public key thủ công
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. Lấy public key thủ công
    Mở terminal cục bộ của bạn (trên Windows sử dụng Git Bash hoặc PowerShell; trên macOS/Linux sử dụng Terminal), nhập lệnh sau (thay your_email@example.com bằng email bạn đã đăng ký tài khoản GitHub):
 
    ```bash
@@ -235,7 +235,7 @@ Chúng ta đã giải thích Git là gì, GitHub là gì, SSH là gì và cách 
 
 Bạn có thể trực tiếp cho nó biết địa chỉ kho bạn muốn clone
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull: Lấy cập nhật từ kho từ xa
 
@@ -251,7 +251,7 @@ Khi mọi thứ đã sẵn sàng, bạn có thể thử sửa đổi file cục 
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 Push thành công. Bây giờ bạn có thể xem nội dung đã cập nhật trên GitHub.
 

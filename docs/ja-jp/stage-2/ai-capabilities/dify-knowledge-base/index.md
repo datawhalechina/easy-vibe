@@ -45,7 +45,7 @@ AI をチャットパートナーからデジタル従業員にレベルアッ�
 
 これが AI エージェント（AI Agent）の原型です。目標、知識、ツール、実行パスを備えた自動化ユニットです。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > 注意：現在の業界で言及される「シンプル版のエージェント」は、主に LLM + ツール + ナレッジベースの組み合わせによる拡張型アプリケーションを指しており、自律的に計画を立てるエージェントを意味するものではありません。シンプルなエージェントは真の推論や長期計画能力を持っていませんが、大量のエンタープライズレベルの自動化シナリオを支えるには十分です。真の自律計画と行動能力を持つエージェントについては、後の章で詳しく説明します。
 
@@ -61,7 +61,7 @@ AI をチャットパートナーからデジタル従業員にレベルアッ�
 
 RAG の基本的な考え方は、ユーザーが質問した時に、システムがまず企業のナレッジベースから質問の意味に最も関連する複数のテキスト断片（例：製品マニュアルのある段落、HR 制度のある条項）を検索し、これらの断片をコンテキストとして大規模モデルの入力に「注入」し、実際の資料に基づいた回答の生成を促すというものです。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 画像出典：[https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@ RAG 技術がどのように静的で散在する文書資料を、高精度な 
 
 これが、より高度な AI アプリケーションパラダイムである **AI ワークフロー（AI Workflow）** の導入につながります。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 ワークフローとは、複雑なタスクを複数の順序付けられ、設定可能で、自動実行可能なサブステップに分解し、ビジュアルまたはコードの方法でそれらの間の論理関係（条件分岐、ループ、並列実行など）をオーケストレーションすることです。AI 能力の SOP 化（標準化された操作プロセス）とは、AI を使ってあるタスクを完了する経験を、再利用可能なテンプレートとして固定することを意味します。
 
@@ -143,7 +143,7 @@ Dify は LLM アプリケーションの開発・運営プラットフォーム�
 
 機能面では、Dify はビジュアルワークフロー編集、エージェント構築、ナレッジベース管理、マルチモデルサポートなどの機能をカバーしています。プラットフォームはドラッグ＆ドロップでノードを設計して複雑なタスクフローを構築でき、インテントベースの Agent 作成もサポートしています。ナレッジベース機能は特に優れており、複数のフォーマットのドキュメントを処理し、効率的なベクトル検索が可能です。また、GPT、Claude や多数のオープンソースモデルを含む複数の LLM に互換対応しており、構築したアプリケーションはワンクリックで標準 API として公開でき、統合が容易です。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 技術アーキテクチャ面では、Dify はオープンソースとプライベートデプロイを特徴としており、柔軟性、拡張性、エンタープライズグレードのコンプライアンスを重視しています。対象ユーザーは開発チームとビジネスイノベーターで、典型的な応用シナリオにはエンタープライズナレッジベースとスマートカスタマーサポート、コンテンツ作成の自動化、特定領域の AI アシスタント、エンタープライズ AI ミドルプラットフォームが含まれます。
 
@@ -185,7 +185,7 @@ n8n は汎用的なプログラマブルなワークフロー自動化プラッ�
 
 Dify は、LLM アプリケーションを開発するためのオープンソースプラットフォームです。直感的なインターフェースにより、Agent ワークフロー、RAG パイプライン、ツール能力、モデル管理、オブザーバビリティなどの機能を統合し、プロトタイプから本番環境への移行を迅速に行えるようにサポートします。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 Dify では、大規模言語モデルと機能の異なる各種ツールを使って「ワークフロー」を構築できます。ワークフローとは、本来手動で段階的に完了する必要があった操作——データ検索、大規模モデル呼び出し、ウェブ検索、結果のフィルタリング、フォーマット整理など——を業務ロジックに従って連鎖させ、自動化された再利用可能なフローにすることです。ワークフローがなければ、同じ内容を大規模モデルに毎回コピペする必要があり、非常に非効率でミスも起きやすく、実際の業務での再利用も困難です。
 
@@ -200,7 +200,7 @@ Dify では、大規模言語モデルと機能の異なる各種ツールを使
 5. 条件ノード：大規模モデルが生成した回答に明確な保証期間（例：「1年」、「3年」）が含まれているかをチェック。含まれていれば次のステップに進み、含まれていなければ「製品型番をお知らせください」と回答。
 6. 出力ノード（ANSER に類似）：最終回答をユーザーに返し、今回の相談記録を自動的にスプレッドシートに記録。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 このプロセス全体で、ナレッジベースを手動で調べたり、モデルの回答を繰り返し調整したり、データを個別に記録したりする必要はありません。ワークフローがこれらのステップを「連結して自動実行」します。また、非常に柔軟です。例えば、後に「ユーザーが保証範囲について聞いたら、別のナレッジベースを呼び出す」という新しいルールを追加したい場合、ワークフローに条件ノードを一つ追加するだけで済み、システム全体を作り直す必要はありません。
 
@@ -228,7 +228,7 @@ Dify のホームページ [https://cloud.dify.ai/apps](https://cloud.dify.ai/ap
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 APP Type で Chatbot を見つけます（最初は表示されていない場合、「他のタイプを表示」ボタンをクリックして完全なリストから見つけてください）。Chatbot を選択した後、下部にアプリケーション名と説明を入力し、最後に「作成」をクリックします。
 
@@ -246,7 +246,7 @@ APP Type で Chatbot を見つけます（最初は表示されていない場�
 
 INSTRUCTIONS エリアに自由にロールプロンプトを入力し、対話効果を観察できます。Generate をクリックして、大規模モデルにプロンプトを自動生成させることも可能です。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 右上には多数の異なるモデルのオプションが表示されます。これは、クリックして異なる対話モデルに切り替えることで、語調、論理的推論、長文テキスト処理などの面での違いを比較し、自分のニーズに最適したモデルを見つけられることを意味します。
 
@@ -325,7 +325,7 @@ Next をクリックすると、Knowledge Base Settings（ナレッジベース�
 
 Embedding モデルの選択は、最終的な検索効果（マッチングの精度、応答速度など）に大きく影響します。ここでは、Qwen 0.6B の Embedding モデルの使用を優先してお勧めします。4B や 8B バージョンに切り替えて、異なるパラメータ規模での検索効果の違いを直接比較することもできます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 ここには、**Rerank model** という別のモデル設定も表示され、デフォルト値は **Jina-rerank-m0** です。（学内の学生でない場合、Rerank モデルが不足しているというエラーが表示されることがあります。その場合はモデル設定で Rerank モデルを構成してからここで有効にする必要があります）
 
@@ -335,7 +335,7 @@ Rerank モデルの主な役割は、「一次選別された候補結果」に�
 
 推薦システムも同様です。まず「あなたに合うかもしれない」商品を500件見つけ、その後 Rerank モデルでソートし、あなたが最も購入しそうな商品をリストの上部に配置します。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 すべての設定が完了したら、**Save & Process** をクリックします。システムはナレッジベースのベクトル化段階に入ります。この段階で、Embedding モデルが分割されたテキストをベクトル表現に変換します。
 
@@ -351,11 +351,11 @@ Rerank モデルの主な役割は、「一次選別された候補結果」に�
 
 ここでは、不適切なテキスト断片を正確に編集または削除できます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 左のサイドバーで **Retrieval Testing** を選択すると、ナレッジベースのリコールテストを行い、検索が正常に動作しているかを確認できます。各テストでは、類似度が最も高い複数のチャンクが返されます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 より多くのチャンク結果を表示したい場合は、`VECTOR SEARCH` 設定をクリックする必要があります。
 
@@ -375,7 +375,7 @@ Score Threshold は「スコア閾値」です。類似度スコアがこの閾�
 
 これで、各ラウンドの対話で、回答内にヒットしたナレッジベースのソースが表示されます。該当する項目をクリックすると、検索された具体的なテキスト断片を確認できます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -399,7 +399,7 @@ DSL ファイルを使うことで、異なる Dify インスタンス間で複�
 
 自分で構築したワークフローやエージェントがシンプルすぎると感じる場合、Dify プラットフォームには豊富なサンプルプロジェクトが用意されており、複雑なアプリケーションの構築方法をすぐに理解できます。これらのサンプルプロジェクトは多様なビジネスシナリオをカバーしています。Explora をクリックして他の人が構築したワークフローを閲覧し、学ぶことができます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 最初の Dify Workflow アプリケーションを作成する
 
@@ -409,7 +409,7 @@ Dify の対話エージェント構築の入門が完了したので、次はよ
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 ここでは Chatflow と Workflow の2つの選択肢が表示されます。どちらを選ぶべきでしょうか？鍵となるのは、構築したいものが継続的な対話なのか、タスクフローなのかを理解することです。
 
@@ -579,7 +579,7 @@ Start の User Input ノードをクリックし、`user_text` という名前�
 buy_food / complain / chitchat / other の中から最も適切なラベルを1つ選択してください。ユーザーが文句を言いながらも注文している場合、そのコア感情を優先して判断し、不満が主であれば complain に分類してください。軽い愚痴程度で主な意図が注文であれば buy_food に分類してください。どうしても判断が難しい場合は other をフォールバックとして使用してください。
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 設定完了後、右上の再生ボタンでこのノード単体が正常に動作するかテストできます。
 
@@ -611,11 +611,11 @@ OUTPUT の結果を見ると、分類は正確です。複数の異なる入力�
 
 同様に、すべてが正常に機能していることを確認するため、該当ノードの右上の再生ボタンをクリックして具体的な対話テストで効果を検証できます。例えば「タピオカミルクティーを飲みたい」などと対話して、回答が期待通りか確認してください。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 次に、並列 LLM の出力値を処理します。`Variable Aggregator` ノードの設定パネルで、`ASSIGN VARIABLES`（変数の割り当て）エリアを見つけ、クリックして先ほどの大規模モデルの回答を順番に追加します。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 次に、すべての出力を集約し、最終的に欲しい結果——ユーザーの入力、分類、回答——を得る必要があります。Workflow を使用しており Chatflow ではないため、Answer ノードを選択して結果を集約することはできません。他のノードで間接的に結果の集約と出力を実現できます。Template ノードを選択し、変数部分でユーザーのインテント分類結果、ユーザーの入力値、変数集約の最終回答を指定し、CODE に最終回答の JSON フォーマットテンプレートを記述します。
 
@@ -658,7 +658,7 @@ OUTPUT の結果を見ると、分類は正確です。複数の異なる入力�
 
 Test Run で実行すると、ワークフローの実行プロセスが確認できます。分類に基づいて正しいフローに進み、最後の出力結果が得られています。これで、全プロセスが完了しました。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 最初のテンプレート Workflow アプリケーションの実行
 
@@ -670,9 +670,9 @@ Test Run で実行すると、ワークフローの実行プロセスが確認�
 
 最初は非常に複雑に見えますが、問題ありません。右上の Preview をクリックしてワークフローを実行し、エラーが発生するまで進めます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 エラーが発生したノードに基づいて問題を解決する必要があります。開いてみると、Tavily の API Token が設定されていないことが原因です。Tavily の検索 API は AI 向けに設計された検索エンジンで、リアルタイム、正確、事実に基づく結果を提供します。指示に従って操作してください。
 
@@ -680,7 +680,7 @@ Test Run で実行すると、ワークフローの実行プロセスが確認�
 
 処理後、検索エンジンが正常に動作するようになります。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 モデル呼び出しによる問題を引き続き修正した後、以下のような結果——大規模モデルの理解に基づく詳細な検索結果——が得られるはずです。
 
@@ -734,9 +734,9 @@ Dify の API を使ってフロントエンドチャットアプリケーショ�
 
 先ほど作成した Agent を覚えていますか？まず右上の「Publish」をクリックし、「Publish Update」を選択し、最後に「Access API Reference」をクリックして API ドキュメントに入ります。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 API ドキュメントに入ったら、「Send Chat Message」のセクションを見つけ、クリックして入り、右側で「Request」と「Response」の例を見つけてコピーします。
 
@@ -744,7 +744,7 @@ API ドキュメントに入ったら、「Send Chat Message」のセクショ�
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 対話に必要な Request と Response の例を見つけたら、さらに API Key を取得する必要があります。ドキュメントの右上に「API key」関連のオプションが表示されます。
 
@@ -828,7 +828,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 この時点で、あなたの作業スタイルはすでに実際の開発プロセスに非常に近くなっています。日常の開発では、大規模モデルとの協力において様々な問題に直面することがよくあります。問題をより良く解決するためには、より多くのコンテキスト情報を提供する必要があります。エラー情報の提供に加え、より完全なドキュメントの内容（例えばドキュメント左側の「Send message」部分からより多くの説明をコピーする）も一緒にモデルに渡すことで、より多くの詳細に基づいたより完全なソリューションを提案させることができます。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 現在、ブラウザは Trae の内蔵ブラウザです。上部のコンパスアイコンをクリックすると、外部ブラウザでフルスクリーン表示できます。
 
@@ -836,11 +836,11 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 運が良ければ、最初の試行で正常にインタラクティブなフロントエンドページが得られるかもしれません。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 ただし、大規模モデル自体に一定のランダム性があるため、1回の対話では問題がなくても、複数回の対話で異常が発生することがあります。したがって、複数回の対話テストを行い、複数回のインタラクションのシナリオでもプログラムが安定して動作することを確認することをお勧めします。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 ここまでで、シンプルな Dify ナレッジベース Agent の構築方法と、[z.ai](http://z.ai) の代わりに Trae を使ってインタラクティブなフロントエンドを構築する方法を習得しました。これからは、Trae がプロトタイプ構築時の主要な開発ツールとなり、徐々に [z.ai](http://z.ai) に取って代わります。Trae を使って以前のスネークゲームを作り直して、どのような違いがあるか体験してみてください。頑張ってください！
 
@@ -940,7 +940,7 @@ Dify の一般的な基本使用ツールを習得したことを確認するた
 
 参考入出力：
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Love loop workflow ワークフロー解読チャレンジ
 
@@ -974,7 +974,7 @@ GitHub、WeChat 公式アカウント、Reddit、Twitter などあらゆる場�
 
 Dify を自分のサーバーにデプロイした場合、サーバーの外部アドレスは通常 HTTP であり HTTPS ではありません。HTTP のみをサポートするサービスにリクエストを送信する際、以下のようなメッセージが表示されることがあります（F12 ブラウザデバッグモードを有効にして、問題のある箇所を確認してください）。
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 この問題が発生する原因は、Dify を HTTPS ではなく HTTP のみをサポートするサーバーにデプロイしたためです。HTTPS（HyperText Transfer Protocol Secure）は HTTP（HyperText Transfer Protocol）に SSL/TLS 暗号化レイヤーを追加したもので、「より安全な版の HTTP」と理解できます。
 

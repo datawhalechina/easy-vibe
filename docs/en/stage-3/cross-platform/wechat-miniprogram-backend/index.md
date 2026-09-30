@@ -9,7 +9,7 @@ The previous chapter built a Mini Program whose pages run on the user's phone. T
 
 We will turn the existing project into **Northstar Service Hub**. A member opens the Mini Program, creates an after-sales ticket, and later sees the same ticket on another device. Staff can process it from a company system without placing company secrets in the Mini Program.
 
-![Route, order, and payment screens in Uber's WeChat Mini Program](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Route, order, and payment screens in Uber's WeChat Mini Program](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 That is the role of a backend in many company Mini Programs: the Mini Program is the convenient entrance; the backend owns orders, membership, tickets, permissions, and integrations.
 

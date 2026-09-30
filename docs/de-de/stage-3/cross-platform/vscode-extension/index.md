@@ -25,8 +25,8 @@ VS Code-Erweiterungen können viel mehr als viele Menschen erwarten:
 * **Editor-Funktionen erweitern**: Benutzerdefinierte Sprachunterstützung, Code-Vervollständigung, Diagnose
 * **KI-Funktionen hinzufügen**: KI-Assistenten mit der Chat Participant API erstellen, Modelle mit der Language Model API aufrufen
 
-<!-- ![Platzhalter: VS Code-Erweiterungs-Ökosystem-Diagramm mit erweiterbaren Bereichen: Seitenleiste, Editor, Statusleiste, Befehlspalette, Chat-Panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![Diagramm des VS Code-Erweiterungs-Ökosystems mit den Bereichen, die Erweiterungen erweitern können: Seitenleiste, Editor, Statusleiste, Befehlspalette und Chat-Panel](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![Platzhalter: VS Code-Erweiterungs-Ökosystem-Diagramm mit erweiterbaren Bereichen: Seitenleiste, Editor, Statusleiste, Befehlspalette, Chat-Panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![Diagramm des VS Code-Erweiterungs-Ökosystems mit den Bereichen, die Erweiterungen erweitern können: Seitenleiste, Editor, Statusleiste, Befehlspalette und Chat-Panel](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 Kernarchitektur einer VS Code-Erweiterung
 
@@ -53,8 +53,8 @@ VS Code Editor
     └── Editor-Hauptprozess (UI-Rendering)
 ```
 
-<!-- ![Platzhalter: VS Code-Erweiterungsarchitekturdiagramm mit Extension Host vs. Editor-Hauptprozess](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![Architekturdiagramm der VS Code-Erweiterung mit dem Extension Host-Prozess und dem Editor-Hauptprozess](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![Platzhalter: VS Code-Erweiterungsarchitekturdiagramm mit Extension Host vs. Editor-Hauptprozess](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![Architekturdiagramm der VS Code-Erweiterung mit dem Extension Host-Prozess und dem Editor-Hauptprozess](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 Welche Erweiterung bauen wir?
 

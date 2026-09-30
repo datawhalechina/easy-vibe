@@ -181,7 +181,7 @@ onMounted(() => {
 
 為了方便大家理解每個選項的含義，在這裡我們對選單列進行深入解析：
 
-![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.png)
+![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.webp)
 
 ![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-36-23.png)
 

@@ -37,7 +37,7 @@ Qt 不是一套买来就能用的 SCADA 或 PLC 软件，而是企业拿来开�
 
 BOMAG 的 myCOCKPIT 用在压路机等工程机械上。屏幕要让驾驶员快速看到作业参数、车速、温度和设备状态，常用操作也要足够大，戴着手套仍然容易点击。
 
-![BOMAG myCOCKPIT 真实 HMI 界面](images/qt-enterprise-bomag-mycockpit.png)
+![BOMAG myCOCKPIT 真实 HMI 界面](images/qt-enterprise-bomag-mycockpit.webp)
 
 单独看界面还不容易理解它为什么属于工业软件。装进驾驶室以后就清楚了：中间的 Qt 显示屏只是整台机器的一部分，它要和控制器、摄像头、传感器及车辆总线一起工作。
 
@@ -301,7 +301,7 @@ AI 完成后，按它给出的方式启动程序。第一版不需要登录、�
 
 最后使用 macOS 自带的磁盘映像工具生成 DMG，并完成完整性校验。Finder 里可以看到 105.2 MB 的独立应用和 44.5 MB 的磁盘映像：
 
-![Finder 列表中显示实际生成的 PlantOperationsConsole 应用和 DMG 文件及大小](images/qt-run-package-files-cropped.png)
+![Finder 列表中显示实际生成的 PlantOperationsConsole 应用和 DMG 文件及大小](images/qt-run-package-files-cropped.webp)
 
 本次生成的 DMG 校验结果是 `VALID`。它还没有做开发者证书签名和 Apple 公证，所以这里只适合本机和内部测试。准备公开发布时再补签名、公证和升级策略。
 

@@ -181,7 +181,7 @@ onMounted(() => {
 
 Để giúp mọi người hiểu ý nghĩa từng tùy chọn, chúng tôi phân tích thanh menu chi tiết:
 
-![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.png)
+![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-35-55.webp)
 
 ![](../../../zh-cn/appendix/2-development-tools/editors-and-ai/images/index-2026-01-09-11-36-23.png)
 

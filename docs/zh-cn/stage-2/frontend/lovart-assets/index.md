@@ -39,11 +39,11 @@ const relatedArticles = relatedArticlesMap['zh-cn/stage-2/frontend/lovart-assets
 
 2. 新建一个 Python 文件
 
-![](images/image6.png)
+![](images/image6.webp)
 
 ![](images/image7.png)
 
-![](images/image8.png)
+![](images/image8.webp)
 
 3. 将下面的代码完整粘贴进去
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 当 Trae 提示运行成功后，点击它提供的本地链接（通常是 http://127.0.0.1:7860）。
 
-![](images/image9.png)
+![](images/image9.webp)
 
 如果一切正常，你会看到一个已经可以工作的 AI 绘图界面。
 
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
 几秒钟后，你会在本地看到生成结果。而模型生成具有随机性，所以相同的prompt会有不同的生成结果，你可以多次生成，选择你心仪的图片。
 
-![](images/image11.png)![](images/image12.png)
+![](images/image11.webp)![](images/image12.webp)
 
 也可以丰富你的提示词，给予它更多的描述和限定。例如以下提示词，得到的图片就会更加特殊一些。
 
@@ -310,11 +310,11 @@ if __name__ == "__main__":
 (一个超写实的带水珠的新鲜红苹果特写，放在深色粗糙木桌上。电影级戏剧光效，轮廓光，浅景深，背景虚化，8k分辨率，微距摄影。)
 ```
 
-![](images/image13.png)
+![](images/image13.webp)
 
 在Output Image区域点击下载图片即可保存到本地。
 
-![](images/image14.png)
+![](images/image14.webp)
 
 ### 1.3 生图模型常见的素材生成场景
 
@@ -340,7 +340,7 @@ if __name__ == "__main__":
 
 （一套 3D 天气图标，毛玻璃风格，磨砂质感，柔和渐变色，影棚光，等轴视图）
 
-![](images/image15.png)
+![](images/image15.webp)
 
 2. ##### 生成 Logo
 
@@ -366,7 +366,7 @@ if __name__ == "__main__":
 
 （友好的年轻科技从业者，3D Memoji 风格，黏土渲染）
 
-![](images/image17.png)
+![](images/image17.webp)
 
 4. ##### 生成文章配图
 
@@ -379,7 +379,7 @@ if __name__ == "__main__":
 
 （远程办公主题扁平插画，企业孟菲斯风格）
 
-![](images/image18.png)
+![](images/image18.webp)
 
 #### 二、有图参考生图：保持视觉一致性
 
@@ -408,7 +408,7 @@ if __name__ == "__main__":
 
 （胶囊形游戏 UI 按钮，白色暂停图标，蓝色果冻质感）
 
-![](images/image20.png)
+![](images/image20.webp)
 
 **变体 B：设置按钮（复杂图标）**
 
@@ -416,7 +416,7 @@ if __name__ == "__main__":
 
 （胶囊形游戏 UI 按钮，白色齿轮图标，蓝色果冻质感）
 
-![](images/image21.png)
+![](images/image21.webp)
 
 **变体 C：重玩按钮（形状变化）**
 
@@ -426,7 +426,7 @@ if __name__ == "__main__":
 
 （圆形游戏 UI 按钮，循环箭头图标，蓝色果冻质感）
 
-![](images/image22.png)
+![](images/image22.webp)
 
 通过这一组操作，你不仅可以替换按钮功能和图标，甚至改变按钮形状，但所有生成结果在材质、配色和光影上仍保持高度一致。这正是大模型在设计素材裂变场景中的核心价值。
 
@@ -446,9 +446,9 @@ if __name__ == "__main__":
 
 Lovart 是一个基于 Agent 的设计工具 Web。相比普通生图工具，它在生成之前多了一层“思考与规划”。
 
-![](images/image23.png)
+![](images/image23.webp)
 
-![](images/image24.png)
+![](images/image24.webp)
 
 进入 Lovart 后，主要需要了解以下几个控制项：
 
@@ -503,7 +503,7 @@ AI 不会立即画图，而是先去网络上搜索相关的程序员鸭子的�
 
 这一步，AI 从“执行者”转变为“策划者”。在AI帮你分析完需求后，可以在Lovart的画布区看到多种风格和内容的程序员鸭子图片。可以开始筛选你喜欢的风格。
 
-![](images/image30.png)
+![](images/image30.webp)
 
 #### 环节二：一致性（基于参考的视觉锚定）
 
@@ -514,13 +514,13 @@ Lovart 中的图片不仅是结果，也参与后续生成。
 * 从草图中选出一张最满意的“标准鸭子”，在画布区点击对应图片
 * 该图将会自动出现在对话区，作为 Reference
 
-![](images/image31.png)
+![](images/image31.webp)
 
 * 输入新的动作（如开心）并生成
 
 生成结果会继承母版的配色、比例和细节。
 
-![](images/image32.png)
+![](images/image32.webp)
 
 ##### 局部参考 / 多图整合
 
@@ -530,11 +530,11 @@ Lovart 中的图片不仅是结果，也参与后续生成。
 
 点击画布区左侧tab栏，选择「Mark」键，在目标图像的局部区域标记即可，这部分内容会自动同步到对话框。比如在这里我们可以选择修改背景的颜色。
 
-![](images/image33.png)
+![](images/image33.webp)
 
-![](images/image34.png)
+![](images/image34.webp)
 
-![](images/image35.png)
+![](images/image35.webp)
 
 能看到新生成的图片只改变了背景的颜色，这也跟我们输入的要求一致。
 
@@ -544,9 +544,9 @@ Lovart 中的图片不仅是结果，也参与后续生成。
 
 以程序员鸭子为例，我们可以选择保留第一个图中的鸭子形象，并将其替换到第二张图中作为主体元素。
 
-![](images/image36.png)
+![](images/image36.webp)
 
-![](images/image37.png)
+![](images/image37.webp)
 
 最后的效果也非常显著。你也可以试着其他的组合！
 
@@ -554,15 +554,15 @@ Lovart 中的图片不仅是结果，也参与后续生成。
 
 生成完成后，可以直接执行：放大、移除背景、擦除等操作
 
-![](images/image38.png)
+![](images/image38.webp)
 
-![](images/image39.png)
+![](images/image39.webp)
 
 这些并不是简单滤镜，而是 Agent 自动调度不同工具完成的结果。
 
 而在确定完基调风格后，可以很快速的生成一系列的表情包图像。
 
-![](images/image40.png)
+![](images/image40.webp)
 
 最终我们得到的是可直接交付的生产级素材，而不仅是一张展示图。
 
@@ -573,7 +573,7 @@ Lovart 采用订阅制收费模式，不同套餐对应不同的使用额度与�
 本教程不对任何套餐做推荐或比较；如果在实际使用中有需求，可以根据个人情况选择付费升级。
 目前支持通过**支付宝**等方式完成支付。
 
-![](images/image41.png)
+![](images/image41.webp)
 
 #### 小结
 
@@ -595,7 +595,7 @@ Lovart 并不是替代底层模型，而是通过 Agent 机制，让图像生成
 
 本质上，图像模型只有“执行”的能力，却缺少对文本进行分析和取舍的过程。
 
-![](images/image42.png)
+![](images/image42.webp)
 
 ### 3.2 解决思路：用 Agent 把「理解」和「执行」拆开
 
@@ -605,7 +605,7 @@ Lovart 并不是替代底层模型，而是通过 Agent 机制，让图像生成
 
 整体流程可以概括为：**长文本输入 → 语言模型理解与判断 → 生成合适的视觉提示词 → 图像模型执行生成 → 输出图片**
 
-![](images/image43.png)
+![](images/image43.webp)
 
 那我们构建的 Agent 怎样才能明白用户的意图呢？
 
@@ -622,7 +622,7 @@ Lovart 并不是替代底层模型，而是通过 Agent 机制，让图像生成
 4. **Gradio 与后端 ****API**** 作为整体承载层**
    它们负责将界面、模型调用和结果展示串联起来，保证整个 Agent 能够以一个完整 Web 应用的形式稳定运行。
 
-![](images/image44.png)
+![](images/image44.webp)
 
 ### 3.3 实战准备 ：获取API
 
@@ -636,13 +636,13 @@ Lovart 并不是替代底层模型，而是通过 Agent 机制，让图像生成
 
 我们需要一个大语言模型来承担“思考层”的职责。本教程使用 SiliconFlow 提供的模型服务：[https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](images/image45.png)
+![](images/image45.webp)
 
   SiliconFlow 提供了兼容 OpenAI API 规范的接口，可以非常方便地在项目中通过标准网络请求进行调用。在这里我们选择的是免费的Qwen2.5-7B-Instruct模型，调用需要的内容都已经写入下面的Prompt。在开始之前，你只需要在官网注册账号并创建一个 API Key。
 
-![](images/image46.png)
+![](images/image46.webp)
 
-![](images/image47.png)
+![](images/image47.webp)
 
   该 Key 将用于后续的模型调用。
 
@@ -769,7 +769,7 @@ API 异常、解析异常均给出友好提示，不崩溃，组件恢复初始�
 
 同样检测成功～
 
-![](images/image51.png)
+![](images/image51.webp)
 
 3. 直接绘图指令，这里输入的是“我要画一只猫”，同样检测准确。
 
@@ -852,11 +852,11 @@ API 调用失败：友好提示「提示词生成失败：{具体错误信息}�
 
 如果你想换成其他的预设模版，可以在前面的prompt里修改，或者直接在Trae里通过对话修改。
 
-![](images/image53.png)
+![](images/image53.webp)
 
 除了修改底层代码，我们在网页上也可以快速编辑。举个例子，我在这里加了一句，“在前面加一句Pic Prompt”，可以看到生成的新的提示词前面也包含了～这样设计是为了方便快速修改生成提示词的System Prompt，帮助我们快速切换风格。
 
-![](images/image54.png)
+![](images/image54.webp)
 
 #### 环节4️⃣：Nanobanana 文生图 / 图生图模块
 
@@ -917,21 +917,21 @@ Markdown 格式
 完整可运行代码，替换 LLM_API_KEY 和 NANOBANANA_API_KEY 即可直接运行，全流程可用，分支逻辑严格匹配实战版。
 ```
 
-![](images/image55.png)
+![](images/image55.webp)
 
 太令人激动啦！我们终于顺利地生成出了这个Agent的第一张图，仔细看看生成的图片，跟我们的文本和提示词是匹配的。到这里你已经基本上实现你自己的Agent啦！
 
-![](images/image56.png)
+![](images/image56.webp)
 
 我们还添加了图生图功能，上传你喜欢的图片，AI会自动借鉴风格。
 
-![](images/image57.png)
+![](images/image57.webp)
 
 值得一提的是，前面步骤生成的提示词也是可以在网页上编辑的，并且我们是以最终点击按钮时的提示词为准～哪怕我在这里换成“a cute cat”，最终生成的图片也只会是可爱的小猫。
 
 ## 第 4 章：总结
 
-![](images/image58.png)
+![](images/image58.webp)
 
 **呜呼！终于写完了。**
 说实话，连我自己写完最后一行的时候都忍不住长舒一口气，更别说一路跟着做到这里的你了。能把这一整套流程完整跑下来，本身就已经很厉害了，这说明你真的把手放到键盘上，把事情一步步做完了。Bravo 🎉 🥳 👏

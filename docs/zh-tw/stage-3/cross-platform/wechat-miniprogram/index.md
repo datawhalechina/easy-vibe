@@ -78,7 +78,7 @@
 
 1. 在瀏覽器中輸入 https://mp.weixin.qq.com，打開微信公眾平台，用微信掃碼登入。
 
-![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. 在首頁選擇「小程式」，按提示完成註冊，包括信箱、手機號碼和主體類型（個人或企業）。
    ![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)

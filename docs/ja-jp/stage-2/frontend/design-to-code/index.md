@@ -90,9 +90,9 @@ MasterGo編集画面の上部ツールバーに、AIツールボタンがあり�
 
 2. **生成結果を確認**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **コードを取得**
    - 青いボタン「キャンバスに挿入」をクリックし、生成後のWebページを直接編集
@@ -128,19 +128,19 @@ Figma Makeの完全な機能を使用するにはProユーザー権限が必要�
    - 復元したいデザイン画像をダイアログにアップロード
    - 要件を説明するプロンプトを追加
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **生成結果を確認**
    - しばらく待つとレンダリング結果が表示
    - 右上の再生ボタンをクリックしてフルスクリーンプレビュー
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **ディテールの調整**
    - 右上の編集アイコン（マウスと定規のアイコン）をクリック
    - おなじみのFigma Editorインターフェースに戻り、詳細な調整を行う
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **コードをエクスポート**
    - 調整に満足したら、コードのエクスポートを選択

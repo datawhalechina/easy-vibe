@@ -78,7 +78,7 @@ Wenn Sie noch nie ein Mini Program registriert haben, folgen Sie dieser Reihenfo
 
 1. Geben Sie https://mp.weixin.qq.com in Ihrem Browser ein, öffnen Sie die WeChat Official Platform und melden Sie sich durch Scannen des QR-Codes mit WeChat an.
 
-![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. Wählen Sie "Mini Program" auf der Startseite und schließen Sie die Registrierungsaufforderungen ab, einschließlich E-Mail, Telefonnummer und Entitätstyp (Einzelne oder Unternehmen).
    ![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)

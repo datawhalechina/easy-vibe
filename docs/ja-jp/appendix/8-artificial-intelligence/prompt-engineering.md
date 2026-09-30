@@ -357,7 +357,7 @@ AI が最も犯しやすい欠点は**知ったかぶり**です。
 
 [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat)（または使い慣れた任意の LLM プラットフォーム）を使って、以下の **3 つのチャレンジ**で学んだテクニックを検証してみましょう。
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 操作のヒント**：右側のサイドバーにある "Add Model for Comparison" をクリックすると、左右分割画面で 2 つのモデル（例：Qwen-Max vs Llama-3）の同じプロンプトに対する反応を比較できます。
 

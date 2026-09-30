@@ -90,9 +90,9 @@
 
 2. **عرض نتيجة الإنشاء**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **الحصول على الكود**
    - انقر على الزر الأزرق "إدراج في لوحة العمل" لتعديل صفحة الويب المُنشأة مباشرة
@@ -128,19 +128,19 @@ Figma Make هو أداة تصميم AI الرسمية من Figma، يمكنها 
    - قم بتحميل صورة التصميم التي تريد استعادتها إلى مربع الحوار
    - أضف أوامر تصف المتطلبات
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **عرض نتيجة الإنشاء**
    - انتظر قليلاً لرؤية نتيجة العرض
    - انقر على زر التشغيل في الزاوية العلوية اليمنى للمعاينة بملء الشاشة
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **تعديلات تفصيلية**
    - انقر على أيقونة المحرر في الزاوية العلوية اليمنى (أيقونة الماوس والمسطرة)
    - العودة إلى واجهة Figma Editor المألوفة لإجراء تعديلات تفصيلية
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **تصدير الكود**
    - بعد الرضا عن التعديلات، اختر تصدير الكود

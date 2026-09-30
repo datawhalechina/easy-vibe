@@ -21,7 +21,7 @@ Shopify POS équipe les magasins physiques, Discord partage son produit mobile e
 
 ![Discord Android](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/discord-react-native-roles.png)
 
-![MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 ## 3. Créer le projet et la liste
 

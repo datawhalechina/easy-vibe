@@ -26,7 +26,7 @@ After completing this tutorial, you will build a systematic beginner-level under
 
 Retrieval-Augmented Generation (RAG) is one of the most important technical approaches in generative AI today. Its basic idea is simple: before asking a large model to generate an answer, the system first retrieves information related to the user's question from an external knowledge base, and then passes both the retrieved information and the original question to the model so the model can answer on top of real materials. That external knowledge base can be an enterprise's internal policies, process documents, and product knowledge, or an industry database, regulatory corpus, standards library, and so on.
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 At this point, a natural question appears: if large models can already "answer questions directly," why add another layer called Retrieval-Augmented Generation? Especially now that context windows are getting larger and larger, it can seem as if simply handing all relevant material to the model ought to solve most needs.
 
@@ -36,7 +36,7 @@ The real difference is that "being able to produce an answer" and "being able to
    Even as context windows keep expanding, the idea of dumping all documents into the context at once is still impractical in real systems. The central contradiction shows up in two places:
 2. Inference cost is strongly positively correlated with context length. The longer the context, the more inference cost rises, almost linearly and sometimes even superlinearly. For a single call, 8K tokens and 200K tokens live in completely different price and latency ranges, and long context has a much higher cost threshold.
 
-   ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > In meaning, context is the background information and conversation history the model "refers to" when answering a question. In technical terms, it is the total token sequence fed into the model for one inference, such as system and user instructions, message history, and retrieved passages.
    >
@@ -418,7 +418,7 @@ MTEB provides a unified and objective evaluation framework for many embedding mo
 
 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 Although there are many models on the leaderboard, you do not need to master all of them. In practice, choosing the embedding model bundled by a major model provider, or using a cloud-served model that many people have already validated, is usually a safe choice. You can also filter the leaderboard by category or language in the sidebar:
 
@@ -651,7 +651,7 @@ For most enterprises, because business scenarios are unique, the final answer is
 
 If resources are limited and you need a fast baseline, public benchmarks are still a useful starting point. As of 2025, many public benchmarks exist for both general and vertical scenarios:
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 When choosing among them, first clarify the goal. Are you establishing a baseline, or validating the system before launch? Then check whether the benchmark covers the scenarios and difficulty profile you care about. For time-sensitive domains such as news or finance, make sure the benchmark includes time-sensitive tests.
 
@@ -788,7 +788,7 @@ Related research:
 
 - https://arxiv.org/pdf/2502.08826
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 Real-world data is never only text. Engineers diagnosing server failures need to look at temperature curves, device screenshots, and logs together. Doctors making diagnoses need CT or MRI images, test reports, and electronic medical records at the same time. Traditional text RAG can at best retrieve phrases such as "temperature anomaly" or "suspected lung nodule," but it struggles to connect those descriptions to the actual chart trend or image lesion shape, and it cannot reverse-search documents or knowledge from images, audio, or video.
 

@@ -11,9 +11,9 @@ Flutter는 Android와 iOS에 비슷한 기능과 디자인을 제공할 때 잘 
 
 My BMW는 차량 상태를 먼저, Google Pay는 행동의 성공 여부를 즉시, Nubank는 계좌와 도움말을 차분한 정보 계층으로 보여 줍니다.
 
-![My BMW 차량 화면](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.png)
+![My BMW 차량 화면](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.webp)
 
-![Google Pay 결과 화면](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.png)
+![Google Pay 결과 화면](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.webp)
 
 ![Nubank 계좌 화면](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-nubank.png)
 

@@ -39,11 +39,11 @@ const relatedArticles = relatedArticlesMap['ar-sa/stage-2/frontend/lovart-assets
 
 2. أنشئ ملف Python جديد
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. انسخ الكود التالي بالكامل والصقه
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 عندما يُشير Trae إلى نجاح التشغيل، انقر على الرابط المحلي الذي يوفره (عادةً http://127.0.0.1:7860).
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 إذا كان كل شيء طبيعياً، سترى واجهة إنشاء صور بالذكاء الاصطناعي تعمل بالفعل.
 
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
 بعد بضع ثوانٍ، سترى نتيجة الإنشاء محلياً. إنشاء النموذج عشوائي، لذا فإن نفس الأمر (Prompt) سينتج نتائج مختلفة. يمكنك الإنشاء عدة مرات واختيار الصورة التي تعجبك.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 يمكنك أيضاً إثراء أمرك (Prompt) وإضافة المزيد من الوصف والقيود. على سبيل المثال، مع الأمر التالي ستحصل على صورة أكثر تميزاً.
 
@@ -310,11 +310,11 @@ if __name__ == "__main__":
 (لقطة مقربة فائقة الواقعية لتفاحة حمراء طازجة مع قطرات ماء على قشرتها، موضوعة على طاولة خشبية داكنة خشنة. إضاءة سينمائية درامية، إضاءة حافة، عمق ميدان ضحل، خلفية ضبابية، دقة 8k، تصوير ماكرو.)
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 انقر على التنزيل في منطقة Output Image للحفظ محلياً.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 سيناريوهات إنشاء الأصول الشائعة مع نماذج إنشاء الصور
 
@@ -340,7 +340,7 @@ if __name__ == "__main__":
 
 (مجموعة أيقونات طقس ثلاثية الأبعاد، أسلوب glassmorphism، ملمس زجاج مطفأ، ألوان تدرج باستيل ناعمة، إضاءة استوديو، عرض isometric)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### إنشاء شعارات (Logos)
 
@@ -366,7 +366,7 @@ if __name__ == "__main__":
 
 (محترف تقني شاب ودود، أسلوب Memoji ثلاثي الأبعاد، عرض clay)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### إنشاء رسوم توضيحية للمقالات
 
@@ -379,7 +379,7 @@ if __name__ == "__main__":
 
 (رسم توضيحي مسطح لموضوع العمل عن بُعد، أسلوب memphis المؤسسي)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### ثانياً: إنشاء بصورة مرجعية — الحفاظ على التناسق البصري
 
@@ -408,7 +408,7 @@ if __name__ == "__main__":
 
 (زر واجهة مستخدم لعبة بشكل كبسولة، أيقونة إيقاف مؤقت بيضاء، ملمس jelly أزرق)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **المتغير B: زر الإعدادات (أيقونة معقدة)**
 
@@ -416,7 +416,7 @@ if __name__ == "__main__":
 
 (زر واجهة مستخدم لعبة بشكل كبسولة، أيقونة ترس بيضاء، ملمس jelly أزرق)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **المتغير C: زر إعادة اللعب (تغيير الشكل)**
 
@@ -426,7 +426,7 @@ if __name__ == "__main__":
 
 (زر واجهة مستخدم لعبة دائري، أيقونة سهم دائري، ملمس jelly أزرق)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 من خلال هذه المجموعة من العمليات، لا يمكنك فقط استبدال وظائف وأيقونات الأزرار، بل حتى تغيير شكل الزر. ومع ذلك، تظل جميع النتائج المُنشأة متناسقة للغاية في المادة والألوان والإضاءة. وهذه هي القيمة الأساسية للنماذج الكبيرة في سيناريوهات اشتقاق أصول التصميم.
 
@@ -446,9 +446,9 @@ if __name__ == "__main__":
 
 Lovart هو أداة تصميم قائمة على الوكيل (Agent) على الويب. مقارنة بأدوات إنشاء الصور العادية، يضيف طبقة "تفكير وتخطيط" قبل الإنشاء.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 بعد الدخول إلى Lovart، تحتاج أساساً إلى فهم عناصر التحكم التالية:
 
@@ -503,7 +503,7 @@ Lovart هو أداة تصميم قائمة على الوكيل (Agent) على ا
 
 في هذه الخطوة، يتحول الذكاء الاصطناعي من "منفذ" إلى "مخطط". بعد أن يحلل الذكاء الاصطناعي متطلباتك، يمكنك رؤية صور متعددة لبطات مبرمجين بأنماط ومحتويات مختلفة في منطقة اللوحة في Lovart. يمكنك البدء في فرز الأساليب التي تعجبك.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### المرحلة الثانية: التناسق (التثبيت البصري القائم على المرجع)
 
@@ -514,13 +514,13 @@ Lovart هو أداة تصميم قائمة على الوكيل (Agent) على ا
 * اختر "البطة القياسية" الأكثر إرضاءً من الرسومات، وانقر على الصورة المقابلة في منطقة اللوحة
 * ستظهر الصورة تلقائياً في منطقة المحادثة كمرجع (Reference)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * أدخل حركة جديدة (مثل سعيد) وأنشئ
 
 سترث النتيجة المُنشأة الألوان والنسب والتفاصيل من الصورة الرئيسية.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### مرجع جزئي / تكامل صور متعددة
 
@@ -530,11 +530,11 @@ Lovart هو أداة تصميم قائمة على الوكيل (Agent) على ا
 
 انقر على شريط التبويب الأيسر في منطقة اللوحة، اختر مفتاح "Mark"، وحدد المنطقة الجزئية من الصورة المستهدفة. ستتم مزامنة هذا المحتوى تلقائياً مع مربع الحوار. على سبيل المثال، هنا يمكننا اختيار تعديل لون الخلفية.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 يمكنك رؤية أن الصورة المُنشأة حديثاً تغيّر لون الخلفية فقط، وهو ما يتوافق أيضاً مع متطلبات الإدخال الخاصة بنا.
 
@@ -544,9 +544,9 @@ Lovart هو أداة تصميم قائمة على الوكيل (Agent) على ا
 
 بأخذ البطة المبرمج كمثال، يمكننا اختيار الاحتفاظ بشكل البطة من الصورة الأولى واستبدالها كعنصر رئيسي في الصورة الثانية.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 التأثير النهائي أيضاً ملحوظ جداً. جرب مجموعات أخرى!
 
@@ -554,15 +554,15 @@ Lovart هو أداة تصميم قائمة على الوكيل (Agent) على ا
 
 بعد اكتمال الإنشاء، يمكنك تنفيذ عمليات مثل: التكبير، إزالة الخلفية، المسح، إلخ مباشرة.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 هذه ليست فلاتر بسيطة، بل نتائج أنجزها الوكيل عن طريق استدعاء أدوات مختلفة تلقائياً.
 
 بعد تأكيد الأسلوب الأساسي، يمكنك إنشاء سلسلة من صور الملصقات بسرعة كبيرة.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 ما نحصل عليه في النهاية هو أصول بمستوى الإنتاج جاهزة للتسليم، وليس مجرد صورة عرض.
 
@@ -573,7 +573,7 @@ Lovart هو أداة تصميم قائمة على الوكيل (Agent) على ا
 لا يوصي هذا البرنامج التعليمي أو يقارن أي خطة معينة. إذا كانت لديك احتياجات في الاستخدام العملي، يمكنك اختيار الترقية المدفوعة حسب وضعك الشخصي.
 حالياً يدعم الدفع عبر **Alipay** وطرق أخرى.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### ملخص
 
@@ -595,7 +595,7 @@ Lovart لا يحل محل النموذج الأساسي، بل من خلال آ�
 
 في الجوهر، نموذج الصور يمتلك قدرة "التنفيذ" فقط، لكنه يفتقر إلى عملية تحليل النص واختياره.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 نهج الحل: فصل "الفهم" و"التنفيذ" باستخدام وكيل
 
@@ -605,7 +605,7 @@ Lovart لا يحل محل النموذج الأساسي، بل من خلال آ�
 
 يمكن تلخيص التدفق الكامل كالتالي: **إدخال نص طويل → فهم وحكم نموذج اللغة → إنشاء أوامر بصرية مناسبة → تنفيذ الإنشاء بنموذج الصورة → إخراج الصورة**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 إذن، كيف يمكن لوكيلنا أن يفهم نية المستخدم؟
 
@@ -622,7 +622,7 @@ Lovart لا يحل محل النموذج الأساسي، بل من خلال آ�
 4. **Gradio و API الخلفي كطبقة دعم شاملة**
    مسؤولة عن ربط الواجهة، واستدعاءات النموذج، وعرض النتائج، لضمان تشغيل الوكيل بالكامل بشكل مستقر كتطبيق ويب متكامل.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 التحضير العملي: الحصول على APIs
 
@@ -636,13 +636,13 @@ Lovart لا يحل محل النموذج الأساسي، بل من خلال آ�
 
 نحتاج إلى نموذج لغة كبير ليضطلع بدور "طبقة التفكير". يستخدم هذا البرنامج التعليمي خدمة النماذج التي توفرها SiliconFlow: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
 توفر SiliconFlow واجهات متوافقة مع مواصفات OpenAI API، يمكن استدعاؤها بسهولة كبيرة من خلال طلبات الشبكة القياسية في المشروع. هنا اخترنا نموذج Qwen2.5-7B-Instruct المجاني. كل ما يلزم للاستدعاء مكتوب بالفعل في الأمر (Prompt) أدناه. قبل البدء، تحتاج فقط إلى تسجيل حساب وإنشاء API Key على الموقع الرسمي.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
 سيُستخدم هذا المفتاح لاستدعاءات النموذج اللاحقة.
 
@@ -758,7 +758,7 @@ INTENT_PROMPT_TEMPLATE = """يجب عليك تحديد نية النص الذي 
 
 تم الكشف بنجاح أيضاً~
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. أمر رسم مباشر، هنا تم إدخال "أريد رسم قطة"، وتم الكشف عنه بدقة أيضاً.
 
@@ -841,11 +841,11 @@ max_tokens=200 (تحديد طول الإخراج، مطابق لقيود الأ�
 
 إذا كنت تريد التغيير إلى قالب مُعد مسبقاً آخر، يمكنك تعديله في الأمر السابق، أو تعديله مباشرة من خلال المحادثة في Trae.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 بالإضافة إلى تعديل الكود الأساسي، يمكننا أيضاً التحرير بسرعة على صفحة الويب. على سبيل المثال، أضفت هنا جملة "أضف Pic Prompt في البداية"، ويمكنك أن ترى أن الأمر الجديد المُنشأ يتضمن هذه الجملة في البداية أيضاً~ هذا التصميم هو لتسهيل التعديل السريع لـ System Patrol لإنشاء الأوامر، ومساعدتنا على تبديل الأساليب بسرعة.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### المرحلة 4️⃣: وحدة النص إلى صورة / الصورة إلى صورة من Nanobanana
 
@@ -906,21 +906,21 @@ messages = [{"role": "user","content": [{"type": "text", "text": prompt},{"type"
 كود كامل قابل للتشغيل، فقط استبدل LLM_API_KEY و NANOBANANA_API_KEY للتشغيل مباشرة، التدفق الكامل قابل للاستخدام، منطق التفرع متطابق بدقة مع النسخة العملية.
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 كم هو مثير! أخيراً أنشأنا بنجاح الصورة الأولى من هذا الوكيل. انظر بعناية إلى الصورة المُنشأة، إنها متطابقة مع نصنا وأمرنا. إلى هنا تكون قد نفذت وكيلك الخاص بشكل أساسي!
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 أضفنا أيضاً وظيفة الصورة إلى صورة. ارفع صورتك المفضلة وسيشير الذكاء الاصطناعي تلقائياً إلى الأسلوب.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 الجدير بالإشارة أن الأوامر المُنشأة في الخطوات السابقة قابلة للتحرير أيضاً على صفحة الويب، ونحن نعتمد على الأمر عند النقر النهائي على الزر~ حتى لو قمت بتغييره هنا إلى "a cute cat"، ستكون الصورة النهائية المُنشأة قطة لطيفة.
 
 ## الفصل الرابع: ملخص
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **أخيراً انتهينا!**
 بصراحة، حتى أنا تنفست الصعداء عندما كتبت السطر الأخير، فما بالك بمن تبعني حتى هنا. إنجاز هذا التدفق الكامل من البداية إلى النهاية أمر رائع في حد ذاته. هذا يدل على أنك وضعت يديك فعلاً على لوحة المفاتيح وأنجزت الأمور خطوة بخطوة. Bravo 🎉 🥳 👏

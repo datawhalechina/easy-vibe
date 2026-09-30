@@ -25,7 +25,7 @@ React Native 讓你用 React 和 TypeScript 建立 Android、iOS 介面；Expo �
 
 **MTA TrainTime** 是紐約通勤鐵路的官方行程與票務 App。Expo 的案例說明了建置與發布工具也能支援正式產品。
 
-![Expo 案例中的 MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![Expo 案例中的 MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 ## 3. 建立第一個專案
 

@@ -11,9 +11,9 @@ Flutter convient lorsque Android et iOS doivent partager produit et identité vi
 
 My BMW place l'état du véhicule en premier, Google Pay confirme immédiatement le résultat et Nubank organise compte et aide avec une hiérarchie calme.
 
-![My BMW](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.png)
+![My BMW](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.webp)
 
-![Google Pay](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.png)
+![Google Pay](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.webp)
 
 ![Nubank](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-nubank.png)
 

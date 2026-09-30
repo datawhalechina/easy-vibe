@@ -23,7 +23,7 @@ Un déploiement manuel nécessite souvent plusieurs étapes, chacune pouvant com
 
 Des plateformes de déploiement « low-code » comme CloudBase, Vercel et Zeabur sont précisément nées pour résoudre ces problèmes complexes. Elles automatisent pour vous les étapes « achat de serveur, configuration d'environnement, upload de code, démarrage du service, surveillance de l'exécution ». Il vous suffit de connecter votre dépôt de code (comme GitHub ou GitLab) à la plateforme, ou d'uploader directement votre code, et elle tirera automatiquement le code, identifiera le type d'application, configurera l'environnement d'exécution correspondant, et vous donnera finalement une adresse publique accessible par tous. Elle peut même lier votre propre nom de domaine en un clic.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 Ensuite, nous présenterons les caractéristiques et méthodes d'utilisation de ces plateformes pour vous aider à choisir la solution de déploiement la plus adaptée.
 
@@ -289,7 +289,7 @@ Zeabur est une plateforme de déploiement émergente, particulièrement adaptée
 
 Dans les cours précédents, nous avons brièvement découvert Dify. Maintenant, nous pouvons lancer très facilement notre propre service Dify via [Zeabur](https://zeabur.com/projects). Commencez par ouvrir la [page de la console](https://zeabur.com/projects) et examinons les différentes zones.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 Sur cette page, vous verrez d'abord plusieurs blocs : ce sont les services déjà lancés. Dans le menu supérieur, vous verrez les options Agent, Servers, Docs, Templates, qui représentent respectivement :
 
@@ -357,7 +357,7 @@ Après quelques instants, vous verrez l'interface de connexion de Dify. Saisisse
 
 Si vous êtes curieux, vous pouvez aussi en profiter pour lancer un service n8n. n8n est également une plateforme de workflows AI très populaire à l'international.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## Déployer un jeu de serpent avec Zeabur et Trae
 
@@ -367,7 +367,7 @@ La première étape consiste à créer un projet de jeu de serpent localement av
 
 ### Implémentation avec le framework HTML
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Pour Trae, générer un jeu web de serpent basé sur HTML est très simple. Une fois le jeu généré, il vous suffit de suivre la méthode de déploiement local de Zeabur présentée précédemment pour uploader le dossier contenant tous les fichiers.
 
@@ -375,7 +375,7 @@ Pour Trae, générer un jeu web de serpent basé sur HTML est très simple. Une 
 
 Une fois terminé, vous accéderez à l'interface de détails du service :
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 Cliquez sur l'option « Network » à gauche, et trouvez la zone « Public Address » dans la page. Cliquez sur « Generate Domain » pour générer une adresse d'accès externe. Vous pouvez saisir n'importe quel nom de votre choix.
 
@@ -391,13 +391,13 @@ Une fois la génération terminée, il suffit d'ouvrir cette adresse dans votre 
 
 Précédemment, nous avons appris à déployer des applications web basées sur HTML. Ensuite, essayons de déployer une application utilisant un framework frontend plus courant : React. Comparé au HTML pur, React est considéré comme un framework de développement frontend plus mature et moderne. Il organise la structure des pages de manière componentisée, accélérant significativement le développement de pages complexes. C'est un choix très mainstream dans les projets de niveau entreprise.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### Refactoriser en architecture React
 
 Dans Trae, il vous suffit de dire à l'Agent : « Aidez-moi à refactoriser ce code en architecture React », pour transformer assez facilement la structure basée sur HTML en un projet React.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 Cependant, comparé à de simples fichiers HTML, les applications React dépendent d'outils de build et de structures de projet plus complexes, ce qui rend le processus de déploiement un peu plus compliqué. Un problème typique concerne la configuration des ports : par défaut, une application React écoute généralement le port 3000 (vous pouvez le voir dans les fichiers de configuration ou les journaux de démarrage).
 
@@ -434,13 +434,13 @@ Or, la conception de la plateforme Zeabur fait qu'elle ne « reconnaît » que l
 
 Pour remplacer le port d'écoute par défaut de React (3000) par le port 8080 requis par Zeabur, il existe plusieurs méthodes. La plus simple est de donner directement cette instruction à l'Agent dans Trae : « Aidez-moi à changer le port par défaut de ce projet React en 8080. » Trae modifiera les fichiers de configuration correspondants dans le projet. Une fois la modification effectuée, il vous suffit de reconstruire le projet et de l'uploader sur Zeabur comme précédemment.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 Dans les paramètres réseau, spécifiez une URL d'accès, de la même manière que pour le déploiement d'un projet HTML, et vous pourrez lancer la version React du service.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Vous pouvez essayer de faire construire par Trae différents types d'application
 
 Pour trouver l'interface de gestion du projet, cliquez d'abord sur l'option « Settings » du projet.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 Sur la page des paramètres, faites défiler jusqu'en bas et vous verrez une interface similaire à celle-ci :
 

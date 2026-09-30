@@ -21,7 +21,7 @@ Shopify POS es una plataforma de venta e inventario para tiendas físicas; Disco
 
 ![Discord en Android](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/discord-react-native-roles.png)
 
-![MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 ## 3. Crea el proyecto y la lista
 

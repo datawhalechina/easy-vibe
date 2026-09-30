@@ -91,7 +91,7 @@ Going further, if we consider data encoded as vectors, vector data is typically 
 
 In summary, there are many different forms and purposes of data in the real world worth analyzing in detail, and each type of data may require a specialized database for storage. See the figure below for details — doesn't it seem like a lot?
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 Why We Need Databases
 
@@ -895,7 +895,7 @@ Of course, you can also directly have the AI reference a specific project's impl
 
 Following the SOP mentioned above, let's practice with a specific real-world case: `Project5-Supabase-Demos/apps_snakegame` — adding a score leaderboard to an existing "Snake" game project, including user login and basic database features.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 Analyzing the Project, Identifying Data Requirements
 

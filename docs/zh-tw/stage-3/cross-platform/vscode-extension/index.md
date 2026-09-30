@@ -25,8 +25,8 @@ VS Code 擴展能做的事情遠超許多人的想像：
 * **擴展編輯器功能**：自訂語言支援、程式碼補全、診斷
 * **新增 AI 功能**：使用 Chat Participant API 建立 AI 助理，使用 Language Model API 呼叫模型
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![VS Code 擴展生態系統示意圖，展示擴展可以擴展的區域：側邊欄、編輯器、狀態列、命令面板和聊天面板](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![VS Code 擴展生態系統示意圖，展示擴展可以擴展的區域：側邊欄、編輯器、狀態列、命令面板和聊天面板](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 VS Code 擴展的核心架構
 
@@ -53,8 +53,8 @@ VS Code 編輯器
     └── 編輯器主進程（UI 渲染）
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![VS Code 擴展架構示意圖，展示 Extension Host 進程與編輯器主進程](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![VS Code 擴展架構示意圖，展示 Extension Host 進程與編輯器主進程](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 我們要構建什麼擴展？
 

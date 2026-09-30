@@ -90,9 +90,9 @@ MasterGo 同样提供了强大的 AI 页面生成功能，可以根据参考图�
 
 2. **查看生成结果**
 
-![](images/image48.png)
+![](images/image48.webp)
 
-![](images/image49.png)
+![](images/image49.webp)
 
 3. **获取代码**
    - 点击蓝色按钮"插入到画布"，可直接编辑生成后的网页
@@ -128,19 +128,19 @@ Figma Make 是 Figma 官方推出的 AI 设计工具，能够根据用户输入�
    - 将你想要还原的设计图上传到对话框
    - 添加描述需求的提示词
 
-![](images/image43.png)
+![](images/image43.webp)
 
 3. **查看生成结果**
    - 稍等片刻后即可看到渲染结果
    - 点击右上角的播放按钮可进行全屏预览
 
-![](images/image44.png)
+![](images/image44.webp)
 
 4. **细节调整**
    - 点击右上角的编辑器图标（鼠标和尺子图标）
    - 回到熟悉的 Figma Editor 界面进行详细调整
 
-![](images/image45.png)
+![](images/image45.webp)
 
 5. **导出代码**
    - 调整满意后，选择导出代码

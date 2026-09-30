@@ -20,7 +20,7 @@ Electronは、**HTML + CSS + JavaScript**（Webページと同じ技術スタッ
 
 **一文で理解**：Electron = 「見えないChromeブラウザ」 + Node.jsシステム機能。
 
-<!-- ![placeholder: Electronアーキテクチャの概念図：Chromium（UIレンダリング用） + Node.js（システムアクセス用） = デスクトップアプリケーション](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: Electronアーキテクチャの概念図：Chromium（UIレンダリング用） + Node.js（システムアクセス用） = デスクトップアプリケーション](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 Electronのコアアーキテクチャ
 
@@ -47,7 +47,7 @@ Electronアプリは2種類のプロセスで構成されています。これ�
 
 これらは**IPC（プロセス間通信）**を通じて通信します。電話をかけるようなものです：レンダラーが「録音を開始したい」と言い、メインプロセスがそのリクエストを受けてシステムマイクを呼び出します。
 
-<!-- ![placeholder: メインプロセス、レンダラープロセス、プリロードスクリプト、およびそれらの間のIPC通信を示すElectronプロセスアーキテクチャ図](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: メインプロセス、レンダラープロセス、プリロードスクリプト、およびそれらの間のIPC通信を示すElectronプロセスアーキテクチャ図](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 何を作るのか
 
@@ -69,7 +69,7 @@ Electronアプリは2種類のプロセスで構成されています。これ�
 | モデルサイズ | ダウンロード不要 | tinyモデル75MB、largeモデル3GB |
 | 最適な用途 | クイックスタート、軽量使用 | プライバシー重視、オフライン使用、長期高頻度使用 |
 
-<!-- ![placeholder: 音声テキスト変換UIのアプリプレビュー：上部に録音ボタンと波形アニメーション、下部に認識テキスト、右上にモード切替](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: 音声テキスト変換UIのアプリプレビュー：上部に録音ボタンと波形アニメーション、下部に認識テキスト、右上にモード切替](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 重要な注意：Web Speech APIはElectronで使用不可
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: レンダラー -> プリロード -> メインへのメッセージ転送を示すIPCフロー図](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: レンダラー -> プリロード -> メインへのメッセージ転送を示すIPCフロー図](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # 第3章：録音の実装
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: 赤い録音状態ボタンとパルスアニメーション、下部にテキスト結果エリアを示す録音UIのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: 赤い録音状態ボタンとパルスアニメーション、下部にテキスト結果エリアを示す録音UIのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 マイク権限の処理
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: Whisper APIから返された認識済み日本語音声を表示する実行中アプリのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: Whisper APIから返された認識済み日本語音声を表示する実行中アプリのスクリーンショット](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 設定UIの追加
 

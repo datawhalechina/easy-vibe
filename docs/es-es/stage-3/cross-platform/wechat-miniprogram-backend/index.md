@@ -7,7 +7,7 @@ description: 'Añade identidad fiable, funciones cloud, tickets, base de datos, 
 
 El capítulo anterior creó la interfaz que corre en el teléfono. Ahora añadimos identidad, datos compartidos, permisos, archivos y logs para un servicio de empresa.
 
-![Mini Programa WeChat de Uber](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Mini Programa WeChat de Uber](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. El frontend es la entrada; el backend decide
 

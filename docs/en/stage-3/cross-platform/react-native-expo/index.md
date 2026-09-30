@@ -43,7 +43,7 @@ Read: [How Discord improved React Native on Android](https://discord.com/blog/ho
 
 MTA TrainTime is the official journey-planning and ticketing application for commuter rail services around New York. Expo's case study explains how its team uses Expo tooling for builds and releases.
 
-![The MTA TrainTime application in Expo's official case study](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![The MTA TrainTime application in Expo's official case study](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 Its value here is not the railway interface. It shows that Expo can support a production release process, not only classroom demos.
 

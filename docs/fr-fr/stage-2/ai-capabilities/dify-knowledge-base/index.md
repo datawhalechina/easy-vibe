@@ -45,7 +45,7 @@ Pour faire évoluer l'IA d'un simple partenaire de conversation vers un employé
 
 C'est l'ébauche d'un agent IA (AI Agent) : une unité automatisée dotée d'un objectif, de connaissances, d'outils et d'un chemin d'exécution.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > Note : ce que l'industrie appelle actuellement des « agents » simples désigne généralement des applications enrichies basées sur la combinaison LLM + outils + base de connaissances, et non des agents capables de planifier de manière autonome. Bien que ces agents simples ne possèdent pas de véritables capacités de raisonnement et de planification à long terme, ils suffisent déjà à couvrir de nombreux scénarios d'automatisation en entreprise. Nous présenterons en détail dans les chapitres suivants les véritables agents capables de planification et d'action autonomes.
 
@@ -59,7 +59,7 @@ Bien qu'il ne possède pas encore de capacités d'appel d'outils ou de planifica
 
 L'idée fondamentale de RAG est la suivante : lorsque l'utilisateur pose une question, le système recherche d'abord dans la base de connaissances de l'entreprise les extraits de texte les plus pertinents sémantiquement (par exemple un passage du manuel produit, un article du règlement RH), puis injecte ces extraits comme contexte dans l'entrée du grand modèle, pour guider celui-ci à générer une réponse fondée sur des données réelles.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 Source de l'image : [https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -94,7 +94,7 @@ Si l'on s'en remet uniquement au raisonnement libre d'un seul grand modèle, non
 
 C'est ce qui nous mène au paradigme d'application IA de niveau supérieur : le workflow IA (AI Workflow).
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 Un workflow désigne la décomposition d'une tâche complexe en plusieurs sous-étapes ordonnées, configurables et exécutables automatiquement, dont les relations logiques (conditions, boucles, parallélisme) sont orchestrées de manière visuelle ou par code. Standardiser les capacités IA (c'est-à-dire les transformer en procédures opérationnelles standardisées) signifie cristalliser l'expérience de l'utilisation de l'IA pour une tâche donnée en un template réutilisable.
 
@@ -137,7 +137,7 @@ Dify se positionne comme une plateforme de développement et d'exploitation d'ap
 
 En termes de fonctionnalités, Dify couvre l'orchestration visuelle de workflows, la construction d'agents, la gestion de bases de connaissances et le support multi-modèles. La plateforme permet de concevoir des flux de tâches complexes par glisser-déposer de nœuds et supporte la création d'agents basés sur les intentions. Sa fonctionnalité de base de connaissances est particulièrement aboutie, capable de traiter de multiples formats de documents avec une recherche vectorielle efficace.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 ### 1.3.2 Coze (ByteDance)
 
@@ -163,7 +163,7 @@ Sa caractéristique technique clé est le « code source visible » et l'« auto
 
 Dify est une plateforme open source pour le développement d'applications LLM. Elle offre une interface intuitive combinant workflows d'agents, pipelines RAG, capacités d'outils, gestion de modèles et observabilité, pour vous aider à passer rapidement du prototype à la production.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 Construire un workflow dans Dify, c'est comme assembler des briques LEGO ou un puzzle. Vous connectez des « nœuds LLM » (compréhension et génération), des « nœuds outils » (exécution d'actions spécifiques : interrogation de base de données, envoi d'email, traduction) et des « nœuds de données » (lecture, stockage d'informations) entre eux. Ils fonctionnent automatiquement selon la logique prédéfinie, sans intervention manuelle répétée.
 
@@ -176,7 +176,7 @@ Par exemple, si vous dirigez un magasin e-commerce Amazon ou Douyin et souhaitez
 5. Nœud de condition : vérifie si la réponse contient les informations attendues.
 6. Nœud de sortie : renvoie la réponse finale à l'utilisateur.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 ### 2.1.1 Déployer votre propre Dify (optionnel)
 
@@ -194,7 +194,7 @@ Cliquez sur `Create from Blank` dans la section `CREATE APP`.
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 Sélectionnez Chatbot comme type d'application, saisissez un nom et une description, puis créez.
 
@@ -208,7 +208,7 @@ La zone « Knowledge » en dessous est la zone de base de connaissances.
 
 Le panneau de droite est la fenêtre de débogage pour tester les réponses en temps réel.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image20.png)
 
@@ -250,9 +250,9 @@ Chargez vos fichiers (PDF, TXT, etc.) pour construire la base de connaissances.
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image32.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image35.png)
 
@@ -260,9 +260,9 @@ Chargez vos fichiers (PDF, TXT, etc.) pour construire la base de connaissances.
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image37.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image40.png)
 
@@ -272,7 +272,7 @@ Chargez vos fichiers (PDF, TXT, etc.) pour construire la base de connaissances.
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image43.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -290,7 +290,7 @@ Dify prend en charge l'import/export de workflows au format DSL (JSON).
 
 Cliquez sur Explora pour voir les workflows construits par d'autres.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 Créer votre première application Workflow Dify
 
@@ -298,7 +298,7 @@ Sélectionnez Chatflow ou Workflow selon que votre besoin est une conversation c
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 - **Chatflow** : conçu pour les conversations, avec mémoire et contexte.
 - **Workflow** : conçu pour l'automatisation, traitement ponctuel entrée -> sortie.
@@ -362,15 +362,15 @@ Pour un scénario de restaurant, nous créons un workflow capable de classer les
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image61.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image63.png)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image64.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image67.png)
 
@@ -378,7 +378,7 @@ Pour un scénario de restaurant, nous créons un workflow capable de classer les
 
 #### Test du workflow
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 Exécuter un workflow template
 
@@ -386,13 +386,13 @@ Importez le workflow DeepResearch officiel et corrigez les erreurs au fur et à 
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image70.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image73.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image75.png)
 
@@ -418,13 +418,13 @@ Nous allons maintenant appeler l'agent à base de connaissances créé précéde
 
 Publiez d'abord l'agent, puis accédez à la documentation API.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image87.png)
 
@@ -434,13 +434,13 @@ Utilisez Trae Builder avec votre clé API, la requête et la réponse exemples p
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image89.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image91.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 # 3. Références de workflows métier supplémentaires
 
@@ -491,7 +491,7 @@ Néanmoins, la maîtrise de ces plateformes devient une compétence de base, ana
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image94.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Défi de workflow « Love loop » : corrigez le workflow pour obtenir la sortie attendue.
 
@@ -513,7 +513,7 @@ Trouvez un workflow Dify sur Github, WeChat, Reddit ou Twitter, importez-le et e
 
 Si vous rencontrez le problème illustré ci-dessous, consultez cette section ; sinon vous pouvez l'ignorer.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 Ce problème survient lorsque Dify est déployé sur un serveur ne supportant que HTTP (sans HTTPS). Le HTTPS (HyperText Transfer Protocol Secure) est une version sécurisée du HTTP avec chiffrement SSL/TLS.
 

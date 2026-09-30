@@ -12,13 +12,13 @@
 4. Trae مثبت ومفتوح
 5. Apple ID قابل للاستخدام
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.webp)
 
 ### 1.1 تطبيق iOS
 
 تطبيق iOS هو تطبيق أصلي يعمل على نظام تشغيل iPhone. يُطلق بسرعة، ويعمل بسلاسة، ويمكنه استخدام ميزات النظام بعمق مثل الإشعارات والكاميرا والتخزين المحلي.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.webp)
 
 ### 1.2 تطوير تطبيقات iOS
 
@@ -51,7 +51,7 @@
 
 يُدخل المستخدم المكونات المتاحة حاليًا في الثلاجة، ويستخدم التطبيق واجهة برمجة تطبيقات ذكاء اصطناعي حقيقية لتوليد وصفة ممكنة، ثم يحفظ النتيجة محليًا لمراجعتها لاحقًا. يغطي هذا المثال بالكامل الأجزاء الأساسية لتطبيق iOS حقيقي، بما في ذلك إدخال وعرض واجهة المستخدم وطلبات الشبكة وتحليل البيانات والتخزين المحلي والتثبيت النهائي والتشغيل على جهاز حقيقي.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.webp)
 
 - الفكرة العامة من النموذج الأولي إلى التطبيق الأصلي
 
@@ -109,7 +109,7 @@
 4. قم بتفعيله، ثم أعد تشغيل الجهاز كما هو مطلوب
 5. بعد إعادة التشغيل، ألغِ قفل الجهاز وأكد تفعيل وضع المطور
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.webp)
 
 إذا لم يكن iPhone الخاص بك متصلاً مسبقًا بـ Xcode أو أدوات تطوير أخرى، فقد تجد أن **وضع المطور** لا يظهر تحت **الخصوصية والأمان**. هذه ليست مشكلة في النظام - بل تعني ببساطة أن وضع المطور لم يُفعّل بعد.
 
@@ -122,7 +122,7 @@
 
 بعد إكمال الخطوات المذكورة أعلاه، يحتاج وضع المطور إلى التفعيل مرة واحدة فقط. تصحيح الأخطاء المستقبلي على الجهاز الحقيقي باستخدام Xcode لن يتطلب تكرار هذا التكوين.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.webp)
 
 ### 2.2 البرامج المطلوبة
 
@@ -195,17 +195,17 @@ Trae هو البيئة الرئيسية التي يتم فيها تنفيذ عم
 6. التخزين: اختر Core Data (لحفظ سجل الوصفات لاحقًا)
 7. اترك الخيارات الأخرى على الوضع الافتراضي
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.webp)
 
 انقر **Next** واختر موقع تخزين المشروع.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.webp)
 
 ### 3.4 التعرف على هيكل المشروع بعد الإنشاء
 
 بعد إنشاء المشروع، سيفتح Xcode مساحة العمل تلقائيًا. في هذه المرحلة، لا تحتاج إلى فهم كل ملف. تحتاج فقط إلى التعرف على بضعة أجزاء رئيسية.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.webp)
 
 في المشروع الافتراضي، سترى:
 
@@ -227,7 +227,7 @@ Trae هو البيئة الرئيسية التي يتم فيها تنفيذ عم
 
 إذا كان كل شيء طبيعيًا، سيُظهر المحاكي تطبيقًا فارغًا يمكن أن يبدأ بنجاح. قد يستغرق التجميع الأول وقتًا طويلاً نسبيًا. في الفصول اللاحقة، نقدم وقت الانتظار باستخدام نماذج HTML الأولية أولاً.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.webp)
 
 لإيقاف التطبيق، انقر **Stop** بجانب زر Run.
 
@@ -247,7 +247,7 @@ Trae هو البيئة الرئيسية التي يتم فيها تنفيذ عم
 
 ما تحتاج إلى فعله بسيط: **افتح مجلد مشروع iOS الذي أنشأته للتو في Trae.**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.webp)
 
 ## الفصل 4: ممارسة التطوير المساعد بالذكاء الاصطناعي - بناء FridgeChef من الصفر
 
@@ -289,7 +289,7 @@ Please help me organize this into a clear, structured REQUIREMENTS.md document f
 
 بعد التوليد، اقرأ المستند بسرعة وتأكد مما إذا كانت نقاط الوظائف تتطابق مع توقعاتك.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.webp)
 
 ### 4.2 المرحلة الثانية: النموذج الأولي المرئي
 
@@ -320,7 +320,7 @@ Please generate a single-file index.html and simulate an iPhone screen ratio aro
 
 بعد التوليد، ابحث عن `index.html` في قائمة الملفات وافتحه مباشرة في المتصفح.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.webp)
 
 في هذه المرحلة، النقطة ليست ما إذا كان كل تفصيل مثاليًا. النقطة هي ما إذا كان **هيكل الصفحة معقولًا، والعناصر الرئيسية مكتملة، والاتجاه العام صحيح.**
 
@@ -358,15 +358,15 @@ Requirements:
 بمجرد الانتهاء من الواجهة، التطبيق لا يزال مجرد طبقة عرض. بعد ذلك نحتاج إلى توصيل قدرة ذكاء اصطناعي حقيقية. في هذا الدرس نستخدم خدمة النموذج الكبير التي توفرها **SiliconFlow**:
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.webp)
 
 SiliconFlow يوفر واجهة برمجة تطبيقات متوافقة مع مواصفات OpenAI API، لذلك من الملائم جدًا استدعاؤها من مشروع iOS باستخدام طلبات الشبكة القياسية.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.webp)
 
 قبل البدء، تحتاج إلى تسجيل حساب على الموقع وإنشاء مفتاح API.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.webp)
 
 سيُستخدم هذا المفتاح لاستدعاءات النموذج لاحقًا.
 
@@ -401,7 +401,7 @@ Also define a RecipeModel struct for parsing the returned data.
 1. افتح `FridgeChef.xcdatamodeld`
 2. أنشئ كيانًا جديدًا باسم `RecipeEntity`
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.webp)
 
 3. أضف السمات التالية:
    1. `id`: **UUID**
@@ -412,7 +412,7 @@ Also define a RecipeModel struct for parsing the returned data.
    6. `timestamp`: **Date**
    7. `colorIndex`: **Integer 16**
 
-      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
+      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.webp)
 
 **الخطوة 2: دع الذكاء الاصطناعي يكتب كود المنطق**
 
@@ -434,7 +434,7 @@ Please complete the following tasks:
 
 الخطوة الأخيرة هي تحضير أيقونة مناسبة للتطبيق. هنا نستخدم **Lovart** لتوليد مورد الأيقونة: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.webp)
 
 📋 **الموجه للنسخ إلى Lovart:**
 
@@ -448,15 +448,15 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 بعد التوليد، قص الصورة إلى 1024x1024 واسحبها إلى `Assets.xcassets` -> `AppIcon` في Xcode.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.webp)
 
 شغّل التطبيق مرة أخرى، وسترى الآن تطبيق iOS حقيقي وكامل التعرف.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.webp)
 
 ### 4.7 المرحلة السابعة: ترقية التجربة المتقدمة
 
@@ -541,13 +541,13 @@ Please provide the full modified code.
 
 عند التوصيل لأول مرة، سيُظهر الهاتف **Trust This Computer?** اضغط ثق به وأدخل رمز إلغاء القفل.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.webp)
 
 في قائمة أجهزة Xcode، حدد iPhone الخاص بك، ثم انقر **Run** مرة أخرى.
 
 في هذه المرحلة، يجب أن تكون قادرًا على رؤية أيقونة **FridgeChef** على الشاشة الرئيسية لهاتفك، وفتحها واستخدامها بشكل طبيعي.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.webp)
 
 هذه الخطوة تمثل إكمال حلقة واحدة كاملة لتطوير iOS.
 
@@ -566,7 +566,7 @@ Please provide the full modified code.
 4. **أخطاء المنطق**
    التطبيق لا يتعطل، لكن السلوك خاطئ - مثلاً، الأزرار لا تستجيب أو البيانات لا تتحدث.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.webp)
 
 عندما يظهر أي خطأ، تحتاج فقط إلى **نسخ رسالة الخطأ الكاملة كما هي بالضبط ولصقها في مربع محادثة Trae.** مع الوعي بسياق المشروع، يمكن لـ Trae مساعدتك في التصحيح.
 
@@ -725,7 +725,7 @@ Please provide the full modified code.
 
 ## الفصل 7: الخلاصة
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.webp)
 
 تهانينا! في هذه المرحلة، مررت شخصيًا بعملية تطوير تطبيق iOS الكاملة من الصفر إلى الواحد. من إعداد البيئة وتشغيل المشروع، ثم الهبوط التدريجي للواجهة والوظائف والبيانات واختبار الجهاز الحقيقي، تم إكمال جميع المراحل الرئيسية بسلاسة. والأهم من ذلك، أنك لم تصل إلى هنا عن طريق حفظ بناء Swift - بل أسندت معظم التنفيذ إلى الذكاء الاصطناعي. بغض النظر عن خلفيتك، كل محاولة كهذه تجعلك أكثر طلاقة، وستدرك أن تطوير iOS ليس بالصعوبة التي كان عليها. حتى لو لم تستطع كتابة سطر كود واحد من قبل، يمكنك بناء تطبيقك الخاص.
 

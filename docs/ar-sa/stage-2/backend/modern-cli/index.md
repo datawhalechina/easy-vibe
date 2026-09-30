@@ -8,7 +8,7 @@
 
 > على نظام Windows، الطرفيات الأكثر شيوعًا هي "موجه الأوامر (cmd)" و"PowerShell". يمكنك كتابة "cmd" أو "powershell" في مربع التشغيل/البحث على الكمبيوتر لبدء تشغيل برامج سطر الأوامر هذه.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image1.png)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image1.webp)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
 
 CLI مصمم بطبيعته للعمليات بالأوامر النصية. بين مجموعة صغيرة من الجيك (عشاق البرمجة الذين يسعون للتميز)، يحظى CLI بشعبية أكبر حتى من GUI - فهم يريدون إنجاز جميع العمليات عبر لوحة المفاتيح، ويعتبرون أن استخدام الفأرة يبطئ من كفاءتهم في الترميز.
 
@@ -96,11 +96,11 @@ Claude Code هو أداة برمجة AI طورتها Anthropic بناءً على
 
 GLM (General Language Model) هي سلسلة من النماذج اللغوية الكبيرة المُطورة ذاتيًا بواسطة Zhipu AI. GLM-4.6 هو الإصدار الأحدث من سلسلة GLM، ونقاطه البارزة تكمن في أدائه الممتاز في قدرات الكود (مقارن بـ Claude Sonnet 4 في المعايير العامة والمهام الحقيقية، ويحتل المرتبة الأولى محليًا).
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image12.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image12.webp)
 
 كما وسّع نافذة السياق إلى 200K، مما يسمح بالتعامل مع النصوص الطويلة ومشاريع الكود الكبيرة براحة أكبر، مع تعزيز قدرات الاستدعاء والأدوات، محققًا توازنًا جيدًا بين الأداء والتكلفة.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image13.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image13.webp)
 
 قبل الاتصال بـ GLM، نحتاج أولًا إلى تثبيت Claude Code.
 
@@ -161,7 +161,7 @@ please help me configure and start Claude Code
 
 سترى مخرجات مشابهة لما يلي:
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image14.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image14.webp)
 
 > 💡 ما هي متغيرات البيئة؟
 >
@@ -304,7 +304,7 @@ export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 
 توفر الأداة أيضًا قدرة ملائمة على إدارة التهيئة عبر UI/CLI، وتكييف صيغ API للمنصات المختلفة من خلال "محولات (converter)". تدعم التكاملات الآلية مثل GitHub Actions والامتدادات المخصصة، وتحل مشكلات "النموذج الواحد لا يمكنه تغطية جميع السيناريوهات" و"التبديل المتكرر بين المنصات مزعج"، مما يساعد المستخدمين على استخدام أدوات AI بمرونة أكبر وتكاليف أقل.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image17.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image17.webp)
 
 فيما يلي شرح موجز لكيفية تثبيت Claude Code Router. تحتاج تقريبًا إلى الخطوات التالية (يمكنك أيضًا أن تطلب من Trae تنفيذها لك) لتهيئة البيئة ذات الصلة:
 
@@ -435,7 +435,7 @@ npm install -g @musistudio/claude-code-router
 
 ### Codex
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image26.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image26.webp)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image27.png)
 
@@ -453,7 +453,7 @@ npm i -g @openai/codex
 
 إذا استخدمت مدخل Codex الرسمي من OpenAI مباشرة، فالتهيئة ستكون بسيطة جدًا: بمجرد أن تشترك في OpenAI أو تحصل على حصة API المقابلة، تحتاج فقط إلى كتابة `codex` في سطر الأوامر لبدء البرنامج، واتباع التعليمات لإكمال تسجيل الدخول.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image28.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image28.webp)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image29.png)
 
@@ -525,7 +525,7 @@ I can use the command `codex --profile myrelay` to run it
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image32.png)
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image33.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image33.webp)
 
 OpenCode هي منصة AI Coding Agent مفتوحة المصدر للمطورين، مُصممة كـ "نسخة متعددة النماذج من Claude Code". تستخدم الطرفية كنقطة دخول رئيسية للتفاعل، وتدعم أيضًا التكامل مع المحررات (مثل VS Code وNeovim وغيرها)، ويمكنها الاتصال بعمق بمستودعات الكود المحلية، وإتمام سير تطوير كامل من فهم الكود إلى تنفيذ الهندسة من خلال اللغة الطبيعية.
 
@@ -565,7 +565,7 @@ npm i -g opencode-ai
 
 أي خيار يعمل، الفرق فقط في طريقة المصادقة. هنا نختار الأول لتسجيل الدخول عبر المتصفح.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image38.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image38.webp)
 
 انسخ هذا الرابط إلى المتصفح لإتمام تسجيل الدخول العادي إلى OpenAI. عندما تظهر "Authorization Successful" في المتصفح، سينتقل عميل OpenCode تلقائيًا إلى واجهة اختيار نماذج OpenAI.
 
@@ -577,7 +577,7 @@ npm i -g opencode-ai
 
 تكمن قوة OpenCode أيضًا في مجتمعه النشط جدًا. يمكنك البحث في GitHub عن الكثير من الإضافات المتعلقة بـ OpenCode. إذا كان OpenCode أداة تعاون AI تتيح تبديل النماذج بحرية، فإن Oh-My-OpenAgent هو "نظام قيادة برمجة AI متعدد الوكلاء" يعمل فوق OpenCode. يمكنه تفكيك مهمة معقدة إلى مهام فرعية متعددة وتوزيعها على نماذج مختلفة ليعمل كل منها في اختصاصه.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image41.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image41.webp)
 
 يمكنك نسخ النص التالي ولصقه للنموذج الذي قمت بتهيئته في OpenCode لتثبيت OpenCode.
 
@@ -894,7 +894,7 @@ Features: Add "Templates," "Themes & Personalization," and start developing "Clo
 
 بعد استلام طلبك، سيُكمل Claude Code تلقائيًا سلسلة من العمليات، بما في ذلك سحب الكود من GitHub، وتهيئة بيئة التشغيل، وبدء المشروع. إذا فشلت خطوة في المنتصف أو لم يبدأ المشروع بشكل طبيعي، يمكنك إجراء قدر بسيط من التدخل اليدوي وفقًا للتعليمات. بالإضافة إلى Dify، يمكنك أيضًا استخدام Claude Code لنشر معظم مشاريع GitHub المفتوحة المصدر الشائعة - تحتاج فقط إلى مربع حوار، ووقت احتساء فنجان قهوة ☕️.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image31.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image31.webp)
 
 ### شرح الكود وكتابة الوثائق
 

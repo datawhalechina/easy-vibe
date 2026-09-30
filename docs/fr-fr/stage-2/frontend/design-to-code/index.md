@@ -90,9 +90,9 @@ Dans la barre d'outils supérieure de l'interface d'édition MasterGo, vous trou
 
 2. **Consulter le résultat de la génération**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **Obtenir le code**
    - Cliquez sur le bouton bleu « Insérer dans le canevas » pour éditer directement la page web générée
@@ -128,19 +128,19 @@ L'utilisation complète de Figma Make nécessite les permissions utilisateur Pro
    - Téléchargez l'image de conception que vous souhaitez restaurer dans la boîte de dialogue
    - Ajoutez un prompt décrivant les besoins
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **Consulter le résultat de la génération**
    - Attendez quelques instants pour voir le résultat rendu
    - Cliquez sur le bouton de lecture en haut à droite pour un aperçu plein écran
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **Ajustements de détail**
    - Cliquez sur l'icône de l'éditeur en haut à droite (icône souris et règle)
    - Retournez dans l'interface familière de Figma Editor pour des ajustements détaillés
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **Exporter le code**
    - Après être satisfait des ajustements, sélectionnez l'export de code

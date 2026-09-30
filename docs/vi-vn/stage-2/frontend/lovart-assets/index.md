@@ -39,11 +39,11 @@ Trước khi bắt đầu, bạn chỉ cần hoàn thành ba bước sau:
 
 2. Tạo một tệp Python mới
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. Dán toàn bộ mã dưới đây vào
 
@@ -252,7 +252,7 @@ if __name__ == "__main__":
 
 Khi Trae thông báo chạy thành công, nhấp vào liên kết cục bộ mà nó cung cấp (thường là http://127.0.0.1:7860).
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 Nếu mọi thứ bình thường, bạn sẽ thấy một giao diện vẽ AI đã có thể hoạt động.
 
@@ -286,7 +286,7 @@ Sau khi chạy mã, quy trình có thể tóm tắt thành ba bước:
 
 Vài giây sau, bạn sẽ thấy kết quả tạo tại máy cục bộ. Việc tạo hình ảnh bởi mô hình có tính ngẫu nhiên, nên cùng một prompt sẽ có kết quả tạo khác nhau, bạn có thể tạo nhiều lần và chọn hình ảnh ưng ý.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 Bạn cũng có thể làm phong phú prompt của mình, đưa thêm nhiều mô tả và giới hạn. Ví dụ với prompt sau, hình ảnh nhận được sẽ đặc biệt hơn.
 
@@ -295,11 +295,11 @@ Bạn cũng có thể làm phong phú prompt của mình, đưa thêm nhiều m�
 (Một quả táo đỏ tươi siêu chân thực có giọt nước trên vỏ, đặt trên bàn gỗ thô tối màu. Ánh sáng kịch tính điện ảnh, ánh sáng viền, độ sâu trường ảnh nông, nền mờ, độ phân giải 8k, nhiếp ảnh macro.)
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 Nhấp vào tải xuống hình ảnh trong vùng Output Image để lưu về máy.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 Các kịch bản tạo tài sản phổ biến của mô hình tạo ảnh
 
@@ -323,7 +323,7 @@ Loại kịch bản này tập trung vào hiệu quả. Khi cần lấp khoảng
 
 > A set of 3D weather icons (sun, cloud, rain), glassmorphism style, frosted glass texture, soft pastel gradient colors, soft studio lighting, isometric view, transparent background, 4k.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### Tạo Logo
 
@@ -345,7 +345,7 @@ Loại kịch bản này tập trung vào hiệu quả. Khi cần lấp khoảng
 
 > Close-up portrait of a friendly young tech professional, smiling, Memoji 3D style, clay render, bright colors, soft lighting, solid plain background, Pixar character design.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### Tạo hình ảnh minh họa bài viết
 
@@ -356,7 +356,7 @@ Loại kịch bản này tập trung vào hiệu quả. Khi cần lấp khoảng
 
 > Editorial flat illustration representing remote work, a person sitting on a giant globe using a laptop, corporate memphis art style, vibrant colors (purple and teal), vector texture.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### 2. Tạo ảnh từ ảnh tham khảo: Giữ nhất quán thị giác
 
@@ -383,13 +383,13 @@ Với quy trình này, miễn là thay mô tả chính thể, bạn có thể nh
 
 > A capsule-shaped game UI button with a white pause icon (two vertical bars) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **Biến thể B: Nút cài đặt (icon phức tạp)**
 
 > A capsule-shaped game UI button with a white gear icon (settings symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **Biến thể C: Nút chơi lại (thay đổi hình dạng)**
 
@@ -397,7 +397,7 @@ Nếu cần thay đổi hình dáng nút, bạn có thể mô tả trực tiếp
 
 > A round game UI button with a white circular arrow icon (replay symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 Thông qua tập thao tác này, bạn không chỉ thay đổi chức năng và icon của nút, mà thậm chí thay đổi hình dáng nút, nhưng tất cả kết quả tạo vẫn giữ nhất quán cao về chất liệu, phối màu và ánh sáng. Đây chính là giá trị cốt lõi của mô hình lớn trong kịch bản nhân giống tài sản thiết kế.
 
@@ -417,9 +417,9 @@ Lúc này, cần giới thiệu **AI Agent (trí năng thể)**. Phần này l�
 
 Lovart là một công cụ thiết kế dựa trên Agent Web. So với công cụ tạo ảnh thông thường, nó thêm một lớp "tư duy và lập kế hoạch" trước khi tạo.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 Sau khi vào Lovart, chủ yếu cần hiểu các điều khiển sau:
 
@@ -474,7 +474,7 @@ AI sẽ không vẽ ngay mà tìm kiếm hình ảnh thiết kế vịt lập tr
 
 Trong bước này, AI chuyển từ "người thực thi" thành "người lập kế hoạch". Sau khi AI phân tích xong nhu cầu, bạn có thể xem nhiều hình ảnh vịt lập trình viên với phong cách và nội dung khác nhau trong vùng canvas của Lovart. Có thể bắt đầu chọn phong cách bạn thích.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### Giai đoạn 2: Nhất quán (Neo thị giác dựa trên tham chiếu)
 
@@ -485,13 +485,13 @@ Hình ảnh trong Lovart không chỉ là kết quả, mà còn tham gia vào vi
 * Chọn một "vịt tiêu chuẩn" hài lòng nhất từ bản nháp, nhấp vào hình ảnh tương ứng trong vùng canvas
 * Hình ảnh này sẽ tự động xuất hiện trong vùng hội thoại, làm Reference
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * Nhập hành động mới (như vui vẻ) và tạo
 
 Kết quả tạo sẽ kế thừa phối màu, tỷ lệ và chi tiết của ảnh mẫu.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### Tham chiếu cục bộ / Kết hợp đa ảnh
 
@@ -501,11 +501,11 @@ Ngoài việc dùng cả ảnh làm tham chiếu, Lovart còn hỗ trợ:
 
 Nhấp vào tab bên trái vùng canvas, chọn phím 「Mark」, đánh dấu vùng cục bộ trên hình ảnh mục tiêu, nội dung phần này sẽ tự động đồng bộ vào ô hội thoại. Ví dụ ở đây chúng ta có thể chọn thay đổi màu nền.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 Có thể thấy hình ảnh mới tạo chỉ thay đổi màu nền, điều này cũng nhất quán với yêu cầu chúng ta nhập.
 
@@ -515,9 +515,9 @@ Ví dụ: bạn có thể giữ phần thân nhân vật từ ảnh A, đồng t
 
 Lấy vịt lập trình viên làm ví dụ, chúng ta có thể chọn giữ hình tượng vịt từ ảnh đầu tiên, và thay nó vào ảnh thứ hai làm phần tử chính thể.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 Hiệu quả cuối cùng cũng rất rõ rệt. Bạn cũng có thể thử các kết hợp khác!
 
@@ -525,15 +525,15 @@ Hiệu quả cuối cùng cũng rất rõ rệt. Bạn cũng có thể thử cá
 
 Sau khi tạo xong, có thể trực tiếp thực hiện: phóng to, xóa nền, xóa bỏ, v.v.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 Đây không phải là bộ lọc đơn giản, mà là kết quả do Agent tự động điều phối các công cụ khác nhau.
 
 Sau khi xác định xong phong cách nền tảng, có thể rất nhanh chóng tạo một loạt hình ảnh sticker.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 Cuối cùng chúng ta nhận được là tài sản cấp sản xuất có thể giao ngay, chứ không chỉ là một hình ảnh trình diễn.
 
@@ -544,7 +544,7 @@ Lovart áp dụng mô hình tính phí theo gói đăng ký, các gói khác nha
 Hướng dẫn này không giới thiệu hoặc so sánh bất kỳ gói nào; nếu có nhu cầu trong sử dụng thực tế, bạn có thể chọn nâng cấp trả phí theo tình hình cá nhân.
 Hiện tại hỗ trợ thanh toán qua **Alipay** và các phương thức khác.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### Tóm tắt
 
@@ -566,7 +566,7 @@ Mô hình tạo hình ảnh phù hợp hơn để xử lý mô tả thị giác 
 
 Về bản chất, mô hình hình ảnh chỉ có khả năng "thực thi", nhưng thiếu quá trình phân tích và lựa chọn văn bản.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 Hướng giải quyết: Dùng Agent tách "hiểu" và "thực thi"
 
@@ -576,7 +576,7 @@ Mục tiêu cốt lõi của Agent này chỉ có một: **Làm cho hình ảnh 
 
 Toàn bộ quy trình có thể tóm tắt: **Đầu vào văn bản dài -> Mô hình ngôn ngữ hiểu và phán đoán -> Tạo prompt thị giác phù hợp -> Mô hình hình ảnh thực thi tạo -> Xuất hình ảnh**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 Vậy Agent chúng ta xây dựng làm thế nào để hiểu ý định người dùng?
 
@@ -593,7 +593,7 @@ Trong Agent này, phân công vai trò của từng thành phần có thể tóm
 4. **Gradio và API backend làm lớp承载 tổng thể**
    Chúng chịu trách nhiệm kết nối giao diện, gọi mô hình và hiển thị kết quả, đảm bảo toàn bộ Agent có thể vận hành ổn định dưới dạng một ứng dụng Web hoàn chỉnh.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 Chuẩn bị thực hành: Lấy API
 
@@ -607,13 +607,13 @@ Sử dụng trực tiếp API Key và API URL đã cấu hình ở Chương 1, k
 
 Chúng ta cần một mô hình ngôn ngữ lớn để đảm nhận vai trò "lớp tư duy". Hướng dẫn này sử dụng dịch vụ mô hình do SiliconFlow cung cấp: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
 SiliconFlow cung cấp giao diện tương thích với quy cách OpenAI API, có thể rất tiện lợi gọi trong dự án thông qua yêu cầu mạng tiêu chuẩn. Ở đây chúng ta chọn mô hình Qwen2.5-7B-Instruct miễn phí, nội dung cần gọi đã được viết trong Prompt dưới đây. Trước khi bắt đầu, bạn chỉ cần đăng ký tài khoản và tạo API Key trên trang chủ chính thức.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
 Key này sẽ được sử dụng cho việc gọi mô hình tiếp theo.
 
@@ -723,7 +723,7 @@ Trí tuệ nhân tạo đang định hình lại hệ sinh thái giáo dục v�
 
 Cũng kiểm tra thành công~
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. Chỉ thị vẽ trực tiếp, ở đây nhập "tôi muốn vẽ một con mèo", cũng nhận diện chính xác.
 
@@ -789,11 +789,11 @@ Cũng sao chép văn bản của giai đoạn thứ hai để kiểm tra.
 
 Nếu bạn muốn đổi mẫu mặc định khác, có thể sửa trong prompt trước đó, hoặc trực tiếp sửa qua hội thoại trong Trae.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 Ngoài việc sửa mã cơ sở, chúng ta cũng có thể chỉnh sửa nhanh trên trang web. Ví dụ, tôi thêm một câu ở đây, "thêm câu Pic Prompt ở phía trước", có thể thấy prompt mới tạo cũng bao gồm ở phía trước~ Thiết kế này là để dễ dàng sửa System Prompt tạo prompt, giúp chúng ta nhanh chóng chuyển đổi phong cách.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### Giai đoạn 4: Module tạo ảnh từ văn bản/tạo ảnh từ ảnh Nanobanana
 
@@ -846,21 +846,21 @@ Tạo/phân tích/tải lên thất bại: Hiển thị prompt văn bản rõ r�
 Mã hoàn chỉnh có thể chạy, thay LLM_API_KEY và NANOBANANA_API_KEY là có thể chạy trực tiếp, toàn bộ quy trình sử dụng được, logic phân nhánh khớp nghiêm ngặt phiên bản thực tế.
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 Thật thú vị! Chúng ta đã tạo thành công hình ảnh đầu tiên của Agent này, nhìn kỹ hình ảnh tạo ra, nó khớp với văn bản và prompt của chúng ta. Đến đây bạn đã cơ bản triển khai xong Agent của riêng mình!
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 Chúng ta còn thêm chức năng tạo ảnh từ ảnh, tải lên hình ảnh bạn thích, AI sẽ tự động tham khảo phong cách.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 Đáng nhắc là, prompt tạo ở bước trước cũng có thể chỉnh sửa trên trang web, và chúng ta lấy prompt khi nhấp nút cuối cùng làm chuẩn~ Ngay cả khi tôi đổi thành "a cute cat" ở đây, hình ảnh cuối cùng tạo ra cũng chỉ là chú mèo dễ thương.
 
 ## Chương 4: Tổng kết
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **Tuyệt vời! Cuối cùng cũng viết xong.**
 

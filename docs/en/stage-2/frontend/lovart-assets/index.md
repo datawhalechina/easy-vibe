@@ -39,11 +39,11 @@ Before you start, you only need to complete these three steps:
 
 2. Create a new Python file
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. Paste the complete code below
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 When Trae indicates a successful run, click the local link it provides (usually http://127.0.0.1:7860).
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 If everything is working correctly, you'll see a functional AI drawing interface.
 
@@ -301,7 +301,7 @@ After running the code, the process can be summarized in three steps:
 
 After a few seconds, you'll see the generated result locally. Since model generation is random, the same prompt will produce different results. You can generate multiple times and choose your favorite image.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 You can also enrich your prompt by giving it more description and constraints. For example, the following prompt will produce a more distinctive image.
 
@@ -309,11 +309,11 @@ You can also enrich your prompt by giving it more description and constraints. F
 "A hyper-realistic close-up of a fresh red apple with water droplets on its skin, sitting on a dark rustic wooden table. Cinematic dramatic lighting, rim light, shallow depth of field, bokeh background, 8k resolution, macro photography."
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 Click download in the Output Image area to save the image locally.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 Common Asset Generation Scenarios for Image Models
 
@@ -337,7 +337,7 @@ This category focuses on efficiency. When you need to fill in design gaps (such 
 
 > A set of 3D weather icons (sun, cloud, rain), glassmorphism style, frosted glass texture, soft pastel gradient colors, soft studio lighting, isometric view, transparent background, 4k.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### Generating Logos
 
@@ -359,7 +359,7 @@ This category focuses on efficiency. When you need to fill in design gaps (such 
 
 > Close-up portrait of a friendly young tech professional, smiling, Memoji 3D style, clay render, bright colors, soft lighting, solid plain background, Pixar character design.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### Generating Article Illustrations
 
@@ -370,7 +370,7 @@ This category focuses on efficiency. When you need to fill in design gaps (such 
 
 > Editorial flat illustration representing remote work, a person sitting on a giant globe using a laptop, corporate memphis art style, vibrant colors (purple and teal), vector texture.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### Two: Reference-Based Image Generation — Maintaining Visual Consistency
 
@@ -397,13 +397,13 @@ With this flow, as long as you replace the subject description, you can get butt
 
 > A capsule-shaped game UI button with a white pause icon (two vertical bars) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **Variant B: Settings Button (Complex Icon)**
 
 > A capsule-shaped game UI button with a white gear icon (settings symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **Variant C: Replay Button (Shape Change)**
 
@@ -411,7 +411,7 @@ If you need to change the button shape, you can directly describe the shape in t
 
 > A round game UI button with a white circular arrow icon (replay symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 Through this set of operations, you can not only replace button functions and icons but even change button shapes, while all generated results remain highly consistent in material, color scheme, and lighting. This is exactly the core value of large models in design asset generation scenarios.
 
@@ -431,9 +431,9 @@ This is where you need to introduce **AI Agent (Intelligent Agent)**. This secti
 
 Lovart is an Agent-based design tool on the web. Compared to ordinary image generation tools, it adds a layer of "thinking and planning" before generation.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 After entering Lovart, you mainly need to understand the following controls:
 
@@ -488,7 +488,7 @@ The AI won't immediately start drawing. Instead, it first searches the web for r
 
 In this step, the AI transforms from "executor" to "planner." After the AI finishes analyzing your requirements, you can see various styles and content of programmer duck images in Lovart's canvas area. You can start filtering for the styles you like.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### Phase Two: Consistency (Reference-Based Visual Anchoring)
 
@@ -499,13 +499,13 @@ Images in Lovart are not just results — they also participate in subsequent ge
 * Select the most satisfactory "standard duck" from the sketches, click on the corresponding image in the canvas area
 * The image will automatically appear in the conversation area as a Reference
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * Enter a new action (such as happy) and generate
 
 The generated result will inherit the color scheme, proportions, and details of the master template.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### Partial Reference / Multi-Image Integration
 
@@ -515,11 +515,11 @@ Besides using an entire image as a reference, Lovart also supports:
 
 Click the tab bar on the left side of the canvas area, select the "Mark" button, and mark the target area on the image. This content will automatically sync to the conversation box. For example, here we can choose to change the background color.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 You can see that the newly generated image only changed the background color, which is consistent with our input requirement.
 
@@ -529,9 +529,9 @@ For example: you can keep the character from image A as the main subject, while 
 
 Taking the programmer duck as an example, we can choose to keep the duck character from the first image and replace it as the main subject element in the second image.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 The final effect is quite remarkable. You can also try other combinations!
 
@@ -539,15 +539,15 @@ The final effect is quite remarkable. You can also try other combinations!
 
 After generation is complete, you can directly perform: upscale, remove background, erase, and other operations.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 These are not simple filters — they are results from the Agent automatically orchestrating different tools.
 
 Once the base style is determined, you can very quickly generate a series of sticker pack images.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 What we ultimately get are production-ready assets that can be directly delivered, not just a display image.
 
@@ -558,7 +558,7 @@ Lovart uses a subscription-based pricing model, where different plans correspond
 This tutorial does not recommend or compare any specific plans; if you have actual usage needs, you can choose to upgrade based on your personal situation.
 Currently, payment via **Alipay** and other methods is supported.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### Summary
 
@@ -580,7 +580,7 @@ Image generation models are better suited for handling short, clear visual descr
 
 Essentially, image models only have "execution" capability but lack the process of analyzing and making trade-offs about text.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 Solution: Use an Agent to Separate "Understanding" from "Execution"
 
@@ -590,7 +590,7 @@ This Agent has only one core goal: **make the final generated image as close as 
 
 The overall process can be summarized as: **Long text input → Language model understanding and judgment → Generate appropriate visual prompts → Image model executes generation → Output image**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 So how can the Agent we build understand the user's intent?
 
@@ -607,7 +607,7 @@ In this Agent, the division of labor among various roles can be summarized in fo
 4. **Gradio and Backend API as the Overall Infrastructure**
    They are responsible for connecting the interface, model calls, and result display, ensuring the entire Agent can run stably as a complete web application.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 Preparation: Getting the APIs
 
@@ -621,13 +621,13 @@ Directly reuse the API Key and API URL already configured in Chapter 1 — no ad
 
 We need a large language model to serve as the "thinking layer." This tutorial uses the model service provided by SiliconFlow: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
 SiliconFlow provides interfaces compatible with the OpenAI API specification, which can be easily called through standard network requests in your project. Here we choose the free Qwen2.5-7B-Instruct model. Everything needed for the call is already written into the Prompt below. Before starting, you only need to register an account on the official website and create an API Key.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
 This Key will be used for subsequent model calls.
 
@@ -754,7 +754,7 @@ However, this technological integration raises a series of ethical dilemmas. Alg
 
 Also successfully detected~
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. Direct drawing instruction, here we entered "I want to draw a cat," which was also accurately detected.
 
@@ -837,11 +837,11 @@ It's worth noting that the preset System Prompt for generating image prompts her
 
 If you want to switch to another preset template, you can modify it in the earlier prompt, or directly modify it through conversation in Trae.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 Besides modifying the underlying code, we can also quickly edit on the web page. For example, I added a sentence here, "add 'Pic Prompt' at the beginning," and you can see that the newly generated prompt also includes it at the front. This design is to make it easy to quickly modify the System Prompt for generating prompts, helping us quickly switch styles.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### Phase 4: Nanobanana Text-to-Image / Image-to-Image Module
 
@@ -904,21 +904,21 @@ Generation / parsing / upload failure: display clear text message in intent_stat
 Complete runnable code, just replace LLM_API_KEY and NANOBANANA_API_KEY to run directly, full process available, branch logic strictly matches practical version.
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 How exciting! We've finally successfully generated the first image from this Agent. Look closely at the generated image — it matches our text and prompts. At this point, you've basically implemented your own Agent!
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 We've also added image-to-image functionality — upload your favorite image, and the AI will automatically reference its style.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 It's worth mentioning that the prompts generated in previous steps can also be edited on the web page, and we use the prompt at the time the button is finally clicked as the final version. Even if I change it to "a cute cat" here, the final generated image will only be a cute kitten.
 
 ## Chapter 4: Summary
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **Woohoo! Finally finished writing.**
 

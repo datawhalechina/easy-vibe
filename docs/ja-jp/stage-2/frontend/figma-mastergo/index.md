@@ -22,7 +22,7 @@ const relatedArticles = relatedArticlesMap['ja-jp/stage-2/frontend/figma-masterg
 
 また、チーム協業の観点から見ると、フロントエンドデザインツールは関係者の協力コストを下げます：デザイナー、プロダクトマネージャー、開発者がそれぞれの想像や抽象的なコード説明に頼るのではなく、リアルタイム協業をサポートし、可視化され、注釈可能で、反復可能なキャンバスを中心に、バージョン管理、要件変更、フィードバックについて議論できます。さらに、モダンなフロントエンドデザインツール自体がもはや単なる描画ソフトではなく、ワンクリックでコードの一部を生成し、デザインシステムとコンポーネントライブラリを管理できます。新时代のデザインツールは、多くの反復的な手作業（整列、注釈、エクスポート、スタイル変更）を自動化・バッチ化し、ページ設計の開発効率を大幅に促進しています。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.webp)
 
 ### 1.1 フロントエンドデザインツールの変遷
 
@@ -32,41 +32,41 @@ const relatedArticles = relatedArticlesMap['ja-jp/stage-2/frontend/figma-masterg
 
 ## 1.2 誕生の旅
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.webp)
 
 モダンなフロントエンド専用ツールが誕生する前の時代、インターフェースデザイン業界の視覚デザイン作業は長い間、Photoshopのような「万能型」デザインソフトが兼任していました。デザイナーはローカルでレイヤーを重ねて、ページ全体の視覚効果を細かく設計し、最終的にサイズの大きい.psdソースファイルをフロントエンドエンジニアに納品していました。フロントエンドがデザイン画像を正確に再現するには、3つの煩雑で重要な作業を手動で完了する必要がありました：
 
 1つ目は「スライス」：.psdファイルの多層構造から、ボタン、アイコン、ロゴ、背景モジュールなどの独立した視覚要素を一つずつ分割・抽出し、PNG、JPGなどのWebブラウザが直接読み込める画像形式にエクスポートする必要がありました（WebブラウザはPSDのレイヤー情報を直接認識できず、分割された画像に依存してディテールを表示するため）。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.webp)
 
 2つ目は「寸法測定」：ソフトウェアの測定ツールを使って、各要素の幅・高さ、異なるモジュール間のマージン（margin/padding）などのデータを一つずつ確認し、すべての寸法がピクセル単位で正確であることを保証する必要がありました。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.webp)
 
 3つ目は「注釈の抽出」：デザイン画像から「見えないが必須の」暗黙パラメータを抽出する必要がありました。例えば、テキストのフォントサイズ、ウェイト、行間、各カラーブロックのRGBやHEXカラー値など、デザイナーが紙に書いていない「設計仕様」を手動で「抽出」して記録する作業でした。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.webp)
 
 その後、フロントエンドの実装段階が本格的に始まりました。ネイティブのHTML/CSS/JSであれ、Vue、Reactなどのフレームワークであれ、本質的なプロセスは同じです。フロントエンドは「コンテナを核心的なキャリア」として、设计中の各モジュールの階層とセマンティクスに従ってページ構造を再構築します。ここでのコンテナとは、明確なレイアウト境界を持ち、子要素を専門に保持・整理する単位を指し、具体的なコンテンツを直接表示するのではなく、Flex、Gridなどのルールを通じて内部要素の配置範囲を定めます。そして「構造ブロック」（トップナビゲーションバー、サイドバー、記事リストエリア、フッターなど目で見える機能/コンテンツエリア）は、コンテナに依存して存在します。各構造ブロック内部には、さらに小さなコンテナがネストされて要素を整理します。例えば、1つの記事リスト項目は「リスト項目コンテナ」が内側の余白と全体レイアウトを制御し、さらにタイトル、要約、時間、カバー画像などの詳細要素を包み込みます。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.webp)
 
 モダンなフロントエンドフレームワークでは、これらの「構造ブロック（および関連するコンテナと要素）」は通常「コンポーネント」として実装されます。コンポーネントは簡単に言えば、明確な境界を持ち、コンテナレイアウトとロジックを統合した再利用可能なインターフェース単位です。外観と配置を制御するコンテナ（例えば「ボタンコンポーネント」はコンテナで幅・高さ、角丸を定義し、「記事カードコンポーネント」はコンテナでタイトル、カバーの位置を整理）を含むだけでなく、インタラクションロジックもカプセル化します。デザイン稿に繰り返し登場し、形が統一されている部分（統一スタイルのボタン、繰り返し使用される記事カードなど）は、コード内でコンポーネントに抽象化されます：異なるページ/シーンで再利用でき、重複開発を減らすだけでなく、コンポーネント内コンテナの統一ルールにより、すべての再利用箇所のレイアウトとスタイルの高い一貫性を保証します。
 
 その後、フロントエンドはスタイルシステムを使って視覚とレイアウトを再現します。スライス段階でエクスポートされたPNG/JPGなどのリソースは、コンポーネントや構造ブロック内部の`<img>`、背景画像として、または各フレームワーク推奨の静的アセット方式でインポートされます。寸法測定段階で得られた幅・高さ、間隔、行の高さなどの具体的な数値は、`width`、`height`、`margin`、`padding`、`line-height`などのスタイルプロパティに変換され、対応するコンポーネントや構造ブロックに適用されます。注釈抽出段階で整理された色、フォント、シャドウ、角丸、hover/activeなどの状態は、CSS、CSS Modules、CSS-in-JS、Tailwindなどの具体的なスキームにおける`color`、`font-family`、`font-size`、`box-shadow`、`border-radius`および擬似クラスや状態クラス名に落とし込まれます。この時点で、スライス、寸法、注釈が提供するのは一連の正確な視覚パラメータであり、コンポーネントと構造ブロックが提供するのはこれらのパラメータを保持するコード組織単位であり、両者が組み合わさって、保守可能で再利用可能なインターフェース実装を構成します。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.webp)
 
 しかし、ローカルファイル中心のモデルは本質的に非効率です。バージョンはメールやクラウドストレージで転送され、新旧の原稿が混同しやすく、デザインと開発の間では上記のような複雑なやり取りに大きく依存し、協業コストとエラー確率は決して低くありません。
 
 モバイルインターネットの台頭後、インターフェースの複雑さとイテレーション速度のニーズが急速に高まり、Photoshopの「大きくて万能」な特性が次第に重く感じられるようになりました。この段階でSketchが登場しました。SketchはUIデザインそのものに特化し、視覚的な後処理に関連する負担の大部分を削除しました。Symbolsを使ってボタン、ナビゲーション、入力ボックスなどの再利用性の高い要素をコンポーネント化し、一箇所の変更でグローバルに同期できるようにしました。さらにZeplinのようなツールと組み合わせて、注釈とスタイル断片を自動生成しました。Sketchは「コンポーネント思考」をデザインワークフローに導入しました。しかし、やはりローカルファイルベースのデスクトップアプリケーションであり、リアルタイム協業にはクラウドストレージ、サードパーティプラグイン、バージョンツールを経由する必要があり、「複数人が同時に同じ原稿を修正する」という問題を根本的に解決していませんでした。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.webp)
 
 本当にゲームチェンジャーとなったのはFigmaです。2016年以降、UIデザイン、プロトタイピング、コメント協業をブラウザに統合し、リアルタイムマルチユーザーカーソル、オンラインコメント、バージョンタイムライン、共有リンクなどのモダンな機能をサポートしました。今日では当たり前に見えますが、当時はPhotoshop / Sketchモデルへの真っ向からの挑戦でした。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.webp)
 
 ここに至り、インターフェースデザインはもはや各個人のPCに散らばるファイルではなく、1つのオンラインでリアルタイム更新されるクラウドキャンバスに集中するようになりました。このキャンバスを中心に、さらに自動化やAIの方法でデザインとフロントエンドコードの境界を曖昧にすることを想像できます。
 
@@ -82,7 +82,7 @@ const relatedArticles = relatedArticlesMap['ja-jp/stage-2/frontend/figma-masterg
 
 または以下のチュートリアルを参考に、個人ポートフォリオのようなシンプルなWebページを素早く構築することもできます：https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collectio
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.webp)
 
 左側はプロジェクトの新規作成とリソース管理の入り口で、右上のいくつかのボタンはFigmaの主要な機能です。その中で、MakeはAIに一言で大まかなインターフェースや構造ドラフトを生成させるもので、DesignはWeb/Appインターフェースの設計、コンポーネントの構築、プロトタイプ作成のメインワークスペースです。FigJamはチーム用ホワイトボードで、付箋を貼ったり、フローを描いたり、初期段階の議論に使います。Buzzはブランドアセットのスケール生産ツールで、ブランド一貫性を保ちながらコンテンツをバッチ生成するために使用します。Siteはデザインを実際にアクセス可能なWebページやドキュメントサイトにまとめて公開するためのものです。
 
@@ -163,7 +163,7 @@ const relatedArticles = relatedArticlesMap['ja-jp/stage-2/frontend/figma-masterg
 
 この時点で、使用されているすべてのボタンは、このマスターの同期コピーです。マスターの色、角丸、間隔を修正すると、すべてのインスタンスが自動的に同期更新されます。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.webp)
 
 以上で、Figmaの基本的な使い方の入門が完了しました。最初にすべての機能を理解する必要はありません。まずこのシンプルなページを作ってみて、これらのコア操作に慣れ、公式チュートリアルのより多くの機能を徐々に探索していけば、使用回数が増えるにつれて必ず上達できます。
 
@@ -178,7 +178,7 @@ Figmaの基本的なワークフローを理解した後、MasterGoを見てみ�
 1. **MasterGo管理画面に入る**
    1. MasterGo公式サイトを開きアカウントにログイン。
    2. ログイン後、「ファイルリスト / プロジェクトリスト」のようなホームページエリアが表示され、デザインファイルの管理に使用します。
-      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.png)
+      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.webp)
 
 2. **新規ファイルを作成**
    1. 右上の+デザインファイルのボタンをクリックするか、Figmaなどのファイルのインポートを選択。
@@ -236,21 +236,21 @@ MasterGoで注目すべき面白い機能がAIページ生成です。一言や�
 
 ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.webp)
 
 デザインドキュメントの生成が完了したら、生成開始をクリックし、少し待つと対応する実際のWebページ効果が取得できます：
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.webp)
 
 この時点で2つの操作選択があります：1つ目は青いボタンをクリックして生成結果を直接キャンバスに挿入、2つ目はコードプレビュー機能をクリックして現在の完全なページのコードを直接取得。具体的な操作インターフェースは以下の通りです：
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.webp)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.webp)
 
 結果をキャンバスに挿入した後、Webページの全体レイアウト、要素のディテール（フォント、色、間隔など）をより細かく調整し、最終効果が期待に完全に合致するまで仕上げられます。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.webp)
 
 ---
 

@@ -21,7 +21,7 @@ Very often, what the teacher explains and what students actually understand are 
 
 Fifty students. One teacher. Every student got stuck in a different place. Some did not understand what `input()` was for. Some could not figure out how to write an `if` statement. Some did not understand type conversion at all. In a 45-minute class, I felt like a factory worker tightening screws nonstop. Just as I tightened one, three more would come loose beside it.
 
-![The BMI task from that Python practice class](../../zh-cn/vibe-stories/images/story-3/image1.png)
+![The BMI task from that Python practice class](../../zh-cn/vibe-stories/images/story-3/image1.webp)
 
 Even though I never stopped moving, the number of students with raised hands never seemed to go down. Some waited a few minutes and still could not get help, so they started randomly fiddling with their computers. Others simply gave up and put their heads on the desk to sleep. When the bell rang and class ended, I stood in the computer lab looking at the chaos and suddenly felt powerless.
 

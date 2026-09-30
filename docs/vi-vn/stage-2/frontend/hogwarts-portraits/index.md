@@ -17,7 +17,7 @@ Nếu bạn còn thắc mắc về bất kỳ câu hỏi nào ở trên, có th�
 
 Chủ đề dự án của bài học này là **Hogwarts Portraits**. Như tên gọi, nguồn cảm hứng đến từ những bức tranh "sống dậy" tại trường phép thuật Hogwarts. Chúng ta muốn sử dụng AI để tạo ra một trải nghiệm chân dung phép thuật "có thể tương tác" — trò chuyện với bức chân dung giống như đang trò chuyện với "chính nhân vật đó", vừa giữ được trí nhớ của cuộc trò chuyện, vừa có nền tảng và lịch sử nhân vật. Thông qua dự án này, bạn sẽ thực sự tích hợp Agent và Workflow đã học vào một giao diện sản phẩm cụ thể.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.webp)
 
 Để thực sự tạo ra Hogwarts Portraits, chúng ta cần tự tay xây dựng giao diện frontend phù hợp với chân dung phép thuật. Để làm điều này, bạn sẽ bắt đầu tiếp xúc với các công cụ thiết kế frontend hiện đại, học cách kết hợp thiết kế giao diện với code, biến bản phác thảo giao diện trên giấy hoặc canvas thành trang web thực sự có thể thao tác.
 
@@ -39,7 +39,7 @@ Một Hogwarts Portraits thuộc về chính bạn, một giao diện trang web 
 
 Chúng ta thực sự muốn làm một loại "chân dung phép thuật" như thế nào? Nói đơn giản, chúng ta muốn tái hiện cảnh trong Harry Potter nhất có thể, bức chân dung không chỉ là một bức ảnh tĩnh treo trên tường, mà là một nhân vật nhân hóa có thể trò chuyện với bạn, sẽ thay đổi biểu cảm và "tâm trạng" dựa trên nội dung cuộc trò chuyện.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.webp)
 
 Để bức chân dung này trông không giống chatbot AI mà gần gũi hơn với một "người thực sự tồn tại", cần giải quyết hai vấn đề: thứ nhất là trí nhớ và kiến thức: bức chân dung cần nắm vững nhiều tài liệu nền tảng liên quan đến nhân vật (thiết lập nhân vật, câu chuyện trải nghiệm, bài báo liên quan, v.v.), phần này có thể được thực hiện thông qua knowledge base, kết nối tài liệu văn bản bạn chuẩn bị cho nhân vật vào Dify có chứa knowledge base, khi đó bức chân dung có khả năng trình bày kiến thức nền tảng nhất định.
 
@@ -47,7 +47,7 @@ Thứ hai là vấn đề phong cách biểu đạt. Chỉ có kiến thức là
 
 Ngoài chức năng trò chuyện, chúng ta còn muốn cảm xúc có thể thực sự được nhìn thấy. Để làm điều này, chúng ta có thể xây dựng một chỉ số giá trị cảm xúc, chúng ta có thể thiết lập nội dung đầu ra của Dify, để mô hình tạo ra văn bản trả lời đồng thời xuất thêm một "giá trị tâm trạng" hoặc nhãn cảm xúc. Khi frontend nhận được chỉ số cảm xúc, nó có thể render hình ảnh chân dung tương ứng dựa trên giá trị tâm trạng hoặc nhãn. Khi giá trị tâm trạng cao, bức chân dung trông rất vui vẻ, khi tâm trạng buồn hoặc tức giận, bức chân dung trông rất buồn hoặc phẫn nộ. Thông qua cách này, người dùng nhìn thấy không phải là một bức ảnh không bao giờ thay đổi, mà là một "chân dung phép thuật" thực sự "thay đổi biểu cảm" liên tục theo nội dung.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.webp)
 
 Ngoài ra, đối với nội dung của bức chân dung này, nó có thể là ngôi sao trong đời thực, nhân vật lịch sử, cũng có thể là nhân vật anime IP, thậm chí là nhân vật gốc bạn xây dựng từ số không. Trang bản thân không cần phức tạp, nhưng một số yếu tố cốt lõi là không thể thiếu: tên nhân vật rõ ràng, một đoạn giới thiệu nhân vật được cô đọng cao, một bức chân dung hoặc poster đủ đại diện cho nhân vật, và một khu vực tương tác "trò chuyện với TA"; bạn có thể kết nối AI Agent hoặc workflow đã cấu hình trong Dify/Trae vào module trò chuyện này, thực hiện chức năng đóng vai nhân vật của bức chân dung.
 
@@ -76,7 +76,7 @@ Ngoài ra, xét đến thiết kế chân dung, sử dụng hình ảnh công kh
 
 Trong hướng dẫn này, chúng tôi sử dụng [Lovart](https://www.lovart.ai/home). Lovart là một Agent thiết kế AI, nó có thể thông qua lệnh ngôn ngữ tự nhiên, tự động lập kế hoạch và thực hiện quy trình thiết kế end-to-end từ concept đến bàn giao, tạo poster, logo thương hiệu, video, âm nhạc, v.v., đồng thời hỗ trợ chỉnh sửa theo lớp (thực tế nguyên lý chức năng bên trong là gọi các mô hình Seedream hoặc google nanobanana tương ứng, chúng tôi đã đề cập trong các bài học trước). Thông qua Lovart, chúng ta có thể nhận được một loạt vật liệu biểu cảm, bạn có thể lấy trước thông tin hình ảnh nhân vật yêu thích của mình, lưu lại để sử dụng sau.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.webp)
 
 Khi mọi thứ đã sẵn sàng, chúng ta có thể bắt tay vào thiết kế tổng thể trang, chúng ta muốn phong cách trang này gắn liền chặt chẽ với nhân vật đó.
 
@@ -84,15 +84,15 @@ Khi mọi thứ đã sẵn sàng, chúng ta có thể bắt tay vào thiết k�
 
 Chúng ta cũng có thể构思 nguyên mẫu trang trước, như đã nói ở trên, chúng ta muốn có một trang trò chuyện và bức chân dung, cùng với một phần giới thiệu cá nhân thú vị. Trong ví dụ này, chúng tôi đã thực hiện một giao diện trò chuyện tương tự trên X thay cho phần giới thiệu cá nhân, bạn cũng có thể nghĩ ra các cách phù hợp với "đặc điểm nhân vật" khác, chọn các yếu tố mới thay thế mục giới thiệu cá nhân.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.webp)
 
 Đơn giản nhất, chúng ta có thể sử dụng PowerPoint để thiết kế nguyên mẫu trình bày trang web ban đầu, chúng ta tìm một bức ảnh chân dung phép thuật từ internet, và đặt bố cục theo chiều ngang, bên trái nhất là khu vực trò chuyện, ở giữa là khu vực chân dung, bên phải nhất là khu vực X.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.webp)
 
 Dựa trên nguyên mẫu đơn giản ở trên, chúng ta có thể để mô hình_large tạo thiết kế trang frontend thực sự và kết quả code tương ứng.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.webp)
 
 Tuy nhiên, nói chung trong thực tế chúng ta sẽ không dùng PowerPoint để thiết kế trang frontend. Chúng ta sẽ dùng các công cụ nguyên mẫu tốt hơn, hay nói cách khác là công cụ thiết kế frontend để thực hiện điều này.
 
@@ -175,7 +175,7 @@ Thông qua thực hành trong phần từ nguyên mẫu đến code, chắc hẳ
 
 Đáng chú ý, vì tất cả các key của chúng ta đều cần đặt trong biến môi trường, chứ không ghi vào code. Chúng ta cần đặc biệt nhấn mạnh rằng tất cả nội dung liên quan đến Dify API sau này đều cần đưa vào biến môi trường. Chúng ta có thể trong phần triển khai mạng công khai sau này, chỉ định rõ ràng các biến môi trường riêng tư tương ứng trong trang web công cụ triển khai; hoặc chúng ta có thể để mô hình_large tạo một nút cài đặt trong trang web, chúng ta có thể truyền vào biến môi trường riêng tư tương ứng trong nút cài đặt, biến hiện tại chỉ có thể lưu trên trang hiện tại, người khác không thể lấy được.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.webp)
 
 ## 3.2 Thiết kế Workflow Dify và đối接 API
 
@@ -320,13 +320,13 @@ Ngoài ra, bạn còn cần học cách sử dụng Zeabur, kết nối nó vớ
 
 Nếu bạn cảm thấy việc tự phát triển một dự án Hogwarts Portraits rất khó khăn, bạn có thể bắt đầu từ việc tham khảo và sửa đổi dự án của người khác. Địa chỉ code chính thức của bài học này là: https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.webp)
 
 # 4. Thử các phong cách thiết kế khác nhau
 
 Sau khi hoàn thành phiên bản thiết kế đầu tiên, chúng ta không cần giới hạn ở đây, khuyến khích mọi người nhanh chóng khám phá các phong cách thị giác đa dạng hơn. Bạn có thể大胆 sửa đổi trong phần nguyên mẫu, hoặc dựa trên dự án cuối cùng để sửa đổi prompt hoàn toàn mới, từ đó tạo ra nhiều bộ trang có sự khác biệt phong cách rõ rệt. Ví dụ: trang tối có họa tiết cổ điển, thiên về phong cách "sách cũ / học viện", trang sáng màu tươi vui, đầy cảm giác "cổ tích / hoạt hình", hoặc thiết kế phẳng hiện đại với yếu tố tối giản và thị giác清爽. Ví dụ hình dưới đây là một trường hợp chuyển đổi sang phong cách thiết kế thơ cổ Trung Quốc, hình ảnh chân dung không thay đổi, chỉ sửa đổi các phần khác:
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.webp)
 
 Không cần bó buộc vào mô hình đã đề cập trước đó, bạn có thể sửa đổi chân dung phép thuật hoặc trang hồ sơ cá nhân sao cho đặc sắc hơn, phù hợp với thói quen của chính "chân dung phép thuật", điều này sẽ làm ứng dụng của bạn thú vị hơn. Mong chờ thành phẩm chân dung phép thuật của bạn!
 

@@ -23,7 +23,7 @@
 
 像 CloudBase、Vercel、Zeabur 这样的"低代码部署平台"，就是为了解决上述复杂问题而诞生的。它们会帮你自动完成"买服务器、配环境、上传代码、启动服务、监控运行"等步骤。你只需要把自己的代码仓库（比如 GitHub 或 GitLab）连接到平台，或者直接上传代码，它就会自动拉取代码、识别应用类型、配置对应的运行时环境，最后给你一个可以被任何人访问的公网地址。它甚至可以一键绑定你自己的域名。
 
-![](images/image4.png)
+![](images/image4.webp)
 
 接下来，我们会分别介绍这三个平台的特点和使用方法，帮助你选择最适合自己的部署方案。
 
@@ -289,7 +289,7 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 在之前的课程中，我们已经简单接触过 Dify。现在，我们可以通过 [Zeabur](https://zeabur.com/projects) 非常轻松地启动自己的 Dify 服务。首先打开 [控制台页面](https://zeabur.com/projects)，我们先看一下上面的各个区域。
 
-![](images/image5.png)
+![](images/image5.webp)
 
 在这个页面上，你首先能看到许多方块，这些就是已经启动的服务。在顶部菜单中，你会看到 Agent、Servers、Docs、Templates 等几个选项，它们分别代表：
 
@@ -357,7 +357,7 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 如果你有兴趣，还可以顺便启动一个 n8n 服务。n8n 也是海外非常流行的一款 AI 工作流平台。
 
-![](images/image19.png)![](images/image20.png)
+![](images/image19.png)![](images/image20.webp)
 
 ## 使用 Zeabur 与 Trae 部署贪吃蛇游戏
 
@@ -367,7 +367,7 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 ### 使用 HTML 框架实现
 
-![](images/image23.png)
+![](images/image23.webp)
 
 对于 Trae 来说，生成一个基于 HTML 的贪吃蛇网页游戏非常简单。游戏生成完成后，你只需要按照前面介绍的 Zeabur 本地部署方式，把包含所有文件的文件夹上传上去即可。
 
@@ -375,7 +375,7 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 完成后，你就会进入该服务的详情界面：
 
-![](images/image27.png)
+![](images/image27.webp)
 
 点击左侧的 "Network" 选项，在页面中找到 "Public Address" 区域。点击 "Generate Domain"，即可生成一个对外访问地址，你可以输入任意喜欢的名称。
 
@@ -391,13 +391,13 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 前面我们学习了如何部署基于 HTML 的 Web 应用。接下来，我们再尝试部署一个目前更常用的前端框架：React 应用。相比纯 HTML，React 被认为是一种更加成熟、现代的前端开发框架。它通过组件化的方式组织页面结构，能够显著加快复杂页面的开发，是企业级项目中非常主流的选择。
 
-![](images/image31.png)
+![](images/image31.webp)
 
 #### 重构为 React 架构
 
 在 Trae 中，你只需要向 Agent 说明："帮我把这份代码重构成 React 架构"，就可以比较轻松地把原本基于 HTML 的结构重构成 React 项目。
 
-![](images/image32.png)
+![](images/image32.webp)
 
 不过，相比简单的 HTML 文件，React 应用依赖更复杂的构建工具和项目结构，因此部署过程也会稍微麻烦一些。一个典型的问题体现在端口设置上：默认情况下，React 应用一般会监听 3000 端口（你也可以在配置文件或启动日志中看到这一点）。
 
@@ -434,13 +434,13 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 要把 React 默认监听端口（3000）改成 Zeabur 所要求的 8080，有很多做法。最简单的方式，就是直接在 Trae 里对 Agent 下指令："请帮我把这个 React 项目的默认端口改为 8080。"Trae 就会帮你修改项目中对应的配置文件。修改完成后，你只需重新打包并按前面的方式上传到 Zeabur 即可。
 
-![](images/image33.png)
+![](images/image33.webp)
 
 ![](images/image34.png)
 
 在网络设置中指定一个访问 URL，方式和部署 HTML 项目时基本相同，就可以启动 React 版本的服务。
 
-![](images/image35.png)
+![](images/image35.webp)
 
 ![](images/image36.png)
 
@@ -456,7 +456,7 @@ Zeabur 是一个新兴的部署平台，特别适合需要部署多种服务的�
 
 如果要找到项目的管理入口，首先点击项目中的 "Settings" 选项。
 
-![](images/image21.png)
+![](images/image21.webp)
 
 进入设置页面后，将页面拉到最下方，你会看到类似下面的界面：
 

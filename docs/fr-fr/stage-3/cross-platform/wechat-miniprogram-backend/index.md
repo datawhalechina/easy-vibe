@@ -7,7 +7,7 @@ description: 'Ajouter identité fiable, fonctions cloud, tickets, base, autorisa
 
 Le chapitre précédent a construit l'interface exécutée sur le téléphone. Nous ajoutons maintenant identité, données partagées, permissions, fichiers et logs d'un service d'entreprise.
 
-![Mini Programme WeChat d'Uber](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Mini Programme WeChat d'Uber](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. Le frontend ouvre la porte, le backend décide
 

@@ -16,7 +16,7 @@ If you jump straight into implementation or ask AI to generate a full frontend p
 
 From a collaboration standpoint, design tools also reduce coordination cost. Designers, product managers, and developers no longer need to imagine the same screen from vague explanations or abstract code. Everyone can discuss versioning, requirement changes, and feedback around a visible, annotatable, iterative canvas. Modern design tools are no longer just drawing software either. They can generate part of the code, manage design systems and component libraries, and automate repetitive work such as alignment, annotation, exporting, and style changes.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.webp)
 
 ### 1.1 The evolution of frontend design tools
 
@@ -26,41 +26,41 @@ In this chapter, we will focus on two representative modern design tools: Figma 
 
 ## 1.2 How this toolchain emerged
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.webp)
 
 Before dedicated interface tools existed, UI design was largely handled by "general-purpose" design tools such as Photoshop. Designers built entire interfaces locally using layered PSD files, then handed those heavy source files to frontend engineers. To recreate the design accurately, frontend engineers had to do three tedious but essential jobs manually.
 
 The first was **asset slicing**: extracting buttons, icons, logos, backgrounds, and other visual elements one by one from a PSD file, then exporting them as PNG or JPG files the web could actually load.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.webp)
 
 The second was **measuring dimensions**: manually checking widths, heights, and spacing between elements to ensure everything matched the design pixel by pixel.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.webp)
 
 The third was **reading annotations by hand**: pulling out the "invisible but required" design parameters such as font size, font weight, line height, RGB or HEX colors, shadows, and so on.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.webp)
 
 Only after that did actual frontend implementation begin. Whether the stack is plain HTML/CSS/JS or frameworks like Vue and React, the core process is similar. The frontend rebuilds the page around containers, based on the hierarchy and semantics of the design. A container is a layout boundary that organizes child elements without directly being the final content itself. Structural blocks such as top navbars, sidebars, article lists, and footers rely on containers; inside each block, smaller containers arrange finer elements such as titles, descriptions, timestamps, or thumbnails.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.webp)
 
 In modern frontend frameworks, these structural blocks are typically implemented as **components**. A component is a reusable interface unit with clear boundaries. It includes both layout containers and interaction logic. Any repeated piece of design, such as a consistent button style or a reusable article card, can be abstracted into a component so it can be reused across different pages while keeping layout and styling consistent.
 
 The styling layer then restores the visual appearance. Exported image assets become `<img>` tags or background images. Measured dimensions become CSS properties such as `width`, `height`, `margin`, `padding`, and `line-height`. Typography, color, shadow, border radius, and hover or active states become CSS, CSS Modules, CSS-in-JS, or Tailwind rules. At this point, exported assets and annotations provide the visual parameters, while components and structural blocks provide the code organization that makes the interface maintainable and reusable.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.webp)
 
 But the local-file workflow was fundamentally inefficient. Versions were sent through email or cloud drives, old and new drafts were easy to confuse, and collaboration required a lot of manual coordination.
 
 As mobile interfaces became more complex and iteration speed increased, Photoshop's "do everything" model became too heavy. Sketch appeared in this phase. It focused on UI work itself, introduced Symbols for highly reusable elements such as buttons and form controls, and paired well with tools like Zeplin for automatic annotations and style snippets. Sketch brought component thinking into design workflows. Still, it remained a desktop tool built around local files, so real-time collaboration never became native.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.webp)
 
 Figma truly changed the game. Starting in 2016, it unified UI design, prototyping, comments, and version history in the browser, with multi-user cursors, online comments, timeline history, and shareable links.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.webp)
 
 From that point on, interface design was no longer scattered across separate machines. It became a shared online canvas that updated in real time. Once that happened, the boundary between design and frontend code became easier to blur through automation and AI.
 
@@ -80,7 +80,7 @@ You can also look at Figma's site-building examples:
 
 https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collection
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.webp)
 
 On the left is project creation and resource management. In the top-right area, you will see several common entry points. `Make` lets AI generate a rough interface draft from one sentence. `Design` is the main workspace where you build app and web interfaces, components, and prototypes. `FigJam` works like a team whiteboard for notes, flows, and early discussions. `Buzz` is for brand-scale asset production. `Site` is for publishing designs as accessible websites or documentation pages.
 
@@ -167,7 +167,7 @@ The button is now promoted from a set of ordinary layers to a component master. 
 
 Every inserted button is now a synchronized instance of that master. If you later change the master's color, corner radius, or spacing, all instances update together.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.webp)
 
 At this point, you already understand the basic usage of Figma. You do not need to master every function on day one. Just build your first simple page, get comfortable with the core operations above, and explore more capabilities over time.
 
@@ -184,7 +184,7 @@ https://mastergo.com/tutorials/12?%E5%85%A8%E7%A8%8B%E9%AB%98%E8%83%BD%EF%BC%8CM
 1. **Enter the MasterGo workspace**
    1. Open the MasterGo website and sign in.
    2. After entering, you will see a homepage similar to a file list or project list, where your design files are managed.
-      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.png)
+      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.webp)
 
 2. **Create a new file**
    1. Click the `+ Design File` button in the top-right corner, or choose to import files such as Figma files.
@@ -242,24 +242,24 @@ One especially interesting feature in MasterGo is AI page generation. You can en
 
 ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.webp)
 
 Once the design document is generated, click to start generation and wait briefly for the rendered result:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.webp)
 
 At this point, you have two options:
 
 - Click the blue button to insert the generated result directly into the canvas
 - Open the code preview and get the code for the full current page
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.webp)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.webp)
 
 After inserting the result into the canvas, you can further refine the overall layout and element details such as typography, colors, and spacing until the final result matches your expectations.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.webp)
 
 ---
 

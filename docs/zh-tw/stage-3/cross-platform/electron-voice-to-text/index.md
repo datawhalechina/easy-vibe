@@ -20,7 +20,7 @@ Electron 是一個開源框架，讓你可以使用 **HTML + CSS + JavaScript**�
 
 **一句話理解**：Electron = 一個「隱形的 Chrome 瀏覽器」+ Node.js 系統能力。
 
-<!-- ![placeholder: Electron 架構示意圖：Chromium（用於 UI 渲染）+ Node.js（用於系統訪問）= 桌面應用](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: Electron 架構示意圖：Chromium（用於 UI 渲染）+ Node.js（用於系統訪問）= 桌面應用](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 Electron 核心架構
 
@@ -47,7 +47,7 @@ Electron 是一個開源框架，讓你可以使用 **HTML + CSS + JavaScript**�
 
 它們通過 **IPC（程序間通訊）** 進行溝通，就像打電話一樣：渲染程序說「我要開始錄音」，主程序收到請求後調用系統麥克風。
 
-<!-- ![placeholder: Electron 程序架構示意圖，顯示主程序、渲染程序和預載腳本，以及它們之間的 IPC 通訊](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: Electron 程序架構示意圖，顯示主程序、渲染程序和預載腳本，以及它們之間的 IPC 通訊](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 我們要構建什麼？
 
@@ -69,7 +69,7 @@ Electron 是一個開源框架，讓你可以使用 **HTML + CSS + JavaScript**�
 | 模型大小 | 無需下載 | tiny 模型 75MB，large 模型 3GB |
 | 最適合 | 快速上手、輕量使用 | 注重隱私、離線使用、長期高頻使用 |
 
-<!-- ![placeholder: 應用預覽圖，顯示語音轉文字 UI：頂部有錄音按鈕和波形動畫，下方為識別文字，右上角有模式切換](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: 應用預覽圖，顯示語音轉文字 UI：頂部有錄音按鈕和波形動畫，下方為識別文字，右上角有模式切換](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 重要提醒：Electron 中無法使用 Web Speech API
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: IPC 流程示意圖，顯示從渲染程序 -> 預載腳本 -> 主程序的訊息傳遞](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: IPC 流程示意圖，顯示從渲染程序 -> 預載腳本 -> 主程序的訊息傳遞](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # 第三章：實現錄音功能
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: 錄音 UI 截圖，顯示紅色錄音狀態按鈕和脈衝動畫，下方為文字結果區域](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: 錄音 UI 截圖，顯示紅色錄音狀態按鈕和脈衝動畫，下方為文字結果區域](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 處理麥克風權限
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: 運行中的應用截圖，顯示 Whisper API 返回的中文語音識別結果](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: 運行中的應用截圖，顯示 Whisper API 返回的中文語音識別結果](/zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 添加設置 UI
 

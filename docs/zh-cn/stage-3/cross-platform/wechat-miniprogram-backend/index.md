@@ -39,7 +39,7 @@
 
 上一节看到的 Uber 小程序也是这样。用户看到的是地图、路线、叫车状态和付款页面，后端还要负责行程、司机匹配、订单状态和支付结果。
 
-![Uber 微信小程序中的路线、订单和支付页面](../wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Uber 微信小程序中的路线、订单和支付页面](../wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 图片与案例来源：[Uber 携手微信上线官方小程序](https://www.tencent.com/en-us/articles/2202137.html)。另外，2026 夏季达沃斯的官方小程序把会议信息、直播和互动服务放进了微信，可以参考腾讯的[夏季达沃斯微信小程序案例](https://www.tencent.com/en-us/articles/2202375.html)。
 

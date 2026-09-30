@@ -15,7 +15,7 @@ For this tutorial, you should at least have:
 
 An Android App is a native application that runs on the Android operating system. Unlike mini programs, it does not depend on a host like WeChat. It runs directly at the system level. It has its own home-screen icon, launches quickly, feels smooth, and can deeply access system-level features such as Bluetooth, sensors, and background services.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.webp)
 
 ## 1.2 Android App Development
 
@@ -32,7 +32,7 @@ In real development, there is more than one way to build Android apps. We will n
 **The first way: Native Development**  
 This is Google's official and recommended route. You directly use **Kotlin** and **Jetpack Compose** to develop. Its advantage is the best performance and full access to phone hardware.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.webp)
 
 **The second way: Cross-Platform Development**  
 For example Flutter or React Native. The core idea is "write one codebase and generate both Android and iOS apps."
@@ -43,7 +43,7 @@ In essence, this is wrapping a webpage inside an app shell. This is fast to deve
 **This tutorial's choice: native development (** **Kotlin + Compose)** combined with AI tools for coding.  
 The reason is simple: native Jetpack Compose code has a very clear structure and is highly suitable for AI to understand and generate. We do not need to handwrite code from scratch. Instead, we guide Trae with natural language to generate high-quality native code.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.webp)
 
 ## 1.4 Android App Development Steps Covered in This Tutorial
 
@@ -265,7 +265,7 @@ After successful creation, your new phone will appear in the device manager list
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image20.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.webp)
 
 **Step 4: Run the app**
 
@@ -273,7 +273,7 @@ Now comes the magic moment. Make sure the emulator has started and is showing th
 
 Within seconds, you should see the emulator screen light up, showing a white wooden fish graphic in the center with the text "Merit: 0" above it. Try tapping it and see whether the number increases and the animation works. This is your first Android app.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.webp)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image23.png)
 
@@ -404,7 +404,7 @@ This is the most convenient method on Android 11 and above.
 2. Open **Developer options** and enable **Wireless debugging**.
 3. Tap **Wireless debugging** to enter details, then choose **Pair device with QR code**. Your phone will open a scanner view.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
 
 **Step 2: Pair on the computer**
 
@@ -424,7 +424,7 @@ This is the most convenient method on Android 11 and above.
 
 4. Run the app by clicking ▶️ Run
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.webp)
 
 ## 4.2 USB Wired Debugging
 
@@ -462,7 +462,7 @@ Using an OPPO phone as an example: open Settings -> About phone -> check Android
 
 Open your phone settings, go into developer options, and turn on **USB debugging**.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.webp)
 
 ### 4.2.4 Install the USB Driver Authorization on the Phone
 
@@ -478,7 +478,7 @@ At this point, pick up your phone. It should show an important security dialog: 
 
 Now try tapping the wooden fish on your phone and feel the real vibration motor response. This is the full Vibe Coding experience.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
 
 # 5 Package the App as APK
 
@@ -496,9 +496,9 @@ Wait about 5 seconds depending on project size. In the bottom-right console area
 
 You can directly send it through WeChat or QQ to any Android phone, and the recipient can install and use it. Note that debug is not a release version.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.webp)
 
 ## 5.2 Package the Release Version
 
@@ -598,7 +598,7 @@ Gionee Developer Alliance: https://open.appgionee.com
 
 **Using Tencent MyApp as an example:** visit the Tencent Open Platform and click register. It is recommended to log in directly with a QQ account. Note that once a QQ account is bound, it is difficult to unbind, so it is better to use a dedicated work QQ account. Follow the prompts, choose "Individual Developer" or "Enterprise Developer," upload your ID photos, and complete face verification. After passing verification, click **Create App** to start.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image62.png)
 
@@ -652,7 +652,7 @@ This is the user's first impression. You need to upload the prepared app **icon*
 
 Under the `Production` menu, click `Create new release`, upload your `.aab` file, save, and submit for review. Google Play review is usually fast (1-3 days). Once approved, your app can be downloaded worldwide.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.webp)
 
 _If you have already completed developer account registration, this video tutorial can guide you through the rest of the process:_ [Full workflow: uploading an Android app to Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
@@ -668,7 +668,7 @@ If this tutorial helped you feel that "building an app is not actually that hard
 
 I am really looking forward to your next creation. Keep going!
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.webp)
 
 **_Hope you have fun in the world of Android development!_**
 

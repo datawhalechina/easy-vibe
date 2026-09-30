@@ -12,13 +12,13 @@ For this tutorial, you should at least have:
 4. Trae installed and opened
 5. A usable Apple ID
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.webp)
 
 ### 1.1 iOS App
 
 An iOS App is a native application running on the iPhone operating system. It launches quickly, feels smooth, and can deeply use system features such as notifications, camera, and local storage.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.webp)
 
 ### 1.2 iOS App Development
 
@@ -51,7 +51,7 @@ The sample app used in this tutorial is **FridgeChef**.
 
 The user enters the ingredients currently available in the fridge, and the app uses a real AI API to generate a feasible recipe, then saves the result locally for later review. This example fully covers the core parts of a real iOS application, including UI input and display, network requests, data parsing, local storage, and final installation and running on a real device.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.webp)
 
 - The overall idea from prototype to native app
 
@@ -109,7 +109,7 @@ Steps:
 4. Turn it on, then restart the device as prompted
 5. After restart, unlock the device and confirm enabling developer mode
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.webp)
 
 If your iPhone has never been connected to Xcode or other development tools before, you may find that **Developer Mode** does not appear under **Privacy & Security**. This is not a system issue - it simply means developer mode has not yet been triggered.
 
@@ -122,7 +122,7 @@ In that case, you can make it appear by following these steps:
 
 After completing the above steps, developer mode only needs to be enabled once. Future real-device debugging with Xcode will not require repeating this configuration.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.webp)
 
 ### 2.2 Required Software
 
@@ -195,17 +195,17 @@ On the project information screen, just fill in the basic settings:
 6. Storage: choose Core Data (for later saving recipe history)
 7. Leave the other options at default
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.webp)
 
 Click **Next** and choose the project storage location.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.webp)
 
 ### 3.4 Recognize the Project Structure After Creation
 
 After the project is created, Xcode will automatically open the workspace. At this point, you do not need to understand every file. You only need to recognize a few key parts.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.webp)
 
 In the default project, you will see:
 
@@ -227,7 +227,7 @@ In the top toolbar of Xcode, keep the default iPhone simulator selected, then cl
 
 If everything is normal, the simulator will show a blank app that can start successfully. The first compilation may take a relatively long time. In later chapters, we reduce waiting time by using HTML prototypes first.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.webp)
 
 To stop the app, click **Stop** next to the Run button.
 
@@ -247,7 +247,7 @@ Starting from the next section, the main development work will gradually move in
 
 What you need to do is simple: **open the iOS project folder you just created in Trae.**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.webp)
 
 ## Chapter 4: AI-Assisted Development Practice - Build FridgeChef from Scratch
 
@@ -289,7 +289,7 @@ Please help me organize this into a clear, structured REQUIREMENTS.md document f
 
 After generation, quickly read through the document and confirm whether the function points match your expectations.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.webp)
 
 ### 4.2 Stage Two: Visual Prototype
 
@@ -320,7 +320,7 @@ Please generate a single-file index.html and simulate an iPhone screen ratio aro
 
 After generation, find `index.html` in the file list and open it directly in a browser.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.webp)
 
 At this stage, the point is not whether every detail is perfect. The point is whether **the page structure is reasonable, the main elements are complete, and the overall direction is correct.**
 
@@ -358,15 +358,15 @@ After it finishes, open Xcode and run the simulator. You will see an iOS app tha
 Once the interface is done, the app is still only a display layer. Next we need to connect real AI capability. In this tutorial we use the large-model service provided by **SiliconFlow**:
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.webp)
 
 SiliconFlow provides an API compatible with the OpenAI API specification, so it is very convenient to call from an iOS project using standard network requests.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.webp)
 
 Before starting, you need to register an account on the site and create an API Key.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.webp)
 
 This Key will be used for later model calls.
 
@@ -401,7 +401,7 @@ To let the app remember the recipes it has generated, we need to bring in local 
 1. Open `FridgeChef.xcdatamodeld`
 2. Create a new Entity named `RecipeEntity`
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.webp)
 
 3. Add the following attributes:
    1. `id`: **UUID**
@@ -412,7 +412,7 @@ To let the app remember the recipes it has generated, we need to bring in local 
    6. `timestamp`: **Date**
    7. `colorIndex`: **Integer 16**
 
-      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
+      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.webp)
 
 **Step 2: let AI write the logic code**
 
@@ -434,7 +434,7 @@ Please complete the following tasks:
 
 The final step is to prepare a proper icon for the app. Here we use **Lovart** to generate the icon asset: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.webp)
 
 📋 **Prompt to copy into Lovart:**
 
@@ -448,15 +448,15 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 After generation, crop the image to 1024x1024 and drag it into `Assets.xcassets` -> `AppIcon` in Xcode.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.webp)
 
 Run the app again, and you will now see a complete, recognizable, real iOS application.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.webp)
 
 ### 4.7 Stage Seven: Advanced Experience Upgrade
 
@@ -541,13 +541,13 @@ Connect your iPhone to the Mac using a cable.
 
 When connecting for the first time, the phone will show **Trust This Computer?** Tap trust and enter the unlock passcode.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.webp)
 
 In Xcode's device list, select your iPhone, then click **Run** again.
 
 At this point, you should be able to see the **FridgeChef** icon on your phone's home screen, and open and use it normally.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.webp)
 
 This step marks the completion of one full iOS development closed loop.
 
@@ -566,7 +566,7 @@ Common issues usually come from these categories:
 4. **Logic errors**  
    The app does not crash, but the behavior is wrong - for example, buttons not responding or data not refreshing.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.webp)
 
 When any error appears, you only need to **copy the full error message exactly as it is into Trae's chat box.** With awareness of the project context, Trae can help you do the debugging.
 
@@ -725,7 +725,7 @@ The following content references Apple's official documentation and public exper
 
 ## Chapter 7: Summary
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.webp)
 
 Congrats! At this point, you have personally walked through the complete iOS app development process from 0 to 1. From setting up the environment, running the project, and then gradually landing interface, functionality, data, and real-device testing, all the key stages have been completed smoothly. More importantly, you did not get here by memorizing Swift syntax - you handed most of the implementation to AI. No matter what your background is, every attempt like this makes you more fluent, and you will realize that iOS development is not as difficult as it once seemed. Even if you could not write a single line of code before, you can still build your own app.
 

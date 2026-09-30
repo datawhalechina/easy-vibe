@@ -39,11 +39,11 @@ const relatedArticles = relatedArticlesMap['ko-kr/stage-2/frontend/lovart-assets
 
 2. 새 Python 파일 만들기
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. 아래 코드를 완전히 복사하여 붙여넣기
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 Trae가 실행 성공을 알리면, 제공된 로컬 링크(보통 http://127.0.0.1:7860)를 클릭합니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 모든 것이 정상이라면, 이미 작동하는 AI 이미지 생성 인터페이스를 볼 수 있습니다.
 
@@ -301,7 +301,7 @@ Trae가 실행 성공을 알리면, 제공된 로컬 링크(보통 http://127.0.
 
 몇 초 후, 로컬에서 생성 결과를 볼 수 있습니다. 모델 생성에는 무작위성이 있으므로, 동일한 프롬프트라도 다른 결과가 생성됩니다. 여러 번 생성하여 마음에 드는 이미지를 선택할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 프롬프트를 풍부하게 하여 더 많은 설명과 제한을 추가할 수도 있습니다. 예를 들어 다음 프롬프트를 사용하면 더 특별한 이미지를 얻을 수 있습니다.
 
@@ -310,11 +310,11 @@ Trae가 실행 성공을 알리면, 제공된 로컬 링크(보통 http://127.0.
 (초현실적인 물방울이 있는 신선한 붉은 사과 클로즈업, 어두운 거친 나무 테이블 위에 놓여 있음. 영화 드라마틱 조명, 림 라이트, 얕은 피사계 심도, 보케 배경, 8k 해상도, 매크로 촬영.)
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 이미지 생성 모델의 일반적인 에셋 생성 시나리오
 
@@ -340,7 +340,7 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 (3D 날씨 아이콘 세트, 글래스모피즘 스타일, 서리 유리 질감, 부드러운 파스텔 그라데이션 색상, 스튜디오 조명, 등축 투시)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### 로고 생성
 
@@ -366,7 +366,7 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 (친근한 젊은 기술 전문가, 3D Memoji 스타일, 클레이 렌더)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### 기사 일러스트 생성
 
@@ -379,7 +379,7 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 (원격 근무 주제 플랫 일러스트, 기업 멤피스 스타일)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### 둘: 참고 이미지로 이미지 생성 — 시각적 일관성 유지
 
@@ -408,7 +408,7 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 (캡슐형 게임 UI 버튼, 흰색 일시 정지 아이콘, 파란색 젤리 질감)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **변형 B: 설정 버튼 (복잡한 아이콘)**
 
@@ -416,7 +416,7 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 (캡슐형 게임 UI 버튼, 흰색 톱니바퀴 아이콘, 파란색 젤리 질감)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **변형 C: 다시하기 버튼 (모양 변화)**
 
@@ -426,7 +426,7 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 (원형 게임 UI 버튼, 순환 화살표 아이콘, 파란색 젤리 질감)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 이 작업을 통해 버튼 기능과 아이콘을 교체할 수 있을 뿐만 아니라, 버튼 모양까지 변경할 수 있습니다. 그러나 모든 생성 결과는 소재, 색상, 조명 측면에서 여전히 높은 일관성을 유지합니다. 이것이 바로 대형 모델이 디자인 에셋 파생 시나리오에서 가지는 핵심 가치입니다.
 
@@ -446,9 +446,9 @@ Output Image 영역에서 다운로드를 클릭하면 로컬에 저장할 수 �
 
 Lovart는 Agent 기반의 디자인 도구 웹 서비스입니다. 일반 이미지 생성 도구와 비교하여, 생성 전에 "사고와 계획"이라는 계층이 하나 더 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 Lovart에 들어간 후, 주로 다음 제어 항목을 이해해야 합니다:
 
@@ -503,7 +503,7 @@ AI는 즉시 그림을 그리지 않고, 먼저 인터넷에서 관련 프로그
 
 이 단계에서 AI는 "실행자"에서 "기획자"로 전환됩니다. AI가 요구 사항을 분석한 후, Lovart의 캔버스 영역에서 다양한 스타일과 내용의 프로그래머 오리 이미지를 볼 수 있습니다. 마음에 드는 스타일을 선택하기 시작할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### 단계 2: 일관성 (참고 기반 시각적 앵커링)
 
@@ -514,13 +514,13 @@ Lovart에서 이미지는 결과일 뿐만 아니라 후속 생성에도 참여�
 * 스케치에서 가장 만족스러운 "표준 오리"를 하나 선택하고, 캔버스 영역에서 해당 이미지를 클릭
 * 해당 이미지가 자동으로 대화 영역에 나타나 Reference로 사용됨
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * 새로운 동작(예: 행복)을 입력하고 생성
 
 생성 결과는 마스터 이미지의 색상, 비율, 디테일을 물려받습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### 부분 참고 / 다중 이미지 통합
 
@@ -530,11 +530,11 @@ Lovart에서 이미지는 결과일 뿐만 아니라 후속 생성에도 참여�
 
 캔버스 영역 왼쪽 탭 바를 클릭하고, "Mark" 키를 선택한 후 대상 이미지의 특정 영역을 마크하면 됩니다. 이 부분의 내용은 자동으로 대화 상자에 동기화됩니다. 예를 들어 여기서 배경 색상 수정을 선택할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 새로 생성된 이미지가 배경 색상만 변경된 것을 볼 수 있으며, 이는 우리가 입력한 요구 사항과도 일치합니다.
 
@@ -544,9 +544,9 @@ Lovart에서 이미지는 결과일 뿐만 아니라 후속 생성에도 참여�
 
 프로그래머 오리를 예로 들면, 첫 번째 이미지의 오리 형상을 유지하고 이를 두 번째 이미지의 주요 요소로 교체하도록 선택할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 최종 효과도 매우 뚜렷합니다. 다른 조합도 시도해 보세요!
 
@@ -554,15 +554,15 @@ Lovart에서 이미지는 결과일 뿐만 아니라 후속 생성에도 참여�
 
 생성이 완료되면, 확대, 배경 제거, 지우기 등의 작업을 직접 실행할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 이것들은 단순한 필터가 아니라 Agent가 다른 도구를 자동으로 호출하여 완성한 결과입니다.
 
 기조 스타일이 확정된 후, 일련의 이모티콘 이미지를 매우 빠르게 생성할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 최종적으로 우리가 얻은 것은 직접 납품할 수 있는 생산 등급의 에셋이며, 단순한 시연용 이미지가 아닙니다.
 
@@ -573,7 +573,7 @@ Lovart는 구독제 요금 모델을 채택하고 있으며, 다양한 플랜에
 이 튜토리얼은 어떤 플랜도 추천하거나 비교하지 않습니다. 실제 사용에 필요가 있다면 개인 상황에 따라 유료 업그레이드를 선택할 수 있습니다.
 현재 **알리페이** 등의 방식으로 결제를 완료할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### 요약
 
@@ -595,7 +595,7 @@ Lovart를 직접 사용하는 것 외에도, 우리는 간소화된 버전의 �
 
 본질적으로 이미지 모델은 "실행" 능력만 있을 뿐, 텍스트를 분석하고 선택하는 과정이 부족합니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 해결 방안: Agent로 "이해"와 "실행" 분리하기
 
@@ -605,7 +605,7 @@ Lovart를 직접 사용하는 것 외에도, 우리는 간소화된 버전의 �
 
 전체 흐름은 다음과 같이 요약할 수 있습니다: **긴 텍스트 입력 → 언어 모델 이해 및 판단 → 적절한 시각적 프롬프트 생성 → 이미지 모델 생성 실행 → 이미지 출력**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 그렇다면 우리가 구축한 Agent는 어떻게 사용자의 의도를 이해할 수 있을까요?
 
@@ -622,7 +622,7 @@ Lovart를 직접 사용하는 것 외에도, 우리는 간소화된 버전의 �
 4. **Gradio와 백엔드 API가 전체 지원 계층 역할**
    인터페이스, 모델 호출, 결과 표시를 연결하여, 전체 Agent가 완전한 웹 애플리케이션 형태로 안정적으로 실행되도록 보장합니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 실전 준비: API 얻기
 
@@ -636,13 +636,13 @@ Lovart를 직접 사용하는 것 외에도, 우리는 간소화된 버전의 �
 
 우리는 대형 언어 모델이 "사고 계층"의 역할을 담당하도록 해야 합니다. 이 튜토리얼은 SiliconFlow에서 제공하는 모델 서비스를 사용합니다: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
 SiliconFlow는 OpenAI API 규격과 호환되는 인터페이스를 제공하여, 프로젝트에서 표준 네트워크 요청을 통해 매우 편리하게 호출할 수 있습니다. 여기서 선택한 것은 무료 Qwen2.5-7B-Instruct 모델이며, 호출에 필요한 내용은 아래의 프롬프트에 모두 작성되어 있습니다. 시작하기 전에 공식 웹사이트에서 계정을 등록하고 API Key를 생성하기만 하면 됩니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
 이 Key는 후속 모델 호출에 사용됩니다.
 
@@ -758,7 +758,7 @@ INTENT_PROMPT_TEMPLATE = """사용자가 입력한 텍스트의 의도를 식별
 
 마찬가지로 감지에 성공했습니다~
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. 직접 이미지 생성 지시, 여기서는 "고양이를 그리고 싶어요"를 입력했으며, 마찬가지로 정확하게 감지되었습니다.
 
@@ -841,11 +841,11 @@ API 호출 실패: 친절한 안내 "프롬프트 생성 실패: {구체적인 �
 
 다른 사전 설정 템플릿으로 변경하고 싶다면, 앞의 프롬프트에서 수정하거나 Trae에서 대화를 통해 직접 수정할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 기본 코드를 수정하는 것 외에도, 웹 페이지에서도 빠르게 편집할 수 있습니다. 예를 들어, 여기에 "앞에 Pic Prompt라는 문장을 추가"라는 문장을 추가했는데, 생성된 새로운 프롬프트의 앞에도 포함되어 있는 것을 볼 수 있습니다~ 이렇게 설계한 것은 생성 프롬프트의 System Prompt를 빠르게 수정할 수 있도록 돕기 위한 것이며, 스타일을 빠르게 전환할 수 있게 합니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### 단계 4️⃣: Nanobanana 텍스트에서 이미지 / 이미지에서 이미지 모듈
 
@@ -906,21 +906,21 @@ Markdown 형식
 완전히 실행 가능한 코드, LLM_API_KEY와 NANOBANANA_API_KEY만 교체하면 직접 실행 가능, 전체 프로세스 사용 가능, 분기 로직이 실전 버전과 엄격히 일치함.
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 정말 신나네요! 우리는 드디어 이 Agent의 첫 번째 이미지를 성공적으로 생성했습니다. 생성된 이미지를 자세히 보면, 우리의 텍스트와 프롬프트와 일치합니다. 여기까지 여러분은 이미 자신만의 Agent를 기본적으로 구현했습니다!
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 우리는 이미지에서 이미지 기능도 추가하여, 좋아하는 이미지를 업로드하면 AI가 자동으로 스타일을 참고합니다.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 언급할 만한 점은, 이전 단계에서 생성된 프롬프트도 웹 페이지에서 편집할 수 있으며, 우리는 최종적으로 버튼을 클릭할 때의 프롬프트를 기준으로 합니다~ 여기서 "a cute cat"으로 바꾸더라도, 최종적으로 생성되는 이미지는 귀여운 고양이가 됩니다.
 
 ## 제4장: 요약
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **드디어 끝났네요!**
 솔직히 말하면, 저 자신도 마지막 줄을 쓰고 나서 긴 한숨을 쉬었는데, 여기까지 따라오신 여러분은 오죽하겠습니까. 이 전체 프로세스를 완전히 실행해 낸 것 자체가 이미 대단한 일입니다. 이는 여러분이 정말로 키보드에 손을 올리고, 일을 단계별로 완료했다는 것을 의미합니다. Bravo 🎉 🥳 👏

@@ -78,7 +78,7 @@ Nếu bạn chưa từng đăng ký mini program trước đây, hãy làm theo 
 
 1. Nhập https://mp.weixin.qq.com trong trình duyệt, mở Nền tảng Chính thức WeChat và đăng nhập bằng cách quét mã QR với WeChat.
 
-![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. Chọn "Mini Program" trên trang chủ và hoàn tất lời nhắc đăng ký, bao gồm email, số điện thoại và loại thực thể (cá nhân hoặc doanh nghiệp).
    ![](/zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)

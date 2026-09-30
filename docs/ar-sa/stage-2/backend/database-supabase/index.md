@@ -91,7 +91,7 @@ user_info = {
 
 بشكل عام، هناك العديد من البيانات ذات الأشكال والاستخدامات المختلفة في العالم الحقيقي التي تستحق تحليلاً مفصلاً، وكل نوع من البيانات قد يحتاج إلى قاعدة بيانات مخصصة لتخزينه، ويمكن الرجوع إلى الشكل التالي - ألا تشعر أنها كثيرة جداً؟
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 لماذا نحتاج إلى قاعدة بيانات
 
@@ -895,7 +895,7 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 بناءً على SOP المذكور أعلاه، دعنا نتدرب من خلال حالة عملية محددة `Project5-Supabase-Demos/apps_snakegame`: إضافة لوحة ص.points لتصنيف تطبيق "لعبة الثعبان الجشع" الموجود، بما في ذلك تسجيل دخول المستخدمين ووظائف قاعدة البيانات الأساسية.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 تحليل المشروع، وتحديد متطلبات البيانات
 

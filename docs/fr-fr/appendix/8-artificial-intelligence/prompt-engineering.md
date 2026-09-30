@@ -356,7 +356,7 @@ La théorie ne remplace pas la pratique. Le moyen le plus rapide de maîtriser l
 
 Nous vous recommandons d'utiliser le [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat) (ou toute autre plateforme LLM que vous utilisez habituellement) et de relever les **3 défis** suivants pour valider les techniques apprises.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 Astuce** : Cliquez sur « Add Model for Comparison » dans la barre latérale droite pour comparer côte à côte les réactions de deux modèles (par exemple Qwen-Max vs Llama-3) au même prompt.
 

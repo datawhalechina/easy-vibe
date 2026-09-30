@@ -25,8 +25,8 @@ Tiện ích mở rộng VS Code có thể làm được nhiều hơn nhiều ng�
 * **Mở rộng khả năng trình soạn thảo**: hỗ trợ ngôn ngữ tùy chỉnh, tự động hoàn thành mã, chẩn đoán
 * **Thêm khả năng AI**: tạo trợ lý AI với Chat Participant API, gọi mô hình với Language Model API
 
-<!-- ![placeholder: Sơ đồ hệ sinh thái tiện ích mở rộng VS Code hiển thị các vùng có thể mở rộng: thanh bên, trình soạn thảo, thanh trạng thái, bảng lệnh, bảng Chat](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![Sơ đồ hệ sinh thái tiện ích mở rộng VS Code hiển thị các vùng tiện ích có thể mở rộng: thanh bên, trình soạn thảo, thanh trạng thái, bảng lệnh và bảng Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: Sơ đồ hệ sinh thái tiện ích mở rộng VS Code hiển thị các vùng có thể mở rộng: thanh bên, trình soạn thảo, thanh trạng thái, bảng lệnh, bảng Chat](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![Sơ đồ hệ sinh thái tiện ích mở rộng VS Code hiển thị các vùng tiện ích có thể mở rộng: thanh bên, trình soạn thảo, thanh trạng thái, bảng lệnh và bảng Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 Kiến trúc cốt lõi của tiện ích mở rộng VS Code
 
@@ -53,8 +53,8 @@ Trình soạn thảo VS Code
     └── Quy trình chính trình soạn thảo (kết xuất giao diện)
 ```
 
-<!-- ![placeholder: Sơ đồ kiến trúc tiện ích mở rộng VS Code hiển thị Extension Host và quy trình chính trình soạn thảo](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![Sơ đồ kiến trúc tiện ích mở rộng VS Code hiển thị quy trình Extension Host và quy trình chính của trình soạn thảo](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: Sơ đồ kiến trúc tiện ích mở rộng VS Code hiển thị Extension Host và quy trình chính trình soạn thảo](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![Sơ đồ kiến trúc tiện ích mở rộng VS Code hiển thị quy trình Extension Host và quy trình chính của trình soạn thảo](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 Chúng ta đang xây dựng tiện ích mở rộng gì?
 

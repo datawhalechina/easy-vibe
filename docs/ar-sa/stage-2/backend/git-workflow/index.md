@@ -89,7 +89,7 @@ GitHub هي منصة استضافة كود مبنية على Git. لا توفر 
 
 GitHub ليست فقط أكبر منصة استضافة كود في العالم، بل هي أيضًا أكثر مجتمعات المصادر المفتوحة نشاطًا وتأثيرًا عالميًا. الفكرة الأساسية لـ "المصادر المفتوحة" هنا هي أن أي شخص يمكنه تنزيل وتشغيل الكود المصدري للبرنامج. يسمح هذا النموذج للأشخاص حول العالم بمراجعة كود بعضهم البعض وإجراء التعديلات، أو إنشاء مشاريع جديدة بناءً عليه. على سبيل المثال، يمكنك العثور على GitHub على دروس تعليمية متنوعة والكود المصدري الكامل لأطر تدريب نماذج GPT (مثل PyTorch). يوميًا، يتعاون عدد لا يحصى من الأشخاص حول العالم في مراجعة وتحسين الكود.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 العديد من الشركات الكبرى تفتح مصدر برامجها أو دروسها على GitHub للحصول على ميزة تنافسية في الصناعة — ويمكن اعتبار ذلك شكلاً من أشكال الإعلان. في مجتمع GitHub، عدد "النجوم (stars)" التي يحصل عليها المشروع هو المؤشر الرئيسي لقياس قيمته؛ كلما زاد عدد النجوم التي يملكها المشروع أو المنظمة، زادت مصداقيته وتأثيره.
 
@@ -100,7 +100,7 @@ GitHub ليست فقط أكبر منصة استضافة كود في العالم
 ## إنشاء حساب GitHub
 
 1. انتقل إلى [موقع GitHub الرسمي](https://github.com/) وانقر على "Sign up" في الزاوية العلوية اليمنى.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. أدخل عنوان بريدك الإلكتروني (يُنصح باستخدام بريد إلكتروني شائع الاستخدام، حيث سيتم إرسال التحقق والإشعارات إليه)، وقم بتعيين كلمة مرور (يجب أن تتضمن أحرفًا وأرقامًا وأحرفًا خاصة).
 3. أكد التحقق البشري، واتبع **التعليمات** للتحقق من بريدك الإلكتروني، وسيتم إنشاء حسابك.
 
@@ -174,13 +174,13 @@ GitHub ليست فقط أكبر منصة استضافة كود في العالم
    1. استخدام Trae للحصول على المفتاح العام (مُوصى بها)
       **نصيحة**: `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    بعد إدخال **النصيحة**، تحتاج أيضًا إلى الضغط على Enter في الطرفية على اليسار، وإلا سينتظر الأمر دون تنفيذ. بما أن Trae لا يمكنه تنفيذ أي أحكام شرطية، نحتاج فقط للضغط المستمر على Enter.
 
    أخيرًا، سترى Trae على اليمين قد أعاد المفتاح العام الذي قرأه. فقط انسخه واستعد للصقه في **الخطوة التالية**.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. الحصول على المفتاح العام يدويًا
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. الحصول على المفتاح العام يدويًا
    افتح طرفيتك المحلية (على Windows استخدم Git Bash أو PowerShell؛ على macOS/Linux استخدم الطرفية)، وأدخل الأمر التالي (استبدل `your_email@example.com` بالبريد الإلكتروني المستخدم عند تسجيل حساب GitHub):
 
    ```bash
@@ -235,7 +235,7 @@ ssh -T git@github.com
 
 يمكنك ببساطة إخباره بعنوان المستودع الذي تريد استنساخه
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull: الحصول على التحديثات من المستودع البعيد
 
@@ -251,7 +251,7 @@ prompt:`Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 تم الدفع بنجاح. يمكنك الآن رؤية المحتوى المُحدَّث على GitHub.
 

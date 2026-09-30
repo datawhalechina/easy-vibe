@@ -89,7 +89,7 @@ GitHub 是一個基於 Git 的程式碼託管平臺。它不僅為 Git 倉庫提
 
 GitHub 不僅是世界上最大的程式碼託管平臺，也是全球最活躍、最具影響力的開源社區。這裡"開源"的核心思想是任何人都可以下載並運行軟體的源程式碼。這種模式允許世界各地的人們檢查彼此的程式碼並進行修改，或基於此創建新項目。例如，你可以在 GitHub 上找到各種學習教程以及用於訓練 GPT 模型的框架（如 PyTorch）的完整源程式碼。每天，無數人在全球範圍內協作審查和改進程式碼。
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 許多大公司在 GitHub 上開源他們的程序或教程，以獲得行業競爭優勢——這也可以看作是一種廣告形式。在 GitHub 社區中，項目獲得的"星標 (stars)"數量是衡量其價值的主要指標；項目或組織擁有的星標越多，其可信度和影響力就越大。
 
@@ -100,7 +100,7 @@ GitHub 不僅是世界上最大的程式碼託管平臺，也是全球最活躍�
 ## 註冊 GitHub 賬號
 
 1. 訪問 [GitHub 官網](https://github.com/) 並點擊右上角的"Sign up"。
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. 輸入你的電子郵件地址（建議使用常用郵箱，因為驗證和通知將發送到那裡），設置密碼（必須包含字母、數字和特殊字符）。
 3. 完成人工驗證，按照提示驗證郵箱，你的賬號就創建好了。
 
@@ -174,13 +174,13 @@ SSH 認證依賴於密鑰對（公鑰 + 私鑰），它們是匹配的加密文�
    1. 使用 Trae 獲取公鑰（推薦）
       提示詞：`Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    輸入提示詞後，你還需要在左側終端按 Enter 鍵，否則命令會一直等待而不執行。由於 Trae 無法幫你執行任何條件判斷，我們只需要一直按 Enter 即可。
 
    最後，你會看到右側的 Trae 返回了它讀取的公鑰。你只需複製它並準備在下一步中粘貼。
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. 手動獲取公鑰
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. 手動獲取公鑰
    打開你的本地終端（在 Windows 上使用 Git Bash 或 PowerShell；在 macOS/Linux 上使用終端），輸入以下命令（將 your_email@example.com 替換為你註冊 GitHub 賬號時使用的郵箱）：
 
    ```bash
@@ -235,7 +235,7 @@ ssh -T git@github.com
 
 你可以直接告訴它你想克隆的倉庫地址
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull : 從遠程倉庫獲取更新
 
@@ -251,7 +251,7 @@ prompt:`Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 推送成功。現在你可以在 GitHub 上看到更新的內容了。
 

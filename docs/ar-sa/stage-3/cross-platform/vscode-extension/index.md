@@ -25,8 +25,8 @@
 * **توسيع قدرات المحرر**: دعم لغات مخصص، إكمال الكود، التشخيصات
 * **إضافة قدرات AI**: إنشاء مساعدين ذكيين باستخدام Chat Participant API، واستدعاء النماذج باستخدام Language Model API
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![مخطط نظام إضافات VS Code يوضح المناطق القابلة للتوسيع: الشريط الجانبي، المحرر، شريط الحالة، لوحة الأوامر، ولوحة Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![مخطط نظام إضافات VS Code يوضح المناطق القابلة للتوسيع: الشريط الجانبي، المحرر، شريط الحالة، لوحة الأوامر، ولوحة Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 البنية الأساسية لإضافة VS Code
 
@@ -53,8 +53,8 @@
     └── العملية الرئيسية للمحرر (عرض واجهة المستخدم)
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![مخطط بنية إضافة VS Code يوضح عملية Extension Host والعملية الرئيسية للمحرر](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![مخطط بنية إضافة VS Code يوضح عملية Extension Host والعملية الرئيسية للمحرر](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 ما هي الإضافة التي سنقوم ببنائها؟
 

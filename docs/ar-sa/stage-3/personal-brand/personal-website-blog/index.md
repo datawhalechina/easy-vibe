@@ -18,7 +18,7 @@
 
 على عكس حسابات تويتر أو فيسبوك أو لينكدإن، فهي لا تعتمد على خوارزمية توصيات أي منصة، ولن تختفي إذا أُغلقت المنصة. إنها مساحة عرض شخصية طويلة الأمد ومستقرة يمكن فهرستها بواسطة جوجل وGoogle Scholar. وعادةً ما تحتوي على سيرتك الذاتية ومنشوراتك ومشاريعك ومدونتك التقنية.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 لماذا تبني موقعك الخاص؟
 
@@ -232,7 +232,7 @@ I just installed Ruby on this Mac through `brew`. Please help me run the `ruby -
 1. **زيارة الموقع الرسمي**: افتح [https://github.com/](https://github.com/).
 2. **انقر على Sign up**: انقر على **"Sign up"** في الزاوية العلوية اليمنى.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **املأ معلوماتك**
 4. **البريد الإلكتروني**: أدخل عنوان بريد إلكتروني حقيقي.
@@ -404,8 +404,8 @@ Your modifications must follow these principles:
 
 ضع أصول الصور التي أقدمها لك، `University_of_Pennsylvania.jpg` و `Queen_University.jpg`، في مجلد المشروع المقابل، عادةً `/assets/images/badges/`.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **الخطوة 2: إرسال التعليمة**
 
@@ -462,8 +462,8 @@ Your modifications must follow these principles:
 حمّل صور الغلاف التي أقدمها، وهي `Hyperloop_Alpha_sketch.jpg` و `SpaceX_Starship.jpg` و `Neuralink_sewing_machine_robot.jpg`، وضعها تحت `/assets/images/covers/`، وأزل الصور النموذجية الأصلية الموجودة في ذلك المجلد.
 
 ![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **الخطوة 2: إرسال التعليمة**
 
@@ -972,7 +972,7 @@ Now please help me initialize the current local project as a Git repository and 
 اذهب وجرّب. اذهب وكسّرها. اذهب وأعدها بناءً.
 استمر في فعل ذلك حتى تنمو للشكل الذي يعجبك أكثر.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***اذهب الآن، ودع العالم يراك.***
 

@@ -90,9 +90,9 @@ In der MasterGo-Editor-Oberflaeche kannst du den AI-Tool-Button oben in der Werk
 
 2. **Generierungsergebnis anzeigen**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **Code abrufen**
    - Auf den blauen Button "Auf Leinwand einfuegen" klicken, um die generierte Webseite direkt zu bearbeiten
@@ -128,19 +128,19 @@ Die volle Funktionalitaet von Figma Make erfordert Pro-Benutzerrechte. Studenten
    - Das Design, das du rekonstruieren moechtest, in den Dialog hochladen
    - Prompt zur Beschreibung der Anforderungen hinzufuegen
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **Generierungsergebnis anzeigen**
    - Nach kurzer Wartezeit wird das Rendering-Ergebnis angezeigt
    - Auf den Abspiel-Button oben rechts fuer Vollbild-Vorschau klicken
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **Detailanpassungen**
    - Auf das Editor-Icon oben rechts klicken (Maus- und Lineal-Icon)
    - Zurueck zur vertrauten Figma-Editor-Oberflaeche fuer detaillierte Anpassungen
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **Code exportieren**
    - Nach zufrieden stellenden Anpassungen den Code-Export auswaehlen

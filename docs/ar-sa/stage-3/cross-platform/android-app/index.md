@@ -15,7 +15,7 @@
 
 تطبيق أندرويد هو تطبيق أصلي يعمل على نظام تشغيل أندرويد. على عكس البرامج المصغرة، لا يعتمد على منصة مضيفة مثل وي تشات. إنه يعمل مباشرة على مستوى النظام. لديه أيقونة خاصة به على الشاشة الرئيسية، ويُطلق بسرعة، ويشعر بالسلاسة، ويمكنه الوصول بعمق إلى ميزات على مستوى النظام مثل البلوتوث وأجهزة الاستشعار والخدمات الخلفية.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.webp)
 
 ## 1.2 تطوير تطبيقات أندرويد
 
@@ -32,7 +32,7 @@
 **الطريقة الأولى: التطوير الأصلي**
 هذا هو المسار الرسمي والموصى به من جوجل. تستخدم مباشرة **Kotlin** و **Jetpack Compose** للتطوير. ميزته هي أفضل أداء ووصول كامل إلى أجهزة الهاتف.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.webp)
 
 **الطريقة الثانية: التطوير متعدد المنصات**
 على سبيل المثال Flutter أو React Native. الفكرة الأساسية هي "كتابة قاعدة كود واحدة وإنشاء تطبيقات أندرويد وiOS معًا."
@@ -43,7 +43,7 @@
 **اختيار هذا البرنامج التعليمي: التطوير الأصلي (** **Kotlin + Compose)** مع أدوات الذكاء الاصطناعي للبرمجة.
 السبب بسيط: كود Jetpack Compose الأصلي له هيكل واضح جدًا ومناسب جدًا لفهم الذكاء الاصطناعي وإنشائه. لا نحتاج إلى كتابة الكود يدويًا من الصفر. بدلاً من ذلك، نوجه Trae باللغة الطبيعية لإنشاء كود أصلي عالي الجودة.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.webp)
 
 ## 1.4 خطوات تطوير تطبيقات أندرويد المشمولة في هذا البرنامج التعليمي
 
@@ -265,7 +265,7 @@ app/
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image20.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.webp)
 
 **الخطوة 4: تشغيل التطبيق**
 
@@ -273,7 +273,7 @@ app/
 
 في غضون ثوانٍ، يجب أن ترى شاشة المحاكي تضيء، وتعرض رسم سمكة خشبية بيضاء في المنتصف مع النص "المزايا: 0" فوقها. جرب النقر عليها وانظر ما إذا كان العدد يزداد والحركة تعمل. هذا هو تطبيق أندرويد الأول لك.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.webp)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image23.png)
 
@@ -404,7 +404,7 @@ app/
 2. افتح **خيارات المطور** وقم بتمكين **التصحيح اللاسلكي**.
 3. انقر **التصحيح اللاسلكي** للدخول إلى التفاصيل، ثم اختر **إقران الجهاز برمز QR**. سيفتح هاتفك عرض الماسح.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
 
 **الخطوة 2: الإقران على الكمبيوتر**
 
@@ -424,7 +424,7 @@ app/
 
 4. شغّل التطبيق بالنقر على ▶️ Run
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.webp)
 
 ## 4.2 تصحيح الأخطاء السلكي عبر USB
 
@@ -462,7 +462,7 @@ app/
 
 افتح إعدادات هاتفك، وادخل إلى خيارات المطور، وقم بتشغيل **تصحيح أخطاء USB**.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.webp)
 
 ### 4.2.4 تثبيت ترخيص برنامج تشغيل USB على الهاتف
 
@@ -478,7 +478,7 @@ app/
 
 الآن جرب النقر على السمكة الخشبية على هاتفك والشعور باستجابة محرك الاهتزاز الحقيقي. هذه هي تجربة Vibe Coding الكاملة.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
 
 # 5 تعبئة التطبيق كـ APK
 
@@ -496,9 +496,9 @@ app/
 
 يمكنك إرساله مباشرة عبر وي تشات أو QQ إلى أي هاتف أندرويد، ويمكن للمستلم تثبيته واستخدامه. لاحظ أن التصحيح ليس إصدار إصدار.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.webp)
 
 ## 5.2 تعبئة نسخة الإصدار
 
@@ -598,7 +598,7 @@ _للعرض التوضيحي، نختار APK أولاً وننقر Next._
 
 **باستخدام Tencent MyApp كمثال:** قم بزيارة منصة تينسنت المفتوحة وانقر تسجيل. يُنصح بتسجيل الدخول مباشرة بحساب QQ. لاحظ أنه بمجرد ربط حساب QQ، يصعب إلغاء الربط، لذا من الأفضل استخدام حساب QQ مخصص للعمل. اتبع التعليمات، اختر "مطور فردي" أو "مطور مؤسسي"، ا upload صور بطاقتك الشخصية، وأكمل التحقق من الوجه. بعد اجتياز التحقق، انقر **إنشاء تطبيق** للبدء.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image62.png)
 
@@ -652,7 +652,7 @@ _للعرض التوضيحي، نختار APK أولاً وننقر Next._
 
 تحت قائمة `Production`، انقر `Create new release`، ارفع ملف `.aab` الخاص بك، احفظ، وقدم للمراجعة. مراجعة Google Play عادةً ما تكون سريعة (1-3 أيام). بمجرد الموافقة، يمكن تنزيل تطبيقك عالميًا.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.webp)
 
 _إذا كنت قد أكملت بالفعل تسجيل حساب المطور، يمكن لهذا البرنامج التعليمي بالفيديو أن يرشدك خلال بقية العملية:_ [سير العمل الكامل: رفع تطبيق أندرويد إلى Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
@@ -668,7 +668,7 @@ _إذا كنت قد أكملت بالفعل تسجيل حساب المطور، �
 
 أنا أتطلع حقًا إلى إبداعك القادم. استمر!
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.webp)
 
 **_أتمنى لك وقتًا ممتعًا في عالم تطوير أندرويد!_**
 

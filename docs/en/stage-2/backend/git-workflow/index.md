@@ -90,7 +90,7 @@ GitHub is a code hosting platform built on top of Git. It provides remote storag
 
 GitHub is also the world's largest and most influential open-source community. The idea of open source is that anyone can download and run the source code of a project. That allows people around the world to inspect each other's work, improve it, and build new things on top of it.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 Large companies often open-source tools and tutorials on GitHub as part of their technical strategy. In the GitHub ecosystem, the number of `stars` a project receives is one of the most visible indicators of trust and influence.
 
@@ -101,7 +101,7 @@ In this course, many supporting resources and assignments are also published in 
 ## Create a GitHub account
 
 1. Visit [GitHub](https://github.com/) and click `Sign up` in the top-right corner.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. Enter your email address, create a password, and complete the verification steps.
 3. Confirm your email, and your account is ready.
 
@@ -178,11 +178,11 @@ The core workflow is simple: **generate a key pair → upload the public key to 
       Prompt:
       `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com. Please return the public key for me to copy.`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    After entering the prompt, you may still need to press `Enter` in the terminal pane so the command can continue. Once Trae finishes, it will show you the public key to copy.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp)
 
    2. **Generate it manually**
       Open your terminal and run `ssh-keygen -t ed25519 -C "your_email@example.com"`
@@ -227,7 +227,7 @@ Now that we have covered Git, GitHub, SSH, and the setup process, you can start 
 
 You can directly tell Trae which repository URL you want to clone.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## `git pull`: fetch the latest remote updates
 
@@ -245,7 +245,7 @@ After you modify files locally, you can ask Trae to detect the changes and help 
 Prompt:
 `I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 If the push succeeds, you will be able to see the updated content on GitHub immediately.
 

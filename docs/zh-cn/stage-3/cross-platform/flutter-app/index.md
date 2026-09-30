@@ -33,7 +33,7 @@ BMW、Google Pay 和 Nubank 面向的用户完全不同，却都在正式产品�
 
 BMW 曾经发现 iOS 和 Android 车主应用之间的功能与设计差距越来越大，同时还要维护不同品牌、系统和四十多个市场的版本。团队后来用 Flutter 建立统一移动平台，My BMW App 于 2020 年发布，并扩展到 47 个国家。它的流水线每天会自动构建、测试和部署多个变体，而不是让一套源码替代发布工程。
 
-![My BMW App 在车辆旁边显示车况与服务入口](images/flutter-real-bmw.png)
+![My BMW App 在车辆旁边显示车况与服务入口](images/flutter-real-bmw.webp)
 
 图片与数据来源：[Flutter 官方 BMW 案例](https://flutter.dev/showcase/bmw)。
 
@@ -45,7 +45,7 @@ BMW 曾经发现 iOS 和 Android 车主应用之间的功能与设计差距越�
 
 Google Pay 原来的 Android 和 iOS 实现合计约 170 万行代码。迁移前，团队先让三名资深工程师做首页、聊天和支付的纵向原型，把关键原生插件也放进去验证；得到团队反馈以后，才逐步扩大到正式重写。官方案例记录的新代码库约 110 万行，工程投入减少约 60% 到 70%，但安全审查和平台接入并没有因此消失。
 
-![Google Pay 的奖励反馈与付款状态界面](images/flutter-real-google-pay.png)
+![Google Pay 的奖励反馈与付款状态界面](images/flutter-real-google-pay.webp)
 
 图片与数据来源：[Flutter 官方 Google Pay 案例](https://flutter.dev/showcase/google-pay)。
 

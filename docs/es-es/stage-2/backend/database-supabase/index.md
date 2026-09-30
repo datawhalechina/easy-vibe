@@ -91,7 +91,7 @@ Yendo un paso mas alla, si consideramos datos codificados como vectores (Vector)
 
 En resumen, en el mundo real hay demasiados datos de diferentes formas y propositos que merecen un analisis detallado, y cada tipo de datos podria necesitar una base de datos especializada para su almacenamiento. Para mas detalles, consulta la siguiente imagen — parece que son muchos, verdad?
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 Por que necesitamos una base de datos
 
@@ -895,7 +895,7 @@ Por supuesto, tambien puedes pedir directamente a la IA que tome como referencia
 
 Siguiendo el SOP mencionado anteriormente, practiquemos con un caso concreto `Project5-Supabase-Demos/apps_snakegame`: agregar un ranking de puntuaciones a un proyecto de juego "Snake" existente, incluyendo inicio de sesion de usuarios y funcionalidades basicas de base de datos.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 Analizar el proyecto e identificar los requisitos de datos
 

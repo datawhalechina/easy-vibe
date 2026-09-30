@@ -17,7 +17,7 @@
 
 本節課的項目主題是 **Hogwarts Portraits** 。顧名思義，它的靈感來自霍格沃茨魔法學校裡那些會"活過來"的畫像。我們希望用 AI 打造一組"能互動"的魔法畫像體驗——和畫像對話就像在和"本人"對話一樣，既保留對話的記憶，又具備角色的背景與歷史。通過這個項目，你將把之前學到的智能體與工作流真正融入到一個具體的產品界面中。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.webp)
 
 為了真正打造出 Hogwarts Portraits，我們需要親手搭建出符合魔法畫像的前端界面。為此，你將開始接觸現代前端設計工具，學習如何把界面設計和程式碼結合起來，把紙上或畫布上的界面草圖，變成真正可以操作的網頁。
 
@@ -39,7 +39,7 @@
 
 我們到底想做一個什麼樣的"魔法畫像"？簡單來說，我們希望儘可能還原《哈利·波特》中的場景，畫像不再只是掛在牆上的一張靜態圖片，而是一個可以和你對話、會根據談話內容改變表情和"心情"的擬人化角色。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.webp)
 
 要讓這個畫像看起來不像聊天 AI 機器人，而更接近一位"真實存在的人"，需要解決兩個問題：一是記憶與知識：畫像需掌握與角色相關的大量背景資料（人物設定、經歷故事、相關文章等），這個部分可以通過知識庫來實現，將你為角色準備的文本素材接入包含知識庫的 Dify ，即可讓畫像具備一定的背景知識講解能力。
 
@@ -47,7 +47,7 @@
 
 除了對話功能外，我們還希望讓情緒能夠真正被看見。為此我們可以構建一個情緒值指標，我們可以設定 Dify 的輸出內容，讓模型在生成回答文本的同時，額外輸出一個"心情值"或情緒標籤。當前端拿到情緒的指標後，就可以根據心情值或者標籤渲染對應的畫像圖片。當心情值高，畫像看起來很開心，當心情值低落時或者生氣時，畫像看起來很傷心或者憤怒。通過這種方式，用戶看到的不再是一張永遠不變的圖，而是一個會隨內容起伏不斷"變化表情"真正的"魔法畫像"。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.webp)
 
 此外，對於這個畫像的內容，它可以是現實中的明星、歷史人物，也可以是動漫 IP，甚至是你從零構建的原創角色。頁面本身不需要複雜，但幾個核心元素不可或缺：清晰的角色名字，一段高度濃縮的人物簡介，一張足以代表該角色的核心畫像或海報，以及一個"和 TA 對話"的互動區域；你可以把在 Dify / Trae 中配置好的 AI Agent 或 workflow 接入到這個對話模塊中，實現畫像的角色扮演功能。
 
@@ -76,7 +76,7 @@ It's just a model, which is a big file of numbers. When the numbers are right an
 
 本教程中使用的是 [Lovart](https://www.lovart.ai/home)，Lovart 是一款AI設計智能體，它能通過自然語言指令，自動規劃和執行從概念到交付的端到端設計工作流，生成海報、品牌Logo、影片、音樂等內容，並支持分層編輯（實際上內部的功能原理是調用對應的 Seedream 或 google nanobanana 模型，我們已經在之前的課程中提到過）。通過 Lovart ，我們能夠獲得一系列的表情素材，你可以提前獲得你喜愛角色的圖片資訊，將其保存待後續使用。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.webp)
 
 一切準備就緒後，我們能夠開始著手於整體頁面的設計，我們希望這個頁面的風格與該人物是高度綁定的。
 
@@ -84,15 +84,15 @@ It's just a model, which is a big file of numbers. When the numbers are right an
 
 我們還可以先構思一下頁面的原型，如上述所說，我們希望有一個對話頁面和畫像，以及一個有趣的個人介紹，在本篇例子中，我們實現了一個類似 X 上的對話界面替代個人介紹，你也可以想到其他符合"該人物特點"的方式，選取新的元素替換個人介紹欄目。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.webp)
 
 最簡單的，我們可以用 PowerPoint 設計最初的網頁呈現原型，我們從網上找到一張魔法畫像的圖片，並且將畫面設定為橫向排布，最左側設定為聊天區域，中間是畫像區域，最右側是 X 的區域。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.webp)
 
 基於上述簡單原型，我們能夠讓大模型生成真正的前端頁面設計以及對應的程式碼結果。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.webp)
 
 不過，一般而言在實際中我們並不會用 PowerPoint 進行前端頁面的設計。我們會用更好的原型工具，又或者說是前端設計工具來實現這一點。
 
@@ -175,7 +175,7 @@ Use dark purple and gold color scheme, magical aesthetic, Harry Potter inspired
 
 值得注意的是，由於我們的密鑰都需要放在環境變量，而不是寫入程式碼中。我們需要特別強調之後的 DIfy API 相關的內容都需要放入環境變量。我們能夠在之後公網部署的環節中，在部署工具網站中顯式指定對應的私有環境變量；又或者是我們可以讓大模型在網頁中創建一個設置按鈕，我們可以在設置按鈕中傳入對應的私密環境變量，當前變量只能在當前頁面中保存，別人無法獲取。
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.webp)
 
 ## 3.2 Dify 工作流設計與 API 對接
 
@@ -320,13 +320,13 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
 
 如果你覺得自己開發一套 Hogwarts Portraits 項目很困難，你可以先從參考別的項目開始進行修改，本節課的官方程式碼地址為：https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.webp)
 
 # 4. 嘗試不同設計風格
 
 完成第一版設計後，我們不必侷限於此，鼓勵大家快速探索更多元的視覺風格。你可以在原型部分進行大膽的修改，又或者是基於最後的項目進行全新提示詞的修改，從而生成多套風格差異顯著的頁面。 比如帶有復古紋理、偏 "舊書卷 / 學院風" 的深色頁面，色彩明快、充滿 "童話 / 卡通" 感的亮色頁面，或是元素簡約、視覺清爽的現代扁平設計。例如下圖是一個轉換為中國古風詩人設計風格的案例，畫像圖片未更換，只修改了其他部分：
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.webp)
 
 不用拘泥於前面提到的模式，你可以把魔法畫像或是個人資料頁面修改至更有特點，匹配"魔法畫像"本身的習慣，這會讓你的應用更加有趣。期待你的魔法畫像成果！
 

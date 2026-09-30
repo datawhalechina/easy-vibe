@@ -89,7 +89,7 @@ GitHub는 Git 기반의 코드 호스팅 플랫폼입니다. Git 저장소에 �
 
 GitHub는 세계 최대의 코드 호스팅 플랫폼일 뿐만 아니라, 전 세계에서 가장 활발하고 영향력 있는 오픈소스 커뮤니티입니다. 여기서 "오픈소스"의 핵심 아이디어는 누구나 소프트웨어의 소스 코드를 다운로드하고 실행할 수 있다는 것입니다. 이 모델은 전 세계 사람들이 서로의 코드를 검사하고 수정하거나, 이를 기반으로 새로운 프로젝트를 만들 수 있게 합니다. 예를 들어, GitHub에서 다양한 학습 튜토리얼과 GPT 모델 훈련에 사용되는 프레임워크(예: PyTorch)의 전체 소스 코드를 찾을 수 있습니다. 매일 전 세계적으로 수많은 사람들이 협력하여 코드를 검토하고 개선합니다.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 많은 대기업이 업계 경쟁 우위를 얻기 위해 GitHub에서 프로그램이나 튜토리얼을 오픈소스로 공개합니다 — 이는 일종의 광고 형태로도 볼 수 있습니다. GitHub 커뮤니티에서 프로젝트가 받은 "스타(stars)" 수는 그 가치를 측정하는 주요 지표입니다. 프로젝트나 조직이 보유한 스타가 많을수록 신뢰도와 영향력이 큽니다.
 
@@ -100,7 +100,7 @@ GitHub는 세계 최대의 코드 호스팅 플랫폼일 뿐만 아니라, 전 �
 ## GitHub 계정 등록
 
 1. [GitHub 공식 웹사이트](https://github.com/)에 접속하여 오른쪽 상단의 "Sign up"을 클릭하세요.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. 이메일 주소를 입력하세요(인증 및 알림이 해당 이메일로 전송되므로 자주 사용하는 이메일 사용 권장), 비밀번호를 설정하세요(문자, 숫자, 특수 문자를 포함해야 함).
 3. 사람 인증을 완료하고, 안내에 따라 이메일을 인증하면 계정이 생성됩니다.
 
@@ -174,13 +174,13 @@ SSH를 통해 GitHub 저장소를 조작할 때(예: git push git@github.com:xxx
    1. Trae를 사용하여 공개 키 가져오기(권장)
       프롬프트: `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    프롬프트를 입력한 후, 왼쪽 터미널에서 Enter 키를 눌러야 합니다. 그렇지 않으면 명령이 실행되지 않고 계속 대기합니다. Trae는 조건 판단을 실행할 수 없으므로, 계속 Enter를 누르기만 하면 됩니다.
 
    마지막으로, 오른쪽의 Trae가 읽어온 공개 키를 반환한 것을 볼 수 있습니다. 이를 복사하여 다음 단계에서 붙여넣을 준비를 하세요.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. 수동으로 공개 키 가져오기
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. 수동으로 공개 키 가져오기
    로컬 터미널을 엽니다(Windows에서는 Git Bash 또는 PowerShell 사용; macOS/Linux에서는 터미널 사용), 다음 명령을 입력하세요(your_email@example.com을 GitHub 계정 등록에 사용한 이메일로 교체):
 
    ```bash
@@ -235,7 +235,7 @@ Git이 무엇인지, GitHub가 무엇인지, SSH가 무엇인지, 그리고 이�
 
 클론하고자 하는 저장소 주소를 직접 알려주면 됩니다
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull: 원격 저장소에서 업데이트 가져오기
 
@@ -251,7 +251,7 @@ prompt:`Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
 prompt:`I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 푸시 성공. 이제 GitHub에서 업데이트된 내용을 볼 수 있습니다.
 

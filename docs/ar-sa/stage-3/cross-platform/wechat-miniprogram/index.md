@@ -78,7 +78,7 @@
 
 1. أدخل https://mp.weixin.qq.com في متصفحك، افتح منصة WeChat الرسمية، وسجل الدخول بمسح رمز QR مع WeChat.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. اختر "Mini Program" على الصفحة الرئيسية وأكمل مطالبات التسجيل، بما في ذلك البريد الإلكتروني ورقم الهاتف ونوع الكيان (فرد أو مؤسسة).
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)

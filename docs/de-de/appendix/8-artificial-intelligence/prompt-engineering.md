@@ -356,7 +356,7 @@ Theorie allein reicht nicht. Der schnellste Weg, Prompt Engineering zu beherrsch
 
 Wir empfehlen den [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat) (oder jede andere LLM-Plattform deiner Wahl). Bewältige die folgenden **3 Herausforderungen**, um deine gelernten Techniken zu überprüfen.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 Bedienungshinweis**: Klicke in der rechten Seitenleiste auf "Add Model for Comparison", um zwei Modelle (z. B. Qwen-Max vs. Llama-3) nebeneinander mit demselben Prompt zu vergleichen.
 

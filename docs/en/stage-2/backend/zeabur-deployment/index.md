@@ -38,7 +38,7 @@ Platforms such as CloudBase, Vercel, Netlify, and Zeabur exist to eliminate much
 
 In many cases, you just connect a GitHub repository or upload your code, and the platform does the rest.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 ---
 
@@ -308,7 +308,7 @@ In earlier chapters, we already touched on Dify briefly. Now we can launch a ful
 
 First, open the [console page](https://zeabur.com/projects):
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 In that interface, you will see a set of service blocks. At the top are options such as `Agent`, `Servers`, `Docs`, and `Templates`:
 
@@ -376,7 +376,7 @@ After waiting a bit, you should see the Dify login screen. Register an account w
 
 You can also launch `n8n` in a similar way if you want another AI workflow tool:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## Deploy a Snake game with Zeabur and Trae
 
@@ -384,7 +384,7 @@ To explore Zeabur's more advanced usage, let's deploy something simpler first: a
 
 ### Deploy an HTML-based version
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Trae can generate a browser-based Snake game from plain HTML very easily. Once the project is created locally, you can upload the whole folder to Zeabur using the local-project deployment method described above.
 
@@ -392,7 +392,7 @@ Trae can generate a browser-based Snake game from plain HTML very easily. Once t
 
 After deployment, you will enter the service details page:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 Click `Network` on the left, find `Public Address`, and click `Generate Domain` to create a public URL.
 
@@ -409,7 +409,7 @@ This same method works well for other static HTML-based web apps too.
 
 Now let's deploy a React app instead of a plain HTML app. Compared with static HTML, React is a more modern and component-based frontend framework, and it is common in production applications.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### Refactor into a React architecture
 
@@ -417,7 +417,7 @@ In Trae, you can simply say:
 
 `Help me refactor this code into a React architecture.`
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 However, React apps are a bit more demanding to deploy because they rely on a build toolchain and a more structured project layout.
 
@@ -454,12 +454,12 @@ The easiest way is simply to ask Trae:
 
 Trae can modify the relevant configuration for you. After that, rebuild the project and upload it to Zeabur again.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 Once you configure the public network address just as you did for the HTML project, the React app can also be served successfully.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
 The same idea applies to any other app that needs a port adjustment before deployment.
@@ -472,7 +472,7 @@ Because server resources cost money, you should always get in the habit of stopp
 
 Open the project's `Settings`:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 Scroll to the bottom, and you will see controls like the following:
 

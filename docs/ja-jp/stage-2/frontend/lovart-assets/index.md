@@ -39,11 +39,11 @@ const relatedArticles = relatedArticlesMap['ja-jp/stage-2/frontend/lovart-assets
 
 2. 新しいPythonファイルを作成
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. 以下のコードをそのまま貼り付ける
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 Traeが実行成功を示したら、提供されたローカルリンク（通常は http://127.0.0.1:7860）をクリックします。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 すべて正常であれば、すでに動作するAI描画インターフェースが表示されます。
 
@@ -301,7 +301,7 @@ Traeが実行成功を示したら、提供されたローカルリンク（通�
 
 数秒後、ローカルで生成結果が表示されます。モデルの生成にはランダム性があるため、同じpromptでも異なる生成結果になります。複数回生成して、お気に入りの画像を選んでください。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 プロンプトを充実させ、より多くの説明と制約を与えることもできます。例えば以下のプロンプトを使用すると、より特徴的な画像が得られます。
 
@@ -310,11 +310,11 @@ Traeが実行成功を示したら、提供されたローカルリンク（通�
 （水滴のある新鮮な赤いリンゴの超写真的クローズアップ、暗く粗削りな木製テーブルの上。シネマティックなドラマチックライティング、リムライト、浅い被写界深度、ボケ背景、8k解像度、マクロ撮影。）
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 Output Imageエリアでダウンロードをクリックすると、画像をローカルに保存できます。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 画像生成モデルの一般的な素材生成シーン
 
@@ -340,7 +340,7 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 （3D天気アイコンセット、グラスモーフィズムスタイル、すりガラスのテクスチャ、柔らかなパステルグラデーションカラー、スタジオライティング、アイソメトリックビュー）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### ロゴの生成
 
@@ -366,7 +366,7 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 （フレンドリーな若手テックプロフェッショナル、3D Memojiスタイル、クレイレンダリング）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### 記事の挿絵生成
 
@@ -379,7 +379,7 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 （リモートワークをテーマにしたフラットイラスト、コーポレートメンフィススタイル）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### 二、参考画像からの画像生成：視覚的一貫性の維持
 
@@ -408,7 +408,7 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 （カプセル型ゲームUIボタン、白色の一時停止アイコン、ブルーのゼリー質感）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **バリアント B：設定ボタン（複雑なアイコン）**
 
@@ -416,7 +416,7 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 （カプセル型ゲームUIボタン、白色の歯車アイコン、ブルーのゼリー質感）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **バリアント C：リプレイボタン（形状変更）**
 
@@ -426,7 +426,7 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 （円形ゲームUIボタン、循環矢印アイコン、ブルーのゼリー質感）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 この一連の操作により、ボタンの機能やアイコンを置き換えるだけでなく、ボタンの形状を変えることさえできますが、すべての生成結果は素材、カラーリング、光と影において高い一貫性を保ちます。これこそが、大規模モデルがデザイン素材の派生シーンにおいて持つ核心的な価値です。
 
@@ -446,9 +446,9 @@ Output Imageエリアでダウンロードをクリックすると、画像を�
 
 LovartはAgentベースのデザインツールWebです。通常の画像生成ツールと比較して、生成の前に「思考と計画」の層が1つ追加されています。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 Lovartに入った後、主に以下の制御項目を理解する必要があります：
 
@@ -503,7 +503,7 @@ AIはすぐに絵を描くのではなく、まずネットで関連するプロ
 
 このステップで、AIは「実行者」から「企画者」へと変わります。AIがニーズの分析を完了した後、Lovartのキャンバスエリアで様々なスタイルとコンテンツのプログラマー鸭画像を見ることができます。お気に入りのスタイルを選び始めることができます。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### ステップ2：一貫性（参考に基づく視覚的アンカー）
 
@@ -514,13 +514,13 @@ Lovartの画像は結果であるだけでなく、以降の生成にも参加�
 * スケッチから最も満足のいく「標準的な鸭」を1枚選び、キャンバスエリアで対応する画像をクリック
 * その画像は自動的に対話エリアにReferenceとして表示されます
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * 新しい動作（例：嬉しい）を入力して生成
 
 生成結果はマスター画像のカラーリング、比率、ディテールを継承します。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### 部分参考 / 複数画像の統合
 
@@ -530,11 +530,11 @@ Lovartの画像は結果であるだけでなく、以降の生成にも参加�
 
 キャンバスエリア左側のタブバーをクリックし、「Mark」キーを選択し、ターゲット画像の部分領域をマークすると、この部分の内容が自動的に対話ボックスに同期されます。例えば、ここでは背景の色を変更するよう選択できます。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 新しく生成された画像が背景の色のみを変更しており、これは入力した要求とも一致していることがわかります。
 
@@ -544,9 +544,9 @@ Lovartの画像は結果であるだけでなく、以降の生成にも参加�
 
 プログラマー鸭を例にすると、最初の画像の鸭のキャラクターを保持し、それを2枚目の画像のメイン要素として置き換えることができます。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 最終的な効果も非常に顕著です。他の組み合わせも試してみてください！
 
@@ -554,15 +554,15 @@ Lovartの画像は結果であるだけでなく、以降の生成にも参加�
 
 生成が完了したら、直接実行できます：拡大、背景除去、消去などの操作
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 これらは単純なフィルターではなく、Agentが異なるツールを自動的に呼び出して完成させた結果です。
 
 基調スタイルが確定した後、一連のスタンプ画像を非常に速く生成できます。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 最終的に得られるのは、直接納品可能な本番レベルの素材であり、単なる展示画像ではありません。
 
@@ -573,7 +573,7 @@ Lovartはサブスクリプション制の課金モデルを採用しており�
 本チュートリアルはいかなるプランの推奨や比較も行いません。実際の使用で必要がある場合は、個人の状況に応じて有料アップグレードを選択できます。
 現在は**Alipay**などでの支払いに対応しています。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### まとめ
 
@@ -595,7 +595,7 @@ Lovartを直接使用するだけでなく、自分で簡易版の描画アシ�
 
 本質的に、画像モデルには「実行」する能力はあっても、テキストを分析し取捨選択するプロセスが欠けています。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 解決アプローチ：Agentで「理解」と「実行」を分ける
 
@@ -605,7 +605,7 @@ Lovartを直接使用するだけでなく、自分で簡易版の描画アシ�
 
 全体のフローは次のように要約できます：**長いテキスト入力 → 言語モデルによる理解と判断 → 適切な視覚プロンプトの生成 → 画像モデルによる生成の実行 → 画像の出力**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 では、私たちが構築するAgentはどうやってユーザーの意図を理解するのでしょうか？
 
@@ -622,7 +622,7 @@ Lovartを直接使用するだけでなく、自分で簡易版の描画アシ�
 4. **GradioとバックエンドAPIが全体のサポート層として**
    インターフェース、モデル呼び出し、結果表示を連携し、Agent全体が完全なWebアプリケーションとして安定して動作できるようにします。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 実践準備：APIの取得
 
@@ -636,13 +636,13 @@ Lovartを直接使用するだけでなく、自分で簡易版の描画アシ�
 
 「思考層」の役割を担う大規模言語モデルが必要です。本チュートリアルではSiliconFlowが提供するモデルサービスを使用します：[https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
 SiliconFlowはOpenAI API仕様と互換性のあるインターフェースを提供しており、標準的なネットワークリクエストでプロジェクトに非常に便利に統合できます。ここで選択したのは無料のQwen2.5-7B-Instructモデルで、呼び出しに必要な内容は以下のPromptにすべて記載されています。始める前に、公式サイトでアカウントを登録しAPI Keyを作成するだけです。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
 このKeyは以降のモデル呼び出しに使用されます。
 
@@ -769,7 +769,7 @@ LLM_API_KEYを置き換えるだけで使用可能な完全な実行可能コー
 
 同様に認識成功～
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. 直接的な描画指示、ここでは「猫を描きたい」と入力し、同様に正確に認識されました。
 
@@ -852,11 +852,11 @@ LLM_API_KEYを置き換えるだけで使用可能な完全な実行可能コー
 
 他のプリセットテンプレートに変更したい場合は、前のpromptで修正するか、Traeで対話を通じて修正できます。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 基盤コードを修正するだけでなく、Web上でも素早く編集できます。例えば、ここで「先頭にPic Promptという一文を追加」という一文を追加すると、新しく生成されたプロンプトの先頭にもそれが含まれていることがわかります～この設計は、画像生成プロンプトのSystem Promptを素早く修正し、スタイルの迅速な切り替えを支援するためのものです。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### ステップ4️⃣：Nanobananaテキストから画像 / 画像から画像モジュール
 
@@ -917,21 +917,21 @@ Markdown形式
 LLM_API_KEYとNANOBANANA_API_KEYを置き換えるだけで直接実行可能な完全コード、全プロセス利用可能、分岐ロジックは実践版に厳格にマッチ。
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 とてもエキサイティングですね！ついにこのAgentの最初の画像を正常に生成しました。生成された画像をよく見ると、テキストとプロンプトにマッチしていることがわかります。ここまでで、基本的にあなた自身のAgentが実装できました！
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 画像から画像機能も追加しており、お気に入りの画像をアップロードすると、AIが自動的にスタイルを参考にします。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 特筆すべきは、前のステップで生成されたプロンプトもWeb上で編集可能であり、最終的にボタンをクリックした時のプロンプトが基準となることです～例えばここで「a cute cat」に変更した場合、最終的に生成される画像も可愛い子猫になります。
 
 ## 第4章：まとめ
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **ついに完成しました！**
 正直なところ、私自身も最後の一行を書き終えた時、思わず深く息を吐きました。ましてやここまでやり遂げたあなたはなおさらです。この一連のフローを完全に実行できたこと自体が、本当に素晴らしいことです。それはあなたが本当にキーボードに手を置き、一歩ずつやり遂げたことを意味しています。Bravo 🎉 🥳 👏

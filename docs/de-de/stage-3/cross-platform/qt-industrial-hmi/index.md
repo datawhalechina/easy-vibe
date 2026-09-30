@@ -6,7 +6,7 @@ Qt wird häufig für Maschinenbedienung, Prüfstände, Robotik, Fahrzeuganzeigen
 
 BOMAG myCOCKPIT ist eine HMI für Baumaschinen, Agile Robots verwendet Qt für Bedien- und Lehrgeräte, Blue Ctrl für Schiffsautomation und Precision Planting für landwirtschaftliche Echtzeitüberwachung.
 
-![BOMAG myCOCKPIT](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/qt-enterprise-bomag-mycockpit.png)
+![BOMAG myCOCKPIT](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/qt-enterprise-bomag-mycockpit.webp)
 
 ![Agile Robots Bediengerät](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/qt-enterprise-agile-robots-interface.jpg)
 
@@ -54,7 +54,7 @@ Unternehmen trennen Kommunikation, Datenmodell und UI, prüfen Protokollgrenzen,
 
 Auf macOS wurde mit `pyside6-deploy` eine eigenständige App und anschließend ein geprüftes DMG erzeugt.
 
-![Erzeugte App und DMG](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/qt-run-package-files-cropped.png)
+![Erzeugte App und DMG](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/qt-run-package-files-cropped.webp)
 
 Windows-Pakete müssen auf Windows gebaut werden. Dort werden Start, Geräteverbindung, Alarm, SQLite und Deinstallation auf einem Rechner ohne Python erneut getestet.
 

@@ -7,7 +7,7 @@ description: 'Thêm danh tính tin cậy, cloud function, ticket, database, quy�
 
 Bài trước tạo giao diện chạy trên điện thoại. Bây giờ ta thêm danh tính, dữ liệu dùng chung, quyền, file và log cho dịch vụ doanh nghiệp.
 
-![WeChat Mini Program của Uber](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![WeChat Mini Program của Uber](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. Frontend là lối vào, backend quyết định
 

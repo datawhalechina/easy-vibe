@@ -8,7 +8,7 @@
 
 > 在 Windows 上，常见的终端有“命令提示符（cmd）”和 “PowerShell”。你可以在电脑的运行/搜索框中输入 “cmd” 或 “powershell” 来启动这些命令行程序。
 
-![](images/image1.png)![](images/image2.png)
+![](images/image1.webp)![](images/image2.png)
 
 CLI 天生适合文本命令操作，在一小部分极客（追求极致的编程爱好者）群体中，CLI 甚至比 GUI 更受欢迎——他们希望所有操作都通过键盘完成，觉得动鼠标反而会拖慢自己的编码效率。
 
@@ -96,11 +96,11 @@ Claude Code 的优势主要体现在：极长的上下文窗口（可以处理�
 
 GLM（General Language Model）是智谱 AI 自主研发的一系列大型语言模型。GLM-4.6 是当前 GLM 系列的最新版本，其核心亮点是在代码能力上的优异表现（在公开基准和真实任务中对标 Claude Sonnet 4，在国内处于第一梯队）。
 
-![](images/image12.png)
+![](images/image12.webp)
 
 它还将上下文窗口扩展到 200K，可以更加从容地处理长文本和大体量代码，同时加强了推理与工具调用能力，在性能和成本之间取得了不错的平衡。
 
-![](images/image13.png)
+![](images/image13.webp)
 
 在接入 GLM 之前，我们需要先安装 Claude Code。
 
@@ -161,7 +161,7 @@ please help me configure and start Claude Code
 
 你会看到类似下面的过程输出：
 
-![](images/image14.png)
+![](images/image14.webp)
 
 > 💡 什么是环境变量？
 >
@@ -304,7 +304,7 @@ export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 
 该工具还提供了方便的 UI/CLI 配置管理能力，并通过"转换器（converter）"适配不同平台的 API 格式。它支持 GitHub Actions 等自动化集成以及自定义扩展，解决了"单一模型无法覆盖所有场景"以及"频繁切换平台很麻烦"的问题，帮助用户更灵活、低成本地利用 AI 工具。
 
-![](images/image17.png)
+![](images/image17.webp)
 
 下面我们简单介绍如何安装 Claude Code Router。大致需要以下步骤（同样可以让 Trae 帮你执行），以准备好相关环境：
 
@@ -435,7 +435,7 @@ Claude Code 会把编程任务拆解成一个持续的“感知—思考—行�
 
 ### Codex
 
-![](images/image26.png)
+![](images/image26.webp)
 
 ![](images/image27.png)
 
@@ -453,7 +453,7 @@ npm i -g @openai/codex
 
 如果直接使用 OpenAI 官方的 Codex 入口，配置会非常简单：当你已经开通 OpenAI 订阅或申请到了相应 API 配额之后，只需要在命令行中输入 `codex` 启动程序，并按提示完成登录即可。
 
-![](images/image28.png)
+![](images/image28.webp)
 
 ![](images/image29.png)
 
@@ -525,7 +525,7 @@ I can use the command `codex --profile myrelay` to run it
 
 ![](images/image32.png)
 
-![](images/image33.png)
+![](images/image33.webp)
 
 OpenCode 是一款面向开发者的开源 AI Coding Agent 平台，定位类似于 “多模型版的 Claude Code”。它以 Terminal 为核心交互入口，同时也支持编辑器集成（如 VS Code、Neovim 等），能够深度接入本地代码仓库，并通过自然语言完成从代码理解到工程执行的一整套开发流程。
 
@@ -565,7 +565,7 @@ npm i -g opencode-ai
 
 选哪种都可以,只是认证方式不同。这里选择第一种进行浏览器登录。
 
-![](images/image38.png)
+![](images/image38.webp)
 
 复制此链接到浏览器上进行正常的 OpenAI 登录操作，浏览器上出现 Authorization Successful 后 OpenCode 客户端会自动跳转至选择 OpenAI 的模型界面。
 
@@ -577,7 +577,7 @@ npm i -g opencode-ai
 
 OpenCode 的强大之处还在于他有非常活跃的社区生态，你可以在 Github 上搜索出非常多与 OpenCode 相关的插件。如果说 OpenCode 是一款可以任意切换模型的 AI 协作工具的话，那么 Oh-My-OpenAgent 就是一款运行在 OpenCode 之上的 "多 Agent AI 编程指挥系统"。它可以将一个复杂任务拆给多个子任务分给不同的模型进行各司其职的工作。
 
-![](images/image41.png)
+![](images/image41.webp)
 
 你可以将以下话术复制之后粘贴给上文在 OpenCode 中配置好的模型进行安装 OpenCode。
 
@@ -894,7 +894,7 @@ Features: Add “Templates,” “Themes & Personalization,” and start develop
 
 收到你的请求后，Claude Code 会自动完成一系列操作，包括从 GitHub 拉取代码、配置运行环境、启动项目等。如果中间某一步出错或项目启动状态不正常，你再根据提示进行少量人工处理即可。除了 Dify，你也可以用 Claude Code 帮你部署大部分常见的 GitHub 开源项目——你只需要一个对话框，再加上喝一杯咖啡的时间 ☕️。
 
-![](images/image31.png)
+![](images/image31.webp)
 
 ### 讲解代码与撰写文档
 

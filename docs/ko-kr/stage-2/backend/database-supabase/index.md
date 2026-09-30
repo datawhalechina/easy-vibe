@@ -91,7 +91,7 @@ user_info = {
 
 요약하자면, 현실 세계에는 다양한 형태와 용도의 데이터가 너무 많아서 각각의 데이터 유형에 맞는 전문 데이터베이스가 필요해요. 아래 이미지를 참조해 보세요 — 정말 많죠?
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 왜 데이터베이스가 필요한가
 
@@ -894,7 +894,7 @@ Project 1과 마찬가지로, 먼저 `init.sql`을 사용하여 데이터 테이
 
 위에서 언급한 SOP에 따라, 구체적인 실제 사례인 `Project5-Supabase-Demos/apps_snakegame`를 통해 실습해 볼게요: 이미 있는 "뱀" 게임 프로젝트에 사용자 로그인과 데이터베이스 기본 기능이 포함된 점수 랭킹보드를 추가해 볼 거예요.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 프로젝트 분석, 데이터 요구사항 식별
 

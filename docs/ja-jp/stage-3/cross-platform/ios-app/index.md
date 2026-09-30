@@ -12,13 +12,13 @@
 4. Trae がインストールされて開いていること
 5. 使用可能な Apple ID
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.webp)
 
 ### 1.1 iOS アプリ
 
 iOS アプリは、iPhone オペレーティングシステム上で実行されるネイティブアプリケーションです。素早く起動し、スムーズに動作し、通知、カメラ、ローカルストレージなどのシステム機能を深く活用できます。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.webp)
 
 ### 1.2 iOS アプリ開発
 
@@ -51,7 +51,7 @@ iOS アプリは、iPhone オペレーティングシステム上で実行され
 
 ユーザーが冷蔵庫にある食材を入力すると、アプリが実際の AI API を使用して実現可能なレシピを生成し、結果をローカルに保存して後で確認できます。この例は、UI 入力と表示、ネットワークリクエスト、データ解析、ローカルストレージ、実機での最終インストールと実行を含む、実際の iOS アプリケーションの核心部分を完全にカバーしています。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.webp)
 
 - プロトタイプからネイティブアプリまでの全体的なアイデア
 
@@ -109,7 +109,7 @@ Xcode から実機にデバッグアプリをインストールして実行す�
 4. オンにし、指示に従ってデバイスを再起動
 5. 再起動後、デバイスのロックを解除し、開発者モードの有効化を確認
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.webp)
 
 iPhone が以前に Xcode や他の開発ツールに接続されたことがない場合、**プライバシーとセキュリティ**の下に**開発者モード**が表示されないことがあります。これはシステムの問題ではなく、開発者モードがまだトリガーされていないことを意味します。
 
@@ -122,7 +122,7 @@ iPhone が以前に Xcode や他の開発ツールに接続されたことがな
 
 上記の手順を完了すると、開発者モードは1度だけ有効にすれば済みます。今後の Xcode を使用した実機デバッグでこの設定を繰り返す必要はありません。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.webp)
 
 ### 2.2 必要なソフトウェア
 
@@ -195,17 +195,17 @@ Xcode を開きます。ウェルカム画面で、新規プロジェクトの�
 6. ストレージ：Core Data を選択（後でレシピ履歴を保存するため）
 7. その他のオプションはデフォルトのまま
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.webp)
 
 **Next** をクリックし、プロジェクトの保存場所を選択します。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.webp)
 
 ### 3.4 作成後のプロジェクト構造の認識
 
 プロジェクトが作成されると、Xcode が自動的にワークスペースを開きます。この時点では、すべてのファイルを理解する必要はありません。いくつかの主要部分を認識するだけで十分です。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.webp)
 
 デフォルトプロジェクトでは、以下が表示されます：
 
@@ -227,7 +227,7 @@ Xcode の上部ツールバーで、デフォルトの iPhone シミュレータ
 
 すべてが正常であれば、シミュレーターに正常に起動できる空のアプリが表示されます。最初のコンパイルは比較的長い時間がかかる場合があります。以降の章では、まず HTML プロトタイプを使用して待ち時間を短縮します。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.webp)
 
 アプリを停止するには、Run ボタンの横の **Stop** をクリックします。
 
@@ -247,7 +247,7 @@ Xcode の上部ツールバーで、デフォルトの iPhone シミュレータ
 
 必要なことはシンプルです：**作成したばかりの iOS プロジェクトフォルダーを Trae で開きます。**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.webp)
 
 ## 第4章：AI 支援開発の実践 - FridgeChef をゼロから構築
 
@@ -289,7 +289,7 @@ Trae のチャットウィンドウに次の指示を入力します。Trae は�
 
 生成後、ドキュメントをざっと読み、機能ポイントが期待と一致するか確認します。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.webp)
 
 ### 4.2 ステージ2：ビジュアルプロトタイプ
 
@@ -320,7 +320,7 @@ HTML + Tailwind CSS を使用して高忠実度のインターフェースプロ
 
 生成後、ファイルリストで `index.html` を見つけ、ブラウザで直接開きます。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.webp)
 
 この段階で重要なのは、すべての詳細が完璧かどうかではありません。重要なのは、**ページ構造が合理的か、主要な要素が完全か、全体的な方向が正しいか**です。
 
@@ -358,15 +358,15 @@ HTML プロトタイプが確定したら、**確認されたインターフェ�
 インターフェースが完了すると、アプリはまだディスプレイ層にすぎません。次に実際の AI 機能を接続する必要があります。このチュートリアルでは **SiliconFlow** が提供する大規模モデルサービスを使用します：
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.webp)
 
 SiliconFlow は OpenAI API 仕様と互換性のある API を提供しているため、標準的なネットワークリクエストを使用して iOS プロジェクトから便利に呼び出すことができます。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.webp)
 
 開始する前に、サイトでアカウントを登録し API Key を作成する必要があります。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.webp)
 
 このキーは後続のモデル呼び出しに使用されます。
 
@@ -401,7 +401,7 @@ APIService.swift を作成してください。
 1. `FridgeChef.xcdatamodeld` を開く
 2. `RecipeEntity` という名前の新しい Entity を作成
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.webp)
 
 3. 以下の属性を追加：
    1. `id`：**UUID**
@@ -412,7 +412,7 @@ APIService.swift を作成してください。
    6. `timestamp`：**Date**
    7. `colorIndex`：**Integer 16**
 
-      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
+      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.webp)
 
 **ステップ2：AI にロジックコードを書かせる**
 
@@ -434,7 +434,7 @@ Entity：RecipeEntity
 
 最後のステップはアプリに適切なアイコンを準備することです。ここでは **Lovart** を使用してアイコンアセットを生成します：[https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.webp)
 
 📋 **Lovart にコピーするプロンプト：**
 
@@ -448,15 +448,15 @@ Entity：RecipeEntity
 
 生成後、画像を 1024x1024 にクロップし、Xcode の `Assets.xcassets` -> `AppIcon` にドラッグします。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.webp)
 
 アプリを再実行すると、完全で認識可能な実際の iOS アプリケーションが表示されます。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.webp)
 
 ### 4.7 ステージ7：高度な体験アップグレード
 
@@ -541,13 +541,13 @@ Xcode の左上で、実行デバイスを選択し、デフォルトの iPhone 
 
 初めて接続する際、電話に**このコンピュータを信頼しますか？**と表示されます。信頼をタップし、ロック解除コードを入力します。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.webp)
 
 Xcode のデバイスリストで iPhone を選択し、再度 **Run** をクリックします。
 
 この時点で、電話のホーム画面に **FridgeChef** アイコンが表示され、正常に開いて使用できるはずです。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.webp)
 
 このステップは、1つの完全な iOS 開発クローズドループの完了を示します。
 
@@ -566,7 +566,7 @@ Xcode のデバイスリストで iPhone を選択し、再度 **Run** をクリ
 4. **論理エラー**
    アプリはクラッシュしないが、動作が間違っている — 例：ボタンが応答しない、データが更新されない。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.webp)
 
 エラーが現れたら、**エラーメッセージ全体をそのまま Trae のチャットボックスにコピー**するだけです。プロジェクトコンテキストを認識している Trae がデバッグを支援できます。
 
@@ -725,7 +725,7 @@ Apple は主に以下の観点からアプリを審査します：
 
 ## 第7章：まとめ
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.webp)
 
 おめでとうございます！この時点で、あなたは0から1までの完全な iOS アプリ開発プロセスを自ら歩んできました。環境設定、プロジェクト実行、そして段階的にインターフェース、機能、データ、実機テストを実装するに至るまで、すべての主要な段階が順調に完了しました。さらに重要なのは、Swift 構文を暗記することでここに来たのではなく、実装の大部分を AI に任せたことです。あなたのバックグラウンドが何であれ、このような試みはあなたをより流暢にし、iOS 開発がかつて思われていたほど難しくないことに気づくでしょう。以前は1行のコードも書けなかったとしても、自分自身のアプリを構築できるのです。
 

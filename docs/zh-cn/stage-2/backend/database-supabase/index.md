@@ -91,7 +91,7 @@ user_info = {
 
 总的来说，在现实世界中有太多不同形态、用途的数据值得我们详细分析，每种数据可能都需要专门的数据库用于存储，具体可参考下图——是不是感觉非常多？
 
-![](images/image1.png)
+![](images/image1.webp)
 
 ## 1.2 为什么我们需要数据库
 
@@ -894,7 +894,7 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 根据上面所提到的 SOP ，让我们通过一个具体的实际案例 `Project5-Supabase-Demos/apps_snakegame`来实践：为一个已有的“贪吃蛇”游戏项目增加分数排行榜单，包含用户登录与数据库基础功能。
 
-![](images/image43.png)
+![](images/image43.webp)
 
 ### 4.2.1 分析项目，识别数据需求
 

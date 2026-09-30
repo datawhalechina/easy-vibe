@@ -9,7 +9,7 @@ description: '在已能執行的小程式上加入可信身分、雲函式、售
 
 我們把原專案改成 Northstar Service Hub。會員建立售後工單，換一台裝置仍能看到同一筆記錄，而公司的密鑰與規則不會放進小程式。
 
-![Uber 微信小程式的路線、訂單與付款頁面](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Uber 微信小程式的路線、訂單與付款頁面](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. 前端是入口，後端負責判斷
 

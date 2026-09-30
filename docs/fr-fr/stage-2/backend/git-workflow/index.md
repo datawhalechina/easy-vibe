@@ -89,7 +89,7 @@ GitHub est une plateforme d'hébergement de code basée sur Git. Elle offre non 
 
 GitHub n'est pas seulement la plus grande plateforme d'hébergement de code au monde, c'est aussi la communauté open source la plus active et la plus influente au niveau mondial. L'idée centrale de l'« open source » est que n'importe qui peut télécharger et exécuter le code source du logiciel. Ce modèle permet à des personnes du monde entier d'examiner le code des autres, de le modifier ou de créer de nouveaux projets à partir de celui-ci. Par exemple, vous pouvez trouver sur GitHub toutes sortes de tutoriels d'apprentissage ainsi que le code source complet de frameworks d'entraînement de modèles GPT (comme PyTorch). Chaque jour, d'innombrables personnes collaborent à l'échelle mondiale pour examiner et améliorer le code.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 De nombreuses grandes entreprises publient en open source leurs programmes ou tutoriels sur GitHub pour obtenir un avantage concurrentiel dans l'industrie — ce qui peut aussi être vu comme une forme de publicité. Dans la communauté GitHub, le nombre d'« étoiles (stars) » obtenues par un projet est l'indicateur principal de sa valeur ; plus un projet ou une organisation possède d'étoiles, plus sa crédibilité et son influence sont grandes.
 
@@ -100,7 +100,7 @@ Dans notre cours, les ressources de support et les devoirs seront également té
 ## Créer un compte GitHub
 
 1. Visitez le [site officiel de GitHub](https://github.com/) et cliquez sur « Sign up » en haut à droite.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. Entrez votre adresse e-mail (il est recommandé d'utiliser une adresse courante, car les vérifications et notifications y seront envoyées), définissez un mot de passe (doit contenir des lettres, des chiffres et des caractères spéciaux).
 3. Complétez la vérification humaine, vérifiez votre e-mail selon les instructions, et votre compte sera créé.
 
@@ -174,13 +174,13 @@ Une fois que vous avez compris le principe, l'opération pratique est simple —
    1. Utiliser Trae pour obtenir la clé publique (recommandé)
       Prompt : `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    Après avoir entré le prompt, vous devez également appuyer sur la touche Entrée dans le terminal de gauche, sinon la commande restera en attente sans s'exécuter. Comme Trae ne peut pas exécuter de jugements conditionnels pour vous, il suffit d'appuyer sur Entrée jusqu'à ce que le processus se termine.
 
    Enfin, vous verrez que Trae à droite a renvoyé la clé publique qu'il a lue. Il vous suffit de la copier et de vous préparer à la coller à l'étape suivante.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. Obtenir manuellement la clé publique
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. Obtenir manuellement la clé publique
    Ouvrez votre terminal local (Git Bash ou PowerShell sur Windows ; Terminal sur macOS/Linux) et entrez la commande suivante (remplacez your_email@example.com par l'e-mail utilisé pour votre inscription GitHub) :
 
    ```bash
@@ -235,7 +235,7 @@ Nous avons expliqué ce qu'est Git, ce qu'est GitHub, ce qu'est SSH et comment l
 
 Vous pouvez directement lui indiquer l'adresse du dépôt que vous souhaitez cloner
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull : récupérer les mises à jour du dépôt distant
 
@@ -251,7 +251,7 @@ Une fois que tout est prêt, vous pouvez essayer de modifier les fichiers locaux
 
 prompt : `I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 Le push a réussi. Vous pouvez maintenant voir le contenu mis à jour sur GitHub.
 

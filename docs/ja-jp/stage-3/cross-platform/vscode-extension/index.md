@@ -25,8 +25,8 @@ VS Code拡張機能は多くの人が想像する以上のことができます�
 * **エディタ機能の拡張**：カスタム言語サポート、コード補完、診断
 * **AI機能の追加**：Chat Participant APIでAIアシスタントを作成、Language Model APIでモデルを呼び出し
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![VS Code拡張機能のエコシステム図。拡張可能な領域（サイドバー、エディタ、ステータスバー、コマンドパレット、チャットパネル）を示しています](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp) -->
+![VS Code拡張機能のエコシステム図。拡張可能な領域（サイドバー、エディタ、ステータスバー、コマンドパレット、チャットパネル）を示しています](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.webp)
 
 ## 1.2 VS Code拡張機能のコアアーキテクチャ
 
@@ -53,8 +53,8 @@ VS Codeエディタ
     └── エディタメインプロセス（UIレンダリング）
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![VS Code拡張機能のアーキテクチャ図。Extension Hostプロセスとエディタメインプロセスを示しています](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp) -->
+![VS Code拡張機能のアーキテクチャ図。Extension Hostプロセスとエディタメインプロセスを示しています](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.webp)
 
 ## 1.3 どんな拡張機能を作るのか？
 

@@ -91,7 +91,7 @@ Allons plus loin : si nous considérons une donnée encodée sous forme de vecte
 
 En résumé, le monde réel regorge de données de formes et d'usages très variés qui méritent une analyse détaillée. Chaque type de données peut nécessiter une base de données spécifique pour son stockage, comme le montre l'illustration ci-dessous -- n'est-ce pas impressionnant ?
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 Pourquoi avons-nous besoin d'une base de données
 
@@ -743,7 +743,7 @@ Le Projet 2 introduit l'authentification (Auth) et la gestion des permissions RL
 
 Pratiquez avec le projet `Project5-Supabase-Demos/apps_snakegame` : ajoutez un classement des scores avec connexion utilisateur.
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image44.png)
 

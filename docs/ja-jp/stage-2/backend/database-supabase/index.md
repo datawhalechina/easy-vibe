@@ -91,7 +91,7 @@ user_info = {
 
 まとめると、現実世界には非常に多くの異なる形態や用途のデータがあり、それぞれに専用のデータベースが必要になる場合があります。詳しくは下の図を参照してください。非常に多く感じられますよね？
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 なぜデータベースが必要なのか
 
@@ -894,7 +894,7 @@ Project1 と同様に、まず `init.sql` を使ってデータテーブルの�
 
 上記で言及した標準フローに基づいて、具体的な実例 `Project5-Supabase-Demos/apps_snakegame` を通して実践しましょう。既存の「スネークゲーム」プロジェクトに、ユーザーログインとデータベースの基本機能を含むスコアランキングを追加します。
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 プロジェクトの分析、データ要件の特定
 

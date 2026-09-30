@@ -16,9 +16,9 @@ Definitivamente has usado extensiones de navegador antes: bloqueadores de anunci
 
 Imagina esto: abres un artículo técnico de 5,000 palabras, haces clic una vez en el botón de la extensión, y unos segundos después aparece un resumen conciso en chino en el panel lateral. Eso es exactamente lo que vamos a construir.
 
-![placeholder: Una imagen de vista previa mostrando una página web con artículo largo a la izquierda y un resumen generado por IA mostrado en el panel lateral de Chrome a la derecha](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: Una imagen de vista previa mostrando una página web con artículo largo a la izquierda y un resumen generado por IA mostrado en el panel lateral de Chrome a la derecha](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: Una imagen de vista previa mostrando una página web con artículo largo a la izquierda y un resumen generado por IA mostrado en el panel lateral de Chrome a la derecha](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: Una imagen de vista previa mostrando una página web con artículo largo a la izquierda y un resumen generado por IA mostrado en el panel lateral de Chrome a la derecha](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 La Arquitectura Básica de una Extensión de Chrome
 
@@ -44,8 +44,8 @@ El usuario hace clic en el ícono de la extensión
     -> El Service Worker envía el resumen de vuelta al panel lateral para mostrarlo
 ```
 
-![placeholder: Un diagrama de arquitectura mostrando cómo Content Script, Service Worker y Panel Lateral se pasan mensajes entre sí](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: Un diagrama de arquitectura mostrando cómo Content Script, Service Worker y Panel Lateral se pasan mensajes entre sí](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: Un diagrama de arquitectura mostrando cómo Content Script, Service Worker y Panel Lateral se pasan mensajes entre sí](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: Un diagrama de arquitectura mostrando cómo Content Script, Service Worker y Panel Lateral se pasan mensajes entre sí](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 Dos Opciones de IA: API en la Nube vs IA Incorporada del Navegador
 
@@ -425,8 +425,8 @@ Depurar extensiones de Chrome es un poco diferente de depurar páginas web norma
 3. Selecciona el nombre de tu extensión
 4. Luego puedes ver la salida de `console` del Content Script
 
-![placeholder: Captura de pantalla de Chrome DevTools mostrando cómo elegir diferentes contextos de ejecución para depurar diferentes componentes de la extensión](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Captura de pantalla de Chrome DevTools mostrando cómo elegir diferentes contextos de ejecución para depurar diferentes componentes de la extensión](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: Captura de pantalla de Chrome DevTools mostrando cómo elegir diferentes contextos de ejecución para depurar diferentes componentes de la extensión](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: Captura de pantalla de Chrome DevTools mostrando cómo elegir diferentes contextos de ejecución para depurar diferentes componentes de la extensión](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 Solución de Problemas Comunes
 

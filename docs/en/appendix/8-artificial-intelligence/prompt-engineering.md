@@ -356,7 +356,7 @@ Reading about it only gets you so far. The fastest way to master prompt engineer
 
 We recommend using the [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat) (or any LLM platform you're comfortable with) and tackling the **3 challenges** below to validate the techniques you've learned.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 Operation Tip**: Click "Add Model for Comparison" in the right sidebar to compare two models side by side (e.g., Qwen-Max vs. Llama-3) on the same prompt.
 

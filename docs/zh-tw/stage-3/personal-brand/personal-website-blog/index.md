@@ -18,7 +18,7 @@
 
 不同於微信朋友圈、知乎或 LinkedIn，它不依賴任何平台的推薦演算法，也不會因為平台關閉而消失。它是一個長期、穩定的**個人展示空間**，可以被 Google 和 Google Scholar 索引。通常包含你的簡介、發表論文、專案和技術部落格。
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 為什麼要建立自己的網站？
 
@@ -232,7 +232,7 @@ Trae 會給你一條指令，通常是類似 `winget install --id Git.Git` 的�
 1. **造訪官網**：開啟 [https://github.com/](https://github.com/)。
 2. **點擊 Sign up**：點擊右上角的 **"Sign up"**。
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **填寫你的資訊**
 4. **電子郵件**：輸入真實的電子郵件地址。
@@ -404,8 +404,8 @@ Trae 會自動呼叫底部的終端機並執行指令。等待幾秒鐘。當你
 
 將我提供給你的圖片素材 `University_of_Pennsylvania.jpg` 和 `Queen_University.jpg` 放入對應的專案資料夾，通常是 `/assets/images/badges/`。
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **第二步：發送指令**
 
@@ -462,8 +462,8 @@ Trae 會自動呼叫底部的終端機並執行指令。等待幾秒鐘。當你
 下載我提供的封面圖片，即 `Hyperloop_Alpha_sketch.jpg`、`SpaceX_Starship.jpg` 和 `Neuralink_sewing_machine_robot.jpg`，將它們放在 `/assets/images/covers/` 下，並刪除該資料夾中原來的範例圖片。
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **第二步：發送指令**
 
@@ -972,7 +972,7 @@ Trae 完成推送後，回到 GitHub 重新整理頁面。點擊 **Code** 標籤
 去實驗。去搞壞它。去重建它。
 持續這樣做，直到它長成你最喜歡的樣子。
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***去吧，讓世界看見你。***
 

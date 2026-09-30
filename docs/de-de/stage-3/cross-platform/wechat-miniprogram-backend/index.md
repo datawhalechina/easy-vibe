@@ -7,7 +7,7 @@ description: 'Vertrauenswürdige Identität, Cloud-Funktionen, Service-Tickets, 
 
 Die vorige Lektion baute die Oberfläche auf dem Telefon. Nun kommen Identität, gemeinsame Daten, Rechte, Dateien und Logs eines Unternehmensdienstes hinzu.
 
-![Uber WeChat Mini-Programm](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Uber WeChat Mini-Programm](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. Das Frontend ist der Eingang, das Backend entscheidet
 

@@ -17,7 +17,7 @@ Si tienes dudas sobre alguna de estas preguntas, puedes repasar la documentació
 
 El tema del proyecto de esta lección es **Hogwarts Portraits** (Retratos de Hogwarts). Como su nombre indica, se inspira en los retratos que "cobran vida" en la escuela de magia Hogwarts. Queremos usar AI para crear una experiencia de retratos mágicos "interactivos" — hablar con un retrato es como hablar con la "persona real", conservando la memoria de la conversación y el trasfondo e historia del personaje. Con este proyecto, integrarás realmente los agentes y workflows que aprendiste antes en una interfaz de producto concreta.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.webp)
 
 Para crear realmente los Retratos de Hogwarts, necesitamos construir una interfaz frontend que se ajuste a los retratos mágicos. Para ello, empezarás a conocer las herramientas modernas de diseño frontend, aprenderás a combinar el diseño de interfaces con código, transformando los bocetos de interfaz en papel o lienzo en páginas web realmente funcionales.
 
@@ -39,7 +39,7 @@ Tu propio Hogwarts Portraits, una interfaz web para mostrar **alguna celebridad,
 
 ¿Qué tipo de "retrato mágico" queremos crear? En pocas palabras, esperamos recrear lo más fielmente posible la escena de Harry Potter, donde los retratos ya no son solo imágenes estáticas colgadas en la pared, sino personajes antropomórficos con los que puedes conversar y que cambian de expresión y "estado de ánimo" según el contenido de la conversación.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.webp)
 
 Para que este retrato no parezca un chatbot AI, sino que se acerque más a una "persona real", necesitamos resolver dos problemas. El primero es la memoria y el conocimiento: el retrato debe dominar una gran cantidad de información de fondo relacionada con el personaje (configuración del personaje, historia, artículos relacionados). Esta parte se puede implementar a través de una base de conocimiento, conectando los materiales textuales que prepares para el personaje a un Dify que incluya dicha base de conocimiento, permitiendo al retrato tener cierta capacidad de explicación del conocimiento de fondo.
 
@@ -47,7 +47,7 @@ El segundo problema es el estilo de expresión. Solo con el conocimiento no bast
 
 Además de la funcionalidad de diálogo, también queremos que las emociones sean realmente visibles. Para ello, podemos construir un indicador de valor emocional. Podemos configurar la salida de Dify para que el modelo genere texto de respuesta y, adicionalmente, produzca un "valor de humor" o etiqueta emocional. Cuando el frontend reciba el indicador emocional, podrá renderizar la imagen del retrato correspondiente según el valor de humor o la etiqueta. Cuando el valor es alto, el retrato se ve feliz; cuando está bajo o enojado, el retrato se ve triste o furioso. De esta manera, lo que ve el usuario ya no es una imagen que nunca cambia, sino un verdadero "retrato mágico" que "cambia de expresión" según el contenido de la conversación.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.webp)
 
 Además, el contenido de este retrato puede ser una celebridad real, un personaje histórico, un IP de anime o incluso un personaje original que construyas desde cero. La página en sí no necesita ser compleja, pero varios elementos centrales son indispensables: un nombre de personaje claro, una breve biografía muy condensada, una imagen o póster que represente adecuadamente al personaje, y un área interactiva de "hablar con él/ella"; puedes conectar el AI Agent o workflow que hayas configurado en Dify/Trae a este módulo de diálogo para implementar la funcionalidad de role-play del retrato.
 
@@ -76,7 +76,7 @@ Además, considerando el diseño del retrato, usar imágenes públicas del perso
 
 En este tutorial usamos [Lovart](https://www.lovart.ai/home). Lovart es un agente de diseño AI que, a través de instrucciones en lenguaje natural, planifica y ejecuta automáticamente flujos de trabajo de diseño de extremo a extremo, desde el concepto hasta la entrega, generando pósters, logos de marca, videos, música y otros contenidos, con soporte para edición por capas. A través de Lovart, podemos obtener una serie de materiales de expresiones; puedes obtener imágenes de tus personajes favoritos con anticipación y guardarlas para uso posterior.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.webp)
 
 Una vez que todo esté listo, podemos empezar a trabajar en el diseño de la página completa. Queremos que el estilo de esta página esté altamente vinculado al personaje.
 
@@ -84,15 +84,15 @@ Una vez que todo esté listo, podemos empezar a trabajar en el diseño de la pá
 
 También podemos primero concebir el prototipo de la página. Como mencionamos anteriormente, queremos una página de diálogo con un retrato y una presentación personal interesante. En este ejemplo, implementamos una interfaz de diálogo similar a X en lugar de la presentación personal; también puedes pensar en otras formas que se ajusten a "las características del personaje" y seleccionar nuevos elementos para reemplazar la sección de presentación personal.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.webp)
 
 Lo más simple es que podemos usar PowerPoint para diseñar el primer prototipo visual de la página web. Buscamos en Internet una imagen de retrato mágico y configuramos la pantalla en disposición horizontal: el extremo izquierdo como área de chat, el centro como área del retrato y el extremo derecho como área de X.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.webp)
 
 Basándonos en este prototipo simple, podemos hacer que el LLM genere un diseño de página frontend real y el código correspondiente.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.webp)
 
 Sin embargo, en la práctica generalmente no usamos PowerPoint para el diseño de páginas frontend. Usaríamos mejores herramientas de prototipado, o herramientas de diseño frontend para implementar esto.
 
@@ -175,7 +175,7 @@ A través de la práctica de prototipo a código, seguramente ya tienes código 
 
 Es importante destacar que, como nuestras claves deben guardarse en variables de entorno y no en el código, debemos enfatizar especialmente que todo el contenido relacionado con la API de Dify debe colocarse en variables de entorno. En la sección de despliegue público posterior, podremos especificar explícitamente las variables de entorno privadas en el sitio de la herramienta de despliegue; o bien podemos pedirle al LLM que cree un botón de configuración en la página web donde podamos ingresar las variables de entorno privadas. Estas variables solo se guardan en la página actual y no son accesibles por otros.
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.webp)
 
 ## 3.2 Diseño del workflow de Dify y conexión con la API
 
@@ -320,13 +320,13 @@ Además, necesitas aprender a usar Zeabur, conectarlo con GitHub y desplegar exi
 
 Si sientes que desarrollar un proyecto de Hogwarts Portraits desde cero es muy difícil, puedes empezar modificando un proyecto existente. La dirección del código oficial de esta lección es: https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.webp)
 
 # 4. Prueba diferentes estilos de diseño
 
 Después de completar la primera versión del diseño, no necesitamos limitarnos a ella. Te animamos a explorar rápidamente estilos visuales más diversos. Puedes hacer cambios audaces en la parte del prototipo, o basarte en el proyecto final para modificar los prompts y generar múltiples páginas con estilos marcadamente diferentes. Por ejemplo, una página oscura con texturas retro y estilo "libro antiguo / académico", una página clara con colores vibrantes y sensación de "cuento de hadas / caricatura", o un diseño plano moderno con elementos minimalistas y visualmente limpio. Por ejemplo, la siguiente imagen muestra un caso convertido a un estilo de diseño de poeta clásico chino; solo se modificaron las demás partes, sin cambiar las imágenes del retrato:
 
-![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.png)
+![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.webp)
 
 No te limites a los patrones mencionados anteriormente. Puedes modificar el retrato mágico o la página de perfil para que sea más distintiva y se ajuste a los hábitos del "retrato mágico" en sí. Esto hará que tu aplicación sea más interesante. Esperamos ver tus resultados de retratos mágicos.
 

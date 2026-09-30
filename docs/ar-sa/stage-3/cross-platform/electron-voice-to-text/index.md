@@ -20,7 +20,7 @@ Electron هو إطار عمل مفتوح المصدر يتيح لك استخدا
 
 **فهم بجملة واحدة**: Electron = "متصفح Chrome غير مرئي" + قدرات نظام Node.js.
 
-<!-- ![placeholder: مخطط يعرض بنية Electron: Chromium (لعرض واجهة المستخدم) + Node.js (للوصول للنظام) = تطبيق سطح مكتب](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: مخطط يعرض بنية Electron: Chromium (لعرض واجهة المستخدم) + Node.js (للوصول للنظام) = تطبيق سطح مكتب](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 البنية الأساسية لـ Electron
 
@@ -47,7 +47,7 @@ Electron هو إطار عمل مفتوح المصدر يتيح لك استخدا
 
 يتواصلون عبر **IPC (الاتصال بين العمليات)**، مثل إجراء مكالمة هاتفية: عملية العرض تقول "أريد بدء التسجيل"، والعملية الرئيسية تتلقى هذا الطلب وتستدعي ميكروفون النظام.
 
-<!-- ![placeholder: مخطط بنية عمليات Electron يعرض العملية الرئيسية وعملية العرض وسكريبت التحميل المسبق، بالإضافة إلى اتصال IPC بينهم](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: مخطط بنية عمليات Electron يعرض العملية الرئيسية وعملية العرض وسكريبت التحميل المسبق، بالإضافة إلى اتصال IPC بينهم](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 ماذا سنبني؟
 
@@ -69,7 +69,7 @@ Electron هو إطار عمل مفتوح المصدر يتيح لك استخدا
 | حجم النموذج | لا تنزيل مطلوب | نموذج tiny 75 ميجابايت، نموذج large 3 جيجابايت |
 | الأفضل لـ | البدء السريع، الاستخدام الخفيف | التركيز على الخصوصية، الاستخدام بدون إنترنت، الاستخدام المتكرر طويل الأمد |
 
-<!-- ![placeholder: معاينة التطبيق تعرض واجهة تحويل الكلام إلى نص: زر التسجيل ورسم موجي متحرك في الأعلى، النص المُتعرف أدناه، ومفتاح تبديل الوضع في الزاوية العلوية اليمنى](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: معاينة التطبيق تعرض واجهة تحويل الكلام إلى نص: زر التسجيل ورسم موجي متحرك في الأعلى، النص المُتعرف أدناه، ومفتاح تبديل الوضع في الزاوية العلوية اليمنى](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 ملاحظة مهمة: Web Speech API غير متاحة في Electron
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: مخطط تدفق IPC يعرض نقل الرسائل من العرض -> التحميل المسبق -> الرئيسية](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: مخطط تدفق IPC يعرض نقل الرسائل من العرض -> التحميل المسبق -> الرئيسية](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # الفصل 3: تنفيذ التسجيل
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: لقطة شاشة لواجهة التسجيل مع زر حالة التسجيل الأحمر والرسم المتحرك النبضي، ومنطقة نتيجة النص أدناه](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: لقطة شاشة لواجهة التسجيل مع زر حالة التسجيل الأحمر والرسم المتحرك النبضي، ومنطقة نتيجة النص أدناه](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 معالجة أذونات الميكروفون
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: لقطة شاشة للتطبيق يعمل تعرض الكلام الصيني المُتعرف عليه الذي أرجعه Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: لقطة شاشة للتطبيق يعمل تعرض الكلام الصيني المُتعرف عليه الذي أرجعه Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 إضافة واجهة إعدادات
 

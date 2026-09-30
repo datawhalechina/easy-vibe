@@ -181,7 +181,7 @@ onMounted(() => {
 
 为了方便大家理解每个选项的含义，在这里我们对菜单栏进行深入解析：
 
-![](editors-and-ai/images/index-2026-01-09-11-35-55.png)
+![](editors-and-ai/images/index-2026-01-09-11-35-55.webp)
 
 ![](editors-and-ai/images/index-2026-01-09-11-36-23.png)
 

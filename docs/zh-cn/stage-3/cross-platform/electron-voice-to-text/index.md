@@ -44,13 +44,13 @@ Electron 官方在“[为什么选择 Electron](https://www.electronjs.org/docs/
 
 Electron 把网页界面和桌面系统能力放在同一个应用中，但两者不能随便混在一起。
 
-![Electron 由 Chromium 界面和 Node.js 系统能力组成](images/image1.png)
+![Electron 由 Chromium 界面和 Node.js 系统能力组成](images/image1.webp)
 
 - Main Process 管理窗口、文件和应用生命周期；
 - Renderer Process 显示页面，不直接开放 Node.js；
 - Preload 只暴露页面真正需要的少量能力。
 
-![Main、Preload 和 Renderer 之间通过 IPC 通信](images/image2.png)
+![Main、Preload 和 Renderer 之间通过 IPC 通信](images/image2.webp)
 
 录音按钮在页面里，保存临时文件和调用本地模型放在主进程里，中间通过 Preload 传递有限的数据。
 
@@ -74,7 +74,7 @@ Electron 把网页界面和桌面系统能力放在同一个应用中，但两�
 
 这一轮只看布局。窗口缩窄以后，按钮和文字不能重叠；空白状态要告诉用户下一步做什么。
 
-![语音记录工具的首页布局](images/image3.png)
+![语音记录工具的首页布局](images/image3.webp)
 
 如果界面太复杂：
 
@@ -86,7 +86,7 @@ Electron 把网页界面和桌面系统能力放在同一个应用中，但两�
 
 > 请给录音按钮接入麦克风。开始后显示时长和录音状态，停止后把音频交给 Preload，不要在 Renderer 开启 Node 集成。
 
-![录音中状态和实时计时](images/image6.png)
+![录音中状态和实时计时](images/image6.webp)
 
 第一次点击时，系统会询问麦克风权限。拒绝后应用应显示“没有麦克风权限”，不能一直停在加载中。
 
@@ -107,7 +107,7 @@ Electron 把网页界面和桌面系统能力放在同一个应用中，但两�
 
 > 请增加演示识别模式。主进程收到音频后返回一段固定的现场记录，让我先验证 IPC、加载状态和报告页面。
 
-![IPC 把音频请求交给主进程，再把结果返回页面](images/image5.png)
+![IPC 把音频请求交给主进程，再把结果返回页面](images/image5.webp)
 
 成功时，停止录音后先显示“处理中”，随后出现演示文字；快速开始第二次录音时，第一次结果不能覆盖新任务。
 
@@ -133,7 +133,7 @@ Electron 把网页界面和桌面系统能力放在同一个应用中，但两�
 
 > 请把音频发送到企业后端完成转写。客户端不保存模型密钥，要有上传进度、取消、超时和重试。
 
-![云端识别完成后显示原始文字](images/image7.png)
+![云端识别完成后显示原始文字](images/image7.webp)
 
 不要把 API Key 放在 Renderer、`localStorage`、配置页或打包产物里。即使放在主进程，桌面安装包仍然能被用户读取；组织共享密钥必须留在服务器。
 

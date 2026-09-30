@@ -23,7 +23,7 @@ Discord는 Android와 iOS에서 제품 코드를 공유하면서 필요한 플�
 
 ![Discord Android 역할 화면](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/discord-react-native-roles.png)
 
-![Expo 사례의 MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![Expo 사례의 MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 ## 3. 첫 프로젝트와 점검표
 

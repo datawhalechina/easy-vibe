@@ -90,9 +90,9 @@ MasterGo 同樣提供了強大的 AI 頁面生成功能，可以根據參考圖�
 
 2. **查看生成結果**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **獲取程式碼**
    - 點擊藍色按鈕"插入到畫布"，可直接編輯生成後的網頁
@@ -128,19 +128,19 @@ Figma Make 是 Figma 官方推出的 AI 設計工具，能夠根據用戶輸入�
    - 將你想要還原的設計圖上傳到對話框
    - 添加描述需求的提示詞
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **查看生成結果**
    - 稍等片刻後即可看到渲染結果
    - 點擊右上角的播放按鈕可進行全屏預覽
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **細節調整**
    - 點擊右上角的編輯器圖標（鼠標和尺子圖標）
    - 回到熟悉的 Figma Editor 界面進行詳細調整
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **導出程式碼**
    - 調整滿意後，選擇導出程式碼

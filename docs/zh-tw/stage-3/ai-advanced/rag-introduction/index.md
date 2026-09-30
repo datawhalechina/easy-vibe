@@ -26,7 +26,7 @@
 
 檢索增強生成（Retrieval-Augmented Generation，簡稱 RAG）是當今生成式 AI 中最重要的技術方法之一。其基本想法很簡單：在讓大型模型生成答案之前，系統先從外部知識庫中檢索與使用者問題相關的資訊，然後將檢索到的資訊和原始問題一起傳遞給模型，讓模型基於真實素材來回答。那個外部知識庫可以是企業的內部政策、流程文件和產品知識，也可以是行業資料庫、法規語料庫、標準庫等。
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 此時，一個自然的問題出現了：如果大型模型已經能夠「直接回答問題」，為什麼還要增加一個叫做檢索增強生成的環節？尤其是現在上下文視窗越來越大，似乎直接把所有相關材料交給模型就能解決大部分需求。
 
@@ -36,7 +36,7 @@
    即使上下文視窗不斷擴大，一次性將所有文件倒入上下文的想法在實際系統中仍然不切實際。核心矛盾體現在兩個方面：
 2. 推理成本與上下文長度呈強正相關。上下文越長，推理成本上升越快，幾乎是線性的，有時甚至是超線性的。對於單次呼叫，8K token 和 200K token 的價格和延遲範圍完全不同，長上下文的成本門檻要高得多。
 
-   ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > 在語義上，上下文是模型在回答問題時「參考」的背景資訊和對話歷史。在技術上，它是一次推理中輸入給模型的全部 token 序列，包括系統和使用者指令、訊息歷史和檢索到的段落。
    >
@@ -418,7 +418,7 @@ MTEB 為許多嵌入模型提供了統一且客觀的評估框架。透過八大
 
 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 雖然排行榜上有很多模型，但你不需要掌握所有模型。在實踐中，選擇大型模型提供商打包的嵌入模型，或使用已經被許多人驗證過的雲端服務模型，通常是安全的選擇。你也可以在側邊欄按類別或語言過濾排行榜：
 
@@ -651,7 +651,7 @@ LLM 裁判的優勢在於它能做出更像人類的整體判斷。當然，裁�
 
 如果資源有限且需要快速建立基線，公開基準仍然是有用的起點。截至 2025 年，已經有許多針對通用和垂直場景的公開基準：
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 選擇時，首先要明確目標。你是要建立基線，還是在上線前驗證系統？然後檢查基準是否涵蓋你關心的場景和難度分佈。對於新聞或金融等時間敏感的領域，確保基準包含時間敏感性的測試。
 
@@ -788,7 +788,7 @@ Graph RAG 主動建構這個畫面。系統使用大型模型從文字中識別�
 
 - https://arxiv.org/pdf/2502.08826
 
-![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 真實世界的資料從來不只有文字。工程師診斷伺服器故障需要同時看溫度曲線、裝置截圖和日誌。醫生做診斷需要同時看 CT 或 MRI 影像、檢驗報告和電子病歷。傳統的純文字 RAG 最多只能檢索到「溫度異常」或「疑似肺部結節」等詞句，但難以將這些描述與實際的圖表趨勢或影像病灶形狀關聯起來，也無法從圖片、音訊或影片反向搜尋文件或知識。
 

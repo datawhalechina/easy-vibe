@@ -45,7 +45,7 @@
 
 هذا هو النموذج الأولي لوكيل الذكاء الاصطناعي (AI Agent): وحدة آلية تمتلك هدفًا ومعرفة وأدوات ومسار تنفيذ.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > ملاحظة: ما يسميه قطاع الصناعة حاليًا بـ "الوكيل" في نسخته البسيطة يشير في الغالب إلى التطبيقات المعززة المبنية على مجموعة LLM + الأدوات + قاعدة المعرفة، وليس الوكلاء القادرين على التخطيط الذاتي المزعومين. فعلى الرغم من أن الوكلاء البسيطين لا يمتلكون قدرات استدلال وتخطيط طويل الأمد حقيقية، إلا أنهم كافيون لدعم عدد كبير من سيناريوهات الأتمتة على مستوى المؤسسات. سنقدم بالتفصيل في الفصول اللاحقة الوكلاء الحقيقيين القادرين على التخطيط والعمل بشكل مستقل.
 
@@ -61,7 +61,7 @@
 
 الفكرة الأساسية لـ RAG هي: عندما يطرح المستخدم سؤالاً، يقوم النظام أولاً بالبحث في قاعدة معرفة المؤسسة عن عدة مقاطع نصية الأكثر ارتباطًا دلاليًا بالسؤال (مثل فقرة معينة من دليل المنتج، أو مادة معينة من نظام الموارد البشرية)، ثم "يُدخل" هذه المقاطع كسياق في مدخلات النموذج الكبير، موجّهًا إياه لتوليد إجابة بناءً على مواد حقيقية.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 مصدر الصورة: [https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@
 
 وهذا يقودنا إلى نموذج تطبيق ذكاء اصطناعي أكثر تقدمًا: سير عمل الذكاء الاصطناعي (AI Workflow).
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 سير العمل يعني تفكيك مهمة معقدة إلى عدة خطوات فرعية مرتبة وقابلة للتهيئة وقابلة للتنفيذ التلقائي، وتنظيم العلاقات المنطقية بينها بطريقة مرئية أو برمجية، مثل الأحكام الشرطية أو الحلقات أو التنفيذ المتوازي. تحويل قدرات الذكاء الاصطناعي إلى SOP (أي إجراءات التشغيل القياسية) يعني ترسيخ خبرة كيفية استخدام الذكاء الاصطناعي لإنجاز مهمة معينة في قوالب قابلة لإعادة الاستخدام.
 
@@ -143,7 +143,7 @@ Dify مُعيَّن كمنصة تطوير وتشغيل لتطبيقات LLM، م
 
 من حيث الوظائف، يغطي Dify تنسيق سير العمل المرئي وبناء الوكلاء وإدارة قاعدة المعرفة ودعم النماذج المتعددة. تسمح المنصة بتصميم عمليات المهام المعقدة من خلال سحب العقد وإفلاتها، وتدعم إنشاء وكلاء قائمين على النية. تبرز وظيفة قاعدة المعرفة الخاصة بها، حيث يمكنها معالجة مستندات بتنسيقات متعددة وإجراء استرجاع متجهي فعال. في الوقت نفسه، يتوافق Dify مع ويدعم نماذج LLM المتعددة بما في ذلك GPT و Claude والعديد من النماذج مفتوحة المصدر، ويمكن نشر التطبيقات المبنية كـ API قياسي بنقرة واحدة لسهولة التكامل.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 من حيث البنية التقنية، يتميز Dify بأنه مفتوح المصدر وقابل للنشر الخاص، مع التأكيد على المرونة والقابلية للتوسيع والامتثال على مستوى المؤسسات. المستخدمون المستهدفون يشملون فرق التطوير والمبتكرين في الأعمال، وتشمل سيناريوهات التطبيق النموذجية قواعد المعرفة المؤسسية وخدمة العملاء الذكية، وأتمتة إنشاء المحتوى، ومساعدي الذكاء الاصطناعي في المجالات المتخصصة، ومنصة الذكاء الاصطناعي المركزية للمؤسسات.
 
@@ -185,7 +185,7 @@ n8n هي منصة أتمتة سير عمل قابلة للبرمجة عامة، 
 
 Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. توفر واجهة بديهية تجمع بين سير عمل الوكلاء وخط أنابيب RAG وقدرات الأدوات وإدارة النماذج وقابلية الملاحظة ووظائف أخرى، مما يساعدك على الانتقال بسرعة من النموذج الأولي إلى بيئة الإنتاج.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 يمكنك استخدام النماذج اللغوية الكبيرة والأدوات المتنوعة الوظائف في Dify لبناء "سير عمل". سير العمل هو ربط العمليات التي كانت تتطلب منك إكمالها يدويًا خطوة بخطوة - مثل استرجاع البيانات واستدعاء النماذج الكبيرة والبحث على الويب وتصفية النتائج وتنسيقها - وفقًا لمنطق الأعمال في عملية آلية وقابلة لإعادة الاستخدام. بدون سير العمل، ستحتاج في كل مرة إلى نسخ ولصق نفس المحتوى للنموذج الكبير، وهو أمر غير فعال جدًا وعرضة للأخطاء، ويصعب إعادة استخدامه في الأعمال الحقيقية.
 
@@ -200,7 +200,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 5. عقدة الشرط: تتحقق مما إذا كانت إجابة النموذج الكبير تحتوي على مدة ضمان واضحة (مثل "سنة واحدة"، "3 سنوات")، وإذا وجدت تنتقل إلى الخطوة التالية، وإذا لم تجد تجعله يرد "يرجى تقديم طراز المنتج".
 6. عقدة الإخراج (مماثلة لـ ANSWER): تعيد الإجابة النهائية للمستخدم، وتسجل تلقائيًا استشارة هذه المرة في الجدول.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 خلال العملية بأكملها، لا تحتاج إلى البحث يدويًا في قاعدة المعرفة أو تعديل إجابات النموذج مرارًا أو تسجيل البيانات بشكل منفصل - سير العمل سيربط هذه الخطوات "للتشغيل تلقائيًا". وهو مرن جدًا: على سبيل المثال، إذا أردت لاحقًا إضافة قاعدة جديدة "عندما يسأل المستخدم عن نطاق الضمان، استدعِ قاعدة معرفة أخرى"، تحتاج فقط إلى إضافة عقدة شرط أخرى في سير العمل دون إعادة بناء النظام بالكامل.
 
@@ -228,7 +228,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 ابحث عن Chatbot في APP Type (إذا لم تره في البداية، يمكنك النقر على زر "عرض المزيد من الأنواع"، ثم العثور عليه في القائمة الكاملة). بعد اختيار Chatbot، أدخل اسم التطبيق ووصفه أدناه، ثم انقر على إنشاء.
 
@@ -246,7 +246,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 يمكنك إدخال أوامر توجيهية الدور بحرية في منطقة INSTRUCTIONS ومراقبة تأثير المحادثة؛ يمكنك أيضًا النقر على Generate لجعل النموذج الكبير يولد الأوامر التوجيهية لك تلقائيًا.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 لاحظ أن الزاوية العلوية اليمنى ستظهر خيارات العديد من النماذج المختلفة، مما يعني أنه يمكنك النقر للتبديل بين نماذج المحادثة المختلفة، وبالتالي مقارنة الفروق بينها في النبرة والاستدلال المنطقي ومعالجة النصوص الطويلة، للعثور على النموذج الأنسب لاحتياجاتك.
 
@@ -325,7 +325,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 سيؤثر اختيار نموذج Embedding بشكل كبير على نتائج الاسترجاع النهائية (مثل دقة المطابقة وسرعة الاستجابة، إلخ). هنا، نوصي باستخدام نموذج Embedding Qwen 0.6B أولاً، ويمكنك أيضًا التبديل إلى إصدار 4B أو 8B للمقارنة البصرية للفروق في نتائج الاسترجاع تحت أحجام معلمات مختلفة.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 هنا، سترى أيضًا إعداد نموذج آخر يسمى **Rerank model**، والقيمة الافتراضية هي **Jina-rerank-m0**. (إذا لم تكن طالبًا داخل الحرم الجامعي، فقد ترى في هذه المرحلة خطأ فقدان نموذج Rerank، ستحتاج إلى تهيئة نموذج rerank في قسم النماذج لتمكين استخدامه هنا)
 
@@ -335,7 +335,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 نظام التوصية يعمل بنفس الطريقة: قد يجد أولاً 500 منتج "قد يكون مناسبًا لك"، ثم من خلال نموذج Rerank يرتبها ليجعل المنتجات الأكثر احتمالية للشراء في أعلى القائمة.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 عند اكتمال جميع الإعدادات، انقر على **Save & Process**، وسيدخل النظام مرحلة تحويل قاعدة المعرفة إلى متجهات. في هذه المرحلة، سيقوم نموذج Embedding بتحويل النصوص المقسمة إلى تمثيلات متجهة.
 
@@ -351,11 +351,11 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 هنا، يمكنك إجراء عمليات تعديل أو حذف دقيقة لأي مقطع نصي غير مناسب.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 في الشريط الجانبي الأيسر، حدد **Retrieval Testing** لإجراء اختبار استدعاء لقاعدة المعرفة، والتحقق من أن الاسترجاع يعمل بشكل صحيح. سيعيد كل اختبار عدة شرائح بأعلى درجة تشابه.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 إذا كنت ترغب في رؤية المزيد من نتائج الشرائح، فتحتاج إلى النقر على إعدادات `VECTOR SEARCH`:
 
@@ -375,7 +375,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 في هذه المرحلة، في كل جولة من المحادثة، يمكنك رؤية مصادر قاعدة المعرفة التي تم مطابقتها في الإجابة. انقر على الإدخال المقابل لعرض الشريحة النصية المحددة التي تم استرجاعها.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -399,7 +399,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 إذا شعرت أن Workflow أو الوكيل الذكي الذي قمت ببنائه بسيط جدًا، توفر منصة Dify مشاريع نموذجية غنية لمساعدتك على التعرف بسرعة على كيفية بناء تطبيقات معقدة. تغطي هذه المشاريع النموذجية مجموعة متنوعة من سيناريوهات الأعمال. يمكنك النقر على Explore لعرض Workflow التي بناها الآخرون للتعلم منها.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 إنشاء أول تطبيق Dify Workflow
 
@@ -409,7 +409,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 هنا سنرى خيارين، وهما Chatflow و Workflow، كيف نختار بينهما؟ المفتاح هو أن تحتاج إلى فهم ما تريد بناءه، هل جوهره محادثة مستمرة، أم تدفق مهام.
 
@@ -579,7 +579,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 اختر العلامة الأنسب من buy_food / complain / chitchat / other. إذا كان المستخدم يشكو وفي نفس الوقت يطلب الطعام، أعطِ الأولوية للحكم على عاطفته الأساسية، إذا كان التركيز على التعبير عن الاستياء، فيجب تصنيفها كـ complain. إذا كان مجرد تذمر بسيط ولكن النية الأساسية هي تقديم الطلب، فصنّفها كـ buy_food. إذا كان من الصعب حقًا الحكم، استخدم other كحالة احتياطية
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 بعد الانتهاء من الإعداد، يمكنك النقر على زر التشغيل في الزاوية اليمنى العليا لاختبار ما إذا كانت هذه العقدة تعمل بشكل صحيح بشكل منفصل:
 
@@ -611,11 +611,11 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 وبالمثل، لضمان سير كل شيء على ما يرام، يمكنك النقر على سهم التشغيل في الزاوية اليمنى العليا للعقدة لإجراء اختبار محادثة محدد للتحقق من التأثير، مثل القول "أريد شرب شاي لؤلؤي بالحليب" وما إلى ذلك، والتحقق مما إذا كانت الاستجابة تتطابق مع التوقعات.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 بعد ذلك نعالج قيم المخرجات لـ LLM المتوازية، في لوحة تكوين عقدة `Variable Aggregator`، نجد منطقة `ASSIGN VARIABLES` (تعيين المتغيرات)، ثم نضيف ردود النموذج الكبير السابقة واحدة تلو الأخرى.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 بعد ذلك نحتاج إلى تجميع جميع المخرجات، وأخيرًا الحصول على النتيجة التي نريدها، بما في ذلك إدخال المستخدم والتصنيف والرد. نظرًا لأننا نستخدم Workflow بدلاً من Chatflow، فلا يوجد خيار لعقدة Answer لتجميع النتائج، يمكننا اختيار عقد أخرى لتحقيق تجميع وإخراج النتائج بشكل غير مباشر، هنا نختار عقدة Template، ونحدد في جزء المتغيرات نتيجة تصنيف نية المستخدم وقيمة إدخال المستخدم والرد النهائي المُجمّع، ونكتب قالب تنسيق JSON للرد النهائي في CODE، يمكننا الحصول على:
 
@@ -658,7 +658,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 بعد التشغيل في Test Run، يمكننا رؤية عملية تنفيذ Workflow، في هذه المرحلة تم اتباع المسار الصحيح بناءً على التصنيف، وتم الحصول على نتيجة output النهائية.至此، اكتمل التدفق بالكامل.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 تشغيل أول تطبيق Workflow من قالب
 
@@ -670,9 +670,9 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 عند الدخول لأول مرة يبدو الأمر معقدًا جدًا، لا تقلق، ننقر على Preview في الزاوية اليمنى العليا لتشغيل Workflow حتى يظهر الخطأ:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 نحتاج إلى حل المشكلة بناءً على عقدة الخطأ، بعد الفتح وجدنا أن API Token الخاص بـ Tavily غير مكوّن، Tavily Search API هو محرك بحث مصمم خصيصًا للذكاء الاصطناعي، يوفر نتائج فورية ودقيقة وواقعية. في هذه المرحلة اتبع التعليمات للعمل:
 
@@ -680,7 +680,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 بعد المعالجة، يمكن لمحرك البحث العمل بشكل طبيعي:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 بعد الاستمرار في تصحيح المشاكل الناتجة عن استدعاء النموذج، يجب أن تكون قادرًا على الحصول على النتيجة التالية، بحث تفصيلي يجمع فهم النموذج الكبير:
 
@@ -734,9 +734,9 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 أتذكر الـ Agent الذي أنشأناه للتو؟ انقر أولاً على "Publish" في الزاوية العلوية اليمنى، ثم انقر على "Publish Update"، وأخيرًا انقر على "Access API Reference" للدخول إلى وثائق API.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 بعد الدخول إلى وثائق API، ابحث عن قسم "Send Chat Message"، وانقر للدخول، ثم ابحث عن أمثلة "Request" و"Response" على اليمين وانسخها.
 
@@ -744,7 +744,7 @@ Dify هي منصة مفتوحة المصدر لتطوير تطبيقات LLM. ت
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 بعد العثور على أمثلة Request وResponse الخاصة بالمحادثة، نحتاج أيضًا إلى الحصول على API Key. في الزاوية العلوية اليمنى من الوثائق، سترى الخيارات المتعلقة بـ "API key".
 
@@ -828,7 +828,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 أسلوب عملك في هذه المرحلة أصبح قريبًا جدًا من عملية التطوير الحقيقية. في التطوير اليومي، غالبًا ما نواجه مشكلات مختلفة عند التعاون مع النموذج الكبير، ولحل هذه المشكلات بشكل أفضل، نحتاج إلى تقديم مزيد من معلومات السياق. بالإضافة إلى تقديم رسائل الخطأ، يمكنك أيضًا نسخ محتوى وثائقي أكثر اكتمالاً (مثل نسخ المزيد من الشروحات في قسم "Send message" على الجانب الأيسر من الوثائق)، وتقديمها معًا إلى النموذج، ليتمكن من تقديم حل أكثر شمولاً بناءً على تفاصيل أكثر.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 في هذا الوقت يكون المتصفح مدمجًا داخل Trae. يمكنك النقر على أيقونة البوصلة في الأعلى لفتح صفحة الويب في متصفح خارجي بملء الشاشة.
 
@@ -836,11 +836,11 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 إذا كنت محظوظًا، قد تحصل في المحاولة الأولى على صفحة أمامية تفاعلية تعمل بشكل صحيح.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 ومع ذلك، نظرًا لأن النموذج الكبير يحتوي على قدر من العشوائية، فقد تسير الأمور بسلاسة في محادثة أحادية لكن تظهر مشكلات في المحادثات متعددة الأدوار. لذلك، يُنصح بإجراء اختبارات محادثات متعددة الأدوار للتأكد من أن البرنامج يعمل بشكل مستقر في سيناريوهات التفاعل متعددة الأدوار.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 إلى هنا، لقد تعلمت كيفية بناء Dify Knowledge Base Agent بسيط، واستخدام Trae بدلاً من [z.ai](http://z.ai) لبناء واجهة أمامية تفاعلية. من الآن فصاعدًا، سيصبح Trae أداة التطوير الرئيسية لدينا عند بناء مختلف النماذج الأولية، ليحل تدريجيًا محل [z.ai](http://z.ai). يمكنك محاولة إعادة تنفيذ لعبة الثعبان السابقة باستخدام Trae، لترى ماذا سيكون التجريب مختلفًا. استمر!
 
@@ -940,7 +940,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 مثال على الإدخال والإخراج:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. تحدي فك تشفير سير عمل Love loop
 
@@ -974,7 +974,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 أحيانًا قد تنشر Dify على خادمك الخاص، وعنوان الخادم الخارجي عادةً يكون http بدلاً من https، لكن عندما نطلب خدمة تدعم HTTP فقط، قد ترى تلميحًا مشابهًا لهذا (قم بتفعيل وضع تصحيح المتصفح F12، واطلع على النقاط التي بها مشاكل):
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 سبب هذه المشكلة هو أننا ننشر Dify بشكل افتراضي على خادم يدعم HTTP فقط ولا يدعم HTTPS. HTTPS (HyperText Transfer Protocol Secure) هو إضافة طبقة تشفير SSL/TLS على أساس HTTP (بروتوكول نقل النص الفائق)، ويمكن فهمه ببساطة على أنه "نسخة أكثر أمانًا من HTTP".
 

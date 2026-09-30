@@ -26,7 +26,7 @@ Después de completar este tutorial, construirás una comprensión sistemática 
 
 La Generación Aumentada por Recuperación (RAG) es uno de los enfoques técnicos más importantes en la IA generativa actual. Su idea básica es simple: antes de pedir a un modelo grande que genere una respuesta, el sistema primero recupera información relacionada con la pregunta del usuario desde una base de conocimiento externa, y luego pasa tanto la información recuperada como la pregunta original al modelo para que pueda responder sobre la base de materiales reales. Esa base de conocimiento externa puede ser las políticas internas de una empresa, documentos de procesos y conocimiento de productos, o una base de datos de la industria, corpus regulatorio, biblioteca de estándares, etc.
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 En este punto, aparece una pregunta natural: si los modelos grandes ya pueden "responder preguntas directamente", ¿por qué añadir otra capa llamada Generación Aumentada por Recuperación? Especialmente ahora que las ventanas de contexto son cada vez más grandes, puede parecer que simplemente entregar todo el material relevante al modelo debería resolver la mayoría de las necesidades.
 
@@ -36,7 +36,7 @@ La diferencia real es que "poder producir una respuesta" y "poder producir conti
    Incluso cuando las ventanas de contexto siguen expandiéndose, la idea de volcar todos los documentos en el contexto de una vez sigue siendo impráctica en sistemas reales. La contradicción central se manifiesta en dos lugares:
 2. El costo de inferencia está fuertemente correlacionado de forma positiva con la longitud del contexto. Cuanto más largo es el contexto, más aumenta el costo de inferencia, casi linealmente y a veces incluso superlinealmente. Para una sola llamada, 8K tokens y 200K tokens están en rangos de precio y latencia completamente diferentes, y el contexto largo tiene un umbral de costo mucho más alto.
 
-   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > En términos de significado, el contexto es la información de fondo y el historial de conversación que el modelo "consulta" al responder una pregunta. En términos técnicos, es la secuencia total de tokens alimentada al modelo para una inferencia, como instrucciones del sistema y del usuario, historial de mensajes y pasajes recuperados.
    >
@@ -418,7 +418,7 @@ MTEB proporciona un marco de evaluación unificado y objetivo para muchos modelo
 
 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 Aunque hay muchos modelos en el tablero de clasificación, no necesitas dominarlos todos. En la práctica, elegir el modelo de embedding incluido por un proveedor de modelos importante, o usar un modelo servido en la nube que muchas personas ya han validado, suele ser una opción segura. También puedes filtrar el tablero de clasificación por categoría o idioma en la barra lateral:
 
@@ -651,7 +651,7 @@ Para la mayoría de las empresas, debido a que los escenarios de negocio son ún
 
 Si los recursos son limitados y necesitas una línea base rápida, los benchmarks públicos siguen siendo un punto de partida útil. A partir de 2025, existen muchos benchmarks públicos tanto para escenarios generales como verticales:
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 Al elegir entre ellos, primero aclara el objetivo. ¿Estás estableciendo una línea base, o validando el sistema antes del lanzamiento? Luego verifica si el benchmark cubre los escenarios y el perfil de dificultad que te importan. Para dominios sensibles al tiempo como noticias o finanzas, asegúrate de que el benchmark incluya pruebas sensibles al tiempo.
 
@@ -788,7 +788,7 @@ Investigación relacionada:
 
 - https://arxiv.org/pdf/2502.08826
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 Los datos del mundo real nunca son solo texto. Los ingenieros diagnosticando fallos de servidores necesitan mirar curvas de temperatura, capturas de pantalla de dispositivos y logs juntos. Los médicos haciendo diagnósticos necesitan imágenes de CT o MRI, informes de pruebas y registros médicos electrónicos al mismo tiempo. El RAG de texto tradicional puede a lo sumo recuperar frases como "anomalía de temperatura" o "posible nódulo pulmonar", pero le resulta difícil conectar esas descripciones con la tendencia real del gráfico o la forma de la lesión en la imagen, y no puede buscar inversamente documentos o conocimiento a partir de imágenes, audio o video.
 

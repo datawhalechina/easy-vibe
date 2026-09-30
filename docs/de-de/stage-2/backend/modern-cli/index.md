@@ -8,7 +8,7 @@ Erinnerst du dich an die CLI, die wir zuvor vorgestellt haben? CLI (Command Line
 
 > Unter Windows sind gaengige Terminalprogramme die "Eingabeaufforderung (cmd)" und "PowerShell". Du kannst "cmd" oder "powershell" im Ausfuehren-/Suchfeld deines Computers eingeben, um diese Kommandozeilenprogramme zu starten.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image1.png)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image1.webp)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
 
 CLI eignet sich von Natur aus fuer Textbefehlsoperationen und ist bei einem Teil der Power-User (Programmier-Enthusiasten, die das Aeusserste anstreben) sogar beliebter als GUI -- sie wuenschen sich, dass alle Bedienungen ueber die Tastatur ablaufen und finden, dass die Maus zu bedienen ihre Code-Effizienz eher verlangsamt.
 
@@ -96,11 +96,11 @@ Eine weitere Methode ist die Verwendung des "Claude Code Route"-Projekts. Dies i
 
 GLM (General Language Model) ist eine von zhipu AI unabhaengig entwickelte Serie von Grosssprachenmodellen. GLM-4.6 ist die aktuelle neueste Version der GLM-Serie, deren Kernpunkt die herausragende Leistung bei Codefaehigkeiten ist (sie ist in oeffentlichen Benchmarks und realen Aufgaben vergleichbar mit Claude Sonnet 4 und gehoert in China zur ersten Liga).
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image12.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image12.webp)
 
 Es hat das Kontextfenster auf 200K erweitert, wodurch es langen Text und grossen Code noch souveraener verarbeiten kann. Gleichzeitig wurden die Reasoning- und Werkzeugaufruf-Faehigkeiten verstaerkt, was eine gute Balance zwischen Leistung und Kosten erreicht.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image13.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image13.webp)
 
 Bevor wir GLM anbinden, muessen wir zunaechst Claude Code installieren.
 
@@ -161,7 +161,7 @@ please help me configure and start Claude Code
 
 Du wirst eine aehnliche Ausgabe wie die folgende sehen:
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image14.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image14.webp)
 
 > Was sind Umgebungsvariablen?
 >
@@ -304,7 +304,7 @@ Oben haben wir erklaert, wie man die offizielle GLM-API verwendet, um die Anthro
 
 Das Tool bietet zudem komfortable UI/CLI-Konfigurationsverwaltung und passt sich durch "Konverter (converter)" an die API-Formate verschiedener Plattformen an. Es unterstuetzt Automatisierungsintegrationen wie GitHub Actions sowie benutzerdefinierte Erweiterungen. Es loest das Problem, dass "ein einzelnes Modell nicht alle Szenarien abdecken kann" und "haeufiges Plattformwechseln muehsam ist", und hilft Nutzern, KI-Tools flexibler und kostenguenstiger einzusetzen.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image17.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image17.webp)
 
 Im Folgenden stellen wir kurz vor, wie man Claude Code Router installiert. Die ungefaehren Schritte sind die folgenden (auch hier kann Trae die Ausfuehrung uebernehmen), um die entsprechende Umgebung vorzubereiten:
 
@@ -435,7 +435,7 @@ Dabei gibt es mehrere bemerkenswerte Eigenschaften:
 
 ### Codex
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image26.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image26.webp)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image27.png)
 
@@ -453,7 +453,7 @@ npm i -g @openai/codex
 
 Bei direkter Nutzung des offiziellen OpenAI Codex-Einstiegs ist die Konfiguration sehr einfach: Wenn du bereits ein OpenAI-Abonnement eroeffnet oder entsprechende API-Kontingente erhalten hast, genuegt es, `codex` in der Kommandozeile einzugeben, das Programm zu starten und dich gemaess den Anweisungen anzumelden.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image28.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image28.webp)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image29.png)
 
@@ -525,7 +525,7 @@ Nach Abschluss der Konfiguration kannst du Codex mit `codex --profile myrelay` s
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image32.png)
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image33.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image33.webp)
 
 OpenCode ist eine Open-Source KI Coding Agent-Plattform fuer Entwickler, positioniert als "Multi-Modell-Version von Claude Code". Mit dem Terminal als Kern-Interaktionseintrag unterstuetzt es auch Editor-Integrationen (wie VS Code, Neovim usw.), kann tief in lokale Codebasen eingebunden werden und durch natuerliche Sprache einen kompletten Entwicklungsprozess von Codeverstaendnis bis Engineering-Ausfuehrung abschliessen.
 
@@ -565,7 +565,7 @@ Hier waehlen wir als Beispiel OpenAI und bestaetigen mit Enter, um die Authentif
 
 Jede Option funktioniert, es unterscheidet sich nur die Authentifizierungsmethode. Hier waehlen wir die erste fuer den Browser-Login.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image38.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image38.webp)
 
 Kopiere diesen Link in deinen Browser und fuehre einen normalen OpenAI-Login durch. Nachdem im Browser "Authorization Successful" angezeigt wird, springt der OpenCode-Client automatisch zur Modellauswahl fuer OpenAI.
 
@@ -577,7 +577,7 @@ Kopiere diesen Link in deinen Browser und fuehre einen normalen OpenAI-Login dur
 
 Die Staerke von OpenCode liegt auch in seiner sehr aktiven Community-Oekologie. Du kannst auf Github sehr viele OpenCode-bezogene Plugins finden. Wenn OpenCode ein KI-Zusammenarbeitstool ist, das beliebige Modelle wechseln kann, dann ist Oh-My-OpenAgent ein "Multi-Agent KI-Programmier-Kommandosystem", das auf OpenCode laeuft. Es kann eine komplexe Aufgabe in mehrere Sub-Aufgaben aufteilen und diese verschiedenen Modellen zur getrennten Bearbeitung zuweisen.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image41.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image41.webp)
 
 Du kannst den folgenden Text kopieren und dem zuvor konfigurierten Modell in OpenCode zum Installieren von OpenCode uebergeben.
 
@@ -895,7 +895,7 @@ Wenn ich mein eigenes Dify lokal ausfuehren moechte, genuegt es, diesen Link an 
 
 Nach Erhalt deiner Anfrage wird Claude Code automatisch eine Reihe von Operationen durchfuehren, einschliesslich des Pullens des Codes von GitHub, der Konfiguration der Laufzeitumgebung und des Startens des Projekts. Wenn ein Zwischenschritt fehlschlaegt oder der Projektstart nicht normal ist, kannst du einige manuelle Korrekturen basierend auf den Hinweisen vornehmen. Neben Dify kannst du Claude Code auch bei der Bereitstellung der meisten gaengigen GitHub Open-Source-Projekte helfen -- du brauchst nur ein Dialogfeld und die Zeit fuer eine Tasse Kaffee.
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image31.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image31.webp)
 
 ### Code erklaeren und Dokumentation schreiben
 

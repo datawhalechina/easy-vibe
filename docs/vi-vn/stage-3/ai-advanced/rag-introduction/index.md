@@ -26,7 +26,7 @@ Sau khi hoàn thành hướng dẫn này, bạn sẽ xây dựng được nền 
 
 Retrieval-Augmented Generation (RAG) là một trong những phương pháp kỹ thuật quan trọng nhất trong AI tạo sinh hiện nay. Ý tưởng cơ bản của nó rất đơn giản: trước khi yêu cầu mô hình lớn tạo câu trả lời, hệ thống truy xuất thông tin liên quan đến câu hỏi của người dùng từ cơ sở kiến thức bên ngoài, sau đó chuyển cả thông tin đã truy xuất và câu hỏi gốc cho mô hình để mô hình trả lời dựa trên tài liệu thực tế. Cơ sở kiến thức bên ngoài đó có thể là chính sách nội bộ, tài liệu quy trình và kiến thức sản phẩm của doanh nghiệp, hoặc cơ sở dữ liệu ngành, bộ văn bản quy định, thư viện tiêu chuẩn, v.v.
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 Lúc này, một câu hỏi tự nhiên xuất hiện: nếu các mô hình lớn đã có thể "trả lời câu hỏi trực tiếp", tại sao phải thêm một lớp gọi là Retrieval-Augmented Generation? Đặc biệt là khi cửa sổ ngữ cảnh ngày càng lớn hơn, có vẻ như chỉ cần đưa toàn bộ tài liệu liên quan cho mô hình là có thể giải quyết hầu hết nhu cầu.
 
@@ -36,7 +36,7 @@ Lúc này, một câu hỏi tự nhiên xuất hiện: nếu các mô hình lớ
    Ngay cả khi cửa sổ ngữ cảnh tiếp tục mở rộng, ý tưởng đổ toàn bộ tài liệu vào ngữ cảnh cùng lúc vẫn không thực tế trong hệ thống thực tế. Mâu thuẫn cốt lõi thể hiện ở hai điểm:
 2. Chi phí suy luận có tương quan dương mạnh với độ dài ngữ cảnh. Ngữ cảnh càng dài, chi phí suy luận càng tăng, gần như tuyến tính và đôi khi siêu tuyến tính. Đối với một lần gọi, 8K token và 200K token nằm trong các phạm vi giá cả và độ trễ hoàn toàn khác nhau, và ngữ cảnh dài có ngưỡng chi phí cao hơn nhiều.
 
-   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > Về mặt ý nghĩa, ngữ cảnh là thông tin nền và lịch sử hội thoại mà mô hình "tham chiếu" khi trả lời câu hỏi. Về mặt kỹ thuật, đó là tổng chuỗi token được đưa vào mô hình cho một lần suy luận, chẳng hạn như hướng dẫn hệ thống và người dùng, lịch sử tin nhắn và các đoạn văn bản đã truy xuất.
    >
@@ -418,7 +418,7 @@ MTEB cung cấp một framework đánh giá thống nhất và khách quan cho n
 
 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 Mặc dù có nhiều mô hình trên bảng xếp hạng, bạn không cần phải nắm vững tất cả. Trong thực tế, việc chọn mô hình embedding được cung cấp kèm bởi một nhà cung cấp mô hình lớn, hoặc sử dụng mô hình đám mây mà nhiều người đã xác nhận, thường là một lựa chọn an toàn. Bạn cũng có thể lọc bảng xếp hạng theo danh mục hoặc ngôn ngữ trong thanh bên:
 
@@ -651,7 +651,7 @@ Một benchmark hỗ trợ lặp hệ thống tốt thường có ba đặc đi�
 
 Nếu tài nguyên hạn chế và bạn cần một baseline nhanh, các benchmark công khai vẫn là một điểm khởi đầu hữu ích. Tính đến năm 2025, nhiều benchmark công khai tồn tại cho cả kịch bản tổng quát và chuyên ngành:
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 Khi chọn trong số chúng, trước tiên hãy làm rõ mục tiêu. Bạn đang thiết lập baseline hay xác nhận hệ thống trước khi ra mắt? Sau đó kiểm tra xem benchmark có bao phủ các kịch bản và phân phối mức độ khó mà bạn quan tâm không. Đối với các lĩnh vực nhạy cảm với thời gian như tin tức hoặc tài chính, đảm bảo benchmark bao gồm các kiểm tra nhạy cảm thời gian.
 
@@ -788,7 +788,7 @@ Nghiên cứu liên quan:
 
 - https://arxiv.org/pdf/2502.08826
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 Dữ liệu thực tế không bao giờ chỉ là văn bản. Kỹ sư chẩn đoán lỗi máy chủ cần xem đường cong nhiệt độ, ảnh chụp màn hình thiết bị và nhật ký cùng lúc. Bác sĩ chẩn đoán cần hình ảnh CT hoặc MRI, báo cáo xét nghiệm và hồ sơ bệnh án điện tử đồng thời. RAG văn bản truyền thống tối đa chỉ có thể truy xuất các cụm từ như "bất thường nhiệt độ" hoặc "nghi ngờ nốt phổi," nhưng nó gặp khó khăn trong việc kết nối các mô tả đó với xu hướng biểu đồ thực tế hoặc hình dạng tổn thương hình ảnh, và nó không thể tìm kiếm tài liệu hoặc kiến thức ngược từ hình ảnh, âm thanh hoặc video.
 

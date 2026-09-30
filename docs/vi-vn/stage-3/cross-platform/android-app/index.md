@@ -15,7 +15,7 @@ Trong hướng dẫn này, chúng ta sẽ hoàn thành một vòng lặp khép k
 
 Ứng dụng Android là một ứng dụng native chạy trên hệ điều hành Android. Khác với mini program, nó không phụ thuộc vào một nền tảng chủ nào như WeChat. Nó chạy trực tiếp ở cấp hệ thống. Ứng dụng có biểu tượng riêng trên màn hình chính, khởi động nhanh, hoạt động mượt mà và có thể truy cập sâu vào các tính năng cấp hệ thống như Bluetooth, cảm biến và dịch vụ chạy nền.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image1.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image1.webp)
 
 ## 1.2 Phát triển Ứng dụng Android
 
@@ -32,7 +32,7 @@ Trong phát triển thực tế, có nhiều hơn một cách để xây dựng 
 **Cách thứ nhất: Phát triển Native**
 Đây là lộ trình chính thức và được Google khuyến nghị. Bạn trực tiếp sử dụng **Kotlin** và **Jetpack Compose** để phát triển. Ưu điểm của nó là hiệu suất tốt nhất và truy cập đầy đủ vào phần cứng điện thoại.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image3.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image3.webp)
 
 **Cách thứ hai: Phát triển Cross-Platform**
 Ví dụ Flutter hoặc React Native. Ý tưởng cốt lõi là "viết một codebase và tạo ra cả ứng dụng Android và iOS."
@@ -43,7 +43,7 @@ Về bản chất, đây là việc bọc một trang web bên trong một vỏ 
 **Lựa chọn của hướng dẫn này: phát triển native (** **Kotlin + Compose)** kết hợp với công cụ AI để lập trình.
 Lý do rất đơn giản: code native Jetpack Compose có cấu trúc rất rõ ràng và cực kỳ phù hợp để AI hiểu và tạo ra. Chúng ta không cần viết code từ đầu. Thay vào đó, chúng ta hướng dẫn Trae bằng ngôn ngữ tự nhiên để tạo ra code native chất lượng cao.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image4.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image4.webp)
 
 ## 1.4 Các Bước Phát triển Ứng dụng Android được Trình bày trong Hướng dẫn này
 
@@ -265,7 +265,7 @@ Sau khi tạo thành công, điện thoại mới của bạn sẽ xuất hiện
 
 ![](/zh-cn/stage-3/cross-platform/android-app/images/image20.png)
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image21.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image21.webp)
 
 **Bước 4: Chạy ứng dụng**
 
@@ -273,7 +273,7 @@ Bây giờ là khoảnh khắc kỳ diệu. Đảm bảo trình mô phỏng đã
 
 Trong vài giây, bạn sẽ thấy màn hình trình mô phỏng sáng lên, hiển thị hình ảnh mõ gỗ màu trắng ở trung tâm với văn bản "Công đức: 0" phía trên. Thử chạm vào nó và xem số có tăng lên và hoạt ảnh có hoạt động không. Đây là ứng dụng Android đầu tiên của bạn.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image22.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image22.webp)
 
 ![](/zh-cn/stage-3/cross-platform/android-app/images/image23.png)
 
@@ -404,7 +404,7 @@ Trình mô phỏng rất tiện lợi, nhưng nó không thể mô phỏng rung 
 2. Mở **Tùy chọn nhà phát triển** và bật **Gỡ lỗi không dây**.
 3. Nhấp vào **Gỡ lỗi không dây** để vào chi tiết, sau đó chọn **Ghép nối thiết bị bằng mã QR**. Điện thoại của bạn sẽ mở chế độ quét mã QR.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image33.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image32.webp)![](/zh-cn/stage-3/cross-platform/android-app/images/image33.png)
 
 **Bước 2: Ghép nối trên máy tính**
 
@@ -424,7 +424,7 @@ Trình mô phỏng rất tiện lợi, nhưng nó không thể mô phỏng rung 
 
 4. Chạy ứng dụng bằng cách nhấp ▶️ Run
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image36.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image36.webp)
 
 ## 4.2 Gỡ lỗi Có dây USB
 
@@ -462,7 +462,7 @@ Lấy điện thoại OPPO làm ví dụ: mở Cài đặt -> Thông tin điện
 
 Mở cài đặt điện thoại, vào tùy chọn nhà phát triển, và bật **Gỡ lỗi USB**.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image42.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image42.webp)
 
 ### 4.2.4 Cấp phép Trình điều khiển USB trên Điện thoại
 
@@ -478,7 +478,7 @@ Lúc này, hãy cầm điện thoại lên. Nó sẽ hiển thị một hộp th
 
 Bây giờ hãy thử chạm vào mõ gỗ trên điện thoại của bạn và cảm nhận phản hồi của động cơ rung thực. Đây là trải nghiệm Vibe Coding hoàn chỉnh.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image46.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image45.webp)![](/zh-cn/stage-3/cross-platform/android-app/images/image46.png)
 
 # 5 Đóng gói Ứng dụng thành APK
 
@@ -496,9 +496,9 @@ Chờ khoảng 5 giây tùy thuộc vào kích thước dự án. Trong vùng b�
 
 Bạn có thể gửi trực tiếp qua WeChat hoặc QQ đến bất kỳ điện thoại Android nào, và người nhận có thể cài đặt và sử dụng. Lưu ý rằng debug không phải là phiên bản release.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image48.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image48.webp)
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.webp)
 
 ## 5.2 Đóng gói Phiên bản Release
 
@@ -598,7 +598,7 @@ Liên minh Nhà phát triển Gionee: https://open.appgionee.com
 
 **Lấy Tencent MyApp làm ví dụ:** truy cập Nền tảng Mở Tencent và nhấp đăng ký. Khuyến nghị đăng nhập trực tiếp bằng tài khoản QQ. Lưu ý rằng khi tài khoản QQ đã được liên kết, rất khó để hủy liên kết, nên tốt hơn nên sử dụng tài khoản QQ công việc chuyên dụng. Làm theo hướng dẫn, chọn "Nhà phát triển Cá nhân" hoặc "Nhà phát triển Doanh nghiệp," tải lên ảnh ID của bạn và hoàn tất xác minh khuôn mặt. Sau khi vượt qua xác minh, nhấp **Tạo Ứng dụng** để bắt đầu.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](/zh-cn/stage-3/cross-platform/android-app/images/image61.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image60.webp)![](/zh-cn/stage-3/cross-platform/android-app/images/image61.png)
 
 ![](/zh-cn/stage-3/cross-platform/android-app/images/image62.png)
 
@@ -652,7 +652,7 @@ Nhấp vào `Create app`, điền tên ứng dụng (`Electronic Wooden Fish`), 
 
 Trong menu `Production`, nhấp vào `Create new release`, tải lên tệp `.aab` của bạn, lưu và nộp để xét duyệt. Xét duyệt Google Play thường nhanh (1-3 ngày). Khi được phê duyệt, ứng dụng của bạn có thể được tải xuống trên toàn cầu.
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image64.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image64.webp)
 
 _Nếu bạn đã hoàn tất đăng ký tài khoản nhà phát triển, video hướng dẫn này có thể hướng dẫn bạn qua phần còn lại của quy trình:_ [Full workflow: uploading an Android app to Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
@@ -668,7 +668,7 @@ Nếu hướng dẫn này giúp bạn cảm thấy "xây dựng ứng dụng th�
 
 Tôi rất mong chờ tác phẩm tiếp theo của bạn. Hãy tiếp tục tiến lên!
 
-![](/zh-cn/stage-3/cross-platform/android-app/images/image65.png)
+![](/zh-cn/stage-3/cross-platform/android-app/images/image65.webp)
 
 **_Chúc bạn vui vẻ trong thế giới phát triển Android!_**
 

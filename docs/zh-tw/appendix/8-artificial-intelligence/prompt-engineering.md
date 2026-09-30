@@ -356,7 +356,7 @@ AI 最容易犯的毛病就是**不懂裝懂**。
 
 我們推薦使用 [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat)（或任何你習慣的 LLM 平臺），按照下面的**3 個挑戰**來驗證你學到的技巧。
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 操作提示**：點選右側側邊欄的 "Add Model for Comparison"，可以左右分屏對比兩個模型（比如 Qwen-Max vs Llama-3）對同一個 Prompt 的反應。
 

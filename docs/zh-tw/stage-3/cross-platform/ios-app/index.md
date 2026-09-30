@@ -12,13 +12,13 @@
 4. 已安裝並開啟 Trae
 5. 一個可用的 Apple ID
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.webp)
 
 ### 1.1 iOS 應用程式
 
 iOS 應用程式是運行在 iPhone 作業系統上的原生應用。它啟動快速、體驗流暢，可以深度使用通知、相機、本機儲存等系統功能。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.webp)
 
 ### 1.2 iOS 應用程式開發
 
@@ -51,7 +51,7 @@ iOS 應用程式是運行在 iPhone 作業系統上的原生應用。它啟動�
 
 使用者輸入冰箱中目前可用的食材，應用程式使用真實的 AI API 生成可行的食譜，然後將結果儲存到本機供日後查看。這個範例完整涵蓋了真實 iOS 應用程式的核心部分，包括 UI 輸入和顯示、網路請求、資料解析、本機儲存，以及最終在真實裝置上安裝和運行。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.webp)
 
 - 從原型到原生應用的整體思路
 
@@ -109,7 +109,7 @@ iOS 應用程式只能在 macOS 上開發和編譯。這是 Apple 平台的硬�
 4. 開啟它，然後按照提示重新啟動裝置
 5. 重新啟動後，解鎖裝置並確認啟用開發者模式
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.webp)
 
 如果你的 iPhone 之前從未連接到 Xcode 或其他開發工具，你可能會發現**開發者模式**沒有出現在**隱私權與安全性**下。這不是系統問題——只是開發者模式尚未被觸發。
 
@@ -122,7 +122,7 @@ iOS 應用程式只能在 macOS 上開發和編譯。這是 Apple 平台的硬�
 
 完成以上步驟後，開發者模式只需啟用一次。之後使用 Xcode 進行真機除錯時不需要重複此配置。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.webp)
 
 ### 2.2 所需軟體
 
@@ -195,17 +195,17 @@ Trae 是本教學中進行開發工作的主要環境。你會將整個 iOS 專�
 6. Storage：選擇 Core Data（用於後續儲存食譜歷史）
 7. 其他選項保持預設
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16-private-redacted.webp)
 
 點擊 **Next** 並選擇專案儲存位置。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17-cropped.webp)
 
 ### 3.4 認識建立後的專案結構
 
 專案建立後，Xcode 會自動開啟工作區。此時你不需要理解每個檔案。你只需要認識幾個關鍵部分。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.webp)
 
 在預設專案中，你會看到：
 
@@ -227,7 +227,7 @@ Trae 是本教學中進行開發工作的主要環境。你會將整個 iOS 專�
 
 如果一切正常，模擬器會顯示一個可以成功啟動的空白應用程式。首次編譯可能需要較長時間。在後續章節中，我們透過先使用 HTML 原型來減少等待時間。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.webp)
 
 要停止應用程式，點擊 Run 按鈕旁的 **Stop**。
 
@@ -247,7 +247,7 @@ Trae 是本教學中進行開發工作的主要環境。你會將整個 iOS 專�
 
 你需要做的很簡單：**在 Trae 中開啟你剛才建立的 iOS 專案資料夾。**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.webp)
 
 ## 第 4 章：AI 輔助開發實踐 - 從零建置 FridgeChef
 
@@ -289,7 +289,7 @@ Trae 是本教學中進行開發工作的主要環境。你會將整個 iOS 專�
 
 生成後，快速瀏覽文件並確認功能點是否符合你的預期。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23-terminal-cropped.webp)
 
 ### 4.2 第二階段：視覺原型
 
@@ -320,7 +320,7 @@ Trae 是本教學中進行開發工作的主要環境。你會將整個 iOS 專�
 
 生成後，在檔案列表中找到 `index.html` 並直接在瀏覽器中開啟。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.webp)
 
 在這個階段，重點不是每個細節是否完美。重點是**頁面結構是否合理、主要元素是否齊全、整體方向是否正確。**
 
@@ -358,15 +358,15 @@ HTML 原型確定後，**將確認的介面翻譯成 SwiftUI。**
 介面完成後，應用程式還只是一個顯示層。接下來我們需要連接真實的 AI 能力。本教學使用 **SiliconFlow** 提供的大模型服務：
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.webp)
 
 SiliconFlow 提供與 OpenAI API 規範相容的 API，因此使用標準的網路請求從 iOS 專案中呼叫非常方便。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.webp)
 
 開始之前，你需要在網站上註冊一個帳號並建立 API Key。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.webp)
 
 這個 Key 將用於後續的模型呼叫。
 
@@ -401,7 +401,7 @@ SiliconFlow 提供與 OpenAI API 規範相容的 API，因此使用標準的網�
 1. 開啟 `FridgeChef.xcdatamodeld`
 2. 建立一個新的 Entity，命名為 `RecipeEntity`
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.webp)
 
 3. 新增以下屬性：
    1. `id`：**UUID**
@@ -412,7 +412,7 @@ SiliconFlow 提供與 OpenAI API 規範相容的 API，因此使用標準的網�
    6. `timestamp`：**Date**
    7. `colorIndex`：**Integer 16**
 
-      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
+      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.webp)
 
 **第二步：讓 AI 寫邏輯程式碼**
 
@@ -434,7 +434,7 @@ Attributes：id、name、difficulty、timestamp、colorindex、cookTime、desc
 
 最後一步是為應用程式準備一個合適的圖示。這裡我們使用 **Lovart** 來生成圖示素材：[https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.webp)
 
 📋 **複製到 Lovart 的提示詞：**
 
@@ -448,15 +448,15 @@ Attributes：id、name、difficulty、timestamp、colorindex、cookTime、desc
 
 生成後，將圖片裁切為 1024x1024 並拖入 Xcode 中的 `Assets.xcassets` -> `AppIcon`。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.webp)
 
 再次運行應用程式，你現在會看到一個完整的、可辨識的真實 iOS 應用程式。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.webp)
 
 ### 4.7 第七階段：進階體驗升級
 
@@ -541,13 +541,13 @@ HTML 版本確認後，你就可以開始修改 iOS 專案了。
 
 首次連接時，手機會顯示**信任此電腦？**。點擊信任並輸入解鎖密碼。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40-device-redacted.webp)
 
 在 Xcode 的裝置列表中，選擇你的 iPhone，然後再次點擊 **Run**。
 
 此時，你應該能在手機的主畫面上看到 **FridgeChef** 的圖示，並且可以正常開啟和使用。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.webp)
 
 這一步標誌著一次完整 iOS 開發閉環的完成。
 
@@ -566,7 +566,7 @@ HTML 版本確認後，你就可以開始修改 iOS 專案了。
 4. **邏輯錯誤**
    應用程式不閃退，但行為不對——例如按鈕沒有回應或資料沒有刷新。
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.webp)
 
 當任何錯誤出現時，你只需要**將完整的錯誤訊息原封不動地複製到 Trae 的聊天框中。**在了解專案上下文的情況下，Trae 可以幫你進行除錯。
 
@@ -725,7 +725,7 @@ Apple 主要從以下方面審核應用程式：
 
 ## 第 7 章：總結
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.webp)
 
 恭喜！至此，你已經親自走完了從 0 到 1 的完整 iOS 應用程式開發流程。從準備環境、運行專案，到逐步落地介面、功能、資料和真機測試，所有關鍵階段都已順利完成。更重要的是，你不是靠背誦 Swift 語法走到這裡的——而是將大部分實作交給了 AI。無論你的背景是什麼，每一次這樣的嘗試都會讓你更加流暢，你會發現 iOS 開發其實沒有想像中那麼困難。即使你之前一行程式碼都不會寫，你仍然可以建置屬於自己的應用程式。
 

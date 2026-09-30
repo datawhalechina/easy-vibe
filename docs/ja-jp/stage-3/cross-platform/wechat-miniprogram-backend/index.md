@@ -9,7 +9,7 @@ description: '動作済みのミニプログラムに、信頼できる本人確
 
 Northstar Service Hub という会員向けサポート窓口を作ります。利用者がチケットを登録し、別の端末でも同じ記録を確認できる状態がゴールです。
 
-![Uber WeChat ミニプログラムの経路・注文・決済画面](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.png)
+![Uber WeChat ミニプログラムの経路・注文・決済画面](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/wechat-uber-mini-program.webp)
 
 ## 1. フロントは入口、バックエンドは判断者
 

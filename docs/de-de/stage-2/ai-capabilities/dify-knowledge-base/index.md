@@ -45,7 +45,7 @@ Um KI vom Chat-Partner zum digitalen Mitarbeiter zu machen, müssen wir ihr drei
 
 Dies ist der Grundentwurf eines KI-Agenten (AI Agent): eine automatisierte Einheit mit Ziel, Wissen, Werkzeugen und Ausführungspfad.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > Hinweis: Was in der aktuellen Branche als einfache Version eines „Agenten" bezeichnet wird, meist meist eine erweiterte Anwendung, die auf der Kombination aus LLM + Werkzeugen + Wissensdatenbank basiert, und keinen selbstständig planenden Agenten im eigentlichen Sinne. Einfache Agenten verfügen zwar nicht über echte Schlussfolgerungs- und Langzeitplanungsfähigkeiten, reichen jedoch aus, um eine Vielzahl von Automatisierungsszenarien im Unternehmensumfeld zu unterstützen. Wir werden in späteren Kapiteln ausführlich auf echte, selbstständig planende und handelnde Agenten eingehen.
 
@@ -61,7 +61,7 @@ Eine Lösung hierfür ist: Retrieval-Augmented Generation (RAG).
 
 Der Grundgedanke von RAG ist: Wenn ein Nutzer eine Frage stellt, sucht das System zunächst in der Unternehmens-Wissensdatenbank nach den Textfragmenten, die semantisch am stärksten mit der Frage verwandt sind (z. B. ein Abschnitt aus dem Produkthandbuch oder eine Klausel aus den HR-Richtlinien). Diese Fragmente werden dann als Kontext in die Eingabe des großen Modells „eingefügt", um es dazu zu bringen, die Antwort auf der Grundlage realer Dokumente zu generieren.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 Bildquelle: [https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@ Wenn man sich nur auf die freie Schlussfolgerung eines großen Sprachmodells ver
 
 Dies führt zu einem fortgeschritteneren KI-Anwendungsparadigma: dem KI-Workflow (AI Workflow).
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 Ein Workflow bedeutet, eine komplexe Aufgabe in mehrere geordnete, konfigurierbare und automatisch ausführbare Teilschritte zu zerlegen und ihre logischen Beziehungen – wie Bedingungsprüfungen, Schleifen oder Parallelausführung – visuell oder per Code zu orchestrieren. Die Standardisierung von KI-Fähigkeiten als SOP (Standard Operating Procedure) bedeutet, die Erfahrung, wie eine Aufgabe mit KI erledigt wird, als wiederverwendbare Vorlage zu fixieren.
 
@@ -143,7 +143,7 @@ Dify positioniert sich als LLM-Anwendungsentwicklungs- und betriebsplattform mit
 
 Funktional deckt Dify visuelles Workflow-Design, Agenten-Erstellung, Wissensdatenbank-Verwaltung und Multi-Modell-Unterstützung ab. Die Plattform ermöglicht die Gestaltung komplexer Aufgabenabläufe durch Drag-and-Drop-Knoten und unterstützt die Erstellung intentionbasierter Agenten. Die Wissensdatenbank-Funktionalität sticht besonders hervor: Sie kann Dokumente in verschiedenen Formaten verarbeiten und eine effiziente Vektor-Suche durchführen. Gleichzeitig ist Dify mit zahlreichen LLMs kompatibel, darunter GPT, Claude und verschiedene Open-Source-Modelle. Die erstellten Anwendungen können per Klick als Standard-API veröffentlicht und einfach integriert werden.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 Hinsichtlich der technischen Architektur zeichnet sich Dify durch Open Source und die Möglichkeit der privaten Bereitstellung aus, mit Fokus auf Flexibilität, Skalierbarkeit und Unternehmens-Compliance. Die Zielnutzer umfassen Entwicklerteams und Business-Innovatoren; typische Anwendungsszenarien reichen von Unternehmens-Wissensdatenbanken und intelligentem Kundenservice über automatisierte Inhaltserstellung bis hin zu branchenspezifischen KI-Assistenten und unternehmensweiten KI-Plattformen.
 
@@ -185,7 +185,7 @@ Wir haben bereits grundlegende Informationen zu Dify kennengelernt. Für weitere
 
 Dify ist eine Open-Source-Plattform zur Entwicklung von LLM-Anwendungen. Sie bietet eine intuitive Oberfläche, die Agenten-Workflows, RAG-Pipelines, Werkzeugfähigkeiten, Modellverwaltung, Observabilität und weitere Funktionen vereint und dir hilft, schnell vom Prototyp in die Produktionsumgebung zu gelangen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 In Dify kannst du Große Sprachmodelle und verschiedene Werkzeuge nutzen, um „Workflows" zu erstellen. Ein Workflow verknüpft Schritte, die du sonst manuell ausführen müsstest – wie Datenabfrage, LLM-Aufrufe, Websuche, Ergebnisfilterung, Formatierung usw. – gemäß einer Geschäftslogik zu einem automatisierten, wiederverwendbaren Prozess. Ohne Workflows müsstest du bei jedem Durchlauf dieselben Inhalte per Copy & Paste an das große Modell übergeben – ineffizient, fehleranfällig und in realen Geschäftsabläufen kaum reproduzierbar.
 
@@ -200,7 +200,7 @@ Ein Beispiel: Wenn du ein Amazon- oder Douyin-E-Commerce-Shopbesitzer bist und e
 5. Bedingungsknoten: Prüft, ob die vom großen Modell generierte Antwort eine klare Garantiezeit (z. B. „1 Jahr", „3 Jahre") enthält. Wenn ja, wird der nächste Schritt ausgeführt; wenn nicht, wird „Bitte geben Sie die Produktmodellnummer an" ausgegeben.
 6. Ausgabeknoten (ähnlich ANSWER): Gibt die endgültige Antwort an den Nutzer zurück und protokolliert automatisch die Beratungsaufzeichnung in einer Tabelle.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 Während des gesamten Prozesses musst du nicht manuell die Wissensdatenbank durchsuchen, die Modellantworten wiederholt anpassen oder Daten separat erfassen – der Workflow verknüpft diese Schritte und „läuft automatisch ab". Und er ist sehr flexibel: Wenn du beispielsweise später eine neue Regel hinzufügen möchtest („Wenn der Nutzer nach dem Garantieumfang fragt, eine andere Wissensdatenbank abfragen"), fügst du einfach einen weiteren Bedingungsknoten im Workflow hinzu, ohne das gesamte System neu zu strukturieren.
 
@@ -228,7 +228,7 @@ Finde den Bereich `CREATE APP` auf der linken Seite und klicke auf `Create from 
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 Finde unter APP Type den Eintrag Chatbot (falls er anfangs nicht sichtbar ist, klicke auf die Schaltfläche „Weitere Typen anzeigen" und suche in der vollständigen Liste). Wähle Chatbot aus, gib darunter den Namen und die Beschreibung der Anwendung ein und klicke abschließend auf Erstellen.
 
@@ -246,7 +246,7 @@ Rechts befindet sich das Debug-Fenster, in dem du nach dem Anpassen der Prompts 
 
 Du kannst im INSTRUCTIONS-Bereich frei Rollen-Prompts eingeben und die Auswirkungen auf den Dialog beobachten; oder du klickst auf Generate, um das große Modell automatisch einen Prompt für dich erstellen zu lassen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 Beachte, dass oben rechts verschiedene Modelloptionen angezeigt werden. Du kannst zwischen verschiedenen Dialogmodellen wechseln und ihre Unterschiede in Tonalität, logischer Schlussfolgerung und Langtextverarbeitung vergleichen, um das für deine Anforderungen passende Modell zu finden.
 
@@ -325,7 +325,7 @@ Kurz erklärt: Die Kernfunktion eines Embedding-Modells besteht darin, unstruktu
 
 Die Wahl des Embedding-Modells hat erheblichen Einfluss auf das Endergebnis der Suche (z. B. Matching-Genauigkeit, Antwortgeschwindigkeit usw.). Wir empfehlen hier vorrangig das Qwen 0.6B Embedding-Modell; du kannst auch auf die 4B- oder 8B-Version wechseln, um die Unterschiede in der Suchqualität bei verschiedenen Parametergrößen direkt zu vergleichen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 Hier siehst du auch eine weitere Modelleinstellung namens **Rerank model**, deren Standardwert **Jina-rerank-m0** ist. (Wenn du kein Campus-Student bist, wird möglicherweise ein Fehler wegen eines fehlenden Rerank-Modells angezeigt. Du musst dann ein Rerank-Modell konfigurieren, bevor du es hier verwenden kannst.)
 
@@ -335,7 +335,7 @@ Einfach ausgedrückt: Das Rerank-Modell löst das Problem, dass die „erste Aus
 
 Gleiches gilt für Empfehlungssysteme: Sie finden möglicherweise zunächst 500 „möglicherweise passende" Produkte und sortieren diese dann mit dem Rerank-Modell so, dass die Produkte, die du am wahrscheinlichsten kaufen wirst, ganz oben in der Liste stehen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 Wenn alle Einstellungen abgeschlossen sind, klicke auf **Save & Process**. Das System tritt in die Vektorisierungsphase der Wissensdatenbank ein. In dieser Phase wandelt das Embedding-Modell die segmentierten Texte in Vektordarstellungen um.
 
@@ -351,11 +351,11 @@ Klicke direkt auf den Namen der Wissensdatenbank, um den konkreten Inhalt jedes 
 
 Hier kannst du jedes unpassende Textfragment präzise bearbeiten oder löschen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 In der linken Seitenleiste wähle **Retrieval Testing**, um einen Abruftest der Wissensdatenbank durchzuführen und zu prüfen, ob die Suche ordnungsgemäß funktioniert. Jeder Test gibt mehrere Segmente mit der höchsten Ähnlichkeit zurück.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 Wenn du mehr Segmente sehen möchtest, klicke auf die Einstellungen unter `VECTOR SEARCH`:
 
@@ -375,7 +375,7 @@ Damit ist die Wissensdatenbank vollständig vorbereitet. Klicke nun in der obere
 
 In jedem Dialog siehst du nun in den Antworten die Quellen der getroffenen Wissensdatenbankeinträge. Klicke auf den entsprechenden Eintrag, um das konkret abgerufene Textfragment anzuzeigen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -399,7 +399,7 @@ Mit DSL-Dateien kannst du komplexe Workflow-Designs problemlos zwischen verschie
 
 Wenn du findest, dass deine selbst erstellten Workflows oder Agenten zu einfach sind, bietet die Dify-Plattform umfangreiche Beispielprojekte, die dir helfen, schnell zu verstehen, wie man komplexe Anwendungen erstellt. Diese Beispielprojekte decken verschiedene Geschäftsszenarien ab. Du kannst auf Explore klicken, um die von anderen erstellten Workflows zu sehen und daraus zu lernen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 Erstellen der ersten Dify-Workflow-Anwendung
 
@@ -409,7 +409,7 @@ Du kannst entweder von Grund auf neu erstellen oder direkt aus einer Vorlage sta
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 Hier sehen wir zwei Auswahlmöglichkeiten: Chatflow und Workflow. Wie solltest du dich entscheiden? Der Schlüssel liegt darin zu verstehen, ob das, was du erstellen möchtest, im Kern ein fortlaufender Dialog oder ein Aufgabenprozess ist.
 
@@ -579,7 +579,7 @@ Darüber hinaus musst du in den ADVANCED SETTINGS einen Prompt schreiben, damit 
 Wähle das passendste Label aus buy_food / complain / chitchat / other. Wenn der Nutzer sich beschwert und gleichzeitig etwas bestellt, bewerte den Kern-Intent. Steht die Unzufriedenheit im Vordergrund, ordne als complain ein. Geht es nur um eine kleine Nebenbemerkung, ist der Haupt-Intent jedoch die Bestellung, ordne als buy_food ein. Bei wirklich unklaren Fällen verwende other als Fallback.
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 Nach Abschluss der Konfiguration kannst du die Wiedergabe-Schaltfläche oben rechts verwenden, um diesen Knoten isoliert zu testen und zu überprüfen, ob er ordnungsgemäß funktioniert:
 
@@ -611,11 +611,11 @@ Beachte, dass du nach dem Ausfüllen des SYSTEM-Prompt-Parameters in jedem Knote
 
 Ebenso kannst du zum Überprüfen auf den Wiedergabe-Pfeil oben rechts im Knoten klicken, um einen konkreten Dialogtest durchzuführen und die Ergebnisse zu verifizieren – teste z. B. mit „Ich möchte einen Bubble Tea" und prüfe, ob die Antwort den Erwartungen entspricht.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 Als Nächstes verarbeiten wir die Ausgabewerte der parallelen LLM-Knoten. Im Konfigurationspanel des Knotens `Variable Aggregator` suchen wir den Bereich `ASSIGN VARIABLES` und fügen nacheinander die Antworten der zuvor erstellten Modellknoten hinzu.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 Nun müssen wir alle Ausgaben aggregieren, um das gewünschte Endergebnis zu erhalten: Nutzereingabe, Klassifikation und Antwort. Da wir Workflow statt Chatflow verwenden, steht kein Answer-Knoten zur Aggregation zur Verfügung. Wir können jedoch einen anderen Knoten wählen, um die Aggregation und Ausgabe indirekt zu realisieren. Wir wählen den Template-Knoten, geben im Variablenbereich das Nutzer-Intent-Klassifizierungsergebnis, den Nutzereingabewert und die endgültige aggregierte Antwort an und schreiben im CODE-Bereich das JSON-Format-Template für die finale Antwort:
 
@@ -658,7 +658,7 @@ Geschafft! Wir können nun testen, wie dieser Workflow funktioniert. Bei untersc
 
 Nach dem Ausführen im Test Run können wir den Ausführungsprozess des Workflows sehen. Die Klassifikation hat den korrekten Pfad genommen und das endgültige Output-Ergebnis geliefert. Damit ist der gesamte Prozess abgeschlossen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 Ausführen der ersten Vorlagen-Workflow-Anwendung
 
@@ -670,9 +670,9 @@ Nach dem Import führen wir den Workflow direkt aus und lösen die auftretenden 
 
 Auf den ersten Blick wirkt alles sehr komplex. Keine Sorge, klicke auf „Preview" oben rechts, um den Workflow auszuführen, bis ein Fehler auftritt:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 Wir müssen das Problem basierend auf dem fehlerhaften Knoten lösen. Nach dem Öffnen sehen wir, dass der Tavily API Token nicht konfiguriert wurde. Die Tavily-Such-API ist eine speziell für KI entwickelte Suchmaschine, die Echtzeit-, präzise und faktenbasierte Ergebnisse liefert. Folge nun den Hinweisen:
 
@@ -680,7 +680,7 @@ Wir müssen das Problem basierend auf dem fehlerhaften Knoten lösen. Nach dem �
 
 Nach der Konfiguration funktioniert die Suchmaschine ordnungsgemäß:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 Nach der Behebung weiterer Probleme bei den Modellaufrufen solltest du folgendes Ergebnis erhalten – eine detaillierte Suche mit dem Verständnis des großen Modells:
 
@@ -734,9 +734,9 @@ Wenn wir mit der Dify-API eine Frontend-Chat-Anwendung aufbauen möchten, müsse
 
 Erinnerst du dich an den zuvor erstellten Agenten? Klicke zuerst auf „Publish" oben rechts, dann auf „Publish Update" und schließlich auf „Access API Reference", um zur API-Dokumentation zu gelangen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 Nach dem Öffnen der API-Dokumentation suche den Abschnitt „Send Chat Message", klicke darauf und kopiere die „Request"- und „Response"-Beispiele auf der rechten Seite.
 
@@ -744,7 +744,7 @@ Warum müssen unbedingt diese beiden Teile kopiert werden? Weil sie die „Kerni
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 Nach dem Auffinden der Request- und Response-Beispiele für die Konversation benötigen wir außerdem einen API Key. Oben rechts in der Dokumentation findest du die Option „API key".
 
@@ -828,7 +828,7 @@ In dieser Phase wirst du möglicherweise feststellen, dass das generierte Progra
 
 Deine Arbeitsweise entspricht nun bereits sehr stark dem echten Entwicklungsprozess. Im Entwickleralltag begegnen wir bei der Zusammenarbeit mit großen Modellen häufig verschiedenen Problemen. Um diese besser zu lösen, müssen wir mehr Kontextinformationen bereitstellen. Neben Fehlermeldungen kannst du auch vollständigere Dokumentationsinhalte kopieren (z. B. mehr Beschreibungen im Abschnitt „Send message" auf der linken Seite der Dokumentation) und diese gemeinsam an das Modell übergeben, damit es auf Basis zusätzlicher Details eine vollständigere Lösung anbieten kann.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 Der Browser ist hier in Trae eingebettet. Du kannst auf das Kompass-Symbol oben klicken, um die Webseite in einem externen Browser im Vollbildmodus zu öffnen.
 
@@ -836,11 +836,11 @@ Der Browser ist hier in Trae eingebettet. Du kannst auf das Kompass-Symbol oben 
 
 Mit etwas Glück erhältst du beim ersten Versuch bereits eine funktionierende interaktive Frontend-Seite.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 Aufgrund der inhärenten Zufälligkeit großer Modelle kann es jedoch vorkommen, dass der einfache Dialog reibungslos funktioniert, bei Mehrfach-Dialogen jedoch Probleme auftreten. Daher empfehlen wir, Mehrfach-Dialog-Tests durchzuführen und sicherzustellen, dass das Programm auch in Szenarien mit mehreren Interaktionsrunden stabil läuft.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 Damit hast du gelernt, wie man einen einfachen Dify-Wissensdatenbank-Agenten erstellt und Trae anstelle von [z.ai](http://z.ai) verwendet, um eine interaktive Frontend-Anwendung aufzubauen. Von nun an wird Trae unser Haupt-Entwicklungswerkzeug für den Bau verschiedener Prototypen und wird [z.ai](http://z.ai) schrittweise ablösen. Du kannst versuchen, mit Trae das bisherige Snake-Spiel neu zu implementieren und sehen, welche Unterschiede in der Erfahrung du feststellst. Weiter so!
 
@@ -940,7 +940,7 @@ In dieser Entschlüsselungs-Challenge musst du folgende Aufgaben erfüllen, dami
 
 Referenz-Eingabe/Ausgabe:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Love loop Workflow Entschlüsselungs-Challenge
 
@@ -974,7 +974,7 @@ Wenn du auf das unten abgebildete Problem stößt, solltest du die Lösung in di
 
 Manchmal hast du Dify möglicherweise auf deinem eigenen Server bereitgestellt. Die externe Adresse des Servers verwendet in der Regel HTTP statt HTTPS. Wenn wir jedoch einen Dienst aufrufen, der nur HTTP unterstützt, kann eine Meldung wie die folgende erscheinen (aktiviere den F12-Browser-Debugging-Modus, um die Problempunkte zu sehen):
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 Dieses Problem tritt auf, weil wir Dify standardmäßig auf einem Server bereitgestellt haben, der nur HTTP und nicht HTTPS unterstützt. HTTPS (HyperText Transfer Protocol Secure) fügt HTTP (HyperText Transfer Protocol) eine SSL/TLS-Verschlüsselungsschicht hinzu – vereinfacht gesagt eine „sicherere Version von HTTP".
 
@@ -1044,7 +1044,7 @@ if __name__ == '__main__':
 ```
 Wenn du findest, dass deine selbst erstellten Workflows oder Agenten zu einfach sind, bietet die Dify-Plattform umfangreiche Beispielprojekte, die dir helfen, schnell zu verstehen, wie man komplexe Anwendungen erstellt. Diese Beispielprojekte decken verschiedene Geschäftsszenarien ab. Du kannst auf Explore klicken, um die von anderen erstellten Workflows zu sehen und daraus zu lernen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 Erste Dify Workflow-Anwendung erstellen
 
@@ -1054,7 +1054,7 @@ Du kannst wählen, ob du von Grund auf neu erstellen oder direkt aus einer Vorla
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 Hier sehen wir zwei Auswahlmöglichkeiten: Chatflow und Workflow. Wie soll man sich entscheiden? Der Schlüssel liegt darin, zu verstehen, ob das, was du erstellen möchtest, im Kern ein fortlaufender Dialog oder ein Aufgabenprozess ist.
 
@@ -1224,7 +1224,7 @@ Außerdem musst du in ADVANCED SETTING einen Prompt schreiben, damit das große 
 Wähle das passendste Label aus buy_food / complain / chitchat / other. Wenn der Benutzer sich beschwert und gleichzeitig bestellt, bewerte die Kernemotion. Steht die Unzufriedenheit im Vordergrund, ordne es als complain ein. Handelt es sich nur um eine leichte Kritik, aber die Hauptabsicht ist die Bestellung, ordne es als buy_food ein. Wenn es wirklich schwer zu beurteilen ist, verwende other als Standard
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 Nach Abschluss der Konfiguration kannst du oben rechts auf die Play-Taste klicken, um den Knoten separat zu testen und zu überprüfen, ob er ordnungsgemäß funktioniert:
 
@@ -1256,11 +1256,11 @@ Beachte, dass du nach dem Ausfüllen der SYSTEM-Prompt-Parameter in jedem Knoten
 
 Ebenso kannst du zur Überprüfung auf den Pfeil oben rechts am Knoten klicken, um spezifische Dialogtests durchzuführen, z. B. „Ich möchte Bubble-Tee trinken" eingeben und prüfen, ob die Antwort den Erwartungen entspricht.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 Als Nächstes verarbeiten wir die Ausgabewerte der parallelen LLMs. Im Konfigurations-Panel des `Variable Aggregator`-Knotens finden wir den Bereich `ASSIGN VARIABLES`. Klicke darauf und füge nacheinander die vorherigen Modellantworten hinzu.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 Als Nächstes müssen wir alle Ausgaben aggregieren und schließlich das gewünschte Ergebnis erhalten, einschließlich der Benutzereingabe, der Klassifizierung und der Antwort. Da wir Workflow statt Chatflow verwenden, steht uns kein Answer-Knoten zur Aggregation der Ergebnisse zur Verfügung. Wir können jedoch andere Knoten wählen, um die Aggregation und Ausgabe der Ergebnisse indirekt zu realisieren. Wähle hier den Template-Knoten, gib im Variablenbereich das Ergebnis der Benutzer-Intent-Klassifizierung, den Eingabewert des Benutzers und die endgültige Antwort der Variablenaggregation an und schreibe im CODE-Bereich die JSON-Formatvorlage der endgültigen Antwort. Wir erhalten:
 
@@ -1303,7 +1303,7 @@ Geschafft! Wir können nun versuchen, die Ergebnisse dieses Workflows zu testen.
 
 Nach dem Ausführen von Test Run können wir den Ausführungsprozess des Workflows sehen. Die Klassifizierung hat den korrekten Pfad gewählt und das endgültige Output-Ergebnis erhalten. Damit ist der gesamte Prozess abgeschlossen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 Erste Vorlagen-Workflow-Anwendung ausführen
 
@@ -1315,9 +1315,9 @@ Nach dem Import im ersten Schritt direkt ausführen. Wir lösen dann die spezifi
 
 Auf den ersten Blick wirkt alles sehr komplex. Keine Sorge, klicke einfach oben rechts auf Preview, um den Workflow auszuführen, bis ein Fehler auftritt:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 Wir müssen das Problem basierend auf dem fehlerhaften Knoten lösen. Nach dem Öffnen sehen wir, dass der Tavily API Token nicht konfiguriert ist. Die Tavily Search API ist eine speziell für KI entwickelte Suchmaschine, die Echtzeit-, genaue und faktenbasierte Ergebnisse liefert. Folge nun den Anweisungen:
 
@@ -1325,7 +1325,7 @@ Wir müssen das Problem basierend auf dem fehlerhaften Knoten lösen. Nach dem �
 
 Nach der Verarbeitung funktioniert die Suchmaschine ordnungsgemäß:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 Nach der weiteren Behebung von Problemen durch Modellaufrufe solltest du folgendes Ergebnis erhalten — eine detaillierte Suche mit dem Verständnis des großen Modells:
 
@@ -1379,9 +1379,9 @@ Wenn wir eine Frontend-Chat-Anwendung mit der Dify-API erstellen möchten, müss
 
 Erinnerst du dich an den zuvor erstellten Agenten? Klicke zuerst oben rechts auf „Publish", dann auf „Publish Update" und schließlich auf „Access API Reference", um zur API-Dokumentation zu gelangen.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 Nach dem Öffnen der API-Dokumentation suche den Abschnitt „Send Chat Message", klicke darauf und finde rechts die „Request"- und „Response"-Beispiele und kopiere sie.
 
@@ -1389,7 +1389,7 @@ Warum ist es zwingend erforderlich, diese beiden Teile zu kopieren? Weil sie die
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 Nachdem wir die Request- und Response-Beispiele für die Konversation gefunden haben, müssen wir noch einen API Key abrufen. Oben rechts in der Dokumentation findest du die Option „API key".
 
@@ -1473,7 +1473,7 @@ In dieser Phase stellst du möglicherweise fest, dass das generierte Programm ni
 
 Deine Arbeitsweise ist jetzt bereits sehr nahe an einem echten Entwicklungsprozess. In der täglichen Entwicklung treffen wir bei der Zusammenarbeit mit großen Modellen oft auf verschiedene Probleme. Um diese besser zu lösen, müssen wir mehr Kontextinformationen bereitstellen. Neben der Bereitstellung von Fehlerinformationen kannst du auch vollständigere Dokumentationsinhalte kopieren (z. B. mehr Erklärungen im Abschnitt „Send message" auf der linken Seite der Dokumentation) und diese dem Modell übergeben, damit es auf Basis weiterer Details eine vollständigere Lösung anbieten kann.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 Der Browser ist zu diesem Zeitpunkt in Trae eingebettet. Du kannst oben auf das Kompass-Symbol klicken, um die Webseite in einem externen Browser im Vollbild zu öffnen.
 
@@ -1481,11 +1481,11 @@ Der Browser ist zu diesem Zeitpunkt in Trae eingebettet. Du kannst oben auf das 
 
 Mit etwas Glück erhältst du beim ersten Versuch eine funktionsfähige interaktive Frontend-Seite.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 Aufgrund der inhärenten Zufälligkeit großer Modelle kann es jedoch vorkommen, dass in einem Einzel-Dialog alles reibungslos verläuft, bei Mehrfach-Dialogen jedoch Anomalien auftreten. Daher wird empfohlen, Mehrfach-Dialog-Tests durchzuführen, um sicherzustellen, dass das Programm auch in Mehrfach-Interaktions-Szenarien stabil läuft.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 Damit hast du gelernt, wie man einen einfachen Dify Knowledge-Base-Agenten erstellt und Trae anstelle von [z.ai](http://z.ai) verwendet, um ein interaktives Frontend zu erstellen. Von nun an wird Trae unser wichtigstes Entwicklungswerkzeug beim Bau verschiedener Prototypen und wird [z.ai](http://z.ai) schrittweise ersetzen. Du kannst versuchen, das frühere Snake-Spiel mit Trae neu zu implementieren und sehen, welche Unterschiede es gibt. Viel Erfolg!
 
@@ -1585,7 +1585,7 @@ In dieser Entschlüsselungs-Challenge musst du folgende Herausforderungen absolv
 
 Referenz-Ein-/Ausgabe:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Love loop workflow Workflow-Entschlüsselungs-Challenge
 
@@ -1619,7 +1619,7 @@ Nur wenn du auf das in der folgenden Abbildung gezeigte Problem stößt, solltes
 
 Manchmal hast du Dify möglicherweise auf deinem eigenen Server deployt, aber die externe Adresse des Servers ist normalerweise HTTP statt HTTPS. Wenn wir jedoch einen Dienst anfordern, der nur HTTP unterstützt, siehst du möglicherweise einen Hinweis wie diesen (aktiviere den F12-Browser-Debug-Modus und überprüfe die problematische Stelle):
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 Dieses Problem tritt auf, weil wir Dify standardmäßig auf einem Server deployen, der nur HTTP und nicht HTTPS unterstützt. HTTPS (HyperText Transfer Protocol Secure) fügt HTTP (HyperText Transfer Protocol) eine SSL/TLS-Verschlüsselungsschicht hinzu. Man kann es sich einfach als eine „sicherere Version von HTTP" vorstellen.
 

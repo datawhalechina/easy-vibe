@@ -15,7 +15,7 @@
 
 Android 應用程式是運行在 Android 作業系統上的原生應用。與小程式不同，它不依賴像微信這樣的宿主。它直接在系統層級運行，擁有自己的主畫面圖示，啟動快速、體驗流暢，並且可以深度存取藍牙、感測器、背景服務等系統級功能。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.webp)
 
 ## 1.2 Android 應用程式開發
 
@@ -32,7 +32,7 @@ Android 開發是指建置此類應用程式的整個過程。在本教學採用
 **第一種方式：原生開發**
 這是 Google 官方推薦的路線。你直接使用 **Kotlin** 和 **Jetpack Compose** 進行開發。其優勢在於效能最佳，且能完整存取手機硬體。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.webp)
 
 **第二種方式：跨平台開發**
 例如 Flutter 或 React Native。其核心思想是「寫一份程式碼，同時產生 Android 和 iOS 應用程式」。
@@ -43,7 +43,7 @@ Android 開發是指建置此類應用程式的整個過程。在本教學採用
 **本教學的選擇：原生開發（Kotlin + Compose）** 結合 AI 工具進行編碼。
 原因很簡單：原生 Jetpack Compose 程式碼結構非常清晰，非常適合 AI 理解和生成。我們不需要從零開始手寫程式碼，而是用自然語言引導 Trae 生成高品質的原生程式碼。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.webp)
 
 ## 1.4 本教學涵蓋的 Android 應用程式開發步驟
 
@@ -265,7 +265,7 @@ app/
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image20.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.webp)
 
 **第四步：運行應用程式**
 
@@ -273,7 +273,7 @@ app/
 
 幾秒鐘內，你應該會看到模擬器螢幕亮起，中央顯示一個白色木魚圖形，上方有「功德：0」的文字。試著點擊它，看看數字是否增加、動畫是否生效。這就是你的第一個 Android 應用程式。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.webp)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image23.png)
 
@@ -404,7 +404,7 @@ AI 生成的程式碼不保證第一次就完美無缺，就像頂尖工程師�
 2. 開啟 **開發人員選項**，啟用 **無線調試**。
 3. 點擊 **無線調試** 進入詳細設定，然後選擇 **使用 QR code 配對裝置**。手機會開啟掃描器畫面。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
 
 **第二步：在電腦上配對**
 
@@ -424,7 +424,7 @@ AI 生成的程式碼不保證第一次就完美無缺，就像頂尖工程師�
 
 4. 點擊 ▶️ 運行應用程式
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.webp)
 
 ## 4.2 USB 有線調試
 
@@ -462,7 +462,7 @@ Mac 使用者可以跳過此步驟，因為 macOS 通常可以直接識別手機
 
 開啟手機設定，進入開發人員選項，開啟 **USB 調試**。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.webp)
 
 ### 4.2.4 在手機上安裝 USB 驅動程式授權
 
@@ -478,7 +478,7 @@ Mac 使用者可以跳過此步驟，因為 macOS 通常可以直接識別手機
 
 現在試著在手機上點擊木魚，感受真實的震動馬達回饋。這才是完整的 Vibe Coding 體驗。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
 
 # 5 將應用程式打包為 APK
 
@@ -496,9 +496,9 @@ Mac 使用者可以跳過此步驟，因為 macOS 通常可以直接識別手機
 
 你可以直接透過微信或 QQ 發送給任何 Android 手機，接收者即可安裝使用。注意，除錯版本不是正式發行版本。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.webp)
 
 ## 5.2 打包正式版本
 
@@ -598,7 +598,7 @@ vivo 開發者聯盟：https://dev.vivo.com.cn
 
 **以騰訊應用寶為例：** 造訪騰訊開放平台並點擊註冊。建議直接使用 QQ 帳號登入。請注意，QQ 帳號一旦綁定就難以解綁，所以最好使用專門的工作 QQ 帳號。按照提示選擇「個人開發者」或「企業開發者」，上傳身分證照片並完成人臉驗證。通過驗證後，點擊 **建立應用程式** 開始。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image62.png)
 
@@ -652,7 +652,7 @@ vivo 開發者聯盟：https://dev.vivo.com.cn
 
 在 `Production` 選單下，點擊 `Create new release`，上傳你的 `.aab` 檔案，儲存並提交審核。Google Play 的審核通常很快（1-3 天）。一旦通過，你的應用程式就可以在全球下載了。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.webp)
 
 _如果你已經完成開發者帳號註冊，這部影片教學可以引導你完成剩餘流程：_ [完整工作流程：上傳 Android 應用程式到 Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
@@ -668,7 +668,7 @@ _如果你已經完成開發者帳號註冊，這部影片教學可以引導你�
 
 我非常期待你的下一個作品。繼續加油！
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.webp)
 
 **_祝你在 Android 開發的世界裡玩得愉快！_**
 

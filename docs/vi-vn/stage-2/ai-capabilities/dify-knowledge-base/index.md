@@ -45,7 +45,7 @@ Nó có thể trả lời "làm thế nào để tra cứu đơn hàng?", nhưng
 
 Đây chính là dạng ban đầu của AI Agent (Tác nhân AI): một đơn vị tự động hóa có mục tiêu, kiến thức, công cụ và đường dẫn thực thi.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.webp)
 
 > Lưu ý: "Agent" phiên bản đơn giản mà ngành hiện tại nhắc đến, chủ yếu chỉ các ứng dụng tăng cường dựa trên sự kết hợp LLM + công cụ + cơ sở tri thức, không phải là Agent có khả năng tự lập kế hoạch. Agent đơn giản tuy không có khả năng suy luận và lập kế hoạch dài hạn thực sự, nhưng đã đủ để hỗ trợ lượng lớn các kịch bản tự động hóa cấp doanh nghiệp. Chúng ta sẽ giới thiệu chi tiết về Agent thực sự có khả năng tự lập kế hoạch và hành động trong các chương sau.
 
@@ -61,7 +61,7 @@ Giải pháp lúc này là: Retrieval-Augmented Generation (RAG).
 
 Ý tưởng cơ bản của RAG là: khi người dùng đặt câu hỏi, hệ thống đầu tiên truy xuất một số đoạn văn bản có ngữ nghĩa liên quan nhất đến câu hỏi từ cơ sở tri thức doanh nghiệp (ví dụ một đoạn trong sổ tay sản phẩm, một điều khoản trong quy định nhân sự), sau đó chèn các đoạn này làm ngữ cảnh vào đầu vào của mô hình lớn, hướng dẫn nó tạo câu trả lời dựa trên tài liệu thực tế.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.webp)
 
 Nguồn hình: [https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@ Nếu chỉ dựa vào một mô hình ngôn ngữ lớn tự do suy luận, ch�
 
 Điều này dẫn ra mô hình ứng dụng AI cao cấp hơn: AI Workflow.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.webp)
 
 Workflow là việc chia một nhiệm vụ phức tạp thành nhiều bước con có thứ tự, có thể cấu hình, có thể tự động thực thi, và thông qua phương thức trực quan hoặc code để编排 quan hệ logic giữa chúng, như判断 điều kiện, vòng lặp hoặc thực thi song song. Đưa khả năng AI vào SOP (Standard Operating Procedure) có nghĩa là cố định hóa kinh nghiệm về cách sử dụng AI hoàn thành một nhiệm vụ thành một mẫu có thể tái sử dụng.
 
@@ -143,7 +143,7 @@ Cả ba nền tảng này đều hỗ trợ xuất Agent AI đã xây dựng dư
 
 Về chức năng, Dify bao quát编排 workflow trực quan, xây dựng Agent, quản lý cơ sở tri thức, hỗ trợ đa mô hình, v.v. Nền tảng cho phép thiết kế quy trình nhiệm vụ phức tạp thông qua kéo thả nút, và hỗ trợ tạo Agent dựa trên ý định. Chức năng cơ sở tri thức nổi bật, có thể xử lý nhiều định dạng tài liệu và thực hiện truy xuất vector hiệu quả. Đồng thời, Dify tương thích và hỗ trợ nhiều LLM bao gồm GPT, Claude và nhiều mô hình mã nguồn mở, ứng dụng đã xây dựng có thể phát hành thành API tiêu chuẩn bằng một cú nhấp để dễ dàng tích hợp.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.webp)
 
 Về kiến trúc kỹ thuật, Dify nổi bật với đặc điểm mã nguồn mở và có thể triển khai riêng, nhấn mạnh tính linh hoạt, khả năng mở rộng và tuân thủ cấp doanh nghiệp. Đối tượng người dùng mục tiêu bao gồm đội nhóm nhà phát triển và nhà đổi mới kinh doanh, kịch bản ứng dụng điển hình bao gồm cơ sở tri thức doanh nghiệp và chăm sóc khách hàng thông minh, tự động hóa sáng tạo nội dung, trợ lý AI lĩnh vực chuyên biệt và trung tâm AI doanh nghiệp.
 
@@ -185,7 +185,7 @@ Chúng ta đã tìm hiểu thông tin giới thiệu cơ bản về Dify trướ
 
 Dify là một nền tảng mã nguồn mở dùng để phát triển ứng dụng LLM. Nó cung cấp giao diện trực quan, kết hợp Agent workflow, pipeline RAG, khả năng công cụ, quản lý mô hình, khả năng quan sát, v.v., giúp bạn nhanh chóng đi từ nguyên mẫu đến môi trường sản xuất.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.webp)
 
 Bạn có thể sử dụng mô hình ngôn ngữ lớn và nhiều công cụ có chức năng khác nhau trong Dify để xây dựng "workflow". Sở dĩ gọi là workflow, là vì nó nối串 các thao tác — ví dụ truy xuất dữ liệu, gọi mô hình lớn, tìm kiếm web, lọc kết quả, định dạng, v.v. — theo logic kinh doanh thành một quy trình tự động, có thể tái sử dụng. Nếu không có workflow, mỗi lần bạn đều phải sao chép dán cùng một nội dung cho mô hình lớn, rất kém hiệu quả, dễ sai và khó tái sử dụng trong kinh doanh thực tế.
 
@@ -200,7 +200,7 @@ Ví dụ, nếu bạn là chủ một cửa hàng thương mại điện tử Am
 5. Nút điều kiện: kiểm tra xem câu trả lời do mô hình lớn tạo có chứa thời gian bảo hành rõ ràng hay không (ví dụ "1 năm", "3 năm"), nếu có thì tiếp tục bước tiếp theo, nếu không thì yêu cầu trả lời "vui lòng cung cấp mã sản phẩm".
 6. Nút đầu ra (tương tự ANSWER): trả về câu trả lời cuối cùng cho người dùng, và tự động ghi lại bản ghi tư vấn lần này vào bảng.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.webp)
 
 Trong toàn bộ quá trình, bạn không cần phải tự tra cơ sở tri thức, điều chỉnh liên tục câu trả lời của mô hình, hay ghi chép dữ liệu riêng — workflow sẽ "nối" các bước này để "chạy tự động". Và nó rất linh hoạt: ví dụ, nếu sau này bạn muốn thêm một quy tắc mới "khi người dùng hỏi về phạm vi bảo hành, gọi một cơ sở tri thức khác", chỉ cần thêm một nút điều kiện vào workflow, mà không cần tái cấu trúc toàn bộ hệ thống.
 
@@ -228,7 +228,7 @@ Tìm khu vực `CREATE APP` ở bên trái, nhấp `Create from Blank`.
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.webp)
 
 Tìm Chatbot trong APP Type (nếu lúc đầu không thấy, có thể nhấp nút "xem thêm loại", sau đó tìm trong danh sách đầy đủ). Sau khi chọn Chatbot, nhập tên và mô tả ứng dụng ở bên dưới, cuối cùng nhấp tạo.
 
@@ -246,7 +246,7 @@ Bên phải là cửa sổ gỡ lỗi, bạn có thể trò chuyện với Agent
 
 Bạn có thể tự do nhập prompt vai trò trong khu vực INSTRUCTIONS, quan sát hiệu quả hội thoại; cũng có thể nhấp Generate, để mô hình lớn tự động giúp bạn tạo prompt.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.webp)
 
 Lưu ý ở góc trên bên phải sẽ xuất hiện nhiều tùy chọn mô hình khác nhau, điều này có nghĩa là bạn có thể nhấp chuyển đổi các mô hình hội thoại khác nhau, từ đó so sánh sự khác biệt của chúng về giọng điệu, suy luận logic, xử lý văn bản dài, v.v., tìm mô hình phù hợp nhất với nhu cầu của bạn.
 
@@ -325,7 +325,7 @@ Giải thích đơn giản: chức năng cốt lõi của mô hình Embedding l�
 
 Lựa chọn mô hình Embedding sẽ ảnh hưởng đáng kể đến hiệu quả truy xuất cuối cùng (ví dụ độ chính xác khớp, tốc độ phản hồi, v.v.). Ở đây, chúng tôi khuyến nghị ưu tiên sử dụng mô hình Embedding Qwen 0.6B, bạn cũng có thể chuyển sang phiên bản 4B hoặc 8B để so sánh trực tiếp sự khác biệt về hiệu quả truy xuất dưới các quy mô tham số khác nhau.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.webp)
 
 Tại đây, bạn còn sẽ thấy một cài đặt mô hình khác gọi là **Rerank model**, giá trị mặc định là **Jina-rerank-m0**. (Nếu bạn không phải là sinh viên trong trường, lúc này bạn có thể thấy lỗi thiếu mô hình Rerank, bạn cần cấu hình mô hình rerank ở phần mô hình để có thể bật sử dụng tại đây)
 
@@ -335,7 +335,7 @@ Hiểu đơn giản: mô hình Rerank chính là dùng để giải quyết vấ
 
 Hệ thống gợi ý cũng tương tự: nó có thể đầu tiên tìm ra 500 sản phẩm "có thể phù hợp với bạn", sau đó sắp xếp qua mô hình Rerank, khiến sản phẩm bạn có khả năng mua nhất xếp ở đầu danh sách.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.webp)
 
 Khi tất cả cài đặt hoàn tất, nhấp **Save & Process**, hệ thống sẽ vào giai đoạn vector hóa cơ sở tri thức. Trong giai đoạn này, mô hình Embedding sẽ chuyển đổi văn bản đã cắt thành biểu diễn vector.
 
@@ -351,11 +351,11 @@ Nhấp trực tiếp vào tên cơ sở tri thức, có thể xem nội dung c�
 
 Tại đây, bạn có thể chỉnh sửa hoặc xóa chính xác bất kỳ đoạn văn bản nào không phù hợp.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.webp)
 
 Trong thanh bên trái, chọn **Retrieval Testing** để kiểm tra thu hồi cơ sở tri thức, xem truy xuất có hoạt động bình thường không. Mỗi lần kiểm tra sẽ trả về một số đoạn có độ tương tự cao nhất.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.webp)
 
 Nếu bạn muốn xem thêm kết quả đoạn, cần nhấp vào cài đặt `VECTOR SEARCH`:
 
@@ -375,7 +375,7 @@ Bây giờ phần cơ sở tri thức đã hoàn toàn sẵn sàng. Tiếp theo,
 
 Lúc này, trong mỗi vòng hội thoại, bạn đều có thể thấy nguồn cơ sở tri thức được trúng trong câu trả lời. Nhấp vào mục tương ứng để xem đoạn văn bản cụ thể đã truy xuất.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.webp)
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
@@ -399,7 +399,7 @@ Thông qua việc sử dụng file DSL, bạn có thể dễ dàng di chuyển h
 
 Nếu bạn cảm thấy workflow hoặc agent mình xây dựng quá đơn giản, nền tảng Dify cung cấp nhiều dự án mẫu phong phú, giúp bạn nhanh chóng hiểu cách xây dựng ứng dụng phức tạp. Các dự án mẫu này bao quát nhiều kịch bản kinh doanh khác nhau. Bạn có thể nhấp Explora để xem workflow người khác xây dựng để học hỏi.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.webp)
 
 ## 2.6 Tạo ứng dụng Dify Workflow đầu tiên
 
@@ -409,7 +409,7 @@ Bạn có thể chọn tạo từ trắng, hoặc trực tiếp tạo từ mẫu
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.webp)
 
 Ở đây chúng ta sẽ thấy hai lựa chọn,分别是 Chatflow và Workflow, làm thế nào để chọn giữa hai cái này? Điểm mấu chốt là bạn cần hiểu điều bạn muốn xây dựng, cốt lõi là hội thoại liên tục hay quy trình nhiệm vụ.
 
@@ -579,7 +579,7 @@ Ngoài ra, bạn còn cần viết prompt trong ADVANCED SETTING, để mô hìn
 Chọn một nhãn phù hợp nhất từ buy_food / complain / chitchat / other. Nếu người dùng vừa phàn nàn vừa gọi món, hãy ưu tiên xác định cảm xúc cốt lõi, nếu trọng tâm là bày tỏ sự không hài lòng, nên phân vào complain. Nếu chỉ là than vãn nhẹ nhưng ý định chính là đặt hàng, thì phân vào buy_food. Nếu thực sự khó xác định, sử dụng other làm phương án dự phòng
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.webp)
 
 Sau khi thiết lập xong, bạn có thể nhấp nút phát ở góc trên bên phải để kiểm tra riêng nút này có hoạt động bình thường hay không:
 
@@ -611,11 +611,11 @@ Bạn là trợ lý gọi món nhà hàng, chỉ giỏi các chủ đề liên q
 
 Tương tự, để đảm bảo mọi thứ thuận lợi, bạn có thể nhấp vào mũi tên phát ở góc trên bên phải của nút để kiểm tra đối thoại cụ thể xác minh hiệu quả, ví dụ nói "tôi muốn uống trà sữa trân châu", xem phản hồi có đúng kỳ vọng không.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.webp)
 
 Tiếp theo chúng ta xử lý giá trị đầu ra của LLM song song, trong bảng cấu hình của nút `Variable Aggregator`, tìm khu vực `ASSIGN VARIABLES` (phân bổ biến), nhấp vào sau đó lần lượt thêm các phản hồi mô hình lớn trước đó vào.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.webp)
 
 Tiếp theo chúng ta cần tổng hợp tất cả các đầu ra, cuối cùng nhận được kết quả mong muốn, bao gồm đầu vào của người dùng, phân loại và phản hồi. Do chúng ta sử dụng Workflow thay vì Chatflow, nên không có nút Answer để chọn cho việc tổng hợp kết quả, chúng ta có thể chọn các nút khác để gián tiếp thực hiện tổng hợp và đầu ra kết quả, lúc này chọn nút Template, trong phần biến chỉ định kết quả phân loại ý định người dùng, giá trị đầu vào người dùng, phản hồi cuối cùng của biến tổng hợp, và viết mẫu định dạng json phản hồi cuối cùng trong CODE, chúng ta có thể nhận được:
 
@@ -658,7 +658,7 @@ Hoàn thành, chúng ta có thể thử chạy hiệu quả của bộ workflow 
 
 Sau khi chạy trong Test Run, chúng ta có thể thấy quá trình thực thi của workflow, lúc này đã đi theo đúng quy trình dựa trên phân loại, và nhận được kết quả output cuối cùng. Đến đây, toàn bộ quy trình hoàn thành.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.webp)
 
 ## 2.7 Chạy ứng dụng Workflow mẫu đầu tiên
 
@@ -670,9 +670,9 @@ Sau khi nhập, bước đầu tiên chạy trực tiếp, chúng ta sẽ giải
 
 Vừa vào cảm thấy rất phức tạp, không sao, chúng ta nhấp Preview ở góc trên bên phải để chạy workflow, cho đến khi xuất hiện lỗi:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.webp)
 
 Chúng ta cần giải quyết vấn đề dựa trên nút báo lỗi, sau khi mở phát hiện là chưa cấu hình API Token của Tavily, API tìm kiếm của Tavily là một công cụ tìm kiếm được thiết kế riêng cho AI, cung cấp kết quả thời gian thực, chính xác và dựa trên sự thật. Lúc này thao tác theo hướng dẫn:
 
@@ -680,7 +680,7 @@ Chúng ta cần giải quyết vấn đề dựa trên nút báo lỗi, sau khi 
 
 Sau khi xử lý, công cụ tìm kiếm có thể hoạt động bình thường:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.webp)
 
 Tiếp tục sửa chữa vấn đề do gọi mô hình gây ra, bạn sẽ nhận được kết quả như sau, tìm kiếm chi tiết kết hợp với khả năng hiểu của mô hình lớn:
 
@@ -734,9 +734,9 @@ Nếu chúng ta muốn dùng API của Dify để xây dựng một ứng dụng
 
 Còn nhớ Agent vừa tạo không? Đầu tiên nhấp "Publish" ở góc trên bên phải, sau đó nhấp "Publish Update", cuối cùng nhấp "Access API Reference" để vào tài liệu API.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.webp)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.webp)
 
 Sau khi vào tài liệu API, tìm phần "Send Chat Message", nhấp vào, sau đó tìm ví dụ "Request" và "Response" ở bên phải và sao chép ra.
 
@@ -744,7 +744,7 @@ Tại sao nhất định phải sao chép hai phần nội dung này? Vì chúng
 
 ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.webp)
 
 Sau khi tìm thấy ví dụ Request và Response cần thiết cho cuộc hội thoại, chúng ta còn cần lấy một API Key. Ở góc trên bên phải tài liệu, bạn sẽ thấy tùy chọn liên quan đến "API key".
 
@@ -828,7 +828,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 Lúc này cách làm việc của bạn đã rất gần với quá trình phát triển thực tế. Trong phát triển hàng ngày, chúng ta thường xuyên gặp phải nhiều vấn đề khi hợp tác với mô hình lớn, để giải quyết tốt hơn các vấn đề này, chúng ta cần cung cấp thêm thông tin ngữ cảnh. Ngoài việc cung cấp thông tin lỗi, bạn còn có thể sao chép nội dung tài liệu đầy đủ hơn (ví dụ sao chép thêm mô tả trong phần "Send message" ở bên trái tài liệu), gửi tất cả cho mô hình, để nó đưa ra giải pháp hoàn chỉnh hơn dựa trên nhiều chi tiết hơn.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.webp)
 
 Lúc này trình duyệt được nhúng bên trong Trae. Bạn có thể nhấp vào biểu tượng la bàn ở phía trên, mở trang web toàn màn hình trong trình duyệt bên ngoài.
 
@@ -836,11 +836,11 @@ Lúc này trình duyệt được nhúng bên trong Trae. Bạn có thể nhấp
 
 Nếu may mắn, bạn có thể nhận được một trang frontend có thể tương tác bình thường trong lần thử đầu tiên.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.webp)
 
 Tuy nhiên, do bản thân mô hình lớn có tính ngẫu nhiên nhất định, đôi khi bạn có thể thuận lợi trong một vòng đối thoại, nhưng xuất hiện bất thường trong đối thoại nhiều vòng. Do đó, khuyến nghị bạn tiến hành kiểm tra đối thoại nhiều vòng, đảm bảo chương trình cũng hoạt động ổn định trong kịch bản tương tác nhiều vòng.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.webp)
 
 Đến đây, bạn đã học được cách xây dựng một Agent cơ sở tri thức Dify đơn giản, và sử dụng Trae thay thế [z.ai](http://z.ai) để xây dựng một frontend tương tác. Từ giờ trở đi, Trae sẽ trở thành công cụ phát triển chính khi chúng ta xây dựng nhiều nguyên mẫu, từng bước thay thế [z.ai](http://z.ai). Bạn có thể thử dùng Trae để tái thực hiện trò chơi rắn ăn quả trước đó, xem sẽ có trải nghiệm khác biệt như thế nào. Cố lên!
 
@@ -940,7 +940,7 @@ Trong thử thách giải mã này, bạn cần hoàn thành các thử thách s
 
 Tham khảo đầu vào và đầu ra:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.webp)
 
 3. Thử thách giải mã Love loop workflow
 
@@ -974,7 +974,7 @@ Nếu bạn gặp vấn đề như hình dưới, mới cần tham khảo giải
 
 Đôi khi có thể bạn triển khai Dify trên máy chủ của mình, nhưng địa chỉ bên ngoài của máy chủ thường là http thay vì https, nhưng khi chúng ta yêu cầu một dịch vụ chỉ hỗ trợ HTTP, bạn có thể thấy gợi ý tương tự như sau (bật chế độ thông tin gỡ lỗi F12 trình duyệt, xem điểm có vấn đề):
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.webp)
 
 Nguyên nhân xuất hiện vấn đề này, là vì chúng ta mặc định triển khai Dify trên một máy chủ chỉ hỗ trợ HTTP mà không hỗ trợ HTTPS. HTTPS (HyperText Transfer Protocol Secure) là HTTP (Giao thức truyền tải siêu văn bản) cộng thêm lớp mã hóa SSL/TLS, có thể đơn giản hiểu là "phiên bản HTTP an toàn hơn".
 

@@ -21,7 +21,7 @@ Shopify POS منصة بيع ومخزون للمتاجر، وDiscord يشارك �
 
 ![Discord على Android](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/discord-react-native-roles.png)
 
-![MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 ## 3. أنشئ المشروع والقائمة
 

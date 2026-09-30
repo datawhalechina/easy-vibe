@@ -21,7 +21,7 @@ During finals week in January 2026, while I was buried in review, I suddenly got
 
 Three hours? I stared at the screen and felt like my brain was overheating. Once again, this guy had reset my understanding of what "fast" meant. Then he sent me a pile of materials. I opened them and realized that while I recognized every single character, the full sentences might as well have been written in another language. I wanted to ask him, but I was afraid of exposing how much of a beginner I was. So I ended up doing this: he threw jargon at me, I quietly pasted it into Doubao, waited for an explanation, and then cautiously replied to him. My learning process had turned from "person-to-person" into "person-to-AI-to-person."
 
-![The first website Mao Xiaolv built](../../zh-cn/vibe-stories/images/story-2/image1.png)
+![The first website Mao Xiaolv built](../../zh-cn/vibe-stories/images/story-2/image1.webp)
 
 ## 02 On My First Day in the Group Chat, I Chose Silence
 
@@ -29,7 +29,7 @@ The group-based learning program started in January, and Mao Xiaolv pulled me in
 
 Later, Mao Xiaolv, another new friend, and I formed a smaller group of three, and I finally started to relax. The atmosphere in that group made me especially happy: nobody cared how old you were, what job you had, or whether you were impressive. If a problem came up, we just talked about it as equals and figured it out together. Most of the time everyone was busy and quiet, but you could still feel that people were putting in effort behind the scenes. It was strangely grounding. In school, I rarely experienced this feeling of not being defined by labels and simply moving forward with others because of shared interest.
 
-![A quiet evening of figuring things out alone](../../zh-cn/vibe-stories/images/story-2/image2.png)
+![A quiet evening of figuring things out alone](../../zh-cn/vibe-stories/images/story-2/image2.webp)
 
 ## 03 "Slacking Off" During Finals Actually Made Me Learn Harder
 
@@ -39,7 +39,7 @@ It felt very different from the standard-answer learning atmosphere of high scho
 
 Each day's task check-in felt like leveling up in a game. Learning became more active, and I learned much more because of it.
 
-![Studying during finals week](../../zh-cn/vibe-stories/images/story-2/image3.png)
+![Studying during finals week](../../zh-cn/vibe-stories/images/story-2/image3.webp)
 
 ## 04 In a Moment of Excitement, I Dug Myself a Huge Hole
 
@@ -57,7 +57,7 @@ Then I talked to a friend who loves digital gadgets, and one sentence suddenly c
 
 That was it. The direction became clear instantly. The AI feature should live inside the product description. Later, an intelligent pricing feature naturally followed.
 
-![The campus secondhand marketplace demo](../../zh-cn/vibe-stories/images/story-2/image4.png)
+![The campus secondhand marketplace demo](../../zh-cn/vibe-stories/images/story-2/image4.webp)
 
 ## 05 I Felt Like the Worst Student in the Livestream, but Got the Most Valuable Encouragement
 
@@ -67,7 +67,7 @@ So I took a deep breath and presented my demo, feeling both brave and uneasy. Wh
 
 But to my surprise, the teachers did not dismiss me at all. Instead, they gave me a lot of specific, practical suggestions. That was the moment I realized that even something imperfect could still be taken seriously. Before this, I had almost never been given a chance to calmly present a project that was still immature.
 
-![Working on the project together with other builders](../../zh-cn/vibe-stories/images/story-2/image5.png)
+![Working on the project together with other builders](../../zh-cn/vibe-stories/images/story-2/image5.webp)
 
 ## 06 What I Gained Was Much More Than a Demo
 

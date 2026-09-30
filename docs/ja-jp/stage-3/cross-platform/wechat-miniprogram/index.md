@@ -78,7 +78,7 @@ WeChatミニプログラムは、WeChat内に存在するアプリとして見�
 
 1. ブラウザで https://mp.weixin.qq.com を開き、WeChat公式プラットフォームを開き、WeChatでQRコードをスキャンしてログイン。
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.webp)
 
 2. ホームページで「Mini Program」を選択し、メールアドレス、電話番号、主体タイプ（個人または企業）を含む登録プロンプトを完了。
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)

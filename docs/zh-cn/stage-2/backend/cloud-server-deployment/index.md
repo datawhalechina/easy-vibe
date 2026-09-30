@@ -135,7 +135,7 @@ import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArt
 
 ## 1.4 Railway — 部署后端的最佳体验（常驻服务）
 
-![Railway 首页](./images/railway.png)
+![Railway 首页](./images/railway.webp)
 
 **官网**：https://railway.app
 
@@ -162,7 +162,7 @@ import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArt
 
 ## 1.5 Zeabur — 国内开发者友好的 PaaS
 
-![Zeabur 首页](./images/zeabur.png)
+![Zeabur 首页](./images/zeabur.webp)
 
 **官网**：https://zeabur.com
 
@@ -197,7 +197,7 @@ import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArt
 
 ## 1.7 Fly.io — 真正 7×24 在线的免费容器
 
-![Fly.io 首页](./images/flyio.png)
+![Fly.io 首页](./images/flyio.webp)
 
 **官网**：https://fly.io
 
@@ -250,7 +250,7 @@ import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArt
 
 ### 腾讯云轻量应用服务器（推荐新手）
 
-![腾讯云轻量应用服务器](./images/tencent-lighthouse.png)
+![腾讯云轻量应用服务器](./images/tencent-lighthouse.webp)
 
 **官网**：https://cloud.tencent.com/product/lighthouse
 
@@ -282,7 +282,7 @@ import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArt
 
 ### 阿里云轻量应用服务器
 
-![阿里云轻量应用服务器](./images/aliyun-lighthouse.png)
+![阿里云轻量应用服务器](./images/aliyun-lighthouse.webp)
 
 **官网**：https://www.aliyun.com/product/swas
 

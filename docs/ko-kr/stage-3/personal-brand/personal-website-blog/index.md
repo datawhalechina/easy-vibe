@@ -18,7 +18,7 @@
 
 WeChat Moments, Zhihu 또는 LinkedIn과 달리, 어떤 플랫폼의 추천 알고리즘에도 의존하지 않으며, 플랫폼이 폐쇄되어도 사라지지 않습니다. Google과 Google Scholar에 인덱싱될 수 있는 장기적이고 안정적인 **개인 쇼케이스 공간**입니다. 일반적으로 약력, 출판물, 프로젝트 및 기술 블로그가 포함됩니다.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 왜 직접 웹사이트를 만들어야 할까요?
 
@@ -232,7 +232,7 @@ Git이 배달부라면, **GitHub는 클라우드 창고이자 쇼룸**입니다.
 1. **공식 웹사이트 방문**: [https://github.com/](https://github.com/)을 엽니다.
 2. **Sign up 클릭**: 오른쪽 상단의 **"Sign up"**을 클릭합니다.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **정보 입력**
 4. **이메일**: 실제 이메일 주소를 입력합니다.
@@ -404,8 +404,8 @@ Jekyll 의존성을 설치해야 합니다. 네트워크 환경을 고려하여,
 
 제공해 드린 이미지 에셋 `University_of_Pennsylvania.jpg`와 `Queen_University.jpg`를 해당 프로젝트 폴더, 보통 `/assets/images/badges/`에 넣습니다.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **2단계: 지시 보내기**
 
@@ -462,8 +462,8 @@ Trae의 오른쪽 채팅 상자에 다음 프롬프트를 입력합니다. 수�
 제공해 드린 표지 이미지, 즉 `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg` 및 `Neuralink_sewing_machine_robot.jpg`를 다운로드하여 `/assets/images/covers/` 아래에 배치하고, 해당 폴더에 원래 있던 예제 이미지를 제거합니다.
 
 ![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **2단계: 지시 보내기**
 
@@ -972,7 +972,7 @@ WeChat Moments에 묻혀버릴 생각도 여기에 영구적으로 남을 수 �
 실험하세요. 망가뜨리세요. 다시 세우세요.
 가장 마음에 드는 모양이 될 때까지 계속 그렇게 하세요.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***나아가세요, 그리고 세상이 당신을 보게 하세요.***
 

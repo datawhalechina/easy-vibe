@@ -45,7 +45,7 @@
 
 这就是 AI 智能体（AI Agent）的雏形：一个具备目标、知识、工具和执行路径的自动化单元。
 
-![](images/image1.png)
+![](images/image1.webp)
 
 > 注意：当前业界所说的简单版本的“智能体”，大多指基于 LLM + 工具 + 知识库组合而成的增强型应用，并非所谓能够自主规划的智能体。简单的智能体虽不具备真正的推理与长期规划能力，但已足以支撑大量企业级自动化场景。我们将会在之后的章节详细介绍真正的具备自主规划和行动能力的智能体。
 
@@ -61,7 +61,7 @@
 
 RAG 的基本思路是：在用户提问时，系统首先从企业知识库中检索出与问题语义最相关的若干文本片段（例如产品手册中的某一段、HR制度中的某一条款），然后将这些片段作为上下文“注入”到大模型的输入中，引导它基于真实资料生成回答。
 
-![](images/image2.png)
+![](images/image2.webp)
 
 图片来源：[https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -96,7 +96,7 @@ RAG 的基本思路是：在用户提问时，系统首先从企业知识库中�
 
 这就引出了更高阶的 AI 应用范式：AI 工作流（AI Workflow）。
 
-![](images/image4.png)
+![](images/image4.webp)
 
 工作流是指将一个复杂任务拆解为多个有序、可配置、可自动执行的子步骤，并通过可视化或代码方式编排它们之间的逻辑关系，如条件判断、循环或并行执行。将 AI 能力 SOP 化（即标准化操作流程），意味着把如何用 AI 完成某项任务的经验固化为可重复使用的模板。
 
@@ -143,7 +143,7 @@ Dify 定位是LLM应用开发与运营平台，致力于提供AI应用从构思�
 
 在功能上，Dify覆盖了可视化工作流编排、智能体构建、知识库管理、多模型支持等功能。平台允许通过拖拽节点设计复杂任务流程，并支持创建基于意图的Agent。其知识库功能突出，能处理多种格式文档并进行高效的向量检索。同时，Dify兼容支持包括GPT、Claude及众多开源模型在内的多种LLM，构建的应用可一键发布为标准API便于集成。
 
-![](images/image7.png)
+![](images/image7.webp)
 
 技术架构方面，Dify以开源和可私有化部署为特色，强调灵活性、扩展性及企业级合规。目标用户包括开发者团队和业务创新者，典型应用场景涵盖企业知识库与智能客服、内容创作自动化、垂直领域AI助手以及企业AI中台。
 
@@ -185,7 +185,7 @@ n8n是一个通用的可编程工作流自动化平台，其核心定位是连�
 
 Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界面，将 Agent 工作流、RAG 流水线、工具能力、模型管理、可观测性等功能结合在一起，帮助你快速地从原型走向生产环境。
 
-![](images/image11.png)
+![](images/image11.webp)
 
 你可以在 Dify 中使用大语言模型和各种功能不同的工具来搭建“工作流”。所谓工作流，就是把原本需要你手动一步步完成的操作——例如数据检索、大模型调用、网页搜索、结果过滤、格式整理等——按照业务逻辑串联起来，变成一个自动化、可复用的流程。如果没有工作流，每次你都需要把同样的内容复制粘贴给大模型，非常低效、容易出错，也难以在真实业务中复用。
 
@@ -200,7 +200,7 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 5. 条件节点：检查大模型生成的回答中是否包含清晰的质保时间（例如“1 年”、“3 年”），如果有则继续下一步，如果没有则让它回复“请提供产品型号”。
 6. 输出节点（类似 ANSWER）：将最终答案返回给用户，并自动把本次咨询记录到表格中。
 
-![](images/image12.png)
+![](images/image12.webp)
 
 在整个过程中，你不需要手动去翻知识库、反复调整模型的回答、或单独记录数据——工作流会把这些步骤“连起来自动跑”。并且它非常灵活：例如，如果你之后想加一个新规则“当用户问质保范围时，调用另一个知识库”，只需要在工作流中多加一个条件节点，而无需重构整个系统。
 
@@ -228,7 +228,7 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 
 ![](images/image15.png)
 
-![](images/image16.png)
+![](images/image16.webp)
 
 在 APP Type 中找到 Chatbot（如果一开始没看到，可以点击“查看更多类型”的按钮，然后在完整列表中找到）。选择 Chatbot 之后，在下方输入应用的名称和描述，最后点击创建。
 
@@ -246,7 +246,7 @@ Dify 是一个用于开发 LLM 应用的开源平台。它提供了直观的界�
 
 你可以在 INSTRUCTIONS 区域自由输入角色提示词，观察对话效果；也可以点击 Generate，让大模型自动帮你生成提示词。
 
-![](images/image19.png)
+![](images/image19.webp)
 
 注意右上角会出现许多不同模型的选项，这意味着你可以点击切换不同的对话模型，从而比较它们在语气、逻辑推理、长文本处理等方面的差异，寻找最适合你需求的模型。
 
@@ -325,7 +325,7 @@ Dify 能够灵活接入来自 OpenAI、Azure、Anthropic 等主流服务商的�
 
 Embedding 模型的选择会显著影响最终的检索效果（例如匹配准确度、响应速度等）。在这里，我们推荐优先使用 Qwen 0.6B 的 Embedding 模型，你也可以切换到 4B 或 8B 版本，直观对比不同参数规模下检索效果的差异。
 
-![](images/image33.png)
+![](images/image33.webp)
 
 在此处，你还会看到另一个模型设置叫做 **Rerank model** ，默认值是 **Jina-rerank-m0** 。（如果你非校园内的学生，此时你可能会看到 Rerank 模型缺失的报错，你需要在模型处配置 rerank 模型才能在此处启用使用）
 
@@ -335,7 +335,7 @@ Rerank 模型的主要作用，是对“初步筛选出的候选结果”进行�
 
 推荐系统同理：它可能首先找出 500 个“可能适合你”的商品，再通过 Rerank 模型排序，让你最可能购买的商品排在列表顶部。
 
-![](images/image34.png)
+![](images/image34.webp)
 
 当所有设置完成后，点击 **Save & Process** ，系统就会进入知识库向量化阶段。在这一阶段，Embedding 模型会把切分后的文本转换为向量表示。
 
@@ -351,11 +351,11 @@ Rerank 模型的主要作用，是对“初步筛选出的候选结果”进行�
 
 在这里，你可以对任意不合适的文本片段进行精确的编辑或删除操作。
 
-![](images/image38.png)
+![](images/image38.webp)
 
 在左侧边栏中，选择 **Retrieval Testing** 可以对知识库进行召回测试，检查检索是否正常工作。每次测试会返回若干相似度最高的切片。
 
-![](images/image39.png)
+![](images/image39.webp)
 
 如果你希望看到更多的切片结果，需要点击 `VECTOR SEARCH` 设置：
 
@@ -375,7 +375,7 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 此时，在每一轮对话中，你都可以在回答中看到被命中的知识库来源。点击对应条目即可查看检索到的具体文本片段。
 
-![](images/image44.png)
+![](images/image44.webp)
 
 ![](images/image45.png)
 
@@ -399,7 +399,7 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 如果你觉得自己搭建的工作流或者智能体过于简单，Dify平台提供了丰富的示例项目，帮助你快速了解如何构建复杂应用。这些示例项目涵盖了多种业务场景。你可以点击 Explora 查看别人构建的工作流进行学习。
 
-![](images/image48.png)
+![](images/image48.webp)
 
 ## 2.6 创建第一个 Dify Workflow 应用
 
@@ -409,7 +409,7 @@ Score Threshold 则是一个“得分阈值”：只有相似度得分大于或�
 
 ![](images/image49.png)
 
-![](images/image50.png)
+![](images/image50.webp)
 
 在这里我们会看见两个选择，分别是 Chatflow 与 Workflow，这两者该如何选择呢？关键是你需要理解你所要构建的，其核心是持续对话，还是任务流程。
 
@@ -579,7 +579,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 从 buy_food / complain / chitchat / other 中选择一个最合适的标签。如果用户在抱怨的同时也点了餐，请优先判断其核心情绪，若重点在于表达不满，应归为 complain。如果只是轻微吐槽但主要意图是下单，则归为 buy_food。若实在难以判断，使用 other 作为兜底
 ```
 
-![](images/image62.png)
+![](images/image62.webp)
 
 设定完成后，你可以在右上角的播放键单独测试该节点是否能够正常运行：
 
@@ -611,11 +611,11 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 同样的，为了确保一切顺利，你可以点击该节点右上角的播放箭进行具体的对话测试验证效果，比如对话说“我想要喝珍珠奶茶”等，查看回复是否符合预期。
 
-![](images/image65.png)
+![](images/image65.webp)
 
 接下来我们处理并行 LLM 的输出值，我们在 `Variable Aggregator` 节点的配置面板中，找到 `ASSIGN VARIABLES`（分配变量）区域，点击后依次将之前的大模型回复加入即可。
 
-![](images/image66.png)
+![](images/image66.webp)
 
 接下来我们需要对所有的输出进行聚合，最后得到我们想要的结果，包含用户的输入、分类、以及回复。由于我们使用的是 Workflow 而不是 Chatflow，故没有 Answer 节点选择进行结果的聚合，我们能够选择其他节点变相实现结果的聚合与输出，此时选择 Template 节点，在变量部分指定用户意图分类结果、用户的输入值、变量聚合的最终回复，并且在 CODE 中写入最后回复的 json 格式模板，我们可以得到：
 
@@ -658,7 +658,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 在 Test Run 中运行后，我们能够看到工作流的执行过程，此时根据分类走了正确的流程，并得到了最后的 output 结果。至此，全流程完成。
 
-![](images/image69.png)
+![](images/image69.webp)
 
 ## 2.7 运行第一个模板 Workflow 应用
 
@@ -670,9 +670,9 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 刚进入感觉十分复杂，没关系，我们点击右上角的 Preview 运行工作流，直到报错出现：
 
-![](images/image71.png)
+![](images/image71.webp)
 
-![](images/image72.png)
+![](images/image72.webp)
 
 我们需要根据报错的节点解决问题，打开后发现是没有配置 Tavily 的 API Token，Tavily 的搜索API 是一个专为 AI 设计的搜索引擎，提供实时、准确和事实性的结果。此时根据提示操作：
 
@@ -680,7 +680,7 @@ Dify 中提供了多种节点，你可以先了解每个节点的基本功能。
 
 经过处理后，搜索引擎能够正常工作：
 
-![](images/image74.png)
+![](images/image74.webp)
 
 继续修正模型调用导致的问题后，你应该能够得到如下结果，结合大模型理解下的详细搜索：
 
@@ -734,9 +734,9 @@ Builder with MCP 模式则为 Agent 提供了更多工具（例如让大模型�
 
 还记得刚才创建的那个 Agent 吗？ 先点击右上角的 “Publish”，然后点击 “Publish Update”，最后点击 “Access API Reference” 进入 API 文档。
 
-![](images/image83.png)
+![](images/image83.webp)
 
-![](images/image84.png)
+![](images/image84.webp)
 
 进入 API 文档后，找到 “Send Chat Message” 这一部分，点击进入，然后在右侧找到 “Request” 和 “Response” 示例并复制出来。
 
@@ -744,7 +744,7 @@ Builder with MCP 模式则为 Agent 提供了更多工具（例如让大模型�
 
 ![](images/image85.png)
 
-![](images/image86.png)
+![](images/image86.webp)
 
 在找到会话所需的 Request 和 Response 示例之后，我们还需要获取一个 API Key。在文档右上角，你会看到 “API key” 相关选项。
 
@@ -828,7 +828,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 此时你的工作方式已经非常接近真实开发过程了。在日常开发中，我们经常会在与大模型协作时遇到各种问题，为了更好地解决这些问题，我们需要提供更多上下文信息。除了提供错误信息，你还可以复制更完整的文档内容（例如在文档左侧 “Send message” 部分中复制更多说明），一并交给模型，让它在更多细节的基础上给出更完整的解决方案。
 
-![](images/image90.png)
+![](images/image90.webp)
 
 此时浏览器是嵌在 Trae 内部的。你可以点击顶部的指南针图标，把网页在外部浏览器中全屏打开。
 
@@ -836,11 +836,11 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 如果运气不错，你可能在第一次尝试时就能获得一个可以正常交互的前端页面。
 
-![](images/image92.png)
+![](images/image92.webp)
 
 不过，由于大模型本身具有一定随机性，有时你可能在单轮对话中一切顺利，但在多轮对话时出现异常。因此，建议你进行多轮对话测试，确保程序在多轮交互场景下也能稳定运行。
 
-![](images/image93.png)
+![](images/image93.webp)
 
 到这里，你已经学会了如何构建一个简单的 Dify 知识库 Agent，并使用 Trae 替代 [z.ai](http://z.ai) 来搭建一个交互式前端。从现在开始，Trae 将成为我们构建各种原型时的主要开发工具，逐步取代 [z.ai](http://z.ai)。你可以尝试用 Trae 重新实现之前的贪吃蛇游戏，看看会有什么不同的体验。加油！
 
@@ -940,7 +940,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 参考输入输出：
 
-![](images/image95.png)
+![](images/image95.webp)
 
 3. Love loop workflow 工作流解密挑战
 
@@ -974,7 +974,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 有时候可能你会把 Dify 部署在自己的服务器，但是服务器的对外地址通常都是 http 而不是 https 的，但当我们请求一个只支持 HTTP 的服务时，你可能会看到类似这样的提示（启用 F12 浏览器调试信息模式，查看有问题的点）：
 
-![](images/image98.png)
+![](images/image98.webp)
 
 出现这个问题的原因，是因为我们默认把 Dify 部署在一台只支持 HTTP 而不支持 HTTPS 的服务器上。 HTTPS（HyperText Transfer Protocol Secure）是在 HTTP（超文本传输协议）的基础上增加了 SSL/TLS 加密层，可以简单理解为“更安全版的 HTTP”。
 

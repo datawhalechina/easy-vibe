@@ -12,7 +12,7 @@
 
 真实产品不只是在微信里放几个网页。Uber 的微信小程序允许出境用户查询路线、叫车并使用微信支付，不需要另外下载 Uber App 或重新准备当地支付方式。
 
-![Uber 微信小程序中的真实叫车页面](images/wechat-uber-mini-program.png)
+![Uber 微信小程序中的真实叫车页面](images/wechat-uber-mini-program.webp)
 
 图片与案例来源：[Uber 携手微信上线官方小程序](https://www.tencent.com/en-us/articles/2202137.html)。从这张图可以看到，地图、路线、车辆状态和支付都留在微信里的同一段流程中。
 
@@ -64,7 +64,7 @@
 
 1. 在浏览器地址栏输入 https://mp.weixin.qq.com ，打开微信公众平台网页，用你的微信扫码登录。
 
-![微信小程序操作截图](images/image1.png)
+![微信小程序操作截图](images/image1.webp)
 
 2. 在首页选择「小程序」，按照页面提示完成注册流程，填写邮箱、手机号以及主体类型（个人或企业）。
    ![微信小程序操作截图](images/image2.png)

@@ -356,7 +356,7 @@ La teoría no basta. La forma más rápida de dominar la ingeniería de prompts 
 
 Recomendamos usar [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat) (o cualquier plataforma LLM con la que estés familiarizado) y completar los siguientes **3 desafíos** para validar las técnicas que has aprendido.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 Consejo**：Haz clic en "Add Model for Comparison" en la barra lateral derecha para comparar dos modelos en pantalla dividida (por ejemplo, Qwen-Max vs Llama-3) con el mismo Prompt.
 

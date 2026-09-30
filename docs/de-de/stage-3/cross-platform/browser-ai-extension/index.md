@@ -16,9 +16,9 @@ Sie haben definitiv schon Browser-Erweiterungen genutzt: Werbeblocker, Übersetz
 
 Stellen Sie sich Folgendes vor: Sie öffnen einen 5.000 Wörter langen technischen Blog-Beitrag, klicken einmal auf die Extension-Schaltfläche, und wenige Sekunden später erscheint eine prägnante deutsche Zusammenfassung im Seitenpanel. Genau das werden wir bauen.
 
-![Platzhalter: Ein Vorschaubild, das eine lange Artikel-Webseite links und eine KI-generierte Zusammenfassung im Chrome-Seitenpanel rechts zeigt](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![Platzhalter: Ein Vorschaubild, das eine lange Artikel-Webseite links und eine KI-generierte Zusammenfassung im Chrome-Seitenpanel rechts zeigt](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![Platzhalter: Ein Vorschaubild, das eine lange Artikel-Webseite links und eine KI-generierte Zusammenfassung im Chrome-Seitenpanel rechts zeigt](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![Platzhalter: Ein Vorschaubild, das eine lange Artikel-Webseite links und eine KI-generierte Zusammenfassung im Chrome-Seitenpanel rechts zeigt](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 Die Grundarchitektur einer Chrome-Extension
 
@@ -44,8 +44,8 @@ Nutzer klickt auf das Extension-Symbol
     -> Service Worker sendet Zusammenfassung zurück an Seitenpanel zur Anzeige
 ```
 
-![Platzhalter: Ein Architektur-Ablaufdiagramm, das zeigt, wie Content Script, Service Worker und Side Panel Nachrichten aneinander weitergeben](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![Platzhalter: Ein Architektur-Ablaufdiagramm, das zeigt, wie Content Script, Service Worker und Side Panel Nachrichten aneinander weitergeben](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![Platzhalter: Ein Architektur-Ablaufdiagramm, das zeigt, wie Content Script, Service Worker und Side Panel Nachrichten aneinander weitergeben](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![Platzhalter: Ein Architektur-Ablaufdiagramm, das zeigt, wie Content Script, Service Worker und Side Panel Nachrichten aneinander weitergeben](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 Zwei KI-Optionen: Cloud-API vs. eingebaute Browser-KI
 
@@ -425,8 +425,8 @@ Das Debuggen von Chrome-Erweiterungen unterscheidet sich etwas vom Debuggen norm
 3. Ihren Extension-Namen auswählen
 4. Dann können Sie `console`-Ausgaben vom Content Script sehen
 
-![Platzhalter: Screenshot von Chrome DevTools, der zeigt, wie man verschiedene Ausführungskontexte wählt, um verschiedene Extension-Komponenten zu debuggen](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![Platzhalter: Screenshot von Chrome DevTools, der zeigt, wie man verschiedene Ausführungskontexte wählt, um verschiedene Extension-Komponenten zu debuggen](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![Platzhalter: Screenshot von Chrome DevTools, der zeigt, wie man verschiedene Ausführungskontexte wählt, um verschiedene Extension-Komponenten zu debuggen](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![Platzhalter: Screenshot von Chrome DevTools, der zeigt, wie man verschiedene Ausführungskontexte wählt, um verschiedene Extension-Komponenten zu debuggen](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 Häufige Fehlerbehebung
 

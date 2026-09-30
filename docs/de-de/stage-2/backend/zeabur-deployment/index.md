@@ -38,7 +38,7 @@ Plattformen wie CloudBase, Vercel, Netlify und Zeabur existieren, um genau diese
 
 In vielen Faellen verbindest du einfach ein GitHub-Repository oder laedst deinen Code hoch, und die Plattform erledigt den Rest.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 ---
 
@@ -231,7 +231,7 @@ Zeabur ist eine aufstrebende Bereitstellungsplattform, besonders geeignet fuer k
 
 ## Dify mit Zeabur bereitstellen
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 Oeffne die [Zeabur-Konsole](https://zeabur.com/projects) und klicke auf "New Project".
 
@@ -268,11 +268,11 @@ Nach kurzer Wartezeit siehst du die Dify-Anmeldeseite.
 
 ### HTML-Framework verwenden
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Lass Trae ein HTML-basiertes Schlangenspiel generieren und lade den Ordner ueber Zeaburs lokale Bereitstellung hoch.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 Klicke auf "Network" > "Generate Domain", um eine oeffentliche Adresse zu erstellen.
 
@@ -284,17 +284,17 @@ Klicke auf "Network" > "Generate Domain", um eine oeffentliche Adresse zu erstel
 
 ### React-Framework verwenden
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 React-Anwendungen erfordern eine Anpassung des Standard-Ports, da Zeabur nur Anwendungen auf Port 8080 unterstuetzt.
 
 Aendere den Standard-Port von 3000 auf 8080, z. B. indem du Trae anweist: "Bitte aendere den Standard-Port dieses React-Projekts auf 8080."
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -306,7 +306,7 @@ Da aktivierte Serverressourcen Kosten verursachen, solltest du ungenutzte Dienst
 
 Klicke auf "Settings" im Projekt, scrolle nach unten:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image22.png)
 

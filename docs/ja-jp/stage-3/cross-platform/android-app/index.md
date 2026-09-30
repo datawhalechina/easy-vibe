@@ -15,7 +15,7 @@
 
 Androidアプリとは、Androidオペレーティングシステム上で動作するネイティブアプリケーションです。ミニプログラムとは異なり、WeChatのようなホストに依存しません。システムレベルで直接動作し、独自のホームスクリーンアイコンを持ち、起動が速く、操作感が滑らかで、Bluetooth、センサー、バックグラウンドサービスなどのシステムレベル機能に深くアクセスできます。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.webp)
 
 ## 1.2 Androidアプリ開発とは
 
@@ -32,7 +32,7 @@ Android開発とは、このようなアプリケーションを構築するプ�
 **第一の方法：ネイティブ開発**
 これはGoogle公式の推奨ルートです。直接**Kotlin**と**Jetpack Compose**を使って開発します。利点は最高のパフォーマンスとスマホハードウェアへの完全なアクセスです。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.webp)
 
 **第二の方法：クロスプラットフォーム開発**
 例えばFlutterやReact Nativeです。核心的なアイデアは「一つのコードベースを書いて、AndroidとiOSの両方のアプリを生成する」ことです。
@@ -43,7 +43,7 @@ Android開発とは、このようなアプリケーションを構築するプ�
 **このチュートリアルの選択：ネイティブ開発（** **Kotlin + Compose）**をAIツールと組み合わせてコーディングします。
 理由はシンプルです：ネイティブのJetpack Composeコードは構造が非常に明確で、AIが理解して生成するのに非常に適しています。ゼロからコードを手書きする必要はありません。代わりに、自然言語でTraeをガイドして、高品質なネイティブコードを生成させます。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.webp)
 
 ## 1.4 このチュートリアルで取り上げるAndroidアプリ開発手順
 
@@ -265,7 +265,7 @@ Android Studioに戻り、右ツールバーの**Device Manager**を見つけて
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image20.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.webp)
 
 **ステップ4：アプリの実行**
 
@@ -273,7 +273,7 @@ Android Studioに戻り、右ツールバーの**Device Manager**を見つけて
 
 数秒以内に、エミュレーターの画面が点灯し、中央に白い木魚のグラフィックとその上に「功徳：0」というテキストが表示されるはずです。タップして数値が増えるか、アニメーションが動くか試してみてください。これがあなたの最初のAndroidアプリです。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.webp)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image23.png)
 
@@ -404,7 +404,7 @@ Runをクリックした直後にアプリがクラッシュする、または�
 2. **開発者向けオプション**を開き、**ワイヤレスデバッグ**を有効にします。
 3. **ワイヤレスデバッグ**をタップして詳細に入り、**QRコードでデバイスをペアリング**を選択します。スマホにスキャナー画面が開きます。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
 
 **ステップ2：パソコンでのペアリング**
 
@@ -424,7 +424,7 @@ Runをクリックした直後にアプリがクラッシュする、または�
 
 4. ▶️ Runをクリックしてアプリを実行
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.webp)
 
 ## 4.2 USB有線デバッグ
 
@@ -462,7 +462,7 @@ OPPOスマホを例にします：設定 -> スマホについて -> Androidバ�
 
 スマホの設定を開き、開発者向けオプションに入り、**USBデバッグ**をオンにします。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.webp)
 
 ### 4.2.4 スマホでのUSBドライバー認証のインストール
 
@@ -478,7 +478,7 @@ OPPOスマホを例にします：設定 -> スマホについて -> Androidバ�
 
 今、スマホで木魚をタップして、本物の振動モーターの応答を感じてみてください。これが完全なVibe Coding体験です。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
 
 # 5 アプリをAPKとしてパッケージング
 
@@ -496,9 +496,9 @@ OPPOスマホを例にします：設定 -> スマホについて -> Androidバ�
 
 WeChatやQQ経由で任意のAndroidスマホに直接送信でき、受信者はインストールして使用できます。デバッグ版はリリース版ではないことに注意してください。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.webp)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49-sidebar-cropped.webp)
 
 ## 5.2 リリース版のパッケージング
 
@@ -598,7 +598,7 @@ Gionee Developer Alliance：https://open.appgionee.com
 
 **Tencent MyAppを例にします：**Tencent Open Platformにアクセスし、登録をクリックします。QQアカウントで直接ログインすることをお勧めします。QQアカウントが一度バインドされると解除が困難なため、専用の仕事用QQアカウントを使用するのが良いでしょう。指示に従い、「個人開発者」または「企業開発者」を選択し、身分証明書の写真をアップロードし、顔認証を完了します。認証が通ったら、**アプリを作成**をクリックして開始します。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.webp)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image62.png)
 
@@ -652,7 +652,7 @@ Google Playの登録と支払いにはまだいくつかの参入障壁がある
 
 `Production`メニューの下で、`Create new release`をクリックし、`.aab`ファイルをアップロードし、保存して審査に提出します。Google Playの審査は通常速いです（1〜3日）。承認されると、世界中でアプリがダウンロード可能になります。
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.webp)
 
 _開発者アカウントの登録が完了している場合は、このビデオチュートリアルで残りのプロセスをガイドできます：_ [Full workflow: uploading an Android app to Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
@@ -668,7 +668,7 @@ _開発者アカウントの登録が完了している場合は、このビデ�
 
 あなたの次の作品を楽しみにしています。頑張ってください！
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.png)
+![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.webp)
 
 **_Android開発の世界で楽しんでください！_**
 

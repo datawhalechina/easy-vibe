@@ -23,7 +23,7 @@
 
 CloudBase、Vercel、Zeabur のような「ローコードデプロイプラットフォーム」は、まさにこれらの複雑な問題を解決するために誕生しました。これらは「サーバーの購入、環境の設定、コードのアップロード、サービスの起動、稼働の監視」といったステップを自動的に完了してくれます。必要なのは、自分のコードリポジトリ（GitHub や GitLab など）をプラットフォームに接続するか、コードを直接アップロードするだけで、プラットフォームが自動的にコードを取得し、アプリケーションの種類を識別し、対応するランタイム環境を設定し、最後に誰もがアクセスできるパブリックネットワークアドレスを提供してくれます。さらに、自分のドメイン名をワンクリックでバインドすることもできます。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 次に、これら3つのプラットフォームの特徴と使用方法をそれぞれ紹介し、自分に最も適したデプロイソリューションを選べるようにします。
 
@@ -289,7 +289,7 @@ Zeabur は新興のデプロイプラットフォームで、複数のサービ�
 
 以前のレッスンで、Dify に簡単に触れました。ここでは、[Zeabur](https://zeabur.com) を通じて、自分自身の Dify サービスを非常に簡単に立ち上げることができます。まず[コンソールページ](https://dash.zeabur.com)を開き、ページ上の各エリアを見てみましょう。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 このページでは、まず多くのブロックが見えます。これらはすでに起動しているサービスです。上部メニューには、Agent、Servers、Docs、Templates などのオプションがあり、それぞれ以下を表しています：
 
@@ -357,7 +357,7 @@ Zeabur は新興のデプロイプラットフォームで、複数のサービ�
 
 興味があれば、ついでに n8n サービスも立ち上げてみてはいかがでしょうか。n8n も海外で非常に人気のある AI ワークフロープラットフォームです。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## Zeabur と Trae を使ったスネークゲームのデプロイ
 
@@ -367,7 +367,7 @@ Zeabur は新興のデプロイプラットフォームで、複数のサービ�
 
 ### HTML フレームワークでの実装
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Trae にとって、HTML ベースのスネークウェブゲームを生成するのは非常に簡単です。ゲームの生成が完了したら、前述の Zeabur のローカルデプロイ方法に従って、すべてのファイルを含むフォルダをアップロードするだけです。
 
@@ -375,7 +375,7 @@ Trae にとって、HTML ベースのスネークウェブゲームを生成す�
 
 完了後、そのサービスの詳細画面に進みます：
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 左側の「Network」オプションをクリックし、ページ内の「Public Address」エリアを見つけます。「Generate Domain」をクリックすると、外部アクセス用のアドレスが生成されます。好きな名前を入力できます。
 
@@ -391,13 +391,13 @@ Trae にとって、HTML ベースのスネークウェブゲームを生成す�
 
 前のセクションでは、HTML ベースの Web アプリケーションのデプロイ方法を学びました。次に、現在より一般的に使用されているフロントエンドフレームワークである React アプリケーションのデプロイを試みます。純粋な HTML と比較して、React はより成熟したモダンなフロントエンド開発フレームワークと見なされています。コンポーネント化された方法でページ構造を編成し、複雑なページの開発を大幅に高速化でき、エンタープライズ級のプロジェクトで非常に主流の選択肢です。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### React アーキテクチャへのリファクタリング
 
 Trae では、Agent に「このコードを React アーキテクチャにリファクタリングしてください」と伝えるだけで、元の HTML ベースの構造をかなり簡単に React プロジェクトにリファクタリングできます。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 ただし、シンプルな HTML ファイルと比較して、React アプリケーションはより複雑なビルドツールとプロジェクト構造に依存するため、デプロイのプロセスも少し面倒になります。典型的な問題はポート設定にあります：デフォルトでは、React アプリケーションは通常ポート3000をリッスンします（設定ファイルや起動ログでもこれを確認できます）。
 
@@ -434,13 +434,13 @@ React のデフォルト開発サーバーが起動すると、ある部屋の�
 
 React のデフォルトリッスニングポート（3000）を Zeabur が要求する8080に変更するには、多くの方法があります。最も簡単な方法は、Trae で Agent に「この React プロジェクトのデフォルトポートを8080に変更してください」と指示することです。Trae がプロジェクト内の対応する設定ファイルを変更してくれます。変更完了後、再ビルドして前述の方法で Zeabur にアップロードするだけです。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 ネットワーク設定でアクセス URL を指定する方法は、HTML プロジェクトのデプロイ時とほぼ同じで、React バージョンのサービスを起動できます。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Trae に異なるタイプのアプリケーションを構築してもらい、
 
 プロジェクトの管理画面を見つけるには、まずプロジェクト内の「Settings」オプションをクリックします。
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 設定ページに入ったら、ページを一番下までスクロールすると、次のような画面が表示されます：
 

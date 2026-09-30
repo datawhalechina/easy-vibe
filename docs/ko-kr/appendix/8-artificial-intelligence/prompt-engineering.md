@@ -355,7 +355,7 @@ AI가 가장 쉽게 저지르는 실수는 **모르는 것을 아는 척하는 �
 
 [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat)(또는 익숙한 LLM 플랫폼)를 사용하여, 아래 **3가지 도전 과제**로 배운 기법을 검증해 보세요.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 사용 팁**: 오른쪽 사이드바의 "Add Model for Comparison"을 클릭하면, 두 모델(예: Qwen-Max vs Llama-3)의 동일한 프롬프트에 대한 반응을 좌우 분할 화면으로 비교할 수 있습니다.
 

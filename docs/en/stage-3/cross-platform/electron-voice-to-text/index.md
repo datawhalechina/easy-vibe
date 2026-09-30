@@ -20,7 +20,7 @@ Electron is an open-source framework that lets you use **HTML + CSS + JavaScript
 
 **One-sentence understanding**: Electron = an "invisible Chrome browser" + Node.js system capabilities.
 
-<!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.webp) -->
 
 ## 1.2 Core Electron Architecture
 
@@ -47,7 +47,7 @@ An Electron app consists of two process types. Understanding them is the key to 
 
 They communicate through **IPC (Inter-Process Communication)**, like making a phone call: the renderer says "I want to start recording," and the main process receives that request and calls the system microphone.
 
-<!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.webp) -->
 
 ## 1.3 What Are We Building?
 
@@ -69,7 +69,7 @@ In this tutorial, we will build a **Speech-to-Text** desktop app. Its functional
 | Model Size | No download required | tiny model 75MB, large model 3GB |
 | Best For | Fast onboarding, lightweight usage | Privacy-focused, offline usage, long-term high-frequency usage |
 
-<!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.webp) -->
 
 ## 1.4 Important Note: Web Speech API Is Not Available in Electron
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.webp) -->
 
 # Chapter 3: Implement Recording
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.webp) -->
 
 ## 3.2 Handle Microphone Permissions
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.webp) -->
 
 ## 4.3 Add a Settings UI
 

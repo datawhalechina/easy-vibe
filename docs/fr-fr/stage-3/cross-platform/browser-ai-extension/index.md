@@ -16,9 +16,9 @@ Vous avez certainement déjà utilisé des extensions de navigateur : bloqueurs 
 
 Imaginez ceci : vous ouvrez un article technique de 5 000 mots, cliquez une fois sur le bouton de l'extension, et quelques secondes plus tard un résumé concis en français apparaît dans le panneau latéral. C'est exactement ce que nous allons construire.
 
-![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 L'architecture de base d'une extension Chrome
 
@@ -44,8 +44,8 @@ L'utilisateur clique sur l'icône de l'extension
     -> Le Service Worker renvoie le résumé au panneau latéral pour affichage
 ```
 
-![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 Deux options IA : API cloud vs IA intégrée au navigateur
 
@@ -425,8 +425,8 @@ Le débogage des extensions Chrome est un peu différent du débogage des pages 
 3. Sélectionnez le nom de votre extension
 4. Vous pouvez alors voir les sorties `console` du Content Script
 
-![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 Résolution des problèmes courants
 

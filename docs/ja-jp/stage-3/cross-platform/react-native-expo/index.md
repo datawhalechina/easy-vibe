@@ -25,7 +25,7 @@ React Native は React と TypeScript で Android・iOS のネイティブ UI �
 
 **MTA TrainTime** はニューヨーク近郊鉄道の公式経路・乗車券アプリです。Expo が試作品だけでなく、本番のビルドとリリースにも使われる例です。
 
-![Expo 公式事例の MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.png)
+![Expo 公式事例の MTA TrainTime](../../../../zh-cn/stage-3/cross-platform/react-native-expo/images/expo-mta-case.webp)
 
 ## 3. 最初のプロジェクトを作る
 

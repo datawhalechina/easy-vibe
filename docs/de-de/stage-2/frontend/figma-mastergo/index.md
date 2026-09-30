@@ -22,7 +22,7 @@ Wenn man direkt mit dem Schreiben von Code beginnt oder AI komplette Frontend-Se
 
 Zudem senken Frontend-Designtools aus Sicht der Teamzusammenarbeit die Kooperationskosten zwischen verschiedenen Parteien: Designer, Produktmanager und Entwickler muessen nicht mehr einzeln mentale Bilder oder abstrakte Codebeschreibungen interpretieren. Stattdessen wird eine kooperative Arbeit ermoeglicht, bei der alle um eine sichtbare, kommentierbare und iterierbare Leinwand diskutieren koennen -- mit Versionsverwaltung, Anforderungsaenderungen und Feedback. Darueber hinaus sind moderne Frontend-Designtools laengst keine reinen Zeichenprogramme mehr: Mit einem Klick koennen Teilcodes generiert, Designsysteme und Komponentenbibliotheken verwaltet werden. Die neuen Designtools koennen viel repetitive Handarbeit (Ausrichten, Bemassen, Exportieren, Aendern von Stilen) automatisieren oder in Stapelverarbeitung ausfuehren, was die Entwicklungseffizienz beim Seitendesign enorm steigert.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.webp)
 
 ### 1.1 Die Entwicklung der Frontend-Designtools
 
@@ -32,41 +32,41 @@ In diesem Abschnitt stellen wir die zwei repraesentativsten modernen Frontend-De
 
 ## 1.2 Die Entstehungsgeschichte
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.webp)
 
 In der Zeit, bevor spezielle Frontend-Tools existierten, wurde die visuelle Gestaltung der gesamten Oberflaechen-Designbranche lange Zeit von "Allround"-Designsoftware wie Photoshop uebernommen. Designer erstellten die visuelle Gestaltung ganzer Seiten ueber lokal geschichtete Ebenen und lieferten schliesslich die durchaus voluminoesen .psd-Quelldateien an die Frontend-Entwickler -- und um das Design praezise umzusetzen, mussten die Frontend-Entwickler drei muehsame und entscheidende Aufgaben manuell erledigen:
 
 Erstens das "Zerschneiden": Aus der mehrschichtigen Struktur der .psd-Datei mussten Bottons, Icons, Logos, Hintergrundmodule und andere unabhaengige visuelle Elemente einzeln extrahiert und als PNG, JPG und andere webfaehige Bildformate exportiert werden (da Webseiten die PSD-Ebeneninformationen nicht direkt erkennen koennen und nur auf diese zerteilten Bilder zur Darstellung von Details zurueckgreifen koennen).
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.webp)
 
 Zweitens das "Ausmessen": Mit dem im Programm integrierten Messwerkzeug mussten Breite, Hoehe und Abstaende (margin/padding) zwischen verschiedenen Modulen elementweise erfasst werden, um sicherzustellen, dass alle Masse bis auf das Pixel genau stimmten.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.webp)
 
 Drittens das "Bemassen": Aus dem Design mussten die "unsichtbaren, aber notwendigen" impliziten Parameter extrahiert werden -- wie Schriftgroesse, Schriftgewicht, Zeilenabstand, RGB- oder HEX-Farbwerte jedes Farbblocks usw. Dies entsprach dem manuellen "Herauskratzen" derjenigen "Designspezifikationen", die der Designer nicht auf Papier geschrieben hatte.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.webp)
 
 Erst danach begann die eigentliche Frontend-Implementierungsphase. Unabhaengig davon, ob natives HTML/CSS/JS oder Frameworks wie Vue, React verwendet wurden, war der grundsaetzliche Prozess derselbe. Das Frontend nutzte den "Container als zentrales Traegerelement" und baute die Seitenstruktur basierend auf der Hierarchie und Semantik der einzelnen Module im Design neu auf. Ein Container ist hierbei eine Einheit mit klar definierten Layout-Grenzen, die speziell dazu dient, untergeordnete Elemente aufzunehmen und zu organisieren. Er stellt selbst keinen konkreten Inhalt dar, definiert aber ueber Flex, Grid und andere Regeln den Anordnungsbereich fuer die internen Elemente. Die "Strukturbloecke" (wie obere Navigationsleiste, Seitenleiste, Artikellistenbereich, untere Fusszeile und andere sichtbare Funktions- oder Inhaltsbereiche) basieren auf diesen Containern; innerhalb jedes Strukturblocks sind wiederum kleinere Container verschachtelt, die Elemente organisieren -- zum Beispiel besteht ein Artikellisteneintrag aus einem "Listeneintrag-Container", der Innenabstaende und Gesamtlayout steuert und dann Titel, Zusammenfassung, Zeitstempel, Titelbild und weitere Detailelemente umschliesst.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.webp)
 
 In modernen Frontend-Frameworks werden diese "Strukturbloecke (samt zugehoeriger Container und Elemente)" in der Regel als "Komponenten" implementiert. Eine Komponente kann vereinfacht verstanden werden als: eine wiederverwendbare Interface-Einheit mit klaren Grenzen, die Container-Layout und Logik integriert. Sie enthaelt sowohl Container, die Erscheinungsbild und Anordnung steuern (z. B. definiert die "Button-Komponente" Breite, Hoehe und Abrundung ueber einen Container; die "Artikelkarten-Komponente" organisiert die Position von Titel und Titelbild ueber einen Container), als auch Interaktionslogik. Teile, die im Design wiederholt auftauchen und eine einheitliche Form haben (wie einheitlich gestylte Buttons oder mehrfach verwendete Artikelkarten), werden im Code als Komponenten abstrahiert: Sie koennen in verschiedenen Seiten und Szenarien wiederverwendet werden, was doppelte Entwicklung reduziert, und durch die einheitlichen Regeln der internen Container wird sichergestellt, dass Layout und Stil an allen Verwendungsstellen hoechst konsistent sind.
 
 Anschliessend verwendet das Frontend ein Stilsystem, um Visuelles und Layout zu reproduzieren. Die im Zerschneide-Schritt exportierten Ressourcen wie PNG/JPG werden als `<img>`, Hintergrundbilder innerhalb von Komponenten oder Strukturbloecken eingebunden oder gemaess den Empfehlungen des jeweiligen Frameworks als statische Ressourcen importiert. Die im Ausmessen-Schritt ermittelten Werte fuer Breite, Hoehe, Abstaende und Zeilenhoehen werden als `width`, `height`, `margin`, `padding`, `line-height` und andere Stileigenschaften auf die entsprechenden Komponenten oder Strukturbloecke angewendet. Die im Bemassen-Schritt erfassten Farben, Schriften, Schatten, Abrundungen sowie Hover-/Active-Zustaende werden in konkrete Loesungen wie CSS, CSS Modules, CSS-in-JS oder Tailwind umgesetzt -- als `color`, `font-family`, `font-size`, `box-shadow`, `border-radius` sowie Pseudoklassen oder Zustandsklassen. An diesem Punkt liefern Zerschneiden, Ausmessen und Bemassen einen Satz praeziser visueller Parameter, waehrend Komponenten und Strukturbloecke die Code-Organisationseinheiten bilden, die diese Parameter aufnehmen. Beides zusammen ergibt eine wartbare, wiederverwendbare Interface-Implementierung.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.webp)
 
 Das auf lokalen Dateien zentrierte Modell war jedoch naturgemaess ineffizient. Versionen wurden per E-Mail und Cloud-Speicher uebertragen, neue und alte Entwuerfe liessen sich leicht verwechseln, und zwischen Design und Entwicklung herrschte eine grosse Abhaengigkeit von den oben beschriebenen komplexen Interaktionsmethoden -- die Kooperationskosten und Fehlerquoten waren nicht gering.
 
 Mit dem Aufkommen des mobilen Internets stiegen die Anforderungen an Oberflaechenkomplexitaet und Iterationsgeschwindigkeit rasant an, und Photoshops "gross und alles umfassend" wirkte zunehmend schwerfaellig. In dieser Phase erschien Sketch. Sketch konzentrierte sich auf das UI-Design selbst und entfernte den groessten Teil der mit der visuellen Nachbearbeitung verbundenen Buerde; mit Symbols wurden haeufig wiederverwendete Elemente wie Buttons, Navigation und Eingabefelder als Komponenten strukturiert, wobei eine Aenderung global synchronisiert wurde; in Kombination mit Tools wie Zeplin wurden Bemassungen und Stil-Fragmente automatisch generiert. Sketch brachte das "Komponenten-Denken" in den Design-Workflow. Es blieb jedoch ein Desktop-basiertes lokales Datei-Programm; Echtzeit-Zusammenarbeit erforderte Umwege ueber Cloud-Speicher, Drittanbieter-Plugins oder Versionsverwaltungstools und loeste das Problem "mehrere Personen aendern gleichzeitig denselben Entwurf" nicht grundlegend.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.webp)
 
 Was die Spielregeln wirklich veraenderte, war Figma. Seit 2016 integrierte es UI-Design, Prototyping und Kommentare in den Browser und unterstuetzte eine Reihe moderner Funktionen: mehrere Echtzeit-Cursor, Online-Kommentare, Versionszeitlinien, Freigabelinks usw. -- was heute selbstverstaendlich erscheint, war damals eine direkte Herausforderung des Photoshop/Sketch-Modells.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.webp)
 
 Damit war das Oberflaechendesign nicht mehr auf Einzelcomputer verstreute Dateien, sondern auf eine einzige Online-Leinwand konzentriert, die sich in Echtzeit aktualisierte. Rund um diese Leinwand lassen sich noch weitergehende Gedanken anstellen -- die Grenze zwischen Design und Frontend-Code mit Automatisierung oder AI zu verwischen.
 
@@ -82,7 +82,7 @@ Nun kommen wir von den abstrakten Konzepten zur praktischen Bedienung. Da die Ze
 
 Oder du folgst diesem Tutorial, um aehnlich wie bei einem persoenlichen Portfolio eine einfache Webseite schnell aufzubauen: https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collectio
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.webp)
 
 Links befindet sich der Einstieg fuer Projekterstellung und Ressourcenverwaltung, die wenigen Buttons oben rechts sind die haeufigen Figma-Funktionen. Dabei dient Make dazu, mit einem einzigen Satz von AI zuerst einen groben Interface- oder Strukturentwurf generieren zu lassen; Design ist der Hauptarbeitsbereich zum Zeichnen von Webseiten/App-Oberflaechen, zum Aufbau von Komponenten und zum Erstellen von Prototypen; FigJam ist wie ein Team-Whiteboard zum Anbringen von Klebezetteln, zum Zeichnen von Flussdiagrammen und fuer vorlaeufige Diskussionen; Buzz ist ein Tool zur skalierten Erstellung von Markenassets fuer die massenhafte Generierung von Inhalten zur Wahrung der Markenkonsistenz; und Site dient dazu, diese Designs zu einer tatsaechlich zugaenglichen Webseite oder Dokumentationsseite zusammenzufassen und oeffentlich zu praesentieren.
 
@@ -163,7 +163,7 @@ Somit wird dieser Button aus einer Gruppe gewoehnlicher Ebenen zu einem Komponen
 
 Alle verwendeten Buttons sind synchronisierte Kopien dieses Masters. Wenn du Farbe, Abrundung oder Abstaende des Masters aenderst, werden alle Instanzen automatisch synchron aktualisiert.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.webp)
 
 Damit hast du die grundlegende Verwendung von Figma bereits verstanden. Du musst nicht von Anfang an alle Funktionen beherrschen -- erzeuge einfach die erste einfache Seite nach dieser Anleitung, lerne diese wenigen Kernoperationen und erkunde dann schrittweise weitere Faehigkeiten in den offiziellen Tutorials. Mit zunehmender Verwendung wirst du unweigerlich sicherer im Umgang.
 
@@ -178,7 +178,7 @@ Nachdem wir den grundlegenden Figma-Workflow verstanden haben, wenden wir uns Ma
 1. **MasterGo-Dashboard oeffnen**
    1. Oeffne die MasterGo-Website und melde dich an.
    2. Nach dem Login siehst du einen Startbereich mit "Dateiliste / Projektliste", in dem du deine Designdateien verwalten kannst.
-      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.png)
+      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.webp)
 
 2. **Neue Datei erstellen**
    1. Klicke oben rechts auf die Schaltflaeche "+ Designdatei" oder waehle den Import von Figma-Dateien.
@@ -236,21 +236,21 @@ In MasterGo ist eine besonders interessante Funktion die AI-generierte Seite. Du
 
 ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.webp)
 
 Nach Abschluss der Generierung des Designdokuments klicke auf "Generierung starten", warte kurz und du erhaelst den tatsaechlichen Webseiten-Effekt:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.webp)
 
 Jetzt hast du zwei Moeglichkeiten: Entweder klickst du auf den blauen Button, um das generierte Ergebnis direkt in die Leinwand einzufuegen, oder du klickst auf die Code-Vorschau-Funktion, um den vollstaendigen Code der aktuellen Seite direkt abzurufen. Die konkrete Bedienungsoberflaeche sieht wie folgt aus:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.webp)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.webp)
 
 Nach dem Einfuegen des Ergebnisses in die Leinwand kannst du das Gesamtlayout und die Elementdetails (wie Schriftart, Farbe, Abstaende etc.) noch feiner anpassen, bis das Endergebnis deinen Erwartungen voll entspricht.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.webp)
 
 ---
 

@@ -52,7 +52,7 @@ Glean 选择侧边栏，Grammarly 把建议放在句子旁边，Edge 则直接�
 - Service Worker 负责接收事件和组织处理流程；
 - Side Panel 展示按钮、加载状态和摘要结果。
 
-![Content Script、Service Worker 和 Side Panel 的消息流](images/image2.png)
+![Content Script、Service Worker 和 Side Panel 的消息流](images/image2.webp)
 
 Service Worker 会在需要时启动，空闲后可能被浏览器回收，所以不能把必须保留的状态只放在内存里。
 
@@ -155,7 +155,7 @@ Chrome 官方目前要求由用户操作触发模型创建。首次下载需要�
 2. Service Worker：在扩展管理页点击“Service Worker”。
 3. Content Script：在当前网页的开发者工具里查看。
 
-![在 Chrome DevTools 中选择扩展执行上下文](images/image9.png)
+![在 Chrome DevTools 中选择扩展执行上下文](images/image9.webp)
 
 报错时先确认错误来自哪一层，再交给 AI：
 

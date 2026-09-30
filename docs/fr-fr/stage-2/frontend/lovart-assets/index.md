@@ -39,11 +39,11 @@ Avant de commencer, vous n'avez besoin que de trois étapes :
 
 2. Créer un nouveau fichier Python
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. Coller le code ci-dessous en entier
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 Lorsque Trae indique que l'exécution a réussi, cliquez sur le lien local qu'il fournit (généralement http://127.0.0.1:7860).
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 Si tout se passe bien, vous verrez une interface de dessin AI déjà fonctionnelle.
 
@@ -301,7 +301,7 @@ Après l'exécution du code, le processus se résume en trois étapes :
 
 Quelques secondes plus tard, vous verrez le résultat généré localement. La génération du modèle étant aléatoire, le même prompt donnera des résultats différents. Vous pouvez générer plusieurs fois pour choisir l'image qui vous plaît.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 Vous pouvez aussi enrichir votre prompt avec plus de descriptions et de contraintes. Par exemple, avec le prompt suivant, l'image obtenue sera plus spécifique.
 
@@ -309,11 +309,11 @@ Vous pouvez aussi enrichir votre prompt avec plus de descriptions et de contrain
 "A hyper-realistic close-up of a fresh red apple with water droplets on its skin, sitting on a dark rustic wooden table. Cinematic dramatic lighting, rim light, shallow depth of field, bokeh background, 8k resolution, macro photography."
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 Cliquez sur download dans la zone Output Image pour sauvegarder l'image localement.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 Scénarios courants de génération d'assets avec les modèles de génération d'images
 
@@ -337,7 +337,7 @@ Cette catégorie de scénarios se concentre sur l'efficacité. Quand il faut com
 
 > A set of 3D weather icons (sun, cloud, rain), glassmorphism style, frosted glass texture, soft pastel gradient colors, soft studio lighting, isometric view, transparent background, 4k.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### Générer des logos
 
@@ -359,7 +359,7 @@ Cette catégorie de scénarios se concentre sur l'efficacité. Quand il faut com
 
 > Close-up portrait of a friendly young tech professional, smiling, Memoji 3D style, clay render, bright colors, soft lighting, solid plain background, Pixar character design.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### Générer des illustrations d'articles
 
@@ -370,7 +370,7 @@ Cette catégorie de scénarios se concentre sur l'efficacité. Quand il faut com
 
 > Editorial flat illustration representing remote work, a person sitting on a giant globe using a laptop, corporate memphis art style, vibrant colors (purple and teal), vector texture.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### II. Image avec référence : maintenir la cohérence visuelle
 
@@ -397,13 +397,13 @@ Avec ce processus, il suffit de remplacer la description du contenu pour obtenir
 
 > A capsule-shaped game UI button with a white pause icon (two vertical bars) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **Variante B : Bouton paramètres (icône complexe)**
 
 > A capsule-shaped game UI button with a white gear icon (settings symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **Variante C : Bouton rejouer (changement de forme)**
 
@@ -411,7 +411,7 @@ Si vous devez ajuster la forme du bouton, décrivez-la directement dans le promp
 
 > A round game UI button with a white circular arrow icon (replay symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 Avec cette série d'opérations, vous pouvez non seulement remplacer la fonction et l'icône du bouton, mais même changer sa forme, tout en conservant une cohérence élevée en termes de matériau, de palette et de lumière parmi tous les résultats générés. C'est précisément la valeur centrale des grands modèles dans les scénarios de déclinaison d'assets de design.
 
@@ -431,9 +431,9 @@ C'est là qu'il faut introduire un **Agent AI (Intelligence artificielle)**. Cet
 
 Lovart est un outil de design basé sur des Agents, disponible en web. Comparé aux outils de génération d'images classiques, il ajoute une couche de « réflexion et planification » avant la génération.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 Une fois dans Lovart, voici les principaux éléments de contrôle à connaître :
 
@@ -488,7 +488,7 @@ L'IA ne dessine pas immédiatement. Elle va d'abord chercher sur Internet des im
 
 À cette étape, l'IA passe du rôle d'« exécutant » à celui de « planificateur ». Une fois que l'IA a analysé vos besoins, vous pouvez voir plusieurs styles et contenus d'images de canards programmeur dans la zone de canevas de Lovart. Vous pouvez commencer à filtrer les styles qui vous plaisent.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### Phase 2 : Cohérence (ancrage visuel basé sur la référence)
 
@@ -499,13 +499,13 @@ Les images dans Lovart ne sont pas seulement des résultats, elles participent a
 * Sélectionnez le « canard standard » qui vous satisfait le plus dans les esquisses, cliquez sur l'image correspondante dans la zone de canevas
 * L'image apparaîtra automatiquement dans la zone de dialogue comme Reference
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * Saisissez une nouvelle action (comme « heureux ») et générez
 
 Le résultat généré héritera de la palette, des proportions et des détails du modèle original.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### Référence partielle / Intégration multi-images
 
@@ -515,11 +515,11 @@ Outre l'utilisation d'une image complète comme référence, Lovart supporte aus
 
 Cliquez sur l'onglet à gauche de la zone de canevas, sélectionnez la touche « Mark », et marquez la zone partielle souhaitée sur l'image cible. Cette partie sera automatiquement synchronisée dans la zone de dialogue. Par exemple, ici nous pouvons choisir de modifier la couleur de fond.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 On peut voir que la nouvelle image générée n'a changé que la couleur de fond, ce qui correspond bien à notre demande.
 
@@ -529,9 +529,9 @@ Par exemple : vous pouvez conserver le personnage principal de l'image A tout en
 
 Prenons l'exemple du canard programmeur : nous pouvons choisir de conserver l'image du canard de la première image et la remplacer dans la deuxième image comme élément principal.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 L'effet final est très significatif. Vous pouvez aussi essayer d'autres combinaisons !
 
@@ -539,15 +539,15 @@ L'effet final est très significatif. Vous pouvez aussi essayer d'autres combina
 
 Une fois la génération terminée, vous pouvez directement exécuter : agrandissement, suppression d'arrière-plan, effacement, etc.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 Il ne s'agit pas de simples filtres, mais de résultats obtenus par l'Agent en调度ant automatiquement différents outils.
 
 Une fois le style de base défini, il est très rapide de générer toute une série d'images de stickers.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 Au final, nous obtenons des assets de qualité production directement livrables, et non pas de simples images de démonstration.
 
@@ -558,7 +558,7 @@ Lovart utilise un modèle de tarification par abonnement, avec différents forfa
 Ce tutoriel ne fait aucune recommandation ni comparaison de forfaits ; si vous avez un besoin en usage réel, vous pouvez choisir de passer à un forfait payant selon votre situation personnelle.
 Le paiement est actuellement possible via **Alipay** et d'autres méthodes.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### Résumé
 
@@ -580,7 +580,7 @@ Les modèles de génération d'images sont plus adaptés aux descriptions visuel
 
 Fondamentalement, le modèle d'images n'a que la capacité d'« exécuter », mais manque d'un processus d'analyse et de sélection du texte.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 Approche de résolution : séparer « compréhension » et « exécution » avec un Agent
 
@@ -590,7 +590,7 @@ L'objectif principal de cet Agent est simple : **que l'image finale générée s
 
 Le flux global peut se résumer ainsi : **Texte long en entrée → Modèle de langage pour compréhension et jugement → Génération d'un prompt visuel approprié → Modèle d'images pour la génération → Image en sortie**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 Comment notre Agent peut-il comprendre l'intention de l'utilisateur ?
 
@@ -607,7 +607,7 @@ Dans cet Agent, la répartition des rôles se résume en quatre points :
 4. **Gradio et l'API backend comme couche d'hébergement global**
    Ils sont responsables de la liaison entre l'interface, les appels de modèle et l'affichage des résultats, garantissant que l'Agent fonctionne de manière stable comme une application web complète.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 Préparation pratique : obtenir les API
 
@@ -621,13 +621,13 @@ Réutilisez directement la clé API et l'URL API déjà configurées au chapitre
 
 Nous avons besoin d'un grand modèle de langage pour assurer la « couche de réflexion ». Ce tutoriel utilise le service de modèle fourni par SiliconFlow : [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
 SiliconFlow fournit une interface compatible avec la spécification API OpenAI, très facile à appeler via des requêtes réseau standard dans votre projet. Nous choisissons ici le modèle gratuit Qwen2.5-7B-Instruct. Le contenu nécessaire pour l'appel est déjà intégré dans le Prompt ci-dessous. Avant de commencer, il vous suffit de créer un compte sur le site officiel et de générer une clé API.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
 Cette clé sera utilisée pour les appels de modèle ultérieurs.
 
@@ -754,7 +754,7 @@ Cependant, cette intégration technologique soulève une série de dilemmes éth
 
 Détection réussie également !
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. Instruction de dessin direct : ici nous avons saisi « je veux dessiner un chat », détecté avec précision.
 
@@ -840,11 +840,11 @@ Notez que le System Prompt prédéfini pour la génération de prompts de dessin
 
 Si vous souhaitez changer de template prédéfini, vous pouvez modifier le prompt précédent, ou le modifier directement dans Trae via le dialogue.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 Outre la modification du code sous-jacent, vous pouvez aussi éditer rapidement sur la page web. Par exemple, j'ai ajouté ici « ajoutez "Pic Prompt" au début », et on peut voir que le nouveau prompt généré inclut bien ce préfixe. Cette conception permet de modifier rapidement le System Prompt de génération de prompts, facilitant les changements de style.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### Phase 4 : Module de génération texte vers image / image vers image Nanobanana
 
@@ -904,21 +904,21 @@ Génération réussie : afficher la PIL Image dans result_image, intent_status i
 Code complet et exécutable, il suffit de remplacer LLM_API_KEY et NANOBANANA_API_KEY pour l'exécuter directement, flux complet utilisable, logique de branchement strictement conforme à la version pratique.
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 C'est vraiment passionnant ! Nous avons enfin réussi à générer la première image de cet Agent. Regardez attentivement l'image générée — elle correspond bien à notre texte et à notre prompt. Vous avez maintenant pratiquement implémenté votre propre Agent !
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 Nous avons aussi ajouté la fonctionnalité image vers image : uploadez une image que vous aimez et l'IA s'en inspirera automatiquement pour le style.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 Il convient de mentionner que les prompts générés aux étapes précédentes sont également éditables sur la page web, et c'est le prompt au moment du clic final sur le bouton qui fait foi. Même si je remplace ici par « a cute cat », l'image finale générée ne sera qu'un mignon petit chat.
 
 ## Chapitre 4 : Résumé
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **Hourra ! C'est enfin terminé.**
 Honnêtement, même moi j'ai poussé un soupir de soulagement en écrivant la dernière ligne, alors imaginez pour vous qui avez suivi jusqu'au bout. Réussir à exécuter ce flux complet en entier est déjà très impressionnant — cela prouve que vous avez vraiment mis les mains sur le clavier et accompli les choses étape par étape. Bravo !

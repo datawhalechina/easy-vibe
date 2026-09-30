@@ -11,11 +11,11 @@ Flutter は Android と iOS でほぼ同じ機能とデザインを出したい�
 
 My BMW は車両状態、充電、整備、遠隔操作を一つにまとめ、現在の状態を最初に見せます。
 
-![My BMW の車両状態とサービス](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.png)
+![My BMW の車両状態とサービス](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.webp)
 
 Google Pay は支払い後の結果を明確に示し、Nubank は口座情報と支援機能を落ち着いた階層で整理します。
 
-![Google Pay の結果表示](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.png)
+![Google Pay の結果表示](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.webp)
 
 ![Nubank の口座とヘルプ画面](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-nubank.png)
 

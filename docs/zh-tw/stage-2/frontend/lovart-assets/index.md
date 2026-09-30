@@ -39,11 +39,11 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/lovart-assets
 
 2. 新建一個 Python 文件
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.webp)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.webp)
 
 3. 將下面的程式碼完整粘貼進去
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 當 Trae 提示運行成功後，點擊它提供的本地鏈接（通常是 http://127.0.0.1:7860）。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.webp)
 
 如果一切正常，你會看到一個已經可以工作的 AI 繪圖界面。
 
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
 幾秒鐘後，你會在本地看到生成結果。而模型生成具有隨機性，所以相同的prompt會有不同的生成結果，你可以多次生成，選擇你心儀的圖片。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.webp)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.webp)
 
 也可以豐富你的提示詞，給予它更多的描述和限定。例如以下提示詞，得到的圖片就會更加特殊一些。
 
@@ -310,11 +310,11 @@ if __name__ == "__main__":
 (一個超寫實的帶水珠的新鮮紅蘋果特寫，放在深色粗糙木桌上。電影級戲劇光效，輪廓光，淺景深，背景虛化，8k分辨率，微距攝影。)
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.webp)
 
 在Output Image區域點擊下載圖片即可保存到本地。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.webp)
 
 ### 1.3 生圖模型常見的素材生成場景
 
@@ -340,7 +340,7 @@ if __name__ == "__main__":
 
 （一套 3D 天氣圖標，毛玻璃風格，磨砂質感，柔和漸變色，影棚光，等軸視圖）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.webp)
 
 2. ##### 生成 Logo
 
@@ -366,7 +366,7 @@ if __name__ == "__main__":
 
 （友好的年輕科技從業者，3D Memoji 風格，黏土渲染）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.webp)
 
 4. ##### 生成文章配圖
 
@@ -379,7 +379,7 @@ if __name__ == "__main__":
 
 （遠程辦公主題扁平插畫，企業孟菲斯風格）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.webp)
 
 #### 二、有圖參考生圖：保持視覺一致性
 
@@ -408,7 +408,7 @@ if __name__ == "__main__":
 
 （膠囊形遊戲 UI 按鈕，白色暫停圖標，藍色果凍質感）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.webp)
 
 **變體 B：設置按鈕（複雜圖標）**
 
@@ -416,7 +416,7 @@ if __name__ == "__main__":
 
 （膠囊形遊戲 UI 按鈕，白色齒輪圖標，藍色果凍質感）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.webp)
 
 **變體 C：重玩按鈕（形狀變化）**
 
@@ -426,7 +426,7 @@ if __name__ == "__main__":
 
 （圓形遊戲 UI 按鈕，循環箭頭圖標，藍色果凍質感）
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.webp)
 
 通過這一組操作，你不僅可以替換按鈕功能和圖標，甚至改變按鈕形狀，但所有生成結果在材質、配色和光影上仍保持高度一致。這正是大模型在設計素材裂變場景中的核心價值。
 
@@ -446,9 +446,9 @@ if __name__ == "__main__":
 
 Lovart 是一個基於 Agent 的設計工具 Web。相比普通生圖工具，它在生成之前多了一層“思考與規劃”。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.webp)
 
 進入 Lovart 後，主要需要了解以下幾個控制項：
 
@@ -503,7 +503,7 @@ AI 不會立即畫圖，而是先去網路上搜索相關的程序員鴨子的�
 
 這一步，AI 從“執行者”轉變為“策劃者”。在AI幫你分析完需求後，可以在Lovart的畫布區看到多種風格和內容的程序員鴨子圖片。可以開始篩選你喜歡的風格。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.webp)
 
 #### 環節二：一致性（基於參考的視覺錨定）
 
@@ -514,13 +514,13 @@ Lovart 中的圖片不僅是結果，也參與後續生成。
 * 從草圖中選出一張最滿意的“標準鴨子”，在畫布區點擊對應圖片
 * 該圖將會自動出現在對話區，作為 Reference
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.webp)
 
 * 輸入新的動作（如開心）並生成
 
 生成結果會繼承母版的配色、比例和細節。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.webp)
 
 ##### 局部參考 / 多圖整合
 
@@ -530,11 +530,11 @@ Lovart 中的圖片不僅是結果，也參與後續生成。
 
 點擊畫布區左側tab欄，選擇「Mark」鍵，在目標圖像的局部區域標記即可，這部分內容會自動同步到對話框。比如在這裡我們可以選擇修改背景的顏色。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.webp)
 
 能看到新生成的圖片只改變了背景的顏色，這也跟我們輸入的要求一致。
 
@@ -544,9 +544,9 @@ Lovart 中的圖片不僅是結果，也參與後續生成。
 
 以程序員鴨子為例，我們可以選擇保留第一個圖中的鴨子形象，並將其替換到第二張圖中作為主體元素。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.webp)
 
 最後的效果也非常顯著。你也可以試著其他的組合！
 
@@ -554,15 +554,15 @@ Lovart 中的圖片不僅是結果，也參與後續生成。
 
 生成完成後，可以直接執行：放大、移除背景、擦除等操作
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.webp)
 
 這些並不是簡單濾鏡，而是 Agent 自動調度不同工具完成的結果。
 
 而在確定完基調風格後，可以很快速的生成一系列的表情包圖像。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.webp)
 
 最終我們得到的是可直接交付的生產級素材，而不僅是一張展示圖。
 
@@ -573,7 +573,7 @@ Lovart 採用訂閱制收費模式，不同套餐對應不同的使用額度與�
 本教程不對任何套餐做推薦或比較；如果在實際使用中有需求，可以根據個人情況選擇付費升級。
 目前支持通過**支付寶**等方式完成支付。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.webp)
 
 #### 小結
 
@@ -595,7 +595,7 @@ Lovart 並不是替代底層模型，而是通過 Agent 機制，讓圖像生成
 
 本質上，圖像模型只有“執行”的能力，卻缺少對文本進行分析和取捨的過程。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.webp)
 
 ### 3.2 解決思路：用 Agent 把「理解」和「執行」拆開
 
@@ -605,7 +605,7 @@ Lovart 並不是替代底層模型，而是通過 Agent 機制，讓圖像生成
 
 整體流程可以概括為：**長文本輸入 → 語言模型理解與判斷 → 生成合適的視覺提示詞 → 圖像模型執行生成 → 輸出圖片**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.webp)
 
 那我們構建的 Agent 怎樣才能明白用戶的意圖呢？
 
@@ -622,7 +622,7 @@ Lovart 並不是替代底層模型，而是通過 Agent 機制，讓圖像生成
 4. **Gradio 與後端 ****API**** 作為整體承載層**
    它們負責將界面、模型調用和結果展示串聯起來，保證整個 Agent 能夠以一個完整 Web 應用的形式穩定運行。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.webp)
 
 ### 3.3 實戰準備 ：獲取API
 
@@ -636,13 +636,13 @@ Lovart 並不是替代底層模型，而是通過 Agent 機制，讓圖像生成
 
 我們需要一個大語言模型來承擔“思考層”的職責。本教程使用 SiliconFlow 提供的模型服務：[https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.webp)
 
   SiliconFlow 提供了兼容 OpenAI API 規範的接口，可以非常方便地在項目中通過標準網路請求進行調用。在這裡我們選擇的是免費的Qwen2.5-7B-Instruct模型，調用需要的內容都已經寫入下面的Prompt。在開始之前，你只需要在官網註冊賬號並創建一個 API Key。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.webp)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.webp)
 
   該 Key 將用於後續的模型調用。
 
@@ -769,7 +769,7 @@ API 異常、解析異常均給出友好提示，不崩潰，組件恢復初始�
 
 同樣檢測成功～
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.webp)
 
 3. 直接繪圖指令，這裡輸入的是“我要畫一隻貓”，同樣檢測準確。
 
@@ -852,11 +852,11 @@ API 調用失敗：友好提示「提示詞生成失敗：{具體錯誤資訊}�
 
 如果你想換成其他的預設模版，可以在前面的prompt裡修改，或者直接在Trae裡通過對話修改。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.webp)
 
 除了修改底層程式碼，我們在網頁上也可以快速編輯。舉個例子，我在這裡加了一句，“在前面加一句Pic Prompt”，可以看到生成的新的提示詞前面也包含了～這樣設計是為了方便快速修改生成提示詞的System Prompt，幫助我們快速切換風格。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.webp)
 
 #### 環節4️⃣：Nanobanana 文生圖 / 圖生圖模塊
 
@@ -917,21 +917,21 @@ Markdown 格式
 完整可運行程式碼，替換 LLM_API_KEY 和 NANOBANANA_API_KEY 即可直接運行，全流程可用，分支邏輯嚴格匹配實戰版。
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.webp)
 
 太令人激動啦！我們終於順利地生成出了這個Agent的第一張圖，仔細看看生成的圖片，跟我們的文本和提示詞是匹配的。到這裡你已經基本上實現你自己的Agent啦！
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.webp)
 
 我們還添加了圖生圖功能，上傳你喜歡的圖片，AI會自動借鑑風格。
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.webp)
 
 值得一提的是，前面步驟生成的提示詞也是可以在網頁上編輯的，並且我們是以最終點擊按鈕時的提示詞為準～哪怕我在這裡換成“a cute cat”，最終生成的圖片也只會是可愛的小貓。
 
 ## 第 4 章：總結
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.webp)
 
 **嗚呼！終於寫完了。**
 說實話，連我自己寫完最後一行的時候都忍不住長舒一口氣，更別說一路跟著做到這裡的你了。能把這一整套流程完整跑下來，本身就已經很厲害了，這說明你真的把手放到鍵盤上，把事情一步步做完了。Bravo 🎉 🥳 👏

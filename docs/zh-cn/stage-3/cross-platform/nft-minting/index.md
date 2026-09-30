@@ -87,7 +87,7 @@ NFT 也不等于图片。图片、名称和说明通常放在 metadata（内容�
 
 Ticketmaster 曾把 NFT 数字藏品直接接入活动体验。用户购票或入场后，可以领取一份与活动相关的数字纪念品，不需要先理解复杂的链上操作。
 
-![Ticketmaster 官方展示的 NFT 数字藏品界面](images/nft-real-ticketmaster.png)
+![Ticketmaster 官方展示的 NFT 数字藏品界面](images/nft-real-ticketmaster.webp)
 
 Ticketmaster 在 2023 年发布的 [AFLW 数字藏品案例](https://business.ticketmaster.com/digital-collectibles-go-global-with-the-aflw/)中写到，当时这套能力已经在 4,000 场活动中铸造超过 1,450 万份数字藏品。这里值得参考的不是交易，而是它把领取入口放进原有票务流程，普通用户看到的是活动纪念品，不是一串合约调用。
 

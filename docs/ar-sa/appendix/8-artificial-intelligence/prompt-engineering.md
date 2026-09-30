@@ -356,7 +356,7 @@ _ملاحظة: هذا الدليل موجه بشكل أساسي للسيناري
 
 ننصح باستخدام [SiliconFlow Playground](https://cloud.siliconflow.com/me/playground/chat) (أو أي منصة LLM تفضلها)، ونفذ **التحديات الثلاثة** التالية للتحقق من المهارات التي تعلمتها.
 
-![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.png)
+![](../../../zh-cn/appendix/8-artificial-intelligence/prompt-engineering/images/image15.webp)
 
 > **💡 ملاحظة تشغيلية**: انقر على "Add Model for Comparison" في الشريط الجانبي الأيمن، لمقارنة نموذجين جنباً إلى جنب (مثل Qwen-Max مقابل Llama-3) لنفس التوجيه.
 

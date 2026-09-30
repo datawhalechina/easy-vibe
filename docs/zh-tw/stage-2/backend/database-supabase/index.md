@@ -91,7 +91,7 @@ user_info = {
 
 總的來說，在現實世界中有太多不同形態、用途的資料值得我們詳細分析，每種資料可能都需要專門的資料庫用於存儲，具體可參考下圖——是不是感覺非常多？
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image1.webp)
 
 ## 1.2 為什麼我們需要資料庫
 
@@ -894,7 +894,7 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 根據上面所提到的 SOP ，讓我們通過一個具體的實際案例 `Project5-Supabase-Demos/apps_snakegame`來實踐：為一個已有的“貪吃蛇”遊戲項目增加分數排行榜單，包含用戶登錄與資料庫基礎功能。
 
-![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
+![](/zh-cn/stage-2/backend/database-supabase/images/image43.webp)
 
 ### 4.2.1 分析項目，識別資料需求
 

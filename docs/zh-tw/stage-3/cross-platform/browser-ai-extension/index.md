@@ -16,9 +16,9 @@
 
 想像一下：你打開一篇 5000 字的技術博客，點一下擴展按鈕，幾秒鐘後側邊面板就出現了一份簡潔的中文摘要。這正是我們要構建的東西。
 
-![placeholder: 預覽圖，左側為一篇長文章網頁，右側為 Chrome 側邊面板中顯示的 AI 生成的摘要](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: 預覽圖，左側為一篇長文章網頁，右側為 Chrome 側邊面板中顯示的 AI 生成的摘要](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: 預覽圖，左側為一篇長文章網頁，右側為 Chrome 側邊面板中顯示的 AI 生成的摘要](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: 預覽圖，左側為一篇長文章網頁，右側為 Chrome 側邊面板中顯示的 AI 生成的摘要](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 Chrome 擴展的基本架構
 
@@ -44,8 +44,8 @@ Chrome 擴展（基於 Manifest V3）由幾個核心部分組成，各司其職�
     -> Service Worker 將摘要發回側邊面板顯示
 ```
 
-![placeholder: 架構流程圖，展示 Content Script、Service Worker 和 Side Panel 如何相互傳遞訊息](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: 架構流程圖，展示 Content Script、Service Worker 和 Side Panel 如何相互傳遞訊息](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: 架構流程圖，展示 Content Script、Service Worker 和 Side Panel 如何相互傳遞訊息](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: 架構流程圖，展示 Content Script、Service Worker 和 Side Panel 如何相互傳遞訊息](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 兩種 AI 方案：雲端 API vs 瀏覽器內建 AI
 
@@ -425,8 +425,8 @@ Please help me modify options.html and options.js:
 3. 選擇你的擴展名稱
 4. 然後你就可以看到 Content Script 的 `console` 輸出了
 
-![placeholder: Chrome DevTools 截圖，顯示如何選擇不同的執行上下文來調試不同的擴展組件](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Chrome DevTools 截圖，顯示如何選擇不同的執行上下文來調試不同的擴展組件](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: Chrome DevTools 截圖，顯示如何選擇不同的執行上下文來調試不同的擴展組件](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: Chrome DevTools 截圖，顯示如何選擇不同的執行上下文來調試不同的擴展組件](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 常見問題排查
 

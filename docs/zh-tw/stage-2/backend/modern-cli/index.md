@@ -8,7 +8,7 @@
 
 > 在 Windows 上，常見的終端有“命令提示符（cmd）”和 “PowerShell”。你可以在電腦的運行/搜索框中輸入 “cmd” 或 “powershell” 來啟動這些命令行程序。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image1.png)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image1.webp)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
 
 CLI 天生適合文本命令操作，在一小部分極客（追求極致的程式設計愛好者）群體中，CLI 甚至比 GUI 更受歡迎——他們希望所有操作都通過鍵盤完成，覺得動鼠標反而會拖慢自己的編碼效率。
 
@@ -96,11 +96,11 @@ Claude Code 的優勢主要體現在：極長的上下文窗口（可以處理�
 
 GLM（General Language Model）是智譜 AI 自主研發的一系列大型語言模型。GLM-4.6 是當前 GLM 系列的最新版本，其核心亮點是在程式碼能力上的優異表現（在公開基準和真實任務中對標 Claude Sonnet 4，在國內處於第一梯隊）。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image12.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image12.webp)
 
 它還將上下文窗口擴展到 200K，可以更加從容地處理長文本和大體量程式碼，同時加強了推理與工具調用能力，在性能和成本之間取得了不錯的平衡。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image13.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image13.webp)
 
 在接入 GLM 之前，我們需要先安裝 Claude Code。
 
@@ -161,7 +161,7 @@ please help me configure and start Claude Code
 
 你會看到類似下面的過程輸出：
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image14.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image14.webp)
 
 > 💡 什麼是環境變量？
 >
@@ -304,7 +304,7 @@ export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 
 該工具還提供了方便的 UI/CLI 配置管理能力，並通過"轉換器（converter）"適配不同平臺的 API 格式。它支持 GitHub Actions 等自動化集成以及自定義擴展，解決了"單一模型無法覆蓋所有場景"以及"頻繁切換平臺很麻煩"的問題，幫助用戶更靈活、低成本地利用 AI 工具。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image17.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image17.webp)
 
 下面我們簡單介紹如何安裝 Claude Code Router。大致需要以下步驟（同樣可以讓 Trae 幫你執行），以準備好相關環境：
 
@@ -435,7 +435,7 @@ Claude Code 會把程式設計任務拆解成一個持續的“感知—思考�
 
 ### Codex
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image26.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image26.webp)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image27.png)
 
@@ -453,7 +453,7 @@ npm i -g @openai/codex
 
 如果直接使用 OpenAI 官方的 Codex 入口，配置會非常簡單：當你已經開通 OpenAI 訂閱或申請到了相應 API 配額之後，只需要在命令行中輸入 `codex` 啟動程序，並按提示完成登錄即可。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image28.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image28.webp)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image29.png)
 
@@ -525,7 +525,7 @@ I can use the command `codex --profile myrelay` to run it
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image32.png)
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image33.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image33.webp)
 
 OpenCode 是一款面向開發者的開源 AI Coding Agent 平臺，定位類似於 “多模型版的 Claude Code”。它以 Terminal 為核心交互入口，同時也支持編輯器集成（如 VS Code、Neovim 等），能夠深度接入本地程式碼倉庫，並通過自然語言完成從程式碼理解到工程執行的一整套開發流程。
 
@@ -565,7 +565,7 @@ npm i -g opencode-ai
 
 選哪種都可以,只是認證方式不同。這裡選擇第一種進行瀏覽器登錄。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image38.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image38.webp)
 
 複製此鏈接到瀏覽器上進行正常的 OpenAI 登錄操作，瀏覽器上出現 Authorization Successful 後 OpenCode 客戶端會自動跳轉至選擇 OpenAI 的模型界面。
 
@@ -577,7 +577,7 @@ npm i -g opencode-ai
 
 OpenCode 的強大之處還在於他有非常活躍的社區生態，你可以在 Github 上搜索出非常多與 OpenCode 相關的插件。如果說 OpenCode 是一款可以任意切換模型的 AI 協作工具的話，那麼 Oh-My-OpenAgent 就是一款運行在 OpenCode 之上的 "多 Agent AI 程式設計指揮系統"。它可以將一個複雜任務拆給多個子任務分給不同的模型進行各司其職的工作。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image41.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image41.webp)
 
 你可以將以下話術複製之後粘貼給上文在 OpenCode 中配置好的模型進行安裝 OpenCode。
 
@@ -778,7 +778,7 @@ Features: Add “Templates,” “Themes & Personalization,” and start develop
 
 收到你的請求後，Claude Code 會自動完成一系列操作，包括從 GitHub 拉取程式碼、配置運行環境、啟動項目等。如果中間某一步出錯或項目啟動狀態不正常，你再根據提示進行少量人工處理即可。除了 Dify，你也可以用 Claude Code 幫你部署大部分常見的 GitHub 開源項目——你只需要一個對話框，再加上喝一杯咖啡的時間 ☕️。
 
-![](/zh-cn/stage-2/backend/modern-cli/images/image31.png)
+![](/zh-cn/stage-2/backend/modern-cli/images/image31.webp)
 
 ### 講解程式碼與撰寫文檔
 

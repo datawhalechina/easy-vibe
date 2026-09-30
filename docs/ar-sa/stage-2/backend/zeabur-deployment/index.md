@@ -23,7 +23,7 @@
 
 منصات "النشر منخفض الكود" مثل CloudBase و Vercel و Zeabur وُلدت لحل المشاكل المعقدة المذكورة أعلاه. ستساعدك تلقائيًا على إكمال خطوات "شراء الخادم، تكوين البيئة، رفع الكود، بدء الخدمة، مراقبة التشغيل". تحتاج فقط إلى ربط مستودع الكود الخاص بك (مثل GitHub أو GitLab) بالمنصة، أو رفع الكود مباشرة، وستسحب الكود تلقائيًا وتتعرف على نوع التطبيق وتكوين بيئة التشغيل المقابلة، وتعطيك أخيرًا عنوان شبكة عامة يمكن لأي شخص الوصول إليه. يمكنها حتى ربط اسم النطاق الخاص بك بنقرة واحدة.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 بعد ذلك، سنقدم خصائص كل من هذه المنصات الثلاثة وطرق استخدامها لمساعدتك في اختيار حل النشر الأنسب لك.
 
@@ -289,7 +289,7 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 في الدروس السابقة، تعرفنا بالفعل على Dify بشكل مختصر. الآن، يمكننا من خلال [Zeabur](https://zeabur.com/projects) بدء خدمة Dify الخاصة بنا بسهولة كبيرة. أولاً افتح [صفحة وحدة التحكم](https://zeabur.com/projects)، دعنا نلقي نظرة على المناطق المختلفة أعلاه.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 في هذه الصفحة، يمكنك أولاً رؤية العديد من المربعات، وهذه هي الخدمات التي تم تشغيلها بالفعل. في القائمة العلوية، سترى عدة خيارات: Agent و Servers و Docs و Templates، وتمثل على التوالي:
 
@@ -357,7 +357,7 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 إذا كنت مهتمًا، يمكنك أيضًا بدء خدمة n8n بالمناسبة. n8n هي أيضًا منصة سير عمل AI شائعة جدًا في الخارج.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## استخدام Zeabur و Trae لنشر لعبة الثعبان
 
@@ -367,7 +367,7 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 ### التنفيذ باستخدام إطار HTML
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 بالنسبة لـ Trae، إنشاء لعبة ثعبان مبنية على HTML أمر بسيط جدًا. بعد إنشاء اللعبة، تحتاج فقط إلى اتباع طريقة النشر المحلي لـ Zeabur المذكورة سابقًا لرفع المجلد الذي يحتوي على جميع الملفات.
 
@@ -375,7 +375,7 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 بعد الانتهاء، ستدخل واجهة تفاصيل الخدمة:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 انقر على خيار "Network" على اليسار، وابحث عن منطقة "Public Address" في الصفحة. انقر على "Generate Domain"، وسيتم إنشاء عنوان وصول خارجي، ويمكنك إدخال أي اسم تفضله.
 
@@ -391,13 +391,13 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 سابقًا تعلمنا كيفية نشر تطبيقات الويب المبنية على HTML. بعد ذلك، سنحاول نشر إطار عمل واجهة أمامية أكثر شيوعًا حاليًا: تطبيق React. مقارنة بـ HTML الخالص، يُعتبر React إطار عمل واجهة أمامية أكثر نضجًا وحديثة. ينظم هيكل الصفحة بطريقة مكونة، ويمكنه تسريع تطوير الصفحات المعقدة بشكل كبير، وهو خيار رئيسي جدًا في المشاريع المؤسسية.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### إعادة البناء بهيكل React
 
 في Trae، تحتاج فقط إلى شرح للـ Agent: "ساعدني في إعادة بناء هذا الكود بهيكل React"، ويمكنك بسهولة كبيرة إعادة بناء الهيكل المبني على HTML إلى مشروع React.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 لكن، مقارنة بملفات HTML البسيطة، تطبيقات React تعتمد على أدوات بناء وهيكل مشروع أكثر تعقيدًا، لذا ستكون عملية النشر أكثر تعقيدًا قليلاً أيضًا. تتجلى مشكلة نموذجية في إعدادات المنفذ: بشكل افتراضي، تطبيقات React تستمع عادةً على المنفذ 3000 (يمكنك أيضًا رؤية ذلك في ملف التكوين أو سجل البدء).
 
@@ -434,13 +434,13 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 لتغيير منفذ الاستماع الافتراضي لـ React (3000) إلى 8080 المطلوب من Zeabur، هناك عدة طرق. أبسط طريقة هي إعطاء التعليمات مباشرة لـ Agent في Trae: "ساعدني في تغيير المنفذ الافتراضي لمشروع React هذا إلى 8080." سيقوم Trae بتعديل ملفات التكوين المقابلة في المشروع. بعد اكتمال التعديل، تحتاج فقط إلى إعادة التعبئة والرفع إلى Zeabur كما كان سابقًا.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 في إعدادات الشبكة، حدد URL وصول، بنفس الطريقة تقريبًا كما في نشر مشروع HTML، ويمكن بدء خدمة نسخة React.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Zeabur هي منصة نشر ناشئة، مناسبة بشكل خاص للمشا
 
 للعثور على مدخل إدارة المشروع، انقر أولاً على خيار "Settings" في المشروع.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 بعد الدخول إلى صفحة الإعدادات، اسحب الصفحة إلى الأسفل، سترى واجهة مشابهة لما يلي:
 

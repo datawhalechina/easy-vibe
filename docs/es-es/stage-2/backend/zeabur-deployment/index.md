@@ -23,7 +23,7 @@ Si realizas el despliegue manualmente, un proyecto suele requerir varios pasos, 
 
 Plataformas de "despliegue de bajo código" como CloudBase, Vercel y Zeabur nacieron precisamente para resolver estos problemas complejos. Se encargan automáticamente de "comprar servidores, configurar entornos, subir código, iniciar servicios y supervisar la ejecución". Solo necesitas conectar tu repositorio de código (como GitHub o GitLab) a la plataforma, o subir el código directamente, y la plataforma se encargará de descargar el código, identificar el tipo de aplicación, configurar el entorno de ejecución correspondiente y, finalmente, darte una dirección pública accesible para cualquier persona. Incluso puedes vincular tu propio dominio con un solo clic.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.webp)
 
 A continuación, presentaremos las características y los métodos de uso de cada plataforma, para ayudarte a elegir la solución de despliegue que mejor se adapte a tus necesidades.
 
@@ -289,7 +289,7 @@ Zeabur es una plataforma de despliegue emergente, especialmente adecuada para pr
 
 En lecciones anteriores ya tuvimos un primer contacto con Dify. Ahora, podemos iniciar nuestro propio servicio de Dify muy fácilmente a través de [Zeabur](https://zeabur.com/projects). Primero abre la [página de la consola](https://zeabur.com/projects) y echemos un vistazo a las diferentes áreas.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.webp)
 
 En esta página, lo primero que verás son muchos bloques, que representan los servicios ya iniciados. En el menú superior verás varias opciones como Agent, Servers, Docs y Templates, que representan respectivamente:
 
@@ -357,7 +357,7 @@ Tras unos instantes, verás la pantalla de inicio de sesión de Dify. Introduce 
 
 Si te interesa, también puedes aprovechar para iniciar un servicio de n8n. n8n es otra plataforma de flujos de trabajo de IA muy popular a nivel internacional.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.webp)
 
 ## Usar Zeabur y Trae para desplegar el juego Snake
 
@@ -367,7 +367,7 @@ El primer paso es crear un proyecto de Snake en local usando Trae.
 
 ### Implementación con HTML
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.webp)
 
 Para Trae, generar un juego web de Snake basado en HTML es muy sencillo. Una vez que el juego se haya generado, solo necesitas subir la carpeta que contiene todos los archivos siguiendo el método de despliegue local de Zeabur que describimos anteriormente.
 
@@ -375,7 +375,7 @@ Para Trae, generar un juego web de Snake basado en HTML es muy sencillo. Una vez
 
 Una vez completado, entrarás en la interfaz de detalles del servicio:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.webp)
 
 Haz clic en la opción "Network" en el lado izquierdo y busca el área "Public Address" en la página. Haz clic en "Generate Domain" para generar una dirección de acceso público; puedes introducir cualquier nombre que te guste.
 
@@ -391,13 +391,13 @@ Una vez generada, abre esta dirección en el navegador y podrás ejecutar tu pro
 
 Anteriormente aprendimos a desplegar aplicaciones web basadas en HTML. Ahora vamos a probar el despliegue con un framework frontend más utilizado actualmente: aplicaciones React. Comparado con HTML puro, React se considera un framework de desarrollo frontend más maduro y moderno. Organiza la estructura de la página mediante componentes, lo que acelera significativamente el desarrollo de páginas complejas, y es una opción muy popular en proyectos empresariales.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.webp)
 
 #### Refactorización a arquitectura React
 
 En Trae, solo tienes que indicarle al Agent: "Ayúdame a refactorizar este código a una arquitectura React", y podrás convertir fácilmente la estructura basada en HTML en un proyecto React.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.webp)
 
 Sin embargo, comparado con los archivos HTML simples, las aplicaciones React dependen de herramientas de construcción y estructuras de proyecto más complejas, por lo que el proceso de despliegue también es algo más complicado. Un problema típico se refleja en la configuración de puertos: por defecto, las aplicaciones React suelen escuchar en el puerto 3000 (puedes ver esto en el archivo de configuración o en los registros de inicio).
 
@@ -434,13 +434,13 @@ El diseño de la plataforma Zeabur determina que solo "reconocerá" aplicaciones
 
 Hay muchas formas de cambiar el puerto de escucha predeterminado de React (3000) al 8080 que requiere Zeabur. La forma más sencilla es darle una instrucción directamente al Agent en Trae: "Por favor, cambia el puerto predeterminado de este proyecto React a 8080." Trae modificará los archivos de configuración correspondientes del proyecto. Una vez completada la modificación, solo tienes que volver a compilar y subir a Zeabur siguiendo el método anterior.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
 En la configuración de red, especifica una URL de acceso de la misma manera que cuando desplegaste el proyecto HTML, y podrás iniciar la versión React del servicio.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.webp)
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
@@ -456,7 +456,7 @@ Dado que la activación de recursos relacionados con el servidor genera costes, 
 
 Para encontrar la gestión del proyecto, primero haz clic en la opción "Settings" del proyecto.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.webp)
 
 Tras acceder a la página de configuración, desplázate hasta la parte inferior y verás una interfaz similar a esta:
 

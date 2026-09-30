@@ -26,7 +26,7 @@ Apres avoir complete ce tutoriel, vous acquerrez une comprehension systematique 
 
 La Generation Amelioree par la Recherche (Retrieval-Augmented Generation, RAG) est l'une des approches techniques les plus importantes de l'IA generative d'aujourd'hui. Son idee de base est simple : avant de demander a un grand modele de generer une reponse, le systeme recupere d'abord les informations liees a la question de l'utilisateur a partir d'une base de connaissances externe, puis transmet a la fois les informations recuperees et la question originale au modele pour que celui-ci puisse repondre sur la base de documents reels. Cette base de connaissances externe peut etre les politiques internes de l'entreprise, les documents de processus et les connaissances produit, ou une base de donnees sectorielle, un corpus reglementaire, une bibliotheque de normes, etc.
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.webp)
 
 A ce stade, une question naturelle se pose : si les grands modeles peuvent deja "repondre directement aux questions", pourquoi ajouter une couche supplementaire appelee Generation Amelioree par la Recherche ? Surtout maintenant que les fenetres de contexte deviennent de plus en plus grandes, il peut sembler que simplement transmettre tout le document pertinent au modele devrait resoudre la plupart des besoins.
 
@@ -36,7 +36,7 @@ La veritable difference est que "pouvoir produire une reponse" et "pouvoir produ
    Meme si les fenetres de contexte continuent de s'etendre, l'idee de deposer tous les documents dans le contexte en une seule fois reste irrealisable dans les systemes reels. La contradiction centrale se manifeste de deux manieres :
 2. Le cout d'inference est fortement et positivement correle a la longueur du contexte. Plus le contexte est long, plus le cout d'inference augmente, presque lineairement et parfois meme de maniere superlineaire. Pour un seul appel, 8K tokens et 200K tokens se situent dans des gammes de prix et de latence completement differentes, et le contexte long a un seuil de cout beaucoup plus eleve.
 
-   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
+   ![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.webp)
 
    > En substance, le contexte est les informations de fond et l'historique de conversation auxquels le modele "se refere" lorsqu'il repond a une question. En termes techniques, c'est la sequence totale de tokens alimentee au modele pour une inference, telle que les instructions systeme et utilisateur, l'historique des messages et les passages recuperes.
    >
@@ -418,7 +418,7 @@ MTEB fournit un cadre d'evaluation unifie et objectif pour de nombreux modeles d
 
 [Classement HuggingFace MTEB](https://huggingface.co/spaces/mteb/leaderboard)
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.webp)
 
 Bien qu'il y ait de nombreux modeles sur le classement, vous n'avez pas besoin de tous les maitriser. En pratique, choisir le modele d'embedding fourni par un fournisseur de modele majeur, ou utiliser un modele cloud deja valide par de nombreuses personnes, est generalement un choix sur. Vous pouvez egalement filtrer le classement par categorie ou langue dans la barre laterale :
 
@@ -651,7 +651,7 @@ Pour la plupart des entreprises, parce que les scenarios metier sont uniques, la
 
 Si les ressources sont limitees et que vous avez besoin d'une ligne de base rapide, les benchmarks publics restent un point de depart utile. En 2025, de nombreux benchmarks publics existent pour les scenarios generaux et verticaux :
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.webp)
 
 Lors du choix parmi eux, clarifiez d'abord l'objectif. Etablissez-vous une ligne de base, ou validez-vous le systeme avant le lancement ? Verifiez ensuite si le benchmark couvre les scenarios et le profil de difficulte qui vous importent. Pour les domaines sensibles au temps comme l'actualite ou la finance, assurez-vous que le benchmark inclut des tests de sensibilite temporelle.
 
@@ -788,7 +788,7 @@ Recherches connexes :
 
 - https://arxiv.org/pdf/2502.08826
 
-![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.png)
+![](/zh-cn/stage-3/ai-advanced/rag-introduction/images/image13.webp)
 
 Les donnees du monde reel ne sont jamais seulement textuelles. Les ingenieurs diagnostiquant des pannes de serveur doivent regarder ensemble les courbes de temperature, les captures d'ecran d'appareils et les journaux. Les medecins faisant des diagnostics ont besoin d'images CT ou IRM, de rapports d'analyse et de dossiers medicaux electroniques en meme temps. Le RAG textuel traditionnel peut au mieux recuperer des phrases comme "anomalie de temperature" ou "suspect nodule pulmonaire", mais il a du mal a connecter ces descriptions a la tendance reelle du graphique ou a la forme de la lesion sur l'image, et il ne peut pas faire une recherche inverse de documents ou de connaissances a partir d'images, d'audio ou de video.
 

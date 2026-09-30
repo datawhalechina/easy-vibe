@@ -22,7 +22,7 @@ const relatedArticles = relatedArticlesMap['ko-kr/stage-2/frontend/figma-masterg
 
 또한 팀 협업 측면에서, 프론트엔드 디자인 도구는 여러 당사자 간의 협업 비용을 낮춰줍니다. 디자이너, 제품 매니저, 개발자가 더 이상 각자 머릿속의 이미지나 추상적인 코드 설명을 바라보는 것이 아니라, 다자간 협업을 지원하여 모두가 시각적이고, 주석을 달 수 있으며, 반복 가능한 캔버스를 중심으로 버전 관리, 요구사항 변경, 피드백 의견을 논의할 수 있습니다. 나아가, 현대 프론트엔드 디자인 도구 자체는 더 이상 그림 그리는 소프트웨어가 아니며, 원클릭으로 코드의 일부를 생성하고, 디자인 시스템과 컴포넌트 라이브러리를 관리할 수 있습니다. 새로운 시대의 디자인 도구는 대량의 반복적인 수작업(정렬, 주석, 내보내기, 스타일 변경)을 자동화하거나 일괄 처리할 수 있어, 페이지 디자인의 개발 효율성을 크게 향상시켰습니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.webp)
 
 ### 1.1 프론트엔드 디자인 도구의 변천
 
@@ -32,39 +32,39 @@ const relatedArticles = relatedArticlesMap['ko-kr/stage-2/frontend/figma-masterg
 
 ## 1.2 탄생 여정
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.webp)
 
 현대 프론트엔드 전용 도구가 탄생하기 전, 전체 인터페이스 디자인 산업의 시각 디자인 작업은 오랫동안 Photoshop 같은 "올인원" 디자인 소프트웨어가 맡아왔습니다. 디자이너는 로컬에서 겹겹이 쌓인 레이어를 통해 페이지 전체의 시각 효과를 세밀하게 디자인하고, 최종적으로 크기가 큰 .psd 소스 파일을 프론트엔드 엔지니어에게 전달했습니다. 그리고 프론트엔드는 디자인 초안을 정확하게 재현하기 위해 세 가지 번거롭고 핵심적인 작업을 수동으로 완료해야 했습니다:
 
 첫째, "이미지 자르기": .psd 파일의 다중 레이어 구조에서 버튼, 아이콘, 로고, 배경 모듈 등의 독립적인 시각 요소를 하나씩 분리하여 추출한 다음, PNG, JPG 등 웹에서 직접 로드할 수 있는 이미지 형식으로 내보내야 합니다 (웹은 PSD의 레이어 정보를 직접 인식할 수 없고, 이 분리된 이미지에 의존하여 세부 사항을 표시해야 합니다).
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.webp)
 
 둘째, "치수 측정": 소프트웨어 자체의 측정 도구를 사용하여 각 요소의 너비와 높이, 다른 모듈 간의 간격(margin/padding) 등의 데이터를 하나씩 확인하여, 모든 치수가 픽셀 단위로 정확한지 확인해야 합니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.webp)
 
 셋째, "주석 추출": 디자인에서 "보이지 않지만 반드시 있어야 하는" 숨겨진 파라미터를 추출해야 합니다. 예를 들어 텍스트의 글꼴 크기, 글꼴 굵기, 줄 간격, 각 색상 블록의 RGB 또는 HEX 색상 값 등으로, 디자이너가 종이에 적지 않은 "디자인 사양"을 수동으로 "추출"하여 기록하는 것과 같습니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.webp)
 
 그 이후에야 프론트엔드의 구현 단계가 본격적으로 시작됩니다. 네이티브 HTML/CSS/JS를 사용하든, Vue, React 등의 프레임워크를 기반으로 하든 본질적인 과정은 동일합니다. 프론트엔드는 "컨테이너를 핵심 매체"로 삼아, 디자인의 각 모듈 계층과 의미에 따라 페이지 구조를 재구성합니다. 여기서 컨테이너란 명확한 레이아웃 경계를 가지고, 하위 요소를 특별히 담고 조직하는 단위를 의미합니다. 컨테이너는 직접적으로 구체적인 콘텐츠를 표시하지 않지만, Flex, Grid 등의 규칙을 통해 내부 요소의 배열 범위를 정합니다. 그리고 "구조 블록"(상단 내비게이션 바, 사이드바, 기사 목록 영역, 하단 푸터 등 육안으로 구분할 수 있는 기능/콘텐츠 영역)이 컨테이너에 의존하여 존재하며, 각 구조 블록 내부에는 더 작은 컨테이너가 중첩되어 요소를 조직합니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.webp)
 
 현대 프론트엔드 프레임워크에서, 이러한 "구조 블록(및 관련 컨테이너와 요소)"은 보통 "컴포넌트"로 구현됩니다. 컴포넌트는 간단히 말해: 명확한 경계를 가지고, 컨테이너 레이아웃과 로직을 통합한 재사용 가능한 인터페이스 단위입니다. 디자인 초안에서 반복적으로 나타나고 형태가 일치하는 부분(예: 통일된 스타일의 버튼, 반복적으로 사용되는 기사 카드)은 코드에서 컴포넌트로 추상화됩니다. 서로 다른 페이지/시나리오에서 재사용할 수 있어 반복 개발을 줄이고, 컴포넌트 내부 컨테이너의 통일된 규칙을 통해 모든 재사용 지점의 레이아웃과 스타일이 높은 일관성을 유지할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.webp)
 
 하지만 로컬 파일 중심의 모델은 본질적으로 비효율적입니다. 버전은 이메일과 클라우드 스토리지를 통해 전송되고, 신구 초안이 혼동되기 쉬우며, 디자인과 개발 사이에는 위에서 언급한 복잡한 상호작용 방법에 크게 의존하여, 협업 비용과 오류 발생 확률이 모두 높습니다.
 
 모바일 인터넷이 부상하면서 인터페이스 복잡도와 반복 속도 요구가 빠르게 증가했고, Photoshop의 "크고 포괄적인" 특성은 점점 무거워 보였습니다. 이 시기에 Sketch가 등장했습니다. Sketch는 UI 디자인 자체에 집중하여, 시각 후처리와 관련된 대부분의 부담을 제거했습니다. Symbols를 사용하여 버튼, 내비게이션, 입력 상자 등 고빈도 재사용 요소를 컴포넌트화하여, 한 곳의 수정이 전체적으로 동기화되었습니다. Zeplin 같은 도구와 함께 사용하여 주석과 스타일 조각을 자동으로 생성했습니다. Sketch는 "컴포넌트 사고방식"을 디자인 워크플로우에 도입했습니다. 하지만 여전히 로컬 파일 기반의 데스크톱 애플리케이션이었고, 실시간 협업은 클라우드 스토리지, 서드파티 플러그인 또는 버전 관리 도구를 통해 우회해서 구현해야 했으며, "여러 사람이 동시에 같은 초안을 수정하는" 문제를 근본적으로 해결하지 못했습니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.webp)
 
 게임의 규칙을 정말로 바꾼 것은 Figma였습니다. 2016년부터 UI 디자인, 프로토타입 제작, 댓글 협업을 브라우저에 통합하여, 다인 실시간 커서, 온라인 댓글, 버전 타임라인, 공유 링크 등 다양한 현대 기능을 지원했습니다. 오늘날 매우 기본적으로 보이지만, 당시에는 Photoshop / Sketch 모델에 대한 정면 도전이었습니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.webp)
 
 이로써 인터페이스 디자인은 더 이상 각자의 컴퓨터에 흩어진 파일이 아니라, 하나의 온라인, 실시간 업데이트되는 클라우드 캔버스에 집중되었습니다. 이 캔버스를 중심으로, 더 나아가 자동화나 AI 방식으로 디자인과 프론트엔드 코드의 경계를 흐리게 할 수 있다고 상상할 수 있습니다.
 
@@ -80,7 +80,7 @@ const relatedArticles = relatedArticlesMap['ko-kr/stage-2/frontend/figma-masterg
 
 또는 다음 튜토리얼을 참고하여 개인 포트폴리오 같은 간단한 웹페이지를 빠르게 구축하세요: https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collectio
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.webp)
 
 왼쪽은 프로젝트 생성 및 리소스 관리 입구이고, 오른쪽 상단의 몇 가지 버튼은 Figma의 주요 기능입니다. 그중 Make는 한마디로 AI가 먼저 대략적인 인터페이스나 구조 초안을 생성하도록 하는 데 사용되고, Design은 실제로 웹/App 인터페이스를 그리고, 컴포넌트를 만들고 프로토타입을 제작하는 메인 워크스페이스이며, FigJam은 팀 화이트보드처럼 포스트잇을 붙이고, 플로우를 그리고 초기 논의를 하는 데 사용됩니다. Buzz는 브랜드 자산 대량 생산 도구로, 브랜드 일관성을 유지하면서 콘텐츠를 대량으로 생성하는 데 사용되며, Site는 이러한 디자인을 실제로 접근 가능한 웹페이지나 문서 사이트로 정리하여 외부에 공개하는 것입니다.
 
@@ -161,7 +161,7 @@ const relatedArticles = relatedArticlesMap['ko-kr/stage-2/frontend/figma-masterg
 
 이때 사용되는 모든 버튼은 이 마스터의 동기화된 복사본입니다. 마스터의 색상, 둥근 모서리 또는 간격을 수정하면, 모든 인스턴스가 자동으로 동기화 업데이트를 유지합니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.webp)
 
 이로써 Figma의 간단한 사용법을 초기에 마스터했습니다. 처음부터 모든 기능을 다 이해할 필요는 없습니다. 먼저 첫 번째 간단한 페이지를 만들어 보고, 이 몇 가지 핵심 조작에 익숙해진 다음, 공식 튜토리얼의 더 많은 기능을 천천히 탐색하면 됩니다. 사용 횟수가 늘어나면 반드시 익숙해질 것입니다.
 
@@ -176,7 +176,7 @@ Figma의 기본 워크플로우를 이해한 후, 이제 MasterGo를 살펴보�
 1. **MasterGo 백엔드 진입**
    1. MasterGo 공식 웹사이트를 열고 계정에 로그인합니다.
    2. 진입하면 "파일 목록 / 프로젝트 목록"과 같은 홈페이지 영역이 보이며, 디자인 파일을 관리하는 데 사용됩니다.
-      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.png)
+      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.webp)
 
 2. **새 파일 만들기**
    1. 오른쪽 상단에서 + 디자인 파일 버튼 옵션을 클릭하거나, Figma 등 파일 가져오기를 선택합니다.
@@ -234,21 +234,21 @@ MasterGo에서 주목할 만한 흥미로운 기능은 AI 페이지 생성입니
 
 ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.webp)
 
 디자인 문서 생성이 완료되면, 생성 시작을 클릭하고 잠시 기다리면 해당하는 실제 웹페이지 효과를 얻을 수 있습니다:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.webp)
 
 이때 두 가지 조작 선택지가 있습니다: 첫째, 파란색 버튼을 클릭하여 생성 결과를 캔버스에 직접 삽입합니다. 둘째, 코드 미리보기 기능을 클릭하여 현재 완전한 페이지의 코드를 직접 얻습니다. 구체적인 조작 인터페이스는 다음과 같습니다:
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.webp)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.webp)
 
 결과를 캔버스에 삽입한 후, 웹페이지의 전체 레이아웃, 요소 세부 사항(예: 글꼴, 색상, 간격 등)을 더 세밀하게 조정하여, 최종 효과가 완전히 기대에 부합할 때까지 수정할 수 있습니다.
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.webp)
 
 ---
 

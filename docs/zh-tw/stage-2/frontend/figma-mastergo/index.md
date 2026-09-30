@@ -22,7 +22,7 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/figma-masterg
 
 另外，從團隊協作的角度而言，前端設計工具還降低了多方的合作成本：設計師、產品、開發不再各自對著腦補畫面或者抽象的程式碼說明，而是支持多人協同，大家能夠圍繞一份可視、可標註、可迭代的畫布討論版本管理、需求變更、反饋意見。更進一步的是，現代前端設計工具本身不再只是畫圖軟體，一鍵生成部分程式碼，管理設計系統和組件庫，新時代的設計工具已能夠將大量重複性的體力勞動（對齊、標註、導出、改樣式）自動化或批量化，極大促進了頁面設計的開發效率。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image8.webp)
 
 ### 1.1 前端設計工具的演變
 
@@ -32,41 +32,41 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/figma-masterg
 
 ## 1.2 誕生之旅
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image9.webp)
 
 在現代前端專用工具尚未誕生的年代，整個界面設計行業的視覺設計工作，很長一段時間都由 Photoshop 這類 "全能型" 設計軟體順帶承包。設計師會在本地通過一層層疊加的圖層，細緻完成頁面整體視覺效果的設計，最終將體積不小的 .psd 源文件交付給前端工程師 —— 而前端要精準還原設計圖，還必須手動完成三項繁瑣且關鍵的工作：
 
 一是 "切圖"：需要從 .psd 文件的多層結構裡，把按鈕、圖標、Logo、背景模塊等獨立視覺元素逐一拆分提取，再導出為 PNG、JPG 等網頁能直接加載的圖片格式（畢竟網頁無法直接識別 PSD 的圖層資訊，只能依賴這些拆分後的圖片呈現細節）；
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image10.webp)
 
 二是 "量尺寸"：得用軟體自帶的測量工具，逐一確認每個元素的寬高、不同模塊間的間距（margin/padding）等資料，確保所有尺寸都精準到像素；
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image11.webp)
 
 三是 "摳標註"：要從設計圖中提取那些 "看不見卻必須有的" 隱性參數 —— 比如文字的字號、字重、行距，每個色塊的 RGB 或 HEX 色值等，相當於把設計師沒寫在紙上的 "設計規格" 手動 "摳" 出來記錄。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image12.webp)
 
 在此之後，前端的實現階段才真正展開。無論使用的是原生 HTML/CSS/JS，還是基於 Vue、React 等框架，本質過程是一致的。前端會以 "容器為核心載體"，根據設計中各模塊的層級與語義重建頁面結構。這裡的容器是指具有明確佈局邊界、專門承載和組織子元素的單元，它不直接呈現具體內容，卻通過 Flex、Grid 等規則，為內部元素劃定排列範圍。而 "結構塊"（如頂部導航欄、側邊欄、文章列表區、底部頁腳等肉眼可辨的功能 / 內容區域），便依託容器存在；每個結構塊內部，又會嵌套更小的容器來組織元素，比如一條文章列表項，會由 "列表項容器" 控制內邊距與整體排版，再包裹標題、摘要、時間、封面圖標等細節元素。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image13.webp)
 
 在現代前端框架裡，這些 "結構塊（及關聯的容器與元素）" 通常會被實現為 "組件"。組件可簡單理解為：帶有清晰邊界、整合了容器佈局與邏輯的可複用界面單元，它既包含控制外觀與排列的容器（比如 "按鈕組件" 用容器定義寬高、圓角，"文章卡片組件" 用容器組織標題、封面的位置），也封裝了交互邏輯。設計稿中重複出現、形態一致的部分（如統一風格的按鈕、反覆使用的文章卡片），在程式碼中會被抽象成組件：既能在不同頁面 / 場景複用，減少重複開發，也能通過組件內容器的統一規則，確保所有複用處的佈局與風格高度一致
 
 隨後，前端會使用樣式系統還原視覺和佈局。切圖階段導出的 PNG/JPG 等資源，會作為組件或結構塊內部的 `<img>`、背景圖片，或者按照各框架推薦的靜態資源方式引入；量尺寸階段得到的寬高、間距、行高等具體數值，會被轉寫為 `width`、`height`、`margin`、`padding`、`line-height` 等樣式屬性，應用到對應的組件或結構塊上；摳標註階段整理出的顏色、字體、陰影、圓角以及 hover/active 等狀態，則會落實到 CSS、CSS Modules、CSS-in-JS、Tailwind 等具體方案中的 `color`、`font-family`、`font-size`、`box-shadow`、`border-radius` 以及偽類或狀態類名上。此時，切圖、尺寸和標註提供的是一組精確的視覺參數，組件和結構塊則提供了承載這些參數的程式碼組織單元，兩者結合起來，構成可維護、可複用的界面實現。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image14.webp)
 
 但是，以本地文件為中心的模式天然是低效率的。版本通過郵件和網盤傳輸，新舊稿件容易混淆，設計和開發之間大量依賴上述的複雜交互方法，協作成本和出錯概率都不低。
 
 移動互聯網興起後界面複雜度和迭代速度需求快速上升，Photoshop 的"大而全"逐漸顯得笨重。這個階段，出現了 Sketch。Sketch 專注在 UI 設計本身，剝離掉大部分與視覺後期處理相關的負擔；用 Symbols 把按鈕、導航、輸入框等高複用元素組件化，一處修改可以全局同步；再配合 Zeplin 一類工具，把標註和樣式片段自動生成。Sketch 把"組件思維"引入了設計工作流。不過它依然是基於本地文件的桌面應用，實時協作要靠雲盤、第三方插件或版本工具繞行實現，沒有從底層解決"多個人同時改同一份稿子"的問題。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image15.webp)
 
 真正改變遊戲規則的是 Figma。自 2016 年起，它把 UI 設計、原型製作、評論協作統一整合到瀏覽器中，支持多種現代功能：多人實時光標、在線評論、版本時間線、分享鏈接等，今天看起來非常簡單，但在當時是對 Photoshop / Sketch 模式的正面挑戰。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image16.webp)
 
 至此，界面設計不再是散落在各自電腦裡的文件，而是集中在一份在線、實時更新的雲端畫布上。圍繞這塊畫布，我們可以想象更進一步，用自動化或 AI 的方式模糊設計和前端程式碼的邊界。
 
@@ -82,7 +82,7 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/figma-masterg
 
 或者參考如下教程，進行類似個人作品集簡單網頁的快速搭建：https://help.figma.com/hc/en-us/sections/35895585621655-Figma-Sites-collectio
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image17.webp)
 
 左側是項目的新建和資源管理入口，右上角的幾個按鈕是 Figma 的常見功能。其中，Make 用來用一句話讓 AI 幫你先生成一個大概的界面或結構草稿，Design 是真正畫網頁 / App 界面、搭組件和做原型的主工作區，FigJam 像團隊白板，用來貼便利貼、畫流程和做前期討論，Buzz 是品牌資產規模化生產工具，用於批量生成內容以保持品牌一致性，Site 則是把這些設計整理成真正可訪問的網頁或文檔站對外展示。
 
@@ -163,7 +163,7 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/figma-masterg
 
 此時所有用到的按鈕，都是這個母版的同步拷貝。當你修改母版的顏色、圓角或間距時，所有實例都會自動保持同步更新。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image27.webp)
 
 至此，你已經初步掌握了 Figma 的簡單用法。你不需要一開始就把所有功能都弄懂，只要先照著做出第一個簡單頁面，熟悉這幾個核心操作，再慢慢去探索官方教程裡的更多能力，隨著使用次數增多就一定能上手。
 
@@ -178,7 +178,7 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/figma-masterg
 1. **進入 MasterGo 後臺**
    1. 打開 MasterGo 官網並登錄賬號。
    2. 進入後，你會看到類似「文件列表 / 項目列表」的首頁區域，用來管理你的設計文件。
-      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.png)
+      ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image28.webp)
 
 2. **創建新文件**
    1. 在右上角看到 + 設計文件的按鈕選項進行點擊，或者選擇導入 Figma 等文件。
@@ -236,21 +236,21 @@ const relatedArticles = relatedArticlesMap['zh-tw/stage-2/frontend/figma-masterg
 
 ![](/zh-cn/stage-2/frontend/figma-mastergo/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image37.webp)
 
 設計文檔生成結束後，點擊開始生成，稍作等待便能獲取對應的實際網頁效果：
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image38.webp)
 
 此時你有兩種操作選擇：一是點擊藍色按鈕將生成結果直接插入畫布，二是點擊程式碼預覽功能，直接獲取當前完整頁面的程式碼，具體操作界面如下：
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image39.webp)
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image40.webp)
 
 將結果插入畫布後，你還能對網頁的整體佈局、元素細節（如字體、顏色、間距等）進行更精細的調整，直至最終效果完全符合你的預期。
 
-![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.png)
+![](/zh-cn/stage-2/frontend/figma-mastergo/images/image41.webp)
 
 ---
 

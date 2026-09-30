@@ -89,7 +89,7 @@ GitHub es una plataforma de alojamiento de codigo basada en Git. No solo proporc
 
 GitHub no solo es la plataforma de alojamiento de codigo mas grande del mundo, sino tambien la comunidad de codigo abierto mas activa e influyente a nivel global. Aqui, la idea principal de "codigo abierto" es que cualquier persona puede descargar y ejecutar el codigo fuente del software. Este modelo permite a personas de todo el mundo revisar el codigo de otros, hacer modificaciones o crear nuevos proyectos basados en el. Por ejemplo, puedes encontrar en GitHub diversos tutoriales de aprendizaje y el codigo fuente completo de frameworks para entrenar modelos GPT (como PyTorch). Cada dia, innumerables personas colaboran en todo el mundo para revisar y mejorar el codigo.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image9.webp)
 
 Muchas grandes empresas publican sus programas o tutoriales en codigo abierto en GitHub para obtener ventajas competitivas en la industria, lo que tambien puede verse como una forma de publicidad. En la comunidad de GitHub, el numero de "estrellas (stars)" que recibe un proyecto es el indicador principal de su valor; cuantas mas estrellas tenga un proyecto u organizacion, mayor sera su credibilidad e influencia.
 
@@ -100,7 +100,7 @@ En nuestro curso, los recursos de apoyo y las tareas tambien se subiran a un rep
 ## Registrar una cuenta de GitHub
 
 1. Visita el [sitio oficial de GitHub](https://github.com/) y haz clic en "Sign up" en la esquina superior derecha.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.webp)
 2. Ingresa tu direccion de correo electronico (se recomienda usar un correo de uso frecuente, ya que la verificacion y las notificaciones se enviaran alli), establece una contrasena (debe incluir letras, numeros y caracteres especiales).
 3. Completa la verificacion humana, verifica tu correo segun las instrucciones y tu cuenta estara creada.
 
@@ -174,13 +174,13 @@ Una vez que comprendas los principios, la operacion practica es simple: el nucle
    1. Usar Trae para obtener la clave publica (recomendado)
       Prompt: `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com , Please return the public key for me to copy`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.webp)
 
    Despues de ingresar el prompt, tambien necesitas presionar Enter en la terminal izquierda; de lo contrario, el comando seguira esperando sin ejecutarse. Dado que Trae no puede ejecutar ninguna evaluacion condicional por ti, simplemente presionamos Enter continuamente.
 
    Al final, veras que Trae en el lado derecho devuelve la clave publica que leyo. Solo necesitas copiarla y prepararte para pegarla en el siguiente paso.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png) 2. Obtener la clave publica manualmente
+   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.webp) 2. Obtener la clave publica manualmente
    Abre tu terminal local (en Windows usa Git Bash o PowerShell; en macOS/Linux usa la terminal) e ingresa el siguiente comando (reemplaza your_email@example.com con el correo electronico que usaste para registrar tu cuenta de GitHub):
 
    ```bash
@@ -235,7 +235,7 @@ Ya hemos explicado que es Git, que es GitHub, que es SSH y como configurarlo. Ah
 
 Puedes decirle directamente la direccion del repositorio que deseas clonar.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image24.webp)
 
 ## Git pull: Obtener actualizaciones del repositorio remoto
 
@@ -251,7 +251,7 @@ Cuando todo este listo, puedes intentar modificar archivos locales, agregar o el
 
 prompt: `I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/zh-cn/stage-2/backend/git-workflow/images/image25.webp)
 
 Push exitoso. Ahora puedes ver el contenido actualizado en GitHub.
 

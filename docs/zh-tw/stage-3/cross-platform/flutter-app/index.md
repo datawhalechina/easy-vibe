@@ -11,11 +11,11 @@ Flutter 適合 Android、iOS 需要大致相同功能與視覺風格的產品。
 
 My BMW 把車況、充電、保養與遠端操作放在同一個 App。它先顯示車輛與目前狀態，再提供次要入口。
 
-![My BMW 的車況與服務入口](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.png)
+![My BMW 的車況與服務入口](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.webp)
 
 Google Pay 在付款或取得獎勵後立即顯示明確結果；Nubank 則用安靜的資訊層級整理帳戶和服務入口。
 
-![Google Pay 的付款狀態與回饋](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.png)
+![Google Pay 的付款狀態與回饋](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.webp)
 
 ![Nubank 的帳戶與協助入口](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-nubank.png)
 

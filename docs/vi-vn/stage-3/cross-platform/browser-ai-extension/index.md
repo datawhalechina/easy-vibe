@@ -16,9 +16,9 @@ Bạn chắc chắn đã sử dụng tiện ích mở rộng trình duyệt trư
 
 Hãy tưởng tượng: bạn mở một bài blog kỹ thuật 5.000 từ, nhấp nút tiện ích mở rộng một lần và vài giây sau một tóm tắt tiếng Trung ngắn gọn xuất hiện trong bảng điều khiển bên. Đó chính xác là những gì chúng ta sẽ xây dựng.
 
-![placeholder: Hình ảnh xem trước hiển thị trang web bài viết dài bên trái và tóm tắt do AI tạo được hiển thị trong bảng điều khiển bên Chrome bên phải](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: Hình ảnh xem trước hiển thị trang web bài viết dài bên trái và tóm tắt do AI tạo được hiển thị trong bảng điều khiển bên Chrome bên phải](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: Hình ảnh xem trước hiển thị trang web bài viết dài bên trái và tóm tắt do AI tạo được hiển thị trong bảng điều khiển bên Chrome bên phải](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: Hình ảnh xem trước hiển thị trang web bài viết dài bên trái và tóm tắt do AI tạo được hiển thị trong bảng điều khiển bên Chrome bên phải](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 Kiến trúc Cơ bản của Chrome Extension
 
@@ -44,8 +44,8 @@ Người dùng nhấp biểu tượng tiện ích mở rộng
     -> Service Worker gửi tóm tắt trở lại bảng điều khiển bên để hiển thị
 ```
 
-![placeholder: Sơ đồ kiến trúc hiển thị cách Content Script, Service Worker và Side Panel truyền tin nhắn cho nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: Sơ đồ kiến trúc hiển thị cách Content Script, Service Worker và Side Panel truyền tin nhắn cho nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: Sơ đồ kiến trúc hiển thị cách Content Script, Service Worker và Side Panel truyền tin nhắn cho nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: Sơ đồ kiến trúc hiển thị cách Content Script, Service Worker và Side Panel truyền tin nhắn cho nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 Hai Tùy chọn AI: API Đám mây so với AI Tích hợp Trình duyệt
 
@@ -425,8 +425,8 @@ Gỡ lỗi Chrome extensions hơi khác so với gỡ lỗi trang web thông th�
 3. Chọn tên tiện ích mở rộng của bạn
 4. Sau đó bạn có thể thấy đầu ra `console` từ Content Script
 
-![placeholder: Ảnh chụp màn hình Chrome DevTools hiển thị cách chọn các ngữ cảnh thực thi khác nhau để gỡ lỗi các thành phần tiện ích mở rộng khác nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Ảnh chụp màn hình Chrome DevTools hiển thị cách chọn các ngữ cảnh thực thi khác nhau để gỡ lỗi các thành phần tiện ích mở rộng khác nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: Ảnh chụp màn hình Chrome DevTools hiển thị cách chọn các ngữ cảnh thực thi khác nhau để gỡ lỗi các thành phần tiện ích mở rộng khác nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: Ảnh chụp màn hình Chrome DevTools hiển thị cách chọn các ngữ cảnh thực thi khác nhau để gỡ lỗi các thành phần tiện ích mở rộng khác nhau](/zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 Khắc phục Sự cố Phổ biến
 

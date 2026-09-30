@@ -16,9 +16,9 @@ You have definitely used browser extensions before: ad blockers, translation too
 
 Imagine this: you open a 5,000-word technical blog post, click the extension button once, and a few seconds later a concise Chinese summary appears in the side panel. That is exactly what we are going to build.
 
-![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp)
 
-<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.webp) -->
 
 ## 1.2 The Basic Architecture of a Chrome Extension
 
@@ -44,8 +44,8 @@ User clicks the extension icon
     -> Service Worker sends the summary back to the side panel for display
 ```
 
-![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp)
+<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.webp) -->
 
 ## 1.3 Two AI Options: Cloud API vs Built-in Browser AI
 
@@ -425,8 +425,8 @@ Debugging Chrome extensions is a bit different from debugging normal webpages:
 3. Select your extension name
 4. Then you can see `console` output from the Content Script
 
-![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp)
+<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.webp) -->
 
 ## 5.2 Common Troubleshooting
 

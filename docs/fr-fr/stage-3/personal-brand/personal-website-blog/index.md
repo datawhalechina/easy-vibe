@@ -18,7 +18,7 @@ Une **page personnelle academique** est votre propre territoire prive sur Intern
 
 Contrairement aux Moments WeChat, Zhihu ou LinkedIn, elle ne depend d'aucun algorithme de recommandation de plateforme, et elle ne disparaitra pas si une plateforme ferme. C'est un **espace de vitrine personnelle** a long terme et stable qui peut etre indexe par Google et Google Scholar. Elle contient generalement votre biographie, vos publications, vos projets et votre blog technique.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.webp)
 
 ## 1.2 Pourquoi creer votre propre site ?
 
@@ -232,7 +232,7 @@ Si Git est le coursier, alors **GitHub est l'entrepot cloud et le showroom**. Il
 1. **Visitez le site officiel** : ouvrez [https://github.com/](https://github.com/).
 2. **Cliquez sur Sign up** : cliquez sur **"Sign up"** dans le coin superieur droit.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.webp)
 
 3. **Remplissez vos informations**
 4. **Email** : entrez une adresse email reelle.
@@ -404,8 +404,8 @@ La premiere chose que nous devons resoudre est "Qui suis-je ?" Le modele est rem
 
 Placez les images d'actifs que je vous fournis, `University_of_Pennsylvania.jpg` et `Queen_University.jpg`, dans le dossier de projet correspondant, generalement `/assets/images/badges/`.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.webp)
 
 **Etape 2 : Envoyer l'instruction**
 
@@ -462,8 +462,8 @@ Dans le contexte d'une page personnelle academique, nous pouvons redefinir la si
 Telechargez les images de couverture que je vous fournis, a savoir `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg` et `Neuralink_sewing_machine_robot.jpg`, placez-les sous `/assets/images/covers/` et supprimez les images d'exemple qui etaient originellement dans ce dossier.
 
 ![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.webp)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.webp)
 
 **Etape 2 : Envoyer l'instruction**
 
@@ -972,7 +972,7 @@ Ne laissez pas ce terrain vide.
 Allez experimenter. Allez le casser. Allez le reconstruire.
 Continuez a faire ca jusqu'a ce qu'il atteigne la forme que vous aimez le plus.
 
-![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](/zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.webp)
 
 ***Allez-y, et laissez le monde vous voir.***
 

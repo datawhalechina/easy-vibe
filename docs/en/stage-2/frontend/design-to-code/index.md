@@ -91,9 +91,9 @@ In the top toolbar of the MasterGo editor, you can find the AI tool entry:
 
 2. **Inspect the generated result**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image48.webp)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image49.webp)
 
 3. **Get the code**
    - Click the blue `Insert to canvas` button if you want to edit the result visually
@@ -129,19 +129,19 @@ To use the full Figma Make experience, you usually need Figma Pro. Students can 
    - Upload the design you want to recreate
    - Add a prompt describing what you want
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image43.webp)
 
 3. **Check the result**
    - After a short wait, you will see the rendered result
    - Click the play button in the upper right to preview it fullscreen
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image44.webp)
 
 4. **Fine-tune the details**
    - Click the editor icon in the upper right
    - Go back into the familiar Figma editor and make detailed adjustments
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/zh-cn/stage-2/frontend/design-to-code/images/image45.webp)
 
 5. **Export the code**
    - Once the result looks good, export the code

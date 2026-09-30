@@ -11,9 +11,9 @@ Flutter phù hợp khi Android và iOS cần gần như cùng sản phẩm và p
 
 My BMW đặt trạng thái xe lên trước, Google Pay xác nhận kết quả ngay và Nubank sắp xếp tài khoản cùng trợ giúp rõ ràng.
 
-![My BMW](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.png)
+![My BMW](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-bmw.webp)
 
-![Google Pay](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.png)
+![Google Pay](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-google-pay.webp)
 
 ![Nubank](../../../../zh-cn/stage-3/cross-platform/flutter-app/images/flutter-real-nubank.png)
 
