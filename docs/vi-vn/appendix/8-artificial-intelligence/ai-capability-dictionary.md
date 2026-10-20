@@ -45,7 +45,7 @@ Từ góc độ theo đuổi tối ưu về **độ chính xác và chi phí**, 
 > - Dòng OpenAI: GPT-4, GPT-4.1, GPT-4o, GPT-5.1, v.v.
 > - Dòng Google: Gemini 1.5 Pro, Gemini 1.5 Flash, v.v.
 > - Dòng Anthropic: Claude 3.5 Sonnet, Claude 3.5 Haiku, v.v.
-> - Mô hình trong nước: dòng Qwen của Thông Nghĩa Thiên Vấn, dòng ERNIE Bot của Văn Tâm Nhất Ngôn, GLM/Trí Phổ Thanh Ngôn, Tencent Hunyuan, iFlytek Spark, mô hình lớn đứng sau Kimi của Moonshot AI, dòng MiniMax-M2.7 của MiniMax, v.v.
+> - Mô hình trong nước: dòng Qwen của Thông Nghĩa Thiên Vấn, dòng ERNIE Bot của Văn Tâm Nhất Ngôn, GLM/Trí Phổ Thanh Ngôn, Tencent Hunyuan, iFlytek Spark, mô hình lớn đứng sau Kimi của Moonshot AI, dòng MiniMax-M3.1-Flash / MiniMax-M3 của MiniMax, v.v.
 >
 > Các mô hình lớn và dịch vụ thiên về thị giác và video, bao gồm:
 >

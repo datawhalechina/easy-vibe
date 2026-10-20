@@ -49,7 +49,7 @@
 > - OpenAI 系列：GPT-4、GPT-4.1、GPT-4o、GPT-5.1 等
 > - Google 系列：Gemini 1.5 Pro、Gemini 1.5 Flash 等
 > - Anthropic 系列：Claude 3.5 Sonnet、Claude 3.5 Haiku 等
-> - 國內模型：通義千問 Qwen 系列、文心一言 ERNIE Bot 系列、GLM/智譜清言、騰訊混元、訊飛星火、月之暗面的 Kimi 背後的大模型、MiniMax MiniMax-M2.7 系列等
+> - 國內模型：通義千問 Qwen 系列、文心一言 ERNIE Bot 系列、GLM/智譜清言、騰訊混元、訊飛星火、月之暗面的 Kimi 背後的大模型、MiniMax MiniMax-M3.1-Flash / MiniMax-M3 系列等
 >
 > 更偏視覺和視頻方向的大模型和服務，包括：
 >

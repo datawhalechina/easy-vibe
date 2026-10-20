@@ -225,8 +225,10 @@ Minimax는 시위과기(MiniMax)가 출시한 차세대 대형 언어 모델로,
 ```bash
 export ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic
 export ANTHROPIC_AUTH_TOKEN=YOUR_MINIMAX_API_KEY
-export ANTHROPIC_MODEL=MiniMax-M2.7
+export ANTHROPIC_MODEL=MiniMax-M3.1-Flash
 ```
+
+Use `MiniMax-M3.1-Flash` for new configurations, or set `ANTHROPIC_MODEL=MiniMax-M3` explicitly. Keep any intentionally saved legacy or custom model ID. These are direct API model IDs; check your account's access before using a subscription plan. Flash requires adaptive thinking: do not disable thinking or set effort to `none`. See the [MiniMax API compatibility reference](https://platform.minimax.io/docs/api-reference/text-anthropic-api).
 
 #### DeepSeek를 백엔드로 사용하기(추천)
 
@@ -641,6 +643,8 @@ Prometheus (claude-opus-4-7 / kimi-k2.6 / glm-5.1)는 당신의 전략 플래너
 
 여러 모델을 동시에 설정하려면 설정에서 다양한 작업 카테고리를 지정할 수 있습니다.
 
+The MiniMax quick-task example uses the [OpenCode Console route](https://opencode.ai/v2/docs/console/models/). Connect that provider with `/connect` first. Its `minimax-m3.1-flash-free` offer is time-limited; `opencode/minimax-m3` is a paid alternative. These gateway IDs are distinct from direct MiniMax API IDs and OpenCode Go subscription models.
+
 ```json
 {
   "model": "bailian-coding-plan/qwen3.5-plus",
@@ -654,7 +658,7 @@ Prometheus (claude-opus-4-7 / kimi-k2.6 / glm-5.1)는 당신의 전략 플래너
       "description": "복잡한 로직, 알고리즘, 아키텍처 결정"
     },
     "quick": {
-      "model": "opencode-go/minimax-m2.5",
+      "model": "opencode/minimax-m3.1-flash-free",
       "description": "간단한 수정, 오타 수정"
     }
   }

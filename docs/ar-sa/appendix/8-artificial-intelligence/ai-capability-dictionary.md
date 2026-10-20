@@ -47,7 +47,7 @@
 > - سلسلة OpenAI: GPT-4، GPT-4.1، GPT-4o، GPT-5.1 وغيرها
 > - سلسلة Google: Gemini 1.5 Pro، Gemini 1.5 Flash وغيرها
 > - سلسلة Anthropic: Claude 3.5 Sonnet، Claude 3.5 Haiku وغيرها
-> - النماذج المحلية الصينية: سلسلة Tongyi Qianwen (Qwen)، سلسلة Wenxin Yiyan (ERNIE Bot)، GLM / Zhipu Qingyan، Tencent Hunyuan، iFlytek Spark، النموذج الكبير خلف Kimi من Moonshot AI، سلسلة MiniMax-M2.7 وغيرها
+> - النماذج المحلية الصينية: سلسلة Tongyi Qianwen (Qwen)، سلسلة Wenxin Yiyan (ERNIE Bot)، GLM / Zhipu Qingyan، Tencent Hunyuan، iFlytek Spark، النموذج الكبير خلف Kimi من Moonshot AI، سلسلة MiniMax-M3.1-Flash / MiniMax-M3 وغيرها
 >
 > النماذج والخدمات الكبيرة الأكثر توجهاً نحو الرؤية والفيديو تشمل:
 >

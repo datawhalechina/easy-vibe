@@ -47,7 +47,7 @@ Aus der Perspektive des extremen Strebens nach **Präzision und Kosteneffizienz*
 > - OpenAI-Reihe: GPT-4, GPT-4.1, GPT-4o, GPT-5.1 usw.
 > - Google-Reihe: Gemini 1.5 Pro, Gemini 1.5 Flash usw.
 > - Anthropic-Reihe: Claude 3.5 Sonnet, Claude 3.5 Haiku usw.
-> - Chinesische Modelle: Tongyi Qianwen Qwen-Reihe, Wenxin Yiyan ERNIE Bot-Reihe, GLM/Zhipu Qingyan, Tencent Hunyuan, iFlytek Spark, das große Modell hinter Moonshot AI's Kimi, MiniMax MiniMax-M2.7-Reihe usw.
+> - Chinesische Modelle: Tongyi Qianwen Qwen-Reihe, Wenxin Yiyan ERNIE Bot-Reihe, GLM/Zhipu Qingyan, Tencent Hunyuan, iFlytek Spark, das große Modell hinter Moonshot AI's Kimi, MiniMax MiniMax-M3.1-Flash / MiniMax-M3-Reihe usw.
 >
 > Stärker auf visuelle und videobezogene Ausrichtungen spezialisierte große Modelle und Dienste:
 >

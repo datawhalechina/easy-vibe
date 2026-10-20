@@ -49,7 +49,7 @@ From the perspective of pursuing the ultimate in **precision and cost**, the tra
 > - OpenAI series: GPT-4, GPT-4.1, GPT-4o, GPT-5.1, etc.
 > - Google series: Gemini 1.5 Pro, Gemini 1.5 Flash, etc.
 > - Anthropic series: Claude 3.5 Sonnet, Claude 3.5 Haiku, etc.
-> - Domestic models: Tongyi Qianwen (Qwen) series, Wenxin Yiyan (ERNIE Bot) series, GLM/Zhipu Qingyan, Tencent Hunyuan, iFlytek Spark, the large model behind Moonshot AI's Kimi, MiniMax MiniMax-M2.7 series, etc.
+> - Domestic models: Tongyi Qianwen (Qwen) series, Wenxin Yiyan (ERNIE Bot) series, GLM/Zhipu Qingyan, Tencent Hunyuan, iFlytek Spark, the large model behind Moonshot AI's Kimi, MiniMax MiniMax-M3.1-Flash / MiniMax-M3 series, etc.
 >
 > Large models and services more oriented toward vision and video include:
 >

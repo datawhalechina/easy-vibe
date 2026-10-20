@@ -45,7 +45,7 @@
 > - OpenAI 시리즈: GPT-4, GPT-4.1, GPT-4o, GPT-5.1 등
 > - Google 시리즈: Gemini 1.5 Pro, Gemini 1.5 Flash 등
 > - Anthropic 시리즈: Claude 3.5 Sonnet, Claude 3.5 Haiku 등
-> - 중국 모델: 통의천문(Tongyi Qianwen) Qwen 시리즈, 문심일언(ERNIE Bot) 시리즈, GLM/지푸칭옌(Zhipu Qingyan), 텐센트 훈위안(Hunyuan), 아이플라이텍 스파크(iFLYTEK Spark), 모지다크(Moonshot AI) Kimi 기반 대형 모델, MiniMax MiniMax-M2.7 시리즈 등
+> - 중국 모델: 통의천문(Tongyi Qianwen) Qwen 시리즈, 문심일언(ERNIE Bot) 시리즈, GLM/지푸칭옌(Zhipu Qingyan), 텐센트 훈위안(Hunyuan), 아이플라이텍 스파크(iFLYTEK Spark), 모지다크(Moonshot AI) Kimi 기반 대형 모델, MiniMax MiniMax-M3.1-Flash / MiniMax-M3 시리즈 등
 >
 > 비전 및 비디오 방향에 더 특화된 대형 모델 및 서비스:
 >

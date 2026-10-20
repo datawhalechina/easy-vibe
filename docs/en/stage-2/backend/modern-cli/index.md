@@ -223,8 +223,10 @@ Visit <https://platform.minimax.io/> to register and obtain an API key.
 ```bash
 export ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic
 export ANTHROPIC_AUTH_TOKEN=YOUR_MINIMAX_API_KEY
-export ANTHROPIC_MODEL=MiniMax-M2.7
+export ANTHROPIC_MODEL=MiniMax-M3.1-Flash
 ```
+
+Use `MiniMax-M3.1-Flash` for new configurations, or set `ANTHROPIC_MODEL=MiniMax-M3` explicitly. Keep any intentionally saved legacy or custom model ID. These are direct API model IDs; check your account's access before using a subscription plan. Flash requires adaptive thinking: do not disable thinking or set effort to `none`. See the [MiniMax API compatibility reference](https://platform.minimax.io/docs/api-reference/text-anthropic-api).
 
 #### Use DeepSeek as the Backend (Recommended)
 
@@ -637,6 +639,8 @@ Here is a sample configuration for connecting Alibaba Cloud's Qwen model via the
 
 To route different task types to different models:
 
+The MiniMax quick-task example uses the [OpenCode Console route](https://opencode.ai/v2/docs/console/models/). Connect that provider with `/connect` first. Its `minimax-m3.1-flash-free` offer is time-limited; `opencode/minimax-m3` is a paid alternative. These gateway IDs are distinct from direct MiniMax API IDs and OpenCode Go subscription models.
+
 ```json
 {
   "model": "bailian-coding-plan/qwen3.5-plus",
@@ -650,7 +654,7 @@ To route different task types to different models:
       "description": "Complex logic, algorithms, architecture"
     },
     "quick": {
-      "model": "opencode-go/minimax-m2.5",
+      "model": "opencode/minimax-m3.1-flash-free",
       "description": "Simple edits, typo fixes"
     }
   }

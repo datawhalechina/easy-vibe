@@ -45,7 +45,7 @@ Du point de vue de la **précision et du coût** poussés à l'extrême, l'entra
 > - Série OpenAI : GPT-4, GPT-4.1, GPT-4o, GPT-5.1, etc.
 > - Série Google : Gemini 1.5 Pro, Gemini 1.5 Flash, etc.
 > - Série Anthropic : Claude 3.5 Sonnet, Claude 3.5 Haiku, etc.
-> - Modèles chinois : série Tongyi Qianwen Qwen, série Wenxin Yiyan ERNIE Bot, GLM / Zhipu Qingyan, Tencent Hunyuan, iFlytek Spark, le grand modèle derrière Kimi de Moonshot AI, série MiniMax MiniMax-M2.7, etc.
+> - Modèles chinois : série Tongyi Qianwen Qwen, série Wenxin Yiyan ERNIE Bot, GLM / Zhipu Qingyan, Tencent Hunyuan, iFlytek Spark, le grand modèle derrière Kimi de Moonshot AI, série MiniMax MiniMax-M3.1-Flash / MiniMax-M3, etc.
 >
 > Les grands modèles et services davantage orientés vision et vidéo incluent :
 >

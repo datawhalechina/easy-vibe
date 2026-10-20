@@ -225,8 +225,10 @@ Minimax は稀宇科技（MiniMax）が発表した次世代の大規模言語�
 ```bash
 export ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic
 export ANTHROPIC_AUTH_TOKEN=YOUR_MINIMAX_API_KEY
-export ANTHROPIC_MODEL=MiniMax-M2.7
+export ANTHROPIC_MODEL=MiniMax-M3.1-Flash
 ```
+
+Use `MiniMax-M3.1-Flash` for new configurations, or set `ANTHROPIC_MODEL=MiniMax-M3` explicitly. Keep any intentionally saved legacy or custom model ID. These are direct API model IDs; check your account's access before using a subscription plan. Flash requires adaptive thinking: do not disable thinking or set effort to `none`. See the [MiniMax API compatibility reference](https://platform.minimax.io/docs/api-reference/text-anthropic-api).
 
 #### DeepSeek をバックエンドとして使用する（推奨）
 
