@@ -1989,3 +1989,68 @@ Migrated:
 - `TrafficSchedulingDemo.vue`
 - `HttpsOptimizationDemo.vue`
 - `AccessAnalyticsDemo.vue`
+
+`ui-design-specs` has a section locale with all ten locales, one file each.
+It backs the figures in the stage-2 frontend chapter `multi-product-ui`
+(issue #156):
+
+- `docs/.vitepress/theme/locales/ui-design-specs/index.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/zh-cn.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/en.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/zh-tw.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/ja-jp.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/ko-kr.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/es-es.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/fr-fr.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/de-de.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/ar-sa.js`
+- `docs/.vitepress/theme/locales/ui-design-specs/vi-vn.js`
+
+Rules that every locale file of this section must keep:
+
+- Same keys, nesting and array lengths as `en.js`.
+- Unchanged in every locale: `id`, `kind` and `rel` values, the role and
+  level names that code looks rows up by (`Normal`, `Primary`, `Cancel`,
+  `Destructive`, `Filled`, `Tonal`, `Outlined`, `Text`), `source.label`,
+  `source.url`, numbers, and `{n}`-style placeholders.
+- The localized chapter mirrors the zh-cn structure: same headings, list
+  items, tables, links and figure tags. The repo checker's fenced-code and
+  inline-code checks fail by design for this chapter, because the example
+  prompts and the button-label examples are translated.
+
+Components:
+
+- `UiSpecHierarchyCompareDemo.vue`
+- `UiSpecPageAnatomyDemo.vue`
+- `UiSpecGroupingDemo.vue`
+- `UiSpecButtonSpecDemo.vue`
+- `UiSpecButtonStatesDemo.vue`
+- `UiSpecLookalikeControlsDemo.vue`
+- `UiSpecPageSkeletonDemo.vue`
+- `UiSpecSpecMapDemo.vue`
+- `UiSpecButtonDecisionDemo.vue`
+- `UiSpecFluentButtonsDemo.vue`
+- `UiSpecTokensDemo.vue`
+- `UiSpecThreeLayersDemo.vue`
+- `UiSpecTaskFlowLayoutDemo.vue`
+- `UiSpecRoleSamplesDemo.vue`
+
+Source-level check:
+
+```bash
+npx eslint docs/.vitepress/theme/components/appendix/ui-design-specs/*.vue docs/.vitepress/theme/locales/ui-design-specs/*.js docs/.vitepress/theme/index.js
+rg -n "[\p{Han}]" docs/.vitepress/theme/components/appendix/ui-design-specs/*.vue || true
+node scripts/scan-appendix-component-i18n.mjs --json
+```
+
+The section should report:
+
+```json
+{
+  "section": "ui-design-specs",
+  "total": 14,
+  "withChinese": 0,
+  "withI18n": 14,
+  "chineseWithoutI18n": 0
+}
+```

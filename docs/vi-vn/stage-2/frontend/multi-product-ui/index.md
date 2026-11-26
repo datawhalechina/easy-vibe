@@ -27,13 +27,13 @@ Nghe có vẻ không có vấn đề, nhưng trong quy chuẩn của các công 
 
 | Lời nói bình thường | Nguyên văn chính thức | Nói đơn giản |
 | :--- | :--- | :--- |
-| "Làm một menu" | Apple: ["A menu reveals its options..."](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu` là dùng để làm thao tác |
-| "Đặt chức năng vào thanh menu" | Apple: ["menu bar menus contain all the commands..."](https://developer.apple.com/design/human-interface-guidelines/menus) | Đây là menu lệnh ở đầu ứng dụng |
-| "Làm một dropdown" | Apple: ["A pop-up list lets the user choose one option among several."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up` là chọn một cái từ danh sách |
-| "Cũng làm một dropdown" | Apple: ["A pull-down list is generally used for selecting commands in a specific context."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down` là bấm mở để làm thao tác hiện tại |
-| "Menu cũng có thể dùng để lọc đúng không" | Fluent: ["If you need to collect information from people, try a select, dropdown, or combobox instead."](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu` không phải để chọn giá trị |
-| "Menu cũng có thể làm điều hướng đúng không" | Material: ["Menus should not be used as a primary method for navigation within an app."](https://m1.material.io/components/menus.html) | `Menu` không phải điều hướng chính |
-| "Nút bấm cứ viết OK / Cancel thôi" | Apple: ["Always use 'Cancel' to title a button that cancels the alert's action."](https://developer.apple.com/design/human-interface-guidelines/alerts) | Văn bản nút không thể viết tùy tiện |
+| "Làm một menu" | Apple: [“A menu reveals its options...”](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu` là dùng để làm thao tác |
+| "Đặt chức năng vào thanh menu" | Apple: [“menu bar menus contain all the commands...”](https://developer.apple.com/design/human-interface-guidelines/menus) | Đây là menu lệnh ở đầu ứng dụng |
+| "Làm một dropdown" | Apple: [“A pop-up list lets the user choose one option among several.”](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up` là chọn một cái từ danh sách |
+| "Cũng làm một dropdown" | Apple: [“A pull-down list is generally used for selecting commands in a specific context.”](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down` là bấm mở để làm thao tác hiện tại |
+| "Menu cũng có thể dùng để lọc đúng không" | Fluent: [“If you need to collect information from people, try a select, dropdown, or combobox instead.”](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu` không phải để chọn giá trị |
+| "Menu cũng có thể làm điều hướng đúng không" | Material: [“Menus should not be used as a primary method for navigation within an app.”](https://m1.material.io/components/menus.html) | `Menu` không phải điều hướng chính |
+| "Nút bấm cứ viết OK / Cancel thôi" | Apple: [“Always use ‘Cancel’ to title a button that cancels the alert’s action.”](https://developer.apple.com/design/human-interface-guidelines/alerts) | Văn bản nút không thể viết tùy tiện |
 
 > Các trích dẫn trong bảng đều có thể nhấp trực tiếp để đến trang chính thức tương ứng.
 
@@ -60,12 +60,21 @@ Fluent sẽ không chỉ nói "dropdown"; nó sẽ tiếp tục phân biệt:
 
 Nó không phải để làm trang có vẻ chuyên nghiệp hơn, mà là để khi đội nhóm thảo luận về UI, trong đầu mỗi người không còn là những thứ khác nhau nữa.
 
+Chỉ nhìn tên thì khó thấy được sự khác biệt. Hai điều khiển dưới đây trông gần như giống hệt nhau. Bạn hãy mở từng cái và chọn thử một mục để xem chúng hoạt động khác nhau thế nào.
+
+<UiSpecLookalikeControlsDemo />
+
+Trong quy chuẩn Apple, mỗi điều khiển có một trang riêng. Bạn có thể đối chiếu [Pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons) và [Pull-down buttons](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons).
+
 ## Bạn sẽ học được gì
 
 1. Tại sao khi thiết kế trang và nút bấm cần xem quy chuẩn thiết kế trước
 2. Trong các quy chuẩn Apple, Material, Fluent, Atlassian, nội dung nào đáng tham khảo nhất
 3. Cách thiết kế rõ ràng "cấp bậc trang" và "cấp bậc nút bấm"
-4. Cách để AI tham khảo quy chuẩn của người khác để tạo trang và nút bấm
+4. Một quy chuẩn trưởng thành định nghĩa nút bấm chi tiết đến mức nào
+5. Cách để AI tham khảo quy chuẩn của người khác để tạo trang và nút bấm
+
+Mỗi phần đều có hình minh họa để bạn tự tay thử.
 
 ## 1. Tại sao quy chuẩn thiết kế có thể giúp bạn làm rõ trang
 
@@ -75,6 +84,14 @@ Sau khi xem những nguyên văn trên, bạn sẽ phát hiện một điểm qu
 
 Nhiều trang không đẹp, không phải vì màu sắc không đủ cao cấp, mà vì cấp bậc thông tin lộn xộn.
 
+Hãy xem một ví dụ. Dưới đây là hai cách thiết kế cùng một trang danh sách dự án. Văn bản giống hệt nhau, tôi chỉ thay đổi cấp bậc. Bạn có thể thử như sau.
+
+- Di chuột lên một hàng trong bảng bên dưới. Cả hai hình sẽ đồng thời đánh dấu vị trí của vấn đề
+- Thử bật tắt các công tắc phía trên hình bên phải để xem trang trở lại ra sao khi bỏ từng cải tiến
+- Kéo thanh “Thử nheo mắt”. Khi hình mờ đi, mọi thứ bên trái vẫn tranh nhau thu hút sự chú ý, còn bên phải chỉ thấy rõ tiêu đề và nút chính
+
+<UiSpecHierarchyCompareDemo />
+
 Nhiều nút không dễ dùng, cũng không phải vì bo góc không đúng, mà vì:
 
 - Nút chính quá nhiều, người dùng không biết nên nhấn cái nào
@@ -82,7 +99,7 @@ Nhiều nút không dễ dùng, cũng không phải vì bo góc không đúng, m
 - Tất cả nút trong trang đều tranh giành sự chú ý
 - Phong cách và ngữ nghĩa của nút không nhất quán giữa các trang khác nhau
 
-Quy chuẩn thiết kế trưởng thành,恰好 là đang giải quyết những vấn đề này. Chúng thường sẽ định nghĩa:
+Quy chuẩn thiết kế trưởng thành được xây dựng để giải quyết những vấn đề này. Chúng thường sẽ định nghĩa:
 
 | Nội dung quy chuẩn | Nó giải quyết vấn đề gì |
 | :--- | :--- |
@@ -94,7 +111,28 @@ Quy chuẩn thiết kế trưởng thành,恰好 là đang giải quyết nhữn
 
 Vì vậy, quy chuẩn thiết kế thực sự cung cấp không phải là một "lớp da", mà là một **tiêu chuẩn phán đoán**.
 
+### 1.1 Có gì bên trong một bộ quy chuẩn thực tế?
+
+Bảng trên chỉ có năm hàng nên mới cho bạn cái nhìn khái quát. Bạn có thể thắc mắc một bộ quy chuẩn thiết kế thực tế có bao nhiêu nội dung.
+
+Hãy cùng đếm các mục trong quy chuẩn Apple. Thử nhấp vào các chủ đề bên dưới rồi dùng công tắc ở trên để lọc những mục liên quan đến trang và nút bấm.
+
+<UiSpecSpecMapDemo />
+
+Trong chương này, bạn chỉ cần hiểu những phần liên quan nhất đến trang và nút bấm. Nếu muốn xem toàn bộ mục lục, hãy mở [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/).
+
 ## 2. Khi tham khảo quy chuẩn công ty lớn, tập trung vào điều gì
+
+Mỗi bộ quy chuẩn có thế mạnh riêng. Bảng dưới đây giúp bạn xác định nên tìm câu trả lời ở đâu.
+
+| Bạn muốn biết | Có thể xem Apple | Có thể xem Material |
+| :--- | :--- | :--- |
+| Cần định nghĩa component chi tiết đến đâu | Mục đích, vai trò, hành vi và khả năng tiếp cận | Cấu trúc, cấu hình phong cách và trạng thái |
+| Trang thể hiện cấp bậc thế nào | Quan hệ điều hướng, kiểu chữ, thứ tự ưu tiên giữa nội dung và điều khiển | Khung trang và vị trí của điều hướng, nội dung, thao tác |
+| Phân chính phụ giữa các thao tác thế nào | Xác định riêng vai trò của nút và mức độ nổi bật | Các mức nhấn mạnh Filled, Tonal, Outlined, Text |
+| Làm sao để tiết chế | Giảm lặp lại và đặt các lệnh liên quan cạnh nhau | Mỗi khu vực chỉ đảm nhiệm một việc |
+
+Bạn nên chọn một bộ quy chuẩn rồi áp dụng nhất quán từ đầu đến cuối. Chẳng hạn, ghép hiệu ứng kính của Apple với cả bộ phong cách nút của Material thường làm mất các quy tắc của cả hai bên.
 
 ### 2.1 Tham khảo Apple: Học cách "định nghĩa đủ chi tiết"
 
@@ -116,6 +154,33 @@ Sự phân biệt này rất quan trọng, vì nó sẽ trực tiếp ảnh hư�
 
 Khi bạn bắt đầu suy nghĩ theo mức độ chi tiết này, trang bạn thiết kế sẽ lập tức rõ ràng hơn nhiều.
 
+#### Cần định nghĩa một nút chi tiết đến đâu?
+
+“Định nghĩa đủ chi tiết” là thế nào? Hãy thử với một nút đơn giản. Khi nói “thêm một nút”, có thể bạn chỉ nghĩ đến màu xanh, bo góc và chiều cao 40. Một bộ quy chuẩn trưởng thành sẽ hỏi tiếp 10 câu. Bản đặc tả dưới đây liệt kê từng câu. Hãy mở từng mục bên trái để xem cần mô tả chi tiết đến đâu.
+
+<UiSpecButtonSpecDemo />
+
+Xem xong, bạn sẽ thấy màu sắc, bo góc và cỡ chữ chỉ là một phần nhỏ. Định nghĩa đủ chi tiết sẽ giúp một nhà thiết kế hoặc kỹ sư khác làm ra đúng thứ bạn hình dung mà không cần hỏi lại.
+
+Trạng thái và hành vi dễ bị bỏ sót nhất vì ảnh chụp tĩnh không cho thấy chúng. Hãy thử di chuột lên nút, nhấn giữ, dùng phím Tab để đưa tiêu điểm đến nút, rồi nhấp vào “Xuất bản dự án” để xem toàn bộ quá trình.
+
+<UiSpecButtonStatesDemo />
+
+Muốn xem nút trong quy chuẩn chính thức trông thế nào, hãy mở trang [Buttons](https://developer.apple.com/design/human-interface-guidelines/buttons) của Apple và trang [Buttons](https://m3.material.io/components/buttons/overview) của Material.
+
+Giờ hãy nhìn lại hai điều khiển thả xuống trông giống nhau ở đầu chương. Bạn sẽ thấy vì sao chúng không thể thay thế cho nhau. Ngoài hình thức, quy chuẩn còn định nghĩa **điều người dùng có thể trông đợi khi dùng điều khiển**. Một bên giúp bạn đổi giá trị, bên kia thực hiện một thao tác cho bạn.
+
+Điều này cũng giải đáp một thắc mắc thường gặp. Vì sao “Xóa” nguy hiểm mà không nên là nút nổi bật nhất? Vai trò cho biết thao tác có rủi ro hay không. Phong cách thể hiện mức độ quan trọng của thao tác đó.
+
+Quy chuẩn còn có nhiều cặp điều khiển trông giống nhau nhưng phục vụ mục đích khác nhau. Dưới đây là vài cặp thường gặp. Lần sau khi gặp chúng, hãy tự hỏi người dùng muốn làm gì khi nhấn vào.
+
+| Hai điều khiển dễ nhầm | Mỗi điều khiển phụ trách việc gì | Ví dụ |
+| :--- | :--- | :--- |
+| Điều hướng bằng tab / Thanh công cụ | Tab chuyển giữa các khu vực lớn. Thanh công cụ chứa thao tác trên trang hiện tại | “Dự án” và “Cài đặt” là nơi để đến. “Xóa mục đã chọn” là việc để làm |
+| Công tắc / Nút bấm | Công tắc chuyển giữa hai trạng thái. Nút kích hoạt một hành động | “Nhận thông báo” dùng công tắc. “Gửi” dùng nút |
+| Bộ chọn / Menu | Bộ chọn cho phép chọn một giá trị. Menu thực thi lệnh | “Sắp xếp theo lần cập nhật gần nhất” dùng bộ chọn. “Đổi tên” đặt trong menu |
+| Hộp thoại xác nhận / Bảng bên | Hộp thoại xác nhận đưa ra thông tin quan trọng cần biết ngay. Bảng bên dành cho một nhiệm vụ có phạm vi rõ ràng | “Bạn có chắc muốn xóa?” dùng hộp thoại xác nhận. “Tạo thư mục” dùng bảng bên |
+
 ### 2.2 Tham khảo Apple: Học cấp bậc trang và sự kiềm chế
 
 Apple Human Interface Guidelines đặc biệt phù hợp để học hai điều:
@@ -135,6 +200,30 @@ Nếu bạn tham khảo Apple để thiết kế trang, có thể tập trung th
 - Dùng khoảng trắng, kích thước font, nhóm để tạo trật tự, thay vì chất nhiều viền
 - Nút không nên tất cả đều nhấn mạnh cao, chỉ hành động quan trọng mới nên nổi bật nhất
 
+#### Minh họa cấu tạo của trang
+
+Những gợi ý trên trông thế nào khi áp dụng vào một trang thực tế? Hãy di chuột lên một tầng bên trái hoặc nhấp để giữ vùng đánh dấu. Hình bên phải sẽ cho biết tầng đó nằm ở đâu và thu hút sự chú ý bằng cách nào. Bật “Hiện đường căn” để xem các khoảng cách được bố trí ra sao.
+
+<UiSpecPageAnatomyDemo />
+
+Khi xem hình bên phải, hãy để ý ba chi tiết sau.
+
+- **Cỡ chữ, độ đậm và sắc độ tạo nên cấp bậc.** Chữ lớn nhất chỉ xuất hiện một lần trên trang. Bạn không cần in đậm mọi tiêu đề
+- **Thông tin phụ trợ nằm ngay cạnh thông tin chính mà nó giải thích**, dùng chữ nhỏ và nhạt hơn nhưng vẫn dễ đọc
+- **Chỉ có một nút chính**, đặt sau phần nội dung để người dùng đọc xong rồi mới thao tác
+
+Bạn có thể xem cách Apple giải thích trong [Layout](https://developer.apple.com/design/human-interface-guidelines/layout) và [Typography](https://developer.apple.com/design/human-interface-guidelines/typography).
+
+#### Minh họa vì sao bỏ đường viền có thể giúp trang rõ hơn
+
+Câu “dùng khoảng trắng, cỡ chữ và cách phân nhóm để tạo trật tự” dễ khiến bạn nghĩ rằng cứ xóa hết đường viền là được. Có đúng vậy không? Hãy nhấp lần lượt vào ba bước bên dưới để xem từ bước nào các nhóm bắt đầu hiện rõ.
+
+<UiSpecGroupingDemo />
+
+Đến bước ba, bạn sẽ thấy khoảng cách mới là thứ tạo nên nhóm. Khi các nội dung liên quan nằm gần nhau, bạn sẽ tự nhận ra chúng thuộc cùng một nhóm dù không có đường viền. Vì vậy, hãy **phân nhóm trước rồi quyết định có cần đường viền hay không**. Chỉ thêm màu nền hoặc đường viền cho nhóm thực sự cần có ranh giới rõ hơn.
+
+Trang [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars) của Apple có hình so sánh trước và sau minh họa đúng điểm này. Hãy đặt các lệnh liên quan trong cùng một nhóm.
+
 ### 2.3 Tham khảo Material: Học cấu trúc trang rõ ràng
 
 Material Design rất phù hợp để học "trang tổ chức luồng nhiệm vụ thế nào".
@@ -150,6 +239,22 @@ Nếu bạn tham khảo Material để thiết kế trang, có thể tập trung
 - Khu vực trang rõ ràng, trách nhiệm module xác định
 - Điều hướng, khu vực nội dung, khu vực thao tác phân công rõ ràng
 - Các phong cách nút khác nhau tương ứng với mức độ ưu tiên thao tác khác nhau
+
+#### Minh họa nhiệm vụ của điều hướng, nội dung và thao tác
+
+Nói “phân công rõ ràng” thì dễ, nhưng cụ thể phải chia thế nào? Material chia trang thành ba phần theo nhiệm vụ. Điều hướng cho biết đi đâu, nội dung cho biết xem gì, còn thao tác cho biết làm gì. Mỗi thao tác cũng cần cho thấy nó ảnh hưởng đến đối tượng nào.
+
+Hình dưới đây phân tích một trang theo cách đó. Hãy di chuột lên một mục bên trái để xem đường liền và đường nét đứt lần lượt chỉ vào đâu.
+
+<UiSpecPageSkeletonDemo />
+
+Khi xem, bạn có thể để ý ba điểm.
+
+- **Hai bên thanh trên cùng có nhiệm vụ riêng.** Nút quay lại và tiêu đề nằm bên trái, các thao tác nằm bên phải và chỉ một nút ở đó nổi bật. Các thao tác liên quan nằm cạnh nhau, nhóm không liên quan thì cách nhau. Đó là cách tiết chế
+- **Phạm vi ảnh hưởng của các thao tác có thể rất khác nhau.** “Tạo dự án” ảnh hưởng đến cả danh sách, còn “Mở” chỉ ảnh hưởng đến một mục
+- **Đặt sai vị trí sẽ khiến phạm vi khó hiểu.** Bật “Thử chuyển nút Xóa lên thanh trên cùng” để thấy bạn không thể biết nút đó sẽ xóa mục nào
+
+Bạn có thể xem hình gốc trong [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars) của Apple và [Layout](https://m3.material.io/foundations/layout/layout-overview/overview) của Material.
 
 ### 2.4 Tham khảo Fluent: Học ranh giới component và cấp bậc nút
 
@@ -172,6 +277,12 @@ Nếu bạn tham khảo Fluent để thiết kế nút, có thể tập trung th
 - Các nút nhấn mạnh yếu như `Subtle`, `Transparent` dùng cho thao tác không nên tranh luồng chính
 - Càng nhiều nút trong trang, càng cần kiểm soát mức độ ưu tiên thị giác
 
+#### Minh họa cách dùng bốn cấp nút
+
+“Kiểm soát mức độ ưu tiên thị giác” cụ thể là làm gì? Hãy tự thử trong phần minh họa bên dưới.
+
+<UiSpecFluentButtonsDemo />
+
 ### 2.5 Tham khảo Atlassian: Học quản lý trang và nút bấm theo hệ thống
 
 Atlassian Design System đặc biệt phù hợp cho tình huống "một đội nhóm làm nhiều trang". Nó nhấn mạnh:
@@ -186,6 +297,12 @@ Nếu bạn tham khảo Atlassian để làm trang và nút, giá trị nhất l
 - Cố định nhịp điệu layout trang
 - Để các trang khác nhau tuy nội dung khác nhưng ngôn ngữ cấu trúc nhất quán
 
+#### Minh họa cách chuyển phong cách thành token
+
+“Quy tắc thống nhất” nghe có vẻ trừu tượng. Hãy kéo các thanh trượt bên phải rồi bật “Mỗi trang dùng một bộ giá trị” để thấy sự khác biệt khi có và khi thiếu quy tắc chung.
+
+<UiSpecTokensDemo />
+
 ## 3. Khi thiết kế trang, nên tham khảo những điểm nào trong quy chuẩn
 
 Khi bạn xem một hệ thống thiết kế, đừng hỏi trước "trang này đẹp không", mà hãy hỏi trước mấy câu hỏi dưới đây.
@@ -198,7 +315,11 @@ Một trang thường ít nhất phải có ba tầng:
 - **Thông tin phụ trợ**: Nội dung giúp hiểu hoặc bổ sung
 - **Thao tác cấp hai**: Hành động không nên can thiệp nhiệm vụ chính
 
-Nếu ba tầng không mở rộng ra, trang sẽ "đều quan trọng", tương đương với "đều không quan trọng".
+Nếu ba tầng không được phân biệt rõ, trang sẽ "đều quan trọng", tương đương với "đều không quan trọng".
+
+Hãy kéo thanh trượt bên dưới để tự tay tách rõ ba tầng.
+
+<UiSpecThreeLayersDemo />
 
 ### 3.2 Layout trang, có phục vụ nhiệm vụ thay vì chất module không
 
@@ -209,6 +330,10 @@ Khi tham khảo quy chuẩn, có thể đặc biệt chú ý:
 - Nút thao tác có gần nội dung liên quan không
 - Thông tin thứ cấp có được làm yếu đi không
 
+Điểm cuối đáng để xem kỹ hơn. Làm nhẹ thông tin thứ cấp thường bắt đầu bằng việc đặt nó đúng chỗ.
+
+<UiSpecTaskFlowLayoutDemo />
+
 ### 3.3 Thao tác trong trang, có mức độ ưu tiên không
 
 Nhiều trang nhìn qua có 6 nút, kết quả mỗi nút đều giống CTA, đây là cấp bậc mất kiểm soát điển hình.
@@ -218,6 +343,18 @@ Cách hợp lý hơn là:
 - Một khu vực thường chỉ có một thao tác chính
 - Thao tác cấp hai có thể dùng viền, nút văn bản hoặc phong cách yếu hơn
 - Hành động rủi ro không nên trông giống hành động chính
+
+Bạn đã thấy hai cách xử lý vấn đề này. Hình so sánh ở mục 1 cho thấy điều gì xảy ra khi có quá nhiều nút nổi bật, còn minh họa Fluent ở mục 2.4 cho thấy cách phân cấp chúng.
+
+### 3.4 Làm sao biết nên nhấn mạnh hay làm nhẹ phần nào?
+
+Bạn có thể quay lại mục 1 và kéo thanh “Thử nheo mắt” một lần nữa. Khi trang mờ đến mức không đọc được chữ, những gì vẫn nhìn thấy chính là những phần thu hút sự chú ý nhất. Hãy tham khảo cách phân chia sau để quyết định phần nào nên nổi bật.
+
+- **Nên nhấn mạnh**: Tiêu đề trang, nội dung cốt lõi của nhiệm vụ hiện tại, thao tác chính tiếp theo
+- **Nên làm nhẹ**: Siêu dữ liệu, giải thích bổ sung, lối vào thứ cấp
+- **Tuyệt đối không nên nhấn mạnh**: Đường viền trang trí, tiêu đề gắn vào mọi module, nút phụ lấn át thao tác chính
+
+Nếu làm mờ xong mà cả màn hình đầy những mảng tối có kích thước gần bằng nhau, mọi thứ đang cùng hô “nhìn tôi” và chẳng có gì thật sự nổi bật.
 
 ## 4. Khi thiết kế nút, nên tham khảo những điểm nào trong quy chuẩn
 
@@ -237,6 +374,10 @@ Vai trò nút phổ biến có thể phân như sau:
 | **Destructive** | Các thao tác rủi ro như xóa, vô hiệu hóa, xóa sạch | Màu cảnh báo hoặc phong cách rủi ro rõ ràng |
 | **Icon button** | Thao tác công cụ cục bộ | Ngắn gọn, gần ngữ cảnh |
 
+Khi đặt lên trang, chúng trông như thế này.
+
+<UiSpecRoleSamplesDemo />
+
 ### 4.2 Một trang không nên có quá nhiều Primary Button
 
 Đây là cái bẫy dễ giẫm nhất của nhiều người mới.
@@ -248,6 +389,14 @@ Bạn có thể tham khảo cách làm chung của nhiều hệ thống thiết 
 - Một khu vực chính thường chỉ giữ một nút chính
 - Hủy, quay lại, đóng thường không tranh cùng cấp với nút xác nhận
 - Thêm thao tác đặt vào nút cấp hai hoặc menu
+
+#### Đến lượt bạn quyết định
+
+Hiểu quy tắc mới là bước đầu. Trang dưới đây có 5 nút trông giống hệt nhau. Theo bạn, nút nào nên là nút chính?
+
+<UiSpecButtonDecisionDemo />
+
+Làm xong, bạn sẽ thấy việc phân cấp xoay quanh ba câu hỏi. Người dùng muốn hoàn thành việc gì nhất? Thao tác nào chỉ hỗ trợ? Thao tác nào đã làm thì không thể hoàn tác? Lần sau khi phân nút chính và nút phụ, hãy thử tự hỏi ba câu này.
 
 ### 4.3 Nút phải có thể thể hiện thay đổi trạng thái
 
@@ -261,6 +410,8 @@ Quy chuẩn thiết kế thường viết rất rõ về trạng thái nút:
 - Trạng thái nguy hiểm
 
 Điều này rất quan trọng, vì nút không phải là một bức ảnh tĩnh, mà là một trong những điều khiển được kích hoạt thường xuyên nhất trong quá trình người dùng thao tác.
+
+Để xem sáu trạng thái này trông ra sao và phân biệt thế nào, hãy quay lại phần minh họa trạng thái và hành vi của nút ở mục 2.1.
 
 ### 4.4 Văn bản nút, cũng thuộc một phần của thiết kế
 
@@ -276,6 +427,16 @@ Ví dụ:
 
 Những văn bản này truyền đạt kỳ vọng tâm lý hoàn toàn khác nhau. Quy chuẩn trưởng thành thường yêu cầu nhãn nút thể hiện rõ hành động, thay vì sử dụng từ ngữ mơ hồ.
 
+Dưới đây là vài cách viết mơ hồ thường gặp và cách sửa.
+
+| Cách viết mơ hồ | Cách viết rõ hơn | Vì sao |
+| :--- | :--- | :--- |
+| Xác nhận | Lưu bản nháp | Nhìn là biết nhấn vào sẽ xảy ra chuyện gì |
+| Gửi | Xuất bản bài viết | Có động từ và đối tượng cụ thể nên không cần đoán |
+| Có / Không | Xóa dự án / Hủy | Ghi thẳng kết quả lên nút |
+| Nhấp vào đây | Xem chi tiết đơn hàng | Đọc riêng nhãn nút cũng biết sẽ đi đâu |
+| OK | Gửi lại email | Một trang có thể có vài nút OK và rất khó phân biệt |
+
 ## 5. Một danh sách thiết kế trang và nút rất thực dụng
 
 Khi bạn tự thiết kế trang, có thể xem nhanh qua danh sách này trước:
@@ -287,6 +448,9 @@ Khi bạn tự thiết kế trang, có thể xem nhanh qua danh sách này trư�
 - Trang có tổ chức theo luồng nhiệm vụ, thay vì nghĩ đến gì đặt nấy không
 - Trong cùng một khu vực có chỉ có một thao tác chính không
 - Nội dung thứ cấp có được làm yếu phù hợp không
+- Người dùng có luôn biết mình đang ở đâu và quay lại bằng cách nào không
+- Trang hiển thị gì khi đang tải, khi không có dữ liệu và khi yêu cầu thất bại
+- Khi thu hẹp cửa sổ hoặc tăng cỡ chữ, nội dung có bị che hay cắt mất không
 
 ### Danh sách nút
 
@@ -295,6 +459,25 @@ Khi bạn tự thiết kế trang, có thể xem nhanh qua danh sách này trư�
 - Trong trang có quá nhiều nút chính không
 - Thao tác nguy hiểm có được đánh dấu rõ ràng không
 - Văn bản nút có đủ cụ thể không
+- Sau khi nhấn, người dùng có biết ngay hệ thống đã nhận thao tác và kết quả ra sao không
+- Chỉ dùng bàn phím, người dùng có đưa tiêu điểm đến nút và nhìn rõ tiêu điểm đang ở đâu không
+
+### Mẫu định nghĩa có thể tái sử dụng
+
+Danh sách giúp bạn kiểm tra, còn mẫu giúp bạn triển khai. Hãy thử điền bảng dưới đây để hoàn thành định nghĩa cơ bản cho một trang hoặc component.
+
+| Mục cần định nghĩa | Cách điền |
+| :--- | :--- |
+| **Nhiệm vụ** | [Ai] trong [tình huống] sẽ dùng trang này để hoàn thành [nhiệm vụ] và đạt được [kết quả có thể kiểm chứng] |
+| **Cấp bậc** | Thông tin chính [ ], thông tin phụ trợ [ ], nội dung hiển thị trước theo mặc định [ ] |
+| **Thao tác** | Thao tác chính [ ], thao tác phụ [ ], thao tác nguy hiểm [ ] và cách bảo vệ [ ] |
+| **Thị giác** | Các component cần dùng [ ], quy tắc về cỡ chữ, màu sắc và khoảng cách [ ] |
+| **Trạng thái** | Đang tải [ ], không có dữ liệu [ ], thất bại [ ], thành công [ ], không khả dụng [ ] |
+| **Khả năng tiếp cận** | Tên truy cập [ ], thứ tự điều hướng bằng bàn phím và thứ tự đọc [ ], độ tương phản [ ] |
+| **Khả năng thích ứng** | Cửa sổ hẹp [ ], cỡ chữ lớn [ ], văn bản dài [ ] |
+| **Ranh giới** | Khi nào nên tránh dùng [ ], phương án thay thế [ ] |
+
+Cách kiểm tra rất đơn giản. Hãy nhờ một người chưa tham gia thiết kế chỉ dựa vào bảng này để kể lại toàn bộ quá trình vào trang, xem nội dung, thao tác, gặp lỗi rồi thoát. Nếu họ phải hỏi bạn giữa chừng, bản định nghĩa vẫn cần được bổ sung.
 
 ## 6. Cách dùng AI tham khảo quy chuẩn của người khác để thiết kế trang
 
@@ -373,6 +556,26 @@ Cấp bậc trang rõ ràng hơn, chỉ giữ một nút chính, nút khác yế
 
 Cách này đặc biệt phù hợp cho người mới, vì bạn chỉ cần biết sao chép nguyên văn, rồi thêm hai câu yêu cầu của mình là đủ.
 
+### 6.4 Thực hành đưa quy tắc trong hình minh họa vào prompt
+
+Những hình minh họa ở trên giúp bạn thấy từng quy tắc. Bạn cũng có thể biến từng quy tắc đó thành yêu cầu cho AI. Chẳng hạn, hãy lấy các cải tiến trong hình so sánh trước và sau ở mục 1 rồi viết thẳng vào prompt.
+
+```md
+Tham khảo quy chuẩn nút của Fluent 2 và Layout trong Apple HIG, giúp tôi thiết kế một trang danh sách dự án.
+
+Yêu cầu cho trang:
+- Tiêu đề trang có cỡ chữ lớn nhất và chỉ xuất hiện một lần; đặt bộ lọc và thao tác ở hai hàng riêng
+- Dùng khoảng trắng và cỡ chữ để tạo cấp bậc, đừng thêm đường viền cho mọi module
+- Cả trang chỉ giữ một nút chính (Tạo dự án), dùng nút viền cho thao tác xuất
+- Xóa là thao tác với từng dự án, hãy đặt vào menu “Thao tác thêm” của mỗi mục, đừng đặt ở đầu trang
+
+Yêu cầu cho nút:
+- Định nghĩa sáu trạng thái của nút: mặc định, rê chuột, đang nhấn, có tiêu điểm, bị vô hiệu hóa và đang tải
+- Dùng màu cảnh báo cho nút xóa và dành kiểu nút chính cho thao tác khác
+```
+
+Cách viết này cụ thể hơn nhiều so với “làm cao cấp hơn một chút, tham khảo phong cách Apple”, vì bạn cung cấp cho AI **tiêu chí cụ thể để đưa ra quyết định thiết kế**.
+
 ## 7. Cách dùng AI tham khảo quy chuẩn nút để trực tiếp tạo thiết kế nút
 
 Nếu bạn chỉ muốn làm nút trước, cũng có thể trực tiếp dán nguyên văn quy chuẩn nút.
@@ -417,6 +620,13 @@ Các liên kết dưới đây đều đến từ hệ thống thiết kế chí
 - Apple Archive: [How Menus Work](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/HowMenusWork.html)
 - Apple Archive: [Managing Pop-Up Buttons and Pull-Down Lists](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html)
 - Material Design: [Buttons overview](https://m3.material.io/components/buttons/overview)
+- Material Design 3: [Layout overview](https://m3.material.io/foundations/layout/layout-overview/overview)
+- Material Design 3: [Buttons accessibility](https://m3.material.io/components/buttons/accessibility)
+- Apple Human Interface Guidelines: [Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
+- Apple Human Interface Guidelines: [Typography](https://developer.apple.com/design/human-interface-guidelines/typography)
+- Apple Human Interface Guidelines: [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars)
+- Apple Human Interface Guidelines: [Pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons)
+- Apple Human Interface Guidelines: [Pull-down buttons](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons)
 - Material Design: [Menus](https://m1.material.io/components/menus.html)
 - Microsoft Fluent 2: [Start designing](https://fluent2.microsoft.design/get-started/design)
 - Microsoft Fluent 2: [Menu usage](https://fluent2.microsoft.design/components/web/react/core/menu/usage)

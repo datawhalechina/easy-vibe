@@ -27,13 +27,13 @@
 
 | 평소에 무심코 하는 말 | 공식 원문 | 간단히 말하면 |
 | :--- | :--- | :--- |
-| "메뉴를 하나 만들어요" | Apple: ["A menu reveals its options..."](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu`는 조작을 위한 것입니다 |
-| "메뉴바에 기능을 넣어요" | Apple: ["menu bar menus contain all the commands..."](https://developer.apple.com/design/human-interface-guidelines/menus) | 이것은 앱 상단의 명령 메뉴입니다 |
-| "드롭다운을 하나 만들어요" | Apple: ["A pop-up list lets the user choose one option among several."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up`은 목록에서 하나를 선택하는 것입니다 |
-| "드롭다운도 하나 만들어요" | Apple: ["A pull-down list is generally used for selecting commands in a specific context."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down`은 클릭해서 현재 조작을 하는 것입니다 |
-| "메뉴로 필터링도 할 수 있죠" | Fluent: ["If you need to collect information from people, try a select, dropdown, or combobox instead."](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu`는 값을 선택하는 데 사용하는 것이 아닙니다 |
-| "메뉴로 네비게이션도 할 수 있죠" | Material: ["Menus should not be used as a primary method for navigation within an app."](https://m1.material.io/components/menus.html) | `Menu`는 주 네비게이션이 아닙니다 |
-| "버튼에 그냥 OK / Cancel 쓰면 되죠" | Apple: ["Always use 'Cancel' to title a button that cancels the alert's action."](https://developer.apple.com/design/human-interface-guidelines/alerts) | 버튼 텍스트는 아무렇게나 쓸 수 없습니다 |
+| "메뉴를 하나 만들어요" | Apple: [“A menu reveals its options...”](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu`는 조작을 위한 것입니다 |
+| "메뉴바에 기능을 넣어요" | Apple: [“menu bar menus contain all the commands...”](https://developer.apple.com/design/human-interface-guidelines/menus) | 이것은 앱 상단의 명령 메뉴입니다 |
+| "드롭다운을 하나 만들어요" | Apple: [“A pop-up list lets the user choose one option among several.”](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up`은 목록에서 하나를 선택하는 것입니다 |
+| "드롭다운도 하나 만들어요" | Apple: [“A pull-down list is generally used for selecting commands in a specific context.”](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down`은 클릭해서 현재 조작을 하는 것입니다 |
+| "메뉴로 필터링도 할 수 있죠" | Fluent: [“If you need to collect information from people, try a select, dropdown, or combobox instead.”](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu`는 값을 선택하는 데 사용하는 것이 아닙니다 |
+| "메뉴로 네비게이션도 할 수 있죠" | Material: [“Menus should not be used as a primary method for navigation within an app.”](https://m1.material.io/components/menus.html) | `Menu`는 주 네비게이션이 아닙니다 |
+| "버튼에 그냥 OK / Cancel 쓰면 되죠" | Apple: [“Always use ‘Cancel’ to title a button that cancels the alert’s action.”](https://developer.apple.com/design/human-interface-guidelines/alerts) | 버튼 텍스트는 아무렇게나 쓸 수 없습니다 |
 
 > 표의 인용문은 클릭하면 해당 공식 페이지로 바로 이동합니다.
 
@@ -60,12 +60,21 @@ Fluent도 단순히 "드롭다운"이라고 하지 않습니다. 다음과 같�
 
 페이지를 더 전문적으로 보이게 하려는 것이 아니라, 팀이 UI를 논의할 때 각자 머릿속에 다른 것을 그리고 있지 않도록 하기 위한 것입니다.
 
+이런 차이는 이름만 보고는 와닿기 어렵습니다. 아래 두 컨트롤은 생김새가 거의 같습니다. 각각 열어서 항목을 하나씩 골라 보고, 어떻게 다르게 동작하는지 확인해 보세요.
+
+<UiSpecLookalikeControlsDemo />
+
+Apple 가이드라인에는 두 컨트롤을 따로 설명하는 [Pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons)와 [Pull-down buttons](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons) 페이지가 있습니다. 나란히 비교해 보세요.
+
 ## 학습 내용
 
 1. 페이지와 버튼을 디자인할 때 왜 먼저 디자인 가이드라인을 봐야 하는지
 2. Apple, Material, Fluent, Atlassian 가이드라인에서 어떤 내용을 가장 참고할 가치가 있는지
 3. "페이지 계층 구조"와 "버튼 계층 구조"를 명확하게 디자인하는 방법
-4. AI가 다른 사람들의 가이드라인을 참고하여 페이지와 버튼을 생성하도록 하는 방법
+4. 성숙한 가이드라인이 버튼 하나를 얼마나 세밀하게 정의하는지
+5. AI가 다른 사람들의 가이드라인을 참고하여 페이지와 버튼을 생성하도록 하는 방법
+
+각 부분에는 직접 조작해 볼 수 있는 그림이 있습니다.
 
 ## 1. 디자인 가이드라인이 페이지를 명확하게 만드는 이유
 
@@ -74,6 +83,14 @@ Fluent도 단순히 "드롭다운"이라고 하지 않습니다. 다음과 같�
 **디자인 가이드라인은 보탬이 아니라, 먼저 용어를 정확하게 만드는 것입니다.**
 
 많은 페이지가 보기 좋지 않은 것은 색상이 고급스럽지 않아서가 아니라, 정보 계층이 혼란스럽기 때문입니다.
+
+예를 하나 볼까요? 아래는 같은 ‘프로젝트 목록 페이지’를 두 가지 방식으로 디자인한 것입니다. 문구는 그대로 두고 계층만 바꿨습니다. 이렇게 살펴보세요.
+
+- 아래 표에서 한 행에 마우스를 올리면 양쪽 그림에 문제의 위치가 동시에 표시됩니다
+- 오른쪽 그림 위의 스위치를 하나씩 꺼 보면서, 개선 사항을 적용하기 전에는 페이지가 어떻게 보였는지 확인해 보세요
+- ‘눈 가늘게 뜨기 테스트’ 슬라이더를 움직여 보세요. 화면을 흐리게 하면 왼쪽에서는 여전히 모든 요소가 눈에 띄지만, 오른쪽에서는 제목과 주요 버튼만 보입니다
+
+<UiSpecHierarchyCompareDemo />
 
 많은 버튼이 사용하기 어려운 것도 모서리 둥글기가 맞지 않아서가 아니라:
 
@@ -94,11 +111,32 @@ Fluent도 단순히 "드롭다운"이라고 하지 않습니다. 다음과 같�
 
 따라서 디자인 가이드라인이 실제로 제공하는 것은 하나의 "스킨"이 아니라, 하나의 **판단 기준**입니다.
 
+### 1.1 실제 가이드라인을 열어 보면 무엇이 있을까요
+
+위 표는 다섯 줄로 간단히 정리했지만, 실제 디자인 가이드라인에는 얼마나 많은 내용이 들어 있을까요?
+
+Apple 가이드라인의 목차를 기준으로 세어 봅시다. 아래에서 주제를 눌러 보고, 위쪽 스위치로 페이지나 버튼과 관련된 항목만 골라 보세요.
+
+<UiSpecSpecMapDemo />
+
+이 장에서는 가이드라인을 외우기보다 페이지와 버튼에 가장 밀접한 부분부터 골라 이해해 봅니다. 전체 목차는 [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/)에서 바로 볼 수 있습니다.
+
 ## 2. 대형 기업 가이드라인을 참고할 때, 무엇에 집중해야 할까요
+
+각 가이드라인에는 저마다 강점이 있습니다. 궁금한 점이 생겼을 때 어느 문서에서 답을 찾으면 좋을지 아래 표로 먼저 감을 잡아 보세요.
+
+| 궁금한 점 | Apple에서 볼 내용 | Material에서 볼 내용 |
+| :--- | :--- | :--- |
+| 컴포넌트를 얼마나 자세히 정의해야 할까 | 용도, 역할, 동작, 접근성 | 구조, 스타일 설정, 상태 |
+| 페이지 계층을 어떻게 표현할까 | 탐색 구조, 텍스트 스타일, 콘텐츠와 컨트롤의 우선순위 | 페이지의 뼈대와 탐색, 콘텐츠, 조작 영역의 배치 |
+| 조작의 우선순위를 어떻게 나눌까 | 버튼의 역할과 시각적 강조 수준을 따로 정하는 방법 | Filled, Tonal, Outlined, Text로 나뉘는 강조 수준 |
+| 어떻게 절제된 화면을 만들까 | 중복을 줄이고 관련 명령을 한데 모으는 방법 | 구역마다 하나의 역할을 맡기는 방법 |
+
+여러 가이드라인을 섞어 쓰지 않도록 주의하세요. 예를 들어 ‘Apple의 유리 질감 + Material의 버튼 스타일 전체’를 한데 붙이면 양쪽의 규칙을 모두 놓치기 쉽습니다. 처음에 하나를 골라 끝까지 일관되게 적용해 보세요.
 
 ### 2.1 Apple 참고: "충분히 세밀하게 정의하기" 배우기
 
-Apple에서 가장 배울 점은 시각적 절제감이 아니라, 개념을 매우 세밀하게 정의한다는 것입니다.
+Apple에서는 시각적 절제감과 함께 개념을 아주 세밀하게 정의하는 방법도 배울 수 있습니다.
 
 많은 팀이 "메뉴"나 "드롭다운"이라고 부르는 것을 Apple은 계속 세분화합니다:
 
@@ -115,6 +153,33 @@ Apple에서 가장 배울 점은 시각적 절제감이 아니라, 개념을 매
 - 현재 선택된 값을 계속 표시해야 하는지, 명령을 임시로만 펼쳐야 하는지
 
 이런 세밀함으로 생각하기 시작하면, 디자인한 페이지가 한결 명확해집니다.
+
+#### 버튼 하나를 얼마나 세밀하게 정의해야 할까요
+
+‘충분히 세밀하게 정의한다’는 게 무슨 뜻일까요? 가장 흔한 버튼을 예로 들어 봅시다. ‘버튼 하나 추가해 주세요’라고 할 때는 파란색, 둥근 모서리, 높이 40 정도만 떠올릴 수 있습니다. 성숙한 가이드라인은 여기서 10가지 질문을 더 던집니다. 아래 ‘명세서’에 질문을 하나씩 정리했습니다. 왼쪽 항목을 차례로 열어 어디까지 정해야 하는지 살펴보세요.
+
+<UiSpecButtonSpecDemo />
+
+색상, 모서리 둥글기, 글자 크기는 명세의 작은 일부입니다. 다른 디자이너나 엔지니어가 다시 묻지 않고도 똑같이 만들 수 있을 만큼 구체적이어야 합니다.
+
+‘상태’와 ‘동작’은 정적인 스크린샷에서 보이지 않아 놓치기 쉽습니다. 아래 버튼에 마우스를 올려 보고, 누른 채로 기다려 보고, Tab 키로 포커스를 옮긴 다음 ‘프로젝트 게시’를 눌러 전체 과정을 확인해 보세요.
+
+<UiSpecButtonStatesDemo />
+
+공식 버튼은 Apple의 [Buttons](https://developer.apple.com/design/human-interface-guidelines/buttons)와 Material의 [Buttons](https://m3.material.io/components/buttons/overview)에서 볼 수 있습니다.
+
+이제 장 처음에 나온, 생김새가 같은 두 드롭다운을 다시 보면 왜 서로 바꿔 쓸 수 없는지 이해할 수 있을 겁니다. 가이드라인은 생김새와 함께 **사용자에게 어떤 동작을 약속하는지**도 정의합니다. 하나를 누르면 값이 바뀌고, 다른 하나를 누르면 명령이 실행됩니다.
+
+같은 원리로 ‘삭제는 위험하니까 가장 눈에 띄는 버튼으로 만들어야 하지 않을까요?’라는 질문에도 답할 수 있습니다. 위험도와 중요도는 별개입니다. 위험도는 버튼의 역할로 나타내고, 중요도는 스타일로 나타냅니다.
+
+가이드라인에는 이렇게 비슷하게 생겼지만 서로 바꿔 쓸 수 없는 컴포넌트가 여럿 있습니다. 아래는 흔히 만나는 예입니다. 다음에 이런 컴포넌트를 만나면 ‘사용자는 이걸 눌러 무엇을 하려는 걸까?’부터 물어보세요.
+
+| 헷갈리기 쉬운 두 컴포넌트 | 각각 맡는 역할 | 예시 |
+| :--- | :--- | :--- |
+| 탭 탐색 / 도구 모음 | 탭은 주요 영역 사이를 이동하고, 도구 모음은 현재 페이지에서 조작을 실행합니다 | ‘프로젝트’, ‘설정’은 이동할 곳이고, ‘선택 항목 삭제’는 실행할 일입니다 |
+| 스위치 / 버튼 | 스위치는 두 상태를 오가고, 버튼은 동작을 실행합니다 | ‘알림 받기’는 스위치, ‘제출’은 버튼을 씁니다 |
+| 선택 컨트롤 / 메뉴 | 선택 컨트롤은 여러 값 중 하나를 고르고, 메뉴는 명령을 실행합니다 | ‘최근 업데이트순’은 선택 컨트롤, ‘이름 바꾸기’는 메뉴에 넣습니다 |
+| 확인 팝업 / 사이드 패널 | 확인 팝업은 즉시 알아야 하는 중요한 정보를 알리고, 사이드 패널은 범위가 분명한 작업을 담습니다 | ‘삭제하시겠어요?’는 확인 팝업, ‘새 폴더’는 사이드 패널을 씁니다 |
 
 ### 2.2 Apple 참고: 페이지 계층과 절제감 배우기
 
@@ -135,6 +200,30 @@ Apple을 참고하여 페이지를 디자인한다면, 다음을 중점적으로
 - 테두리를 많이 쌓는 대신 여백, 글꼴 크기, 그룹화로 질서 만들기
 - 버튼을 모두 높은 강조로 만들지 말고, 핵심 동작만 가장 눈에 띄게 하기
 
+#### 그림으로 보는 페이지의 각 부분
+
+위의 조언을 실제 페이지에 적용하면 어떤 모습일까요? 왼쪽의 계층 항목에 마우스를 올리거나 클릭해서 표시를 고정해 보세요. 오른쪽 그림에서 페이지의 어느 부분에 해당하는지, 무엇으로 시선을 끄는지 확인할 수 있습니다. ‘가이드 표시’를 켜면 간격을 어떻게 나눴는지도 보입니다.
+
+<UiSpecPageAnatomyDemo />
+
+오른쪽 그림에서 세 가지를 눈여겨보세요.
+
+- **글자 크기, 굵기, 색의 명암으로 계층을 구분합니다.** 가장 큰 글자는 페이지에 한 번만 나오고, 모든 제목을 굵게 표시하지는 않습니다
+- **보조 정보는 설명하는 주요 정보 바로 옆에 둡니다.** 더 작고 옅지만 읽을 수 있습니다. 강조를 줄여도 읽기 쉬워야 합니다
+- **주요 버튼은 하나만 두고**, 콘텐츠를 다 읽은 다음에 누를 수 있도록 배치합니다
+
+공식 설명은 Apple의 [Layout](https://developer.apple.com/design/human-interface-guidelines/layout)과 [Typography](https://developer.apple.com/design/human-interface-guidelines/typography)에서 볼 수 있습니다.
+
+#### 그림으로 보는 테두리를 줄이면 더 명확해지는 이유
+
+‘여백, 글자 크기, 그룹화로 질서를 만든다’는 말을 ‘테두리를 다 없앤다’는 뜻으로 받아들이기 쉽습니다. 정말 그럴까요? 아래의 세 단계를 차례로 눌러 어느 단계부터 그룹이 또렷해지는지 보세요.
+
+<UiSpecGroupingDemo />
+
+세 번째 단계에서 눈여겨볼 것은 간격입니다. 관련 콘텐츠를 가까이 놓으면 테두리 없이도 자연스럽게 한 그룹으로 보입니다. 따라서 **먼저 그룹을 나누고, 테두리가 필요한지 판단하세요**. 경계를 더 또렷하게 보여야 하는 그룹에만 배경색이나 테두리를 더하면 됩니다.
+
+Apple의 [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars) 페이지에도 관련 명령을 같은 그룹에 배치하는 방법을 보여 주는 전후 비교 그림이 있습니다.
+
 ### 2.3 Material 참고: 명확한 페이지 구조 배우기
 
 Material Design은 "페이지가 작업 흐름을 어떻게 구성하는지"를 배우기에 매우 적합합니다.
@@ -150,6 +239,22 @@ Material을 참고하여 페이지를 디자인한다면, 다음을 중점적으
 - 페이지 섹션이 명확하고, 모듈의 역할이 분명함
 - 네비게이션, 콘텐츠 영역, 조작 영역의 분업이 명확함
 - 다른 버튼 스타일이 다른 조작 우선순위에 대응됨
+
+#### 그림으로 보는 탐색, 콘텐츠, 조작 영역의 역할
+
+역할을 분명히 나눈다는 건 구체적으로 무슨 뜻일까요? Material은 탐색에 ‘어디로 갈지’, 콘텐츠에 ‘무엇을 볼지’, 조작에 ‘무엇을 할지’를 맡깁니다. 각 조작이 어떤 대상에 영향을 주는지도 명확하게 드러내야 합니다.
+
+아래 그림은 이 기준으로 페이지를 나눴습니다. 왼쪽 항목에 마우스를 올리고 실선과 점선이 각각 어디를 가리키는지 보세요.
+
+<UiSpecPageSkeletonDemo />
+
+세 가지를 눈여겨보세요.
+
+- **상단 바는 왼쪽과 오른쪽의 역할이 다릅니다.** 돌아가기와 제목은 왼쪽에, 조작은 오른쪽에 배치하고 버튼은 하나만 강조합니다. 관련 조작은 가까이 두고, 관련이 없는 조작 사이에는 간격을 두는 것이 절제의 한 방법입니다
+- **조작마다 영향을 미치는 범위가 다를 수 있습니다.** ‘새 프로젝트’는 목록 전체에 영향을 주고, ‘열기’는 항목 하나에만 영향을 줍니다
+- **위치가 어긋나면 적용 범위를 알기 어렵습니다.** ‘삭제를 상단 바로 옮겨 보기’를 켜 보면 어느 항목을 삭제하는지 알 수 없습니다
+
+공식 그림은 Apple의 [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars)와 Material의 [Layout](https://m3.material.io/foundations/layout/layout-overview/overview)에서 볼 수 있습니다.
 
 ### 2.4 Fluent 참고: 컴포넌트 경계와 버튼 계층 배우기
 
@@ -172,6 +277,12 @@ Fluent를 참고하여 버튼을 디자인한다면, 다음을 중점적으로 �
 - `Subtle`, `Transparent` 같은 약한 강조 버튼은 주요 흐름을 빼앗지 않아야 하는 조작에 사용
 - 페이지의 버튼이 많을수록 시각적 우선순위를 더 많이 제어해야 함
 
+#### 그림으로 보는 네 단계 버튼의 쓰임
+
+‘시각적 우선순위를 제어한다’는 게 구체적으로 무슨 뜻일까요? 아래에서 직접 시험해 보세요.
+
+<UiSpecFluentButtonsDemo />
+
 ### 2.5 Atlassian 참고: 체계적으로 페이지와 버튼 관리하기
 
 Atlassian Design System은 "한 팀이 많은 페이지를 만드는" 상황에 특히 적합합니다. 다음을 강조합니다:
@@ -185,6 +296,12 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 버튼 크기, 색상, 모서리 둥글기, 간격을 통일된 규칙으로 만들기
 - 페이지 레이아웃의 리듬을 고정하기
 - 다른 페이지가 콘텐츠는 달라도 구조적 언어가 일관되게 하기
+
+#### 그림으로 보는 스타일을 token으로 관리하는 방법
+
+‘통일된 규칙’이 조금 추상적으로 들릴 수 있습니다. 오른쪽 슬라이더를 움직인 다음 ‘페이지마다 따로 설정’을 켜서, 규칙을 공유할 때와 어떤 차이가 생기는지 살펴보세요.
+
+<UiSpecTokensDemo />
 
 ## 3. 페이지를 디자인할 때, 가이드라인에서 어떤 점을 참고해야 할까요
 
@@ -200,6 +317,10 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 
 세 계층이 분리되지 않으면, 페이지가 "모두 중요해"지고, 이는 "모두 중요하지 않아"와 같습니다.
 
+아래 슬라이더를 움직여 세 계층을 직접 구분해 보세요.
+
+<UiSpecThreeLayersDemo />
+
 ### 3.2 페이지 레이아웃이 모듈을 쌓는 것이 아니라 작업에 초점을 맞추고 있는가
 
 가이드라인을 참고할 때, 다음에 특히 주의하세요:
@@ -208,6 +329,10 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 주요 콘텐츠 영역이 작업 중심으로 구성되어 있는지
 - 조작 버튼이 관련 콘텐츠 근처에 있는지
 - 하위 정보가 적절히 약화되어 있는지
+
+마지막 항목을 조금 더 살펴봅시다. 보조 정보가 덜 강조되는지는 제자리에 놓였는지에 달린 경우가 많습니다.
+
+<UiSpecTaskFlowLayoutDemo />
 
 ### 3.3 페이지의 조작에 우선순위가 있는가
 
@@ -218,6 +343,18 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 한 영역에는 보통 하나의 주요 동작만 있습니다
 - 하위 동작은 테두리, 텍스트 버튼 또는 더 약한 스타일을 사용할 수 있습니다
 - 위험 동작은 주요 동작과 같은 모양이면 안 됩니다
+
+버튼의 우선순위를 다루는 두 가지 예는 앞에서 이미 봤습니다. 1절의 전후 비교는 버튼이 너무 많을 때의 모습을, 2.4절의 Fluent 그림은 버튼을 어떻게 등급별로 나누는지 보여 줍니다.
+
+### 3.4 무엇을 강조하고 무엇을 약하게 보여 줄까요
+
+1절로 돌아가 ‘눈 가늘게 뜨기 테스트’ 슬라이더를 다시 움직여 보세요. 글자를 읽을 수 없을 만큼 화면을 흐리게 했을 때도 보이는 요소가 가장 먼저 시선을 끕니다. 무엇을 강조할지 정할 때는 아래 기준을 참고하세요.
+
+- **강조할 것**: 페이지 제목, 사용자가 지금 하는 작업의 핵심 콘텐츠, 다음 단계의 주요 조작
+- **강조를 줄일 것**: 메타데이터, 보충 설명, 보조 진입점
+- **강조를 피할 것**: 장식용 테두리, 모듈마다 붙인 제목, 주요 조작과 시선을 다투는 보조 버튼
+
+화면을 흐리게 했을 때 비슷한 크기의 검은 덩어리로 가득하다면, 모든 요소가 시선을 끌어서 결국 어느 것도 두드러지지 않는다는 뜻입니다.
 
 ## 4. 버튼을 디자인할 때, 가이드라인에서 어떤 점을 참고해야 할까요
 
@@ -237,6 +374,10 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 | **Destructive** | 삭제, 비활성화, 초기화 등 위험 조작 | 경고 색상 또는 명확한 위험 스타일 |
 | **Icon button** | 국소적 도구 조작 | 간결하고, 컨텍스트 근처에 배치 |
 
+페이지에 배치하면 이런 모습입니다.
+
+<UiSpecRoleSamplesDemo />
+
 ### 4.2 한 페이지에 Primary Button이 너무 많으면 안 됩니다
 
 이것은 초보자가 가장 많이 하는 실수입니다.
@@ -248,6 +389,14 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 한 주요 영역에는 보통 하나의 주요 버튼만 유지
 - 취소, 돌아가기, 닫기는 보통 확인 버튼과 같은 수준을 다투지 않음
 - 더 많은 조작은 보조 버튼이나 메뉴에 배치
+
+#### 이제 직접 판단해 보세요
+
+규칙을 이해했다면 직접 적용해 볼 차례입니다. 아래 페이지에는 생김새가 똑같은 버튼이 5개 있습니다. 어떤 버튼을 주요 버튼으로 정해야 할까요?
+
+<UiSpecButtonDecisionDemo />
+
+문제를 풀어 보면 세 가지 질문으로 판단할 수 있다는 걸 알게 됩니다. 사용자가 가장 하고 싶은 일은 무엇인가요? 그 일을 돕는 조작은 무엇인가요? 실행하고 나면 되돌릴 수 없는 조작은 무엇인가요? 다음에 버튼의 우선순위를 정할 때도 이 세 질문부터 해 보세요.
 
 ### 4.3 버튼은 상태 변화를 표현할 수 있어야 합니다
 
@@ -261,6 +410,8 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 위험 상태
 
 이것은 중요합니다. 왜냐하면 버튼은 정적인 이미지가 아니라, 사용자 조작 과정에서 가장 자주 트리거되는 컨트롤 중 하나이기 때문입니다.
+
+여섯 가지 상태가 어떻게 보이고 어떻게 구분되는지 궁금하면 2.1절의 ‘버튼 상태와 동작’ 그림으로 돌아가 직접 시험해 보세요.
 
 ### 4.4 버튼 텍스트도 디자인의 일부입니다
 
@@ -276,6 +427,16 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 
 이 문구들이 전달하는 심리적 기대는 완전히 다릅니다. 성숙한 가이드라인은 보통 버튼 라벨이 동작을 명확하게 표현하도록 요구하며, 애매한 단어를 사용하지 않도록 합니다.
 
+자주 쓰이는 모호한 문구를 어떻게 고칠 수 있는지 살펴보세요.
+
+| 모호한 문구 | 더 나은 문구 | 이유 |
+| :--- | :--- | :--- |
+| 확인 | 초안 저장 | 누르면 무슨 일이 일어나는지 바로 알 수 있습니다 |
+| 제출 | 글 게시 | 동사와 대상을 함께 쓰면 짐작할 필요가 없습니다 |
+| 예 / 아니요 | 프로젝트 삭제 / 취소 | 결과를 버튼에 직접 적습니다 |
+| 여기를 클릭 | 주문 상세 보기 | 주변 문구를 읽지 않아도 어디로 이동할지 알 수 있습니다 |
+| OK | 이메일 다시 보내기 | 한 페이지에 OK 버튼이 여러 개 있으면 무슨 동작인지 구분하기 어렵습니다 |
+
 ## 5. 매우 실용적인 페이지 및 버튼 디자인 체크리스트
 
 직접 페이지를 디자인할 때, 먼저 이 체크리스트를 빠르게 확인해 보세요:
@@ -287,6 +448,9 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 페이지가 작업 흐름에 따라 구성되어 있는가, 생각나는 대로 배치한 것은 아닌가
 - 같은 영역에 주요 동작이 하나뿐인가
 - 하위 콘텐츠가 적절히 약화되어 있는가
+- 사용자가 현재 위치와 돌아가는 방법을 언제든 알 수 있는가
+- 로딩 중이거나, 데이터가 없거나, 요청이 실패하면 각각 무엇을 보여 주는가
+- 창이 좁아지거나 글자 크기를 키웠을 때 가려지거나 잘리는 콘텐츠가 있는가
 
 ### 버튼 체크리스트
 
@@ -295,6 +459,25 @@ Atlassian을 참고하여 페이지와 버튼을 만든다면, 가장 가치 있
 - 페이지에 주요 버튼이 너무 많지 않은가
 - 위험 조작이 명확하게 표시되어 있는가
 - 버튼 텍스트가 충분히 구체적인가
+- 사용자가 버튼을 누르면 입력이 반영됐는지, 결과가 무엇인지 바로 알 수 있는가
+- 키보드만으로 버튼에 포커스를 옮기고, 포커스 위치를 뚜렷하게 볼 수 있는가
+
+### 재사용할 수 있는 정의 템플릿
+
+체크리스트로 빠진 부분을 확인했다면, 템플릿으로 구체화해 보세요. 아래 표를 채우면 페이지나 컴포넌트의 기본 정의가 완성됩니다.
+
+| 정의 항목 | 작성 방법 |
+| :--- | :--- |
+| **작업** | [누가] [어떤 상황]에서 이 페이지로 [작업]을 끝내면 [검증 가능한 결과]를 얻습니다 |
+| **계층** | 주요 정보 [ ], 보조 정보 [ ], 기본으로 먼저 표시할 정보 [ ] |
+| **조작** | 주요 조작 [ ], 보조 조작 [ ], 위험 조작 [ ] 및 보호 방법 [ ] |
+| **시각 요소** | 사용할 컴포넌트 [ ], 글자 크기, 색상, 간격의 기준 [ ] |
+| **상태** | 로딩 중 [ ], 데이터 없음 [ ], 실패 [ ], 성공 [ ], 사용 불가 [ ] |
+| **접근성** | 접근 가능한 이름 [ ], 키보드 탐색 순서와 화면 낭독 순서 [ ], 대비 [ ] |
+| **화면 대응** | 좁은 창 [ ], 큰 글자 [ ], 긴 문구 [ ] |
+| **사용 범위** | 사용을 피해야 하는 경우 [ ], 대안 [ ] |
+
+검토 방법은 간단합니다. 디자인에 참여하지 않은 사람에게 이 표만 보고 ‘들어오기, 둘러보기, 조작하기, 실패하기, 나가기’의 전 과정을 설명해 달라고 해 보세요. 중간에 다시 물어봐야 하는 부분이 있다면 그 부분의 정의를 마저 작성하면 됩니다.
 
 ## 6. AI가 다른 사람의 가이드라인을 참고하여 페이지를 디자인하도록 하는 방법
 
@@ -373,6 +556,26 @@ Fluent: "Only use one primary button in a layout..."
 
 이 방식은 초보자에게 특히 적합합니다. 원문을 복사할 줄만 알면 되고, 자신의 요구를 두 문장만 추가하면 충분합니다.
 
+### 6.4 실습: 그림에 나온 규칙을 프롬프트로 옮기기
+
+앞의 그림은 사람이 보도록 만든 것이지만, 그림 속 규칙을 하나씩 AI에 줄 요구사항으로 바꿀 수도 있습니다. 예를 들어 1절의 전후 비교 그림에서 개선한 내용을 그대로 적어 보세요.
+
+```md
+Fluent 2의 버튼 가이드라인과 Apple HIG의 Layout을 참고해서 프로젝트 목록 페이지를 디자인해 주세요.
+
+페이지 요구사항:
+- 페이지 제목은 가장 크게 표시하고 한 번만 보여 주세요. 필터와 조작은 서로 다른 줄에 배치해 주세요.
+- 여백과 글자 크기로 계층을 표현하고, 모든 모듈에 테두리를 두르지 말아 주세요.
+- 페이지 전체에 주요 버튼은 하나(새 프로젝트)만 두고, 내보내기에는 테두리 버튼을 써 주세요.
+- 삭제는 프로젝트 하나에 적용하는 조작입니다. 페이지 상단에서 빼고 각 항목의 ‘더 보기’ 메뉴에 넣어 주세요.
+
+버튼 요구사항:
+- 버튼의 기본, 호버, 눌림, 포커스, 비활성, 로딩 상태를 정의해 주세요.
+- 삭제 버튼에는 경고 색상을 쓰고, 주요 버튼으로 만들지 말아 주세요.
+```
+
+‘좀 더 고급스럽게, Apple 스타일로’라고 하는 것보다 훨씬 구체적입니다. AI에 스타일 대신 **구체적인 판단 기준**을 알려 주기 때문입니다.
+
 ## 7. AI가 버튼 가이드라인을 참고하여 직접 버튼 디자인을 생성하도록 하는 방법
 
 먼저 버튼만 만들고 싶다면, 버튼 가이드라인 원문을 직접 붙여넣을 수도 있습니다.
@@ -417,6 +620,13 @@ UI 디자인 가이드라인을 참고하여 페이지와 버튼을 디자인할
 - Apple Archive: [How Menus Work](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/HowMenusWork.html)
 - Apple Archive: [Managing Pop-Up Buttons and Pull-Down Lists](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html)
 - Material Design: [Buttons overview](https://m3.material.io/components/buttons/overview)
+- Material Design 3: [Layout overview](https://m3.material.io/foundations/layout/layout-overview/overview)
+- Material Design 3: [Buttons accessibility](https://m3.material.io/components/buttons/accessibility)
+- Apple Human Interface Guidelines: [Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
+- Apple Human Interface Guidelines: [Typography](https://developer.apple.com/design/human-interface-guidelines/typography)
+- Apple Human Interface Guidelines: [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars)
+- Apple Human Interface Guidelines: [Pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons)
+- Apple Human Interface Guidelines: [Pull-down buttons](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons)
 - Material Design: [Menus](https://m1.material.io/components/menus.html)
 - Microsoft Fluent 2: [Start designing](https://fluent2.microsoft.design/get-started/design)
 - Microsoft Fluent 2: [Menu usage](https://fluent2.microsoft.design/components/web/react/core/menu/usage)

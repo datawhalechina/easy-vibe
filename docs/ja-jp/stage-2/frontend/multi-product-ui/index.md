@@ -27,13 +27,13 @@
 
 | 普段何気なく言っている言葉 | 公式原文 | 簡単に言うと |
 | :--- | :--- | :--- |
-| 「メニューを作って」 | Apple: ["A menu reveals its options..."](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu`は操作に使うもの |
-| 「メニューバーに機能を入れて」 | Apple: ["menu bar menus contain all the commands..."](https://developer.apple.com/design/human-interface-guidelines/menus) | これはアプリ顶部のコマンドメニュー |
-| 「ドロップダウンを作って」 | Apple: ["A pop-up list lets the user choose one option among several."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up`はリストから1つ選ぶ |
-| 「ドロップダウンも作って」 | Apple: ["A pull-down list is generally used for selecting commands in a specific context."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down`は開いて現在の操作を行う |
-| 「メニューで絞り込みもできるよね」 | Fluent: ["If you need to collect information from people, try a select, dropdown, or combobox instead."](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu`は値を選ぶためのものではない |
-| 「メニューをナビゲーションにも使えるよね」 | Material: ["Menus should not be used as a primary method for navigation within an app."](https://m1.material.io/components/menus.html) | `Menu`はメインナビゲーションではない |
-| 「ボタンは適当にOK / Cancelでいいよね」 | Apple: ["Always use 'Cancel' to title a button that cancels the alert's action."](https://developer.apple.com/design/human-interface-guidelines/alerts) | ボタンテキストは適当に書いてはいけない |
+| 「メニューを作って」 | Apple: [“A menu reveals its options...”](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu`は操作に使うもの |
+| 「メニューバーに機能を入れて」 | Apple: [“menu bar menus contain all the commands...”](https://developer.apple.com/design/human-interface-guidelines/menus) | これはアプリ上部のコマンドメニュー |
+| 「ドロップダウンを作って」 | Apple: [“A pop-up list lets the user choose one option among several.”](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up`はリストから1つ選ぶ |
+| 「ドロップダウンも作って」 | Apple: [“A pull-down list is generally used for selecting commands in a specific context.”](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down`は開いて現在の操作を行う |
+| 「メニューで絞り込みもできるよね」 | Fluent: [“If you need to collect information from people, try a select, dropdown, or combobox instead.”](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu`は値を選ぶためのものではない |
+| 「メニューをナビゲーションにも使えるよね」 | Material: [“Menus should not be used as a primary method for navigation within an app.”](https://m1.material.io/components/menus.html) | `Menu`はメインナビゲーションではない |
+| 「ボタンは適当にOK / Cancelでいいよね」 | Apple: [“Always use ‘Cancel’ to title a button that cancels the alert’s action.”](https://developer.apple.com/design/human-interface-guidelines/alerts) | ボタンテキストは適当に書いてはいけない |
 
 > 表の引用はクリックして直接対応する公式ページにジャンプできます。
 
@@ -60,20 +60,37 @@ Fluentは単に「ドロップダウン」とは言いません。さらに細�
 
 それはページをプロフェッショナルに見せるためではなく、チームがUIについて議論する際、全員が脳内に異なるものを思い浮かべている状態を避けるためです。
 
+名前を見るだけでは、こうした違いはなかなか実感できません。下の2つのコントロールは見た目がほとんど同じです。それぞれ開いて項目を1つ選び、動作の違いを確かめてみましょう。
+
+<UiSpecLookalikeControlsDemo />
+
+Appleのガイドラインには、それぞれの解説ページがあります。[Pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons) と [Pull-down buttons](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons) を見比べてみましょう。
+
 ## 学べること
 
 1. なぜページとボタンを設計する際にデザインガイドラインを先に見るべきなのか
 2. Apple、Material、Fluent、Atlassianのガイドラインの中で、どの内容が最も参考になるか
 3. 「ページ階層」と「ボタン階層」をどう明確に設計するか
-4. AIに他人のガイドラインを参考にしてページやボタンを生成させる方法
+4. 成熟したガイドラインが1つのボタンをどこまで細かく定義するか
+5. AIに他人のガイドラインを参考にしてページやボタンを生成させる方法
+
+各パートには、実際に操作して試せる図解があります。
 
 ## 1. デザインガイドラインがなぜページを明確にするのに役立つのか
 
 上記の公式原文を読んでみて、一つの重要なポイントに気づくでしょう：
 
-**デザインガイドラインは锦上添花ではなく、まず言葉を正確にすることです。**
+**デザインガイドラインでまず大切なのは、言葉を正確に使うことです。**
 
 多くのページが美しくないのは、カラーリングが高度でないからではなく、情報階層が混乱しているからです。
+
+まずは例を見てみましょう。下にあるのは、同じ「プロジェクト一覧ページ」の2つのデザインです。文言はまったく同じで、変えたのは階層だけです。次のように試してみましょう。
+
+- 下の表の行にマウスを乗せると、その問題がどこに現れているか、左右の図に同時に表示されます
+- 右の図の上にあるスイッチを切り替えて、改善を1つずつオフにしたときに、ページがどう変わるか見てみましょう
+- 「ぼかしテスト」のスライダーを動かしてみましょう。画面をぼかすと、左の図ではどの要素にも目が行きますが、右の図ではタイトルとメインボタンだけが見えます
+
+<UiSpecHierarchyCompareDemo />
 
 多くのボタンが使いにくいのも、角丸が間違っているからではなく：
 
@@ -94,7 +111,28 @@ Fluentは単に「ドロップダウン」とは言いません。さらに細�
 
 つまり、デザインガイドラインが真に提供するのは「スキン」ではなく、**判断基準**です。
 
+### 1.1 実際のガイドラインには何が載っているのでしょうか
+
+上の表は5行で、大まかな内容をまとめたものです。実際のデザインガイドラインを開くと、どれくらいの項目があるのでしょうか。
+
+Appleのガイドラインの目次を使って数えてみましょう。下のトピックをクリックし、上のスイッチで「ページ」や「ボタン」に関係する項目に絞り込んでみてください。
+
+<UiSpecSpecMapDemo />
+
+この章では「ページ」と「ボタン」に特に関係の深い項目を選んで理解していきます。目次全体は [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/) で確認できます。
+
 ## 2. 大手テック企業のガイドラインを参考にする際、何に注目すべきか
+
+ガイドラインによって、詳しく扱っている内容は違います。まずは下の表で、知りたいことに応じてどこを見ればよいか、見当をつけてみましょう。
+
+| 知りたいこと | Appleで見るポイント | Materialで見るポイント |
+| :--- | :--- | :--- |
+| コンポーネントをどこまで細かく定義するか | 用途、役割、動作、アクセシビリティ | 構造、スタイルの設定、状態 |
+| ページでどう階層を表現するか | ナビゲーションの関係、文字のスタイル、コンテンツとコントロールの位置関係 | ページの骨格。ナビゲーション、コンテンツ、操作をそれぞれどこに置くか |
+| 操作にどう優先度をつけるか | ボタンの役割と目立たせ方を別々に決める | Filled、Tonal、Outlined、Textの強調レベル |
+| どうすれば主張しすぎないか | 重複を減らし、関連するコマンドをまとめる | 1つのブロックに1つの役割を持たせる |
+
+ガイドラインを混ぜて使う際は注意が必要です。たとえばAppleのガラスのような質感とMaterialのボタンスタイル一式を組み合わせると、どちらのルールも崩れがちです。まず1つを選び、最初から最後まで一貫して使いましょう。
 
 ### 2.1 Appleを参考に：「十分に細かく定義する」ということを学ぶ
 
@@ -116,6 +154,33 @@ Appleで最も学ぶべきことは、視覚的な抑制感だけでなく、概
 
 この粒度で考え始めると、設計するページが一気に明確になります。
 
+#### 1つのボタンをどこまで細かく定義するのでしょうか
+
+「十分に細かく定義する」とは、具体的にどういうことでしょうか。ごく普通のボタンで考えてみましょう。「ボタンを追加して」と言うとき、頭に浮かぶのは「青、角丸、高さ40」くらいかもしれません。成熟したガイドラインでは、その先に10の問いがあります。下の「仕様書」の左側を1つずつ開いて、各項目でどこまで説明する必要があるか見てみましょう。
+
+<UiSpecButtonSpecDemo />
+
+一通り見ると、色、角丸、フォントサイズはほんの一部だとわかります。十分に細かい定義があれば、別のデザイナーやエンジニアも、あなたに質問せずに同じものを作れます。
+
+特に見落としやすいのは「状態」と「動作」です。静止画では見えないからです。下の図で、マウスを乗せたり、押したままにしたり、Tabキーでフォーカスを当てたりしてみましょう。最後に「プロジェクトを公開」を押して、一連の流れを確認できます。
+
+<UiSpecButtonStatesDemo />
+
+公式ガイドラインのボタンも、Appleの [Buttons](https://developer.apple.com/design/human-interface-guidelines/buttons) とMaterialの [Buttons](https://m3.material.io/components/buttons/overview) で確認できます。
+
+ここで章の冒頭にあった、見た目が同じ2つのドロップダウンに戻ると、なぜ使い分ける必要があるのかがわかるはずです。ガイドラインは見た目に加えて、**ユーザーが何を期待できるか**も定義します。片方は「値を切り替える」ため、もう片方は「操作を実行する」ためのものです。
+
+同じ考え方で、よくある疑問にも答えられます。「削除」は危険な操作なのに、なぜ一番目立つボタンにしないのでしょうか。操作のリスクと優先度は別々に考えます。リスクはボタンの役割で示し、優先度はスタイルで表現します。
+
+ガイドラインには、見た目が似ていても使い分けが必要な組み合わせがほかにもあります。下の表では、よくある例を取り上げます。迷ったら、ユーザーはこれを押して何をしたいのか、と考えてみましょう。
+
+| 混同しやすい組み合わせ | それぞれの役割 | 例 |
+| :--- | :--- | :--- |
+| タブナビゲーション / ツールバー | タブは主要エリアを切り替え、ツールバーは現在のページで操作を行います | 「プロジェクト」「設定」は移動先を示し、「選択した項目を削除」は操作を示します |
+| スイッチ / ボタン | スイッチは2つの状態を切り替え、ボタンはアクションを実行します | 「通知を受け取る」にはスイッチ、「送信」にはボタンを使います |
+| セレクター / メニュー | セレクターは複数の値から1つを選び、メニューはコマンドを実行します | 「最近更新した順に並べ替え」にはセレクターを使い、「名前を変更」はメニューに入れます |
+| 確認ダイアログ / サイドパネル | 確認ダイアログはすぐに知る必要のある重要な情報を伝え、サイドパネルは範囲の明確なタスクに使います | 「削除しますか？」には確認ダイアログ、「新規フォルダーの作成」にはサイドパネルを使います |
+
 ### 2.2 Appleを参考に：ページ階層と抑制感を学ぶ
 
 Apple Human Interface Guidelinesは特に2つのことを学ぶのに適しています：
@@ -135,6 +200,30 @@ Appleを参考にページを設計する場合、以下を重点的に参考に
 - 余白、フォントサイズ、グループ化で秩序を築き、多くのボーダーを重ねて築かない
 - ボタンはすべて高強調にせず、重要なアクションだけを最も目立たせる
 
+#### 図解：ページの構成を読み解く
+
+ここまでのアドバイスを実際のページに当てはめると、どうなるでしょうか。左側の項目にマウスを乗せると、ページ内のどこにあり、何で目を引いているのかが右側に表示されます。クリックすると表示を固定できます。「ガイドを表示」にチェックを入れると、余白の取り方も確認できます。
+
+<UiSpecPageAnatomyDemo />
+
+右の図では、次の3点に注目しましょう。
+
+- **フォントサイズ、太さ、色の濃淡で階層を表現しています。** 最も大きな文字は1か所にしか使われておらず、すべての見出しを太字にはしていません
+- **補助情報は、説明するメイン情報のすぐそばにあります**。文字は小さく色も薄めですが、無理なく読めます
+- **メインボタンは1つだけ**で、コンテンツを読み終えたところに置かれています
+
+公式の説明は、Appleの [Layout](https://developer.apple.com/design/human-interface-guidelines/layout) と [Typography](https://developer.apple.com/design/human-interface-guidelines/typography) で確認できます。
+
+#### 図解：枠線を外すとなぜ見やすくなるのでしょうか
+
+「余白、フォントサイズ、グループ化で秩序を築く」と聞くと、「枠線を全部消せばいい」と思うかもしれません。実際はどうでしょうか。下の3つのステップを順番にクリックし、どこからグループが見分けやすくなるか確かめてみましょう。
+
+<UiSpecGroupingDemo />
+
+3つ目のステップまで進むと、間隔が効いているとわかります。関連する情報を近くに置くだけで、自然にひとまとまりに見えます。だから、**まずグループを作り、そのあとで枠線が必要かを決めます**。境界をはっきりさせたいグループにだけ、背景色や枠線を足しましょう。
+
+Appleの [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars) にも、同じ考え方を示す公式の比較図があります。関連するコマンドは同じグループにまとめます。
+
 ### 2.3 Materialを参考に：明確なページ構造を学ぶ
 
 Material Designは「ページがどうタスクフローを組織しているか」を学ぶのに非常に適しています。
@@ -150,6 +239,22 @@ Materialを参考にページを設計する場合、以下を重点的に参考
 - ページのブロックが明確で、モジュールの役割が明確
 - ナビゲーション、コンテンツエリア、操作エリアの分担が明確
 - 異なるボタンスタイルが異なる操作優先度に対応
+
+#### 図解：ナビゲーション、コンテンツ、操作の役割
+
+「役割を分ける」といっても、具体的にはどう分けるのでしょうか。Materialでは、ナビゲーションが「どこへ行くか」、コンテンツが「何を見るか」、操作が「何をするか」を受け持ちます。操作ごとに、何が対象になるのかも明確にします。
+
+下の図は、この考え方でページを分解したものです。左側の項目にマウスを乗せて、実線と破線がそれぞれどこに表示されるか見てみましょう。
+
+<UiSpecPageSkeletonDemo />
+
+次の3点に注目してみましょう。
+
+- **上部バーの左右で役割を分けています。** 左に戻るボタンとタイトル、右に操作を置き、右側で目立たせるボタンは1つだけです。関連する操作を近くに置き、それ以外との間に余白を取ることで、主張を抑えています
+- **操作によって影響する範囲は大きく異なります。** 「新規プロジェクト」は一覧全体に影響し、「開く」は1件だけが対象です
+- **置き場所がずれると、対象がわからなくなります。** 「削除を上部バーに移してみる」にチェックを入れると、どの項目が削除されるのか見分けがつきません
+
+公式の図は、Appleの [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars) とMaterialの [Layout](https://m3.material.io/foundations/layout/layout-overview/overview) で確認できます。
 
 ### 2.4 Fluentを参考に：コンポーネントの境界とボタン階層を学ぶ
 
@@ -172,6 +277,12 @@ Fluentを参考にボタンを設計する場合、以下を重点的に参考�
 - `Subtle`、`Transparent`のような弱い強調のボタンは、メインフローを邪魔すべきでない操作に使用
 - ページ内のボタン数が多くなるほど、視覚的優先度をコントロールする必要がある
 
+#### 図解：4段階のボタンをどう使うか
+
+「視覚的優先度をコントロールする」とは、具体的にどういうことでしょうか。下のデモで試してみましょう。
+
+<UiSpecFluentButtonsDemo />
+
 ### 2.5 Atlassianを参考に：体系的にページとボタンを管理する
 
 Atlassian Design Systemは「1つのチームが多くのページを作る」場合に特に適しています。以下を強調しています：
@@ -185,6 +296,12 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - ボタンのサイズ、色、角丸、間隔を統一ルールにする
 - ページレイアウトのリズムを固定する
 - 異なるページは内容が異なっても、構造言語を一貫させる
+
+#### 図解：スタイルをtokenにする
+
+「ルールを統一する」と聞くと少し抽象的です。右側のスライダーを動かし、「ページごとに個別設定」にもチェックを入れて、ルールの有無で何が変わるか見てみましょう。
+
+<UiSpecTokensDemo />
 
 ## 3. ページを設計する際、ガイドラインのどのポイントを参考にすべきか
 
@@ -200,6 +317,10 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 
 3つの層が分かれていないと、ページは「すべてが重要」になり、「何も重要でない」のと同じになります。
 
+下のスライダーを動かして、3つの層に自分で差をつけてみましょう。
+
+<UiSpecThreeLayersDemo />
+
 ### 3.2 ページレイアウトはモジュールを積み上げるのではなく、タスクに奉仕しているか
 
 ガイドラインを参考にする際、特に注目できます：
@@ -208,6 +329,10 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - メインコンテンツエリアがタスクを中心に組織されているか
 - 操作ボタンが関連コンテンツの近くにあるか
 - 補助情報が適切に弱められているか
+
+最後の項目をもう少し掘り下げましょう。補助情報が適切に弱められているかどうかは、ふさわしい位置に置かれているかで決まることがよくあります。
+
+<UiSpecTaskFlowLayoutDemo />
 
 ### 3.3 ページ内の操作に優先度はあるか
 
@@ -218,6 +343,18 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - 1つのエリアには通常1つのメインアクションのみ
 - セカンダリアクションはアウトライン、テキストボタン、またはより弱いスタイルを使用
 - リスクのあるアクションはメインアクションと同じ見た目にしない
+
+ここまでですでに2つの方法を見てきました。第1節の比較では強調されたボタンが多すぎるとどう見えるか、2.4節のFluentの図解ではボタンをどう段階分けするかを確認しました。
+
+### 3.4 何を強調し、何を控えめにするか
+
+第1節に戻り、もう一度「ぼかしテスト」を試してみましょう。文字が読めなくなるまでぼかしたとき、まだ見えているものが、最も目を引く要素です。どれを強調するかは、次の分け方を参考にしてください。
+
+- **強調するもの**：ページタイトル、ユーザーが取り組んでいるタスクの中心となる内容、次に行うメインアクション
+- **控えめにするもの**：メタデータ、補足説明、サブ機能への入り口
+- **強調を避けるもの**：装飾用の枠線、すべてのモジュールにつけた見出し、メインアクションと同じくらい目立つセカンダリボタン
+
+ぼかした画面が同じくらいの大きさの黒い塊だらけなら、すべてが注目を集めようとしていて、結局どれも目立っていません。
 
 ## 4. ボタンを設計する際、ガイドラインのどのポイントを参考にすべきか
 
@@ -237,6 +374,10 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 | **Destructive** | 削除、無効化、クリアなどのリスク操作 | 警告色または明確なリスクスタイル |
 | **Icon button** | 局所的なツール操作 | シンプル、コンテキストに近い |
 
+ページの中では、次のように見えます。
+
+<UiSpecRoleSamplesDemo />
+
 ### 4.2 1つのページにPrimary Buttonを多く置かない
 
 これは多くの初心者が最も陥りやすい落とし穴です。
@@ -248,6 +389,14 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - 1つの主要エリアには通常1つのメインボタンのみ残す
 - キャンセル、戻る、閉じるは通常、確認ボタンと同じレベルを争わない
 - その他の操作はセカンダリボタンやメニューに配置する
+
+#### 自分で判断してみましょう
+
+ルールを読んだら、実際のページで試してみましょう。下のページには、見た目がまったく同じボタンが5つあります。どれをメインボタンにしますか？
+
+<UiSpecButtonDecisionDemo />
+
+判断の手がかりは3つです。ユーザーが一番やりたいことは何か、それを補助する操作はどれか、実行すると元に戻せない操作はどれか。ボタンに優先度をつけるときは、まずこの3つを考えてみましょう。
 
 ### 4.3 ボタンは状態変化を表現できなければならない
 
@@ -261,6 +410,8 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - 危険状態
 
 これは重要です。なぜならボタンは静的な画像ではなく、ユーザーの操作過程で最も頻繁にトリガーされるコントロールの一つだからです。
+
+6つの状態の見た目や違いは、2.1節の「ボタンの状態と動作」のデモに戻って試してみましょう。
 
 ### 4.4 ボタンテキストもデザインの一部
 
@@ -276,6 +427,16 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 
 これらのテキストが伝える心理的期待は全く異なります。成熟したガイドラインは通常、ボタンラベルが明確にアクションを表現することを求め、曖昧な言葉の使用を避けます。
 
+よくある曖昧なボタンテキストと、その改善例を見てみましょう。
+
+| 曖昧な書き方 | 改善例 | 理由 |
+| :--- | :--- | :--- |
+| 確定 | 下書きを保存 | 押すと何が起きるか一目でわかります |
+| 送信 | 記事を公開 | 動作と対象が書かれているので、推測する必要がありません |
+| はい / いいえ | プロジェクトを削除 / キャンセル | ボタンに操作の結果が書かれています |
+| ここをクリック | 注文の詳細を見る | 周りの説明を読まなくても、どこに移動するかわかります |
+| OK | メールを再送信 | 1つのページに「OK」がいくつもあると区別しにくくなります |
+
 ## 5. 非常に実用的なページとボタンの設計チェックリスト
 
 自分でページを設計する際、まずこのチェックリストをざっと見てみましょう：
@@ -287,6 +448,9 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - ページがタスクフローに沿って組織されており、思いついたものを配置しただけではないか
 - 同じエリアにメインアクションが1つだけか
 - 補助情報が適切に弱められているか
+- ユーザーは今いる場所と戻り方をいつでも確認できるか
+- 読み込み中、データがないとき、リクエストが失敗したときに、それぞれ何が表示されるか
+- ウィンドウの幅を狭めたり、文字を拡大したりしたときに、コンテンツが隠れたり途切れたりしないか
 
 ### ボタンチェックリスト
 
@@ -295,6 +459,25 @@ Atlassianを参考にページやボタンを作る場合、最も価値があ�
 - ページ内にメインボタンが多すぎないか
 - 危険な操作が明確にマークされているか
 - ボタンテキストは十分に具体的か
+- 押したあと、操作が受け付けられたことと、その結果がすぐにわかるか
+- キーボードだけでボタンにフォーカスを当てられ、フォーカスの位置がはっきり見えるか
+
+### 再利用できる定義テンプレート
+
+チェックリストで確認した内容を、このテンプレートで具体化しましょう。下の表を埋めると、ページやコンポーネントの基本的な定義がそろいます。
+
+| 定義項目 | 記入内容 |
+| :--- | :--- |
+| **タスク** | [誰が] [どんな状況で] このページを使って [どんなタスク] を完了し、[確認できる結果] を得るか |
+| **階層** | メイン情報 [ ]、補助情報 [ ]、初めに表示する内容 [ ] |
+| **操作** | メインアクション [ ]、セカンダリアクション [ ]、危険な操作 [ ] とその誤操作を防ぐ方法 [ ] |
+| **見た目** | 使うコンポーネント [ ]、フォントサイズ・色・間隔のルール [ ] |
+| **状態** | 読み込み中 [ ]、データなし [ ]、失敗 [ ]、成功 [ ]、利用不可 [ ] |
+| **アクセシビリティ** | アクセシブルな名前 [ ]、キーボード操作と読み上げの順序 [ ]、コントラスト [ ] |
+| **表示への対応** | 狭いウィンドウ [ ]、大きな文字 [ ]、長いテキスト [ ] |
+| **適用範囲** | 使用を避ける場面 [ ]、代わりに使うもの [ ] |
+
+確認方法は簡単です。設計に関わっていない人に、この表だけを見て、ページを開いて閲覧し、操作して失敗した場合も含め、ページを離れるまでの流れを説明してもらいましょう。途中で質問が出たら、まだ定義に書き足すことがあるということです。
 
 ## 6. AIに他人のガイドラインを参考にページを設計させる方法
 
@@ -373,6 +556,26 @@ Fluent: "Only use one primary button in a layout..."
 
 この方法は初心者に特に適しています。原文をコピーして、自分の要件を2文追加するだけで十分だからです。
 
+### 6.4 実践：図解のルールをプロンプトに書く
+
+ここまでの図解で紹介したルールは、どれもそのままAIへの要件にできます。たとえば第1節の比較図で行った改善は、次のように書けます。
+
+```md
+Fluent 2のボタンガイドラインとApple HIGのLayoutを参考に、プロジェクト一覧ページを設計してください。
+
+ページの要件
+- ページタイトルは最も大きくし、1か所だけに表示してください。フィルターと操作は別の行に配置してください
+- 余白とフォントサイズで階層を作り、すべてのモジュールに枠線をつけるのは避けてください
+- ページ全体でメインボタンは「新規プロジェクト」の1つだけにし、「エクスポート」にはアウトラインボタンを使ってください
+- 削除は個別のプロジェクトに対する操作です。ページ上部ではなく、各項目の「その他」メニューに入れてください
+
+ボタンの要件
+- デフォルト、ホバー、押下、フォーカス、無効、読み込み中の6つの状態を定義してください
+- 削除ボタンには警告色を使い、メインボタンにはしないでください
+```
+
+「もっと高級に、Apple風で」と伝えるより、ずっと具体的です。AIに**具体的な判断基準**まで伝えられるからです。
+
 ## 7. AIにボタンガイドラインを参考に直接ボタンデザインを生成させる方法
 
 まずボタンだけを作りたい場合は、ボタンガイドラインの原文を直接貼り付けることもできます。
@@ -417,6 +620,13 @@ UIデザインガイドラインを参考にページやボタンを設計する
 - Apple Archive: [How Menus Work](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/HowMenusWork.html)
 - Apple Archive: [Managing Pop-Up Buttons and Pull-Down Lists](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html)
 - Material Design: [Buttons overview](https://m3.material.io/components/buttons/overview)
+- Material Design 3: [Layout overview](https://m3.material.io/foundations/layout/layout-overview/overview)
+- Material Design 3: [Buttons accessibility](https://m3.material.io/components/buttons/accessibility)
+- Apple Human Interface Guidelines: [Layout](https://developer.apple.com/design/human-interface-guidelines/layout)
+- Apple Human Interface Guidelines: [Typography](https://developer.apple.com/design/human-interface-guidelines/typography)
+- Apple Human Interface Guidelines: [Toolbars](https://developer.apple.com/design/human-interface-guidelines/toolbars)
+- Apple Human Interface Guidelines: [Pop-up buttons](https://developer.apple.com/design/human-interface-guidelines/pop-up-buttons)
+- Apple Human Interface Guidelines: [Pull-down buttons](https://developer.apple.com/design/human-interface-guidelines/pull-down-buttons)
 - Material Design: [Menus](https://m1.material.io/components/menus.html)
 - Microsoft Fluent 2: [Start designing](https://fluent2.microsoft.design/get-started/design)
 - Microsoft Fluent 2: [Menu usage](https://fluent2.microsoft.design/components/web/react/core/menu/usage)

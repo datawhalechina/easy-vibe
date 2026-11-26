@@ -710,7 +710,21 @@ const appendixComponentModules = {
   './components/appendix/product-discovery/JtbdProgressLab.vue': () => import('./components/appendix/product-discovery/JtbdProgressLab.vue'),
   './components/appendix/product-discovery/InterviewEvidenceLab.vue': () => import('./components/appendix/product-discovery/InterviewEvidenceLab.vue'),
   './components/appendix/product-discovery/DoubleDiamondNavigator.vue': () => import('./components/appendix/product-discovery/DoubleDiamondNavigator.vue'),
-  './components/appendix/modelscope-static-site/ModelScopeTroubleshooter.vue': () => import('./components/appendix/modelscope-static-site/ModelScopeTroubleshooter.vue')
+  './components/appendix/modelscope-static-site/ModelScopeTroubleshooter.vue': () => import('./components/appendix/modelscope-static-site/ModelScopeTroubleshooter.vue'),
+  './components/appendix/ui-design-specs/UiSpecHierarchyCompareDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecHierarchyCompareDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecPageAnatomyDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecPageAnatomyDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecGroupingDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecGroupingDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecButtonSpecDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecButtonSpecDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecButtonStatesDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecButtonStatesDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecLookalikeControlsDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecLookalikeControlsDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecPageSkeletonDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecPageSkeletonDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecSpecMapDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecSpecMapDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecButtonDecisionDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecButtonDecisionDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecFluentButtonsDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecFluentButtonsDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecTokensDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecTokensDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecThreeLayersDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecThreeLayersDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecTaskFlowLayoutDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecTaskFlowLayoutDemo.vue'),
+  './components/appendix/ui-design-specs/UiSpecRoleSamplesDemo.vue': () => import('./components/appendix/ui-design-specs/UiSpecRoleSamplesDemo.vue')
 }
 const appendixComponentRegistrations = [
   ['TerminalGrid', './components/appendix/terminal-intro/TerminalGrid.vue'],
@@ -1245,7 +1259,21 @@ const appendixComponentRegistrations = [
   ['JtbdProgressLab', './components/appendix/product-discovery/JtbdProgressLab.vue'],
   ['InterviewEvidenceLab', './components/appendix/product-discovery/InterviewEvidenceLab.vue'],
   ['DoubleDiamondNavigator', './components/appendix/product-discovery/DoubleDiamondNavigator.vue'],
-  ['ModelScopeTroubleshooter', './components/appendix/modelscope-static-site/ModelScopeTroubleshooter.vue']
+  ['ModelScopeTroubleshooter', './components/appendix/modelscope-static-site/ModelScopeTroubleshooter.vue'],
+  ['UiSpecHierarchyCompareDemo', './components/appendix/ui-design-specs/UiSpecHierarchyCompareDemo.vue'],
+  ['UiSpecPageAnatomyDemo', './components/appendix/ui-design-specs/UiSpecPageAnatomyDemo.vue'],
+  ['UiSpecGroupingDemo', './components/appendix/ui-design-specs/UiSpecGroupingDemo.vue'],
+  ['UiSpecButtonSpecDemo', './components/appendix/ui-design-specs/UiSpecButtonSpecDemo.vue'],
+  ['UiSpecButtonStatesDemo', './components/appendix/ui-design-specs/UiSpecButtonStatesDemo.vue'],
+  ['UiSpecLookalikeControlsDemo', './components/appendix/ui-design-specs/UiSpecLookalikeControlsDemo.vue'],
+  ['UiSpecPageSkeletonDemo', './components/appendix/ui-design-specs/UiSpecPageSkeletonDemo.vue'],
+  ['UiSpecSpecMapDemo', './components/appendix/ui-design-specs/UiSpecSpecMapDemo.vue'],
+  ['UiSpecButtonDecisionDemo', './components/appendix/ui-design-specs/UiSpecButtonDecisionDemo.vue'],
+  ['UiSpecFluentButtonsDemo', './components/appendix/ui-design-specs/UiSpecFluentButtonsDemo.vue'],
+  ['UiSpecTokensDemo', './components/appendix/ui-design-specs/UiSpecTokensDemo.vue'],
+  ['UiSpecThreeLayersDemo', './components/appendix/ui-design-specs/UiSpecThreeLayersDemo.vue'],
+  ['UiSpecTaskFlowLayoutDemo', './components/appendix/ui-design-specs/UiSpecTaskFlowLayoutDemo.vue'],
+  ['UiSpecRoleSamplesDemo', './components/appendix/ui-design-specs/UiSpecRoleSamplesDemo.vue']
 ]
 
 function registerAppendixComponents(app) {
