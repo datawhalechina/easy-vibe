@@ -1834,3 +1834,4 @@ Please configure environment variables so Claude Code can work correctly.
 - [Claude Code Official Docs](https://code.claude.com/docs)
 - [Claude Code GitHub](https://github.com/anthropics/claude-code)
 - [Everything Claude Code](https://github.com/affaan-m/everything-claude-code)
+- [Native agent permissions vs runtime security controls](https://hol.org/guard/compare/runtime-guardrails-vs-native-agent-controls) - Compares built-in agent permissions with a separate local control layer, including where each fits and the limits of both.
