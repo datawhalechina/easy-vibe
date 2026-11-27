@@ -999,6 +999,7 @@ description: 审查 Pull Request 的代码。当用户提到 PR、review、代�
 - [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - 精选 Skills 资源列表
 - [superpowers](https://github.com/obra/superpowers) - 软件开发自动化工作流 Skills 集合
 - [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) - 66 个专业技能，300+ 参考文档
+- [jeffallan/writing-with-agents](https://github.com/jeffallan/writing-with-agents) - 写作工作流 Skills 集合，按 Betty Flowers 的「疯子、建筑师、木匠、法官」四阶段写作法组织，共 10 个技能
 - [awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) - 精选资源列表
 
 ### 官方 Skills 示例
