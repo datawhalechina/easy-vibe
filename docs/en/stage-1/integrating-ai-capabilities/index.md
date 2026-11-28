@@ -319,6 +319,31 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
   }'
 ```
 
+MiniMax provides a person-reference workflow through its [image-to-image API](https://platform.minimax.io/docs/api-reference/image-generation-i2i). Use `https://api.minimax.io/v1/image_generation` for the global service or `https://api.minimaxi.com/v1/image_generation` for the mainland China service. The current models are `image-01` and `image-01-live`.
+
+```bash
+curl --request POST \
+  --url https://api.minimax.io/v1/image_generation \
+  --header "Authorization: Bearer ${MINIMAX_API_KEY}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "image-01",
+    "prompt": "Turn the referenced person into a clean vertical product poster with soft lighting and no text.",
+    "subject_reference": [
+      {
+        "type": "character",
+        "image_file": "https://example.com/reference-person.png"
+      }
+    ],
+    "aspect_ratio": "9:16",
+    "response_format": "url",
+    "n": 1,
+    "prompt_optimizer": false
+  }'
+```
+
+The `character` reference type is for preserving a person's identity; do not assume it accepts an arbitrary product image. Check that `base_resp.status_code` is `0` before reading URL results from `data.image_urls`. The `metadata.success_count` and `metadata.failed_count` fields show how many images completed. URL results expire after 24 hours; request `base64` and read `data.image_base64` when the application needs to store the bytes immediately.
+
 ![Image generation integrated into the product](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-21-13.webp)
 
 Image URLs often expire. A prototype can display one directly, but a production application should decide whether to copy the image into its own storage under the service's terms, and should record the prompt, model version, and generation time.
